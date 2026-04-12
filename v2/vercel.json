@@ -2,6 +2,7 @@
   "version": 2,
   "name": "fitappliance",
   "regions": ["syd1"],
+    "outputDirectory": ".",
   "routes": [
     { "src": "/affiliate-disclosure", "dest": "/pages/affiliate-disclosure.html" },
     { "src": "/privacy-policy",       "dest": "/pages/privacy-policy.html" },
