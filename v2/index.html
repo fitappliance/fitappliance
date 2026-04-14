@@ -1074,7 +1074,7 @@ const PRODUCTS = [
     w:875,h:1730,d:695, kwh_year:360, stars:3, price:1299, emoji:'🧊',
     door_swing_mm: 63.5,
     features:['French Door','Humidity Crisper','No Frost'],
-    retailers:[{n:'The Good Guys',url:'https://www.thegoodguys.com.au',p:1299},{n:'Bing Lee',url:'https://www.binglee.com.au',p:1279}],
+    retailers:[{n:'The Good Guys',url:'https://www.thegoodguys.com.au/search?text=HRF520BHS',p:1299},{n:'Bing Lee',url:'https://www.binglee.com.au/search?query=HRF520BHS',p:1279}],
     sponsored:false },
 
   { id:'f8', cat:'fridge', brand:'Electrolux', model:'EHE5267B Bottom Mount 520L',
@@ -1388,10 +1388,54 @@ function tcoHtml(p) {
   return `<div class="tco-row">⚡ ~$${annual}/yr energy · <strong>10yr TCO: ~$${total.toLocaleString()}</strong></div>`;
 }
 
+function extractModelCode(model) {
+  const tokens = String(model ?? '').toUpperCase().match(/[A-Z0-9-]+/g) ?? [];
+  return tokens.find((token) => token.length >= 5 && /\d/.test(token)) ?? null;
+}
+
+function resolveRetailerUrl(retailer, product) {
+  const rawUrl = retailer?.url;
+  if (!rawUrl) return '#';
+
+  try {
+    const parsed = new URL(rawUrl);
+    if (parsed.pathname !== '/' || parsed.search) {
+      return rawUrl;
+    }
+
+    const host = parsed.hostname.replace(/^www\./, '');
+    const modelCode = extractModelCode(product?.model);
+    const fallbackQuery = `${product?.brand ?? ''} ${product?.model ?? ''}`.trim();
+    const queryTerm = modelCode ?? fallbackQuery;
+    if (!queryTerm) return rawUrl;
+    const query = encodeURIComponent(queryTerm);
+
+    if (host === 'thegoodguys.com.au') {
+      return `https://www.thegoodguys.com.au/search?text=${query}`;
+    }
+    if (host === 'binglee.com.au') {
+      return `https://www.binglee.com.au/search?query=${query}`;
+    }
+    if (host === 'harveynorman.com.au') {
+      return `https://www.harveynorman.com.au/catalogsearch/result/?q=${query}`;
+    }
+    if (host === 'jbhifi.com.au') {
+      return `https://www.jbhifi.com.au/search?query=${query}`;
+    }
+    if (host === 'appliances-online.com.au' || host === 'appliancesonline.com.au') {
+      return `https://www.appliancesonline.com.au/search/?q=${query}`;
+    }
+
+    return rawUrl;
+  } catch {
+    return rawUrl;
+  }
+}
+
 /* ── RETAILERS HTML ── */
 function retailersHtml(p) {
   return p.retailers.map(r =>
-    `<a class="ret-item" href="${r.url}" target="_blank" rel="noopener sponsored">
+    `<a class="ret-item" href="${resolveRetailerUrl(r, p)}" target="_blank" rel="noopener sponsored">
        <span class="ret-name">${r.n}</span>
        <span class="ret-price">$${r.p.toLocaleString()}</span>
      </a>`
@@ -1422,7 +1466,7 @@ function buildCard(p) {
         <div class="c-price">$${Math.min(...p.retailers.map(r=>r.p)).toLocaleString()}<small>AUD best price</small></div>
         <div class="c-actions">
           <button class="btn-compare" onclick="addCompare('${p.id}','${p.brand} ${p.model.split(' ').slice(0,3).join(' ')}')">Compare</button>
-          <a class="btn-buy" href="${p.retailers[0].url}" target="_blank" rel="noopener sponsored">Buy</a>
+          <a class="btn-buy" href="${resolveRetailerUrl(p.retailers[0], p)}" target="_blank" rel="noopener sponsored">Buy</a>
         </div>
       </div>
     </div>
@@ -1456,7 +1500,7 @@ function buildRow(p) {
       ${p.vented?'<div style="font-size:12px;color:var(--red);margin-top:4px">⚠️ Vented — external ducting required (NCC 2022). Not for apartments.</div>':''}
       ${p.door_swing_mm>0?`<div style="font-size:12px;color:var(--ink-3);margin-top:3px">ℹ️ Hinge clearance: ${p.door_swing_mm}mm</div>`:''}
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
-        ${p.retailers.map(r=>`<a href="${r.url}" target="_blank" rel="noopener sponsored" style="font-size:12.5px;color:var(--copper);font-weight:600;text-decoration:none;background:var(--copper-bg);padding:4px 10px;border-radius:6px">${r.n} $${r.p.toLocaleString()} ↗</a>`).join('')}
+        ${p.retailers.map(r=>`<a href="${resolveRetailerUrl(r, p)}" target="_blank" rel="noopener sponsored" style="font-size:12.5px;color:var(--copper);font-weight:600;text-decoration:none;background:var(--copper-bg);padding:4px 10px;border-radius:6px">${r.n} $${r.p.toLocaleString()} ↗</a>`).join('')}
       </div>
       <div style="font-size:10.5px;color:var(--ink-3);margin-top:4px;font-style:italic">We earn a commission if you purchase via these links. <a href="#" style="color:var(--copper)">Disclosure</a></div>
     </div>
@@ -1464,7 +1508,7 @@ function buildRow(p) {
       <div class="p-row-price">$${bestP.toLocaleString()}<small>AUD best price</small></div>
       <div style="display:flex;gap:6px">
         <button class="btn-compare" onclick="addCompare('${p.id}','${p.brand} ${p.model.split(' ').slice(0,2).join(' ')}')">Compare</button>
-        <a class="btn-buy" href="${p.retailers[0].url}" target="_blank" rel="noopener sponsored">Buy</a>
+        <a class="btn-buy" href="${resolveRetailerUrl(p.retailers[0], p)}" target="_blank" rel="noopener sponsored">Buy</a>
       </div>
     </div>
   </div>`;
