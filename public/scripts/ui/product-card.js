@@ -21,12 +21,12 @@ export function warningsHtml(p) {
   }
   if (p.door_swing_mm === null) {
     warns.push({
-      text: '⏳ 开门间距待确认',
+      text: '⏳ Door swing clearance pending confirmation',
       tone: 'amber',
     });
   } else if (p.door_swing_mm > 0) {
     warns.push({
-      text: `🚪 需预留 ${p.door_swing_mm}mm 开门间距`,
+      text: `🚪 Requires ${p.door_swing_mm}mm door swing clearance`,
       tone: 'red',
     });
   }
@@ -93,8 +93,8 @@ export function buildRow(p, deps = {}) {
         ${p.sponsored ? '<span class="tag tag-amber">Sponsored</span>' : ''}
         <span class="tag tag-green">${p.stars}★ GEMS</span>
         ${p.vented ? '<span class="tag tag-red">Vented</span>' : ''}
-        ${p.door_swing_mm === null ? '<span class="tag tag-amber">⏳ 开门间距待确认</span>' : ''}
-        ${p.door_swing_mm > 0 ? `<span class="tag tag-red">🚪 需预留 ${p.door_swing_mm}mm</span>` : ''}
+        ${p.door_swing_mm === null ? '<span class="tag tag-amber">⏳ Door swing pending confirmation</span>' : ''}
+        ${p.door_swing_mm > 0 ? `<span class="tag tag-red">🚪 Requires ${p.door_swing_mm}mm clearance</span>` : ''}
       </div>
       <div class="p-row-name">${p.model}</div>
       <div class="p-row-dims">
