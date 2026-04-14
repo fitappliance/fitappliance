@@ -55,12 +55,10 @@ test('index.html exposes UI handlers after init and renders a load error message
 
 test('data JSON files are routed from /data without relying on a checked-in symlink', async () => {
   const vercelConfig = JSON.parse(await readFile(vercelConfigPath, 'utf8'));
-  const dataRoute = vercelConfig.routes.find(route => route.src === '/data/(.*)');
+  const dataRewrite = (vercelConfig.rewrites ?? []).find(r => r.source === '/data/:path*');
 
-  assert.deepEqual(dataRoute, {
-    src: '/data/(.*)',
-    dest: '/public/data/$1',
-  });
+  assert.ok(dataRewrite, 'vercel.json should have a rewrite for /data/:path*');
+  assert.strictEqual(dataRewrite.destination, '/public/data/:path*');
 
   assert.ok(existsSync(path.join(repoRoot, 'public', 'data', 'appliances.json')));
   assert.ok(existsSync(path.join(repoRoot, 'public', 'data', 'clearance.json')));

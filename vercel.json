@@ -2,16 +2,15 @@
   "version": 2,
   "name": "fitappliance",
   "regions": ["syd1"],
-  "routes": [
-    { "src": "/affiliate-disclosure", "dest": "/pages/affiliate-disclosure.html" },
-    { "src": "/privacy-policy",       "dest": "/pages/privacy-policy.html" },
-    { "src": "/data/(.*)",            "dest": "/public/data/$1" },
-    { "src": "/scripts/(.*)",         "dest": "/public/scripts/$1" },
-    { "src": "/sitemap.xml",          "dest": "/public/sitemap.xml" },
-    { "src": "/robots.txt",           "dest": "/public/robots.txt" },
-    { "src": "/ads.txt",              "dest": "/public/ads.txt" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)",                 "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/data/:path*",          "destination": "/public/data/:path*" },
+    { "source": "/scripts/:path*",       "destination": "/public/scripts/:path*" },
+    { "source": "/ads.txt",              "destination": "/public/ads.txt" },
+    { "source": "/sitemap.xml",          "destination": "/public/sitemap.xml" },
+    { "source": "/robots.txt",           "destination": "/public/robots.txt" },
+    { "source": "/affiliate-disclosure", "destination": "/pages/affiliate-disclosure.html" },
+    { "source": "/privacy-policy",       "destination": "/pages/privacy-policy.html" },
+    { "source": "/(.*)",                 "destination": "/index.html" }
   ],
   "headers": [
     {
@@ -30,13 +29,13 @@
       ]
     },
     {
-      "source": "/data/(.*)",
+      "source": "/data/:path*",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
       ]
     },
     {
-      "source": "/public/(.*)",
+      "source": "/public/:path*",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
       ]
