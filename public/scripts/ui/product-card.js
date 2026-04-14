@@ -44,6 +44,7 @@ export function buildCard(p, deps = {}) {
   const retailersHtml = deps.retailersHtml ?? (() => '');
   const stars = deps.starsHtml ?? starsHtml;
   const warnings = deps.warningsHtml ?? warningsHtml;
+  const resolveRetailerUrl = deps.resolveRetailerUrl ?? ((retailer) => retailer.url);
 
   return `
   <div class="p-card">
@@ -66,7 +67,7 @@ export function buildCard(p, deps = {}) {
         <div class="c-price">$${Math.min(...p.retailers.map(r => r.p)).toLocaleString()}<small>AUD best price</small></div>
         <div class="c-actions">
           <button class="btn-compare" onclick="addCompare('${p.id}','${p.brand} ${p.model.split(' ').slice(0, 3).join(' ')}')">Compare</button>
-          <a class="btn-buy" href="${p.retailers[0].url}" target="_blank" rel="noopener sponsored">Buy</a>
+          <a class="btn-buy" href="${resolveRetailerUrl(p.retailers[0], p)}" target="_blank" rel="noopener sponsored">Buy</a>
         </div>
       </div>
     </div>
@@ -78,6 +79,7 @@ export function buildCard(p, deps = {}) {
 export function buildRow(p, deps = {}) {
   const annualEnergyCost = deps.annualEnergyCost ?? (() => '0');
   const lifetimeCost = deps.lifetimeCost ?? (() => 0);
+  const resolveRetailerUrl = deps.resolveRetailerUrl ?? ((retailer) => retailer.url);
   const bestP = Math.min(...p.retailers.map(r => r.p));
   const annual = annualEnergyCost(p.kwh_year);
   const total = Math.round(lifetimeCost(p.price, p.kwh_year));
@@ -103,7 +105,7 @@ export function buildRow(p, deps = {}) {
       <div style="font-size:12px;color:var(--green);margin-top:4px">⚡ ~$${annual}/yr · 10yr TCO ~$${total.toLocaleString()} · ${p.features.slice(0, 3).join(' · ')}</div>
       ${p.vented ? '<div style="font-size:12px;color:var(--red);margin-top:4px">⚠️ Vented — external ducting required (NCC 2022). Not for apartments.</div>' : ''}
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
-        ${p.retailers.map(r => `<a href="${r.url}" target="_blank" rel="noopener sponsored" style="font-size:12.5px;color:var(--copper);font-weight:600;text-decoration:none;background:var(--copper-bg);padding:4px 10px;border-radius:6px">${r.n} $${r.p.toLocaleString()} ↗</a>`).join('')}
+        ${p.retailers.map(r => `<a href="${resolveRetailerUrl(r, p)}" target="_blank" rel="noopener sponsored" style="font-size:12.5px;color:var(--copper);font-weight:600;text-decoration:none;background:var(--copper-bg);padding:4px 10px;border-radius:6px">${r.n} $${r.p.toLocaleString()} ↗</a>`).join('')}
       </div>
       <div style="font-size:10.5px;color:var(--ink-3);margin-top:4px;font-style:italic">We earn a commission if you purchase via these links. <a href="#" style="color:var(--copper)">Disclosure</a></div>
     </div>
@@ -111,7 +113,7 @@ export function buildRow(p, deps = {}) {
       <div class="p-row-price">$${bestP.toLocaleString()}<small>AUD best price</small></div>
       <div style="display:flex;gap:6px">
         <button class="btn-compare" onclick="addCompare('${p.id}','${p.brand} ${p.model.split(' ').slice(0, 2).join(' ')}')">Compare</button>
-        <a class="btn-buy" href="${p.retailers[0].url}" target="_blank" rel="noopener sponsored">Buy</a>
+        <a class="btn-buy" href="${resolveRetailerUrl(p.retailers[0], p)}" target="_blank" rel="noopener sponsored">Buy</a>
       </div>
     </div>
   </div>`;

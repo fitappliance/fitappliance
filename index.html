@@ -631,6 +631,50 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 }
 .btn-compare-now:hover { background:var(--copper-2); }
 
+.compare-modal[hidden] { display:none; }
+.compare-modal {
+  position:fixed;inset:0;z-index:400;
+  display:grid;place-items:center;padding:24px;
+}
+.compare-modal-backdrop {
+  position:absolute;inset:0;background:rgba(0,0,0,.55);
+}
+.compare-modal-panel {
+  position:relative;z-index:1;width:min(1040px,100%);
+  max-height:min(84vh,860px);overflow:auto;
+  background:var(--white);border-radius:var(--r);
+  box-shadow:var(--shadow-lg);border:1px solid var(--border);
+}
+.compare-modal-head {
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 18px;border-bottom:1px solid var(--border);
+  position:sticky;top:0;background:var(--white);z-index:2;
+}
+.compare-modal-head h3 {
+  margin:0;font-family:'Instrument Serif',serif;font-size:26px;line-height:1.2;
+}
+.compare-modal-close {
+  border:none;background:transparent;cursor:pointer;
+  color:var(--ink-3);font-size:28px;line-height:1;padding:0 4px;
+}
+.compare-modal-body { padding:18px; }
+.compare-table {
+  width:100%;border-collapse:collapse;font-size:14px;
+}
+.compare-table th,.compare-table td {
+  border:1px solid var(--border);padding:10px 12px;vertical-align:top;
+}
+.compare-table th {
+  text-align:left;background:var(--paper-2);font-size:12px;
+  text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);
+}
+.compare-table td strong { color:var(--ink);font-size:15px; }
+@media(max-width:660px){
+  .compare-modal { padding:10px; }
+  .compare-modal-head h3 { font-size:22px; }
+  .compare-table { font-size:12.5px; }
+}
+
 /* ─── MOBILE ─── */
 @media(max-width:900px){
   .results-body { grid-template-columns:1fr; }
@@ -996,7 +1040,18 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
     <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">Comparing <span id="compareCount">0</span> items</div>
     <div class="compare-bar-items" id="compareItems"></div>
   </div>
-  <button class="btn-compare-now" onclick="showToast('Full comparison table coming soon!')">Compare Now →</button>
+  <button class="btn-compare-now" onclick="openCompareTable()">Compare Now →</button>
+</div>
+
+<div class="compare-modal" id="compareModal" hidden>
+  <div class="compare-modal-backdrop" onclick="closeCompareModal()"></div>
+  <div class="compare-modal-panel" role="dialog" aria-modal="true" aria-labelledby="compareTitle">
+    <div class="compare-modal-head">
+      <h3 id="compareTitle">Appliance Comparison</h3>
+      <button class="compare-modal-close" onclick="closeCompareModal()" aria-label="Close comparison">×</button>
+    </div>
+    <div class="compare-modal-body" id="compareTableWrap"></div>
+  </div>
 </div>
 
 <script type="module">
@@ -1237,7 +1292,8 @@ function renderResults() {
     container.className = 'product-list';
     container.innerHTML = final.map(product => buildRow(product, {
       annualEnergyCost,
-      lifetimeCost
+      lifetimeCost,
+      resolveRetailerUrl
     })).join('');
   } else {
     container.className = 'product-grid';
@@ -1245,7 +1301,8 @@ function renderResults() {
       tcoHtml,
       retailersHtml,
       starsHtml,
-      warningsHtml
+      warningsHtml,
+      resolveRetailerUrl
     })).join('');
   }
 }
@@ -1257,10 +1314,54 @@ function tcoHtml(p) {
   return `<div class="tco-row">⚡ ~$${annual}/yr energy · <strong>10yr TCO: ~$${total.toLocaleString()}</strong></div>`;
 }
 
+function escHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, ch => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  }[ch]));
+}
+
+function resolveRetailerUrl(retailer, product) {
+  const rawUrl = retailer?.url;
+  if (!rawUrl) return '#';
+  try {
+    const parsed = new URL(rawUrl);
+    if (parsed.pathname !== '/' || parsed.search) {
+      return rawUrl;
+    }
+
+    const query = encodeURIComponent(`${product.brand} ${product.model}`);
+    const host = parsed.hostname.replace(/^www\./, '');
+
+    if (host === 'harveynorman.com.au') {
+      return `https://www.harveynorman.com.au/catalogsearch/result/?q=${query}`;
+    }
+    if (host === 'thegoodguys.com.au') {
+      return `https://www.thegoodguys.com.au/search?text=${query}`;
+    }
+    if (host === 'jbhifi.com.au') {
+      return `https://www.jbhifi.com.au/search?query=${query}`;
+    }
+    if (host === 'binglee.com.au') {
+      return `https://www.binglee.com.au/search?query=${query}`;
+    }
+    if (host === 'appliances-online.com.au' || host === 'appliancesonline.com.au') {
+      return `https://www.appliancesonline.com.au/search/?q=${query}`;
+    }
+
+    return rawUrl;
+  } catch {
+    return rawUrl;
+  }
+}
+
 /* ── RETAILERS HTML ── */
 function retailersHtml(p) {
   return p.retailers.map(r =>
-    `<a class="ret-item" href="${r.url}" target="_blank" rel="noopener sponsored">
+    `<a class="ret-item" href="${resolveRetailerUrl(r, p)}" target="_blank" rel="noopener sponsored">
        <span class="ret-name">${r.n}</span>
        <span class="ret-price">$${r.p.toLocaleString()}</span>
      </a>`
@@ -1272,6 +1373,71 @@ function retailersHtml(p) {
 /* ══════════════════════════════════════════════════════════
    COMPARE
 ══════════════════════════════════════════════════════════ */
+function getCompareProducts() {
+  return compareList
+    .map(item => PRODUCTS.find(product => product.id === item.id))
+    .filter(Boolean);
+}
+
+function formatDoorSwing(value) {
+  if (value === null) return 'Pending confirmation';
+  if (value === 0) return 'No extra hinge clearance';
+  return `${value} mm`;
+}
+
+function formatPrice(value) {
+  if (!Number.isFinite(value)) return '-';
+  return `$${value.toLocaleString()}`;
+}
+
+function compareCell(product, render) {
+  return `<td>${render(product)}</td>`;
+}
+
+function renderCompareTable(products) {
+  const buyCell = (product) => {
+    const bestRetailer = product.retailers[0];
+    if (!bestRetailer) return '-';
+    const target = resolveRetailerUrl(bestRetailer, product);
+    return `<a class="btn-buy" href="${target}" target="_blank" rel="noopener sponsored">Buy from ${escHtml(bestRetailer.n)}</a>`;
+  };
+
+  const rows = [
+    { label: 'Model', render: p => `<strong>${escHtml(p.brand)} ${escHtml(p.model)}</strong>` },
+    { label: 'Dimensions (W×H×D)', render: p => `${p.w} × ${p.h} × ${p.d} mm` },
+    { label: 'Best Price', render: p => formatPrice(Math.min(...p.retailers.map(r => r.p))) },
+    { label: 'Energy', render: p => `${p.stars}★ · ${p.kwh_year ?? '-'} kWh/yr` },
+    { label: 'Estimated 10yr TCO', render: p => formatPrice(Math.round(lifetimeCost(p.price, p.kwh_year))) },
+    { label: 'Door Swing', render: p => formatDoorSwing(p.door_swing_mm) },
+    { label: 'Key Features', render: p => escHtml(p.features.slice(0, 4).join(' · ')) },
+    { label: 'Buy Link', render: buyCell },
+  ];
+
+  const headerRow = products.map(product => `<th>${escHtml(product.brand)}<br>${escHtml(product.model)}</th>`).join('');
+  const bodyRows = rows.map(row => {
+    const cells = products.map(product => compareCell(product, row.render)).join('');
+    return `<tr><th>${row.label}</th>${cells}</tr>`;
+  }).join('');
+
+  return `<table class="compare-table"><thead><tr><th>Metric</th>${headerRow}</tr></thead><tbody>${bodyRows}</tbody></table>`;
+}
+
+function openCompareTable() {
+  const selected = getCompareProducts();
+  if (selected.length < 2) {
+    showToast('Select at least 2 items to compare');
+    return;
+  }
+  document.getElementById('compareTableWrap').innerHTML = renderCompareTable(selected);
+  document.getElementById('compareModal').hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCompareModal() {
+  document.getElementById('compareModal').hidden = true;
+  document.body.style.overflow = '';
+}
+
 function addCompare(id, label) {
   if (compareList.find(x=>x.id===id)) { showToast('Already in compare list'); return; }
   if (compareList.length>=3) { showToast('Max 3 items to compare'); return; }
@@ -1282,6 +1448,14 @@ function addCompare(id, label) {
 function removeCompare(id) {
   compareList = compareList.filter(x=>x.id!==id);
   updateCompareBar();
+  if (!document.getElementById('compareModal').hidden) {
+    if (getCompareProducts().length >= 2) {
+      document.getElementById('compareTableWrap').innerHTML = renderCompareTable(getCompareProducts());
+    } else {
+      closeCompareModal();
+      showToast('Select at least 2 items to compare');
+    }
+  }
 }
 function updateCompareBar() {
   const bar = document.getElementById('compareBar');
@@ -1296,6 +1470,12 @@ function updateCompareBar() {
       <button onclick="removeCompare('${x.id}')">×</button>
     </div>`).join('');
 }
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && !document.getElementById('compareModal').hidden) {
+    closeCompareModal();
+  }
+});
 
 /* ══════════════════════════════════════════════════════════
    UTILITIES
@@ -1328,6 +1508,8 @@ Object.assign(window, {
   addCompare,
   removeCompare,
 });
+window.openCompareTable = openCompareTable;
+window.closeCompareModal = closeCompareModal;
 
 ['inW','inH','inD'].forEach(id => {
   document.getElementById(id).addEventListener('keydown', e => {
