@@ -1,0 +1,44 @@
+{
+  "version": 2,
+  "name": "fitappliance",
+  "regions": ["syd1"],
+  "routes": [
+    { "src": "/affiliate-disclosure", "dest": "/pages/affiliate-disclosure.html" },
+    { "src": "/privacy-policy",       "dest": "/pages/privacy-policy.html" },
+    { "src": "/data/(.*)",            "dest": "/public/data/$1" },
+    { "src": "/scripts/(.*)",         "dest": "/public/scripts/$1" },
+    { "src": "/sitemap.xml",          "dest": "/public/sitemap.xml" },
+    { "src": "/robots.txt",           "dest": "/public/robots.txt" },
+    { "src": "/ads.txt",              "dest": "/public/ads.txt" },
+    { "src": "/(.*)",                 "dest": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options",        "value": "SAMEORIGIN" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy",        "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy",     "value": "geolocation=(), camera=(), microphone=()" }
+      ]
+    },
+    {
+      "source": "/index.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/data/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/public/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    }
+  ]
+}

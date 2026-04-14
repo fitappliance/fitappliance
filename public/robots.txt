@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://fitappliance.com.au/sitemap.xml
+
+# Disallow admin or API paths if added later
+Disallow: /api/
+Disallow: /_vercel/

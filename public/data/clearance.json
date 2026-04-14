@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-04-13",
+  "rules": {
+    "fridge": {
+      "Samsung": {
+        "side": 50,
+        "rear": 50,
+        "top": 100
+      },
+      "LG": {
+        "side": 50,
+        "rear": 50,
+        "top": 20
+      },
+      "Fisher & Paykel": {
+        "side": 20,
+        "rear": 30,
+        "top": 50
+      },
+      "Westinghouse": {
+        "side": 30,
+        "rear": 60,
+        "top": 30
+      },
+      "Haier": {
+        "side": 25.4,
+        "rear": 25.4,
+        "top": 25.4
+      },
+      "Hisense": {
+        "side": 40,
+        "rear": 30,
+        "top": 50
+      },
+      "Electrolux": {
+        "side": 30,
+        "rear": 30,
+        "top": 50
+      },
+      "Bosch": {
+        "side": 25,
+        "rear": 25,
+        "top": 50
+      },
+      "Panasonic": {
+        "side": 40,
+        "rear": 30,
+        "top": 50
+      },
+      "Mitsubishi": {
+        "side": 30,
+        "rear": 30,
+        "top": 50
+      },
+      "__default__": {
+        "side": 40,
+        "rear": 25,
+        "top": 50
+      }
+    },
+    "washing_machine": {
+      "__default__": {
+        "side": 10,
+        "rear": 100,
+        "top": 10
+      }
+    },
+    "dishwasher": {
+      "__default__": {
+        "side": 2,
+        "rear": 50,
+        "top": 25
+      }
+    },
+    "dryer": {
+      "__default__": {
+        "side": 20,
+        "rear": 80,
+        "top": 20
+      }
+    }
+  }
+}

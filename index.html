@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="XurDAhzLbWGd-7qBLx4RBAda-vyciJc6qQsnzWJHPPA" />
+<meta name="commission-factory-verification" content="befda212a540475694f6b21f658f21f9" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WNPNS4ZGWK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WNPNS4ZGWK');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitAppliance — Does It Actually Fit? | Australia's Precision Appliance Finder</title>
+<meta name="description" content="Australia's most precise appliance size finder. Enter your cavity dimensions — we calculate per-brand ventilation clearances, door swing, delivery access and government rebates automatically.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Google AdSense verification -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7257149597818537"
+        crossorigin="anonymous"></script>
+
+<style>
+/* ═══════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════ */
+:root {
+  --ink:       #131210;
+  --ink-2:     #3D3A35;
+  --ink-3:     #7A766E;
+  --paper:     #FAF8F4;
+  --paper-2:   #F2EEE7;
+  --paper-3:   #E8E2D9;
+  --white:     #FFFFFF;
+  --copper:    #B55A2C;
+  --copper-2:  #D4763E;
+  --copper-bg: #FBF0E9;
+  --green:     #2E6B3E;
+  --green-bg:  #EBF5EE;
+  --amber:     #C47A1A;
+  --amber-bg:  #FEF6E4;
+  --red:       #C0392B;
+  --red-bg:    #FBEAE8;
+  --blue:      #1B4B8A;
+  --blue-bg:   #EAF0FA;
+  --border:    #E0D9CE;
+  --shadow-sm: 0 1px 4px rgba(19,18,16,.06);
+  --shadow:    0 4px 20px rgba(19,18,16,.09);
+  --shadow-lg: 0 12px 50px rgba(19,18,16,.14);
+  --r:         14px;
+  --r-sm:      9px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: 'Outfit', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+
+/* ─── UTILITY ─── */
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0; }
+.tag { display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase; }
+.tag-green  { background:var(--green-bg);color:var(--green); }
+.tag-amber  { background:var(--amber-bg);color:var(--amber); }
+.tag-red    { background:var(--red-bg);color:var(--red); }
+.tag-blue   { background:var(--blue-bg);color:var(--blue); }
+.tag-copper { background:var(--copper-bg);color:var(--copper); }
+
+/* ─── TOPBAR ─── */
+.topbar {
+  background: var(--ink);
+  color: rgba(255,255,255,.65);
+  text-align: center;
+  padding: 9px 20px;
+  font-size: 12.5px;
+  letter-spacing: .02em;
+}
+.topbar a { color: #D4A574; text-decoration: none; border-bottom: 1px solid rgba(212,165,116,.4); }
+
+/* ─── NAV ─── */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: var(--shadow-sm);
+}
+.logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 23px;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -.3px;
+}
+.logo b { color: var(--copper); font-weight: 400; }
+.nav-right { display:flex;align-items:center;gap:24px; }
+.nav-link { color:var(--ink-2);text-decoration:none;font-size:14px;font-weight:500;transition:color .15s; }
+.nav-link:hover { color:var(--copper); }
+.nav-btn { background:var(--copper);color:#fff;padding:9px 20px;border-radius:var(--r-sm);font-size:13px;font-weight:600;text-decoration:none;transition:background .15s; }
+.nav-btn:hover { background:var(--copper-2); }
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--ink);
+  padding: 72px 24px 110px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: .4;
+  pointer-events: none;
+}
+.hero-glow-1 {
+  position:absolute;top:-100px;right:-60px;
+  width:500px;height:500px;
+  background:radial-gradient(circle, rgba(181,90,44,.18) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero-glow-2 {
+  position:absolute;bottom:-80px;left:-80px;
+  width:400px;height:400px;
+  background:radial-gradient(circle, rgba(46,107,62,.12) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero-inner { max-width:760px;margin:0 auto;text-align:center;position:relative;z-index:2; }
+.hero-eyebrow {
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.75);font-size:12px;font-weight:600;
+  padding:5px 16px;border-radius:100px;margin-bottom:28px;
+  letter-spacing:.07em;text-transform:uppercase;
+}
+.hero-eyebrow span { width:6px;height:6px;background:var(--copper-2);border-radius:50%;flex-shrink:0; }
+.hero h1 {
+  font-family:'Instrument Serif',serif;
+  font-size: clamp(40px,6.5vw,70px);
+  color: #fff;
+  line-height: 1.06;
+  letter-spacing: -1px;
+  margin-bottom: 22px;
+}
+.hero h1 em { font-style:italic;color:#D4A574; }
+.hero-sub {
+  color: rgba(255,255,255,.55);
+  font-size: 17px;
+  max-width: 500px;
+  margin: 0 auto 52px;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* ─── SEARCH CARD ─── */
+.search-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 34px 36px 30px;
+  max-width: 820px;
+  margin: 0 auto;
+  box-shadow: 0 28px 80px rgba(0,0,0,.28);
+  position: relative;
+  z-index: 3;
+}
+.sc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sc-title { font-family:'Instrument Serif',serif;font-size:20px;color:var(--ink);letter-spacing:-.2px; }
+
+/* Category pills */
+.cat-pills { display:flex;gap:7px;flex-wrap:wrap; }
+.cat-pill {
+  display:flex;align-items:center;gap:6px;
+  padding:8px 16px;border-radius:var(--r-sm);
+  border:1.5px solid var(--border);background:transparent;
+  font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;
+  color:var(--ink-3);cursor:pointer;transition:all .18s;
+}
+.cat-pill:hover { border-color:var(--copper);color:var(--copper); }
+.cat-pill.active { background:var(--ink);border-color:var(--ink);color:#fff; }
+.cat-pill .pi { font-size:16px; }
+
+/* Dim inputs */
+.dim-grid { display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px; }
+.field label {
+  display:block;font-size:11px;font-weight:600;
+  letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:6px;
+}
+.field-wrap { position:relative; }
+.field-wrap input {
+  width:100%;padding:12px 40px 12px 14px;
+  border:1.5px solid var(--border);border-radius:var(--r-sm);
+  font-family:'Outfit',sans-serif;font-size:16px;font-weight:500;
+  color:var(--ink);background:var(--paper);
+  transition:border-color .18s,box-shadow .18s;
+  -moz-appearance:textfield;
+}
+.field-wrap input::-webkit-outer-spin-button,
+.field-wrap input::-webkit-inner-spin-button { -webkit-appearance:none; }
+.field-wrap input:focus { outline:none;border-color:var(--copper);box-shadow:0 0 0 3px rgba(181,90,44,.12);background:var(--white); }
+.field-wrap input::placeholder { color:#C4BCAF; }
+.field-unit {
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  font-size:12px;color:var(--ink-3);font-weight:600;pointer-events:none;
+}
+
+/* Extra inputs row */
+.extra-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px; }
+.extra-grid select {
+  width:100%;padding:11px 36px 11px 14px;
+  border:1.5px solid var(--border);border-radius:var(--r-sm);
+  font-family:'Outfit',sans-serif;font-size:14px;font-weight:500;
+  color:var(--ink);background:var(--paper);cursor:pointer;
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%237A766E' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;
+  transition:border-color .18s;
+}
+.extra-grid select:focus { outline:none;border-color:var(--copper); }
+
+/* Advanced toggle */
+.adv-toggle {
+  display:flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:500;color:var(--ink-3);
+  background:none;border:none;cursor:pointer;padding:0;
+  margin-bottom:12px;transition:color .15s;
+}
+.adv-toggle:hover { color:var(--copper); }
+.adv-toggle svg { transition:transform .2s; }
+.adv-toggle.open svg { transform:rotate(180deg); }
+.adv-fields { display:none; }
+.adv-fields.show { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px; }
+
+/* Hint */
+.sc-hint {
+  display:flex;align-items:flex-start;gap:8px;
+  background:var(--amber-bg);border-radius:var(--r-sm);
+  padding:10px 14px;margin-bottom:18px;font-size:12.5px;
+  color:var(--ink-2);line-height:1.6;
+}
+.sc-hint svg { flex-shrink:0;margin-top:1px; }
+
+/* CTA button */
+.btn-search {
+  width:100%;padding:16px;
+  background:var(--copper);color:#fff;
+  border:none;border-radius:var(--r-sm);
+  font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  letter-spacing:.01em;
+}
+.btn-search:hover { background:var(--copper-2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(181,90,44,.35); }
+.btn-search:active { transform:translateY(0); }
+
+/* ─── TRUST STRIP ─── */
+.trust-strip {
+  background:var(--white);border-bottom:1px solid var(--border);
+  padding:18px 24px;display:flex;justify-content:center;gap:44px;flex-wrap:wrap;
+}
+.trust-item { display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);font-weight:500; }
+.trust-item strong { color:var(--ink); }
+
+/* ─── RESULTS ─── */
+.results-wrap { max-width:1220px;margin:0 auto;padding:36px 24px 80px; }
+
+/* Ad banner */
+.ad-block {
+  background:var(--paper-2);border:1.5px dashed var(--paper-3);
+  border-radius:var(--r);padding:16px;text-align:center;
+  color:var(--ink-3);font-size:11.5px;margin-bottom:28px;
+}
+.ad-block-label { text-transform:uppercase;letter-spacing:.1em;font-size:10px;margin-bottom:4px; }
+
+/* Disclaimer */
+.disclaimer {
+  background:var(--blue-bg);border-left:3px solid var(--blue);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;
+  padding:13px 16px;font-size:13px;color:var(--ink-2);
+  margin-bottom:24px;line-height:1.65;
+}
+.disclaimer strong { color:var(--blue); }
+.freshness-banner {
+  background:var(--amber-bg);
+  color:var(--amber);
+  border-left:3px solid var(--amber);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;
+  padding:11px 14px;
+  margin:-10px 0 18px;
+  font-size:13px;
+  line-height:1.55;
+  font-weight:600;
+}
+
+/* Results header */
+.results-hd {
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:24px;gap:16px;flex-wrap:wrap;
+}
+.results-hd-left {}
+.results-count {
+  font-family:'Instrument Serif',serif;font-size:30px;color:var(--ink);
+  letter-spacing:-.3px;line-height:1.2;
+}
+.results-count b { color:var(--copper); }
+.results-meta-line {
+  font-size:13px;color:var(--ink-3);margin-top:4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.results-meta-chip {
+  background:var(--paper-2);border-radius:100px;
+  padding:2px 10px;font-size:12px;color:var(--ink-2);font-weight:500;
+}
+.sort-wrap { display:flex;align-items:center;gap:8px; }
+.sort-wrap label { font-size:13px;color:var(--ink-3); }
+.sort-sel {
+  padding:8px 32px 8px 12px;
+  border:1.5px solid var(--border);border-radius:var(--r-sm);
+  font-family:'Outfit',sans-serif;font-size:13px;
+  color:var(--ink);background:var(--white);cursor:pointer;
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237A766E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 10px center;
+}
+
+/* Layout */
+.results-body { display:grid;grid-template-columns:1fr 290px;gap:28px;align-items:start; }
+
+/* VIEW TOGGLE */
+.view-toggle { display:flex;gap:4px;margin-bottom:18px; }
+.view-btn {
+  padding:7px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);
+  background:transparent;cursor:pointer;color:var(--ink-3);
+  font-size:12px;font-weight:600;transition:all .15s;
+  display:flex;align-items:center;gap:5px;
+}
+.view-btn.active { background:var(--ink);border-color:var(--ink);color:#fff; }
+
+/* GRID VIEW */
+.product-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px; }
+
+/* LIST VIEW */
+.product-list { display:flex;flex-direction:column;gap:14px; }
+.error {
+  padding: 18px;
+  border: 1.5px solid var(--red);
+  border-radius: var(--r-sm);
+  background: var(--red-bg);
+  color: var(--red);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ─── PRODUCT CARD (GRID) ─── */
+.p-card {
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:var(--r);overflow:hidden;
+  transition:all .22s;cursor:default;display:flex;flex-direction:column;
+  position:relative;
+}
+.p-card:hover { transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--copper); }
+
+/* ─── PRODUCT ROW (LIST) ─── */
+.p-row {
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:var(--r);padding:18px 20px;
+  display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:center;
+  transition:all .2s;
+}
+.p-row:hover { box-shadow:var(--shadow);border-color:var(--copper); }
+.p-row-emoji { font-size:42px;text-align:center; }
+.p-row-body {}
+.p-row-meta { display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap; }
+.p-row-brand { font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3); }
+.p-row-name { font-size:16px;font-weight:600;color:var(--ink);margin-bottom:8px;line-height:1.3; }
+.p-row-dims { display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px; }
+.p-row-actions { display:flex;flex-direction:column;align-items:flex-end;gap:10px; }
+.p-row-price { font-family:'Instrument Serif',serif;font-size:24px;color:var(--ink);text-align:right; }
+.p-row-price small { font-family:'Outfit',sans-serif;font-size:11px;color:var(--ink-3); }
+
+/* Shared card elements */
+.card-emoji {
+  height:160px;background:var(--paper-2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:64px;position:relative;
+}
+.sponsored-tag {
+  position:absolute;top:10px;right:10px;
+  background:rgba(255,255,255,.9);border:1px solid var(--border);
+  color:var(--ink-3);font-size:9px;font-weight:700;
+  padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.06em;
+}
+.card-body { padding:16px 18px;flex:1;display:flex;flex-direction:column; }
+.c-brand { font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);margin-bottom:3px; }
+.c-name { font-size:16px;font-weight:600;color:var(--ink);margin-bottom:10px;line-height:1.3; }
+.c-dims { display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px; }
+.dim-tag {
+  background:var(--green-bg);color:var(--green);
+  border-radius:6px;padding:2px 8px;font-size:11px;font-weight:600;
+}
+.c-features { font-size:12px;color:var(--ink-3);margin-bottom:10px;line-height:1.6; }
+
+/* Energy stars */
+.c-energy { display:flex;align-items:center;gap:7px;margin-bottom:12px; }
+.stars { display:flex;gap:1px; }
+.star-f { color:#E8A020;font-size:14px; }
+.star-e { color:var(--border);font-size:14px; }
+.energy-lbl { font-size:11.5px;color:var(--ink-3); }
+
+/* TCO badge */
+.tco-row { background:var(--green-bg);border-radius:var(--r-sm);padding:8px 10px;margin-bottom:12px;font-size:12px;color:var(--green); }
+.tco-row strong { font-weight:700; }
+
+/* Rebate badge */
+.rebate-row { background:var(--amber-bg);border-radius:var(--r-sm);padding:7px 10px;margin-bottom:10px;font-size:11.5px;color:var(--amber);display:flex;align-items:center;gap:5px; }
+
+/* Card footer */
+.c-footer {
+  margin-top:auto;padding-top:12px;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+}
+.c-price { font-family:'Instrument Serif',serif;font-size:22px;color:var(--ink); }
+.c-price small { font-family:'Outfit',sans-serif;font-size:11px;color:var(--ink-3);display:block;line-height:1; }
+.c-actions { display:flex;gap:7px; }
+.btn-buy {
+  padding:9px 16px;background:var(--ink);color:#fff;
+  border:none;border-radius:var(--r-sm);
+  font-family:'Outfit',sans-serif;font-size:12.5px;font-weight:700;
+  cursor:pointer;text-decoration:none;
+  display:inline-flex;align-items:center;gap:4px;
+  transition:background .15s;white-space:nowrap;
+}
+.btn-buy:hover { background:var(--copper); }
+/* ACCC-compliant: affiliate disclosure right on button */
+.btn-buy::after { content:'↗';font-size:11px;opacity:.7; }
+.btn-compare {
+  padding:9px 12px;background:transparent;
+  border:1.5px solid var(--border);border-radius:var(--r-sm);
+  font-family:'Outfit',sans-serif;font-size:12px;font-weight:600;
+  color:var(--ink-3);cursor:pointer;transition:all .15s;
+}
+.btn-compare:hover { border-color:var(--ink);color:var(--ink); }
+
+/* Warnings on card */
+.card-warning {
+  margin:0 18px 12px;
+  background:var(--red-bg);border-radius:var(--r-sm);
+  padding:8px 10px;font-size:12px;color:var(--red);
+  display:flex;align-items:flex-start;gap:6px;line-height:1.5;
+}
+.card-warning-amber {
+  background:var(--amber-bg);
+  color:var(--amber);
+  border-left:3px solid var(--amber);
+}
+
+/* Retailer price list */
+.retailers-list { display:flex;flex-direction:column;gap:5px;padding:0 18px 14px; }
+.ret-item {
+  display:flex;justify-content:space-between;align-items:center;
+  padding:7px 10px;background:var(--paper);border-radius:var(--r-sm);
+  font-size:12.5px;text-decoration:none;color:var(--ink);
+  border:1px solid transparent;transition:all .15s;
+}
+.ret-item:hover { border-color:var(--copper);background:var(--copper-bg); }
+.ret-name { font-weight:600; }
+.ret-price { color:var(--copper);font-weight:700; }
+/* ACCC disclosure per link */
+.ret-disc { font-size:10px;color:var(--ink-3);font-style:italic; }
+
+/* Affiliate disclosure block */
+.aff-disclosure {
+  font-size:11px;color:var(--ink-3);
+  padding:8px 18px 14px;
+  border-top:1px dashed var(--border);
+  line-height:1.5;
+}
+
+/* ─── SIDEBAR ─── */
+.sidebar { position:sticky;top:76px; }
+.scard {
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:var(--r);padding:18px;margin-bottom:18px;
+}
+.scard-title {
+  font-family:'Instrument Serif',serif;font-size:16px;
+  color:var(--ink);margin-bottom:14px;
+}
+.retailer-btns { display:flex;flex-direction:column;gap:8px; }
+.ret-btn {
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 12px;background:var(--paper);border-radius:var(--r-sm);
+  text-decoration:none;color:var(--ink);font-size:13px;font-weight:500;
+  border:1px solid transparent;transition:all .15s;
+}
+.ret-btn:hover { border-color:var(--copper);background:var(--copper-bg); }
+.ret-btn-name { display:flex;align-items:center;gap:8px; }
+.ret-btn-comm { font-size:11px;color:var(--green);font-weight:600;background:var(--green-bg);padding:2px 7px;border-radius:100px; }
+
+.clearance-table { font-size:12px;color:var(--ink-2);line-height:2; }
+.clearance-table tr td:first-child { font-weight:600;padding-right:12px;color:var(--ink); }
+.clearance-table tr td:last-child { color:var(--ink-3); }
+
+.ad-side {
+  background:var(--paper-2);border:1.5px dashed var(--paper-3);
+  border-radius:var(--r);padding:18px;text-align:center;
+  color:var(--ink-3);font-size:11px;
+}
+.ad-side-ph { height:240px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;font-size:12px;color:var(--ink-3); }
+
+/* ─── REBATE CALCULATOR ─── */
+.rebate-panel {
+  background:linear-gradient(135deg,var(--ink) 0%,#2A3A5C 100%);
+  border-radius:var(--r);padding:20px 18px;margin-bottom:18px;color:#fff;
+}
+.rebate-panel h3 { font-family:'Instrument Serif',serif;font-size:17px;margin-bottom:8px;color:#fff; }
+.rebate-panel p { font-size:12.5px;color:rgba(255,255,255,.65);margin-bottom:14px;line-height:1.6; }
+.postcode-input {
+  width:100%;padding:10px 14px;border-radius:var(--r-sm);
+  border:none;font-family:'Outfit',sans-serif;font-size:14px;font-weight:500;
+  background:rgba(255,255,255,.12);color:#fff;outline:none;
+}
+.postcode-input::placeholder { color:rgba(255,255,255,.35); }
+.postcode-input:focus { background:rgba(255,255,255,.18); }
+.rebate-result { margin-top:10px;font-size:12.5px;min-height:36px; }
+
+/* ─── EMPTY STATE ─── */
+.empty-state { text-align:center;padding:60px 24px;display:none; }
+.empty-state.show { display:block; }
+.empty-state h3 { font-family:'Instrument Serif',serif;font-size:26px;color:var(--ink);margin:16px 0 10px; }
+.empty-state p { color:var(--ink-3);max-width:380px;margin:0 auto 24px;font-size:14px; }
+
+/* ─── HOW IT WORKS ─── */
+.how-sec {
+  background:var(--ink);padding:80px 24px;
+}
+.how-inner { max-width:960px;margin:0 auto; }
+.how-hed {
+  text-align:center;
+  font-family:'Instrument Serif',serif;
+  font-size: clamp(30px,4vw,42px);
+  color:#fff;margin-bottom:56px;
+  letter-spacing:-.5px;
+}
+.how-hed em { font-style:italic;color:#D4A574; }
+.how-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:28px; }
+.how-item { text-align:center; }
+.how-num {
+  width:50px;height:50px;background:var(--copper);
+  border-radius:50%;margin:0 auto 16px;
+  font-family:'Instrument Serif',serif;font-size:24px;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+}
+.how-item h3 { font-family:'Instrument Serif',serif;font-size:19px;color:#fff;margin-bottom:8px; }
+.how-item p { font-size:13.5px;color:rgba(255,255,255,.55);line-height:1.75; }
+
+/* ─── COMPLIANCE SECTION ─── */
+.compliance-sec {
+  background:var(--paper-2);border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);padding:48px 24px;
+}
+.compliance-inner { max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px; }
+.comp-item h4 { font-size:14px;font-weight:700;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:7px; }
+.comp-item p { font-size:13px;color:var(--ink-3);line-height:1.7; }
+
+/* ─── FOOTER ─── */
+footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px; }
+.footer-grid { max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:52px;margin-bottom:40px; }
+.footer-brand .logo { color:#fff; }
+.footer-brand p { font-size:13px;line-height:1.75;margin-top:12px;max-width:280px; }
+.footer-col h5 { color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px; }
+.footer-col ul { list-style:none;display:flex;flex-direction:column;gap:9px; }
+.footer-col a { color:rgba(255,255,255,.5);text-decoration:none;font-size:13px;transition:color .15s; }
+.footer-col a:hover { color:#fff; }
+.footer-bottom {
+  max-width:1100px;margin:0 auto;
+  border-top:1px solid rgba(255,255,255,.1);padding-top:22px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:11.5px;flex-wrap:wrap;gap:10px;
+}
+.footer-bottom a { color:rgba(255,255,255,.35);text-decoration:none; }
+
+/* ─── TOAST ─── */
+.toast {
+  position:fixed;bottom:24px;right:24px;
+  background:var(--ink);color:#fff;
+  padding:13px 20px;border-radius:var(--r);
+  font-size:14px;font-weight:500;
+  box-shadow:var(--shadow-lg);
+  transform:translateY(70px);opacity:0;
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+  z-index:999;max-width:300px;
+}
+.toast.show { transform:translateY(0);opacity:1; }
+
+/* ─── COMPARE DRAWER ─── */
+.compare-bar {
+  position:fixed;bottom:0;left:0;right:0;
+  background:var(--ink);color:#fff;
+  padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  transform:translateY(100%);transition:transform .3s;
+  z-index:300;box-shadow:0 -4px 30px rgba(0,0,0,.25);
+  flex-wrap:wrap;
+}
+.compare-bar.show { transform:translateY(0); }
+.compare-bar-items { display:flex;gap:12px;flex-wrap:wrap;align-items:center; }
+.compare-chip {
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:var(--r-sm);padding:6px 12px;font-size:13px;
+  display:flex;align-items:center;gap:8px;
+}
+.compare-chip button { background:none;border:none;color:rgba(255,255,255,.6);cursor:pointer;font-size:14px;line-height:1;padding:0; }
+.btn-compare-now {
+  padding:11px 24px;background:var(--copper);color:#fff;
+  border:none;border-radius:var(--r-sm);
+  font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;
+  cursor:pointer;transition:background .15s;white-space:nowrap;
+}
+.btn-compare-now:hover { background:var(--copper-2); }
+
+/* ─── MOBILE ─── */
+@media(max-width:900px){
+  .results-body { grid-template-columns:1fr; }
+  .sidebar { position:static; }
+  .how-grid { grid-template-columns:1fr;gap:24px; }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+  .compliance-inner { grid-template-columns:1fr; }
+}
+@media(max-width:660px){
+  .nav-right .nav-link { display:none; }
+  .search-card { padding:22px 18px; }
+  .dim-grid { grid-template-columns:1fr 1fr; }
+  .extra-grid { grid-template-columns:1fr; }
+  .hero { padding:48px 16px 80px; }
+  .footer-grid { grid-template-columns:1fr;gap:28px; }
+  .cat-pills { gap:5px; }
+  .cat-pill { font-size:12px;padding:7px 11px; }
+  .p-row { grid-template-columns:50px 1fr;gap:10px; }
+  .p-row-actions { display:none; }
+}
+@media(max-width:420px){
+  .dim-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  🇦🇺 Per-brand ventilation clearances · State rebates · ACCC-compliant · Updated weekly &nbsp;|&nbsp;
+  <a href="#how-it-works">How we calculate fit</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Fit<b>Appliance</b></a>
+  <div class="nav-right">
+    <a href="#search" class="nav-link">Fridges</a>
+    <a href="#search" class="nav-link">Laundry</a>
+    <a href="#search" class="nav-link">Dishwashers</a>
+    <a href="#how-it-works" class="nav-link">How it works</a>
+    <a href="#search" class="nav-btn">Find your fit</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="search">
+  <div class="hero-grain"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span></span> Australia's most precise appliance size tool</div>
+    <h1>Measure once.<br><em>Buy right.</em></h1>
+    <p class="hero-sub">We calculate per-brand ventilation gaps, door swing radius, and delivery access — so you don't have to return it.</p>
+
+    <div class="search-card">
+      <div class="sc-head">
+        <div class="sc-title">Enter your available cavity space</div>
+      </div>
+
+      <!-- Category -->
+      <div class="cat-pills" id="catPills" style="margin-bottom:20px">
+        <button class="cat-pill active" data-cat="fridge"><span class="pi">🧊</span>Fridge</button>
+        <button class="cat-pill" data-cat="washing_machine"><span class="pi">🫧</span>Washing Machine</button>
+        <button class="cat-pill" data-cat="dishwasher"><span class="pi">🍽️</span>Dishwasher</button>
+        <button class="cat-pill" data-cat="dryer"><span class="pi">🌀</span>Dryer</button>
+      </div>
+
+      <!-- Dimensions -->
+      <div class="dim-grid">
+        <div class="field">
+          <label>Cavity Width</label>
+          <div class="field-wrap"><input type="number" id="inW" placeholder="900" min="100" max="2000"><span class="field-unit">mm</span></div>
+        </div>
+        <div class="field">
+          <label>Cavity Height</label>
+          <div class="field-wrap"><input type="number" id="inH" placeholder="1800" min="100" max="3000"><span class="field-unit">mm</span></div>
+        </div>
+        <div class="field">
+          <label>Cavity Depth</label>
+          <div class="field-wrap"><input type="number" id="inD" placeholder="650" min="100" max="1500"><span class="field-unit">mm</span></div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="extra-grid">
+        <select id="inBrand">
+          <option value="">All Brands</option>
+        </select>
+        <select id="inBudget">
+          <option value="">Any Budget</option>
+          <option value="1000">Under $1,000</option>
+          <option value="2000">Under $2,000</option>
+          <option value="3000">Under $3,000</option>
+          <option value="5000">Under $5,000</option>
+        </select>
+      </div>
+
+      <!-- Advanced -->
+      <button class="adv-toggle" id="advToggle" onclick="toggleAdv()">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v11M1 6.5h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        Advanced options (doorway check, dwelling type)
+      </button>
+      <div class="adv-fields" id="advFields">
+        <div class="field">
+          <label>Narrowest doorway width</label>
+          <div class="field-wrap"><input type="number" id="inDoor" placeholder="820" min="500" max="1500"><span class="field-unit">mm</span></div>
+        </div>
+        <div>
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;">Dwelling type</label>
+          <select id="inDwelling" style="width:100%;padding:11px 36px 11px 14px;border:1.5px solid var(--border);border-radius:var(--r-sm);font-family:'Outfit',sans-serif;font-size:14px;font-weight:500;color:var(--ink);background:var(--paper);cursor:pointer;appearance:none;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%237A766E' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 12px center;">
+            <option value="house">House</option>
+            <option value="apartment">Apartment / Unit</option>
+            <option value="townhouse">Townhouse</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="sc-hint">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="#C47A1A" stroke-width="1.4"/><path d="M7.5 7v4M7.5 5v.5" stroke="#C47A1A" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <span>Dimensions are your raw cavity. We subtract <strong>per-brand</strong> ventilation clearances — Samsung needs 100mm top clearance, Haier needs 25.4mm all sides.</span>
+      </div>
+
+      <button class="btn-search" onclick="doSearch()">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="white" stroke-width="1.8"/><path d="M12 12l3.5 3.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Find Appliances That Fit
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item">📐 <strong>Per-brand</strong> clearance rules</div>
+  <div class="trust-item">🚪 <strong>Doorway</strong> delivery check</div>
+  <div class="trust-item">⚡ <strong>VEU & ESS</strong> rebates calculated</div>
+  <div class="trust-item">⭐ <strong>GEMS-verified</strong> energy ratings</div>
+  <div class="trust-item">🛡 <strong>ACCC-compliant</strong> disclosures</div>
+</div>
+
+<!-- RESULTS SECTION -->
+<section id="resultsSection" class="results-wrap" style="display:none">
+
+  <!-- Ad: leaderboard -->
+  <div class="ad-block">
+    <div class="ad-block-label">Advertisement — Google AdSense 728×90</div>
+    <div style="height:80px;display:flex;align-items:center;justify-content:center;font-size:12px">Ad slot: ca-pub-7257149597818537 / zone: leaderboard-results</div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer" id="disclaimerBox">
+    <strong>📐 Dimensions shown are after per-brand clearances.</strong> Always verify ventilation requirements in the manufacturer's installation manual before purchase. Door swing and delivery access are estimates — measure your specific space.
+  </div>
+  <div id="freshness-banner" class="freshness-banner" hidden></div>
+
+  <!-- Header -->
+  <div class="results-hd">
+    <div class="results-hd-left">
+      <div class="results-count" id="resultsCount">Loading...</div>
+      <div class="results-meta-line" id="resultsMeta"></div>
+    </div>
+    <div class="sort-wrap">
+      <label>Sort:</label>
+      <select class="sort-sel" id="sortSel" onchange="renderResults()">
+        <option value="price_asc">Price ↑</option>
+        <option value="price_desc">Price ↓</option>
+        <option value="energy_desc">Best Energy Rating</option>
+        <option value="kwh_asc">Lowest kWh</option>
+        <option value="tco_asc">Lowest Running Cost</option>
+        <option value="fit_desc">Best Fit (largest)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="results-body">
+    <div>
+      <!-- View toggle -->
+      <div class="view-toggle">
+        <button class="view-btn" id="btnGrid" onclick="setView('grid')">
+          <svg width="13" height="13" viewBox="0 0 13 13"><rect x="0" y="0" width="5.5" height="5.5" rx="1" fill="currentColor"/><rect x="7.5" y="0" width="5.5" height="5.5" rx="1" fill="currentColor"/><rect x="0" y="7.5" width="5.5" height="5.5" rx="1" fill="currentColor"/><rect x="7.5" y="7.5" width="5.5" height="5.5" rx="1" fill="currentColor"/></svg>
+          Grid
+        </button>
+        <button class="view-btn active" id="btnList" onclick="setView('list')">
+          <svg width="13" height="13" viewBox="0 0 13 13"><rect x="0" y="0" width="13" height="2.5" rx="1" fill="currentColor"/><rect x="0" y="5" width="13" height="2.5" rx="1" fill="currentColor"/><rect x="0" y="10" width="13" height="2.5" rx="1" fill="currentColor"/></svg>
+          List (recommended)
+        </button>
+      </div>
+
+      <!-- Product output -->
+      <div id="productGrid" class="product-list"></div>
+      <div class="empty-state" id="emptyState">
+        <div style="font-size:52px">📦</div>
+        <h3>Nothing fits those dimensions</h3>
+        <p>Try increasing your cavity measurements or removing brand/budget filters. Standard AU cavities: 600mm W × 1800mm H × 650mm D for fridges.</p>
+        <button class="btn-search" style="max-width:220px;margin:0 auto" onclick="resetSearch()">Start Over</button>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- Rebate calculator -->
+      <div class="rebate-panel">
+        <h3>💰 Government Rebates</h3>
+        <p>VIC, NSW, QLD and other states offer energy upgrade rebates. Enter your postcode to see what applies.</p>
+        <input class="postcode-input" type="text" id="postcodeIn" placeholder="e.g. 3000 for Melbourne" maxlength="4" oninput="calcRebate()">
+        <div class="rebate-result" id="rebateResult"></div>
+      </div>
+
+      <!-- Retailers -->
+      <div class="scard">
+        <div class="scard-title">Shop at trusted AU retailers</div>
+        <div class="retailer-btns">
+          <a class="ret-btn" href="https://www.harveynorman.com.au" target="_blank" rel="noopener">
+            <span class="ret-btn-name">🏪 Harvey Norman</span>
+            <span class="ret-btn-comm">3% commission</span>
+          </a>
+          <a class="ret-btn" href="https://www.jbhifi.com.au" target="_blank" rel="noopener">
+            <span class="ret-btn-name">🏪 JB Hi-Fi</span>
+            <span class="ret-btn-comm">3% commission</span>
+          </a>
+          <a class="ret-btn" href="https://www.thegoodguys.com.au" target="_blank" rel="noopener">
+            <span class="ret-btn-name">🏪 The Good Guys</span>
+            <span class="ret-btn-comm">3% commission</span>
+          </a>
+          <a class="ret-btn" href="https://www.binglee.com.au" target="_blank" rel="noopener">
+            <span class="ret-btn-name">🏪 Bing Lee</span>
+            <span class="ret-btn-comm">2.5% · 30-day</span>
+          </a>
+          <a class="ret-btn" href="https://www.appliances-online.com.au" target="_blank" rel="noopener">
+            <span class="ret-btn-name">🏪 Appliances Online</span>
+            <span class="ret-btn-comm">2% commission</span>
+          </a>
+        </div>
+        <p style="font-size:11px;color:var(--ink-3);margin-top:10px;line-height:1.5">We earn a commission if you purchase via these links. <a href="#" style="color:var(--copper)">Affiliate disclosure →</a></p>
+      </div>
+
+      <!-- Clearance reference -->
+      <div class="scard">
+        <div class="scard-title">Per-brand clearances (mm)</div>
+        <table class="clearance-table">
+          <tr><td>Samsung</td><td>50L/R · 50R · 100T</td></tr>
+          <tr><td>LG</td><td>50L/R · 50R · 20T</td></tr>
+          <tr><td>Fisher&Paykel</td><td>20L/R · 30R · 50T</td></tr>
+          <tr><td>Westinghouse</td><td>30L/R · 60R · 30T</td></tr>
+          <tr><td>Haier</td><td>25.4mm all sides</td></tr>
+          <tr><td>Standard</td><td>40L/R · 25R · 50T</td></tr>
+        </table>
+        <p style="font-size:11px;color:var(--ink-3);margin-top:8px;line-height:1.5">Source: OEM installation manuals. L/R=side, R=rear, T=top.</p>
+      </div>
+
+      <!-- Install lead gen -->
+      <div class="scard" style="background:var(--paper-2)">
+        <div class="scard-title">🔧 Need installation?</div>
+        <p style="font-size:13px;color:var(--ink-3);line-height:1.65;margin-bottom:12px">Licensed plumbers and electricians from $70. Required to maintain warranty and comply with AS/NZS 3000.</p>
+        <button onclick="showToast('Installation booking coming soon!')" style="width:100%;padding:10px;background:var(--ink);color:#fff;border:none;border-radius:var(--r-sm);font-family:Outfit,sans-serif;font-size:13px;font-weight:700;cursor:pointer;">Book a Licensed Installer</button>
+      </div>
+
+      <!-- Ad: 300x250 -->
+      <div class="ad-side">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Advertisement</div>
+        <div class="ad-side-ph">
+          <div>Google AdSense</div>
+          <div style="font-weight:600">300×250 Medium Rectangle</div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-sec" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-hed">Why standard e-commerce<br><em>fails appliance buyers</em></div>
+    <div class="how-grid">
+      <div class="how-item">
+        <div class="how-num">1</div>
+        <h3>Measure your cavity</h3>
+        <p>Enter width, height, depth in millimetres. Optionally add your narrowest doorway for delivery validation.</p>
+      </div>
+      <div class="how-item">
+        <div class="how-num">2</div>
+        <h3>Per-brand maths</h3>
+        <p>We subtract each brand's exact ventilation spec. Samsung needs 100mm top clearance — not just a generic 50mm.</p>
+      </div>
+      <div class="how-item">
+        <div class="how-num">3</div>
+        <h3>Compare total cost</h3>
+        <p>We show sticker price, estimated lifetime energy cost, and applicable government rebates side by side.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="compliance-sec">
+  <div class="compliance-inner">
+    <div class="comp-item">
+      <h4>🛡 ACCC & ACL Compliance</h4>
+      <p>All affiliate relationships are disclosed immediately adjacent to purchase links — not buried in footers. Rankings are based on objective criteria (dimensional fit, energy rating, price) and are never influenced by commission rates. Brand exclusions (e.g. Miele, Asko) are clearly noted.</p>
+    </div>
+    <div class="comp-item">
+      <h4>⚡ NCC 2022 Dryer Notice</h4>
+      <p>Under the National Construction Code 2022, vented tumble dryers can no longer exhaust into roof spaces in new builds. If you select "Apartment" as your dwelling type, we automatically filter to condenser and heat-pump dryer models only.</p>
+    </div>
+    <div class="comp-item">
+      <h4>📊 Data Sources</h4>
+      <p>Dimensional data sourced from OEM installation manuals and the GEMS (Greenhouse and Energy Minimum Standards) regulator database. Energy ratings are GEMS-verified. Prices are sourced via affiliate partner feeds and updated weekly.</p>
+    </div>
+    <div class="comp-item">
+      <h4>🔒 Privacy &amp; Cookies</h4>
+      <p>We do not sell your measurement data. This site uses Google AdSense to display advertisements; AdSense may use cookies to serve ads based on your prior visits to this or other websites. You can opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style="color:var(--copper)">Google Ads Settings</a>. If you opt into email save-and-share features, we comply with the Australian Spam Act 2003 with explicit consent and a frictionless unsubscribe mechanism. See our full <a href="/privacy-policy" style="color:var(--copper)">Privacy Policy</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">Fit<b style="color:var(--copper)">Appliance</b></a>
+      <p>Australia's most precise appliance size tool. Per-brand clearances, GEMS energy data, and state rebates — all in one search.</p>
+      <p style="margin-top:10px;font-size:12px">📍 Built in Australia &nbsp;|&nbsp; ABN pending</p>
+    </div>
+    <div class="footer-col">
+      <h5>Categories</h5>
+      <ul>
+        <li><a href="#">Fridges & Freezers</a></li>
+        <li><a href="#">Washing Machines</a></li>
+        <li><a href="#">Dishwashers</a></li>
+        <li><a href="#">Dryers</a></li>
+        <li><a href="#">Ovens & Cooktops</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>About</h5>
+      <ul>
+        <li><a href="#">How it works</a></li>
+        <li><a href="#">Affiliate disclosure</a></li>
+        <li><a href="#">Data sources</a></li>
+        <li><a href="#">ACCC compliance</a></li>
+        <li><a href="#">Privacy policy</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 FitAppliance.com.au — All prices AUD incl. GST</span>
+    <span>
+      <a href="#">Affiliate disclosure</a> · <a href="#">Privacy</a> · <a href="#">Terms</a>
+      &nbsp;|&nbsp; We earn a commission when you purchase via our links.
+    </span>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- COMPARE BAR -->
+<div class="compare-bar" id="compareBar">
+  <div>
+    <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">Comparing <span id="compareCount">0</span> items</div>
+    <div class="compare-bar-items" id="compareItems"></div>
+  </div>
+  <button class="btn-compare-now" onclick="showToast('Full comparison table coming soon!')">Compare Now →</button>
+</div>
+
+<script type="module">
+import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/product-card.js';
+import { renderFreshnessBanner } from './scripts/ui/freshness.js';
+import { buildBrandOptions } from './scripts/ui/filters.js';
+
+function renderDataLoadError() {
+  document.getElementById('resultsSection').style.display = 'block';
+  document.getElementById('resultsCount').textContent = 'Unable to load appliance data';
+  document.getElementById('resultsMeta').textContent = '';
+  document.getElementById('productGrid').className = 'product-list';
+  document.getElementById('productGrid').innerHTML = '<p class="error">Unable to load appliance data. Please refresh.</p>';
+  document.getElementById('emptyState').classList.remove('show');
+}
+
+function requireJson(response) {
+  if (!response.ok) {
+    throw new Error(`Failed to load ${response.url}: ${response.status}`);
+  }
+  return response.json();
+}
+
+Promise.all([
+  fetch('/data/appliances.json').then(requireJson),
+  fetch('/data/clearance.json').then(requireJson),
+  fetch('/data/rebates.json').then(requireJson)
+]).then(([appData, clearData, rebateData]) => {
+  const PRODUCTS = appData.products;
+  const BRAND_CLEARANCE = clearData.rules;
+  const REBATES = rebateData.rebates;
+  renderFreshnessBanner(appData.last_updated);
+  initApp(PRODUCTS, BRAND_CLEARANCE, REBATES);
+}).catch(err => {
+  console.error('Data load failed', err);
+  renderDataLoadError();
+});
+
+function initApp(PRODUCTS, BRAND_CLEARANCE, REBATES) {
+const STATE_COLORS = {
+  VIC: 'var(--green)',
+  NSW: 'var(--blue)',
+  QLD: 'var(--amber)',
+  SA: 'var(--copper)',
+};
+
+function getClearance(category, brand) {
+  const cat = BRAND_CLEARANCE[category] ?? BRAND_CLEARANCE.fridge;
+  return cat[brand] ?? cat['__default__'];
+}
+
+const TARIFF = 0.32; // $/kWh
+function annualEnergyCost(kwh_year) { return (kwh_year * TARIFF).toFixed(0); }
+function lifetimeCost(price, kwh_year, years=10) { return price + kwh_year * TARIFF * years; }
+
+/* ══════════════════════════════════════════════════════════
+   POSTCODE → STATE → REBATE
+   VEU (VIC), ESS (NSW), based on Gemini report
+══════════════════════════════════════════════════════════ */
+function getState(pc) {
+  const n = parseInt(pc);
+  if (!n) return null;
+  if (n>=1000&&n<=2599||n>=2619&&n<=2899||n>=2921&&n<=2999) return 'NSW';
+  if (n>=2600&&n<=2618||n>=2900&&n<=2920) return 'ACT';
+  if (n>=3000&&n<=3999||n>=8000&&n<=8999) return 'VIC';
+  if (n>=4000&&n<=4999||n>=9000&&n<=9999) return 'QLD';
+  if (n>=5000&&n<=5999) return 'SA';
+  if (n>=6000&&n<=6999) return 'WA';
+  if (n>=7000&&n<=7999) return 'TAS';
+  if (n>=800&&n<=899) return 'NT';
+  return null;
+}
+
+function calcRebate() {
+  const pc = document.getElementById('postcodeIn').value.trim();
+  const el = document.getElementById('rebateResult');
+  if (pc.length < 4) { el.innerHTML=''; return; }
+  const st = getState(pc);
+  const rb = st ? REBATES[st] : null;
+  if (rb) {
+    const accentColor = STATE_COLORS[st] ?? 'var(--copper)';
+    el.innerHTML = `<div style="color:${accentColor};font-weight:700;font-size:14px;margin-bottom:3px">🎉 Up to $${rb.amount} — ${rb.name}</div><div style="font-size:11.5px;color:rgba(255,255,255,.55);line-height:1.5">${rb.note}</div>`;
+  } else {
+    el.innerHTML = `<div style="color:rgba(255,255,255,.55);font-size:12.5px;margin-top:6px">${st ? 'No active rebates found for '+st+' at this time.' : 'Postcode not recognised — try your 4-digit AU postcode.'}</div>`;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   STATE
+══════════════════════════════════════════════════════════ */
+let currentCat = 'fridge';
+let filteredResults = [];
+let currentView = 'list';
+let compareList = [];
+const brandSelect = document.getElementById('inBrand');
+
+function refreshBrandOptions() {
+  brandSelect.innerHTML = buildBrandOptions(PRODUCTS, currentCat);
+  brandSelect.value = '';
+}
+
+refreshBrandOptions();
+
+/* ══════════════════════════════════════════════════════════
+   CATEGORY TABS
+══════════════════════════════════════════════════════════ */
+document.getElementById('catPills').addEventListener('click', e => {
+  const p = e.target.closest('.cat-pill');
+  if (!p) return;
+  document.querySelectorAll('.cat-pill').forEach(x => x.classList.remove('active'));
+  p.classList.add('active');
+  currentCat = p.dataset.cat;
+  refreshBrandOptions();
+});
+
+/* ══════════════════════════════════════════════════════════
+   ADVANCED TOGGLE
+══════════════════════════════════════════════════════════ */
+function toggleAdv() {
+  const f = document.getElementById('advFields');
+  const t = document.getElementById('advToggle');
+  const open = f.classList.toggle('show');
+  t.classList.toggle('open', open);
+}
+
+/* ══════════════════════════════════════════════════════════
+   SEARCH
+══════════════════════════════════════════════════════════ */
+function doSearch() {
+  const w = parseInt(document.getElementById('inW').value);
+  const h = parseInt(document.getElementById('inH').value);
+  const d = parseInt(document.getElementById('inD').value);
+  const brand = document.getElementById('inBrand').value;
+  const budget = parseInt(document.getElementById('inBudget').value) || Infinity;
+  const doorW = parseInt(document.getElementById('inDoor').value) || 820;
+  const dwelling = document.getElementById('inDwelling').value;
+
+  if (!w || !h || !d) { showToast('⚠️ Please enter width, height, and depth'); return; }
+  if (w<200||h<200||d<100) { showToast('⚠️ Dimensions look too small — enter in millimetres'); return; }
+
+  filteredResults = PRODUCTS.filter(p => {
+    if (p.cat !== currentCat) return false;
+
+    // Per-brand clearance
+    const cl = getClearance(p.cat, p.brand);
+    const availW = w - cl.side * 2;
+    const availH = h - cl.top;
+    const availD = d - cl.rear;
+
+    if (p.w > availW) return false;
+    if (p.h > availH) return false;
+    if (p.d > availD) return false;
+
+    // Brand filter
+    if (brand && p.brand !== brand) return false;
+
+    // Budget
+    if (p.price > budget) return false;
+
+    // Doorway check — use narrowest of w, d for delivery
+    const deliveryW = Math.min(p.w, p.d);
+    if (deliveryW > doorW + 50) return false; // 50mm packaging tolerance
+
+    // NCC 2022: apartments must get non-vented dryers
+    if (currentCat === 'dryer' && dwelling === 'apartment' && p.vented) return false;
+
+    return true;
+  });
+
+  document.getElementById('resultsSection').style.display = 'block';
+  setTimeout(() => {
+    document.getElementById('resultsSection').scrollIntoView({ behavior:'smooth', block:'start' });
+  }, 80);
+
+  // Update disclaimer for apartment + dryer
+  if (currentCat === 'dryer' && dwelling === 'apartment') {
+    document.getElementById('disclaimerBox').innerHTML = `<strong>⚠️ NCC 2022 — Apartment Notice:</strong> Vented tumble dryers are excluded. Under the National Construction Code 2022, vented dryers cannot exhaust into roof or wall cavities in multi-unit dwellings. Only condensing and heat-pump models shown.`;
+  }
+
+  const catLabel = { fridge:'Fridges',washing_machine:'Washing Machines',dishwasher:'Dishwashers',dryer:'Dryers' };
+  document.getElementById('resultsCount').innerHTML = `<b>${filteredResults.length}</b> ${catLabel[currentCat]} that fit`;
+
+  const cl = getClearance(currentCat, brand || '__default__');
+  const usableW = w - cl.side*2, usableH = h - cl.top, usableD = d - cl.rear;
+  document.getElementById('resultsMeta').innerHTML = `
+    <span class="results-meta-chip">Cavity: ${w}×${h}×${d}mm</span>
+    <span class="results-meta-chip">After clearance: ${usableW}×${usableH}×${usableD}mm</span>
+    <span class="results-meta-chip">Doorway: ${doorW}mm</span>
+  `;
+
+  renderResults();
+}
+
+/* ══════════════════════════════════════════════════════════
+   VIEW TOGGLE
+══════════════════════════════════════════════════════════ */
+function setView(v) {
+  currentView = v;
+  document.getElementById('btnGrid').classList.toggle('active', v==='grid');
+  document.getElementById('btnList').classList.toggle('active', v==='list');
+  renderResults();
+}
+
+/* ══════════════════════════════════════════════════════════
+   RENDER RESULTS
+══════════════════════════════════════════════════════════ */
+function renderResults() {
+  const sort = document.getElementById('sortSel').value;
+  const sorted = [...filteredResults].sort((a,b) => {
+    if (sort==='price_asc')  return a.price - b.price;
+    if (sort==='price_desc') return b.price - a.price;
+    if (sort==='energy_desc') return b.stars - a.stars;
+    if (sort==='kwh_asc') return (a.kwh_year ?? Infinity) - (b.kwh_year ?? Infinity);
+    if (sort==='tco_asc')    return lifetimeCost(a.price,a.kwh_year) - lifetimeCost(b.price,b.kwh_year);
+    if (sort==='fit_desc')   return (b.w*b.h*b.d) - (a.w*a.h*a.d);
+    return 0;
+  });
+
+  // Inject sponsored at positions 2 and 5
+  const sp = sorted.filter(p=>p.sponsored);
+  const rg = sorted.filter(p=>!p.sponsored);
+  const final = [...rg];
+  if (sp[0] && final.length>=2) final.splice(2,0,sp[0]);
+  if (sp[1] && final.length>=6) final.splice(6,0,sp[1]);
+
+  const container = document.getElementById('productGrid');
+  const empty     = document.getElementById('emptyState');
+
+  if (sorted.length===0) {
+    container.innerHTML='';
+    container.className='';
+    empty.classList.add('show');
+    return;
+  }
+  empty.classList.remove('show');
+
+  if (currentView === 'list') {
+    container.className = 'product-list';
+    container.innerHTML = final.map(product => buildRow(product, {
+      annualEnergyCost,
+      lifetimeCost
+    })).join('');
+  } else {
+    container.className = 'product-grid';
+    container.innerHTML = final.map(product => buildCard(product, {
+      tcoHtml,
+      retailersHtml,
+      starsHtml,
+      warningsHtml
+    })).join('');
+  }
+}
+
+/* ── TCO HTML ── */
+function tcoHtml(p) {
+  const annual = annualEnergyCost(p.kwh_year);
+  const total  = Math.round(lifetimeCost(p.price, p.kwh_year));
+  return `<div class="tco-row">⚡ ~$${annual}/yr energy · <strong>10yr TCO: ~$${total.toLocaleString()}</strong></div>`;
+}
+
+/* ── RETAILERS HTML ── */
+function retailersHtml(p) {
+  return p.retailers.map(r =>
+    `<a class="ret-item" href="${r.url}" target="_blank" rel="noopener sponsored">
+       <span class="ret-name">${r.n}</span>
+       <span class="ret-price">$${r.p.toLocaleString()}</span>
+     </a>`
+  ).join('') +
+  `<div class="aff-disclosure">We earn a commission if you purchase via these links — <a href="#" style="color:var(--copper)">disclosure</a></div>`;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   COMPARE
+══════════════════════════════════════════════════════════ */
+function addCompare(id, label) {
+  if (compareList.find(x=>x.id===id)) { showToast('Already in compare list'); return; }
+  if (compareList.length>=3) { showToast('Max 3 items to compare'); return; }
+  compareList.push({id,label});
+  updateCompareBar();
+  showToast(`✓ Added to compare: ${label}`);
+}
+function removeCompare(id) {
+  compareList = compareList.filter(x=>x.id!==id);
+  updateCompareBar();
+}
+function updateCompareBar() {
+  const bar = document.getElementById('compareBar');
+  const items = document.getElementById('compareItems');
+  const count = document.getElementById('compareCount');
+  count.textContent = compareList.length;
+  if (compareList.length===0) { bar.classList.remove('show'); return; }
+  bar.classList.add('show');
+  items.innerHTML = compareList.map(x=>`
+    <div class="compare-chip">
+      ${x.label}
+      <button onclick="removeCompare('${x.id}')">×</button>
+    </div>`).join('');
+}
+
+/* ══════════════════════════════════════════════════════════
+   UTILITIES
+══════════════════════════════════════════════════════════ */
+function resetSearch() {
+  ['inW','inH','inD'].forEach(id => document.getElementById(id).value='');
+  document.getElementById('inBrand').value='';
+  document.getElementById('inBudget').value='';
+  document.getElementById('resultsSection').style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+let toastT;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(()=>t.classList.remove('show'), 3200);
+}
+
+Object.assign(window, {
+  toggleAdv,
+  doSearch,
+  renderResults,
+  setView,
+  resetSearch,
+  calcRebate,
+  showToast,
+  addCompare,
+  removeCompare,
+});
+
+['inW','inH','inD'].forEach(id => {
+  document.getElementById(id).addEventListener('keydown', e => {
+    if (e.key==='Enter') doSearch();
+  });
+});
+}
+</script>
+</body>
+</html>
+
+<!-- JSON-LD Structured Data for Google Rich Results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://fitappliance.com.au/#website",
+      "url": "https://fitappliance.com.au",
+      "name": "FitAppliance",
+      "description": "Australia's most precise appliance size finder. Per-brand ventilation clearances, delivery access check, and government rebates.",
+      "inLanguage": "en-AU",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://fitappliance.com.au/?cat={category}&w={width}&h={height}&d={depth}",
+        "query-input": "required name=width"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://fitappliance.com.au/#org",
+      "name": "FitAppliance",
+      "url": "https://fitappliance.com.au",
+      "logo": "https://fitappliance.com.au/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "hello@fitappliance.com.au",
+        "areaServed": "AU"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much clearance does a Samsung fridge need in Australia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Samsung fridges require 50mm clearance on each side, 50mm rear clearance, and 100mm top clearance according to their Australian installation manual."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the standard fridge cavity size in Australian homes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Australian kitchens typically use 600mm modular cabinetry. Standard fridge cavities range from 600mm to 900mm wide, 1700mm to 1900mm high, and 600–700mm deep depending on the home style."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I install a vented dryer in an apartment in Australia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under the National Construction Code (NCC) 2022, vented tumble dryers can no longer exhaust into roof or wall cavities. Apartment residents should choose condensing or heat-pump dryers instead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What government rebates are available for appliances in Australia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Victoria offers up to $300 via the Victorian Energy Upgrades (VEU) program for high-efficiency fridges (min 5.5 stars) and heat-pump dryers. NSW offers rebates via the Energy Savings Scheme (ESS). Enter your postcode on FitAppliance to see what applies to you."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>

@@ -1,0 +1,646 @@
+{
+  "schema_version": 2,
+  "last_updated": "2026-04-14",
+  "products": [
+    {
+      "id": "f1",
+      "cat": "fridge",
+      "brand": "Samsung",
+      "model": "SRF7500WFH French Door 740L",
+      "w": 912,
+      "h": 1780,
+      "d": 748,
+      "kwh_year": 420,
+      "stars": 3,
+      "price": 3499,
+      "emoji": "🧊",
+      "door_swing_mm": null,
+      "features": [
+        "French Door",
+        "Twin Cooling",
+        "Ice Maker",
+        "WiFi"
+      ],
+      "retailers": [
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au",
+          "p": 3499
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au",
+          "p": 3449
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "f2",
+      "cat": "fridge",
+      "brand": "LG",
+      "model": "GF-L708MBL French Door 708L",
+      "w": 905,
+      "h": 1790,
+      "d": 740,
+      "kwh_year": 395,
+      "stars": 4,
+      "price": 3299,
+      "emoji": "🧊",
+      "door_swing_mm": null,
+      "features": [
+        "French Door",
+        "InstaView",
+        "Craft Ice",
+        "ThinQ AI"
+      ],
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au",
+          "p": 3299
+        },
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au",
+          "p": 3349
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "f3",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF730QZUVX1 French Door 726L",
+      "w": 900,
+      "h": 1785,
+      "d": 711,
+      "kwh_year": 380,
+      "stars": 4,
+      "price": 4199,
+      "emoji": "🧊",
+      "door_swing_mm": null,
+      "features": [
+        "French Door",
+        "ActiveSmart",
+        "Water Dispenser",
+        "Auto Ice"
+      ],
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliances-online.com.au",
+          "p": 4199
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "f4",
+      "cat": "fridge",
+      "brand": "Hisense",
+      "model": "HRCD563BW Side by Side 563L",
+      "w": 900,
+      "h": 1780,
+      "d": 700,
+      "kwh_year": 480,
+      "stars": 2,
+      "price": 1499,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Side by Side",
+        "Water Dispenser",
+        "No Frost",
+        "LED"
+      ],
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au",
+          "p": 1499
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au",
+          "p": 1479
+        }
+      ],
+      "sponsored": true
+    },
+    {
+      "id": "f5",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBE5314SA Bottom Mount 528L",
+      "w": 680,
+      "h": 1690,
+      "d": 680,
+      "kwh_year": 340,
+      "stars": 3,
+      "price": 1699,
+      "emoji": "🧊",
+      "door_swing_mm": null,
+      "features": [
+        "Bottom Mount",
+        "FreshSeal",
+        "Humidity Control"
+      ],
+      "retailers": [
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au",
+          "p": 1699
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "f6",
+      "cat": "fridge",
+      "brand": "Bosch",
+      "model": "KGN396LBAS Top Mount 368L",
+      "w": 600,
+      "h": 1860,
+      "d": 664,
+      "kwh_year": 220,
+      "stars": 5,
+      "price": 2499,
+      "emoji": "🧊",
+      "door_swing_mm": null,
+      "features": [
+        "Top Mount",
+        "NoFrost",
+        "SuperCooling",
+        "EasyAccess"
+      ],
+      "retailers": [
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au",
+          "p": 2499
+        },
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliances-online.com.au",
+          "p": 2449
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "f7",
+      "cat": "fridge",
+      "brand": "Haier",
+      "model": "HRF520BHS French Door 520L",
+      "w": 875,
+      "h": 1730,
+      "d": 695,
+      "kwh_year": 360,
+      "stars": 3,
+      "price": 1299,
+      "emoji": "🧊",
+      "door_swing_mm": null,
+      "features": [
+        "French Door",
+        "Humidity Crisper",
+        "No Frost"
+      ],
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au",
+          "p": 1299
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au",
+          "p": 1279
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "f8",
+      "cat": "fridge",
+      "brand": "Electrolux",
+      "model": "EHE5267B Bottom Mount 520L",
+      "w": 680,
+      "h": 1700,
+      "d": 685,
+      "kwh_year": 310,
+      "stars": 4,
+      "price": 1899,
+      "emoji": "🧊",
+      "door_swing_mm": null,
+      "features": [
+        "Bottom Mount",
+        "FlexStor",
+        "TasteGuard Deodoriser"
+      ],
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au",
+          "p": 1899
+        },
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliances-online.com.au",
+          "p": 1849
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "f9",
+      "cat": "fridge",
+      "brand": "Mitsubishi",
+      "model": "MR-CGX680ZG French Door 680L",
+      "w": 910,
+      "h": 1795,
+      "d": 739,
+      "kwh_year": 280,
+      "stars": 5,
+      "price": 4999,
+      "emoji": "🧊",
+      "door_swing_mm": null,
+      "features": [
+        "French Door",
+        "J-Tech Inverter",
+        "Micro Plasmacluster",
+        "AI Ecocooling"
+      ],
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliances-online.com.au",
+          "p": 4999
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "w1",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW90T684DLH 9kg Front Loader",
+      "w": 600,
+      "h": 850,
+      "d": 600,
+      "kwh_year": 150,
+      "stars": 4,
+      "price": 1349,
+      "emoji": "🫧",
+      "door_swing_mm": 0,
+      "top_loader": false,
+      "features": [
+        "9kg",
+        "Front Load",
+        "Steam Wash",
+        "EcoBubble",
+        "WiFi"
+      ],
+      "retailers": [
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au",
+          "p": 1349
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au",
+          "p": 1299
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "w2",
+      "cat": "washing_machine",
+      "brand": "LG",
+      "model": "WM5000HWA 10kg TurboWash",
+      "w": 600,
+      "h": 850,
+      "d": 560,
+      "kwh_year": 130,
+      "stars": 5,
+      "price": 1699,
+      "emoji": "🫧",
+      "door_swing_mm": 0,
+      "top_loader": false,
+      "features": [
+        "10kg",
+        "Front Load",
+        "TurboWash 360°",
+        "AI DD Motor"
+      ],
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au",
+          "p": 1699
+        }
+      ],
+      "sponsored": true
+    },
+    {
+      "id": "w3",
+      "cat": "washing_machine",
+      "brand": "Bosch",
+      "model": "WAX32EH0AU Series 8 — 10kg",
+      "w": 598,
+      "h": 848,
+      "d": 590,
+      "kwh_year": 120,
+      "stars": 5,
+      "price": 2199,
+      "emoji": "🫧",
+      "door_swing_mm": 0,
+      "top_loader": false,
+      "features": [
+        "10kg",
+        "Front Load",
+        "i-DOS Auto Dosing",
+        "Home Connect"
+      ],
+      "retailers": [
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au",
+          "p": 2199
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "w4",
+      "cat": "washing_machine",
+      "brand": "Westinghouse",
+      "model": "WWF1042M7WA 10kg Front Loader",
+      "w": 600,
+      "h": 850,
+      "d": 600,
+      "kwh_year": 160,
+      "stars": 3,
+      "price": 999,
+      "emoji": "🫧",
+      "door_swing_mm": 0,
+      "top_loader": false,
+      "features": [
+        "10kg",
+        "Front Load",
+        "Auto Water Level",
+        "Delay Start"
+      ],
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au",
+          "p": 999
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "d1",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS6ECI05A Series 6 — 14 Place",
+      "w": 598,
+      "h": 845,
+      "d": 600,
+      "kwh_year": 230,
+      "stars": 5,
+      "price": 1699,
+      "emoji": "🍽️",
+      "door_swing_mm": 0,
+      "features": [
+        "14 Place",
+        "Home Connect",
+        "PerfectDry",
+        "VarioSpeed Plus"
+      ],
+      "retailers": [
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au",
+          "p": 1699
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "d2",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60SDFHX9 Double Drawer",
+      "w": 598,
+      "h": 820,
+      "d": 550,
+      "kwh_year": 195,
+      "stars": 5,
+      "price": 1999,
+      "emoji": "🍽️",
+      "door_swing_mm": 0,
+      "features": [
+        "Double Drawer",
+        "SmartDrive",
+        "Auto Open Dry",
+        "15 Place"
+      ],
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliances-online.com.au",
+          "p": 1999
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "d3",
+      "cat": "dishwasher",
+      "brand": "Samsung",
+      "model": "DW60BG830FSSP Smart — 15 Place",
+      "w": 598,
+      "h": 845,
+      "d": 575,
+      "kwh_year": 210,
+      "stars": 5,
+      "price": 1499,
+      "emoji": "🍽️",
+      "door_swing_mm": 0,
+      "features": [
+        "15 Place",
+        "AutoRelease Dry",
+        "SmartThings",
+        "Hygiene Steam"
+      ],
+      "retailers": [
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au",
+          "p": 1499
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au",
+          "p": 1449
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "d4",
+      "cat": "dishwasher",
+      "brand": "Electrolux",
+      "model": "KESB7200L UltimateCare — 14 Place",
+      "w": 598,
+      "h": 820,
+      "d": 570,
+      "kwh_year": 240,
+      "stars": 4,
+      "price": 1299,
+      "emoji": "🍽️",
+      "door_swing_mm": 0,
+      "features": [
+        "14 Place",
+        "ExtraDry",
+        "AirDry",
+        "Hygiene 70°C wash"
+      ],
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au",
+          "p": 1299
+        }
+      ],
+      "sponsored": true
+    },
+    {
+      "id": "dr1",
+      "cat": "dryer",
+      "brand": "Bosch",
+      "model": "WTH85209AU Series 4 Heat Pump — 8kg",
+      "w": 598,
+      "h": 842,
+      "d": 578,
+      "kwh_year": 160,
+      "stars": 6,
+      "price": 1799,
+      "emoji": "🌀",
+      "door_swing_mm": null,
+      "vented": false,
+      "features": [
+        "8kg",
+        "Heat Pump",
+        "AutoDry",
+        "SelfCleaning Condenser"
+      ],
+      "retailers": [
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au",
+          "p": 1799
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "dr2",
+      "cat": "dryer",
+      "brand": "LG",
+      "model": "RC802HM2F DualInverter Condenser — 8kg",
+      "w": 600,
+      "h": 850,
+      "d": 575,
+      "kwh_year": 180,
+      "stars": 5,
+      "price": 1299,
+      "emoji": "🌀",
+      "door_swing_mm": null,
+      "vented": false,
+      "features": [
+        "8kg",
+        "Condenser",
+        "DualInverter",
+        "Flow Sense Lint"
+      ],
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au",
+          "p": 1299
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au",
+          "p": 1279
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "dr3",
+      "cat": "dryer",
+      "brand": "Electrolux",
+      "model": "EDH803BEWA Heat Pump — 8kg",
+      "w": 597,
+      "h": 850,
+      "d": 580,
+      "kwh_year": 155,
+      "stars": 6,
+      "price": 1649,
+      "emoji": "🌀",
+      "door_swing_mm": null,
+      "vented": false,
+      "features": [
+        "8kg",
+        "Heat Pump",
+        "PerfectCare",
+        "WoolDry",
+        "WetToGo"
+      ],
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliances-online.com.au",
+          "p": 1649
+        }
+      ],
+      "sponsored": false
+    },
+    {
+      "id": "dr4",
+      "cat": "dryer",
+      "brand": "Samsung",
+      "model": "DV90T6240LE Vented — 9kg",
+      "w": 600,
+      "h": 850,
+      "d": 600,
+      "kwh_year": 450,
+      "stars": 2,
+      "price": 999,
+      "emoji": "🌀",
+      "door_swing_mm": null,
+      "vented": true,
+      "features": [
+        "9kg",
+        "VENTED — external duct required",
+        "Sensor Dry",
+        "Multi-Steam"
+      ],
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au",
+          "p": 999
+        }
+      ],
+      "sponsored": false
+    }
+  ]
+}

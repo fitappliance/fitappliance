@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-04-14",
+  "rebates": {
+    "VIC": {
+      "name": "VEU Program",
+      "amount": 300,
+      "note": "Victorian Energy Upgrades — min 5.5★ fridge, heat-pump dryer/HWS"
+    },
+    "NSW": {
+      "name": "ESS Scheme",
+      "amount": 200,
+      "note": "Energy Savings Scheme — accredited via ACPs"
+    },
+    "QLD": {
+      "name": "QLD Rebate",
+      "amount": 150,
+      "note": "Queensland energy-efficient appliance support"
+    },
+    "SA": {
+      "name": "SA Home Battery",
+      "amount": 100,
+      "note": "SA Energy Concession Program"
+    }
+  }
+}
