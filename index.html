@@ -909,7 +909,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
             <span class="ret-btn-comm">2% commission</span>
           </a>
         </div>
-        <p style="font-size:11px;color:var(--ink-3);margin-top:10px;line-height:1.5">We earn a commission if you purchase via these links. <a href="#" style="color:var(--copper)">Affiliate disclosure →</a></p>
+        <p style="font-size:11px;color:var(--ink-3);margin-top:10px;line-height:1.5">We earn a commission if you purchase via these links. <a href="/affiliate-disclosure" style="color:var(--copper)">Affiliate disclosure →</a></p>
       </div>
 
       <!-- Clearance reference -->
@@ -971,9 +971,9 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 </section>
 
 <!-- COMPLIANCE -->
-<section class="compliance-sec">
+<section class="compliance-sec" id="compliance">
   <div class="compliance-inner">
-    <div class="comp-item">
+    <div class="comp-item" id="accc-compliance">
       <h4>🛡 ACCC & ACL Compliance</h4>
       <p>All affiliate relationships are disclosed immediately adjacent to purchase links — not buried in footers. Rankings are based on objective criteria (dimensional fit, energy rating, price) and are never influenced by commission rates. Brand exclusions (e.g. Miele, Asko) are clearly noted.</p>
     </div>
@@ -981,7 +981,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
       <h4>⚡ NCC 2022 Dryer Notice</h4>
       <p>Under the National Construction Code 2022, vented tumble dryers can no longer exhaust into roof spaces in new builds. If you select "Apartment" as your dwelling type, we automatically filter to condenser and heat-pump dryer models only.</p>
     </div>
-    <div class="comp-item">
+    <div class="comp-item" id="data-sources">
       <h4>📊 Data Sources</h4>
       <p>Dimensional data sourced from OEM installation manuals and the GEMS (Greenhouse and Energy Minimum Standards) regulator database. Energy ratings are GEMS-verified. Prices are sourced via affiliate partner feeds and updated weekly.</p>
     </div>
@@ -996,36 +996,36 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#" class="logo">Fit<b style="color:var(--copper)">Appliance</b></a>
+      <a href="/" class="logo">Fit<b style="color:var(--copper)">Appliance</b></a>
       <p>Australia's most precise appliance size tool. Per-brand clearances, GEMS energy data, and state rebates — all in one search.</p>
       <p style="margin-top:10px;font-size:12px">📍 Built in Australia &nbsp;|&nbsp; ABN pending</p>
     </div>
     <div class="footer-col">
       <h5>Categories</h5>
       <ul>
-        <li><a href="#">Fridges & Freezers</a></li>
-        <li><a href="#">Washing Machines</a></li>
-        <li><a href="#">Dishwashers</a></li>
-        <li><a href="#">Dryers</a></li>
-        <li><a href="#">Ovens & Cooktops</a></li>
+        <li><a href="#search" onclick="jumpToCategory('fridge'); return false;">Fridges & Freezers</a></li>
+        <li><a href="#search" onclick="jumpToCategory('washing_machine'); return false;">Washing Machines</a></li>
+        <li><a href="#search" onclick="jumpToCategory('dishwasher'); return false;">Dishwashers</a></li>
+        <li><a href="#search" onclick="jumpToCategory('dryer'); return false;">Dryers</a></li>
+        <li><a href="#search">Ovens & Cooktops</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>About</h5>
       <ul>
-        <li><a href="#">How it works</a></li>
-        <li><a href="#">Affiliate disclosure</a></li>
-        <li><a href="#">Data sources</a></li>
-        <li><a href="#">ACCC compliance</a></li>
-        <li><a href="#">Privacy policy</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="/affiliate-disclosure">Affiliate disclosure</a></li>
+        <li><a href="#data-sources">Data sources</a></li>
+        <li><a href="#accc-compliance">ACCC compliance</a></li>
+        <li><a href="/privacy-policy">Privacy policy</a></li>
+        <li><a href="mailto:hello@fitappliance.com.au">Contact</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <span>© 2026 FitAppliance.com.au — All prices AUD incl. GST</span>
     <span>
-      <a href="#">Affiliate disclosure</a> · <a href="#">Privacy</a> · <a href="#">Terms</a>
+      <a href="/affiliate-disclosure">Affiliate disclosure</a> · <a href="/privacy-policy">Privacy</a> · <a href="/privacy-policy">Terms</a>
       &nbsp;|&nbsp; We earn a commission when you purchase via our links.
     </span>
   </div>
@@ -1158,13 +1158,28 @@ refreshBrandOptions();
 /* ══════════════════════════════════════════════════════════
    CATEGORY TABS
 ══════════════════════════════════════════════════════════ */
+function setCategory(cat, { scroll = false } = {}) {
+  const allowed = new Set(['fridge', 'washing_machine', 'dishwasher', 'dryer']);
+  const nextCat = allowed.has(cat) ? cat : 'fridge';
+  const nextPill = document.querySelector(`#catPills .cat-pill[data-cat="${nextCat}"]`);
+  if (!nextPill) return;
+  document.querySelectorAll('.cat-pill').forEach(x => x.classList.remove('active'));
+  nextPill.classList.add('active');
+  currentCat = nextCat;
+  refreshBrandOptions();
+  if (scroll) {
+    document.getElementById('search')?.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+}
+
+window.jumpToCategory = (cat) => {
+  setCategory(cat, { scroll: true });
+};
+
 document.getElementById('catPills').addEventListener('click', e => {
   const p = e.target.closest('.cat-pill');
   if (!p) return;
-  document.querySelectorAll('.cat-pill').forEach(x => x.classList.remove('active'));
-  p.classList.add('active');
-  currentCat = p.dataset.cat;
-  refreshBrandOptions();
+  setCategory(p.dataset.cat);
 });
 
 /* ══════════════════════════════════════════════════════════
