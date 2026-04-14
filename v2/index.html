@@ -1074,7 +1074,11 @@ const PRODUCTS = [
     w:875,h:1730,d:695, kwh_year:360, stars:3, price:1299, emoji:'🧊',
     door_swing_mm: 63.5,
     features:['French Door','Humidity Crisper','No Frost'],
-    retailers:[{n:'The Good Guys',url:'https://www.thegoodguys.com.au/search?text=HRF520BHS',p:1299},{n:'Bing Lee',url:'https://www.binglee.com.au/search?query=HRF520BHS',p:1279}],
+    retailers:[
+      {n:'Appliances Online',url:'https://www.appliancesonline.com.au/product/haier-hrf520bhs-514l-bottom-mount-fridge/',p:1299},
+      {n:'The Good Guys',url:'https://www.thegoodguys.com.au/search?text=HRF520BHS',p:1299},
+      {n:'Bing Lee',url:'https://www.binglee.com.au/search?query=HRF520BHS',p:1279}
+    ],
     sponsored:false },
 
   { id:'f8', cat:'fridge', brand:'Electrolux', model:'EHE5267B Bottom Mount 520L',
@@ -1432,6 +1436,24 @@ function resolveRetailerUrl(retailer, product) {
   }
 }
 
+function isLikelyProductUrl(url) {
+  if (!url) return false;
+  try {
+    const parsed = new URL(url);
+    const path = parsed.pathname.toLowerCase();
+    if (path === '/' || path === '') return false;
+    if (path === '/search' || path.startsWith('/search/')) return false;
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function preferredBuyRetailer(product) {
+  if (!product?.retailers?.length) return null;
+  return product.retailers.find(r => isLikelyProductUrl(resolveRetailerUrl(r, product))) ?? product.retailers[0];
+}
+
 /* ── RETAILERS HTML ── */
 function retailersHtml(p) {
   return p.retailers.map(r =>
@@ -1445,6 +1467,8 @@ function retailersHtml(p) {
 
 /* ── BUILD CARD (GRID VIEW) ── */
 function buildCard(p) {
+  const buyRetailer = preferredBuyRetailer(p);
+  const buyHref = buyRetailer ? resolveRetailerUrl(buyRetailer, p) : '#';
   return `
   <div class="p-card">
     <div class="card-emoji">${p.emoji}${p.sponsored?'<span class="sponsored-tag">Sponsored</span>':''}</div>
@@ -1466,7 +1490,7 @@ function buildCard(p) {
         <div class="c-price">$${Math.min(...p.retailers.map(r=>r.p)).toLocaleString()}<small>AUD best price</small></div>
         <div class="c-actions">
           <button class="btn-compare" onclick="addCompare('${p.id}','${p.brand} ${p.model.split(' ').slice(0,3).join(' ')}')">Compare</button>
-          <a class="btn-buy" href="${resolveRetailerUrl(p.retailers[0], p)}" target="_blank" rel="noopener sponsored">Buy</a>
+          <a class="btn-buy" href="${buyHref}" target="_blank" rel="noopener sponsored">Buy</a>
         </div>
       </div>
     </div>
@@ -1477,6 +1501,8 @@ function buildCard(p) {
 
 /* ── BUILD ROW (LIST VIEW) ── */
 function buildRow(p) {
+  const buyRetailer = preferredBuyRetailer(p);
+  const buyHref = buyRetailer ? resolveRetailerUrl(buyRetailer, p) : '#';
   const bestP = Math.min(...p.retailers.map(r=>r.p));
   const annual = annualEnergyCost(p.kwh_year);
   const total  = Math.round(lifetimeCost(p.price, p.kwh_year));
@@ -1508,7 +1534,7 @@ function buildRow(p) {
       <div class="p-row-price">$${bestP.toLocaleString()}<small>AUD best price</small></div>
       <div style="display:flex;gap:6px">
         <button class="btn-compare" onclick="addCompare('${p.id}','${p.brand} ${p.model.split(' ').slice(0,2).join(' ')}')">Compare</button>
-        <a class="btn-buy" href="${resolveRetailerUrl(p.retailers[0], p)}" target="_blank" rel="noopener sponsored">Buy</a>
+        <a class="btn-buy" href="${buyHref}" target="_blank" rel="noopener sponsored">Buy</a>
       </div>
     </div>
   </div>`;
