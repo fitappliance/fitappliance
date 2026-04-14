@@ -2,13 +2,16 @@
   "version": 2,
   "name": "fitappliance",
   "regions": ["syd1"],
-    "outputDirectory": ".",
-  "routes": [
-    { "src": "/affiliate-disclosure", "dest": "/pages/affiliate-disclosure.html" },
-    { "src": "/privacy-policy",       "dest": "/pages/privacy-policy.html" },
-    { "src": "/sitemap.xml",          "dest": "/public/sitemap.xml" },
-    { "src": "/robots.txt",           "dest": "/public/robots.txt" },
-    { "src": "/(.*)",                 "dest": "/index.html" }
+  "outputDirectory": ".",
+  "rewrites": [
+    { "source": "/ads.txt", "destination": "/ads.txt" },
+    { "source": "/data/(.*)", "destination": "/public/data/$1" },
+    { "source": "/scripts/(.*)", "destination": "/public/scripts/$1" },
+    { "source": "/affiliate-disclosure", "destination": "/pages/affiliate-disclosure.html" },
+    { "source": "/privacy-policy", "destination": "/pages/privacy-policy.html" },
+    { "source": "/sitemap.xml", "destination": "/public/sitemap.xml" },
+    { "source": "/robots.txt", "destination": "/public/robots.txt" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {
