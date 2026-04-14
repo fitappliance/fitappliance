@@ -42,11 +42,13 @@ export function renderFreshnessBanner(lastUpdated) {
   const daysDiff = Math.floor((todayLocalMidnight - updatedAt) / DAY_MS);
 
   if (daysDiff > 7) {
-    banner.textContent = `⚠️ 产品数据更新于 ${daysDiff} 天前，部分价格或库存信息可能已变化。`;
+    banner.textContent = `⚠️ Appliance data was last updated ${daysDiff} days ago — some specifications or availability may have changed.`;
+    banner.setAttribute('data-stale-days', String(daysDiff));
     banner.hidden = false;
     return;
   }
 
   banner.hidden = true;
   banner.textContent = '';
+  banner.removeAttribute('data-stale-days');
 }

@@ -977,7 +977,73 @@ if (minStars > 0) {
 
 ---
 
-## 7. Deployment
+## Task 7: Database Expansion & No-Key Operations
+
+### 7.1 Strategic context
+
+- Commission Factory (CF) API is a future enhancement, not a prerequisite.
+- Current core data source is Energy Rating Australia (GEMS) active register.
+- Goal: AU's most complete appliance dimension database.
+- Current counts (as of `2026-04-14`):
+  - Fridge `1319`
+  - Washing Machine `423`
+  - Dishwasher `354`
+  - Dryer `73`
+  - Total `2169`
+
+### 7.2 Running sync without CF key
+
+```bash
+npm run sync
+# or explicitly
+node scripts/sync.js --skip-cf
+```
+
+Success criteria (no CF key):
+
+- ✅ Exit code `0`
+- ✅ `public/data/appliances.json` updates with fresh GEMS data
+- ✅ Log line includes: `[sync] CF_API_KEY not configured … CommissionFactory sync skipped`
+- ✅ No products removed (Energy Rating source is additive-only)
+- ✅ `npm test` passes (`21/21` gate)
+
+Failure criteria (must not happen in no-key mode):
+
+- ❌ Exit code `1`
+- ❌ `CF_API_KEY required` (or equivalent hard-stop)
+- ❌ Existing products deleted
+
+### 7.3 Clearance.json maintenance
+
+- Every brand in `appliances.json` must have an explicit entry in `clearance.json`.
+- Coverage check command:
+
+```bash
+node -e "const fs=require('node:fs');const a=JSON.parse(fs.readFileSync('./public/data/appliances.json','utf8')).products;const c=JSON.parse(fs.readFileSync('./public/data/clearance.json','utf8')).rules;const missing=[];for(const p of a){const cat=c[p.cat]??{};if(!cat[p.brand])missing.push(`${p.cat}:${p.brand}`);}console.log(`${new Set(missing).size} brands use __default__`);"
+```
+
+- Expected output: `0 brands use __default__`.
+- `__default__` is a safety net, not the preferred steady-state path.
+- For any new brand: source clearance from manufacturer installation PDF first; if unavailable, use `__default__` and open a GitHub issue.
+
+### 7.4 Bulk import workflow
+
+- `scripts/bulk-import.js` handles initial large-scale ingestion.
+- Do not run bulk import in CI; treat it as migration tooling.
+- After bulk import, always run `npm test` before commit.
+
+### 7.5 Future: CF integration reactivation
+
+When `CF_API_KEY` becomes available:
+
+1. Set GitHub Actions secret `CF_API_KEY`.
+2. Remove `--skip-cf` from workflow command if present.
+3. Verify `npm run sync` with key exits `0` and adds retailer data.
+4. Update this section's success criteria to include retailer coverage counts.
+
+---
+
+## 8. Deployment
 
 在 GitHub Actions 中创建/启用 `.github/workflows/sync-appliances.yml` 后，使用 `schedule` + `workflow_dispatch` 双触发模式：
 
@@ -989,9 +1055,9 @@ if (minStars > 0) {
 
 ---
 
-## 8. Setup Checklist (one-time)
+## 9. Setup Checklist (one-time)
 
-- [x] Complete Task 1–6 above
+- [x] Complete Task 1–7 above
 - [x] Register for Commission Factory affiliate account if not already done
 - [x] Generate CF API key from Commission Factory dashboard
 - [x] Add `CF_API_KEY` to GitHub repository Secrets

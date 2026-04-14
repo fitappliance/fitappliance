@@ -443,8 +443,22 @@ nav {
   transition:background .15s;white-space:nowrap;
 }
 .btn-buy:hover { background:var(--copper); }
+.btn-buy--ghost {
+  background: transparent;
+  border: 1.5px solid var(--copper);
+  color: var(--copper);
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.65;
+}
+.c-price.no-price, .p-row-price.no-price {
+  color: var(--ink-3);
+  font-size: 13px;
+  font-style: italic;
+}
 /* ACCC-compliant: affiliate disclosure right on button */
 .btn-buy::after { content:'↗';font-size:11px;opacity:.7; }
+.btn-buy--ghost::after { content:''; }
 .btn-compare {
   padding:9px 12px;background:transparent;
   border:1.5px solid var(--border);border-radius:var(--r-sm);
@@ -541,6 +555,14 @@ nav {
 .empty-state.show { display:block; }
 .empty-state h3 { font-family:'Instrument Serif',serif;font-size:26px;color:var(--ink);margin:16px 0 10px; }
 .empty-state p { color:var(--ink-3);max-width:380px;margin:0 auto 24px;font-size:14px; }
+.results-cap-notice {
+  text-align: center;
+  padding: 20px;
+  color: var(--ink-3);
+  font-size: 13.5px;
+  border-top: 1px solid var(--border);
+  margin-top: 16px;
+}
 
 /* ─── HOW IT WORKS ─── */
 .how-sec {
@@ -839,9 +861,9 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
     <div class="sort-wrap">
       <label>Sort:</label>
       <select class="sort-sel" id="sortSel" onchange="renderResults()">
+        <option value="energy_desc" selected>Energy Rating (Best first)</option>
         <option value="price_asc">Price ↑</option>
         <option value="price_desc">Price ↓</option>
-        <option value="energy_desc">Best Energy Rating</option>
         <option value="kwh_asc">Lowest kWh</option>
         <option value="tco_asc">Lowest Running Cost</option>
         <option value="fit_desc">Best Fit (largest)</option>
@@ -1104,6 +1126,7 @@ function getClearance(category, brand) {
 }
 
 const TARIFF = 0.32; // $/kWh
+const RESULTS_CAP = 200;
 function annualEnergyCost(kwh_year) { return (kwh_year * TARIFF).toFixed(0); }
 function lifetimeCost(price, kwh_year, years=10) { return price + kwh_year * TARIFF * years; }
 
@@ -1224,7 +1247,7 @@ function doSearch() {
     if (brand && p.brand !== brand) return false;
 
     // Budget
-    if (p.price > budget) return false;
+    if (p.price != null && p.price > budget) return false;
 
     // Doorway check — use narrowest of w, d for delivery
     const deliveryW = Math.min(p.w, p.d);
@@ -1276,13 +1299,13 @@ function setView(v) {
 function renderResults() {
   const sort = document.getElementById('sortSel').value;
   const sorted = [...filteredResults].sort((a,b) => {
-    if (sort==='price_asc')  return a.price - b.price;
-    if (sort==='price_desc') return b.price - a.price;
+    if (sort==='price_asc')  return (a.price ?? Infinity) - (b.price ?? Infinity);
+    if (sort==='price_desc') return (b.price ?? -Infinity) - (a.price ?? -Infinity);
     if (sort==='energy_desc') return b.stars - a.stars;
     if (sort==='kwh_asc') return (a.kwh_year ?? Infinity) - (b.kwh_year ?? Infinity);
     if (sort==='tco_asc')    return lifetimeCost(a.price,a.kwh_year) - lifetimeCost(b.price,b.kwh_year);
     if (sort==='fit_desc')   return (b.w*b.h*b.d) - (a.w*a.h*a.d);
-    return 0;
+    return b.stars - a.stars;
   });
 
   // Inject sponsored at positions 2 and 5
@@ -1291,6 +1314,8 @@ function renderResults() {
   const final = [...rg];
   if (sp[0] && final.length>=2) final.splice(2,0,sp[0]);
   if (sp[1] && final.length>=6) final.splice(6,0,sp[1]);
+  const capped = final.length > RESULTS_CAP;
+  const display = capped ? final.slice(0, RESULTS_CAP) : final;
 
   const container = document.getElementById('productGrid');
   const empty     = document.getElementById('emptyState');
@@ -1305,20 +1330,27 @@ function renderResults() {
 
   if (currentView === 'list') {
     container.className = 'product-list';
-    container.innerHTML = final.map(product => buildRow(product, {
+    container.innerHTML = display.map(product => buildRow(product, {
       annualEnergyCost,
       lifetimeCost,
       resolveRetailerUrl
     })).join('');
   } else {
     container.className = 'product-grid';
-    container.innerHTML = final.map(product => buildCard(product, {
+    container.innerHTML = display.map(product => buildCard(product, {
       tcoHtml,
       retailersHtml,
       starsHtml,
       warningsHtml,
       resolveRetailerUrl
     })).join('');
+  }
+
+  if (capped) {
+    const notice = document.createElement('div');
+    notice.className = 'results-cap-notice';
+    notice.innerHTML = `Showing ${RESULTS_CAP} of ${final.length} results. Refine your dimensions or brand filter to see more.`;
+    container.appendChild(notice);
   }
 }
 
@@ -1375,7 +1407,9 @@ function resolveRetailerUrl(retailer, product) {
 
 /* ── RETAILERS HTML ── */
 function retailersHtml(p) {
-  return p.retailers.map(r =>
+  const retailers = Array.isArray(p.retailers) ? p.retailers : [];
+  if (retailers.length === 0) return '';
+  return retailers.map(r =>
     `<a class="ret-item" href="${resolveRetailerUrl(r, p)}" target="_blank" rel="noopener sponsored">
        <span class="ret-name">${r.n}</span>
        <span class="ret-price">$${r.p.toLocaleString()}</span>
@@ -1420,7 +1454,14 @@ function renderCompareTable(products) {
   const rows = [
     { label: 'Model', render: p => `<strong>${escHtml(p.brand)} ${escHtml(p.model)}</strong>` },
     { label: 'Dimensions (W×H×D)', render: p => `${p.w} × ${p.h} × ${p.d} mm` },
-    { label: 'Best Price', render: p => formatPrice(Math.min(...p.retailers.map(r => r.p))) },
+    {
+      label: 'Best Price',
+      render: p => {
+        const hasRetailers = Array.isArray(p.retailers) && p.retailers.length > 0;
+        const bestPrice = hasRetailers ? Math.min(...p.retailers.map(r => r.p)) : null;
+        return formatPrice(bestPrice);
+      },
+    },
     { label: 'Energy', render: p => `${p.stars}★ · ${p.kwh_year ?? '-'} kWh/yr` },
     { label: 'Estimated 10yr TCO', render: p => formatPrice(Math.round(lifetimeCost(p.price, p.kwh_year))) },
     { label: 'Door Swing', render: p => formatDoorSwing(p.door_swing_mm) },
