@@ -66,14 +66,41 @@ function buildUrlNode({ loc, lastmod, changefreq, priority }) {
 async function generateSitemap({
   repoRoot = path.resolve(__dirname, '..'),
   brandsIndexPath = path.join(repoRoot, 'pages', 'brands', 'index.json'),
+  compareIndexPath = null,
   outputPath = path.join(repoRoot, 'public', 'sitemap.xml'),
   baseUrl = 'https://fitappliance.com.au',
   today = new Date().toISOString().slice(0, 10),
   logger = console
 } = {}) {
-  const brandsText = await readFile(brandsIndexPath, 'utf8');
-  const brandRows = JSON.parse(brandsText);
+  const readJsonIfExists = async (filePath) => {
+    try {
+      const text = await readFile(filePath, 'utf8');
+      return JSON.parse(text);
+    } catch (error) {
+      if (error && error.code === 'ENOENT') return [];
+      throw error;
+    }
+  };
+
+  const effectiveCompareIndexPath = compareIndexPath
+    ?? path.join(path.dirname(path.dirname(brandsIndexPath)), 'compare', 'index.json');
+
+  const brandRows = await readJsonIfExists(brandsIndexPath);
+  const compareRows = await readJsonIfExists(effectiveCompareIndexPath);
   const sortedBrands = sortBrandEntries(Array.isArray(brandRows) ? brandRows : []);
+  const sortedComparisons = [...(Array.isArray(compareRows) ? compareRows : [])].sort((left, right) => {
+    const leftCat = String(left?.cat ?? '');
+    const rightCat = String(right?.cat ?? '');
+    if (leftCat !== rightCat) return leftCat.localeCompare(rightCat);
+
+    const leftA = String(left?.brandA ?? '');
+    const rightA = String(right?.brandA ?? '');
+    if (leftA !== rightA) return leftA.localeCompare(rightA);
+
+    const leftB = String(left?.brandB ?? '');
+    const rightB = String(right?.brandB ?? '');
+    return leftB.localeCompare(rightB);
+  });
 
   const staticNodes = STATIC_PAGES.map((page) =>
     buildUrlNode({
@@ -93,18 +120,28 @@ async function generateSitemap({
     })
   );
 
+  const comparisonNodes = sortedComparisons.map((row) =>
+    buildUrlNode({
+      loc: toAbsoluteUrl(baseUrl, row.url ?? `/compare/${row.slug}`),
+      lastmod: today,
+      changefreq: 'monthly',
+      priority: '0.6'
+    })
+  );
+
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ...staticNodes,
     ...brandNodes,
+    ...comparisonNodes,
     '</urlset>',
     ''
   ].join('\n');
 
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, xml, 'utf8');
-  const urlCount = STATIC_PAGES.length + brandNodes.length;
+  const urlCount = STATIC_PAGES.length + brandNodes.length + comparisonNodes.length;
   logger.log(`Generated sitemap with ${urlCount} URLs at ${outputPath}`);
 
   return { urlCount, outputPath };

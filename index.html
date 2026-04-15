@@ -21,6 +21,14 @@
 <!-- Google AdSense verification -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7257149597818537"
         crossorigin="anonymous"></script>
+<script type="module">
+  import { collectVitals, getSummary } from '/scripts/ui/web-vitals.js';
+  collectVitals();
+
+  if (location.hostname === 'localhost') {
+    console.table(getSummary());
+  }
+</script>
 
 <style>
 /* ═══════════════════════════════════

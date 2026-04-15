@@ -27,18 +27,25 @@ function extractNodes(xmlText) {
   return nodes;
 }
 
-async function createWorkspace(indexRows) {
+async function createWorkspace(indexRows, compareRows = null) {
   const rootDir = await mkdtemp(path.join(tmpdir(), 'fitappliance-sitemap-'));
   const brandsDir = path.join(rootDir, 'pages', 'brands');
+  const compareDir = path.join(rootDir, 'pages', 'compare');
   const outputPath = path.join(rootDir, 'public', 'sitemap.xml');
   const brandsIndexPath = path.join(brandsDir, 'index.json');
+  const compareIndexPath = path.join(compareDir, 'index.json');
 
   await mkdir(brandsDir, { recursive: true });
   await writeFile(brandsIndexPath, `${JSON.stringify(indexRows, null, 2)}\n`, 'utf8');
+  if (compareRows) {
+    await mkdir(compareDir, { recursive: true });
+    await writeFile(compareIndexPath, `${JSON.stringify(compareRows, null, 2)}\n`, 'utf8');
+  }
 
   return {
     rootDir,
     brandsIndexPath,
+    compareIndexPath,
     outputPath
   };
 }
@@ -184,4 +191,25 @@ test('task 9.1 sitemap: returns urlCount and outputPath in result object', async
 
   assert.equal(typeof result.urlCount, 'number');
   assert.equal(result.outputPath, workspace.outputPath);
+});
+
+test('task 9.1 sitemap: includes compare pages when compare index exists', async () => {
+  const { generateSitemap } = await import(sitemapModuleUrl);
+  const workspace = await createWorkspace(
+    [{ brand: 'Samsung', cat: 'fridge', slug: 'samsung-fridge-clearance', url: '/brands/samsung-fridge-clearance' }],
+    [{ brandA: 'LG', brandB: 'Samsung', cat: 'fridge', slug: 'lg-vs-samsung-fridge-clearance', url: '/compare/lg-vs-samsung-fridge-clearance' }]
+  );
+
+  const result = await generateSitemap({
+    brandsIndexPath: workspace.brandsIndexPath,
+    compareIndexPath: workspace.compareIndexPath,
+    outputPath: workspace.outputPath,
+    today: '2026-04-15',
+    logger: { log() {} }
+  });
+
+  const xml = await readFile(workspace.outputPath, 'utf8');
+  const nodes = extractNodes(xml);
+  assert.equal(result.urlCount, 5);
+  assert.ok(nodes.some((node) => node.loc.endsWith('/compare/lg-vs-samsung-fridge-clearance')));
 });
