@@ -82,12 +82,14 @@ export function buildCard(p, deps = {}) {
   const stars = deps.starsHtml ?? starsHtml;
   const warnings = deps.warningsHtml ?? warningsHtml;
   const resolveRetailerUrl = deps.resolveRetailerUrl ?? ((retailer) => retailer.url);
+  const isSaved = deps.isSaved ?? (() => false);
   const retailers = Array.isArray(p.retailers) ? p.retailers : [];
   const hasPrice = retailers.length > 0;
   const bestPrice = hasPrice ? Math.min(...retailers.map(r => r.p)) : null;
   const primaryRetailer = hasPrice ? retailers[0] : null;
   const noRetailerUrl = hasPrice ? '' : buildNoRetailerUrl(p);
   const displayBrand = displayBrandName(p.brand);
+  const saved = isSaved(p.id);
   const compareLabel = `${displayBrand} ${p.model.split(' ').slice(0, 3).join(' ')}`;
 
   return `
@@ -114,6 +116,12 @@ export function buildCard(p, deps = {}) {
             : '<div class="c-price no-price">Price unavailable — search online</div>'
         }
         <div class="c-actions">
+          <button
+            class="btn-save${saved ? ' btn-save--active' : ''}"
+            onclick="toggleSave('${p.id}')"
+            aria-label="${saved ? 'Remove from saved' : 'Save appliance'}"
+            title="${saved ? 'Remove from saved' : 'Save for later'}"
+          >${saved ? '♥' : '♡'}</button>
           <button class="btn-compare" onclick="addCompare('${p.id}','${escHtml(compareLabel)}')">Compare</button>
           ${
             hasPrice
@@ -132,11 +140,13 @@ export function buildRow(p, deps = {}) {
   const annualEnergyCost = deps.annualEnergyCost ?? (() => '0');
   const lifetimeCost = deps.lifetimeCost ?? (() => 0);
   const resolveRetailerUrl = deps.resolveRetailerUrl ?? ((retailer) => retailer.url);
+  const isSaved = deps.isSaved ?? (() => false);
   const retailers = Array.isArray(p.retailers) ? p.retailers : [];
   const hasPrice = retailers.length > 0;
   const bestP = hasPrice ? Math.min(...retailers.map(r => r.p)) : null;
   const noRetailerUrl = hasPrice ? '' : buildNoRetailerUrl(p);
   const displayBrand = displayBrandName(p.brand);
+  const saved = isSaved(p.id);
   const compareLabel = `${displayBrand} ${p.model.split(' ').slice(0, 2).join(' ')}`;
   const annual = annualEnergyCost(p.kwh_year);
   const total = Math.round(lifetimeCost(p.price, p.kwh_year));
@@ -173,6 +183,12 @@ export function buildRow(p, deps = {}) {
           : '<div class="p-row-price no-price">Price unavailable — search online</div>'
       }
       <div style="display:flex;gap:6px">
+        <button
+          class="btn-save${saved ? ' btn-save--active' : ''}"
+          onclick="toggleSave('${p.id}')"
+          aria-label="${saved ? 'Remove from saved' : 'Save appliance'}"
+          title="${saved ? 'Remove from saved' : 'Save for later'}"
+        >${saved ? '♥' : '♡'}</button>
         <button class="btn-compare" onclick="addCompare('${p.id}','${escHtml(compareLabel)}')">Compare</button>
         ${
           hasPrice

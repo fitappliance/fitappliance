@@ -7,7 +7,8 @@
   },
   "scripts": {
     "test": "node --test tests/*.test.mjs",
-    "sync": "node scripts/sync.js",
+    "sync": "node scripts/sync.js && node scripts/split-appliances.js",
+    "split-data": "node scripts/split-appliances.js",
     "add-swing": "node scripts/add-door-swing.js",
     "suggest-swing": "node scripts/suggest-door-swing.js",
     "infer-swing": "node scripts/infer-door-swing.js",

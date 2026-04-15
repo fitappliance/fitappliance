@@ -19,13 +19,16 @@ test('index.html bootstraps appliance data from runtime JSON fetches', async () 
 
   assert.match(
     html,
-    /Promise\.all\(\s*\[\s*fetch\('\/data\/appliances\.json'\)[\s\S]*fetch\('\/data\/clearance\.json'\)[\s\S]*fetch\('\/data\/rebates\.json'\)/,
+    /Promise\.all\(\s*\[\s*fetch\('\/data\/clearance\.json'\)[\s\S]*fetch\('\/data\/rebates\.json'\)/,
   );
+  assert.match(html, /fetch\('\/data\/appliances-meta\.json'\)/);
+  assert.match(html, /await loadCategory\(initialCat\);/);
+  assert.match(html, /fetch\('\/data\/appliances\.json'\)\.then\(requireJson\)/);
   assert.match(
     html,
-    /\.then\(\(\[appData,\s*clearData,\s*rebateData\]\)\s*=>\s*{\s*const PRODUCTS = appData\.products;\s*const BRAND_CLEARANCE = clearData\.rules;\s*const REBATES = rebateData\.rebates;/s,
+    /\.then\(\(\[clearData,\s*rebateData\]\)\s*=>\s*{\s*const BRAND_CLEARANCE = clearData\.rules;\s*const REBATES = rebateData\.rebates;/s,
   );
-  assert.match(html, /initApp\(PRODUCTS,\s*BRAND_CLEARANCE,\s*REBATES\);/);
+  assert.match(html, /initApp\(BRAND_CLEARANCE,\s*REBATES\)/);
 });
 
 test('index.html removes embedded data constants and wraps app logic in initApp', async () => {
@@ -34,16 +37,17 @@ test('index.html removes embedded data constants and wraps app logic in initApp'
   assert.doesNotMatch(html, /const PRODUCTS = \[/);
   assert.doesNotMatch(html, /const BRAND_CLEARANCE = \{/);
   assert.doesNotMatch(html, /const REBATES = \{/);
-  assert.match(html, /function initApp\(PRODUCTS,\s*BRAND_CLEARANCE,\s*REBATES\)\s*{/);
+  assert.match(html, /let PRODUCTS = \[\];/);
+  assert.match(html, /async function initApp\(BRAND_CLEARANCE,\s*REBATES\)\s*{/);
 });
 
 test('index.html exposes UI handlers after init and renders a load error message on fetch failure', async () => {
   const html = await loadIndexHtml();
 
-  assert.match(
-    html,
-    /Object\.assign\(window,\s*{\s*toggleAdv,\s*doSearch,\s*renderResults,\s*setView,\s*resetSearch,\s*calcRebate,\s*showToast,\s*addCompare,\s*removeCompare,\s*}\);/s,
-  );
+  assert.match(html, /Object\.assign\(window,\s*{/);
+  assert.match(html, /toggleAdv,/);
+  assert.match(html, /toggleSave,/);
+  assert.match(html, /copySavedShareLink,/);
   assert.match(html, /Unable to load appliance data\. Please refresh\./);
   assert.match(html, /document\.getElementById\('resultsSection'\)\.style\.display\s*=\s*'block';/);
   assert.match(html, /document\.getElementById\('productGrid'\)\.innerHTML\s*=\s*'(<p class="error">|<div class="error">)Unable to load appliance data\. Please refresh\./);

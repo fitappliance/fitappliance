@@ -276,13 +276,57 @@ nav {
 /* ─── RESULTS ─── */
 .results-wrap { max-width:1220px;margin:0 auto;padding:36px 24px 80px; }
 
-/* Ad banner */
-.ad-block {
-  background:var(--paper-2);border:1.5px dashed var(--paper-3);
-  border-radius:var(--r);padding:16px;text-align:center;
-  color:var(--ink-3);font-size:11.5px;margin-bottom:28px;
+/* Ad placeholders */
+.ad-slot {
+  min-height: 90px;
+  border: 2px dashed #d97706;
+  background: #fffbeb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin: 12px 0 28px;
 }
-.ad-block-label { text-transform:uppercase;letter-spacing:.1em;font-size:10px;margin-bottom:4px; }
+.ad-slot__label {
+  font-size: 11px;
+  color: #92400e;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+.ad-slot--inline {
+  min-height: 60px;
+  margin: 8px 0;
+}
+.adsense-active .ad-slot {
+  border: none;
+  background: transparent;
+  min-height: unset;
+}
+.adsense-active .ad-slot__label { display: none; }
+
+.saved-tip {
+  margin-top: 12px;
+  border: 1px solid var(--amber);
+  background: var(--amber-bg);
+  color: var(--ink-2);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  font-size: 12.5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.saved-tip button {
+  border: none;
+  background: transparent;
+  color: var(--copper);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+.saved-tip button:hover { text-decoration: underline; }
 
 /* Disclaimer */
 .disclaimer {
@@ -361,6 +405,14 @@ nav {
   font-size: 14px;
   font-weight: 600;
 }
+.loading-state {
+  padding: 18px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--paper-2);
+  color: var(--ink-2);
+  font-size: 14px;
+}
 
 /* ─── PRODUCT CARD (GRID) ─── */
 .p-card {
@@ -434,6 +486,27 @@ nav {
 .c-price { font-family:'Instrument Serif',serif;font-size:22px;color:var(--ink); }
 .c-price small { font-family:'Outfit',sans-serif;font-size:11px;color:var(--ink-3);display:block;line-height:1; }
 .c-actions { display:flex;gap:7px; }
+.btn-save {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--ink-3);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all .15s;
+}
+.btn-save:hover {
+  border-color: var(--copper);
+  color: var(--copper);
+}
+.btn-save--active {
+  border-color: var(--copper);
+  background: var(--copper-bg);
+  color: var(--copper);
+}
 .btn-buy {
   padding:9px 16px;background:var(--ink);color:#fff;
   border:none;border-radius:var(--r-sm);
@@ -672,6 +745,67 @@ nav {
   color: var(--copper);
   text-decoration: underline;
 }
+.saved-panel {
+  margin-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.14);
+  padding-top: 18px;
+}
+.saved-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.saved-panel__head h5 {
+  color: #fff;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.saved-panel__actions {
+  display: flex;
+  gap: 8px;
+}
+.saved-panel__actions button {
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 6px;
+  background: transparent;
+  color: rgba(255,255,255,.75);
+  font-size: 12px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.saved-panel__actions button:hover {
+  border-color: var(--copper);
+  color: #fff;
+}
+.saved-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.saved-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 12px;
+  color: rgba(255,255,255,.86);
+}
+.saved-chip button {
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,.7);
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+}
+.saved-chip button:hover { color: #fff; }
 
 /* ─── FOOTER ─── */
 footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px; }
@@ -761,6 +895,11 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 }
 .compare-table th,.compare-table td {
   border:1px solid var(--border);padding:10px 12px;vertical-align:top;
+}
+.td-diff {
+  background: #fffbeb;
+  font-weight: 600;
+  border-left: 3px solid var(--copper) !important;
 }
 .compare-table th {
   text-align:left;background:var(--paper-2);font-size:12px;
@@ -916,10 +1055,8 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 <!-- RESULTS SECTION -->
 <section id="resultsSection" class="results-wrap" style="display:none">
 
-  <!-- Ad: leaderboard -->
-  <div class="ad-block">
-    <div class="ad-block-label">Advertisement — Google AdSense 728×90</div>
-    <div style="height:80px;display:flex;align-items:center;justify-content:center;font-size:12px">Ad slot: ca-pub-7257149597818537 / zone: leaderboard-results</div>
+  <div class="ad-slot" id="ad-top-results" aria-label="Advertisement" role="complementary">
+    <span class="ad-slot__label">Advertisement</span>
   </div>
 
   <!-- Disclaimer -->
@@ -963,6 +1100,10 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 
       <!-- Product output -->
       <div id="productGrid" class="product-list"></div>
+      <div id="savedTipBar" class="saved-tip" hidden>
+        💡 We update prices weekly. Saved <span data-role="count">0</span> items — bookmark this page to track them.
+        <button type="button" onclick="copyCurrentSearchLink()">📋 Copy your search link</button>
+      </div>
       <div class="empty-state" id="emptyState">
         <div style="font-size:52px">📦</div>
         <h3>Nothing fits those dimensions</h3>
@@ -1177,6 +1318,16 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
     <summary class="brand-dir__toggle">Browse all brands &amp; clearances ▾</summary>
     <div id="brand-dir-grid" class="brand-dir__grid" aria-label="Brand clearance directory"></div>
   </details>
+  <section id="saved-panel" class="saved-panel" hidden>
+    <div class="saved-panel__head">
+      <h5>Your Saved Appliances</h5>
+      <div class="saved-panel__actions">
+        <button type="button" onclick="copySavedShareLink()">Share saved list</button>
+        <button type="button" onclick="clearAllSaved()">Clear all</button>
+      </div>
+    </div>
+    <div id="saved-items" class="saved-items"></div>
+  </section>
 </footer>
 
 <!-- TOAST -->
@@ -1206,6 +1357,8 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/product-card.js';
 import { renderFreshnessBanner } from './scripts/ui/freshness.js';
 import { buildBrandOptions } from './scripts/ui/filters.js';
+import { computeFitScore } from './scripts/ui/fit-score.js';
+import { clearSaved, getSavedIds, isProductSaved, saveProduct, unsaveProduct } from './scripts/ui/saved-matches.js';
 
 function escHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -1287,21 +1440,21 @@ function requireJson(response) {
 }
 
 Promise.all([
-  fetch('/data/appliances.json').then(requireJson),
   fetch('/data/clearance.json').then(requireJson),
   fetch('/data/rebates.json').then(requireJson)
-]).then(([appData, clearData, rebateData]) => {
-  const PRODUCTS = appData.products;
+]).then(([clearData, rebateData]) => {
   const BRAND_CLEARANCE = clearData.rules;
   const REBATES = rebateData.rebates;
-  renderFreshnessBanner(appData.last_updated);
-  initApp(PRODUCTS, BRAND_CLEARANCE, REBATES);
+  initApp(BRAND_CLEARANCE, REBATES).catch((err) => {
+    console.error('Data load failed', err);
+    renderDataLoadError();
+  });
 }).catch(err => {
   console.error('Data load failed', err);
   renderDataLoadError();
 });
 
-function initApp(PRODUCTS, BRAND_CLEARANCE, REBATES) {
+async function initApp(BRAND_CLEARANCE, REBATES) {
 const STATE_COLORS = {
   VIC: 'var(--green)',
   NSW: 'var(--blue)',
@@ -1367,6 +1520,15 @@ let currentCat = 'fridge';
 let filteredResults = [];
 let currentView = 'list';
 let compareList = [];
+let PRODUCTS = [];
+let APPLIANCES_META = null;
+const loadedCats = new Set();
+const CATEGORY_DATA_FILES = {
+  fridge: '/data/fridges.json',
+  washing_machine: '/data/washing-machines.json',
+  dishwasher: '/data/dishwashers.json',
+  dryer: '/data/dryers.json',
+};
 const brandSelect = document.getElementById('inBrand');
 
 function refreshBrandOptions() {
@@ -1374,9 +1536,52 @@ function refreshBrandOptions() {
   brandSelect.value = '';
 }
 
-refreshBrandOptions();
+function readUrlParamCat() {
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get('cat');
+  return VALID_CATEGORIES.includes(cat) ? cat : null;
+}
 
-function readUrlParams() {
+async function loadCategory(cat) {
+  if (!VALID_CATEGORIES.includes(cat) || loadedCats.has(cat)) return;
+
+  const resultEl = document.getElementById('productGrid');
+  if (resultEl && loadedCats.size === 0) {
+    resultEl.innerHTML = '<div class="loading-state">Loading appliance data...</div>';
+  }
+
+  const url = APPLIANCES_META?.files?.[cat] ?? CATEGORY_DATA_FILES[cat];
+  const categoryData = await fetch(url).then(requireJson);
+  if (!Array.isArray(categoryData.products)) {
+    throw new Error(`Invalid category payload for ${cat}`);
+  }
+
+  PRODUCTS = [...PRODUCTS, ...categoryData.products];
+  loadedCats.add(cat);
+}
+
+async function bootstrapApplianceData() {
+  const initialCat = readUrlParamCat() ?? 'fridge';
+
+  try {
+    APPLIANCES_META = await fetch('/data/appliances-meta.json').then(requireJson);
+    renderFreshnessBanner(APPLIANCES_META.last_updated);
+    await loadCategory(initialCat);
+  } catch {
+    const appData = await fetch('/data/appliances.json').then(requireJson);
+    PRODUCTS = Array.isArray(appData.products) ? appData.products : [];
+    VALID_CATEGORIES.forEach((category) => loadedCats.add(category));
+    APPLIANCES_META = {
+      files: { ...CATEGORY_DATA_FILES },
+      last_updated: appData.last_updated
+    };
+    renderFreshnessBanner(appData.last_updated);
+  }
+
+  return initialCat;
+}
+
+async function readUrlParams() {
   const params = new URLSearchParams(window.location.search);
   const cat = params.get('cat');
   const w = params.get('w');
@@ -1391,7 +1596,7 @@ function readUrlParams() {
   const depth = Number.parseInt(d, 10);
   if (!Number.isFinite(width) || !Number.isFinite(height) || !Number.isFinite(depth)) return;
 
-  setCategory(cat);
+  await setCategory(cat);
 
   const widthInput = document.getElementById('inW');
   const heightInput = document.getElementById('inH');
@@ -1424,7 +1629,7 @@ function readUrlParams() {
 /* ══════════════════════════════════════════════════════════
    CATEGORY TABS
 ══════════════════════════════════════════════════════════ */
-function setCategory(cat, { scroll = false } = {}) {
+async function setCategory(cat, { scroll = false } = {}) {
   const allowed = new Set(VALID_CATEGORIES);
   const nextCat = allowed.has(cat) ? cat : 'fridge';
   const nextPill = document.querySelector(`#catPills .cat-pill[data-cat="${nextCat}"]`);
@@ -1432,20 +1637,21 @@ function setCategory(cat, { scroll = false } = {}) {
   document.querySelectorAll('.cat-pill').forEach(x => x.classList.remove('active'));
   nextPill.classList.add('active');
   currentCat = nextCat;
+  await loadCategory(nextCat);
   refreshBrandOptions();
   if (scroll) {
     document.getElementById('search')?.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 }
 
-window.jumpToCategory = (cat) => {
-  setCategory(cat, { scroll: true });
+window.jumpToCategory = async (cat) => {
+  await setCategory(cat, { scroll: true });
 };
 
-document.getElementById('catPills').addEventListener('click', e => {
+document.getElementById('catPills').addEventListener('click', async e => {
   const p = e.target.closest('.cat-pill');
   if (!p) return;
-  setCategory(p.dataset.cat);
+  await setCategory(p.dataset.cat);
 });
 
 /* ══════════════════════════════════════════════════════════
@@ -1578,6 +1784,12 @@ function renderResults() {
   if (sp[1] && final.length>=6) final.splice(6,0,sp[1]);
   const capped = final.length > RESULTS_CAP;
   const display = capped ? final.slice(0, RESULTS_CAP) : final;
+  const renderProductsWithInlineAds = (items, renderItem) => items.map((product, index) => {
+    const cardHtml = renderItem(product);
+    const shouldRenderInlineAd = index > 0 && (index + 1) % 8 === 0;
+    if (!shouldRenderInlineAd) return cardHtml;
+    return `${cardHtml}<div class="ad-slot ad-slot--inline" aria-label="Advertisement"><span class="ad-slot__label">Advertisement</span></div>`;
+  }).join('');
 
   const container = document.getElementById('productGrid');
   const empty     = document.getElementById('emptyState');
@@ -1592,20 +1804,22 @@ function renderResults() {
 
   if (currentView === 'list') {
     container.className = 'product-list';
-    container.innerHTML = display.map(product => buildRow(product, {
+    container.innerHTML = renderProductsWithInlineAds(display, (product) => buildRow(product, {
       annualEnergyCost,
       lifetimeCost,
-      resolveRetailerUrl
-    })).join('');
+      resolveRetailerUrl,
+      isSaved: isProductSaved
+    }));
   } else {
     container.className = 'product-grid';
-    container.innerHTML = display.map(product => buildCard(product, {
+    container.innerHTML = renderProductsWithInlineAds(display, (product) => buildCard(product, {
       tcoHtml,
       retailersHtml,
       starsHtml,
       warningsHtml,
-      resolveRetailerUrl
-    })).join('');
+      resolveRetailerUrl,
+      isSaved: isProductSaved
+    }));
   }
 
   if (capped) {
@@ -1690,7 +1904,7 @@ function getCompareProducts() {
 }
 
 function formatDoorSwing(value) {
-  if (value === null) return 'Pending confirmation';
+  if (value === null || value === undefined) return 'Pending confirmation';
   if (value === 0) return 'No extra hinge clearance';
   return `${value} mm`;
 }
@@ -1700,11 +1914,19 @@ function formatPrice(value) {
   return `$${value.toLocaleString()}`;
 }
 
-function compareCell(product, render) {
-  return `<td>${render(product)}</td>`;
+function compareCell(product, render, className = '') {
+  const classAttr = className ? ` class="${className}"` : '';
+  return `<td${classAttr}>${render(product)}</td>`;
 }
 
 function renderCompareTable(products) {
+  const currentW = Number.parseInt(document.getElementById('inW').value, 10);
+  const currentH = Number.parseInt(document.getElementById('inH').value, 10);
+  const currentD = Number.parseInt(document.getElementById('inD').value, 10);
+  const cavityW = Number.isFinite(currentW) ? currentW : null;
+  const cavityH = Number.isFinite(currentH) ? currentH : null;
+  const cavityD = Number.isFinite(currentD) ? currentD : null;
+
   const buyCell = (product) => {
     const bestRetailer = product.retailers[0];
     if (!bestRetailer) return '-';
@@ -1713,26 +1935,80 @@ function renderCompareTable(products) {
   };
 
   const rows = [
-    { label: 'Model', render: p => `<strong>${escHtml(p.brand)} ${escHtml(p.model)}</strong>` },
-    { label: 'Dimensions (W×H×D)', render: p => `${p.w} × ${p.h} × ${p.d} mm` },
+    {
+      label: 'Model',
+      key: p => `${p.brand} ${p.model}`,
+      render: p => `<strong>${escHtml(p.brand)} ${escHtml(p.model)}</strong>`
+    },
+    {
+      label: 'Dimensions (W×H×D)',
+      key: p => `${p.w}×${p.h}×${p.d}`,
+      render: p => `${p.w} × ${p.h} × ${p.d} mm`
+    },
+    {
+      label: 'Fit Score',
+      key: p => {
+        const fit = computeFitScore(p, cavityW, cavityH, cavityD, getClearance(p.cat, p.brand));
+        return String(fit.score ?? '');
+      },
+      render: p => {
+        const fit = computeFitScore(p, cavityW, cavityH, cavityD, getClearance(p.cat, p.brand));
+        if (fit.score === null) {
+          return '<span style="color:var(--ink-3)">Enter cavity size ↑</span>';
+        }
+        const color = fit.score >= 80 ? 'var(--green)' : fit.score >= 50 ? 'var(--copper)' : 'var(--red)';
+        const warnings = fit.warnings
+          .map((warning) => `<div style="font-size:11px;color:${color};margin-top:3px">${escHtml(warning)}</div>`)
+          .join('');
+        return `<strong style="color:${color};font-size:16px">${escHtml(fit.label)}</strong>${warnings}`;
+      }
+    },
     {
       label: 'Best Price',
+      key: p => {
+        const hasRetailers = Array.isArray(p.retailers) && p.retailers.length > 0;
+        return String(hasRetailers ? Math.min(...p.retailers.map(r => r.p)) : '');
+      },
       render: p => {
         const hasRetailers = Array.isArray(p.retailers) && p.retailers.length > 0;
         const bestPrice = hasRetailers ? Math.min(...p.retailers.map(r => r.p)) : null;
         return formatPrice(bestPrice);
       },
     },
-    { label: 'Energy', render: p => `${p.stars}★ · ${p.kwh_year ?? '-'} kWh/yr` },
-    { label: 'Estimated 10yr TCO', render: p => formatPrice(Math.round(lifetimeCost(p.price, p.kwh_year))) },
-    { label: 'Door Swing', render: p => formatDoorSwing(p.door_swing_mm) },
-    { label: 'Key Features', render: p => escHtml(p.features.slice(0, 4).join(' · ')) },
-    { label: 'Buy Link', render: buyCell },
+    {
+      label: 'Energy',
+      key: p => `${p.stars}|${p.kwh_year ?? ''}`,
+      render: p => `${p.stars}★ · ${p.kwh_year ?? '-'} kWh/yr`
+    },
+    {
+      label: 'Estimated 10yr TCO',
+      key: p => String(Math.round(lifetimeCost(p.price, p.kwh_year))),
+      render: p => formatPrice(Math.round(lifetimeCost(p.price, p.kwh_year)))
+    },
+    {
+      label: 'Door Swing',
+      key: p => String(p.door_swing_mm ?? ''),
+      render: p => formatDoorSwing(p.door_swing_mm)
+    },
+    {
+      label: 'Key Features',
+      key: p => p.features.slice(0, 4).join('|'),
+      render: p => escHtml(p.features.slice(0, 4).join(' · '))
+    },
+    {
+      label: 'Buy Link',
+      key: p => String(p.retailers?.[0]?.n ?? ''),
+      render: buyCell
+    },
   ];
 
   const headerRow = products.map(product => `<th>${escHtml(product.brand)}<br>${escHtml(product.model)}</th>`).join('');
   const bodyRows = rows.map(row => {
-    const cells = products.map(product => compareCell(product, row.render)).join('');
+    const keys = products.map((product) => row.key(product));
+    const allSame = keys.every((value) => value === keys[0]);
+    const cells = products
+      .map((product) => compareCell(product, row.render, allSame ? '' : 'td-diff'))
+      .join('');
     return `<tr><th>${row.label}</th>${cells}</tr>`;
   }).join('');
 
@@ -1814,6 +2090,124 @@ function showToast(msg) {
   toastT = setTimeout(()=>t.classList.remove('show'), 3200);
 }
 
+async function copyTextToClipboard(text, successMessage) {
+  try {
+    if (!navigator.clipboard?.writeText) {
+      throw new Error('Clipboard API unavailable');
+    }
+    await navigator.clipboard.writeText(text);
+    showToast(successMessage);
+  } catch {
+    showToast('Copy failed. Please copy from the address bar.');
+  }
+}
+
+function showSavedTip() {
+  const tip = document.getElementById('savedTipBar');
+  if (!tip) return;
+  const count = getSavedIds().length;
+  if (count === 0) {
+    tip.hidden = true;
+    return;
+  }
+  const countEl = tip.querySelector('[data-role="count"]');
+  if (countEl) {
+    countEl.textContent = String(count);
+  }
+  tip.hidden = false;
+}
+
+function renderSavedPanel() {
+  const panel = document.getElementById('saved-panel');
+  const items = document.getElementById('saved-items');
+  if (!panel || !items) return;
+
+  const ids = getSavedIds();
+  if (ids.length === 0) {
+    panel.hidden = true;
+    items.innerHTML = '';
+    return;
+  }
+
+  const savedProducts = ids
+    .map((id) => PRODUCTS.find((product) => product.id === id))
+    .filter(Boolean);
+
+  if (savedProducts.length === 0) {
+    panel.hidden = false;
+    items.innerHTML = `<div class="saved-chip">Saved ${ids.length} item(s) — load related categories to view details.</div>`;
+    return;
+  }
+
+  items.innerHTML = savedProducts.map((product) => `
+    <div class="saved-chip">
+      ${escHtml(product.brand)} ${escHtml(product.model)}
+      <button type="button" onclick="removeSaved('${product.id}')" aria-label="Remove saved appliance">×</button>
+    </div>
+  `).join('');
+  panel.hidden = false;
+}
+
+function restoreSavedFromUrlParam() {
+  const params = new URLSearchParams(window.location.search);
+  const raw = params.get('saved');
+  if (!raw) return;
+  raw.split(',')
+    .map((value) => value.trim())
+    .filter(Boolean)
+    .forEach((id) => saveProduct(id));
+}
+
+function toggleSave(id) {
+  const product = PRODUCTS.find((item) => item.id === id);
+  const currentlySaved = isProductSaved(id);
+  if (currentlySaved) {
+    unsaveProduct(id);
+    showToast('Removed from saved appliances');
+  } else {
+    saveProduct(id);
+    showToast('Saved appliance');
+    if (product?.unavailable) {
+      showSavedTip();
+    }
+  }
+  renderSavedPanel();
+  renderResults();
+}
+
+function removeSaved(id) {
+  unsaveProduct(id);
+  renderSavedPanel();
+  renderResults();
+  showToast('Removed from saved appliances');
+}
+
+function clearAllSaved() {
+  clearSaved();
+  const tip = document.getElementById('savedTipBar');
+  if (tip) {
+    tip.hidden = true;
+  }
+  renderSavedPanel();
+  renderResults();
+  showToast('Cleared saved appliances');
+}
+
+function copyCurrentSearchLink() {
+  copyTextToClipboard(window.location.href, 'Search link copied');
+}
+
+function copySavedShareLink() {
+  const ids = getSavedIds();
+  if (ids.length === 0) {
+    showToast('Save at least one appliance first');
+    return;
+  }
+  const url = new URL(window.location.href);
+  url.searchParams.set('saved', ids.join(','));
+  copyTextToClipboard(url.toString(), 'Saved list link copied');
+}
+
 Object.assign(window, {
   toggleAdv,
   doSearch,
@@ -1824,6 +2218,11 @@ Object.assign(window, {
   showToast,
   addCompare,
   removeCompare,
+  toggleSave,
+  removeSaved,
+  copyCurrentSearchLink,
+  copySavedShareLink,
+  clearAllSaved,
 });
 window.openCompareTable = openCompareTable;
 window.closeCompareModal = closeCompareModal;
@@ -1834,7 +2233,11 @@ window.closeCompareModal = closeCompareModal;
   });
 });
 
-readUrlParams();
+const initialCategory = await bootstrapApplianceData();
+restoreSavedFromUrlParam();
+await setCategory(initialCategory);
+await readUrlParams();
+renderSavedPanel();
 }
 </script>
 </body>
