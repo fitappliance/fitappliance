@@ -77,7 +77,106 @@ function buildWebSiteJsonLd() {
   };
 }
 
-function buildBrandPageHtml({ brand, category, count, side, rear, top, slug }) {
+function buildClearanceNarrative({
+  brand,
+  categoryMeta,
+  side,
+  rear,
+  top,
+  defaultSide,
+  defaultRear,
+  defaultTop
+}) {
+  const comparisons = [];
+
+  if (side > defaultSide) {
+    comparisons.push(`wider side spacing than the ${defaultSide}mm category average (${side}mm required)`);
+  } else if (side < defaultSide) {
+    comparisons.push(
+      `narrower side clearance than most brands (${side}mm vs ${defaultSide}mm average), which can help in tighter cavities`
+    );
+  }
+
+  if (rear > defaultRear + 10) {
+    comparisons.push(`above-average rear clearance (${rear}mm vs ${defaultRear}mm default) — leave extra wall space for airflow`);
+  }
+
+  if (top > defaultTop + 15) {
+    comparisons.push(
+      `generous top clearance of ${top}mm (default is ${defaultTop}mm) — cabinetry above must be ${top}mm or higher from the appliance top`
+    );
+  } else if (top < defaultTop - 10) {
+    comparisons.push(
+      `unusually low top clearance requirement (${top}mm vs ${defaultTop}mm default) — good for fitted kitchen cabinetry`
+    );
+  }
+
+  const comparisonText = comparisons.length > 0
+    ? ` Notable: ${comparisons.join('; ')}.`
+    : ' These clearances align with category defaults.';
+
+  return `${brand} ${categoryMeta.labelPlural.toLowerCase()} installed in Australian homes require ` +
+    `${side}mm side, ${rear}mm rear, and ${top}mm top ventilation clearance per manufacturer guidelines.` +
+    `${comparisonText} Insufficient clearance can void warranty and cause premature compressor failure.`;
+}
+
+function buildInstallTips({ side, rear, top, categoryMeta }) {
+  const tips = [];
+
+  if (rear > 30) {
+    tips.push(
+      `Push ${categoryMeta.labelSingular} at least ${rear}mm from the wall before securing — use a tape measure, not eyeballing.`
+    );
+  }
+  if (side > 30) {
+    tips.push(`Cavity width must exceed the appliance width by at least ${side * 2}mm total (${side}mm each side).`);
+  }
+  if (top > 40) {
+    tips.push(`If installing under overhead cabinetry, confirm ${top}mm gap above the lid or top panel.`);
+  }
+
+  tips.push(
+    `Measure your cavity before purchase — ${categoryMeta.labelSingular} dimensions vary by ±20mm between models within this brand.`
+  );
+
+  return tips.slice(0, 3);
+}
+
+function buildBreadcrumbJsonLd({ slug, brand, categoryLabel }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'FitAppliance',
+        item: 'https://fitappliance.com.au'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: `${brand} ${categoryLabel} Clearance`,
+        item: `https://fitappliance.com.au/brands/${slug}`
+      }
+    ]
+  };
+}
+
+function buildBrandPageHtml({
+  brand,
+  brandRaw = brand,
+  category,
+  count,
+  side,
+  rear,
+  top,
+  slug,
+  defaultSide,
+  defaultRear,
+  defaultTop,
+  modelSamples = []
+}) {
   const categoryMeta = CATEGORY_META[category] ?? {
     slug: category.replace(/_/g, '-'),
     labelPlural: category,
@@ -89,8 +188,35 @@ function buildBrandPageHtml({ brand, category, count, side, rear, top, slug }) {
     `Requires ${side}mm side, ${rear}mm rear, ${top}mm top clearance. Find the ${count} ${brand} ` +
     `${categoryMeta.labelSingular} models that fit your cavity.`;
   const canonical = `https://fitappliance.com.au/brands/${slug}`;
-  const ctaUrl = `/?cat=${encodeURIComponent(category)}&brand=${encodeURIComponent(brand)}`;
+  const ctaUrl = `/?cat=${encodeURIComponent(category)}&brand=${encodeURIComponent(brandRaw)}`;
   const siteJsonLd = JSON.stringify(buildWebSiteJsonLd(), null, 2);
+  const breadcrumbJsonLd = JSON.stringify(
+    buildBreadcrumbJsonLd({
+      slug,
+      brand,
+      categoryLabel: categoryMeta.labelPlural
+    }),
+    null,
+    2
+  );
+  const narrative = buildClearanceNarrative({
+    brand,
+    categoryMeta,
+    side,
+    rear,
+    top,
+    defaultSide,
+    defaultRear,
+    defaultTop
+  });
+  const installTips = buildInstallTips({ side, rear, top, categoryMeta });
+  const modelPreview = modelSamples.map((sample) => (
+    `<div class="model-item">
+      <div class="model-name">${escHtml(sample.model)}</div>
+      <div class="model-dims">W ${sample.w}mm × H ${sample.h}mm × D ${sample.d}mm</div>
+      <a class="model-link" href="/?cat=${encodeURIComponent(category)}&brand=${encodeURIComponent(brandRaw)}&h=${sample.h}">Check if this fits your space →</a>
+    </div>`
+  )).join('');
 
   return `<!doctype html>
 <html lang="en-AU">
@@ -178,6 +304,67 @@ function buildBrandPageHtml({ brand, category, count, side, rear, top, slug }) {
       transition: background .15s;
     }
     .cta:hover { background: var(--copper); }
+    .install-section {
+      margin: 30px 0 18px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--white);
+    }
+    .install-section h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: var(--ink);
+      font-family: 'Instrument Serif', serif;
+    }
+    .install-tips {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink-2);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .install-tips li + li {
+      margin-top: 8px;
+    }
+    .model-preview {
+      margin-top: 26px;
+    }
+    .model-preview h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: var(--ink);
+      font-family: 'Instrument Serif', serif;
+    }
+    .model-list {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .model-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--white);
+      padding: 12px;
+    }
+    .model-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .model-dims {
+      font-size: 13px;
+      color: var(--ink-2);
+      margin-bottom: 8px;
+    }
+    .model-link {
+      font-size: 12.5px;
+      color: var(--copper);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .model-link:hover { text-decoration: underline; }
     footer {
       margin-top: 36px;
       font-size: 13px;
@@ -189,21 +376,25 @@ function buildBrandPageHtml({ brand, category, count, side, rear, top, slug }) {
   <main>
     <a class="back-link" href="https://fitappliance.com.au">← Back to FitAppliance</a>
     <h1>${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} Clearance Requirements</h1>
-    <p>
-      Australian installation guidance for <strong>${escHtml(brand)}</strong> ${escHtml(categoryMeta.labelPlural.toLowerCase())}
-      should account for ventilation and access spacing before purchase.
-    </p>
-    <p>
-      Current baseline clearance for this brand/category is <strong>${side}mm side</strong>,
-      <strong>${rear}mm rear</strong>, and <strong>${top}mm top</strong>. These values help prevent
-      airflow restriction, heat build-up, and service-access issues.
-    </p>
+    <p>${escHtml(narrative)}</p>
     <div class="metric-grid">
       <div class="metric">Side clearance<br><b>${side}mm</b></div>
       <div class="metric">Rear clearance<br><b>${rear}mm</b></div>
       <div class="metric">Top clearance<br><b>${top}mm</b></div>
       <div class="metric">Models in database<br><b>${count}</b></div>
     </div>
+    <section class="install-section">
+      <h2>Installation Tips</h2>
+      <ul class="install-tips">
+        ${installTips.map((tip) => `<li>${escHtml(tip)}</li>`).join('')}
+      </ul>
+    </section>
+    ${modelSamples.length > 0 ? `<section class="model-preview">
+      <h2>Featured ${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} Models</h2>
+      <div class="model-list">
+        ${modelPreview}
+      </div>
+    </section>` : ''}
     <a class="cta" href="${ctaUrl}">Find ${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} Models That Fit Your Space</a>
     <footer>
       <p>Source: FitAppliance clearance and model coverage dataset for Australia.</p>
@@ -211,6 +402,9 @@ function buildBrandPageHtml({ brand, category, count, side, rear, top, slug }) {
   </main>
   <script type="application/ld+json">
 ${siteJsonLd}
+  </script>
+  <script type="application/ld+json">
+${breadcrumbJsonLd}
   </script>
 </body>
 </html>
@@ -244,14 +438,18 @@ async function generateBrandPages(options = {}) {
 
   for (const [category, brandRules] of Object.entries(rules)) {
     if (!brandRules || typeof brandRules !== 'object') continue;
+    const categoryProducts = products.filter((product) => product.cat === category);
+    const defaultRule = brandRules.__default__ ?? {};
+    const defaultSide = Number.isFinite(defaultRule.side) ? defaultRule.side : 0;
+    const defaultRear = Number.isFinite(defaultRule.rear) ? defaultRule.rear : 0;
+    const defaultTop = Number.isFinite(defaultRule.top) ? defaultRule.top : 0;
 
     for (const [brand, rule] of Object.entries(brandRules)) {
       if (brand === '__default__') continue;
       if (!rule || typeof rule !== 'object') continue;
 
-      const modelCount = products.filter((product) =>
-        product.cat === category && product.brand === brand
-      ).length;
+      const matchedProducts = categoryProducts.filter((product) => product.brand === brand);
+      const modelCount = matchedProducts.length;
       if (modelCount < 1) continue;
 
       const brandSlug = slugify(brand);
@@ -263,6 +461,20 @@ async function generateBrandPages(options = {}) {
       const side = Number.isFinite(rule.side) ? rule.side : 0;
       const rear = Number.isFinite(rule.rear) ? rule.rear : 0;
       const top = Number.isFinite(rule.top) ? rule.top : 0;
+      const modelSamples = [...matchedProducts]
+        .sort((left, right) => {
+          const leftHeight = Number.isFinite(left.h) ? left.h : 0;
+          const rightHeight = Number.isFinite(right.h) ? right.h : 0;
+          if (leftHeight !== rightHeight) return rightHeight - leftHeight;
+          return String(left.model ?? '').localeCompare(String(right.model ?? ''));
+        })
+        .slice(0, 3)
+        .map((product) => ({
+          model: product.model,
+          w: product.w,
+          h: product.h,
+          d: product.d
+        }));
 
       const pageRecord = {
         brand,
@@ -273,6 +485,10 @@ async function generateBrandPages(options = {}) {
         side,
         rear,
         top,
+        defaultSide,
+        defaultRear,
+        defaultTop,
+        modelSamples,
         filePath
       };
 
@@ -288,12 +504,17 @@ async function generateBrandPages(options = {}) {
     const displayBrand = displayBrandName(row.brand);
     const html = buildBrandPageHtml({
       brand: displayBrand,
+      brandRaw: row.brand,
       category: row.cat,
       count: row.models,
       side: row.side,
       rear: row.rear,
       top: row.top,
-      slug: row.slug
+      slug: row.slug,
+      defaultSide: row.defaultSide,
+      defaultRear: row.defaultRear,
+      defaultTop: row.defaultTop,
+      modelSamples: row.modelSamples
     });
     await writeFile(row.filePath, html, 'utf8');
   }
@@ -331,6 +552,8 @@ if (require.main === module) {
 }
 
 module.exports = {
+  buildClearanceNarrative,
+  buildInstallTips,
   generateBrandPages,
   slugify
 };

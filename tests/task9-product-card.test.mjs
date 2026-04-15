@@ -69,3 +69,52 @@ test('task 9.3 product-card: no-price list row renders shopping fallback and dis
   assert.match(html, /class="p-row-brand">Hisense</);
   assert.doesNotMatch(html, /class="btn-buy btn-buy--ghost" href="#"/);
 });
+
+test('task 10 rebate: isRebateEligible returns true for stars >= 4', async () => {
+  const { isRebateEligible } = await import(productCardModuleUrl);
+
+  assert.equal(isRebateEligible({ stars: 4 }), true);
+  assert.equal(isRebateEligible({ stars: 5 }), true);
+  assert.equal(isRebateEligible({ stars: 6 }), true);
+});
+
+test('task 10 rebate: isRebateEligible returns false for stars < 4', async () => {
+  const { isRebateEligible } = await import(productCardModuleUrl);
+
+  assert.equal(isRebateEligible({ stars: 3 }), false);
+  assert.equal(isRebateEligible({ stars: 1 }), false);
+});
+
+test('task 10 rebate: isRebateEligible returns false for non-number values', async () => {
+  const { isRebateEligible } = await import(productCardModuleUrl);
+
+  assert.equal(isRebateEligible({ stars: '5' }), false);
+  assert.equal(isRebateEligible({ stars: null }), false);
+  assert.equal(isRebateEligible({}), false);
+});
+
+test('task 10 rebate: warningsHtml includes green badge for eligible products', async () => {
+  const { warningsHtml } = await import(productCardModuleUrl);
+  const html = warningsHtml(makeProduct({ stars: 5, door_swing_mm: 0 }));
+
+  assert.ok(html.includes('card-warning-green'), 'green badge present for 5-star product');
+  assert.ok(html.includes('energy rebate'), 'rebate text present');
+});
+
+test('task 10 rebate: warningsHtml excludes green badge for ineligible products', async () => {
+  const { warningsHtml } = await import(productCardModuleUrl);
+  const html = warningsHtml(makeProduct({ stars: 3, door_swing_mm: 0 }));
+
+  assert.ok(!html.includes('card-warning-green'), 'no green badge for 3-star product');
+});
+
+test('task 10 rebate: buildCard output includes green badge for 5-star products', async () => {
+  const { buildCard } = await import(productCardModuleUrl);
+  const html = buildCard(makeProduct({ stars: 5, door_swing_mm: 0, retailers: [] }), {
+    tcoHtml: () => '',
+    retailersHtml: () => '',
+    resolveRetailerUrl: () => '#'
+  });
+
+  assert.ok(html.includes('card-warning-green'));
+});

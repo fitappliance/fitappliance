@@ -18,6 +18,13 @@ export function buildNoRetailerUrl(product) {
   return `https://www.google.com.au/search?q=${query}&tbm=shop`;
 }
 
+// Australian state energy rebate programs (NSW/VIC/SA/QLD) typically require >= 4-star GEMS.
+const REBATE_STAR_THRESHOLD = 4;
+
+export function isRebateEligible(product) {
+  return typeof product?.stars === 'number' && product.stars >= REBATE_STAR_THRESHOLD;
+}
+
 export function starsHtml(n, total = 6) {
   return Array.from(
     { length: total },
@@ -39,7 +46,7 @@ export function warningsHtml(p) {
       tone: 'red',
     });
   }
-  if (p.door_swing_mm === null) {
+  if (p.door_swing_mm === null || p.door_swing_mm === undefined) {
     warns.push({
       text: '⏳ Door swing clearance pending confirmation',
       tone: 'amber',
@@ -51,9 +58,19 @@ export function warningsHtml(p) {
     });
   }
 
+  if (isRebateEligible(p)) {
+    warns.push({
+      text: '💰 May qualify for state energy rebate — <a href="https://www.energy.gov.au/households/energy-rebates-and-assistance" target="_blank" rel="noopener noreferrer">check eligibility ↗</a>',
+      tone: 'green',
+    });
+  }
+
   return warns
     .map((warning) => {
-      const className = warning.tone === 'amber' ? 'card-warning card-warning-amber' : 'card-warning';
+      const className =
+        warning.tone === 'amber' ? 'card-warning card-warning-amber' :
+        warning.tone === 'green' ? 'card-warning card-warning-green' :
+        'card-warning';
       return `<div class="${className}"><span>${warning.text}</span></div>`;
     })
     .join('');
@@ -133,7 +150,7 @@ export function buildRow(p, deps = {}) {
         ${p.sponsored ? '<span class="tag tag-amber">Sponsored</span>' : ''}
         <span class="tag tag-green">${p.stars}★ GEMS</span>
         ${p.vented ? '<span class="tag tag-red">Vented</span>' : ''}
-        ${p.door_swing_mm === null ? '<span class="tag tag-amber">⏳ Door swing pending confirmation</span>' : ''}
+        ${p.door_swing_mm === null || p.door_swing_mm === undefined ? '<span class="tag tag-amber">⏳ Door swing pending confirmation</span>' : ''}
         ${p.door_swing_mm > 0 ? `<span class="tag tag-red">🚪 Requires ${p.door_swing_mm}mm clearance</span>` : ''}
       </div>
       <div class="p-row-name">${p.model}</div>

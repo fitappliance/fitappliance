@@ -6,6 +6,7 @@ const { validateAppliancesDocument, assertDoorSwingResearchCoverage } = require(
 const { loadSourceDocuments } = require('./sources/local-json.js');
 const { syncEnergyRatingData } = require('./sources/energyrating.js');
 const { syncCommissionFactoryData } = require('./sources/commissionfactory.js');
+const { inferDoorSwing } = require('./infer-door-swing.js');
 const { runCircuitBreaker, runCircuitBreakerOrExit } = require('./utils/circuit-breaker.js');
 const { writeJsonAtomically } = require('./utils/file-utils.js');
 
@@ -197,6 +198,7 @@ async function runMasterSync({
   syncLocalDataFn = syncLocalData,
   syncEnergyRatingDataFn = syncEnergyRatingData,
   syncCommissionFactoryDataFn = syncCommissionFactoryData,
+  inferDoorSwingFn = inferDoorSwing,
   runCircuitBreakerOrExitFn = runCircuitBreakerOrExit
 }) {
   const appliancesPath = path.join(dataDir, 'appliances.json');
@@ -246,9 +248,16 @@ async function runMasterSync({
       logger.log('[sync] CommissionFactory sync disabled; proceeding with local + Energy Rating only');
     }
 
-    const finalDocument = applyAvailabilityState(
+    const availabilityDocument = applyAvailabilityState(
       JSON.parse(await readFile(appliancesPath, 'utf8'))
     );
+    const inferResult = await inferDoorSwingFn({
+      dataDir,
+      logger,
+      write: false,
+      document: availabilityDocument
+    });
+    const finalDocument = inferResult.document;
     validateAppliancesDocument(finalDocument);
     await writeJsonAtomically(appliancesPath, finalDocument);
     await syncClearanceDefaults({

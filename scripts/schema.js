@@ -127,6 +127,13 @@ function validateProduct(product) {
     errors.push(`Product ${product.id ?? '<unknown>'} direct_url must be an https:// URL`);
   }
 
+  if (
+    Object.prototype.hasOwnProperty.call(product, 'inferred_door_swing') &&
+    typeof product.inferred_door_swing !== 'boolean'
+  ) {
+    errors.push(`Product ${product.id ?? '<unknown>'} inferred_door_swing must be boolean when present`);
+  }
+
   return errors;
 }
 

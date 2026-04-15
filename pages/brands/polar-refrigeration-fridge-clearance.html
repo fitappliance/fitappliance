@@ -84,6 +84,67 @@
       transition: background .15s;
     }
     .cta:hover { background: var(--copper); }
+    .install-section {
+      margin: 30px 0 18px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--white);
+    }
+    .install-section h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: var(--ink);
+      font-family: 'Instrument Serif', serif;
+    }
+    .install-tips {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink-2);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .install-tips li + li {
+      margin-top: 8px;
+    }
+    .model-preview {
+      margin-top: 26px;
+    }
+    .model-preview h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: var(--ink);
+      font-family: 'Instrument Serif', serif;
+    }
+    .model-list {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .model-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--white);
+      padding: 12px;
+    }
+    .model-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .model-dims {
+      font-size: 13px;
+      color: var(--ink-2);
+      margin-bottom: 8px;
+    }
+    .model-link {
+      font-size: 12.5px;
+      color: var(--copper);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .model-link:hover { text-decoration: underline; }
     footer {
       margin-top: 36px;
       font-size: 13px;
@@ -95,21 +156,37 @@
   <main>
     <a class="back-link" href="https://fitappliance.com.au">← Back to FitAppliance</a>
     <h1>Polar Refrigeration Fridges Clearance Requirements</h1>
-    <p>
-      Australian installation guidance for <strong>Polar Refrigeration</strong> fridges
-      should account for ventilation and access spacing before purchase.
-    </p>
-    <p>
-      Current baseline clearance for this brand/category is <strong>20mm side</strong>,
-      <strong>50mm rear</strong>, and <strong>50mm top</strong>. These values help prevent
-      airflow restriction, heat build-up, and service-access issues.
-    </p>
+    <p>Polar Refrigeration fridges installed in Australian homes require 20mm side, 50mm rear, and 50mm top ventilation clearance per manufacturer guidelines. Notable: narrower side clearance than most brands (20mm vs 40mm average), which can help in tighter cavities; above-average rear clearance (50mm vs 25mm default) — leave extra wall space for airflow. Insufficient clearance can void warranty and cause premature compressor failure.</p>
     <div class="metric-grid">
       <div class="metric">Side clearance<br><b>20mm</b></div>
       <div class="metric">Rear clearance<br><b>50mm</b></div>
       <div class="metric">Top clearance<br><b>50mm</b></div>
       <div class="metric">Models in database<br><b>4</b></div>
     </div>
+    <section class="install-section">
+      <h2>Installation Tips</h2>
+      <ul class="install-tips">
+        <li>Push fridge at least 50mm from the wall before securing — use a tape measure, not eyeballing.</li><li>If installing under overhead cabinetry, confirm 50mm gap above the lid or top panel.</li><li>Measure your cavity before purchase — fridge dimensions vary by ±20mm between models within this brand.</li>
+      </ul>
+    </section>
+    <section class="model-preview">
+      <h2>Featured Polar Refrigeration Fridges Models</h2>
+      <div class="model-list">
+        <div class="model-item">
+      <div class="model-name">GH337-A</div>
+      <div class="model-dims">W 1435mm × H 960mm × D 750mm</div>
+      <a class="model-link" href="/?cat=fridge&brand=Polar%20Refrigeration&h=960">Check if this fits your space →</a>
+    </div><div class="model-item">
+      <div class="model-name">GH339-A</div>
+      <div class="model-dims">W 2035mm × H 960mm × D 750mm</div>
+      <a class="model-link" href="/?cat=fridge&brand=Polar%20Refrigeration&h=960">Check if this fits your space →</a>
+    </div><div class="model-item">
+      <div class="model-name">GP897-A</div>
+      <div class="model-dims">W 1435mm × H 960mm × D 750mm</div>
+      <a class="model-link" href="/?cat=fridge&brand=Polar%20Refrigeration&h=960">Check if this fits your space →</a>
+    </div>
+      </div>
+    </section>
     <a class="cta" href="/?cat=fridge&brand=Polar%20Refrigeration">Find Polar Refrigeration Fridges Models That Fit Your Space</a>
     <footer>
       <p>Source: FitAppliance clearance and model coverage dataset for Australia.</p>
@@ -136,6 +213,26 @@
     },
     "query-input": "required name=width"
   }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "FitAppliance",
+      "item": "https://fitappliance.com.au"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Polar Refrigeration Fridges Clearance",
+      "item": "https://fitappliance.com.au/brands/polar-refrigeration-fridge-clearance"
+    }
+  ]
 }
   </script>
 </body>
