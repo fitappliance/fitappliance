@@ -163,12 +163,13 @@ test('task 10 infer: side by side fridge null door_swing updates to 0', () => {
   assert.equal(result.document.products[0].door_swing_mm, 0);
 });
 
-test('task 10 infer: upright fridge null door_swing remains unresolved', () => {
+test('task 10 infer: upright fridge null door_swing remains unresolved when non-5B and narrow', () => {
   const doc = makeDoc([{
     id: 'f3',
     cat: 'fridge',
     door_swing_mm: null,
-    features: ['Upright', '5B', 'Class 3']
+    w: 595,
+    features: ['Upright', '1', 'Class 3']
   }]);
   const result = inferFromDocument(doc);
 
@@ -177,14 +178,72 @@ test('task 10 infer: upright fridge null door_swing remains unresolved', () => {
   assert.equal(result.document.products[0].door_swing_mm, null);
 });
 
-test('task 10 infer: bottom mount fridge null door_swing remains unresolved', () => {
+test('task 10 infer: bottom mount fridge null door_swing is inferred as zero swing', () => {
   const doc = makeDoc([{
     id: 'f4',
     cat: 'fridge',
     door_swing_mm: null,
-    features: ['Bottom Mount', '5B', 'Class 3']
+    w: 600,
+    features: ['Upright', '5B', 'Class 3']
   }]);
 
   const result = inferFromDocument(doc);
+  assert.equal(result.updatedCount, 1);
+  assert.equal(result.document.products[0].door_swing_mm, 0);
+});
+
+test('task 13 infer: type-7 upright freezer is inferred as zero swing', () => {
+  const doc = makeDoc([{
+    id: 'fz1',
+    cat: 'fridge',
+    door_swing_mm: null,
+    features: ['Upright', '7', 'Class 3']
+  }]);
+  const result = inferFromDocument(doc);
+
+  assert.equal(result.updatedCount, 1);
+  assert.equal(result.document.products[0].door_swing_mm, 0);
+  assert.equal(result.document.products[0].inferred_door_swing, true);
+});
+
+test('task 13 infer: wide upright fridge (>=880mm) is inferred as zero swing', () => {
+  const doc = makeDoc([{
+    id: 'fw1',
+    cat: 'fridge',
+    door_swing_mm: null,
+    w: 1725,
+    features: ['Upright', '5T', 'Class 5']
+  }]);
+
+  const result = inferFromDocument(doc);
+  assert.equal(result.updatedCount, 1);
+  assert.equal(result.document.products[0].door_swing_mm, 0);
+});
+
+test('task 13 infer: upright bottom-mount code 5B is inferred as zero swing', () => {
+  const doc = makeDoc([{
+    id: 'fb1',
+    cat: 'fridge',
+    door_swing_mm: null,
+    w: 600,
+    features: ['Upright', '5B', 'Class 4']
+  }]);
+
+  const result = inferFromDocument(doc);
+  assert.equal(result.updatedCount, 1);
+  assert.equal(result.document.products[0].door_swing_mm, 0);
+});
+
+test('task 13 infer: narrow upright non-5B non-type7 remains for manual research', () => {
+  const doc = makeDoc([{
+    id: 'fs1',
+    cat: 'fridge',
+    door_swing_mm: null,
+    w: 595,
+    features: ['Upright', '1', 'Class 2']
+  }]);
+  const result = inferFromDocument(doc);
+
   assert.equal(result.updatedCount, 0);
+  assert.equal(result.document.products[0].door_swing_mm, null);
 });

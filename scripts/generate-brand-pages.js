@@ -163,6 +163,26 @@ function buildBreadcrumbJsonLd({ slug, brand, categoryLabel }) {
   };
 }
 
+function buildSocialMetaTags({ title, description, canonical, brandImageUrl = null }) {
+  const imageMeta = brandImageUrl
+    ? `  <meta property="og:image" content="${escHtml(brandImageUrl)}">`
+    : '';
+
+  return [
+    '  <meta property="og:type" content="article">',
+    '  <meta property="og:site_name" content="FitAppliance">',
+    `  <meta property="og:title" content="${escHtml(title)}">`,
+    `  <meta property="og:description" content="${escHtml(description)}">`,
+    `  <meta property="og:url" content="${canonical}">`,
+    '  <meta property="og:locale" content="en_AU">',
+    imageMeta,
+    '  <meta name="twitter:card" content="summary">',
+    `  <meta name="twitter:title" content="${escHtml(title)}">`,
+    `  <meta name="twitter:description" content="${escHtml(description)}">`,
+    '  <meta name="twitter:site" content="@fitappliance">'
+  ].filter(Boolean).join('\n');
+}
+
 function buildBrandPageHtml({
   brand,
   brandRaw = brand,
@@ -228,6 +248,7 @@ function buildBrandPageHtml({
   <title>${escHtml(title)}</title>
   <meta name="description" content="${escHtml(description)}">
   <link rel="canonical" href="${canonical}">
+  ${buildSocialMetaTags({ title, description, canonical, brandImageUrl: null })}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">

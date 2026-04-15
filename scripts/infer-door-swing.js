@@ -9,6 +9,9 @@ const FRIDGE_ZERO_SWING_CONFIGURATIONS = new Set([
   'Side by Side',
   'French Door'
 ]);
+const FRIDGE_ZERO_SWING_TYPE_CODES = new Set(['7']);
+const FRIDGE_WIDE_UPRIGHT_THRESHOLD_MM = 880;
+const FRIDGE_BOTTOM_MOUNT_CODE = '5B';
 
 const INFERENCE_RULES = {
   washing_machine: {
@@ -31,11 +34,34 @@ const INFERENCE_RULES = {
   },
   fridge: {
     condition: (product) => {
-      const configuration = product?.features?.[0];
-      return typeof configuration === 'string' && FRIDGE_ZERO_SWING_CONFIGURATIONS.has(configuration);
+      const config = product?.features?.[0];
+      const type = product?.features?.[1];
+      const width = product?.w;
+
+      if (type === '1') {
+        return false;
+      }
+
+      if (typeof config === 'string' && FRIDGE_ZERO_SWING_CONFIGURATIONS.has(config)) {
+        return true;
+      }
+
+      if (config === 'Upright' && typeof type === 'string' && FRIDGE_ZERO_SWING_TYPE_CODES.has(type)) {
+        return true;
+      }
+
+      if (config === 'Upright' && typeof width === 'number' && width >= FRIDGE_WIDE_UPRIGHT_THRESHOLD_MM) {
+        return true;
+      }
+
+      if (config === 'Upright' && type === FRIDGE_BOTTOM_MOUNT_CODE) {
+        return true;
+      }
+
+      return false;
     },
     value: 0,
-    reason: 'fridge configuration (Chest/Side-by-Side/French Door) — no lateral door arc'
+    reason: 'fridge configuration (Chest/SBS/FD/type-7-freezer/wide-upright/bottom-mount) — no lateral door arc'
   }
 };
 
@@ -117,6 +143,9 @@ if (require.main === module) {
 
 module.exports = {
   FRIDGE_ZERO_SWING_CONFIGURATIONS,
+  FRIDGE_ZERO_SWING_TYPE_CODES,
+  FRIDGE_WIDE_UPRIGHT_THRESHOLD_MM,
+  FRIDGE_BOTTOM_MOUNT_CODE,
   inferDoorSwing,
   inferFromDocument,
   INFERENCE_RULES

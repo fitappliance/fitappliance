@@ -126,3 +126,46 @@ test('generateBrandPages uses display-friendly brand names in generated HTML whi
   assert.match(html, /Hisense Fridges Clearance Requirements Australia/);
   assert.match(html, /Find Hisense Fridges Models That Fit Your Space/);
 });
+
+test('generateBrandPages injects og:title meta tags into brand pages', async () => {
+  const { generateBrandPages } = await import(generatorModuleUrl);
+  const workspace = await createWorkspace();
+
+  await generateBrandPages({
+    dataDir: workspace.dataDir,
+    outputDir: workspace.outputDir,
+    logger: { log() {} }
+  });
+
+  const html = await readFile(path.join(workspace.outputDir, 'samsung-fridge-clearance.html'), 'utf8');
+  assert.match(html, /<meta property="og:title"/);
+});
+
+test('generateBrandPages keeps og:url aligned with canonical URL', async () => {
+  const { generateBrandPages } = await import(generatorModuleUrl);
+  const workspace = await createWorkspace();
+
+  await generateBrandPages({
+    dataDir: workspace.dataDir,
+    outputDir: workspace.outputDir,
+    logger: { log() {} }
+  });
+
+  const html = await readFile(path.join(workspace.outputDir, 'samsung-fridge-clearance.html'), 'utf8');
+  assert.match(html, /<link rel="canonical" href="https:\/\/fitappliance\.com\.au\/brands\/samsung-fridge-clearance">/);
+  assert.match(html, /<meta property="og:url" content="https:\/\/fitappliance\.com\.au\/brands\/samsung-fridge-clearance">/);
+});
+
+test('generateBrandPages injects twitter card meta tags', async () => {
+  const { generateBrandPages } = await import(generatorModuleUrl);
+  const workspace = await createWorkspace();
+
+  await generateBrandPages({
+    dataDir: workspace.dataDir,
+    outputDir: workspace.outputDir,
+    logger: { log() {} }
+  });
+
+  const html = await readFile(path.join(workspace.outputDir, 'samsung-fridge-clearance.html'), 'utf8');
+  assert.match(html, /<meta name="twitter:card" content="summary">/);
+});
