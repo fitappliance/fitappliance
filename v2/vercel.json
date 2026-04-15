@@ -4,6 +4,7 @@
   "regions": ["syd1"],
   "outputDirectory": ".",
   "rewrites": [
+    { "source": "/google32758d7798f4a670.html", "destination": "/google32758d7798f4a670.html" },
     { "source": "/ads.txt", "destination": "/ads.txt" },
     { "source": "/data/(.*)", "destination": "/public/data/$1" },
     { "source": "/scripts/(.*)", "destination": "/public/scripts/$1" },

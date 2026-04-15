@@ -3,6 +3,7 @@
   "name": "fitappliance",
   "regions": ["syd1"],
   "rewrites": [
+    { "source": "/google32758d7798f4a670.html", "destination": "/google32758d7798f4a670.html" },
     { "source": "/google5keGnUyvuq31_mxZ9pNVPIsh7BzKBbM7aHdxUTZZDJM.html", "destination": "/google5keGnUyvuq31_mxZ9pNVPIsh7BzKBbM7aHdxUTZZDJM.html" },
     { "source": "/data/:path*",          "destination": "/public/data/:path*" },
     { "source": "/scripts/:path*",       "destination": "/public/scripts/:path*" },
