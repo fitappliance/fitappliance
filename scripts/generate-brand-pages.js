@@ -2,6 +2,7 @@
 
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
+const { displayBrandName } = require('./utils/brand-utils.js');
 
 const CATEGORY_META = {
   fridge: {
@@ -284,8 +285,9 @@ async function generateBrandPages(options = {}) {
 
   const indexRows = Array.from(pageBySlug.values());
   for (const row of indexRows) {
+    const displayBrand = displayBrandName(row.brand);
     const html = buildBrandPageHtml({
-      brand: row.brand,
+      brand: displayBrand,
       category: row.cat,
       count: row.models,
       side: row.side,

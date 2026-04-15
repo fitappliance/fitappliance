@@ -94,3 +94,35 @@ test('generateBrandPages does not create brand pages for rules with zero matched
   const hasLgPage = indexRows.some((row) => row.slug === 'lg-fridge-clearance');
   assert.equal(hasLgPage, false);
 });
+
+test('generateBrandPages uses display-friendly brand names in generated HTML while keeping raw slugs stable', async () => {
+  const { generateBrandPages } = await import(generatorModuleUrl);
+  const workspace = await createWorkspace();
+
+  const appliances = JSON.parse(await readFile(path.join(workspace.dataDir, 'appliances.json'), 'utf8'));
+  appliances.products = [
+    {
+      ...appliances.products[0],
+      id: 'f-hisense-1',
+      brand: 'HISENSE',
+      model: 'HRBC113'
+    }
+  ];
+  await writeFile(path.join(workspace.dataDir, 'appliances.json'), `${JSON.stringify(appliances, null, 2)}\n`);
+
+  const clearance = JSON.parse(await readFile(path.join(workspace.dataDir, 'clearance.json'), 'utf8'));
+  clearance.rules.fridge.HISENSE = { side: 25, rear: 25, top: 30 };
+  await writeFile(path.join(workspace.dataDir, 'clearance.json'), `${JSON.stringify(clearance, null, 2)}\n`);
+
+  await generateBrandPages({
+    dataDir: workspace.dataDir,
+    outputDir: workspace.outputDir,
+    logger: { log() {} }
+  });
+
+  const hisensePath = path.join(workspace.outputDir, 'hisense-fridge-clearance.html');
+  const html = await readFile(hisensePath, 'utf8');
+
+  assert.match(html, /Hisense Fridges Clearance Requirements Australia/);
+  assert.match(html, /Find Hisense Fridges Models That Fit Your Space/);
+});

@@ -1,3 +1,23 @@
+import { displayBrandName } from './brand-utils.js';
+
+function escHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  }[char]));
+}
+
+export function buildNoRetailerUrl(product) {
+  const sku = (product?.model ?? '').trim().split(/\s+/)[0];
+  const query = encodeURIComponent(
+    sku ? `${sku} buy australia` : `${product?.brand ?? ''} ${product?.model ?? ''} buy australia`
+  );
+  return `https://www.google.com.au/search?q=${query}&tbm=shop`;
+}
+
 export function starsHtml(n, total = 6) {
   return Array.from(
     { length: total },
@@ -49,12 +69,15 @@ export function buildCard(p, deps = {}) {
   const hasPrice = retailers.length > 0;
   const bestPrice = hasPrice ? Math.min(...retailers.map(r => r.p)) : null;
   const primaryRetailer = hasPrice ? retailers[0] : null;
+  const noRetailerUrl = hasPrice ? '' : buildNoRetailerUrl(p);
+  const displayBrand = displayBrandName(p.brand);
+  const compareLabel = `${displayBrand} ${p.model.split(' ').slice(0, 3).join(' ')}`;
 
   return `
   <div class="p-card">
     <div class="card-emoji">${p.emoji}${p.sponsored ? '<span class="sponsored-tag">Sponsored</span>' : ''}</div>
     <div class="card-body">
-      <div class="c-brand">${p.brand}</div>
+      <div class="c-brand">${displayBrand}</div>
       <div class="c-name">${p.model}</div>
       <div class="c-dims">
         <span class="dim-tag">W ${p.w}mm</span>
@@ -71,14 +94,14 @@ export function buildCard(p, deps = {}) {
         ${
           hasPrice
             ? `<div class="c-price">$${bestPrice.toLocaleString()}<small>AUD best price</small></div>`
-            : '<div class="c-price no-price">Price not available</div>'
+            : '<div class="c-price no-price">Price unavailable — search online</div>'
         }
         <div class="c-actions">
-          <button class="btn-compare" onclick="addCompare('${p.id}','${p.brand} ${p.model.split(' ').slice(0, 3).join(' ')}')">Compare</button>
+          <button class="btn-compare" onclick="addCompare('${p.id}','${escHtml(compareLabel)}')">Compare</button>
           ${
             hasPrice
               ? `<a class="btn-buy" href="${resolveRetailerUrl(primaryRetailer, p)}" target="_blank" rel="noopener sponsored">Buy</a>`
-              : '<span class="btn-buy btn-buy--ghost">Check Retailers</span>'
+              : `<a class="btn-buy btn-buy--ghost" href="${escHtml(noRetailerUrl)}" target="_blank" rel="noopener noreferrer">Search online</a>`
           }
         </div>
       </div>
@@ -95,6 +118,9 @@ export function buildRow(p, deps = {}) {
   const retailers = Array.isArray(p.retailers) ? p.retailers : [];
   const hasPrice = retailers.length > 0;
   const bestP = hasPrice ? Math.min(...retailers.map(r => r.p)) : null;
+  const noRetailerUrl = hasPrice ? '' : buildNoRetailerUrl(p);
+  const displayBrand = displayBrandName(p.brand);
+  const compareLabel = `${displayBrand} ${p.model.split(' ').slice(0, 2).join(' ')}`;
   const annual = annualEnergyCost(p.kwh_year);
   const total = Math.round(lifetimeCost(p.price, p.kwh_year));
 
@@ -103,7 +129,7 @@ export function buildRow(p, deps = {}) {
     <div class="p-row-emoji">${p.emoji}</div>
     <div class="p-row-body">
       <div class="p-row-meta">
-        <span class="p-row-brand">${p.brand}</span>
+        <span class="p-row-brand">${displayBrand}</span>
         ${p.sponsored ? '<span class="tag tag-amber">Sponsored</span>' : ''}
         <span class="tag tag-green">${p.stars}★ GEMS</span>
         ${p.vented ? '<span class="tag tag-red">Vented</span>' : ''}
@@ -121,20 +147,20 @@ export function buildRow(p, deps = {}) {
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
         ${hasPrice ? retailers.map(r => `<a href="${resolveRetailerUrl(r, p)}" target="_blank" rel="noopener sponsored" style="font-size:12.5px;color:var(--copper);font-weight:600;text-decoration:none;background:var(--copper-bg);padding:4px 10px;border-radius:6px">${r.n} $${r.p.toLocaleString()} ↗</a>`).join('') : ''}
       </div>
-      <div style="font-size:10.5px;color:var(--ink-3);margin-top:4px;font-style:italic">We earn a commission if you purchase via these links. <a href="#" style="color:var(--copper)">Disclosure</a></div>
+      <div style="font-size:10.5px;color:var(--ink-3);margin-top:4px;font-style:italic">We earn a commission if you purchase via these links. <a href="/affiliate-disclosure" style="color:var(--copper)">Disclosure</a></div>
     </div>
     <div class="p-row-actions">
       ${
         hasPrice
           ? `<div class="p-row-price">$${bestP.toLocaleString()}<small>AUD best price</small></div>`
-          : '<div class="p-row-price no-price">Price not available</div>'
+          : '<div class="p-row-price no-price">Price unavailable — search online</div>'
       }
       <div style="display:flex;gap:6px">
-        <button class="btn-compare" onclick="addCompare('${p.id}','${p.brand} ${p.model.split(' ').slice(0, 2).join(' ')}')">Compare</button>
+        <button class="btn-compare" onclick="addCompare('${p.id}','${escHtml(compareLabel)}')">Compare</button>
         ${
           hasPrice
             ? `<a class="btn-buy" href="${resolveRetailerUrl(retailers[0], p)}" target="_blank" rel="noopener sponsored">Buy</a>`
-            : '<span class="btn-buy btn-buy--ghost">Check Retailers</span>'
+            : `<a class="btn-buy btn-buy--ghost" href="${escHtml(noRetailerUrl)}" target="_blank" rel="noopener noreferrer">Search online</a>`
         }
       </div>
     </div>

@@ -93,6 +93,40 @@ test('red 1: mergeProduct keeps valid 0/false source values by using ?? semantic
   assert.equal(merged.sponsored, false);
 });
 
+test('mergeProduct copies direct_url when source provides an https link', async () => {
+  const { mergeProduct } = await loadSyncModule();
+
+  const merged = mergeProduct(
+    makeProduct({
+      id: 'w-direct-url',
+      direct_url: null
+    }),
+    {
+      id: 'w-direct-url',
+      direct_url: 'https://www.jbhifi.com.au/search?query=WW90T684DLH'
+    }
+  );
+
+  assert.equal(merged.direct_url, 'https://www.jbhifi.com.au/search?query=WW90T684DLH');
+});
+
+test('mergeProduct preserves existing direct_url when source sends null', async () => {
+  const { mergeProduct } = await loadSyncModule();
+
+  const merged = mergeProduct(
+    makeProduct({
+      id: 'w-direct-url-keep',
+      direct_url: 'https://www.jbhifi.com.au/search?query=WW90T684DLH'
+    }),
+    {
+      id: 'w-direct-url-keep',
+      direct_url: null
+    }
+  );
+
+  assert.equal(merged.direct_url, 'https://www.jbhifi.com.au/search?query=WW90T684DLH');
+});
+
 test('red 2: syncLocalData rejects invalid merged output and leaves appliances.json untouched', async () => {
   const { syncLocalData } = await loadSyncModule();
   const workspace = await createWorkspace({
