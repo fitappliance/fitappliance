@@ -8,10 +8,11 @@
     { "source": "/data/(.*)", "destination": "/public/data/$1" },
     { "source": "/scripts/(.*)", "destination": "/public/scripts/$1" },
     { "source": "/affiliate-disclosure", "destination": "/pages/affiliate-disclosure.html" },
-    { "source": "/privacy-policy", "destination": "/pages/privacy-policy.html" },
-    { "source": "/sitemap.xml", "destination": "/public/sitemap.xml" },
-    { "source": "/robots.txt", "destination": "/public/robots.txt" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/privacy-policy",       "destination": "/pages/privacy-policy.html" },
+    { "source": "/brands/:slug",         "destination": "/pages/brands/:slug.html" },
+    { "source": "/sitemap.xml",          "destination": "/public/sitemap.xml" },
+    { "source": "/robots.txt",           "destination": "/public/robots.txt" },
+    { "source": "/(.*)",                 "destination": "/index.html" }
   ],
   "headers": [
     {
