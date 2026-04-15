@@ -249,3 +249,7 @@ Key metrics to watch in GA4:
 ---
 
 *Built with FitAppliance v2 — April 2026*
+
+### DNS Verification
+
+TXT: fitappliance.com.au -> google-site-verification=5keGnUyvuq31_mxZ9pNVPIsh7BzKBbM7aHdxUTZZDJM
