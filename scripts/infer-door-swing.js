@@ -4,6 +4,12 @@ const path = require('node:path');
 const { readFile } = require('node:fs/promises');
 const { writeJsonAtomically } = require('./utils/file-utils.js');
 
+const FRIDGE_ZERO_SWING_CONFIGURATIONS = new Set([
+  'Chest',
+  'Side by Side',
+  'French Door'
+]);
+
 const INFERENCE_RULES = {
   washing_machine: {
     condition: (product) =>
@@ -22,6 +28,14 @@ const INFERENCE_RULES = {
     condition: () => true,
     value: 0,
     reason: 'front-panel down-opening — no lateral arc'
+  },
+  fridge: {
+    condition: (product) => {
+      const configuration = product?.features?.[0];
+      return typeof configuration === 'string' && FRIDGE_ZERO_SWING_CONFIGURATIONS.has(configuration);
+    },
+    value: 0,
+    reason: 'fridge configuration (Chest/Side-by-Side/French Door) — no lateral door arc'
   }
 };
 
@@ -102,6 +116,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  FRIDGE_ZERO_SWING_CONFIGURATIONS,
   inferDoorSwing,
   inferFromDocument,
   INFERENCE_RULES

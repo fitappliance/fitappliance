@@ -132,6 +132,59 @@ test('task 10 infer: inferred_door_swing=true passes schema validateProduct', ()
   assert.deepEqual(errors, []);
 });
 
-test('task 10 infer: rules map does not define fridge inference', () => {
-  assert.equal(INFERENCE_RULES.fridge, undefined);
+test('task 10 infer: rules map defines fridge inference rule', () => {
+  assert.equal(typeof INFERENCE_RULES.fridge?.condition, 'function');
+});
+
+test('task 10 infer: chest fridge null door_swing updates to 0', () => {
+  const doc = makeDoc([{
+    id: 'f1',
+    cat: 'fridge',
+    door_swing_mm: null,
+    features: ['Chest', '4', 'Class 4']
+  }]);
+  const result = inferFromDocument(doc);
+
+  assert.equal(result.updatedCount, 1);
+  assert.equal(result.document.products[0].door_swing_mm, 0);
+  assert.equal(result.document.products[0].inferred_door_swing, true);
+});
+
+test('task 10 infer: side by side fridge null door_swing updates to 0', () => {
+  const doc = makeDoc([{
+    id: 'f2',
+    cat: 'fridge',
+    door_swing_mm: null,
+    features: ['Side by Side', '5S', 'Class 5']
+  }]);
+
+  const result = inferFromDocument(doc);
+  assert.equal(result.updatedCount, 1);
+  assert.equal(result.document.products[0].door_swing_mm, 0);
+});
+
+test('task 10 infer: upright fridge null door_swing remains unresolved', () => {
+  const doc = makeDoc([{
+    id: 'f3',
+    cat: 'fridge',
+    door_swing_mm: null,
+    features: ['Upright', '5B', 'Class 3']
+  }]);
+  const result = inferFromDocument(doc);
+
+  assert.equal(result.updatedCount, 0);
+  assert.equal(result.unchangedCount, 1);
+  assert.equal(result.document.products[0].door_swing_mm, null);
+});
+
+test('task 10 infer: bottom mount fridge null door_swing remains unresolved', () => {
+  const doc = makeDoc([{
+    id: 'f4',
+    cat: 'fridge',
+    door_swing_mm: null,
+    features: ['Bottom Mount', '5B', 'Class 3']
+  }]);
+
+  const result = inferFromDocument(doc);
+  assert.equal(result.updatedCount, 0);
 });

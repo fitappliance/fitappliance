@@ -12,6 +12,7 @@
     "suggest-swing": "node scripts/suggest-door-swing.js",
     "infer-swing": "node scripts/infer-door-swing.js",
     "bulk-import": "node scripts/bulk-import.js",
+    "research-sheet": "node scripts/generate-research-sheet.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "generate-pages": "node scripts/generate-brand-pages.js && node scripts/generate-sitemap.js",
     "lint": "node --check scripts/*.js scripts/sources/*.js scripts/utils/*.js tests/*.test.mjs && sh -c 'for f in public/scripts/ui/*.js; do node --input-type=module --check < \"$f\"; done'"

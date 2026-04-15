@@ -175,7 +175,8 @@ function buildBrandPageHtml({
   defaultSide,
   defaultRear,
   defaultTop,
-  modelSamples = []
+  modelSamples = [],
+  pendingSwingCount = 0
 }) {
   const categoryMeta = CATEGORY_META[category] ?? {
     slug: category.replace(/_/g, '-'),
@@ -210,6 +211,7 @@ function buildBrandPageHtml({
     defaultTop
   });
   const installTips = buildInstallTips({ side, rear, top, categoryMeta });
+  const confirmedSwingCount = Math.max(0, count - pendingSwingCount);
   const modelPreview = modelSamples.map((sample) => (
     `<div class="model-item">
       <div class="model-name">${escHtml(sample.model)}</div>
@@ -382,6 +384,12 @@ function buildBrandPageHtml({
       <div class="metric">Rear clearance<br><b>${rear}mm</b></div>
       <div class="metric">Top clearance<br><b>${top}mm</b></div>
       <div class="metric">Models in database<br><b>${count}</b></div>
+      ${pendingSwingCount > 0
+        ? `<div class="metric">Door swing confirmed<br>
+  <b>${confirmedSwingCount} of ${count}</b>
+  <small style="color:var(--ink-3);font-size:11px;display:block">Research in progress</small>
+</div>`
+        : `<div class="metric">Door swing data<br><b>✓ All ${count} confirmed</b></div>`}
     </div>
     <section class="install-section">
       <h2>Installation Tips</h2>
@@ -475,6 +483,9 @@ async function generateBrandPages(options = {}) {
           h: product.h,
           d: product.d
         }));
+      const pendingSwingCount = matchedProducts.filter(
+        (product) => product.door_swing_mm === null || product.door_swing_mm === undefined
+      ).length;
 
       const pageRecord = {
         brand,
@@ -488,6 +499,7 @@ async function generateBrandPages(options = {}) {
         defaultSide,
         defaultRear,
         defaultTop,
+        pendingSwingCount,
         modelSamples,
         filePath
       };
@@ -514,6 +526,7 @@ async function generateBrandPages(options = {}) {
       defaultSide: row.defaultSide,
       defaultRear: row.defaultRear,
       defaultTop: row.defaultTop,
+      pendingSwingCount: row.pendingSwingCount,
       modelSamples: row.modelSamples
     });
     await writeFile(row.filePath, html, 'utf8');

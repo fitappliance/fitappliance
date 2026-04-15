@@ -1,0 +1,7571 @@
+[
+  {
+    "rank": 1,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 1725,
+    "widthRange": [
+      1725,
+      1728
+    ],
+    "modelCount": 14,
+    "ids": [
+      "fridge-arf2745",
+      "fridge-arf3826",
+      "fridge-arf3829",
+      "fridge-arf3835",
+      "fridge-arf2439",
+      "fridge-arf3827",
+      "fridge-arf3868",
+      "fridge-arf3824",
+      "fridge-arf2443",
+      "fridge-arf2402",
+      "fridge-arf2396",
+      "fridge-arf2444",
+      "fridge-arf2397",
+      "fridge-arf2461"
+    ],
+    "sampleModel": "WBE4302WC",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2745 --value 20"
+  },
+  {
+    "rank": 2,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 896,
+    "widthRange": [
+      896,
+      896
+    ],
+    "modelCount": 7,
+    "ids": [
+      "fridge-arf3614",
+      "fridge-arf3613",
+      "fridge-arf3612",
+      "fridge-arf3367",
+      "fridge-arf3733",
+      "fridge-arf3737",
+      "fridge-arf3735"
+    ],
+    "sampleModel": "WHE5600SD",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3614 --value 20"
+  },
+  {
+    "rank": 3,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      598
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf2947",
+      "fridge-arf2948",
+      "fridge-arf2523",
+      "fridge-arf2401",
+      "fridge-arf3447",
+      "fridge-arf3450"
+    ],
+    "sampleModel": "WFB2804AB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2947 --value 20"
+  },
+  {
+    "rank": 4,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 1782,
+    "widthRange": [
+      1782,
+      1782
+    ],
+    "modelCount": 5,
+    "ids": [
+      "fridge-arf3833",
+      "fridge-arf3834",
+      "fridge-arf2395",
+      "fridge-arf3258",
+      "fridge-arf2394"
+    ],
+    "sampleModel": "WHE6170SB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3833 --value 20"
+  },
+  {
+    "rank": 5,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      545,
+      550
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf3540",
+      "fridge-arf3877",
+      "fridge-arf3878",
+      "fridge-arf3073"
+    ],
+    "sampleModel": "WTM2500AA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3540 --value 20"
+  },
+  {
+    "rank": 6,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 555,
+    "widthRange": [
+      555,
+      555
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf3876",
+      "fridge-arf2427",
+      "fridge-arf2724",
+      "fridge-arf2432"
+    ],
+    "sampleModel": "WFM0900WD",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3876 --value 20"
+  },
+  {
+    "rank": 7,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 1645,
+    "widthRange": [
+      1645,
+      1646
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf2497",
+      "fridge-arf2649",
+      "fridge-arf2496",
+      "fridge-arf3865"
+    ],
+    "sampleModel": "WBB3400AH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2497 --value 20"
+  },
+  {
+    "rank": 8,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 1756,
+    "widthRange": [
+      1755,
+      1756
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf2537",
+      "fridge-arf2449",
+      "fridge-arf3870",
+      "fridge-arf2647"
+    ],
+    "sampleModel": "WBB3700AH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2537 --value 20"
+  },
+  {
+    "rank": 9,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 1795,
+    "widthRange": [
+      1795,
+      1795
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf2923",
+      "fridge-arf2921",
+      "fridge-arf2922"
+    ],
+    "sampleModel": "WQE5600BA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2923 --value 20"
+  },
+  {
+    "rank": 10,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 796,
+    "widthRange": [
+      796,
+      796
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3449",
+      "fridge-arf3452"
+    ],
+    "sampleModel": "WTM5002SD",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3449 --value 20"
+  },
+  {
+    "rank": 11,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 836,
+    "widthRange": [
+      836,
+      836
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3039",
+      "fridge-arf3037"
+    ],
+    "sampleModel": "WQE4900AA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3039 --value 20"
+  },
+  {
+    "rank": 12,
+    "brand": "Westinghouse",
+    "cat": "fridge",
+    "width": 680,
+    "widthRange": [
+      680,
+      680
+    ],
+    "modelCount": 1,
+    "ids": [
+      "f5"
+    ],
+    "sampleModel": "WBE5314SA Bottom Mount 528L",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id f5 --value 20"
+  },
+  {
+    "rank": 13,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      480
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2799"
+    ],
+    "sampleModel": "WIM1000WD",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2799 --value 20"
+  },
+  {
+    "rank": 14,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 494,
+    "widthRange": [
+      494,
+      494
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2412"
+    ],
+    "sampleModel": "WIM1000WC",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2412 --value 20"
+  },
+  {
+    "rank": 15,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 699,
+    "widthRange": [
+      699,
+      699
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3448"
+    ],
+    "sampleModel": "WTM4302WD",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3448 --value 20"
+  },
+  {
+    "rank": 16,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 1405,
+    "widthRange": [
+      1405,
+      1405
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3822"
+    ],
+    "sampleModel": "WTB2300WH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3822 --value 20"
+  },
+  {
+    "rank": 17,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 1470,
+    "widthRange": [
+      1470,
+      1470
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2581"
+    ],
+    "sampleModel": "WTB2500AH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2581 --value 20"
+  },
+  {
+    "rank": 18,
+    "brand": "WESTINGHOUSE",
+    "cat": "fridge",
+    "width": 1605,
+    "widthRange": [
+      1605,
+      1605
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2441"
+    ],
+    "sampleModel": "WTB2800WH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2441 --value 20"
+  },
+  {
+    "rank": 19,
+    "brand": "LG",
+    "cat": "fridge",
+    "width": 835,
+    "widthRange": [
+      833,
+      836
+    ],
+    "modelCount": 11,
+    "ids": [
+      "fridge-arf3463",
+      "fridge-arf3675",
+      "fridge-arf3423",
+      "fridge-arf3219",
+      "fridge-arf2853",
+      "fridge-arf2548",
+      "fridge-arf3292",
+      "fridge-arf3177",
+      "fridge-arf2773",
+      "fridge-arf2311",
+      "fridge-arf3456"
+    ],
+    "sampleModel": "GF-B400P",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3463 --value 20"
+  },
+  {
+    "rank": 20,
+    "brand": "LG",
+    "cat": "fridge",
+    "width": 598,
+    "widthRange": [
+      595,
+      600
+    ],
+    "modelCount": 10,
+    "ids": [
+      "fridge-arf2264",
+      "fridge-arf2388",
+      "fridge-arf2312",
+      "fridge-arf2597",
+      "fridge-arf2605",
+      "fridge-arf2798",
+      "fridge-arf3411",
+      "fridge-arf3451",
+      "fridge-arf3412",
+      "fridge-arf2790"
+    ],
+    "sampleModel": "GB-335PL",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2264 --value 20"
+  },
+  {
+    "rank": 21,
+    "brand": "LG",
+    "cat": "fridge",
+    "width": 914,
+    "widthRange": [
+      914,
+      914
+    ],
+    "modelCount": 9,
+    "ids": [
+      "fridge-arf3246",
+      "fridge-arf3092",
+      "fridge-arf3095",
+      "fridge-arf3094",
+      "fridge-arf3244",
+      "fridge-arf3027",
+      "fridge-arf3135",
+      "fridge-arf2569",
+      "fridge-arf3096"
+    ],
+    "sampleModel": "GF-B705MBL",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3246 --value 20"
+  },
+  {
+    "rank": 22,
+    "brand": "LG",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      700
+    ],
+    "modelCount": 7,
+    "ids": [
+      "fridge-arf3380",
+      "fridge-arf2270",
+      "fridge-arf2271",
+      "fridge-arf2762",
+      "fridge-arf3458",
+      "fridge-arf2945",
+      "fridge-arf3311"
+    ],
+    "sampleModel": "GT-8S",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3380 --value 20"
+  },
+  {
+    "rank": 23,
+    "brand": "LG",
+    "cat": "fridge",
+    "width": 555,
+    "widthRange": [
+      555,
+      555
+    ],
+    "modelCount": 5,
+    "ids": [
+      "fridge-arf3069",
+      "fridge-arf3637",
+      "fridge-arf2478",
+      "fridge-arf2998",
+      "fridge-arf3566"
+    ],
+    "sampleModel": "GT-1S",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3069 --value 20"
+  },
+  {
+    "rank": 24,
+    "brand": "LG",
+    "cat": "fridge",
+    "width": 912,
+    "widthRange": [
+      908,
+      912
+    ],
+    "modelCount": 5,
+    "ids": [
+      "fridge-arf2546",
+      "fridge-arf2382",
+      "fridge-arf2763",
+      "fridge-arf2383",
+      "fridge-arf2421"
+    ],
+    "sampleModel": "GF-L677SL",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2546 --value 20"
+  },
+  {
+    "rank": 25,
+    "brand": "LG",
+    "cat": "fridge",
+    "width": 780,
+    "widthRange": [
+      780,
+      780
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf2642",
+      "fridge-arf2623",
+      "fridge-arf2750"
+    ],
+    "sampleModel": "GT-5",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2642 --value 20"
+  },
+  {
+    "rank": 26,
+    "brand": "LG",
+    "cat": "fridge",
+    "width": 525,
+    "widthRange": [
+      525,
+      525
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2287"
+    ],
+    "sampleModel": "GU-B194PL",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2287 --value 20"
+  },
+  {
+    "rank": 27,
+    "brand": "HISENSE",
+    "cat": "fridge",
+    "width": 794,
+    "widthRange": [
+      794,
+      794
+    ],
+    "modelCount": 13,
+    "ids": [
+      "fridge-arf2640",
+      "fridge-arf3563",
+      "fridge-arf2331",
+      "fridge-arf3099",
+      "fridge-arf2629",
+      "fridge-arf2639",
+      "fridge-arf3272",
+      "fridge-arf3439",
+      "fridge-arf3199",
+      "fridge-arf3442",
+      "fridge-arf3888",
+      "fridge-arf3889",
+      "fridge-arf2635"
+    ],
+    "sampleModel": "HRTF496SW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2640 --value 20"
+  },
+  {
+    "rank": 28,
+    "brand": "HISENSE",
+    "cat": "fridge",
+    "width": 912,
+    "widthRange": [
+      912,
+      914
+    ],
+    "modelCount": 12,
+    "ids": [
+      "fridge-arf2390",
+      "fridge-arf2871",
+      "fridge-arf3162",
+      "fridge-arf2477",
+      "fridge-arf3141",
+      "fridge-arf3666",
+      "fridge-arf3665",
+      "fridge-arf3453",
+      "fridge-arf2628",
+      "fridge-arf3116",
+      "fridge-arf3552",
+      "fridge-arf3454"
+    ],
+    "sampleModel": "HRFD577B",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2390 --value 20"
+  },
+  {
+    "rank": 29,
+    "brand": "HISENSE",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 8,
+    "ids": [
+      "fridge-arf3340",
+      "fridge-arf3237",
+      "fridge-arf3316",
+      "fridge-arf2645",
+      "fridge-arf2946",
+      "fridge-arf2378",
+      "fridge-arf2368",
+      "fridge-arf2651"
+    ],
+    "sampleModel": "HRBC137",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3340 --value 20"
+  },
+  {
+    "rank": 30,
+    "brand": "HISENSE",
+    "cat": "fridge",
+    "width": 704,
+    "widthRange": [
+      700,
+      704
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf3394",
+      "fridge-arf2831",
+      "fridge-arf2650",
+      "fridge-arf3433",
+      "fridge-arf3435",
+      "fridge-arf2644"
+    ],
+    "sampleModel": "HRTF424",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3394 --value 20"
+  },
+  {
+    "rank": 31,
+    "brand": "HISENSE",
+    "cat": "fridge",
+    "width": 475,
+    "widthRange": [
+      475,
+      475
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf3512",
+      "fridge-arf2793",
+      "fridge-arf3657",
+      "fridge-arf2637"
+    ],
+    "sampleModel": "HRBF126",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3512 --value 20"
+  },
+  {
+    "rank": 32,
+    "brand": "HISENSE",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3335",
+      "fridge-arf2594",
+      "fridge-arf2670"
+    ],
+    "sampleModel": "HRTF206",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3335 --value 20"
+  },
+  {
+    "rank": 33,
+    "brand": "HISENSE",
+    "cat": "fridge",
+    "width": 445,
+    "widthRange": [
+      445,
+      445
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2786",
+      "fridge-arf3513"
+    ],
+    "sampleModel": "HRBF45",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2786 --value 20"
+  },
+  {
+    "rank": 34,
+    "brand": "HISENSE",
+    "cat": "fridge",
+    "width": 517,
+    "widthRange": [
+      515,
+      519
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2734",
+      "fridge-arf2667"
+    ],
+    "sampleModel": "HRBF179B",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2734 --value 20"
+  },
+  {
+    "rank": 35,
+    "brand": "HISENSE",
+    "cat": "fridge",
+    "width": 439,
+    "widthRange": [
+      439,
+      439
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2553"
+    ],
+    "sampleModel": "HRBF47",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2553 --value 20"
+  },
+  {
+    "rank": 36,
+    "brand": "FISHER & PAYKEL",
+    "cat": "fridge",
+    "width": 635,
+    "widthRange": [
+      635,
+      635
+    ],
+    "modelCount": 9,
+    "ids": [
+      "fridge-arf2620",
+      "fridge-arf2494",
+      "fridge-zrf0252",
+      "fridge-zrf0238",
+      "fridge-arf2621",
+      "fridge-arf2323",
+      "fridge-arf2493",
+      "fridge-arf2328",
+      "fridge-arf3587"
+    ],
+    "sampleModel": "RF308FLDW2",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2620 --value 20"
+  },
+  {
+    "rank": 37,
+    "brand": "FISHER & PAYKEL",
+    "cat": "fridge",
+    "width": 790,
+    "widthRange": [
+      790,
+      790
+    ],
+    "modelCount": 9,
+    "ids": [
+      "fridge-arf3570",
+      "fridge-arf3569",
+      "fridge-arf3588",
+      "fridge-arf3586",
+      "fridge-arf3583",
+      "fridge-arf3582",
+      "fridge-arf3585",
+      "fridge-arf3054",
+      "fridge-arf3059"
+    ],
+    "sampleModel": "RF522ADX6",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3570 --value 20"
+  },
+  {
+    "rank": 38,
+    "brand": "FISHER & PAYKEL",
+    "cat": "fridge",
+    "width": 592,
+    "widthRange": [
+      592,
+      592
+    ],
+    "modelCount": 7,
+    "ids": [
+      "fridge-arf3303",
+      "fridge-arf3337",
+      "fridge-arf2890",
+      "fridge-arf2852",
+      "fridge-arf3052",
+      "fridge-arf2837",
+      "fridge-arf3051"
+    ],
+    "sampleModel": "RS6009SBL1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3303 --value 20"
+  },
+  {
+    "rank": 39,
+    "brand": "FISHER & PAYKEL",
+    "cat": "fridge",
+    "width": 603,
+    "widthRange": [
+      603,
+      603
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf3479",
+      "fridge-arf3180",
+      "fridge-arf3477",
+      "fridge-arf3186",
+      "fridge-arf3478",
+      "fridge-arf3523"
+    ],
+    "sampleModel": "RS6121FLJE1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3479 --value 20"
+  },
+  {
+    "rank": 40,
+    "brand": "FISHER & PAYKEL",
+    "cat": "fridge",
+    "width": 756,
+    "widthRange": [
+      756,
+      756
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf3476",
+      "fridge-arf3181",
+      "fridge-arf3485",
+      "fridge-arf3185",
+      "fridge-arf3474",
+      "fridge-arf3524"
+    ],
+    "sampleModel": "RS7621FLJE1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3476 --value 20"
+  },
+  {
+    "rank": 41,
+    "brand": "FISHER & PAYKEL",
+    "cat": "fridge",
+    "width": 680,
+    "widthRange": [
+      680,
+      680
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf2322",
+      "fridge-arf2320",
+      "fridge-arf3547"
+    ],
+    "sampleModel": "*442B* Ice & Water",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2322 --value 20"
+  },
+  {
+    "rank": 42,
+    "brand": "FISHER & PAYKEL",
+    "cat": "fridge",
+    "width": 855,
+    "widthRange": [
+      855,
+      855
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-zrf0241",
+      "fridge-arf2816",
+      "fridge-arf2826"
+    ],
+    "sampleModel": "RB90S64MKIW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0241 --value 20"
+  },
+  {
+    "rank": 43,
+    "brand": "FISHER & PAYKEL",
+    "cat": "fridge",
+    "width": 905,
+    "widthRange": [
+      905,
+      908
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf2887",
+      "fridge-arf2964",
+      "fridge-arf3440"
+    ],
+    "sampleModel": "RF605QDVX2",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2887 --value 20"
+  },
+  {
+    "rank": 44,
+    "brand": "FISHER & PAYKEL",
+    "cat": "fridge",
+    "width": 451,
+    "widthRange": [
+      451,
+      451
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3475",
+      "fridge-arf3183"
+    ],
+    "sampleModel": "RS4621FLJE1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3475 --value 20"
+  },
+  {
+    "rank": 45,
+    "brand": "FISHER & PAYKEL",
+    "cat": "fridge",
+    "width": 898,
+    "widthRange": [
+      896,
+      900
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3507",
+      "fridge-arf3548"
+    ],
+    "sampleModel": "RS90AU1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3507 --value 20"
+  },
+  {
+    "rank": 46,
+    "brand": "FISHER & PAYKEL",
+    "cat": "fridge",
+    "width": 555,
+    "widthRange": [
+      555,
+      555
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3161"
+    ],
+    "sampleModel": "RB60V18",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3161 --value 20"
+  },
+  {
+    "rank": 47,
+    "brand": "FISHER & PAYKEL",
+    "cat": "fridge",
+    "width": 796,
+    "widthRange": [
+      796,
+      796
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3349"
+    ],
+    "sampleModel": "RS80A1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3349 --value 20"
+  },
+  {
+    "rank": 48,
+    "brand": "FISHER & PAYKEL",
+    "cat": "fridge",
+    "width": 890,
+    "widthRange": [
+      890,
+      890
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2896"
+    ],
+    "sampleModel": "RS9120WLJ1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2896 --value 20"
+  },
+  {
+    "rank": 49,
+    "brand": "CHIQ",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      545
+    ],
+    "modelCount": 14,
+    "ids": [
+      "fridge-arf3379",
+      "fridge-arf3377",
+      "fridge-arf2778",
+      "fridge-arf2517",
+      "fridge-arf2460",
+      "fridge-arf3032",
+      "fridge-arf2474",
+      "fridge-arf2462",
+      "fridge-arf3201",
+      "fridge-arf3396",
+      "fridge-arf2861",
+      "fridge-arf2457",
+      "fridge-arf2863",
+      "fridge-arf3214"
+    ],
+    "sampleModel": "CBC233BG",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3379 --value 20"
+  },
+  {
+    "rank": 50,
+    "brand": "CHIQ",
+    "cat": "fridge",
+    "width": 474,
+    "widthRange": [
+      470,
+      475
+    ],
+    "modelCount": 9,
+    "ids": [
+      "fridge-arf3202",
+      "fridge-arf3374",
+      "fridge-arf3375",
+      "fridge-arf3200",
+      "fridge-arf2472",
+      "fridge-arf2473",
+      "fridge-arf3725",
+      "fridge-arf3718",
+      "fridge-arf3376"
+    ],
+    "sampleModel": "CSR046DW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3202 --value 20"
+  },
+  {
+    "rank": 51,
+    "brand": "CHIQ",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      600
+    ],
+    "modelCount": 7,
+    "ids": [
+      "fridge-arf2728",
+      "fridge-arf3385",
+      "fridge-arf2518",
+      "fridge-arf2521",
+      "fridge-arf2858",
+      "fridge-arf3117",
+      "fridge-arf3721"
+    ],
+    "sampleModel": "CBM280NB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2728 --value 20"
+  },
+  {
+    "rank": 52,
+    "brand": "CHIQ",
+    "cat": "fridge",
+    "width": 547,
+    "widthRange": [
+      547,
+      549
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf3398",
+      "fridge-arf3397",
+      "fridge-arf3399",
+      "fridge-arf3400",
+      "fridge-arf2857",
+      "fridge-arf2524"
+    ],
+    "sampleModel": "CSH16*N**",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3398 --value 20"
+  },
+  {
+    "rank": 53,
+    "brand": "CHIQ",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      703
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf3724",
+      "fridge-arf2511",
+      "fridge-arf3720",
+      "fridge-arf3384",
+      "fridge-arf2654",
+      "fridge-arf3407"
+    ],
+    "sampleModel": "CTM40*N*S5E",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3724 --value 20"
+  },
+  {
+    "rank": 54,
+    "brand": "CHIQ",
+    "cat": "fridge",
+    "width": 710,
+    "widthRange": [
+      710,
+      710
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf2818",
+      "fridge-arf2820",
+      "fridge-arf2484"
+    ],
+    "sampleModel": "CSH31*****",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2818 --value 20"
+  },
+  {
+    "rank": 55,
+    "brand": "CHIQ",
+    "cat": "fridge",
+    "width": 494,
+    "widthRange": [
+      494,
+      494
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3184",
+      "fridge-arf2526"
+    ],
+    "sampleModel": "CRSR125DB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3184 --value 20"
+  },
+  {
+    "rank": 56,
+    "brand": "CHIQ",
+    "cat": "fridge",
+    "width": 750,
+    "widthRange": [
+      750,
+      750
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3386",
+      "fridge-arf2727"
+    ],
+    "sampleModel": "CTM512NSS5E",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3386 --value 20"
+  },
+  {
+    "rank": 57,
+    "brand": "CHIQ",
+    "cat": "fridge",
+    "width": 785,
+    "widthRange": [
+      785,
+      785
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2855"
+    ],
+    "sampleModel": "CFD501NB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2855 --value 20"
+  },
+  {
+    "rank": 58,
+    "brand": "CHIQ",
+    "cat": "fridge",
+    "width": 853,
+    "widthRange": [
+      853,
+      853
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3209"
+    ],
+    "sampleModel": "CCD499NWS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3209 --value 20"
+  },
+  {
+    "rank": 59,
+    "brand": "CHIQ",
+    "cat": "fridge",
+    "width": 905,
+    "widthRange": [
+      905,
+      905
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3239"
+    ],
+    "sampleModel": "CCD598NWS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3239 --value 20"
+  },
+  {
+    "rank": 60,
+    "brand": "LIEBHERR",
+    "cat": "fridge",
+    "width": 597,
+    "widthRange": [
+      596,
+      600
+    ],
+    "modelCount": 19,
+    "ids": [
+      "fridge-arf3556",
+      "fridge-arf3560",
+      "fridge-arf3561",
+      "fridge-arf3338",
+      "fridge-arf3332",
+      "fridge-arf3174",
+      "fridge-arf2985",
+      "fridge-arf2984",
+      "fridge-arf2987",
+      "fridge-arf2986",
+      "fridge-arf2988",
+      "fridge-arf3093",
+      "fridge-arf3031",
+      "fridge-arf3333",
+      "fridge-arf3314",
+      "fridge-arf3315",
+      "fridge-arf3413",
+      "fridge-arf2601",
+      "fridge-arf2568"
+    ],
+    "sampleModel": "URPh 3650",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3556 --value 20"
+  },
+  {
+    "rank": 61,
+    "brand": "MIELE",
+    "cat": "fridge",
+    "width": 560,
+    "widthRange": [
+      560,
+      560
+    ],
+    "modelCount": 15,
+    "ids": [
+      "fridge-arf3882",
+      "fridge-arf2918",
+      "fridge-arf2919",
+      "fridge-arf2350",
+      "fridge-arf2360",
+      "fridge-arf2358",
+      "fridge-arf2351",
+      "fridge-arf3030",
+      "fridge-arf2695",
+      "fridge-arf2693",
+      "fridge-arf2694",
+      "fridge-arf3883",
+      "fridge-arf2363",
+      "fridge-arf2991",
+      "fridge-arf2992"
+    ],
+    "sampleModel": "FNS 37402 i",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3882 --value 20"
+  },
+  {
+    "rank": 62,
+    "brand": "MIELE",
+    "cat": "fridge",
+    "width": 597,
+    "widthRange": [
+      597,
+      600
+    ],
+    "modelCount": 11,
+    "ids": [
+      "fridge-arf2967",
+      "fridge-arf3144",
+      "fridge-arf2969",
+      "fridge-arf2978",
+      "fridge-arf2975",
+      "fridge-arf3145",
+      "fridge-arf2976",
+      "fridge-arf3884",
+      "fridge-arf2364",
+      "fridge-arf2347",
+      "fridge-arf2365"
+    ],
+    "sampleModel": "FNS 4382 E edt/cs",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2967 --value 20"
+  },
+  {
+    "rank": 63,
+    "brand": "Sub-Zero",
+    "cat": "fridge",
+    "width": 914,
+    "widthRange": [
+      914,
+      914
+    ],
+    "modelCount": 10,
+    "ids": [
+      "fridge-arf2134",
+      "fridge-arf2141",
+      "fridge-arf2135",
+      "fridge-arf1952",
+      "fridge-arf3012",
+      "fridge-arf3013",
+      "fridge-arf3006",
+      "fridge-arf3022",
+      "fridge-arf2136",
+      "fridge-arf2128"
+    ],
+    "sampleModel": "ICBBI-36F/O-RH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2134 --value 20"
+  },
+  {
+    "rank": 64,
+    "brand": "Dometic",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 8,
+    "ids": [
+      "fridge-arf2512",
+      "fridge-arf2730",
+      "fridge-arf3326",
+      "fridge-arf3172",
+      "fridge-arf2738",
+      "fridge-arf3320",
+      "fridge-arf2729",
+      "fridge-arf3319"
+    ],
+    "sampleModel": "DM50C D",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2512 --value 20"
+  },
+  {
+    "rank": 65,
+    "brand": "LIEBHERR",
+    "cat": "fridge",
+    "width": 560,
+    "widthRange": [
+      560,
+      560
+    ],
+    "modelCount": 8,
+    "ids": [
+      "fridge-arf3778",
+      "fridge-arf2995",
+      "fridge-arf2933",
+      "fridge-arf3776",
+      "fridge-arf3026",
+      "fridge-arf2889",
+      "fridge-arf2892",
+      "fridge-arf2349"
+    ],
+    "sampleModel": "ICBNh 5193",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3778 --value 20"
+  },
+  {
+    "rank": 66,
+    "brand": "VOGUE",
+    "cat": "fridge",
+    "width": 600,
+    "widthRange": [
+      595,
+      600
+    ],
+    "modelCount": 8,
+    "ids": [
+      "fridge-zrf0950",
+      "fridge-zrf0949",
+      "fridge-zrf0918",
+      "fridge-zrf0926",
+      "fridge-zrf0921",
+      "fridge-zrf0737",
+      "fridge-zrf0929",
+      "fridge-zrf0923"
+    ],
+    "sampleModel": "352297",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0950 --value 20"
+  },
+  {
+    "rank": 67,
+    "brand": "Liebherr",
+    "cat": "fridge",
+    "width": 560,
+    "widthRange": [
+      559,
+      560
+    ],
+    "modelCount": 7,
+    "ids": [
+      "fridge-zrf0385",
+      "fridge-zrf0386",
+      "fridge-zrf0758",
+      "fridge-zrf0759",
+      "fridge-zrf0760",
+      "fridge-zrf0754",
+      "fridge-zrf0757"
+    ],
+    "sampleModel": "SIGN3576",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0385 --value 20"
+  },
+  {
+    "rank": 68,
+    "brand": "Sub-Zero",
+    "cat": "fridge",
+    "width": 610,
+    "widthRange": [
+      610,
+      610
+    ],
+    "modelCount": 7,
+    "ids": [
+      "fridge-arf2133",
+      "fridge-arf2834",
+      "fridge-arf2835",
+      "fridge-arf3007",
+      "fridge-arf3021",
+      "fridge-arf2132",
+      "fridge-arf1877"
+    ],
+    "sampleModel": "ICBID-24RO",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2133 --value 20"
+  },
+  {
+    "rank": 69,
+    "brand": "Devanti",
+    "cat": "fridge",
+    "width": 450,
+    "widthRange": [
+      450,
+      450
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf3203",
+      "fridge-arf3608",
+      "fridge-arf3204",
+      "fridge-arf3206",
+      "fridge-arf3205",
+      "fridge-arf3301"
+    ],
+    "sampleModel": "BF-F-48L-BK",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3203 --value 20"
+  },
+  {
+    "rank": 70,
+    "brand": "ELECTROLUX",
+    "cat": "fridge",
+    "width": 1725,
+    "widthRange": [
+      1725,
+      1725
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf2489",
+      "fridge-arf3828",
+      "fridge-arf3869",
+      "fridge-arf2400",
+      "fridge-arf2445",
+      "fridge-arf3823"
+    ],
+    "sampleModel": "EBE4507SC",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2489 --value 20"
+  },
+  {
+    "rank": 71,
+    "brand": "HAIER",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      545,
+      545
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf3601",
+      "fridge-arf3599",
+      "fridge-arf3580",
+      "fridge-arf3654",
+      "fridge-arf3581",
+      "fridge-arf3618"
+    ],
+    "sampleModel": "HRF115UW2",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3601 --value 20"
+  },
+  {
+    "rank": 72,
+    "brand": "HELLER",
+    "cat": "fridge",
+    "width": 544,
+    "widthRange": [
+      540,
+      545
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf3233",
+      "fridge-arf3119",
+      "fridge-arf3496",
+      "fridge-arf2469",
+      "fridge-arf3216",
+      "fridge-arf3146"
+    ],
+    "sampleModel": "HBC130",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3233 --value 20"
+  },
+  {
+    "rank": 73,
+    "brand": "Husky",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      545
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf3862",
+      "fridge-arf3854",
+      "fridge-arf2911",
+      "fridge-arf2492",
+      "fridge-arf3803",
+      "fridge-arf3602"
+    ],
+    "sampleModel": "CKK130-264-BK-AU-HU.1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3862 --value 20"
+  },
+  {
+    "rank": 74,
+    "brand": "Kogan",
+    "cat": "fridge",
+    "width": 471,
+    "widthRange": [
+      470,
+      472
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf3617",
+      "fridge-arf2924",
+      "fridge-arf3299",
+      "fridge-arf2490",
+      "fridge-arf2491",
+      "fridge-arf3727"
+    ],
+    "sampleModel": "KAM66GLAFGA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3617 --value 20"
+  },
+  {
+    "rank": 75,
+    "brand": "Kogan",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      540,
+      545
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf3060",
+      "fridge-arf3063",
+      "fridge-arf3669",
+      "fridge-arf3664",
+      "fridge-arf2671",
+      "fridge-arf3553"
+    ],
+    "sampleModel": "KAHFRZU161A",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3060 --value 20"
+  },
+  {
+    "rank": 76,
+    "brand": "MITSUBISHI ELECTRIC",
+    "cat": "fridge",
+    "width": 600,
+    "widthRange": [
+      600,
+      600
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf2713",
+      "fridge-arf2739",
+      "fridge-zrf0888",
+      "fridge-arf2714",
+      "fridge-arf2712",
+      "fridge-zrf0889"
+    ],
+    "sampleModel": "MR-CGX328ER-GBK-A",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2713 --value 20"
+  },
+  {
+    "rank": 77,
+    "brand": "Omega",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf3130",
+      "fridge-arf3179",
+      "fridge-arf2785",
+      "fridge-arf3750",
+      "fridge-arf3744",
+      "fridge-arf3748"
+    ],
+    "sampleModel": "OVFZ161B",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3130 --value 20"
+  },
+  {
+    "rank": 78,
+    "brand": "TCL",
+    "cat": "fridge",
+    "width": 703,
+    "widthRange": [
+      700,
+      703
+    ],
+    "modelCount": 6,
+    "ids": [
+      "fridge-arf2997",
+      "fridge-arf2859",
+      "fridge-arf3224",
+      "fridge-arf3178",
+      "fridge-arf3740",
+      "fridge-arf3743"
+    ],
+    "sampleModel": "P454TMB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2997 --value 20"
+  },
+  {
+    "rank": 79,
+    "brand": "Artusi",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      596
+    ],
+    "modelCount": 5,
+    "ids": [
+      "fridge-arf3871",
+      "fridge-arf3872",
+      "fridge-arf3081",
+      "fridge-arf3190",
+      "fridge-arf3188"
+    ],
+    "sampleModel": "AOFDZ127X",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3871 --value 20"
+  },
+  {
+    "rank": 80,
+    "brand": "Fhiaba",
+    "cat": "fridge",
+    "width": 749,
+    "widthRange": [
+      748,
+      749
+    ],
+    "modelCount": 5,
+    "ids": [
+      "fridge-arf3874",
+      "fridge-arf3756",
+      "fridge-arf3768",
+      "fridge-arf3124",
+      "fridge-arf3126"
+    ],
+    "sampleModel": "UC2D75POA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3874 --value 20"
+  },
+  {
+    "rank": 81,
+    "brand": "Fhiaba",
+    "cat": "fridge",
+    "width": 899,
+    "widthRange": [
+      898,
+      900
+    ],
+    "modelCount": 5,
+    "ids": [
+      "fridge-arf3875",
+      "fridge-arf3689",
+      "fridge-arf3832",
+      "fridge-arf3686",
+      "fridge-arf3682"
+    ],
+    "sampleModel": "UC2D90POA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3875 --value 20"
+  },
+  {
+    "rank": 82,
+    "brand": "Ikea",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 5,
+    "ids": [
+      "fridge-arf3391",
+      "fridge-arf3390",
+      "fridge-arf2508",
+      "fridge-arf3668",
+      "fridge-arf3749"
+    ],
+    "sampleModel": "FORSNÄS 40572988",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3391 --value 20"
+  },
+  {
+    "rank": 83,
+    "brand": "Kogan",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      480
+    ],
+    "modelCount": 5,
+    "ids": [
+      "fridge-arf2743",
+      "fridge-arf3160",
+      "fridge-arf2749",
+      "fridge-arf3785",
+      "fridge-arf3758"
+    ],
+    "sampleModel": "KAM43BEVFGF",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2743 --value 20"
+  },
+  {
+    "rank": 84,
+    "brand": "Mykin",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      545,
+      550
+    ],
+    "modelCount": 5,
+    "ids": [
+      "fridge-arf3767",
+      "fridge-arf3847",
+      "fridge-arf3779",
+      "fridge-arf3770",
+      "fridge-arf3759"
+    ],
+    "sampleModel": "MTM203W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3767 --value 20"
+  },
+  {
+    "rank": 85,
+    "brand": "Panasonic",
+    "cat": "fridge",
+    "width": 750,
+    "widthRange": [
+      750,
+      750
+    ],
+    "modelCount": 5,
+    "ids": [
+      "fridge-arf2805",
+      "fridge-arf2903",
+      "fridge-arf2807",
+      "fridge-arf3628",
+      "fridge-arf2901"
+    ],
+    "sampleModel": "NR-BW530H",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2805 --value 20"
+  },
+  {
+    "rank": 86,
+    "brand": "Robinhood",
+    "cat": "fridge",
+    "width": 544,
+    "widthRange": [
+      540,
+      545
+    ],
+    "modelCount": 5,
+    "ids": [
+      "fridge-zrf0865",
+      "fridge-arf3131",
+      "fridge-arf2593",
+      "fridge-arf2563",
+      "fridge-zrf0917"
+    ],
+    "sampleModel": "RHTMF197W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0865 --value 20"
+  },
+  {
+    "rank": 87,
+    "brand": "Sub-Zero",
+    "cat": "fridge",
+    "width": 762,
+    "widthRange": [
+      762,
+      762
+    ],
+    "modelCount": 5,
+    "ids": [
+      "fridge-arf2330",
+      "fridge-arf3020",
+      "fridge-arf3008",
+      "fridge-arf2914",
+      "fridge-arf2124"
+    ],
+    "sampleModel": "ICBID-30FI",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2330 --value 20"
+  },
+  {
+    "rank": 88,
+    "brand": "Artusi",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf3182",
+      "fridge-arf3357",
+      "fridge-arf3388",
+      "fridge-arf2917"
+    ],
+    "sampleModel": "AINT3000",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3182 --value 20"
+  },
+  {
+    "rank": 89,
+    "brand": "Dometic",
+    "cat": "fridge",
+    "width": 488,
+    "widthRange": [
+      486,
+      490
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf2514",
+      "fridge-arf2506",
+      "fridge-arf3047",
+      "fridge-arf3325"
+    ],
+    "sampleModel": "CL460LDC",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2514 --value 20"
+  },
+  {
+    "rank": 90,
+    "brand": "Esatto",
+    "cat": "fridge",
+    "width": 548,
+    "widthRange": [
+      545,
+      550
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf2453",
+      "fridge-arf3732",
+      "fridge-arf2435",
+      "fridge-arf2721"
+    ],
+    "sampleModel": "ETM236W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2453 --value 20"
+  },
+  {
+    "rank": 91,
+    "brand": "Esatto",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf2536",
+      "fridge-arf2981",
+      "fridge-arf3016",
+      "fridge-arf3742"
+    ],
+    "sampleModel": "ETM314W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2536 --value 20"
+  },
+  {
+    "rank": 92,
+    "brand": "Eurotech",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      475,
+      480
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-zrf0662",
+      "fridge-zrf0794",
+      "fridge-arf3104",
+      "fridge-arf3064"
+    ],
+    "sampleModel": "ED-RF128 SS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0662 --value 20"
+  },
+  {
+    "rank": 93,
+    "brand": "Haier",
+    "cat": "fridge",
+    "width": 544,
+    "widthRange": [
+      540,
+      545
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf3169",
+      "fridge-arf2294",
+      "fridge-arf2280",
+      "fridge-zrf0382"
+    ],
+    "sampleModel": "HRF200TW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3169 --value 20"
+  },
+  {
+    "rank": 94,
+    "brand": "Haier",
+    "cat": "fridge",
+    "width": 790,
+    "widthRange": [
+      790,
+      790
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf3501",
+      "fridge-arf3498",
+      "fridge-arf3499",
+      "fridge-arf3500"
+    ],
+    "sampleModel": "HRF510BHC",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3501 --value 20"
+  },
+  {
+    "rank": 95,
+    "brand": "ICELAND",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      544,
+      549
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-zrf0774",
+      "fridge-zrf0771",
+      "fridge-zrf0744",
+      "fridge-zrf0942"
+    ],
+    "sampleModel": "355182",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0774 --value 20"
+  },
+  {
+    "rank": 96,
+    "brand": "Inalto",
+    "cat": "fridge",
+    "width": 472,
+    "widthRange": [
+      470,
+      472
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf3651",
+      "fridge-arf3650",
+      "fridge-arf3652",
+      "fridge-arf3708"
+    ],
+    "sampleModel": "IBF91B",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3651 --value 20"
+  },
+  {
+    "rank": 97,
+    "brand": "Inalto",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf3280",
+      "fridge-arf3282",
+      "fridge-arf3247",
+      "fridge-arf3217"
+    ],
+    "sampleModel": "IIFF241",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3280 --value 20"
+  },
+  {
+    "rank": 98,
+    "brand": "KELVINATOR",
+    "cat": "fridge",
+    "width": 1725,
+    "widthRange": [
+      1725,
+      1725
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf2442",
+      "fridge-arf2538",
+      "fridge-arf2495",
+      "fridge-arf2540"
+    ],
+    "sampleModel": "KBM4502WC",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2442 --value 20"
+  },
+  {
+    "rank": 99,
+    "brand": "KLEENMAID",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf3773",
+      "fridge-arf2440",
+      "fridge-arf3769",
+      "fridge-arf3774"
+    ],
+    "sampleModel": "CR30911",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3773 --value 20"
+  },
+  {
+    "rank": 100,
+    "brand": "Kogan",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      600
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf2753",
+      "fridge-arf3243",
+      "fridge-arf2661",
+      "fridge-arf3287"
+    ],
+    "sampleModel": "KAM314TMSFF",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2753 --value 20"
+  },
+  {
+    "rank": 101,
+    "brand": "LIEBHERR",
+    "cat": "fridge",
+    "width": 756,
+    "widthRange": [
+      754,
+      757
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf3481",
+      "fridge-arf3484",
+      "fridge-arf3366",
+      "fridge-arf3365"
+    ],
+    "sampleModel": "EFNh 9771",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3481 --value 20"
+  },
+  {
+    "rank": 102,
+    "brand": "LIEBHERR",
+    "cat": "fridge",
+    "width": 908,
+    "widthRange": [
+      906,
+      910
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf3428",
+      "fridge-arf3471",
+      "fridge-arf3363",
+      "fridge-arf3057"
+    ],
+    "sampleModel": "ECBNh 9972",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3428 --value 20"
+  },
+  {
+    "rank": 103,
+    "brand": "Robinhood",
+    "cat": "fridge",
+    "width": 495,
+    "widthRange": [
+      495,
+      500
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf3170",
+      "fridge-arf2529",
+      "fridge-arf2990",
+      "fridge-arf2996"
+    ],
+    "sampleModel": "RHBFD121W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3170 --value 20"
+  },
+  {
+    "rank": 104,
+    "brand": "TECO",
+    "cat": "fridge",
+    "width": 543,
+    "widthRange": [
+      540,
+      545
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf3438",
+      "fridge-arf3234",
+      "fridge-arf2692",
+      "fridge-arf2723"
+    ],
+    "sampleModel": "TBF115GBAH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3438 --value 20"
+  },
+  {
+    "rank": 105,
+    "brand": "V-ZUG",
+    "cat": "fridge",
+    "width": 560,
+    "widthRange": [
+      560,
+      560
+    ],
+    "modelCount": 4,
+    "ids": [
+      "fridge-arf3061",
+      "fridge-arf3312",
+      "fridge-arf3062",
+      "fridge-arf3302"
+    ],
+    "sampleModel": "CO4T-51124",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3061 --value 20"
+  },
+  {
+    "rank": 106,
+    "brand": "Artusi",
+    "cat": "fridge",
+    "width": 756,
+    "widthRange": [
+      756,
+      760
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3245",
+      "fridge-arf3248",
+      "fridge-arf3088"
+    ],
+    "sampleModel": "AINT7600",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3245 --value 20"
+  },
+  {
+    "rank": 107,
+    "brand": "Bertazzoni",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3362",
+      "fridge-arf3304",
+      "fridge-arf3221"
+    ],
+    "sampleModel": "FRZ603UBNPTC-AU",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3362 --value 20"
+  },
+  {
+    "rank": 108,
+    "brand": "CASA",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3519",
+      "fridge-arf3518",
+      "fridge-arf3520"
+    ],
+    "sampleModel": "CASAFFI200W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3519 --value 20"
+  },
+  {
+    "rank": 109,
+    "brand": "Coldstream",
+    "cat": "fridge",
+    "width": 600,
+    "widthRange": [
+      600,
+      600
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf2960",
+      "fridge-arf3065",
+      "fridge-arf2951"
+    ],
+    "sampleModel": "CSF240",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2960 --value 20"
+  },
+  {
+    "rank": 110,
+    "brand": "Coldstream",
+    "cat": "fridge",
+    "width": 695,
+    "widthRange": [
+      695,
+      700
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf2943",
+      "fridge-arf2941",
+      "fridge-arf3083"
+    ],
+    "sampleModel": "CSKE4200BK WAT",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2943 --value 20"
+  },
+  {
+    "rank": 111,
+    "brand": "Dometic",
+    "cat": "fridge",
+    "width": 525,
+    "widthRange": [
+      525,
+      525
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3187",
+      "fridge-arf2488",
+      "fridge-arf3173"
+    ],
+    "sampleModel": "NRX1115",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3187 --value 20"
+  },
+  {
+    "rank": 112,
+    "brand": "ELECTROLUX",
+    "cat": "fridge",
+    "width": 1782,
+    "widthRange": [
+      1782,
+      1782
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf2393",
+      "fridge-arf2944",
+      "fridge-arf2392"
+    ],
+    "sampleModel": "EHE6899SA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2393 --value 20"
+  },
+  {
+    "rank": 113,
+    "brand": "Esatto",
+    "cat": "fridge",
+    "width": 470,
+    "widthRange": [
+      470,
+      472
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3473",
+      "fridge-arf2680",
+      "fridge-arf2420"
+    ],
+    "sampleModel": "EBF87D1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3473 --value 20"
+  },
+  {
+    "rank": 114,
+    "brand": "Esatto",
+    "cat": "fridge",
+    "width": 501,
+    "widthRange": [
+      501,
+      501
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3707",
+      "fridge-arf2430",
+      "fridge-arf2431"
+    ],
+    "sampleModel": "EBF124W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3707 --value 20"
+  },
+  {
+    "rank": 115,
+    "brand": "Eurotech",
+    "cat": "fridge",
+    "width": 495,
+    "widthRange": [
+      495,
+      500
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-zrf0789",
+      "fridge-arf3034",
+      "fridge-zrf0820"
+    ],
+    "sampleModel": "ED-BF126SS.2",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0789 --value 20"
+  },
+  {
+    "rank": 116,
+    "brand": "GRAM",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      545,
+      545
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-zrf0330",
+      "fridge-zrf0329",
+      "fridge-zrf0336"
+    ],
+    "sampleModel": "FS 3105-90",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0330 --value 20"
+  },
+  {
+    "rank": 117,
+    "brand": "Haier",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3118",
+      "fridge-zrf0852",
+      "fridge-zrf0819"
+    ],
+    "sampleModel": "HVF260WH3",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3118 --value 20"
+  },
+  {
+    "rank": 118,
+    "brand": "HAIER",
+    "cat": "fridge",
+    "width": 705,
+    "widthRange": [
+      700,
+      705
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3611",
+      "fridge-arf3573",
+      "fridge-arf3571"
+    ],
+    "sampleModel": "HRF450TG",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3611 --value 20"
+  },
+  {
+    "rank": 119,
+    "brand": "HELLER",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      548,
+      550
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3532",
+      "fridge-arf2882",
+      "fridge-arf2850"
+    ],
+    "sampleModel": "HFF243",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3532 --value 20"
+  },
+  {
+    "rank": 120,
+    "brand": "Husky",
+    "cat": "fridge",
+    "width": 430,
+    "widthRange": [
+      430,
+      430
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3864",
+      "fridge-arf3863",
+      "fridge-arf2340"
+    ],
+    "sampleModel": "CKK43-207-AU-HU.1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3864 --value 20"
+  },
+  {
+    "rank": 121,
+    "brand": "Husky",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf2935",
+      "fridge-arf2498",
+      "fridge-arf2703"
+    ],
+    "sampleModel": "HUS-115IN",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2935 --value 20"
+  },
+  {
+    "rank": 122,
+    "brand": "Ilve",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3152",
+      "fridge-arf3147",
+      "fridge-arf3136"
+    ],
+    "sampleModel": "ILFRZ217I/2",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3152 --value 20"
+  },
+  {
+    "rank": 123,
+    "brand": "Kogan",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3491",
+      "fridge-arf2747",
+      "fridge-arf3788"
+    ],
+    "sampleModel": "KAH91LURFZA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3491 --value 20"
+  },
+  {
+    "rank": 124,
+    "brand": "Kogan",
+    "cat": "fridge",
+    "width": 703,
+    "widthRange": [
+      700,
+      703
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3290",
+      "fridge-arf3309",
+      "fridge-arf3310"
+    ],
+    "sampleModel": "KAH415LTMFA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3290 --value 20"
+  },
+  {
+    "rank": 125,
+    "brand": "LIEBHERR",
+    "cat": "fridge",
+    "width": 747,
+    "widthRange": [
+      747,
+      750
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3381",
+      "fridge-arf2847",
+      "fridge-arf2849"
+    ],
+    "sampleModel": "CBNsdh 7653",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3381 --value 20"
+  },
+  {
+    "rank": 126,
+    "brand": "Living & Co",
+    "cat": "fridge",
+    "width": 600,
+    "widthRange": [
+      599,
+      600
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-zrf0779",
+      "fridge-zrf0867",
+      "fridge-zrf0882"
+    ],
+    "sampleModel": "BCD-280WEVPH-53H",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0779 --value 20"
+  },
+  {
+    "rank": 127,
+    "brand": "MIDEA",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3712",
+      "fridge-arf3680",
+      "fridge-zrf0960"
+    ],
+    "sampleModel": "MDRU333FGF02AP",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3712 --value 20"
+  },
+  {
+    "rank": 128,
+    "brand": "MIELE",
+    "cat": "fridge",
+    "width": 610,
+    "widthRange": [
+      610,
+      610
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3053",
+      "fridge-arf3058",
+      "fridge-arf3048"
+    ],
+    "sampleModel": "F 2671 Vi",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3053 --value 20"
+  },
+  {
+    "rank": 129,
+    "brand": "Robinhood",
+    "cat": "fridge",
+    "width": 600,
+    "widthRange": [
+      600,
+      600
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf2425",
+      "fridge-zrf0914",
+      "fridge-zrf0915"
+    ],
+    "sampleModel": "RHVFF332X",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2425 --value 20"
+  },
+  {
+    "rank": 130,
+    "brand": "Schmick",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3262",
+      "fridge-arf3275",
+      "fridge-arf3213"
+    ],
+    "sampleModel": "MSF230",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3262 --value 20"
+  },
+  {
+    "rank": 131,
+    "brand": "SEIKI",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      545,
+      550
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3627",
+      "fridge-arf2539",
+      "fridge-arf2656"
+    ],
+    "sampleModel": "SC-220AU8TMSS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3627 --value 20"
+  },
+  {
+    "rank": 132,
+    "brand": "SEIKI",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      600
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf2927",
+      "fridge-arf3674",
+      "fridge-arf2567"
+    ],
+    "sampleModel": "SC-320AU8TMW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2927 --value 20"
+  },
+  {
+    "rank": 133,
+    "brand": "Sheffield",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      545,
+      545
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-zrf0772",
+      "fridge-zrf0753",
+      "fridge-zrf0783"
+    ],
+    "sampleModel": "PLA1363",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0772 --value 20"
+  },
+  {
+    "rank": 134,
+    "brand": "SHEFFIELD",
+    "cat": "fridge",
+    "width": 445,
+    "widthRange": [
+      445,
+      448
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-zrf0884",
+      "fridge-zrf0885",
+      "fridge-zrf0886"
+    ],
+    "sampleModel": "PLA48L",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0884 --value 20"
+  },
+  {
+    "rank": 135,
+    "brand": "Solt",
+    "cat": "fridge",
+    "width": 470,
+    "widthRange": [
+      470,
+      472
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3166",
+      "fridge-arf3584",
+      "fridge-arf3198"
+    ],
+    "sampleModel": "GGSBF91DS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3166 --value 20"
+  },
+  {
+    "rank": 136,
+    "brand": "TECO",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      485
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3100",
+      "fridge-arf3286",
+      "fridge-arf2838"
+    ],
+    "sampleModel": "TBF75WMAH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3100 --value 20"
+  },
+  {
+    "rank": 137,
+    "brand": "TECO",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3193",
+      "fridge-arf2788",
+      "fridge-arf2795"
+    ],
+    "sampleModel": "TVF91WMAH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3193 --value 20"
+  },
+  {
+    "rank": 138,
+    "brand": "Trade Tested",
+    "cat": "fridge",
+    "width": 526,
+    "widthRange": [
+      526,
+      526
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-zrf0834",
+      "fridge-zrf0866",
+      "fridge-zrf0839"
+    ],
+    "sampleModel": "922002",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0834 --value 20"
+  },
+  {
+    "rank": 139,
+    "brand": "yokohama",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      703
+    ],
+    "modelCount": 3,
+    "ids": [
+      "fridge-arf3230",
+      "fridge-arf3028",
+      "fridge-arf3677"
+    ],
+    "sampleModel": "YOKFF366W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3230 --value 20"
+  },
+  {
+    "rank": 140,
+    "brand": "Airflo",
+    "cat": "fridge",
+    "width": 430,
+    "widthRange": [
+      430,
+      430
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3297",
+      "fridge-arf3295"
+    ],
+    "sampleModel": "AFF046",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3297 --value 20"
+  },
+  {
+    "rank": 141,
+    "brand": "Airflo",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      480
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3307",
+      "fridge-arf3313"
+    ],
+    "sampleModel": "AFF85",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3307 --value 20"
+  },
+  {
+    "rank": 142,
+    "brand": "AKAI",
+    "cat": "fridge",
+    "width": 551,
+    "widthRange": [
+      550,
+      552
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2897",
+      "fridge-arf2660"
+    ],
+    "sampleModel": "AK-248-TM",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2897 --value 20"
+  },
+  {
+    "rank": 143,
+    "brand": "Artusi",
+    "cat": "fridge",
+    "width": 893,
+    "widthRange": [
+      890,
+      895
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3810",
+      "fridge-arf3600"
+    ],
+    "sampleModel": "AINT8900FD",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3810 --value 20"
+  },
+  {
+    "rank": 144,
+    "brand": "Artusi",
+    "cat": "fridge",
+    "width": 908,
+    "widthRange": [
+      908,
+      908
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3263",
+      "fridge-arf3268"
+    ],
+    "sampleModel": "AINT9100FD",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3263 --value 20"
+  },
+  {
+    "rank": 145,
+    "brand": "ARTUSI",
+    "cat": "fridge",
+    "width": 596,
+    "widthRange": [
+      596,
+      596
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2450",
+      "fridge-arf2423"
+    ],
+    "sampleModel": "AINT119",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2450 --value 20"
+  },
+  {
+    "rank": 146,
+    "brand": "BEKO",
+    "cat": "fridge",
+    "width": 598,
+    "widthRange": [
+      595,
+      600
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3317",
+      "fridge-zrf0782"
+    ],
+    "sampleModel": "BAF369W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3317 --value 20"
+  },
+  {
+    "rank": 147,
+    "brand": "Dometic",
+    "cat": "fridge",
+    "width": 405,
+    "widthRange": [
+      405,
+      405
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2731",
+      "fridge-arf2716"
+    ],
+    "sampleModel": "C40G1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2731 --value 20"
+  },
+  {
+    "rank": 148,
+    "brand": "ELECTROLUX",
+    "cat": "fridge",
+    "width": 1795,
+    "widthRange": [
+      1795,
+      1795
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2939",
+      "fridge-arf2940"
+    ],
+    "sampleModel": "EQE5607BA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2939 --value 20"
+  },
+  {
+    "rank": 149,
+    "brand": "EUROMAID",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      480
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2676",
+      "fridge-arf2684"
+    ],
+    "sampleModel": "EBF78W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2676 --value 20"
+  },
+  {
+    "rank": 150,
+    "brand": "EUROMAID",
+    "cat": "fridge",
+    "width": 498,
+    "widthRange": [
+      495,
+      500
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2677",
+      "fridge-arf2672"
+    ],
+    "sampleModel": "EBF126S",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2677 --value 20"
+  },
+  {
+    "rank": 151,
+    "brand": "EUROMAID",
+    "cat": "fridge",
+    "width": 544,
+    "widthRange": [
+      544,
+      544
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2698",
+      "fridge-arf2697"
+    ],
+    "sampleModel": "EUF242W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2698 --value 20"
+  },
+  {
+    "rank": 152,
+    "brand": "EUROMATIC",
+    "cat": "fridge",
+    "width": 443,
+    "widthRange": [
+      440,
+      445
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2916",
+      "fridge-arf3194"
+    ],
+    "sampleModel": "BF-41",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2916 --value 20"
+  },
+  {
+    "rank": 153,
+    "brand": "Eurotech",
+    "cat": "fridge",
+    "width": 542,
+    "widthRange": [
+      540,
+      544
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0781",
+      "fridge-arf3082"
+    ],
+    "sampleModel": "ED-IFF190L",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0781 --value 20"
+  },
+  {
+    "rank": 154,
+    "brand": "Eurotech",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0708",
+      "fridge-zrf0791"
+    ],
+    "sampleModel": "ED-VF183WH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0708 --value 20"
+  },
+  {
+    "rank": 155,
+    "brand": "Eurotech",
+    "cat": "fridge",
+    "width": 603,
+    "widthRange": [
+      600,
+      605
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3067",
+      "fridge-zrf0707"
+    ],
+    "sampleModel": "ED-RFT362SS.2",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3067 --value 20"
+  },
+  {
+    "rank": 156,
+    "brand": "EUROTECH",
+    "cat": "fridge",
+    "width": 598,
+    "widthRange": [
+      595,
+      600
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0970",
+      "fridge-zrf0928"
+    ],
+    "sampleModel": "352387",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0970 --value 20"
+  },
+  {
+    "rank": 157,
+    "brand": "Fhiaba",
+    "cat": "fridge",
+    "width": 580,
+    "widthRange": [
+      580,
+      580
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3687",
+      "fridge-arf3688"
+    ],
+    "sampleModel": "S5990FZ*A Series",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3687 --value 20"
+  },
+  {
+    "rank": 158,
+    "brand": "Galanz",
+    "cat": "fridge",
+    "width": 599,
+    "widthRange": [
+      599,
+      599
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2352",
+      "fridge-arf2353"
+    ],
+    "sampleModel": "BCD-280WEVPH-53H",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2352 --value 20"
+  },
+  {
+    "rank": 159,
+    "brand": "Galanz",
+    "cat": "fridge",
+    "width": 823,
+    "widthRange": [
+      820,
+      825
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2370",
+      "fridge-arf2355"
+    ],
+    "sampleModel": "BCD-510WTEP-A1-53H",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2370 --value 20"
+  },
+  {
+    "rank": 160,
+    "brand": "GRAM",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0525",
+      "fridge-zrf0510"
+    ],
+    "sampleModel": "FS 4316-90 N",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0525 --value 20"
+  },
+  {
+    "rank": 161,
+    "brand": "Haier",
+    "cat": "fridge",
+    "width": 498,
+    "widthRange": [
+      495,
+      500
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2253",
+      "fridge-arf2188"
+    ],
+    "sampleModel": "HRF130UW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2253 --value 20"
+  },
+  {
+    "rank": 162,
+    "brand": "Haier",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2288",
+      "fridge-arf2286"
+    ],
+    "sampleModel": "HVF91VW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2288 --value 20"
+  },
+  {
+    "rank": 163,
+    "brand": "Haier",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      700
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3077",
+      "fridge-arf3074"
+    ],
+    "sampleModel": "HRF420BHS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3077 --value 20"
+  },
+  {
+    "rank": 164,
+    "brand": "Haier",
+    "cat": "fridge",
+    "width": 907,
+    "widthRange": [
+      905,
+      908
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3044",
+      "fridge-arf3352"
+    ],
+    "sampleModel": "HRF575XC",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3044 --value 20"
+  },
+  {
+    "rank": 165,
+    "brand": "HAIER",
+    "cat": "fridge",
+    "width": 452,
+    "widthRange": [
+      452,
+      452
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3596",
+      "fridge-arf3598"
+    ],
+    "sampleModel": "HRF40UW2",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3596 --value 20"
+  },
+  {
+    "rank": 166,
+    "brand": "HAIER",
+    "cat": "fridge",
+    "width": 598,
+    "widthRange": [
+      595,
+      600
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3619",
+      "fridge-arf3603"
+    ],
+    "sampleModel": "HRF330TG",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3619 --value 20"
+  },
+  {
+    "rank": 167,
+    "brand": "HAIER",
+    "cat": "fridge",
+    "width": 623,
+    "widthRange": [
+      623,
+      623
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3467",
+      "fridge-arf3464"
+    ],
+    "sampleModel": "HRF318BS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3467 --value 20"
+  },
+  {
+    "rank": 168,
+    "brand": "Harbour",
+    "cat": "fridge",
+    "width": 471,
+    "widthRange": [
+      470,
+      472
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3115",
+      "fridge-arf3542"
+    ],
+    "sampleModel": "HBRBC93B2",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3115 --value 20"
+  },
+  {
+    "rank": 169,
+    "brand": "HELLER",
+    "cat": "fridge",
+    "width": 452,
+    "widthRange": [
+      450,
+      453
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3431",
+      "fridge-arf3495"
+    ],
+    "sampleModel": "HFF132W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3431 --value 20"
+  },
+  {
+    "rank": 170,
+    "brand": "HITACHI",
+    "cat": "fridge",
+    "width": 750,
+    "widthRange": [
+      750,
+      750
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0903",
+      "fridge-arf1960"
+    ],
+    "sampleModel": "R-WB560PT9",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0903 --value 20"
+  },
+  {
+    "rank": 171,
+    "brand": "HITACHI",
+    "cat": "fridge",
+    "width": 825,
+    "widthRange": [
+      825,
+      825
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf1961",
+      "fridge-arf3003"
+    ],
+    "sampleModel": "R-WX670KA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf1961 --value 20"
+  },
+  {
+    "rank": 172,
+    "brand": "Husky",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2764",
+      "fridge-arf2758"
+    ],
+    "sampleModel": "HUS-172VFWH.1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2764 --value 20"
+  },
+  {
+    "rank": 173,
+    "brand": "ICELAND",
+    "cat": "fridge",
+    "width": 444,
+    "widthRange": [
+      444,
+      444
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0875",
+      "fridge-zrf0874"
+    ],
+    "sampleModel": "354045",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0875 --value 20"
+  },
+  {
+    "rank": 174,
+    "brand": "ICELAND",
+    "cat": "fridge",
+    "width": 597,
+    "widthRange": [
+      595,
+      599
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0748",
+      "fridge-zrf0764"
+    ],
+    "sampleModel": "352339",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0748 --value 20"
+  },
+  {
+    "rank": 175,
+    "brand": "Ikea",
+    "cat": "fridge",
+    "width": 471,
+    "widthRange": [
+      470,
+      472
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3405",
+      "fridge-arf2470"
+    ],
+    "sampleModel": "Lagan S 90567927",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3405 --value 20"
+  },
+  {
+    "rank": 176,
+    "brand": "Ikea",
+    "cat": "fridge",
+    "width": 549,
+    "widthRange": [
+      547,
+      550
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3455",
+      "fridge-arf2240"
+    ],
+    "sampleModel": "LAGAN L 10571297",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3455 --value 20"
+  },
+  {
+    "rank": 177,
+    "brand": "ILVE",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2456",
+      "fridge-arf2424"
+    ],
+    "sampleModel": "ILFRZ217I",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2456 --value 20"
+  },
+  {
+    "rank": 178,
+    "brand": "Inalto",
+    "cat": "fridge",
+    "width": 501,
+    "widthRange": [
+      501,
+      501
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2938",
+      "fridge-arf2454"
+    ],
+    "sampleModel": "IBF129S",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2938 --value 20"
+  },
+  {
+    "rank": 179,
+    "brand": "Inalto",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2463",
+      "fridge-arf2557"
+    ],
+    "sampleModel": "IUF172W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2463 --value 20"
+  },
+  {
+    "rank": 180,
+    "brand": "Inalto",
+    "cat": "fridge",
+    "width": 690,
+    "widthRange": [
+      690,
+      690
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3281",
+      "fridge-arf3241"
+    ],
+    "sampleModel": "IIFF338",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3281 --value 20"
+  },
+  {
+    "rank": 181,
+    "brand": "KingsBottle",
+    "cat": "fridge",
+    "width": 490,
+    "widthRange": [
+      490,
+      490
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3831",
+      "fridge-arf3830"
+    ],
+    "sampleModel": "KB245BX-BK",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3831 --value 20"
+  },
+  {
+    "rank": 182,
+    "brand": "Kogan",
+    "cat": "fridge",
+    "width": 498,
+    "widthRange": [
+      495,
+      500
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3486",
+      "fridge-arf2501"
+    ],
+    "sampleModel": "KAH121LBRFA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3486 --value 20"
+  },
+  {
+    "rank": 183,
+    "brand": "Kogan",
+    "cat": "fridge",
+    "width": 501,
+    "widthRange": [
+      501,
+      501
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3726",
+      "fridge-arf2657"
+    ],
+    "sampleModel": "KAM124LIBFA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3726 --value 20"
+  },
+  {
+    "rank": 184,
+    "brand": "Kogan",
+    "cat": "fridge",
+    "width": 790,
+    "widthRange": [
+      790,
+      790
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3291",
+      "fridge-arf3066"
+    ],
+    "sampleModel": "KAH480LTMFA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3291 --value 20"
+  },
+  {
+    "rank": 185,
+    "brand": "KONKA",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      543,
+      546
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0891",
+      "fridge-zrf0890"
+    ],
+    "sampleModel": "KRF-202SS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0891 --value 20"
+  },
+  {
+    "rank": 186,
+    "brand": "Liebherr",
+    "cat": "fridge",
+    "width": 599,
+    "widthRange": [
+      597,
+      600
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0416",
+      "fridge-zrf0825"
+    ],
+    "sampleModel": "UKes1752",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0416 --value 20"
+  },
+  {
+    "rank": 187,
+    "brand": "Linarie",
+    "cat": "fridge",
+    "width": 445,
+    "widthRange": [
+      445,
+      445
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3041",
+      "fridge-arf3043"
+    ],
+    "sampleModel": "LK48MRED",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3041 --value 20"
+  },
+  {
+    "rank": 188,
+    "brand": "Living & Co",
+    "cat": "fridge",
+    "width": 442,
+    "widthRange": [
+      440,
+      444
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0901",
+      "fridge-zrf0778"
+    ],
+    "sampleModel": "TWL41",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0901 --value 20"
+  },
+  {
+    "rank": 189,
+    "brand": "Living & Co",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      545,
+      545
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0770",
+      "fridge-zrf0908"
+    ],
+    "sampleModel": "HD-325FWEN",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0770 --value 20"
+  },
+  {
+    "rank": 190,
+    "brand": "Midea",
+    "cat": "fridge",
+    "width": 501,
+    "widthRange": [
+      501,
+      501
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0838",
+      "fridge-zrf0843"
+    ],
+    "sampleModel": "MDRD130FGF01AP",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0838 --value 20"
+  },
+  {
+    "rank": 191,
+    "brand": "Midea",
+    "cat": "fridge",
+    "width": 548,
+    "widthRange": [
+      545,
+      550
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0808",
+      "fridge-zrf0806"
+    ],
+    "sampleModel": "MDRT346MTF28AP",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0808 --value 20"
+  },
+  {
+    "rank": 192,
+    "brand": "MIDEA",
+    "cat": "fridge",
+    "width": 833,
+    "widthRange": [
+      833,
+      833
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3731",
+      "fridge-zrf0941"
+    ],
+    "sampleModel": "MDRF632FGD46APW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3731 --value 20"
+  },
+  {
+    "rank": 193,
+    "brand": "Mistral",
+    "cat": "fridge",
+    "width": 551,
+    "widthRange": [
+      551,
+      551
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2909",
+      "fridge-arf3163"
+    ],
+    "sampleModel": "MBF117RB-F",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2909 --value 20"
+  },
+  {
+    "rank": 194,
+    "brand": "MITSUBISHI ELECTRIC",
+    "cat": "fridge",
+    "width": 541,
+    "widthRange": [
+      540,
+      542
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0810",
+      "fridge-arf3189"
+    ],
+    "sampleModel": "MR-CX272ET-W-A",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0810 --value 20"
+  },
+  {
+    "rank": 195,
+    "brand": "MITSUBISHI ELECTRIC",
+    "cat": "fridge",
+    "width": 699,
+    "widthRange": [
+      699,
+      699
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2682",
+      "fridge-arf3404"
+    ],
+    "sampleModel": "MR-CX450ER-BST-A",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2682 --value 20"
+  },
+  {
+    "rank": 196,
+    "brand": "MITSUBISHI ELECTRIC",
+    "cat": "fridge",
+    "width": 751,
+    "widthRange": [
+      751,
+      751
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2708",
+      "fridge-arf2705"
+    ],
+    "sampleModel": "MR-458ER-ST-A",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2708 --value 20"
+  },
+  {
+    "rank": 197,
+    "brand": "MITSUBISHI ELECTRIC",
+    "cat": "fridge",
+    "width": 950,
+    "widthRange": [
+      950,
+      950
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2659",
+      "fridge-arf2658"
+    ],
+    "sampleModel": "MR-LA580ER-GBK-A",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2659 --value 20"
+  },
+  {
+    "rank": 198,
+    "brand": "Mykin",
+    "cat": "fridge",
+    "width": 471,
+    "widthRange": [
+      470,
+      472
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3761",
+      "fridge-arf3764"
+    ],
+    "sampleModel": "MBF91W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3761 --value 20"
+  },
+  {
+    "rank": 199,
+    "brand": "Nero",
+    "cat": "fridge",
+    "width": 495,
+    "widthRange": [
+      495,
+      495
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2823",
+      "fridge-arf2809"
+    ],
+    "sampleModel": "744116",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2823 --value 20"
+  },
+  {
+    "rank": 200,
+    "brand": "Nero",
+    "cat": "fridge",
+    "width": 542,
+    "widthRange": [
+      540,
+      544
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3024",
+      "fridge-arf2827"
+    ],
+    "sampleModel": "744198",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3024 --value 20"
+  },
+  {
+    "rank": 201,
+    "brand": "NORJ",
+    "cat": "fridge",
+    "width": 599,
+    "widthRange": [
+      599,
+      599
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2869",
+      "fridge-arf2874"
+    ],
+    "sampleModel": "NTMF280W1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2869 --value 20"
+  },
+  {
+    "rank": 202,
+    "brand": "Novello",
+    "cat": "fridge",
+    "width": 470,
+    "widthRange": [
+      470,
+      470
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0752",
+      "fridge-zrf0751"
+    ],
+    "sampleModel": "BF-L-GREY / BF-L-BK",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0752 --value 20"
+  },
+  {
+    "rank": 203,
+    "brand": "Omega",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3132",
+      "fridge-arf3129"
+    ],
+    "sampleModel": "OBFD127B",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3132 --value 20"
+  },
+  {
+    "rank": 204,
+    "brand": "Omega",
+    "cat": "fridge",
+    "width": 598,
+    "widthRange": [
+      595,
+      600
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3578",
+      "fridge-arf2480"
+    ],
+    "sampleModel": "OCB140SB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3578 --value 20"
+  },
+  {
+    "rank": 205,
+    "brand": "Omega",
+    "cat": "fridge",
+    "width": 690,
+    "widthRange": [
+      690,
+      690
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3701",
+      "fridge-arf3738"
+    ],
+    "sampleModel": "OIFF341",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3701 --value 20"
+  },
+  {
+    "rank": 206,
+    "brand": "Omega",
+    "cat": "fridge",
+    "width": 759,
+    "widthRange": [
+      759,
+      759
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3805",
+      "fridge-arf3806"
+    ],
+    "sampleModel": "OIFFBM427",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3805 --value 20"
+  },
+  {
+    "rank": 207,
+    "brand": "Omega",
+    "cat": "fridge",
+    "width": 962,
+    "widthRange": [
+      962,
+      962
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3441",
+      "fridge-arf3445"
+    ],
+    "sampleModel": "OIF4DF526PRO",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3441 --value 20"
+  },
+  {
+    "rank": 208,
+    "brand": "Panasonic",
+    "cat": "fridge",
+    "width": 601,
+    "widthRange": [
+      601,
+      601
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0785",
+      "fridge-zrf0815"
+    ],
+    "sampleModel": "NR-TV341",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0785 --value 20"
+  },
+  {
+    "rank": 209,
+    "brand": "Panasonic",
+    "cat": "fridge",
+    "width": 686,
+    "widthRange": [
+      686,
+      686
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0727",
+      "fridge-arf3667"
+    ],
+    "sampleModel": "NR-BX421B",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0727 --value 20"
+  },
+  {
+    "rank": 210,
+    "brand": "Robinhood",
+    "cat": "fridge",
+    "width": 478,
+    "widthRange": [
+      475,
+      480
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2989",
+      "fridge-arf3171"
+    ],
+    "sampleModel": "RHBFD78W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2989 --value 20"
+  },
+  {
+    "rank": 211,
+    "brand": "Schmick",
+    "cat": "fridge",
+    "width": 430,
+    "widthRange": [
+      430,
+      430
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3105",
+      "fridge-arf3820"
+    ],
+    "sampleModel": "HUS-BC46B-RET",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3105 --value 20"
+  },
+  {
+    "rank": 212,
+    "brand": "Schmick",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3265",
+      "fridge-arf3266"
+    ],
+    "sampleModel": "MSF90",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3265 --value 20"
+  },
+  {
+    "rank": 213,
+    "brand": "Simmons",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      545,
+      545
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3090",
+      "fridge-arf3494"
+    ],
+    "sampleModel": "SFR-220",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3090 --value 20"
+  },
+  {
+    "rank": 214,
+    "brand": "Stirling",
+    "cat": "fridge",
+    "width": 472,
+    "widthRange": [
+      472,
+      472
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3577",
+      "fridge-arf3719"
+    ],
+    "sampleModel": "SBF43B",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3577 --value 20"
+  },
+  {
+    "rank": 215,
+    "brand": "STIRLING",
+    "cat": "fridge",
+    "width": 544,
+    "widthRange": [
+      544,
+      544
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2408",
+      "fridge-arf2409"
+    ],
+    "sampleModel": "STR-H183W1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2408 --value 20"
+  },
+  {
+    "rank": 216,
+    "brand": "Sub-Zero",
+    "cat": "fridge",
+    "width": 457,
+    "widthRange": [
+      457,
+      457
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3019",
+      "fridge-arf1898"
+    ],
+    "sampleModel": "ICBDEC1850FI/L",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3019 --value 20"
+  },
+  {
+    "rank": 217,
+    "brand": "Sub-Zero",
+    "cat": "fridge",
+    "width": 1067,
+    "widthRange": [
+      1067,
+      1067
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2139",
+      "fridge-arf3005"
+    ],
+    "sampleModel": "ICBBI-42UFDID/S/TH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2139 --value 20"
+  },
+  {
+    "rank": 218,
+    "brand": "TCL",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3271",
+      "fridge-arf3175"
+    ],
+    "sampleModel": "P220TMW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3271 --value 20"
+  },
+  {
+    "rank": 219,
+    "brand": "TCL",
+    "cat": "fridge",
+    "width": 600,
+    "widthRange": [
+      600,
+      600
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3681",
+      "fridge-arf3717"
+    ],
+    "sampleModel": "P362TMW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3681 --value 20"
+  },
+  {
+    "rank": 220,
+    "brand": "TECO",
+    "cat": "fridge",
+    "width": 442,
+    "widthRange": [
+      440,
+      444
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3493",
+      "fridge-arf2551"
+    ],
+    "sampleModel": "TBF41WMAH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3493 --value 20"
+  },
+  {
+    "rank": 221,
+    "brand": "TECO",
+    "cat": "fridge",
+    "width": 504,
+    "widthRange": [
+      501,
+      506
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2765",
+      "fridge-arf2550"
+    ],
+    "sampleModel": "TVF84WMBM",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2765 --value 20"
+  },
+  {
+    "rank": 222,
+    "brand": "TECO",
+    "cat": "fridge",
+    "width": 600,
+    "widthRange": [
+      599,
+      600
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf2687",
+      "fridge-arf3220"
+    ],
+    "sampleModel": "TFF278WNTAG",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2687 --value 20"
+  },
+  {
+    "rank": 223,
+    "brand": "V-ZUG",
+    "cat": "fridge",
+    "width": 749,
+    "widthRange": [
+      749,
+      749
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3551",
+      "fridge-arf3529"
+    ],
+    "sampleModel": "CCO6T-51115",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3551 --value 20"
+  },
+  {
+    "rank": 224,
+    "brand": "V-ZUG",
+    "cat": "fridge",
+    "width": 887,
+    "widthRange": [
+      887,
+      887
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3382",
+      "fridge-arf3371"
+    ],
+    "sampleModel": "CCO6T-51133",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3382 --value 20"
+  },
+  {
+    "rank": 225,
+    "brand": "VOGUE",
+    "cat": "fridge",
+    "width": 543,
+    "widthRange": [
+      540,
+      545
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0951",
+      "fridge-zrf0931"
+    ],
+    "sampleModel": "352252",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0951 --value 20"
+  },
+  {
+    "rank": 226,
+    "brand": "VOGUE",
+    "cat": "fridge",
+    "width": 702,
+    "widthRange": [
+      700,
+      703
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-zrf0922",
+      "fridge-zrf0932"
+    ],
+    "sampleModel": "352450",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0922 --value 20"
+  },
+  {
+    "rank": 227,
+    "brand": "WHIRLPOOL",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3511",
+      "fridge-arf3509"
+    ],
+    "sampleModel": "WF2T203",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3511 --value 20"
+  },
+  {
+    "rank": 228,
+    "brand": "yokohama",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3226",
+      "fridge-arf3227"
+    ],
+    "sampleModel": "YOKF197WA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3226 --value 20"
+  },
+  {
+    "rank": 229,
+    "brand": "yokohama",
+    "cat": "fridge",
+    "width": 708,
+    "widthRange": [
+      706,
+      710
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3679",
+      "fridge-arf3225"
+    ],
+    "sampleModel": "YOKF425BB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3679 --value 20"
+  },
+  {
+    "rank": 230,
+    "brand": "yokohama",
+    "cat": "fridge",
+    "width": 790,
+    "widthRange": [
+      790,
+      790
+    ],
+    "modelCount": 2,
+    "ids": [
+      "fridge-arf3734",
+      "fridge-arf3229"
+    ],
+    "sampleModel": "YOKF483SB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3734 --value 20"
+  },
+  {
+    "rank": 231,
+    "brand": "AEG",
+    "cat": "fridge",
+    "width": 557,
+    "widthRange": [
+      557,
+      557
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3576"
+    ],
+    "sampleModel": "17CBMNV0",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3576 --value 20"
+  },
+  {
+    "rank": 232,
+    "brand": "AEG",
+    "cat": "fridge",
+    "width": 696,
+    "widthRange": [
+      696,
+      696
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3562"
+    ],
+    "sampleModel": "OSC7P19ACF",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3562 --value 20"
+  },
+  {
+    "rank": 233,
+    "brand": "AEG",
+    "cat": "fridge",
+    "width": 908,
+    "widthRange": [
+      908,
+      908
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3591"
+    ],
+    "sampleModel": "AQE5300BA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3591 --value 20"
+  },
+  {
+    "rank": 234,
+    "brand": "Airflo",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3751"
+    ],
+    "sampleModel": "AFF 130XW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3751 --value 20"
+  },
+  {
+    "rank": 235,
+    "brand": "Airflo",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3341"
+    ],
+    "sampleModel": "AFF328",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3341 --value 20"
+  },
+  {
+    "rank": 236,
+    "brand": "AKAI",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      480
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2662"
+    ],
+    "sampleModel": "AK-64-CF",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2662 --value 20"
+  },
+  {
+    "rank": 237,
+    "brand": "AKAI",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      700
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2643"
+    ],
+    "sampleModel": "AK-413-TMWD",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2643 --value 20"
+  },
+  {
+    "rank": 238,
+    "brand": "anko",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3001"
+    ],
+    "sampleModel": "AUL237S",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3001 --value 20"
+  },
+  {
+    "rank": 239,
+    "brand": "anko",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2905"
+    ],
+    "sampleModel": "ATM314X",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2905 --value 20"
+  },
+  {
+    "rank": 240,
+    "brand": "Artusi",
+    "cat": "fridge",
+    "width": 495,
+    "widthRange": [
+      495,
+      495
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3108"
+    ],
+    "sampleModel": "AFR115B",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3108 --value 20"
+  },
+  {
+    "rank": 241,
+    "brand": "Artusi",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2883"
+    ],
+    "sampleModel": "ARET130B",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2883 --value 20"
+  },
+  {
+    "rank": 242,
+    "brand": "Artusi",
+    "cat": "fridge",
+    "width": 840,
+    "widthRange": [
+      840,
+      840
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2840"
+    ],
+    "sampleModel": "AFDF620X",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2840 --value 20"
+  },
+  {
+    "rank": 243,
+    "brand": "BEKO",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      545,
+      545
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0896"
+    ],
+    "sampleModel": "BBM230W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0896 --value 20"
+  },
+  {
+    "rank": 244,
+    "brand": "Bertazzoni",
+    "cat": "fridge",
+    "width": 910,
+    "widthRange": [
+      910,
+      910
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3334"
+    ],
+    "sampleModel": "REF904FFNXTC-AU",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3334 --value 20"
+  },
+  {
+    "rank": 245,
+    "brand": "Blaupunkt",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3395"
+    ],
+    "sampleModel": "5CR288FE0AU",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3395 --value 20"
+  },
+  {
+    "rank": 246,
+    "brand": "Bosch",
+    "cat": "fridge",
+    "width": 600,
+    "widthRange": [
+      600,
+      600
+    ],
+    "modelCount": 1,
+    "ids": [
+      "f6"
+    ],
+    "sampleModel": "KGN396LBAS Top Mount 368L",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id f6 --value 20"
+  },
+  {
+    "rank": 247,
+    "brand": "Brabantia",
+    "cat": "fridge",
+    "width": 475,
+    "widthRange": [
+      475,
+      475
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0695"
+    ],
+    "sampleModel": "BM6W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0695 --value 20"
+  },
+  {
+    "rank": 248,
+    "brand": "CASA",
+    "cat": "fridge",
+    "width": 596,
+    "widthRange": [
+      596,
+      596
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3595"
+    ],
+    "sampleModel": "CASAFI135W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3595 --value 20"
+  },
+  {
+    "rank": 249,
+    "brand": "CASA",
+    "cat": "fridge",
+    "width": 893,
+    "widthRange": [
+      893,
+      893
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3521"
+    ],
+    "sampleModel": "CASAFI439W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3521 --value 20"
+  },
+  {
+    "rank": 250,
+    "brand": "Coldstream",
+    "cat": "fridge",
+    "width": 495,
+    "widthRange": [
+      495,
+      495
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2950"
+    ],
+    "sampleModel": "CSB120",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2950 --value 20"
+  },
+  {
+    "rank": 251,
+    "brand": "Coldstream",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2958"
+    ],
+    "sampleModel": "CBR230",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2958 --value 20"
+  },
+  {
+    "rank": 252,
+    "brand": "De Dietrich",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3691"
+    ],
+    "sampleModel": "DRC9355AN",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3691 --value 20"
+  },
+  {
+    "rank": 253,
+    "brand": "De Dietrich",
+    "cat": "fridge",
+    "width": 690,
+    "widthRange": [
+      690,
+      690
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3693"
+    ],
+    "sampleModel": "DRC9375AN",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3693 --value 20"
+  },
+  {
+    "rank": 254,
+    "brand": "Devanti",
+    "cat": "fridge",
+    "width": 430,
+    "widthRange": [
+      430,
+      430
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3279"
+    ],
+    "sampleModel": "BF-D-46L-BK",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3279 --value 20"
+  },
+  {
+    "rank": 255,
+    "brand": "Devanti",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3283"
+    ],
+    "sampleModel": "BF-D-130L-BK",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3283 --value 20"
+  },
+  {
+    "rank": 256,
+    "brand": "Dometic",
+    "cat": "fridge",
+    "width": 593,
+    "widthRange": [
+      593,
+      593
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2513"
+    ],
+    "sampleModel": "CRX1110",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2513 --value 20"
+  },
+  {
+    "rank": 257,
+    "brand": "Electrolux",
+    "cat": "fridge",
+    "width": 680,
+    "widthRange": [
+      680,
+      680
+    ],
+    "modelCount": 1,
+    "ids": [
+      "f8"
+    ],
+    "sampleModel": "EHE5267B Bottom Mount 520L",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id f8 --value 20"
+  },
+  {
+    "rank": 258,
+    "brand": "ELECTROLUX",
+    "cat": "fridge",
+    "width": 699,
+    "widthRange": [
+      699,
+      699
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3134"
+    ],
+    "sampleModel": "EBE4302BD",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3134 --value 20"
+  },
+  {
+    "rank": 259,
+    "brand": "ELECTROLUX",
+    "cat": "fridge",
+    "width": 796,
+    "widthRange": [
+      796,
+      796
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3133"
+    ],
+    "sampleModel": "EBE5002SD-R",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3133 --value 20"
+  },
+  {
+    "rank": 260,
+    "brand": "ELECTROLUX",
+    "cat": "fridge",
+    "width": 896,
+    "widthRange": [
+      896,
+      896
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3736"
+    ],
+    "sampleModel": "EQE5757BB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3736 --value 20"
+  },
+  {
+    "rank": 261,
+    "brand": "ELECTROLUX",
+    "cat": "fridge",
+    "width": 913,
+    "widthRange": [
+      913,
+      913
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3685"
+    ],
+    "sampleModel": "EHE6191SB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3685 --value 20"
+  },
+  {
+    "rank": 262,
+    "brand": "Esatto",
+    "cat": "fridge",
+    "width": 445,
+    "widthRange": [
+      445,
+      445
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2426"
+    ],
+    "sampleModel": "EBF69W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2426 --value 20"
+  },
+  {
+    "rank": 263,
+    "brand": "Esatto",
+    "cat": "fridge",
+    "width": 553,
+    "widthRange": [
+      553,
+      553
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3704"
+    ],
+    "sampleModel": "EUF88W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3704 --value 20"
+  },
+  {
+    "rank": 264,
+    "brand": "Esatto",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      700
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2564"
+    ],
+    "sampleModel": "ETM413W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2564 --value 20"
+  },
+  {
+    "rank": 265,
+    "brand": "Esatto",
+    "cat": "fridge",
+    "width": 750,
+    "widthRange": [
+      750,
+      750
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2566"
+    ],
+    "sampleModel": "EBM529W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2566 --value 20"
+  },
+  {
+    "rank": 266,
+    "brand": "EURO",
+    "cat": "fridge",
+    "width": 495,
+    "widthRange": [
+      495,
+      495
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2696"
+    ],
+    "sampleModel": "E126FW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2696 --value 20"
+  },
+  {
+    "rank": 267,
+    "brand": "EURO",
+    "cat": "fridge",
+    "width": 540,
+    "widthRange": [
+      540,
+      540
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3084"
+    ],
+    "sampleModel": "EVF204SL",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3084 --value 20"
+  },
+  {
+    "rank": 268,
+    "brand": "EURO",
+    "cat": "fridge",
+    "width": 549,
+    "widthRange": [
+      549,
+      549
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3035"
+    ],
+    "sampleModel": "E276IFBE",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3035 --value 20"
+  },
+  {
+    "rank": 269,
+    "brand": "EURO",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3676"
+    ],
+    "sampleModel": "E170IFBE",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3676 --value 20"
+  },
+  {
+    "rank": 270,
+    "brand": "EURO",
+    "cat": "fridge",
+    "width": 706,
+    "widthRange": [
+      706,
+      706
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3694"
+    ],
+    "sampleModel": "E403IFBM",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3694 --value 20"
+  },
+  {
+    "rank": 271,
+    "brand": "EURO",
+    "cat": "fridge",
+    "width": 790,
+    "widthRange": [
+      790,
+      790
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3368"
+    ],
+    "sampleModel": "EF512SX",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3368 --value 20"
+  },
+  {
+    "rank": 272,
+    "brand": "EUROMAID",
+    "cat": "fridge",
+    "width": 440,
+    "widthRange": [
+      440,
+      440
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2678"
+    ],
+    "sampleModel": "EBF42W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2678 --value 20"
+  },
+  {
+    "rank": 273,
+    "brand": "EUROMAID",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2709"
+    ],
+    "sampleModel": "ETM269BKS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2709 --value 20"
+  },
+  {
+    "rank": 274,
+    "brand": "EUROMAID",
+    "cat": "fridge",
+    "width": 600,
+    "widthRange": [
+      600,
+      600
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2689"
+    ],
+    "sampleModel": "ETM362S",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2689 --value 20"
+  },
+  {
+    "rank": 275,
+    "brand": "EUROMAID",
+    "cat": "fridge",
+    "width": 790,
+    "widthRange": [
+      790,
+      790
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2700"
+    ],
+    "sampleModel": "ETM512BKS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2700 --value 20"
+  },
+  {
+    "rank": 276,
+    "brand": "Eurotech",
+    "cat": "fridge",
+    "width": 439,
+    "widthRange": [
+      439,
+      439
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3033"
+    ],
+    "sampleModel": "T-BF47WH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3033 --value 20"
+  },
+  {
+    "rank": 277,
+    "brand": "Eurotech",
+    "cat": "fridge",
+    "width": 760,
+    "widthRange": [
+      760,
+      760
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0826"
+    ],
+    "sampleModel": "ED-RFB428SS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0826 --value 20"
+  },
+  {
+    "rank": 278,
+    "brand": "Eurotech",
+    "cat": "fridge",
+    "width": 790,
+    "widthRange": [
+      790,
+      790
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0798"
+    ],
+    "sampleModel": "ED-RFFD473SS.2",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0798 --value 20"
+  },
+  {
+    "rank": 279,
+    "brand": "EUROTECH",
+    "cat": "fridge",
+    "width": 601,
+    "widthRange": [
+      601,
+      601
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0965"
+    ],
+    "sampleModel": "352331",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0965 --value 20"
+  },
+  {
+    "rank": 280,
+    "brand": "Fhiaba",
+    "cat": "fridge",
+    "width": 598,
+    "widthRange": [
+      598,
+      598
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3873"
+    ],
+    "sampleModel": "UC2D60POA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3873 --value 20"
+  },
+  {
+    "rank": 281,
+    "brand": "Galanz",
+    "cat": "fridge",
+    "width": 444,
+    "widthRange": [
+      444,
+      444
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2305"
+    ],
+    "sampleModel": "BC-47F-F-53H",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2305 --value 20"
+  },
+  {
+    "rank": 282,
+    "brand": "Galanz",
+    "cat": "fridge",
+    "width": 506,
+    "widthRange": [
+      506,
+      506
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2343"
+    ],
+    "sampleModel": "BC-127-53H",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2343 --value 20"
+  },
+  {
+    "rank": 283,
+    "brand": "Galanz",
+    "cat": "fridge",
+    "width": 720,
+    "widthRange": [
+      720,
+      720
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2369"
+    ],
+    "sampleModel": "BCD-455WTEP-A1-53H",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2369 --value 20"
+  },
+  {
+    "rank": 284,
+    "brand": "Gasmate",
+    "cat": "fridge",
+    "width": 435,
+    "widthRange": [
+      435,
+      435
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3653"
+    ],
+    "sampleModel": "SW-63",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3653 --value 20"
+  },
+  {
+    "rank": 285,
+    "brand": "Germanica",
+    "cat": "fridge",
+    "width": 472,
+    "widthRange": [
+      472,
+      472
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3196"
+    ],
+    "sampleModel": "GR48LTBF",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3196 --value 20"
+  },
+  {
+    "rank": 286,
+    "brand": "Germanica",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      545,
+      545
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2920"
+    ],
+    "sampleModel": "GTF220AU70W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2920 --value 20"
+  },
+  {
+    "rank": 287,
+    "brand": "Haier",
+    "cat": "fridge",
+    "width": 439,
+    "widthRange": [
+      439,
+      439
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2252"
+    ],
+    "sampleModel": "HRF50UW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2252 --value 20"
+  },
+  {
+    "rank": 288,
+    "brand": "Haier",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      480
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2251"
+    ],
+    "sampleModel": "HRF80UW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2251 --value 20"
+  },
+  {
+    "rank": 289,
+    "brand": "HAIER",
+    "cat": "fridge",
+    "width": 475,
+    "widthRange": [
+      475,
+      475
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3277"
+    ],
+    "sampleModel": "HRF90UC",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3277 --value 20"
+  },
+  {
+    "rank": 290,
+    "brand": "Harbour",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      480
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2186"
+    ],
+    "sampleModel": "HBRBC93B",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2186 --value 20"
+  },
+  {
+    "rank": 291,
+    "brand": "Harbour",
+    "cat": "fridge",
+    "width": 605,
+    "widthRange": [
+      605,
+      605
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3347"
+    ],
+    "sampleModel": "HBRKBC185X",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3347 --value 20"
+  },
+  {
+    "rank": 292,
+    "brand": "HELLER",
+    "cat": "fridge",
+    "width": 439,
+    "widthRange": [
+      439,
+      439
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2632"
+    ],
+    "sampleModel": "BFH6",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2632 --value 20"
+  },
+  {
+    "rank": 293,
+    "brand": "HELLER",
+    "cat": "fridge",
+    "width": 470,
+    "widthRange": [
+      470,
+      470
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3414"
+    ],
+    "sampleModel": "HBC98",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3414 --value 20"
+  },
+  {
+    "rank": 294,
+    "brand": "HELLER",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      480
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2634"
+    ],
+    "sampleModel": "BFH70",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2634 --value 20"
+  },
+  {
+    "rank": 295,
+    "brand": "HELLER",
+    "cat": "fridge",
+    "width": 495,
+    "widthRange": [
+      495,
+      495
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2332"
+    ],
+    "sampleModel": "HBF126",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2332 --value 20"
+  },
+  {
+    "rank": 296,
+    "brand": "HELLER",
+    "cat": "fridge",
+    "width": 506,
+    "widthRange": [
+      506,
+      506
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3364"
+    ],
+    "sampleModel": "HBF117",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3364 --value 20"
+  },
+  {
+    "rank": 297,
+    "brand": "HELLER",
+    "cat": "fridge",
+    "width": 599,
+    "widthRange": [
+      599,
+      599
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3443"
+    ],
+    "sampleModel": "HFF335",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3443 --value 20"
+  },
+  {
+    "rank": 298,
+    "brand": "HELLER",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      700
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2479"
+    ],
+    "sampleModel": "HFF415S",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2479 --value 20"
+  },
+  {
+    "rank": 299,
+    "brand": "HELLER",
+    "cat": "fridge",
+    "width": 708,
+    "widthRange": [
+      708,
+      708
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3531"
+    ],
+    "sampleModel": "HFF413",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3531 --value 20"
+  },
+  {
+    "rank": 300,
+    "brand": "Hitachi",
+    "cat": "fridge",
+    "width": 900,
+    "widthRange": [
+      900,
+      900
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0909"
+    ],
+    "sampleModel": "R-WB640VT0GBK",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0909 --value 20"
+  },
+  {
+    "rank": 301,
+    "brand": "HITACHI",
+    "cat": "fridge",
+    "width": 880,
+    "widthRange": [
+      880,
+      880
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2994"
+    ],
+    "sampleModel": "R-ZX740RA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2994 --value 20"
+  },
+  {
+    "rank": 302,
+    "brand": "HOOVER",
+    "cat": "fridge",
+    "width": 495,
+    "widthRange": [
+      495,
+      495
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2895"
+    ],
+    "sampleModel": "HV-RBF121",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2895 --value 20"
+  },
+  {
+    "rank": 303,
+    "brand": "HOOVER",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2913"
+    ],
+    "sampleModel": "HV-RTM248",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2913 --value 20"
+  },
+  {
+    "rank": 304,
+    "brand": "Husky",
+    "cat": "fridge",
+    "width": 445,
+    "widthRange": [
+      445,
+      445
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2499"
+    ],
+    "sampleModel": "HUS-69WH.1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2499 --value 20"
+  },
+  {
+    "rank": 305,
+    "brand": "Husky",
+    "cat": "fridge",
+    "width": 501,
+    "widthRange": [
+      501,
+      501
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2776"
+    ],
+    "sampleModel": "HUS-92BFWH.1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2776 --value 20"
+  },
+  {
+    "rank": 306,
+    "brand": "Husky",
+    "cat": "fridge",
+    "width": 710,
+    "widthRange": [
+      710,
+      710
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3697"
+    ],
+    "sampleModel": "HUS403INBM.1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3697 --value 20"
+  },
+  {
+    "rank": 307,
+    "brand": "ICELAND",
+    "cat": "fridge",
+    "width": 580,
+    "widthRange": [
+      580,
+      580
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0736"
+    ],
+    "sampleModel": "352216",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0736 --value 20"
+  },
+  {
+    "rank": 308,
+    "brand": "Ikea",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2760"
+    ],
+    "sampleModel": "HD-400RWEN (AU) MEDGÅNG",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2760 --value 20"
+  },
+  {
+    "rank": 309,
+    "brand": "Ikea",
+    "cat": "fridge",
+    "width": 833,
+    "widthRange": [
+      833,
+      833
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3389"
+    ],
+    "sampleModel": "RIBBENÅS 20580767",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3389 --value 20"
+  },
+  {
+    "rank": 310,
+    "brand": "Ilve",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3195"
+    ],
+    "sampleModel": "ILBC142BVL",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3195 --value 20"
+  },
+  {
+    "rank": 311,
+    "brand": "ILVE",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3503"
+    ],
+    "sampleModel": "ILBC142",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3503 --value 20"
+  },
+  {
+    "rank": 312,
+    "brand": "ILVE",
+    "cat": "fridge",
+    "width": 759,
+    "widthRange": [
+      759,
+      759
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3422"
+    ],
+    "sampleModel": "R76FDAU/SS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3422 --value 20"
+  },
+  {
+    "rank": 313,
+    "brand": "ILVE",
+    "cat": "fridge",
+    "width": 962,
+    "widthRange": [
+      962,
+      962
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3483"
+    ],
+    "sampleModel": "R96BICDAU",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3483 --value 20"
+  },
+  {
+    "rank": 314,
+    "brand": "Imprasio",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      480
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0863"
+    ],
+    "sampleModel": "IMTMF125SS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0863 --value 20"
+  },
+  {
+    "rank": 315,
+    "brand": "Imprasio",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0756"
+    ],
+    "sampleModel": "IMFF253SS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0756 --value 20"
+  },
+  {
+    "rank": 316,
+    "brand": "Inalto",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3671"
+    ],
+    "sampleModel": "IUFF238B",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3671 --value 20"
+  },
+  {
+    "rank": 317,
+    "brand": "KELVINATOR",
+    "cat": "fridge",
+    "width": 1405,
+    "widthRange": [
+      1405,
+      1405
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2595"
+    ],
+    "sampleModel": "KTB2302AB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2595 --value 20"
+  },
+  {
+    "rank": 318,
+    "brand": "KELVINATOR",
+    "cat": "fridge",
+    "width": 1470,
+    "widthRange": [
+      1470,
+      1470
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2582"
+    ],
+    "sampleModel": "KTB2502AB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2582 --value 20"
+  },
+  {
+    "rank": 319,
+    "brand": "KELVINATOR",
+    "cat": "fridge",
+    "width": 1605,
+    "widthRange": [
+      1605,
+      1605
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2584"
+    ],
+    "sampleModel": "KTB2802AB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2584 --value 20"
+  },
+  {
+    "rank": 320,
+    "brand": "Kogan",
+    "cat": "fridge",
+    "width": 439,
+    "widthRange": [
+      439,
+      439
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3777"
+    ],
+    "sampleModel": "KAH46LBRSFA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3777 --value 20"
+  },
+  {
+    "rank": 321,
+    "brand": "Kogan",
+    "cat": "fridge",
+    "width": 445,
+    "widthRange": [
+      445,
+      445
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2519"
+    ],
+    "sampleModel": "KAM65LBRSFA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2519 --value 20"
+  },
+  {
+    "rank": 322,
+    "brand": "Kogan",
+    "cat": "fridge",
+    "width": 713,
+    "widthRange": [
+      713,
+      713
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2781"
+    ],
+    "sampleModel": "KAM431FRSFA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2781 --value 20"
+  },
+  {
+    "rank": 323,
+    "brand": "Kogan",
+    "cat": "fridge",
+    "width": 750,
+    "widthRange": [
+      750,
+      750
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3557"
+    ],
+    "sampleModel": "KAMFREN522A",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3557 --value 20"
+  },
+  {
+    "rank": 324,
+    "brand": "Kogan",
+    "cat": "fridge",
+    "width": 833,
+    "widthRange": [
+      833,
+      833
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3348"
+    ],
+    "sampleModel": "KAMFREN490A",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3348 --value 20"
+  },
+  {
+    "rank": 325,
+    "brand": "KOGAN",
+    "cat": "fridge",
+    "width": 470,
+    "widthRange": [
+      470,
+      470
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3298"
+    ],
+    "sampleModel": "KAM44BEVFGA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3298 --value 20"
+  },
+  {
+    "rank": 326,
+    "brand": "KONKA",
+    "cat": "fridge",
+    "width": 453,
+    "widthRange": [
+      453,
+      453
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3861"
+    ],
+    "sampleModel": "KR-70",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3861 --value 20"
+  },
+  {
+    "rank": 327,
+    "brand": "KONKA",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0893"
+    ],
+    "sampleModel": "KRF-314SS",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0893 --value 20"
+  },
+  {
+    "rank": 328,
+    "brand": "KONKA",
+    "cat": "fridge",
+    "width": 830,
+    "widthRange": [
+      830,
+      830
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0971"
+    ],
+    "sampleModel": "KRF-480W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0971 --value 20"
+  },
+  {
+    "rank": 329,
+    "brand": "LICENSING ESSENTIALS",
+    "cat": "fridge",
+    "width": 440,
+    "widthRange": [
+      440,
+      440
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2912"
+    ],
+    "sampleModel": "BC-40D",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2912 --value 20"
+  },
+  {
+    "rank": 330,
+    "brand": "Liebherr",
+    "cat": "fridge",
+    "width": 757,
+    "widthRange": [
+      757,
+      757
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0365"
+    ],
+    "sampleModel": "ECBN5066",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0365 --value 20"
+  },
+  {
+    "rank": 331,
+    "brand": "Liebherr",
+    "cat": "fridge",
+    "width": 910,
+    "widthRange": [
+      910,
+      910
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0371"
+    ],
+    "sampleModel": "ECBN6256",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0371 --value 20"
+  },
+  {
+    "rank": 332,
+    "brand": "LIEBHERR",
+    "cat": "fridge",
+    "width": 450,
+    "widthRange": [
+      450,
+      450
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3468"
+    ],
+    "sampleModel": "EGN 9171",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3468 --value 20"
+  },
+  {
+    "rank": 333,
+    "brand": "LIEBHERR",
+    "cat": "fridge",
+    "width": 602,
+    "widthRange": [
+      602,
+      602
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3469"
+    ],
+    "sampleModel": "EFNh 9671",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3469 --value 20"
+  },
+  {
+    "rank": 334,
+    "brand": "Linarie",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      545,
+      545
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3042"
+    ],
+    "sampleModel": "LK200DDRED",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3042 --value 20"
+  },
+  {
+    "rank": 335,
+    "brand": "Linarie",
+    "cat": "fridge",
+    "width": 564,
+    "widthRange": [
+      564,
+      564
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2836"
+    ],
+    "sampleModel": "LKCO250BLACK",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2836 --value 20"
+  },
+  {
+    "rank": 336,
+    "brand": "Linarie",
+    "cat": "fridge",
+    "width": 599,
+    "widthRange": [
+      599,
+      599
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3238"
+    ],
+    "sampleModel": "LK335LPINK",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3238 --value 20"
+  },
+  {
+    "rank": 337,
+    "brand": "Linarie",
+    "cat": "fridge",
+    "width": 785,
+    "widthRange": [
+      785,
+      785
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3113"
+    ],
+    "sampleModel": "LSCD436MIR",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3113 --value 20"
+  },
+  {
+    "rank": 338,
+    "brand": "Living & Co",
+    "cat": "fridge",
+    "width": 472,
+    "widthRange": [
+      472,
+      472
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0795"
+    ],
+    "sampleModel": "HS-65L",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0795 --value 20"
+  },
+  {
+    "rank": 339,
+    "brand": "Living & Co",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      480
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0868"
+    ],
+    "sampleModel": "DD1-09A (TWL64)",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0868 --value 20"
+  },
+  {
+    "rank": 340,
+    "brand": "Living & Co",
+    "cat": "fridge",
+    "width": 495,
+    "widthRange": [
+      495,
+      495
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0898"
+    ],
+    "sampleModel": "TWL 121  (DF1-153A)",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0898 --value 20"
+  },
+  {
+    "rank": 341,
+    "brand": "Living & Co",
+    "cat": "fridge",
+    "width": 501,
+    "widthRange": [
+      501,
+      501
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0780"
+    ],
+    "sampleModel": "HS-160RNW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0780 --value 20"
+  },
+  {
+    "rank": 342,
+    "brand": "Living & Co",
+    "cat": "fridge",
+    "width": 551,
+    "widthRange": [
+      551,
+      551
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0802"
+    ],
+    "sampleModel": "BC-125SF-F-53H",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0802 --value 20"
+  },
+  {
+    "rank": 343,
+    "brand": "Living & Co",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      700
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0883"
+    ],
+    "sampleModel": "TWL413 (FC2-541D)",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0883 --value 20"
+  },
+  {
+    "rank": 344,
+    "brand": "majestic",
+    "cat": "fridge",
+    "width": 601,
+    "widthRange": [
+      601,
+      601
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2761"
+    ],
+    "sampleModel": "M373RETRO",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2761 --value 20"
+  },
+  {
+    "rank": 345,
+    "brand": "Midea",
+    "cat": "fridge",
+    "width": 470,
+    "widthRange": [
+      470,
+      470
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0846"
+    ],
+    "sampleModel": "MDRT134FGF09AP",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0846 --value 20"
+  },
+  {
+    "rank": 346,
+    "brand": "MIDEA",
+    "cat": "fridge",
+    "width": 470,
+    "widthRange": [
+      470,
+      470
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0938"
+    ],
+    "sampleModel": "MERT134FGF30AP",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0938 --value 20"
+  },
+  {
+    "rank": 347,
+    "brand": "MIDEA",
+    "cat": "fridge",
+    "width": 501,
+    "widthRange": [
+      501,
+      501
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0953"
+    ],
+    "sampleModel": "MERD181FGF30AP",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0953 --value 20"
+  },
+  {
+    "rank": 348,
+    "brand": "MIDEA",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      700
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3715"
+    ],
+    "sampleModel": "MDRT580MTF45AP",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3715 --value 20"
+  },
+  {
+    "rank": 349,
+    "brand": "MIELE",
+    "cat": "fridge",
+    "width": 747,
+    "widthRange": [
+      747,
+      747
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3373"
+    ],
+    "sampleModel": "KFN 4776 ED",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3373 --value 20"
+  },
+  {
+    "rank": 350,
+    "brand": "MIELE",
+    "cat": "fridge",
+    "width": 915,
+    "widthRange": [
+      915,
+      915
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3055"
+    ],
+    "sampleModel": "KF 2981 Vi",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3055 --value 20"
+  },
+  {
+    "rank": 351,
+    "brand": "Mistral",
+    "cat": "fridge",
+    "width": 500,
+    "widthRange": [
+      500,
+      500
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2962"
+    ],
+    "sampleModel": "MBF117W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2962 --value 20"
+  },
+  {
+    "rank": 352,
+    "brand": "MITSUBISHI ELECTRIC",
+    "cat": "fridge",
+    "width": 650,
+    "widthRange": [
+      650,
+      650
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3825"
+    ],
+    "sampleModel": "MR-WX470F-W-A",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3825 --value 20"
+  },
+  {
+    "rank": 353,
+    "brand": "MITSUBISHI ELECTRIC",
+    "cat": "fridge",
+    "width": 800,
+    "widthRange": [
+      800,
+      800
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3811"
+    ],
+    "sampleModel": "MR-WX700C-BR-A",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3811 --value 20"
+  },
+  {
+    "rank": 354,
+    "brand": "MITSUBISHI ELECTRIC",
+    "cat": "fridge",
+    "width": 900,
+    "widthRange": [
+      900,
+      900
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2681"
+    ],
+    "sampleModel": "MR-LX564ER-GSL-A",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2681 --value 20"
+  },
+  {
+    "rank": 355,
+    "brand": "modello",
+    "cat": "fridge",
+    "width": 448,
+    "widthRange": [
+      448,
+      448
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0920"
+    ],
+    "sampleModel": "MOD91R",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0920 --value 20"
+  },
+  {
+    "rank": 356,
+    "brand": "Mykin",
+    "cat": "fridge",
+    "width": 445,
+    "widthRange": [
+      445,
+      445
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3765"
+    ],
+    "sampleModel": "MBF69W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3765 --value 20"
+  },
+  {
+    "rank": 357,
+    "brand": "Mykin",
+    "cat": "fridge",
+    "width": 501,
+    "widthRange": [
+      501,
+      501
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3755"
+    ],
+    "sampleModel": "MBF124W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3755 --value 20"
+  },
+  {
+    "rank": 358,
+    "brand": "Mykin",
+    "cat": "fridge",
+    "width": 553,
+    "widthRange": [
+      553,
+      553
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3763"
+    ],
+    "sampleModel": "MUF88W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3763 --value 20"
+  },
+  {
+    "rank": 359,
+    "brand": "Mykin",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      700
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3766"
+    ],
+    "sampleModel": "MTM413W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3766 --value 20"
+  },
+  {
+    "rank": 360,
+    "brand": "NCE",
+    "cat": "fridge",
+    "width": 524,
+    "widthRange": [
+      524,
+      524
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3045"
+    ],
+    "sampleModel": "NCE126EU",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3045 --value 20"
+  },
+  {
+    "rank": 361,
+    "brand": "NCE",
+    "cat": "fridge",
+    "width": 544,
+    "widthRange": [
+      544,
+      544
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2965"
+    ],
+    "sampleModel": "NCE242EU",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2965 --value 20"
+  },
+  {
+    "rank": 362,
+    "brand": "NCE",
+    "cat": "fridge",
+    "width": 600,
+    "widthRange": [
+      600,
+      600
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2963"
+    ],
+    "sampleModel": "NCE334EU",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2963 --value 20"
+  },
+  {
+    "rank": 363,
+    "brand": "Nero",
+    "cat": "fridge",
+    "width": 439,
+    "widthRange": [
+      439,
+      439
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2822"
+    ],
+    "sampleModel": "744046",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2822 --value 20"
+  },
+  {
+    "rank": 364,
+    "brand": "Nero",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      480
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2825"
+    ],
+    "sampleModel": "74407802",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2825 --value 20"
+  },
+  {
+    "rank": 365,
+    "brand": "Nero",
+    "cat": "fridge",
+    "width": 600,
+    "widthRange": [
+      600,
+      600
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3085"
+    ],
+    "sampleModel": "744300",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3085 --value 20"
+  },
+  {
+    "rank": 366,
+    "brand": "Nero",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      700
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3086"
+    ],
+    "sampleModel": "744400",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3086 --value 20"
+  },
+  {
+    "rank": 367,
+    "brand": "Norj",
+    "cat": "fridge",
+    "width": 470,
+    "widthRange": [
+      470,
+      470
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3711"
+    ],
+    "sampleModel": "NBF87B",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3711 --value 20"
+  },
+  {
+    "rank": 368,
+    "brand": "Norj",
+    "cat": "fridge",
+    "width": 501,
+    "widthRange": [
+      501,
+      501
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3714"
+    ],
+    "sampleModel": "NBF124W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3714 --value 20"
+  },
+  {
+    "rank": 369,
+    "brand": "NORJ",
+    "cat": "fridge",
+    "width": 444,
+    "widthRange": [
+      444,
+      444
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2876"
+    ],
+    "sampleModel": "NBF46W1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2876 --value 20"
+  },
+  {
+    "rank": 370,
+    "brand": "NORJ",
+    "cat": "fridge",
+    "width": 486,
+    "widthRange": [
+      486,
+      486
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2875"
+    ],
+    "sampleModel": "NTBF86W1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2875 --value 20"
+  },
+  {
+    "rank": 371,
+    "brand": "NORJ",
+    "cat": "fridge",
+    "width": 506,
+    "widthRange": [
+      506,
+      506
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2877"
+    ],
+    "sampleModel": "NBF117W1",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2877 --value 20"
+  },
+  {
+    "rank": 372,
+    "brand": "Novello",
+    "cat": "fridge",
+    "width": 450,
+    "widthRange": [
+      450,
+      450
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0750"
+    ],
+    "sampleModel": "BF-MD-Grey / BF-MED-BK",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0750 --value 20"
+  },
+  {
+    "rank": 373,
+    "brand": "Novello",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0743"
+    ],
+    "sampleModel": "CNHM-UR-183-WH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0743 --value 20"
+  },
+  {
+    "rank": 374,
+    "brand": "Nulon",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      480
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3176"
+    ],
+    "sampleModel": "IA5682",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3176 --value 20"
+  },
+  {
+    "rank": 375,
+    "brand": "Omega",
+    "cat": "fridge",
+    "width": 470,
+    "widthRange": [
+      470,
+      470
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3559"
+    ],
+    "sampleModel": "OCBFS102SB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3559 --value 20"
+  },
+  {
+    "rank": 376,
+    "brand": "Omega",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      700
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2476"
+    ],
+    "sampleModel": "OTMF450X",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2476 --value 20"
+  },
+  {
+    "rank": 377,
+    "brand": "Omega",
+    "cat": "fridge",
+    "width": 790,
+    "widthRange": [
+      790,
+      790
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2531"
+    ],
+    "sampleModel": "OFDF473X",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2531 --value 20"
+  },
+  {
+    "rank": 378,
+    "brand": "Omega",
+    "cat": "fridge",
+    "width": 893,
+    "widthRange": [
+      893,
+      893
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3472"
+    ],
+    "sampleModel": "OIFDF439",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3472 --value 20"
+  },
+  {
+    "rank": 379,
+    "brand": "Panasonic",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      545,
+      545
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0907"
+    ],
+    "sampleModel": "NR-TC221BUSA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0907 --value 20"
+  },
+  {
+    "rank": 380,
+    "brand": "Panasonic",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0968"
+    ],
+    "sampleModel": "NR-BC321BUK8",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0968 --value 20"
+  },
+  {
+    "rank": 381,
+    "brand": "Panasonic",
+    "cat": "fridge",
+    "width": 853,
+    "widthRange": [
+      853,
+      853
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0906"
+    ],
+    "sampleModel": "NR-XC541CUHA",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0906 --value 20"
+  },
+  {
+    "rank": 382,
+    "brand": "Panasonic",
+    "cat": "fridge",
+    "width": 900,
+    "widthRange": [
+      900,
+      900
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3114"
+    ],
+    "sampleModel": "NR-XY680L",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3114 --value 20"
+  },
+  {
+    "rank": 383,
+    "brand": "PARMCO",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      480
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0862"
+    ],
+    "sampleModel": "FR85WUBFF",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0862 --value 20"
+  },
+  {
+    "rank": 384,
+    "brand": "PARMCO",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0860"
+    ],
+    "sampleModel": "FR253SBMFF",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0860 --value 20"
+  },
+  {
+    "rank": 385,
+    "brand": "PARMCO",
+    "cat": "fridge",
+    "width": 600,
+    "widthRange": [
+      600,
+      600
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0861"
+    ],
+    "sampleModel": "FR362STMFF",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0861 --value 20"
+  },
+  {
+    "rank": 386,
+    "brand": "Pulmuone",
+    "cat": "fridge",
+    "width": 500,
+    "widthRange": [
+      500,
+      500
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3840"
+    ],
+    "sampleModel": "KS148DG1LX",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3840 --value 20"
+  },
+  {
+    "rank": 387,
+    "brand": "Robinhood",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3036"
+    ],
+    "sampleModel": "RHTMF269W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3036 --value 20"
+  },
+  {
+    "rank": 388,
+    "brand": "Robinhood",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      700
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0919"
+    ],
+    "sampleModel": "RHTMF415MSD",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0919 --value 20"
+  },
+  {
+    "rank": 389,
+    "brand": "Robinhood",
+    "cat": "fridge",
+    "width": 790,
+    "widthRange": [
+      790,
+      790
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0927"
+    ],
+    "sampleModel": "RHBMF459MSD",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0927 --value 20"
+  },
+  {
+    "rank": 390,
+    "brand": "RYOBI",
+    "cat": "fridge",
+    "width": 670,
+    "widthRange": [
+      670,
+      670
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2932"
+    ],
+    "sampleModel": "R18FRF10",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2932 --value 20"
+  },
+  {
+    "rank": 391,
+    "brand": "SEIKI",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      700
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2555"
+    ],
+    "sampleModel": "SC-430AU8TMW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2555 --value 20"
+  },
+  {
+    "rank": 392,
+    "brand": "SEIKI",
+    "cat": "fridge",
+    "width": 833,
+    "widthRange": [
+      833,
+      833
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2556"
+    ],
+    "sampleModel": "SC-520AU8FD",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2556 --value 20"
+  },
+  {
+    "rank": 393,
+    "brand": "SHARP",
+    "cat": "fridge",
+    "width": 470,
+    "widthRange": [
+      470,
+      470
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3416"
+    ],
+    "sampleModel": "SJ-50MB-XWP",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3416 --value 20"
+  },
+  {
+    "rank": 394,
+    "brand": "Sheffield",
+    "cat": "fridge",
+    "width": 695,
+    "widthRange": [
+      695,
+      695
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0784"
+    ],
+    "sampleModel": "PLA1365",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0784 --value 20"
+  },
+  {
+    "rank": 395,
+    "brand": "Sheffield",
+    "cat": "fridge",
+    "width": 833,
+    "widthRange": [
+      833,
+      833
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0710"
+    ],
+    "sampleModel": "PLA1356",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0710 --value 20"
+  },
+  {
+    "rank": 396,
+    "brand": "SHEFFIELD",
+    "cat": "fridge",
+    "width": 495,
+    "widthRange": [
+      495,
+      495
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0895"
+    ],
+    "sampleModel": "PL92BZ",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0895 --value 20"
+  },
+  {
+    "rank": 397,
+    "brand": "SHEFFIELD",
+    "cat": "fridge",
+    "width": 524,
+    "widthRange": [
+      524,
+      524
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0811"
+    ],
+    "sampleModel": "PLA123F",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0811 --value 20"
+  },
+  {
+    "rank": 398,
+    "brand": "Simmons",
+    "cat": "fridge",
+    "width": 444,
+    "widthRange": [
+      444,
+      444
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3641"
+    ],
+    "sampleModel": "SMBF47-53H",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3641 --value 20"
+  },
+  {
+    "rank": 399,
+    "brand": "Simmons",
+    "cat": "fridge",
+    "width": 506,
+    "widthRange": [
+      506,
+      506
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3642"
+    ],
+    "sampleModel": "SMBF-127B-53H",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3642 --value 20"
+  },
+  {
+    "rank": 400,
+    "brand": "Smeg",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2702"
+    ],
+    "sampleModel": "FAB10HRCR5AU",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2702 --value 20"
+  },
+  {
+    "rank": 401,
+    "brand": "Smeg",
+    "cat": "fridge",
+    "width": 600,
+    "widthRange": [
+      600,
+      600
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2711"
+    ],
+    "sampleModel": "FAB28RDGC5AU",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2711 --value 20"
+  },
+  {
+    "rank": 402,
+    "brand": "Solt",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      545,
+      545
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3106"
+    ],
+    "sampleModel": "GGSTM266B",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3106 --value 20"
+  },
+  {
+    "rank": 403,
+    "brand": "Solt",
+    "cat": "fridge",
+    "width": 595,
+    "widthRange": [
+      595,
+      595
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3025"
+    ],
+    "sampleModel": "GGSBM325W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3025 --value 20"
+  },
+  {
+    "rank": 404,
+    "brand": "STIRLING",
+    "cat": "fridge",
+    "width": 501,
+    "widthRange": [
+      501,
+      501
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2554"
+    ],
+    "sampleModel": "STR-H84B",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2554 --value 20"
+  },
+  {
+    "rank": 405,
+    "brand": "STIRLING",
+    "cat": "fridge",
+    "width": 790,
+    "widthRange": [
+      790,
+      790
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2633"
+    ],
+    "sampleModel": "STR-H419WFF",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2633 --value 20"
+  },
+  {
+    "rank": 406,
+    "brand": "Sub-Zero",
+    "cat": "fridge",
+    "width": 1219,
+    "widthRange": [
+      1219,
+      1219
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3004"
+    ],
+    "sampleModel": "ICBCL4850UFDID/S/T",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3004 --value 20"
+  },
+  {
+    "rank": 407,
+    "brand": "Supreme",
+    "cat": "fridge",
+    "width": 545,
+    "widthRange": [
+      545,
+      545
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3692"
+    ],
+    "sampleModel": "SF-181",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3692 --value 20"
+  },
+  {
+    "rank": 408,
+    "brand": "TCL",
+    "cat": "fridge",
+    "width": 706,
+    "widthRange": [
+      706,
+      706
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3594"
+    ],
+    "sampleModel": "TRF491TG",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3594 --value 20"
+  },
+  {
+    "rank": 409,
+    "brand": "TCL",
+    "cat": "fridge",
+    "width": 759,
+    "widthRange": [
+      759,
+      759
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3752"
+    ],
+    "sampleModel": "TRF495FHC",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3752 --value 20"
+  },
+  {
+    "rank": 410,
+    "brand": "TCL",
+    "cat": "fridge",
+    "width": 790,
+    "widthRange": [
+      790,
+      790
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3072"
+    ],
+    "sampleModel": "P421CDW",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3072 --value 20"
+  },
+  {
+    "rank": 411,
+    "brand": "TCL",
+    "cat": "fridge",
+    "width": 911,
+    "widthRange": [
+      911,
+      911
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3782"
+    ],
+    "sampleModel": "TRF576FHB",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3782 --value 20"
+  },
+  {
+    "rank": 412,
+    "brand": "TECO",
+    "cat": "fridge",
+    "width": 486,
+    "widthRange": [
+      486,
+      486
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2552"
+    ],
+    "sampleModel": "TBF86WMTAG",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2552 --value 20"
+  },
+  {
+    "rank": 413,
+    "brand": "TECO",
+    "cat": "fridge",
+    "width": 495,
+    "widthRange": [
+      495,
+      495
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2926"
+    ],
+    "sampleModel": "TBF121WMAH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2926 --value 20"
+  },
+  {
+    "rank": 414,
+    "brand": "TECO",
+    "cat": "fridge",
+    "width": 700,
+    "widthRange": [
+      700,
+      700
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3269"
+    ],
+    "sampleModel": "TFF415WNTAH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3269 --value 20"
+  },
+  {
+    "rank": 415,
+    "brand": "TECO",
+    "cat": "fridge",
+    "width": 755,
+    "widthRange": [
+      755,
+      755
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3533"
+    ],
+    "sampleModel": "TFF513WNTVAH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3533 --value 20"
+  },
+  {
+    "rank": 416,
+    "brand": "Teka",
+    "cat": "fridge",
+    "width": 833,
+    "widthRange": [
+      833,
+      833
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2466"
+    ],
+    "sampleModel": "T4DF545X",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2466 --value 20"
+  },
+  {
+    "rank": 417,
+    "brand": "Thermaster",
+    "cat": "fridge",
+    "width": 524,
+    "widthRange": [
+      524,
+      524
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3858"
+    ],
+    "sampleModel": "DC-122Q",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3858 --value 20"
+  },
+  {
+    "rank": 418,
+    "brand": "Thermaster",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3859"
+    ],
+    "sampleModel": "DC-80F",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3859 --value 20"
+  },
+  {
+    "rank": 419,
+    "brand": "Tuscany",
+    "cat": "fridge",
+    "width": 480,
+    "widthRange": [
+      480,
+      480
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0792"
+    ],
+    "sampleModel": "T-BFR65WH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0792 --value 20"
+  },
+  {
+    "rank": 420,
+    "brand": "Tuscany",
+    "cat": "fridge",
+    "width": 500,
+    "widthRange": [
+      500,
+      500
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0790"
+    ],
+    "sampleModel": "T-RF221WH",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0790 --value 20"
+  },
+  {
+    "rank": 421,
+    "brand": "V-ZUG",
+    "cat": "fridge",
+    "width": 548,
+    "widthRange": [
+      548,
+      548
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3522"
+    ],
+    "sampleModel": "CCO6T-51149",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3522 --value 20"
+  },
+  {
+    "rank": 422,
+    "brand": "V-ZUG",
+    "cat": "fridge",
+    "width": 587,
+    "widthRange": [
+      587,
+      587
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3417"
+    ],
+    "sampleModel": "FR6T-53006",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3417 --value 20"
+  },
+  {
+    "rank": 423,
+    "brand": "Vinopro",
+    "cat": "fridge",
+    "width": 450,
+    "widthRange": [
+      450,
+      450
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2970"
+    ],
+    "sampleModel": "FS-75SE-A0i0L3",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2970 --value 20"
+  },
+  {
+    "rank": 424,
+    "brand": "VOGUE",
+    "cat": "fridge",
+    "width": 487,
+    "widthRange": [
+      487,
+      487
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0738"
+    ],
+    "sampleModel": "354088",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0738 --value 20"
+  },
+  {
+    "rank": 425,
+    "brand": "VOGUE",
+    "cat": "fridge",
+    "width": 527,
+    "widthRange": [
+      527,
+      527
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0937"
+    ],
+    "sampleModel": "352205",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0937 --value 20"
+  },
+  {
+    "rank": 426,
+    "brand": "VOGUE",
+    "cat": "fridge",
+    "width": 550,
+    "widthRange": [
+      550,
+      550
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0961"
+    ],
+    "sampleModel": "354096",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0961 --value 20"
+  },
+  {
+    "rank": 427,
+    "brand": "VOGUE",
+    "cat": "fridge",
+    "width": 578,
+    "widthRange": [
+      578,
+      578
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0936"
+    ],
+    "sampleModel": "352301",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0936 --value 20"
+  },
+  {
+    "rank": 428,
+    "brand": "VOGUE",
+    "cat": "fridge",
+    "width": 635,
+    "widthRange": [
+      635,
+      635
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0930"
+    ],
+    "sampleModel": "353320",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0930 --value 20"
+  },
+  {
+    "rank": 429,
+    "brand": "VOGUE",
+    "cat": "fridge",
+    "width": 710,
+    "widthRange": [
+      710,
+      710
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0946"
+    ],
+    "sampleModel": "355380",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0946 --value 20"
+  },
+  {
+    "rank": 430,
+    "brand": "VOGUE",
+    "cat": "fridge",
+    "width": 790,
+    "widthRange": [
+      790,
+      790
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-zrf0775"
+    ],
+    "sampleModel": "353404",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-zrf0775 --value 20"
+  },
+  {
+    "rank": 431,
+    "brand": "Warrior Refrigeration",
+    "cat": "fridge",
+    "width": 402,
+    "widthRange": [
+      402,
+      402
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3354"
+    ],
+    "sampleModel": "WCM40G",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3354 --value 20"
+  },
+  {
+    "rank": 432,
+    "brand": "WHIRLPOOL",
+    "cat": "fridge",
+    "width": 610,
+    "widthRange": [
+      610,
+      610
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2266"
+    ],
+    "sampleModel": "WHPTM34600**",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2266 --value 20"
+  },
+  {
+    "rank": 433,
+    "brand": "yokohama",
+    "cat": "fridge",
+    "width": 500,
+    "widthRange": [
+      500,
+      500
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3029"
+    ],
+    "sampleModel": "YOKF198W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3029 --value 20"
+  },
+  {
+    "rank": 434,
+    "brand": "yokohama",
+    "cat": "fridge",
+    "width": 590,
+    "widthRange": [
+      590,
+      590
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3730"
+    ],
+    "sampleModel": "YOKF325W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3730 --value 20"
+  },
+  {
+    "rank": 435,
+    "brand": "yokohama",
+    "cat": "fridge",
+    "width": 600,
+    "widthRange": [
+      600,
+      600
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf2966"
+    ],
+    "sampleModel": "YOKF334W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf2966 --value 20"
+  },
+  {
+    "rank": 436,
+    "brand": "yokohama",
+    "cat": "fridge",
+    "width": 690,
+    "widthRange": [
+      690,
+      690
+    ],
+    "modelCount": 1,
+    "ids": [
+      "fridge-arf3729"
+    ],
+    "sampleModel": "YOKF401W",
+    "suggestCommand": "node scripts/suggest-door-swing.js --id fridge-arf3729 --value 20"
+  }
+]
