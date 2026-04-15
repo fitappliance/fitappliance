@@ -1043,7 +1043,74 @@ When `CF_API_KEY` becomes available:
 
 ---
 
-## 8. Deployment
+## Task 8: SEO & Deep-Link Architecture
+
+### 8.1 URL parameter schema
+
+可分享/可抓取 URL 参数：
+
+- `cat`: `fridge` | `washing_machine` | `dishwasher` | `dryer`
+- `w`: cavity width（mm）
+- `h`: cavity height（mm）
+- `d`: cavity depth（mm）
+- `brand`: 可选品牌过滤
+- `door`: 可选门宽校验值（mm）
+- `dwelling`: `house` | `apartment` | `townhouse`
+
+示例：
+
+`https://fitappliance.com.au/?cat=fridge&w=600&h=1800&d=650`
+
+这些 URL 是规范化可分享格式。`Popular Searches` 全部使用该格式。
+
+### 8.2 deep_url resolution order
+
+零售商跳转采用三层回退策略（高可信到低可信）：
+
+1. `L1`: `product.direct_url`（手工校准，最高优先级）
+2. `L2`: Commission Factory 的 `DeepLink` / `AffiliateUrl`（依赖 `CF_API_KEY`）
+3. `L3`: `extractModelSku(model)` + 零售商搜索模板 URL
+
+SKU 提取逻辑：
+
+```js
+function extractModelSku(modelString) {
+  if (typeof modelString !== 'string' || !modelString.trim()) return '';
+  return modelString.trim().split(/\s+/)[0];
+}
+```
+
+### 8.3 Maintaining direct_url seed data
+
+- 在 `appliances.json` 的目标产品中增加：`"direct_url": "https://..."`
+- 仅为重点新品或高流量型号维护该字段
+- 每季度数据刷新前，复核 `direct_url` 是否仍可访问
+- 优先填入“产品详情页”而非“站内搜索页”
+
+### 8.4 Brand clearance guide pages
+
+- 生成器命令：`node scripts/generate-brand-pages.js`
+- 输出目录：`pages/brands/`
+- `clearance.json` 更新后需重新生成
+- 生成后，将 `pages/brands/index.json` 中 URL 提交至 Google Search Console（URL Inspection）
+- 生成阈值：品牌+分类至少 `>= 3` 个型号
+
+### 8.5 Popular Searches maintenance
+
+- `index.html` 中的 `Popular Searches` 为静态 HTML（便于抓取）
+- 每季度查看 Search Console Top Queries
+- 对“高曝光低 CTR”查询补充对应 `<li><a ...>` 入口并优化 anchor 文案
+
+### 8.6 Schema.org validation
+
+每次修改 JSON-LD 后执行校验：
+
+- `npx schema-dts-gen ...`（可选本地工具）
+- 或直接粘贴到：`https://validator.schema.org`
+
+---
+
+## 9. Deployment
 
 在 GitHub Actions 中创建/启用 `.github/workflows/sync-appliances.yml` 后，使用 `schedule` + `workflow_dispatch` 双触发模式：
 
@@ -1055,7 +1122,7 @@ When `CF_API_KEY` becomes available:
 
 ---
 
-## 9. Setup Checklist (one-time)
+## 10. Setup Checklist (one-time)
 
 - [x] Complete Task 1–7 above
 - [x] Register for Commission Factory affiliate account if not already done

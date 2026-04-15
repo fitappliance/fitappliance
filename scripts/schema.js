@@ -112,6 +112,21 @@ function validateProduct(product) {
     errors.push(`Product ${product.id ?? '<unknown>'} field sponsored must be boolean`);
   }
 
+  if (
+    Object.prototype.hasOwnProperty.call(product, 'unavailable') &&
+    typeof product.unavailable !== 'boolean'
+  ) {
+    errors.push(`Product ${product.id ?? '<unknown>'} field unavailable must be boolean when provided`);
+  }
+
+  if (
+    product.direct_url !== undefined &&
+    product.direct_url !== null &&
+    !(isNonEmptyString(product.direct_url) && product.direct_url.startsWith('https://'))
+  ) {
+    errors.push(`Product ${product.id ?? '<unknown>'} direct_url must be an https:// URL`);
+  }
+
   return errors;
 }
 
@@ -155,7 +170,7 @@ function validateAppliancesDocument(document) {
 
 function assertDoorSwingResearchCoverage(document, notesText) {
   const missingIds = document.products
-    .filter(product => product.door_swing_mm === null)
+    .filter(product => product.door_swing_mm === null && product.unavailable !== true)
     .map(product => product.id)
     .filter(id => !notesText.includes(`\`${id}\``));
 

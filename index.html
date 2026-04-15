@@ -597,6 +597,49 @@ nav {
 .comp-item h4 { font-size:14px;font-weight:700;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:7px; }
 .comp-item p { font-size:13px;color:var(--ink-3);line-height:1.7; }
 
+/* ─── POPULAR SEARCHES ─── */
+.popular-searches {
+  max-width: 1100px;
+  margin: 60px auto 0;
+  padding: 40px 24px;
+  border-top: 1px solid var(--border);
+}
+.ps-heading {
+  font-size: 18px;
+  color: var(--ink-2);
+  font-weight: 600;
+  margin: 0 0 24px;
+  letter-spacing: -.2px;
+}
+.ps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+.ps-group h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--ink-3);
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+.ps-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.ps-group a {
+  font-size: 13.5px;
+  color: var(--copper);
+  text-decoration: none;
+  line-height: 1.4;
+}
+.ps-group a:hover { text-decoration: underline; }
+
 /* ─── FOOTER ─── */
 footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px; }
 .footer-grid { max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:52px;margin-bottom:40px; }
@@ -1014,6 +1057,52 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   </div>
 </section>
 
+<section class="popular-searches" aria-label="Popular appliance searches">
+  <h2 class="ps-heading">Popular Appliance Size Searches in Australia</h2>
+  <div class="ps-grid">
+    <div class="ps-group">
+      <h3>Fridges by cavity size</h3>
+      <ul>
+        <li><a href="/?cat=fridge&w=600&h=1800&d=650">Fridges for 600mm wide cavity</a></li>
+        <li><a href="/?cat=fridge&w=700&h=1800&d=700">Fridges for 700mm wide cavity</a></li>
+        <li><a href="/?cat=fridge&w=900&h=1800&d=700">Large fridge 900mm wide</a></li>
+        <li><a href="/?cat=fridge&w=600&h=1700&d=650">Slimline fridge 1700mm tall</a></li>
+        <li><a href="/?cat=fridge&w=600&h=2100&d=700">Tall fridge cavity 2100mm</a></li>
+      </ul>
+    </div>
+    <div class="ps-group">
+      <h3>Washing machines</h3>
+      <ul>
+        <li><a href="/?cat=washing_machine&w=600&h=850&d=600">Standard 600mm front loader</a></li>
+        <li><a href="/?cat=washing_machine&w=600&h=900&d=650">Deep 650mm laundry cavity</a></li>
+        <li><a href="/?cat=washing_machine&w=600&h=850&d=550">Shallow 550mm laundry space</a></li>
+        <li><a href="/?cat=washing_machine&w=600&h=850&d=600&brand=Samsung">Samsung washers 600mm</a></li>
+        <li><a href="/?cat=washing_machine&w=600&h=850&d=600&brand=LG">LG washers 600mm cavity</a></li>
+      </ul>
+    </div>
+    <div class="ps-group">
+      <h3>Dishwashers</h3>
+      <ul>
+        <li><a href="/?cat=dishwasher&w=600&h=850&d=600">Standard 600mm dishwasher</a></li>
+        <li><a href="/?cat=dishwasher&w=450&h=850&d=600">Slimline 450mm dishwasher</a></li>
+        <li><a href="/?cat=dishwasher&w=600&h=820&d=550">Low-height dishwasher cavity</a></li>
+        <li><a href="/?cat=dishwasher&w=600&h=850&d=600&brand=Bosch">Bosch dishwasher fit check</a></li>
+        <li><a href="/?cat=dishwasher&w=600&h=850&d=600&brand=Smeg">Smeg dishwasher dimensions</a></li>
+      </ul>
+    </div>
+    <div class="ps-group">
+      <h3>Dryers</h3>
+      <ul>
+        <li><a href="/?cat=dryer&w=600&h=850&d=600">Standard 600mm dryer space</a></li>
+        <li><a href="/?cat=dryer&w=600&h=850&d=600&dwelling=apartment">Apartment-safe dryers</a></li>
+        <li><a href="/?cat=dryer&w=600&h=600&d=600">Under-bench dryer 600mm tall</a></li>
+        <li><a href="/?cat=dryer&w=600&h=850&d=600&brand=Fisher+%26+Paykel">Fisher &amp; Paykel dryer fit</a></li>
+        <li><a href="/?cat=dryer&w=600&h=850&d=600&brand=Bosch">Bosch heat pump dryer check</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
@@ -1127,6 +1216,15 @@ function getClearance(category, brand) {
 
 const TARIFF = 0.32; // $/kWh
 const RESULTS_CAP = 200;
+const DEFAULT_DOORWAY_MM = 820;
+const DEFAULT_DWELLING = 'house';
+const VALID_CATEGORIES = ['fridge', 'washing_machine', 'dishwasher', 'dryer'];
+const CATEGORY_LABELS = {
+  fridge: 'Fridges',
+  washing_machine: 'Washing Machines',
+  dishwasher: 'Dishwashers',
+  dryer: 'Dryers',
+};
 function annualEnergyCost(kwh_year) { return (kwh_year * TARIFF).toFixed(0); }
 function lifetimeCost(price, kwh_year, years=10) { return price + kwh_year * TARIFF * years; }
 
@@ -1178,11 +1276,56 @@ function refreshBrandOptions() {
 
 refreshBrandOptions();
 
+function readUrlParams() {
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get('cat');
+  const w = params.get('w');
+  const h = params.get('h');
+  const d = params.get('d');
+
+  if (!cat || !w || !h || !d) return;
+  if (!VALID_CATEGORIES.includes(cat)) return;
+
+  const width = Number.parseInt(w, 10);
+  const height = Number.parseInt(h, 10);
+  const depth = Number.parseInt(d, 10);
+  if (!Number.isFinite(width) || !Number.isFinite(height) || !Number.isFinite(depth)) return;
+
+  setCategory(cat);
+
+  const widthInput = document.getElementById('inW');
+  const heightInput = document.getElementById('inH');
+  const depthInput = document.getElementById('inD');
+  widthInput.value = String(width);
+  heightInput.value = String(height);
+  depthInput.value = String(depth);
+
+  const brand = params.get('brand');
+  if (brand) {
+    brandSelect.value = brand;
+  }
+
+  const doorParam = params.get('door');
+  if (doorParam) {
+    const door = Number.parseInt(doorParam, 10);
+    if (Number.isFinite(door)) {
+      document.getElementById('inDoor').value = String(door);
+    }
+  }
+
+  const dwelling = params.get('dwelling');
+  if (dwelling && ['house', 'apartment', 'townhouse'].includes(dwelling)) {
+    document.getElementById('inDwelling').value = dwelling;
+  }
+
+  doSearch();
+}
+
 /* ══════════════════════════════════════════════════════════
    CATEGORY TABS
 ══════════════════════════════════════════════════════════ */
 function setCategory(cat, { scroll = false } = {}) {
-  const allowed = new Set(['fridge', 'washing_machine', 'dishwasher', 'dryer']);
+  const allowed = new Set(VALID_CATEGORIES);
   const nextCat = allowed.has(cat) ? cat : 'fridge';
   const nextPill = document.querySelector(`#catPills .cat-pill[data-cat="${nextCat}"]`);
   if (!nextPill) return;
@@ -1224,8 +1367,8 @@ function doSearch() {
   const d = parseInt(document.getElementById('inD').value);
   const brand = document.getElementById('inBrand').value;
   const budget = parseInt(document.getElementById('inBudget').value) || Infinity;
-  const doorW = parseInt(document.getElementById('inDoor').value) || 820;
-  const dwelling = document.getElementById('inDwelling').value;
+  const doorW = parseInt(document.getElementById('inDoor').value) || DEFAULT_DOORWAY_MM;
+  const dwelling = document.getElementById('inDwelling').value || DEFAULT_DWELLING;
 
   if (!w || !h || !d) { showToast('⚠️ Please enter width, height, and depth'); return; }
   if (w<200||h<200||d<100) { showToast('⚠️ Dimensions look too small — enter in millimetres'); return; }
@@ -1269,8 +1412,17 @@ function doSearch() {
     document.getElementById('disclaimerBox').innerHTML = `<strong>⚠️ NCC 2022 — Apartment Notice:</strong> Vented tumble dryers are excluded. Under the National Construction Code 2022, vented dryers cannot exhaust into roof or wall cavities in multi-unit dwellings. Only condensing and heat-pump models shown.`;
   }
 
-  const catLabel = { fridge:'Fridges',washing_machine:'Washing Machines',dishwasher:'Dishwashers',dryer:'Dryers' };
-  document.getElementById('resultsCount').innerHTML = `<b>${filteredResults.length}</b> ${catLabel[currentCat]} that fit`;
+  const catName = CATEGORY_LABELS[currentCat] ?? 'Appliances';
+  document.getElementById('resultsCount').innerHTML = `<b>${filteredResults.length}</b> ${catName} that fit`;
+
+  document.title = `${catName} that fit ${w}×${h}×${d}mm — FitAppliance`;
+  const descEl = document.querySelector('meta[name="description"]');
+  if (descEl) {
+    descEl.setAttribute(
+      'content',
+      `${filteredResults.length} ${catName.toLowerCase()} that fit a ${w}mm wide, ${h}mm tall, ${d}mm deep cavity — with per-brand clearances and energy ratings.`
+    );
+  }
 
   const cl = getClearance(currentCat, brand || '__default__');
   const usableW = w - cl.side*2, usableH = h - cl.top, usableD = d - cl.rear;
@@ -1281,6 +1433,16 @@ function doSearch() {
   `;
 
   renderResults();
+
+  const params = new URLSearchParams();
+  params.set('cat', currentCat);
+  params.set('w', String(w));
+  params.set('h', String(h));
+  params.set('d', String(d));
+  if (brand) params.set('brand', brand);
+  if (doorW !== DEFAULT_DOORWAY_MM) params.set('door', String(doorW));
+  if (dwelling !== DEFAULT_DWELLING) params.set('dwelling', dwelling);
+  history.replaceState(null, '', `?${params.toString()}`);
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -1371,7 +1533,15 @@ function escHtml(value) {
   }[ch]));
 }
 
+function extractModelSku(modelString) {
+  if (typeof modelString !== 'string' || !modelString.trim()) return '';
+  return modelString.trim().split(/\s+/)[0];
+}
+
 function resolveRetailerUrl(retailer, product) {
+  // Level 1: explicit direct URL seed (manually calibrated)
+  if (product?.direct_url) return product.direct_url;
+
   const rawUrl = retailer?.url;
   if (!rawUrl) return '#';
   try {
@@ -1380,7 +1550,8 @@ function resolveRetailerUrl(retailer, product) {
       return rawUrl;
     }
 
-    const query = encodeURIComponent(`${product.brand} ${product.model}`);
+    const sku = extractModelSku(product.model);
+    const query = encodeURIComponent(sku || `${product.brand} ${product.model}`);
     const host = parsed.hostname.replace(/^www\./, '');
 
     if (host === 'harveynorman.com.au') {
@@ -1572,6 +1743,8 @@ window.closeCompareModal = closeCompareModal;
     if (e.key==='Enter') doSearch();
   });
 });
+
+readUrlParams();
 }
 </script>
 </body>
@@ -1591,9 +1764,46 @@ window.closeCompareModal = closeCompareModal;
       "inLanguage": "en-AU",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://fitappliance.com.au/?cat={category}&w={width}&h={height}&d={depth}",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://fitappliance.com.au/?cat={cat}&w={w}&h={h}&d={d}",
+          "actionAccessibilityRequirement": {
+            "@type": "ActionAccessSpecification",
+            "requiresSubscription": false
+          }
+        },
         "query-input": "required name=width"
       }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://fitappliance.com.au/#app",
+      "name": "FitAppliance — Appliance Size Finder",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "description": "Australia's most precise appliance cavity checker. Enter cavity dimensions to find fridges, washing machines, dishwashers and dryers that physically fit — with per-brand ventilation clearances pre-applied.",
+      "url": "https://fitappliance.com.au",
+      "inLanguage": "en-AU",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "AUD"
+      },
+      "audience": {
+        "@type": "Audience",
+        "geographicArea": {
+          "@type": "Country",
+          "name": "Australia"
+        }
+      },
+      "featureList": [
+        "Per-brand ventilation clearance calculation",
+        "2169 Australian appliance models",
+        "Energy star rating filter",
+        "Government rebate eligibility checker",
+        "Delivery doorway access check",
+        "Compare up to 4 appliances side by side"
+      ]
     },
     {
       "@type": "Organization",
