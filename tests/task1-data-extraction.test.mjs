@@ -126,10 +126,12 @@ test('every product keeps an explicit door_swing_mm field even when the value is
   }
 });
 
-test('every unresolved door swing value is tracked in the research notes', async () => {
+test('every unresolved priced model keeps a research-note reference for door swing checks', async () => {
   const appliances = await loadJsonDocument('appliances.json');
   const notes = await loadDoorSwingResearchNotes();
-  const unresolvedProducts = appliances.products.filter(product => product.door_swing_mm === null);
+  const unresolvedProducts = appliances.products.filter(
+    product => product.door_swing_mm === null && product.unavailable !== true
+  );
 
   assert.ok(unresolvedProducts.length > 0);
 

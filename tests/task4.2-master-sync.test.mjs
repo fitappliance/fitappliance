@@ -172,3 +172,71 @@ test('red: master sync blocks non-https affiliate_url and keeps energy dimension
   assert.ok(warnings.some(message => /affiliate_url/i.test(message)));
   assert.ok(warnings.some(message => /https/i.test(message)));
 });
+
+test('master sync supports no-CF mode and skips CommissionFactory when API key is unavailable', async () => {
+  const { runMasterSync } = await loadModule(syncModuleUrl, 'scripts/sync.js');
+  const workspace = await createWorkspace();
+  const logs = [];
+
+  const energyResponses = [
+    {
+      status: 200,
+      async json() {
+        return { result: { resources: [{ format: 'CSV', url: 'https://example.com/energy.csv' }] } };
+      }
+    },
+    {
+      status: 200,
+      async text() {
+        return [
+          'Brand,Model Name,Width,Height,Depth,Annual Energy Consumption,Star Rating',
+          'Samsung,MODEL-1,900,1760,730,405,4'
+        ].join('\n');
+      }
+    }
+  ];
+
+  await runMasterSync({
+    dataDir: workspace.dataDir,
+    notesPath: workspace.notesPath,
+    today: '2026-04-17',
+    enableCommissionSync: false,
+    logger: {
+      log(message) {
+        logs.push(message);
+      },
+      warn(message) {
+        logs.push(message);
+      },
+      error(message) {
+        logs.push(message);
+      }
+    },
+    energyRatingOptions: {
+      metadataUrl: 'https://example.com/metadata',
+      fetchWithRetryFn: async () => {
+        const next = energyResponses.shift();
+        if (!next) {
+          throw new Error('Unexpected EnergyRating fetch');
+        }
+        return next;
+      }
+    },
+    syncCommissionFactoryDataFn: async () => {
+      throw new Error('CommissionFactory should not be called in no-CF mode');
+    },
+    exitFn(code) {
+      throw new Error(`EXIT_${code}`);
+    }
+  });
+
+  const products = await readProducts(workspace.appliancesPath);
+  const product = products[0];
+
+  assert.equal(product.w, 900);
+  assert.equal(product.h, 1760);
+  assert.equal(product.d, 730);
+  assert.equal(product.kwh_year, 405);
+  assert.equal(product.stars, 4);
+  assert.ok(logs.some(message => /commissionfactory sync disabled/i.test(message)));
+});

@@ -9,6 +9,12 @@ const { syncCommissionFactoryData } = require('./sources/commissionfactory.js');
 const { runCircuitBreaker, runCircuitBreakerOrExit } = require('./utils/circuit-breaker.js');
 const { writeJsonAtomically } = require('./utils/file-utils.js');
 
+const GENERIC_CLEARANCE_DEFAULT = {
+  side: 20,
+  rear: 50,
+  top: 50
+};
+
 function mergeProduct(baseProduct, sourceProduct) {
   const mergedProduct = { ...baseProduct };
 
@@ -94,12 +100,97 @@ async function syncLocalData({
   return syncedDocument;
 }
 
+function hasValidRetailPrice(product) {
+  if (Number.isInteger(product.price) && product.price > 0) {
+    return true;
+  }
+
+  if (!Array.isArray(product.retailers)) {
+    return false;
+  }
+
+  return product.retailers.some(retailer => Number.isInteger(retailer.p) && retailer.p > 0);
+}
+
+function applyAvailabilityState(document) {
+  return {
+    ...document,
+    products: document.products.map(product => ({
+      ...product,
+      unavailable: !hasValidRetailPrice(product)
+    }))
+  };
+}
+
+async function syncClearanceDefaults({
+  dataDir,
+  products,
+  logger = console,
+  write = true
+}) {
+  const clearancePath = path.join(dataDir, 'clearance.json');
+  let clearanceDocument;
+
+  try {
+    clearanceDocument = JSON.parse(await readFile(clearancePath, 'utf8'));
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      return {
+        addedCount: 0,
+        skipped: true
+      };
+    }
+    throw error;
+  }
+
+  const nextDocument = {
+    ...clearanceDocument,
+    rules: {
+      ...(clearanceDocument.rules ?? {})
+    }
+  };
+  let addedCount = 0;
+
+  for (const product of products) {
+    if (!product?.cat || !product?.brand) {
+      continue;
+    }
+
+    const categoryRules = nextDocument.rules[product.cat] ?? { __default__: { ...GENERIC_CLEARANCE_DEFAULT } };
+    if (!nextDocument.rules[product.cat]) {
+      nextDocument.rules[product.cat] = categoryRules;
+    }
+
+    if (!categoryRules.__default__) {
+      categoryRules.__default__ = { ...GENERIC_CLEARANCE_DEFAULT };
+    }
+
+    if (categoryRules[product.brand]) {
+      continue;
+    }
+
+    categoryRules[product.brand] = { ...GENERIC_CLEARANCE_DEFAULT };
+    addedCount += 1;
+  }
+
+  if (addedCount > 0 && write) {
+    await writeJsonAtomically(clearancePath, nextDocument);
+    logger.log(`[sync] Added default clearance rules for ${addedCount} unknown brand/category pairs`);
+  }
+
+  return {
+    addedCount,
+    skipped: false
+  };
+}
+
 async function runMasterSync({
   dataDir,
   notesPath,
   today = new Date().toISOString().slice(0, 10),
   logger = console,
   exitFn = process.exit,
+  enableCommissionSync = true,
   sourcesDir = path.join(dataDir, 'sources'),
   energyRatingOptions = {},
   commissionFactoryOptions = {},
@@ -109,8 +200,18 @@ async function runMasterSync({
   runCircuitBreakerOrExitFn = runCircuitBreakerOrExit
 }) {
   const appliancesPath = path.join(dataDir, 'appliances.json');
+  const clearancePath = path.join(dataDir, 'clearance.json');
   const baselineText = await readFile(appliancesPath, 'utf8');
   const baselineDocument = JSON.parse(baselineText);
+  let baselineClearanceText = null;
+
+  try {
+    baselineClearanceText = await readFile(clearancePath, 'utf8');
+  } catch (error) {
+    if (error.code !== 'ENOENT') {
+      throw error;
+    }
+  }
 
   try {
     await syncLocalDataFn({
@@ -128,20 +229,33 @@ async function runMasterSync({
       ...energyRatingOptions
     });
 
-    const commissionSyncFn =
-      commissionFactoryOptions.syncCommissionFactoryDataFn ?? syncCommissionFactoryDataFn;
-    const {
-      syncCommissionFactoryDataFn: _ignored,
-      ...commissionSourceOptions
-    } = commissionFactoryOptions;
+    if (enableCommissionSync) {
+      const commissionSyncFn =
+        commissionFactoryOptions.syncCommissionFactoryDataFn ?? syncCommissionFactoryDataFn;
+      const {
+        syncCommissionFactoryDataFn: _ignored,
+        ...commissionSourceOptions
+      } = commissionFactoryOptions;
 
-    await commissionSyncFn({
+      await commissionSyncFn({
+        dataDir,
+        logger,
+        ...commissionSourceOptions
+      });
+    } else {
+      logger.log('[sync] CommissionFactory sync disabled; proceeding with local + Energy Rating only');
+    }
+
+    const finalDocument = applyAvailabilityState(
+      JSON.parse(await readFile(appliancesPath, 'utf8'))
+    );
+    validateAppliancesDocument(finalDocument);
+    await writeJsonAtomically(appliancesPath, finalDocument);
+    await syncClearanceDefaults({
       dataDir,
-      logger,
-      ...commissionSourceOptions
+      products: finalDocument.products,
+      logger
     });
-
-    const finalDocument = JSON.parse(await readFile(appliancesPath, 'utf8'));
     let breakerExitCode = null;
 
     runCircuitBreakerOrExitFn(finalDocument.products, baselineDocument.products, {
@@ -161,6 +275,10 @@ async function runMasterSync({
   } catch (error) {
     await writeFile(appliancesPath, baselineText);
 
+    if (baselineClearanceText !== null) {
+      await writeFile(clearancePath, baselineClearanceText);
+    }
+
     if (error && Object.prototype.hasOwnProperty.call(error, 'exitCode')) {
       exitFn(error.exitCode);
       return null;
@@ -176,19 +294,30 @@ async function runCli(options = {}) {
   const notesPath = path.join(repoRoot, 'docs', 'door-swing-research-notes.md');
   const today = new Date().toISOString().slice(0, 10);
   const logger = options.logger ?? console;
-  const apiKey = process.env.CF_API_KEY;
+  const argv = new Set(options.argv ?? process.argv.slice(2));
+  const apiKey = options.apiKey ?? process.env.CF_API_KEY;
+  const skipCf = argv.has('--skip-cf') || argv.has('--no-cf');
+  const enableCommissionSync = !skipCf && Boolean(apiKey);
 
-  if (!apiKey) {
-    throw new Error('CF_API_KEY is required for full sync');
+  if (!enableCommissionSync) {
+    logger.warn(
+      '[sync] CF_API_KEY not configured (or --skip-cf used). CommissionFactory sync skipped; ' +
+        'placeholder remains for future enablement.'
+    );
+  }
+
+  const commissionFactoryOptions = {};
+  if (apiKey) {
+    commissionFactoryOptions.apiKey = apiKey;
   }
 
   const syncedDocument = await runMasterSync({
     dataDir,
     notesPath,
     today,
-    commissionFactoryOptions: {
-      apiKey
-    }
+    logger,
+    enableCommissionSync,
+    commissionFactoryOptions
   });
 
   if (!syncedDocument) {
@@ -210,6 +339,8 @@ if (require.main === module) {
 module.exports = {
   buildSyncedDocument,
   mergeProduct,
+  applyAvailabilityState,
   runMasterSync,
+  syncClearanceDefaults,
   syncLocalData
 };

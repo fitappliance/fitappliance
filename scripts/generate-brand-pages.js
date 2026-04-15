@@ -251,7 +251,7 @@ async function generateBrandPages(options = {}) {
       const modelCount = products.filter((product) =>
         product.cat === category && product.brand === brand
       ).length;
-      if (modelCount < 3) continue;
+      if (modelCount < 1) continue;
 
       const brandSlug = slugify(brand);
       const categorySlug = CATEGORY_META[category]?.slug ?? slugify(category.replace(/_/g, '-'));
