@@ -278,7 +278,7 @@ nav {
 
 /* Ad placeholders */
 .ad-slot {
-  min-height: 90px;
+  height: 90px;
   border: 2px dashed #d97706;
   background: #fffbeb;
   display: flex;
@@ -286,6 +286,8 @@ nav {
   justify-content: center;
   border-radius: 8px;
   margin: 12px 0 28px;
+  contain: layout;
+  overflow: hidden;
 }
 .ad-slot__label {
   font-size: 11px;
@@ -295,15 +297,95 @@ nav {
   font-weight: 600;
 }
 .ad-slot--inline {
-  min-height: 60px;
+  height: 60px;
   margin: 8px 0;
 }
 .adsense-active .ad-slot {
   border: none;
   background: transparent;
-  min-height: unset;
+  height: auto;
+  contain: none;
+  overflow: visible;
 }
 .adsense-active .ad-slot__label { display: none; }
+
+.float-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--ink);
+  color: #fff;
+  padding: 10px 16px;
+  transform: translateY(-100%);
+  transition: transform .25s ease;
+  display: flex;
+}
+.float-bar.visible { transform: translateY(0); }
+.float-bar[hidden] { display: none; }
+.float-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.float-bar-summary {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .03em;
+}
+.float-bar-edit {
+  background: rgba(255,255,255,.15);
+  border: none;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.float-bar-edit:hover { background: rgba(255,255,255,.25); }
+
+.search-history {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.search-history__label {
+  font-size: 11px;
+  color: var(--ink-3);
+  font-weight: 600;
+}
+.search-chip {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  color: var(--ink-2);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+.search-chip:hover {
+  border-color: var(--copper);
+  color: var(--copper);
+}
+.search-history__clear {
+  background: none;
+  border: none;
+  color: var(--ink-3);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 2px 4px;
+}
 
 .saved-tip {
   margin-top: 12px;
@@ -412,6 +494,22 @@ nav {
   background: var(--paper-2);
   color: var(--ink-2);
   font-size: 14px;
+}
+.result-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.skeleton-card {
+  height: 180px;
+  background: linear-gradient(90deg, var(--border) 25%, #f0ece4 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 12px;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 /* ─── PRODUCT CARD (GRID) ─── */
@@ -527,6 +625,25 @@ nav {
   color: var(--ink-3);
   font-size: 13px;
   font-style: italic;
+}
+.price-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.price-badge__price {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.price-badge__label {
+  font-size: 11px;
+  color: var(--ink-3);
+}
+.price-badge__retailers {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--copper);
 }
 /* ACCC-compliant: affiliate disclosure right on button */
 .btn-buy::after { content:'↗';font-size:11px;opacity:.7; }
@@ -906,10 +1023,102 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);
 }
 .compare-table td strong { color:var(--ink);font-size:15px; }
+
+.retailer-modal[hidden] { display: none; }
+.retailer-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+.retailer-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+}
+.retailer-modal-sheet {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-radius: 20px 20px 0 0;
+  padding: 24px 20px 32px;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: slide-up .25s ease-out;
+}
+.retailer-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.retailer-modal-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+.retailer-modal-close {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink-3);
+}
+.retailer-modal-sub {
+  margin: 10px 0 0;
+  color: var(--ink-2);
+  font-size: 13px;
+}
+.retailer-list {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.retailer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.retailer-item--best {
+  border-color: var(--green);
+  background: #f0fdf4;
+}
+.retailer-name { flex: 1; font-weight: 600; font-size: 14px; }
+.retailer-price { font-size: 16px; font-weight: 700; }
+.retailer-diff { font-size: 12px; color: var(--ink-3); }
+.retailer-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #15803d;
+  background: #dcfce7;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+.retailer-disclosure {
+  font-size: 11px;
+  color: var(--ink-3);
+  margin-top: 16px;
+  text-align: center;
+}
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
 @media(max-width:660px){
   .compare-modal { padding:10px; }
   .compare-modal-head h3 { font-size:22px; }
   .compare-table { font-size:12.5px; }
+}
+
+@media (min-width:661px) {
+  .float-bar { display: none !important; }
 }
 
 /* ─── MOBILE ─── */
@@ -938,6 +1147,18 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 </style>
 </head>
 <body>
+<div class="float-bar" id="floatBar" hidden aria-label="Active search filters">
+  <div class="float-bar-inner">
+    <div class="float-bar-summary" id="floatBarSummary">Fridge · 600mm</div>
+    <button class="float-bar-edit" onclick="scrollToSearch()" aria-label="Edit search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+      </svg>
+      Edit
+    </button>
+  </div>
+</div>
 
 <!-- TOPBAR -->
 <div class="topbar">
@@ -967,7 +1188,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
     <h1>Measure once.<br><em>Buy right.</em></h1>
     <p class="hero-sub">We calculate per-brand ventilation gaps, door swing radius, and delivery access — so you don't have to return it.</p>
 
-    <div class="search-card">
+    <div class="search-card" id="searchForm">
       <div class="sc-head">
         <div class="sc-title">Enter your available cavity space</div>
       </div>
@@ -1039,6 +1260,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="white" stroke-width="1.8"/><path d="M12 12l3.5 3.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
         Find Appliances That Fit
       </button>
+      <div id="searchHistoryMount"></div>
     </div>
   </div>
 </section>
@@ -1055,7 +1277,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 <!-- RESULTS SECTION -->
 <section id="resultsSection" class="results-wrap" style="display:none">
 
-  <div class="ad-slot" id="ad-top-results" aria-label="Advertisement" role="complementary">
+  <div class="ad-slot" id="ad-top-results" aria-label="Advertisement" aria-hidden="true" role="complementary" style="width:100%">
     <span class="ad-slot__label">Advertisement</span>
   </div>
 
@@ -1359,6 +1581,12 @@ import { renderFreshnessBanner } from './scripts/ui/freshness.js';
 import { buildBrandOptions } from './scripts/ui/filters.js';
 import { computeFitScore } from './scripts/ui/fit-score.js';
 import { clearSaved, getSavedIds, isProductSaved, saveProduct, unsaveProduct } from './scripts/ui/saved-matches.js';
+import {
+  buildSearchHistoryHtml,
+  clearSearchHistory,
+  getRecentSearches,
+  recordSearch
+} from './scripts/ui/search-history.js';
 
 function escHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -1523,6 +1751,7 @@ let compareList = [];
 let PRODUCTS = [];
 let APPLIANCES_META = null;
 const loadedCats = new Set();
+const CATEGORY_CAPTURED_DATES = {};
 const CATEGORY_DATA_FILES = {
   fridge: '/data/fridges.json',
   washing_machine: '/data/washing-machines.json',
@@ -1546,8 +1775,13 @@ async function loadCategory(cat) {
   if (!VALID_CATEGORIES.includes(cat) || loadedCats.has(cat)) return;
 
   const resultEl = document.getElementById('productGrid');
-  if (resultEl && loadedCats.size === 0) {
-    resultEl.innerHTML = '<div class="loading-state">Loading appliance data...</div>';
+  if (resultEl) {
+    resultEl.innerHTML = `
+      <div class="result-skeleton" aria-busy="true" aria-label="Loading appliance data">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>`;
   }
 
   const url = APPLIANCES_META?.files?.[cat] ?? CATEGORY_DATA_FILES[cat];
@@ -1556,6 +1790,7 @@ async function loadCategory(cat) {
     throw new Error(`Invalid category payload for ${cat}`);
   }
 
+  CATEGORY_CAPTURED_DATES[cat] = categoryData.last_updated ?? APPLIANCES_META?.last_updated ?? '';
   PRODUCTS = [...PRODUCTS, ...categoryData.products];
   loadedCats.add(cat);
 }
@@ -1571,6 +1806,9 @@ async function bootstrapApplianceData() {
     const appData = await fetch('/data/appliances.json').then(requireJson);
     PRODUCTS = Array.isArray(appData.products) ? appData.products : [];
     VALID_CATEGORIES.forEach((category) => loadedCats.add(category));
+    VALID_CATEGORIES.forEach((category) => {
+      CATEGORY_CAPTURED_DATES[category] = appData.last_updated ?? '';
+    });
     APPLIANCES_META = {
       files: { ...CATEGORY_DATA_FILES },
       last_updated: appData.last_updated
@@ -1642,6 +1880,7 @@ async function setCategory(cat, { scroll = false } = {}) {
   if (scroll) {
     document.getElementById('search')?.scrollIntoView({ behavior:'smooth', block:'start' });
   }
+  updateFloatBarSummary();
 }
 
 window.jumpToCategory = async (cat) => {
@@ -1653,6 +1892,46 @@ document.getElementById('catPills').addEventListener('click', async e => {
   if (!p) return;
   await setCategory(p.dataset.cat);
 });
+
+function scrollToSearch() {
+  document.getElementById('searchForm')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateFloatBarSummary() {
+  const summary = document.getElementById('floatBarSummary');
+  if (!summary) return;
+
+  const width = document.getElementById('inW')?.value?.trim();
+  const height = document.getElementById('inH')?.value?.trim();
+  const depth = document.getElementById('inD')?.value?.trim();
+  const brand = document.getElementById('inBrand')?.value?.trim();
+  const parts = [CATEGORY_LABELS[currentCat] ?? 'Appliances'];
+
+  if (width && height && depth) {
+    parts.push(`${width}×${height}×${depth}mm`);
+  } else if (width) {
+    parts.push(`${width}mm wide`);
+  }
+
+  if (brand) parts.push(brand);
+  summary.textContent = parts.join(' · ');
+}
+
+function initFloatBar() {
+  const searchForm = document.getElementById('searchForm');
+  const floatBar = document.getElementById('floatBar');
+  if (!searchForm || !floatBar) return;
+
+  floatBar.hidden = false;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      floatBar.classList.toggle('visible', !entry.isIntersecting);
+    },
+    { threshold: 0, rootMargin: '-60px 0px 0px 0px' }
+  );
+  observer.observe(searchForm);
+}
 
 /* ══════════════════════════════════════════════════════════
    ADVANCED TOGGLE
@@ -1749,6 +2028,10 @@ function doSearch() {
   if (doorW !== DEFAULT_DOORWAY_MM) params.set('door', String(doorW));
   if (dwelling !== DEFAULT_DWELLING) params.set('dwelling', dwelling);
   history.replaceState(null, '', `?${params.toString()}`);
+
+  recordSearch({ cat: currentCat, w, h, d, brand, door: doorW, dwelling });
+  renderSearchHistoryChips();
+  updateFloatBarSummary();
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -1788,7 +2071,7 @@ function renderResults() {
     const cardHtml = renderItem(product);
     const shouldRenderInlineAd = index > 0 && (index + 1) % 8 === 0;
     if (!shouldRenderInlineAd) return cardHtml;
-    return `${cardHtml}<div class="ad-slot ad-slot--inline" aria-label="Advertisement"><span class="ad-slot__label">Advertisement</span></div>`;
+    return `${cardHtml}<div class="ad-slot ad-slot--inline" aria-label="Advertisement" aria-hidden="true" style="width:100%"><span class="ad-slot__label">Advertisement</span></div>`;
   }).join('');
 
   const container = document.getElementById('productGrid');
@@ -1808,7 +2091,8 @@ function renderResults() {
       annualEnergyCost,
       lifetimeCost,
       resolveRetailerUrl,
-      isSaved: isProductSaved
+      isSaved: isProductSaved,
+      capturedDate: CATEGORY_CAPTURED_DATES[product.cat] ?? APPLIANCES_META?.last_updated ?? ''
     }));
   } else {
     container.className = 'product-grid';
@@ -1818,7 +2102,8 @@ function renderResults() {
       starsHtml,
       warningsHtml,
       resolveRetailerUrl,
-      isSaved: isProductSaved
+      isSaved: isProductSaved,
+      capturedDate: CATEGORY_CAPTURED_DATES[product.cat] ?? APPLIANCES_META?.last_updated ?? ''
     }));
   }
 
@@ -2031,6 +2316,16 @@ function closeCompareModal() {
   document.body.style.overflow = '';
 }
 
+function openRetailerModal(productId) {
+  document.getElementById(`rm-${productId}`)?.removeAttribute('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeRetailerModal(productId) {
+  document.getElementById(`rm-${productId}`)?.setAttribute('hidden', '');
+  document.body.style.overflow = '';
+}
+
 function addCompare(id, label) {
   if (compareList.find(x=>x.id===id)) { showToast('Already in compare list'); return; }
   if (compareList.length>=3) { showToast('Max 3 items to compare'); return; }
@@ -2088,6 +2383,33 @@ function showToast(msg) {
   t.classList.add('show');
   clearTimeout(toastT);
   toastT = setTimeout(()=>t.classList.remove('show'), 3200);
+}
+
+function renderSearchHistoryChips() {
+  const mount = document.getElementById('searchHistoryMount');
+  if (!mount) return;
+  mount.innerHTML = buildSearchHistoryHtml(getRecentSearches());
+}
+
+async function applySearch(params = {}) {
+  if (params.cat) {
+    await setCategory(params.cat);
+  }
+
+  if (params.w) document.getElementById('inW').value = String(params.w);
+  if (params.h) document.getElementById('inH').value = String(params.h);
+  if (params.d) document.getElementById('inD').value = String(params.d);
+  document.getElementById('inBrand').value = params.brand ?? '';
+  if (params.door) document.getElementById('inDoor').value = String(params.door);
+  if (params.dwelling) document.getElementById('inDwelling').value = String(params.dwelling);
+
+  doSearch();
+}
+
+function clearSearchHistoryUi() {
+  clearSearchHistory();
+  renderSearchHistoryChips();
+  showToast('Cleared recent searches');
 }
 
 async function copyTextToClipboard(text, successMessage) {
@@ -2223,6 +2545,11 @@ Object.assign(window, {
   copyCurrentSearchLink,
   copySavedShareLink,
   clearAllSaved,
+  scrollToSearch,
+  openRetailerModal,
+  closeRetailerModal,
+  applySearch,
+  clearSearchHistoryUi,
 });
 window.openCompareTable = openCompareTable;
 window.closeCompareModal = closeCompareModal;
@@ -2236,8 +2563,11 @@ window.closeCompareModal = closeCompareModal;
 const initialCategory = await bootstrapApplianceData();
 restoreSavedFromUrlParam();
 await setCategory(initialCategory);
+renderSearchHistoryChips();
 await readUrlParams();
 renderSavedPanel();
+initFloatBar();
+updateFloatBarSummary();
 }
 </script>
 </body>

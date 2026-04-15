@@ -1,4 +1,9 @@
 import { displayBrandName } from './brand-utils.js';
+import {
+  buildRetailerModalHtml,
+  buildRetailerTriggerButton,
+  shouldShowRetailerModal
+} from './retailer-modal.js';
 
 function escHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -76,6 +81,24 @@ export function warningsHtml(p) {
     .join('');
 }
 
+export function buildPriceBadge(product, capturedDate) {
+  const retailers = Array.isArray(product?.retailers) ? product.retailers : [];
+  const prices = retailers
+    .map((retailer) => retailer?.p)
+    .filter((price) => Number.isInteger(price) && price > 0);
+
+  if (prices.length === 0) return '';
+  const bestPrice = Math.min(...prices);
+  const dateText = capturedDate ? ` as of ${capturedDate}` : '';
+  const retailerCount = retailers.length >= 2 ? `<span class="price-badge__retailers">${retailers.length} retailers</span>` : '';
+
+  return `<div class="price-badge">
+    <span class="price-badge__price">$${bestPrice.toLocaleString()}</span>
+    <span class="price-badge__label">Best price${dateText}</span>
+    ${retailerCount}
+  </div>`;
+}
+
 export function buildCard(p, deps = {}) {
   const tcoHtml = deps.tcoHtml ?? (() => '');
   const retailersHtml = deps.retailersHtml ?? (() => '');
@@ -83,14 +106,19 @@ export function buildCard(p, deps = {}) {
   const warnings = deps.warningsHtml ?? warningsHtml;
   const resolveRetailerUrl = deps.resolveRetailerUrl ?? ((retailer) => retailer.url);
   const isSaved = deps.isSaved ?? (() => false);
+  const capturedDate = deps.capturedDate ?? '';
   const retailers = Array.isArray(p.retailers) ? p.retailers : [];
   const hasPrice = retailers.length > 0;
-  const bestPrice = hasPrice ? Math.min(...retailers.map(r => r.p)) : null;
-  const primaryRetailer = hasPrice ? retailers[0] : null;
-  const noRetailerUrl = hasPrice ? '' : buildNoRetailerUrl(p);
   const displayBrand = displayBrandName(p.brand);
   const saved = isSaved(p.id);
   const compareLabel = `${displayBrand} ${p.model.split(' ').slice(0, 3).join(' ')}`;
+  const triggerButton = buildRetailerTriggerButton(p, {
+    resolveRetailerUrl,
+    buildNoRetailerUrl
+  });
+  const modalHtml = shouldShowRetailerModal(p)
+    ? buildRetailerModalHtml(p, { resolveRetailerUrl })
+    : '';
 
   return `
   <div class="p-card">
@@ -112,7 +140,7 @@ export function buildCard(p, deps = {}) {
       <div class="c-footer">
         ${
           hasPrice
-            ? `<div class="c-price">$${bestPrice.toLocaleString()}<small>AUD best price</small></div>`
+            ? buildPriceBadge(p, capturedDate)
             : '<div class="c-price no-price">Price unavailable — search online</div>'
         }
         <div class="c-actions">
@@ -123,17 +151,14 @@ export function buildCard(p, deps = {}) {
             title="${saved ? 'Remove from saved' : 'Save for later'}"
           >${saved ? '♥' : '♡'}</button>
           <button class="btn-compare" onclick="addCompare('${p.id}','${escHtml(compareLabel)}')">Compare</button>
-          ${
-            hasPrice
-              ? `<a class="btn-buy" href="${resolveRetailerUrl(primaryRetailer, p)}" target="_blank" rel="noopener sponsored">Buy</a>`
-              : `<a class="btn-buy btn-buy--ghost" href="${escHtml(noRetailerUrl)}" target="_blank" rel="noopener noreferrer">Search online</a>`
-          }
+          ${triggerButton}
         </div>
       </div>
     </div>
     ${warnings(p)}
     ${retailersHtml(p)}
-  </div>`;
+  </div>
+  ${modalHtml}`;
 }
 
 export function buildRow(p, deps = {}) {
@@ -141,15 +166,22 @@ export function buildRow(p, deps = {}) {
   const lifetimeCost = deps.lifetimeCost ?? (() => 0);
   const resolveRetailerUrl = deps.resolveRetailerUrl ?? ((retailer) => retailer.url);
   const isSaved = deps.isSaved ?? (() => false);
+  const capturedDate = deps.capturedDate ?? '';
   const retailers = Array.isArray(p.retailers) ? p.retailers : [];
   const hasPrice = retailers.length > 0;
   const bestP = hasPrice ? Math.min(...retailers.map(r => r.p)) : null;
-  const noRetailerUrl = hasPrice ? '' : buildNoRetailerUrl(p);
   const displayBrand = displayBrandName(p.brand);
   const saved = isSaved(p.id);
   const compareLabel = `${displayBrand} ${p.model.split(' ').slice(0, 2).join(' ')}`;
   const annual = annualEnergyCost(p.kwh_year);
   const total = Math.round(lifetimeCost(p.price, p.kwh_year));
+  const triggerButton = buildRetailerTriggerButton(p, {
+    resolveRetailerUrl,
+    buildNoRetailerUrl
+  });
+  const modalHtml = shouldShowRetailerModal(p)
+    ? buildRetailerModalHtml(p, { resolveRetailerUrl })
+    : '';
 
   return `
   <div class="p-row">
@@ -179,7 +211,7 @@ export function buildRow(p, deps = {}) {
     <div class="p-row-actions">
       ${
         hasPrice
-          ? `<div class="p-row-price">$${bestP.toLocaleString()}<small>AUD best price</small></div>`
+          ? `<div class="p-row-price">${buildPriceBadge(p, capturedDate)}</div>`
           : '<div class="p-row-price no-price">Price unavailable — search online</div>'
       }
       <div style="display:flex;gap:6px">
@@ -190,12 +222,9 @@ export function buildRow(p, deps = {}) {
           title="${saved ? 'Remove from saved' : 'Save for later'}"
         >${saved ? '♥' : '♡'}</button>
         <button class="btn-compare" onclick="addCompare('${p.id}','${escHtml(compareLabel)}')">Compare</button>
-        ${
-          hasPrice
-            ? `<a class="btn-buy" href="${resolveRetailerUrl(retailers[0], p)}" target="_blank" rel="noopener sponsored">Buy</a>`
-            : `<a class="btn-buy btn-buy--ghost" href="${escHtml(noRetailerUrl)}" target="_blank" rel="noopener noreferrer">Search online</a>`
-        }
+        ${triggerButton}
       </div>
     </div>
-  </div>`;
+  </div>
+  ${modalHtml}`;
 }

@@ -118,3 +118,34 @@ test('task 10 rebate: buildCard output includes green badge for 5-star products'
 
   assert.ok(html.includes('card-warning-green'));
 });
+
+test('task 15 price-badge: returns empty string when retailers are unavailable', async () => {
+  const { buildPriceBadge } = await import(productCardModuleUrl);
+  const html = buildPriceBadge(makeProduct({ retailers: [] }), '2026-04-15');
+  assert.equal(html, '');
+});
+
+test('task 15 price-badge: renders best price from retailer list', async () => {
+  const { buildPriceBadge } = await import(productCardModuleUrl);
+  const html = buildPriceBadge(makeProduct({
+    retailers: [
+      { n: 'Retailer A', p: 1499, url: 'https://example.com/a' },
+      { n: 'Retailer B', p: 1449, url: 'https://example.com/b' }
+    ]
+  }), '2026-04-15');
+
+  assert.match(html, /\$1,449/);
+  assert.match(html, /Best price as of 2026-04-15/);
+});
+
+test('task 15 price-badge: shows retailer count when 2 or more retailers are present', async () => {
+  const { buildPriceBadge } = await import(productCardModuleUrl);
+  const html = buildPriceBadge(makeProduct({
+    retailers: [
+      { n: 'Retailer A', p: 1499, url: 'https://example.com/a' },
+      { n: 'Retailer B', p: 1449, url: 'https://example.com/b' }
+    ]
+  }), '2026-04-15');
+
+  assert.match(html, /2 retailers/);
+});
