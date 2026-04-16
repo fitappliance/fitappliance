@@ -335,3 +335,54 @@ PDF check done, no data found:
   PDF parsed, installation clearances found only (top and side ventilation), no door-open projection value
 - `fridge-arf2749` KAM93BEVFGA:
   same manual as KAM43BEVFGA, no door-open projection value
+
+## Dometic Audit, 2026-04-16
+
+Scope:
+
+- Brand `Dometic`, fridge records in `appliances.json`
+- Total audited: 18
+
+Decision rule used for this pass:
+
+- If installation data indicates a side-hinged door assembly that projects beyond cabinet body in recess installs, set `door_swing_mm = 20`.
+- If product is drawer type with no side-hinged 90 degree swing, set `door_swing_mm = 0`.
+
+Manual and spec sources checked:
+
+- RUC install manual with recess and overall dimensions:
+  https://www.dometic.com/externalassets/ruc8408x_9600028645_119246.pdf
+- NRX install manual with recess and fitment dimensions:
+  https://www.caravansplus.com.au/pdf/Dometic-NRX-Fridge-installation-2.pdf
+- RCD10.5XES installation manual with recess and overall dimensions:
+  https://www.rvworldstore.co.nz/media/wysiwyg/manuals2/RCD10_5XES_Manual_1.pdf
+- DM50C D product page showing `Hinge type` as `Drawer`:
+  https://www.dometic.com/en-au/product/dometic-dm50c-d-9105330215
+- CL460LDC install and operating manual family:
+  https://www.manualslib.es/manual/229811/Dometic-Cl460Ldc.html
+- C40 and C60 minibar install manual family:
+  https://www.dometic.com/en/professional/hospitality-solutions/minibars/c40gr2-265469?v=9620000663
+
+Applied value `20`:
+
+- `fridge-arf2731` C40G1
+- `fridge-arf2716` C40G2
+- `fridge-arf3047` C60S1
+- `fridge-arf3325` C60SFS CARE
+- `fridge-arf2514` CL460LDC
+- `fridge-arf2506` CL460LGC
+- `fridge-arf2513` CRX1110
+- `fridge-arf2488` CRX1140
+- `fridge-arf3187` NRX1115
+- `fridge-arf3173` NRX1130
+- `fridge-arf3172` RCD10.5XES
+- `fridge-arf2730` RUC5208X
+- `fridge-arf3326` RUC5308X
+- `fridge-arf2738` RUC6408X
+- `fridge-arf3320` RUC6508X
+- `fridge-arf2729` RUC8408X
+- `fridge-arf3319` RUC8508X
+
+Applied value `0`:
+
+- `fridge-arf2512` DM50C D
