@@ -1,201 +1,40 @@
 {
-  "generated": "2026-04-15",
+  "generated": "2026-04-16",
   "summary": {
     "total": 2169,
     "hasPrice": 21,
-    "hasDirectUrl": 0,
-    "doorSwingCovered": 9,
-    "doorSwingMissing": 2160
+    "hasDirectUrl": 20,
+    "doorSwingCovered": 1613,
+    "doorSwingMissing": 556
   },
   "doorSwingByBrand": [
-    {
-      "brand": "WESTINGHOUSE",
-      "cat": "fridge",
-      "total": 79,
-      "missing": 79,
-      "pct": 0
-    },
-    {
-      "brand": "HISENSE",
-      "cat": "fridge",
-      "total": 73,
-      "missing": 73,
-      "pct": 0
-    },
     {
       "brand": "CHIQ",
       "cat": "fridge",
       "total": 69,
-      "missing": 69,
-      "pct": 0
-    },
-    {
-      "brand": "LG",
-      "cat": "fridge",
-      "total": 67,
-      "missing": 67,
-      "pct": 0
-    },
-    {
-      "brand": "FISHER & PAYKEL",
-      "cat": "fridge",
-      "total": 58,
-      "missing": 58,
-      "pct": 0
-    },
-    {
-      "brand": "LG",
-      "cat": "washing_machine",
-      "total": 51,
-      "missing": 50,
-      "pct": 2
+      "missing": 31,
+      "pct": 55
     },
     {
       "brand": "Kogan",
       "cat": "fridge",
       "total": 43,
-      "missing": 43,
-      "pct": 0
-    },
-    {
-      "brand": "LIEBHERR",
-      "cat": "fridge",
-      "total": 40,
-      "missing": 40,
-      "pct": 0
-    },
-    {
-      "brand": "Sub-Zero",
-      "cat": "fridge",
-      "total": 38,
-      "missing": 38,
-      "pct": 0
-    },
-    {
-      "brand": "MIELE",
-      "cat": "fridge",
-      "total": 31,
-      "missing": 31,
-      "pct": 0
+      "missing": 28,
+      "pct": 35
     },
     {
       "brand": "HELLER",
       "cat": "fridge",
       "total": 28,
-      "missing": 28,
-      "pct": 0
-    },
-    {
-      "brand": "Haier",
-      "cat": "fridge",
-      "total": 27,
-      "missing": 27,
-      "pct": 0
-    },
-    {
-      "brand": "Robinhood",
-      "cat": "fridge",
-      "total": 27,
-      "missing": 27,
-      "pct": 0
-    },
-    {
-      "brand": "Esatto",
-      "cat": "fridge",
-      "total": 25,
-      "missing": 25,
-      "pct": 0
-    },
-    {
-      "brand": "HAIER",
-      "cat": "fridge",
-      "total": 25,
-      "missing": 25,
-      "pct": 0
-    },
-    {
-      "brand": "VOGUE",
-      "cat": "fridge",
-      "total": 24,
-      "missing": 24,
-      "pct": 0
-    },
-    {
-      "brand": "FISHER & PAYKEL",
-      "cat": "dishwasher",
-      "total": 23,
-      "missing": 23,
-      "pct": 0
-    },
-    {
-      "brand": "Eurotech",
-      "cat": "fridge",
-      "total": 23,
-      "missing": 23,
-      "pct": 0
-    },
-    {
-      "brand": "Artusi",
-      "cat": "dishwasher",
-      "total": 22,
-      "missing": 22,
-      "pct": 0
-    },
-    {
-      "brand": "Omega",
-      "cat": "fridge",
-      "total": 22,
-      "missing": 22,
-      "pct": 0
+      "missing": 19,
+      "pct": 32
     },
     {
       "brand": "TECO",
       "cat": "fridge",
       "total": 22,
-      "missing": 22,
-      "pct": 0
-    },
-    {
-      "brand": "TCL",
-      "cat": "fridge",
-      "total": 21,
-      "missing": 21,
-      "pct": 0
-    },
-    {
-      "brand": "HISENSE",
-      "cat": "washing_machine",
-      "total": 21,
-      "missing": 21,
-      "pct": 0
-    },
-    {
-      "brand": "MIDEA",
-      "cat": "washing_machine",
-      "total": 21,
-      "missing": 21,
-      "pct": 0
-    },
-    {
-      "brand": "Husky",
-      "cat": "fridge",
-      "total": 20,
-      "missing": 20,
-      "pct": 0
-    },
-    {
-      "brand": "MIELE",
-      "cat": "washing_machine",
-      "total": 20,
-      "missing": 20,
-      "pct": 0
-    },
-    {
-      "brand": "Artusi",
-      "cat": "fridge",
-      "total": 19,
       "missing": 19,
-      "pct": 0
+      "pct": 14
     },
     {
       "brand": "Dometic",
@@ -205,235 +44,95 @@
       "pct": 0
     },
     {
-      "brand": "Inalto",
+      "brand": "LG",
       "cat": "fridge",
-      "total": 18,
+      "total": 67,
       "missing": 18,
-      "pct": 0
+      "pct": 73
+    },
+    {
+      "brand": "WESTINGHOUSE",
+      "cat": "fridge",
+      "total": 79,
+      "missing": 18,
+      "pct": 77
+    },
+    {
+      "brand": "Esatto",
+      "cat": "fridge",
+      "total": 25,
+      "missing": 16,
+      "pct": 36
+    },
+    {
+      "brand": "Eurotech",
+      "cat": "fridge",
+      "total": 23,
+      "missing": 13,
+      "pct": 43
+    },
+    {
+      "brand": "Husky",
+      "cat": "fridge",
+      "total": 20,
+      "missing": 13,
+      "pct": 35
     },
     {
       "brand": "Living & Co",
       "cat": "fridge",
       "total": 17,
-      "missing": 17,
-      "pct": 0
+      "missing": 13,
+      "pct": 24
     },
     {
-      "brand": "MITSUBISHI ELECTRIC",
+      "brand": "HAIER",
       "cat": "fridge",
-      "total": 17,
-      "missing": 17,
-      "pct": 0
+      "total": 25,
+      "missing": 12,
+      "pct": 52
     },
     {
-      "brand": "MIDEA",
+      "brand": "HISENSE",
       "cat": "fridge",
-      "total": 16,
-      "missing": 16,
-      "pct": 0
+      "total": 73,
+      "missing": 12,
+      "pct": 84
     },
     {
-      "brand": "yokohama",
+      "brand": "Robinhood",
       "cat": "fridge",
-      "total": 16,
-      "missing": 16,
-      "pct": 0
+      "total": 27,
+      "missing": 12,
+      "pct": 56
     },
     {
-      "brand": "BEKO",
-      "cat": "washing_machine",
-      "total": 16,
-      "missing": 16,
-      "pct": 0
-    },
-    {
-      "brand": "ELECTROLUX",
+      "brand": "FISHER & PAYKEL",
       "cat": "fridge",
-      "total": 15,
-      "missing": 15,
-      "pct": 0
-    },
-    {
-      "brand": "EUROMAID",
-      "cat": "fridge",
-      "total": 15,
-      "missing": 15,
-      "pct": 0
-    },
-    {
-      "brand": "Smeg",
-      "cat": "dishwasher",
-      "total": 14,
-      "missing": 14,
-      "pct": 0
+      "total": 58,
+      "missing": 11,
+      "pct": 81
     },
     {
       "brand": "Mykin",
       "cat": "fridge",
       "total": 14,
-      "missing": 14,
-      "pct": 0
+      "missing": 11,
+      "pct": 21
     },
     {
-      "brand": "Inalto",
-      "cat": "washing_machine",
-      "total": 14,
-      "missing": 14,
-      "pct": 0
-    },
-    {
-      "brand": "SEIKI",
-      "cat": "washing_machine",
-      "total": 14,
-      "missing": 14,
-      "pct": 0
-    },
-    {
-      "brand": "Solt",
-      "cat": "washing_machine",
-      "total": 14,
-      "missing": 14,
-      "pct": 0
-    },
-    {
-      "brand": "Fhiaba",
+      "brand": "Sub-Zero",
       "cat": "fridge",
-      "total": 13,
-      "missing": 13,
-      "pct": 0
-    },
-    {
-      "brand": "ICELAND",
-      "cat": "fridge",
-      "total": 13,
-      "missing": 13,
-      "pct": 0
-    },
-    {
-      "brand": "Panasonic",
-      "cat": "fridge",
-      "total": 13,
-      "missing": 13,
-      "pct": 0
-    },
-    {
-      "brand": "Panasonic",
-      "cat": "washing_machine",
-      "total": 13,
-      "missing": 13,
-      "pct": 0
+      "total": 38,
+      "missing": 11,
+      "pct": 71
     },
     {
       "brand": "VOGUE",
-      "cat": "washing_machine",
-      "total": 13,
-      "missing": 13,
-      "pct": 0
-    },
-    {
-      "brand": "MIELE",
-      "cat": "dishwasher",
-      "total": 12,
-      "missing": 12,
-      "pct": 0
-    },
-    {
-      "brand": "Coldstream",
       "cat": "fridge",
-      "total": 12,
-      "missing": 12,
-      "pct": 0
-    },
-    {
-      "brand": "Esatto",
-      "cat": "washing_machine",
-      "total": 12,
-      "missing": 12,
-      "pct": 0
-    },
-    {
-      "brand": "Kogan",
-      "cat": "washing_machine",
-      "total": 12,
-      "missing": 12,
-      "pct": 0
-    },
-    {
-      "brand": "Ilve",
-      "cat": "dishwasher",
-      "total": 11,
+      "total": 24,
       "missing": 11,
-      "pct": 0
-    },
-    {
-      "brand": "Midea",
-      "cat": "dishwasher",
-      "total": 11,
-      "missing": 11,
-      "pct": 0
-    },
-    {
-      "brand": "MIDEA",
-      "cat": "dishwasher",
-      "total": 11,
-      "missing": 11,
-      "pct": 0
-    },
-    {
-      "brand": "Omega",
-      "cat": "dishwasher",
-      "total": 11,
-      "missing": 11,
-      "pct": 0
-    },
-    {
-      "brand": "Ikea",
-      "cat": "fridge",
-      "total": 11,
-      "missing": 11,
-      "pct": 0
-    },
-    {
-      "brand": "KONKA",
-      "cat": "fridge",
-      "total": 11,
-      "missing": 11,
-      "pct": 0
-    },
-    {
-      "brand": "Liebherr",
-      "cat": "fridge",
-      "total": 11,
-      "missing": 11,
-      "pct": 0
-    },
-    {
-      "brand": "SEIKI",
-      "cat": "fridge",
-      "total": 11,
-      "missing": 11,
-      "pct": 0
-    },
-    {
-      "brand": "Living & Co",
-      "cat": "washing_machine",
-      "total": 11,
-      "missing": 11,
-      "pct": 0
-    },
-    {
-      "brand": "Robinhood",
-      "cat": "washing_machine",
-      "total": 11,
-      "missing": 11,
-      "pct": 0
-    },
-    {
-      "brand": "ASKO",
-      "cat": "dishwasher",
-      "total": 10,
-      "missing": 10,
-      "pct": 0
+      "pct": 54
     },
     {
       "brand": "Devanti",
@@ -443,81 +142,39 @@
       "pct": 0
     },
     {
-      "brand": "V-ZUG",
+      "brand": "EUROMAID",
       "cat": "fridge",
-      "total": 10,
+      "total": 15,
       "missing": 10,
-      "pct": 0
+      "pct": 33
     },
     {
-      "brand": "ELECTROLUX",
-      "cat": "washing_machine",
-      "total": 10,
+      "brand": "Inalto",
+      "cat": "fridge",
+      "total": 18,
       "missing": 10,
-      "pct": 0
+      "pct": 44
     },
     {
-      "brand": "EURO",
-      "cat": "dishwasher",
-      "total": 9,
+      "brand": "yokohama",
+      "cat": "fridge",
+      "total": 16,
       "missing": 9,
-      "pct": 0
+      "pct": 44
+    },
+    {
+      "brand": "Artusi",
+      "cat": "fridge",
+      "total": 19,
+      "missing": 8,
+      "pct": 58
     },
     {
       "brand": "Haier",
-      "cat": "dishwasher",
-      "total": 9,
-      "missing": 9,
-      "pct": 0
-    },
-    {
-      "brand": "SHEFFIELD",
       "cat": "fridge",
-      "total": 9,
-      "missing": 9,
-      "pct": 0
-    },
-    {
-      "brand": "TCL",
-      "cat": "washing_machine",
-      "total": 9,
-      "missing": 9,
-      "pct": 0
-    },
-    {
-      "brand": "TECO",
-      "cat": "washing_machine",
-      "total": 9,
-      "missing": 9,
-      "pct": 0
-    },
-    {
-      "brand": "AEG",
-      "cat": "dishwasher",
-      "total": 8,
+      "total": 27,
       "missing": 8,
-      "pct": 0
-    },
-    {
-      "brand": "AWARD",
-      "cat": "dishwasher",
-      "total": 8,
-      "missing": 8,
-      "pct": 0
-    },
-    {
-      "brand": "KLEENMAID",
-      "cat": "dishwasher",
-      "total": 8,
-      "missing": 8,
-      "pct": 0
-    },
-    {
-      "brand": "Linarie",
-      "cat": "fridge",
-      "total": 8,
-      "missing": 8,
-      "pct": 0
+      "pct": 70
     },
     {
       "brand": "Nero",
@@ -527,137 +184,39 @@
       "pct": 0
     },
     {
-      "brand": "Sheffield",
+      "brand": "ICELAND",
       "cat": "fridge",
-      "total": 8,
-      "missing": 8,
-      "pct": 0
+      "total": 13,
+      "missing": 7,
+      "pct": 46
     },
     {
-      "brand": "Trade Tested",
+      "brand": "LIEBHERR",
       "cat": "fridge",
-      "total": 8,
-      "missing": 8,
-      "pct": 0
-    },
-    {
-      "brand": "Euromaid",
-      "cat": "washing_machine",
-      "total": 8,
-      "missing": 8,
-      "pct": 0
-    },
-    {
-      "brand": "BEKO",
-      "cat": "dishwasher",
-      "total": 7,
+      "total": 40,
       "missing": 7,
-      "pct": 0
+      "pct": 83
     },
     {
-      "brand": "Domain",
-      "cat": "dishwasher",
-      "total": 7,
-      "missing": 7,
-      "pct": 0
-    },
-    {
-      "brand": "Esatto",
-      "cat": "dryer",
-      "total": 7,
-      "missing": 7,
-      "pct": 0
-    },
-    {
-      "brand": "AKAI",
+      "brand": "MIELE",
       "cat": "fridge",
-      "total": 7,
+      "total": 31,
       "missing": 7,
-      "pct": 0
+      "pct": 77
     },
     {
-      "brand": "Galanz",
+      "brand": "Omega",
       "cat": "fridge",
-      "total": 7,
+      "total": 22,
       "missing": 7,
-      "pct": 0
+      "pct": 68
     },
     {
-      "brand": "KELVINATOR",
+      "brand": "SEIKI",
       "cat": "fridge",
-      "total": 7,
+      "total": 11,
       "missing": 7,
-      "pct": 0
-    },
-    {
-      "brand": "Novello",
-      "cat": "fridge",
-      "total": 7,
-      "missing": 7,
-      "pct": 0
-    },
-    {
-      "brand": "PARMCO",
-      "cat": "fridge",
-      "total": 7,
-      "missing": 7,
-      "pct": 0
-    },
-    {
-      "brand": "Schmick",
-      "cat": "fridge",
-      "total": 7,
-      "missing": 7,
-      "pct": 0
-    },
-    {
-      "brand": "Simmons",
-      "cat": "fridge",
-      "total": 7,
-      "missing": 7,
-      "pct": 0
-    },
-    {
-      "brand": "Solt",
-      "cat": "fridge",
-      "total": 7,
-      "missing": 7,
-      "pct": 0
-    },
-    {
-      "brand": "CHIQ",
-      "cat": "washing_machine",
-      "total": 7,
-      "missing": 7,
-      "pct": 0
-    },
-    {
-      "brand": "PARMCO",
-      "cat": "washing_machine",
-      "total": 7,
-      "missing": 7,
-      "pct": 0
-    },
-    {
-      "brand": "Euromaid",
-      "cat": "dishwasher",
-      "total": 6,
-      "missing": 6,
-      "pct": 0
-    },
-    {
-      "brand": "HISENSE",
-      "cat": "dishwasher",
-      "total": 6,
-      "missing": 6,
-      "pct": 0
-    },
-    {
-      "brand": "Technika",
-      "cat": "dishwasher",
-      "total": 6,
-      "missing": 6,
-      "pct": 0
+      "pct": 36
     },
     {
       "brand": "Airflo",
@@ -667,137 +226,25 @@
       "pct": 0
     },
     {
-      "brand": "EURO",
+      "brand": "Coldstream",
       "cat": "fridge",
-      "total": 6,
-      "missing": 6,
-      "pct": 0
+      "total": 12,
+      "missing": 5,
+      "pct": 58
     },
     {
-      "brand": "STIRLING",
+      "brand": "Ikea",
       "cat": "fridge",
-      "total": 6,
-      "missing": 6,
-      "pct": 0
+      "total": 11,
+      "missing": 5,
+      "pct": 55
     },
     {
-      "brand": "WHIRLPOOL",
+      "brand": "Linarie",
       "cat": "fridge",
-      "total": 6,
-      "missing": 6,
-      "pct": 0
-    },
-    {
-      "brand": "Artusi",
-      "cat": "washing_machine",
-      "total": 6,
-      "missing": 6,
-      "pct": 0
-    },
-    {
-      "brand": "Fisher & Paykel",
-      "cat": "washing_machine",
-      "total": 6,
-      "missing": 6,
-      "pct": 0
-    },
-    {
-      "brand": "HELLER",
-      "cat": "washing_machine",
-      "total": 6,
-      "missing": 6,
-      "pct": 0
-    },
-    {
-      "brand": "TELEFUNKEN",
-      "cat": "washing_machine",
-      "total": 6,
-      "missing": 6,
-      "pct": 0
-    },
-    {
-      "brand": "De’Longhi",
-      "cat": "dishwasher",
-      "total": 5,
+      "total": 8,
       "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "Di Lusso",
-      "cat": "dishwasher",
-      "total": 5,
-      "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "Esatto",
-      "cat": "dishwasher",
-      "total": 5,
-      "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "LG",
-      "cat": "dishwasher",
-      "total": 5,
-      "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "PARMCO",
-      "cat": "dishwasher",
-      "total": 5,
-      "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "Platinum",
-      "cat": "dishwasher",
-      "total": 5,
-      "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "TECO",
-      "cat": "dishwasher",
-      "total": 5,
-      "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "Westinghouse",
-      "cat": "dishwasher",
-      "total": 5,
-      "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "CASA",
-      "cat": "fridge",
-      "total": 5,
-      "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "GRAM",
-      "cat": "fridge",
-      "total": 5,
-      "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "HITACHI",
-      "cat": "fridge",
-      "total": 5,
-      "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "ILVE",
-      "cat": "fridge",
-      "total": 5,
-      "missing": 5,
-      "pct": 0
+      "pct": 38
     },
     {
       "brand": "Midea",
@@ -814,123 +261,53 @@
       "pct": 0
     },
     {
-      "brand": "Tuscany",
+      "brand": "Schmick",
+      "cat": "fridge",
+      "total": 7,
+      "missing": 5,
+      "pct": 29
+    },
+    {
+      "brand": "SHEFFIELD",
+      "cat": "fridge",
+      "total": 9,
+      "missing": 5,
+      "pct": 44
+    },
+    {
+      "brand": "Solt",
+      "cat": "fridge",
+      "total": 7,
+      "missing": 5,
+      "pct": 29
+    },
+    {
+      "brand": "TCL",
+      "cat": "fridge",
+      "total": 21,
+      "missing": 5,
+      "pct": 76
+    },
+    {
+      "brand": "AKAI",
+      "cat": "fridge",
+      "total": 7,
+      "missing": 4,
+      "pct": 43
+    },
+    {
+      "brand": "Galanz",
+      "cat": "fridge",
+      "total": 7,
+      "missing": 4,
+      "pct": 43
+    },
+    {
+      "brand": "GRAM",
       "cat": "fridge",
       "total": 5,
-      "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "ASKO",
-      "cat": "washing_machine",
-      "total": 5,
-      "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "FISHER & PAYKEL",
-      "cat": "washing_machine",
-      "total": 5,
-      "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "Mykin",
-      "cat": "washing_machine",
-      "total": 5,
-      "missing": 5,
-      "pct": 0
-    },
-    {
-      "brand": "Westinghouse",
-      "cat": "washing_machine",
-      "total": 6,
-      "missing": 5,
-      "pct": 17
-    },
-    {
-      "brand": "Belling",
-      "cat": "dishwasher",
-      "total": 4,
       "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "BLANCO",
-      "cat": "dishwasher",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "Blaupunkt",
-      "cat": "dishwasher",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "Eurotech",
-      "cat": "dishwasher",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "Inalto",
-      "cat": "dishwasher",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "Robinhood",
-      "cat": "dishwasher",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "V-ZUG",
-      "cat": "dishwasher",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "EURO",
-      "cat": "dryer",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "Inalto",
-      "cat": "dryer",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "Robinhood",
-      "cat": "dryer",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "Bertazzoni",
-      "cat": "fridge",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "Germanica",
-      "cat": "fridge",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
+      "pct": 20
     },
     {
       "brand": "Harbour",
@@ -940,249 +317,74 @@
       "pct": 0
     },
     {
-      "brand": "Ilve",
+      "brand": "MIDEA",
       "cat": "fridge",
-      "total": 4,
+      "total": 16,
       "missing": 4,
-      "pct": 0
+      "pct": 75
     },
     {
-      "brand": "KLEENMAID",
+      "brand": "MITSUBISHI ELECTRIC",
       "cat": "fridge",
-      "total": 4,
+      "total": 17,
       "missing": 4,
-      "pct": 0
+      "pct": 76
+    },
+    {
+      "brand": "Novello",
+      "cat": "fridge",
+      "total": 7,
+      "missing": 4,
+      "pct": 43
+    },
+    {
+      "brand": "Sheffield",
+      "cat": "fridge",
+      "total": 8,
+      "missing": 4,
+      "pct": 50
+    },
+    {
+      "brand": "V-ZUG",
+      "cat": "fridge",
+      "total": 10,
+      "missing": 4,
+      "pct": 60
+    },
+    {
+      "brand": "EURO",
+      "cat": "fridge",
+      "total": 6,
+      "missing": 3,
+      "pct": 50
+    },
+    {
+      "brand": "HITACHI",
+      "cat": "fridge",
+      "total": 5,
+      "missing": 3,
+      "pct": 40
+    },
+    {
+      "brand": "ILVE",
+      "cat": "fridge",
+      "total": 5,
+      "missing": 3,
+      "pct": 40
+    },
+    {
+      "brand": "KONKA",
+      "cat": "fridge",
+      "total": 11,
+      "missing": 3,
+      "pct": 73
     },
     {
       "brand": "Mistral",
       "cat": "fridge",
       "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "Polar Refrigeration",
-      "cat": "fridge",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "SHARP",
-      "cat": "fridge",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "Anko",
-      "cat": "washing_machine",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "CHiQ",
-      "cat": "washing_machine",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "Eurotech",
-      "cat": "washing_machine",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "Hitachi",
-      "cat": "washing_machine",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "Omega",
-      "cat": "washing_machine",
-      "total": 4,
-      "missing": 4,
-      "pct": 0
-    },
-    {
-      "brand": "ARISTON",
-      "cat": "dishwasher",
-      "total": 3,
       "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "Bellini",
-      "cat": "dishwasher",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "Bellissimo",
-      "cat": "dishwasher",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "COMFEE",
-      "cat": "dishwasher",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "ELECTROLUX",
-      "cat": "dishwasher",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "Everdure",
-      "cat": "dishwasher",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "Mistral",
-      "cat": "dishwasher",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "TOSHIBA",
-      "cat": "dishwasher",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "Artusi",
-      "cat": "dryer",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "Electrolux",
-      "cat": "dryer",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "ELECTROLUX",
-      "cat": "dryer",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "Hafele",
-      "cat": "dryer",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "Omega",
-      "cat": "dryer",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "Solt",
-      "cat": "dryer",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "AEG",
-      "cat": "fridge",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "anko",
-      "cat": "fridge",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "AUCMA",
-      "cat": "fridge",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "BEKO",
-      "cat": "fridge",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "Brabantia",
-      "cat": "fridge",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "BROMIC",
-      "cat": "fridge",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "EUROTECH",
-      "cat": "fridge",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "HOOVER",
-      "cat": "fridge",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "Imprasio",
-      "cat": "fridge",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "meisda",
-      "cat": "fridge",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "NAKITA",
-      "cat": "fridge",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
+      "pct": 25
     },
     {
       "brand": "NCE",
@@ -1192,242 +394,39 @@
       "pct": 0
     },
     {
-      "brand": "WINTERWULF",
+      "brand": "Simmons",
       "cat": "fridge",
-      "total": 3,
+      "total": 7,
       "missing": 3,
-      "pct": 0
+      "pct": 57
     },
     {
-      "brand": "Altus",
-      "cat": "washing_machine",
-      "total": 3,
+      "brand": "STIRLING",
+      "cat": "fridge",
+      "total": 6,
       "missing": 3,
-      "pct": 0
+      "pct": 50
     },
     {
-      "brand": "EURO",
-      "cat": "washing_machine",
-      "total": 3,
+      "brand": "Trade Tested",
+      "cat": "fridge",
+      "total": 8,
       "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "Germanica",
-      "cat": "washing_machine",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "Stirling",
-      "cat": "washing_machine",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "WESTINGHOUSE",
-      "cat": "washing_machine",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
+      "pct": 63
     },
     {
       "brand": "WHIRLPOOL",
-      "cat": "washing_machine",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "yokohama",
-      "cat": "washing_machine",
-      "total": 3,
-      "missing": 3,
-      "pct": 0
-    },
-    {
-      "brand": "Astivita",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Comfee",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Devanti",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Emilia",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "EUROMAID",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "FOTILE",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Franke",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Fulgor",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Glen Dimplex",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Hafele",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Home Appliances",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Kogan",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "SEIKI",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Solt",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "TECHNIKA",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Tisira",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Veneto",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "VOGUE",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Anko",
-      "cat": "dryer",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "carson",
-      "cat": "dryer",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Eurotech",
-      "cat": "dryer",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "FISHER & PAYKEL",
-      "cat": "dryer",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "MIDEA",
-      "cat": "dryer",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Mistral",
-      "cat": "dryer",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "VOGUE",
-      "cat": "dryer",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "ARTIC",
       "cat": "fridge",
-      "total": 2,
+      "total": 6,
+      "missing": 3,
+      "pct": 50
+    },
+    {
+      "brand": "anko",
+      "cat": "fridge",
+      "total": 3,
       "missing": 2,
-      "pct": 0
+      "pct": 33
     },
     {
       "brand": "ARTUSI",
@@ -1437,25 +436,11 @@
       "pct": 0
     },
     {
-      "brand": "Blaupunkt",
+      "brand": "CASA",
       "cat": "fridge",
-      "total": 2,
+      "total": 5,
       "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "De Dietrich",
-      "cat": "fridge",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Euromaid",
-      "cat": "fridge",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
+      "pct": 60
     },
     {
       "brand": "EUROMATIC",
@@ -1465,6 +450,34 @@
       "pct": 0
     },
     {
+      "brand": "Fhiaba",
+      "cat": "fridge",
+      "total": 13,
+      "missing": 2,
+      "pct": 85
+    },
+    {
+      "brand": "Germanica",
+      "cat": "fridge",
+      "total": 4,
+      "missing": 2,
+      "pct": 50
+    },
+    {
+      "brand": "HOOVER",
+      "cat": "fridge",
+      "total": 3,
+      "missing": 2,
+      "pct": 33
+    },
+    {
+      "brand": "Ilve",
+      "cat": "fridge",
+      "total": 4,
+      "missing": 2,
+      "pct": 50
+    },
+    {
       "brand": "KingsBottle",
       "cat": "fridge",
       "total": 2,
@@ -1472,18 +485,11 @@
       "pct": 0
     },
     {
-      "brand": "KOGAN",
+      "brand": "Liebherr",
       "cat": "fridge",
-      "total": 2,
+      "total": 11,
       "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "modello",
-      "cat": "fridge",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
+      "pct": 82
     },
     {
       "brand": "Norj",
@@ -1491,6 +497,20 @@
       "total": 2,
       "missing": 2,
       "pct": 0
+    },
+    {
+      "brand": "Panasonic",
+      "cat": "fridge",
+      "total": 13,
+      "missing": 2,
+      "pct": 85
+    },
+    {
+      "brand": "PARMCO",
+      "cat": "fridge",
+      "total": 7,
+      "missing": 2,
+      "pct": 71
     },
     {
       "brand": "Smeg",
@@ -1501,20 +521,6 @@
     },
     {
       "brand": "Stirling",
-      "cat": "fridge",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Supreme",
-      "cat": "fridge",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Teka",
       "cat": "fridge",
       "total": 2,
       "missing": 2,
@@ -1528,6 +534,13 @@
       "pct": 0
     },
     {
+      "brand": "Tuscany",
+      "cat": "fridge",
+      "total": 5,
+      "missing": 2,
+      "pct": 60
+    },
+    {
       "brand": "Warrior Refrigeration",
       "cat": "fridge",
       "total": 2,
@@ -1535,389 +548,18 @@
       "pct": 0
     },
     {
-      "brand": "AWARD",
-      "cat": "washing_machine",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Everdure",
-      "cat": "washing_machine",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "EVOKE",
-      "cat": "washing_machine",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Hafele",
-      "cat": "washing_machine",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Haier",
-      "cat": "washing_machine",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "KLEENMAID",
-      "cat": "washing_machine",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "nce",
-      "cat": "washing_machine",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "NORJ",
-      "cat": "washing_machine",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Smeg",
-      "cat": "washing_machine",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "V-ZUG",
-      "cat": "washing_machine",
-      "total": 2,
-      "missing": 2,
-      "pct": 0
-    },
-    {
-      "brand": "Anko",
-      "cat": "dishwasher",
-      "total": 1,
+      "brand": "BEKO",
+      "cat": "fridge",
+      "total": 3,
       "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Baumatic",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "pct": 67
     },
     {
       "brand": "Bertazzoni",
-      "cat": "dishwasher",
-      "total": 1,
+      "cat": "fridge",
+      "total": 4,
       "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "De Dietrich",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Duos",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Electrolux",
-      "cat": "dishwasher",
-      "total": 2,
-      "missing": 1,
-      "pct": 50
-    },
-    {
-      "brand": "EVOKE",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "FUJIYAMA",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "FURON",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "HELLER",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "IKEA",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "majestic",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Master Kitchen",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Milano",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Mykin",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "NORJ",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Panasonic",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "POLO",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Teka",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "TRIESTE",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Tuscany",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Venini",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "zzz",
-      "cat": "dishwasher",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "AEG",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "AKAI",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "anko",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "ASKO",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "AWARD",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "BEKO",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Bosch",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "CHIQ",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Devanti",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Euromaid",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "EUROTECH",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "EVOKE",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Kogan",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "LG",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Norj",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "PARMCO",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Platinum",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Samsung",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "SHEFFIELD",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "STIRLING",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Technika",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Tuscany",
-      "cat": "dryer",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "pct": 75
     },
     {
       "brand": "Bosch",
@@ -1927,6 +569,13 @@
       "pct": 0
     },
     {
+      "brand": "Brabantia",
+      "cat": "fridge",
+      "total": 3,
+      "missing": 1,
+      "pct": 67
+    },
+    {
       "brand": "Electrolux",
       "cat": "fridge",
       "total": 1,
@@ -1934,11 +583,11 @@
       "pct": 0
     },
     {
-      "brand": "Fisher & Paykel",
+      "brand": "ELECTROLUX",
       "cat": "fridge",
-      "total": 1,
+      "total": 15,
       "missing": 1,
-      "pct": 0
+      "pct": 93
     },
     {
       "brand": "Gasmate",
@@ -1948,21 +597,28 @@
       "pct": 0
     },
     {
-      "brand": "Hitachi",
+      "brand": "Imprasio",
       "cat": "fridge",
-      "total": 1,
+      "total": 3,
       "missing": 1,
-      "pct": 0
+      "pct": 67
+    },
+    {
+      "brand": "KLEENMAID",
+      "cat": "fridge",
+      "total": 4,
+      "missing": 1,
+      "pct": 75
+    },
+    {
+      "brand": "KOGAN",
+      "cat": "fridge",
+      "total": 2,
+      "missing": 1,
+      "pct": 50
     },
     {
       "brand": "LICENSING ESSENTIALS",
-      "cat": "fridge",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "majestic",
       "cat": "fridge",
       "total": 1,
       "missing": 1,
@@ -1976,35 +632,14 @@
       "pct": 0
     },
     {
-      "brand": "Mitsubishi",
+      "brand": "modello",
       "cat": "fridge",
-      "total": 1,
+      "total": 2,
       "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Nisbets Essentials",
-      "cat": "fridge",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "pct": 50
     },
     {
       "brand": "Nulon",
-      "cat": "fridge",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Prinetti",
-      "cat": "fridge",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Pulmuone",
       "cat": "fridge",
       "total": 1,
       "missing": 1,
@@ -2018,11 +653,18 @@
       "pct": 0
     },
     {
-      "brand": "Samsung",
+      "brand": "SHARP",
       "cat": "fridge",
-      "total": 1,
+      "total": 4,
       "missing": 1,
-      "pct": 0
+      "pct": 75
+    },
+    {
+      "brand": "Supreme",
+      "cat": "fridge",
+      "total": 2,
+      "missing": 1,
+      "pct": 50
     },
     {
       "brand": "Vinopro",
@@ -2039,161 +681,238 @@
       "pct": 0
     },
     {
-      "brand": "3J",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "brand": "AEG",
+      "cat": "dishwasher",
+      "total": 8,
+      "missing": 0,
+      "pct": 100
     },
     {
-      "brand": "anko",
-      "cat": "washing_machine",
+      "brand": "Anko",
+      "cat": "dishwasher",
       "total": 1,
-      "missing": 1,
-      "pct": 0
+      "missing": 0,
+      "pct": 100
     },
     {
       "brand": "ARISTON",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "cat": "dishwasher",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
     },
     {
-      "brand": "CAMEC",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "brand": "Artusi",
+      "cat": "dishwasher",
+      "total": 22,
+      "missing": 0,
+      "pct": 100
     },
     {
-      "brand": "carson",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "brand": "ASKO",
+      "cat": "dishwasher",
+      "total": 10,
+      "missing": 0,
+      "pct": 100
     },
     {
-      "brand": "Duos",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "brand": "Astivita",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
     },
     {
-      "brand": "Electrolux",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "brand": "AWARD",
+      "cat": "dishwasher",
+      "total": 8,
+      "missing": 0,
+      "pct": 100
     },
     {
-      "brand": "Euroclean",
-      "cat": "washing_machine",
+      "brand": "Baumatic",
+      "cat": "dishwasher",
       "total": 1,
-      "missing": 1,
-      "pct": 0
+      "missing": 0,
+      "pct": 100
     },
     {
-      "brand": "EUROMAID",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "brand": "BEKO",
+      "cat": "dishwasher",
+      "total": 7,
+      "missing": 0,
+      "pct": 100
     },
     {
-      "brand": "EUROTECH",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "brand": "Belling",
+      "cat": "dishwasher",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
     },
     {
-      "brand": "majestic",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "brand": "Bellini",
+      "cat": "dishwasher",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
     },
     {
-      "brand": "MALBER",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "brand": "Bellissimo",
+      "cat": "dishwasher",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
     },
     {
-      "brand": "Mistral",
-      "cat": "washing_machine",
+      "brand": "Bertazzoni",
+      "cat": "dishwasher",
       "total": 1,
-      "missing": 1,
-      "pct": 0
+      "missing": 0,
+      "pct": 100
     },
     {
-      "brand": "MOBORV",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "brand": "BLANCO",
+      "cat": "dishwasher",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
     },
     {
-      "brand": "SAMSUNG ELECTRONICS",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Swift",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "TECHNIKA",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Teka",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "tisira",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Toshiba",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Tuscany",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
-    },
-    {
-      "brand": "Vision",
-      "cat": "washing_machine",
-      "total": 1,
-      "missing": 1,
-      "pct": 0
+      "brand": "Blaupunkt",
+      "cat": "dishwasher",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
     },
     {
       "brand": "Bosch",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Comfee",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "COMFEE",
+      "cat": "dishwasher",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "De Dietrich",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "De’Longhi",
+      "cat": "dishwasher",
+      "total": 5,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Devanti",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Di Lusso",
+      "cat": "dishwasher",
+      "total": 5,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Domain",
+      "cat": "dishwasher",
+      "total": 7,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Duos",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Electrolux",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "ELECTROLUX",
+      "cat": "dishwasher",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Emilia",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Esatto",
+      "cat": "dishwasher",
+      "total": 5,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "EURO",
+      "cat": "dishwasher",
+      "total": 9,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Euromaid",
+      "cat": "dishwasher",
+      "total": 6,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "EUROMAID",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Eurotech",
+      "cat": "dishwasher",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Everdure",
+      "cat": "dishwasher",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "EVOKE",
       "cat": "dishwasher",
       "total": 1,
       "missing": 0,
@@ -2207,8 +926,694 @@
       "pct": 100
     },
     {
+      "brand": "FISHER & PAYKEL",
+      "cat": "dishwasher",
+      "total": 23,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "FOTILE",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Franke",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "FUJIYAMA",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Fulgor",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "FURON",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Glen Dimplex",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Hafele",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Haier",
+      "cat": "dishwasher",
+      "total": 9,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "HELLER",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "HISENSE",
+      "cat": "dishwasher",
+      "total": 6,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Home Appliances",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "IKEA",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Ilve",
+      "cat": "dishwasher",
+      "total": 11,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Inalto",
+      "cat": "dishwasher",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "KLEENMAID",
+      "cat": "dishwasher",
+      "total": 8,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Kogan",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "LG",
+      "cat": "dishwasher",
+      "total": 5,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "majestic",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Master Kitchen",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Midea",
+      "cat": "dishwasher",
+      "total": 11,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "MIDEA",
+      "cat": "dishwasher",
+      "total": 11,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "MIELE",
+      "cat": "dishwasher",
+      "total": 12,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Milano",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Mistral",
+      "cat": "dishwasher",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Mykin",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "NORJ",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Omega",
+      "cat": "dishwasher",
+      "total": 11,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Panasonic",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "PARMCO",
+      "cat": "dishwasher",
+      "total": 5,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Platinum",
+      "cat": "dishwasher",
+      "total": 5,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "POLO",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Robinhood",
+      "cat": "dishwasher",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
+    },
+    {
       "brand": "Samsung",
       "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "SEIKI",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Smeg",
+      "cat": "dishwasher",
+      "total": 14,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Solt",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Technika",
+      "cat": "dishwasher",
+      "total": 6,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "TECHNIKA",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "TECO",
+      "cat": "dishwasher",
+      "total": 5,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Teka",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Tisira",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "TOSHIBA",
+      "cat": "dishwasher",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "TRIESTE",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Tuscany",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "V-ZUG",
+      "cat": "dishwasher",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Veneto",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Venini",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "VOGUE",
+      "cat": "dishwasher",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Westinghouse",
+      "cat": "dishwasher",
+      "total": 5,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "zzz",
+      "cat": "dishwasher",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "AEG",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "AKAI",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "anko",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Anko",
+      "cat": "dryer",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Artusi",
+      "cat": "dryer",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "ASKO",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "AWARD",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "BEKO",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Bosch",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "carson",
+      "cat": "dryer",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "CHIQ",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Devanti",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Electrolux",
+      "cat": "dryer",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "ELECTROLUX",
+      "cat": "dryer",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Esatto",
+      "cat": "dryer",
+      "total": 7,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "EURO",
+      "cat": "dryer",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Euromaid",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Eurotech",
+      "cat": "dryer",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "EUROTECH",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "EVOKE",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "FISHER & PAYKEL",
+      "cat": "dryer",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Hafele",
+      "cat": "dryer",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Inalto",
+      "cat": "dryer",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Kogan",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "LG",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "MIDEA",
+      "cat": "dryer",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Mistral",
+      "cat": "dryer",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Norj",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Omega",
+      "cat": "dryer",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "PARMCO",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Platinum",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Robinhood",
+      "cat": "dryer",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Samsung",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "SHEFFIELD",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Solt",
+      "cat": "dryer",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "STIRLING",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Technika",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Tuscany",
+      "cat": "dryer",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "VOGUE",
+      "cat": "dryer",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "AEG",
+      "cat": "fridge",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "ARTIC",
+      "cat": "fridge",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "AUCMA",
+      "cat": "fridge",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Blaupunkt",
+      "cat": "fridge",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "BROMIC",
+      "cat": "fridge",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "De Dietrich",
+      "cat": "fridge",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Euromaid",
+      "cat": "fridge",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "EUROTECH",
+      "cat": "fridge",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "cat": "fridge",
       "total": 1,
       "missing": 0,
       "pct": 100
@@ -2221,6 +1626,160 @@
       "pct": 100
     },
     {
+      "brand": "Hitachi",
+      "cat": "fridge",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "KELVINATOR",
+      "cat": "fridge",
+      "total": 7,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "majestic",
+      "cat": "fridge",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "meisda",
+      "cat": "fridge",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Mitsubishi",
+      "cat": "fridge",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "NAKITA",
+      "cat": "fridge",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Nisbets Essentials",
+      "cat": "fridge",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Polar Refrigeration",
+      "cat": "fridge",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Prinetti",
+      "cat": "fridge",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Pulmuone",
+      "cat": "fridge",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Samsung",
+      "cat": "fridge",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Teka",
+      "cat": "fridge",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "WINTERWULF",
+      "cat": "fridge",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "3J",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Altus",
+      "cat": "washing_machine",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "anko",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Anko",
+      "cat": "washing_machine",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "ARISTON",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Artusi",
+      "cat": "washing_machine",
+      "total": 6,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "ASKO",
+      "cat": "washing_machine",
+      "total": 5,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "AWARD",
+      "cat": "washing_machine",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "BEKO",
+      "cat": "washing_machine",
+      "total": 16,
+      "missing": 0,
+      "pct": 100
+    },
+    {
       "brand": "Bosch",
       "cat": "washing_machine",
       "total": 1,
@@ -2228,9 +1787,450 @@
       "pct": 100
     },
     {
+      "brand": "CAMEC",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "carson",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "CHiQ",
+      "cat": "washing_machine",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "CHIQ",
+      "cat": "washing_machine",
+      "total": 7,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Duos",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Electrolux",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "ELECTROLUX",
+      "cat": "washing_machine",
+      "total": 10,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Esatto",
+      "cat": "washing_machine",
+      "total": 12,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "EURO",
+      "cat": "washing_machine",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Euroclean",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Euromaid",
+      "cat": "washing_machine",
+      "total": 8,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "EUROMAID",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Eurotech",
+      "cat": "washing_machine",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "EUROTECH",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Everdure",
+      "cat": "washing_machine",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "EVOKE",
+      "cat": "washing_machine",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "cat": "washing_machine",
+      "total": 6,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "FISHER & PAYKEL",
+      "cat": "washing_machine",
+      "total": 5,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Germanica",
+      "cat": "washing_machine",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Hafele",
+      "cat": "washing_machine",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Haier",
+      "cat": "washing_machine",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "HELLER",
+      "cat": "washing_machine",
+      "total": 6,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "HISENSE",
+      "cat": "washing_machine",
+      "total": 21,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Hitachi",
+      "cat": "washing_machine",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Inalto",
+      "cat": "washing_machine",
+      "total": 14,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "KLEENMAID",
+      "cat": "washing_machine",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Kogan",
+      "cat": "washing_machine",
+      "total": 12,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "LG",
+      "cat": "washing_machine",
+      "total": 51,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Living & Co",
+      "cat": "washing_machine",
+      "total": 11,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "majestic",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "MALBER",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "MIDEA",
+      "cat": "washing_machine",
+      "total": 21,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "MIELE",
+      "cat": "washing_machine",
+      "total": 20,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Mistral",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "MOBORV",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Mykin",
+      "cat": "washing_machine",
+      "total": 5,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "nce",
+      "cat": "washing_machine",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "NORJ",
+      "cat": "washing_machine",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Omega",
+      "cat": "washing_machine",
+      "total": 4,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Panasonic",
+      "cat": "washing_machine",
+      "total": 13,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "PARMCO",
+      "cat": "washing_machine",
+      "total": 7,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Robinhood",
+      "cat": "washing_machine",
+      "total": 11,
+      "missing": 0,
+      "pct": 100
+    },
+    {
       "brand": "Samsung",
       "cat": "washing_machine",
       "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "SAMSUNG ELECTRONICS",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "SEIKI",
+      "cat": "washing_machine",
+      "total": 14,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Smeg",
+      "cat": "washing_machine",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Solt",
+      "cat": "washing_machine",
+      "total": 14,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Stirling",
+      "cat": "washing_machine",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Swift",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "TCL",
+      "cat": "washing_machine",
+      "total": 9,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "TECHNIKA",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "TECO",
+      "cat": "washing_machine",
+      "total": 9,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Teka",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "TELEFUNKEN",
+      "cat": "washing_machine",
+      "total": 6,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "tisira",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Toshiba",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Tuscany",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "V-ZUG",
+      "cat": "washing_machine",
+      "total": 2,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Vision",
+      "cat": "washing_machine",
+      "total": 1,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "VOGUE",
+      "cat": "washing_machine",
+      "total": 13,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "Westinghouse",
+      "cat": "washing_machine",
+      "total": 6,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "WESTINGHOUSE",
+      "cat": "washing_machine",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "WHIRLPOOL",
+      "cat": "washing_machine",
+      "total": 3,
+      "missing": 0,
+      "pct": 100
+    },
+    {
+      "brand": "yokohama",
+      "cat": "washing_machine",
+      "total": 3,
       "missing": 0,
       "pct": 100
     }

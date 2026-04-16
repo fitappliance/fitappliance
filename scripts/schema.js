@@ -87,11 +87,13 @@ function validateProduct(product) {
     // Sentinel 0 means this model has been manually verified to need no extra
     // hinge-side clearance beyond the measured cabinet footprint.
     const isSentinelZero = product.door_swing_mm === 0;
+    const isIntegerSwing = Number.isInteger(product.door_swing_mm);
+    const isHingeClearanceRange = isInRange(product.door_swing_mm, 5, 100);
     const isPhysicalRange = isInRange(product.door_swing_mm, 400, 1200);
 
-    if (!(isSentinelZero || isPhysicalRange)) {
+    if (!(isSentinelZero || (isIntegerSwing && (isHingeClearanceRange || isPhysicalRange)))) {
       errors.push(
-        `Product ${product.id ?? '<unknown>'} field door_swing_mm must be 0 or within physical range [400, 1200]`
+        `Product ${product.id ?? '<unknown>'} field door_swing_mm must be 0 or integer within [5, 100] or [400, 1200]`
       );
     }
   }

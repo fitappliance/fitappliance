@@ -76,6 +76,15 @@ function pickRetailLink(sample) {
   return null;
 }
 
+function hasSampleRetailLink(samples) {
+  return Array.isArray(samples) && samples.some((sample) => Boolean(pickRetailLink(sample)));
+}
+
+function buildFallbackBuySearchUrl(brand, categoryMeta) {
+  const query = `${brand} ${categoryMeta.labelSingular}`;
+  return `https://www.appliances-online.com.au/search/?q=${encodeURIComponent(query)}`;
+}
+
 async function readJson(filePath) {
   const text = await readFile(filePath, 'utf8');
   return JSON.parse(text);
@@ -256,6 +265,21 @@ function buildComparisonPageHtml({
   const brandAUrl = `/?cat=${encodeURIComponent(cat)}&brand=${encodeURIComponent(brandA)}&compare=${encodeURIComponent(compareParam)}&vs=${encodeURIComponent(brandB)}`;
   const brandBUrl = `/?cat=${encodeURIComponent(cat)}&brand=${encodeURIComponent(brandB)}&compare=${encodeURIComponent(compareParam)}&vs=${encodeURIComponent(brandA)}`;
   const ctaUrl = `/?cat=${encodeURIComponent(cat)}&compare=${encodeURIComponent(compareParam)}&vs=${encodeURIComponent(brandB)}`;
+  const hasLinksA = hasSampleRetailLink(modelSamplesA);
+  const hasLinksB = hasSampleRetailLink(modelSamplesB);
+  const fallbackLinks = [];
+  if (!hasLinksA) {
+    fallbackLinks.push({
+      label: `Find ${displayBrandA} ${categoryMeta.labelPlural}`,
+      url: buildFallbackBuySearchUrl(displayBrandA, categoryMeta)
+    });
+  }
+  if (!hasLinksB) {
+    fallbackLinks.push({
+      label: `Find ${displayBrandB} ${categoryMeta.labelPlural}`,
+      url: buildFallbackBuySearchUrl(displayBrandB, categoryMeta)
+    });
+  }
   const sampleItemsA = modelSamplesA.map((sample) => {
     const retailLink = pickRetailLink(sample);
     return `<li>${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm${retailLink ? `<br><a href="${escHtml(retailLink.url)}" target="_blank" rel="noopener sponsored">${escHtml(retailLink.label)} →</a>` : ''}</li>`;
@@ -409,6 +433,9 @@ ${buildSocialMetaTags({ title, description, canonical })}
         <a href="${brandAUrl}">Browse ${escHtml(displayBrandA)} ${escHtml(categoryMeta.labelPlural)}</a>
         <a href="${brandBUrl}">Browse ${escHtml(displayBrandB)} ${escHtml(categoryMeta.labelPlural)}</a>
       </div>
+      ${fallbackLinks.length > 0 ? `<div class="brand-links">${fallbackLinks
+        .map((link) => `<a href="${escHtml(link.url)}" target="_blank" rel="noopener sponsored">${escHtml(link.label)} →</a>`)
+        .join('')}</div>` : ''}
     </section>
 
     <a class="cta" href="${ctaUrl}">Compare ${escHtml(compareLabel)} inside your exact cavity →</a>

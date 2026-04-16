@@ -18,7 +18,7 @@ async function auditCompareLinks(options = {}) {
     const html = await readFile(filePath, 'utf8');
     const matches = [...html.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
     const externalLinks = matches.filter((href) => /^https?:\/\//i.test(href));
-    const buyLinks = externalLinks.filter((href) => /jbhifi|thegoodguys|harveynorman|appliancesonline|binglee|westinghouse|lg\.com|hisense|fisherpaykel|smeg|miele/i.test(href));
+    const buyLinks = externalLinks.filter((href) => /jbhifi|thegoodguys|harveynorman|appliances-?online|binglee|westinghouse|lg\.com|hisense|fisherpaykel|smeg|miele/i.test(href));
     results.push({
       slug: row.slug,
       externalLinks: externalLinks.length,

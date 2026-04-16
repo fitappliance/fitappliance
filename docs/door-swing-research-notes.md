@@ -135,3 +135,203 @@ explicit `null` so the schema stays consistent.
   the official Samsung document confirms the exact model family, but it does
   not publish a hinge-clearance or 90 degree side-opening measurement that can
   be mapped safely to `door_swing_mm`, so the value remains `null`.
+
+## Phase 17 Research Engine Batch Audit
+
+Date: 2026-04-16
+Scope: fridge category, brands CHIQ, Kogan, HELLER, TECO
+Missing definition: `door_swing_mm` is missing only when value is `null` or `undefined`
+Coverage definition: value `0` is covered
+
+### Batch Summary
+
+- Total mixed batches: 10
+- Total missing records in mixed batches: 21
+- Total research inputs added in this phase: 21
+- Adoptable candidate ratio: 21 of 21, 100 percent
+
+Brand distribution:
+
+- CHIQ: 5 batches, 14 missing, adoptable 14 of 14
+- Kogan: 3 batches, 5 missing, adoptable 5 of 5
+- HELLER: 1 batch, 1 missing, adoptable 1 of 1
+- TECO: 1 batch, 1 missing, adoptable 1 of 1
+
+### Added Research Inputs, High Confidence
+
+Rules used for high confidence:
+
+- Same brand
+- Same category, fridge
+- Same width group
+- Batch already has at least one covered sample with `door_swing_mm = 0`
+- Covered values in the same batch are consistent as `0`
+
+Adoptable suggestion for all IDs below: set `door_swing_mm = 0`
+
+#### CHIQ
+
+- Width 545mm, covered sample `fridge-arf2509`: `fridge-arf3201`, `fridge-arf3396`, `fridge-arf2861`, `fridge-arf2457`, `fridge-arf2863`, `fridge-arf3214`
+- Width 595mm, covered samples `fridge-arf2728`, `fridge-arf3385`: `fridge-arf2518`, `fridge-arf2521`, `fridge-arf2858`, `fridge-arf3117`
+- Width 547mm, covered samples `fridge-arf3397`, `fridge-arf3400`: `fridge-arf3398`, `fridge-arf3399`
+- Width 475mm, covered samples `fridge-arf3718`, `fridge-arf3376`: `fridge-arf3725`
+- Width 710mm, covered samples `fridge-arf2820`, `fridge-arf2484`: `fridge-arf2818`
+
+#### Kogan
+
+- Width 550mm, covered sample `fridge-arf3788`: `fridge-arf3491`, `fridge-arf2747`
+- Width 595mm, covered sample `fridge-arf3243`: `fridge-arf2753`, `fridge-arf2661`
+- Width 790mm, covered sample `fridge-arf3066`: `fridge-arf3291`
+
+#### HELLER
+
+- Width 545mm, covered sample `fridge-arf3327`: `fridge-arf3146`
+
+#### TECO
+
+- Width 540mm, covered sample `fridge-arf3234`: `fridge-arf3438`
+
+## Phase 17 Zero Anchor Slog
+
+Date: 2026-04-16
+Scope: pure-missing fridge batches with no covered anchor in-batch
+Target batches:
+
+- Kogan 480mm, 5 models
+- CHIQ 470mm, 4 models
+- CHIQ 700mm, 4 models
+
+Historical sources used in repository:
+
+- `docs/research-groups.json`
+- `docs/door-swing-research-sheet.md`
+
+### Research Summary
+
+- Total research inputs added in this pass: 13
+- Adoptable now: 4
+- Unknown pending manual evidence: 9
+- Batch-level adoptable confidence index: 46 percent
+
+Confidence method:
+
+- CHIQ 700mm group: medium-high, 72 percent
+- Kogan 480mm group: low, 35 percent
+- CHIQ 470mm group: low-medium, 40 percent
+
+Rationale:
+
+- History shows repeated heuristic recommendation of `20` for these groups in both `research-groups.json` and research-sheet commands.
+- Zero-anchor groups carry higher risk than mixed groups.
+- CHIQ 700mm models are uniform in geometry and type code (`5T`) and align with a dedicated historical group.
+- Kogan 480mm and CHIQ 470mm are compact upright sets with mixed type codes and no verified manual links inside repo artifacts.
+
+### Adoptable, Proposed Value
+
+Adoptable in this pass, proposed `door_swing_mm = 20`:
+
+- CHIQ 700mm:
+  `fridge-arf3724` `CTM40*N*S5E`,
+  `fridge-arf2511` `CTM407NB`,
+  `fridge-arf3720` `CTM407NB4`,
+  `fridge-arf3384` `CTM408NSS5E`
+
+Reason:
+
+- Historical group C5 maps these IDs together and recommends value `20`.
+- All four records share `w=700`, `h=1680`, `d=700`, config `Upright`, type `5T`.
+- This group is internally consistent and matches the wide top-mount profile where non-zero offset is plausible.
+
+### Unknown, Pending Manual PDF Evidence
+
+#### Kogan 480mm, pending evidence
+
+- `fridge-arf3785` `KAH085LTMFA`
+- `fridge-arf3758` `KAH125LTMFA`
+- `fridge-arf3160` `KAH75BARFRA`
+- `fridge-arf2743` `KAM43BEVFGF`
+- `fridge-arf2749` `KAM93BEVFGA`
+
+Required PDF links to verify before adoption:
+
+- Installation or user manual PDF for each model with one of:
+  90 degree door opening depth, door projection, hinge clearance diagram
+- Located links in this pass:
+  - KAH125LTMFA, KAH125LTMFB User Guide PDF:
+    https://assets.kogan.com/files/usermanuals/KAH125LTMFA_KAH125LTMFB_UG_V1.1.pdf
+  - KAH75BARFRA User Guide PDF:
+    https://assets.kogan.com/files/usermanuals/KAH75BARFRA_UG.pdf
+  - KAM43BEVFGA, KAM93BEVFGA User Guide PDF:
+    https://assets.kogan.com/files/usermanuals/KAM43BEVFGA-KAM93BEVFGA_UG.pdf
+- Gap still open:
+  - Direct official PDF for KAH085LTMFA was not found in this pass
+
+#### CHIQ 470mm, pending evidence
+
+- `fridge-arf3374` `CBC064BG`
+- `fridge-arf3375` `CBC094BG`
+- `fridge-arf3202` `CSR046DW`
+- `fridge-arf3200` `CTM086DW`
+
+Required PDF links to verify before adoption:
+
+- Installation or user manual PDF for each model with one of:
+  90 degree door opening depth, door projection, hinge clearance diagram
+- Located links in this pass:
+  - CHIQ user manual index page:
+    https://www.chiq.com.au/pages/user-manual-download
+  - CTM086DW User Manual PDF:
+    https://cdn.shopify.com/s/files/1/0714/2345/9578/files/CTM086DW_USER_MANUAL.pdf?v=1746608179
+  - CSR046DW User Manual PDF:
+    https://cdn.shopify.com/s/files/1/0714/2345/9578/files/CSR046DW_USER_MANUAL.pdf?v=1746600357
+  - CBC064BG User Manual PDF:
+    https://cdn.shopify.com/s/files/1/0714/2345/9578/files/CBC064BG_USER_MANUAL.pdf?v=1745908962
+  - CBC094BG User Manual PDF:
+    https://cdn.shopify.com/s/files/1/0714/2345/9578/files/CBC094BG_USER_MANUAL.pdf?v=1745910232
+
+### Notes For Next Apply Pass
+
+If CHIQ 700mm is accepted, apply:
+
+`node scripts/add-door-swing.js --ids fridge-arf3724,fridge-arf2511,fridge-arf3720,fridge-arf3384 --value 20`
+
+Leave Kogan 480mm and CHIQ 470mm as unresolved until manual PDFs are attached in this notes file.
+
+### PDF Extraction Results, 2026-04-16
+
+Source links checked:
+
+- https://assets.kogan.com/files/usermanuals/KAH125LTMFA_KAH125LTMFB_UG_V1.1.pdf
+- https://assets.kogan.com/files/usermanuals/KAH75BARFRA_UG.pdf
+- https://assets.kogan.com/files/usermanuals/KAM43BEVFGA-KAM93BEVFGA_UG.pdf
+- https://cdn.shopify.com/s/files/1/0714/2345/9578/files/CTM086DW_USER_MANUAL.pdf?v=1746608179
+- https://cdn.shopify.com/s/files/1/0714/2345/9578/files/CSR046DW_USER_MANUAL.pdf?v=1746600357
+- https://cdn.shopify.com/s/files/1/0714/2345/9578/files/CBC064BG_USER_MANUAL.pdf?v=1745908962
+- https://cdn.shopify.com/s/files/1/0714/2345/9578/files/CBC094BG_USER_MANUAL.pdf?v=1745910232
+
+Applied extraction rule in this pass:
+
+- When manual provides W, D and a full-open space dimension B in the space-demand table, use `door_swing_mm = B - D`.
+- This is treated as full-open requirement class, `400+` range.
+
+Adoptable from PDF data:
+
+- `fridge-arf3758` KAH125LTMFA, extracted from KAH125 manual:
+  D=530, G=960 at 90 degree, inferred full-open clearance `430` mm
+- `fridge-arf3200` CTM086DW:
+  D=498, B=925, inferred full-open clearance `427` mm
+- `fridge-arf3202` CSR046DW:
+  D=447, B=874, inferred full-open clearance `427` mm
+- `fridge-arf3374` CBC064BG:
+  D=439, B=883, inferred full-open clearance `444` mm
+- `fridge-arf3375` CBC094BG:
+  D=439, B=883, inferred full-open clearance `444` mm
+
+PDF check done, no data found:
+
+- `fridge-arf3160` KAH75BARFRA:
+  PDF parsed, no 90 degree door-open dimension or equivalent door projection value found
+- `fridge-arf2743` KAM43BEVFGA:
+  PDF parsed, installation clearances found only (top and side ventilation), no door-open projection value
+- `fridge-arf2749` KAM93BEVFGA:
+  same manual as KAM43BEVFGA, no door-open projection value
