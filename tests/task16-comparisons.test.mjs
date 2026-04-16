@@ -167,3 +167,42 @@ test('task 16 comparisons: buildComparisonPageHtml includes both brands in H1', 
   });
   assert.match(html, /<h1>LG vs Samsung Fridge Clearance Requirements/);
 });
+
+
+test('task 16 comparisons: buildComparisonPageHtml carries compare intent back to homepage CTA', async () => {
+  const { buildComparisonPageHtml } = await import(moduleUrl);
+  const html = buildComparisonPageHtml({
+    brandA: 'LG',
+    brandB: 'Samsung',
+    cat: 'fridge',
+    modelsA: 5,
+    modelsB: 6,
+    clearanceA: { side: 50, rear: 40, top: 80 },
+    clearanceB: { side: 45, rear: 35, top: 70 },
+    slug: 'lg-vs-samsung-fridge-clearance',
+    categoryMeta: { slug: 'fridge', labelPlural: 'Fridges', labelSingular: 'Fridge' },
+    modelSamplesA: [],
+    modelSamplesB: []
+  });
+  assert.match(html, /compare=LG-vs-Samsung/);
+  assert.match(html, /Compare LG vs Samsung inside your exact cavity/);
+});
+
+test('task 16 comparisons: buildComparisonPageHtml renders buy links when direct URLs exist', async () => {
+  const { buildComparisonPageHtml } = await import(moduleUrl);
+  const html = buildComparisonPageHtml({
+    brandA: 'LG',
+    brandB: 'Samsung',
+    cat: 'fridge',
+    modelsA: 5,
+    modelsB: 6,
+    clearanceA: { side: 50, rear: 40, top: 80 },
+    clearanceB: { side: 45, rear: 35, top: 70 },
+    slug: 'lg-vs-samsung-fridge-clearance',
+    categoryMeta: { slug: 'fridge', labelPlural: 'Fridges', labelSingular: 'Fridge' },
+    modelSamplesA: [{ model: 'A1', w: 700, h: 1700, d: 700, directUrl: 'https://example.com/a1', directLabel: 'Buy now' }],
+    modelSamplesB: [{ model: 'B1', w: 710, h: 1710, d: 710, bestRetailer: { n: 'JB Hi-Fi', url: 'https://example.com/b1' } }]
+  });
+  assert.match(html, /Buy now/);
+  assert.match(html, /Buy from JB Hi-Fi/);
+});

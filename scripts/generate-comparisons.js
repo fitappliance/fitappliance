@@ -51,6 +51,31 @@ function escHtml(value) {
   });
 }
 
+function hasRetailLink(product) {
+  if (!product || typeof product !== 'object') return false;
+  if (typeof product.direct_url === 'string' && /^https?:\/\//i.test(product.direct_url)) return true;
+  return Array.isArray(product.retailers)
+    && product.retailers.some((retailer) => retailer && typeof retailer.url === 'string' && /^https?:\/\//i.test(retailer.url));
+}
+
+function pickRetailLink(sample) {
+  if (!sample || typeof sample !== 'object') return null;
+  if (typeof sample.directUrl === 'string' && /^https?:\/\//i.test(sample.directUrl)) {
+    return {
+      url: sample.directUrl,
+      label: sample.directLabel || 'Buy now'
+    };
+  }
+  const retailerUrl = sample.bestRetailer?.url;
+  if (typeof retailerUrl === 'string' && /^https?:\/\//i.test(retailerUrl)) {
+    return {
+      url: retailerUrl,
+      label: `Buy from ${sample.bestRetailer?.n || 'retailer'}`
+    };
+  }
+  return null;
+}
+
 async function readJson(filePath) {
   const text = await readFile(filePath, 'utf8');
   return JSON.parse(text);
@@ -226,11 +251,19 @@ function buildComparisonPageHtml({
     displayBrandB,
     categoryMeta
   );
-  const brandAUrl = `/?cat=${encodeURIComponent(cat)}&brand=${encodeURIComponent(brandA)}`;
-  const brandBUrl = `/?cat=${encodeURIComponent(cat)}&brand=${encodeURIComponent(brandB)}`;
-  const ctaUrl = `/?cat=${encodeURIComponent(cat)}`;
-  const sampleItemsA = modelSamplesA.map((sample) => `<li>${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm</li>`).join('');
-  const sampleItemsB = modelSamplesB.map((sample) => `<li>${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm</li>`).join('');
+  const compareLabel = `${displayBrandA} vs ${displayBrandB}`;
+  const compareParam = `${displayBrandA}-vs-${displayBrandB}`;
+  const brandAUrl = `/?cat=${encodeURIComponent(cat)}&brand=${encodeURIComponent(brandA)}&compare=${encodeURIComponent(compareParam)}&vs=${encodeURIComponent(brandB)}`;
+  const brandBUrl = `/?cat=${encodeURIComponent(cat)}&brand=${encodeURIComponent(brandB)}&compare=${encodeURIComponent(compareParam)}&vs=${encodeURIComponent(brandA)}`;
+  const ctaUrl = `/?cat=${encodeURIComponent(cat)}&compare=${encodeURIComponent(compareParam)}&vs=${encodeURIComponent(brandB)}`;
+  const sampleItemsA = modelSamplesA.map((sample) => {
+    const retailLink = pickRetailLink(sample);
+    return `<li>${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm${retailLink ? `<br><a href="${escHtml(retailLink.url)}" target="_blank" rel="noopener sponsored">${escHtml(retailLink.label)} →</a>` : ''}</li>`;
+  }).join('');
+  const sampleItemsB = modelSamplesB.map((sample) => {
+    const retailLink = pickRetailLink(sample);
+    return `<li>${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm${retailLink ? `<br><a href="${escHtml(retailLink.url)}" target="_blank" rel="noopener sponsored">${escHtml(retailLink.label)} →</a>` : ''}</li>`;
+  }).join('');
 
   const articleJsonLd = JSON.stringify({
     '@context': 'https://schema.org',
@@ -316,6 +349,9 @@ ${buildSocialMetaTags({ title, description, canonical })}
     .model-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .model-grid h3 { margin: 0 0 8px; font-size: 15px; color: var(--ink); }
     .model-grid ul { margin: 0; padding-left: 18px; color: var(--ink-2); font-size: 13px; }
+    .model-grid li { margin-bottom: 8px; }
+    .model-grid li a { color: var(--copper); font-weight: 700; text-decoration: none; }
+    .model-grid li a:hover { text-decoration: underline; }
     .brand-links { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
     .brand-links a, .cta {
       display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
@@ -375,7 +411,7 @@ ${buildSocialMetaTags({ title, description, canonical })}
       </div>
     </section>
 
-    <a class="cta" href="${ctaUrl}">Find ${escHtml(categoryMeta.labelPlural)} that fit your exact cavity →</a>
+    <a class="cta" href="${ctaUrl}">Compare ${escHtml(compareLabel)} inside your exact cavity →</a>
   </main>
   <script type="application/ld+json">
 ${articleJsonLd}
@@ -405,6 +441,9 @@ function sampleBrandModels(products, cat, brand) {
   return products
     .filter((product) => product.cat === cat && product.brand === brand)
     .sort((left, right) => {
+      const leftHasLink = hasRetailLink(left) ? 1 : 0;
+      const rightHasLink = hasRetailLink(right) ? 1 : 0;
+      if (rightHasLink !== leftHasLink) return rightHasLink - leftHasLink;
       const leftStars = Number.isFinite(left.stars) ? left.stars : -1;
       const rightStars = Number.isFinite(right.stars) ? right.stars : -1;
       if (rightStars !== leftStars) return rightStars - leftStars;
@@ -418,7 +457,12 @@ function sampleBrandModels(products, cat, brand) {
       model: product.model,
       w: product.w,
       h: product.h,
-      d: product.d
+      d: product.d,
+      directUrl: product.direct_url,
+      directLabel: product.direct_url ? 'Buy now' : null,
+      bestRetailer: Array.isArray(product.retailers)
+        ? product.retailers.find((retailer) => retailer && typeof retailer.url === 'string' && /^https?:\/\//i.test(retailer.url)) ?? null
+        : null
     }));
 }
 

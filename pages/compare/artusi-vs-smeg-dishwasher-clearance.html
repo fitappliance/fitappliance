@@ -41,6 +41,9 @@
     .model-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .model-grid h3 { margin: 0 0 8px; font-size: 15px; color: var(--ink); }
     .model-grid ul { margin: 0; padding-left: 18px; color: var(--ink-2); font-size: 13px; }
+    .model-grid li { margin-bottom: 8px; }
+    .model-grid li a { color: var(--copper); font-weight: 700; text-decoration: none; }
+    .model-grid li a:hover { text-decoration: underline; }
     .brand-links { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
     .brand-links a, .cta {
       display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
@@ -95,12 +98,12 @@
         </div>
       </div>
       <div class="brand-links">
-        <a href="/?cat=dishwasher&brand=Artusi">Browse Artusi Dishwashers</a>
-        <a href="/?cat=dishwasher&brand=Smeg">Browse Smeg Dishwashers</a>
+        <a href="/?cat=dishwasher&brand=Artusi&compare=Artusi-vs-Smeg&vs=Smeg">Browse Artusi Dishwashers</a>
+        <a href="/?cat=dishwasher&brand=Smeg&compare=Artusi-vs-Smeg&vs=Artusi">Browse Smeg Dishwashers</a>
       </div>
     </section>
 
-    <a class="cta" href="/?cat=dishwasher">Find Dishwashers that fit your exact cavity →</a>
+    <a class="cta" href="/?cat=dishwasher&compare=Artusi-vs-Smeg&vs=Smeg">Compare Artusi vs Smeg inside your exact cavity →</a>
   </main>
   <script type="application/ld+json">
 {

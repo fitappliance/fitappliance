@@ -41,6 +41,9 @@
     .model-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .model-grid h3 { margin: 0 0 8px; font-size: 15px; color: var(--ink); }
     .model-grid ul { margin: 0; padding-left: 18px; color: var(--ink-2); font-size: 13px; }
+    .model-grid li { margin-bottom: 8px; }
+    .model-grid li a { color: var(--copper); font-weight: 700; text-decoration: none; }
+    .model-grid li a:hover { text-decoration: underline; }
     .brand-links { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
     .brand-links a, .cta {
       display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
@@ -87,7 +90,7 @@
       <div class="model-grid">
         <div>
           <h3>LG</h3>
-          <ul><li>WWT-1910B · 700×1890×770mm</li><li>WWT-1209B · 600×1655×660mm</li><li>WTL9-14W · 690×1113×730mm</li></ul>
+          <ul><li>WM5000HWA 10kg TurboWash · 600×850×560mm<br><a href="https://www.thegoodguys.com.au" target="_blank" rel="noopener sponsored">Buy from The Good Guys →</a></li><li>WWT-1910B · 700×1890×770mm</li><li>WWT-1209B · 600×1655×660mm</li></ul>
         </div>
         <div>
           <h3>Hisense</h3>
@@ -95,12 +98,12 @@
         </div>
       </div>
       <div class="brand-links">
-        <a href="/?cat=washing_machine&brand=LG">Browse LG Washing Machines</a>
-        <a href="/?cat=washing_machine&brand=HISENSE">Browse Hisense Washing Machines</a>
+        <a href="/?cat=washing_machine&brand=LG&compare=LG-vs-Hisense&vs=HISENSE">Browse LG Washing Machines</a>
+        <a href="/?cat=washing_machine&brand=HISENSE&compare=LG-vs-Hisense&vs=LG">Browse Hisense Washing Machines</a>
       </div>
     </section>
 
-    <a class="cta" href="/?cat=washing_machine">Find Washing Machines that fit your exact cavity →</a>
+    <a class="cta" href="/?cat=washing_machine&compare=LG-vs-Hisense&vs=HISENSE">Compare LG vs Hisense inside your exact cavity →</a>
   </main>
   <script type="application/ld+json">
 {
@@ -145,17 +148,17 @@
     {
       "@type": "ListItem",
       "position": 1,
-      "name": "LG WWT-1910B"
+      "name": "LG WM5000HWA 10kg TurboWash"
     },
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "LG WWT-1209B"
+      "name": "LG WWT-1910B"
     },
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "LG WTL9-14W"
+      "name": "LG WWT-1209B"
     },
     {
       "@type": "ListItem",

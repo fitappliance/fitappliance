@@ -41,6 +41,9 @@
     .model-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .model-grid h3 { margin: 0 0 8px; font-size: 15px; color: var(--ink); }
     .model-grid ul { margin: 0; padding-left: 18px; color: var(--ink-2); font-size: 13px; }
+    .model-grid li { margin-bottom: 8px; }
+    .model-grid li a { color: var(--copper); font-weight: 700; text-decoration: none; }
+    .model-grid li a:hover { text-decoration: underline; }
     .brand-links { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
     .brand-links a, .cta {
       display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
@@ -87,20 +90,20 @@
       <div class="model-grid">
         <div>
           <h3>Westinghouse</h3>
-          <ul><li>WSE6200SB · 911×1780×746mm</li><li>WSE6240BB · 911×1780×746mm</li><li>WSE6200WB · 911×1780×746mm</li></ul>
+          <ul><li>WBB3100AK · 1646×598×650mm<br><a href="https://www.jbhifi.com.au/search?query=WBB3100AK" target="_blank" rel="noopener sponsored">Buy now →</a></li><li>WBB3400AH · 1645×598×650mm<br><a href="https://www.jbhifi.com.au/search?query=WBB3400AH" target="_blank" rel="noopener sponsored">Buy now →</a></li><li>WBB3700AH · 1755×598×650mm<br><a href="https://www.jbhifi.com.au/search?query=WBB3700AH" target="_blank" rel="noopener sponsored">Buy now →</a></li></ul>
         </div>
         <div>
           <h3>LG</h3>
-          <ul><li>GS-B599PLB · 913×1790×735mm</li><li>GP-R386MBL · 595×1860×707mm</li><li>MP-L386 · 595×1860×707mm</li></ul>
+          <ul><li>GB-335PL · 595×1720×677mm<br><a href="https://www.jbhifi.com.au/search?query=GB-335PL" target="_blank" rel="noopener sponsored">Buy now →</a></li><li>GF-L708MBL French Door 708L · 905×1790×740mm<br><a href="https://www.thegoodguys.com.au" target="_blank" rel="noopener sponsored">Buy from The Good Guys →</a></li><li>GB-455BLE · 700×1720×700mm<br><a href="https://www.jbhifi.com.au/search?query=GB-455BLE" target="_blank" rel="noopener sponsored">Buy now →</a></li></ul>
         </div>
       </div>
       <div class="brand-links">
-        <a href="/?cat=fridge&brand=WESTINGHOUSE">Browse Westinghouse Fridges</a>
-        <a href="/?cat=fridge&brand=LG">Browse LG Fridges</a>
+        <a href="/?cat=fridge&brand=WESTINGHOUSE&compare=Westinghouse-vs-LG&vs=LG">Browse Westinghouse Fridges</a>
+        <a href="/?cat=fridge&brand=LG&compare=Westinghouse-vs-LG&vs=WESTINGHOUSE">Browse LG Fridges</a>
       </div>
     </section>
 
-    <a class="cta" href="/?cat=fridge">Find Fridges that fit your exact cavity →</a>
+    <a class="cta" href="/?cat=fridge&compare=Westinghouse-vs-LG&vs=LG">Compare Westinghouse vs LG inside your exact cavity →</a>
   </main>
   <script type="application/ld+json">
 {
@@ -145,32 +148,32 @@
     {
       "@type": "ListItem",
       "position": 1,
-      "name": "Westinghouse WSE6200SB"
+      "name": "Westinghouse WBB3100AK"
     },
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Westinghouse WSE6240BB"
+      "name": "Westinghouse WBB3400AH"
     },
     {
       "@type": "ListItem",
       "position": 3,
-      "name": "Westinghouse WSE6200WB"
+      "name": "Westinghouse WBB3700AH"
     },
     {
       "@type": "ListItem",
       "position": 4,
-      "name": "LG GS-B599PLB"
+      "name": "LG GB-335PL"
     },
     {
       "@type": "ListItem",
       "position": 5,
-      "name": "LG GP-R386MBL"
+      "name": "LG GF-L708MBL French Door 708L"
     },
     {
       "@type": "ListItem",
       "position": 6,
-      "name": "LG MP-L386"
+      "name": "LG GB-455BLE"
     }
   ]
 }

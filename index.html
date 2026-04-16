@@ -336,9 +336,18 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+}
+.float-bar-copy { min-width: 0; }
+.float-bar-kicker {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: rgba(255,255,255,.62);
+  margin-bottom: 2px;
 }
 .float-bar-summary {
   font-size: 13px;
@@ -1157,8 +1166,11 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 <body>
 <div class="float-bar" id="floatBar" hidden aria-label="Active search filters">
   <div class="float-bar-inner">
-    <div class="float-bar-summary" id="floatBarSummary">Fridge · 600mm</div>
-    <button class="float-bar-edit" onclick="scrollToSearch()" aria-label="Edit search">
+    <div class="float-bar-copy">
+      <div class="float-bar-kicker" id="floatBarKicker" hidden>Compare intent detected</div>
+      <div class="float-bar-summary" id="floatBarSummary">Fridge · 600mm</div>
+    </div>
+    <button class="float-bar-edit" id="floatBarEdit" onclick="scrollToSearch()" aria-label="Edit search">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
@@ -1756,6 +1768,7 @@ let currentCat = 'fridge';
 let filteredResults = [];
 let currentView = 'list';
 let compareList = [];
+let COMPARE_INTENT = null;
 let PRODUCTS = [];
 let APPLIANCES_META = null;
 const loadedCats = new Set();
@@ -1827,8 +1840,27 @@ async function bootstrapApplianceData() {
   return initialCat;
 }
 
+function readCompareIntent(params = new URLSearchParams(window.location.search)) {
+  const compare = params.get('compare')?.trim();
+  const vs = params.get('vs')?.trim();
+  if (compare) {
+    return {
+      label: compare.replace(/[-_]+/g, ' ').replace(/\w/g, (char) => char.toUpperCase()),
+      opponent: vs || ''
+    };
+  }
+  if (vs) {
+    return {
+      label: `vs ${vs}`,
+      opponent: vs
+    };
+  }
+  return null;
+}
+
 async function readUrlParams() {
   const params = new URLSearchParams(window.location.search);
+  COMPARE_INTENT = readCompareIntent(params);
   const cat = params.get('cat');
   const w = params.get('w');
   const h = params.get('h');
@@ -1907,6 +1939,8 @@ function scrollToSearch() {
 
 function updateFloatBarSummary() {
   const summary = document.getElementById('floatBarSummary');
+  const kicker = document.getElementById('floatBarKicker');
+  const edit = document.getElementById('floatBarEdit');
   if (!summary) return;
 
   const width = document.getElementById('inW')?.value?.trim();
@@ -1922,6 +1956,15 @@ function updateFloatBarSummary() {
   }
 
   if (brand) parts.push(brand);
+  if (COMPARE_INTENT?.label) {
+    kicker.hidden = false;
+    kicker.textContent = `Compare intent: ${COMPARE_INTENT.label}`;
+    if (edit) edit.innerHTML = 'Refine compare';
+  } else if (kicker) {
+    kicker.hidden = true;
+    kicker.textContent = '';
+    if (edit) edit.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>Edit';
+  }
   summary.textContent = parts.join(' · ');
 }
 
