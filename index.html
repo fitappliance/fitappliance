@@ -1841,11 +1841,20 @@ async function bootstrapApplianceData() {
 }
 
 function readCompareIntent(params = new URLSearchParams(window.location.search)) {
+  const intent = params.get('intent');
   const compare = params.get('compare')?.trim();
+  const brand = params.get('brand')?.trim();
   const vs = params.get('vs')?.trim();
+
+  if (intent === 'compare' && brand && vs) {
+    return {
+      label: `${brand} vs ${vs}`,
+      opponent: vs
+    };
+  }
   if (compare) {
     return {
-      label: compare.replace(/[-_]+/g, ' ').replace(/\w/g, (char) => char.toUpperCase()),
+      label: compare.replace(/[-_]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
       opponent: vs || ''
     };
   }
@@ -1866,42 +1875,48 @@ async function readUrlParams() {
   const h = params.get('h');
   const d = params.get('d');
 
-  if (!cat || !w || !h || !d) return;
-  if (!VALID_CATEGORIES.includes(cat)) return;
-
-  const width = Number.parseInt(w, 10);
-  const height = Number.parseInt(h, 10);
-  const depth = Number.parseInt(d, 10);
-  if (!Number.isFinite(width) || !Number.isFinite(height) || !Number.isFinite(depth)) return;
-
-  await setCategory(cat);
+  if (cat && VALID_CATEGORIES.includes(cat)) {
+    await setCategory(cat);
+    const brand = params.get('brand');
+    if (brand) {
+      const select = document.getElementById('inBrand');
+      if (select) select.value = brand;
+    }
+  }
 
   const widthInput = document.getElementById('inW');
   const heightInput = document.getElementById('inH');
   const depthInput = document.getElementById('inD');
-  widthInput.value = String(width);
-  heightInput.value = String(height);
-  depthInput.value = String(depth);
 
-  const brand = params.get('brand');
-  if (brand) {
-    brandSelect.value = brand;
+  if (w && h && d) {
+    const width = parseInt(w, 10);
+    const height = parseInt(h, 10);
+    const depth = parseInt(d, 10);
+    if (!isNaN(width) && !isNaN(height) && !isNaN(depth)) {
+      if (widthInput) widthInput.value = String(width);
+      if (heightInput) heightInput.value = String(height);
+      if (depthInput) depthInput.value = String(depth);
+    }
   }
 
   const doorParam = params.get('door');
   if (doorParam) {
-    const door = Number.parseInt(doorParam, 10);
-    if (Number.isFinite(door)) {
-      document.getElementById('inDoor').value = String(door);
+    const door = parseInt(doorParam, 10);
+    if (!isNaN(door)) {
+      const doorInput = document.getElementById('inDoor');
+      if (doorInput) doorInput.value = String(door);
     }
   }
 
   const dwelling = params.get('dwelling');
   if (dwelling && ['house', 'apartment', 'townhouse'].includes(dwelling)) {
-    document.getElementById('inDwelling').value = dwelling;
+    const dwellingInput = document.getElementById('inDwelling');
+    if (dwellingInput) dwellingInput.value = dwelling;
   }
 
-  doSearch();
+  if (COMPARE_INTENT || (cat && w && h && d)) {
+    doSearch();
+  }
 }
 
 /* ══════════════════════════════════════════════════════════

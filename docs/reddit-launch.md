@@ -1,67 +1,46 @@
-# Reddit Launch Plan — FitAppliance Phase 17
+# Reddit Launch Plan — FitAppliance v2
 
-## Why this is worth posting now
-FitAppliance solves a real Australian appliance-buying problem: retailer specs tell you the box dimensions, but not the brand-specific clearance rules that decide whether the appliance actually fits and keeps its warranty-safe airflow.
+## Target Subreddits
+1. **r/AusRenovation** (Primary) — High relevance, home improvement focus.
+2. **r/AusFinance** — Appliance purchase decisions, TCO focus.
+3. **r/australia** — Broad audience, best for weekend posting.
+4. **r/Appliances** — International audience, highlight AU-specific clearances.
 
-Current proof points:
-- 2169 AU appliance records across fridges, washing machines, dishwashers, and dryers
-- 286 brand pages live
-- 38 compare pages live
-- 148 automated tests in place before launch validation
-- Direct retailer links are now being surfaced on compare pages where source coverage exists
+## Post Template (r/AusRenovation)
 
-## Pre-launch checklist
-- [ ] Run `npm run generate-pages`
-- [ ] Run `npm test`
-- [ ] Spot-check mobile sticky banner from a compare-intent URL
-- [ ] Spot-check 5 compare pages for working buy links
-- [ ] Confirm disclosure language is present anywhere affiliate-style links appear
-- [ ] Prepare 2 screenshots: one search result, one compare page
+### Title Options
+- "Built a tool to check if appliances actually fit your cavity (with per-brand clearances)"
+- "Sick of buying fridges that don't fit? Made a calculator for AU kitchens"
+- "FitAppliance — Does your Samsung fridge need 100mm top clearance? This tool knows."
 
-## Best subreddit targets
-1. **r/AusRenovation** — strongest fit, practical home-improvement angle
-2. **r/AusPropertyChat** — buyers, renovators, landlords
-3. **r/AusFinance** — cost-of-ownership and bad-purchase prevention angle
-4. **r/Appliances** — broader audience, but lead with AU-specific clearance rules
+### Body
+Hey r/AusRenovation,
 
-## Recommended first post: r/AusRenovation
+I got burned buying a fridge that "should have fit" but didn't account for Samsung's 100mm top clearance requirement. Turns out every brand has different ventilation specs, and no retailer tells you upfront.
 
-### Title options
-- Built a tool to check if an appliance actually fits your cavity, not just the product dimensions
-- I got tired of retailer specs hiding clearance requirements, so I built an AU appliance fit checker
-- This shows when a fridge fits on paper but fails once brand clearance rules are applied
+So I built **FitAppliance** — you enter your cavity dimensions, and it:
+- Subtracts per-brand clearances (Samsung vs LG vs Fisher&Paykel all different)
+- Checks if it fits through your doorway
+- Calculates VIC/NSW rebates
+- Shows 10-year energy cost
 
-### Post body
-Hi all,
+**Live:** https://fitappliance.com.au
 
-I built **FitAppliance**, a free Australian appliance fit checker, after running into the annoying problem where a fridge technically matched the cavity dimensions but still needed extra side, rear, or top clearance that retailers barely mention.
+Currently covers 2169 AU models (fridges, washers, dishwashers, dryers). Data from GEMS regulator + OEM manuals.
 
-What it does:
-- checks your cavity dimensions against actual appliance dimensions
-- applies brand-specific clearance rules
-- compares brands side by side on dedicated compare pages
-- shows retailer jump-off links where source coverage exists
-- covers fridges, washers, dishwashers, and dryers
+**Example:** 600mm cavity → Samsung needs 100mm top clearance, so max fridge height is 1700mm. LG only needs 20mm, so you get 1780mm. That's a whole shelf of difference.
 
-Current scope:
-- 2169 appliance records
-- 286 brand landing pages
-- 38 compare pages
-- built for Australian sizing and buying flow
+Open to feedback — especially if you spot missing brands or wrong clearances.
 
-The goal is simple: stop people buying appliances that “fit” in theory but fail in the real cavity once ventilation and access rules are applied.
+---
+*Disclaimer: Affiliate links present (ACCC-compliant). I earn commission if you buy, but the tool is free and the math is transparent.*
 
-If anyone wants to test it with a real cavity size or a brand pair they are comparing, I’m happy to use that as feedback for the next update.
+## Engagement FAQ
+- **"Why not just measure?"** → Reply: Cavity size is easy, but per-brand ventilation gaps are hidden in manuals.
+- **"Affiliate spam?"** → Reply: Tool is free, data is public, links are clearly marked.
+- **"Missing brand X?"** → Reply: Logging it now, will try to add within 48h.
 
-## Comment reply snippets
-- **Why not just measure manually?**
-  Measuring the cavity is only half the job. The hidden part is the brand-specific clearance requirement around the appliance.
-- **Is this just affiliate bait?**
-  The tool is built around fit logic first. Any retailer links are there to shorten the path once someone already has a fit shortlist.
-- **My brand is missing.**
-  Send the brand or model and I can add it to the research queue.
-
-## Risk notes
-- Do not quote outdated direct_url or door-swing coverage numbers from older promo docs.
-- Keep claims anchored to current generated pages and current audit output.
-- If comments focus on “just use a tape measure”, bring the answer back to ventilation clearance and install reality.
+## Post Schedule
+- **Day 1 (Saturday 10am AEST):** r/AusRenovation
+- **Day 3 (Monday 8pm AEST):** r/AusFinance
+- **Day 7 (Sunday 2pm AEST):** r/australia
