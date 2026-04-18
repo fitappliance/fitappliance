@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const https = require('node:https');
 
-const HOST = 'fitappliance.com.au';
+const HOST = 'www.fitappliance.com.au';
 const KEY_FILE = path.join(__dirname, '..', '.indexnow-key');
 const SITEMAP = path.join(__dirname, '..', 'public', 'sitemap.xml');
 
@@ -25,7 +25,9 @@ function pingIndexNow() {
 
   const key = fs.readFileSync(KEY_FILE, 'utf8').trim();
   const sitemap = fs.readFileSync(SITEMAP, 'utf8');
-  const urls = parseSitemapUrls(sitemap);
+  const urls = parseSitemapUrls(sitemap).map((u) =>
+    u.replace('https://fitappliance.com.au', `https://${HOST}`)
+  );
 
   if (!key || !/^[a-f0-9]{32}$/u.test(key)) {
     console.error('[indexnow] Invalid key format in .indexnow-key');
