@@ -58,19 +58,126 @@ function hasRetailLink(product) {
     && product.retailers.some((retailer) => retailer && typeof retailer.url === 'string' && /^https?:\/\//i.test(retailer.url));
 }
 
+function extractModelSku(modelString) {
+  if (typeof modelString !== 'string' || !modelString.trim()) return '';
+  return modelString.trim().split(/\s+/)[0];
+}
+
+function normalizeModelForSearch(modelString, brand) {
+  const model = String(modelString ?? '').trim();
+  if (!model) return '';
+  if (!brand) return model;
+  const escapedBrand = String(brand).trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return model.replace(new RegExp(`^${escapedBrand}\\s+`, 'i'), '').trim() || model;
+}
+
+function buildRetailSearchQuery(sample) {
+  const brand = String(sample?.brand ?? '').trim();
+  const model = normalizeModelForSearch(sample?.model, brand);
+  const sku = extractModelSku(model);
+  if (brand && model) {
+    return `${brand} "${model}"`;
+  }
+  if (sku) {
+    return `${brand} "${sku}"`.trim();
+  }
+  return `${brand} ${String(sample?.model ?? '').trim()}`.trim();
+}
+
+function parseUrlOrNull(rawUrl) {
+  try {
+    return new URL(rawUrl);
+  } catch {
+    return null;
+  }
+}
+
+function isSearchLikeUrl(parsedUrl) {
+  if (!parsedUrl || typeof parsedUrl !== 'object') return false;
+  if (/\/search(?:\/|$)/i.test(parsedUrl.pathname)) return true;
+  return ['q', 'query', 'text', 'search', 'keyword'].some((key) => parsedUrl.searchParams.has(key));
+}
+
+function normalizeRetailLink(rawUrl, sample) {
+  if (typeof rawUrl !== 'string' || !/^https?:\/\//i.test(rawUrl)) return null;
+  const parsed = parseUrlOrNull(rawUrl);
+  if (!parsed) return { url: rawUrl, searchLike: false, hostLabel: '' };
+
+  const host = parsed.hostname.replace(/^www\./, '');
+  const hostLabel = host.replace(/\.com\.au$|\.com$|\.au$/i, '').replace(/-/g, ' ');
+  if (!isSearchLikeUrl(parsed)) {
+    return { url: rawUrl, searchLike: false, hostLabel };
+  }
+
+  const query = buildRetailSearchQuery(sample);
+  if (!query) {
+    return { url: rawUrl, searchLike: true, hostLabel };
+  }
+
+  if (host === 'harveynorman.com.au') {
+    return {
+      url: `https://www.harveynorman.com.au/catalogsearch/result/?q=${encodeURIComponent(query)}`,
+      searchLike: true,
+      hostLabel: 'Harvey Norman'
+    };
+  }
+  if (host === 'thegoodguys.com.au') {
+    return {
+      url: `https://www.thegoodguys.com.au/search?text=${encodeURIComponent(query)}`,
+      searchLike: true,
+      hostLabel: 'The Good Guys'
+    };
+  }
+  if (host === 'jbhifi.com.au') {
+    return {
+      url: `https://www.jbhifi.com.au/search?query=${encodeURIComponent(query)}`,
+      searchLike: true,
+      hostLabel: 'JB Hi-Fi'
+    };
+  }
+  if (host === 'binglee.com.au') {
+    return {
+      url: `https://www.binglee.com.au/search?query=${encodeURIComponent(query)}`,
+      searchLike: true,
+      hostLabel: 'Bing Lee'
+    };
+  }
+  if (host === 'appliances-online.com.au' || host === 'appliancesonline.com.au') {
+    return {
+      url: `https://www.appliancesonline.com.au/search/?q=${encodeURIComponent(query)}`,
+      searchLike: true,
+      hostLabel: 'Appliances Online'
+    };
+  }
+
+  const paramKey = ['query', 'q', 'text', 'search', 'keyword'].find((key) => parsed.searchParams.has(key));
+  if (paramKey) {
+    parsed.searchParams.set(paramKey, query);
+  } else {
+    parsed.searchParams.set('q', query);
+  }
+  return { url: parsed.toString(), searchLike: true, hostLabel };
+}
+
 function pickRetailLink(sample) {
   if (!sample || typeof sample !== 'object') return null;
   if (typeof sample.directUrl === 'string' && /^https?:\/\//i.test(sample.directUrl)) {
+    const normalized = normalizeRetailLink(sample.directUrl, sample);
+    if (!normalized) return null;
     return {
-      url: sample.directUrl,
-      label: sample.directLabel || 'Buy now'
+      url: normalized.url,
+      label: normalized.searchLike ? `Search at ${normalized.hostLabel || 'retailer'}` : (sample.directLabel || 'Buy now')
     };
   }
   const retailerUrl = sample.bestRetailer?.url;
   if (typeof retailerUrl === 'string' && /^https?:\/\//i.test(retailerUrl)) {
+    const normalized = normalizeRetailLink(retailerUrl, sample);
+    if (!normalized) return null;
     return {
-      url: retailerUrl,
-      label: `Buy from ${sample.bestRetailer?.n || 'retailer'}`
+      url: normalized.url,
+      label: normalized.searchLike
+        ? `Search at ${sample.bestRetailer?.n || normalized.hostLabel || 'retailer'}`
+        : `Buy from ${sample.bestRetailer?.n || 'retailer'}`
     };
   }
   return null;
@@ -80,8 +187,14 @@ function hasSampleRetailLink(samples) {
   return Array.isArray(samples) && samples.some((sample) => Boolean(pickRetailLink(sample)));
 }
 
-function buildFallbackBuySearchUrl(brand, categoryMeta) {
-  const query = `${brand} ${categoryMeta.labelSingular}`;
+function buildFallbackBuySearchUrl(brand, categoryMeta, sampleModel = '') {
+  const normalizedModel = normalizeModelForSearch(sampleModel, brand);
+  const sku = extractModelSku(normalizedModel);
+  const query = (brand && normalizedModel)
+    ? `${brand} "${normalizedModel}"`
+    : (brand && sku)
+      ? `${brand} "${sku}"`
+      : `${brand} ${categoryMeta.labelSingular}`;
   return `https://www.appliances-online.com.au/search/?q=${encodeURIComponent(query)}`;
 }
 
@@ -269,15 +382,17 @@ function buildComparisonPageHtml({
   const hasLinksB = hasSampleRetailLink(modelSamplesB);
   const fallbackLinks = [];
   if (!hasLinksA) {
+    const sampleModelA = modelSamplesA[0]?.model ?? '';
     fallbackLinks.push({
       label: `Find ${displayBrandA} ${categoryMeta.labelPlural}`,
-      url: buildFallbackBuySearchUrl(displayBrandA, categoryMeta)
+      url: buildFallbackBuySearchUrl(displayBrandA, categoryMeta, sampleModelA)
     });
   }
   if (!hasLinksB) {
+    const sampleModelB = modelSamplesB[0]?.model ?? '';
     fallbackLinks.push({
       label: `Find ${displayBrandB} ${categoryMeta.labelPlural}`,
-      url: buildFallbackBuySearchUrl(displayBrandB, categoryMeta)
+      url: buildFallbackBuySearchUrl(displayBrandB, categoryMeta, sampleModelB)
     });
   }
   const sampleItemsA = modelSamplesA.map((sample) => {
@@ -348,6 +463,13 @@ function buildComparisonPageHtml({
   <meta name="description" content="${escHtml(description)}">
   <link rel="canonical" href="${canonical}">
 ${buildSocialMetaTags({ title, description, canonical })}
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WNPNS4ZGWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WNPNS4ZGWK');
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -440,6 +562,15 @@ ${buildSocialMetaTags({ title, description, canonical })}
 
     <a class="cta" href="${ctaUrl}">Compare ${escHtml(compareLabel)} inside your exact cavity →</a>
   </main>
+  <script>
+    if (typeof gtag === 'function') {
+      gtag('event', 'compare_view', {
+        cat: ${JSON.stringify(categoryMeta.slug)},
+        brand_a: ${JSON.stringify(displayBrandA)},
+        brand_b: ${JSON.stringify(displayBrandB)}
+      });
+    }
+  </script>
   <script type="application/ld+json">
 ${articleJsonLd}
   </script>
@@ -481,12 +612,14 @@ function sampleBrandModels(products, cat, brand) {
     })
     .slice(0, 3)
     .map((product) => ({
+      brand: product.brand,
+      cat: product.cat,
       model: product.model,
       w: product.w,
       h: product.h,
       d: product.d,
       directUrl: product.direct_url,
-      directLabel: product.direct_url ? 'Buy now' : null,
+      directLabel: null,
       bestRetailer: Array.isArray(product.retailers)
         ? product.retailers.find((retailer) => retailer && typeof retailer.url === 'string' && /^https?:\/\//i.test(retailer.url)) ?? null
         : null

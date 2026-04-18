@@ -204,7 +204,14 @@ export function buildRow(p, deps = {}) {
       <div style="font-size:12px;color:var(--green);margin-top:4px">⚡ ~$${annual}/yr · 10yr TCO ~$${total.toLocaleString()} · ${p.features.slice(0, 3).join(' · ')}</div>
       ${p.vented ? '<div style="font-size:12px;color:var(--red);margin-top:4px">⚠️ Vented — external ducting required (NCC 2022). Not for apartments.</div>' : ''}
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
-        ${hasPrice ? retailers.map(r => `<a href="${resolveRetailerUrl(r, p)}" target="_blank" rel="noopener sponsored" style="font-size:12.5px;color:var(--copper);font-weight:600;text-decoration:none;background:var(--copper-bg);padding:4px 10px;border-radius:6px">${r.n} $${r.p.toLocaleString()} ↗</a>`).join('') : ''}
+        ${hasPrice ? retailers.map(r => `<a href="${resolveRetailerUrl(r, p)}" target="_blank" rel="noopener sponsored" style="font-size:12.5px;color:var(--copper);font-weight:600;text-decoration:none;background:var(--copper-bg);padding:4px 10px;border-radius:6px"
+          data-buy-click="1"
+          data-product-id="${escHtml(p.id)}"
+          data-brand="${escHtml(p.brand)}"
+          data-model="${escHtml(p.model)}"
+          data-retailer="${escHtml(r.n)}"
+          data-price="${Number.isFinite(r.p) ? r.p : 0}"
+        >${r.n} $${r.p.toLocaleString()} ↗</a>`).join('') : ''}
       </div>
       <div style="font-size:10.5px;color:var(--ink-3);margin-top:4px;font-style:italic">We earn a commission if you purchase via these links. <a href="/affiliate-disclosure" style="color:var(--copper)">Disclosure</a></div>
     </div>

@@ -55,7 +55,7 @@ test('task 15 retailer-modal: trigger for 0 retailers is Google Shopping link', 
   assert.match(html, /google\.com\.au\/search/);
 });
 
-test('task 15 retailer-modal: trigger for 1 retailer is direct buy link', async () => {
+test('task 15 retailer-modal: trigger for 1 retailer uses search label for search-like URL', async () => {
   const { buildRetailerTriggerButton } = await import(moduleUrl);
   const html = buildRetailerTriggerButton(makeProduct({
     retailers: [{ n: 'The Good Guys', p: 1299, url: 'https://www.thegoodguys.com.au/search?text=GB335' }]
@@ -64,7 +64,7 @@ test('task 15 retailer-modal: trigger for 1 retailer is direct buy link', async 
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /Buy at The Good Guys/);
+  assert.match(html, /Search at The Good Guys/);
   assert.match(html, /href="https:\/\/www\.thegoodguys\.com\.au\/search\?text=GB335"/);
   assert.doesNotMatch(html, /openRetailerModal/);
 });

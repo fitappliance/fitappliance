@@ -7,11 +7,14 @@ const { writeJsonAtomically } = require('./utils/file-utils.js');
 const FRIDGE_ZERO_SWING_CONFIGURATIONS = new Set([
   'Chest',
   'Side by Side',
-  'French Door'
+  'French Door',
+  'Bottom Mount'
 ]);
 const FRIDGE_ZERO_SWING_TYPE_CODES = new Set(['7']);
 const FRIDGE_WIDE_UPRIGHT_THRESHOLD_MM = 880;
 const FRIDGE_BOTTOM_MOUNT_CODE = '5B';
+const FRIDGE_UPRIGHT_SWING_CONFIGS = new Set(['Upright', 'Top Mount']);
+const FRIDGE_MIN_SWING_WIDTH_MM = 400;
 
 const INFERENCE_RULES = {
   washing_machine: {
@@ -38,12 +41,12 @@ const INFERENCE_RULES = {
       const type = product?.features?.[1];
       const width = product?.w;
 
-      if (type === '1') {
-        return false;
-      }
-
       if (typeof config === 'string' && FRIDGE_ZERO_SWING_CONFIGURATIONS.has(config)) {
         return true;
+      }
+
+      if (type === '1') {
+        return false;
       }
 
       if (config === 'Upright' && typeof type === 'string' && FRIDGE_ZERO_SWING_TYPE_CODES.has(type)) {
@@ -111,6 +114,54 @@ function inferFromDocument(document) {
   };
 }
 
+function inferUprightSwingFromWidth(document) {
+  let updatedCount = 0;
+  let skippedCount = 0;
+  let unchangedCount = 0;
+
+  const products = Array.isArray(document?.products) ? document.products : [];
+  const nextProducts = products.map((product) => {
+    if (product?.cat !== 'fridge') {
+      unchangedCount += 1;
+      return product;
+    }
+
+    if (hasDoorSwingValue(product?.door_swing_mm)) {
+      skippedCount += 1;
+      return product;
+    }
+
+    const config = product?.features?.[0];
+    if (typeof config !== 'string' || !FRIDGE_UPRIGHT_SWING_CONFIGS.has(config)) {
+      unchangedCount += 1;
+      return product;
+    }
+
+    const width = product?.w;
+    if (!Number.isFinite(width) || width < FRIDGE_MIN_SWING_WIDTH_MM) {
+      unchangedCount += 1;
+      return product;
+    }
+
+    updatedCount += 1;
+    return {
+      ...product,
+      door_swing_mm: width,
+      inferred_door_swing: true
+    };
+  });
+
+  return {
+    updatedCount,
+    skippedCount,
+    unchangedCount,
+    document: {
+      ...document,
+      products: nextProducts
+    }
+  };
+}
+
 async function inferDoorSwing({
   dataDir = path.join(path.resolve(__dirname, '..'), 'public', 'data'),
   write = true,
@@ -119,7 +170,14 @@ async function inferDoorSwing({
 } = {}) {
   const appliancesPath = path.join(dataDir, 'appliances.json');
   const baseDocument = document ?? JSON.parse(await readFile(appliancesPath, 'utf8'));
-  const result = inferFromDocument(baseDocument);
+  const firstPass = inferFromDocument(baseDocument);
+  const secondPass = inferUprightSwingFromWidth(firstPass.document);
+  const result = {
+    updatedCount: firstPass.updatedCount + secondPass.updatedCount,
+    skippedCount: firstPass.skippedCount + secondPass.skippedCount,
+    unchangedCount: secondPass.unchangedCount,
+    document: secondPass.document
+  };
 
   if (write) {
     await writeJsonAtomically(appliancesPath, result.document);
@@ -146,7 +204,10 @@ module.exports = {
   FRIDGE_ZERO_SWING_TYPE_CODES,
   FRIDGE_WIDE_UPRIGHT_THRESHOLD_MM,
   FRIDGE_BOTTOM_MOUNT_CODE,
+  FRIDGE_UPRIGHT_SWING_CONFIGS,
+  FRIDGE_MIN_SWING_WIDTH_MM,
   inferDoorSwing,
   inferFromDocument,
+  inferUprightSwingFromWidth,
   INFERENCE_RULES
 };

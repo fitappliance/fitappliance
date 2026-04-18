@@ -23,6 +23,11 @@ function modelTitle(model) {
   return tokens.slice(0, 3).join(' ');
 }
 
+function isSearchLikeHref(href) {
+  if (typeof href !== 'string') return false;
+  return /\/search(?:\/|[?#]|$)/i.test(href) || /[?&](q|query|text|search|keyword)=/i.test(href);
+}
+
 export function shouldShowRetailerModal(product) {
   return Array.isArray(product?.retailers) && product.retailers.length >= 2;
 }
@@ -39,6 +44,8 @@ export function buildRetailerModalHtml(product, { resolveRetailerUrl = (retailer
   const itemsHtml = sorted.map((retailer, index) => {
     const isLowest = index === 0;
     const diff = retailer.p - cheapest.p;
+    const targetUrl = resolveRetailerUrl(retailer, product) ?? '#';
+    const actionLabel = isSearchLikeHref(targetUrl) ? 'Search' : 'Buy';
     const delta = isLowest
       ? '<span class="retailer-badge">Lowest</span>'
       : `<span class="retailer-diff">+$${diff.toLocaleString()}</span>`;
@@ -46,7 +53,14 @@ export function buildRetailerModalHtml(product, { resolveRetailerUrl = (retailer
       <span class="retailer-name">${escHtml(retailer.n)}</span>
       <span class="retailer-price">$${retailer.p.toLocaleString()}</span>
       ${delta}
-      <a class="btn-buy retailer-buy" href="${escHtml(resolveRetailerUrl(retailer, product) ?? '#')}" target="_blank" rel="noopener sponsored">Buy</a>
+      <a class="btn-buy retailer-buy" href="${escHtml(targetUrl)}" target="_blank" rel="noopener sponsored"
+        data-buy-click="1"
+        data-product-id="${escHtml(product?.id ?? '')}"
+        data-brand="${escHtml(product?.brand ?? '')}"
+        data-model="${escHtml(product?.model ?? '')}"
+        data-retailer="${escHtml(retailer.n)}"
+        data-price="${Number.isFinite(retailer.p) ? retailer.p : 0}"
+      >${actionLabel}</a>
     </li>`;
   }).join('');
 
@@ -79,7 +93,16 @@ export function buildRetailerTriggerButton(
 
   if (retailers.length === 1) {
     const retailer = retailers[0];
-    return `<a class="btn-buy" href="${escHtml(resolveRetailerUrl(retailer, product) ?? '#')}" target="_blank" rel="noopener sponsored">Buy at ${escHtml(retailer.n)}</a>`;
+    const targetUrl = resolveRetailerUrl(retailer, product) ?? '#';
+    const actionLabel = isSearchLikeHref(targetUrl) ? 'Search' : 'Buy';
+    return `<a class="btn-buy" href="${escHtml(targetUrl)}" target="_blank" rel="noopener sponsored"
+      data-buy-click="1"
+      data-product-id="${escHtml(product?.id ?? '')}"
+      data-brand="${escHtml(product?.brand ?? '')}"
+      data-model="${escHtml(product?.model ?? '')}"
+      data-retailer="${escHtml(retailer.n)}"
+      data-price="${Number.isFinite(retailer.p) ? retailer.p : 0}"
+    >${actionLabel} at ${escHtml(retailer.n)}</a>`;
   }
 
   return `<button class="btn-buy" type="button" onclick="openRetailerModal('${escHtml(product.id)}')">Compare ${retailers.length} Retailers</button>`;

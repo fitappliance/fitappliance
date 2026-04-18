@@ -2009,6 +2009,36 @@ function toggleAdv() {
   t.classList.toggle('open', open);
 }
 
+function trackSearchSubmitEvent(payload) {
+  if (typeof gtag !== 'function') return;
+  gtag('event', 'search_submit', payload);
+}
+
+function trackBuyClick(payload) {
+  if (typeof gtag !== 'function') return;
+  gtag('event', 'buy_click', {
+    product_id: payload?.product_id ?? '',
+    brand: payload?.brand ?? '',
+    model: payload?.model ?? '',
+    retailer: payload?.retailer ?? 'unknown',
+    price: Number.isFinite(payload?.price) ? payload.price : 0
+  });
+}
+
+function initBuyClickTracking() {
+  document.addEventListener('click', (event) => {
+    const link = event.target?.closest?.('a[data-buy-click="1"]');
+    if (!link) return;
+    trackBuyClick({
+      product_id: link.dataset.productId ?? '',
+      brand: link.dataset.brand ?? '',
+      model: link.dataset.model ?? '',
+      retailer: link.dataset.retailer ?? 'unknown',
+      price: Number.parseInt(link.dataset.price ?? '0', 10) || 0
+    });
+  });
+}
+
 /* ══════════════════════════════════════════════════════════
    SEARCH
 ══════════════════════════════════════════════════════════ */
@@ -2020,6 +2050,14 @@ function doSearch() {
   const budget = parseInt(document.getElementById('inBudget').value) || Infinity;
   const doorW = parseInt(document.getElementById('inDoor').value) || DEFAULT_DOORWAY_MM;
   const dwelling = document.getElementById('inDwelling').value || DEFAULT_DWELLING;
+
+  trackSearchSubmitEvent({
+    category: currentCat || '(none)',
+    width: Number.isFinite(w) ? w : 0,
+    height: Number.isFinite(h) ? h : 0,
+    depth: Number.isFinite(d) ? d : 0,
+    brand: brand || '(any)'
+  });
 
   if (!w || !h || !d) { showToast('⚠️ Please enter width, height, and depth'); return; }
   if (w<200||h<200||d<100) { showToast('⚠️ Dimensions look too small — enter in millimetres'); return; }
@@ -2193,20 +2231,90 @@ function extractModelSku(modelString) {
   return modelString.trim().split(/\s+/)[0];
 }
 
+function normalizeModelForSearch(modelString, brand) {
+  const model = String(modelString ?? '').trim();
+  if (!model) return '';
+  if (!brand) return model;
+  const escapedBrand = String(brand).trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return model.replace(new RegExp(`^${escapedBrand}\\s+`, 'i'), '').trim() || model;
+}
+
+function buildRetailSearchQuery(product) {
+  const brand = String(product?.brand ?? '').trim();
+  const model = normalizeModelForSearch(product?.model, brand);
+  const sku = extractModelSku(model);
+  if (brand && model) {
+    return `${brand} "${model}"`;
+  }
+  if (sku) {
+    return `${brand} "${sku}"`.trim();
+  }
+  return `${brand} ${String(product?.model ?? '').trim()}`.trim();
+}
+
+function isSearchLikeUrl(parsedUrl) {
+  if (!parsedUrl || typeof parsedUrl !== 'object') return false;
+  if (/\/search(?:\/|$)/i.test(parsedUrl.pathname)) return true;
+  return ['q', 'query', 'text', 'search', 'keyword'].some((key) => parsedUrl.searchParams.has(key));
+}
+
+function normalizeSearchRetailUrl(rawUrl, product) {
+  if (!rawUrl) return '#';
+  try {
+    const parsed = new URL(rawUrl);
+    if (!isSearchLikeUrl(parsed)) {
+      return rawUrl;
+    }
+
+    const host = parsed.hostname.replace(/^www\./, '');
+    const query = buildRetailSearchQuery(product);
+    if (!query) {
+      return rawUrl;
+    }
+
+    if (host === 'harveynorman.com.au') {
+      return `https://www.harveynorman.com.au/catalogsearch/result/?q=${encodeURIComponent(query)}`;
+    }
+    if (host === 'thegoodguys.com.au') {
+      return `https://www.thegoodguys.com.au/search?text=${encodeURIComponent(query)}`;
+    }
+    if (host === 'jbhifi.com.au') {
+      return `https://www.jbhifi.com.au/search?query=${encodeURIComponent(query)}`;
+    }
+    if (host === 'binglee.com.au') {
+      return `https://www.binglee.com.au/search?query=${encodeURIComponent(query)}`;
+    }
+    if (host === 'appliances-online.com.au' || host === 'appliancesonline.com.au') {
+      return `https://www.appliancesonline.com.au/search/?q=${encodeURIComponent(query)}`;
+    }
+
+    const paramKey = ['query', 'q', 'text', 'search', 'keyword'].find((key) => parsed.searchParams.has(key));
+    if (paramKey) {
+      parsed.searchParams.set(paramKey, query);
+      return parsed.toString();
+    }
+    parsed.searchParams.set('q', query);
+    return parsed.toString();
+  } catch {
+    return rawUrl;
+  }
+}
+
 function resolveRetailerUrl(retailer, product) {
   // Level 1: explicit direct URL seed (manually calibrated)
-  if (product?.direct_url) return product.direct_url;
+  if (product?.direct_url) {
+    return normalizeSearchRetailUrl(product.direct_url, product);
+  }
 
   const rawUrl = retailer?.url;
   if (!rawUrl) return '#';
   try {
     const parsed = new URL(rawUrl);
     if (parsed.pathname !== '/' || parsed.search) {
-      return rawUrl;
+      return normalizeSearchRetailUrl(rawUrl, product);
     }
 
-    const sku = extractModelSku(product.model);
-    const query = encodeURIComponent(sku || `${product.brand} ${product.model}`);
+    const query = encodeURIComponent(buildRetailSearchQuery(product));
     const host = parsed.hostname.replace(/^www\./, '');
 
     if (host === 'harveynorman.com.au') {
@@ -2236,7 +2344,13 @@ function retailersHtml(p) {
   const retailers = Array.isArray(p.retailers) ? p.retailers : [];
   if (retailers.length === 0) return '';
   return retailers.map(r =>
-    `<a class="ret-item" href="${resolveRetailerUrl(r, p)}" target="_blank" rel="noopener sponsored">
+    `<a class="ret-item" href="${resolveRetailerUrl(r, p)}" target="_blank" rel="noopener sponsored"
+       data-buy-click="1"
+       data-product-id="${escHtml(p.id)}"
+       data-brand="${escHtml(p.brand)}"
+       data-model="${escHtml(p.model)}"
+       data-retailer="${escHtml(r.n)}"
+       data-price="${Number.isFinite(r.p) ? r.p : 0}">
        <span class="ret-name">${r.n}</span>
        <span class="ret-price">$${r.p.toLocaleString()}</span>
      </a>`
@@ -2282,7 +2396,14 @@ function renderCompareTable(products) {
     const bestRetailer = product.retailers[0];
     if (!bestRetailer) return '-';
     const target = resolveRetailerUrl(bestRetailer, product);
-    return `<a class="btn-buy" href="${target}" target="_blank" rel="noopener sponsored">Buy from ${escHtml(bestRetailer.n)}</a>`;
+    return `<a class="btn-buy" href="${target}" target="_blank" rel="noopener sponsored"
+      data-buy-click="1"
+      data-product-id="${escHtml(product.id)}"
+      data-brand="${escHtml(product.brand)}"
+      data-model="${escHtml(product.model)}"
+      data-retailer="${escHtml(bestRetailer.n)}"
+      data-price="${Number.isFinite(bestRetailer.p) ? bestRetailer.p : 0}"
+    >Buy from ${escHtml(bestRetailer.n)}</a>`;
   };
 
   const rows = [
@@ -2633,6 +2754,7 @@ renderSearchHistoryChips();
 await readUrlParams();
 renderSavedPanel();
 initFloatBar();
+initBuyClickTracking();
 updateFloatBarSummary();
 }
 </script>

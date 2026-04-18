@@ -2,6 +2,7 @@
 
 const path = require('node:path');
 const { readFile } = require('node:fs/promises');
+const { classifyLink, extractAnchors } = require('./audit-link-quality.js');
 
 async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, 'utf8'));
@@ -16,12 +17,12 @@ async function auditCompareLinks(options = {}) {
   for (const row of rows) {
     const filePath = path.join(repoRoot, 'pages', 'compare', `${row.slug}.html`);
     const html = await readFile(filePath, 'utf8');
-    const matches = [...html.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
-    const externalLinks = matches.filter((href) => /^https?:\/\//i.test(href));
-    const buyLinks = externalLinks.filter((href) => /jbhifi|thegoodguys|harveynorman|appliances-?online|binglee|westinghouse|lg\.com|hisense|fisherpaykel|smeg|miele/i.test(href));
+    const anchors = extractAnchors(html);
+    const externalAnchors = anchors.filter((anchor) => /^https?:\/\//i.test(anchor.href));
+    const buyLinks = externalAnchors.filter((anchor) => classifyLink(anchor.href, anchor.text) !== 'non_buy_external');
     results.push({
       slug: row.slug,
-      externalLinks: externalLinks.length,
+      externalLinks: externalAnchors.length,
       buyLinks: buyLinks.length,
       hasBuyLink: buyLinks.length > 0
     });
