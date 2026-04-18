@@ -391,3 +391,37 @@ Without step 3, the workflow will authenticate but still fail API reads due to m
   - `node --test tests/fit-checker.test.mjs`
   - `npm test`
   - `npm run build`
+
+### Phase 26 — Real User Monitoring (RUM)
+
+- Added client collector:
+  - [`public/scripts/rum.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/public/scripts/rum.js)
+  - 10% sampling (`SAMPLE_RATE = 0.1`)
+  - captures only `LCP`, `INP`, `CLS`, `TTFB`
+  - uses same-origin `navigator.sendBeacon('/api/rum')` (fallback `fetch` with `keepalive`).
+- Added serverless ingestion endpoint:
+  - [`api/rum.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/api/rum.js)
+  - accepts `POST` only
+  - validates payload schema
+  - strips query/hash from `path`
+  - same-origin guard (`Origin`/`Referer`)
+  - rate limit: `60 requests / minute / client fingerprint`
+  - stores sanitized events through runtime logging (Vercel logs / log drains), without persisting IP.
+- Privacy hardening:
+  - removed Google Analytics script from homepage head.
+  - updated [`pages/privacy-policy.html`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/pages/privacy-policy.html) with dedicated RUM section and explicit non-collection list:
+    - no IP address storage
+    - no cookies or localStorage reads
+    - no user-entered form values
+    - no referer query capture.
+- Added test coverage:
+  - [`tests/rum.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/rum.test.mjs)
+  - verifies:
+    - client script privacy constraints + sampling + sendBeacon endpoint
+    - API rejects non-POST
+    - payload sanitizer behavior
+    - rate-limit returns `429` when exceeded.
+- Validation commands:
+  - `node --test tests/rum.test.mjs`
+  - `npm test`
+  - `npm run build`

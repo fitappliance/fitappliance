@@ -95,12 +95,22 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 10px;}
   <p>FitAppliance uses the following cookies:</p>
   <ul>
     <li><strong>Essential cookies:</strong> Session management and security. Cannot be disabled without breaking site functionality.</li>
-    <li><strong>Analytics cookies:</strong> Google Analytics 4 (anonymised). You can opt out via <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener" style="color:var(--copper)">Google Analytics Opt-out</a>.</li>
-    <li><strong>Affiliate cookies:</strong> Set by retailer affiliate networks (Commission Factory, Partnerize) when you click a retailer link. These are third-party cookies used to track commission attribution. See Section 4.</li>
+    <li><strong>Advertising cookies:</strong> Google AdSense may use cookies to serve relevant ads.</li>
+    <li><strong>Affiliate cookies:</strong> Set by retailer affiliate networks (Commission Factory, Partnerize) when you click a retailer link. These are third-party cookies used to track commission attribution. See Section 5.</li>
   </ul>
   <p>You can manage cookies via your browser settings. Blocking all cookies may impact site functionality.</p>
 
-  <h2 id="affiliate">4. Affiliate tracking</h2>
+  <h2 id="rum">4. Real user performance monitoring (RUM)</h2>
+  <p>FitAppliance runs lightweight Real User Monitoring to measure page performance in production.</p>
+  <ul>
+    <li><strong>Sample rate:</strong> 10% of page views (`Math.random() &lt; 0.1`)</li>
+    <li><strong>Metrics:</strong> LCP, INP, CLS, and TTFB</li>
+    <li><strong>Transport:</strong> `navigator.sendBeacon` to same-origin endpoint `/api/rum`</li>
+    <li><strong>Stored fields:</strong> metric name, metric value, path (without query), timestamp, and truncated user agent</li>
+    <li><strong>Not collected:</strong> IP addresses, cookies, user IDs, form inputs, or referer query parameters</li>
+  </ul>
+
+  <h2 id="affiliate">5. Affiliate tracking</h2>
   <p>When you click a retailer link on FitAppliance, the affiliate network (Commission Factory or Partnerize) sets a tracking cookie on your device. This cookie:</p>
   <ul>
     <li>Records that you arrived at the retailer via FitAppliance</li>
@@ -110,7 +120,7 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 10px;}
   </ul>
   <p>Affiliate tracking is governed by each network's privacy policy: <a href="https://www.commissionfactory.com/privacy" target="_blank" rel="noopener" style="color:var(--copper)">Commission Factory Privacy Policy</a> and <a href="https://partnerize.com/privacy-policy" target="_blank" rel="noopener" style="color:var(--copper)">Partnerize Privacy Policy</a>.</p>
 
-  <h2 id="email">5. Email communications — Spam Act 2003</h2>
+  <h2 id="email">6. Email communications — Spam Act 2003</h2>
   <p>FitAppliance complies strictly with the <strong>Australian Spam Act 2003</strong>. We will only send you commercial email if:</p>
   <ul>
     <li>You have given us <strong>express, opt-in consent</strong> (e.g. by checking a clearly labelled checkbox — never pre-checked)</li>
@@ -119,16 +129,15 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 10px;}
   </ul>
   <p>We do not send unsolicited commercial electronic messages. We do not share your email address with third parties for marketing purposes.</p>
 
-  <h2 id="third-party">6. Third-party services</h2>
+  <h2 id="third-party">7. Third-party services</h2>
   <ul>
-    <li><strong>Google Analytics 4</strong> — Website analytics (anonymised). <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--copper)">Google Privacy Policy</a></li>
     <li><strong>Google AdSense</strong> — Advertising. Google may use cookies to serve relevant ads. <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener" style="color:var(--copper)">Google Ad Policy</a></li>
-    <li><strong>Vercel</strong> — Hosting provider. Edge network logs. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener" style="color:var(--copper)">Vercel Privacy Policy</a></li>
-    <li><strong>Commission Factory / Partnerize</strong> — Affiliate tracking. See Section 4.</li>
+    <li><strong>Vercel</strong> — Hosting provider and function runtime. RUM events are processed via same-origin serverless function and standard platform logs. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener" style="color:var(--copper)">Vercel Privacy Policy</a></li>
+    <li><strong>Commission Factory / Partnerize</strong> — Affiliate tracking. See Section 5.</li>
   </ul>
   <p>FitAppliance does not control third-party services' privacy practices. We recommend reviewing their privacy policies.</p>
 
-  <h2 id="your-rights">7. Your rights under Australian Privacy Law</h2>
+  <h2 id="your-rights">8. Your rights under Australian Privacy Law</h2>
   <p>Under the <strong>Australian Privacy Act 1988</strong> and the Australian Privacy Principles (APPs), you have the right to:</p>
   <ul>
     <li><strong>Access</strong> personal information we hold about you</li>
@@ -138,7 +147,7 @@ footer a{color:rgba(255,255,255,.4);text-decoration:none;margin:0 10px;}
   </ul>
   <p>To exercise your rights, contact us at <a href="mailto:privacy@fitappliance.com.au" style="color:var(--copper)">privacy@fitappliance.com.au</a>. For OAIC complaints: <a href="https://www.oaic.gov.au" target="_blank" rel="noopener" style="color:var(--copper)">oaic.gov.au</a>.</p>
 
-  <h2 id="contact">8. Contact us</h2>
+  <h2 id="contact">9. Contact us</h2>
   <p>Privacy enquiries: <a href="mailto:privacy@fitappliance.com.au" style="color:var(--copper)">privacy@fitappliance.com.au</a><br>
   General enquiries: <a href="mailto:hello@fitappliance.com.au" style="color:var(--copper)">hello@fitappliance.com.au</a></p>
   <p>We aim to respond to all privacy-related enquiries within 5 business days.</p>
