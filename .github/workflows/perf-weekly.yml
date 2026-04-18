@@ -1,0 +1,40 @@
+name: Performance Weekly Diagnosis
+
+on:
+  schedule:
+    - cron: '0 4 * * 4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  perf-diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Prepare RUM folder
+        run: mkdir -p reports/rum
+
+      - name: Aggregate 7-day RUM summary
+        run: npm run aggregate-rum
+
+      - name: Diagnose performance issues
+        run: npm run perf-diagnose
+
+      - name: Open diagnosis PR (report only)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: npm run open-perf-pr

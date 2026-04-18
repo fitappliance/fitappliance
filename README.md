@@ -634,6 +634,37 @@ Without step 3, the workflow will authenticate but still fail API reads due to m
   - [`tests/pwa.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/pwa.test.mjs)
   - validates manifest shape, SW versioning, `/api/*` non-caching, and deferred SW registration.
 
+### Phase 35 — RUM Weekly Diagnostics (Report-Only PR)
+
+- Selected RUM persistence option: **A** (Vercel Log Drain export to `reports/rum/*.ndjson`).
+- Added RUM aggregation pipeline:
+  - [`scripts/aggregate-rum.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/aggregate-rum.js)
+  - reads `reports/rum/*.ndjson`, groups by path, computes p50/p75/p95 for `LCP` / `INP` / `CLS`
+  - percentile algorithm is explicit **nearest-rank**
+  - writes:
+    - `reports/rum-summary-YYYYMMDD.json`
+    - `reports/rum-summary-latest.json`
+  - marks run as `insufficient_samples` when total events `< 100`.
+- Added performance diagnosis:
+  - [`scripts/perf-diagnose.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/perf-diagnose.js)
+  - outputs normalized issues in shape:
+    - `{path, metric, p75, suggestion, evidence}`
+  - writes:
+    - `reports/perf-issues-YYYYMMDD.json`
+    - `reports/perf-issues-latest.json`
+- Added report-only PR opener:
+  - [`scripts/open-perf-pr.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/open-perf-pr.js)
+  - opens branch `auto/perf-YYYYMMDD`
+  - PR body contains diagnosis list only
+  - no business/source code changes are included in the generated PR scope.
+- Added workflow:
+  - [`.github/workflows/perf-weekly.yml`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/.github/workflows/perf-weekly.yml)
+  - schedule: Thursday UTC `04:00` + `workflow_dispatch`
+  - runs aggregate → diagnose → open report PR.
+- Added tests:
+  - [`tests/perf-pipeline.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/perf-pipeline.test.mjs)
+  - validates nearest-rank percentile math, LCP diagnose trigger, and sample `< 100` skip behavior.
+
 ### Phase 36 — Self-Hosted Error Monitor
 
 - Added lightweight client beacon:
