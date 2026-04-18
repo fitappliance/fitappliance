@@ -561,6 +561,13 @@ ${buildSocialMetaTags({ title, description, canonical })}
     </section>
 
     <a class="cta" href="${ctaUrl}">Compare ${escHtml(compareLabel)} inside your exact cavity →</a>
+    <section style="margin:32px 0;padding:16px 24px;background:#f5f2ec;border-radius:8px;border:1px solid #e0d9ce">
+      <p style="font-size:13px;color:#7a766e;margin:0 0 10px">Full clearance specifications:</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        <a href="/brands/${escHtml(slugify(brandA))}-${escHtml(categoryMeta.slug)}-clearance" style="font-size:13px;color:#b55a2c;text-decoration:none">${escHtml(displayBrandA)} ${escHtml(categoryMeta.labelSingular)} clearance specs →</a>
+        <a href="/brands/${escHtml(slugify(brandB))}-${escHtml(categoryMeta.slug)}-clearance" style="font-size:13px;color:#b55a2c;text-decoration:none">${escHtml(displayBrandB)} ${escHtml(categoryMeta.labelSingular)} clearance specs →</a>
+      </div>
+    </section>
   </main>
   <script>
     if (typeof gtag === 'function') {

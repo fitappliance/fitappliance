@@ -163,6 +163,40 @@ function buildBreadcrumbJsonLd({ slug, brand, categoryLabel }) {
   };
 }
 
+function buildFAQJsonLd({ brand, catLabel, side, rear, top }) {
+  const unit = catLabel.toLowerCase();
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: `How much clearance does a ${brand} ${unit} need in Australia?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `${brand} ${unit}s require ${side}mm side clearance, ${rear}mm rear clearance, and ${top}mm top clearance per manufacturer installation guidelines. Insufficient clearance can void your warranty and cause premature motor failure.`
+        }
+      },
+      {
+        '@type': 'Question',
+        name: `Does a ${brand} ${unit} need more clearance than other brands?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `${brand} requires ${top}mm top clearance for ${unit}s. ${top > 50 ? `This is above average — ensure cabinetry above leaves at least ${top}mm gap.` : 'This aligns with typical Australian installation requirements.'} Always confirm with the specific model installation manual before fitting.`
+        }
+      },
+      {
+        '@type': 'Question',
+        name: `What happens if I don't leave enough clearance for my ${brand} ${unit}?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `Inadequate ventilation clearance causes the ${unit}'s compressor or motor to overheat, reducing its lifespan and typically voiding the manufacturer warranty. ${brand} service technicians inspect clearances during any warranty claim.`
+        }
+      }
+    ]
+  };
+}
+
 function buildSocialMetaTags({ title, description, canonical, brandImageUrl = null }) {
   const imageMeta = brandImageUrl
     ? `  <meta property="og:image" content="${escHtml(brandImageUrl)}">`
@@ -196,7 +230,8 @@ function buildBrandPageHtml({
   defaultRear,
   defaultTop,
   modelSamples = [],
-  pendingSwingCount = 0
+  pendingSwingCount = 0,
+  relatedCompares = []
 }) {
   const categoryMeta = CATEGORY_META[category] ?? {
     slug: category.replace(/_/g, '-'),
@@ -217,6 +252,11 @@ function buildBrandPageHtml({
       brand,
       categoryLabel: categoryMeta.labelPlural
     }),
+    null,
+    2
+  );
+  const faqJsonLd = JSON.stringify(
+    buildFAQJsonLd({ brand, catLabel: categoryMeta.labelSingular, side, rear, top }),
     null,
     2
   );
@@ -425,6 +465,15 @@ function buildBrandPageHtml({
       </div>
     </section>` : ''}
     <a class="cta" href="${ctaUrl}">Find ${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} Models That Fit Your Space</a>
+    ${relatedCompares.length > 0 ? `<section style="margin:32px 0;padding:20px 24px;background:#f5f2ec;border-radius:8px;border:1px solid var(--border)">
+      <h2 style="font-size:15px;font-weight:600;margin:0 0 12px;color:var(--ink)">Compare ${escHtml(brand)} with other brands</h2>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px">
+        ${relatedCompares.map((row) => {
+          const other = row.brandA === brand || row.brandA === brandRaw ? row.brandB : row.brandA;
+          return `<li><a href="/compare/${escHtml(row.slug)}" style="display:inline-block;padding:6px 14px;border:1px solid var(--border);border-radius:20px;font-size:13px;color:var(--copper);text-decoration:none;background:#fff">${escHtml(brand)} vs ${escHtml(other)} →</a></li>`;
+        }).join('\n        ')}
+      </ul>
+    </section>` : ''}
     <footer>
       <p>Source: FitAppliance clearance and model coverage dataset for Australia.</p>
     </footer>
@@ -434,6 +483,9 @@ ${siteJsonLd}
   </script>
   <script type="application/ld+json">
 ${breadcrumbJsonLd}
+  </script>
+  <script type="application/ld+json">
+${faqJsonLd}
   </script>
 </body>
 </html>
@@ -460,6 +512,14 @@ async function generateBrandPages(options = {}) {
   const clearance = await readJson(path.join(dataDir, 'clearance.json'));
   const products = Array.isArray(appliances.products) ? appliances.products : [];
   const rules = clearance.rules ?? {};
+
+  const compareIndexPath = path.join(repoRoot, 'pages', 'compare', 'index.json');
+  let compareIndex = [];
+  try {
+    compareIndex = await readJson(compareIndexPath);
+  } catch {
+    // compare index may not exist yet — proceed without cross-links
+  }
 
   await cleanOutputDir(outputDir);
 
@@ -535,6 +595,9 @@ async function generateBrandPages(options = {}) {
   const indexRows = Array.from(pageBySlug.values());
   for (const row of indexRows) {
     const displayBrand = displayBrandName(row.brand);
+    const relatedCompares = compareIndex
+      .filter((cRow) => cRow.cat === row.cat && (cRow.brandA === row.brand || cRow.brandB === row.brand))
+      .slice(0, 4);
     const html = buildBrandPageHtml({
       brand: displayBrand,
       brandRaw: row.brand,
@@ -548,7 +611,8 @@ async function generateBrandPages(options = {}) {
       defaultRear: row.defaultRear,
       defaultTop: row.defaultTop,
       pendingSwingCount: row.pendingSwingCount,
-      modelSamples: row.modelSamples
+      modelSamples: row.modelSamples,
+      relatedCompares
     });
     await writeFile(row.filePath, html, 'utf8');
   }
