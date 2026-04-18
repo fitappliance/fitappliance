@@ -197,6 +197,28 @@ function buildFAQJsonLd({ brand, catLabel, side, rear, top }) {
   };
 }
 
+function buildItemListJsonLd({ brand, categoryMeta, products }) {
+  const rows = Array.isArray(products) ? products : [];
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `${brand} ${categoryMeta.labelPlural} models in Australia`,
+    numberOfItems: rows.length,
+    itemListElement: rows.map((product, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Product',
+        name: `${brand} ${product.model}`,
+        brand: { '@type': 'Brand', name: brand },
+        width: { '@type': 'QuantitativeValue', value: product.w, unitCode: 'MMT' },
+        height: { '@type': 'QuantitativeValue', value: product.h, unitCode: 'MMT' },
+        depth: { '@type': 'QuantitativeValue', value: product.d, unitCode: 'MMT' }
+      }
+    }))
+  };
+}
+
 function buildSocialMetaTags({ title, description, canonical, brandImageUrl = null }) {
   const imageMeta = brandImageUrl
     ? `  <meta property="og:image" content="${escHtml(brandImageUrl)}">`
@@ -230,6 +252,7 @@ function buildBrandPageHtml({
   defaultRear,
   defaultTop,
   modelSamples = [],
+  itemListProducts = [],
   pendingSwingCount = 0,
   relatedCompares = []
 }) {
@@ -257,6 +280,15 @@ function buildBrandPageHtml({
   );
   const faqJsonLd = JSON.stringify(
     buildFAQJsonLd({ brand, catLabel: categoryMeta.labelSingular, side, rear, top }),
+    null,
+    2
+  );
+  const itemListJsonLd = JSON.stringify(
+    buildItemListJsonLd({
+      brand,
+      categoryMeta,
+      products: itemListProducts
+    }),
     null,
     2
   );
@@ -487,6 +519,9 @@ ${breadcrumbJsonLd}
   <script type="application/ld+json">
 ${faqJsonLd}
   </script>
+  <script type="application/ld+json">
+${itemListJsonLd}
+  </script>
 </body>
 </html>
 `;
@@ -564,6 +599,15 @@ async function generateBrandPages(options = {}) {
           h: product.h,
           d: product.d
         }));
+      const itemListProducts = [...matchedProducts]
+        .sort((left, right) => String(left.model ?? '').localeCompare(String(right.model ?? '')))
+        .slice(0, 20)
+        .map((product) => ({
+          model: product.model,
+          w: product.w,
+          h: product.h,
+          d: product.d
+        }));
       const pendingSwingCount = matchedProducts.filter(
         (product) => product.door_swing_mm === null || product.door_swing_mm === undefined
       ).length;
@@ -582,6 +626,7 @@ async function generateBrandPages(options = {}) {
         defaultTop,
         pendingSwingCount,
         modelSamples,
+        itemListProducts,
         filePath
       };
 
@@ -612,6 +657,7 @@ async function generateBrandPages(options = {}) {
       defaultTop: row.defaultTop,
       pendingSwingCount: row.pendingSwingCount,
       modelSamples: row.modelSamples,
+      itemListProducts: row.itemListProducts,
       relatedCompares
     });
     await writeFile(row.filePath, html, 'utf8');
@@ -650,6 +696,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  buildItemListJsonLd,
   buildClearanceNarrative,
   buildInstallTips,
   generateBrandPages,

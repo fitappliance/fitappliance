@@ -61,6 +61,34 @@ function buildItemListJsonLd(width, products) {
   };
 }
 
+function buildBreadcrumbJsonLd(width) {
+  const slug = `${width}mm-fridge`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://fitappliance.com.au/'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Cavity Guides',
+        item: 'https://fitappliance.com.au/cavity'
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: `${width}mm Fridge Cavity`,
+        item: `https://fitappliance.com.au/cavity/${slug}`
+      }
+    ]
+  };
+}
+
 function buildPageHtml({
   width,
   resultCount,
@@ -73,6 +101,7 @@ function buildPageHtml({
   const description = `${resultCount} fridges fit a ${width}mm kitchen cavity. Includes Samsung, LG, Fisher & Paykel. Free cavity checker.`;
   const canonical = `https://fitappliance.com.au/cavity/${width}mm-fridge`;
   const itemListJsonLd = JSON.stringify(buildItemListJsonLd(width, featured), null, 2);
+  const breadcrumbJsonLd = JSON.stringify(buildBreadcrumbJsonLd(width), null, 2);
 
   return `<!doctype html>
 <html lang="en-AU">
@@ -131,6 +160,9 @@ function buildPageHtml({
   </main>
   <script type="application/ld+json">
 ${itemListJsonLd}
+  </script>
+  <script type="application/ld+json">
+${breadcrumbJsonLd}
   </script>
 </body>
 </html>

@@ -63,11 +63,40 @@ function buildFaqJsonLd(doorway) {
   };
 }
 
+function buildBreadcrumbJsonLd(doorway) {
+  const slug = `${doorway}mm-fridge-doorway`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://fitappliance.com.au/'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Doorway Guides',
+        item: 'https://fitappliance.com.au/doorway'
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: `${doorway}mm Fridge Doorway`,
+        item: `https://fitappliance.com.au/doorway/${slug}`
+      }
+    ]
+  };
+}
+
 function buildPageHtml({ doorway, matched, adjacentDoorways }) {
   const title = `Fridges that fit through a ${doorway}mm doorway | FitAppliance Australia`;
   const description = `${matched.length} fridge models can pass through a ${doorway}mm doorway with basic handling margin.`;
   const canonical = `https://fitappliance.com.au/doorway/${doorway}mm-fridge-doorway`;
   const faqJsonLd = JSON.stringify(buildFaqJsonLd(doorway), null, 2);
+  const breadcrumbJsonLd = JSON.stringify(buildBreadcrumbJsonLd(doorway), null, 2);
 
   return `<!doctype html>
 <html lang="en-AU">
@@ -121,6 +150,9 @@ function buildPageHtml({ doorway, matched, adjacentDoorways }) {
   </main>
   <script type="application/ld+json">
 ${faqJsonLd}
+  </script>
+  <script type="application/ld+json">
+${breadcrumbJsonLd}
   </script>
 </body>
 </html>
