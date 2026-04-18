@@ -1,0 +1,42 @@
+name: Weekly Growth Pipeline
+
+on:
+  schedule:
+    - cron: '0 1 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate SEO assets
+        run: npm run generate-all
+
+      - name: Refresh coverage audit timestamp
+        run: |
+          node -e "const fs=require('node:fs');const p='docs/coverage-audit.json';const d=JSON.parse(fs.readFileSync(p,'utf8'));d.generated=new Date().toISOString().slice(0,10);fs.writeFileSync(p, JSON.stringify(d,null,2)+'\n');"
+
+      - name: Ping IndexNow
+        run: npm run ping-indexnow
+
+      - name: Commit regenerated outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "chore(auto): weekly regen + IndexNow ping [skip ci]"
+
+      - name: Push if changed
+        run: git push origin main
