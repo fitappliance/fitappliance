@@ -20,6 +20,7 @@
     "generate-comparisons": "node scripts/generate-comparisons.js",
     "generate-pages": "node scripts/generate-brand-pages.js && node scripts/generate-comparisons.js && node scripts/generate-sitemap.js",
     "promo-kit": "node scripts/generate-promotion-kit.js",
+    "ping-indexnow": "node scripts/ping-indexnow.js",
     "audit-compare-links": "node scripts/audit-compare-links.js",
     "audit-link-quality": "node scripts/audit-link-quality.js",
     "verify-compare-quality": "node scripts/verify-compare-quality.js",
