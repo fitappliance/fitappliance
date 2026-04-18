@@ -84,11 +84,57 @@ test('phase 23 gsc: fetchGscReport writes a dated report file with mocked google
   assert.equal(result.summary.rowCount, 1);
   assert.equal(result.rows[0].query, 'samsung fridge clearance');
   assert.equal(result.rows[0].position > 0, true);
+  assert.equal(result.siteUrl, 'sc-domain:fitappliance.com.au');
 
   const outputPath = path.join(reportsDir, 'gsc-2026-04-18.json');
   const written = JSON.parse(await readFile(outputPath, 'utf8'));
   assert.equal(written.summary.rowCount, 1);
   assert.equal(written.rows[0].ctr <= 1 && written.rows[0].ctr >= 0, true);
+});
+
+test('phase 23 gsc: fetchGscReport falls back from domain property to url-prefix when permission is missing', async () => {
+  const { fetchGscReport } = await import(gscModuleUrl);
+
+  const serviceAccountJson = JSON.stringify({
+    type: 'service_account',
+    project_id: 'fitappliance',
+    private_key_id: 'abc123',
+    private_key: '-----BEGIN PRIVATE KEY-----\\nTEST\\n-----END PRIVATE KEY-----\\n',
+    client_email: 'gsc-bot@fitappliance.iam.gserviceaccount.com',
+    client_id: '1234567890',
+    token_uri: 'https://oauth2.googleapis.com/token'
+  });
+
+  const calls = [];
+  const result = await fetchGscReport({
+    write: false,
+    today: '2026-04-18',
+    serviceAccountJson,
+    searchanalyticsQueryFn: async (request) => {
+      calls.push(request.siteUrl);
+      if (request.siteUrl === 'sc-domain:fitappliance.com.au') {
+        throw new Error("User does not have sufficient permission for site 'sc-domain:fitappliance.com.au'.");
+      }
+      return {
+        data: {
+          rows: [
+            {
+              keys: ['fit appliance', 'https://fitappliance.com.au/'],
+              clicks: 3,
+              impressions: 50,
+              ctr: 0.06,
+              position: 12.3
+            }
+          ]
+        }
+      };
+    },
+    logger: { log() {} }
+  });
+
+  assert.deepEqual(calls, ['sc-domain:fitappliance.com.au', 'https://fitappliance.com.au/']);
+  assert.equal(result.siteUrl, 'https://fitappliance.com.au/');
+  assert.equal(result.summary.rowCount, 1);
 });
 
 test('phase 23 gsc: buildKeywordGapReport identifies content gaps and page-2 opportunities', async () => {

@@ -6,6 +6,7 @@ const { writeJsonAtomically } = require('./utils/file-utils.js');
 
 const GSC_SCOPE = 'https://www.googleapis.com/auth/webmasters.readonly';
 const DEFAULT_SITE_URL = 'sc-domain:fitappliance.com.au';
+const FALLBACK_SITE_URLS = ['https://fitappliance.com.au/', 'https://www.fitappliance.com.au/'];
 
 function formatDate(date) {
   return date.toISOString().slice(0, 10);
@@ -88,6 +89,20 @@ function buildSearchAnalyticsQueryFn({ serviceAccount, googleapisModule } = {}) 
   };
 }
 
+function isPermissionError(error) {
+  const message = String(error?.message ?? error ?? '').toLowerCase();
+  return message.includes('sufficient permission');
+}
+
+function buildSiteUrlCandidates(siteUrl) {
+  const base = String(siteUrl || DEFAULT_SITE_URL).trim() || DEFAULT_SITE_URL;
+  const candidates = [base];
+  if (base === DEFAULT_SITE_URL) {
+    candidates.push(...FALLBACK_SITE_URLS);
+  }
+  return [...new Set(candidates)];
+}
+
 function summarizeRows(rows = []) {
   const totals = rows.reduce(
     (acc, row) => {
@@ -137,20 +152,42 @@ async function fetchGscReport({
       googleapisModule
     });
 
-  const response = await queryFn({
-    siteUrl,
-    startDate,
-    endDate,
-    rowLimit: 25000,
-    dimensions: ['query', 'page']
-  });
+  const candidateSiteUrls = buildSiteUrlCandidates(siteUrl);
+  let response = null;
+  let effectiveSiteUrl = candidateSiteUrls[0];
+  let lastError = null;
+
+  for (const candidateSiteUrl of candidateSiteUrls) {
+    try {
+      response = await queryFn({
+        siteUrl: candidateSiteUrl,
+        startDate,
+        endDate,
+        rowLimit: 25000,
+        dimensions: ['query', 'page']
+      });
+      effectiveSiteUrl = candidateSiteUrl;
+      lastError = null;
+      break;
+    } catch (error) {
+      lastError = error;
+      if (!isPermissionError(error) || candidateSiteUrl === candidateSiteUrls[candidateSiteUrls.length - 1]) {
+        throw error;
+      }
+    }
+  }
+
+  if (!response) {
+    throw lastError ?? new Error('Unable to fetch GSC Search Analytics data.');
+  }
 
   const rows = normalizeSearchAnalyticsRows(response?.data?.rows ?? []);
   validateSearchAnalyticsRows(rows);
 
   const document = {
     generatedAt: new Date().toISOString(),
-    siteUrl,
+    siteUrl: effectiveSiteUrl,
+    requestedSiteUrl: siteUrl,
     range: {
       days: windowDays,
       startDate,
@@ -192,10 +229,12 @@ if (require.main === module) {
 
 module.exports = {
   DEFAULT_SITE_URL,
+  FALLBACK_SITE_URLS,
   GSC_SCOPE,
   parseServiceAccountJson,
   normalizeSearchAnalyticsRows,
   validateSearchAnalyticsRows,
+  buildSiteUrlCandidates,
   buildSearchAnalyticsQueryFn,
   fetchGscReport
 };
