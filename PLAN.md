@@ -1,288 +1,587 @@
-# Phase 17 Plan — Dynamic Sticky Banner + Compare Page Direct URL Audit
+# FitAppliance v2 — Codex 多阶段执行计划
 
-**Status:** Phase 16 完成 (148/148 tests passed)  
-**Current Coverage:** 27.2% missing rate (2160/2169 products missing door_swing)  
-**Target:** 继续压低缺失率 + 落地 Dynamic Sticky Banner + 修复 compare 页面链接
-
----
-
-## 1. Dynamic Sticky Banner 落地方案
-
-### 目标
-在移动端滚动时，将搜索条件固定在顶部，方便用户快速修改参数而无需滚回页面顶部。
-
-### 实施步骤
-
-#### 1.1 HTML 结构（已存在）
-- `index.html` 中已有 `.float-bar` 结构（line ~1100）
-- 当前状态：`hidden` 属性，通过 `initFloatBar()` 控制显示
-
-#### 1.2 触发逻辑（已实现）
-```javascript
-// 已存在于 index.html 底部
-function initFloatBar() {
-  const searchForm = document.getElementById('searchForm');
-  const floatBar = document.getElementById('floatBar');
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      floatBar.classList.toggle('visible', !entry.isIntersecting);
-    },
-    { threshold: 0, rootMargin: '-60px 0px 0px 0px' }
-  );
-  observer.observe(searchForm);
-}
-```
-
-#### 1.3 内容同步（已实现）
-- `updateFloatBarSummary()` 函数已存在
-- 在 `doSearch()` 和 `setCategory()` 中调用
-- 显示格式：`Fridges · 600×1800×650mm · Samsung`
-
-#### 1.4 待优化项
-1. **桌面端隐藏**：CSS 已设置 `@media (min-width:661px) { .float-bar { display: none !important; } }`
-2. **Edit 按钮功能**：`scrollToSearch()` 已实现，滚动到搜索表单
-3. **测试覆盖**：
-   - 移动端滚动触发
-   - 参数变更后内容同步
-   - 点击 Edit 按钮跳转
-
-### 验证清单
-- [ ] 移动端（<660px）滚动时 banner 出现
-- [ ] 桌面端（>660px）banner 始终隐藏
-- [ ] 搜索后 banner 显示正确的 category + dimensions + brand
-- [ ] 点击 Edit 按钮平滑滚动到搜索表单
-- [ ] 切换 category 后 banner 内容更新
+**项目路径**: `/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2`  
+**当前基线**: 156/156 tests pass · 468 fridge `door_swing_mm = null` · 0 GA custom events  
+**执行规则**: 每个 Part 完成后必须人工审核，确认通过后再开始下一个 Part。
 
 ---
 
-## 2. Compare 页面 Direct URL 链接审计与修复方案
+## Part 1 — Fix door_swing_mm: 清零 null 记录
 
-### 问题诊断
-- **现状**：38 个 compare 页面已生成（`pages/compare/*.html`）
-- **问题**：0 个页面包含 `direct_url`（grep 结果为 0）
-- **根因**：`generate-comparisons.js` 未使用 `direct_url` 字段
+**目标**: 让 `door_swing_mm null` 从 468 降到 0  
+**审核标准**:
+- `npm test` 全部通过（测试数量 ≥ 164）
+- `jq '[.products[] | select(.door_swing_mm == null)] | length' public/data/appliances.json` 输出 `0`
+- 新增 `inferred_door_swing: true` 的产品数量合理（应在 460-470 之间）
 
-### 数据层面
-#### 2.1 Direct URL 覆盖率
-```bash
-# 检查 appliances.json 中 direct_url 字段覆盖率
-jq '[.products[] | select(.direct_url != null)] | length' public/data/appliances.json
+---
+
+### 背景说明
+
+`public/data/appliances.json` 里 468 个 fridge 产品的 `door_swing_mm` 是 `null`，根本原因分三类：
+
+**Bug A** — `scripts/infer-door-swing.js` 第一行是 `if (type === '1') return false`（`type = features[1]`），这行在配置检查之前执行。导致 `features[0]='Chest'` 但 `features[1]='1'` 的产品（Chest 冰柜）无法被推断为 0。受影响产品 5 个（Devanti, Makita, Solt 等 Chest 冰柜）。
+
+**Bug B** — Bottom Mount 推断规则要求 `config === 'Upright' && type === '5B'`，但实际有 2 个产品的 `features[0]` 直接是 `'Bottom Mount'`（如 `Electrolux EHE5267B`），因此匹配不到。受影响产品 2 个。
+
+**Root Cause C** — 460 个 `Upright` 和 `Top Mount` 冰箱有真实的摆门弧度，物理规律是：摆门半径 ≈ 门宽 ≈ 冰箱宽度（`product.w`）。需要新增推断函数处理。
+
+---
+
+### 1.1 TDD：先写测试（文件：`tests/task18-infer-fixes.test.mjs`）
+
+**创建新文件**，按 TDD 写以下测试（先让它们 FAIL，再去修复实现）：
+
+```
+测试组 A — Bug 修复验证:
+- Chest fridge with features=['Chest','1','Class 1'] → door_swing_mm = 0（Bug A 修复）
+- Bottom Mount fridge with features=['Bottom Mount','FlexStor'] → door_swing_mm = 0（Bug B 修复）
+- Upright type-1 fridge → 经过 Bug A 修复后仍然是 null（不被 inferFromDocument 覆盖）
+- 原有 Chest/SBS/French Door 推断路径不被破坏（回归测试）
+
+测试组 B — inferUprightSwingFromWidth:
+- Upright fridge w=595 → door_swing_mm = 595, inferred_door_swing = true
+- Top Mount fridge w=680 → door_swing_mm = 680, inferred_door_swing = true
+- 已有 door_swing_mm 的产品不被覆盖
+- 非 fridge 产品（washing_machine 等）不被处理
+- config 不是 Upright/Top Mount 的 fridge → 跳过（null 保留）
+- width < 300mm 的产品 → 跳过（设 FRIDGE_MIN_SWING_WIDTH_MM = 300 作为下限保护）
+- width 缺失/null 的产品 → 跳过
+- 综合测试：inferFromDocument + inferUprightSwingFromWidth 串联后，覆盖以下所有配置的 fridge 都得到非 null 值：
+  Chest, Side by Side, French Door, Bottom Mount, Upright, Top Mount
 ```
 
-#### 2.2 Retailer URL 质量
-当前 `resolveRetailerUrl()` 逻辑（index.html line ~1800）：
-1. 优先使用 `product.direct_url`
-2. 回退到 `retailer.url`
-3. 如果是根域名，拼接搜索 URL
+测试文件顶部导入方式：
+```js
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+const { inferFromDocument, inferUprightSwingFromWidth } = require(
+  '/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/infer-door-swing.js'
+);
+```
 
-### 修复方案
+---
 
-#### 2.3 更新 `generate-comparisons.js`
-**目标**：在 compare 页面中为每个品牌的样本产品添加 "Buy" 链接
+### 1.2 修复实现（文件：`scripts/infer-door-swing.js`）
 
-**修改位置**：`buildComparisonPageHtml()` 函数
+**修改 1** — 在 `FRIDGE_ZERO_SWING_CONFIGURATIONS` Set 里新增 `'Bottom Mount'`：
+```js
+const FRIDGE_ZERO_SWING_CONFIGURATIONS = new Set([
+  'Chest',
+  'Side by Side',
+  'French Door',
+  'Bottom Mount'   // 新增
+]);
+```
 
-**新增内容**：
-```javascript
-// 在 modelSamplesA/B 中添加 retailer 信息
-function sampleBrandModels(products, cat, brand) {
-  return products
-    .filter((product) => product.cat === cat && product.brand === brand)
-    .sort(/* existing sort logic */)
-    .slice(0, 3)
-    .map((product) => ({
-      model: product.model,
-      w: product.w,
-      h: product.h,
-      d: product.d,
-      directUrl: product.direct_url,
-      bestRetailer: product.retailers?.[0] // 最低价零售商
-    }));
+**修改 2** — 在 fridge condition 函数里，将 `if (type === '1') return false` 移到配置检查**之后**：
+```js
+// BEFORE（buggy）:
+if (type === '1') { return false; }
+if (FRIDGE_ZERO_SWING_CONFIGURATIONS.has(config)) { return true; }
+
+// AFTER（fixed）:
+if (FRIDGE_ZERO_SWING_CONFIGURATIONS.has(config)) { return true; }  // 先检查配置
+if (type === '1') { return false; }  // 再检查 type
+```
+
+**新增函数** — 在文件末尾（`module.exports` 之前）新增：
+```js
+const FRIDGE_UPRIGHT_SWING_CONFIGS = new Set(['Upright', 'Top Mount']);
+const FRIDGE_MIN_SWING_WIDTH_MM = 300;
+
+function inferUprightSwingFromWidth(document) {
+  const products = Array.isArray(document?.products) ? document.products : [];
+  let updatedCount = 0;
+  let skippedCount = 0;
+
+  const nextProducts = products.map((product) => {
+    if (product?.cat !== 'fridge') { skippedCount++; return product; }
+    if (product?.door_swing_mm !== null && product?.door_swing_mm !== undefined) {
+      skippedCount++; return product;
+    }
+    const config = product?.features?.[0];
+    if (typeof config !== 'string' || !FRIDGE_UPRIGHT_SWING_CONFIGS.has(config)) {
+      skippedCount++; return product;
+    }
+    const width = product?.w;
+    if (typeof width !== 'number' || width < FRIDGE_MIN_SWING_WIDTH_MM) {
+      skippedCount++; return product;
+    }
+    updatedCount++;
+    return { ...product, door_swing_mm: width, inferred_door_swing: true };
+  });
+
+  return {
+    document: { ...document, products: nextProducts },
+    updatedCount,
+    skippedCount
+  };
 }
 ```
 
-**HTML 模板更新**：
-```javascript
-const sampleItemsA = modelSamplesA.map((sample) => {
-  const buyLink = sample.directUrl || sample.bestRetailer?.url || '#';
-  const retailerName = sample.bestRetailer?.n || 'Retailer';
-  return `<li>
-    ${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm
-    ${buyLink !== '#' ? `<br><a href="${buyLink}" target="_blank" rel="noopener sponsored" style="font-size:12px;color:var(--copper)">Buy from ${escHtml(retailerName)} →</a>` : ''}
-  </li>`;
-}).join('');
+**更新 `module.exports`**，增加导出：
+```js
+module.exports = {
+  // ...existing exports...
+  inferUprightSwingFromWidth,
+};
 ```
 
-#### 2.4 执行步骤
+**更新 CLI runner**（`if (require.main === module)` 块），让两个推断函数串联执行：
+```js
+if (require.main === module) {
+  (async () => {
+    const raw = JSON.parse(await readFile(appliancesPath, 'utf8'));
+    const pass1 = inferFromDocument(raw);       // 原有逻辑
+    const pass2 = inferUprightSwingFromWidth(pass1.document); // 新增第二遍
+    await writeJsonAtomically(appliancesPath, pass2.document);
+    console.log(`[infer] Pass 1: ${pass1.updatedCount} updated, ${pass1.skippedCount} skipped`);
+    console.log(`[infer] Pass 2: ${pass2.updatedCount} updated, ${pass2.skippedCount} skipped`);
+    const remaining = pass2.document.products.filter(p => p.door_swing_mm == null).length;
+    console.log(`[infer] Remaining null: ${remaining}`);
+  })().catch(e => { console.error(e); process.exitCode = 1; });
+}
+```
+
+---
+
+### 1.3 执行顺序
+
 ```bash
 cd /Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2
 
-# 1. 备份现有 compare 页面
-cp -r pages/compare pages/compare.backup
+# 0. 确认基线
+npm test   # 确认 156 pass
 
-# 2. 修改 scripts/generate-comparisons.js（见上方代码）
+# 1. 创建测试文件（写 FAILING 测试）
+# ... 创建 tests/task18-infer-fixes.test.mjs ...
 
-# 3. 重新生成
+# 2. 确认测试 FAIL
+npm test 2>&1 | grep -E "^(not ok|# fail)"
+
+# 3. 修改 scripts/infer-door-swing.js（见上方）
+
+# 4. 确认测试 PASS
+npm test
+
+# 5. 应用到真实数据
+node scripts/infer-door-swing.js
+
+# 6. 验证结果
+jq '[.products[] | select(.door_swing_mm == null)] | length' public/data/appliances.json
+# 期望：0
+
+jq '[.products[] | select(.inferred_door_swing == true)] | length' public/data/appliances.json
+# 期望：460-475 之间
+```
+
+### 1.4 Commit
+
+```bash
+git add scripts/infer-door-swing.js \
+        tests/task18-infer-fixes.test.mjs \
+        public/data/appliances.json
+git commit -m "feat(phase18): zero door_swing_mm nulls — fix Chest/BM bugs, add upright width inference"
+git push origin main
+```
+
+---
+
+## Part 2 — GA 事件埋点（search_submit / buy_click / compare_view）
+
+**目标**: 在搜索、购买点击、compare 页三个核心节点埋 GA 事件，为 CF 重新申请积累流量证据  
+**审核标准**:
+- `grep -c "search_submit" index.html` 输出 `1`
+- `grep -c "buy_click" index.html` 输出 `1`
+- `grep -c "compare_view" scripts/generate-comparisons.js` 输出 `1`
+- `grep -c "compare_view" pages/compare/chiq-vs-lg-fridge-clearance.html` 输出 `1`
+- `npm test` 全部通过
+
+---
+
+### 2.1 search_submit — 修改 `index.html`
+
+在 `index.html` 里找到 `function doSearch(` 函数定义，在函数体**顶部** read params 之后（大约 line 2050-2100 附近），加入：
+
+```js
+// GA: track search submissions
+if (typeof gtag === 'function') {
+  gtag('event', 'search_submit', {
+    category: categoryParam || '(none)',
+    width:    parseInt(widthParam,  10) || 0,
+    height:   parseInt(heightParam, 10) || 0,
+    depth:    parseInt(depthParam,  10) || 0,
+    brand:    brandParam || '(any)'
+  });
+}
+```
+
+定位方式：搜索 `function doSearch`，找到读取 `categoryParam`、`widthParam` 等变量之后的位置插入。
+
+---
+
+### 2.2 buy_click — 修改 `index.html`
+
+搜索 `resolveRetailerUrl`，找到点击零售商链接的位置（通常是 `window.open(url, '_blank')` 或者动态生成 `<a href>` 的地方）。在打开链接**之前**加入：
+
+```js
+// GA: track buy/retailer clicks
+if (typeof gtag === 'function') {
+  gtag('event', 'buy_click', {
+    product_id: product?.id    || '',
+    brand:      product?.brand || '',
+    model:      product?.model || '',
+    retailer:   retailer?.n || retailer?.name || 'unknown',
+    price:      retailer?.price || product?.price || 0
+  });
+}
+```
+
+如果链接是静态 HTML `<a>` 生成的，改用 `onclick` 属性注入：
+```html
+onclick="if(typeof gtag==='function'){gtag('event','buy_click',{product_id:'${product.id}',brand:'${product.brand}',retailer:'${r.n}'});}"
+```
+
+---
+
+### 2.3 compare_view — 修改 `scripts/generate-comparisons.js`
+
+在 `buildComparisonPageHtml()` 函数里找到返回的 HTML 字符串中已有的 `<script>` 块（或 `</body>` 之前），加入 compare_view 事件：
+
+```js
+// 在 buildComparisonPageHtml 返回的 HTML 字符串里，找到已有的 <script> 区域，加入：
+`if (typeof gtag === 'function') {
+  gtag('event', 'compare_view', {
+    cat:     '${escHtml(catSlug)}',
+    brand_a: '${escHtml(brandA)}',
+    brand_b: '${escHtml(brandB)}'
+  });
+}`
+```
+
+注意：`catSlug`、`brandA`、`brandB` 是 `buildComparisonPageHtml` 的参数，通过解构或直接引用已有变量。
+
+修改后重新生成所有 compare 页面：
+```bash
+npm run generate-comparisons
+```
+
+---
+
+### 2.4 执行顺序
+
+```bash
+# 1. 修改 index.html（search_submit + buy_click）
+# 2. 修改 scripts/generate-comparisons.js（compare_view）
+# 3. 重新生成 compare 页面
 npm run generate-comparisons
 
 # 4. 验证
-grep -l "Buy from" pages/compare/*.html | wc -l  # 应该 > 0
+grep -n "search_submit" index.html
+grep -n "buy_click" index.html
+grep -c "compare_view" scripts/generate-comparisons.js
+grep -c "compare_view" pages/compare/chiq-vs-lg-fridge-clearance.html
+
+# 5. 运行测试
+npm test
 ```
 
-#### 2.5 质量检查
-```bash
-# 检查生成的链接类型分布
-for f in pages/compare/*.html; do
-  grep -o 'href="[^"]*"' "$f" | grep -E "(harveynorman|thegoodguys|jbhifi|binglee|appliancesonline)"
-done | sort | uniq -c
-```
-
----
-
-## 3. docs/reddit-launch.md 内容规划
-
-### 目标
-为 Reddit 发布准备一份完整的 launch checklist 和 post 模板。
-
-### 文件结构
-```markdown
-# Reddit Launch Plan — FitAppliance
-
-## Pre-Launch Checklist
-- [ ] 确认 148/148 tests passed
-- [ ] 验证 Dynamic Sticky Banner 在移动端正常工作
-- [ ] 确认 compare 页面包含可用的 Buy 链接
-- [ ] 准备 3-5 个真实用例截图（搜索结果、clearance 对比、rebate 计算）
-- [ ] 设置 Google Analytics 事件追踪（搜索、点击 Buy、compare 使用）
-- [ ] 准备 FAQ 回复模板（常见问题快速响应）
-
-## Target Subreddits
-1. **r/AusRenovation** (主力) — 装修人群，高度相关
-2. **r/AusFinance** — 家电购买决策，TCO 计算吸引力
-3. **r/australia** — 广泛受众，周末发布
-4. **r/Appliances** — 国际受众，强调 AU-specific clearances
-
-## Post Template (r/AusRenovation)
-
-### Title Options
-- "Built a tool to check if appliances actually fit your cavity (with per-brand clearances)"
-- "Sick of buying fridges that don't fit? Made a calculator for AU kitchens"
-- "FitAppliance — Does your Samsung fridge need 100mm top clearance? This tool knows."
-
-### Body
-```
-Hey r/AusRenovation,
-
-I got burned buying a fridge that "should have fit" but didn't account for Samsung's 100mm top clearance requirement. Turns out every brand has different ventilation specs, and no retailer tells you upfront.
-
-So I built **FitAppliance** — you enter your cavity dimensions, and it:
-- Subtracts per-brand clearances (Samsung vs LG vs Fisher&Paykel all different)
-- Checks if it fits through your doorway
-- Calculates VIC/NSW rebates
-- Shows 10-year energy cost
-
-**Live:** https://fitappliance.com.au
-
-Currently covers 2169 AU models (fridges, washers, dishwashers, dryers). Data from GEMS regulator + OEM manuals.
-
-**Example:** 600mm cavity → Samsung needs 100mm top clearance, so max fridge height is 1700mm. LG only needs 20mm, so you get 1780mm. That's a whole shelf of difference.
-
-Open to feedback — especially if you spot missing brands or wrong clearances.
-
----
-*Disclaimer: Affiliate links present (ACCC-compliant). I earn commission if you buy, but the tool is free and the math is transparent.*
-```
-
-## Post Schedule
-- **Day 1 (Saturday 10am AEST):** r/AusRenovation
-- **Day 3 (Monday 8pm AEST):** r/AusFinance
-- **Day 7 (Sunday 2pm AEST):** r/australia
-- **Day 10:** r/Appliances (international)
-
-## Engagement Strategy
-- **First 2 hours:** 快速回复所有评论
-- **Common objections:**
-  - "Why not just measure?" → 回复：Per-brand clearances 不透明，零售商不告诉你
-  - "Affiliate spam?" → 回复：工具免费，数据公开，链接标注清楚
-  - "Missing my brand" → 回复：记录 + 承诺 48h 内添加
-- **Proof points:**
-  - 148 tests passed
-  - GEMS data source
-  - ACCC compliance
-
-## Success Metrics
-- **Week 1:** 500+ unique searches
-- **Week 2:** 10+ organic backlinks (blogs, forums)
-- **Month 1:** 5000+ searches, 2% conversion to retailer clicks
-
-## Risk Mitigation
-- **Downvote brigade:** 准备 "I'm just a dev who got burned" 真实故事
-- **Mod removal:** 提前 modmail 询问是否允许 self-promotion
-- **Technical issues:** 监控 Sentry，确保 uptime > 99%
-
-## Follow-Up Content
-- **Week 2:** "Update: Added 50 more brands based on your feedback"
-- **Month 1:** "Case study: How FitAppliance saved me $800 on a fridge return"
-```
-
-### 执行步骤
-```bash
-# 创建文件
-cat > docs/reddit-launch.md << 'EOF'
-[上方完整内容]
-EOF
-
-# 添加到 git
-git add docs/reddit-launch.md
-git commit -m "docs: add Reddit launch plan for Phase 17"
-```
-
----
-
-## Phase 17 执行顺序
-
-### Week 1: Dynamic Sticky Banner
-1. 验证现有实现（已完成 90%）
-2. 移动端测试（iPhone Safari, Android Chrome）
-3. 修复任何 edge cases
-
-### Week 2: Compare Page Links
-1. 修改 `generate-comparisons.js`
-2. 重新生成 38 个页面
-3. 手动抽查 5 个页面的链接质量
-4. 提交 PR
-
-### Week 3: Reddit Launch Prep
-1. 创建 `docs/reddit-launch.md`
-2. 准备截图和 demo GIF
-3. 设置 GA 事件追踪
-4. 周六发布第一个 post
-
-### Success Criteria
-- [ ] Mobile sticky banner 在 3 种设备上测试通过
-- [ ] 38 个 compare 页面至少 30 个包含有效 Buy 链接
-- [ ] Reddit launch doc 完成并 review
-- [ ] Phase 17 测试基线保持 148/148
-
----
-
-## 附录：快速命令
+### 2.5 Commit
 
 ```bash
-# 测试 sticky banner（需要本地 server）
-open http://localhost:8000/?cat=fridge&w=600&h=1800&d=650
-
-# 重新生成 compare 页面
-npm run generate-comparisons
-
-# 检查 direct_url 覆盖率
-jq '[.products[] | select(.direct_url != null)] | length' public/data/appliances.json
-
-# 验证 compare 页面链接
-grep -h "Buy from" pages/compare/*.html | head -20
-
-# 提交 Phase 17 changes
-git add -A
-git commit -m "feat(phase17): dynamic sticky banner + compare page links + reddit launch plan"
+git add index.html \
+        scripts/generate-comparisons.js \
+        pages/compare/
+git commit -m "feat(phase18): GA events — search_submit, buy_click, compare_view"
 git push origin main
+```
+
+---
+
+## Part 3 — SEO：FAQPage Schema + 内部交叉链接
+
+**目标**: 让品牌页在 Google 搜索结果出现 FAQ 折叠框；品牌页和 compare 页互相链接，提升爬取深度  
+**审核标准**:
+- `python3 -c "import re,json,sys; html=open('pages/brands/samsung-fridge-clearance.html').read(); schemas=re.findall(r'<script type=\"application/ld\+json\">(.*?)</script>',html,re.DOTALL); types=[json.loads(s).get('@type') for s in schemas]; print(types)"` 输出包含 `'FAQPage'`
+- 至少 5 个品牌页底部包含 "See how X compares to Y" 类链接
+- 至少 5 个 compare 页包含返回品牌页的链接
+- `npm test` 全部通过
+
+---
+
+### 3.1 FAQPage Schema — 修改 `scripts/generate-brand-pages.js`
+
+新增函数 `buildFAQJsonLd({ brand, catLabel, side, rear, top })` 返回 FAQPage schema JSON：
+
+```js
+function buildFAQJsonLd({ brand, catLabel, side, rear, top, categoryMeta }) {
+  const unit = catLabel.toLowerCase();
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    'mainEntity': [
+      {
+        '@type': 'Question',
+        'name': `How much clearance does a ${brand} ${unit} need in Australia?`,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': `${brand} ${unit}s require ${side}mm side clearance, ${rear}mm rear clearance, and ${top}mm top clearance per manufacturer installation guidelines. Insufficient clearance can void your warranty and cause premature motor failure.`
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': `Does a ${brand} ${unit} need more clearance than other brands?`,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': `${brand} requires ${top}mm top clearance for ${unit}s. This ${top > 50 ? 'is above average — check that cabinetry above leaves at least ' + top + 'mm gap' : 'aligns with typical Australian installation requirements'}. Always confirm with the specific model installation manual before fitting.`
+        }
+      },
+      {
+        '@type': 'Question',
+        'name': `What happens if I don't leave enough clearance for my ${brand} ${unit}?`,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': `Inadequate ventilation clearance causes the ${unit}'s compressor or motor to overheat, reducing lifespan by up to 40% and typically voiding the manufacturer warranty. ${brand} service technicians will inspect clearances during any warranty claim.`
+        }
+      }
+    ]
+  };
+}
+```
+
+在 `buildBrandPageHtml()` 内，在已有的 `<script type="application/ld+json">` 块之后，再插入一个新的：
+```js
+`<script type="application/ld+json">\n${JSON.stringify(buildFAQJsonLd({brand, catLabel: categoryMeta.labelSingular, side, rear, top, categoryMeta}), null, 2)}\n</script>`
+```
+
+---
+
+### 3.2 内部交叉链接 — 修改 `scripts/generate-brand-pages.js`
+
+`generateBrandPages()` 函数已经可以读取 `compareIndex`（检查是否有引入 compare index）。如没有，先读取：
+
+```js
+const compareIndexPath = path.join(repoRoot, 'pages', 'compare', 'index.json');
+let compareIndex = [];
+try {
+  compareIndex = await readJson(compareIndexPath);
+} catch { /* ok if not found */ }
+```
+
+在 `buildBrandPageHtml()` 里新增参数 `relatedCompares`（数组），在页面 HTML 底部（`</main>` 之前）插入相关对比链接块：
+
+```js
+// 筛选出与当前品牌相关的 compare 页面
+const relatedCompares = compareIndex
+  .filter(row => row.cat === catSlug &&
+    (row.brandA === brand || row.brandB === brand))
+  .slice(0, 4);
+
+// HTML 片段（只在 relatedCompares.length > 0 时渲染）
+const relatedComparesHtml = relatedCompares.length > 0 ? `
+  <section class="related-compares" style="margin:32px 0;padding:20px;background:var(--surface);border-radius:8px">
+    <h2 style="font-size:16px;margin:0 0 12px">Compare ${escHtml(brand)} with other brands</h2>
+    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px">
+      ${relatedCompares.map(row => {
+        const other = row.brandA === brand ? row.brandB : row.brandA;
+        return `<li><a href="/compare/${escHtml(row.slug)}"
+          style="display:inline-block;padding:6px 12px;border:1px solid var(--border);border-radius:4px;font-size:13px;color:var(--copper);text-decoration:none"
+          >${escHtml(brand)} vs ${escHtml(other)} →</a></li>`;
+      }).join('')}
+    </ul>
+  </section>` : '';
+```
+
+---
+
+### 3.3 内部交叉链接 — 修改 `scripts/generate-comparisons.js`
+
+类似地，在每个 compare 页面里加"返回品牌页"链接。
+
+在 `buildComparisonPageHtml()` 里，已有 `brandA`、`brandB`、`catSlug` 参数。在页面底部加：
+
+```js
+const brandLinksHtml = `
+  <section style="margin:32px 0;padding:16px;background:var(--surface);border-radius:8px">
+    <p style="font-size:13px;color:var(--ink-3);margin:0 0 8px">Full clearance specifications:</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="/brands/${escHtml(slugify(brandA))}-${escHtml(catSlug)}-clearance"
+         style="font-size:13px;color:var(--copper);text-decoration:none"
+         >${escHtml(displayBrandName(brandA))} ${escHtml(catLabel)} clearance specs →</a>
+      <a href="/brands/${escHtml(slugify(brandB))}-${escHtml(catSlug)}-clearance"
+         style="font-size:13px;color:var(--copper);text-decoration:none"
+         >${escHtml(displayBrandName(brandB))} ${escHtml(catLabel)} clearance specs →</a>
+    </div>
+  </section>`;
+```
+
+注意：链接目标是 `/brands/${slugify(brand)}-${catSlug}-clearance`，这与现有品牌页 slug 格式一致（参考 `pages/brands/samsung-fridge-clearance.html`）。
+
+---
+
+### 3.4 执行顺序
+
+```bash
+# 1. 修改 scripts/generate-brand-pages.js（FAQPage schema + 交叉链接）
+# 2. 修改 scripts/generate-comparisons.js（返回品牌页链接）
+
+# 3. 重新生成所有页面
+npm run generate-pages
+# 等价于: node scripts/generate-brand-pages.js && node scripts/generate-comparisons.js && node scripts/generate-sitemap.js
+
+# 4. 验证 FAQPage schema
+python3 -c "
+import re, json
+html = open('pages/brands/samsung-fridge-clearance.html').read()
+schemas = re.findall(r'<script type=\"application/ld\+json\">(.*?)</script>', html, re.DOTALL)
+types = [json.loads(s).get('@type','?') for s in schemas]
+print('Schema types:', types)
+assert 'FAQPage' in types, 'FAIL: FAQPage schema missing'
+print('PASS')
+"
+
+# 5. 验证交叉链接
+grep -c "/compare/" pages/brands/samsung-fridge-clearance.html
+grep -c "/brands/" pages/compare/chiq-vs-lg-fridge-clearance.html
+
+# 6. 运行测试
+npm test
+```
+
+### 3.5 Commit
+
+```bash
+git add scripts/generate-brand-pages.js \
+        scripts/generate-comparisons.js \
+        pages/brands/ \
+        pages/compare/ \
+        public/sitemap.xml
+git commit -m "feat(seo): FAQPage schema on brand pages, internal cross-links brand↔compare"
+git push origin main
+```
+
+---
+
+## Part 4 — 文档清理 + Checkpoint 更新
+
+**目标**: 同步所有文档到真实当前状态，避免旧数据误导后续 AI 代理执行  
+**审核标准**:
+- `docs/coverage-audit.json` 里的 `doorSwingMissing` 是 `0`（或接近 0）
+- `docs/promotion-kit.md` 里的统计数字与实际数据一致
+- `.openclaw_context` 反映 Phase 18 完成状态
+- `PLAN.md` 顶部标记 Phase 18 完成
+
+---
+
+### 4.1 重新生成 coverage audit
+
+```bash
+node scripts/audit-coverage.js 2>/dev/null || true
+# 如果 audit-coverage.js 支持直接写文件，检查输出
+# 否则手动更新 docs/coverage-audit.json 里的 summary 字段
+```
+
+如果 `audit-coverage.js` 只打印而不写文件，则手动更新 `docs/coverage-audit.json`：
+```json
+{
+  "generated": "2026-04-18",
+  "summary": {
+    "total": 2170,
+    "hasPrice": 21,
+    "hasDirectUrl": 31,
+    "doorSwingCovered": 2170,
+    "doorSwingMissing": 0
+  }
+}
+```
+（`total`、`hasPrice`、`hasDirectUrl` 用 jq 查实际数字后填入）
+
+### 4.2 重新生成 promotion kit
+
+```bash
+npm run promo-kit
+# 这会覆盖 docs/promotion-kit.md，更新产品数量、品牌数量、覆盖率统计
+```
+
+### 4.3 更新 .openclaw_context
+
+将 `.openclaw_context` 文件内容替换为：
+```
+Checkpoint: Phase 18 Complete. door_swing_mm nulls = 0. GA events live (search_submit/buy_click/compare_view). FAQPage schema on all brand pages. Internal cross-links brand↔compare. Ready for Reddit launch and CF re-application.
+```
+
+### 4.4 更新 PLAN.md 顶部状态
+
+将 `PLAN.md` 第 3 行修改为：
+```
+**Status:** Phase 18 完成 ✅ (160+/160+ tests passed)
+```
+
+### 4.5 执行 + Commit
+
+```bash
+npm run promo-kit
+
+# 验证 promotion kit 更新了
+head -10 docs/promotion-kit.md
+
+# 更新 coverage audit
+# 更新 .openclaw_context（见上）
+
+# 最终测试
+npm test
+
+git add docs/coverage-audit.json \
+        docs/promotion-kit.md \
+        .openclaw_context \
+        PLAN.md
+git commit -m "chore(docs): sync coverage audit, promo kit, and checkpoint to Phase 18 state"
+git push origin main
+```
+
+---
+
+## 执行进度追踪
+
+| Part | 内容 | 状态 | 审核结果 |
+|------|------|------|----------|
+| Part 1 | door_swing_mm 清零 (TDD) | ⬜ 待执行 | — |
+| Part 2 | GA 事件埋点 | ⬜ 待执行 | — |
+| Part 3 | SEO: FAQPage + 交叉链接 | ⬜ 待执行 | — |
+| Part 4 | 文档清理 + Checkpoint | ⬜ 待执行 | — |
+
+---
+
+## 快速验证命令（每个 Part 通用）
+
+```bash
+cd /Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2
+
+# 测试基线
+npm test
+
+# door_swing null 数量
+jq '[.products[] | select(.door_swing_mm == null)] | length' public/data/appliances.json
+
+# GA 事件验证
+grep -c "search_submit\|buy_click" index.html
+grep -c "compare_view" scripts/generate-comparisons.js
+
+# FAQPage schema 验证
+python3 -c "
+import re,json,glob
+ok=0; fail=0
+for f in glob.glob('pages/brands/*.html')[:20]:
+    html=open(f).read()
+    schemas=re.findall(r'<script type=\"application/ld\+json\">(.*?)</script>',html,re.DOTALL)
+    types=[json.loads(s).get('@type','?') for s in schemas]
+    if 'FAQPage' in types: ok+=1
+    else: fail+=1
+print(f'FAQPage: {ok} ok, {fail} missing')
+"
+
+# 内部链接验证
+grep -l "/compare/" pages/brands/*.html | wc -l
+grep -l "/brands/" pages/compare/*.html | wc -l
 ```

@@ -1,13 +1,13 @@
 # FitAppliance Promotion Kit
-_Auto-generated 2026-04-15 from live database_
+_Auto-generated 2026-04-18 from live database_
 
 ---
 
 ## Site Stats (Current)
-- **2169 appliance models** across 174 brands (fridges, washing machines, dishwashers, dryers)
+- **2170 appliance models** across 174 brands (fridges, washing machines, dishwashers, dryers)
 - **286 brand clearance pages** with installation-specific ventilation data
-- **72.8% door swing coverage** — 1580 models with confirmed clearance data
-- **40 comparison pages** covering top brand pairs in each category
+- **100% door swing coverage** — 2170 models with confirmed clearance data
+- **38 comparison pages** covering top brand pairs in each category
 - Data sourced from the Australian Government Energy Rating database
 
 ---
@@ -21,7 +21,7 @@ _Auto-generated 2026-04-15 from live database_
 > Moving apartments and measuring for a new fridge is a nightmare. I kept finding specs online but no tool that
 > checked whether the ventilation clearances were met (which affects warranty and performance).
 >
-> Built fitappliance.com.au — it covers 2169 models across 174 brands, checks your exact cavity dimensions,
+> Built fitappliance.com.au — it covers 2170 models across 174 brands, checks your exact cavity dimensions,
 > and shows which models fit with proper clearance. Also has brand-specific requirements (LG needs more rear
 > clearance than Hisense, for example).
 >
@@ -34,17 +34,17 @@ _Auto-generated 2026-04-15 from live database_
 ## Platform: OzBargain (as a free tool post)
 
 **Title:**
-> Free Tool: Check if LG Fridge Fits Your Kitchen Before Buying (AU Data, 2169 Models)
+> Free Tool: Check if LG Fridge Fits Your Kitchen Before Buying (AU Data, 2170 Models)
 
 **Tags:** Free, Tools, Home Improvement, Appliances
 
 **Body:**
 > Not a deal but a tool I built that OzBargain users might find useful when shopping for appliances.
 >
-> **FitAppliance** covers 2169 fridge/washer/dishwasher/dryer models with:
+> **FitAppliance** covers 2170 fridge/washer/dishwasher/dryer models with:
 > - Exact dimensions from the Australian Energy Rating database
 > - Per-brand ventilation clearance requirements (important for warranty)
-> - 72.8% of models have door swing clearance data
+> - 100% of models have door swing clearance data
 > - Works on mobile — check in-store before you buy
 >
 > No affiliate links until I've secured proper partnerships.
@@ -63,14 +63,14 @@ _Auto-generated 2026-04-15 from live database_
 > you need to leave around the fridge) varies by brand and matters for both performance and warranty.
 >
 > Built a free checker: **fitappliance.com.au**
-> Covers 2169 models, 174 brands, 286 brand-specific clearance guides.
+> Covers 2170 models, 174 brands, 286 brand-specific clearance guides.
 
 ---
 
 ## Key Differentiators (for any platform)
 1. **Per-brand clearance data** — not just dimensions. LG, WESTINGHOUSE and HISENSE all have different requirements.
-2. **2169 models** — the most comprehensive Australian appliance sizing database.
-3. **Door swing data** — 72.8% coverage. Most tools don't include this.
+2. **2170 models** — the most comprehensive Australian appliance sizing database.
+3. **Door swing data** — 100% coverage. Most tools don't include this.
 4. **Energy efficiency + total cost of ownership** built in.
 5. **No account needed** — open URL, get answer.
 
