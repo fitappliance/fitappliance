@@ -3,6 +3,7 @@
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { displayBrandName } = require('./utils/brand-utils.js');
+const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
 
 const CATEGORY_META = {
   fridge: {
@@ -262,6 +263,16 @@ function buildOrganizationJsonLd(brandName, metadataByBrand = {}) {
   return org;
 }
 
+function buildAffiliateSnippet(sample, affiliateProviders) {
+  return renderAffiliateCta(sample, {
+    providers: affiliateProviders,
+    env: process.env,
+    className: 'affiliate-cta',
+    buttonClassName: 'affiliate-buy-link',
+    disclosureClassName: 'affiliate-disclosure'
+  });
+}
+
 function buildBrandPageHtml({
   brand,
   brandRaw = brand,
@@ -276,6 +287,7 @@ function buildBrandPageHtml({
   defaultTop,
   modelSamples = [],
   itemListProducts = [],
+  affiliateProviders = [],
   pendingSwingCount = 0,
   relatedCompares = [],
   sameBrandAlternatives = [],
@@ -333,8 +345,9 @@ function buildBrandPageHtml({
   });
   const installTips = buildInstallTips({ side, rear, top, categoryMeta });
   const confirmedSwingCount = Math.max(0, count - pendingSwingCount);
-  const modelPreview = modelSamples.map((sample) => (
-    `<div class="model-item">
+  const modelPreview = modelSamples.map((sample) => {
+    const affiliateHtml = buildAffiliateSnippet(sample, affiliateProviders);
+    return `<div class="model-item">
       <picture class="model-thumb">
         <source srcset="${heroWebpPath}" type="image/webp">
         <img src="${heroPngPath}" alt="${escHtml(brand)} ${escHtml(sample.model)} preview" width="600" height="315" loading="lazy" decoding="async">
@@ -342,8 +355,9 @@ function buildBrandPageHtml({
       <div class="model-name">${escHtml(sample.model)}</div>
       <div class="model-dims">W ${sample.w}mm × H ${sample.h}mm × D ${sample.d}mm</div>
       <a class="model-link" href="/?cat=${encodeURIComponent(category)}&brand=${encodeURIComponent(brandRaw)}&h=${sample.h}">Check if this fits your space →</a>
-    </div>`
-  )).join('');
+      ${affiliateHtml}
+    </div>`;
+  }).join('');
 
   return `<!doctype html>
 <html lang="en-AU">
@@ -519,6 +533,27 @@ function buildBrandPageHtml({
       font-weight: 600;
     }
     .model-link:hover { text-decoration: underline; }
+    .affiliate-cta { margin-top: 8px; }
+    .affiliate-buy-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .affiliate-buy-link:hover { background: var(--copper); }
+    .affiliate-disclosure {
+      margin: 5px 0 0;
+      font-size: 11px;
+      color: var(--ink-3);
+      line-height: 1.4;
+    }
+    .affiliate-disclosure a { color: var(--copper); }
     footer {
       margin-top: 36px;
       font-size: 13px;
@@ -629,6 +664,9 @@ async function generateBrandPages(options = {}) {
   const appliances = await readJson(path.join(dataDir, 'appliances.json'));
   const clearance = await readJson(path.join(dataDir, 'clearance.json'));
   const brandMetadata = await readJson(path.join(dataDir, 'brands', 'metadata.json')).catch(() => ({}));
+  const affiliateProviders = await loadProvidersFromFile(
+    options.affiliateProvidersPath ?? path.join(repoRoot, 'data', 'affiliates', 'providers.json')
+  ).catch(() => []);
   const products = Array.isArray(appliances.products) ? appliances.products : [];
   const rules = clearance.rules ?? {};
 
@@ -681,7 +719,8 @@ async function generateBrandPages(options = {}) {
           model: product.model,
           w: product.w,
           h: product.h,
-          d: product.d
+          d: product.d,
+          affiliate: product.affiliate ?? null
         }));
       const itemListProducts = [...matchedProducts]
         .sort((left, right) => String(left.model ?? '').localeCompare(String(right.model ?? '')))
@@ -762,6 +801,7 @@ async function generateBrandPages(options = {}) {
       pendingSwingCount: row.pendingSwingCount,
       modelSamples: row.modelSamples,
       itemListProducts: row.itemListProducts,
+      affiliateProviders,
       relatedCompares,
       sameBrandAlternatives,
       organizationJsonLd: JSON.stringify(buildOrganizationJsonLd(displayBrand, brandMetadata), null, 2),

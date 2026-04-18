@@ -550,3 +550,26 @@ Without step 3, the workflow will authenticate but still fail API reads due to m
     - each entry has fresh `validatedAt`
     - Samsung brand page includes `VideoObject` + facade markup
     - invalid oEmbed responses are filtered out.
+
+### Phase 31 — Affiliate Link Rendering (Provider + Env Gated)
+
+- Added provider configuration:
+  - [`data/affiliates/providers.json`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/data/affiliates/providers.json)
+  - includes `amazon-au`, `appliances-online`, and `the-good-guys` templates with disclosure text.
+- Added reusable affiliate renderer:
+  - [`scripts/render-affiliate-links.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/render-affiliate-links.js)
+  - resolves provider URLs only when both:
+    1. product affiliate identifier exists (`asin` or `sku`)
+    2. required environment variable exists (for example `AMAZON_AU_TAG`)
+  - missing env or identifier cleanly returns no affiliate CTA (no crash, no broken href).
+- Integrated renderer into generated pages:
+  - [`scripts/generate-brand-pages.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/generate-brand-pages.js)
+  - [`scripts/generate-comparisons.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/generate-comparisons.js)
+  - [`scripts/generate-location-pages.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/generate-location-pages.js)
+  - all affiliate anchors render with `rel="sponsored nofollow noopener"` and include visible disclosure text linking to `/affiliate-disclosure`.
+- Added manual backfill guide (no fake IDs committed):
+  - [`docs/AFFILIATE-BACKFILL.md`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/docs/AFFILIATE-BACKFILL.md)
+  - explains how to add real ASIN/SKU values and required environment variables.
+- Added Phase 31 test coverage:
+  - [`tests/affiliate.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/affiliate.test.mjs)
+  - verifies env-missing fallback, strict URL templating, sponsored/nofollow/noopener rel, and disclosure rendering.

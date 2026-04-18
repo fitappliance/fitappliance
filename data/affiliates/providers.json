@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "providers": [
+    {
+      "slug": "amazon-au",
+      "name": "Amazon AU",
+      "domain": "amazon.com.au",
+      "linkTemplate": "https://www.amazon.com.au/dp/{asin}?tag={AMAZON_AU_TAG}",
+      "disclosureText": "We may earn a commission from qualifying purchases."
+    },
+    {
+      "slug": "appliances-online",
+      "name": "Appliances Online",
+      "domain": "appliancesonline.com.au",
+      "linkTemplate": "https://www.appliancesonline.com.au/product/{sku}/?aid={APPLIANCES_ONLINE_AFFILIATE_ID}",
+      "disclosureText": "We may earn a commission from qualifying purchases."
+    },
+    {
+      "slug": "the-good-guys",
+      "name": "The Good Guys",
+      "domain": "thegoodguys.com.au",
+      "linkTemplate": "https://www.thegoodguys.com.au/search?text={sku}&aid={THE_GOOD_GUYS_AFFILIATE_ID}",
+      "disclosureText": "We may earn a commission from qualifying purchases."
+    }
+  ]
+}

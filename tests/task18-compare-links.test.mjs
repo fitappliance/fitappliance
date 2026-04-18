@@ -52,14 +52,16 @@ test('task 18 compare links: buildComparisonPageHtml omits link when no URL exis
   assert.equal(html.includes('A1 · 700×1700×700mm<br><a '), false);
 });
 
-test('task 18 compare links: buy link uses rel noopener sponsored and target blank', async () => {
+test('task 18 compare links: buy link uses sponsored nofollow noopener and target blank', async () => {
   const { buildComparisonPageHtml } = await import(moduleUrl);
   const html = buildComparisonPageHtml(buildFixture({
     modelSamplesA: [{ brand: 'LG', cat: 'fridge', model: 'A1', w: 700, h: 1700, d: 700, directUrl: 'https://example.com/a1' }]
   }));
 
   assert.match(html, /target="_blank"/);
-  assert.match(html, /rel="noopener sponsored"/);
+  assert.match(html, /rel="[^"]*sponsored[^"]*"/);
+  assert.match(html, /rel="[^"]*nofollow[^"]*"/);
+  assert.match(html, /rel="[^"]*noopener[^"]*"/);
 });
 
 test('task 18 compare links: special chars in URL are escaped safely', async () => {

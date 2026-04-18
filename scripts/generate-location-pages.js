@@ -3,6 +3,7 @@
 
 const path = require('node:path');
 const { mkdir, readFile, rm, writeFile } = require('node:fs/promises');
+const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
 
 const CATEGORY_ROWS = [
   { slug: 'dishwasher', label: 'Dishwasher', cat: 'dishwasher' },
@@ -102,6 +103,25 @@ function mapGuideLinks(rows) {
     .map((row) => ({
       url: row.url ?? `/guides/${row.slug}`,
       label: row.title ?? `Guide: ${row.slug}`
+    }));
+}
+
+function buildLocationModelSamples(products, cat) {
+  if (!cat) return [];
+  return products
+    .filter((product) => product && product.cat === cat)
+    .sort((left, right) => {
+      const leftStars = Number.isFinite(left.stars) ? left.stars : -1;
+      const rightStars = Number.isFinite(right.stars) ? right.stars : -1;
+      if (rightStars !== leftStars) return rightStars - leftStars;
+      return String(left.model ?? '').localeCompare(String(right.model ?? ''));
+    })
+    .slice(0, 3)
+    .map((product) => ({
+      id: product.id,
+      brand: product.brand,
+      model: product.model,
+      affiliate: product.affiliate ?? null
     }));
 }
 
@@ -220,6 +240,8 @@ function buildPageHtml({
   category,
   links,
   categoryCount,
+  modelSamples = [],
+  affiliateProviders = [],
   modifiedTime
 }) {
   const h1 = `Appliance Cavity & Doorway Guide — ${category.label} in ${city.name}`;
@@ -230,6 +252,21 @@ function buildPageHtml({
   const breadcrumbJsonLd = JSON.stringify(buildBreadcrumbJsonLd(city, category), null, 2);
   const itemListJsonLd = JSON.stringify(buildItemListJsonLd(city, category, links), null, 2);
   const placeJsonLd = JSON.stringify(buildPlaceJsonLd(city), null, 2);
+
+  const affiliateRows = modelSamples
+    .map((sample) => {
+      const cta = renderAffiliateCta(sample, {
+        providers: affiliateProviders,
+        env: process.env,
+        className: 'affiliate-cta',
+        buttonClassName: 'affiliate-buy-link',
+        disclosureClassName: 'affiliate-disclosure'
+      });
+      if (!cta) return '';
+      return `<li><strong>${escHtml(sample.brand)} ${escHtml(sample.model)}</strong>${cta}</li>`;
+    })
+    .filter(Boolean)
+    .join('\n      ');
 
   return `<!doctype html>
 <html lang="en-AU">
@@ -258,6 +295,15 @@ function buildPageHtml({
     li { margin-bottom: 8px; }
     .resource-list a { color: var(--copper); text-decoration: none; }
     .resource-list a:hover { text-decoration: underline; }
+    .affiliate-panel { margin-top: 18px; padding: 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--white); }
+    .affiliate-panel h2 { margin: 0 0 10px; font-size: 18px; }
+    .affiliate-panel ul { margin: 0; padding-left: 18px; }
+    .affiliate-panel li { margin-bottom: 10px; }
+    .affiliate-cta { margin-top: 6px; }
+    .affiliate-buy-link { display: inline-flex; padding: 7px 11px; border-radius: 8px; background: var(--ink); color: #fff; text-decoration: none; font-size: 12px; font-weight: 700; }
+    .affiliate-buy-link:hover { background: var(--copper); }
+    .affiliate-disclosure { margin: 4px 0 0; font-size: 11px; color: var(--ink-3); }
+    .affiliate-disclosure a { color: var(--copper); }
     footer { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 14px; color: var(--ink-3); font-size: 13px; }
   </style>
 </head>
@@ -281,6 +327,13 @@ function buildPageHtml({
     <ul class="resource-list">
       ${links.map((row) => `<li><a href="${escHtml(row.url)}">${escHtml(row.label)}</a></li>`).join('\n      ')}
     </ul>
+
+    ${affiliateRows ? `<section class="affiliate-panel">
+      <h2>Buy Popular ${escHtml(category.label)} Models</h2>
+      <ul>
+        ${affiliateRows}
+      </ul>
+    </section>` : ''}
 
     <footer>
       <a href="/methodology">Methodology</a> ·
@@ -319,6 +372,9 @@ async function generateLocationPages(options = {}) {
   const cavityRows = await readJson(path.join(repoRoot, 'pages', 'cavity', 'index.json'));
   const doorwayRows = await readJson(path.join(repoRoot, 'pages', 'doorway', 'index.json'));
   const guideRows = await readJson(path.join(repoRoot, 'pages', 'guides', 'index.json'));
+  const affiliateProviders = await loadProvidersFromFile(
+    options.affiliateProvidersPath ?? path.join(repoRoot, 'data', 'affiliates', 'providers.json')
+  ).catch(() => []);
   const appliancesDoc = await readJson(path.join(repoRoot, 'public', 'data', 'appliances.json'), { products: [] });
   const products = Array.isArray(appliancesDoc.products) ? appliancesDoc.products : [];
 
@@ -352,6 +408,8 @@ async function generateLocationPages(options = {}) {
         category,
         links,
         categoryCount: Number(categoryCounts[category.cat] ?? 0),
+        modelSamples: buildLocationModelSamples(products, category.cat),
+        affiliateProviders,
         modifiedTime: new Date().toISOString()
       });
 

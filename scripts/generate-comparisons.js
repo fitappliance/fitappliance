@@ -3,6 +3,7 @@
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { displayBrandName } = require('./utils/brand-utils.js');
+const { loadProvidersFromFile, resolveAffiliateLinkForProduct } = require('./render-affiliate-links.js');
 
 const CATEGORY_META = {
   fridge: {
@@ -370,6 +371,7 @@ function buildComparisonPageHtml({
   categoryMeta,
   modelSamplesA = [],
   modelSamplesB = [],
+  affiliateProviders = [],
   alsoViewedComparisons = [],
   lastUpdated = new Date().toISOString().slice(0, 10)
 }) {
@@ -411,12 +413,30 @@ function buildComparisonPageHtml({
     });
   }
   const sampleItemsA = modelSamplesA.map((sample) => {
+    const affiliate = resolveAffiliateLinkForProduct(sample, {
+      providers: affiliateProviders,
+      env: process.env
+    });
     const retailLink = pickRetailLink(sample);
-    return `<li><picture class="sample-thumb"><source srcset="${heroWebpPath}" type="image/webp"><img src="${heroPngPath}" alt="${escHtml(displayBrandA)} ${escHtml(sample.model)} comparison preview" width="600" height="315" loading="lazy" decoding="async"></picture>${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm${retailLink ? `<br><a href="${escHtml(retailLink.url)}" target="_blank" rel="noopener sponsored">${escHtml(retailLink.label)} →</a>` : ''}</li>`;
+    const buyHtml = affiliate
+      ? `<br><a href="${escHtml(affiliate.url)}" target="_blank" rel="sponsored nofollow noopener">Buy at ${escHtml(affiliate.providerName)} →</a><small style="display:block;color:#7a766e;margin-top:4px">${escHtml(affiliate.disclosureText)} <a href="/affiliate-disclosure" style="color:#b55a2c">Disclosure</a></small>`
+      : retailLink
+        ? `<br><a href="${escHtml(retailLink.url)}" target="_blank" rel="noopener sponsored nofollow">${escHtml(retailLink.label)} →</a>`
+        : '';
+    return `<li><picture class="sample-thumb"><source srcset="${heroWebpPath}" type="image/webp"><img src="${heroPngPath}" alt="${escHtml(displayBrandA)} ${escHtml(sample.model)} comparison preview" width="600" height="315" loading="lazy" decoding="async"></picture>${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm${buyHtml}</li>`;
   }).join('');
   const sampleItemsB = modelSamplesB.map((sample) => {
+    const affiliate = resolveAffiliateLinkForProduct(sample, {
+      providers: affiliateProviders,
+      env: process.env
+    });
     const retailLink = pickRetailLink(sample);
-    return `<li><picture class="sample-thumb"><source srcset="${heroWebpPath}" type="image/webp"><img src="${heroPngPath}" alt="${escHtml(displayBrandB)} ${escHtml(sample.model)} comparison preview" width="600" height="315" loading="lazy" decoding="async"></picture>${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm${retailLink ? `<br><a href="${escHtml(retailLink.url)}" target="_blank" rel="noopener sponsored">${escHtml(retailLink.label)} →</a>` : ''}</li>`;
+    const buyHtml = affiliate
+      ? `<br><a href="${escHtml(affiliate.url)}" target="_blank" rel="sponsored nofollow noopener">Buy at ${escHtml(affiliate.providerName)} →</a><small style="display:block;color:#7a766e;margin-top:4px">${escHtml(affiliate.disclosureText)} <a href="/affiliate-disclosure" style="color:#b55a2c">Disclosure</a></small>`
+      : retailLink
+        ? `<br><a href="${escHtml(retailLink.url)}" target="_blank" rel="noopener sponsored nofollow">${escHtml(retailLink.label)} →</a>`
+        : '';
+    return `<li><picture class="sample-thumb"><source srcset="${heroWebpPath}" type="image/webp"><img src="${heroPngPath}" alt="${escHtml(displayBrandB)} ${escHtml(sample.model)} comparison preview" width="600" height="315" loading="lazy" decoding="async"></picture>${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm${buyHtml}</li>`;
   }).join('');
 
   const articleJsonLd = JSON.stringify({
@@ -580,7 +600,7 @@ function buildComparisonPageHtml({
         <a href="${brandBUrl}">Browse ${escHtml(displayBrandB)} ${escHtml(categoryMeta.labelPlural)}</a>
       </div>
       ${fallbackLinks.length > 0 ? `<div class="brand-links">${fallbackLinks
-        .map((link) => `<a href="${escHtml(link.url)}" target="_blank" rel="noopener sponsored">${escHtml(link.label)} →</a>`)
+        .map((link) => `<a href="${escHtml(link.url)}" target="_blank" rel="noopener sponsored nofollow">${escHtml(link.label)} →</a>`)
         .join('')}</div>` : ''}
     </section>
 
@@ -665,6 +685,7 @@ function sampleBrandModels(products, cat, brand) {
       w: product.w,
       h: product.h,
       d: product.d,
+      affiliate: product.affiliate ?? null,
       directUrl: product.direct_url,
       directLabel: null,
       bestRetailer: Array.isArray(product.retailers)
@@ -681,6 +702,9 @@ async function generateComparisonPages(options = {}) {
 
   const appliances = await readJson(path.join(dataDir, 'appliances.json'));
   const clearance = await readJson(path.join(dataDir, 'clearance.json'));
+  const affiliateProviders = await loadProvidersFromFile(
+    options.affiliateProvidersPath ?? path.join(repoRoot, 'data', 'affiliates', 'providers.json')
+  ).catch(() => []);
   const products = Array.isArray(appliances.products) ? appliances.products : [];
   const pairs = selectComparisonPairs(products, clearance.rules ?? {}, options);
 
@@ -744,6 +768,7 @@ async function generateComparisonPages(options = {}) {
       categoryMeta: row.categoryMeta,
       modelSamplesA: row.modelSamplesA,
       modelSamplesB: row.modelSamplesB,
+      affiliateProviders,
       alsoViewedComparisons,
       lastUpdated: row.lastUpdated
     });
