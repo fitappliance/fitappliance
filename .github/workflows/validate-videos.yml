@@ -1,0 +1,74 @@
+name: Validate Brand Videos
+
+on:
+  schedule:
+    - cron: '15 3 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  validate-videos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run oEmbed validation
+        id: video_validate
+        continue-on-error: true
+        run: npm run validate-videos
+
+      - name: Inject validated video schema into brand pages
+        if: steps.video_validate.outcome == 'success'
+        run: npm run inject-video-schema
+
+      - name: Commit refreshed validation artifacts
+        if: steps.video_validate.outcome == 'success'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/videos/brand-videos.json reports/video-validation.json pages/brands/*.html
+          git diff --cached --quiet || git commit -m "chore(video): refresh oEmbed validation $(date -u +%Y-%m-%d)"
+          git push origin main
+
+      - name: Create or update sentinel issue when validation fails
+        if: steps.video_validate.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          today="$(date -u +%Y-%m-%d)"
+          title="[video-validation] invalid oEmbed entries detected ${today}"
+          existing="$(gh issue list --label sentinel-auto --state open --search "${today} in:title video-validation" --json number --jq '.[0].number')"
+          body_file=/tmp/video-validation-issue.md
+          {
+            echo "# Video validation failed (${today})"
+            echo
+            if [ -f reports/video-validation.json ]; then
+              echo '```json'
+              cat reports/video-validation.json
+              echo '```'
+            else
+              echo "No report file was generated."
+            fi
+          } > "$body_file"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file "$body_file"
+          else
+            gh issue create --title "$title" --body-file "$body_file" --label sentinel-auto
+          fi
+
+      - name: Fail workflow when validation failed
+        if: steps.video_validate.outcome == 'failure'
+        run: exit 1

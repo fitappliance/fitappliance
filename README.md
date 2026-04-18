@@ -525,3 +525,28 @@ Without step 3, the workflow will authenticate but still fail API reads due to m
 
 - Cavity pages can export a printable installation PDF entirely on-device.
 - The export flow does not upload user inputs or measurement content to any backend endpoint.
+
+### Phase 30 — Real YouTube VideoObject Schema
+
+- Added source + validator pipeline:
+  - [`data/videos/brand-videos.json`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/data/videos/brand-videos.json)
+  - [`scripts/validate-videos.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/validate-videos.js)
+  - every listed YouTube URL is validated through oEmbed before staying in JSON
+  - invalid items are removed and reported in [`reports/video-validation.json`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/reports/video-validation.json).
+- Added brand-page video injection:
+  - [`scripts/inject-video-schema.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/inject-video-schema.js)
+  - injects `<section id="install-video">` with lazy facade buttons
+  - injects `VideoObject` JSON-LD from validated oEmbed fields only.
+- Added monthly automation:
+  - [`.github/workflows/validate-videos.yml`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/.github/workflows/validate-videos.yml)
+  - schedule: day 1 monthly + `workflow_dispatch`
+  - on failure, opens/updates a `sentinel-auto` issue with validation report.
+- Added npm scripts:
+  - `npm run validate-videos`
+  - `npm run inject-video-schema`
+- Added test coverage:
+  - [`tests/videos.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/videos.test.mjs)
+  - validates:
+    - each entry has fresh `validatedAt`
+    - Samsung brand page includes `VideoObject` + facade markup
+    - invalid oEmbed responses are filtered out.

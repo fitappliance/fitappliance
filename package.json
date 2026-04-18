@@ -6,7 +6,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "build": "node scripts/generate-brand-pages.js && node scripts/generate-comparisons.js && node scripts/generate-guides.js && node scripts/generate-location-pages.js && node scripts/generate-sitemap.js",
+    "build": "node scripts/generate-brand-pages.js && node scripts/inject-video-schema.js && node scripts/generate-comparisons.js && node scripts/generate-guides.js && node scripts/generate-location-pages.js && node scripts/generate-sitemap.js",
     "test": "node --test tests/*.test.mjs",
     "sync": "node scripts/sync.js && node scripts/split-appliances.js",
     "sync-verify": "npm run sync && npm run generate-comparisons && npm run verify-compare-quality",
@@ -27,8 +27,10 @@
     "generate-rss": "node scripts/generate-rss.js",
     "gsc-fetch": "node scripts/gsc-fetch.js",
     "keyword-gap": "node scripts/keyword-gap.js",
-    "generate-pages": "node scripts/generate-brand-pages.js && node scripts/generate-comparisons.js",
+    "generate-pages": "node scripts/generate-brand-pages.js && node scripts/inject-video-schema.js && node scripts/generate-comparisons.js",
     "generate-all": "npm run generate-pages && npm run generate-cavity && npm run generate-doorway && npm run generate-guides && npm run generate-location && npm run generate-sitemap && npm run generate-og-images && npm run generate-image-sitemap && npm run generate-rss && npm run build-link-graph && npm run validate-schema",
+    "validate-videos": "node scripts/validate-videos.js",
+    "inject-video-schema": "node scripts/inject-video-schema.js",
     "promo-kit": "node scripts/generate-promotion-kit.js",
     "build-link-graph": "node scripts/build-link-graph.js",
     "uptime-check": "node scripts/uptime-check.js",
