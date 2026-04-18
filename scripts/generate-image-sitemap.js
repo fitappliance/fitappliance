@@ -11,6 +11,14 @@ const CATEGORY_SLUG = {
   dryer: 'dryer'
 };
 
+const LOCATION_IMAGE_BY_CATEGORY = {
+  fridge: 'guide-fridge-clearance-requirements.png',
+  dishwasher: 'guide-dishwasher-cavity-sizing.png',
+  'washing-machine': 'guide-washing-machine-doorway-access.png',
+  dryer: 'guide-dryer-ventilation-guide.png',
+  oven: 'guide-appliance-fit-sizing-handbook.png'
+};
+
 function escXml(value) {
   return String(value ?? '').replace(/[<>&'"]/g, (char) => {
     const map = {
@@ -61,6 +69,7 @@ async function generateImageSitemap({
   const brands = await readJson(path.join(repoRoot, 'pages', 'brands', 'index.json'), []);
   const compares = await readJson(path.join(repoRoot, 'pages', 'compare', 'index.json'), []);
   const guides = await readJson(path.join(repoRoot, 'pages', 'guides', 'index.json'), []);
+  const locations = await readJson(path.join(repoRoot, 'pages', 'location', 'index.json'), []);
   const ogDir = path.join(repoRoot, 'public', 'og-images');
   const ogFiles = new Set((await readdir(ogDir, { withFileTypes: true }))
     .filter((entry) => entry.isFile() && entry.name.endsWith('.png'))
@@ -92,6 +101,15 @@ async function generateImageSitemap({
     if (!ogFiles.has(imageFile)) continue;
     rows.push({
       loc: `${baseUrl}${row.url ?? `/guides/${row.slug}`}`,
+      image: `${baseUrl}/og-images/${imageFile}`
+    });
+  }
+
+  for (const row of locations) {
+    const imageFile = LOCATION_IMAGE_BY_CATEGORY[row.category] ?? 'guide-appliance-fit-sizing-handbook.png';
+    if (!ogFiles.has(imageFile)) continue;
+    rows.push({
+      loc: `${baseUrl}${row.url ?? `/location/${row.citySlug}/${row.category}`}`,
       image: `${baseUrl}/og-images/${imageFile}`
     });
   }

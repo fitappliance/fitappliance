@@ -67,7 +67,14 @@ test('data JSON files are routed from /data without relying on a checked-in syml
   assert.ok(existsSync(path.join(repoRoot, 'public', 'data', 'appliances.json')));
   assert.ok(existsSync(path.join(repoRoot, 'public', 'data', 'clearance.json')));
   assert.ok(existsSync(path.join(repoRoot, 'public', 'data', 'rebates.json')));
-  assert.ok(!existsSync(path.join(repoRoot, 'data')));
+  const rootDataPath = path.join(repoRoot, 'data');
+  if (existsSync(rootDataPath)) {
+    assert.ok(lstatSync(rootDataPath).isDirectory(), 'root data path should be a directory when present');
+    assert.ok(!existsSync(path.join(rootDataPath, 'appliances.json')));
+    assert.ok(!existsSync(path.join(rootDataPath, 'clearance.json')));
+    assert.ok(!existsSync(path.join(rootDataPath, 'rebates.json')));
+    assert.ok(existsSync(path.join(rootDataPath, 'locations', 'au-cities.json')));
+  }
 });
 
 test('DEVGUIDE matches the current clearance key naming and local verification workflow', async () => {

@@ -334,3 +334,30 @@ TXT: fitappliance.com.au -> google-site-verification=5keGnUyvuq31_mxZ9pNVPIsh7Bz
 3. In Google Search Console, add the service account email as an **Owner** of the property (`sc-domain:fitappliance.com.au`).
 
 Without step 3, the workflow will authenticate but still fail API reads due to missing property permissions.
+
+### Phase 24 — Australia Location Landing Pages
+
+- Added ABS-fact-only city dataset:
+  - [`data/locations/au-cities.json`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/data/locations/au-cities.json)
+  - fields limited to `slug`, `name`, `state`, `stateCode` for 8 capital cities.
+- Added generator:
+  - [`scripts/generate-location-pages.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/generate-location-pages.js)
+  - outputs 40 static pages (`8 cities × 5 categories`) under `pages/location/{city}/{category}.html`
+  - each page includes:
+    - required H1 `Appliance Cavity & Doorway Guide — {Category} in {City}`
+    - static internal resource links (SEO-visible, no JS injection)
+    - `BreadcrumbList` + `ItemList` + `Place` JSON-LD.
+- Routing + indexing integration:
+  - added Vercel rewrite `/location/:city/:category` → `/pages/location/:city/:category.html`
+  - included location URLs in:
+    - `public/sitemap.xml`
+    - `public/rss.xml`
+    - `public/image-sitemap.xml`
+  - regenerated `reports/link-graph.json` with location pages included and non-orphan.
+- Pipeline updates:
+  - added `npm` script `generate-location`
+  - `build` and `generate-all` now run location page generation.
+- Validation commands:
+  - `node --test tests/location-pages.test.mjs`
+  - `npm test`
+  - `npm run build`

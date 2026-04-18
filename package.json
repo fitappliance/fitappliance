@@ -6,7 +6,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "build": "node scripts/generate-brand-pages.js && node scripts/generate-comparisons.js && node scripts/generate-guides.js && node scripts/generate-sitemap.js",
+    "build": "node scripts/generate-brand-pages.js && node scripts/generate-comparisons.js && node scripts/generate-guides.js && node scripts/generate-location-pages.js && node scripts/generate-sitemap.js",
     "test": "node --test tests/*.test.mjs",
     "sync": "node scripts/sync.js && node scripts/split-appliances.js",
     "sync-verify": "npm run sync && npm run generate-comparisons && npm run verify-compare-quality",
@@ -20,6 +20,7 @@
     "generate-cavity": "node scripts/generate-cavity-pages.js",
     "generate-doorway": "node scripts/generate-doorway-pages.js",
     "generate-guides": "node scripts/generate-guides.js",
+    "generate-location": "node scripts/generate-location-pages.js",
     "generate-comparisons": "node scripts/generate-comparisons.js",
     "generate-og-images": "node scripts/generate-og-images.js",
     "generate-image-sitemap": "node scripts/generate-image-sitemap.js",
@@ -27,7 +28,7 @@
     "gsc-fetch": "node scripts/gsc-fetch.js",
     "keyword-gap": "node scripts/keyword-gap.js",
     "generate-pages": "node scripts/generate-brand-pages.js && node scripts/generate-comparisons.js",
-    "generate-all": "npm run generate-pages && npm run generate-cavity && npm run generate-doorway && npm run generate-guides && npm run generate-sitemap && npm run generate-og-images && npm run generate-image-sitemap && npm run generate-rss && npm run build-link-graph && npm run validate-schema",
+    "generate-all": "npm run generate-pages && npm run generate-cavity && npm run generate-doorway && npm run generate-guides && npm run generate-location && npm run generate-sitemap && npm run generate-og-images && npm run generate-image-sitemap && npm run generate-rss && npm run build-link-graph && npm run validate-schema",
     "promo-kit": "node scripts/generate-promotion-kit.js",
     "build-link-graph": "node scripts/build-link-graph.js",
     "validate-schema": "node scripts/validate-schema.js",

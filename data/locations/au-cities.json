@@ -1,0 +1,52 @@
+{
+  "cities": [
+    {
+      "slug": "sydney",
+      "name": "Sydney",
+      "state": "New South Wales",
+      "stateCode": "NSW"
+    },
+    {
+      "slug": "melbourne",
+      "name": "Melbourne",
+      "state": "Victoria",
+      "stateCode": "VIC"
+    },
+    {
+      "slug": "brisbane",
+      "name": "Brisbane",
+      "state": "Queensland",
+      "stateCode": "QLD"
+    },
+    {
+      "slug": "perth",
+      "name": "Perth",
+      "state": "Western Australia",
+      "stateCode": "WA"
+    },
+    {
+      "slug": "adelaide",
+      "name": "Adelaide",
+      "state": "South Australia",
+      "stateCode": "SA"
+    },
+    {
+      "slug": "canberra",
+      "name": "Canberra",
+      "state": "Australian Capital Territory",
+      "stateCode": "ACT"
+    },
+    {
+      "slug": "hobart",
+      "name": "Hobart",
+      "state": "Tasmania",
+      "stateCode": "TAS"
+    },
+    {
+      "slug": "darwin",
+      "name": "Darwin",
+      "state": "Northern Territory",
+      "stateCode": "NT"
+    }
+  ]
+}

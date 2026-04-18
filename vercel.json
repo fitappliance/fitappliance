@@ -22,6 +22,7 @@
     { "source": "/compare/:slug",        "destination": "/pages/compare/:slug.html" },
     { "source": "/cavity/:slug",         "destination": "/pages/cavity/:slug.html" },
     { "source": "/doorway/:slug",        "destination": "/pages/doorway/:slug.html" },
+    { "source": "/location/:city/:category", "destination": "/pages/location/:city/:category.html" },
     { "source": "/guides/:slug",         "destination": "/pages/guides/:slug.html" }
   ],
   "headers": [

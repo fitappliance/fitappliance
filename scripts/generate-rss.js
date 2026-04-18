@@ -53,6 +53,7 @@ function buildItemRows({
   cavity,
   guides,
   doorway,
+  locations,
   pubDate
 }) {
   const rows = [];
@@ -62,6 +63,13 @@ function buildItemRows({
     link: `${baseUrl}${row.url ?? `/guides/${row.slug}`}`,
     pubDate,
     description: row.description ?? 'FitAppliance topic hub guide.'
+  }));
+  const locationRows = (locations ?? []).map((row, index) => ({
+    score: 90000 - index,
+    title: `${row.categoryLabel ?? row.category} Cavity & Doorway Guide — ${row.city ?? row.citySlug}`,
+    link: `${baseUrl}${row.url ?? `/location/${row.citySlug}/${row.category}`}`,
+    pubDate,
+    description: `${row.categoryLabel ?? row.category} fitting resources for ${row.city ?? row.citySlug}, ${row.stateCode ?? 'AU'}.`
   }));
 
   for (const row of brands) {
@@ -108,9 +116,9 @@ function buildItemRows({
 
   const ranked = rows
     .sort((left, right) => right.score - left.score || left.title.localeCompare(right.title))
-    .slice(0, Math.max(0, 50 - guideRows.length));
+    .slice(0, Math.max(0, 50 - guideRows.length - locationRows.length));
 
-  return [...guideRows, ...ranked].slice(0, 50);
+  return [...guideRows, ...locationRows, ...ranked].slice(0, 50);
 }
 
 async function generateRss({
@@ -125,8 +133,9 @@ async function generateRss({
   const cavity = await readJson(path.join(repoRoot, 'pages', 'cavity', 'index.json'), []);
   const doorway = await readJson(path.join(repoRoot, 'pages', 'doorway', 'index.json'), []);
   const guides = await readJson(path.join(repoRoot, 'pages', 'guides', 'index.json'), []);
+  const locations = await readJson(path.join(repoRoot, 'pages', 'location', 'index.json'), []);
   const pubDate = today.toUTCString();
-  const items = buildItemRows({ baseUrl, brands, comparisons, cavity, guides, doorway, pubDate });
+  const items = buildItemRows({ baseUrl, brands, comparisons, cavity, guides, doorway, locations, pubDate });
   const lastBuildDate = today.toUTCString();
 
   const xml = [
