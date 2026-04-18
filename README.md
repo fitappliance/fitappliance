@@ -573,3 +573,33 @@ Without step 3, the workflow will authenticate but still fail API reads due to m
 - Added Phase 31 test coverage:
   - [`tests/affiliate.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/affiliate.test.mjs)
   - verifies env-missing fallback, strict URL templating, sponsored/nofollow/noopener rel, and disclosure rendering.
+
+### Phase 32 — Email Subscription (Buttondown via Serverless Proxy)
+
+- Added subscription API endpoint:
+  - [`api/subscribe.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/api/subscribe.js)
+  - `POST` only, same-origin guard, honeypot support, and per-client rate limiting (`10/minute`).
+  - forwards subscriptions to Buttondown using `BUTTONDOWN_API_KEY`.
+  - never stores or returns subscriber email in API responses.
+- Added client-side form handler:
+  - [`public/scripts/subscribe.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/public/scripts/subscribe.js)
+  - progressively enhances static forms (`form[data-subscribe]`) with:
+    - async submit to `/api/subscribe`
+    - status messaging
+    - short local cooldown to reduce accidental repeat submits.
+- Added subscription UX surfaces:
+  - homepage sidebar form in [`index.html`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/index.html)
+  - guide-page right-rail forms generated from [`scripts/generate-guides.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/generate-guides.js) across all 5 hub pages
+  - thank-you page [`pages/subscribe.html`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/pages/subscribe.html).
+- Routing + policy updates:
+  - added `/subscribe` rewrites in both:
+    - [`vercel.json`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/vercel.json)
+    - [`v2/vercel.json`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/v2/vercel.json)
+  - updated [`pages/privacy-policy.html`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/pages/privacy-policy.html) with provider details, data handling, and unsubscribe flow.
+- Added test coverage:
+  - [`tests/subscribe.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/subscribe.test.mjs)
+  - validates 405 / 403 / 422 / 500 / 429 / 200 response paths.
+
+#### Required environment setup
+
+- Set `BUTTONDOWN_API_KEY` in deployment environment before enabling production signups.

@@ -16,6 +16,7 @@
     { "source": "/robots.txt",           "destination": "/public/robots.txt" },
     { "source": "/affiliate-disclosure", "destination": "/pages/affiliate-disclosure.html" },
     { "source": "/privacy-policy",       "destination": "/pages/privacy-policy.html" },
+    { "source": "/subscribe",            "destination": "/pages/subscribe.html" },
     { "source": "/methodology",          "destination": "/pages/methodology.html" },
     { "source": "/about/editorial-standards", "destination": "/pages/about/editorial-standards.html" },
     { "source": "/brands/:slug",         "destination": "/pages/brands/:slug.html" },

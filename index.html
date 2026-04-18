@@ -723,6 +723,61 @@ nav {
   font-family:'Instrument Serif',serif;font-size:16px;
   color:var(--ink);margin-bottom:14px;
 }
+.subscribe-form {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.subscribe-form input[type="email"] {
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1.5px solid var(--border);
+  background:var(--paper);
+  color:var(--ink);
+  font-size:14px;
+  font-family:'Outfit',sans-serif;
+}
+.subscribe-form button[type="submit"] {
+  width:100%;
+  border:none;
+  border-radius:10px;
+  background:var(--ink);
+  color:#fff;
+  font-size:13px;
+  font-weight:700;
+  font-family:'Outfit',sans-serif;
+  padding:10px 12px;
+  cursor:pointer;
+}
+.subscribe-form button[type="submit"]:disabled {
+  opacity:.6;
+  cursor:not-allowed;
+}
+.subscribe-note {
+  margin:0;
+  font-size:11px;
+  color:var(--ink-3);
+  line-height:1.5;
+}
+.subscribe-note a { color:var(--copper); }
+.subscribe-hp {
+  position:absolute !important;
+  left:-9999px !important;
+  width:1px !important;
+  height:1px !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
+.subscribe-status {
+  min-height:18px;
+  font-size:12px;
+  line-height:1.4;
+  color:var(--ink-3);
+}
+.subscribe-status[data-tone="success"] { color:var(--green); }
+.subscribe-status[data-tone="error"] { color:var(--red); }
+.subscribe-status[data-tone="warn"] { color:var(--amber); }
 .retailer-btns { display:flex;flex-direction:column;gap:8px; }
 .ret-btn {
   display:flex;align-items:center;justify-content:space-between;
@@ -1364,6 +1419,19 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
         <div class="rebate-result" id="rebateResult"></div>
       </div>
 
+      <div class="scard">
+        <div class="scard-title">📬 Get Weekly Fit Updates</div>
+        <form class="subscribe-form" data-subscribe action="/api/subscribe" method="post" novalidate>
+          <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+          <label class="subscribe-hp" aria-hidden="true">Company
+            <input type="text" name="hp_company" tabindex="-1" autocomplete="off">
+          </label>
+          <button type="submit">Subscribe for new model drops</button>
+          <p class="subscribe-note">No spam. One-click unsubscribe. <a href="/privacy-policy">Privacy Policy</a></p>
+          <p class="subscribe-status" data-subscribe-status aria-live="polite"></p>
+        </form>
+      </div>
+
       <!-- Retailers -->
       <div class="scard">
         <div class="scard-title">Shop at trusted AU retailers</div>
@@ -1596,6 +1664,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   </div>
 </div>
 
+<script defer src="/scripts/subscribe.js"></script>
 <script type="module">
 import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/product-card.js';
 import { renderFreshnessBanner } from './scripts/ui/freshness.js';
