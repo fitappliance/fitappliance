@@ -264,3 +264,21 @@ TXT: fitappliance.com.au -> google-site-verification=5keGnUyvuq31_mxZ9pNVPIsh7Bz
   - `npm run lighthouse-ci -- --min-score 0.9`
   - `npm test`
   - `npm run build`
+
+### Phase 21 — Internal Link Graph & Topic Hubs
+
+- Added `scripts/build-link-graph.js` to crawl `index.html` + `pages/**/*.html` and generate `reports/link-graph.json` with node-level inlink/outlink metrics.
+- Added `scripts/generate-guides.js` to generate 5 static hub pages in `/pages/guides/`, each with substantial static outlinks and cross-links between hub pages.
+- Added static related-link modules to generated pages:
+  - Cavity pages: `Related cavity sizes` + guide hub links.
+  - Doorway pages: `Also viewed doorway guides` + guide hub links.
+  - Brand pages: `Same brand alternatives` + guide hub links.
+  - Compare pages: `Also viewed comparisons` + guide hub links.
+- Updated pipelines and feeds so guide pages are included in:
+  - `public/sitemap.xml`
+  - `public/rss.xml`
+  - `public/image-sitemap.xml`
+- Validation commands:
+  - `npm run generate-all`
+  - `npm test`
+  - `npm run build`

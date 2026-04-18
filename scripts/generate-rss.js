@@ -51,10 +51,18 @@ function buildItemRows({
   brands,
   comparisons,
   cavity,
+  guides,
   doorway,
   pubDate
 }) {
   const rows = [];
+  const guideRows = (guides ?? []).map((row, index) => ({
+    score: 100000 - index,
+    title: row.title ?? `Guide: ${row.slug}`,
+    link: `${baseUrl}${row.url ?? `/guides/${row.slug}`}`,
+    pubDate,
+    description: row.description ?? 'FitAppliance topic hub guide.'
+  }));
 
   for (const row of brands) {
     const cat = CATEGORY_LABEL[row.cat] ?? String(row.cat ?? 'Appliance');
@@ -98,9 +106,11 @@ function buildItemRows({
     });
   }
 
-  return rows
+  const ranked = rows
     .sort((left, right) => right.score - left.score || left.title.localeCompare(right.title))
-    .slice(0, 50);
+    .slice(0, Math.max(0, 50 - guideRows.length));
+
+  return [...guideRows, ...ranked].slice(0, 50);
 }
 
 async function generateRss({
@@ -114,8 +124,9 @@ async function generateRss({
   const comparisons = await readJson(path.join(repoRoot, 'pages', 'compare', 'index.json'), []);
   const cavity = await readJson(path.join(repoRoot, 'pages', 'cavity', 'index.json'), []);
   const doorway = await readJson(path.join(repoRoot, 'pages', 'doorway', 'index.json'), []);
+  const guides = await readJson(path.join(repoRoot, 'pages', 'guides', 'index.json'), []);
   const pubDate = today.toUTCString();
-  const items = buildItemRows({ baseUrl, brands, comparisons, cavity, doorway, pubDate });
+  const items = buildItemRows({ baseUrl, brands, comparisons, cavity, guides, doorway, pubDate });
   const lastBuildDate = today.toUTCString();
 
   const xml = [

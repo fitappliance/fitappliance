@@ -26,6 +26,13 @@ const CATEGORY_META = {
     labelSingular: 'dryer'
   }
 };
+const GUIDE_HUB_LINKS = [
+  { url: '/guides/fridge-clearance-requirements', label: 'Fridge clearance guide hub' },
+  { url: '/guides/dishwasher-cavity-sizing', label: 'Dishwasher cavity guide hub' },
+  { url: '/guides/washing-machine-doorway-access', label: 'Washing machine doorway guide hub' },
+  { url: '/guides/dryer-ventilation-guide', label: 'Dryer ventilation guide hub' },
+  { url: '/guides/appliance-fit-sizing-handbook', label: 'Appliance fit sizing handbook' }
+];
 
 function slugify(value) {
   return String(value ?? '')
@@ -254,7 +261,8 @@ function buildBrandPageHtml({
   modelSamples = [],
   itemListProducts = [],
   pendingSwingCount = 0,
-  relatedCompares = []
+  relatedCompares = [],
+  sameBrandAlternatives = []
 }) {
   const categoryMeta = CATEGORY_META[category] ?? {
     slug: category.replace(/_/g, '-'),
@@ -542,6 +550,22 @@ function buildBrandPageHtml({
         }).join('\n        ')}
       </ul>
     </section>` : ''}
+    <section style="margin:20px 0;padding:20px 24px;background:#f5f2ec;border-radius:8px;border:1px solid var(--border)">
+      <h2 style="font-size:15px;font-weight:600;margin:0 0 12px;color:var(--ink)">Same brand alternatives</h2>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px">
+        ${sameBrandAlternatives.map((row) => (
+          `<li><a href="${escHtml(row.url)}" style="display:inline-block;padding:6px 14px;border:1px solid var(--border);border-radius:20px;font-size:13px;color:var(--copper);text-decoration:none;background:#fff">${escHtml(row.label)}</a></li>`
+        )).join('\n        ')}
+      </ul>
+    </section>
+    <section style="margin:20px 0;padding:20px 24px;background:#f5f2ec;border-radius:8px;border:1px solid var(--border)">
+      <h2 style="font-size:15px;font-weight:600;margin:0 0 12px;color:var(--ink)">Also viewed</h2>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px">
+        ${GUIDE_HUB_LINKS.map((row) => (
+          `<li><a href="${escHtml(row.url)}" style="display:inline-block;padding:6px 14px;border:1px solid var(--border);border-radius:20px;font-size:13px;color:var(--copper);text-decoration:none;background:#fff">${escHtml(row.label)}</a></li>`
+        )).join('\n        ')}
+      </ul>
+    </section>
     <footer>
       <p>Source: FitAppliance clearance and model coverage dataset for Australia.</p>
     </footer>
@@ -679,6 +703,26 @@ async function generateBrandPages(options = {}) {
     const relatedCompares = compareIndex
       .filter((cRow) => cRow.cat === row.cat && (cRow.brandA === row.brand || cRow.brandB === row.brand))
       .slice(0, 4);
+    const sameBrandAlternatives = indexRows
+      .filter((candidate) => candidate.brand === row.brand && candidate.slug !== row.slug)
+      .slice(0, 8)
+      .map((candidate) => ({
+        url: candidate.url,
+        label: `${displayBrandName(candidate.brand)} ${CATEGORY_META[candidate.cat]?.labelPlural ?? String(candidate.cat).replace(/_/g, ' ')}`
+      }));
+    if (sameBrandAlternatives.length < 6) {
+      const categoryFallbacks = Object.entries(CATEGORY_META)
+        .filter(([cat]) => cat !== row.cat)
+        .map(([cat, meta]) => ({
+          url: `/?cat=${encodeURIComponent(cat)}&brand=${encodeURIComponent(row.brand)}`,
+          label: `${displayBrand} ${meta.labelPlural} fit check`
+        }));
+      for (const fallback of categoryFallbacks) {
+        if (sameBrandAlternatives.length >= 8) break;
+        if (sameBrandAlternatives.some((rowAlt) => rowAlt.url === fallback.url)) continue;
+        sameBrandAlternatives.push(fallback);
+      }
+    }
     const html = buildBrandPageHtml({
       brand: displayBrand,
       brandRaw: row.brand,
@@ -694,7 +738,8 @@ async function generateBrandPages(options = {}) {
       pendingSwingCount: row.pendingSwingCount,
       modelSamples: row.modelSamples,
       itemListProducts: row.itemListProducts,
-      relatedCompares
+      relatedCompares,
+      sameBrandAlternatives
     });
     await writeFile(row.filePath, html, 'utf8');
   }

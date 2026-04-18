@@ -60,6 +60,7 @@ async function generateImageSitemap({
 } = {}) {
   const brands = await readJson(path.join(repoRoot, 'pages', 'brands', 'index.json'), []);
   const compares = await readJson(path.join(repoRoot, 'pages', 'compare', 'index.json'), []);
+  const guides = await readJson(path.join(repoRoot, 'pages', 'guides', 'index.json'), []);
   const ogDir = path.join(repoRoot, 'public', 'og-images');
   const ogFiles = new Set((await readdir(ogDir, { withFileTypes: true }))
     .filter((entry) => entry.isFile() && entry.name.endsWith('.png'))
@@ -82,6 +83,15 @@ async function generateImageSitemap({
     if (!ogFiles.has(imageFile)) continue;
     rows.push({
       loc: `${baseUrl}${row.url ?? `/compare/${row.slug}`}`,
+      image: `${baseUrl}/og-images/${imageFile}`
+    });
+  }
+
+  for (const row of guides) {
+    const imageFile = `guide-${row.slug}.png`;
+    if (!ogFiles.has(imageFile)) continue;
+    rows.push({
+      loc: `${baseUrl}${row.url ?? `/guides/${row.slug}`}`,
       image: `${baseUrl}/og-images/${imageFile}`
     });
   }

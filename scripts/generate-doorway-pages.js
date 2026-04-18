@@ -7,6 +7,13 @@ const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const MIN_DOORWAY = 600;
 const MAX_DOORWAY = 900;
 const STEP = 10;
+const GUIDE_HUB_LINKS = [
+  { url: '/guides/washing-machine-doorway-access', label: 'Washing Machine Doorway Access Guide' },
+  { url: '/guides/appliance-fit-sizing-handbook', label: 'Appliance Fit Sizing Handbook' },
+  { url: '/guides/fridge-clearance-requirements', label: 'Fridge Clearance Requirements Guide' },
+  { url: '/guides/dishwasher-cavity-sizing', label: 'Dishwasher Cavity Sizing Guide' },
+  { url: '/guides/dryer-ventilation-guide', label: 'Dryer Ventilation Guide' }
+];
 
 function escHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -91,7 +98,7 @@ function buildBreadcrumbJsonLd(doorway) {
   };
 }
 
-function buildPageHtml({ doorway, matched, adjacentDoorways }) {
+function buildPageHtml({ doorway, matched, adjacentDoorways, relatedDoorways }) {
   const title = `Fridges that fit through a ${doorway}mm doorway | FitAppliance Australia`;
   const description = `${matched.length} fridge models can pass through a ${doorway}mm doorway with basic handling margin.`;
   const canonical = `https://fitappliance.com.au/doorway/${doorway}mm-fridge-doorway`;
@@ -147,6 +154,16 @@ function buildPageHtml({ doorway, matched, adjacentDoorways }) {
       <li>Measure every pinch-point between entry and kitchen.</li>
       <li>Allow extra margin for handles, straps, and safe carrying angle.</li>
     </ul>
+
+    <h2>Also viewed doorway guides</h2>
+    <div class="chip-row">
+      ${relatedDoorways.map((value) => `<a class="chip" href="/doorway/${value}mm-fridge-doorway">${value}mm doorway fit check</a>`).join('')}
+    </div>
+
+    <h2>Related fitting guides</h2>
+    <div class="chip-row">
+      ${GUIDE_HUB_LINKS.map((link) => `<a class="chip" href="${link.url}">${escHtml(link.label)}</a>`).join('')}
+    </div>
   </main>
   <script type="application/ld+json">
 ${faqJsonLd}
@@ -200,7 +217,11 @@ async function generateDoorwayPages(options = {}) {
       adjacentDoorways: {
         previous: doorways[index - 1] ?? null,
         next: doorways[index + 1] ?? null
-      }
+      },
+      relatedDoorways: doorways
+        .filter((candidate) => candidate !== doorway)
+        .sort((left, right) => Math.abs(left - doorway) - Math.abs(right - doorway))
+        .slice(0, 8)
     });
     await writeFile(path.join(outputDir, `${slug}.html`), html, 'utf8');
 

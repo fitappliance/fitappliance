@@ -91,8 +91,10 @@ async function generateOgImages({
 } = {}) {
   const brandsIndexPath = path.join(repoRoot, 'pages', 'brands', 'index.json');
   const compareIndexPath = path.join(repoRoot, 'pages', 'compare', 'index.json');
+  const guideIndexPath = path.join(repoRoot, 'pages', 'guides', 'index.json');
   const brands = await readJson(brandsIndexPath, []);
   const compares = await readJson(compareIndexPath, []);
+  const guides = await readJson(guideIndexPath, []);
 
   await cleanOutputDir(outputDir);
 
@@ -116,6 +118,16 @@ async function generateOgImages({
       outputPath: path.join(outputDir, fileName),
       title: `${row.brandA} vs ${row.brandB}`,
       subtitle: `${catMeta.label} clearance comparison`
+    });
+    written += 1;
+  }
+
+  for (const row of guides) {
+    const fileName = `guide-${row.slug}.png`;
+    await writeOgImage({
+      outputPath: path.join(outputDir, fileName),
+      title: row.title ?? 'Appliance Fit Guide',
+      subtitle: 'FitAppliance Topic Hub'
     });
     written += 1;
   }

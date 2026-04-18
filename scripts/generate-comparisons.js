@@ -26,6 +26,13 @@ const CATEGORY_META = {
     labelSingular: 'Dryer'
   }
 };
+const GUIDE_HUB_LINKS = [
+  { url: '/guides/fridge-clearance-requirements', label: 'Fridge clearance guide hub' },
+  { url: '/guides/dishwasher-cavity-sizing', label: 'Dishwasher cavity guide hub' },
+  { url: '/guides/washing-machine-doorway-access', label: 'Washing machine doorway guide hub' },
+  { url: '/guides/dryer-ventilation-guide', label: 'Dryer ventilation guide hub' },
+  { url: '/guides/appliance-fit-sizing-handbook', label: 'Appliance fit sizing handbook' }
+];
 
 function slugify(value) {
   return String(value ?? '')
@@ -363,6 +370,7 @@ function buildComparisonPageHtml({
   categoryMeta,
   modelSamplesA = [],
   modelSamplesB = [],
+  alsoViewedComparisons = [],
   lastUpdated = new Date().toISOString().slice(0, 10)
 }) {
   const displayBrandA = displayBrandName(brandA);
@@ -583,6 +591,18 @@ function buildComparisonPageHtml({
         <a href="/brands/${escHtml(slugify(brandB))}-${escHtml(categoryMeta.slug)}-clearance" style="font-size:13px;color:#b55a2c;text-decoration:none">${escHtml(displayBrandB)} ${escHtml(categoryMeta.labelSingular)} clearance specs →</a>
       </div>
     </section>
+    ${alsoViewedComparisons.length > 0 ? `<section style="margin:20px 0;padding:16px 24px;background:#f5f2ec;border-radius:8px;border:1px solid #e0d9ce">
+      <p style="font-size:13px;color:#7a766e;margin:0 0 10px">Also viewed comparisons:</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        ${alsoViewedComparisons.map((row) => `<a href="/compare/${escHtml(row.slug)}" style="display:inline-block;padding:6px 14px;border:1px solid #e0d9ce;border-radius:20px;font-size:13px;color:#b55a2c;text-decoration:none;background:#fff">${escHtml(row.label)}</a>`).join('\n        ')}
+      </div>
+    </section>` : ''}
+    <section style="margin:20px 0;padding:16px 24px;background:#f5f2ec;border-radius:8px;border:1px solid #e0d9ce">
+      <p style="font-size:13px;color:#7a766e;margin:0 0 10px">Related fitting guides:</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        ${GUIDE_HUB_LINKS.map((row) => `<a href="${escHtml(row.url)}" style="display:inline-block;padding:6px 14px;border:1px solid #e0d9ce;border-radius:20px;font-size:13px;color:#b55a2c;text-decoration:none;background:#fff">${escHtml(row.label)}</a>`).join('\n        ')}
+      </div>
+    </section>
   </main>
   <script>
     if (typeof gtag === 'function') {
@@ -670,7 +690,7 @@ async function generateComparisonPages(options = {}) {
     };
     const slug = slugifyPair(pair.brandA, pair.brandB, meta.slug);
     const filePath = path.join(outputDir, `${slug}.html`);
-    const html = buildComparisonPageHtml({
+    const record = {
       brandA: pair.brandA,
       brandB: pair.brandB,
       cat: pair.cat,
@@ -679,20 +699,11 @@ async function generateComparisonPages(options = {}) {
       clearanceA: pair.clearanceA,
       clearanceB: pair.clearanceB,
       slug,
+      url: `/compare/${slug}`,
       categoryMeta: meta,
       modelSamplesA: sampleBrandModels(products, pair.cat, pair.brandA),
       modelSamplesB: sampleBrandModels(products, pair.cat, pair.brandB),
-      lastUpdated: appliances.last_updated
-    });
-    const record = {
-      brandA: pair.brandA,
-      brandB: pair.brandB,
-      cat: pair.cat,
-      slug,
-      url: `/compare/${slug}`,
-      modelsA: pair.modelsA,
-      modelsB: pair.modelsB,
-      html,
+      lastUpdated: appliances.last_updated,
       filePath
     };
     const existing = pageBySlug.get(slug);
@@ -703,7 +714,35 @@ async function generateComparisonPages(options = {}) {
 
   const rows = Array.from(pageBySlug.values());
   for (const row of rows) {
-    await writeFile(row.filePath, row.html, 'utf8');
+    const alsoViewedComparisons = rows
+      .filter((candidate) => candidate.slug !== row.slug && candidate.cat === row.cat)
+      .sort((left, right) => {
+        const leftShared = Number(left.brandA === row.brandA || left.brandA === row.brandB || left.brandB === row.brandA || left.brandB === row.brandB);
+        const rightShared = Number(right.brandA === row.brandA || right.brandA === row.brandB || right.brandB === row.brandA || right.brandB === row.brandB);
+        if (rightShared !== leftShared) return rightShared - leftShared;
+        return (right.modelsA + right.modelsB) - (left.modelsA + left.modelsB);
+      })
+      .slice(0, 8)
+      .map((candidate) => ({
+        slug: candidate.slug,
+        label: `${displayBrandName(candidate.brandA)} vs ${displayBrandName(candidate.brandB)}`
+      }));
+    const html = buildComparisonPageHtml({
+      brandA: row.brandA,
+      brandB: row.brandB,
+      cat: row.cat,
+      modelsA: row.modelsA,
+      modelsB: row.modelsB,
+      clearanceA: row.clearanceA,
+      clearanceB: row.clearanceB,
+      slug: row.slug,
+      categoryMeta: row.categoryMeta,
+      modelSamplesA: row.modelSamplesA,
+      modelSamplesB: row.modelSamplesB,
+      alsoViewedComparisons,
+      lastUpdated: row.lastUpdated
+    });
+    await writeFile(row.filePath, html, 'utf8');
   }
 
   rows.sort((left, right) => {

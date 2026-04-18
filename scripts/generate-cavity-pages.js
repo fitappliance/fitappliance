@@ -7,6 +7,13 @@ const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const MIN_WIDTH = 500;
 const MAX_WIDTH = 1100;
 const STEP = 10;
+const GUIDE_HUB_LINKS = [
+  { url: '/guides/fridge-clearance-requirements', label: 'Fridge Clearance Requirements Guide' },
+  { url: '/guides/appliance-fit-sizing-handbook', label: 'Appliance Fit Sizing Handbook' },
+  { url: '/guides/dishwasher-cavity-sizing', label: 'Dishwasher Cavity Sizing Guide' },
+  { url: '/guides/washing-machine-doorway-access', label: 'Washing Machine Doorway Access Guide' },
+  { url: '/guides/dryer-ventilation-guide', label: 'Dryer Ventilation Guide' }
+];
 
 function escHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -94,6 +101,7 @@ function buildPageHtml({
   resultCount,
   featured,
   adjacentWidths,
+  relatedWidths,
   topBrands,
   compareLinks
 }) {
@@ -157,6 +165,18 @@ function buildPageHtml({
     <div class="compare">
       ${compareLinks.map((link) => `<a class="chip" href="${escHtml(link.url)}">${escHtml(link.label)}</a>`).join('')}
     </div>` : ''}
+
+    <h2>Related cavity sizes</h2>
+    <div class="nav">
+      ${relatedWidths.map((relatedWidth) => (
+        `<a class="chip" href="/cavity/${relatedWidth}mm-fridge">${relatedWidth}mm cavity fit check</a>`
+      )).join('')}
+    </div>
+
+    <h2>Also viewed guides</h2>
+    <div class="compare">
+      ${GUIDE_HUB_LINKS.map((link) => `<a class="chip" href="${link.url}">${escHtml(link.label)}</a>`).join('')}
+    </div>
   </main>
   <script type="application/ld+json">
 ${itemListJsonLd}
@@ -236,6 +256,10 @@ async function generateCavityPages(options = {}) {
         previous: widths[index - 1] ?? null,
         next: widths[index + 1] ?? null
       },
+      relatedWidths: widths
+        .filter((candidate) => candidate !== width)
+        .sort((left, right) => Math.abs(left - width) - Math.abs(right - width))
+        .slice(0, 8),
       topBrands,
       compareLinks
     });
