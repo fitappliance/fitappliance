@@ -20,13 +20,19 @@
     "generate-cavity": "node scripts/generate-cavity-pages.js",
     "generate-doorway": "node scripts/generate-doorway-pages.js",
     "generate-comparisons": "node scripts/generate-comparisons.js",
+    "generate-og-images": "node scripts/generate-og-images.js",
+    "generate-image-sitemap": "node scripts/generate-image-sitemap.js",
+    "generate-rss": "node scripts/generate-rss.js",
     "generate-pages": "node scripts/generate-brand-pages.js && node scripts/generate-comparisons.js && node scripts/generate-sitemap.js",
-    "generate-all": "npm run generate-pages && npm run generate-cavity && npm run generate-doorway && npm run generate-sitemap",
+    "generate-all": "npm run generate-pages && npm run generate-cavity && npm run generate-doorway && npm run generate-sitemap && npm run generate-og-images && npm run generate-image-sitemap && npm run generate-rss",
     "promo-kit": "node scripts/generate-promotion-kit.js",
     "ping-indexnow": "node scripts/ping-indexnow.js",
     "audit-compare-links": "node scripts/audit-compare-links.js",
     "audit-link-quality": "node scripts/audit-link-quality.js",
     "verify-compare-quality": "node scripts/verify-compare-quality.js",
     "lint": "node --check scripts/*.js scripts/sources/*.js scripts/utils/*.js tests/*.test.mjs && sh -c 'for f in public/scripts/ui/*.js; do node --input-type=module --check < \"$f\"; done'"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }

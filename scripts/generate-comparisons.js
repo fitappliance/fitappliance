@@ -332,7 +332,10 @@ function buildComparisonNarrative(clearanceA, clearanceB, brandA, brandB, catego
   };
 }
 
-function buildSocialMetaTags({ title, description, canonical }) {
+function buildSocialMetaTags({ title, description, canonical, ogImageUrl = null }) {
+  const imageMeta = ogImageUrl
+    ? `  <meta property="og:image" content="${escHtml(ogImageUrl)}">`
+    : '';
   return [
     '  <meta property="og:type" content="article">',
     '  <meta property="og:site_name" content="FitAppliance">',
@@ -340,11 +343,12 @@ function buildSocialMetaTags({ title, description, canonical }) {
     `  <meta property="og:description" content="${escHtml(description)}">`,
     `  <meta property="og:url" content="${canonical}">`,
     '  <meta property="og:locale" content="en_AU">',
+    imageMeta,
     '  <meta name="twitter:card" content="summary">',
     `  <meta name="twitter:title" content="${escHtml(title)}">`,
     `  <meta name="twitter:description" content="${escHtml(description)}">`,
     '  <meta name="twitter:site" content="@fitappliance">'
-  ].join('\n');
+  ].filter(Boolean).join('\n');
 }
 
 function buildComparisonPageHtml({
@@ -366,6 +370,7 @@ function buildComparisonPageHtml({
   const title = `${displayBrandA} vs ${displayBrandB} ${categoryMeta.labelSingular} Clearance Requirements — Australia 2026`;
   const description = `${displayBrandA} vs ${displayBrandB} ${categoryMeta.labelSingular.toLowerCase()} clearance comparison for Australian homes. Side/rear/top spacing and fit implications with real model coverage.`;
   const canonical = `https://fitappliance.com.au/compare/${slug}`;
+  const ogImageUrl = `https://fitappliance.com.au/og-images/compare-${slug}.png`;
   const narrative = buildComparisonNarrative(
     clearanceA,
     clearanceB,
@@ -462,7 +467,7 @@ function buildComparisonPageHtml({
   <title>${escHtml(title)}</title>
   <meta name="description" content="${escHtml(description)}">
   <link rel="canonical" href="${canonical}">
-${buildSocialMetaTags({ title, description, canonical })}
+  ${buildSocialMetaTags({ title, description, canonical, ogImageUrl })}
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WNPNS4ZGWK"></script>
   <script>
     window.dataLayer = window.dataLayer || [];

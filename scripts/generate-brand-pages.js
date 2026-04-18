@@ -267,6 +267,7 @@ function buildBrandPageHtml({
     `Requires ${side}mm side, ${rear}mm rear, ${top}mm top clearance. Find the ${count} ${brand} ` +
     `${categoryMeta.labelSingular} models that fit your cavity.`;
   const canonical = `https://fitappliance.com.au/brands/${slug}`;
+  const ogImageUrl = `https://fitappliance.com.au/og-images/${slugify(brandRaw)}-${categoryMeta.slug}.png`;
   const ctaUrl = `/?cat=${encodeURIComponent(category)}&brand=${encodeURIComponent(brandRaw)}`;
   const siteJsonLd = JSON.stringify(buildWebSiteJsonLd(), null, 2);
   const breadcrumbJsonLd = JSON.stringify(
@@ -320,7 +321,7 @@ function buildBrandPageHtml({
   <title>${escHtml(title)}</title>
   <meta name="description" content="${escHtml(description)}">
   <link rel="canonical" href="${canonical}">
-  ${buildSocialMetaTags({ title, description, canonical, brandImageUrl: null })}
+  ${buildSocialMetaTags({ title, description, canonical, brandImageUrl: ogImageUrl })}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
