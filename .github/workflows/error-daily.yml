@@ -1,0 +1,37 @@
+name: Error Monitor Daily
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  error-monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Prepare error log folder
+        run: mkdir -p reports/errors
+
+      - name: Aggregate error signatures
+        run: npm run aggregate-errors
+
+      - name: Open/reopen/comment issues by signature
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: npm run open-error-issue

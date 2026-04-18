@@ -633,3 +633,35 @@ Without step 3, the workflow will authenticate but still fail API reads due to m
 - Added test coverage:
   - [`tests/pwa.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/pwa.test.mjs)
   - validates manifest shape, SW versioning, `/api/*` non-caching, and deferred SW registration.
+
+### Phase 36 — Self-Hosted Error Monitor
+
+- Added lightweight client beacon:
+  - [`public/scripts/error-beacon.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/public/scripts/error-beacon.js)
+  - captures `window.onerror` + `unhandledrejection`
+  - stack trace is capped to top `5` frames
+  - source URLs strip query/fragment
+  - message/stack redact email and phone-like strings
+  - same-day session dedupe via localStorage signature set
+  - gzip size target is met (`< 2KB`).
+- Added ingestion API:
+  - [`api/error.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/api/error.js)
+  - POST only, same-origin guard, 30/minute rate limit
+  - validates + sanitizes payload (`405`, `403`, `422`, `429` covered)
+  - never stores raw IP; uses hashed client token only for rate limiting.
+- Added aggregation + issue automation:
+  - [`scripts/aggregate-errors.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/aggregate-errors.js)
+  - groups by `sha256(message + source-basename + line)` and writes `reports/errors-YYYYMMDD.json`
+  - [`scripts/open-error-issue.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/open-error-issue.js)
+  - action rules:
+    - new signature → create issue (`auto-error`)
+    - existing open issue → append comment
+    - closed issue recurring within 7 days → reopen + comment.
+- Added workflow:
+  - [`.github/workflows/error-daily.yml`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/.github/workflows/error-daily.yml)
+  - schedule: daily UTC `02:00` + `workflow_dispatch`.
+- Privacy updates:
+  - [`pages/privacy-policy.html`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/pages/privacy-policy.html) now includes a dedicated error-monitor section (collected fields, redaction, dedupe, retention intent).
+- Added tests:
+  - [`tests/error-monitor.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/error-monitor.test.mjs)
+  - covers sanitize, redact, dedupe aggregation, reopen behavior, and 405 guard.
