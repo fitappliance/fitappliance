@@ -67,6 +67,8 @@ async function generateSitemap({
   repoRoot = path.resolve(__dirname, '..'),
   brandsIndexPath = path.join(repoRoot, 'pages', 'brands', 'index.json'),
   compareIndexPath = null,
+  cavityIndexPath = null,
+  doorwayIndexPath = null,
   outputPath = path.join(repoRoot, 'public', 'sitemap.xml'),
   baseUrl = 'https://fitappliance.com.au',
   today = new Date().toISOString().slice(0, 10),
@@ -84,9 +86,15 @@ async function generateSitemap({
 
   const effectiveCompareIndexPath = compareIndexPath
     ?? path.join(path.dirname(path.dirname(brandsIndexPath)), 'compare', 'index.json');
+  const effectiveCavityIndexPath = cavityIndexPath
+    ?? path.join(path.dirname(path.dirname(brandsIndexPath)), 'cavity', 'index.json');
+  const effectiveDoorwayIndexPath = doorwayIndexPath
+    ?? path.join(path.dirname(path.dirname(brandsIndexPath)), 'doorway', 'index.json');
 
   const brandRows = await readJsonIfExists(brandsIndexPath);
   const compareRows = await readJsonIfExists(effectiveCompareIndexPath);
+  const cavityRows = await readJsonIfExists(effectiveCavityIndexPath);
+  const doorwayRows = await readJsonIfExists(effectiveDoorwayIndexPath);
   const sortedBrands = sortBrandEntries(Array.isArray(brandRows) ? brandRows : []);
   const sortedComparisons = [...(Array.isArray(compareRows) ? compareRows : [])].sort((left, right) => {
     const leftCat = String(left?.cat ?? '');
@@ -101,6 +109,12 @@ async function generateSitemap({
     const rightB = String(right?.brandB ?? '');
     return leftB.localeCompare(rightB);
   });
+  const sortedCavity = [...(Array.isArray(cavityRows) ? cavityRows : [])].sort(
+    (left, right) => Number(left?.width ?? 0) - Number(right?.width ?? 0)
+  );
+  const sortedDoorway = [...(Array.isArray(doorwayRows) ? doorwayRows : [])].sort(
+    (left, right) => Number(left?.doorway ?? 0) - Number(right?.doorway ?? 0)
+  );
 
   const staticNodes = STATIC_PAGES.map((page) =>
     buildUrlNode({
@@ -129,19 +143,39 @@ async function generateSitemap({
     })
   );
 
+  const cavityNodes = sortedCavity.map((row) =>
+    buildUrlNode({
+      loc: toAbsoluteUrl(baseUrl, row.url ?? `/cavity/${row.slug}`),
+      lastmod: today,
+      changefreq: 'weekly',
+      priority: '0.6'
+    })
+  );
+
+  const doorwayNodes = sortedDoorway.map((row) =>
+    buildUrlNode({
+      loc: toAbsoluteUrl(baseUrl, row.url ?? `/doorway/${row.slug}`),
+      lastmod: today,
+      changefreq: 'weekly',
+      priority: '0.6'
+    })
+  );
+
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ...staticNodes,
     ...brandNodes,
     ...comparisonNodes,
+    ...cavityNodes,
+    ...doorwayNodes,
     '</urlset>',
     ''
   ].join('\n');
 
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, xml, 'utf8');
-  const urlCount = STATIC_PAGES.length + brandNodes.length + comparisonNodes.length;
+  const urlCount = STATIC_PAGES.length + brandNodes.length + comparisonNodes.length + cavityNodes.length + doorwayNodes.length;
   logger.log(`Generated sitemap with ${urlCount} URLs at ${outputPath}`);
 
   return { urlCount, outputPath };
