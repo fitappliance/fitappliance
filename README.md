@@ -634,6 +634,41 @@ Without step 3, the workflow will authenticate but still fail API reads due to m
   - [`tests/pwa.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/pwa.test.mjs)
   - validates manifest shape, SW versioning, `/api/*` non-caching, and deferred SW registration.
 
+### Phase 34 — GSC-Driven Auto Content PR Pipeline
+
+- Added deterministic candidate selector:
+  - [`scripts/auto-content-pipeline.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/auto-content-pipeline.js)
+  - reads latest `reports/gsc-*.json` + sitemap and applies hard filters:
+    - impressions `>= 50`
+    - position `11..30`
+    - CTR `< 0.05`
+    - query words `>= 3`
+    - sitemap slug similarity `> 0.9` skip
+    - blacklist skip: `buy`, `cheap`, `deal`, `coupon`, `discount`, `free shipping`
+  - generates only template-based HTML drafts backed by real `public/data/*.json` fields.
+  - enforces 5 quality gates before publishability:
+    - word count `>= 300`
+    - contains `<table>` or `<dl>`
+    - contains internal links to existing fit pages
+    - no placeholder markers (`Lorem ipsum`, `TODO`, `FIXME`, `<placeholder>`)
+    - schema parse errors `= 0`
+  - enforces minimum `3` real data references per query, otherwise skip.
+- Added PR opening automation with cap:
+  - [`scripts/open-content-pr.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/open-content-pr.js)
+  - applies weekly max of `10` PRs
+  - creates branch per query (`auto/content-YYYYMMDD-{slug}`)
+  - updates guide page + `pages/guides/index.json` + sitemap + RSS
+  - runs schema validation before commit
+  - opens PR with `auto-content` label and checklist (no auto-merge flow).
+- Added workflow:
+  - [`.github/workflows/auto-content.yml`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/.github/workflows/auto-content.yml)
+  - schedule: Wednesday UTC `04:00` + `workflow_dispatch`
+  - runs candidate pipeline first, then PR opener
+  - remains green when GSC report is absent (no-candidate exit path).
+- Added tests:
+  - [`tests/auto-content.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/auto-content.test.mjs)
+  - covers classification, blacklist skip, query-length skip, sitemap similarity skip, quality-gate rejection, min-data-point skip, and `max 10` PR cap.
+
 ### Phase 36 — Self-Hosted Error Monitor
 
 - Added lightweight client beacon:
