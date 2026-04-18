@@ -274,6 +274,17 @@ nav {
 }
 .btn-search:hover { background:var(--copper-2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(181,90,44,.35); }
 .btn-search:active { transform:translateY(0); }
+.fit-checker-link {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13px;
+}
+.fit-checker-link a {
+  color: var(--copper);
+  font-weight: 600;
+  text-decoration: none;
+}
+.fit-checker-link a:hover { text-decoration: underline; }
 
 /* ─── TRUST STRIP ─── */
 .trust-strip {
@@ -1282,6 +1293,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="white" stroke-width="1.8"/><path d="M12 12l3.5 3.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
         Find Appliances That Fit
       </button>
+      <p class="fit-checker-link"><a href="/tools/fit-checker">Try the fit checker →</a></p>
       <div id="searchHistoryMount"></div>
     </div>
   </div>

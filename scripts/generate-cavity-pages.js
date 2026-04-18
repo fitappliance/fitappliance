@@ -166,6 +166,20 @@ function buildPageHtml({
     a:hover { text-decoration:underline; }
     .nav, .brands, .compare { margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
     .chip { background:var(--white); border:1px solid var(--border); border-radius:999px; padding:6px 10px; font-size:13px; }
+    .tool-callout {
+      margin-top: 14px;
+      padding: 11px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--paper);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--ink-2);
+    }
+    .tool-callout a { font-weight: 700; }
   </style>
 </head>
 <body>
@@ -174,6 +188,10 @@ function buildPageHtml({
     <h1>Fridges that fit a ${width}mm cavity (Australia 2026)</h1>
     <p id="quick-answer">${resultCount} fridge models currently fit this cavity width after per-brand side clearance.</p>
     <p>Use this page as a quick shortlist, then run your exact height/depth check on the main calculator.</p>
+    <div class="tool-callout">
+      <span>Need a fast shortlist?</span>
+      <a href="/tools/fit-checker">Try the fit checker</a>
+    </div>
 
     <div class="nav">
       ${adjacentWidths.previous ? `<a class="chip" href="/cavity/${adjacentWidths.previous}mm-fridge">← ${adjacentWidths.previous}mm</a>` : ''}

@@ -361,3 +361,33 @@ Without step 3, the workflow will authenticate but still fail API reads due to m
   - `node --test tests/location-pages.test.mjs`
   - `npm test`
   - `npm run build`
+
+### Phase 25 — Interactive Cavity Fit Checker
+
+- Added standalone tool page:
+  - [`pages/tools/fit-checker.html`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/pages/tools/fit-checker.html)
+  - includes `SoftwareApplication` + `HowTo` schema blocks.
+- Added zero-dependency checker script:
+  - [`public/scripts/fit-checker.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/public/scripts/fit-checker.js)
+  - loads `/data/appliances.json`
+  - validates cavity dimensions safely
+  - returns matching appliance slug + deep-link into `/?cat=...`
+  - uses `<dialog>` + `localStorage` for last 3 searches
+  - no cookies, no trackers, no `console.log`.
+- Added static SEO-visible links to the tool:
+  - homepage (`index.html`) has `Try the fit checker →`
+  - all generated cavity pages now include `/tools/fit-checker` link.
+- Routing:
+  - added Vercel rewrite `/tools/:slug` → `/pages/tools/:slug.html`.
+- Added test coverage:
+  - [`tests/fit-checker.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/fit-checker.test.mjs)
+  - covers:
+    - `600×850×600` returns real matches
+    - `1×1×1` shows no-match state
+    - invalid input handled with friendly message
+    - script gzip size `< 10KB`
+    - static link + rewrite + schema checks.
+- Validation commands:
+  - `node --test tests/fit-checker.test.mjs`
+  - `npm test`
+  - `npm run build`
