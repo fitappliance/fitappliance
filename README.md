@@ -473,3 +473,55 @@ Without step 3, the workflow will authenticate but still fail API reads due to m
 - CI automation:
   - GitHub Action `Sentinel Monitoring` runs daily and can be triggered manually via **Actions → Sentinel Monitoring → Run workflow**.
   - When checks fail, the workflow opens (or reuses) a same-day issue labeled `sentinel-auto` and attaches report JSON.
+
+### Phase 28 — Measurement Walkthrough (SVG + HowTo)
+
+- Added shared measurement-copy source:
+  - [`data/copy/measurement-steps.json`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/data/copy/measurement-steps.json)
+  - exactly 5 canonical measurement steps reused by all cavity pages.
+- Added SVG and schema generators:
+  - [`scripts/generate-measurement-svg.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/generate-measurement-svg.js)
+  - [`scripts/generate-measurement-content.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/generate-measurement-content.js)
+  - emits front/side/top measurement diagrams and `HowTo` JSON-LD.
+- Updated cavity page generator:
+  - [`scripts/generate-cavity-pages.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/generate-cavity-pages.js)
+  - now injects `<section id="measure">` with:
+    - proportional SVG diagrams
+    - `<details>` step walkthrough
+    - HowTo schema (5 steps).
+- Added test coverage:
+  - [`tests/measurement.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/measurement.test.mjs)
+  - validates:
+    - 3 SVG viewBox diagrams
+    - W/H/D dimension labels
+    - 5-step HowTo schema
+    - cavity pages include `#measure`.
+- Validation commands:
+  - `node --test tests/measurement.test.mjs`
+  - `npm run lighthouse-ci`
+  - `npm test`
+  - `npm run build`
+
+### Phase 29 — Client-side PDF Export
+
+- Added browser-only exporter:
+  - [`public/scripts/pdf-export.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/public/scripts/pdf-export.js)
+  - generates PDF bytes locally and downloads via `Blob` + object URL.
+- Zero-network guarantee:
+  - no `fetch` / `XMLHttpRequest` usage inside PDF export script
+  - no server API dependency for export.
+- Static entry-point in cavity pages:
+  - every `pages/cavity/*.html` now includes a build-time `Download PDF` button (`.btn-pdf-export`) with cavity metadata attributes.
+- Added test coverage:
+  - [`tests/pdf-export.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/pdf-export.test.mjs)
+  - validates:
+    - gzip size `< 30KB`
+    - no outbound network calls
+    - click path generates Blob/object URL
+    - deterministic legal filename
+    - static button presence across all cavity pages.
+
+### Offline Usage
+
+- Cavity pages can export a printable installation PDF entirely on-device.
+- The export flow does not upload user inputs or measurement content to any backend endpoint.

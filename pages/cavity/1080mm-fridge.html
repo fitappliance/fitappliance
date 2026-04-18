@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fridges that fit a 1080mm cavity (Australia 2026) | FitAppliance</title>
   <meta name="description" content="1176 fridges fit a 1080mm kitchen cavity. Includes Samsung, LG, Fisher &amp; Paykel. Free cavity checker.">
-  <meta name="article:modified_time" content="2026-04-18T13:43:49.071Z">
+  <meta name="article:modified_time" content="2026-04-18T13:48:01.208Z">
   <link rel="canonical" href="https://fitappliance.com.au/cavity/1080mm-fridge">
   <style>
     :root { --ink:#131210; --ink-2:#3d3a35; --ink-3:#7a766e; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
@@ -34,6 +34,16 @@
       color: var(--ink-2);
     }
     .tool-callout a { font-weight: 700; }
+    .btn-pdf-export {
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--ink-2);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .btn-pdf-export:hover { border-color: var(--copper); color: var(--copper); }
     #measure { margin-top: 24px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
     #measure h2 { margin: 0 0 10px; font-size: 22px; }
     .measurement-svg { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 10px; }
@@ -54,6 +64,7 @@
     <div class="tool-callout">
       <span>Need a fast shortlist?</span>
       <a href="/tools/fit-checker">Try the fit checker</a>
+      <button class="btn-pdf-export" data-cavity-slug="1080mm-fridge" data-cavity-width="1080" data-cavity-height="1800" data-cavity-depth="700">Download PDF</button>
     </div>
 
     <div class="nav">
@@ -554,5 +565,6 @@
   ]
 }
   </script>
+  <script defer src="/scripts/pdf-export.js"></script>
 </body>
 </html>

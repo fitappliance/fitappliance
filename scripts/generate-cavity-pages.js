@@ -194,6 +194,16 @@ function buildPageHtml({
       color: var(--ink-2);
     }
     .tool-callout a { font-weight: 700; }
+    .btn-pdf-export {
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--ink-2);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .btn-pdf-export:hover { border-color: var(--copper); color: var(--copper); }
     #measure { margin-top: 24px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
     #measure h2 { margin: 0 0 10px; font-size: 22px; }
     .measurement-svg { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 10px; }
@@ -214,6 +224,7 @@ function buildPageHtml({
     <div class="tool-callout">
       <span>Need a fast shortlist?</span>
       <a href="/tools/fit-checker">Try the fit checker</a>
+      <button class="btn-pdf-export" data-cavity-slug="${width}mm-fridge" data-cavity-width="${width}" data-cavity-height="${cavityHeightMm}" data-cavity-depth="${cavityDepthMm}">Download PDF</button>
     </div>
 
     <div class="nav">
@@ -279,6 +290,7 @@ ${speakableJsonLd}
   <script type="application/ld+json">
 ${howToSchemaJsonLd}
   </script>
+  <script defer src="/scripts/pdf-export.js"></script>
 </body>
 </html>
 `;
