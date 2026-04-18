@@ -66,7 +66,7 @@ async function cleanOutputDir(outputDir) {
   await mkdir(outputDir, { recursive: true });
   const entries = await readdir(outputDir, { withFileTypes: true });
   await Promise.all(entries.map(async (entry) => {
-    if (entry.isFile() && entry.name.endsWith('.png')) {
+    if (entry.isFile() && (entry.name.endsWith('.png') || entry.name.endsWith('.webp'))) {
       await rm(path.join(outputDir, entry.name), { force: true });
     }
   }));
@@ -74,9 +74,14 @@ async function cleanOutputDir(outputDir) {
 
 async function writeOgImage({ outputPath, title, subtitle }) {
   const svg = buildSvg({ title, subtitle });
-  await sharp(Buffer.from(svg))
+  const webpPath = outputPath.replace(/\.png$/i, '.webp');
+  const buffer = Buffer.from(svg);
+  await sharp(buffer)
     .png({ compressionLevel: 9 })
     .toFile(outputPath);
+  await sharp(buffer)
+    .webp({ quality: 82 })
+    .toFile(webpPath);
 }
 
 async function generateOgImages({

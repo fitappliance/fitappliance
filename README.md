@@ -253,3 +253,14 @@ Key metrics to watch in GA4:
 ### DNS Verification
 
 TXT: fitappliance.com.au -> google-site-verification=5keGnUyvuq31_mxZ9pNVPIsh7BzKBbM7aHdxUTZZDJM
+
+### Phase 20 — Core Web Vitals Automation
+
+- Added `scripts/lighthouse-ci.js` to run Lighthouse performance audits on 5 representative pages and write reports to `reports/lighthouse-YYYYMMDD.json` plus `reports/lighthouse-latest.json`.
+- Added `.github/workflows/lighthouse.yml` (weekly + manual `workflow_dispatch`) with a hard performance gate (`min-score=0.9`) and artifact upload.
+- Updated OG image generation to emit both PNG and WebP assets (`scripts/generate-og-images.js`), and updated generated brand/compare pages to use `<picture>` with explicit `width`/`height`, `decoding="async"`, and lazy-loaded non-hero images.
+- Validation commands:
+  - `npm run generate-all`
+  - `npm run lighthouse-ci -- --min-score 0.9`
+  - `npm test`
+  - `npm run build`

@@ -26,6 +26,7 @@
     "generate-pages": "node scripts/generate-brand-pages.js && node scripts/generate-comparisons.js && node scripts/generate-sitemap.js",
     "generate-all": "npm run generate-pages && npm run generate-cavity && npm run generate-doorway && npm run generate-sitemap && npm run generate-og-images && npm run generate-image-sitemap && npm run generate-rss",
     "promo-kit": "node scripts/generate-promotion-kit.js",
+    "lighthouse-ci": "node scripts/lighthouse-ci.js",
     "ping-indexnow": "node scripts/ping-indexnow.js",
     "audit-compare-links": "node scripts/audit-compare-links.js",
     "audit-link-quality": "node scripts/audit-link-quality.js",
@@ -33,6 +34,8 @@
     "lint": "node --check scripts/*.js scripts/sources/*.js scripts/utils/*.js tests/*.test.mjs && sh -c 'for f in public/scripts/ui/*.js; do node --input-type=module --check < \"$f\"; done'"
   },
   "devDependencies": {
+    "chrome-launcher": "^1.2.1",
+    "lighthouse": "^13.1.0",
     "sharp": "^0.34.5"
   }
 }

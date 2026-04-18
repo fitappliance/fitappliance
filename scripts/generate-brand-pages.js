@@ -267,7 +267,9 @@ function buildBrandPageHtml({
     `Requires ${side}mm side, ${rear}mm rear, ${top}mm top clearance. Find the ${count} ${brand} ` +
     `${categoryMeta.labelSingular} models that fit your cavity.`;
   const canonical = `https://fitappliance.com.au/brands/${slug}`;
-  const ogImageUrl = `https://fitappliance.com.au/og-images/${slugify(brandRaw)}-${categoryMeta.slug}.png`;
+  const heroPngPath = `/og-images/${slugify(brandRaw)}-${categoryMeta.slug}.png`;
+  const heroWebpPath = `/og-images/${slugify(brandRaw)}-${categoryMeta.slug}.webp`;
+  const ogImageUrl = `https://fitappliance.com.au${heroPngPath}`;
   const ctaUrl = `/?cat=${encodeURIComponent(category)}&brand=${encodeURIComponent(brandRaw)}`;
   const siteJsonLd = JSON.stringify(buildWebSiteJsonLd(), null, 2);
   const breadcrumbJsonLd = JSON.stringify(
@@ -307,6 +309,10 @@ function buildBrandPageHtml({
   const confirmedSwingCount = Math.max(0, count - pendingSwingCount);
   const modelPreview = modelSamples.map((sample) => (
     `<div class="model-item">
+      <picture class="model-thumb">
+        <source srcset="${heroWebpPath}" type="image/webp">
+        <img src="${heroPngPath}" alt="${escHtml(brand)} ${escHtml(sample.model)} preview" width="600" height="315" loading="lazy" decoding="async">
+      </picture>
       <div class="model-name">${escHtml(sample.model)}</div>
       <div class="model-dims">W ${sample.w}mm × H ${sample.h}mm × D ${sample.d}mm</div>
       <a class="model-link" href="/?cat=${encodeURIComponent(category)}&brand=${encodeURIComponent(brandRaw)}&h=${sample.h}">Check if this fits your space →</a>
@@ -366,6 +372,19 @@ function buildBrandPageHtml({
       margin: 0 0 16px;
       color: var(--ink-2);
       font-size: 16px;
+    }
+    .hero-media {
+      display: block;
+      margin: 0 0 18px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+    .hero-media img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
     .metric-grid {
       margin: 22px 0 28px;
@@ -449,6 +468,18 @@ function buildBrandPageHtml({
       color: var(--ink);
       margin-bottom: 6px;
     }
+    .model-thumb {
+      display: block;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 8px;
+    }
+    .model-thumb img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
     .model-dims {
       font-size: 13px;
       color: var(--ink-2);
@@ -472,6 +503,10 @@ function buildBrandPageHtml({
   <main>
     <a class="back-link" href="https://fitappliance.com.au">← Back to FitAppliance</a>
     <h1>${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} Clearance Requirements</h1>
+    <picture class="hero-media">
+      <source srcset="${heroWebpPath}" type="image/webp">
+      <img src="${heroPngPath}" alt="${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} clearance guide preview" width="1200" height="630" loading="eager" decoding="async" fetchpriority="high">
+    </picture>
     <p>${escHtml(narrative)}</p>
     <div class="metric-grid">
       <div class="metric">Side clearance<br><b>${side}mm</b></div>

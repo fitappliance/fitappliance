@@ -370,7 +370,9 @@ function buildComparisonPageHtml({
   const title = `${displayBrandA} vs ${displayBrandB} ${categoryMeta.labelSingular} Clearance Requirements — Australia 2026`;
   const description = `${displayBrandA} vs ${displayBrandB} ${categoryMeta.labelSingular.toLowerCase()} clearance comparison for Australian homes. Side/rear/top spacing and fit implications with real model coverage.`;
   const canonical = `https://fitappliance.com.au/compare/${slug}`;
-  const ogImageUrl = `https://fitappliance.com.au/og-images/compare-${slug}.png`;
+  const heroPngPath = `/og-images/compare-${slug}.png`;
+  const heroWebpPath = `/og-images/compare-${slug}.webp`;
+  const ogImageUrl = `https://fitappliance.com.au${heroPngPath}`;
   const narrative = buildComparisonNarrative(
     clearanceA,
     clearanceB,
@@ -402,11 +404,11 @@ function buildComparisonPageHtml({
   }
   const sampleItemsA = modelSamplesA.map((sample) => {
     const retailLink = pickRetailLink(sample);
-    return `<li>${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm${retailLink ? `<br><a href="${escHtml(retailLink.url)}" target="_blank" rel="noopener sponsored">${escHtml(retailLink.label)} →</a>` : ''}</li>`;
+    return `<li><picture class="sample-thumb"><source srcset="${heroWebpPath}" type="image/webp"><img src="${heroPngPath}" alt="${escHtml(displayBrandA)} ${escHtml(sample.model)} comparison preview" width="600" height="315" loading="lazy" decoding="async"></picture>${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm${retailLink ? `<br><a href="${escHtml(retailLink.url)}" target="_blank" rel="noopener sponsored">${escHtml(retailLink.label)} →</a>` : ''}</li>`;
   }).join('');
   const sampleItemsB = modelSamplesB.map((sample) => {
     const retailLink = pickRetailLink(sample);
-    return `<li>${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm${retailLink ? `<br><a href="${escHtml(retailLink.url)}" target="_blank" rel="noopener sponsored">${escHtml(retailLink.label)} →</a>` : ''}</li>`;
+    return `<li><picture class="sample-thumb"><source srcset="${heroWebpPath}" type="image/webp"><img src="${heroPngPath}" alt="${escHtml(displayBrandB)} ${escHtml(sample.model)} comparison preview" width="600" height="315" loading="lazy" decoding="async"></picture>${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm${retailLink ? `<br><a href="${escHtml(retailLink.url)}" target="_blank" rel="noopener sponsored">${escHtml(retailLink.label)} →</a>` : ''}</li>`;
   }).join('');
 
   const articleJsonLd = JSON.stringify({
@@ -485,6 +487,8 @@ function buildComparisonPageHtml({
     main { max-width: 980px; margin: 0 auto; padding: 54px 24px 70px; }
     .back-link { display: inline-block; margin-bottom: 16px; text-decoration: none; color: var(--ink-3); font-size: 13px; }
     h1 { margin: 0 0 12px; font-family: 'Instrument Serif', serif; font-size: clamp(34px, 5vw, 50px); line-height: 1.08; }
+    .hero-media { display:block; margin: 0 0 18px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--white); }
+    .hero-media img { width: 100%; height: auto; display: block; }
     .comparison-verdict { border: 1px solid var(--border); background: var(--white); border-radius: 12px; padding: 14px 16px; margin: 0 0 18px; }
     .comparison-verdict p { margin: 0; color: var(--ink-2); font-size: 15px; }
     .comparison-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0 0 22px; }
@@ -501,6 +505,8 @@ function buildComparisonPageHtml({
     .model-grid h3 { margin: 0 0 8px; font-size: 15px; color: var(--ink); }
     .model-grid ul { margin: 0; padding-left: 18px; color: var(--ink-2); font-size: 13px; }
     .model-grid li { margin-bottom: 8px; }
+    .sample-thumb { display: block; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin: 0 0 6px; }
+    .sample-thumb img { width: 100%; height: auto; display: block; }
     .model-grid li a { color: var(--copper); font-weight: 700; text-decoration: none; }
     .model-grid li a:hover { text-decoration: underline; }
     .brand-links { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
@@ -516,6 +522,10 @@ function buildComparisonPageHtml({
   <main>
     <a class="back-link" href="https://fitappliance.com.au">← Back to FitAppliance</a>
     <h1>${escHtml(displayBrandA)} vs ${escHtml(displayBrandB)} ${escHtml(categoryMeta.labelSingular)} Clearance Requirements — Australia 2026</h1>
+    <picture class="hero-media">
+      <source srcset="${heroWebpPath}" type="image/webp">
+      <img src="${heroPngPath}" alt="${escHtml(compareLabel)} clearance comparison preview" width="1200" height="630" loading="eager" decoding="async" fetchpriority="high">
+    </picture>
     <div class="comparison-verdict">
       <p>${escHtml(narrative.summary)}</p>
     </div>
