@@ -603,3 +603,33 @@ Without step 3, the workflow will authenticate but still fail API reads due to m
 #### Required environment setup
 
 - Set `BUTTONDOWN_API_KEY` in deployment environment before enabling production signups.
+
+### Phase 33 — PWA (Offline + Install Prompt)
+
+- Added manifest and install assets:
+  - [`public/manifest.webmanifest`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/public/manifest.webmanifest)
+  - [`public/icons/icon-192.png`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/public/icons/icon-192.png)
+  - [`public/icons/icon-512.png`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/public/icons/icon-512.png)
+- Added service worker generation pipeline:
+  - [`scripts/generate-sw.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/generate-sw.js)
+  - emits versioned SW cache (`fitappliance-v{timestamp}`) and shell precache list.
+  - `build` now runs `generate-sw` automatically.
+- Added runtime PWA scripts:
+  - [`public/service-worker.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/public/service-worker.js)
+  - [`public/scripts/sw-register.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/public/scripts/sw-register.js)
+  - registration is non-blocking (`window.load`) and skipped on offline or reduced-data mode.
+- Added install prompt UX on homepage:
+  - [`index.html`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/index.html)
+  - captures `beforeinstallprompt`, shows install card, and stores only `{dismissedAt}` in localStorage.
+  - dismissal suppresses prompt for 7 days.
+- Caching strategy implemented:
+  - HTML: stale-while-revalidate
+  - static assets (`/scripts/*`, `/og-images/*`, `/data/*`, `/icons/*`): cache-first
+  - API routes (`/api/*`): network-only (never cached).
+- Routing updates:
+  - added explicit rewrites for `/manifest.webmanifest`, `/service-worker.js`, and `/icons/*` in:
+    - [`vercel.json`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/vercel.json)
+    - [`v2/vercel.json`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/v2/vercel.json)
+- Added test coverage:
+  - [`tests/pwa.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/pwa.test.mjs)
+  - validates manifest shape, SW versioning, `/api/*` non-caching, and deferred SW registration.

@@ -7,7 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FitAppliance — Does It Actually Fit? | Australia's Precision Appliance Finder</title>
 <meta name="description" content="Australia's most precise appliance size finder. Enter your cavity dimensions — we calculate per-brand ventilation clearances, door swing, delivery access and government rebates automatically.">
+<meta name="theme-color" content="#131210">
 <meta name="article:modified_time" content="2026-04-18T00:00:00Z">
+<link rel="manifest" href="/manifest.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="FitAppliance RSS" href="/rss.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -366,6 +368,55 @@ nav {
   gap: 5px;
 }
 .float-bar-edit:hover { background: rgba(255,255,255,.25); }
+
+.install-prompt {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 80;
+  width: min(360px, calc(100vw - 32px));
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  padding: 14px 14px 12px;
+}
+.install-prompt[hidden] { display: none; }
+.install-prompt__title {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.install-prompt__text {
+  margin: 0 0 12px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+.install-prompt__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.install-prompt__btn {
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 11px;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+}
+.install-prompt__btn--ghost {
+  border: 1px solid var(--border);
+  background: var(--paper);
+  color: var(--ink-2);
+}
+.install-prompt__btn--primary {
+  border: none;
+  background: var(--ink);
+  color: #fff;
+}
 
 .search-history {
   display: flex;
@@ -1185,6 +1236,11 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   .compare-modal { padding:10px; }
   .compare-modal-head h3 { font-size:22px; }
   .compare-table { font-size:12.5px; }
+  .install-prompt {
+    right: 10px;
+    bottom: 10px;
+    width: calc(100vw - 20px);
+  }
 }
 
 @media (min-width:661px) {
@@ -1664,6 +1720,16 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   </div>
 </div>
 
+<div class="install-prompt" id="installPrompt" hidden>
+  <p class="install-prompt__title">Install FitAppliance</p>
+  <p class="install-prompt__text">Add the app to your home screen for faster fit checks and offline cavity guides.</p>
+  <div class="install-prompt__actions">
+    <button type="button" class="install-prompt__btn install-prompt__btn--ghost" id="installPromptDismiss">Not now</button>
+    <button type="button" class="install-prompt__btn install-prompt__btn--primary" id="installPromptInstall">Install</button>
+  </div>
+</div>
+
+<script defer src="/scripts/sw-register.js"></script>
 <script defer src="/scripts/subscribe.js"></script>
 <script type="module">
 import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/product-card.js';
@@ -1687,6 +1753,96 @@ function escHtml(value) {
     "'": '&#39;',
   }[char]));
 }
+
+const INSTALL_PROMPT_STORAGE_KEY = 'fitappliance-pwa-install-prompt';
+const INSTALL_PROMPT_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
+let deferredInstallPrompt = null;
+
+function readInstallPromptState() {
+  try {
+    const raw = localStorage.getItem(INSTALL_PROMPT_STORAGE_KEY);
+    const parsed = JSON.parse(raw ?? '{}');
+    if (typeof parsed?.dismissedAt === 'number') {
+      return { dismissedAt: parsed.dismissedAt };
+    }
+  } catch {
+    // ignore localStorage read errors
+  }
+  return { dismissedAt: null };
+}
+
+function writeInstallPromptState(state) {
+  try {
+    localStorage.setItem(INSTALL_PROMPT_STORAGE_KEY, JSON.stringify({
+      dismissedAt: typeof state?.dismissedAt === 'number' ? state.dismissedAt : null
+    }));
+  } catch {
+    // ignore localStorage write errors
+  }
+}
+
+function shouldSuppressInstallPrompt() {
+  const state = readInstallPromptState();
+  if (typeof state.dismissedAt !== 'number') return false;
+  return (Date.now() - state.dismissedAt) < INSTALL_PROMPT_COOLDOWN_MS;
+}
+
+function hideInstallPrompt({ remember = false } = {}) {
+  const prompt = document.getElementById('installPrompt');
+  if (!prompt) return;
+  prompt.setAttribute('hidden', '');
+  if (remember) {
+    writeInstallPromptState({ dismissedAt: Date.now() });
+  }
+}
+
+function showInstallPromptIfEligible() {
+  const prompt = document.getElementById('installPrompt');
+  if (!prompt) return;
+  if (!deferredInstallPrompt) return;
+  if (shouldSuppressInstallPrompt()) return;
+  prompt.removeAttribute('hidden');
+}
+
+function setupInstallPrompt() {
+  const dismissButton = document.getElementById('installPromptDismiss');
+  dismissButton?.addEventListener('click', () => {
+    hideInstallPrompt({ remember: true });
+  });
+
+  const installButton = document.getElementById('installPromptInstall');
+  installButton?.addEventListener('click', async () => {
+    if (!deferredInstallPrompt) return;
+    const event = deferredInstallPrompt;
+    deferredInstallPrompt = null;
+    hideInstallPrompt();
+    event.prompt();
+    try {
+      const choice = await event.userChoice;
+      if (choice?.outcome !== 'accepted') {
+        writeInstallPromptState({ dismissedAt: Date.now() });
+      } else {
+        writeInstallPromptState({ dismissedAt: null });
+      }
+    } catch {
+      writeInstallPromptState({ dismissedAt: Date.now() });
+    }
+  });
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    showInstallPromptIfEligible();
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    writeInstallPromptState({ dismissedAt: null });
+    hideInstallPrompt();
+  });
+}
+
+setupInstallPrompt();
 
 const BRAND_DIRECTORY_CATEGORY_LABELS = {
   fridge: 'Fridge',
