@@ -68,6 +68,36 @@ function buildItemListJsonLd(width, products) {
   };
 }
 
+function buildProductJsonLd(width, featured) {
+  const lead = Array.isArray(featured) && featured.length > 0 ? featured[0] : null;
+  const base = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: lead ? `${lead.brand} ${lead.model}` : `${width}mm fridge cavity shortlist`,
+    description: `${width}mm fridge cavity shortlist for Australian installations with per-brand ventilation clearances.`,
+    category: 'Refrigerator'
+  };
+  if (lead) {
+    base.brand = { '@type': 'Brand', name: lead.brand };
+    base.width = { '@type': 'QuantitativeValue', value: lead.w, unitCode: 'MMT' };
+    base.height = { '@type': 'QuantitativeValue', value: lead.h, unitCode: 'MMT' };
+    base.depth = { '@type': 'QuantitativeValue', value: lead.d, unitCode: 'MMT' };
+  }
+  return base;
+}
+
+function buildSpeakableJsonLd(canonicalPath) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    url: `https://fitappliance.com.au${canonicalPath}`,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['#quick-answer']
+    }
+  };
+}
+
 function buildBreadcrumbJsonLd(width) {
   const slug = `${width}mm-fridge`;
   return {
@@ -103,13 +133,16 @@ function buildPageHtml({
   adjacentWidths,
   relatedWidths,
   topBrands,
-  compareLinks
+  compareLinks,
+  modifiedTime
 }) {
   const title = `Fridges that fit a ${width}mm cavity (Australia 2026) | FitAppliance`;
   const description = `${resultCount} fridges fit a ${width}mm kitchen cavity. Includes Samsung, LG, Fisher & Paykel. Free cavity checker.`;
   const canonical = `https://fitappliance.com.au/cavity/${width}mm-fridge`;
   const itemListJsonLd = JSON.stringify(buildItemListJsonLd(width, featured), null, 2);
   const breadcrumbJsonLd = JSON.stringify(buildBreadcrumbJsonLd(width), null, 2);
+  const productJsonLd = JSON.stringify(buildProductJsonLd(width, featured), null, 2);
+  const speakableJsonLd = JSON.stringify(buildSpeakableJsonLd(`/cavity/${width}mm-fridge`), null, 2);
 
   return `<!doctype html>
 <html lang="en-AU">
@@ -118,6 +151,7 @@ function buildPageHtml({
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escHtml(title)}</title>
   <meta name="description" content="${escHtml(description)}">
+  <meta name="article:modified_time" content="${escHtml(modifiedTime)}">
   <link rel="canonical" href="${canonical}">
   <style>
     :root { --ink:#131210; --ink-2:#3d3a35; --ink-3:#7a766e; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
@@ -138,7 +172,7 @@ function buildPageHtml({
   <main>
     <a href="https://fitappliance.com.au/">← Back to FitAppliance</a>
     <h1>Fridges that fit a ${width}mm cavity (Australia 2026)</h1>
-    <p>${resultCount} fridge models currently fit this cavity width after per-brand side clearance.</p>
+    <p id="quick-answer">${resultCount} fridge models currently fit this cavity width after per-brand side clearance.</p>
     <p>Use this page as a quick shortlist, then run your exact height/depth check on the main calculator.</p>
 
     <div class="nav">
@@ -177,12 +211,22 @@ function buildPageHtml({
     <div class="compare">
       ${GUIDE_HUB_LINKS.map((link) => `<a class="chip" href="${link.url}">${escHtml(link.label)}</a>`).join('')}
     </div>
+    <footer style="margin-top:28px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--ink-3)">
+      <a href="/methodology">Methodology</a> ·
+      <a href="/about/editorial-standards">Editorial standards</a>
+    </footer>
   </main>
   <script type="application/ld+json">
 ${itemListJsonLd}
   </script>
   <script type="application/ld+json">
 ${breadcrumbJsonLd}
+  </script>
+  <script type="application/ld+json">
+${productJsonLd}
+  </script>
+  <script type="application/ld+json">
+${speakableJsonLd}
   </script>
 </body>
 </html>
@@ -261,7 +305,8 @@ async function generateCavityPages(options = {}) {
         .sort((left, right) => Math.abs(left - width) - Math.abs(right - width))
         .slice(0, 8),
       topBrands,
-      compareLinks
+      compareLinks,
+      modifiedTime: new Date().toISOString()
     });
 
     const slug = `${width}mm-fridge`;

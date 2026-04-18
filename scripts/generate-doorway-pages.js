@@ -70,6 +70,36 @@ function buildFaqJsonLd(doorway) {
   };
 }
 
+function buildProductJsonLd(doorway, matched) {
+  const lead = Array.isArray(matched) && matched.length > 0 ? matched[0] : null;
+  const base = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: lead ? `${lead.brand} ${lead.model}` : `${doorway}mm fridge doorway shortlist`,
+    description: `${doorway}mm doorway shortlist for fridge delivery access checks in Australia.`,
+    category: 'Refrigerator'
+  };
+  if (lead) {
+    base.brand = { '@type': 'Brand', name: lead.brand };
+    base.width = { '@type': 'QuantitativeValue', value: lead.w, unitCode: 'MMT' };
+    base.height = { '@type': 'QuantitativeValue', value: lead.h, unitCode: 'MMT' };
+    base.depth = { '@type': 'QuantitativeValue', value: lead.d, unitCode: 'MMT' };
+  }
+  return base;
+}
+
+function buildSpeakableJsonLd(doorway) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    url: `https://fitappliance.com.au/doorway/${doorway}mm-fridge-doorway`,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['#quick-answer']
+    }
+  };
+}
+
 function buildBreadcrumbJsonLd(doorway) {
   const slug = `${doorway}mm-fridge-doorway`;
   return {
@@ -98,12 +128,14 @@ function buildBreadcrumbJsonLd(doorway) {
   };
 }
 
-function buildPageHtml({ doorway, matched, adjacentDoorways, relatedDoorways }) {
+function buildPageHtml({ doorway, matched, adjacentDoorways, relatedDoorways, modifiedTime }) {
   const title = `Fridges that fit through a ${doorway}mm doorway | FitAppliance Australia`;
   const description = `${matched.length} fridge models can pass through a ${doorway}mm doorway with basic handling margin.`;
   const canonical = `https://fitappliance.com.au/doorway/${doorway}mm-fridge-doorway`;
   const faqJsonLd = JSON.stringify(buildFaqJsonLd(doorway), null, 2);
   const breadcrumbJsonLd = JSON.stringify(buildBreadcrumbJsonLd(doorway), null, 2);
+  const productJsonLd = JSON.stringify(buildProductJsonLd(doorway, matched), null, 2);
+  const speakableJsonLd = JSON.stringify(buildSpeakableJsonLd(doorway), null, 2);
 
   return `<!doctype html>
 <html lang="en-AU">
@@ -112,6 +144,7 @@ function buildPageHtml({ doorway, matched, adjacentDoorways, relatedDoorways }) 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escHtml(title)}</title>
   <meta name="description" content="${escHtml(description)}">
+  <meta name="article:modified_time" content="${escHtml(modifiedTime)}">
   <link rel="canonical" href="${canonical}">
   <style>
     :root { --ink:#131210; --ink-2:#3d3a35; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
@@ -131,7 +164,7 @@ function buildPageHtml({ doorway, matched, adjacentDoorways, relatedDoorways }) 
   <main>
     <a href="https://fitappliance.com.au/">← Back to FitAppliance</a>
     <h1>Fridges that fit through a ${doorway}mm doorway</h1>
-    <p>${matched.length} fridge models can pass a ${doorway}mm doorway using a 10mm handling margin.</p>
+    <p id="quick-answer">${matched.length} fridge models can pass a ${doorway}mm doorway using a 10mm handling margin.</p>
     <p>Always confirm diagonal clearance, hallway corners, and stair turns before delivery day.</p>
 
     <div class="chip-row">
@@ -164,12 +197,22 @@ function buildPageHtml({ doorway, matched, adjacentDoorways, relatedDoorways }) 
     <div class="chip-row">
       ${GUIDE_HUB_LINKS.map((link) => `<a class="chip" href="${link.url}">${escHtml(link.label)}</a>`).join('')}
     </div>
+    <footer style="margin-top:28px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:#666">
+      <a href="/methodology">Methodology</a> ·
+      <a href="/about/editorial-standards">Editorial standards</a>
+    </footer>
   </main>
   <script type="application/ld+json">
 ${faqJsonLd}
   </script>
   <script type="application/ld+json">
 ${breadcrumbJsonLd}
+  </script>
+  <script type="application/ld+json">
+${productJsonLd}
+  </script>
+  <script type="application/ld+json">
+${speakableJsonLd}
   </script>
 </body>
 </html>
@@ -221,7 +264,8 @@ async function generateDoorwayPages(options = {}) {
       relatedDoorways: doorways
         .filter((candidate) => candidate !== doorway)
         .sort((left, right) => Math.abs(left - doorway) - Math.abs(right - doorway))
-        .slice(0, 8)
+        .slice(0, 8),
+      modifiedTime: new Date().toISOString()
     });
     await writeFile(path.join(outputDir, `${slug}.html`), html, 'utf8');
 

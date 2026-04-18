@@ -179,6 +179,7 @@ function buildHubHtml({ guide, links, crossLinks }) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escHtml(title)}</title>
   <meta name="description" content="${escHtml(description)}">
+  <meta name="article:modified_time" content="${new Date().toISOString()}">
   <link rel="canonical" href="${canonical}">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="FitAppliance">
@@ -233,6 +234,10 @@ function buildHubHtml({ guide, links, crossLinks }) {
       </div>
       <p class="meta">${links.length} static links. Updated automatically from the latest FitAppliance page indices.</p>
     </section>
+    <footer style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--ink-3)">
+      <a href="/methodology">Methodology</a> ·
+      <a href="/about/editorial-standards">Editorial standards</a>
+    </footer>
   </main>
 </body>
 </html>

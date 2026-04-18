@@ -1,2556 +1,2568 @@
 {
-  "generatedAt": "2026-04-18T12:10:55.146Z",
+  "generatedAt": "2026-04-18T12:17:48.627Z",
   "summary": {
-    "totalPages": 424,
-    "totalEdges": 5307,
+    "totalPages": 426,
+    "totalEdges": 6159,
     "orphanPages": 0,
-    "averageInlinks": 12.52
+    "averageInlinks": 14.46
   },
   "orphanUrls": [],
   "nodes": [
     {
       "url": "/",
       "file": "index.html",
-      "inlinks": 423,
+      "inlinks": 425,
+      "outlinks": 4
+    },
+    {
+      "url": "/about/editorial-standards",
+      "file": "pages/about/editorial-standards.html",
+      "inlinks": 425,
       "outlinks": 2
     },
     {
       "url": "/affiliate-disclosure",
       "file": "pages/affiliate-disclosure.html",
       "inlinks": 3,
-      "outlinks": 2
+      "outlinks": 4
     },
     {
       "url": "/brands/3j-washing-machine-clearance",
       "file": "pages/brands/3j-washing-machine-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/aeg-dishwasher-clearance",
       "file": "pages/brands/aeg-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/aeg-dryer-clearance",
       "file": "pages/brands/aeg-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/aeg-fridge-clearance",
       "file": "pages/brands/aeg-fridge-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/airflo-fridge-clearance",
       "file": "pages/brands/airflo-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/akai-dryer-clearance",
       "file": "pages/brands/akai-dryer-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/akai-fridge-clearance",
       "file": "pages/brands/akai-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/altus-washing-machine-clearance",
       "file": "pages/brands/altus-washing-machine-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/anko-dishwasher-clearance",
       "file": "pages/brands/anko-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/anko-dryer-clearance",
       "file": "pages/brands/anko-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/anko-fridge-clearance",
       "file": "pages/brands/anko-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/anko-washing-machine-clearance",
       "file": "pages/brands/anko-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/ariston-dishwasher-clearance",
       "file": "pages/brands/ariston-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/ariston-washing-machine-clearance",
       "file": "pages/brands/ariston-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/artic-fridge-clearance",
       "file": "pages/brands/artic-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/artusi-dishwasher-clearance",
       "file": "pages/brands/artusi-dishwasher-clearance.html",
       "inlinks": 9,
-      "outlinks": 13
+      "outlinks": 15
     },
     {
       "url": "/brands/artusi-dryer-clearance",
       "file": "pages/brands/artusi-dryer-clearance.html",
       "inlinks": 7,
-      "outlinks": 11
+      "outlinks": 13
     },
     {
       "url": "/brands/artusi-fridge-clearance",
       "file": "pages/brands/artusi-fridge-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/artusi-washing-machine-clearance",
       "file": "pages/brands/artusi-washing-machine-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/asko-dishwasher-clearance",
       "file": "pages/brands/asko-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/asko-dryer-clearance",
       "file": "pages/brands/asko-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/asko-washing-machine-clearance",
       "file": "pages/brands/asko-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/astivita-dishwasher-clearance",
       "file": "pages/brands/astivita-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/aucma-fridge-clearance",
       "file": "pages/brands/aucma-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/award-dishwasher-clearance",
       "file": "pages/brands/award-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/award-dryer-clearance",
       "file": "pages/brands/award-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/award-washing-machine-clearance",
       "file": "pages/brands/award-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/baumatic-dishwasher-clearance",
       "file": "pages/brands/baumatic-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/beko-dishwasher-clearance",
       "file": "pages/brands/beko-dishwasher-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/beko-dryer-clearance",
       "file": "pages/brands/beko-dryer-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/beko-fridge-clearance",
       "file": "pages/brands/beko-fridge-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/beko-washing-machine-clearance",
       "file": "pages/brands/beko-washing-machine-clearance.html",
       "inlinks": 7,
-      "outlinks": 11
+      "outlinks": 13
     },
     {
       "url": "/brands/belling-dishwasher-clearance",
       "file": "pages/brands/belling-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/bellini-dishwasher-clearance",
       "file": "pages/brands/bellini-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/bellissimo-dishwasher-clearance",
       "file": "pages/brands/bellissimo-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/bertazzoni-dishwasher-clearance",
       "file": "pages/brands/bertazzoni-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/bertazzoni-fridge-clearance",
       "file": "pages/brands/bertazzoni-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/blanco-dishwasher-clearance",
       "file": "pages/brands/blanco-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/blaupunkt-dishwasher-clearance",
       "file": "pages/brands/blaupunkt-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/blaupunkt-fridge-clearance",
       "file": "pages/brands/blaupunkt-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/bosch-dishwasher-clearance",
       "file": "pages/brands/bosch-dishwasher-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/bosch-dryer-clearance",
       "file": "pages/brands/bosch-dryer-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/bosch-fridge-clearance",
       "file": "pages/brands/bosch-fridge-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/bosch-washing-machine-clearance",
       "file": "pages/brands/bosch-washing-machine-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/brabantia-fridge-clearance",
       "file": "pages/brands/brabantia-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/bromic-fridge-clearance",
       "file": "pages/brands/bromic-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/camec-washing-machine-clearance",
       "file": "pages/brands/camec-washing-machine-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/carson-dryer-clearance",
       "file": "pages/brands/carson-dryer-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/carson-washing-machine-clearance",
       "file": "pages/brands/carson-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/casa-fridge-clearance",
       "file": "pages/brands/casa-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/chiq-dryer-clearance",
       "file": "pages/brands/chiq-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/chiq-fridge-clearance",
       "file": "pages/brands/chiq-fridge-clearance.html",
       "inlinks": 8,
-      "outlinks": 12
+      "outlinks": 14
     },
     {
       "url": "/brands/chiq-washing-machine-clearance",
       "file": "pages/brands/chiq-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/coldstream-fridge-clearance",
       "file": "pages/brands/coldstream-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/comfee-dishwasher-clearance",
       "file": "pages/brands/comfee-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/de-dietrich-dishwasher-clearance",
       "file": "pages/brands/de-dietrich-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/de-dietrich-fridge-clearance",
       "file": "pages/brands/de-dietrich-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/de-longhi-dishwasher-clearance",
       "file": "pages/brands/de-longhi-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/devanti-dishwasher-clearance",
       "file": "pages/brands/devanti-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/devanti-dryer-clearance",
       "file": "pages/brands/devanti-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/devanti-fridge-clearance",
       "file": "pages/brands/devanti-fridge-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/di-lusso-dishwasher-clearance",
       "file": "pages/brands/di-lusso-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/domain-dishwasher-clearance",
       "file": "pages/brands/domain-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/dometic-fridge-clearance",
       "file": "pages/brands/dometic-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/duos-dishwasher-clearance",
       "file": "pages/brands/duos-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/duos-washing-machine-clearance",
       "file": "pages/brands/duos-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/electrolux-dishwasher-clearance",
       "file": "pages/brands/electrolux-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/electrolux-dryer-clearance",
       "file": "pages/brands/electrolux-dryer-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/electrolux-fridge-clearance",
       "file": "pages/brands/electrolux-fridge-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/electrolux-washing-machine-clearance",
       "file": "pages/brands/electrolux-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/emilia-dishwasher-clearance",
       "file": "pages/brands/emilia-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/esatto-dishwasher-clearance",
       "file": "pages/brands/esatto-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/esatto-dryer-clearance",
       "file": "pages/brands/esatto-dryer-clearance.html",
       "inlinks": 10,
-      "outlinks": 13
+      "outlinks": 15
     },
     {
       "url": "/brands/esatto-fridge-clearance",
       "file": "pages/brands/esatto-fridge-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/esatto-washing-machine-clearance",
       "file": "pages/brands/esatto-washing-machine-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/euro-dishwasher-clearance",
       "file": "pages/brands/euro-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/euro-dryer-clearance",
       "file": "pages/brands/euro-dryer-clearance.html",
       "inlinks": 9,
-      "outlinks": 13
+      "outlinks": 15
     },
     {
       "url": "/brands/euro-fridge-clearance",
       "file": "pages/brands/euro-fridge-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/euro-washing-machine-clearance",
       "file": "pages/brands/euro-washing-machine-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/euroclean-washing-machine-clearance",
       "file": "pages/brands/euroclean-washing-machine-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/euromaid-dishwasher-clearance",
       "file": "pages/brands/euromaid-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/euromaid-dryer-clearance",
       "file": "pages/brands/euromaid-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/euromaid-fridge-clearance",
       "file": "pages/brands/euromaid-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/euromaid-washing-machine-clearance",
       "file": "pages/brands/euromaid-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/euromatic-fridge-clearance",
       "file": "pages/brands/euromatic-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/eurotech-dishwasher-clearance",
       "file": "pages/brands/eurotech-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/eurotech-dryer-clearance",
       "file": "pages/brands/eurotech-dryer-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/eurotech-fridge-clearance",
       "file": "pages/brands/eurotech-fridge-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/eurotech-washing-machine-clearance",
       "file": "pages/brands/eurotech-washing-machine-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/everdure-dishwasher-clearance",
       "file": "pages/brands/everdure-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/everdure-washing-machine-clearance",
       "file": "pages/brands/everdure-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/evoke-dishwasher-clearance",
       "file": "pages/brands/evoke-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/evoke-dryer-clearance",
       "file": "pages/brands/evoke-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/evoke-washing-machine-clearance",
       "file": "pages/brands/evoke-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/fhiaba-fridge-clearance",
       "file": "pages/brands/fhiaba-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/fisher-paykel-dishwasher-clearance",
       "file": "pages/brands/fisher-paykel-dishwasher-clearance.html",
       "inlinks": 8,
-      "outlinks": 12
+      "outlinks": 14
     },
     {
       "url": "/brands/fisher-paykel-dryer-clearance",
       "file": "pages/brands/fisher-paykel-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/fisher-paykel-fridge-clearance",
       "file": "pages/brands/fisher-paykel-fridge-clearance.html",
       "inlinks": 7,
-      "outlinks": 11
+      "outlinks": 13
     },
     {
       "url": "/brands/fisher-paykel-washing-machine-clearance",
       "file": "pages/brands/fisher-paykel-washing-machine-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/fotile-dishwasher-clearance",
       "file": "pages/brands/fotile-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/franke-dishwasher-clearance",
       "file": "pages/brands/franke-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/fujiyama-dishwasher-clearance",
       "file": "pages/brands/fujiyama-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/fulgor-dishwasher-clearance",
       "file": "pages/brands/fulgor-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/furon-dishwasher-clearance",
       "file": "pages/brands/furon-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/galanz-fridge-clearance",
       "file": "pages/brands/galanz-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/gasmate-fridge-clearance",
       "file": "pages/brands/gasmate-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/germanica-fridge-clearance",
       "file": "pages/brands/germanica-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/germanica-washing-machine-clearance",
       "file": "pages/brands/germanica-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/glen-dimplex-dishwasher-clearance",
       "file": "pages/brands/glen-dimplex-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/gram-fridge-clearance",
       "file": "pages/brands/gram-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/hafele-dishwasher-clearance",
       "file": "pages/brands/hafele-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/hafele-dryer-clearance",
       "file": "pages/brands/hafele-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/hafele-washing-machine-clearance",
       "file": "pages/brands/hafele-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/haier-dishwasher-clearance",
       "file": "pages/brands/haier-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/haier-fridge-clearance",
       "file": "pages/brands/haier-fridge-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/haier-washing-machine-clearance",
       "file": "pages/brands/haier-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/harbour-fridge-clearance",
       "file": "pages/brands/harbour-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/heller-dishwasher-clearance",
       "file": "pages/brands/heller-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/heller-fridge-clearance",
       "file": "pages/brands/heller-fridge-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/heller-washing-machine-clearance",
       "file": "pages/brands/heller-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/hisense-dishwasher-clearance",
       "file": "pages/brands/hisense-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/hisense-fridge-clearance",
       "file": "pages/brands/hisense-fridge-clearance.html",
       "inlinks": 8,
-      "outlinks": 12
+      "outlinks": 14
     },
     {
       "url": "/brands/hisense-washing-machine-clearance",
       "file": "pages/brands/hisense-washing-machine-clearance.html",
       "inlinks": 7,
-      "outlinks": 12
+      "outlinks": 14
     },
     {
       "url": "/brands/hitachi-fridge-clearance",
       "file": "pages/brands/hitachi-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/hitachi-washing-machine-clearance",
       "file": "pages/brands/hitachi-washing-machine-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/home-appliances-dishwasher-clearance",
       "file": "pages/brands/home-appliances-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/hoover-fridge-clearance",
       "file": "pages/brands/hoover-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/husky-fridge-clearance",
       "file": "pages/brands/husky-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/iceland-fridge-clearance",
       "file": "pages/brands/iceland-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/ikea-dishwasher-clearance",
       "file": "pages/brands/ikea-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/ikea-fridge-clearance",
       "file": "pages/brands/ikea-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/ilve-dishwasher-clearance",
       "file": "pages/brands/ilve-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/ilve-fridge-clearance",
       "file": "pages/brands/ilve-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/imprasio-fridge-clearance",
       "file": "pages/brands/imprasio-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/inalto-dishwasher-clearance",
       "file": "pages/brands/inalto-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/inalto-dryer-clearance",
       "file": "pages/brands/inalto-dryer-clearance.html",
       "inlinks": 8,
-      "outlinks": 12
+      "outlinks": 14
     },
     {
       "url": "/brands/inalto-fridge-clearance",
       "file": "pages/brands/inalto-fridge-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/inalto-washing-machine-clearance",
       "file": "pages/brands/inalto-washing-machine-clearance.html",
       "inlinks": 5,
-      "outlinks": 10
+      "outlinks": 12
     },
     {
       "url": "/brands/kelvinator-fridge-clearance",
       "file": "pages/brands/kelvinator-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/kingsbottle-fridge-clearance",
       "file": "pages/brands/kingsbottle-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/kleenmaid-dishwasher-clearance",
       "file": "pages/brands/kleenmaid-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/kleenmaid-fridge-clearance",
       "file": "pages/brands/kleenmaid-fridge-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/kleenmaid-washing-machine-clearance",
       "file": "pages/brands/kleenmaid-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/kogan-dishwasher-clearance",
       "file": "pages/brands/kogan-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/kogan-dryer-clearance",
       "file": "pages/brands/kogan-dryer-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/kogan-fridge-clearance",
       "file": "pages/brands/kogan-fridge-clearance.html",
       "inlinks": 6,
-      "outlinks": 10
+      "outlinks": 12
     },
     {
       "url": "/brands/kogan-washing-machine-clearance",
       "file": "pages/brands/kogan-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/konka-fridge-clearance",
       "file": "pages/brands/konka-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/lg-dishwasher-clearance",
       "file": "pages/brands/lg-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/lg-dryer-clearance",
       "file": "pages/brands/lg-dryer-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/lg-fridge-clearance",
       "file": "pages/brands/lg-fridge-clearance.html",
       "inlinks": 8,
-      "outlinks": 12
+      "outlinks": 14
     },
     {
       "url": "/brands/lg-washing-machine-clearance",
       "file": "pages/brands/lg-washing-machine-clearance.html",
       "inlinks": 10,
-      "outlinks": 13
+      "outlinks": 15
     },
     {
       "url": "/brands/licensing-essentials-fridge-clearance",
       "file": "pages/brands/licensing-essentials-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/liebherr-fridge-clearance",
       "file": "pages/brands/liebherr-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/linarie-fridge-clearance",
       "file": "pages/brands/linarie-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/living-co-fridge-clearance",
       "file": "pages/brands/living-co-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/living-co-washing-machine-clearance",
       "file": "pages/brands/living-co-washing-machine-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/majestic-dishwasher-clearance",
       "file": "pages/brands/majestic-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/majestic-fridge-clearance",
       "file": "pages/brands/majestic-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/majestic-washing-machine-clearance",
       "file": "pages/brands/majestic-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/makita-fridge-clearance",
       "file": "pages/brands/makita-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/malber-washing-machine-clearance",
       "file": "pages/brands/malber-washing-machine-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/master-kitchen-dishwasher-clearance",
       "file": "pages/brands/master-kitchen-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/meisda-fridge-clearance",
       "file": "pages/brands/meisda-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/midea-dishwasher-clearance",
       "file": "pages/brands/midea-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/midea-dryer-clearance",
       "file": "pages/brands/midea-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/midea-fridge-clearance",
       "file": "pages/brands/midea-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/midea-washing-machine-clearance",
       "file": "pages/brands/midea-washing-machine-clearance.html",
       "inlinks": 6,
-      "outlinks": 11
+      "outlinks": 13
     },
     {
       "url": "/brands/miele-dishwasher-clearance",
       "file": "pages/brands/miele-dishwasher-clearance.html",
       "inlinks": 6,
-      "outlinks": 11
+      "outlinks": 13
     },
     {
       "url": "/brands/miele-fridge-clearance",
       "file": "pages/brands/miele-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/miele-washing-machine-clearance",
       "file": "pages/brands/miele-washing-machine-clearance.html",
       "inlinks": 6,
-      "outlinks": 11
+      "outlinks": 13
     },
     {
       "url": "/brands/milano-dishwasher-clearance",
       "file": "pages/brands/milano-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/mistral-dishwasher-clearance",
       "file": "pages/brands/mistral-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/mistral-dryer-clearance",
       "file": "pages/brands/mistral-dryer-clearance.html",
       "inlinks": 5,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/mistral-fridge-clearance",
       "file": "pages/brands/mistral-fridge-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/mistral-washing-machine-clearance",
       "file": "pages/brands/mistral-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/mitsubishi-electric-fridge-clearance",
       "file": "pages/brands/mitsubishi-electric-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/mitsubishi-fridge-clearance",
       "file": "pages/brands/mitsubishi-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/moborv-washing-machine-clearance",
       "file": "pages/brands/moborv-washing-machine-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/modello-fridge-clearance",
       "file": "pages/brands/modello-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/mykin-dishwasher-clearance",
       "file": "pages/brands/mykin-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/mykin-fridge-clearance",
       "file": "pages/brands/mykin-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/mykin-washing-machine-clearance",
       "file": "pages/brands/mykin-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/nakita-fridge-clearance",
       "file": "pages/brands/nakita-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/nce-fridge-clearance",
       "file": "pages/brands/nce-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/nce-washing-machine-clearance",
       "file": "pages/brands/nce-washing-machine-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/nero-fridge-clearance",
       "file": "pages/brands/nero-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/nisbets-essentials-fridge-clearance",
       "file": "pages/brands/nisbets-essentials-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/norj-dishwasher-clearance",
       "file": "pages/brands/norj-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/norj-dryer-clearance",
       "file": "pages/brands/norj-dryer-clearance.html",
       "inlinks": 2,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/norj-fridge-clearance",
       "file": "pages/brands/norj-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/norj-washing-machine-clearance",
       "file": "pages/brands/norj-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/novello-fridge-clearance",
       "file": "pages/brands/novello-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/nulon-fridge-clearance",
       "file": "pages/brands/nulon-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/omega-dishwasher-clearance",
       "file": "pages/brands/omega-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/omega-dryer-clearance",
       "file": "pages/brands/omega-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/omega-fridge-clearance",
       "file": "pages/brands/omega-fridge-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/omega-washing-machine-clearance",
       "file": "pages/brands/omega-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/panasonic-dishwasher-clearance",
       "file": "pages/brands/panasonic-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/panasonic-fridge-clearance",
       "file": "pages/brands/panasonic-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/panasonic-washing-machine-clearance",
       "file": "pages/brands/panasonic-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/parmco-dishwasher-clearance",
       "file": "pages/brands/parmco-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/parmco-dryer-clearance",
       "file": "pages/brands/parmco-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/parmco-fridge-clearance",
       "file": "pages/brands/parmco-fridge-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/parmco-washing-machine-clearance",
       "file": "pages/brands/parmco-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/platinum-dishwasher-clearance",
       "file": "pages/brands/platinum-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/platinum-dryer-clearance",
       "file": "pages/brands/platinum-dryer-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/polar-refrigeration-fridge-clearance",
       "file": "pages/brands/polar-refrigeration-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/polo-dishwasher-clearance",
       "file": "pages/brands/polo-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/prinetti-fridge-clearance",
       "file": "pages/brands/prinetti-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/pulmuone-fridge-clearance",
       "file": "pages/brands/pulmuone-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/robinhood-dishwasher-clearance",
       "file": "pages/brands/robinhood-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/robinhood-dryer-clearance",
       "file": "pages/brands/robinhood-dryer-clearance.html",
       "inlinks": 7,
-      "outlinks": 12
+      "outlinks": 14
     },
     {
       "url": "/brands/robinhood-fridge-clearance",
       "file": "pages/brands/robinhood-fridge-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/robinhood-washing-machine-clearance",
       "file": "pages/brands/robinhood-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/ryobi-fridge-clearance",
       "file": "pages/brands/ryobi-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/samsung-dishwasher-clearance",
       "file": "pages/brands/samsung-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/samsung-dryer-clearance",
       "file": "pages/brands/samsung-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/samsung-electronics-washing-machine-clearance",
       "file": "pages/brands/samsung-electronics-washing-machine-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/samsung-fridge-clearance",
       "file": "pages/brands/samsung-fridge-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/samsung-washing-machine-clearance",
       "file": "pages/brands/samsung-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/schmick-fridge-clearance",
       "file": "pages/brands/schmick-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/seiki-dishwasher-clearance",
       "file": "pages/brands/seiki-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/seiki-fridge-clearance",
       "file": "pages/brands/seiki-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/seiki-washing-machine-clearance",
       "file": "pages/brands/seiki-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/sharp-fridge-clearance",
       "file": "pages/brands/sharp-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/sheffield-dryer-clearance",
       "file": "pages/brands/sheffield-dryer-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/sheffield-fridge-clearance",
       "file": "pages/brands/sheffield-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/simmons-fridge-clearance",
       "file": "pages/brands/simmons-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/smeg-dishwasher-clearance",
       "file": "pages/brands/smeg-dishwasher-clearance.html",
       "inlinks": 6,
-      "outlinks": 11
+      "outlinks": 13
     },
     {
       "url": "/brands/smeg-fridge-clearance",
       "file": "pages/brands/smeg-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/smeg-washing-machine-clearance",
       "file": "pages/brands/smeg-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/solt-dishwasher-clearance",
       "file": "pages/brands/solt-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/solt-dryer-clearance",
       "file": "pages/brands/solt-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/solt-fridge-clearance",
       "file": "pages/brands/solt-fridge-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/solt-washing-machine-clearance",
       "file": "pages/brands/solt-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/stirling-dryer-clearance",
       "file": "pages/brands/stirling-dryer-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/stirling-fridge-clearance",
       "file": "pages/brands/stirling-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/stirling-washing-machine-clearance",
       "file": "pages/brands/stirling-washing-machine-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/sub-zero-fridge-clearance",
       "file": "pages/brands/sub-zero-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/supreme-fridge-clearance",
       "file": "pages/brands/supreme-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/swift-washing-machine-clearance",
       "file": "pages/brands/swift-washing-machine-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/tcl-fridge-clearance",
       "file": "pages/brands/tcl-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/tcl-washing-machine-clearance",
       "file": "pages/brands/tcl-washing-machine-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/technika-dishwasher-clearance",
       "file": "pages/brands/technika-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/technika-dryer-clearance",
       "file": "pages/brands/technika-dryer-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/technika-washing-machine-clearance",
       "file": "pages/brands/technika-washing-machine-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/teco-dishwasher-clearance",
       "file": "pages/brands/teco-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/teco-fridge-clearance",
       "file": "pages/brands/teco-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/teco-washing-machine-clearance",
       "file": "pages/brands/teco-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/teka-dishwasher-clearance",
       "file": "pages/brands/teka-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/teka-fridge-clearance",
       "file": "pages/brands/teka-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/teka-washing-machine-clearance",
       "file": "pages/brands/teka-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/telefunken-washing-machine-clearance",
       "file": "pages/brands/telefunken-washing-machine-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/thermaster-fridge-clearance",
       "file": "pages/brands/thermaster-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/tisira-dishwasher-clearance",
       "file": "pages/brands/tisira-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/tisira-washing-machine-clearance",
       "file": "pages/brands/tisira-washing-machine-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/toshiba-dishwasher-clearance",
       "file": "pages/brands/toshiba-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/toshiba-washing-machine-clearance",
       "file": "pages/brands/toshiba-washing-machine-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/trade-tested-fridge-clearance",
       "file": "pages/brands/trade-tested-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/trieste-dishwasher-clearance",
       "file": "pages/brands/trieste-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/tuscany-dishwasher-clearance",
       "file": "pages/brands/tuscany-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/tuscany-dryer-clearance",
       "file": "pages/brands/tuscany-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/tuscany-fridge-clearance",
       "file": "pages/brands/tuscany-fridge-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/tuscany-washing-machine-clearance",
       "file": "pages/brands/tuscany-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/v-zug-dishwasher-clearance",
       "file": "pages/brands/v-zug-dishwasher-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/v-zug-fridge-clearance",
       "file": "pages/brands/v-zug-fridge-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/v-zug-washing-machine-clearance",
       "file": "pages/brands/v-zug-washing-machine-clearance.html",
       "inlinks": 3,
-      "outlinks": 8
+      "outlinks": 10
     },
     {
       "url": "/brands/veneto-dishwasher-clearance",
       "file": "pages/brands/veneto-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/venini-dishwasher-clearance",
       "file": "pages/brands/venini-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/vinopro-fridge-clearance",
       "file": "pages/brands/vinopro-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/vision-washing-machine-clearance",
       "file": "pages/brands/vision-washing-machine-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/vogue-dishwasher-clearance",
       "file": "pages/brands/vogue-dishwasher-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/vogue-dryer-clearance",
       "file": "pages/brands/vogue-dryer-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/vogue-fridge-clearance",
       "file": "pages/brands/vogue-fridge-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/vogue-washing-machine-clearance",
       "file": "pages/brands/vogue-washing-machine-clearance.html",
       "inlinks": 4,
-      "outlinks": 9
+      "outlinks": 11
     },
     {
       "url": "/brands/warrior-refrigeration-fridge-clearance",
       "file": "pages/brands/warrior-refrigeration-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/westinghouse-dishwasher-clearance",
       "file": "pages/brands/westinghouse-dishwasher-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/westinghouse-fridge-clearance",
       "file": "pages/brands/westinghouse-fridge-clearance.html",
       "inlinks": 6,
-      "outlinks": 10
+      "outlinks": 12
     },
     {
       "url": "/brands/westinghouse-washing-machine-clearance",
       "file": "pages/brands/westinghouse-washing-machine-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/whirlpool-fridge-clearance",
       "file": "pages/brands/whirlpool-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/whirlpool-washing-machine-clearance",
       "file": "pages/brands/whirlpool-washing-machine-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/winterwulf-fridge-clearance",
       "file": "pages/brands/winterwulf-fridge-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/brands/yokohama-fridge-clearance",
       "file": "pages/brands/yokohama-fridge-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/yokohama-washing-machine-clearance",
       "file": "pages/brands/yokohama-washing-machine-clearance.html",
       "inlinks": 2,
-      "outlinks": 7
+      "outlinks": 9
     },
     {
       "url": "/brands/zzz-dishwasher-clearance",
       "file": "pages/brands/zzz-dishwasher-clearance.html",
       "inlinks": 1,
-      "outlinks": 6
+      "outlinks": 8
     },
     {
       "url": "/cavity/1000mm-fridge",
       "file": "pages/cavity/1000mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/1010mm-fridge",
       "file": "pages/cavity/1010mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/1020mm-fridge",
       "file": "pages/cavity/1020mm-fridge.html",
       "inlinks": 13,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/1030mm-fridge",
       "file": "pages/cavity/1030mm-fridge.html",
       "inlinks": 12,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/1040mm-fridge",
       "file": "pages/cavity/1040mm-fridge.html",
       "inlinks": 11,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/1050mm-fridge",
       "file": "pages/cavity/1050mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/1060mm-fridge",
       "file": "pages/cavity/1060mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/1070mm-fridge",
       "file": "pages/cavity/1070mm-fridge.html",
       "inlinks": 8,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/1080mm-fridge",
       "file": "pages/cavity/1080mm-fridge.html",
       "inlinks": 7,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/1090mm-fridge",
       "file": "pages/cavity/1090mm-fridge.html",
       "inlinks": 6,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/1100mm-fridge",
       "file": "pages/cavity/1100mm-fridge.html",
       "inlinks": 5,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/500mm-fridge",
       "file": "pages/cavity/500mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/510mm-fridge",
       "file": "pages/cavity/510mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/520mm-fridge",
       "file": "pages/cavity/520mm-fridge.html",
       "inlinks": 11,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/530mm-fridge",
       "file": "pages/cavity/530mm-fridge.html",
       "inlinks": 12,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/540mm-fridge",
       "file": "pages/cavity/540mm-fridge.html",
       "inlinks": 13,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/550mm-fridge",
       "file": "pages/cavity/550mm-fridge.html",
       "inlinks": 14,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/560mm-fridge",
       "file": "pages/cavity/560mm-fridge.html",
       "inlinks": 15,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/570mm-fridge",
       "file": "pages/cavity/570mm-fridge.html",
       "inlinks": 16,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/580mm-fridge",
       "file": "pages/cavity/580mm-fridge.html",
       "inlinks": 15,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/590mm-fridge",
       "file": "pages/cavity/590mm-fridge.html",
       "inlinks": 11,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/600mm-fridge",
       "file": "pages/cavity/600mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/610mm-fridge",
       "file": "pages/cavity/610mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/620mm-fridge",
       "file": "pages/cavity/620mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/630mm-fridge",
       "file": "pages/cavity/630mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/640mm-fridge",
       "file": "pages/cavity/640mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/650mm-fridge",
       "file": "pages/cavity/650mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/660mm-fridge",
       "file": "pages/cavity/660mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/670mm-fridge",
       "file": "pages/cavity/670mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/680mm-fridge",
       "file": "pages/cavity/680mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/690mm-fridge",
       "file": "pages/cavity/690mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/700mm-fridge",
       "file": "pages/cavity/700mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/710mm-fridge",
       "file": "pages/cavity/710mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/720mm-fridge",
       "file": "pages/cavity/720mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/730mm-fridge",
       "file": "pages/cavity/730mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/740mm-fridge",
       "file": "pages/cavity/740mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/750mm-fridge",
       "file": "pages/cavity/750mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/760mm-fridge",
       "file": "pages/cavity/760mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/770mm-fridge",
       "file": "pages/cavity/770mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/780mm-fridge",
       "file": "pages/cavity/780mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/790mm-fridge",
       "file": "pages/cavity/790mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/800mm-fridge",
       "file": "pages/cavity/800mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/810mm-fridge",
       "file": "pages/cavity/810mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/820mm-fridge",
       "file": "pages/cavity/820mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/830mm-fridge",
       "file": "pages/cavity/830mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/840mm-fridge",
       "file": "pages/cavity/840mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/850mm-fridge",
       "file": "pages/cavity/850mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/860mm-fridge",
       "file": "pages/cavity/860mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/870mm-fridge",
       "file": "pages/cavity/870mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/880mm-fridge",
       "file": "pages/cavity/880mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/890mm-fridge",
       "file": "pages/cavity/890mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/900mm-fridge",
       "file": "pages/cavity/900mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/910mm-fridge",
       "file": "pages/cavity/910mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/920mm-fridge",
       "file": "pages/cavity/920mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/930mm-fridge",
       "file": "pages/cavity/930mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/940mm-fridge",
       "file": "pages/cavity/940mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/950mm-fridge",
       "file": "pages/cavity/950mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/960mm-fridge",
       "file": "pages/cavity/960mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/970mm-fridge",
       "file": "pages/cavity/970mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/980mm-fridge",
       "file": "pages/cavity/980mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/cavity/990mm-fridge",
       "file": "pages/cavity/990mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 22
+      "outlinks": 24
     },
     {
       "url": "/compare/artusi-vs-ilve-dishwasher-clearance",
       "file": "pages/compare/artusi-vs-ilve-dishwasher-clearance.html",
       "inlinks": 12,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/artusi-vs-miele-dishwasher-clearance",
       "file": "pages/compare/artusi-vs-miele-dishwasher-clearance.html",
       "inlinks": 12,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/artusi-vs-smeg-dishwasher-clearance",
       "file": "pages/compare/artusi-vs-smeg-dishwasher-clearance.html",
       "inlinks": 12,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/chiq-vs-fisher-paykel-fridge-clearance",
       "file": "pages/compare/chiq-vs-fisher-paykel-fridge-clearance.html",
       "inlinks": 72,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/chiq-vs-lg-fridge-clearance",
       "file": "pages/compare/chiq-vs-lg-fridge-clearance.html",
       "inlinks": 74,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/esatto-vs-artusi-dryer-clearance",
       "file": "pages/compare/esatto-vs-artusi-dryer-clearance.html",
       "inlinks": 13,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/esatto-vs-electrolux-dryer-clearance",
       "file": "pages/compare/esatto-vs-electrolux-dryer-clearance.html",
       "inlinks": 13,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/esatto-vs-euro-dryer-clearance",
       "file": "pages/compare/esatto-vs-euro-dryer-clearance.html",
       "inlinks": 13,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/esatto-vs-inalto-dryer-clearance",
       "file": "pages/compare/esatto-vs-inalto-dryer-clearance.html",
       "inlinks": 13,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/esatto-vs-robinhood-dryer-clearance",
       "file": "pages/compare/esatto-vs-robinhood-dryer-clearance.html",
       "inlinks": 12,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/euro-vs-artusi-dryer-clearance",
       "file": "pages/compare/euro-vs-artusi-dryer-clearance.html",
       "inlinks": 13,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/euro-vs-inalto-dryer-clearance",
       "file": "pages/compare/euro-vs-inalto-dryer-clearance.html",
       "inlinks": 13,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/euro-vs-robinhood-dryer-clearance",
       "file": "pages/compare/euro-vs-robinhood-dryer-clearance.html",
       "inlinks": 13,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/fisher-paykel-vs-artusi-dishwasher-clearance",
       "file": "pages/compare/fisher-paykel-vs-artusi-dishwasher-clearance.html",
       "inlinks": 12,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/fisher-paykel-vs-ilve-dishwasher-clearance",
       "file": "pages/compare/fisher-paykel-vs-ilve-dishwasher-clearance.html",
       "inlinks": 12,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/fisher-paykel-vs-midea-dishwasher-clearance",
       "file": "pages/compare/fisher-paykel-vs-midea-dishwasher-clearance.html",
       "inlinks": 12,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/fisher-paykel-vs-miele-dishwasher-clearance",
       "file": "pages/compare/fisher-paykel-vs-miele-dishwasher-clearance.html",
       "inlinks": 12,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/fisher-paykel-vs-smeg-dishwasher-clearance",
       "file": "pages/compare/fisher-paykel-vs-smeg-dishwasher-clearance.html",
       "inlinks": 11,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/hisense-vs-beko-washing-machine-clearance",
       "file": "pages/compare/hisense-vs-beko-washing-machine-clearance.html",
       "inlinks": 9,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/hisense-vs-chiq-fridge-clearance",
       "file": "pages/compare/hisense-vs-chiq-fridge-clearance.html",
       "inlinks": 75,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/hisense-vs-fisher-paykel-fridge-clearance",
       "file": "pages/compare/hisense-vs-fisher-paykel-fridge-clearance.html",
       "inlinks": 74,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/hisense-vs-lg-fridge-clearance",
       "file": "pages/compare/hisense-vs-lg-fridge-clearance.html",
       "inlinks": 75,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/hisense-vs-midea-washing-machine-clearance",
       "file": "pages/compare/hisense-vs-midea-washing-machine-clearance.html",
       "inlinks": 14,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/hisense-vs-miele-washing-machine-clearance",
       "file": "pages/compare/hisense-vs-miele-washing-machine-clearance.html",
       "inlinks": 14,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/inalto-vs-robinhood-dryer-clearance",
       "file": "pages/compare/inalto-vs-robinhood-dryer-clearance.html",
       "inlinks": 12,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/lg-vs-beko-washing-machine-clearance",
       "file": "pages/compare/lg-vs-beko-washing-machine-clearance.html",
       "inlinks": 14,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/lg-vs-hisense-washing-machine-clearance",
       "file": "pages/compare/lg-vs-hisense-washing-machine-clearance.html",
       "inlinks": 14,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/lg-vs-inalto-washing-machine-clearance",
       "file": "pages/compare/lg-vs-inalto-washing-machine-clearance.html",
       "inlinks": 14,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/lg-vs-midea-washing-machine-clearance",
       "file": "pages/compare/lg-vs-midea-washing-machine-clearance.html",
       "inlinks": 14,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/lg-vs-miele-washing-machine-clearance",
       "file": "pages/compare/lg-vs-miele-washing-machine-clearance.html",
       "inlinks": 13,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/lg-vs-seiki-washing-machine-clearance",
       "file": "pages/compare/lg-vs-seiki-washing-machine-clearance.html",
       "inlinks": 11,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/midea-vs-miele-washing-machine-clearance",
       "file": "pages/compare/midea-vs-miele-washing-machine-clearance.html",
       "inlinks": 11,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/smeg-vs-miele-dishwasher-clearance",
       "file": "pages/compare/smeg-vs-miele-dishwasher-clearance.html",
       "inlinks": 12,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/westinghouse-vs-chiq-fridge-clearance",
       "file": "pages/compare/westinghouse-vs-chiq-fridge-clearance.html",
       "inlinks": 75,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/westinghouse-vs-fisher-paykel-fridge-clearance",
       "file": "pages/compare/westinghouse-vs-fisher-paykel-fridge-clearance.html",
       "inlinks": 75,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/westinghouse-vs-hisense-fridge-clearance",
       "file": "pages/compare/westinghouse-vs-hisense-fridge-clearance.html",
       "inlinks": 75,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/westinghouse-vs-kogan-fridge-clearance",
       "file": "pages/compare/westinghouse-vs-kogan-fridge-clearance.html",
       "inlinks": 8,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/compare/westinghouse-vs-lg-fridge-clearance",
       "file": "pages/compare/westinghouse-vs-lg-fridge-clearance.html",
       "inlinks": 12,
-      "outlinks": 16
+      "outlinks": 18
     },
     {
       "url": "/doorway/600mm-fridge-doorway",
       "file": "pages/doorway/600mm-fridge-doorway.html",
       "inlinks": 9,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/610mm-fridge-doorway",
       "file": "pages/doorway/610mm-fridge-doorway.html",
       "inlinks": 10,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/620mm-fridge-doorway",
       "file": "pages/doorway/620mm-fridge-doorway.html",
       "inlinks": 11,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/630mm-fridge-doorway",
       "file": "pages/doorway/630mm-fridge-doorway.html",
       "inlinks": 12,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/640mm-fridge-doorway",
       "file": "pages/doorway/640mm-fridge-doorway.html",
       "inlinks": 13,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/650mm-fridge-doorway",
       "file": "pages/doorway/650mm-fridge-doorway.html",
       "inlinks": 14,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/660mm-fridge-doorway",
       "file": "pages/doorway/660mm-fridge-doorway.html",
       "inlinks": 15,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/670mm-fridge-doorway",
       "file": "pages/doorway/670mm-fridge-doorway.html",
       "inlinks": 16,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/680mm-fridge-doorway",
       "file": "pages/doorway/680mm-fridge-doorway.html",
       "inlinks": 15,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/690mm-fridge-doorway",
       "file": "pages/doorway/690mm-fridge-doorway.html",
       "inlinks": 11,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/700mm-fridge-doorway",
       "file": "pages/doorway/700mm-fridge-doorway.html",
       "inlinks": 11,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/710mm-fridge-doorway",
       "file": "pages/doorway/710mm-fridge-doorway.html",
       "inlinks": 11,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/720mm-fridge-doorway",
       "file": "pages/doorway/720mm-fridge-doorway.html",
       "inlinks": 11,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/730mm-fridge-doorway",
       "file": "pages/doorway/730mm-fridge-doorway.html",
       "inlinks": 11,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/740mm-fridge-doorway",
       "file": "pages/doorway/740mm-fridge-doorway.html",
       "inlinks": 11,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/750mm-fridge-doorway",
       "file": "pages/doorway/750mm-fridge-doorway.html",
       "inlinks": 11,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/760mm-fridge-doorway",
       "file": "pages/doorway/760mm-fridge-doorway.html",
       "inlinks": 11,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/770mm-fridge-doorway",
       "file": "pages/doorway/770mm-fridge-doorway.html",
       "inlinks": 11,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/780mm-fridge-doorway",
       "file": "pages/doorway/780mm-fridge-doorway.html",
       "inlinks": 11,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/790mm-fridge-doorway",
       "file": "pages/doorway/790mm-fridge-doorway.html",
       "inlinks": 11,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/800mm-fridge-doorway",
       "file": "pages/doorway/800mm-fridge-doorway.html",
       "inlinks": 9,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/810mm-fridge-doorway",
       "file": "pages/doorway/810mm-fridge-doorway.html",
       "inlinks": 9,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/820mm-fridge-doorway",
       "file": "pages/doorway/820mm-fridge-doorway.html",
       "inlinks": 13,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/830mm-fridge-doorway",
       "file": "pages/doorway/830mm-fridge-doorway.html",
       "inlinks": 12,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/840mm-fridge-doorway",
       "file": "pages/doorway/840mm-fridge-doorway.html",
       "inlinks": 11,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/850mm-fridge-doorway",
       "file": "pages/doorway/850mm-fridge-doorway.html",
       "inlinks": 10,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/860mm-fridge-doorway",
       "file": "pages/doorway/860mm-fridge-doorway.html",
       "inlinks": 9,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/870mm-fridge-doorway",
       "file": "pages/doorway/870mm-fridge-doorway.html",
       "inlinks": 8,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/880mm-fridge-doorway",
       "file": "pages/doorway/880mm-fridge-doorway.html",
       "inlinks": 7,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/890mm-fridge-doorway",
       "file": "pages/doorway/890mm-fridge-doorway.html",
       "inlinks": 6,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/doorway/900mm-fridge-doorway",
       "file": "pages/doorway/900mm-fridge-doorway.html",
       "inlinks": 5,
-      "outlinks": 14
+      "outlinks": 16
     },
     {
       "url": "/guides/appliance-fit-sizing-handbook",
       "file": "pages/guides/appliance-fit-sizing-handbook.html",
       "inlinks": 420,
-      "outlinks": 423
+      "outlinks": 425
     },
     {
       "url": "/guides/dishwasher-cavity-sizing",
       "file": "pages/guides/dishwasher-cavity-sizing.html",
       "inlinks": 420,
-      "outlinks": 65
+      "outlinks": 67
     },
     {
       "url": "/guides/dryer-ventilation-guide",
       "file": "pages/guides/dryer-ventilation-guide.html",
       "inlinks": 420,
-      "outlinks": 65
+      "outlinks": 67
     },
     {
       "url": "/guides/fridge-clearance-requirements",
       "file": "pages/guides/fridge-clearance-requirements.html",
       "inlinks": 420,
-      "outlinks": 105
+      "outlinks": 107
     },
     {
       "url": "/guides/washing-machine-doorway-access",
       "file": "pages/guides/washing-machine-doorway-access.html",
       "inlinks": 420,
-      "outlinks": 76
+      "outlinks": 78
+    },
+    {
+      "url": "/methodology",
+      "file": "pages/methodology.html",
+      "inlinks": 425,
+      "outlinks": 2
     },
     {
       "url": "/privacy-policy",
       "file": "pages/privacy-policy.html",
       "inlinks": 3,
-      "outlinks": 2
+      "outlinks": 4
     }
   ]
 }

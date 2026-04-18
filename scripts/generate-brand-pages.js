@@ -246,6 +246,22 @@ function buildSocialMetaTags({ title, description, canonical, brandImageUrl = nu
   ].filter(Boolean).join('\n');
 }
 
+function buildOrganizationJsonLd(brandName, metadataByBrand = {}) {
+  const metadata = metadataByBrand?.[brandName] ?? {};
+  const org = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: brandName
+  };
+  if (typeof metadata.url === 'string' && /^https?:\/\//i.test(metadata.url)) {
+    org.url = metadata.url;
+  }
+  if (typeof metadata.logo === 'string' && /^https?:\/\//i.test(metadata.logo)) {
+    org.logo = metadata.logo;
+  }
+  return org;
+}
+
 function buildBrandPageHtml({
   brand,
   brandRaw = brand,
@@ -262,7 +278,9 @@ function buildBrandPageHtml({
   itemListProducts = [],
   pendingSwingCount = 0,
   relatedCompares = [],
-  sameBrandAlternatives = []
+  sameBrandAlternatives = [],
+  organizationJsonLd = null,
+  modifiedTime = new Date().toISOString()
 }) {
   const categoryMeta = CATEGORY_META[category] ?? {
     slug: category.replace(/_/g, '-'),
@@ -334,6 +352,7 @@ function buildBrandPageHtml({
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${escHtml(title)}</title>
   <meta name="description" content="${escHtml(description)}">
+  <meta name="article:modified_time" content="${escHtml(modifiedTime)}">
   <link rel="canonical" href="${canonical}">
   ${buildSocialMetaTags({ title, description, canonical, brandImageUrl: ogImageUrl })}
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -568,6 +587,7 @@ function buildBrandPageHtml({
     </section>
     <footer>
       <p>Source: FitAppliance clearance and model coverage dataset for Australia.</p>
+      <p><a href="/methodology">Methodology</a> · <a href="/about/editorial-standards">Editorial standards</a></p>
     </footer>
   </main>
   <script type="application/ld+json">
@@ -582,6 +602,9 @@ ${faqJsonLd}
   <script type="application/ld+json">
 ${itemListJsonLd}
   </script>
+  ${organizationJsonLd ? `<script type="application/ld+json">
+${organizationJsonLd}
+  </script>` : ''}
 </body>
 </html>
 `;
@@ -605,6 +628,7 @@ async function generateBrandPages(options = {}) {
 
   const appliances = await readJson(path.join(dataDir, 'appliances.json'));
   const clearance = await readJson(path.join(dataDir, 'clearance.json'));
+  const brandMetadata = await readJson(path.join(dataDir, 'brands', 'metadata.json')).catch(() => ({}));
   const products = Array.isArray(appliances.products) ? appliances.products : [];
   const rules = clearance.rules ?? {};
 
@@ -739,7 +763,9 @@ async function generateBrandPages(options = {}) {
       modelSamples: row.modelSamples,
       itemListProducts: row.itemListProducts,
       relatedCompares,
-      sameBrandAlternatives
+      sameBrandAlternatives,
+      organizationJsonLd: JSON.stringify(buildOrganizationJsonLd(displayBrand, brandMetadata), null, 2),
+      modifiedTime: new Date().toISOString()
     });
     await writeFile(row.filePath, html, 'utf8');
   }

@@ -476,6 +476,7 @@ function buildComparisonPageHtml({
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${escHtml(title)}</title>
   <meta name="description" content="${escHtml(description)}">
+  <meta name="article:modified_time" content="${escHtml(lastUpdated)}">
   <link rel="canonical" href="${canonical}">
   ${buildSocialMetaTags({ title, description, canonical, ogImageUrl })}
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WNPNS4ZGWK"></script>
@@ -603,6 +604,10 @@ function buildComparisonPageHtml({
         ${GUIDE_HUB_LINKS.map((row) => `<a href="${escHtml(row.url)}" style="display:inline-block;padding:6px 14px;border:1px solid #e0d9ce;border-radius:20px;font-size:13px;color:#b55a2c;text-decoration:none;background:#fff">${escHtml(row.label)}</a>`).join('\n        ')}
       </div>
     </section>
+    <footer style="margin-top:16px;padding-top:14px;border-top:1px solid #e0d9ce;font-size:13px;color:#7a766e">
+      <a href="/methodology" style="color:#b55a2c;text-decoration:none">Methodology</a> ·
+      <a href="/about/editorial-standards" style="color:#b55a2c;text-decoration:none">Editorial standards</a>
+    </footer>
   </main>
   <script>
     if (typeof gtag === 'function') {

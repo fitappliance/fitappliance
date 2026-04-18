@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Methodology — FitAppliance</title>
+  <meta name="description" content="How FitAppliance calculates cavity fit, doorway access, clearance allowances, and schema governance for Australian appliance pages.">
+  <meta name="article:modified_time" content="2026-04-18T00:00:00Z">
+  <link rel="canonical" href="https://fitappliance.com.au/methodology">
+  <style>
+    :root { --ink:#131210; --ink-2:#3d3a35; --paper:#faf8f4; --border:#e0d9ce; --copper:#b55a2c; }
+    body { margin: 0; font-family: Arial, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
+    main { max-width: 860px; margin: 0 auto; padding: 44px 24px 72px; }
+    h1 { margin: 0 0 14px; font-size: 34px; }
+    h2 { margin: 28px 0 10px; font-size: 22px; }
+    p, li { color: var(--ink-2); font-size: 15px; }
+    ul { padding-left: 20px; }
+    .meta { font-size: 13px; color: #777; margin-bottom: 16px; }
+    footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; }
+    a { color: var(--copper); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <a href="/">← Back to FitAppliance</a>
+    <h1>Methodology</h1>
+    <p class="meta">Last updated: 18 April 2026</p>
+
+    <p>FitAppliance is a static decision-support tool for Australian appliance sizing. This page documents our
+    calculation order, data transformations, and publication constraints.</p>
+
+    <h2>1. Fit Calculation Order</h2>
+    <ul>
+      <li>Input cavity dimensions (width, height, depth) are validated client-side.</li>
+      <li>Per-brand clearance rules are applied before fit checks.</li>
+      <li>Doorway checks use delivery-width margin logic from generated doorway pages.</li>
+      <li>Products failing any mandatory dimension are excluded from fit results.</li>
+    </ul>
+
+    <h2>2. Data Sources</h2>
+    <ul>
+      <li>Core model data: Australian Government Energy Rating register snapshots in `public/data/appliances.json`.</li>
+      <li>Clearance rules: FitAppliance maintained `public/data/clearance.json` with explicit defaults.</li>
+      <li>Rebates: state-level references in `public/data/rebates.json`.</li>
+      <li>Brand organization metadata: `public/data/brands/metadata.json` (only when verified links exist).</li>
+    </ul>
+
+    <h2>3. Programmatic Content Rules</h2>
+    <ul>
+      <li>No generated page may include fake ratings, fake review counts, or fabricated citations.</li>
+      <li>Schema blocks are validated as strict JSON before publish.</li>
+      <li>Internal links are static HTML links to ensure crawler visibility.</li>
+      <li>All generated pages include update metadata via `article:modified_time`.</li>
+    </ul>
+
+    <h2>4. Operational Cadence</h2>
+    <p>Automated pipelines regenerate structured pages, sitemap, RSS, image sitemap, and link graph reports.
+    Editorial checks run in tests before deployment.</p>
+
+    <footer>
+      <a href="/methodology">Methodology</a> ·
+      <a href="/about/editorial-standards">Editorial standards</a>
+    </footer>
+  </main>
+</body>
+</html>

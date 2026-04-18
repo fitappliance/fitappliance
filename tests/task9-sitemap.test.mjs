@@ -51,7 +51,7 @@ async function createWorkspace(indexRows, compareRows = null) {
 }
 
 test('task 9.1 sitemap: generates expected URL count with static + brand pages', async () => {
-  const { generateSitemap } = await import(sitemapModuleUrl);
+  const { generateSitemap, STATIC_PAGES } = await import(sitemapModuleUrl);
   const workspace = await createWorkspace([
     { brand: 'Samsung', cat: 'fridge', slug: 'samsung-fridge-clearance', url: '/brands/samsung-fridge-clearance' },
     { brand: 'Bosch', cat: 'dishwasher', slug: 'bosch-dishwasher-clearance', url: '/brands/bosch-dishwasher-clearance' },
@@ -66,7 +66,7 @@ test('task 9.1 sitemap: generates expected URL count with static + brand pages',
     logger: { log() {} }
   });
 
-  assert.equal(result.urlCount, 6);
+  assert.equal(result.urlCount, STATIC_PAGES.length + 3);
 });
 
 test('task 9.1 sitemap: assigns category-based priority values', async () => {
@@ -109,7 +109,7 @@ test('task 9.1 sitemap: outputs xml envelope with <urlset>', async () => {
 });
 
 test('task 9.1 sitemap: includes static pages even when brand index is empty', async () => {
-  const { generateSitemap } = await import(sitemapModuleUrl);
+  const { generateSitemap, STATIC_PAGES } = await import(sitemapModuleUrl);
   const workspace = await createWorkspace([]);
 
   await generateSitemap({
@@ -121,14 +121,16 @@ test('task 9.1 sitemap: includes static pages even when brand index is empty', a
 
   const xml = await readFile(workspace.outputPath, 'utf8');
   const nodes = extractNodes(xml);
-  assert.equal(nodes.length, 3);
+  assert.equal(nodes.length, STATIC_PAGES.length);
   assert.equal(nodes[0].loc, 'https://fitappliance.com.au/');
   assert.equal(nodes[1].loc, 'https://fitappliance.com.au/affiliate-disclosure');
   assert.equal(nodes[2].loc, 'https://fitappliance.com.au/privacy-policy');
+  assert.equal(nodes[3].loc, 'https://fitappliance.com.au/methodology');
+  assert.equal(nodes[4].loc, 'https://fitappliance.com.au/about/editorial-standards');
 });
 
 test('task 9.1 sitemap: keeps static URLs first and sorts brand URLs by category then brand', async () => {
-  const { generateSitemap } = await import(sitemapModuleUrl);
+  const { generateSitemap, STATIC_PAGES } = await import(sitemapModuleUrl);
   const workspace = await createWorkspace([
     { brand: 'Hisense', cat: 'fridge', slug: 'hisense-fridge-clearance', url: '/brands/hisense-fridge-clearance' },
     { brand: 'Bosch', cat: 'dishwasher', slug: 'bosch-dishwasher-clearance', url: '/brands/bosch-dishwasher-clearance' },
@@ -146,12 +148,14 @@ test('task 9.1 sitemap: keeps static URLs first and sorts brand URLs by category
   const nodes = extractNodes(xml);
   const locs = nodes.map((node) => node.loc);
 
-  assert.deepEqual(locs.slice(0, 3), [
+  assert.deepEqual(locs.slice(0, STATIC_PAGES.length), [
     'https://fitappliance.com.au/',
     'https://fitappliance.com.au/affiliate-disclosure',
-    'https://fitappliance.com.au/privacy-policy'
+    'https://fitappliance.com.au/privacy-policy',
+    'https://fitappliance.com.au/methodology',
+    'https://fitappliance.com.au/about/editorial-standards'
   ]);
-  assert.deepEqual(locs.slice(3), [
+  assert.deepEqual(locs.slice(STATIC_PAGES.length), [
     'https://fitappliance.com.au/brands/bosch-dishwasher-clearance',
     'https://fitappliance.com.au/brands/hisense-fridge-clearance',
     'https://fitappliance.com.au/brands/lg-fridge-clearance'
@@ -194,7 +198,7 @@ test('task 9.1 sitemap: returns urlCount and outputPath in result object', async
 });
 
 test('task 9.1 sitemap: includes compare pages when compare index exists', async () => {
-  const { generateSitemap } = await import(sitemapModuleUrl);
+  const { generateSitemap, STATIC_PAGES } = await import(sitemapModuleUrl);
   const workspace = await createWorkspace(
     [{ brand: 'Samsung', cat: 'fridge', slug: 'samsung-fridge-clearance', url: '/brands/samsung-fridge-clearance' }],
     [{ brandA: 'LG', brandB: 'Samsung', cat: 'fridge', slug: 'lg-vs-samsung-fridge-clearance', url: '/compare/lg-vs-samsung-fridge-clearance' }]
@@ -210,6 +214,6 @@ test('task 9.1 sitemap: includes compare pages when compare index exists', async
 
   const xml = await readFile(workspace.outputPath, 'utf8');
   const nodes = extractNodes(xml);
-  assert.equal(result.urlCount, 5);
+  assert.equal(result.urlCount, STATIC_PAGES.length + 2);
   assert.ok(nodes.some((node) => node.loc.endsWith('/compare/lg-vs-samsung-fridge-clearance')));
 });

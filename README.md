@@ -282,3 +282,25 @@ TXT: fitappliance.com.au -> google-site-verification=5keGnUyvuq31_mxZ9pNVPIsh7Bz
   - `npm run generate-all`
   - `npm test`
   - `npm run build`
+
+### Phase 22 — Structured Data Integrity & Editorial Transparency
+
+- Added two trust pages with static routing:
+  - `/methodology` → [`pages/methodology.html`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/pages/methodology.html)
+  - `/about/editorial-standards` → [`pages/about/editorial-standards.html`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/pages/about/editorial-standards.html)
+- Extended all generated page templates (brand, compare, cavity, doorway, guides) plus index/legal pages to include:
+  - footer links to methodology/editorial standards
+  - `<meta name="article:modified_time" ...>` timestamp metadata
+- Expanded schema generation with real-data-only fields:
+  - `Product` + `Speakable` for cavity/doorway pages
+  - `Organization` for brand pages using real source data from `public/data/brands/metadata.json`
+  - no fake `aggregateRating` / `reviewCount` introduced
+- Added automated schema validation:
+  - `scripts/validate-schema.js`
+  - output report: `reports/schema-validation.json`
+  - test gate: `tests/schema.test.mjs`
+- Updated sitemap static set + Vercel rewrites to serve the new trust pages.
+- Validation commands:
+  - `npm run generate-all`
+  - `npm test`
+  - `npm run build`
