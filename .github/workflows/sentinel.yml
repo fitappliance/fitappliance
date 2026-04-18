@@ -1,0 +1,112 @@
+name: Sentinel Monitoring
+
+on:
+  schedule:
+    - cron: '30 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  sentinel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run uptime sentinel
+        id: uptime
+        continue-on-error: true
+        run: npm run uptime-check
+
+      - name: Run broken-link sentinel
+        id: broken_links
+        continue-on-error: true
+        run: npm run broken-link-check
+
+      - name: Refresh link graph
+        run: npm run build-link-graph
+
+      - name: Run orphan sentinel
+        id: orphan
+        continue-on-error: true
+        run: npm run orphan-check
+
+      - name: Collect sentinel status
+        id: sentinel_status
+        run: |
+          failure_count=0
+          [ "${{ steps.uptime.outcome }}" = "failure" ] && failure_count=$((failure_count+1))
+          [ "${{ steps.broken_links.outcome }}" = "failure" ] && failure_count=$((failure_count+1))
+          [ "${{ steps.orphan.outcome }}" = "failure" ] && failure_count=$((failure_count+1))
+          echo "failure_count=$failure_count" >> "$GITHUB_OUTPUT"
+          echo "today=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+          echo "latest_uptime=$(ls -1t reports/uptime-*.json 2>/dev/null | head -n 1)" >> "$GITHUB_OUTPUT"
+
+      - name: Build sentinel issue body
+        if: steps.sentinel_status.outputs.failure_count != '0'
+        run: |
+          {
+            echo "# Sentinel health report (${{ steps.sentinel_status.outputs.today }})"
+            echo
+            echo "- uptime outcome: \`${{ steps.uptime.outcome }}\`"
+            echo "- broken-link outcome: \`${{ steps.broken_links.outcome }}\`"
+            echo "- orphan outcome: \`${{ steps.orphan.outcome }}\`"
+            echo
+            if [ -n "${{ steps.sentinel_status.outputs.latest_uptime }}" ]; then
+              echo "## uptime report"
+              echo '```json'
+              cat "${{ steps.sentinel_status.outputs.latest_uptime }}"
+              echo '```'
+              echo
+            fi
+            if [ -f reports/broken-links.json ]; then
+              echo "## broken-link report"
+              echo '```json'
+              cat reports/broken-links.json
+              echo '```'
+              echo
+            fi
+            if [ -f reports/orphan-check.json ]; then
+              echo "## orphan report"
+              echo '```json'
+              cat reports/orphan-check.json
+              echo '```'
+              echo
+            fi
+          } > /tmp/sentinel-issue.md
+
+      - name: Create or update sentinel issue
+        if: steps.sentinel_status.outputs.failure_count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          today="${{ steps.sentinel_status.outputs.today }}"
+          failure_count="${{ steps.sentinel_status.outputs.failure_count }}"
+          title="[sentinel] ${failure_count} issues detected ${today}"
+          existing="$(gh issue list --label sentinel-auto --state open --search "${today} in:title" --json number --jq '.[0].number')"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file /tmp/sentinel-issue.md
+          else
+            gh issue create \
+              --title "$title" \
+              --body-file /tmp/sentinel-issue.md \
+              --label sentinel-auto
+          fi
+
+      - name: Fail workflow when sentinel checks fail
+        if: steps.sentinel_status.outputs.failure_count != '0'
+        run: |
+          echo "Sentinel detected ${{ steps.sentinel_status.outputs.failure_count }} failing checks."
+          exit 1

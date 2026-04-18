@@ -425,3 +425,51 @@ Without step 3, the workflow will authenticate but still fail API reads due to m
   - `node --test tests/rum.test.mjs`
   - `npm test`
   - `npm run build`
+
+### Phase 27 — Sentinel Monitoring (Uptime + Broken Links + Orphans)
+
+- Added sentinel scripts:
+  - [`scripts/uptime-check.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/uptime-check.js)
+    - samples 30 URLs from sitemap buckets (`/`, guides, cavity, doorway, brand, compare, location)
+    - checks with `HEAD`, concurrency `5`, timeout `10s`
+    - writes `reports/uptime-YYYYMMDD.json`
+    - exits non-zero if any URL is non-200.
+  - [`scripts/broken-link-check.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/broken-link-check.js)
+    - scans `index.html` + all `pages/**/*.html`
+    - validates internal hrefs against real pages/files and `vercel.json` rewrites
+    - ignores external links
+    - writes `reports/broken-links.json`
+    - exits non-zero when broken links exist.
+  - [`scripts/orphan-check.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/orphan-check.js)
+    - validates `reports/link-graph.json` from Phase 21
+    - enforces `orphanPages === 0`
+    - writes `reports/orphan-check.json`.
+- Added workflow:
+  - [`.github/workflows/sentinel.yml`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/.github/workflows/sentinel.yml)
+  - schedule: daily at `00:30 UTC` + `workflow_dispatch`
+  - runs uptime + broken-link + orphan checks
+  - on failure creates or updates a same-day GitHub issue with label `sentinel-auto`.
+- Added npm scripts:
+  - `npm run uptime-check`
+  - `npm run broken-link-check`
+  - `npm run orphan-check`
+  - `npm run sentinel`
+- Added test coverage:
+  - [`tests/sentinel.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/sentinel.test.mjs)
+  - verifies:
+    - non-200 uptime responses trigger failure
+    - broken-link detection catches `/this-page-does-not-exist`
+    - external links are not treated as broken
+    - orphan guard fails when `orphanPages > 0`.
+
+## Monitoring
+
+- Local quick run:
+  - `npm run sentinel`
+- Individual checks:
+  - `npm run uptime-check`
+  - `npm run broken-link-check`
+  - `npm run build-link-graph && npm run orphan-check`
+- CI automation:
+  - GitHub Action `Sentinel Monitoring` runs daily and can be triggered manually via **Actions → Sentinel Monitoring → Run workflow**.
+  - When checks fail, the workflow opens (or reuses) a same-day issue labeled `sentinel-auto` and attaches report JSON.
