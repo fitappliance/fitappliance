@@ -3,10 +3,18 @@
 
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
+const { generateMeasurementSvg } = require('./generate-measurement-svg');
+const {
+  buildMeasurementHowToJsonLd,
+  buildMeasurementStepsHtml,
+  loadMeasurementSteps
+} = require('./generate-measurement-content');
 
 const MIN_WIDTH = 500;
 const MAX_WIDTH = 1100;
 const STEP = 10;
+const DEFAULT_CAVITY_HEIGHT_MM = 1800;
+const DEFAULT_CAVITY_DEPTH_MM = 700;
 const GUIDE_HUB_LINKS = [
   { url: '/guides/fridge-clearance-requirements', label: 'Fridge Clearance Requirements Guide' },
   { url: '/guides/appliance-fit-sizing-handbook', label: 'Appliance Fit Sizing Handbook' },
@@ -128,13 +136,18 @@ function buildBreadcrumbJsonLd(width) {
 
 function buildPageHtml({
   width,
+  cavityHeightMm,
+  cavityDepthMm,
   resultCount,
   featured,
   adjacentWidths,
   relatedWidths,
   topBrands,
   compareLinks,
-  modifiedTime
+  modifiedTime,
+  measurementSvgHtml,
+  measurementStepsHtml,
+  howToJsonLd
 }) {
   const title = `Fridges that fit a ${width}mm cavity (Australia 2026) | FitAppliance`;
   const description = `${resultCount} fridges fit a ${width}mm kitchen cavity. Includes Samsung, LG, Fisher & Paykel. Free cavity checker.`;
@@ -143,6 +156,7 @@ function buildPageHtml({
   const breadcrumbJsonLd = JSON.stringify(buildBreadcrumbJsonLd(width), null, 2);
   const productJsonLd = JSON.stringify(buildProductJsonLd(width, featured), null, 2);
   const speakableJsonLd = JSON.stringify(buildSpeakableJsonLd(`/cavity/${width}mm-fridge`), null, 2);
+  const howToSchemaJsonLd = JSON.stringify(howToJsonLd, null, 2);
 
   return `<!doctype html>
 <html lang="en-AU">
@@ -180,6 +194,15 @@ function buildPageHtml({
       color: var(--ink-2);
     }
     .tool-callout a { font-weight: 700; }
+    #measure { margin-top: 24px; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+    #measure h2 { margin: 0 0 10px; font-size: 22px; }
+    .measurement-svg { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 10px; }
+    .measurement-view { width: 100%; height: auto; background: #fbfaf7; border: 1px solid var(--border); border-radius: 10px; padding: 8px; box-sizing: border-box; }
+    .measurement-steps { margin-top: 10px; display: grid; gap: 8px; }
+    .measure-step { border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; background: #fff; }
+    .measure-step summary { cursor: pointer; font-weight: 600; color: var(--ink-2); }
+    .measure-step p { margin: 8px 0 0; font-size: 14px; color: var(--ink-2); }
+    .measurement-note { margin: 2px 0 0; font-size: 13px; color: var(--ink-3); }
   </style>
 </head>
 <body>
@@ -212,6 +235,13 @@ function buildPageHtml({
         <div class="meta">${product.stars}★ · ${product.kwh_year ?? '-'} kWh/yr</div>
       </article>`).join('')}
     </div>
+
+    <section id="measure">
+      <h2>How to measure this fridge cavity</h2>
+      <p>Use these three views before you shortlist appliances: width, height, and depth all need to pass with ventilation clearance.</p>
+      ${measurementSvgHtml}
+      ${measurementStepsHtml}
+    </section>
 
     ${compareLinks.length > 0 ? `<h2>Popular brand comparisons</h2>
     <div class="compare">
@@ -246,6 +276,9 @@ ${productJsonLd}
   <script type="application/ld+json">
 ${speakableJsonLd}
   </script>
+  <script type="application/ld+json">
+${howToSchemaJsonLd}
+  </script>
 </body>
 </html>
 `;
@@ -270,6 +303,7 @@ async function generateCavityPages(options = {}) {
   const appliances = await readJson(path.join(dataDir, 'appliances.json'));
   const clearance = await readJson(path.join(dataDir, 'clearance.json'));
   const compareIndex = await readJson(path.join(repoRoot, 'pages', 'compare', 'index.json'), []);
+  const measurementSteps = await loadMeasurementSteps();
   const products = (appliances.products ?? []).filter((product) => product.cat === 'fridge');
   const widths = buildWidthRange(MIN_WIDTH, MAX_WIDTH, STEP);
 
@@ -312,6 +346,8 @@ async function generateCavityPages(options = {}) {
 
     const html = buildPageHtml({
       width,
+      cavityHeightMm: DEFAULT_CAVITY_HEIGHT_MM,
+      cavityDepthMm: DEFAULT_CAVITY_DEPTH_MM,
       resultCount: matched.length,
       featured,
       adjacentWidths: {
@@ -324,7 +360,25 @@ async function generateCavityPages(options = {}) {
         .slice(0, 8),
       topBrands,
       compareLinks,
-      modifiedTime: new Date().toISOString()
+      modifiedTime: new Date().toISOString(),
+      measurementSvgHtml: generateMeasurementSvg({
+        widthMm: width,
+        heightMm: DEFAULT_CAVITY_HEIGHT_MM,
+        depthMm: DEFAULT_CAVITY_DEPTH_MM
+      }),
+      measurementStepsHtml: buildMeasurementStepsHtml({
+        steps: measurementSteps,
+        widthMm: width,
+        heightMm: DEFAULT_CAVITY_HEIGHT_MM,
+        depthMm: DEFAULT_CAVITY_DEPTH_MM
+      }),
+      howToJsonLd: buildMeasurementHowToJsonLd({
+        steps: measurementSteps,
+        widthMm: width,
+        heightMm: DEFAULT_CAVITY_HEIGHT_MM,
+        depthMm: DEFAULT_CAVITY_DEPTH_MM,
+        pageUrl: `https://fitappliance.com.au/cavity/${width}mm-fridge`
+      })
     });
 
     const slug = `${width}mm-fridge`;

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-04-18",
+  "steps": [
+    {
+      "id": "tools",
+      "name": "Prepare a tape measure and notepad",
+      "text": "Use a rigid tape measure and record each dimension in millimetres. Measure from fixed cabinet edges, not from trim pieces."
+    },
+    {
+      "id": "width",
+      "name": "Measure cavity width",
+      "text": "Measure the internal cavity width at the front and the back, then use the smaller value. This prevents side-wall taper from being missed."
+    },
+    {
+      "id": "height",
+      "name": "Measure cavity height",
+      "text": "Measure from finished floor level to the underside of overhead cabinetry at both left and right sides, then keep the smaller value."
+    },
+    {
+      "id": "depth",
+      "name": "Measure cavity depth",
+      "text": "Measure from the back wall to the cabinet front edge. Include any skirting, power point cover, or plumbing protrusion in the usable depth."
+    },
+    {
+      "id": "clearance",
+      "name": "Apply ventilation clearance before purchase",
+      "text": "Compare your cavity measurements against appliance dimensions plus manufacturer clearances for side, rear, and top ventilation."
+    }
+  ]
+}
