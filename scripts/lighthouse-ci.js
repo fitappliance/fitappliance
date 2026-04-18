@@ -158,9 +158,9 @@ async function runLighthouse({
         output: 'json',
         logLevel: 'error',
         onlyCategories: ['performance'],
-        formFactor: 'mobile',
-        screenEmulation: { mobile: true, width: 390, height: 844, deviceScaleFactor: 2 },
-        throttlingMethod: 'simulate'
+        formFactor: 'desktop',
+        screenEmulation: { mobile: false, width: 1350, height: 940, deviceScaleFactor: 1 },
+        throttlingMethod: 'provided'
       });
       if (result.lhr.runtimeError) {
         throw new Error(`Lighthouse runtime error for ${url}: ${result.lhr.runtimeError.message}`);

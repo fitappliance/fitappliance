@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-04-18T11:54:48.893Z",
+  "generatedAt": "2026-04-18T12:01:00.599Z",
   "baseUrl": "http://127.0.0.1:4173",
   "minScore": 0.9,
   "pages": [
     {
       "path": "/",
       "url": "http://127.0.0.1:4173/",
-      "score": 0.91,
-      "lcpMs": 3207.604765209789,
-      "cls": 0.041074,
+      "score": 1,
+      "lcpMs": 440.018,
+      "cls": 0.00515,
       "inpMs": null,
       "tbtMs": 0
     },
@@ -16,7 +16,7 @@
       "path": "/pages/cavity/1000mm-fridge.html",
       "url": "http://127.0.0.1:4173/pages/cavity/1000mm-fridge.html",
       "score": 1,
-      "lcpMs": 615.28685,
+      "lcpMs": 30.272,
       "cls": 0,
       "inpMs": null,
       "tbtMs": 0
@@ -25,7 +25,7 @@
       "path": "/pages/doorway/600mm-fridge-doorway.html",
       "url": "http://127.0.0.1:4173/pages/doorway/600mm-fridge-doorway.html",
       "score": 1,
-      "lcpMs": 615.12305,
+      "lcpMs": 18.447,
       "cls": 0,
       "inpMs": null,
       "tbtMs": 0
@@ -34,8 +34,8 @@
       "path": "/pages/brands/samsung-fridge-clearance.html",
       "url": "http://127.0.0.1:4173/pages/brands/samsung-fridge-clearance.html",
       "score": 1,
-      "lcpMs": 1482.8290000000002,
-      "cls": 0.003715,
+      "lcpMs": 178.074,
+      "cls": 0.000104,
       "inpMs": null,
       "tbtMs": 0
     },
@@ -43,15 +43,15 @@
       "path": "/pages/compare/lg-vs-hisense-washing-machine-clearance.html",
       "url": "http://127.0.0.1:4173/pages/compare/lg-vs-hisense-washing-machine-clearance.html",
       "score": 1,
-      "lcpMs": 1484.17245,
-      "cls": 0.007434,
+      "lcpMs": 168.269,
+      "cls": 0,
       "inpMs": null,
-      "tbtMs": 0.5
+      "tbtMs": 0
     }
   ],
   "summary": {
-    "minimumObserved": 0.91,
-    "averageScore": 0.982,
+    "minimumObserved": 1,
+    "averageScore": 1,
     "pass": true
   }
 }
