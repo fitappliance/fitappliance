@@ -1,0 +1,60 @@
+name: GSC Weekly Pipeline
+
+on:
+  schedule:
+    - cron: '0 4 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  gsc-weekly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch GSC report
+        env:
+          GSC_SA_JSON: ${{ secrets.GSC_SA_JSON }}
+        run: npm run gsc-fetch
+
+      - name: Build keyword gap report
+        run: npm run keyword-gap
+
+      - name: Prepare reports bundle
+        run: |
+          mkdir -p /tmp/gsc-reports
+          cp reports/gsc-*.json /tmp/gsc-reports/
+          cp reports/keyword-gap-*.md /tmp/gsc-reports/
+          ls -la /tmp/gsc-reports
+
+      - name: Publish reports to reports/gsc branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git ls-remote --exit-code --heads origin reports/gsc > /dev/null; then
+            git fetch origin reports/gsc
+            git checkout -B reports/gsc origin/reports/gsc
+          else
+            git checkout --orphan reports/gsc
+            git rm -rf . >/dev/null 2>&1 || true
+          fi
+
+          mkdir -p reports
+          cp /tmp/gsc-reports/* reports/
+
+          git add reports/gsc-*.json reports/keyword-gap-*.md
+          git diff --cached --quiet || git commit -m "chore(reports): GSC weekly $(date -u +%Y-%m-%d)"
+          git push origin reports/gsc

@@ -304,3 +304,33 @@ TXT: fitappliance.com.au -> google-site-verification=5keGnUyvuq31_mxZ9pNVPIsh7Bz
   - `npm run generate-all`
   - `npm test`
   - `npm run build`
+
+### Phase 23 — Google Search Console Data Pipeline
+
+- Added automated GSC ingestion script:
+  - [`scripts/gsc-fetch.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/gsc-fetch.js)
+  - reads `GSC_SA_JSON` from environment only (fail-fast when missing/invalid)
+  - uses `googleapis` Search Console API and writes:
+    - `reports/gsc-YYYY-MM-DD.json`
+    - `reports/gsc-latest.json`
+- Added keyword gap analysis script:
+  - [`scripts/keyword-gap.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/keyword-gap.js)
+  - compares GSC query rows with sitemap URLs
+  - outputs:
+    - `reports/keyword-gap-YYYY-MM-DD.md`
+    - `reports/keyword-gap-latest.md`
+- Added workflow:
+  - [`.github/workflows/gsc-weekly.yml`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/.github/workflows/gsc-weekly.yml)
+  - schedule: every Tuesday `04:00 UTC` + `workflow_dispatch`
+  - publishes reports to `reports/gsc` branch (does not commit report churn to `main`)
+- Added test coverage:
+  - [`tests/gsc.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/gsc.test.mjs)
+  - validates row schema normalization, CTR/position guardrails, mocked fetch path, and markdown report generation
+
+#### Required Manual Setup (one-time)
+
+1. Create a Google Cloud service account with Search Console API enabled.
+2. Store full service-account JSON in repo secret `GSC_SA_JSON`.
+3. In Google Search Console, add the service account email as an **Owner** of the property (`sc-domain:fitappliance.com.au`).
+
+Without step 3, the workflow will authenticate but still fail API reads due to missing property permissions.
