@@ -4,6 +4,7 @@
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm } = require('node:fs/promises');
 const sharp = require('sharp');
+const { slugNormalize } = require('./common/slug-normalize.js');
 
 const CATEGORY_META = {
   fridge: { slug: 'fridge', label: 'Fridge' },
@@ -13,10 +14,7 @@ const CATEGORY_META = {
 };
 
 function slugify(value) {
-  return String(value ?? '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
+  return slugNormalize(value);
 }
 
 function escSvg(value) {

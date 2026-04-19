@@ -4,6 +4,7 @@
 const path = require('node:path');
 const { mkdir, readFile, readdir, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
+const { slugNormalize } = require('./common/slug-normalize.js');
 
 const CATEGORY_SLUG = {
   fridge: 'fridge',
@@ -34,10 +35,7 @@ function escXml(value) {
 }
 
 function slugify(value) {
-  return String(value ?? '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
+  return slugNormalize(value);
 }
 
 async function readJson(filePath, fallback = []) {

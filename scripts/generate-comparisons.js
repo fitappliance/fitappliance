@@ -3,6 +3,9 @@
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
+const { buildHtmlHead, escHtml } = require('./common/html-head.js');
+const { stringifyJsonLd } = require('./common/schema-jsonld.js');
+const { slugNormalize } = require('./common/slug-normalize.js');
 const { displayBrandName } = require('./utils/brand-utils.js');
 const { loadProvidersFromFile, resolveAffiliateLinkForProduct } = require('./render-affiliate-links.js');
 
@@ -37,27 +40,11 @@ const GUIDE_HUB_LINKS = [
 ];
 
 function slugify(value) {
-  return String(value ?? '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
+  return slugNormalize(value);
 }
 
 function slugifyPair(brandA, brandB, catSlug) {
   return `${slugify(brandA)}-vs-${slugify(brandB)}-${slugify(catSlug)}-clearance`;
-}
-
-function escHtml(value) {
-  return String(value ?? '').replace(/[&<>"']/g, (char) => {
-    const map = {
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#39;'
-    };
-    return map[char];
-  });
 }
 
 function hasRetailLink(product) {
@@ -440,7 +427,7 @@ function buildComparisonPageHtml({
     return `<li><picture class="sample-thumb"><source srcset="${heroWebpPath}" type="image/webp"><img src="${heroPngPath}" alt="${escHtml(displayBrandB)} ${escHtml(sample.model)} comparison preview" width="600" height="315" loading="lazy" decoding="async"></picture>${escHtml(sample.model)} · ${sample.w}×${sample.h}×${sample.d}mm${buyHtml}</li>`;
   }).join('');
 
-  const articleJsonLd = JSON.stringify({
+  const articleJsonLd = stringifyJsonLd({
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: `${displayBrandA} vs ${displayBrandB} ${categoryMeta.labelSingular} Clearance Requirements — Australia`,
@@ -451,9 +438,9 @@ function buildComparisonPageHtml({
       name: 'FitAppliance',
       url: SITE_ORIGIN
     }
-  }, null, 2);
+  }, { pretty: true });
 
-  const breadcrumbJsonLd = JSON.stringify({
+  const breadcrumbJsonLd = stringifyJsonLd({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
@@ -470,9 +457,9 @@ function buildComparisonPageHtml({
         item: canonical
       }
     ]
-  }, null, 2);
+  }, { pretty: true });
 
-  const itemListJsonLd = JSON.stringify({
+  const itemListJsonLd = stringifyJsonLd({
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: `${displayBrandA} and ${displayBrandB} featured ${categoryMeta.labelPlural.toLowerCase()}`,
@@ -488,18 +475,19 @@ function buildComparisonPageHtml({
         name: `${displayBrandB} ${sample.model}`
       }))
     ]
-  }, null, 2);
+  }, { pretty: true });
+  const headMeta = buildHtmlHead({
+    title,
+    description,
+    modifiedTime: lastUpdated,
+    canonical,
+    extraMeta: `  ${buildSocialMetaTags({ title, description, canonical, ogImageUrl })}`
+  });
 
   return `<!doctype html>
 <html lang="en-AU">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escHtml(title)}</title>
-  <meta name="description" content="${escHtml(description)}">
-  <meta name="article:modified_time" content="${escHtml(lastUpdated)}">
-  <link rel="canonical" href="${canonical}">
-  ${buildSocialMetaTags({ title, description, canonical, ogImageUrl })}
+${headMeta}
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WNPNS4ZGWK"></script>
   <script>
     window.dataLayer = window.dataLayer || [];

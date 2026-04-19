@@ -3,6 +3,9 @@
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
+const { buildHtmlHead, escHtml } = require('./common/html-head.js');
+const { stringifyJsonLd } = require('./common/schema-jsonld.js');
+const { slugNormalize } = require('./common/slug-normalize.js');
 const { displayBrandName } = require('./utils/brand-utils.js');
 const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
@@ -38,23 +41,7 @@ const GUIDE_HUB_LINKS = [
 ];
 
 function slugify(value) {
-  return String(value ?? '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
-function escHtml(value) {
-  return String(value ?? '').replace(/[&<>"']/g, (char) => {
-    const map = {
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#39;'
-    };
-    return map[char];
-  });
+  return slugNormalize(value);
 }
 
 async function readJson(filePath) {
@@ -311,30 +298,34 @@ function buildBrandPageHtml({
   const heroWebpPath = `/og-images/${slugify(brandRaw)}-${categoryMeta.slug}.webp`;
   const ogImageUrl = `${SITE_ORIGIN}${heroPngPath}`;
   const ctaUrl = `/?cat=${encodeURIComponent(category)}&brand=${encodeURIComponent(brandRaw)}`;
-  const siteJsonLd = JSON.stringify(buildWebSiteJsonLd(), null, 2);
-  const breadcrumbJsonLd = JSON.stringify(
+  const siteJsonLd = stringifyJsonLd(buildWebSiteJsonLd(), { pretty: true });
+  const breadcrumbJsonLd = stringifyJsonLd(
     buildBreadcrumbJsonLd({
       slug,
       brand,
       categoryLabel: categoryMeta.labelPlural
     }),
-    null,
-    2
+    { pretty: true }
   );
-  const faqJsonLd = JSON.stringify(
+  const faqJsonLd = stringifyJsonLd(
     buildFAQJsonLd({ brand, catLabel: categoryMeta.labelSingular, side, rear, top }),
-    null,
-    2
+    { pretty: true }
   );
-  const itemListJsonLd = JSON.stringify(
+  const itemListJsonLd = stringifyJsonLd(
     buildItemListJsonLd({
       brand,
       categoryMeta,
       products: itemListProducts
     }),
-    null,
-    2
+    { pretty: true }
   );
+  const headMeta = buildHtmlHead({
+    title,
+    description,
+    modifiedTime,
+    canonical,
+    extraMeta: `  ${buildSocialMetaTags({ title, description, canonical, brandImageUrl: ogImageUrl })}`
+  });
   const narrative = buildClearanceNarrative({
     brand,
     categoryMeta,
@@ -364,13 +355,7 @@ function buildBrandPageHtml({
   return `<!doctype html>
 <html lang="en-AU">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escHtml(title)}</title>
-  <meta name="description" content="${escHtml(description)}">
-  <meta name="article:modified_time" content="${escHtml(modifiedTime)}">
-  <link rel="canonical" href="${canonical}">
-  ${buildSocialMetaTags({ title, description, canonical, brandImageUrl: ogImageUrl })}
+${headMeta}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">

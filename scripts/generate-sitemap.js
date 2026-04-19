@@ -3,6 +3,7 @@
 const path = require('node:path');
 const { mkdir, readFile, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
+const { toAbsoluteSitemapLoc } = require('./common/sitemap-loc.js');
 
 const STATIC_PAGES = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
@@ -30,17 +31,6 @@ function escXml(value) {
     };
     return map[char] ?? char;
   });
-}
-
-function normalizeBaseUrl(baseUrl) {
-  return String(baseUrl ?? SITE_ORIGIN).replace(/\/+$/, '');
-}
-
-function toAbsoluteUrl(baseUrl, relativePath) {
-  const normalizedPath = String(relativePath ?? '/').startsWith('/')
-    ? String(relativePath)
-    : `/${relativePath}`;
-  return `${normalizeBaseUrl(baseUrl)}${normalizedPath}`;
 }
 
 function sortBrandEntries(entries) {
@@ -138,7 +128,7 @@ async function generateSitemap({
 
   const staticNodes = STATIC_PAGES.map((page) =>
     buildUrlNode({
-      loc: toAbsoluteUrl(baseUrl, page.path),
+      loc: toAbsoluteSitemapLoc(baseUrl, page.path),
       lastmod: today,
       changefreq: page.changefreq,
       priority: page.priority
@@ -147,7 +137,7 @@ async function generateSitemap({
 
   const brandNodes = sortedBrands.map((row) =>
     buildUrlNode({
-      loc: toAbsoluteUrl(baseUrl, row.url ?? `/brands/${row.slug}`),
+      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/brands/${row.slug}`),
       lastmod: today,
       changefreq: 'weekly',
       priority: PRIORITY_BY_CAT[row.cat] ?? '0.6'
@@ -156,7 +146,7 @@ async function generateSitemap({
 
   const comparisonNodes = sortedComparisons.map((row) =>
     buildUrlNode({
-      loc: toAbsoluteUrl(baseUrl, row.url ?? `/compare/${row.slug}`),
+      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/compare/${row.slug}`),
       lastmod: today,
       changefreq: 'monthly',
       priority: '0.6'
@@ -165,7 +155,7 @@ async function generateSitemap({
 
   const cavityNodes = sortedCavity.map((row) =>
     buildUrlNode({
-      loc: toAbsoluteUrl(baseUrl, row.url ?? `/cavity/${row.slug}`),
+      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/cavity/${row.slug}`),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.6'
@@ -174,7 +164,7 @@ async function generateSitemap({
 
   const doorwayNodes = sortedDoorway.map((row) =>
     buildUrlNode({
-      loc: toAbsoluteUrl(baseUrl, row.url ?? `/doorway/${row.slug}`),
+      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/doorway/${row.slug}`),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.6'
@@ -182,7 +172,7 @@ async function generateSitemap({
   );
   const guideNodes = sortedGuides.map((row) =>
     buildUrlNode({
-      loc: toAbsoluteUrl(baseUrl, row.url ?? `/guides/${row.slug}`),
+      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/guides/${row.slug}`),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.7'
@@ -190,7 +180,7 @@ async function generateSitemap({
   );
   const locationNodes = sortedLocations.map((row) =>
     buildUrlNode({
-      loc: toAbsoluteUrl(baseUrl, row.url ?? `/location/${row.citySlug}/${row.category}`),
+      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/location/${row.citySlug}/${row.category}`),
       lastmod: today,
       changefreq: 'weekly',
       priority: '0.5'
