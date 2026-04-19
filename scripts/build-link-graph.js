@@ -3,6 +3,7 @@
 
 const path = require('node:path');
 const { mkdir, readdir, readFile, writeFile } = require('node:fs/promises');
+const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 
 function normalizePathname(value) {
   if (!value) return null;
@@ -124,7 +125,7 @@ async function buildLinkGraph({
     : 0;
 
   const report = {
-    generatedAt: new Date().toISOString(),
+    generatedAt: getBuildTimestampIso(),
     summary: {
       totalPages: nodes.length,
       totalEdges,

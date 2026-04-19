@@ -4,6 +4,7 @@
 const path = require('node:path');
 const { mkdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
+const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 
 const CATEGORY_ROWS = [
   { slug: 'dishwasher', label: 'Dishwasher', cat: 'dishwasher' },
@@ -410,7 +411,7 @@ async function generateLocationPages(options = {}) {
         categoryCount: Number(categoryCounts[category.cat] ?? 0),
         modelSamples: buildLocationModelSamples(products, category.cat),
         affiliateProviders,
-        modifiedTime: new Date().toISOString()
+        modifiedTime: getBuildTimestampIso()
       });
 
       const filePath = path.join(cityDir, `${category.slug}.html`);
