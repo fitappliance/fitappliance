@@ -1,23 +1,25 @@
 {
-  "generatedAt": "2026-04-18T13:09:59.226Z",
+  "generatedAt": "2026-04-19T02:12:54.326Z",
   "summary": {
-    "totalPages": 466,
-    "totalEdges": 7239,
-    "orphanPages": 0,
-    "averageInlinks": 15.53
+    "totalPages": 468,
+    "totalEdges": 7312,
+    "orphanPages": 1,
+    "averageInlinks": 15.62
   },
-  "orphanUrls": [],
+  "orphanUrls": [
+    "/subscribe"
+  ],
   "nodes": [
     {
       "url": "/",
       "file": "index.html",
-      "inlinks": 465,
-      "outlinks": 4
+      "inlinks": 467,
+      "outlinks": 5
     },
     {
       "url": "/about/editorial-standards",
       "file": "pages/about/editorial-standards.html",
-      "inlinks": 465,
+      "inlinks": 467,
       "outlinks": 2
     },
     {
@@ -1746,367 +1748,367 @@
       "url": "/cavity/1000mm-fridge",
       "file": "pages/cavity/1000mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/1010mm-fridge",
       "file": "pages/cavity/1010mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/1020mm-fridge",
       "file": "pages/cavity/1020mm-fridge.html",
       "inlinks": 13,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/1030mm-fridge",
       "file": "pages/cavity/1030mm-fridge.html",
       "inlinks": 12,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/1040mm-fridge",
       "file": "pages/cavity/1040mm-fridge.html",
       "inlinks": 19,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/1050mm-fridge",
       "file": "pages/cavity/1050mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/1060mm-fridge",
       "file": "pages/cavity/1060mm-fridge.html",
       "inlinks": 17,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/1070mm-fridge",
       "file": "pages/cavity/1070mm-fridge.html",
       "inlinks": 16,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/1080mm-fridge",
       "file": "pages/cavity/1080mm-fridge.html",
       "inlinks": 47,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/1090mm-fridge",
       "file": "pages/cavity/1090mm-fridge.html",
       "inlinks": 14,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/1100mm-fridge",
       "file": "pages/cavity/1100mm-fridge.html",
       "inlinks": 45,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/500mm-fridge",
       "file": "pages/cavity/500mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/510mm-fridge",
       "file": "pages/cavity/510mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/520mm-fridge",
       "file": "pages/cavity/520mm-fridge.html",
       "inlinks": 11,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/530mm-fridge",
       "file": "pages/cavity/530mm-fridge.html",
       "inlinks": 12,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/540mm-fridge",
       "file": "pages/cavity/540mm-fridge.html",
       "inlinks": 13,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/550mm-fridge",
       "file": "pages/cavity/550mm-fridge.html",
       "inlinks": 14,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/560mm-fridge",
       "file": "pages/cavity/560mm-fridge.html",
       "inlinks": 15,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/570mm-fridge",
       "file": "pages/cavity/570mm-fridge.html",
       "inlinks": 16,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/580mm-fridge",
       "file": "pages/cavity/580mm-fridge.html",
       "inlinks": 15,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/590mm-fridge",
       "file": "pages/cavity/590mm-fridge.html",
       "inlinks": 11,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/600mm-fridge",
       "file": "pages/cavity/600mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/610mm-fridge",
       "file": "pages/cavity/610mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/620mm-fridge",
       "file": "pages/cavity/620mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/630mm-fridge",
       "file": "pages/cavity/630mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/640mm-fridge",
       "file": "pages/cavity/640mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/650mm-fridge",
       "file": "pages/cavity/650mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/660mm-fridge",
       "file": "pages/cavity/660mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/670mm-fridge",
       "file": "pages/cavity/670mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/680mm-fridge",
       "file": "pages/cavity/680mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/690mm-fridge",
       "file": "pages/cavity/690mm-fridge.html",
       "inlinks": 10,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/700mm-fridge",
       "file": "pages/cavity/700mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/710mm-fridge",
       "file": "pages/cavity/710mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/720mm-fridge",
       "file": "pages/cavity/720mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/730mm-fridge",
       "file": "pages/cavity/730mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/740mm-fridge",
       "file": "pages/cavity/740mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/750mm-fridge",
       "file": "pages/cavity/750mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/760mm-fridge",
       "file": "pages/cavity/760mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/770mm-fridge",
       "file": "pages/cavity/770mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/780mm-fridge",
       "file": "pages/cavity/780mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/790mm-fridge",
       "file": "pages/cavity/790mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/800mm-fridge",
       "file": "pages/cavity/800mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/810mm-fridge",
       "file": "pages/cavity/810mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/820mm-fridge",
       "file": "pages/cavity/820mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/830mm-fridge",
       "file": "pages/cavity/830mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/840mm-fridge",
       "file": "pages/cavity/840mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/850mm-fridge",
       "file": "pages/cavity/850mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/860mm-fridge",
       "file": "pages/cavity/860mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/870mm-fridge",
       "file": "pages/cavity/870mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/880mm-fridge",
       "file": "pages/cavity/880mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/890mm-fridge",
       "file": "pages/cavity/890mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/900mm-fridge",
       "file": "pages/cavity/900mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/910mm-fridge",
       "file": "pages/cavity/910mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/920mm-fridge",
       "file": "pages/cavity/920mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/930mm-fridge",
       "file": "pages/cavity/930mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/940mm-fridge",
       "file": "pages/cavity/940mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/950mm-fridge",
       "file": "pages/cavity/950mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/960mm-fridge",
       "file": "pages/cavity/960mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/970mm-fridge",
       "file": "pages/cavity/970mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/980mm-fridge",
       "file": "pages/cavity/980mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/cavity/990mm-fridge",
       "file": "pages/cavity/990mm-fridge.html",
       "inlinks": 9,
-      "outlinks": 24
+      "outlinks": 25
     },
     {
       "url": "/compare/artusi-vs-ilve-dishwasher-clearance",
@@ -2532,25 +2534,25 @@
       "url": "/guides/dishwasher-cavity-sizing",
       "file": "pages/guides/dishwasher-cavity-sizing.html",
       "inlinks": 428,
-      "outlinks": 67
+      "outlinks": 68
     },
     {
       "url": "/guides/dryer-ventilation-guide",
       "file": "pages/guides/dryer-ventilation-guide.html",
       "inlinks": 420,
-      "outlinks": 67
+      "outlinks": 68
     },
     {
       "url": "/guides/fridge-clearance-requirements",
       "file": "pages/guides/fridge-clearance-requirements.html",
       "inlinks": 420,
-      "outlinks": 107
+      "outlinks": 108
     },
     {
       "url": "/guides/washing-machine-doorway-access",
       "file": "pages/guides/washing-machine-doorway-access.html",
       "inlinks": 420,
-      "outlinks": 78
+      "outlinks": 79
     },
     {
       "url": "/location/adelaide/dishwasher",
@@ -2795,14 +2797,26 @@
     {
       "url": "/methodology",
       "file": "pages/methodology.html",
-      "inlinks": 465,
+      "inlinks": 467,
       "outlinks": 2
     },
     {
       "url": "/privacy-policy",
       "file": "pages/privacy-policy.html",
-      "inlinks": 3,
+      "inlinks": 8,
       "outlinks": 4
+    },
+    {
+      "url": "/subscribe",
+      "file": "pages/subscribe.html",
+      "inlinks": 0,
+      "outlinks": 4
+    },
+    {
+      "url": "/tools/fit-checker",
+      "file": "pages/tools/fit-checker.html",
+      "inlinks": 62,
+      "outlinks": 3
     }
   ]
 }
