@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
-const repoRoot = '/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2';
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const moduleUrl = pathToFileURL(
   path.join(repoRoot, 'public', 'scripts', 'ui', 'web-vitals.js')
 ).href;

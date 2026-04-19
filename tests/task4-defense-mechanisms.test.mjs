@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
-const repoRoot = '/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2';
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const fetchUtilsUrl = pathToFileURL(path.join(repoRoot, 'scripts', 'utils', 'fetch-utils.js')).href;
 const circuitBreakerUrl = pathToFileURL(path.join(repoRoot, 'scripts', 'utils', 'circuit-breaker.js')).href;
 const schemaUrl = pathToFileURL(path.join(repoRoot, 'scripts', 'schema.js')).href;

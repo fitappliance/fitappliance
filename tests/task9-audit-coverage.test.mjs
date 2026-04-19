@@ -4,9 +4,9 @@ import { constants as fsConstants } from 'node:fs';
 import { access, mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
-const repoRoot = '/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2';
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const auditModuleUrl = pathToFileURL(path.join(repoRoot, 'scripts', 'audit-coverage.js')).href;
 const brandUtilsModuleUrl = pathToFileURL(path.join(repoRoot, 'scripts', 'utils', 'brand-utils.js')).href;
 

@@ -1,7 +1,10 @@
 import test from 'node:test';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
 const {
   evaluateCompareQuality,
@@ -67,7 +70,7 @@ test('task 16 verify-quality: fails when search-only exceeds threshold', () => {
 
 test('task 16 verify-quality: integration gate passes on current repository state', async () => {
   const result = await verifyCompareQuality({
-    repoRoot: '/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2'
+    repoRoot
   });
 
   assert.equal(result.ok, true);

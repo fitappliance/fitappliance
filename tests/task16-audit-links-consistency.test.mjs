@@ -1,8 +1,10 @@
 import test from 'node:test';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 
-const repoRoot = '/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2';
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
 const { auditCompareLinks } = require('../scripts/audit-compare-links.js');
 const { auditLinkQuality } = require('../scripts/audit-link-quality.js');

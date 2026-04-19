@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import path from 'node:path';
 import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
-const repoRoot = '/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2';
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const gscModuleUrl = pathToFileURL(path.join(repoRoot, 'scripts', 'gsc-fetch.js')).href;
 const gapModuleUrl = pathToFileURL(path.join(repoRoot, 'scripts', 'keyword-gap.js')).href;
 
