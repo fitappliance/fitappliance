@@ -1,20 +1,18 @@
 {
-  "generatedAt": "2026-04-19T02:12:54.075Z",
+  "generatedAt": "2026-04-19T02:15:46.204Z",
   "summary": {
     "totalPages": 468,
-    "totalEdges": 7312,
-    "orphanPages": 1,
-    "averageInlinks": 15.62
+    "totalEdges": 7313,
+    "orphanPages": 0,
+    "averageInlinks": 15.63
   },
-  "orphanUrls": [
-    "/subscribe"
-  ],
+  "orphanUrls": [],
   "nodes": [
     {
       "url": "/",
       "file": "index.html",
       "inlinks": 467,
-      "outlinks": 5
+      "outlinks": 6
     },
     {
       "url": "/about/editorial-standards",
@@ -2809,7 +2807,7 @@
     {
       "url": "/subscribe",
       "file": "pages/subscribe.html",
-      "inlinks": 0,
+      "inlinks": 1,
       "outlinks": 4
     },
     {
