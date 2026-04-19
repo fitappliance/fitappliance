@@ -1,11 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import path from 'node:path';
-import { pathToFileURL } from 'node:url';
-
-const repoRoot = '/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2';
-const pipelineModuleUrl = pathToFileURL(path.join(repoRoot, 'scripts', 'auto-content-pipeline.js')).href;
-const prModuleUrl = pathToFileURL(path.join(repoRoot, 'scripts', 'open-content-pr.js')).href;
+const pipelineModuleUrl = new URL('../scripts/auto-content-pipeline.js', import.meta.url).href;
+const prModuleUrl = new URL('../scripts/open-content-pr.js', import.meta.url).href;
 
 test('phase 34 auto-content: classifyQuery maps cavity intent correctly', async () => {
   const { classifyQuery } = await import(pipelineModuleUrl);
