@@ -3,6 +3,7 @@
 
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
+const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 
 const GUIDE_HUBS = [
   {
@@ -179,7 +180,7 @@ function buildHubHtml({ guide, links, crossLinks }) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escHtml(title)}</title>
   <meta name="description" content="${escHtml(description)}">
-  <meta name="article:modified_time" content="${new Date().toISOString()}">
+  <meta name="article:modified_time" content="${getBuildTimestampIso()}">
   <link rel="canonical" href="${canonical}">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="FitAppliance">

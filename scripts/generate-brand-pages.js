@@ -3,6 +3,7 @@
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { displayBrandName } = require('./utils/brand-utils.js');
+const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
 
 const CATEGORY_META = {
@@ -292,7 +293,7 @@ function buildBrandPageHtml({
   relatedCompares = [],
   sameBrandAlternatives = [],
   organizationJsonLd = null,
-  modifiedTime = new Date().toISOString()
+  modifiedTime = getBuildTimestampIso()
 }) {
   const categoryMeta = CATEGORY_META[category] ?? {
     slug: category.replace(/_/g, '-'),
@@ -805,7 +806,7 @@ async function generateBrandPages(options = {}) {
       relatedCompares,
       sameBrandAlternatives,
       organizationJsonLd: JSON.stringify(buildOrganizationJsonLd(displayBrand, brandMetadata), null, 2),
-      modifiedTime: new Date().toISOString()
+      modifiedTime: getBuildTimestampIso()
     });
     await writeFile(row.filePath, html, 'utf8');
   }

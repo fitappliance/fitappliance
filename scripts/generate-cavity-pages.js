@@ -9,6 +9,7 @@ const {
   buildMeasurementStepsHtml,
   loadMeasurementSteps
 } = require('./generate-measurement-content');
+const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 
 const MIN_WIDTH = 500;
 const MAX_WIDTH = 1100;
@@ -372,7 +373,7 @@ async function generateCavityPages(options = {}) {
         .slice(0, 8),
       topBrands,
       compareLinks,
-      modifiedTime: new Date().toISOString(),
+      modifiedTime: getBuildTimestampIso(),
       measurementSvgHtml: generateMeasurementSvg({
         widthMm: width,
         heightMm: DEFAULT_CAVITY_HEIGHT_MM,
