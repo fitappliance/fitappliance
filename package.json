@@ -30,6 +30,8 @@
     "keyword-gap": "node scripts/keyword-gap.js",
     "aggregate-errors": "node scripts/aggregate-errors.js",
     "aggregate-rum": "node scripts/aggregate-rum.js",
+    "auto-content": "node scripts/auto-content-pipeline.js",
+    "open-content-pr": "node scripts/open-content-pr.js",
     "open-error-issue": "node scripts/open-error-issue.js",
     "open-perf-pr": "node scripts/open-perf-pr.js",
     "perf-diagnose": "node scripts/perf-diagnose.js",
