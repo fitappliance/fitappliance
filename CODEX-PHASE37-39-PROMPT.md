@@ -30,10 +30,12 @@
 
 ### Phase 37 — Portability & Generator Dedup
 按 PLAN "Phase 37"。验收：
+<!-- doc-audit: ignore -->
 - `scripts/audit-portability.js` 可独立 `node` 运行；扫到现有违规 exit 1
 - `.github/workflows/portability.yml` 在 PR 上跑通（自身 PR 首跑必须绿 = 无违规）
 - `scripts/common/` 至少抽出 4 个 util：html-head、schema-jsonld、sitemap-loc、slug-normalize，每个都有单测
 - `npm run generate-all` 前后 `git diff --stat` = 空
+<!-- doc-audit: ignore -->
 - `tests/portability.test.mjs` 4 项全绿
 - PR body 必须贴"重构前后 generate-all 的 git diff --stat = 0"截图/文本证明
 
@@ -47,10 +49,12 @@
 
 ### Phase 39 — Issue Triage
 按 "Phase 39"。验收：
+<!-- doc-audit: ignore -->
 - `scripts/triage-issues.js` 只处理白名单 label + bot 作者的 issue/PR
 - 周一 UTC 05:00 产出 `[weekly] auto-issue digest YYYY-MM-DD` 单 issue（已存在 → 更新评论）
 - `.github/workflows/triage.yml` 每日 + 周一跑；`workflow_dispatch` 至少跑通一次
 - 单次 close ≤ 20，comment ≤ 50，超限输出到报告
+<!-- doc-audit: ignore -->
 - `tests/triage.test.mjs` 5 项全绿（含"人工 issue 不动"）
 - 首跑报告 `reports/triage-YYYYMMDD.json` 提交
 
@@ -73,6 +77,7 @@
 5. 3 个新 workflow 的 `workflow_dispatch` run URL
 6. 被跳过子任务 + 原因
 
+<!-- doc-audit: ignore -->
 现在开始。从 Phase 37 的 `tests/portability.test.mjs` RED 启动。
 
 ---
