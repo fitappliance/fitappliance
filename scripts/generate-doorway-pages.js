@@ -3,6 +3,7 @@
 
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
+const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 
 const MIN_DOORWAY = 600;
 const MAX_DOORWAY = 900;
@@ -265,7 +266,7 @@ async function generateDoorwayPages(options = {}) {
         .filter((candidate) => candidate !== doorway)
         .sort((left, right) => Math.abs(left - doorway) - Math.abs(right - doorway))
         .slice(0, 8),
-      modifiedTime: new Date().toISOString()
+      modifiedTime: getBuildTimestampIso()
     });
     await writeFile(path.join(outputDir, `${slug}.html`), html, 'utf8');
 
