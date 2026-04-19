@@ -1,12 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import path from 'node:path';
-import { pathToFileURL } from 'node:url';
-
-const repoRoot = '/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2';
-const aggregateModuleUrl = pathToFileURL(path.join(repoRoot, 'scripts', 'aggregate-rum.js')).href;
-const diagnoseModuleUrl = pathToFileURL(path.join(repoRoot, 'scripts', 'perf-diagnose.js')).href;
-const openPrModuleUrl = pathToFileURL(path.join(repoRoot, 'scripts', 'open-perf-pr.js')).href;
+const aggregateModuleUrl = new URL('../scripts/aggregate-rum.js', import.meta.url).href;
+const diagnoseModuleUrl = new URL('../scripts/perf-diagnose.js', import.meta.url).href;
+const openPrModuleUrl = new URL('../scripts/open-perf-pr.js', import.meta.url).href;
 
 test('phase 35 perf: nearest-rank p75 returns the 3rd value from four sorted samples', async () => {
   const { nearestRankPercentile } = await import(aggregateModuleUrl);
