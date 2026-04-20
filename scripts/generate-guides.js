@@ -3,6 +3,7 @@
 
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
+const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 
 const GUIDE_HUBS = [
@@ -170,8 +171,8 @@ function selectGuideLinks({ guide, allLinks, brands, compares, cavity, doorway }
 function buildHubHtml({ guide, links, crossLinks }) {
   const title = `${guide.title} | FitAppliance`;
   const description = guide.description;
-  const canonical = `https://fitappliance.com.au/guides/${guide.slug}`;
-  const ogImage = `https://fitappliance.com.au/og-images/guide-${guide.slug}.png`;
+  const canonical = `${SITE_ORIGIN}/guides/${guide.slug}`;
+  const ogImage = `${SITE_ORIGIN}/og-images/guide-${guide.slug}.png`;
 
   return `<!doctype html>
 <html lang="en-AU">

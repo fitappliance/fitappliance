@@ -35,8 +35,8 @@ function buildRequest(overrides = {}) {
   return {
     method: 'POST',
     headers: {
-      origin: 'https://fitappliance.com.au',
-      referer: 'https://fitappliance.com.au/guides/fridge-clearance-requirements',
+      origin: 'https://www.fitappliance.com.au',
+      referer: 'https://www.fitappliance.com.au/guides/fridge-clearance-requirements',
       'x-forwarded-for': '203.0.113.9'
     },
     body: {

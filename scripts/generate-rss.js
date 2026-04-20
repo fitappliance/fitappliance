@@ -4,6 +4,7 @@
 const path = require('node:path');
 const { mkdir, readFile, writeFile } = require('node:fs/promises');
 const { getBuildDateObject } = require('./utils/build-timestamp.js');
+const { SITE_ORIGIN } = require('./common/site-origin.js');
 
 const CATEGORY_LABEL = {
   fridge: 'Fridge',
@@ -125,7 +126,7 @@ function buildItemRows({
 async function generateRss({
   repoRoot = path.resolve(__dirname, '..'),
   outputPath = path.join(repoRoot, 'public', 'rss.xml'),
-  baseUrl = 'https://fitappliance.com.au',
+  baseUrl = SITE_ORIGIN,
   logger = console,
   today = getBuildDateObject()
 } = {}) {

@@ -81,7 +81,7 @@ test('phase 26 rum: API rate-limits after 60 requests/minute per client fingerpr
     const req = {
       method: 'POST',
       headers: {
-        origin: 'https://fitappliance.com.au',
+        origin: 'https://www.fitappliance.com.au',
         'x-forwarded-for': '203.0.113.9'
       },
       body: {
@@ -100,7 +100,7 @@ test('phase 26 rum: API rate-limits after 60 requests/minute per client fingerpr
   const overflowReq = {
     method: 'POST',
     headers: {
-      origin: 'https://fitappliance.com.au',
+      origin: 'https://www.fitappliance.com.au',
       'x-forwarded-for': '203.0.113.9'
     },
     body: {

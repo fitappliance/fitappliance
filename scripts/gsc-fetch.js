@@ -6,7 +6,7 @@ const { writeJsonAtomically } = require('./utils/file-utils.js');
 
 const GSC_SCOPE = 'https://www.googleapis.com/auth/webmasters.readonly';
 const DEFAULT_SITE_URL = 'sc-domain:fitappliance.com.au';
-const FALLBACK_SITE_URLS = ['https://fitappliance.com.au/', 'https://www.fitappliance.com.au/'];
+const FALLBACK_SITE_URLS = ['https://www.fitappliance.com.au/', 'https://www.fitappliance.com.au/'];
 
 function formatDate(date) {
   return date.toISOString().slice(0, 10);

@@ -2,6 +2,7 @@
 
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
+const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { displayBrandName } = require('./utils/brand-utils.js');
 const { loadProvidersFromFile, resolveAffiliateLinkForProduct } = require('./render-affiliate-links.js');
 
@@ -379,10 +380,10 @@ function buildComparisonPageHtml({
   const displayBrandB = displayBrandName(brandB);
   const title = `${displayBrandA} vs ${displayBrandB} ${categoryMeta.labelSingular} Clearance Requirements — Australia 2026`;
   const description = `${displayBrandA} vs ${displayBrandB} ${categoryMeta.labelSingular.toLowerCase()} clearance comparison for Australian homes. Side/rear/top spacing and fit implications with real model coverage.`;
-  const canonical = `https://fitappliance.com.au/compare/${slug}`;
+  const canonical = `${SITE_ORIGIN}/compare/${slug}`;
   const heroPngPath = `/og-images/compare-${slug}.png`;
   const heroWebpPath = `/og-images/compare-${slug}.webp`;
-  const ogImageUrl = `https://fitappliance.com.au${heroPngPath}`;
+  const ogImageUrl = `${SITE_ORIGIN}${heroPngPath}`;
   const narrative = buildComparisonNarrative(
     clearanceA,
     clearanceB,
@@ -448,7 +449,7 @@ function buildComparisonPageHtml({
     publisher: {
       '@type': 'Organization',
       name: 'FitAppliance',
-      url: 'https://fitappliance.com.au'
+      url: SITE_ORIGIN
     }
   }, null, 2);
 
@@ -460,7 +461,7 @@ function buildComparisonPageHtml({
         '@type': 'ListItem',
         position: 1,
         name: 'FitAppliance',
-        item: 'https://fitappliance.com.au'
+        item: SITE_ORIGIN
       },
       {
         '@type': 'ListItem',
@@ -549,7 +550,7 @@ function buildComparisonPageHtml({
 </head>
 <body>
   <main>
-    <a class="back-link" href="https://fitappliance.com.au">← Back to FitAppliance</a>
+    <a class="back-link" href="${SITE_ORIGIN}">← Back to FitAppliance</a>
     <h1>${escHtml(displayBrandA)} vs ${escHtml(displayBrandB)} ${escHtml(categoryMeta.labelSingular)} Clearance Requirements — Australia 2026</h1>
     <picture class="hero-media">
       <source srcset="${heroWebpPath}" type="image/webp">

@@ -22,7 +22,7 @@ function takeSorted(urls, count) {
 function chooseSentinelUrls(urls, { targetCount = 30 } = {}) {
   const unique = [...new Set((urls ?? []).filter(Boolean))];
   const groups = {
-    root: unique.filter((url) => url === 'https://fitappliance.com.au/'),
+    root: unique.filter((url) => url === 'https://www.fitappliance.com.au/'),
     guides: unique.filter((url) => url.includes('/guides/')),
     cavity: unique.filter((url) => url.includes('/cavity/')),
     doorway: unique.filter((url) => url.includes('/doorway/')),

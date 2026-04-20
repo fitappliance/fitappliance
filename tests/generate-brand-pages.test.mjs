@@ -152,8 +152,8 @@ test('generateBrandPages keeps og:url aligned with canonical URL', async () => {
   });
 
   const html = await readFile(path.join(workspace.outputDir, 'samsung-fridge-clearance.html'), 'utf8');
-  assert.match(html, /<link rel="canonical" href="https:\/\/fitappliance\.com\.au\/brands\/samsung-fridge-clearance">/);
-  assert.match(html, /<meta property="og:url" content="https:\/\/fitappliance\.com\.au\/brands\/samsung-fridge-clearance">/);
+  assert.match(html, /<link rel="canonical" href="https:\/\/www\.fitappliance\.com\.au\/brands\/samsung-fridge-clearance">/);
+  assert.match(html, /<meta property="og:url" content="https:\/\/www\.fitappliance\.com\.au\/brands\/samsung-fridge-clearance">/);
 });
 
 test('generateBrandPages injects twitter card meta tags', async () => {

@@ -122,7 +122,7 @@ function sendNoContent(res) {
 }
 
 function createRumHandler({
-  siteOrigin = 'https://fitappliance.com.au',
+  siteOrigin = 'https://www.fitappliance.com.au',
   rateLimiter = createRateLimiter(),
   nowFn = Date.now,
   storeEvent = async (event) => {

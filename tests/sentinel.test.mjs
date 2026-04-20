@@ -21,8 +21,8 @@ test('phase 27 sentinel: uptime check fails when at least one URL is non-200', a
   const sitemapPath = path.join(tempRoot, 'sitemap.xml');
   await writeFile(sitemapPath, `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://fitappliance.com.au/</loc></url>
-  <url><loc>https://fitappliance.com.au/guides/appliance-fit-sizing-handbook</loc></url>
+  <url><loc>https://www.fitappliance.com.au/</loc></url>
+  <url><loc>https://www.fitappliance.com.au/guides/appliance-fit-sizing-handbook</loc></url>
 </urlset>`, 'utf8');
 
   const seen = [];
@@ -71,7 +71,7 @@ test('phase 27 sentinel: broken-link detector ignores external links', async () 
   await mkdir(path.join(tempRoot, 'pages', 'guides'), { recursive: true });
 
   await writeFile(path.join(tempRoot, 'index.html'), '<a href="https://example.com/help">External</a>', 'utf8');
-  await writeFile(path.join(tempRoot, 'pages', 'guides', 'ok.html'), '<a href="https://fitappliance.com.au/guides/ok">Self host</a>', 'utf8');
+  await writeFile(path.join(tempRoot, 'pages', 'guides', 'ok.html'), '<a href="https://www.fitappliance.com.au/guides/ok">Self host</a>', 'utf8');
   await writeFile(path.join(tempRoot, 'vercel.json'), JSON.stringify({ rewrites: [] }), 'utf8');
 
   const result = await findBrokenLinks({
@@ -112,41 +112,41 @@ test('phase 27 sentinel: orphan check passes when orphanPages is zero', async ()
 test('phase 27 sentinel: sitemap sampler includes homepage and expected pool slices', () => {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://fitappliance.com.au/</loc></url>
-  <url><loc>https://fitappliance.com.au/guides/a</loc></url>
-  <url><loc>https://fitappliance.com.au/guides/b</loc></url>
-  <url><loc>https://fitappliance.com.au/guides/c</loc></url>
-  <url><loc>https://fitappliance.com.au/guides/d</loc></url>
-  <url><loc>https://fitappliance.com.au/guides/e</loc></url>
-  <url><loc>https://fitappliance.com.au/cavity/1</loc></url>
-  <url><loc>https://fitappliance.com.au/cavity/2</loc></url>
-  <url><loc>https://fitappliance.com.au/cavity/3</loc></url>
-  <url><loc>https://fitappliance.com.au/cavity/4</loc></url>
-  <url><loc>https://fitappliance.com.au/cavity/5</loc></url>
-  <url><loc>https://fitappliance.com.au/doorway/1</loc></url>
-  <url><loc>https://fitappliance.com.au/doorway/2</loc></url>
-  <url><loc>https://fitappliance.com.au/doorway/3</loc></url>
-  <url><loc>https://fitappliance.com.au/doorway/4</loc></url>
-  <url><loc>https://fitappliance.com.au/doorway/5</loc></url>
-  <url><loc>https://fitappliance.com.au/brands/a</loc></url>
-  <url><loc>https://fitappliance.com.au/brands/b</loc></url>
-  <url><loc>https://fitappliance.com.au/brands/c</loc></url>
-  <url><loc>https://fitappliance.com.au/brands/d</loc></url>
-  <url><loc>https://fitappliance.com.au/brands/e</loc></url>
-  <url><loc>https://fitappliance.com.au/compare/a</loc></url>
-  <url><loc>https://fitappliance.com.au/compare/b</loc></url>
-  <url><loc>https://fitappliance.com.au/compare/c</loc></url>
-  <url><loc>https://fitappliance.com.au/compare/d</loc></url>
-  <url><loc>https://fitappliance.com.au/compare/e</loc></url>
-  <url><loc>https://fitappliance.com.au/location/sydney/fridge</loc></url>
-  <url><loc>https://fitappliance.com.au/location/perth/fridge</loc></url>
-  <url><loc>https://fitappliance.com.au/location/adelaide/fridge</loc></url>
-  <url><loc>https://fitappliance.com.au/location/darwin/fridge</loc></url>
+  <url><loc>https://www.fitappliance.com.au/</loc></url>
+  <url><loc>https://www.fitappliance.com.au/guides/a</loc></url>
+  <url><loc>https://www.fitappliance.com.au/guides/b</loc></url>
+  <url><loc>https://www.fitappliance.com.au/guides/c</loc></url>
+  <url><loc>https://www.fitappliance.com.au/guides/d</loc></url>
+  <url><loc>https://www.fitappliance.com.au/guides/e</loc></url>
+  <url><loc>https://www.fitappliance.com.au/cavity/1</loc></url>
+  <url><loc>https://www.fitappliance.com.au/cavity/2</loc></url>
+  <url><loc>https://www.fitappliance.com.au/cavity/3</loc></url>
+  <url><loc>https://www.fitappliance.com.au/cavity/4</loc></url>
+  <url><loc>https://www.fitappliance.com.au/cavity/5</loc></url>
+  <url><loc>https://www.fitappliance.com.au/doorway/1</loc></url>
+  <url><loc>https://www.fitappliance.com.au/doorway/2</loc></url>
+  <url><loc>https://www.fitappliance.com.au/doorway/3</loc></url>
+  <url><loc>https://www.fitappliance.com.au/doorway/4</loc></url>
+  <url><loc>https://www.fitappliance.com.au/doorway/5</loc></url>
+  <url><loc>https://www.fitappliance.com.au/brands/a</loc></url>
+  <url><loc>https://www.fitappliance.com.au/brands/b</loc></url>
+  <url><loc>https://www.fitappliance.com.au/brands/c</loc></url>
+  <url><loc>https://www.fitappliance.com.au/brands/d</loc></url>
+  <url><loc>https://www.fitappliance.com.au/brands/e</loc></url>
+  <url><loc>https://www.fitappliance.com.au/compare/a</loc></url>
+  <url><loc>https://www.fitappliance.com.au/compare/b</loc></url>
+  <url><loc>https://www.fitappliance.com.au/compare/c</loc></url>
+  <url><loc>https://www.fitappliance.com.au/compare/d</loc></url>
+  <url><loc>https://www.fitappliance.com.au/compare/e</loc></url>
+  <url><loc>https://www.fitappliance.com.au/location/sydney/fridge</loc></url>
+  <url><loc>https://www.fitappliance.com.au/location/perth/fridge</loc></url>
+  <url><loc>https://www.fitappliance.com.au/location/adelaide/fridge</loc></url>
+  <url><loc>https://www.fitappliance.com.au/location/darwin/fridge</loc></url>
 </urlset>`;
   const urls = parseSitemapUrls(xml);
   const selected = chooseSentinelUrls(urls);
   assert.equal(selected.length, 30);
-  assert.equal(selected[0], 'https://fitappliance.com.au/');
+  assert.equal(selected[0], 'https://www.fitappliance.com.au/');
 });
 
 test('phase 27 sentinel: broken-link report writes output JSON file', async () => {

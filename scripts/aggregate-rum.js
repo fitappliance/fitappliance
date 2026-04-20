@@ -16,7 +16,7 @@ function sanitizePath(pathValue) {
   try {
     const url = raw.startsWith('http://') || raw.startsWith('https://')
       ? new URL(raw)
-      : new URL(raw, 'https://fitappliance.com.au');
+      : new URL(raw, 'https://www.fitappliance.com.au');
     return `${url.pathname || '/'}${url.pathname.endsWith('/') && url.pathname.length > 1 ? '' : ''}`;
   } catch {
     return raw.split('#')[0].split('?')[0] || '/';

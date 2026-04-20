@@ -27,7 +27,7 @@ function toPageUrl(repoRoot, filePath) {
   return normalizePathname(withoutPages);
 }
 
-function normalizeHrefToInternalUrl(href, baseUrl = 'https://fitappliance.com.au') {
+function normalizeHrefToInternalUrl(href, baseUrl = 'https://www.fitappliance.com.au') {
   if (typeof href !== 'string') return null;
   const trimmed = href.trim();
   if (!trimmed || trimmed.startsWith('#') || trimmed.startsWith('mailto:') || trimmed.startsWith('javascript:')) {
@@ -79,7 +79,7 @@ function extractHrefValues(html) {
 async function buildLinkGraph({
   repoRoot = path.resolve(__dirname, '..'),
   outputPath = path.join(repoRoot, 'reports', 'link-graph.json'),
-  baseUrl = 'https://fitappliance.com.au',
+  baseUrl = 'https://www.fitappliance.com.au',
   logger = console
 } = {}) {
   const htmlFiles = [

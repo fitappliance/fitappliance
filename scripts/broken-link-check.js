@@ -14,7 +14,7 @@ function normalizePathname(value) {
   return pathname;
 }
 
-function hrefToInternalPath(href, baseUrl = 'https://fitappliance.com.au') {
+function hrefToInternalPath(href, baseUrl = 'https://www.fitappliance.com.au') {
   if (typeof href !== 'string') return null;
   const trimmed = href.trim();
   if (!trimmed || trimmed.startsWith('#') || trimmed.startsWith('mailto:') || trimmed.startsWith('tel:') || trimmed.startsWith('javascript:')) {
@@ -35,7 +35,7 @@ function hrefToInternalPath(href, baseUrl = 'https://fitappliance.com.au') {
   return null;
 }
 
-function extractInternalLinks(html, baseUrl = 'https://fitappliance.com.au') {
+function extractInternalLinks(html, baseUrl = 'https://www.fitappliance.com.au') {
   const matches = html.matchAll(/\bhref\s*=\s*(['"])(.*?)\1/gi);
   const urls = [];
   for (const match of matches) {
@@ -107,7 +107,7 @@ async function findBrokenLinks({
   repoRoot = path.resolve(__dirname, '..'),
   vercelPath = path.join(repoRoot, 'vercel.json'),
   reportPath = path.join(repoRoot, 'reports', 'broken-links.json'),
-  baseUrl = 'https://fitappliance.com.au',
+  baseUrl = 'https://www.fitappliance.com.au',
   logger = console
 } = {}) {
   const htmlFiles = [

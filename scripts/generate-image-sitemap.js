@@ -3,6 +3,7 @@
 
 const path = require('node:path');
 const { mkdir, readFile, readdir, writeFile } = require('node:fs/promises');
+const { SITE_ORIGIN } = require('./common/site-origin.js');
 
 const CATEGORY_SLUG = {
   fridge: 'fridge',
@@ -63,7 +64,7 @@ function buildUrlNode({ loc, image }) {
 async function generateImageSitemap({
   repoRoot = path.resolve(__dirname, '..'),
   outputPath = path.join(repoRoot, 'public', 'image-sitemap.xml'),
-  baseUrl = 'https://fitappliance.com.au',
+  baseUrl = SITE_ORIGIN,
   logger = console
 } = {}) {
   const brands = await readJson(path.join(repoRoot, 'pages', 'brands', 'index.json'), []);

@@ -50,7 +50,7 @@ function stripUrlQueryAndHash(value) {
     if (!input) return '';
     const url = input.startsWith('http://') || input.startsWith('https://')
       ? new URL(input)
-      : new URL(input, 'https://fitappliance.com.au');
+      : new URL(input, 'https://www.fitappliance.com.au');
     return `${url.origin}${url.pathname}`;
   } catch {
     return String(value ?? '').split('#')[0].split('?')[0];
@@ -153,7 +153,7 @@ function sendNoContent(res) {
 }
 
 function createErrorHandler({
-  siteOrigin = 'https://fitappliance.com.au',
+  siteOrigin = 'https://www.fitappliance.com.au',
   rateLimiter = createRateLimiter(),
   storeEvent = async (event) => {
     console.info(`[error] ${JSON.stringify(event)}`);

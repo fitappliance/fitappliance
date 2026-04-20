@@ -38,7 +38,7 @@ test('phase 28 measurement: HowTo schema has exactly 5 steps from shared JSON co
     widthMm: 650,
     heightMm: 1820,
     depthMm: 720,
-    pageUrl: 'https://fitappliance.com.au/cavity/650mm-fridge'
+    pageUrl: 'https://www.fitappliance.com.au/cavity/650mm-fridge'
   });
 
   assert.equal(howTo['@type'], 'HowTo');

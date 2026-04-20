@@ -40,7 +40,7 @@
       height: button?.getAttribute('data-cavity-height') || '',
       depth: button?.getAttribute('data-cavity-depth') || ''
     };
-    const pageUrl = globalScope?.location?.href || 'https://fitappliance.com.au/';
+    const pageUrl = globalScope?.location?.href || 'https://www.fitappliance.com.au/';
     return { heading, quickAnswer, steps, dims, pageUrl };
   }
 

@@ -391,7 +391,7 @@ function buildInternalLinks(type) {
 
 function buildPageHtml({ candidate, products, internalLinks, references }) {
   const title = `${candidate.query} | FitAppliance data guide`;
-  const canonical = `https://fitappliance.com.au/guides/${candidate.slug}`;
+  const canonical = `https://www.fitappliance.com.au/guides/${candidate.slug}`;
   const nowIso = new Date().toISOString();
   const longCopy = [
     `This guide is generated from current FitAppliance data files and targets the exact query \"${candidate.query}\" with measurable appliance dimensions instead of generic claims.`,

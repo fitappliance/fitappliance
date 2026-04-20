@@ -2,7 +2,7 @@
 
 (function initErrorBeacon(globalScope) {
   if (!globalScope || !globalScope.location || !globalScope.navigator) return;
-  if (globalScope.location.origin !== 'https://fitappliance.com.au') return;
+  if (globalScope.location.origin !== 'https://www.fitappliance.com.au') return;
 
   const ENDPOINT = '/api/error';
   const STORE_KEY = 'fa-error-signatures';

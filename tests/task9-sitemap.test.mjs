@@ -61,7 +61,7 @@ test('task 9.1 sitemap: generates expected URL count with static + brand pages',
   const result = await generateSitemap({
     brandsIndexPath: workspace.brandsIndexPath,
     outputPath: workspace.outputPath,
-    baseUrl: 'https://fitappliance.com.au',
+    baseUrl: 'https://www.fitappliance.com.au',
     today: '2026-04-15',
     logger: { log() {} }
   });
@@ -122,11 +122,11 @@ test('task 9.1 sitemap: includes static pages even when brand index is empty', a
   const xml = await readFile(workspace.outputPath, 'utf8');
   const nodes = extractNodes(xml);
   assert.equal(nodes.length, STATIC_PAGES.length);
-  assert.equal(nodes[0].loc, 'https://fitappliance.com.au/');
-  assert.equal(nodes[1].loc, 'https://fitappliance.com.au/affiliate-disclosure');
-  assert.equal(nodes[2].loc, 'https://fitappliance.com.au/privacy-policy');
-  assert.equal(nodes[3].loc, 'https://fitappliance.com.au/methodology');
-  assert.equal(nodes[4].loc, 'https://fitappliance.com.au/about/editorial-standards');
+  assert.equal(nodes[0].loc, 'https://www.fitappliance.com.au/');
+  assert.equal(nodes[1].loc, 'https://www.fitappliance.com.au/affiliate-disclosure');
+  assert.equal(nodes[2].loc, 'https://www.fitappliance.com.au/privacy-policy');
+  assert.equal(nodes[3].loc, 'https://www.fitappliance.com.au/methodology');
+  assert.equal(nodes[4].loc, 'https://www.fitappliance.com.au/about/editorial-standards');
 });
 
 test('task 9.1 sitemap: keeps static URLs first and sorts brand URLs by category then brand', async () => {
@@ -149,16 +149,16 @@ test('task 9.1 sitemap: keeps static URLs first and sorts brand URLs by category
   const locs = nodes.map((node) => node.loc);
 
   assert.deepEqual(locs.slice(0, STATIC_PAGES.length), [
-    'https://fitappliance.com.au/',
-    'https://fitappliance.com.au/affiliate-disclosure',
-    'https://fitappliance.com.au/privacy-policy',
-    'https://fitappliance.com.au/methodology',
-    'https://fitappliance.com.au/about/editorial-standards'
+    'https://www.fitappliance.com.au/',
+    'https://www.fitappliance.com.au/affiliate-disclosure',
+    'https://www.fitappliance.com.au/privacy-policy',
+    'https://www.fitappliance.com.au/methodology',
+    'https://www.fitappliance.com.au/about/editorial-standards'
   ]);
   assert.deepEqual(locs.slice(STATIC_PAGES.length), [
-    'https://fitappliance.com.au/brands/bosch-dishwasher-clearance',
-    'https://fitappliance.com.au/brands/hisense-fridge-clearance',
-    'https://fitappliance.com.au/brands/lg-fridge-clearance'
+    'https://www.fitappliance.com.au/brands/bosch-dishwasher-clearance',
+    'https://www.fitappliance.com.au/brands/hisense-fridge-clearance',
+    'https://www.fitappliance.com.au/brands/lg-fridge-clearance'
   ]);
 });
 

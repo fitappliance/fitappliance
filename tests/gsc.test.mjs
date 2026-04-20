@@ -13,7 +13,7 @@ test('phase 23 gsc: normalizeSearchAnalyticsRows maps google response rows to re
   const { normalizeSearchAnalyticsRows } = await import(gscModuleUrl);
   const rows = normalizeSearchAnalyticsRows([
     {
-      keys: ['lg fridge clearance australia', 'https://fitappliance.com.au/brands/lg-fridge-clearance'],
+      keys: ['lg fridge clearance australia', 'https://www.fitappliance.com.au/brands/lg-fridge-clearance'],
       clicks: 18,
       impressions: 240,
       ctr: 0.075,
@@ -23,7 +23,7 @@ test('phase 23 gsc: normalizeSearchAnalyticsRows maps google response rows to re
 
   assert.deepEqual(rows[0], {
     query: 'lg fridge clearance australia',
-    page: 'https://fitappliance.com.au/brands/lg-fridge-clearance',
+    page: 'https://www.fitappliance.com.au/brands/lg-fridge-clearance',
     clicks: 18,
     impressions: 240,
     ctr: 0.075,
@@ -34,7 +34,7 @@ test('phase 23 gsc: normalizeSearchAnalyticsRows maps google response rows to re
 test('phase 23 gsc: validateSearchAnalyticsRows enforces ctr range [0,1]', async () => {
   const { validateSearchAnalyticsRows } = await import(gscModuleUrl);
   assert.throws(
-    () => validateSearchAnalyticsRows([{ query: 'q', page: 'https://fitappliance.com.au/', clicks: 1, impressions: 10, ctr: 1.2, position: 4.2 }]),
+    () => validateSearchAnalyticsRows([{ query: 'q', page: 'https://www.fitappliance.com.au/', clicks: 1, impressions: 10, ctr: 1.2, position: 4.2 }]),
     /ctr/i
   );
 });
@@ -42,7 +42,7 @@ test('phase 23 gsc: validateSearchAnalyticsRows enforces ctr range [0,1]', async
 test('phase 23 gsc: validateSearchAnalyticsRows enforces positive search position', async () => {
   const { validateSearchAnalyticsRows } = await import(gscModuleUrl);
   assert.throws(
-    () => validateSearchAnalyticsRows([{ query: 'q', page: 'https://fitappliance.com.au/', clicks: 1, impressions: 10, ctr: 0.2, position: 0 }]),
+    () => validateSearchAnalyticsRows([{ query: 'q', page: 'https://www.fitappliance.com.au/', clicks: 1, impressions: 10, ctr: 0.2, position: 0 }]),
     /position/i
   );
 });
@@ -69,7 +69,7 @@ test('phase 23 gsc: fetchGscReport writes a dated report file with mocked google
       data: {
         rows: [
           {
-            keys: ['samsung fridge clearance', 'https://fitappliance.com.au/brands/samsung-fridge-clearance'],
+            keys: ['samsung fridge clearance', 'https://www.fitappliance.com.au/brands/samsung-fridge-clearance'],
             clicks: 9,
             impressions: 110,
             ctr: 0.0818,
@@ -119,7 +119,7 @@ test('phase 23 gsc: fetchGscReport falls back from domain property to url-prefix
         data: {
           rows: [
             {
-              keys: ['fit appliance', 'https://fitappliance.com.au/'],
+              keys: ['fit appliance', 'https://www.fitappliance.com.au/'],
               clicks: 3,
               impressions: 50,
               ctr: 0.06,
@@ -132,8 +132,8 @@ test('phase 23 gsc: fetchGscReport falls back from domain property to url-prefix
     logger: { log() {} }
   });
 
-  assert.deepEqual(calls, ['sc-domain:fitappliance.com.au', 'https://fitappliance.com.au/']);
-  assert.equal(result.siteUrl, 'https://fitappliance.com.au/');
+  assert.deepEqual(calls, ['sc-domain:fitappliance.com.au', 'https://www.fitappliance.com.au/']);
+  assert.equal(result.siteUrl, 'https://www.fitappliance.com.au/');
   assert.equal(result.summary.rowCount, 1);
 });
 
@@ -143,13 +143,13 @@ test('phase 23 gsc: buildKeywordGapReport identifies content gaps and page-2 opp
   const report = buildKeywordGapReport({
     today: '2026-04-18',
     sitemapUrls: [
-      'https://fitappliance.com.au/',
-      'https://fitappliance.com.au/brands/lg-fridge-clearance'
+      'https://www.fitappliance.com.au/',
+      'https://www.fitappliance.com.au/brands/lg-fridge-clearance'
     ],
     rows: [
       {
         query: 'lg fridge clearance australia',
-        page: 'https://fitappliance.com.au/brands/lg-fridge-clearance',
+        page: 'https://www.fitappliance.com.au/brands/lg-fridge-clearance',
         clicks: 4,
         impressions: 120,
         ctr: 0.0333,
@@ -157,7 +157,7 @@ test('phase 23 gsc: buildKeywordGapReport identifies content gaps and page-2 opp
       },
       {
         query: 'hisense dryer vent space',
-        page: 'https://fitappliance.com.au/',
+        page: 'https://www.fitappliance.com.au/',
         clicks: 0,
         impressions: 40,
         ctr: 0,
@@ -182,7 +182,7 @@ test('phase 23 gsc: writeKeywordGapReport outputs dated markdown report', async 
       date: '2026-04-18',
       summary: { totalQueries: 2, contentGaps: 1, optimizationOpportunities: 1 },
       contentGaps: [{ query: 'hisense dryer vent space', impressions: 40 }],
-      opportunities: [{ query: 'lg fridge clearance australia', page: 'https://fitappliance.com.au/brands/lg-fridge-clearance', position: 14.2 }]
+      opportunities: [{ query: 'lg fridge clearance australia', page: 'https://www.fitappliance.com.au/brands/lg-fridge-clearance', position: 14.2 }]
     }
   });
 
@@ -210,7 +210,7 @@ test('phase 23 gsc: keyword-gap script can ingest gsc json from disk', async () 
       rows: [
         {
           query: 'samsung fridge clearance',
-          page: 'https://fitappliance.com.au/brands/samsung-fridge-clearance',
+          page: 'https://www.fitappliance.com.au/brands/samsung-fridge-clearance',
           clicks: 9,
           impressions: 110,
           ctr: 0.0818,

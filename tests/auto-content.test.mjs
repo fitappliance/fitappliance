@@ -45,13 +45,13 @@ test('phase 34 auto-content: cavity query with weak CTR and page-2 position is a
     rows: [
       {
         query: 'dishwasher cavity 600mm depth guide',
-        page: 'https://fitappliance.com.au/',
+        page: 'https://www.fitappliance.com.au/',
         impressions: 95,
         ctr: 0.021,
         position: 18.4
       }
     ],
-    sitemapUrls: ['https://fitappliance.com.au/cavity/700mm-fridge']
+    sitemapUrls: ['https://www.fitappliance.com.au/cavity/700mm-fridge']
   });
 
   assert.equal(result.accepted.length, 1);
@@ -65,13 +65,13 @@ test('phase 34 auto-content: query is skipped when sitemap slug similarity is ab
     rows: [
       {
         query: 'dishwasher cavity 600mm depth guide',
-        page: 'https://fitappliance.com.au/',
+        page: 'https://www.fitappliance.com.au/',
         impressions: 180,
         ctr: 0.03,
         position: 17.2
       }
     ],
-    sitemapUrls: ['https://fitappliance.com.au/guides/dishwasher-cavity-600mm-depth-guide']
+    sitemapUrls: ['https://www.fitappliance.com.au/guides/dishwasher-cavity-600mm-depth-guide']
   });
 
   assert.equal(result.accepted.length, 0);

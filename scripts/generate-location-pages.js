@@ -3,6 +3,7 @@
 
 const path = require('node:path');
 const { mkdir, readFile, rm, writeFile } = require('node:fs/promises');
+const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
 const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 
@@ -181,25 +182,25 @@ function buildBreadcrumbJsonLd(city, category) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://fitappliance.com.au/'
+        item: `${SITE_ORIGIN}/`
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Location Guides',
-        item: 'https://fitappliance.com.au/location'
+        item: `${SITE_ORIGIN}/location`
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: city.name,
-        item: `https://fitappliance.com.au/location/${city.slug}`
+        item: `${SITE_ORIGIN}/location/${city.slug}`
       },
       {
         '@type': 'ListItem',
         position: 4,
         name: category.label,
-        item: `https://fitappliance.com.au/location/${city.slug}/${category.slug}`
+        item: `${SITE_ORIGIN}/location/${city.slug}/${category.slug}`
       }
     ]
   };
@@ -215,7 +216,7 @@ function buildItemListJsonLd(city, category, links) {
       '@type': 'ListItem',
       position: index + 1,
       item: {
-        '@id': `https://fitappliance.com.au${row.url}`,
+        '@id': `${SITE_ORIGIN}${row.url}`,
         name: row.label
       }
     }))
@@ -248,7 +249,7 @@ function buildPageHtml({
   const h1 = `Appliance Cavity & Doorway Guide — ${category.label} in ${city.name}`;
   const title = `${h1} | FitAppliance`;
   const description = `${category.label} installation resources for ${city.name}, ${city.stateCode}. Browse cavity and doorway fit guides with links to brand clearance pages.`;
-  const canonical = `https://fitappliance.com.au/location/${city.slug}/${category.slug}`;
+  const canonical = `${SITE_ORIGIN}/location/${city.slug}/${category.slug}`;
 
   const breadcrumbJsonLd = JSON.stringify(buildBreadcrumbJsonLd(city, category), null, 2);
   const itemListJsonLd = JSON.stringify(buildItemListJsonLd(city, category, links), null, 2);
@@ -317,7 +318,7 @@ function buildPageHtml({
     <p>${categoryCount > 0 ? `${categoryCount} models are currently listed in this category in our Australian database.` : 'This category guide links to practical fit-check resources across the site.'}</p>
 
     <div class="chip-row">
-      <a href="https://fitappliance.com.au/?cat=${encodeURIComponent(category.cat ?? 'fridge')}&w=600&h=1800&d=700">Run fit checker for ${escHtml(category.label)}</a>
+      <a href="${SITE_ORIGIN}/?cat=${encodeURIComponent(category.cat ?? 'fridge')}&w=600&h=1800&d=700">Run fit checker for ${escHtml(category.label)}</a>
       <a href="/location/${city.slug}/fridge">Fridge in ${escHtml(city.name)}</a>
       <a href="/location/${city.slug}/dishwasher">Dishwasher in ${escHtml(city.name)}</a>
       <a href="/location/${city.slug}/washing-machine">Washing Machine in ${escHtml(city.name)}</a>

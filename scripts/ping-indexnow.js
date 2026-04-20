@@ -26,7 +26,7 @@ function pingIndexNow() {
   const key = fs.readFileSync(KEY_FILE, 'utf8').trim();
   const sitemap = fs.readFileSync(SITEMAP, 'utf8');
   const urls = parseSitemapUrls(sitemap).map((u) =>
-    u.replace('https://fitappliance.com.au', `https://${HOST}`)
+    u.replace('https://www.fitappliance.com.au', `https://${HOST}`)
   );
 
   if (!key || !/^[a-f0-9]{32}$/u.test(key)) {

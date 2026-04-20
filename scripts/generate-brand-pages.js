@@ -2,6 +2,7 @@
 
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
+const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { displayBrandName } = require('./utils/brand-utils.js');
 const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
@@ -65,8 +66,8 @@ function buildWebSiteJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': 'https://fitappliance.com.au/#website',
-    url: 'https://fitappliance.com.au',
+    '@id': `${SITE_ORIGIN}/#website`,
+    url: SITE_ORIGIN,
     name: 'FitAppliance',
     description:
       "Australia's most precise appliance size finder. Per-brand ventilation clearances, delivery access check, and government rebates.",
@@ -75,7 +76,7 @@ function buildWebSiteJsonLd() {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://fitappliance.com.au/?cat={cat}&w={w}&h={h}&d={d}',
+        urlTemplate: `${SITE_ORIGIN}/?cat={cat}&w={w}&h={h}&d={d}`,
         actionAccessibilityRequirement: {
           '@type': 'ActionAccessSpecification',
           requiresSubscription: false
@@ -160,13 +161,13 @@ function buildBreadcrumbJsonLd({ slug, brand, categoryLabel }) {
         '@type': 'ListItem',
         position: 1,
         name: 'FitAppliance',
-        item: 'https://fitappliance.com.au'
+        item: SITE_ORIGIN
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: `${brand} ${categoryLabel} Clearance`,
-        item: `https://fitappliance.com.au/brands/${slug}`
+        item: `${SITE_ORIGIN}/brands/${slug}`
       }
     ]
   };
@@ -305,10 +306,10 @@ function buildBrandPageHtml({
     `${brand} ${categoryMeta.labelSingular} ventilation clearance guide for Australian homes. ` +
     `Requires ${side}mm side, ${rear}mm rear, ${top}mm top clearance. Find the ${count} ${brand} ` +
     `${categoryMeta.labelSingular} models that fit your cavity.`;
-  const canonical = `https://fitappliance.com.au/brands/${slug}`;
+  const canonical = `${SITE_ORIGIN}/brands/${slug}`;
   const heroPngPath = `/og-images/${slugify(brandRaw)}-${categoryMeta.slug}.png`;
   const heroWebpPath = `/og-images/${slugify(brandRaw)}-${categoryMeta.slug}.webp`;
-  const ogImageUrl = `https://fitappliance.com.au${heroPngPath}`;
+  const ogImageUrl = `${SITE_ORIGIN}${heroPngPath}`;
   const ctaUrl = `/?cat=${encodeURIComponent(category)}&brand=${encodeURIComponent(brandRaw)}`;
   const siteJsonLd = JSON.stringify(buildWebSiteJsonLd(), null, 2);
   const breadcrumbJsonLd = JSON.stringify(
@@ -564,7 +565,7 @@ function buildBrandPageHtml({
 </head>
 <body>
   <main>
-    <a class="back-link" href="https://fitappliance.com.au">← Back to FitAppliance</a>
+    <a class="back-link" href="${SITE_ORIGIN}">← Back to FitAppliance</a>
     <h1>${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} Clearance Requirements</h1>
     <picture class="hero-media">
       <source srcset="${heroWebpPath}" type="image/webp">

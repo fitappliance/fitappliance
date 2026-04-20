@@ -5,7 +5,7 @@
   const ENDPOINT = '/api/rum';
   const WEB_VITALS_MODULE = 'https://unpkg.com/web-vitals@4/dist/web-vitals.attribution.js?module';
 
-  if (!globalScope || !globalScope.location || globalScope.location.origin !== 'https://fitappliance.com.au') {
+  if (!globalScope || !globalScope.location || globalScope.location.origin !== 'https://www.fitappliance.com.au') {
     return;
   }
 

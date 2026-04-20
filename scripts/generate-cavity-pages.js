@@ -3,6 +3,7 @@
 
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
+const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { generateMeasurementSvg } = require('./generate-measurement-svg');
 const {
   buildMeasurementHowToJsonLd,
@@ -99,7 +100,7 @@ function buildSpeakableJsonLd(canonicalPath) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    url: `https://fitappliance.com.au${canonicalPath}`,
+    url: `${SITE_ORIGIN}${canonicalPath}`,
     speakable: {
       '@type': 'SpeakableSpecification',
       cssSelector: ['#quick-answer']
@@ -117,19 +118,19 @@ function buildBreadcrumbJsonLd(width) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://fitappliance.com.au/'
+        item: `${SITE_ORIGIN}/`
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Cavity Guides',
-        item: 'https://fitappliance.com.au/cavity'
+        item: `${SITE_ORIGIN}/cavity`
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: `${width}mm Fridge Cavity`,
-        item: `https://fitappliance.com.au/cavity/${slug}`
+        item: `${SITE_ORIGIN}/cavity/${slug}`
       }
     ]
   };
@@ -152,7 +153,7 @@ function buildPageHtml({
 }) {
   const title = `Fridges that fit a ${width}mm cavity (Australia 2026) | FitAppliance`;
   const description = `${resultCount} fridges fit a ${width}mm kitchen cavity. Includes Samsung, LG, Fisher & Paykel. Free cavity checker.`;
-  const canonical = `https://fitappliance.com.au/cavity/${width}mm-fridge`;
+  const canonical = `${SITE_ORIGIN}/cavity/${width}mm-fridge`;
   const itemListJsonLd = JSON.stringify(buildItemListJsonLd(width, featured), null, 2);
   const breadcrumbJsonLd = JSON.stringify(buildBreadcrumbJsonLd(width), null, 2);
   const productJsonLd = JSON.stringify(buildProductJsonLd(width, featured), null, 2);
@@ -218,7 +219,7 @@ function buildPageHtml({
 </head>
 <body>
   <main>
-    <a href="https://fitappliance.com.au/">← Back to FitAppliance</a>
+    <a href="${SITE_ORIGIN}/">← Back to FitAppliance</a>
     <h1>Fridges that fit a ${width}mm cavity (Australia 2026)</h1>
     <p id="quick-answer">${resultCount} fridge models currently fit this cavity width after per-brand side clearance.</p>
     <p>Use this page as a quick shortlist, then run your exact height/depth check on the main calculator.</p>
@@ -230,7 +231,7 @@ function buildPageHtml({
 
     <div class="nav">
       ${adjacentWidths.previous ? `<a class="chip" href="/cavity/${adjacentWidths.previous}mm-fridge">← ${adjacentWidths.previous}mm</a>` : ''}
-      <a class="chip" href="https://fitappliance.com.au/?cat=fridge&w=${width}&h=1800&d=700">Run full fit check</a>
+      <a class="chip" href="${SITE_ORIGIN}/?cat=fridge&w=${width}&h=1800&d=700">Run full fit check</a>
       ${adjacentWidths.next ? `<a class="chip" href="/cavity/${adjacentWidths.next}mm-fridge">${adjacentWidths.next}mm →</a>` : ''}
     </div>
 
@@ -390,7 +391,7 @@ async function generateCavityPages(options = {}) {
         widthMm: width,
         heightMm: DEFAULT_CAVITY_HEIGHT_MM,
         depthMm: DEFAULT_CAVITY_DEPTH_MM,
-        pageUrl: `https://fitappliance.com.au/cavity/${width}mm-fridge`
+        pageUrl: `${SITE_ORIGIN}/cavity/${width}mm-fridge`
       })
     });
 

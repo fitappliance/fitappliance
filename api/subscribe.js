@@ -118,7 +118,7 @@ async function subscribeWithButtondown({ email, apiKey, source = 'fitappliance.c
 }
 
 function createSubscribeHandler({
-  siteOrigin = 'https://fitappliance.com.au',
+  siteOrigin = 'https://www.fitappliance.com.au',
   env = process.env,
   rateLimiter = createRateLimiter(),
   provider = subscribeWithButtondown

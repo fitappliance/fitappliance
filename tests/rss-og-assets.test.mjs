@@ -33,5 +33,5 @@ test('brand pages include og:image meta tag', () => {
     path.join(process.cwd(), 'pages', 'brands', 'samsung-fridge-clearance.html'),
     'utf8'
   );
-  assert.match(html, /<meta property="og:image" content="https:\/\/fitappliance\.com\.au\/og-images\/samsung-fridge\.png">/);
+  assert.match(html, /<meta property="og:image" content="https:\/\/www\.fitappliance\.com\.au\/og-images\/samsung-fridge\.png">/);
 });

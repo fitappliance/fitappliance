@@ -37,13 +37,13 @@ function createMockResponse() {
 test('phase 36 error monitor: sanitize removes query and fragment from source URL', () => {
   const payload = errorApi.sanitizeErrorPayload({
     message: 'Script failed',
-    source: 'https://fitappliance.com.au/tools/fit-checker?token=abc#user=foo',
+    source: 'https://www.fitappliance.com.au/tools/fit-checker?token=abc#user=foo',
     line: 41,
     col: 9,
-    stack: 'Error: Script failed\n at https://fitappliance.com.au/tools/fit-checker?token=abc#x:41:9'
+    stack: 'Error: Script failed\n at https://www.fitappliance.com.au/tools/fit-checker?token=abc#x:41:9'
   });
 
-  assert.equal(payload.source, 'https://fitappliance.com.au/tools/fit-checker');
+  assert.equal(payload.source, 'https://www.fitappliance.com.au/tools/fit-checker');
   assert.equal(payload.stack.includes('?token='), false);
   assert.equal(payload.stack.includes('#user='), false);
 });
@@ -65,10 +65,10 @@ test('phase 36 error monitor: email and phone-like strings are redacted', () => 
 test('phase 36 error monitor: same signature repeated 100 times aggregates to one bucket', () => {
   const events = Array.from({ length: 100 }).map((_, index) => ({
     message: 'TypeError: x is undefined',
-    source: 'https://fitappliance.com.au/scripts/error-beacon.js',
+    source: 'https://www.fitappliance.com.au/scripts/error-beacon.js',
     line: 55,
     col: 10,
-    stack: 'TypeError\n at https://fitappliance.com.au/scripts/error-beacon.js:55:10',
+    stack: 'TypeError\n at https://www.fitappliance.com.au/scripts/error-beacon.js:55:10',
     ts: 1710000000000 + index
   }));
 
@@ -85,7 +85,7 @@ test('phase 36 error monitor: closed issue recurring within 6 days triggers reop
     lastSeen: '2026-04-18T00:00:00.000Z',
     sampleStack: 'Error\n at /scripts/error-beacon.js:55:10',
     message: 'TypeError: x is undefined',
-    source: 'https://fitappliance.com.au/scripts/error-beacon.js',
+    source: 'https://www.fitappliance.com.au/scripts/error-beacon.js',
     line: 55
   }];
 

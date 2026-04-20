@@ -3,6 +3,7 @@
 
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
+const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 
 const MIN_DOORWAY = 600;
@@ -93,7 +94,7 @@ function buildSpeakableJsonLd(doorway) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    url: `https://fitappliance.com.au/doorway/${doorway}mm-fridge-doorway`,
+    url: `${SITE_ORIGIN}/doorway/${doorway}mm-fridge-doorway`,
     speakable: {
       '@type': 'SpeakableSpecification',
       cssSelector: ['#quick-answer']
@@ -111,19 +112,19 @@ function buildBreadcrumbJsonLd(doorway) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://fitappliance.com.au/'
+        item: `${SITE_ORIGIN}/`
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Doorway Guides',
-        item: 'https://fitappliance.com.au/doorway'
+        item: `${SITE_ORIGIN}/doorway`
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: `${doorway}mm Fridge Doorway`,
-        item: `https://fitappliance.com.au/doorway/${slug}`
+        item: `${SITE_ORIGIN}/doorway/${slug}`
       }
     ]
   };
@@ -132,7 +133,7 @@ function buildBreadcrumbJsonLd(doorway) {
 function buildPageHtml({ doorway, matched, adjacentDoorways, relatedDoorways, modifiedTime }) {
   const title = `Fridges that fit through a ${doorway}mm doorway | FitAppliance Australia`;
   const description = `${matched.length} fridge models can pass through a ${doorway}mm doorway with basic handling margin.`;
-  const canonical = `https://fitappliance.com.au/doorway/${doorway}mm-fridge-doorway`;
+  const canonical = `${SITE_ORIGIN}/doorway/${doorway}mm-fridge-doorway`;
   const faqJsonLd = JSON.stringify(buildFaqJsonLd(doorway), null, 2);
   const breadcrumbJsonLd = JSON.stringify(buildBreadcrumbJsonLd(doorway), null, 2);
   const productJsonLd = JSON.stringify(buildProductJsonLd(doorway, matched), null, 2);
@@ -163,14 +164,14 @@ function buildPageHtml({ doorway, matched, adjacentDoorways, relatedDoorways, mo
 </head>
 <body>
   <main>
-    <a href="https://fitappliance.com.au/">← Back to FitAppliance</a>
+    <a href="${SITE_ORIGIN}/">← Back to FitAppliance</a>
     <h1>Fridges that fit through a ${doorway}mm doorway</h1>
     <p id="quick-answer">${matched.length} fridge models can pass a ${doorway}mm doorway using a 10mm handling margin.</p>
     <p>Always confirm diagonal clearance, hallway corners, and stair turns before delivery day.</p>
 
     <div class="chip-row">
       ${adjacentDoorways.previous ? `<a class="chip" href="/doorway/${adjacentDoorways.previous}mm-fridge-doorway">← ${adjacentDoorways.previous}mm</a>` : ''}
-      <a class="chip" href="https://fitappliance.com.au/?cat=fridge&w=900&h=1800&d=700&door=${doorway}">Run full doorway + cavity check</a>
+      <a class="chip" href="${SITE_ORIGIN}/?cat=fridge&w=900&h=1800&d=700&door=${doorway}">Run full doorway + cavity check</a>
       ${adjacentDoorways.next ? `<a class="chip" href="/doorway/${adjacentDoorways.next}mm-fridge-doorway">${adjacentDoorways.next}mm →</a>` : ''}
     </div>
 

@@ -2,6 +2,7 @@
 
 const path = require('node:path');
 const { mkdir, readFile, writeFile } = require('node:fs/promises');
+const { SITE_ORIGIN } = require('./common/site-origin.js');
 
 const STATIC_PAGES = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
@@ -32,7 +33,7 @@ function escXml(value) {
 }
 
 function normalizeBaseUrl(baseUrl) {
-  return String(baseUrl ?? 'https://fitappliance.com.au').replace(/\/+$/, '');
+  return String(baseUrl ?? SITE_ORIGIN).replace(/\/+$/, '');
 }
 
 function toAbsoluteUrl(baseUrl, relativePath) {
@@ -74,7 +75,7 @@ async function generateSitemap({
   guideIndexPath = null,
   locationIndexPath = null,
   outputPath = path.join(repoRoot, 'public', 'sitemap.xml'),
-  baseUrl = 'https://fitappliance.com.au',
+  baseUrl = SITE_ORIGIN,
   today = new Date().toISOString().slice(0, 10),
   logger = console
 } = {}) {

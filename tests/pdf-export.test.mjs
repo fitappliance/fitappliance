@@ -34,7 +34,7 @@ test('phase 29 pdf: download button click generates blob and object URL', async 
       </section>
       <button class="btn-pdf-export" data-cavity-slug="600mm-fridge" data-cavity-width="600" data-cavity-height="1800" data-cavity-depth="700">Download PDF</button>
     </main>
-  </body></html>`, { url: 'https://fitappliance.com.au/cavity/600mm-fridge' });
+  </body></html>`, { url: 'https://www.fitappliance.com.au/cavity/600mm-fridge' });
 
   let objectUrlCalls = 0;
   dom.window.URL.createObjectURL = () => {
