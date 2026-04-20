@@ -304,9 +304,9 @@ function buildComparisonNarrative(clearanceA, clearanceB, brandA, brandB, catego
       return `${brandA} and ${brandB} both require ${unitA}mm ${axisLabel} clearance.`;
     }
     if (unitA > unitB) {
-      return `${brandA} requires ${unitA}mm ${axisLabel} clearance vs ${brandB}'s ${unitB}mm — ${brandA} needs ${unitA - unitB}mm more ${axisLabel} space.`;
+      return `${brandA} requires ${unitA}mm ${axisLabel} clearance versus ${brandB}'s ${unitB}mm. ${brandA} needs ${unitA - unitB}mm more ${axisLabel} space.`;
     }
-    return `${brandB} requires ${unitB}mm ${axisLabel} clearance vs ${brandA}'s ${unitA}mm — ${brandB} needs ${unitB - unitA}mm more ${axisLabel} space.`;
+    return `${brandB} requires ${unitB}mm ${axisLabel} clearance versus ${brandA}'s ${unitA}mm. ${brandB} needs ${unitB - unitA}mm more ${axisLabel} space.`;
   };
 
   const sideLine = compareAxis('side', sideA, sideB);
@@ -545,7 +545,7 @@ ${headMeta}
       <img src="${heroPngPath}" alt="${escHtml(compareLabel)} clearance comparison preview" width="1200" height="630" loading="eager" decoding="async" fetchpriority="high">
     </picture>
     <div class="comparison-verdict">
-      <p>${escHtml(narrative.summary)}</p>
+      <p data-source="comparison-analysis">${escHtml(narrative.summary)}</p>
     </div>
 
     <div class="comparison-grid">

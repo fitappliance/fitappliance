@@ -1,3 +1,5 @@
+import { displayBrandName } from './brand-utils.js';
+
 const HISTORY_KEY = 'fitappliance-searches-v1';
 export const MAX_HISTORY = 8;
 
@@ -65,7 +67,7 @@ function buildLabel(params) {
   const w = params.w ? `${params.w}mm` : '-';
   const h = params.h ? `${params.h}mm` : '-';
   const d = params.d ? `${params.d}mm` : '-';
-  const brand = params.brand ? ` · ${params.brand}` : '';
+  const brand = params.brand ? ` · ${displayBrandName(params.brand)}` : '';
   return `${cat} · ${w} × ${h} × ${d}${brand}`;
 }
 
