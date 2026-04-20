@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-04-19T13:15:41.694Z",
+  "date": "2026-04-19",
+  "dryRun": true,
+  "limits": {
+    "close": 20,
+    "comment": 50
+  },
+  "counts": {
+    "totalOpenFetched": 3,
+    "eligibleKept": 0,
+    "plannedClose": 0,
+    "plannedComment": 0,
+    "skippedIneligible": 3,
+    "skippedDueToLimit": 0
+  },
+  "groupedCounts": {
+    "sentinel-auto": 0,
+    "auto-content": 0,
+    "auto-perf": 0,
+    "auto-error": 0
+  },
+  "plannedActions": {
+    "closeNumbers": [],
+    "commentNumbers": [],
+    "skippedDueToLimitNumbers": []
+  },
+  "executed": {
+    "comments": [],
+    "closes": [],
+    "digest": null
+  },
+  "digestAction": null
+}

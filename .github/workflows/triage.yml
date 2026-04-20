@@ -1,0 +1,58 @@
+name: Auto Issue Triage
+
+on:
+  schedule:
+    - cron: '0 5 * * *'
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Run without mutating issues
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+      digest:
+        description: Also run weekly digest logic
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run triage
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ARGS=()
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.dry_run }}" == "true" ]]; then
+            ARGS+=("--dryRun")
+          fi
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.digest }}" == "true" ]]; then
+            ARGS+=("--digest")
+          fi
+          if [[ "${{ github.event_name }}" == "schedule" && "${{ github.event.schedule }}" == "0 5 * * 1" ]]; then
+            ARGS+=("--digest")
+          fi
+          node scripts/triage-issues.js "${ARGS[@]}"
