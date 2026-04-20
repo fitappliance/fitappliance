@@ -4,6 +4,7 @@
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { fillTemplate, loadCopyFile, pickVariant } = require('./common/copy-data.js');
+const { buildReviewVideoSection } = require('./common/review-video-renderer.js');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { generateMeasurementSvg } = require('./generate-measurement-svg');
 const {
@@ -149,6 +150,7 @@ function buildPageHtml({
   relatedWidths,
   topBrands,
   compareLinks,
+  reviewSectionHtml = '',
   modifiedTime,
   measurementSvgHtml,
   measurementStepsHtml,
@@ -251,8 +253,7 @@ function buildPageHtml({
         <div class="meta">W ${product.w} × H ${product.h} × D ${product.d} mm</div>
         <div class="meta">${product.stars}★ · ${product.kwh_year ?? '-'} kWh/yr</div>
       </article>`).join('')}
-    </div>
-
+    </div>${reviewSectionHtml ? `\n    ${reviewSectionHtml}\n` : '\n'}
     <section id="measure">
       <h2>How to measure this fridge cavity</h2>
       <p>Use these three views before you shortlist appliances: width, height, and depth all need to pass with ventilation clearance.</p>
@@ -323,8 +324,19 @@ async function generateCavityPages(options = {}) {
   const compareIndex = await readJson(path.join(repoRoot, 'pages', 'compare', 'index.json'), []);
   const measurementSteps = await loadMeasurementSteps();
   const cavityIntroCopy = await loadCopyFile('cavity-intro', repoRoot);
+  const reviewPilotDoc = await readJson(path.join(repoRoot, 'data', 'videos', 'review-pilot-slugs.json'), { pilots: [] });
+  const reviewVideosDoc = await readJson(path.join(repoRoot, 'data', 'videos', 'review-videos.json'), { models: {} });
+  const creatorWhitelist = await readJson(path.join(repoRoot, 'data', 'videos', 'creator-whitelist.json'), { creators: [] });
+  const reviewDisclaimerCopy = await loadCopyFile('review-disclaimer', repoRoot).catch(() => ({}));
   const products = (appliances.products ?? []).filter((product) => product.cat === 'fridge');
   const widths = buildWidthRange(MIN_WIDTH, MAX_WIDTH, STEP);
+  const reviewPilots = Array.isArray(reviewPilotDoc.pilots) ? reviewPilotDoc.pilots : [];
+  const pilotSlugs = reviewPilots.map((row) => row.modelSlug).filter(Boolean);
+  const pilotByCavityPageSlug = new Map(
+    reviewPilots
+      .filter((row) => typeof row.cavityPageSlug === 'string' && row.cavityPageSlug)
+      .map((row) => [row.cavityPageSlug, row])
+  );
 
   await cleanOutputDir(outputDir);
   const rows = [];
@@ -362,6 +374,17 @@ async function generateCavityPages(options = {}) {
         url: entry.url,
         label: `${entry.brandA} vs ${entry.brandB}`
       }));
+    const slug = `${width}mm-fridge`;
+    const pilotTarget = pilotByCavityPageSlug.get(slug);
+    const reviewSectionHtml = pilotTarget
+      ? buildReviewVideoSection({
+        modelSlug: pilotTarget.modelSlug,
+        reviews: reviewVideosDoc?.models?.[pilotTarget.modelSlug]?.reviews ?? [],
+        whitelistDocument: creatorWhitelist,
+        disclaimerCopy: reviewDisclaimerCopy,
+        pilotSlugs
+      })
+      : '';
 
     const html = buildPageHtml({
       width,
@@ -383,6 +406,7 @@ async function generateCavityPages(options = {}) {
         .slice(0, 8),
       topBrands,
       compareLinks,
+      reviewSectionHtml,
       modifiedTime: getBuildTimestampIso(),
       measurementSvgHtml: generateMeasurementSvg({
         widthMm: width,
@@ -404,7 +428,6 @@ async function generateCavityPages(options = {}) {
       })
     });
 
-    const slug = `${width}mm-fridge`;
     const filePath = path.join(outputDir, `${slug}.html`);
     await writeFile(filePath, html, 'utf8');
 
@@ -435,5 +458,6 @@ if (require.main === module) {
 }
 
 module.exports = {
+  buildPageHtml,
   generateCavityPages
 };

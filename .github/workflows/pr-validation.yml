@@ -22,5 +22,8 @@ jobs:
       - name: Regenerate generated assets
         run: npm run generate-all
 
+      - name: Audit review content gate
+        run: npm run audit-review-content
+
       - name: Ensure generated outputs are committed
         run: git diff --exit-code

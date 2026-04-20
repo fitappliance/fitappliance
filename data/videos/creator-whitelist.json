@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-04-20",
+  "creators": [
+    {
+      "id": "choice-au",
+      "displayName": "CHOICE Australia",
+      "channelId": "UCLxnSYCXG6DRD77NnYH3sAw",
+      "channelUrl": "https://www.youtube.com/@choiceaustralia",
+      "trustTier": "A",
+      "notes": "Independent Australian consumer reviews."
+    },
+    {
+      "id": "productreview-au",
+      "displayName": "ProductReview.com.au",
+      "channelId": null,
+      "channelUrl": null,
+      "trustTier": "A",
+      "notes": "Australian review publisher; confirm live channel before first data fill."
+    },
+    {
+      "id": "appliances-online",
+      "displayName": "Appliances Online",
+      "channelId": "UCPgTCiyQM0L5gBE06ILaJrg",
+      "channelUrl": "https://www.youtube.com/@appliancesonlineau",
+      "trustTier": "B",
+      "notes": "Retailer-produced product videos with ACCC disclosure requirement."
+    },
+    {
+      "id": "samsung-au",
+      "displayName": "Samsung Australia",
+      "channelId": "UChO7xlACgCNpOOIA3Wk6MVQ",
+      "channelUrl": "https://www.youtube.com/@samsungaustralia",
+      "trustTier": "M",
+      "notes": "Manufacturer-owned channel. Treat as orientation only."
+    }
+  ]
+}
