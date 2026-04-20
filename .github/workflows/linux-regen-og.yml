@@ -1,6 +1,9 @@
 name: Linux OG Regen
 
 on:
+  push:
+    branches:
+      - phase-37-portability
   workflow_dispatch:
 
 permissions:
@@ -8,6 +11,7 @@ permissions:
 
 jobs:
   regen-og:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
