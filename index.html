@@ -5,8 +5,8 @@
 <meta name="google-site-verification" content="XurDAhzLbWGd-7qBLx4RBAda-vyciJc6qQsnzWJHPPA" />
 <meta name="commission-factory-verification" content="befda212a540475694f6b21f658f21f9" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FitAppliance — Does It Actually Fit? | Australia's Precision Appliance Finder</title>
-<meta name="description" content="Australia's most precise appliance size finder. Enter your cavity dimensions — we calculate per-brand ventilation clearances, door swing, delivery access and government rebates automatically.">
+<title>FitAppliance | Appliance Fit Checker for Australian Homes</title>
+<meta name="description" content="Check appliance fit for Australian homes with brand-specific clearance rules, doorway access notes and energy data.">
 <meta name="theme-color" content="#131210">
 <meta name="article:modified_time" content="2026-04-18T00:00:00Z">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -1292,7 +1292,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 
 <!-- TOPBAR -->
 <div class="topbar">
-  🇦🇺 Per-brand ventilation clearances · State rebates · ACCC-compliant · Updated weekly &nbsp;|&nbsp;
+  Brand-specific clearance rules · State rebates · ACCC-compliant · Updated weekly &nbsp;|&nbsp;
   <a href="#how-it-works">How we calculate fit</a>
 </div>
 
@@ -1314,9 +1314,9 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   <div class="hero-glow-1"></div>
   <div class="hero-glow-2"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow"><span></span> Australia's most precise appliance size tool</div>
-    <h1>Measure once.<br><em>Buy right.</em></h1>
-    <p class="hero-sub">We calculate per-brand ventilation gaps, door swing radius, and delivery access — so you don't have to return it.</p>
+    <div class="hero-eyebrow"><span></span> <span id="heroEyebrowText">Appliance fit, with clearance built in</span></div>
+    <h1 id="heroTitle">Measure once. Find the appliances that actually fit.</h1>
+    <p class="hero-sub" id="heroSub">Enter your cavity dimensions and narrow the list with brand-specific airflow, door-swing and access checks.</p>
 
     <div class="search-card" id="searchForm">
       <div class="sc-head">
@@ -1325,10 +1325,10 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 
       <!-- Category -->
       <div class="cat-pills" id="catPills" style="margin-bottom:20px">
-        <button class="cat-pill active" data-cat="fridge"><span class="pi">🧊</span>Fridge</button>
-        <button class="cat-pill" data-cat="washing_machine"><span class="pi">🫧</span>Washing Machine</button>
-        <button class="cat-pill" data-cat="dishwasher"><span class="pi">🍽️</span>Dishwasher</button>
-        <button class="cat-pill" data-cat="dryer"><span class="pi">🌀</span>Dryer</button>
+        <button class="cat-pill active" data-cat="fridge">Fridge</button>
+        <button class="cat-pill" data-cat="washing_machine">Washing Machine</button>
+        <button class="cat-pill" data-cat="dishwasher">Dishwasher</button>
+        <button class="cat-pill" data-cat="dryer">Dryer</button>
       </div>
 
       <!-- Dimensions -->
@@ -1383,12 +1383,12 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 
       <div class="sc-hint">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="#C47A1A" stroke-width="1.4"/><path d="M7.5 7v4M7.5 5v.5" stroke="#C47A1A" stroke-width="1.4" stroke-linecap="round"/></svg>
-        <span>Dimensions are your raw cavity. We subtract <strong>per-brand</strong> ventilation clearances — Samsung needs 100mm top clearance, Haier needs 25.4mm all sides.</span>
+        <span>Dimensions are your raw cavity. We subtract <strong>each brand's</strong> ventilation clearances. Samsung needs 100mm top clearance, while Haier needs 25.4mm on every side.</span>
       </div>
 
       <button class="btn-search" onclick="doSearch()">
         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="white" stroke-width="1.8"/><path d="M12 12l3.5 3.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
-        Find Appliances That Fit
+        <span id="heroCtaText">Find fitting models</span>
       </button>
       <p class="fit-checker-link"><a href="/tools/fit-checker">Try the fit checker →</a></p>
       <div id="searchHistoryMount"></div>
@@ -1398,11 +1398,11 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 
 <!-- TRUST STRIP -->
 <div class="trust-strip">
-  <div class="trust-item">📐 <strong>Per-brand</strong> clearance rules</div>
-  <div class="trust-item">🚪 <strong>Doorway</strong> delivery check</div>
-  <div class="trust-item">⚡ <strong>VEU & ESS</strong> rebates calculated</div>
-  <div class="trust-item">⭐ <strong>GEMS-verified</strong> energy ratings</div>
-  <div class="trust-item">🛡 <strong>ACCC-compliant</strong> disclosures</div>
+  <div class="trust-item"><strong>Brand-specific</strong> clearance rules</div>
+  <div class="trust-item"><strong>Doorway</strong> delivery check</div>
+  <div class="trust-item"><strong>VEU & ESS</strong> rebates calculated</div>
+  <div class="trust-item"><strong>GEMS-verified</strong> energy ratings</div>
+  <div class="trust-item"><strong>ACCC-compliant</strong> disclosures</div>
 </div>
 
 <!-- RESULTS SECTION -->
@@ -1414,7 +1414,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 
   <!-- Disclaimer -->
   <div class="disclaimer" id="disclaimerBox">
-    <strong>📐 Dimensions shown are after per-brand clearances.</strong> Always verify ventilation requirements in the manufacturer's installation manual before purchase. Door swing and delivery access are estimates — measure your specific space.
+    <strong>Dimensions shown are after each brand's clearance rules.</strong> Always verify ventilation requirements in the manufacturer's installation manual before purchase. Door swing and delivery access are estimates — measure your specific space.
   </div>
   <div id="freshness-banner" class="freshness-banner" hidden></div>
 
@@ -1454,11 +1454,10 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
       <!-- Product output -->
       <div id="productGrid" class="product-list"></div>
       <div id="savedTipBar" class="saved-tip" hidden>
-        💡 We update prices weekly. Saved <span data-role="count">0</span> items — bookmark this page to track them.
-        <button type="button" onclick="copyCurrentSearchLink()">📋 Copy your search link</button>
+        We update prices weekly. Saved <span data-role="count">0</span> items — bookmark this page to track them.
+        <button type="button" onclick="copyCurrentSearchLink()">Copy your search link</button>
       </div>
       <div class="empty-state" id="emptyState">
-        <div style="font-size:52px">📦</div>
         <h3>Nothing fits those dimensions</h3>
         <p>Try increasing your cavity measurements or removing brand/budget filters. Standard AU cavities: 600mm W × 1800mm H × 650mm D for fridges.</p>
         <button class="btn-search" style="max-width:220px;margin:0 auto" onclick="resetSearch()">Start Over</button>
@@ -1470,14 +1469,14 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 
       <!-- Rebate calculator -->
       <div class="rebate-panel">
-        <h3>💰 Government Rebates</h3>
+        <h3>Government Rebates</h3>
         <p>VIC, NSW, QLD and other states offer energy upgrade rebates. Enter your postcode to see what applies.</p>
         <input class="postcode-input" type="text" id="postcodeIn" placeholder="e.g. 3000 for Melbourne" maxlength="4" oninput="calcRebate()">
         <div class="rebate-result" id="rebateResult"></div>
       </div>
 
       <div class="scard">
-        <div class="scard-title">📬 Get Weekly Fit Updates</div>
+        <div class="scard-title">Get Weekly Fit Updates</div>
         <form class="subscribe-form" data-subscribe action="/api/subscribe" method="post" novalidate>
           <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
           <label class="subscribe-hp" aria-hidden="true">Company
@@ -1494,23 +1493,23 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
         <div class="scard-title">Shop at trusted AU retailers</div>
         <div class="retailer-btns">
           <a class="ret-btn" href="https://www.harveynorman.com.au" target="_blank" rel="noopener">
-            <span class="ret-btn-name">🏪 Harvey Norman</span>
+            <span class="ret-btn-name">Harvey Norman</span>
             <span class="ret-btn-comm">3% commission</span>
           </a>
           <a class="ret-btn" href="https://www.jbhifi.com.au" target="_blank" rel="noopener">
-            <span class="ret-btn-name">🏪 JB Hi-Fi</span>
+            <span class="ret-btn-name">JB Hi-Fi</span>
             <span class="ret-btn-comm">3% commission</span>
           </a>
           <a class="ret-btn" href="https://www.thegoodguys.com.au" target="_blank" rel="noopener">
-            <span class="ret-btn-name">🏪 The Good Guys</span>
+            <span class="ret-btn-name">The Good Guys</span>
             <span class="ret-btn-comm">3% commission</span>
           </a>
           <a class="ret-btn" href="https://www.binglee.com.au" target="_blank" rel="noopener">
-            <span class="ret-btn-name">🏪 Bing Lee</span>
+            <span class="ret-btn-name">Bing Lee</span>
             <span class="ret-btn-comm">2.5% · 30-day</span>
           </a>
           <a class="ret-btn" href="https://www.appliances-online.com.au" target="_blank" rel="noopener">
-            <span class="ret-btn-name">🏪 Appliances Online</span>
+            <span class="ret-btn-name">Appliances Online</span>
             <span class="ret-btn-comm">2% commission</span>
           </a>
         </div>
@@ -1519,7 +1518,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 
       <!-- Clearance reference -->
       <div class="scard">
-        <div class="scard-title">Per-brand clearances (mm)</div>
+        <div class="scard-title">Brand clearance reference (mm)</div>
         <table class="clearance-table">
           <tr><td>Samsung</td><td>50L/R · 50R · 100T</td></tr>
           <tr><td>LG</td><td>50L/R · 50R · 20T</td></tr>
@@ -1533,7 +1532,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 
       <!-- Install lead gen -->
       <div class="scard" style="background:var(--paper-2)">
-        <div class="scard-title">🔧 Need installation?</div>
+        <div class="scard-title">Need installation?</div>
         <p style="font-size:13px;color:var(--ink-3);line-height:1.65;margin-bottom:12px">Licensed plumbers and electricians from $70. Required to maintain warranty and comply with AS/NZS 3000.</p>
         <button onclick="showToast('Installation booking coming soon!')" style="width:100%;padding:10px;background:var(--ink);color:#fff;border:none;border-radius:var(--r-sm);font-family:Outfit,sans-serif;font-size:13px;font-weight:700;cursor:pointer;">Book a Licensed Installer</button>
       </div>
@@ -1563,8 +1562,8 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
       </div>
       <div class="how-item">
         <div class="how-num">2</div>
-        <h3>Per-brand maths</h3>
-        <p>We subtract each brand's exact ventilation spec. Samsung needs 100mm top clearance — not just a generic 50mm.</p>
+        <h3>Brand-specific clearance math</h3>
+        <p>We subtract each brand's ventilation spec. Samsung needs 100mm top clearance, while some other brands need much less.</p>
       </div>
       <div class="how-item">
         <div class="how-num">3</div>
@@ -1579,19 +1578,19 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 <section class="compliance-sec" id="compliance">
   <div class="compliance-inner">
     <div class="comp-item" id="accc-compliance">
-      <h4>🛡 ACCC & ACL Compliance</h4>
+      <h4>ACCC & ACL Compliance</h4>
       <p>All affiliate relationships are disclosed immediately adjacent to purchase links — not buried in footers. Rankings are based on objective criteria (dimensional fit, energy rating, price) and are never influenced by commission rates. Brand exclusions (e.g. Miele, Asko) are clearly noted.</p>
     </div>
     <div class="comp-item">
-      <h4>⚡ NCC 2022 Dryer Notice</h4>
+      <h4>NCC 2022 Dryer Notice</h4>
       <p>Under the National Construction Code 2022, vented tumble dryers can no longer exhaust into roof spaces in new builds. If you select "Apartment" as your dwelling type, we automatically filter to condenser and heat-pump dryer models only.</p>
     </div>
     <div class="comp-item" id="data-sources">
-      <h4>📊 Data Sources</h4>
+      <h4>Data Sources</h4>
       <p>Dimensional data sourced from OEM installation manuals and the GEMS (Greenhouse and Energy Minimum Standards) regulator database. Energy ratings are GEMS-verified. Prices are sourced via affiliate partner feeds and updated weekly.</p>
     </div>
     <div class="comp-item">
-      <h4>🔒 Privacy &amp; Cookies</h4>
+      <h4>Privacy &amp; Cookies</h4>
       <p>We do not sell your measurement data. This site uses Google AdSense to display advertisements; AdSense may use cookies to serve ads based on your prior visits to this or other websites. You can opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style="color:var(--copper)">Google Ads Settings</a>. If you opt into email save-and-share features, we comply with the Australian Spam Act 2003 with explicit consent and a frictionless unsubscribe mechanism. See our full <a href="/privacy-policy" style="color:var(--copper)">Privacy Policy</a>.</p>
     </div>
   </div>
@@ -1647,9 +1646,9 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="/" class="logo">Fit<b style="color:var(--copper)">Appliance</b></a>
-      <p>Australia's most precise appliance size tool. Per-brand clearances, GEMS energy data, and state rebates — all in one search.</p>
-      <p style="margin-top:10px;font-size:12px">📍 Built in Australia &nbsp;|&nbsp; ABN pending</p>
+      <a href="/" class="logo">Fit<b>Appliance</b></a>
+      <p id="footerSummary">Clearance guides, energy data and rebate notes for Australian appliance fitting.</p>
+      <p id="footerMetaLine" style="margin-top:10px;font-size:12px">Built in Australia</p>
     </div>
     <div class="footer-col">
       <h5>Categories</h5>
@@ -1735,6 +1734,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 <script defer src="/scripts/subscribe.js"></script>
 <script type="module">
 import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/product-card.js';
+import { displayBrandName } from './scripts/ui/brand-utils.js';
 import { renderFreshnessBanner } from './scripts/ui/freshness.js';
 import { buildBrandOptions } from './scripts/ui/filters.js';
 import { computeFitScore } from './scripts/ui/fit-score.js';
@@ -1879,7 +1879,7 @@ function renderBrandDirectory(rows) {
   grid.innerHTML = sortedRows.map((entry) => {
     const catLabel = BRAND_DIRECTORY_CATEGORY_LABELS[entry.cat] ?? String(entry.cat ?? '');
     const href = entry.url ? entry.url : `/brands/${entry.slug}`;
-    const label = `${entry.brand} ${catLabel}`;
+    const label = `${displayBrandName(entry.brand)} ${catLabel}`;
     return `<a href="${escHtml(href)}">${escHtml(label)}</a>`;
   }).join('');
 }
@@ -1898,6 +1898,39 @@ function loadBrandDirectory() {
 }
 
 loadBrandDirectory();
+
+function applyUiCopy(copy) {
+  const hero = copy?.hero ?? {};
+  const footer = copy?.footer ?? {};
+  const setText = (id, value) => {
+    if (!value) return;
+    const node = document.getElementById(id);
+    if (node) node.textContent = value;
+  };
+
+  setText('heroEyebrowText', hero.eyebrow);
+  setText('heroTitle', hero.title);
+  setText('heroSub', hero.sub);
+  setText('heroCtaText', hero.cta);
+  setText('footerSummary', footer.brandSummary);
+  setText('footerMetaLine', footer.metaLine);
+}
+
+function loadUiCopy() {
+  fetch('/data/ui-copy.json')
+    .then(async (response) => {
+      if (!response.ok) return null;
+      return response.json();
+    })
+    .then((copy) => {
+      if (copy) applyUiCopy(copy);
+    })
+    .catch(() => {
+      // Optional polish data only.
+    });
+}
+
+loadUiCopy();
 
 function renderDataLoadError() {
   document.getElementById('resultsSection').style.display = 'block';
@@ -1983,7 +2016,7 @@ function calcRebate() {
   const rb = st ? REBATES[st] : null;
   if (rb) {
     const accentColor = STATE_COLORS[st] ?? 'var(--copper)';
-    el.innerHTML = `<div style="color:${accentColor};font-weight:700;font-size:14px;margin-bottom:3px">🎉 Up to $${rb.amount} — ${rb.name}</div><div style="font-size:11.5px;color:rgba(255,255,255,.55);line-height:1.5">${rb.note}</div>`;
+    el.innerHTML = `<div style="color:${accentColor};font-weight:700;font-size:14px;margin-bottom:3px">Up to $${rb.amount} — ${rb.name}</div><div style="font-size:11.5px;color:rgba(255,255,255,.55);line-height:1.5">${rb.note}</div>`;
   } else {
     el.innerHTML = `<div style="color:rgba(255,255,255,.55);font-size:12.5px;margin-top:6px">${st ? 'No active rebates found for '+st+' at this time.' : 'Postcode not recognised — try your 4-digit AU postcode.'}</div>`;
   }
@@ -2198,7 +2231,7 @@ function updateFloatBarSummary() {
     parts.push(`${width}mm wide`);
   }
 
-  if (brand) parts.push(brand);
+  if (brand) parts.push(displayBrandName(brand));
   if (COMPARE_INTENT?.label) {
     kicker.hidden = false;
     kicker.textContent = `Compare intent: ${COMPARE_INTENT.label}`;
@@ -2287,13 +2320,13 @@ function doSearch() {
     brand: brand || '(any)'
   });
 
-  if (!w || !h || !d) { showToast('⚠️ Please enter width, height, and depth'); return; }
-  if (w<200||h<200||d<100) { showToast('⚠️ Dimensions look too small — enter in millimetres'); return; }
+  if (!w || !h || !d) { showToast('Please enter width, height, and depth'); return; }
+  if (w<200||h<200||d<100) { showToast('Dimensions look too small — enter in millimetres'); return; }
 
   filteredResults = PRODUCTS.filter(p => {
     if (p.cat !== currentCat) return false;
 
-    // Per-brand clearance
+    // Brand-specific clearance
     const cl = getClearance(p.cat, p.brand);
     const availW = w - cl.side * 2;
     const availH = h - cl.top;
@@ -2326,7 +2359,7 @@ function doSearch() {
 
   // Update disclaimer for apartment + dryer
   if (currentCat === 'dryer' && dwelling === 'apartment') {
-    document.getElementById('disclaimerBox').innerHTML = `<strong>⚠️ NCC 2022 — Apartment Notice:</strong> Vented tumble dryers are excluded. Under the National Construction Code 2022, vented dryers cannot exhaust into roof or wall cavities in multi-unit dwellings. Only condensing and heat-pump models shown.`;
+    document.getElementById('disclaimerBox').innerHTML = `<strong>NCC 2022 — Apartment Notice:</strong> Vented tumble dryers are excluded. Under the National Construction Code 2022, vented dryers cannot exhaust into roof or wall cavities in multi-unit dwellings. Only condensing and heat-pump models shown.`;
   }
 
   const catName = CATEGORY_LABELS[currentCat] ?? 'Appliances';
@@ -2337,7 +2370,7 @@ function doSearch() {
   if (descEl) {
     descEl.setAttribute(
       'content',
-      `${filteredResults.length} ${catName.toLowerCase()} that fit a ${w}mm wide, ${h}mm tall, ${d}mm deep cavity — with per-brand clearances and energy ratings.`
+      `${filteredResults.length} ${catName.toLowerCase()} that fit a ${w}mm wide, ${h}mm tall, ${d}mm deep cavity — with brand-specific clearances and energy ratings.`
     );
   }
 
@@ -2451,7 +2484,7 @@ function renderResults() {
 function tcoHtml(p) {
   const annual = annualEnergyCost(p.kwh_year);
   const total  = Math.round(lifetimeCost(p.price, p.kwh_year));
-  return `<div class="tco-row">⚡ ~$${annual}/yr energy · <strong>10yr TCO: ~$${total.toLocaleString()}</strong></div>`;
+  return `<div class="tco-row">~$${annual}/yr energy · <strong>10yr TCO: ~$${total.toLocaleString()}</strong></div>`;
 }
 
 function extractModelSku(modelString) {
@@ -2638,7 +2671,7 @@ function renderCompareTable(products) {
     {
       label: 'Model',
       key: p => `${p.brand} ${p.model}`,
-      render: p => `<strong>${escHtml(p.brand)} ${escHtml(p.model)}</strong>`
+      render: p => `<strong>${escHtml(displayBrandName(p.brand))} ${escHtml(p.model)}</strong>`
     },
     {
       label: 'Dimensions (W×H×D)',
@@ -2702,7 +2735,7 @@ function renderCompareTable(products) {
     },
   ];
 
-  const headerRow = products.map(product => `<th>${escHtml(product.brand)}<br>${escHtml(product.model)}</th>`).join('');
+  const headerRow = products.map((product) => `<th>${escHtml(displayBrandName(product.brand))}<br>${escHtml(product.model)}</th>`).join('');
   const bodyRows = rows.map(row => {
     const keys = products.map((product) => row.key(product));
     const allSame = keys.every((value) => value === keys[0]);
@@ -2878,7 +2911,7 @@ function renderSavedPanel() {
 
   items.innerHTML = savedProducts.map((product) => `
     <div class="saved-chip">
-      ${escHtml(product.brand)} ${escHtml(product.model)}
+      ${escHtml(displayBrandName(product.brand))} ${escHtml(product.model)}
       <button type="button" onclick="removeSaved('${product.id}')" aria-label="Remove saved appliance">×</button>
     </div>
   `).join('');
@@ -2999,7 +3032,7 @@ updateFloatBarSummary();
       "@id": "https://www.fitappliance.com.au/#website",
       "url": "https://www.fitappliance.com.au",
       "name": "FitAppliance",
-      "description": "Australia's most precise appliance size finder. Per-brand ventilation clearances, delivery access check, and government rebates.",
+      "description": "Appliance fit checker for Australian homes, with brand-specific clearance rules, doorway access notes and rebate guidance.",
       "inLanguage": "en-AU",
       "potentialAction": {
         "@type": "SearchAction",
@@ -3020,7 +3053,7 @@ updateFloatBarSummary();
       "name": "FitAppliance — Appliance Size Finder",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Web",
-      "description": "Australia's most precise appliance cavity checker. Enter cavity dimensions to find fridges, washing machines, dishwashers and dryers that physically fit — with per-brand ventilation clearances pre-applied.",
+      "description": "Check cavity dimensions against fridges, washing machines, dishwashers and dryers for Australian homes, with brand-specific clearance rules applied.",
       "url": "https://www.fitappliance.com.au",
       "inLanguage": "en-AU",
       "offers": {
@@ -3036,7 +3069,7 @@ updateFloatBarSummary();
         }
       },
       "featureList": [
-        "Per-brand ventilation clearance calculation",
+        "Brand-specific ventilation clearance calculation",
         "2169 Australian appliance models",
         "Energy star rating filter",
         "Government rebate eligibility checker",

@@ -4,6 +4,7 @@ const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { buildHtmlHead, escHtml } = require('./common/html-head.js');
+const { copyKeyForBrandCategory, fillTemplate, loadCopyFile } = require('./common/copy-data.js');
 const { stringifyJsonLd } = require('./common/schema-jsonld.js');
 const { slugNormalize } = require('./common/slug-normalize.js');
 const { displayBrandName } = require('./utils/brand-utils.js');
@@ -57,7 +58,7 @@ function buildWebSiteJsonLd() {
     url: SITE_ORIGIN,
     name: 'FitAppliance',
     description:
-      "Australia's most precise appliance size finder. Per-brand ventilation clearances, delivery access check, and government rebates.",
+      'Appliance fit guides for Australian homes, with clearance, access and energy data.',
     inLanguage: 'en-AU',
     potentialAction: {
       '@type': 'SearchAction',
@@ -74,69 +75,61 @@ function buildWebSiteJsonLd() {
   };
 }
 
-function buildClearanceNarrative({
-  brand,
-  categoryMeta,
-  side,
-  rear,
-  top,
-  defaultSide,
-  defaultRear,
-  defaultTop
-}) {
-  const comparisons = [];
+function buildClearanceContext({ side, rear, top, defaultSide, defaultRear, defaultTop }) {
+  const notes = [];
 
   if (side > defaultSide) {
-    comparisons.push(`wider side spacing than the ${defaultSide}mm category average (${side}mm required)`);
+    notes.push(`The side gap is ${side - defaultSide}mm wider than the usual category baseline.`);
   } else if (side < defaultSide) {
-    comparisons.push(
-      `narrower side clearance than most brands (${side}mm vs ${defaultSide}mm average), which can help in tighter cavities`
-    );
+    notes.push(`The side gap is ${defaultSide - side}mm tighter than the usual category baseline.`);
   }
 
-  if (rear > defaultRear + 10) {
-    comparisons.push(`above-average rear clearance (${rear}mm vs ${defaultRear}mm default) — leave extra wall space for airflow`);
+  if (rear > defaultRear) {
+    notes.push(`The rear allowance is ${rear - defaultRear}mm deeper than the default figure.`);
+  } else if (rear < defaultRear) {
+    notes.push(`The rear allowance is ${defaultRear - rear}mm tighter than the default figure.`);
   }
 
-  if (top > defaultTop + 15) {
-    comparisons.push(
-      `generous top clearance of ${top}mm (default is ${defaultTop}mm) — cabinetry above must be ${top}mm or higher from the appliance top`
-    );
-  } else if (top < defaultTop - 10) {
-    comparisons.push(
-      `unusually low top clearance requirement (${top}mm vs ${defaultTop}mm default) — good for fitted kitchen cabinetry`
-    );
+  if (top > defaultTop) {
+    notes.push(`The top allowance is ${top - defaultTop}mm taller than the default figure.`);
+  } else if (top < defaultTop) {
+    notes.push(`The top allowance is ${defaultTop - top}mm tighter than the default figure.`);
   }
 
-  const comparisonText = comparisons.length > 0
-    ? ` Notable: ${comparisons.join('; ')}.`
-    : ' These clearances align with category defaults.';
+  if (notes.length === 0) {
+    return 'These figures sit close to the category baseline.';
+  }
 
-  return `${brand} ${categoryMeta.labelPlural.toLowerCase()} installed in Australian homes require ` +
-    `${side}mm side, ${rear}mm rear, and ${top}mm top ventilation clearance per manufacturer guidelines.` +
-    `${comparisonText} Insufficient clearance can void warranty and cause premature compressor failure.`;
+  return notes.join(' ');
 }
 
-function buildInstallTips({ side, rear, top, categoryMeta }) {
-  const tips = [];
+function buildClearanceNarrative(args) {
+  return buildClearanceContext(args);
+}
 
+function resolveBrandIntro(copyDocument, { brand, brandRaw, category, count }) {
+  const copyKey = copyKeyForBrandCategory(brandRaw, category);
+  const template = copyDocument?.[copyKey] ?? copyDocument?.[`default_${category}`] ?? '';
+  return fillTemplate(template, { brand, count });
+}
+
+function buildInstallTips({ copyDocument, brandRaw, category, side, rear, top }) {
+  const copyKey = copyKeyForBrandCategory(brandRaw, category);
+  const overrideTips = copyDocument?.overrides?.[copyKey];
+  const baseTips = Array.isArray(overrideTips) ? overrideTips : (copyDocument?.defaults?.[category] ?? []);
+  const tips = [...baseTips];
+
+  if (side > 0) {
+    tips.push(`Allow at least ${side * 2}mm of total side room if the cabinet sits between panels.`);
+  }
   if (rear > 30) {
-    tips.push(
-      `Push ${categoryMeta.labelSingular} at least ${rear}mm from the wall before securing — use a tape measure, not eyeballing.`
-    );
+    tips.push(`Keep ${rear}mm behind the cabinet so the rear wall and service point do not crowd the install.`);
   }
-  if (side > 30) {
-    tips.push(`Cavity width must exceed the appliance width by at least ${side * 2}mm total (${side}mm each side).`);
-  }
-  if (top > 40) {
-    tips.push(`If installing under overhead cabinetry, confirm ${top}mm gap above the lid or top panel.`);
+  if (top > 30) {
+    tips.push(`Check for ${top}mm of open space above the cabinet before the delivery team locks the position in.`);
   }
 
-  tips.push(
-    `Measure your cavity before purchase — ${categoryMeta.labelSingular} dimensions vary by ±20mm between models within this brand.`
-  );
-
-  return tips.slice(0, 3);
+  return [...new Set(tips)].slice(0, 3);
 }
 
 function buildBreadcrumbJsonLd({ slug, brand, categoryLabel }) {
@@ -199,7 +192,7 @@ function buildItemListJsonLd({ brand, categoryMeta, products }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: `${brand} ${categoryMeta.labelPlural} models in Australia`,
+    name: `${brand} ${categoryMeta.labelSingular} models in Australia`,
     numberOfItems: rows.length,
     itemListElement: rows.map((product, index) => ({
       '@type': 'ListItem',
@@ -280,6 +273,8 @@ function buildBrandPageHtml({
   pendingSwingCount = 0,
   relatedCompares = [],
   sameBrandAlternatives = [],
+  introText = '',
+  installTipsCopy = null,
   organizationJsonLd = null,
   modifiedTime = getBuildTimestampIso()
 }) {
@@ -288,11 +283,11 @@ function buildBrandPageHtml({
     labelPlural: category,
     labelSingular: category
   };
-  const title = `${brand} ${categoryMeta.labelPlural} Clearance Requirements Australia | FitAppliance`;
+  const categoryHeading = categoryMeta.labelSingular.replace(/\b([a-z])/g, (match) => match.toUpperCase());
+  const title = `${brand} ${categoryHeading} Clearance Requirements Australia | FitAppliance`;
   const description =
-    `${brand} ${categoryMeta.labelSingular} ventilation clearance guide for Australian homes. ` +
-    `Requires ${side}mm side, ${rear}mm rear, ${top}mm top clearance. Find the ${count} ${brand} ` +
-    `${categoryMeta.labelSingular} models that fit your cavity.`;
+    `${brand} ${categoryMeta.labelSingular} clearance guide for Australian homes. ` +
+    `${side}mm side, ${rear}mm rear and ${top}mm top clearance. Browse ${count} models and compare the cavity numbers before you buy.`;
   const canonical = `${SITE_ORIGIN}/brands/${slug}`;
   const heroPngPath = `/og-images/${slugify(brandRaw)}-${categoryMeta.slug}.png`;
   const heroWebpPath = `/og-images/${slugify(brandRaw)}-${categoryMeta.slug}.webp`;
@@ -303,7 +298,7 @@ function buildBrandPageHtml({
     buildBreadcrumbJsonLd({
       slug,
       brand,
-      categoryLabel: categoryMeta.labelPlural
+      categoryLabel: categoryMeta.labelSingular
     }),
     { pretty: true }
   );
@@ -326,9 +321,7 @@ function buildBrandPageHtml({
     canonical,
     extraMeta: `  ${buildSocialMetaTags({ title, description, canonical, brandImageUrl: ogImageUrl })}`
   });
-  const narrative = buildClearanceNarrative({
-    brand,
-    categoryMeta,
+  const clearanceContext = buildClearanceContext({
     side,
     rear,
     top,
@@ -336,7 +329,14 @@ function buildBrandPageHtml({
     defaultRear,
     defaultTop
   });
-  const installTips = buildInstallTips({ side, rear, top, categoryMeta });
+  const installTips = buildInstallTips({
+    copyDocument: installTipsCopy,
+    brandRaw,
+    category,
+    side,
+    rear,
+    top
+  });
   const confirmedSwingCount = Math.max(0, count - pendingSwingCount);
   const modelPreview = modelSamples.map((sample) => {
     const affiliateHtml = buildAffiliateSnippet(sample, affiliateProviders);
@@ -546,17 +546,55 @@ ${headMeta}
       font-size: 13px;
       color: var(--ink-3);
     }
+    .section-title-lg {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: var(--ink);
+      font-family: 'Instrument Serif', serif;
+    }
+    .section-title-sm {
+      margin: 0 0 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      font-family: 'Outfit', sans-serif;
+    }
+    .chip-panel {
+      margin: 20px 0;
+      padding: 20px 24px;
+      background: #f5f2ec;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .chip-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chip-list a {
+      display: inline-block;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 13px;
+      color: var(--copper);
+      text-decoration: none;
+      background: #fff;
+    }
   </style>
 </head>
 <body>
   <main>
     <a class="back-link" href="${SITE_ORIGIN}">← Back to FitAppliance</a>
-    <h1>${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} Clearance Requirements</h1>
+    <h1>${escHtml(brand)} ${escHtml(categoryHeading)} Clearance Requirements</h1>
     <picture class="hero-media">
       <source srcset="${heroWebpPath}" type="image/webp">
-      <img src="${heroPngPath}" alt="${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} clearance guide preview" width="1200" height="630" loading="eager" decoding="async" fetchpriority="high">
+      <img src="${heroPngPath}" alt="${escHtml(brand)} ${escHtml(categoryHeading)} clearance guide preview" width="1200" height="630" loading="eager" decoding="async" fetchpriority="high">
     </picture>
-    <p>${escHtml(narrative)}</p>
+    <p data-source="clearance-dataset">${escHtml(introText)} ${escHtml(`Current guide figures are ${side}mm at each side, ${rear}mm at the rear and ${top}mm above. ${clearanceContext}`)}</p>
     <div class="metric-grid">
       <div class="metric">Side clearance<br><b>${side}mm</b></div>
       <div class="metric">Rear clearance<br><b>${rear}mm</b></div>
@@ -570,40 +608,40 @@ ${headMeta}
         : `<div class="metric">Door swing data<br><b>✓ All ${count} confirmed</b></div>`}
     </div>
     <section class="install-section">
-      <h2>Installation Tips</h2>
+      <h2 class="section-title-lg">Installation Tips</h2>
       <ul class="install-tips">
         ${installTips.map((tip) => `<li>${escHtml(tip)}</li>`).join('')}
       </ul>
     </section>
     ${modelSamples.length > 0 ? `<section class="model-preview">
-      <h2>Featured ${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} Models</h2>
+      <h2 class="section-title-lg">Featured ${escHtml(brand)} ${escHtml(categoryHeading)} Models</h2>
       <div class="model-list">
         ${modelPreview}
       </div>
     </section>` : ''}
-    <a class="cta" href="${ctaUrl}">Find ${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} Models That Fit Your Space</a>
-    ${relatedCompares.length > 0 ? `<section style="margin:32px 0;padding:20px 24px;background:#f5f2ec;border-radius:8px;border:1px solid var(--border)">
-      <h2 style="font-size:15px;font-weight:600;margin:0 0 12px;color:var(--ink)">Compare ${escHtml(brand)} with other brands</h2>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px">
+    <a class="cta" href="${ctaUrl}">Find ${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} That Fit Your Space</a>
+    ${relatedCompares.length > 0 ? `<section class="chip-panel">
+      <h2 class="section-title-sm">Compare ${escHtml(brand)} with other brands</h2>
+      <ul class="chip-list">
         ${relatedCompares.map((row) => {
           const other = row.brandA === brand || row.brandA === brandRaw ? row.brandB : row.brandA;
-          return `<li><a href="/compare/${escHtml(row.slug)}" style="display:inline-block;padding:6px 14px;border:1px solid var(--border);border-radius:20px;font-size:13px;color:var(--copper);text-decoration:none;background:#fff">${escHtml(brand)} vs ${escHtml(other)} →</a></li>`;
+          return `<li><a href="/compare/${escHtml(row.slug)}">${escHtml(brand)} vs ${escHtml(other)} →</a></li>`;
         }).join('\n        ')}
       </ul>
     </section>` : ''}
-    <section style="margin:20px 0;padding:20px 24px;background:#f5f2ec;border-radius:8px;border:1px solid var(--border)">
-      <h2 style="font-size:15px;font-weight:600;margin:0 0 12px;color:var(--ink)">Same brand alternatives</h2>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px">
+    <section class="chip-panel">
+      <h2 class="section-title-sm">Same brand alternatives</h2>
+      <ul class="chip-list">
         ${sameBrandAlternatives.map((row) => (
-          `<li><a href="${escHtml(row.url)}" style="display:inline-block;padding:6px 14px;border:1px solid var(--border);border-radius:20px;font-size:13px;color:var(--copper);text-decoration:none;background:#fff">${escHtml(row.label)}</a></li>`
+          `<li><a href="${escHtml(row.url)}">${escHtml(row.label)}</a></li>`
         )).join('\n        ')}
       </ul>
     </section>
-    <section style="margin:20px 0;padding:20px 24px;background:#f5f2ec;border-radius:8px;border:1px solid var(--border)">
-      <h2 style="font-size:15px;font-weight:600;margin:0 0 12px;color:var(--ink)">Also viewed</h2>
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px">
+    <section class="chip-panel">
+      <h2 class="section-title-sm">Also viewed</h2>
+      <ul class="chip-list">
         ${GUIDE_HUB_LINKS.map((row) => (
-          `<li><a href="${escHtml(row.url)}" style="display:inline-block;padding:6px 14px;border:1px solid var(--border);border-radius:20px;font-size:13px;color:var(--copper);text-decoration:none;background:#fff">${escHtml(row.label)}</a></li>`
+          `<li><a href="${escHtml(row.url)}">${escHtml(row.label)}</a></li>`
         )).join('\n        ')}
       </ul>
     </section>
@@ -651,6 +689,8 @@ async function generateBrandPages(options = {}) {
   const appliances = await readJson(path.join(dataDir, 'appliances.json'));
   const clearance = await readJson(path.join(dataDir, 'clearance.json'));
   const brandMetadata = await readJson(path.join(dataDir, 'brands', 'metadata.json')).catch(() => ({}));
+  const brandIntroCopy = await loadCopyFile('brand-intro', repoRoot);
+  const installTipsCopy = await loadCopyFile('install-tips', repoRoot);
   const affiliateProviders = await loadProvidersFromFile(
     options.affiliateProvidersPath ?? path.join(repoRoot, 'data', 'affiliates', 'providers.json')
   ).catch(() => []);
@@ -791,6 +831,13 @@ async function generateBrandPages(options = {}) {
       affiliateProviders,
       relatedCompares,
       sameBrandAlternatives,
+      introText: resolveBrandIntro(brandIntroCopy, {
+        brand: displayBrand,
+        brandRaw: row.brand,
+        category: row.cat,
+        count: row.models
+      }),
+      installTipsCopy,
       organizationJsonLd: JSON.stringify(buildOrganizationJsonLd(displayBrand, brandMetadata), null, 2),
       modifiedTime: getBuildTimestampIso()
     });
@@ -831,6 +878,7 @@ if (require.main === module) {
 
 module.exports = {
   buildItemListJsonLd,
+  buildClearanceContext,
   buildClearanceNarrative,
   buildInstallTips,
   generateBrandPages,

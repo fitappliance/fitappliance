@@ -1,0 +1,23 @@
+{
+  "default": "measure_once",
+  "variants": {
+    "measure_once": {
+      "eyebrow": "Appliance fit, with clearance built in",
+      "title": "Measure once. Find the appliances that actually fit.",
+      "sub": "Enter your cavity dimensions and narrow the list with brand-specific airflow, door-swing and access checks.",
+      "cta": "Find fitting models"
+    },
+    "clearance_first": {
+      "eyebrow": "Real clearance data for Australian homes",
+      "title": "Cavity dimensions in, fitting models out.",
+      "sub": "Start with your opening size, then compare the models that make sense once clearance and access are checked.",
+      "cta": "Check my cavity"
+    },
+    "australian_sizes": {
+      "eyebrow": "Australian appliances, checked against your space",
+      "title": "Australian appliances, sized to your cavity.",
+      "sub": "Use one set of measurements to sort fridges, washers, dishwashers and dryers before you shop in earnest.",
+      "cta": "Start with measurements"
+    }
+  }
+}

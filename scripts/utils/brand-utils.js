@@ -1,25 +1,12 @@
 'use strict';
 
-const BRAND_DISPLAY_MAP = {
-  'FISHER & PAYKEL': 'Fisher & Paykel',
-  HISENSE: 'Hisense',
-  WESTINGHOUSE: 'Westinghouse',
-  CHIQ: 'CHiQ',
-  MIDEA: 'Midea',
-  LIEBHERR: 'Liebherr',
-  TECO: 'Teco',
-  HELLER: 'Heller',
-  VOGUE: 'Vogue'
-};
+const { BRAND_NAME_MAP, normalizeBrandName } = require('../common/brand-name.js');
 
 function displayBrandName(raw) {
-  if (typeof raw !== 'string') {
-    return String(raw ?? '');
-  }
-  return BRAND_DISPLAY_MAP[raw] ?? raw;
+  return normalizeBrandName(raw);
 }
 
 module.exports = {
   displayBrandName,
-  BRAND_DISPLAY_MAP
+  BRAND_DISPLAY_MAP: BRAND_NAME_MAP
 };
