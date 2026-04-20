@@ -307,11 +307,13 @@ function buildPageHtml({
     .affiliate-disclosure { margin: 4px 0 0; font-size: 11px; color: var(--ink-3); }
     .affiliate-disclosure a { color: var(--copper); }
     footer { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 14px; color: var(--ink-3); font-size: 13px; }
+    .section-title-lg { font-size:22px; margin:18px 0 10px; }
+    .back-link { color:var(--ink-3); text-decoration:none; font-size:13px; }
   </style>
 </head>
 <body>
   <main>
-    <a href="/" style="color:var(--ink-3);text-decoration:none;font-size:13px">← Back to FitAppliance</a>
+    <a class="back-link" href="/">← Back to FitAppliance</a>
     <h1>${escHtml(h1)}</h1>
     <p class="city-meta">${escHtml(city.name)}, ${escHtml(city.state)} (${escHtml(city.stateCode)})</p>
     <p>This location guide links to cavity fit, doorway access, and clearance resources relevant to ${escHtml(category.label.toLowerCase())} shopping in ${escHtml(city.name)}.</p>
@@ -325,7 +327,7 @@ function buildPageHtml({
       <a href="/location/${city.slug}/dryer">Dryer in ${escHtml(city.name)}</a>
     </div>
 
-    <h2 style="font-size:22px;margin:18px 0 10px">Resource Links</h2>
+    <h2 class="section-title-lg">Resource Links</h2>
     <ul class="resource-list">
       ${links.map((row) => `<li><a href="${escHtml(row.url)}">${escHtml(row.label)}</a></li>`).join('\n      ')}
     </ul>

@@ -216,6 +216,8 @@ function buildHubHtml({ guide, links, crossLinks }) {
     }
     .grid a:hover { border-color: var(--copper); color: var(--copper); }
     .meta { margin-top: 14px; font-size: 12px; color: var(--ink-3); }
+    .section-title-lg { margin: 18px 0 8px; font-size: 18px; }
+    .section-title-lg--flush { margin-top: 0; }
     .subscribe-card {
       background: var(--white);
       border: 1px solid var(--border);
@@ -276,14 +278,14 @@ function buildHubHtml({ guide, links, crossLinks }) {
     <div class="layout">
       <div class="content-col">
         <section>
-          <h2 style="font-size:18px;margin:18px 0 8px">Related Guide Hubs</h2>
+          <h2 class="section-title-lg">Related Guide Hubs</h2>
           <div class="cross">
             ${crossLinks.map((row) => `<a href="${escHtml(row.url)}">${escHtml(row.label)}</a>`).join('\n        ')}
           </div>
         </section>
 
         <section>
-          <h2 style="font-size:18px;margin:0 0 8px">Linked Resources</h2>
+          <h2 class="section-title-lg section-title-lg--flush">Linked Resources</h2>
           <div class="grid">
             ${links.map((row) => `<a href="${escHtml(row.url)}">${escHtml(row.label)}</a>`).join('\n        ')}
           </div>

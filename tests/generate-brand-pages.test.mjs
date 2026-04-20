@@ -123,8 +123,8 @@ test('generateBrandPages uses display-friendly brand names in generated HTML whi
   const hisensePath = path.join(workspace.outputDir, 'hisense-fridge-clearance.html');
   const html = await readFile(hisensePath, 'utf8');
 
-  assert.match(html, /Hisense Fridges Clearance Requirements Australia/);
-  assert.match(html, /Find Hisense Fridges Models That Fit Your Space/);
+  assert.match(html, /Hisense Fridge Clearance Requirements Australia/);
+  assert.match(html, /Find Hisense Fridges That Fit Your Space/);
 });
 
 test('generateBrandPages injects og:title meta tags into brand pages', async () => {

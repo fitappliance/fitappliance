@@ -1,3 +1,5 @@
+import { displayBrandName } from './brand-utils.js';
+
 function escHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -29,7 +31,8 @@ export function buildBrandOptions(products, cat) {
   const options = ['<option value="">All Brands</option>'];
   for (const brand of brands) {
     const safeBrand = escHtml(brand);
-    options.push(`<option value="${safeBrand}">${safeBrand}</option>`);
+    const safeLabel = escHtml(displayBrandName(brand));
+    options.push(`<option value="${safeBrand}">${safeLabel}</option>`);
   }
 
   return options.join('');

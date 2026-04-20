@@ -3,6 +3,7 @@
 
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
+const { fillTemplate, loadCopyFile, pickVariant } = require('./common/copy-data.js');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { generateMeasurementSvg } = require('./generate-measurement-svg');
 const {
@@ -10,6 +11,7 @@ const {
   buildMeasurementStepsHtml,
   loadMeasurementSteps
 } = require('./generate-measurement-content');
+const { displayBrandName } = require('./utils/brand-utils.js');
 const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 
 const MIN_WIDTH = 500;
@@ -84,7 +86,7 @@ function buildProductJsonLd(width, featured) {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: lead ? `${lead.brand} ${lead.model}` : `${width}mm fridge cavity shortlist`,
-    description: `${width}mm fridge cavity shortlist for Australian installations with per-brand ventilation clearances.`,
+    description: `${width}mm fridge cavity shortlist for Australian installations with brand-specific ventilation clearances.`,
     category: 'Refrigerator'
   };
   if (lead) {
@@ -141,6 +143,7 @@ function buildPageHtml({
   cavityHeightMm,
   cavityDepthMm,
   resultCount,
+  introText,
   featured,
   adjacentWidths,
   relatedWidths,
@@ -215,13 +218,14 @@ function buildPageHtml({
     .measure-step summary { cursor: pointer; font-weight: 600; color: var(--ink-2); }
     .measure-step p { margin: 8px 0 0; font-size: 14px; color: var(--ink-2); }
     .measurement-note { margin: 2px 0 0; font-size: 13px; color: var(--ink-3); }
+    .page-footer { margin-top:28px; padding-top:16px; border-top:1px solid var(--border); font-size:13px; color:var(--ink-3); }
   </style>
 </head>
 <body>
   <main>
     <a href="${SITE_ORIGIN}/">← Back to FitAppliance</a>
     <h1>Fridges that fit a ${width}mm cavity (Australia 2026)</h1>
-    <p id="quick-answer">${resultCount} fridge models currently fit this cavity width after per-brand side clearance.</p>
+    <p id="quick-answer">${escHtml(introText)}</p>
     <p>Use this page as a quick shortlist, then run your exact height/depth check on the main calculator.</p>
     <div class="tool-callout">
       <span>Need a fast shortlist?</span>
@@ -237,13 +241,13 @@ function buildPageHtml({
 
     <h2>Top brands that fit ${width}mm</h2>
     <div class="brands">
-      ${topBrands.map((row) => `<a class="chip" href="/?cat=fridge&brand=${encodeURIComponent(row.brand)}&w=${width}&h=1800&d=700">${escHtml(row.brand)} (${row.count})</a>`).join('')}
+      ${topBrands.map((row) => `<a class="chip" href="/?cat=fridge&brand=${encodeURIComponent(row.brand)}&w=${width}&h=1800&d=700">${escHtml(displayBrandName(row.brand))} (${row.count})</a>`).join('')}
     </div>
 
     <h2>Featured models</h2>
     <div class="card-grid">
       ${featured.map((product) => `<article class="card">
-        <strong>${escHtml(product.brand)} ${escHtml(product.model)}</strong>
+        <strong>${escHtml(displayBrandName(product.brand))} ${escHtml(product.model)}</strong>
         <div class="meta">W ${product.w} × H ${product.h} × D ${product.d} mm</div>
         <div class="meta">${product.stars}★ · ${product.kwh_year ?? '-'} kWh/yr</div>
       </article>`).join('')}
@@ -272,7 +276,7 @@ function buildPageHtml({
     <div class="compare">
       ${GUIDE_HUB_LINKS.map((link) => `<a class="chip" href="${link.url}">${escHtml(link.label)}</a>`).join('')}
     </div>
-    <footer style="margin-top:28px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--ink-3)">
+    <footer class="page-footer">
       <a href="/methodology">Methodology</a> ·
       <a href="/about/editorial-standards">Editorial standards</a>
     </footer>
@@ -318,6 +322,7 @@ async function generateCavityPages(options = {}) {
   const clearance = await readJson(path.join(dataDir, 'clearance.json'));
   const compareIndex = await readJson(path.join(repoRoot, 'pages', 'compare', 'index.json'), []);
   const measurementSteps = await loadMeasurementSteps();
+  const cavityIntroCopy = await loadCopyFile('cavity-intro', repoRoot);
   const products = (appliances.products ?? []).filter((product) => product.cat === 'fridge');
   const widths = buildWidthRange(MIN_WIDTH, MAX_WIDTH, STEP);
 
@@ -363,6 +368,10 @@ async function generateCavityPages(options = {}) {
       cavityHeightMm: DEFAULT_CAVITY_HEIGHT_MM,
       cavityDepthMm: DEFAULT_CAVITY_DEPTH_MM,
       resultCount: matched.length,
+      introText: fillTemplate(
+        pickVariant(cavityIntroCopy.fridge, width / 10),
+        { width, count: matched.length }
+      ),
       featured,
       adjacentWidths: {
         previous: widths[index - 1] ?? null,

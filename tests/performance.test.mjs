@@ -11,6 +11,14 @@ test('phase 20: lighthouse CI script exists and uses lighthouse package', () => 
   assert.match(script, /reports\/lighthouse-/);
 });
 
+test('phase 40: lighthouse script includes accessibility gate for home brand and cavity samples', () => {
+  const filePath = path.join(process.cwd(), 'scripts', 'lighthouse-ci.js');
+  const script = fs.readFileSync(filePath, 'utf8');
+  assert.match(script, /accessibility/, 'lighthouse script should audit accessibility');
+  assert.match(script, /pages\/brands\/samsung-fridge-clearance\.html/);
+  assert.match(script, /pages\/cavity\/1000mm-fridge\.html/);
+});
+
 test('phase 20: lighthouse workflow exists and supports workflow_dispatch', () => {
   const filePath = path.join(process.cwd(), '.github', 'workflows', 'lighthouse.yml');
   assert.ok(fs.existsSync(filePath), '.github/workflows/lighthouse.yml should exist');

@@ -118,7 +118,7 @@ _Auto-generated ${today} from live database_
 >
 > **FitAppliance** covers ${stats.totalProducts} fridge/washer/dishwasher/dryer models with:
 > - Exact dimensions from the Australian Energy Rating database
-> - Per-brand ventilation clearance requirements (important for warranty)
+> - Brand-specific ventilation clearance requirements (important for warranty)
 > - ${stats.doorSwingCoveragePct}% of models have door swing clearance data
 > - Works on mobile — check in-store before you buy
 >
@@ -143,7 +143,7 @@ _Auto-generated ${today} from live database_
 ---
 
 ## Key Differentiators (for any platform)
-1. **Per-brand clearance data** — not just dimensions. LG, WESTINGHOUSE and HISENSE all have different requirements.
+1. **Brand-specific clearance data** — not just dimensions. LG, WESTINGHOUSE and HISENSE all have different requirements.
 2. **${stats.totalProducts} models** — the most comprehensive Australian appliance sizing database.
 3. **Door swing data** — ${stats.doorSwingCoveragePct}% coverage. Most tools don't include this.
 4. **Energy efficiency + total cost of ownership** built in.

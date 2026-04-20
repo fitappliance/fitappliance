@@ -1,0 +1,41 @@
+{
+  "defaults": {
+    "fridge": [
+      "Check the wall, benchtop and overhead cabinet as separate measurements before delivery day.",
+      "Leave enough room to level the cabinet after it is in position, not just enough room to slide it in.",
+      "Keep the installation manual beside the tape measure so the airflow note is checked against the real cavity."
+    ],
+    "washing_machine": [
+      "Measure with the water taps and waste hose in mind, not just the cabinet box.",
+      "Leave room for the hoses to curve naturally so the machine can sit square once it is levelled.",
+      "If the laundry door swings inward, measure that arc before the machine is delivered."
+    ],
+    "dishwasher": [
+      "Measure the cavity after the floor finish and kickboard are installed, not before.",
+      "Check the service void and hose route at the rear before you commit to the cabinet depth.",
+      "Level the dishwasher with the door open once the side gaps are confirmed."
+    ],
+    "dryer": [
+      "Check the wall gap and lint service access before the dryer is pushed fully home.",
+      "If the dryer is stacked, measure from the finished floor to the underside of the shelf or cupboard above.",
+      "Confirm the venting plan before delivery if the model is not condenser or heat-pump."
+    ]
+  },
+  "overrides": {
+    "samsung_fridge": [
+      "Samsung fridge installs are often limited by the top gap, so measure to the underside of the cabinet door and not the cabinet box alone.",
+      "If the opening is tight, check the hinge cover height before you compare cabinet heights.",
+      "Leave space to level the front feet after the cabinet is in place."
+    ],
+    "lg_fridge": [
+      "LG fridge installs usually reward a careful rear-wall check, especially where the powerpoint or tap projects forward.",
+      "Measure the handle line and the skirting line separately if the opening narrows near the front.",
+      "Keep a little working room at the front so the cabinet can be levelled cleanly."
+    ],
+    "fisher-paykel_fridge": [
+      "Measure the finished joinery opening rather than the cabinet drawing if the kitchen is already installed.",
+      "Check the rear service point early so you know whether the cabinet can sit square against the wall line.",
+      "If the overhead doors sit low, measure to the moving edge of the door rather than the fixed carcass."
+    ]
+  }
+}
