@@ -57,3 +57,9 @@ test('phase 20: index font loading uses display=swap', () => {
   const html = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
   assert.match(html, /fonts\.googleapis\.com\/css2[^"]*display=swap/);
 });
+
+test('phase 40: hero eyebrow decorative dot styles do not collapse the text span', () => {
+  const html = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
+  assert.doesNotMatch(html, /\.hero-eyebrow span\s*\{/);
+  assert.match(html, /\.hero-eyebrow\s*>\s*span:first-child\s*\{/);
+});
