@@ -132,7 +132,7 @@ nav {
 .hero-eyebrow {
   display:inline-flex;align-items:center;gap:8px;
   background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
-  color:rgba(255,255,255,.75);font-size:12px;font-weight:600;
+  color:rgba(255,255,255,.88);font-size:12px;font-weight:600;
   padding:5px 16px;border-radius:100px;margin-bottom:28px;
   letter-spacing:.07em;text-transform:uppercase;
 }
@@ -211,7 +211,7 @@ nav {
 .field-wrap input::placeholder { color:#C4BCAF; }
 .field-unit {
   position:absolute;right:12px;top:50%;transform:translateY(-50%);
-  font-size:12px;color:var(--ink-3);font-weight:600;pointer-events:none;
+  font-size:12px;color:var(--ink-2);font-weight:600;pointer-events:none;
 }
 
 /* Extra inputs row */
@@ -914,6 +914,7 @@ nav {
 .compliance-inner { max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px; }
 .comp-item h4 { font-size:14px;font-weight:700;color:var(--ink);margin-bottom:8px;display:flex;align-items:center;gap:7px; }
 .comp-item p { font-size:13px;color:var(--ink-3);line-height:1.7; }
+.comp-item p { color: var(--ink-2); }
 
 /* ─── POPULAR SEARCHES ─── */
 .popular-searches {
@@ -997,7 +998,7 @@ nav {
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
-.saved-panel__head h5 {
+.saved-panel__head h3 {
   color: #fff;
   margin: 0;
   font-size: 14px;
@@ -1051,7 +1052,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 .footer-grid { max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:52px;margin-bottom:40px; }
 .footer-brand .logo { color:#fff; }
 .footer-brand p { font-size:13px;line-height:1.75;margin-top:12px;max-width:280px; }
-.footer-col h5 { color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px; }
+.footer-col h3 { color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px; }
 .footer-col ul { list-style:none;display:flex;flex-direction:column;gap:9px; }
 .footer-col a { color:rgba(255,255,255,.5);text-decoration:none;font-size:13px;transition:color .15s; }
 .footer-col a:hover { color:#fff; }
@@ -1308,6 +1309,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   </div>
 </nav>
 
+<main id="mainContent">
 <!-- HERO -->
 <section class="hero" id="search">
   <div class="hero-grain"></div>
@@ -1349,16 +1351,22 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 
       <!-- Filters -->
       <div class="extra-grid">
-        <select id="inBrand">
-          <option value="">All Brands</option>
-        </select>
-        <select id="inBudget">
-          <option value="">Any Budget</option>
-          <option value="1000">Under $1,000</option>
-          <option value="2000">Under $2,000</option>
-          <option value="3000">Under $3,000</option>
-          <option value="5000">Under $5,000</option>
-        </select>
+        <div>
+          <label class="sr-only" for="inBrand">Filter by brand</label>
+          <select id="inBrand">
+            <option value="">All Brands</option>
+          </select>
+        </div>
+        <div>
+          <label class="sr-only" for="inBudget">Filter by budget</label>
+          <select id="inBudget">
+            <option value="">Any Budget</option>
+            <option value="1000">Under $1,000</option>
+            <option value="2000">Under $2,000</option>
+            <option value="3000">Under $3,000</option>
+            <option value="5000">Under $5,000</option>
+          </select>
+        </div>
       </div>
 
       <!-- Advanced -->
@@ -1553,7 +1561,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 <!-- HOW IT WORKS -->
 <section class="how-sec" id="how-it-works">
   <div class="how-inner">
-    <div class="how-hed">Why standard e-commerce<br><em>fails appliance buyers</em></div>
+    <h2 class="how-hed">Why standard e-commerce<br><em>fails appliance buyers</em></h2>
     <div class="how-grid">
       <div class="how-item">
         <div class="how-num">1</div>
@@ -1573,6 +1581,8 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- COMPLIANCE -->
 <section class="compliance-sec" id="compliance">
@@ -1651,7 +1661,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
       <p id="footerMetaLine" style="margin-top:10px;font-size:12px">Built in Australia</p>
     </div>
     <div class="footer-col">
-      <h5>Categories</h5>
+      <h3>Categories</h3>
       <ul>
         <li><a href="#search" onclick="jumpToCategory('fridge'); return false;">Fridges & Freezers</a></li>
         <li><a href="#search" onclick="jumpToCategory('washing_machine'); return false;">Washing Machines</a></li>
@@ -1661,7 +1671,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
       </ul>
     </div>
     <div class="footer-col">
-      <h5>About</h5>
+      <h3>About</h3>
       <ul>
         <li><a href="#how-it-works">How it works</a></li>
         <li><a href="/affiliate-disclosure">Affiliate disclosure</a></li>
@@ -1688,7 +1698,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   </details>
   <section id="saved-panel" class="saved-panel" hidden>
     <div class="saved-panel__head">
-      <h5>Your Saved Appliances</h5>
+      <h3>Your Saved Appliances</h3>
       <div class="saved-panel__actions">
         <button type="button" onclick="copySavedShareLink()">Share saved list</button>
         <button type="button" onclick="clearAllSaved()">Clear all</button>

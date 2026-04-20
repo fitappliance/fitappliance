@@ -71,3 +71,60 @@ test('copy-lint: passes clean fixture', async () => {
   assert.equal(result.exitCode, 0);
   assert.equal(result.violations.length, 0);
 });
+
+test('copy-lint: ignores repeated phrases inside script style code and pre blocks', async () => {
+  const hiddenPhrase = 'quoted phrase repeated';
+  const result = await runAuditWithHtml([
+    '<html><body>',
+    `<script>const note = "${hiddenPhrase} ${hiddenPhrase} ${hiddenPhrase} ${hiddenPhrase} ${hiddenPhrase}";</script>`,
+    `<style>.hero::before { content: "${hiddenPhrase} ${hiddenPhrase} ${hiddenPhrase} ${hiddenPhrase} ${hiddenPhrase}"; }</style>`,
+    `<code>${hiddenPhrase} ${hiddenPhrase} ${hiddenPhrase} ${hiddenPhrase} ${hiddenPhrase}</code>`,
+    `<pre>${hiddenPhrase} ${hiddenPhrase} ${hiddenPhrase} ${hiddenPhrase} ${hiddenPhrase}</pre>`,
+    '<p>Visible copy appears once and should not warn.</p>',
+    '</body></html>'
+  ].join(''));
+
+  assert.equal(result.warnings.some((row) => row.rule === 'repeated-phrase'), false);
+});
+
+test('copy-lint: repeated phrase warnings require five visible occurrences', async () => {
+  const result = await runAuditWithHtml([
+    '<html><body>',
+    '<p>The kitchen fit check stays plain and useful.</p>',
+    '<p>The kitchen fit check stays plain and useful.</p>',
+    '<p>The kitchen fit check stays plain and useful.</p>',
+    '<p>The kitchen fit check stays plain and useful.</p>',
+    '</body></html>'
+  ].join(''));
+
+  assert.equal(result.warnings.some((row) => row.rule === 'repeated-phrase'), false);
+});
+
+test('copy-lint: repeated phrase warnings still trigger at five visible occurrences', async () => {
+  const result = await runAuditWithHtml([
+    '<html><body>',
+    '<p>The cavity fit check stays plain and useful.</p>',
+    '<p>The cavity fit check stays plain and useful.</p>',
+    '<p>The cavity fit check stays plain and useful.</p>',
+    '<p>The cavity fit check stays plain and useful.</p>',
+    '<p>The cavity fit check stays plain and useful.</p>',
+    '</body></html>'
+  ].join(''));
+
+  assert.equal(result.warnings.some((row) => row.rule === 'repeated-phrase'), true);
+});
+
+test('copy-lint: collapses overlapping repeated phrases into one representative warning', async () => {
+  const result = await runAuditWithHtml([
+    '<html><body>',
+    '<p>Artusi and Ilve both require extra rear clearance for steady airflow.</p>',
+    '<p>Artusi and Ilve both require extra rear clearance for steady airflow.</p>',
+    '<p>Artusi and Ilve both require extra rear clearance for steady airflow.</p>',
+    '<p>Artusi and Ilve both require extra rear clearance for steady airflow.</p>',
+    '<p>Artusi and Ilve both require extra rear clearance for steady airflow.</p>',
+    '</body></html>'
+  ].join(''));
+
+  const repeatedWarnings = result.warnings.filter((row) => row.rule === 'repeated-phrase');
+  assert.equal(repeatedWarnings.length, 1);
+});

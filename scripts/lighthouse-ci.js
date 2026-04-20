@@ -15,6 +15,11 @@ const DEFAULT_PAGES = [
   '/pages/brands/samsung-fridge-clearance.html',
   '/pages/compare/lg-vs-hisense-washing-machine-clearance.html'
 ];
+const ACCESSIBILITY_PAGES = [
+  '/',
+  '/pages/brands/samsung-fridge-clearance.html',
+  '/pages/cavity/1000mm-fridge.html'
+];
 const REPORT_FILE_PREFIX = 'reports/lighthouse-';
 const REPORTS_DIR_NAME = REPORT_FILE_PREFIX.split('/')[0];
 const DEFAULT_PORT = 4173;
@@ -132,6 +137,7 @@ async function runLighthouse({
   baseUrl,
   minScore = 0.9,
   pages = DEFAULT_PAGES,
+  accessibilityPages = ACCESSIBILITY_PAGES,
   repoRoot = path.resolve(__dirname, '..'),
   reportsDir = path.join(path.resolve(__dirname, '..'), REPORTS_DIR_NAME),
   logger = console,
@@ -149,47 +155,72 @@ async function runLighthouse({
   });
 
   try {
-    const entries = [];
-    for (const pagePath of pages) {
-      const url = `${auditBaseUrl}${pagePath}`;
-      logger.log(`[lighthouse] Auditing ${url}`);
-      const result = await lighthouse(url, {
-        port: chrome.port,
-        output: 'json',
-        logLevel: 'error',
-        onlyCategories: ['performance'],
-        formFactor: 'desktop',
-        screenEmulation: { mobile: false, width: 1350, height: 940, deviceScaleFactor: 1 },
-        throttlingMethod: 'provided'
-      });
-      if (result.lhr.runtimeError) {
-        throw new Error(`Lighthouse runtime error for ${url}: ${result.lhr.runtimeError.message}`);
+    const auditGroups = [
+      { name: 'performance', pages, onlyCategories: ['performance'] },
+      { name: 'accessibility', pages: accessibilityPages, onlyCategories: ['accessibility'] }
+    ];
+    const groups = [];
+
+    for (const auditGroup of auditGroups) {
+      const entries = [];
+      for (const pagePath of auditGroup.pages) {
+        const url = `${auditBaseUrl}${pagePath}`;
+        logger.log(`[lighthouse] Auditing ${auditGroup.name} ${url}`);
+        const result = await lighthouse(url, {
+          port: chrome.port,
+          output: 'json',
+          logLevel: 'error',
+          onlyCategories: auditGroup.onlyCategories,
+          formFactor: 'desktop',
+          screenEmulation: { mobile: false, width: 1350, height: 940, deviceScaleFactor: 1 },
+          throttlingMethod: 'provided'
+        });
+        if (result.lhr.runtimeError) {
+          throw new Error(`Lighthouse runtime error for ${url}: ${result.lhr.runtimeError.message}`);
+        }
+
+        const score = result.lhr.categories[auditGroup.name]?.score ?? 0;
+        const entry = {
+          category: auditGroup.name,
+          path: pagePath,
+          url,
+          score: Number(score.toFixed(3))
+        };
+
+        if (auditGroup.name === 'performance') {
+          entry.lcpMs = result.lhr.audits['largest-contentful-paint']?.numericValue ?? null;
+          entry.cls = result.lhr.audits['cumulative-layout-shift']?.numericValue ?? null;
+          entry.inpMs = result.lhr.audits['interaction-to-next-paint']?.numericValue ?? null;
+          entry.tbtMs = result.lhr.audits['total-blocking-time']?.numericValue ?? null;
+        }
+
+        entries.push(entry);
       }
-      const performance = result.lhr.categories.performance?.score ?? 0;
-      entries.push({
-        path: pagePath,
-        url,
-        score: Number(performance.toFixed(3)),
-        lcpMs: result.lhr.audits['largest-contentful-paint']?.numericValue ?? null,
-        cls: result.lhr.audits['cumulative-layout-shift']?.numericValue ?? null,
-        inpMs: result.lhr.audits['interaction-to-next-paint']?.numericValue ?? null,
-        tbtMs: result.lhr.audits['total-blocking-time']?.numericValue ?? null
+
+      const minimumObserved = entries.reduce((min, entry) => Math.min(min, entry.score), 1);
+      const averageScore = entries.reduce((sum, entry) => sum + entry.score, 0) / entries.length;
+      groups.push({
+        name: auditGroup.name,
+        pages: entries,
+        summary: {
+          minimumObserved: Number(minimumObserved.toFixed(3)),
+          averageScore: Number(averageScore.toFixed(3)),
+          pass: minimumObserved >= minScore
+        }
       });
     }
 
-    const minimumObserved = entries.reduce((min, entry) => Math.min(min, entry.score), 1);
-    const averageScore = entries.reduce((sum, entry) => sum + entry.score, 0) / entries.length;
+    const overallPass = groups.every((group) => group.summary.pass);
 
     const report = {
       generatedAt: new Date().toISOString(),
       baseUrl: auditBaseUrl,
       minScore,
-      pages: entries,
-      summary: {
-        minimumObserved: Number(minimumObserved.toFixed(3)),
-        averageScore: Number(averageScore.toFixed(3)),
-        pass: minimumObserved >= minScore
-      }
+      groups,
+      summary: Object.fromEntries(
+        groups.map((group) => [group.name, group.summary])
+      ),
+      pass: overallPass
     };
 
     await mkdir(reportsDir, { recursive: true });
@@ -199,15 +230,18 @@ async function runLighthouse({
     await writeFile(datedPath, serialized, 'utf8');
     await writeFile(latestPath, serialized, 'utf8');
 
-    if (!report.summary.pass) {
-      throw new Error(
-        `Lighthouse performance gate failed: minimum ${report.summary.minimumObserved} < required ${minScore}`
+    for (const group of groups) {
+      if (!group.summary.pass) {
+        throw new Error(
+          `Lighthouse ${group.name} gate failed: minimum ${group.summary.minimumObserved} < required ${minScore}`
+        );
+      }
+
+      logger.log(
+        `[lighthouse] PASS ${group.name} min=${group.summary.minimumObserved} avg=${group.summary.averageScore} (threshold ${minScore})`
       );
     }
 
-    logger.log(
-      `[lighthouse] PASS min=${report.summary.minimumObserved} avg=${report.summary.averageScore} (threshold ${minScore})`
-    );
     return {
       report,
       datedPath,
@@ -232,6 +266,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  ACCESSIBILITY_PAGES,
   DEFAULT_PAGES,
   buildReportName,
   parseCliArgs,

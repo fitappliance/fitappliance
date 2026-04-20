@@ -1,57 +1,108 @@
 {
-  "generatedAt": "2026-04-18T12:01:00.599Z",
+  "generatedAt": "2026-04-20T13:28:33.873Z",
   "baseUrl": "http://127.0.0.1:4173",
   "minScore": 0.9,
-  "pages": [
+  "groups": [
     {
-      "path": "/",
-      "url": "http://127.0.0.1:4173/",
-      "score": 1,
-      "lcpMs": 440.018,
-      "cls": 0.00515,
-      "inpMs": null,
-      "tbtMs": 0
+      "name": "performance",
+      "pages": [
+        {
+          "category": "performance",
+          "path": "/",
+          "url": "http://127.0.0.1:4173/",
+          "score": 1,
+          "lcpMs": 429.787,
+          "cls": 0.009108,
+          "inpMs": null,
+          "tbtMs": 0
+        },
+        {
+          "category": "performance",
+          "path": "/pages/cavity/1000mm-fridge.html",
+          "url": "http://127.0.0.1:4173/pages/cavity/1000mm-fridge.html",
+          "score": 1,
+          "lcpMs": 22.284,
+          "cls": 0,
+          "inpMs": null,
+          "tbtMs": 0
+        },
+        {
+          "category": "performance",
+          "path": "/pages/doorway/600mm-fridge-doorway.html",
+          "url": "http://127.0.0.1:4173/pages/doorway/600mm-fridge-doorway.html",
+          "score": 1,
+          "lcpMs": 64.287,
+          "cls": 0,
+          "inpMs": null,
+          "tbtMs": 0
+        },
+        {
+          "category": "performance",
+          "path": "/pages/brands/samsung-fridge-clearance.html",
+          "url": "http://127.0.0.1:4173/pages/brands/samsung-fridge-clearance.html",
+          "score": 1,
+          "lcpMs": 201.275,
+          "cls": 0.002551,
+          "inpMs": null,
+          "tbtMs": 0
+        },
+        {
+          "category": "performance",
+          "path": "/pages/compare/lg-vs-hisense-washing-machine-clearance.html",
+          "url": "http://127.0.0.1:4173/pages/compare/lg-vs-hisense-washing-machine-clearance.html",
+          "score": 1,
+          "lcpMs": 159.035,
+          "cls": 0,
+          "inpMs": null,
+          "tbtMs": 0
+        }
+      ],
+      "summary": {
+        "minimumObserved": 1,
+        "averageScore": 1,
+        "pass": true
+      }
     },
     {
-      "path": "/pages/cavity/1000mm-fridge.html",
-      "url": "http://127.0.0.1:4173/pages/cavity/1000mm-fridge.html",
-      "score": 1,
-      "lcpMs": 30.272,
-      "cls": 0,
-      "inpMs": null,
-      "tbtMs": 0
-    },
-    {
-      "path": "/pages/doorway/600mm-fridge-doorway.html",
-      "url": "http://127.0.0.1:4173/pages/doorway/600mm-fridge-doorway.html",
-      "score": 1,
-      "lcpMs": 18.447,
-      "cls": 0,
-      "inpMs": null,
-      "tbtMs": 0
-    },
-    {
-      "path": "/pages/brands/samsung-fridge-clearance.html",
-      "url": "http://127.0.0.1:4173/pages/brands/samsung-fridge-clearance.html",
-      "score": 1,
-      "lcpMs": 178.074,
-      "cls": 0.000104,
-      "inpMs": null,
-      "tbtMs": 0
-    },
-    {
-      "path": "/pages/compare/lg-vs-hisense-washing-machine-clearance.html",
-      "url": "http://127.0.0.1:4173/pages/compare/lg-vs-hisense-washing-machine-clearance.html",
-      "score": 1,
-      "lcpMs": 168.269,
-      "cls": 0,
-      "inpMs": null,
-      "tbtMs": 0
+      "name": "accessibility",
+      "pages": [
+        {
+          "category": "accessibility",
+          "path": "/",
+          "url": "http://127.0.0.1:4173/",
+          "score": 0.96
+        },
+        {
+          "category": "accessibility",
+          "path": "/pages/brands/samsung-fridge-clearance.html",
+          "url": "http://127.0.0.1:4173/pages/brands/samsung-fridge-clearance.html",
+          "score": 0.95
+        },
+        {
+          "category": "accessibility",
+          "path": "/pages/cavity/1000mm-fridge.html",
+          "url": "http://127.0.0.1:4173/pages/cavity/1000mm-fridge.html",
+          "score": 0.95
+        }
+      ],
+      "summary": {
+        "minimumObserved": 0.95,
+        "averageScore": 0.953,
+        "pass": true
+      }
     }
   ],
   "summary": {
-    "minimumObserved": 1,
-    "averageScore": 1,
-    "pass": true
-  }
+    "performance": {
+      "minimumObserved": 1,
+      "averageScore": 1,
+      "pass": true
+    },
+    "accessibility": {
+      "minimumObserved": 0.95,
+      "averageScore": 0.953,
+      "pass": true
+    }
+  },
+  "pass": true
 }

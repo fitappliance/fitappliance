@@ -26,7 +26,7 @@ const HEADING_EMOJI_RE = /\p{Extended_Pictographic}/u;
 const UPPERCASE_LEAD_RE = /^\s*([A-Z][A-Z&/]{1,}(?:\s+[A-Z&/]{2,})*)\b/;
 const REPEATED_NGRAM_MIN_WORDS = 3;
 const REPEATED_NGRAM_MAX_WORDS = 5;
-const REPEATED_NGRAM_MIN_COUNT = 3;
+const REPEATED_NGRAM_MIN_COUNT = 5;
 const STOPWORD_ONLY_RE = /^(?:and|the|for|with|from|that|this|your|into|over|under|about|after|before|through|which|these|those|their|there|have|will|does|need|clearance|requirements|guide|models|fit|brand|brands|fridge|washing|machine|dishwasher|dryer|australia|australian|homes|installed|page|pages)(?:\s+(?:and|the|for|with|from|that|this|your|into|over|under|about|after|before|through|which|these|those|their|there|have|will|does|need|clearance|requirements|guide|models|fit|brand|brands|fridge|washing|machine|dishwasher|dryer|australia|australian|homes|installed|page|pages))+$/i;
 
 function todayStamp() {
@@ -183,8 +183,65 @@ function collectHeadingViolations({ document, relativePath, violations }) {
   });
 }
 
+function getRepeatedPhraseScanText(document) {
+  const sourceBody = document.body;
+  if (!sourceBody) return '';
+
+  const scanBody = sourceBody.cloneNode(true);
+  scanBody.querySelectorAll('script, style, code, pre').forEach((node) => node.remove());
+  const proseNodes = Array.from(scanBody.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, blockquote'));
+  const proseText = proseNodes
+    .map((node) => normalizeText(node.textContent))
+    .filter(Boolean)
+    .join(' ');
+
+  return normalizeText(proseText);
+}
+
+function getPhraseWords(phrase) {
+  return phrase.split(/\s+/).filter(Boolean);
+}
+
+function containsContiguousSubphrase(words, candidateWords) {
+  if (candidateWords.length > words.length) return false;
+  for (let index = 0; index <= words.length - candidateWords.length; index += 1) {
+    const slice = words.slice(index, index + candidateWords.length);
+    if (slice.join(' ') === candidateWords.join(' ')) return true;
+  }
+  return false;
+}
+
+function hasEdgeOverlap(leftWords, rightWords) {
+  const minOverlapSize = Math.max(2, Math.min(leftWords.length, rightWords.length) - 2);
+  const maxOverlapSize = Math.min(leftWords.length, rightWords.length) - 1;
+  if (maxOverlapSize < minOverlapSize) return false;
+
+  for (let overlapSize = maxOverlapSize; overlapSize >= minOverlapSize; overlapSize -= 1) {
+    const leftSuffix = leftWords.slice(-overlapSize).join(' ');
+    const rightPrefix = rightWords.slice(0, overlapSize).join(' ');
+    if (leftSuffix === rightPrefix) return true;
+
+    const rightSuffix = rightWords.slice(-overlapSize).join(' ');
+    const leftPrefix = leftWords.slice(0, overlapSize).join(' ');
+    if (rightSuffix === leftPrefix) return true;
+  }
+
+  return false;
+}
+
+function phrasesBelongToSameCluster(leftPhrase, rightPhrase) {
+  const leftWords = getPhraseWords(leftPhrase);
+  const rightWords = getPhraseWords(rightPhrase);
+
+  return (
+    containsContiguousSubphrase(leftWords, rightWords) ||
+    containsContiguousSubphrase(rightWords, leftWords) ||
+    hasEdgeOverlap(leftWords, rightWords)
+  );
+}
+
 function collectRepeatedPhraseWarnings({ document, relativePath, warnings }) {
-  const pageText = normalizeText(document.body?.textContent ?? '');
+  const pageText = getRepeatedPhraseScanText(document);
   if (!pageText) return;
 
   const tokens = pageText
@@ -203,18 +260,40 @@ function collectRepeatedPhraseWarnings({ document, relativePath, warnings }) {
     }
   }
 
+  const clusters = [];
+
   Array.from(counts.entries())
     .filter(([, count]) => count >= REPEATED_NGRAM_MIN_COUNT)
-    .sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]))
-    .slice(0, 25)
+    .sort((left, right) => {
+      const wordDelta = getPhraseWords(right[0]).length - getPhraseWords(left[0]).length;
+      if (wordDelta !== 0) return wordDelta;
+      return right[1] - left[1] || left[0].localeCompare(right[0]);
+    })
     .forEach(([phrase, count]) => {
-      addIssue(warnings, {
-        rule: 'repeated-phrase',
-        file: relativePath,
-        message: `Repeated phrase appears ${count} times.`,
-        excerpt: phrase
+      const existingCluster = clusters.find((cluster) =>
+        cluster.phrases.some((clusterPhrase) => phrasesBelongToSameCluster(clusterPhrase, phrase))
+      );
+
+      if (existingCluster) {
+        existingCluster.phrases.push(phrase);
+        return;
+      }
+
+      clusters.push({
+        phrase,
+        count,
+        phrases: [phrase]
       });
     });
+
+  clusters.slice(0, 25).forEach(({ phrase, count }) => {
+    addIssue(warnings, {
+      rule: 'repeated-phrase',
+      file: relativePath,
+      message: `Repeated phrase appears ${count} times.`,
+      excerpt: phrase
+    });
+  });
 }
 
 async function auditCopy({
@@ -286,11 +365,14 @@ if (require.main === module) {
 
 module.exports = {
   FORBIDDEN_PHRASES,
+  REPEATED_NGRAM_MIN_COUNT,
   auditCopy,
   collectForbiddenPhraseViolations,
   collectHeadingViolations,
   collectParagraphViolations,
   collectRepeatedPhraseWarnings,
+  phrasesBelongToSameCluster,
+  getRepeatedPhraseScanText,
   listDefaultTargets,
   todayStamp
 };
