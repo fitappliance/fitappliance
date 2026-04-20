@@ -12,6 +12,7 @@
 
 ### 交付物
 
+<!-- doc-audit: ignore -->
 1. **`scripts/audit-portability.js`**（纯检查，不改文件）：
    扫描 `tests/` + `scripts/` + `public/` + `api/` + `.github/workflows/`，违规立即 `exit 1`。禁止模式（可配置白名单）：
    - `/Users/` 或 `/home/` 或 `C:\\` 绝对路径
@@ -30,6 +31,7 @@
 
 4. **CI 增强**：在现有 `pr.yml` 末加 `npm run generate-all && git diff --exit-code` 重复确认生成物已 commit（之前有，确保还在且严格）。
 
+<!-- doc-audit: ignore -->
 5. `tests/portability.test.mjs`：
    - (a) audit 脚本扫到真实绝对路径 → exit 1
    - (b) 白名单机制工作
@@ -93,6 +95,7 @@
 
 ### 交付物
 
+<!-- doc-audit: ignore -->
 1. **`scripts/triage-issues.js`**：
    - 用 `gh api` 拉所有 open issue/PR
    - 按 label 分组；每组内按签名去重：
@@ -120,6 +123,7 @@
    - 单次最多 comment 50 次
    - 超限 → 部分处理 + 在下次运行继续
 
+<!-- doc-audit: ignore -->
 5. `tests/triage.test.mjs`：
    - (a) 同签名 5 个 open → 保留最新 1 个，4 个 close + comment
    - (b) 不同签名不合并
