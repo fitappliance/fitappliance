@@ -1,0 +1,21 @@
+name: Portability Audit
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  portability:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Audit repository portability
+        run: npm run audit-portability

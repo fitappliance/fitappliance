@@ -51,6 +51,7 @@
     "audit-compare-links": "node scripts/audit-compare-links.js",
     "audit-link-quality": "node scripts/audit-link-quality.js",
     "verify-compare-quality": "node scripts/verify-compare-quality.js",
+    "audit-portability": "node scripts/audit-portability.js",
     "lint": "node --check scripts/*.js scripts/sources/*.js scripts/utils/*.js tests/*.test.mjs && sh -c 'for f in public/scripts/ui/*.js; do node --input-type=module --check < \"$f\"; done'"
   },
   "dependencies": {
