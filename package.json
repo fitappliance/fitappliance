@@ -54,6 +54,7 @@
     "audit-portability": "node scripts/audit-portability.js",
     "audit-docs": "node scripts/audit-docs.js",
     "triage-issues": "node scripts/triage-issues.js",
+    "audit-copy": "node scripts/audit-copy.js",
     "lint": "node --check scripts/*.js scripts/sources/*.js scripts/utils/*.js tests/*.test.mjs && sh -c 'for f in public/scripts/ui/*.js; do node --input-type=module --check < \"$f\"; done'"
   },
   "dependencies": {
