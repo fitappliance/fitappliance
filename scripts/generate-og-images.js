@@ -12,6 +12,10 @@ const CATEGORY_META = {
   dishwasher: { slug: 'dishwasher', label: 'Dishwasher' },
   dryer: { slug: 'dryer', label: 'Dryer' }
 };
+const FONT_FILES = {
+  medium: path.join(__dirname, 'assets', 'fonts', 'Outfit-Medium.ttf'),
+  bold: path.join(__dirname, 'assets', 'fonts', 'Outfit-Bold.ttf')
+};
 
 function slugify(value) {
   return slugNormalize(value);
@@ -40,7 +44,19 @@ async function readJson(filePath, fallback = []) {
   }
 }
 
-function buildSvg({ title, subtitle }) {
+async function loadEmbeddedFonts() {
+  const [medium, bold] = await Promise.all([
+    readFile(FONT_FILES.medium),
+    readFile(FONT_FILES.bold)
+  ]);
+
+  return {
+    medium: `data:font/ttf;base64,${medium.toString('base64')}`,
+    bold: `data:font/ttf;base64,${bold.toString('base64')}`
+  };
+}
+
+function buildSvg({ title, subtitle, fonts }) {
   const safeTitle = escSvg(title).slice(0, 70);
   const safeSubtitle = escSvg(subtitle).slice(0, 90);
   return `
@@ -51,11 +67,43 @@ function buildSvg({ title, subtitle }) {
       <stop offset="100%" stop-color="#2d271f" />
     </linearGradient>
   </defs>
+  <style>
+    @font-face {
+      font-family: 'FitAppliance Outfit';
+      font-style: normal;
+      font-weight: 500;
+      src: url('${fonts.medium}') format('truetype');
+    }
+    @font-face {
+      font-family: 'FitAppliance Outfit';
+      font-style: normal;
+      font-weight: 700;
+      src: url('${fonts.bold}') format('truetype');
+    }
+    .og-title {
+      font-family: 'FitAppliance Outfit';
+      font-size: 70px;
+      font-weight: 700;
+      fill: #FAF8F4;
+    }
+    .og-subtitle {
+      font-family: 'FitAppliance Outfit';
+      font-size: 42px;
+      font-weight: 500;
+      fill: #D4CBC0;
+    }
+    .og-brand {
+      font-family: 'FitAppliance Outfit';
+      font-size: 30px;
+      font-weight: 500;
+      fill: #B9AF9F;
+    }
+  </style>
   <rect width="1200" height="630" fill="url(#bg)" />
   <rect x="58" y="58" width="1084" height="514" rx="26" ry="26" fill="none" stroke="#B55A2C" stroke-width="2"/>
-  <text x="90" y="220" font-family="Outfit, Arial, sans-serif" font-size="70" font-weight="700" fill="#FAF8F4">${safeTitle}</text>
-  <text x="90" y="305" font-family="Outfit, Arial, sans-serif" font-size="42" font-weight="500" fill="#D4CBC0">${safeSubtitle}</text>
-  <text x="90" y="540" font-family="Outfit, Arial, sans-serif" font-size="30" fill="#B9AF9F">fitappliance.com.au</text>
+  <text x="90" y="220" class="og-title">${safeTitle}</text>
+  <text x="90" y="305" class="og-subtitle">${safeSubtitle}</text>
+  <text x="90" y="540" class="og-brand">fitappliance.com.au</text>
 </svg>
 `;
 }
@@ -70,8 +118,8 @@ async function cleanOutputDir(outputDir) {
   }));
 }
 
-async function writeOgImage({ outputPath, title, subtitle }) {
-  const svg = buildSvg({ title, subtitle });
+async function writeOgImage({ outputPath, title, subtitle, fonts }) {
+  const svg = buildSvg({ title, subtitle, fonts });
   const webpPath = outputPath.replace(/\.png$/i, '.webp');
   const buffer = Buffer.from(svg);
   await sharp(buffer)
@@ -93,6 +141,7 @@ async function generateOgImages({
   const brands = await readJson(brandsIndexPath, []);
   const compares = await readJson(compareIndexPath, []);
   const guides = await readJson(guideIndexPath, []);
+  const fonts = await loadEmbeddedFonts();
 
   await cleanOutputDir(outputDir);
 
@@ -104,7 +153,8 @@ async function generateOgImages({
     await writeOgImage({
       outputPath: path.join(outputDir, fileName),
       title: `${row.brand} ${catMeta.label}`,
-      subtitle: 'Clearance Guide Australia'
+      subtitle: 'Clearance Guide Australia',
+      fonts
     });
     written += 1;
   }
@@ -115,7 +165,8 @@ async function generateOgImages({
     await writeOgImage({
       outputPath: path.join(outputDir, fileName),
       title: `${row.brandA} vs ${row.brandB}`,
-      subtitle: `${catMeta.label} clearance comparison`
+      subtitle: `${catMeta.label} clearance comparison`,
+      fonts
     });
     written += 1;
   }
@@ -125,7 +176,8 @@ async function generateOgImages({
     await writeOgImage({
       outputPath: path.join(outputDir, fileName),
       title: row.title ?? 'Appliance Fit Guide',
-      subtitle: 'FitAppliance Topic Hub'
+      subtitle: 'FitAppliance Topic Hub',
+      fonts
     });
     written += 1;
   }
@@ -143,5 +195,7 @@ if (require.main === module) {
 
 module.exports = {
   generateOgImages,
+  FONT_FILES,
+  loadEmbeddedFonts,
   slugify
 };
