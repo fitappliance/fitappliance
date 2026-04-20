@@ -1,0 +1,37 @@
+name: Linux OG Regen
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  regen-og:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.ref }}
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Regenerate OG assets on Ubuntu
+        run: npm run generate-og-images
+
+      - name: Commit Linux-generated OG assets
+        run: |
+          if git diff --quiet -- public/og-images; then
+            echo "No Linux-specific OG changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/og-images
+          git commit -m "chore: sync og assets from ubuntu"
+          git push origin HEAD:${GITHUB_REF#refs/heads/}
