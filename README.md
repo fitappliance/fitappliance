@@ -731,3 +731,20 @@ Without step 3, the workflow will authenticate but still fail API reads due to m
 - Added tests:
   - [`tests/error-monitor.test.mjs`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/tests/error-monitor.test.mjs)
   - covers sanitize, redact, dedupe aggregation, reopen behavior, and 405 guard.
+
+### Phase 41 — Product Review Video Pilot
+
+- Added pilot selection + validation pipeline:
+  - [`scripts/pick-review-pilot.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/pick-review-pilot.js)
+  - [`scripts/validate-reviews.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/validate-reviews.js)
+  - [`scripts/common/review-video-renderer.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/common/review-video-renderer.js)
+  - [`scripts/audit-review-content.js`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/scripts/audit-review-content.js)
+- Added manual data sources:
+  - [`data/videos/creator-whitelist.json`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/data/videos/creator-whitelist.json)
+  - [`data/videos/review-pilot-slugs.json`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/data/videos/review-pilot-slugs.json)
+  - [`data/videos/review-videos.json`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/data/videos/review-videos.json)
+  - [`data/copy/review-disclaimer.json`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/data/copy/review-disclaimer.json)
+- Added weekly validation workflow:
+  - [`.github/workflows/validate-reviews.yml`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/.github/workflows/validate-reviews.yml)
+- Added manual backfill handoff:
+  - [`docs/PHASE41-BACKFILL.md`](/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/docs/PHASE41-BACKFILL.md)

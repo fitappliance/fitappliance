@@ -1,0 +1,45 @@
+name: Validate Review Videos
+
+on:
+  schedule:
+    - cron: '0 3 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  validate-reviews:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Refresh pilot selection
+        run: npm run pick-review-pilot
+
+      - name: Run review validation
+        run: npm run validate-reviews
+
+      - name: Regenerate review-enabled pages
+        run: npm run generate-all
+
+      - name: Audit review content gate
+        run: npm run audit-review-content
+
+      - name: Commit refreshed review artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/videos/review-pilot-slugs.json data/videos/review-videos.json reports/review-validation.json reports/review-content-audit.json pages/brands/*.html pages/cavity/*.html public/sitemap.xml public/rss.xml public/image-sitemap.xml reports/link-graph.json reports/schema-validation.json
+          git diff --cached --quiet || git commit -m "chore(review): refresh validation $(date -u +%Y-%m-%d)"
+          git push origin main

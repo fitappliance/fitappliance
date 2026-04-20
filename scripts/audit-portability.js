@@ -41,6 +41,12 @@ const DEFAULT_WHITELIST = [
     reason: 'Video validation workflow must commit refreshed schema metadata back to the canonical main branch.'
   },
   {
+    filePattern: /^\.github\/workflows\/validate-reviews\.yml$/,
+    rule: 'hardcoded-main-branch',
+    linePattern: /\bgit push origin main\b/,
+    reason: 'Review validation workflow must commit refreshed pilot metadata back to the canonical main branch.'
+  },
+  {
     filePattern: /^\.github\/workflows\/weekly-growth\.yml$/,
     rule: 'hardcoded-main-branch',
     linePattern: /\bgit push origin main\b/,

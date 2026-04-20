@@ -1132,3 +1132,43 @@ function extractModelSku(modelString) {
 - [x] Trigger first manual `workflow_dispatch` run to validate full pipeline
 - [x] Confirm live site loads data from JSON (not hardcoded)
 - [x] Add GitHub Actions failure email notification (Settings → Notifications)
+
+---
+
+## Task 41: Product Review Video Pilot
+
+### 41.1 Data sources
+
+- Creator whitelist: `data/videos/creator-whitelist.json`
+- Pilot model list: `data/videos/review-pilot-slugs.json`
+- Manual review entries: `data/videos/review-videos.json`
+- Disclaimer copy: `data/copy/review-disclaimer.json`
+
+Review titles and timestamps stay manual. Validation only confirms the embed is live and the creator matches the whitelist.
+
+### 41.2 Commands
+
+- `npm run pick-review-pilot`
+- `npm run validate-reviews`
+- `npm run audit-review-content`
+
+Recommended local flow:
+
+1. Refresh pilot models
+2. Fill review entries by hand
+3. Validate reviews
+4. Regenerate pages
+5. Audit original review-page content
+
+### 41.3 Rendering rules
+
+- Review embeds use `youtube-nocookie.com`
+- Review sections stay in facade mode until click
+- Only pilot-targeted brand/cavity pages render the review block
+- Review pages must retain at least 300 words of original page copy and mention their clearance figures
+
+### 41.4 Backfill handoff
+
+If review data is not ready, leave `reviews: []` in `review-videos.json` and follow:
+
+- `docs/PHASE41-BACKFILL.md`

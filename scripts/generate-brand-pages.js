@@ -7,6 +7,7 @@ const { buildHtmlHead, escHtml } = require('./common/html-head.js');
 const { copyKeyForBrandCategory, fillTemplate, loadCopyFile } = require('./common/copy-data.js');
 const { stringifyJsonLd } = require('./common/schema-jsonld.js');
 const { slugNormalize } = require('./common/slug-normalize.js');
+const { buildReviewVideoSection } = require('./common/review-video-renderer.js');
 const { displayBrandName } = require('./utils/brand-utils.js');
 const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
@@ -274,6 +275,7 @@ function buildBrandPageHtml({
   relatedCompares = [],
   sameBrandAlternatives = [],
   introText = '',
+  reviewSectionHtml = '',
   installTipsCopy = null,
   organizationJsonLd = null,
   modifiedTime = getBuildTimestampIso()
@@ -612,13 +614,12 @@ ${headMeta}
       <ul class="install-tips">
         ${installTips.map((tip) => `<li>${escHtml(tip)}</li>`).join('')}
       </ul>
-    </section>
-    ${modelSamples.length > 0 ? `<section class="model-preview">
+    </section>${modelSamples.length > 0 ? `\n    <section class="model-preview">
       <h2 class="section-title-lg">Featured ${escHtml(brand)} ${escHtml(categoryHeading)} Models</h2>
       <div class="model-list">
         ${modelPreview}
       </div>
-    </section>` : ''}
+    </section>` : ''}${reviewSectionHtml ? `\n    ${reviewSectionHtml}` : ''}
     <a class="cta" href="${ctaUrl}">Find ${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} That Fit Your Space</a>
     ${relatedCompares.length > 0 ? `<section class="chip-panel">
       <h2 class="section-title-sm">Compare ${escHtml(brand)} with other brands</h2>
@@ -691,11 +692,22 @@ async function generateBrandPages(options = {}) {
   const brandMetadata = await readJson(path.join(dataDir, 'brands', 'metadata.json')).catch(() => ({}));
   const brandIntroCopy = await loadCopyFile('brand-intro', repoRoot);
   const installTipsCopy = await loadCopyFile('install-tips', repoRoot);
+  const reviewPilotDoc = await readJson(path.join(repoRoot, 'data', 'videos', 'review-pilot-slugs.json')).catch(() => ({ pilots: [] }));
+  const reviewVideosDoc = await readJson(path.join(repoRoot, 'data', 'videos', 'review-videos.json')).catch(() => ({ models: {} }));
+  const creatorWhitelist = await readJson(path.join(repoRoot, 'data', 'videos', 'creator-whitelist.json')).catch(() => ({ creators: [] }));
+  const reviewDisclaimerCopy = await loadCopyFile('review-disclaimer', repoRoot).catch(() => ({}));
   const affiliateProviders = await loadProvidersFromFile(
     options.affiliateProvidersPath ?? path.join(repoRoot, 'data', 'affiliates', 'providers.json')
   ).catch(() => []);
   const products = Array.isArray(appliances.products) ? appliances.products : [];
   const rules = clearance.rules ?? {};
+  const reviewPilots = Array.isArray(reviewPilotDoc.pilots) ? reviewPilotDoc.pilots : [];
+  const pilotSlugs = reviewPilots.map((row) => row.modelSlug).filter(Boolean);
+  const pilotByBrandPageSlug = new Map(
+    reviewPilots
+      .filter((row) => typeof row.brandPageSlug === 'string' && row.brandPageSlug)
+      .map((row) => [row.brandPageSlug, row])
+  );
 
   const compareIndexPath = path.join(repoRoot, 'pages', 'compare', 'index.json');
   let compareIndex = [];
@@ -813,6 +825,16 @@ async function generateBrandPages(options = {}) {
         sameBrandAlternatives.push(fallback);
       }
     }
+    const pilotTarget = pilotByBrandPageSlug.get(row.slug);
+    const reviewSectionHtml = pilotTarget
+      ? buildReviewVideoSection({
+        modelSlug: pilotTarget.modelSlug,
+        reviews: reviewVideosDoc?.models?.[pilotTarget.modelSlug]?.reviews ?? [],
+        whitelistDocument: creatorWhitelist,
+        disclaimerCopy: reviewDisclaimerCopy,
+        pilotSlugs
+      })
+      : '';
     const html = buildBrandPageHtml({
       brand: displayBrand,
       brandRaw: row.brand,
@@ -831,6 +853,7 @@ async function generateBrandPages(options = {}) {
       affiliateProviders,
       relatedCompares,
       sameBrandAlternatives,
+      reviewSectionHtml,
       introText: resolveBrandIntro(brandIntroCopy, {
         brand: displayBrand,
         brandRaw: row.brand,
@@ -877,6 +900,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  buildBrandPageHtml,
   buildItemListJsonLd,
   buildClearanceContext,
   buildClearanceNarrative,
