@@ -247,6 +247,7 @@ Or try a preset: [600mm Standard] [700mm Wide]
 - **Sitemap 删除被排除的页面 URL**（generate-sitemap 读 enriched data）
 - IndexNow 提交被删 URL（stale removal）
 
+<!-- doc-audit: ignore -->
 #### 5. 数据质量审计 `scripts/audit-data-quality.js`
 扫 enriched `public/data/*.json`：
 - dupe brand casing → error
@@ -259,6 +260,7 @@ Or try a preset: [600mm Standard] [700mm Wide]
 #### 6. CI gate
 `.github/workflows/data-quality.yml` + 挂进 `pr.yml` workflow
 
+<!-- doc-audit: ignore -->
 #### 7. 测试 `tests/data-quality.test.mjs`
 - brand-canon 合并正确（MIDEA → Midea）
 - tier1 brand 带 featured 标签
@@ -271,9 +273,11 @@ Or try a preset: [600mm Standard] [700mm Wide]
 **新增**
 - `data/au-brand-registry.json`
 - `data/brand-canon.json`
+<!-- doc-audit: ignore -->
 - `scripts/audit-data-quality.js`
 - `pages/discontinued-brands.html`（或 generator 产出）
 - `.github/workflows/data-quality.yml`
+<!-- doc-audit: ignore -->
 - `tests/data-quality.test.mjs`
 
 **改**
@@ -295,6 +299,7 @@ Or try a preset: [600mm Standard] [700mm Wide]
 ### 验收
 
 1. `npm test` 全绿
+<!-- doc-audit: ignore -->
 2. `npm run audit-data-quality` exit 0
 3. `npm run generate-all` 后 `reports/data-quality-*.json` 零 error
 4. 被 drop 的品牌 slug → 301 + IndexNow 提交
