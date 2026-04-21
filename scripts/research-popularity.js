@@ -1,0 +1,222 @@
+'use strict';
+
+const path = require('node:path');
+const { mkdir, readFile, writeFile } = require('node:fs/promises');
+
+const { inferBrandTier } = require('./common/popularity-score.js');
+
+const DEFAULT_FETCH_LIMIT = 500;
+const OUT_OF_STOCK_RE = /\b(out of stock|sold out|discontinued|no longer available)\b/i;
+
+function today() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function buildFallbackResearchDocument() {
+  return {
+    schema_version: 1,
+    last_researched: null,
+    products: {}
+  };
+}
+
+function buildResearchBackfillMarkdown({ products = [] } = {}) {
+  const lines = [
+    '# Phase 42A Research Backfill',
+    '',
+    'Manual retailer research is required because sandbox WebFetch could not reach the live AU retailer pages.',
+    '',
+    'For each product below, confirm these fields by opening real retailer product pages manually:',
+    '',
+    '- `retailersAvailable`',
+    '- `retailersChecked`',
+    '- `reviewCountSum`',
+    '- `priceMinAud`',
+    '- `priceMaxAud`',
+    '- `researchedAt`',
+    '',
+    '## Products to backfill',
+    ''
+  ];
+
+  for (const product of products) {
+    lines.push(`- \`${product.id}\` — ${product.brand} ${product.model}`);
+  }
+
+  lines.push('');
+  lines.push('Add the confirmed values into `data/popularity-research.json` and rerun `npm run enrich-appliances`.');
+  lines.push('');
+
+  return `${lines.join('\n')}\n`;
+}
+
+function buildResearchQueue(products, { limit = DEFAULT_FETCH_LIMIT, cursor = 0 } = {}) {
+  const rows = (Array.isArray(products) ? products : [])
+    .filter((product) => {
+      const tier = inferBrandTier(product?.brand);
+      return (tier === 'tier1' || tier === 'tier2') && Array.isArray(product?.retailers) && product.retailers.length > 0;
+    });
+
+  return rows.slice(cursor, cursor + limit);
+}
+
+function parseReviewCount(text) {
+  const schemaMatch = text.match(/"reviewCount"\s*:\s*"?(\d+)"?/i);
+  if (schemaMatch) return Number(schemaMatch[1]);
+  const looseMatch = text.match(/\b(\d{1,5})\s+reviews?\b/i);
+  return looseMatch ? Number(looseMatch[1]) : 0;
+}
+
+function parsePriceCandidates(text) {
+  const prices = [];
+  const schemaMatches = text.matchAll(/"price"\s*:\s*"?(\d+(?:\.\d{2})?)"?/gi);
+  for (const match of schemaMatches) {
+    prices.push(Math.round(Number(match[1])));
+  }
+  const dollarMatches = text.matchAll(/\$\s?(\d{1,3}(?:,\d{3})*(?:\.\d{2})?)/g);
+  for (const match of dollarMatches) {
+    prices.push(Math.round(Number(String(match[1]).replace(/,/g, ''))));
+  }
+  return prices.filter((value) => Number.isFinite(value) && value > 0);
+}
+
+async function inspectRetailerPage(retailer, fetchImpl) {
+  const response = await fetchImpl(retailer.url);
+  const text = await response.text();
+  const available = response.status === 200 && !OUT_OF_STOCK_RE.test(text);
+  const reviewCount = parseReviewCount(text);
+  const prices = parsePriceCandidates(text);
+
+  return {
+    available,
+    status: response.status,
+    reviewCount,
+    priceMinAud: prices.length > 0 ? Math.min(...prices) : null,
+    priceMaxAud: prices.length > 0 ? Math.max(...prices) : null
+  };
+}
+
+async function writeJson(filePath, document) {
+  await mkdir(path.dirname(filePath), { recursive: true });
+  await writeFile(filePath, `${JSON.stringify(document, null, 2)}\n`, 'utf8');
+}
+
+async function writeFallbackArtifacts({ dataDir, docsDir, products }) {
+  const fallbackDocument = buildFallbackResearchDocument();
+  const backfillMarkdown = buildResearchBackfillMarkdown({ products });
+
+  await writeJson(dataDir, fallbackDocument);
+  await mkdir(docsDir, { recursive: true });
+  await writeFile(path.join(docsDir, 'PHASE42A-RESEARCH-BACKFILL.md'), backfillMarkdown, 'utf8');
+
+  return fallbackDocument;
+}
+
+async function researchPopularity({
+  repoRoot = path.resolve(__dirname, '..'),
+  dataDir = path.join(repoRoot, 'public', 'data'),
+  outputPath = path.join(repoRoot, 'data', 'popularity-research.json'),
+  docsDir = path.join(repoRoot, 'docs'),
+  fetchImpl = globalThis.fetch?.bind(globalThis),
+  limit = DEFAULT_FETCH_LIMIT,
+  cursor = 0,
+  logger = console
+} = {}) {
+  const appliancesPath = path.join(dataDir, 'appliances.json');
+  const appliancesDocument = JSON.parse(await readFile(appliancesPath, 'utf8'));
+  const products = Array.isArray(appliancesDocument?.products) ? appliancesDocument.products : [];
+  const queue = buildResearchQueue(products, { limit, cursor });
+
+  if (typeof fetchImpl !== 'function') {
+    const fallbackDocument = await writeFallbackArtifacts({ dataDir: outputPath, docsDir, products: queue });
+    logger.warn?.('[research-popularity] No fetch implementation available. Wrote fallback research document.');
+    return {
+      mode: 'fallback',
+      researched: 0,
+      total: queue.length,
+      skippedReason: 'missing-fetch',
+      document: fallbackDocument
+    };
+  }
+
+  try {
+    const researchedProducts = {};
+
+    for (const product of queue) {
+      const productRetailers = Array.isArray(product?.retailers) ? product.retailers : [];
+      let retailersAvailable = 0;
+      let retailersChecked = 0;
+      let reviewCountSum = 0;
+      let priceMinAud = null;
+      let priceMaxAud = null;
+
+      for (const retailer of productRetailers) {
+        const result = await inspectRetailerPage(retailer, fetchImpl);
+        retailersChecked += 1;
+        if (result.available) retailersAvailable += 1;
+        reviewCountSum += result.reviewCount;
+        if (Number.isFinite(result.priceMinAud)) {
+          priceMinAud = priceMinAud === null ? result.priceMinAud : Math.min(priceMinAud, result.priceMinAud);
+        }
+        if (Number.isFinite(result.priceMaxAud)) {
+          priceMaxAud = priceMaxAud === null ? result.priceMaxAud : Math.max(priceMaxAud, result.priceMaxAud);
+        }
+      }
+
+      researchedProducts[product.id] = {
+        retailersAvailable,
+        retailersChecked,
+        reviewCountSum,
+        priceMinAud,
+        priceMaxAud,
+        researchedAt: today()
+      };
+    }
+
+    const document = {
+      schema_version: 1,
+      last_researched: today(),
+      cursor: cursor + queue.length,
+      products: researchedProducts
+    };
+
+    await writeJson(outputPath, document);
+    logger.log(`[research-popularity] researched=${queue.length} total=${products.length} cursor=${document.cursor}`);
+
+    return {
+      mode: 'researched',
+      researched: queue.length,
+      total: products.length,
+      skippedReason: null,
+      document
+    };
+  } catch (error) {
+    const fallbackDocument = await writeFallbackArtifacts({ dataDir: outputPath, docsDir, products: queue });
+    logger.warn?.(`[research-popularity] Fallback triggered: ${error.message}`);
+    return {
+      mode: 'fallback',
+      researched: 0,
+      total: queue.length,
+      skippedReason: error.message,
+      document: fallbackDocument
+    };
+  }
+}
+
+if (require.main === module) {
+  researchPopularity().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
+}
+
+module.exports = {
+  DEFAULT_FETCH_LIMIT,
+  buildFallbackResearchDocument,
+  buildResearchBackfillMarkdown,
+  buildResearchQueue,
+  inspectRetailerPage,
+  parsePriceCandidates,
+  parseReviewCount,
+  researchPopularity
+};

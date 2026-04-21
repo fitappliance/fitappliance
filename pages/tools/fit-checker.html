@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cavity Fit Checker | FitAppliance</title>
-  <meta name="description" content="Check if appliances fit your cavity. Enter width, height, and depth in millimetres to see matching models from the Australian appliance database.">
+  <meta name="description" content="Check if appliances fit your cavity. Pick a category, enter any cavity dimensions you know, then compare Australian appliance models with clearance defaults and tolerance.">
   <link rel="canonical" href="https://www.fitappliance.com.au/tools/fit-checker">
   <meta name="article:modified_time" content="2026-04-18T00:00:00Z">
   <style>
@@ -17,10 +17,29 @@
     .card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-top: 16px; }
     .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
     label { display: block; font-size: 12px; color: var(--ink-3); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 5px; font-weight: 700; }
+    select,
     input {
       width: 100%; border: 1px solid var(--border); border-radius: 8px;
       padding: 11px 12px; font-size: 16px; color: var(--ink); background: var(--paper);
     }
+    .wizard-step { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .wizard-step:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+    .step-kicker { font-size: 11px; letter-spacing: .08em; color: var(--ink-3); text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+    .preset-row { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .preset-chip {
+      border: 1px solid var(--border);
+      background: var(--paper);
+      color: var(--ink-2);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .preset-chip--active { border-color: var(--copper); color: var(--copper); background: #fff4ef; }
+    .tolerance-row { display: grid; gap: 8px; margin-top: 12px; }
+    .tolerance-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: var(--ink-2); }
+    .fit-result-top { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 8px; flex-wrap: wrap; }
+    .fit-result-title-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
     .btn-row { margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap; }
     button {
       border: 0; border-radius: 8px; background: var(--copper); color: #fff;
@@ -32,8 +51,12 @@
     .fit-result-item { border: 1px solid var(--border); background: #fff; border-radius: 10px; padding: 12px; }
     .fit-result-title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
     .fit-result-meta { font-size: 12px; color: var(--ink-3); margin-bottom: 5px; }
+    .fit-result-sku { font-size: 11px; color: var(--ink-3); }
     .fit-result-item a { color: var(--copper); text-decoration: none; font-size: 13px; font-weight: 600; }
     .fit-result-item a:hover { text-decoration: underline; }
+    .fit-badge { display: inline-flex; align-items: center; border-radius: 999px; padding: 4px 8px; font-size: 11px; font-weight: 700; }
+    .fit-badge--popular { background: #fff1e8; color: var(--copper); }
+    .fit-badge--tight { background: #fffbeb; color: #9a5b00; }
     .fit-empty-state { border: 1px solid var(--border); background: var(--white); border-radius: 10px; padding: 13px; margin-top: 12px; }
     .fit-empty-state strong { display: block; color: var(--ink); margin-bottom: 3px; }
     .fit-empty-state p { margin: 0; color: var(--ink-3); font-size: 13px; }
@@ -69,23 +92,48 @@
   <main>
     <a href="/" style="font-size:13px;color:#7a766e;text-decoration:none;">← Back to FitAppliance</a>
     <h1>Interactive Cavity Fit Checker</h1>
-    <p>Enter your cavity dimensions in millimetres and get a fast shortlist of appliances that physically fit.</p>
+    <p>Start with the appliance category, add any cavity dimensions you already know, then check which models fit with real-world clearance defaults.</p>
 
     <section class="card">
       <form id="fitCheckerForm" novalidate>
-        <div class="grid">
-          <div>
-            <label for="fitW">Cavity Width (mm)</label>
-            <input id="fitW" name="fitW" inputmode="numeric" placeholder="600" required>
+        <div class="wizard-step">
+          <div class="step-kicker">Step 1</div>
+          <label for="fitCat">Appliance Category</label>
+          <select id="fitCat" name="fitCat">
+            <option value="fridge">Fridge</option>
+            <option value="dishwasher">Dishwasher</option>
+            <option value="washing_machine">Washing machine</option>
+            <option value="dryer">Dryer</option>
+          </select>
+          <div id="fitPresetChips" class="preset-row" aria-label="Common cavity presets"></div>
+        </div>
+        <div class="wizard-step">
+          <div class="step-kicker">Step 2</div>
+          <div class="grid">
+            <div>
+              <label for="fitW">Cavity Width (mm)</label>
+              <input id="fitW" name="fitW" inputmode="numeric" placeholder="600">
+            </div>
+            <div>
+              <label for="fitH">Cavity Height (mm)</label>
+              <input id="fitH" name="fitH" inputmode="numeric" placeholder="850">
+            </div>
+            <div>
+              <label for="fitD">Cavity Depth (mm)</label>
+              <input id="fitD" name="fitD" inputmode="numeric" placeholder="600">
+            </div>
           </div>
-          <div>
-            <label for="fitH">Cavity Height (mm)</label>
-            <input id="fitH" name="fitH" inputmode="numeric" placeholder="850" required>
+          <div class="tolerance-row">
+            <div class="tolerance-head">
+              <span>Tolerance</span>
+              <strong id="fitToleranceValue">5mm</strong>
+            </div>
+            <input id="fitTolerance" name="fitTolerance" type="range" min="0" max="20" step="1" value="5">
           </div>
-          <div>
-            <label for="fitD">Cavity Depth (mm)</label>
-            <input id="fitD" name="fitD" inputmode="numeric" placeholder="600" required>
-          </div>
+        </div>
+        <div class="wizard-step">
+          <div class="step-kicker">Step 3</div>
+          <p style="margin:0 0 8px;">Run the fit check when you're ready. Leave any unknown dimension blank and we'll skip that axis.</p>
         </div>
         <div class="btn-row">
           <button type="submit">Find matching appliances</button>
@@ -120,11 +168,12 @@
     </footer>
   </main>
 
+  <script src="/scripts/search-core.js"></script>
+  <script src="/scripts/search-dom.js"></script>
   <script src="/scripts/fit-checker.js"></script>
-  <script>
-    if (window.FitChecker && typeof window.FitChecker.initFitChecker === 'function') {
-      window.FitChecker.initFitChecker();
-    }
+  <script type="module">
+    import { initSearchWizard } from '/scripts/ui/search-wizard.js';
+    initSearchWizard();
   </script>
 
   <script type="application/ld+json">

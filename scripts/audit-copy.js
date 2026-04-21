@@ -80,6 +80,50 @@ function addIssue(target, issue) {
   });
 }
 
+function auditEnrichedCopyFields(records, {
+  file = 'public/data/appliances.json'
+} = {}) {
+  const violations = [];
+  const warnings = [];
+  const rows = Array.isArray(records) ? records : [];
+
+  rows.forEach((record, index) => {
+    const fields = [
+      ['displayName', normalizeText(record?.displayName)],
+      ['readableSpec', normalizeText(record?.readableSpec)]
+    ];
+
+    fields.forEach(([field, value]) => {
+      if (!value) return;
+
+      FORBIDDEN_PHRASES.forEach((rule) => {
+        const candidate = rule.scope === 'paragraph' ? value : value;
+        if (!rule.pattern.test(candidate)) return;
+        addIssue(violations, {
+          rule: 'forbidden-phrase',
+          file,
+          line: index + 1,
+          message: `Forbidden phrase matched in ${field}: ${rule.pattern}`,
+          excerpt: value.slice(0, 240),
+          suggestion: rule.suggestion
+        });
+      });
+
+      if ((value.match(/—/g) ?? []).length > 1) {
+        addIssue(violations, {
+          rule: 'excess-em-dash',
+          file,
+          line: index + 1,
+          message: `${field} contains more than one em dash.`,
+          excerpt: value.slice(0, 240)
+        });
+      }
+    });
+  });
+
+  return { violations, warnings };
+}
+
 function collectForbiddenPhraseViolations({ rawHtml, relativePath, violations }) {
   const lines = rawHtml.split(/\r?\n/);
   lines.forEach((line, index) => {
@@ -320,6 +364,23 @@ async function auditCopy({
     collectRepeatedPhraseWarnings({ document, relativePath, warnings });
   }
 
+  const dataRoot = path.join(repoRoot, 'public', 'data');
+  if (await exists(dataRoot)) {
+    const dataFiles = (await walk(dataRoot))
+      .filter((filePath) => filePath.endsWith('.json'))
+      .sort();
+
+    for (const absolutePath of dataFiles) {
+      const relativePath = path.relative(repoRoot, absolutePath).replace(/\\/g, '/');
+      const parsed = JSON.parse(await readFile(absolutePath, 'utf8'));
+      const rows = Array.isArray(parsed?.products) ? parsed.products : [];
+      if (rows.length === 0) continue;
+      const result = auditEnrichedCopyFields(rows, { file: relativePath });
+      violations.push(...result.violations);
+      warnings.push(...result.warnings);
+    }
+  }
+
   const report = {
     generatedAt: new Date().toISOString(),
     scannedFiles: targets,
@@ -371,6 +432,7 @@ module.exports = {
   collectHeadingViolations,
   collectParagraphViolations,
   collectRepeatedPhraseWarnings,
+  auditEnrichedCopyFields,
   phrasesBelongToSameCluster,
   getRepeatedPhraseScanText,
   listDefaultTargets,

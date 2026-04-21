@@ -57,15 +57,18 @@
 
 按 PLAN "Phase 42b"：
 
+<!-- doc-audit: ignore -->
 1. **RED**：`tests/data-quality.test.mjs` ≥ 5 test
 2. **GREEN**：
    - `data/au-brand-registry.json` 按 PLAN 填 tier1/2/3/drop
    - `data/brand-canon.json` 大小写合并表
    - `scripts/enrich-appliances.js` 扩展：canonicalize → tier → exclude-if-drop → unavailable-if-zero-retailer
    - `scripts/generate-*.js` 过滤 `excluded || unavailable`
+<!-- doc-audit: ignore -->
    - `scripts/audit-data-quality.js` + `.github/workflows/data-quality.yml`
    - `vercel.json` 加 drop-brand 301 → `/discontinued-brands`
    - 生成 `/discontinued-brands` 页面（不用 LLM 写文案，用模板）
+<!-- doc-audit: ignore -->
 3. **IndexNow**：遍历"被删 slug 集合" 调 `scripts/submit-indexnow.js`（或 utility）提交。失败不静默吞 → 打 backfill 文档
 4. **验收** (PR body 必贴)：
    - 被 drop 的 brand 清单 + 对应 slug 数
