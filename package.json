@@ -28,6 +28,8 @@
     "generate-rss": "node scripts/generate-rss.js",
     "generate-sw": "node scripts/generate-sw.js",
     "generate-ui-copy": "node scripts/generate-ui-copy.js",
+    "research-popularity": "node scripts/research-popularity.js",
+    "enrich-appliances": "node scripts/enrich-appliances.js",
     "gsc-fetch": "node scripts/gsc-fetch.js",
     "keyword-gap": "node scripts/keyword-gap.js",
     "aggregate-errors": "node scripts/aggregate-errors.js",
