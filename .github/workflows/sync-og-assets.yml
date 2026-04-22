@@ -2,6 +2,9 @@ name: Sync OG Assets from Ubuntu
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - phase-43a-quick-wins
 
 permissions:
   contents: write
