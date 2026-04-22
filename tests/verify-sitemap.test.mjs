@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
-const repoRoot = '/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2-quickwins';
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const moduleUrl = pathToFileURL(path.join(repoRoot, 'scripts', 'verify-sitemap.js')).href;
 
 async function makeWorkspace() {
