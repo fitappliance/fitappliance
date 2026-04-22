@@ -19,6 +19,8 @@ const {
   buildFallbackResearchDocument,
   buildResearchBackfillMarkdown,
   buildResearchQueue,
+  loadCatalogProducts,
+  resolveBatchSize,
   researchPopularity
 } = require('../scripts/research-popularity.js');
 
@@ -149,36 +151,232 @@ test('phase 42a popularity: backfill markdown explains manual retailer research 
   assert.match(markdown, /f6/);
 });
 
-test('phase 42a popularity: research script falls back to empty data and writes backfill doc on fetch failure', async () => {
-  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fit-popularity-'));
+test('phase 43a backfill: batch size defaults to 500 and can be overridden by env', () => {
+  assert.equal(resolveBatchSize({}), 500);
+  assert.equal(resolveBatchSize({ RESEARCH_BATCH_SIZE: '125' }), 125);
+  assert.equal(resolveBatchSize({ RESEARCH_BATCH_SIZE: '0' }), 500);
+  assert.equal(resolveBatchSize({ RESEARCH_BATCH_SIZE: 'bogus' }), 500);
+});
+
+test('phase 43a backfill: loadCatalogProducts merges split files and dedupes by slug or id', async () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fit-popularity-catalog-'));
+  const dataDir = path.join(tmpDir, 'data');
+  fs.mkdirSync(dataDir, { recursive: true });
+
+  const fridgeProduct = makeProduct({
+    id: 'fridge-1',
+    slug: 'shared-slug',
+    cat: 'fridge'
+  });
+  const washerProduct = makeProduct({
+    id: 'washer-1',
+    cat: 'washing_machine',
+    slug: 'washer-only'
+  });
+
+  const categoryDocuments = {
+    'fridges.json': { cat: 'fridge', products: [fridgeProduct] },
+    'dishwashers.json': { cat: 'dishwasher', products: [] },
+    'dryers.json': { cat: 'dryer', products: [] },
+    'washing-machines.json': {
+      cat: 'washing_machine',
+      products: [
+        { ...fridgeProduct, id: 'fridge-duplicate' },
+        washerProduct
+      ]
+    }
+  };
+
+  for (const [fileName, document] of Object.entries(categoryDocuments)) {
+    fs.writeFileSync(
+      path.join(dataDir, fileName),
+      JSON.stringify({
+        schema_version: 2,
+        last_updated: '2026-04-22',
+        ...document
+      })
+    );
+  }
+
+  const catalog = await loadCatalogProducts({ dataDir });
+
+  assert.equal(catalog.length, 2);
+  assert.deepEqual(
+    catalog.map((product) => product.id),
+    ['fridge-1', 'washer-1']
+  );
+});
+
+test('phase 43a backfill: research script advances cursor by batch size and writes summary counts', async () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fit-popularity-cursor-'));
   const dataDir = path.join(tmpDir, 'data');
   const docsDir = path.join(tmpDir, 'docs');
   fs.mkdirSync(dataDir, { recursive: true });
   fs.mkdirSync(docsDir, { recursive: true });
-  fs.writeFileSync(path.join(dataDir, 'appliances.json'), JSON.stringify({
+
+  const products = [
+    makeProduct({ id: 'f1', cat: 'fridge', slug: 'f1' }),
+    makeProduct({ id: 'f2', cat: 'dishwasher', slug: 'f2' }),
+    makeProduct({ id: 'f3', cat: 'dryer', slug: 'f3' })
+  ];
+
+  fs.writeFileSync(path.join(dataDir, 'fridges.json'), JSON.stringify({
     schema_version: 2,
-    last_updated: '2026-04-21',
-    products: [makeProduct({ id: 'f6' })]
+    last_updated: '2026-04-22',
+    cat: 'fridge',
+    products: [products[0]]
+  }));
+  fs.writeFileSync(path.join(dataDir, 'dishwashers.json'), JSON.stringify({
+    schema_version: 2,
+    last_updated: '2026-04-22',
+    cat: 'dishwasher',
+    products: [products[1]]
+  }));
+  fs.writeFileSync(path.join(dataDir, 'dryers.json'), JSON.stringify({
+    schema_version: 2,
+    last_updated: '2026-04-22',
+    cat: 'dryer',
+    products: [products[2]]
+  }));
+  fs.writeFileSync(path.join(dataDir, 'washing-machines.json'), JSON.stringify({
+    schema_version: 2,
+    last_updated: '2026-04-22',
+    cat: 'washing_machine',
+    products: []
   }));
 
   const result = await researchPopularity({
     repoRoot: tmpDir,
     dataDir,
     docsDir,
-    fetchImpl: async () => {
-      throw new Error('getaddrinfo ENOTFOUND www.harveynorman.com.au');
-    },
+    outputPath: path.join(tmpDir, 'popularity-research.json'),
+    fetchImpl: async (url) => ({
+      status: 200,
+      async text() {
+        return `price: 1299 reviews 14 ${url}`;
+      }
+    }),
+    env: { RESEARCH_BATCH_SIZE: '2' },
     logger: { log() {}, warn() {}, error() {} }
   });
 
-  assert.equal(result.mode, 'fallback');
-  assert.equal(result.researched, 0);
+  assert.equal(result.researched, 2);
+  assert.equal(result.total, 3);
+  assert.equal(result.document.cursor, 2);
+  assert.equal(result.document.totalCatalog, 3);
+  assert.equal(result.document.skipped.length, 0);
 
-  const writtenDoc = JSON.parse(fs.readFileSync(path.join(dataDir, 'popularity-research.json'), 'utf8'));
+  const writtenDoc = JSON.parse(fs.readFileSync(path.join(tmpDir, 'popularity-research.json'), 'utf8'));
+  assert.equal(writtenDoc.cursor, 2);
+  assert.equal(writtenDoc.researched, 2);
+  assert.equal(writtenDoc.totalCatalog, 3);
+});
+
+test('phase 43a backfill: existing cursor resumes the next batch when cursor option is omitted', async () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fit-popularity-resume-'));
+  const dataDir = path.join(tmpDir, 'data');
+  fs.mkdirSync(dataDir, { recursive: true });
+
+  const products = Array.from({ length: 4 }, (_, index) => makeProduct({
+    id: `f${index + 1}`,
+    slug: `f${index + 1}`,
+    cat: 'fridge'
+  }));
+
+  fs.writeFileSync(path.join(dataDir, 'fridges.json'), JSON.stringify({
+    schema_version: 2,
+    last_updated: '2026-04-22',
+    cat: 'fridge',
+    products
+  }));
+  fs.writeFileSync(path.join(dataDir, 'dishwashers.json'), JSON.stringify({
+    schema_version: 2,
+    last_updated: '2026-04-22',
+    cat: 'dishwasher',
+    products: []
+  }));
+  fs.writeFileSync(path.join(dataDir, 'dryers.json'), JSON.stringify({
+    schema_version: 2,
+    last_updated: '2026-04-22',
+    cat: 'dryer',
+    products: []
+  }));
+  fs.writeFileSync(path.join(dataDir, 'washing-machines.json'), JSON.stringify({
+    schema_version: 2,
+    last_updated: '2026-04-22',
+    cat: 'washing_machine',
+    products: []
+  }));
+  fs.writeFileSync(path.join(tmpDir, 'popularity-research.json'), JSON.stringify({
+    schema_version: 1,
+    last_researched: '2026-04-21',
+    cursor: 2,
+    products: {},
+    skipped: []
+  }));
+
+  const result = await researchPopularity({
+    repoRoot: tmpDir,
+    dataDir,
+    outputPath: path.join(tmpDir, 'popularity-research.json'),
+    fetchImpl: async () => ({
+      status: 200,
+      async text() {
+        return 'price 1449 12 reviews';
+      }
+    }),
+    env: { RESEARCH_BATCH_SIZE: '2' },
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.document.cursor, 4);
+  assert.deepEqual(Object.keys(result.document.products), ['f3', 'f4']);
+});
+
+test('phase 43a backfill: failed fetches are recorded as skipped and do not mark products unavailable', async () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fit-popularity-'));
+  const dataDir = path.join(tmpDir, 'data');
+  fs.mkdirSync(dataDir, { recursive: true });
+  fs.writeFileSync(path.join(dataDir, 'fridges.json'), JSON.stringify({
+    schema_version: 2,
+    last_updated: '2026-04-22',
+    cat: 'fridge',
+    products: [makeProduct({ id: 'f6', slug: 'f6', cat: 'fridge' })]
+  }));
+  fs.writeFileSync(path.join(dataDir, 'dishwashers.json'), JSON.stringify({
+    schema_version: 2,
+    last_updated: '2026-04-22',
+    cat: 'dishwasher',
+    products: []
+  }));
+  fs.writeFileSync(path.join(dataDir, 'dryers.json'), JSON.stringify({
+    schema_version: 2,
+    last_updated: '2026-04-22',
+    cat: 'dryer',
+    products: []
+  }));
+  fs.writeFileSync(path.join(dataDir, 'washing-machines.json'), JSON.stringify({
+    schema_version: 2,
+    last_updated: '2026-04-22',
+    cat: 'washing_machine',
+    products: []
+  }));
+
+  const result = await researchPopularity({
+    repoRoot: tmpDir,
+    dataDir,
+    outputPath: path.join(tmpDir, 'popularity-research.json'),
+    fetchImpl: async () => Promise.reject(new Error('getaddrinfo ENOTFOUND www.harveynorman.com.au')),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.mode, 'researched');
+  assert.equal(result.researched, 1);
+  assert.equal(result.document.cursor, 1);
+  assert.equal(result.document.skipped.length, 2);
+  assert.match(result.document.skipped[0].reason, /ENOTFOUND/);
+
+  const writtenDoc = JSON.parse(fs.readFileSync(path.join(tmpDir, 'popularity-research.json'), 'utf8'));
   assert.deepEqual(writtenDoc.products, {});
-  assert.equal(writtenDoc.last_researched, null);
-
-  const backfillDoc = fs.readFileSync(path.join(docsDir, 'PHASE42A-RESEARCH-BACKFILL.md'), 'utf8');
-  assert.match(backfillDoc, /manual retailer research/i);
-  assert.match(backfillDoc, /f6/);
+  assert.equal(writtenDoc.skipped.length, 2);
 });

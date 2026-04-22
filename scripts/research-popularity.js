@@ -4,6 +4,7 @@ const path = require('node:path');
 const { mkdir, readFile, writeFile } = require('node:fs/promises');
 
 const { inferBrandTier } = require('./common/popularity-score.js');
+const { CAT_FILE_MAP } = require('./split-appliances.js');
 
 const DEFAULT_FETCH_LIMIT = 500;
 const OUT_OF_STOCK_RE = /\b(out of stock|sold out|discontinued|no longer available)\b/i;
@@ -60,6 +61,38 @@ function buildResearchQueue(products, { limit = DEFAULT_FETCH_LIMIT, cursor = 0 
   return rows.slice(cursor, cursor + limit);
 }
 
+function resolveBatchSize(env = process.env) {
+  const value = Number.parseInt(String(env?.RESEARCH_BATCH_SIZE ?? ''), 10);
+  return Number.isInteger(value) && value > 0 ? value : DEFAULT_FETCH_LIMIT;
+}
+
+async function loadCatalogProducts({
+  dataDir
+}) {
+  const catalog = [];
+  const seen = new Set();
+
+  for (const fileName of Object.values(CAT_FILE_MAP)) {
+    const filePath = path.join(dataDir, fileName);
+    let document;
+    try {
+      document = JSON.parse(await readFile(filePath, 'utf8'));
+    } catch (error) {
+      if (error && error.code === 'ENOENT') continue;
+      throw error;
+    }
+
+    for (const product of Array.isArray(document?.products) ? document.products : []) {
+      const dedupeKey = String(product?.slug ?? product?.id ?? '').trim();
+      if (!dedupeKey || seen.has(dedupeKey)) continue;
+      seen.add(dedupeKey);
+      catalog.push(product);
+    }
+  }
+
+  return catalog;
+}
+
 function parseReviewCount(text) {
   const schemaMatch = text.match(/"reviewCount"\s*:\s*"?(\d+)"?/i);
   if (schemaMatch) return Number(schemaMatch[1]);
@@ -101,6 +134,15 @@ async function writeJson(filePath, document) {
   await writeFile(filePath, `${JSON.stringify(document, null, 2)}\n`, 'utf8');
 }
 
+async function readJson(filePath, fallback = null) {
+  try {
+    return JSON.parse(await readFile(filePath, 'utf8'));
+  } catch (error) {
+    if (error && error.code === 'ENOENT') return fallback;
+    throw error;
+  }
+}
+
 async function writeFallbackArtifacts({ dataDir, docsDir, products }) {
   const fallbackDocument = buildFallbackResearchDocument();
   const backfillMarkdown = buildResearchBackfillMarkdown({ products });
@@ -118,14 +160,18 @@ async function researchPopularity({
   outputPath = path.join(repoRoot, 'data', 'popularity-research.json'),
   docsDir = path.join(repoRoot, 'docs'),
   fetchImpl = globalThis.fetch?.bind(globalThis),
-  limit = DEFAULT_FETCH_LIMIT,
-  cursor = 0,
+  limit = null,
+  cursor = null,
+  env = process.env,
   logger = console
 } = {}) {
-  const appliancesPath = path.join(dataDir, 'appliances.json');
-  const appliancesDocument = JSON.parse(await readFile(appliancesPath, 'utf8'));
-  const products = Array.isArray(appliancesDocument?.products) ? appliancesDocument.products : [];
-  const queue = buildResearchQueue(products, { limit, cursor });
+  const products = await loadCatalogProducts({ dataDir });
+  const previousDocument = await readJson(outputPath, buildFallbackResearchDocument());
+  const batchSize = limit ?? resolveBatchSize(env);
+  const startCursor = Number.isInteger(cursor)
+    ? cursor
+    : (Number.isInteger(previousDocument?.cursor) ? previousDocument.cursor : 0);
+  const queue = buildResearchQueue(products, { limit: batchSize, cursor: startCursor });
 
   if (typeof fetchImpl !== 'function') {
     const fallbackDocument = await writeFallbackArtifacts({ dataDir: outputPath, docsDir, products: queue });
@@ -140,7 +186,10 @@ async function researchPopularity({
   }
 
   try {
-    const researchedProducts = {};
+    const researchedProducts = {
+      ...(previousDocument?.products ?? {})
+    };
+    const skipped = [...(Array.isArray(previousDocument?.skipped) ? previousDocument.skipped : [])];
 
     for (const product of queue) {
       const productRetailers = Array.isArray(product?.retailers) ? product.retailers : [];
@@ -149,39 +198,66 @@ async function researchPopularity({
       let reviewCountSum = 0;
       let priceMinAud = null;
       let priceMaxAud = null;
+      let resolvedRetailers = [];
+      let hadSuccessfulFetch = false;
 
       for (const retailer of productRetailers) {
-        const result = await inspectRetailerPage(retailer, fetchImpl);
-        retailersChecked += 1;
-        if (result.available) retailersAvailable += 1;
-        reviewCountSum += result.reviewCount;
-        if (Number.isFinite(result.priceMinAud)) {
-          priceMinAud = priceMinAud === null ? result.priceMinAud : Math.min(priceMinAud, result.priceMinAud);
-        }
-        if (Number.isFinite(result.priceMaxAud)) {
-          priceMaxAud = priceMaxAud === null ? result.priceMaxAud : Math.max(priceMaxAud, result.priceMaxAud);
+        try {
+          const result = await inspectRetailerPage(retailer, fetchImpl);
+          hadSuccessfulFetch = true;
+          retailersChecked += 1;
+          if (result.available) {
+            retailersAvailable += 1;
+            resolvedRetailers.push({
+              n: retailer.n,
+              url: retailer.url,
+              p: result.priceMinAud
+            });
+          }
+          reviewCountSum += result.reviewCount;
+          if (Number.isFinite(result.priceMinAud)) {
+            priceMinAud = priceMinAud === null ? result.priceMinAud : Math.min(priceMinAud, result.priceMinAud);
+          }
+          if (Number.isFinite(result.priceMaxAud)) {
+            priceMaxAud = priceMaxAud === null ? result.priceMaxAud : Math.max(priceMaxAud, result.priceMaxAud);
+          }
+        } catch (error) {
+          skipped.push({
+            id: product.id,
+            slug: product.slug ?? null,
+            retailer: retailer?.n ?? null,
+            reason: error.message
+          });
         }
       }
 
-      researchedProducts[product.id] = {
-        retailersAvailable,
-        retailersChecked,
-        reviewCountSum,
-        priceMinAud,
-        priceMaxAud,
-        researchedAt: today()
-      };
+      if (hadSuccessfulFetch) {
+        researchedProducts[product.id] = {
+          retailersAvailable,
+          retailersChecked,
+          reviewCountSum,
+          priceMinAud,
+          priceMaxAud,
+          researchedAt: today(),
+          retailers: resolvedRetailers
+        };
+      }
     }
 
     const document = {
       schema_version: 1,
       last_researched: today(),
-      cursor: cursor + queue.length,
+      cursor: Math.min(startCursor + queue.length, products.length),
+      researched: Math.min(startCursor + queue.length, products.length),
+      totalCatalog: products.length,
+      skipped,
       products: researchedProducts
     };
 
     await writeJson(outputPath, document);
-    logger.log(`[research-popularity] researched=${queue.length} total=${products.length} cursor=${document.cursor}`);
+    logger.log(
+      `[research-popularity] researched=${queue.length} skipped=${skipped.length} total=${products.length} cursor=${document.cursor}`
+    );
 
     return {
       mode: 'researched',
@@ -215,8 +291,10 @@ module.exports = {
   buildFallbackResearchDocument,
   buildResearchBackfillMarkdown,
   buildResearchQueue,
+  loadCatalogProducts,
   inspectRetailerPage,
   parsePriceCandidates,
   parseReviewCount,
+  resolveBatchSize,
   researchPopularity
 };
