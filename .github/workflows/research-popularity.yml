@@ -46,6 +46,12 @@ jobs:
 
       - name: Commit data changes
         run: |
+          RESEARCHED=$(node -p "require('./data/popularity-research.json').last_batch?.researched ?? 0")
+          SKIPPED=$(node -p "require('./data/popularity-research.json').last_batch?.skipped ?? 0")
+          if [ $((RESEARCHED + SKIPPED)) -eq 0 ]; then
+            echo "no progress, skipping commit"
+            exit 0
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/data data/popularity-research.json

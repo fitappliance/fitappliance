@@ -7,6 +7,7 @@ const { inferBrandTier } = require('./common/popularity-score.js');
 const { CAT_FILE_MAP } = require('./split-appliances.js');
 
 const DEFAULT_FETCH_LIMIT = 500;
+const RESEARCH_SCHEMA_VERSION = 2;
 const OUT_OF_STOCK_RE = /\b(out of stock|sold out|discontinued|no longer available)\b/i;
 
 function today() {
@@ -15,8 +16,16 @@ function today() {
 
 function buildFallbackResearchDocument() {
   return {
-    schema_version: 1,
+    schema_version: RESEARCH_SCHEMA_VERSION,
     last_researched: null,
+    cursor: 0,
+    researched: 0,
+    totalCatalog: 0,
+    skipped: [],
+    last_batch: {
+      researched: 0,
+      skipped: 0
+    },
     products: {}
   };
 }
@@ -55,10 +64,27 @@ function buildResearchQueue(products, { limit = DEFAULT_FETCH_LIMIT, cursor = 0 
   const rows = (Array.isArray(products) ? products : [])
     .filter((product) => {
       const tier = inferBrandTier(product?.brand);
-      return (tier === 'tier1' || tier === 'tier2') && Array.isArray(product?.retailers) && product.retailers.length > 0;
+      return tier === 'tier1' || tier === 'tier2';
     });
 
   return rows.slice(cursor, cursor + limit);
+}
+
+function getEffectiveResearchDocument(document) {
+  if (document?.schema_version === RESEARCH_SCHEMA_VERSION) {
+    return {
+      ...buildFallbackResearchDocument(),
+      ...document,
+      skipped: Array.isArray(document?.skipped) ? document.skipped : [],
+      products: typeof document?.products === 'object' && document?.products !== null ? document.products : {},
+      last_batch: {
+        researched: Number.isInteger(document?.last_batch?.researched) ? document.last_batch.researched : 0,
+        skipped: Number.isInteger(document?.last_batch?.skipped) ? document.last_batch.skipped : 0
+      }
+    };
+  }
+
+  return buildFallbackResearchDocument();
 }
 
 function resolveBatchSize(env = process.env) {
@@ -166,7 +192,9 @@ async function researchPopularity({
   logger = console
 } = {}) {
   const products = await loadCatalogProducts({ dataDir });
-  const previousDocument = await readJson(outputPath, buildFallbackResearchDocument());
+  const previousDocument = getEffectiveResearchDocument(
+    await readJson(outputPath, buildFallbackResearchDocument())
+  );
   const batchSize = limit ?? resolveBatchSize(env);
   const startCursor = Number.isInteger(cursor)
     ? cursor
@@ -245,12 +273,16 @@ async function researchPopularity({
     }
 
     const document = {
-      schema_version: 1,
+      schema_version: RESEARCH_SCHEMA_VERSION,
       last_researched: today(),
       cursor: Math.min(startCursor + queue.length, products.length),
       researched: Math.min(startCursor + queue.length, products.length),
       totalCatalog: products.length,
       skipped,
+      last_batch: {
+        researched: queue.length,
+        skipped: skipped.length - (previousDocument?.skipped?.length ?? 0)
+      },
       products: researchedProducts
     };
 
