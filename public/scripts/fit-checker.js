@@ -89,11 +89,15 @@
       listEl.innerHTML = '<p class="fit-empty">No recent searches yet.</p>';
       return;
     }
-    listEl.innerHTML = queries.map((row, index) => `
-      <button type="button" class="recent-chip" data-fit-index="${index}">
-        ${row.cat || 'appliance'} · ${row.w || '—'} × ${row.h || '—'} × ${row.d || '—'} mm
-      </button>
-    `).join('');
+    listEl.textContent = '';
+    for (const [index, row] of queries.entries()) {
+      const button = listEl.ownerDocument.createElement('button');
+      button.type = 'button';
+      button.className = 'recent-chip';
+      button.dataset.fitIndex = String(index);
+      button.textContent = `${row?.cat || 'appliance'} · ${row?.w || '—'} × ${row?.h || '—'} × ${row?.d || '—'} mm`;
+      listEl.appendChild(button);
+    }
   }
 
   function findMatches(products, dims, limit = 60) {
@@ -339,6 +343,7 @@
     renderResults,
     getRecentQueries,
     saveRecentQuery,
+    renderRecentQueries,
     runSearch,
     initFitChecker
   };

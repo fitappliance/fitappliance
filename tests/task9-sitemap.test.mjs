@@ -153,7 +153,9 @@ test('task 9.1 sitemap: keeps static URLs first and sorts brand URLs by category
     'https://www.fitappliance.com.au/affiliate-disclosure',
     'https://www.fitappliance.com.au/privacy-policy',
     'https://www.fitappliance.com.au/methodology',
-    'https://www.fitappliance.com.au/about/editorial-standards'
+    'https://www.fitappliance.com.au/about/editorial-standards',
+    'https://www.fitappliance.com.au/subscribe',
+    'https://www.fitappliance.com.au/tools/fit-checker'
   ]);
   assert.deepEqual(locs.slice(STATIC_PAGES.length), [
     'https://www.fitappliance.com.au/brands/bosch-dishwasher-clearance',

@@ -193,7 +193,7 @@ function buildHubHtml({ guide, links, crossLinks }) {
   <meta name="twitter:title" content="${escHtml(title)}">
   <meta name="twitter:description" content="${escHtml(description)}">
   <style>
-    :root { --ink:#131210; --ink-2:#3d3a35; --ink-3:#7a766e; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
+    :root { --ink:#131210; --ink-2:#3d3a35; --ink-3:#6b6b6b; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: Arial, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
     main { max-width: 1100px; margin: 0 auto; padding: 42px 24px 68px; }

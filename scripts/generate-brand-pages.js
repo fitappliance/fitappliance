@@ -365,7 +365,7 @@ ${headMeta}
     :root {
       --ink:#131210;
       --ink-2:#3D3A35;
-      --ink-3:#7A766E;
+      --ink-3:#6B6B6B;
       --paper:#FAF8F4;
       --white:#FFFFFF;
       --copper:#B55A2C;

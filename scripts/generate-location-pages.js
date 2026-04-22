@@ -280,7 +280,7 @@ function buildPageHtml({
   <meta name="article:modified_time" content="${escHtml(modifiedTime)}">
   <link rel="canonical" href="${canonical}">
   <style>
-    :root { --ink:#131210; --ink-2:#3d3a35; --ink-3:#7a766e; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
+    :root { --ink:#131210; --ink-2:#3d3a35; --ink-3:#6b6b6b; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: Arial, sans-serif; line-height: 1.6; color: var(--ink); background: var(--paper); }
     main { max-width: 960px; margin: 0 auto; padding: 40px 20px 64px; }
