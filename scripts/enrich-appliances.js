@@ -26,6 +26,12 @@ async function writeMinifiedJson(filePath, document) {
   await writeFile(filePath, JSON.stringify(document), 'utf8');
 }
 
+function findResearchEntry(researchDocument, product) {
+  if (!researchDocument || typeof researchDocument !== 'object') return null;
+  const products = researchDocument.products ?? {};
+  return products[product?.id] ?? products[product?.slug] ?? null;
+}
+
 async function enrichAppliances({
   repoRoot = path.resolve(__dirname, '..'),
   dataDir = path.join(repoRoot, 'public', 'data'),
@@ -47,9 +53,14 @@ async function enrichAppliances({
 
   const enrichedProducts = products.map((product) => {
     const readable = enrichReadableCopy(product, { seriesDictionary });
-    const research = popularityResearch?.products?.[product.id] ?? null;
+    const research = findResearchEntry(popularityResearch, product);
+    const researchedRetailers = Array.isArray(research?.retailers) ? research.retailers : null;
+    const hasResearchedRetailers = Array.isArray(researchedRetailers) && researchedRetailers.length > 0;
+    const nextRetailers = hasResearchedRetailers ? researchedRetailers : product.retailers;
+    const nextUnavailable = hasResearchedRetailers ? false : product.unavailable;
     const priorityScore = computePriorityScore({
       ...product,
+      retailers: nextRetailers,
       brandTier: inferBrandTier(product?.brand)
     }, {
       now: popularityResearch?.last_researched ?? appliancesDocument?.last_updated,
@@ -63,6 +74,8 @@ async function enrichAppliances({
 
     return {
       ...product,
+      retailers: nextRetailers,
+      unavailable: nextUnavailable,
       displayName: readable.displayName,
       readableSpec: readable.readableSpec,
       priorityScore
@@ -104,5 +117,6 @@ if (require.main === module) {
 }
 
 module.exports = {
+  findResearchEntry,
   enrichAppliances
 };

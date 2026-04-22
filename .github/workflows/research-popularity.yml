@@ -1,0 +1,55 @@
+name: Research Popularity Backfill
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 14 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: research-popularity
+  cancel-in-progress: false
+
+jobs:
+  research-backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate required secrets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "${GITHUB_TOKEN}" ]; then
+            echo "GITHUB_TOKEN is required"
+            exit 1
+          fi
+
+      - name: Run popularity research
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/research-popularity.js
+
+      - name: Enrich appliances from popularity research
+        run: node scripts/enrich-appliances.js
+
+      - name: Commit data changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data data/popularity-research.json
+          git diff --cached --quiet && exit 0
+          cursor="$(node -p "try { require('./data/popularity-research.json').cursor ?? 'unknown' } catch { 'unknown' }")"
+          git commit -m "chore(backfill): retailer sync cursor=${cursor}"
+          git push
