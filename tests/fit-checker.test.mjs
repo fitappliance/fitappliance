@@ -99,3 +99,20 @@ test('phase 25 fit-checker: script avoids console.log statements', () => {
   const source = fs.readFileSync(scriptPath, 'utf8');
   assert.doesNotMatch(source, /console\.log\(/);
 });
+
+test('phase 43a quick wins: recent-query chips escape localStorage-controlled category labels', () => {
+  const module = loadFitCheckerModule();
+  const dom = new JSDOM('<main><div id="recent"></div></main>');
+  const listEl = dom.window.document.getElementById('recent');
+
+  module.renderRecentQueries(listEl, [{
+    cat: '<img src=x onerror=alert(1)>',
+    w: 600,
+    h: 850,
+    d: 600
+  }]);
+
+  assert.equal(listEl.querySelectorAll('button.recent-chip').length, 1);
+  assert.equal(listEl.querySelectorAll('img').length, 0);
+  assert.equal(listEl.querySelector('[onerror]'), null);
+});

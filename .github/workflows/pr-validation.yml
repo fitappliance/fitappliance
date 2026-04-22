@@ -22,6 +22,9 @@ jobs:
       - name: Regenerate generated assets
         run: npm run generate-all
 
+      - name: Verify sitemap coverage
+        run: node scripts/verify-sitemap.js
+
       - name: Audit review content gate
         run: npm run audit-review-content
 

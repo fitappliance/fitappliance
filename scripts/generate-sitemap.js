@@ -10,7 +10,9 @@ const STATIC_PAGES = [
   { path: '/affiliate-disclosure', changefreq: 'monthly', priority: '0.4' },
   { path: '/privacy-policy', changefreq: 'monthly', priority: '0.4' },
   { path: '/methodology', changefreq: 'monthly', priority: '0.6' },
-  { path: '/about/editorial-standards', changefreq: 'monthly', priority: '0.6' }
+  { path: '/about/editorial-standards', changefreq: 'monthly', priority: '0.6' },
+  { path: '/subscribe', changefreq: 'monthly', priority: '0.5' },
+  { path: '/tools/fit-checker', changefreq: 'monthly', priority: '0.6' }
 ];
 
 const PRIORITY_BY_CAT = {

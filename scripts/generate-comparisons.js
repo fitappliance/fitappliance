@@ -407,7 +407,7 @@ function buildComparisonPageHtml({
     });
     const retailLink = pickRetailLink(sample);
     const buyHtml = affiliate
-      ? `<br><a href="${escHtml(affiliate.url)}" target="_blank" rel="sponsored nofollow noopener">Buy at ${escHtml(affiliate.providerName)} →</a><small style="display:block;color:#7a766e;margin-top:4px">${escHtml(affiliate.disclosureText)} <a href="/affiliate-disclosure" style="color:#b55a2c">Disclosure</a></small>`
+      ? `<br><a href="${escHtml(affiliate.url)}" target="_blank" rel="sponsored nofollow noopener">Buy at ${escHtml(affiliate.providerName)} →</a><small style="display:block;color:#6b6b6b;margin-top:4px">${escHtml(affiliate.disclosureText)} <a href="/affiliate-disclosure" style="color:#b55a2c">Disclosure</a></small>`
       : retailLink
         ? `<br><a href="${escHtml(retailLink.url)}" target="_blank" rel="noopener sponsored nofollow">${escHtml(retailLink.label)} →</a>`
         : '';
@@ -420,7 +420,7 @@ function buildComparisonPageHtml({
     });
     const retailLink = pickRetailLink(sample);
     const buyHtml = affiliate
-      ? `<br><a href="${escHtml(affiliate.url)}" target="_blank" rel="sponsored nofollow noopener">Buy at ${escHtml(affiliate.providerName)} →</a><small style="display:block;color:#7a766e;margin-top:4px">${escHtml(affiliate.disclosureText)} <a href="/affiliate-disclosure" style="color:#b55a2c">Disclosure</a></small>`
+      ? `<br><a href="${escHtml(affiliate.url)}" target="_blank" rel="sponsored nofollow noopener">Buy at ${escHtml(affiliate.providerName)} →</a><small style="display:block;color:#6b6b6b;margin-top:4px">${escHtml(affiliate.disclosureText)} <a href="/affiliate-disclosure" style="color:#b55a2c">Disclosure</a></small>`
       : retailLink
         ? `<br><a href="${escHtml(retailLink.url)}" target="_blank" rel="noopener sponsored nofollow">${escHtml(retailLink.label)} →</a>`
         : '';
@@ -499,7 +499,7 @@ ${headMeta}
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --ink:#131210; --ink-2:#3D3A35; --ink-3:#7A766E; --paper:#FAF8F4; --white:#FFF; --copper:#B55A2C; --border:#E0D9CE; }
+    :root { --ink:#131210; --ink-2:#3D3A35; --ink-3:#6B6B6B; --paper:#FAF8F4; --white:#FFF; --copper:#B55A2C; --border:#E0D9CE; }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: 'Outfit', sans-serif; color: var(--ink); background: var(--paper); line-height: 1.65; }
     main { max-width: 980px; margin: 0 auto; padding: 54px 24px 70px; }
@@ -595,25 +595,25 @@ ${headMeta}
 
     <a class="cta" href="${ctaUrl}">Compare ${escHtml(compareLabel)} inside your exact cavity →</a>
     <section style="margin:32px 0;padding:16px 24px;background:#f5f2ec;border-radius:8px;border:1px solid #e0d9ce">
-      <p style="font-size:13px;color:#7a766e;margin:0 0 10px">Full clearance specifications:</p>
+      <p style="font-size:13px;color:#6b6b6b;margin:0 0 10px">Full clearance specifications:</p>
       <div style="display:flex;gap:16px;flex-wrap:wrap">
         <a href="/brands/${escHtml(slugify(brandA))}-${escHtml(categoryMeta.slug)}-clearance" style="font-size:13px;color:#b55a2c;text-decoration:none">${escHtml(displayBrandA)} ${escHtml(categoryMeta.labelSingular)} clearance specs →</a>
         <a href="/brands/${escHtml(slugify(brandB))}-${escHtml(categoryMeta.slug)}-clearance" style="font-size:13px;color:#b55a2c;text-decoration:none">${escHtml(displayBrandB)} ${escHtml(categoryMeta.labelSingular)} clearance specs →</a>
       </div>
     </section>
     ${alsoViewedComparisons.length > 0 ? `<section style="margin:20px 0;padding:16px 24px;background:#f5f2ec;border-radius:8px;border:1px solid #e0d9ce">
-      <p style="font-size:13px;color:#7a766e;margin:0 0 10px">Also viewed comparisons:</p>
+      <p style="font-size:13px;color:#6b6b6b;margin:0 0 10px">Also viewed comparisons:</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         ${alsoViewedComparisons.map((row) => `<a href="/compare/${escHtml(row.slug)}" style="display:inline-block;padding:6px 14px;border:1px solid #e0d9ce;border-radius:20px;font-size:13px;color:#b55a2c;text-decoration:none;background:#fff">${escHtml(row.label)}</a>`).join('\n        ')}
       </div>
     </section>` : ''}
     <section style="margin:20px 0;padding:16px 24px;background:#f5f2ec;border-radius:8px;border:1px solid #e0d9ce">
-      <p style="font-size:13px;color:#7a766e;margin:0 0 10px">Related fitting guides:</p>
+      <p style="font-size:13px;color:#6b6b6b;margin:0 0 10px">Related fitting guides:</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         ${GUIDE_HUB_LINKS.map((row) => `<a href="${escHtml(row.url)}" style="display:inline-block;padding:6px 14px;border:1px solid #e0d9ce;border-radius:20px;font-size:13px;color:#b55a2c;text-decoration:none;background:#fff">${escHtml(row.label)}</a>`).join('\n        ')}
       </div>
     </section>
-    <footer style="margin-top:16px;padding-top:14px;border-top:1px solid #e0d9ce;font-size:13px;color:#7a766e">
+    <footer style="margin-top:16px;padding-top:14px;border-top:1px solid #e0d9ce;font-size:13px;color:#6b6b6b">
       <a href="/methodology" style="color:#b55a2c;text-decoration:none">Methodology</a> ·
       <a href="/about/editorial-standards" style="color:#b55a2c;text-decoration:none">Editorial standards</a>
     </footer>
