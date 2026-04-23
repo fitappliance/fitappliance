@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "last_researched": "2026-04-23",
-  "cursor": 500,
-  "researched": 500,
+  "cursor": 609,
+  "researched": 609,
   "totalCatalog": 2170,
   "skipped": [
     {
@@ -22,11 +22,23 @@
       "slug": null,
       "retailer": "Appliances Online",
       "reason": "fetch failed"
+    },
+    {
+      "id": "d2",
+      "slug": null,
+      "retailer": "Appliances Online",
+      "reason": "fetch failed"
+    },
+    {
+      "id": "dr3",
+      "slug": null,
+      "retailer": "Appliances Online",
+      "reason": "fetch failed"
     }
   ],
   "last_batch": {
-    "researched": 500,
-    "skipped": 3
+    "researched": 109,
+    "skipped": 2
   },
   "products": {
     "f6": {
@@ -143,6 +155,102 @@
       "reviewCountSum": 0,
       "priceMinAud": 20,
       "priceMaxAud": 20,
+      "researchedAt": "2026-04-23",
+      "retailers": []
+    },
+    "w1": {
+      "retailersAvailable": 1,
+      "retailersChecked": 2,
+      "reviewCountSum": 0,
+      "priceMinAud": 5,
+      "priceMaxAud": 400,
+      "researchedAt": "2026-04-23",
+      "retailers": [
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au",
+          "p": null
+        }
+      ]
+    },
+    "w4": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": 20,
+      "priceMaxAud": 20,
+      "researchedAt": "2026-04-23",
+      "retailers": []
+    },
+    "d1": {
+      "retailersAvailable": 1,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": null,
+      "priceMaxAud": null,
+      "researchedAt": "2026-04-23",
+      "retailers": [
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au",
+          "p": null
+        }
+      ]
+    },
+    "d4": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": 5,
+      "priceMaxAud": 400,
+      "researchedAt": "2026-04-23",
+      "retailers": []
+    },
+    "d3": {
+      "retailersAvailable": 1,
+      "retailersChecked": 2,
+      "reviewCountSum": 0,
+      "priceMinAud": 20,
+      "priceMaxAud": 20,
+      "researchedAt": "2026-04-23",
+      "retailers": [
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au",
+          "p": null
+        }
+      ]
+    },
+    "dr1": {
+      "retailersAvailable": 1,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": null,
+      "priceMaxAud": null,
+      "researchedAt": "2026-04-23",
+      "retailers": [
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au",
+          "p": null
+        }
+      ]
+    },
+    "dr2": {
+      "retailersAvailable": 0,
+      "retailersChecked": 2,
+      "reviewCountSum": 0,
+      "priceMinAud": 20,
+      "priceMaxAud": 20,
+      "researchedAt": "2026-04-23",
+      "retailers": []
+    },
+    "dr4": {
+      "retailersAvailable": 0,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": 5,
+      "priceMaxAud": 400,
       "researchedAt": "2026-04-23",
       "retailers": []
     }
