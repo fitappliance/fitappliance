@@ -2058,7 +2058,7 @@
       "unavailable": false,
       "displayName": "Bosch Serie 6",
       "readableSpec": "14-place Built-in",
-      "priorityScore": 85
+      "priorityScore": 80
     },
     {
       "id": "dishwasher-adw0848",
@@ -3672,7 +3672,7 @@
       "unavailable": false,
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Drawer Dishwasher",
-      "priorityScore": 83
+      "priorityScore": 78
     },
     {
       "id": "dishwasher-adw1086",
@@ -9208,7 +9208,7 @@
       "inferred_door_swing": true,
       "displayName": "Bosch Serie 4",
       "readableSpec": "8kg Heat Pump",
-      "priorityScore": 91
+      "priorityScore": 86
     },
     {
       "id": "dryer-acd0620",
@@ -9347,7 +9347,7 @@
       "inferred_door_swing": true,
       "displayName": "Electrolux Dryer",
       "readableSpec": "8kg Heat Pump",
-      "priorityScore": 89
+      "priorityScore": 84
     },
     {
       "id": "dryer-acd0788",
@@ -12257,12 +12257,7 @@
         {
           "n": "Harvey Norman",
           "url": "https://www.harveynorman.com.au",
-          "p": 2499
-        },
-        {
-          "n": "Appliances Online",
-          "url": "https://www.appliances-online.com.au",
-          "p": 2449
+          "p": null
         }
       ],
       "sponsored": false,
@@ -12270,7 +12265,7 @@
       "inferred_door_swing": true,
       "displayName": "Bosch Serie 4",
       "readableSpec": "368L Top-Mount",
-      "priorityScore": 100
+      "priorityScore": 85
     },
     {
       "id": "fridge-zrf0626",
@@ -15438,7 +15433,7 @@
       "inferred_door_swing": true,
       "displayName": "Electrolux Fridge",
       "readableSpec": "520L Bottom-Mount",
-      "priorityScore": 95
+      "priorityScore": 90
     },
     {
       "id": "fridge-arf3134",
@@ -18175,7 +18170,7 @@
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "726L French-Door",
-      "priorityScore": 77
+      "priorityScore": 72
     },
     {
       "id": "fridge-arf2323",
@@ -20672,17 +20667,7 @@
         {
           "n": "Appliances Online",
           "url": "https://www.appliancesonline.com.au/product/haier-hrf520bhs-514l-bottom-mount-fridge/",
-          "p": 1299
-        },
-        {
-          "n": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/search?text=HRF520BHS",
-          "p": 1299
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/search?query=HRF520BHS",
-          "p": 1279
+          "p": null
         }
       ],
       "sponsored": false,
@@ -20690,7 +20675,7 @@
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "520L French-Door",
-      "priorityScore": 100
+      "priorityScore": 71
     },
     {
       "id": "fridge-arf3044",
@@ -28655,14 +28640,9 @@
       ],
       "retailers": [
         {
-          "n": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au",
-          "p": 3299
-        },
-        {
           "n": "Harvey Norman",
           "url": "https://www.harveynorman.com.au",
-          "p": 3349
+          "p": null
         }
       ],
       "sponsored": false,
@@ -28670,7 +28650,7 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "708L French-Door",
-      "priorityScore": 99
+      "priorityScore": 79
     },
     {
       "id": "fridge-arf3292",
@@ -37162,12 +37142,7 @@
         {
           "n": "Harvey Norman",
           "url": "https://www.harveynorman.com.au",
-          "p": 3499
-        },
-        {
-          "n": "JB Hi-Fi",
-          "url": "https://www.jbhifi.com.au",
-          "p": 3449
+          "p": null
         }
       ],
       "sponsored": false,
@@ -37176,7 +37151,7 @@
       "inferred_door_swing": true,
       "displayName": "Samsung Fridge",
       "readableSpec": "740L French-Door",
-      "priorityScore": 91
+      "priorityScore": 73
     },
     {
       "id": "fridge-arf3105",
@@ -42399,7 +42374,7 @@
         {
           "n": "Harvey Norman",
           "url": "https://www.harveynorman.com.au",
-          "p": 1699
+          "p": null
         }
       ],
       "sponsored": false,
@@ -46154,7 +46129,7 @@
         {
           "n": "Harvey Norman",
           "url": "https://www.harveynorman.com.au",
-          "p": 2199
+          "p": null
         }
       ],
       "sponsored": false,
@@ -53698,7 +53673,7 @@
       "direct_url": "https://www.jbhifi.com.au/search?query=WW90T684DLH",
       "displayName": "Samsung Smart",
       "readableSpec": "9kg Front Loader",
-      "priorityScore": 97
+      "priorityScore": 92
     },
     {
       "id": "washing_machine-acw1531",
