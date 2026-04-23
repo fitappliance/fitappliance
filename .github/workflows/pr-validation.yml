@@ -2,6 +2,7 @@ name: PR Validation
 
 on:
   pull_request:
+  workflow_dispatch:
 
 jobs:
   test-and-verify:
@@ -29,4 +30,6 @@ jobs:
         run: npm run audit-review-content
 
       - name: Ensure generated outputs are committed
-        run: git diff --exit-code
+        run: |
+          echo "Note: public/og-images is maintained by the Linux OG sync workflow because Sharp output bytes are platform-dependent across platforms."
+          git diff --exit-code -- . ':(exclude)public/og-images/**'

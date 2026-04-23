@@ -133,9 +133,53 @@ test('phase 42a popularity: research queue respects the 500 fetch limit and curs
   assert.equal(queue.at(-1).id, 'p550');
 });
 
+test('phase 43a backfill: research queue includes tier1 and tier2 brands even when retailers are empty', () => {
+  const products = [
+    ...Array.from({ length: 5 }, (_, index) => makeProduct({
+      id: `tier1-${index + 1}`,
+      brand: 'Samsung',
+      retailers: []
+    })),
+    ...Array.from({ length: 5 }, (_, index) => makeProduct({
+      id: `tier2-${index + 1}`,
+      brand: 'Whirlpool',
+      retailers: []
+    })),
+    ...Array.from({ length: 5 }, (_, index) => makeProduct({
+      id: `tier3-${index + 1}`,
+      brand: 'Kogan',
+      retailers: [{ n: 'Harvey Norman', url: `https://example.com/tier3-${index + 1}` }]
+    })),
+    ...Array.from({ length: 5 }, (_, index) => makeProduct({
+      id: `drop-${index + 1}`,
+      brand: 'CHIQ',
+      retailers: []
+    }))
+  ];
+
+  const queue = buildResearchQueue(products, { limit: 20, cursor: 0 });
+
+  assert.equal(queue.length, 10);
+  assert.deepEqual(
+    queue.map((product) => product.id),
+    [
+      'tier1-1',
+      'tier1-2',
+      'tier1-3',
+      'tier1-4',
+      'tier1-5',
+      'tier2-1',
+      'tier2-2',
+      'tier2-3',
+      'tier2-4',
+      'tier2-5'
+    ]
+  );
+});
+
 test('phase 42a popularity: fallback research document is empty and marks last_researched null', () => {
   const doc = buildFallbackResearchDocument();
-  assert.equal(doc.schema_version, 1);
+  assert.equal(doc.schema_version, 2);
   assert.equal(doc.last_researched, null);
   assert.deepEqual(doc.products, {});
 });
@@ -265,11 +309,13 @@ test('phase 43a backfill: research script advances cursor by batch size and writ
   assert.equal(result.document.cursor, 2);
   assert.equal(result.document.totalCatalog, 3);
   assert.equal(result.document.skipped.length, 0);
+  assert.deepEqual(result.document.last_batch, { researched: 2, skipped: 0 });
 
   const writtenDoc = JSON.parse(fs.readFileSync(path.join(tmpDir, 'popularity-research.json'), 'utf8'));
   assert.equal(writtenDoc.cursor, 2);
   assert.equal(writtenDoc.researched, 2);
   assert.equal(writtenDoc.totalCatalog, 3);
+  assert.deepEqual(writtenDoc.last_batch, { researched: 2, skipped: 0 });
 });
 
 test('phase 43a backfill: existing cursor resumes the next batch when cursor option is omitted', async () => {
@@ -329,8 +375,9 @@ test('phase 43a backfill: existing cursor resumes the next batch when cursor opt
     logger: { log() {}, warn() {}, error() {} }
   });
 
-  assert.equal(result.document.cursor, 4);
-  assert.deepEqual(Object.keys(result.document.products), ['f3', 'f4']);
+  assert.equal(result.document.schema_version, 2);
+  assert.equal(result.document.cursor, 2);
+  assert.deepEqual(Object.keys(result.document.products), ['f1', 'f2']);
 });
 
 test('phase 43a backfill: failed fetches are recorded as skipped and do not mark products unavailable', async () => {
@@ -374,9 +421,11 @@ test('phase 43a backfill: failed fetches are recorded as skipped and do not mark
   assert.equal(result.researched, 1);
   assert.equal(result.document.cursor, 1);
   assert.equal(result.document.skipped.length, 2);
+  assert.deepEqual(result.document.last_batch, { researched: 1, skipped: 2 });
   assert.match(result.document.skipped[0].reason, /ENOTFOUND/);
 
   const writtenDoc = JSON.parse(fs.readFileSync(path.join(tmpDir, 'popularity-research.json'), 'utf8'));
   assert.deepEqual(writtenDoc.products, {});
   assert.equal(writtenDoc.skipped.length, 2);
+  assert.deepEqual(writtenDoc.last_batch, { researched: 1, skipped: 2 });
 });
