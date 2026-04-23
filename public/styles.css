@@ -1,0 +1,151 @@
+.search-summary {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.live-count {
+  font-size: 13px;
+  color: var(--ink-3);
+  font-weight: 600;
+}
+
+.sort-dropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+.sort-dropdown select,
+.facet-price-row input {
+  padding: 8px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--white);
+}
+
+.active-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 0 0 18px;
+}
+
+.active-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--ink-2);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.active-chip:hover,
+.active-chip:focus-visible {
+  border-color: var(--copper);
+  color: var(--copper);
+  outline: none;
+}
+
+.facet-shell {
+  background: var(--white);
+}
+
+.facet-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.facet-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.facet-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.facet-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.facet-option,
+.facet-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--paper);
+  color: var(--ink-2);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+.facet-option__count {
+  color: var(--ink-3);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.facet-option--active,
+.facet-toggle--active {
+  border-color: var(--copper);
+  background: var(--copper-bg);
+  color: var(--copper);
+}
+
+.facet-option:focus-visible,
+.facet-toggle:focus-visible,
+.facet-price-row input:focus-visible,
+.sort-dropdown select:focus-visible {
+  outline: 2px solid rgba(181, 90, 44, 0.25);
+  outline-offset: 2px;
+}
+
+.facet-price-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .search-summary {
+    justify-content: flex-start;
+  }
+
+  .active-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .active-chip {
+    white-space: nowrap;
+  }
+}

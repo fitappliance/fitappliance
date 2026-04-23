@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -165,7 +166,15 @@ test('phase 42a search-ux: serialise and parse preserves category, dims, toleran
     h: 820,
     d: 600,
     toleranceMm: 5,
-    preset: 'standard'
+    preset: 'standard',
+    facets: {
+      brand: [],
+      priceMin: null,
+      priceMax: null,
+      stars: null,
+      availableOnly: true
+    },
+    sortBy: 'best-fit'
   });
 });
 
@@ -174,6 +183,8 @@ test('phase 42a search-ux: parseSearchParams defaults tolerance to 5mm when omit
   const parsed = parseSearchParams('?cat=fridge&w=600&d=650');
 
   assert.equal(parsed.toleranceMm, 5);
+  assert.equal(parsed.sortBy, 'best-fit');
+  assert.equal(parsed.facets.availableOnly, true);
 });
 
 test('phase 42a search-ux: empty state offers relax CTA when tolerance would surface matches', async () => {
@@ -196,4 +207,14 @@ test('phase 42a search-ux: fridge presets expose 600, 700, and 900mm shortcuts',
     CATEGORY_PRESETS.fridge.map((entry) => entry.w),
     [600, 700, 900]
   );
+});
+
+test('phase 45a search-ux: homepage wires facet shell, active chips, sort dropdown, and stylesheet hook', () => {
+  const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+
+  assert.match(indexHtml, /<link rel="stylesheet" href="\/styles\.css">/);
+  assert.match(indexHtml, /data-facet-bar/);
+  assert.match(indexHtml, /data-active-chips/);
+  assert.match(indexHtml, /data-sort-dropdown/);
+  assert.match(indexHtml, /data-live-count/);
 });
