@@ -218,3 +218,10 @@ test('phase 45a search-ux: homepage wires facet shell, active chips, sort dropdo
   assert.match(indexHtml, /data-sort-dropdown/);
   assert.match(indexHtml, /data-live-count/);
 });
+
+test('phase 45a search-ux: results count is hidden for empty results and restored for non-empty results', () => {
+  const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+
+  assert.match(indexHtml, /if\s*\(\s*currentMatchRows\.length\s*===\s*0\s*\)\s*\{[\s\S]*resultsCount\.hidden\s*=\s*true;/);
+  assert.match(indexHtml, /resultsCount\.hidden\s*=\s*false;[\s\S]*resultsCount\.innerHTML\s*=\s*`<b>\$\{currentMatchRows\.length\}/);
+});

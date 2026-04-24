@@ -2525,7 +2525,13 @@ function refreshSearchResults() {
   filteredResults = currentMatchRows.slice(0, RESULTS_CAP);
 
   const catName = CATEGORY_LABELS[currentCat] ?? 'Appliances';
-  document.getElementById('resultsCount').innerHTML = `<b>${currentMatchRows.length}</b> ${catName} that fit`;
+  const resultsCount = document.getElementById('resultsCount');
+  if (currentMatchRows.length === 0) {
+    resultsCount.hidden = true;
+  } else {
+    resultsCount.hidden = false;
+    resultsCount.innerHTML = `<b>${currentMatchRows.length}</b> ${catName} that fit`;
+  }
   renderFacetChrome(facetResult.counts);
   renderResults();
   updateSearchUrl(lastSearchContext);
