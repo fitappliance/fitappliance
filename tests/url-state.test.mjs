@@ -31,7 +31,7 @@ test('phase 45a url-state: serializeSearchState writes stable facet params', asy
 
   assert.equal(
     params.toString(),
-    'cat=fridge&w=600&h=1800&d=650&tol=5&brand=Bosch%2CMiele&pmin=500&pmax=2000&stars=4&sort=price-asc'
+    'cat=fridge&w=600&h=1800&d=650&tol=5&brand=Bosch&brand=Miele&pmin=500&pmax=2000&stars=4&sort=price-asc'
   );
 });
 
@@ -98,3 +98,15 @@ test('phase 45a url-state: parseSearchParams truncates overlong brand tokens', a
   assert.equal(parsed.facets.brand[1], 'Bosch');
 });
 
+test('phase 45a url-state: repeated brand keys preserve commas inside a single brand label', async () => {
+  const { serializeSearchState, parseSearchParams } = await loadSearchCore();
+  const parsed = parseSearchParams(`?${serializeSearchState({
+    cat: 'fridge',
+    facets: {
+      brand: ['Bosch', 'Miele, Pro'],
+      availableOnly: true
+    }
+  }).toString()}`);
+
+  assert.deepEqual(parsed.facets.brand, ['Bosch', 'Miele, Pro']);
+});

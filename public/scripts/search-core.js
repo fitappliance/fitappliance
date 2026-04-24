@@ -368,7 +368,7 @@
     if (toMm(state?.d)) params.set('d', String(toMm(state.d)));
     params.set('tol', String(Number.isFinite(Number(state?.toleranceMm)) ? Number(state.toleranceMm) : 5));
     if (state?.preset) params.set('preset', String(state.preset));
-    if (facets.brand.length > 0) params.set('brand', facets.brand.join(','));
+    facets.brand.forEach((brand) => params.append('brand', brand));
     if (facets.priceMin !== null) params.set('pmin', String(facets.priceMin));
     if (facets.priceMax !== null) params.set('pmax', String(facets.priceMax));
     if (facets.stars !== null) params.set('stars', String(facets.stars));
@@ -379,8 +379,11 @@
 
   function parseSearchParams(queryString) {
     const params = new URLSearchParams(String(queryString ?? '').replace(/^\?/, ''));
-    const rawBrands = String(params.get('brand') ?? '')
-      .split(',')
+    const repeatedBrands = params.getAll('brand').map((value) => String(value ?? '').trim());
+    const rawBrands = (repeatedBrands.length <= 1
+      ? repeatedBrands.flatMap((value) => value.split(','))
+      : repeatedBrands
+    )
       .map((value) => value.trim().slice(0, 50))
       .filter(Boolean);
     const rawPriceMin = normalizeNumberOrNull(params.get('pmin'));
