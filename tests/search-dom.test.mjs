@@ -92,3 +92,23 @@ test('phase 45a search-dom: malicious brand labels are escaped in rendered facet
   assert.equal(container.querySelector('[onerror]'), null);
 });
 
+test('phase 45a search-dom: aria-label coercion does not trust object toString implementations', async () => {
+  const { renderFacetBar } = await loadSearchDom();
+  const window = makeWindow();
+  const container = window.document.getElementById('facet');
+  const hostileBrand = {
+    toString() {
+      return '<img src=x onerror=alert(1)>';
+    }
+  };
+
+  renderFacetBar(container, {
+    brand: { [hostileBrand]: 3 }
+  }, {}, () => {});
+
+  const brandButton = container.querySelector('[data-facet-brand]');
+  const ariaLabel = brandButton?.getAttribute('aria-label') ?? '';
+  assert.ok(brandButton);
+  assert.doesNotMatch(ariaLabel, /onerror/i);
+  assert.match(ariaLabel, /\(\d+\)$/);
+});

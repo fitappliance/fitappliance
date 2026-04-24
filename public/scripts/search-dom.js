@@ -11,6 +11,24 @@
     }[char]));
   }
 
+  function coerceAriaText(value) {
+    if (typeof value === 'string') {
+      const normalized = value.replace(/\s+/g, ' ').trim();
+      if (/[<>]/.test(normalized) || /\bon[a-z]+\s*=|javascript:/i.test(normalized)) {
+        return '[unsafe text]';
+      }
+      return normalized;
+    }
+    if (typeof value === 'number') return Number.isFinite(value) ? String(value) : '';
+    if (typeof value === 'boolean') return value ? 'true' : 'false';
+    if (value === null || value === undefined) return '';
+    return Object.prototype.toString.call(value);
+  }
+
+  function setAriaLabel(node, value) {
+    node.setAttribute('aria-label', coerceAriaText(value));
+  }
+
   function renderPresetChips(container, presets, activePreset, onSelect) {
     if (!container) return;
     const rows = Array.isArray(presets) ? presets : [];
@@ -41,7 +59,7 @@
   function renderFacetBar(container, counts = {}, activeFacets = {}, onChange) {
     if (!container) return;
     container.textContent = '';
-    container.setAttribute('aria-label', 'Filter results');
+    setAriaLabel(container, 'Filter results');
 
     const doc = container.ownerDocument;
     const brandCounts = Object.entries(counts?.brand ?? {});
@@ -66,7 +84,7 @@
         button.setAttribute('role', 'checkbox');
         button.setAttribute('tabindex', '0');
         button.setAttribute('aria-checked', selected.has(String(brand).trim().toLowerCase()) ? 'true' : 'false');
-        button.setAttribute('aria-label', `${brand} (${count})`);
+        setAriaLabel(button, `${coerceAriaText(brand)} (${Number(count)})`);
 
         const label = doc.createElement('span');
         label.className = 'facet-option__label';
@@ -97,7 +115,7 @@
     minInput.placeholder = 'Min';
     minInput.value = activeFacets?.priceMin ?? '';
     minInput.dataset.facetPriceMin = '1';
-    minInput.setAttribute('aria-label', 'Minimum price');
+    setAriaLabel(minInput, 'Minimum price');
     minInput.addEventListener('change', () => onChange?.({ type: 'priceMin', value: minInput.value }));
     const maxInput = doc.createElement('input');
     maxInput.type = 'number';
@@ -105,7 +123,7 @@
     maxInput.placeholder = 'Max';
     maxInput.value = activeFacets?.priceMax ?? '';
     maxInput.dataset.facetPriceMax = '1';
-    maxInput.setAttribute('aria-label', 'Maximum price');
+    setAriaLabel(maxInput, 'Maximum price');
     maxInput.addEventListener('change', () => onChange?.({ type: 'priceMax', value: maxInput.value }));
     priceRow.append(minInput, maxInput);
     priceSection.appendChild(priceRow);
@@ -199,7 +217,7 @@
     text.textContent = 'Sort';
     const select = doc.createElement('select');
     select.dataset.sortSelect = '1';
-    select.setAttribute('aria-label', 'Sort results');
+    setAriaLabel(select, 'Sort results');
     [
       ['best-fit', 'Best fit'],
       ['price-asc', 'Price ↑'],
