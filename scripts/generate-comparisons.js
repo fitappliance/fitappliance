@@ -54,6 +54,30 @@ function hasRetailLink(product) {
     && product.retailers.some((retailer) => retailer && typeof retailer.url === 'string' && /^https?:\/\//i.test(retailer.url));
 }
 
+function compareStableText(left, right) {
+  const leftText = String(left ?? '');
+  const rightText = String(right ?? '');
+  const leftLower = leftText.toLowerCase();
+  const rightLower = rightText.toLowerCase();
+  if (leftLower < rightLower) return -1;
+  if (leftLower > rightLower) return 1;
+  if (leftText < rightText) return -1;
+  if (leftText > rightText) return 1;
+  return 0;
+}
+
+function pickBestRetailer(retailers) {
+  if (!Array.isArray(retailers)) return null;
+  return retailers
+    .filter((retailer) => retailer && typeof retailer.url === 'string' && /^https?:\/\//i.test(retailer.url))
+    .sort((left, right) => {
+      const leftPrice = Number.isInteger(left.p) && left.p > 0 ? left.p : Number.MAX_SAFE_INTEGER;
+      const rightPrice = Number.isInteger(right.p) && right.p > 0 ? right.p : Number.MAX_SAFE_INTEGER;
+      if (leftPrice !== rightPrice) return leftPrice - rightPrice;
+      return compareStableText(left.n, right.n) || compareStableText(left.url, right.url);
+    })[0] ?? null;
+}
+
 function extractModelSku(modelString) {
   if (typeof modelString !== 'string' || !modelString.trim()) return '';
   return modelString.trim().split(/\s+/)[0];
@@ -664,7 +688,7 @@ function sampleBrandModels(products, cat, brand) {
       const leftHeight = Number.isFinite(left.h) ? left.h : 0;
       const rightHeight = Number.isFinite(right.h) ? right.h : 0;
       if (rightHeight !== leftHeight) return rightHeight - leftHeight;
-      return String(left.model ?? '').localeCompare(String(right.model ?? ''));
+      return compareStableText(left.model, right.model);
     })
     .slice(0, 3)
     .map((product) => ({
@@ -677,9 +701,7 @@ function sampleBrandModels(products, cat, brand) {
       affiliate: product.affiliate ?? null,
       directUrl: product.direct_url,
       directLabel: null,
-      bestRetailer: Array.isArray(product.retailers)
-        ? product.retailers.find((retailer) => retailer && typeof retailer.url === 'string' && /^https?:\/\//i.test(retailer.url)) ?? null
-        : null
+      bestRetailer: pickBestRetailer(product.retailers)
     }));
 }
 
@@ -738,7 +760,9 @@ async function generateComparisonPages(options = {}) {
         const leftShared = Number(left.brandA === row.brandA || left.brandA === row.brandB || left.brandB === row.brandA || left.brandB === row.brandB);
         const rightShared = Number(right.brandA === row.brandA || right.brandA === row.brandB || right.brandB === row.brandA || right.brandB === row.brandB);
         if (rightShared !== leftShared) return rightShared - leftShared;
-        return (right.modelsA + right.modelsB) - (left.modelsA + left.modelsB);
+        const modelDelta = (right.modelsA + right.modelsB) - (left.modelsA + left.modelsB);
+        if (modelDelta !== 0) return modelDelta;
+        return compareStableText(left.slug, right.slug);
       })
       .slice(0, 8)
       .map((candidate) => ({
@@ -765,9 +789,9 @@ async function generateComparisonPages(options = {}) {
   }
 
   rows.sort((left, right) => {
-    if (left.cat !== right.cat) return left.cat.localeCompare(right.cat);
-    if (left.brandA !== right.brandA) return left.brandA.localeCompare(right.brandA);
-    return left.brandB.localeCompare(right.brandB);
+    if (left.cat !== right.cat) return compareStableText(left.cat, right.cat);
+    if (left.brandA !== right.brandA) return compareStableText(left.brandA, right.brandA);
+    return compareStableText(left.brandB, right.brandB);
   });
 
   const serializableRows = rows.map((row) => ({
@@ -802,7 +826,9 @@ module.exports = {
   buildComparisonNarrative,
   buildComparisonPageHtml,
   generateComparisonPages,
+  pickBestRetailer,
   rankBrands,
+  sampleBrandModels,
   selectComparisonPairs,
   slugifyPair
 };
