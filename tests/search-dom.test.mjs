@@ -69,6 +69,25 @@ test('phase 45a search-dom: renderSortDropdown renders five sort options', async
   assert.equal(select.value, 'price-asc');
 });
 
+test('phase 45a search-dom: stars facet exposes a radiogroup label for assistive tech', async () => {
+  const { renderFacetBar } = await loadSearchDom();
+  const window = makeWindow();
+  const container = window.document.getElementById('facet');
+
+  renderFacetBar(container, {
+    brand: { Bosch: 12 },
+    stars: { 4: 7, 5: 3 }
+  }, {
+    stars: 4,
+    availableOnly: true
+  }, () => {});
+
+  const starsList = container.querySelector('.facet-group:nth-of-type(3) .facet-options');
+  assert.ok(starsList);
+  assert.equal(starsList.getAttribute('role'), 'radiogroup');
+  assert.equal(starsList.getAttribute('aria-label'), 'Minimum energy stars');
+});
+
 test('phase 45a search-dom: renderLiveCount writes the visible result copy', async () => {
   const { renderLiveCount } = await loadSearchDom();
   const window = makeWindow();

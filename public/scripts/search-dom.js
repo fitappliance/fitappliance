@@ -137,6 +137,8 @@
     starsSection.appendChild(starsTitle);
     const starsList = doc.createElement('div');
     starsList.className = 'facet-options';
+    starsList.setAttribute('role', 'radiogroup');
+    setAriaLabel(starsList, 'Minimum energy stars');
     const starCounts = Object.entries(counts?.stars ?? {});
     for (const [stars, count] of starCounts) {
       const button = doc.createElement('button');
