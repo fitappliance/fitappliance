@@ -127,6 +127,45 @@ test('generateBrandPages uses display-friendly brand names in generated HTML whi
   assert.match(html, /Find Hisense Fridges That Fit Your Space/);
 });
 
+test('generateBrandPages merges alias variants into one canonical brand page', async () => {
+  const { generateBrandPages } = await import(generatorModuleUrl);
+  const workspace = await createWorkspace();
+
+  const appliances = JSON.parse(await readFile(path.join(workspace.dataDir, 'appliances.json'), 'utf8'));
+  appliances.products = [
+    {
+      ...appliances.products[0],
+      id: 'f-midea-1',
+      brand: 'MIDEA',
+      model: 'MDRS710FGD'
+    },
+    {
+      ...appliances.products[0],
+      id: 'f-midea-2',
+      brand: 'Midea',
+      model: 'MDRE320FGD'
+    }
+  ];
+  await writeFile(path.join(workspace.dataDir, 'appliances.json'), `${JSON.stringify(appliances, null, 2)}\n`);
+
+  const clearance = JSON.parse(await readFile(path.join(workspace.dataDir, 'clearance.json'), 'utf8'));
+  clearance.rules.fridge.MIDEA = { side: 20, rear: 50, top: 50 };
+  clearance.rules.fridge.Midea = { side: 20, rear: 50, top: 50 };
+  await writeFile(path.join(workspace.dataDir, 'clearance.json'), `${JSON.stringify(clearance, null, 2)}\n`);
+
+  await generateBrandPages({
+    dataDir: workspace.dataDir,
+    outputDir: workspace.outputDir,
+    logger: { log() {} }
+  });
+
+  const indexRows = JSON.parse(await readFile(path.join(workspace.outputDir, 'index.json'), 'utf8'));
+  assert.equal(indexRows.length, 1);
+  assert.equal(indexRows[0].brand, 'Midea');
+  assert.equal(indexRows[0].slug, 'midea-fridge-clearance');
+  assert.equal(indexRows[0].models, 2);
+});
+
 test('generateBrandPages injects og:title meta tags into brand pages', async () => {
   const { generateBrandPages } = await import(generatorModuleUrl);
   const workspace = await createWorkspace();

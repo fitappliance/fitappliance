@@ -5,6 +5,7 @@ const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
+const { canonicalizeProducts } = require('./brand-canon.js');
 
 const MIN_DOORWAY = 600;
 const MAX_DOORWAY = 900;
@@ -238,7 +239,7 @@ async function generateDoorwayPages(options = {}) {
   const logger = options.logger ?? console;
 
   const appliances = await readJson(path.join(dataDir, 'appliances.json'));
-  const products = (appliances.products ?? []).filter((product) => product.cat === 'fridge');
+  const products = canonicalizeProducts(appliances.products ?? []).filter((product) => product.cat === 'fridge');
   const doorways = buildWidths(MIN_DOORWAY, MAX_DOORWAY, STEP);
 
   await cleanOutputDir(outputDir);

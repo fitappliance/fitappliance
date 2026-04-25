@@ -8,6 +8,7 @@ const { stringifyJsonLd } = require('./common/schema-jsonld.js');
 const { slugNormalize } = require('./common/slug-normalize.js');
 const { displayBrandName } = require('./utils/brand-utils.js');
 const { loadProvidersFromFile, resolveAffiliateLinkForProduct } = require('./render-affiliate-links.js');
+const { canonicalizeProducts, canonicalizeRuleDocument } = require('./brand-canon.js');
 
 const CATEGORY_META = {
   fridge: {
@@ -716,8 +717,9 @@ async function generateComparisonPages(options = {}) {
   const affiliateProviders = await loadProvidersFromFile(
     options.affiliateProvidersPath ?? path.join(repoRoot, 'data', 'affiliates', 'providers.json')
   ).catch(() => []);
-  const products = Array.isArray(appliances.products) ? appliances.products : [];
-  const pairs = selectComparisonPairs(products, clearance.rules ?? {}, options);
+  const products = canonicalizeProducts(Array.isArray(appliances.products) ? appliances.products : []);
+  const rules = canonicalizeRuleDocument(clearance.rules ?? {});
+  const pairs = selectComparisonPairs(products, rules, options);
 
   await cleanOutputDir(outputDir);
 

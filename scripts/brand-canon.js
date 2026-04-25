@@ -60,8 +60,49 @@ function filterByBrandCanon(products, canonDocument = loadCanon()) {
   return products.filter((product) => !isDroppedBrand(product?.brand, canonDocument));
 }
 
+function canonicalizeProducts(products, canonDocument = loadCanon()) {
+  return filterByBrandCanon(products, canonDocument).map((product) => ({
+    ...product,
+    brand: canonicalizeBrand(product?.brand, canonDocument)
+  }));
+}
+
+function canonicalizeRuleMap(ruleMap, canonDocument = loadCanon()) {
+  if (!ruleMap || typeof ruleMap !== 'object') return {};
+
+  const output = {};
+  for (const [rawBrand, rule] of Object.entries(ruleMap)) {
+    if (rawBrand === '__default__') {
+      output.__default__ = rule;
+      continue;
+    }
+
+    const canonicalBrand = canonicalizeBrand(rawBrand, canonDocument);
+    if (!canonicalBrand) continue;
+    if (!Object.hasOwn(output, canonicalBrand) || rawBrand === canonicalBrand) {
+      output[canonicalBrand] = rule;
+    }
+  }
+
+  return output;
+}
+
+function canonicalizeRuleDocument(rulesDocument, canonDocument = loadCanon()) {
+  if (!rulesDocument || typeof rulesDocument !== 'object') return {};
+
+  return Object.fromEntries(
+    Object.entries(rulesDocument).map(([category, ruleMap]) => [
+      category,
+      canonicalizeRuleMap(ruleMap, canonDocument)
+    ])
+  );
+}
+
 module.exports = {
   canonicalizeBrand,
+  canonicalizeProducts,
+  canonicalizeRuleDocument,
+  canonicalizeRuleMap,
   filterByBrandCanon,
   isDroppedBrand,
   loadCanon

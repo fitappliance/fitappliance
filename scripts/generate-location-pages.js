@@ -6,6 +6,7 @@ const { mkdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
 const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
+const { canonicalizeProducts } = require('./brand-canon.js');
 
 const CATEGORY_ROWS = [
   { slug: 'dishwasher', label: 'Dishwasher', cat: 'dishwasher' },
@@ -380,7 +381,7 @@ async function generateLocationPages(options = {}) {
     options.affiliateProvidersPath ?? path.join(repoRoot, 'data', 'affiliates', 'providers.json')
   ).catch(() => []);
   const appliancesDoc = await readJson(path.join(repoRoot, 'public', 'data', 'appliances.json'), { products: [] });
-  const products = Array.isArray(appliancesDoc.products) ? appliancesDoc.products : [];
+  const products = canonicalizeProducts(Array.isArray(appliancesDoc.products) ? appliancesDoc.products : []);
 
   const categoryCounts = products.reduce((accumulator, product) => {
     const cat = String(product?.cat ?? '');
