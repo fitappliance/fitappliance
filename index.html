@@ -11,6 +11,7 @@
 <meta name="article:modified_time" content="2026-04-18T00:00:00Z">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="FitAppliance RSS" href="/rss.xml">
+<link rel="stylesheet" href="/styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1465,18 +1466,12 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
       <div class="results-count" id="resultsCount">Loading...</div>
       <div class="results-meta-line" id="resultsMeta"></div>
     </div>
-    <div class="sort-wrap">
-      <label>Sort:</label>
-      <select class="sort-sel" id="sortSel" onchange="renderResults()">
-        <option value="energy_desc" selected>Energy Rating (Best first)</option>
-        <option value="price_asc">Price ↑</option>
-        <option value="price_desc">Price ↓</option>
-        <option value="kwh_asc">Lowest kWh</option>
-        <option value="tco_asc">Lowest Running Cost</option>
-        <option value="fit_desc">Best Fit (largest)</option>
-      </select>
+    <div class="search-summary">
+      <span class="live-count" data-live-count>Showing 0 of 0 appliances</span>
+      <div data-sort-dropdown></div>
     </div>
   </div>
+  <div class="active-chips" data-active-chips aria-live="polite"></div>
 
   <div class="results-body">
     <div>
@@ -1507,6 +1502,11 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
+
+      <div class="scard facet-shell">
+        <div class="scard-title">Refine results</div>
+        <div class="facet-bar" data-facet-bar aria-live="polite"></div>
+      </div>
 
       <!-- Rebate calculator -->
       <div class="rebate-panel">
@@ -1776,6 +1776,8 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 <script defer src="/scripts/sw-register.js"></script>
 <script defer src="/scripts/subscribe.js"></script>
 <script type="module">
+import '/scripts/search-core.js';
+import '/scripts/search-dom.js';
 import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/product-card.js';
 import { displayBrandName } from './scripts/ui/brand-utils.js';
 import { renderFreshnessBanner } from './scripts/ui/freshness.js';
@@ -1788,6 +1790,9 @@ import {
   getRecentSearches,
   recordSearch
 } from './scripts/ui/search-history.js';
+
+const SearchCore = globalThis.SearchCore;
+const SearchDom = globalThis.SearchDom;
 
 function escHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -2070,6 +2075,18 @@ function calcRebate() {
 ══════════════════════════════════════════════════════════ */
 let currentCat = 'fridge';
 let filteredResults = [];
+let currentMatchRows = [];
+let activeFacetState = {
+  brand: [],
+  priceMin: null,
+  priceMax: null,
+  stars: null,
+  availableOnly: true,
+};
+let currentSortBy = 'best-fit';
+let lastSearchFilters = null;
+let lastSearchContext = null;
+let facetDebounceTimer = null;
 let currentView = 'list';
 let compareList = [];
 let COMPARE_INTENT = null;
@@ -2173,34 +2190,29 @@ function readCompareIntent(params = new URLSearchParams(window.location.search))
 
 async function readUrlParams() {
   const params = new URLSearchParams(window.location.search);
+  const parsedState = SearchCore.parseSearchParams(window.location.search);
   COMPARE_INTENT = readCompareIntent(params);
-  const cat = params.get('cat');
-  const w = params.get('w');
-  const h = params.get('h');
-  const d = params.get('d');
+  const cat = parsedState.cat;
+  const w = parsedState.w;
+  const h = parsedState.h;
+  const d = parsedState.d;
 
   if (cat && VALID_CATEGORIES.includes(cat)) {
     await setCategory(cat);
-    const brand = params.get('brand');
-    if (brand) {
-      const select = document.getElementById('inBrand');
-      if (select) select.value = brand;
-    }
   }
+
+  activeFacetState = normalizeHomeFacets(parsedState.facets ?? {});
+  currentSortBy = parsedState.sortBy ?? 'best-fit';
+  syncLegacyFacetInputs();
 
   const widthInput = document.getElementById('inW');
   const heightInput = document.getElementById('inH');
   const depthInput = document.getElementById('inD');
 
   if (w && h && d) {
-    const width = parseInt(w, 10);
-    const height = parseInt(h, 10);
-    const depth = parseInt(d, 10);
-    if (!isNaN(width) && !isNaN(height) && !isNaN(depth)) {
-      if (widthInput) widthInput.value = String(width);
-      if (heightInput) heightInput.value = String(height);
-      if (depthInput) depthInput.value = String(depth);
-    }
+    if (widthInput) widthInput.value = String(w);
+    if (heightInput) heightInput.value = String(h);
+    if (depthInput) depthInput.value = String(d);
   }
 
   const doorParam = params.get('door');
@@ -2218,8 +2230,13 @@ async function readUrlParams() {
     if (dwellingInput) dwellingInput.value = dwelling;
   }
 
+  if (activeFacetState.priceMax !== null) {
+    const budgetInput = document.getElementById('inBudget');
+    if (budgetInput) budgetInput.value = String(activeFacetState.priceMax);
+  }
+
   if (COMPARE_INTENT || (cat && w && h && d)) {
-    doSearch();
+    doSearch({ preserveExistingFacets: true });
   }
 }
 
@@ -2265,7 +2282,9 @@ function updateFloatBarSummary() {
   const width = document.getElementById('inW')?.value?.trim();
   const height = document.getElementById('inH')?.value?.trim();
   const depth = document.getElementById('inD')?.value?.trim();
-  const brand = document.getElementById('inBrand')?.value?.trim();
+  const brand = activeFacetState.brand.length === 1
+    ? activeFacetState.brand[0]
+    : (activeFacetState.brand.length > 1 ? `${activeFacetState.brand.length} brands` : '');
   const parts = [CATEGORY_LABELS[currentCat] ?? 'Appliances'];
 
   if (width && height && depth) {
@@ -2343,15 +2362,191 @@ function initBuyClickTracking() {
   });
 }
 
+function parsePositiveInteger(value) {
+  const parsed = Number.parseInt(String(value ?? '').trim(), 10);
+  return Number.isFinite(parsed) && parsed >= 0 ? parsed : null;
+}
+
+function normalizeHomeFacets(next = {}) {
+  return {
+    brand: Array.isArray(next.brand)
+      ? next.brand.map((value) => String(value ?? '').trim().slice(0, 50)).filter(Boolean)
+      : [],
+    priceMin: parsePositiveInteger(next.priceMin),
+    priceMax: parsePositiveInteger(next.priceMax),
+    stars: parsePositiveInteger(next.stars),
+    availableOnly: next.availableOnly !== false,
+  };
+}
+
+function syncLegacyFacetInputs() {
+  const brandInput = document.getElementById('inBrand');
+  if (brandInput) {
+    brandInput.value = activeFacetState.brand.length === 1 ? activeFacetState.brand[0] : '';
+  }
+  const budgetInput = document.getElementById('inBudget');
+  if (budgetInput) {
+    budgetInput.value = activeFacetState.priceMax ?? '';
+  }
+}
+
+function getCategoryCatalogCount() {
+  return PRODUCTS.filter((product) => product.cat === currentCat).length;
+}
+
+function filterOperationalPool(rows, context = {}) {
+  const doorW = Number.isFinite(Number(context?.doorW)) ? Number(context.doorW) : DEFAULT_DOORWAY_MM;
+  const dwelling = context?.dwelling || DEFAULT_DWELLING;
+  return (Array.isArray(rows) ? rows : []).filter((product) => {
+    const deliveryW = Math.min(Number(product?.w ?? 0), Number(product?.d ?? 0));
+    if (deliveryW > doorW + 50) return false;
+    if (currentCat === 'dryer' && dwelling === 'apartment' && product?.vented) return false;
+    return true;
+  });
+}
+
+function mergeManagedSearchParams(baseParams, nextParams) {
+  const merged = new URLSearchParams(baseParams);
+  ['cat', 'w', 'h', 'd', 'tol', 'preset', 'brand', 'pmin', 'pmax', 'stars', 'avail', 'sort', 'door', 'dwelling']
+    .forEach((key) => merged.delete(key));
+  for (const [key, value] of nextParams.entries()) {
+    merged.set(key, value);
+  }
+  return merged;
+}
+
+function updateSearchUrl(context = {}) {
+  if (!lastSearchFilters) return;
+  const serialized = SearchCore.serializeSearchState({
+    ...lastSearchFilters,
+    facets: activeFacetState,
+    sortBy: currentSortBy
+  });
+  if (context?.doorW && context.doorW !== DEFAULT_DOORWAY_MM) {
+    serialized.set('door', String(context.doorW));
+  }
+  if (context?.dwelling && context.dwelling !== DEFAULT_DWELLING) {
+    serialized.set('dwelling', String(context.dwelling));
+  }
+  const merged = mergeManagedSearchParams(new URLSearchParams(window.location.search), serialized);
+  history.replaceState(null, '', `?${merged.toString()}`);
+}
+
+function renderFacetChrome(counts = {}) {
+  SearchDom.renderFacetBar(
+    document.querySelector('[data-facet-bar]'),
+    counts,
+    activeFacetState,
+    handleFacetChange
+  );
+  SearchDom.renderActiveChips(
+    document.querySelector('[data-active-chips]'),
+    activeFacetState,
+    handleActiveChipRemove
+  );
+  SearchDom.renderSortDropdown(
+    document.querySelector('[data-sort-dropdown]'),
+    currentSortBy,
+    (value) => {
+      currentSortBy = value;
+      scheduleFacetRefresh();
+    }
+  );
+  SearchDom.renderLiveCount(
+    document.querySelector('[data-live-count]'),
+    currentMatchRows.length,
+    getCategoryCatalogCount()
+  );
+}
+
+function applyFacetDelta(delta) {
+  const next = normalizeHomeFacets(activeFacetState);
+
+  if (delta?.type === 'brand') {
+    const key = String(delta.value ?? '').trim();
+    const normalizedKey = key.toLowerCase();
+    next.brand = next.brand.some((brand) => brand.toLowerCase() === normalizedKey)
+      ? next.brand.filter((brand) => brand.toLowerCase() !== normalizedKey)
+      : [...next.brand, key];
+  } else if (delta?.type === 'priceMin') {
+    next.priceMin = parsePositiveInteger(delta.value);
+  } else if (delta?.type === 'priceMax') {
+    next.priceMax = parsePositiveInteger(delta.value);
+  } else if (delta?.type === 'stars') {
+    const parsedStars = parsePositiveInteger(delta.value);
+    next.stars = next.stars === parsedStars ? null : parsedStars;
+  } else if (delta?.type === 'availableOnly') {
+    next.availableOnly = Boolean(delta.value);
+  }
+
+  activeFacetState = normalizeHomeFacets(next);
+  syncLegacyFacetInputs();
+}
+
+function handleFacetChange(delta) {
+  applyFacetDelta(delta);
+  scheduleFacetRefresh();
+}
+
+function handleActiveChipRemove(delta) {
+  if (delta?.key === 'brand') {
+    activeFacetState = normalizeHomeFacets({
+      ...activeFacetState,
+      brand: activeFacetState.brand.filter((brand) => brand !== delta.value)
+    });
+  } else if (delta?.key === 'priceMin') {
+    activeFacetState = normalizeHomeFacets({ ...activeFacetState, priceMin: null });
+  } else if (delta?.key === 'priceMax') {
+    activeFacetState = normalizeHomeFacets({ ...activeFacetState, priceMax: null });
+  } else if (delta?.key === 'stars') {
+    activeFacetState = normalizeHomeFacets({ ...activeFacetState, stars: null });
+  } else if (delta?.key === 'availableOnly') {
+    activeFacetState = normalizeHomeFacets({ ...activeFacetState, availableOnly: true });
+  }
+  syncLegacyFacetInputs();
+  scheduleFacetRefresh();
+}
+
+function scheduleFacetRefresh() {
+  window.clearTimeout(facetDebounceTimer);
+  facetDebounceTimer = window.setTimeout(() => {
+    refreshSearchResults();
+  }, 150);
+}
+
+function refreshSearchResults() {
+  if (!lastSearchFilters) return;
+  const dimensionPool = SearchCore.findSearchMatches(PRODUCTS, lastSearchFilters, {
+    limit: Number.MAX_SAFE_INTEGER
+  });
+  const operationalPool = filterOperationalPool(dimensionPool, lastSearchContext);
+  const facetResult = SearchCore.applyFacets(operationalPool, activeFacetState);
+  currentMatchRows = SearchCore.sortMatches(facetResult.rows, currentSortBy);
+  filteredResults = currentMatchRows.slice(0, RESULTS_CAP);
+
+  const catName = CATEGORY_LABELS[currentCat] ?? 'Appliances';
+  const resultsCount = document.getElementById('resultsCount');
+  if (currentMatchRows.length === 0) {
+    resultsCount.hidden = true;
+  } else {
+    resultsCount.hidden = false;
+    resultsCount.innerHTML = `<b>${currentMatchRows.length}</b> ${catName} that fit`;
+  }
+  renderFacetChrome(facetResult.counts);
+  renderResults();
+  updateSearchUrl(lastSearchContext);
+  updateFloatBarSummary();
+}
+
 /* ══════════════════════════════════════════════════════════
    SEARCH
 ══════════════════════════════════════════════════════════ */
-function doSearch() {
+function doSearch(options = {}) {
   const w = parseInt(document.getElementById('inW').value);
   const h = parseInt(document.getElementById('inH').value);
   const d = parseInt(document.getElementById('inD').value);
   const brand = document.getElementById('inBrand').value;
-  const budget = parseInt(document.getElementById('inBudget').value) || Infinity;
+  const budget = parsePositiveInteger(document.getElementById('inBudget').value);
   const doorW = parseInt(document.getElementById('inDoor').value) || DEFAULT_DOORWAY_MM;
   const dwelling = document.getElementById('inDwelling').value || DEFAULT_DWELLING;
 
@@ -2366,35 +2561,6 @@ function doSearch() {
   if (!w || !h || !d) { showToast('Please enter width, height, and depth'); return; }
   if (w<200||h<200||d<100) { showToast('Dimensions look too small — enter in millimetres'); return; }
 
-  filteredResults = PRODUCTS.filter(p => {
-    if (p.cat !== currentCat) return false;
-
-    // Brand-specific clearance
-    const cl = getClearance(p.cat, p.brand);
-    const availW = w - cl.side * 2;
-    const availH = h - cl.top;
-    const availD = d - cl.rear;
-
-    if (p.w > availW) return false;
-    if (p.h > availH) return false;
-    if (p.d > availD) return false;
-
-    // Brand filter
-    if (brand && p.brand !== brand) return false;
-
-    // Budget
-    if (p.price != null && p.price > budget) return false;
-
-    // Doorway check — use narrowest of w, d for delivery
-    const deliveryW = Math.min(p.w, p.d);
-    if (deliveryW > doorW + 50) return false; // 50mm packaging tolerance
-
-    // NCC 2022: apartments must get non-vented dryers
-    if (currentCat === 'dryer' && dwelling === 'apartment' && p.vented) return false;
-
-    return true;
-  });
-
   document.getElementById('resultsSection').style.display = 'block';
   setTimeout(() => {
     document.getElementById('resultsSection').scrollIntoView({ behavior:'smooth', block:'start' });
@@ -2406,14 +2572,12 @@ function doSearch() {
   }
 
   const catName = CATEGORY_LABELS[currentCat] ?? 'Appliances';
-  document.getElementById('resultsCount').innerHTML = `<b>${filteredResults.length}</b> ${catName} that fit`;
-
   document.title = `${catName} that fit ${w}×${h}×${d}mm — FitAppliance`;
   const descEl = document.querySelector('meta[name="description"]');
   if (descEl) {
     descEl.setAttribute(
       'content',
-      `${filteredResults.length} ${catName.toLowerCase()} that fit a ${w}mm wide, ${h}mm tall, ${d}mm deep cavity — with brand-specific clearances and energy ratings.`
+      `${catName} that fit a ${w}mm wide, ${h}mm tall, ${d}mm deep cavity — with brand-specific clearances and energy ratings.`
     );
   }
 
@@ -2425,19 +2589,26 @@ function doSearch() {
     <span class="results-meta-chip">Doorway: ${doorW}mm</span>
   `;
 
-  renderResults();
+  lastSearchFilters = {
+    cat: currentCat,
+    w,
+    h,
+    d,
+    toleranceMm: 5
+  };
+  lastSearchContext = { doorW, dwelling };
+  if (!options?.preserveExistingFacets) {
+    activeFacetState = normalizeHomeFacets({
+      ...activeFacetState,
+      brand: brand ? [brand] : activeFacetState.brand,
+      priceMax: budget ?? activeFacetState.priceMax
+    });
+    syncLegacyFacetInputs();
+  }
 
-  const params = new URLSearchParams();
-  params.set('cat', currentCat);
-  params.set('w', String(w));
-  params.set('h', String(h));
-  params.set('d', String(d));
-  if (brand) params.set('brand', brand);
-  if (doorW !== DEFAULT_DOORWAY_MM) params.set('door', String(doorW));
-  if (dwelling !== DEFAULT_DWELLING) params.set('dwelling', dwelling);
-  history.replaceState(null, '', `?${params.toString()}`);
+  refreshSearchResults();
 
-  recordSearch({ cat: currentCat, w, h, d, brand, door: doorW, dwelling });
+  recordSearch({ cat: currentCat, w, h, d, brand: activeFacetState.brand.join(','), door: doorW, dwelling });
   renderSearchHistoryChips();
   updateFloatBarSummary();
 }
@@ -2456,16 +2627,7 @@ function setView(v) {
    RENDER RESULTS
 ══════════════════════════════════════════════════════════ */
 function renderResults() {
-  const sort = document.getElementById('sortSel').value;
-  const sorted = [...filteredResults].sort((a,b) => {
-    if (sort==='price_asc')  return (a.price ?? Infinity) - (b.price ?? Infinity);
-    if (sort==='price_desc') return (b.price ?? -Infinity) - (a.price ?? -Infinity);
-    if (sort==='energy_desc') return b.stars - a.stars;
-    if (sort==='kwh_asc') return (a.kwh_year ?? Infinity) - (b.kwh_year ?? Infinity);
-    if (sort==='tco_asc')    return lifetimeCost(a.price,a.kwh_year) - lifetimeCost(b.price,b.kwh_year);
-    if (sort==='fit_desc')   return (b.w*b.h*b.d) - (a.w*a.h*a.d);
-    return b.stars - a.stars;
-  });
+  const sorted = [...filteredResults];
 
   // Inject sponsored at positions 2 and 5
   const sp = sorted.filter(p=>p.sponsored);
@@ -2485,7 +2647,7 @@ function renderResults() {
   const container = document.getElementById('productGrid');
   const empty     = document.getElementById('emptyState');
 
-  if (sorted.length===0) {
+  if (currentMatchRows.length===0) {
     container.innerHTML='';
     container.className='';
     empty.classList.add('show');

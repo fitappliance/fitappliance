@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-04-23",
+  "last_updated": "2026-04-24",
   "pilots": [
     {
       "productId": "f6",
@@ -11,7 +11,7 @@
       "brandPageSlug": "bosch-fridge-clearance",
       "cavityPageSlug": "650mm-fridge",
       "coverageCount": 47,
-      "retailers": 2,
+      "retailers": 1,
       "stars": 5
     },
     {
@@ -27,6 +27,30 @@
       "stars": 4
     },
     {
+      "productId": "d1",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS6ECI05A Series 6 — 14 Place",
+      "modelSlug": "bosch-sms6eci05a",
+      "brandPageSlug": "bosch-dishwasher-clearance",
+      "cavityPageSlug": null,
+      "coverageCount": 1,
+      "retailers": 1,
+      "stars": 5
+    },
+    {
+      "productId": "w3",
+      "cat": "washing_machine",
+      "brand": "Bosch",
+      "model": "WAX32EH0AU Series 8 — 10kg",
+      "modelSlug": "bosch-wax32eh0au",
+      "brandPageSlug": "bosch-washing-machine-clearance",
+      "cavityPageSlug": null,
+      "coverageCount": 1,
+      "retailers": 1,
+      "stars": 5
+    },
+    {
       "productId": "dr2",
       "cat": "dryer",
       "brand": "LG",
@@ -37,30 +61,6 @@
       "coverageCount": 1,
       "retailers": 2,
       "stars": 5
-    },
-    {
-      "productId": "d3",
-      "cat": "dishwasher",
-      "brand": "Samsung",
-      "model": "DW60BG830FSSP Smart — 15 Place",
-      "modelSlug": "samsung-dw60bg830fssp",
-      "brandPageSlug": "samsung-dishwasher-clearance",
-      "cavityPageSlug": null,
-      "coverageCount": 1,
-      "retailers": 2,
-      "stars": 5
-    },
-    {
-      "productId": "w1",
-      "cat": "washing_machine",
-      "brand": "Samsung",
-      "model": "WW90T684DLH 9kg Front Loader",
-      "modelSlug": "samsung-ww90t684dlh",
-      "brandPageSlug": "samsung-washing-machine-clearance",
-      "cavityPageSlug": null,
-      "coverageCount": 1,
-      "retailers": 2,
-      "stars": 4
     }
   ]
 }
