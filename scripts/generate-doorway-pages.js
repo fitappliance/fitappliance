@@ -4,6 +4,7 @@
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
+const { buildHreflangLinks } = require('./common/html-head.js');
 const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 const { canonicalizeProducts } = require('./brand-canon.js');
 
@@ -149,6 +150,7 @@ function buildPageHtml({ doorway, matched, adjacentDoorways, relatedDoorways, mo
   <meta name="description" content="${escHtml(description)}">
   <meta name="article:modified_time" content="${escHtml(modifiedTime)}">
   <link rel="canonical" href="${canonical}">
+${buildHreflangLinks(canonical)}
   <style>
     :root { --ink:#131210; --ink-2:#3d3a35; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
     body { margin:0; font-family:Arial, sans-serif; color:var(--ink); background:var(--paper); line-height:1.6; }

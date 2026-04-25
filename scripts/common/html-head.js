@@ -34,6 +34,7 @@ function buildHtmlHead({
   }
   if (canonical) {
     lines.push(`  <link rel="canonical" href="${canonical}">`);
+    lines.push(buildHreflangLinks(canonical));
   }
   if (typeof extraMeta === 'string' && extraMeta.trim()) {
     lines.push(extraMeta.trimEnd());
@@ -42,7 +43,27 @@ function buildHtmlHead({
   return lines.join('\n');
 }
 
+function buildHreflangLinks(canonical) {
+  if (!canonical) return '';
+  const safeCanonical = escHtml(canonical);
+  return [
+    `  <link rel="alternate" hreflang="en-AU" href="${safeCanonical}">`,
+    `  <link rel="alternate" hreflang="x-default" href="${safeCanonical}">`
+  ].join('\n');
+}
+
+function buildOgImageMeta(imagePath, { width = 1200, height = 630 } = {}) {
+  if (!imagePath) return '';
+  return [
+    `  <meta property="og:image" content="${escHtml(imagePath)}">`,
+    `  <meta property="og:image:width" content="${Number(width)}">`,
+    `  <meta property="og:image:height" content="${Number(height)}">`
+  ].join('\n');
+}
+
 module.exports = {
   escHtml,
-  buildHtmlHead
+  buildHtmlHead,
+  buildHreflangLinks,
+  buildOgImageMeta
 };

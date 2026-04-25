@@ -3,7 +3,7 @@
 const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
-const { buildHtmlHead, escHtml } = require('./common/html-head.js');
+const { buildHtmlHead, buildOgImageMeta, escHtml } = require('./common/html-head.js');
 const { stringifyJsonLd } = require('./common/schema-jsonld.js');
 const { slugNormalize } = require('./common/slug-normalize.js');
 const { displayBrandName } = require('./utils/brand-utils.js');
@@ -354,9 +354,7 @@ function buildComparisonNarrative(clearanceA, clearanceB, brandA, brandB, catego
 }
 
 function buildSocialMetaTags({ title, description, canonical, ogImageUrl = null }) {
-  const imageMeta = ogImageUrl
-    ? `  <meta property="og:image" content="${escHtml(ogImageUrl)}">`
-    : '';
+  const imageMeta = buildOgImageMeta(ogImageUrl);
   return [
     '  <meta property="og:type" content="article">',
     '  <meta property="og:site_name" content="FitAppliance">',
@@ -395,7 +393,7 @@ function buildComparisonPageHtml({
   const canonical = `${SITE_ORIGIN}/compare/${slug}`;
   const heroPngPath = `/og-images/compare-${slug}.png`;
   const heroWebpPath = `/og-images/compare-${slug}.webp`;
-  const ogImageUrl = `${SITE_ORIGIN}${heroPngPath}`;
+  const ogImageUrl = heroPngPath;
   const narrative = buildComparisonNarrative(
     clearanceA,
     clearanceB,
