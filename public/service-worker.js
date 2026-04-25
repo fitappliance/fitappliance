@@ -2,7 +2,9 @@
 'use strict';
 
 const CACHE_VERSION = '5a3790b';
-const STATIC_CACHE = CACHE_VERSION;
+const APP_SHELL_CACHE = `app-shell-${CACHE_VERSION}`;
+const STATIC_CACHE = `static-${CACHE_VERSION}`;
+const DATA_CACHE = `data-${CACHE_VERSION}`;
 const PRECACHE = [
   "/",
   "/index.html",
@@ -14,11 +16,24 @@ const PRECACHE = [
   "/manifest.webmanifest",
   "/scripts/sw-register.js"
 ];
+const VERSIONED_CACHE_PREFIXES = ["app-shell-","static-","data-"];
 const CACHE_FIRST_PREFIXES = ['/scripts/', '/og-images/', '/data/', '/icons/'];
+
+function isVersionedCacheName(key) {
+  return VERSIONED_CACHE_PREFIXES.some((prefix) => String(key ?? '').startsWith(prefix));
+}
+
+async function cleanupVersionedCaches(cacheStorage, version) {
+  const cacheVersion = String(version ?? '').trim();
+  const keys = await cacheStorage.keys();
+  await Promise.all(keys
+    .filter((key) => isVersionedCacheName(key) && !String(key).endsWith(`-${cacheVersion}`))
+    .map((key) => cacheStorage.delete(key)));
+}
 
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
-    const cache = await caches.open(STATIC_CACHE);
+    const cache = await caches.open(APP_SHELL_CACHE);
     await cache.addAll(PRECACHE);
     await self.skipWaiting();
   })());
@@ -26,8 +41,7 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil((async () => {
-    const keys = await caches.keys();
-    await Promise.all(keys.map((key) => (key === STATIC_CACHE ? Promise.resolve() : caches.delete(key))));
+    await cleanupVersionedCaches(caches, CACHE_VERSION);
     await self.clients.claim();
   })());
 });
