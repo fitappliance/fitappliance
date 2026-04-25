@@ -38,6 +38,41 @@ index.html loads
   └── renders UI (same logic, data-driven)
 ```
 
+### Current architecture snapshot (updated 2026-04-26)
+
+#### Search architecture (Phase 45 series)
+
+- `public/scripts/search-core.js` — pure function pipeline: `findSearchMatches` → `applyFacets` → `sortMatches` → `searchWithFacets` composite.
+- `public/scripts/search-dom.js` — render layer: facet bar, sort dropdown, live count, active chips, mobile sheet, result cards with retailer strip and price range, saved search dropdown, compare tray, and compare modal.
+- `public/scripts/saved-search-store.js` — LocalStorage-backed saved search slots, max 3, with storage-failure fallback.
+- `public/scripts/compare-store.js` — LocalStorage-backed compare tray, max 3, with compact product snapshots.
+- URL state is handled by `serializeSearchState` / `parseSearchParams` from Phase 45a.
+- Mobile `<768px` uses a 3-tab bottom sheet: Filters / Saved / Compare.
+
+#### Service Worker (Phase 43a §3.6)
+
+- `public/service-worker.js` — versioned caches with `CACHE_VERSION` set to the git short SHA by `scripts/generate-sw.js`.
+- Cache namespaces: `app-shell-{ver}`, `static-{ver}`, and `data-{ver}`.
+- Fetch strategy: HTML is network-first; static assets are cache-first; data JSON uses cache-first with stale-while-revalidate.
+- `public/scripts/sw-register.js` listens for `controllerchange` and shows a "New version available" toast instead of forcing a reload.
+
+#### API endpoints (Phase 43a §2.6)
+
+- `api/rum.js` — anonymous RUM ingestion with a 4 KB payload limit and per-IP token bucket rate limiting.
+- Rate limit: 60 req/min burst, 1 req/s sustained, LRU cap 100 IPs per edge.
+- The limiter is best-effort per-edge in-memory. If RUM volume grows, upgrade to Vercel KV for a global limiter.
+
+#### Brand canonicalization (Phase 42b)
+
+- `data/brand-canon.json` — `alias_map` for 24 brand-casing collisions; `drop_brands` intentionally empty and deferred to Phase 42c.
+- `scripts/brand-canon.js` — `canonicalizeBrand` / `filterByBrandCanon`, used by generators so brand pages and schema use canonical display names.
+
+#### Critical CSS strategy (Phase 43a §3.5)
+
+- `public/index.html` — inline critical `<style>` kept below the 14 KB HTTP/2 single-packet target.
+- `public/styles-deferred.css` — below-fold styles loaded with preload + onload swap; cached by the service worker after first visit.
+- `public/styles.css` — shared external styles retained for stable runtime components and Phase 45 UI surfaces.
+
 ---
 
 ## 2. Data Sources
