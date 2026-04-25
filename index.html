@@ -1472,6 +1472,26 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
     </div>
   </div>
   <div class="active-chips" data-active-chips aria-live="polite"></div>
+  <button
+    type="button"
+    class="mobile-sheet-trigger"
+    data-mobile-filter-trigger
+    aria-haspopup="dialog"
+    aria-expanded="false"
+    aria-controls="mobileFilterSheet"
+  >Filters (0)</button>
+  <div class="mobile-sheet-overlay" data-mobile-sheet-overlay hidden></div>
+  <section class="mobile-sheet" id="mobileFilterSheet" data-mobile-filter-sheet hidden role="dialog" aria-modal="true" aria-labelledby="mobileFilterTitle">
+    <div class="mobile-sheet__header">
+      <h2 id="mobileFilterTitle">Filter results</h2>
+      <button type="button" class="mobile-sheet__close" data-mobile-sheet-close aria-label="Close filters">×</button>
+    </div>
+    <div class="mobile-sheet__body" data-mobile-sheet-body></div>
+    <div class="mobile-sheet__footer">
+      <button type="button" class="mobile-sheet__clear" data-mobile-clear>Clear all</button>
+      <button type="button" class="mobile-sheet__apply" data-mobile-apply>Apply (0 results)</button>
+    </div>
+  </section>
 
   <div class="results-body">
     <div>
@@ -2432,9 +2452,31 @@ function updateSearchUrl(context = {}) {
   history.replaceState(null, '', `?${merged.toString()}`);
 }
 
+function countActiveFacets(facets = activeFacetState) {
+  let count = Array.isArray(facets?.brand) ? facets.brand.length : 0;
+  if (facets?.priceMin !== null && facets?.priceMin !== undefined) count += 1;
+  if (facets?.priceMax !== null && facets?.priceMax !== undefined) count += 1;
+  if (facets?.stars !== null && facets?.stars !== undefined) count += 1;
+  if (facets?.availableOnly === false) count += 1;
+  return count;
+}
+
+function clearAllFacets() {
+  activeFacetState = normalizeHomeFacets({
+    brand: [],
+    priceMin: null,
+    priceMax: null,
+    stars: null,
+    availableOnly: true
+  });
+  syncLegacyFacetInputs();
+  refreshSearchResults();
+}
+
 function renderFacetChrome(counts = {}) {
+  const facetBar = document.querySelector('[data-facet-bar]');
   SearchDom.renderFacetBar(
-    document.querySelector('[data-facet-bar]'),
+    facetBar,
     counts,
     activeFacetState,
     handleFacetChange
@@ -2457,6 +2499,19 @@ function renderFacetChrome(counts = {}) {
     currentMatchRows.length,
     getCategoryCatalogCount()
   );
+  SearchDom.renderMobileFilterSheet({
+    trigger: document.querySelector('[data-mobile-filter-trigger]'),
+    sheet: document.querySelector('[data-mobile-filter-sheet]'),
+    overlay: document.querySelector('[data-mobile-sheet-overlay]'),
+    sheetBody: document.querySelector('[data-mobile-sheet-body]'),
+    facetBar,
+    closeButton: document.querySelector('[data-mobile-sheet-close]'),
+    clearButton: document.querySelector('[data-mobile-clear]'),
+    applyButton: document.querySelector('[data-mobile-apply]'),
+    activeFacetCount: countActiveFacets(activeFacetState),
+    resultCount: currentMatchRows.length,
+    onClear: clearAllFacets
+  });
 }
 
 function applyFacetDelta(delta) {
