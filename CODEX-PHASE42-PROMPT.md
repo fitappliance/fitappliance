@@ -36,7 +36,7 @@
 1. **RED**：写 `tests/search-ux.test.mjs` / `tests/popularity.test.mjs` / `tests/readable-spec.test.mjs`（≥ 20 test），全失败
 2. **GREEN 核心**：
    - `data/clearance-defaults.json` + `data/series-dictionary.json` 人工填 tier1 brands（Bosch/LG/Samsung/Miele/Fisher & Paykel）
-   - `scripts/common/fit-score.js` / `popularity-score.js` / `readable-spec.js` 纯函数
+   - `public/scripts/ui/fit-score.js` / `scripts/common/popularity-score.js` / `scripts/common/readable-spec.js` 纯函数
    - `scripts/enrich-appliances.js` one-shot enrich 现有 `public/data/*.json`（回写 displayName/readableSpec/priorityScore）
    - `scripts/research-popularity.js`：沙盒环境调 `globalThis.fetch` 去访问真实 AU 零售商；若任何一次 fetch 失败或 DNS 错 → **立即进入 fallback 模式**：写空 `data/popularity-research.json`（`products: {}`, `last_researched: null`）+ 打 `docs/PHASE42A-RESEARCH-BACKFILL.md` 记录需用户手动跑
 3. **GREEN UI**：
