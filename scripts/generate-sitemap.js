@@ -4,6 +4,7 @@ const path = require('node:path');
 const { mkdir, readFile, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { toAbsoluteSitemapLoc } = require('./common/sitemap-loc.js');
+const { getBuildDate } = require('./utils/build-timestamp.js');
 
 const STATIC_PAGES = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
@@ -68,7 +69,7 @@ async function generateSitemap({
   locationIndexPath = null,
   outputPath = path.join(repoRoot, 'public', 'sitemap.xml'),
   baseUrl = SITE_ORIGIN,
-  today = new Date().toISOString().slice(0, 10),
+  today = getBuildDate(),
   logger = console
 } = {}) {
   const readJsonIfExists = async (filePath) => {

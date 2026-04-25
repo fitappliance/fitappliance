@@ -9,6 +9,7 @@ const { slugNormalize } = require('./common/slug-normalize.js');
 const { displayBrandName } = require('./utils/brand-utils.js');
 const { loadProvidersFromFile, resolveAffiliateLinkForProduct } = require('./render-affiliate-links.js');
 const { canonicalizeProducts, canonicalizeRuleDocument } = require('./brand-canon.js');
+const { getBuildDate } = require('./utils/build-timestamp.js');
 
 const CATEGORY_META = {
   fridge: {
@@ -384,7 +385,7 @@ function buildComparisonPageHtml({
   modelSamplesB = [],
   affiliateProviders = [],
   alsoViewedComparisons = [],
-  lastUpdated = new Date().toISOString().slice(0, 10)
+  lastUpdated = getBuildDate()
 }) {
   const displayBrandA = displayBrandName(brandA);
   const displayBrandB = displayBrandName(brandB);
