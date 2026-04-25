@@ -35,3 +35,13 @@ test('phase 43a p2: fit checker dimension inputs expose accessible labels', () =
     );
   }
 });
+
+test('phase 43a p2: fit checker dimension labels are explicitly associated with inputs', () => {
+  for (const row of DIMENSION_INPUTS) {
+    const input = document.getElementById(row.id);
+    const label = document.querySelector(`label[for="${row.id}"]`);
+
+    assert.ok(input, `${row.id} input should exist`);
+    assert.ok(label, `${row.id} should have an explicit label[for] association`);
+  }
+});

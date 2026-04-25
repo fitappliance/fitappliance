@@ -50,3 +50,16 @@ test('phase 43a p2: sampled pages expose en-AU and x-default hreflang links', ()
     }
   }
 });
+
+test('phase 43a p2: sampled hreflang hrefs use the canonical production host', () => {
+  for (const relativePath of SAMPLE_PAGES) {
+    const head = extractHead(readHtml(relativePath));
+    const alternates = extractHreflangLinks(head);
+
+    for (const alternate of alternates) {
+      const url = new URL(alternate.href);
+      assert.equal(url.hostname, 'www.fitappliance.com.au', `${relativePath} hreflang host mismatch`);
+      assert.equal(url.protocol, 'https:', `${relativePath} hreflang must use https`);
+    }
+  }
+});

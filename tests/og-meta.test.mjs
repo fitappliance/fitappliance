@@ -16,6 +16,9 @@ const SAMPLE_PAGES = [
   'pages/guides/dishwasher-cavity-sizing.html',
   'pages/guides/appliance-fit-sizing-handbook.html'
 ];
+const CAVITY_PAGES = SAMPLE_PAGES.filter((file) => file.startsWith('pages/cavity/'));
+const COMPARE_PAGES = SAMPLE_PAGES.filter((file) => file.startsWith('pages/compare/'));
+const GUIDE_PAGES = SAMPLE_PAGES.filter((file) => file.startsWith('pages/guides/'));
 
 function readHtml(relativePath) {
   return fs.readFileSync(path.join(ROOT, relativePath), 'utf8');
@@ -47,5 +50,28 @@ test('phase 43a p2: cavity, compare and guide pages expose local OG image meta',
       true,
       `${relativePath} references missing image ${imagePath}`
     );
+  }
+});
+
+test('phase 43a p2: cavity pages use an existing fridge OG fallback image', () => {
+  for (const relativePath of CAVITY_PAGES) {
+    const imagePath = readMeta(extractHead(readHtml(relativePath)), 'og:image');
+    assert.equal(imagePath, '/og-images/westinghouse-fridge.png', `${relativePath} cavity fallback mismatch`);
+  }
+});
+
+test('phase 43a p2: compare pages use slug-matched OG images', () => {
+  for (const relativePath of COMPARE_PAGES) {
+    const slug = path.basename(relativePath, '.html');
+    const imagePath = readMeta(extractHead(readHtml(relativePath)), 'og:image');
+    assert.equal(imagePath, `/og-images/compare-${slug}.png`, `${relativePath} compare image mismatch`);
+  }
+});
+
+test('phase 43a p2: guide pages use guide slug OG images', () => {
+  for (const relativePath of GUIDE_PAGES) {
+    const slug = path.basename(relativePath, '.html');
+    const imagePath = readMeta(extractHead(readHtml(relativePath)), 'og:image');
+    assert.equal(imagePath, `/og-images/guide-${slug}.png`, `${relativePath} guide image mismatch`);
   }
 });

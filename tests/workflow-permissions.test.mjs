@@ -55,3 +55,14 @@ test('phase 43a p2: every workflow declares least-privilege token permissions', 
     assert.equal(yaml.includes('write-all'), false, `${fileName} must not use write-all`);
   }
 });
+
+test('phase 43a p2: read-only validation workflows do not request write scopes', () => {
+  const readOnlyWorkflows = ['copy-lint.yml', 'doc-audit.yml', 'indexnow-on-deploy.yml', 'portability.yml', 'pr-validation.yml'];
+
+  for (const fileName of readOnlyWorkflows) {
+    const yaml = fs.readFileSync(path.join(WORKFLOW_DIR, fileName), 'utf8');
+    const permissions = parseTopLevelPermissions(yaml);
+
+    assert.deepEqual(permissions, { contents: 'read' }, `${fileName} should stay read-only`);
+  }
+});
