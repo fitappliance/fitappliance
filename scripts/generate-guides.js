@@ -6,6 +6,7 @@ const { execFileSync } = require('node:child_process');
 const { existsSync, statSync } = require('node:fs');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
+const { buildHreflangLinks } = require('./common/html-head.js');
 const { buildArticleSchema, serializeJsonLd } = require('./common/schema-jsonld.js');
 const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 
@@ -268,6 +269,7 @@ ${articleJsonLd}
   <meta name="description" content="${escHtml(description)}">
   <meta name="article:modified_time" content="${getBuildTimestampIso()}">
   <link rel="canonical" href="${canonical}">
+${buildHreflangLinks(canonical)}
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="FitAppliance">
   <meta property="og:title" content="${escHtml(title)}">

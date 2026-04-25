@@ -34,6 +34,7 @@ function buildHtmlHead({
   }
   if (canonical) {
     lines.push(`  <link rel="canonical" href="${canonical}">`);
+    lines.push(buildHreflangLinks(canonical));
   }
   if (typeof extraMeta === 'string' && extraMeta.trim()) {
     lines.push(extraMeta.trimEnd());
@@ -42,7 +43,17 @@ function buildHtmlHead({
   return lines.join('\n');
 }
 
+function buildHreflangLinks(canonical) {
+  if (!canonical) return '';
+  const safeCanonical = escHtml(canonical);
+  return [
+    `  <link rel="alternate" hreflang="en-AU" href="${safeCanonical}">`,
+    `  <link rel="alternate" hreflang="x-default" href="${safeCanonical}">`
+  ].join('\n');
+}
+
 module.exports = {
   escHtml,
-  buildHtmlHead
+  buildHtmlHead,
+  buildHreflangLinks
 };

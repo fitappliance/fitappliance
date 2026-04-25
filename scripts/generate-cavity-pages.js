@@ -5,6 +5,7 @@ const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { fillTemplate, loadCopyFile, pickVariant } = require('./common/copy-data.js');
 const { buildReviewVideoSection } = require('./common/review-video-renderer.js');
+const { buildHreflangLinks } = require('./common/html-head.js');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { canonicalizeProducts, canonicalizeRuleDocument } = require('./brand-canon.js');
 const { generateMeasurementSvg } = require('./generate-measurement-svg');
@@ -175,6 +176,7 @@ function buildPageHtml({
   <meta name="description" content="${escHtml(description)}">
   <meta name="article:modified_time" content="${escHtml(modifiedTime)}">
   <link rel="canonical" href="${canonical}">
+${buildHreflangLinks(canonical)}
   <style>
     :root { --ink:#131210; --ink-2:#3d3a35; --ink-3:#6b6b6b; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
     body { margin:0; font-family:Arial, sans-serif; color:var(--ink); background:var(--paper); line-height:1.6; }
