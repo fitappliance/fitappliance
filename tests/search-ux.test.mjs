@@ -246,3 +246,31 @@ test('phase 45b search-ux: clear all resets facet state without touching dimensi
   assert.match(indexHtml, /availableOnly:\s*true/);
   assert.match(indexHtml, /refreshSearchResults\(\);/);
 });
+
+test('phase 45c search-ux: homepage wires saved search store and controls', () => {
+  const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+
+  assert.match(indexHtml, /import '\/scripts\/saved-search-store\.js';/);
+  assert.match(indexHtml, /data-save-search/);
+  assert.match(indexHtml, /data-saved-searches/);
+  assert.match(indexHtml, /SavedSearchStore\.createSavedSearchStore\(\)/);
+  assert.match(indexHtml, /function restoreSavedSearchState/);
+});
+
+test('phase 45c search-ux: homepage wires compare store into tray and modal', () => {
+  const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+
+  assert.match(indexHtml, /import '\/scripts\/compare-store\.js';/);
+  assert.match(indexHtml, /CompareStore\.createCompareStore\(\)/);
+  assert.match(indexHtml, /SearchDom\.renderCompareTray/);
+  assert.match(indexHtml, /SearchDom\.renderCompareModal/);
+  assert.match(indexHtml, /SearchDom\.bindCompareButtons/);
+});
+
+test('phase 45c search-ux: restore saved search applies category facets and sort state', () => {
+  const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+
+  assert.match(indexHtml, /activeFacetState\s*=\s*normalizeHomeFacets\(state\.facets/);
+  assert.match(indexHtml, /currentSortBy\s*=\s*state\.sortBy/);
+  assert.match(indexHtml, /doSearch\(\{\s*preserveExistingFacets:\s*true,\s*toleranceMm:/);
+});

@@ -164,3 +164,37 @@ test('phase 45b perf: searchWithFacets stays under 50ms for 2170 rows', async ()
   assert.ok(Array.isArray(result.rows));
   assert.ok(elapsed < 50, `searchWithFacets took ${elapsed.toFixed(2)}ms`);
 });
+
+test('phase 45c perf: facet chrome compare tray and 100 result cards render under 70ms in jsdom', async () => {
+  const SearchDom = await loadBrowserScript('public/scripts/search-dom.js');
+  const window = new JSDOM(`
+    <main>
+      <div data-facet-bar></div>
+      <div id="compareTray"></div>
+    </main>
+  `, { pretendToBeVisual: true }).window;
+  const products = Array.from({ length: 100 }, (_, index) => makePerfProduct(index));
+  const compareRows = [
+    { id: 'perf-1', snapshot: { slug: 'perf-1', displayName: 'Perf 1', w: 600, h: 1800, d: 650, retailers: [], stars: 4 }, addedAt: '2026-04-26T01:00:00.000Z' },
+    { id: 'perf-2', snapshot: { slug: 'perf-2', displayName: 'Perf 2', w: 601, h: 1801, d: 651, retailers: [], stars: 5 }, addedAt: '2026-04-26T01:00:00.000Z' }
+  ];
+  const store = {
+    list: () => compareRows,
+    has: (id) => compareRows.some((row) => row.id === id)
+  };
+
+  SearchDom.buildCardHtml(products[0], { compareStore: store });
+  const start = performance.now();
+
+  SearchDom.renderFacetBar(
+    window.document.querySelector('[data-facet-bar]'),
+    { brand: { Bosch: 40, LG: 35, Miele: 25 }, stars: { 4: 60, 5: 20 } },
+    { brand: ['Bosch'], stars: 4, availableOnly: true },
+    () => {}
+  );
+  SearchDom.renderCompareTray(window.document.getElementById('compareTray'), { store });
+  products.map((product) => SearchDom.buildCardHtml(product, { compareStore: store })).join('');
+
+  const elapsed = performance.now() - start;
+  assert.ok(elapsed < 70, `facet + compare tray + 100 cards render took ${elapsed.toFixed(2)}ms`);
+});

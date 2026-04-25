@@ -30,7 +30,16 @@ function makeSheetWindow() {
           <h2 id="mobileFilterTitle">Filter results</h2>
           <button type="button" data-mobile-sheet-close>Close</button>
         </div>
-        <div class="mobile-sheet__body" data-mobile-sheet-body></div>
+        <div class="mobile-sheet__tabs" role="tablist">
+          <button type="button" data-mobile-sheet-tab="filters">Filters</button>
+          <button type="button" data-mobile-sheet-tab="saved">Saved</button>
+          <button type="button" data-mobile-sheet-tab="compare">Compare</button>
+        </div>
+        <div data-mobile-sheet-panel="filters">
+          <div class="mobile-sheet__body" data-mobile-sheet-body></div>
+        </div>
+        <div data-mobile-sheet-panel="saved" data-mobile-saved-panel hidden>Saved searches list</div>
+        <div data-mobile-sheet-panel="compare" data-mobile-compare-panel hidden>Compare items</div>
         <div class="mobile-sheet__footer">
           <button type="button" data-mobile-clear>Clear all</button>
           <button type="button" data-mobile-apply>Apply (0 results)</button>
@@ -51,6 +60,8 @@ function setupSheet(window, api, overrides = {}) {
     closeButton: window.document.querySelector('[data-mobile-sheet-close]'),
     clearButton: window.document.querySelector('[data-mobile-clear]'),
     applyButton: window.document.querySelector('[data-mobile-apply]'),
+    tabButtons: window.document.querySelectorAll('[data-mobile-sheet-tab]'),
+    panels: window.document.querySelectorAll('[data-mobile-sheet-panel]'),
     activeFacetCount: 2,
     resultCount: 17,
     ...overrides
@@ -168,4 +179,30 @@ test('phase 45b mobile sheet: repeated render updates trigger and apply counts',
   setupSheet(window, api, { activeFacetCount: 3, resultCount: 1 });
   assert.equal(trigger.textContent, 'Filters (3)');
   assert.equal(applyButton.textContent, 'Apply (1 result)');
+});
+
+test('phase 45c mobile sheet: sheet exposes Filters Saved and Compare tabs', async () => {
+  const api = await loadSearchDom();
+  const window = makeSheetWindow();
+
+  setupSheet(window, api);
+
+  const tabs = [...window.document.querySelectorAll('[data-mobile-sheet-tab]')];
+  assert.deepEqual(tabs.map((tab) => tab.textContent), ['Filters', 'Saved', 'Compare']);
+  assert.equal(window.document.querySelector('[data-mobile-sheet-tab="filters"]').getAttribute('aria-selected'), 'true');
+});
+
+test('phase 45c mobile sheet: switching to Saved and Compare panels hides filters panel', async () => {
+  const api = await loadSearchDom();
+  const window = makeSheetWindow();
+
+  setupSheet(window, api);
+  window.document.querySelector('[data-mobile-sheet-tab="saved"]').click();
+
+  assert.equal(window.document.querySelector('[data-mobile-sheet-panel="filters"]').hidden, true);
+  assert.equal(window.document.querySelector('[data-mobile-saved-panel]').hidden, false);
+
+  window.document.querySelector('[data-mobile-sheet-tab="compare"]').click();
+  assert.equal(window.document.querySelector('[data-mobile-saved-panel]').hidden, true);
+  assert.equal(window.document.querySelector('[data-mobile-compare-panel]').hidden, false);
 });
