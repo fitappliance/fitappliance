@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-04-24",
+  "policies": {
+    "drop_brands": [],
+    "alias_map": {
+      "anko": "Anko",
+      "ARTUSI": "Artusi",
+      "CHiQ": "CHIQ",
+      "COMFEE": "Comfee",
+      "ELECTROLUX": "Electrolux",
+      "EUROMAID": "Euromaid",
+      "EUROTECH": "Eurotech",
+      "FISHER & PAYKEL": "Fisher & Paykel",
+      "HAIER": "Haier",
+      "HISENSE": "Hisense",
+      "HITACHI": "Hitachi",
+      "IKEA": "Ikea",
+      "ILVE": "Ilve",
+      "KOGAN": "Kogan",
+      "LIEBHERR": "Liebherr",
+      "MIDEA": "Midea",
+      "nce": "NCE",
+      "NORJ": "Norj",
+      "SHEFFIELD": "Sheffield",
+      "STIRLING": "Stirling",
+      "TECHNIKA": "Technika",
+      "tisira": "Tisira",
+      "TOSHIBA": "Toshiba",
+      "WESTINGHOUSE": "Westinghouse"
+    }
+  },
+  "evidence": {
+    "alias_collisions": {
+      "anko": {
+        "variants": ["anko", "Anko"],
+        "chosen_canonical": "Anko",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "anko": { "total": 5, "withRetailers": 0, "cats": ["dryer", "fridge", "washing_machine"] },
+          "Anko": { "total": 7, "withRetailers": 0, "cats": ["dishwasher", "dryer", "washing_machine"] }
+        }
+      },
+      "artusi": {
+        "variants": ["Artusi", "ARTUSI"],
+        "chosen_canonical": "Artusi",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Artusi": { "total": 50, "withRetailers": 0, "cats": ["dishwasher", "fridge"] },
+          "ARTUSI": { "total": 2, "withRetailers": 0, "cats": ["dishwasher"] }
+        }
+      },
+      "chiq": {
+        "variants": ["CHiQ", "CHIQ"],
+        "chosen_canonical": "CHIQ",
+        "reason": "display-friendly canonical kept from existing uppercase catalog convention; both variants have withRetailers=0",
+        "variant_stats": {
+          "CHiQ": { "total": 4, "withRetailers": 0, "cats": ["fridge"] },
+          "CHIQ": { "total": 77, "withRetailers": 0, "cats": ["dryer", "fridge", "washing_machine"] }
+        }
+      },
+      "comfee": {
+        "variants": ["Comfee", "COMFEE"],
+        "chosen_canonical": "Comfee",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Comfee": { "total": 2, "withRetailers": 0, "cats": ["dishwasher", "washing_machine"] },
+          "COMFEE": { "total": 3, "withRetailers": 0, "cats": ["dishwasher", "fridge"] }
+        }
+      },
+      "electrolux": {
+        "variants": ["Electrolux", "ELECTROLUX"],
+        "chosen_canonical": "Electrolux",
+        "reason": "Electrolux has withRetailers=3; ELECTROLUX has withRetailers=0",
+        "variant_stats": {
+          "Electrolux": { "total": 7, "withRetailers": 3, "cats": ["dishwasher", "dryer", "washing_machine"] },
+          "ELECTROLUX": { "total": 31, "withRetailers": 0, "cats": ["dishwasher", "dryer", "fridge", "washing_machine"] }
+        }
+      },
+      "euromaid": {
+        "variants": ["Euromaid", "EUROMAID"],
+        "chosen_canonical": "Euromaid",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Euromaid": { "total": 18, "withRetailers": 0, "cats": ["dishwasher", "dryer", "washing_machine"] },
+          "EUROMAID": { "total": 18, "withRetailers": 0, "cats": ["dishwasher", "dryer", "fridge", "washing_machine"] }
+        }
+      },
+      "eurotech": {
+        "variants": ["Eurotech", "EUROTECH"],
+        "chosen_canonical": "Eurotech",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Eurotech": { "total": 33, "withRetailers": 0, "cats": ["dishwasher", "dryer", "fridge", "washing_machine"] },
+          "EUROTECH": { "total": 5, "withRetailers": 0, "cats": ["dishwasher", "washing_machine"] }
+        }
+      },
+      "fisher & paykel": {
+        "variants": ["Fisher & Paykel", "FISHER & PAYKEL"],
+        "chosen_canonical": "Fisher & Paykel",
+        "reason": "Fisher & Paykel has withRetailers=2; FISHER & PAYKEL has withRetailers=0",
+        "variant_stats": {
+          "Fisher & Paykel": { "total": 8, "withRetailers": 2, "cats": ["dishwasher", "fridge"] },
+          "FISHER & PAYKEL": { "total": 88, "withRetailers": 0, "cats": ["dishwasher", "fridge", "washing_machine"] }
+        }
+      },
+      "haier": {
+        "variants": ["Haier", "HAIER"],
+        "chosen_canonical": "Haier",
+        "reason": "Haier has withRetailers=1; HAIER has withRetailers=0",
+        "variant_stats": {
+          "Haier": { "total": 38, "withRetailers": 1, "cats": ["dishwasher", "dryer", "fridge", "washing_machine"] },
+          "HAIER": { "total": 25, "withRetailers": 0, "cats": ["dishwasher", "fridge", "washing_machine"] }
+        }
+      },
+      "hisense": {
+        "variants": ["Hisense", "HISENSE"],
+        "chosen_canonical": "Hisense",
+        "reason": "Hisense has withRetailers=1; HISENSE has withRetailers=0",
+        "variant_stats": {
+          "Hisense": { "total": 1, "withRetailers": 1, "cats": ["fridge"] },
+          "HISENSE": { "total": 100, "withRetailers": 0, "cats": ["dishwasher", "dryer", "fridge", "washing_machine"] }
+        }
+      },
+      "hitachi": {
+        "variants": ["Hitachi", "HITACHI"],
+        "chosen_canonical": "Hitachi",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Hitachi": { "total": 5, "withRetailers": 0, "cats": ["fridge"] },
+          "HITACHI": { "total": 5, "withRetailers": 0, "cats": ["fridge"] }
+        }
+      },
+      "ikea": {
+        "variants": ["Ikea", "IKEA"],
+        "chosen_canonical": "Ikea",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Ikea": { "total": 11, "withRetailers": 0, "cats": ["dishwasher", "fridge"] },
+          "IKEA": { "total": 1, "withRetailers": 0, "cats": ["dishwasher"] }
+        }
+      },
+      "ilve": {
+        "variants": ["Ilve", "ILVE"],
+        "chosen_canonical": "Ilve",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Ilve": { "total": 15, "withRetailers": 0, "cats": ["dishwasher", "fridge"] },
+          "ILVE": { "total": 5, "withRetailers": 0, "cats": ["dishwasher"] }
+        }
+      },
+      "kogan": {
+        "variants": ["Kogan", "KOGAN"],
+        "chosen_canonical": "Kogan",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Kogan": { "total": 58, "withRetailers": 0, "cats": ["dishwasher", "dryer", "fridge", "washing_machine"] },
+          "KOGAN": { "total": 2, "withRetailers": 0, "cats": ["fridge"] }
+        }
+      },
+      "liebherr": {
+        "variants": ["Liebherr", "LIEBHERR"],
+        "chosen_canonical": "Liebherr",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Liebherr": { "total": 11, "withRetailers": 0, "cats": ["fridge"] },
+          "LIEBHERR": { "total": 40, "withRetailers": 0, "cats": ["fridge"] }
+        }
+      },
+      "midea": {
+        "variants": ["Midea", "MIDEA"],
+        "chosen_canonical": "Midea",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Midea": { "total": 16, "withRetailers": 0, "cats": ["dishwasher", "washing_machine"] },
+          "MIDEA": { "total": 50, "withRetailers": 0, "cats": ["dishwasher", "dryer", "fridge", "washing_machine"] }
+        }
+      },
+      "nce": {
+        "variants": ["nce", "NCE"],
+        "chosen_canonical": "NCE",
+        "reason": "display-friendly canonical for acronym-style brand; both variants have withRetailers=0",
+        "variant_stats": {
+          "nce": { "total": 2, "withRetailers": 0, "cats": ["fridge"] },
+          "NCE": { "total": 3, "withRetailers": 0, "cats": ["fridge"] }
+        }
+      },
+      "norj": {
+        "variants": ["Norj", "NORJ"],
+        "chosen_canonical": "Norj",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Norj": { "total": 3, "withRetailers": 0, "cats": ["fridge"] },
+          "NORJ": { "total": 8, "withRetailers": 0, "cats": ["fridge"] }
+        }
+      },
+      "sheffield": {
+        "variants": ["Sheffield", "SHEFFIELD"],
+        "chosen_canonical": "Sheffield",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Sheffield": { "total": 8, "withRetailers": 0, "cats": ["dishwasher", "dryer", "fridge"] },
+          "SHEFFIELD": { "total": 10, "withRetailers": 0, "cats": ["fridge"] }
+        }
+      },
+      "stirling": {
+        "variants": ["Stirling", "STIRLING"],
+        "chosen_canonical": "Stirling",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Stirling": { "total": 5, "withRetailers": 0, "cats": ["dryer", "fridge", "washing_machine"] },
+          "STIRLING": { "total": 7, "withRetailers": 0, "cats": ["fridge"] }
+        }
+      },
+      "technika": {
+        "variants": ["Technika", "TECHNIKA"],
+        "chosen_canonical": "Technika",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Technika": { "total": 7, "withRetailers": 0, "cats": ["dishwasher", "fridge"] },
+          "TECHNIKA": { "total": 3, "withRetailers": 0, "cats": ["fridge"] }
+        }
+      },
+      "tisira": {
+        "variants": ["tisira", "Tisira"],
+        "chosen_canonical": "Tisira",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "tisira": { "total": 1, "withRetailers": 0, "cats": ["fridge"] },
+          "Tisira": { "total": 2, "withRetailers": 0, "cats": ["fridge"] }
+        }
+      },
+      "toshiba": {
+        "variants": ["Toshiba", "TOSHIBA"],
+        "chosen_canonical": "Toshiba",
+        "reason": "display-friendly canonical; both variants have withRetailers=0",
+        "variant_stats": {
+          "Toshiba": { "total": 1, "withRetailers": 0, "cats": ["fridge"] },
+          "TOSHIBA": { "total": 3, "withRetailers": 0, "cats": ["fridge"] }
+        }
+      },
+      "westinghouse": {
+        "variants": ["Westinghouse", "WESTINGHOUSE"],
+        "chosen_canonical": "Westinghouse",
+        "reason": "Westinghouse has withRetailers=2; WESTINGHOUSE has withRetailers=0",
+        "variant_stats": {
+          "Westinghouse": { "total": 12, "withRetailers": 2, "cats": ["dishwasher", "fridge", "washing_machine"] },
+          "WESTINGHOUSE": { "total": 82, "withRetailers": 0, "cats": ["dishwasher", "fridge", "washing_machine"] }
+        }
+      }
+    },
+    "deferred_drops": {
+      "rationale": "Original AUDIT §1.3 named brands (Sub-Zero/CHIQ/SEIKI/Solt) account for 172 products including CHIQ, which is a legitimate AU budget brand. Drop decisions deferred to Phase 42c after retailer backfill has more coverage.",
+      "candidates_observed": {
+        "Sub-Zero": { "products": 38, "cats": ["fridge"], "withRetailers": 0 },
+        "CHIQ": { "products": 81, "cats": ["dryer", "fridge", "washing_machine"], "withRetailers": 0 },
+        "SEIKI": { "products": 27, "cats": ["dishwasher", "fridge", "washing_machine"], "withRetailers": 0 },
+        "Solt": { "products": 26, "cats": ["dishwasher", "dryer", "fridge", "washing_machine"], "withRetailers": 0 },
+        "Sonai": "not_found_in_catalog"
+      }
+    }
+  }
+}
