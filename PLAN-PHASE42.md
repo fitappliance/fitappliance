@@ -150,7 +150,7 @@ Or try a preset: [600mm Standard] [700mm Wide]
 - `data/popularity-research.json` (初始由 script 产生)
 - `scripts/common/popularity-score.js`
 - `scripts/common/readable-spec.js`
-- `scripts/common/fit-score.js`
+- `public/scripts/ui/fit-score.js`
 - `scripts/research-popularity.js`
 - `scripts/enrich-appliances.js` (读原始 → 写回 `public/data/*.json` 加 `displayName`/`readableSpec`/`priorityScore` 字段)
 - `public/scripts/search-core.js` (纯函数)
