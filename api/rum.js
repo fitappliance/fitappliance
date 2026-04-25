@@ -5,6 +5,28 @@ const crypto = require('node:crypto');
 const ALLOWED_METRICS = new Set(['LCP', 'INP', 'CLS', 'TTFB']);
 const RATE_LIMIT_PER_MINUTE = 60;
 const RATE_WINDOW_MS = 60_000;
+const MAX_BODY_BYTES = 4096;
+
+class PayloadTooLargeError extends Error {
+  constructor() {
+    super('payload_too_large');
+    this.code = 'payload_too_large';
+  }
+}
+
+function getHeaderValue(headers, key) {
+  if (!headers) return '';
+  if (typeof headers.get === 'function') {
+    return headers.get(key) ?? headers.get(key.toLowerCase()) ?? '';
+  }
+  return headers[key] ?? headers[key.toLowerCase()] ?? '';
+}
+
+function assertBodySizeWithinLimit(byteLength, maxBytes = MAX_BODY_BYTES) {
+  if (Number(byteLength) > maxBytes) {
+    throw new PayloadTooLargeError();
+  }
+}
 
 function normalizeOrigin(value) {
   if (typeof value !== 'string' || value.trim() === '') return '';
@@ -82,13 +104,32 @@ function createRateLimiter({ limit = RATE_LIMIT_PER_MINUTE, windowMs = RATE_WIND
 }
 
 async function parseRequestBody(req) {
+  const contentLength = Number(getHeaderValue(req?.headers, 'content-length'));
+  if (Number.isFinite(contentLength)) {
+    assertBodySizeWithinLimit(contentLength);
+  }
+
   if (req?.body && typeof req.body === 'object') return req.body;
-  if (typeof req?.body === 'string' && req.body.trim() !== '') return JSON.parse(req.body);
+  if (typeof req?.body === 'string' && req.body.trim() !== '') {
+    assertBodySizeWithinLimit(Buffer.byteLength(req.body, 'utf8'));
+    return JSON.parse(req.body);
+  }
 
   if (!req || typeof req.on !== 'function') return {};
   const chunks = [];
+  let totalBytes = 0;
   await new Promise((resolve, reject) => {
-    req.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
+    req.on('data', (chunk) => {
+      const buffer = Buffer.from(chunk);
+      totalBytes += buffer.length;
+      try {
+        assertBodySizeWithinLimit(totalBytes);
+      } catch (error) {
+        reject(error);
+        return;
+      }
+      chunks.push(buffer);
+    });
     req.on('end', resolve);
     req.on('error', reject);
   });
@@ -146,7 +187,11 @@ function createRumHandler({
     let body;
     try {
       body = await parseRequestBody(req);
-    } catch {
+    } catch (error) {
+      if (error?.code === 'payload_too_large') {
+        sendJson(res, 413, { ok: false, error: 'payload_too_large' });
+        return;
+      }
       sendJson(res, 400, { error: 'invalid_json' });
       return;
     }
@@ -180,5 +225,6 @@ const handler = createRumHandler();
 module.exports = handler;
 module.exports.createRateLimiter = createRateLimiter;
 module.exports.createRumHandler = createRumHandler;
+module.exports.getHeaderValue = getHeaderValue;
 module.exports.isSameOriginRequest = isSameOriginRequest;
 module.exports.sanitizeRumPayload = sanitizeRumPayload;
