@@ -2,40 +2,54 @@
 'use strict';
 
 const path = require('node:path');
+const { execFileSync } = require('node:child_process');
+const { existsSync, statSync } = require('node:fs');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
+const { buildArticleSchema, serializeJsonLd } = require('./common/schema-jsonld.js');
 const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
+
+const ARTICLE_SCHEMA_ORIGIN = 'https://fitappliance.com.au';
+const GUIDE_DATE_HISTORY = {
+  publishedAt: '2026-04-18T12:11:49.000Z',
+  modifiedAt: '2026-04-25T00:00:00.000Z'
+};
 
 const GUIDE_HUBS = [
   {
     slug: 'dishwasher-cavity-sizing',
     title: 'Dishwasher Cavity Sizing Guide',
     description:
-      'Installation-first dishwasher cavity sizing references for Australian kitchens, with links to brand clearance pages, compare pages, and nearby fridge cavity benchmarks.'
+      'Installation-first dishwasher cavity sizing references for Australian kitchens, with links to brand clearance pages, compare pages, and nearby fridge cavity benchmarks.',
+    ...GUIDE_DATE_HISTORY
   },
   {
     slug: 'washing-machine-doorway-access',
     title: 'Washing Machine Doorway Access Guide',
     description:
-      'Delivery and installation access planning for washing machines across Australian homes, including doorway benchmarks and model-level clearance references.'
+      'Delivery and installation access planning for washing machines across Australian homes, including doorway benchmarks and model-level clearance references.',
+    ...GUIDE_DATE_HISTORY
   },
   {
     slug: 'fridge-clearance-requirements',
     title: 'Fridge Clearance Requirements Guide',
     description:
-      'A central fridge clearance index covering major Australian brands, side/rear/top spacing differences, and comparison pages for high-intent fit checks.'
+      'A central fridge clearance index covering major Australian brands, side/rear/top spacing differences, and comparison pages for high-intent fit checks.',
+    ...GUIDE_DATE_HISTORY
   },
   {
     slug: 'dryer-ventilation-guide',
     title: 'Dryer Ventilation & Safety Guide',
     description:
-      'Dryer placement references, ventilation requirements, and cross-links into high-efficiency dryer models and comparison pages for apartment-safe installs.'
+      'Dryer placement references, ventilation requirements, and cross-links into high-efficiency dryer models and comparison pages for apartment-safe installs.',
+    ...GUIDE_DATE_HISTORY
   },
   {
     slug: 'appliance-fit-sizing-handbook',
     title: 'Appliance Fit Sizing Handbook',
     description:
-      'Master hub for appliance cavity, doorway, brand, and compare pages. Use this handbook to traverse every FitAppliance sizing resource in one place.'
+      'Master hub for appliance cavity, doorway, brand, and compare pages. Use this handbook to traverse every FitAppliance sizing resource in one place.',
+    ...GUIDE_DATE_HISTORY
   }
 ];
 
@@ -114,6 +128,74 @@ function buildLinkPool({ brands, compares, cavity, doorway }) {
   ]);
 }
 
+function toIso(value) {
+  if (!value) return null;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  return date.toISOString();
+}
+
+function toDayIso(value) {
+  const iso = toIso(value);
+  return iso ? `${iso.slice(0, 10)}T00:00:00.000Z` : null;
+}
+
+function readGitDateForFile({ repoRoot, filePath, first }) {
+  const relativePath = path.relative(repoRoot, filePath);
+  const args = ['log'];
+  if (first) args.push('--reverse');
+  args.push('--format=%aI', '--', relativePath);
+
+  try {
+    const output = execFileSync('git', args, {
+      cwd: repoRoot,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore']
+    }).trim();
+    const lines = output.split('\n').filter(Boolean);
+    return lines[0] ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function readFileMtimeIso(filePath) {
+  if (!existsSync(filePath)) return null;
+  return toIso(statSync(filePath).mtime);
+}
+
+function resolveGuideArticleDates({ repoRoot, filePath, guide = {} }) {
+  const firstCommitDate = readGitDateForFile({ repoRoot, filePath, first: true });
+  const latestCommitDate = readGitDateForFile({ repoRoot, filePath, first: false });
+  const fallbackMtime = readFileMtimeIso(filePath);
+
+  const datePublished = toIso(guide.publishedAt) ?? toIso(firstCommitDate) ?? fallbackMtime ?? getBuildTimestampIso();
+  const dateModified = toIso(guide.modifiedAt) ?? toDayIso(latestCommitDate) ?? toDayIso(fallbackMtime) ?? getBuildTimestampIso();
+
+  return {
+    datePublished,
+    dateModified: Date.parse(dateModified) >= Date.parse(datePublished)
+      ? dateModified
+      : datePublished
+  };
+}
+
+function buildGuideArticleJsonLd({ guide, datePublished, dateModified }) {
+  const articleUrl = `${ARTICLE_SCHEMA_ORIGIN}/guides/${guide.slug}`;
+  const imageUrl = `${ARTICLE_SCHEMA_ORIGIN}/og-images/guide-${guide.slug}.png`;
+
+  return serializeJsonLd(buildArticleSchema({
+    headline: guide.title,
+    description: guide.description,
+    datePublished,
+    dateModified,
+    image: imageUrl,
+    url: articleUrl,
+    publisherUrl: ARTICLE_SCHEMA_ORIGIN,
+    publisherLogoUrl: `${ARTICLE_SCHEMA_ORIGIN}/icons/icon-512.png`
+  }), { pretty: true });
+}
+
 function selectGuideLinks({ guide, allLinks, brands, compares, cavity, doorway }) {
   const byCategory = (cat) => ({
     brands: normalizeBrandLinks(brands.filter((row) => row.cat === cat)),
@@ -168,7 +250,7 @@ function selectGuideLinks({ guide, allLinks, brands, compares, cavity, doorway }
   return allLinks;
 }
 
-function buildHubHtml({ guide, links, crossLinks }) {
+function buildHubHtml({ guide, links, crossLinks, articleJsonLd }) {
   const title = `${guide.title} | FitAppliance`;
   const description = guide.description;
   const canonical = `${SITE_ORIGIN}/guides/${guide.slug}`;
@@ -180,6 +262,9 @@ function buildHubHtml({ guide, links, crossLinks }) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escHtml(title)}</title>
+  <script type="application/ld+json">
+${articleJsonLd}
+  </script>
   <meta name="description" content="${escHtml(description)}">
   <meta name="article:modified_time" content="${getBuildTimestampIso()}">
   <link rel="canonical" href="${canonical}">
@@ -350,10 +435,20 @@ async function generateGuidePages(options = {}) {
   for (const guide of GUIDE_HUBS) {
     const links = selectGuideLinks({ guide, allLinks, brands, compares, cavity, doorway });
     const filePath = path.join(outputDir, `${guide.slug}.html`);
+    const articleDates = resolveGuideArticleDates({
+      repoRoot,
+      filePath,
+      guide
+    });
+    const articleJsonLd = buildGuideArticleJsonLd({
+      guide,
+      ...articleDates
+    });
     const html = buildHubHtml({
       guide,
       links,
-      crossLinks: guideCrossLinks.filter((row) => row.url !== `/guides/${guide.slug}`)
+      crossLinks: guideCrossLinks.filter((row) => row.url !== `/guides/${guide.slug}`),
+      articleJsonLd
     });
     await writeFile(filePath, html, 'utf8');
     rows.push({
@@ -384,5 +479,7 @@ if (require.main === module) {
 
 module.exports = {
   GUIDE_HUBS,
+  buildGuideArticleJsonLd,
+  resolveGuideArticleDates,
   generateGuidePages
 };
