@@ -6,6 +6,7 @@ const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { fillTemplate, loadCopyFile, pickVariant } = require('./common/copy-data.js');
 const { buildReviewVideoSection } = require('./common/review-video-renderer.js');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
+const { canonicalizeProducts, canonicalizeRuleDocument } = require('./brand-canon.js');
 const { generateMeasurementSvg } = require('./generate-measurement-svg');
 const {
   buildMeasurementHowToJsonLd,
@@ -328,7 +329,8 @@ async function generateCavityPages(options = {}) {
   const reviewVideosDoc = await readJson(path.join(repoRoot, 'data', 'videos', 'review-videos.json'), { models: {} });
   const creatorWhitelist = await readJson(path.join(repoRoot, 'data', 'videos', 'creator-whitelist.json'), { creators: [] });
   const reviewDisclaimerCopy = await loadCopyFile('review-disclaimer', repoRoot).catch(() => ({}));
-  const products = (appliances.products ?? []).filter((product) => product.cat === 'fridge');
+  const products = canonicalizeProducts(appliances.products ?? []).filter((product) => product.cat === 'fridge');
+  const clearanceRules = canonicalizeRuleDocument(clearance.rules ?? {});
   const widths = buildWidthRange(MIN_WIDTH, MAX_WIDTH, STEP);
   const reviewPilots = Array.isArray(reviewPilotDoc.pilots) ? reviewPilotDoc.pilots : [];
   const pilotSlugs = reviewPilots.map((row) => row.modelSlug).filter(Boolean);
@@ -344,7 +346,7 @@ async function generateCavityPages(options = {}) {
   for (let index = 0; index < widths.length; index += 1) {
     const width = widths[index];
     const matched = products.filter((product) => {
-      const clearanceRule = findClearance(clearance.rules, product.brand);
+      const clearanceRule = findClearance(clearanceRules, product.brand);
       const side = Number.isFinite(clearanceRule.side) ? clearanceRule.side : 20;
       return (product.w + side * 2) <= width;
     });

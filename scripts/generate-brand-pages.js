@@ -11,6 +11,7 @@ const { buildReviewVideoSection } = require('./common/review-video-renderer.js')
 const { displayBrandName } = require('./utils/brand-utils.js');
 const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
+const { canonicalizeProducts, canonicalizeRuleDocument } = require('./brand-canon.js');
 
 const CATEGORY_META = {
   fridge: {
@@ -699,8 +700,8 @@ async function generateBrandPages(options = {}) {
   const affiliateProviders = await loadProvidersFromFile(
     options.affiliateProvidersPath ?? path.join(repoRoot, 'data', 'affiliates', 'providers.json')
   ).catch(() => []);
-  const products = Array.isArray(appliances.products) ? appliances.products : [];
-  const rules = clearance.rules ?? {};
+  const products = canonicalizeProducts(Array.isArray(appliances.products) ? appliances.products : []);
+  const rules = canonicalizeRuleDocument(clearance.rules ?? {});
   const reviewPilots = Array.isArray(reviewPilotDoc.pilots) ? reviewPilotDoc.pilots : [];
   const pilotSlugs = reviewPilots.map((row) => row.modelSlug).filter(Boolean);
   const pilotByBrandPageSlug = new Map(
