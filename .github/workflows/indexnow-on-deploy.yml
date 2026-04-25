@@ -10,6 +10,9 @@ on:
       - 'public/*.txt'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   ping:
     runs-on: ubuntu-latest
