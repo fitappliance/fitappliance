@@ -246,6 +246,162 @@
     el.textContent = `Showing ${formatter.format(Number(totalMatches ?? 0))} of ${formatter.format(Number(totalCatalog ?? 0))} appliances`;
   }
 
+  function hasCompleteSearchState(state) {
+    return Boolean(state?.cat && state?.w && state?.h && state?.d);
+  }
+
+  function buildSavedSearchName(state = {}) {
+    const cat = String(state.cat ?? 'appliance').replace(/_/g, ' ');
+    return `${cat} ${state.w}×${state.h}×${state.d}`.replace(/\s+/g, ' ').trim();
+  }
+
+  function showSaveForm(container, {
+    store,
+    state,
+    onSaved,
+    onError
+  } = {}) {
+    if (!container || !store) return null;
+    const doc = container.ownerDocument;
+    const existing = container.querySelector('[data-save-search-form]');
+    if (existing) existing.remove();
+
+    const form = doc.createElement('form');
+    form.className = 'saved-search-form';
+    form.dataset.saveSearchForm = '1';
+
+    const input = doc.createElement('input');
+    input.type = 'text';
+    input.maxLength = '50';
+    input.value = buildSavedSearchName(state);
+    input.dataset.saveSearchName = '1';
+    setAriaLabel(input, 'Saved search name');
+
+    const submit = doc.createElement('button');
+    submit.type = 'submit';
+    submit.className = 'saved-search-submit';
+    submit.dataset.saveSearchSubmit = '1';
+    submit.textContent = 'Save';
+
+    form.append(input, submit);
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const result = store.save?.({ name: input.value, state });
+      if (result?.ok === false) {
+        onError?.(result);
+      }
+      form.remove();
+      onSaved?.(result);
+    });
+
+    container.appendChild(form);
+    input.focus?.();
+    return form;
+  }
+
+  function renderSaveSearchButton(container, {
+    store,
+    state,
+    onSaved,
+    onError
+  } = {}) {
+    if (!container) return;
+    container.textContent = '';
+    if (!hasCompleteSearchState(state)) return;
+
+    const doc = container.ownerDocument;
+    const button = doc.createElement('button');
+    button.type = 'button';
+    button.className = 'saved-search-button';
+    button.dataset.saveSearchButton = '1';
+    button.textContent = 'Save search';
+    setAriaLabel(button, 'Save current search');
+    button.addEventListener('click', () => showSaveForm(container, { store, state, onSaved, onError }));
+    container.appendChild(button);
+  }
+
+  function formatSavedAt(savedAt) {
+    const timestamp = Date.parse(savedAt);
+    if (!Number.isFinite(timestamp)) return 'Saved';
+    const days = Math.max(0, Math.floor((Date.now() - timestamp) / 86400000));
+    if (days === 0) return 'Saved today';
+    if (days === 1) return 'Saved yesterday';
+    return `Saved ${days} days ago`;
+  }
+
+  function renderSavedSearchDropdown(container, {
+    store,
+    onRestore,
+    onRemove
+  } = {}) {
+    if (!container) return;
+    container.textContent = '';
+    const doc = container.ownerDocument;
+    const rows = store?.list?.() ?? [];
+
+    const wrapper = doc.createElement('div');
+    wrapper.className = 'saved-search-dropdown';
+
+    const summary = doc.createElement('button');
+    summary.type = 'button';
+    summary.className = 'saved-search-dropdown__toggle';
+    summary.dataset.savedSearchToggle = '1';
+    summary.textContent = `Saved searches (${rows.length})`;
+    setAriaLabel(summary, `Saved searches (${rows.length})`);
+    wrapper.appendChild(summary);
+
+    const list = doc.createElement('div');
+    list.className = 'saved-search-dropdown__list';
+    list.dataset.savedSearchList = '1';
+
+    if (rows.length === 0) {
+      const empty = doc.createElement('p');
+      empty.className = 'saved-search-empty';
+      empty.textContent = 'No saved searches yet';
+      list.appendChild(empty);
+    } else {
+      for (const row of rows) {
+        const item = doc.createElement('div');
+        item.className = 'saved-search-row';
+        item.dataset.savedSearchRow = row.id;
+
+        const restore = doc.createElement('button');
+        restore.type = 'button';
+        restore.className = 'saved-search-row__restore';
+        restore.dataset.savedSearchRestore = row.id;
+
+        const name = doc.createElement('span');
+        name.className = 'saved-search-row__name';
+        name.textContent = row.name;
+
+        const meta = doc.createElement('span');
+        meta.className = 'saved-search-row__meta';
+        meta.textContent = formatSavedAt(row.savedAt);
+
+        restore.append(name, meta);
+        restore.addEventListener('click', () => onRestore?.(row.state));
+
+        const remove = doc.createElement('button');
+        remove.type = 'button';
+        remove.className = 'saved-search-row__remove';
+        remove.dataset.savedSearchRemove = row.id;
+        remove.textContent = '×';
+        setAriaLabel(remove, `Remove saved search ${row.name}`);
+        remove.addEventListener('click', () => {
+          store?.remove?.(row.id);
+          onRemove?.(row);
+          renderSavedSearchDropdown(container, { store, onRestore, onRemove });
+        });
+
+        item.append(restore, remove);
+        list.appendChild(item);
+      }
+    }
+
+    wrapper.appendChild(list);
+    container.appendChild(wrapper);
+  }
+
   function getFocusableElements(root) {
     if (!root) return [];
     return [...root.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')]
@@ -529,8 +685,11 @@
     renderLiveCount,
     renderMobileFilterSheet,
     renderPresetChips,
+    renderSaveSearchButton,
     renderSearchResults,
+    renderSavedSearchDropdown,
     renderSortDropdown,
+    showSaveForm,
     toggleMobileSheet
   };
 
