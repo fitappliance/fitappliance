@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -288,4 +289,13 @@ test('phase 23 gsc: keyword-gap script can ingest gsc json from disk', async () 
   const rows = await readRowsFromReportFile(reportPath);
   assert.equal(rows.length, 1);
   assert.equal(rows[0].query, 'samsung fridge clearance');
+});
+
+test('phase 43a gsc: weekly workflow passes split secrets and legacy fallback', () => {
+  const workflow = readFileSync(path.join(repoRoot, '.github', 'workflows', 'gsc-weekly.yml'), 'utf8');
+
+  assert.match(workflow, /GSC_SA_EMAIL:\s*\$\{\{\s*secrets\.GSC_SA_EMAIL\s*\}\}/);
+  assert.match(workflow, /GSC_SA_PRIVATE_KEY:\s*\$\{\{\s*secrets\.GSC_SA_PRIVATE_KEY\s*\}\}/);
+  assert.match(workflow, /GSC_SA_PROJECT_ID:\s*\$\{\{\s*secrets\.GSC_SA_PROJECT_ID\s*\}\}/);
+  assert.match(workflow, /GSC_SA_JSON:\s*\$\{\{\s*secrets\.GSC_SA_JSON\s*\}\}\s*# legacy fallback, remove after rotation/);
 });

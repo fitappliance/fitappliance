@@ -26,7 +26,10 @@ jobs:
 
       - name: Fetch GSC report
         env:
-          GSC_SA_JSON: ${{ secrets.GSC_SA_JSON }}
+          GSC_SA_EMAIL: ${{ secrets.GSC_SA_EMAIL }}
+          GSC_SA_PRIVATE_KEY: ${{ secrets.GSC_SA_PRIVATE_KEY }}
+          GSC_SA_PROJECT_ID: ${{ secrets.GSC_SA_PROJECT_ID }}
+          GSC_SA_JSON: ${{ secrets.GSC_SA_JSON }} # legacy fallback, remove after rotation
         run: npm run gsc-fetch
 
       - name: Build keyword gap report
