@@ -8,6 +8,7 @@ import { createRequire } from 'node:module';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const rumScriptPath = path.join(repoRoot, 'public', 'scripts', 'rum.js');
 const apiPath = path.join(repoRoot, 'api', 'rum.js');
+const rateLimitPath = path.join(repoRoot, 'api', '_lib', 'ratelimit.js');
 const require = createRequire(import.meta.url);
 
 function createMockResponse() {
@@ -64,6 +65,12 @@ test('phase 26 rum: client script uses 10% sampling, sendBeacon, and no cookie/l
   assert.doesNotMatch(source, /localStorage/);
 });
 
+test('phase 43a rum: client fetch path silently drops rejected RUM responses', () => {
+  const source = fs.readFileSync(rumScriptPath, 'utf8');
+  assert.match(source, /fetch\(ENDPOINT,[\s\S]*?\.catch\(\(\) => \{\}\)/);
+  assert.doesNotMatch(source, /throw\s+new\s+Error/);
+});
+
 test('phase 26 rum: API rejects non-POST requests', async () => {
   const { createRumHandler } = require(apiPath);
   const handler = createRumHandler();
@@ -91,7 +98,7 @@ test('phase 26 rum: payload validator accepts clean payload and strips query fro
   assert.ok(!('ip' in payload));
 });
 
-test('phase 26 rum: API rate-limits after 60 requests/minute per client fingerprint', async () => {
+test('phase 26 rum: API rate-limits after 60 requests per IP burst', async () => {
   const { createRumHandler } = require(apiPath);
   let now = 1_000_000;
   const handler = createRumHandler({
@@ -136,6 +143,23 @@ test('phase 26 rum: API rate-limits after 60 requests/minute per client fingerpr
   const overflowRes = createMockResponse();
   await handler(overflowReq, overflowRes);
   assert.equal(overflowRes.statusCode, 429);
+  assert.ok(Number(overflowRes.headers['Retry-After']) >= 1);
+  assert.deepEqual(overflowRes.body, { ok: false, error: 'rate_limited', retry_after_sec: 1 });
+
+  now += 1_000;
+  const refillRes = createMockResponse();
+  await handler(overflowReq, refillRes);
+  assert.equal(refillRes.statusCode, 204, 'one token should refill after one second');
+
+  const otherIpRes = createMockResponse();
+  await handler({
+    ...overflowReq,
+    headers: {
+      ...overflowReq.headers,
+      'x-forwarded-for': '203.0.113.10'
+    }
+  }, otherIpRes);
+  assert.equal(otherIpRes.statusCode, 204, 'another IP should have an independent bucket');
 });
 
 test('phase 43a rum: rejects POST bodies larger than 4KB before accepting payload', async () => {
@@ -194,4 +218,43 @@ test('phase 43a rum: accepts ordinary 1KB POST body', async () => {
   await handler(req, res);
 
   assert.ok([200, 202, 204].includes(res.statusCode), `expected accepted response, got ${res.statusCode}`);
+});
+
+test('phase 43a rum: token bucket limiter refills and reports retry-after', () => {
+  const { createTokenBucketLimiter } = require(rateLimitPath);
+  let now = 10_000;
+  const limiter = createTokenBucketLimiter({
+    capacity: 2,
+    refillPerSec: 1,
+    maxKeys: 100,
+    nowFn: () => now
+  });
+
+  assert.deepEqual(limiter.check('203.0.113.20'), { allowed: true, remaining: 1, retryAfterSec: 0 });
+  assert.deepEqual(limiter.check('203.0.113.20'), { allowed: true, remaining: 0, retryAfterSec: 0 });
+  assert.deepEqual(limiter.check('203.0.113.20'), { allowed: false, remaining: 0, retryAfterSec: 1 });
+
+  now += 1_000;
+  assert.deepEqual(limiter.check('203.0.113.20'), { allowed: true, remaining: 0, retryAfterSec: 0 });
+});
+
+test('phase 43a rum: token bucket LRU evicts the oldest key after maxKeys', () => {
+  const { createTokenBucketLimiter } = require(rateLimitPath);
+  let now = 20_000;
+  const limiter = createTokenBucketLimiter({
+    capacity: 1,
+    refillPerSec: 0,
+    maxKeys: 2,
+    nowFn: () => now
+  });
+
+  assert.equal(limiter.check('first-ip').allowed, true);
+  now += 1;
+  assert.equal(limiter.check('second-ip').allowed, true);
+  now += 1;
+  assert.equal(limiter.check('third-ip').allowed, true);
+
+  const firstIpAfterEviction = limiter.check('first-ip');
+  assert.equal(firstIpAfterEviction.allowed, true, 'first key should be evicted and recreated with a fresh token');
+  assert.equal(limiter.size(), 2);
 });
