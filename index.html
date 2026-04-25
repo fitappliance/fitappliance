@@ -498,6 +498,8 @@ nav {
     <div class="search-summary">
       <span class="live-count" data-live-count>Showing 0 of 0 appliances</span>
       <div data-sort-dropdown></div>
+      <div class="saved-search-mount" data-save-search></div>
+      <div class="saved-search-mount" data-saved-searches></div>
     </div>
   </div>
   <div class="active-chips" data-active-chips aria-live="polite"></div>
@@ -515,7 +517,18 @@ nav {
       <h2 id="mobileFilterTitle">Filter results</h2>
       <button type="button" class="mobile-sheet__close" data-mobile-sheet-close aria-label="Close filters">×</button>
     </div>
-    <div class="mobile-sheet__body" data-mobile-sheet-body></div>
+    <div class="mobile-sheet__tabs" role="tablist" aria-label="Search tools">
+      <button type="button" data-mobile-sheet-tab="filters">Filters</button>
+      <button type="button" data-mobile-sheet-tab="saved">Saved</button>
+      <button type="button" data-mobile-sheet-tab="compare">Compare</button>
+    </div>
+    <div data-mobile-sheet-panel="filters">
+      <div class="mobile-sheet__body" data-mobile-sheet-body></div>
+    </div>
+    <div class="mobile-sheet__panel" data-mobile-sheet-panel="saved" data-mobile-saved-panel hidden></div>
+    <div class="mobile-sheet__panel" data-mobile-sheet-panel="compare" data-mobile-compare-panel hidden>
+      <div data-mobile-compare-tray></div>
+    </div>
     <div class="mobile-sheet__footer">
       <button type="button" class="mobile-sheet__clear" data-mobile-clear>Clear all</button>
       <button type="button" class="mobile-sheet__apply" data-mobile-apply>Apply (0 results)</button>
@@ -827,6 +840,8 @@ nav {
 <script type="module">
 import '/scripts/search-core.js';
 import '/scripts/search-dom.js';
+import '/scripts/saved-search-store.js';
+import '/scripts/compare-store.js';
 import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/product-card.js';
 import { displayBrandName } from './scripts/ui/brand-utils.js';
 import { renderFreshnessBanner } from './scripts/ui/freshness.js';
@@ -842,6 +857,8 @@ import {
 
 const SearchCore = globalThis.SearchCore;
 const SearchDom = globalThis.SearchDom;
+const SavedSearchStore = globalThis.SavedSearchStore;
+const CompareStore = globalThis.CompareStore;
 
 function escHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -1150,6 +1167,8 @@ const CATEGORY_DATA_FILES = {
   dryer: '/data/dryers.json',
 };
 const brandSelect = document.getElementById('inBrand');
+const savedSearchStore = SavedSearchStore.createSavedSearchStore();
+const compareStore = CompareStore.createCompareStore();
 
 function refreshBrandOptions() {
   brandSelect.innerHTML = buildBrandOptions(PRODUCTS, currentCat);
@@ -1502,6 +1521,56 @@ function clearAllFacets() {
   refreshSearchResults();
 }
 
+function getCurrentSearchState() {
+  if (!lastSearchFilters) return null;
+  const toleranceMm = Number(lastSearchFilters.toleranceMm ?? 5);
+  return {
+    cat: lastSearchFilters.cat,
+    w: lastSearchFilters.w,
+    h: lastSearchFilters.h,
+    d: lastSearchFilters.d,
+    tol: toleranceMm,
+    toleranceMm,
+    facets: normalizeHomeFacets(activeFacetState),
+    sortBy: currentSortBy
+  };
+}
+
+function renderSavedSearchControls() {
+  const state = getCurrentSearchState();
+  const restore = (savedState) => restoreSavedSearchState(savedState);
+  const onStorageError = () => showToast("Storage full, can't save search");
+  SearchDom.renderSaveSearchButton(document.querySelector('[data-save-search]'), {
+    store: savedSearchStore,
+    state,
+    onSaved: renderSavedSearchControls,
+    onError: onStorageError
+  });
+  SearchDom.renderSavedSearchDropdown(document.querySelector('[data-saved-searches]'), {
+    store: savedSearchStore,
+    onRestore: restore,
+    onRemove: renderSavedSearchControls
+  });
+  SearchDom.renderSavedSearchDropdown(document.querySelector('[data-mobile-saved-panel]'), {
+    store: savedSearchStore,
+    onRestore: restore,
+    onRemove: renderSavedSearchControls
+  });
+}
+
+async function restoreSavedSearchState(state = {}) {
+  if (state.cat) {
+    await setCategory(state.cat, { scroll: false });
+  }
+  if (state.w) document.getElementById('inW').value = String(state.w);
+  if (state.h) document.getElementById('inH').value = String(state.h);
+  if (state.d) document.getElementById('inD').value = String(state.d);
+  activeFacetState = normalizeHomeFacets(state.facets || {});
+  currentSortBy = state.sortBy || 'best-fit';
+  syncLegacyFacetInputs();
+  doSearch({ preserveExistingFacets: true, toleranceMm: Number(state.tol ?? state.toleranceMm ?? 5) });
+}
+
 function renderFacetChrome(counts = {}) {
   const facetBar = document.querySelector('[data-facet-bar]');
   SearchDom.renderFacetBar(
@@ -1537,10 +1606,14 @@ function renderFacetChrome(counts = {}) {
     closeButton: document.querySelector('[data-mobile-sheet-close]'),
     clearButton: document.querySelector('[data-mobile-clear]'),
     applyButton: document.querySelector('[data-mobile-apply]'),
+    tabButtons: document.querySelectorAll('[data-mobile-sheet-tab]'),
+    panels: document.querySelectorAll('[data-mobile-sheet-panel]'),
     activeFacetCount: countActiveFacets(activeFacetState),
     resultCount: currentMatchRows.length,
     onClear: clearAllFacets
   });
+  renderSavedSearchControls();
+  renderCompareSurfaces();
 }
 
 function applyFacetDelta(delta) {
@@ -1678,7 +1751,7 @@ function doSearch(options = {}) {
     w,
     h,
     d,
-    toleranceMm: 5
+    toleranceMm: Number.isFinite(Number(options?.toleranceMm)) ? Number(options.toleranceMm) : 5
   };
   lastSearchContext = { doorW, dwelling };
   if (!options?.preserveExistingFacets) {
@@ -1767,6 +1840,12 @@ function renderResults() {
     notice.innerHTML = `Showing ${RESULTS_CAP} of ${final.length} results. Refine your dimensions or brand filter to see more.`;
     container.appendChild(notice);
   }
+  SearchDom.bindCompareButtons(container, {
+    compareStore,
+    onChange: renderCompareSurfaces,
+    onLimit: () => showToast('Max 3 items to compare')
+  });
+  renderCompareSurfaces();
 }
 
 /* ── TCO HTML ── */
@@ -2038,13 +2117,17 @@ function renderCompareTable(products) {
 }
 
 function openCompareTable() {
-  const selected = getCompareProducts();
+  const selected = compareStore.list();
   if (selected.length < 2) {
     showToast('Select at least 2 items to compare');
     return;
   }
-  document.getElementById('compareTableWrap').innerHTML = renderCompareTable(selected);
-  document.getElementById('compareModal').hidden = false;
+  SearchDom.renderCompareModal(document.getElementById('compareModal'), {
+    items: selected,
+    onClose: () => {
+      document.body.style.overflow = '';
+    }
+  });
   document.body.style.overflow = 'hidden';
 }
 
@@ -2063,19 +2146,52 @@ function closeRetailerModal(productId) {
   document.body.style.overflow = '';
 }
 
+function buildCompareSnapshotFromProduct(product, label = '') {
+  return {
+    slug: product?.id,
+    displayName: label || `${displayBrandName(product?.brand)} ${String(product?.model ?? '').split(' ').slice(0, 2).join(' ')}`.trim(),
+    brand: product?.brand,
+    w: product?.w,
+    h: product?.h,
+    d: product?.d,
+    retailers: (Array.isArray(product?.retailers) ? product.retailers : []).slice(0, 4).map((retailer) => ({
+      name: retailer?.n ?? retailer?.name ?? '',
+      price: Number.isFinite(retailer?.p) ? retailer.p : retailer?.price
+    })),
+    stars: product?.stars
+  };
+}
+
+function syncCompareListFromStore() {
+  compareList = compareStore.list().map((entry) => ({
+    id: entry.id,
+    label: entry.snapshot?.displayName ?? entry.id
+  }));
+}
+
+function renderCompareSurfaces() {
+  updateCompareBar();
+}
+
 function addCompare(id, label) {
-  if (compareList.find(x=>x.id===id)) { showToast('Already in compare list'); return; }
-  if (compareList.length>=3) { showToast('Max 3 items to compare'); return; }
-  compareList.push({id,label});
+  const product = PRODUCTS.find((row) => row.id === id);
+  if (!product) { showToast('Load this category before comparing'); return; }
+  if (compareStore.has(id)) { showToast('Already in compare list'); return; }
+  const result = compareStore.add(buildCompareSnapshotFromProduct(product, label));
+  if (result?.ok === false && result.reason === 'capacity') { showToast('Max 3 items to compare'); return; }
+  syncCompareListFromStore();
   updateCompareBar();
   showToast(`✓ Added to compare: ${label}`);
 }
 function removeCompare(id) {
-  compareList = compareList.filter(x=>x.id!==id);
+  compareStore.remove(id);
+  syncCompareListFromStore();
   updateCompareBar();
   if (!document.getElementById('compareModal').hidden) {
-    if (getCompareProducts().length >= 2) {
-      document.getElementById('compareTableWrap').innerHTML = renderCompareTable(getCompareProducts());
+    if (compareStore.list().length >= 2) {
+      SearchDom.renderCompareModal(document.getElementById('compareModal'), {
+        items: compareStore.list()
+      });
     } else {
       closeCompareModal();
       showToast('Select at least 2 items to compare');
@@ -2083,17 +2199,15 @@ function removeCompare(id) {
   }
 }
 function updateCompareBar() {
-  const bar = document.getElementById('compareBar');
-  const items = document.getElementById('compareItems');
-  const count = document.getElementById('compareCount');
-  count.textContent = compareList.length;
-  if (compareList.length===0) { bar.classList.remove('show'); return; }
-  bar.classList.add('show');
-  items.innerHTML = compareList.map(x=>`
-    <div class="compare-chip">
-      ${x.label}
-      <button onclick="removeCompare('${x.id}')">×</button>
-    </div>`).join('');
+  syncCompareListFromStore();
+  const options = {
+    store: compareStore,
+    onOpen: openCompareTable,
+    onRemove: () => renderResults(),
+    onClear: () => renderResults()
+  };
+  SearchDom.renderCompareTray(document.getElementById('compareBar'), options);
+  SearchDom.renderCompareTray(document.querySelector('[data-mobile-compare-tray]'), options);
 }
 
 document.addEventListener('keydown', (event) => {
@@ -2302,6 +2416,8 @@ restoreSavedFromUrlParam();
 await setCategory(initialCategory);
 renderSearchHistoryChips();
 await readUrlParams();
+renderSavedSearchControls();
+updateCompareBar();
 renderSavedPanel();
 initFloatBar();
 initBuyClickTracking();

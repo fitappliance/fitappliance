@@ -434,6 +434,23 @@
     }
   }
 
+  function setMobileSheetTab(state, tab = 'filters') {
+    if (!state) return;
+    const nextTab = ['filters', 'saved', 'compare'].includes(tab) ? tab : 'filters';
+    for (const button of state.tabButtons ?? []) {
+      const selected = button.getAttribute('data-mobile-sheet-tab') === nextTab;
+      button.classList.toggle('mobile-sheet__tab--active', selected);
+      button.setAttribute('aria-selected', selected ? 'true' : 'false');
+      button.setAttribute('role', 'tab');
+    }
+    for (const panel of state.panels ?? []) {
+      const selected = panel.getAttribute('data-mobile-sheet-panel') === nextTab;
+      panel.hidden = !selected;
+      panel.setAttribute('role', 'tabpanel');
+    }
+    state.activeTab = nextTab;
+  }
+
   function closeMobileSheet() {
     const state = mobileSheetState;
     if (!state?.isOpen) return;
@@ -506,6 +523,8 @@
       closeButton,
       clearButton,
       applyButton,
+      tabButtons = [],
+      panels = [],
       activeFacetCount = 0,
       resultCount = 0,
       onClear,
@@ -524,6 +543,9 @@
         closeButton,
         clearButton,
         applyButton,
+        tabButtons: [...tabButtons],
+        panels: [...panels],
+        activeTab: 'filters',
         isOpen: false,
         originalParent: facetBar.parentNode,
         originalNextSibling: facetBar.nextSibling
@@ -546,13 +568,19 @@
         closeMobileSheet();
       });
       clearButton?.addEventListener('click', () => mobileSheetState?.onClear?.());
+      for (const button of mobileSheetState.tabButtons) {
+        button.addEventListener('click', () => setMobileSheetTab(mobileSheetState, button.getAttribute('data-mobile-sheet-tab')));
+      }
       sheet.ownerDocument.addEventListener('keydown', handleMobileSheetKeydown);
     }
 
     mobileSheetState.facetBar = facetBar;
     mobileSheetState.sheetBody = sheetBody;
+    mobileSheetState.tabButtons = [...tabButtons];
+    mobileSheetState.panels = [...panels];
     mobileSheetState.onClear = onClear;
     mobileSheetState.onApply = onApply;
+    setMobileSheetTab(mobileSheetState, mobileSheetState.activeTab ?? 'filters');
     setMobileSheetCounts(mobileSheetState, { activeFacetCount, resultCount });
     return mobileSheetState;
   }
