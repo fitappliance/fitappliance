@@ -1,6 +1,8 @@
 'use strict';
 
 (function attachSearchDom(globalScope) {
+  let mobileSheetState = null;
+
   function escHtml(value) {
     return String(value ?? '').replace(/[&<>"']/g, (char) => ({
       '&': '&amp;',
@@ -244,6 +246,161 @@
     el.textContent = `Showing ${formatter.format(Number(totalMatches ?? 0))} of ${formatter.format(Number(totalCatalog ?? 0))} appliances`;
   }
 
+  function getFocusableElements(root) {
+    if (!root) return [];
+    return [...root.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')]
+      .filter((node) => !node.disabled && node.getAttribute('hidden') === null);
+  }
+
+  function moveFacetBarToSheet(state) {
+    if (!state?.facetBar || !state?.sheetBody) return;
+    if (!state.originalParent) {
+      state.originalParent = state.facetBar.parentNode;
+      state.originalNextSibling = state.facetBar.nextSibling;
+    }
+    state.sheetBody.appendChild(state.facetBar);
+  }
+
+  function restoreFacetBar(state) {
+    if (!state?.facetBar || !state?.originalParent) return;
+    state.originalParent.insertBefore(state.facetBar, state.originalNextSibling ?? null);
+  }
+
+  function setMobileSheetCounts(state, { activeFacetCount = 0, resultCount = 0 } = {}) {
+    if (!state) return;
+    const activeCount = Math.max(0, Number(activeFacetCount) || 0);
+    const rows = Math.max(0, Number(resultCount) || 0);
+    if (state.trigger) {
+      state.trigger.textContent = `Filters (${activeCount})`;
+    }
+    if (state.applyButton) {
+      state.applyButton.textContent = `Apply (${rows} result${rows === 1 ? '' : 's'})`;
+    }
+  }
+
+  function closeMobileSheet() {
+    const state = mobileSheetState;
+    if (!state?.isOpen) return;
+    state.isOpen = false;
+    state.sheet.hidden = true;
+    state.overlay.hidden = true;
+    state.trigger?.setAttribute('aria-expanded', 'false');
+    state.sheet.ownerDocument.body.classList.remove('scroll-locked');
+    restoreFacetBar(state);
+    state.lastFocused?.focus?.();
+  }
+
+  function openMobileSheet() {
+    const state = mobileSheetState;
+    if (!state || state.isOpen) return;
+    state.isOpen = true;
+    state.lastFocused = state.sheet.ownerDocument.activeElement;
+    state.sheet.hidden = false;
+    state.overlay.hidden = false;
+    state.trigger?.setAttribute('aria-expanded', 'true');
+    state.sheet.ownerDocument.body.classList.add('scroll-locked');
+    moveFacetBarToSheet(state);
+    const focusables = getFocusableElements(state.sheet);
+    focusables[0]?.focus?.();
+  }
+
+  function toggleMobileSheet(open) {
+    if (open === false) {
+      closeMobileSheet();
+    } else if (open === true) {
+      openMobileSheet();
+    } else if (mobileSheetState?.isOpen) {
+      closeMobileSheet();
+    } else {
+      openMobileSheet();
+    }
+  }
+
+  function handleMobileSheetKeydown(event) {
+    const state = mobileSheetState;
+    if (!state?.isOpen) return;
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeMobileSheet();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+
+    const focusables = getFocusableElements(state.sheet);
+    if (focusables.length === 0) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    const active = state.sheet.ownerDocument.activeElement;
+    if (event.shiftKey && active === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  function renderMobileFilterSheet(options = {}) {
+    const {
+      trigger,
+      sheet,
+      overlay,
+      sheetBody,
+      facetBar,
+      closeButton,
+      clearButton,
+      applyButton,
+      activeFacetCount = 0,
+      resultCount = 0,
+      onClear,
+      onApply
+    } = options;
+
+    if (!trigger || !sheet || !overlay || !sheetBody || !facetBar) return null;
+
+    if (!mobileSheetState || mobileSheetState.trigger !== trigger || mobileSheetState.sheet !== sheet) {
+      mobileSheetState = {
+        trigger,
+        sheet,
+        overlay,
+        sheetBody,
+        facetBar,
+        closeButton,
+        clearButton,
+        applyButton,
+        isOpen: false,
+        originalParent: facetBar.parentNode,
+        originalNextSibling: facetBar.nextSibling
+      };
+
+      trigger.type = trigger.type || 'button';
+      trigger.setAttribute('aria-haspopup', 'dialog');
+      trigger.setAttribute('aria-expanded', 'false');
+      if (sheet.id) trigger.setAttribute('aria-controls', sheet.id);
+
+      sheet.setAttribute('role', 'dialog');
+      sheet.setAttribute('aria-modal', 'true');
+      sheet.setAttribute('aria-labelledby', sheet.getAttribute('aria-labelledby') || 'mobileFilterTitle');
+
+      trigger.addEventListener('click', () => openMobileSheet());
+      overlay.addEventListener('click', () => closeMobileSheet());
+      closeButton?.addEventListener('click', () => closeMobileSheet());
+      applyButton?.addEventListener('click', () => {
+        mobileSheetState?.onApply?.();
+        closeMobileSheet();
+      });
+      clearButton?.addEventListener('click', () => mobileSheetState?.onClear?.());
+      sheet.ownerDocument.addEventListener('keydown', handleMobileSheetKeydown);
+    }
+
+    mobileSheetState.facetBar = facetBar;
+    mobileSheetState.sheetBody = sheetBody;
+    mobileSheetState.onClear = onClear;
+    mobileSheetState.onApply = onApply;
+    setMobileSheetCounts(mobileSheetState, { activeFacetCount, resultCount });
+    return mobileSheetState;
+  }
+
   function buildCardHtml(match) {
     const metaBits = [
       match.readableSpec,
@@ -315,9 +472,11 @@
     renderActiveChips,
     renderFacetBar,
     renderLiveCount,
+    renderMobileFilterSheet,
     renderPresetChips,
     renderSearchResults,
-    renderSortDropdown
+    renderSortDropdown,
+    toggleMobileSheet
   };
 
   if (typeof module !== 'undefined' && module.exports) {
