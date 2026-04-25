@@ -38,7 +38,7 @@ function makeBaseProduct(overrides = {}) {
 }
 
 async function createWorkspace(products) {
-  const rootDir = await mkdtemp(path.join(tmpdir(), 'fitmyappliance-energy-'));
+  const rootDir = await mkdtemp(path.join(tmpdir(), 'fitappliance-energy-'));
   const dataDir = path.join(rootDir, 'public', 'data');
   await mkdir(dataDir, { recursive: true });
 

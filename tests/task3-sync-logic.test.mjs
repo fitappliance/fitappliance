@@ -43,7 +43,7 @@ async function createWorkspace({
   sourceDocuments = [],
   notesText = '# Door Swing Research Notes\n'
 }) {
-  const rootDir = await mkdtemp(path.join(tmpdir(), 'fitmyappliance-sync-'));
+  const rootDir = await mkdtemp(path.join(tmpdir(), 'fitappliance-sync-'));
   const dataDir = path.join(rootDir, 'public', 'data');
   const sourcesDir = path.join(dataDir, 'sources');
   const docsDir = path.join(rootDir, 'docs');
