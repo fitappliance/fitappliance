@@ -52,8 +52,18 @@ function buildHreflangLinks(canonical) {
   ].join('\n');
 }
 
+function buildOgImageMeta(imagePath, { width = 1200, height = 630 } = {}) {
+  if (!imagePath) return '';
+  return [
+    `  <meta property="og:image" content="${escHtml(imagePath)}">`,
+    `  <meta property="og:image:width" content="${Number(width)}">`,
+    `  <meta property="og:image:height" content="${Number(height)}">`
+  ].join('\n');
+}
+
 module.exports = {
   escHtml,
   buildHtmlHead,
-  buildHreflangLinks
+  buildHreflangLinks,
+  buildOgImageMeta
 };

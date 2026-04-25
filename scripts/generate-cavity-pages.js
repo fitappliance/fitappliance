@@ -5,7 +5,7 @@ const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { fillTemplate, loadCopyFile, pickVariant } = require('./common/copy-data.js');
 const { buildReviewVideoSection } = require('./common/review-video-renderer.js');
-const { buildHreflangLinks } = require('./common/html-head.js');
+const { buildHreflangLinks, buildOgImageMeta } = require('./common/html-head.js');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { canonicalizeProducts, canonicalizeRuleDocument } = require('./brand-canon.js');
 const { generateMeasurementSvg } = require('./generate-measurement-svg');
@@ -22,6 +22,7 @@ const MAX_WIDTH = 1100;
 const STEP = 10;
 const DEFAULT_CAVITY_HEIGHT_MM = 1800;
 const DEFAULT_CAVITY_DEPTH_MM = 700;
+const CAVITY_OG_IMAGE_PATH = '/og-images/westinghouse-fridge.png';
 const GUIDE_HUB_LINKS = [
   { url: '/guides/fridge-clearance-requirements', label: 'Fridge Clearance Requirements Guide' },
   { url: '/guides/appliance-fit-sizing-handbook', label: 'Appliance Fit Sizing Handbook' },
@@ -161,6 +162,7 @@ function buildPageHtml({
   const title = `Fridges that fit a ${width}mm cavity (Australia 2026) | FitAppliance`;
   const description = `${resultCount} fridges fit a ${width}mm kitchen cavity. Includes Samsung, LG, Fisher & Paykel. Free cavity checker.`;
   const canonical = `${SITE_ORIGIN}/cavity/${width}mm-fridge`;
+  const ogImageMeta = buildOgImageMeta(CAVITY_OG_IMAGE_PATH);
   const itemListJsonLd = JSON.stringify(buildItemListJsonLd(width, featured), null, 2);
   const breadcrumbJsonLd = JSON.stringify(buildBreadcrumbJsonLd(width), null, 2);
   const productJsonLd = JSON.stringify(buildProductJsonLd(width, featured), null, 2);
@@ -177,6 +179,12 @@ function buildPageHtml({
   <meta name="article:modified_time" content="${escHtml(modifiedTime)}">
   <link rel="canonical" href="${canonical}">
 ${buildHreflangLinks(canonical)}
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="FitAppliance">
+  <meta property="og:title" content="${escHtml(title)}">
+  <meta property="og:description" content="${escHtml(description)}">
+  <meta property="og:url" content="${canonical}">
+${ogImageMeta}
   <style>
     :root { --ink:#131210; --ink-2:#3d3a35; --ink-3:#6b6b6b; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
     body { margin:0; font-family:Arial, sans-serif; color:var(--ink); background:var(--paper); line-height:1.6; }

@@ -6,7 +6,7 @@ const { execFileSync } = require('node:child_process');
 const { existsSync, statSync } = require('node:fs');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
-const { buildHreflangLinks } = require('./common/html-head.js');
+const { buildHreflangLinks, buildOgImageMeta } = require('./common/html-head.js');
 const { buildArticleSchema, serializeJsonLd } = require('./common/schema-jsonld.js');
 const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
 
@@ -255,7 +255,7 @@ function buildHubHtml({ guide, links, crossLinks, articleJsonLd }) {
   const title = `${guide.title} | FitAppliance`;
   const description = guide.description;
   const canonical = `${SITE_ORIGIN}/guides/${guide.slug}`;
-  const ogImage = `${SITE_ORIGIN}/og-images/guide-${guide.slug}.png`;
+  const ogImage = `/og-images/guide-${guide.slug}.png`;
 
   return `<!doctype html>
 <html lang="en-AU">
@@ -275,7 +275,7 @@ ${buildHreflangLinks(canonical)}
   <meta property="og:title" content="${escHtml(title)}">
   <meta property="og:description" content="${escHtml(description)}">
   <meta property="og:url" content="${canonical}">
-  <meta property="og:image" content="${ogImage}">
+${buildOgImageMeta(ogImage)}
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${escHtml(title)}">
   <meta name="twitter:description" content="${escHtml(description)}">
