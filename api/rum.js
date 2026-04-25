@@ -1,10 +1,36 @@
 'use strict';
 
-const crypto = require('node:crypto');
+// Anonymous RUM intake guardrails:
+// - 4KB max JSON payload before parsing.
+// - 60 requests/IP burst capacity, refilling at 1 request/second.
+// - Token buckets are in-memory per edge/runtime instance, so distributed abuse can scale
+//   by the number of active edges. Upgrade to Vercel KV if traffic needs global limiting.
+
+const { createTokenBucketLimiter } = require('./_lib/ratelimit.js');
 
 const ALLOWED_METRICS = new Set(['LCP', 'INP', 'CLS', 'TTFB']);
-const RATE_LIMIT_PER_MINUTE = 60;
-const RATE_WINDOW_MS = 60_000;
+const MAX_BODY_BYTES = 4096;
+
+class PayloadTooLargeError extends Error {
+  constructor() {
+    super('payload_too_large');
+    this.code = 'payload_too_large';
+  }
+}
+
+function getHeaderValue(headers, key) {
+  if (!headers) return '';
+  if (typeof headers.get === 'function') {
+    return headers.get(key) ?? headers.get(key.toLowerCase()) ?? '';
+  }
+  return headers[key] ?? headers[key.toLowerCase()] ?? '';
+}
+
+function assertBodySizeWithinLimit(byteLength, maxBytes = MAX_BODY_BYTES) {
+  if (Number(byteLength) > maxBytes) {
+    throw new PayloadTooLargeError();
+  }
+}
 
 function normalizeOrigin(value) {
   if (typeof value !== 'string' || value.trim() === '') return '';
@@ -28,11 +54,14 @@ function isSameOriginRequest(req, siteOrigin) {
   return true;
 }
 
-function getClientFingerprint(req) {
-  const forwarded = String(req?.headers?.['x-forwarded-for'] ?? req?.headers?.['x-real-ip'] ?? 'unknown');
+function getClientIp(req) {
+  const forwarded = String(
+    getHeaderValue(req?.headers, 'x-forwarded-for') ||
+    getHeaderValue(req?.headers, 'x-real-ip') ||
+    'unknown'
+  );
   const ipToken = forwarded.split(',')[0].trim() || 'unknown';
-  const uaToken = String(req?.headers?.['user-agent'] ?? '').slice(0, 120);
-  return crypto.createHash('sha256').update(`${ipToken}|${uaToken}`).digest('hex').slice(0, 24);
+  return ipToken;
 }
 
 function sanitizeRumPayload(payload) {
@@ -59,36 +88,33 @@ function sanitizeRumPayload(payload) {
   };
 }
 
-function createRateLimiter({ limit = RATE_LIMIT_PER_MINUTE, windowMs = RATE_WINDOW_MS, nowFn = Date.now } = {}) {
-  const windows = new Map();
-  return {
-    check(key) {
-      const now = nowFn();
-      const entry = windows.get(key);
-      if (!entry || (now - entry.windowStart) >= windowMs) {
-        windows.set(key, { windowStart: now, count: 1 });
-        return { allowed: true, remaining: limit - 1 };
-      }
-
-      if (entry.count >= limit) {
-        const retryAfter = Math.max(1, Math.ceil((windowMs - (now - entry.windowStart)) / 1000));
-        return { allowed: false, remaining: 0, retryAfter };
-      }
-
-      entry.count += 1;
-      return { allowed: true, remaining: limit - entry.count };
-    }
-  };
-}
-
 async function parseRequestBody(req) {
+  const contentLength = Number(getHeaderValue(req?.headers, 'content-length'));
+  if (Number.isFinite(contentLength)) {
+    assertBodySizeWithinLimit(contentLength);
+  }
+
   if (req?.body && typeof req.body === 'object') return req.body;
-  if (typeof req?.body === 'string' && req.body.trim() !== '') return JSON.parse(req.body);
+  if (typeof req?.body === 'string' && req.body.trim() !== '') {
+    assertBodySizeWithinLimit(Buffer.byteLength(req.body, 'utf8'));
+    return JSON.parse(req.body);
+  }
 
   if (!req || typeof req.on !== 'function') return {};
   const chunks = [];
+  let totalBytes = 0;
   await new Promise((resolve, reject) => {
-    req.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
+    req.on('data', (chunk) => {
+      const buffer = Buffer.from(chunk);
+      totalBytes += buffer.length;
+      try {
+        assertBodySizeWithinLimit(totalBytes);
+      } catch (error) {
+        reject(error);
+        return;
+      }
+      chunks.push(buffer);
+    });
     req.on('end', resolve);
     req.on('error', reject);
   });
@@ -123,8 +149,13 @@ function sendNoContent(res) {
 
 function createRumHandler({
   siteOrigin = 'https://www.fitappliance.com.au',
-  rateLimiter = createRateLimiter(),
   nowFn = Date.now,
+  rateLimiter = createTokenBucketLimiter({
+    capacity: 60,
+    refillPerSec: 1,
+    maxKeys: 100,
+    nowFn
+  }),
   storeEvent = async (event) => {
     console.info(`[rum] ${JSON.stringify(event)}`);
   }
@@ -146,7 +177,11 @@ function createRumHandler({
     let body;
     try {
       body = await parseRequestBody(req);
-    } catch {
+    } catch (error) {
+      if (error?.code === 'payload_too_large') {
+        sendJson(res, 413, { ok: false, error: 'payload_too_large' });
+        return;
+      }
       sendJson(res, 400, { error: 'invalid_json' });
       return;
     }
@@ -157,13 +192,14 @@ function createRumHandler({
       return;
     }
 
-    const fingerprint = getClientFingerprint(req);
-    const gate = rateLimiter.check(fingerprint, nowFn());
+    const clientIp = getClientIp(req);
+    const gate = rateLimiter.check(clientIp);
     if (!gate.allowed) {
+      const retryAfterSec = Math.max(1, Math.ceil(Number(gate.retryAfterSec ?? 1)));
       if (typeof res.setHeader === 'function') {
-        res.setHeader('Retry-After', String(gate.retryAfter ?? 60));
+        res.setHeader('Retry-After', String(retryAfterSec));
       }
-      sendJson(res, 429, { error: 'rate_limited' });
+      sendJson(res, 429, { ok: false, error: 'rate_limited', retry_after_sec: retryAfterSec });
       return;
     }
 
@@ -178,7 +214,10 @@ function createRumHandler({
 const handler = createRumHandler();
 
 module.exports = handler;
-module.exports.createRateLimiter = createRateLimiter;
+module.exports.createRateLimiter = createTokenBucketLimiter;
+module.exports.createTokenBucketLimiter = createTokenBucketLimiter;
 module.exports.createRumHandler = createRumHandler;
+module.exports.getClientIp = getClientIp;
+module.exports.getHeaderValue = getHeaderValue;
 module.exports.isSameOriginRequest = isSameOriginRequest;
 module.exports.sanitizeRumPayload = sanitizeRumPayload;
