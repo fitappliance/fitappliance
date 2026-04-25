@@ -2,6 +2,8 @@
 'use strict';
 
 const path = require('node:path');
+const { execFileSync } = require('node:child_process');
+const { readFile } = require('node:fs/promises');
 const { mkdir, writeFile } = require('node:fs/promises');
 
 const DEFAULT_PRECACHE = [
@@ -16,9 +18,44 @@ const DEFAULT_PRECACHE = [
   '/scripts/sw-register.js'
 ];
 
-function buildVersion(nowMs = Date.now()) {
-  const stamp = new Date(nowMs).toISOString().replace(/\D/g, '').slice(0, 14);
-  return `fitappliance-v${stamp}`;
+async function readExistingCacheVersion(outputPath) {
+  try {
+    const source = await readFile(outputPath, 'utf8');
+    return source.match(/const CACHE_VERSION = '([^']+)'/)?.[1] ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function normalizeCommitish(value) {
+  const raw = String(value ?? '').trim();
+  if (!raw) return '';
+  return /^[0-9a-f]{7,40}$/i.test(raw) ? raw.slice(0, 7).toLowerCase() : raw;
+}
+
+function readGitShortSha({ repoRoot = path.resolve(__dirname, '..'), execFn = execFileSync } = {}) {
+  try {
+    return String(execFn('git', ['rev-parse', '--short=7', 'HEAD'], {
+      cwd: repoRoot,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore']
+    })).trim();
+  } catch {
+    return '';
+  }
+}
+
+function buildVersion({
+  env = process.env,
+  repoRoot = path.resolve(__dirname, '..'),
+  existingVersion = '',
+  execFn = execFileSync
+} = {}) {
+  return normalizeCommitish(env.SW_VERSION)
+    || normalizeCommitish(env.VERCEL_GIT_COMMIT_SHA)
+    || normalizeCommitish(existingVersion)
+    || normalizeCommitish(readGitShortSha({ repoRoot, execFn }))
+    || 'dev';
 }
 
 function createServiceWorkerSource({
@@ -33,8 +70,8 @@ function createServiceWorkerSource({
   return `/* eslint-disable no-restricted-globals */
 'use strict';
 
-const SW_VERSION = '${safeVersion}';
-const STATIC_CACHE = SW_VERSION;
+const CACHE_VERSION = '${safeVersion}';
+const STATIC_CACHE = CACHE_VERSION;
 const PRECACHE = ${precacheJson};
 const CACHE_FIRST_PREFIXES = ['/scripts/', '/og-images/', '/data/', '/icons/'];
 
@@ -109,10 +146,11 @@ self.addEventListener('fetch', (event) => {
 async function generateServiceWorker({
   repoRoot = path.resolve(__dirname, '..'),
   outputPath = path.join(repoRoot, 'public', 'service-worker.js'),
-  nowFn = Date.now,
+  env = process.env,
   precache = DEFAULT_PRECACHE
 } = {}) {
-  const version = buildVersion(nowFn());
+  const existingVersion = await readExistingCacheVersion(outputPath);
+  const version = buildVersion({ env, repoRoot, existingVersion });
   const source = createServiceWorkerSource({ version, precache });
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, source, 'utf8');
@@ -131,6 +169,8 @@ if (require.main === module) {
 module.exports = {
   DEFAULT_PRECACHE,
   buildVersion,
+  readExistingCacheVersion,
+  readGitShortSha,
   createServiceWorkerSource,
   generateServiceWorker
 };

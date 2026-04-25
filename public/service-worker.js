@@ -1,8 +1,8 @@
 /* eslint-disable no-restricted-globals */
 'use strict';
 
-const SW_VERSION = 'fitappliance-v20260418142010';
-const STATIC_CACHE = SW_VERSION;
+const CACHE_VERSION = '5a3790b';
+const STATIC_CACHE = CACHE_VERSION;
 const PRECACHE = [
   "/",
   "/index.html",

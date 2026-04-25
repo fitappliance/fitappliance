@@ -37,18 +37,18 @@ test('phase 33 pwa: service-worker source includes version constant and version 
     precache: ['/index.html', '/guides/fridge-clearance-requirements']
   });
 
-  assert.match(first, /const SW_VERSION = 'fitappliance-v111'/);
-  assert.match(second, /const SW_VERSION = 'fitappliance-v222'/);
+  assert.match(first, /const CACHE_VERSION = 'fitappliance-v111'/);
+  assert.match(second, /const CACHE_VERSION = 'fitappliance-v222'/);
   assert.notEqual(first, second);
 
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fit-pwa-test-'));
   const outputPath = path.join(tmpDir, 'service-worker.js');
   await generateServiceWorker({
     outputPath,
-    nowFn: () => new Date('2026-04-18T00:00:00.000Z')
+    env: { SW_VERSION: 'abc1234' }
   });
   const generated = fs.readFileSync(outputPath, 'utf8');
-  assert.match(generated, /const SW_VERSION = 'fitappliance-v/);
+  assert.match(generated, /const CACHE_VERSION = 'abc1234'/);
 });
 
 test('phase 33 pwa: service-worker explicitly avoids caching /api/* requests', () => {
