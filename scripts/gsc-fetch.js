@@ -3,6 +3,10 @@
 const path = require('node:path');
 const { mkdir } = require('node:fs/promises');
 const { writeJsonAtomically } = require('./utils/file-utils.js');
+const {
+  loadGscCredentials,
+  parseLegacyGscServiceAccountJson
+} = require('./common/gsc-credentials.js');
 
 const GSC_SCOPE = 'https://www.googleapis.com/auth/webmasters.readonly';
 const DEFAULT_SITE_URL = 'sc-domain:fitappliance.com.au';
@@ -13,25 +17,7 @@ function formatDate(date) {
 }
 
 function parseServiceAccountJson(raw) {
-  if (!raw || !String(raw).trim()) {
-    throw new Error('GSC_SA_JSON is required to fetch Google Search Console data.');
-  }
-
-  let parsed;
-  try {
-    parsed = JSON.parse(raw);
-  } catch (error) {
-    throw new Error(`GSC_SA_JSON is not valid JSON: ${error.message}`);
-  }
-
-  const requiredFields = ['client_email', 'private_key', 'token_uri'];
-  for (const field of requiredFields) {
-    if (!parsed[field] || typeof parsed[field] !== 'string') {
-      throw new Error(`GSC_SA_JSON missing required service account field: ${field}`);
-    }
-  }
-
-  return parsed;
+  return parseLegacyGscServiceAccountJson(raw);
 }
 
 function normalizeSearchAnalyticsRows(rawRows = []) {
@@ -129,7 +115,8 @@ async function fetchGscReport({
   siteUrl = DEFAULT_SITE_URL,
   windowDays = 28,
   today = formatDate(new Date()),
-  serviceAccountJson = process.env.GSC_SA_JSON,
+  env = process.env,
+  serviceAccountJson = null,
   searchanalyticsQueryFn = null,
   googleapisModule = null,
   write = true,
@@ -144,7 +131,7 @@ async function fetchGscReport({
   const startDate = formatDate(start);
   const endDate = formatDate(day);
 
-  const serviceAccount = parseServiceAccountJson(serviceAccountJson);
+  const serviceAccount = loadGscCredentials({ env, legacyJson: serviceAccountJson });
   const queryFn =
     searchanalyticsQueryFn
     ?? buildSearchAnalyticsQueryFn({

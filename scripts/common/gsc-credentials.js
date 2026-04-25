@@ -45,13 +45,17 @@ function hasCompleteSplitCredentials(env) {
     && present(env?.GSC_SA_PROJECT_ID);
 }
 
-function loadGscCredentials({ env = process.env } = {}) {
+function loadGscCredentials({ env = process.env, legacyJson = null } = {}) {
   if (hasCompleteSplitCredentials(env)) {
     return compactCredentials({
       client_email: env.GSC_SA_EMAIL,
       private_key: env.GSC_SA_PRIVATE_KEY,
       project_id: env.GSC_SA_PROJECT_ID
     });
+  }
+
+  if (present(legacyJson)) {
+    return parseLegacyGscServiceAccountJson(legacyJson);
   }
 
   if (present(env?.GSC_SA_JSON)) {
