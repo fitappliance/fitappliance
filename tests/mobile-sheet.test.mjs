@@ -154,3 +154,18 @@ test('phase 45b mobile sheet: dialog aria attributes are applied', async () => {
   assert.equal(trigger.textContent, 'Filters (2)');
   assert.equal(window.document.querySelector('[data-mobile-apply]').textContent, 'Apply (17 results)');
 });
+
+test('phase 45b mobile sheet: repeated render updates trigger and apply counts', async () => {
+  const api = await loadSearchDom();
+  const window = makeSheetWindow();
+  const trigger = window.document.querySelector('[data-mobile-filter-trigger]');
+  const applyButton = window.document.querySelector('[data-mobile-apply]');
+
+  setupSheet(window, api, { activeFacetCount: 1, resultCount: 4 });
+  assert.equal(trigger.textContent, 'Filters (1)');
+  assert.equal(applyButton.textContent, 'Apply (4 results)');
+
+  setupSheet(window, api, { activeFacetCount: 3, resultCount: 1 });
+  assert.equal(trigger.textContent, 'Filters (3)');
+  assert.equal(applyButton.textContent, 'Apply (1 result)');
+});

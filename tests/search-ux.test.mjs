@@ -225,3 +225,24 @@ test('phase 45a search-ux: results count is hidden for empty results and restore
   assert.match(indexHtml, /if\s*\(\s*currentMatchRows\.length\s*===\s*0\s*\)\s*\{[\s\S]*resultsCount\.hidden\s*=\s*true;/);
   assert.match(indexHtml, /resultsCount\.hidden\s*=\s*false;[\s\S]*resultsCount\.innerHTML\s*=\s*`<b>\$\{currentMatchRows\.length\}/);
 });
+
+test('phase 45b search-ux: mobile filter sheet is wired to active facet and result counts', () => {
+  const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+
+  assert.match(indexHtml, /data-mobile-filter-trigger/);
+  assert.match(indexHtml, /data-mobile-sheet-body/);
+  assert.match(indexHtml, /SearchDom\.renderMobileFilterSheet\(\{/);
+  assert.match(indexHtml, /activeFacetCount:\s*countActiveFacets\(activeFacetState\)/);
+  assert.match(indexHtml, /resultCount:\s*currentMatchRows\.length/);
+});
+
+test('phase 45b search-ux: clear all resets facet state without touching dimension filters', () => {
+  const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+
+  assert.match(indexHtml, /function clearAllFacets\(\)\s*\{/);
+  assert.match(indexHtml, /brand:\s*\[\]/);
+  assert.match(indexHtml, /priceMin:\s*null/);
+  assert.match(indexHtml, /priceMax:\s*null/);
+  assert.match(indexHtml, /availableOnly:\s*true/);
+  assert.match(indexHtml, /refreshSearchResults\(\);/);
+});
