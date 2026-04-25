@@ -56,7 +56,7 @@ test('phase 33 pwa: service-worker explicitly avoids caching /api/* requests', (
   const source = fs.readFileSync(serviceWorkerPath, 'utf8');
 
   assert.match(source, /url\.pathname\.startsWith\('\/api\/'\)/);
-  assert.match(source, /return fetch\(request\)/);
+  assert.match(source, /if \(!shouldHandleRequest\(request, self\.location\.origin\)\) return;/);
 });
 
 test('phase 33 pwa: sw-register is non-blocking and loaded with defer in homepage', () => {

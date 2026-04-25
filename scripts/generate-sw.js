@@ -18,6 +18,7 @@ const DEFAULT_PRECACHE = [
   '/scripts/sw-register.js'
 ];
 const VERSIONED_CACHE_PREFIXES = ['app-shell-', 'static-', 'data-'];
+const DATA_MAX_AGE_MS = 60 * 60 * 1000;
 
 function isVersionedCacheName(key) {
   return VERSIONED_CACHE_PREFIXES.some((prefix) => String(key ?? '').startsWith(prefix));
@@ -29,6 +30,134 @@ async function cleanupVersionedCaches(cacheStorage, version) {
   await Promise.all(keys
     .filter((key) => isVersionedCacheName(key) && !String(key).endsWith(`-${cacheVersion}`))
     .map((key) => cacheStorage.delete(key)));
+}
+
+function getHeader(request, name) {
+  return request?.headers?.get?.(name) ?? '';
+}
+
+function parseRequestUrl(request, locationOrigin) {
+  try {
+    return new URL(request.url, locationOrigin);
+  } catch {
+    return null;
+  }
+}
+
+function isHtmlRequest(request) {
+  return request?.mode === 'navigate'
+    || request?.destination === 'document'
+    || String(getHeader(request, 'accept')).includes('text/html');
+}
+
+function isDataRequest(url) {
+  return Boolean(url && url.pathname.startsWith('/data/') && url.pathname.endsWith('.json'));
+}
+
+function isStaticRequest(request, url) {
+  if (!url) return false;
+  if (['script', 'style', 'image', 'font'].includes(request?.destination)) return true;
+  return ['/scripts/', '/styles.css', '/og-images/', '/icons/', '/manifest.webmanifest']
+    .some((prefix) => url.pathname === prefix || url.pathname.startsWith(prefix));
+}
+
+function shouldHandleRequest(request, locationOrigin) {
+  if (request?.method !== 'GET') return false;
+  const url = parseRequestUrl(request, locationOrigin);
+  if (!url || url.origin !== locationOrigin) return false;
+  return !url.pathname.startsWith('/api/');
+}
+
+function isCachedResponseFresh(response, nowMs, maxAgeMs) {
+  if (!maxAgeMs) return true;
+  const fetchedAt = Number(response?.headers?.get?.('x-fitappliance-fetched-at'));
+  return Number.isFinite(fetchedAt) && nowMs - fetchedAt <= maxAgeMs;
+}
+
+function cloneForCache(response, nowMs, maxAgeMs) {
+  const cloned = response.clone();
+  if (!maxAgeMs || typeof Response === 'undefined' || !(cloned instanceof Response)) {
+    return cloned;
+  }
+  const headers = new Headers(cloned.headers);
+  headers.set('x-fitappliance-fetched-at', String(nowMs));
+  return new Response(cloned.body, {
+    status: cloned.status,
+    statusText: cloned.statusText,
+    headers
+  });
+}
+
+async function fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs }) {
+  const response = await fetchFn(request);
+  if (response?.ok) {
+    await cache.put(request, cloneForCache(response, nowFn(), maxAgeMs));
+  }
+  return response;
+}
+
+async function networkFirst({ request, cache, fetchFn, nowFn = Date.now }) {
+  try {
+    return await fetchAndCache({ request, cache, fetchFn, nowFn });
+  } catch {
+    const cached = await cache.match(request);
+    if (cached) return cached;
+    throw new Error('network_unavailable');
+  }
+}
+
+async function cacheFirstStaleWhileRevalidate({
+  request,
+  cache,
+  fetchFn,
+  waitUntil = () => {},
+  nowFn = Date.now,
+  maxAgeMs = 0
+}) {
+  const cached = await cache.match(request);
+  if (cached && isCachedResponseFresh(cached, nowFn(), maxAgeMs)) {
+    waitUntil(fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs }).catch(() => null));
+    return cached;
+  }
+  try {
+    return await fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs });
+  } catch {
+    if (cached) return cached;
+    throw new Error('network_unavailable');
+  }
+}
+
+async function handleServiceWorkerRequest({
+  request,
+  cacheStorage,
+  fetchFn,
+  locationOrigin,
+  waitUntil = () => {},
+  nowFn = Date.now,
+  cacheNames
+}) {
+  if (!shouldHandleRequest(request, locationOrigin)) return null;
+  const url = parseRequestUrl(request, locationOrigin);
+  if (isHtmlRequest(request)) {
+    const cache = await cacheStorage.open(cacheNames.appShell);
+    return networkFirst({ request, cache, fetchFn, nowFn });
+  }
+  if (isDataRequest(url)) {
+    const cache = await cacheStorage.open(cacheNames.data);
+    return cacheFirstStaleWhileRevalidate({
+      request,
+      cache,
+      fetchFn,
+      waitUntil,
+      nowFn,
+      maxAgeMs: DATA_MAX_AGE_MS
+    });
+  }
+  if (isStaticRequest(request, url)) {
+    const cache = await cacheStorage.open(cacheNames.static);
+    return cacheFirstStaleWhileRevalidate({ request, cache, fetchFn, waitUntil, nowFn });
+  }
+  return fetchFn(request);
 }
 
 async function readExistingCacheVersion(outputPath) {
@@ -89,7 +218,12 @@ const STATIC_CACHE = \`static-\${CACHE_VERSION}\`;
 const DATA_CACHE = \`data-\${CACHE_VERSION}\`;
 const PRECACHE = ${precacheJson};
 const VERSIONED_CACHE_PREFIXES = ${JSON.stringify(VERSIONED_CACHE_PREFIXES)};
-const CACHE_FIRST_PREFIXES = ['/scripts/', '/og-images/', '/data/', '/icons/'];
+const DATA_MAX_AGE_MS = ${DATA_MAX_AGE_MS};
+const CACHE_NAMES = {
+  appShell: APP_SHELL_CACHE,
+  static: STATIC_CACHE,
+  data: DATA_CACHE
+};
 
 function isVersionedCacheName(key) {
   return VERSIONED_CACHE_PREFIXES.some((prefix) => String(key ?? '').startsWith(prefix));
@@ -101,6 +235,134 @@ async function cleanupVersionedCaches(cacheStorage, version) {
   await Promise.all(keys
     .filter((key) => isVersionedCacheName(key) && !String(key).endsWith(\`-\${cacheVersion}\`))
     .map((key) => cacheStorage.delete(key)));
+}
+
+function getHeader(request, name) {
+  return request?.headers?.get?.(name) ?? '';
+}
+
+function parseRequestUrl(request, locationOrigin) {
+  try {
+    return new URL(request.url, locationOrigin);
+  } catch {
+    return null;
+  }
+}
+
+function isHtmlRequest(request) {
+  return request?.mode === 'navigate'
+    || request?.destination === 'document'
+    || String(getHeader(request, 'accept')).includes('text/html');
+}
+
+function isDataRequest(url) {
+  return Boolean(url && url.pathname.startsWith('/data/') && url.pathname.endsWith('.json'));
+}
+
+function isStaticRequest(request, url) {
+  if (!url) return false;
+  if (['script', 'style', 'image', 'font'].includes(request?.destination)) return true;
+  return ['/scripts/', '/styles.css', '/og-images/', '/icons/', '/manifest.webmanifest']
+    .some((prefix) => url.pathname === prefix || url.pathname.startsWith(prefix));
+}
+
+function shouldHandleRequest(request, locationOrigin) {
+  if (request?.method !== 'GET') return false;
+  const url = parseRequestUrl(request, locationOrigin);
+  if (!url || url.origin !== locationOrigin) return false;
+  return !url.pathname.startsWith('/api/');
+}
+
+function isCachedResponseFresh(response, nowMs, maxAgeMs) {
+  if (!maxAgeMs) return true;
+  const fetchedAt = Number(response?.headers?.get?.('x-fitappliance-fetched-at'));
+  return Number.isFinite(fetchedAt) && nowMs - fetchedAt <= maxAgeMs;
+}
+
+function cloneForCache(response, nowMs, maxAgeMs) {
+  const cloned = response.clone();
+  if (!maxAgeMs || typeof Response === 'undefined' || !(cloned instanceof Response)) {
+    return cloned;
+  }
+  const headers = new Headers(cloned.headers);
+  headers.set('x-fitappliance-fetched-at', String(nowMs));
+  return new Response(cloned.body, {
+    status: cloned.status,
+    statusText: cloned.statusText,
+    headers
+  });
+}
+
+async function fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs }) {
+  const response = await fetchFn(request);
+  if (response?.ok) {
+    await cache.put(request, cloneForCache(response, nowFn(), maxAgeMs));
+  }
+  return response;
+}
+
+async function networkFirst({ request, cache, fetchFn, nowFn = Date.now }) {
+  try {
+    return await fetchAndCache({ request, cache, fetchFn, nowFn });
+  } catch {
+    const cached = await cache.match(request);
+    if (cached) return cached;
+    throw new Error('network_unavailable');
+  }
+}
+
+async function cacheFirstStaleWhileRevalidate({
+  request,
+  cache,
+  fetchFn,
+  waitUntil = () => {},
+  nowFn = Date.now,
+  maxAgeMs = 0
+}) {
+  const cached = await cache.match(request);
+  if (cached && isCachedResponseFresh(cached, nowFn(), maxAgeMs)) {
+    waitUntil(fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs }).catch(() => null));
+    return cached;
+  }
+  try {
+    return await fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs });
+  } catch {
+    if (cached) return cached;
+    throw new Error('network_unavailable');
+  }
+}
+
+async function handleServiceWorkerRequest({
+  request,
+  cacheStorage,
+  fetchFn,
+  locationOrigin,
+  waitUntil = () => {},
+  nowFn = Date.now,
+  cacheNames
+}) {
+  if (!shouldHandleRequest(request, locationOrigin)) return null;
+  const url = parseRequestUrl(request, locationOrigin);
+  if (isHtmlRequest(request)) {
+    const cache = await cacheStorage.open(cacheNames.appShell);
+    return networkFirst({ request, cache, fetchFn, nowFn });
+  }
+  if (isDataRequest(url)) {
+    const cache = await cacheStorage.open(cacheNames.data);
+    return cacheFirstStaleWhileRevalidate({
+      request,
+      cache,
+      fetchFn,
+      waitUntil,
+      nowFn,
+      maxAgeMs: DATA_MAX_AGE_MS
+    });
+  }
+  if (isStaticRequest(request, url)) {
+    const cache = await cacheStorage.open(cacheNames.static);
+    return cacheFirstStaleWhileRevalidate({ request, cache, fetchFn, waitUntil, nowFn });
+  }
+  return fetchFn(request);
 }
 
 self.addEventListener('install', (event) => {
@@ -120,52 +382,15 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const { request } = event;
-  if (request.method !== 'GET') return;
-
-  const url = new URL(request.url);
-  if (url.origin !== self.location.origin) return;
-
-  if (url.pathname.startsWith('/api/')) {
-    event.respondWith((async () => {
-      return fetch(request);
-    })());
-    return;
-  }
-
-  const isHtmlNavigation = request.mode === 'navigate' || request.headers.get('accept')?.includes('text/html');
-  if (isHtmlNavigation) {
-    event.respondWith((async () => {
-      const cache = await caches.open(STATIC_CACHE);
-      const cached = await cache.match(request);
-      const network = fetch(request)
-        .then((response) => {
-          if (response && response.ok) {
-            cache.put(request, response.clone());
-          }
-          return response;
-        })
-        .catch(() => null);
-      if (cached) {
-        network.catch(() => null);
-        return cached;
-      }
-      return network || fetch(request);
-    })());
-    return;
-  }
-
-  if (CACHE_FIRST_PREFIXES.some((prefix) => url.pathname.startsWith(prefix))) {
-    event.respondWith((async () => {
-      const cache = await caches.open(STATIC_CACHE);
-      const cached = await cache.match(request);
-      if (cached) return cached;
-      const response = await fetch(request);
-      if (response && response.ok) {
-        cache.put(request, response.clone());
-      }
-      return response;
-    })());
-  }
+  if (!shouldHandleRequest(request, self.location.origin)) return;
+  event.respondWith(handleServiceWorkerRequest({
+    request,
+    cacheStorage: caches,
+    fetchFn: fetch,
+    locationOrigin: self.location.origin,
+    waitUntil: (promise) => event.waitUntil(promise),
+    cacheNames: CACHE_NAMES
+  }));
 });
 `;
 }
@@ -195,10 +420,15 @@ if (require.main === module) {
 
 module.exports = {
   DEFAULT_PRECACHE,
+  DATA_MAX_AGE_MS,
   VERSIONED_CACHE_PREFIXES,
   buildVersion,
+  cacheFirstStaleWhileRevalidate,
   cleanupVersionedCaches,
+  handleServiceWorkerRequest,
   isVersionedCacheName,
+  networkFirst,
+  shouldHandleRequest,
   readExistingCacheVersion,
   readGitShortSha,
   createServiceWorkerSource,
