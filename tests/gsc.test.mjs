@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -137,6 +138,70 @@ test('phase 23 gsc: fetchGscReport falls back from domain property to url-prefix
   assert.equal(result.summary.rowCount, 1);
 });
 
+test('phase 43a gsc: fetchGscReport accepts split service-account env secrets', async () => {
+  const { fetchGscReport } = await import(gscModuleUrl);
+
+  const result = await fetchGscReport({
+    write: false,
+    today: '2026-04-18',
+    env: {
+      GSC_SA_EMAIL: 'split-gsc@fitappliance.iam.gserviceaccount.com',
+      GSC_SA_PRIVATE_KEY: '-----BEGIN PRIVATE KEY-----\\nSPLIT\\n-----END PRIVATE KEY-----\\n',
+      GSC_SA_PROJECT_ID: 'split-project'
+    },
+    searchanalyticsQueryFn: async () => ({
+      data: {
+        rows: [
+          {
+            keys: ['lg fridge clearance', 'https://www.fitappliance.com.au/brands/lg-fridge-clearance'],
+            clicks: 7,
+            impressions: 90,
+            ctr: 0.0777,
+            position: 8.4
+          }
+        ]
+      }
+    }),
+    logger: { log() {} }
+  });
+
+  assert.equal(result.summary.rowCount, 1);
+  assert.equal(result.rows[0].query, 'lg fridge clearance');
+});
+
+test('phase 43a gsc: fetchGscReport keeps legacy GSC_SA_JSON env fallback', async () => {
+  const { fetchGscReport } = await import(gscModuleUrl);
+
+  const result = await fetchGscReport({
+    write: false,
+    today: '2026-04-18',
+    env: {
+      GSC_SA_JSON: JSON.stringify({
+        project_id: 'legacy-project',
+        private_key: '-----BEGIN PRIVATE KEY-----\\nLEGACY\\n-----END PRIVATE KEY-----\\n',
+        client_email: 'legacy-gsc@fitappliance.iam.gserviceaccount.com'
+      })
+    },
+    searchanalyticsQueryFn: async () => ({
+      data: {
+        rows: [
+          {
+            keys: ['samsung fridge clearance', 'https://www.fitappliance.com.au/brands/samsung-fridge-clearance'],
+            clicks: 4,
+            impressions: 70,
+            ctr: 0.0571,
+            position: 10.1
+          }
+        ]
+      }
+    }),
+    logger: { log() {} }
+  });
+
+  assert.equal(result.summary.rowCount, 1);
+  assert.equal(result.rows[0].query, 'samsung fridge clearance');
+});
+
 test('phase 23 gsc: buildKeywordGapReport identifies content gaps and page-2 opportunities', async () => {
   const { buildKeywordGapReport } = await import(gapModuleUrl);
 
@@ -224,4 +289,13 @@ test('phase 23 gsc: keyword-gap script can ingest gsc json from disk', async () 
   const rows = await readRowsFromReportFile(reportPath);
   assert.equal(rows.length, 1);
   assert.equal(rows[0].query, 'samsung fridge clearance');
+});
+
+test('phase 43a gsc: weekly workflow passes split secrets and legacy fallback', () => {
+  const workflow = readFileSync(path.join(repoRoot, '.github', 'workflows', 'gsc-weekly.yml'), 'utf8');
+
+  assert.match(workflow, /GSC_SA_EMAIL:\s*\$\{\{\s*secrets\.GSC_SA_EMAIL\s*\}\}/);
+  assert.match(workflow, /GSC_SA_PRIVATE_KEY:\s*\$\{\{\s*secrets\.GSC_SA_PRIVATE_KEY\s*\}\}/);
+  assert.match(workflow, /GSC_SA_PROJECT_ID:\s*\$\{\{\s*secrets\.GSC_SA_PROJECT_ID\s*\}\}/);
+  assert.match(workflow, /GSC_SA_JSON:\s*\$\{\{\s*secrets\.GSC_SA_JSON\s*\}\}\s*# legacy fallback, remove after rotation/);
 });
