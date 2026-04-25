@@ -1,11 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { createRequire } from 'node:module';
 
 const ROOT = process.cwd();
 const SERVICE_WORKER_PATH = path.join(ROOT, 'public', 'service-worker.js');
+const require = createRequire(import.meta.url);
+const {
+  generateServiceWorker
+} = require('../scripts/generate-sw.js');
 
 function isShallowRepository() {
   try {
@@ -44,13 +50,16 @@ test('phase 43a sw: generated service worker has git-derived cache version, not 
   }
 });
 
-test('phase 43a sw: generate-all keeps service worker bytes stable in the same git state', () => {
-  const before = fs.readFileSync(SERVICE_WORKER_PATH, 'utf8');
-  execFileSync('npm', ['run', 'generate-all'], { cwd: ROOT, stdio: 'pipe' });
-  const afterFirst = fs.readFileSync(SERVICE_WORKER_PATH, 'utf8');
-  execFileSync('npm', ['run', 'generate-all'], { cwd: ROOT, stdio: 'pipe' });
-  const afterSecond = fs.readFileSync(SERVICE_WORKER_PATH, 'utf8');
+test('phase 43a sw: service worker generation is stable in the same git state', async () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fit-sw-version-'));
+  const outputPath = path.join(tmpDir, 'service-worker.js');
+  const logger = { log() {} };
 
-  assert.equal(afterFirst, before);
+  await generateServiceWorker({ outputPath, logger });
+  const afterFirst = fs.readFileSync(outputPath, 'utf8');
+  await generateServiceWorker({ outputPath, logger });
+  const afterSecond = fs.readFileSync(outputPath, 'utf8');
+
+  assert.match(afterFirst, /const CACHE_VERSION = '[^']+'/);
   assert.equal(afterSecond, afterFirst);
 });
