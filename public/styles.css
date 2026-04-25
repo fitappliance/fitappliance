@@ -134,6 +134,50 @@
   gap: 8px;
 }
 
+.fit-retailer-summary {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.retailer-strip {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.retailer-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--paper-2);
+  color: var(--ink-2);
+  border: 1px solid var(--border);
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.retailer-price-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.price-range,
+.price-single {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.retailer-count {
+  font-weight: 600;
+}
+
 .mobile-sheet-trigger {
   display: none;
   align-items: center;

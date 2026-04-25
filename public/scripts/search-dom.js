@@ -401,6 +401,60 @@
     return mobileSheetState;
   }
 
+  function formatAud(value) {
+    return new Intl.NumberFormat('en-AU', {
+      style: 'currency',
+      currency: 'AUD',
+      maximumFractionDigits: 0
+    }).format(value);
+  }
+
+  function getRetailerName(retailer) {
+    return String(retailer?.n ?? retailer?.name ?? retailer?.retailer ?? '')
+      .replace(/\s+\bon[a-z]+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function getRetailerPrice(retailer) {
+    for (const key of ['p', 'price', 'current_price', 'sale_price']) {
+      const parsed = Number(retailer?.[key]);
+      if (Number.isFinite(parsed) && parsed > 0) return Math.round(parsed);
+    }
+    return null;
+  }
+
+  function buildRetailerSummaryHtml(match) {
+    const retailers = Array.isArray(match?.retailers) ? match.retailers : [];
+    if (retailers.length === 0) return '';
+
+    const names = retailers
+      .map(getRetailerName)
+      .filter(Boolean)
+      .slice(0, 4);
+    const prices = retailers
+      .map(getRetailerPrice)
+      .filter((price) => Number.isFinite(price))
+      .sort((left, right) => left - right);
+    const minPrice = prices[0] ?? null;
+    const maxPrice = prices[prices.length - 1] ?? null;
+    const priceHtml = minPrice === null
+      ? ''
+      : minPrice === maxPrice
+        ? `<span class="price-single">${escHtml(formatAud(minPrice))}</span>`
+        : `<span class="price-range">From ${escHtml(formatAud(minPrice))} to ${escHtml(formatAud(maxPrice))}</span>`;
+
+    return `
+      <div class="fit-retailer-summary">
+        ${names.length > 0 ? `<div class="retailer-strip">${names.map((name) => `<span class="retailer-chip">${escHtml(name)}</span>`).join('')}</div>` : ''}
+        <div class="retailer-price-line">
+          ${priceHtml}
+          <span class="retailer-count">from ${retailers.length} retailer${retailers.length === 1 ? '' : 's'}</span>
+        </div>
+      </div>
+    `;
+  }
+
   function buildCardHtml(match) {
     const metaBits = [
       match.readableSpec,
@@ -417,6 +471,7 @@
             </div>
             <div class="fit-result-meta">${escHtml(metaBits.join(' · '))}</div>
             ${match.sku ? `<div class="fit-result-sku">SKU ${escHtml(match.sku)}</div>` : ''}
+            ${buildRetailerSummaryHtml(match)}
           </div>
           ${match.fitsTightly ? '<span class="fit-badge fit-badge--tight">Tight fit — verify before purchase</span>' : ''}
         </div>
