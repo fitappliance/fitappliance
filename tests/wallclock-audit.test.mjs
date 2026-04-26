@@ -22,8 +22,7 @@ const GENERATED_OUTPUT_SCRIPTS = [
   'scripts/generate-image-sitemap.js',
   'scripts/generate-rss.js',
   'scripts/build-link-graph.js',
-  'scripts/validate-schema.js',
-  'scripts/utils/build-timestamp.js'
+  'scripts/validate-schema.js'
 ];
 
 const WALLCLOCK_PATTERNS = [
@@ -33,11 +32,6 @@ const WALLCLOCK_PATTERNS = [
 ];
 
 const ALLOWED_WALLCLOCK_LINES = [
-  {
-    file: 'scripts/utils/build-timestamp.js',
-    pattern: /\bnew\s+Date\s*\(/,
-    reason: 'central build timestamp helper; generated-output scripts must route date defaults through this file'
-  },
   {
     file: 'scripts/generate-guides.js',
     pattern: /\bnew\s+Date\s*\(/,
@@ -91,6 +85,22 @@ test('phase 43a cleanup: wallclock audit flags generated-output fixture usage', 
   ].join('\n'));
 
   assert.deepEqual(violations.map((row) => row.token), ['new Date', 'Math.random', 'Date.now']);
+});
+
+test('phase 46 date drift: comparison generator fixture cannot add build-time wallclock', () => {
+  const violations = findWallclockUsages('scripts/generate-comparisons.js', [
+    'const modified = new Date().toISOString();',
+    "const analytics = \"gtag('js', new Date());\";"
+  ].join('\n'));
+
+  assert.deepEqual(violations, [
+    {
+      file: 'scripts/generate-comparisons.js',
+      line: 1,
+      token: 'new Date',
+      source: 'const modified = new Date().toISOString();'
+    }
+  ]);
 });
 
 test('phase 43a cleanup: generated-output scripts use deterministic build timestamps', () => {
