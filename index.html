@@ -356,7 +356,7 @@ nav {
 
 <!-- TOPBAR -->
 <div class="topbar">
-  Brand-specific clearance rules · State rebates · ACCC-compliant · Updated weekly &nbsp;|&nbsp;
+  Brand-specific clearance rules · Doorway checks · Energy star ratings · Clear affiliate disclosure &nbsp;|&nbsp;
   <a href="#how-it-works">How we calculate fit</a>
 </div>
 
@@ -471,9 +471,9 @@ nav {
 <div class="trust-strip">
   <div class="trust-item"><strong>Brand-specific</strong> clearance rules</div>
   <div class="trust-item"><strong>Doorway</strong> delivery check</div>
-  <div class="trust-item"><strong>VEU & ESS</strong> rebates calculated</div>
-  <div class="trust-item"><strong>GEMS-verified</strong> energy ratings</div>
-  <div class="trust-item"><strong>ACCC-compliant</strong> disclosures</div>
+  <div class="trust-item"><strong>Energy</strong> star ratings</div>
+  <div class="trust-item"><strong>Retailer links</strong> where available</div>
+  <div class="trust-item"><strong>Clear</strong> affiliate disclosure</div>
 </div>
 
 <!-- RESULTS SECTION -->
@@ -552,7 +552,7 @@ nav {
       <!-- Product output -->
       <div id="productGrid" class="product-list"></div>
       <div id="savedTipBar" class="saved-tip" hidden>
-        We update prices weekly. Saved <span data-role="count">0</span> items — bookmark this page to track them.
+        Price availability can change. Saved <span data-role="count">0</span> items — bookmark this page to track them.
         <button type="button" onclick="copyCurrentSearchLink()">Copy your search link</button>
       </div>
       <div class="empty-state" id="emptyState">
@@ -570,12 +570,10 @@ nav {
         <div class="facet-bar" data-facet-bar aria-live="polite"></div>
       </div>
 
-      <!-- Rebate calculator -->
-      <div class="rebate-panel">
-        <h3>Government Rebates</h3>
-        <p>VIC, NSW, QLD and other states offer energy upgrade rebates. Enter your postcode to see what applies.</p>
-        <input class="postcode-input" type="text" id="postcodeIn" placeholder="e.g. 3000 for Melbourne" maxlength="4" oninput="calcRebate()">
-        <div class="rebate-result" id="rebateResult"></div>
+      <!-- Fit notes -->
+      <div class="scard">
+        <div class="scard-title">Before you buy</div>
+        <p style="font-size:13px;color:var(--ink-3);line-height:1.65;margin:0">Use your tightest cavity measurements, then check the model manual before ordering. Retailer links and prices appear only where feed data is available.</p>
       </div>
 
       <div class="scard">
@@ -636,7 +634,7 @@ nav {
       <!-- Install lead gen -->
       <div class="scard" style="background:var(--paper-2)">
         <div class="scard-title">Need installation?</div>
-        <p style="font-size:13px;color:var(--ink-3);line-height:1.65;margin-bottom:12px">Licensed plumbers and electricians from $70. Required to maintain warranty and comply with AS/NZS 3000.</p>
+        <p style="font-size:13px;color:var(--ink-3);line-height:1.65;margin-bottom:12px">Licensed plumbers and electricians from $70. Some installations may require a licensed trade and must follow applicable electrical/plumbing rules.</p>
         <button onclick="showToast('Installation booking coming soon!')" style="width:100%;padding:10px;background:var(--ink);color:#fff;border:none;border-radius:var(--r-sm);font-family:Outfit,sans-serif;font-size:13px;font-weight:700;cursor:pointer;">Book a Licensed Installer</button>
       </div>
 
@@ -670,8 +668,8 @@ nav {
       </div>
       <div class="how-item">
         <div class="how-num">3</div>
-        <h3>Compare total cost</h3>
-        <p>We show sticker price, estimated lifetime energy cost, and applicable government rebates side by side.</p>
+        <h3>Compare price and running cost</h3>
+        <p>We show available retailer price data and estimated lifetime energy cost side by side.</p>
       </div>
     </div>
   </div>
@@ -683,8 +681,8 @@ nav {
 <section class="compliance-sec" id="compliance">
   <div class="compliance-inner">
     <div class="comp-item" id="accc-compliance">
-      <h4>ACCC & ACL Compliance</h4>
-      <p>All affiliate relationships are disclosed immediately adjacent to purchase links — not buried in footers. Rankings are based on objective criteria (dimensional fit, energy rating, price) and are never influenced by commission rates. Brand exclusions (e.g. Miele, Asko) are clearly noted.</p>
+      <h4>Affiliate Disclosure</h4>
+      <p>Affiliate relationships are disclosed next to purchase links where they appear. Rankings are based on fit, energy rating, price and retailer availability signals, not commission rates.</p>
     </div>
     <div class="comp-item">
       <h4>NCC 2022 Dryer Notice</h4>
@@ -692,7 +690,7 @@ nav {
     </div>
     <div class="comp-item" id="data-sources">
       <h4>Data Sources</h4>
-      <p>Dimensional data sourced from OEM installation manuals and the GEMS (Greenhouse and Energy Minimum Standards) regulator database. Energy ratings are GEMS-verified. Prices are sourced via affiliate partner feeds and updated weekly.</p>
+      <p>Dimensional and energy data come from Australian Government Energy Rating records and manufacturer/OEM manuals where available. Retailer links and prices are shown only when feed data is available.</p>
     </div>
     <div class="comp-item">
       <h4>Privacy &amp; Cookies</h4>
@@ -752,7 +750,7 @@ nav {
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="/" class="logo">Fit<b>Appliance</b></a>
-      <p id="footerSummary">Clearance guides, energy data and rebate notes for Australian appliance fitting.</p>
+      <p id="footerSummary">Clearance guides, energy data and delivery notes for Australian appliance fitting.</p>
       <p id="footerMetaLine" style="margin-top:10px;font-size:12px">Built in Australia</p>
     </div>
     <div class="footer-col">
@@ -1063,12 +1061,10 @@ function requireJson(response) {
 }
 
 Promise.all([
-  fetch('/data/clearance.json').then(requireJson),
-  fetch('/data/rebates.json').then(requireJson)
-]).then(([clearData, rebateData]) => {
+  fetch('/data/clearance.json').then(requireJson)
+]).then(([clearData]) => {
   const BRAND_CLEARANCE = clearData.rules;
-  const REBATES = rebateData.rebates;
-  initApp(BRAND_CLEARANCE, REBATES).catch((err) => {
+  initApp(BRAND_CLEARANCE).catch((err) => {
     console.error('Data load failed', err);
     renderDataLoadError();
   });
@@ -1077,14 +1073,7 @@ Promise.all([
   renderDataLoadError();
 });
 
-async function initApp(BRAND_CLEARANCE, REBATES) {
-const STATE_COLORS = {
-  VIC: 'var(--green)',
-  NSW: 'var(--blue)',
-  QLD: 'var(--amber)',
-  SA: 'var(--copper)',
-};
-
+async function initApp(BRAND_CLEARANCE) {
 function getClearance(category, brand) {
   const cat = BRAND_CLEARANCE[category] ?? BRAND_CLEARANCE.fridge;
   return cat[brand] ?? cat['__default__'];
@@ -1103,38 +1092,6 @@ const CATEGORY_LABELS = {
 };
 function annualEnergyCost(kwh_year) { return (kwh_year * TARIFF).toFixed(0); }
 function lifetimeCost(price, kwh_year, years=10) { return price + kwh_year * TARIFF * years; }
-
-/* ══════════════════════════════════════════════════════════
-   POSTCODE → STATE → REBATE
-   VEU (VIC), ESS (NSW), based on Gemini report
-══════════════════════════════════════════════════════════ */
-function getState(pc) {
-  const n = parseInt(pc);
-  if (!n) return null;
-  if (n>=1000&&n<=2599||n>=2619&&n<=2899||n>=2921&&n<=2999) return 'NSW';
-  if (n>=2600&&n<=2618||n>=2900&&n<=2920) return 'ACT';
-  if (n>=3000&&n<=3999||n>=8000&&n<=8999) return 'VIC';
-  if (n>=4000&&n<=4999||n>=9000&&n<=9999) return 'QLD';
-  if (n>=5000&&n<=5999) return 'SA';
-  if (n>=6000&&n<=6999) return 'WA';
-  if (n>=7000&&n<=7999) return 'TAS';
-  if (n>=800&&n<=899) return 'NT';
-  return null;
-}
-
-function calcRebate() {
-  const pc = document.getElementById('postcodeIn').value.trim();
-  const el = document.getElementById('rebateResult');
-  if (pc.length < 4) { el.innerHTML=''; return; }
-  const st = getState(pc);
-  const rb = st ? REBATES[st] : null;
-  if (rb) {
-    const accentColor = STATE_COLORS[st] ?? 'var(--copper)';
-    el.innerHTML = `<div style="color:${accentColor};font-weight:700;font-size:14px;margin-bottom:3px">Up to $${rb.amount} — ${rb.name}</div><div style="font-size:11.5px;color:rgba(255,255,255,.55);line-height:1.5">${rb.note}</div>`;
-  } else {
-    el.innerHTML = `<div style="color:rgba(255,255,255,.55);font-size:12.5px;margin-top:6px">${st ? 'No active rebates found for '+st+' at this time.' : 'Postcode not recognised — try your 4-digit AU postcode.'}</div>`;
-  }
-}
 
 /* ══════════════════════════════════════════════════════════
    STATE
@@ -2387,7 +2344,6 @@ Object.assign(window, {
   renderResults,
   setView,
   resetSearch,
-  calcRebate,
   showToast,
   addCompare,
   removeCompare,
@@ -2437,7 +2393,7 @@ updateFloatBarSummary();
       "@id": "https://www.fitappliance.com.au/#website",
       "url": "https://www.fitappliance.com.au",
       "name": "FitAppliance",
-      "description": "Appliance fit checker for Australian homes, with brand-specific clearance rules, doorway access notes and rebate guidance.",
+      "description": "Appliance fit checker for Australian homes, with brand-specific clearance rules, doorway access notes and energy data.",
       "inLanguage": "en-AU",
       "potentialAction": {
         "@type": "SearchAction",
@@ -2477,7 +2433,6 @@ updateFloatBarSummary();
         "Brand-specific ventilation clearance calculation",
         "2169 Australian appliance models",
         "Energy star rating filter",
-        "Government rebate eligibility checker",
         "Delivery doorway access check",
         "Compare up to 4 appliances side by side"
       ]
@@ -2558,14 +2513,6 @@ updateFloatBarSummary();
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Under the National Construction Code (NCC) 2022, vented tumble dryers can no longer exhaust into roof or wall cavities. Apartment residents should choose condensing or heat-pump dryers instead."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What government rebates are available for appliances in Australia?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Victoria offers up to $300 via the Victorian Energy Upgrades (VEU) program for high-efficiency fridges (min 5.5 stars) and heat-pump dryers. NSW offers rebates via the Energy Savings Scheme (ESS). Enter your postcode on FitAppliance to see what applies to you."
           }
         }
       ]

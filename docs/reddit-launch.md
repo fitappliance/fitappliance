@@ -21,19 +21,19 @@ I got burned buying a fridge that "should have fit" but didn't account for Samsu
 So I built **FitAppliance** — you enter your cavity dimensions, and it:
 - Subtracts per-brand clearances (Samsung vs LG vs Fisher&Paykel all different)
 - Checks if it fits through your doorway
-- Calculates VIC/NSW rebates
-- Shows 10-year energy cost
+- Shows estimated 10-year energy cost
+- Links to retailer listings where available
 
 **Live:** https://fitappliance.com.au
 
-Currently covers 2169 AU models (fridges, washers, dishwashers, dryers). Data from GEMS regulator + OEM manuals.
+Currently covers 2169 AU models (fridges, washers, dishwashers, dryers). Data from Australian Energy Rating records + OEM manuals.
 
 **Example:** 600mm cavity → Samsung needs 100mm top clearance, so max fridge height is 1700mm. LG only needs 20mm, so you get 1780mm. That's a whole shelf of difference.
 
 Open to feedback — especially if you spot missing brands or wrong clearances.
 
 ---
-*Disclaimer: Affiliate links present (ACCC-compliant). I earn commission if you buy, but the tool is free and the math is transparent.*
+*Disclosure: Affiliate links may appear next to retailer listings. I may earn commission if you buy, but the tool is free and the fit math is transparent.*
 
 ## Engagement FAQ
 - **"Why not just measure?"** → Reply: Cavity size is easy, but per-brand ventilation gaps are hidden in manuals.

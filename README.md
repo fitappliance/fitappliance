@@ -8,7 +8,7 @@
 - ✅ AUDIT-PHASE43A: P1 + P2 fully closed (13/13)
 - ✅ Search experience: carsales-style facet + sort + URL state + mobile sheet + saved search + compare (Phase 45 series)
 - ✅ PWA: service worker versioning, update toast, offline fallback (Phase 43a §3.6)
-- ✅ Catalog: ~2170 products across 4 categories, brand alias_map active, 609 products with verified AU retailer data
+- ✅ Catalog: ~2170 products across 4 categories, brand alias_map active, 609 products with AU retailer data
 - ⏳ Phase 42c (brand drop) — gated, opens ~2026-05-01
 - 📊 Test coverage: 514 / 514 passing
 
@@ -21,7 +21,7 @@ fitappliance/
 ├── index.html                    ← Main site (all logic, no backend needed)
 ├── vercel.json                   ← Vercel routing + security headers
 ├── pages/
-│   ├── affiliate-disclosure.html ← ACCC-required disclosure page
+│   ├── affiliate-disclosure.html ← Affiliate disclosure page
 │   └── privacy-policy.html       ← Privacy Act 1988 + Spam Act 2003
 └── public/
     ├── robots.txt                ← SEO crawler rules
@@ -137,16 +137,16 @@ vercel --prod
 
 ---
 
-## ⚡ Step 4: Connect GEMS Energy Database API
+## ⚡ Step 4: Energy Rating Data Source
 
-The Australian Government provides free API access to verified appliance energy ratings.
+FitAppliance uses Australian Government Energy Rating records for appliance dimensions, star ratings, and annual energy consumption where available.
 
 ```
 Base URL: https://api.gov.au/service/gems
 Documentation: https://api.gov.au
 ```
 
-To replace static energy star data with live GEMS data:
+If a future official API is adopted, keep public copy neutral unless the site can prove the freshness and coverage of that feed:
 
 ```javascript
 // Replace static star ratings with API call:
@@ -171,15 +171,14 @@ Target these high-intent, low-competition keywords first:
 | 600mm wide fridge australia | 260 | Low |
 | samsung fridge clearance requirements | 140 | Very Low |
 | washing machine dimensions australia | 480 | Medium |
-| veu rebate fridge victoria 2026 | 210 | Very Low |
 | dishwasher cavity size australia | 170 | Low |
 
 ### Quick wins (build these pages):
 
 1. `/fridge-size-finder` — "Find a fridge that fits your exact space"
 2. `/600mm-wide-fridges-australia` — pre-filtered to 600mm width
-3. `/victorian-energy-upgrades-fridge-rebate` — targets VEU searchers
-4. Blog: "Why your new fridge won't fit (and how to avoid it)"
+3. Blog: "Why your new fridge won't fit (and how to avoid it)"
+4. `/dishwasher-cavity-size-australia` — pre-filtered dishwasher cavity guide
 
 Each page should pre-populate the search tool with relevant dimensions.
 
