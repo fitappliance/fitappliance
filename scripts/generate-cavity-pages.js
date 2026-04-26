@@ -15,7 +15,7 @@ const {
   loadMeasurementSteps
 } = require('./generate-measurement-content');
 const { displayBrandName } = require('./utils/brand-utils.js');
-const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
+const { toIsoDateStart } = require('./common/file-dates.js');
 
 const MIN_WIDTH = 500;
 const MAX_WIDTH = 1100;
@@ -340,6 +340,7 @@ async function generateCavityPages(options = {}) {
   const creatorWhitelist = await readJson(path.join(repoRoot, 'data', 'videos', 'creator-whitelist.json'), { creators: [] });
   const reviewDisclaimerCopy = await loadCopyFile('review-disclaimer', repoRoot).catch(() => ({}));
   const products = canonicalizeProducts(appliances.products ?? []).filter((product) => product.cat === 'fridge');
+  const contentModifiedTime = toIsoDateStart(appliances.last_updated);
   const clearanceRules = canonicalizeRuleDocument(clearance.rules ?? {});
   const widths = buildWidthRange(MIN_WIDTH, MAX_WIDTH, STEP);
   const reviewPilots = Array.isArray(reviewPilotDoc.pilots) ? reviewPilotDoc.pilots : [];
@@ -398,6 +399,7 @@ async function generateCavityPages(options = {}) {
       })
       : '';
 
+    const filePath = path.join(outputDir, `${slug}.html`);
     const html = buildPageHtml({
       width,
       cavityHeightMm: DEFAULT_CAVITY_HEIGHT_MM,
@@ -419,7 +421,7 @@ async function generateCavityPages(options = {}) {
       topBrands,
       compareLinks,
       reviewSectionHtml,
-      modifiedTime: getBuildTimestampIso(),
+      modifiedTime: contentModifiedTime,
       measurementSvgHtml: generateMeasurementSvg({
         widthMm: width,
         heightMm: DEFAULT_CAVITY_HEIGHT_MM,
@@ -440,7 +442,6 @@ async function generateCavityPages(options = {}) {
       })
     });
 
-    const filePath = path.join(outputDir, `${slug}.html`);
     await writeFile(filePath, html, 'utf8');
 
     rows.push({

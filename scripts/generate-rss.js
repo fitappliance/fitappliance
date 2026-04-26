@@ -3,8 +3,9 @@
 
 const path = require('node:path');
 const { mkdir, readFile, writeFile } = require('node:fs/promises');
-const { getBuildDateObject } = require('./utils/build-timestamp.js');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
+const { toIsoDateStart, toRfc822Date } = require('./common/file-dates.js');
+const { readSiteContentDate } = require('./generate-sitemap.js');
 
 const CATEGORY_LABEL = {
   fridge: 'Fridge',
@@ -56,62 +57,73 @@ function buildItemRows({
   guides,
   doorway,
   locations,
-  pubDate
+  pubDate,
+  dateForUrl = () => pubDate
 }) {
   const rows = [];
-  const guideRows = (guides ?? []).map((row, index) => ({
-    score: 100000 - index,
-    title: row.title ?? `Guide: ${row.slug}`,
-    link: `${baseUrl}${row.url ?? `/guides/${row.slug}`}`,
-    pubDate,
-    description: row.description ?? 'FitAppliance topic hub guide.'
-  }));
-  const locationRows = (locations ?? []).map((row, index) => ({
-    score: 90000 - index,
-    title: `${row.categoryLabel ?? row.category} Cavity & Doorway Guide — ${row.city ?? row.citySlug}`,
-    link: `${baseUrl}${row.url ?? `/location/${row.citySlug}/${row.category}`}`,
-    pubDate,
-    description: `${row.categoryLabel ?? row.category} fitting resources for ${row.city ?? row.citySlug}, ${row.stateCode ?? 'AU'}.`
-  }));
+  const guideRows = (guides ?? []).map((row, index) => {
+    const link = `${baseUrl}${row.url ?? `/guides/${row.slug}`}`;
+    return {
+      score: 100000 - index,
+      title: row.title ?? `Guide: ${row.slug}`,
+      link,
+      pubDate: dateForUrl(link),
+      description: row.description ?? 'FitAppliance topic hub guide.'
+    };
+  });
+  const locationRows = (locations ?? []).map((row, index) => {
+    const link = `${baseUrl}${row.url ?? `/location/${row.citySlug}/${row.category}`}`;
+    return {
+      score: 90000 - index,
+      title: `${row.categoryLabel ?? row.category} Cavity & Doorway Guide — ${row.city ?? row.citySlug}`,
+      link,
+      pubDate: dateForUrl(link),
+      description: `${row.categoryLabel ?? row.category} fitting resources for ${row.city ?? row.citySlug}, ${row.stateCode ?? 'AU'}.`
+    };
+  });
 
   for (const row of brands) {
     const cat = CATEGORY_LABEL[row.cat] ?? String(row.cat ?? 'Appliance');
+    const link = `${baseUrl}${row.url ?? `/brands/${row.slug}`}`;
     rows.push({
       score: Number(row.models ?? 0),
       title: `${row.brand} ${cat} Clearance Guide (AU)`,
-      link: `${baseUrl}${row.url ?? `/brands/${row.slug}`}`,
-      pubDate,
+      link,
+      pubDate: dateForUrl(link),
       description: `${row.models} ${row.brand} ${cat.toLowerCase()} models with ventilation clearance guidance for Australian homes.`
     });
   }
 
   for (const row of comparisons) {
     const cat = CATEGORY_LABEL[row.cat] ?? String(row.cat ?? 'Appliance');
+    const link = `${baseUrl}${row.url ?? `/compare/${row.slug}`}`;
     rows.push({
       score: Number(row.modelsA ?? 0) + Number(row.modelsB ?? 0),
       title: `${row.brandA} vs ${row.brandB} ${cat} Clearance Comparison`,
-      link: `${baseUrl}${row.url ?? `/compare/${row.slug}`}`,
-      pubDate,
+      link,
+      pubDate: dateForUrl(link),
       description: `Side-by-side ${cat.toLowerCase()} clearance comparison between ${row.brandA} and ${row.brandB}.`
     });
   }
 
   for (const row of cavity) {
+    const link = `${baseUrl}${row.url ?? `/cavity/${row.slug}`}`;
     rows.push({
       score: Number(row.results ?? 0),
       title: `${row.width}mm Fridge Cavity Fit Guide`,
-      link: `${baseUrl}${row.url ?? `/cavity/${row.slug}`}`,
-      pubDate,
+      link,
+      pubDate: dateForUrl(link),
       description: `${row.results} fridge models that fit a ${row.width}mm cavity after brand clearance rules.`
     });
   }
 
   for (const row of doorway) {
+    const link = `${baseUrl}${row.url ?? `/doorway/${row.slug}`}`;
     rows.push({
       score: Number(row.results ?? 0),
       title: `${row.doorway}mm Fridge Doorway Fit Guide`,
-      link: `${baseUrl}${row.url ?? `/doorway/${row.slug}`}`,
-      pubDate,
+      link,
+      pubDate: dateForUrl(link),
       description: `${row.results} fridge models that can pass a ${row.doorway}mm doorway with handling margin.`
     });
   }
@@ -128,7 +140,7 @@ async function generateRss({
   outputPath = path.join(repoRoot, 'public', 'rss.xml'),
   baseUrl = SITE_ORIGIN,
   logger = console,
-  today = getBuildDateObject()
+  today = null
 } = {}) {
   const brands = await readJson(path.join(repoRoot, 'pages', 'brands', 'index.json'), []);
   const comparisons = await readJson(path.join(repoRoot, 'pages', 'compare', 'index.json'), []);
@@ -136,9 +148,25 @@ async function generateRss({
   const doorway = await readJson(path.join(repoRoot, 'pages', 'doorway', 'index.json'), []);
   const guides = await readJson(path.join(repoRoot, 'pages', 'guides', 'index.json'), []);
   const locations = await readJson(path.join(repoRoot, 'pages', 'location', 'index.json'), []);
-  const pubDate = today.toUTCString();
-  const items = buildItemRows({ baseUrl, brands, comparisons, cavity, guides, doorway, locations, pubDate });
-  const lastBuildDate = today.toUTCString();
+  const contentDate = await readSiteContentDate(repoRoot, null);
+  const pubDate = today ? toRfc822Date(today) : null;
+  const stablePubDate = pubDate ?? toRfc822Date(toIsoDateStart(contentDate));
+  const items = buildItemRows({
+    baseUrl,
+    brands,
+    comparisons,
+    cavity,
+    guides,
+    doorway,
+    locations,
+    pubDate: stablePubDate,
+    dateForUrl: () => stablePubDate
+  });
+  const latestItem = items
+    .map((item) => item.pubDate)
+    .filter(Boolean)
+    .sort((left, right) => Date.parse(right) - Date.parse(left))[0];
+  const lastBuildDate = latestItem ?? stablePubDate;
 
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',

@@ -5,7 +5,7 @@ const path = require('node:path');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { buildHreflangLinks } = require('./common/html-head.js');
-const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
+const { toIsoDateStart } = require('./common/file-dates.js');
 const { canonicalizeProducts } = require('./brand-canon.js');
 
 const MIN_DOORWAY = 600;
@@ -243,6 +243,7 @@ async function generateDoorwayPages(options = {}) {
   const appliances = await readJson(path.join(dataDir, 'appliances.json'));
   const products = canonicalizeProducts(appliances.products ?? []).filter((product) => product.cat === 'fridge');
   const doorways = buildWidths(MIN_DOORWAY, MAX_DOORWAY, STEP);
+  const contentModifiedTime = toIsoDateStart(appliances.last_updated);
 
   await cleanOutputDir(outputDir);
   const rows = [];
@@ -259,6 +260,7 @@ async function generateDoorwayPages(options = {}) {
       });
 
     const slug = `${doorway}mm-fridge-doorway`;
+    const filePath = path.join(outputDir, `${slug}.html`);
     const html = buildPageHtml({
       doorway,
       matched,
@@ -270,9 +272,9 @@ async function generateDoorwayPages(options = {}) {
         .filter((candidate) => candidate !== doorway)
         .sort((left, right) => Math.abs(left - doorway) - Math.abs(right - doorway))
         .slice(0, 8),
-      modifiedTime: getBuildTimestampIso()
+      modifiedTime: contentModifiedTime
     });
-    await writeFile(path.join(outputDir, `${slug}.html`), html, 'utf8');
+    await writeFile(filePath, html, 'utf8');
 
     rows.push({
       doorway,

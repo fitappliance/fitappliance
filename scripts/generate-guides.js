@@ -8,7 +8,7 @@ const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { buildHreflangLinks, buildOgImageMeta } = require('./common/html-head.js');
 const { buildArticleSchema, serializeJsonLd } = require('./common/schema-jsonld.js');
-const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
+const { FIXED_EPOCH_ISO } = require('./common/file-dates.js');
 
 const ARTICLE_SCHEMA_ORIGIN = 'https://fitappliance.com.au';
 const GUIDE_DATE_HISTORY = {
@@ -170,8 +170,8 @@ function resolveGuideArticleDates({ repoRoot, filePath, guide = {} }) {
   const latestCommitDate = readGitDateForFile({ repoRoot, filePath, first: false });
   const fallbackMtime = readFileMtimeIso(filePath);
 
-  const datePublished = toIso(guide.publishedAt) ?? toIso(firstCommitDate) ?? fallbackMtime ?? getBuildTimestampIso();
-  const dateModified = toIso(guide.modifiedAt) ?? toDayIso(latestCommitDate) ?? toDayIso(fallbackMtime) ?? getBuildTimestampIso();
+  const datePublished = toIso(guide.publishedAt) ?? toIso(firstCommitDate) ?? fallbackMtime ?? FIXED_EPOCH_ISO;
+  const dateModified = toIso(guide.modifiedAt) ?? toDayIso(latestCommitDate) ?? toDayIso(fallbackMtime) ?? FIXED_EPOCH_ISO;
 
   return {
     datePublished,
@@ -251,7 +251,7 @@ function selectGuideLinks({ guide, allLinks, brands, compares, cavity, doorway }
   return allLinks;
 }
 
-function buildHubHtml({ guide, links, crossLinks, articleJsonLd }) {
+function buildHubHtml({ guide, links, crossLinks, articleJsonLd, modifiedTime }) {
   const title = `${guide.title} | FitAppliance`;
   const description = guide.description;
   const canonical = `${SITE_ORIGIN}/guides/${guide.slug}`;
@@ -267,7 +267,7 @@ function buildHubHtml({ guide, links, crossLinks, articleJsonLd }) {
 ${articleJsonLd}
   </script>
   <meta name="description" content="${escHtml(description)}">
-  <meta name="article:modified_time" content="${getBuildTimestampIso()}">
+  <meta name="article:modified_time" content="${escHtml(modifiedTime)}">
   <link rel="canonical" href="${canonical}">
 ${buildHreflangLinks(canonical)}
   <meta property="og:type" content="article">
@@ -450,7 +450,8 @@ async function generateGuidePages(options = {}) {
       guide,
       links,
       crossLinks: guideCrossLinks.filter((row) => row.url !== `/guides/${guide.slug}`),
-      articleJsonLd
+      articleJsonLd,
+      modifiedTime: articleDates.dateModified
     });
     await writeFile(filePath, html, 'utf8');
     rows.push({
