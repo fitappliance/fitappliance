@@ -9,6 +9,7 @@ const STATIC_PAGE_ROUTES = [
   '/',
   '/affiliate-disclosure',
   '/privacy-policy',
+  '/about',
   '/methodology',
   '/about/editorial-standards',
   '/subscribe',
@@ -50,6 +51,7 @@ async function collectExpectedRoutes(repoRoot) {
       if (!entry.isFile() || !entry.name.endsWith('.html')) continue;
       const rel = path.relative(pagesDir, fullPath).replace(/\\/g, '/');
       if (rel === 'affiliate-disclosure.html'
+        || rel === 'about.html'
         || rel === 'privacy-policy.html'
         || rel === 'methodology.html'
         || rel === 'subscribe.html'

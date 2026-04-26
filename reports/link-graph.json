@@ -1,28 +1,34 @@
 {
   "summary": {
-    "totalPages": 470,
-    "totalEdges": 7414,
+    "totalPages": 471,
+    "totalEdges": 7422,
     "orphanPages": 0,
-    "averageInlinks": 15.77
+    "averageInlinks": 15.76
   },
   "orphanUrls": [],
   "nodes": [
     {
       "url": "/",
       "file": "index.html",
-      "inlinks": 469,
+      "inlinks": 470,
       "outlinks": 6
+    },
+    {
+      "url": "/about",
+      "file": "pages/about.html",
+      "inlinks": 2,
+      "outlinks": 4
     },
     {
       "url": "/about/editorial-standards",
       "file": "pages/about/editorial-standards.html",
-      "inlinks": 469,
-      "outlinks": 2
+      "inlinks": 470,
+      "outlinks": 4
     },
     {
       "url": "/affiliate-disclosure",
       "file": "pages/affiliate-disclosure.html",
-      "inlinks": 3,
+      "inlinks": 6,
       "outlinks": 4
     },
     {
@@ -2806,8 +2812,8 @@
     {
       "url": "/methodology",
       "file": "pages/methodology.html",
-      "inlinks": 469,
-      "outlinks": 2
+      "inlinks": 470,
+      "outlinks": 4
     },
     {
       "url": "/privacy-policy",
