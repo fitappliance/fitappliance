@@ -29,17 +29,18 @@ function makeProduct(overrides = {}) {
   };
 }
 
-test('task 9.3 product-card: buildNoRetailerUrl prefers SKU token from model', async () => {
+test('task 9.3 product-card: buildNoRetailerUrl uses complete retailer search query', async () => {
   const { buildNoRetailerUrl } = await import(productCardModuleUrl);
   const url = buildNoRetailerUrl(makeProduct({ model: 'SRF7500WFH French Door' }));
-  assert.match(url, /q=SRF7500WFH%20buy%20australia/);
-  assert.match(url, /tbm=shop/);
+  assert.match(url, /jbhifi\.com\.au\/search/);
+  assert.match(url, /HISENSE%20SRF7500WFH%20French%20Door%20fridge/);
 });
 
-test('task 9.3 product-card: buildNoRetailerUrl falls back when model token is unavailable', async () => {
-  const { buildNoRetailerUrl } = await import(productCardModuleUrl);
-  const url = buildNoRetailerUrl(makeProduct({ model: '' }));
-  assert.match(url, /HISENSE%20%20buy%20australia/);
+test('task 9.3 product-card: buildSearchFallbackUrls returns three AU retailer searches', async () => {
+  const { buildSearchFallbackUrls } = await import(productCardModuleUrl);
+  const urls = buildSearchFallbackUrls(makeProduct({ model: '' }));
+  assert.deepEqual(urls.map((entry) => entry.name), ['JB Hi-Fi', 'Harvey Norman', 'The Good Guys']);
+  urls.forEach((entry) => assert.match(entry.url, /HISENSE%20fridge/));
 });
 
 test('task 9.3 product-card: no-price card renders live shopping URL instead of dead href', async () => {
@@ -51,9 +52,12 @@ test('task 9.3 product-card: no-price card renders live shopping URL instead of 
   });
 
   assert.match(html, /Price unavailable — search online/);
-  assert.match(html, /class="btn-buy btn-buy--ghost"/);
-  assert.match(html, /href="https:\/\/www\.google\.com\.au\/search\?q=SRF7500WFH%20buy%20australia&amp;tbm=shop"/);
-  assert.doesNotMatch(html, /class="btn-buy btn-buy--ghost" href="#"/);
+  assert.match(html, /class="product-thumb-svg"/);
+  assert.match(html, /Search at:/);
+  assert.match(html, /JB Hi-Fi/);
+  assert.match(html, /Harvey Norman/);
+  assert.match(html, /The Good Guys/);
+  assert.doesNotMatch(html, /google\.com\.au\/search/);
 });
 
 test('task 9.3 product-card: no-price list row renders shopping fallback and display brand mapping', async () => {
@@ -65,9 +69,10 @@ test('task 9.3 product-card: no-price list row renders shopping fallback and dis
   });
 
   assert.match(html, /Price unavailable — search online/);
-  assert.match(html, /Search online/);
+  assert.match(html, /Search at:/);
+  assert.match(html, /class="product-thumb-svg"/);
   assert.match(html, /class="p-row-brand">Hisense</);
-  assert.doesNotMatch(html, /class="btn-buy btn-buy--ghost" href="#"/);
+  assert.doesNotMatch(html, /google\.com\.au\/search/);
 });
 
 test('task 10 rebate: isRebateEligible returns true for stars >= 4', async () => {

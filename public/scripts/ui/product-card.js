@@ -1,4 +1,5 @@
 import { displayBrandName } from './brand-utils.js';
+import { renderProductThumb } from './product-thumb.js';
 import {
   buildRetailerModalHtml,
   buildRetailerTriggerButton,
@@ -15,12 +16,34 @@ function escHtml(value) {
   }[char]));
 }
 
+export function categoryLabel(cat) {
+  return {
+    fridge: 'fridge',
+    dishwasher: 'dishwasher',
+    dryer: 'dryer',
+    washing_machine: 'washing machine'
+  }[cat] || '';
+}
+
+function buildSearchQuery(product) {
+  return [
+    String(product?.brand ?? '').trim(),
+    String(product?.model ?? '').trim(),
+    categoryLabel(product?.cat)
+  ].filter(Boolean).join(' ');
+}
+
+export function buildSearchFallbackUrls(product) {
+  const query = encodeURIComponent(buildSearchQuery(product));
+  return [
+    { name: 'JB Hi-Fi', url: `https://www.jbhifi.com.au/search?query=${query}` },
+    { name: 'Harvey Norman', url: `https://www.harveynorman.com.au/search?w=${query}` },
+    { name: 'The Good Guys', url: `https://www.thegoodguys.com.au/search?text=${query}` }
+  ];
+}
+
 export function buildNoRetailerUrl(product) {
-  const sku = (product?.model ?? '').trim().split(/\s+/)[0];
-  const query = encodeURIComponent(
-    sku ? `${sku} buy australia` : `${product?.brand ?? ''} ${product?.model ?? ''} buy australia`
-  );
-  return `https://www.google.com.au/search?q=${query}&tbm=shop`;
+  return buildSearchFallbackUrls(product)[0]?.url ?? '#';
 }
 
 // Australian state energy rebate programs (NSW/VIC/SA/QLD) typically require >= 4-star GEMS.
@@ -114,7 +137,8 @@ export function buildCard(p, deps = {}) {
   const compareLabel = `${displayBrand} ${p.model.split(' ').slice(0, 3).join(' ')}`;
   const triggerButton = buildRetailerTriggerButton(p, {
     resolveRetailerUrl,
-    buildNoRetailerUrl
+    buildNoRetailerUrl,
+    buildSearchFallbackUrls
   });
   const modalHtml = shouldShowRetailerModal(p)
     ? buildRetailerModalHtml(p, { resolveRetailerUrl })
@@ -122,7 +146,7 @@ export function buildCard(p, deps = {}) {
 
   return `
   <div class="p-card">
-    <div class="card-emoji">${p.emoji}${p.sponsored ? '<span class="sponsored-tag">Sponsored</span>' : ''}</div>
+    <div class="card-thumb">${renderProductThumb(p)}${p.sponsored ? '<span class="sponsored-tag">Sponsored</span>' : ''}</div>
     <div class="card-body">
       <div class="c-brand">${displayBrand}</div>
       <div class="c-name">${p.model}</div>
@@ -177,7 +201,8 @@ export function buildRow(p, deps = {}) {
   const total = Math.round(lifetimeCost(p.price, p.kwh_year));
   const triggerButton = buildRetailerTriggerButton(p, {
     resolveRetailerUrl,
-    buildNoRetailerUrl
+    buildNoRetailerUrl,
+    buildSearchFallbackUrls
   });
   const modalHtml = shouldShowRetailerModal(p)
     ? buildRetailerModalHtml(p, { resolveRetailerUrl })
@@ -185,7 +210,7 @@ export function buildRow(p, deps = {}) {
 
   return `
   <div class="p-row">
-    <div class="p-row-emoji">${p.emoji}</div>
+    <div class="p-row-thumb">${renderProductThumb(p)}</div>
     <div class="p-row-body">
       <div class="p-row-meta">
         <span class="p-row-brand">${displayBrand}</span>
