@@ -70,6 +70,10 @@ function extractSvgs(html) {
   return [...html.matchAll(/<svg\b[\s\S]*?<\/svg>/gi)].map((match) => match[0]);
 }
 
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 function linkedResourceCount(html) {
   const match = html.match(/<h2 class="section-title-lg section-title-lg--flush">Linked Resources<\/h2>[\s\S]*?<p class="meta">/);
   if (!match) return 0;
@@ -89,7 +93,7 @@ test('phase 47 guides: all five guide pages are deep original articles', () => {
 test('phase 47 guides: visible h1 copy matches the deeper buyer-guide positioning', () => {
   for (const [fileName, expectedH1] of Object.entries(GUIDE_EXPECTATIONS)) {
     const html = readGuide(fileName);
-    assert.match(html, new RegExp(`<h1>${expectedH1}</h1>`), `${fileName} h1 mismatch`);
+    assert.match(html, new RegExp(`<h1>${escapeRegExp(expectedH1)}</h1>`), `${fileName} h1 mismatch`);
   }
 });
 
