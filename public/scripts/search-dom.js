@@ -31,6 +31,15 @@
     node.setAttribute('aria-label', coerceAriaText(value));
   }
 
+  function safeDisplayText(value, fallback = '') {
+    const normalized = String(value ?? fallback ?? '').replace(/\s+/g, ' ').trim();
+    if (!normalized) return fallback;
+    if (/[<>]/.test(normalized) || /\bon[a-z]+\s*=|javascript:/i.test(normalized)) {
+      return fallback || '[unsafe text]';
+    }
+    return normalized;
+  }
+
   function renderPresetChips(container, presets, activePreset, onSelect) {
     if (!container) return;
     const rows = Array.isArray(presets) ? presets : [];
@@ -161,13 +170,13 @@
     availabilitySection.className = 'facet-group';
     const availabilityButton = doc.createElement('button');
     availabilityButton.type = 'button';
-    availabilityButton.className = `facet-toggle${activeFacets?.availableOnly !== false ? ' facet-toggle--active' : ''}`;
+    availabilityButton.className = `facet-toggle${activeFacets?.availableOnly === true ? ' facet-toggle--active' : ''}`;
     availabilityButton.dataset.facetAvailability = '1';
     availabilityButton.setAttribute('role', 'switch');
     availabilityButton.setAttribute('tabindex', '0');
-    availabilityButton.setAttribute('aria-checked', activeFacets?.availableOnly !== false ? 'true' : 'false');
+    availabilityButton.setAttribute('aria-checked', activeFacets?.availableOnly === true ? 'true' : 'false');
     availabilityButton.textContent = 'Available in AU';
-    bindToggleButton(availabilityButton, { type: 'availableOnly', value: activeFacets?.availableOnly === false }, onChange);
+    bindToggleButton(availabilityButton, { type: 'availableOnly', value: activeFacets?.availableOnly !== true }, onChange);
     availabilitySection.appendChild(availabilityButton);
     container.appendChild(availabilitySection);
   }
@@ -190,8 +199,8 @@
     if (activeFacets?.stars !== null && activeFacets?.stars !== undefined) {
       chips.push({ key: 'stars', value: activeFacets.stars, label: `${activeFacets.stars}+ stars` });
     }
-    if (activeFacets?.availableOnly === false) {
-      chips.push({ key: 'availableOnly', value: false, label: 'Include unavailable' });
+    if (activeFacets?.availableOnly === true) {
+      chips.push({ key: 'availableOnly', value: true, label: 'Available in AU' });
     }
 
     for (const chip of chips) {
@@ -639,11 +648,36 @@
     `;
   }
 
+  function formatClearanceMm(value) {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) && parsed >= 0 ? Math.round(parsed) : 0;
+  }
+
+  function buildManufacturerAdvisoryHtml(match) {
+    const clearance = match?.manufacturerClearance;
+    if (!clearance) return '';
+    const side = formatClearanceMm(clearance.side ?? clearance.sides);
+    const top = formatClearanceMm(clearance.top);
+    const rear = formatClearanceMm(clearance.rear);
+    if (side === 0 && top === 0 && rear === 0) return '';
+    return `
+      <div class="fit-card-advisory">
+        Manufacturer suggests <strong>+${side}mm sides, +${top}mm top, +${rear}mm rear</strong> for ventilation.
+      </div>
+    `;
+  }
+
+  function buildNearMissBadgeHtml(match) {
+    const needed = Number(match?.cavityNeededMm);
+    if (!Number.isFinite(needed) || needed <= 0) return '';
+    return `<span class="fit-badge fit-badge--near-miss">+${Math.ceil(needed)}mm cavity needed</span>`;
+  }
+
   function buildCompareSnapshot(match) {
     return {
       slug: String(match?.id ?? match?.slug ?? '').trim(),
-      displayName: String(match?.displayName ?? match?.brand ?? 'Appliance').replace(/\s+/g, ' ').trim(),
-      brand: String(match?.brand ?? '').replace(/\s+/g, ' ').trim(),
+      displayName: safeDisplayText(match?.displayName ?? match?.brand, 'Appliance'),
+      brand: safeDisplayText(match?.brand, ''),
       w: Number.isFinite(Number(match?.w)) ? Math.round(Number(match.w)) : null,
       h: Number.isFinite(Number(match?.h)) ? Math.round(Number(match.h)) : null,
       d: Number.isFinite(Number(match?.d)) ? Math.round(Number(match.d)) : null,
@@ -711,6 +745,7 @@
   }
 
   function buildCardHtml(match, options = {}) {
+    const title = safeDisplayText(match?.displayName || match?.brand, 'Appliance');
     const metaBits = [
       match.readableSpec,
       `W ${match.w} × H ${match.h} × D ${match.d} mm`
@@ -720,11 +755,13 @@
       <li class="fit-result-item" data-appliance-slug="${escHtml(match.id)}">
         <div class="fit-result-top">
           <div>
+            ${buildNearMissBadgeHtml(match)}
             <div class="fit-result-title-row">
-              <div class="fit-result-title">${escHtml(match.displayName || match.brand || 'Appliance')}</div>
+              <div class="fit-result-title">${escHtml(title)}</div>
               ${match.showPopularityBadge ? '<span class="fit-badge fit-badge--popular">Popular in AU</span>' : ''}
             </div>
             <div class="fit-result-meta">${escHtml(metaBits.join(' · '))}</div>
+            ${buildManufacturerAdvisoryHtml(match)}
             ${match.sku ? `<div class="fit-result-sku">SKU ${escHtml(match.sku)}</div>` : ''}
             ${buildRetailerSummaryHtml(match)}
             ${buildCompareButtonHtml(match, options)}
@@ -763,13 +800,30 @@
     resultsEl,
     messageEl,
     emptyState,
-    onRelaxClick
+    onRelaxClick,
+    nearMisses = []
   }) {
     if (!resultsEl || !messageEl) return;
 
     if (!Array.isArray(matches) || matches.length === 0) {
+      const nearRows = Array.isArray(nearMisses) ? nearMisses.slice(0, 10) : [];
+      if (nearRows.length > 0) {
+        const title = 'No exact fits — these need a slightly larger cavity:';
+        messageEl.textContent = title;
+        resultsEl.innerHTML = `
+          <div class="fit-empty-state fit-empty-state--near-miss">
+            <strong>${escHtml(title)}</strong>
+            <p>These appliances physically fit the cavity, but need a little more room for the practical ventilation buffer.</p>
+          </div>
+          <ul class="fit-result-list fit-result-list--near-miss">${nearRows.map((match) => buildCardHtml(match)).join('')}</ul>
+        `;
+        return;
+      }
       const title = emptyState?.title ?? '0 exact matches.';
-      const detail = emptyState?.detail ?? 'Try a preset or relax the tolerance.';
+      const baseDetail = emptyState?.detail ?? 'Try a preset or relax the tolerance.';
+      const detail = /too small for this category/i.test(baseDetail)
+        ? baseDetail
+        : `${baseDetail} Your cavity may be too small for this category.`;
       const ctaLabel = emptyState?.ctaLabel ?? 'Relax';
       const canRelax = typeof onRelaxClick === 'function';
 
