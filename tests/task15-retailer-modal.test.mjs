@@ -44,15 +44,23 @@ test('task 15 retailer-modal: shouldShowRetailerModal true for 2+ retailers', as
   );
 });
 
-test('task 15 retailer-modal: trigger for 0 retailers is Google Shopping link', async () => {
+test('task 15 retailer-modal: trigger for 0 retailers is sponsored retailer search group', async () => {
   const { buildRetailerTriggerButton } = await import(moduleUrl);
   const html = buildRetailerTriggerButton(makeProduct(), {
-    buildNoRetailerUrl: () => 'https://www.google.com.au/search?q=ABC&tbm=shop',
+    buildSearchFallbackUrls: () => [
+      { name: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/search?query=ABC' },
+      { name: 'Harvey Norman', url: 'https://www.harveynorman.com.au/search?w=ABC' },
+      { name: 'The Good Guys', url: 'https://www.thegoodguys.com.au/search?text=ABC' }
+    ],
     resolveRetailerUrl: () => '#'
   });
 
-  assert.match(html, /Search online/);
-  assert.match(html, /google\.com\.au\/search/);
+  assert.match(html, /Search at:/);
+  assert.match(html, /JB Hi-Fi/);
+  assert.match(html, /Harvey Norman/);
+  assert.match(html, /The Good Guys/);
+  assert.match(html, /rel="sponsored nofollow noopener"/);
+  assert.doesNotMatch(html, /google\.com\.au\/search/);
 });
 
 test('task 15 retailer-modal: trigger for 1 retailer uses search label for search-like URL', async () => {
