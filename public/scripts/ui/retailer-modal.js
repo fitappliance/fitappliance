@@ -28,8 +28,42 @@ function isSearchLikeHref(href) {
   return /\/search(?:\/|[?#]|$)/i.test(href) || /[?&](q|query|text|search|keyword)=/i.test(href);
 }
 
+function normalizeFallbackOptions(options) {
+  if (!Array.isArray(options)) return [];
+  return options
+    .map((option) => ({
+      name: String(option?.name ?? '').trim(),
+      url: String(option?.url ?? '').trim()
+    }))
+    .filter((option) => option.name && option.url);
+}
+
 export function shouldShowRetailerModal(product) {
   return Array.isArray(product?.retailers) && product.retailers.length >= 2;
+}
+
+export function buildSearchFallbackGroup(
+  product,
+  {
+    buildSearchFallbackUrls,
+    buildNoRetailerUrl = () => '#'
+  } = {}
+) {
+  const options = normalizeFallbackOptions(
+    typeof buildSearchFallbackUrls === 'function' ? buildSearchFallbackUrls(product) : []
+  );
+  const fallbackOptions = options.length > 0
+    ? options
+    : [{ name: 'Search online', url: buildNoRetailerUrl(product) }];
+
+  const links = fallbackOptions.map((option) => (
+    `<a class="btn-search-retailer" href="${escHtml(option.url)}" target="_blank" rel="sponsored nofollow noopener">${escHtml(option.name)}</a>`
+  )).join('');
+
+  return `<div class="search-fallback-group">
+    <span class="search-fallback-label">Search at:</span>
+    ${links}
+  </div>`;
 }
 
 export function buildRetailerModalHtml(product, { resolveRetailerUrl = (retailer) => retailer.url } = {}) {
@@ -82,13 +116,14 @@ export function buildRetailerTriggerButton(
   product,
   {
     resolveRetailerUrl = (retailer) => retailer.url,
-    buildNoRetailerUrl = () => '#'
+    buildNoRetailerUrl = () => '#',
+    buildSearchFallbackUrls
   } = {}
 ) {
   const retailers = normalizeRetailers(product?.retailers);
 
   if (retailers.length === 0) {
-    return `<a class="btn-buy btn-buy--ghost" href="${escHtml(buildNoRetailerUrl(product))}" target="_blank" rel="noopener noreferrer">Search online</a>`;
+    return buildSearchFallbackGroup(product, { buildSearchFallbackUrls, buildNoRetailerUrl });
   }
 
   if (retailers.length === 1) {
