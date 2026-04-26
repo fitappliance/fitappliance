@@ -4,62 +4,152 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editorial Standards — FitAppliance</title>
-  <meta name="description" content="FitAppliance editorial standards for data integrity, schema governance, affiliate disclosures, and update policy.">
-  <meta name="article:modified_time" content="2026-04-18T00:00:00Z">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Editorial Standards",
+  "description": "FitAppliance editorial standards for claims, affiliate links, ranking independence, corrections and data accuracy.",
+  "url": "https://www.fitappliance.com.au/about/editorial-standards",
+  "datePublished": "2026-04-18T12:11:49.000Z",
+  "dateModified": "2026-04-26T00:00:00.000Z",
+  "author": {
+    "@type": "Person",
+    "name": "JZ"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "FitAppliance",
+    "url": "https://www.fitappliance.com.au/"
+  }
+}
+  </script>
+  <meta name="description" content="FitAppliance editorial standards for claims, affiliate links, ranking independence, corrections and data accuracy.">
+  <meta name="article:modified_time" content="2026-04-26T00:00:00Z">
   <link rel="canonical" href="https://www.fitappliance.com.au/about/editorial-standards">
   <style>
-    :root { --ink:#131210; --ink-2:#3d3a35; --paper:#faf8f4; --border:#e0d9ce; --copper:#b55a2c; }
-    body { margin: 0; font-family: Arial, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
-    main { max-width: 860px; margin: 0 auto; padding: 44px 24px 72px; }
-    h1 { margin: 0 0 14px; font-size: 34px; }
-    h2 { margin: 28px 0 10px; font-size: 22px; }
-    p, li { color: var(--ink-2); font-size: 15px; }
-    ul { padding-left: 20px; }
-    .meta { font-size: 13px; color: #777; margin-bottom: 16px; }
-    footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; }
+    :root { --ink:#131210; --ink-2:#3d3a35; --paper:#faf8f4; --border:#e0d9ce; --copper:#b55a2c; --white:#fff; }
+    body { margin: 0; font-family: Arial, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.72; }
+    main { max-width: 900px; margin: 0 auto; padding: 44px 24px 76px; }
+    h1 { margin: 0 0 14px; font-size: 38px; letter-spacing: -0.02em; }
+    h2 { margin: 30px 0 10px; font-size: 23px; }
+    p, li { color: var(--ink-2); font-size: 16px; }
+    ul { padding-left: 22px; }
+    li { margin: 7px 0; }
+    code { background: #fff; border: 1px solid var(--border); border-radius: 5px; padding: 1px 5px; }
+    .meta { font-size: 13px; color: #776f64; margin-bottom: 18px; }
+    .callout { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
+    footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; }
     a { color: var(--copper); text-decoration: none; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <main>
     <a href="/">← Back to FitAppliance</a>
     <h1>Editorial Standards</h1>
-    <p class="meta">Last updated: 18 April 2026</p>
+    <p class="meta">Last reviewed: 26 April 2026</p>
 
-    <p>FitAppliance content is written and generated under strict data-integrity constraints for Australian
-    appliance fit guidance.</p>
+    <p>FitAppliance is a small tool site, so its editorial standard has to be simple enough to maintain and strict
+    enough to protect users. We publish fit guidance only when it can be tied back to project data, public source
+    material, or visible code. When a value is unknown, the better answer is to say less rather than fill the gap with
+    confident copy.</p>
 
-    <h2>1. Accuracy and Source Policy</h2>
-    <ul>
-      <li>We publish only values sourced from project datasets or documented official references.</li>
-      <li>Unknown values remain explicitly unknown; they are never estimated for presentation.</li>
-      <li>Schema fields without source support are omitted by design.</li>
-    </ul>
+    <h2>Our claims policy</h2>
+    <p>In April 2026, FitAppliance audited public claims across the homepage, generated pages, documentation and
+    promotional drafts. The audit is recorded in <code>docs/claims-audit.md</code>. The purpose was to remove
+    unsupported promises and keep the site aligned with what the tool actually does. Claims about appliance fit,
+    brand-specific clearance rules, doorway checks and energy star fields stayed because those features exist in the
+    code and data. Claims about rebate calculations, current stock and current prices were removed or weakened because
+    the site does not maintain those systems as public features.</p>
 
-    <h2>2. Commercial Independence</h2>
-    <ul>
-      <li>Affiliate links are disclosed at the point of interaction.</li>
-      <li>Ranking and fit logic are not altered by affiliate commission rates.</li>
-      <li>No sponsored placement is shown as an organic fit result.</li>
-    </ul>
+    <p>The rule going forward is conservative: if a claim cannot be checked in the repository or in a cited public
+    source, it should not appear as a user-facing promise. This applies to page titles, trust strips, schema fields,
+    FAQs, promotional drafts and generated copy. It also applies to words that sound legal or official. FitAppliance
+    can publish clear affiliate disclosure; it should not use broad legal conclusions as marketing language.</p>
 
-    <h2>3. Structured Data Governance</h2>
-    <ul>
-      <li>JSON-LD blocks are validated in automated tests.</li>
-      <li>`aggregateRating` and `reviewCount` are prohibited unless real source data is available.</li>
-      <li>Product and organization schema are generated from available factual fields only.</li>
-    </ul>
+    <h2>How we handle affiliate links</h2>
+    <p>Some outgoing retailer links may be affiliate links. Where affiliate rendering is generated by project code,
+    links use attributes such as <code>rel="sponsored nofollow noopener"</code> or equivalent sponsored disclosure
+    patterns. The site also maintains an <a href="/affiliate-disclosure">affiliate disclosure</a> page so users can
+    see how commissions work.</p>
 
-    <h2>4. Update and Correction Workflow</h2>
-    <ul>
-      <li>Regenerated content is tested before deployment.</li>
-      <li>If a data issue is identified, the corresponding source is corrected and pages are regenerated.</li>
-      <li>Material methodology changes are documented in `/methodology`.</li>
-    </ul>
+    <p>The current affiliate partners referenced by FitAppliance are JB Hi-Fi, Harvey Norman, The Good Guys,
+    Appliances Online and Bing Lee. Commission can help pay for hosting and maintenance, but it does not change the
+    dimensional fit calculation. A product cannot buy its way past the cavity math in
+    <code>public/scripts/search-core.js</code>. If a retailer link is available for a product, that may make the card
+    more useful, but it should not be confused with an editorial endorsement.</p>
+
+    <h2>How we choose what to recommend</h2>
+    <p>FitAppliance is not a review publication. It does not choose a single "best" fridge or dishwasher for everyone.
+    The search result starts with the measured cavity and category. The fit pipeline checks dimensions and clearances,
+    then the user can refine with facets and sort options. The default ranking favours exact physical fit before it
+    considers other signals.</p>
+
+    <p>The "Popular in AU" badge is based on project scoring fields such as <code>priorityScore</code>. It is not a
+    paid placement label. Brand canonicalisation comes from <code>data/brand-canon.json</code>, which normalises
+    spelling and casing collisions so generated pages do not split the same brand into avoidable variants. That file
+    currently keeps drop decisions empty; brand removal was deferred so the project does not hide catalogue entries
+    without enough evidence.</p>
+
+    <h2>Data accuracy commitments</h2>
+    <p>Appliance data can be wrong for ordinary reasons: source feeds change, model names are inconsistent, dimensions
+    are revised, or a retailer link disappears. FitAppliance treats errors as fixable data issues, not as something to
+    hide. Users can report problems by emailing
+    <a href="mailto:hello@fitappliance.com.au">hello@fitappliance.com.au</a> or by opening an issue in the public
+    repository at <a href="https://github.com/fitappliance/fitappliance.git">https://github.com/fitappliance/fitappliance.git</a>.</p>
+
+    <p>When a clear data error is reported, the goal is to acknowledge it within 7 days and correct it in the relevant
+    source file or generation script. The correction should leave a trace in GitHub history. If the error affects
+    public pages, the pages should be regenerated rather than hand-edited in one place and forgotten.</p>
+
+    <h2>Conflict of interest disclosure</h2>
+    <p>FitAppliance may earn commission from retailer links, including links to JB Hi-Fi, Harvey Norman, The Good
+    Guys, Appliances Online and Bing Lee. It does not accept paid brand ranking, paid product reviews, or paid
+    clearance rules. A brand can appear in results because it has catalogue entries and the product fits the user's
+    dimensions. A brand cannot pay to make a product physically fit.</p>
+
+    <p>If a commercial relationship is added later and it changes how results are displayed, that change should be
+    disclosed before users rely on it. The safer editorial choice is to separate fit calculation, retailer availability
+    and advertising disclosure instead of blending them into one vague recommendation.</p>
+
+    <h2>Corrections policy</h2>
+    <p>Corrections should be specific. A useful report includes the product model, the page URL, the incorrect field,
+    and the source that shows the better value. If the report relates to door swing inference, the relevant code path
+    is <code>scripts/infer-door-swing.js</code>. If it relates to search behaviour, the relevant path is usually
+    <code>public/scripts/search-core.js</code>. If it relates to generated brand naming, the relevant path may be
+    <code>data/brand-canon.json</code>.</p>
+
+    <p>Where a correction is accepted, FitAppliance should update the source data or generator, run the test suite,
+    regenerate affected pages and keep the commit history visible. If a correction is not accepted because the
+    evidence is unclear, the response should explain what is missing.</p>
+
+    <h2>Generated copy review</h2>
+    <p>Many FitAppliance pages are generated from templates because the site covers hundreds of brand, cavity,
+    doorway, comparison and guide routes. Generated pages still need editorial rules. The copy audit checks for risky
+    phrases, unsupported claims and repeated boilerplate. Schema tests check that structured data is valid JSON and
+    avoids fake ratings or fake review counts. Sitemap and link-graph tests check that pages are reachable after
+    generation.</p>
+
+    <p>Templates should not add claims merely because they sound helpful. A template may say that a page uses
+    brand-specific clearance rules if the page is generated from the clearance data. It should not say a product is
+    recommended by experts, approved by a government body, or available at a current price unless that evidence exists
+    in the repository. The same rule applies to small UI labels as much as long guide pages.</p>
+
+    <h2>Open source review</h2>
+    <p class="callout">The repository is public at
+    <a href="https://github.com/fitappliance/fitappliance.git">https://github.com/fitappliance/fitappliance.git</a>.
+    Public source does not guarantee perfect data, but it lets users and reviewers inspect the system rather than
+    trust a black box.</p>
+
+    <h2>Last reviewed</h2>
+    <p>This page was last reviewed on 26 April 2026. Material policy changes should be visible in the GitHub commit history.</p>
 
     <footer>
+      <a href="/about">About</a> ·
       <a href="/methodology">Methodology</a> ·
-      <a href="/about/editorial-standards">Editorial standards</a>
+      <a href="/about/editorial-standards">Editorial standards</a> ·
+      <a href="/affiliate-disclosure">Affiliate disclosure</a>
     </footer>
   </main>
 </body>
