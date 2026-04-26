@@ -1,6 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
 
 const require = createRequire(import.meta.url);
 const {
@@ -12,6 +15,7 @@ const {
   selectDisclaimerTemplate
 } = require('../scripts/common/review-video-renderer.js');
 const {
+  auditReviewContent,
   auditReviewContentHtml
 } = require('../scripts/audit-review-content.js');
 const {
@@ -152,6 +156,24 @@ test('phase 41 reviews: pages under 300 original words fail the review content a
   assert.equal(result.passed, false);
   assert.ok(result.wordCount < 300);
   assert.match(result.issues.join(' '), /300|word/i);
+});
+
+test('phase 47 guides: review content audit report timestamp is deterministic when injected', async () => {
+  const repoRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'fitappliance-review-audit-'));
+  fs.mkdirSync(path.join(repoRoot, 'pages'), { recursive: true });
+  fs.writeFileSync(path.join(repoRoot, 'index.html'), '<main><h1>Home</h1></main>', 'utf8');
+  fs.writeFileSync(path.join(repoRoot, 'pages', 'sample.html'), '<main><h1>Sample</h1></main>', 'utf8');
+
+  const reportPath = path.join(repoRoot, 'reports', 'review-content-audit.json');
+  await auditReviewContent({
+    repoRoot,
+    reportPath,
+    generatedAt: '2026-04-18T12:11:49.000Z',
+    logger: { log() {} }
+  });
+
+  const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+  assert.equal(report.generatedAt, '2026-04-18T12:11:49.000Z');
 });
 
 test('phase 41 reviews: disclaimer templates map correctly to trust tiers A, B, and M', () => {
