@@ -537,6 +537,7 @@ nav {
 
   <div class="results-body">
     <div>
+      <div data-fit-viz hidden></div>
       <!-- View toggle -->
       <div class="view-toggle">
         <button class="view-btn" id="btnGrid" onclick="setView('grid')">
@@ -837,6 +838,7 @@ nav {
 <script defer src="/scripts/subscribe.js"></script>
 <script type="module">
 import '/scripts/search-core.js';
+import '/scripts/fit-visualization.js';
 import '/scripts/search-dom.js';
 import '/scripts/saved-search-store.js';
 import '/scripts/compare-store.js';
@@ -1762,12 +1764,18 @@ function renderResults() {
   const empty     = document.getElementById('emptyState');
 
   if (currentMatchRows.length===0) {
+    SearchDom.renderFitVisualization(document.querySelector('[data-fit-viz]'), {});
     container.innerHTML='';
     container.className='';
     empty.classList.add('show');
     return;
   }
   empty.classList.remove('show');
+  SearchDom.renderFitVisualization(document.querySelector('[data-fit-viz]'), {
+    cavity: lastSearchFilters,
+    product: currentMatchRows[0],
+    clearance: getClearance(currentCat, currentMatchRows[0]?.brand || '__default__')
+  });
 
   if (currentView === 'list') {
     container.className = 'product-list';
