@@ -12,55 +12,85 @@ async function loadModule() {
   return import(`${moduleUrl}?cacheBust=${Date.now()}`);
 }
 
-test('phase 48 card UX: fridge thumbnail renders SVG with brand label', async () => {
+test('phase 48 card polish: thumbnail renders an information card with brand and model', async () => {
   const { renderProductThumb } = await loadModule();
-  const html = renderProductThumb({ brand: 'LG', cat: 'fridge' });
+  const html = renderProductThumb({ brand: 'LG', model: 'GT1S DualInverter', cat: 'fridge' });
 
   assert.match(html, /viewBox="0 0 120 120"/);
   assert.match(html, /LG/);
-  assert.match(html, /data-thumb-category="fridge"/);
-  assert.match(html, /M43 26h34v58H43z/);
+  assert.match(html, /GT1S DualI…/);
+  assert.match(html, /FRIDGE/);
+  assert.doesNotMatch(html, /M43 26h34v58H43z/);
 });
 
-test('phase 48 card UX: all appliance categories have distinct line icons', async () => {
-  const { renderProductThumb } = await loadModule();
+test('phase 48 card polish: category labels match compact product-card language', async () => {
+  const { categoryLabel } = await loadModule();
 
-  assert.match(renderProductThumb({ brand: 'LG', cat: 'fridge' }), /data-thumb-category="fridge"/);
-  assert.match(renderProductThumb({ brand: 'LG', cat: 'washing_machine' }), /data-thumb-category="washing_machine"/);
-  assert.match(renderProductThumb({ brand: 'LG', cat: 'dryer' }), /data-thumb-category="dryer"/);
-  assert.match(renderProductThumb({ brand: 'LG', cat: 'dishwasher' }), /data-thumb-category="dishwasher"/);
+  assert.equal(categoryLabel('fridge'), 'FRIDGE');
+  assert.equal(categoryLabel('washing_machine'), 'WASHER');
+  assert.equal(categoryLabel('dryer'), 'DRYER');
+  assert.equal(categoryLabel('dishwasher'), 'D/WASHER');
+  assert.equal(categoryLabel('other'), 'APPLIANCE');
 });
 
-test('phase 48 card UX: long brand labels are truncated with ellipsis', async () => {
-  const { renderProductThumb } = await loadModule();
-  const html = renderProductThumb({ brand: 'Fisher & Paykel Appliances', cat: 'fridge' });
+test('phase 48 card polish: same brand gets stable accent and different brands differ', async () => {
+  const { brandAccentColor } = await loadModule();
 
+  assert.equal(brandAccentColor('LG'), brandAccentColor('LG'));
+  assert.notEqual(brandAccentColor('LG'), brandAccentColor('Samsung'));
+});
+
+test('phase 48 card polish: brand accent is case-insensitive', async () => {
+  const { brandAccentColor } = await loadModule();
+
+  assert.equal(brandAccentColor('Bosch'), brandAccentColor('bosch'));
+});
+
+test('phase 48 card polish: long brand and model labels are truncated with ellipsis', async () => {
+  const { renderProductThumb, shortModelLabel } = await loadModule();
+  const html = renderProductThumb({
+    brand: 'Fisher & Paykel Appliances',
+    model: 'RF605QDUVX1 French Door',
+    cat: 'fridge'
+  });
+
+  assert.equal(shortModelLabel('RF605QDUVX1 French Door'), 'RF605QDUVX…');
   assert.match(html, /Fisher &amp; …/);
+  assert.match(html, /RF605QDUVX…/);
   assert.doesNotMatch(html, /Fisher &amp; Paykel Appliances/);
 });
 
-test('phase 48 card UX: missing brand still renders the product silhouette', async () => {
+test('phase 48 card polish: missing brand and category render useful fallback labels', async () => {
   const { renderProductThumb } = await loadModule();
-  const html = renderProductThumb({ cat: 'dryer' });
+  const html = renderProductThumb({ model: 'ABC123' });
 
-  assert.match(html, /<svg/);
-  assert.match(html, /data-thumb-category="dryer"/);
-  assert.doesNotMatch(html, /<text[^>]*>\s*</);
+  assert.match(html, />Brand</);
+  assert.match(html, /ABC123/);
+  assert.match(html, /APPLIANCE/);
 });
 
-test('phase 48 card UX: missing category falls back to generic placeholder', async () => {
+test('phase 48 card polish: missing model does not render an empty text node', async () => {
   const { renderProductThumb } = await loadModule();
-  const html = renderProductThumb({ brand: 'Asko' });
+  const html = renderProductThumb({ brand: 'LG', cat: 'dryer' });
 
-  assert.match(html, /data-thumb-category="generic"/);
-  assert.match(html, /Asko/);
+  assert.match(html, /LG/);
+  assert.match(html, /DRYER/);
+  assert.doesNotMatch(html, /<text[^>]*>\s*<\/text>/);
+});
+
+test('phase 48 card polish: thumbnail aria label carries brand model and category context', async () => {
+  const { renderProductThumb } = await loadModule();
+  const html = renderProductThumb({ brand: 'Beko', model: 'BFL7510W', cat: 'washing_machine' });
+
+  assert.match(html, /aria-label="Beko BFL7510W WASHER appliance card"/);
 });
 
 test('phase 48 card UX: hostile brand is escaped inside SVG text', async () => {
   const { renderProductThumb } = await loadModule();
-  const html = renderProductThumb({ brand: '<img onerror=alert(1)>', cat: 'fridge' });
+  const html = renderProductThumb({ brand: '<img onerror=alert(1)>', model: '<svg onload=1>', cat: 'fridge' });
 
   assert.equal(/<img/i.test(html), false);
+  assert.equal(/<svg onload/i.test(html), false);
   assert.equal(/onerror/i.test(html), false);
   assert.match(html, /&lt;img oner…/);
 });

@@ -1,12 +1,15 @@
-const VALID_CATEGORIES = new Set(['fridge', 'washing_machine', 'dryer', 'dishwasher']);
-
-const CATEGORY_ICONS = {
-  fridge: '<path d="M43 26h34v58H43z"/><path d="M43 47h34"/><path d="M51 38h4M51 61h4"/>',
-  washing_machine: '<rect x="39" y="30" width="42" height="50" rx="5"/><circle cx="60" cy="56" r="13"/><path d="M46 38h10M67 38h7"/>',
-  dryer: '<rect x="39" y="30" width="42" height="50" rx="5"/><circle cx="60" cy="56" r="13"/><path d="M47 38h8M66 38h3M72 38h3M48 80h24"/>',
-  dishwasher: '<rect x="34" y="38" width="52" height="38" rx="4"/><path d="M40 50h40M44 58h32M44 66h32"/><path d="M45 44h6M69 44h6"/>',
-  generic: '<rect x="38" y="34" width="44" height="44" rx="7"/><path d="M48 48h24M48 58h24M48 68h24"/>'
-};
+const ACCENT_COLORS = [
+  '#8b7355',
+  '#6b8e6b',
+  '#7d6b8e',
+  '#8e756b',
+  '#5f7f8f',
+  '#8a6f4d',
+  '#6f7f5f',
+  '#7a6f8f',
+  '#8f6f6f',
+  '#5f7d73'
+];
 
 function escHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -18,31 +21,50 @@ function escHtml(value) {
   }[char]));
 }
 
-function normalizeCategory(cat) {
-  const value = String(cat ?? '').trim();
-  return VALID_CATEGORIES.has(value) ? value : 'generic';
+function compactLabel(value, maxChars) {
+  const normalized = String(value ?? '').replace(/\s+/g, ' ').trim();
+  if (!normalized) return '';
+  return normalized.length > maxChars ? `${normalized.slice(0, maxChars)}…` : normalized;
 }
 
-function shortBrandLabel(brand) {
-  const value = String(brand ?? '').replace(/\s+/g, ' ').trim();
-  if (!value) return '';
-  return value.length > 12 ? `${value.slice(0, 9)}…` : value;
+export function shortBrandLabel(brand) {
+  return compactLabel(brand, 9);
+}
+
+export function shortModelLabel(model) {
+  return compactLabel(model, 10);
+}
+
+export function categoryLabel(cat) {
+  return {
+    fridge: 'FRIDGE',
+    dishwasher: 'D/WASHER',
+    dryer: 'DRYER',
+    washing_machine: 'WASHER'
+  }[cat] || 'APPLIANCE';
+}
+
+export function brandAccentColor(brand) {
+  const value = String(brand ?? '').trim().toLowerCase() || 'appliance';
+  let hash = 0;
+  for (let index = 0; index < value.length; index += 1) {
+    hash = (hash + value.charCodeAt(index) * (index + 1)) % ACCENT_COLORS.length;
+  }
+  return ACCENT_COLORS[hash];
 }
 
 export function renderProductThumb(product = {}) {
-  const category = normalizeCategory(product?.cat);
   const brand = shortBrandLabel(product?.brand);
-  const escapedBrand = escHtml(brand);
-  const label = brand ? `${escapedBrand} appliance placeholder` : 'Appliance placeholder';
-  const brandText = escapedBrand
-    ? `<text x="60" y="102" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" fill="#2c2c2c">${escapedBrand}</text>`
-    : '';
+  const model = shortModelLabel(product?.model);
+  const category = categoryLabel(product?.cat);
+  const accent = brandAccentColor(product?.brand);
+  const aria = [brand || 'Brand', model, category].filter(Boolean).join(' ');
 
-  return `<svg class="product-thumb-svg" data-thumb-category="${escHtml(category)}" role="img" aria-label="${label}" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-    <rect x="8" y="8" width="104" height="104" rx="14" fill="#f5f3ee" stroke="#dfdbd2"/>
-    <g fill="none" stroke="#2c2c2c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      ${CATEGORY_ICONS[category]}
-    </g>
-    ${brandText}
+  return `<svg class="product-thumb-svg" role="img" aria-label="${escHtml(aria)} appliance card" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="104" height="104" rx="12" fill="#fafaf7" stroke="#dfdbd2" stroke-width="1"/>
+    <path d="M20 8h80a12 12 0 0 1 12 12v24H8V20A12 12 0 0 1 20 8z" fill="${escHtml(accent)}"/>
+    <text x="60" y="32" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="600" fill="#fff">${escHtml(brand || 'Brand')}</text>
+    ${model ? `<text x="60" y="68" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="500" fill="#2c2c2c">${escHtml(model)}</text>` : ''}
+    <text x="60" y="92" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="9" fill="#6b6b6b" letter-spacing="0.05em">${escHtml(category)}</text>
   </svg>`;
 }

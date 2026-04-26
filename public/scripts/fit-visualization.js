@@ -72,13 +72,13 @@
     const value = Math.round(Number(mm));
     if (!Number.isFinite(value)) return 'unknown';
     if (value < 0) return `doesn't fit: ${value}mm`;
-    if (value < 5) return `tight: ${value}mm`;
+    if (value < 5) return `BIND ${value}mm`;
     return `${value}mm spare`;
   }
 
   function formatBindingGap(mm) {
     const value = Math.round(Number(mm));
-    return Number.isFinite(value) ? `binding: ${value}mm` : 'binding';
+    return Number.isFinite(value) ? `BIND ${value}mm` : 'BIND';
   }
 
   function getViewSpec(view, cavity, product, clearance) {
@@ -170,17 +170,17 @@
     const markerId = `fitArrow${spec.title}`;
 
     return `<svg class="fit-viz-svg" role="img" aria-label="${escHtml(label)}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
-  <rect class="fit-viz-cavity" x="${CAVITY.x}" y="${CAVITY.y}" width="${CAVITY.w}" height="${CAVITY.h}" fill="none" stroke="${INK}" stroke-width="2"/>
-  <rect class="fit-viz-product" x="${productX}" y="${productY}" width="${productW}" height="${productH}" fill="#e8e6e1" stroke="${INK}" stroke-width="1.5"/>
+  <rect class="fit-viz-cavity" x="${CAVITY.x}" y="${CAVITY.y}" width="${CAVITY.w}" height="${CAVITY.h}" fill="none" stroke="${INK}" stroke-width="1.8"/>
+  <rect class="fit-viz-product" x="${productX}" y="${productY}" width="${productW}" height="${productH}" fill="#eeece6" stroke="${INK}" stroke-width="1.2"/>
   <path d="M${CAVITY.x} ${CAVITY.y - 12}H${CAVITY.x + CAVITY.w}" stroke="${INK}" stroke-width="1" marker-start="url(#${markerId})" marker-end="url(#${markerId})"/>
   <path d="M${CAVITY.x - 14} ${CAVITY.y}V${CAVITY.y + CAVITY.h}" stroke="${INK}" stroke-width="1" marker-start="url(#${markerId})" marker-end="url(#${markerId})"/>
-  <path d="M${CAVITY.x} ${CAVITY.y + CAVITY.h + 14}H${productX}" stroke="${xBinding ? ORANGE : '#7a766e'}" stroke-width="${xBinding ? '2' : '1'}"/>
-  <path d="M${CAVITY.x + CAVITY.w + 13} ${productY + productH}V${CAVITY.y + CAVITY.h}" stroke="${yBinding ? ORANGE : '#7a766e'}" stroke-width="${yBinding ? '2' : '1'}"/>
-  <text x="${CAVITY.x + CAVITY.w / 2}" y="${CAVITY.y - 18}" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="${INK}">${spec.xLabel}: ${Math.round(spec.cavityX)}mm</text>
-  <text x="${CAVITY.x - 20}" y="${CAVITY.y + CAVITY.h / 2}" text-anchor="middle" transform="rotate(-90 ${CAVITY.x - 20} ${CAVITY.y + CAVITY.h / 2})" font-family="-apple-system, sans-serif" font-size="11" fill="${INK}">${spec.yLabel}: ${Math.round(spec.cavityY)}mm</text>
-  <text x="${Math.max(70, productX - 12)}" y="${CAVITY.y + CAVITY.h + 31}" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="${xBinding ? ORANGE : '#6b6b6b'}">${xBinding ? formatBindingGap(spec.gapX) : formatGap(spec.gapX)}</text>
-  <text x="${CAVITY.x + CAVITY.w + 22}" y="${Math.min(CAVITY.y + CAVITY.h - 6, productY + productH + 20)}" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="${yBinding ? ORANGE : '#6b6b6b'}">${yBinding ? formatBindingGap(spec.gapY) : formatGap(spec.gapY)}</text>
-  <text x="${productX + productW / 2}" y="${productY + productH / 2}" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, sans-serif" font-size="11" fill="${INK}">appliance</text>
+  <path d="M${CAVITY.x} ${CAVITY.y + CAVITY.h + 14}H${productX}" stroke="${xBinding ? ORANGE : '#7a766e'}" stroke-width="${xBinding ? '2.5' : '1'}"/>
+  <path d="M${CAVITY.x + CAVITY.w + 13} ${productY + productH}V${CAVITY.y + CAVITY.h}" stroke="${yBinding ? ORANGE : '#7a766e'}" stroke-width="${yBinding ? '2.5' : '1'}"/>
+  <text x="${CAVITY.x + CAVITY.w / 2}" y="${CAVITY.y - 18}" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="${INK}">${spec.xLabel}: ${Math.round(spec.cavityX)}mm</text>
+  <text x="${CAVITY.x - 20}" y="${CAVITY.y + CAVITY.h / 2}" text-anchor="middle" transform="rotate(-90 ${CAVITY.x - 20} ${CAVITY.y + CAVITY.h / 2})" font-family="-apple-system, sans-serif" font-size="12" fill="${INK}">${spec.yLabel}: ${Math.round(spec.cavityY)}mm</text>
+  <text x="${Math.max(70, productX - 12)}" y="${CAVITY.y + CAVITY.h + 31}" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="${xBinding ? ORANGE : '#6b6b6b'}">${xBinding ? formatBindingGap(spec.gapX) : formatGap(spec.gapX)}</text>
+  <text x="${CAVITY.x + CAVITY.w + 22}" y="${Math.min(CAVITY.y + CAVITY.h - 6, productY + productH + 20)}" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12" fill="${yBinding ? ORANGE : '#6b6b6b'}">${yBinding ? formatBindingGap(spec.gapY) : formatGap(spec.gapY)}</text>
+  <text x="${productX + productW / 2}" y="${productY + productH / 2}" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, sans-serif" font-size="12" fill="${INK}">appliance</text>
   <defs><marker id="${markerId}" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="${INK}"/></marker></defs>
 </svg>`;
   }
