@@ -736,6 +736,27 @@
     `;
   }
 
+  function renderFitVisualization(container, {
+    cavity,
+    product,
+    clearance
+  } = {}) {
+    if (!container) return false;
+    const renderer = globalScope?.FitVisualization;
+    if (!renderer?.renderFitVisualizationGroup || !product) {
+      container.textContent = '';
+      container.hidden = true;
+      return false;
+    }
+    container.hidden = false;
+    container.innerHTML = renderer.renderFitVisualizationGroup({
+      cavity,
+      product,
+      clearance
+    });
+    return true;
+  }
+
   function renderSearchResults({
     matches,
     filters,
@@ -963,6 +984,7 @@
     renderFacetBar,
     renderLiveCount,
     renderMobileFilterSheet,
+    renderFitVisualization,
     renderPresetChips,
     renderSaveSearchButton,
     renderSearchResults,
