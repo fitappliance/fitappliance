@@ -3,7 +3,7 @@
 
 const path = require('node:path');
 const { mkdir, readdir, readFile, writeFile } = require('node:fs/promises');
-const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
+const { getRepoHeadModified } = require('./common/file-dates.js');
 
 function collectSchemaBlocks(html) {
   const blocks = [];
@@ -73,7 +73,7 @@ async function validateSchema({
   }
 
   const report = {
-    generatedAt: getBuildTimestampIso(),
+    generatedAt: getRepoHeadModified({ repoRoot }),
     method: 'local-json-ld-parser',
     pagesChecked: htmlFiles.length,
     jsonLdBlocks,

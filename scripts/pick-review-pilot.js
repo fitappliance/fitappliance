@@ -5,7 +5,7 @@ const path = require('node:path');
 const { mkdir, readFile, writeFile } = require('node:fs/promises');
 const { slugNormalize } = require('./common/slug-normalize.js');
 const { buildModelSlug } = require('./common/model-slug.js');
-const { getBuildDate } = require('./utils/build-timestamp.js');
+const { createFileDateReader, toDateOnly } = require('./common/file-dates.js');
 
 const CATEGORY_SLUGS = {
   fridge: 'fridge',
@@ -25,11 +25,11 @@ const CAVITY_MIN_WIDTH = 500;
 const CAVITY_MAX_WIDTH = 1100;
 const CAVITY_STEP = 10;
 
-function toDateStamp(now = getBuildDate()) {
+function toDateStamp(now) {
   if (now instanceof Date) return now.toISOString().slice(0, 10);
   const match = String(now ?? '').trim().match(/^\d{4}-\d{2}-\d{2}/);
   if (match) return match[0];
-  return getBuildDate();
+  return toDateOnly(now);
 }
 
 function roundUpToStep(value, step = CAVITY_STEP) {
@@ -133,7 +133,7 @@ async function pickReviewPilot({
   appliancesPath = path.join(repoRoot, 'public', 'data', 'appliances.json'),
   clearancePath = path.join(repoRoot, 'public', 'data', 'clearance.json'),
   outputPath = path.join(repoRoot, 'data', 'videos', 'review-pilot-slugs.json'),
-  now = getBuildDate(),
+  now = null,
   logger = console
 } = {}) {
   const appliances = await readJson(appliancesPath);
@@ -142,10 +142,11 @@ async function pickReviewPilot({
     products: appliances.products ?? [],
     clearanceRules: clearance.rules ?? {}
   });
+  const dateReader = createFileDateReader({ repoRoot });
 
   const output = {
     schema_version: 1,
-    last_updated: toDateStamp(now),
+    last_updated: toDateStamp(now ?? dateReader.getFileLastModified(outputPath)),
     pilots
   };
 
