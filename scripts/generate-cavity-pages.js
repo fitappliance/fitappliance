@@ -15,7 +15,7 @@ const {
   loadMeasurementSteps
 } = require('./generate-measurement-content');
 const { displayBrandName } = require('./utils/brand-utils.js');
-const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
+const { createFileDateReader } = require('./common/file-dates.js');
 
 const MIN_WIDTH = 500;
 const MAX_WIDTH = 1100;
@@ -349,6 +349,7 @@ async function generateCavityPages(options = {}) {
       .filter((row) => typeof row.cavityPageSlug === 'string' && row.cavityPageSlug)
       .map((row) => [row.cavityPageSlug, row])
   );
+  const dateReader = createFileDateReader({ repoRoot });
 
   await cleanOutputDir(outputDir);
   const rows = [];
@@ -398,6 +399,7 @@ async function generateCavityPages(options = {}) {
       })
       : '';
 
+    const filePath = path.join(outputDir, `${slug}.html`);
     const html = buildPageHtml({
       width,
       cavityHeightMm: DEFAULT_CAVITY_HEIGHT_MM,
@@ -419,7 +421,7 @@ async function generateCavityPages(options = {}) {
       topBrands,
       compareLinks,
       reviewSectionHtml,
-      modifiedTime: getBuildTimestampIso(),
+      modifiedTime: dateReader.getFileLastModified(filePath),
       measurementSvgHtml: generateMeasurementSvg({
         widthMm: width,
         heightMm: DEFAULT_CAVITY_HEIGHT_MM,
@@ -440,7 +442,6 @@ async function generateCavityPages(options = {}) {
       })
     });
 
-    const filePath = path.join(outputDir, `${slug}.html`);
     await writeFile(filePath, html, 'utf8');
 
     rows.push({

@@ -6,7 +6,7 @@ const { mkdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { buildHreflangLinks } = require('./common/html-head.js');
 const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
-const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
+const { createFileDateReader } = require('./common/file-dates.js');
 const { canonicalizeProducts } = require('./brand-canon.js');
 
 const CATEGORY_ROWS = [
@@ -384,6 +384,7 @@ async function generateLocationPages(options = {}) {
   ).catch(() => []);
   const appliancesDoc = await readJson(path.join(repoRoot, 'public', 'data', 'appliances.json'), { products: [] });
   const products = canonicalizeProducts(Array.isArray(appliancesDoc.products) ? appliancesDoc.products : []);
+  const dateReader = createFileDateReader({ repoRoot });
 
   const categoryCounts = products.reduce((accumulator, product) => {
     const cat = String(product?.cat ?? '');
@@ -410,6 +411,7 @@ async function generateLocationPages(options = {}) {
         guideRows
       });
 
+      const filePath = path.join(cityDir, `${category.slug}.html`);
       const html = buildPageHtml({
         city,
         category,
@@ -417,10 +419,9 @@ async function generateLocationPages(options = {}) {
         categoryCount: Number(categoryCounts[category.cat] ?? 0),
         modelSamples: buildLocationModelSamples(products, category.cat),
         affiliateProviders,
-        modifiedTime: getBuildTimestampIso()
+        modifiedTime: dateReader.getFileLastModified(filePath)
       });
 
-      const filePath = path.join(cityDir, `${category.slug}.html`);
       await writeFile(filePath, html, 'utf8');
 
       rows.push({

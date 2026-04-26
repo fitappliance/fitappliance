@@ -9,7 +9,7 @@ const { stringifyJsonLd } = require('./common/schema-jsonld.js');
 const { slugNormalize } = require('./common/slug-normalize.js');
 const { buildReviewVideoSection } = require('./common/review-video-renderer.js');
 const { displayBrandName } = require('./utils/brand-utils.js');
-const { getBuildTimestampIso } = require('./utils/build-timestamp.js');
+const { createFileDateReader, FIXED_EPOCH_ISO } = require('./common/file-dates.js');
 const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
 const { canonicalizeProducts, canonicalizeRuleDocument } = require('./brand-canon.js');
 
@@ -279,7 +279,7 @@ function buildBrandPageHtml({
   reviewSectionHtml = '',
   installTipsCopy = null,
   organizationJsonLd = null,
-  modifiedTime = getBuildTimestampIso()
+  modifiedTime = FIXED_EPOCH_ISO
 }) {
   const categoryMeta = CATEGORY_META[category] ?? {
     slug: category.replace(/_/g, '-'),
@@ -709,6 +709,7 @@ async function generateBrandPages(options = {}) {
       .filter((row) => typeof row.brandPageSlug === 'string' && row.brandPageSlug)
       .map((row) => [row.brandPageSlug, row])
   );
+  const dateReader = createFileDateReader({ repoRoot });
 
   const compareIndexPath = path.join(repoRoot, 'pages', 'compare', 'index.json');
   let compareIndex = [];
@@ -863,7 +864,7 @@ async function generateBrandPages(options = {}) {
       }),
       installTipsCopy,
       organizationJsonLd: JSON.stringify(buildOrganizationJsonLd(displayBrand, brandMetadata), null, 2),
-      modifiedTime: getBuildTimestampIso()
+      modifiedTime: dateReader.getFileLastModified(row.filePath)
     });
     await writeFile(row.filePath, html, 'utf8');
   }
