@@ -87,10 +87,14 @@ function extractJsonLd(html) {
 }
 
 function repoUrl() {
-  return execFileSync('git', ['remote', 'get-url', 'origin'], {
+  const remote = execFileSync('git', ['remote', 'get-url', 'origin'], {
     cwd: ROOT,
     encoding: 'utf8'
   }).trim();
+  if (remote.startsWith('git@github.com:')) {
+    return `https://github.com/${remote.slice('git@github.com:'.length).replace(/\.git$/, '')}`;
+  }
+  return remote.replace(/\.git$/, '');
 }
 
 test('phase 47: trust pages meet word-count and section-depth requirements', () => {
@@ -114,13 +118,34 @@ test('phase 47: trust pages use real project identity links and review metadata'
 
 test('phase 47: About page uses user-supplied founder and contact facts', () => {
   const html = readPage('pages/about.html');
+  const remote = repoUrl();
   assert.ok(html.includes('JZ'), 'About page should name JZ as the public founder signature');
-  assert.ok(
-    html.includes('mailto:hello@fitappliance.com.au'),
-    'About page should include hello@fitappliance.com.au mailto'
-  );
+  assert.ok(html.includes(`${remote}/issues/new`), 'About page should link to GitHub issues for contact');
+  assert.ok(html.includes(`${remote}/discussions`), 'About page should link to GitHub discussions for feature ideas');
+  assert.equal(html.includes('mailto:hello@fitappliance.com.au'), false, 'About page must not expose an active mailto link yet');
   assert.match(visibleText(html), /\bI\b/, 'About page should include first-person founder context');
   assert.match(visibleText(html), /solo|one-person|independent/i, 'About page should disclose solo operation');
+});
+
+test('phase 47: About page can mention pending email only as non-clickable placeholder text', () => {
+  const html = readPage('pages/about.html');
+  const text = visibleText(html);
+  assert.ok(text.includes('hello@fitappliance.com.au'), 'About page should mention the future email address as text');
+  assert.match(text, /being set up|when active/i, 'About page should explain email is not active yet');
+  assert.doesNotMatch(html, /href=["']mailto:/i, 'About page should not contain mailto hrefs');
+});
+
+test('phase 47: Editorial standards route corrections through GitHub issues', () => {
+  const html = readPage('pages/about/editorial-standards.html');
+  const remote = repoUrl();
+  assert.ok(html.includes(`${remote}/issues/new`), 'Editorial standards should link data corrections to GitHub issues');
+  assert.doesNotMatch(html, /href=["']mailto:/i, 'Editorial standards should not contain mailto hrefs');
+});
+
+test('phase 47: GitHub contact links use browser URLs rather than clone URLs', () => {
+  const combined = TRUST_PAGES.map((page) => readPage(page.file)).join('\n');
+  assert.equal(combined.includes('github.com/fitappliance/fitappliance.git/issues'), false);
+  assert.equal(combined.includes('github.com/fitappliance/fitappliance.git/discussions'), false);
 });
 
 test('phase 47: trust pages do not reintroduce red claims or AI-sounding filler', () => {
