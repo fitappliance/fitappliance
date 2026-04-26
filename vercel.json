@@ -10,6 +10,8 @@
     { "source": "/icons/:path*",         "destination": "/public/icons/:path*" },
     { "source": "/manifest.webmanifest", "destination": "/public/manifest.webmanifest" },
     { "source": "/service-worker.js",    "destination": "/public/service-worker.js" },
+    { "source": "/styles.css",           "destination": "/public/styles.css" },
+    { "source": "/styles-deferred.css",  "destination": "/public/styles-deferred.css" },
     { "source": "/ads.txt",              "destination": "/public/ads.txt" },
     { "source": "/sitemap.xml",          "destination": "/public/sitemap.xml" },
     { "source": "/rss.xml",              "destination": "/public/rss.xml" },
