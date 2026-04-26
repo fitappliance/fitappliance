@@ -4,62 +4,196 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Methodology — FitAppliance</title>
-  <meta name="description" content="How FitAppliance calculates cavity fit, doorway access, clearance allowances, and schema governance for Australian appliance pages.">
-  <meta name="article:modified_time" content="2026-04-18T00:00:00Z">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Methodology",
+  "description": "How FitAppliance calculates cavity fit, applies clearance allowances, handles inferred door swing data, and limits unsupported claims.",
+  "url": "https://www.fitappliance.com.au/methodology",
+  "datePublished": "2026-04-18T12:11:49.000Z",
+  "dateModified": "2026-04-26T00:00:00.000Z",
+  "author": {
+    "@type": "Person",
+    "name": "JZ"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "FitAppliance",
+    "url": "https://www.fitappliance.com.au/"
+  }
+}
+  </script>
+  <meta name="description" content="How FitAppliance calculates cavity fit, applies clearance allowances, handles inferred door swing data, and limits unsupported claims.">
+  <meta name="article:modified_time" content="2026-04-26T00:00:00Z">
   <link rel="canonical" href="https://www.fitappliance.com.au/methodology">
   <style>
-    :root { --ink:#131210; --ink-2:#3d3a35; --paper:#faf8f4; --border:#e0d9ce; --copper:#b55a2c; }
-    body { margin: 0; font-family: Arial, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
-    main { max-width: 860px; margin: 0 auto; padding: 44px 24px 72px; }
-    h1 { margin: 0 0 14px; font-size: 34px; }
-    h2 { margin: 28px 0 10px; font-size: 22px; }
-    p, li { color: var(--ink-2); font-size: 15px; }
-    ul { padding-left: 20px; }
-    .meta { font-size: 13px; color: #777; margin-bottom: 16px; }
-    footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; }
+    :root { --ink:#131210; --ink-2:#3d3a35; --paper:#faf8f4; --border:#e0d9ce; --copper:#b55a2c; --white:#fff; }
+    body { margin: 0; font-family: Arial, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.72; }
+    main { max-width: 900px; margin: 0 auto; padding: 44px 24px 76px; }
+    h1 { margin: 0 0 14px; font-size: 38px; letter-spacing: -0.02em; }
+    h2 { margin: 30px 0 10px; font-size: 23px; }
+    h3 { margin: 22px 0 8px; font-size: 18px; }
+    p, li { color: var(--ink-2); font-size: 16px; }
+    ul { padding-left: 22px; }
+    li { margin: 7px 0; }
+    code { background: #fff; border: 1px solid var(--border); border-radius: 5px; padding: 1px 5px; }
+    .meta { font-size: 13px; color: #776f64; margin-bottom: 18px; }
+    .callout { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
+    footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; }
     a { color: var(--copper); text-decoration: none; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <main>
     <a href="/">← Back to FitAppliance</a>
     <h1>Methodology</h1>
-    <p class="meta">Last updated: 18 April 2026</p>
+    <p class="meta">Last reviewed: 26 April 2026</p>
 
-    <p>FitAppliance is a static decision-support tool for Australian appliance sizing. This page documents our
-    calculation order, data transformations, and publication constraints.</p>
+    <p>FitAppliance is a practical sizing tool. Its job is to compare a measured space with appliance dimensions and
+    show products that are plausible fits. This page explains what is calculated, what is inferred, what comes from
+    project data files, and what the site deliberately does not calculate.</p>
 
-    <h2>1. Fit Calculation Order</h2>
+    <h2>How we calculate fit</h2>
+    <p>The main fit calculation is implemented in <code>public/scripts/search-core.js</code>. A user enters cavity
+    width, height and depth in millimetres. The search code converts those values with <code>toMm</code>, rejects
+    missing or invalid dimensions, and then evaluates products in the chosen category. A product only enters the
+    candidate pool when at least one usable cavity dimension has been provided.</p>
+
+    <p>The calculation is intentionally simple. For each axis that the user supplied, the tool compares the cavity
+    size with the appliance size plus the relevant clearance allowance. Width uses both side clearances, so the side
+    value is doubled. Height uses the top clearance. Depth uses the rear clearance. The score for each axis is
+    calculated as <code>(cavity - appliance - clearance) / cavity</code> and clamped between -0.05 and 0.5. The
+    product's fit score is the tightest axis. If that score falls below the user's tolerance threshold, the product is
+    excluded from the results.</p>
+
+    <p>The tolerance slider is not a promise that an appliance will fit after bending the rules. It is a measurement
+    buffer. In the current code, a 5 mm tolerance means the threshold can move slightly below zero relative to the
+    smallest supplied cavity dimension. That helps users explore products that are close to the measured boundary,
+    but it does not override manufacturer clearance guidance. Products that only fit because of tolerance are marked
+    as tight rather than treated as exact matches.</p>
+
+    <h2>Brand-specific clearance rules</h2>
+    <p>Clearance allowances are loaded from project data rather than invented in the page copy. The default clearances
+    are visible in <code>public/scripts/search-core.js</code>: fridge defaults are 25 mm rear, 5 mm each side and
+    25 mm top; dishwashers default to 5 mm rear, 0 mm sides and 5 mm top; dryers default to 25 mm rear and 5 mm sides;
+    washing machines default to 15 mm rear and 5 mm sides. Brand overrides are stored in
+    <code>public/data/clearance.json</code>.</p>
+
+    <p>Two examples show why brand-specific rules matter. In the current fridge clearance data, Samsung uses 50 mm
+    side clearance, 50 mm rear clearance and 100 mm top clearance. Haier uses 25.4 mm on the sides, rear and top.
+    LG uses 50 mm side and rear clearance but 20 mm top clearance. Those numbers are not treated as ranking copy; the
+    search code uses them as part of the fit calculation.</p>
+
+    <p>Clearance differences exist because brands use different cabinet designs, compressor layouts, ventilation
+    paths and installation assumptions. FitAppliance does not claim that one brand is better because it needs more or
+    less space. The tool simply applies the rule currently represented in the data and reminds users to check the
+    manufacturer's installation manual before purchase.</p>
+
+    <h2>Door swing inference</h2>
+    <p>Door swing is handled separately from the main search pipeline. The inference rules live in
+    <code>scripts/infer-door-swing.js</code>. Some appliance categories have simple physical behaviour. Dryers are
+    treated as 0 mm lateral swing in this model because the door opens forward. Dishwashers are treated as 0 mm
+    lateral swing because the front panel opens downward. Front-loading washing machines are also treated as 0 mm
+    lateral swing for the side-clearance calculation.</p>
+
+    <p>Fridges are more varied. The current inference rules set 0 mm lateral swing for configurations such as chest,
+    side-by-side, French door and bottom-mount entries where the model does not need a single wide side arc in the
+    same way as a top-mount or upright single-door fridge. The script also handles type code <code>7</code> as an
+    upright freezer case and treats very wide upright entries at 880 mm or more as physically unlikely to be a normal
+    single-door fridge in the source data. For upright and top-mount fridges where a swing still needs an estimate,
+    the second pass can infer door swing from the product width when that width is at least 400 mm.</p>
+
+    <p>In the product data, inferred values are marked with <code>inferred_door_swing</code>. That flag matters. A
+    measured manufacturer value and an inferred value should not be read as the same kind of evidence. The site keeps
+    the flag so the UI and future audits can tell which values came from rules and which values were already present
+    in the source document.</p>
+
+    <h2>Doorway delivery check</h2>
+    <p>The homepage includes an advanced field for the narrowest doorway width. That check is implemented in the page
+    script, not in <code>search-core.js</code>. The current logic compares the user's doorway width with the smaller
+    of a product's width and depth. If that delivery width is more than 50 mm beyond the supplied doorway width, the
+    product is excluded from the visible results. This is a conservative screening rule for the catalogue search, not
+    a substitute for measuring turns, stairs, packaging and installer access.</p>
+
+    <p>FitAppliance also has generated doorway pages that explain common doorway widths, but delivery remains
+    site-specific. Handles, carton size, hallway turns and lift doors can all matter. The purpose of the doorway field
+    is to stop obviously awkward options from being mixed into the same result list as products that are easier to
+    deliver.</p>
+
+    <h2>Dwelling type filter</h2>
+    <p>The dwelling type field currently affects one public rule: dryers in apartments. In <code>index.html</code>,
+    when the selected category is dryer and the dwelling type is apartment, products marked as vented are excluded.
+    The page also displays a notice explaining the National Construction Code 2022 context for venting into cavities
+    in multi-unit dwellings. Houses and townhouses do not currently trigger extra search exclusions beyond the same
+    dimensional and clearance calculations.</p>
+
+    <p>This is deliberately narrow. FitAppliance does not try to model every apartment by-law, strata rule or laundry
+    ventilation layout. It applies the product field it has, explains the reason, and leaves final installation
+    suitability to the user, installer and manufacturer documentation.</p>
+
+    <h2>Facets, sorting and saved state</h2>
+    <p>After the fit pool is built, <code>applyFacets</code> filters it by brand, price bounds, energy stars and
+    availability. Facet counts are based on the dimension-matched pool, not the whole catalogue. That means a user can
+    see how many Bosch, LG or Miele models remain after the cavity has already been applied. Sorting is handled by
+    <code>sortMatches</code> with options for best fit, price ascending, price descending, popularity and star rating.
+    URL state is serialised through <code>serializeSearchState</code> and restored through
+    <code>parseSearchParams</code>, so searches can be shared without a user account.</p>
+
+    <h2>Data sources and catalogue fields</h2>
+    <p>The public catalogue files under <code>public/data/</code> contain product dimensions, brand, model, category,
+    energy star rating, annual energy usage where available, door swing values, display names, readable specifications,
+    availability flags and retailer rows where a retailer feed has supplied a link. The current retailer row shape
+    uses short keys such as <code>n</code> for retailer name, <code>url</code> for the retailer URL and <code>p</code>
+    for a retailer price when present. Many retailer price fields are null, which is why FitAppliance does not present
+    current prices as a complete price comparison engine.</p>
+
+    <p>Energy star values come from Australian energy-rating source data used by the project. The site avoids wording
+    that would imply government endorsement of FitAppliance itself. Brand alias handling is recorded in
+    <code>data/brand-canon.json</code>. At the time this page was reviewed, that file normalised 24 brand-name
+    collisions and intentionally kept <code>drop_brands</code> empty.</p>
+
+    <h2>What we do not calculate</h2>
     <ul>
-      <li>Input cavity dimensions (width, height, depth) are validated client-side.</li>
-      <li>Brand-specific clearance rules are applied before fit checks.</li>
-      <li>Doorway checks use delivery-width margin logic from generated doorway pages.</li>
-      <li>Products failing any mandatory dimension are excluded from fit results.</li>
+      <li>We do not calculate government rebate eligibility or payment amounts.</li>
+      <li>We do not show current stock status.</li>
+      <li>We do not maintain a complete current retailer price feed.</li>
+      <li>We do not publish product reviews or assign editorial scores.</li>
+      <li>We do not claim that a result overrides manufacturer installation instructions.</li>
     </ul>
 
-    <h2>2. Data Sources</h2>
-    <ul>
-      <li>Core model data: Australian Government Energy Rating register snapshots in `public/data/appliances.json`.</li>
-      <li>Clearance rules: FitAppliance maintained `public/data/clearance.json` with explicit defaults.</li>
-      <li>Retailer availability: feed data where available; products without retailer data are still shown as fit results when their dimensions match.</li>
-      <li>Brand organization metadata: `public/data/brands/metadata.json` (only when verified links exist).</li>
-    </ul>
+    <h2>Publication and review cadence</h2>
+    <p>Generated pages, sitemap output and validation reports are rebuilt by repository scripts. The project also has
+    tests that check sitemap coverage, schema validity, copy claims, date stability and search behaviour. Scheduled
+    workflows exist for specific maintenance tasks, but that does not mean every public field is refreshed on a fixed
+    user-facing promise. When a field is stale, unknown or not maintained as a live feed, the site should use cautious
+    wording.</p>
 
-    <h2>3. Programmatic Content Rules</h2>
-    <ul>
-      <li>No generated page may include fake ratings, fake review counts, or fabricated citations.</li>
-      <li>Schema blocks are validated as strict JSON before publish.</li>
-      <li>Internal links are static HTML links to ensure crawler visibility.</li>
-      <li>All generated pages include update metadata via `article:modified_time`.</li>
-    </ul>
+    <p class="callout">The project source is public at
+    <a href="https://github.com/fitappliance/fitappliance">https://github.com/fitappliance/fitappliance</a>.
+    If this methodology page and the code disagree, the code is the source to inspect first and the page should be
+    corrected.</p>
 
-    <h2>4. Operational Cadence</h2>
-    <p>Automated pipelines regenerate structured pages, sitemap, RSS, image sitemap, and link graph reports.
-    Editorial checks run in tests before deployment.</p>
+    <h2>Limits of precision</h2>
+    <p>FitAppliance works with catalogue dimensions, not a laser scan of a home. A product listed as 600 mm wide may
+    still have handles, hinges, packaging, floor slope or installation constraints that matter on delivery day. A
+    cavity that measures 600 mm at the front may not measure the same at the back. The tool also cannot know whether a
+    wall is plumb, whether a skirting board intrudes into the cavity, or whether a laundry door can be removed during
+    installation.</p>
+
+    <p>For that reason, the result list should be treated as a shortlist for checking, not as a final installation
+    approval. The safest workflow is to measure the cavity in more than one place, measure the access path, check the
+    manufacturer's manual, and then use FitAppliance to remove products that are clearly outside the space.</p>
+
+    <h2>Last reviewed</h2>
+    <p>This page was last reviewed on 26 April 2026. Material changes should be visible in the GitHub commit history.</p>
 
     <footer>
+      <a href="/about">About</a> ·
       <a href="/methodology">Methodology</a> ·
-      <a href="/about/editorial-standards">Editorial standards</a>
+      <a href="/about/editorial-standards">Editorial standards</a> ·
+      <a href="/affiliate-disclosure">Affiliate disclosure</a>
     </footer>
   </main>
 </body>

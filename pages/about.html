@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About FitAppliance</title>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About FitAppliance",
+  "headline": "About FitAppliance",
+  "description": "Why FitAppliance exists, who runs it, how it makes money, and what the appliance fit checker does and does not do.",
+  "url": "https://www.fitappliance.com.au/about",
+  "datePublished": "2026-04-26T00:00:00.000Z",
+  "dateModified": "2026-04-26T00:00:00.000Z",
+  "author": {
+    "@type": "Person",
+    "name": "JZ"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "FitAppliance",
+    "url": "https://www.fitappliance.com.au/"
+  }
+}
+  </script>
+  <meta name="description" content="Why FitAppliance exists, who runs it, how it makes money, and what the appliance fit checker does and does not do.">
+  <meta name="article:modified_time" content="2026-04-26T00:00:00Z">
+  <link rel="canonical" href="https://www.fitappliance.com.au/about">
+  <style>
+    :root { --ink:#131210; --ink-2:#3d3a35; --paper:#faf8f4; --border:#e0d9ce; --copper:#b55a2c; --white:#fff; }
+    body { margin: 0; font-family: Arial, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.72; }
+    main { max-width: 880px; margin: 0 auto; padding: 44px 24px 76px; }
+    h1 { margin: 0 0 14px; font-size: 38px; letter-spacing: -0.02em; }
+    h2 { margin: 30px 0 10px; font-size: 23px; }
+    p, li { color: var(--ink-2); font-size: 16px; }
+    ul { padding-left: 22px; }
+    li { margin: 7px 0; }
+    .meta { font-size: 13px; color: #776f64; margin-bottom: 18px; }
+    .note { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; }
+    footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 13px; }
+    a { color: var(--copper); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <main>
+    <a href="/">← Back to FitAppliance</a>
+    <h1>About FitAppliance</h1>
+    <p class="meta">Last reviewed: 26 April 2026</p>
+
+    <h2>Why this site exists</h2>
+    <p>I built FitAppliance after a very ordinary household job turned into a very annoying one. I was replacing a
+    fridge at home, measured the kitchen cavity, chose a product that looked right on the retailer page, and still
+    ended up with a serious fit problem. The cavity measurement and the product that arrived did not line up in the
+    way I expected. Moving it, checking the space again, and dealing with the possibility of a return made the whole
+    purchase feel much harder than it should have been.</p>
+
+    <p>That experience changed how I looked at appliance shopping in Australia. Retailer pages usually show width,
+    height and depth, but the real question is more practical: will this appliance fit in my actual home, with the
+    required airflow space, the door swing, and the delivery path? FitAppliance started as my answer to that
+    frustration. I wanted a tool I could use the next time I replace a fridge, washer, dryer or dishwasher. If it
+    helps other Australian households avoid the same heavy, expensive mistake, even better.</p>
+
+    <h2>What we do</h2>
+    <p>FitAppliance is a sizing and fit tool for Australian appliances. You enter the cavity dimensions you have at
+    home. The site compares those measurements with appliance dimensions, brand-specific clearance rules, door swing
+    data, doorway access notes and energy star information. The current catalogue covers about 2,170 products across
+    four categories: fridges, washing machines, dryers and dishwashers.</p>
+
+    <p>The public search experience is backed by code that anyone can inspect. The fit pipeline lives in
+    <code>public/scripts/search-core.js</code>. Door swing inference is documented in
+    <code>scripts/infer-door-swing.js</code>. Brand name normalisation is kept in
+    <code>data/brand-canon.json</code>. Those files matter because this is a tool, not a blog post. The useful part
+    is the calculation, and the calculation should be open to scrutiny.</p>
+
+    <p>I also try to keep the product promise narrow. A tool that gives a careful answer to one household question is
+    more useful than a site that claims to solve the whole purchase. FitAppliance is meant to sit beside the retailer
+    page and the installation manual, not replace either of them.</p>
+
+    <h2>What we don't do</h2>
+    <ul>
+      <li>We do not publish product reviews. FitAppliance is a fit checker, not a review site.</li>
+      <li>We do not calculate state energy-upgrade rebates or eligibility.</li>
+      <li>We do not show current stock levels or current retailer prices.</li>
+      <li>We do not accept paid brand placement in the search ranking.</li>
+      <li>We do not replace the manufacturer's installation manual. The manual remains the final source for installation work.</li>
+    </ul>
+
+    <h2>Independent and solo</h2>
+    <p>FitAppliance is run independently by me, JZ, in Australia. It is a one-person project. That has trade-offs.
+    There is no large support desk, no sales team and no investor pressure pushing the site toward whatever converts
+    fastest. It also means updates can take longer, and the catalogue will never be perfect on the first pass.</p>
+
+    <p>I think that trade-off is worth being clear about. A small independent tool can be useful precisely because it
+    has a narrow job. FitAppliance tries to answer one practical question well: which appliances are physically
+    plausible for the space you have measured? If data is missing or uncertain, the site should say so rather than
+    pretend the answer is complete.</p>
+
+    <h2>How we make money</h2>
+    <p>FitAppliance may earn a small commission when someone clicks through to a retailer and buys from that retailer.
+    The affiliate partners currently referenced by the project are JB Hi-Fi, Harvey Norman, The Good Guys, Appliances
+    Online and Bing Lee. Those links help cover hosting, maintenance and the time needed to keep the tool useful.</p>
+
+    <p>Affiliate commission does not change whether a product fits your cavity. It also does not buy a brand a better
+    position in the fit calculation. Search results are driven by dimensions, clearance rules, availability data where
+    present, and the sort option the user chooses. If the way FitAppliance is funded changes in a way that affects how
+    results are shown, I will say that plainly on this site.</p>
+
+    <h2>Open and verifiable</h2>
+    <p>The project source code is public on GitHub:
+    <a href="https://github.com/fitappliance/fitappliance">https://github.com/fitappliance/fitappliance</a>.
+    That means anyone can review the algorithms, the data files, the generated pages, and the commit history behind
+    changes. It also means mistakes can be reported with a specific file or line number instead of vague feedback.</p>
+
+    <p class="note">Transparency does not make the data flawless. It makes the work checkable. For an appliance tool,
+    that matters more than sounding polished.</p>
+
+    <h2>Contact</h2>
+    <p>The clearest way to reach me is through GitHub:</p>
+    <ul>
+      <li>Report a data error or bug:
+        <a href="https://github.com/fitappliance/fitappliance/issues/new">open an issue</a>.</li>
+      <li>Suggest a feature or new appliance category:
+        <a href="https://github.com/fitappliance/fitappliance/discussions">start a discussion</a>.</li>
+    </ul>
+    <p>Email contact (<code>hello@fitappliance.com.au</code>) is being set up. When active, it will appear here.</p>
+
+    <h2>Last reviewed</h2>
+    <p>This page was last reviewed on 26 April 2026. Material changes should be visible in the GitHub commit history.</p>
+
+    <footer>
+      <a href="/about">About</a> ·
+      <a href="/methodology">Methodology</a> ·
+      <a href="/about/editorial-standards">Editorial standards</a> ·
+      <a href="/affiliate-disclosure">Affiliate disclosure</a>
+    </footer>
+  </main>
+</body>
+</html>

@@ -10,6 +10,7 @@ const STATIC_PAGES = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
   { path: '/affiliate-disclosure', changefreq: 'monthly', priority: '0.4' },
   { path: '/privacy-policy', changefreq: 'monthly', priority: '0.4' },
+  { path: '/about', changefreq: 'monthly', priority: '0.6' },
   { path: '/methodology', changefreq: 'monthly', priority: '0.6' },
   { path: '/about/editorial-standards', changefreq: 'monthly', priority: '0.6' },
   { path: '/subscribe', changefreq: 'monthly', priority: '0.5' },

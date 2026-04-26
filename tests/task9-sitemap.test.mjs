@@ -125,8 +125,9 @@ test('task 9.1 sitemap: includes static pages even when brand index is empty', a
   assert.equal(nodes[0].loc, 'https://www.fitappliance.com.au/');
   assert.equal(nodes[1].loc, 'https://www.fitappliance.com.au/affiliate-disclosure');
   assert.equal(nodes[2].loc, 'https://www.fitappliance.com.au/privacy-policy');
-  assert.equal(nodes[3].loc, 'https://www.fitappliance.com.au/methodology');
-  assert.equal(nodes[4].loc, 'https://www.fitappliance.com.au/about/editorial-standards');
+  assert.equal(nodes[3].loc, 'https://www.fitappliance.com.au/about');
+  assert.equal(nodes[4].loc, 'https://www.fitappliance.com.au/methodology');
+  assert.equal(nodes[5].loc, 'https://www.fitappliance.com.au/about/editorial-standards');
 });
 
 test('task 9.1 sitemap: keeps static URLs first and sorts brand URLs by category then brand', async () => {
@@ -152,6 +153,7 @@ test('task 9.1 sitemap: keeps static URLs first and sorts brand URLs by category
     'https://www.fitappliance.com.au/',
     'https://www.fitappliance.com.au/affiliate-disclosure',
     'https://www.fitappliance.com.au/privacy-policy',
+    'https://www.fitappliance.com.au/about',
     'https://www.fitappliance.com.au/methodology',
     'https://www.fitappliance.com.au/about/editorial-standards',
     'https://www.fitappliance.com.au/subscribe',

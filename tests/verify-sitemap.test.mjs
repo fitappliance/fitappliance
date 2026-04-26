@@ -16,6 +16,7 @@ async function makeWorkspace() {
   await fs.writeFile(path.join(root, 'pages', 'affiliate-disclosure.html'), '<!doctype html>');
   await fs.writeFile(path.join(root, 'pages', 'privacy-policy.html'), '<!doctype html>');
   await fs.writeFile(path.join(root, 'pages', 'subscribe.html'), '<!doctype html>');
+  await fs.writeFile(path.join(root, 'pages', 'about.html'), '<!doctype html>');
   await fs.writeFile(path.join(root, 'pages', 'methodology.html'), '<!doctype html>');
   await fs.mkdir(path.join(root, 'pages', 'about'), { recursive: true });
   await fs.writeFile(path.join(root, 'pages', 'about', 'editorial-standards.html'), '<!doctype html>');
@@ -33,6 +34,7 @@ test('phase 43a quick wins: verify-sitemap fails when one expected route is miss
   <url><loc>https://www.fitappliance.com.au/</loc></url>
   <url><loc>https://www.fitappliance.com.au/affiliate-disclosure</loc></url>
   <url><loc>https://www.fitappliance.com.au/privacy-policy</loc></url>
+  <url><loc>https://www.fitappliance.com.au/about</loc></url>
   <url><loc>https://www.fitappliance.com.au/methodology</loc></url>
   <url><loc>https://www.fitappliance.com.au/about/editorial-standards</loc></url>
   <url><loc>https://www.fitappliance.com.au/subscribe</loc></url>
