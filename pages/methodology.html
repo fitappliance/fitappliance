@@ -62,9 +62,9 @@
     candidate pool when at least one usable cavity dimension has been provided.</p>
 
     <p>The calculation is intentionally simple. For each axis that the user supplied, the tool compares the cavity
-    size with the appliance size plus the relevant clearance allowance. Width uses both side clearances, so the side
-    value is doubled. Height uses the top clearance. Depth uses the rear clearance. The score for each axis is
-    calculated as <code>(cavity - appliance - clearance) / cavity</code> and clamped between -0.05 and 0.5. The
+    size with the appliance size plus the clearance mode currently being used. Width uses both side clearances, so
+    the side value is doubled. Height uses the top clearance. Depth uses the rear clearance. The score for each axis
+    is calculated as <code>(cavity - appliance - clearance) / cavity</code> and clamped between -0.05 and 0.5. The
     product's fit score is the tightest axis. If that score falls below the user's tolerance threshold, the product is
     excluded from the results.</p>
 
@@ -74,22 +74,30 @@
     but it does not override manufacturer clearance guidance. Products that only fit because of tolerance are marked
     as tight rather than treated as exact matches.</p>
 
-    <h2>Brand-specific clearance rules</h2>
-    <p>Clearance allowances are loaded from project data rather than invented in the page copy. The default clearances
-    are visible in <code>public/scripts/search-core.js</code>: fridge defaults are 25 mm rear, 5 mm each side and
-    25 mm top; dishwashers default to 5 mm rear, 0 mm sides and 5 mm top; dryers default to 25 mm rear and 5 mm sides;
-    washing machines default to 15 mm rear and 5 mm sides. Brand overrides are stored in
-    <code>public/data/clearance.json</code>.</p>
+    <h2>Clearance modes and manufacturer guidance</h2>
+    <p>FitAppliance now separates physical fit from installation advice. The search pipeline recognises three
+    clearance modes. <strong>Physical</strong> uses 0 mm on every side and answers the narrow question "does the box
+    physically fit inside the cavity?" <strong>Practical</strong> is the public default and uses 5 mm on each side,
+    20 mm above and 10 mm behind the appliance. <strong>Manufacturer</strong> reads the brand-specific values from
+    <code>public/data/clearance.json</code> and is available for users who want to inspect the strict manual-based
+    interpretation.</p>
 
-    <p>Two examples show why brand-specific rules matter. In the current fridge clearance data, Samsung uses 50 mm
-    side clearance, 50 mm rear clearance and 100 mm top clearance. Haier uses 25.4 mm on the sides, rear and top.
-    LG uses 50 mm side and rear clearance but 20 mm top clearance. Those numbers are not treated as ranking copy; the
-    search code uses them as part of the fit calculation.</p>
+    <p>The default is practical because many common Australian cavities are built around 600 mm nominal appliance
+    widths. Treating the strictest manufacturer ventilation note as a hard search filter can hide products that are
+    physically plausible candidates. A 595 mm fridge in a 600 mm cavity, for example, should not disappear before the
+    user has a chance to see the trade-off. The default result list therefore uses the practical buffer to build a
+    useful shortlist, then shows manufacturer guidance on each card as advisory information.</p>
+
+    <p>Two examples show why manufacturer guidance still matters. In the current fridge clearance data, Samsung uses
+    50 mm side clearance, 50 mm rear clearance and 100 mm top clearance. Haier uses 25.4 mm on the sides, rear and
+    top. LG uses 50 mm side and rear clearance but 20 mm top clearance. Those figures are not used as the default
+    public filter. They appear on matching product cards so a user who is worried about warranty, heat build-up or a
+    very tight cavity can manually check the installation manual before buying.</p>
 
     <p>Clearance differences exist because brands use different cabinet designs, compressor layouts, ventilation
     paths and installation assumptions. FitAppliance does not claim that one brand is better because it needs more or
-    less space. The tool simply applies the rule currently represented in the data and reminds users to check the
-    manufacturer's installation manual before purchase.</p>
+    less space. The tool turns the data into a shortlist and a warning surface. The final installation decision still
+    belongs with the buyer, installer and manufacturer documentation.</p>
 
     <h2>Door swing inference</h2>
     <p>Door swing is handled separately from the main search pipeline. The inference rules live in

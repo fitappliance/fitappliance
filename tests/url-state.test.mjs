@@ -31,13 +31,13 @@ test('phase 45a url-state: serializeSearchState writes stable facet params', asy
 
   assert.equal(
     params.toString(),
-    'cat=fridge&w=600&h=1800&d=650&tol=5&brand=Bosch&brand=Miele&pmin=500&pmax=2000&stars=4&sort=price-asc'
+    'cat=fridge&w=600&h=1800&d=650&tol=5&brand=Bosch&brand=Miele&pmin=500&pmax=2000&stars=4&avail=1&sort=price-asc'
   );
 });
 
 test('phase 45a url-state: parseSearchParams reads facet params back into object form', async () => {
   const { parseSearchParams } = await loadSearchCore();
-  const parsed = parseSearchParams('?cat=fridge&w=600&h=1800&d=650&tol=5&brand=Bosch,Miele&pmin=500&pmax=2000&stars=4&sort=price-asc');
+  const parsed = parseSearchParams('?cat=fridge&w=600&h=1800&d=650&tol=5&brand=Bosch,Miele&pmin=500&pmax=2000&stars=4&avail=1&sort=price-asc');
 
   assert.deepEqual(parsed, {
     cat: 'fridge',
@@ -53,6 +53,7 @@ test('phase 45a url-state: parseSearchParams reads facet params back into object
       stars: 4,
       availableOnly: true
     },
+    clearanceMode: 'practical',
     sortBy: 'price-asc'
   });
 });
@@ -77,7 +78,10 @@ test('phase 45a url-state: serialize and parse round-trip facet state', async ()
   };
 
   const parsed = parseSearchParams(`?${serializeSearchState(original).toString()}`);
-  assert.deepEqual(parsed, original);
+  assert.deepEqual(parsed, {
+    ...original,
+    clearanceMode: 'practical'
+  });
 });
 
 test('phase 45a url-state: parseSearchParams sanitises invalid sort and ignores negative prices', async () => {

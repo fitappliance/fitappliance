@@ -1106,11 +1106,13 @@ let activeFacetState = {
   priceMin: null,
   priceMax: null,
   stars: null,
-  availableOnly: true,
+  availableOnly: false,
 };
 let currentSortBy = 'best-fit';
+let currentClearanceMode = 'practical';
 let lastSearchFilters = null;
 let lastSearchContext = null;
+let currentNearMissRows = [];
 let facetDebounceTimer = null;
 let currentView = 'list';
 let compareList = [];
@@ -1230,6 +1232,7 @@ async function readUrlParams() {
 
   activeFacetState = normalizeHomeFacets(parsedState.facets ?? {});
   currentSortBy = parsedState.sortBy ?? 'best-fit';
+  currentClearanceMode = parsedState.clearanceMode ?? 'practical';
   syncLegacyFacetInputs();
 
   const widthInput = document.getElementById('inW');
@@ -1402,7 +1405,7 @@ function normalizeHomeFacets(next = {}) {
     priceMin: parsePositiveInteger(next.priceMin),
     priceMax: parsePositiveInteger(next.priceMax),
     stars: parsePositiveInteger(next.stars),
-    availableOnly: next.availableOnly !== false,
+    availableOnly: next.availableOnly === true,
   };
 }
 
@@ -1434,7 +1437,7 @@ function filterOperationalPool(rows, context = {}) {
 
 function mergeManagedSearchParams(baseParams, nextParams) {
   const merged = new URLSearchParams(baseParams);
-  ['cat', 'w', 'h', 'd', 'tol', 'preset', 'brand', 'pmin', 'pmax', 'stars', 'avail', 'sort', 'door', 'dwelling']
+  ['cat', 'w', 'h', 'd', 'tol', 'preset', 'brand', 'pmin', 'pmax', 'stars', 'avail', 'sort', 'mode', 'door', 'dwelling']
     .forEach((key) => merged.delete(key));
   for (const [key, value] of nextParams.entries()) {
     merged.set(key, value);
@@ -1447,7 +1450,8 @@ function updateSearchUrl(context = {}) {
   const serialized = SearchCore.serializeSearchState({
     ...lastSearchFilters,
     facets: activeFacetState,
-    sortBy: currentSortBy
+    sortBy: currentSortBy,
+    clearanceMode: currentClearanceMode
   });
   if (context?.doorW && context.doorW !== DEFAULT_DOORWAY_MM) {
     serialized.set('door', String(context.doorW));
@@ -1464,7 +1468,7 @@ function countActiveFacets(facets = activeFacetState) {
   if (facets?.priceMin !== null && facets?.priceMin !== undefined) count += 1;
   if (facets?.priceMax !== null && facets?.priceMax !== undefined) count += 1;
   if (facets?.stars !== null && facets?.stars !== undefined) count += 1;
-  if (facets?.availableOnly === false) count += 1;
+  if (facets?.availableOnly === true) count += 1;
   return count;
 }
 
@@ -1474,7 +1478,7 @@ function clearAllFacets() {
     priceMin: null,
     priceMax: null,
     stars: null,
-    availableOnly: true
+    availableOnly: false
   });
   syncLegacyFacetInputs();
   refreshSearchResults();
@@ -1491,7 +1495,8 @@ function getCurrentSearchState() {
     tol: toleranceMm,
     toleranceMm,
     facets: normalizeHomeFacets(activeFacetState),
-    sortBy: currentSortBy
+    sortBy: currentSortBy,
+    clearanceMode: currentClearanceMode
   };
 }
 
@@ -1526,6 +1531,7 @@ async function restoreSavedSearchState(state = {}) {
   if (state.d) document.getElementById('inD').value = String(state.d);
   activeFacetState = normalizeHomeFacets(state.facets || {});
   currentSortBy = state.sortBy || 'best-fit';
+  currentClearanceMode = SearchCore.normalizeClearanceMode?.(state.clearanceMode) ?? 'practical';
   syncLegacyFacetInputs();
   doSearch({ preserveExistingFacets: true, toleranceMm: Number(state.tol ?? state.toleranceMm ?? 5) });
 }
@@ -1617,7 +1623,7 @@ function handleActiveChipRemove(delta) {
   } else if (delta?.key === 'stars') {
     activeFacetState = normalizeHomeFacets({ ...activeFacetState, stars: null });
   } else if (delta?.key === 'availableOnly') {
-    activeFacetState = normalizeHomeFacets({ ...activeFacetState, availableOnly: true });
+    activeFacetState = normalizeHomeFacets({ ...activeFacetState, availableOnly: false });
   }
   syncLegacyFacetInputs();
   scheduleFacetRefresh();
@@ -1632,13 +1638,31 @@ function scheduleFacetRefresh() {
 
 function refreshSearchResults() {
   if (!lastSearchFilters) return;
-  const dimensionPool = SearchCore.findSearchMatches(PRODUCTS, lastSearchFilters, {
-    limit: Number.MAX_SAFE_INTEGER
-  });
+  const searchOptions = {
+    limit: Number.MAX_SAFE_INTEGER,
+    brandSpecificClearance: BRAND_CLEARANCE,
+    clearanceMode: currentClearanceMode
+  };
+  const dimensionPool = SearchCore.findSearchMatches(PRODUCTS, {
+    ...lastSearchFilters,
+    clearanceMode: currentClearanceMode
+  }, searchOptions);
   const operationalPool = filterOperationalPool(dimensionPool, lastSearchContext);
   const facetResult = SearchCore.applyFacets(operationalPool, activeFacetState);
   currentMatchRows = SearchCore.sortMatches(facetResult.rows, currentSortBy);
   filteredResults = currentMatchRows.slice(0, RESULTS_CAP);
+  if (currentMatchRows.length === 0) {
+    const nearMissPool = SearchCore.buildNearMisses(PRODUCTS, {
+      ...lastSearchFilters,
+      clearanceMode: currentClearanceMode
+    }, {
+      ...searchOptions,
+      limit: 10
+    }).filter((row) => filterOperationalPool([row], lastSearchContext).length === 1);
+    currentNearMissRows = SearchCore.applyFacets(nearMissPool, activeFacetState).rows.slice(0, 10);
+  } else {
+    currentNearMissRows = [];
+  }
 
   const catName = CATEGORY_LABELS[currentCat] ?? 'Appliances';
   const resultsCount = document.getElementById('resultsCount');
@@ -1693,15 +1717,19 @@ function doSearch(options = {}) {
   if (descEl) {
     descEl.setAttribute(
       'content',
-      `${catName} that fit a ${w}mm wide, ${h}mm tall, ${d}mm deep cavity — with brand-specific clearances and energy ratings.`
+      `${catName} that fit a ${w}mm wide, ${h}mm tall, ${d}mm deep cavity — with practical clearance notes and energy ratings.`
     );
   }
 
-  const cl = getClearance(currentCat, brand || '__default__');
-  const usableW = w - cl.side*2, usableH = h - cl.top, usableD = d - cl.rear;
+  const cl = SearchCore.getEffectiveClearance(currentCat, brand || '__default__', currentClearanceMode, {
+    brandSpecificClearance: BRAND_CLEARANCE
+  });
+  const sideClearance = Number(cl.side ?? cl.sides ?? 0);
+  const usableW = w - sideClearance*2, usableH = h - cl.top, usableD = d - cl.rear;
+  const clearanceLabel = currentClearanceMode === 'manufacturer' ? 'Manufacturer clearance' : currentClearanceMode === 'physical' ? 'Physical fit' : 'Practical clearance';
   document.getElementById('resultsMeta').innerHTML = `
     <span class="results-meta-chip">Cavity: ${w}×${h}×${d}mm</span>
-    <span class="results-meta-chip">After clearance: ${usableW}×${usableH}×${usableD}mm</span>
+    <span class="results-meta-chip">${clearanceLabel}: ${usableW}×${usableH}×${usableD}mm</span>
     <span class="results-meta-chip">Doorway: ${doorW}mm</span>
   `;
 
@@ -1710,7 +1738,8 @@ function doSearch(options = {}) {
     w,
     h,
     d,
-    toleranceMm: Number.isFinite(Number(options?.toleranceMm)) ? Number(options.toleranceMm) : 5
+    toleranceMm: Number.isFinite(Number(options?.toleranceMm)) ? Number(options.toleranceMm) : 5,
+    clearanceMode: currentClearanceMode
   };
   lastSearchContext = { doorW, dwelling };
   if (!options?.preserveExistingFacets) {
@@ -1765,16 +1794,31 @@ function renderResults() {
 
   if (currentMatchRows.length===0) {
     SearchDom.renderFitVisualization(document.querySelector('[data-fit-viz]'), {});
-    container.innerHTML='';
-    container.className='';
-    empty.classList.add('show');
+    container.className='product-list';
+    if (currentNearMissRows.length > 0) {
+      empty.classList.remove('show');
+      const message = document.createElement('div');
+      SearchDom.renderSearchResults({
+        matches: [],
+        filters: lastSearchFilters,
+        resultsEl: container,
+        messageEl: message,
+        nearMisses: currentNearMissRows
+      });
+    } else {
+      container.innerHTML='';
+      container.className='';
+      empty.classList.add('show');
+    }
     return;
   }
   empty.classList.remove('show');
   SearchDom.renderFitVisualization(document.querySelector('[data-fit-viz]'), {
     cavity: lastSearchFilters,
     product: currentMatchRows[0],
-    clearance: getClearance(currentCat, currentMatchRows[0]?.brand || '__default__')
+    clearance: currentMatchRows[0]?.clearance ?? SearchCore.getEffectiveClearance(currentCat, currentMatchRows[0]?.brand || '__default__', currentClearanceMode, {
+      brandSpecificClearance: BRAND_CLEARANCE
+    })
   });
 
   if (currentView === 'list') {

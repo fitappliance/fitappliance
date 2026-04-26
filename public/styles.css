@@ -253,6 +253,36 @@
   gap: 7px;
 }
 
+.fit-card-advisory {
+  margin-top: 7px;
+  color: var(--ink-3);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.fit-card-advisory strong {
+  color: var(--ink-2);
+  font-weight: 800;
+}
+
+.fit-badge--near-miss {
+  display: inline-flex;
+  margin-bottom: 8px;
+  border-color: #f59e0b;
+  background: #fffbeb;
+  color: #92400e;
+}
+
+.fit-empty-state--near-miss {
+  margin-bottom: 12px;
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.fit-result-list--near-miss .fit-result-item {
+  border-color: #f5c46b;
+}
+
 .retailer-strip {
   display: flex;
   gap: 6px;
