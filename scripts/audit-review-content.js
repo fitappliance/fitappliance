@@ -4,6 +4,7 @@
 const path = require('node:path');
 const { mkdir, readdir, readFile, writeFile } = require('node:fs/promises');
 const { JSDOM } = require('jsdom');
+const { FIXED_EPOCH_ISO } = require('./common/file-dates.js');
 
 function countWords(text) {
   return (String(text ?? '').match(/[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*/g) ?? []).length;
@@ -78,6 +79,7 @@ async function walkHtmlFiles(dirPath) {
 async function auditReviewContent({
   repoRoot = path.resolve(__dirname, '..'),
   reportPath = path.join(repoRoot, 'reports', 'review-content-audit.json'),
+  generatedAt = FIXED_EPOCH_ISO,
   logger = console
 } = {}) {
   const htmlFiles = [
@@ -97,7 +99,7 @@ async function auditReviewContent({
 
   const failures = pages.filter((row) => !row.passed);
   const report = {
-    generatedAt: new Date().toISOString(),
+    generatedAt,
     checkedPages: pages.length,
     failedPages: failures.length,
     pages

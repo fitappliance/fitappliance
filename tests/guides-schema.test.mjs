@@ -29,6 +29,15 @@ function isIsoDate(value) {
   return !Number.isNaN(Date.parse(value));
 }
 
+function decodeHtmlEntities(value) {
+  return String(value ?? '')
+    .replace(/&amp;/g, '&')
+    .replace(/&#39;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+}
+
 test('phase 43a: every guide page exposes exactly one Article JSON-LD block', () => {
   for (const fileName of GUIDE_FILES) {
     const html = fs.readFileSync(path.join(GUIDES_DIR, fileName), 'utf8');
@@ -90,7 +99,7 @@ test('phase 43a: guide Article headline matches the visible h1', () => {
     const html = fs.readFileSync(path.join(GUIDES_DIR, fileName), 'utf8');
     const [block] = extractJsonLdBlocks(html);
     const schema = JSON.parse(block);
-    const h1 = html.match(/<h1>(.*?)<\/h1>/)?.[1]?.replace(/&amp;/g, '&');
+    const h1 = decodeHtmlEntities(html.match(/<h1>(.*?)<\/h1>/)?.[1]);
 
     assert.equal(schema.headline, h1, `${fileName} headline should match h1`);
   }
