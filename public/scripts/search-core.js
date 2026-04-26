@@ -1,11 +1,18 @@
 'use strict';
 
 (function attachSearchCore(globalScope) {
+  const PRACTICAL_CLEARANCE = Object.freeze({ rear: 10, side: 5, sides: 5, top: 20 });
+  const CLEARANCE_MODES = Object.freeze({
+    physical: Object.freeze({ rear: 0, side: 0, sides: 0, top: 0 }),
+    practical: PRACTICAL_CLEARANCE,
+    manufacturer: null
+  });
+  const DEFAULT_CLEARANCE_MODE = 'practical';
   const CLEARANCE_DEFAULTS = {
-    fridge: { rear: 25, sides: 5, top: 25 },
-    dishwasher: { rear: 5, sides: 0, top: 5 },
-    dryer: { rear: 25, sides: 5, top: 0 },
-    washing_machine: { rear: 15, sides: 5, top: 0 }
+    fridge: { ...PRACTICAL_CLEARANCE },
+    dishwasher: { ...PRACTICAL_CLEARANCE },
+    dryer: { ...PRACTICAL_CLEARANCE },
+    washing_machine: { ...PRACTICAL_CLEARANCE }
   };
 
   const CATEGORY_LABELS = {
@@ -43,7 +50,7 @@
     priceMin: null,
     priceMax: null,
     stars: null,
-    availableOnly: true
+    availableOnly: false
   });
 
   const VALID_SORTS = new Set([
@@ -66,13 +73,52 @@
     return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
   }
 
+  function normalizeClearance(row) {
+    const side = Number(row?.side ?? row?.sides ?? 0);
+    const top = Number(row?.top ?? 0);
+    const rear = Number(row?.rear ?? 0);
+    return {
+      rear: Number.isFinite(rear) ? rear : 0,
+      side: Number.isFinite(side) ? side : 0,
+      sides: Number.isFinite(side) ? side : 0,
+      top: Number.isFinite(top) ? top : 0
+    };
+  }
+
+  function normalizeClearanceMode(mode) {
+    const next = String(mode ?? '').trim();
+    return Object.prototype.hasOwnProperty.call(CLEARANCE_MODES, next)
+      ? next
+      : DEFAULT_CLEARANCE_MODE;
+  }
+
   function getCategoryClearance(defaults, category) {
     const row = defaults?.[category] ?? CLEARANCE_DEFAULTS?.[category] ?? {};
-    return {
-      rear: Number.isFinite(Number(row.rear)) ? Number(row.rear) : 0,
-      sides: Number.isFinite(Number(row.sides)) ? Number(row.sides) : 0,
-      top: Number.isFinite(Number(row.top)) ? Number(row.top) : 0
-    };
+    return normalizeClearance(row);
+  }
+
+  function getBrandManufacturerClearance(brandSpecific, category, brand) {
+    const cat = brandSpecific?.[category] ?? {};
+    const row = cat?.[brand];
+    return row ? normalizeClearance(row) : null;
+  }
+
+  function getManufacturerClearance(brandSpecific, category, brand, defaults) {
+    const cat = brandSpecific?.[category] ?? {};
+    return normalizeClearance(cat?.[brand] ?? cat?.__default__ ?? getCategoryClearance(defaults, category));
+  }
+
+  function getEffectiveClearance(category, brand, mode = DEFAULT_CLEARANCE_MODE, options = {}) {
+    const nextMode = normalizeClearanceMode(mode);
+    if (nextMode === 'manufacturer') {
+      return getManufacturerClearance(
+        options.brandSpecificClearance,
+        category,
+        brand,
+        options.clearanceDefaults
+      );
+    }
+    return normalizeClearance(CLEARANCE_MODES[nextMode]);
   }
 
   function getAxisEntries(product, filters, clearance) {
@@ -100,8 +146,10 @@
     return clamp((cavity - appliance - clearanceMm) / cavity, -0.05, 0.5);
   }
 
-  function computeFitMeta(product, filters, defaults) {
-    const clearance = getCategoryClearance(defaults, filters?.cat ?? product?.cat);
+  function computeFitMeta(product, filters, options = {}) {
+    const category = filters?.cat ?? product?.cat;
+    const clearanceMode = normalizeClearanceMode(filters?.clearanceMode ?? options.clearanceMode);
+    const clearance = getEffectiveClearance(category, product?.brand, clearanceMode, options);
     const axisEntries = getAxisEntries(product, filters, clearance);
     if (axisEntries.length === 0) return null;
 
@@ -120,7 +168,13 @@
       threshold,
       exactFit,
       fitsTightly: fitsTightly || fitScore < 0,
-      clearance
+      clearance,
+      clearanceMode,
+      manufacturerClearance: getBrandManufacturerClearance(
+        options.brandSpecificClearance,
+        category,
+        product?.brand
+      )
     };
   }
 
@@ -163,7 +217,7 @@
       priceMin: rawPriceMin !== null && rawPriceMin >= 0 ? rawPriceMin : null,
       priceMax: rawPriceMax !== null && rawPriceMax >= 0 ? rawPriceMax : null,
       stars: rawStars !== null && rawStars >= 0 ? rawStars : null,
-      availableOnly: facets?.availableOnly !== false
+      availableOnly: facets?.availableOnly === true
     };
   }
 
@@ -185,6 +239,9 @@
       sortScore: fitMeta.sortScore,
       exactFit: fitMeta.exactFit,
       fitsTightly: fitMeta.fitsTightly,
+      clearance: fitMeta.clearance,
+      clearanceMode: fitMeta.clearanceMode,
+      manufacturerClearance: fitMeta.manufacturerClearance,
       showPopularityBadge: Number(product?.priorityScore ?? 0) >= 70,
       sku: String(product?.model ?? '').trim().split(/\s+/)[0] ?? '',
       url: buildProductUrl(product, filters)
@@ -328,6 +385,8 @@
 
   function findSearchMatches(products, filters, {
     clearanceDefaults = CLEARANCE_DEFAULTS,
+    brandSpecificClearance = null,
+    clearanceMode = DEFAULT_CLEARANCE_MODE,
     limit = 60
   } = {}) {
     const rows = Array.isArray(products) ? products : [];
@@ -337,7 +396,11 @@
     return rows
       .filter((product) => !filters?.cat || product?.cat === filters.cat)
       .map((product) => {
-        const fitMeta = computeFitMeta(product, filters, clearanceDefaults);
+        const fitMeta = computeFitMeta(product, filters, {
+          clearanceDefaults,
+          brandSpecificClearance,
+          clearanceMode
+        });
         if (!fitMeta) return null;
         if (fitMeta.fitScore < fitMeta.threshold) return null;
         return buildResult(product, fitMeta, filters);
@@ -350,6 +413,8 @@
   function searchWithFacets(products, filters, facets = {}, options = {}) {
     const pool = findSearchMatches(products, filters, {
       clearanceDefaults: options.clearanceDefaults ?? CLEARANCE_DEFAULTS,
+      brandSpecificClearance: options.brandSpecificClearance,
+      clearanceMode: options.clearanceMode ?? filters?.clearanceMode ?? DEFAULT_CLEARANCE_MODE,
       limit: options.limit ?? Number.MAX_SAFE_INTEGER
     });
     const filtered = applyFacets(pool, facets);
@@ -357,6 +422,74 @@
       rows: sortMatches(filtered.rows, options.sortBy ?? filters?.sortBy ?? facets?.sortBy ?? 'best-fit'),
       counts: filtered.counts
     };
+  }
+
+  function calculateClearanceDeficit(product, filters, clearance) {
+    const cavityW = toMm(filters?.w);
+    const cavityH = toMm(filters?.h);
+    const cavityD = toMm(filters?.d);
+    const deficits = [];
+    if (cavityW) {
+      deficits.push({
+        axis: 'width',
+        needed: Number(product?.w ?? 0) + (Number(clearance?.sides ?? clearance?.side ?? 0) * 2) - cavityW
+      });
+    }
+    if (cavityH) {
+      deficits.push({
+        axis: 'height',
+        needed: Number(product?.h ?? 0) + Number(clearance?.top ?? 0) - cavityH
+      });
+    }
+    if (cavityD) {
+      deficits.push({
+        axis: 'depth',
+        needed: Number(product?.d ?? 0) + Number(clearance?.rear ?? 0) - cavityD
+      });
+    }
+    const finite = deficits
+      .map((entry) => ({
+        axis: entry.axis,
+        needed: Number.isFinite(entry.needed) ? Math.ceil(Math.max(0, entry.needed)) : Infinity
+      }))
+      .filter((entry) => Number.isFinite(entry.needed));
+    if (finite.length === 0) return { axis: 'width', needed: 0 };
+    return finite.reduce((max, entry) => (entry.needed > max.needed ? entry : max), finite[0]);
+  }
+
+  function buildNearMisses(products, filters, options = {}) {
+    const limit = Math.max(1, Number(options.limit ?? 10));
+    const physicalPool = findSearchMatches(products, { ...filters, clearanceMode: 'physical' }, {
+      clearanceDefaults: options.clearanceDefaults ?? CLEARANCE_DEFAULTS,
+      brandSpecificClearance: options.brandSpecificClearance,
+      clearanceMode: 'physical',
+      limit: Number.MAX_SAFE_INTEGER
+    });
+    return physicalPool
+      .map((row) => {
+        const practical = getEffectiveClearance(row?.cat ?? filters?.cat, row?.brand, 'practical', options);
+        const deficit = calculateClearanceDeficit(row, filters, practical);
+        if (deficit.needed <= 0) return null;
+        return {
+          ...row,
+          clearance: practical,
+          clearanceMode: 'practical',
+          nearMiss: true,
+          cavityNeededMm: deficit.needed,
+          bindingAxis: deficit.axis,
+          manufacturerClearance: getBrandManufacturerClearance(
+            options.brandSpecificClearance,
+            row?.cat ?? filters?.cat,
+            row?.brand
+          )
+        };
+      })
+      .filter(Boolean)
+      .sort((left, right) => {
+        if (left.cavityNeededMm !== right.cavityNeededMm) return left.cavityNeededMm - right.cavityNeededMm;
+        return compareMatches(left, right);
+      })
+      .slice(0, limit);
   }
 
   function serializeSearchState(state) {
@@ -372,7 +505,9 @@
     if (facets.priceMin !== null) params.set('pmin', String(facets.priceMin));
     if (facets.priceMax !== null) params.set('pmax', String(facets.priceMax));
     if (facets.stars !== null) params.set('stars', String(facets.stars));
-    if (facets.availableOnly === false) params.set('avail', '0');
+    if (facets.availableOnly === true) params.set('avail', '1');
+    const clearanceMode = normalizeClearanceMode(state?.clearanceMode);
+    if (clearanceMode !== DEFAULT_CLEARANCE_MODE) params.set('mode', clearanceMode);
     if (state?.sortBy) params.set('sort', normalizeSortBy(state.sortBy));
     return params;
   }
@@ -402,8 +537,9 @@
         priceMin: rawPriceMin !== null && rawPriceMin >= 0 ? rawPriceMin : null,
         priceMax: rawPriceMax !== null && rawPriceMax >= 0 ? rawPriceMax : null,
         stars: rawStars !== null && rawStars >= 0 ? rawStars : null,
-        availableOnly: params.get('avail') !== '0'
+        availableOnly: params.get('avail') === '1'
       },
+      clearanceMode: normalizeClearanceMode(params.get('mode')),
       sortBy: normalizeSortBy(params.get('sort'))
     };
   }
@@ -430,12 +566,18 @@
     CATEGORY_LABELS,
     CATEGORY_PRESETS,
     CLEARANCE_DEFAULTS,
+    CLEARANCE_MODES,
+    DEFAULT_CLEARANCE_MODE,
     buildEmptyState,
+    buildNearMisses,
+    calculateClearanceDeficit,
     applyFacets,
     computeAxisScore,
     computeFitMeta,
     findSearchMatches,
     getCategoryClearance,
+    getEffectiveClearance,
+    normalizeClearanceMode,
     parseSearchParams,
     searchWithFacets,
     serializeSearchState,

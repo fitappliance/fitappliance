@@ -41,7 +41,7 @@ test('phase 42a search-ux: missing height input still allows width/depth filteri
   const { findSearchMatches } = await loadSearchCore();
   const matches = findSearchMatches([
     makeProduct(),
-    makeProduct({ id: 'p2', d: 690 })
+    makeProduct({ id: 'p2', d: 691 })
   ], {
     cat: 'fridge',
     w: 630,
@@ -172,8 +172,9 @@ test('phase 42a search-ux: serialise and parse preserves category, dims, toleran
       priceMin: null,
       priceMax: null,
       stars: null,
-      availableOnly: true
+      availableOnly: false
     },
+    clearanceMode: 'practical',
     sortBy: 'best-fit'
   });
 });
@@ -184,7 +185,7 @@ test('phase 42a search-ux: parseSearchParams defaults tolerance to 5mm when omit
 
   assert.equal(parsed.toleranceMm, 5);
   assert.equal(parsed.sortBy, 'best-fit');
-  assert.equal(parsed.facets.availableOnly, true);
+  assert.equal(parsed.facets.availableOnly, false);
 });
 
 test('phase 42a search-ux: empty state offers relax CTA when tolerance would surface matches', async () => {
@@ -243,7 +244,7 @@ test('phase 45b search-ux: clear all resets facet state without touching dimensi
   assert.match(indexHtml, /brand:\s*\[\]/);
   assert.match(indexHtml, /priceMin:\s*null/);
   assert.match(indexHtml, /priceMax:\s*null/);
-  assert.match(indexHtml, /availableOnly:\s*true/);
+  assert.match(indexHtml, /availableOnly:\s*false/);
   assert.match(indexHtml, /refreshSearchResults\(\);/);
 });
 
