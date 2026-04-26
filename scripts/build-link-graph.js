@@ -3,7 +3,6 @@
 
 const path = require('node:path');
 const { mkdir, readdir, readFile, writeFile } = require('node:fs/promises');
-const { getRepoHeadModified } = require('./common/file-dates.js');
 
 function normalizePathname(value) {
   if (!value) return null;
@@ -125,7 +124,6 @@ async function buildLinkGraph({
     : 0;
 
   const report = {
-    generatedAt: getRepoHeadModified({ repoRoot }),
     summary: {
       totalPages: nodes.length,
       totalEdges,

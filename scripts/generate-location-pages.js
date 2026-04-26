@@ -6,7 +6,7 @@ const { mkdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { buildHreflangLinks } = require('./common/html-head.js');
 const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
-const { createFileDateReader } = require('./common/file-dates.js');
+const { toIsoDateStart } = require('./common/file-dates.js');
 const { canonicalizeProducts } = require('./brand-canon.js');
 
 const CATEGORY_ROWS = [
@@ -384,7 +384,7 @@ async function generateLocationPages(options = {}) {
   ).catch(() => []);
   const appliancesDoc = await readJson(path.join(repoRoot, 'public', 'data', 'appliances.json'), { products: [] });
   const products = canonicalizeProducts(Array.isArray(appliancesDoc.products) ? appliancesDoc.products : []);
-  const dateReader = createFileDateReader({ repoRoot });
+  const contentModifiedTime = toIsoDateStart(appliancesDoc.last_updated);
 
   const categoryCounts = products.reduce((accumulator, product) => {
     const cat = String(product?.cat ?? '');
@@ -419,7 +419,7 @@ async function generateLocationPages(options = {}) {
         categoryCount: Number(categoryCounts[category.cat] ?? 0),
         modelSamples: buildLocationModelSamples(products, category.cat),
         affiliateProviders,
-        modifiedTime: dateReader.getFileLastModified(filePath)
+        modifiedTime: contentModifiedTime
       });
 
       await writeFile(filePath, html, 'utf8');

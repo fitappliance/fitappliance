@@ -4,7 +4,8 @@
 const path = require('node:path');
 const { mkdir, readFile, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
-const { createFileDateReader, toRfc822Date } = require('./common/file-dates.js');
+const { toIsoDateStart, toRfc822Date } = require('./common/file-dates.js');
+const { readSiteContentDate } = require('./generate-sitemap.js');
 
 const CATEGORY_LABEL = {
   fridge: 'Fridge',
@@ -46,24 +47,6 @@ function buildRssItemXml(item) {
     `      <description>${escXml(item.description)}</description>`,
     '    </item>'
   ].join('\n');
-}
-
-function urlToGeneratedFilePath(repoRoot, value, baseUrl = SITE_ORIGIN) {
-  const rawValue = String(value ?? '').trim();
-  let pathname = rawValue;
-  if (/^https?:\/\//i.test(rawValue)) {
-    try {
-      pathname = new URL(rawValue).pathname;
-    } catch {
-      pathname = '/';
-    }
-  } else if (baseUrl && rawValue.startsWith(baseUrl)) {
-    pathname = rawValue.slice(String(baseUrl).length) || '/';
-  }
-
-  pathname = String(pathname || '/').split('?')[0].split('#')[0] || '/';
-  if (pathname === '/') return path.join(repoRoot, 'index.html');
-  return path.join(repoRoot, 'pages', `${pathname.replace(/^\/+/, '')}.html`);
 }
 
 function buildItemRows({
@@ -165,15 +148,25 @@ async function generateRss({
   const doorway = await readJson(path.join(repoRoot, 'pages', 'doorway', 'index.json'), []);
   const guides = await readJson(path.join(repoRoot, 'pages', 'guides', 'index.json'), []);
   const locations = await readJson(path.join(repoRoot, 'pages', 'location', 'index.json'), []);
-  const dateReader = createFileDateReader({ repoRoot });
-  const dateForUrl = (url) => toRfc822Date(dateReader.getFileLastModified(urlToGeneratedFilePath(repoRoot, url, baseUrl)));
+  const contentDate = await readSiteContentDate(repoRoot, null);
   const pubDate = today ? toRfc822Date(today) : null;
-  const items = buildItemRows({ baseUrl, brands, comparisons, cavity, guides, doorway, locations, pubDate, dateForUrl: today ? () => pubDate : dateForUrl });
+  const stablePubDate = pubDate ?? toRfc822Date(toIsoDateStart(contentDate));
+  const items = buildItemRows({
+    baseUrl,
+    brands,
+    comparisons,
+    cavity,
+    guides,
+    doorway,
+    locations,
+    pubDate: stablePubDate,
+    dateForUrl: () => stablePubDate
+  });
   const latestItem = items
     .map((item) => item.pubDate)
     .filter(Boolean)
     .sort((left, right) => Date.parse(right) - Date.parse(left))[0];
-  const lastBuildDate = latestItem ?? toRfc822Date(dateReader.getRepoHeadModified());
+  const lastBuildDate = latestItem ?? stablePubDate;
 
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
@@ -205,6 +198,5 @@ if (require.main === module) {
 
 module.exports = {
   buildItemRows,
-  generateRss,
-  urlToGeneratedFilePath
+  generateRss
 };

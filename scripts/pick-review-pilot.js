@@ -5,7 +5,7 @@ const path = require('node:path');
 const { mkdir, readFile, writeFile } = require('node:fs/promises');
 const { slugNormalize } = require('./common/slug-normalize.js');
 const { buildModelSlug } = require('./common/model-slug.js');
-const { createFileDateReader, toDateOnly } = require('./common/file-dates.js');
+const { toDateOnly } = require('./common/file-dates.js');
 
 const CATEGORY_SLUGS = {
   fridge: 'fridge',
@@ -142,11 +142,10 @@ async function pickReviewPilot({
     products: appliances.products ?? [],
     clearanceRules: clearance.rules ?? {}
   });
-  const dateReader = createFileDateReader({ repoRoot });
 
   const output = {
     schema_version: 1,
-    last_updated: toDateStamp(now ?? dateReader.getFileLastModified(outputPath)),
+    last_updated: toDateStamp(now ?? appliances.last_updated),
     pilots
   };
 

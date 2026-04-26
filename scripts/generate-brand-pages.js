@@ -9,7 +9,7 @@ const { stringifyJsonLd } = require('./common/schema-jsonld.js');
 const { slugNormalize } = require('./common/slug-normalize.js');
 const { buildReviewVideoSection } = require('./common/review-video-renderer.js');
 const { displayBrandName } = require('./utils/brand-utils.js');
-const { createFileDateReader, FIXED_EPOCH_ISO } = require('./common/file-dates.js');
+const { FIXED_EPOCH_ISO, toIsoDateStart } = require('./common/file-dates.js');
 const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
 const { canonicalizeProducts, canonicalizeRuleDocument } = require('./brand-canon.js');
 
@@ -702,6 +702,7 @@ async function generateBrandPages(options = {}) {
   ).catch(() => []);
   const products = canonicalizeProducts(Array.isArray(appliances.products) ? appliances.products : []);
   const rules = canonicalizeRuleDocument(clearance.rules ?? {});
+  const contentModifiedTime = toIsoDateStart(appliances.last_updated);
   const reviewPilots = Array.isArray(reviewPilotDoc.pilots) ? reviewPilotDoc.pilots : [];
   const pilotSlugs = reviewPilots.map((row) => row.modelSlug).filter(Boolean);
   const pilotByBrandPageSlug = new Map(
@@ -709,7 +710,6 @@ async function generateBrandPages(options = {}) {
       .filter((row) => typeof row.brandPageSlug === 'string' && row.brandPageSlug)
       .map((row) => [row.brandPageSlug, row])
   );
-  const dateReader = createFileDateReader({ repoRoot });
 
   const compareIndexPath = path.join(repoRoot, 'pages', 'compare', 'index.json');
   let compareIndex = [];
@@ -864,7 +864,7 @@ async function generateBrandPages(options = {}) {
       }),
       installTipsCopy,
       organizationJsonLd: JSON.stringify(buildOrganizationJsonLd(displayBrand, brandMetadata), null, 2),
-      modifiedTime: dateReader.getFileLastModified(row.filePath)
+      modifiedTime: contentModifiedTime
     });
     await writeFile(row.filePath, html, 'utf8');
   }

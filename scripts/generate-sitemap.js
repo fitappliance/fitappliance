@@ -4,7 +4,7 @@ const path = require('node:path');
 const { mkdir, readFile, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { toAbsoluteSitemapLoc } = require('./common/sitemap-loc.js');
-const { createFileDateReader, toDateOnly } = require('./common/file-dates.js');
+const { toDateOnly } = require('./common/file-dates.js');
 
 const STATIC_PAGES = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
@@ -59,10 +59,13 @@ function buildUrlNode({ loc, lastmod, changefreq, priority }) {
   ].join('\n');
 }
 
-function urlPathToGeneratedFilePath(repoRoot, urlPath) {
-  const pathname = String(urlPath ?? '/').split('?')[0].split('#')[0] || '/';
-  if (pathname === '/') return path.join(repoRoot, 'index.html');
-  return path.join(repoRoot, 'pages', `${pathname.replace(/^\/+/, '')}.html`);
+async function readSiteContentDate(repoRoot, fallbackDate) {
+  try {
+    const appliances = JSON.parse(await readFile(path.join(repoRoot, 'public', 'data', 'appliances.json'), 'utf8'));
+    return toDateOnly(appliances.last_updated);
+  } catch {
+    return fallbackDate;
+  }
 }
 
 async function generateSitemap({
@@ -134,16 +137,12 @@ async function generateSitemap({
     if (leftCity !== rightCity) return leftCity.localeCompare(rightCity);
     return String(left?.category ?? '').localeCompare(String(right?.category ?? ''));
   });
-  const dateReader = createFileDateReader({ repoRoot });
-  const lastmodForPath = (urlPath) => {
-    if (today) return today;
-    return toDateOnly(dateReader.getFileLastModified(urlPathToGeneratedFilePath(repoRoot, urlPath)));
-  };
+  const lastmod = today ?? await readSiteContentDate(repoRoot, '1970-01-01');
 
   const staticNodes = STATIC_PAGES.map((page) =>
     buildUrlNode({
       loc: toAbsoluteSitemapLoc(baseUrl, page.path),
-      lastmod: lastmodForPath(page.path),
+      lastmod,
       changefreq: page.changefreq,
       priority: page.priority
     })
@@ -152,7 +151,7 @@ async function generateSitemap({
   const brandNodes = sortedBrands.map((row) =>
     buildUrlNode({
       loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/brands/${row.slug}`),
-      lastmod: lastmodForPath(row.url ?? `/brands/${row.slug}`),
+      lastmod,
       changefreq: 'weekly',
       priority: PRIORITY_BY_CAT[row.cat] ?? '0.6'
     })
@@ -161,7 +160,7 @@ async function generateSitemap({
   const comparisonNodes = sortedComparisons.map((row) =>
     buildUrlNode({
       loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/compare/${row.slug}`),
-      lastmod: lastmodForPath(row.url ?? `/compare/${row.slug}`),
+      lastmod,
       changefreq: 'monthly',
       priority: '0.6'
     })
@@ -170,7 +169,7 @@ async function generateSitemap({
   const cavityNodes = sortedCavity.map((row) =>
     buildUrlNode({
       loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/cavity/${row.slug}`),
-      lastmod: lastmodForPath(row.url ?? `/cavity/${row.slug}`),
+      lastmod,
       changefreq: 'weekly',
       priority: '0.6'
     })
@@ -179,7 +178,7 @@ async function generateSitemap({
   const doorwayNodes = sortedDoorway.map((row) =>
     buildUrlNode({
       loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/doorway/${row.slug}`),
-      lastmod: lastmodForPath(row.url ?? `/doorway/${row.slug}`),
+      lastmod,
       changefreq: 'weekly',
       priority: '0.6'
     })
@@ -187,7 +186,7 @@ async function generateSitemap({
   const guideNodes = sortedGuides.map((row) =>
     buildUrlNode({
       loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/guides/${row.slug}`),
-      lastmod: lastmodForPath(row.url ?? `/guides/${row.slug}`),
+      lastmod,
       changefreq: 'weekly',
       priority: '0.7'
     })
@@ -195,7 +194,7 @@ async function generateSitemap({
   const locationNodes = sortedLocations.map((row) =>
     buildUrlNode({
       loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/location/${row.citySlug}/${row.category}`),
-      lastmod: lastmodForPath(row.url ?? `/location/${row.citySlug}/${row.category}`),
+      lastmod,
       changefreq: 'weekly',
       priority: '0.5'
     })
@@ -231,7 +230,7 @@ if (require.main === module) {
 }
 
 module.exports = {
-  urlPathToGeneratedFilePath,
+  readSiteContentDate,
   generateSitemap,
   STATIC_PAGES,
   PRIORITY_BY_CAT

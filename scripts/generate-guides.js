@@ -8,7 +8,7 @@ const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { buildHreflangLinks, buildOgImageMeta } = require('./common/html-head.js');
 const { buildArticleSchema, serializeJsonLd } = require('./common/schema-jsonld.js');
-const { createFileDateReader, FIXED_EPOCH_ISO } = require('./common/file-dates.js');
+const { FIXED_EPOCH_ISO } = require('./common/file-dates.js');
 
 const ARTICLE_SCHEMA_ORIGIN = 'https://fitappliance.com.au';
 const GUIDE_DATE_HISTORY = {
@@ -420,7 +420,6 @@ async function generateGuidePages(options = {}) {
   const repoRoot = options.repoRoot ?? path.resolve(__dirname, '..');
   const outputDir = options.outputDir ?? path.join(repoRoot, 'pages', 'guides');
   const logger = options.logger ?? console;
-  const dateReader = createFileDateReader({ repoRoot });
 
   const brands = await readJson(path.join(repoRoot, 'pages', 'brands', 'index.json'), []);
   const compares = await readJson(path.join(repoRoot, 'pages', 'compare', 'index.json'), []);
@@ -452,7 +451,7 @@ async function generateGuidePages(options = {}) {
       links,
       crossLinks: guideCrossLinks.filter((row) => row.url !== `/guides/${guide.slug}`),
       articleJsonLd,
-      modifiedTime: dateReader.getFileLastModified(filePath)
+      modifiedTime: articleDates.dateModified
     });
     await writeFile(filePath, html, 'utf8');
     rows.push({

@@ -14,6 +14,7 @@ const {
   createFileDateReader,
   getRepoHeadModified,
   toDateOnly,
+  toIsoDateStart,
   toRfc822Date
 } = require('../scripts/common/file-dates.js');
 
@@ -132,5 +133,6 @@ test('file dates: repo head helper and date-only formatter are deterministic', (
 
   assert.equal(getRepoHeadModified({ repoRoot }), expected);
   assert.equal(toDateOnly('2026-04-24T14:35:12+00:00'), '2026-04-24');
+  assert.equal(toIsoDateStart('2026-04-24'), '2026-04-24T00:00:00.000Z');
   assert.equal(toRfc822Date('2026-04-24T14:35:12+00:00'), 'Fri, 24 Apr 2026 14:35:12 GMT');
 });

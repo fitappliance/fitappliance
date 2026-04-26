@@ -9,7 +9,7 @@ const { slugNormalize } = require('./common/slug-normalize.js');
 const { displayBrandName } = require('./utils/brand-utils.js');
 const { loadProvidersFromFile, resolveAffiliateLinkForProduct } = require('./render-affiliate-links.js');
 const { canonicalizeProducts, canonicalizeRuleDocument } = require('./brand-canon.js');
-const { createFileDateReader, FIXED_EPOCH_ISO } = require('./common/file-dates.js');
+const { FIXED_EPOCH_ISO, toIsoDateStart } = require('./common/file-dates.js');
 
 const CATEGORY_META = {
   fridge: {
@@ -719,7 +719,7 @@ async function generateComparisonPages(options = {}) {
   const products = canonicalizeProducts(Array.isArray(appliances.products) ? appliances.products : []);
   const rules = canonicalizeRuleDocument(clearance.rules ?? {});
   const pairs = selectComparisonPairs(products, rules, options);
-  const dateReader = createFileDateReader({ repoRoot });
+  const contentModifiedTime = toIsoDateStart(appliances.last_updated);
 
   await cleanOutputDir(outputDir);
 
@@ -745,7 +745,7 @@ async function generateComparisonPages(options = {}) {
       categoryMeta: meta,
       modelSamplesA: sampleBrandModels(products, pair.cat, pair.brandA),
       modelSamplesB: sampleBrandModels(products, pair.cat, pair.brandB),
-      lastUpdated: dateReader.getFileLastModified(filePath),
+      lastUpdated: contentModifiedTime,
       filePath
     };
     const existing = pageBySlug.get(slug);
