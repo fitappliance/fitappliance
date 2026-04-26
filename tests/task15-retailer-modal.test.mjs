@@ -44,23 +44,28 @@ test('task 15 retailer-modal: shouldShowRetailerModal true for 2+ retailers', as
   );
 });
 
-test('task 15 retailer-modal: trigger for 0 retailers is sponsored retailer search group', async () => {
+test('task 15 retailer-modal: trigger for 0 retailers is a single online compare link', async () => {
   const { buildRetailerTriggerButton } = await import(moduleUrl);
   const html = buildRetailerTriggerButton(makeProduct(), {
-    buildSearchFallbackUrls: () => [
-      { name: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/search?query=ABC' },
-      { name: 'Harvey Norman', url: 'https://www.harveynorman.com.au/search?w=ABC' },
-      { name: 'The Good Guys', url: 'https://www.thegoodguys.com.au/search?text=ABC' }
-    ],
+    buildGoogleShoppingUrl: () => 'https://www.google.com.au/search?q=ABC%20(site%3Ajbhifi.com.au)',
     resolveRetailerUrl: () => '#'
   });
 
-  assert.match(html, /Search at:/);
-  assert.match(html, /JB Hi-Fi/);
-  assert.match(html, /Harvey Norman/);
-  assert.match(html, /The Good Guys/);
+  assert.match(html, /Compare prices online/);
+  assert.match(html, /class="btn-search-online"/);
+  assert.match(html, /google\.com\.au\/search/);
   assert.match(html, /rel="sponsored nofollow noopener"/);
-  assert.doesNotMatch(html, /google\.com\.au\/search/);
+  assert.doesNotMatch(html, /Search at:/);
+});
+
+test('task 15 retailer-modal: online compare fallback escapes href values', async () => {
+  const { buildRetailerTriggerButton } = await import(moduleUrl);
+  const html = buildRetailerTriggerButton(makeProduct(), {
+    buildGoogleShoppingUrl: () => 'https://www.google.com.au/search?q=<bad>&x="1"'
+  });
+
+  assert.match(html, /q=&lt;bad&gt;&amp;x=&quot;1&quot;/);
+  assert.doesNotMatch(html, /href="[^"]*<bad>/);
 });
 
 test('task 15 retailer-modal: trigger for 1 retailer uses search label for search-like URL', async () => {

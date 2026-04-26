@@ -12,38 +12,59 @@ async function loadProductCard() {
   return import(`${productCardUrl}?cacheBust=${Date.now()}`);
 }
 
-test('phase 48 card UX: fallback URLs use complete brand model category query', async () => {
-  const { buildSearchFallbackUrls } = await loadProductCard();
-  const rows = buildSearchFallbackUrls({
+function decodeQuery(url) {
+  return decodeURIComponent(new URL(url).searchParams.get('q') ?? '');
+}
+
+test('phase 48 card polish: Google fallback uses complete brand model category query', async () => {
+  const { buildGoogleShoppingUrl } = await loadProductCard();
+  const url = buildGoogleShoppingUrl({
     brand: 'LG',
     model: 'GT1S DualInverter Condenser — 8kg',
     cat: 'fridge'
   });
-  const query = encodeURIComponent('LG GT1S DualInverter Condenser — 8kg fridge');
+  const query = decodeQuery(url);
 
-  assert.equal(rows.length, 3);
-  assert.deepEqual(rows.map((row) => row.name), ['JB Hi-Fi', 'Harvey Norman', 'The Good Guys']);
-  rows.forEach((row) => assert.match(row.url, new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))));
+  assert.match(url, /^https:\/\/www\.google\.com\.au\/search\?q=/);
+  assert.match(query, /LG GT1S DualInverter Condenser — 8kg fridge/);
 });
 
-test('phase 48 card UX: fallback query degrades to brand and category when model is empty', async () => {
-  const { buildSearchFallbackUrls } = await loadProductCard();
-  const rows = buildSearchFallbackUrls({ brand: 'LG', model: '', cat: 'fridge' });
-  const query = encodeURIComponent('LG fridge');
+test('phase 48 card polish: Google fallback limits results to five AU retailer domains', async () => {
+  const { buildGoogleShoppingUrl } = await loadProductCard();
+  const query = decodeQuery(buildGoogleShoppingUrl({ brand: 'LG', model: 'GT1S', cat: 'fridge' }));
 
-  assert.equal(rows.length, 3);
-  rows.forEach((row) => assert.match(row.url, new RegExp(query)));
+  for (const domain of [
+    'jbhifi.com.au',
+    'harveynorman.com.au',
+    'thegoodguys.com.au',
+    'appliancesonline.com.au',
+    'binglee.com.au'
+  ]) {
+    assert.match(query, new RegExp(`site:${domain.replace('.', '\\.')}`));
+  }
+  assert.match(query, /site:jbhifi\.com\.au OR site:harveynorman\.com\.au/);
 });
 
-test('phase 48 card UX: fallback URLs remain valid when product identity is empty', async () => {
-  const { buildSearchFallbackUrls } = await loadProductCard();
-  const rows = buildSearchFallbackUrls({});
+test('phase 48 card polish: fallback query degrades to brand and category when model is empty', async () => {
+  const { buildGoogleShoppingUrl } = await loadProductCard();
+  const query = decodeQuery(buildGoogleShoppingUrl({ brand: 'LG', model: '', cat: 'fridge' }));
 
-  assert.equal(rows.length, 3);
-  rows.forEach((row) => {
-    assert.match(row.url, /^https:\/\//);
-    assert.match(row.url, /(query=|w=|text=)/);
-  });
+  assert.match(query, /^LG fridge/);
+});
+
+test('phase 48 card polish: empty product identity still searches across approved retailer sites', async () => {
+  const { buildGoogleShoppingUrl } = await loadProductCard();
+  const query = decodeQuery(buildGoogleShoppingUrl({}));
+
+  assert.doesNotMatch(query, /^undefined|null/);
+  assert.match(query, /^\(site:jbhifi\.com\.au OR site:harveynorman\.com\.au/);
+});
+
+test('phase 48 card polish: buildNoRetailerUrl is a backwards-compatible alias for Google fallback', async () => {
+  const { buildGoogleShoppingUrl, buildNoRetailerUrl } = await loadProductCard();
+  const product = { brand: 'Samsung', model: 'SRF7100S', cat: 'fridge' };
+
+  assert.equal(buildNoRetailerUrl(product), buildGoogleShoppingUrl(product));
 });
 
 test('phase 48 card UX: category labels match shopper language', async () => {
@@ -56,7 +77,38 @@ test('phase 48 card UX: category labels match shopper language', async () => {
   assert.equal(categoryLabel('unknown'), '');
 });
 
-test('phase 48 card UX: no-retailer trigger renders three sponsored retailer search buttons', async () => {
+test('phase 48 card polish: old three-retailer fallback API is removed', async () => {
+  const module = await loadProductCard();
+
+  assert.equal('buildSearchFallbackUrls' in module, false);
+});
+
+test('phase 48 card polish: no-retailer card avoids naming unsupported retailers as direct choices', async () => {
+  const { buildCard } = await loadProductCard();
+  const html = buildCard({
+    id: 'p2',
+    cat: 'fridge',
+    brand: 'Samsung',
+    model: 'SRF7100S',
+    w: 600,
+    h: 1800,
+    d: 650,
+    stars: 4,
+    kwh_year: 320,
+    features: [],
+    retailers: []
+  }, {
+    tcoHtml: () => '',
+    retailersHtml: () => '',
+    resolveRetailerUrl: () => '#'
+  });
+
+  assert.doesNotMatch(html, /JB Hi-Fi<\/a>/);
+  assert.doesNotMatch(html, /Harvey Norman<\/a>/);
+  assert.doesNotMatch(html, /The Good Guys<\/a>/);
+});
+
+test('phase 48 card polish: no-retailer trigger renders one Google site-filter button', async () => {
   const { buildCard } = await loadProductCard();
   const html = buildCard({
     id: 'p1',
@@ -77,15 +129,15 @@ test('phase 48 card UX: no-retailer trigger renders three sponsored retailer sea
     resolveRetailerUrl: () => '#'
   });
 
-  assert.match(html, /Search at:/);
-  assert.match(html, /JB Hi-Fi/);
-  assert.match(html, /Harvey Norman/);
-  assert.match(html, /The Good Guys/);
+  assert.match(html, /Compare prices online/);
+  assert.match(html, /class="btn-search-online"/);
+  assert.match(html, /google\.com\.au\/search/);
+  assert.match(html, /site%3Ajbhifi\.com\.au/);
   assert.match(html, /rel="sponsored nofollow noopener"/);
-  assert.doesNotMatch(html, /google\.com\.au\/search/);
+  assert.doesNotMatch(html, /Search at:/);
 });
 
-test('phase 48 card UX: no-retailer row uses the same retailer button group', async () => {
+test('phase 48 card polish: no-retailer row uses the same single online compare button', async () => {
   const { buildRow } = await loadProductCard();
   const html = buildRow({
     id: 'p1',
@@ -106,7 +158,8 @@ test('phase 48 card UX: no-retailer row uses the same retailer button group', as
     resolveRetailerUrl: () => '#'
   });
 
-  assert.match(html, /Search at:/);
+  assert.match(html, /Compare prices online/);
   assert.match(html, /Bosch%20WAN24124AU%20Serie%204%20washing%20machine/);
   assert.doesNotMatch(html, /Search online/);
+  assert.doesNotMatch(html, /JB Hi-Fi/);
 });
