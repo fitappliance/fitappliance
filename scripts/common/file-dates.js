@@ -20,6 +20,11 @@ function toDateOnly(value) {
   return match ? match[0] : FIXED_EPOCH_ISO.slice(0, 10);
 }
 
+function toRfc822Date(value) {
+  const iso = toIso(value) ?? FIXED_EPOCH_ISO;
+  return new Date(iso).toUTCString();
+}
+
 function epochToIso(value) {
   const seconds = Number(value);
   if (!Number.isFinite(seconds)) return null;
@@ -111,7 +116,8 @@ function createFileDateReader({
   return {
     getFileLastModified,
     getRepoHeadModified,
-    toDateOnly
+    toDateOnly,
+    toRfc822Date
   };
 }
 
@@ -132,5 +138,6 @@ module.exports = {
   createFileDateReader,
   getFileLastModified,
   getRepoHeadModified,
-  toDateOnly
+  toDateOnly,
+  toRfc822Date
 };

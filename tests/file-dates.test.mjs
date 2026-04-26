@@ -13,7 +13,8 @@ const {
   getFileLastModified,
   createFileDateReader,
   getRepoHeadModified,
-  toDateOnly
+  toDateOnly,
+  toRfc822Date
 } = require('../scripts/common/file-dates.js');
 
 test('file dates: committed file uses git latest commit time instead of today', () => {
@@ -131,4 +132,5 @@ test('file dates: repo head helper and date-only formatter are deterministic', (
 
   assert.equal(getRepoHeadModified({ repoRoot }), expected);
   assert.equal(toDateOnly('2026-04-24T14:35:12+00:00'), '2026-04-24');
+  assert.equal(toRfc822Date('2026-04-24T14:35:12+00:00'), 'Fri, 24 Apr 2026 14:35:12 GMT');
 });
