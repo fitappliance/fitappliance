@@ -19,16 +19,17 @@ test('index.html bootstraps appliance data from runtime JSON fetches', async () 
 
   assert.match(
     html,
-    /Promise\.all\(\s*\[\s*fetch\('\/data\/clearance\.json'\)[\s\S]*fetch\('\/data\/rebates\.json'\)/,
+    /Promise\.all\(\s*\[\s*fetch\('\/data\/clearance\.json'\)/,
   );
+  assert.doesNotMatch(html, /fetch\('\/data\/rebates\.json'\)/);
   assert.match(html, /fetch\('\/data\/appliances-meta\.json'\)/);
   assert.match(html, /await loadCategory\(initialCat\);/);
   assert.match(html, /fetch\('\/data\/appliances\.json'\)\.then\(requireJson\)/);
   assert.match(
     html,
-    /\.then\(\(\[clearData,\s*rebateData\]\)\s*=>\s*{\s*const BRAND_CLEARANCE = clearData\.rules;\s*const REBATES = rebateData\.rebates;/s,
+    /\.then\(\(\[clearData\]\)\s*=>\s*{\s*const BRAND_CLEARANCE = clearData\.rules;/s,
   );
-  assert.match(html, /initApp\(BRAND_CLEARANCE,\s*REBATES\)/);
+  assert.match(html, /initApp\(BRAND_CLEARANCE\)/);
 });
 
 test('index.html removes embedded data constants and wraps app logic in initApp', async () => {
@@ -38,7 +39,7 @@ test('index.html removes embedded data constants and wraps app logic in initApp'
   assert.doesNotMatch(html, /const BRAND_CLEARANCE = \{/);
   assert.doesNotMatch(html, /const REBATES = \{/);
   assert.match(html, /let PRODUCTS = \[\];/);
-  assert.match(html, /async function initApp\(BRAND_CLEARANCE,\s*REBATES\)\s*{/);
+  assert.match(html, /async function initApp\(BRAND_CLEARANCE\)\s*{/);
 });
 
 test('index.html exposes UI handlers after init and renders a load error message on fetch failure', async () => {
@@ -51,7 +52,6 @@ test('index.html exposes UI handlers after init and renders a load error message
   assert.match(html, /Unable to load appliance data\. Please refresh\./);
   assert.match(html, /document\.getElementById\('resultsSection'\)\.style\.display\s*=\s*'block';/);
   assert.match(html, /document\.getElementById\('productGrid'\)\.innerHTML\s*=\s*'(<p class="error">|<div class="error">)Unable to load appliance data\. Please refresh\./);
-  assert.match(html, /const STATE_COLORS = \{/);
   assert.match(html, /const cat = BRAND_CLEARANCE\[category\] \?\? BRAND_CLEARANCE\.fridge;/);
   assert.match(html, /return cat\[brand\] \?\? cat\['__default__'\];/);
   assert.doesNotMatch(html, /rb\.color/);

@@ -19,7 +19,7 @@ _Auto-generated 2026-04-18 from live database_
 
 **Body:**
 > Moving apartments and measuring for a new fridge is a nightmare. I kept finding specs online but no tool that
-> checked whether the ventilation clearances were met (which affects warranty and performance).
+> checked whether the ventilation clearances were met (which can affect airflow and performance).
 >
 > Built fitappliance.com.au — it covers 2170 models across 174 brands, checks your exact cavity dimensions,
 > and shows which models fit with proper clearance. Also has brand-specific requirements (LG needs more rear
@@ -43,7 +43,7 @@ _Auto-generated 2026-04-18 from live database_
 >
 > **FitAppliance** covers 2170 fridge/washer/dishwasher/dryer models with:
 > - Exact dimensions from the Australian Energy Rating database
-> - Per-brand ventilation clearance requirements (important for warranty)
+> - Brand-specific ventilation clearance requirements
 > - 100% of models have door swing clearance data
 > - Works on mobile — check in-store before you buy
 >
@@ -60,7 +60,7 @@ _Auto-generated 2026-04-18 from live database_
 > Does your new fridge actually *fit* the spot in your kitchen? 🤔
 >
 > I always assumed "fits the dimensions" meant you were good — turns out the ventilation clearance (the gap
-> you need to leave around the fridge) varies by brand and matters for both performance and warranty.
+> you need to leave around the fridge) varies by brand and matters for airflow and performance.
 >
 > Built a free checker: **fitappliance.com.au**
 > Covers 2170 models, 174 brands, 286 brand-specific clearance guides.
@@ -90,4 +90,3 @@ _Auto-generated 2026-04-18 from live database_
 
 ---
 _Next update: run `node scripts/generate-promotion-kit.js`_
-

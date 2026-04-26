@@ -2,8 +2,8 @@
 
 ## Feature: Automated Appliance Database
 
-**Goal**: Replace hardcoded `PRODUCTS` / `BRAND_CLEARANCE` / `REBATES` constants in `index.html`
-with JSON files that are fetched at runtime and refreshed weekly via a fully automated pipeline.
+**Goal**: Replace hardcoded `PRODUCTS` / `BRAND_CLEARANCE` constants in `index.html`
+with JSON files that are fetched at runtime and refreshed by documented data pipelines.
 Zero human intervention after initial setup.
 
 ---
@@ -33,7 +33,6 @@ index.html loads
   └── Promise.all([
         fetch('/data/appliances.json'),
         fetch('/data/clearance.json'),
-        fetch('/data/rebates.json')
       ])
   └── renders UI (same logic, data-driven)
 ```
@@ -80,13 +79,12 @@ index.html loads
 | Source | Data | URL / Endpoint | Auth | Frequency |
 |---|---|---|---|---|
 | data.gov.au Energy Rating | Dimensions, star rating, kWh/year, brand, model | `https://data.gov.au/data/dataset/energy-rating-for-household-appliances` (CKAN API or direct CSV) | None | Monthly (new file each month) |
-| Commission Factory Feeds | Retail price AUD, affiliate URL, retailer name | `https://api.commissionfactory.com/V1/Affiliate/Functions/GetDataFeeds/` | API key (GitHub Secret) | On demand / weekly |
-| Hardcoded fallback | `BRAND_CLEARANCE`, `REBATES` | `public/data/clearance.json`, `public/data/rebates.json` | N/A | Manual (rarely changes; ventilation rules are physical constants) |
+| Commission Factory Feeds | Retail price AUD, affiliate URL, retailer name | `https://api.commissionfactory.com/V1/Affiliate/Functions/GetDataFeeds/` | API key (GitHub Secret) | On demand / scheduled backfill |
+| Hardcoded fallback | `BRAND_CLEARANCE` | `public/data/clearance.json` | N/A | Manual (rarely changes; ventilation rules are physical constants) |
 
-**Note on clearance & rebates**: Ventilation clearance rules are set by manufacturers (rarely change).
-State rebate programs change ~1x/year when budgets are announced. These two files start as static JSON
-extracted from current `index.html` and are updated manually only when policy changes — that is acceptable
-because they are not product data. Only `appliances.json` requires full automation.
+**Note on clearance**: Ventilation clearance rules are set by manufacturers and rarely change.
+The homepage should not claim rebate eligibility calculations unless a maintained policy data source,
+freshness contract, and tests are added.
 
 ---
 
@@ -139,7 +137,7 @@ because they are not product data. Only `appliances.json` requires full automati
 }
 ```
 
-### `/public/data/rebates.json`
+### `/public/data/rebates.json` (legacy data file)
 ```json
 {
   "schema_version": 1,
@@ -153,6 +151,8 @@ because they are not product data. Only `appliances.json` requires full automati
 }
 ```
 
+This file is retained for migration history and tests. It is not currently promoted as a public homepage feature.
+
 ---
 
 ## 4. Task Breakdown
@@ -163,13 +163,13 @@ Tasks are ordered by dependency. Complete each in sequence.
 
 ### Task 1 — Extract JSON files from index.html
 
-**Goal**: Migrate hardcoded `PRODUCTS`, `BRAND_CLEARANCE`, `REBATES` to standalone JSON files.
+**Goal**: Migrate hardcoded `PRODUCTS` and `BRAND_CLEARANCE` to standalone JSON files.
 No functional change — this is a pure data extraction.
 
 **Files**:
 - Create `public/data/appliances.json` — full PRODUCTS array, wrapped in schema above
 - Create `public/data/clearance.json` — BRAND_CLEARANCE object, wrapped in schema above
-- Create `public/data/rebates.json` — REBATES object, wrapped in schema above
+- Keep `public/data/rebates.json` only as a legacy extracted data document unless a maintained rebate feature is reintroduced.
 
 **Verification**:
 - All three JSON files parse with `JSON.parse()` without errors
@@ -189,20 +189,18 @@ Wrap the existing render logic in a callback that receives the loaded data.
 
 **Files**:
 - `index.html` — remove `const PRODUCTS = [...]`, `const BRAND_CLEARANCE = {...}`,
-  `const REBATES = {...}`; add fetch bootstrap at top of `<script>` block:
+  add fetch bootstrap at top of `<script>` block:
 
 ```js
 // Bootstrap: load data then initialise app
 Promise.all([
   fetch('/data/appliances.json').then(r => r.json()),
-  fetch('/data/clearance.json').then(r => r.json()),
-  fetch('/data/rebates.json').then(r => r.json())
-]).then(([appData, clearData, rebateData]) => {
+  fetch('/data/clearance.json').then(r => r.json())
+]).then(([appData, clearData]) => {
   const PRODUCTS       = appData.products;
   const BRAND_CLEARANCE = clearData.rules;
-  const REBATES        = rebateData.rebates;
   // ... rest of existing app logic unchanged
-  initApp(PRODUCTS, BRAND_CLEARANCE, REBATES);
+  initApp(PRODUCTS, BRAND_CLEARANCE);
 }).catch(err => {
   console.error('Data load failed', err);
   document.getElementById('results').innerHTML =
@@ -210,12 +208,12 @@ Promise.all([
 });
 ```
 
-- Wrap existing app logic in `function initApp(PRODUCTS, BRAND_CLEARANCE, REBATES) { ... }`
+- Wrap existing app logic in `function initApp(PRODUCTS, BRAND_CLEARANCE) { ... }`
 
 **Verification**:
 - Open site locally via `npx vercel dev`
 - Network tab shows 3 successful JSON fetches
-- Dimension matching, rebate calculator, TCO sort all work identically to before
+- Dimension matching and TCO sort work identically to before
 - With DevTools offline mode ON: error message appears (not a blank page)
 
 ---
