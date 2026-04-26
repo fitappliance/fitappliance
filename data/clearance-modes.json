@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "modes": {
+    "physical": {
+      "side": 0,
+      "top": 0,
+      "rear": 0
+    },
+    "practical": {
+      "side": 5,
+      "top": 20,
+      "rear": 10
+    },
+    "manufacturer": null
+  },
+  "default_mode": "practical"
+}
