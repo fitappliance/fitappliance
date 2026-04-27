@@ -1,0 +1,50 @@
+name: Scraper POC Run
+
+on:
+  workflow_dispatch:
+    inputs:
+      retailer:
+        description: "Retailer scraper to run"
+        required: true
+        default: "appliances-online"
+        type: choice
+        options:
+          - appliances-online
+      category:
+        description: "Appliance category"
+        required: true
+        default: "fridges"
+        type: choice
+        options:
+          - fridges
+          - dishwashers
+          - dryers
+          - washing-machines
+      max_products:
+        description: "Maximum products to collect"
+        required: true
+        default: "100"
+
+permissions:
+  contents: read
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+      - run: npm ci
+      - name: Run report-only scraper
+        run: |
+          SCRIPT="scripts/scrapers/${{ inputs.retailer }}.js"
+          test -f "$SCRIPT"
+          node "$SCRIPT" --category="${{ inputs.category }}" --max-products="${{ inputs.max_products }}" --report-only
+      - name: Upload scrape report
+        uses: actions/upload-artifact@v6
+        with:
+          name: scrape-report-${{ inputs.retailer }}-${{ inputs.category }}
+          path: reports/scrape/*.json
+          if-no-files-found: error
