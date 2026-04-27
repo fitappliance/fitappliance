@@ -673,6 +673,182 @@
     return `<span class="fit-badge fit-badge--near-miss">+${Math.ceil(needed)}mm cavity needed</span>`;
   }
 
+  function categoryLabel(cat) {
+    return {
+      fridge: 'fridge',
+      dishwasher: 'dishwasher',
+      dryer: 'dryer',
+      washing_machine: 'washing machine'
+    }[cat] || '';
+  }
+
+  function buildSearchOnlineUrl(match) {
+    const query = [
+      safeDisplayText(match?.brand, ''),
+      safeDisplayText(match?.model ?? match?.sku, ''),
+      categoryLabel(match?.cat),
+      'australia'
+    ].filter(Boolean).join(' ');
+    return `https://www.google.com.au/search?q=${encodeURIComponent(query)}`;
+  }
+
+  function getRetailerUrl(retailer) {
+    return String(retailer?.url ?? retailer?.href ?? retailer?.u ?? retailer?.link ?? '').trim();
+  }
+
+  function getRetailerSummaries(match) {
+    return (Array.isArray(match?.retailers) ? match.retailers : [])
+      .map((retailer) => ({
+        name: getRetailerName(retailer),
+        price: getRetailerPrice(retailer),
+        url: getRetailerUrl(retailer)
+      }))
+      .filter((retailer) => retailer.name);
+  }
+
+  function getBestRetailer(match) {
+    const retailers = getRetailerSummaries(match);
+    if (retailers.length === 0) return null;
+    return [...retailers].sort((left, right) => {
+      const leftPrice = Number.isFinite(left.price) ? left.price : Number.MAX_SAFE_INTEGER;
+      const rightPrice = Number.isFinite(right.price) ? right.price : Number.MAX_SAFE_INTEGER;
+      if (leftPrice !== rightPrice) return leftPrice - rightPrice;
+      return left.name.localeCompare(right.name);
+    })[0];
+  }
+
+  function getCardTitle(match) {
+    const brand = safeDisplayText(match?.brand, '');
+    const model = safeDisplayText(match?.model ?? match?.sku, '');
+    const modelWithoutBrand = brand && model.toLowerCase().startsWith(brand.toLowerCase())
+      ? model
+      : [brand, model].filter(Boolean).join(' ');
+    return modelWithoutBrand || safeDisplayText(match?.displayName || match?.readableSpec, 'Appliance');
+  }
+
+  function getCardSubtitle(match, title) {
+    const candidate = safeDisplayText(match?.readableSpec || match?.displayName, '');
+    if (!candidate || candidate.toLowerCase() === String(title).toLowerCase()) return '';
+    return candidate;
+  }
+
+  function getProductInitials(match) {
+    const brand = safeDisplayText(match?.brand, '');
+    const parts = brand.split(/[\s\-&]+/).filter(Boolean);
+    if (parts.length === 0) return '?';
+    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+    return `${parts[0][0] ?? ''}${parts[1][0] ?? ''}`.toUpperCase();
+  }
+
+  function hashAccent(value) {
+    const palette = ['#8b7355', '#6b8e6b', '#7d6b8e', '#8e756b', '#5f7f8e', '#8e6f7b', '#6f7f66', '#7f785f'];
+    const text = safeDisplayText(value, '');
+    const hash = [...text].reduce((sum, char) => sum + char.charCodeAt(0), 0);
+    return palette[hash % palette.length] ?? palette[0];
+  }
+
+  function buildCardThumbHtml(match) {
+    const title = safeDisplayText(match?.brand, 'Product');
+    return `
+      <div class="card-thumb-avatar" role="img" aria-label="${escHtml(`${title} product card`)}" style="--thumb-accent:${escHtml(hashAccent(title))}">
+        <span>${escHtml(getProductInitials(match))}</span>
+      </div>
+    `;
+  }
+
+  function getFitGapMm(match) {
+    const explicit = Number(match?.fitGapMm ?? match?.gapMm ?? match?.tightestGapMm);
+    if (Number.isFinite(explicit)) return Math.round(explicit);
+    const needed = Number(match?.cavityNeededMm);
+    if (Number.isFinite(needed) && needed > 0) return Math.ceil(needed);
+    const score = Number(match?.fitScore);
+    const minDimension = Math.min(
+      ...[match?.w, match?.h, match?.d]
+        .map((value) => Number(value))
+        .filter((value) => Number.isFinite(value) && value > 0)
+    );
+    if (Number.isFinite(score) && Number.isFinite(minDimension)) return Math.max(0, Math.round(score * minDimension));
+    return match?.fitsTightly ? 4 : 20;
+  }
+
+  function getFitBadgeState(match) {
+    const needed = Number(match?.cavityNeededMm);
+    if (Number.isFinite(needed) && needed > 0) return 'relax';
+    if (match?.fitsTightly || getFitGapMm(match) < 5) return 'tight';
+    return 'exact';
+  }
+
+  function buildFitBadgeHtml(match) {
+    const state = getFitBadgeState(match);
+    const gap = getFitGapMm(match);
+    if (state === 'relax') {
+      return `<span class="fit-badge fit-badge--relax">+${escHtml(gap)}mm cavity needed</span>`;
+    }
+    if (state === 'tight') {
+      return `<span class="fit-badge fit-badge--tight">⚠ Tight fit (${escHtml(gap)}mm spare)</span>`;
+    }
+    return `<span class="fit-badge fit-badge--exact">✓ Fits with ${escHtml(gap)}mm spare</span>`;
+  }
+
+  function buildSpecChipsHtml(match) {
+    const specs = [
+      ['W', match?.w],
+      ['H', match?.h],
+      ['D', match?.d]
+    ].filter(([, value]) => Number.isFinite(Number(value)));
+    return specs.length === 0
+      ? ''
+      : `<div class="card-specs-row">${specs.map(([label, value]) => `<span class="spec-chip">${label} ${escHtml(Math.round(Number(value)))}mm</span>`).join('')}</div>`;
+  }
+
+  function getFeatureBits(match) {
+    const raw = Array.isArray(match?.features) ? match.features : [
+      match?.configuration,
+      match?.type,
+      match?.mount,
+      match?.class ? `Class ${match.class}` : ''
+    ];
+    return raw
+      .map((value) => safeDisplayText(value, ''))
+      .filter(Boolean)
+      .slice(0, 3);
+  }
+
+  function buildEnergyLineHtml(match) {
+    const bits = [];
+    const stars = Number(match?.stars);
+    if (Number.isFinite(stars) && stars > 0) bits.push(`⚡ ${stars}★ GEMS`);
+    const kwh = Number(match?.kwh_year ?? match?.energy_kwh_year ?? match?.kwh);
+    if (Number.isFinite(kwh) && kwh > 0) {
+      const annual = Math.round(kwh * 0.3);
+      bits.push(`~${formatAud(annual)}/yr`);
+      bits.push(`10yr ~${formatAud(annual * 10)}`);
+    }
+    bits.push(...getFeatureBits(match));
+    return bits.length > 0 ? `<div class="card-energy-line">${escHtml(bits.join(' · '))}</div>` : '';
+  }
+
+  function buildCardPriceHtml(match) {
+    const prices = getRetailerSummaries(match)
+      .map((retailer) => retailer.price)
+      .filter((price) => Number.isFinite(price))
+      .sort((left, right) => left - right);
+    if (prices.length === 0) return '<div class="card-price">Price unavailable</div>';
+    return `<div class="card-price">${escHtml(prices[0] === prices[prices.length - 1] ? formatAud(prices[0]) : `From ${formatAud(prices[0])}`)}</div>`;
+  }
+
+  function buildCardCtaHtml(match) {
+    const best = getBestRetailer(match);
+    if (best?.url) {
+      return `<a href="${escHtml(best.url)}" target="_blank" rel="sponsored nofollow noopener">View at ${escHtml(best.name)}</a>`;
+    }
+    return `<a href="${escHtml(buildSearchOnlineUrl(match))}" target="_blank" rel="sponsored nofollow noopener">Search this model<span>retailer info not available</span></a>`;
+  }
+
+  function buildCommissionDisclosureHtml() {
+    return '<div class="commission-disclosure">Some retailer links may earn us a small commission. <a href="/affiliate-disclosure">Disclosure</a>.</div>';
+  }
+
   function buildCompareSnapshot(match) {
     return {
       slug: String(match?.id ?? match?.slug ?? '').trim(),
@@ -696,7 +872,7 @@
     return `
       <button
         type="button"
-        class="fit-compare-toggle${selected ? ' fit-compare-toggle--selected' : ''}"
+        class="btn-compare fit-compare-toggle${selected ? ' fit-compare-toggle--selected' : ''}"
         data-compare-toggle="${escHtml(snapshot.slug)}"
         data-compare-snapshot="${escHtml(JSON.stringify(snapshot))}"
         aria-pressed="${selected ? 'true' : 'false'}"
@@ -745,30 +921,37 @@
   }
 
   function buildCardHtml(match, options = {}) {
-    const title = safeDisplayText(match?.displayName || match?.brand, 'Appliance');
-    const metaBits = [
-      match.readableSpec,
-      `W ${match.w} × H ${match.h} × D ${match.d} mm`
-    ].filter(Boolean);
+    const title = getCardTitle(match);
+    const subtitle = getCardSubtitle(match, title);
+    const isTight = getFitBadgeState(match) === 'tight';
 
     return `
       <li class="fit-result-item" data-appliance-slug="${escHtml(match.id)}">
-        <div class="fit-result-top">
-          <div>
-            ${buildNearMissBadgeHtml(match)}
-            <div class="fit-result-title-row">
-              <div class="fit-result-title">${escHtml(title)}</div>
+        <div class="card-grid">
+          <div class="card-thumb-cell">${buildCardThumbHtml(match)}</div>
+          <div class="card-info-cell">
+            <div class="card-title">${escHtml(title)}</div>
+            ${subtitle ? `<div class="card-subtitle">${escHtml(subtitle)}</div>` : ''}
+            <div class="card-fit-row">
+              ${buildFitBadgeHtml(match)}
+              ${isTight ? '<span class="warning-pill">verify ventilation</span>' : ''}
               ${match.showPopularityBadge ? '<span class="fit-badge fit-badge--popular">Popular in AU</span>' : ''}
             </div>
-            <div class="fit-result-meta">${escHtml(metaBits.join(' · '))}</div>
+            ${buildSpecChipsHtml(match)}
+            ${buildEnergyLineHtml(match)}
             ${buildManufacturerAdvisoryHtml(match)}
             ${match.sku ? `<div class="fit-result-sku">SKU ${escHtml(match.sku)}</div>` : ''}
             ${buildRetailerSummaryHtml(match)}
-            ${buildCompareButtonHtml(match, options)}
           </div>
-          ${match.fitsTightly ? '<span class="fit-badge fit-badge--tight">Tight fit — verify before purchase</span>' : ''}
+          <div class="card-action-cell">
+            ${buildCardPriceHtml(match)}
+            <div class="card-buttons">
+              <button type="button" class="icon-btn" aria-label="Save appliance">♡</button>
+              ${buildCompareButtonHtml(match, options)}
+            </div>
+            <div class="card-cta">${buildCardCtaHtml(match)}</div>
+          </div>
         </div>
-        <a href="${escHtml(match.url)}">Open in FitAppliance →</a>
       </li>
     `;
   }
@@ -815,6 +998,7 @@
             <strong>${escHtml(title)}</strong>
             <p>These appliances physically fit the cavity, but need a little more room for the practical ventilation buffer.</p>
           </div>
+          ${buildCommissionDisclosureHtml()}
           <ul class="fit-result-list fit-result-list--near-miss">${nearRows.map((match) => buildCardHtml(match)).join('')}</ul>
         `;
         return;
@@ -849,7 +1033,7 @@
     if (Number.isFinite(Number(filters?.toleranceMm))) bits.push(`±${filters.toleranceMm}mm tolerance`);
 
     messageEl.textContent = `${matches.length} match${matches.length === 1 ? '' : 'es'} found${bits.length > 0 ? ` for ${bits.join(' · ')}` : ''}.`;
-    resultsEl.innerHTML = `<ul class="fit-result-list">${matches.map((match) => buildCardHtml(match)).join('')}</ul>`;
+    resultsEl.innerHTML = `${buildCommissionDisclosureHtml()}<ul class="fit-result-list">${matches.map((match) => buildCardHtml(match)).join('')}</ul>`;
   }
 
   function formatDimension(snapshot) {
