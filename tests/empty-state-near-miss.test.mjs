@@ -97,5 +97,5 @@ test('phase 48 empty near-miss: near-miss labels escape hostile display names', 
   assert.equal(resultsEl.querySelector('img'), null);
   assert.equal(resultsEl.querySelector('[onerror]'), null);
   assert.doesNotMatch(resultsEl.innerHTML, /onerror/i);
-  assert.match(resultsEl.textContent, /Appliance/);
+  assert.match(resultsEl.textContent, /LG hostile/);
 });

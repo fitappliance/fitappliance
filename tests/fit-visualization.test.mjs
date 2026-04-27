@@ -36,7 +36,7 @@ test('phase 48 fit visualization: renderFitSvg outputs an accessible front SVG w
     view: 'front'
   });
 
-  assert.match(svg, /<svg[^>]+viewBox="0 0 280 240"/);
+  assert.match(svg, /<svg[^>]+viewBox="0 0 200 160"/);
   assert.match(svg, /role="img"/);
   assert.match(svg, /class="fit-viz-cavity"/);
   assert.match(svg, /W: 600mm/);
@@ -53,8 +53,8 @@ test('phase 48 fit visualization: width binding is highlighted with the orange s
 
   const svg = renderFitSvg({ cavity, product, clearance, view: 'front' });
   assert.match(svg, /stroke="#d97706"/);
-  assert.match(svg, /stroke-width="2\.5"/);
-  assert.match(svg, /BIND 5mm/);
+  assert.match(svg, /class="fit-viz-binding-edge"[^>]+stroke-width="1\.8"/);
+  assert.match(svg, /class="fit-viz-binding-label"[^>]*>BIND</);
 });
 
 test('phase 48 fit visualization: top view uses depth where front view uses height', () => {
@@ -106,10 +106,11 @@ test('phase 48 fit visualization polish: svg line weights and labels are readabl
     view: 'front'
   });
 
-  assert.match(svg, /class="fit-viz-cavity"[^>]+stroke-width="1\.8"/);
-  assert.match(svg, /class="fit-viz-product"[^>]+fill="#eeece6"[^>]+stroke-width="1\.2"/);
+  assert.match(svg, /class="fit-viz-cavity"[^>]+stroke-width="1\.2"/);
+  assert.match(svg, /class="fit-viz-product"[^>]+fill="#eeece6"[^>]+stroke-width="1"/);
   assert.match(svg, /font-size="12"/);
   assert.doesNotMatch(svg, /tight: /);
+  assert.doesNotMatch(svg, /appliance/i);
 });
 
 test('phase 48 fit visualization: group renders three panes and escapes hostile product labels', () => {
