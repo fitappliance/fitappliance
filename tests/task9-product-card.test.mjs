@@ -29,19 +29,20 @@ function makeProduct(overrides = {}) {
   };
 }
 
-test('task 9.3 product-card: buildNoRetailerUrl uses Google site-filter query', async () => {
+test('task 9.3 product-card: buildNoRetailerUrl uses honest Google Australia query', async () => {
   const { buildNoRetailerUrl } = await import(productCardModuleUrl);
   const url = buildNoRetailerUrl(makeProduct({ model: 'SRF7500WFH French Door' }));
   assert.match(url, /google\.com\.au\/search/);
-  assert.match(url, /HISENSE%20SRF7500WFH%20French%20Door%20fridge/);
-  assert.match(url, /site%3Ajbhifi\.com\.au/);
+  assert.match(url, /HISENSE%20SRF7500WFH%20French%20Door%20fridge%20australia/);
+  assert.doesNotMatch(url, /site%3A/);
+  assert.doesNotMatch(url, /tbm=shop/);
 });
 
-test('task 9.3 product-card: buildGoogleShoppingUrl falls back to brand and category', async () => {
-  const { buildGoogleShoppingUrl } = await import(productCardModuleUrl);
-  const url = buildGoogleShoppingUrl(makeProduct({ model: '' }));
-  assert.match(url, /HISENSE%20fridge/);
-  assert.match(url, /site%3Athegoodguys\.com\.au/);
+test('task 9.3 product-card: buildSearchOnlineUrl falls back to brand and category', async () => {
+  const { buildSearchOnlineUrl } = await import(productCardModuleUrl);
+  const url = buildSearchOnlineUrl(makeProduct({ model: '' }));
+  assert.match(url, /HISENSE%20fridge%20australia/);
+  assert.doesNotMatch(url, /site%3Athegoodguys\.com\.au/);
 });
 
 test('task 9.3 product-card: no-price card renders live shopping URL instead of dead href', async () => {
@@ -54,7 +55,8 @@ test('task 9.3 product-card: no-price card renders live shopping URL instead of 
 
   assert.match(html, /Price unavailable — search online/);
   assert.match(html, /class="product-thumb-svg"/);
-  assert.match(html, /Compare prices online/);
+  assert.match(html, /Search this model online/);
+  assert.match(html, /retailer info not available/);
   assert.match(html, /class="btn-search-online"/);
   assert.match(html, /google\.com\.au\/search/);
   assert.doesNotMatch(html, /Search at:/);
@@ -69,7 +71,8 @@ test('task 9.3 product-card: no-price list row renders shopping fallback and dis
   });
 
   assert.match(html, /Price unavailable — search online/);
-  assert.match(html, /Compare prices online/);
+  assert.match(html, /Search this model online/);
+  assert.match(html, /retailer info not available/);
   assert.match(html, /class="product-thumb-svg"/);
   assert.match(html, /class="p-row-brand">Hisense</);
   assert.match(html, /google\.com\.au\/search/);
