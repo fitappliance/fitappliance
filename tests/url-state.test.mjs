@@ -54,6 +54,7 @@ test('phase 45a url-state: parseSearchParams reads facet params back into object
       availableOnly: true
     },
     clearanceMode: 'practical',
+    retailerOnly: true,
     sortBy: 'price-asc'
   });
 });
@@ -80,7 +81,8 @@ test('phase 45a url-state: serialize and parse round-trip facet state', async ()
   const parsed = parseSearchParams(`?${serializeSearchState(original).toString()}`);
   assert.deepEqual(parsed, {
     ...original,
-    clearanceMode: 'practical'
+    clearanceMode: 'practical',
+    retailerOnly: true
   });
 });
 

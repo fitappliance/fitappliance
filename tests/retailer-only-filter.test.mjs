@@ -1,0 +1,100 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const searchCorePath = path.join(repoRoot, 'public', 'scripts', 'search-core.js');
+
+async function loadSearchCore() {
+  const module = await import(`${pathToFileURL(searchCorePath).href}?cacheBust=${Date.now()}-${Math.random()}`);
+  return module.default ?? module['module.exports'] ?? module;
+}
+
+function makeProduct(overrides = {}) {
+  return {
+    id: 'base',
+    cat: 'fridge',
+    brand: 'LG',
+    model: 'BASE-1',
+    displayName: 'LG Base Fridge',
+    w: 590,
+    h: 1800,
+    d: 620,
+    price: 1099,
+    stars: 4,
+    priorityScore: 50,
+    unavailable: true,
+    retailers: [],
+    ...overrides
+  };
+}
+
+const standardCavity = { cat: 'fridge', w: 600, h: 1900, d: 650, toleranceMm: 0 };
+
+test('phase 48 retailer-only: searchWithFacets defaults to rows with retailer links', async () => {
+  const { searchWithFacets } = await loadSearchCore();
+  const products = [
+    makeProduct({ id: 'with-retailer', retailers: [{ n: 'JB Hi-Fi', p: 1099 }] }),
+    makeProduct({ id: 'without-retailer', brand: 'Vogue', retailers: [] })
+  ];
+
+  const result = searchWithFacets(products, standardCavity, {}, { limit: Number.MAX_SAFE_INTEGER });
+
+  assert.deepEqual(result.rows.map((row) => row.id), ['with-retailer']);
+  assert.deepEqual(result.counts.brand, { LG: 1 });
+});
+
+test('phase 48 retailer-only: retailerOnly false keeps the full matching pool', async () => {
+  const { searchWithFacets } = await loadSearchCore();
+  const products = [
+    makeProduct({ id: 'with-retailer', retailers: [{ n: 'JB Hi-Fi', p: 1099 }] }),
+    makeProduct({ id: 'without-retailer', brand: 'Vogue', retailers: [] })
+  ];
+
+  const result = searchWithFacets(products, standardCavity, {}, {
+    limit: Number.MAX_SAFE_INTEGER,
+    retailerOnly: false
+  });
+
+  assert.deepEqual(result.rows.map((row) => row.id), ['with-retailer', 'without-retailer']);
+  assert.deepEqual(result.counts.brand, { LG: 1, Vogue: 1 });
+});
+
+test('phase 48 retailer-only: URL showAll=1 disables the default retailer-only filter', async () => {
+  const { parseSearchParams, serializeSearchState } = await loadSearchCore();
+
+  assert.equal(parseSearchParams('?cat=fridge').retailerOnly, true);
+  assert.equal(parseSearchParams('?cat=fridge&showAll=1').retailerOnly, false);
+  assert.doesNotMatch(serializeSearchState({ cat: 'fridge', retailerOnly: true }).toString(), /showAll/);
+  assert.match(serializeSearchState({ cat: 'fridge', retailerOnly: false }).toString(), /showAll=1/);
+});
+
+test('phase 48 retailer-only: wide fridge search prefers the 9 retailer-verified rows over the full catalogue', async () => {
+  const { searchWithFacets } = await loadSearchCore();
+  const products = JSON.parse(fs.readFileSync(path.join(repoRoot, 'public', 'data', 'fridges.json'), 'utf8')).products;
+  const wideCavity = { cat: 'fridge', w: 1000, h: 1900, d: 800, toleranceMm: 0 };
+  const retailerResult = searchWithFacets(products, wideCavity, {}, { limit: Number.MAX_SAFE_INTEGER });
+  const allResult = searchWithFacets(products, wideCavity, {}, {
+    limit: Number.MAX_SAFE_INTEGER,
+    retailerOnly: false
+  });
+
+  assert.equal(retailerResult.rows.length, 9);
+  assert.ok(retailerResult.rows.length < allResult.rows.length, 'retailer-only should be a smaller, cleaner pool');
+  assert.ok(retailerResult.rows.every((row) => Array.isArray(row.retailers) && row.retailers.length > 0));
+});
+
+test('phase 48 retailer-only: standard 600mm fridge cavity has transparent fallback data available', async () => {
+  const { searchWithFacets } = await loadSearchCore();
+  const products = JSON.parse(fs.readFileSync(path.join(repoRoot, 'public', 'data', 'fridges.json'), 'utf8')).products;
+  const retailerResult = searchWithFacets(products, standardCavity, {}, { limit: Number.MAX_SAFE_INTEGER });
+  const allResult = searchWithFacets(products, standardCavity, {}, {
+    limit: Number.MAX_SAFE_INTEGER,
+    retailerOnly: false
+  });
+
+  assert.equal(retailerResult.rows.length, 0);
+  assert.ok(allResult.rows.length >= 100, `expected a full-catalog fallback pool, got ${allResult.rows.length}`);
+});

@@ -74,6 +74,21 @@
     but it does not override manufacturer clearance guidance. Products that only fit because of tolerance are marked
     as tight rather than treated as exact matches.</p>
 
+    <h2>Why we filter to retailer-verified products by default</h2>
+    <p>The public search now favours products that have verified Australian retailer links. In
+    <code>public/scripts/search-core.js</code>, <code>searchWithFacets</code> keeps rows with a non-empty
+    <code>retailers</code> array by default, then applies the user's brand, price, star and availability facets.
+    This is a deliberate usefulness trade-off. A catalogue can contain hundreds of dimension matches, but many of
+    those rows may be obscure models that are difficult to buy from major Australian retailers. Showing a shorter
+    list from JB Hi-Fi, Harvey Norman, The Good Guys, Appliances Online and Bing Lee is more honest for a shopper
+    trying to make a purchase today.</p>
+
+    <p>The full catalogue is still available. Users can turn off the retailer filter in the interface, or open a
+    shared URL with <code>?showAll=1</code>. When no retailer-verified product fits a measured cavity, FitAppliance
+    tries the same search against the full matching pool and clearly labels those fallback rows as products without
+    retailer information. At the time this page was reviewed, only 21 of roughly 2,170 catalogue products had verified
+    retailer rows, so this filter will become more useful as the retailer backfill expands.</p>
+
     <h2>Clearance modes and manufacturer guidance</h2>
     <p>FitAppliance now separates physical fit from installation advice. The search pipeline recognises three
     clearance modes. <strong>Physical</strong> uses 0 mm on every side and answers the narrow question "does the box

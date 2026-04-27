@@ -225,6 +225,17 @@
   font-weight: 700;
 }
 
+.facet-toggle--retailer {
+  align-items: flex-start;
+  justify-content: flex-start;
+  line-height: 1.35;
+}
+
+.facet-toggle--retailer input {
+  margin-top: 2px;
+  accent-color: var(--copper);
+}
+
 .facet-option--active,
 .facet-toggle--active {
   border-color: var(--copper);
@@ -293,6 +304,34 @@
 .commission-disclosure a {
   color: var(--ink-2);
   font-weight: 700;
+}
+
+.retailer-filter-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 8px 0 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: #fffaf4;
+  color: var(--ink-2);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.retailer-filter-banner--fallback {
+  align-items: flex-start;
+  flex-direction: column;
+  border-color: #f5c46b;
+  background: #fffbeb;
+}
+
+.retailer-filter-banner .secondary {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  font-size: 12px;
 }
 
 .card-grid {

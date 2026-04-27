@@ -175,6 +175,7 @@ test('phase 42a search-ux: serialise and parse preserves category, dims, toleran
       availableOnly: false
     },
     clearanceMode: 'practical',
+    retailerOnly: true,
     sortBy: 'best-fit'
   });
 });
