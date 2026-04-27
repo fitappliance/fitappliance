@@ -226,6 +226,20 @@
     return VALID_SORTS.has(next) ? next : 'best-fit';
   }
 
+  function normalizeRetailerOnly(filters, options) {
+    if (options && Object.prototype.hasOwnProperty.call(options, 'retailerOnly')) {
+      return options.retailerOnly !== false;
+    }
+    if (filters && Object.prototype.hasOwnProperty.call(filters, 'retailerOnly')) {
+      return filters.retailerOnly !== false;
+    }
+    return true;
+  }
+
+  function hasRetailerLink(product) {
+    return Array.isArray(product?.retailers) && product.retailers.length > 0;
+  }
+
   function getComparablePrice(value) {
     if (value === null || value === undefined || value === '') return null;
     const parsed = Number(value);
@@ -417,7 +431,10 @@
       clearanceMode: options.clearanceMode ?? filters?.clearanceMode ?? DEFAULT_CLEARANCE_MODE,
       limit: options.limit ?? Number.MAX_SAFE_INTEGER
     });
-    const filtered = applyFacets(pool, facets);
+    const retailerPool = normalizeRetailerOnly(filters, options)
+      ? pool.filter(hasRetailerLink)
+      : pool;
+    const filtered = applyFacets(retailerPool, facets);
     return {
       rows: sortMatches(filtered.rows, options.sortBy ?? filters?.sortBy ?? facets?.sortBy ?? 'best-fit'),
       counts: filtered.counts
@@ -508,6 +525,7 @@
     if (facets.availableOnly === true) params.set('avail', '1');
     const clearanceMode = normalizeClearanceMode(state?.clearanceMode);
     if (clearanceMode !== DEFAULT_CLEARANCE_MODE) params.set('mode', clearanceMode);
+    if (state?.retailerOnly === false) params.set('showAll', '1');
     if (state?.sortBy) params.set('sort', normalizeSortBy(state.sortBy));
     return params;
   }
@@ -540,6 +558,7 @@
         availableOnly: params.get('avail') === '1'
       },
       clearanceMode: normalizeClearanceMode(params.get('mode')),
+      retailerOnly: params.get('showAll') !== '1',
       sortBy: normalizeSortBy(params.get('sort'))
     };
   }
@@ -577,6 +596,7 @@
     findSearchMatches,
     getCategoryClearance,
     getEffectiveClearance,
+    hasRetailerLink,
     normalizeClearanceMode,
     parseSearchParams,
     searchWithFacets,

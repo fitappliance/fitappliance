@@ -26,7 +26,8 @@ test('phase 48 clearance search: default practical mode returns standard 600mm f
   const { searchWithFacets } = await loadSearchCore();
   const result = searchWithFacets(loadFridges(), STANDARD_FRIDGE_CAVITY, {}, {
     brandSpecificClearance: loadClearanceRules(),
-    limit: Number.MAX_SAFE_INTEGER
+    limit: Number.MAX_SAFE_INTEGER,
+    retailerOnly: false
   });
 
   assert.ok(result.rows.length >= 100, `expected >=100 practical fridge matches, got ${result.rows.length}`);
@@ -36,7 +37,7 @@ test('phase 48 clearance search: physical returns the most, practical next, manu
   const { searchWithFacets } = await loadSearchCore();
   const rows = loadFridges();
   const brandSpecificClearance = loadClearanceRules();
-  const options = { brandSpecificClearance, limit: Number.MAX_SAFE_INTEGER };
+  const options = { brandSpecificClearance, limit: Number.MAX_SAFE_INTEGER, retailerOnly: false };
 
   const physical = searchWithFacets(rows, { ...STANDARD_FRIDGE_CAVITY, clearanceMode: 'physical' }, {}, options).rows.length;
   const practical = searchWithFacets(rows, { ...STANDARD_FRIDGE_CAVITY, clearanceMode: 'practical' }, {}, options).rows.length;
@@ -48,7 +49,7 @@ test('phase 48 clearance search: physical returns the most, practical next, manu
 
 test('phase 48 clearance search: omitted clearanceMode behaves as practical', async () => {
   const { searchWithFacets } = await loadSearchCore();
-  const options = { brandSpecificClearance: loadClearanceRules(), limit: Number.MAX_SAFE_INTEGER };
+  const options = { brandSpecificClearance: loadClearanceRules(), limit: Number.MAX_SAFE_INTEGER, retailerOnly: false };
   const omitted = searchWithFacets(loadFridges(), STANDARD_FRIDGE_CAVITY, {}, options).rows.map((row) => row.id);
   const explicit = searchWithFacets(loadFridges(), { ...STANDARD_FRIDGE_CAVITY, clearanceMode: 'practical' }, {}, options).rows.map((row) => row.id);
 
@@ -71,7 +72,8 @@ test('phase 48 clearance search: result rows carry practical and manufacturer cl
       unavailable: true
     }
   ], STANDARD_FRIDGE_CAVITY, {}, {
-    brandSpecificClearance: loadClearanceRules()
+    brandSpecificClearance: loadClearanceRules(),
+    retailerOnly: false
   }).rows;
 
   assert.deepEqual(row.clearance, { side: 5, sides: 5, top: 20, rear: 10 });
@@ -104,7 +106,7 @@ test('phase 48 clearance URL state: default practical mode is omitted from URL',
 test('phase 48 clearance search: available-only is opt-in, not the default', async () => {
   const { searchWithFacets, parseSearchParams, serializeSearchState } = await loadSearchCore();
   const rows = loadFridges();
-  const options = { brandSpecificClearance: loadClearanceRules(), limit: Number.MAX_SAFE_INTEGER };
+  const options = { brandSpecificClearance: loadClearanceRules(), limit: Number.MAX_SAFE_INTEGER, retailerOnly: false };
   const all = searchWithFacets(rows, STANDARD_FRIDGE_CAVITY, {}, options).rows.length;
   const availableOnly = searchWithFacets(rows, STANDARD_FRIDGE_CAVITY, { availableOnly: true }, options).rows.length;
 

@@ -186,7 +186,8 @@
     const gapLabel = (side, value, x, y, extra = '') => {
       const isBinding = side === bindingSide;
       const className = isBinding ? 'fit-viz-gap-label fit-viz-gap-label--binding' : 'fit-viz-gap-label';
-      return `<text class="${className}" x="${x}" y="${y}" text-anchor="middle" font-weight="${isBinding ? '700' : '500'}" fill="${isBinding ? ORANGE : '#6b6b6b'}">${escHtml(`${Math.round(value)}mm`)}</text>${isBinding ? `<text class="fit-viz-binding-label" x="${x}" y="${y + 11}" text-anchor="middle" font-size="8" font-weight="700" fill="${ORANGE}">BIND</text>` : extra}`;
+      const weight = isBinding ? ' font-weight="700"' : '';
+      return `<text class="${className}" x="${x}" y="${y}" text-anchor="middle"${weight} fill="${isBinding ? ORANGE : '#6b6b6b'}">${escHtml(`${Math.round(value)}mm`)}</text>${isBinding ? `<text class="fit-viz-binding-label" x="${x}" y="${y + 11}" text-anchor="middle" font-size="8" font-weight="700" fill="${ORANGE}">BIND</text>` : extra}`;
     };
 
     const gapLine = (side, path) => {
@@ -200,7 +201,7 @@
       return '';
     })();
 
-    return `<svg class="fit-viz-svg" role="img" aria-label="${escHtml(label)}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}"><defs><marker id="${markerId}" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="${INK}"/></marker></defs><rect class="fit-viz-cavity" x="${CAVITY.x}" y="${CAVITY.y}" width="${CAVITY.w}" height="${CAVITY.h}" fill="none" stroke="${INK}" stroke-width="1.2"/>${bindingEdge ? `<path class="fit-viz-binding-edge" d="${bindingEdge}" stroke="${ORANGE}" stroke-width="1.8"/>` : ''}<rect class="fit-viz-product" x="${productX}" y="${productY}" width="${productW}" height="${productH}" fill="#eeece6" stroke="${INK}" stroke-width="1"/><path d="M${CAVITY.x} 18H${CAVITY.x + CAVITY.w}" stroke="${INK}" stroke-width="0.9" marker-start="url(#${markerId})" marker-end="url(#${markerId})"/><path d="M18 ${CAVITY.y}V${CAVITY.y + CAVITY.h}" stroke="${INK}" stroke-width="0.9" marker-start="url(#${markerId})" marker-end="url(#${markerId})"/>${gapLine('left', `M${CAVITY.x} ${midY}H${productX}`)}${gapLine('right', `M${productX + productW} ${midY}H${CAVITY.x + CAVITY.w}`)}${gapLine('top', `M${midX} ${CAVITY.y}V${productY}`)}${gapLine('bottom', `M${midX} ${productY + productH}V${CAVITY.y + CAVITY.h}`)}<g font-family="-apple-system, sans-serif" font-size="12"><text x="${CAVITY.x + CAVITY.w / 2}" y="13" text-anchor="middle" fill="${INK}">${spec.xLabel}: ${Math.round(spec.cavityX)}mm</text><text x="12" y="${CAVITY.y + CAVITY.h / 2}" text-anchor="middle" transform="rotate(-90 12 ${CAVITY.y + CAVITY.h / 2})" fill="${INK}">${spec.yLabel}: ${Math.round(spec.cavityY)}mm</text>${gapLabel('left', leftLabelGap, Math.max(CAVITY.x + 9, Math.round((CAVITY.x + productX) / 2)), midY - 3)}${gapLabel('right', rightGap, Math.min(CAVITY.x + CAVITY.w - 9, Math.round((productX + productW + CAVITY.x + CAVITY.w) / 2)), midY - 3)}${gapLabel('top', topLabelGap, midX, Math.max(CAVITY.y + 11, Math.round((CAVITY.y + productY) / 2) + 4))}${gapLabel('bottom', bottomGap, midX, Math.min(CAVITY.y + CAVITY.h - 4, Math.round((productY + productH + CAVITY.y + CAVITY.h) / 2) + 4))}</g></svg>`;
+    return `<svg class="fit-viz-svg" role="img" aria-label="${escHtml(label)}" viewBox="0 0 ${SVG_WIDTH} ${SVG_HEIGHT}"><defs><marker id="${markerId}" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="${INK}"/></marker></defs><rect class="fit-viz-cavity" x="${CAVITY.x}" y="${CAVITY.y}" width="${CAVITY.w}" height="${CAVITY.h}" fill="none" stroke="${INK}" stroke-width="1.2"/>${bindingEdge ? `<path class="fit-viz-binding-edge" d="${bindingEdge}" stroke="${ORANGE}" stroke-width="1.8"/>` : ''}<rect class="fit-viz-product" x="${productX}" y="${productY}" width="${productW}" height="${productH}" fill="#eeece6" stroke="${INK}" stroke-width="1"/><path d="M${CAVITY.x} 18H${CAVITY.x + CAVITY.w}" stroke="${INK}" stroke-width="0.9" marker-start="url(#${markerId})" marker-end="url(#${markerId})"/><path d="M18 ${CAVITY.y}V${CAVITY.y + CAVITY.h}" stroke="${INK}" stroke-width="0.9" marker-start="url(#${markerId})" marker-end="url(#${markerId})"/>${gapLine('left', `M${CAVITY.x} ${midY}H${productX}`)}${gapLine('right', `M${productX + productW} ${midY}H${CAVITY.x + CAVITY.w}`)}${gapLine('top', `M${midX} ${CAVITY.y}V${productY}`)}${gapLine('bottom', `M${midX} ${productY + productH}V${CAVITY.y + CAVITY.h}`)}<g font-size="12"><text x="${CAVITY.x + CAVITY.w / 2}" y="13" text-anchor="middle" fill="${INK}">${spec.xLabel}: ${Math.round(spec.cavityX)}mm</text><text x="12" y="${CAVITY.y + CAVITY.h / 2}" text-anchor="middle" transform="rotate(-90 12 ${CAVITY.y + CAVITY.h / 2})" fill="${INK}">${spec.yLabel}: ${Math.round(spec.cavityY)}mm</text>${gapLabel('left', leftLabelGap, Math.max(CAVITY.x + 9, Math.round((CAVITY.x + productX) / 2)), midY - 3)}${gapLabel('right', rightGap, Math.min(CAVITY.x + CAVITY.w - 9, Math.round((productX + productW + CAVITY.x + CAVITY.w) / 2)), midY - 3)}${gapLabel('top', topLabelGap, midX, Math.max(CAVITY.y + 11, Math.round((CAVITY.y + productY) / 2) + 4))}${gapLabel('bottom', bottomGap, midX, Math.min(CAVITY.y + CAVITY.h - 4, Math.round((productY + productH + CAVITY.y + CAVITY.h) / 2) + 4))}</g></svg>`;
   }
 
   function renderFitVisualizationGroup({
@@ -214,17 +215,12 @@
     const bindingAxis = identifyBindingConstraint(cavity, product, clearance);
     const bindingGap = getAxisGaps(cavity, product, clearance)?.[bindingAxis] ?? 0;
     const name = safeLabel(product?.displayName || [product?.brand, product?.model].filter(Boolean).join(' ') || 'Appliance') || 'Appliance';
-    const panes = ['front', 'top', 'side'].map((view) => `
-      <div class="fit-viz-pane">
-        <h4>${view[0].toUpperCase()}${view.slice(1)}</h4>
-        ${renderFitSvg({ cavity, product, clearance, view })}
-      </div>
-    `).join('');
+    const panes = ['front', 'top', 'side'].map((view) => {
+      const label = `${view[0].toUpperCase()}${view.slice(1)}`;
+      return `<div class="fit-viz-pane" role="button" tabindex="0" aria-label="Expand ${label} view" data-fit-viz-view="${view}"><h4>${label}</h4>${renderFitSvg({ cavity, product, clearance, view })}</div>`;
+    }).join('');
 
-    return `<figure class="fit-viz-group">
-  <div class="fit-viz-row">${panes}</div>
-  <figcaption>${escHtml(name)} · binding: ${escHtml(bindingAxis)} ${escHtml(Math.round(bindingGap))}mm · best fit</figcaption>
-</figure>`;
+    return `<figure class="fit-viz-group"><div class="fit-viz-row">${panes}</div><figcaption>${escHtml(name)} · binding: ${escHtml(bindingAxis)} ${escHtml(Math.round(bindingGap))}mm · best fit</figcaption></figure>`;
   }
 
   const api = {

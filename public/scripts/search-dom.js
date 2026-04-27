@@ -2,6 +2,7 @@
 
 (function attachSearchDom(globalScope) {
   let mobileSheetState = null;
+  let fitVizModalState = null;
 
   function escHtml(value) {
     return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -165,6 +166,25 @@
     }
     starsSection.appendChild(starsList);
     container.appendChild(starsSection);
+
+    const retailerSection = doc.createElement('section');
+    retailerSection.className = 'facet-group';
+    const retailerToggle = doc.createElement('label');
+    retailerToggle.className = `facet-toggle facet-toggle--retailer${activeFacets?.retailerOnly !== false ? ' facet-toggle--active' : ''}`;
+    const retailerInput = doc.createElement('input');
+    retailerInput.type = 'checkbox';
+    retailerInput.dataset.retailerOnly = '1';
+    retailerInput.checked = activeFacets?.retailerOnly !== false;
+    setAriaLabel(retailerInput, 'Show only products in stock at major Australian retailers');
+    const retailerLabel = doc.createElement('span');
+    retailerLabel.textContent = 'Show only products in stock at major Australian retailers';
+    retailerInput.addEventListener('change', () => {
+      retailerToggle.classList.toggle('facet-toggle--active', retailerInput.checked);
+      onChange?.({ type: 'retailerOnly', value: retailerInput.checked });
+    });
+    retailerToggle.append(retailerInput, retailerLabel);
+    retailerSection.appendChild(retailerToggle);
+    container.appendChild(retailerSection);
 
     const availabilitySection = doc.createElement('section');
     availabilitySection.className = 'facet-group';
@@ -974,7 +994,147 @@
       product,
       clearance
     });
+    bindFitVizExpansion(container, { cavity, product, clearance });
     return true;
+  }
+
+  function buildRetailerFilterBannerHtml({
+    count = 0,
+    fallback = false,
+    showAction = true
+  } = {}) {
+    const safeCount = Math.max(0, Number(count) || 0);
+    if (fallback) {
+      return `<div class="retailer-filter-banner retailer-filter-banner--fallback">
+        <strong>No products with verified retailer links fit your cavity.</strong>
+        <span>Showing ${safeCount} products without retailer info. These may be harder to find in Australia.</span>
+        <button type="button" class="secondary" data-retailer-filter-try>Try smaller cavity / different category</button>
+      </div>`;
+    }
+    return `<div class="retailer-filter-banner">
+      <span>Showing ${safeCount} products available at major Australian retailers (JB Hi-Fi, Harvey Norman, The Good Guys, Appliances Online, Bing Lee).</span>
+      ${showAction ? '<button type="button" class="secondary" data-show-all-products>Show all matching products</button>' : ''}
+    </div>`;
+  }
+
+  function renderFitVizModalSvg(panel, state) {
+    const renderer = globalScope?.FitVisualization;
+    if (!panel || !renderer?.renderFitSvg || !state) return;
+    const container = panel.querySelector('.fit-viz-modal-svg-container');
+    if (!container) return;
+    container.innerHTML = renderer.renderFitSvg({
+      cavity: state.cavity,
+      product: state.product,
+      clearance: state.clearance,
+      view: state.view
+    });
+    panel.querySelectorAll('[data-fit-viz-modal-tab]').forEach((tab) => {
+      const selected = tab.getAttribute('data-fit-viz-modal-tab') === state.view;
+      tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+      tab.classList.toggle('fit-viz-modal-tab--active', selected);
+    });
+  }
+
+  function closeFitVizModal() {
+    const state = fitVizModalState;
+    if (!state?.modal) return;
+    const doc = state.modal.ownerDocument;
+    doc.removeEventListener('keydown', state.onKeydown);
+    state.modal.remove();
+    state.trigger?.focus?.();
+    fitVizModalState = null;
+  }
+
+  function openFitVizModal({ trigger, cavity, product, clearance, view = 'front' } = {}) {
+    const renderer = globalScope?.FitVisualization;
+    const doc = trigger?.ownerDocument ?? globalScope?.document;
+    if (!doc || !renderer?.renderFitSvg) return;
+    closeFitVizModal();
+
+    const modal = doc.createElement('div');
+    modal.className = 'fit-viz-modal';
+    modal.dataset.fitVizModal = '1';
+    const panel = doc.createElement('div');
+    panel.className = 'fit-viz-modal-panel';
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-modal', 'true');
+    panel.setAttribute('aria-labelledby', 'fitVizModalTitle');
+    panel.addEventListener('click', (event) => event.stopPropagation());
+
+    panel.innerHTML = `
+      <div class="fit-viz-modal-head">
+        <h3 id="fitVizModalTitle">Fit visualization</h3>
+        <button type="button" class="fit-viz-modal-close" aria-label="Close fit visualization">×</button>
+      </div>
+      <div class="fit-viz-modal-tabs" role="tablist" aria-label="Fit visualization views">
+        ${['front', 'top', 'side'].map((name) => `<button type="button" class="fit-viz-modal-tab" role="tab" data-fit-viz-modal-tab="${name}" aria-selected="${name === view ? 'true' : 'false'}">${name[0].toUpperCase()}${name.slice(1)}</button>`).join('')}
+      </div>
+      <div class="fit-viz-modal-svg-container"></div>
+    `;
+    modal.appendChild(panel);
+    modal.addEventListener('click', closeFitVizModal);
+    (doc.getElementById('fitVizModalRoot') ?? doc.body).appendChild(modal);
+
+    fitVizModalState = {
+      modal,
+      panel,
+      trigger,
+      cavity,
+      product,
+      clearance,
+      view,
+      onKeydown: null
+    };
+
+    panel.querySelector('.fit-viz-modal-close')?.addEventListener('click', closeFitVizModal);
+    panel.querySelectorAll('[data-fit-viz-modal-tab]').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        fitVizModalState.view = tab.getAttribute('data-fit-viz-modal-tab') ?? 'front';
+        renderFitVizModalSvg(panel, fitVizModalState);
+      });
+    });
+
+    fitVizModalState.onKeydown = (event) => {
+      if (!fitVizModalState?.modal) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeFitVizModal();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const focusables = getFocusableElements(panel);
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (event.shiftKey && doc.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && doc.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    doc.addEventListener('keydown', fitVizModalState.onKeydown);
+
+    renderFitVizModalSvg(panel, fitVizModalState);
+    panel.querySelector('.fit-viz-modal-close')?.focus?.();
+  }
+
+  function bindFitVizExpansion(container, details = {}) {
+    container.querySelectorAll('[data-fit-viz-view]').forEach((pane) => {
+      const open = () => openFitVizModal({
+        ...details,
+        trigger: pane,
+        view: pane.getAttribute('data-fit-viz-view') ?? 'front'
+      });
+      pane.addEventListener('click', open);
+      pane.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          open();
+        }
+      });
+    });
   }
 
   function renderSearchResults({
@@ -984,7 +1144,11 @@
     messageEl,
     emptyState,
     onRelaxClick,
-    nearMisses = []
+    nearMisses = [],
+    retailerOnly = true,
+    retailerFallback = false,
+    onShowAllClick,
+    onTryDifferentSearch
   }) {
     if (!resultsEl || !messageEl) return;
 
@@ -1033,7 +1197,16 @@
     if (Number.isFinite(Number(filters?.toleranceMm))) bits.push(`±${filters.toleranceMm}mm tolerance`);
 
     messageEl.textContent = `${matches.length} match${matches.length === 1 ? '' : 'es'} found${bits.length > 0 ? ` for ${bits.join(' · ')}` : ''}.`;
-    resultsEl.innerHTML = `${buildCommissionDisclosureHtml()}<ul class="fit-result-list">${matches.map((match) => buildCardHtml(match)).join('')}</ul>`;
+    const retailerBanner = retailerOnly
+      ? buildRetailerFilterBannerHtml({
+        count: matches.length,
+        fallback: retailerFallback,
+        showAction: !retailerFallback
+      })
+      : '';
+    resultsEl.innerHTML = `${retailerBanner}${buildCommissionDisclosureHtml()}<ul class="fit-result-list">${matches.map((match) => buildCardHtml(match)).join('')}</ul>`;
+    resultsEl.querySelector('[data-show-all-products]')?.addEventListener('click', () => onShowAllClick?.());
+    resultsEl.querySelector('[data-retailer-filter-try]')?.addEventListener('click', () => onTryDifferentSearch?.());
   }
 
   function formatDimension(snapshot) {

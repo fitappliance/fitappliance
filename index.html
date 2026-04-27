@@ -538,6 +538,7 @@ nav {
   <div class="results-body">
     <div>
       <div data-fit-viz hidden></div>
+      <div id="fitVizModalRoot"></div>
       <!-- View toggle -->
       <div class="view-toggle">
         <button class="view-btn" id="btnGrid" onclick="setView('grid')">
@@ -1107,12 +1108,14 @@ let activeFacetState = {
   priceMax: null,
   stars: null,
   availableOnly: false,
+  retailerOnly: true,
 };
 let currentSortBy = 'best-fit';
 let currentClearanceMode = 'practical';
 let lastSearchFilters = null;
 let lastSearchContext = null;
 let currentNearMissRows = [];
+let currentRetailerFallback = false;
 let facetDebounceTimer = null;
 let currentView = 'list';
 let compareList = [];
@@ -1231,6 +1234,10 @@ async function readUrlParams() {
   }
 
   activeFacetState = normalizeHomeFacets(parsedState.facets ?? {});
+  activeFacetState = normalizeHomeFacets({
+    ...activeFacetState,
+    retailerOnly: parsedState.retailerOnly
+  });
   currentSortBy = parsedState.sortBy ?? 'best-fit';
   currentClearanceMode = parsedState.clearanceMode ?? 'practical';
   syncLegacyFacetInputs();
@@ -1406,6 +1413,7 @@ function normalizeHomeFacets(next = {}) {
     priceMax: parsePositiveInteger(next.priceMax),
     stars: parsePositiveInteger(next.stars),
     availableOnly: next.availableOnly === true,
+    retailerOnly: next.retailerOnly !== false,
   };
 }
 
@@ -1437,7 +1445,7 @@ function filterOperationalPool(rows, context = {}) {
 
 function mergeManagedSearchParams(baseParams, nextParams) {
   const merged = new URLSearchParams(baseParams);
-  ['cat', 'w', 'h', 'd', 'tol', 'preset', 'brand', 'pmin', 'pmax', 'stars', 'avail', 'sort', 'mode', 'door', 'dwelling']
+  ['cat', 'w', 'h', 'd', 'tol', 'preset', 'brand', 'pmin', 'pmax', 'stars', 'avail', 'sort', 'mode', 'showAll', 'door', 'dwelling']
     .forEach((key) => merged.delete(key));
   for (const [key, value] of nextParams.entries()) {
     merged.set(key, value);
@@ -1451,7 +1459,8 @@ function updateSearchUrl(context = {}) {
     ...lastSearchFilters,
     facets: activeFacetState,
     sortBy: currentSortBy,
-    clearanceMode: currentClearanceMode
+    clearanceMode: currentClearanceMode,
+    retailerOnly: activeFacetState.retailerOnly !== false
   });
   if (context?.doorW && context.doorW !== DEFAULT_DOORWAY_MM) {
     serialized.set('door', String(context.doorW));
@@ -1478,7 +1487,8 @@ function clearAllFacets() {
     priceMin: null,
     priceMax: null,
     stars: null,
-    availableOnly: false
+    availableOnly: false,
+    retailerOnly: true
   });
   syncLegacyFacetInputs();
   refreshSearchResults();
@@ -1496,7 +1506,8 @@ function getCurrentSearchState() {
     toleranceMm,
     facets: normalizeHomeFacets(activeFacetState),
     sortBy: currentSortBy,
-    clearanceMode: currentClearanceMode
+    clearanceMode: currentClearanceMode,
+    retailerOnly: activeFacetState.retailerOnly !== false
   };
 }
 
@@ -1599,6 +1610,8 @@ function applyFacetDelta(delta) {
     next.stars = next.stars === parsedStars ? null : parsedStars;
   } else if (delta?.type === 'availableOnly') {
     next.availableOnly = Boolean(delta.value);
+  } else if (delta?.type === 'retailerOnly') {
+    next.retailerOnly = Boolean(delta.value);
   }
 
   activeFacetState = normalizeHomeFacets(next);
@@ -1638,6 +1651,7 @@ function scheduleFacetRefresh() {
 
 function refreshSearchResults() {
   if (!lastSearchFilters) return;
+  currentRetailerFallback = false;
   const searchOptions = {
     limit: Number.MAX_SAFE_INTEGER,
     brandSpecificClearance: BRAND_CLEARANCE,
@@ -1648,8 +1662,21 @@ function refreshSearchResults() {
     clearanceMode: currentClearanceMode
   }, searchOptions);
   const operationalPool = filterOperationalPool(dimensionPool, lastSearchContext);
-  const facetResult = SearchCore.applyFacets(operationalPool, activeFacetState);
+  const retailerOnly = activeFacetState.retailerOnly !== false;
+  const retailerPool = retailerOnly
+    ? operationalPool.filter((product) => SearchCore.hasRetailerLink?.(product) ?? (Array.isArray(product?.retailers) && product.retailers.length > 0))
+    : operationalPool;
+  let facetResult = SearchCore.applyFacets(retailerPool, activeFacetState);
   currentMatchRows = SearchCore.sortMatches(facetResult.rows, currentSortBy);
+  if (retailerOnly && currentMatchRows.length === 0) {
+    const fallbackFacetResult = SearchCore.applyFacets(operationalPool, activeFacetState);
+    const fallbackRows = SearchCore.sortMatches(fallbackFacetResult.rows, currentSortBy);
+    if (fallbackRows.length > 0) {
+      currentMatchRows = fallbackRows;
+      facetResult = fallbackFacetResult;
+      currentRetailerFallback = true;
+    }
+  }
   filteredResults = currentMatchRows.slice(0, RESULTS_CAP);
   if (currentMatchRows.length === 0) {
     const nearMissPool = SearchCore.buildNearMisses(PRODUCTS, {
@@ -1768,6 +1795,37 @@ function setView(v) {
   renderResults();
 }
 
+function buildRetailerFilterBannerHtml() {
+  if (activeFacetState.retailerOnly === false || currentMatchRows.length === 0) return '';
+  if (currentRetailerFallback) {
+    return `
+      <div class="retailer-filter-banner retailer-filter-banner--fallback">
+        <strong>No products with verified retailer links fit your cavity.</strong>
+        <span>Showing ${currentMatchRows.length} products without retailer info. These may be harder to find in Australia.</span>
+        <button type="button" class="secondary" data-retailer-filter-try>Try smaller cavity / different category</button>
+      </div>`;
+  }
+  return `
+    <div class="retailer-filter-banner">
+      <span>Showing ${currentMatchRows.length} products available at major Australian retailers (JB Hi-Fi, Harvey Norman, The Good Guys, Appliances Online, Bing Lee).</span>
+      <button type="button" class="secondary" data-show-all-products>Show all matching products</button>
+    </div>`;
+}
+
+function bindRetailerBannerActions(container) {
+  container.querySelector('[data-show-all-products]')?.addEventListener('click', () => {
+    activeFacetState = normalizeHomeFacets({
+      ...activeFacetState,
+      retailerOnly: false
+    });
+    syncLegacyFacetInputs();
+    refreshSearchResults();
+  });
+  container.querySelector('[data-retailer-filter-try]')?.addEventListener('click', () => {
+    scrollToSearch();
+  });
+}
+
 /* ══════════════════════════════════════════════════════════
    RENDER RESULTS
 ══════════════════════════════════════════════════════════ */
@@ -1791,6 +1849,7 @@ function renderResults() {
 
   const container = document.getElementById('productGrid');
   const empty     = document.getElementById('emptyState');
+  const retailerBanner = buildRetailerFilterBannerHtml();
 
   if (currentMatchRows.length===0) {
     SearchDom.renderFitVisualization(document.querySelector('[data-fit-viz]'), {});
@@ -1823,7 +1882,7 @@ function renderResults() {
 
   if (currentView === 'list') {
     container.className = 'product-list';
-    container.innerHTML = renderProductsWithInlineAds(display, (product) => buildRow(product, {
+    container.innerHTML = retailerBanner + renderProductsWithInlineAds(display, (product) => buildRow(product, {
       annualEnergyCost,
       lifetimeCost,
       resolveRetailerUrl,
@@ -1832,7 +1891,7 @@ function renderResults() {
     }));
   } else {
     container.className = 'product-grid';
-    container.innerHTML = renderProductsWithInlineAds(display, (product) => buildCard(product, {
+    container.innerHTML = retailerBanner + renderProductsWithInlineAds(display, (product) => buildCard(product, {
       tcoHtml,
       retailersHtml,
       starsHtml,
@@ -1842,6 +1901,7 @@ function renderResults() {
       capturedDate: CATEGORY_CAPTURED_DATES[product.cat] ?? APPLIANCES_META?.last_updated ?? ''
     }));
   }
+  bindRetailerBannerActions(container);
 
   if (capped) {
     const notice = document.createElement('div');
