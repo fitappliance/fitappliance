@@ -19,6 +19,7 @@ const EXPECTED_PERMISSIONS = {
   'portability.yml': { contents: 'read' },
   'pr-validation.yml': { contents: 'read' },
   'research-popularity.yml': { contents: 'write' },
+  'research-retailers.yml': { contents: 'read' },
   'scraper-run.yml': { contents: 'read' },
   'sentinel.yml': { contents: 'read', issues: 'write' },
   'triage.yml': { contents: 'read', issues: 'write', 'pull-requests': 'write' },
@@ -58,7 +59,7 @@ test('phase 43a p2: every workflow declares least-privilege token permissions', 
 });
 
 test('phase 43a p2: read-only validation workflows do not request write scopes', () => {
-  const readOnlyWorkflows = ['copy-lint.yml', 'doc-audit.yml', 'indexnow-on-deploy.yml', 'portability.yml', 'pr-validation.yml', 'scraper-run.yml'];
+  const readOnlyWorkflows = ['copy-lint.yml', 'doc-audit.yml', 'indexnow-on-deploy.yml', 'portability.yml', 'pr-validation.yml', 'research-retailers.yml', 'scraper-run.yml'];
 
   for (const fileName of readOnlyWorkflows) {
     const yaml = fs.readFileSync(path.join(WORKFLOW_DIR, fileName), 'utf8');

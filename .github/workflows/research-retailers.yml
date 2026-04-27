@@ -1,0 +1,51 @@
+name: Manual Retailer Research
+
+on:
+  workflow_dispatch:
+    inputs:
+      top:
+        description: "Number of priority products to research"
+        required: true
+        default: "50"
+      category:
+        description: "Optional category filter"
+        required: false
+        type: choice
+        options:
+          - ""
+          - fridge
+          - dishwasher
+          - dryer
+          - washing_machine
+
+permissions:
+  contents: read
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+      - run: npm ci
+      - name: Run manual retailer research
+        run: |
+          TOP="${{ inputs.top }}"
+          if [ "$TOP" -gt 200 ]; then
+            echo "top must be <= 200"
+            exit 1
+          fi
+          if [ -n "${{ inputs.category }}" ]; then
+            node scripts/research-retailers.js --top="$TOP" --category="${{ inputs.category }}"
+          else
+            node scripts/research-retailers.js --top="$TOP"
+          fi
+      - name: Upload candidate report
+        uses: actions/upload-artifact@v6
+        with:
+          name: manual-retailers-candidates
+          path: reports/manual-retailers-candidates-*.json
+          if-no-files-found: error
+
