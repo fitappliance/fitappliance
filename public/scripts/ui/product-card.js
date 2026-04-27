@@ -25,31 +25,22 @@ export function categoryLabel(cat) {
   }[cat] || '';
 }
 
-const AU_RETAILER_DOMAINS = [
-  'jbhifi.com.au',
-  'harveynorman.com.au',
-  'thegoodguys.com.au',
-  'appliancesonline.com.au',
-  'binglee.com.au'
-];
-
 function buildSearchQuery(product) {
   return [
     String(product?.brand ?? '').trim(),
     String(product?.model ?? '').trim(),
-    categoryLabel(product?.cat)
+    categoryLabel(product?.cat),
+    'australia'
   ].filter(Boolean).join(' ');
 }
 
-export function buildGoogleShoppingUrl(product) {
-  const productQuery = buildSearchQuery(product);
-  const siteQuery = AU_RETAILER_DOMAINS.map((domain) => `site:${domain}`).join(' OR ');
-  const query = [productQuery, `(${siteQuery})`].filter(Boolean).join(' ').trim();
+export function buildSearchOnlineUrl(product) {
+  const query = buildSearchQuery(product);
   return `https://www.google.com.au/search?q=${encodeURIComponent(query)}`;
 }
 
 export function buildNoRetailerUrl(product) {
-  return buildGoogleShoppingUrl(product);
+  return buildSearchOnlineUrl(product);
 }
 
 // Australian state energy rebate programs (NSW/VIC/SA/QLD) typically require >= 4-star GEMS.
@@ -144,7 +135,7 @@ export function buildCard(p, deps = {}) {
   const triggerButton = buildRetailerTriggerButton(p, {
     resolveRetailerUrl,
     buildNoRetailerUrl,
-    buildGoogleShoppingUrl
+    buildSearchOnlineUrl
   });
   const modalHtml = shouldShowRetailerModal(p)
     ? buildRetailerModalHtml(p, { resolveRetailerUrl })
@@ -208,7 +199,7 @@ export function buildRow(p, deps = {}) {
   const triggerButton = buildRetailerTriggerButton(p, {
     resolveRetailerUrl,
     buildNoRetailerUrl,
-    buildGoogleShoppingUrl
+    buildSearchOnlineUrl
   });
   const modalHtml = shouldShowRetailerModal(p)
     ? buildRetailerModalHtml(p, { resolveRetailerUrl })

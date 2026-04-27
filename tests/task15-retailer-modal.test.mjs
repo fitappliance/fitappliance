@@ -44,14 +44,15 @@ test('task 15 retailer-modal: shouldShowRetailerModal true for 2+ retailers', as
   );
 });
 
-test('task 15 retailer-modal: trigger for 0 retailers is a single online compare link', async () => {
+test('task 15 retailer-modal: trigger for 0 retailers is a single honest online search link', async () => {
   const { buildRetailerTriggerButton } = await import(moduleUrl);
   const html = buildRetailerTriggerButton(makeProduct(), {
-    buildGoogleShoppingUrl: () => 'https://www.google.com.au/search?q=ABC%20(site%3Ajbhifi.com.au)',
+    buildSearchOnlineUrl: () => 'https://www.google.com.au/search?q=ABC%20australia',
     resolveRetailerUrl: () => '#'
   });
 
-  assert.match(html, /Compare prices online/);
+  assert.match(html, /Search this model online/);
+  assert.match(html, /retailer info not available/);
   assert.match(html, /class="btn-search-online"/);
   assert.match(html, /google\.com\.au\/search/);
   assert.match(html, /rel="sponsored nofollow noopener"/);
@@ -61,7 +62,7 @@ test('task 15 retailer-modal: trigger for 0 retailers is a single online compare
 test('task 15 retailer-modal: online compare fallback escapes href values', async () => {
   const { buildRetailerTriggerButton } = await import(moduleUrl);
   const html = buildRetailerTriggerButton(makeProduct(), {
-    buildGoogleShoppingUrl: () => 'https://www.google.com.au/search?q=<bad>&x="1"'
+    buildSearchOnlineUrl: () => 'https://www.google.com.au/search?q=<bad>&x="1"'
   });
 
   assert.match(html, /q=&lt;bad&gt;&amp;x=&quot;1&quot;/);

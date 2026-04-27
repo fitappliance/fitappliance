@@ -35,14 +35,14 @@ export function shouldShowRetailerModal(product) {
 export function buildSearchOnlineButton(
   product,
   {
-    buildGoogleShoppingUrl,
+    buildSearchOnlineUrl,
     buildNoRetailerUrl = () => '#'
   } = {}
 ) {
-  const targetUrl = typeof buildGoogleShoppingUrl === 'function'
-    ? buildGoogleShoppingUrl(product)
+  const targetUrl = typeof buildSearchOnlineUrl === 'function'
+    ? buildSearchOnlineUrl(product)
     : buildNoRetailerUrl(product);
-  return `<a class="btn-search-online" href="${escHtml(targetUrl)}" target="_blank" rel="sponsored nofollow noopener">Compare prices online</a>`;
+  return `<a class="btn-search-online" href="${escHtml(targetUrl)}" target="_blank" rel="sponsored nofollow noopener">Search this model online<span class="btn-search-note">retailer info not available</span></a>`;
 }
 
 export function buildRetailerModalHtml(product, { resolveRetailerUrl = (retailer) => retailer.url } = {}) {
@@ -96,13 +96,13 @@ export function buildRetailerTriggerButton(
   {
     resolveRetailerUrl = (retailer) => retailer.url,
     buildNoRetailerUrl = () => '#',
-    buildGoogleShoppingUrl
+    buildSearchOnlineUrl
   } = {}
 ) {
   const retailers = normalizeRetailers(product?.retailers);
 
   if (retailers.length === 0) {
-    return buildSearchOnlineButton(product, { buildGoogleShoppingUrl, buildNoRetailerUrl });
+    return buildSearchOnlineButton(product, { buildSearchOnlineUrl, buildNoRetailerUrl });
   }
 
   if (retailers.length === 1) {
