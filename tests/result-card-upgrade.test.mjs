@@ -32,15 +32,18 @@ test('phase 45b result card: multiple retailers render price range and count', a
   const { buildCardHtml } = await loadSearchDom();
   const html = buildCardHtml(makeMatch({
     retailers: [
-      { n: 'The Good Guys', p: 899 },
-      { n: 'JB Hi-Fi', p: 1099 },
-      { n: 'Appliances Online', p: 1299 }
+      { n: 'The Good Guys', p: 899, url: 'https://www.thegoodguys.com.au/product/lg' },
+      { n: 'JB Hi-Fi', p: 1099, url: 'https://www.jbhifi.com.au/products/lg' },
+      { n: 'Appliances Online', p: 1299, url: 'https://www.appliancesonline.com.au/product/lg/' }
     ]
   }));
 
-  assert.match(html, /From \$899 to \$1,299/);
-  assert.match(html, /from 3 retailers/);
-  assert.match(html, /retailer-chip/);
+  assert.match(html, /From \$899/);
+  assert.match(html, /Available at/);
+  assert.match(html, /card-retailer-links/);
+  assert.match(html, /The Good Guys/);
+  assert.match(html, /JB Hi-Fi/);
+  assert.match(html, /Appliances Online/);
 });
 
 test('phase 45b result card: single retailer renders one price without range copy', async () => {
@@ -60,6 +63,7 @@ test('phase 45b result card: zero retailers omit retailer strip', async () => {
   const html = buildCardHtml(makeMatch({ retailers: [] }));
 
   assert.doesNotMatch(html, /retailer-strip/);
+  assert.doesNotMatch(html, /card-retailer-links/);
   assert.doesNotMatch(html, /from \d+ retailers/);
 });
 
@@ -67,12 +71,13 @@ test('phase 45b result card: retailer names are escaped', async () => {
   const { buildCardHtml } = await loadSearchDom();
   const html = buildCardHtml(makeMatch({
     retailers: [
-      { n: '<img src=x onerror=alert(1)>', p: 899 },
-      { n: 'Safe Retailer', p: 999 }
+      { n: '<img src=x onerror=alert(1)>', p: 899, url: 'https://example.com/bad' },
+      { n: 'Safe Retailer', p: 999, url: 'https://example.com/safe' }
     ]
   }));
 
   assert.doesNotMatch(html, /<img/i);
   assert.doesNotMatch(html, /onerror/i);
-  assert.match(html, /&lt;img src=x/);
+  assert.match(html, /Retailer/);
+  assert.match(html, /Safe Retailer/);
 });

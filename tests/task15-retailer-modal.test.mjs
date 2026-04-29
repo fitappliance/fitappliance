@@ -79,6 +79,7 @@ test('task 15 retailer-modal: trigger for 1 retailer uses the retailer chip patt
   });
 
   assert.match(html, /retailer-logo-links/);
+  assert.match(html, /Available at/);
   assert.match(html, /retailer-logo-mark">TGG</);
   assert.match(html, /The Good Guys/);
   assert.match(html, /href="https:\/\/www\.thegoodguys\.com\.au\/search\?text=GB335"/);
@@ -95,6 +96,7 @@ test('task 15 retailer-modal: trigger for 1 retailer without price still links t
   });
 
   assert.match(html, /retailer-logo-links/);
+  assert.match(html, /Available at/);
   assert.match(html, /retailer-logo-mark">JB</);
   assert.match(html, /JB Hi-Fi/);
   assert.match(html, /href="https:\/\/www\.jbhifi\.com\.au\/products\/lg-gb335pl"/);
@@ -115,6 +117,7 @@ test('phase 50 retailer links: multiple unpriced retailer links render as select
   });
 
   assert.match(html, /retailer-logo-links/);
+  assert.match(html, /Available at/);
   assert.match(html, /JB Hi-Fi/);
   assert.match(html, /Appliances Online/);
   assert.match(html, /href="https:\/\/www\.jbhifi\.com\.au\/products\/lg-gb335pl"/);

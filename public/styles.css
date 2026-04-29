@@ -501,6 +501,23 @@
   font-weight: 500;
 }
 
+.card-retailer-panel,
+.retailer-logo-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.card-retailer-heading,
+.retailer-logo-label {
+  color: var(--ink-3);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
 .card-retailer-links,
 .retailer-logo-links {
   display: flex;
@@ -508,14 +525,6 @@
   justify-content: flex-end;
   gap: 6px;
   flex-wrap: wrap;
-}
-
-.retailer-logo-label {
-  color: var(--ink-3);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .05em;
-  text-transform: uppercase;
 }
 
 .card-cta .retailer-logo-link,
@@ -626,6 +635,11 @@
   }
 
   .card-cta a {
+    align-items: flex-start;
+  }
+
+  .card-retailer-panel,
+  .retailer-logo-panel {
     align-items: flex-start;
   }
 

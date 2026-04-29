@@ -102,9 +102,9 @@ export function buildRetailerLogoLinks(product, { resolveRetailerUrl = (retailer
     ><span class="retailer-logo-mark">${escHtml(retailerInitials(displayName))}</span><span class="retailer-logo-name">${escHtml(displayName)}</span></a>`;
   }).join('');
 
-  return `<div class="retailer-logo-links" aria-label="Retailer product links">
-    <span class="retailer-logo-label">Retailers</span>
-    ${links}
+  return `<div class="retailer-logo-panel">
+    <span class="retailer-logo-label">Available at</span>
+    <div class="retailer-logo-links" aria-label="Retailer product links">${links}</div>
   </div>`;
 }
 

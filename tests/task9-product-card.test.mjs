@@ -196,13 +196,37 @@ test('task 9.3 facet price filters stay inside the sidebar grid', () => {
 });
 
 test('phase 50 retailer links: logo-like retailer chips have compact styling hooks', () => {
+  const panelBlock = cssBlock(deferredCss, '.retailer-logo-panel');
   const linkBlock = cssBlock(deferredCss, '.retailer-logo-link');
   const markBlock = cssBlock(deferredCss, '.retailer-logo-mark');
 
+  assert.match(panelBlock, /flex-direction:\s*column/);
+  assert.match(panelBlock, /align-items:\s*flex-end/);
   assert.match(linkBlock, /border-radius:\s*999px/);
   assert.match(linkBlock, /font-size:\s*11px/);
   assert.match(markBlock, /min-width:\s*24px/);
   assert.match(markBlock, /font-weight:\s*900/);
+});
+
+test('phase 50 retailer links: list row keeps retailer choices in the action column only', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct({
+    retailers: [
+      { n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/hisense-srf7500wfh', p: null },
+      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/hisense-srf7500wfh/', p: null }
+    ]
+  }), {
+    annualEnergyCost: () => '100',
+    lifetimeCost: () => 2000,
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /retailer-logo-panel/);
+  assert.match(html, /Available at/);
+  assert.match(html, /JB Hi-Fi/);
+  assert.match(html, /Appliances Online/);
+  assert.doesNotMatch(html, /Buy at /);
+  assert.doesNotMatch(html, /We earn a commission if you purchase via these links/);
 });
 
 test('task 10 rebate: isRebateEligible returns true for stars >= 4', async () => {

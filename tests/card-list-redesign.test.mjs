@@ -101,9 +101,12 @@ test('phase 50 retailer links: result card CTA shows every linked retailer as a 
   }));
 
   assert.match(html, /card-retailer-links/);
+  assert.match(html, /Available at/);
   assert.match(html, /JB Hi-Fi/);
   assert.match(html, /Appliances Online/);
   assert.match(html, /href="https:\/\/www\.jbhifi\.com\.au\/products\/lg-gf-l708mbl"/);
   assert.match(html, /href="https:\/\/www\.appliancesonline\.com\.au\/product\/lg-gf-l708mbl\/"/);
+  assert.doesNotMatch(html, /fit-retailer-summary/);
+  assert.doesNotMatch(html, /retailer-strip/);
   assert.doesNotMatch(html, /View at JB Hi-Fi/);
 });

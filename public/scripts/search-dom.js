@@ -637,37 +637,6 @@
     return null;
   }
 
-  function buildRetailerSummaryHtml(match) {
-    const retailers = Array.isArray(match?.retailers) ? match.retailers : [];
-    if (retailers.length === 0) return '';
-
-    const names = retailers
-      .map(getRetailerName)
-      .filter(Boolean)
-      .slice(0, 4);
-    const prices = retailers
-      .map(getRetailerPrice)
-      .filter((price) => Number.isFinite(price))
-      .sort((left, right) => left - right);
-    const minPrice = prices[0] ?? null;
-    const maxPrice = prices[prices.length - 1] ?? null;
-    const priceHtml = minPrice === null
-      ? ''
-      : minPrice === maxPrice
-        ? `<span class="price-single">${escHtml(formatAud(minPrice))}</span>`
-        : `<span class="price-range">From ${escHtml(formatAud(minPrice))} to ${escHtml(formatAud(maxPrice))}</span>`;
-
-    return `
-      <div class="fit-retailer-summary">
-        ${names.length > 0 ? `<div class="retailer-strip">${names.map((name) => `<span class="retailer-chip">${escHtml(name)}</span>`).join('')}</div>` : ''}
-        <div class="retailer-price-line">
-          ${priceHtml}
-          <span class="retailer-count">from ${retailers.length} retailer${retailers.length === 1 ? '' : 's'}</span>
-        </div>
-      </div>
-    `;
-  }
-
   function formatClearanceMm(value) {
     const parsed = Number(value);
     return Number.isFinite(parsed) && parsed >= 0 ? Math.round(parsed) : 0;
@@ -762,9 +731,10 @@
       });
 
     if (links.length === 0) return '';
-    return `<div class="card-retailer-links" aria-label="Retailer product links">
-      <span class="retailer-logo-label">Retailers</span>
-      ${links.map((retailer) => {
+    return `<div class="card-retailer-panel">
+      <span class="card-retailer-heading">Available at</span>
+      <div class="card-retailer-links" aria-label="Retailer product links">
+        ${links.map((retailer) => {
         const displayName = safeRetailerDisplayName(retailer.name);
         return `<a class="retailer-logo-link" href="${escHtml(retailer.url)}" target="_blank" rel="sponsored nofollow noopener"
           aria-label="Open ${escHtml(displayName)} product page"
@@ -776,7 +746,8 @@
           data-retailer="${escHtml(displayName)}"
           data-price="${Number.isFinite(retailer.price) ? retailer.price : 0}"
         ><span class="retailer-logo-mark">${escHtml(retailerInitials(displayName))}</span><span class="retailer-logo-name">${escHtml(displayName)}</span></a>`;
-      }).join('')}
+        }).join('')}
+      </div>
     </div>`;
   }
 
@@ -1004,7 +975,6 @@
             ${buildEnergyLineHtml(match)}
             ${buildManufacturerAdvisoryHtml(match)}
             ${match.sku ? `<div class="fit-result-sku">SKU ${escHtml(match.sku)}</div>` : ''}
-            ${buildRetailerSummaryHtml(match)}
           </div>
           <div class="card-action-cell">
             ${buildCardPriceHtml(match)}
