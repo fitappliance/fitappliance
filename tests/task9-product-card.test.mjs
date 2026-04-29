@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -7,6 +8,14 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'
 const productCardModuleUrl = pathToFileURL(
   path.join(repoRoot, 'public', 'scripts', 'ui', 'product-card.js')
 ).href;
+const deferredCss = fs.readFileSync(path.join(repoRoot, 'public', 'styles-deferred.css'), 'utf8');
+const criticalCss = fs.readFileSync(path.join(repoRoot, 'public', 'styles.css'), 'utf8');
+
+function cssBlock(source, selector) {
+  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const match = source.match(new RegExp(`${escaped}\\s*\\{([^}]+)\\}`));
+  return match?.[1] ?? '';
+}
 
 function makeProduct(overrides = {}) {
   return {
@@ -53,7 +62,7 @@ test('task 9.3 product-card: no-price card renders live shopping URL instead of 
     resolveRetailerUrl: () => '#'
   });
 
-  assert.match(html, /Price unavailable — search online/);
+  assert.match(html, /Price unavailable/);
   assert.match(html, /class="product-thumb-svg"/);
   assert.match(html, /Search this model online/);
   assert.match(html, /retailer info not available/);
@@ -70,7 +79,7 @@ test('task 9.3 product-card: no-price list row renders shopping fallback and dis
     resolveRetailerUrl: () => '#'
   });
 
-  assert.match(html, /Price unavailable — search online/);
+  assert.match(html, /Price unavailable/);
   assert.match(html, /Search this model online/);
   assert.match(html, /retailer info not available/);
   assert.match(html, /class="product-thumb-svg"/);
@@ -94,7 +103,8 @@ test('task 9.3 product-card: retailer link with null price renders without blank
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /Price unavailable — search online/);
+  assert.match(html, /Price unavailable/);
+  assert.doesNotMatch(html, /Price unavailable — search online/);
   assert.match(html, /JB Hi-Fi/);
   assert.match(html, /https:\/\/www\.jbhifi\.com\.au\/products\/hisense-srf7500wfh/);
   assert.doesNotMatch(html, /\$null/);
@@ -117,9 +127,72 @@ test('task 9.3 product-card: card with retailer URL but null price shows fallbac
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /Price unavailable — search online/);
+  assert.match(html, /Price unavailable/);
+  assert.doesNotMatch(html, /Price unavailable — search online/);
   assert.match(html, /JB Hi-Fi/);
   assert.doesNotMatch(html, /\$null/);
+});
+
+test('task 9.3 product-card: retailer product URL becomes the primary row title with model secondary', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct({
+    brand: 'CHIQ',
+    model: 'CTM200NSS5E',
+    retailers: [
+      {
+        n: 'JB Hi-Fi',
+        url: 'https://www.jbhifi.com.au/products/chiq-ctm201nb3-202l-top-mount-fridge-black',
+        p: null
+      }
+    ]
+  }), {
+    annualEnergyCost: () => '58',
+    lifetimeCost: () => 576,
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /<div class="p-row-name">CHiQ CTM201NB3 202L Top Mount Fridge \(Black\)<\/div>/);
+  assert.match(html, /<div class="p-row-model">Model CTM200NSS5E<\/div>/);
+  assert.doesNotMatch(html, /<div class="p-row-name">CTM200NSS5E<\/div>/);
+});
+
+test('task 9.3 product-card: retailer product URL becomes the primary card title with model secondary', async () => {
+  const { buildCard } = await import(productCardModuleUrl);
+  const html = buildCard(makeProduct({
+    brand: 'CHIQ',
+    model: 'CTM200NSS5E',
+    retailers: [
+      {
+        n: 'JB Hi-Fi',
+        url: 'https://www.jbhifi.com.au/products/chiq-ctm201nb3-202l-top-mount-fridge-black',
+        p: null
+      }
+    ]
+  }), {
+    tcoHtml: () => '',
+    retailersHtml: () => '',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /<div class="c-name">CHiQ CTM201NB3 202L Top Mount Fridge \(Black\)<\/div>/);
+  assert.match(html, /<div class="c-model">Model CTM200NSS5E<\/div>/);
+  assert.doesNotMatch(html, /<div class="c-name">CTM200NSS5E<\/div>/);
+});
+
+test('task 9.3 product-card: no-price action copy uses compact non-italic styling hooks', () => {
+  const block = cssBlock(deferredCss, '.c-price.no-price, .p-row-price.no-price');
+
+  assert.match(block, /font-family:\s*'Outfit'/);
+  assert.match(block, /font-style:\s*normal/);
+  assert.match(block, /font-size:\s*13px/);
+});
+
+test('task 9.3 facet price filters stay inside the sidebar grid', () => {
+  const block = cssBlock(criticalCss, '.facet-price-row input');
+
+  assert.match(block, /min-width:\s*0/);
+  assert.match(block, /width:\s*100%/);
+  assert.match(block, /box-sizing:\s*border-box/);
 });
 
 test('task 10 rebate: isRebateEligible returns true for stars >= 4', async () => {
