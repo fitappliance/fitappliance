@@ -1,7 +1,835 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-04-27",
-  "approved_count": 0,
-  "products": {}
+  "last_updated": "2026-04-28",
+  "approved_count": 36,
+  "products": {
+    "fridge-arf3177": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "jb_match": {
+        "brand": "LG",
+        "model": "GF-V500MBLC",
+        "capacity": "508L",
+        "color": "Matte Black"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/lg-gf-v500mblc-508l-slim-french-door-fridge-matte-black",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: LG GF-V500MBLC 508L, exact match to catalog LG GF-V500MBLC",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3094": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "jb_match": {
+        "brand": "LG",
+        "model": "GF-L700PL",
+        "capacity": "637L",
+        "color": "Stainless"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/lg-gf-l700pl-637l-french-door-fridge-stainless-steel",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: LG GF-L700PL 637L, exact match to catalog LG GF-L700PL",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3292": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "LG",
+        "model": "GF-LN500PL",
+        "capacity": "506L",
+        "color": "Stainless"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/lg-gf-ln500pl-506l-slim-french-door-fridge-stainless-non-plumbed",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: LG GF-LN500PL 506L, variant match to catalog LG GF-LN500MBL",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3423": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "LG",
+        "model": "GF-B505PL",
+        "capacity": "530L",
+        "color": "Stainless"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/lg-gf-b505pl-530l-slim-french-door-fridge-stainless-steel",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: LG GF-B505PL 530L, variant match to catalog LG GF-B505BB",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf2606": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "LG",
+        "model": "GS-B655MBL",
+        "capacity": "655L",
+        "color": "Matte Black"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: LG GS-B655MBL 655L, variant match to catalog LG GS-B655PL",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf2444": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Westinghouse",
+        "model": "WQE6000SB",
+        "capacity": "541L",
+        "color": "Stainless"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wqe6000sb-600l-french-door-fridge-s-steel",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Westinghouse WQE6000SB 541L, variant match to catalog WESTINGHOUSE WQE6000BB",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf2745": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Westinghouse",
+        "model": "WBE4302AC-R",
+        "capacity": "425L",
+        "color": "Silver"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wbe4302ac-r-425l-bottom-mount-fridge-silver-right",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Westinghouse WBE4302AC-R 425L, variant match to catalog WESTINGHOUSE WBE4302WC",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3827": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Westinghouse",
+        "model": "WBE5304SC-R",
+        "capacity": "496L",
+        "color": "Stainless"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wbe5304sc-r-496l-bottom-mount-fridge-stainless-steel-right",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Westinghouse WBE5304SC-R 496L, variant match to catalog WESTINGHOUSE WBE5300WC",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3865": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Westinghouse",
+        "model": "WBB3100WK",
+        "capacity": "308L",
+        "color": "White"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wbb3100wk-308l-bottom-mount-fridge-white",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Westinghouse WBB3100WK 308L, variant match to catalog WESTINGHOUSE WBB3100AK",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf2733": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Westinghouse",
+        "model": "WSE6640BA",
+        "capacity": "619L",
+        "color": "Black"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Westinghouse WSE6640BA 619L, variant match to catalog WESTINGHOUSE WSE6640SA",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3512": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "jb_match": {
+        "brand": "Hisense",
+        "model": "HRBF126",
+        "capacity": "124L",
+        "color": "White"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrbf126-124l-bar-fridge-white",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Hisense HRBF126 124L, exact match to catalog HISENSE HRBF126",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3513": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "jb_match": {
+        "brand": "Hisense",
+        "model": "HRBF46",
+        "capacity": "45L",
+        "color": "White"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrbf46-45l-bar-fridge-white",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Hisense HRBF46 45L, exact match to catalog HISENSE HRBF46",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3316": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Hisense",
+        "model": "HRTF325S",
+        "capacity": "326L",
+        "color": "Silver"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrtf325s-326l-top-mount-fridge-silver",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Hisense HRTF325S 326L, variant match to catalog HISENSE HRTF325",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3335": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "jb_match": {
+        "brand": "Hisense",
+        "model": "HRTF206",
+        "capacity": "205L",
+        "color": ""
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrtf206-205l-top-mount-fridge",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Hisense HRTF206 205L, exact match to catalog HISENSE HRTF206",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf2831": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "jb_match": {
+        "brand": "Hisense",
+        "model": "HRVF384S",
+        "capacity": "384L",
+        "color": "Brushed Steel"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrvf384s-384l-single-door-fridge-or-freezer-brushed-steel",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Hisense HRVF384S 384L, exact match to catalog HISENSE HRVF384S",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf2946": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "jb_match": {
+        "brand": "Hisense",
+        "model": "HRVF240",
+        "capacity": "240L",
+        "color": "White"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrvf240-240l-single-door-hybrid-fridge-freezer-white",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Hisense HRVF240 240L, exact match to catalog HISENSE HRVF240",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3453": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "jb_match": {
+        "brand": "Hisense",
+        "model": "HRCD640TBW",
+        "capacity": "640L",
+        "color": "Dark Stainless"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrcd640tbw-640l-french-door-fridge-dark-stainless-steel",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Hisense HRCD640TBW 640L, exact match to catalog HISENSE HRCD640TBW",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf2860": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "jb_match": {
+        "brand": "Hisense",
+        "model": "HRSBS632BW",
+        "capacity": "632L",
+        "color": "Black Steel"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrsbs632bw-632l-wi-fi-side-by-side-fridge-black-steel",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Hisense HRSBS632BW 632L, exact match to catalog HISENSE HRSBS632BW",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3501": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Haier",
+        "model": "HRF516YHC",
+        "capacity": "463L",
+        "color": "Black"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf516yhc-463l-french-door-fridge-black",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Haier HRF516YHC 463L, variant match to catalog Haier HRF510BHC",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3074": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "jb_match": {
+        "brand": "Haier",
+        "model": "HRF420BS",
+        "capacity": "433L",
+        "color": "Satina"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf420bs-433l-bottom-mount-fridge-satina",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Haier HRF420BS 433L, exact match to catalog Haier HRF420BS",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3598": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "jb_match": {
+        "brand": "Haier",
+        "model": "HRF90UW2",
+        "capacity": "90L",
+        "color": "White"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf90uw2-300-series-90l-bar-fridge-white",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Haier HRF90UW2 90L, exact match to catalog HAIER HRF90UW2",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3077": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Haier",
+        "model": "HRF420BEC",
+        "capacity": "433L",
+        "color": ""
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf420bec-433l-bottom-mount-fridge",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Haier HRF420BEC 433L, variant match to catalog Haier HRF420BHS",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3573": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Haier",
+        "model": "HRF505VS",
+        "capacity": "465L",
+        "color": "Stainless"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf505vs-465l-single-door-fridge-stainless-steel",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Haier HRF505VS 465L, variant match to catalog HAIER HRF505VW",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "f7": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Haier",
+        "model": "HRF520BS",
+        "capacity": "498L",
+        "color": "Satina"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://jbhifi.com.au/products/haier-hrf520bs-498l-bottom-mount-fridge-satina",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Haier HRF520BS 498L, variant match to catalog Haier HRF520BHS French Door 520L",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf2253": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Haier",
+        "model": "HRF130UG2",
+        "capacity": "129L",
+        "color": "Black"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf130ug2-300-series-129l-bar-fridge-black",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Haier HRF130UG2 129L, variant match to catalog Haier HRF130UW",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf2964": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Fisher & Paykel",
+        "model": "RF730QNUVB1",
+        "capacity": "690L",
+        "color": "Black Stainless"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf730qnuvb1-690l-quad-door-ice-water-fridge-black-stainless-steel",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Fisher & Paykel RF730QNUVB1 690L, variant match to catalog FISHER & PAYKEL RF730QNUVX1",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3054": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Fisher & Paykel",
+        "model": "RF500QNUB1",
+        "capacity": "498L",
+        "color": "Black Stainless"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf500qnub1-498l-quad-door-ice-water-fridge-black-stainless-steel",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Fisher & Paykel RF500QNUB1 498L, variant match to catalog FISHER & PAYKEL RF500QNUX1",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3570": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Fisher & Paykel",
+        "model": "RF522ADUX5",
+        "capacity": "487L",
+        "color": "Stainless"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf522adux5-487l-french-door-fridge-stainless-steel",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Fisher & Paykel RF522ADUX5 487L, variant match to catalog FISHER & PAYKEL RF522ADX6",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "f3": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Fisher & Paykel",
+        "model": "RF730QZUVB1",
+        "capacity": "690L",
+        "color": "Black"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf730qzuvb1-690l-quad-french-door-fridge-black",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Fisher & Paykel RF730QZUVB1 690L, variant match to catalog Fisher & Paykel RF730QZUVX1 French Door 726L",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3059": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "jb_match": {
+        "brand": "Fisher & Paykel",
+        "model": "RF500QNX1",
+        "capacity": "498L",
+        "color": "Stainless"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf500qnx1-498l-quad-door-fridge-stainless-steel",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Fisher & Paykel RF500QNX1 498L, exact match to catalog FISHER & PAYKEL RF500QNX1",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3548": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "jb_match": {
+        "brand": "Fisher & Paykel",
+        "model": "RF610ADX5",
+        "capacity": "569L",
+        "color": "Stainless"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf610adx5-569l-french-door-fridge-stainless-steel",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Fisher & Paykel RF610ADX5 569L, exact match to catalog FISHER & PAYKEL RF610ADX5",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf2887": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "Fisher & Paykel",
+        "model": "RF605QNUVB1",
+        "capacity": "538L",
+        "color": "Black Stainless"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qnuvb1-538l-french-door-fridge-black-stainless-steel",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: Fisher & Paykel RF605QNUVB1 538L, variant match to catalog FISHER & PAYKEL RF605QDVX2",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf2654": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "CHiQ",
+        "model": "CBM393NB3",
+        "capacity": "396L",
+        "color": "Black"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/chiq-cbm393nb3-396l-bottom-mount-fridge-black",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: CHiQ CBM393NB3 396L, variant match to catalog CHIQ CBM394NSS",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf3396": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "CHiQ",
+        "model": "CTM201NB3",
+        "capacity": "202L",
+        "color": "Black"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/chiq-ctm201nb3-202l-top-mount-fridge-black",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: CHiQ CTM201NB3 202L, variant match to catalog CHIQ CTM200NSS5E",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf2861": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "CHiQ",
+        "model": "CTM202NW3",
+        "capacity": "202L",
+        "color": "White"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/chiq-ctm202nw3-202l-top-mount-fridge-white",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: CHiQ CTM202NW3 202L, variant match to catalog CHIQ CTM202NW",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    },
+    "fridge-arf2472": {
+      "researched_at": "2026-04-28",
+      "approved": true,
+      "confidence": "medium",
+      "match_type": "variant",
+      "jb_match": {
+        "brand": "CHiQ",
+        "model": "CRSR089DR1",
+        "capacity": "90L",
+        "color": "Red"
+      },
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/chiq-crsr089dr1-90l-retro-style-bar-fridge-red",
+          "p": null,
+          "verified_at": "2026-04-28",
+          "source": "websearch-jbhifi"
+        }
+      ],
+      "notes": "JB Hi-Fi: CHiQ CRSR089DR1 90L, variant match to catalog CHIQ CRSR088DW",
+      "approved_by": "phase-50-round-1-jb-fridges"
+    }
+  }
 }
-

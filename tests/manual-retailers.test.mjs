@@ -5,13 +5,16 @@ import path from 'node:path';
 
 const MANUAL_RETAILERS_PATH = path.join(process.cwd(), 'data', 'manual-retailers.json');
 
-test('manual retailers: seed document has stable schema metadata and empty products map', () => {
+test('manual retailers: document has stable schema metadata and consistent approved_count', () => {
   const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
 
   assert.equal(document.schema_version, 1);
-  assert.equal(document.last_updated, '2026-04-27');
-  assert.equal(document.approved_count, 0);
-  assert.deepEqual(document.products, {});
+  assert.match(document.last_updated, /^\d{4}-\d{2}-\d{2}$/);
+  assert.equal(typeof document.products, 'object');
+  assert.notEqual(document.products, null);
+
+  const approvedEntries = Object.values(document.products).filter((entry) => entry?.approved === true);
+  assert.equal(document.approved_count, approvedEntries.length, 'approved_count must equal entries with approved=true');
 });
 
 test('manual retailers: approved entry schema is documented by fixture shape', () => {

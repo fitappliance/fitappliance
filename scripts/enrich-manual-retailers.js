@@ -76,7 +76,12 @@ function enrichCatalogFile(filePath, manualDocument) {
   const document = JSON.parse(original);
   const products = applyManualRetailers(document.products, manualDocument);
   const nextDocument = { ...document, products };
-  const next = `${JSON.stringify(nextDocument, null, 2)}\n`;
+  // Preserve the catalog's compact (single-line) JSON format to avoid massive whitespace diffs.
+  // Detect format by checking if the original lacks pretty-printing (has no internal newlines).
+  const isCompact = !original.slice(0, 200).includes('\n') || original.split('\n').length < 5;
+  const next = isCompact
+    ? JSON.stringify(nextDocument)
+    : `${JSON.stringify(nextDocument, null, 2)}\n`;
 
   if (next !== original) {
     fs.writeFileSync(filePath, next);
