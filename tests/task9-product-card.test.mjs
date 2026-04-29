@@ -78,6 +78,50 @@ test('task 9.3 product-card: no-price list row renders shopping fallback and dis
   assert.match(html, /google\.com\.au\/search/);
 });
 
+test('task 9.3 product-card: retailer link with null price renders without blanking row', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct({
+    retailers: [
+      {
+        n: 'JB Hi-Fi',
+        url: 'https://www.jbhifi.com.au/products/hisense-srf7500wfh',
+        p: null
+      }
+    ]
+  }), {
+    annualEnergyCost: () => '100',
+    lifetimeCost: () => 2000,
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /Price unavailable — search online/);
+  assert.match(html, /JB Hi-Fi/);
+  assert.match(html, /https:\/\/www\.jbhifi\.com\.au\/products\/hisense-srf7500wfh/);
+  assert.doesNotMatch(html, /\$null/);
+  assert.doesNotMatch(html, /undefined/);
+});
+
+test('task 9.3 product-card: card with retailer URL but null price shows fallback price copy', async () => {
+  const { buildCard } = await import(productCardModuleUrl);
+  const html = buildCard(makeProduct({
+    retailers: [
+      {
+        n: 'JB Hi-Fi',
+        url: 'https://www.jbhifi.com.au/products/hisense-srf7500wfh',
+        p: null
+      }
+    ]
+  }), {
+    tcoHtml: () => '',
+    retailersHtml: () => '',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /Price unavailable — search online/);
+  assert.match(html, /JB Hi-Fi/);
+  assert.doesNotMatch(html, /\$null/);
+});
+
 test('task 10 rebate: isRebateEligible returns true for stars >= 4', async () => {
   const { isRebateEligible } = await import(productCardModuleUrl);
 

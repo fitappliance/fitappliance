@@ -43,6 +43,11 @@ export function buildNoRetailerUrl(product) {
   return buildSearchOnlineUrl(product);
 }
 
+function getPositivePrice(value) {
+  const price = Number(value);
+  return Number.isFinite(price) && price > 0 ? price : null;
+}
+
 // Australian state energy rebate programs (NSW/VIC/SA/QLD) typically require >= 4-star GEMS.
 const REBATE_STAR_THRESHOLD = 4;
 
@@ -105,7 +110,8 @@ export function buildPriceBadge(product, capturedDate) {
   const retailers = Array.isArray(product?.retailers) ? product.retailers : [];
   const prices = retailers
     .map((retailer) => retailer?.p)
-    .filter((price) => Number.isInteger(price) && price > 0);
+    .map(getPositivePrice)
+    .filter((price) => price !== null);
 
   if (prices.length === 0) return '';
   const bestPrice = Math.min(...prices);
@@ -128,7 +134,7 @@ export function buildCard(p, deps = {}) {
   const isSaved = deps.isSaved ?? (() => false);
   const capturedDate = deps.capturedDate ?? '';
   const retailers = Array.isArray(p.retailers) ? p.retailers : [];
-  const hasPrice = retailers.length > 0;
+  const hasPrice = retailers.some((retailer) => getPositivePrice(retailer?.p) !== null);
   const displayBrand = displayBrandName(p.brand);
   const saved = isSaved(p.id);
   const compareLabel = `${displayBrand} ${p.model.split(' ').slice(0, 3).join(' ')}`;
@@ -189,8 +195,12 @@ export function buildRow(p, deps = {}) {
   const isSaved = deps.isSaved ?? (() => false);
   const capturedDate = deps.capturedDate ?? '';
   const retailers = Array.isArray(p.retailers) ? p.retailers : [];
-  const hasPrice = retailers.length > 0;
-  const bestP = hasPrice ? Math.min(...retailers.map(r => r.p)) : null;
+  const hasRetailers = retailers.length > 0;
+  const pricedRetailers = retailers
+    .map((retailer) => ({ retailer, price: getPositivePrice(retailer?.p) }))
+    .filter((entry) => entry.price !== null);
+  const hasPrice = pricedRetailers.length > 0;
+  const bestP = hasPrice ? Math.min(...pricedRetailers.map((entry) => entry.price)) : null;
   const displayBrand = displayBrandName(p.brand);
   const saved = isSaved(p.id);
   const compareLabel = `${displayBrand} ${p.model.split(' ').slice(0, 2).join(' ')}`;
@@ -226,14 +236,18 @@ export function buildRow(p, deps = {}) {
       <div style="font-size:12px;color:var(--green);margin-top:4px">⚡ ~$${annual}/yr · 10yr TCO ~$${total.toLocaleString()} · ${p.features.slice(0, 3).join(' · ')}</div>
       ${p.vented ? '<div style="font-size:12px;color:var(--red);margin-top:4px">⚠️ Vented — external ducting required (NCC 2022). Not for apartments.</div>' : ''}
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
-        ${hasPrice ? retailers.map(r => `<a href="${resolveRetailerUrl(r, p)}" target="_blank" rel="noopener sponsored" style="font-size:12.5px;color:var(--copper);font-weight:600;text-decoration:none;background:var(--copper-bg);padding:4px 10px;border-radius:6px"
+        ${hasRetailers ? retailers.map(r => {
+          const priceNum = getPositivePrice(r?.p);
+          const priceLabel = priceNum !== null ? ` $${priceNum.toLocaleString()}` : '';
+          return `<a href="${resolveRetailerUrl(r, p)}" target="_blank" rel="noopener sponsored" style="font-size:12.5px;color:var(--copper);font-weight:600;text-decoration:none;background:var(--copper-bg);padding:4px 10px;border-radius:6px"
           data-buy-click="1"
           data-product-id="${escHtml(p.id)}"
           data-brand="${escHtml(p.brand)}"
           data-model="${escHtml(p.model)}"
           data-retailer="${escHtml(r.n)}"
-          data-price="${Number.isFinite(r.p) ? r.p : 0}"
-        >${r.n} $${r.p.toLocaleString()} ↗</a>`).join('') : ''}
+          data-price="${priceNum ?? 0}"
+        >${escHtml(r.n)}${priceLabel} ↗</a>`;
+        }).join('') : ''}
       </div>
       <div style="font-size:10.5px;color:var(--ink-3);margin-top:4px;font-style:italic">We earn a commission if you purchase via these links. <a href="/affiliate-disclosure" style="color:var(--copper)">Disclosure</a></div>
     </div>

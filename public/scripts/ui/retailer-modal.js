@@ -8,14 +8,34 @@ function escHtml(value) {
   }[char]));
 }
 
-function normalizeRetailers(retailers) {
+function getPositivePrice(value) {
+  const price = Number(value);
+  return Number.isFinite(price) && price > 0 ? price : null;
+}
+
+function normalizePricedRetailers(retailers) {
   if (!Array.isArray(retailers)) return [];
   return retailers
-    .filter((retailer) => retailer && Number.isFinite(retailer.p) && retailer.p > 0)
+    .filter((retailer) => retailer && getPositivePrice(retailer.p) !== null)
     .map((retailer) => ({
       ...retailer,
-      p: Number(retailer.p)
-    }));
+      n: String(retailer?.n ?? retailer?.name ?? '').trim(),
+      url: String(retailer?.url ?? retailer?.href ?? '').trim(),
+      p: getPositivePrice(retailer.p)
+    }))
+    .filter((retailer) => retailer.n);
+}
+
+function normalizeLinkedRetailers(retailers) {
+  if (!Array.isArray(retailers)) return [];
+  return retailers
+    .map((retailer) => ({
+      ...retailer,
+      n: String(retailer?.n ?? retailer?.name ?? '').trim(),
+      url: String(retailer?.url ?? retailer?.href ?? '').trim(),
+      p: getPositivePrice(retailer?.p)
+    }))
+    .filter((retailer) => retailer.n && retailer.url);
 }
 
 function modelTitle(model) {
@@ -28,8 +48,31 @@ function isSearchLikeHref(href) {
   return /\/search(?:\/|[?#]|$)/i.test(href) || /[?&](q|query|text|search|keyword)=/i.test(href);
 }
 
+function firstLinkedRetailer(retailers) {
+  const linked = normalizeLinkedRetailers(retailers);
+  if (linked.length === 0) return null;
+  return linked.sort((left, right) => {
+    const leftHasPrice = left.p !== null ? 0 : 1;
+    const rightHasPrice = right.p !== null ? 0 : 1;
+    return leftHasPrice - rightHasPrice || left.n.localeCompare(right.n);
+  })[0];
+}
+
+function buildDirectRetailerButton(product, retailer, { resolveRetailerUrl }) {
+  const targetUrl = resolveRetailerUrl(retailer, product) ?? retailer.url ?? '#';
+  const actionLabel = isSearchLikeHref(targetUrl) ? 'Search' : 'Buy';
+  return `<a class="btn-buy" href="${escHtml(targetUrl)}" target="_blank" rel="noopener sponsored"
+      data-buy-click="1"
+      data-product-id="${escHtml(product?.id ?? '')}"
+      data-brand="${escHtml(product?.brand ?? '')}"
+      data-model="${escHtml(product?.model ?? '')}"
+      data-retailer="${escHtml(retailer.n)}"
+      data-price="${retailer.p ?? 0}"
+    >${actionLabel} at ${escHtml(retailer.n)}</a>`;
+}
+
 export function shouldShowRetailerModal(product) {
-  return Array.isArray(product?.retailers) && product.retailers.length >= 2;
+  return normalizePricedRetailers(product?.retailers).length >= 2;
 }
 
 export function buildSearchOnlineButton(
@@ -47,7 +90,7 @@ export function buildSearchOnlineButton(
 
 export function buildRetailerModalHtml(product, { resolveRetailerUrl = (retailer) => retailer.url } = {}) {
   if (!shouldShowRetailerModal(product)) return '';
-  const sorted = [...normalizeRetailers(product.retailers)].sort((left, right) => left.p - right.p);
+  const sorted = [...normalizePricedRetailers(product?.retailers)].sort((left, right) => left.p - right.p);
   if (sorted.length < 2) return '';
 
   const cheapest = sorted[0];
@@ -72,7 +115,7 @@ export function buildRetailerModalHtml(product, { resolveRetailerUrl = (retailer
         data-brand="${escHtml(product?.brand ?? '')}"
         data-model="${escHtml(product?.model ?? '')}"
         data-retailer="${escHtml(retailer.n)}"
-        data-price="${Number.isFinite(retailer.p) ? retailer.p : 0}"
+        data-price="${retailer.p ?? 0}"
       >${actionLabel}</a>
     </li>`;
   }).join('');
@@ -99,25 +142,16 @@ export function buildRetailerTriggerButton(
     buildSearchOnlineUrl
   } = {}
 ) {
-  const retailers = normalizeRetailers(product?.retailers);
+  const pricedRetailers = normalizePricedRetailers(product?.retailers);
 
-  if (retailers.length === 0) {
-    return buildSearchOnlineButton(product, { buildSearchOnlineUrl, buildNoRetailerUrl });
+  if (pricedRetailers.length >= 2) {
+    return `<button class="btn-buy" type="button" onclick="openRetailerModal('${escHtml(product.id)}')">Compare ${pricedRetailers.length} Retailers</button>`;
   }
 
-  if (retailers.length === 1) {
-    const retailer = retailers[0];
-    const targetUrl = resolveRetailerUrl(retailer, product) ?? '#';
-    const actionLabel = isSearchLikeHref(targetUrl) ? 'Search' : 'Buy';
-    return `<a class="btn-buy" href="${escHtml(targetUrl)}" target="_blank" rel="noopener sponsored"
-      data-buy-click="1"
-      data-product-id="${escHtml(product?.id ?? '')}"
-      data-brand="${escHtml(product?.brand ?? '')}"
-      data-model="${escHtml(product?.model ?? '')}"
-      data-retailer="${escHtml(retailer.n)}"
-      data-price="${Number.isFinite(retailer.p) ? retailer.p : 0}"
-    >${actionLabel} at ${escHtml(retailer.n)}</a>`;
+  const linkedRetailer = firstLinkedRetailer(product?.retailers);
+  if (linkedRetailer) {
+    return buildDirectRetailerButton(product, linkedRetailer, { resolveRetailerUrl });
   }
 
-  return `<button class="btn-buy" type="button" onclick="openRetailerModal('${escHtml(product.id)}')">Compare ${retailers.length} Retailers</button>`;
+  return buildSearchOnlineButton(product, { buildSearchOnlineUrl, buildNoRetailerUrl });
 }

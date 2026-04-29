@@ -83,6 +83,34 @@ test('task 15 retailer-modal: trigger for 1 retailer uses search label for searc
   assert.doesNotMatch(html, /openRetailerModal/);
 });
 
+test('task 15 retailer-modal: trigger for 1 retailer without price still links to retailer URL', async () => {
+  const { buildRetailerTriggerButton } = await import(moduleUrl);
+  const html = buildRetailerTriggerButton(makeProduct({
+    retailers: [{ n: 'JB Hi-Fi', p: null, url: 'https://www.jbhifi.com.au/products/lg-gb335pl' }]
+  }), {
+    buildSearchOnlineUrl: () => 'https://www.google.com.au/search?q=LG%20GB335PL%20fridge%20australia',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /Buy at JB Hi-Fi/);
+  assert.match(html, /href="https:\/\/www\.jbhifi\.com\.au\/products\/lg-gb335pl"/);
+  assert.match(html, /data-price="0"/);
+  assert.doesNotMatch(html, /google\.com\.au\/search/);
+});
+
+test('task 15 retailer-modal: modal only opens when at least 2 retailer prices are known', async () => {
+  const { shouldShowRetailerModal, buildRetailerModalHtml } = await import(moduleUrl);
+  const product = makeProduct({
+    retailers: [
+      { n: 'JB Hi-Fi', p: null, url: 'https://www.jbhifi.com.au/products/lg-gb335pl' },
+      { n: 'Bing Lee', p: undefined, url: 'https://www.binglee.com.au/products/lg-gb335pl' }
+    ]
+  });
+
+  assert.equal(shouldShowRetailerModal(product), false);
+  assert.equal(buildRetailerModalHtml(product), '');
+});
+
 test('task 15 retailer-modal: trigger for 2 retailers is compare button opening modal', async () => {
   const { buildRetailerTriggerButton } = await import(moduleUrl);
   const html = buildRetailerTriggerButton(makeProduct({
