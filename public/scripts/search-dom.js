@@ -726,15 +726,58 @@
       .filter((retailer) => retailer.name);
   }
 
-  function getBestRetailer(match) {
-    const retailers = getRetailerSummaries(match);
-    if (retailers.length === 0) return null;
-    return [...retailers].sort((left, right) => {
-      const leftPrice = Number.isFinite(left.price) ? left.price : Number.MAX_SAFE_INTEGER;
-      const rightPrice = Number.isFinite(right.price) ? right.price : Number.MAX_SAFE_INTEGER;
-      if (leftPrice !== rightPrice) return leftPrice - rightPrice;
-      return left.name.localeCompare(right.name);
-    })[0];
+  function safeRetailerDisplayName(name) {
+    const value = safeDisplayText(name, '').trim();
+    if (/[<>]/.test(value) || /\bon\w+\s*=/i.test(value)) return 'Retailer';
+    return value || 'Retailer';
+  }
+
+  function retailerInitials(name) {
+    const normalized = safeRetailerDisplayName(name);
+    const known = {
+      'jb hi-fi': 'JB',
+      'jb hifi': 'JB',
+      'appliances online': 'AO',
+      'harvey norman': 'HN',
+      'the good guys': 'TGG',
+      'bing lee': 'BL'
+    };
+    const key = normalized.toLowerCase().replace(/\s+/g, ' ');
+    if (known[key]) return known[key];
+    const parts = normalized.split(/[\s\-&]+/).filter(Boolean);
+    if (parts.length === 0) return '?';
+    if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+    return parts.slice(0, 2).map((part) => part[0]).join('').toUpperCase();
+  }
+
+  function buildRetailerLinkGroupHtml(match) {
+    const seen = new Set();
+    const links = getRetailerSummaries(match)
+      .filter((retailer) => retailer.url)
+      .filter((retailer) => {
+        const key = retailer.name.toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+
+    if (links.length === 0) return '';
+    return `<div class="card-retailer-links" aria-label="Retailer product links">
+      <span class="retailer-logo-label">Retailers</span>
+      ${links.map((retailer) => {
+        const displayName = safeRetailerDisplayName(retailer.name);
+        return `<a class="retailer-logo-link" href="${escHtml(retailer.url)}" target="_blank" rel="sponsored nofollow noopener"
+          aria-label="Open ${escHtml(displayName)} product page"
+          title="${escHtml(displayName)}"
+          data-buy-click="1"
+          data-product-id="${escHtml(match?.id ?? '')}"
+          data-brand="${escHtml(match?.brand ?? '')}"
+          data-model="${escHtml(match?.model ?? match?.sku ?? '')}"
+          data-retailer="${escHtml(displayName)}"
+          data-price="${Number.isFinite(retailer.price) ? retailer.price : 0}"
+        ><span class="retailer-logo-mark">${escHtml(retailerInitials(displayName))}</span><span class="retailer-logo-name">${escHtml(displayName)}</span></a>`;
+      }).join('')}
+    </div>`;
   }
 
   function getCardTitle(match) {
@@ -858,9 +901,9 @@
   }
 
   function buildCardCtaHtml(match) {
-    const best = getBestRetailer(match);
-    if (best?.url) {
-      return `<a href="${escHtml(best.url)}" target="_blank" rel="sponsored nofollow noopener">View at ${escHtml(best.name)}</a>`;
+    const retailerLinks = buildRetailerLinkGroupHtml(match);
+    if (retailerLinks) {
+      return retailerLinks;
     }
     return `<a href="${escHtml(buildSearchOnlineUrl(match))}" target="_blank" rel="sponsored nofollow noopener">Search this model<span>retailer info not available</span></a>`;
   }

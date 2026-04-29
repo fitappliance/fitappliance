@@ -195,6 +195,16 @@ test('task 9.3 facet price filters stay inside the sidebar grid', () => {
   assert.match(block, /box-sizing:\s*border-box/);
 });
 
+test('phase 50 retailer links: logo-like retailer chips have compact styling hooks', () => {
+  const linkBlock = cssBlock(deferredCss, '.retailer-logo-link');
+  const markBlock = cssBlock(deferredCss, '.retailer-logo-mark');
+
+  assert.match(linkBlock, /border-radius:\s*999px/);
+  assert.match(linkBlock, /font-size:\s*11px/);
+  assert.match(markBlock, /min-width:\s*24px/);
+  assert.match(markBlock, /font-weight:\s*900/);
+});
+
 test('task 10 rebate: isRebateEligible returns true for stars >= 4', async () => {
   const { isRebateEligible } = await import(productCardModuleUrl);
 

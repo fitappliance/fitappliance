@@ -90,3 +90,20 @@ test('phase 48 card redesign: commission disclosure is rendered once above resul
   assert.match(resultsEl.querySelector('.commission-disclosure')?.textContent ?? '', /small commission/i);
   assert.equal(resultsEl.querySelectorAll('.fit-result-item').length, 2);
 });
+
+test('phase 50 retailer links: result card CTA shows every linked retailer as a selectable chip', async () => {
+  const { buildCardHtml } = await loadSearchDom();
+  const html = buildCardHtml(makeMatch({
+    retailers: [
+      { n: 'JB Hi-Fi', p: null, url: 'https://www.jbhifi.com.au/products/lg-gf-l708mbl' },
+      { n: 'Appliances Online', p: null, url: 'https://www.appliancesonline.com.au/product/lg-gf-l708mbl/' }
+    ]
+  }));
+
+  assert.match(html, /card-retailer-links/);
+  assert.match(html, /JB Hi-Fi/);
+  assert.match(html, /Appliances Online/);
+  assert.match(html, /href="https:\/\/www\.jbhifi\.com\.au\/products\/lg-gf-l708mbl"/);
+  assert.match(html, /href="https:\/\/www\.appliancesonline\.com\.au\/product\/lg-gf-l708mbl\/"/);
+  assert.doesNotMatch(html, /View at JB Hi-Fi/);
+});

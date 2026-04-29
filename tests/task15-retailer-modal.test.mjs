@@ -69,7 +69,7 @@ test('task 15 retailer-modal: online compare fallback escapes href values', asyn
   assert.doesNotMatch(html, /href="[^"]*<bad>/);
 });
 
-test('task 15 retailer-modal: trigger for 1 retailer uses search label for search-like URL', async () => {
+test('task 15 retailer-modal: trigger for 1 retailer uses the retailer chip pattern', async () => {
   const { buildRetailerTriggerButton } = await import(moduleUrl);
   const html = buildRetailerTriggerButton(makeProduct({
     retailers: [{ n: 'The Good Guys', p: 1299, url: 'https://www.thegoodguys.com.au/search?text=GB335' }]
@@ -78,7 +78,9 @@ test('task 15 retailer-modal: trigger for 1 retailer uses search label for searc
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /Search at The Good Guys/);
+  assert.match(html, /retailer-logo-links/);
+  assert.match(html, /retailer-logo-mark">TGG</);
+  assert.match(html, /The Good Guys/);
   assert.match(html, /href="https:\/\/www\.thegoodguys\.com\.au\/search\?text=GB335"/);
   assert.doesNotMatch(html, /openRetailerModal/);
 });
@@ -92,10 +94,48 @@ test('task 15 retailer-modal: trigger for 1 retailer without price still links t
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /Buy at JB Hi-Fi/);
+  assert.match(html, /retailer-logo-links/);
+  assert.match(html, /retailer-logo-mark">JB</);
+  assert.match(html, /JB Hi-Fi/);
   assert.match(html, /href="https:\/\/www\.jbhifi\.com\.au\/products\/lg-gb335pl"/);
   assert.match(html, /data-price="0"/);
   assert.doesNotMatch(html, /google\.com\.au\/search/);
+});
+
+test('phase 50 retailer links: multiple unpriced retailer links render as selectable chips', async () => {
+  const { buildRetailerTriggerButton } = await import(moduleUrl);
+  const html = buildRetailerTriggerButton(makeProduct({
+    retailers: [
+      { n: 'JB Hi-Fi', p: null, url: 'https://www.jbhifi.com.au/products/lg-gb335pl' },
+      { n: 'Appliances Online', p: null, url: 'https://www.appliancesonline.com.au/product/lg-gb335pl/' }
+    ]
+  }), {
+    buildSearchOnlineUrl: () => 'https://www.google.com.au/search?q=LG%20GB335PL%20fridge%20australia',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /retailer-logo-links/);
+  assert.match(html, /JB Hi-Fi/);
+  assert.match(html, /Appliances Online/);
+  assert.match(html, /href="https:\/\/www\.jbhifi\.com\.au\/products\/lg-gb335pl"/);
+  assert.match(html, /href="https:\/\/www\.appliancesonline\.com\.au\/product\/lg-gb335pl\/"/);
+  assert.doesNotMatch(html, /google\.com\.au\/search/);
+  assert.doesNotMatch(html, /Buy at JB Hi-Fi/);
+});
+
+test('phase 50 retailer links: retailer chip labels are escaped', async () => {
+  const { buildRetailerTriggerButton } = await import(moduleUrl);
+  const html = buildRetailerTriggerButton(makeProduct({
+    retailers: [
+      { n: '<img src=x onerror=alert(1)>', p: null, url: 'https://example.com/product' }
+    ]
+  }), {
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /Retailer/);
+  assert.doesNotMatch(html, /&lt;img/);
+  assert.doesNotMatch(html, /onerror=/);
 });
 
 test('task 15 retailer-modal: modal only opens when at least 2 retailer prices are known', async () => {
