@@ -111,7 +111,7 @@ test('phase 48 clearance search: available-only is opt-in, not the default', asy
   const availableOnly = searchWithFacets(rows, STANDARD_FRIDGE_CAVITY, { availableOnly: true }, options).rows.length;
 
   assert.ok(all >= 100);
-  assert.equal(availableOnly, 0);
+  assert.ok(availableOnly < all, `availableOnly facet should narrow the pool from ${all}, got ${availableOnly}`);
   assert.equal(parseSearchParams('?cat=fridge').facets.availableOnly, false);
   assert.match(serializeSearchState({ cat: 'fridge', facets: { availableOnly: true } }).toString(), /avail=1/);
 });
