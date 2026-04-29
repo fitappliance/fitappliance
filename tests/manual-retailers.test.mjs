@@ -41,3 +41,27 @@ test('manual retailers: approved entry schema is documented by fixture shape', (
   assert.deepEqual(Object.keys(entry.retailers[0]), ['n', 'url', 'p', 'verified_at', 'source']);
 });
 
+test('manual retailers: Appliances Online fridge round uses reviewed product-page links', () => {
+  const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
+  const appliancesOnlineLinks = Object.entries(document.products)
+    .filter(([, entry]) => entry?.approved === true)
+    .flatMap(([slug, entry]) => (entry.retailers ?? [])
+      .filter((retailer) => retailer?.n === 'Appliances Online')
+      .map((retailer) => ({ slug, retailer })));
+
+  assert.ok(
+    appliancesOnlineLinks.length >= 30,
+    `expected at least 30 reviewed Appliances Online fridge links, got ${appliancesOnlineLinks.length}`,
+  );
+
+  for (const { slug, retailer } of appliancesOnlineLinks) {
+    assert.match(
+      retailer.url,
+      /^https:\/\/www\.appliancesonline\.com\.au\/product\/[^?#]+\/?$/,
+      `${slug} must use a direct Appliances Online product URL`,
+    );
+    assert.equal(retailer.p, null, `${slug} should keep price null until a trusted feed is available`);
+    assert.equal(retailer.source, 'websearch-appliances-online');
+    assert.match(retailer.verified_at, /^\d{4}-\d{2}-\d{2}$/);
+  }
+});
