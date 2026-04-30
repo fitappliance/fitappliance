@@ -58,6 +58,7 @@
     "ping-indexnow": "node scripts/ping-indexnow.js",
     "audit-compare-links": "node scripts/audit-compare-links.js",
     "audit-link-quality": "node scripts/audit-link-quality.js",
+    "audit-data-accuracy": "node scripts/audit-data-accuracy.js",
     "verify-compare-quality": "node scripts/verify-compare-quality.js",
     "audit-portability": "node scripts/audit-portability.js",
     "audit-docs": "node scripts/audit-docs.js",
