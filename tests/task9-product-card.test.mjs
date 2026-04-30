@@ -251,6 +251,24 @@ test('phase 50 retailer links: list row keeps retailer choices in the action col
   assert.doesNotMatch(html, /We earn a commission if you purchase via these links/);
 });
 
+test('hotfix result row layout: list row uses a classed action footer instead of inline flex squeeze', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct({
+    retailers: [
+      { n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/hisense-srf7500wfh', p: null },
+      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/hisense-srf7500wfh/', p: null },
+      { n: 'The Good Guys', url: 'https://www.thegoodguys.com.au/hisense-srf7500wfh', p: null }
+    ]
+  }), {
+    annualEnergyCost: () => '100',
+    lifetimeCost: () => 2000,
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /class="p-row-action-buttons"/);
+  assert.doesNotMatch(html, /style="display:flex;gap:6px"/);
+});
+
 test('task 10 rebate: isRebateEligible returns true for stars >= 4', async () => {
   const { isRebateEligible } = await import(productCardModuleUrl);
 

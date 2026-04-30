@@ -5,7 +5,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const css = fs.readFileSync(path.join(repoRoot, 'public', 'styles.css'), 'utf8');
+const css = [
+  fs.readFileSync(path.join(repoRoot, 'public', 'styles.css'), 'utf8'),
+  fs.readFileSync(path.join(repoRoot, 'public', 'styles-deferred.css'), 'utf8')
+].join('\n');
 
 function blockFor(selector) {
   const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -34,4 +37,26 @@ test('phase 48 card redesign styles: mobile collapses actions below product info
   assert.match(css, /@media \(max-width:\s*640px\)/);
   assert.match(css, /\.card-grid\s*\{[^}]*grid-template-columns:\s*auto 1fr/);
   assert.match(css, /\.card-action-cell\s*\{[^}]*grid-column:\s*1 \/ -1/);
+});
+
+test('hotfix result row layout: product rows keep information column readable beside retailer links', () => {
+  const row = blockFor('.p-row');
+  const actions = blockFor('.p-row-actions');
+
+  assert.match(row, /grid-template-columns:\s*70px minmax\(0,\s*1fr\)/);
+  assert.match(row, /align-items:\s*start/);
+  assert.match(actions, /grid-column:\s*2/);
+  assert.match(actions, /flex-direction:\s*row/);
+  assert.match(actions, /justify-content:\s*space-between/);
+  assert.match(actions, /border-top:\s*1px solid var\(--border\)/);
+});
+
+test('hotfix result row layout: retailer choices wrap inside the row footer instead of squeezing the title', () => {
+  const buttons = blockFor('.p-row-action-buttons');
+  const denseRail = blockFor('.p-row-actions .retailer-logo-rail');
+
+  assert.match(buttons, /display:\s*flex/);
+  assert.match(buttons, /flex-wrap:\s*wrap/);
+  assert.match(buttons, /justify-content:\s*flex-end/);
+  assert.match(denseRail, /max-width:\s*none/);
 });
