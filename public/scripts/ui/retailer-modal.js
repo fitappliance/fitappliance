@@ -48,27 +48,82 @@ function isSearchLikeHref(href) {
   return /\/search(?:\/|[?#]|$)/i.test(href) || /[?&](q|query|text|search|keyword)=/i.test(href);
 }
 
-function firstLinkedRetailer(retailers) {
-  const linked = normalizeLinkedRetailers(retailers);
-  if (linked.length === 0) return null;
-  return linked.sort((left, right) => {
-    const leftHasPrice = left.p !== null ? 0 : 1;
-    const rightHasPrice = right.p !== null ? 0 : 1;
-    return leftHasPrice - rightHasPrice || left.n.localeCompare(right.n);
-  })[0];
+function retailerInitials(name) {
+  const normalized = String(name ?? '').trim();
+  const known = {
+    'jb hi-fi': 'JB',
+    'jb hifi': 'JB',
+    'appliances online': 'AO',
+    'harvey norman': 'HN',
+    'the good guys': 'TGG',
+    'bing lee': 'BL'
+  };
+  const key = normalized.toLowerCase().replace(/\s+/g, ' ');
+  if (known[key]) return known[key];
+  const parts = normalized.split(/[\s\-&]+/).filter(Boolean);
+  if (parts.length === 0) return '?';
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return parts.slice(0, 2).map((part) => part[0]).join('').toUpperCase();
 }
 
-function buildDirectRetailerButton(product, retailer, { resolveRetailerUrl }) {
-  const targetUrl = resolveRetailerUrl(retailer, product) ?? retailer.url ?? '#';
-  const actionLabel = isSearchLikeHref(targetUrl) ? 'Search' : 'Buy';
-  return `<a class="btn-buy" href="${escHtml(targetUrl)}" target="_blank" rel="noopener sponsored"
-      data-buy-click="1"
+function safeRetailerDisplayName(name) {
+  const value = String(name ?? '').trim();
+  if (/[<>]/.test(value) || /\bon\w+\s*=/i.test(value)) return 'Retailer';
+  return value || 'Retailer';
+}
+
+function buildRetailerLinkAttributes(product, retailer, targetUrl) {
+  return `data-buy-click="1"
       data-product-id="${escHtml(product?.id ?? '')}"
       data-brand="${escHtml(product?.brand ?? '')}"
       data-model="${escHtml(product?.model ?? '')}"
-      data-retailer="${escHtml(retailer.n)}"
-      data-price="${retailer.p ?? 0}"
-    >${actionLabel} at ${escHtml(retailer.n)}</a>`;
+      data-retailer="${escHtml(safeRetailerDisplayName(retailer.n))}"
+      data-price="${retailer.p ?? 0}"`;
+}
+
+export function buildRetailerLogoLinks(product, { resolveRetailerUrl = (retailer) => retailer.url } = {}) {
+  const linked = normalizeLinkedRetailers(product?.retailers);
+  if (linked.length === 0) return '';
+  const seen = new Set();
+  const items = linked.filter((retailer) => {
+    const key = retailer.n.toLowerCase();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+
+  if (items.length >= 5) {
+    const dots = items.map((retailer) => {
+      const targetUrl = resolveRetailerUrl(retailer, product) ?? retailer.url ?? '#';
+      const displayName = safeRetailerDisplayName(retailer.n);
+      return `<a class="retailer-logo-dot" href="${escHtml(targetUrl)}" target="_blank" rel="sponsored nofollow noopener"
+        aria-label="Open ${escHtml(displayName)} product page"
+        title="${escHtml(displayName)}"
+        ${buildRetailerLinkAttributes(product, retailer, targetUrl)}
+      ><span>${escHtml(retailerInitials(displayName))}</span></a>`;
+    }).join('');
+
+    return `<div class="retailer-logo-panel retailer-logo-panel--dense">
+      <span class="retailer-logo-label">Available at ${items.length} stores</span>
+      <div class="retailer-logo-rail" aria-label="Retailer product links">${dots}</div>
+      <span class="retailer-option-hint">Choose a retailer</span>
+    </div>`;
+  }
+
+  const links = items.map((retailer) => {
+    const targetUrl = resolveRetailerUrl(retailer, product) ?? retailer.url ?? '#';
+    const displayName = safeRetailerDisplayName(retailer.n);
+    return `<a class="retailer-logo-link" href="${escHtml(targetUrl)}" target="_blank" rel="sponsored nofollow noopener"
+      aria-label="Open ${escHtml(displayName)} product page"
+      title="${escHtml(displayName)}"
+      ${buildRetailerLinkAttributes(product, retailer, targetUrl)}
+    ><span class="retailer-logo-mark">${escHtml(retailerInitials(displayName))}</span><span class="retailer-logo-name">${escHtml(displayName)}</span></a>`;
+  }).join('');
+
+  return `<div class="retailer-logo-panel">
+    <span class="retailer-logo-label">Available at</span>
+    <div class="retailer-logo-links" aria-label="Retailer product links">${links}</div>
+  </div>`;
 }
 
 export function shouldShowRetailerModal(product) {
@@ -148,9 +203,8 @@ export function buildRetailerTriggerButton(
     return `<button class="btn-buy" type="button" onclick="openRetailerModal('${escHtml(product.id)}')">Compare ${pricedRetailers.length} Retailers</button>`;
   }
 
-  const linkedRetailer = firstLinkedRetailer(product?.retailers);
-  if (linkedRetailer) {
-    return buildDirectRetailerButton(product, linkedRetailer, { resolveRetailerUrl });
+  if (normalizeLinkedRetailers(product?.retailers).length > 0) {
+    return buildRetailerLogoLinks(product, { resolveRetailerUrl });
   }
 
   return buildSearchOnlineButton(product, { buildSearchOnlineUrl, buildNoRetailerUrl });
