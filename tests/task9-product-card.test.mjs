@@ -133,6 +133,28 @@ test('task 9.3 product-card: card with retailer URL but null price shows fallbac
   assert.doesNotMatch(html, /\$null/);
 });
 
+test('hotfix retailer URL quality: priced root retailer URL does not create stale price CTA', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct({
+    brand: 'Mitsubishi',
+    model: 'MR-CGX680ZG French Door 680L',
+    price: 4999,
+    retailers: [
+      { n: 'Appliances Online', url: 'https://www.appliances-online.com.au', p: 4999 }
+    ]
+  }), {
+    annualEnergyCost: () => '90',
+    lifetimeCost: () => 5895,
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /Price unavailable/);
+  assert.match(html, /Search this model online/);
+  assert.doesNotMatch(html, /Appliances Online/);
+  assert.doesNotMatch(html, /href="https:\/\/www\.appliances-online\.com\.au"/);
+  assert.doesNotMatch(html, /\$4,999/);
+});
+
 test('task 9.3 product-card: retailer product URL becomes the primary row title with model secondary', async () => {
   const { buildRow } = await import(productCardModuleUrl);
   const html = buildRow(makeProduct({

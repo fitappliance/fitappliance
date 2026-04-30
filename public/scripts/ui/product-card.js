@@ -3,6 +3,7 @@ import { renderProductThumb } from './product-thumb.js';
 import {
   buildRetailerModalHtml,
   buildRetailerTriggerButton,
+  isRetailerProductPageUrl,
   shouldShowRetailerModal
 } from './retailer-modal.js';
 
@@ -199,6 +200,7 @@ export function warningsHtml(p) {
 export function buildPriceBadge(product, capturedDate) {
   const retailers = Array.isArray(product?.retailers) ? product.retailers : [];
   const prices = retailers
+    .filter((retailer) => isRetailerProductPageUrl(retailer?.url ?? retailer?.href))
     .map((retailer) => retailer?.p)
     .map(getPositivePrice)
     .filter((price) => price !== null);
@@ -206,7 +208,8 @@ export function buildPriceBadge(product, capturedDate) {
   if (prices.length === 0) return '';
   const bestPrice = Math.min(...prices);
   const dateText = capturedDate ? ` as of ${capturedDate}` : '';
-  const retailerCount = retailers.length >= 2 ? `<span class="price-badge__retailers">${retailers.length} retailers</span>` : '';
+  const pricedRetailerCount = prices.length;
+  const retailerCount = pricedRetailerCount >= 2 ? `<span class="price-badge__retailers">${pricedRetailerCount} retailers</span>` : '';
 
   return `<div class="price-badge">
     <span class="price-badge__price">$${bestPrice.toLocaleString()}</span>
@@ -224,7 +227,7 @@ export function buildCard(p, deps = {}) {
   const isSaved = deps.isSaved ?? (() => false);
   const capturedDate = deps.capturedDate ?? '';
   const retailers = Array.isArray(p.retailers) ? p.retailers : [];
-  const hasPrice = retailers.some((retailer) => getPositivePrice(retailer?.p) !== null);
+  const hasPrice = retailers.some((retailer) => isRetailerProductPageUrl(retailer?.url ?? retailer?.href) && getPositivePrice(retailer?.p) !== null);
   const displayBrand = displayBrandName(p.brand);
   const saved = isSaved(p.id);
   const primaryTitle = buildPrimaryTitle(p);
@@ -289,6 +292,7 @@ export function buildRow(p, deps = {}) {
   const capturedDate = deps.capturedDate ?? '';
   const retailers = Array.isArray(p.retailers) ? p.retailers : [];
   const pricedRetailers = retailers
+    .filter((retailer) => isRetailerProductPageUrl(retailer?.url ?? retailer?.href))
     .map((retailer) => ({ retailer, price: getPositivePrice(retailer?.p) }))
     .filter((entry) => entry.price !== null);
   const hasPrice = pricedRetailers.length > 0;

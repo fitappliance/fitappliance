@@ -18,7 +18,7 @@ function makeMatch(overrides = {}) {
     price: 1299,
     stars: 4,
     unavailable: false,
-    retailers: [{ n: 'AO', p: 1299 }],
+    retailers: [{ n: 'Appliances Online', p: 1299, url: 'https://www.appliancesonline.com.au/product/bosch-serie-4/' }],
     priorityScore: 80,
     exactFit: true,
     sortScore: 0.03,
@@ -64,9 +64,9 @@ test('phase 45a facets: applyFacets filters price range and excludes unpriced by
 test('phase 45a facets: applyFacets filters minimum stars and available-only rows', async () => {
   const { applyFacets } = await loadSearchCore();
   const rows = [
-    makeMatch({ id: 'available-4', stars: 4, unavailable: false, retailers: [{ n: 'AO', p: 1000 }] }),
-    makeMatch({ id: 'available-3', stars: 3, unavailable: false, retailers: [{ n: 'AO', p: 1000 }] }),
-    makeMatch({ id: 'flagged-unavailable', stars: 5, unavailable: true, retailers: [{ n: 'AO', p: 1000 }] }),
+    makeMatch({ id: 'available-4', stars: 4, unavailable: false, retailers: [{ n: 'AO', p: 1000, url: 'https://www.appliancesonline.com.au/product/available-4/' }] }),
+    makeMatch({ id: 'available-3', stars: 3, unavailable: false, retailers: [{ n: 'AO', p: 1000, url: 'https://www.appliancesonline.com.au/product/available-3/' }] }),
+    makeMatch({ id: 'flagged-unavailable', stars: 5, unavailable: true, retailers: [{ n: 'AO', p: 1000, url: 'https://www.appliancesonline.com.au/product/flagged/' }] }),
     makeMatch({ id: 'no-retailers', stars: 5, unavailable: false, retailers: [] })
   ];
 
@@ -130,4 +130,3 @@ test('phase 45a facets: searchWithFacets returns filtered rows with counts based
     LG: 1
   });
 });
-

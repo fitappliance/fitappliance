@@ -236,8 +236,35 @@
     return true;
   }
 
+  function isRetailerProductPageUrl(url) {
+    let parsed;
+    try {
+      parsed = new URL(String(url ?? '').trim());
+    } catch {
+      return false;
+    }
+    const host = parsed.hostname.replace(/^www\./, '').toLowerCase();
+    const pathname = parsed.pathname.replace(/\/+$/, '').toLowerCase();
+    if (!['http:', 'https:'].includes(parsed.protocol)) return false;
+    if (!host || pathname === '' || pathname === '/') return false;
+    if (['q', 'query', 'searchterm', 'text', 'keyword'].some((key) => parsed.searchParams.has(key))) return false;
+    if (/\/(search|searchdisplay|catalogsearch|collections?|category|categories|cart|checkout)(\/|$)/i.test(pathname)) {
+      return false;
+    }
+
+    if (host.endsWith('jbhifi.com.au')) return /^\/products\//.test(pathname);
+    if (host.endsWith('appliancesonline.com.au') || host.endsWith('appliances-online.com.au')) return /^\/product\//.test(pathname);
+    if (host.endsWith('binglee.com.au')) return /^\/products\//.test(pathname);
+    if (host.endsWith('harveynorman.com.au')) return /\.html$/.test(pathname);
+    if (host.endsWith('thegoodguys.com.au')) return /^\/[^/]+-[^/]+$/.test(pathname);
+
+    return true;
+  }
+
   function hasRetailerLink(product) {
-    return Array.isArray(product?.retailers) && product.retailers.length > 0;
+    return Array.isArray(product?.retailers) && product.retailers.some((retailer) => (
+      isRetailerProductPageUrl(retailer?.url ?? retailer?.href ?? retailer?.u ?? retailer?.link)
+    ));
   }
 
   function getComparablePrice(value) {
@@ -335,8 +362,7 @@
         return false;
       }
       if (normalized.availableOnly) {
-        const hasRetailers = Array.isArray(row?.retailers) && row.retailers.length > 0;
-        if (row?.unavailable !== false || !hasRetailers) {
+        if (row?.unavailable !== false || !hasRetailerLink(row)) {
           return false;
         }
       }
@@ -597,6 +623,7 @@
     getCategoryClearance,
     getEffectiveClearance,
     hasRetailerLink,
+    isRetailerProductPageUrl,
     normalizeClearanceMode,
     parseSearchParams,
     searchWithFacets,
