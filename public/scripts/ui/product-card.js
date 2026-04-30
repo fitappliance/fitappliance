@@ -341,7 +341,7 @@ export function buildRow(p, deps = {}) {
           ? `<div class="p-row-price">${buildPriceBadge(p, capturedDate)}</div>`
           : '<div class="p-row-price no-price">Price unavailable</div>'
       }
-      <div style="display:flex;gap:6px">
+      <div class="p-row-action-buttons">
         <button
           class="btn-save${saved ? ' btn-save--active' : ''}"
           onclick="toggleSave('${p.id}')"
