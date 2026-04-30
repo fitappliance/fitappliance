@@ -13,6 +13,19 @@ The command scans the four runtime product catalogs under `public/data/` and wri
 
 It does **not** edit catalog data. That is intentional: the audit is a triage layer, not an automatic correction tool.
 
+## Current Baseline
+
+After the Phase 50 data cleanup, the report is expected to show:
+
+- Products scanned: `2170`
+- Blockers: `0`
+- Invalid retailer product URLs: `0`
+- Stale price rows: `0`
+- Brand duplicate groups: `0`
+- Accuracy grades: `B=36`, `C=2134`
+
+The remaining `C` rows are primarily historical catalog entries that do not yet carry field-level evidence metadata. That is a data provenance backlog, not a runtime rendering blocker. New manual curation should improve rows by adding verified product-page URLs, `verified_at`, and confidence/source evidence rather than guessing missing fields.
+
 ## What It Checks
 
 ### Retailer URL Quality
