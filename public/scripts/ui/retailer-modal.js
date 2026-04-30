@@ -23,7 +23,7 @@ function normalizePricedRetailers(retailers) {
       url: String(retailer?.url ?? retailer?.href ?? '').trim(),
       p: getPositivePrice(retailer.p)
     }))
-    .filter((retailer) => retailer.n);
+    .filter((retailer) => retailer.n && isRetailerProductPageUrl(retailer.url));
 }
 
 function normalizeLinkedRetailers(retailers) {
@@ -35,7 +35,32 @@ function normalizeLinkedRetailers(retailers) {
       url: String(retailer?.url ?? retailer?.href ?? '').trim(),
       p: getPositivePrice(retailer?.p)
     }))
-    .filter((retailer) => retailer.n && retailer.url);
+    .filter((retailer) => retailer.n && isRetailerProductPageUrl(retailer.url));
+}
+
+export function isRetailerProductPageUrl(url) {
+  let parsed;
+  try {
+    parsed = new URL(String(url ?? '').trim());
+  } catch {
+    return false;
+  }
+  const host = parsed.hostname.replace(/^www\./, '').toLowerCase();
+  const pathname = parsed.pathname.replace(/\/+$/, '').toLowerCase();
+  if (!['http:', 'https:'].includes(parsed.protocol)) return false;
+  if (!host || pathname === '' || pathname === '/') return false;
+  if (['q', 'query', 'searchterm', 'text', 'keyword'].some((key) => parsed.searchParams.has(key))) return false;
+  if (/\/(search|searchdisplay|catalogsearch|collections?|category|categories|cart|checkout)(\/|$)/i.test(pathname)) {
+    return false;
+  }
+
+  if (host.endsWith('jbhifi.com.au')) return /^\/products\//.test(pathname);
+  if (host.endsWith('appliancesonline.com.au') || host.endsWith('appliances-online.com.au')) return /^\/product\//.test(pathname);
+  if (host.endsWith('binglee.com.au')) return /^\/products\//.test(pathname);
+  if (host.endsWith('harveynorman.com.au')) return /\.html$/.test(pathname);
+  if (host.endsWith('thegoodguys.com.au')) return /^\/[^/]+-[^/]+$/.test(pathname);
+
+  return true;
 }
 
 function modelTitle(model) {

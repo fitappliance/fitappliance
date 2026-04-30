@@ -132,3 +132,21 @@ test('phase 50 retailer links: five-store cards collapse to a compact logo rail'
   assert.match(html, /retailer-option-hint/);
   assert.doesNotMatch(html, /class="retailer-logo-name"/);
 });
+
+test('hotfix retailer URL quality: root retailer URLs are not shown as product links or prices', async () => {
+  const { buildCardHtml } = await loadSearchDom();
+  const html = buildCardHtml(makeMatch({
+    brand: 'Mitsubishi',
+    model: 'MR-CGX680ZG French Door 680L',
+    price: 4999,
+    retailers: [
+      { n: 'Appliances Online', p: 4999, url: 'https://www.appliances-online.com.au' }
+    ]
+  }));
+
+  assert.match(html, /Price unavailable/);
+  assert.match(html, /Search this model/);
+  assert.doesNotMatch(html, /Available at/);
+  assert.doesNotMatch(html, /href="https:\/\/www\.appliances-online\.com\.au"/);
+  assert.doesNotMatch(html, /From \$4,999|\$4,999/);
+});

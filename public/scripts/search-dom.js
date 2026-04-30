@@ -685,12 +685,41 @@
     return String(retailer?.url ?? retailer?.href ?? retailer?.u ?? retailer?.link ?? '').trim();
   }
 
+  function isRetailerProductPageUrl(url) {
+    let parsed;
+    try {
+      parsed = new URL(String(url ?? '').trim());
+    } catch {
+      return false;
+    }
+    const host = parsed.hostname.replace(/^www\./, '').toLowerCase();
+    const pathname = parsed.pathname.replace(/\/+$/, '').toLowerCase();
+    if (!['http:', 'https:'].includes(parsed.protocol)) return false;
+    if (!host || pathname === '' || pathname === '/') return false;
+    if (['q', 'query', 'searchterm', 'text', 'keyword'].some((key) => parsed.searchParams.has(key))) return false;
+    if (/\/(search|searchdisplay|catalogsearch|collections?|category|categories|cart|checkout)(\/|$)/i.test(pathname)) {
+      return false;
+    }
+
+    if (host.endsWith('jbhifi.com.au')) return /^\/products\//.test(pathname);
+    if (host.endsWith('appliancesonline.com.au') || host.endsWith('appliances-online.com.au')) return /^\/product\//.test(pathname);
+    if (host.endsWith('binglee.com.au')) return /^\/products\//.test(pathname);
+    if (host.endsWith('harveynorman.com.au')) return /\.html$/.test(pathname);
+    if (host.endsWith('thegoodguys.com.au')) return /^\/[^/]+-[^/]+$/.test(pathname);
+
+    return true;
+  }
+
   function getRetailerSummaries(match) {
     return (Array.isArray(match?.retailers) ? match.retailers : [])
       .map((retailer) => ({
         name: getRetailerName(retailer),
         price: getRetailerPrice(retailer),
         url: getRetailerUrl(retailer)
+      }))
+      .map((retailer) => ({
+        ...retailer,
+        isProductPageUrl: isRetailerProductPageUrl(retailer.url)
       }))
       .filter((retailer) => retailer.name);
   }
@@ -722,7 +751,7 @@
   function buildRetailerLinkGroupHtml(match) {
     const seen = new Set();
     const links = getRetailerSummaries(match)
-      .filter((retailer) => retailer.url)
+      .filter((retailer) => retailer.url && retailer.isProductPageUrl)
       .filter((retailer) => {
         const key = retailer.name.toLowerCase();
         if (seen.has(key)) return false;
@@ -885,6 +914,7 @@
 
   function buildCardPriceHtml(match) {
     const prices = getRetailerSummaries(match)
+      .filter((retailer) => retailer.isProductPageUrl)
       .map((retailer) => retailer.price)
       .filter((price) => Number.isFinite(price))
       .sort((left, right) => left - right);
@@ -912,7 +942,10 @@
       w: Number.isFinite(Number(match?.w)) ? Math.round(Number(match.w)) : null,
       h: Number.isFinite(Number(match?.h)) ? Math.round(Number(match.h)) : null,
       d: Number.isFinite(Number(match?.d)) ? Math.round(Number(match.d)) : null,
-      retailers: (Array.isArray(match?.retailers) ? match.retailers : []).slice(0, 4).map((retailer) => ({
+      retailers: (Array.isArray(match?.retailers) ? match.retailers : [])
+        .filter((retailer) => isRetailerProductPageUrl(getRetailerUrl(retailer)))
+        .slice(0, 4)
+        .map((retailer) => ({
         name: getRetailerName(retailer),
         price: getRetailerPrice(retailer)
       })).filter((retailer) => retailer.name),

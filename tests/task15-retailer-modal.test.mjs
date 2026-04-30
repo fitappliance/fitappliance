@@ -73,7 +73,7 @@ test('task 15 retailer-modal: online compare fallback escapes href values', asyn
 test('task 15 retailer-modal: trigger for 1 retailer uses the retailer chip pattern', async () => {
   const { buildRetailerTriggerButton } = await import(moduleUrl);
   const html = buildRetailerTriggerButton(makeProduct({
-    retailers: [{ n: 'The Good Guys', p: 1299, url: 'https://www.thegoodguys.com.au/search?text=GB335' }]
+    retailers: [{ n: 'The Good Guys', p: 1299, url: 'https://www.thegoodguys.com.au/lg-gb335pl-fridge' }]
   }), {
     buildNoRetailerUrl: () => '#',
     resolveRetailerUrl: (retailer) => retailer.url
@@ -83,8 +83,30 @@ test('task 15 retailer-modal: trigger for 1 retailer uses the retailer chip patt
   assert.match(html, /Available at/);
   assert.match(html, /retailer-logo-mark">TGG</);
   assert.match(html, /The Good Guys/);
-  assert.match(html, /href="https:\/\/www\.thegoodguys\.com\.au\/search\?text=GB335"/);
+  assert.match(html, /href="https:\/\/www\.thegoodguys\.com\.au\/lg-gb335pl-fridge"/);
   assert.doesNotMatch(html, /openRetailerModal/);
+});
+
+test('hotfix retailer URL quality: root and search URLs fall back to honest online search', async () => {
+  const { buildRetailerTriggerButton, shouldShowRetailerModal } = await import(moduleUrl);
+  const product = makeProduct({
+    retailers: [
+      { n: 'Harvey Norman', p: null, url: 'https://www.harveynorman.com.au' },
+      { n: 'Appliances Online', p: 4999, url: 'https://www.appliances-online.com.au' },
+      { n: 'The Good Guys', p: 1299, url: 'https://www.thegoodguys.com.au/SearchDisplay?searchTerm=GB335' }
+    ]
+  });
+  const html = buildRetailerTriggerButton(product, {
+    buildSearchOnlineUrl: () => 'https://www.google.com.au/search?q=LG%20GB335PL%20fridge%20australia',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.equal(shouldShowRetailerModal(product), false);
+  assert.match(html, /Search this model online/);
+  assert.match(html, /google\.com\.au\/search/);
+  assert.doesNotMatch(html, /Harvey Norman/);
+  assert.doesNotMatch(html, /Appliances Online/);
+  assert.doesNotMatch(html, /Compare 2 Retailers/);
 });
 
 test('task 15 retailer-modal: trigger for 1 retailer without price still links to retailer URL', async () => {
