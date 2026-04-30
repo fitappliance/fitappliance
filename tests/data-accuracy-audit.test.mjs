@@ -14,6 +14,7 @@ const {
   isRetailerProductPageUrl,
   writeAccuracyReports
 } = require('../scripts/audit-data-accuracy.js');
+const { isRetailerProductPageUrl: runtimeRetailerProductPageUrl } = require('../public/scripts/search-core.js');
 
 function product(overrides = {}) {
   return {
@@ -50,7 +51,25 @@ test('data accuracy audit: retailer product URL classifier accepts known product
   assert.equal(isRetailerProductPageUrl('https://www.appliancesonline.com.au/product/lg-gb335pl/'), true);
   assert.equal(isRetailerProductPageUrl('https://www.thegoodguys.com.au/lg-gb335pl-fridge'), true);
   assert.equal(isRetailerProductPageUrl('https://www.harveynorman.com.au/lg-gb335pl-fridge.html'), true);
+  assert.equal(isRetailerProductPageUrl('https://www.harveynorman.com.au/lg-gb335pl-fridge.html/'), true);
   assert.equal(isRetailerProductPageUrl('https://www.binglee.com.au/products/lg-gb335pl'), true);
+});
+
+test('data accuracy audit: retailer URL classification stays aligned with runtime search filtering', () => {
+  const sampleUrls = [
+    'https://www.jbhifi.com.au/products/lg-gb335pl',
+    'https://www.appliancesonline.com.au/product/lg-gb335pl/',
+    'https://www.thegoodguys.com.au/lg-gb335pl-fridge',
+    'https://www.harveynorman.com.au/lg-gb335pl-fridge.html/',
+    'https://www.binglee.com.au/products/lg-gb335pl',
+    'https://www.harveynorman.com.au',
+    'https://www.jbhifi.com.au/search?query=LG',
+    'https://www.thegoodguys.com.au/category/fridges'
+  ];
+
+  for (const url of sampleUrls) {
+    assert.equal(isRetailerProductPageUrl(url), runtimeRetailerProductPageUrl(url), url);
+  }
 });
 
 test('data accuracy audit: report flags invalid retailer URLs, stale prices, and missing evidence without mutating input', () => {

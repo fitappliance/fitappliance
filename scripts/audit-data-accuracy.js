@@ -64,7 +64,7 @@ function isRetailerProductPageUrl(url) {
     if (hasSearchLikeSignal(parsed)) return false;
 
     const host = normalizeHost(parsed.hostname);
-    const pathname = parsed.pathname.toLowerCase();
+    const pathname = parsed.pathname.replace(/\/+$/, '').toLowerCase();
 
     if (host.endsWith('jbhifi.com.au')) return /^\/products\//.test(pathname);
     if (host.endsWith('appliancesonline.com.au') || host.endsWith('appliances-online.com.au')) return /^\/product\//.test(pathname);
