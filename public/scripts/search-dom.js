@@ -731,6 +731,27 @@
       });
 
     if (links.length === 0) return '';
+    if (links.length >= 5) {
+      return `<div class="card-retailer-panel card-retailer-panel--dense">
+        <span class="card-retailer-heading">Available at ${escHtml(links.length)} stores</span>
+        <div class="retailer-logo-rail" aria-label="Retailer product links">
+          ${links.map((retailer) => {
+          const displayName = safeRetailerDisplayName(retailer.name);
+          return `<a class="retailer-logo-dot" href="${escHtml(retailer.url)}" target="_blank" rel="sponsored nofollow noopener"
+            aria-label="Open ${escHtml(displayName)} product page"
+            title="${escHtml(displayName)}"
+            data-buy-click="1"
+            data-product-id="${escHtml(match?.id ?? '')}"
+            data-brand="${escHtml(match?.brand ?? '')}"
+            data-model="${escHtml(match?.model ?? match?.sku ?? '')}"
+            data-retailer="${escHtml(displayName)}"
+            data-price="${Number.isFinite(retailer.price) ? retailer.price : 0}"
+          ><span>${escHtml(retailerInitials(displayName))}</span></a>`;
+        }).join('')}
+        </div>
+        <span class="retailer-option-hint">Choose a retailer</span>
+      </div>`;
+    }
     return `<div class="card-retailer-panel">
       <span class="card-retailer-heading">Available at</span>
       <div class="card-retailer-links" aria-label="Retailer product links">

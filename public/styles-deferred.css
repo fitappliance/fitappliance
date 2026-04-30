@@ -501,6 +501,51 @@
   letter-spacing:.02em;
 }
 .retailer-logo-name { white-space:nowrap; }
+.retailer-logo-panel--dense {
+  gap:5px;
+}
+.retailer-logo-rail {
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:5px;
+  flex-wrap:wrap;
+  max-width:198px;
+}
+.retailer-logo-dot {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:var(--ink);
+  color:#fff;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.02em;
+  line-height:1;
+  text-decoration:none;
+  box-shadow:0 1px 0 rgb(0 0 0 / 6%);
+}
+.retailer-logo-dot:hover {
+  border-color:var(--copper);
+  background:var(--copper);
+  color:#fff;
+  transform:translateY(-1px);
+}
+.retailer-logo-dot span {
+  color:inherit;
+  font-size:10px;
+  font-weight:900;
+}
+.retailer-logo-panel--dense .retailer-option-hint {
+  color:var(--ink-3);
+  font-size:10px;
+  font-weight:600;
+  line-height:1.2;
+}
 .c-model {
   color: var(--ink-3);
   font-size: 11px;

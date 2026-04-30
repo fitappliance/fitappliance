@@ -110,3 +110,25 @@ test('phase 50 retailer links: result card CTA shows every linked retailer as a 
   assert.doesNotMatch(html, /retailer-strip/);
   assert.doesNotMatch(html, /View at JB Hi-Fi/);
 });
+
+test('phase 50 retailer links: five-store cards collapse to a compact logo rail', async () => {
+  const { buildCardHtml } = await loadSearchDom();
+  const retailers = [
+    ['JB Hi-Fi', 'https://www.jbhifi.com.au/products/hisense-hrcd640tbw'],
+    ['Appliances Online', 'https://www.appliancesonline.com.au/product/hisense-hrcd640tbw/'],
+    ['The Good Guys', 'https://www.thegoodguys.com.au/hisense-hrcd640tbw'],
+    ['Harvey Norman', 'https://www.harveynorman.com.au/hisense-hrcd640tbw.html'],
+    ['Bing Lee', 'https://www.binglee.com.au/products/hisense-hrcd640tbw']
+  ].map(([n, url]) => ({ n, url, p: null }));
+
+  const html = buildCardHtml(makeMatch({ brand: 'HISENSE', model: 'HRCD640TBW', retailers }));
+
+  assert.match(html, /card-retailer-panel--dense/);
+  assert.match(html, /Available at 5 stores/);
+  assert.match(html, /retailer-logo-rail/);
+  assert.equal((html.match(/class="retailer-logo-dot"/g) ?? []).length, 5);
+  assert.match(html, /aria-label="Open JB Hi-Fi product page"/);
+  assert.match(html, /aria-label="Open Harvey Norman product page"/);
+  assert.match(html, /retailer-option-hint/);
+  assert.doesNotMatch(html, /class="retailer-logo-name"/);
+});

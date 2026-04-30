@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -124,6 +125,38 @@ test('phase 50 retailer links: multiple unpriced retailer links render as select
   assert.match(html, /href="https:\/\/www\.appliancesonline\.com\.au\/product\/lg-gb335pl\/"/);
   assert.doesNotMatch(html, /google\.com\.au\/search/);
   assert.doesNotMatch(html, /Buy at JB Hi-Fi/);
+});
+
+test('phase 50 retailer links: five linked retailers use compact logo rail instead of long pills', async () => {
+  const { buildRetailerTriggerButton } = await import(moduleUrl);
+  const html = buildRetailerTriggerButton(makeProduct({
+    retailers: [
+      { n: 'JB Hi-Fi', p: null, url: 'https://www.jbhifi.com.au/products/lg-gb335pl' },
+      { n: 'Appliances Online', p: null, url: 'https://www.appliancesonline.com.au/product/lg-gb335pl/' },
+      { n: 'The Good Guys', p: null, url: 'https://www.thegoodguys.com.au/lg-gb335pl' },
+      { n: 'Harvey Norman', p: null, url: 'https://www.harveynorman.com.au/lg-gb335pl.html' },
+      { n: 'Bing Lee', p: null, url: 'https://www.binglee.com.au/products/lg-gb335pl' }
+    ]
+  }), {
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /retailer-logo-panel--dense/);
+  assert.match(html, /Available at 5 stores/);
+  assert.match(html, /retailer-logo-rail/);
+  assert.equal((html.match(/class="retailer-logo-dot"/g) ?? []).length, 5);
+  assert.match(html, /title="Bing Lee"/);
+  assert.doesNotMatch(html, /class="retailer-logo-name"/);
+});
+
+test('phase 50 retailer links: compact logo rail styling has bounded circular targets', () => {
+  const css = fs.readFileSync(path.join(repoRoot, 'public', 'styles.css'), 'utf8');
+
+  assert.match(css, /\.retailer-logo-rail\s*\{/);
+  assert.match(css, /\.retailer-logo-dot\s*\{/);
+  assert.match(css, /width:\s*34px/);
+  assert.match(css, /height:\s*34px/);
+  assert.match(css, /\.card-retailer-panel--dense\s+\.retailer-option-hint/);
 });
 
 test('phase 50 retailer links: retailer chip labels are escaped', async () => {

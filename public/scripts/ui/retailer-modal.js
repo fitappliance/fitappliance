@@ -92,6 +92,24 @@ export function buildRetailerLogoLinks(product, { resolveRetailerUrl = (retailer
     return true;
   });
 
+  if (items.length >= 5) {
+    const dots = items.map((retailer) => {
+      const targetUrl = resolveRetailerUrl(retailer, product) ?? retailer.url ?? '#';
+      const displayName = safeRetailerDisplayName(retailer.n);
+      return `<a class="retailer-logo-dot" href="${escHtml(targetUrl)}" target="_blank" rel="sponsored nofollow noopener"
+        aria-label="Open ${escHtml(displayName)} product page"
+        title="${escHtml(displayName)}"
+        ${buildRetailerLinkAttributes(product, retailer, targetUrl)}
+      ><span>${escHtml(retailerInitials(displayName))}</span></a>`;
+    }).join('');
+
+    return `<div class="retailer-logo-panel retailer-logo-panel--dense">
+      <span class="retailer-logo-label">Available at ${items.length} stores</span>
+      <div class="retailer-logo-rail" aria-label="Retailer product links">${dots}</div>
+      <span class="retailer-option-hint">Choose a retailer</span>
+    </div>`;
+  }
+
   const links = items.map((retailer) => {
     const targetUrl = resolveRetailerUrl(retailer, product) ?? retailer.url ?? '#';
     const displayName = safeRetailerDisplayName(retailer.n);

@@ -568,6 +568,62 @@
   white-space: nowrap;
 }
 
+.card-retailer-panel--dense,
+.retailer-logo-panel--dense {
+  gap: 5px;
+}
+
+.retailer-logo-rail {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  flex-wrap: wrap;
+  max-width: 198px;
+}
+
+.card-cta .retailer-logo-dot,
+.retailer-logo-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .02em;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 1px 0 rgb(0 0 0 / 6%);
+}
+
+.card-cta .retailer-logo-dot:hover,
+.retailer-logo-dot:hover {
+  border-color: var(--copper);
+  background: var(--copper);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.card-cta .retailer-logo-dot span,
+.retailer-logo-dot span {
+  color: inherit;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.card-retailer-panel--dense .retailer-option-hint,
+.retailer-logo-panel--dense .retailer-option-hint {
+  color: var(--ink-3);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
 .retailer-strip {
   display: flex;
   gap: 6px;
@@ -644,7 +700,8 @@
   }
 
   .card-retailer-links,
-  .retailer-logo-links {
+  .retailer-logo-links,
+  .retailer-logo-rail {
     justify-content: flex-start;
   }
 }
