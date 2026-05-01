@@ -201,6 +201,31 @@ test('task 9.3 product-card: retailer product URL becomes the primary card title
   assert.doesNotMatch(html, /<div class="c-name">CTM200NSS5E<\/div>/);
 });
 
+test('task 9.3 product-card: Appliances Online product URL becomes the primary washing-machine row title', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct({
+    cat: 'washing_machine',
+    brand: 'Hisense',
+    model: 'HWFS7514S',
+    retailers: [
+      {
+        n: 'Appliances Online',
+        url: 'https://www.appliancesonline.com.au/product/hisense-75kg-series-3-front-load-washing-machine-hwfs7514s/',
+        p: null
+      }
+    ]
+  }), {
+    annualEnergyCost: () => '66',
+    lifetimeCost: () => 660,
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /<div class="p-row-name">Hisense 75kg Series 3 Front Load Washing Machine HWFS7514S<\/div>/);
+  assert.match(html, /<div class="p-row-model">Model HWFS7514S<\/div>/);
+  assert.doesNotMatch(html, /<div class="p-row-name">HWFS7514S<\/div>/);
+});
+
+
 test('task 9.3 product-card: no-price action copy uses compact non-italic styling hooks', () => {
   const block = cssBlock(deferredCss, '.c-price.no-price, .p-row-price.no-price');
 

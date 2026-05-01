@@ -108,7 +108,7 @@ function getRetailerProductSlug(product) {
   for (const retailer of retailers) {
     try {
       const parsed = new URL(String(retailer?.url ?? ''));
-      const match = parsed.pathname.match(/\/products\/([^/?#]+)/i);
+      const match = parsed.pathname.match(/\/(?:products|product)\/([^/?#]+)/i);
       if (match?.[1]) return decodeURIComponent(match[1]);
     } catch {
       // Ignore malformed or relative retailer URLs and fall back to model copy.

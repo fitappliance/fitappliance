@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-04-29",
-  "approved_count": 36,
+  "last_updated": "2026-05-01",
+  "approved_count": 50,
   "products": {
     "fridge-arf3177": {
       "researched_at": "2026-04-29",
@@ -1591,6 +1591,342 @@
         "model": "CRSR089DR1",
         "capacity": "90L",
         "color": "Red"
+      }
+    },
+    "washing_machine-acw1423": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/hisense-75kg-series-3-front-load-washing-machine-hwfs7514s/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Hisense HWFS7514S 7.5kg Series 3 Front Load Washing Machine.",
+      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "ao_match": {
+        "brand": "Hisense",
+        "model": "HWFS7514S",
+        "capacity": "7.5kg",
+        "color": "White"
+      }
+    },
+    "washing_machine-acw1319": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/hisense-10kg-front-load-washing-machine-hwfs1015e/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Hisense HWFS1015E 10kg Front Load Washing Machine.",
+      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "ao_match": {
+        "brand": "Hisense",
+        "model": "HWFS1015E",
+        "capacity": "10kg",
+        "color": "White"
+      }
+    },
+    "washing_machine-acw1462": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/hisense-12kg-front-load-washing-machine-hwf5s1214/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Hisense HWF5S1214 12kg Front Load Washing Machine.",
+      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "ao_match": {
+        "brand": "Hisense",
+        "model": "HWF5S1214",
+        "capacity": "12kg",
+        "color": "White"
+      }
+    },
+    "washing_machine-acw1734": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/hisense-series-5i-12kg-max-drum-front-load-washing-machine-white-hwf5i1215/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Hisense HWF5I1215 Series 5I 12kg Max Drum Front Load Washing Machine.",
+      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "ao_match": {
+        "brand": "Hisense",
+        "model": "HWF5I1215",
+        "capacity": "12kg",
+        "color": "White"
+      }
+    },
+    "washing_machine-acw1520": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/hisense-series-8i-10kg-tft-front-load-washer-charcoal-black-hwf8i1015bx/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Hisense HWF8I1015BX Series 8I 10kg TFT Front Load Washer.",
+      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "ao_match": {
+        "brand": "Hisense",
+        "model": "HWF8I1015BX",
+        "capacity": "10kg",
+        "color": "Charcoal Black"
+      }
+    },
+    "washing_machine-acw1701": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/fisher-paykel-10kg-front-load-washing-machine-with-steam-care-wh1060p4/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/front-loader-washing-machine-10kg-steam-care-wh1060p4",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-bing-lee"
+        }
+      ],
+      "notes": "Appliances Online and Bing Lee exact match: Fisher & Paykel WH1060P4 10kg front load washer.",
+      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "ao_match": {
+        "brand": "Fisher & Paykel",
+        "model": "WH1060P4",
+        "capacity": "10kg",
+        "color": "White"
+      }
+    },
+    "washing_machine-acw1341": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/fisher-paykel-8kg-top-load-washing-machine-with-uv-sanitise-wl8058g1/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Fisher & Paykel WL8058G1 8kg top load washing machine.",
+      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "ao_match": {
+        "brand": "Fisher & Paykel",
+        "model": "WL8058G1",
+        "capacity": "8kg",
+        "color": "White"
+      }
+    },
+    "washing_machine-acw1231": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/fisher-paykel-12kg-washsmart-front-load-washing-machine-wh1260p1/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Fisher & Paykel WH1260P1 12kg WashSmart front load washing machine.",
+      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "ao_match": {
+        "brand": "Fisher & Paykel",
+        "model": "WH1260P1",
+        "capacity": "12kg",
+        "color": "White"
+      }
+    },
+    "washing_machine-acw1242": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/westinghouse-easycare-10kg-front-load-washing-machine-wwf1044m7sa/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Westinghouse WWF1044M7SA 10kg EasyCare front load washing machine.",
+      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "ao_match": {
+        "brand": "Westinghouse",
+        "model": "WWF1044M7SA",
+        "capacity": "10kg",
+        "color": "Black"
+      }
+    },
+    "washing_machine-acw1243": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/westinghouse-easycare-9kg-front-load-washing-machine-wwf9024m5sa/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Westinghouse WWF9024M5SA 9kg EasyCare front load washing machine.",
+      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "ao_match": {
+        "brand": "Westinghouse",
+        "model": "WWF9024M5SA",
+        "capacity": "9kg",
+        "color": "Black"
+      }
+    },
+    "washing_machine-acw1478": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/electrolux-9kg-700-series-front-load-washing-machine-ewf9043r7wc/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Electrolux EWF9043R7WC 9kg 700 Series front load washing machine.",
+      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "ao_match": {
+        "brand": "Electrolux",
+        "model": "EWF9043R7WC",
+        "capacity": "9kg",
+        "color": "White"
+      }
+    },
+    "washing_machine-acw1469": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/electrolux-700-series-10kg-front-load-washing-machine-ewf1043r7wc/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Electrolux EWF1043R7WC 10kg 700 Series front load washing machine.",
+      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "ao_match": {
+        "brand": "Electrolux",
+        "model": "EWF1043R7WC",
+        "capacity": "10kg",
+        "color": "White"
+      }
+    },
+    "washing_machine-acw1345": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/lg-series-9-12kg-top-load-washing-machine-platinum-black-wtl9-12b/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/lg-12kg-top-load-washer-wtl9-12b",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-the-good-guys"
+        }
+      ],
+      "notes": "Appliances Online and The Good Guys exact match: LG WTL9-12B Series 9 12kg top load washing machine.",
+      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "ao_match": {
+        "brand": "LG",
+        "model": "WTL9-12B",
+        "capacity": "12kg",
+        "color": "Platinum Black"
+      }
+    },
+    "washing_machine-acw1082": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/lg-75kg-front-load-washing-machine-wd1275a1/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: LG WD1275A1 7.5kg front load washing machine.",
+      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "ao_match": {
+        "brand": "LG",
+        "model": "WD1275A1",
+        "capacity": "7.5kg",
+        "color": "White"
       }
     }
   }
