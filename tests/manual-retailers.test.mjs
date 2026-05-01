@@ -110,3 +110,39 @@ test('manual retailers: washing machine round uses reviewed product-page links',
     }
   }
 });
+
+test('manual retailers: dishwasher and dryer rounds use reviewed product-page links', () => {
+  const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
+  const entriesByCategory = {
+    dishwasher: Object.entries(document.products)
+      .filter(([slug, entry]) => slug.startsWith('dishwasher-') && entry?.approved === true),
+    dryer: Object.entries(document.products)
+      .filter(([slug, entry]) => slug.startsWith('dryer-') || slug.startsWith('dr'))
+      .filter(([, entry]) => entry?.approved === true),
+  };
+
+  assert.ok(
+    entriesByCategory.dishwasher.length >= 12,
+    `expected at least 12 approved dishwasher manual retailer entries, got ${entriesByCategory.dishwasher.length}`,
+  );
+  assert.ok(
+    entriesByCategory.dryer.length >= 4,
+    `expected at least 4 approved dryer manual retailer entries, got ${entriesByCategory.dryer.length}`,
+  );
+
+  for (const [category, entries] of Object.entries(entriesByCategory)) {
+    for (const [slug, entry] of entries) {
+      assert.ok(['exact', 'variant'].includes(entry.match_type), `${slug} must document exact or variant matching`);
+      assert.match(entry.researched_at, /^\d{4}-\d{2}-\d{2}$/);
+      assert.ok((entry.retailers ?? []).length >= 1, `${slug} must include at least one retailer`);
+
+      for (const retailer of entry.retailers) {
+        const parsed = new URL(retailer.url);
+        assert.ok(isReviewedRetailerProductPath(parsed), `${category} ${slug} must use a direct retailer product URL`);
+        assert.equal(retailer.p, null, `${slug} should keep price null until a trusted feed is available`);
+        assert.match(retailer.verified_at, /^\d{4}-\d{2}-\d{2}$/);
+        assert.match(retailer.source, /^websearch-/);
+      }
+    }
+  }
+});

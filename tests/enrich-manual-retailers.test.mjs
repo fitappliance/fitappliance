@@ -113,3 +113,29 @@ test('manual retailer enrich: approved washing-machine data creates retailer-lin
     'retailer-linked manual washing-machine products should be marked available',
   );
 });
+
+test('manual retailer enrich: approved dishwasher and dryer data creates retailer-linked catalog rows', () => {
+  const manual = JSON.parse(fs.readFileSync('data/manual-retailers.json', 'utf8'));
+  const dishwashers = JSON.parse(fs.readFileSync('public/data/dishwashers.json', 'utf8')).products;
+  const dryers = JSON.parse(fs.readFileSync('public/data/dryers.json', 'utf8')).products;
+
+  const enrichedDishwashers = applyManualRetailers(dishwashers, manual);
+  const enrichedDryers = applyManualRetailers(dryers, manual);
+  const linkedDishwashers = enrichedDishwashers.filter((product) => product.cat === 'dishwasher' && product.retailers?.length > 0);
+  const linkedDryers = enrichedDryers.filter((product) => product.cat === 'dryer' && product.retailers?.length > 0);
+
+  assert.ok(linkedDishwashers.length >= 12, `expected at least 12 dishwasher products with retailer links, got ${linkedDishwashers.length}`);
+  assert.ok(linkedDryers.length >= 4, `expected at least 4 dryer products with retailer links, got ${linkedDryers.length}`);
+  assert.ok(
+    linkedDishwashers.some((product) => product.brand === 'Haier' && product.retailers.some((retailer) => retailer.n === 'Appliances Online')),
+    'Haier dishwasher entries should include Appliances Online where reviewed',
+  );
+  assert.ok(
+    linkedDryers.some((product) => product.brand === 'Electrolux' && product.retailers.some((retailer) => retailer.n === 'Appliances Online')),
+    'Electrolux dryer entries should include Appliances Online where reviewed',
+  );
+  assert.ok(
+    [...linkedDishwashers, ...linkedDryers].every((product) => product.unavailable === false),
+    'retailer-linked manual dishwasher and dryer products should be marked available',
+  );
+});

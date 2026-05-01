@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "last_updated": "2026-05-01",
-  "approved_count": 50,
+  "approved_count": 66,
   "products": {
     "fridge-arf3177": {
       "researched_at": "2026-04-29",
@@ -1927,6 +1927,374 @@
         "model": "WD1275A1",
         "capacity": "7.5kg",
         "color": "White"
+      }
+    },
+    "dishwasher-adw0961": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/haier-freestanding-dishwasher-with-steam-silver-hdw15f3s1",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Haier HDW15F3S1 60cm freestanding dishwasher.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Haier",
+        "model": "HDW15F3S1",
+        "type": "Freestanding dishwasher",
+        "finish": "Satina Silver"
+      }
+    },
+    "dishwasher-adw1276": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/haier-60cm-black-freestanding-dishwasher-hdw15f4b1/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Haier HDW15F4B1 60cm black freestanding dishwasher.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Haier",
+        "model": "HDW15F4B1",
+        "type": "Freestanding dishwasher",
+        "finish": "Black"
+      }
+    },
+    "dishwasher-adw1146": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/haier-freestanding-dishwasher-with-sanitise-black-hdw15f1b1/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Haier HDW15F1B1 60cm freestanding dishwasher with sanitise.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Haier",
+        "model": "HDW15F1B1",
+        "type": "Freestanding dishwasher",
+        "finish": "Black"
+      }
+    },
+    "dishwasher-adw1233": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/haier-integrated-dishwasher-hdw15u2i1/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Haier HDW15U2I1 60cm fully integrated dishwasher.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Haier",
+        "model": "HDW15U2I1",
+        "type": "Fully integrated dishwasher",
+        "finish": "Integrated"
+      }
+    },
+    "dishwasher-adw1344": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/haier-freestanding-dishwasher-hdw15v2b2/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Haier HDW15V2B2 freestanding dishwasher.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Haier",
+        "model": "HDW15V2B2",
+        "type": "Freestanding dishwasher",
+        "finish": "Black"
+      }
+    },
+    "dishwasher-adw0959": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/fisher-paykel-series-7-tall-integrated-dishwasher-with-sanitise-dw60ut4i2/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Fisher & Paykel DW60UT4I2 tall integrated dishwasher.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Fisher & Paykel",
+        "model": "DW60UT4I2",
+        "type": "Tall integrated dishwasher",
+        "finish": "Panel ready"
+      }
+    },
+    "dishwasher-adw0956": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/fisher-paykel-series-7-tall-built-under-dishwasher-with-sanitise-black-dw60uzt4b2",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Fisher & Paykel DW60UZT4B2 tall built-under dishwasher.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Fisher & Paykel",
+        "model": "DW60UZT4B2",
+        "type": "Tall built-under dishwasher",
+        "finish": "Black"
+      }
+    },
+    "dishwasher-adw1245": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/hisense-60cm-freestanding-dishwasher-silver-steel-hsbe15fs/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Hisense HSBE15FS 60cm freestanding dishwasher.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Hisense",
+        "model": "HSBE15FS",
+        "type": "Freestanding dishwasher",
+        "finish": "Silver Steel"
+      }
+    },
+    "dishwasher-adw0974": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/hisense-60cm-freestanding-stainless-steel-dishwasher-hscm15fs/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Hisense HSCM15FS 60cm freestanding stainless steel dishwasher.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Hisense",
+        "model": "HSCM15FS",
+        "type": "Freestanding dishwasher",
+        "finish": "Stainless Steel"
+      }
+    },
+    "dishwasher-adw1149": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/westinghouse-60cm-freestanding-sensor-wash-dishwasher-stainless-steel-wsf6604xb/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Westinghouse WSF6604XB 60cm freestanding dishwasher.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Westinghouse",
+        "model": "WSF6604XB",
+        "type": "Freestanding dishwasher",
+        "finish": "Stainless Steel"
+      }
+    },
+    "dishwasher-adw1155": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/westinghouse-60cm-stainless-steel-auto-door-dishwasher-wsf6606xb/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Westinghouse WSF6606XB 60cm auto-door dishwasher.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Westinghouse",
+        "model": "WSF6606XB",
+        "type": "Freestanding dishwasher",
+        "finish": "Stainless Steel"
+      }
+    },
+    "dishwasher-adw1232": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/lg-quadwash-freestanding-dishwasher-stainless-steel-xd4b15ps/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: LG XD4B15PS 60cm QuadWash freestanding dishwasher.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "LG",
+        "model": "XD4B15PS",
+        "type": "Freestanding dishwasher",
+        "finish": "Platinum Steel"
+      }
+    },
+    "dr3": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/electrolux-8kg-heat-pump-dryer-edh803bewa",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Electrolux EDH803BEWA 8kg heat pump dryer.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Electrolux",
+        "model": "EDH803BEWA",
+        "capacity": "8kg",
+        "type": "Heat pump dryer"
+      }
+    },
+    "dryer-acd0898": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/fisher-paykel-dh8060p1-8kg-heat-pump-dryer/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Fisher & Paykel DH8060P1 8kg heat pump dryer.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Fisher & Paykel",
+        "model": "DH8060P1",
+        "capacity": "8kg",
+        "type": "Heat pump dryer"
+      }
+    },
+    "dryer-acd0788": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/electrolux-300-series-6kg-vented-clothes-dryer-edv605h3wc/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Electrolux EDV605H3WC 6kg vented clothes dryer.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Electrolux",
+        "model": "EDV605H3WC",
+        "capacity": "6kg",
+        "type": "Vented dryer"
+      }
+    },
+    "dryer-acd0789": {
+      "researched_at": "2026-05-01",
+      "approved": true,
+      "confidence": "high",
+      "match_type": "exact",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/electrolux-300-series-7kg-vented-clothes-dryer-edv705h3wc/",
+          "p": null,
+          "verified_at": "2026-05-01",
+          "source": "websearch-appliances-online"
+        }
+      ],
+      "notes": "Appliances Online exact match: Electrolux EDV705H3WC 7kg vented clothes dryer.",
+      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "ao_match": {
+        "brand": "Electrolux",
+        "model": "EDV705H3WC",
+        "capacity": "7kg",
+        "type": "Vented dryer"
       }
     }
   }
