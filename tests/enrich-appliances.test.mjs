@@ -85,6 +85,77 @@ test('phase 43a backfill: enrich writes researched retailers back and flips unav
   assert.ok(appliances.products[0].priorityScore > 0);
 });
 
+test('phase 50 hotfix: enrich filters researched retailer URLs to verified product pages only', async () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fit-enrich-url-quality-'));
+  const product = makeProduct();
+  await writeFixtureRepo(tmpDir, [product], {
+    'dishwasher-1': {
+      retailersAvailable: 2,
+      retailersChecked: 2,
+      reviewCountSum: 23,
+      priceMinAud: 999,
+      priceMaxAud: 1299,
+      researchedAt: '2026-05-01',
+      retailers: [
+        { n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au', p: 999 },
+        { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/dw60bg730fsl', p: 1299 },
+      ],
+    },
+  });
+
+  await enrichAppliances({
+    repoRoot: tmpDir,
+    logger: { log() {}, warn() {}, error() {} },
+  });
+
+  const appliances = JSON.parse(fs.readFileSync(path.join(tmpDir, 'public', 'data', 'appliances.json'), 'utf8'));
+  assert.deepEqual(appliances.products[0].retailers.map((retailer) => retailer.n), ['Appliances Online']);
+  assert.equal(appliances.products[0].unavailable, false);
+});
+
+test('phase 50 hotfix: enrich does not make a product available when research only has root URLs', async () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fit-enrich-root-only-'));
+  const product = makeProduct();
+  await writeFixtureRepo(tmpDir, [product], {
+    'dishwasher-1': {
+      retailersAvailable: 1,
+      retailersChecked: 1,
+      reviewCountSum: 23,
+      priceMinAud: 999,
+      priceMaxAud: 999,
+      researchedAt: '2026-05-01',
+      retailers: [
+        { n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au', p: 999 },
+      ],
+    },
+  });
+
+  await enrichAppliances({
+    repoRoot: tmpDir,
+    logger: { log() {}, warn() {}, error() {} },
+  });
+
+  const appliances = JSON.parse(fs.readFileSync(path.join(tmpDir, 'public', 'data', 'appliances.json'), 'utf8'));
+  assert.equal(appliances.products[0].retailers.length, 0);
+  assert.equal(appliances.products[0].unavailable, true);
+});
+
+test('phase 50 hotfix: enrich canonicalizes runtime brands before writing split catalogs', async () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fit-enrich-canon-brand-'));
+  const product = makeProduct({ brand: 'HISENSE', cat: 'fridge', id: 'fridge-hisense-1' });
+  await writeFixtureRepo(tmpDir, [product], {});
+
+  await enrichAppliances({
+    repoRoot: tmpDir,
+    logger: { log() {}, warn() {}, error() {} },
+  });
+
+  const appliances = JSON.parse(fs.readFileSync(path.join(tmpDir, 'public', 'data', 'appliances.json'), 'utf8'));
+  const fridges = JSON.parse(fs.readFileSync(path.join(tmpDir, 'public', 'data', 'fridges.json'), 'utf8'));
+  assert.equal(appliances.products[0].brand, 'Hisense');
+  assert.equal(fridges.products[0].brand, 'Hisense');
+});
+
 test('phase 43a backfill: enrich leaves original unavailable flag untouched when research is missing', async () => {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fit-enrich-missing-'));
   await writeFixtureRepo(tmpDir, [makeProduct()], {});

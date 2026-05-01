@@ -3,9 +3,11 @@
 const path = require('node:path');
 const { mkdir, readFile, writeFile } = require('node:fs/promises');
 
+const { canonicalizeBrand } = require('./brand-canon.js');
 const { computePriorityScore, inferBrandTier } = require('./common/popularity-score.js');
 const { enrichReadableCopy } = require('./common/readable-spec.js');
 const { buildSplitDocuments, CAT_FILE_MAP } = require('./split-appliances.js');
+const { isRetailerProductPageUrl } = require('../public/scripts/search-core.js');
 
 async function readJson(filePath, fallback = null) {
   try {
@@ -32,6 +34,21 @@ function findResearchEntry(researchDocument, product) {
   return products[product?.id] ?? products[product?.slug] ?? null;
 }
 
+function filterVerifiedRetailers(retailers) {
+  if (!Array.isArray(retailers)) return [];
+  return retailers
+    .filter((retailer) => isRetailerProductPageUrl(retailer?.url))
+    .map((retailer) => ({ ...retailer }));
+}
+
+function getBestRetailerPrice(retailers) {
+  const prices = filterVerifiedRetailers(retailers)
+    .map((retailer) => Number(retailer?.p))
+    .filter((price) => Number.isFinite(price) && price > 0);
+  if (!prices.length) return null;
+  return Math.min(...prices);
+}
+
 async function enrichAppliances({
   repoRoot = path.resolve(__dirname, '..'),
   dataDir = path.join(repoRoot, 'public', 'data'),
@@ -52,16 +69,22 @@ async function enrichAppliances({
   let nullSeriesCount = 0;
 
   const enrichedProducts = products.map((product) => {
-    const readable = enrichReadableCopy(product, { seriesDictionary });
-    const research = findResearchEntry(popularityResearch, product);
-    const researchedRetailers = Array.isArray(research?.retailers) ? research.retailers : null;
-    const hasResearchedRetailers = Array.isArray(researchedRetailers) && researchedRetailers.length > 0;
-    const nextRetailers = hasResearchedRetailers ? researchedRetailers : product.retailers;
-    const nextUnavailable = hasResearchedRetailers ? false : product.unavailable;
-    const priorityScore = computePriorityScore({
+    const baseProduct = {
       ...product,
+      brand: canonicalizeBrand(product?.brand)
+    };
+    const readable = enrichReadableCopy(baseProduct, { seriesDictionary });
+    const research = findResearchEntry(popularityResearch, product);
+    const researchedRetailers = Array.isArray(research?.retailers) ? filterVerifiedRetailers(research.retailers) : null;
+    const existingRetailers = filterVerifiedRetailers(baseProduct.retailers);
+    const hasResearchedRetailers = Array.isArray(researchedRetailers) && researchedRetailers.length > 0;
+    const nextRetailers = hasResearchedRetailers ? researchedRetailers : existingRetailers;
+    const nextUnavailable = nextRetailers.length > 0 ? false : true;
+    const nextPrice = getBestRetailerPrice(nextRetailers);
+    const priorityScore = computePriorityScore({
+      ...baseProduct,
       retailers: nextRetailers,
-      brandTier: inferBrandTier(product?.brand)
+      brandTier: inferBrandTier(baseProduct?.brand)
     }, {
       now: popularityResearch?.last_researched ?? appliancesDocument?.last_updated,
       verifiedAt: research?.researchedAt ?? appliancesDocument?.last_updated,
@@ -73,9 +96,11 @@ async function enrichAppliances({
     if (!readable.series) nullSeriesCount += 1;
 
     return {
-      ...product,
+      ...baseProduct,
       retailers: nextRetailers,
       unavailable: nextUnavailable,
+      price: nextPrice,
+      sponsored: nextRetailers.length > 0 ? baseProduct.sponsored : false,
       displayName: readable.displayName,
       readableSpec: readable.readableSpec,
       priorityScore
@@ -118,5 +143,6 @@ if (require.main === module) {
 
 module.exports = {
   findResearchEntry,
+  filterVerifiedRetailers,
   enrichAppliances
 };

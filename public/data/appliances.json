@@ -2038,7 +2038,7 @@
       "d": 600,
       "kwh_year": 230,
       "stars": 5,
-      "price": 1699,
+      "price": null,
       "emoji": "🍽️",
       "door_swing_mm": 0,
       "features": [
@@ -2047,18 +2047,12 @@
         "PerfectDry",
         "VarioSpeed Plus"
       ],
-      "retailers": [
-        {
-          "n": "Harvey Norman",
-          "url": "https://www.harveynorman.com.au",
-          "p": null
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "displayName": "Bosch Serie 6",
       "readableSpec": "14-place Built-in",
-      "priorityScore": 85
+      "priorityScore": 65
     },
     {
       "id": "dishwasher-adw0848",
@@ -2113,7 +2107,7 @@
     {
       "id": "dishwasher-zdw0272",
       "cat": "dishwasher",
-      "brand": "COMFEE",
+      "brand": "Comfee",
       "model": "340290",
       "w": 598,
       "h": 845,
@@ -2131,14 +2125,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "COMFEE Dishwasher",
+      "displayName": "Comfee Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 18
     },
     {
       "id": "dishwasher-zdw0280",
       "cat": "dishwasher",
-      "brand": "COMFEE",
+      "brand": "Comfee",
       "model": "348205",
       "w": 598,
       "h": 845,
@@ -2156,14 +2150,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "COMFEE Dishwasher",
+      "displayName": "Comfee Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 18
     },
     {
       "id": "dishwasher-zdw0246",
       "cat": "dishwasher",
-      "brand": "COMFEE",
+      "brand": "Comfee",
       "model": "348220",
       "w": 600,
       "h": 845,
@@ -2181,7 +2175,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "COMFEE Dishwasher",
+      "displayName": "Comfee Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 18
     },
@@ -2745,7 +2739,7 @@
       "d": 570,
       "kwh_year": 240,
       "stars": 4,
-      "price": 1299,
+      "price": null,
       "emoji": "🍽️",
       "door_swing_mm": 0,
       "features": [
@@ -2754,23 +2748,17 @@
         "AirDry",
         "Hygiene 70°C wash"
       ],
-      "retailers": [
-        {
-          "n": "JB Hi-Fi",
-          "url": "https://www.jbhifi.com.au",
-          "p": 1299
-        }
-      ],
-      "sponsored": true,
-      "unavailable": false,
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
       "displayName": "Electrolux Dishwasher",
       "readableSpec": "14-place Built-in",
-      "priorityScore": 72
+      "priorityScore": 54
     },
     {
       "id": "dishwasher-adw1151",
       "cat": "dishwasher",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "ESF6604XB",
       "w": 598,
       "h": 850,
@@ -2788,14 +2776,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Dishwasher",
+      "displayName": "Electrolux Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "dishwasher-adw0935",
       "cat": "dishwasher",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "ESF97400RKX",
       "w": 596,
       "h": 878,
@@ -2813,14 +2801,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Dishwasher",
+      "displayName": "Electrolux Dishwasher",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "dishwasher-adw0933",
       "cat": "dishwasher",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "ESL79200RO",
       "w": 596,
       "h": 898,
@@ -2838,9 +2826,9 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Dishwasher",
+      "displayName": "Electrolux Dishwasher",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "dishwasher-adw1040",
@@ -3395,7 +3383,7 @@
     {
       "id": "dishwasher-adw1262",
       "cat": "dishwasher",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "E14DWB",
       "w": 598,
       "h": 845,
@@ -3413,14 +3401,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Dishwasher",
+      "displayName": "Euromaid Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 18
     },
     {
       "id": "dishwasher-adw1252",
       "cat": "dishwasher",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "E14DWX",
       "w": 598,
       "h": 845,
@@ -3438,7 +3426,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Dishwasher",
+      "displayName": "Euromaid Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 18
     },
@@ -3652,7 +3640,7 @@
       "d": 550,
       "kwh_year": 195,
       "stars": 5,
-      "price": 1999,
+      "price": null,
       "emoji": "🍽️",
       "door_swing_mm": 0,
       "features": [
@@ -3661,23 +3649,17 @@
         "Auto Open Dry",
         "15 Place"
       ],
-      "retailers": [
-        {
-          "n": "Appliances Online",
-          "url": "https://www.appliances-online.com.au",
-          "p": 1999
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Drawer Dishwasher",
-      "priorityScore": 78
+      "priorityScore": 60
     },
     {
       "id": "dishwasher-adw1086",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DD60***9",
       "w": 599,
       "h": 410,
@@ -3702,7 +3684,7 @@
     {
       "id": "dishwasher-adw1044",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DD60D4ZB9",
       "w": 599,
       "h": 880,
@@ -3727,7 +3709,7 @@
     {
       "id": "dishwasher-adw0863",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DD60DA*9",
       "w": 599,
       "h": 820,
@@ -3752,7 +3734,7 @@
     {
       "id": "dishwasher-adw0865",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DD60DC*9",
       "w": 599,
       "h": 820,
@@ -3777,7 +3759,7 @@
     {
       "id": "dishwasher-adw1065",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DD60DDFB9",
       "w": 599,
       "h": 880,
@@ -3802,7 +3784,7 @@
     {
       "id": "dishwasher-adw1066",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DD60DI9",
       "w": 599,
       "h": 880,
@@ -3827,7 +3809,7 @@
     {
       "id": "dishwasher-adw1270",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DD60DTX6I1",
       "w": 599,
       "h": 820,
@@ -3852,7 +3834,7 @@
     {
       "id": "dishwasher-adw0771",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DD60SCTX9",
       "w": 599,
       "h": 820,
@@ -3877,7 +3859,7 @@
     {
       "id": "dishwasher-adw1064",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DD60SDFTB9",
       "w": 599,
       "h": 410,
@@ -3902,7 +3884,7 @@
     {
       "id": "dishwasher-adw0911",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DD60SI9",
       "w": 599,
       "h": 454,
@@ -3927,7 +3909,7 @@
     {
       "id": "dishwasher-adw1048",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DD60ST4ZB9",
       "w": 599,
       "h": 410,
@@ -3952,7 +3934,7 @@
     {
       "id": "dishwasher-adw1070",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DD60STI9",
       "w": 599,
       "h": 410,
@@ -3977,7 +3959,7 @@
     {
       "id": "dishwasher-adw1273",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DD60STX6I1",
       "w": 599,
       "h": 454,
@@ -4002,7 +3984,7 @@
     {
       "id": "dishwasher-adw0796",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DW60FC1*1",
       "w": 597,
       "h": 870,
@@ -4027,7 +4009,7 @@
     {
       "id": "dishwasher-adw1025",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DW60FC1X2",
       "w": 600,
       "h": 850,
@@ -4052,7 +4034,7 @@
     {
       "id": "dishwasher-adw0797",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DW60FC2*1",
       "w": 595,
       "h": 850,
@@ -4077,7 +4059,7 @@
     {
       "id": "dishwasher-adw0861",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DW60FC6X1",
       "w": 597,
       "h": 870,
@@ -4102,7 +4084,7 @@
     {
       "id": "dishwasher-adw0988",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DW60U2I1",
       "w": 597,
       "h": 818,
@@ -4127,7 +4109,7 @@
     {
       "id": "dishwasher-adw0993",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DW60U2I2",
       "w": 600,
       "h": 820,
@@ -4152,7 +4134,7 @@
     {
       "id": "dishwasher-adw0989",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DW60U6I1",
       "w": 597,
       "h": 818,
@@ -4177,7 +4159,7 @@
     {
       "id": "dishwasher-adw0915",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DW60UC2X",
       "w": 597,
       "h": 820,
@@ -4202,7 +4184,7 @@
     {
       "id": "dishwasher-adw0959",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DW60UT4I2",
       "w": 600,
       "h": 857,
@@ -4228,7 +4210,7 @@
     {
       "id": "dishwasher-adw0956",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DW60UZT4B2",
       "w": 600,
       "h": 857,
@@ -4803,7 +4785,7 @@
     {
       "id": "dishwasher-adw1280",
       "cat": "dishwasher",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HS9B16FB",
       "w": 599,
       "h": 885,
@@ -4828,7 +4810,7 @@
     {
       "id": "dishwasher-adw1245",
       "cat": "dishwasher",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HSBE15FS",
       "w": 599,
       "h": 885,
@@ -4853,7 +4835,7 @@
     {
       "id": "dishwasher-adw0972",
       "cat": "dishwasher",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HSCE14FB",
       "w": 598,
       "h": 845,
@@ -4878,7 +4860,7 @@
     {
       "id": "dishwasher-adw0974",
       "cat": "dishwasher",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HSCM15FS",
       "w": 598,
       "h": 845,
@@ -4903,7 +4885,7 @@
     {
       "id": "dishwasher-adw0805",
       "cat": "dishwasher",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HSGA16FS",
       "w": 600,
       "h": 850,
@@ -4928,7 +4910,7 @@
     {
       "id": "dishwasher-adw0985",
       "cat": "dishwasher",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HSGP15FS",
       "w": 599,
       "h": 846,
@@ -5003,7 +4985,7 @@
     {
       "id": "dishwasher-adw1172",
       "cat": "dishwasher",
-      "brand": "IKEA",
+      "brand": "Ikea",
       "model": "FRÖSLUNDA 505.681.65",
       "w": 448,
       "h": 815,
@@ -5021,7 +5003,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "IKEA Dishwasher",
+      "displayName": "Ikea Dishwasher",
       "readableSpec": "Built-in Dishwasher",
       "priorityScore": 24
     },
@@ -6104,7 +6086,7 @@
     {
       "id": "dishwasher-zdw0279",
       "cat": "dishwasher",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "340251",
       "w": 600,
       "h": 850,
@@ -6129,7 +6111,7 @@
     {
       "id": "dishwasher-zdw0288",
       "cat": "dishwasher",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "340454",
       "w": 448,
       "h": 845,
@@ -6154,7 +6136,7 @@
     {
       "id": "dishwasher-zdw0283",
       "cat": "dishwasher",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "340457",
       "w": 450,
       "h": 845,
@@ -6179,7 +6161,7 @@
     {
       "id": "dishwasher-zdw0287",
       "cat": "dishwasher",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "340458",
       "w": 448,
       "h": 845,
@@ -6204,7 +6186,7 @@
     {
       "id": "dishwasher-zdw0285",
       "cat": "dishwasher",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "340460",
       "w": 448,
       "h": 845,
@@ -6229,7 +6211,7 @@
     {
       "id": "dishwasher-zdw0278",
       "cat": "dishwasher",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "340520",
       "w": 600,
       "h": 840,
@@ -6254,7 +6236,7 @@
     {
       "id": "dishwasher-zdw0284",
       "cat": "dishwasher",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "340535",
       "w": 598,
       "h": 845,
@@ -6279,7 +6261,7 @@
     {
       "id": "dishwasher-zdw0286",
       "cat": "dishwasher",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "340607",
       "w": 550,
       "h": 438,
@@ -6304,7 +6286,7 @@
     {
       "id": "dishwasher-zdw0281",
       "cat": "dishwasher",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "340645",
       "w": 448,
       "h": 845,
@@ -6329,7 +6311,7 @@
     {
       "id": "dishwasher-adw1362",
       "cat": "dishwasher",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MDW6099B15BDX",
       "w": 598,
       "h": 815,
@@ -6354,7 +6336,7 @@
     {
       "id": "dishwasher-adw1371",
       "cat": "dishwasher",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MDWMINIS",
       "w": 420,
       "h": 435,
@@ -6805,7 +6787,7 @@
     {
       "id": "dishwasher-adw0891",
       "cat": "dishwasher",
-      "brand": "NORJ",
+      "brand": "Norj",
       "model": "NDW409X1",
       "w": 450,
       "h": 820,
@@ -6823,7 +6805,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "NORJ Dishwasher",
+      "displayName": "Norj Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 18
     },
@@ -7512,7 +7494,7 @@
       "d": 575,
       "kwh_year": 210,
       "stars": 5,
-      "price": 1499,
+      "price": null,
       "emoji": "🍽️",
       "door_swing_mm": 0,
       "features": [
@@ -7521,18 +7503,12 @@
         "SmartThings",
         "Hygiene Steam"
       ],
-      "retailers": [
-        {
-          "n": "Harvey Norman",
-          "url": "https://www.harveynorman.com.au",
-          "p": null
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "displayName": "Samsung Smart",
       "readableSpec": "15-place Built-in",
-      "priorityScore": 85
+      "priorityScore": 65
     },
     {
       "id": "dishwasher-adw1242",
@@ -8138,7 +8114,7 @@
     {
       "id": "dishwasher-adw1195",
       "cat": "dishwasher",
-      "brand": "TECHNIKA",
+      "brand": "Technika",
       "model": "TDX7SS-7",
       "w": 598,
       "h": 845,
@@ -8156,14 +8132,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "TECHNIKA Dishwasher",
+      "displayName": "Technika Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 24
     },
     {
       "id": "dishwasher-adw1035",
       "cat": "dishwasher",
-      "brand": "TECHNIKA",
+      "brand": "Technika",
       "model": "TGDW6BK-2",
       "w": 598,
       "h": 845,
@@ -8181,7 +8157,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "TECHNIKA Dishwasher",
+      "displayName": "Technika Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 18
     },
@@ -8388,7 +8364,7 @@
     {
       "id": "dishwasher-adw0944",
       "cat": "dishwasher",
-      "brand": "TOSHIBA",
+      "brand": "Toshiba",
       "model": "DW-14F1(SS)-AU",
       "w": 598,
       "h": 845,
@@ -8406,14 +8382,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "TOSHIBA Dishwasher",
+      "displayName": "Toshiba Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 18
     },
     {
       "id": "dishwasher-adw0943",
       "cat": "dishwasher",
-      "brand": "TOSHIBA",
+      "brand": "Toshiba",
       "model": "DW-15F3(BS)-AU",
       "w": 598,
       "h": 845,
@@ -8431,14 +8407,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "TOSHIBA Dishwasher",
+      "displayName": "Toshiba Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 24
     },
     {
       "id": "dishwasher-adw0942",
       "cat": "dishwasher",
-      "brand": "TOSHIBA",
+      "brand": "Toshiba",
       "model": "DW-15F5(SS)-AU",
       "w": 600,
       "h": 840,
@@ -8456,7 +8432,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "TOSHIBA Dishwasher",
+      "displayName": "Toshiba Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 24
     },
@@ -8940,7 +8916,7 @@
     {
       "id": "dryer-acd0677",
       "cat": "dryer",
-      "brand": "anko",
+      "brand": "Anko",
       "model": "ACD80W",
       "w": 595,
       "h": 845,
@@ -9181,7 +9157,7 @@
       "d": 578,
       "kwh_year": 160,
       "stars": 6,
-      "price": 1799,
+      "price": null,
       "emoji": "🌀",
       "door_swing_mm": 0,
       "vented": false,
@@ -9191,19 +9167,13 @@
         "AutoDry",
         "SelfCleaning Condenser"
       ],
-      "retailers": [
-        {
-          "n": "Harvey Norman",
-          "url": "https://www.harveynorman.com.au",
-          "p": null
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Bosch Serie 4",
       "readableSpec": "8kg Heat Pump",
-      "priorityScore": 91
+      "priorityScore": 71
     },
     {
       "id": "dryer-acd0620",
@@ -9319,7 +9289,7 @@
       "d": 580,
       "kwh_year": 155,
       "stars": 6,
-      "price": 1649,
+      "price": null,
       "emoji": "🌀",
       "door_swing_mm": 0,
       "vented": false,
@@ -9330,19 +9300,13 @@
         "WoolDry",
         "WetToGo"
       ],
-      "retailers": [
-        {
-          "n": "Appliances Online",
-          "url": "https://www.appliances-online.com.au",
-          "p": 1649
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Electrolux Dryer",
       "readableSpec": "8kg Heat Pump",
-      "priorityScore": 84
+      "priorityScore": 66
     },
     {
       "id": "dryer-acd0788",
@@ -9399,7 +9363,7 @@
     {
       "id": "dryer-acd0799",
       "cat": "dryer",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EWW1043R7",
       "w": 600,
       "h": 850,
@@ -9418,14 +9382,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Dryer",
+      "displayName": "Electrolux Dryer",
       "readableSpec": "Condenser",
-      "priorityScore": 18
+      "priorityScore": 48
     },
     {
       "id": "dryer-acd0800",
       "cat": "dryer",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EWW1242R9",
       "w": 600,
       "h": 850,
@@ -9444,14 +9408,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Dryer",
+      "displayName": "Electrolux Dryer",
       "readableSpec": "Condenser",
-      "priorityScore": 12
+      "priorityScore": 42
     },
     {
       "id": "dryer-acd0801",
       "cat": "dryer",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EWW1243R7",
       "w": 600,
       "h": 850,
@@ -9470,9 +9434,9 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Dryer",
+      "displayName": "Electrolux Dryer",
       "readableSpec": "Condenser",
-      "priorityScore": 12
+      "priorityScore": 42
     },
     {
       "id": "dryer-acd0717",
@@ -9843,7 +9807,7 @@
     {
       "id": "dryer-acd0942",
       "cat": "dryer",
-      "brand": "EUROTECH",
+      "brand": "Eurotech",
       "model": "360329",
       "w": 598,
       "h": 845,
@@ -9862,7 +9826,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROTECH Dryer",
+      "displayName": "Eurotech Dryer",
       "readableSpec": "Vented",
       "priorityScore": 18
     },
@@ -9895,7 +9859,7 @@
     {
       "id": "dryer-acd0902",
       "cat": "dryer",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DE5060**",
       "w": 600,
       "h": 830,
@@ -9921,7 +9885,7 @@
     {
       "id": "dryer-acd0898",
       "cat": "dryer",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DH8060P1",
       "w": 600,
       "h": 850,
@@ -10163,7 +10127,7 @@
       "d": 575,
       "kwh_year": 180,
       "stars": 5,
-      "price": 1299,
+      "price": null,
       "emoji": "🌀",
       "door_swing_mm": 0,
       "vented": false,
@@ -10173,29 +10137,18 @@
         "DualInverter",
         "Flow Sense Lint"
       ],
-      "retailers": [
-        {
-          "n": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au",
-          "p": 1299
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au",
-          "p": 1279
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG Dual Inverter",
       "readableSpec": "8kg Condenser",
-      "priorityScore": 90
+      "priorityScore": 60
     },
     {
       "id": "dryer-zcd0122",
       "cat": "dryer",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "361176 MDS70-VR072/A04-AU",
       "w": 595,
       "h": 840,
@@ -10221,7 +10174,7 @@
     {
       "id": "dryer-zcd0141",
       "cat": "dryer",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "DMDV70",
       "w": 595,
       "h": 840,
@@ -10567,7 +10520,7 @@
       "d": 600,
       "kwh_year": 450,
       "stars": 2,
-      "price": 999,
+      "price": null,
       "emoji": "🌀",
       "door_swing_mm": 0,
       "vented": true,
@@ -10577,24 +10530,18 @@
         "Sensor Dry",
         "Multi-Steam"
       ],
-      "retailers": [
-        {
-          "n": "JB Hi-Fi",
-          "url": "https://www.jbhifi.com.au",
-          "p": 999
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Samsung Smart",
       "readableSpec": "9kg Vented",
-      "priorityScore": 60
+      "priorityScore": 42
     },
     {
       "id": "dryer-zcd0135",
       "cat": "dryer",
-      "brand": "SHEFFIELD",
+      "brand": "Sheffield",
       "model": "SHFDR7W",
       "w": 595,
       "h": 525,
@@ -10613,7 +10560,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "SHEFFIELD Dryer",
+      "displayName": "Sheffield Dryer",
       "readableSpec": "Vented",
       "priorityScore": 12
     },
@@ -10698,7 +10645,7 @@
     {
       "id": "dryer-acd0615",
       "cat": "dryer",
-      "brand": "STIRLING",
+      "brand": "Stirling",
       "model": "STR-CD70W",
       "w": 595,
       "h": 850,
@@ -10717,7 +10664,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "STIRLING Dryer",
+      "displayName": "Stirling Dryer",
       "readableSpec": "Vented",
       "priorityScore": 18
     },
@@ -11244,7 +11191,7 @@
     {
       "id": "fridge-arf3000",
       "cat": "fridge",
-      "brand": "anko",
+      "brand": "Anko",
       "model": "ACF142W2",
       "w": 632,
       "h": 850,
@@ -11270,7 +11217,7 @@
     {
       "id": "fridge-arf2905",
       "cat": "fridge",
-      "brand": "anko",
+      "brand": "Anko",
       "model": "ATM314X",
       "w": 595,
       "h": 1620,
@@ -11296,7 +11243,7 @@
     {
       "id": "fridge-arf3001",
       "cat": "fridge",
-      "brand": "anko",
+      "brand": "Anko",
       "model": "AUL237S",
       "w": 550,
       "h": 1420,
@@ -11868,7 +11815,7 @@
     {
       "id": "fridge-arf2450",
       "cat": "fridge",
-      "brand": "ARTUSI",
+      "brand": "Artusi",
       "model": "AINT119",
       "w": 596,
       "h": 820,
@@ -11887,14 +11834,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ARTUSI Fridge",
+      "displayName": "Artusi Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18
     },
     {
       "id": "fridge-arf2423",
       "cat": "fridge",
-      "brand": "ARTUSI",
+      "brand": "Artusi",
       "model": "AINT119NF",
       "w": 596,
       "h": 820,
@@ -11913,7 +11860,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ARTUSI Fridge",
+      "displayName": "Artusi Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18
     },
@@ -12239,7 +12186,7 @@
       "d": 664,
       "kwh_year": 220,
       "stars": 5,
-      "price": 2499,
+      "price": null,
       "emoji": "🧊",
       "door_swing_mm": 600,
       "features": [
@@ -12248,19 +12195,13 @@
         "SuperCooling",
         "EasyAccess"
       ],
-      "retailers": [
-        {
-          "n": "Harvey Norman",
-          "url": "https://www.harveynorman.com.au",
-          "p": null
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Bosch Serie 4",
       "readableSpec": "368L Top-Mount",
-      "priorityScore": 85
+      "priorityScore": 65
     },
     {
       "id": "fridge-zrf0626",
@@ -15403,7 +15344,7 @@
       "d": 685,
       "kwh_year": 310,
       "stars": 4,
-      "price": 1899,
+      "price": null,
       "emoji": "🧊",
       "door_swing_mm": 0,
       "features": [
@@ -15411,29 +15352,18 @@
         "FlexStor",
         "TasteGuard Deodoriser"
       ],
-      "retailers": [
-        {
-          "n": "JB Hi-Fi",
-          "url": "https://www.jbhifi.com.au",
-          "p": 1899
-        },
-        {
-          "n": "Appliances Online",
-          "url": "https://www.appliances-online.com.au",
-          "p": 1849
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Electrolux Fridge",
       "readableSpec": "520L Bottom-Mount",
-      "priorityScore": 90
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3134",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EBE4302BD",
       "w": 699,
       "h": 1725,
@@ -15452,14 +15382,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf2489",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EBE4507SC",
       "w": 1725,
       "h": 699,
@@ -15478,14 +15408,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf3133",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EBE5002SD-R",
       "w": 796,
       "h": 1725,
@@ -15504,14 +15434,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf2400",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EBE5307SC",
       "w": 1725,
       "h": 796,
@@ -15530,14 +15460,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf2445",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EBE5367BC",
       "w": 1725,
       "h": 796,
@@ -15556,14 +15486,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf3828",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EFE4227SC",
       "w": 1725,
       "h": 699,
@@ -15582,14 +15512,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 48
     },
     {
       "id": "fridge-arf3823",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EHE5267SC",
       "w": 1725,
       "h": 796,
@@ -15608,14 +15538,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3685",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EHE6191SB",
       "w": 913,
       "h": 1780,
@@ -15634,14 +15564,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf2393",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EHE6899SA",
       "w": 1782,
       "h": 913,
@@ -15660,14 +15590,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf2939",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EQE5607BA",
       "w": 1795,
       "h": 896,
@@ -15686,14 +15616,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf2940",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EQE5657BA",
       "w": 1795,
       "h": 896,
@@ -15712,14 +15642,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3736",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EQE5757BB",
       "w": 896,
       "h": 1795,
@@ -15738,14 +15668,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf2944",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EQE6160BA",
       "w": 1782,
       "h": 913,
@@ -15764,14 +15694,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf2392",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EQE6870SA",
       "w": 1782,
       "h": 913,
@@ -15790,23 +15720,23 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3869",
       "cat": "fridge",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "ERE5047SC",
-      "w": 1725,
-      "h": 699,
+      "w": 699,
+      "h": 1725,
       "d": 769,
       "kwh_year": 216,
       "stars": 4,
       "price": null,
       "emoji": "🧊",
-      "door_swing_mm": 1725,
+      "door_swing_mm": 699,
       "features": [
         "Upright",
         "1",
@@ -15816,9 +15746,9 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Fridge",
+      "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3707",
@@ -16681,7 +16611,7 @@
     {
       "id": "fridge-arf2677",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "EBF126S",
       "w": 495,
       "h": 840,
@@ -16700,14 +16630,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18
     },
     {
       "id": "fridge-arf2678",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "EBF42W",
       "w": 440,
       "h": 510,
@@ -16726,14 +16656,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
     },
     {
       "id": "fridge-arf2676",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "EBF78W",
       "w": 480,
       "h": 700,
@@ -16752,14 +16682,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18
     },
     {
       "id": "fridge-arf2685",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "ECFR145W",
       "w": 705,
       "h": 845,
@@ -16778,14 +16708,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Chest",
       "priorityScore": 18
     },
     {
       "id": "fridge-arf2690",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "ECFR200W",
       "w": 905,
       "h": 845,
@@ -16804,14 +16734,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Chest",
       "priorityScore": 18
     },
     {
       "id": "fridge-arf2686",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "ECFR316W",
       "w": 1120,
       "h": 845,
@@ -16830,14 +16760,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Chest",
       "priorityScore": 18
     },
     {
       "id": "fridge-arf2925",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "ECFR688W",
       "w": 1905,
       "h": 865,
@@ -16856,14 +16786,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Chest",
       "priorityScore": 18
     },
     {
       "id": "fridge-arf2701",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "ESBS563S",
       "w": 900,
       "h": 1770,
@@ -16882,14 +16812,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 24
     },
     {
       "id": "fridge-arf2672",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "ETM221W",
       "w": 500,
       "h": 1430,
@@ -16908,14 +16838,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
     },
     {
       "id": "fridge-arf2709",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "ETM269BKS",
       "w": 550,
       "h": 1670,
@@ -16934,14 +16864,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18
     },
     {
       "id": "fridge-arf2689",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "ETM362S",
       "w": 600,
       "h": 1700,
@@ -16960,14 +16890,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
     },
     {
       "id": "fridge-arf2700",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "ETM512BKS",
       "w": 790,
       "h": 1780,
@@ -16986,14 +16916,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
     },
     {
       "id": "fridge-arf2684",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "ETM87W",
       "w": 480,
       "h": 850,
@@ -17012,14 +16942,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18
     },
     {
       "id": "fridge-arf2698",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "EUF242W",
       "w": 544,
       "h": 1426,
@@ -17038,14 +16968,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
       "priorityScore": 30
     },
     {
       "id": "fridge-arf2697",
       "cat": "fridge",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "EUFR168W",
       "w": 544,
       "h": 1426,
@@ -17064,7 +16994,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Fridge",
+      "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18
     },
@@ -17721,7 +17651,7 @@
     {
       "id": "fridge-zrf0928",
       "cat": "fridge",
-      "brand": "EUROTECH",
+      "brand": "Eurotech",
       "model": "352293",
       "w": 600,
       "h": 1860,
@@ -17740,14 +17670,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROTECH Fridge",
+      "displayName": "Eurotech Fridge",
       "readableSpec": "Upright",
       "priorityScore": 30
     },
     {
       "id": "fridge-zrf0965",
       "cat": "fridge",
-      "brand": "EUROTECH",
+      "brand": "Eurotech",
       "model": "352331",
       "w": 601,
       "h": 1901,
@@ -17766,14 +17696,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROTECH Fridge",
+      "displayName": "Eurotech Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
     },
     {
       "id": "fridge-zrf0970",
       "cat": "fridge",
-      "brand": "EUROTECH",
+      "brand": "Eurotech",
       "model": "352387",
       "w": 595,
       "h": 2030,
@@ -17792,7 +17722,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROTECH Fridge",
+      "displayName": "Eurotech Fridge",
       "readableSpec": "Upright",
       "priorityScore": 30
     },
@@ -18144,7 +18074,7 @@
       "d": 711,
       "kwh_year": 380,
       "stars": 4,
-      "price": 4199,
+      "price": null,
       "emoji": "🧊",
       "door_swing_mm": 0,
       "features": [
@@ -18153,24 +18083,18 @@
         "Water Dispenser",
         "Auto Ice"
       ],
-      "retailers": [
-        {
-          "n": "Appliances Online",
-          "url": "https://www.appliances-online.com.au",
-          "p": 4199
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "726L French-Door",
-      "priorityScore": 72
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf2323",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "*402B* Ice & Water",
       "w": 635,
       "h": 1705,
@@ -18196,7 +18120,7 @@
     {
       "id": "fridge-arf2322",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "*442B* Ice & Water",
       "w": 680,
       "h": 1705,
@@ -18222,7 +18146,7 @@
     {
       "id": "fridge-arf3587",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "E/RF402B series",
       "w": 635,
       "h": 1720,
@@ -18248,7 +18172,7 @@
     {
       "id": "fridge-zrf0252",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "E388RM",
       "w": 635,
       "h": 1695,
@@ -18274,7 +18198,7 @@
     {
       "id": "fridge-arf3547",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "E442BLXFD5",
       "w": 680,
       "h": 1720,
@@ -18301,7 +18225,7 @@
     {
       "id": "fridge-zrf0238",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "E450R",
       "w": 635,
       "h": 1695,
@@ -18327,7 +18251,7 @@
     {
       "id": "fridge-arf3161",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RB60V18",
       "w": 555,
       "h": 1773,
@@ -18354,7 +18278,7 @@
     {
       "id": "fridge-zrf0241",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RB90S64MKIW",
       "w": 855,
       "h": 640,
@@ -18380,7 +18304,7 @@
     {
       "id": "fridge-arf2816",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RB90S64MKIW1",
       "w": 855,
       "h": 640,
@@ -18406,7 +18330,7 @@
     {
       "id": "fridge-arf2826",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RB90S64MKIW1 2",
       "w": 855,
       "h": 640,
@@ -18432,7 +18356,7 @@
     {
       "id": "fridge-arf2325",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RC143",
       "w": 720,
       "h": 847,
@@ -18458,7 +18382,7 @@
     {
       "id": "fridge-arf2324",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RC201",
       "w": 940,
       "h": 847,
@@ -18484,7 +18408,7 @@
     {
       "id": "fridge-zrf0723",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RC376W2",
       "w": 1240,
       "h": 847,
@@ -18510,7 +18434,7 @@
     {
       "id": "fridge-zrf0712",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RC519W2",
       "w": 1650,
       "h": 847,
@@ -18536,7 +18460,7 @@
     {
       "id": "fridge-zrf0722",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RC719W2",
       "w": 1860,
       "h": 847,
@@ -18563,7 +18487,7 @@
     {
       "id": "fridge-arf2620",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF308FLDW2",
       "w": 635,
       "h": 1425,
@@ -18589,7 +18513,7 @@
     {
       "id": "fridge-arf2494",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF372B*",
       "w": 635,
       "h": 1595,
@@ -18615,7 +18539,7 @@
     {
       "id": "fridge-arf2621",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF388FLDW2",
       "w": 635,
       "h": 1695,
@@ -18641,7 +18565,7 @@
     {
       "id": "fridge-arf2493",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF402B*Y*",
       "w": 635,
       "h": 1705,
@@ -18667,7 +18591,7 @@
     {
       "id": "fridge-arf2328",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF402BLZX6",
       "w": 635,
       "h": 1705,
@@ -18693,7 +18617,7 @@
     {
       "id": "fridge-arf2320",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF442B*",
       "w": 680,
       "h": 1705,
@@ -18719,7 +18643,7 @@
     {
       "id": "fridge-arf3054",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF500QNUX1",
       "w": 790,
       "h": 1790,
@@ -18745,7 +18669,7 @@
     {
       "id": "fridge-arf3059",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF500QNX1",
       "w": 790,
       "h": 1790,
@@ -18771,7 +18695,7 @@
     {
       "id": "fridge-arf3586",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF505ANUB1",
       "w": 790,
       "h": 1725,
@@ -18797,7 +18721,7 @@
     {
       "id": "fridge-arf3583",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF505ANX1",
       "w": 790,
       "h": 1725,
@@ -18823,7 +18747,7 @@
     {
       "id": "fridge-arf3582",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF505BRNUX1",
       "w": 790,
       "h": 1725,
@@ -18849,7 +18773,7 @@
     {
       "id": "fridge-arf3585",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF505BRNX1",
       "w": 790,
       "h": 1725,
@@ -18875,7 +18799,7 @@
     {
       "id": "fridge-arf3570",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF522ADX6",
       "w": 790,
       "h": 1720,
@@ -18901,7 +18825,7 @@
     {
       "id": "fridge-arf3569",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF522BLPW6",
       "w": 790,
       "h": 1720,
@@ -18927,7 +18851,7 @@
     {
       "id": "fridge-arf3588",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF522WDRUX5",
       "w": 790,
       "h": 1720,
@@ -18953,7 +18877,7 @@
     {
       "id": "fridge-arf2887",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF605QDVX2",
       "w": 905,
       "h": 1790,
@@ -18979,7 +18903,7 @@
     {
       "id": "fridge-arf3548",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF610ADX5",
       "w": 900,
       "h": 1790,
@@ -19005,7 +18929,7 @@
     {
       "id": "fridge-arf2964",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RF730QNUVX1",
       "w": 905,
       "h": 1900,
@@ -19031,7 +18955,7 @@
     {
       "id": "fridge-arf3475",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS4621FLJE1",
       "w": 451,
       "h": 2134,
@@ -19057,7 +18981,7 @@
     {
       "id": "fridge-arf3183",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS4621FLJK1",
       "w": 451,
       "h": 2134,
@@ -19083,7 +19007,7 @@
     {
       "id": "fridge-arf3303",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS6009SBL1",
       "w": 592,
       "h": 897,
@@ -19109,7 +19033,7 @@
     {
       "id": "fridge-arf3337",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS6009SBLT1",
       "w": 592,
       "h": 897,
@@ -19135,7 +19059,7 @@
     {
       "id": "fridge-arf2890",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS6019BRU1",
       "w": 592,
       "h": 1870,
@@ -19161,7 +19085,7 @@
     {
       "id": "fridge-arf2852",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS6019F2L1",
       "w": 592,
       "h": 1870,
@@ -19187,7 +19111,7 @@
     {
       "id": "fridge-arf3052",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS6019F3LJ1",
       "w": 592,
       "h": 1870,
@@ -19213,7 +19137,7 @@
     {
       "id": "fridge-arf2837",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS6019S2R1",
       "w": 592,
       "h": 1870,
@@ -19239,7 +19163,7 @@
     {
       "id": "fridge-arf3051",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS6019S3RH1",
       "w": 592,
       "h": 1870,
@@ -19265,7 +19189,7 @@
     {
       "id": "fridge-arf3479",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS6121FLJE1",
       "w": 603,
       "h": 2134,
@@ -19291,7 +19215,7 @@
     {
       "id": "fridge-arf3180",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS6121FLJK1",
       "w": 603,
       "h": 2134,
@@ -19317,7 +19241,7 @@
     {
       "id": "fridge-arf3477",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS6121SLHE1",
       "w": 603,
       "h": 2134,
@@ -19343,7 +19267,7 @@
     {
       "id": "fridge-arf3186",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS6121SLHK1",
       "w": 603,
       "h": 2134,
@@ -19369,7 +19293,7 @@
     {
       "id": "fridge-arf3478",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS6121WLUE1",
       "w": 603,
       "h": 2134,
@@ -19395,7 +19319,7 @@
     {
       "id": "fridge-arf3523",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS6121WLUK1",
       "w": 603,
       "h": 2134,
@@ -19421,7 +19345,7 @@
     {
       "id": "fridge-arf3476",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS7621FLJE1",
       "w": 756,
       "h": 2134,
@@ -19447,7 +19371,7 @@
     {
       "id": "fridge-arf3181",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS7621FLJK1",
       "w": 756,
       "h": 2134,
@@ -19473,7 +19397,7 @@
     {
       "id": "fridge-arf3485",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS7621SLHE1",
       "w": 756,
       "h": 2134,
@@ -19499,7 +19423,7 @@
     {
       "id": "fridge-arf3185",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS7621SLHK1",
       "w": 756,
       "h": 2134,
@@ -19525,7 +19449,7 @@
     {
       "id": "fridge-arf3474",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS7621WLUE1",
       "w": 756,
       "h": 2134,
@@ -19551,7 +19475,7 @@
     {
       "id": "fridge-arf3524",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS7621WLUK1",
       "w": 756,
       "h": 2134,
@@ -19577,7 +19501,7 @@
     {
       "id": "fridge-arf3349",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS80A1",
       "w": 796,
       "h": 1798,
@@ -19603,7 +19527,7 @@
     {
       "id": "fridge-arf3507",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS90AU1",
       "w": 896,
       "h": 1798,
@@ -19629,7 +19553,7 @@
     {
       "id": "fridge-arf2896",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS9120WLJ1",
       "w": 890,
       "h": 2028,
@@ -19655,7 +19579,7 @@
     {
       "id": "fridge-arf3440",
       "cat": "fridge",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "RS9121WRUVK5",
       "w": 908,
       "h": 2134,
@@ -20650,7 +20574,7 @@
       "d": 695,
       "kwh_year": 360,
       "stars": 3,
-      "price": 1299,
+      "price": null,
       "emoji": "🧊",
       "door_swing_mm": 0,
       "features": [
@@ -20831,7 +20755,7 @@
     {
       "id": "fridge-arf3639",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HCF140W",
       "w": 695,
       "h": 845,
@@ -20851,14 +20775,14 @@
       "unavailable": true,
       "direct_url": "https://www.jbhifi.com.au/search?query=HCF140W",
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf3638",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HCF195W",
       "w": 915,
       "h": 845,
@@ -20878,14 +20802,14 @@
       "unavailable": true,
       "direct_url": "https://www.jbhifi.com.au/search?query=HCF195W",
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf3672",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HCF200FI",
       "w": 940,
       "h": 865,
@@ -20905,14 +20829,14 @@
       "unavailable": true,
       "direct_url": "https://www.jbhifi.com.au/search?query=HCF200FI",
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3789",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HCF300FI",
       "w": 1205,
       "h": 865,
@@ -20931,14 +20855,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3640",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HCF300W",
       "w": 1110,
       "h": 845,
@@ -20957,14 +20881,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf3790",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HCF420W",
       "w": 1320,
       "h": 845,
@@ -20983,14 +20907,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf3791",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HCF520W",
       "w": 1545,
       "h": 845,
@@ -21009,14 +20933,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf3792",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HCF720W",
       "w": 2042,
       "h": 845,
@@ -21035,14 +20959,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf3601",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HRF115UW2",
       "w": 545,
       "h": 850,
@@ -21061,14 +20985,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3599",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HRF130UW2",
       "w": 545,
       "h": 850,
@@ -21087,14 +21011,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf3618",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HRF210TG",
       "w": 545,
       "h": 1465,
@@ -21113,14 +21037,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf3654",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HRF220VW",
       "w": 545,
       "h": 1380,
@@ -21139,14 +21063,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf3467",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HRF318BS",
       "w": 623,
       "h": 1635,
@@ -21165,14 +21089,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf3619",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HRF330TG",
       "w": 595,
       "h": 1652,
@@ -21191,14 +21115,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf3464",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HRF346BS",
       "w": 623,
       "h": 1730,
@@ -21217,14 +21141,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf3596",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HRF40UW2",
       "w": 452,
       "h": 510,
@@ -21243,14 +21167,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3611",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HRF450TG",
       "w": 700,
       "h": 1775,
@@ -21269,14 +21193,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf3573",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HRF505VW",
       "w": 705,
       "h": 1725,
@@ -21295,14 +21219,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3802",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HRF523XHG Series",
       "w": 908,
       "h": 1775,
@@ -21321,14 +21245,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf3277",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HRF90UC",
       "w": 475,
       "h": 850,
@@ -21347,14 +21271,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 48
     },
     {
       "id": "fridge-arf3598",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HRF90UW2",
       "w": 452,
       "h": 850,
@@ -21373,14 +21297,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3581",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HVF170VW",
       "w": 545,
       "h": 1380,
@@ -21399,14 +21323,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3603",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HVF275DW",
       "w": 600,
       "h": 1775,
@@ -21425,14 +21349,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf3571",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HVF430VW",
       "w": 705,
       "h": 1725,
@@ -21451,14 +21375,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3580",
       "cat": "fridge",
-      "brand": "HAIER",
+      "brand": "Haier",
       "model": "HVF90VW",
       "w": 545,
       "h": 850,
@@ -21477,9 +21401,9 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HAIER Fridge",
+      "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf2186",
@@ -22304,7 +22228,7 @@
       "d": 700,
       "kwh_year": 480,
       "stars": 2,
-      "price": 1499,
+      "price": null,
       "emoji": "🧊",
       "door_swing_mm": 0,
       "features": [
@@ -22313,28 +22237,17 @@
         "No Frost",
         "LED"
       ],
-      "retailers": [
-        {
-          "n": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au",
-          "p": 1499
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au",
-          "p": 1479
-        }
-      ],
-      "sponsored": true,
-      "unavailable": false,
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "563L Side-By-Side",
-      "priorityScore": 72
+      "priorityScore": 42
     },
     {
       "id": "fridge-arf2378",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRAF328",
       "w": 595,
       "h": 1746,
@@ -22360,7 +22273,7 @@
     {
       "id": "fridge-arf3657",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBC113",
       "w": 475,
       "h": 845,
@@ -22387,7 +22300,7 @@
     {
       "id": "fridge-arf3340",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBC137",
       "w": 595,
       "h": 820,
@@ -22413,7 +22326,7 @@
     {
       "id": "fridge-arf3237",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBC140",
       "w": 595,
       "h": 862,
@@ -22438,7 +22351,7 @@
     {
       "id": "fridge-arf2667",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBF121B",
       "w": 519,
       "h": 820,
@@ -22464,7 +22377,7 @@
     {
       "id": "fridge-arf2793",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBF125",
       "w": 475,
       "h": 840,
@@ -22490,7 +22403,7 @@
     {
       "id": "fridge-arf3512",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBF126",
       "w": 475,
       "h": 820,
@@ -22516,7 +22429,7 @@
     {
       "id": "fridge-arf2734",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBF179B",
       "w": 515,
       "h": 1229,
@@ -22542,7 +22455,7 @@
     {
       "id": "fridge-arf2786",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBF45",
       "w": 445,
       "h": 500,
@@ -22568,7 +22481,7 @@
     {
       "id": "fridge-arf3513",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBF46",
       "w": 445,
       "h": 501,
@@ -22594,7 +22507,7 @@
     {
       "id": "fridge-arf2553",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBF47",
       "w": 439,
       "h": 510,
@@ -22620,7 +22533,7 @@
     {
       "id": "fridge-arf2651",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBM292",
       "w": 595,
       "h": 1785,
@@ -22646,7 +22559,7 @@
     {
       "id": "fridge-arf2650",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBM417C",
       "w": 704,
       "h": 1720,
@@ -22672,7 +22585,7 @@
     {
       "id": "fridge-arf3433",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBM418B",
       "w": 704,
       "h": 1720,
@@ -22698,7 +22611,7 @@
     {
       "id": "fridge-arf3435",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBM418S",
       "w": 704,
       "h": 1720,
@@ -22724,7 +22637,7 @@
     {
       "id": "fridge-arf2629",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBM482SW",
       "w": 794,
       "h": 1756,
@@ -22750,7 +22663,7 @@
     {
       "id": "fridge-arf2639",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBM483B",
       "w": 794,
       "h": 1756,
@@ -22776,7 +22689,7 @@
     {
       "id": "fridge-arf3099",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBM503S",
       "w": 794,
       "h": 1725,
@@ -22802,7 +22715,7 @@
     {
       "id": "fridge-arf2644",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBMFF453B",
       "w": 704,
       "h": 1723,
@@ -22828,7 +22741,7 @@
     {
       "id": "fridge-arf2635",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCD454BW",
       "w": 794,
       "h": 1817,
@@ -22853,7 +22766,7 @@
     {
       "id": "fridge-arf3272",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCD483E",
       "w": 794,
       "h": 1785,
@@ -22878,7 +22791,7 @@
     {
       "id": "fridge-arf3439",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCD483G",
       "w": 794,
       "h": 1785,
@@ -22903,7 +22816,7 @@
     {
       "id": "fridge-arf3199",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCD483TBW",
       "w": 794,
       "h": 1785,
@@ -22928,7 +22841,7 @@
     {
       "id": "fridge-arf3442",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCD483TSW",
       "w": 794,
       "h": 1785,
@@ -22953,7 +22866,7 @@
     {
       "id": "fridge-arf2871",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCD585BWB",
       "w": 912,
       "h": 1785,
@@ -22979,7 +22892,7 @@
     {
       "id": "fridge-arf3162",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCD586TBWB",
       "w": 912,
       "h": 1785,
@@ -23005,7 +22918,7 @@
     {
       "id": "fridge-arf2477",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCD609B",
       "w": 912,
       "h": 1785,
@@ -23031,7 +22944,7 @@
     {
       "id": "fridge-arf3141",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCD610TS",
       "w": 912,
       "h": 1785,
@@ -23057,7 +22970,7 @@
     {
       "id": "fridge-arf3666",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCD615TBW",
       "w": 912,
       "h": 1785,
@@ -23083,7 +22996,7 @@
     {
       "id": "fridge-arf3665",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCD615TBWV",
       "w": 912,
       "h": 1785,
@@ -23109,7 +23022,7 @@
     {
       "id": "fridge-arf3454",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCD640TB",
       "w": 914,
       "h": 1790,
@@ -23135,7 +23048,7 @@
     {
       "id": "fridge-arf3453",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCD640TBW",
       "w": 912,
       "h": 1785,
@@ -23161,7 +23074,7 @@
     {
       "id": "fridge-arf2845",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCF144",
       "w": 625,
       "h": 854,
@@ -23187,7 +23100,7 @@
     {
       "id": "fridge-arf2583",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCF145",
       "w": 559,
       "h": 859,
@@ -23213,7 +23126,7 @@
     {
       "id": "fridge-arf3339",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCF146",
       "w": 625,
       "h": 854,
@@ -23239,7 +23152,7 @@
     {
       "id": "fridge-arf2844",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCF199",
       "w": 802,
       "h": 854,
@@ -23265,7 +23178,7 @@
     {
       "id": "fridge-arf2588",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCF200",
       "w": 559,
       "h": 854,
@@ -23291,7 +23204,7 @@
     {
       "id": "fridge-arf3331",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCF201",
       "w": 802,
       "h": 854,
@@ -23317,7 +23230,7 @@
     {
       "id": "fridge-arf2843",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCF297",
       "w": 1114,
       "h": 847,
@@ -23343,7 +23256,7 @@
     {
       "id": "fridge-arf2348",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCF300",
       "w": 1114,
       "h": 847,
@@ -23369,7 +23282,7 @@
     {
       "id": "fridge-arf3330",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCF301",
       "w": 1114,
       "h": 847,
@@ -23395,7 +23308,7 @@
     {
       "id": "fridge-arf3558",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCF439",
       "w": 1429,
       "h": 858,
@@ -23421,7 +23334,7 @@
     {
       "id": "fridge-arf2839",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCF500",
       "w": 1646,
       "h": 847,
@@ -23447,7 +23360,7 @@
     {
       "id": "fridge-arf3408",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCF501",
       "w": 1646,
       "h": 857,
@@ -23473,7 +23386,7 @@
     {
       "id": "fridge-arf2638",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCF520",
       "w": 1730,
       "h": 847,
@@ -23499,7 +23412,7 @@
     {
       "id": "fridge-arf3539",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRCF702",
       "w": 2145,
       "h": 826,
@@ -23525,7 +23438,7 @@
     {
       "id": "fridge-arf3888",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRFD535BW",
       "w": 794,
       "h": 1785,
@@ -23551,7 +23464,7 @@
     {
       "id": "fridge-arf3889",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRFD537SW",
       "w": 794,
       "h": 1785,
@@ -23577,7 +23490,7 @@
     {
       "id": "fridge-arf2628",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRFD560BW",
       "w": 914,
       "h": 1785,
@@ -23603,7 +23516,7 @@
     {
       "id": "fridge-arf2390",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRFD577B",
       "w": 912,
       "h": 1776,
@@ -23629,7 +23542,7 @@
     {
       "id": "fridge-arf3116",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRFD634BW",
       "w": 914,
       "h": 1785,
@@ -23655,7 +23568,7 @@
     {
       "id": "fridge-arf3552",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRFD635SW",
       "w": 914,
       "h": 1785,
@@ -23681,7 +23594,7 @@
     {
       "id": "fridge-arf2736",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRSBS519S",
       "w": 910,
       "h": 1786,
@@ -23707,7 +23620,7 @@
     {
       "id": "fridge-arf3446",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRSBS540BW",
       "w": 908,
       "h": 1736,
@@ -23733,7 +23646,7 @@
     {
       "id": "fridge-arf2403",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRSBS578BW",
       "w": 910,
       "h": 1786,
@@ -23759,7 +23672,7 @@
     {
       "id": "fridge-arf3579",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRSBS613BWX",
       "w": 910,
       "h": 1795,
@@ -23785,7 +23698,7 @@
     {
       "id": "fridge-arf2860",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRSBS632BW",
       "w": 910,
       "h": 1795,
@@ -23811,7 +23724,7 @@
     {
       "id": "fridge-arf3572",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRSBS633BW",
       "w": 910,
       "h": 1795,
@@ -23837,7 +23750,7 @@
     {
       "id": "fridge-arf3306",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRSBS649SW",
       "w": 910,
       "h": 1795,
@@ -23863,7 +23776,7 @@
     {
       "id": "fridge-arf3192",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRSBS652B",
       "w": 910,
       "h": 1795,
@@ -23889,7 +23802,7 @@
     {
       "id": "fridge-arf2670",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRTF205S",
       "w": 550,
       "h": 1459,
@@ -23915,7 +23828,7 @@
     {
       "id": "fridge-arf3335",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRTF206",
       "w": 550,
       "h": 1410,
@@ -23941,7 +23854,7 @@
     {
       "id": "fridge-arf3316",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRTF325",
       "w": 595,
       "h": 1650,
@@ -23966,7 +23879,7 @@
     {
       "id": "fridge-arf2645",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRTF326",
       "w": 595,
       "h": 1696,
@@ -23991,7 +23904,7 @@
     {
       "id": "fridge-arf3394",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRTF424",
       "w": 700,
       "h": 1720,
@@ -24017,7 +23930,7 @@
     {
       "id": "fridge-arf2640",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRTF496SW",
       "w": 794,
       "h": 1720,
@@ -24042,7 +23955,7 @@
     {
       "id": "fridge-arf3563",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRTF497SW",
       "w": 794,
       "h": 1720,
@@ -24067,7 +23980,7 @@
     {
       "id": "fridge-arf2331",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRTF504",
       "w": 794,
       "h": 1720,
@@ -24092,7 +24005,7 @@
     {
       "id": "fridge-arf2637",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRTF92S",
       "w": 475,
       "h": 857,
@@ -24118,7 +24031,7 @@
     {
       "id": "fridge-arf2594",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRVF155",
       "w": 550,
       "h": 1434,
@@ -24144,7 +24057,7 @@
     {
       "id": "fridge-arf2946",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRVF240",
       "w": 595,
       "h": 1720,
@@ -24170,7 +24083,7 @@
     {
       "id": "fridge-arf2368",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRVF254",
       "w": 595,
       "h": 1746,
@@ -24196,7 +24109,7 @@
     {
       "id": "fridge-arf2831",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRVF384S",
       "w": 700,
       "h": 1720,
@@ -24248,7 +24161,7 @@
     {
       "id": "fridge-zrf0903",
       "cat": "fridge",
-      "brand": "HITACHI",
+      "brand": "Hitachi",
       "model": "R-WB560PT9",
       "w": 750,
       "h": 1795,
@@ -24267,14 +24180,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HITACHI Fridge",
+      "displayName": "Hitachi Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18
     },
     {
       "id": "fridge-arf1960",
       "cat": "fridge",
-      "brand": "HITACHI",
+      "brand": "Hitachi",
       "model": "R-WX620KA",
       "w": 750,
       "h": 1833,
@@ -24293,14 +24206,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HITACHI Fridge",
+      "displayName": "Hitachi Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
     },
     {
       "id": "fridge-arf1961",
       "cat": "fridge",
-      "brand": "HITACHI",
+      "brand": "Hitachi",
       "model": "R-WX670KA",
       "w": 825,
       "h": 1833,
@@ -24319,14 +24232,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HITACHI Fridge",
+      "displayName": "Hitachi Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
     },
     {
       "id": "fridge-arf3003",
       "cat": "fridge",
-      "brand": "HITACHI",
+      "brand": "Hitachi",
       "model": "R-WX670RA",
       "w": 825,
       "h": 1833,
@@ -24345,14 +24258,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HITACHI Fridge",
+      "displayName": "Hitachi Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
     },
     {
       "id": "fridge-arf2994",
       "cat": "fridge",
-      "brand": "HITACHI",
+      "brand": "Hitachi",
       "model": "R-ZX740RA",
       "w": 880,
       "h": 1833,
@@ -24371,7 +24284,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "HITACHI Fridge",
+      "displayName": "Hitachi Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
     },
@@ -25704,7 +25617,7 @@
     {
       "id": "fridge-arf3503",
       "cat": "fridge",
-      "brand": "ILVE",
+      "brand": "Ilve",
       "model": "ILBC142",
       "w": 595,
       "h": 800,
@@ -25723,14 +25636,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ILVE Fridge",
+      "displayName": "Ilve Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 27
+      "priorityScore": 12
     },
     {
       "id": "fridge-arf2456",
       "cat": "fridge",
-      "brand": "ILVE",
+      "brand": "Ilve",
       "model": "ILFRZ217I",
       "w": 540,
       "h": 1769,
@@ -25749,14 +25662,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ILVE Fridge",
+      "displayName": "Ilve Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 33
+      "priorityScore": 18
     },
     {
       "id": "fridge-arf2424",
       "cat": "fridge",
-      "brand": "ILVE",
+      "brand": "Ilve",
       "model": "ILREF316I",
       "w": 540,
       "h": 1769,
@@ -25775,14 +25688,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ILVE Fridge",
+      "displayName": "Ilve Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 27
+      "priorityScore": 12
     },
     {
       "id": "fridge-arf3422",
       "cat": "fridge",
-      "brand": "ILVE",
+      "brand": "Ilve",
       "model": "R76FDAU/SS",
       "w": 759,
       "h": 1780,
@@ -25801,14 +25714,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ILVE Fridge",
+      "displayName": "Ilve Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 39
+      "priorityScore": 24
     },
     {
       "id": "fridge-arf3483",
       "cat": "fridge",
-      "brand": "ILVE",
+      "brand": "Ilve",
       "model": "R96BICDAU",
       "w": 962,
       "h": 1996,
@@ -25827,9 +25740,9 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ILVE Fridge",
+      "displayName": "Ilve Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 51
+      "priorityScore": 36
     },
     {
       "id": "fridge-zrf0828",
@@ -27808,7 +27721,7 @@
     {
       "id": "fridge-arf3296",
       "cat": "fridge",
-      "brand": "KOGAN",
+      "brand": "Kogan",
       "model": "KAM418CHWZA",
       "w": 1416,
       "h": 825,
@@ -27827,14 +27740,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "KOGAN Fridge",
+      "displayName": "Kogan Fridge",
       "readableSpec": "Chest",
       "priorityScore": 18
     },
     {
       "id": "fridge-arf3298",
       "cat": "fridge",
-      "brand": "KOGAN",
+      "brand": "Kogan",
       "model": "KAM44BEVFGA",
       "w": 470,
       "h": 495,
@@ -27853,7 +27766,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "KOGAN Fridge",
+      "displayName": "Kogan Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
     },
@@ -28624,7 +28537,7 @@
       "d": 740,
       "kwh_year": 395,
       "stars": 4,
-      "price": 3299,
+      "price": null,
       "emoji": "🧊",
       "door_swing_mm": 0,
       "features": [
@@ -28633,19 +28546,13 @@
         "Craft Ice",
         "ThinQ AI"
       ],
-      "retailers": [
-        {
-          "n": "Harvey Norman",
-          "url": "https://www.harveynorman.com.au",
-          "p": null
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "708L French-Door",
-      "priorityScore": 79
+      "priorityScore": 59
     },
     {
       "id": "fridge-arf3292",
@@ -30210,7 +30117,7 @@
     {
       "id": "fridge-arf3381",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "CBNsdh 7653",
       "w": 747,
       "h": 1855,
@@ -30236,7 +30143,7 @@
     {
       "id": "fridge-arf2849",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "CNPef 4416",
       "w": 750,
       "h": 1685,
@@ -30262,7 +30169,7 @@
     {
       "id": "fridge-arf2847",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "CNPef 4516",
       "w": 747,
       "h": 1859,
@@ -30288,7 +30195,7 @@
     {
       "id": "fridge-arf3057",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "ECBN 6156",
       "w": 910,
       "h": 2072,
@@ -30314,7 +30221,7 @@
     {
       "id": "fridge-arf3366",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "ECBN 7870",
       "w": 757,
       "h": 2027,
@@ -30340,7 +30247,7 @@
     {
       "id": "fridge-arf3363",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "ECBN 8872",
       "w": 910,
       "h": 2027,
@@ -30366,7 +30273,7 @@
     {
       "id": "fridge-arf3428",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "ECBNh 9972",
       "w": 906,
       "h": 2126,
@@ -30392,7 +30299,7 @@
     {
       "id": "fridge-arf3365",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "ECN 7860",
       "w": 757,
       "h": 2027,
@@ -30418,7 +30325,7 @@
     {
       "id": "fridge-arf3469",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "EFNh 9671",
       "w": 602,
       "h": 2126,
@@ -30444,7 +30351,7 @@
     {
       "id": "fridge-arf3481",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "EFNh 9771",
       "w": 754,
       "h": 2126,
@@ -30470,7 +30377,7 @@
     {
       "id": "fridge-arf3468",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "EGN 9171",
       "w": 450,
       "h": 2126,
@@ -30496,7 +30403,7 @@
     {
       "id": "fridge-arf3484",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "EKB 9471",
       "w": 754,
       "h": 2126,
@@ -30522,7 +30429,7 @@
     {
       "id": "fridge-arf3471",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "EKB 9671",
       "w": 906,
       "h": 2126,
@@ -30548,7 +30455,7 @@
     {
       "id": "fridge-arf3778",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "ICBNh 5193",
       "w": 560,
       "h": 1772,
@@ -30574,7 +30481,7 @@
     {
       "id": "fridge-arf2995",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "IRBh 5120",
       "w": 560,
       "h": 1772,
@@ -30599,7 +30506,7 @@
     {
       "id": "fridge-arf2933",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "IRBh 5170",
       "w": 560,
       "h": 1772,
@@ -30624,7 +30531,7 @@
     {
       "id": "fridge-arf3776",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "IRBh 5180",
       "w": 560,
       "h": 1772,
@@ -30649,7 +30556,7 @@
     {
       "id": "fridge-arf3026",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "IRBPh 5170",
       "w": 560,
       "h": 1772,
@@ -30674,7 +30581,7 @@
     {
       "id": "fridge-arf2985",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SBNbsh 5264",
       "w": 597,
       "h": 1855,
@@ -30699,7 +30606,7 @@
     {
       "id": "fridge-arf2984",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SCNsdh 5253",
       "w": 597,
       "h": 1855,
@@ -30725,7 +30632,7 @@
     {
       "id": "fridge-arf2987",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SFNbsh 5267",
       "w": 597,
       "h": 1855,
@@ -30751,7 +30658,7 @@
     {
       "id": "fridge-arf2986",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SFNsdh 5227",
       "w": 597,
       "h": 1855,
@@ -30777,7 +30684,7 @@
     {
       "id": "fridge-arf2988",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SFNsdh 5267",
       "w": 597,
       "h": 1855,
@@ -30803,7 +30710,7 @@
     {
       "id": "fridge-arf2601",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SGNef 3036",
       "w": 600,
       "h": 1852,
@@ -30829,7 +30736,7 @@
     {
       "id": "fridge-arf3333",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SGNPes 4365",
       "w": 600,
       "h": 1850,
@@ -30855,7 +30762,7 @@
     {
       "id": "fridge-arf2889",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SIFNh 5128",
       "w": 560,
       "h": 1772,
@@ -30881,7 +30788,7 @@
     {
       "id": "fridge-arf2892",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SIFNh 5188",
       "w": 560,
       "h": 1772,
@@ -30907,7 +30814,7 @@
     {
       "id": "fridge-arf2349",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SIKB 3520",
       "w": 560,
       "h": 1772,
@@ -30932,7 +30839,7 @@
     {
       "id": "fridge-arf3314",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SKBes 4350",
       "w": 600,
       "h": 1850,
@@ -30958,7 +30865,7 @@
     {
       "id": "fridge-arf3315",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SKBes 4360",
       "w": 600,
       "h": 1850,
@@ -30984,7 +30891,7 @@
     {
       "id": "fridge-arf2568",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SKef 4260",
       "w": 600,
       "h": 1852,
@@ -31010,7 +30917,7 @@
     {
       "id": "fridge-arf3093",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SRBsdh 5260",
       "w": 597,
       "h": 1855,
@@ -31035,7 +30942,7 @@
     {
       "id": "fridge-arf3031",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SRsdh 5220",
       "w": 597,
       "h": 1855,
@@ -31060,7 +30967,7 @@
     {
       "id": "fridge-arf3560",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SUFNh 3653",
       "w": 597,
       "h": 819,
@@ -31086,7 +30993,7 @@
     {
       "id": "fridge-arf3338",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SUIG 1514",
       "w": 597,
       "h": 820,
@@ -31111,7 +31018,7 @@
     {
       "id": "fridge-arf3332",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SUIK 1510",
       "w": 597,
       "h": 820,
@@ -31136,7 +31043,7 @@
     {
       "id": "fridge-arf3174",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SUIKo 1550",
       "w": 597,
       "h": 820,
@@ -31161,7 +31068,7 @@
     {
       "id": "fridge-arf3413",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "SWTNes 4265",
       "w": 600,
       "h": 1850,
@@ -31187,7 +31094,7 @@
     {
       "id": "fridge-arf3561",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "URh 3600",
       "w": 597,
       "h": 819,
@@ -31212,7 +31119,7 @@
     {
       "id": "fridge-arf3556",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "URPh 3650",
       "w": 596,
       "h": 819,
@@ -32148,7 +32055,7 @@
     {
       "id": "fridge-zrf0809",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "353483",
       "w": 835,
       "h": 1775,
@@ -32174,7 +32081,7 @@
     {
       "id": "fridge-arf3710",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MDRC284FZE01APE",
       "w": 770,
       "h": 850,
@@ -32200,7 +32107,7 @@
     {
       "id": "fridge-arf3772",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MDRC499FZF01AP",
       "w": 1255,
       "h": 825,
@@ -32226,7 +32133,7 @@
     {
       "id": "fridge-arf3839",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MDRC698FZM01AP",
       "w": 1530,
       "h": 830,
@@ -32252,7 +32159,7 @@
     {
       "id": "fridge-arf3731",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MDRF632FGD46APW",
       "w": 833,
       "h": 1775,
@@ -32278,7 +32185,7 @@
     {
       "id": "fridge-arf3680",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MDRT489MTE01AP",
       "w": 595,
       "h": 1724,
@@ -32304,7 +32211,7 @@
     {
       "id": "fridge-arf3715",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MDRT580MTF45AP",
       "w": 700,
       "h": 1723,
@@ -32330,7 +32237,7 @@
     {
       "id": "fridge-arf3712",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MDRU333FGF02AP",
       "w": 595,
       "h": 1722,
@@ -32356,7 +32263,7 @@
     {
       "id": "fridge-zrf0960",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MERB430FGF28AP",
       "w": 595,
       "h": 1724,
@@ -32382,7 +32289,7 @@
     {
       "id": "fridge-zrf0952",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MERC151FZFO1AP",
       "w": 545,
       "h": 850,
@@ -32408,7 +32315,7 @@
     {
       "id": "fridge-zrf0954",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MERC280FZF01APE",
       "w": 816,
       "h": 850,
@@ -32434,7 +32341,7 @@
     {
       "id": "fridge-zrf0956",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MERC405FZF01APE",
       "w": 1115,
       "h": 850,
@@ -32460,7 +32367,7 @@
     {
       "id": "fridge-zrf0953",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MERD181FGF30AP",
       "w": 501,
       "h": 860,
@@ -32486,7 +32393,7 @@
     {
       "id": "fridge-zrf0941",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MERF632FIF28APD",
       "w": 833,
       "h": 1775,
@@ -32512,7 +32419,7 @@
     {
       "id": "fridge-zrf0963",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MERS79IMYEDXAP",
       "w": 910,
       "h": 1775,
@@ -32538,7 +32445,7 @@
     {
       "id": "fridge-zrf0938",
       "cat": "fridge",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MERT134FGF30AP",
       "w": 470,
       "h": 837,
@@ -33477,7 +33384,7 @@
       "d": 739,
       "kwh_year": 280,
       "stars": 5,
-      "price": 4999,
+      "price": null,
       "emoji": "🧊",
       "door_swing_mm": 0,
       "features": [
@@ -33486,19 +33393,13 @@
         "Micro Plasmacluster",
         "AI Ecocooling"
       ],
-      "retailers": [
-        {
-          "n": "Appliances Online",
-          "url": "https://www.appliances-online.com.au",
-          "p": 4999
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Mitsubishi Fridge",
       "readableSpec": "680L French-Door",
-      "priorityScore": 48
+      "priorityScore": 30
     },
     {
       "id": "fridge-arf3189",
@@ -34803,7 +34704,7 @@
     {
       "id": "fridge-arf2877",
       "cat": "fridge",
-      "brand": "NORJ",
+      "brand": "Norj",
       "model": "NBF117W1",
       "w": 506,
       "h": 840,
@@ -34822,14 +34723,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "NORJ Fridge",
+      "displayName": "Norj Fridge",
       "readableSpec": "Upright",
       "priorityScore": 30
     },
     {
       "id": "fridge-arf2876",
       "cat": "fridge",
-      "brand": "NORJ",
+      "brand": "Norj",
       "model": "NBF46W1",
       "w": 444,
       "h": 495,
@@ -34848,14 +34749,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "NORJ Fridge",
+      "displayName": "Norj Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18
     },
     {
       "id": "fridge-arf2875",
       "cat": "fridge",
-      "brand": "NORJ",
+      "brand": "Norj",
       "model": "NTBF86W1",
       "w": 486,
       "h": 840,
@@ -34874,14 +34775,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "NORJ Fridge",
+      "displayName": "Norj Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18
     },
     {
       "id": "fridge-arf2869",
       "cat": "fridge",
-      "brand": "NORJ",
+      "brand": "Norj",
       "model": "NTMF280W1",
       "w": 599,
       "h": 1517,
@@ -34900,14 +34801,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "NORJ Fridge",
+      "displayName": "Norj Fridge",
       "readableSpec": "Upright",
       "priorityScore": 30
     },
     {
       "id": "fridge-arf2874",
       "cat": "fridge",
-      "brand": "NORJ",
+      "brand": "Norj",
       "model": "NTMF340W1",
       "w": 599,
       "h": 1647,
@@ -34926,7 +34827,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "NORJ Fridge",
+      "displayName": "Norj Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
     },
@@ -37124,7 +37025,7 @@
       "d": 748,
       "kwh_year": 420,
       "stars": 3,
-      "price": 3499,
+      "price": null,
       "emoji": "🧊",
       "door_swing_mm": 0,
       "features": [
@@ -37133,20 +37034,14 @@
         "Ice Maker",
         "WiFi"
       ],
-      "retailers": [
-        {
-          "n": "Harvey Norman",
-          "url": "https://www.harveynorman.com.au",
-          "p": null
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "direct_url": "https://www.jbhifi.com.au/search?query=SRF7500WFH",
       "inferred_door_swing": true,
       "displayName": "Samsung Fridge",
       "readableSpec": "740L French-Door",
-      "priorityScore": 73
+      "priorityScore": 53
     },
     {
       "id": "fridge-arf3105",
@@ -37931,7 +37826,7 @@
     {
       "id": "fridge-zrf0892",
       "cat": "fridge",
-      "brand": "SHEFFIELD",
+      "brand": "Sheffield",
       "model": "PL147CF",
       "w": 706,
       "h": 850,
@@ -37950,14 +37845,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "SHEFFIELD Fridge",
+      "displayName": "Sheffield Fridge",
       "readableSpec": "Chest",
       "priorityScore": 18
     },
     {
       "id": "fridge-zrf0912",
       "cat": "fridge",
-      "brand": "SHEFFIELD",
+      "brand": "Sheffield",
       "model": "PL78CF",
       "w": 530,
       "h": 785,
@@ -37976,14 +37871,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "SHEFFIELD Fridge",
+      "displayName": "Sheffield Fridge",
       "readableSpec": "Chest",
       "priorityScore": 12
     },
     {
       "id": "fridge-zrf0886",
       "cat": "fridge",
-      "brand": "SHEFFIELD",
+      "brand": "Sheffield",
       "model": "PL91R",
       "w": 448,
       "h": 874,
@@ -38002,14 +37897,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "SHEFFIELD Fridge",
+      "displayName": "Sheffield Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
     },
     {
       "id": "fridge-zrf0895",
       "cat": "fridge",
-      "brand": "SHEFFIELD",
+      "brand": "Sheffield",
       "model": "PL92BZ",
       "w": 495,
       "h": 848,
@@ -38028,14 +37923,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "SHEFFIELD Fridge",
+      "displayName": "Sheffield Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
     },
     {
       "id": "fridge-zrf0811",
       "cat": "fridge",
-      "brand": "SHEFFIELD",
+      "brand": "Sheffield",
       "model": "PLA123F",
       "w": 524,
       "h": 831,
@@ -38054,14 +37949,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "SHEFFIELD Fridge",
+      "displayName": "Sheffield Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18
     },
     {
       "id": "fridge-zrf0913",
       "cat": "fridge",
-      "brand": "SHEFFIELD",
+      "brand": "Sheffield",
       "model": "PLA1367",
       "w": 1470,
       "h": 840,
@@ -38080,14 +37975,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "SHEFFIELD Fridge",
+      "displayName": "Sheffield Fridge",
       "readableSpec": "Chest",
       "priorityScore": 18
     },
     {
       "id": "fridge-zrf0797",
       "cat": "fridge",
-      "brand": "SHEFFIELD",
+      "brand": "Sheffield",
       "model": "PLA1710",
       "w": 730,
       "h": 845,
@@ -38106,14 +38001,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "SHEFFIELD Fridge",
+      "displayName": "Sheffield Fridge",
       "readableSpec": "Chest",
       "priorityScore": 24
     },
     {
       "id": "fridge-zrf0884",
       "cat": "fridge",
-      "brand": "SHEFFIELD",
+      "brand": "Sheffield",
       "model": "PLA48L",
       "w": 445,
       "h": 501,
@@ -38132,14 +38027,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "SHEFFIELD Fridge",
+      "displayName": "Sheffield Fridge",
       "readableSpec": "48L Upright",
       "priorityScore": 24
     },
     {
       "id": "fridge-zrf0885",
       "cat": "fridge",
-      "brand": "SHEFFIELD",
+      "brand": "Sheffield",
       "model": "PLA90L",
       "w": 445,
       "h": 831,
@@ -38158,7 +38053,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "SHEFFIELD Fridge",
+      "displayName": "Sheffield Fridge",
       "readableSpec": "90L Upright",
       "priorityScore": 24
     },
@@ -38633,7 +38528,7 @@
     {
       "id": "fridge-arf3592",
       "cat": "fridge",
-      "brand": "STIRLING",
+      "brand": "Stirling",
       "model": "STR-CF198LM",
       "w": 770,
       "h": 850,
@@ -38652,14 +38547,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "STIRLING Fridge",
+      "displayName": "Stirling Fridge",
       "readableSpec": "Chest",
       "priorityScore": 36
     },
     {
       "id": "fridge-arf3683",
       "cat": "fridge",
-      "brand": "STIRLING",
+      "brand": "Stirling",
       "model": "STR-CF99RM",
       "w": 547,
       "h": 850,
@@ -38678,14 +38573,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "STIRLING Fridge",
+      "displayName": "Stirling Fridge",
       "readableSpec": "Chest",
       "priorityScore": 24
     },
     {
       "id": "fridge-arf2408",
       "cat": "fridge",
-      "brand": "STIRLING",
+      "brand": "Stirling",
       "model": "STR-H183W1",
       "w": 544,
       "h": 1426,
@@ -38704,14 +38599,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "STIRLING Fridge",
+      "displayName": "Stirling Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18
     },
     {
       "id": "fridge-arf2409",
       "cat": "fridge",
-      "brand": "STIRLING",
+      "brand": "Stirling",
       "model": "STR-H239W1",
       "w": 544,
       "h": 1426,
@@ -38730,14 +38625,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "STIRLING Fridge",
+      "displayName": "Stirling Fridge",
       "readableSpec": "Upright",
       "priorityScore": 30
     },
     {
       "id": "fridge-arf2633",
       "cat": "fridge",
-      "brand": "STIRLING",
+      "brand": "Stirling",
       "model": "STR-H419WFF",
       "w": 790,
       "h": 1800,
@@ -38756,14 +38651,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "STIRLING Fridge",
+      "displayName": "Stirling Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
     },
     {
       "id": "fridge-arf2554",
       "cat": "fridge",
-      "brand": "STIRLING",
+      "brand": "Stirling",
       "model": "STR-H84B",
       "w": 501,
       "h": 860,
@@ -38782,7 +38677,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "STIRLING Fridge",
+      "displayName": "Stirling Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18
     },
@@ -42357,7 +42252,7 @@
       "d": 680,
       "kwh_year": 340,
       "stars": 3,
-      "price": 1699,
+      "price": null,
       "emoji": "🧊",
       "door_swing_mm": 0,
       "features": [
@@ -42365,24 +42260,18 @@
         "FreshSeal",
         "Humidity Control"
       ],
-      "retailers": [
-        {
-          "n": "Harvey Norman",
-          "url": "https://www.harveynorman.com.au",
-          "p": null
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "528L Bottom-Mount",
-      "priorityScore": 73
+      "priorityScore": 53
     },
     {
       "id": "fridge-arf3865",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WBB3100AK",
       "w": 1646,
       "h": 598,
@@ -42409,7 +42298,7 @@
     {
       "id": "fridge-arf2497",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WBB3400AH",
       "w": 1645,
       "h": 598,
@@ -42436,7 +42325,7 @@
     {
       "id": "fridge-arf3870",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WBB3400WK",
       "w": 1756,
       "h": 598,
@@ -42462,7 +42351,7 @@
     {
       "id": "fridge-arf2537",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WBB3700AH",
       "w": 1755,
       "h": 598,
@@ -42489,7 +42378,7 @@
     {
       "id": "fridge-arf2745",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WBE4302WC",
       "w": 1725,
       "h": 699,
@@ -42515,7 +42404,7 @@
     {
       "id": "fridge-arf3826",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WBE4500WC",
       "w": 1725,
       "h": 699,
@@ -42541,7 +42430,7 @@
     {
       "id": "fridge-arf3827",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WBE5300WC",
       "w": 1725,
       "h": 796,
@@ -42567,7 +42456,7 @@
     {
       "id": "fridge-arf3879",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WCM1400WD",
       "w": 760,
       "h": 825,
@@ -42593,7 +42482,7 @@
     {
       "id": "fridge-arf3887",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WCM1400WE",
       "w": 625,
       "h": 854,
@@ -42619,7 +42508,7 @@
     {
       "id": "fridge-arf2600",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WCM2000WD",
       "w": 980,
       "h": 825,
@@ -42645,7 +42534,7 @@
     {
       "id": "fridge-arf3885",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WCM2000WE",
       "w": 802,
       "h": 854,
@@ -42671,7 +42560,7 @@
     {
       "id": "fridge-arf3886",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WCM3000WE",
       "w": 1114,
       "h": 847,
@@ -42697,7 +42586,7 @@
     {
       "id": "fridge-arf2737",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WCM5000WE",
       "w": 1646,
       "h": 847,
@@ -42723,7 +42612,7 @@
     {
       "id": "fridge-arf2589",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WCM7000WD",
       "w": 1880,
       "h": 935,
@@ -42749,7 +42638,7 @@
     {
       "id": "fridge-arf2735",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WCM7000WE",
       "w": 2145,
       "h": 826,
@@ -42775,7 +42664,7 @@
     {
       "id": "fridge-arf2947",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WFB2804AB",
       "w": 595,
       "h": 1720,
@@ -42801,7 +42690,7 @@
     {
       "id": "fridge-arf3829",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WFB4204WC",
       "w": 1725,
       "h": 699,
@@ -42827,7 +42716,7 @@
     {
       "id": "fridge-arf3876",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WFM0900WD",
       "w": 555,
       "h": 850,
@@ -42853,7 +42742,7 @@
     {
       "id": "fridge-arf3877",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WFM1700WE",
       "w": 550,
       "h": 1434,
@@ -42879,7 +42768,7 @@
     {
       "id": "fridge-arf3868",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WHE5204BC",
       "w": 1725,
       "h": 796,
@@ -42905,7 +42794,7 @@
     {
       "id": "fridge-arf3824",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WHE5264SC",
       "w": 1725,
       "h": 796,
@@ -42931,7 +42820,7 @@
     {
       "id": "fridge-arf3614",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WHE5600SD",
       "w": 896,
       "h": 1725,
@@ -42957,7 +42846,7 @@
     {
       "id": "fridge-arf3613",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WHE5650SD",
       "w": 896,
       "h": 1725,
@@ -42983,7 +42872,7 @@
     {
       "id": "fridge-arf2402",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WHE6000SB",
       "w": 1725,
       "h": 896,
@@ -43009,7 +42898,7 @@
     {
       "id": "fridge-arf2396",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WHE6060SB",
       "w": 1725,
       "h": 896,
@@ -43035,7 +42924,7 @@
     {
       "id": "fridge-arf3833",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WHE6170SB",
       "w": 1782,
       "h": 913,
@@ -43061,7 +42950,7 @@
     {
       "id": "fridge-arf3834",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WHE6270**",
       "w": 1782,
       "h": 913,
@@ -43087,7 +42976,7 @@
     {
       "id": "fridge-arf2395",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WHE6874SA",
       "w": 1782,
       "h": 913,
@@ -43113,7 +43002,7 @@
     {
       "id": "fridge-arf2461",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WHE7074SA",
       "w": 1728,
       "h": 913,
@@ -43139,7 +43028,7 @@
     {
       "id": "fridge-arf2412",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WIM1000WC",
       "w": 494,
       "h": 839,
@@ -43165,7 +43054,7 @@
     {
       "id": "fridge-arf2799",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WIM1000WD",
       "w": 480,
       "h": 850,
@@ -43191,7 +43080,7 @@
     {
       "id": "fridge-arf2427",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WIM1200AD",
       "w": 555,
       "h": 850,
@@ -43217,7 +43106,7 @@
     {
       "id": "fridge-arf2724",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WIM1200AE",
       "w": 555,
       "h": 850,
@@ -43243,7 +43132,7 @@
     {
       "id": "fridge-arf3039",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WQE4900AA",
       "w": 836,
       "h": 1780,
@@ -43269,7 +43158,7 @@
     {
       "id": "fridge-arf3037",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WQE4960AA",
       "w": 836,
       "h": 1780,
@@ -43295,7 +43184,7 @@
     {
       "id": "fridge-arf3612",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WQE5400SD",
       "w": 896,
       "h": 1725,
@@ -43321,7 +43210,7 @@
     {
       "id": "fridge-arf2923",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WQE5600BA",
       "w": 1795,
       "h": 896,
@@ -43347,7 +43236,7 @@
     {
       "id": "fridge-arf3367",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WQE5600BB",
       "w": 896,
       "h": 1795,
@@ -43373,7 +43262,7 @@
     {
       "id": "fridge-arf2921",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WQE5650BA",
       "w": 1795,
       "h": 896,
@@ -43399,7 +43288,7 @@
     {
       "id": "fridge-arf2922",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WQE5660BA",
       "w": 1795,
       "h": 896,
@@ -43425,7 +43314,7 @@
     {
       "id": "fridge-arf3733",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WQE5700BD",
       "w": 896,
       "h": 1795,
@@ -43451,7 +43340,7 @@
     {
       "id": "fridge-arf3737",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WQE5750BB",
       "w": 896,
       "h": 1795,
@@ -43477,7 +43366,7 @@
     {
       "id": "fridge-arf3735",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WQE5760BB",
       "w": 896,
       "h": 1795,
@@ -43503,7 +43392,7 @@
     {
       "id": "fridge-arf2444",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WQE6000BB",
       "w": 1725,
       "h": 896,
@@ -43529,7 +43418,7 @@
     {
       "id": "fridge-arf2397",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WQE6060SB",
       "w": 1725,
       "h": 896,
@@ -43555,7 +43444,7 @@
     {
       "id": "fridge-arf3258",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WQE6170BB",
       "w": 1782,
       "h": 913,
@@ -43581,7 +43470,7 @@
     {
       "id": "fridge-arf2394",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WQE6870SA",
       "w": 1782,
       "h": 913,
@@ -43607,7 +43496,7 @@
     {
       "id": "fridge-arf2523",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WRB3504*A",
       "w": 595,
       "h": 1746,
@@ -43633,7 +43522,7 @@
     {
       "id": "fridge-arf2948",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WRB3504AB",
       "w": 595,
       "h": 1720,
@@ -43659,7 +43548,7 @@
     {
       "id": "fridge-arf2401",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WRB3504SA",
       "w": 595,
       "h": 1746,
@@ -43685,16 +43574,16 @@
     {
       "id": "fridge-arf3835",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WRB5004WC",
-      "w": 1725,
-      "h": 699,
+      "w": 699,
+      "h": 1725,
       "d": 769,
       "kwh_year": 195,
       "stars": 4,
       "price": null,
       "emoji": "🧊",
-      "door_swing_mm": 1725,
+      "door_swing_mm": 699,
       "features": [
         "Upright",
         "1",
@@ -43711,7 +43600,7 @@
     {
       "id": "fridge-arf2432",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WRM1400WD",
       "w": 555,
       "h": 850,
@@ -43737,7 +43626,7 @@
     {
       "id": "fridge-arf3878",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WRM2400WE",
       "w": 550,
       "h": 1434,
@@ -43763,7 +43652,7 @@
     {
       "id": "fridge-arf3073",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WRM2400WF",
       "w": 550,
       "h": 1434,
@@ -43789,7 +43678,7 @@
     {
       "id": "fridge-arf2530",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WSE6170SA",
       "w": 908,
       "h": 1784,
@@ -43815,7 +43704,7 @@
     {
       "id": "fridge-arf2459",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WSE6200SA",
       "w": 908,
       "h": 1784,
@@ -43841,7 +43730,7 @@
     {
       "id": "fridge-arf3487",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WSE6200SB",
       "w": 911,
       "h": 1780,
@@ -43867,7 +43756,7 @@
     {
       "id": "fridge-arf3538",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WSE6200WB",
       "w": 911,
       "h": 1780,
@@ -43893,7 +43782,7 @@
     {
       "id": "fridge-arf3488",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WSE6240BB",
       "w": 911,
       "h": 1780,
@@ -43919,7 +43808,7 @@
     {
       "id": "fridge-arf2732",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WSE6630BA",
       "w": 911,
       "h": 1780,
@@ -43945,7 +43834,7 @@
     {
       "id": "fridge-arf2733",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WSE6640SA",
       "w": 911,
       "h": 1780,
@@ -43971,7 +43860,7 @@
     {
       "id": "fridge-arf3378",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WSE6670SA",
       "w": 911,
       "h": 1780,
@@ -43997,7 +43886,7 @@
     {
       "id": "fridge-arf2609",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WSE6870SA",
       "w": 996,
       "h": 1784,
@@ -44023,7 +43912,7 @@
     {
       "id": "fridge-arf2465",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WSE6900SA",
       "w": 996,
       "h": 1784,
@@ -44049,7 +43938,7 @@
     {
       "id": "fridge-arf3822",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTB2300WH",
       "w": 1405,
       "h": 540,
@@ -44075,7 +43964,7 @@
     {
       "id": "fridge-arf2581",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTB2500AH",
       "w": 1470,
       "h": 540,
@@ -44101,7 +43990,7 @@
     {
       "id": "fridge-arf2441",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTB2800WH",
       "w": 1605,
       "h": 540,
@@ -44127,7 +44016,7 @@
     {
       "id": "fridge-arf2649",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTB3100WK",
       "w": 1645,
       "h": 598,
@@ -44153,7 +44042,7 @@
     {
       "id": "fridge-arf2496",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTB3400WH",
       "w": 1645,
       "h": 598,
@@ -44179,7 +44068,7 @@
     {
       "id": "fridge-arf2647",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTB3400WK",
       "w": 1756,
       "h": 598,
@@ -44205,7 +44094,7 @@
     {
       "id": "fridge-arf2449",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTB3700WH",
       "w": 1755,
       "h": 598,
@@ -44231,7 +44120,7 @@
     {
       "id": "fridge-arf2439",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTB4600WC",
       "w": 1725,
       "h": 699,
@@ -44257,7 +44146,7 @@
     {
       "id": "fridge-arf2443",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTB5400WC",
       "w": 1725,
       "h": 796,
@@ -44283,7 +44172,7 @@
     {
       "id": "fridge-arf3540",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTM2500AA",
       "w": 545,
       "h": 1670,
@@ -44309,7 +44198,7 @@
     {
       "id": "fridge-arf3447",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTM3100SL",
       "w": 598,
       "h": 1646,
@@ -44335,7 +44224,7 @@
     {
       "id": "fridge-arf3450",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTM3400WL",
       "w": 598,
       "h": 1756,
@@ -44361,7 +44250,7 @@
     {
       "id": "fridge-arf3448",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTM4302WD",
       "w": 699,
       "h": 1725,
@@ -44387,7 +44276,7 @@
     {
       "id": "fridge-arf3449",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTM5002SD",
       "w": 796,
       "h": 1725,
@@ -44413,7 +44302,7 @@
     {
       "id": "fridge-arf3452",
       "cat": "fridge",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WTM5002WE",
       "w": 796,
       "h": 1725,
@@ -45193,7 +45082,7 @@
     {
       "id": "washing_machine-acw1288",
       "cat": "washing_machine",
-      "brand": "anko",
+      "brand": "Anko",
       "model": "ATLW100G",
       "w": 601,
       "h": 630,
@@ -46110,7 +45999,7 @@
       "d": 590,
       "kwh_year": 120,
       "stars": 5,
-      "price": 2199,
+      "price": null,
       "emoji": "🫧",
       "door_swing_mm": 0,
       "top_loader": false,
@@ -46120,18 +46009,12 @@
         "i-DOS Auto Dosing",
         "Home Connect"
       ],
-      "retailers": [
-        {
-          "n": "Harvey Norman",
-          "url": "https://www.harveynorman.com.au",
-          "p": null
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "displayName": "Bosch Washing Machine",
       "readableSpec": "10kg Front Loader",
-      "priorityScore": 85
+      "priorityScore": 65
     },
     {
       "id": "washing_machine-acw1365",
@@ -46188,7 +46071,7 @@
     {
       "id": "washing_machine-acw1230",
       "cat": "washing_machine",
-      "brand": "CHiQ",
+      "brand": "CHIQ",
       "model": "WDFL8T48B3",
       "w": 600,
       "h": 847,
@@ -46214,7 +46097,7 @@
     {
       "id": "washing_machine-acw1219",
       "cat": "washing_machine",
-      "brand": "CHiQ",
+      "brand": "CHIQ",
       "model": "WFL85PL48W1",
       "w": 550,
       "h": 920,
@@ -46240,7 +46123,7 @@
     {
       "id": "washing_machine-acw1098",
       "cat": "washing_machine",
-      "brand": "CHiQ",
+      "brand": "CHIQ",
       "model": "WFL8T48W2",
       "w": 600,
       "h": 487,
@@ -46266,7 +46149,7 @@
     {
       "id": "washing_machine-acw1154",
       "cat": "washing_machine",
-      "brand": "CHiQ",
+      "brand": "CHIQ",
       "model": "WTL80W",
       "w": 580,
       "h": 960,
@@ -46526,7 +46409,7 @@
     {
       "id": "washing_machine-acw1470",
       "cat": "washing_machine",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EWF1042R9SC",
       "w": 600,
       "h": 850,
@@ -46545,14 +46428,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Washing Machine",
+      "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1469",
       "cat": "washing_machine",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EWF1043R7WC",
       "w": 600,
       "h": 850,
@@ -46571,14 +46454,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Washing Machine",
+      "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1473",
       "cat": "washing_machine",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EWF1242R9",
       "w": 600,
       "h": 850,
@@ -46597,14 +46480,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Washing Machine",
+      "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1475",
       "cat": "washing_machine",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EWF1243R7",
       "w": 600,
       "h": 850,
@@ -46623,14 +46506,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Washing Machine",
+      "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1465",
       "cat": "washing_machine",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EWF8023P5WC",
       "w": 600,
       "h": 850,
@@ -46649,14 +46532,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Washing Machine",
+      "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "washing_machine-acw1245",
       "cat": "washing_machine",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EWF9024Q5SB",
       "w": 600,
       "h": 850,
@@ -46675,14 +46558,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Washing Machine",
+      "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "washing_machine-acw1478",
       "cat": "washing_machine",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EWF9043R7WC",
       "w": 600,
       "h": 850,
@@ -46701,14 +46584,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Washing Machine",
+      "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1471",
       "cat": "washing_machine",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EWW1043R7SCS",
       "w": 600,
       "h": 850,
@@ -46727,14 +46610,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Washing Machine",
+      "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1467",
       "cat": "washing_machine",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EWW1242R9WC",
       "w": 600,
       "h": 850,
@@ -46753,14 +46636,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Washing Machine",
+      "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1466",
       "cat": "washing_machine",
-      "brand": "ELECTROLUX",
+      "brand": "Electrolux",
       "model": "EWW1243R7WC",
       "w": 600,
       "h": 850,
@@ -46779,9 +46662,9 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "ELECTROLUX Washing Machine",
+      "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1726",
@@ -47436,7 +47319,7 @@
     {
       "id": "washing_machine-acw1266",
       "cat": "washing_machine",
-      "brand": "EUROMAID",
+      "brand": "Euromaid",
       "model": "ETTW800",
       "w": 870,
       "h": 512,
@@ -47455,7 +47338,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROMAID Washing Machine",
+      "displayName": "Euromaid Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 12
     },
@@ -47566,7 +47449,7 @@
     {
       "id": "washing_machine-acw1763",
       "cat": "washing_machine",
-      "brand": "EUROTECH",
+      "brand": "Eurotech",
       "model": "360227",
       "w": 598,
       "h": 845,
@@ -47585,7 +47468,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "EUROTECH Washing Machine",
+      "displayName": "Eurotech Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 30
     },
@@ -47852,7 +47735,7 @@
     {
       "id": "washing_machine-acw1701",
       "cat": "washing_machine",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "WH1060P4",
       "w": 655,
       "h": 850,
@@ -47878,7 +47761,7 @@
     {
       "id": "washing_machine-acw1231",
       "cat": "washing_machine",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "WH1260P1",
       "w": 600,
       "h": 850,
@@ -47904,7 +47787,7 @@
     {
       "id": "washing_machine-acw1563",
       "cat": "washing_machine",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "WH8060F1",
       "w": 600,
       "h": 850,
@@ -47930,7 +47813,7 @@
     {
       "id": "washing_machine-acw1564",
       "cat": "washing_machine",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "WH8560F1",
       "w": 600,
       "h": 850,
@@ -47956,7 +47839,7 @@
     {
       "id": "washing_machine-acw1454",
       "cat": "washing_machine",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "WH9060J3",
       "w": 600,
       "h": 850,
@@ -48320,7 +48203,7 @@
     {
       "id": "washing_machine-acw1422",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HCF7S1014B",
       "w": 595,
       "h": 845,
@@ -48346,7 +48229,7 @@
     {
       "id": "washing_machine-acw1732",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HCF7S1014BX",
       "w": 595,
       "h": 845,
@@ -48372,7 +48255,7 @@
     {
       "id": "washing_machine-acw1635",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HCF8I1215HB",
       "w": 595,
       "h": 845,
@@ -48398,7 +48281,7 @@
     {
       "id": "washing_machine-acw1508",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWF3S7514W2",
       "w": 595,
       "h": 845,
@@ -48424,7 +48307,7 @@
     {
       "id": "washing_machine-acw1463",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWF3S8514*",
       "w": 595,
       "h": 845,
@@ -48450,7 +48333,7 @@
     {
       "id": "washing_machine-acw1734",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWF5I1215",
       "w": 600,
       "h": 850,
@@ -48477,7 +48360,7 @@
     {
       "id": "washing_machine-acw1752",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWF5I9014",
       "w": 595,
       "h": 845,
@@ -48503,7 +48386,7 @@
     {
       "id": "washing_machine-acw1462",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWF5S1214",
       "w": 595,
       "h": 845,
@@ -48529,7 +48412,7 @@
     {
       "id": "washing_machine-acw1520",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWF8I1015BX",
       "w": 595,
       "h": 845,
@@ -48555,7 +48438,7 @@
     {
       "id": "washing_machine-acw1370",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWF9S1214BX",
       "w": 595,
       "h": 845,
@@ -48581,7 +48464,7 @@
     {
       "id": "washing_machine-acw1319",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWFS1015E",
       "w": 595,
       "h": 845,
@@ -48607,7 +48490,7 @@
     {
       "id": "washing_machine-acw1423",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWFS7514S",
       "w": 595,
       "h": 845,
@@ -48633,7 +48516,7 @@
     {
       "id": "washing_machine-acw1318",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWFS8014AB",
       "w": 595,
       "h": 845,
@@ -48659,7 +48542,7 @@
     {
       "id": "washing_machine-acw1322",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWFS8514E",
       "w": 595,
       "h": 845,
@@ -48685,7 +48568,7 @@
     {
       "id": "washing_machine-acw1197",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWFY1014",
       "w": 595,
       "h": 845,
@@ -48711,7 +48594,7 @@
     {
       "id": "washing_machine-acw1194",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWFY7514",
       "w": 595,
       "h": 845,
@@ -48737,7 +48620,7 @@
     {
       "id": "washing_machine-acw1190",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWFY8514",
       "w": 595,
       "h": 845,
@@ -48763,7 +48646,7 @@
     {
       "id": "washing_machine-acw1195",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWFY9514",
       "w": 595,
       "h": 845,
@@ -48789,7 +48672,7 @@
     {
       "id": "washing_machine-acw1124",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWGA8014",
       "w": 600,
       "h": 850,
@@ -48815,7 +48698,7 @@
     {
       "id": "washing_machine-acw1131",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWGA9014",
       "w": 600,
       "h": 850,
@@ -48841,7 +48724,7 @@
     {
       "id": "washing_machine-acw1516",
       "cat": "washing_machine",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HWT3K8065B",
       "w": 553,
       "h": 975,
@@ -49784,7 +49667,7 @@
       "d": 560,
       "kwh_year": 130,
       "stars": 5,
-      "price": 1699,
+      "price": null,
       "emoji": "🫧",
       "door_swing_mm": 0,
       "top_loader": false,
@@ -49794,18 +49677,12 @@
         "TurboWash 360°",
         "AI DD Motor"
       ],
-      "retailers": [
-        {
-          "n": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au",
-          "p": 1699
-        }
-      ],
-      "sponsored": true,
-      "unavailable": false,
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
       "displayName": "LG Washing Machine",
       "readableSpec": "10kg Front Loader",
-      "priorityScore": 80
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1416",
@@ -51370,7 +51247,7 @@
     {
       "id": "washing_machine-zcw0243",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "360117 MAE100-2004TPS/01FM-AU-P1",
       "w": 601,
       "h": 1015,
@@ -51396,7 +51273,7 @@
     {
       "id": "washing_machine-zcw0237",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "360174  MAE70-504TPS/01FM-AU-S1",
       "w": 550,
       "h": 940,
@@ -51422,7 +51299,7 @@
     {
       "id": "washing_machine-zcw0238",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "360192  MAE90-804TPS/01FM-AU",
       "w": 580,
       "h": 962,
@@ -51448,7 +51325,7 @@
     {
       "id": "washing_machine-zcw0234",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "360220 MFM110-U1401B/C19E-AU",
       "w": 595,
       "h": 850,
@@ -51474,7 +51351,7 @@
     {
       "id": "washing_machine-zcw0245",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "360315 MFM80-DU1401B/C19E-AU",
       "w": 595,
       "h": 850,
@@ -51500,7 +51377,7 @@
     {
       "id": "washing_machine-zcw0236",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "360463 MFN60-JU1209B/D03E-AU",
       "w": 595,
       "h": 850,
@@ -51526,7 +51403,7 @@
     {
       "id": "washing_machine-zcw0244",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "360487 MFM80-U1401B/C14E-AU",
       "w": 595,
       "h": 850,
@@ -51552,7 +51429,7 @@
     {
       "id": "washing_machine-zcw0249",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "360489 MFN80-U1409B/D03E-AU",
       "w": 595,
       "h": 850,
@@ -51578,7 +51455,7 @@
     {
       "id": "washing_machine-zcw0246",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "360496 MFL100-JM1415BIM/H01EPW-AU(5)",
       "w": 595,
       "h": 850,
@@ -51604,7 +51481,7 @@
     {
       "id": "washing_machine-zcw0258",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "DMWM55G2",
       "w": 515,
       "h": 910,
@@ -51630,7 +51507,7 @@
     {
       "id": "washing_machine-acw1634",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MF110W80B/W-AU",
       "w": 595,
       "h": 850,
@@ -51656,7 +51533,7 @@
     {
       "id": "washing_machine-acw1624",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MF110W90B/W-AU",
       "w": 595,
       "h": 850,
@@ -51682,7 +51559,7 @@
     {
       "id": "washing_machine-acw1393",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MF200W100WB/T",
       "w": 595,
       "h": 850,
@@ -51708,7 +51585,7 @@
     {
       "id": "washing_machine-acw1392",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MF200W90WB/W",
       "w": 595,
       "h": 850,
@@ -51734,7 +51611,7 @@
     {
       "id": "washing_machine-acw1627",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MF210W100BW",
       "w": 595,
       "h": 850,
@@ -51760,7 +51637,7 @@
     {
       "id": "washing_machine-acw1629",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MF210W80BW",
       "w": 595,
       "h": 850,
@@ -51786,7 +51663,7 @@
     {
       "id": "washing_machine-acw1628",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MF210W90BW",
       "w": 595,
       "h": 850,
@@ -51812,7 +51689,7 @@
     {
       "id": "washing_machine-acw1617",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MT512W100RDW",
       "w": 601,
       "h": 1050,
@@ -51839,7 +51716,7 @@
     {
       "id": "washing_machine-acw1619",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MT512W70RUW",
       "w": 580,
       "h": 1015,
@@ -51865,7 +51742,7 @@
     {
       "id": "washing_machine-acw1620",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MT512W80RUW",
       "w": 580,
       "h": 1015,
@@ -51891,7 +51768,7 @@
     {
       "id": "washing_machine-acw1621",
       "cat": "washing_machine",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MT512W90RUW",
       "w": 580,
       "h": 1015,
@@ -52619,7 +52496,7 @@
     {
       "id": "washing_machine-acw1548",
       "cat": "washing_machine",
-      "brand": "nce",
+      "brand": "NCE",
       "model": "NCEG30-700",
       "w": 605,
       "h": 690,
@@ -52638,14 +52515,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "Nce Washing Machine",
+      "displayName": "NCE Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 12
     },
     {
       "id": "washing_machine-acw1547",
       "cat": "washing_machine",
-      "brand": "nce",
+      "brand": "NCE",
       "model": "NCEG30-700H",
       "w": 605,
       "h": 690,
@@ -52664,14 +52541,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "Nce Washing Machine",
+      "displayName": "NCE Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 12
     },
     {
       "id": "washing_machine-acw1160",
       "cat": "washing_machine",
-      "brand": "NORJ",
+      "brand": "Norj",
       "model": "NFL815W1",
       "w": 595,
       "h": 845,
@@ -52690,14 +52567,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "NORJ Washing Machine",
+      "displayName": "Norj Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 24
     },
     {
       "id": "washing_machine-acw1152",
       "cat": "washing_machine",
-      "brand": "NORJ",
+      "brand": "Norj",
       "model": "NFLD106W1",
       "w": 595,
       "h": 845,
@@ -52716,7 +52593,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "NORJ Washing Machine",
+      "displayName": "Norj Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 12
     },
@@ -53640,7 +53517,7 @@
       "d": 600,
       "kwh_year": 150,
       "stars": 4,
-      "price": 1349,
+      "price": null,
       "emoji": "🫧",
       "door_swing_mm": 0,
       "top_loader": false,
@@ -53651,19 +53528,13 @@
         "EcoBubble",
         "WiFi"
       ],
-      "retailers": [
-        {
-          "n": "Harvey Norman",
-          "url": "https://www.harveynorman.com.au",
-          "p": null
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "direct_url": "https://www.jbhifi.com.au/search?query=WW90T684DLH",
       "displayName": "Samsung Smart",
       "readableSpec": "9kg Front Loader",
-      "priorityScore": 79
+      "priorityScore": 59
     },
     {
       "id": "washing_machine-acw1531",
@@ -54812,7 +54683,7 @@
     {
       "id": "washing_machine-acw1309",
       "cat": "washing_machine",
-      "brand": "TECHNIKA",
+      "brand": "Technika",
       "model": "TFL7W",
       "w": 600,
       "h": 840,
@@ -54831,7 +54702,7 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "TECHNIKA Washing Machine",
+      "displayName": "Technika Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 24
     },
@@ -55254,7 +55125,7 @@
     {
       "id": "washing_machine-acw1232",
       "cat": "washing_machine",
-      "brand": "tisira",
+      "brand": "Tisira",
       "model": "MTC80-P1101PQ/AU9",
       "w": 870,
       "h": 944,
@@ -55755,7 +55626,7 @@
       "d": 600,
       "kwh_year": 160,
       "stars": 3,
-      "price": 999,
+      "price": null,
       "emoji": "🫧",
       "door_swing_mm": 0,
       "top_loader": false,
@@ -55765,18 +55636,12 @@
         "Auto Water Level",
         "Delay Start"
       ],
-      "retailers": [
-        {
-          "n": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au",
-          "p": 999
-        }
-      ],
+      "retailers": [],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "displayName": "Westinghouse Washing Machine",
       "readableSpec": "10kg Front Loader",
-      "priorityScore": 68
+      "priorityScore": 48
     },
     {
       "id": "washing_machine-acw1242",
@@ -55911,7 +55776,7 @@
     {
       "id": "washing_machine-acw1188",
       "cat": "washing_machine",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WWT1184C7WA",
       "w": 670,
       "h": 1092,
@@ -55937,7 +55802,7 @@
     {
       "id": "washing_machine-acw1205",
       "cat": "washing_machine",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WWT6084J5WA",
       "w": 575,
       "h": 972,
@@ -55963,7 +55828,7 @@
     {
       "id": "washing_machine-acw1199",
       "cat": "washing_machine",
-      "brand": "WESTINGHOUSE",
+      "brand": "Westinghouse",
       "model": "WWT7084J5WA",
       "w": 575,
       "h": 972,
