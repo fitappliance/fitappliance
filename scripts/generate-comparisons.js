@@ -10,6 +10,7 @@ const { displayBrandName } = require('./utils/brand-utils.js');
 const { loadProvidersFromFile, resolveAffiliateLinkForProduct } = require('./render-affiliate-links.js');
 const { canonicalizeProducts, canonicalizeRuleDocument } = require('./brand-canon.js');
 const { FIXED_EPOCH_ISO, toIsoDateStart } = require('./common/file-dates.js');
+const { isRetailerProductPageUrl } = require('../public/scripts/search-core.js');
 
 const CATEGORY_META = {
   fridge: {
@@ -51,9 +52,9 @@ function slugifyPair(brandA, brandB, catSlug) {
 
 function hasRetailLink(product) {
   if (!product || typeof product !== 'object') return false;
-  if (typeof product.direct_url === 'string' && /^https?:\/\//i.test(product.direct_url)) return true;
+  if (isRetailerProductPageUrl(product.direct_url)) return true;
   return Array.isArray(product.retailers)
-    && product.retailers.some((retailer) => retailer && typeof retailer.url === 'string' && /^https?:\/\//i.test(retailer.url));
+    && product.retailers.some((retailer) => isRetailerProductPageUrl(retailer?.url));
 }
 
 function compareStableText(left, right) {
@@ -71,7 +72,7 @@ function compareStableText(left, right) {
 function pickBestRetailer(retailers) {
   if (!Array.isArray(retailers)) return null;
   return retailers
-    .filter((retailer) => retailer && typeof retailer.url === 'string' && /^https?:\/\//i.test(retailer.url))
+    .filter((retailer) => isRetailerProductPageUrl(retailer?.url))
     .sort((left, right) => {
       const leftPrice = Number.isInteger(left.p) && left.p > 0 ? left.p : Number.MAX_SAFE_INTEGER;
       const rightPrice = Number.isInteger(right.p) && right.p > 0 ? right.p : Number.MAX_SAFE_INTEGER;
@@ -240,6 +241,14 @@ function rankBrands(products, cat) {
     .map((row, index) => ({ ...row, rank: index + 1 }));
 }
 
+function brandHasProductRetailLink(products, cat, brand) {
+  return products.some((product) => (
+    product?.cat === cat
+    && product?.brand === brand
+    && hasRetailLink(product)
+  ));
+}
+
 function normalizeClearanceRule(rule) {
   if (!rule || typeof rule !== 'object') return null;
   const side = Number.isFinite(rule.side) ? rule.side : null;
@@ -281,6 +290,9 @@ function selectComparisonPairs(
         const clearanceA = normalizeClearanceRule(catRules[brandA]);
         const clearanceB = normalizeClearanceRule(catRules[brandB]);
         if (!clearanceA || !clearanceB) continue;
+        if (!brandHasProductRetailLink(products, cat, brandA) && !brandHasProductRetailLink(products, cat, brandB)) {
+          continue;
+        }
 
         pairs.push({
           brandA,

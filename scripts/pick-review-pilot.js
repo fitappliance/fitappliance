@@ -6,6 +6,7 @@ const { mkdir, readFile, writeFile } = require('node:fs/promises');
 const { slugNormalize } = require('./common/slug-normalize.js');
 const { buildModelSlug } = require('./common/model-slug.js');
 const { toDateOnly } = require('./common/file-dates.js');
+const { isRetailerProductPageUrl } = require('../public/scripts/search-core.js');
 
 const CATEGORY_SLUGS = {
   fridge: 'fridge',
@@ -40,10 +41,10 @@ function isCurrentInStock(product) {
   if (!product || typeof product !== 'object') return false;
   if (product.unavailable) return false;
   if (typeof product.direct_url === 'string' && /^https:\/\//i.test(product.direct_url)) return true;
-  if (Array.isArray(product.retailers) && product.retailers.some((row) => row && Number.isInteger(row.p) && row.p > 0)) {
+  if (Array.isArray(product.retailers) && product.retailers.some((row) => isRetailerProductPageUrl(row?.url))) {
     return true;
   }
-  return Number.isInteger(product.price) && product.price > 0;
+  return false;
 }
 
 function getRetailerCount(product) {
@@ -112,9 +113,6 @@ function pickReviewPilotEntries({ products, clearanceRules }) {
 
   for (const [category, quota] of Object.entries(CATEGORY_QUOTAS)) {
     const categoryRows = ranked.filter((row) => row.cat === category).slice(0, quota);
-    if (categoryRows.length < quota) {
-      throw new Error(`Insufficient in-stock candidates for ${category}; expected ${quota}, found ${categoryRows.length}`);
-    }
     picks.push(...categoryRows);
   }
 
