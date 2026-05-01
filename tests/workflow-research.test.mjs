@@ -28,6 +28,11 @@ test('phase 43a backfill: workflow runs research then enrich and only commits da
   assert.match(workflow, /GITHUB_TOKEN is required/);
   assert.match(workflow, /node scripts\/research-popularity\.js/);
   assert.match(workflow, /node scripts\/enrich-appliances\.js/);
+  assert.match(workflow, /node scripts\/enrich-manual-retailers\.js/);
+  assert.ok(
+    workflow.indexOf('node scripts/enrich-manual-retailers.js') > workflow.indexOf('node scripts/enrich-appliances.js'),
+    'manual retailer links must be re-applied after popularity enrich rewrites split catalogs'
+  );
   assert.match(workflow, /git diff --cached --quiet/);
   assert.match(workflow, /chore\(backfill\): retailer sync cursor=/);
   assert.match(workflow, /git push/);

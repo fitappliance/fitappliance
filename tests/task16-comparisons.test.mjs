@@ -9,14 +9,16 @@ const moduleUrl = pathToFileURL(
 ).href;
 
 function makeProduct(overrides = {}) {
+  const id = overrides.id ?? 'p-1';
   return {
-    id: 'p-1',
+    id,
     cat: 'fridge',
     brand: 'BrandA',
     model: 'Model X',
     w: 900,
     h: 1800,
     d: 700,
+    retailers: [{ n: 'JB Hi-Fi', url: `https://www.jbhifi.com.au/products/${id}` }],
     ...overrides
   };
 }

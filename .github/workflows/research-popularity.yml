@@ -44,6 +44,9 @@ jobs:
       - name: Enrich appliances from popularity research
         run: node scripts/enrich-appliances.js
 
+      - name: Re-apply manually approved retailer links
+        run: node scripts/enrich-manual-retailers.js
+
       - name: Commit data changes
         run: |
           RESEARCHED=$(node -p "require('./data/popularity-research.json').last_batch?.researched ?? 0")

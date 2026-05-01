@@ -79,3 +79,41 @@ test('task 18 compare links: compare page includes compare_view event', async ()
 
   assert.match(html, /gtag\('event', 'compare_view'/);
 });
+
+test('task 18 compare links: selectComparisonPairs skips pairs where neither brand has a verified product link', async () => {
+  const { selectComparisonPairs } = await import(moduleUrl);
+  const products = [
+    { cat: 'washing_machine', brand: 'Beko', model: 'B1', retailers: [{ n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/search/?q=Beko%20B1' }] },
+    { cat: 'washing_machine', brand: 'Beko', model: 'B2', retailers: [] },
+    { cat: 'washing_machine', brand: 'Beko', model: 'B3', retailers: [] },
+    { cat: 'washing_machine', brand: 'LG', model: 'L1', retailers: [{ n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/search/?q=LG%20L1' }] },
+    { cat: 'washing_machine', brand: 'LG', model: 'L2', retailers: [] },
+    { cat: 'washing_machine', brand: 'LG', model: 'L3', retailers: [] },
+    { cat: 'washing_machine', brand: 'Hisense', model: 'H1', retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/hisense-h1' }] },
+    { cat: 'washing_machine', brand: 'Hisense', model: 'H2', retailers: [] },
+    { cat: 'washing_machine', brand: 'Hisense', model: 'H3', retailers: [] }
+  ];
+  const rules = {
+    washing_machine: {
+      Beko: { side: 5, rear: 10, top: 20 },
+      LG: { side: 5, rear: 10, top: 20 },
+      Hisense: { side: 5, rear: 10, top: 20 }
+    }
+  };
+
+  const pairs = selectComparisonPairs(products, rules, {
+    catsToProcess: ['washing_machine'],
+    maxBrandsPerCategory: 3,
+    topN: 10
+  });
+
+  assert.ok(pairs.length > 0);
+  assert.equal(
+    pairs.some((pair) => [pair.brandA, pair.brandB].includes('Beko') && [pair.brandA, pair.brandB].includes('LG')),
+    false
+  );
+  assert.equal(
+    pairs.every((pair) => [pair.brandA, pair.brandB].includes('Hisense')),
+    true
+  );
+});
