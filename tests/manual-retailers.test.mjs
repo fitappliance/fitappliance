@@ -5,6 +5,17 @@ import path from 'node:path';
 
 const MANUAL_RETAILERS_PATH = path.join(process.cwd(), 'data', 'manual-retailers.json');
 
+function isReviewedRetailerProductPath(parsedUrl) {
+  const host = parsedUrl.hostname.replace(/^www\./, '');
+  const pathname = parsedUrl.pathname.replace(/\/+$/, '');
+  if (host === 'appliancesonline.com.au') return /^\/product\/[^/]+$/.test(pathname);
+  if (host === 'binglee.com.au') return /^\/products\/[^/]+$/.test(pathname);
+  if (host === 'harveynorman.com.au') return /\.html$/.test(pathname);
+  if (host === 'jbhifi.com.au') return /^\/products\/[^/]+$/.test(pathname);
+  if (host === 'thegoodguys.com.au') return /^\/[^/]+-[^/]+$/.test(pathname);
+  return false;
+}
+
 test('manual retailers: document has stable schema metadata and consistent approved_count', () => {
   const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
 
@@ -63,5 +74,75 @@ test('manual retailers: Appliances Online fridge round uses reviewed product-pag
     assert.equal(retailer.p, null, `${slug} should keep price null until a trusted feed is available`);
     assert.equal(retailer.source, 'websearch-appliances-online');
     assert.match(retailer.verified_at, /^\d{4}-\d{2}-\d{2}$/);
+  }
+});
+
+test('manual retailers: washing machine round uses reviewed product-page links', () => {
+  const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
+  const washingMachineEntries = Object.entries(document.products)
+    .filter(([slug, entry]) => slug.startsWith('washing_machine-') && entry?.approved === true);
+
+  assert.ok(
+    washingMachineEntries.length >= 12,
+    `expected at least 12 approved washing-machine manual retailer entries, got ${washingMachineEntries.length}`,
+  );
+
+  const allowedHosts = [
+    'www.appliancesonline.com.au',
+    'www.binglee.com.au',
+    'www.harveynorman.com.au',
+    'www.jbhifi.com.au',
+    'www.thegoodguys.com.au',
+  ];
+
+  for (const [slug, entry] of washingMachineEntries) {
+    assert.ok(['exact', 'variant'].includes(entry.match_type), `${slug} must document exact or variant matching`);
+    assert.match(entry.researched_at, /^\d{4}-\d{2}-\d{2}$/);
+    assert.ok((entry.retailers ?? []).length >= 1, `${slug} must include at least one retailer`);
+
+    for (const retailer of entry.retailers) {
+      const parsed = new URL(retailer.url);
+      assert.ok(allowedHosts.includes(parsed.hostname), `${slug} uses unsupported retailer host ${parsed.hostname}`);
+      assert.ok(isReviewedRetailerProductPath(parsed), `${slug} must use a direct retailer product URL`);
+      assert.equal(retailer.p, null, `${slug} should keep price null until a trusted feed is available`);
+      assert.match(retailer.verified_at, /^\d{4}-\d{2}-\d{2}$/);
+      assert.match(retailer.source, /^websearch-/);
+    }
+  }
+});
+
+test('manual retailers: dishwasher and dryer rounds use reviewed product-page links', () => {
+  const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
+  const entriesByCategory = {
+    dishwasher: Object.entries(document.products)
+      .filter(([slug, entry]) => slug.startsWith('dishwasher-') && entry?.approved === true),
+    dryer: Object.entries(document.products)
+      .filter(([slug, entry]) => slug.startsWith('dryer-') || slug.startsWith('dr'))
+      .filter(([, entry]) => entry?.approved === true),
+  };
+
+  assert.ok(
+    entriesByCategory.dishwasher.length >= 12,
+    `expected at least 12 approved dishwasher manual retailer entries, got ${entriesByCategory.dishwasher.length}`,
+  );
+  assert.ok(
+    entriesByCategory.dryer.length >= 4,
+    `expected at least 4 approved dryer manual retailer entries, got ${entriesByCategory.dryer.length}`,
+  );
+
+  for (const [category, entries] of Object.entries(entriesByCategory)) {
+    for (const [slug, entry] of entries) {
+      assert.ok(['exact', 'variant'].includes(entry.match_type), `${slug} must document exact or variant matching`);
+      assert.match(entry.researched_at, /^\d{4}-\d{2}-\d{2}$/);
+      assert.ok((entry.retailers ?? []).length >= 1, `${slug} must include at least one retailer`);
+
+      for (const retailer of entry.retailers) {
+        const parsed = new URL(retailer.url);
+        assert.ok(isReviewedRetailerProductPath(parsed), `${category} ${slug} must use a direct retailer product URL`);
+        assert.equal(retailer.p, null, `${slug} should keep price null until a trusted feed is available`);
+        assert.match(retailer.verified_at, /^\d{4}-\d{2}-\d{2}$/);
+        assert.match(retailer.source, /^websearch-/);
+      }
+    }
   }
 });
