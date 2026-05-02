@@ -48,6 +48,17 @@ test('phase 48 card redesign: buildCardHtml uses ecommerce three-column card str
   assert.match(html, /class="card-energy-line"/);
 });
 
+test('hotfix card layout: save and compare controls live in the title area, not the retailer footer', async () => {
+  const { buildCardHtml } = await loadSearchDom();
+  const html = buildCardHtml(makeMatch());
+
+  assert.match(html, /class="card-info-header"/);
+  assert.match(html, /class="card-title-stack"/);
+  assert.match(html, /class="card-buttons card-buttons--header"/);
+  assert.match(html, /<div class="card-info-header">[\s\S]*\+ Compare[\s\S]*<\/div>\s*<div class="card-fit-row">/);
+  assert.doesNotMatch(html, /<div class="card-action-cell">[\s\S]*\+ Compare[\s\S]*<\/div>\s*<\/div>\s*<\/li>/);
+});
+
 test('phase 48 card redesign: title is brand plus model and subtitle carries readable spec', async () => {
   const { buildCardHtml } = await loadSearchDom();
   const html = buildCardHtml(makeMatch());
@@ -144,9 +155,24 @@ test('hotfix retailer URL quality: root retailer URLs are not shown as product l
     ]
   }));
 
-  assert.match(html, /Price unavailable/);
+  assert.match(html, /Retailer info unavailable/);
   assert.match(html, /Search this model/);
   assert.doesNotMatch(html, /Available at/);
   assert.doesNotMatch(html, /href="https:\/\/www\.appliances-online\.com\.au"/);
   assert.doesNotMatch(html, /From \$4,999|\$4,999/);
+});
+
+test('phase 50 price copy: verified retailer links without prices ask users to check retailer price', async () => {
+  const { buildCardHtml } = await loadSearchDom();
+  const html = buildCardHtml(makeMatch({
+    retailers: [
+      { n: 'JB Hi-Fi', p: null, url: 'https://www.jbhifi.com.au/products/lg-gf-l708mbl' },
+      { n: 'Appliances Online', p: null, url: 'https://www.appliancesonline.com.au/product/lg-gf-l708mbl/' },
+      { n: 'Harvey Norman', p: null, url: 'https://www.harveynorman.com.au/lg-gf-l708mbl.html' }
+    ]
+  }));
+
+  assert.match(html, /Available at 3 stores/);
+  assert.match(html, /Check retailer price/);
+  assert.doesNotMatch(html, /Price unavailable/);
 });

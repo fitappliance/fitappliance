@@ -84,6 +84,30 @@ test('manual retailer enrich: new retailer is appended after existing retailers'
   assert.deepEqual(merged.map((retailer) => retailer.n), ['Harvey Norman', 'JB Hi-Fi']);
 });
 
+test('manual retailer enrich: removed_retailers deletes stale product links before merging', () => {
+  const products = [makeProduct({
+    retailers: [
+      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-gth560npl/', p: null },
+      { n: 'The Good Guys', url: 'https://www.thegoodguys.com.au/category/fridges', p: null },
+    ],
+  })];
+  const manual = {
+    products: {
+      'fridge-lg-gth560npl': {
+        ...approvedEntry,
+        retailers: [
+          { n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/lg-gth560npl', p: null },
+        ],
+        removed_retailers: ['The Good Guys'],
+      },
+    },
+  };
+
+  const result = applyManualRetailers(products, manual);
+
+  assert.deepEqual(result[0].retailers.map((retailer) => retailer.n), ['Appliances Online', 'JB Hi-Fi']);
+});
+
 test('manual retailer enrich: product dimensions and energy fields are preserved', () => {
   const products = [makeProduct({ w: 812, h: 1790, kwh_year: 399 })];
   const before = JSON.stringify(products);

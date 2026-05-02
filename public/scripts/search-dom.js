@@ -782,7 +782,7 @@
       </div>`;
     }
     return `<div class="card-retailer-panel">
-      <span class="card-retailer-heading">Available at</span>
+      <span class="card-retailer-heading">Available at${links.length > 1 ? ` ${escHtml(links.length)} stores` : ''}</span>
       <div class="card-retailer-links" aria-label="Retailer product links">
         ${links.map((retailer) => {
         const displayName = safeRetailerDisplayName(retailer.name);
@@ -913,12 +913,16 @@
   }
 
   function buildCardPriceHtml(match) {
-    const prices = getRetailerSummaries(match)
-      .filter((retailer) => retailer.isProductPageUrl)
+    const linkedRetailers = getRetailerSummaries(match)
+      .filter((retailer) => retailer.isProductPageUrl);
+    const prices = linkedRetailers
       .map((retailer) => retailer.price)
       .filter((price) => Number.isFinite(price))
       .sort((left, right) => left - right);
-    if (prices.length === 0) return '<div class="card-price">Price unavailable</div>';
+    if (prices.length === 0 && linkedRetailers.length > 0) {
+      return '<div class="card-price card-price--check">Check retailer price</div>';
+    }
+    if (prices.length === 0) return '<div class="card-price card-price--unavailable">Retailer info unavailable</div>';
     return `<div class="card-price">${escHtml(prices[0] === prices[prices.length - 1] ? formatAud(prices[0]) : `From ${formatAud(prices[0])}`)}</div>`;
   }
 
@@ -1015,11 +1019,19 @@
 
     return `
       <li class="fit-result-item" data-appliance-slug="${escHtml(match.id)}">
-        <div class="card-grid">
-          <div class="card-thumb-cell">${buildCardThumbHtml(match)}</div>
-          <div class="card-info-cell">
-            <div class="card-title">${escHtml(title)}</div>
-            ${subtitle ? `<div class="card-subtitle">${escHtml(subtitle)}</div>` : ''}
+          <div class="card-grid">
+            <div class="card-thumb-cell">${buildCardThumbHtml(match)}</div>
+            <div class="card-info-cell">
+            <div class="card-info-header">
+              <div class="card-title-stack">
+                <div class="card-title">${escHtml(title)}</div>
+                ${subtitle ? `<div class="card-subtitle">${escHtml(subtitle)}</div>` : ''}
+              </div>
+              <div class="card-buttons card-buttons--header">
+                <button type="button" class="icon-btn" aria-label="Save appliance">♡</button>
+                ${buildCompareButtonHtml(match, options)}
+              </div>
+            </div>
             <div class="card-fit-row">
               ${buildFitBadgeHtml(match)}
               ${isTight ? '<span class="warning-pill">verify ventilation</span>' : ''}
@@ -1032,10 +1044,6 @@
           </div>
           <div class="card-action-cell">
             ${buildCardPriceHtml(match)}
-            <div class="card-buttons">
-              <button type="button" class="icon-btn" aria-label="Save appliance">♡</button>
-              ${buildCompareButtonHtml(match, options)}
-            </div>
             <div class="card-cta">${buildCardCtaHtml(match)}</div>
           </div>
         </div>
