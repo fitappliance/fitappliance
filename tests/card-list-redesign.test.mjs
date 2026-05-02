@@ -48,6 +48,17 @@ test('phase 48 card redesign: buildCardHtml uses ecommerce three-column card str
   assert.match(html, /class="card-energy-line"/);
 });
 
+test('hotfix card layout: save and compare controls live in the title area, not the retailer footer', async () => {
+  const { buildCardHtml } = await loadSearchDom();
+  const html = buildCardHtml(makeMatch());
+
+  assert.match(html, /class="card-info-header"/);
+  assert.match(html, /class="card-title-stack"/);
+  assert.match(html, /class="card-buttons card-buttons--header"/);
+  assert.match(html, /<div class="card-info-header">[\s\S]*\+ Compare[\s\S]*<\/div>\s*<div class="card-fit-row">/);
+  assert.doesNotMatch(html, /<div class="card-action-cell">[\s\S]*\+ Compare[\s\S]*<\/div>\s*<\/div>\s*<\/li>/);
+});
+
 test('phase 48 card redesign: title is brand plus model and subtitle carries readable spec', async () => {
   const { buildCardHtml } = await loadSearchDom();
   const html = buildCardHtml(makeMatch());

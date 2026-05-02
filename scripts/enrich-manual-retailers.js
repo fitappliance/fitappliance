@@ -46,6 +46,18 @@ function mergeRetailers(existingRetailers = [], manualRetailers = []) {
   return merged;
 }
 
+function removeRetailers(existingRetailers = [], removedRetailers = []) {
+  if (!Array.isArray(existingRetailers)) return [];
+  if (!Array.isArray(removedRetailers) || removedRetailers.length === 0) {
+    return existingRetailers.map((retailer) => ({ ...retailer }));
+  }
+
+  const removed = new Set(removedRetailers.map(normalizeRetailerName).filter(Boolean));
+  return existingRetailers
+    .filter((retailer) => !removed.has(normalizeRetailerName(retailer?.n)))
+    .map((retailer) => ({ ...retailer }));
+}
+
 function getApprovedManualEntry(product, manualDocument) {
   const products = manualDocument?.products ?? {};
   const key = product?.slug ?? product?.id;
@@ -62,7 +74,8 @@ function applyManualRetailers(products, manualDocument) {
     const entry = getApprovedManualEntry(product, manualDocument);
     if (!entry) return { ...product };
 
-    const retailers = mergeRetailers(product.retailers, entry.retailers);
+    const existingRetailers = removeRetailers(product.retailers, entry.removed_retailers);
+    const retailers = mergeRetailers(existingRetailers, entry.retailers);
     return {
       ...product,
       retailers,
@@ -125,5 +138,5 @@ module.exports = {
   applyManualRetailers,
   enrichManualRetailers,
   mergeRetailers,
+  removeRetailers,
 };
-

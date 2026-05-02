@@ -1015,11 +1015,19 @@
 
     return `
       <li class="fit-result-item" data-appliance-slug="${escHtml(match.id)}">
-        <div class="card-grid">
-          <div class="card-thumb-cell">${buildCardThumbHtml(match)}</div>
-          <div class="card-info-cell">
-            <div class="card-title">${escHtml(title)}</div>
-            ${subtitle ? `<div class="card-subtitle">${escHtml(subtitle)}</div>` : ''}
+          <div class="card-grid">
+            <div class="card-thumb-cell">${buildCardThumbHtml(match)}</div>
+            <div class="card-info-cell">
+            <div class="card-info-header">
+              <div class="card-title-stack">
+                <div class="card-title">${escHtml(title)}</div>
+                ${subtitle ? `<div class="card-subtitle">${escHtml(subtitle)}</div>` : ''}
+              </div>
+              <div class="card-buttons card-buttons--header">
+                <button type="button" class="icon-btn" aria-label="Save appliance">♡</button>
+                ${buildCompareButtonHtml(match, options)}
+              </div>
+            </div>
             <div class="card-fit-row">
               ${buildFitBadgeHtml(match)}
               ${isTight ? '<span class="warning-pill">verify ventilation</span>' : ''}
@@ -1032,10 +1040,6 @@
           </div>
           <div class="card-action-cell">
             ${buildCardPriceHtml(match)}
-            <div class="card-buttons">
-              <button type="button" class="icon-btn" aria-label="Save appliance">♡</button>
-              ${buildCompareButtonHtml(match, options)}
-            </div>
             <div class="card-cta">${buildCardCtaHtml(match)}</div>
           </div>
         </div>

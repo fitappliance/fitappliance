@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-05-01",
+  "last_updated": "2026-05-02",
   "approved_count": 66,
   "products": {
     "fridge-arf3177": {
@@ -231,13 +231,6 @@
           "source": "websearch-appliances-online"
         },
         {
-          "n": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/westinghouse-541l-french-door-refrigerator-wqe6000sb",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-the-good-guys"
-        },
-        {
           "n": "Harvey Norman",
           "url": "https://www.harveynorman.com.au/westinghouse-541l-stainless-steel-french-door-fridge.html",
           "p": null,
@@ -245,14 +238,18 @@
           "source": "websearch-harvey-norman"
         }
       ],
-      "notes": "JB Hi-Fi: Westinghouse WQE6000SB 541L, variant match to catalog WESTINGHOUSE WQE6000BB; Appliances Online: Westinghouse WQE6000SB 541L, variant match to catalog WESTINGHOUSE WQE6000BB; The Good Guys: Westinghouse WQE6000SB 541L; Harvey Norman: Westinghouse WQE6000SB 541L",
+      "notes": "JB Hi-Fi: Westinghouse WQE6000SB 541L, variant match to catalog WESTINGHOUSE WQE6000BB; Appliances Online: Westinghouse WQE6000SB 541L, variant match to catalog WESTINGHOUSE WQE6000BB; The Good Guys: Westinghouse WQE6000SB 541L; Harvey Norman: Westinghouse WQE6000SB 541L The Good Guys link removed on 2026-05-02 because live redirect resolved to a category/search page rather than this product.",
       "approved_by": "phase-50-round-1-jb-fridges+phase-50-round-2-appliances-online-fridges+phase-50-round-3-the-good-guys-fridges+phase-50-round-4-harvey-norman-fridges",
       "ao_match": {
         "brand": "Westinghouse",
         "model": "WQE6000SB",
         "capacity": "541L",
         "color": "Stainless"
-      }
+      },
+      "tgg_removed_at": "2026-05-02",
+      "removed_retailers": [
+        "The Good Guys"
+      ]
     },
     "fridge-arf2745": {
       "researched_at": "2026-04-29",
@@ -279,23 +276,20 @@
           "p": null,
           "verified_at": "2026-04-29",
           "source": "websearch-appliances-online"
-        },
-        {
-          "n": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/425l-bottom-mount-refrigerator-50079122",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-the-good-guys"
         }
       ],
-      "notes": "JB Hi-Fi: Westinghouse WBE4302AC-R 425L, variant match to catalog WESTINGHOUSE WBE4302WC; Appliances Online: Westinghouse WBE4302ACR 425L, variant match to catalog WESTINGHOUSE WBE4302WC; The Good Guys: Westinghouse WBE4302AC-R 425L",
+      "notes": "JB Hi-Fi: Westinghouse WBE4302AC-R 425L, variant match to catalog WESTINGHOUSE WBE4302WC; Appliances Online: Westinghouse WBE4302ACR 425L, variant match to catalog WESTINGHOUSE WBE4302WC; The Good Guys: Westinghouse WBE4302AC-R 425L The Good Guys link removed on 2026-05-02 because live redirect resolved to a category/search page rather than this product.",
       "approved_by": "phase-50-round-1-jb-fridges+phase-50-round-2-appliances-online-fridges+phase-50-round-3-the-good-guys-fridges",
       "ao_match": {
         "brand": "Westinghouse",
         "model": "WBE4302ACR",
         "capacity": "425L",
         "color": "Silver"
-      }
+      },
+      "tgg_removed_at": "2026-05-02",
+      "removed_retailers": [
+        "The Good Guys"
+      ]
     },
     "fridge-arf3827": {
       "researched_at": "2026-04-29",
@@ -403,13 +397,6 @@
           "source": "websearch-appliances-online"
         },
         {
-          "n": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/westinghouse-619l-side-by-side-refrigerator-wse6640ba",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-the-good-guys"
-        },
-        {
           "n": "Bing Lee",
           "url": "https://www.binglee.com.au/products/westinghouse-619l-side-by-side-non-plumbed-dispenser-fridge-black-wse6640ba",
           "p": null,
@@ -417,14 +404,18 @@
           "source": "websearch-bing-lee"
         }
       ],
-      "notes": "JB Hi-Fi: Westinghouse WSE6640BA 619L, variant match to catalog WESTINGHOUSE WSE6640SA; Appliances Online: Westinghouse WSE6640BA 619L, exact match to catalog WESTINGHOUSE WSE6640SA family variant; The Good Guys: Westinghouse WSE6640BA 619L; Bing Lee: Westinghouse WSE6640BA 619L",
+      "notes": "JB Hi-Fi: Westinghouse WSE6640BA 619L, variant match to catalog WESTINGHOUSE WSE6640SA; Appliances Online: Westinghouse WSE6640BA 619L, exact match to catalog WESTINGHOUSE WSE6640SA family variant; The Good Guys: Westinghouse WSE6640BA 619L; Bing Lee: Westinghouse WSE6640BA 619L The Good Guys link removed on 2026-05-02 because live redirect resolved to a category/search page rather than this product.",
       "approved_by": "phase-50-round-1-jb-fridges+phase-50-round-2-appliances-online-fridges+phase-50-round-3-the-good-guys-fridges+phase-50-round-5-bing-lee-fridges",
       "ao_match": {
         "brand": "Westinghouse",
         "model": "WSE6640BA",
         "capacity": "619L",
         "color": "Black"
-      }
+      },
+      "tgg_removed_at": "2026-05-02",
+      "removed_retailers": [
+        "The Good Guys"
+      ]
     },
     "fridge-arf3512": {
       "researched_at": "2026-04-29",
@@ -780,23 +771,20 @@
           "p": null,
           "verified_at": "2026-04-29",
           "source": "websearch-appliances-online"
-        },
-        {
-          "n": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/hisense-632l-side-by-side-refrigerator-hrsbs632bw",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-the-good-guys"
         }
       ],
-      "notes": "JB Hi-Fi: Hisense HRSBS632BW 632L, exact match to catalog HISENSE HRSBS632BW; Appliances Online: Hisense HRSBS632BW 632L, exact match to catalog HISENSE HRSBS632BW; The Good Guys: Hisense HRSBS632BW 632L",
+      "notes": "JB Hi-Fi: Hisense HRSBS632BW 632L, exact match to catalog HISENSE HRSBS632BW; Appliances Online: Hisense HRSBS632BW 632L, exact match to catalog HISENSE HRSBS632BW; The Good Guys: Hisense HRSBS632BW 632L The Good Guys link removed on 2026-05-02 because live redirect resolved to a category/search page rather than this product.",
       "approved_by": "phase-50-round-1-jb-fridges+phase-50-round-2-appliances-online-fridges+phase-50-round-3-the-good-guys-fridges",
       "ao_match": {
         "brand": "Hisense",
         "model": "HRSBS632BW",
         "capacity": "632L",
         "color": "Black Steel"
-      }
+      },
+      "tgg_removed_at": "2026-05-02",
+      "removed_retailers": [
+        "The Good Guys"
+      ]
     },
     "fridge-arf3501": {
       "researched_at": "2026-04-29",
@@ -1196,23 +1184,20 @@
           "p": null,
           "verified_at": "2026-04-29",
           "source": "websearch-appliances-online"
-        },
-        {
-          "n": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-487l-french-door-refrigerator-rf522adux5",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-the-good-guys"
         }
       ],
-      "notes": "JB Hi-Fi: Fisher & Paykel RF522ADUX5 487L, variant match to catalog FISHER & PAYKEL RF522ADX6; Appliances Online: Fisher & Paykel RF522ADUX5 487L, variant match to catalog FISHER & PAYKEL RF522ADX6; The Good Guys: Fisher & Paykel RF522ADUX5 487L",
+      "notes": "JB Hi-Fi: Fisher & Paykel RF522ADUX5 487L, variant match to catalog FISHER & PAYKEL RF522ADX6; Appliances Online: Fisher & Paykel RF522ADUX5 487L, variant match to catalog FISHER & PAYKEL RF522ADX6; The Good Guys: Fisher & Paykel RF522ADUX5 487L The Good Guys link removed on 2026-05-02 because live redirect resolved to a category/search page rather than this product.",
       "approved_by": "phase-50-round-1-jb-fridges+phase-50-round-2-appliances-online-fridges+phase-50-round-3-the-good-guys-fridges",
       "ao_match": {
         "brand": "Fisher & Paykel",
         "model": "RF522ADUX5",
         "capacity": "487L",
         "color": "Stainless Steel"
-      }
+      },
+      "tgg_removed_at": "2026-05-02",
+      "removed_retailers": [
+        "The Good Guys"
+      ]
     },
     "f3": {
       "researched_at": "2026-04-29",
@@ -1391,13 +1376,6 @@
           "source": "websearch-appliances-online"
         },
         {
-          "n": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-538l-quad-door-refrigerator-rf605qduvx2",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-the-good-guys"
-        },
-        {
           "n": "Harvey Norman",
           "url": "https://www.harveynorman.com.au/fisher-paykel-538l-recessed-handle-quad-door-fridge-with-ice-water-dispenser-black-stainless-steel.html",
           "p": null,
@@ -1405,14 +1383,18 @@
           "source": "websearch-harvey-norman"
         }
       ],
-      "notes": "JB Hi-Fi: Fisher & Paykel RF605QNUVB1 538L, variant match to catalog FISHER & PAYKEL RF605QDVX2; Appliances Online: Fisher & Paykel RF605QNUVB1 538L, variant match to catalog FISHER & PAYKEL RF605QDVX2; The Good Guys: Fisher & Paykel RF605QDVX2 538L; Harvey Norman: Fisher & Paykel RF605QNUVB1 538L",
+      "notes": "JB Hi-Fi: Fisher & Paykel RF605QNUVB1 538L, variant match to catalog FISHER & PAYKEL RF605QDVX2; Appliances Online: Fisher & Paykel RF605QNUVB1 538L, variant match to catalog FISHER & PAYKEL RF605QDVX2; The Good Guys: Fisher & Paykel RF605QDVX2 538L; Harvey Norman: Fisher & Paykel RF605QNUVB1 538L The Good Guys link removed on 2026-05-02 because live redirect resolved to a category/search page rather than this product.",
       "approved_by": "phase-50-round-1-jb-fridges+phase-50-round-2-appliances-online-fridges+phase-50-round-3-the-good-guys-fridges+phase-50-round-4-harvey-norman-fridges",
       "ao_match": {
         "brand": "Fisher & Paykel",
         "model": "RF605QNUVB1",
         "capacity": "538L",
         "color": "Black Stainless Steel"
-      }
+      },
+      "tgg_removed_at": "2026-05-02",
+      "removed_retailers": [
+        "The Good Guys"
+      ]
     },
     "fridge-arf2654": {
       "researched_at": "2026-04-29",
@@ -1888,23 +1870,20 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
-        },
-        {
-          "n": "The Good Guys",
-          "url": "https://www.thegoodguys.com.au/lg-12kg-top-load-washer-wtl9-12b",
-          "p": null,
-          "verified_at": "2026-05-01",
-          "source": "websearch-the-good-guys"
         }
       ],
-      "notes": "Appliances Online and The Good Guys exact match: LG WTL9-12B Series 9 12kg top load washing machine.",
+      "notes": "Appliances Online and The Good Guys exact match: LG WTL9-12B Series 9 12kg top load washing machine. The Good Guys link removed on 2026-05-02 because live redirect resolved to a category/search page rather than this product.",
       "approved_by": "phase-50-washing-machine-retailers-round-1",
       "ao_match": {
         "brand": "LG",
         "model": "WTL9-12B",
         "capacity": "12kg",
         "color": "Platinum Black"
-      }
+      },
+      "tgg_removed_at": "2026-05-02",
+      "removed_retailers": [
+        "The Good Guys"
+      ]
     },
     "washing_machine-acw1082": {
       "researched_at": "2026-05-01",

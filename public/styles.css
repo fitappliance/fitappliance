@@ -339,7 +339,7 @@
 
 .card-grid {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(0, 1fr);
   gap: 16px;
   padding: 16px;
   align-items: start;
@@ -364,6 +364,18 @@
 }
 
 .card-info-cell {
+  min-width: 0;
+}
+
+.card-info-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.card-title-stack {
   min-width: 0;
 }
 
@@ -449,22 +461,35 @@
 }
 
 .card-action-cell {
-  min-width: 140px;
-  text-align: right;
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+  padding-top: 12px;
+  border-top: 1px solid #f0eeea;
+  text-align: left;
 }
 
 .card-price {
-  margin-bottom: 8px;
+  min-width: 112px;
+  margin-bottom: 0;
   color: var(--ink);
   font-size: 14px;
   font-weight: 800;
+  line-height: 1.25;
 }
 
 .card-buttons {
   display: flex;
   justify-content: flex-end;
   gap: 6px;
-  margin-bottom: 8px;
+}
+
+.card-buttons--header {
+  flex-shrink: 0;
+  justify-content: flex-end;
 }
 
 .icon-btn,
@@ -493,6 +518,13 @@
   font-weight: 800;
   line-height: 1.3;
   text-decoration: none;
+}
+
+.card-cta {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .card-cta a span {
@@ -682,7 +714,9 @@
     grid-column: 1 / -1;
     min-width: 0;
     text-align: left;
-    border-top: 1px solid #f0eeea;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
     padding-top: 10px;
   }
 
@@ -692,6 +726,10 @@
 
   .card-cta a {
     align-items: flex-start;
+  }
+
+  .card-cta {
+    justify-content: flex-start;
   }
 
   .card-retailer-panel,

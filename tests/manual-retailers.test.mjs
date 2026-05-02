@@ -146,3 +146,26 @@ test('manual retailers: dishwasher and dryer rounds use reviewed product-page li
     }
   }
 });
+
+test('manual retailers: known The Good Guys category redirects are not exposed as product links', () => {
+  const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
+  const knownCategoryRedirects = [
+    'fridge-arf2444',
+    'fridge-arf2745',
+    'fridge-arf2733',
+    'fridge-arf2860',
+    'fridge-arf3570',
+    'fridge-arf2887',
+    'washing_machine-acw1345',
+  ];
+
+  for (const slug of knownCategoryRedirects) {
+    const entry = document.products[slug];
+    assert.ok(entry, `${slug} should remain documented in manual retailer data`);
+    assert.equal(
+      (entry.retailers ?? []).some((retailer) => retailer.n === 'The Good Guys'),
+      false,
+      `${slug} The Good Guys URL redirects to a category/search page and must not be shown`,
+    );
+  }
+});

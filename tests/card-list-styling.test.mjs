@@ -20,17 +20,27 @@ test('phase 48 card redesign styles: card grid uses ecommerce three-column layou
   const block = blockFor('.card-grid');
 
   assert.match(block, /display:\s*grid/);
-  assert.match(block, /grid-template-columns:\s*auto 1fr auto/);
+  assert.match(block, /grid-template-columns:\s*auto minmax\(0,\s*1fr\)/);
   assert.match(block, /gap:\s*16px/);
 });
 
-test('phase 48 card redesign styles: action column is right aligned on desktop', () => {
-  const block = blockFor('.card-action-cell');
-  const buttons = blockFor('.card-buttons');
+test('hotfix card layout: compare controls align with the product title on desktop', () => {
+  const header = blockFor('.card-info-header');
+  const buttons = blockFor('.card-buttons--header');
 
-  assert.match(block, /text-align:\s*right/);
-  assert.match(block, /min-width:\s*140px/);
+  assert.match(header, /display:\s*flex/);
+  assert.match(header, /justify-content:\s*space-between/);
+  assert.match(buttons, /flex-shrink:\s*0/);
   assert.match(buttons, /justify-content:\s*flex-end/);
+});
+
+test('phase 48 card redesign styles: retailer action footer spans the content column', () => {
+  const block = blockFor('.card-action-cell');
+
+  assert.match(block, /grid-column:\s*2/);
+  assert.match(block, /display:\s*flex/);
+  assert.match(block, /justify-content:\s*space-between/);
+  assert.match(block, /border-top:\s*1px solid #f0eeea/);
 });
 
 test('phase 48 card redesign styles: mobile collapses actions below product information', () => {
