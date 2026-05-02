@@ -481,6 +481,14 @@
   line-height: 1.25;
 }
 
+.card-price--check {
+  color: var(--copper);
+}
+
+.card-price--unavailable {
+  color: var(--ink-3);
+}
+
 .card-buttons {
   display: flex;
   justify-content: flex-end;
