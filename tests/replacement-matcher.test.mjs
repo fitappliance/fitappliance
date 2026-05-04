@@ -30,6 +30,17 @@ const catalog = [
     w: 600,
     h: 850,
     d: 565
+  },
+  {
+    id: 'haier-hrf520bhs',
+    cat: 'fridge',
+    brand: 'Haier',
+    model: 'HRF520BHS French Door 520L',
+    displayName: 'Haier Fridge',
+    readableSpec: '520L French-Door',
+    w: 875,
+    h: 1730,
+    d: 695
   }
 ];
 
@@ -58,4 +69,24 @@ test('phase 52 replacement matcher: turns a matched product into cavity dimensio
   assert.deepEqual(state.dimensions, { w: 699, h: 1725, d: 723 });
   assert.match(state.label, /Westinghouse WTB4600WA/);
   assert.match(state.note, /starting point/i);
+});
+
+test('phase 52 replacement matcher: brand plus old model code matches catalog model with descriptive suffix', async () => {
+  const { findReplacementSource } = await loadModule();
+
+  const match = findReplacementSource('Haier HRF520BHS', catalog, { category: 'fridge' });
+
+  assert.equal(match?.product.id, 'haier-hrf520bhs');
+  assert.equal(match?.confidence, 'high');
+  assert.match(match?.label ?? '', /HRF520BHS/);
+});
+
+test('phase 52 replacement matcher: dimension state prefers real model labels over generic category display names', async () => {
+  const { buildReplacementDimensionState } = await loadModule();
+
+  const state = buildReplacementDimensionState(catalog[2]);
+
+  assert.deepEqual(state.dimensions, { w: 875, h: 1730, d: 695 });
+  assert.equal(state.label, 'Haier HRF520BHS French Door 520L');
+  assert.match(state.note, /HRF520BHS/);
 });
