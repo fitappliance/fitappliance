@@ -1287,7 +1287,19 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   .footer-grid { grid-template-columns:1fr;gap:28px; }
   .cat-pills { gap:5px; }
   .cat-pill { font-size:12px;padding:7px 11px; }
-  .p-row { grid-template-columns:50px 1fr;gap:10px; }
+  .p-row { grid-template-columns:64px minmax(0, 1fr);gap:14px; }
+  .p-row-thumb {
+    width:64px;
+    height:64px;
+  }
+  .p-row-thumb .product-thumb-svg {
+    max-width:64px;
+  }
+  .p-row-name,
+  .p-row-model,
+  .p-row-meta {
+    overflow-wrap:anywhere;
+  }
   .p-row-actions {
     grid-column:1 / -1;
     align-items:flex-start;

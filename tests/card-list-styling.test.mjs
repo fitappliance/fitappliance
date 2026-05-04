@@ -72,6 +72,14 @@ test('hotfix result row layout: product rows keep information column readable be
   assert.match(actions, /border-top:\s*1px solid var\(--border\)/);
 });
 
+test('hotfix mobile list rows reserve enough track width for the avatar', () => {
+  assert.match(css, /@media\(max-width:\s*660px\)/);
+  assert.match(css, /\.p-row\s*\{[^}]*grid-template-columns:\s*64px minmax\(0,\s*1fr\)/);
+  assert.match(css, /\.p-row-thumb\s*\{[^}]*width:\s*64px[^}]*height:\s*64px/);
+  assert.match(css, /\.p-row-thumb \.product-thumb-svg\s*\{[^}]*max-width:\s*64px/);
+  assert.doesNotMatch(css, /@media\(max-width:\s*660px\)[\s\S]*\.p-row\s*\{[^}]*grid-template-columns:\s*50px\s+1fr/);
+});
+
 test('hotfix result row layout: retailer choices wrap inside the row footer instead of squeezing the title', () => {
   const buttons = blockFor('.p-row-action-buttons');
   const denseRail = blockFor('.p-row-actions .retailer-logo-rail');

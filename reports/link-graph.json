@@ -1,16 +1,16 @@
 {
   "summary": {
-    "totalPages": 471,
-    "totalEdges": 7421,
+    "totalPages": 473,
+    "totalEdges": 7445,
     "orphanPages": 0,
-    "averageInlinks": 15.76
+    "averageInlinks": 15.74
   },
   "orphanUrls": [],
   "nodes": [
     {
       "url": "/",
       "file": "index.html",
-      "inlinks": 470,
+      "inlinks": 472,
       "outlinks": 6
     },
     {
@@ -22,7 +22,7 @@
     {
       "url": "/about/editorial-standards",
       "file": "pages/about/editorial-standards.html",
-      "inlinks": 470,
+      "inlinks": 472,
       "outlinks": 4
     },
     {
@@ -358,6 +358,12 @@
     {
       "url": "/brands/comfee-dishwasher-clearance",
       "file": "pages/brands/comfee-dishwasher-clearance.html",
+      "inlinks": 2,
+      "outlinks": 8
+    },
+    {
+      "url": "/brands/crossray-infrared-bbq-fridge-clearance",
+      "file": "pages/brands/crossray-infrared-bbq-fridge-clearance.html",
       "inlinks": 2,
       "outlinks": 8
     },
@@ -820,7 +826,7 @@
     {
       "url": "/brands/ilve-dishwasher-clearance",
       "file": "pages/brands/ilve-dishwasher-clearance.html",
-      "inlinks": 11,
+      "inlinks": 3,
       "outlinks": 10
     },
     {
@@ -946,7 +952,7 @@
     {
       "url": "/brands/licensing-essentials-fridge-clearance",
       "file": "pages/brands/licensing-essentials-fridge-clearance.html",
-      "inlinks": 2,
+      "inlinks": 1,
       "outlinks": 8
     },
     {
@@ -1042,8 +1048,8 @@
     {
       "url": "/brands/miele-dishwasher-clearance",
       "file": "pages/brands/miele-dishwasher-clearance.html",
-      "inlinks": 13,
-      "outlinks": 12
+      "inlinks": 12,
+      "outlinks": 11
     },
     {
       "url": "/brands/miele-fridge-clearance",
@@ -1114,20 +1120,26 @@
     {
       "url": "/brands/mykin-dishwasher-clearance",
       "file": "pages/brands/mykin-dishwasher-clearance.html",
-      "inlinks": 3,
-      "outlinks": 10
+      "inlinks": 4,
+      "outlinks": 11
+    },
+    {
+      "url": "/brands/mykin-dryer-clearance",
+      "file": "pages/brands/mykin-dryer-clearance.html",
+      "inlinks": 5,
+      "outlinks": 11
     },
     {
       "url": "/brands/mykin-fridge-clearance",
       "file": "pages/brands/mykin-fridge-clearance.html",
-      "inlinks": 3,
-      "outlinks": 10
+      "inlinks": 4,
+      "outlinks": 11
     },
     {
       "url": "/brands/mykin-washing-machine-clearance",
       "file": "pages/brands/mykin-washing-machine-clearance.html",
-      "inlinks": 3,
-      "outlinks": 10
+      "inlinks": 4,
+      "outlinks": 11
     },
     {
       "url": "/brands/nakita-fridge-clearance",
@@ -1168,7 +1180,7 @@
     {
       "url": "/brands/norj-dryer-clearance",
       "file": "pages/brands/norj-dryer-clearance.html",
-      "inlinks": 5,
+      "inlinks": 4,
       "outlinks": 11
     },
     {
@@ -1198,8 +1210,8 @@
     {
       "url": "/brands/omega-dishwasher-clearance",
       "file": "pages/brands/omega-dishwasher-clearance.html",
-      "inlinks": 5,
-      "outlinks": 12
+      "inlinks": 14,
+      "outlinks": 13
     },
     {
       "url": "/brands/omega-dryer-clearance",
@@ -2114,21 +2126,15 @@
       "outlinks": 25
     },
     {
-      "url": "/compare/artusi-vs-midea-dishwasher-clearance",
-      "file": "pages/compare/artusi-vs-midea-dishwasher-clearance.html",
-      "inlinks": 21,
-      "outlinks": 18
-    },
-    {
-      "url": "/compare/artusi-vs-miele-dishwasher-clearance",
-      "file": "pages/compare/artusi-vs-miele-dishwasher-clearance.html",
-      "inlinks": 8,
+      "url": "/compare/artusi-vs-omega-dishwasher-clearance",
+      "file": "pages/compare/artusi-vs-omega-dishwasher-clearance.html",
+      "inlinks": 9,
       "outlinks": 18
     },
     {
       "url": "/compare/artusi-vs-smeg-dishwasher-clearance",
       "file": "pages/compare/artusi-vs-smeg-dishwasher-clearance.html",
-      "inlinks": 21,
+      "inlinks": 12,
       "outlinks": 18
     },
     {
@@ -2206,7 +2212,7 @@
     {
       "url": "/compare/fisher-paykel-vs-ilve-dishwasher-clearance",
       "file": "pages/compare/fisher-paykel-vs-ilve-dishwasher-clearance.html",
-      "inlinks": 13,
+      "inlinks": 9,
       "outlinks": 18
     },
     {
@@ -2224,7 +2230,7 @@
     {
       "url": "/compare/fisher-paykel-vs-omega-dishwasher-clearance",
       "file": "pages/compare/fisher-paykel-vs-omega-dishwasher-clearance.html",
-      "inlinks": 9,
+      "inlinks": 20,
       "outlinks": 18
     },
     {
@@ -2278,7 +2284,7 @@
     {
       "url": "/compare/hisense-vs-seiki-washing-machine-clearance",
       "file": "pages/compare/hisense-vs-seiki-washing-machine-clearance.html",
-      "inlinks": 9,
+      "inlinks": 8,
       "outlinks": 18
     },
     {
@@ -2294,6 +2300,12 @@
       "outlinks": 18
     },
     {
+      "url": "/compare/midea-vs-artusi-dishwasher-clearance",
+      "file": "pages/compare/midea-vs-artusi-dishwasher-clearance.html",
+      "inlinks": 21,
+      "outlinks": 18
+    },
+    {
       "url": "/compare/midea-vs-beko-washing-machine-clearance",
       "file": "pages/compare/midea-vs-beko-washing-machine-clearance.html",
       "inlinks": 13,
@@ -2302,7 +2314,7 @@
     {
       "url": "/compare/midea-vs-inalto-washing-machine-clearance",
       "file": "pages/compare/midea-vs-inalto-washing-machine-clearance.html",
-      "inlinks": 9,
+      "inlinks": 10,
       "outlinks": 18
     },
     {
@@ -2314,7 +2326,7 @@
     {
       "url": "/compare/midea-vs-smeg-dishwasher-clearance",
       "file": "pages/compare/midea-vs-smeg-dishwasher-clearance.html",
-      "inlinks": 11,
+      "inlinks": 12,
       "outlinks": 18
     },
     {
@@ -2542,31 +2554,31 @@
     {
       "url": "/guides/appliance-fit-sizing-handbook",
       "file": "pages/guides/appliance-fit-sizing-handbook.html",
-      "inlinks": 422,
-      "outlinks": 427
+      "inlinks": 424,
+      "outlinks": 429
     },
     {
       "url": "/guides/dishwasher-cavity-sizing",
       "file": "pages/guides/dishwasher-cavity-sizing.html",
-      "inlinks": 430,
+      "inlinks": 432,
       "outlinks": 69
     },
     {
       "url": "/guides/dryer-ventilation-guide",
       "file": "pages/guides/dryer-ventilation-guide.html",
-      "inlinks": 422,
+      "inlinks": 424,
       "outlinks": 69
     },
     {
       "url": "/guides/fridge-clearance-requirements",
       "file": "pages/guides/fridge-clearance-requirements.html",
-      "inlinks": 422,
+      "inlinks": 424,
       "outlinks": 108
     },
     {
       "url": "/guides/washing-machine-doorway-access",
       "file": "pages/guides/washing-machine-doorway-access.html",
-      "inlinks": 422,
+      "inlinks": 424,
       "outlinks": 79
     },
     {
@@ -2812,7 +2824,7 @@
     {
       "url": "/methodology",
       "file": "pages/methodology.html",
-      "inlinks": 470,
+      "inlinks": 472,
       "outlinks": 4
     },
     {
