@@ -703,19 +703,31 @@
 
 @media (max-width: 640px) {
   .card-grid {
-    grid-template-columns: auto 1fr;
-    gap: 12px;
-    padding: 14px;
+    grid-template-columns: 64px minmax(0, 1fr);
+    column-gap: 16px;
+    row-gap: 12px;
+    padding: 14px 12px;
   }
 
   .card-thumb-cell {
-    width: 72px;
+    width: 64px;
   }
 
   .card-thumb-avatar {
-    width: 72px;
-    height: 72px;
-    font-size: 22px;
+    width: 64px;
+    height: 64px;
+    font-size: 20px;
+    border-radius: 10px;
+  }
+
+  .card-info-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card-buttons--header {
+    justify-content: flex-start;
   }
 
   .card-action-cell {
@@ -738,6 +750,12 @@
 
   .card-cta {
     justify-content: flex-start;
+    width: 100%;
+  }
+
+  .card-cta a {
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .card-retailer-panel,
