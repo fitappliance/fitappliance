@@ -45,14 +45,16 @@ test('phase 48 card redesign styles: retailer action footer spans the content co
 
 test('phase 48 card redesign styles: mobile collapses actions below product information', () => {
   assert.match(css, /@media \(max-width:\s*640px\)/);
-  assert.match(css, /\.card-grid\s*\{[^}]*grid-template-columns:\s*64px minmax\(0,\s*1fr\)/);
-  assert.match(css, /\.card-thumb-cell\s*\{[^}]*width:\s*64px/);
-  assert.match(css, /\.card-thumb-avatar\s*\{[^}]*width:\s*64px[^}]*height:\s*64px/);
-  assert.match(css, /\.card-action-cell\s*\{[^}]*grid-column:\s*1 \/ -1/);
+  assert.match(css, /\.card-grid\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)/);
+  assert.match(css, /\.card-thumb-cell\s*\{[^}]*width:\s*56px/);
+  assert.match(css, /\.card-thumb-avatar\s*\{[^}]*width:\s*56px[^}]*height:\s*56px/);
+  assert.match(css, /\.card-info-cell\s*\{[^}]*grid-column:\s*1/);
+  assert.match(css, /\.card-action-cell\s*\{[^}]*grid-column:\s*1/);
 });
 
 test('hotfix mobile card layout: title controls stack instead of squeezing the title beside the avatar', () => {
   assert.match(css, /@media \(max-width:\s*640px\)/);
+  assert.doesNotMatch(css, /@media \(max-width:\s*640px\)[\s\S]*\.card-grid\s*\{[^}]*grid-template-columns:\s*(?:auto|64px)\s+1fr/);
   assert.match(css, /\.card-info-header\s*\{[^}]*flex-direction:\s*column/);
   assert.match(css, /\.card-info-header\s*\{[^}]*gap:\s*8px/);
   assert.match(css, /\.card-buttons--header\s*\{[^}]*justify-content:\s*flex-start/);

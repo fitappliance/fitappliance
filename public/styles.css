@@ -703,21 +703,24 @@
 
 @media (max-width: 640px) {
   .card-grid {
-    grid-template-columns: 64px minmax(0, 1fr);
-    column-gap: 16px;
+    grid-template-columns: minmax(0, 1fr);
     row-gap: 12px;
     padding: 14px 12px;
   }
 
   .card-thumb-cell {
-    width: 64px;
+    width: 56px;
   }
 
   .card-thumb-avatar {
-    width: 64px;
-    height: 64px;
-    font-size: 20px;
+    width: 56px;
+    height: 56px;
+    font-size: 18px;
     border-radius: 10px;
+  }
+
+  .card-info-cell {
+    grid-column: 1;
   }
 
   .card-info-header {
@@ -731,7 +734,7 @@
   }
 
   .card-action-cell {
-    grid-column: 1 / -1;
+    grid-column: 1;
     min-width: 0;
     text-align: left;
     align-items: flex-start;
