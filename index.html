@@ -236,6 +236,14 @@ nav {
   position:absolute;right:12px;top:50%;transform:translateY(-50%);
   font-size:12px;color:var(--ink-2);font-weight:600;pointer-events:none;
 }
+.field-note {
+  display:block;
+  margin-top:6px;
+  color:var(--ink-3);
+  font-size:11px;
+  font-weight:500;
+  line-height:1.45;
+}
 
 /* Extra inputs row */
 .extra-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px; }
@@ -393,6 +401,7 @@ nav {
       <div class="sc-head">
         <div class="sc-title">Enter your available cavity space</div>
       </div>
+      <p class="field-note" style="margin:-10px 0 18px">Tip: type 60cm or 60 and FitAppliance will convert it to 600mm.</p>
 
       <!-- Category -->
       <div class="cat-pills" id="catPills" style="margin-bottom:20px">
@@ -406,15 +415,18 @@ nav {
       <div class="dim-grid">
         <div class="field">
           <label for="inW">Cavity Width</label>
-          <div class="field-wrap"><input type="number" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="inW" aria-label="Width millimeters" placeholder="1020" min="100" max="2000"><span class="field-unit">mm</span></div>
+          <div class="field-wrap"><input type="number" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="inW" aria-describedby="inWHint" aria-label="Width millimeters" placeholder="1020" min="100" max="2000"><span class="field-unit">mm</span></div>
+          <span class="field-note" id="inWHint">Measure inside-to-inside at the narrowest point.</span>
         </div>
         <div class="field">
           <label for="inH">Cavity Height</label>
-          <div class="field-wrap"><input type="number" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="inH" aria-label="Height millimeters" placeholder="1910" min="100" max="3000"><span class="field-unit">mm</span></div>
+          <div class="field-wrap"><input type="number" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="inH" aria-describedby="inHHint" aria-label="Height millimeters" placeholder="1910" min="100" max="3000"><span class="field-unit">mm</span></div>
+          <span class="field-note" id="inHHint">Measure floor to cabinet underside; include hinge caps.</span>
         </div>
         <div class="field">
           <label for="inD">Cavity Depth</label>
-          <div class="field-wrap"><input type="number" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="inD" aria-label="Depth millimeters" placeholder="800" min="100" max="1500"><span class="field-unit">mm</span></div>
+          <div class="field-wrap"><input type="number" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="inD" aria-describedby="inDHint" aria-label="Depth millimeters" placeholder="800" min="100" max="1500"><span class="field-unit">mm</span></div>
+          <span class="field-note" id="inDHint">Measure to the shallowest rear pipe, socket or skirting.</span>
         </div>
       </div>
 
@@ -446,7 +458,8 @@ nav {
       <div class="adv-fields" id="advFields">
         <div class="field">
           <label>Narrowest doorway width</label>
-          <div class="field-wrap"><input type="number" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="inDoor" placeholder="820" min="500" max="1500"><span class="field-unit">mm</span></div>
+          <div class="field-wrap"><input type="number" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="inDoor" aria-describedby="inDoorHint" placeholder="820" min="500" max="1500"><span class="field-unit">mm</span></div>
+          <span class="field-note" id="inDoorHint">Use the narrowest entry, lift door or hallway turn on the delivery path.</span>
         </div>
         <div>
           <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;">Dwelling type</label>
@@ -852,6 +865,7 @@ import '/scripts/compare-store.js';
 import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/product-card.js';
 import { displayBrandName } from './scripts/ui/brand-utils.js';
 import { renderFreshnessBanner } from './scripts/ui/freshness.js';
+import { normalizeSearchDimensions } from './scripts/search-inputs.mjs';
 import { buildBrandOptions } from './scripts/ui/filters.js';
 import { computeFitScore } from './scripts/ui/fit-score.js';
 import { clearSaved, getSavedIds, isProductSaved, saveProduct, unsaveProduct } from './scripts/ui/saved-matches.js';
@@ -1715,12 +1729,16 @@ function refreshSearchResults() {
    SEARCH
 ══════════════════════════════════════════════════════════ */
 function doSearch(options = {}) {
-  const w = parseInt(document.getElementById('inW').value);
-  const h = parseInt(document.getElementById('inH').value);
-  const d = parseInt(document.getElementById('inD').value);
+  const normalizedDimensions = normalizeSearchDimensions({
+    w: document.getElementById('inW').value,
+    h: document.getElementById('inH').value,
+    d: document.getElementById('inD').value,
+    door: document.getElementById('inDoor').value
+  });
+  const { w, h, d, door: normalizedDoorW } = normalizedDimensions.values;
   const brand = document.getElementById('inBrand').value;
   const budget = parsePositiveInteger(document.getElementById('inBudget').value);
-  const doorW = parseInt(document.getElementById('inDoor').value) || DEFAULT_DOORWAY_MM;
+  const doorW = normalizedDoorW || DEFAULT_DOORWAY_MM;
   const dwelling = document.getElementById('inDwelling').value || DEFAULT_DWELLING;
 
   trackSearchSubmitEvent({
@@ -1733,6 +1751,13 @@ function doSearch(options = {}) {
 
   if (!w || !h || !d) { showToast('Please enter width, height, and depth'); return; }
   if (w<200||h<200||d<100) { showToast('Dimensions look too small — enter in millimetres'); return; }
+  if (normalizedDimensions.converted) {
+    document.getElementById('inW').value = String(w);
+    document.getElementById('inH').value = String(h);
+    document.getElementById('inD').value = String(d);
+    if (normalizedDoorW) document.getElementById('inDoor').value = String(normalizedDoorW);
+    showToast(normalizedDimensions.message);
+  }
 
   document.getElementById('resultsSection').style.display = 'block';
   setTimeout(() => {
