@@ -1223,7 +1223,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "AWARD Dishwasher",
+      "readableSpec": "Freestanding Dishwasher",
+      "priorityScore": 18
     },
     {
       "id": "dishwasher-zdw0268",
@@ -6383,7 +6386,7 @@
     {
       "id": "dishwasher-adw1382",
       "cat": "dishwasher",
-      "brand": "MIDEA",
+      "brand": "Midea",
       "model": "MDW4581F9UX",
       "w": 448,
       "h": 845,
@@ -6400,7 +6403,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Midea Dishwasher",
+      "readableSpec": "Freestanding Dishwasher",
+      "priorityScore": 18
     },
     {
       "id": "dishwasher-adw0932",
@@ -6923,7 +6929,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Omega Dishwasher",
+      "readableSpec": "Freestanding Dishwasher",
+      "priorityScore": 33
     },
     {
       "id": "dishwasher-adw1364",
@@ -6945,7 +6954,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Omega Dishwasher",
+      "readableSpec": "Freestanding Dishwasher",
+      "priorityScore": 39
     },
     {
       "id": "dishwasher-adw1161",
@@ -8119,7 +8131,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Technika Dishwasher",
+      "readableSpec": "Built-in Dishwasher",
+      "priorityScore": 18
     },
     {
       "id": "dishwasher-adw0879",
@@ -10380,7 +10395,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Mykin Dryer",
+      "readableSpec": "Vented",
+      "priorityScore": 12
     },
     {
       "id": "dryer-acd0901",
@@ -14726,7 +14744,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Crossray Infrared BBQ Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 12
     },
     {
       "id": "fridge-arf3691",
@@ -18163,7 +18184,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Fhiaba Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 18
     },
     {
       "id": "fridge-arf3891",
@@ -18186,7 +18210,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Fhiaba Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 18
     },
     {
       "id": "fridge-arf3874",
@@ -18235,7 +18262,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Fhiaba Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 24
     },
     {
       "id": "fridge-arf3890",
@@ -18258,7 +18288,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Fhiaba Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 24
     },
     {
       "id": "fridge-arf3875",
@@ -21309,7 +21342,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "520L French-Door",
@@ -24383,7 +24416,7 @@
     {
       "id": "fridge-arf3903",
       "cat": "fridge",
-      "brand": "HISENSE",
+      "brand": "Hisense",
       "model": "HRBM419B",
       "w": 704,
       "h": 1720,
@@ -24401,7 +24434,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Hisense Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 60
     },
     {
       "id": "fridge-zrf0903",
@@ -36764,7 +36800,7 @@
       "inferred_door_swing": true,
       "displayName": "Robinhood Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 12
+      "priorityScore": 18
     },
     {
       "id": "fridge-zrf0917",
@@ -47452,7 +47488,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Euromaid Washing Machine",
+      "readableSpec": "Front Loader",
+      "priorityScore": 24
     },
     {
       "id": "washing_machine-acw1129",
@@ -49244,7 +49283,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Inalto Washing Machine",
+      "readableSpec": "Front Loader",
+      "priorityScore": 24
     },
     {
       "id": "washing_machine-acw1582",
@@ -52831,7 +52873,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Mykin Washing Machine",
+      "readableSpec": "Top Loader",
+      "priorityScore": 18
     },
     {
       "id": "washing_machine-acw1548",
@@ -54729,7 +54774,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Stirling Washing Machine",
+      "readableSpec": "Front Loader",
+      "priorityScore": 30
     },
     {
       "id": "washing_machine-acw1210",
@@ -55038,7 +55086,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "TCL Washing Machine",
+      "readableSpec": "Front Loader",
+      "priorityScore": 30
     },
     {
       "id": "washing_machine-acw1537",
@@ -55087,7 +55138,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "TCL Washing Machine",
+      "readableSpec": "Front Loader",
+      "priorityScore": 30
     },
     {
       "id": "washing_machine-acw1309",

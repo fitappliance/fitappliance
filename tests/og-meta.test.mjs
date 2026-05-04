@@ -11,7 +11,7 @@ const SAMPLE_PAGES = [
   'pages/cavity/900mm-fridge.html',
   'pages/compare/westinghouse-vs-lg-fridge-clearance.html',
   'pages/compare/hisense-vs-lg-fridge-clearance.html',
-  'pages/compare/artusi-vs-miele-dishwasher-clearance.html',
+  'pages/compare/artusi-vs-smeg-dishwasher-clearance.html',
   'pages/guides/fridge-clearance-requirements.html',
   'pages/guides/dishwasher-cavity-sizing.html',
   'pages/guides/appliance-fit-sizing-handbook.html'
