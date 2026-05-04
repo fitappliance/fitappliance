@@ -258,6 +258,20 @@ test('phase 52 mobile UX: primary fit CTA is sticky in the mobile thumb zone', (
   assert.match(indexHtml, /@media\(max-width:660px\)\{[\s\S]*\.btn-search--primary\s*\{[\s\S]*bottom:\s*12px/);
 });
 
+test('phase 52 input guidance: homepage explains cm shorthand and real-world measurement traps', () => {
+  const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+
+  assert.match(indexHtml, /60cm[\s\S]*600mm/);
+  assert.match(indexHtml, /id="inWHint"[\s\S]*inside-to-inside/);
+  assert.match(indexHtml, /id="inHHint"[\s\S]*hinge caps/);
+  assert.match(indexHtml, /id="inDHint"[\s\S]*rear pipe/);
+  assert.match(indexHtml, /id="inDoorHint"[\s\S]*lift door/);
+  for (const [id, hintId] of [['inW', 'inWHint'], ['inH', 'inHHint'], ['inD', 'inDHint'], ['inDoor', 'inDoorHint']]) {
+    const input = indexHtml.match(new RegExp(`<input[^>]+id="${id}"[^>]*>`))?.[0] ?? '';
+    assert.match(input, new RegExp(`aria-describedby="${hintId}"`), `${id} should be connected to its measurement hint`);
+  }
+});
+
 test('phase 45b search-ux: clear all resets facet state without touching dimension filters', () => {
   const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
 
