@@ -129,7 +129,7 @@ export function buildRetailerLogoLinks(product, { resolveRetailerUrl = (retailer
     }).join('');
 
     return `<div class="retailer-logo-panel retailer-logo-panel--dense">
-      <span class="retailer-logo-label">Available at ${items.length} stores</span>
+      <span class="retailer-logo-label">Check price at ${items.length} stores</span>
       <div class="retailer-logo-rail" aria-label="Retailer product links">${dots}</div>
       <span class="retailer-option-hint">Choose a retailer</span>
     </div>`;
@@ -146,7 +146,7 @@ export function buildRetailerLogoLinks(product, { resolveRetailerUrl = (retailer
   }).join('');
 
   return `<div class="retailer-logo-panel">
-    <span class="retailer-logo-label">Available at</span>
+    <span class="retailer-logo-label">Check price at${items.length > 1 ? ` ${items.length} stores` : ''}</span>
     <div class="retailer-logo-links" aria-label="Retailer product links">${links}</div>
   </div>`;
 }

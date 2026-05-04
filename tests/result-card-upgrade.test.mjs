@@ -39,7 +39,7 @@ test('phase 45b result card: multiple retailers render price range and count', a
   }));
 
   assert.match(html, /From \$899/);
-  assert.match(html, /Available at/);
+  assert.match(html, /Check price at 3 stores/);
   assert.match(html, /card-retailer-links/);
   assert.match(html, /The Good Guys/);
   assert.match(html, /JB Hi-Fi/);
