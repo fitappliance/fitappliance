@@ -244,6 +244,71 @@ nav {
   font-weight:500;
   line-height:1.45;
 }
+.replacement-finder {
+  margin:0 0 16px;
+  padding:14px;
+  border:1px solid var(--border);
+  border-radius:var(--r-sm);
+  background:#FCFAF6;
+  text-align:left;
+}
+.replacement-finder label {
+  display:block;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  margin-bottom:8px;
+}
+.replacement-row { display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center; }
+.replacement-row input {
+  width:100%;
+  padding:11px 13px;
+  border:1.5px solid var(--border);
+  border-radius:var(--r-sm);
+  font-family:'Outfit',sans-serif;
+  font-size:14px;
+  font-weight:500;
+  color:var(--ink);
+  background:var(--white);
+}
+.replacement-row input:focus { outline:none;border-color:var(--copper);box-shadow:0 0 0 3px rgba(181,90,44,.12); }
+.replacement-row button {
+  border:1.5px solid var(--ink);
+  background:var(--ink);
+  color:#fff;
+  border-radius:var(--r-sm);
+  padding:11px 14px;
+  font-family:'Outfit',sans-serif;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+}
+.replacement-status {
+  margin-top:8px;
+  font-size:12px;
+  color:var(--green);
+  font-weight:600;
+}
+.space-alerts {
+  display:grid;
+  gap:8px;
+  margin:-2px 0 14px;
+  text-align:left;
+}
+.space-alert {
+  border:1px solid var(--border);
+  border-radius:var(--r-sm);
+  padding:10px 12px;
+  background:var(--paper);
+  color:var(--ink-2);
+  font-size:12px;
+  line-height:1.45;
+}
+.space-alert strong { display:block;color:var(--ink);font-size:12px;margin-bottom:2px; }
+.space-alert--warning { background:var(--amber-bg);border-color:rgba(196,122,26,.35); }
+.space-alert--warning strong { color:var(--amber); }
 
 /* Extra inputs row */
 .extra-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px; }
@@ -334,6 +399,7 @@ nav {
   .search-card { padding:22px 18px; }
   .dim-grid { grid-template-columns:1fr 1fr; }
   .extra-grid { grid-template-columns:1fr; }
+  .replacement-row { grid-template-columns:1fr; }
   .hero { padding:48px 16px 80px; }
   .cat-pills { gap:5px; }
   .cat-pill { font-size:12px;padding:7px 11px; }
@@ -411,6 +477,18 @@ nav {
         <button class="cat-pill" data-cat="dryer">Dryer</button>
       </div>
 
+      <!-- Old model matcher -->
+      <div class="replacement-finder" data-replacement-finder>
+        <label for="oldModelInput">Replacing an old appliance?</label>
+        <div class="replacement-row">
+          <input id="oldModelInput" list="oldModelSuggestions" autocomplete="off" placeholder="Try old model, e.g. Westinghouse WTB4600WA">
+          <datalist id="oldModelSuggestions"></datalist>
+          <button type="button" id="useOldModelBtn">Use old model size</button>
+        </div>
+        <p class="field-note">We can use a matching old model as a starting point, but always re-measure the actual cavity before buying.</p>
+        <div class="replacement-status" id="replacementStatus" aria-live="polite"></div>
+      </div>
+
       <!-- Dimensions -->
       <div class="dim-grid">
         <div class="field">
@@ -429,6 +507,7 @@ nav {
           <span class="field-note" id="inDHint">Measure to the shallowest rear pipe, socket or skirting.</span>
         </div>
       </div>
+      <div class="space-alerts" id="spaceAlerts" aria-label="Non-standard space alerts" aria-live="polite" hidden></div>
 
       <!-- Filters -->
       <div class="extra-grid">
@@ -866,6 +945,8 @@ import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/produ
 import { displayBrandName } from './scripts/ui/brand-utils.js';
 import { renderFreshnessBanner } from './scripts/ui/freshness.js';
 import { normalizeSearchDimensions } from './scripts/search-inputs.mjs';
+import { buildReplacementDimensionState, findReplacementSource } from './scripts/replacement-matcher.mjs';
+import { buildSpaceAlerts } from './scripts/space-alerts.mjs';
 import { buildBrandOptions } from './scripts/ui/filters.js';
 import { computeFitScore } from './scripts/ui/fit-score.js';
 import { clearSaved, getSavedIds, isProductSaved, saveProduct, unsaveProduct } from './scripts/ui/saved-matches.js';
@@ -1157,6 +1238,78 @@ const compareStore = CompareStore.createCompareStore();
 function refreshBrandOptions() {
   brandSelect.innerHTML = buildBrandOptions(PRODUCTS, currentCat);
   brandSelect.value = '';
+  renderOldModelSuggestions();
+}
+
+function replacementOptionLabel(product = {}) {
+  const brand = displayBrandName(product.brand);
+  const model = String(product.model ?? '').trim();
+  const displayName = String(product.displayName ?? '').trim();
+  return [brand, model || displayName].filter(Boolean).join(' ');
+}
+
+function renderOldModelSuggestions() {
+  const list = document.getElementById('oldModelSuggestions');
+  if (!list) return;
+  const rows = PRODUCTS
+    .filter((product) => product?.cat === currentCat)
+    .filter((product) => product?.model || product?.displayName)
+    .sort((left, right) => {
+      const scoreDelta = Number(right?.priorityScore ?? 0) - Number(left?.priorityScore ?? 0);
+      if (scoreDelta !== 0) return scoreDelta;
+      return replacementOptionLabel(left).localeCompare(replacementOptionLabel(right), 'en-AU', { sensitivity: 'base' });
+    })
+    .slice(0, 160);
+  list.innerHTML = rows
+    .map((product) => `<option value="${escHtml(replacementOptionLabel(product))}">${escHtml(product.displayName ?? product.model ?? '')}</option>`)
+    .join('');
+}
+
+function useOldModelSize() {
+  const input = document.getElementById('oldModelInput');
+  const status = document.getElementById('replacementStatus');
+  const query = input?.value?.trim() ?? '';
+  const match = findReplacementSource(query, PRODUCTS, { category: currentCat });
+  if (!match) {
+    if (status) status.textContent = '';
+    showToast('Old model not found — try brand plus model code');
+    return;
+  }
+
+  const state = buildReplacementDimensionState(match.product);
+  const { w, h, d } = state.dimensions;
+  if (!w || !h || !d) {
+    if (status) status.textContent = state.note;
+    showToast('Matched model is missing complete dimensions');
+    return;
+  }
+
+  document.getElementById('inW').value = String(w);
+  document.getElementById('inH').value = String(h);
+  document.getElementById('inD').value = String(d);
+  if (status) {
+    status.textContent = `Using ${state.label}: ${w}×${h}×${d}mm. Re-measure before ordering.`;
+  }
+  renderSpaceAlertsForDimensions({ w, h, d, door: document.getElementById('inDoor')?.value });
+  showToast('Filled dimensions from the old model');
+}
+
+function renderSpaceAlertsForDimensions({ w, h, d, door } = {}) {
+  const container = document.getElementById('spaceAlerts');
+  if (!container) return;
+  const alerts = buildSpaceAlerts({ cat: currentCat, w, h, d, door });
+  if (alerts.length === 0) {
+    container.hidden = true;
+    container.innerHTML = '';
+    return;
+  }
+  container.hidden = false;
+  container.innerHTML = alerts.map((alert) => `
+    <div class="space-alert space-alert--${escHtml(alert.severity)}">
+      <strong>${escHtml(alert.label)}</strong>
+      <span>${escHtml(alert.detail)}</span>
+    </div>
+  `).join('');
 }
 
 function readUrlParamCat() {
@@ -1758,6 +1911,7 @@ function doSearch(options = {}) {
     if (normalizedDoorW) document.getElementById('inDoor').value = String(normalizedDoorW);
     showToast(normalizedDimensions.message);
   }
+  renderSpaceAlertsForDimensions({ w, h, d, door: doorW });
 
   document.getElementById('resultsSection').style.display = 'block';
   setTimeout(() => {
@@ -2512,6 +2666,23 @@ window.closeCompareModal = closeCompareModal;
 ['inW','inH','inD'].forEach(id => {
   document.getElementById(id).addEventListener('keydown', e => {
     if (e.key==='Enter') doSearch();
+  });
+});
+document.getElementById('useOldModelBtn')?.addEventListener('click', useOldModelSize);
+document.getElementById('oldModelInput')?.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    useOldModelSize();
+  }
+});
+['inW','inH','inD','inDoor'].forEach(id => {
+  document.getElementById(id)?.addEventListener('change', () => {
+    renderSpaceAlertsForDimensions({
+      w: document.getElementById('inW')?.value,
+      h: document.getElementById('inH')?.value,
+      d: document.getElementById('inD')?.value,
+      door: document.getElementById('inDoor')?.value
+    });
   });
 });
 
