@@ -175,9 +175,9 @@
     retailerInput.type = 'checkbox';
     retailerInput.dataset.retailerOnly = '1';
     retailerInput.checked = activeFacets?.retailerOnly !== false;
-    setAriaLabel(retailerInput, 'Show only products in stock at major Australian retailers');
+    setAriaLabel(retailerInput, 'Show only products with verified retailer links');
     const retailerLabel = doc.createElement('span');
-    retailerLabel.textContent = 'Show only products in stock at major Australian retailers';
+    retailerLabel.textContent = 'Show only products with verified retailer links';
     retailerInput.addEventListener('change', () => {
       retailerToggle.classList.toggle('facet-toggle--active', retailerInput.checked);
       onChange?.({ type: 'retailerOnly', value: retailerInput.checked });
@@ -905,8 +905,14 @@
     const kwh = Number(match?.kwh_year ?? match?.energy_kwh_year ?? match?.kwh);
     if (Number.isFinite(kwh) && kwh > 0) {
       const annual = Math.round(kwh * 0.3);
+      const prices = getRetailerSummaries(match)
+        .map((retailer) => retailer.price)
+        .filter((price) => Number.isFinite(price) && price > 0)
+        .sort((left, right) => left - right);
       bits.push(`~${formatAud(annual)}/yr`);
-      bits.push(`10yr ~${formatAud(annual * 10)}`);
+      bits.push(prices.length > 0
+        ? `10yr total from ${formatAud(prices[0] + annual * 10)}`
+        : `10yr energy ~${formatAud(annual * 10)}`);
     }
     bits.push(...getFeatureBits(match));
     return bits.length > 0 ? `<div class="card-energy-line">${escHtml(bits.join(' · '))}</div>` : '';
@@ -1087,7 +1093,7 @@
       </div>`;
     }
     return `<div class="retailer-filter-banner">
-      <span>Showing ${safeCount} products available at major Australian retailers (JB Hi-Fi, Harvey Norman, The Good Guys, Appliances Online, Bing Lee).</span>
+      <span>Showing ${safeCount} products with verified retailer product links from major Australian retailers (JB Hi-Fi, Harvey Norman, The Good Guys, Appliances Online, Bing Lee).</span>
       ${showAction ? '<button type="button" class="secondary" data-show-all-products>Show all matching products</button>' : ''}
     </div>`;
   }

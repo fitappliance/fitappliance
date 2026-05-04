@@ -139,13 +139,6 @@ function buildModelLine(product, primaryTitle) {
   return normalizeToken(primaryTitle) === normalizeToken(model) ? '' : `Model ${model}`;
 }
 
-// Australian state energy rebate programs (NSW/VIC/SA/QLD) typically require >= 4-star GEMS.
-const REBATE_STAR_THRESHOLD = 4;
-
-export function isRebateEligible(product) {
-  return typeof product?.stars === 'number' && product.stars >= REBATE_STAR_THRESHOLD;
-}
-
 export function starsHtml(n, total = 6) {
   return Array.from(
     { length: total },
@@ -176,13 +169,6 @@ export function warningsHtml(p) {
     warns.push({
       text: `🚪 Requires ${p.door_swing_mm}mm door swing clearance`,
       tone: 'red',
-    });
-  }
-
-  if (isRebateEligible(p)) {
-    warns.push({
-      text: '💰 May qualify for state energy rebate — <a href="https://www.energy.gov.au/households/energy-rebates-and-assistance" target="_blank" rel="noopener noreferrer">check eligibility ↗</a>',
-      tone: 'green',
     });
   }
 
@@ -303,7 +289,11 @@ export function buildRow(p, deps = {}) {
   const modelLine = buildModelLine(p, primaryTitle);
   const compareLabel = `${displayBrand} ${p.model.split(' ').slice(0, 2).join(' ')}`;
   const annual = annualEnergyCost(p.kwh_year);
-  const total = Math.round(lifetimeCost(p.price, p.kwh_year));
+  const productPrice = getPositivePrice(p.price);
+  const total = productPrice === null
+    ? Math.round(Number(annual) * 10)
+    : Math.round(lifetimeCost(productPrice, p.kwh_year));
+  const costLabel = productPrice === null ? '10yr energy' : '10yr total';
   const triggerButton = buildRetailerTriggerButton(p, {
     resolveRetailerUrl,
     buildNoRetailerUrl,
@@ -332,7 +322,7 @@ export function buildRow(p, deps = {}) {
         <span class="dim-tag">H ${p.h}mm</span>
         <span class="dim-tag">D ${p.d}mm</span>
       </div>
-      <div style="font-size:12px;color:var(--green);margin-top:4px">⚡ ~$${annual}/yr · 10yr TCO ~$${total.toLocaleString()} · ${p.features.slice(0, 3).join(' · ')}</div>
+      <div style="font-size:12px;color:var(--green);margin-top:4px">⚡ ~$${annual}/yr energy · ${costLabel} ~$${total.toLocaleString()} · ${p.features.slice(0, 3).join(' · ')}</div>
       ${p.vented ? '<div style="font-size:12px;color:var(--red);margin-top:4px">⚠️ Vented — external ducting required (NCC 2022). Not for apartments.</div>' : ''}
     </div>
     <div class="p-row-actions">
