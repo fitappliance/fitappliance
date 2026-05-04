@@ -13,12 +13,35 @@ function normalizeText(value) {
     .trim();
 }
 
+function extractModelCode(value) {
+  return normalizeText(value)
+    .split(' ')
+    .find((token) => token.length >= 4 && /[a-z]/.test(token) && /\d/.test(token)) ?? '';
+}
+
+function isGenericDisplayName(displayName, product = {}) {
+  const normalizedDisplay = normalizeText(displayName);
+  const brand = normalizeText(product?.brand);
+  if (!normalizedDisplay || !brand) return false;
+  const genericLabels = [
+    `${brand} fridge`,
+    `${brand} refrigerator`,
+    `${brand} dishwasher`,
+    `${brand} dryer`,
+    `${brand} washing machine`,
+    `${brand} washer`
+  ];
+  return genericLabels.includes(normalizedDisplay);
+}
+
 function productLabel(product = {}) {
   const brand = String(product.brand ?? '').trim();
   const model = String(product.model ?? '').trim();
   const displayName = String(product.displayName ?? '').trim();
-  if (displayName) return displayName;
-  return [brand, model].filter(Boolean).join(' ');
+  if (displayName && !isGenericDisplayName(displayName, product)) return displayName;
+  const brandModel = [brand, model].filter(Boolean).join(' ');
+  if (brandModel) return brandModel;
+  return displayName || brand;
 }
 
 function scoreProduct(query, product) {
@@ -27,10 +50,15 @@ function scoreProduct(query, product) {
   if (!normalizedQuery || compactQuery.length < 3) return 0;
 
   const model = normalizeToken(product?.model);
+  const queryModelCode = extractModelCode(query);
+  const productModelCode = extractModelCode(product?.model);
   const displayName = normalizeText(product?.displayName);
   const label = normalizeText(productLabel(product));
   const brandModel = normalizeText(`${product?.brand ?? ''} ${product?.model ?? ''}`);
 
+  if (queryModelCode && productModelCode && queryModelCode === productModelCode) return 98;
+  if (queryModelCode.length >= 5 && productModelCode && productModelCode.startsWith(queryModelCode)) return 96;
+  if (queryModelCode.length >= 5 && model && model.startsWith(queryModelCode)) return 94;
   if (model && model === compactQuery) return 100;
   if (model && compactQuery.includes(model)) return 95;
   if (model && model.includes(compactQuery)) return 90;
@@ -82,4 +110,3 @@ export function buildReplacementDimensionState(product = {}) {
     note: `${label} dimensions are a starting point. Measure the actual cavity before buying.`
   };
 }
-
