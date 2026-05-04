@@ -112,7 +112,7 @@ test('phase 50 retailer links: result card CTA shows every linked retailer as a 
   }));
 
   assert.match(html, /card-retailer-links/);
-  assert.match(html, /Available at/);
+  assert.match(html, /Check price at 2 stores/);
   assert.match(html, /JB Hi-Fi/);
   assert.match(html, /Appliances Online/);
   assert.match(html, /href="https:\/\/www\.jbhifi\.com\.au\/products\/lg-gf-l708mbl"/);
@@ -135,7 +135,7 @@ test('phase 50 retailer links: five-store cards collapse to a compact logo rail'
   const html = buildCardHtml(makeMatch({ brand: 'HISENSE', model: 'HRCD640TBW', retailers }));
 
   assert.match(html, /card-retailer-panel--dense/);
-  assert.match(html, /Available at 5 stores/);
+  assert.match(html, /Check price at 5 stores/);
   assert.match(html, /retailer-logo-rail/);
   assert.equal((html.match(/class="retailer-logo-dot"/g) ?? []).length, 5);
   assert.match(html, /aria-label="Open JB Hi-Fi product page"/);
@@ -172,7 +172,28 @@ test('phase 50 price copy: verified retailer links without prices ask users to c
     ]
   }));
 
-  assert.match(html, /Available at 3 stores/);
+  assert.match(html, /Check price at 3 stores/);
   assert.match(html, /Check retailer price/);
   assert.doesNotMatch(html, /Price unavailable/);
+});
+
+test('phase 52 recommendations: card html surfaces plumbing flag and delivery checklist', async () => {
+  const { buildCardHtml } = await loadSearchDom();
+  const html = buildCardHtml(makeMatch({
+    brand: 'Fisher & Paykel',
+    model: 'RF730QZUVB1',
+    readableSpec: '690L quad door fridge with ice and water',
+    features: ['French Door', 'Water Dispenser', 'Auto Ice'],
+    w: 905,
+    d: 711,
+    retailers: [
+      { n: 'JB Hi-Fi', p: null, url: 'https://www.jbhifi.com.au/products/fisher-paykel-rf730qzuvb1' }
+    ]
+  }));
+
+  assert.match(html, /feature-alert/);
+  assert.match(html, /Plumbing check/i);
+  assert.match(html, /class="delivery-check"/);
+  assert.match(html, /Will it make it to your kitchen\?/);
+  assert.match(html, /Doorways are at least 761mm clear/);
 });

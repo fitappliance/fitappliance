@@ -83,6 +83,56 @@ function buildDataTrustLine(product, capturedDate = '') {
   return `<div class="data-trust-line">${bits.map((bit) => `<span>${escHtml(bit)}</span>`).join('<span aria-hidden="true">·</span>')}</div>`;
 }
 
+function getLinkedRetailers(product) {
+  return (Array.isArray(product?.retailers) ? product.retailers : [])
+    .filter((retailer) => isRetailerProductPageUrl(retailer?.url ?? retailer?.href));
+}
+
+function productText(product) {
+  return [
+    product?.brand,
+    product?.model,
+    product?.displayName,
+    product?.readableSpec,
+    ...(Array.isArray(product?.features) ? product.features : []),
+    ...getLinkedRetailers(product).flatMap((retailer) => [retailer?.url, retailer?.n])
+  ].map((value) => String(value ?? '')).join(' ');
+}
+
+export function buildFeatureFlagsHtml(product) {
+  const text = productText(product).toLowerCase();
+  const isFridge = product?.cat === 'fridge';
+  if (!isFridge) return '';
+
+  const hasWaterOrIce = /\b(water|ice|dispenser|plumbed|plumb)\b/i.test(text);
+  if (!hasWaterOrIce) return '';
+
+  if (/\bnon[-\s]?plumbed\b/i.test(text)) {
+    return '<div class="feature-alert">Water/ice feature: confirm tank or refill setup before delivery.</div>';
+  }
+
+  return '<div class="feature-alert">Plumbing check: confirm whether this fridge needs a water connection.</div>';
+}
+
+export function buildDeliveryCheckHtml(product) {
+  const width = Number(product?.w);
+  const depth = Number(product?.d);
+  if (!Number.isFinite(width) || !Number.isFinite(depth) || width <= 0 || depth <= 0) return '';
+
+  const doorwayClearance = Math.ceil(Math.min(width, depth) + 50);
+  const turnClearance = Math.ceil(Math.max(width, depth));
+
+  return `<details class="delivery-check">
+    <summary>Will it make it to your kitchen?</summary>
+    <div class="delivery-check__body">
+      <p>Use retailer packed dimensions if listed. Otherwise start with the appliance width/depth and confirm the delivery path.</p>
+      <label><input type="checkbox"> Doorways are at least ${doorwayClearance}mm clear</label>
+      <label><input type="checkbox"> Hallway corners can turn a ${turnClearance}mm appliance</label>
+      <label><input type="checkbox"> Stairs, lift and final cavity access verified</label>
+    </div>
+  </details>`;
+}
+
 const COLOR_SUFFIXES = [
   { tokens: ['black', 'stainless', 'steel'], label: 'Black Stainless Steel' },
   { tokens: ['matte', 'black'], label: 'Matte Black' },
@@ -248,6 +298,7 @@ export function buildCard(p, deps = {}) {
   const capturedDate = deps.capturedDate ?? '';
   const retailers = Array.isArray(p.retailers) ? p.retailers : [];
   const hasPrice = retailers.some((retailer) => isRetailerProductPageUrl(retailer?.url ?? retailer?.href) && getPositivePrice(retailer?.p) !== null);
+  const hasLinkedRetailer = getLinkedRetailers(p).length > 0;
   const displayBrand = displayBrandName(p.brand);
   const saved = isSaved(p.id);
   const primaryTitle = buildPrimaryTitle(p);
@@ -281,11 +332,13 @@ export function buildCard(p, deps = {}) {
       ${tcoHtml(p)}
       <div class="c-features">${p.features.join(' · ')}</div>
       ${buildDataTrustLine(p, capturedDate)}
+      ${buildFeatureFlagsHtml(p)}
+      ${buildDeliveryCheckHtml(p)}
       <div class="c-footer">
         ${
           hasPrice
             ? buildPriceBadge(p, capturedDate)
-            : '<div class="c-price no-price">Price unavailable</div>'
+            : `<div class="c-price no-price">${hasLinkedRetailer ? 'Check retailer price' : 'Price unavailable'}</div>`
         }
         <div class="c-actions">
           <button
@@ -317,6 +370,7 @@ export function buildRow(p, deps = {}) {
     .map((retailer) => ({ retailer, price: getPositivePrice(retailer?.p) }))
     .filter((entry) => entry.price !== null);
   const hasPrice = pricedRetailers.length > 0;
+  const hasLinkedRetailer = getLinkedRetailers(p).length > 0;
   const bestP = hasPrice ? Math.min(...pricedRetailers.map((entry) => entry.price)) : null;
   const displayBrand = displayBrandName(p.brand);
   const saved = isSaved(p.id);
@@ -360,12 +414,14 @@ export function buildRow(p, deps = {}) {
       <div style="font-size:12px;color:var(--green);margin-top:4px">⚡ ~$${annual}/yr energy · ${costLabel} ~$${total.toLocaleString()} · ${p.features.slice(0, 3).join(' · ')}</div>
       ${p.vented ? '<div style="font-size:12px;color:var(--red);margin-top:4px">⚠️ Vented — external ducting required (NCC 2022). Not for apartments.</div>' : ''}
       ${buildDataTrustLine(p, capturedDate)}
+      ${buildFeatureFlagsHtml(p)}
+      ${buildDeliveryCheckHtml(p)}
     </div>
     <div class="p-row-actions">
       ${
         hasPrice
           ? `<div class="p-row-price">${buildPriceBadge(p, capturedDate)}</div>`
-          : '<div class="p-row-price no-price">Price unavailable</div>'
+          : `<div class="p-row-price no-price">${hasLinkedRetailer ? 'Check retailer price' : 'Price unavailable'}</div>`
       }
       <div class="p-row-action-buttons">
         <button

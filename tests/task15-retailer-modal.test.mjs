@@ -80,7 +80,7 @@ test('task 15 retailer-modal: trigger for 1 retailer uses the retailer chip patt
   });
 
   assert.match(html, /retailer-logo-links/);
-  assert.match(html, /Available at/);
+  assert.match(html, /Check price at/);
   assert.match(html, /retailer-logo-mark">TGG</);
   assert.match(html, /The Good Guys/);
   assert.match(html, /href="https:\/\/www\.thegoodguys\.com\.au\/lg-gb335pl-fridge"/);
@@ -119,7 +119,7 @@ test('task 15 retailer-modal: trigger for 1 retailer without price still links t
   });
 
   assert.match(html, /retailer-logo-links/);
-  assert.match(html, /Available at/);
+  assert.match(html, /Check price at/);
   assert.match(html, /retailer-logo-mark">JB</);
   assert.match(html, /JB Hi-Fi/);
   assert.match(html, /href="https:\/\/www\.jbhifi\.com\.au\/products\/lg-gb335pl"/);
@@ -140,7 +140,7 @@ test('phase 50 retailer links: multiple unpriced retailer links render as select
   });
 
   assert.match(html, /retailer-logo-links/);
-  assert.match(html, /Available at/);
+  assert.match(html, /Check price at 2 stores/);
   assert.match(html, /JB Hi-Fi/);
   assert.match(html, /Appliances Online/);
   assert.match(html, /href="https:\/\/www\.jbhifi\.com\.au\/products\/lg-gb335pl"/);
@@ -164,7 +164,7 @@ test('phase 50 retailer links: five linked retailers use compact logo rail inste
   });
 
   assert.match(html, /retailer-logo-panel--dense/);
-  assert.match(html, /Available at 5 stores/);
+  assert.match(html, /Check price at 5 stores/);
   assert.match(html, /retailer-logo-rail/);
   assert.equal((html.match(/class="retailer-logo-dot"/g) ?? []).length, 5);
   assert.match(html, /title="Bing Lee"/);

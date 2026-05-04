@@ -762,7 +762,7 @@
     if (links.length === 0) return '';
     if (links.length >= 5) {
       return `<div class="card-retailer-panel card-retailer-panel--dense">
-        <span class="card-retailer-heading">Available at ${escHtml(links.length)} stores</span>
+        <span class="card-retailer-heading">Check price at ${escHtml(links.length)} stores</span>
         <div class="retailer-logo-rail" aria-label="Retailer product links">
           ${links.map((retailer) => {
           const displayName = safeRetailerDisplayName(retailer.name);
@@ -782,7 +782,7 @@
       </div>`;
     }
     return `<div class="card-retailer-panel">
-      <span class="card-retailer-heading">Available at${links.length > 1 ? ` ${escHtml(links.length)} stores` : ''}</span>
+      <span class="card-retailer-heading">Check price at${links.length > 1 ? ` ${escHtml(links.length)} stores` : ''}</span>
       <div class="card-retailer-links" aria-label="Retailer product links">
         ${links.map((retailer) => {
         const displayName = safeRetailerDisplayName(retailer.name);
@@ -932,6 +932,45 @@
     return `<div class="card-price">${escHtml(prices[0] === prices[prices.length - 1] ? formatAud(prices[0]) : `From ${formatAud(prices[0])}`)}</div>`;
   }
 
+  function getProductText(match) {
+    return [
+      match?.brand,
+      match?.model,
+      match?.sku,
+      match?.displayName,
+      match?.readableSpec,
+      ...(Array.isArray(match?.features) ? match.features : []),
+      ...getRetailerSummaries(match).flatMap((retailer) => [retailer.name, retailer.url])
+    ].map((value) => String(value ?? '')).join(' ');
+  }
+
+  function buildFeatureAlertsHtml(match) {
+    const text = getProductText(match).toLowerCase();
+    if (match?.cat !== 'fridge') return '';
+    if (!/\b(water|ice|dispenser|plumbed|plumb)\b/i.test(text)) return '';
+    if (/\bnon[-\s]?plumbed\b/i.test(text)) {
+      return '<div class="feature-alert">Water/ice feature: confirm tank or refill setup before delivery.</div>';
+    }
+    return '<div class="feature-alert">Plumbing check: confirm whether this fridge needs a water connection.</div>';
+  }
+
+  function buildDeliveryCheckHtml(match) {
+    const width = Number(match?.w);
+    const depth = Number(match?.d);
+    if (!Number.isFinite(width) || !Number.isFinite(depth) || width <= 0 || depth <= 0) return '';
+    const doorwayClearance = Math.ceil(Math.min(width, depth) + 50);
+    const turnClearance = Math.ceil(Math.max(width, depth));
+    return `<details class="delivery-check">
+      <summary>Will it make it to your kitchen?</summary>
+      <div class="delivery-check__body">
+        <p>Use retailer packed dimensions if listed. Otherwise start with the appliance width/depth and confirm the delivery path.</p>
+        <label><input type="checkbox"> Doorways are at least ${escHtml(doorwayClearance)}mm clear</label>
+        <label><input type="checkbox"> Hallway corners can turn a ${escHtml(turnClearance)}mm appliance</label>
+        <label><input type="checkbox"> Stairs, lift and final cavity access verified</label>
+      </div>
+    </details>`;
+  }
+
   function buildCardCtaHtml(match) {
     const retailerLinks = buildRetailerLinkGroupHtml(match);
     if (retailerLinks) {
@@ -1046,6 +1085,8 @@
             ${buildSpecChipsHtml(match)}
             ${buildEnergyLineHtml(match)}
             ${buildManufacturerAdvisoryHtml(match)}
+            ${buildFeatureAlertsHtml(match)}
+            ${buildDeliveryCheckHtml(match)}
             ${match.sku ? `<div class="fit-result-sku">SKU ${escHtml(match.sku)}</div>` : ''}
           </div>
           <div class="card-action-cell">

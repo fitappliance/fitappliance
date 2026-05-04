@@ -179,8 +179,9 @@ test('task 9.3 product-card: retailer link with null price renders without blank
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /Price unavailable/);
+  assert.match(html, /Check retailer price/);
   assert.doesNotMatch(html, /Price unavailable — search online/);
+  assert.match(html, /Check price at/);
   assert.match(html, /JB Hi-Fi/);
   assert.match(html, /https:\/\/www\.jbhifi\.com\.au\/products\/hisense-srf7500wfh/);
   assert.doesNotMatch(html, /\$null/);
@@ -203,10 +204,64 @@ test('task 9.3 product-card: card with retailer URL but null price shows fallbac
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /Price unavailable/);
+  assert.match(html, /Check retailer price/);
   assert.doesNotMatch(html, /Price unavailable — search online/);
+  assert.match(html, /Check price at/);
   assert.match(html, /JB Hi-Fi/);
   assert.doesNotMatch(html, /\$null/);
+});
+
+test('phase 52 recommendations: water and ice features render an advisory plumbing flag', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct({
+    brand: 'Fisher & Paykel',
+    model: 'RF730QZUVB1',
+    features: ['French Door', 'Water Dispenser', 'Auto Ice'],
+    retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/fisher-paykel-rf730qzuvb1', p: null }]
+  }), {
+    annualEnergyCost: () => '122',
+    lifetimeCost: () => 1220,
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /feature-alert/);
+  assert.match(html, /Plumbing check/i);
+  assert.match(html, /water connection/i);
+});
+
+test('phase 52 recommendations: non-plumbed water features render a tank/setup reminder, not plumbing required', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct({
+    model: 'GF-LN500MBL',
+    features: ['French Door', 'Non-plumbed ice and water'],
+    retailers: [{ n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-gf-ln500mbl/', p: null }]
+  }), {
+    annualEnergyCost: () => '88',
+    lifetimeCost: () => 880,
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /feature-alert/);
+  assert.match(html, /tank or refill setup/i);
+  assert.doesNotMatch(html, /Plumbing required/i);
+});
+
+test('phase 52 recommendations: result rows include a collapsed delivery path checklist', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct({
+    w: 900,
+    d: 700,
+    retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/hisense-srf7500wfh', p: null }]
+  }), {
+    annualEnergyCost: () => '100',
+    lifetimeCost: () => 1000,
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /class="delivery-check"/);
+  assert.match(html, /Will it make it to your kitchen\?/);
+  assert.match(html, /Doorways are at least 750mm clear/);
+  assert.match(html, /Hallway corners can turn a 900mm appliance/);
 });
 
 test('hotfix retailer URL quality: priced root retailer URL does not create stale price CTA', async () => {
@@ -345,7 +400,7 @@ test('phase 50 retailer links: list row keeps retailer choices in the action col
   });
 
   assert.match(html, /retailer-logo-panel/);
-  assert.match(html, /Available at/);
+  assert.match(html, /Check price at 2 stores/);
   assert.match(html, /JB Hi-Fi/);
   assert.match(html, /Appliances Online/);
   assert.doesNotMatch(html, /Buy at /);

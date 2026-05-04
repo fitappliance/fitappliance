@@ -272,6 +272,27 @@ test('phase 52 input guidance: homepage explains cm shorthand and real-world mea
   }
 });
 
+test('phase 52 replacement UX: homepage wires old appliance matcher controls', () => {
+  const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+
+  assert.match(indexHtml, /id="oldModelInput"/);
+  assert.match(indexHtml, /id="oldModelSuggestions"/);
+  assert.match(indexHtml, /id="useOldModelBtn"/);
+  assert.match(indexHtml, /replacement-matcher\.mjs/);
+  assert.match(indexHtml, /findReplacementSource\(/);
+  assert.match(indexHtml, /buildReplacementDimensionState\(/);
+});
+
+test('phase 52 space alert UX: homepage renders non-standard space alerts from dimensions', () => {
+  const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+
+  assert.match(indexHtml, /id="spaceAlerts"/);
+  assert.match(indexHtml, /space-alerts\.mjs/);
+  assert.match(indexHtml, /buildSpaceAlerts\(/);
+  assert.match(indexHtml, /space-alert/);
+  assert.match(indexHtml, /Tight delivery path|non-standard space/i);
+});
+
 test('phase 45b search-ux: clear all resets facet state without touching dimension filters', () => {
   const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
 
