@@ -14,7 +14,7 @@
 <link rel="alternate" hreflang="x-default" href="https://www.fitappliance.com.au/">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="FitAppliance RSS" href="/rss.xml">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=20260504-mobile-card-stack">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -334,8 +334,8 @@ nav {
   .dim-grid { grid-template-columns:1fr; }
 }
 </style>
-<link rel="preload" href="/styles-deferred.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/styles-deferred.css"></noscript>
+<link rel="preload" href="/styles-deferred.css?v=20260504-mobile-card-stack" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/styles-deferred.css?v=20260504-mobile-card-stack"></noscript>
 </head>
 <body>
 <div class="float-bar" id="floatBar" hidden aria-label="Active search filters">
@@ -835,12 +835,12 @@ nav {
   </div>
 </div>
 
-<script defer src="/scripts/sw-register.js"></script>
+<script defer src="/scripts/sw-register.js?v=20260504-mobile-card-stack"></script>
 <script defer src="/scripts/subscribe.js"></script>
 <script type="module">
 import '/scripts/search-core.js';
 import '/scripts/fit-visualization.js';
-import '/scripts/search-dom.js';
+import '/scripts/search-dom.js?v=20260504-mobile-card-stack';
 import '/scripts/saved-search-store.js';
 import '/scripts/compare-store.js';
 import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/product-card.js';

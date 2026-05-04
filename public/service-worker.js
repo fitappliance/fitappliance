@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 'use strict';
 
-const CACHE_VERSION = '5a3790b';
+const CACHE_VERSION = 'e69bbe0';
 const APP_SHELL_CACHE = `app-shell-${CACHE_VERSION}`;
 const STATIC_CACHE = `static-${CACHE_VERSION}`;
 const DATA_CACHE = `data-${CACHE_VERSION}`;
@@ -63,6 +63,14 @@ function isStaticRequest(request, url) {
   if (['script', 'style', 'image', 'font'].includes(request?.destination)) return true;
   return ['/scripts/', '/styles.css', '/og-images/', '/icons/', '/manifest.webmanifest']
     .some((prefix) => url.pathname === prefix || url.pathname.startsWith(prefix));
+}
+
+function isUiAssetRequest(request, url) {
+  if (!url) return false;
+  if (['script', 'style'].includes(request?.destination)) return true;
+  return url.pathname === '/styles.css'
+    || url.pathname === '/styles-deferred.css'
+    || url.pathname.startsWith('/scripts/');
 }
 
 function shouldHandleRequest(request, locationOrigin) {
@@ -159,6 +167,9 @@ async function handleServiceWorkerRequest({
   }
   if (isStaticRequest(request, url)) {
     const cache = await cacheStorage.open(cacheNames.static);
+    if (isUiAssetRequest(request, url)) {
+      return networkFirst({ request, cache, fetchFn, nowFn });
+    }
     return cacheFirstStaleWhileRevalidate({ request, cache, fetchFn, waitUntil, nowFn });
   }
   return fetchFn(request);

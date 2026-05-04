@@ -214,7 +214,7 @@ test('phase 42a search-ux: fridge presets expose 600, 700, and 900mm shortcuts',
 test('phase 45a search-ux: homepage wires facet shell, active chips, sort dropdown, and stylesheet hook', () => {
   const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
 
-  assert.match(indexHtml, /<link rel="stylesheet" href="\/styles\.css">/);
+  assert.match(indexHtml, /<link rel="stylesheet" href="\/styles\.css(?:\?[^"]+)?">/);
   assert.match(indexHtml, /data-facet-bar/);
   assert.match(indexHtml, /data-active-chips/);
   assert.match(indexHtml, /data-sort-dropdown/);

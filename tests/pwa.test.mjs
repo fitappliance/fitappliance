@@ -66,5 +66,5 @@ test('phase 33 pwa: sw-register is non-blocking and loaded with defer in homepag
   assert.match(registerSource, /navigator\.serviceWorker\.register/);
 
   const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
-  assert.match(indexHtml, /<script defer src="\/scripts\/sw-register\.js"><\/script>/);
+  assert.match(indexHtml, /<script defer src="\/scripts\/sw-register\.js(?:\?[^"]+)?"><\/script>/);
 });
