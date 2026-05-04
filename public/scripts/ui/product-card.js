@@ -49,6 +49,40 @@ function getPositivePrice(value) {
   return Number.isFinite(price) && price > 0 ? price : null;
 }
 
+function toDateStamp(value) {
+  const raw = String(value ?? '').trim();
+  if (!raw) return '';
+  const direct = raw.match(/^\d{4}-\d{2}-\d{2}/)?.[0] ?? '';
+  if (direct) return direct;
+  const parsed = new Date(raw);
+  return Number.isFinite(parsed.getTime()) ? parsed.toISOString().slice(0, 10) : '';
+}
+
+function getLatestRetailerCheckedDate(product) {
+  const retailers = Array.isArray(product?.retailers) ? product.retailers : [];
+  const dates = retailers
+    .filter((retailer) => isRetailerProductPageUrl(retailer?.url ?? retailer?.href))
+    .map((retailer) => toDateStamp(retailer?.verified_at ?? retailer?.verifiedAt))
+    .filter(Boolean)
+    .sort();
+  return dates.length > 0 ? dates[dates.length - 1] : '';
+}
+
+function buildDataTrustLine(product, capturedDate = '') {
+  const checkedDate = getLatestRetailerCheckedDate(product);
+  const specsDate = toDateStamp(capturedDate);
+  const linkedRetailerCount = (Array.isArray(product?.retailers) ? product.retailers : [])
+    .filter((retailer) => isRetailerProductPageUrl(retailer?.url ?? retailer?.href))
+    .length;
+  const bits = [];
+  if (checkedDate) {
+    bits.push(`${linkedRetailerCount > 1 ? 'Retailer links' : 'Retailer link'} checked ${checkedDate}`);
+  }
+  if (specsDate) bits.push(`Specs updated ${specsDate}`);
+  if (bits.length === 0) return '';
+  return `<div class="data-trust-line">${bits.map((bit) => `<span>${escHtml(bit)}</span>`).join('<span aria-hidden="true">·</span>')}</div>`;
+}
+
 const COLOR_SUFFIXES = [
   { tokens: ['black', 'stainless', 'steel'], label: 'Black Stainless Steel' },
   { tokens: ['matte', 'black'], label: 'Matte Black' },
@@ -246,6 +280,7 @@ export function buildCard(p, deps = {}) {
       </div>
       ${tcoHtml(p)}
       <div class="c-features">${p.features.join(' · ')}</div>
+      ${buildDataTrustLine(p, capturedDate)}
       <div class="c-footer">
         ${
           hasPrice
@@ -324,6 +359,7 @@ export function buildRow(p, deps = {}) {
       </div>
       <div style="font-size:12px;color:var(--green);margin-top:4px">⚡ ~$${annual}/yr energy · ${costLabel} ~$${total.toLocaleString()} · ${p.features.slice(0, 3).join(' · ')}</div>
       ${p.vented ? '<div style="font-size:12px;color:var(--red);margin-top:4px">⚠️ Vented — external ducting required (NCC 2022). Not for apartments.</div>' : ''}
+      ${buildDataTrustLine(p, capturedDate)}
     </div>
     <div class="p-row-actions">
       ${

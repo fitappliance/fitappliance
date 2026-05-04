@@ -122,6 +122,47 @@ test('display accuracy: priced list row may label ten-year total with price incl
   assert.doesNotMatch(html, /TCO/);
 });
 
+test('phase 52 data trust: list rows show retailer link checked date and specs update date', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct({
+    retailers: [
+      {
+        n: 'JB Hi-Fi',
+        url: 'https://www.jbhifi.com.au/products/hisense-srf7500wfh',
+        p: null,
+        verified_at: '2026-05-04T02:00:00.000Z'
+      }
+    ]
+  }), {
+    annualEnergyCost: () => '100',
+    lifetimeCost: () => 2000,
+    resolveRetailerUrl: (retailer) => retailer.url,
+    capturedDate: '2026-05-04'
+  });
+
+  assert.match(html, /class="data-trust-line"/);
+  assert.match(html, /Retailer link checked 2026-05-04/);
+  assert.match(html, /Specs updated 2026-05-04/);
+  assert.doesNotMatch(html, /Data Verified/);
+});
+
+test('phase 52 data trust: grid cards show specs update date without overclaiming verification', async () => {
+  const { buildCard } = await import(productCardModuleUrl);
+  const html = buildCard(makeProduct({
+    retailers: []
+  }), {
+    tcoHtml: () => '',
+    retailersHtml: () => '',
+    resolveRetailerUrl: (retailer) => retailer.url,
+    capturedDate: '2026-05-04'
+  });
+
+  assert.match(html, /class="data-trust-line"/);
+  assert.match(html, /Specs updated 2026-05-04/);
+  assert.doesNotMatch(html, /Retailer link checked/);
+  assert.doesNotMatch(html, /Data Verified/);
+});
+
 test('task 9.3 product-card: retailer link with null price renders without blanking row', async () => {
   const { buildRow } = await import(productCardModuleUrl);
   const html = buildRow(makeProduct({
