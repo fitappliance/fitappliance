@@ -172,7 +172,7 @@ test('phase 48 fit visualization: homepage has a mount and imports visualization
   const html = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
 
   assert.match(html, /data-fit-viz/);
-  assert.match(html, /import '\/scripts\/fit-visualization\.js';\s*import '\/scripts\/search-dom\.js';/);
+  assert.match(html, /import '\/scripts\/fit-visualization\.js(?:\?[^']+)?';\s*import '\/scripts\/search-dom\.js(?:\?[^']+)?';/);
   assert.match(html, /SearchDom\.renderFitVisualization/);
 });
 

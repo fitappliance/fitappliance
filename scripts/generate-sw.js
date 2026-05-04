@@ -61,6 +61,14 @@ function isStaticRequest(request, url) {
     .some((prefix) => url.pathname === prefix || url.pathname.startsWith(prefix));
 }
 
+function isUiAssetRequest(request, url) {
+  if (!url) return false;
+  if (['script', 'style'].includes(request?.destination)) return true;
+  return url.pathname === '/styles.css'
+    || url.pathname === '/styles-deferred.css'
+    || url.pathname.startsWith('/scripts/');
+}
+
 function shouldHandleRequest(request, locationOrigin) {
   if (request?.method !== 'GET') return false;
   const url = parseRequestUrl(request, locationOrigin);
@@ -155,6 +163,9 @@ async function handleServiceWorkerRequest({
   }
   if (isStaticRequest(request, url)) {
     const cache = await cacheStorage.open(cacheNames.static);
+    if (isUiAssetRequest(request, url)) {
+      return networkFirst({ request, cache, fetchFn, nowFn });
+    }
     return cacheFirstStaleWhileRevalidate({ request, cache, fetchFn, waitUntil, nowFn });
   }
   return fetchFn(request);
@@ -266,6 +277,14 @@ function isStaticRequest(request, url) {
     .some((prefix) => url.pathname === prefix || url.pathname.startsWith(prefix));
 }
 
+function isUiAssetRequest(request, url) {
+  if (!url) return false;
+  if (['script', 'style'].includes(request?.destination)) return true;
+  return url.pathname === '/styles.css'
+    || url.pathname === '/styles-deferred.css'
+    || url.pathname.startsWith('/scripts/');
+}
+
 function shouldHandleRequest(request, locationOrigin) {
   if (request?.method !== 'GET') return false;
   const url = parseRequestUrl(request, locationOrigin);
@@ -360,6 +379,9 @@ async function handleServiceWorkerRequest({
   }
   if (isStaticRequest(request, url)) {
     const cache = await cacheStorage.open(cacheNames.static);
+    if (isUiAssetRequest(request, url)) {
+      return networkFirst({ request, cache, fetchFn, nowFn });
+    }
     return cacheFirstStaleWhileRevalidate({ request, cache, fetchFn, waitUntil, nowFn });
   }
   return fetchFn(request);
@@ -427,6 +449,7 @@ module.exports = {
   cleanupVersionedCaches,
   handleServiceWorkerRequest,
   isVersionedCacheName,
+  isUiAssetRequest,
   networkFirst,
   shouldHandleRequest,
   readExistingCacheVersion,

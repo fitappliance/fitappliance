@@ -101,7 +101,7 @@ test('phase 43a sw: HTML requests fall back to cache when network fails', async 
   assert.equal(result.label, 'cached-html');
 });
 
-test('phase 43a sw: static cache hits return immediately and update in the background', async () => {
+test('hotfix sw: UI script and style assets prefer network over stale static cache', async () => {
   const req = request('https://www.fitappliance.com.au/scripts/sw-register.js', {
     destination: 'script'
   });
@@ -119,10 +119,33 @@ test('phase 43a sw: static cache hits return immediately and update in the backg
     cacheNames
   });
 
-  assert.equal(result.label, 'cached-script');
+  assert.equal(result.label, 'network-script');
+  assert.equal(background.length, 0);
+  assert.deepEqual(cacheStorage.puts, [{ cacheName: cacheNames.static, url: req.url, response: 'network-script:clone' }]);
+});
+
+test('phase 43a sw: non-UI static cache hits return immediately and update in the background', async () => {
+  const req = request('https://www.fitappliance.com.au/og-images/lg-fridge.png', {
+    destination: 'image'
+  });
+  const cacheStorage = createCacheStorage({
+    [cacheNames.static]: new Map([[req.url, response('cached-image')]])
+  });
+  const background = [];
+
+  const result = await handleServiceWorkerRequest({
+    request: req,
+    cacheStorage,
+    fetchFn: async () => response('network-image'),
+    locationOrigin: 'https://www.fitappliance.com.au',
+    waitUntil: (promise) => background.push(promise),
+    cacheNames
+  });
+
+  assert.equal(result.label, 'cached-image');
   assert.equal(background.length, 1);
   await Promise.all(background);
-  assert.deepEqual(cacheStorage.puts, [{ cacheName: cacheNames.static, url: req.url, response: 'network-script:clone' }]);
+  assert.deepEqual(cacheStorage.puts, [{ cacheName: cacheNames.static, url: req.url, response: 'network-image:clone' }]);
 });
 
 test('phase 43a sw: data JSON uses the data cache namespace', async () => {

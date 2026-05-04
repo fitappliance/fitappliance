@@ -59,22 +59,31 @@ test('phase 43a critical-css: below-fold selectors move to deferred CSS', () => 
 
 test('phase 43a critical-css: deferred stylesheet loads with preload and noscript fallback', () => {
   const html = readIndex();
-  assert.equal((html.match(/rel="preload" href="\/styles-deferred\.css" as="style"/g) ?? []).length, 1);
+  assert.equal((html.match(/rel="preload" href="\/styles-deferred\.css(?:\?[^"]+)?" as="style"/g) ?? []).length, 1);
   assert.match(html, /onload="this\.onload=null;this\.rel='stylesheet'"/);
-  assert.match(html, /<noscript><link rel="stylesheet" href="\/styles-deferred\.css"><\/noscript>/);
+  assert.match(html, /<noscript><link rel="stylesheet" href="\/styles-deferred\.css(?:\?[^"]+)?"><\/noscript>/);
 });
 
 test('phase 43a critical-css: inline critical CSS appears before deferred preload', () => {
   const html = readIndex();
   const inlineIndex = html.indexOf('<style>');
-  const preloadIndex = html.indexOf('href="/styles-deferred.css"');
+  const preloadIndex = html.indexOf('href="/styles-deferred.css');
   assert.ok(inlineIndex >= 0, 'inline critical CSS should exist');
   assert.ok(preloadIndex >= 0, 'deferred preload should exist');
   assert.ok(inlineIndex < preloadIndex, 'critical inline CSS should be parsed before preload');
 });
 
 test('phase 43a critical-css: existing small stylesheet hook remains available', () => {
-  assert.match(readIndex(), /<link rel="stylesheet" href="\/styles\.css">/);
+  assert.match(readIndex(), /<link rel="stylesheet" href="\/styles\.css(?:\?[^"]+)?">/);
+});
+
+test('hotfix mobile cache: homepage UI assets carry version parameters to escape stale service-worker caches', () => {
+  const html = readIndex();
+
+  assert.match(html, /href="\/styles\.css\?v=[^"]+"/);
+  assert.match(html, /href="\/styles-deferred\.css\?v=[^"]+"/);
+  assert.match(html, /src="\/scripts\/sw-register\.js\?v=[^"]+"/);
+  assert.match(html, /import '\/scripts\/search-dom\.js\?v=[^']+'/);
 });
 
 test('phase 43a critical-css: homepage class names are covered by inline, existing, or deferred CSS', () => {
