@@ -6,7 +6,7 @@
 <meta name="commission-factory-verification" content="befda212a540475694f6b21f658f21f9" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FitAppliance | Appliance Fit Checker for Australian Homes</title>
-<meta name="description" content="Check appliance fit for Australian homes with brand-specific clearance rules, doorway access notes and energy data.">
+<meta name="description" content="Check appliance fit for Australian homes with practical clearance buffers, doorway access notes and energy data.">
 <meta name="theme-color" content="#131210">
 <meta name="article:modified_time" content="2026-04-18T00:00:00Z">
 <link rel="canonical" href="https://www.fitappliance.com.au/">
@@ -379,9 +379,9 @@ nav {
   <div class="hero-glow-1"></div>
   <div class="hero-glow-2"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow"><span></span> <span id="heroEyebrowText">Appliance fit, with clearance built in</span></div>
+    <div class="hero-eyebrow"><span></span> <span id="heroEyebrowText">Appliance fit, with practical clearance built in</span></div>
     <h1 id="heroTitle">Measure once. Find the appliances that actually fit.</h1>
-    <p class="hero-sub" id="heroSub">Enter your cavity dimensions and narrow the list with brand-specific airflow, door-swing and access checks.</p>
+    <p class="hero-sub" id="heroSub">Enter your cavity dimensions and narrow the list with practical airflow buffers, door-swing and access checks.</p>
 
     <div class="search-card" id="searchForm">
       <div class="sc-head">
@@ -454,7 +454,7 @@ nav {
 
       <div class="sc-hint">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="#C47A1A" stroke-width="1.4"/><path d="M7.5 7v4M7.5 5v.5" stroke="#C47A1A" stroke-width="1.4" stroke-linecap="round"/></svg>
-        <span>Dimensions are your raw cavity. We subtract <strong>each brand's</strong> ventilation clearances. Samsung needs 100mm top clearance, while Haier needs 25.4mm on every side.</span>
+        <span>Dimensions are your raw cavity. The default fit check uses a practical clearance buffer; brand-specific manufacturer figures are shown as advisory notes so you can verify the model manual before buying.</span>
       </div>
 
       <button class="btn-search" onclick="doSearch()">
@@ -469,7 +469,7 @@ nav {
 
 <!-- TRUST STRIP -->
 <div class="trust-strip">
-  <div class="trust-item"><strong>Brand-specific</strong> clearance rules</div>
+  <div class="trust-item"><strong>Practical</strong> clearance buffer</div>
   <div class="trust-item"><strong>Doorway</strong> delivery check</div>
   <div class="trust-item"><strong>Energy</strong> star ratings</div>
   <div class="trust-item"><strong>Retailer links</strong> where available</div>
@@ -485,7 +485,7 @@ nav {
 
   <!-- Disclaimer -->
   <div class="disclaimer" id="disclaimerBox">
-    <strong>Dimensions shown are after each brand's clearance rules.</strong> Always verify ventilation requirements in the manufacturer's installation manual before purchase. Door swing and delivery access are estimates — measure your specific space.
+    <strong>Dimensions are checked with a practical clearance buffer by default.</strong> Brand-specific manufacturer clearance figures are advisory notes. Always verify ventilation requirements in the model installation manual before purchase. Door swing and delivery access are estimates — measure your specific space.
   </div>
   <div id="freshness-banner" class="freshness-banner" hidden></div>
 
@@ -575,7 +575,7 @@ nav {
       <!-- Fit notes -->
       <div class="scard">
         <div class="scard-title">Before you buy</div>
-        <p style="font-size:13px;color:var(--ink-3);line-height:1.65;margin:0">Use your tightest cavity measurements, then check the model manual before ordering. Retailer links and prices appear only where feed data is available.</p>
+        <p style="font-size:13px;color:var(--ink-3);line-height:1.65;margin:0">Use your tightest cavity measurements, then check the model manual before ordering. Retailer links appear only where product-page links have been verified; prices appear only where separately captured.</p>
       </div>
 
       <div class="scard">
@@ -665,13 +665,13 @@ nav {
       </div>
       <div class="how-item">
         <div class="how-num">2</div>
-        <h3>Brand-specific clearance math</h3>
-        <p>We subtract each brand's ventilation spec. Samsung needs 100mm top clearance, while some other brands need much less.</p>
+        <h3>Practical fit math, with manual checks</h3>
+        <p>The default search uses a practical clearance buffer for real-world measurement tolerance. Brand-specific manufacturer figures are shown as advisory notes, not as a hidden hard filter.</p>
       </div>
       <div class="how-item">
         <div class="how-num">3</div>
-        <h3>Compare price and running cost</h3>
-        <p>We show available retailer price data and estimated lifetime energy cost side by side.</p>
+        <h3>Check retailer links and running cost</h3>
+        <p>We show verified retailer product links where available, plus estimated energy running cost. Product prices are shown only when we have separately captured price data.</p>
       </div>
     </div>
   </div>
@@ -684,7 +684,7 @@ nav {
   <div class="compliance-inner">
     <div class="comp-item" id="accc-compliance">
       <h4>Affiliate Disclosure</h4>
-      <p>Affiliate relationships are disclosed next to purchase links where they appear. Rankings are based on fit, energy rating, price and retailer availability signals, not commission rates.</p>
+      <p>Affiliate relationships are disclosed next to purchase links where they appear. Rankings are based on fit, energy rating, user-selected sorting and verified retailer-link signals, not commission rates.</p>
     </div>
     <div class="comp-item">
       <h4>NCC 2022 Dryer Notice</h4>
@@ -692,7 +692,7 @@ nav {
     </div>
     <div class="comp-item" id="data-sources">
       <h4>Data Sources</h4>
-      <p>Dimensional and energy data come from Australian Government Energy Rating records and manufacturer/OEM manuals where available. Retailer links and prices are shown only when feed data is available.</p>
+      <p>Dimensional and energy data come from Australian Government Energy Rating records and manufacturer/OEM manuals where available. Retailer product links are shown only when verified; prices appear only when separately captured.</p>
     </div>
     <div class="comp-item">
       <h4>Privacy &amp; Cookies</h4>
@@ -781,7 +781,7 @@ nav {
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 FitAppliance.com.au — All prices AUD incl. GST</span>
+    <span>© 2026 FitAppliance.com.au — Retailer links and energy estimates are shown where verified</span>
     <span>
       <a href="/affiliate-disclosure">Affiliate disclosure</a> · <a href="/privacy-policy">Privacy</a> · <a href="/privacy-policy">Terms</a> · <a href="/methodology">Methodology</a> · <a href="/about/editorial-standards">Editorial standards</a> · <a href="/subscribe">Newsletter</a>
       &nbsp;|&nbsp; We earn a commission when you purchase via our links.
@@ -1807,7 +1807,7 @@ function buildRetailerFilterBannerHtml() {
   }
   return `
     <div class="retailer-filter-banner">
-      <span>Showing ${currentMatchRows.length} products available at major Australian retailers (JB Hi-Fi, Harvey Norman, The Good Guys, Appliances Online, Bing Lee).</span>
+      <span>Showing ${currentMatchRows.length} products with verified retailer product links from major Australian retailers (JB Hi-Fi, Harvey Norman, The Good Guys, Appliances Online, Bing Lee).</span>
       <button type="button" class="secondary" data-show-all-products>Show all matching products</button>
     </div>`;
 }
@@ -1920,8 +1920,13 @@ function renderResults() {
 /* ── TCO HTML ── */
 function tcoHtml(p) {
   const annual = annualEnergyCost(p.kwh_year);
-  const total  = Math.round(lifetimeCost(p.price, p.kwh_year));
-  return `<div class="tco-row">~$${annual}/yr energy · <strong>10yr TCO: ~$${total.toLocaleString()}</strong></div>`;
+  const price = Number(p?.price);
+  const hasPrice = Number.isFinite(price) && price > 0;
+  const total = hasPrice
+    ? Math.round(lifetimeCost(price, p.kwh_year))
+    : Math.round(Number(annual) * 10);
+  const label = hasPrice ? '10yr total incl. price' : '10yr energy';
+  return `<div class="tco-row">~$${annual}/yr energy · <strong>${label}: ~$${total.toLocaleString()}</strong></div>`;
 }
 
 function extractModelSku(modelString) {
@@ -2151,9 +2156,9 @@ function renderCompareTable(products) {
       render: p => `${p.stars}★ · ${p.kwh_year ?? '-'} kWh/yr`
     },
     {
-      label: 'Estimated 10yr TCO',
-      key: p => String(Math.round(lifetimeCost(p.price, p.kwh_year))),
-      render: p => formatPrice(Math.round(lifetimeCost(p.price, p.kwh_year)))
+      label: 'Estimated 10yr energy',
+      key: p => String(Math.round(Number(p.kwh_year ?? 0) * TARIFF * 10)),
+      render: p => formatPrice(Math.round(Number(p.kwh_year ?? 0) * TARIFF * 10))
     },
     {
       label: 'Door Swing',
@@ -2505,7 +2510,7 @@ updateFloatBarSummary();
       "@id": "https://www.fitappliance.com.au/#website",
       "url": "https://www.fitappliance.com.au",
       "name": "FitAppliance",
-      "description": "Appliance fit checker for Australian homes, with brand-specific clearance rules, doorway access notes and energy data.",
+      "description": "Appliance fit checker for Australian homes, with practical clearance buffers, doorway access notes and energy data.",
       "inLanguage": "en-AU",
       "potentialAction": {
         "@type": "SearchAction",
@@ -2526,7 +2531,7 @@ updateFloatBarSummary();
       "name": "FitAppliance — Appliance Size Finder",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Web",
-      "description": "Check cavity dimensions against fridges, washing machines, dishwashers and dryers for Australian homes, with brand-specific clearance rules applied.",
+      "description": "Check cavity dimensions against fridges, washing machines, dishwashers and dryers for Australian homes, with practical clearance buffers and advisory manufacturer notes.",
       "url": "https://www.fitappliance.com.au",
       "inLanguage": "en-AU",
       "offers": {
@@ -2542,7 +2547,7 @@ updateFloatBarSummary();
         }
       },
       "featureList": [
-        "Brand-specific ventilation clearance calculation",
+        "Practical ventilation clearance buffer",
         "2169 Australian appliance models",
         "Energy star rating filter",
         "Delivery doorway access check",
@@ -2566,7 +2571,7 @@ updateFloatBarSummary();
       "@type": "HowTo",
       "@id": "https://www.fitappliance.com.au/#howto-cavity-measurement",
       "name": "How to measure your kitchen cavity for a new fridge",
-      "description": "A 5-step guide to measuring your fridge cavity correctly, accounting for brand-specific ventilation clearances.",
+      "description": "A 5-step guide to measuring your fridge cavity correctly, using a practical clearance buffer and checking the model manual.",
       "totalTime": "PT10M",
       "tool": [
         { "@type": "HowToTool", "name": "Tape measure" },
@@ -2595,8 +2600,8 @@ updateFloatBarSummary();
         },
         {
           "@type": "HowToStep",
-          "name": "Apply brand clearance requirements",
-          "text": "Subtract brand-specific side, rear, and top clearances before selecting your appliance."
+          "name": "Check clearance guidance",
+          "text": "Use the practical clearance buffer for initial fit, then confirm side, rear and top clearance in the model manual before selecting your appliance."
         }
       ]
     },
@@ -2608,7 +2613,7 @@ updateFloatBarSummary();
           "name": "How much clearance does a Samsung fridge need in Australia?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Samsung fridges require 50mm clearance on each side, 50mm rear clearance, and 100mm top clearance according to their Australian installation manual."
+            "text": "FitAppliance shows Samsung fridge planning guidance of 50mm at each side, 50mm rear clearance and 100mm top clearance. Confirm the exact model manual before purchase."
           }
         },
         {

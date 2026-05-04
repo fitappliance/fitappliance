@@ -51,7 +51,7 @@ test('phase 48 retailer-only UI: facet bar renders an enabled retailer-only togg
   const input = window.document.querySelector('[data-retailer-only]');
   assert.ok(input);
   assert.equal(input.checked, true);
-  assert.match(input.closest('.facet-toggle')?.textContent ?? '', /major Australian retailers/i);
+  assert.match(input.closest('.facet-toggle')?.textContent ?? '', /verified retailer links/i);
   input.checked = false;
   input.dispatchEvent(new window.Event('change', { bubbles: true }));
   assert.deepEqual(events.at(-1), { type: 'retailerOnly', value: false });
@@ -73,7 +73,7 @@ test('phase 48 retailer-only UI: results banner explains the curated retailer po
 
   const banner = window.document.querySelector('.retailer-filter-banner');
   assert.ok(banner);
-  assert.match(banner.textContent, /Showing 1 products available at major Australian retailers/i);
+  assert.match(banner.textContent, /Showing 1 products with verified retailer product links/i);
   banner.querySelector('[data-show-all-products]').click();
   assert.deepEqual(clicks, ['show-all']);
 });

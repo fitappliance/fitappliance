@@ -87,6 +87,41 @@ test('task 9.3 product-card: no-price list row renders shopping fallback and dis
   assert.match(html, /google\.com\.au\/search/);
 });
 
+test('display accuracy: no-price list row labels ten-year estimate as energy, not TCO', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct({
+    price: null,
+    kwh_year: 333,
+    retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/hisense-srf7500wfh', p: null }]
+  }), {
+    annualEnergyCost: () => '100',
+    lifetimeCost: () => {
+      throw new Error('lifetimeCost should not be used without a verified product price');
+    },
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /10yr energy ~\$1,000/);
+  assert.doesNotMatch(html, /TCO/);
+  assert.doesNotMatch(html, /10yr total/);
+});
+
+test('display accuracy: priced list row may label ten-year total with price included', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct({
+    price: 1200,
+    kwh_year: 333,
+    retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/hisense-srf7500wfh', p: 1200 }]
+  }), {
+    annualEnergyCost: () => '100',
+    lifetimeCost: () => 2200,
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /10yr total ~\$2,200/);
+  assert.doesNotMatch(html, /TCO/);
+});
+
 test('task 9.3 product-card: retailer link with null price renders without blanking row', async () => {
   const { buildRow } = await import(productCardModuleUrl);
   const html = buildRow(makeProduct({
@@ -294,45 +329,23 @@ test('hotfix result row layout: list row uses a classed action footer instead of
   assert.doesNotMatch(html, /style="display:flex;gap:6px"/);
 });
 
-test('task 10 rebate: isRebateEligible returns true for stars >= 4', async () => {
-  const { isRebateEligible } = await import(productCardModuleUrl);
-
-  assert.equal(isRebateEligible({ stars: 4 }), true);
-  assert.equal(isRebateEligible({ stars: 5 }), true);
-  assert.equal(isRebateEligible({ stars: 6 }), true);
-});
-
-test('task 10 rebate: isRebateEligible returns false for stars < 4', async () => {
-  const { isRebateEligible } = await import(productCardModuleUrl);
-
-  assert.equal(isRebateEligible({ stars: 3 }), false);
-  assert.equal(isRebateEligible({ stars: 1 }), false);
-});
-
-test('task 10 rebate: isRebateEligible returns false for non-number values', async () => {
-  const { isRebateEligible } = await import(productCardModuleUrl);
-
-  assert.equal(isRebateEligible({ stars: '5' }), false);
-  assert.equal(isRebateEligible({ stars: null }), false);
-  assert.equal(isRebateEligible({}), false);
-});
-
-test('task 10 rebate: warningsHtml includes green badge for eligible products', async () => {
+test('display accuracy: warningsHtml does not claim rebate eligibility from star rating alone', async () => {
   const { warningsHtml } = await import(productCardModuleUrl);
   const html = warningsHtml(makeProduct({ stars: 5, door_swing_mm: 0 }));
 
-  assert.ok(html.includes('card-warning-green'), 'green badge present for 5-star product');
-  assert.ok(html.includes('energy rebate'), 'rebate text present');
+  assert.ok(!html.includes('card-warning-green'), 'no rebate badge for 5-star product');
+  assert.ok(!/rebate/i.test(html), 'rebate text must not be inferred from star rating alone');
 });
 
-test('task 10 rebate: warningsHtml excludes green badge for ineligible products', async () => {
+test('display accuracy: warningsHtml still shows installation warnings without rebate copy', async () => {
   const { warningsHtml } = await import(productCardModuleUrl);
-  const html = warningsHtml(makeProduct({ stars: 3, door_swing_mm: 0 }));
+  const html = warningsHtml(makeProduct({ stars: 3, door_swing_mm: 600 }));
 
-  assert.ok(!html.includes('card-warning-green'), 'no green badge for 3-star product');
+  assert.match(html, /Requires 600mm door swing clearance/);
+  assert.doesNotMatch(html, /rebate/i);
 });
 
-test('task 10 rebate: buildCard output includes green badge for 5-star products', async () => {
+test('display accuracy: buildCard output does not add rebate badges for high-star products', async () => {
   const { buildCard } = await import(productCardModuleUrl);
   const html = buildCard(makeProduct({ stars: 5, door_swing_mm: 0, retailers: [] }), {
     tcoHtml: () => '',
@@ -340,7 +353,8 @@ test('task 10 rebate: buildCard output includes green badge for 5-star products'
     resolveRetailerUrl: () => '#'
   });
 
-  assert.ok(html.includes('card-warning-green'));
+  assert.ok(!html.includes('card-warning-green'));
+  assert.doesNotMatch(html, /rebate/i);
 });
 
 test('task 15 price-badge: returns empty string when retailers are unavailable', async () => {

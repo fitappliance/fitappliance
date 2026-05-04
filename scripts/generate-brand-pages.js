@@ -166,7 +166,7 @@ function buildFAQJsonLd({ brand, catLabel, side, rear, top }) {
         name: `How much clearance does a ${brand} ${unit} need in Australia?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `${brand} ${unit}s require ${side}mm side clearance, ${rear}mm rear clearance, and ${top}mm top clearance per manufacturer installation guidelines. Tight ventilation can affect appliance performance and may affect warranty support.`
+          text: `FitAppliance currently shows ${side}mm side clearance, ${rear}mm rear clearance, and ${top}mm top clearance as planning guidance for ${brand} ${unit}s. Always confirm the exact model installation manual before purchase.`
         }
       },
       {
@@ -174,7 +174,7 @@ function buildFAQJsonLd({ brand, catLabel, side, rear, top }) {
         name: `Does a ${brand} ${unit} need more clearance than other brands?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `${brand} requires ${top}mm top clearance for ${unit}s. ${top > 50 ? `This is above average — ensure cabinetry above leaves at least ${top}mm gap.` : 'This aligns with typical Australian installation requirements.'} Always confirm with the specific model installation manual before fitting.`
+          text: `This guide uses ${top}mm top clearance as the current planning figure for ${brand} ${unit}s. ${top > 50 ? `That is above the default planning buffer, so check cabinetry above the appliance carefully.` : 'That sits close to the default planning buffer.'} Always confirm with the specific model installation manual before fitting.`
         }
       },
       {
@@ -290,7 +290,7 @@ function buildBrandPageHtml({
   const title = `${brand} ${categoryHeading} Clearance Requirements Australia | FitAppliance`;
   const description =
     `${brand} ${categoryMeta.labelSingular} clearance guide for Australian homes. ` +
-    `${side}mm side, ${rear}mm rear and ${top}mm top clearance. Browse ${count} models and compare the cavity numbers before you buy.`;
+    `${side}mm side, ${rear}mm rear and ${top}mm top planning figures. Browse ${count} models and compare the cavity numbers before you buy.`;
   const canonical = `${SITE_ORIGIN}/brands/${slug}`;
   const heroPngPath = `/og-images/${slugify(brandRaw)}-${categoryMeta.slug}.png`;
   const heroWebpPath = `/og-images/${slugify(brandRaw)}-${categoryMeta.slug}.webp`;
@@ -648,7 +648,7 @@ ${headMeta}
       </ul>
     </section>
     <footer>
-      <p>Source: FitAppliance clearance and model coverage dataset for Australia.</p>
+      <p>Source: FitAppliance clearance planning dataset for Australia. Always confirm model-specific installation requirements with the manufacturer manual.</p>
       <p><a href="/methodology">Methodology</a> · <a href="/about/editorial-standards">Editorial standards</a></p>
     </footer>
   </main>

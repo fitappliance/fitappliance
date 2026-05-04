@@ -15,16 +15,18 @@ It does **not** edit catalog data. That is intentional: the audit is a triage la
 
 ## Current Baseline
 
-After the Phase 50 data cleanup, the report is expected to show:
+After the 2026-05-04 catalog sync and display-accuracy review, the report is expected to show:
 
-- Products scanned: `2170`
+- Products scanned: `2188`
 - Blockers: `0`
 - Invalid retailer product URLs: `0`
 - Stale price rows: `0`
 - Brand duplicate groups: `0`
-- Accuracy grades: `B=36`, `C=2134`
+- Accuracy grades: `B=66`, `C=2122`
 
 The remaining `C` rows are primarily historical catalog entries that do not yet carry field-level evidence metadata. That is a data provenance backlog, not a runtime rendering blocker. New manual curation should improve rows by adding verified product-page URLs, `verified_at`, and confidence/source evidence rather than guessing missing fields.
+
+There are currently no positive verified retailer price rows, so UI copy must avoid implying live prices or purchase-price-inclusive total cost. Display-layer copy guardrails live in `tests/display-accuracy-copy.test.mjs` and are summarized in `docs/display-data-accuracy-audit.md`.
 
 ## What It Checks
 
