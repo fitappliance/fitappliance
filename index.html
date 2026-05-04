@@ -14,7 +14,7 @@
 <link rel="alternate" hreflang="x-default" href="https://www.fitappliance.com.au/">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="FitAppliance RSS" href="/rss.xml">
-<link rel="stylesheet" href="/styles.css?v=20260504-mobile-list-row">
+<link rel="stylesheet" href="/styles.css?v=20260504-mobile-trust">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -329,13 +329,19 @@ nav {
   .hero { padding:48px 16px 80px; }
   .cat-pills { gap:5px; }
   .cat-pill { font-size:12px;padding:7px 11px; }
+  .btn-search--primary {
+    position: sticky;
+    bottom: 12px;
+    z-index: 20;
+    box-shadow: 0 12px 32px rgba(181,90,44,.32);
+  }
 }
 @media(max-width:420px){
   .dim-grid { grid-template-columns:1fr; }
 }
 </style>
-<link rel="preload" href="/styles-deferred.css?v=20260504-mobile-list-row" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/styles-deferred.css?v=20260504-mobile-list-row"></noscript>
+<link rel="preload" href="/styles-deferred.css?v=20260504-mobile-trust" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/styles-deferred.css?v=20260504-mobile-trust"></noscript>
 </head>
 <body>
 <div class="float-bar" id="floatBar" hidden aria-label="Active search filters">
@@ -400,15 +406,15 @@ nav {
       <div class="dim-grid">
         <div class="field">
           <label for="inW">Cavity Width</label>
-          <div class="field-wrap"><input type="number" id="inW" aria-label="Width millimeters" placeholder="1020" min="100" max="2000"><span class="field-unit">mm</span></div>
+          <div class="field-wrap"><input type="number" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="inW" aria-label="Width millimeters" placeholder="1020" min="100" max="2000"><span class="field-unit">mm</span></div>
         </div>
         <div class="field">
           <label for="inH">Cavity Height</label>
-          <div class="field-wrap"><input type="number" id="inH" aria-label="Height millimeters" placeholder="1910" min="100" max="3000"><span class="field-unit">mm</span></div>
+          <div class="field-wrap"><input type="number" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="inH" aria-label="Height millimeters" placeholder="1910" min="100" max="3000"><span class="field-unit">mm</span></div>
         </div>
         <div class="field">
           <label for="inD">Cavity Depth</label>
-          <div class="field-wrap"><input type="number" id="inD" aria-label="Depth millimeters" placeholder="800" min="100" max="1500"><span class="field-unit">mm</span></div>
+          <div class="field-wrap"><input type="number" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="inD" aria-label="Depth millimeters" placeholder="800" min="100" max="1500"><span class="field-unit">mm</span></div>
         </div>
       </div>
 
@@ -440,7 +446,7 @@ nav {
       <div class="adv-fields" id="advFields">
         <div class="field">
           <label>Narrowest doorway width</label>
-          <div class="field-wrap"><input type="number" id="inDoor" placeholder="820" min="500" max="1500"><span class="field-unit">mm</span></div>
+          <div class="field-wrap"><input type="number" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="inDoor" placeholder="820" min="500" max="1500"><span class="field-unit">mm</span></div>
         </div>
         <div>
           <label style="display:block;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;">Dwelling type</label>
@@ -457,7 +463,7 @@ nav {
         <span>Dimensions are your raw cavity. The default fit check uses a practical clearance buffer; brand-specific manufacturer figures are shown as advisory notes so you can verify the model manual before buying.</span>
       </div>
 
-      <button class="btn-search" onclick="doSearch()">
+      <button class="btn-search btn-search--primary" onclick="doSearch()">
         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="white" stroke-width="1.8"/><path d="M12 12l3.5 3.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
         <span id="heroCtaText">Find fitting models</span>
       </button>
@@ -835,12 +841,12 @@ nav {
   </div>
 </div>
 
-<script defer src="/scripts/sw-register.js?v=20260504-mobile-list-row"></script>
+<script defer src="/scripts/sw-register.js?v=20260504-mobile-trust"></script>
 <script defer src="/scripts/subscribe.js"></script>
 <script type="module">
 import '/scripts/search-core.js';
 import '/scripts/fit-visualization.js';
-import '/scripts/search-dom.js?v=20260504-mobile-list-row';
+import '/scripts/search-dom.js?v=20260504-mobile-trust';
 import '/scripts/saved-search-store.js';
 import '/scripts/compare-store.js';
 import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/product-card.js';

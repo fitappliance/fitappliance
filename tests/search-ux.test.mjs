@@ -238,6 +238,26 @@ test('phase 45b search-ux: mobile filter sheet is wired to active facet and resu
   assert.match(indexHtml, /resultCount:\s*currentMatchRows\.length/);
 });
 
+test('phase 52 mobile UX: homepage measurement inputs request numeric mobile keyboards', () => {
+  const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+
+  for (const id of ['inW', 'inH', 'inD', 'inDoor']) {
+    const input = indexHtml.match(new RegExp(`<input[^>]+id="${id}"[^>]*>`))?.[0] ?? '';
+    assert.match(input, /type="number"/, `${id} should remain a numeric input`);
+    assert.match(input, /inputmode="numeric"/, `${id} should request the numeric mobile keyboard`);
+    assert.match(input, /pattern="\[0-9\]\*"/, `${id} should hint digit-only input on mobile`);
+    assert.match(input, /autocomplete="off"/, `${id} should avoid stale browser autofill values`);
+  }
+});
+
+test('phase 52 mobile UX: primary fit CTA is sticky in the mobile thumb zone', () => {
+  const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+
+  assert.match(indexHtml, /<button class="btn-search btn-search--primary" onclick="doSearch\(\)">/);
+  assert.match(indexHtml, /@media\(max-width:660px\)\{[\s\S]*\.btn-search--primary\s*\{[\s\S]*position:\s*sticky/);
+  assert.match(indexHtml, /@media\(max-width:660px\)\{[\s\S]*\.btn-search--primary\s*\{[\s\S]*bottom:\s*12px/);
+});
+
 test('phase 45b search-ux: clear all resets facet state without touching dimension filters', () => {
   const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
 
