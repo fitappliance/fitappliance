@@ -164,7 +164,7 @@ test('phase 47 guides: guide-specific factual anchors are present', () => {
     'dishwasher-cavity-sizing.html': [/600 mm/i, /450 mm/i, /plumbing/i, /electrical/i],
     'dryer-ventilation-guide.html': [/vented/i, /heat pump/i, /condenser/i, /stacking/i],
     'washing-machine-doorway-access.html': [/doorway/i, /trolley/i, /lift/i, /stair/i],
-    'appliance-fit-sizing-handbook.html': [/2,170/i, /four categories/i, /FitAppliance/i, /5 mm/i]
+    'appliance-fit-sizing-handbook.html': [/2,188/i, /four categories/i, /FitAppliance/i, /5 mm/i]
   };
 
   for (const [fileName, patterns] of Object.entries(expectations)) {
