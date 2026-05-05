@@ -87,7 +87,7 @@ test('task 9.3 product-card: no-price list row renders shopping fallback and dis
   assert.match(html, /google\.com\.au\/search/);
 });
 
-test('display accuracy: no-price list row labels ten-year estimate as energy, not TCO', async () => {
+test('display accuracy: no-price list row shows annual energy only, not ten-year estimates', async () => {
   const { buildRow } = await import(productCardModuleUrl);
   const html = buildRow(makeProduct({
     price: null,
@@ -101,12 +101,13 @@ test('display accuracy: no-price list row labels ten-year estimate as energy, no
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /10yr energy ~\$1,000/);
+  assert.match(html, /~\$100\/yr energy/);
+  assert.doesNotMatch(html, /10yr energy/);
   assert.doesNotMatch(html, /TCO/);
   assert.doesNotMatch(html, /10yr total/);
 });
 
-test('display accuracy: priced list row may label ten-year total with price included', async () => {
+test('display accuracy: priced list row also omits ten-year total copy', async () => {
   const { buildRow } = await import(productCardModuleUrl);
   const html = buildRow(makeProduct({
     price: 1200,
@@ -118,7 +119,9 @@ test('display accuracy: priced list row may label ten-year total with price incl
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /10yr total ~\$2,200/);
+  assert.match(html, /~\$100\/yr energy/);
+  assert.doesNotMatch(html, /10yr total/);
+  assert.doesNotMatch(html, /10yr energy/);
   assert.doesNotMatch(html, /TCO/);
 });
 

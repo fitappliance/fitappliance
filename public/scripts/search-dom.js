@@ -895,14 +895,7 @@
     const kwh = Number(match?.kwh_year ?? match?.energy_kwh_year ?? match?.kwh);
     if (Number.isFinite(kwh) && kwh > 0) {
       const annual = Math.round(kwh * 0.3);
-      const prices = getRetailerSummaries(match)
-        .map((retailer) => retailer.price)
-        .filter((price) => Number.isFinite(price) && price > 0)
-        .sort((left, right) => left - right);
       bits.push(`~${formatAud(annual)}/yr`);
-      bits.push(prices.length > 0
-        ? `10yr total from ${formatAud(prices[0] + annual * 10)}`
-        : `10yr energy ~${formatAud(annual * 10)}`);
     }
     bits.push(...getFeatureBits(match));
     return bits.length > 0 ? `<div class="card-energy-line">${escHtml(bits.join(' · '))}</div>` : '';

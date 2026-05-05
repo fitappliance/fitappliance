@@ -46,6 +46,8 @@ test('phase 48 card redesign: buildCardHtml uses ecommerce three-column card str
   assert.match(html, /class="card-fit-row"/);
   assert.match(html, /class="card-specs-row"/);
   assert.match(html, /class="card-energy-line"/);
+  assert.doesNotMatch(html, /10yr (?:energy|total)/);
+  assert.doesNotMatch(html, /TCO/);
 });
 
 test('hotfix card layout: save and compare controls live in the title area, not the retailer footer', async () => {
