@@ -291,6 +291,40 @@ nav {
   color:var(--green);
   font-weight:600;
 }
+.replacement-quick-picks {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:10px;
+}
+.replacement-suggestion {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid var(--border);
+  background:var(--white);
+  color:var(--ink);
+  border-radius:999px;
+  padding:7px 10px;
+  font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+}
+.replacement-suggestion:hover,
+.replacement-suggestion:focus {
+  outline:none;
+  border-color:var(--copper);
+  box-shadow:0 0 0 3px rgba(181,90,44,.12);
+}
+.replacement-suggestion-count {
+  color:var(--green);
+  background:var(--green-bg);
+  border-radius:999px;
+  padding:2px 7px;
+  font-size:11px;
+  white-space:nowrap;
+}
 .space-alerts {
   display:grid;
   gap:8px;
@@ -487,6 +521,7 @@ nav {
         </div>
         <p class="field-note">We can use a matching old model as a starting point, but always re-measure the actual cavity before buying.</p>
         <div class="replacement-status" id="replacementStatus" aria-live="polite"></div>
+        <div class="replacement-quick-picks" id="oldModelQuickPicks" aria-label="Old appliance suggestions with retailer links"></div>
       </div>
 
       <!-- Dimensions -->
@@ -941,7 +976,7 @@ import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/produ
 import { displayBrandName } from './scripts/ui/brand-utils.js';
 import { renderFreshnessBanner } from './scripts/ui/freshness.js';
 import { normalizeSearchDimensions } from './scripts/search-inputs.mjs';
-import { buildReplacementDimensionState, findReplacementSource, getReplacementSuggestionRows } from './scripts/replacement-matcher.mjs';
+import { buildReplacementDimensionState, countVerifiedRetailerLinks, findReplacementSource, getReplacementSuggestionRows } from './scripts/replacement-matcher.mjs';
 import { buildSpaceAlerts } from './scripts/space-alerts.mjs';
 import { buildBrandOptions } from './scripts/ui/filters.js';
 import { computeFitScore } from './scripts/ui/fit-score.js';
@@ -1246,11 +1281,25 @@ function replacementOptionLabel(product = {}) {
 
 function renderOldModelSuggestions() {
   const list = document.getElementById('oldModelSuggestions');
+  const quickPicks = document.getElementById('oldModelQuickPicks');
   if (!list) return;
   const rows = getReplacementSuggestionRows(PRODUCTS, { category: currentCat, limit: 160 });
   list.innerHTML = rows
     .map((product) => `<option value="${escHtml(replacementOptionLabel(product))}">${escHtml(product.displayName ?? product.model ?? '')}</option>`)
     .join('');
+  if (!quickPicks) return;
+  const visibleRows = rows.slice(0, 6);
+  quickPicks.innerHTML = visibleRows.map((product) => {
+    const value = replacementOptionLabel(product);
+    const retailerCount = countVerifiedRetailerLinks(product);
+    const retailerLabel = `${retailerCount} ${retailerCount === 1 ? 'store' : 'stores'}`;
+    return `
+      <button type="button" class="replacement-suggestion" data-old-model-value="${escHtml(value)}">
+        <span>${escHtml(value)}</span>
+        <span class="replacement-suggestion-count">${escHtml(retailerLabel)}</span>
+      </button>
+    `;
+  }).join('');
 }
 
 function useOldModelSize() {
@@ -2659,6 +2708,13 @@ document.getElementById('oldModelInput')?.addEventListener('keydown', (event) =>
     event.preventDefault();
     useOldModelSize();
   }
+});
+document.getElementById('oldModelQuickPicks')?.addEventListener('click', (event) => {
+  const button = event.target?.closest?.('[data-old-model-value]');
+  const value = button?.getAttribute('data-old-model-value');
+  if (!value) return;
+  document.getElementById('oldModelInput').value = value;
+  useOldModelSize();
 });
 ['inW','inH','inD','inDoor'].forEach(id => {
   document.getElementById(id)?.addEventListener('change', () => {

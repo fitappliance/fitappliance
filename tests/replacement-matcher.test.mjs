@@ -142,11 +142,12 @@ test('phase 52 replacement matcher: dimension state prefers real model labels ov
 });
 
 test('phase 50 replacement matcher: old-model suggestions only include verified retailer product links by default', async () => {
-  const { getReplacementSuggestionRows } = await loadModule();
+  const { countVerifiedRetailerLinks, getReplacementSuggestionRows } = await loadModule();
 
   const suggestions = getReplacementSuggestionRows(catalog, { category: 'dryer', limit: 10 });
 
   assert.deepEqual(suggestions.map((product) => product.id), ['dryer-verified-edv605']);
+  assert.equal(countVerifiedRetailerLinks(suggestions[0]), 1);
 });
 
 test('phase 50 replacement matcher: old-model suggestions prefer richer verified retailer coverage', async () => {

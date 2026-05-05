@@ -81,7 +81,7 @@ export function hasVerifiedRetailerLink(product = {}) {
   ));
 }
 
-function verifiedRetailerLinkCount(product = {}) {
+export function countVerifiedRetailerLinks(product = {}) {
   if (!Array.isArray(product?.retailers)) return 0;
   return product.retailers.filter((retailer) => (
     isVerifiedRetailerProductPageUrl(retailer?.url ?? retailer?.href ?? retailer?.u ?? retailer?.link)
@@ -153,7 +153,7 @@ export function getReplacementSuggestionRows(products, { category, limit = 160, 
     .filter((product) => !retailerOnly || hasVerifiedRetailerLink(product))
     .filter(hasCompleteDimensions)
     .sort((left, right) => {
-      const retailerDelta = verifiedRetailerLinkCount(right) - verifiedRetailerLinkCount(left);
+      const retailerDelta = countVerifiedRetailerLinks(right) - countVerifiedRetailerLinks(left);
       if (retailerDelta !== 0) return retailerDelta;
       const scoreDelta = Number(right?.priorityScore ?? 0) - Number(left?.priorityScore ?? 0);
       if (scoreDelta !== 0) return scoreDelta;
