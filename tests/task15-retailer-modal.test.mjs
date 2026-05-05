@@ -82,9 +82,9 @@ test('task 15 retailer-modal: trigger for 1 retailer uses a branded retailer car
   assert.match(html, /retailer-logo-links/);
   assert.match(html, /Check price at/);
   assert.match(html, /retailer-brand-card retailer-brand-card--the-good-guys/);
-  assert.match(html, /retailer-brand-mark/);
   assert.match(html, /retailer-brand-wordmark/);
   assert.match(html, /The Good Guys/);
+  assert.doesNotMatch(html, /retailer-brand-mark/);
   assert.match(html, /href="https:\/\/www\.thegoodguys\.com\.au\/lg-gb335pl-fridge"/);
   assert.doesNotMatch(html, /openRetailerModal/);
 });
@@ -125,6 +125,7 @@ test('task 15 retailer-modal: trigger for 1 retailer without price still links t
   assert.match(html, /retailer-brand-card retailer-brand-card--jb-hi-fi/);
   assert.match(html, /retailer-brand-wordmark/);
   assert.match(html, /JB Hi-Fi/);
+  assert.doesNotMatch(html, /retailer-brand-mark/);
   assert.match(html, /href="https:\/\/www\.jbhifi\.com\.au\/products\/lg-gb335pl"/);
   assert.match(html, /data-price="0"/);
   assert.doesNotMatch(html, /google\.com\.au\/search/);
@@ -177,19 +178,22 @@ test('phase 50 retailer links: five linked retailers use readable branded store 
   assert.match(html, /retailer-brand-card--bing-lee/);
   assert.match(html, /title="Bing Lee"/);
   assert.match(html, /class="retailer-brand-wordmark">Bing Lee/);
+  assert.doesNotMatch(html, /retailer-brand-mark/);
   assert.doesNotMatch(html, /class="retailer-logo-dot"/);
 });
 
-test('phase 50 retailer links: branded retailer cards expose recognizable store colours', () => {
+test('phase 50 retailer links: text retailer cards expose recognizable store colours without fake logo marks', () => {
   const css = fs.readFileSync(path.join(repoRoot, 'public', 'styles.css'), 'utf8');
 
   assert.match(css, /\.retailer-brand-grid\s*\{/);
+  assert.match(css, /\.retailer-brand-card\s*\{[\s\S]*justify-content:\s*center/);
+  assert.match(css, /\.retailer-brand-card\s*\{[\s\S]*text-align:\s*center/);
   assert.match(css, /\.retailer-brand-card--jb-hi-fi\s*\{/);
   assert.match(css, /--retailer-bg:\s*#ffe500/i);
   assert.match(css, /\.retailer-brand-card--appliances-online\s*\{/);
-  assert.match(css, /--retailer-accent:\s*#00aeca/i);
   assert.match(css, /\.retailer-brand-card--harvey-norman\s*\{/);
   assert.match(css, /\.retailer-brand-card--bing-lee\s*\{/);
+  assert.doesNotMatch(css, /\.retailer-brand-mark\s*\{/);
 });
 
 test('phase 50 retailer links: retailer chip labels are escaped', async () => {

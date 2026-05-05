@@ -468,10 +468,10 @@
   --retailer-bg:#fff;
   --retailer-fg:var(--ink);
   --retailer-border:var(--border);
-  --retailer-accent:var(--ink);
   display:inline-flex;
   align-items:center;
-  gap:8px;
+  justify-content:center;
+  gap:0;
   min-height:38px;
   min-width:0;
   border:1.5px solid var(--retailer-border);
@@ -482,25 +482,13 @@
   font-size:12px;
   font-weight:900;
   line-height:1;
+  text-align:center;
   text-decoration:none;
   box-shadow:0 1px 0 rgb(0 0 0 / 5%);
 }
 .retailer-brand-card:hover {
   transform:translateY(-1px);
   box-shadow:0 7px 18px rgb(0 0 0 / 8%);
-}
-.retailer-brand-mark {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-width:30px;
-  height:26px;
-  border-radius:8px;
-  background:var(--retailer-accent);
-  color:#fff;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:.02em;
 }
 .retailer-brand-wordmark {
   min-width:0;
@@ -512,31 +500,26 @@
   --retailer-bg:#ffe500;
   --retailer-fg:#111;
   --retailer-border:#111;
-  --retailer-accent:#111;
 }
 .retailer-brand-card--appliances-online {
   --retailer-bg:#e7fbff;
   --retailer-fg:#005f73;
   --retailer-border:#00aeca;
-  --retailer-accent:#00aeca;
 }
 .retailer-brand-card--the-good-guys {
   --retailer-bg:#fff1f1;
   --retailer-fg:#b00020;
   --retailer-border:#e30613;
-  --retailer-accent:#e30613;
 }
 .retailer-brand-card--harvey-norman {
   --retailer-bg:#eff6ff;
   --retailer-fg:#004b93;
   --retailer-border:#d71920;
-  --retailer-accent:#004b93;
 }
 .retailer-brand-card--bing-lee {
   --retailer-bg:#fff4ed;
   --retailer-fg:#b00020;
   --retailer-border:#111;
-  --retailer-accent:#111;
 }
 .retailer-option-hint {
   color:var(--ink-3);

@@ -73,24 +73,6 @@ function isSearchLikeHref(href) {
   return /\/search(?:\/|[?#]|$)/i.test(href) || /[?&](q|query|text|search|keyword)=/i.test(href);
 }
 
-function retailerInitials(name) {
-  const normalized = String(name ?? '').trim();
-  const known = {
-    'jb hi-fi': 'JB',
-    'jb hifi': 'JB',
-    'appliances online': 'AO',
-    'harvey norman': 'HN',
-    'the good guys': 'TGG',
-    'bing lee': 'BL'
-  };
-  const key = normalized.toLowerCase().replace(/\s+/g, ' ');
-  if (known[key]) return known[key];
-  const parts = normalized.split(/[\s\-&]+/).filter(Boolean);
-  if (parts.length === 0) return '?';
-  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
-  return parts.slice(0, 2).map((part) => part[0]).join('').toUpperCase();
-}
-
 function slugifyRetailerName(name) {
   return String(name ?? '')
     .toLowerCase()
@@ -103,16 +85,15 @@ function getRetailerBrandMeta(name) {
   const displayName = safeRetailerDisplayName(name);
   const key = displayName.toLowerCase().replace(/\s+/g, ' ');
   const known = {
-    'jb hi-fi': { slug: 'jb-hi-fi', mark: 'JB', wordmark: 'JB Hi-Fi' },
-    'jb hifi': { slug: 'jb-hi-fi', mark: 'JB', wordmark: 'JB Hi-Fi' },
-    'appliances online': { slug: 'appliances-online', mark: 'AO', wordmark: 'Appliances Online' },
-    'harvey norman': { slug: 'harvey-norman', mark: 'HN', wordmark: 'Harvey Norman' },
-    'the good guys': { slug: 'the-good-guys', mark: 'TGG', wordmark: 'The Good Guys' },
-    'bing lee': { slug: 'bing-lee', mark: 'BL', wordmark: 'Bing Lee' }
+    'jb hi-fi': { slug: 'jb-hi-fi', wordmark: 'JB Hi-Fi' },
+    'jb hifi': { slug: 'jb-hi-fi', wordmark: 'JB Hi-Fi' },
+    'appliances online': { slug: 'appliances-online', wordmark: 'Appliances Online' },
+    'harvey norman': { slug: 'harvey-norman', wordmark: 'Harvey Norman' },
+    'the good guys': { slug: 'the-good-guys', wordmark: 'The Good Guys' },
+    'bing lee': { slug: 'bing-lee', wordmark: 'Bing Lee' }
   };
   return known[key] ?? {
     slug: slugifyRetailerName(displayName),
-    mark: retailerInitials(displayName),
     wordmark: displayName
   };
 }
@@ -139,7 +120,7 @@ function buildRetailerBrandCard(product, retailer, targetUrl) {
     aria-label="Open ${escHtml(meta.wordmark)} product page"
     title="${escHtml(meta.wordmark)}"
     ${buildRetailerLinkAttributes(product, retailer, targetUrl)}
-  ><span class="retailer-brand-mark" aria-hidden="true">${escHtml(meta.mark)}</span><span class="retailer-brand-wordmark">${escHtml(meta.wordmark)}</span></a>`;
+  ><span class="retailer-brand-wordmark">${escHtml(meta.wordmark)}</span></a>`;
 }
 
 export function buildRetailerLogoLinks(product, { resolveRetailerUrl = (retailer) => retailer.url } = {}) {

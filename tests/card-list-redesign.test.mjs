@@ -117,6 +117,7 @@ test('phase 50 retailer links: result card CTA shows every linked retailer as a 
   assert.match(html, /retailer-brand-card--jb-hi-fi/);
   assert.match(html, /retailer-brand-card--appliances-online/);
   assert.match(html, /retailer-brand-wordmark/);
+  assert.doesNotMatch(html, /retailer-brand-mark/);
   assert.match(html, /JB Hi-Fi/);
   assert.match(html, /Appliances Online/);
   assert.match(html, /href="https:\/\/www\.jbhifi\.com\.au\/products\/lg-gf-l708mbl"/);
@@ -146,6 +147,7 @@ test('phase 50 retailer links: five-store cards show readable branded links inst
   assert.match(html, /aria-label="Open Harvey Norman product page"/);
   assert.match(html, /retailer-brand-card--harvey-norman/);
   assert.match(html, /retailer-brand-wordmark">Harvey Norman/);
+  assert.doesNotMatch(html, /retailer-brand-mark/);
   assert.doesNotMatch(html, /class="retailer-logo-dot"/);
 });
 

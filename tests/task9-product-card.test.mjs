@@ -373,11 +373,10 @@ test('task 9.3 facet price filters stay inside the sidebar grid', () => {
   assert.match(block, /box-sizing:\s*border-box/);
 });
 
-test('phase 50 retailer links: branded retailer cards have recognizable colour hooks', () => {
+test('phase 50 retailer links: branded retailer cards are text buttons without fake logo marks', () => {
   const panelBlock = cssBlock(deferredCss, '.retailer-logo-panel');
   const gridBlock = cssBlock(deferredCss, '.retailer-brand-grid');
   const cardBlock = cssBlock(deferredCss, '.retailer-brand-card');
-  const markBlock = cssBlock(deferredCss, '.retailer-brand-mark');
   const jbBlock = cssBlock(deferredCss, '.retailer-brand-card--jb-hi-fi');
 
   assert.match(panelBlock, /flex-direction:\s*column/);
@@ -385,9 +384,10 @@ test('phase 50 retailer links: branded retailer cards have recognizable colour h
   assert.match(gridBlock, /display:\s*grid/);
   assert.match(cardBlock, /border-radius:\s*12px/);
   assert.match(cardBlock, /min-height:\s*38px/);
-  assert.match(markBlock, /min-width:\s*30px/);
-  assert.match(markBlock, /font-weight:\s*900/);
+  assert.match(cardBlock, /justify-content:\s*center/);
+  assert.match(cardBlock, /text-align:\s*center/);
   assert.match(jbBlock, /--retailer-bg:\s*#ffe500/);
+  assert.doesNotMatch(deferredCss, /\.retailer-brand-mark\s*\{/);
 });
 
 test('phase 50 retailer links: list row keeps retailer choices in the action column only', async () => {
