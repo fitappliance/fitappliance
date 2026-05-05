@@ -91,6 +91,32 @@ function retailerInitials(name) {
   return parts.slice(0, 2).map((part) => part[0]).join('').toUpperCase();
 }
 
+function slugifyRetailerName(name) {
+  return String(name ?? '')
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'retailer';
+}
+
+function getRetailerBrandMeta(name) {
+  const displayName = safeRetailerDisplayName(name);
+  const key = displayName.toLowerCase().replace(/\s+/g, ' ');
+  const known = {
+    'jb hi-fi': { slug: 'jb-hi-fi', mark: 'JB', wordmark: 'JB Hi-Fi' },
+    'jb hifi': { slug: 'jb-hi-fi', mark: 'JB', wordmark: 'JB Hi-Fi' },
+    'appliances online': { slug: 'appliances-online', mark: 'AO', wordmark: 'Appliances Online' },
+    'harvey norman': { slug: 'harvey-norman', mark: 'HN', wordmark: 'Harvey Norman' },
+    'the good guys': { slug: 'the-good-guys', mark: 'TGG', wordmark: 'The Good Guys' },
+    'bing lee': { slug: 'bing-lee', mark: 'BL', wordmark: 'Bing Lee' }
+  };
+  return known[key] ?? {
+    slug: slugifyRetailerName(displayName),
+    mark: retailerInitials(displayName),
+    wordmark: displayName
+  };
+}
+
 function safeRetailerDisplayName(name) {
   const value = String(name ?? '').trim();
   if (/[<>]/.test(value) || /\bon\w+\s*=/i.test(value)) return 'Retailer';
@@ -106,6 +132,16 @@ function buildRetailerLinkAttributes(product, retailer, targetUrl) {
       data-price="${retailer.p ?? 0}"`;
 }
 
+function buildRetailerBrandCard(product, retailer, targetUrl) {
+  const displayName = safeRetailerDisplayName(retailer.n);
+  const meta = getRetailerBrandMeta(displayName);
+  return `<a class="retailer-brand-card retailer-brand-card--${escHtml(meta.slug)}" href="${escHtml(targetUrl)}" target="_blank" rel="sponsored nofollow noopener"
+    aria-label="Open ${escHtml(meta.wordmark)} product page"
+    title="${escHtml(meta.wordmark)}"
+    ${buildRetailerLinkAttributes(product, retailer, targetUrl)}
+  ><span class="retailer-brand-mark" aria-hidden="true">${escHtml(meta.mark)}</span><span class="retailer-brand-wordmark">${escHtml(meta.wordmark)}</span></a>`;
+}
+
 export function buildRetailerLogoLinks(product, { resolveRetailerUrl = (retailer) => retailer.url } = {}) {
   const linked = normalizeLinkedRetailers(product?.retailers);
   if (linked.length === 0) return '';
@@ -117,37 +153,15 @@ export function buildRetailerLogoLinks(product, { resolveRetailerUrl = (retailer
     return true;
   });
 
-  if (items.length >= 5) {
-    const dots = items.map((retailer) => {
-      const targetUrl = resolveRetailerUrl(retailer, product) ?? retailer.url ?? '#';
-      const displayName = safeRetailerDisplayName(retailer.n);
-      return `<a class="retailer-logo-dot" href="${escHtml(targetUrl)}" target="_blank" rel="sponsored nofollow noopener"
-        aria-label="Open ${escHtml(displayName)} product page"
-        title="${escHtml(displayName)}"
-        ${buildRetailerLinkAttributes(product, retailer, targetUrl)}
-      ><span>${escHtml(retailerInitials(displayName))}</span></a>`;
-    }).join('');
-
-    return `<div class="retailer-logo-panel retailer-logo-panel--dense">
-      <span class="retailer-logo-label">Check price at ${items.length} stores</span>
-      <div class="retailer-logo-rail" aria-label="Retailer product links">${dots}</div>
-      <span class="retailer-option-hint">Choose a retailer</span>
-    </div>`;
-  }
-
   const links = items.map((retailer) => {
     const targetUrl = resolveRetailerUrl(retailer, product) ?? retailer.url ?? '#';
-    const displayName = safeRetailerDisplayName(retailer.n);
-    return `<a class="retailer-logo-link" href="${escHtml(targetUrl)}" target="_blank" rel="sponsored nofollow noopener"
-      aria-label="Open ${escHtml(displayName)} product page"
-      title="${escHtml(displayName)}"
-      ${buildRetailerLinkAttributes(product, retailer, targetUrl)}
-    ><span class="retailer-logo-mark">${escHtml(retailerInitials(displayName))}</span><span class="retailer-logo-name">${escHtml(displayName)}</span></a>`;
+    return buildRetailerBrandCard(product, retailer, targetUrl);
   }).join('');
 
-  return `<div class="retailer-logo-panel">
+  return `<div class="retailer-logo-panel${items.length >= 5 ? ' retailer-logo-panel--multi' : ''}">
     <span class="retailer-logo-label">Check price at${items.length > 1 ? ` ${items.length} stores` : ''}</span>
-    <div class="retailer-logo-links" aria-label="Retailer product links">${links}</div>
+    <div class="retailer-logo-links retailer-brand-grid" aria-label="Retailer product links">${links}</div>
+    ${items.length >= 5 ? '<span class="retailer-option-hint">Choose a retailer</span>' : ''}
   </div>`;
 }
 

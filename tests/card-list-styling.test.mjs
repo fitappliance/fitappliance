@@ -67,8 +67,8 @@ test('hotfix result row layout: product rows keep information column readable be
   assert.match(row, /grid-template-columns:\s*70px minmax\(0,\s*1fr\)/);
   assert.match(row, /align-items:\s*start/);
   assert.match(actions, /grid-column:\s*2/);
-  assert.match(actions, /flex-direction:\s*row/);
-  assert.match(actions, /justify-content:\s*space-between/);
+  assert.match(actions, /display:\s*grid/);
+  assert.match(actions, /grid-template-areas:\s*"price utility retailers"/);
   assert.match(actions, /border-top:\s*1px solid var\(--border\)/);
 });
 
@@ -82,12 +82,17 @@ test('hotfix mobile list rows reserve enough track width for the avatar', () => 
 
 test('hotfix result row layout: retailer choices wrap inside the row footer instead of squeezing the title', () => {
   const buttons = blockFor('.p-row-action-buttons');
-  const denseRail = blockFor('.p-row-actions .retailer-logo-rail');
+  const retailerArea = blockFor('.p-row-retailer-area');
+  const retailerGrid = blockFor('.retailer-brand-grid');
+  const css = fs.readFileSync(path.join(repoRoot, 'public', 'styles-deferred.css'), 'utf8');
 
   assert.match(buttons, /display:\s*flex/);
   assert.match(buttons, /flex-wrap:\s*wrap/);
   assert.match(buttons, /justify-content:\s*flex-end/);
-  assert.match(denseRail, /max-width:\s*none/);
+  assert.match(retailerArea, /grid-area:\s*retailers/);
+  assert.match(retailerGrid, /grid-template-columns:\s*repeat\(auto-fit,\s*minmax\(128px,\s*1fr\)\)/);
+  assert.match(css, /@media\(max-width:360px\)\s*\{[\s\S]*retailer-brand-grid[\s\S]*grid-template-columns:1fr/);
+  assert.doesNotMatch(css, /@media\(max-width:420px\)\s*\{[\s\S]*retailer-brand-grid[\s\S]*grid-template-columns:1fr/);
 });
 
 test('phase 52 data trust styles: trust metadata is subtle and wraps on mobile cards', () => {

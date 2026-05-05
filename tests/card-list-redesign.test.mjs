@@ -102,7 +102,7 @@ test('phase 48 card redesign: commission disclosure is rendered once above resul
   assert.equal(resultsEl.querySelectorAll('.fit-result-item').length, 2);
 });
 
-test('phase 50 retailer links: result card CTA shows every linked retailer as a selectable chip', async () => {
+test('phase 50 retailer links: result card CTA shows every linked retailer as a branded store card', async () => {
   const { buildCardHtml } = await loadSearchDom();
   const html = buildCardHtml(makeMatch({
     retailers: [
@@ -113,6 +113,10 @@ test('phase 50 retailer links: result card CTA shows every linked retailer as a 
 
   assert.match(html, /card-retailer-links/);
   assert.match(html, /Check price at 2 stores/);
+  assert.match(html, /retailer-brand-grid/);
+  assert.match(html, /retailer-brand-card--jb-hi-fi/);
+  assert.match(html, /retailer-brand-card--appliances-online/);
+  assert.match(html, /retailer-brand-wordmark/);
   assert.match(html, /JB Hi-Fi/);
   assert.match(html, /Appliances Online/);
   assert.match(html, /href="https:\/\/www\.jbhifi\.com\.au\/products\/lg-gf-l708mbl"/);
@@ -122,7 +126,7 @@ test('phase 50 retailer links: result card CTA shows every linked retailer as a 
   assert.doesNotMatch(html, /View at JB Hi-Fi/);
 });
 
-test('phase 50 retailer links: five-store cards collapse to a compact logo rail', async () => {
+test('phase 50 retailer links: five-store cards show readable branded links instead of acronym dots', async () => {
   const { buildCardHtml } = await loadSearchDom();
   const retailers = [
     ['JB Hi-Fi', 'https://www.jbhifi.com.au/products/hisense-hrcd640tbw'],
@@ -134,14 +138,15 @@ test('phase 50 retailer links: five-store cards collapse to a compact logo rail'
 
   const html = buildCardHtml(makeMatch({ brand: 'HISENSE', model: 'HRCD640TBW', retailers }));
 
-  assert.match(html, /card-retailer-panel--dense/);
+  assert.match(html, /card-retailer-panel--multi/);
   assert.match(html, /Check price at 5 stores/);
-  assert.match(html, /retailer-logo-rail/);
-  assert.equal((html.match(/class="retailer-logo-dot"/g) ?? []).length, 5);
+  assert.match(html, /retailer-brand-grid/);
+  assert.equal((html.match(/class="retailer-brand-card/g) ?? []).length, 5);
   assert.match(html, /aria-label="Open JB Hi-Fi product page"/);
   assert.match(html, /aria-label="Open Harvey Norman product page"/);
-  assert.match(html, /retailer-option-hint/);
-  assert.doesNotMatch(html, /class="retailer-logo-name"/);
+  assert.match(html, /retailer-brand-card--harvey-norman/);
+  assert.match(html, /retailer-brand-wordmark">Harvey Norman/);
+  assert.doesNotMatch(html, /class="retailer-logo-dot"/);
 });
 
 test('hotfix retailer URL quality: root retailer URLs are not shown as product links or prices', async () => {
