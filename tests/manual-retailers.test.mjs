@@ -178,7 +178,7 @@ test('manual retailers: non-fridge categories keep reviewed non-AO retailer cove
   const minimums = {
     dishwasher: {
       entriesWithNonAoRetailer: 6,
-      retailerCounts: { 'The Good Guys': 7, 'Harvey Norman': 4, 'Bing Lee': 6 },
+      retailerCounts: { 'JB Hi-Fi': 1, 'The Good Guys': 7, 'Harvey Norman': 4, 'Bing Lee': 6 },
     },
     dryer: {
       entriesWithNonAoRetailer: 2,
@@ -229,6 +229,12 @@ test('manual retailers: reviewed exact-link expansion uses direct retailer produ
       model: 'HSBE15FS',
       retailers: {
         'The Good Guys': 'https://www.thegoodguys.com.au/hisense-series-5-freestanding-dishwasher-silver-steel-hsbe15fs',
+      },
+    },
+    'dishwasher-adw1232': {
+      model: 'XD4B15PS',
+      retailers: {
+        'JB Hi-Fi': 'https://www.jbhifi.com.au/products/lg-xd4b15ps-quadwash-15-place-setting-freestanding-dishwasher-platinum-steel',
       },
     },
     'washing_machine-acw1423': {
