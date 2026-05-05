@@ -360,7 +360,6 @@ export function buildCard(p, deps = {}) {
 
 export function buildRow(p, deps = {}) {
   const annualEnergyCost = deps.annualEnergyCost ?? (() => '0');
-  const lifetimeCost = deps.lifetimeCost ?? (() => 0);
   const resolveRetailerUrl = deps.resolveRetailerUrl ?? ((retailer) => retailer.url);
   const isSaved = deps.isSaved ?? (() => false);
   const capturedDate = deps.capturedDate ?? '';
@@ -378,11 +377,6 @@ export function buildRow(p, deps = {}) {
   const modelLine = buildModelLine(p, primaryTitle);
   const compareLabel = `${displayBrand} ${p.model.split(' ').slice(0, 2).join(' ')}`;
   const annual = annualEnergyCost(p.kwh_year);
-  const productPrice = getPositivePrice(p.price);
-  const total = productPrice === null
-    ? Math.round(Number(annual) * 10)
-    : Math.round(lifetimeCost(productPrice, p.kwh_year));
-  const costLabel = productPrice === null ? '10yr energy' : '10yr total';
   const triggerButton = buildRetailerTriggerButton(p, {
     resolveRetailerUrl,
     buildNoRetailerUrl,
@@ -411,7 +405,7 @@ export function buildRow(p, deps = {}) {
         <span class="dim-tag">H ${p.h}mm</span>
         <span class="dim-tag">D ${p.d}mm</span>
       </div>
-      <div style="font-size:12px;color:var(--green);margin-top:4px">⚡ ~$${annual}/yr energy · ${costLabel} ~$${total.toLocaleString()} · ${p.features.slice(0, 3).join(' · ')}</div>
+      <div style="font-size:12px;color:var(--green);margin-top:4px">⚡ ~$${annual}/yr energy · ${p.features.slice(0, 3).join(' · ')}</div>
       ${p.vented ? '<div style="font-size:12px;color:var(--red);margin-top:4px">⚠️ Vented — external ducting required (NCC 2022). Not for apartments.</div>' : ''}
       ${buildDataTrustLine(p, capturedDate)}
       ${buildFeatureFlagsHtml(p)}

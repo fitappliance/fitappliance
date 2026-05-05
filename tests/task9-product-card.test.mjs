@@ -87,7 +87,7 @@ test('task 9.3 product-card: no-price list row renders shopping fallback and dis
   assert.match(html, /google\.com\.au\/search/);
 });
 
-test('display accuracy: no-price list row labels ten-year estimate as energy, not TCO', async () => {
+test('display accuracy: no-price list row shows annual energy only, not ten-year estimates', async () => {
   const { buildRow } = await import(productCardModuleUrl);
   const html = buildRow(makeProduct({
     price: null,
@@ -101,12 +101,13 @@ test('display accuracy: no-price list row labels ten-year estimate as energy, no
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /10yr energy ~\$1,000/);
+  assert.match(html, /~\$100\/yr energy/);
+  assert.doesNotMatch(html, /10yr energy/);
   assert.doesNotMatch(html, /TCO/);
   assert.doesNotMatch(html, /10yr total/);
 });
 
-test('display accuracy: priced list row may label ten-year total with price included', async () => {
+test('display accuracy: priced list row also omits ten-year total copy', async () => {
   const { buildRow } = await import(productCardModuleUrl);
   const html = buildRow(makeProduct({
     price: 1200,
@@ -118,7 +119,9 @@ test('display accuracy: priced list row may label ten-year total with price incl
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /10yr total ~\$2,200/);
+  assert.match(html, /~\$100\/yr energy/);
+  assert.doesNotMatch(html, /10yr total/);
+  assert.doesNotMatch(html, /10yr energy/);
   assert.doesNotMatch(html, /TCO/);
 });
 
@@ -373,11 +376,10 @@ test('task 9.3 facet price filters stay inside the sidebar grid', () => {
   assert.match(block, /box-sizing:\s*border-box/);
 });
 
-test('phase 50 retailer links: branded retailer cards have recognizable colour hooks', () => {
+test('phase 50 retailer links: branded retailer cards are text buttons without fake logo marks', () => {
   const panelBlock = cssBlock(deferredCss, '.retailer-logo-panel');
   const gridBlock = cssBlock(deferredCss, '.retailer-brand-grid');
   const cardBlock = cssBlock(deferredCss, '.retailer-brand-card');
-  const markBlock = cssBlock(deferredCss, '.retailer-brand-mark');
   const jbBlock = cssBlock(deferredCss, '.retailer-brand-card--jb-hi-fi');
 
   assert.match(panelBlock, /flex-direction:\s*column/);
@@ -385,9 +387,10 @@ test('phase 50 retailer links: branded retailer cards have recognizable colour h
   assert.match(gridBlock, /display:\s*grid/);
   assert.match(cardBlock, /border-radius:\s*12px/);
   assert.match(cardBlock, /min-height:\s*38px/);
-  assert.match(markBlock, /min-width:\s*30px/);
-  assert.match(markBlock, /font-weight:\s*900/);
+  assert.match(cardBlock, /justify-content:\s*center/);
+  assert.match(cardBlock, /text-align:\s*center/);
   assert.match(jbBlock, /--retailer-bg:\s*#ffe500/);
+  assert.doesNotMatch(deferredCss, /\.retailer-brand-mark\s*\{/);
 });
 
 test('phase 50 retailer links: list row keeps retailer choices in the action column only', async () => {
