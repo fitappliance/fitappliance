@@ -178,7 +178,7 @@ test('manual retailers: non-fridge categories keep reviewed non-AO retailer cove
   const minimums = {
     dishwasher: {
       entriesWithNonAoRetailer: 6,
-      retailerCounts: { 'The Good Guys': 6, 'Harvey Norman': 2, 'Bing Lee': 4 },
+      retailerCounts: { 'The Good Guys': 7, 'Harvey Norman': 4, 'Bing Lee': 6 },
     },
     dryer: {
       entriesWithNonAoRetailer: 2,
@@ -186,7 +186,7 @@ test('manual retailers: non-fridge categories keep reviewed non-AO retailer cove
     },
     washing_machine: {
       entriesWithNonAoRetailer: 9,
-      retailerCounts: { 'The Good Guys': 6, 'Harvey Norman': 1, 'Bing Lee': 7 },
+      retailerCounts: { 'The Good Guys': 6, 'Harvey Norman': 3, 'Bing Lee': 8 },
     },
   };
 
@@ -202,6 +202,70 @@ test('manual retailers: non-fridge categories keep reviewed non-AO retailer cove
       assert.ok(
         (stats.retailerCounts.get(retailer) ?? 0) >= minimumCount,
         `${category} expected at least ${minimumCount} ${retailer} links, got ${stats.retailerCounts.get(retailer) ?? 0}`,
+      );
+    }
+  }
+});
+
+test('manual retailers: reviewed exact-link expansion uses direct retailer product pages', () => {
+  const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
+  const expectedLinks = {
+    'dishwasher-adw1155': {
+      model: 'WSF6606XB',
+      retailers: {
+        'Harvey Norman': 'https://www.harveynorman.com.au/westinghouse-60cm-15-place-setting-freestanding-dishwasher-stainless-steel.html',
+        'Bing Lee': 'https://www.binglee.com.au/products/60cm-freestanding-dishwasher-stainless-steel-with-15-place-settings-wsf6606xb',
+      },
+      excludedRetailers: ['The Good Guys'],
+    },
+    'dishwasher-adw1149': {
+      model: 'WSF6604XB',
+      retailers: {
+        'Harvey Norman': 'https://www.harveynorman.com.au/westinghouse-wsf6604xb-60cm-14-place-setting-freestanding-dishwasher-stainless-steel.html',
+        'Bing Lee': 'https://www.binglee.com.au/products/60cm-freestanding-dishwasher-stainless-steel-with-14-place-settings-wsf6604xb',
+      },
+    },
+    'dishwasher-adw1245': {
+      model: 'HSBE15FS',
+      retailers: {
+        'The Good Guys': 'https://www.thegoodguys.com.au/hisense-series-5-freestanding-dishwasher-silver-steel-hsbe15fs',
+      },
+    },
+    'washing_machine-acw1423': {
+      model: 'HWFS7514S',
+      retailers: {
+        'Harvey Norman': 'https://www.harveynorman.com.au/hisense-7-5kg-series-3-front-load-washing-machine.html',
+      },
+    },
+    'washing_machine-acw1243': {
+      model: 'WWF9024M5SA',
+      retailers: {
+        'Harvey Norman': 'https://www.harveynorman.com.au/westinghouse-9kg-easycare-front-load-washing-machine-dark.html',
+        'Bing Lee': 'https://www.binglee.com.au/products/9kg-front-loader-dark-grey-wwf9024m5sa',
+      },
+    },
+  };
+
+  for (const [slug, expected] of Object.entries(expectedLinks)) {
+    const entry = document.products[slug];
+    assert.ok(entry, `${slug} should be present in manual retailer data`);
+    assert.equal(entry.match_type, 'exact', `${slug} must stay an exact model match`);
+
+    for (const [retailerName, expectedUrl] of Object.entries(expected.retailers)) {
+      const retailer = (entry.retailers ?? []).find((row) => row.n === retailerName);
+      assert.ok(retailer, `${slug} should include ${retailerName} for ${expected.model}`);
+      assert.equal(retailer.url, expectedUrl, `${slug} ${retailerName} URL should be the reviewed product page`);
+      assert.ok(isReviewedRetailerProductPath(new URL(retailer.url)), `${slug} ${retailerName} must use a direct product URL`);
+      assert.equal(retailer.p, null, `${slug} ${retailerName} should not record live price without a trusted feed`);
+      assert.match(retailer.source, /^websearch-/);
+      assert.match(retailer.verified_at, /^\d{4}-\d{2}-\d{2}$/);
+    }
+
+    for (const excludedRetailer of expected.excludedRetailers ?? []) {
+      assert.equal(
+        (entry.retailers ?? []).some((retailer) => retailer.n === excludedRetailer),
+        false,
+        `${slug} ${excludedRetailer} redirects to a category/search page and must not be exposed`,
       );
     }
   }
