@@ -3,39 +3,6 @@
 /* ─── RESULTS ─── */
 .results-wrap { max-width:1220px;margin:0 auto;padding:36px 24px 80px; }
 
-/* Ad placeholders */
-.ad-slot {
-  height: 90px;
-  border: 2px dashed #d97706;
-  background: #fffbeb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  margin: 12px 0 28px;
-  contain: layout;
-  overflow: hidden;
-}
-.ad-slot__label {
-  font-size: 11px;
-  color: #92400e;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 600;
-}
-.ad-slot--inline {
-  height: 60px;
-  margin: 8px 0;
-}
-.adsense-active .ad-slot {
-  border: none;
-  background: transparent;
-  height: auto;
-  contain: none;
-  overflow: visible;
-}
-.adsense-active .ad-slot__label { display: none; }
-
 .float-bar {
   position: fixed;
   top: 0;

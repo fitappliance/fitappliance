@@ -577,10 +577,6 @@ nav {
 <!-- RESULTS SECTION -->
 <section id="resultsSection" class="results-wrap" style="display:none">
 
-  <div class="ad-slot" id="ad-top-results" aria-label="Advertisement" aria-hidden="true" role="complementary" style="width:100%">
-    <span class="ad-slot__label">Advertisement</span>
-  </div>
-
   <!-- Disclaimer -->
   <div class="disclaimer" id="disclaimerBox">
     <strong>Dimensions are checked with a practical clearance buffer by default.</strong> Brand-specific manufacturer clearance figures are advisory notes. Always verify ventilation requirements in the model installation manual before purchase. Door swing and delivery access are estimates — measure your specific space.
@@ -2027,12 +2023,7 @@ function renderResults() {
   if (sp[1] && final.length>=6) final.splice(6,0,sp[1]);
   const capped = final.length > RESULTS_CAP;
   const display = capped ? final.slice(0, RESULTS_CAP) : final;
-  const renderProductsWithInlineAds = (items, renderItem) => items.map((product, index) => {
-    const cardHtml = renderItem(product);
-    const shouldRenderInlineAd = index > 0 && (index + 1) % 8 === 0;
-    if (!shouldRenderInlineAd) return cardHtml;
-    return `${cardHtml}<div class="ad-slot ad-slot--inline" aria-label="Advertisement" aria-hidden="true" style="width:100%"><span class="ad-slot__label">Advertisement</span></div>`;
-  }).join('');
+  const renderProducts = (items, renderItem) => items.map((product) => renderItem(product)).join('');
 
   const container = document.getElementById('productGrid');
   const empty     = document.getElementById('emptyState');
@@ -2069,7 +2060,7 @@ function renderResults() {
 
   if (currentView === 'list') {
     container.className = 'product-list';
-    container.innerHTML = retailerBanner + renderProductsWithInlineAds(display, (product) => buildRow(product, {
+    container.innerHTML = retailerBanner + renderProducts(display, (product) => buildRow(product, {
       annualEnergyCost,
       lifetimeCost,
       resolveRetailerUrl,
@@ -2078,7 +2069,7 @@ function renderResults() {
     }));
   } else {
     container.className = 'product-grid';
-    container.innerHTML = retailerBanner + renderProductsWithInlineAds(display, (product) => buildCard(product, {
+    container.innerHTML = retailerBanner + renderProducts(display, (product) => buildCard(product, {
       tcoHtml,
       retailersHtml,
       starsHtml,
