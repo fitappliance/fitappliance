@@ -1278,7 +1278,7 @@ function useOldModelSize() {
   document.getElementById('inH').value = String(h);
   document.getElementById('inD').value = String(d);
   if (status) {
-    status.textContent = `Using ${state.label}: ${w}×${h}×${d}mm. Re-measure before ordering.`;
+    status.textContent = `Using estimated cavity from ${state.label}: ${w}×${h}×${d}mm. Re-measure before ordering.`;
   }
   renderSpaceAlertsForDimensions({ w, h, d, door: document.getElementById('inDoor')?.value });
   showToast('Filled dimensions from the old model');

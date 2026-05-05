@@ -5,6 +5,12 @@ function normalizeToken(value) {
     .trim();
 }
 
+const PRACTICAL_REPLACEMENT_BUFFER = Object.freeze({
+  width: 10,
+  height: 20,
+  depth: 10
+});
+
 function normalizeText(value) {
   return String(value ?? '')
     .toLowerCase()
@@ -151,9 +157,16 @@ export function buildReplacementDimensionState(product = {}) {
     };
   }
   const label = productLabel(product);
+  const productDimensions = { w: Math.round(w), h: Math.round(h), d: Math.round(d) };
+  const dimensions = {
+    w: productDimensions.w + PRACTICAL_REPLACEMENT_BUFFER.width,
+    h: productDimensions.h + PRACTICAL_REPLACEMENT_BUFFER.height,
+    d: productDimensions.d + PRACTICAL_REPLACEMENT_BUFFER.depth
+  };
   return {
-    dimensions: { w: Math.round(w), h: Math.round(h), d: Math.round(d) },
+    productDimensions,
+    dimensions,
     label,
-    note: `${label} dimensions are a starting point. Measure the actual cavity before buying.`
+    note: `${label} dimensions plus practical clearance are a starting point. Measure the actual cavity before buying.`
   };
 }
