@@ -293,25 +293,33 @@
 .p-row-dims { display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px; }
 .p-row-actions {
   grid-column:2;
-  display:flex;
-  flex-direction:row;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:12px;
+  display:grid;
+  grid-template-columns:minmax(112px, auto) auto minmax(260px, 520px);
+  grid-template-areas:"price utility retailers";
+  align-items:end;
+  justify-content:stretch;
+  gap:12px 16px;
   min-width:0;
   margin-top:10px;
   padding-top:10px;
   border-top:1px solid var(--border);
 }
-.p-row-price { font-family:'Instrument Serif',serif;font-size:24px;color:var(--ink);text-align:right; }
+.p-row-price { grid-area:price;font-family:'Instrument Serif',serif;font-size:24px;color:var(--ink);text-align:left; }
 .p-row-price small { font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;font-size:12px;color:var(--ink-3); }
 .p-row-action-buttons {
+  grid-area:utility;
   display:flex;
   align-items:center;
   justify-content:flex-end;
   gap:6px;
   flex-wrap:wrap;
   min-width:0;
+}
+.p-row-retailer-area {
+  grid-area:retailers;
+  min-width:0;
+  display:flex;
+  justify-content:flex-end;
 }
 
 /* Shared card elements */
@@ -364,11 +372,12 @@
 .c-footer {
   margin-top:auto;padding-top:12px;
   border-top:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  display:grid;grid-template-columns:minmax(110px, auto) auto;gap:8px 10px;align-items:center;
 }
 .c-price { font-family:'Instrument Serif',serif;font-size:22px;color:var(--ink); }
 .c-price small { font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;font-size:12px;color:var(--ink-3);display:block;line-height:1; }
 .c-actions { display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end; }
+.c-retailer-area { grid-column:1 / -1;display:flex;justify-content:flex-end;min-width:0; }
 .btn-search-online {
   display:inline-flex;
   flex-direction:column;
@@ -437,15 +446,16 @@
 .retailer-logo-panel {
   display:flex;
   flex-direction:column;
-  align-items:flex-end;
-  gap:6px;
+  align-items:stretch;
+  gap:7px;
+  width:min(100%, 540px);
 }
-.retailer-logo-links {
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:6px;
-  flex-wrap:wrap;
+.retailer-logo-links,
+.retailer-brand-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(128px, 1fr));
+  gap:7px;
+  width:100%;
 }
 .retailer-logo-label {
   color:var(--ink-3);
@@ -454,82 +464,81 @@
   letter-spacing:.05em;
   text-transform:uppercase;
 }
-.retailer-logo-link {
+.retailer-brand-card {
+  --retailer-bg:#fff;
+  --retailer-fg:var(--ink);
+  --retailer-border:var(--border);
+  --retailer-accent:var(--ink);
   display:inline-flex;
-  flex-direction:row;
   align-items:center;
-  gap:5px;
-  border:1px solid var(--border);
-  border-radius:999px;
-  background:#fff;
-  color:var(--ink);
-  padding:4px 7px 4px 4px;
-  font-size:11px;
-  font-weight:800;
+  gap:8px;
+  min-height:38px;
+  min-width:0;
+  border:1.5px solid var(--retailer-border);
+  border-radius:12px;
+  background:var(--retailer-bg);
+  color:var(--retailer-fg);
+  padding:6px 10px;
+  font-size:12px;
+  font-weight:900;
   line-height:1;
   text-decoration:none;
+  box-shadow:0 1px 0 rgb(0 0 0 / 5%);
 }
-.retailer-logo-link:hover {
-  border-color:var(--copper);
-  color:var(--copper);
-}
-.retailer-logo-mark {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-width:24px;
-  height:22px;
-  border-radius:999px;
-  background:var(--ink);
-  color:#fff;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:.02em;
-}
-.retailer-logo-name { white-space:nowrap; }
-.retailer-logo-panel--dense {
-  gap:5px;
-}
-.retailer-logo-rail {
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:5px;
-  flex-wrap:wrap;
-  max-width:198px;
-}
-.retailer-logo-dot {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:34px;
-  height:34px;
-  border:1px solid var(--border);
-  border-radius:999px;
-  background:var(--ink);
-  color:#fff;
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:.02em;
-  line-height:1;
-  text-decoration:none;
-  box-shadow:0 1px 0 rgb(0 0 0 / 6%);
-}
-.p-row-actions .retailer-logo-rail {
-  max-width:none;
-}
-.retailer-logo-dot:hover {
-  border-color:var(--copper);
-  background:var(--copper);
-  color:#fff;
+.retailer-brand-card:hover {
   transform:translateY(-1px);
+  box-shadow:0 7px 18px rgb(0 0 0 / 8%);
 }
-.retailer-logo-dot span {
-  color:inherit;
+.retailer-brand-mark {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:30px;
+  height:26px;
+  border-radius:8px;
+  background:var(--retailer-accent);
+  color:#fff;
   font-size:10px;
   font-weight:900;
+  letter-spacing:.02em;
 }
-.retailer-logo-panel--dense .retailer-option-hint {
+.retailer-brand-wordmark {
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.retailer-brand-card--jb-hi-fi {
+  --retailer-bg:#ffe500;
+  --retailer-fg:#111;
+  --retailer-border:#111;
+  --retailer-accent:#111;
+}
+.retailer-brand-card--appliances-online {
+  --retailer-bg:#e7fbff;
+  --retailer-fg:#005f73;
+  --retailer-border:#00aeca;
+  --retailer-accent:#00aeca;
+}
+.retailer-brand-card--the-good-guys {
+  --retailer-bg:#fff1f1;
+  --retailer-fg:#b00020;
+  --retailer-border:#e30613;
+  --retailer-accent:#e30613;
+}
+.retailer-brand-card--harvey-norman {
+  --retailer-bg:#eff6ff;
+  --retailer-fg:#004b93;
+  --retailer-border:#d71920;
+  --retailer-accent:#004b93;
+}
+.retailer-brand-card--bing-lee {
+  --retailer-bg:#fff4ed;
+  --retailer-fg:#b00020;
+  --retailer-border:#111;
+  --retailer-accent:#111;
+}
+.retailer-option-hint {
   color:var(--ink-3);
   font-size:10px;
   font-weight:600;
@@ -1331,17 +1340,25 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   }
   .p-row-actions {
     grid-column:1 / -1;
-    align-items:flex-start;
-    flex-direction:column;
+    grid-template-columns:1fr;
+    grid-template-areas:"price" "utility" "retailers";
+    align-items:start;
   }
   .p-row-action-buttons {
     justify-content:flex-start;
   }
-  .p-row-actions .retailer-logo-links,
-  .p-row-actions .retailer-logo-rail {
+  .p-row-retailer-area {
     justify-content:flex-start;
+    width:100%;
+  }
+  .p-row-actions .retailer-brand-grid {
+    grid-template-columns:repeat(2, minmax(0, 1fr));
   }
 }
-@media(max-width:420px){
+@media(max-width:360px){
   .dim-grid { grid-template-columns:1fr; }
+  .p-row-actions .retailer-brand-grid,
+  .c-retailer-area .retailer-brand-grid {
+    grid-template-columns:1fr;
+  }
 }

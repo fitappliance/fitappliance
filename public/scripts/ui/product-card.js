@@ -340,7 +340,7 @@ export function buildCard(p, deps = {}) {
             ? buildPriceBadge(p, capturedDate)
             : `<div class="c-price no-price">${hasLinkedRetailer ? 'Check retailer price' : 'Price unavailable'}</div>`
         }
-        <div class="c-actions">
+        <div class="c-actions c-utility-buttons">
           <button
             class="btn-save${saved ? ' btn-save--active' : ''}"
             onclick="toggleSave('${p.id}')"
@@ -348,8 +348,8 @@ export function buildCard(p, deps = {}) {
             title="${saved ? 'Remove from saved' : 'Save for later'}"
           >${saved ? '♥' : '♡'}</button>
           <button class="btn-compare" onclick="addCompare('${p.id}','${escHtml(compareLabel)}')">Compare</button>
-          ${triggerButton}
         </div>
+        <div class="c-retailer-area">${triggerButton}</div>
       </div>
     </div>
     ${warnings(p)}
@@ -423,7 +423,7 @@ export function buildRow(p, deps = {}) {
           ? `<div class="p-row-price">${buildPriceBadge(p, capturedDate)}</div>`
           : `<div class="p-row-price no-price">${hasLinkedRetailer ? 'Check retailer price' : 'Price unavailable'}</div>`
       }
-      <div class="p-row-action-buttons">
+      <div class="p-row-action-buttons p-row-utility-buttons">
         <button
           class="btn-save${saved ? ' btn-save--active' : ''}"
           onclick="toggleSave('${p.id}')"
@@ -431,8 +431,8 @@ export function buildRow(p, deps = {}) {
           title="${saved ? 'Remove from saved' : 'Save for later'}"
         >${saved ? '♥' : '♡'}</button>
         <button class="btn-compare" onclick="addCompare('${p.id}','${escHtml(compareLabel)}')">Compare</button>
-        ${triggerButton}
       </div>
+      <div class="p-row-retailer-area">${triggerButton}</div>
     </div>
   </div>
   ${modalHtml}`;

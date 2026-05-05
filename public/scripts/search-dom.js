@@ -748,6 +748,47 @@
     return parts.slice(0, 2).map((part) => part[0]).join('').toUpperCase();
   }
 
+  function slugifyRetailerName(name) {
+    return String(name ?? '')
+      .toLowerCase()
+      .replace(/&/g, ' and ')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '') || 'retailer';
+  }
+
+  function getRetailerBrandMeta(name) {
+    const displayName = safeRetailerDisplayName(name);
+    const key = displayName.toLowerCase().replace(/\s+/g, ' ');
+    const known = {
+      'jb hi-fi': { slug: 'jb-hi-fi', mark: 'JB', wordmark: 'JB Hi-Fi' },
+      'jb hifi': { slug: 'jb-hi-fi', mark: 'JB', wordmark: 'JB Hi-Fi' },
+      'appliances online': { slug: 'appliances-online', mark: 'AO', wordmark: 'Appliances Online' },
+      'harvey norman': { slug: 'harvey-norman', mark: 'HN', wordmark: 'Harvey Norman' },
+      'the good guys': { slug: 'the-good-guys', mark: 'TGG', wordmark: 'The Good Guys' },
+      'bing lee': { slug: 'bing-lee', mark: 'BL', wordmark: 'Bing Lee' }
+    };
+    return known[key] ?? {
+      slug: slugifyRetailerName(displayName),
+      mark: retailerInitials(displayName),
+      wordmark: displayName
+    };
+  }
+
+  function buildRetailerBrandCard(match, retailer) {
+    const displayName = safeRetailerDisplayName(retailer.name);
+    const meta = getRetailerBrandMeta(displayName);
+    return `<a class="retailer-brand-card retailer-brand-card--${escHtml(meta.slug)}" href="${escHtml(retailer.url)}" target="_blank" rel="sponsored nofollow noopener"
+      aria-label="Open ${escHtml(meta.wordmark)} product page"
+      title="${escHtml(meta.wordmark)}"
+      data-buy-click="1"
+      data-product-id="${escHtml(match?.id ?? '')}"
+      data-brand="${escHtml(match?.brand ?? '')}"
+      data-model="${escHtml(match?.model ?? match?.sku ?? '')}"
+      data-retailer="${escHtml(meta.wordmark)}"
+      data-price="${Number.isFinite(retailer.price) ? retailer.price : 0}"
+    ><span class="retailer-brand-mark" aria-hidden="true">${escHtml(meta.mark)}</span><span class="retailer-brand-wordmark">${escHtml(meta.wordmark)}</span></a>`;
+  }
+
   function buildRetailerLinkGroupHtml(match) {
     const seen = new Set();
     const links = getRetailerSummaries(match)
@@ -760,44 +801,12 @@
       });
 
     if (links.length === 0) return '';
-    if (links.length >= 5) {
-      return `<div class="card-retailer-panel card-retailer-panel--dense">
-        <span class="card-retailer-heading">Check price at ${escHtml(links.length)} stores</span>
-        <div class="retailer-logo-rail" aria-label="Retailer product links">
-          ${links.map((retailer) => {
-          const displayName = safeRetailerDisplayName(retailer.name);
-          return `<a class="retailer-logo-dot" href="${escHtml(retailer.url)}" target="_blank" rel="sponsored nofollow noopener"
-            aria-label="Open ${escHtml(displayName)} product page"
-            title="${escHtml(displayName)}"
-            data-buy-click="1"
-            data-product-id="${escHtml(match?.id ?? '')}"
-            data-brand="${escHtml(match?.brand ?? '')}"
-            data-model="${escHtml(match?.model ?? match?.sku ?? '')}"
-            data-retailer="${escHtml(displayName)}"
-            data-price="${Number.isFinite(retailer.price) ? retailer.price : 0}"
-          ><span>${escHtml(retailerInitials(displayName))}</span></a>`;
-        }).join('')}
-        </div>
-        <span class="retailer-option-hint">Choose a retailer</span>
-      </div>`;
-    }
-    return `<div class="card-retailer-panel">
+    return `<div class="card-retailer-panel${links.length >= 5 ? ' card-retailer-panel--multi' : ''}">
       <span class="card-retailer-heading">Check price at${links.length > 1 ? ` ${escHtml(links.length)} stores` : ''}</span>
-      <div class="card-retailer-links" aria-label="Retailer product links">
-        ${links.map((retailer) => {
-        const displayName = safeRetailerDisplayName(retailer.name);
-        return `<a class="retailer-logo-link" href="${escHtml(retailer.url)}" target="_blank" rel="sponsored nofollow noopener"
-          aria-label="Open ${escHtml(displayName)} product page"
-          title="${escHtml(displayName)}"
-          data-buy-click="1"
-          data-product-id="${escHtml(match?.id ?? '')}"
-          data-brand="${escHtml(match?.brand ?? '')}"
-          data-model="${escHtml(match?.model ?? match?.sku ?? '')}"
-          data-retailer="${escHtml(displayName)}"
-          data-price="${Number.isFinite(retailer.price) ? retailer.price : 0}"
-        ><span class="retailer-logo-mark">${escHtml(retailerInitials(displayName))}</span><span class="retailer-logo-name">${escHtml(displayName)}</span></a>`;
-        }).join('')}
+      <div class="card-retailer-links retailer-brand-grid" aria-label="Retailer product links">
+        ${links.map((retailer) => buildRetailerBrandCard(match, retailer)).join('')}
       </div>
+      ${links.length >= 5 ? '<span class="retailer-option-hint">Choose a retailer</span>' : ''}
     </div>`;
   }
 
