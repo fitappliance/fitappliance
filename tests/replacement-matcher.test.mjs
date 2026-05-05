@@ -149,6 +149,49 @@ test('phase 50 replacement matcher: old-model suggestions only include verified 
   assert.deepEqual(suggestions.map((product) => product.id), ['dryer-verified-edv605']);
 });
 
+test('phase 50 replacement matcher: old-model suggestions prefer richer verified retailer coverage', async () => {
+  const { getReplacementSuggestionRows } = await loadModule();
+  const products = [
+    {
+      id: 'dryer-one-store-high-priority',
+      cat: 'dryer',
+      brand: 'SingleStore',
+      model: 'SS100',
+      displayName: 'SingleStore SS100 Dryer',
+      priorityScore: 99,
+      retailers: [
+        { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/singlestore-ss100-dryer/', p: null }
+      ],
+      w: 600,
+      h: 850,
+      d: 600
+    },
+    {
+      id: 'dryer-three-store-lower-priority',
+      cat: 'dryer',
+      brand: 'MultiStore',
+      model: 'MS100',
+      displayName: 'MultiStore MS100 Dryer',
+      priorityScore: 60,
+      retailers: [
+        { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/multistore-ms100-dryer/', p: null },
+        { n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/multistore-ms100-dryer', p: null },
+        { n: 'Bing Lee', url: 'https://www.binglee.com.au/products/multistore-ms100-dryer', p: null }
+      ],
+      w: 600,
+      h: 850,
+      d: 600
+    }
+  ];
+
+  const suggestions = getReplacementSuggestionRows(products, { category: 'dryer', limit: 2 });
+
+  assert.deepEqual(suggestions.map((product) => product.id), [
+    'dryer-three-store-lower-priority',
+    'dryer-one-store-high-priority'
+  ]);
+});
+
 test('phase 50 replacement matcher: retailerOnly matching ignores unverified old catalog rows', async () => {
   const { findReplacementSource } = await loadModule();
 
@@ -192,4 +235,38 @@ test('phase 50 replacement matcher: suggested dishwasher dimensions still return
 
   assert.ok(result.rows.length > 0, 'old-appliance estimated cavity should produce retailer-backed dishwasher results');
   assert.ok(result.rows.every((row) => SearchCore.hasRetailerLink(row)));
+});
+
+test('phase 50 replacement matcher: every real old-model suggestion yields at least one verified result after practical buffer', async () => {
+  const { buildReplacementDimensionState, getReplacementSuggestionRows } = await loadModule();
+  const cases = [
+    ['fridge', 'fridges.json'],
+    ['washing_machine', 'washing-machines.json'],
+    ['dishwasher', 'dishwashers.json'],
+    ['dryer', 'dryers.json']
+  ];
+
+  for (const [category, fileName] of cases) {
+    const products = readCatalogProducts(fileName);
+    const suggestions = getReplacementSuggestionRows(products, { category, limit: 200 });
+    assert.ok(suggestions.length > 0, `${category} should expose old-model suggestions`);
+
+    for (const suggestion of suggestions) {
+      const state = buildReplacementDimensionState(suggestion);
+      const result = SearchCore.searchWithFacets(products, {
+        cat: category,
+        ...state.dimensions,
+        clearanceMode: 'practical'
+      }, {}, {
+        retailerOnly: true,
+        limit: Number.MAX_SAFE_INTEGER
+      });
+
+      assert.ok(
+        result.rows.length > 0,
+        `${category} ${suggestion.brand} ${suggestion.model} should yield at least one verified-retailer result`
+      );
+      assert.ok(result.rows.every((row) => SearchCore.hasRetailerLink(row)));
+    }
+  }
 });

@@ -81,6 +81,20 @@ export function hasVerifiedRetailerLink(product = {}) {
   ));
 }
 
+function verifiedRetailerLinkCount(product = {}) {
+  if (!Array.isArray(product?.retailers)) return 0;
+  return product.retailers.filter((retailer) => (
+    isVerifiedRetailerProductPageUrl(retailer?.url ?? retailer?.href ?? retailer?.u ?? retailer?.link)
+  )).length;
+}
+
+function hasCompleteDimensions(product = {}) {
+  return [product?.w, product?.h, product?.d].every((value) => {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) && parsed > 0;
+  });
+}
+
 function scoreProduct(query, product) {
   const normalizedQuery = normalizeText(query);
   const compactQuery = normalizeToken(query);
@@ -137,7 +151,10 @@ export function getReplacementSuggestionRows(products, { category, limit = 160, 
     .filter((product) => !wantedCategory || product?.cat === wantedCategory)
     .filter((product) => product?.model || product?.displayName)
     .filter((product) => !retailerOnly || hasVerifiedRetailerLink(product))
+    .filter(hasCompleteDimensions)
     .sort((left, right) => {
+      const retailerDelta = verifiedRetailerLinkCount(right) - verifiedRetailerLinkCount(left);
+      if (retailerDelta !== 0) return retailerDelta;
       const scoreDelta = Number(right?.priorityScore ?? 0) - Number(left?.priorityScore ?? 0);
       if (scoreDelta !== 0) return scoreDelta;
       return productLabel(left).localeCompare(productLabel(right), 'en-AU', { sensitivity: 'base' });
