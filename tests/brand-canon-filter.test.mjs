@@ -13,6 +13,8 @@ test('canonicalizeBrand applies alias map case-insensitively', () => {
   assert.equal(canonicalizeBrand('MIDEA'), 'Midea');
   assert.equal(canonicalizeBrand('midea'), 'Midea');
   assert.equal(canonicalizeBrand(' MIDEA '), 'Midea');
+  assert.equal(canonicalizeBrand('MIELE'), 'Miele');
+  assert.equal(canonicalizeBrand('miele'), 'Miele');
 });
 
 test('canonicalizeBrand returns trimmed original for unknown brands', () => {
