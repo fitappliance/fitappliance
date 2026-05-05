@@ -283,6 +283,13 @@ test('phase 52 replacement UX: homepage wires old appliance matcher controls', (
   assert.match(indexHtml, /buildReplacementDimensionState\(/);
 });
 
+test('phase 52 replacement UX: unmatched old models guide users back to cavity dimensions', () => {
+  const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+
+  assert.match(indexHtml, /We couldn't find exact dimensions/);
+  assert.match(indexHtml, /Enter your cavity dimensions below to find current replacements/);
+});
+
 test('phase 52 space alert UX: homepage renders non-standard space alerts from dimensions', () => {
   const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
 

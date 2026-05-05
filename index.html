@@ -1271,8 +1271,10 @@ function useOldModelSize() {
   const query = input?.value?.trim() ?? '';
   const match = findReplacementSource(query, PRODUCTS, { category: currentCat });
   if (!match) {
-    if (status) status.textContent = '';
-    showToast('Old model not found — try brand plus model code');
+    if (status) {
+      status.textContent = `We couldn't find exact dimensions for "${query}". Enter your cavity dimensions below to find current replacements.`;
+    }
+    showToast('Old model not found — enter cavity dimensions to find replacements');
     return;
   }
 
