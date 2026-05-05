@@ -16,6 +16,32 @@ function isReviewedRetailerProductPath(parsedUrl) {
   return false;
 }
 
+function categoryEntries(document, category) {
+  return Object.entries(document.products)
+    .filter(([slug, entry]) => {
+      if (entry?.approved !== true) return false;
+      if (category === 'dryer') return slug.startsWith('dryer-') || slug.startsWith('dr');
+      return slug.startsWith(`${category}-`);
+    });
+}
+
+function categoryRetailerStats(entries) {
+  const retailerCounts = new Map();
+  let entriesWithNonAoRetailer = 0;
+
+  for (const [, entry] of entries) {
+    const retailers = entry.retailers ?? [];
+    if (retailers.some((retailer) => retailer.n !== 'Appliances Online')) {
+      entriesWithNonAoRetailer += 1;
+    }
+    for (const retailer of retailers) {
+      retailerCounts.set(retailer.n, (retailerCounts.get(retailer.n) ?? 0) + 1);
+    }
+  }
+
+  return { entriesWithNonAoRetailer, retailerCounts };
+}
+
 test('manual retailers: document has stable schema metadata and consistent approved_count', () => {
   const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
 
@@ -147,6 +173,40 @@ test('manual retailers: dishwasher and dryer rounds use reviewed product-page li
   }
 });
 
+test('manual retailers: non-fridge categories keep reviewed non-AO retailer coverage', () => {
+  const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
+  const minimums = {
+    dishwasher: {
+      entriesWithNonAoRetailer: 6,
+      retailerCounts: { 'The Good Guys': 6, 'Harvey Norman': 2, 'Bing Lee': 4 },
+    },
+    dryer: {
+      entriesWithNonAoRetailer: 2,
+      retailerCounts: { 'The Good Guys': 2, 'Bing Lee': 2 },
+    },
+    washing_machine: {
+      entriesWithNonAoRetailer: 9,
+      retailerCounts: { 'The Good Guys': 6, 'Harvey Norman': 1, 'Bing Lee': 7 },
+    },
+  };
+
+  for (const [category, expected] of Object.entries(minimums)) {
+    const stats = categoryRetailerStats(categoryEntries(document, category));
+
+    assert.ok(
+      stats.entriesWithNonAoRetailer >= expected.entriesWithNonAoRetailer,
+      `${category} expected at least ${expected.entriesWithNonAoRetailer} products with non-AO retailer links, got ${stats.entriesWithNonAoRetailer}`,
+    );
+
+    for (const [retailer, minimumCount] of Object.entries(expected.retailerCounts)) {
+      assert.ok(
+        (stats.retailerCounts.get(retailer) ?? 0) >= minimumCount,
+        `${category} expected at least ${minimumCount} ${retailer} links, got ${stats.retailerCounts.get(retailer) ?? 0}`,
+      );
+    }
+  }
+});
+
 test('manual retailers: known The Good Guys category redirects are not exposed as product links', () => {
   const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
   const knownCategoryRedirects = [
@@ -157,6 +217,7 @@ test('manual retailers: known The Good Guys category redirects are not exposed a
     'fridge-arf3570',
     'fridge-arf2887',
     'washing_machine-acw1345',
+    'washing_machine-acw1469',
   ];
 
   for (const slug of knownCategoryRedirects) {
