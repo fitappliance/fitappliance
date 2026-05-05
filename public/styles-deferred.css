@@ -124,7 +124,7 @@
   font-weight: 700;
   padding: 7px 11px;
   cursor: pointer;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
 }
 .install-prompt__btn--ghost {
   border: 1px solid var(--border);
@@ -238,7 +238,7 @@
 .sort-sel {
   padding:8px 32px 8px 12px;
   border:1.5px solid var(--border);border-radius:var(--r-sm);
-  font-family:'Outfit',sans-serif;font-size:13px;
+  font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;font-size:13px;
   color:var(--ink);background:var(--white);cursor:pointer;
   appearance:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237A766E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
@@ -319,10 +319,10 @@
   display:flex;align-items:center;justify-content:center;
 }
 .p-row-body { min-width:0; }
-.p-row-meta { display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap; }
-.p-row-brand { font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3); }
+.p-row-meta { display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap;font-size:13px; }
+.p-row-brand { font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3); }
 .p-row-name { font-size:16px;font-weight:600;color:var(--ink);margin-bottom:8px;line-height:1.3; }
-.p-row-model { font-size:11px;font-weight:600;color:var(--ink-3);margin:-3px 0 8px;letter-spacing:.01em; }
+.p-row-model { font-size:13px;font-weight:600;color:var(--ink-3);margin:-3px 0 8px;letter-spacing:.01em; }
 .p-row-dims { display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px; }
 .p-row-actions {
   grid-column:2;
@@ -337,7 +337,7 @@
   border-top:1px solid var(--border);
 }
 .p-row-price { font-family:'Instrument Serif',serif;font-size:24px;color:var(--ink);text-align:right; }
-.p-row-price small { font-family:'Outfit',sans-serif;font-size:11px;color:var(--ink-3); }
+.p-row-price small { font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;font-size:12px;color:var(--ink-3); }
 .p-row-action-buttons {
   display:flex;
   align-items:center;
@@ -366,32 +366,32 @@
 .sponsored-tag {
   position:absolute;top:10px;right:10px;
   background:rgba(255,255,255,.9);border:1px solid var(--border);
-  color:var(--ink-3);font-size:9px;font-weight:700;
+  color:var(--ink-3);font-size:11px;font-weight:700;
   padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.06em;
 }
 .card-body { padding:16px 18px;flex:1;display:flex;flex-direction:column; }
-.c-brand { font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);margin-bottom:3px; }
+.c-brand { font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);margin-bottom:3px; }
 .c-name { font-size:16px;font-weight:600;color:var(--ink);margin-bottom:10px;line-height:1.3; }
 .c-dims { display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px; }
 .dim-tag {
   background:var(--green-bg);color:var(--green);
-  border-radius:6px;padding:2px 8px;font-size:11px;font-weight:600;
+  border-radius:6px;padding:2px 8px;font-size:13px;font-weight:600;letter-spacing:.02em;
 }
-.c-features { font-size:12px;color:var(--ink-3);margin-bottom:10px;line-height:1.6; }
+.c-features { font-size:13px;color:var(--ink-3);margin-bottom:10px;line-height:1.6; }
 
 /* Energy stars */
 .c-energy { display:flex;align-items:center;gap:7px;margin-bottom:12px; }
 .stars { display:flex;gap:1px; }
 .star-f { color:#E8A020;font-size:14px; }
 .star-e { color:var(--border);font-size:14px; }
-.energy-lbl { font-size:11.5px;color:var(--ink-3); }
+.energy-lbl { font-size:12px;color:var(--ink-3); }
 
 /* TCO badge */
-.tco-row { background:var(--green-bg);border-radius:var(--r-sm);padding:8px 10px;margin-bottom:12px;font-size:12px;color:var(--green); }
+.tco-row { background:var(--green-bg);border-radius:var(--r-sm);padding:8px 10px;margin-bottom:12px;font-size:13px;color:var(--green); }
 .tco-row strong { font-weight:700; }
 
 /* Rebate badge */
-.rebate-row { background:var(--amber-bg);border-radius:var(--r-sm);padding:7px 10px;margin-bottom:10px;font-size:11.5px;color:var(--amber);display:flex;align-items:center;gap:5px; }
+.rebate-row { background:var(--amber-bg);border-radius:var(--r-sm);padding:7px 10px;margin-bottom:10px;font-size:12px;color:var(--amber);display:flex;align-items:center;gap:5px; }
 
 /* Card footer */
 .c-footer {
@@ -400,7 +400,7 @@
   display:flex;align-items:center;justify-content:space-between;gap:8px;
 }
 .c-price { font-family:'Instrument Serif',serif;font-size:22px;color:var(--ink); }
-.c-price small { font-family:'Outfit',sans-serif;font-size:11px;color:var(--ink-3);display:block;line-height:1; }
+.c-price small { font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;font-size:12px;color:var(--ink-3);display:block;line-height:1; }
 .c-actions { display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end; }
 .btn-search-online {
   display:inline-flex;
@@ -422,7 +422,7 @@
   color:#fff;
 }
 .btn-search-note {
-  font-size:10px;
+  font-size:11px;
   font-weight:400;
   color:#888;
   margin-top:1px;
@@ -454,7 +454,7 @@
 .btn-buy {
   padding:9px 16px;background:var(--ink);color:#fff;
   border:none;border-radius:var(--r-sm);
-  font-family:'Outfit',sans-serif;font-size:12.5px;font-weight:700;
+  font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;font-size:12.5px;font-weight:700;
   cursor:pointer;text-decoration:none;
   display:inline-flex;align-items:center;gap:4px;
   transition:background .15s;white-space:nowrap;
@@ -706,11 +706,11 @@
 .ret-name { font-weight:600; }
 .ret-price { color:var(--copper);font-weight:700; }
 /* ACCC disclosure per link */
-.ret-disc { font-size:10px;color:var(--ink-3);font-style:italic; }
+.ret-disc { font-size:11px;color:var(--ink-3);font-style:italic; }
 
 /* Affiliate disclosure block */
 .aff-disclosure {
-  font-size:11px;color:var(--ink-3);
+  font-size:12px;color:var(--ink-3);
   padding:8px 18px 14px;
   border-top:1px dashed var(--border);
   line-height:1.5;

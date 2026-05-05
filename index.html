@@ -57,7 +57,7 @@
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
-body { font-family: 'Outfit', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+body { font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; letter-spacing: .01em; }
 
 /* ─── UTILITY ─── */
 .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0; }
@@ -205,7 +205,7 @@ nav {
   display:flex;align-items:center;gap:6px;
   padding:8px 16px;border-radius:var(--r-sm);
   border:1.5px solid var(--border);background:transparent;
-  font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;
+  font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;font-size:13px;font-weight:600;
   color:var(--ink-3);cursor:pointer;transition:all .18s;
 }
 .cat-pill:hover { border-color:var(--copper);color:var(--copper); }
@@ -223,7 +223,7 @@ nav {
 .field-wrap input {
   width:100%;padding:12px 40px 12px 14px;
   border:1.5px solid var(--border);border-radius:var(--r-sm);
-  font-family:'Outfit',sans-serif;font-size:16px;font-weight:500;
+  font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;font-size:16px;font-weight:500;
   color:var(--ink);background:var(--paper);
   transition:border-color .18s,box-shadow .18s;
   -moz-appearance:textfield;
@@ -267,7 +267,7 @@ nav {
   padding:11px 13px;
   border:1.5px solid var(--border);
   border-radius:var(--r-sm);
-  font-family:'Outfit',sans-serif;
+  font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
   font-size:14px;
   font-weight:500;
   color:var(--ink);
@@ -280,7 +280,7 @@ nav {
   color:#fff;
   border-radius:var(--r-sm);
   padding:11px 14px;
-  font-family:'Outfit',sans-serif;
+  font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
   font-size:13px;
   font-weight:700;
   cursor:pointer;
