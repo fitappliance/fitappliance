@@ -44,6 +44,37 @@ function productLabel(product = {}) {
   return displayName || brand;
 }
 
+function isVerifiedRetailerProductPageUrl(url) {
+  let parsed;
+  try {
+    parsed = new URL(String(url ?? '').trim());
+  } catch {
+    return false;
+  }
+  const host = parsed.hostname.replace(/^www\./, '').toLowerCase();
+  const pathname = parsed.pathname.replace(/\/+$/, '').toLowerCase();
+  if (!['http:', 'https:'].includes(parsed.protocol)) return false;
+  if (!host || pathname === '' || pathname === '/') return false;
+  if (['q', 'query', 'searchterm', 'text', 'keyword'].some((key) => parsed.searchParams.has(key))) return false;
+  if (/\/(search|searchdisplay|catalogsearch|collections?|category|categories|cart|checkout)(\/|$)/i.test(pathname)) {
+    return false;
+  }
+
+  if (host.endsWith('jbhifi.com.au')) return /^\/products\//.test(pathname);
+  if (host.endsWith('appliancesonline.com.au') || host.endsWith('appliances-online.com.au')) return /^\/product\//.test(pathname);
+  if (host.endsWith('binglee.com.au')) return /^\/products\//.test(pathname);
+  if (host.endsWith('harveynorman.com.au')) return /\.html$/.test(pathname);
+  if (host.endsWith('thegoodguys.com.au')) return /^\/[^/]+-[^/]+$/.test(pathname);
+
+  return false;
+}
+
+export function hasVerifiedRetailerLink(product = {}) {
+  return Array.isArray(product?.retailers) && product.retailers.some((retailer) => (
+    isVerifiedRetailerProductPageUrl(retailer?.url ?? retailer?.href ?? retailer?.u ?? retailer?.link)
+  ));
+}
+
 function scoreProduct(query, product) {
   const normalizedQuery = normalizeText(query);
   const compactQuery = normalizeToken(query);
@@ -68,11 +99,12 @@ function scoreProduct(query, product) {
   return 0;
 }
 
-export function findReplacementSource(query, products, { category } = {}) {
+export function findReplacementSource(query, products, { category, retailerOnly = false } = {}) {
   const rows = Array.isArray(products) ? products : [];
   const wantedCategory = String(category ?? '').trim();
   const candidates = rows
     .filter((product) => !wantedCategory || product?.cat === wantedCategory)
+    .filter((product) => !retailerOnly || hasVerifiedRetailerLink(product))
     .map((product) => ({
       product,
       score: scoreProduct(query, product)
@@ -90,6 +122,21 @@ export function findReplacementSource(query, products, { category } = {}) {
     confidence: best.score >= 90 ? 'high' : best.score >= 75 ? 'medium' : 'low',
     label: productLabel(best.product)
   };
+}
+
+export function getReplacementSuggestionRows(products, { category, limit = 160, retailerOnly = true } = {}) {
+  const rows = Array.isArray(products) ? products : [];
+  const wantedCategory = String(category ?? '').trim();
+  return rows
+    .filter((product) => !wantedCategory || product?.cat === wantedCategory)
+    .filter((product) => product?.model || product?.displayName)
+    .filter((product) => !retailerOnly || hasVerifiedRetailerLink(product))
+    .sort((left, right) => {
+      const scoreDelta = Number(right?.priorityScore ?? 0) - Number(left?.priorityScore ?? 0);
+      if (scoreDelta !== 0) return scoreDelta;
+      return productLabel(left).localeCompare(productLabel(right), 'en-AU', { sensitivity: 'base' });
+    })
+    .slice(0, Number.isFinite(Number(limit)) ? Math.max(0, Number(limit)) : 160);
 }
 
 export function buildReplacementDimensionState(product = {}) {

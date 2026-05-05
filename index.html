@@ -941,7 +941,7 @@ import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/produ
 import { displayBrandName } from './scripts/ui/brand-utils.js';
 import { renderFreshnessBanner } from './scripts/ui/freshness.js';
 import { normalizeSearchDimensions } from './scripts/search-inputs.mjs';
-import { buildReplacementDimensionState, findReplacementSource } from './scripts/replacement-matcher.mjs';
+import { buildReplacementDimensionState, findReplacementSource, getReplacementSuggestionRows } from './scripts/replacement-matcher.mjs';
 import { buildSpaceAlerts } from './scripts/space-alerts.mjs';
 import { buildBrandOptions } from './scripts/ui/filters.js';
 import { computeFitScore } from './scripts/ui/fit-score.js';
@@ -1247,15 +1247,7 @@ function replacementOptionLabel(product = {}) {
 function renderOldModelSuggestions() {
   const list = document.getElementById('oldModelSuggestions');
   if (!list) return;
-  const rows = PRODUCTS
-    .filter((product) => product?.cat === currentCat)
-    .filter((product) => product?.model || product?.displayName)
-    .sort((left, right) => {
-      const scoreDelta = Number(right?.priorityScore ?? 0) - Number(left?.priorityScore ?? 0);
-      if (scoreDelta !== 0) return scoreDelta;
-      return replacementOptionLabel(left).localeCompare(replacementOptionLabel(right), 'en-AU', { sensitivity: 'base' });
-    })
-    .slice(0, 160);
+  const rows = getReplacementSuggestionRows(PRODUCTS, { category: currentCat, limit: 160 });
   list.innerHTML = rows
     .map((product) => `<option value="${escHtml(replacementOptionLabel(product))}">${escHtml(product.displayName ?? product.model ?? '')}</option>`)
     .join('');
@@ -1265,7 +1257,7 @@ function useOldModelSize() {
   const input = document.getElementById('oldModelInput');
   const status = document.getElementById('replacementStatus');
   const query = input?.value?.trim() ?? '';
-  const match = findReplacementSource(query, PRODUCTS, { category: currentCat });
+  const match = findReplacementSource(query, PRODUCTS, { category: currentCat, retailerOnly: true });
   if (!match) {
     if (status) {
       status.textContent = `We couldn't find exact dimensions for "${query}". Enter your cavity dimensions below to find current replacements.`;
