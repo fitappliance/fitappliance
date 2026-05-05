@@ -18,12 +18,13 @@ test('phase 42b brand-canon: document has schema v1 and no drop brands', () => {
   assert.deepEqual(doc.policies.drop_brands, []);
 });
 
-test('phase 42b brand-canon: alias map has 24 non-chained entries', () => {
+test('phase 42b brand-canon: alias map has 25 non-chained entries', () => {
   const doc = loadCanonDocument();
   const aliasMap = doc.policies.alias_map;
   const keys = Object.keys(aliasMap);
 
-  assert.equal(keys.length, 24);
+  assert.equal(keys.length, 25);
+  assert.equal(aliasMap.MIELE, 'Miele');
   for (const [source, target] of Object.entries(aliasMap)) {
     assert.equal(typeof source, 'string');
     assert.equal(typeof target, 'string');
@@ -36,7 +37,9 @@ test('phase 42b brand-canon: evidence records all alias collisions with reason',
   const doc = loadCanonDocument();
   const collisions = doc.evidence.alias_collisions;
 
-  assert.equal(Object.keys(collisions).length, 24);
+  assert.equal(Object.keys(collisions).length, 25);
+  assert.equal(collisions.miele.chosen_canonical, 'Miele');
+  assert.deepEqual(collisions.miele.variants, ['MIELE', 'Miele']);
   for (const row of Object.values(collisions)) {
     assert.ok(Array.isArray(row.variants));
     assert.ok(row.variants.length >= 2);

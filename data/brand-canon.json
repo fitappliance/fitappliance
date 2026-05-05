@@ -19,6 +19,7 @@
       "ILVE": "Ilve",
       "KOGAN": "Kogan",
       "LIEBHERR": "Liebherr",
+      "MIELE": "Miele",
       "MIDEA": "Midea",
       "nce": "NCE",
       "NORJ": "Norj",
@@ -165,6 +166,15 @@
         "variant_stats": {
           "Liebherr": { "total": 11, "withRetailers": 0, "cats": ["fridge"] },
           "LIEBHERR": { "total": 40, "withRetailers": 0, "cats": ["fridge"] }
+        }
+      },
+      "miele": {
+        "variants": ["MIELE", "Miele"],
+        "chosen_canonical": "Miele",
+        "reason": "display-friendly canonical; MIELE has withRetailers=0 and Miele is the public brand casing",
+        "variant_stats": {
+          "MIELE": { "total": 63, "withRetailers": 0, "cats": ["fridge", "dishwasher", "washing_machine"] },
+          "Miele": { "total": 0, "withRetailers": 0, "cats": [] }
         }
       },
       "midea": {

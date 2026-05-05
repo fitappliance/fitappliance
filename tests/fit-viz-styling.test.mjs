@@ -72,7 +72,7 @@ test('phase 48 card polish: online compare button uses one clear CTA style', () 
   assert.match(block, /border:\s*1px solid #d97706/);
   assert.match(block, /font-size:\s*13px/);
   assert.match(hover, /background:\s*#d97706/);
-  assert.match(note, /font-size:\s*10px/);
+  assert.match(note, /font-size:\s*11px/);
   assert.match(note, /color:\s*#888/);
 });
 
