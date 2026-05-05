@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-05-02",
+  "last_updated": "2026-05-05",
   "approved_count": 66,
   "products": {
     "fridge-arf3177": {
@@ -1599,7 +1599,7 @@
       }
     },
     "washing_machine-acw1319": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -1610,10 +1610,24 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/hisense-10kg-front-load-washer-hwfs1015e",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-the-good-guys"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/front-load-washer-10kg-series-5-2023-hwfs1015e",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Hisense HWFS1015E 10kg Front Load Washing Machine.",
-      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "notes": "Appliances Online exact match: Hisense HWFS1015E 10kg Front Load Washing Machine. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Bing Lee.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Hisense",
         "model": "HWFS1015E",
@@ -1622,7 +1636,7 @@
       }
     },
     "washing_machine-acw1462": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -1633,10 +1647,17 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/12kg-front-load-5-series-hwf5s1214",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Hisense HWF5S1214 12kg Front Load Washing Machine.",
-      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "notes": "Appliances Online exact match: Hisense HWF5S1214 12kg Front Load Washing Machine. Additional reviewed retailer links added 2026-05-05: Appliances Online, Bing Lee.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Hisense",
         "model": "HWF5S1214",
@@ -1645,7 +1666,7 @@
       }
     },
     "washing_machine-acw1734": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -1656,10 +1677,17 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/hisense-12kg-series-5i-front-load-washer-hwf5i1215",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-the-good-guys"
         }
       ],
-      "notes": "Appliances Online exact match: Hisense HWF5I1215 Series 5I 12kg Max Drum Front Load Washing Machine.",
-      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "notes": "Appliances Online exact match: Hisense HWF5I1215 Series 5I 12kg Max Drum Front Load Washing Machine. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Hisense",
         "model": "HWF5I1215",
@@ -1668,7 +1696,7 @@
       }
     },
     "washing_machine-acw1520": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -1679,10 +1707,17 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/series-8i-10kg-front-load-washer-hwf8i1015bx",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Hisense HWF8I1015BX Series 8I 10kg TFT Front Load Washer.",
-      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "notes": "Appliances Online exact match: Hisense HWF8I1015BX Series 8I 10kg TFT Front Load Washer. Additional reviewed retailer links added 2026-05-05: Appliances Online, Bing Lee.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Hisense",
         "model": "HWF8I1015BX",
@@ -1691,7 +1726,7 @@
       }
     },
     "washing_machine-acw1701": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -1709,10 +1744,17 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-bing-lee"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-front-load-washer-wh1060p4",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-the-good-guys"
         }
       ],
-      "notes": "Appliances Online and Bing Lee exact match: Fisher & Paykel WH1060P4 10kg front load washer.",
-      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "notes": "Appliances Online and Bing Lee exact match: Fisher & Paykel WH1060P4 10kg front load washer. Additional reviewed retailer links added 2026-05-05: Appliances Online, Bing Lee, The Good Guys.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Fisher & Paykel",
         "model": "WH1060P4",
@@ -1721,7 +1763,7 @@
       }
     },
     "washing_machine-acw1341": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -1732,10 +1774,24 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-top-load-washer-wl8058g1",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-the-good-guys"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/top-loader-washing-machine-8kg-uv-sanitise-wl8058g1",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Fisher & Paykel WL8058G1 8kg top load washing machine.",
-      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "notes": "Appliances Online exact match: Fisher & Paykel WL8058G1 8kg top load washing machine. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Bing Lee.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Fisher & Paykel",
         "model": "WL8058G1",
@@ -1767,7 +1823,7 @@
       }
     },
     "washing_machine-acw1242": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -1778,10 +1834,17 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/westinghouse-10kg-front-load-washer-wwf1044m7sa",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-the-good-guys"
         }
       ],
-      "notes": "Appliances Online exact match: Westinghouse WWF1044M7SA 10kg EasyCare front load washing machine.",
-      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "notes": "Appliances Online exact match: Westinghouse WWF1044M7SA 10kg EasyCare front load washing machine. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Westinghouse",
         "model": "WWF1044M7SA",
@@ -1813,7 +1876,7 @@
       }
     },
     "washing_machine-acw1478": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -1824,10 +1887,17 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/white-9kg-700-series-fron-load-ewf9043r7wc",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Electrolux EWF9043R7WC 9kg 700 Series front load washing machine.",
-      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "notes": "Appliances Online exact match: Electrolux EWF9043R7WC 9kg 700 Series front load washing machine. Additional reviewed retailer links added 2026-05-05: Appliances Online, Bing Lee.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Electrolux",
         "model": "EWF9043R7WC",
@@ -1836,7 +1906,7 @@
       }
     },
     "washing_machine-acw1469": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -1847,10 +1917,31 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/electrolux-10kg-front-load-washer-ewf1043r7wc",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-the-good-guys"
+        },
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au/electrolux-10kg-ultimate-care-700-front-load-washing-machine-white.html",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-harvey-norman"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/white-10kg-900-series-fronload-ewf1043r7wc",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Electrolux EWF1043R7WC 10kg 700 Series front load washing machine.",
-      "approved_by": "phase-50-washing-machine-retailers-round-1",
+      "notes": "Appliances Online exact match: Electrolux EWF1043R7WC 10kg 700 Series front load washing machine. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Harvey Norman, Bing Lee.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Electrolux",
         "model": "EWF1043R7WC",
@@ -1909,7 +2000,7 @@
       }
     },
     "dishwasher-adw0961": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -1920,10 +2011,24 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/haier-freestanding-dishwasher-satina-hdw15f3s1",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-the-good-guys"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/15pl-satina-steam-dishwasher-hdw15f3s1",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Haier HDW15F3S1 60cm freestanding dishwasher.",
-      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "notes": "Appliances Online exact match: Haier HDW15F3S1 60cm freestanding dishwasher. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Bing Lee.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Haier",
         "model": "HDW15F3S1",
@@ -1932,7 +2037,7 @@
       }
     },
     "dishwasher-adw1276": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -1943,10 +2048,24 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/haier-600-series-freestanding-dishwasher-steam-dual-power-spray-arm-black-hdw15f4b1",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-the-good-guys"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/600-series-black-freestanding-dishwasher-hdw15f4b1",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Haier HDW15F4B1 60cm black freestanding dishwasher.",
-      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "notes": "Appliances Online exact match: Haier HDW15F4B1 60cm black freestanding dishwasher. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Bing Lee.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Haier",
         "model": "HDW15F4B1",
@@ -1955,7 +2074,7 @@
       }
     },
     "dishwasher-adw1146": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -1966,10 +2085,24 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/haier-freestanding-dishwasher-black-hdw15f1b1",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-the-good-guys"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/15pl-black-dishwasher-hdw15f1b1",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Haier HDW15F1B1 60cm freestanding dishwasher with sanitise.",
-      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "notes": "Appliances Online exact match: Haier HDW15F1B1 60cm freestanding dishwasher with sanitise. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Bing Lee.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Haier",
         "model": "HDW15F1B1",
@@ -1978,7 +2111,7 @@
       }
     },
     "dishwasher-adw1233": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -1989,10 +2122,17 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/haier-integrated-dishwasher-hdw15u2i1",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-the-good-guys"
         }
       ],
-      "notes": "Appliances Online exact match: Haier HDW15U2I1 60cm fully integrated dishwasher.",
-      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "notes": "Appliances Online exact match: Haier HDW15U2I1 60cm fully integrated dishwasher. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Haier",
         "model": "HDW15U2I1",
@@ -2024,7 +2164,7 @@
       }
     },
     "dishwasher-adw0959": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -2035,10 +2175,24 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-integrated-dishwasher-tall-dw60ut4i2",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-the-good-guys"
+        },
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au/fisher-paykel-series-9-integrated-tall-dishwasher.html",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-harvey-norman"
         }
       ],
-      "notes": "Appliances Online exact match: Fisher & Paykel DW60UT4I2 tall integrated dishwasher.",
-      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "notes": "Appliances Online exact match: Fisher & Paykel DW60UT4I2 tall integrated dishwasher. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Harvey Norman.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Fisher & Paykel",
         "model": "DW60UT4I2",
@@ -2047,7 +2201,7 @@
       }
     },
     "dishwasher-adw0956": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -2058,10 +2212,31 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-black-glass-dw60uzt4b2",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-the-good-guys"
+        },
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au/fisher-paykel-series-9-contemporary-tall-built-under-dishwasher-black.html",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-harvey-norman"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/60cm-built-under-dishwasher-dw60uzt4b2",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Fisher & Paykel DW60UZT4B2 tall built-under dishwasher.",
-      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "notes": "Appliances Online exact match: Fisher & Paykel DW60UZT4B2 tall built-under dishwasher. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Harvey Norman, Bing Lee.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Fisher & Paykel",
         "model": "DW60UZT4B2",
@@ -2231,7 +2406,7 @@
       }
     },
     "dryer-acd0788": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -2242,10 +2417,24 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/electrolux-6kg-vented-dryer-edv605h3wc",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-the-good-guys"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/6kg-300-series-vented-dryer-edv605h3wc",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Electrolux EDV605H3WC 6kg vented clothes dryer.",
-      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "notes": "Appliances Online exact match: Electrolux EDV605H3WC 6kg vented clothes dryer. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Bing Lee.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Electrolux",
         "model": "EDV605H3WC",
@@ -2254,7 +2443,7 @@
       }
     },
     "dryer-acd0789": {
-      "researched_at": "2026-05-01",
+      "researched_at": "2026-05-05",
       "approved": true,
       "confidence": "high",
       "match_type": "exact",
@@ -2265,10 +2454,24 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
+        },
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/electrolux-7kg-vented-dryer-edv705h3wc",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-the-good-guys"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/7kg-300-series-vented-dryer-edv705h3wc",
+          "p": null,
+          "verified_at": "2026-05-05",
+          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Electrolux EDV705H3WC 7kg vented clothes dryer.",
-      "approved_by": "phase-50-dishwasher-dryer-retailers-round-1",
+      "notes": "Appliances Online exact match: Electrolux EDV705H3WC 7kg vented clothes dryer. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Bing Lee.",
+      "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Electrolux",
         "model": "EDV705H3WC",

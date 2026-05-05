@@ -147,6 +147,47 @@ test('manual retailers: dishwasher and dryer rounds use reviewed product-page li
   }
 });
 
+test('manual retailers: non-fridge categories include reviewed non-AO retailer coverage', () => {
+  const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
+  const nonAoByCategory = {
+    dishwasher: [],
+    dryer: [],
+    washing_machine: [],
+  };
+
+  for (const [slug, entry] of Object.entries(document.products)) {
+    if (!entry?.approved) continue;
+    const category = slug.startsWith('washing_machine-')
+      ? 'washing_machine'
+      : slug.startsWith('dishwasher-')
+        ? 'dishwasher'
+        : slug.startsWith('dryer-') || slug.startsWith('dr')
+          ? 'dryer'
+          : null;
+    if (!category) continue;
+
+    for (const retailer of entry.retailers ?? []) {
+      if (retailer?.n === 'Appliances Online') continue;
+      const parsed = new URL(retailer.url);
+      assert.ok(isReviewedRetailerProductPath(parsed), `${slug} ${retailer.n} must be a direct product URL`);
+      nonAoByCategory[category].push(`${slug}:${retailer.n}`);
+    }
+  }
+
+  assert.ok(
+    nonAoByCategory.dishwasher.length >= 8,
+    `expected at least 8 reviewed non-AO dishwasher links, got ${nonAoByCategory.dishwasher.length}`,
+  );
+  assert.ok(
+    nonAoByCategory.dryer.length >= 4,
+    `expected at least 4 reviewed non-AO dryer links, got ${nonAoByCategory.dryer.length}`,
+  );
+  assert.ok(
+    nonAoByCategory.washing_machine.length >= 10,
+    `expected at least 10 reviewed non-AO washing-machine links, got ${nonAoByCategory.washing_machine.length}`,
+  );
+});
+
 test('manual retailers: known The Good Guys category redirects are not exposed as product links', () => {
   const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
   const knownCategoryRedirects = [
