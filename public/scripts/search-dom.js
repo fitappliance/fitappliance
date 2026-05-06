@@ -1834,6 +1834,8 @@
 
   function renderCompareModal(container, {
     items = [],
+    shareUrl = '',
+    onShare,
     onClose
   } = {}) {
     if (!container) return;
@@ -1878,7 +1880,10 @@
     body.innerHTML = `
       <div class="compare-v2-toolbar">
         <p>Side-by-side fit, delivery, and retailer data. Differences are highlighted.</p>
-        <button type="button" class="secondary compare-diff-toggle" data-compare-differences-only aria-pressed="false">Only show differences</button>
+        <div class="compare-v2-actions">
+          ${shareUrl ? '<button type="button" class="compare-share-link" data-compare-share>Copy compare link</button>' : ''}
+          <button type="button" class="secondary compare-diff-toggle" data-compare-differences-only aria-pressed="false">Only show differences</button>
+        </div>
       </div>
       ${renderCompareInsightPanel(cells)}
       ${renderCompareReportSummary(cells)}
@@ -1895,6 +1900,9 @@
       body.querySelectorAll('[data-compare-same-row="true"]').forEach((row) => {
         row.hidden = next;
       });
+    });
+    body.querySelector('[data-compare-share]')?.addEventListener('click', () => {
+      onShare?.(shareUrl);
     });
     const action = doc.createElement('button');
     action.type = 'button';

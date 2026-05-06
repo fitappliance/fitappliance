@@ -152,6 +152,28 @@ test('phase 51 compare tool: report recommends a starting point and tags product
   assert.match(headers[2].textContent, /Best fit/);
 });
 
+test('phase 51 compare tool: modal can copy a shareable compare link', async () => {
+  const { renderCompareModal } = await loadSearchDom();
+  const window = makeWindow();
+  const modal = window.document.getElementById('modal');
+  let copied = '';
+
+  renderCompareModal(modal, {
+    items: [makeEntry('a'), makeEntry('b')],
+    shareUrl: 'https://fitappliance.com.au/?cat=fridge&compareIds=a,b',
+    onShare: (url) => {
+      copied = url;
+    }
+  });
+
+  const copyButton = modal.querySelector('[data-compare-share]');
+  assert.ok(copyButton, 'share button should render when shareUrl is provided');
+  assert.match(copyButton.textContent, /Copy compare link/);
+
+  copyButton.click();
+  assert.equal(copied, 'https://fitappliance.com.au/?cat=fridge&compareIds=a,b');
+});
+
 test('phase 51 compare tool: differing values are highlighted and only-differences toggle hides same rows', async () => {
   const { renderCompareModal } = await loadSearchDom();
   const window = makeWindow();
@@ -268,10 +290,19 @@ test('phase 51 compare tool: homepage compare snapshots carry fit, clearance, de
   assert.match(indexHtml, /filteredResults\.find\(\(row\) => row\.id === id\) \|\| PRODUCTS\.find/);
 });
 
+test('phase 51 compare tool: homepage restores and shares compare IDs through URL state', () => {
+  assert.match(indexHtml, /function restoreCompareFromUrlParam/);
+  assert.match(indexHtml, /compareIds/);
+  assert.match(indexHtml, /function buildCompareShareUrl/);
+  assert.match(indexHtml, /copyCompareShareLink/);
+  assert.match(indexHtml, /shareUrl:\s*buildCompareShareUrl\(\)/);
+});
+
 test('phase 51 compare tool: deferred CSS supports sticky header and highlighted differences', () => {
   assert.match(deferredCss, /\.compare-sticky-products\s*\{[\s\S]*position:sticky/);
   assert.match(deferredCss, /\.compare-insight-panel\s*\{/);
   assert.match(deferredCss, /\.compare-strength-badge\s*\{/);
+  assert.match(deferredCss, /\.compare-share-link\s*\{/);
   assert.match(deferredCss, /\.compare-report-summary\s*\{[\s\S]*grid-template-columns:repeat\(3/);
   assert.match(deferredCss, /\.compare-summary-card\s*\{/);
   assert.match(deferredCss, /\.compare-fit-pill--perfect\s*\{/);
