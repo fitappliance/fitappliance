@@ -1072,7 +1072,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 }
 .compare-v2-sections { display:grid;gap:16px; }
 .compare-section {
-  border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden;background:var(--white);
+  border:1px solid var(--border);border-radius:var(--r-sm);overflow:visible;background:var(--white);
 }
 .compare-section-title {
   margin:0;padding:10px 12px;background:var(--paper-2);
@@ -1105,13 +1105,42 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   display:inline-flex;align-items:center;justify-content:center;
   width:18px;height:18px;margin-left:6px;border:1px solid var(--border);
   border-radius:999px;background:var(--white);color:var(--ink-3);
-  font-size:11px;font-weight:800;cursor:help;
+  font-size:11px;font-weight:800;cursor:pointer;
+}
+.compare-help-popover {
+  display:inline-flex;position:relative;vertical-align:middle;
+}
+.compare-help-popover > summary {
+  list-style:none;outline:none;
+}
+.compare-help-popover > summary::-webkit-details-marker {
+  display:none;
+}
+.compare-help-tooltip {
+  display:none;position:absolute;z-index:8;top:calc(100% + 8px);left:50%;
+  width:min(280px, calc(100vw - 48px));padding:10px 12px;
+  transform:translateX(-50%);border:1px solid var(--border);
+  border-radius:10px;background:var(--white);box-shadow:0 12px 32px rgba(28,24,20,.16);
+  color:var(--ink);font-size:12px;font-weight:600;line-height:1.45;
+  text-transform:none;letter-spacing:0;white-space:normal;
+}
+.compare-help-popover[open] .compare-help {
+  background:#e8f5e9;border-color:#9ccc9c;color:#1f6b2d;
+}
+.compare-help-popover[open] .compare-help-tooltip {
+  display:block;
 }
 .compare-table th {
   text-align:left;background:var(--paper-2);font-size:12px;
-  text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);
+  text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);position:relative;overflow:visible;
 }
 .compare-table td strong { color:var(--ink);font-size:15px; }
+
+@media (max-width:640px) {
+  .compare-help-tooltip {
+    left:auto;right:0;transform:none;width:min(240px, calc(100vw - 36px));
+  }
+}
 
 .retailer-modal[hidden] { display: none; }
 .retailer-modal {

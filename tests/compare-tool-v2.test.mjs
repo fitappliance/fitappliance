@@ -96,10 +96,14 @@ test('phase 51 compare tool: metric labels expose contextual tooltip copy', asyn
     items: [makeEntry('a'), makeEntry('b')]
   });
 
-  const rearTooltip = [...modal.querySelectorAll('.compare-help')]
-    .find((node) => /rear clearance/i.test(node.getAttribute('aria-label') ?? ''));
+  const rearTooltip = [...modal.querySelectorAll('.compare-help-popover')]
+    .find((node) => /rear clearance/i.test(node.textContent ?? ''));
   assert.ok(rearTooltip, 'rear clearance tooltip should exist');
-  assert.match(rearTooltip.getAttribute('aria-label'), /ventilation/i);
+  assert.ok(rearTooltip.querySelector('summary.compare-help'), 'tooltip should use a clickable summary control');
+  assert.match(rearTooltip.querySelector('[role="tooltip"]').textContent, /ventilation/i);
+
+  rearTooltip.open = true;
+  assert.equal(rearTooltip.open, true, 'native disclosure should open on click/tap');
 });
 
 test('phase 51 compare tool: result card snapshots carry clearance delivery and feature data into compare store', async () => {
