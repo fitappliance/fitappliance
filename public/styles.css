@@ -412,6 +412,70 @@
   line-height: 1.2;
 }
 
+.fit-health {
+  gap: 7px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 5px 10px;
+}
+
+.fit-health-light {
+  width: 10px;
+  height: 10px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgb(255 255 255 / 70%), 0 0 0 3px currentColor;
+}
+
+.fit-health-label {
+  font-weight: 900;
+}
+
+.fit-health-detail {
+  color: currentColor;
+  font-weight: 700;
+  opacity: .88;
+}
+
+.fit-health--perfect {
+  border-color: #b7dfbd;
+  background: #e8f5e9;
+  color: #1f6f35;
+}
+
+.fit-health--tight {
+  border-color: #f2d68b;
+  background: #fff8e1;
+  color: #9a5b00;
+}
+
+.fit-health--blocked {
+  border-color: #f1b4bf;
+  background: #fce4ec;
+  color: #a51f35;
+}
+
+.fit-help {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 65%);
+  color: inherit;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: help;
+}
+
+.fit-help:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
 .fit-badge--exact {
   background: #e8f5e9;
   color: #2e7d32;
