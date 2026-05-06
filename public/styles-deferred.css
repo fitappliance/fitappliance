@@ -1045,8 +1045,36 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   margin-bottom:14px;flex-wrap:wrap;color:var(--ink-3);font-size:13px;
 }
 .compare-v2-toolbar p { margin:0; }
+.compare-diff-toggle {
+  padding:8px 12px;border:1px solid var(--border);border-radius:999px;
+  background:var(--white);color:var(--ink);font:700 12px/1 'Outfit',-apple-system,BlinkMacSystemFont,'SF Pro Text',system-ui,sans-serif;
+  cursor:pointer;box-shadow:0 4px 10px rgba(28,24,20,.04);
+}
 .compare-diff-toggle[aria-pressed="true"] {
   background:var(--ink);color:var(--white);border-color:var(--ink);
+}
+.compare-insight-panel {
+  display:grid;grid-template-columns:minmax(0,1.2fr) minmax(220px,.8fr);
+  gap:14px;align-items:center;margin:0 0 14px;padding:14px 16px;
+  border:1px solid #b7dfbd;border-radius:16px;background:#f3fbf4;
+  box-shadow:0 8px 20px rgba(31,107,45,.07);
+}
+.compare-insight-panel strong {
+  display:block;margin:4px 0 5px;color:var(--ink);font-size:18px;line-height:1.25;
+}
+.compare-insight-panel p {
+  margin:0;color:var(--ink-3);font-size:13px;line-height:1.45;
+}
+.compare-insight-kicker {
+  display:block;color:#1f6b2d;font-size:11px;font-weight:900;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.compare-insight-reasons {
+  display:grid;gap:7px;margin:0;padding:0;list-style:none;
+}
+.compare-insight-reasons li {
+  padding:7px 9px;border-radius:999px;background:var(--white);
+  border:1px solid #cfe8d3;color:#1f6b2d;font-size:12px;font-weight:800;
 }
 .compare-report-summary {
   display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;
@@ -1094,6 +1122,14 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   letter-spacing:.08em;font-weight:800;color:var(--ink-3);
 }
 .compare-sticky-product:last-child { border-right:none; }
+.compare-strength-badges {
+  display:flex;gap:5px;flex-wrap:wrap;margin-bottom:7px;
+}
+.compare-strength-badge {
+  display:inline-flex;align-items:center;padding:3px 7px;border-radius:999px;
+  background:#fff7ed;border:1px solid #fed7aa;color:#a45110;
+  font-size:10px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;
+}
 .compare-sticky-product strong {
   display:block;color:var(--ink);font-size:15px;line-height:1.2;margin-bottom:4px;
 }
@@ -1376,6 +1412,9 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   .compare-table { font-size:12.5px; }
   .compare-v2-toolbar { align-items:stretch; }
   .compare-diff-toggle { width:100%; }
+  .compare-insight-panel { grid-template-columns:1fr;padding:12px; }
+  .compare-insight-panel strong { font-size:16px; }
+  .compare-insight-reasons li { border-radius:10px; }
   .compare-report-summary { grid-template-columns:1fr; }
   .compare-summary-card { padding:11px 12px; }
   .compare-fit-pill { white-space:normal; }
