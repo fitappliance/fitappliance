@@ -22,6 +22,46 @@
       .filter((retailer) => retailer.name);
   }
 
+  function normalizeClearance(clearance) {
+    if (!clearance || typeof clearance !== 'object') return null;
+    const side = Number(clearance.side ?? clearance.sides);
+    const top = Number(clearance.top);
+    const rear = Number(clearance.rear);
+    const row = {
+      side: Number.isFinite(side) ? Math.max(0, Math.round(side)) : 0,
+      top: Number.isFinite(top) ? Math.max(0, Math.round(top)) : 0,
+      rear: Number.isFinite(rear) ? Math.max(0, Math.round(rear)) : 0
+    };
+    return row.side === 0 && row.top === 0 && row.rear === 0 ? null : row;
+  }
+
+  function normalizeFeatureList(features) {
+    return (Array.isArray(features) ? features : [])
+      .map((feature) => String(feature ?? '').replace(/\s+/g, ' ').trim())
+      .filter(Boolean)
+      .slice(0, 6);
+  }
+
+  function normalizeFitSummary(summary) {
+    const raw = summary && typeof summary === 'object' ? summary : {};
+    const tightest = Number(raw.tightestGapMm ?? raw.gapMm);
+    return {
+      status: String(raw.status ?? '').replace(/\s+/g, ' ').trim() || null,
+      bindingAxis: String(raw.bindingAxis ?? '').replace(/\s+/g, ' ').trim() || null,
+      tightestGapMm: Number.isFinite(tightest) ? Math.round(tightest) : null
+    };
+  }
+
+  function normalizeDelivery(delivery) {
+    if (!delivery || typeof delivery !== 'object') return null;
+    const doorway = Number(delivery.doorwayClearanceMm);
+    const turn = Number(delivery.turnClearanceMm);
+    return {
+      doorwayClearanceMm: Number.isFinite(doorway) ? Math.round(doorway) : null,
+      turnClearanceMm: Number.isFinite(turn) ? Math.round(turn) : null
+    };
+  }
+
   function normalizeSnapshot(snapshot) {
     const slug = String(snapshot?.slug ?? snapshot?.id ?? '').trim();
     if (!slug) return null;
@@ -29,9 +69,16 @@
       slug,
       displayName: String(snapshot?.displayName ?? snapshot?.name ?? snapshot?.model ?? 'Appliance').replace(/\s+/g, ' ').trim(),
       brand: String(snapshot?.brand ?? '').replace(/\s+/g, ' ').trim(),
+      model: String(snapshot?.model ?? '').replace(/\s+/g, ' ').trim(),
+      cat: String(snapshot?.cat ?? '').replace(/\s+/g, ' ').trim(),
       w: Number.isFinite(Number(snapshot?.w)) ? Math.round(Number(snapshot.w)) : null,
       h: Number.isFinite(Number(snapshot?.h)) ? Math.round(Number(snapshot.h)) : null,
       d: Number.isFinite(Number(snapshot?.d)) ? Math.round(Number(snapshot.d)) : null,
+      practicalClearance: normalizeClearance(snapshot?.practicalClearance ?? snapshot?.clearance),
+      manufacturerClearance: normalizeClearance(snapshot?.manufacturerClearance),
+      fitSummary: normalizeFitSummary(snapshot?.fitSummary),
+      delivery: normalizeDelivery(snapshot?.delivery),
+      features: normalizeFeatureList(snapshot?.features),
       retailers: normalizeRetailers(snapshot?.retailers),
       stars: Number.isFinite(Number(snapshot?.stars)) ? Number(snapshot.stars) : null
     };

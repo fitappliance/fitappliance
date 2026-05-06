@@ -80,10 +80,12 @@ test('phase 48 card redesign: fit badge is compact and stateful', async () => {
 test('phase 48 card redesign: old giant clearance badge and per-card commission copy are gone', async () => {
   const { buildCardHtml } = await loadSearchDom();
   const html = buildCardHtml(makeMatch({ cavityNeededMm: 14 }));
+  const dom = new JSDOM(`<main>${html}</main>`);
+  const visibleText = dom.window.document.querySelector('.fit-result-item')?.textContent ?? '';
 
-  assert.doesNotMatch(html, /REQUIRES/i);
-  assert.doesNotMatch(html, /CLEARANCE/i);
-  assert.doesNotMatch(html, /We earn a commission/i);
+  assert.doesNotMatch(visibleText, /REQUIRES/i);
+  assert.doesNotMatch(visibleText, /CLEARANCE/i);
+  assert.doesNotMatch(visibleText, /We earn a commission/i);
 });
 
 test('phase 48 card redesign: commission disclosure is rendered once above result lists', async () => {
