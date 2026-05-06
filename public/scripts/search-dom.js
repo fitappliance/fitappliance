@@ -895,6 +895,60 @@
     </div>`;
   }
 
+  function normalizeAxisGapEntry(entry = {}) {
+    const axis = String(entry.axis ?? '').trim().toLowerCase();
+    const safeAxis = ['width', 'height', 'depth'].includes(axis) ? axis : '';
+    const label = String(entry.label ?? (safeAxis === 'width' ? 'W' : safeAxis === 'height' ? 'H' : safeAxis === 'depth' ? 'D' : '')).trim();
+    const gapMm = Number(entry.gapMm ?? entry.gap ?? entry.spareMm ?? entry.spare);
+    if (!safeAxis || !label || !Number.isFinite(gapMm)) return null;
+    return {
+      axis: safeAxis,
+      label,
+      gapMm: Math.round(gapMm)
+    };
+  }
+
+  function axisFullLabel(axis) {
+    return {
+      width: 'Width',
+      height: 'Height',
+      depth: 'Depth'
+    }[axis] ?? 'Dimension';
+  }
+
+  function axisGapStatus(gapMm) {
+    if (gapMm < 0) return 'blocked';
+    if (gapMm < 20) return 'tight';
+    return 'safe';
+  }
+
+  function axisFillPercent(gapMm) {
+    if (gapMm < 0) return 8;
+    if (gapMm < 20) return Math.max(18, Math.min(68, 18 + gapMm * 2.5));
+    return Math.max(72, Math.min(100, 72 + (gapMm - 20) * 0.35));
+  }
+
+  function buildFitAxisBarsHtml(match) {
+    const entries = (Array.isArray(match?.fitAxisGaps) ? match.fitAxisGaps : [])
+      .map(normalizeAxisGapEntry)
+      .filter(Boolean);
+    if (entries.length === 0) return '';
+    const bindingAxis = String(match?.bindingAxis ?? '').trim().toLowerCase();
+
+    return `<div class="fit-axis-bars" aria-label="Width height and depth spare room">
+      ${entries.map((entry) => {
+        const status = axisGapStatus(entry.gapMm);
+        const isBinding = entry.axis === bindingAxis;
+        const aria = `${axisFullLabel(entry.axis)} spare room: ${entry.gapMm}mm${isBinding ? ', binding constraint' : ''}`;
+        return `<div class="fit-axis-bar fit-axis-bar--${status}${isBinding ? ' fit-axis-bar--binding' : ''}" data-fit-axis="${escHtml(entry.axis)}" aria-label="${escHtml(aria)}">
+          <span class="fit-axis-label">${escHtml(entry.label)}</span>
+          <span class="fit-axis-track" aria-hidden="true"><span style="--fit-axis-fill:${axisFillPercent(entry.gapMm)}%"></span></span>
+          <span class="fit-axis-value">${escHtml(entry.gapMm)}mm</span>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }
+
   function buildSpecChipsHtml(match) {
     const specs = [
       ['W', match?.w],
@@ -1125,6 +1179,7 @@
               ${isTight ? '<span class="warning-pill">verify ventilation</span>' : ''}
               ${match.showPopularityBadge ? '<span class="fit-badge fit-badge--popular">Popular in AU</span>' : ''}
             </div>
+            ${buildFitAxisBarsHtml(match)}
             ${buildSpecChipsHtml(match)}
             ${buildEnergyLineHtml(match)}
             ${buildManufacturerAdvisoryHtml(match)}

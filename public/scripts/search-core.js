@@ -161,6 +161,17 @@
     const threshold = -(toleranceMm / cavityMin);
     const exactFit = axisScores.every((score) => score >= 0);
     const fitsTightly = axisScores.some((score) => score < 0.02);
+    const axisGaps = axisEntries.map((entry) => ({
+      axis: entry.key === 'w' ? 'width' : entry.key === 'h' ? 'height' : 'depth',
+      label: entry.key === 'w' ? 'W' : entry.key === 'h' ? 'H' : 'D',
+      cavity: Math.round(entry.cavity),
+      appliance: Math.round(entry.appliance),
+      clearanceMm: Math.round(entry.clearanceMm),
+      gapMm: Math.round(entry.cavity - entry.appliance - entry.clearanceMm)
+    }));
+    const binding = axisGaps
+      .slice()
+      .sort((left, right) => left.gapMm - right.gapMm)[0] ?? null;
 
     return {
       fitScore,
@@ -168,6 +179,9 @@
       threshold,
       exactFit,
       fitsTightly: fitsTightly || fitScore < 0,
+      axisGaps,
+      bindingAxis: binding?.axis ?? '',
+      tightestGapMm: binding?.gapMm ?? null,
       clearance,
       clearanceMode,
       manufacturerClearance: getBrandManufacturerClearance(
@@ -283,6 +297,9 @@
       clearance: fitMeta.clearance,
       clearanceMode: fitMeta.clearanceMode,
       manufacturerClearance: fitMeta.manufacturerClearance,
+      fitAxisGaps: fitMeta.axisGaps,
+      bindingAxis: fitMeta.bindingAxis,
+      tightestGapMm: fitMeta.tightestGapMm,
       showPopularityBadge: Number(product?.priorityScore ?? 0) >= 70,
       sku: String(product?.model ?? '').trim().split(/\s+/)[0] ?? '',
       url: buildProductUrl(product, filters)

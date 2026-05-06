@@ -153,6 +153,60 @@ export function buildFitHealthHtml(product) {
   </div>`;
 }
 
+function normalizeAxisGapEntry(entry = {}) {
+  const axis = String(entry.axis ?? '').trim().toLowerCase();
+  const safeAxis = ['width', 'height', 'depth'].includes(axis) ? axis : '';
+  const label = String(entry.label ?? (safeAxis === 'width' ? 'W' : safeAxis === 'height' ? 'H' : safeAxis === 'depth' ? 'D' : '')).trim();
+  const gapMm = Number(entry.gapMm ?? entry.gap ?? entry.spareMm ?? entry.spare);
+  if (!safeAxis || !label || !Number.isFinite(gapMm)) return null;
+  return {
+    axis: safeAxis,
+    label,
+    gapMm: Math.round(gapMm)
+  };
+}
+
+function axisFullLabel(axis) {
+  return {
+    width: 'Width',
+    height: 'Height',
+    depth: 'Depth'
+  }[axis] ?? 'Dimension';
+}
+
+function axisGapStatus(gapMm) {
+  if (gapMm < 0) return 'blocked';
+  if (gapMm < 20) return 'tight';
+  return 'safe';
+}
+
+function axisFillPercent(gapMm) {
+  if (gapMm < 0) return 8;
+  if (gapMm < 20) return Math.max(18, Math.min(68, 18 + gapMm * 2.5));
+  return Math.max(72, Math.min(100, 72 + (gapMm - 20) * 0.35));
+}
+
+export function buildFitAxisBarsHtml(product) {
+  const entries = (Array.isArray(product?.fitAxisGaps) ? product.fitAxisGaps : [])
+    .map(normalizeAxisGapEntry)
+    .filter(Boolean);
+  if (entries.length === 0) return '';
+  const bindingAxis = String(product?.bindingAxis ?? '').trim().toLowerCase();
+
+  return `<div class="fit-axis-bars" aria-label="Width height and depth spare room">
+    ${entries.map((entry) => {
+      const status = axisGapStatus(entry.gapMm);
+      const isBinding = entry.axis === bindingAxis;
+      const aria = `${axisFullLabel(entry.axis)} spare room: ${entry.gapMm}mm${isBinding ? ', binding constraint' : ''}`;
+      return `<div class="fit-axis-bar fit-axis-bar--${status}${isBinding ? ' fit-axis-bar--binding' : ''}" data-fit-axis="${escHtml(entry.axis)}" aria-label="${escHtml(aria)}">
+        <span class="fit-axis-label">${escHtml(entry.label)}</span>
+        <span class="fit-axis-track" aria-hidden="true"><span style="--fit-axis-fill:${axisFillPercent(entry.gapMm)}%"></span></span>
+        <span class="fit-axis-value">${escHtml(entry.gapMm)}mm</span>
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+
 function productText(product) {
   return [
     product?.brand,
@@ -386,6 +440,7 @@ export function buildCard(p, deps = {}) {
       <div class="c-name">${escHtml(primaryTitle)}</div>
       ${modelLine ? `<div class="c-model">${escHtml(modelLine)}</div>` : ''}
       ${buildFitHealthHtml(p)}
+      ${buildFitAxisBarsHtml(p)}
       <div class="c-dims">
         <span class="dim-tag">W ${p.w}mm</span>
         <span class="dim-tag">H ${p.h}mm</span>
@@ -467,6 +522,7 @@ export function buildRow(p, deps = {}) {
       <div class="p-row-name">${escHtml(primaryTitle)}</div>
       ${modelLine ? `<div class="p-row-model">${escHtml(modelLine)}</div>` : ''}
       ${buildFitHealthHtml(p)}
+      ${buildFitAxisBarsHtml(p)}
       <div class="p-row-dims">
         <span class="dim-tag">W ${p.w}mm</span>
         <span class="dim-tag">H ${p.h}mm</span>
