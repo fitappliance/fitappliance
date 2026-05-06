@@ -413,10 +413,12 @@
 }
 
 .fit-health {
+  position: relative;
   gap: 7px;
   border: 1px solid transparent;
   border-radius: 999px;
   padding: 5px 10px;
+  overflow: visible;
 }
 
 .fit-health-light {
@@ -455,6 +457,12 @@
   color: #a51f35;
 }
 
+.fit-help-popover {
+  position: relative;
+  display: inline-grid;
+  flex: 0 0 auto;
+}
+
 .fit-help {
   display: inline-grid;
   place-items: center;
@@ -468,12 +476,48 @@
   font-size: 11px;
   font-weight: 900;
   line-height: 1;
-  cursor: help;
+  list-style: none;
+  cursor: pointer;
+}
+
+.fit-help::-webkit-details-marker {
+  display: none;
 }
 
 .fit-help:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
+}
+
+.fit-help-tooltip {
+  display: none;
+  position: absolute;
+  z-index: 80;
+  right: 0;
+  top: calc(100% + 8px);
+  width: min(260px, 74vw);
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--ink-2);
+  box-shadow: var(--shadow);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.fit-help-popover[open] .fit-help-tooltip {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .fit-help-tooltip {
+    left: auto;
+    right: -10px;
+    width: min(240px, 82vw);
+  }
 }
 
 .fit-badge--exact {
