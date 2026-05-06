@@ -174,6 +174,22 @@ test('phase 51 compare tool: modal can copy a shareable compare link', async () 
   assert.equal(copied, 'https://fitappliance.com.au/?cat=fridge&compareIds=a,b');
 });
 
+test('phase 51 compare tool: mobile report exposes horizontal scroll affordance', async () => {
+  const { renderCompareModal } = await loadSearchDom();
+  const window = makeWindow();
+  const modal = window.document.getElementById('modal');
+
+  renderCompareModal(modal, {
+    items: [makeEntry('a'), makeEntry('b'), makeEntry('c')]
+  });
+
+  assert.match(modal.textContent, /Swipe sideways to compare product columns/i);
+  const regions = modal.querySelectorAll('.compare-scroll-region[role="region"][tabindex="0"]');
+  assert.ok(regions.length >= 4, 'each compare section should sit inside a focusable horizontal scroll region');
+  assert.match(regions[0].getAttribute('aria-label'), /comparison table/i);
+  assert.ok(regions[0].querySelector('.compare-table--v2'));
+});
+
 test('phase 51 compare tool: differing values are highlighted and only-differences toggle hides same rows', async () => {
   const { renderCompareModal } = await loadSearchDom();
   const window = makeWindow();
@@ -303,6 +319,11 @@ test('phase 51 compare tool: deferred CSS supports sticky header and highlighted
   assert.match(deferredCss, /\.compare-insight-panel\s*\{/);
   assert.match(deferredCss, /\.compare-strength-badge\s*\{/);
   assert.match(deferredCss, /\.compare-share-link\s*\{/);
+  assert.match(deferredCss, /\.compare-scroll-hint\s*\{/);
+  assert.match(deferredCss, /\.compare-v2-sections\s*\{[^}]*min-width:0/);
+  assert.match(deferredCss, /\.compare-scroll-region\s*\{[^}]*min-width:0/);
+  assert.match(deferredCss, /\.compare-section\s*\{[^}]*overflow:hidden/);
+  assert.match(deferredCss, /@media\(max-width:660px\)[\s\S]*\.compare-scroll-region::after/);
   assert.match(deferredCss, /\.compare-report-summary\s*\{[\s\S]*grid-template-columns:repeat\(3/);
   assert.match(deferredCss, /\.compare-summary-card\s*\{/);
   assert.match(deferredCss, /\.compare-fit-pill--perfect\s*\{/);
