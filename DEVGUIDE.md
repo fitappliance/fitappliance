@@ -1069,6 +1069,22 @@ node -e "const fs=require('node:fs');const a=JSON.parse(fs.readFileSync('./publi
 - `__default__` is a safety net, not the preferred steady-state path.
 - For any new brand: source clearance from manufacturer installation PDF first; if unavailable, use `__default__` and open a GitHub issue.
 
+### 7.3.1 Manual evidence storage
+
+- Bulky manufacturer PDFs and extraction drafts live outside Git under the
+  Ugreen 1T drive: `/Volumes/绿联扩展1T/FitAppliance/manual-evidence`.
+- Override the root with `FITAPPLIANCE_EVIDENCE_ROOT` when the disk is mounted
+  somewhere else.
+- Initialize/check the local evidence folders with:
+
+```bash
+npm run manual-evidence -- init-root
+npm run manual-evidence -- check-root
+```
+
+- See `docs/manual-evidence-pipeline.md` for the evidence manifest schema and
+  review workflow. Do not commit PDF/manual binaries to the repo.
+
 ### 7.4 Bulk import workflow
 
 - `scripts/bulk-import.js` handles initial large-scale ingestion.
