@@ -3,14 +3,14 @@
 
 ---
 
-## Project status (2026-04-26)
+## Project status (2026-05-06)
 
 - ✅ AUDIT-PHASE43A: P1 + P2 fully closed (13/13)
-- ✅ Search experience: carsales-style facet + sort + URL state + mobile sheet + saved search + compare (Phase 45 series)
+- ✅ Search experience: carsales-style facet + sort + URL state + mobile sheet + saved search + RTINGS-style compare reports
 - ✅ PWA: service worker versioning, update toast, offline fallback (Phase 43a §3.6)
-- ✅ Catalog: ~2170 products across 4 categories, brand alias_map active, 609 products with AU retailer data
-- ⏳ Phase 42c (brand drop) — gated, opens ~2026-05-01
-- 📊 Test coverage: 514 / 514 passing
+- ✅ Catalog: 2188 products across 4 categories, brand alias_map active, 66 products with verified retailer product-page links
+- ✅ Data trust: claims cleanup, accuracy audits, retailer URL validation, and date-drift guardrails are active
+- 📊 Test coverage: 785 / 785 passing
 
 ---
 
