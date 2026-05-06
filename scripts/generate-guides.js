@@ -430,7 +430,7 @@ const GUIDE_ARTICLES = {
     description: 'A category-by-category measuring handbook for fridges, dishwashers, washing machines, and dryers before you order a new appliance.',
     intro: [
       'Most appliance mistakes start with one measurement written down too confidently. A cavity looks square, a product card looks clear, and then the installer finds the missing 20 mm. This handbook gives you a repeatable way to measure before you spend money.',
-      'FitAppliance covers about 2,170 products across four categories: fridges, dishwashers, washing machines, and dryers. The tool is useful, but the result is only as good as the measurements you enter. Use this guide to collect those measurements properly.'
+      'FitAppliance covers 2,188 raw spec rows across four categories: fridges, dishwashers, washing machines, and dryers. Retailer product-page links are tracked separately and shown only when reviewed. The tool is useful, but the result is only as good as the measurements you enter. Use this guide to collect those measurements properly.'
     ],
     figures: [
       { svg: GUIDE_SVGS.handbook, caption: 'The same measuring habit applies across fridges, dishwashers, washing machines, and dryers: cavity first, access route second, manual-specific clearance third.' }
