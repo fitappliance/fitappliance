@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-05-07",
+  "storage": {
+    "root_env": "FITAPPLIANCE_EVIDENCE_ROOT",
+    "default_root": "/Volumes/绿联扩展1T/FitAppliance/manual-evidence",
+    "required_dirs": ["pdf", "extracted", "approved", "rejected"]
+  },
+  "products": {}
+}
