@@ -105,6 +105,53 @@ test('phase 51 compare tool: report values use explicit human-readable states in
   assert.ok(modal.querySelector('.compare-fit-pill--tight'));
 });
 
+test('phase 51 compare tool: report recommends a starting point and tags product strengths', async () => {
+  const { renderCompareModal } = await loadSearchDom();
+  const window = makeWindow();
+  const modal = window.document.getElementById('modal');
+
+  renderCompareModal(modal, {
+    items: [
+      makeEntry('tight-price', {
+        displayName: 'Budget tight fit',
+        brand: 'Haier',
+        fitSummary: { status: 'tight', bindingAxis: 'width', tightestGapMm: 3 },
+        retailers: [{ name: 'Appliances Online', price: 899 }]
+      }),
+      makeEntry('best-coverage', {
+        displayName: 'Coverage winner',
+        brand: 'Hisense',
+        fitSummary: { status: 'good', bindingAxis: 'depth', tightestGapMm: 31 },
+        retailers: [
+          { name: 'JB Hi-Fi', price: null },
+          { name: 'Appliances Online', price: null },
+          { name: 'The Good Guys', price: null },
+          { name: 'Harvey Norman', price: null },
+          { name: 'Bing Lee', price: null }
+        ]
+      }),
+      makeEntry('roomy-fit', {
+        displayName: 'Roomiest cavity fit',
+        brand: 'LG',
+        fitSummary: { status: 'good', bindingAxis: 'width', tightestGapMm: 65 },
+        retailers: [{ name: 'JB Hi-Fi', price: 1299 }]
+      })
+    ]
+  });
+
+  assert.ok(modal.querySelector('.compare-insight-panel'), 'recommendation panel should render');
+  assert.match(modal.textContent, /Recommended starting point/i);
+  assert.match(modal.textContent, /Coverage winner/);
+  assert.match(modal.textContent, /5 verified stores/);
+  assert.match(modal.textContent, /31 mm spare/);
+
+  const headers = [...modal.querySelectorAll('.compare-sticky-product')];
+  assert.match(headers[0].textContent, /Lowest price/);
+  assert.match(headers[1].textContent, /Recommended/);
+  assert.match(headers[1].textContent, /Most stores/);
+  assert.match(headers[2].textContent, /Best fit/);
+});
+
 test('phase 51 compare tool: differing values are highlighted and only-differences toggle hides same rows', async () => {
   const { renderCompareModal } = await loadSearchDom();
   const window = makeWindow();
@@ -223,11 +270,14 @@ test('phase 51 compare tool: homepage compare snapshots carry fit, clearance, de
 
 test('phase 51 compare tool: deferred CSS supports sticky header and highlighted differences', () => {
   assert.match(deferredCss, /\.compare-sticky-products\s*\{[\s\S]*position:sticky/);
+  assert.match(deferredCss, /\.compare-insight-panel\s*\{/);
+  assert.match(deferredCss, /\.compare-strength-badge\s*\{/);
   assert.match(deferredCss, /\.compare-report-summary\s*\{[\s\S]*grid-template-columns:repeat\(3/);
   assert.match(deferredCss, /\.compare-summary-card\s*\{/);
   assert.match(deferredCss, /\.compare-fit-pill--perfect\s*\{/);
   assert.match(deferredCss, /\.compare-fit-pill--tight\s*\{/);
   assert.match(deferredCss, /\.compare-cell--diff/);
   assert.match(deferredCss, /\.compare-help/);
+  assert.match(deferredCss, /\.compare-diff-toggle\s*\{[\s\S]*border-radius:999px/);
   assert.match(deferredCss, /data-compare-differences-only|compare-diff-toggle/);
 });

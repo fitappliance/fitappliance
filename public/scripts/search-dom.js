@@ -1441,6 +1441,116 @@
     return `${names.length} verified store${names.length === 1 ? '' : 's'}: ${names.join(', ')}`;
   }
 
+  function getCompareRetailerCount(snapshot) {
+    return Array.isArray(snapshot?.retailers) ? snapshot.retailers.length : 0;
+  }
+
+  function getCapturedPrices(snapshot) {
+    return (Array.isArray(snapshot?.retailers) ? snapshot.retailers : [])
+      .map((retailer) => Number(retailer?.price))
+      .filter((price) => Number.isFinite(price) && price > 0)
+      .sort((left, right) => left - right);
+  }
+
+  function getCompareMinPrice(snapshot) {
+    const prices = getCapturedPrices(snapshot);
+    return prices.length > 0 ? prices[0] : Number.POSITIVE_INFINITY;
+  }
+
+  function getCompareFitScore(snapshot) {
+    const tone = getCompareFitTone(snapshot);
+    if (tone === 'perfect') return 2;
+    if (tone === 'tight') return 1;
+    return 0;
+  }
+
+  function getCompareFitGap(snapshot) {
+    const gap = Number(snapshot?.fitSummary?.tightestGapMm);
+    return Number.isFinite(gap) ? gap : Number.NEGATIVE_INFINITY;
+  }
+
+  function pickCompareIndex(cells, isBetter) {
+    return cells.reduce((bestIndex, snapshot, index) => {
+      if (bestIndex === -1) return index;
+      return isBetter(snapshot, cells[bestIndex]) ? index : bestIndex;
+    }, -1);
+  }
+
+  function getCompareInsights(cells) {
+    const rows = Array.isArray(cells) ? cells : [];
+    const recommendedIndex = pickCompareIndex(rows, (candidate, current) => {
+      const fitDiff = getCompareFitScore(candidate) - getCompareFitScore(current);
+      if (fitDiff !== 0) return fitDiff > 0;
+      const retailerDiff = getCompareRetailerCount(candidate) - getCompareRetailerCount(current);
+      if (retailerDiff !== 0) return retailerDiff > 0;
+      const candidatePrice = getCompareMinPrice(candidate);
+      const currentPrice = getCompareMinPrice(current);
+      if (candidatePrice !== currentPrice) return candidatePrice < currentPrice;
+      return getCompareFitGap(candidate) > getCompareFitGap(current);
+    });
+    const bestFitIndex = pickCompareIndex(rows, (candidate, current) => {
+      const fitDiff = getCompareFitScore(candidate) - getCompareFitScore(current);
+      if (fitDiff !== 0) return fitDiff > 0;
+      return getCompareFitGap(candidate) > getCompareFitGap(current);
+    });
+    const mostRetailersIndex = pickCompareIndex(rows, (candidate, current) => (
+      getCompareRetailerCount(candidate) > getCompareRetailerCount(current)
+    ));
+    const lowestPriceIndex = pickCompareIndex(
+      rows.filter((snapshot) => Number.isFinite(getCompareMinPrice(snapshot))),
+      (candidate, current) => getCompareMinPrice(candidate) < getCompareMinPrice(current)
+    );
+    const pricedRows = rows
+      .map((snapshot, index) => ({ snapshot, index }))
+      .filter(({ snapshot }) => Number.isFinite(getCompareMinPrice(snapshot)));
+    const resolvedLowestPriceIndex = pricedRows.length > 0
+      ? pricedRows.reduce((best, row) => (
+        getCompareMinPrice(row.snapshot) < getCompareMinPrice(best.snapshot) ? row : best
+      ), pricedRows[0]).index
+      : lowestPriceIndex;
+
+    return {
+      recommendedIndex,
+      bestFitIndex,
+      mostRetailersIndex: getCompareRetailerCount(rows[mostRetailersIndex]) > 0 ? mostRetailersIndex : -1,
+      lowestPriceIndex: resolvedLowestPriceIndex
+    };
+  }
+
+  function renderCompareInsightPanel(cells) {
+    const insights = getCompareInsights(cells);
+    const recommended = cells[insights.recommendedIndex];
+    if (!recommended) return '';
+    const retailerCount = getCompareRetailerCount(recommended);
+    const gap = getCompareFitGap(recommended);
+    const price = getCompareMinPrice(recommended);
+    const reasons = [
+      retailerCount > 0 ? `${retailerCount} verified store${retailerCount === 1 ? '' : 's'}` : 'No verified stores captured',
+      Number.isFinite(gap) ? `${Math.round(gap)} mm spare` : 'Fit gap not captured',
+      Number.isFinite(price) ? `Lowest captured price ${formatAud(price)}` : 'No captured price yet'
+    ];
+    return `<section class="compare-insight-panel" aria-label="Recommended comparison insight">
+      <div>
+        <span class="compare-insight-kicker">Recommended starting point</span>
+        <strong>${escHtml(recommended.displayName ?? recommended.model ?? 'Selected appliance')}</strong>
+        <p>Start here, then use the table below to confirm clearance, delivery path, and retailer availability.</p>
+      </div>
+      <ul class="compare-insight-reasons">
+        ${reasons.map((reason) => `<li>${escHtml(reason)}</li>`).join('')}
+      </ul>
+    </section>`;
+  }
+
+  function renderCompareStrengthBadges(index, insights) {
+    const badges = [];
+    if (index === insights.recommendedIndex) badges.push('Recommended');
+    if (index === insights.bestFitIndex) badges.push('Best fit');
+    if (index === insights.mostRetailersIndex) badges.push('Most stores');
+    if (index === insights.lowestPriceIndex) badges.push('Lowest price');
+    if (badges.length === 0) return '';
+    return `<div class="compare-strength-badges">${badges.map((badge) => `<span class="compare-strength-badge">${escHtml(badge)}</span>`).join('')}</div>`;
+  }
+
   function comparePriceCoverage(cells) {
     return cells.filter((snapshot) => (
       Array.isArray(snapshot?.retailers)
@@ -1625,10 +1735,12 @@
 
   function renderCompareProductHeader(cells) {
     const count = Math.max(1, Math.min(3, cells.length));
+    const insights = getCompareInsights(cells);
     return `<div class="compare-sticky-products" aria-label="Compared products" style="--compare-count:${count}">
       <div class="compare-sticky-products__metric">Products</div>
-      ${cells.map((snapshot) => `
+      ${cells.map((snapshot, index) => `
         <div class="compare-sticky-product">
+          ${renderCompareStrengthBadges(index, insights)}
           <strong>${escHtml(snapshot?.displayName ?? 'Appliance')}</strong>
           <span>${escHtml([snapshot?.brand, snapshot?.model].filter(Boolean).join(' ') || 'Model pending')}</span>
         </div>
@@ -1768,6 +1880,7 @@
         <p>Side-by-side fit, delivery, and retailer data. Differences are highlighted.</p>
         <button type="button" class="secondary compare-diff-toggle" data-compare-differences-only aria-pressed="false">Only show differences</button>
       </div>
+      ${renderCompareInsightPanel(cells)}
       ${renderCompareReportSummary(cells)}
       ${renderCompareProductHeader(cells)}
       <div class="compare-v2-sections">
