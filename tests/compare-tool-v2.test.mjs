@@ -8,6 +8,7 @@ import { JSDOM } from 'jsdom';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const searchDomPath = path.join(repoRoot, 'public', 'scripts', 'search-dom.js');
 const deferredCss = fs.readFileSync(path.join(repoRoot, 'public', 'styles-deferred.css'), 'utf8');
+const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
 
 async function loadSearchDom() {
   const module = await import(`${pathToFileURL(searchDomPath).href}?cacheBust=${Date.now()}`);
@@ -62,6 +63,46 @@ test('phase 51 compare tool: modal renders RTINGS-style sticky product header an
   assert.match(modal.textContent, /Clearance/i);
   assert.match(modal.textContent, /Delivery/i);
   assert.match(modal.textContent, /Retailers/i);
+  assert.ok(modal.querySelector('.compare-report-summary'), 'comparison report should start with a summary strip');
+  assert.match(modal.textContent, /Fit confidence/i);
+  assert.match(modal.textContent, /Retailer coverage/i);
+  assert.match(modal.textContent, /Price coverage/i);
+});
+
+test('phase 51 compare tool: report values use explicit human-readable states instead of dash-only gaps', async () => {
+  const { renderCompareModal } = await loadSearchDom();
+  const window = makeWindow();
+  const modal = window.document.getElementById('modal');
+
+  renderCompareModal(modal, {
+    items: [
+      makeEntry('a', {
+        fitSummary: { status: 'exact', bindingAxis: 'width', tightestGapMm: 41 },
+        manufacturerClearance: null,
+        retailers: [
+          { name: 'JB Hi-Fi', price: null },
+          { name: 'Appliances Online', price: null },
+          { name: 'The Good Guys', price: null },
+          { name: 'Harvey Norman', price: null },
+          { name: 'Bing Lee', price: null }
+        ]
+      }),
+      makeEntry('b', {
+        fitSummary: { status: 'tight', bindingAxis: '', tightestGapMm: 3 },
+        retailers: []
+      })
+    ]
+  });
+
+  assert.match(modal.textContent, /Perfect fit · 41 mm spare/);
+  assert.match(modal.textContent, /Tight fit · 3 mm spare/);
+  assert.match(modal.textContent, /Binding axis not captured/);
+  assert.match(modal.textContent, /No manufacturer advisory/);
+  assert.match(modal.textContent, /5 verified stores: JB Hi-Fi, Appliances Online, The Good Guys, Harvey Norman, Bing Lee/);
+  assert.match(modal.textContent, /No verified product links/);
+  assert.match(modal.textContent, /No captured price — check retailer page/);
+  assert.ok(modal.querySelector('.compare-fit-pill--perfect'));
+  assert.ok(modal.querySelector('.compare-fit-pill--tight'));
 });
 
 test('phase 51 compare tool: differing values are highlighted and only-differences toggle hides same rows', async () => {
@@ -136,8 +177,56 @@ test('phase 51 compare tool: result card snapshots carry clearance delivery and 
   assert.equal(snapshot.fitSummary.bindingAxis, 'width');
 });
 
+test('phase 51 compare tool: result card compare snapshot preserves all five major retailer links', async () => {
+  const { buildCardHtml } = await loadSearchDom();
+  const window = makeWindow();
+  const mount = window.document.createElement('div');
+
+  mount.innerHTML = buildCardHtml({
+    id: 'hisense-hrcd640tbw',
+    displayName: 'Hisense HRCD640TBW 640L French Door',
+    brand: 'Hisense',
+    model: 'HRCD640TBW',
+    cat: 'fridge',
+    w: 912,
+    h: 1785,
+    d: 725,
+    retailers: [
+      { n: 'JB Hi-Fi', p: null, url: 'https://www.jbhifi.com.au/products/hisense-hrcd640tbw' },
+      { n: 'Appliances Online', p: null, url: 'https://www.appliancesonline.com.au/product/hisense-hrcd640tbw' },
+      { n: 'The Good Guys', p: null, url: 'https://www.thegoodguys.com.au/hisense-hrcd640tbw-fridge' },
+      { n: 'Harvey Norman', p: null, url: 'https://www.harveynorman.com.au/hisense-hrcd640tbw-fridge.html' },
+      { n: 'Bing Lee', p: null, url: 'https://www.binglee.com.au/products/hisense-hrcd640tbw' }
+    ]
+  });
+
+  const snapshot = JSON.parse(mount.querySelector('[data-compare-snapshot]').getAttribute('data-compare-snapshot'));
+  assert.deepEqual(snapshot.retailers.map((retailer) => retailer.name), [
+    'JB Hi-Fi',
+    'Appliances Online',
+    'The Good Guys',
+    'Harvey Norman',
+    'Bing Lee'
+  ]);
+});
+
+test('phase 51 compare tool: homepage compare snapshots carry fit, clearance, delivery and five retailers', () => {
+  assert.match(indexHtml, /function buildCompareSnapshotFromProduct/);
+  assert.match(indexHtml, /fitSummary:\s*\{/);
+  assert.match(indexHtml, /practicalClearance:\s*clearance/);
+  assert.match(indexHtml, /manufacturerClearance:\s*manufacturerClearance/);
+  assert.match(indexHtml, /delivery:\s*\{/);
+  assert.match(indexHtml, /features:\s*Array\.isArray\(product\?\.features\)/);
+  assert.match(indexHtml, /retailers\.slice\(0,\s*5\)/);
+  assert.match(indexHtml, /filteredResults\.find\(\(row\) => row\.id === id\) \|\| PRODUCTS\.find/);
+});
+
 test('phase 51 compare tool: deferred CSS supports sticky header and highlighted differences', () => {
   assert.match(deferredCss, /\.compare-sticky-products\s*\{[\s\S]*position:sticky/);
+  assert.match(deferredCss, /\.compare-report-summary\s*\{[\s\S]*grid-template-columns:repeat\(3/);
+  assert.match(deferredCss, /\.compare-summary-card\s*\{/);
+  assert.match(deferredCss, /\.compare-fit-pill--perfect\s*\{/);
+  assert.match(deferredCss, /\.compare-fit-pill--tight\s*\{/);
   assert.match(deferredCss, /\.compare-cell--diff/);
   assert.match(deferredCss, /\.compare-help/);
   assert.match(deferredCss, /data-compare-differences-only|compare-diff-toggle/);
