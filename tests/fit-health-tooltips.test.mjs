@@ -7,11 +7,16 @@ import { JSDOM } from 'jsdom';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const searchDomPath = path.join(repoRoot, 'public', 'scripts', 'search-dom.js');
+const productCardPath = path.join(repoRoot, 'public', 'scripts', 'ui', 'product-card.js');
 const stylesPath = path.join(repoRoot, 'public', 'styles.css');
 
 async function loadSearchDom() {
   const module = await import(`${pathToFileURL(searchDomPath).href}?cacheBust=${Date.now()}`);
   return module.default ?? module['module.exports'] ?? module;
+}
+
+async function loadProductCard() {
+  return import(`${pathToFileURL(productCardPath).href}?cacheBust=${Date.now()}`);
 }
 
 function makeMatch(overrides = {}) {
@@ -89,6 +94,40 @@ test('phase 51 fit health: manufacturer clearance advisory includes contextual r
   assert.match(advisory.querySelector('.fit-help')?.getAttribute('title') ?? '', /plugs, compressors, hoses and ventilation/i);
   assert.doesNotMatch(html, /<img/i);
   assert.doesNotMatch(html, /onerror/i);
+});
+
+test('phase 51 fit health: live list-row renderer shows the verdict in product cards', async () => {
+  const { buildRow } = await loadProductCard();
+  const html = buildRow(makeMatch({ fitScore: 0.04, fitGapMm: undefined }), {
+    annualEnergyCost: () => '132',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+  const dom = new JSDOM(html);
+  const badge = dom.window.document.querySelector('.fit-health');
+
+  assert.ok(badge, 'the live homepage row renderer must surface fit-health');
+  assert.ok(badge?.classList.contains('fit-health--perfect'));
+  assert.match(badge?.textContent ?? '', /Perfect fit/);
+  assert.match(badge?.textContent ?? '', /29mm spare/);
+});
+
+test('phase 51 fit health: live grid-card renderer shows tight and blocked verdicts', async () => {
+  const { buildCard } = await loadProductCard();
+  const tightHtml = buildCard(makeMatch({ fitGapMm: 2, fitsTightly: true }), {
+    tcoHtml: () => '',
+    retailersHtml: () => '',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+  const blockedHtml = buildCard(makeMatch({ cavityNeededMm: 12 }), {
+    tcoHtml: () => '',
+    retailersHtml: () => '',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(tightHtml, /fit-health--tight/);
+  assert.match(tightHtml, /Tight fit/);
+  assert.match(blockedHtml, /fit-health--blocked/);
+  assert.match(blockedHtml, /\+12mm cavity needed/);
 });
 
 test('phase 51 fit health: styles define traffic-light states and accessible tooltip affordance', () => {

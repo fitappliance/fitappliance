@@ -833,10 +833,10 @@
   }
 
   function getFitGapMm(match) {
-    const explicit = Number(match?.fitGapMm ?? match?.gapMm ?? match?.tightestGapMm);
-    if (Number.isFinite(explicit)) return Math.round(explicit);
     const needed = Number(match?.cavityNeededMm);
     if (Number.isFinite(needed) && needed > 0) return Math.ceil(needed);
+    const explicit = Number(match?.fitGapMm ?? match?.gapMm ?? match?.tightestGapMm);
+    if (Number.isFinite(explicit)) return Math.round(explicit);
     const score = Number(match?.fitScore);
     const minDimension = Math.min(
       ...[match?.w, match?.h, match?.d]
