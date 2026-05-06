@@ -888,7 +888,10 @@
       <span class="fit-health-light" aria-hidden="true"></span>
       <span class="fit-health-label">${escHtml(copy.label)}</span>
       <span class="fit-health-detail">${escHtml(copy.detail)}</span>
-      <button type="button" class="fit-help" aria-label="What does ${escHtml(copy.label)} mean?" title="${escHtml(copy.help)}">?</button>
+      <details class="fit-help-popover">
+        <summary class="fit-help" aria-label="What does ${escHtml(copy.label)} mean?">?</summary>
+        <span class="fit-help-tooltip" role="tooltip">${escHtml(copy.help)}</span>
+      </details>
     </div>`;
   }
 
