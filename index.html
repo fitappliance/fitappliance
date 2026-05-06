@@ -2368,6 +2368,8 @@ function openCompareTable() {
   }
   SearchDom.renderCompareModal(document.getElementById('compareModal'), {
     items: selected,
+    shareUrl: buildCompareShareUrl(),
+    onShare: copyCompareShareLink,
     onClose: () => {
       document.body.style.overflow = '';
     }
@@ -2487,6 +2489,44 @@ function buildCompareSnapshotFromProduct(product, label = '') {
     })),
     stars: product?.stars
   };
+}
+
+function buildCompareShareUrl() {
+  const ids = compareStore.list()
+    .map((entry) => entry.id)
+    .filter(Boolean)
+    .slice(0, 3);
+  const url = new URL(window.location.href);
+  if (ids.length > 0) {
+    url.searchParams.set('compareIds', ids.join(','));
+  } else {
+    url.searchParams.delete('compareIds');
+  }
+  return url.toString();
+}
+
+function restoreCompareFromUrlParam({ open = true } = {}) {
+  const params = new URLSearchParams(window.location.search);
+  const raw = params.get('compareIds');
+  if (!raw) return false;
+  const ids = raw.split(',')
+    .map((value) => value.trim())
+    .filter(Boolean)
+    .slice(0, 3);
+  if (ids.length === 0) return false;
+
+  ids.forEach((id) => {
+    if (compareStore.has(id)) return;
+    const product = filteredResults.find((row) => row.id === id) || PRODUCTS.find((row) => row.id === id);
+    if (!product) return;
+    compareStore.add(buildCompareSnapshotFromProduct(product, product.displayName ?? product.model ?? id));
+  });
+  syncCompareListFromStore();
+  updateCompareBar();
+  if (open && compareStore.list().length >= 2) {
+    openCompareTable();
+  }
+  return compareStore.list().length > 0;
 }
 
 function syncCompareListFromStore() {
@@ -2708,6 +2748,10 @@ function copySavedShareLink() {
   copyTextToClipboard(url.toString(), 'Saved list link copied');
 }
 
+function copyCompareShareLink(url = buildCompareShareUrl()) {
+  copyTextToClipboard(url, 'Compare link copied');
+}
+
 Object.assign(window, {
   toggleAdv,
   doSearch,
@@ -2721,6 +2765,7 @@ Object.assign(window, {
   removeSaved,
   copyCurrentSearchLink,
   copySavedShareLink,
+  copyCompareShareLink,
   clearAllSaved,
   scrollToSearch,
   openRetailerModal,
@@ -2759,6 +2804,7 @@ restoreSavedFromUrlParam();
 await setCategory(initialCategory);
 renderSearchHistoryChips();
 await readUrlParams();
+restoreCompareFromUrlParam();
 renderSavedSearchControls();
 updateCompareBar();
 renderSavedPanel();
