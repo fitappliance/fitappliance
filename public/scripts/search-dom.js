@@ -1414,7 +1414,12 @@
   }
 
   function compareMetricHelp(label, help) {
-    return `${escHtml(label)} <button type="button" class="compare-help" aria-label="${escHtml(help)}">?</button>`;
+    const safeLabel = escHtml(label);
+    const safeHelp = escHtml(help);
+    return `${safeLabel} <details class="compare-help-popover">
+      <summary class="compare-help" aria-label="${escHtml(`What does ${label} mean?`)}">?</summary>
+      <span class="compare-help-tooltip" role="tooltip">${safeHelp}</span>
+    </details>`;
   }
 
   function getCompareSections() {
