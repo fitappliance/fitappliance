@@ -281,6 +281,7 @@ test('phase 52 replacement UX: homepage wires old appliance matcher controls', (
   assert.match(indexHtml, /replacement-matcher\.mjs/);
   assert.match(indexHtml, /findReplacementSource\(/);
   assert.match(indexHtml, /buildReplacementDimensionState\(/);
+  assert.match(indexHtml, /old model \${state\.productDimensions\.w}×\${state\.productDimensions\.h}×\${state\.productDimensions\.d}mm plus practical clearance/);
 });
 
 test('phase 52 replacement UX: unmatched old models guide users back to cavity dimensions', () => {

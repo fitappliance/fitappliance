@@ -5,6 +5,12 @@ function normalizeToken(value) {
     .trim();
 }
 
+const PRACTICAL_REPLACEMENT_BUFFER = Object.freeze({
+  width: 10,
+  height: 20,
+  depth: 10
+});
+
 function normalizeText(value) {
   return String(value ?? '')
     .toLowerCase()
@@ -75,6 +81,20 @@ export function hasVerifiedRetailerLink(product = {}) {
   ));
 }
 
+export function countVerifiedRetailerLinks(product = {}) {
+  if (!Array.isArray(product?.retailers)) return 0;
+  return product.retailers.filter((retailer) => (
+    isVerifiedRetailerProductPageUrl(retailer?.url ?? retailer?.href ?? retailer?.u ?? retailer?.link)
+  )).length;
+}
+
+function hasCompleteDimensions(product = {}) {
+  return [product?.w, product?.h, product?.d].every((value) => {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) && parsed > 0;
+  });
+}
+
 function scoreProduct(query, product) {
   const normalizedQuery = normalizeText(query);
   const compactQuery = normalizeToken(query);
@@ -131,7 +151,10 @@ export function getReplacementSuggestionRows(products, { category, limit = 160, 
     .filter((product) => !wantedCategory || product?.cat === wantedCategory)
     .filter((product) => product?.model || product?.displayName)
     .filter((product) => !retailerOnly || hasVerifiedRetailerLink(product))
+    .filter(hasCompleteDimensions)
     .sort((left, right) => {
+      const retailerDelta = countVerifiedRetailerLinks(right) - countVerifiedRetailerLinks(left);
+      if (retailerDelta !== 0) return retailerDelta;
       const scoreDelta = Number(right?.priorityScore ?? 0) - Number(left?.priorityScore ?? 0);
       if (scoreDelta !== 0) return scoreDelta;
       return productLabel(left).localeCompare(productLabel(right), 'en-AU', { sensitivity: 'base' });
@@ -151,9 +174,16 @@ export function buildReplacementDimensionState(product = {}) {
     };
   }
   const label = productLabel(product);
+  const productDimensions = { w: Math.round(w), h: Math.round(h), d: Math.round(d) };
+  const dimensions = {
+    w: productDimensions.w + PRACTICAL_REPLACEMENT_BUFFER.width,
+    h: productDimensions.h + PRACTICAL_REPLACEMENT_BUFFER.height,
+    d: productDimensions.d + PRACTICAL_REPLACEMENT_BUFFER.depth
+  };
   return {
-    dimensions: { w: Math.round(w), h: Math.round(h), d: Math.round(d) },
+    productDimensions,
+    dimensions,
     label,
-    note: `${label} dimensions are a starting point. Measure the actual cavity before buying.`
+    note: `${label} dimensions plus practical clearance are a starting point. Measure the actual cavity before buying.`
   };
 }
