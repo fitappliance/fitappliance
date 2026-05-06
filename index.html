@@ -2391,16 +2391,99 @@ function closeRetailerModal(productId) {
 }
 
 function buildCompareSnapshotFromProduct(product, label = '') {
+  const clearance = product?.clearance ?? {};
+  const manufacturerClearance = product?.manufacturerClearance ?? null;
+  const retailers = Array.isArray(product?.retailers) ? product.retailers : [];
+  const getPrice = (retailer) => {
+    const parsed = Number(retailer?.p ?? retailer?.price);
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+  };
+  const getGapMm = () => {
+    const needed = Number(product?.cavityNeededMm);
+    if (Number.isFinite(needed) && needed > 0) return Math.ceil(needed);
+    const explicit = Number(product?.fitGapMm ?? product?.gapMm ?? product?.tightestGapMm);
+    if (Number.isFinite(explicit)) return Math.round(explicit);
+    const score = Number(product?.fitScore);
+    const minDimension = Math.min(
+      ...[product?.w, product?.h, product?.d]
+        .map((value) => Number(value))
+        .filter((value) => Number.isFinite(value) && value > 0)
+    );
+    if (Number.isFinite(score) && Number.isFinite(minDimension)) {
+      return Math.max(0, Math.round(score * minDimension));
+    }
+    return product?.fitsTightly ? 4 : 20;
+  };
+  const getStatus = (gap) => {
+    const needed = Number(product?.cavityNeededMm);
+    if (Number.isFinite(needed) && needed > 0) return 'relax';
+    if (product?.fitsTightly || gap < 5) return 'tight';
+    return 'exact';
+  };
+  const getBindingAxis = () => {
+    if (product?.bindingAxis) return product.bindingAxis;
+    const dimensions = [
+      {
+        axis: 'width',
+        cavity: Number(lastSearchFilters?.w),
+        appliance: Number(product?.w),
+        clearance: Number(clearance?.sides ?? clearance?.side ?? 0) * 2
+      },
+      {
+        axis: 'height',
+        cavity: Number(lastSearchFilters?.h),
+        appliance: Number(product?.h),
+        clearance: Number(clearance?.top ?? 0)
+      },
+      {
+        axis: 'depth',
+        cavity: Number(lastSearchFilters?.d),
+        appliance: Number(product?.d),
+        clearance: Number(clearance?.rear ?? 0)
+      }
+    ].filter((entry) => (
+      Number.isFinite(entry.cavity)
+      && Number.isFinite(entry.appliance)
+      && entry.cavity > 0
+      && entry.appliance > 0
+    ));
+    if (dimensions.length === 0) return '';
+    return dimensions
+      .map((entry) => ({ axis: entry.axis, spare: entry.cavity - entry.appliance - entry.clearance }))
+      .sort((left, right) => left.spare - right.spare)[0]?.axis ?? '';
+  };
+  const gap = getGapMm();
   return {
     slug: product?.id,
     displayName: label || `${displayBrandName(product?.brand)} ${String(product?.model ?? '').split(' ').slice(0, 2).join(' ')}`.trim(),
     brand: product?.brand,
+    model: product?.model,
     w: product?.w,
     h: product?.h,
     d: product?.d,
-    retailers: (Array.isArray(product?.retailers) ? product.retailers : []).slice(0, 4).map((retailer) => ({
+    practicalClearance: clearance ? {
+      side: Number(clearance.side ?? clearance.sides ?? 0),
+      top: Number(clearance.top ?? 0),
+      rear: Number(clearance.rear ?? 0)
+    } : null,
+    manufacturerClearance: manufacturerClearance ? {
+      side: Number(manufacturerClearance.side ?? manufacturerClearance.sides ?? 0),
+      top: Number(manufacturerClearance.top ?? 0),
+      rear: Number(manufacturerClearance.rear ?? 0)
+    } : null,
+    fitSummary: {
+      status: getStatus(gap),
+      bindingAxis: getBindingAxis(),
+      tightestGapMm: gap
+    },
+    delivery: {
+      doorwayClearanceMm: Math.ceil(Math.min(Number(product?.w) || 0, Number(product?.d) || 0) + 50),
+      turnClearanceMm: Math.ceil(Math.max(Number(product?.w) || 0, Number(product?.d) || 0))
+    },
+    features: Array.isArray(product?.features) ? product.features.slice(0, 6) : [],
+    retailers: retailers.slice(0, 5).map((retailer) => ({
       name: retailer?.n ?? retailer?.name ?? '',
-      price: Number.isFinite(retailer?.p) ? retailer.p : retailer?.price
+      price: getPrice(retailer)
     })),
     stars: product?.stars
   };
@@ -2418,7 +2501,7 @@ function renderCompareSurfaces() {
 }
 
 function addCompare(id, label) {
-  const product = PRODUCTS.find((row) => row.id === id);
+  const product = filteredResults.find((row) => row.id === id) || PRODUCTS.find((row) => row.id === id);
   if (!product) { showToast('Load this category before comparing'); return; }
   if (compareStore.has(id)) { showToast('Already in compare list'); return; }
   const result = compareStore.add(buildCompareSnapshotFromProduct(product, label));

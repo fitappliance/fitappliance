@@ -14,7 +14,7 @@
 
   function normalizeRetailers(retailers) {
     return (Array.isArray(retailers) ? retailers : [])
-      .slice(0, 4)
+      .slice(0, 5)
       .map((retailer) => ({
         name: String(retailer?.name ?? retailer?.n ?? '').replace(/\s+/g, ' ').trim(),
         price: Number.isFinite(Number(retailer?.price ?? retailer?.p)) ? Math.round(Number(retailer.price ?? retailer.p)) : null

@@ -1036,7 +1036,7 @@
       features: getFeatureBits(match).slice(0, 6),
       retailers: (Array.isArray(match?.retailers) ? match.retailers : [])
         .filter((retailer) => isRetailerProductPageUrl(getRetailerUrl(retailer)))
-        .slice(0, 4)
+        .slice(0, 5)
         .map((retailer) => ({
         name: getRetailerName(retailer),
         price: getRetailerPrice(retailer)
@@ -1386,31 +1386,96 @@
       .map((retailer) => Number(retailer?.price))
       .filter((price) => Number.isFinite(price) && price > 0)
       .sort((left, right) => left - right);
-    if (prices.length === 0) return '-';
+    if (prices.length === 0) return 'No captured price — check retailer page';
     const min = prices[0];
     const max = prices[prices.length - 1];
     return min === max ? formatAud(min) : `${formatAud(min)} – ${formatAud(max)}`;
   }
 
   function formatCompareMm(value) {
-    return Number.isFinite(Number(value)) ? `${Math.round(Number(value))} mm` : '-';
+    return Number.isFinite(Number(value)) ? `${Math.round(Number(value))} mm` : 'Not captured';
   }
 
-  function formatCompareClearance(clearance, key) {
-    if (!clearance) return '-';
-    return formatCompareMm(clearance[key]);
+  function formatCompareClearance(clearance, key, suffix = '', missing = 'Not captured') {
+    if (!clearance) return missing;
+    const value = formatCompareMm(clearance[key]);
+    return value === 'Not captured' ? value : `${value}${suffix}`;
   }
 
   function formatFitSummary(snapshot) {
     const status = String(snapshot?.fitSummary?.status ?? '').trim();
     const gap = snapshot?.fitSummary?.tightestGapMm;
     const label = {
-      exact: 'Good fit',
-      good: 'Good fit',
+      exact: 'Perfect fit',
+      good: 'Perfect fit',
       tight: 'Tight fit',
       relax: 'Needs more cavity'
     }[status] ?? 'Fit checked';
     return Number.isFinite(Number(gap)) ? `${label} · ${Math.round(Number(gap))} mm spare` : label;
+  }
+
+  function getCompareFitTone(snapshot) {
+    const status = String(snapshot?.fitSummary?.status ?? '').trim();
+    if (status === 'tight') return 'tight';
+    if (status === 'relax') return 'blocked';
+    return 'perfect';
+  }
+
+  function formatFitSummaryHtml(snapshot) {
+    const tone = getCompareFitTone(snapshot);
+    return `<span class="compare-fit-pill compare-fit-pill--${escHtml(tone)}">${escHtml(formatFitSummary(snapshot))}</span>`;
+  }
+
+  function formatBindingAxis(snapshot) {
+    return safeDisplayText(snapshot?.fitSummary?.bindingAxis, '') || 'Binding axis not captured';
+  }
+
+  function formatCompareDelivery(value, label) {
+    return Number.isFinite(Number(value)) ? `${escHtml(label)} ${Math.round(Number(value))} mm` : 'Delivery estimate not captured';
+  }
+
+  function formatCompareRetailers(snapshot) {
+    const retailers = Array.isArray(snapshot?.retailers) ? snapshot.retailers : [];
+    if (retailers.length === 0) return 'No verified product links';
+    const names = retailers.map((retailer) => retailer.name).filter(Boolean);
+    return `${names.length} verified store${names.length === 1 ? '' : 's'}: ${names.join(', ')}`;
+  }
+
+  function comparePriceCoverage(cells) {
+    return cells.filter((snapshot) => (
+      Array.isArray(snapshot?.retailers)
+      && snapshot.retailers.some((retailer) => Number.isFinite(Number(retailer?.price)) && Number(retailer.price) > 0)
+    )).length;
+  }
+
+  function compareRetailerLinkCount(cells) {
+    return cells.reduce((total, snapshot) => total + (Array.isArray(snapshot?.retailers) ? snapshot.retailers.length : 0), 0);
+  }
+
+  function renderCompareReportSummary(cells) {
+    const tightCount = cells.filter((snapshot) => getCompareFitTone(snapshot) === 'tight').length;
+    const blockedCount = cells.filter((snapshot) => getCompareFitTone(snapshot) === 'blocked').length;
+    const retailerLinks = compareRetailerLinkCount(cells);
+    const priceCount = comparePriceCoverage(cells);
+    const fitCopy = blockedCount > 0
+      ? `${blockedCount} need a larger cavity`
+      : tightCount > 0
+        ? `${tightCount} tight fit${tightCount === 1 ? '' : 's'} to re-check`
+        : 'All selected products pass practical fit';
+    const retailerCopy = retailerLinks > 0
+      ? `${retailerLinks} verified retailer link${retailerLinks === 1 ? '' : 's'}`
+      : 'No verified retailer links captured';
+    const priceCopy = priceCount > 0
+      ? `${priceCount} of ${cells.length} product${cells.length === 1 ? '' : 's'} have captured prices`
+      : 'No captured prices yet';
+    const cards = [
+      ['Fit confidence', fitCopy],
+      ['Retailer coverage', retailerCopy],
+      ['Price coverage', priceCopy]
+    ];
+    return `<div class="compare-report-summary" aria-label="Comparison summary">
+      ${cards.map(([label, value]) => `<div class="compare-summary-card"><span>${escHtml(label)}</span><strong>${escHtml(value)}</strong></div>`).join('')}
+    </div>`;
   }
 
   function compareMetricHelp(label, help) {
@@ -1431,13 +1496,14 @@
             label: 'Fit status',
             help: 'Shows the practical fit result for the current cavity. Green means the product passes the default practical clearance buffer.',
             key: (snapshot) => String(snapshot?.fitSummary?.status ?? ''),
-            render: formatFitSummary
+            render: formatFitSummaryHtml,
+            html: true
           },
           {
             label: 'Binding axis',
             help: 'The tightest width, height, or depth constraint. This is the first dimension to re-measure before ordering.',
             key: (snapshot) => String(snapshot?.fitSummary?.bindingAxis ?? ''),
-            render: (snapshot) => snapshot?.fitSummary?.bindingAxis || '-'
+            render: formatBindingAxis
           }
         ]
       },
@@ -1471,35 +1537,35 @@
             label: 'Practical side clearance',
             help: 'The default side clearance buffer FitAppliance uses to avoid recommending products that only barely slide into a cavity.',
             key: (snapshot) => String(snapshot?.practicalClearance?.side ?? ''),
-            render: (snapshot) => formatCompareClearance(snapshot?.practicalClearance, 'side')
+            render: (snapshot) => formatCompareClearance(snapshot?.practicalClearance, 'side', ' practical')
           },
           {
             label: 'Practical top clearance',
             help: 'The default top clearance buffer used for the initial fit result.',
             key: (snapshot) => String(snapshot?.practicalClearance?.top ?? ''),
-            render: (snapshot) => formatCompareClearance(snapshot?.practicalClearance, 'top')
+            render: (snapshot) => formatCompareClearance(snapshot?.practicalClearance, 'top', ' practical')
           },
           {
             label: 'Rear clearance advisory',
             help: 'Rear clearance leaves room for ventilation, plugs, and wall clearance. Always confirm the installation manual before purchase.',
             key: (snapshot) => String(snapshot?.manufacturerClearance?.rear ?? snapshot?.practicalClearance?.rear ?? ''),
             render: (snapshot) => {
-              const manufacturer = formatCompareClearance(snapshot?.manufacturerClearance, 'rear');
+              const manufacturer = formatCompareClearance(snapshot?.manufacturerClearance, 'rear', '', 'No manufacturer advisory');
               const practical = formatCompareClearance(snapshot?.practicalClearance, 'rear');
-              return manufacturer === '-' ? practical : `${manufacturer} manufacturer`;
+              return manufacturer === 'No manufacturer advisory' ? `${practical} practical` : `${manufacturer} manufacturer`;
             }
           },
           {
             label: 'Manufacturer side advisory',
             help: 'Manufacturer advisory figures can be stricter than the practical fit check and may affect warranty or ventilation.',
             key: (snapshot) => String(snapshot?.manufacturerClearance?.side ?? ''),
-            render: (snapshot) => formatCompareClearance(snapshot?.manufacturerClearance, 'side')
+            render: (snapshot) => formatCompareClearance(snapshot?.manufacturerClearance, 'side', ' advisory', 'No manufacturer advisory')
           },
           {
             label: 'Manufacturer top advisory',
             help: 'Manufacturer top clearance is shown as advisory information so you can verify conservative installation requirements.',
             key: (snapshot) => String(snapshot?.manufacturerClearance?.top ?? ''),
-            render: (snapshot) => formatCompareClearance(snapshot?.manufacturerClearance, 'top')
+            render: (snapshot) => formatCompareClearance(snapshot?.manufacturerClearance, 'top', ' advisory', 'No manufacturer advisory')
           }
         ]
       },
@@ -1510,13 +1576,13 @@
             label: 'Doorway check',
             help: 'A practical delivery check based on the narrower product dimension plus handling room. Use packed dimensions where available.',
             key: (snapshot) => String(snapshot?.delivery?.doorwayClearanceMm ?? ''),
-            render: (snapshot) => formatCompareMm(snapshot?.delivery?.doorwayClearanceMm)
+            render: (snapshot) => formatCompareDelivery(snapshot?.delivery?.doorwayClearanceMm, 'Doorway ≥')
           },
           {
             label: 'Turning check',
             help: 'Estimate of the wider dimension to think about when turning through halls, stairs, and lifts.',
             key: (snapshot) => String(snapshot?.delivery?.turnClearanceMm ?? ''),
-            render: (snapshot) => formatCompareMm(snapshot?.delivery?.turnClearanceMm)
+            render: (snapshot) => formatCompareDelivery(snapshot?.delivery?.turnClearanceMm, 'Turn path ≥')
           }
         ]
       },
@@ -1527,13 +1593,13 @@
             label: 'Energy stars',
             help: 'GEMS star rating captured in the catalog where available.',
             key: (snapshot) => String(snapshot?.stars ?? ''),
-            render: (snapshot) => snapshot?.stars ? `${snapshot.stars}★` : '-'
+            render: (snapshot) => snapshot?.stars ? `${snapshot.stars}★ GEMS` : 'Energy rating not captured'
           },
           {
             label: 'Key features',
             help: 'Short feature tags from the catalog. These are not paid recommendations.',
             key: (snapshot) => (snapshot?.features ?? []).join('|'),
-            render: (snapshot) => (snapshot?.features ?? []).join(' · ') || '-'
+            render: (snapshot) => (snapshot?.features ?? []).join(' · ') || 'No feature tags captured'
           }
         ]
       },
@@ -1544,7 +1610,7 @@
             label: 'Verified product links',
             help: 'Retailer links are direct product pages that have been manually reviewed where available.',
             key: (snapshot) => (snapshot?.retailers ?? []).map((retailer) => retailer.name).join('|'),
-            render: (snapshot) => (snapshot?.retailers ?? []).map((retailer) => retailer.name).join(', ') || '-'
+            render: formatCompareRetailers
           },
           {
             label: 'Captured price',
@@ -1574,7 +1640,10 @@
     const rows = section.rows.map((row) => {
       const keys = cells.map((snapshot) => row.key(snapshot));
       const allSame = keys.every((key) => key === keys[0]);
-      const values = cells.map((snapshot) => `<td class="compare-cell${allSame ? '' : ' compare-cell--diff'}">${escHtml(row.render(snapshot))}</td>`).join('');
+      const values = cells.map((snapshot) => {
+        const rendered = row.render(snapshot);
+        return `<td class="compare-cell${allSame ? '' : ' compare-cell--diff'}">${row.html ? rendered : escHtml(rendered)}</td>`;
+      }).join('');
       return `<tr class="${allSame ? 'compare-row--same' : 'compare-row--diff'}" data-compare-same-row="${allSame ? 'true' : 'false'}">
         <th>${compareMetricHelp(row.label, row.help)}</th>${values}
       </tr>`;
@@ -1699,6 +1768,7 @@
         <p>Side-by-side fit, delivery, and retailer data. Differences are highlighted.</p>
         <button type="button" class="secondary compare-diff-toggle" data-compare-differences-only aria-pressed="false">Only show differences</button>
       </div>
+      ${renderCompareReportSummary(cells)}
       ${renderCompareProductHeader(cells)}
       <div class="compare-v2-sections">
         ${getCompareSections().map((section) => renderCompareSection(section, cells)).join('')}
