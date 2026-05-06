@@ -1749,6 +1749,8 @@
   }
 
   function renderCompareSection(section, cells) {
+    const count = Math.max(1, Math.min(3, cells.length));
+    const regionLabel = `${section.title} comparison table. Swipe sideways to compare products.`;
     const rows = section.rows.map((row) => {
       const keys = cells.map((snapshot) => row.key(snapshot));
       const allSame = keys.every((key) => key === keys[0]);
@@ -1762,9 +1764,11 @@
     }).join('');
     return `<section class="compare-section">
       <h4 class="compare-section-title">${escHtml(section.title)}</h4>
-      <table class="compare-table compare-table--v2">
-        <tbody>${rows}</tbody>
-      </table>
+      <div class="compare-scroll-region" role="region" tabindex="0" aria-label="${escHtml(regionLabel)}" style="--compare-count:${count}">
+        <table class="compare-table compare-table--v2">
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
     </section>`;
   }
 
@@ -1888,6 +1892,7 @@
       ${renderCompareInsightPanel(cells)}
       ${renderCompareReportSummary(cells)}
       ${renderCompareProductHeader(cells)}
+      <p class="compare-scroll-hint">Swipe sideways to compare product columns.</p>
       <div class="compare-v2-sections">
         ${getCompareSections().map((section) => renderCompareSection(section, cells)).join('')}
       </div>
