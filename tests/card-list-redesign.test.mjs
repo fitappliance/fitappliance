@@ -83,8 +83,7 @@ test('phase 48 card redesign: old giant clearance badge and per-card commission 
   const dom = new JSDOM(`<main>${html}</main>`);
   const visibleText = dom.window.document.querySelector('.fit-result-item')?.textContent ?? '';
 
-  assert.doesNotMatch(visibleText, /REQUIRES/i);
-  assert.doesNotMatch(visibleText, /CLEARANCE/i);
+  assert.doesNotMatch(visibleText, /REQUIRES\s+\d+MM\s+CLEARANCE/i);
   assert.doesNotMatch(visibleText, /We earn a commission/i);
 });
 

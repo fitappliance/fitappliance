@@ -51,9 +51,13 @@ test('phase 51 fit health: perfect fit renders green verdict with tooltip copy',
   assert.match(badge.textContent ?? '', /24mm spare/);
   assert.ok(badge.querySelector('.fit-health-light'));
 
+  const popover = badge.querySelector('.fit-help-popover');
   const help = badge.querySelector('.fit-help');
+  const tooltip = badge.querySelector('.fit-help-tooltip');
+  assert.equal(popover?.tagName, 'DETAILS');
+  assert.equal(help?.tagName, 'SUMMARY');
   assert.equal(help?.getAttribute('aria-label'), 'What does Perfect fit mean?');
-  assert.match(help?.getAttribute('title') ?? '', /practical clearance buffer/i);
+  assert.match(tooltip?.textContent ?? '', /practical clearance buffer/i);
 });
 
 test('phase 51 fit health: tight fit renders amber verdict and ventilation nudge', async () => {
@@ -77,7 +81,7 @@ test('phase 51 fit health: blocked near miss renders red verdict with needed cav
   assert.ok(badge?.classList.contains('fit-badge--relax'));
   assert.match(badge?.textContent ?? '', /Won't fit/);
   assert.match(badge?.textContent ?? '', /\+18mm cavity needed/);
-  assert.match(badge?.querySelector('.fit-help')?.getAttribute('title') ?? '', /larger cavity/i);
+  assert.match(badge?.querySelector('.fit-help-tooltip')?.textContent ?? '', /larger cavity/i);
 });
 
 test('phase 51 fit health: manufacturer clearance advisory includes contextual rear-clearance help', async () => {
@@ -109,6 +113,8 @@ test('phase 51 fit health: live list-row renderer shows the verdict in product c
   assert.ok(badge?.classList.contains('fit-health--perfect'));
   assert.match(badge?.textContent ?? '', /Perfect fit/);
   assert.match(badge?.textContent ?? '', /29mm spare/);
+  assert.equal(badge?.querySelector('.fit-help-popover')?.tagName, 'DETAILS');
+  assert.match(badge?.querySelector('.fit-help-tooltip')?.textContent ?? '', /practical clearance buffer/i);
 });
 
 test('phase 51 fit health: live grid-card renderer shows tight and blocked verdicts', async () => {
@@ -138,4 +144,5 @@ test('phase 51 fit health: styles define traffic-light states and accessible too
   assert.match(css, /\.fit-health--blocked/);
   assert.match(css, /\.fit-health-light/);
   assert.match(css, /\.fit-help/);
+  assert.match(css, /\.fit-help-popover\[open\] \.fit-help-tooltip/);
 });
