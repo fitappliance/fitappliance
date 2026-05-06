@@ -649,9 +649,11 @@
     const top = formatClearanceMm(clearance.top);
     const rear = formatClearanceMm(clearance.rear);
     if (side === 0 && top === 0 && rear === 0) return '';
+    const help = 'Rear clearance leaves room for plugs, compressors, hoses and ventilation. Confirm the installation manual before ordering.';
     return `
       <div class="fit-card-advisory">
         Manufacturer suggests <strong>+${side}mm sides, +${top}mm top, +${rear}mm rear</strong> for ventilation.
+        <button type="button" class="fit-help" aria-label="Why manufacturer rear clearance matters" title="${escHtml(help)}">?</button>
       </div>
     `;
   }
@@ -763,8 +765,8 @@
       title="${escHtml(meta.wordmark)}"
       data-buy-click="1"
       data-product-id="${escHtml(match?.id ?? '')}"
-      data-brand="${escHtml(match?.brand ?? '')}"
-      data-model="${escHtml(match?.model ?? match?.sku ?? '')}"
+      data-brand="${escHtml(safeDisplayText(match?.brand, ''))}"
+      data-model="${escHtml(safeDisplayText(match?.model ?? match?.sku, ''))}"
       data-retailer="${escHtml(meta.wordmark)}"
       data-price="${Number.isFinite(retailer.price) ? retailer.price : 0}"
     ><span class="retailer-brand-wordmark">${escHtml(meta.wordmark)}</span></a>`;
@@ -831,10 +833,10 @@
   }
 
   function getFitGapMm(match) {
-    const explicit = Number(match?.fitGapMm ?? match?.gapMm ?? match?.tightestGapMm);
-    if (Number.isFinite(explicit)) return Math.round(explicit);
     const needed = Number(match?.cavityNeededMm);
     if (Number.isFinite(needed) && needed > 0) return Math.ceil(needed);
+    const explicit = Number(match?.fitGapMm ?? match?.gapMm ?? match?.tightestGapMm);
+    if (Number.isFinite(explicit)) return Math.round(explicit);
     const score = Number(match?.fitScore);
     const minDimension = Math.min(
       ...[match?.w, match?.h, match?.d]
@@ -852,16 +854,42 @@
     return 'exact';
   }
 
+  function getFitHealthCopy(state, gap) {
+    if (state === 'relax') {
+      return {
+        tone: 'blocked',
+        label: "Won't fit",
+        detail: `+${Math.max(0, Math.ceil(Number(gap) || 0))}mm cavity needed`,
+        help: 'This product needs a larger cavity before the practical clearance buffer can pass. Re-measure width, height and depth before ordering.'
+      };
+    }
+    if (state === 'tight') {
+      return {
+        tone: 'tight',
+        label: 'Tight fit',
+        detail: `${Math.max(0, Math.round(Number(gap) || 0))}mm spare`,
+        help: 'This product passes the fit check but has very little spare room. Verify ventilation, door swing and delivery path before ordering.'
+      };
+    }
+    return {
+      tone: 'perfect',
+      label: 'Perfect fit',
+      detail: `${Math.max(0, Math.round(Number(gap) || 0))}mm spare`,
+      help: 'This product passes the practical clearance buffer for the cavity you entered. Still confirm the product manual before purchase.'
+    };
+  }
+
   function buildFitBadgeHtml(match) {
     const state = getFitBadgeState(match);
     const gap = getFitGapMm(match);
-    if (state === 'relax') {
-      return `<span class="fit-badge fit-badge--relax">+${escHtml(gap)}mm cavity needed</span>`;
-    }
-    if (state === 'tight') {
-      return `<span class="fit-badge fit-badge--tight">⚠ Tight fit (${escHtml(gap)}mm spare)</span>`;
-    }
-    return `<span class="fit-badge fit-badge--exact">✓ Fits with ${escHtml(gap)}mm spare</span>`;
+    const copy = getFitHealthCopy(state, gap);
+    const legacyClass = state === 'relax' ? 'fit-badge--relax' : state === 'tight' ? 'fit-badge--tight' : 'fit-badge--exact';
+    return `<div class="fit-health fit-health--${escHtml(copy.tone)} fit-badge ${legacyClass}" data-fit-health="${escHtml(copy.tone)}">
+      <span class="fit-health-light" aria-hidden="true"></span>
+      <span class="fit-health-label">${escHtml(copy.label)}</span>
+      <span class="fit-health-detail">${escHtml(copy.detail)}</span>
+      <button type="button" class="fit-help" aria-label="What does ${escHtml(copy.label)} mean?" title="${escHtml(copy.help)}">?</button>
+    </div>`;
   }
 
   function buildSpecChipsHtml(match) {
