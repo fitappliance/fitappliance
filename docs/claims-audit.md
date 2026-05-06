@@ -58,7 +58,7 @@ The audit goal is conservative: keep claims that are directly supported by curre
 | Homepage trust strip | `Brand-specific clearance rules` | Clearance data and generator pages use per-brand rules. | Keep. |
 | Homepage trust strip | `Doorway delivery check` | Advanced doorway field and doorway pages exist. | Keep. |
 | Homepage / structured data | `Energy star rating filter` | Search UI supports star/facet filtering and data includes stars. | Keep with neutral wording. |
-| `README.md` project status | `~2170 products across 4 categories` | Public data contains the catalog. | Keep. |
+| `README.md` project status | `Raw specs catalog: 2,188 products; retailer-verified products: 66; verified retailer links: 177; live price rows: 0` | Public data contains raw specs, but retailer-link coverage is a separate evidence layer. | Keep separated; do not describe raw catalog rows as retailer inventory. |
 | `README.md` workflow notes | `weekly` / `daily` workflow schedules | These refer to named GitHub Actions schedules, not user-facing product guarantees. | Keep as internal docs. |
 | `DEVGUIDE.md` GEMS source note | `Energy Rating Australia (GEMS) active register` | Source integration exists in `scripts/sources/energyrating.js`. | Keep, but do not market as "GEMS-verified". |
 | `pages/methodology.html` | `Brand organization metadata ... only when verified links exist` | Refers to metadata curation, not a broad product claim. | Keep. |

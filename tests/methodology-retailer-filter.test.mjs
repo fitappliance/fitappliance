@@ -13,5 +13,6 @@ test('phase 48 methodology: documents retailer-verified default and showAll esca
   assert.match(html, /searchWithFacets/);
   assert.match(html, /retailers<\/code> array by default/);
   assert.match(html, /\?showAll=1/);
-  assert.match(html, /21 of roughly 2,170 catalogue products/);
+  assert.match(html, /66 of 2,188 raw catalogue products/);
+  assert.match(html, /177 reviewed retailer links/);
 });
