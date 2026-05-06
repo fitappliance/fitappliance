@@ -37,7 +37,7 @@ index.html loads
   └── renders UI (same logic, data-driven)
 ```
 
-### Current architecture snapshot (updated 2026-04-26)
+### Current architecture snapshot (updated 2026-05-06)
 
 #### Search architecture (Phase 45 series)
 
@@ -47,6 +47,16 @@ index.html loads
 - `public/scripts/compare-store.js` — LocalStorage-backed compare tray, max 3, with compact product snapshots.
 - URL state is handled by `serializeSearchState` / `parseSearchParams` from Phase 45a.
 - Mobile `<768px` uses a 3-tab bottom sheet: Filters / Saved / Compare.
+
+#### Compare report architecture (Phase 51)
+
+- `SearchDom.renderCompareModal()` renders the RTINGS-style side-by-side report for 2-3 selected appliances.
+- Product snapshots come from `buildCompareSnapshotFromProduct()` and intentionally store only comparison-safe fields: dimensions, fit summary, practical/manufacturer clearance, delivery estimates, features, stars, retailer links, and captured prices when available.
+- The report starts with an opinionated recommendation panel, then summary cards, sticky compared-product headers, grouped metric sections, and highlighted difference cells.
+- Metric labels use native `<details>` tooltips via `compareMetricHelp()` so explanations work on touch devices without hover.
+- `Only show differences` hides rows where all selected products share the same value.
+- `Copy compare link` stores selected product IDs in `compareIds`; `restoreCompareFromUrlParam()` restores the tray and opens the report from shared URLs.
+- Mobile compare tables are wrapped in focusable `.compare-scroll-region` containers. The metric column stays sticky while product columns scroll sideways, and a visible hint tells users to swipe.
 
 #### Service Worker (Phase 43a §3.6)
 

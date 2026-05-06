@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-05-06 — Phase 51 compare report upgrade
+
+- PR #75 — feat(compare): polish appliance comparison report with grouped metrics and clearer report hierarchy
+- PR #76 — feat(compare): add recommendation insights and product strength badges
+- PR #77 — feat(compare): add shareable compare links with `compareIds` URL restore
+- PR #78 — feat(compare): improve mobile report scrolling with sticky metric labels and swipe affordance
+
 ## 2026-04-26 — Phase 43a audit closure + Phase 45 search completion
 
 - PR #15 — feat(catalog): retailer backfill cursor pipeline
