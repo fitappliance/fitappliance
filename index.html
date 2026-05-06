@@ -1278,7 +1278,10 @@ function useOldModelSize() {
   document.getElementById('inH').value = String(h);
   document.getElementById('inD').value = String(d);
   if (status) {
-    status.textContent = `Using ${state.label}: ${w}×${h}×${d}mm. Re-measure before ordering.`;
+    const productDimensions = state.productDimensions
+      ? `old model ${state.productDimensions.w}×${state.productDimensions.h}×${state.productDimensions.d}mm plus practical clearance`
+      : 'old model dimensions plus practical clearance';
+    status.textContent = `Using ${state.label}: ${w}×${h}×${d}mm (${productDimensions}). Re-measure before ordering.`;
   }
   renderSpaceAlertsForDimensions({ w, h, d, door: document.getElementById('inDoor')?.value });
   showToast('Filled dimensions from the old model');
