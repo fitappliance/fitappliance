@@ -3,6 +3,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { validateApplianceDimension } = require('./pdf-pipeline/4-validate');
+const { getEvidenceRoot, sha256File } = require('./manual-evidence');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 const PDF_EVIDENCE_TYPES = new Set(['manufacturer_manual', 'installation_manual', 'spec_sheet']);
@@ -124,13 +125,97 @@ function emptyCategorySummary() {
     missingPdfEvidenceProducts: 0,
     strictEvidenceValid: 0,
     strictEvidenceInvalid: 0,
+    catalogPdfDimensionMismatches: 0,
+    evidenceFileHashValid: 0,
+    evidenceFileHashInvalid: 0,
+    evidenceFileHashSkipped: 0,
   };
+}
+
+function resolveEvidenceFilePath(evidence = {}, evidenceRootDir = '') {
+  const relativePath = String(evidence.local_path || '').trim();
+  const root = String(evidenceRootDir || '').trim();
+  if (!relativePath || !root || path.isAbsolute(relativePath)) return null;
+  return path.join(root, relativePath);
+}
+
+function verifyEvidenceFileHash(evidence = {}, evidenceRootDir = '') {
+  const expectedHash = String(evidence.sha256 || '').trim().toLowerCase();
+  const relativePath = String(evidence.local_path || '').trim();
+  if (!relativePath || !expectedHash) {
+    return { status: 'not_applicable' };
+  }
+
+  if (path.isAbsolute(relativePath)) {
+    return {
+      status: 'invalid',
+      issue: {
+        code: 'evidence_local_path_absolute',
+        severity: 'error',
+        localPath: relativePath,
+      },
+    };
+  }
+
+  if (!String(evidenceRootDir || '').trim()) {
+    return {
+      status: 'skipped',
+      issue: {
+        code: 'evidence_file_hash_skipped',
+        severity: 'warning',
+        reason: 'EVIDENCE_ROOT_DIR is not set; physical PDF hash verification skipped',
+        localPath: relativePath,
+      },
+    };
+  }
+
+  const filePath = resolveEvidenceFilePath(evidence, evidenceRootDir);
+  if (!filePath || !fs.existsSync(filePath)) {
+    return {
+      status: 'skipped',
+      issue: {
+        code: 'evidence_file_missing',
+        severity: 'warning',
+        reason: 'Physical evidence file not found; hash verification skipped',
+        localPath: relativePath,
+      },
+    };
+  }
+
+  const actualHash = sha256File(filePath).toLowerCase();
+  if (actualHash !== expectedHash) {
+    return {
+      status: 'invalid',
+      issue: {
+        code: 'evidence_file_hash_mismatch',
+        severity: 'error',
+        localPath: relativePath,
+        expectedHash,
+        actualHash,
+      },
+    };
+  }
+
+  return { status: 'valid' };
+}
+
+function compareCatalogToStrictDimensions(product = {}, strictData = {}) {
+  const dimensions = strictData.dimensions || {};
+  const checks = [
+    ['width', product.w, dimensions.width_mm],
+    ['height', product.h, dimensions.height_mm],
+    ['depth', product.d, dimensions.depth_mm],
+  ];
+  return checks
+    .filter(([, catalogValue, pdfValue]) => catalogValue !== pdfValue)
+    .map(([axis, catalogValue, pdfValue]) => ({ axis, catalogValue, pdfValue }));
 }
 
 function auditPdfEvidenceCoverage({
   products,
   manualEvidence,
   repoRoot = REPO_ROOT,
+  evidenceRootDir = getEvidenceRoot(),
   now = new Date(),
   reviewQueueLimit = 50,
 } = {}) {
@@ -147,6 +232,10 @@ function auditPdfEvidenceCoverage({
     missingPdfEvidenceProducts: 0,
     strictEvidenceValid: 0,
     strictEvidenceInvalid: 0,
+    catalogPdfDimensionMismatches: 0,
+    evidenceFileHashValid: 0,
+    evidenceFileHashInvalid: 0,
+    evidenceFileHashSkipped: 0,
   };
   const byCategory = {};
   const issues = [];
@@ -184,12 +273,45 @@ function auditPdfEvidenceCoverage({
     byCategory[category].approvedPdfEvidenceProducts += 1;
 
     for (const evidence of approvedEvidence) {
+      const hashResult = verifyEvidenceFileHash(evidence, evidenceRootDir);
+      if (hashResult.status === 'valid') {
+        summary.evidenceFileHashValid += 1;
+        byCategory[category].evidenceFileHashValid += 1;
+      } else if (hashResult.status === 'invalid') {
+        summary.evidenceFileHashInvalid += 1;
+        byCategory[category].evidenceFileHashInvalid += 1;
+        issues.push({
+          productId: product.id,
+          sourceUrl: evidence.source_url,
+          ...hashResult.issue,
+        });
+      } else if (hashResult.status === 'skipped') {
+        summary.evidenceFileHashSkipped += 1;
+        byCategory[category].evidenceFileHashSkipped += 1;
+        issues.push({
+          productId: product.id,
+          sourceUrl: evidence.source_url,
+          ...hashResult.issue,
+        });
+      }
+
       const payload = getStrictPayload(evidence);
       if (!payload) continue;
       const result = validateApplianceDimension(payload);
       if (result.valid) {
         summary.strictEvidenceValid += 1;
         byCategory[category].strictEvidenceValid += 1;
+        const differences = compareCatalogToStrictDimensions(product, result.data);
+        if (differences.length > 0) {
+          summary.catalogPdfDimensionMismatches += 1;
+          byCategory[category].catalogPdfDimensionMismatches += 1;
+          issues.push({
+            code: 'catalog_pdf_dimension_mismatch',
+            productId: product.id,
+            sourceUrl: evidence.source_url,
+            differences,
+          });
+        }
       } else {
         summary.strictEvidenceInvalid += 1;
         byCategory[category].strictEvidenceInvalid += 1;
@@ -240,15 +362,19 @@ function buildMarkdownReport(report) {
     `- Products missing approved PDF evidence: ${report.summary.missingPdfEvidenceProducts}`,
     `- Strict extracted evidence valid: ${report.summary.strictEvidenceValid}`,
     `- Strict extracted evidence invalid: ${report.summary.strictEvidenceInvalid}`,
+    `- Catalog rows whose dimensions differ from approved PDF evidence: ${report.summary.catalogPdfDimensionMismatches}`,
+    `- Evidence file hashes verified: ${report.summary.evidenceFileHashValid}`,
+    `- Evidence file hash warnings/skips: ${report.summary.evidenceFileHashSkipped}`,
+    `- Evidence file hash failures: ${report.summary.evidenceFileHashInvalid}`,
     '',
     '## Category breakdown',
     '',
-    '| Category | Total | Shape valid | PDF evidence | Missing PDF evidence | Strict valid | Strict invalid |',
-    '| --- | ---: | ---: | ---: | ---: | ---: | ---: |',
+    '| Category | Total | Shape valid | PDF evidence | Missing PDF evidence | Strict valid | Strict invalid | PDF mismatch | Hash ok | Hash skipped | Hash failed |',
+    '| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |',
   ];
 
   for (const [category, stats] of Object.entries(report.byCategory).sort(([a], [b]) => a.localeCompare(b))) {
-    lines.push(`| ${category} | ${stats.totalProducts} | ${stats.shapeValid} | ${stats.approvedPdfEvidenceProducts} | ${stats.missingPdfEvidenceProducts} | ${stats.strictEvidenceValid} | ${stats.strictEvidenceInvalid} |`);
+    lines.push(`| ${category} | ${stats.totalProducts} | ${stats.shapeValid} | ${stats.approvedPdfEvidenceProducts} | ${stats.missingPdfEvidenceProducts} | ${stats.strictEvidenceValid} | ${stats.strictEvidenceInvalid} | ${stats.catalogPdfDimensionMismatches} | ${stats.evidenceFileHashValid} | ${stats.evidenceFileHashSkipped} | ${stats.evidenceFileHashInvalid} |`);
   }
 
   lines.push('', '## Top review queue', '');
@@ -310,7 +436,11 @@ function runCli(args = process.argv.slice(2)) {
   console.log(`Markdown summary written: ${outputs.markdownPath}`);
   console.log(`Products with approved PDF evidence: ${report.summary.approvedPdfEvidenceProducts}/${report.summary.totalProducts}`);
   console.log(`Missing PDF evidence: ${report.summary.missingPdfEvidenceProducts}`);
-  return report.summary.strictEvidenceInvalid > 0 || report.summary.catalogDimensionShapeInvalid > 0 ? 1 : 0;
+  return report.summary.strictEvidenceInvalid > 0
+    || report.summary.catalogDimensionShapeInvalid > 0
+    || report.summary.evidenceFileHashInvalid > 0
+    ? 1
+    : 0;
 }
 
 if (require.main === module) {
@@ -324,6 +454,8 @@ module.exports = {
   hasApprovedPdfEvidence,
   loadCatalog,
   loadManualEvidence,
+  resolveEvidenceFilePath,
   validateCatalogDimensionShape,
+  verifyEvidenceFileHash,
   writePdfEvidenceAuditReports,
 };

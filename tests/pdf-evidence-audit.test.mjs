@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -10,9 +11,18 @@ const {
   auditPdfEvidenceCoverage,
   buildMarkdownReport,
   hasApprovedPdfEvidence,
+  resolveEvidenceFilePath,
   validateCatalogDimensionShape,
   writePdfEvidenceAuditReports
 } = require('../scripts/audit-pdf-evidence.js');
+
+const repoRoot = process.cwd();
+const fixtureEvidenceRoot = path.join(repoRoot, 'tests', 'fixtures', 'pdf-evidence');
+const fixtureRelativePath = 'hisense/hrtf206-ff22c779.pdf';
+const fixtureHash = crypto
+  .createHash('sha256')
+  .update(fs.readFileSync(path.join(fixtureEvidenceRoot, fixtureRelativePath)))
+  .digest('hex');
 
 function product(overrides = {}) {
   return {
@@ -97,6 +107,106 @@ test('pdf evidence audit: strict extracted evidence is validated with the Zod sc
 
   assert.equal(report.summary.strictEvidenceValid, 1);
   assert.equal(report.summary.strictEvidenceInvalid, 0);
+  assert.equal(report.summary.catalogPdfDimensionMismatches, 0);
+});
+
+test('pdf evidence audit: strict PDF evidence flags catalog dimension mismatches', () => {
+  const report = auditPdfEvidenceCoverage({
+    products: [product({ id: 'fridge-hisense-hrtf206', model: 'HRTF206', w: 550, h: 1410, d: 490 })],
+    manualEvidence: {
+      products: {
+        'fridge-hisense-hrtf206': {
+          evidence: [{
+            type: 'spec_sheet',
+            status: 'approved',
+            source_url: 'https://www.hisense.com.au/manuals/hrtf206-spec.pdf',
+            extracted: {
+              brand: 'Hisense',
+              sku: 'HRTF206',
+              category: 'FRIDGE',
+              dimensions: { height_mm: 1456, width_mm: 550, depth_mm: 562, door_open_90_depth_mm: null },
+              clearance_requirements: { top_mm: 100, left_mm: 50, right_mm: 50, rear_mm: 50 },
+              flags: { requires_plumbing: false, ventilation_required: true, reversible_door: false },
+              metadata: {
+                source_pdf_url: 'https://www.hisense.com.au/manuals/hrtf206-spec.pdf',
+                extraction_date: '2026-05-07T00:00:00.000Z',
+                confidence_score: 0.97
+              }
+            }
+          }]
+        }
+      }
+    },
+    now: '2026-05-07T00:00:00.000Z'
+  });
+
+  assert.equal(report.summary.strictEvidenceValid, 1);
+  assert.equal(report.summary.catalogPdfDimensionMismatches, 1);
+  assert.equal(report.issues.some((issue) => issue.code === 'catalog_pdf_dimension_mismatch'), true);
+});
+
+test('pdf evidence audit: verifies local PDF hash by joining EVIDENCE_ROOT_DIR with relative local_path', () => {
+  const report = auditPdfEvidenceCoverage({
+    products: [product({ id: 'fridge-hisense-hrtf206', model: 'HRTF206', w: 550, h: 1456, d: 562 })],
+    evidenceRootDir: fixtureEvidenceRoot,
+    manualEvidence: {
+      products: {
+        'fridge-hisense-hrtf206': {
+          evidence: [{
+            type: 'spec_sheet',
+            status: 'approved',
+            source_url: 'https://www.hisense.com.au/manuals/hrtf206-spec.pdf',
+            local_path: fixtureRelativePath,
+            sha256: fixtureHash,
+            extracted: {
+              brand: 'Hisense',
+              sku: 'HRTF206',
+              category: 'FRIDGE',
+              dimensions: { height_mm: 1456, width_mm: 550, depth_mm: 562, door_open_90_depth_mm: null },
+              clearance_requirements: { top_mm: 100, left_mm: 50, right_mm: 50, rear_mm: 50 },
+              flags: { requires_plumbing: false, ventilation_required: true, reversible_door: false },
+              metadata: {
+                source_pdf_url: 'https://www.hisense.com.au/manuals/hrtf206-spec.pdf',
+                extraction_date: '2026-05-07T00:00:00.000Z',
+                confidence_score: 0.97
+              }
+            }
+          }]
+        }
+      }
+    },
+    now: '2026-05-07T00:00:00.000Z'
+  });
+
+  assert.equal(resolveEvidenceFilePath({ local_path: fixtureRelativePath }, fixtureEvidenceRoot), path.join(fixtureEvidenceRoot, fixtureRelativePath));
+  assert.equal(report.summary.evidenceFileHashValid, 1);
+  assert.equal(report.summary.evidenceFileHashSkipped, 0);
+  assert.equal(report.summary.evidenceFileHashInvalid, 0);
+  assert.equal(report.issues.some((issue) => issue.code === 'evidence_file_hash_mismatch'), false);
+});
+
+test('pdf evidence audit: warns and skips hash verification when physical evidence root is unavailable', () => {
+  const report = auditPdfEvidenceCoverage({
+    products: [product({ id: 'fridge-hisense-hrtf206', model: 'HRTF206', w: 550, h: 1456, d: 562 })],
+    evidenceRootDir: '',
+    manualEvidence: {
+      products: {
+        'fridge-hisense-hrtf206': {
+          evidence: [{
+            type: 'spec_sheet',
+            status: 'approved',
+            source_url: 'https://www.hisense.com.au/manuals/hrtf206-spec.pdf',
+            local_path: fixtureRelativePath,
+            sha256: fixtureHash
+          }]
+        }
+      }
+    },
+    now: '2026-05-07T00:00:00.000Z'
+  });
+
+  assert.equal(report.summary.evidenceFileHashSkipped, 1);
+  assert.equal(report.issues.some((issue) => issue.code === 'evidence_file_hash_skipped' && issue.severity === 'warning'), true);
 });
 
 test('pdf evidence audit: invalid strict evidence is reported for manual review', () => {

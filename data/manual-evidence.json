@@ -2,9 +2,57 @@
   "schema_version": 1,
   "last_updated": "2026-05-07",
   "storage": {
-    "root_env": "FITAPPLIANCE_EVIDENCE_ROOT",
-    "default_root": "/Volumes/绿联扩展1T/FitAppliance/manual-evidence",
-    "required_dirs": ["pdf", "extracted", "approved", "rejected"]
+    "root_env": "EVIDENCE_ROOT_DIR",
+    "path_rule": "Each evidence.local_path is relative to EVIDENCE_ROOT_DIR. Do not store absolute machine paths in this manifest."
   },
-  "products": {}
+  "products": {
+    "fridge-arf3335": {
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRTF206",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "source_url": "https://dtc-aus-api.hisense.com/medias/HRTF206-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDI1MDh8YXBwbGljYXRpb24vcGRmfGFHSTJMMmd3Wmk4NE9EQTBNVEEzTXpVME1UUXlMMGhTVkVZeU1EWXRVM0JsWXk1d1pHWXw5MDY2ZmY5ODYyNWFkNmZmY2NlMjM5Yzg5YzY4YWFmM2RkNGJmYWIwNzhhNmE3YmZkM2UyZTMzYjBmZDU3Nzdi",
+          "local_path": "hisense/hrtf206-ff22c779.pdf",
+          "sha256": "f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb",
+          "verified_at": "2026-05-07",
+          "source_quote": [
+            "Model Number HRTF206",
+            "Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm",
+            "Dimensions (Net) (W X H X D) 550×1456x562 mm"
+          ],
+          "notes": "First approved PDF evidence trial. Strict extraction is from the official Hisense AU spec sheet. It intentionally surfaces a mismatch with the legacy catalog dimensions for manual data correction review.",
+          "extracted": {
+            "brand": "Hisense",
+            "sku": "HRTF206",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1456,
+              "width_mm": 550,
+              "depth_mm": 562,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 100,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": false
+            },
+            "metadata": {
+              "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRTF206-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDI1MDh8YXBwbGljYXRpb24vcGRmfGFHSTJMMmd3Wmk4NE9EQTBNVEEzTXpVME1UUXlMMGhTVkVZeU1EWXRVM0JsWXk1d1pHWXw5MDY2ZmY5ODYyNWFkNmZmY2NlMjM5Yzg5YzY4YWFmM2RkNGJmYWIwNzhhNmE3YmZkM2UyZTMzYjBmZDU3Nzdi",
+              "extraction_date": "2026-05-07T00:00:00.000Z",
+              "confidence_score": 0.97
+            }
+          }
+        }
+      ]
+    }
+  }
 }
