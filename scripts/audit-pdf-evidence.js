@@ -124,7 +124,20 @@ function emptyCategorySummary() {
     missingPdfEvidenceProducts: 0,
     strictEvidenceValid: 0,
     strictEvidenceInvalid: 0,
+    catalogPdfDimensionMismatches: 0,
   };
+}
+
+function compareCatalogToStrictDimensions(product = {}, strictData = {}) {
+  const dimensions = strictData.dimensions || {};
+  const checks = [
+    ['width', product.w, dimensions.width_mm],
+    ['height', product.h, dimensions.height_mm],
+    ['depth', product.d, dimensions.depth_mm],
+  ];
+  return checks
+    .filter(([, catalogValue, pdfValue]) => catalogValue !== pdfValue)
+    .map(([axis, catalogValue, pdfValue]) => ({ axis, catalogValue, pdfValue }));
 }
 
 function auditPdfEvidenceCoverage({
@@ -147,6 +160,7 @@ function auditPdfEvidenceCoverage({
     missingPdfEvidenceProducts: 0,
     strictEvidenceValid: 0,
     strictEvidenceInvalid: 0,
+    catalogPdfDimensionMismatches: 0,
   };
   const byCategory = {};
   const issues = [];
@@ -190,6 +204,17 @@ function auditPdfEvidenceCoverage({
       if (result.valid) {
         summary.strictEvidenceValid += 1;
         byCategory[category].strictEvidenceValid += 1;
+        const differences = compareCatalogToStrictDimensions(product, result.data);
+        if (differences.length > 0) {
+          summary.catalogPdfDimensionMismatches += 1;
+          byCategory[category].catalogPdfDimensionMismatches += 1;
+          issues.push({
+            code: 'catalog_pdf_dimension_mismatch',
+            productId: product.id,
+            sourceUrl: evidence.source_url,
+            differences,
+          });
+        }
       } else {
         summary.strictEvidenceInvalid += 1;
         byCategory[category].strictEvidenceInvalid += 1;
@@ -240,15 +265,16 @@ function buildMarkdownReport(report) {
     `- Products missing approved PDF evidence: ${report.summary.missingPdfEvidenceProducts}`,
     `- Strict extracted evidence valid: ${report.summary.strictEvidenceValid}`,
     `- Strict extracted evidence invalid: ${report.summary.strictEvidenceInvalid}`,
+    `- Catalog rows whose dimensions differ from approved PDF evidence: ${report.summary.catalogPdfDimensionMismatches}`,
     '',
     '## Category breakdown',
     '',
-    '| Category | Total | Shape valid | PDF evidence | Missing PDF evidence | Strict valid | Strict invalid |',
-    '| --- | ---: | ---: | ---: | ---: | ---: | ---: |',
+    '| Category | Total | Shape valid | PDF evidence | Missing PDF evidence | Strict valid | Strict invalid | PDF mismatch |',
+    '| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |',
   ];
 
   for (const [category, stats] of Object.entries(report.byCategory).sort(([a], [b]) => a.localeCompare(b))) {
-    lines.push(`| ${category} | ${stats.totalProducts} | ${stats.shapeValid} | ${stats.approvedPdfEvidenceProducts} | ${stats.missingPdfEvidenceProducts} | ${stats.strictEvidenceValid} | ${stats.strictEvidenceInvalid} |`);
+    lines.push(`| ${category} | ${stats.totalProducts} | ${stats.shapeValid} | ${stats.approvedPdfEvidenceProducts} | ${stats.missingPdfEvidenceProducts} | ${stats.strictEvidenceValid} | ${stats.strictEvidenceInvalid} | ${stats.catalogPdfDimensionMismatches} |`);
   }
 
   lines.push('', '## Top review queue', '');

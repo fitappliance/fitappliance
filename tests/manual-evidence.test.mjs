@@ -14,7 +14,7 @@ const packagePath = path.join(repoRoot, 'package.json');
 const docsPath = path.join(repoRoot, 'docs', 'manual-evidence-pipeline.md');
 const manualEvidence = require(scriptPath);
 
-test('manual evidence: manifest starts empty with external storage metadata', () => {
+test('manual evidence: manifest declares external storage metadata and seeded PDF evidence', () => {
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 
   assert.equal(manifest.schema_version, 1);
@@ -22,7 +22,17 @@ test('manual evidence: manifest starts empty with external storage metadata', ()
   assert.equal(manifest.storage.default_root, '/Volumes/绿联扩展1T/FitAppliance/manual-evidence');
   assert.deepEqual(manifest.storage.required_dirs, ['pdf', 'extracted', 'approved', 'rejected']);
   assert.equal(typeof manifest.products, 'object');
-  assert.equal(Object.keys(manifest.products).length, 0);
+  assert.ok(Object.keys(manifest.products).length >= 1);
+
+  const hrtf206 = manifest.products['fridge-arf3335'];
+  assert.equal(hrtf206.brand, 'Hisense');
+  assert.equal(hrtf206.model, 'HRTF206');
+  assert.equal(hrtf206.evidence[0].type, 'spec_sheet');
+  assert.equal(hrtf206.evidence[0].status, 'approved');
+  assert.equal(hrtf206.evidence[0].extracted.dimensions.width_mm, 550);
+  assert.equal(hrtf206.evidence[0].extracted.dimensions.height_mm, 1456);
+  assert.equal(hrtf206.evidence[0].extracted.dimensions.depth_mm, 562);
+  assert.equal(hrtf206.evidence[0].extracted.clearance_requirements.left_mm, 50);
 });
 
 test('manual evidence: validateManualEvidenceDocument reports schema problems without throwing', () => {
