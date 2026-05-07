@@ -99,8 +99,8 @@ test('phase 52 data trust styles: trust metadata is subtle and wraps on mobile c
   const block = blockFor('.data-trust-line');
   const mobile = css.match(/@media\(max-width:\s*660px\)\s*\{[\s\S]*?\.data-trust-line\s*\{([^}]+)\}/)?.[1] ?? '';
 
-  assert.match(block, /font-size:\s*11px/);
+  assert.match(block, /font-size:\s*13px/);
   assert.match(block, /color:\s*var\(--ink-3\)/);
   assert.match(block, /flex-wrap:\s*wrap/);
-  assert.match(mobile, /font-size:\s*10px/);
+  assert.match(mobile, /font-size:\s*12px/);
 });
