@@ -5,6 +5,11 @@ const {
   CLEARANCE_RANGE_MM,
   OPTIONAL_RANGES
 } = require('./lib/schema');
+const {
+  ApplianceDimensionSchema,
+  normalizeApplianceDimensionCandidate,
+  validateApplianceDimension
+} = require('./lib/appliance-dimension-schema');
 
 function isNumber(value) {
   return typeof value === 'number' && Number.isFinite(value);
@@ -68,3 +73,6 @@ function validateExtracted(data) {
 }
 
 exports.validateExtracted = validateExtracted;
+exports.ApplianceDimensionSchema = ApplianceDimensionSchema;
+exports.normalizeApplianceDimensionCandidate = normalizeApplianceDimensionCandidate;
+exports.validateApplianceDimension = validateApplianceDimension;

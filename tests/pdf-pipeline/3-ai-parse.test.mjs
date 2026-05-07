@@ -50,6 +50,7 @@ test('pdf pipeline parse: rejects invalid JSON from llmCaller', async () => {
 test('pdf pipeline parse: prompt template contains the schema contract', () => {
   assert.match(PROMPT_TEMPLATE, /output ONLY a single JSON object/);
   assert.match(PROMPT_TEMPLATE, /dimensions_mm/);
+  assert.match(PROMPT_TEMPLATE, /Do not guess ambiguous dimensions/i);
+  assert.match(PROMPT_TEMPLATE, /cavity dimension/i);
   assert.match(PROMPT_TEMPLATE, /{{TEXT}}/);
 });
-
