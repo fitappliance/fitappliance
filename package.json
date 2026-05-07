@@ -59,6 +59,7 @@
     "audit-compare-links": "node scripts/audit-compare-links.js",
     "audit-link-quality": "node scripts/audit-link-quality.js",
     "audit-data-accuracy": "node scripts/audit-data-accuracy.js",
+    "audit-pdf-evidence": "node scripts/audit-pdf-evidence.js",
     "manual-evidence": "node scripts/manual-evidence.js",
     "verify-compare-quality": "node scripts/verify-compare-quality.js",
     "audit-portability": "node scripts/audit-portability.js",
