@@ -2,9 +2,8 @@
   "schema_version": 1,
   "last_updated": "2026-05-07",
   "storage": {
-    "root_env": "FITAPPLIANCE_EVIDENCE_ROOT",
-    "default_root": "/Volumes/绿联扩展1T/FitAppliance/manual-evidence",
-    "required_dirs": ["pdf", "extracted", "approved", "rejected"]
+    "root_env": "EVIDENCE_ROOT_DIR",
+    "path_rule": "Each evidence.local_path is relative to EVIDENCE_ROOT_DIR. Do not store absolute machine paths in this manifest."
   },
   "products": {
     "fridge-arf3335": {
@@ -16,7 +15,7 @@
           "type": "spec_sheet",
           "status": "approved",
           "source_url": "https://dtc-aus-api.hisense.com/medias/HRTF206-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDI1MDh8YXBwbGljYXRpb24vcGRmfGFHSTJMMmd3Wmk4NE9EQTBNVEEzTXpVME1UUXlMMGhTVkVZeU1EWXRVM0JsWXk1d1pHWXw5MDY2ZmY5ODYyNWFkNmZmY2NlMjM5Yzg5YzY4YWFmM2RkNGJmYWIwNzhhNmE3YmZkM2UyZTMzYjBmZDU3Nzdi",
-          "local_path": "pdf/fridge/hisense/hrtf206-ff22c779.pdf",
+          "local_path": "hisense/hrtf206-ff22c779.pdf",
           "sha256": "f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb",
           "verified_at": "2026-05-07",
           "source_quote": [

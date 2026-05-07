@@ -4,8 +4,9 @@ const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
 
-const DEFAULT_EVIDENCE_ROOT = '/Volumes/绿联扩展1T/FitAppliance/manual-evidence';
-const REQUIRED_DIRS = ['pdf', 'extracted', 'approved', 'rejected'];
+const REPO_ROOT = path.resolve(__dirname, '..');
+const EVIDENCE_ROOT_ENV = 'EVIDENCE_ROOT_DIR';
+const REQUIRED_DIRS = [];
 const SUPPORTED_EVIDENCE_TYPES = new Set([
   'manufacturer_manual',
   'installation_manual',
@@ -15,8 +16,35 @@ const SUPPORTED_EVIDENCE_TYPES = new Set([
 ]);
 const SUPPORTED_STATUSES = new Set(['candidate', 'extracted', 'approved', 'rejected']);
 
-function getEvidenceRoot(env = process.env) {
-  return String(env.FITAPPLIANCE_EVIDENCE_ROOT || DEFAULT_EVIDENCE_ROOT).trim();
+function parseDotEnvLine(line) {
+  const match = String(line).match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/);
+  if (!match) return null;
+  const [, key, rawValue] = match;
+  const value = rawValue
+    .replace(/^(['"])(.*)\1$/, '$2')
+    .replace(/\\n/g, '\n');
+  return [key, value];
+}
+
+function readLocalEnv(repoRoot = REPO_ROOT) {
+  const filePath = path.join(repoRoot, '.env.local');
+  if (!fs.existsSync(filePath)) return {};
+  return fs.readFileSync(filePath, 'utf8')
+    .split(/\r?\n/)
+    .reduce((acc, line) => {
+      const parsed = parseDotEnvLine(line);
+      if (parsed) acc[parsed[0]] = parsed[1];
+      return acc;
+    }, {});
+}
+
+function getEvidenceRoot(env = process.env, { repoRoot = REPO_ROOT } = {}) {
+  const localEnv = readLocalEnv(repoRoot);
+  return String(
+    env[EVIDENCE_ROOT_ENV]
+    || localEnv[EVIDENCE_ROOT_ENV]
+    || ''
+  ).trim();
 }
 
 function slugify(value) {
@@ -41,19 +69,15 @@ function inferExtension({ sourceUrl = '', localPath = '', fallback = 'pdf' } = {
 }
 
 function buildEvidenceRelativePath({
-  category,
   brand,
   model,
   type = 'manufacturer_manual',
   sourceUrl = '',
   localPath = '',
 } = {}) {
-  const bucket = type === 'retailer_product_page' ? 'extracted' : 'pdf';
-  const extension = inferExtension({ sourceUrl, localPath, fallback: bucket === 'pdf' ? 'pdf' : 'json' });
+  const extension = inferExtension({ sourceUrl, localPath, fallback: type === 'retailer_product_page' ? 'json' : 'pdf' });
   const hash = shortHash(`${type}:${sourceUrl || localPath}:${brand}:${model}`);
   return [
-    bucket,
-    slugify(category),
     slugify(brand),
     `${slugify(model)}-${hash}.${extension}`,
   ].join('/');
@@ -101,9 +125,10 @@ function validateEvidenceEntry(entry, productSlug) {
 function validateManualEvidenceDocument(document) {
   const issues = [];
   if (document?.schema_version !== 1) issues.push('schema_version must be 1');
-  if (!document?.storage?.root_env) issues.push('storage.root_env is required');
-  if (!document?.storage?.default_root) issues.push('storage.default_root is required');
-  if (!Array.isArray(document?.storage?.required_dirs)) issues.push('storage.required_dirs must be an array');
+  if (document?.storage?.root_env !== EVIDENCE_ROOT_ENV) issues.push(`storage.root_env must be ${EVIDENCE_ROOT_ENV}`);
+  if (!String(document?.storage?.path_rule || '').toLowerCase().includes('relative')) {
+    issues.push('storage.path_rule must describe relative local_path resolution');
+  }
   if (!document?.products || typeof document.products !== 'object' || Array.isArray(document.products)) {
     issues.push('products must be an object map');
     return issues;
@@ -174,6 +199,9 @@ function parseRootArg(args) {
 }
 
 function initEvidenceRoot(root) {
+  if (!String(root || '').trim()) {
+    throw new Error(`${EVIDENCE_ROOT_ENV} is required or pass --root PATH`);
+  }
   fs.mkdirSync(root, { recursive: true });
   for (const dir of REQUIRED_DIRS) {
     fs.mkdirSync(path.join(root, dir), { recursive: true });
@@ -181,6 +209,9 @@ function initEvidenceRoot(root) {
 }
 
 function checkEvidenceRoot(root) {
+  if (!String(root || '').trim()) {
+    throw new Error(`${EVIDENCE_ROOT_ENV} is required or pass --root PATH`);
+  }
   const stat = fs.statSync(root);
   if (!stat.isDirectory()) throw new Error(`${root} is not a directory`);
   fs.accessSync(root, fs.constants.R_OK | fs.constants.W_OK);
@@ -223,7 +254,7 @@ if (require.main === module) {
 }
 
 module.exports = {
-  DEFAULT_EVIDENCE_ROOT,
+  EVIDENCE_ROOT_ENV,
   REQUIRED_DIRS,
   SUPPORTED_EVIDENCE_TYPES,
   addEvidenceCandidate,
@@ -231,6 +262,7 @@ module.exports = {
   checkEvidenceRoot,
   getEvidenceRoot,
   initEvidenceRoot,
+  sha256File,
   runCli,
   validateManualEvidenceDocument,
 };
