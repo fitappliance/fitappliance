@@ -1400,6 +1400,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   gap:8px;
   margin-bottom:16px;
   border-bottom:1px solid #e5e3de;
+  flex-wrap:wrap;
 }
 .fit-viz-modal-tab {
   padding:8px 16px;
@@ -1409,6 +1410,10 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   color:#6b6b6b;
   font-weight:500;
   cursor:pointer;
+  max-width:100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 .fit-viz-modal-tab[aria-selected="true"] {
   color:#2c2c2c;
@@ -1418,6 +1423,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   display:block;
   width:100%;
   max-width:600px;
+  max-inline-size:100%;
   height:auto;
   margin:0 auto;
 }

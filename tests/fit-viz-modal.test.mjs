@@ -17,6 +17,17 @@ async function loadSearchDomWithViz() {
   return module.default ?? module['module.exports'] ?? module;
 }
 
+function installIsoProjectionStub() {
+  const calls = [];
+  globalThis.IsoProjection = {
+    renderIsoFitSvg(options = {}) {
+      calls.push(options);
+      return '<svg viewBox="0 0 280 280" role="img" aria-label="3D fit visualization"><text>3D ISO</text></svg>';
+    }
+  };
+  return calls;
+}
+
 function makeWindow() {
   return new JSDOM('<main><div id="root" data-fit-viz></div><button id="after">After</button></main>', {
     pretendToBeVisual: true
@@ -80,6 +91,67 @@ test('phase 48 fit-viz modal: tab buttons switch the rendered view', async () =>
   assert.equal(window.document.querySelector('[data-fit-viz-modal-tab="side"]').getAttribute('aria-selected'), 'true');
   assert.match(window.document.querySelector('.fit-viz-modal-svg-container').innerHTML, /D: 650mm/);
   assert.match(window.document.querySelector('.fit-viz-modal-svg-container').innerHTML, /H: 1900mm/);
+});
+
+test('phase 53 fit-viz modal: renders a fourth 3D tab', async () => {
+  const SearchDom = await loadSearchDomWithViz();
+  const window = makeWindow();
+  const root = window.document.getElementById('root');
+
+  SearchDom.renderFitVisualization(root, fixture);
+  root.querySelector('[data-fit-viz-view="front"]').click();
+
+  const tabs = [...window.document.querySelectorAll('[data-fit-viz-modal-tab]')];
+  assert.deepEqual(tabs.map((tab) => tab.textContent.trim()), ['Front', 'Top', 'Side', '3D']);
+  assert.equal(tabs[3].getAttribute('data-fit-viz-modal-tab'), 'iso');
+});
+
+test('phase 53 fit-viz modal: clicking 3D tab uses the isometric renderer', async () => {
+  const isoCalls = installIsoProjectionStub();
+  const SearchDom = await loadSearchDomWithViz();
+  const window = makeWindow();
+  const root = window.document.getElementById('root');
+
+  SearchDom.renderFitVisualization(root, fixture);
+  root.querySelector('[data-fit-viz-view="front"]').click();
+  window.document.querySelector('[data-fit-viz-modal-tab="iso"]').click();
+
+  assert.equal(isoCalls.length, 1);
+  assert.deepEqual(isoCalls[0].cavity, fixture.cavity);
+  assert.deepEqual(isoCalls[0].product, fixture.product);
+  assert.deepEqual(isoCalls[0].clearance, fixture.clearance);
+  assert.match(window.document.querySelector('.fit-viz-modal-svg-container').innerHTML, /3D ISO/);
+  assert.equal(window.document.querySelector('[data-fit-viz-modal-tab="iso"]').getAttribute('aria-selected'), 'true');
+});
+
+test('phase 53 fit-viz modal: arrow-key tab navigation includes the 3D tab', async () => {
+  installIsoProjectionStub();
+  const SearchDom = await loadSearchDomWithViz();
+  const window = makeWindow();
+  const root = window.document.getElementById('root');
+
+  SearchDom.renderFitVisualization(root, fixture);
+  root.querySelector('[data-fit-viz-view="front"]').click();
+  const frontTab = window.document.querySelector('[data-fit-viz-modal-tab="front"]');
+  frontTab.focus();
+  frontTab.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }));
+
+  assert.equal(window.document.activeElement?.getAttribute('data-fit-viz-modal-tab'), 'iso');
+  assert.equal(window.document.querySelector('[data-fit-viz-modal-tab="iso"]').getAttribute('aria-selected'), 'true');
+});
+
+test('phase 53 fit-viz modal: Escape closes while 3D tab is active', async () => {
+  installIsoProjectionStub();
+  const SearchDom = await loadSearchDomWithViz();
+  const window = makeWindow();
+  const root = window.document.getElementById('root');
+
+  SearchDom.renderFitVisualization(root, fixture);
+  root.querySelector('[data-fit-viz-view="front"]').click();
+  window.document.querySelector('[data-fit-viz-modal-tab="iso"]').click();
+  window.document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+
+  assert.equal(window.document.querySelector('.fit-viz-modal'), null);
 });
 
 test('phase 48 fit-viz modal: escape and overlay close the dialog', async () => {

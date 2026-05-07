@@ -49,6 +49,16 @@ test('phase 48 card polish 2: fit visualization caption is reduced with the pane
   assert.match(block, /font-size:\s*11px/);
 });
 
+test('phase 53 iso tab: modal tabs wrap and SVG stays within mobile width', () => {
+  const tabs = blockFor('.fit-viz-modal-tabs');
+  const tab = blockFor('.fit-viz-modal-tab');
+  const svg = blockFor('.fit-viz-modal-svg-container svg');
+
+  assert.match(tabs, /flex-wrap:\s*wrap/);
+  assert.match(tab, /text-overflow:\s*ellipsis/);
+  assert.match(svg, /max-inline-size:\s*100%/);
+});
+
 test('phase 48 card polish: product thumbnails use compact card dimensions', () => {
   const block = blockFor('.fit-thumb');
 
