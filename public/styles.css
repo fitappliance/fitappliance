@@ -619,6 +619,20 @@ table.compare-table td, table.compare-table th,
   font-weight: 700;
 }
 
+.space-tag {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #b7dfbd;
+  border-radius: 999px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 4px 9px;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: .01em;
+}
+
 .card-specs-row {
   display: flex;
   gap: 6px;

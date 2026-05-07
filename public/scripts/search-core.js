@@ -121,6 +121,31 @@
     return normalizeClearance(CLEARANCE_MODES[nextMode]);
   }
 
+  function includesFeature(product, pattern) {
+    const matcher = pattern instanceof RegExp ? pattern : new RegExp(String(pattern ?? ''), 'i');
+    return (Array.isArray(product?.features) ? product.features : [])
+      .some((feature) => matcher.test(String(feature ?? '')));
+  }
+
+  function getAwkwardSpaceFlags(product = {}) {
+    if (!product || typeof product !== 'object') return [];
+    const flags = [];
+    const width = Number(product?.w);
+    const height = Number(product?.h);
+    const depth = Number(product?.d);
+    const topClearance = Number(product?.manufacturerClearance?.top ?? product?.clearance?.top);
+
+    if (Number.isFinite(depth) && depth > 0 && depth <= 550) flags.push('shallow-depth');
+    if (Number.isFinite(height) && height > 0 && height <= 1700) flags.push('low-cavity');
+    if (Number.isFinite(topClearance) && topClearance === 0) flags.push('no-top-clearance');
+    if (product?.cat === 'dryer' && includesFeature(product, /heat\s*pump/i)) flags.push('apartment-ok');
+
+    const minDim = Math.min(...[width, depth].filter((value) => Number.isFinite(value) && value > 0));
+    if (Number.isFinite(minDim) && minDim <= 600) flags.push('narrow-doorway');
+
+    return [...new Set(flags)];
+  }
+
   function getAxisEntries(product, filters, clearance) {
     const entries = [];
     const cavityW = toMm(filters?.w);
@@ -638,6 +663,7 @@
     computeFitMeta,
     findSearchMatches,
     getCategoryClearance,
+    getAwkwardSpaceFlags,
     getEffectiveClearance,
     hasRetailerLink,
     isRetailerProductPageUrl,

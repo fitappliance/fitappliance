@@ -895,6 +895,47 @@
     </div>`;
   }
 
+  function localAwkwardSpaceFlags(product = {}) {
+    if (!product || typeof product !== 'object') return [];
+    const flags = [];
+    const width = Number(product?.w);
+    const height = Number(product?.h);
+    const depth = Number(product?.d);
+    const topClearance = Number(product?.manufacturerClearance?.top ?? product?.clearance?.top);
+    const features = Array.isArray(product?.features) ? product.features : [];
+
+    if (Number.isFinite(depth) && depth > 0 && depth <= 550) flags.push('shallow-depth');
+    if (Number.isFinite(height) && height > 0 && height <= 1700) flags.push('low-cavity');
+    if (Number.isFinite(topClearance) && topClearance === 0) flags.push('no-top-clearance');
+    if (product?.cat === 'dryer' && features.some((feature) => /heat\s*pump/i.test(String(feature ?? '')))) {
+      flags.push('apartment-ok');
+    }
+    const minDim = Math.min(...[width, depth].filter((value) => Number.isFinite(value) && value > 0));
+    if (Number.isFinite(minDim) && minDim <= 600) flags.push('narrow-doorway');
+
+    return [...new Set(flags)];
+  }
+
+  function getAwkwardSpaceFlags(match) {
+    return globalScope?.SearchCore?.getAwkwardSpaceFlags?.(match) ?? localAwkwardSpaceFlags(match);
+  }
+
+  function buildAwkwardSpaceTagsHtml(match) {
+    const labels = {
+      'shallow-depth': { className: 'space-tag--shallow', label: 'Fits shallow cavity (≤55cm depth)' },
+      'low-cavity': { className: 'space-tag--low', label: 'Suits low ceiling kitchens (≤170cm)' },
+      'no-top-clearance': { className: 'space-tag--top', label: 'No top-clearance advisory' },
+      'apartment-ok': { className: 'space-tag--apartment', label: 'Apartment-safe' },
+      'narrow-doorway': { className: 'space-tag--doorway', label: 'Narrow doorway friendly' }
+    };
+    return getAwkwardSpaceFlags(match)
+      .map((flag) => labels[flag])
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((tag) => `<span class="space-tag ${escHtml(tag.className)}">${escHtml(tag.label)}</span>`)
+      .join('');
+  }
+
   function normalizeAxisGapEntry(entry = {}) {
     const axis = String(entry.axis ?? '').trim().toLowerCase();
     const safeAxis = ['width', 'height', 'depth'].includes(axis) ? axis : '';
@@ -1178,6 +1219,7 @@
               ${buildFitBadgeHtml(match)}
               ${isTight ? '<span class="warning-pill">verify ventilation</span>' : ''}
               ${match.showPopularityBadge ? '<span class="fit-badge fit-badge--popular">Popular in AU</span>' : ''}
+              ${buildAwkwardSpaceTagsHtml(match)}
             </div>
             ${buildFitAxisBarsHtml(match)}
             ${buildSpecChipsHtml(match)}
@@ -2008,6 +2050,7 @@
     buildCardHtml,
     buildCompareSnapshot,
     escHtml,
+    getAwkwardSpaceFlags,
     renderActiveChips,
     renderCompareModal,
     renderCompareTray,
