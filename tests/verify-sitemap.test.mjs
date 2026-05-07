@@ -49,3 +49,17 @@ test('phase 43a quick wins: verify-sitemap fails when one expected route is miss
   assert.equal(result.ok, false);
   assert.deepEqual(result.missing, ['/brands/lg-fridge-clearance', '/tools/fit-checker']);
 });
+
+test('phase 54 fit-check pages: verify-sitemap expects generated fit-check routes', async () => {
+  const { collectExpectedRoutes } = await import(moduleUrl);
+  const root = await makeWorkspace();
+  await fs.mkdir(path.join(root, 'pages', 'fit-check'), { recursive: true });
+  await fs.writeFile(
+    path.join(root, 'pages', 'fit-check', 'bosch-heat-pump-in-620mm-cavity.html'),
+    '<!doctype html>'
+  );
+
+  const expectedRoutes = await collectExpectedRoutes(root);
+
+  assert.equal(expectedRoutes.has('/fit-check/bosch-heat-pump-in-620mm-cavity'), true);
+});
