@@ -1,3 +1,12 @@
+.dim-tag, .spec-chip, .p-row-dims, .card-specs-row,
+.tco-row, .card-energy-line, .data-trust-line,
+.fit-axis-bar, .fit-axis-bar__label,
+table.compare-table td, table.compare-table th,
+.results-meta-chip {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
 .search-summary {
   display: flex;
   align-items: center;
