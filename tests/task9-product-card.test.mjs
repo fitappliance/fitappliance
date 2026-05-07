@@ -62,13 +62,15 @@ test('task 9.3 product-card: no-price card renders live shopping URL instead of 
     resolveRetailerUrl: () => '#'
   });
 
-  assert.match(html, /Price unavailable/);
+  assert.match(html, /class="p-card p-card--rtings"/);
   assert.match(html, /class="product-thumb-svg"/);
-  assert.match(html, /Search this model online/);
-  assert.match(html, /retailer info not available/);
-  assert.match(html, /class="btn-search-online"/);
+  assert.match(html, /Check Availability/);
+  assert.match(html, /Search online/);
+  assert.match(html, /Retailer info not available/i);
+  assert.match(html, /class="retailer-link retailer-link--search"/);
   assert.match(html, /google\.com\.au\/search/);
   assert.doesNotMatch(html, /Search at:/);
+  assert.doesNotMatch(html, /Price unavailable/);
 });
 
 test('task 9.3 product-card: no-price list row renders shopping fallback and display brand mapping', async () => {
@@ -79,12 +81,14 @@ test('task 9.3 product-card: no-price list row renders shopping fallback and dis
     resolveRetailerUrl: () => '#'
   });
 
-  assert.match(html, /Price unavailable/);
-  assert.match(html, /Search this model online/);
-  assert.match(html, /retailer info not available/);
+  assert.match(html, /class="p-row p-row--rtings"/);
+  assert.match(html, /Check Availability/);
+  assert.match(html, /Search online/);
+  assert.match(html, /Retailer info not available/i);
   assert.match(html, /class="product-thumb-svg"/);
-  assert.match(html, /class="p-row-brand">Hisense</);
+  assert.match(html, /class="card-zone-kicker">Hisense</);
   assert.match(html, /google\.com\.au\/search/);
+  assert.doesNotMatch(html, /Price unavailable/);
 });
 
 test('display accuracy: no-price list row shows annual energy only, not ten-year estimates', async () => {
@@ -101,7 +105,7 @@ test('display accuracy: no-price list row shows annual energy only, not ten-year
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /~\$100\/yr energy/);
+  assert.match(html, /~\$100\/yr estimated energy/);
   assert.doesNotMatch(html, /10yr energy/);
   assert.doesNotMatch(html, /TCO/);
   assert.doesNotMatch(html, /10yr total/);
@@ -119,7 +123,7 @@ test('display accuracy: priced list row also omits ten-year total copy', async (
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /~\$100\/yr energy/);
+  assert.match(html, /~\$100\/yr estimated energy/);
   assert.doesNotMatch(html, /10yr total/);
   assert.doesNotMatch(html, /10yr energy/);
   assert.doesNotMatch(html, /TCO/);
@@ -182,13 +186,14 @@ test('task 9.3 product-card: retailer link with null price renders without blank
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /Check retailer price/);
-  assert.doesNotMatch(html, /Price unavailable — search online/);
-  assert.match(html, /Check price at/);
+  assert.match(html, /Check Availability/);
+  assert.match(html, /class="card-availability"/);
   assert.match(html, /JB Hi-Fi/);
   assert.match(html, /https:\/\/www\.jbhifi\.com\.au\/products\/hisense-srf7500wfh/);
+  assert.match(html, /We may earn a commission/);
   assert.doesNotMatch(html, /\$null/);
   assert.doesNotMatch(html, /undefined/);
+  assert.doesNotMatch(html, /Price unavailable/);
 });
 
 test('task 9.3 product-card: card with retailer URL but null price shows fallback price copy', async () => {
@@ -207,11 +212,12 @@ test('task 9.3 product-card: card with retailer URL but null price shows fallbac
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /Check retailer price/);
-  assert.doesNotMatch(html, /Price unavailable — search online/);
-  assert.match(html, /Check price at/);
+  assert.match(html, /Check Availability/);
+  assert.match(html, /class="card-availability"/);
   assert.match(html, /JB Hi-Fi/);
+  assert.match(html, /We may earn a commission/);
   assert.doesNotMatch(html, /\$null/);
+  assert.doesNotMatch(html, /Price unavailable/);
 });
 
 test('phase 52 recommendations: water and ice features render an advisory plumbing flag', async () => {
@@ -282,11 +288,12 @@ test('hotfix retailer URL quality: priced root retailer URL does not create stal
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /Price unavailable/);
-  assert.match(html, /Search this model online/);
+  assert.match(html, /Check Availability/);
+  assert.match(html, /Search online/);
   assert.doesNotMatch(html, /Appliances Online/);
   assert.doesNotMatch(html, /href="https:\/\/www\.appliances-online\.com\.au"/);
   assert.doesNotMatch(html, /\$4,999/);
+  assert.doesNotMatch(html, /Price unavailable/);
 });
 
 test('task 9.3 product-card: retailer product URL becomes the primary row title with model secondary', async () => {
@@ -307,9 +314,9 @@ test('task 9.3 product-card: retailer product URL becomes the primary row title 
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /<div class="p-row-name">CHiQ CTM201NB3 202L Top Mount Fridge \(Black\)<\/div>/);
-  assert.match(html, /<div class="p-row-model">Model CTM200NSS5E<\/div>/);
-  assert.doesNotMatch(html, /<div class="p-row-name">CTM200NSS5E<\/div>/);
+  assert.match(html, /<div class="card-zone-title">CHiQ CTM201NB3 202L Top Mount Fridge \(Black\)<\/div>/);
+  assert.match(html, /<div class="card-zone-model">Model CTM200NSS5E<\/div>/);
+  assert.doesNotMatch(html, /<div class="card-zone-title">CTM200NSS5E<\/div>/);
 });
 
 test('task 9.3 product-card: retailer product URL becomes the primary card title with model secondary', async () => {
@@ -330,9 +337,9 @@ test('task 9.3 product-card: retailer product URL becomes the primary card title
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /<div class="c-name">CHiQ CTM201NB3 202L Top Mount Fridge \(Black\)<\/div>/);
-  assert.match(html, /<div class="c-model">Model CTM200NSS5E<\/div>/);
-  assert.doesNotMatch(html, /<div class="c-name">CTM200NSS5E<\/div>/);
+  assert.match(html, /<div class="card-zone-title">CHiQ CTM201NB3 202L Top Mount Fridge \(Black\)<\/div>/);
+  assert.match(html, /<div class="card-zone-model">Model CTM200NSS5E<\/div>/);
+  assert.doesNotMatch(html, /<div class="card-zone-title">CTM200NSS5E<\/div>/);
 });
 
 test('task 9.3 product-card: Appliances Online product URL becomes the primary washing-machine row title', async () => {
@@ -354,9 +361,9 @@ test('task 9.3 product-card: Appliances Online product URL becomes the primary w
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /<div class="p-row-name">Hisense 75kg Series 3 Front Load Washing Machine HWFS7514S<\/div>/);
-  assert.match(html, /<div class="p-row-model">Model HWFS7514S<\/div>/);
-  assert.doesNotMatch(html, /<div class="p-row-name">HWFS7514S<\/div>/);
+  assert.match(html, /<div class="card-zone-title">Hisense 75kg Series 3 Front Load Washing Machine HWFS7514S<\/div>/);
+  assert.match(html, /<div class="card-zone-model">Model HWFS7514S<\/div>/);
+  assert.doesNotMatch(html, /<div class="card-zone-title">HWFS7514S<\/div>/);
 });
 
 
@@ -406,15 +413,17 @@ test('phase 50 retailer links: list row keeps retailer choices in the action col
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /retailer-logo-panel/);
-  assert.match(html, /retailer-brand-grid/);
+  assert.match(html, /card-zone-c/);
+  assert.match(html, /card-availability/);
+  assert.match(html, /retailer-accordion-links/);
   assert.match(html, /retailer-brand-card--jb-hi-fi/);
   assert.match(html, /retailer-brand-card--appliances-online/);
-  assert.match(html, /Check price at 2 stores/);
+  assert.match(html, /Check Availability/);
   assert.match(html, /JB Hi-Fi/);
   assert.match(html, /Appliances Online/);
   assert.doesNotMatch(html, /Buy at /);
   assert.doesNotMatch(html, /We earn a commission if you purchase via these links/);
+  assert.match(html, /We may earn a commission/);
 });
 
 test('hotfix result row layout: list row uses a classed action footer instead of inline flex squeeze', async () => {
@@ -431,7 +440,7 @@ test('hotfix result row layout: list row uses a classed action footer instead of
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /class="p-row-action-buttons p-row-utility-buttons"/);
+  assert.match(html, /class="card-zone-actions"/);
   assert.doesNotMatch(html, /style="display:flex;gap:6px"/);
 });
 

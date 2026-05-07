@@ -67,9 +67,9 @@ test('fit health bars: product-card row renders W/H/D traffic-light bars', async
   const html = buildRow({
     ...makeProduct(),
     fitAxisGaps: [
-      { axis: 'width', label: 'W', gapMm: 0 },
-      { axis: 'height', label: 'H', gapMm: 80 },
-      { axis: 'depth', label: 'D', gapMm: 12 }
+      { axis: 'width', label: 'W', cavity: 595, appliance: 590, clearanceMm: 5, gapMm: 0 },
+      { axis: 'height', label: 'H', cavity: 1900, appliance: 1800, clearanceMm: 20, gapMm: 80 },
+      { axis: 'depth', label: 'D', cavity: 650, appliance: 640, clearanceMm: 10, gapMm: 0 }
     ],
     bindingAxis: 'width'
   }, {
@@ -77,20 +77,20 @@ test('fit health bars: product-card row renders W/H/D traffic-light bars', async
     resolveRetailerUrl: (retailer) => retailer.url
   });
   const dom = new JSDOM(html);
-  const bars = [...dom.window.document.querySelectorAll('.fit-axis-bar')];
+  const bars = [...dom.window.document.querySelectorAll('.clearance-bar')];
 
   assert.equal(bars.length, 3);
   assert.match(bars[0].textContent ?? '', /W/);
-  assert.match(bars[0].textContent ?? '', /0mm/);
+  assert.match(bars[0].textContent ?? '', /0mm spare/);
   assert.match(bars[1].textContent ?? '', /H/);
-  assert.match(bars[1].textContent ?? '', /80mm/);
+  assert.match(bars[1].textContent ?? '', /80mm spare/);
   assert.match(bars[2].textContent ?? '', /D/);
-  assert.match(bars[2].textContent ?? '', /12mm/);
-  assert.ok(bars[0].classList.contains('fit-axis-bar--tight'));
-  assert.ok(bars[0].classList.contains('fit-axis-bar--binding'));
-  assert.ok(bars[1].classList.contains('fit-axis-bar--safe'));
-  assert.ok(bars[2].classList.contains('fit-axis-bar--tight'));
-  assert.equal(bars[0].getAttribute('aria-label'), 'Width spare room: 0mm, binding constraint');
+  assert.match(bars[2].textContent ?? '', /0mm spare/);
+  assert.ok(bars[0].classList.contains('clearance-bar--red'));
+  assert.ok(bars[0].classList.contains('clearance-bar--binding'));
+  assert.ok(bars[1].classList.contains('clearance-bar--green'));
+  assert.ok(bars[2].classList.contains('clearance-bar--red'));
+  assert.equal(bars[0].getAttribute('aria-label'), 'Width clearance: 590mm product plus 5mm clearance uses 595mm of 595mm cavity, 0mm spare, binding constraint');
 });
 
 test('fit health bars: search-dom list card renderer includes the same per-axis bars', async () => {
