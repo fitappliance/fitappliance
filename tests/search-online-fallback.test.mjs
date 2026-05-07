@@ -123,7 +123,7 @@ test('phase 48 card polish: no-retailer card avoids naming unsupported retailers
   assert.doesNotMatch(html, /The Good Guys<\/a>/);
 });
 
-test('phase 48 card polish 2: no-retailer trigger renders one honest online search button', async () => {
+test('phase 55 card refactor: no-retailer availability accordion renders one honest online search link', async () => {
   const { buildCard } = await loadProductCard();
   const html = buildCard({
     id: 'p1',
@@ -144,9 +144,11 @@ test('phase 48 card polish 2: no-retailer trigger renders one honest online sear
     resolveRetailerUrl: () => '#'
   });
 
-  assert.match(html, /Search this model online/);
-  assert.match(html, /retailer info not available/);
-  assert.match(html, /class="btn-search-online"/);
+  assert.match(html, /class="card-availability"/);
+  assert.match(html, /Check Availability/);
+  assert.match(html, /Search online/);
+  assert.match(html, /Retailer info not available/i);
+  assert.match(html, /class="retailer-link retailer-link--search"/);
   assert.match(html, /google\.com\.au\/search/);
   assert.match(html, /LG%20GT1S%20DualInverter%20Condenser%20%E2%80%94%208kg%20fridge%20australia/);
   assert.doesNotMatch(html, /site%3A/);
@@ -155,7 +157,7 @@ test('phase 48 card polish 2: no-retailer trigger renders one honest online sear
   assert.doesNotMatch(html, /Compare prices online/);
 });
 
-test('phase 48 card polish 2: no-retailer trigger note is nested inside the CTA', async () => {
+test('phase 55 card refactor: no-retailer note is nested inside availability accordion content', async () => {
   const { buildCard } = await loadProductCard();
   const html = buildCard({
     id: 'p3',
@@ -175,10 +177,10 @@ test('phase 48 card polish 2: no-retailer trigger note is nested inside the CTA'
     resolveRetailerUrl: () => '#'
   });
 
-  assert.match(html, /<a class="btn-search-online"[\s\S]*<span class="btn-search-note">retailer info not available<\/span>[\s\S]*<\/a>/);
+  assert.match(html, /<details class="card-availability">[\s\S]*<div class="retailer-accordion-content">[\s\S]*Retailer info not available[\s\S]*<\/div>[\s\S]*<\/details>/i);
 });
 
-test('phase 48 card polish 2: no-retailer row uses the same honest online search button', async () => {
+test('phase 55 card refactor: no-retailer row uses the same honest online search link', async () => {
   const { buildRow } = await loadProductCard();
   const html = buildRow({
     id: 'p1',
@@ -199,9 +201,10 @@ test('phase 48 card polish 2: no-retailer row uses the same honest online search
     resolveRetailerUrl: () => '#'
   });
 
-  assert.match(html, /Search this model online/);
-  assert.match(html, /retailer info not available/);
+  assert.match(html, /class="card-availability"/);
+  assert.match(html, /Check Availability/);
+  assert.match(html, /Search online/);
+  assert.match(html, /Retailer info not available/i);
   assert.match(html, /Bosch%20WAN24124AU%20Serie%204%20washing%20machine%20australia/);
-  assert.doesNotMatch(html, /Search online/);
   assert.doesNotMatch(html, /JB Hi-Fi/);
 });

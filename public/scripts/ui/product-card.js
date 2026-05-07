@@ -1,11 +1,6 @@
 import { displayBrandName } from './brand-utils.js';
 import { renderProductThumb } from './product-thumb.js';
-import {
-  buildRetailerModalHtml,
-  buildRetailerTriggerButton,
-  isRetailerProductPageUrl,
-  shouldShowRetailerModal
-} from './retailer-modal.js';
+import { isRetailerProductPageUrl } from './retailer-modal.js';
 
 function escHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -47,6 +42,16 @@ export function buildNoRetailerUrl(product) {
 function getPositivePrice(value) {
   const price = Number(value);
   return Number.isFinite(price) && price > 0 ? price : null;
+}
+
+function toFiniteNumber(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : null;
+}
+
+function toPositiveNumber(value) {
+  const number = toFiniteNumber(value);
+  return number !== null && number > 0 ? number : null;
 }
 
 function toDateStamp(value) {
@@ -407,150 +412,333 @@ export function buildPriceBadge(product, capturedDate) {
   </div>`;
 }
 
-export function buildCard(p, deps = {}) {
-  const tcoHtml = deps.tcoHtml ?? (() => '');
-  const retailersHtml = deps.retailersHtml ?? (() => '');
-  const stars = deps.starsHtml ?? starsHtml;
-  const warnings = deps.warningsHtml ?? warningsHtml;
+function axisShortLabel(axis) {
+  return {
+    width: 'W',
+    height: 'H',
+    depth: 'D'
+  }[axis] ?? '';
+}
+
+function axisProductDimension(product, axis) {
+  return {
+    width: toPositiveNumber(product?.w),
+    height: toPositiveNumber(product?.h),
+    depth: toPositiveNumber(product?.d)
+  }[axis] ?? null;
+}
+
+function axisCavityDimension(cavity, axis) {
+  return {
+    width: toPositiveNumber(cavity?.w),
+    height: toPositiveNumber(cavity?.h),
+    depth: toPositiveNumber(cavity?.d)
+  }[axis] ?? null;
+}
+
+function normalizeBarAxis(entry = {}) {
+  const rawAxis = String(entry.axis ?? entry.key ?? '').trim().toLowerCase();
+  if (['width', 'w'].includes(rawAxis)) return 'width';
+  if (['height', 'h'].includes(rawAxis)) return 'height';
+  if (['depth', 'd'].includes(rawAxis)) return 'depth';
+  return '';
+}
+
+function clampPercent(value) {
+  if (!Number.isFinite(value)) return 0;
+  return Math.max(0, Math.min(100, Math.round(value)));
+}
+
+export function deriveClearanceBarPresentation({ cavity, appliance, clearanceMm = 0 } = {}) {
+  const cavityMm = toPositiveNumber(cavity);
+  const applianceMm = toPositiveNumber(appliance);
+  const clearance = Math.max(0, Math.round(toFiniteNumber(clearanceMm) ?? 0));
+  if (!cavityMm || !applianceMm) {
+    return {
+      tone: 'unknown',
+      striped: false,
+      fillPercent: 45,
+      spareMm: null,
+      usedMm: applianceMm ? Math.round(applianceMm + clearance) : null
+    };
+  }
+
+  const usedMm = applianceMm + clearance;
+  const spareMm = Math.round(cavityMm - usedMm);
+  const tone = spareMm >= 20 ? 'green' : spareMm >= 5 ? 'amber' : 'red';
+  return {
+    tone,
+    striped: spareMm < 0,
+    fillPercent: clampPercent((usedMm / cavityMm) * 100),
+    spareMm,
+    usedMm: Math.round(usedMm)
+  };
+}
+
+function extractCavityFromFitAxisGaps(product) {
+  const entries = Array.isArray(product?.fitAxisGaps) ? product.fitAxisGaps : [];
+  return entries.reduce((acc, entry) => {
+    const axis = normalizeBarAxis(entry);
+    const cavity = toPositiveNumber(entry?.cavity);
+    if (!axis || !cavity) return acc;
+    return {
+      ...acc,
+      [axis === 'width' ? 'w' : axis === 'height' ? 'h' : 'd']: cavity
+    };
+  }, {});
+}
+
+function resolveCardCavity(product, deps = {}) {
+  const fromDeps = deps.cavity ?? {};
+  const fromProduct = extractCavityFromFitAxisGaps(product);
+  return {
+    w: toPositiveNumber(fromDeps?.w) ?? fromProduct.w ?? null,
+    h: toPositiveNumber(fromDeps?.h) ?? fromProduct.h ?? null,
+    d: toPositiveNumber(fromDeps?.d) ?? fromProduct.d ?? null
+  };
+}
+
+function buildBarEntries(product, deps = {}) {
+  const cavity = resolveCardCavity(product, deps);
+  const fitEntries = (Array.isArray(product?.fitAxisGaps) ? product.fitAxisGaps : [])
+    .map((entry) => {
+      const axis = normalizeBarAxis(entry);
+      if (!axis) return null;
+      return {
+        axis,
+        label: String(entry?.label ?? axisShortLabel(axis)).trim() || axisShortLabel(axis),
+        cavity: toPositiveNumber(entry?.cavity) ?? axisCavityDimension(cavity, axis),
+        appliance: toPositiveNumber(entry?.appliance) ?? axisProductDimension(product, axis),
+        clearanceMm: Math.max(0, Math.round(toFiniteNumber(entry?.clearanceMm) ?? 0))
+      };
+    })
+    .filter(Boolean);
+
+  const byAxis = new Map(fitEntries.map((entry) => [entry.axis, entry]));
+  return ['width', 'height', 'depth'].map((axis) => byAxis.get(axis) ?? {
+    axis,
+    label: axisShortLabel(axis),
+    cavity: axisCavityDimension(cavity, axis),
+    appliance: axisProductDimension(product, axis),
+    clearanceMm: 0
+  });
+}
+
+function formatSpareLabel(spareMm) {
+  if (spareMm === null) return 'cavity not entered';
+  if (spareMm < 0) return `${Math.abs(spareMm)}mm over`;
+  return `${spareMm}mm spare`;
+}
+
+export function buildClearanceBarsHtml(product, deps = {}) {
+  const bindingAxis = String(product?.bindingAxis ?? '').trim().toLowerCase();
+  const entries = buildBarEntries(product, deps);
+
+  return `<div class="clearance-bars" aria-label="Product and clearance use compared with cavity size">
+    ${entries.map((entry) => {
+      const presentation = deriveClearanceBarPresentation(entry);
+      const appliance = Math.round(entry.appliance ?? 0);
+      const clearance = Math.round(entry.clearanceMm ?? 0);
+      const cavity = entry.cavity ? `${Math.round(entry.cavity)}mm cavity` : 'cavity not entered';
+      const spare = formatSpareLabel(presentation.spareMm);
+      const label = entry.cavity
+        ? `${entry.label}: ${appliance}mm + ${clearance}mm clearance / ${cavity} (${spare})`
+        : `${entry.label}: ${appliance}mm product / ${cavity}`;
+      const isBinding = entry.axis === bindingAxis || (presentation.spareMm !== null && presentation.spareMm < 5);
+      const aria = entry.cavity
+        ? `${axisFullLabel(entry.axis)} clearance: ${appliance}mm product plus ${clearance}mm clearance uses ${appliance + clearance}mm of ${Math.round(entry.cavity)}mm cavity, ${spare}${isBinding ? ', binding constraint' : ''}`
+        : `${axisFullLabel(entry.axis)} clearance: ${appliance}mm product, cavity not entered`;
+      return `<div class="clearance-bar clearance-bar--${escHtml(presentation.tone)}${presentation.striped ? ' clearance-bar--striped' : ''}${isBinding ? ' clearance-bar--binding' : ''}" data-clearance-axis="${escHtml(entry.axis)}" aria-label="${escHtml(aria)}">
+        <div class="clearance-bar-label">${escHtml(label)}</div>
+        <div class="clearance-bar-track" aria-hidden="true">
+          <span class="clearance-bar-fill" style="width:${presentation.fillPercent}%"></span>
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+
+export function renderMiniFrontWireframe(product = {}, cavity = {}) {
+  const productW = toPositiveNumber(product?.w);
+  const productH = toPositiveNumber(product?.h);
+  const cavityW = toPositiveNumber(cavity?.w);
+  const cavityH = toPositiveNumber(cavity?.h);
+  const safeLabel = escHtml(`${displayBrandName(product?.brand)} ${product?.model ?? ''}`.trim() || 'Appliance');
+
+  if (!productW || !productH || !cavityW || !cavityH) {
+    return `<svg class="mini-front-wireframe" role="img" aria-label="${safeLabel} front fit preview unavailable" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect x="14" y="10" width="32" height="40" rx="2" fill="#eeece6" stroke="#2c2c2c" stroke-width="1"/>
+      <text x="30" y="35" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#6b6b6b">—</text>
+    </svg>`;
+  }
+
+  const outer = { x: 6, y: 6, w: 48, h: 48 };
+  const ratioW = Math.max(0.12, Math.min(1, productW / cavityW));
+  const ratioH = Math.max(0.12, Math.min(1, productH / cavityH));
+  const innerW = Math.max(8, Math.round(outer.w * ratioW));
+  const innerH = Math.max(8, Math.round(outer.h * ratioH));
+  const innerX = Math.round(outer.x + (outer.w - innerW) / 2);
+  const innerY = Math.round(outer.y + (outer.h - innerH) / 2);
+
+  return `<svg class="mini-front-wireframe" role="img" aria-label="${safeLabel} mini front fit preview" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <rect x="${outer.x}" y="${outer.y}" width="${outer.w}" height="${outer.h}" rx="3" fill="none" stroke="#2c2c2c" stroke-width="1.2"/>
+    <rect x="${innerX}" y="${innerY}" width="${innerW}" height="${innerH}" rx="2" fill="#eeece6" fill-opacity="0.7" stroke="#2c2c2c" stroke-width="1"/>
+  </svg>`;
+}
+
+function hasUsableCavity(cavity = {}) {
+  return Boolean(toPositiveNumber(cavity?.w) && toPositiveNumber(cavity?.h));
+}
+
+function buildZoneA(product, deps = {}) {
+  const cavity = resolveCardCavity(product, deps);
+  const title = `${displayBrandName(product?.brand)} ${product?.model ?? ''}`.trim() || 'appliance';
+  return `<div class="card-zone-a" role="button" tabindex="0" aria-label="Open fit visualization for ${escHtml(title)}" data-fit-viz-card-trigger="${escHtml(product?.id ?? '')}">
+    <div class="card-zone-thumb-split">
+      <div class="card-zone-thumb-half">${renderProductThumb(product)}</div>
+      ${hasUsableCavity(cavity) ? `<div class="card-zone-wire-half">${renderMiniFrontWireframe(product, cavity)}</div>` : ''}
+    </div>
+    <div class="card-zone-fit">${buildFitHealthHtml(product)}</div>
+  </div>`;
+}
+
+function featureIncludes(product, pattern) {
+  return (Array.isArray(product?.features) ? product.features : [])
+    .some((feature) => pattern.test(String(feature ?? '')));
+}
+
+function getCapacityLabel(product) {
+  const direct = toPositiveNumber(product?.capacity_litres ?? product?.capacityLitres ?? product?.volume_litres);
+  if (direct) return `${Math.round(direct)}L`;
+  const text = [
+    product?.model,
+    product?.displayName,
+    product?.readableSpec,
+    ...(Array.isArray(product?.features) ? product.features : [])
+  ].join(' ');
+  const match = text.match(/\b(\d{2,4})\s?L\b/i);
+  return match?.[1] ? `${match[1]}L` : '';
+}
+
+function buildTechSpecsHtml(product, deps = {}) {
+  const annualEnergyCost = deps.annualEnergyCost ?? (() => '');
+  const bits = [];
+  if (Number.isFinite(Number(product?.stars))) bits.push(`${Number(product.stars)}★ GEMS`);
+  if (featureIncludes(product, /\b(reversible|hinge)\b/i)) bits.push('reversible hinge');
+  const capacity = getCapacityLabel(product);
+  if (capacity) bits.push(capacity);
+  const annual = annualEnergyCost(product?.kwh_year);
+  if (annual) bits.push(`~$${annual}/yr estimated energy`);
+  const compactFeatures = (Array.isArray(product?.features) ? product.features : [])
+    .filter((feature) => !/\b(reversible|hinge)\b/i.test(String(feature ?? '')))
+    .filter((feature) => !capacity || String(feature ?? '').trim().toLowerCase() !== capacity.toLowerCase())
+    .slice(0, 2);
+  bits.push(...compactFeatures);
+  if (bits.length === 0) return '';
+  return `<div class="card-zone-tech-specs">${bits.map(escHtml).join(' · ')}</div>`;
+}
+
+function buildTitleHtml(product, primaryTitle, modelLine) {
+  return `<div class="card-zone-heading">
+    <div class="card-zone-kicker">${escHtml(displayBrandName(product?.brand))}${product?.sponsored ? '<span class="tag tag-amber">Sponsored</span>' : ''}</div>
+    <div class="card-zone-title">${escHtml(primaryTitle)}</div>
+    ${modelLine ? `<div class="card-zone-model">${escHtml(modelLine)}</div>` : ''}
+  </div>`;
+}
+
+function retailerLinkClassName(name) {
+  return `retailer-link retailer-brand-card retailer-brand-card--${String(name ?? 'retailer')
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '') || 'retailer'}`;
+}
+
+function buildAvailabilityAccordion(product, deps = {}) {
   const resolveRetailerUrl = deps.resolveRetailerUrl ?? ((retailer) => retailer.url);
+  const retailers = getLinkedRetailers(product).slice(0, 5);
+  const hasRetailers = retailers.length > 0;
+  const body = hasRetailers
+    ? `<div class="retailer-accordion-links">
+        ${retailers.map((retailer) => {
+          const name = String(retailer?.n ?? retailer?.name ?? 'Retailer').trim() || 'Retailer';
+          return `<a class="${retailerLinkClassName(name)}" href="${escHtml(resolveRetailerUrl(retailer))}" target="_blank" rel="sponsored nofollow noopener"><span class="retailer-brand-wordmark">${escHtml(name)}</span><span aria-hidden="true">→</span></a>`;
+        }).join('')}
+      </div>
+      <p class="retailer-commission-note">We may earn a commission. <a href="/affiliate-disclosure">Disclosure</a>.</p>`
+    : `<a class="retailer-link retailer-link--search" href="${escHtml(buildSearchOnlineUrl(product))}" target="_blank" rel="sponsored nofollow noopener">Search online <span aria-hidden="true">→</span></a>
+      <p class="retailer-commission-note">Retailer info not available.</p>`;
+
+  return `<details class="card-availability">
+    <summary class="card-cta-availability">Check Availability</summary>
+    <div class="retailer-accordion-content">${body}</div>
+  </details>`;
+}
+
+function buildUtilityButtons(product, saved, compareLabel) {
+  return `<div class="card-zone-actions">
+    <button
+      class="btn-save${saved ? ' btn-save--active' : ''}"
+      onclick="toggleSave('${escHtml(product?.id ?? '')}')"
+      aria-label="${saved ? 'Remove from saved' : 'Save appliance'}"
+      title="${saved ? 'Remove from saved' : 'Save for later'}"
+    >${saved ? '♥' : '♡'}</button>
+    <button class="btn-compare" onclick="addCompare('${escHtml(product?.id ?? '')}','${escHtml(compareLabel)}')">Compare</button>
+  </div>`;
+}
+
+function buildZoneB(product, deps, primaryTitle, modelLine) {
+  return `<div class="card-zone-b">
+    ${buildTitleHtml(product, primaryTitle, modelLine)}
+    ${buildClearanceBarsHtml(product, deps)}
+    ${buildTechSpecsHtml(product, deps)}
+    ${buildDataTrustLine(product, deps.capturedDate ?? '')}
+    ${buildFeatureFlagsHtml(product)}
+    ${buildDeliveryCheckHtml(product)}
+  </div>`;
+}
+
+function buildZoneC(product, deps, saved, compareLabel) {
+  return `<div class="card-zone-c">
+    ${buildUtilityButtons(product, saved, compareLabel)}
+    ${buildAvailabilityAccordion(product, deps)}
+  </div>`;
+}
+
+export function buildCard(p, deps = {}) {
+  const warnings = deps.warningsHtml ?? warningsHtml;
   const isSaved = deps.isSaved ?? (() => false);
-  const capturedDate = deps.capturedDate ?? '';
-  const retailers = Array.isArray(p.retailers) ? p.retailers : [];
-  const hasPrice = retailers.some((retailer) => isRetailerProductPageUrl(retailer?.url ?? retailer?.href) && getPositivePrice(retailer?.p) !== null);
-  const hasLinkedRetailer = getLinkedRetailers(p).length > 0;
   const displayBrand = displayBrandName(p.brand);
   const saved = isSaved(p.id);
   const primaryTitle = buildPrimaryTitle(p);
   const modelLine = buildModelLine(p, primaryTitle);
-  const compareLabel = `${displayBrand} ${p.model.split(' ').slice(0, 3).join(' ')}`;
-  const triggerButton = buildRetailerTriggerButton(p, {
-    resolveRetailerUrl,
-    buildNoRetailerUrl,
-    buildSearchOnlineUrl
-  });
-  const modalHtml = shouldShowRetailerModal(p)
-    ? buildRetailerModalHtml(p, { resolveRetailerUrl })
-    : '';
+  const compareLabel = `${displayBrand} ${String(p?.model ?? '').split(' ').slice(0, 3).join(' ')}`.trim();
 
   return `
-  <div class="p-card">
-    <div class="fit-thumb">${renderProductThumb(p)}${p.sponsored ? '<span class="sponsored-tag">Sponsored</span>' : ''}</div>
-    <div class="card-body">
-      <div class="c-brand">${displayBrand}</div>
-      <div class="c-name">${escHtml(primaryTitle)}</div>
-      ${modelLine ? `<div class="c-model">${escHtml(modelLine)}</div>` : ''}
-      ${buildFitHealthHtml(p)}
-      ${buildFitAxisBarsHtml(p)}
-      <div class="c-dims">
-        <span class="dim-tag">W ${p.w}mm</span>
-        <span class="dim-tag">H ${p.h}mm</span>
-        <span class="dim-tag">D ${p.d}mm</span>
-      </div>
-      <div class="c-energy">
-        <div class="stars">${stars(p.stars)}</div>
-        <span class="energy-lbl">${p.stars}-star GEMS rating</span>
-      </div>
-      ${tcoHtml(p)}
-      <div class="c-features">${p.features.join(' · ')}</div>
-      ${buildDataTrustLine(p, capturedDate)}
-      ${buildFeatureFlagsHtml(p)}
-      ${buildDeliveryCheckHtml(p)}
-      <div class="c-footer">
-        ${
-          hasPrice
-            ? buildPriceBadge(p, capturedDate)
-            : `<div class="c-price no-price">${hasLinkedRetailer ? 'Check retailer price' : 'Price unavailable'}</div>`
-        }
-        <div class="c-actions c-utility-buttons">
-          <button
-            class="btn-save${saved ? ' btn-save--active' : ''}"
-            onclick="toggleSave('${p.id}')"
-            aria-label="${saved ? 'Remove from saved' : 'Save appliance'}"
-            title="${saved ? 'Remove from saved' : 'Save for later'}"
-          >${saved ? '♥' : '♡'}</button>
-          <button class="btn-compare" onclick="addCompare('${p.id}','${escHtml(compareLabel)}')">Compare</button>
-        </div>
-        <div class="c-retailer-area">${triggerButton}</div>
-      </div>
-    </div>
+  <div class="p-card p-card--rtings">
+    ${buildZoneA(p, deps)}
+    ${buildZoneB(p, deps, primaryTitle, modelLine)}
+    ${buildZoneC(p, deps, saved, compareLabel)}
     ${warnings(p)}
-    ${retailersHtml(p)}
   </div>
-  ${modalHtml}`;
+  `;
 }
 
 export function buildRow(p, deps = {}) {
   const annualEnergyCost = deps.annualEnergyCost ?? (() => '0');
-  const resolveRetailerUrl = deps.resolveRetailerUrl ?? ((retailer) => retailer.url);
   const isSaved = deps.isSaved ?? (() => false);
-  const capturedDate = deps.capturedDate ?? '';
-  const retailers = Array.isArray(p.retailers) ? p.retailers : [];
-  const pricedRetailers = retailers
-    .filter((retailer) => isRetailerProductPageUrl(retailer?.url ?? retailer?.href))
-    .map((retailer) => ({ retailer, price: getPositivePrice(retailer?.p) }))
-    .filter((entry) => entry.price !== null);
-  const hasPrice = pricedRetailers.length > 0;
-  const hasLinkedRetailer = getLinkedRetailers(p).length > 0;
-  const bestP = hasPrice ? Math.min(...pricedRetailers.map((entry) => entry.price)) : null;
   const displayBrand = displayBrandName(p.brand);
   const saved = isSaved(p.id);
   const primaryTitle = buildPrimaryTitle(p);
   const modelLine = buildModelLine(p, primaryTitle);
-  const compareLabel = `${displayBrand} ${p.model.split(' ').slice(0, 2).join(' ')}`;
-  const annual = annualEnergyCost(p.kwh_year);
-  const triggerButton = buildRetailerTriggerButton(p, {
-    resolveRetailerUrl,
-    buildNoRetailerUrl,
-    buildSearchOnlineUrl
-  });
-  const modalHtml = shouldShowRetailerModal(p)
-    ? buildRetailerModalHtml(p, { resolveRetailerUrl })
-    : '';
+  const compareLabel = `${displayBrand} ${String(p?.model ?? '').split(' ').slice(0, 2).join(' ')}`.trim();
+  const renderDeps = { ...deps, annualEnergyCost };
 
   return `
-  <div class="p-row">
-    <div class="p-row-thumb">${renderProductThumb(p)}</div>
-    <div class="p-row-body">
-      <div class="p-row-meta">
-        <span class="p-row-brand">${displayBrand}</span>
-        ${p.sponsored ? '<span class="tag tag-amber">Sponsored</span>' : ''}
-        <span class="tag tag-green">${p.stars}★ GEMS</span>
-        ${p.vented ? '<span class="tag tag-red">Vented</span>' : ''}
-        ${p.door_swing_mm === null || p.door_swing_mm === undefined ? '<span class="tag tag-amber">⏳ Door swing pending confirmation</span>' : ''}
-        ${p.door_swing_mm > 0 ? `<span class="tag tag-red">🚪 Requires ${p.door_swing_mm}mm clearance</span>` : ''}
-      </div>
-      <div class="p-row-name">${escHtml(primaryTitle)}</div>
-      ${modelLine ? `<div class="p-row-model">${escHtml(modelLine)}</div>` : ''}
-      ${buildFitHealthHtml(p)}
-      ${buildFitAxisBarsHtml(p)}
-      <div class="p-row-dims">
-        <span class="dim-tag">W ${p.w}mm</span>
-        <span class="dim-tag">H ${p.h}mm</span>
-        <span class="dim-tag">D ${p.d}mm</span>
-      </div>
-      <div style="font-size:12px;color:var(--green);margin-top:4px">⚡ ~$${annual}/yr energy · ${p.features.slice(0, 3).join(' · ')}</div>
-      ${p.vented ? '<div style="font-size:12px;color:var(--red);margin-top:4px">⚠️ Vented — external ducting required (NCC 2022). Not for apartments.</div>' : ''}
-      ${buildDataTrustLine(p, capturedDate)}
-      ${buildFeatureFlagsHtml(p)}
-      ${buildDeliveryCheckHtml(p)}
-    </div>
-    <div class="p-row-actions">
-      ${
-        hasPrice
-          ? `<div class="p-row-price">${buildPriceBadge(p, capturedDate)}</div>`
-          : `<div class="p-row-price no-price">${hasLinkedRetailer ? 'Check retailer price' : 'Price unavailable'}</div>`
-      }
-      <div class="p-row-action-buttons p-row-utility-buttons">
-        <button
-          class="btn-save${saved ? ' btn-save--active' : ''}"
-          onclick="toggleSave('${p.id}')"
-          aria-label="${saved ? 'Remove from saved' : 'Save appliance'}"
-          title="${saved ? 'Remove from saved' : 'Save for later'}"
-        >${saved ? '♥' : '♡'}</button>
-        <button class="btn-compare" onclick="addCompare('${p.id}','${escHtml(compareLabel)}')">Compare</button>
-      </div>
-      <div class="p-row-retailer-area">${triggerButton}</div>
-    </div>
+  <div class="p-row p-row--rtings">
+    ${buildZoneA(p, renderDeps)}
+    ${buildZoneB(p, renderDeps, primaryTitle, modelLine)}
+    ${buildZoneC(p, renderDeps, saved, compareLabel)}
   </div>
-  ${modalHtml}`;
+  `;
 }
