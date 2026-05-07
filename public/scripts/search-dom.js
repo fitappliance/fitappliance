@@ -3,6 +3,13 @@
 (function attachSearchDom(globalScope) {
   let mobileSheetState = null;
   let fitVizModalState = null;
+  const FIT_VIZ_MODAL_VIEWS = [
+    { id: 'front', label: 'Front' },
+    { id: 'top', label: 'Top' },
+    { id: 'side', label: 'Side' },
+    { id: 'iso', label: '3D' }
+  ];
+  const FIT_VIZ_MODAL_VIEW_IDS = new Set(FIT_VIZ_MODAL_VIEWS.map((view) => view.id));
 
   function escHtml(value) {
     return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -1242,17 +1249,46 @@
     if (!panel || !renderer?.renderFitSvg || !state) return;
     const container = panel.querySelector('.fit-viz-modal-svg-container');
     if (!container) return;
-    container.innerHTML = renderer.renderFitSvg({
-      cavity: state.cavity,
-      product: state.product,
-      clearance: state.clearance,
-      view: state.view
-    });
+    if (state.view === 'iso') {
+      const isoRenderer = globalScope?.IsoProjection;
+      const bindingAxis = renderer.identifyBindingConstraint?.(state.cavity, state.product, state.clearance) ?? null;
+      container.innerHTML = isoRenderer?.renderIsoFitSvg
+        ? isoRenderer.renderIsoFitSvg({
+          cavity: state.cavity,
+          product: state.product,
+          clearance: state.clearance,
+          bindingAxis
+        })
+        : '<svg viewBox="0 0 280 280" role="img" aria-label="3D fit visualization unavailable"><text x="140" y="140" text-anchor="middle">3D view unavailable</text></svg>';
+    } else {
+      container.innerHTML = renderer.renderFitSvg({
+        cavity: state.cavity,
+        product: state.product,
+        clearance: state.clearance,
+        view: state.view
+      });
+    }
     panel.querySelectorAll('[data-fit-viz-modal-tab]').forEach((tab) => {
       const selected = tab.getAttribute('data-fit-viz-modal-tab') === state.view;
       tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+      tab.setAttribute('tabindex', selected ? '0' : '-1');
       tab.classList.toggle('fit-viz-modal-tab--active', selected);
     });
+  }
+
+  function setFitVizModalView(panel, state, view, { focus = false } = {}) {
+    if (!panel || !state) return;
+    state.view = FIT_VIZ_MODAL_VIEW_IDS.has(view) ? view : 'front';
+    renderFitVizModalSvg(panel, state);
+    if (focus) {
+      panel.querySelector(`[data-fit-viz-modal-tab="${state.view}"]`)?.focus?.();
+    }
+  }
+
+  function moveFitVizModalTab(panel, state, currentView, direction) {
+    const currentIndex = Math.max(0, FIT_VIZ_MODAL_VIEWS.findIndex((view) => view.id === currentView));
+    const nextIndex = (currentIndex + direction + FIT_VIZ_MODAL_VIEWS.length) % FIT_VIZ_MODAL_VIEWS.length;
+    setFitVizModalView(panel, state, FIT_VIZ_MODAL_VIEWS[nextIndex].id, { focus: true });
   }
 
   function closeFitVizModal() {
@@ -1281,13 +1317,14 @@
     panel.setAttribute('aria-labelledby', 'fitVizModalTitle');
     panel.addEventListener('click', (event) => event.stopPropagation());
 
+    const activeView = FIT_VIZ_MODAL_VIEW_IDS.has(view) ? view : 'front';
     panel.innerHTML = `
       <div class="fit-viz-modal-head">
         <h3 id="fitVizModalTitle">Fit visualization</h3>
         <button type="button" class="fit-viz-modal-close" aria-label="Close fit visualization">×</button>
       </div>
       <div class="fit-viz-modal-tabs" role="tablist" aria-label="Fit visualization views">
-        ${['front', 'top', 'side'].map((name) => `<button type="button" class="fit-viz-modal-tab" role="tab" data-fit-viz-modal-tab="${name}" aria-selected="${name === view ? 'true' : 'false'}">${name[0].toUpperCase()}${name.slice(1)}</button>`).join('')}
+        ${FIT_VIZ_MODAL_VIEWS.map(({ id, label }) => `<button type="button" class="fit-viz-modal-tab" role="tab" data-fit-viz-modal-tab="${id}" aria-selected="${id === activeView ? 'true' : 'false'}" tabindex="${id === activeView ? '0' : '-1'}" aria-label="${escHtml(label)} fit visualization tab">${escHtml(label)}</button>`).join('')}
       </div>
       <div class="fit-viz-modal-svg-container"></div>
     `;
@@ -1302,15 +1339,30 @@
       cavity,
       product,
       clearance,
-      view,
+      view: activeView,
       onKeydown: null
     };
 
     panel.querySelector('.fit-viz-modal-close')?.addEventListener('click', closeFitVizModal);
     panel.querySelectorAll('[data-fit-viz-modal-tab]').forEach((tab) => {
       tab.addEventListener('click', () => {
-        fitVizModalState.view = tab.getAttribute('data-fit-viz-modal-tab') ?? 'front';
-        renderFitVizModalSvg(panel, fitVizModalState);
+        setFitVizModalView(panel, fitVizModalState, tab.getAttribute('data-fit-viz-modal-tab') ?? 'front');
+      });
+      tab.addEventListener('keydown', (event) => {
+        const currentView = tab.getAttribute('data-fit-viz-modal-tab') ?? 'front';
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          moveFitVizModalTab(panel, fitVizModalState, currentView, 1);
+        } else if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          moveFitVizModalTab(panel, fitVizModalState, currentView, -1);
+        } else if (event.key === 'Home') {
+          event.preventDefault();
+          setFitVizModalView(panel, fitVizModalState, FIT_VIZ_MODAL_VIEWS[0].id, { focus: true });
+        } else if (event.key === 'End') {
+          event.preventDefault();
+          setFitVizModalView(panel, fitVizModalState, FIT_VIZ_MODAL_VIEWS[FIT_VIZ_MODAL_VIEWS.length - 1].id, { focus: true });
+        }
       });
     });
 
