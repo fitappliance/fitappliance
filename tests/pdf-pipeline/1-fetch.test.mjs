@@ -76,3 +76,48 @@ test('pdf pipeline fetch: retries transient server errors', async () => {
   assert.equal(attempts, 3);
 });
 
+test('pdf pipeline fetch: rejects PDFs larger than the configured byte limit from content-length', async () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fitappliance-pdf-fetch-'));
+  const dest = path.join(tmp, 'manual.pdf');
+
+  await assert.rejects(() => fetchPdf('https://example.test/huge.pdf', dest, {
+    maxBytes: 12,
+    fetchImpl: async () => new Response(Buffer.from('%PDF too large'), {
+      status: 200,
+      headers: {
+        'content-type': 'application/pdf',
+        'content-length': '4096'
+      }
+    })
+  }), /exceeds.*12 bytes/i);
+
+  assert.equal(fs.existsSync(dest), false);
+});
+
+test('pdf pipeline fetch: rejects PDFs larger than the configured byte limit while streaming', async () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fitappliance-pdf-fetch-'));
+  const dest = path.join(tmp, 'manual.pdf');
+
+  await assert.rejects(() => fetchPdf('https://example.test/large-stream.pdf', dest, {
+    maxBytes: 8,
+    fetchImpl: async () => new Response(Buffer.from('%PDF stream exceeds limit'), {
+      status: 200,
+      headers: { 'content-type': 'application/pdf' }
+    })
+  }), /exceeds.*8 bytes/i);
+
+  assert.equal(fs.existsSync(dest), false);
+});
+
+test('pdf pipeline fetch: aborts when the request exceeds timeoutMs', async () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fitappliance-pdf-fetch-'));
+  const dest = path.join(tmp, 'manual.pdf');
+
+  await assert.rejects(() => fetchPdf('https://example.test/slow.pdf', dest, {
+    retries: 1,
+    timeoutMs: 5,
+    fetchImpl: async (url, init) => new Promise((resolve, reject) => {
+      init.signal.addEventListener('abort', () => reject(new Error('fetch aborted by timeout')));
+    })
+  }), /timeout/i);
+});

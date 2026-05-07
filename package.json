@@ -59,6 +59,7 @@
     "audit-compare-links": "node scripts/audit-compare-links.js",
     "audit-link-quality": "node scripts/audit-link-quality.js",
     "audit-data-accuracy": "node scripts/audit-data-accuracy.js",
+    "audit-pdf-evidence": "node scripts/audit-pdf-evidence.js",
     "manual-evidence": "node scripts/manual-evidence.js",
     "verify-compare-quality": "node scripts/verify-compare-quality.js",
     "audit-portability": "node scripts/audit-portability.js",
@@ -77,6 +78,7 @@
     "lighthouse": "^13.1.0",
     "pdf-parse": "^2.4.5",
     "robots-parser": "^3.0.1",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "zod": "^4.4.3"
   }
 }
