@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('node:path');
-const { mkdir, readFile, writeFile } = require('node:fs/promises');
+const { mkdir, readdir, readFile, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { toAbsoluteSitemapLoc } = require('./common/sitemap-loc.js');
 const { toDateOnly } = require('./common/file-dates.js');
@@ -69,6 +69,23 @@ async function readSiteContentDate(repoRoot, fallbackDate) {
   }
 }
 
+async function readFitCheckRows(repoRoot) {
+  const dir = path.join(repoRoot, 'pages', 'fit-check');
+  try {
+    const entries = await readdir(dir, { withFileTypes: true });
+    return entries
+      .filter((entry) => entry.isFile() && entry.name.endsWith('.html'))
+      .map((entry) => {
+        const slug = entry.name.replace(/\.html$/i, '');
+        return { slug, url: `/fit-check/${slug}` };
+      })
+      .sort((left, right) => left.slug.localeCompare(right.slug));
+  } catch (error) {
+    if (error && error.code === 'ENOENT') return [];
+    throw error;
+  }
+}
+
 async function generateSitemap({
   repoRoot = path.resolve(__dirname, '..'),
   brandsIndexPath = path.join(repoRoot, 'pages', 'brands', 'index.json'),
@@ -77,6 +94,7 @@ async function generateSitemap({
   doorwayIndexPath = null,
   guideIndexPath = null,
   locationIndexPath = null,
+  fitCheckDir = null,
   outputPath = path.join(repoRoot, 'public', 'sitemap.xml'),
   baseUrl = SITE_ORIGIN,
   today = null,
@@ -102,6 +120,8 @@ async function generateSitemap({
     ?? path.join(path.dirname(path.dirname(brandsIndexPath)), 'guides', 'index.json');
   const effectiveLocationIndexPath = locationIndexPath
     ?? path.join(path.dirname(path.dirname(brandsIndexPath)), 'location', 'index.json');
+  const effectiveFitCheckDir = fitCheckDir
+    ?? path.join(path.dirname(path.dirname(brandsIndexPath)), 'fit-check');
 
   const brandRows = await readJsonIfExists(brandsIndexPath);
   const compareRows = await readJsonIfExists(effectiveCompareIndexPath);
@@ -109,6 +129,7 @@ async function generateSitemap({
   const doorwayRows = await readJsonIfExists(effectiveDoorwayIndexPath);
   const guideRows = await readJsonIfExists(effectiveGuideIndexPath);
   const locationRows = await readJsonIfExists(effectiveLocationIndexPath);
+  const fitCheckRows = await readFitCheckRows(path.dirname(path.dirname(effectiveFitCheckDir)));
   const sortedBrands = sortBrandEntries(Array.isArray(brandRows) ? brandRows : []);
   const sortedComparisons = [...(Array.isArray(compareRows) ? compareRows : [])].sort((left, right) => {
     const leftCat = String(left?.cat ?? '');
@@ -200,6 +221,14 @@ async function generateSitemap({
       priority: '0.5'
     })
   );
+  const fitCheckNodes = fitCheckRows.map((row) =>
+    buildUrlNode({
+      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/fit-check/${row.slug}`),
+      lastmod,
+      changefreq: 'monthly',
+      priority: '0.6'
+    })
+  );
 
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
@@ -211,13 +240,14 @@ async function generateSitemap({
     ...doorwayNodes,
     ...guideNodes,
     ...locationNodes,
+    ...fitCheckNodes,
     '</urlset>',
     ''
   ].join('\n');
 
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, xml, 'utf8');
-  const urlCount = STATIC_PAGES.length + brandNodes.length + comparisonNodes.length + cavityNodes.length + doorwayNodes.length + guideNodes.length + locationNodes.length;
+  const urlCount = STATIC_PAGES.length + brandNodes.length + comparisonNodes.length + cavityNodes.length + doorwayNodes.length + guideNodes.length + locationNodes.length + fitCheckNodes.length;
   logger.log(`Generated sitemap with ${urlCount} URLs at ${outputPath}`);
 
   return { urlCount, outputPath };
@@ -232,6 +262,7 @@ if (require.main === module) {
 
 module.exports = {
   readSiteContentDate,
+  readFitCheckRows,
   generateSitemap,
   STATIC_PAGES,
   PRIORITY_BY_CAT
