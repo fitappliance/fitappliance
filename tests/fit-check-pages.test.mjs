@@ -68,6 +68,30 @@ describe('fit-check page generator', () => {
     assert.ok(textSimilarity(first, second) < 0.8);
   });
 
+  it('renders alternatives with the Phase 55 three-zone card contract', () => {
+    const combos = selectFitCheckCombinations(catalog, {
+      topN: 50,
+      cavityWidths: [540, 580, 600, 620, 640],
+      limit: 40
+    });
+    const page = combos
+      .map((combo) => buildFitCheckPage(combo.product, combo.cavityW, catalog))
+      .find((candidate) => cheerio.load(candidate.html)('.alternative-grid .p-row--rtings').length > 0);
+
+    assert.ok(page, 'expected at least one generated page with alternatives');
+    const $ = cheerio.load(page.html);
+    const alternatives = $('.alternative-grid .p-row--rtings');
+
+    assert.ok(alternatives.length > 0);
+    assert.equal($('.alternative-grid .card-zone-a').length, alternatives.length);
+    assert.equal($('.alternative-grid .card-zone-b').length, alternatives.length);
+    assert.equal($('.alternative-grid .card-zone-c').length, alternatives.length);
+    assert.ok($('.alternative-grid .clearance-bar').length >= alternatives.length);
+    assert.ok($('.alternative-grid .card-availability').length >= alternatives.length);
+    assert.doesNotMatch(page.html, /We earn a commission/i);
+    assert.doesNotMatch(page.html, /\$[0-9][0-9][0-9]/);
+  });
+
   it('writePages creates valid sample pages and a validation report', () => {
     const tmpRoot = mkdtempSync(path.join(tmpdir(), 'fit-check-pages-'));
     try {

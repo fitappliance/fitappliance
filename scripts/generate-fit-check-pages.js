@@ -189,6 +189,133 @@ function buildRetailerLinks(product) {
     .join('\n');
 }
 
+function productInitials(product) {
+  const parts = String(product?.brand ?? '')
+    .trim()
+    .split(/[\s\-&]+/)
+    .filter(Boolean);
+  if (parts.length === 0) return '?';
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return `${parts[0][0]}${parts[1][0]}`.toUpperCase();
+}
+
+function buildStaticThumb(product) {
+  return `<svg class="product-thumb-svg" role="img" aria-label="${escAttr(productName(product))}" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <rect width="80" height="80" rx="10" fill="#6b7f73"></rect>
+    <text x="40" y="50" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="700" fill="#fff">${escHtml(productInitials(product))}</text>
+  </svg>`;
+}
+
+function clampPercent(value) {
+  if (!Number.isFinite(value)) return 45;
+  return Math.max(0, Math.min(100, Math.round(value)));
+}
+
+function clearanceTone(spareMm) {
+  if (!Number.isFinite(spareMm)) return 'unknown';
+  if (spareMm >= 20) return 'green';
+  if (spareMm >= 5) return 'amber';
+  return 'red';
+}
+
+function buildStaticClearanceBar({ axis, label, productMm, cavityMm, clearanceMm }) {
+  const productValue = Number(productMm);
+  const cavityValue = Number(cavityMm);
+  const clearanceValue = Math.max(0, Math.round(Number(clearanceMm) || 0));
+  const hasCavity = Number.isFinite(cavityValue) && cavityValue > 0;
+  const usedMm = Number.isFinite(productValue) ? productValue + clearanceValue : null;
+  const spareMm = hasCavity && Number.isFinite(usedMm) ? Math.round(cavityValue - usedMm) : null;
+  const tone = clearanceTone(spareMm);
+  const fillPercent = hasCavity && Number.isFinite(usedMm) ? clampPercent((usedMm / cavityValue) * 100) : 45;
+  const labelText = hasCavity
+    ? `${label}: ${Math.round(productValue)}mm + ${clearanceValue}mm clearance / ${Math.round(cavityValue)}mm cavity (${spareMm < 0 ? `${Math.abs(spareMm)}mm over` : `${spareMm}mm spare`})`
+    : `${label}: ${Math.round(productValue)}mm product / cavity not entered`;
+
+  return `<div class="clearance-bar clearance-bar--${escAttr(tone)}${spareMm !== null && spareMm < 0 ? ' clearance-bar--striped' : ''}${axis === 'width' ? ' clearance-bar--binding' : ''}" data-clearance-axis="${escAttr(axis)}" aria-label="${escAttr(labelText)}">
+      <div class="clearance-bar-label">${escHtml(labelText)}</div>
+      <div class="clearance-bar-track" aria-hidden="true"><span class="clearance-bar-fill" style="width:${fillPercent}%"></span></div>
+    </div>`;
+}
+
+function renderStaticMiniWireframe(product, cavityW) {
+  const productW = Number(product?.w);
+  const productH = Number(product?.h);
+  const cavityWidth = Number(cavityW);
+  if (!Number.isFinite(productW) || !Number.isFinite(productH) || !Number.isFinite(cavityWidth)) {
+    return '';
+  }
+  const outer = { x: 6, y: 6, w: 48, h: 48 };
+  const ratioW = Math.max(0.12, Math.min(1, productW / cavityWidth));
+  const innerW = Math.max(8, Math.round(outer.w * ratioW));
+  const innerH = 40;
+  const innerX = Math.round(outer.x + (outer.w - innerW) / 2);
+  const innerY = Math.round(outer.y + (outer.h - innerH) / 2);
+
+  return `<svg class="mini-front-wireframe" role="img" aria-label="${escAttr(productName(product))} mini front fit preview" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <rect x="${outer.x}" y="${outer.y}" width="${outer.w}" height="${outer.h}" rx="3" fill="none" stroke="#2c2c2c" stroke-width="1.2"></rect>
+    <rect x="${innerX}" y="${innerY}" width="${innerW}" height="${innerH}" rx="2" fill="#eeece6" fill-opacity="0.7" stroke="#2c2c2c" stroke-width="1"></rect>
+  </svg>`;
+}
+
+function buildStaticFitHealth(verdict) {
+  const state = verdict.key === 'no-fit' ? 'blocked' : verdict.gap < 20 ? 'tight' : 'perfect';
+  const legacyClass = state === 'blocked' ? 'fit-badge--relax' : state === 'tight' ? 'fit-badge--tight' : 'fit-badge--exact';
+  const label = state === 'blocked' ? "Won't fit" : state === 'tight' ? 'Tight fit' : 'Perfect fit';
+  const detail = state === 'blocked' ? `+${Math.abs(verdict.gap)}mm cavity needed` : `${verdict.gap}mm spare`;
+  return `<div class="fit-health fit-health--${escAttr(state)} fit-badge ${legacyClass}" data-fit-health="${escAttr(state)}">
+      <span class="fit-health-light" aria-hidden="true"></span>
+      <span class="fit-health-label">${escHtml(label)}</span>
+      <span class="fit-health-detail">${escHtml(detail)}</span>
+    </div>`;
+}
+
+function buildAlternativeAvailability(product) {
+  const retailerLinks = buildRetailerLinks(product);
+  if (retailerLinks) {
+    return `<details class="card-availability">
+      <summary class="card-cta-availability">Check Availability</summary>
+      <div class="retailer-accordion-content"><div class="retailer-accordion-links">${retailerLinks}</div></div>
+    </details>`;
+  }
+  return `<details class="card-availability">
+      <summary class="card-cta-availability">Check Availability</summary>
+      <div class="retailer-accordion-content"><p class="retailer-commission-note">No verified retailer link yet.</p></div>
+    </details>`;
+}
+
+function renderAlternativeCard(product, verdict, cavityW) {
+  const name = productName(product);
+  const category = CATEGORY_LABEL_BY_CAT[product?.cat] ?? 'appliance';
+  return `<article class="alternative-card p-row p-row--rtings">
+    <div class="card-zone-a" aria-label="${escAttr(name)} fit preview">
+      <div class="card-zone-thumb-split">
+        <div class="card-zone-thumb-half">${buildStaticThumb(product)}</div>
+        <div class="card-zone-wire-half">${renderStaticMiniWireframe(product, cavityW)}</div>
+      </div>
+      <div class="card-zone-fit">${buildStaticFitHealth(verdict)}</div>
+    </div>
+    <div class="card-zone-b">
+      <div class="card-zone-heading">
+        <div class="card-zone-kicker">${escHtml(product?.brand ?? '')}</div>
+        <div class="card-zone-title">${escHtml(name)}</div>
+        <div class="card-zone-model">Model ${escHtml(product?.model ?? product?.id ?? '')}</div>
+      </div>
+      <div class="clearance-bars" aria-label="Product and clearance use compared with cavity size">
+        ${buildStaticClearanceBar({ axis: 'width', label: 'W', productMm: product?.w, cavityMm: cavityW, clearanceMm: PRACTICAL_CLEARANCE.side * 2 })}
+        ${buildStaticClearanceBar({ axis: 'height', label: 'H', productMm: product?.h, cavityMm: null, clearanceMm: PRACTICAL_CLEARANCE.top })}
+        ${buildStaticClearanceBar({ axis: 'depth', label: 'D', productMm: product?.d, cavityMm: null, clearanceMm: PRACTICAL_CLEARANCE.rear })}
+      </div>
+      <div class="card-zone-tech-specs">${escHtml(category)} · ${escHtml(product?.stars ?? '—')}★ GEMS</div>
+    </div>
+    <div class="card-zone-c">
+      <div class="card-zone-actions">
+        <a class="btn-compare" href="/?cat=${escAttr(product?.cat)}&w=${escAttr(cavityW)}">Compare</a>
+      </div>
+      ${buildAlternativeAvailability(product)}
+    </div>
+  </article>`;
+}
+
 function buildArticleSchema({ product, cavityW, slug, title, description }) {
   return {
     '@context': 'https://schema.org',
@@ -258,13 +385,7 @@ function renderAlternatives(alternatives, cavityW) {
   }
   return [
     '<div class="alternative-grid">',
-    ...alternatives.map(({ product, verdict }) => [
-      '<article class="alternative-card">',
-      `<h3>${escHtml(productName(product))}</h3>`,
-      `<p>${escHtml(product.w)}mm wide · ${escHtml(verdict.gap)}mm spare in a ${escHtml(cavityW)}mm cavity</p>`,
-      `<a href="/?cat=${escAttr(product.cat)}&w=${escAttr(cavityW)}">Check this model</a>`,
-      '</article>'
-    ].join('\n')),
+    ...alternatives.map(({ product, verdict }) => renderAlternativeCard(product, verdict, cavityW)),
     '</div>'
   ].join('\n');
 }
