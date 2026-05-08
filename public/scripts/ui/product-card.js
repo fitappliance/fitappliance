@@ -88,6 +88,80 @@ function buildDataTrustLine(product, capturedDate = '') {
   return `<div class="data-trust-line">${bits.map((bit) => `<span>${escHtml(bit)}</span>`).join('<span aria-hidden="true">·</span>')}</div>`;
 }
 
+function hasPdfEvidence(product) {
+  return product?.evidence?.has_pdf_evidence === true;
+}
+
+function isArchivedProduct(product) {
+  return product?.unavailable === true;
+}
+
+function buildEvidenceBadgeHtml(product) {
+  if (!hasPdfEvidence(product)) return '';
+  return '<span class="badge-verified" title="Dimensions verified against manufacturer spec sheet">✓ Verified Fit</span>';
+}
+
+function buildArchivedBadgeHtml(product) {
+  if (!isArchivedProduct(product)) return '';
+  return '<span class="badge-archived" title="This older model has no verified current retailer listing">Archived Model</span>';
+}
+
+function isSafeEvidenceUrl(value) {
+  const raw = String(value ?? '').trim();
+  if (!raw) return false;
+  try {
+    const base = typeof window !== 'undefined' && window?.location?.origin
+      ? window.location.origin
+      : 'https://www.fitappliance.com.au';
+    const parsed = new URL(raw, base);
+    return parsed.protocol === 'https:' || parsed.protocol === 'http:';
+  } catch {
+    return false;
+  }
+}
+
+export function buildEvidenceReceiptHtml(product) {
+  const evidence = product?.evidence;
+  if (!hasPdfEvidence(product) || !evidence) return '';
+
+  const sourceUrl = String(evidence.source_url ?? '').trim();
+  const sourceLink = isSafeEvidenceUrl(sourceUrl)
+    ? `<a href="${escHtml(sourceUrl)}" target="_blank" rel="noopener" class="evidence-link">Official Spec Sheet (PDF)</a>`
+    : '<span class="evidence-link evidence-link--missing">Official spec evidence captured</span>';
+  const verifiedAt = toDateStamp(evidence.verified_at);
+
+  return `<div class="evidence-receipt">
+    <span class="evidence-label">Source of Truth:</span>
+    ${sourceLink}
+    ${verifiedAt ? `<span class="evidence-date">Extracted: ${escHtml(verifiedAt)}</span>` : ''}
+  </div>`;
+}
+
+function replacementDimensionArg(value) {
+  const number = toPositiveNumber(value);
+  return number ? String(Math.round(number)) : '';
+}
+
+export function triggerReplacementSearch(width, height, depth) {
+  const detail = {
+    w: replacementDimensionArg(width),
+    h: replacementDimensionArg(height),
+    d: replacementDimensionArg(depth),
+  };
+
+  if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
+    window.dispatchEvent(new CustomEvent('fitappliance:replacement-search', { detail }));
+  }
+
+  if (typeof console !== 'undefined' && typeof console.log === 'function') {
+    console.log('[FitAppliance] replacement search requested', detail);
+  }
+}
+
+if (typeof globalThis !== 'undefined' && typeof globalThis.triggerReplacementSearch !== 'function') {
+  globalThis.triggerReplacementSearch = triggerReplacementSearch;
+}
+
 function getLinkedRetailers(product) {
   return (Array.isArray(product?.retailers) ? product.retailers : [])
     .filter((retailer) => isRetailerProductPageUrl(retailer?.url ?? retailer?.href));
@@ -642,6 +716,8 @@ function buildTitleHtml(product, primaryTitle, modelLine) {
   return `<div class="card-zone-heading">
     <div class="card-zone-kicker">${escHtml(displayBrandName(product?.brand))}${product?.sponsored ? '<span class="tag tag-amber">Sponsored</span>' : ''}</div>
     <div class="card-zone-title">${escHtml(primaryTitle)}</div>
+    ${buildEvidenceBadgeHtml(product)}
+    ${buildArchivedBadgeHtml(product)}
     ${modelLine ? `<div class="card-zone-model">${escHtml(modelLine)}</div>` : ''}
   </div>`;
 }
@@ -687,18 +763,36 @@ function buildUtilityButtons(product, saved, compareLabel) {
   </div>`;
 }
 
+function buildReplacementCtaHtml(product) {
+  const w = replacementDimensionArg(product?.w);
+  const h = replacementDimensionArg(product?.h);
+  const d = replacementDimensionArg(product?.d);
+  return `<div class="archived-replacement">
+    <button class="btn-replacement" type="button" onclick="triggerReplacementSearch('${escHtml(w)}','${escHtml(h)}','${escHtml(d)}')">Find a Modern Replacement</button>
+    <p class="archived-replacement-note">This archived model is kept for reference. Use its dimensions to find current products.</p>
+  </div>`;
+}
+
 function buildZoneB(product, deps, primaryTitle, modelLine) {
   return `<div class="card-zone-b">
     ${buildTitleHtml(product, primaryTitle, modelLine)}
     ${buildClearanceBarsHtml(product, deps)}
     ${buildTechSpecsHtml(product, deps)}
     ${buildDataTrustLine(product, deps.capturedDate ?? '')}
+    ${buildEvidenceReceiptHtml(product)}
     ${buildFeatureFlagsHtml(product)}
     ${buildDeliveryCheckHtml(product)}
   </div>`;
 }
 
 function buildZoneC(product, deps, saved, compareLabel) {
+  if (isArchivedProduct(product)) {
+    return `<div class="card-zone-c card-zone-c--archived">
+      ${buildUtilityButtons(product, saved, compareLabel)}
+      ${buildReplacementCtaHtml(product)}
+    </div>`;
+  }
+
   return `<div class="card-zone-c">
     ${buildUtilityButtons(product, saved, compareLabel)}
     ${buildAvailabilityAccordion(product, deps)}

@@ -2,10 +2,12 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { isRetailerProductPageUrl } = require('../public/scripts/search-core.js');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 const MANUAL_RETAILERS_PATH = path.join(REPO_ROOT, 'data', 'manual-retailers.json');
 const CATALOG_FILES = [
+  'appliances.json',
   'fridges.json',
   'dishwashers.json',
   'dryers.json',
@@ -64,7 +66,11 @@ function getApprovedManualEntry(product, manualDocument) {
   const entry = products[key];
   if (!entry?.approved) return null;
   if (!Array.isArray(entry.retailers) || entry.retailers.length === 0) return null;
-  return entry;
+  const retailers = entry.retailers
+    .map(cloneRetailer)
+    .filter((retailer) => retailer.n && isRetailerProductPageUrl(retailer.url));
+  if (retailers.length === 0) return null;
+  return { ...entry, retailers };
 }
 
 function applyManualRetailers(products, manualDocument) {
@@ -72,14 +78,19 @@ function applyManualRetailers(products, manualDocument) {
 
   return products.map((product) => {
     const entry = getApprovedManualEntry(product, manualDocument);
-    if (!entry) return { ...product };
+    if (!entry) {
+      return {
+        ...product,
+        unavailable: true,
+      };
+    }
 
     const existingRetailers = removeRetailers(product.retailers, entry.removed_retailers);
     const retailers = mergeRetailers(existingRetailers, entry.retailers);
     return {
       ...product,
       retailers,
-      unavailable: retailers.length > 0 ? false : product.unavailable,
+      unavailable: false,
     };
   });
 }
@@ -113,10 +124,6 @@ function enrichManualRetailers({
 } = {}) {
   const manualDocument = JSON.parse(fs.readFileSync(manualRetailersPath, 'utf8'));
   const approvedCount = countApprovedEntries(manualDocument);
-  if (approvedCount === 0) {
-    console.log('[enrich-manual-retailers] approved_count=0; no catalog changes');
-    return { approvedCount, changedFiles: [] };
-  }
 
   const changedFiles = [];
   for (const fileName of CATALOG_FILES) {

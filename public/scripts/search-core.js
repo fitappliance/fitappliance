@@ -306,6 +306,10 @@
     ));
   }
 
+  function isCurrentProduct(product) {
+    return product?.unavailable === false && hasRetailerLink(product);
+  }
+
   function getComparablePrice(value) {
     if (value === null || value === undefined || value === '') return null;
     const parsed = Number(value);
@@ -359,7 +363,7 @@
         starsMap.set(String(Math.round(stars)), (starsMap.get(String(Math.round(stars))) ?? 0) + 1);
       }
       if (Number.isFinite(Number(row?.price))) pricedCount += 1;
-      if (row?.unavailable === false && Array.isArray(row?.retailers) && row.retailers.length > 0) {
+      if (isCurrentProduct(row)) {
         availableCount += 1;
       }
     }
@@ -404,7 +408,7 @@
         return false;
       }
       if (normalized.availableOnly) {
-        if (row?.unavailable !== false || !hasRetailerLink(row)) {
+        if (!isCurrentProduct(row)) {
           return false;
         }
       }
@@ -500,7 +504,7 @@
       limit: options.limit ?? Number.MAX_SAFE_INTEGER
     });
     const retailerPool = normalizeRetailerOnly(filters, options)
-      ? pool.filter(hasRetailerLink)
+      ? pool.filter(isCurrentProduct)
       : pool;
     const filtered = applyFacets(retailerPool, facets);
     return {
@@ -666,6 +670,7 @@
     getAwkwardSpaceFlags,
     getEffectiveClearance,
     hasRetailerLink,
+    isCurrentProduct,
     isRetailerProductPageUrl,
     normalizeClearanceMode,
     parseSearchParams,

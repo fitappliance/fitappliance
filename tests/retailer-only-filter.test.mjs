@@ -36,7 +36,7 @@ const standardCavity = { cat: 'fridge', w: 600, h: 1900, d: 650, toleranceMm: 0 
 test('phase 48 retailer-only: searchWithFacets defaults to rows with retailer links', async () => {
   const { searchWithFacets } = await loadSearchCore();
   const products = [
-    makeProduct({ id: 'with-retailer', retailers: [{ n: 'JB Hi-Fi', p: 1099, url: 'https://www.jbhifi.com.au/products/lg-base-1' }] }),
+    makeProduct({ id: 'with-retailer', unavailable: false, retailers: [{ n: 'JB Hi-Fi', p: 1099, url: 'https://www.jbhifi.com.au/products/lg-base-1' }] }),
     makeProduct({ id: 'without-retailer', brand: 'Vogue', retailers: [] })
   ];
 
@@ -49,7 +49,7 @@ test('phase 48 retailer-only: searchWithFacets defaults to rows with retailer li
 test('phase 48 retailer-only: retailerOnly false keeps the full matching pool', async () => {
   const { searchWithFacets } = await loadSearchCore();
   const products = [
-    makeProduct({ id: 'with-retailer', retailers: [{ n: 'JB Hi-Fi', p: 1099, url: 'https://www.jbhifi.com.au/products/lg-base-1' }] }),
+    makeProduct({ id: 'with-retailer', unavailable: false, retailers: [{ n: 'JB Hi-Fi', p: 1099, url: 'https://www.jbhifi.com.au/products/lg-base-1' }] }),
     makeProduct({ id: 'without-retailer', brand: 'Vogue', retailers: [] })
   ];
 
@@ -91,13 +91,30 @@ test('hotfix retailer URL quality: retailer-only ignores root, search, and categ
 test('hotfix retailer URL quality: default search excludes products with only invalid retailer URLs', async () => {
   const { searchWithFacets } = await loadSearchCore();
   const products = [
-    makeProduct({ id: 'valid', retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/lg-gb335pl' }] }),
+    makeProduct({ id: 'valid', unavailable: false, retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/lg-gb335pl' }] }),
     makeProduct({ id: 'root-only', brand: 'Mitsubishi', retailers: [{ n: 'Appliances Online', url: 'https://www.appliances-online.com.au', p: 4999 }] })
   ];
 
   const result = searchWithFacets(products, standardCavity, {}, { limit: Number.MAX_SAFE_INTEGER });
 
   assert.deepEqual(result.rows.map((row) => row.id), ['valid']);
+});
+
+test('active/current filter: default search excludes archived rows even with valid retailer URLs', async () => {
+  const { searchWithFacets } = await loadSearchCore();
+  const products = [
+    makeProduct({ id: 'current', unavailable: false, retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/current-lg' }] }),
+    makeProduct({ id: 'archived-with-link', unavailable: true, retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/old-lg' }] })
+  ];
+
+  const defaultResult = searchWithFacets(products, standardCavity, {}, { limit: Number.MAX_SAFE_INTEGER });
+  const directSearchResult = searchWithFacets(products, standardCavity, {}, {
+    limit: Number.MAX_SAFE_INTEGER,
+    retailerOnly: false
+  });
+
+  assert.deepEqual(defaultResult.rows.map((row) => row.id), ['current']);
+  assert.deepEqual(directSearchResult.rows.map((row) => row.id), ['current', 'archived-with-link']);
 });
 
 test('phase 48 retailer-only: wide fridge search prefers retailer-verified rows over the full catalogue', async () => {

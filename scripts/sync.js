@@ -31,7 +31,18 @@ function mergeProduct(baseProduct, sourceProduct) {
     mergedProduct.door_swing_mm = null;
   }
 
+  if (mergedProduct.unavailable !== false) {
+    mergedProduct.unavailable = true;
+  }
+
   return mergedProduct;
+}
+
+function ensureAvailabilityFlag(product) {
+  return {
+    ...product,
+    unavailable: product?.unavailable === false ? false : true
+  };
 }
 
 function normalizeNewProduct(sourceProduct) {
@@ -41,12 +52,16 @@ function normalizeNewProduct(sourceProduct) {
     normalizedProduct.door_swing_mm = null;
   }
 
+  if (normalizedProduct.unavailable !== false) {
+    normalizedProduct.unavailable = true;
+  }
+
   return normalizedProduct;
 }
 
 function buildSyncedDocument(baseDocument, sourceDocuments, today) {
   const productsById = new Map(
-    baseDocument.products.map(product => [product.id, { ...product }])
+    baseDocument.products.map(product => [product.id, ensureAvailabilityFlag(product)])
   );
 
   for (const sourceDocument of sourceDocuments) {

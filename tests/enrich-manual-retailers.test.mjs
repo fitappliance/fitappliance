@@ -43,7 +43,10 @@ const approvedEntry = {
 };
 
 test('manual retailer enrich: unapproved candidates are not merged', () => {
-  const products = [makeProduct()];
+  const products = [makeProduct({
+    unavailable: false,
+    retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/stale-lg-gth560npl', p: null }],
+  })];
   const manual = {
     products: {
       'fridge-lg-gth560npl': { ...approvedEntry, approved: false },
@@ -52,7 +55,8 @@ test('manual retailer enrich: unapproved candidates are not merged', () => {
 
   const result = applyManualRetailers(products, manual);
 
-  assert.deepEqual(result, products);
+  assert.equal(result[0].unavailable, true);
+  assert.deepEqual(result[0].retailers, products[0].retailers);
   assert.notEqual(result, products, 'array copy should be returned even when no product changes');
 });
 
@@ -66,6 +70,36 @@ test('manual retailer enrich: approved entry merges into matching product by slu
   assert.equal(result[0].retailers[0].n, 'JB Hi-Fi');
   assert.equal(result[0].retailers[0].p, 1099);
   assert.equal(result[0].unavailable, false);
+});
+
+test('manual retailer enrich: approved entry without product-page URLs remains archived', () => {
+  const products = [makeProduct({ unavailable: false })];
+  const manual = {
+    products: {
+      'fridge-lg-gth560npl': {
+        ...approvedEntry,
+        retailers: [
+          { n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/collections/fridges', p: null },
+        ],
+      },
+    },
+  };
+
+  const result = applyManualRetailers(products, manual);
+
+  assert.equal(result[0].unavailable, true);
+});
+
+test('manual retailer enrich: products absent from manual source of truth are explicitly archived', () => {
+  const products = [makeProduct({
+    unavailable: false,
+    retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/stale-lg-gth560npl', p: null }],
+  })];
+
+  const result = applyManualRetailers(products, { products: {} });
+
+  assert.equal(result[0].unavailable, true);
+  assert.equal(result[0].retailers.length, 1, 'archiving should not mutate existing retailer evidence');
 });
 
 test('manual retailer enrich: same retailer name replaces old entry instead of duplicating', () => {

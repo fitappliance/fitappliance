@@ -20,6 +20,20 @@ function isInRange(value, min, max) {
   return typeof value === 'number' && Number.isFinite(value) && value >= min && value <= max;
 }
 
+function isIsoDate(value) {
+  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value);
+}
+
+function isHttpUrl(value) {
+  if (!isNonEmptyString(value)) return false;
+  try {
+    const parsed = new URL(value);
+    return parsed.protocol === 'https:' || parsed.protocol === 'http:';
+  } catch {
+    return false;
+  }
+}
+
 function validateRetailer(retailer, productId, errors) {
   if (!isPlainObject(retailer)) {
     errors.push(`Product ${productId} retailer entries must be objects`);
@@ -36,6 +50,29 @@ function validateRetailer(retailer, productId, errors) {
 
   if (!(retailer.p === null || isNonNegativeInteger(retailer.p))) {
     errors.push(`Product ${productId} retailer price must be null or a non-negative integer`);
+  }
+}
+
+function validateEvidence(evidence, productId, errors) {
+  if (!isPlainObject(evidence)) {
+    errors.push(`Product ${productId} evidence must be an object when provided`);
+    return;
+  }
+
+  if (typeof evidence.has_pdf_evidence !== 'boolean') {
+    errors.push(`Product ${productId} evidence.has_pdf_evidence must be boolean`);
+  }
+
+  if (
+    Object.prototype.hasOwnProperty.call(evidence, 'source_url') &&
+    evidence.source_url !== undefined &&
+    !isHttpUrl(evidence.source_url)
+  ) {
+    errors.push(`Product ${productId} evidence.source_url must be an http(s) URL when provided`);
+  }
+
+  if (!isIsoDate(evidence.verified_at)) {
+    errors.push(`Product ${productId} evidence.verified_at must be YYYY-MM-DD`);
   }
 }
 
@@ -114,11 +151,8 @@ function validateProduct(product) {
     errors.push(`Product ${product.id ?? '<unknown>'} field sponsored must be boolean`);
   }
 
-  if (
-    Object.prototype.hasOwnProperty.call(product, 'unavailable') &&
-    typeof product.unavailable !== 'boolean'
-  ) {
-    errors.push(`Product ${product.id ?? '<unknown>'} field unavailable must be boolean when provided`);
+  if (typeof product.unavailable !== 'boolean') {
+    errors.push(`Product ${product.id ?? '<unknown>'} field unavailable must be boolean`);
   }
 
   if (
@@ -134,6 +168,10 @@ function validateProduct(product) {
     typeof product.inferred_door_swing !== 'boolean'
   ) {
     errors.push(`Product ${product.id ?? '<unknown>'} inferred_door_swing must be boolean when present`);
+  }
+
+  if (Object.prototype.hasOwnProperty.call(product, 'evidence')) {
+    validateEvidence(product.evidence, product.id ?? '<unknown>', errors);
   }
 
   return errors;

@@ -104,6 +104,24 @@ test('phase 55 card refactor: availability accordion falls back to online search
   assert.doesNotMatch(html, /retailer-brand-card--jb-hi-fi/);
 });
 
+test('active/current UI: archived rows show replacement CTA instead of retailer availability', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct({
+    unavailable: true,
+    retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/archived-hisense-hrtf206', p: null }]
+  }), {
+    annualEnergyCost: () => '88',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /badge-archived/);
+  assert.match(html, /Archived Model/);
+  assert.match(html, /Find a Modern Replacement/);
+  assert.match(html, /triggerReplacementSearch\('580','1780','620'\)/);
+  assert.doesNotMatch(html, /Check Availability/);
+  assert.doesNotMatch(html, /retailer-brand-card--jb-hi-fi/);
+});
+
 test('phase 55 card refactor: mini front wireframe uses cavity and product rectangles', async () => {
   const { renderMiniFrontWireframe } = await import(productCardModuleUrl);
   const html = renderMiniFrontWireframe(makeProduct(), { w: 600, h: 1900, d: 650 });
