@@ -62,6 +62,7 @@ async function collectExpectedRoutes(repoRoot) {
       else if (rel.startsWith('compare/')) expected.add(`/compare/${rel.slice('compare/'.length, -5)}`);
       else if (rel.startsWith('cavity/')) expected.add(`/cavity/${rel.slice('cavity/'.length, -5)}`);
       else if (rel.startsWith('doorway/')) expected.add(`/doorway/${rel.slice('doorway/'.length, -5)}`);
+      else if (rel.startsWith('fit-check/')) expected.add(`/fit-check/${rel.slice('fit-check/'.length, -5)}`);
       else if (rel.startsWith('guides/')) expected.add(`/guides/${rel.slice('guides/'.length, -5)}`);
       else if (rel.startsWith('location/')) expected.add(`/${rel.slice(0, -5)}`);
       else if (rel.startsWith('tools/')) expected.add(`/tools/${rel.slice('tools/'.length, -5)}`);
