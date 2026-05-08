@@ -134,14 +134,31 @@
     .install-tips li + li {
       margin-top: 8px;
     }
-    .model-preview {
+    .model-preview,
+    .current-models,
+    .archived-models {
       margin-top: 26px;
     }
-    .model-preview h2 {
+    .model-preview h2,
+    .current-models h2,
+    .archived-models h2 {
       margin: 0 0 12px;
       font-size: 20px;
       color: var(--ink);
       font-family: 'Instrument Serif', serif;
+    }
+    .archived-models {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #f5f2ec;
+      opacity: 0.88;
+    }
+    .archived-note {
+      margin: -4px 0 12px;
+      color: var(--ink-3);
+      font-size: 13px;
+      line-height: 1.55;
     }
     .model-list {
       display: grid;
@@ -272,8 +289,9 @@
         <li>Measure the cavity after the floor finish and kickboard are installed, not before.</li><li>Check the service void and hose route at the rear before you commit to the cabinet depth.</li><li>Level the dishwasher with the door open once the side gaps are confirmed.</li>
       </ul>
     </section>
-    <section class="model-preview">
-      <h2 class="section-title-lg">Featured Euromaid Dishwasher Models</h2>
+    <section class="archived-models">
+      <h2 class="section-title-lg">Previous / Archived Models</h2>
+      <p class="archived-note">Older reference models are kept for replacement searches and historical size lookups. Use the active models above when you want a current retailer link.</p>
       <div class="model-list">
         <div class="model-item">
       <picture class="model-thumb">

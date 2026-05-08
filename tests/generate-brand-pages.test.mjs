@@ -80,6 +80,42 @@ test('generateBrandPages creates a brand page when a brand has at least one mode
   assert.equal(indexRows[0].models, 1);
 });
 
+test('generateBrandPages separates current and archived models on brand pages', async () => {
+  const { generateBrandPages } = await import(generatorModuleUrl);
+  const workspace = await createWorkspace();
+  const appliances = JSON.parse(await readFile(path.join(workspace.dataDir, 'appliances.json'), 'utf8'));
+  appliances.products = [
+    {
+      ...appliances.products[0],
+      id: 'f-samsung-current',
+      model: 'SRFCurrent',
+      unavailable: false,
+      retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/samsung-srfcurrent' }]
+    },
+    {
+      ...appliances.products[0],
+      id: 'f-samsung-archived',
+      model: 'SRFOldReference',
+      unavailable: true,
+      retailers: []
+    }
+  ];
+  await writeFile(path.join(workspace.dataDir, 'appliances.json'), `${JSON.stringify(appliances, null, 2)}\n`);
+
+  await generateBrandPages({
+    dataDir: workspace.dataDir,
+    outputDir: workspace.outputDir,
+    logger: { log() {} }
+  });
+
+  const html = await readFile(path.join(workspace.outputDir, 'samsung-fridge-clearance.html'), 'utf8');
+  assert.match(html, /class="current-models"/);
+  assert.match(html, /Current Samsung Models/);
+  assert.match(html, /class="archived-models"/);
+  assert.match(html, /Previous \/ Archived Models/);
+  assert.ok(html.indexOf('SRFCurrent') < html.indexOf('SRFOldReference'));
+});
+
 test('generateBrandPages does not create brand pages for rules with zero matched models', async () => {
   const { generateBrandPages } = await import(generatorModuleUrl);
   const workspace = await createWorkspace();

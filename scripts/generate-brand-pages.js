@@ -270,6 +270,8 @@ function buildBrandPageHtml({
   defaultRear,
   defaultTop,
   modelSamples = [],
+  activeModels = [],
+  archivedModels = [],
   itemListProducts = [],
   affiliateProviders = [],
   pendingSwingCount = 0,
@@ -341,7 +343,7 @@ function buildBrandPageHtml({
     top
   });
   const confirmedSwingCount = Math.max(0, count - pendingSwingCount);
-  const modelPreview = modelSamples.map((sample) => {
+  const renderModelPreview = (samples) => samples.map((sample) => {
     const affiliateHtml = buildAffiliateSnippet(sample, affiliateProviders);
     return `<div class="model-item">
       <picture class="model-thumb">
@@ -354,6 +356,14 @@ function buildBrandPageHtml({
       ${affiliateHtml}
     </div>`;
   }).join('');
+  const currentModelSamples = activeModels.length > 0
+    ? activeModels
+    : modelSamples.filter((sample) => sample.unavailable === false);
+  const archivedModelSamples = archivedModels.length > 0
+    ? archivedModels
+    : modelSamples.filter((sample) => sample.unavailable === true);
+  const currentModelPreview = renderModelPreview(currentModelSamples);
+  const archivedModelPreview = renderModelPreview(archivedModelSamples);
 
   return `<!doctype html>
 <html lang="en-AU">
@@ -473,14 +483,31 @@ ${headMeta}
     .install-tips li + li {
       margin-top: 8px;
     }
-    .model-preview {
+    .model-preview,
+    .current-models,
+    .archived-models {
       margin-top: 26px;
     }
-    .model-preview h2 {
+    .model-preview h2,
+    .current-models h2,
+    .archived-models h2 {
       margin: 0 0 12px;
       font-size: 20px;
       color: var(--ink);
       font-family: 'Instrument Serif', serif;
+    }
+    .archived-models {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #f5f2ec;
+      opacity: 0.88;
+    }
+    .archived-note {
+      margin: -4px 0 12px;
+      color: var(--ink-3);
+      font-size: 13px;
+      line-height: 1.55;
     }
     .model-list {
       display: grid;
@@ -615,10 +642,16 @@ ${headMeta}
       <ul class="install-tips">
         ${installTips.map((tip) => `<li>${escHtml(tip)}</li>`).join('')}
       </ul>
-    </section>${modelSamples.length > 0 ? `\n    <section class="model-preview">
-      <h2 class="section-title-lg">Featured ${escHtml(brand)} ${escHtml(categoryHeading)} Models</h2>
+    </section>${currentModelSamples.length > 0 ? `\n    <section class="current-models">
+      <h2 class="section-title-lg">Current ${escHtml(brand)} Models</h2>
       <div class="model-list">
-        ${modelPreview}
+        ${currentModelPreview}
+      </div>
+    </section>` : ''}${archivedModelSamples.length > 0 ? `\n    <section class="archived-models">
+      <h2 class="section-title-lg">Previous / Archived Models</h2>
+      <p class="archived-note">Older reference models are kept for replacement searches and historical size lookups. Use the active models above when you want a current retailer link.</p>
+      <div class="model-list">
+        ${archivedModelPreview}
       </div>
     </section>` : ''}${reviewSectionHtml ? `\n    ${reviewSectionHtml}` : ''}
     <a class="cta" href="${ctaUrl}">Find ${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} That Fit Your Space</a>
@@ -748,21 +781,34 @@ async function generateBrandPages(options = {}) {
       const side = Number.isFinite(rule.side) ? rule.side : 0;
       const rear = Number.isFinite(rule.rear) ? rule.rear : 0;
       const top = Number.isFinite(rule.top) ? rule.top : 0;
-      const modelSamples = [...matchedProducts]
-        .sort((left, right) => {
-          const leftHeight = Number.isFinite(left.h) ? left.h : 0;
-          const rightHeight = Number.isFinite(right.h) ? right.h : 0;
-          if (leftHeight !== rightHeight) return rightHeight - leftHeight;
-          return String(left.model ?? '').localeCompare(String(right.model ?? ''));
-        })
+      const modelSort = (left, right) => {
+        const leftHeight = Number.isFinite(left.h) ? left.h : 0;
+        const rightHeight = Number.isFinite(right.h) ? right.h : 0;
+        if (leftHeight !== rightHeight) return rightHeight - leftHeight;
+        return String(left.model ?? '').localeCompare(String(right.model ?? ''));
+      };
+      const toModelSample = (product) => ({
+        model: product.model,
+        w: product.w,
+        h: product.h,
+        d: product.d,
+        affiliate: product.affiliate ?? null,
+        unavailable: product.unavailable === true
+      });
+      const activeProducts = matchedProducts.filter((product) => product.unavailable === false);
+      const archivedProducts = matchedProducts.filter((product) => product.unavailable !== false);
+      const activeModels = [...activeProducts]
+        .sort(modelSort)
         .slice(0, 3)
-        .map((product) => ({
-          model: product.model,
-          w: product.w,
-          h: product.h,
-          d: product.d,
-          affiliate: product.affiliate ?? null
-        }));
+        .map(toModelSample);
+      const archivedModels = [...archivedProducts]
+        .sort(modelSort)
+        .slice(0, 3)
+        .map(toModelSample);
+      const modelSamples = [...matchedProducts]
+        .sort(modelSort)
+        .slice(0, 3)
+        .map(toModelSample);
       const itemListProducts = [...matchedProducts]
         .sort((left, right) => String(left.model ?? '').localeCompare(String(right.model ?? '')))
         .slice(0, 20)
@@ -790,6 +836,8 @@ async function generateBrandPages(options = {}) {
         defaultTop,
         pendingSwingCount,
         modelSamples,
+        activeModels,
+        archivedModels,
         itemListProducts,
         filePath
       };
@@ -851,6 +899,8 @@ async function generateBrandPages(options = {}) {
       defaultTop: row.defaultTop,
       pendingSwingCount: row.pendingSwingCount,
       modelSamples: row.modelSamples,
+      activeModels: row.activeModels,
+      archivedModels: row.archivedModels,
       itemListProducts: row.itemListProducts,
       affiliateProviders,
       relatedCompares,

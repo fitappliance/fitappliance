@@ -168,7 +168,11 @@ function selectReviewSampleCombinations(catalog) {
 
 function findAlternatives(product, cavityW, allProducts) {
   return [...(allProducts ?? [])]
-    .filter((candidate) => candidate?.cat === product?.cat && candidate?.id !== product?.id)
+    .filter((candidate) => (
+      candidate?.cat === product?.cat &&
+      candidate?.id !== product?.id &&
+      candidate?.unavailable === false
+    ))
     .map((candidate) => ({ candidate, verdict: getVerdict(candidate, cavityW) }))
     .filter(({ verdict }) => verdict.gap >= 5)
     .sort((left, right) => {

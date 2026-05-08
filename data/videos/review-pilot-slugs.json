@@ -3,16 +3,64 @@
   "last_updated": "2026-05-04",
   "pilots": [
     {
-      "productId": "f7",
+      "productId": "fridge-arf3598",
       "cat": "fridge",
       "brand": "Haier",
-      "model": "HRF520BHS French Door 520L",
-      "modelSlug": "haier-hrf520bhs",
+      "model": "HRF90UW2",
+      "modelSlug": "haier-hrf90uw2",
       "brandPageSlug": "haier-fridge-clearance",
-      "cavityPageSlug": "930mm-fridge",
-      "coverageCount": 19,
-      "retailers": 1,
+      "cavityPageSlug": "510mm-fridge",
+      "coverageCount": 61,
+      "retailers": 2,
+      "stars": 4
+    },
+    {
+      "productId": "fridge-arf2472",
+      "cat": "fridge",
+      "brand": "CHIQ",
+      "model": "CRSR088DW",
+      "modelSlug": "chiq-crsr088dw",
+      "brandPageSlug": "chiq-fridge-clearance",
+      "cavityPageSlug": "520mm-fridge",
+      "coverageCount": 60,
+      "retailers": 2,
       "stars": 3
+    },
+    {
+      "productId": "dryer-acd0788",
+      "cat": "dryer",
+      "brand": "Electrolux",
+      "model": "EDV605H3WC",
+      "modelSlug": "electrolux-edv605h3wc",
+      "brandPageSlug": "electrolux-dryer-clearance",
+      "cavityPageSlug": null,
+      "coverageCount": 1,
+      "retailers": 3,
+      "stars": 2
+    },
+    {
+      "productId": "dishwasher-adw0956",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UZT4B2",
+      "modelSlug": "fisher-paykel-dw60uzt4b2",
+      "brandPageSlug": "fisher-paykel-dishwasher-clearance",
+      "cavityPageSlug": null,
+      "coverageCount": 1,
+      "retailers": 4,
+      "stars": 5
+    },
+    {
+      "productId": "washing_machine-acw1243",
+      "cat": "washing_machine",
+      "brand": "Westinghouse",
+      "model": "WWF9024M5SA",
+      "modelSlug": "westinghouse-wwf9024m5sa",
+      "brandPageSlug": "westinghouse-washing-machine-clearance",
+      "cavityPageSlug": null,
+      "coverageCount": 1,
+      "retailers": 4,
+      "stars": 4
     }
   ]
 }

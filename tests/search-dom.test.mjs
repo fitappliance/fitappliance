@@ -98,6 +98,44 @@ test('phase 45a search-dom: renderLiveCount writes the visible result copy', asy
   assert.match(String(el.textContent), /Showing 12 of 2,170 appliances/i);
 });
 
+test('replacement CTA estimates cavity dimensions and triggers the main search', async () => {
+  const previousDocument = globalThis.document;
+  const previousDoSearch = globalThis.doSearch;
+  const previousShowToast = globalThis.showToast;
+  const window = new JSDOM(`
+    <main>
+      <section id="search"></section>
+      <section id="resultsSection" style="display:block"></section>
+      <div id="fitVizModalRoot"><div data-fit-viz-modal></div></div>
+      <input id="inW">
+      <input id="inH">
+      <input id="inD">
+    </main>
+  `).window;
+  globalThis.document = window.document;
+  let searched = false;
+  let toast = '';
+  globalThis.doSearch = () => { searched = true; };
+  globalThis.showToast = (message) => { toast = message; };
+
+  try {
+    const { triggerReplacementSearch } = await loadSearchDom();
+    triggerReplacementSearch('580', '1780', '620');
+
+    assert.equal(window.document.getElementById('inW').value, '600');
+    assert.equal(window.document.getElementById('inH').value, '1830');
+    assert.equal(window.document.getElementById('inD').value, '670');
+    assert.equal(window.document.getElementById('resultsSection').style.display, 'none');
+    assert.equal(window.document.querySelector('[data-fit-viz-modal]'), null);
+    assert.equal(searched, true);
+    assert.match(toast, /Estimated cavity based on old model/i);
+  } finally {
+    globalThis.document = previousDocument;
+    globalThis.doSearch = previousDoSearch;
+    globalThis.showToast = previousShowToast;
+  }
+});
+
 test('phase 45a search-dom: malicious brand labels are escaped in rendered facet content', async () => {
   const { renderFacetBar } = await loadSearchDom();
   const window = makeWindow();

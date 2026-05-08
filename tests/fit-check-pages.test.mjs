@@ -92,6 +92,47 @@ describe('fit-check page generator', () => {
     assert.doesNotMatch(page.html, /\$[0-9][0-9][0-9]/);
   });
 
+  it('only recommends current active products in fit-check alternatives', () => {
+    const target = {
+      id: 'target-current',
+      cat: 'fridge',
+      brand: 'Target',
+      model: 'Current 700L',
+      w: 700,
+      h: 1780,
+      d: 700,
+      stars: 4,
+      priorityScore: 1,
+      unavailable: false,
+      retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/target-current-700l' }]
+    };
+    const archivedAlternative = {
+      ...target,
+      id: 'archived-best-fit',
+      brand: 'Archived',
+      model: 'Old Perfect Fit',
+      w: 570,
+      priorityScore: 100,
+      unavailable: true,
+      retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/archived-old-perfect-fit' }]
+    };
+    const activeAlternative = {
+      ...target,
+      id: 'active-better-fit',
+      brand: 'Active',
+      model: 'Current Better Fit',
+      w: 575,
+      priorityScore: 10,
+      unavailable: false,
+      retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/active-current-better-fit' }]
+    };
+
+    const page = buildFitCheckPage(target, 600, [target, archivedAlternative, activeAlternative]);
+
+    assert.match(page.html, /Current Better Fit/);
+    assert.doesNotMatch(page.html, /Old Perfect Fit/);
+  });
+
   it('writePages creates valid sample pages and a validation report', () => {
     const tmpRoot = mkdtempSync(path.join(tmpdir(), 'fit-check-pages-'));
     try {

@@ -48,6 +48,79 @@
     return normalized;
   }
 
+  function parseReplacementDimension(value) {
+    const parsed = Number.parseInt(String(value ?? '').trim(), 10);
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+  }
+
+  function setInputValue(doc, id, value) {
+    const input = doc?.getElementById?.(id);
+    if (!input) return;
+    input.value = String(value);
+    const EventCtor = doc.defaultView?.Event ?? globalScope?.Event;
+    if (typeof EventCtor === 'function') {
+      input.dispatchEvent(new EventCtor('input', { bubbles: true }));
+      input.dispatchEvent(new EventCtor('change', { bubbles: true }));
+    }
+  }
+
+  function showReplacementToast(message) {
+    if (typeof globalScope?.showToast === 'function') {
+      globalScope.showToast(message);
+      return;
+    }
+    const doc = globalScope?.document;
+    if (!doc) return;
+    const toast = doc.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    doc.body?.appendChild(toast);
+    globalScope?.setTimeout?.(() => toast.remove(), 4000);
+  }
+
+  function triggerReplacementSearch(oldW, oldH, oldD) {
+    const width = parseReplacementDimension(oldW);
+    const height = parseReplacementDimension(oldH);
+    const depth = parseReplacementDimension(oldD);
+    if (!width || !height || !depth) return false;
+
+    const doc = globalScope?.document;
+    if (!doc) return false;
+
+    const estimatedCavityW = width + 20;
+    const estimatedCavityH = height + 50;
+    const estimatedCavityD = depth + 50;
+
+    closeFitVizModal();
+    doc.querySelectorAll('[data-fit-viz-modal], .fit-viz-modal').forEach((node) => node.remove());
+    const resultsSection = doc.getElementById('resultsSection');
+    if (resultsSection) resultsSection.style.display = 'none';
+
+    setInputValue(doc, 'inW', estimatedCavityW);
+    setInputValue(doc, 'inH', estimatedCavityH);
+    setInputValue(doc, 'inD', estimatedCavityD);
+
+    const searchSection = doc.getElementById('search') ?? doc.querySelector('[data-fit-checker]');
+    searchSection?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
+    showReplacementToast('Estimated cavity based on old model. Adjust if needed.');
+
+    if (typeof globalScope?.doSearch === 'function') {
+      globalScope.doSearch({ preserveExistingFacets: true });
+    } else {
+      const EventCtor = doc.defaultView?.CustomEvent ?? globalScope?.CustomEvent;
+      if (typeof EventCtor === 'function') {
+        doc.dispatchEvent(new EventCtor('fitappliance:replacement-search', {
+          detail: {
+            w: estimatedCavityW,
+            h: estimatedCavityH,
+            d: estimatedCavityD
+          }
+        }));
+      }
+    }
+    return true;
+  }
+
   function renderPresetChips(container, presets, activePreset, onSelect) {
     if (!container) return;
     const rows = Array.isArray(presets) ? presets : [];
@@ -2116,6 +2189,7 @@
     renderSavedSearchDropdown,
     renderSortDropdown,
     showSaveForm,
+    triggerReplacementSearch,
     toggleMobileSheet
   };
 
@@ -2124,5 +2198,6 @@
   }
   if (globalScope) {
     globalScope.SearchDom = api;
+    globalScope.triggerReplacementSearch = triggerReplacementSearch;
   }
 }(typeof globalThis !== 'undefined' ? globalThis : this));
