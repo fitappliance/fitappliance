@@ -1,16 +1,16 @@
 {
   "summary": {
-    "totalPages": 483,
-    "totalEdges": 7575,
+    "totalPages": 712,
+    "totalEdges": 11124,
     "orphanPages": 0,
-    "averageInlinks": 15.68
+    "averageInlinks": 15.62
   },
   "orphanUrls": [],
   "nodes": [
     {
       "url": "/",
       "file": "index.html",
-      "inlinks": 482,
+      "inlinks": 711,
       "outlinks": 6
     },
     {
@@ -22,13 +22,13 @@
     {
       "url": "/about/editorial-standards",
       "file": "pages/about/editorial-standards.html",
-      "inlinks": 482,
+      "inlinks": 711,
       "outlinks": 4
     },
     {
       "url": "/affiliate-disclosure",
       "file": "pages/affiliate-disclosure.html",
-      "inlinks": 16,
+      "inlinks": 245,
       "outlinks": 4
     },
     {
@@ -2552,64 +2552,1438 @@
       "outlinks": 16
     },
     {
+      "url": "/fit-check/bosch-kgn396lbas-top-mount-368l-in-540mm-cavity",
+      "file": "pages/fit-check/bosch-kgn396lbas-top-mount-368l-in-540mm-cavity.html",
+      "inlinks": 8,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/bosch-kgn396lbas-top-mount-368l-in-580mm-cavity",
+      "file": "pages/fit-check/bosch-kgn396lbas-top-mount-368l-in-580mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 18
+    },
+    {
+      "url": "/fit-check/bosch-kgn396lbas-top-mount-368l-in-600mm-cavity",
+      "file": "pages/fit-check/bosch-kgn396lbas-top-mount-368l-in-600mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/bosch-kgn396lbas-top-mount-368l-in-620mm-cavity",
+      "file": "pages/fit-check/bosch-kgn396lbas-top-mount-368l-in-620mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/bosch-kgn396lbas-top-mount-368l-in-640mm-cavity",
+      "file": "pages/fit-check/bosch-kgn396lbas-top-mount-368l-in-640mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/bosch-kgn396lbas-top-mount-368l-in-700mm-cavity",
+      "file": "pages/fit-check/bosch-kgn396lbas-top-mount-368l-in-700mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/bosch-kgn396lbas-top-mount-368l-in-800mm-cavity",
+      "file": "pages/fit-check/bosch-kgn396lbas-top-mount-368l-in-800mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/bosch-kgn396lbas-top-mount-368l-in-900mm-cavity",
+      "file": "pages/fit-check/bosch-kgn396lbas-top-mount-368l-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 19
+    },
+    {
+      "url": "/fit-check/bosch-sms6eci05a-series-6-14-place-in-540mm-cavity",
+      "file": "pages/fit-check/bosch-sms6eci05a-series-6-14-place-in-540mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/bosch-sms6eci05a-series-6-14-place-in-580mm-cavity",
+      "file": "pages/fit-check/bosch-sms6eci05a-series-6-14-place-in-580mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/bosch-sms6eci05a-series-6-14-place-in-620mm-cavity",
+      "file": "pages/fit-check/bosch-sms6eci05a-series-6-14-place-in-620mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/bosch-sms6eci05a-series-6-14-place-in-640mm-cavity",
+      "file": "pages/fit-check/bosch-sms6eci05a-series-6-14-place-in-640mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/bosch-sms6eci05a-series-6-14-place-in-700mm-cavity",
+      "file": "pages/fit-check/bosch-sms6eci05a-series-6-14-place-in-700mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/bosch-sms6eci05a-series-6-14-place-in-900mm-cavity",
+      "file": "pages/fit-check/bosch-sms6eci05a-series-6-14-place-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/bosch-wax32eh0au-series-8-10kg-in-540mm-cavity",
+      "file": "pages/fit-check/bosch-wax32eh0au-series-8-10kg-in-540mm-cavity.html",
+      "inlinks": 8,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/bosch-wax32eh0au-series-8-10kg-in-580mm-cavity",
+      "file": "pages/fit-check/bosch-wax32eh0au-series-8-10kg-in-580mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/bosch-wax32eh0au-series-8-10kg-in-600mm-cavity",
+      "file": "pages/fit-check/bosch-wax32eh0au-series-8-10kg-in-600mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/bosch-wax32eh0au-series-8-10kg-in-620mm-cavity",
+      "file": "pages/fit-check/bosch-wax32eh0au-series-8-10kg-in-620mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/bosch-wax32eh0au-series-8-10kg-in-640mm-cavity",
+      "file": "pages/fit-check/bosch-wax32eh0au-series-8-10kg-in-640mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/bosch-wax32eh0au-series-8-10kg-in-700mm-cavity",
+      "file": "pages/fit-check/bosch-wax32eh0au-series-8-10kg-in-700mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/bosch-wax32eh0au-series-8-10kg-in-800mm-cavity",
+      "file": "pages/fit-check/bosch-wax32eh0au-series-8-10kg-in-800mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 19
+    },
+    {
+      "url": "/fit-check/bosch-wax32eh0au-series-8-10kg-in-900mm-cavity",
+      "file": "pages/fit-check/bosch-wax32eh0au-series-8-10kg-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 17
+    },
+    {
       "url": "/fit-check/bosch-wth85209au-series-4-heat-pump-8kg-in-540mm-cavity",
       "file": "pages/fit-check/bosch-wth85209au-series-4-heat-pump-8kg-in-540mm-cavity.html",
-      "inlinks": 9,
-      "outlinks": 13
+      "inlinks": 238,
+      "outlinks": 11
+    },
+    {
+      "url": "/fit-check/bosch-wth85209au-series-4-heat-pump-8kg-in-580mm-cavity",
+      "file": "pages/fit-check/bosch-wth85209au-series-4-heat-pump-8kg-in-580mm-cavity.html",
+      "inlinks": 238,
+      "outlinks": 10
     },
     {
       "url": "/fit-check/bosch-wth85209au-series-4-heat-pump-8kg-in-620mm-cavity",
       "file": "pages/fit-check/bosch-wth85209au-series-4-heat-pump-8kg-in-620mm-cavity.html",
-      "inlinks": 9,
-      "outlinks": 13
+      "inlinks": 238,
+      "outlinks": 10
     },
     {
       "url": "/fit-check/bosch-wth85209au-series-4-heat-pump-8kg-in-640mm-cavity",
       "file": "pages/fit-check/bosch-wth85209au-series-4-heat-pump-8kg-in-640mm-cavity.html",
-      "inlinks": 9,
+      "inlinks": 238,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/bosch-wth85209au-series-4-heat-pump-8kg-in-700mm-cavity",
+      "file": "pages/fit-check/bosch-wth85209au-series-4-heat-pump-8kg-in-700mm-cavity.html",
+      "inlinks": 238,
       "outlinks": 13
+    },
+    {
+      "url": "/fit-check/electrolux-ebe4302bd-in-540mm-cavity",
+      "file": "pages/fit-check/electrolux-ebe4302bd-in-540mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/electrolux-ebe4302bd-in-580mm-cavity",
+      "file": "pages/fit-check/electrolux-ebe4302bd-in-580mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 18
+    },
+    {
+      "url": "/fit-check/electrolux-ebe4302bd-in-600mm-cavity",
+      "file": "pages/fit-check/electrolux-ebe4302bd-in-600mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/electrolux-ebe4302bd-in-620mm-cavity",
+      "file": "pages/fit-check/electrolux-ebe4302bd-in-620mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/electrolux-ebe4302bd-in-640mm-cavity",
+      "file": "pages/fit-check/electrolux-ebe4302bd-in-640mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/electrolux-ebe4302bd-in-700mm-cavity",
+      "file": "pages/fit-check/electrolux-ebe4302bd-in-700mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 17
     },
     {
       "url": "/fit-check/electrolux-ebe4302bd-in-800mm-cavity",
       "file": "pages/fit-check/electrolux-ebe4302bd-in-800mm-cavity.html",
-      "inlinks": 9,
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/electrolux-ebe4507sc-in-800mm-cavity",
+      "file": "pages/fit-check/electrolux-ebe4507sc-in-800mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/electrolux-ebe4507sc-in-900mm-cavity",
+      "file": "pages/fit-check/electrolux-ebe4507sc-in-900mm-cavity.html",
+      "inlinks": 2,
       "outlinks": 13
     },
     {
-      "url": "/fit-check/electrolux-ebe5002sd-r-in-900mm-cavity",
-      "file": "pages/fit-check/electrolux-ebe5002sd-r-in-900mm-cavity.html",
-      "inlinks": 9,
-      "outlinks": 13
+      "url": "/fit-check/electrolux-edh803bewa-heat-pump-8kg-in-540mm-cavity",
+      "file": "pages/fit-check/electrolux-edh803bewa-heat-pump-8kg-in-540mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/electrolux-edh803bewa-heat-pump-8kg-in-580mm-cavity",
+      "file": "pages/fit-check/electrolux-edh803bewa-heat-pump-8kg-in-580mm-cavity.html",
+      "inlinks": 4,
+      "outlinks": 14
     },
     {
       "url": "/fit-check/electrolux-edh803bewa-heat-pump-8kg-in-620mm-cavity",
       "file": "pages/fit-check/electrolux-edh803bewa-heat-pump-8kg-in-620mm-cavity.html",
-      "inlinks": 9,
-      "outlinks": 13
+      "inlinks": 4,
+      "outlinks": 14
     },
     {
       "url": "/fit-check/electrolux-edh803bewa-heat-pump-8kg-in-640mm-cavity",
       "file": "pages/fit-check/electrolux-edh803bewa-heat-pump-8kg-in-640mm-cavity.html",
-      "inlinks": 9,
+      "inlinks": 4,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/electrolux-edh803bewa-heat-pump-8kg-in-700mm-cavity",
+      "file": "pages/fit-check/electrolux-edh803bewa-heat-pump-8kg-in-700mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/electrolux-ehe5267b-bottom-mount-520l-in-540mm-cavity",
+      "file": "pages/fit-check/electrolux-ehe5267b-bottom-mount-520l-in-540mm-cavity.html",
+      "inlinks": 3,
       "outlinks": 13
+    },
+    {
+      "url": "/fit-check/electrolux-ehe5267b-bottom-mount-520l-in-700mm-cavity",
+      "file": "pages/fit-check/electrolux-ehe5267b-bottom-mount-520l-in-700mm-cavity.html",
+      "inlinks": 15,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/electrolux-ehe5267b-bottom-mount-520l-in-800mm-cavity",
+      "file": "pages/fit-check/electrolux-ehe5267b-bottom-mount-520l-in-800mm-cavity.html",
+      "inlinks": 3,
+      "outlinks": 13
+    },
+    {
+      "url": "/fit-check/electrolux-ewf1042r9sc-in-540mm-cavity",
+      "file": "pages/fit-check/electrolux-ewf1042r9sc-in-540mm-cavity.html",
+      "inlinks": 8,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/electrolux-ewf1042r9sc-in-580mm-cavity",
+      "file": "pages/fit-check/electrolux-ewf1042r9sc-in-580mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/electrolux-ewf1042r9sc-in-600mm-cavity",
+      "file": "pages/fit-check/electrolux-ewf1042r9sc-in-600mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/electrolux-ewf1042r9sc-in-620mm-cavity",
+      "file": "pages/fit-check/electrolux-ewf1042r9sc-in-620mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/electrolux-ewf1042r9sc-in-640mm-cavity",
+      "file": "pages/fit-check/electrolux-ewf1042r9sc-in-640mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/electrolux-ewf1042r9sc-in-700mm-cavity",
+      "file": "pages/fit-check/electrolux-ewf1042r9sc-in-700mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/electrolux-ewf1042r9sc-in-800mm-cavity",
+      "file": "pages/fit-check/electrolux-ewf1042r9sc-in-800mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 19
+    },
+    {
+      "url": "/fit-check/electrolux-ewf1042r9sc-in-900mm-cavity",
+      "file": "pages/fit-check/electrolux-ewf1042r9sc-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 18
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dd60sdfhx9-double-drawer-in-600mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dd60sdfhx9-double-drawer-in-600mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dd60sdfhx9-double-drawer-in-800mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dd60sdfhx9-double-drawer-in-800mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dh8060p1-in-540mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dh8060p1-in-540mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dh8060p1-in-580mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dh8060p1-in-580mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dh8060p1-in-600mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dh8060p1-in-600mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dh8060p1-in-620mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dh8060p1-in-620mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
     },
     {
       "url": "/fit-check/fisher-and-paykel-dh8060p1-in-640mm-cavity",
       "file": "pages/fit-check/fisher-and-paykel-dh8060p1-in-640mm-cavity.html",
+      "inlinks": 8,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dh8060p1-in-700mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dh8060p1-in-700mm-cavity.html",
       "inlinks": 9,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dw60ut4i2-in-540mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dw60ut4i2-in-540mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dw60ut4i2-in-580mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dw60ut4i2-in-580mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dw60ut4i2-in-620mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dw60ut4i2-in-620mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dw60ut4i2-in-640mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dw60ut4i2-in-640mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dw60ut4i2-in-700mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dw60ut4i2-in-700mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dw60ut4i2-in-900mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dw60ut4i2-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dw60uzt4b2-in-600mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dw60uzt4b2-in-600mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-dw60uzt4b2-in-800mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-dw60uzt4b2-in-800mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rf500qnux1-in-540mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rf500qnux1-in-540mm-cavity.html",
+      "inlinks": 8,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rf500qnux1-in-580mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rf500qnux1-in-580mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 18
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rf500qnux1-in-600mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rf500qnux1-in-600mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rf500qnux1-in-620mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rf500qnux1-in-620mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rf500qnux1-in-640mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rf500qnux1-in-640mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rf500qnux1-in-700mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rf500qnux1-in-700mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rf500qnux1-in-800mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rf500qnux1-in-800mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rf500qnux1-in-900mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rf500qnux1-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 19
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rs6009sbl1-in-540mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rs6009sbl1-in-540mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rs6009sbl1-in-580mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rs6009sbl1-in-580mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 18
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rs6009sbl1-in-600mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rs6009sbl1-in-600mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rs6009sbl1-in-620mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rs6009sbl1-in-620mm-cavity.html",
+      "inlinks": 22,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rs6009sbl1-in-640mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rs6009sbl1-in-640mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rs6009sbl1-in-700mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rs6009sbl1-in-700mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rs6009sbl1-in-800mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rs6009sbl1-in-800mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rs6121slhe1-in-620mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rs6121slhe1-in-620mm-cavity.html",
+      "inlinks": 2,
       "outlinks": 13
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rs7621slhe1-in-620mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rs7621slhe1-in-620mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 13
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-rs7621slhe1-in-640mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-rs7621slhe1-in-640mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-wh1060p4-in-540mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-wh1060p4-in-540mm-cavity.html",
+      "inlinks": 8,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-wh1060p4-in-580mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-wh1060p4-in-580mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-wh1060p4-in-600mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-wh1060p4-in-600mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-wh1060p4-in-620mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-wh1060p4-in-620mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-wh1060p4-in-640mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-wh1060p4-in-640mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-wh1060p4-in-700mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-wh1060p4-in-700mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-wh1060p4-in-800mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-wh1060p4-in-800mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 19
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-wh1060p4-in-900mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-wh1060p4-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 18
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-wl1064g1-in-620mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-wl1064g1-in-620mm-cavity.html",
+      "inlinks": 3,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-wl1064g1-in-640mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-wl1064g1-in-640mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-wl1064g1-in-700mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-wl1064g1-in-700mm-cavity.html",
+      "inlinks": 3,
+      "outlinks": 13
+    },
+    {
+      "url": "/fit-check/fisher-and-paykel-wl9058g1-in-600mm-cavity",
+      "file": "pages/fit-check/fisher-and-paykel-wl9058g1-in-600mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/haier-hcf137w-in-540mm-cavity",
+      "file": "pages/fit-check/haier-hcf137w-in-540mm-cavity.html",
+      "inlinks": 3,
+      "outlinks": 13
+    },
+    {
+      "url": "/fit-check/haier-hcf137w-in-640mm-cavity",
+      "file": "pages/fit-check/haier-hcf137w-in-640mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/haier-hcf137w-in-800mm-cavity",
+      "file": "pages/fit-check/haier-hcf137w-in-800mm-cavity.html",
+      "inlinks": 3,
+      "outlinks": 13
+    },
+    {
+      "url": "/fit-check/haier-hcf194w-in-800mm-cavity",
+      "file": "pages/fit-check/haier-hcf194w-in-800mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/haier-hcf97w-in-580mm-cavity",
+      "file": "pages/fit-check/haier-hcf97w-in-580mm-cavity.html",
+      "inlinks": 3,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/haier-hcf97w-in-600mm-cavity",
+      "file": "pages/fit-check/haier-hcf97w-in-600mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/haier-hcf97w-in-620mm-cavity",
+      "file": "pages/fit-check/haier-hcf97w-in-620mm-cavity.html",
+      "inlinks": 3,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/haier-hdw15f3s1-in-540mm-cavity",
+      "file": "pages/fit-check/haier-hdw15f3s1-in-540mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/haier-hdw15f3s1-in-580mm-cavity",
+      "file": "pages/fit-check/haier-hdw15f3s1-in-580mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/haier-hdw15f3s1-in-620mm-cavity",
+      "file": "pages/fit-check/haier-hdw15f3s1-in-620mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/haier-hdw15f3s1-in-700mm-cavity",
+      "file": "pages/fit-check/haier-hdw15f3s1-in-700mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/haier-hdw15f3s1-in-800mm-cavity",
+      "file": "pages/fit-check/haier-hdw15f3s1-in-800mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/haier-hdw15f3s1-in-900mm-cavity",
+      "file": "pages/fit-check/haier-hdw15f3s1-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/haier-hdw15f4b1-in-600mm-cavity",
+      "file": "pages/fit-check/haier-hdw15f4b1-in-600mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/haier-hrf420bhs-in-540mm-cavity",
+      "file": "pages/fit-check/haier-hrf420bhs-in-540mm-cavity.html",
+      "inlinks": 8,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/haier-hrf420bhs-in-580mm-cavity",
+      "file": "pages/fit-check/haier-hrf420bhs-in-580mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 18
+    },
+    {
+      "url": "/fit-check/haier-hrf420bhs-in-600mm-cavity",
+      "file": "pages/fit-check/haier-hrf420bhs-in-600mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/haier-hrf420bhs-in-620mm-cavity",
+      "file": "pages/fit-check/haier-hrf420bhs-in-620mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/haier-hrf420bhs-in-640mm-cavity",
+      "file": "pages/fit-check/haier-hrf420bhs-in-640mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/haier-hrf420bhs-in-700mm-cavity",
+      "file": "pages/fit-check/haier-hrf420bhs-in-700mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/haier-hrf420bhs-in-800mm-cavity",
+      "file": "pages/fit-check/haier-hrf420bhs-in-800mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/haier-hrf420bhs-in-900mm-cavity",
+      "file": "pages/fit-check/haier-hrf420bhs-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 18
     },
     {
       "url": "/fit-check/haier-hrf520bhs-french-door-520l-in-540mm-cavity",
       "file": "pages/fit-check/haier-hrf520bhs-french-door-520l-in-540mm-cavity.html",
-      "inlinks": 9,
-      "outlinks": 13
+      "inlinks": 238,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/haier-hrf520bhs-french-door-520l-in-580mm-cavity",
+      "file": "pages/fit-check/haier-hrf520bhs-french-door-520l-in-580mm-cavity.html",
+      "inlinks": 12,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/haier-hrf520bhs-french-door-520l-in-600mm-cavity",
+      "file": "pages/fit-check/haier-hrf520bhs-french-door-520l-in-600mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/haier-hrf520bhs-french-door-520l-in-620mm-cavity",
+      "file": "pages/fit-check/haier-hrf520bhs-french-door-520l-in-620mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/haier-hrf520bhs-french-door-520l-in-640mm-cavity",
+      "file": "pages/fit-check/haier-hrf520bhs-french-door-520l-in-640mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/haier-hrf520bhs-french-door-520l-in-700mm-cavity",
+      "file": "pages/fit-check/haier-hrf520bhs-french-door-520l-in-700mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/haier-hrf520bhs-french-door-520l-in-800mm-cavity",
+      "file": "pages/fit-check/haier-hrf520bhs-french-door-520l-in-800mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
     },
     {
       "url": "/fit-check/haier-hrf520bhs-french-door-520l-in-900mm-cavity",
       "file": "pages/fit-check/haier-hrf520bhs-french-door-520l-in-900mm-cavity.html",
       "inlinks": 9,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/haier-hrf523xhg-series-in-540mm-cavity",
+      "file": "pages/fit-check/haier-hrf523xhg-series-in-540mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/haier-hrf523xhg-series-in-580mm-cavity",
+      "file": "pages/fit-check/haier-hrf523xhg-series-in-580mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/haier-hrf523xhg-series-in-600mm-cavity",
+      "file": "pages/fit-check/haier-hrf523xhg-series-in-600mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/haier-hrf523xhg-series-in-620mm-cavity",
+      "file": "pages/fit-check/haier-hrf523xhg-series-in-620mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/haier-hrf523xhg-series-in-640mm-cavity",
+      "file": "pages/fit-check/haier-hrf523xhg-series-in-640mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/haier-hrf523xhg-series-in-800mm-cavity",
+      "file": "pages/fit-check/haier-hrf523xhg-series-in-800mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/hisense-hcf7s1014b-in-620mm-cavity",
+      "file": "pages/fit-check/hisense-hcf7s1014b-in-620mm-cavity.html",
+      "inlinks": 2,
       "outlinks": 13
+    },
+    {
+      "url": "/fit-check/hisense-hcf7s1014b-in-700mm-cavity",
+      "file": "pages/fit-check/hisense-hcf7s1014b-in-700mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/hisense-hrbm417c-in-540mm-cavity",
+      "file": "pages/fit-check/hisense-hrbm417c-in-540mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/hisense-hrbm417c-in-800mm-cavity",
+      "file": "pages/fit-check/hisense-hrbm417c-in-800mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/hisense-hrbm482sw-in-800mm-cavity",
+      "file": "pages/fit-check/hisense-hrbm482sw-in-800mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/hisense-hrcd640tbw-in-540mm-cavity",
+      "file": "pages/fit-check/hisense-hrcd640tbw-in-540mm-cavity.html",
+      "inlinks": 8,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/hisense-hrcd640tbw-in-580mm-cavity",
+      "file": "pages/fit-check/hisense-hrcd640tbw-in-580mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 18
+    },
+    {
+      "url": "/fit-check/hisense-hrcd640tbw-in-600mm-cavity",
+      "file": "pages/fit-check/hisense-hrcd640tbw-in-600mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/hisense-hrcd640tbw-in-620mm-cavity",
+      "file": "pages/fit-check/hisense-hrcd640tbw-in-620mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/hisense-hrcd640tbw-in-640mm-cavity",
+      "file": "pages/fit-check/hisense-hrcd640tbw-in-640mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/hisense-hrcd640tbw-in-700mm-cavity",
+      "file": "pages/fit-check/hisense-hrcd640tbw-in-700mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/hisense-hrcd640tbw-in-800mm-cavity",
+      "file": "pages/fit-check/hisense-hrcd640tbw-in-800mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/hisense-hrcd640tbw-in-900mm-cavity",
+      "file": "pages/fit-check/hisense-hrcd640tbw-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 19
+    },
+    {
+      "url": "/fit-check/hisense-hrcf146-in-640mm-cavity",
+      "file": "pages/fit-check/hisense-hrcf146-in-640mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/hisense-hrtf206-in-540mm-cavity",
+      "file": "pages/fit-check/hisense-hrtf206-in-540mm-cavity.html",
+      "inlinks": 8,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/hisense-hrtf206-in-580mm-cavity",
+      "file": "pages/fit-check/hisense-hrtf206-in-580mm-cavity.html",
+      "inlinks": 23,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/hisense-hrtf206-in-600mm-cavity",
+      "file": "pages/fit-check/hisense-hrtf206-in-600mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/hisense-hrtf206-in-620mm-cavity",
+      "file": "pages/fit-check/hisense-hrtf206-in-620mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/hisense-hrtf206-in-640mm-cavity",
+      "file": "pages/fit-check/hisense-hrtf206-in-640mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/hisense-hrtf206-in-700mm-cavity",
+      "file": "pages/fit-check/hisense-hrtf206-in-700mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/hisense-hrtf206-in-800mm-cavity",
+      "file": "pages/fit-check/hisense-hrtf206-in-800mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/hisense-hrtf206-in-900mm-cavity",
+      "file": "pages/fit-check/hisense-hrtf206-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 19
+    },
+    {
+      "url": "/fit-check/hisense-hrtf325-in-540mm-cavity",
+      "file": "pages/fit-check/hisense-hrtf325-in-540mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/hisense-hrtf325-in-580mm-cavity",
+      "file": "pages/fit-check/hisense-hrtf325-in-580mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/hisense-hrtf325-in-600mm-cavity",
+      "file": "pages/fit-check/hisense-hrtf325-in-600mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/hisense-hrtf325-in-620mm-cavity",
+      "file": "pages/fit-check/hisense-hrtf325-in-620mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/hisense-hrtf325-in-640mm-cavity",
+      "file": "pages/fit-check/hisense-hrtf325-in-640mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/hisense-hrtf325-in-800mm-cavity",
+      "file": "pages/fit-check/hisense-hrtf325-in-800mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/hisense-hs9b16fb-in-540mm-cavity",
+      "file": "pages/fit-check/hisense-hs9b16fb-in-540mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/hisense-hs9b16fb-in-580mm-cavity",
+      "file": "pages/fit-check/hisense-hs9b16fb-in-580mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/hisense-hs9b16fb-in-620mm-cavity",
+      "file": "pages/fit-check/hisense-hs9b16fb-in-620mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/hisense-hs9b16fb-in-640mm-cavity",
+      "file": "pages/fit-check/hisense-hs9b16fb-in-640mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/hisense-hs9b16fb-in-700mm-cavity",
+      "file": "pages/fit-check/hisense-hs9b16fb-in-700mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/hisense-hs9b16fb-in-900mm-cavity",
+      "file": "pages/fit-check/hisense-hs9b16fb-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/hisense-hwf5s1214-in-540mm-cavity",
+      "file": "pages/fit-check/hisense-hwf5s1214-in-540mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/hisense-hwf5s1214-in-580mm-cavity",
+      "file": "pages/fit-check/hisense-hwf5s1214-in-580mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/hisense-hwf5s1214-in-600mm-cavity",
+      "file": "pages/fit-check/hisense-hwf5s1214-in-600mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/hisense-hwf5s1214-in-640mm-cavity",
+      "file": "pages/fit-check/hisense-hwf5s1214-in-640mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/hisense-hwf5s1214-in-800mm-cavity",
+      "file": "pages/fit-check/hisense-hwf5s1214-in-800mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/hisense-hwf5s1214-in-900mm-cavity",
+      "file": "pages/fit-check/hisense-hwf5s1214-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/lg-gf-b505bb-in-540mm-cavity",
+      "file": "pages/fit-check/lg-gf-b505bb-in-540mm-cavity.html",
+      "inlinks": 8,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/lg-gf-b505bb-in-580mm-cavity",
+      "file": "pages/fit-check/lg-gf-b505bb-in-580mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 18
+    },
+    {
+      "url": "/fit-check/lg-gf-b505bb-in-600mm-cavity",
+      "file": "pages/fit-check/lg-gf-b505bb-in-600mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/lg-gf-b505bb-in-620mm-cavity",
+      "file": "pages/fit-check/lg-gf-b505bb-in-620mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/lg-gf-b505bb-in-640mm-cavity",
+      "file": "pages/fit-check/lg-gf-b505bb-in-640mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/lg-gf-b505bb-in-700mm-cavity",
+      "file": "pages/fit-check/lg-gf-b505bb-in-700mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/lg-gf-b505bb-in-800mm-cavity",
+      "file": "pages/fit-check/lg-gf-b505bb-in-800mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/lg-gf-b505bb-in-900mm-cavity",
+      "file": "pages/fit-check/lg-gf-b505bb-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 19
+    },
+    {
+      "url": "/fit-check/lg-gf-b705mbl-in-540mm-cavity",
+      "file": "pages/fit-check/lg-gf-b705mbl-in-540mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/lg-gf-b705mbl-in-800mm-cavity",
+      "file": "pages/fit-check/lg-gf-b705mbl-in-800mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/lg-gf-l708mbl-french-door-708l-in-540mm-cavity",
+      "file": "pages/fit-check/lg-gf-l708mbl-french-door-708l-in-540mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/lg-gf-l708mbl-french-door-708l-in-580mm-cavity",
+      "file": "pages/fit-check/lg-gf-l708mbl-french-door-708l-in-580mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 18
+    },
+    {
+      "url": "/fit-check/lg-gf-l708mbl-french-door-708l-in-600mm-cavity",
+      "file": "pages/fit-check/lg-gf-l708mbl-french-door-708l-in-600mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/lg-gf-l708mbl-french-door-708l-in-620mm-cavity",
+      "file": "pages/fit-check/lg-gf-l708mbl-french-door-708l-in-620mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/lg-gf-l708mbl-french-door-708l-in-640mm-cavity",
+      "file": "pages/fit-check/lg-gf-l708mbl-french-door-708l-in-640mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/lg-gf-l708mbl-french-door-708l-in-700mm-cavity",
+      "file": "pages/fit-check/lg-gf-l708mbl-french-door-708l-in-700mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/lg-gf-l708mbl-french-door-708l-in-800mm-cavity",
+      "file": "pages/fit-check/lg-gf-l708mbl-french-door-708l-in-800mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/lg-rc802hm2f-dualinverter-condenser-8kg-in-540mm-cavity",
+      "file": "pages/fit-check/lg-rc802hm2f-dualinverter-condenser-8kg-in-540mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/lg-rc802hm2f-dualinverter-condenser-8kg-in-580mm-cavity",
+      "file": "pages/fit-check/lg-rc802hm2f-dualinverter-condenser-8kg-in-580mm-cavity.html",
+      "inlinks": 4,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/lg-rc802hm2f-dualinverter-condenser-8kg-in-620mm-cavity",
+      "file": "pages/fit-check/lg-rc802hm2f-dualinverter-condenser-8kg-in-620mm-cavity.html",
+      "inlinks": 4,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/lg-rc802hm2f-dualinverter-condenser-8kg-in-640mm-cavity",
+      "file": "pages/fit-check/lg-rc802hm2f-dualinverter-condenser-8kg-in-640mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/lg-rc802hm2f-dualinverter-condenser-8kg-in-700mm-cavity",
+      "file": "pages/fit-check/lg-rc802hm2f-dualinverter-condenser-8kg-in-700mm-cavity.html",
+      "inlinks": 8,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/lg-wtl9-12b-in-540mm-cavity",
+      "file": "pages/fit-check/lg-wtl9-12b-in-540mm-cavity.html",
+      "inlinks": 8,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/lg-wtl9-12b-in-580mm-cavity",
+      "file": "pages/fit-check/lg-wtl9-12b-in-580mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/lg-wtl9-12b-in-600mm-cavity",
+      "file": "pages/fit-check/lg-wtl9-12b-in-600mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/lg-wtl9-12b-in-620mm-cavity",
+      "file": "pages/fit-check/lg-wtl9-12b-in-620mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/lg-wtl9-12b-in-640mm-cavity",
+      "file": "pages/fit-check/lg-wtl9-12b-in-640mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/lg-wtl9-12b-in-700mm-cavity",
+      "file": "pages/fit-check/lg-wtl9-12b-in-700mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/lg-wtl9-12b-in-800mm-cavity",
+      "file": "pages/fit-check/lg-wtl9-12b-in-800mm-cavity.html",
+      "inlinks": 13,
+      "outlinks": 18
+    },
+    {
+      "url": "/fit-check/lg-wtl9-12b-in-900mm-cavity",
+      "file": "pages/fit-check/lg-wtl9-12b-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 18
+    },
+    {
+      "url": "/fit-check/lg-wtx10-16g-in-620mm-cavity",
+      "file": "pages/fit-check/lg-wtx10-16g-in-620mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 13
+    },
+    {
+      "url": "/fit-check/lg-wtx10-16g-in-700mm-cavity",
+      "file": "pages/fit-check/lg-wtx10-16g-in-700mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/lg-wtx3-08w-in-600mm-cavity",
+      "file": "pages/fit-check/lg-wtx3-08w-in-600mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/lg-wtx3-08w-in-620mm-cavity",
+      "file": "pages/fit-check/lg-wtx3-08w-in-620mm-cavity.html",
+      "inlinks": 10,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/lg-wwt-1910b-in-800mm-cavity",
+      "file": "pages/fit-check/lg-wwt-1910b-in-800mm-cavity.html",
+      "inlinks": 8,
+      "outlinks": 13
+    },
+    {
+      "url": "/fit-check/panasonic-nr-bw530h-in-540mm-cavity",
+      "file": "pages/fit-check/panasonic-nr-bw530h-in-540mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/panasonic-nr-bw530h-in-800mm-cavity",
+      "file": "pages/fit-check/panasonic-nr-bw530h-in-800mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/panasonic-nr-bx421h-in-700mm-cavity",
+      "file": "pages/fit-check/panasonic-nr-bx421h-in-700mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 13
+    },
+    {
+      "url": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+      "file": "pages/fit-check/panasonic-nr-tc221busa-in-640mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/panasonic-nr-xc541cuha-in-800mm-cavity",
+      "file": "pages/fit-check/panasonic-nr-xc541cuha-in-800mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/smeg-fab10hrcr5au-in-580mm-cavity",
+      "file": "pages/fit-check/smeg-fab10hrcr5au-in-580mm-cavity.html",
+      "inlinks": 18,
+      "outlinks": 13
+    },
+    {
+      "url": "/fit-check/westinghouse-wbe4302wc-in-540mm-cavity",
+      "file": "pages/fit-check/westinghouse-wbe4302wc-in-540mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/westinghouse-wbe4302wc-in-580mm-cavity",
+      "file": "pages/fit-check/westinghouse-wbe4302wc-in-580mm-cavity.html",
+      "inlinks": 4,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/westinghouse-wbe4302wc-in-600mm-cavity",
+      "file": "pages/fit-check/westinghouse-wbe4302wc-in-600mm-cavity.html",
+      "inlinks": 4,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/westinghouse-wbe4302wc-in-620mm-cavity",
+      "file": "pages/fit-check/westinghouse-wbe4302wc-in-620mm-cavity.html",
+      "inlinks": 4,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/westinghouse-wbe4302wc-in-640mm-cavity",
+      "file": "pages/fit-check/westinghouse-wbe4302wc-in-640mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/westinghouse-wbe5300wc-in-700mm-cavity",
+      "file": "pages/fit-check/westinghouse-wbe5300wc-in-700mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 13
+    },
+    {
+      "url": "/fit-check/westinghouse-wfm0900wd-in-540mm-cavity",
+      "file": "pages/fit-check/westinghouse-wfm0900wd-in-540mm-cavity.html",
+      "inlinks": 3,
+      "outlinks": 13
+    },
+    {
+      "url": "/fit-check/westinghouse-wfm0900wd-in-580mm-cavity",
+      "file": "pages/fit-check/westinghouse-wfm0900wd-in-580mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 14
+    },
+    {
+      "url": "/fit-check/westinghouse-wfm0900wd-in-800mm-cavity",
+      "file": "pages/fit-check/westinghouse-wfm0900wd-in-800mm-cavity.html",
+      "inlinks": 3,
+      "outlinks": 13
+    },
+    {
+      "url": "/fit-check/westinghouse-wse6200sb-in-800mm-cavity",
+      "file": "pages/fit-check/westinghouse-wse6200sb-in-800mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 12
+    },
+    {
+      "url": "/fit-check/westinghouse-wse6640sa-in-540mm-cavity",
+      "file": "pages/fit-check/westinghouse-wse6640sa-in-540mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/westinghouse-wse6640sa-in-580mm-cavity",
+      "file": "pages/fit-check/westinghouse-wse6640sa-in-580mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/westinghouse-wse6640sa-in-600mm-cavity",
+      "file": "pages/fit-check/westinghouse-wse6640sa-in-600mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/westinghouse-wse6640sa-in-620mm-cavity",
+      "file": "pages/fit-check/westinghouse-wse6640sa-in-620mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/westinghouse-wse6640sa-in-640mm-cavity",
+      "file": "pages/fit-check/westinghouse-wse6640sa-in-640mm-cavity.html",
+      "inlinks": 5,
+      "outlinks": 15
+    },
+    {
+      "url": "/fit-check/westinghouse-wse6640sa-in-700mm-cavity",
+      "file": "pages/fit-check/westinghouse-wse6640sa-in-700mm-cavity.html",
+      "inlinks": 6,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/westinghouse-wwf1044m7sa-in-540mm-cavity",
+      "file": "pages/fit-check/westinghouse-wwf1044m7sa-in-540mm-cavity.html",
+      "inlinks": 8,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/westinghouse-wwf1044m7sa-in-580mm-cavity",
+      "file": "pages/fit-check/westinghouse-wwf1044m7sa-in-580mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/westinghouse-wwf1044m7sa-in-600mm-cavity",
+      "file": "pages/fit-check/westinghouse-wwf1044m7sa-in-600mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/westinghouse-wwf1044m7sa-in-620mm-cavity",
+      "file": "pages/fit-check/westinghouse-wwf1044m7sa-in-620mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 17
+    },
+    {
+      "url": "/fit-check/westinghouse-wwf1044m7sa-in-640mm-cavity",
+      "file": "pages/fit-check/westinghouse-wwf1044m7sa-in-640mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/westinghouse-wwf1044m7sa-in-700mm-cavity",
+      "file": "pages/fit-check/westinghouse-wwf1044m7sa-in-700mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 16
+    },
+    {
+      "url": "/fit-check/westinghouse-wwf1044m7sa-in-800mm-cavity",
+      "file": "pages/fit-check/westinghouse-wwf1044m7sa-in-800mm-cavity.html",
+      "inlinks": 7,
+      "outlinks": 19
+    },
+    {
+      "url": "/fit-check/westinghouse-wwf1044m7sa-in-900mm-cavity",
+      "file": "pages/fit-check/westinghouse-wwf1044m7sa-in-900mm-cavity.html",
+      "inlinks": 2,
+      "outlinks": 18
     },
     {
       "url": "/guides/appliance-fit-sizing-handbook",
@@ -2884,7 +4258,7 @@
     {
       "url": "/methodology",
       "file": "pages/methodology.html",
-      "inlinks": 482,
+      "inlinks": 711,
       "outlinks": 4
     },
     {
