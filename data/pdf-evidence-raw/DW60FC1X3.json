@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "discovery-dishwasher-fisher-paykel-dw60fc1x3",
+  "category": "dishwasher",
+  "brand": "Fisher & Paykel",
+  "model": "DW60FC1X3",
+  "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw072a3815/QRG/AU/QRG-AU-84900.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "DW60FC1X3",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 597,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": false,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw072a3815/QRG/AU/QRG-AU-84900.pdf",
+      "extraction_date": "2026-05-09T16:09:10.594Z",
+      "confidence_score": 0.85
+    }
+  }
+}

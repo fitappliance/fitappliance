@@ -12,23 +12,23 @@
   },
   "latest_verified_at": "2026-05-09",
   "summary": {
-    "total_products": 3428,
-    "active_products": 1306,
-    "evidence_files": 1409,
-    "merged_products": 1393,
+    "total_products": 3481,
+    "active_products": 1359,
+    "evidence_files": 1462,
+    "merged_products": 1446,
     "unmatched_evidence_files": 3,
     "duplicate_evidence_files": 16,
     "categories": {
-      "fridge": 1967,
-      "dishwasher": 691,
-      "dryer": 147,
-      "washing_machine": 623
+      "fridge": 1975,
+      "dishwasher": 704,
+      "dryer": 160,
+      "washing_machine": 642
     },
     "official_pdf_by_category": {
-      "fridge": 759,
-      "dishwasher": 346,
-      "dryer": 78,
-      "washing_machine": 210
+      "fridge": 767,
+      "dishwasher": 359,
+      "dryer": 91,
+      "washing_machine": 229
     }
   },
   "unmatched_evidence": [
@@ -68464,6 +68464,59 @@
       }
     },
     {
+      "id": "discovery-dishwasher-fisher-paykel-dd60scx9",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60SCX9",
+      "displayName": "Fisher & Paykel DD60SCX9",
+      "title": "Fisher & Paykel DD60SCX9",
+      "slug": "discovery-dishwasher-fisher-paykel-dd60scx9",
+      "w": 599,
+      "h": 410,
+      "d": 573,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-dd60scx9-dishdrawer-single-dishwasher",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/fisher-paykel-dd60scx9-dishdrawer-single-dishwasher",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 410,
+        "width_mm": 599,
+        "depth_mm": 573,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw276d83c8/QRG/AU/QRG-AU-82316.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DD60SCX9.json"
+      }
+    },
+    {
       "id": "ao-64075",
       "cat": "dishwasher",
       "brand": "Fisher & Paykel",
@@ -69058,6 +69111,73 @@
       }
     },
     {
+      "id": "discovery-dryer-fisher-paykel-de6060m2",
+      "cat": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DE6060M2",
+      "displayName": "Fisher & Paykel DE6060M2",
+      "title": "Fisher & Paykel DE6060M2",
+      "slug": "discovery-dryer-fisher-paykel-de6060m2",
+      "w": 600,
+      "h": 830,
+      "d": 575,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-6kg-sensor-dryer-de6060m2",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-de6060m2-6kg-vented-dryer-white",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-de6060m2-6kg-vented-dryer",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/fisher-paykel-de6060m2-6kg-vented-dryer",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 830,
+        "width_mm": 600,
+        "depth_mm": 575,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwac9dda29/QRG/AU/QRG-AU-92277.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DE6060M2.json"
+      }
+    },
+    {
       "id": "ao-48365",
       "cat": "dryer",
       "brand": "Fisher & Paykel",
@@ -69166,6 +69286,66 @@
       }
     },
     {
+      "id": "discovery-dryer-fisher-paykel-de7060g2",
+      "cat": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DE7060G2",
+      "displayName": "Fisher & Paykel DE7060G2",
+      "title": "Fisher & Paykel DE7060G2",
+      "slug": "discovery-dryer-fisher-paykel-de7060g2",
+      "w": 600,
+      "h": 830,
+      "d": 575,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-7kg-sensor-dryer-de7060g2",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-de7060g2-7kg-vented-dryer",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "JB Hi-Fi",
+        "retailer_key": "jb-hi-fi",
+        "product_url": "https://www.jbhifi.com.au/products/fisher-paykel-de7060g2-7kg-vented-dryer",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 830,
+        "width_mm": 600,
+        "depth_mm": 575,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwcee94f3f/QRG/AU/QRG-AU-92278.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DE7060G2.json"
+      }
+    },
+    {
       "id": "ao-65233",
       "cat": "dryer",
       "brand": "Fisher & Paykel",
@@ -69217,6 +69397,59 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/DE7060P1.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-fisher-paykel-de7060p2",
+      "cat": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DE7060P2",
+      "displayName": "Fisher & Paykel DE7060P2",
+      "title": "Fisher & Paykel DE7060P2",
+      "slug": "discovery-dryer-fisher-paykel-de7060p2",
+      "w": 600,
+      "h": 830,
+      "d": 580,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-de7060p2-7kg-vented-dryer",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "JB Hi-Fi",
+        "retailer_key": "jb-hi-fi",
+        "product_url": "https://www.jbhifi.com.au/products/fisher-paykel-de7060p2-7kg-vented-dryer",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 830,
+        "width_mm": 600,
+        "depth_mm": 580,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw19265157/QRG/AU/QRG-AU-93275.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DE7060P2.json"
       }
     },
     {
@@ -69649,6 +69882,550 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/DFN38450X.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-fisher-paykel-dh1060dg5",
+      "cat": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH1060DG5",
+      "displayName": "Fisher & Paykel DH1060DG5",
+      "title": "Fisher & Paykel DH1060DG5",
+      "slug": "discovery-dryer-fisher-paykel-dh1060dg5",
+      "w": 602,
+      "h": 850,
+      "d": 682,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-series-7-contemporary-heat-pump-dryer-dh1060dg5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-series-7-contemporary-heat-pump-dryer-dh1060dg5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 682,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": false,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw09738459/QRG/AU/QRG-AU-93327.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DH1060DG5.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-fisher-paykel-dh1060rg5",
+      "cat": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH1060RG5",
+      "displayName": "Fisher & Paykel DH1060RG5",
+      "title": "Fisher & Paykel DH1060RG5",
+      "slug": "discovery-dryer-fisher-paykel-dh1060rg5",
+      "w": 602,
+      "h": 850,
+      "d": 682,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-series-7-contemporary-heat-pump-dryer-dh1060rg5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-series-7-contemporary-heat-pump-dryer-dh1060rg5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 682,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": false,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4fd4ee55/QRG/AU/QRG-AU-93309.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DH1060RG5.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-fisher-paykel-dh8060j5",
+      "cat": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH8060J5",
+      "displayName": "Fisher & Paykel DH8060J5",
+      "title": "Fisher & Paykel DH8060J5",
+      "slug": "discovery-dryer-fisher-paykel-dh8060j5",
+      "w": 602,
+      "h": 850,
+      "d": 682,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-series-5-contemporary-heat-pump-dryer-dh8060j5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-series-5-contemporary-heat-pump-dryer-dh8060j5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 682,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": false,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw5f84806d/QRG/AU/QRG-AU-93302.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DH8060J5.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-fisher-paykel-dh8060p3",
+      "cat": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH8060P3",
+      "displayName": "Fisher & Paykel DH8060P3",
+      "title": "Fisher & Paykel DH8060P3",
+      "slug": "discovery-dryer-fisher-paykel-dh8060p3",
+      "w": 600,
+      "h": 850,
+      "d": 650,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-heat-pump-dryer-dh8060p3",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/8kg-heat-pump-dryer-dh8060p3",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/8kg-heat-pump-dryer-dh8060p3",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 650,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8cd42baa/QRG/AU/QRG-AU-93281.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DH8060P3.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-fisher-paykel-dh8060p5",
+      "cat": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH8060P5",
+      "displayName": "Fisher & Paykel DH8060P5",
+      "title": "Fisher & Paykel DH8060P5",
+      "slug": "discovery-dryer-fisher-paykel-dh8060p5",
+      "w": 602,
+      "h": 850,
+      "d": 682,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-series-5-contemporary-heat-pump-dryer-dh8060p5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-series-5-contemporary-heat-pump-dryer-dh8060p5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 682,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": false,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw638d352c/QRG/AU/QRG-AU-93304.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DH8060P5.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-fisher-paykel-dh9060fs1",
+      "cat": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH9060FS1",
+      "displayName": "Fisher & Paykel DH9060FS1",
+      "title": "Fisher & Paykel DH9060FS1",
+      "slug": "discovery-dryer-fisher-paykel-dh9060fs1",
+      "w": 600,
+      "h": 850,
+      "d": 670,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/9kg-heat-pump-dryer-dh9060fs1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/9kg-heat-pump-dryer-dh9060fs1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 670,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf305af4c/QRG/AU/QRG-AU-93283.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DH9060FS1.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-fisher-paykel-dh9060h1",
+      "cat": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH9060H1",
+      "displayName": "Fisher & Paykel DH9060H1",
+      "title": "Fisher & Paykel DH9060H1",
+      "slug": "discovery-dryer-fisher-paykel-dh9060h1",
+      "w": 600,
+      "h": 850,
+      "d": 655,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060h1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060h1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 655,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8e5cecb9/QRG/AU/QRG-AU-92293.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DH9060H1.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-fisher-paykel-dh9060hg1",
+      "cat": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH9060HG1",
+      "displayName": "Fisher & Paykel DH9060HG1",
+      "title": "Fisher & Paykel DH9060HG1",
+      "slug": "discovery-dryer-fisher-paykel-dh9060hg1",
+      "w": 600,
+      "h": 850,
+      "d": 655,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060hg1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060hg1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 655,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw966cf444/QRG/AU/QRG-AU-93296.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DH9060HG1.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-fisher-paykel-dh9060hlg1",
+      "cat": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH9060HLG1",
+      "displayName": "Fisher & Paykel DH9060HLG1",
+      "title": "Fisher & Paykel DH9060HLG1",
+      "slug": "discovery-dryer-fisher-paykel-dh9060hlg1",
+      "w": 600,
+      "h": 850,
+      "d": 655,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060hlg1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060hlg1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 655,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw69956652/QRG/AU/QRG-AU-93295.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DH9060HLG1.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-fisher-paykel-dh9060pg2",
+      "cat": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH9060PG2",
+      "displayName": "Fisher & Paykel DH9060PG2",
+      "title": "Fisher & Paykel DH9060PG2",
+      "slug": "discovery-dryer-fisher-paykel-dh9060pg2",
+      "w": 600,
+      "h": 850,
+      "d": 670,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060pg2",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-graphite-heatpump-9kg-dryer-dh9060pg2",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/fisher-paykel-graphite-heatpump-9kg-dryer-dh9060pg2",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 670,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw203770c9/QRG/AU/QRG-AU-93289.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DH9060PG2.json"
       }
     },
     {
@@ -70786,6 +71563,66 @@
       }
     },
     {
+      "id": "discovery-dishwasher-fisher-paykel-dw60fc1b2",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC1B2",
+      "displayName": "Fisher & Paykel DW60FC1B2",
+      "title": "Fisher & Paykel DW60FC1B2",
+      "slug": "discovery-dishwasher-fisher-paykel-dw60fc1b2",
+      "w": 597,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-freestanding-dishwasher-black-stainless-steel-dw60fc1b2",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc1b2-15-place-setting-freestanding-dishwasher-black-stainless-steel",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "JB Hi-Fi",
+        "retailer_key": "jb-hi-fi",
+        "product_url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc1b2-15-place-setting-freestanding-dishwasher-black-stainless-steel",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 597,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw2493289d/QRG/AU/QRG-AU-84221.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DW60FC1B2.json"
+      }
+    },
+    {
       "id": "ao-66413",
       "cat": "dishwasher",
       "brand": "Fisher & Paykel",
@@ -70837,6 +71674,126 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/DW60FC1X1.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-fisher-paykel-dw60fc1x3",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC1X3",
+      "displayName": "Fisher & Paykel DW60FC1X3",
+      "title": "Fisher & Paykel DW60FC1X3",
+      "slug": "discovery-dishwasher-fisher-paykel-dw60fc1x3",
+      "w": 597,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-freestanding-dishwasher-stainless-steel-dw60fc1x3",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc1x3-15-place-setting-freestanding-dishwasher-stainless-steel",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "JB Hi-Fi",
+        "retailer_key": "jb-hi-fi",
+        "product_url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc1x3-15-place-setting-freestanding-dishwasher-stainless-steel",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 597,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw072a3815/QRG/AU/QRG-AU-84900.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DW60FC1X3.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-fisher-paykel-dw60fc2b2",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC2B2",
+      "displayName": "Fisher & Paykel DW60FC2B2",
+      "title": "Fisher & Paykel DW60FC2B2",
+      "slug": "discovery-dishwasher-fisher-paykel-dw60fc2b2",
+      "w": 597,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-freestanding-dishwasher-black-stainless-steel-dw60fc2b2",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc2b2-15-place-setting-freestanding-dishwasher-black-stainless-steel",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "JB Hi-Fi",
+        "retailer_key": "jb-hi-fi",
+        "product_url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc2b2-15-place-setting-freestanding-dishwasher-black-stainless-steel",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 597,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw943aff8c/QRG/AU/QRG-AU-84222.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DW60FC2B2.json"
       }
     },
     {
@@ -70948,6 +71905,126 @@
       }
     },
     {
+      "id": "discovery-dishwasher-fisher-paykel-dw60fc2x3",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC2X3",
+      "displayName": "Fisher & Paykel DW60FC2X3",
+      "title": "Fisher & Paykel DW60FC2X3",
+      "slug": "discovery-dishwasher-fisher-paykel-dw60fc2x3",
+      "w": 597,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-freestanding-dishwasher-stainless-steel-dw60fc2x3",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc2x3-15-place-setting-freestanding-dishwasher-stainless-steel",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "JB Hi-Fi",
+        "retailer_key": "jb-hi-fi",
+        "product_url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc2x3-15-place-setting-freestanding-dishwasher-stainless-steel",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 597,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw32448b41/QRG/AU/QRG-AU-84901.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DW60FC2X3.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-fisher-paykel-dw60fc4b2",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC4B2",
+      "displayName": "Fisher & Paykel DW60FC4B2",
+      "title": "Fisher & Paykel DW60FC4B2",
+      "slug": "discovery-dishwasher-fisher-paykel-dw60fc4b2",
+      "w": 597,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-freestanding-dishwasher-black-stainless-steel-dw60fc4b2",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc4b2-15-place-setting-freestanding-dishwasher-black-stainless-steel",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "JB Hi-Fi",
+        "retailer_key": "jb-hi-fi",
+        "product_url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc4b2-15-place-setting-freestanding-dishwasher-black-stainless-steel",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 597,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1f9b72c3/QRG/AU/QRG-AU-84223.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DW60FC4B2.json"
+      }
+    },
+    {
       "id": "ao-59809",
       "cat": "dishwasher",
       "brand": "Fisher & Paykel",
@@ -71053,6 +72130,59 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/DW60FC4X1.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-fisher-paykel-dw60fc4x3",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC4X3",
+      "displayName": "Fisher & Paykel DW60FC4X3",
+      "title": "Fisher & Paykel DW60FC4X3",
+      "slug": "discovery-dishwasher-fisher-paykel-dw60fc4x3",
+      "w": 597,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc4x3-15-place-setting-freestanding-dishwasher-stainless-steel",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "JB Hi-Fi",
+        "retailer_key": "jb-hi-fi",
+        "product_url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc4x3-15-place-setting-freestanding-dishwasher-stainless-steel",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 597,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9d1d11ec/QRG/AU/QRG-AU-84902.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DW60FC4X3.json"
       }
     },
     {
@@ -71218,6 +72348,59 @@
       }
     },
     {
+      "id": "discovery-dishwasher-fisher-paykel-dw60u4i2",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60U4I2",
+      "displayName": "Fisher & Paykel DW60U4I2",
+      "title": "Fisher & Paykel DW60U4I2",
+      "slug": "discovery-dishwasher-fisher-paykel-dw60u4i2",
+      "w": 597,
+      "h": 880,
+      "d": 554,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-60cm-fully-integrated-integrated-dishwasher-dw60u4i2",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-60cm-fully-integrated-integrated-dishwasher-dw60u4i2",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 880,
+        "width_mm": 597,
+        "depth_mm": 554,
+        "door_open_90_depth_mm": 639
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/2663j9cc47brvvss4ggggx6v/FP-DataSheet-en-DW60U4I2-DW60U4HI2-IntegratedDishwasher-0-90002306B-AU-NZ-UK-IE-CN.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DW60U4I2.json"
+      }
+    },
+    {
       "id": "ao-88262",
       "cat": "dishwasher",
       "brand": "Fisher & Paykel",
@@ -71323,6 +72506,271 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/DW60UC6X.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-fisher-paykel-dw60un2b2",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UN2B2",
+      "displayName": "Fisher & Paykel DW60UN2B2",
+      "title": "Fisher & Paykel DW60UN2B2",
+      "slug": "discovery-dishwasher-fisher-paykel-dw60un2b2",
+      "w": 597,
+      "h": 820,
+      "d": 574,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-black-stainless-steel-dw60un2b2",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-black-stainless-steel-dw60un2b2",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 820,
+        "width_mm": 597,
+        "depth_mm": 574,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw01c946cf/QRG/AU/QRG-AU-82430.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DW60UN2B2.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-fisher-paykel-dw60un2x2",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UN2X2",
+      "displayName": "Fisher & Paykel DW60UN2X2",
+      "title": "Fisher & Paykel DW60UN2X2",
+      "slug": "discovery-dishwasher-fisher-paykel-dw60un2x2",
+      "w": 597,
+      "h": 820,
+      "d": 574,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-stainless-steel-dw60un2x2",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-stainless-steel-dw60un2x2",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 820,
+        "width_mm": 597,
+        "depth_mm": 574,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw924b68ab/QRG/AU/QRG-AU-82429.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DW60UN2X2.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-fisher-paykel-dw60un4b2",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UN4B2",
+      "displayName": "Fisher & Paykel DW60UN4B2",
+      "title": "Fisher & Paykel DW60UN4B2",
+      "slug": "discovery-dishwasher-fisher-paykel-dw60un4b2",
+      "w": 597,
+      "h": 820,
+      "d": 574,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-black-stainless-steel-dw60un4b2",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-black-stainless-steel-dw60un4b2",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 820,
+        "width_mm": 597,
+        "depth_mm": 574,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw5eea8727/QRG/AU/QRG-AU-82435.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DW60UN4B2.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-fisher-paykel-dw60un4x2",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UN4X2",
+      "displayName": "Fisher & Paykel DW60UN4X2",
+      "title": "Fisher & Paykel DW60UN4X2",
+      "slug": "discovery-dishwasher-fisher-paykel-dw60un4x2",
+      "w": 597,
+      "h": 820,
+      "d": 574,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-stainless-steel-dw60un4x2",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-stainless-steel-dw60un4x2",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 820,
+        "width_mm": 597,
+        "depth_mm": 574,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwecd0d542/QRG/AU/QRG-AU-82434.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DW60UN4X2.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-fisher-paykel-dw60unt4b2",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UNT4B2",
+      "displayName": "Fisher & Paykel DW60UNT4B2",
+      "title": "Fisher & Paykel DW60UNT4B2",
+      "slug": "discovery-dishwasher-fisher-paykel-dw60unt4b2",
+      "w": 597,
+      "h": 857,
+      "d": 574,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-tall-black-stainless-steel-dw60unt4b2",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-tall-black-stainless-steel-dw60unt4b2",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 857,
+        "width_mm": 597,
+        "depth_mm": 574,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw383cdb25/QRG/AU/QRG-AU-82438.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/DW60UNT4B2.json"
       }
     },
     {
@@ -103777,6 +105225,59 @@
       }
     },
     {
+      "id": "discovery-fridge-fisher-paykel-rf522brpw6",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF522BRPW6",
+      "displayName": "Fisher & Paykel RF522BRPW6",
+      "title": "Fisher & Paykel RF522BRPW6",
+      "slug": "discovery-fridge-fisher-paykel-rf522brpw6",
+      "w": 790,
+      "h": 1720,
+      "d": 695,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rf522brpw6-519l-bottom-mount-fridge",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/fisher-paykel-rf522brpw6-519l-bottom-mount-fridge",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 1720,
+        "width_mm": 790,
+        "depth_mm": 695,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 30
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0d68eecf/QRG/AU/QRG-AU-26442.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.94,
+        "raw_json_path": "data/pdf-evidence-raw/RF522BRPW6.json"
+      }
+    },
+    {
       "id": "ao-55915",
       "cat": "fridge",
       "brand": "Fisher & Paykel",
@@ -103993,6 +105494,66 @@
       }
     },
     {
+      "id": "discovery-fridge-fisher-paykel-rf605qduvb2",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QDUVB2",
+      "displayName": "Fisher & Paykel RF605QDUVB2",
+      "title": "Fisher & Paykel RF605QDUVB2",
+      "slug": "discovery-fridge-fisher-paykel-rf605qduvb2",
+      "w": 905,
+      "h": 1790,
+      "d": 688,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qduvb2-538l-french-door-fridge-black-stainless-steel",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rf605qduvb2-605l-quad-door-fridge",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/fisher-paykel-rf605qduvb2-605l-quad-door-fridge",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 905,
+        "depth_mm": 688,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 20,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 30
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw11f2bc18/QRG/AU/QRG-AU-26549.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.94,
+        "raw_json_path": "data/pdf-evidence-raw/RF605QDUVB2.json"
+      }
+    },
+    {
       "id": "ao-68439",
       "cat": "fridge",
       "brand": "Fisher & Paykel",
@@ -104047,6 +105608,126 @@
       }
     },
     {
+      "id": "discovery-fridge-fisher-paykel-rf605qduvx2",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QDUVX2",
+      "displayName": "Fisher & Paykel RF605QDUVX2",
+      "title": "Fisher & Paykel RF605QDUVX2",
+      "slug": "discovery-fridge-fisher-paykel-rf605qduvx2",
+      "w": 905,
+      "h": 1790,
+      "d": 688,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qduvx2-538l-french-door-fridge-stainless-steel",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rf605qduvx2-605l-quad-door-fridge",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/fisher-paykel-rf605qduvx2-605l-quad-door-fridge",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 905,
+        "depth_mm": 688,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 20,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 30
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwd165f836/QRG/AU/QRG-AU-26547.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.94,
+        "raw_json_path": "data/pdf-evidence-raw/RF605QDUVX2.json"
+      }
+    },
+    {
+      "id": "discovery-fridge-fisher-paykel-rf605qdvb2",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QDVB2",
+      "displayName": "Fisher & Paykel RF605QDVB2",
+      "title": "Fisher & Paykel RF605QDVB2",
+      "slug": "discovery-fridge-fisher-paykel-rf605qdvb2",
+      "w": 905,
+      "h": 1790,
+      "d": 688,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qdvb2-538l-french-door-fridge-black-stainless-steel",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rf605qdvb2-605l-french-door-fridge",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/fisher-paykel-rf605qdvb2-605l-french-door-fridge",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 905,
+        "depth_mm": 688,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 20,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 30
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwfcf51c89/QRG/AU/QRG-AU-26550.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.94,
+        "raw_json_path": "data/pdf-evidence-raw/RF605QDVB2.json"
+      }
+    },
+    {
       "id": "ao-68319",
       "cat": "fridge",
       "brand": "Fisher & Paykel",
@@ -104098,6 +105779,140 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/RF605QDVX1.json"
+      }
+    },
+    {
+      "id": "discovery-fridge-fisher-paykel-rf605qnuvb1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QNUVB1",
+      "displayName": "Fisher & Paykel RF605QNUVB1",
+      "title": "Fisher & Paykel RF605QNUVB1",
+      "slug": "discovery-fridge-fisher-paykel-rf605qnuvb1",
+      "w": 905,
+      "h": 1790,
+      "d": 688,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-538l-quad-door-refrigerator-rf605qnuvb1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qnuvb1-538l-french-door-fridge-black-stainless-steel",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rf605qnuvb1-605l-freestanding-quad-door-fridge",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/fisher-paykel-rf605qnuvb1-605l-freestanding-quad-door-fridge",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 905,
+        "depth_mm": 688,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 20,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 30
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw260843d2/QRG/AU/QRG-AU-26552.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.94,
+        "raw_json_path": "data/pdf-evidence-raw/RF605QNUVB1.json"
+      }
+    },
+    {
+      "id": "discovery-fridge-fisher-paykel-rf605qnuvx1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QNUVX1",
+      "displayName": "Fisher & Paykel RF605QNUVX1",
+      "title": "Fisher & Paykel RF605QNUVX1",
+      "slug": "discovery-fridge-fisher-paykel-rf605qnuvx1",
+      "w": 905,
+      "h": 1790,
+      "d": 688,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-538l-quad-door-refrigerator-rf605qnuvx1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qnuvx1-538l-french-door-fridge-stainless-steel",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rf605qnuvx1-605l-quad-door-fridge",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/fisher-paykel-rf605qnuvx1-605l-quad-door-fridge",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 905,
+        "depth_mm": 688,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 20,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 30
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1c8c5f86/QRG/AU/QRG-AU-26551.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.94,
+        "raw_json_path": "data/pdf-evidence-raw/RF605QNUVX1.json"
       }
     },
     {
@@ -104425,6 +106240,73 @@
       }
     },
     {
+      "id": "discovery-fridge-fisher-paykel-rf610anub5",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF610ANUB5",
+      "displayName": "Fisher & Paykel RF610ANUB5",
+      "title": "Fisher & Paykel RF610ANUB5",
+      "slug": "discovery-fridge-fisher-paykel-rf610anub5",
+      "w": 900,
+      "h": 1790,
+      "d": 695,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-569l-french-door-refrigerator-rf610anub5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf610anub5-569l-french-door-fridge-black-stainless-steel",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rf610anub5-614l-french-door-fridge",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/fisher-paykel-rf610anub5-614l-french-door-fridge",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 900,
+        "depth_mm": 695,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 20,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 30
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw20a04e43/QRG/AU/QRG-AU-26509.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.94,
+        "raw_json_path": "data/pdf-evidence-raw/RF610ANUB5.json"
+      }
+    },
+    {
       "id": "ao-92116",
       "cat": "fridge",
       "brand": "Fisher & Paykel",
@@ -104530,6 +106412,73 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/RF610AZUB5.json"
+      }
+    },
+    {
+      "id": "discovery-fridge-fisher-paykel-rf730qnuvb1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF730QNUVB1",
+      "displayName": "Fisher & Paykel RF730QNUVB1",
+      "title": "Fisher & Paykel RF730QNUVB1",
+      "slug": "discovery-fridge-fisher-paykel-rf730qnuvb1",
+      "w": 905,
+      "h": 1900,
+      "d": 748,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qnuvb1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf730qnuvb1-690l-quad-door-ice-water-fridge-black-stainless-steel",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/freestanding-quad-door-refrigerator-freezer-905cm-690l-ice-and-water-black-stainless-steel-rf730qnuvb1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/freestanding-quad-door-refrigerator-freezer-905cm-690l-ice-and-water-black-stainless-steel-rf730qnuvb1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 1900,
+        "width_mm": 905,
+        "depth_mm": 748,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 20,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 30
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4535b78e/QRG/AU/QRG-AU-26616.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.94,
+        "raw_json_path": "data/pdf-evidence-raw/RF730QNUVB1.json"
       }
     },
     {
@@ -120778,6 +122727,762 @@
       }
     },
     {
+      "id": "discovery-washing-machine-fisher-paykel-wh1060dg5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1060DG5",
+      "displayName": "Fisher & Paykel WH1060DG5",
+      "title": "Fisher & Paykel WH1060DG5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh1060dg5",
+      "w": 602,
+      "h": 850,
+      "d": 661,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-series-7-contemporary-front-load-washer-wh1060dg5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-series-7-contemporary-front-load-washer-wh1060dg5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 661,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwca746bc7/QRG/AU/QRG-AU-92330.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH1060DG5.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh1060p5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1060P5",
+      "displayName": "Fisher & Paykel WH1060P5",
+      "title": "Fisher & Paykel WH1060P5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh1060p5",
+      "w": 602,
+      "h": 850,
+      "d": 593,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-series-5-contemporary-front-load-washer-wh1060p5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/wht-10kg-front-load-flexidose-wh1060p5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/wht-10kg-front-load-flexidose-wh1060p5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 593,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9a99cdbe/QRG/AU/QRG-AU-92333.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH1060P5.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh1060pg5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1060PG5",
+      "displayName": "Fisher & Paykel WH1060PG5",
+      "title": "Fisher & Paykel WH1060PG5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh1060pg5",
+      "w": 602,
+      "h": 850,
+      "d": 593,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/grph-10kg-front-load-wh1060pg5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/grph-10kg-front-load-wh1060pg5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 593,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw227e58cc/QRG/AU/QRG-AU-92334.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH1060PG5.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh1060sg1",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1060SG1",
+      "displayName": "Fisher & Paykel WH1060SG1",
+      "title": "Fisher & Paykel WH1060SG1",
+      "slug": "discovery-washing-machine-fisher-paykel-wh1060sg1",
+      "w": 600,
+      "h": 850,
+      "d": 675,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-front-load-washer-wh1060sg1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-front-load-washer-wh1060sg1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 675,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw14eed18e/QRG/AU/QRG-AU-92290.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH1060SG1.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh1160f2",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1160F2",
+      "displayName": "Fisher & Paykel WH1160F2",
+      "title": "Fisher & Paykel WH1160F2",
+      "slug": "discovery-washing-machine-fisher-paykel-wh1160f2",
+      "w": 600,
+      "h": 850,
+      "d": 675,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-wh1160f2-11kg-front-loader-washing-machine-with-activeintelligence-and-steam-care",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/fisher-paykel-wh1160f2-11kg-front-loader-washing-machine-with-activeintelligence-and-steam-care",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 675,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8e7cf94d/QRG/AU/QRG-AU-93328.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH1160F2.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh1260dg5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260DG5",
+      "displayName": "Fisher & Paykel WH1260DG5",
+      "title": "Fisher & Paykel WH1260DG5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh1260dg5",
+      "w": 602,
+      "h": 850,
+      "d": 661,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-12kg-series-7-contemporary-front-load-washer-wh1260dg5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/fisher-and-paykel-12kg-series-7-contemporary-front-load-washer-wh1260dg5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 661,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwc6aea06b/QRG/AU/QRG-AU-92331.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH1260DG5.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh1260h5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260H5",
+      "displayName": "Fisher & Paykel WH1260H5",
+      "title": "Fisher & Paykel WH1260H5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh1260h5",
+      "w": 602,
+      "h": 850,
+      "d": 661,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/wht-12kg-front-load-flexidose-wh1260h5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/wht-12kg-front-load-flexidose-wh1260h5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 661,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf9f0d66e/QRG/AU/QRG-AU-92318.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH1260H5.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh1260hg5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260HG5",
+      "displayName": "Fisher & Paykel WH1260HG5",
+      "title": "Fisher & Paykel WH1260HG5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh1260hg5",
+      "w": 602,
+      "h": 850,
+      "d": 661,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/grph-12kg-front-load-flexidose-wh1260hg5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/grph-12kg-front-load-flexidose-wh1260hg5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 661,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe377ab23/QRG/AU/QRG-AU-92320.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH1260HG5.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh1260p5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260P5",
+      "displayName": "Fisher & Paykel WH1260P5",
+      "title": "Fisher & Paykel WH1260P5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh1260p5",
+      "w": 602,
+      "h": 850,
+      "d": 661,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/wht-12kg-front-load-flexidose-wh1260p5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/wht-12kg-front-load-flexidose-wh1260p5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 661,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw5d46c371/QRG/AU/QRG-AU-92309.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH1260P5.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh1260pg5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260PG5",
+      "displayName": "Fisher & Paykel WH1260PG5",
+      "title": "Fisher & Paykel WH1260PG5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh1260pg5",
+      "w": 602,
+      "h": 850,
+      "d": 661,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/grph-12kg-front-load-wh1260pg5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/grph-12kg-front-load-wh1260pg5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 661,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwa0021509/QRG/AU/QRG-AU-92310.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH1260PG5.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh1260r5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260R5",
+      "displayName": "Fisher & Paykel WH1260R5",
+      "title": "Fisher & Paykel WH1260R5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh1260r5",
+      "w": 602,
+      "h": 850,
+      "d": 661,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/wht-12kg-front-load-flexidose-wh1260r5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/wht-12kg-front-load-flexidose-wh1260r5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 661,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwffed12aa/QRG/AU/QRG-AU-92332.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH1260R5.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh1260rg5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260RG5",
+      "displayName": "Fisher & Paykel WH1260RG5",
+      "title": "Fisher & Paykel WH1260RG5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh1260rg5",
+      "w": 602,
+      "h": 850,
+      "d": 661,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-12kg-series-7-contemporary-front-load-washer-wh1260rg5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/grph-12kg-front-load-flexidose-wh1260rg5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/grph-12kg-front-load-flexidose-wh1260rg5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 661,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwd97ec2b7/QRG/AU/QRG-AU-92312.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH1260RG5.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh1260t5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260T5",
+      "displayName": "Fisher & Paykel WH1260T5",
+      "title": "Fisher & Paykel WH1260T5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh1260t5",
+      "w": 602,
+      "h": 850,
+      "d": 661,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/wht-12kg-front-load-flexidose-wh1260t5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/wht-12kg-front-load-flexidose-wh1260t5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 661,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwcee8a30a/QRG/AU/QRG-AU-92314.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH1260T5.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh1260tg5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260TG5",
+      "displayName": "Fisher & Paykel WH1260TG5",
+      "title": "Fisher & Paykel WH1260TG5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh1260tg5",
+      "w": 602,
+      "h": 850,
+      "d": 661,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/grph-12kg-front-load-flexidose-wh1260tg5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/grph-12kg-front-load-flexidose-wh1260tg5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 661,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw59beffbb/QRG/AU/QRG-AU-92315.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH1260TG5.json"
+      }
+    },
+    {
       "id": "ao-50907",
       "cat": "washing_machine",
       "brand": "Fisher & Paykel",
@@ -120940,6 +123645,126 @@
       }
     },
     {
+      "id": "discovery-washing-machine-fisher-paykel-wh8060j3",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH8060J3",
+      "displayName": "Fisher & Paykel WH8060J3",
+      "title": "Fisher & Paykel WH8060J3",
+      "slug": "discovery-washing-machine-fisher-paykel-wh8060j3",
+      "w": 600,
+      "h": 850,
+      "d": 590,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-front-load-washer-wh8060j3",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-wh8060j3-8kg-front-load-washer",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/fisher-paykel-wh8060j3-8kg-front-load-washer",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 590,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw639d453a/QRG/AU/QRG-AU-92279.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH8060J3.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh8060j5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH8060J5",
+      "displayName": "Fisher & Paykel WH8060J5",
+      "title": "Fisher & Paykel WH8060J5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh8060j5",
+      "w": 602,
+      "h": 850,
+      "d": 593,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-series-5-contemporary-front-load-washer-wh8060j5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/wht-8kg-front-load-autodose-wh8060j5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/wht-8kg-front-load-autodose-wh8060j5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 593,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw636a518e/QRG/AU/QRG-AU-92303.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH8060J5.json"
+      }
+    },
+    {
       "id": "ao-50910",
       "cat": "washing_machine",
       "brand": "Fisher & Paykel",
@@ -121099,6 +123924,172 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/WH8560P2.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh8560p3",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH8560P3",
+      "displayName": "Fisher & Paykel WH8560P3",
+      "title": "Fisher & Paykel WH8560P3",
+      "slug": "discovery-washing-machine-fisher-paykel-wh8560p3",
+      "w": 600,
+      "h": 850,
+      "d": 655,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-wh8560p3-8-5kg-front-load-washer-with-steam-refresh",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/fisher-paykel-wh8560p3-8-5kg-front-load-washer-with-steam-refresh",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 655,
+        "door_open_90_depth_mm": 1075
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 20
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/2cjh5kph3nsf8jvm49njbsn3/FP-UserGuide-en-WH1060P-WH1060J-WH9060P-WH9060J-WH8560F-WH8560P-WH8560J-WH8060F-WH8060P-WH8060J-WH7560P-WH7560J-FrontLoaderWashingMachine-0-430218C-NZ-AU-SG.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH8560P3.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh9060p5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH9060P5",
+      "displayName": "Fisher & Paykel WH9060P5",
+      "title": "Fisher & Paykel WH9060P5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh9060p5",
+      "w": 602,
+      "h": 850,
+      "d": 593,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-series-5-contemporary-front-load-washer-wh9060p5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/wht-9kg-front-load-flexidose-wh9060p5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/wht-9kg-front-load-flexidose-wh9060p5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 593,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwd9364a5d/QRG/AU/QRG-AU-92307.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH9060P5.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-fisher-paykel-wh9060pg5",
+      "cat": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH9060PG5",
+      "displayName": "Fisher & Paykel WH9060PG5",
+      "title": "Fisher & Paykel WH9060PG5",
+      "slug": "discovery-washing-machine-fisher-paykel-wh9060pg5",
+      "w": 602,
+      "h": 850,
+      "d": 593,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/grph-9kg-front-load-wh9060pg5",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/grph-9kg-front-load-wh9060pg5",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 602,
+        "depth_mm": 593,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw76c8e233/QRG/AU/QRG-AU-92308.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/WH9060PG5.json"
       }
     },
     {

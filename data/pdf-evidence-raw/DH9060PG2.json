@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "discovery-dryer-fisher-paykel-dh9060pg2",
+  "category": "dryer",
+  "brand": "Fisher & Paykel",
+  "model": "DH9060PG2",
+  "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw203770c9/QRG/AU/QRG-AU-93289.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "DH9060PG2",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 670,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": false,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw203770c9/QRG/AU/QRG-AU-93289.pdf",
+      "extraction_date": "2026-05-09T16:10:00.880Z",
+      "confidence_score": 0.85
+    }
+  }
+}

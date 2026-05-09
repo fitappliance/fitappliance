@@ -55,15 +55,31 @@ test('discovery batch loads unapproved discovery candidates from any supported r
         status: 'candidate',
         discovery: { retailer_key: 'jb-hi-fi' },
         product: { id: 'jb-1', cat: 'fridge', brand: 'Bosch', model: 'KFD96AXEAA' }
+      },
+      'fp-needs-source': {
+        category: 'fridge',
+        brand: 'Fisher & Paykel',
+        model: 'RF500QNB1',
+        status: 'needs_source',
+        discovery: { retailer_key: 'the-good-guys' },
+        product: { id: 'fp-needs-source', cat: 'fridge', brand: 'Fisher & Paykel', model: 'RF500QNB1' }
+      },
+      'lg-needs-source': {
+        category: 'fridge',
+        brand: 'LG',
+        model: 'GF-A',
+        status: 'needs_source',
+        discovery: { retailer_key: 'the-good-guys' },
+        product: { id: 'lg-needs-source', cat: 'fridge', brand: 'LG', model: 'GF-A' }
       }
     }
   });
 
   const targets = loadDiscoveryTargets({ manualEvidencePath: manifestPath });
 
-  assert.equal(targets.length, 2);
-  assert.equal(targets[0].id, 'ao-1');
-  assert.equal(targets[0].sku, 'GF-A');
-  assert.equal(targets[1].id, 'jb-1');
-  assert.equal(targets[1].sku, 'KFD96AXEAA');
+  assert.deepEqual(targets.map((target) => target.id), [
+    'ao-1',
+    'jb-1',
+    'fp-needs-source'
+  ]);
 });

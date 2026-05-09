@@ -286,6 +286,102 @@ test('runBatch fails fast with a clear .env error when the OpenAI key is missing
   }), /Missing API Key in \.env file/);
 });
 
+test('runBatch processes Fisher & Paykel targets with official QRG plus install guide without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'fp-rf500',
+    brand: 'Fisher & Paykel',
+    sku: 'RF500QNB1',
+    category: 'fridge',
+    product: {
+      id: 'fp-rf500',
+      cat: 'fridge',
+      brand: 'Fisher & Paykel',
+      model: 'RF500QNB1',
+      w: 790,
+      h: 1790,
+      d: 692,
+      unavailable: false
+    }
+  };
+  const fetchedUrls = [];
+  const fetchMaxBytes = [];
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    fisherPaykelOfficialFinder: async () => ({
+      sourceUrl: 'https://www.fisherpaykel.com/qrg-rf500qnb1.pdf',
+      source: 'fisher-paykel-official-quick_reference_guide',
+      resourceType: 'quick_reference_guide',
+      resources: [
+        {
+          url: 'https://www.fisherpaykel.com/qrg-rf500qnb1.pdf',
+          type: 'quick_reference_guide',
+          score: 100
+        },
+        {
+          url: 'https://www.fisherpaykel.com/install-rf500qnb1.pdf',
+          type: 'installation_manual',
+          score: 70
+        }
+      ]
+    }),
+    fetchPdfImpl: async (url, _destPath, opts = {}) => {
+      fetchedUrls.push(url);
+      fetchMaxBytes.push(opts.maxBytes);
+      return { path: url, cached: false, bytes: 12 };
+    },
+    extractTextImpl: async (url) => {
+      if (String(url).includes('qrg')) {
+        return {
+          text: `
+            QUICK REFERENCE GUIDE > RF500QNB1
+            Refrigerator Freezer
+            DIMENSIONS
+            Height 1790 mm
+            Width 790 mm
+            Depth 692 mm
+          `,
+          pageCount: 1,
+          info: {}
+        };
+      }
+      return {
+        text: `
+          INSTALLATION GUIDE
+          Refrigerator
+          MIN. CLEARANCES
+          RF500QNB1  RF500QNUB1
+          MM MM
+          G Rear 30 30
+          H Sides*** 20 20
+        `,
+        pageCount: 1,
+        info: {}
+      };
+    },
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.deepEqual(fetchedUrls, [
+    'https://www.fisherpaykel.com/qrg-rf500qnb1.pdf',
+    'https://www.fisherpaykel.com/install-rf500qnb1.pdf'
+  ]);
+  assert.ok(fetchMaxBytes.every((maxBytes) => maxBytes >= 30 * 1024 * 1024));
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'RF500QNB1.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 20,
+    right_mm: 20,
+    rear_mm: 30
+  });
+});
+
 test('runBatch processes only explicit SKUs when skus is provided', async () => {
   const repoRoot = makeRepo();
   const fridgesPath = path.join(repoRoot, 'public', 'data', 'fridges.json');

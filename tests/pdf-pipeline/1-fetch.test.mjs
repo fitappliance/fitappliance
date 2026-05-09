@@ -235,6 +235,7 @@ test('pdf pipeline fetch: ignores rejected manual evidence and falls back to sea
 
   const result = await resolvePdfSourceUrl(target, {
     manualEvidence,
+    fisherPaykelOfficialFinder: null,
     searchPdf: async (searchTarget) => {
       assert.equal(searchTarget.sku, 'RF610ADX5');
       return 'https://example.com/search-result.pdf';
@@ -273,5 +274,48 @@ test('pdf pipeline fetch: accepts official quick reference guide evidence as a u
   assert.deepEqual(result, {
     sourceUrl: 'https://example.com/QRG-AU-26504.pdf',
     source: 'manual-evidence'
+  });
+});
+
+test('pdf pipeline fetch: uses Fisher & Paykel official finder before generic search', async () => {
+  let searchCalls = 0;
+  const result = await resolvePdfSourceUrl({
+    brand: 'Fisher & Paykel',
+    sku: 'RF605QNUVB1'
+  }, {
+    manualEvidence: { products: {} },
+    fisherPaykelOfficialFinder: async (target) => {
+      assert.equal(target.sku, 'RF605QNUVB1');
+      return {
+        sourceUrl: 'https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/QRG/AU/QRG-AU-26552.pdf',
+        source: 'fisher-paykel-official-quick_reference_guide'
+      };
+    },
+    searchPdf: async () => {
+      searchCalls += 1;
+      return 'https://example.com/search.pdf';
+    }
+  });
+
+  assert.equal(searchCalls, 0);
+  assert.deepEqual(result, {
+    sourceUrl: 'https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/QRG/AU/QRG-AU-26552.pdf',
+    source: 'fisher-paykel-official-quick_reference_guide'
+  });
+});
+
+test('pdf pipeline fetch: falls back to generic search when Fisher & Paykel official finder has no PDF', async () => {
+  const result = await resolvePdfSourceUrl({
+    brand: 'Fisher & Paykel',
+    sku: 'DISCONTINUED'
+  }, {
+    manualEvidence: { products: {} },
+    fisherPaykelOfficialFinder: async () => ({ sourceUrl: null, reason: 'product_page_not_found' }),
+    searchPdf: async () => 'https://example.com/fallback.pdf'
+  });
+
+  assert.deepEqual(result, {
+    sourceUrl: 'https://example.com/fallback.pdf',
+    source: 'search'
   });
 });

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "discovery-fridge-fisher-paykel-rf730qnuvb1",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "RF730QNUVB1",
+  "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4535b78e/QRG/AU/QRG-AU-26616.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "RF730QNUVB1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1900,
+      "width_mm": 905,
+      "depth_mm": 748,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 20,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 30
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4535b78e/QRG/AU/QRG-AU-26616.pdf",
+      "extraction_date": "2026-05-09T16:10:27.719Z",
+      "confidence_score": 0.94
+    }
+  }
+}

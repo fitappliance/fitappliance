@@ -45,10 +45,14 @@ function hasApprovedPdfEvidence(entry) {
   ));
 }
 
+function isFisherPaykelEntry(entry) {
+  return /fisher\s*&\s*paykel|f&p|fisherpaykel/i.test(String(entry?.brand || entry?.product?.brand || ''));
+}
+
 function isDiscoveryCandidate(entry) {
   return Boolean(
     entry
-    && entry.source_url
+    && (entry.source_url || isFisherPaykelEntry(entry))
     && entry.status !== 'rejected'
     && entry.product
     && entry.discovery?.retailer_key
@@ -100,10 +104,10 @@ async function runDiscoveryBatch({
   logger = console,
   env = process.env
 } = {}) {
-  if (!String(env.OPENAI_API_KEY || '').trim()) {
+  const targets = loadDiscoveryTargets({ manualEvidencePath, category, limit, skus });
+  if (!String(env.OPENAI_API_KEY || '').trim() && targets.some((target) => !isFisherPaykelEntry(target))) {
     throw new Error(MISSING_API_KEY_MESSAGE);
   }
-  const targets = loadDiscoveryTargets({ manualEvidencePath, category, limit, skus });
   logger.log(`[discovery-batch] targets=${targets.length}`);
   return runBatch({
     repoRoot,

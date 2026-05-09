@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "discovery-dryer-fisher-paykel-dh1060dg5",
+  "category": "dryer",
+  "brand": "Fisher & Paykel",
+  "model": "DH1060DG5",
+  "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw09738459/QRG/AU/QRG-AU-93327.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "DH1060DG5",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 602,
+      "depth_mm": 682,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": false,
+      "reversible_door": true
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw09738459/QRG/AU/QRG-AU-93327.pdf",
+      "extraction_date": "2026-05-09T16:09:40.764Z",
+      "confidence_score": 0.85
+    }
+  }
+}

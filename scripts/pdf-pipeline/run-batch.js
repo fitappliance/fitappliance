@@ -9,8 +9,11 @@ const { extractText } = require('./2-extract-text');
 const { createEnvLlmCaller, extractStructuredData } = require('./3-ai-parse');
 const { validateApplianceDimension } = require('./4-validate');
 const { saveExtractionToVault } = require('./lib/vault');
+const { findFisherPaykelOfficialPdf } = require('./fisher-paykel-official');
+const { parseFisherPaykelText } = require('./parsers/fisher-paykel');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
+const FISHER_PAYKEL_MAX_BYTES = 30 * 1024 * 1024;
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -66,6 +69,13 @@ function normalizeSku(value) {
     .trim()
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '');
+}
+
+function isFisherPaykelTarget(target = {}) {
+  return /fisher\s*&\s*paykel|f&p|fisherpaykel/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
 }
 
 function getProductSkuCandidates(product) {
@@ -190,13 +200,160 @@ async function findPdfSourceUrl(target, {
   manualEvidence = loadManualEvidence(repoRoot),
   searchPdf = null,
   env = process.env,
-  fetchImpl = globalThis.fetch
+  fetchImpl = globalThis.fetch,
+  fisherPaykelOfficialFinder = findFisherPaykelOfficialPdf
 } = {}) {
   return resolvePdfSourceUrl(target, {
     repoRoot,
     manualEvidence,
-    searchPdf: searchPdf || ((searchTarget) => searchManufacturerPdf(searchTarget, { env, fetchImpl }))
+    searchPdf: searchPdf || ((searchTarget) => searchManufacturerPdf(searchTarget, { env, fetchImpl })),
+    fisherPaykelOfficialFinder
   });
+}
+
+function isFisherPaykelClearanceError(error) {
+  return /Fisher\s*&\s*Paykel\s+fridge.*(?:clearance|air)/i.test(error?.message || '');
+}
+
+function normalizeFisherPaykelResource(resource) {
+  const url = resource?.url || resource?.sourceUrl;
+  if (!url) return null;
+  return {
+    ...resource,
+    url,
+    type: resource.type || resource.resourceType || 'pdf',
+    score: Number.isFinite(resource.score) ? resource.score : 0
+  };
+}
+
+function getFisherPaykelResources(official) {
+  const resources = Array.isArray(official?.resources)
+    ? official.resources.map(normalizeFisherPaykelResource).filter(Boolean)
+    : [];
+  const primary = normalizeFisherPaykelResource({
+    url: official?.sourceUrl,
+    type: official?.resourceType,
+    score: 100
+  });
+  const deduped = new Map();
+  for (const resource of [primary, ...resources].filter(Boolean)) {
+    const existing = deduped.get(resource.url);
+    if (!existing || resource.score > existing.score) {
+      deduped.set(resource.url, resource);
+    }
+  }
+  return [...deduped.values()].sort((a, b) => b.score - a.score || a.url.localeCompare(b.url));
+}
+
+function fisherPaykelResourceSource(resource) {
+  return `fisher-paykel-official-${resource.type || 'pdf'}`;
+}
+
+async function parseFisherPaykelTarget({
+  target,
+  repoRoot,
+  fisherPaykelOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl,
+  timeoutMs,
+  userAgent
+}) {
+  const official = await fisherPaykelOfficialFinder(target, {
+    timeoutMs,
+    userAgent
+  });
+  const resources = getFisherPaykelResources(official)
+    .filter((resource) => resource.type !== 'energy_label');
+
+  if (resources.length === 0) {
+    throw new Error(official?.reason || 'Fisher & Paykel official PDF resources not found');
+  }
+
+  const fetchedTextByUrl = new Map();
+  async function fetchResourceText(resource, index) {
+    if (fetchedTextByUrl.has(resource.url)) return fetchedTextByUrl.get(resource.url);
+    const pdfPath = path.join(
+      repoRoot,
+      '.tmp',
+      'pdfs',
+      slugPathPart(target.brand),
+      `${slugPathPart(target.sku)}-${slugPathPart(resource.type || `doc-${index}`)}.pdf`
+    );
+    const fetched = await fetchPdfImpl(resource.url, pdfPath, {
+      maxBytes: FISHER_PAYKEL_MAX_BYTES
+    });
+    const textResult = await extractTextImpl(fetched.path);
+    const value = {
+      ...resource,
+      fetched,
+      text: textResult.text
+    };
+    fetchedTextByUrl.set(resource.url, value);
+    return value;
+  }
+
+  function parseDocuments(documents, sourceUrl) {
+    const text = documents.map((document) => document.text).join('\n\n');
+    return parseFisherPaykelText(text, {
+      target,
+      sourceUrl,
+      extractionDate: new Date().toISOString()
+    });
+  }
+
+  const primaryResources = resources.filter((resource) => (
+    resource.type === 'quick_reference_guide'
+    || resource.type === 'specification_sheet'
+    || resource.type === 'pdf'
+    || resource.type === 'user_manual'
+  ));
+  const installationResources = resources.filter((resource) => resource.type === 'installation_manual');
+  const errors = [];
+
+  for (let index = 0; index < primaryResources.length; index += 1) {
+    const primary = primaryResources[index];
+    const primaryDocument = await fetchResourceText(primary, index);
+    try {
+      return {
+        candidate: parseDocuments([primaryDocument], primary.url).data,
+        sourceUrl: primary.url,
+        source: fisherPaykelResourceSource(primary)
+      };
+    } catch (error) {
+      errors.push(`${primary.type}: ${error.message}`);
+      if (!isFisherPaykelClearanceError(error) || installationResources.length === 0) continue;
+
+      for (let installIndex = 0; installIndex < installationResources.length; installIndex += 1) {
+        const installation = installationResources[installIndex];
+        const installationDocument = await fetchResourceText(installation, primaryResources.length + installIndex);
+        try {
+          return {
+            candidate: parseDocuments([primaryDocument, installationDocument], primary.url).data,
+            sourceUrl: primary.url,
+            source: `${fisherPaykelResourceSource(primary)}+installation_manual`
+          };
+        } catch (combinedError) {
+          errors.push(`${primary.type}+installation_manual: ${combinedError.message}`);
+        }
+      }
+    }
+  }
+
+  for (let index = 0; index < installationResources.length; index += 1) {
+    const installation = installationResources[index];
+    const installationDocument = await fetchResourceText(installation, primaryResources.length + index);
+    try {
+      return {
+        candidate: parseDocuments([installationDocument], installation.url).data,
+        sourceUrl: installation.url,
+        source: fisherPaykelResourceSource(installation)
+      };
+    } catch (error) {
+      errors.push(`${installation.type}: ${error.message}`);
+    }
+  }
+
+  throw new Error(`Fisher & Paykel official documents failed: ${errors.join(' | ')}`);
 }
 
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
@@ -317,7 +474,8 @@ async function runBatch({
   parseTextImpl = null,
   validateStrictImpl = validateApplianceDimension,
   saveToVaultImpl = saveExtractionToVault,
-  searchPdf = null
+  searchPdf = null,
+  fisherPaykelOfficialFinder = findFisherPaykelOfficialPdf
 } = {}) {
   const batchTargets = targets || loadBatchTargets({ repoRoot, category, limit, skus });
   const manualEvidence = loadManualEvidence(repoRoot);
@@ -325,7 +483,8 @@ async function runBatch({
   const discrepancies = [];
   const failures = [];
 
-  if (!parseTextImpl && batchTargets.length > 0) {
+  const needsDefaultLlm = !parseTextImpl && batchTargets.some((target) => !isFisherPaykelTarget(target));
+  if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
   }
 
@@ -334,24 +493,44 @@ async function runBatch({
     logger.log(`Processing ${index + 1}/${batchTargets.length}: ${target.brand} ${target.sku}`);
 
     try {
-      const { sourceUrl, source } = await findPdfSourceUrl(target, {
-        repoRoot,
-        manualEvidence,
-        searchPdf,
-        env
-      });
-      const pdfPath = path.join(
-        repoRoot,
-        '.tmp',
-        'pdfs',
-        slugPathPart(target.brand),
-        `${slugPathPart(target.sku)}.pdf`
-      );
-      const fetched = await fetchPdfImpl(sourceUrl, pdfPath);
-      const textResult = await extractTextImpl(fetched.path);
-      const candidate = parseTextImpl
-        ? await parseTextImpl(textResult.text, { target, sourceUrl, source, fetched, textResult })
-        : await defaultParseText(textResult.text, { target, sourceUrl, source, fetched, textResult }, env);
+      let sourceUrl;
+      let source;
+      let candidate;
+
+      if (!parseTextImpl && isFisherPaykelTarget(target)) {
+        const parsed = await parseFisherPaykelTarget({
+          target,
+          repoRoot,
+          fisherPaykelOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else {
+        const resolved = await findPdfSourceUrl(target, {
+          repoRoot,
+          manualEvidence,
+          searchPdf,
+          env,
+          fisherPaykelOfficialFinder
+        });
+        sourceUrl = resolved.sourceUrl;
+        source = resolved.source;
+        const pdfPath = path.join(
+          repoRoot,
+          '.tmp',
+          'pdfs',
+          slugPathPart(target.brand),
+          `${slugPathPart(target.sku)}.pdf`
+        );
+        const fetched = await fetchPdfImpl(sourceUrl, pdfPath);
+        const textResult = await extractTextImpl(fetched.path);
+        candidate = parseTextImpl
+          ? await parseTextImpl(textResult.text, { target, sourceUrl, source, fetched, textResult })
+          : await defaultParseText(textResult.text, { target, sourceUrl, source, fetched, textResult }, env);
+      }
       const validation = validateStrictImpl(candidate, { target });
 
       if (!validation.valid) {
@@ -456,3 +635,4 @@ exports.writeBatchReport = writeBatchReport;
 exports.buildPdfSearchQuery = buildPdfSearchQuery;
 exports.searchManufacturerPdf = searchManufacturerPdf;
 exports.MISSING_API_KEY_MESSAGE = MISSING_API_KEY_MESSAGE;
+exports.parseFisherPaykelTarget = parseFisherPaykelTarget;
