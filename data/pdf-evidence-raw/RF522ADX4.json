@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3570",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "RF522ADX6",
+  "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/kqhc7pf72fqkjx79msg6pt7/FP-DataSheet-RF522ADX5-FreestandingFrenchDoorFridgeFreezer-AU-NZ-90001329A.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "RF522ADX4",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1715,
+      "width_mm": 790,
+      "depth_mm": 695,
+      "door_open_90_depth_mm": 350
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 30
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/kqhc7pf72fqkjx79msg6pt7/FP-DataSheet-RF522ADX5-FreestandingFrenchDoorFridgeFreezer-AU-NZ-90001329A.pdf",
+      "extraction_date": "2026-05-09T00:30:15.144Z",
+      "confidence_score": 0.9
+    }
+  }
+}

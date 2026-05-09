@@ -17,21 +17,31 @@ const CONFIDENCE_SCORE_MAP = {
   low: 0.35
 };
 
+function roundFiniteNumber(value) {
+  return typeof value === 'number' && Number.isFinite(value)
+    ? Math.round(value)
+    : value;
+}
+
+const positiveMm = z.preprocess(roundFiniteNumber, z.number().int().positive());
+const nullablePositiveMm = z.preprocess(roundFiniteNumber, z.number().int().positive().nullable());
+const nonNegativeMm = z.preprocess(roundFiniteNumber, z.number().int().min(0));
+
 const ApplianceDimensionSchema = z.object({
   brand: z.string().trim().min(1),
   sku: z.string().trim().min(1),
   category: z.enum(['FRIDGE', 'DISHWASHER', 'OVEN', 'WASHING_MACHINE', 'DRYER']),
   dimensions: z.object({
-    height_mm: z.number().int().positive(),
-    width_mm: z.number().int().positive(),
-    depth_mm: z.number().int().positive(),
-    door_open_90_depth_mm: z.number().int().positive().nullable()
+    height_mm: positiveMm,
+    width_mm: positiveMm,
+    depth_mm: positiveMm,
+    door_open_90_depth_mm: nullablePositiveMm
   }).strict(),
   clearance_requirements: z.object({
-    top_mm: z.number().int().min(0).default(0),
-    left_mm: z.number().int().min(0).default(0),
-    right_mm: z.number().int().min(0).default(0),
-    rear_mm: z.number().int().min(0).default(0)
+    top_mm: nonNegativeMm.default(0),
+    left_mm: nonNegativeMm.default(0),
+    right_mm: nonNegativeMm.default(0),
+    rear_mm: nonNegativeMm.default(0)
   }).strict(),
   flags: z.object({
     requires_plumbing: z.boolean(),
@@ -50,16 +60,38 @@ function normalizeCategory(category) {
   return CATEGORY_MAP[key] || category;
 }
 
-function normalizeApplianceDimensionCandidate(candidate = {}) {
-  const category = normalizeCategory(candidate.category);
-  const modelOrSku = candidate.sku ?? candidate.model;
+function firstNonBlank(...values) {
+  for (const value of values) {
+    const text = String(value ?? '').trim();
+    if (text) return text;
+  }
+  return undefined;
+}
+
+function normalizeApplianceDimensionCandidate(candidate = {}, opts = {}) {
+  const target = opts.target || {};
+  const product = target.product || {};
+  const category = normalizeCategory(firstNonBlank(
+    candidate.category,
+    target.category,
+    target.cat,
+    product.cat
+  ));
+  const modelOrSku = firstNonBlank(
+    candidate.sku,
+    candidate.model,
+    target.sku,
+    target.model,
+    product.model,
+    product.sku
+  );
   const sideClearance = candidate.clearance_mm?.side ?? 0;
   const confidenceScore = typeof candidate.metadata?.confidence_score === 'number'
     ? candidate.metadata.confidence_score
     : CONFIDENCE_SCORE_MAP[String(candidate.confidence || '').toLowerCase()] ?? 0;
 
   return {
-    brand: candidate.brand,
+    brand: firstNonBlank(candidate.brand, target.brand, product.brand),
     sku: modelOrSku,
     category,
     dimensions: {
@@ -94,7 +126,7 @@ function formatZodIssue(issue) {
 
 function validateApplianceDimension(candidate, opts = {}) {
   const manualReviewThreshold = opts.manualReviewThreshold ?? 0.8;
-  const normalized = normalizeApplianceDimensionCandidate(candidate);
+  const normalized = normalizeApplianceDimensionCandidate(candidate, opts);
   const result = ApplianceDimensionSchema.safeParse(normalized);
 
   if (!result.success) {

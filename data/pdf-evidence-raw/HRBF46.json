@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3513",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HRBF46",
+  "source_url": "https://hisense.co.nz/wp-content/uploads/2025/08/HRBF46-Consumer-Specs.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HRBF46",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 500,
+      "width_mm": 445,
+      "depth_mm": 468,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://hisense.co.nz/wp-content/uploads/2025/08/HRBF46-Consumer-Specs.pdf",
+      "extraction_date": "2026-05-09T02:23:34.080Z",
+      "confidence_score": 0.9
+    }
+  }
+}

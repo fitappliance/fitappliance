@@ -113,6 +113,7 @@ When evidence missing:
 - Returns: `{ verified: bool, pdfUrl, extractedAt, source }` or null
 - `renderProvenanceBlock(product)` returns HTML string
 
+<!-- doc-audit: ignore -->
 **Build-time injection**: `scripts/build-evidence-index.js` reads `data/manual-evidence.json`, produces a slim `public/data/evidence-index.json` mapping product IDs to provenance metadata. This way the runtime doesn't need to fetch the entire evidence corpus.
 
 ### T2 — Verification Badge + Clearance Math

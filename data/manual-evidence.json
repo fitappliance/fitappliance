@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-05-07",
+  "last_updated": "2026-05-09",
   "storage": {
     "root_env": "EVIDENCE_ROOT_DIR",
     "path_rule": "Each evidence.local_path is relative to EVIDENCE_ROOT_DIR. Do not store absolute machine paths in this manifest."
@@ -53,6 +53,2924 @@
           }
         }
       ]
+    },
+    "fridge-arf2887": {
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QDVX2",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/cbbn79vcvrvc73p85qfgzj9/FP-DataSheet-RF605QDVX2-FreestandingQuadDoorFridgeFreezer-AU-90001458A.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/RF605QDVX1.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "RF605QDVX1",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1790,
+              "width_mm": 905,
+              "depth_mm": 688,
+              "door_open_90_depth_mm": 396
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 20,
+              "right_mm": 20,
+              "rear_mm": 30
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/cbbn79vcvrvc73p85qfgzj9/FP-DataSheet-RF605QDVX2-FreestandingQuadDoorFridgeFreezer-AU-90001458A.pdf",
+              "extraction_date": "2026-05-09T00:30:25.207Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3570": {
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF522ADX6",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/kqhc7pf72fqkjx79msg6pt7/FP-DataSheet-RF522ADX5-FreestandingFrenchDoorFridgeFreezer-AU-NZ-90001329A.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/RF522ADX4.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "RF522ADX4",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1715,
+              "width_mm": 790,
+              "depth_mm": 695,
+              "door_open_90_depth_mm": 350
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 20,
+              "right_mm": 20,
+              "rear_mm": 30
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/kqhc7pf72fqkjx79msg6pt7/FP-DataSheet-RF522ADX5-FreestandingFrenchDoorFridgeFreezer-AU-NZ-90001329A.pdf",
+              "extraction_date": "2026-05-09T00:30:15.144Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3548": {
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF610ADX5",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw16a75371/QRG/AU/QRG-AU-26504.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/RF610ADX5.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "RF610ADX5",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1790,
+              "width_mm": 900,
+              "depth_mm": 695,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 50,
+              "left_mm": 20,
+              "right_mm": 20,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw16a75371/QRG/AU/QRG-AU-26504.pdf",
+              "extraction_date": "2026-05-09T00:30:29.059Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3077": {
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF420BHS",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw23400534/QRG/AU/QRG-AU-62271.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HRF420BHS.json",
+          "extracted": {
+            "brand": "Haier",
+            "sku": "HRF420BHS",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1725,
+              "width_mm": 700,
+              "depth_mm": 675,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw23400534/QRG/AU/QRG-AU-62271.pdf",
+              "extraction_date": "2026-05-09T00:30:44.743Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3573": {
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF505VW",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw5653a84c/QRG/AU/QRG-AU-62198.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HRF505VW.json",
+          "extracted": {
+            "brand": "Haier",
+            "sku": "HRF505VW",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1725,
+              "width_mm": 705,
+              "depth_mm": 691,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw5653a84c/QRG/AU/QRG-AU-62198.pdf",
+              "extraction_date": "2026-05-09T00:30:52.678Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-manual-hisense-hrbm418d": {
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRBM418D",
+      "evidence": [
+        {
+          "type": "manufacturer_manual",
+          "status": "candidate",
+          "source_url": "https://dtc-aus-api.hisense.com/medias/HRBM418D-UM.pdf?context=bWFzdGVyfG1hbnVhbHwxOTk0NDU5fGFwcGxpY2F0aW9uL3BkZnxhRGhqTDJoaE9TODRPREEwTURrMU9UVXdPRGM0TDBoU1FrMDBNVGhFTFZWTkxuQmtaZ3xmZDQ0Nzk2YWY1Mjk0OGM2MWRhM2YwYzU0NDUzNmM0YzZiOWY3YmQ4NTBjNjNhODQwZmE0Y2I2NTNlNjM3MmMw",
+          "local_path": "hisense/hrbm418d-user-manual.pdf",
+          "verified_at": "2026-05-09",
+          "notes": "Official Hisense AU download API URL for the HRBM417C/HRBM417S/HRBM418D manual. Candidate only: extraction must confirm model-specific dimensions and clearances before approval."
+        }
+      ]
+    },
+    "fridge-manual-samsung-srf7300bss": {
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF7300BSS",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "candidate",
+          "source_url": "https://images.samsung.com/is/content/samsung/assets/nz/ha/guides/fridge/SRF7300SA.pdf",
+          "local_path": "samsung/srf7300bss-srf7300sa-guide.pdf",
+          "verified_at": "2026-05-09",
+          "notes": "Official Samsung-hosted SRF7300SA guide seeded for the SRF7300 family. Exact SRF7300BSS official PDF was not found; keep candidate status until extraction/manual review confirms applicability."
+        }
+      ]
+    },
+    "fridge-manual-lg-gf-l706pl": {
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-L706PL",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "candidate",
+          "source_url": "https://www.lg.com/au/lgecs.downloadFile.ldwf?DOC_ID=20221101178242&ORIGINAL_NAME_b1_a1=EPM_CNZ1_20221101130836365.PDF&FILE_NAME=%5BEPM_CNZ1_20221101130836365%5D.pdf&TC=DwnCmd&GSRI_DOC=GSRI&SPEC_DOWNLOAD=N",
+          "local_path": "lg/gf-l706pl-epm-cnz1-20221101130836365.pdf",
+          "verified_at": "2026-05-09",
+          "notes": "Official LG AU product information sheet download URL found on the GF-L706PL product page. Awaiting extraction and validation before approval."
+        }
+      ]
+    },
+    "fridge-arf2253": {
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF130UW",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw366ab621/QRG/AU/QRG-AU-62231.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HRF130UW.json",
+          "extracted": {
+            "brand": "Haier",
+            "sku": "HRF130UW",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 828,
+              "width_mm": 495,
+              "depth_mm": 560,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw366ab621/QRG/AU/QRG-AU-62231.pdf",
+              "extraction_date": "2026-05-09T00:30:39.409Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3074": {
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF420BS",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwd0f727cb/QRG/AU/QRG-AU-62269.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HRF420BS.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "HRF420BS",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1725,
+              "width_mm": 700,
+              "depth_mm": 675,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwd0f727cb/QRG/AU/QRG-AU-62269.pdf",
+              "extraction_date": "2026-05-09T00:30:49.557Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3501": {
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF510BHC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw57e105ea/QRG/AU/QRG-AU-62293.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HRF510BHC.json",
+          "extracted": {
+            "brand": "Haier",
+            "sku": "HRF510BHC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1725,
+              "width_mm": 790,
+              "depth_mm": 707,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw57e105ea/QRG/AU/QRG-AU-62293.pdf",
+              "extraction_date": "2026-05-09T00:30:56.207Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3598": {
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF90UW2",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw31058f38/QRG/AU/QRG-AU-62401.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HRF90UW2.json",
+          "extracted": {
+            "brand": "Haier",
+            "sku": "HRF90UW2",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 445,
+              "depth_mm": 478,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw31058f38/QRG/AU/QRG-AU-62401.pdf",
+              "extraction_date": "2026-05-09T00:31:00.604Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dishwasher-adw1146": {
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F1B1",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw154d412d/QRG/AU/QRG-AU-61659.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HDW15F1B1.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "HDW15F1B1",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 597,
+              "depth_mm": 599,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw154d412d/QRG/AU/QRG-AU-61659.pdf",
+              "extraction_date": "2026-05-09T00:39:24.769Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dishwasher-adw0961": {
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F3S1",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw7db79904/QRG/AU/QRG-AU-61616.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HDW15F3S1.json",
+          "extracted": {
+            "brand": "Haier",
+            "sku": "HDW15F3S1",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 597,
+              "depth_mm": 599,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw7db79904/QRG/AU/QRG-AU-61616.pdf",
+              "extraction_date": "2026-05-09T00:39:28.254Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dishwasher-adw1276": {
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F4B1",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HDW15F4B1.json",
+          "extracted": {
+            "brand": "Haier",
+            "sku": "HDW15F4B1",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 597,
+              "depth_mm": 599,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf",
+              "extraction_date": "2026-05-09T00:39:33.936Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dishwasher-adw1233": {
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15U2I1",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwa742cfeb/QRG/AU/QRG-AU-61615.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HDW15U2I1.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "HDW15U2I1",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 820,
+              "width_mm": 597,
+              "depth_mm": 554,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwa742cfeb/QRG/AU/QRG-AU-61615.pdf",
+              "extraction_date": "2026-05-09T00:39:37.285Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dishwasher-adw1344": {
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15V2B2",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw8aa1b475/QRG/AU/QRG-AU-61611.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HDW15V2B2.json",
+          "extracted": {
+            "brand": "Haier",
+            "sku": "HDW15V2B2",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 598,
+              "depth_mm": 598,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw8aa1b475/QRG/AU/QRG-AU-61611.pdf",
+              "extraction_date": "2026-05-09T00:39:40.693Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3054": {
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF500QNUX1",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw979a5de4/QRG/AU/QRG-AU-26619.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/RF500QNUX1.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "RF500QNUX1",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1790,
+              "width_mm": 790,
+              "depth_mm": 692,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 20,
+              "left_mm": 40,
+              "right_mm": 40,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw979a5de4/QRG/AU/QRG-AU-26619.pdf",
+              "extraction_date": "2026-05-09T00:30:06.241Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3059": {
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF500QNX1",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw999e7360/QRG/AU/QRG-AU-26621.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/RF500QNX1.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "RF500QNX1",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1790,
+              "width_mm": 790,
+              "depth_mm": 692,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 20,
+              "left_mm": 40,
+              "right_mm": 40,
+              "rear_mm": 40
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw999e7360/QRG/AU/QRG-AU-26621.pdf",
+              "extraction_date": "2026-05-09T00:30:11.293Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf2964": {
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF730QNUVX1",
+      "evidence": [
+        {
+          "type": "qrg",
+          "status": "candidate",
+          "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw465c28eb/QRG/AU/QRG-AU-26616.pdf",
+          "local_path": "fisher-paykel/rf730qnuvb1-qrg-au-26616.pdf",
+          "verified_at": "2026-05-09",
+          "notes": "Official Fisher & Paykel AU quick reference guide for RF730QNUVB1, the same 690L quad-door physical platform as RF730QNUVX1. Used because the exact RF730QNUVX1 data sheet is diagram-heavy and text extraction returns null height/depth."
+        },
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw465c28eb/QRG/AU/QRG-AU-26616.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/RF730QNUVX1.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "RF730QNUVX1",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1900,
+              "width_mm": 905,
+              "depth_mm": 748,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 20,
+              "left_mm": 20,
+              "right_mm": 20,
+              "rear_mm": 30
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw465c28eb/QRG/AU/QRG-AU-26616.pdf",
+              "extraction_date": "2026-05-09T03:41:37.952Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dishwasher-adw0959": {
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/DW60UT4I2.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "DW60UT4I2",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 857,
+              "width_mm": 597,
+              "depth_mm": 554,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+              "extraction_date": "2026-05-09T00:39:18.079Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dishwasher-adw0956": {
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UZT4B2",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw567152d4/QRG/AU/QRG-AU-82439.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/DW60UZT4B2.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "DW60UZT4B2",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 857,
+              "width_mm": 597,
+              "depth_mm": 574,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw567152d4/QRG/AU/QRG-AU-82439.pdf",
+              "extraction_date": "2026-05-09T00:39:21.339Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dryer-acd0898": {
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH8060P1",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf2923d5c/QRG/AU/QRG-AU-26081.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/RF730QZUVB1.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "RF730QZUVB1",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1900,
+              "width_mm": 905,
+              "depth_mm": 748,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 20,
+              "left_mm": 20,
+              "right_mm": 20,
+              "rear_mm": 30
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf2923d5c/QRG/AU/QRG-AU-26081.pdf",
+              "extraction_date": "2026-05-09T00:47:36.655Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "washing_machine-acw1701": {
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1060P4",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw950cf313/QRG/AU/QRG-AU-93292.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/WH1060P4.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "WH1060P4",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 600,
+              "depth_mm": 655,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw950cf313/QRG/AU/QRG-AU-93292.pdf",
+              "extraction_date": "2026-05-09T00:50:44.880Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "washing_machine-acw1231": {
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260P1",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8684392f/QRG/AU/QRG-AU-92298.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/WL8058G1.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "WL8058G1",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 1020,
+              "width_mm": 580,
+              "depth_mm": 600,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8684392f/QRG/AU/QRG-AU-92298.pdf",
+              "extraction_date": "2026-05-09T00:50:48.465Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "washing_machine-acw1341": {
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WL8058G1",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw04688bff/QRG/NZ/QRG-NZ-93237.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/WH1260P1.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "WH1260P1",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 600,
+              "depth_mm": 665,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw04688bff/QRG/NZ/QRG-NZ-93237.pdf",
+              "extraction_date": "2026-05-09T00:50:52.034Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3396": {
+      "category": "fridge",
+      "brand": "CHIQ",
+      "model": "CTM200NSS5E",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://chiq.com.au/cdn/shop/files/CTM200NSS5E_SPEC.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/CTM200NSS5E.json",
+          "extracted": {
+            "brand": "CHiQ",
+            "sku": "CTM200NSS5E",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1465,
+              "width_mm": 545,
+              "depth_mm": 590,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://chiq.com.au/cdn/shop/files/CTM200NSS5E_SPEC.pdf",
+              "extraction_date": "2026-05-09T00:29:56.197Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf2861": {
+      "category": "fridge",
+      "brand": "CHIQ",
+      "model": "CTM202NW",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://chiq.com.au/cdn/shop/files/CTM202NW3_SPEC.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/CTM202NW3.json",
+          "extracted": {
+            "brand": "CHiQ",
+            "sku": "CTM202NW3",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1465,
+              "width_mm": 545,
+              "depth_mm": 590,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://chiq.com.au/cdn/shop/files/CTM202NW3_SPEC.pdf",
+              "extraction_date": "2026-05-09T00:30:01.077Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf2654": {
+      "category": "fridge",
+      "brand": "CHIQ",
+      "model": "CBM394NSS",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://cdn.shopify.com/s/files/1/0714/2345/9578/files/CBM394NSS6E_SPEC.pdf?v=1745927963",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/CBM394NSS6E.json",
+          "extracted": {
+            "brand": "CHiQ",
+            "sku": "CBM394NSS6E",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1720,
+              "width_mm": 703,
+              "depth_mm": 703,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://cdn.shopify.com/s/files/1/0714/2345/9578/files/CBM394NSS6E_SPEC.pdf?v=1745927963",
+              "extraction_date": "2026-05-09T00:29:47.773Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3453": {
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRCD640TBW",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dtc-aus-api.hisense.com/medias/HRCD640TBW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNjYzMDR8YXBwbGljYXRpb24vcGRmfGFERm1MMmhsTXk4NE9EQTBNVEF3T0RZMk1EYzRMMGhTUTBRMk5EQlVRbGN0VTNCbFl5NXdaR1l8MGRhNTM3OGQyMDRhMTM4MzA5YmQyMTA0ZTIzZDVjMDNjYzYxMzBhZGMzNmFhNGJlYTYwYTM2MGZiYTRhYmYyMw",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HRCD640TBW.json",
+          "extracted": {
+            "brand": "Hisense",
+            "sku": "HRCD640TBW",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1790,
+              "width_mm": 914,
+              "depth_mm": 730,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 100,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRCD640TBW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNjYzMDR8YXBwbGljYXRpb24vcGRmfGFERm1MMmhsTXk4NE9EQTBNVEF3T0RZMk1EYzRMMGhTUTBRMk5EQlVRbGN0VTNCbFl5NXdaR1l8MGRhNTM3OGQyMDRhMTM4MzA5YmQyMTA0ZTIzZDVjMDNjYzYxMzBhZGMzNmFhNGJlYTYwYTM2MGZiYTRhYmYyMw",
+              "extraction_date": "2026-05-09T00:31:09.411Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3512": {
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRBF126",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dtc-aus-api.hisense.com/medias/HRBF126-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDU4NTN8YXBwbGljYXRpb24vcGRmfGFESTNMMmd3TXk4NE9ETXpPREV4TlRjNE9URXdMMGhTUWtZeE1qWXRVM0JsWXk1d1pHWXw4NWU4M2Y1YjExODUyZGRmMjc4ZjdmY2QwOGJkMTE4NjUxOGRjMzA4MWE0ZTQ4MjU1ZjJhZGRjZDhkZGEzYzY3",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HRBF126.json",
+          "extracted": {
+            "brand": "Hisense",
+            "sku": "HRBF126",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 840,
+              "width_mm": 475,
+              "depth_mm": 556,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 100,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRBF126-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDU4NTN8YXBwbGljYXRpb24vcGRmfGFESTNMMmd3TXk4NE9ETXpPREV4TlRjNE9URXdMMGhTUWtZeE1qWXRVM0JsWXk1d1pHWXw4NWU4M2Y1YjExODUyZGRmMjc4ZjdmY2QwOGJkMTE4NjUxOGRjMzA4MWE0ZTQ4MjU1ZjJhZGRjZDhkZGEzYzY3",
+              "extraction_date": "2026-05-09T00:31:04.532Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf2860": {
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRSBS632BW",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dtc-aus-api.hisense.com/medias/HRSBS632BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNjU5NTF8YXBwbGljYXRpb24vcGRmfGFHWXhMMmhsWXk4NE9EQTBNRGs1TkRnNU9ESXlMMGhTVTBKVE5qTXlRbGN0VTNCbFl5NXdaR1l8YWI1ZGFmNDA2MDUzN2ViNWY0ZWVlMGU5MTlhZThlMDk1NDQyZmU4NTQ5N2IwZTg5NmNmNGNmZWIxNGQ5MTk2MA",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HRSBS632BW.json",
+          "extracted": {
+            "brand": "Hisense",
+            "sku": "HRSBS632BW",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1795,
+              "width_mm": 910,
+              "depth_mm": 717,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 100,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRSBS632BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNjU5NTF8YXBwbGljYXRpb24vcGRmfGFHWXhMMmhsWXk4NE9EQTBNRGs1TkRnNU9ESXlMMGhTVTBKVE5qTXlRbGN0VTNCbFl5NXdaR1l8YWI1ZGFmNDA2MDUzN2ViNWY0ZWVlMGU5MTlhZThlMDk1NDQyZmU4NTQ5N2IwZTg5NmNmNGNmZWIxNGQ5MTk2MA",
+              "extraction_date": "2026-05-09T02:23:40.505Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3316": {
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRTF325",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dtc-aus-api.hisense.com/medias/HRTF325-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzgzOTJ8YXBwbGljYXRpb24vcGRmfGFETTBMMmczWXk4NE9EQTBNRGs0TWpjM05EQTJMMGhTVkVZek1qVXRVM0JsWXk1d1pHWXw5NDkzMGRlMDk4ODc5ZmU0NWMwNDRjYjkxYmE4NWZhODk4ZDY2NmE5ZmFjNmU3Yzk5MjNmNjc4MzdkNjRhYTFh",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HRTF325.json",
+          "extracted": {
+            "brand": "Hisense",
+            "sku": "HRTF325",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1696,
+              "width_mm": 595,
+              "depth_mm": 650,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 100,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRTF325-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzgzOTJ8YXBwbGljYXRpb24vcGRmfGFETTBMMmczWXk4NE9EQTBNRGs0TWpjM05EQTJMMGhTVkVZek1qVXRVM0JsWXk1d1pHWXw5NDkzMGRlMDk4ODc5ZmU0NWMwNDRjYjkxYmE4NWZhODk4ZDY2NmE5ZmFjNmU3Yzk5MjNmNjc4MzdkNjRhYTFh",
+              "extraction_date": "2026-05-09T00:31:17.085Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf2946": {
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRVF240",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dtc-aus-api.hisense.com/medias/HRVF240-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2MjQ4OXxhcHBsaWNhdGlvbi9wZGZ8YUdKaUwyZzBaaTg0T0RBME1URXhOamM1TlRFNEwwaFNWa1l5TkRBdFUzQmxZeTV3WkdZfGU2MmY1MjQ4NzM5YTE3Y2FiMDcwYzNhYTc5OTBjYjE0OTVhNTA3MjhmOGIzNTYxNDRiMzRlOTE5NDg3OTFlNzc",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HRVF240.json",
+          "extracted": {
+            "brand": "Hisense",
+            "sku": "HRVF240",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1720,
+              "width_mm": 595,
+              "depth_mm": 590,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 100,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRVF240-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2MjQ4OXxhcHBsaWNhdGlvbi9wZGZ8YUdKaUwyZzBaaTg0T0RBME1URXhOamM1TlRFNEwwaFNWa1l5TkRBdFUzQmxZeTV3WkdZfGU2MmY1MjQ4NzM5YTE3Y2FiMDcwYzNhYTc5OTBjYjE0OTVhNTA3MjhmOGIzNTYxNDRiMzRlOTE5NDg3OTFlNzc",
+              "extraction_date": "2026-05-09T02:23:47.555Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf2831": {
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRVF384S",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dtc-aus-api.hisense.com/medias/HRVF384S-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNjM3OTB8YXBwbGljYXRpb24vcGRmfGFHUTJMMmcyWmk4NE9EQTBNVEEyTmpBd05EYzRMMGhTVmtZek9EUlRMVk53WldNdWNHUm18ZDExOGRhYjc5NWVlMmQ1YTY5YjVlZTlmODIzOTQyNjRkM2FlOTFmMjY5Nzk1YTYyN2VhZjYyYjFjOThhY2U1Mw",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HRVF384S.json",
+          "extracted": {
+            "brand": "Hisense",
+            "sku": "HRVF384S",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1720,
+              "width_mm": 700,
+              "depth_mm": 750,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 100,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRVF384S-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNjM3OTB8YXBwbGljYXRpb24vcGRmfGFHUTJMMmcyWmk4NE9EQTBNVEEyTmpBd05EYzRMMGhTVmtZek9EUlRMVk53WldNdWNHUm18ZDExOGRhYjc5NWVlMmQ1YTY5YjVlZTlmODIzOTQyNjRkM2FlOTFmMjY5Nzk1YTYyN2VhZjYyYjFjOThhY2U1Mw",
+              "extraction_date": "2026-05-09T02:23:53.835Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dishwasher-adw1245": {
+      "category": "dishwasher",
+      "brand": "Hisense",
+      "model": "HSBE15FS",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dtc-aus-api.hisense.com/medias/HSBE15FS-SPEC.pdf?context=bWFzdGVyfG1hbnVhbHwxMTkyNzN8YXBwbGljYXRpb24vcGRmfGFETXpMMmhqT1M4NE9ESTJORGN4TlRjNU5qYzRMMGhUUWtVeE5VWlRMVk5RUlVNdWNHUm18YjdhMTdkYTgxYzZkZjhmYTBhZGMyNzEyM2ZiOWQwZmViYjZlMzlkMGEwOTc0OTgxN2U3MWFlZDcxYmYzYmE3Yw",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HSBE15FS.json",
+          "extracted": {
+            "brand": "Hisense",
+            "sku": "HSBE15FS",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 845,
+              "width_mm": 600,
+              "depth_mm": 596,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HSBE15FS-SPEC.pdf?context=bWFzdGVyfG1hbnVhbHwxMTkyNzN8YXBwbGljYXRpb24vcGRmfGFETXpMMmhqT1M4NE9ESTJORGN4TlRjNU5qYzRMMGhUUWtVeE5VWlRMVk5RUlVNdWNHUm18YjdhMTdkYTgxYzZkZjhmYTBhZGMyNzEyM2ZiOWQwZmViYjZlMzlkMGEwOTc0OTgxN2U3MWFlZDcxYmYzYmE3Yw",
+              "extraction_date": "2026-05-09T00:39:45.404Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dishwasher-adw0974": {
+      "category": "dishwasher",
+      "brand": "Hisense",
+      "model": "HSCM15FS",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dtc-aus-api.hisense.com/medias/HSCM15FS-Spec.pdf?context=bWFzdGVyfE1hbnVhbHwyMjA2NzV8YXBwbGljYXRpb24vcGRmfGFESTJMMmd6T1M4NE9EQTFOVFl6T1RVM01qYzRMMGhUUTAweE5VWlRMVk53WldNdWNHUm18NGRjYzgwZjhkMDdhN2M2ZWM4ZmY0YzE5MGI4YzIyMmYxYmUzYzBkNjdmNTY3MzAyNWYzMzBkNjhkYzRlNDg3NQ",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HSCM15FS.json",
+          "extracted": {
+            "brand": "Hisense",
+            "sku": "HSCM15FS",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 845,
+              "width_mm": 598,
+              "depth_mm": 600,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HSCM15FS-Spec.pdf?context=bWFzdGVyfE1hbnVhbHwyMjA2NzV8YXBwbGljYXRpb24vcGRmfGFESTJMMmd6T1M4NE9EQTFOVFl6T1RVM01qYzRMMGhUUTAweE5VWlRMVk53WldNdWNHUm18NGRjYzgwZjhkMDdhN2M2ZWM4ZmY0YzE5MGI4YzIyMmYxYmUzYzBkNjdmNTY3MzAyNWYzMzBkNjhkYzRlNDg3NQ",
+              "extraction_date": "2026-05-09T00:39:51.397Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "washing_machine-acw1734": {
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "model": "HWF5I1215",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1215-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDZ8YXBwbGljYXRpb24vcGRmfGFERmpMMmhsTXk4NE9EazRNekk1T1RNMU9UQXlMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRJeE5Ta3VjR1JtfDI1YmYzMjZlMzY5OWIwOGMxZTJhNmI1ZDUxNjc4ZTU2OGVmZjI0NjUyZmJlNGYzYWRmZDhmMjhjYTVmY2YwODA",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HWF5I1215.json",
+          "extracted": {
+            "brand": "Hisense",
+            "sku": "HWF5I1215",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 845,
+              "width_mm": 595,
+              "depth_mm": 595,
+              "door_open_90_depth_mm": 528
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1215-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDZ8YXBwbGljYXRpb24vcGRmfGFERmpMMmhsTXk4NE9EazRNekk1T1RNMU9UQXlMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRJeE5Ta3VjR1JtfDI1YmYzMjZlMzY5OWIwOGMxZTJhNmI1ZDUxNjc4ZTU2OGVmZjI0NjUyZmJlNGYzYWRmZDhmMjhjYTVmY2YwODA",
+              "extraction_date": "2026-05-09T00:50:56.542Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "washing_machine-acw1462": {
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "model": "HWF5S1214",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dtc-aus-api.hisense.com/medias/HWF5S1214-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNTU3MDR8YXBwbGljYXRpb24vcGRmfGFHWXpMMmhoWWk4NE9EQTBNVEEwTVRReU9EYzRMMGhYUmpWVE1USXhOQzFUY0dWakxuQmtaZ3w2NGJjYzNiOTdlMzFkNjViYjE1NDljNTcwNzkyYWQyMjE1ODA0NmFiMmZlNDAwMzY2YmYyMWQwZGE4Zjk5ZmEx",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HWF5S1214.json",
+          "extracted": {
+            "brand": "Hisense",
+            "sku": "HWF5S1214",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 845,
+              "width_mm": 595,
+              "depth_mm": 640,
+              "door_open_90_depth_mm": 520
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HWF5S1214-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNTU3MDR8YXBwbGljYXRpb24vcGRmfGFHWXpMMmhoWWk4NE9EQTBNVEEwTVRReU9EYzRMMGhYUmpWVE1USXhOQzFUY0dWakxuQmtaZ3w2NGJjYzNiOTdlMzFkNjViYjE1NDljNTcwNzkyYWQyMjE1ODA0NmFiMmZlNDAwMzY2YmYyMWQwZGE4Zjk5ZmEx",
+              "extraction_date": "2026-05-09T00:51:00.877Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "washing_machine-acw1520": {
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "model": "HWF8I1015BX",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dtc-aus-api.hisense.com/medias/HWF8i1015B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjcxMDd8YXBwbGljYXRpb24vcGRmfGFHTmhMMmc0WlM4NE9EQTNNRGM0TURBeU56RTRMMGhYUmpocE1UQXhOVUl0VTNCbFl5NXdaR1l8NzBhNjNiNjkwOGM3ZmFjZjdiNGQyZGEyNjgyZDExNWJlYjJlYjNmYWQwNjk0YzAzYzcwMWY0NDQyYWJhMzhiNw",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HWF8I1015B.json",
+          "extracted": {
+            "brand": "Hisense",
+            "sku": "HWF8I1015B",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 845,
+              "width_mm": 595,
+              "depth_mm": 550,
+              "door_open_90_depth_mm": 525
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HWF8i1015B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjcxMDd8YXBwbGljYXRpb24vcGRmfGFHTmhMMmc0WlM4NE9EQTNNRGM0TURBeU56RTRMMGhYUmpocE1UQXhOVUl0VTNCbFl5NXdaR1l8NzBhNjNiNjkwOGM3ZmFjZjdiNGQyZGEyNjgyZDExNWJlYjJlYjNmYWQwNjk0YzAzYzcwMWY0NDQyYWJhMzhiNw",
+              "extraction_date": "2026-05-09T00:51:05.631Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "washing_machine-acw1319": {
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "model": "HWFS1015E",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dtc-aus-api.hisense.com/medias/HWFS1015E-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2Mjk5NHxhcHBsaWNhdGlvbi9wZGZ8YURkaUwyaGtaUzg0T0RBME1EazBOVEE1TURnMkwwaFhSbE14TURFMVJTMVRjR1ZqTG5Ca1pnfDg4YWU1MTE2NzA0NGE2MTBhMDI1NjhmYmY1MjAxMjk0NDE4M2RiZDYwNzEyZTI1OWFiMzE0ZDZkOWFlMzIzNGQ",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HWFS1015E.json",
+          "extracted": {
+            "brand": "Manufacturer",
+            "sku": "HWFS1015E",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 845,
+              "width_mm": 595,
+              "depth_mm": 590,
+              "door_open_90_depth_mm": 520
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HWFS1015E-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2Mjk5NHxhcHBsaWNhdGlvbi9wZGZ8YURkaUwyaGtaUzg0T0RBME1EazBOVEE1TURnMkwwaFhSbE14TURFMVJTMVRjR1ZqTG5Ca1pnfDg4YWU1MTE2NzA0NGE2MTBhMDI1NjhmYmY1MjAxMjk0NDE4M2RiZDYwNzEyZTI1OWFiMzE0ZDZkOWFlMzIzNGQ",
+              "extraction_date": "2026-05-09T00:51:10.161Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "washing_machine-acw1423": {
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "model": "HWFS7514S",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dtc-aus-api.hisense.com/medias/HWFS7514S-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjAzNTI2fGFwcGxpY2F0aW9uL3BkZnxhRE5sTDJnME5TODRPREEwTVRFeE16VXhPRE00TDBoWFJsTTNOVEUwVXkxVGNHVmpMbkJrWmd8MWUyNjY3YzM2NDFiNDNlMzg2NzQ3ODE2MDAwNGI1NmUxNjJjN2NjZmVmMmUyY2YwYzEyOTY3M2VjNDc5ZmM2Yw",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HWFS7514S.json",
+          "extracted": {
+            "brand": "Hisense",
+            "sku": "HWFS7514S",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 845,
+              "width_mm": 595,
+              "depth_mm": 540,
+              "door_open_90_depth_mm": 135
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HWFS7514S-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjAzNTI2fGFwcGxpY2F0aW9uL3BkZnxhRE5sTDJnME5TODRPREEwTVRFeE16VXhPRE00TDBoWFJsTTNOVEUwVXkxVGNHVmpMbkJrWmd8MWUyNjY3YzM2NDFiNDNlMzg2NzQ3ODE2MDAwNGI1NmUxNjJjN2NjZmVmMmUyY2YwYzEyOTY3M2VjNDc5ZmM2Yw",
+              "extraction_date": "2026-05-09T00:51:13.438Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3094": {
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-L700PL",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/GF-L700PL.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GF-L700PL",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1850,
+              "width_mm": 700,
+              "depth_mm": 720,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 50,
+              "left_mm": 20,
+              "right_mm": 20,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf",
+              "extraction_date": "2026-05-09T02:24:03.632Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "washing_machine-acw1345": {
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTL9-12B",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.lg.com/content/dam/channel/wcms/au/images/wm/features/WTL9-12B_Specsheet_231010_V1.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/WTL9-12B.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "WTL9-12B",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 600,
+              "depth_mm": 600,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 50,
+              "left_mm": 20,
+              "right_mm": 20,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.lg.com/content/dam/channel/wcms/au/images/wm/features/WTL9-12B_Specsheet_231010_V1.pdf",
+              "extraction_date": "2026-05-09T03:01:20.928Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3865": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBB3100AK",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/5/8/4/a/584a6500746d4ac08894cb2885b8fb75677fccdf_Westinghouse_WBB3100AK_Factsheet.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/WBB3100AK.json",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WBB3100AK",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1650,
+              "width_mm": 598,
+              "depth_mm": 650,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://commercial.appliancesonline.com.au/manuals/ak/5/8/4/a/584a6500746d4ac08894cb2885b8fb75677fccdf_Westinghouse_WBB3100AK_Factsheet.pdf",
+              "extraction_date": "2026-05-09T03:35:45.706Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf2745": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBE4302WC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/c/2/1/9/c2196990eaca36d9cc8beddf629cbcce69813aa9_Westinghouse_WBE4302WC_Factsheet.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/WBE4302WC.json",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WBE4302WC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1725,
+              "width_mm": 699,
+              "depth_mm": 723,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://commercial.appliancesonline.com.au/manuals/ak/c/2/1/9/c2196990eaca36d9cc8beddf629cbcce69813aa9_Westinghouse_WBE4302WC_Factsheet.pdf",
+              "extraction_date": "2026-05-09T03:35:52.781Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3827": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBE5300WC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/c/3/c/e/c3ce246e89658bddb9f1f65a561866755470b059_WBE5300WC_L_Westinghouse_Specifications_Sheet.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/WBE5300WC.json",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WBE5300WC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1725,
+              "width_mm": 796,
+              "depth_mm": 723,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://commercial.appliancesonline.com.au/manuals/ak/c/3/c/e/c3ce246e89658bddb9f1f65a561866755470b059_WBE5300WC_L_Westinghouse_Specifications_Sheet.pdf",
+              "extraction_date": "2026-05-09T03:36:00.985Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf2444": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE6000BB",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://commercial.appliancesonline.com.au/public/manuals/WQE6000BB-Westinghouse-Specifications-Sheet.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/WQE6000BB.json",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WQE6000BB",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1725,
+              "width_mm": 896,
+              "depth_mm": 781,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://commercial.appliancesonline.com.au/public/manuals/WQE6000BB-Westinghouse-Specifications-Sheet.pdf",
+              "extraction_date": "2026-05-09T03:36:09.371Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf2733": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WSE6640SA",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://commercial.appliancesonline.com.au/public/manuals/WSE6640BA-Westinghouse-Specifications-Sheet.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/WSE6640SA.json",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WSE6640SA",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1780,
+              "width_mm": 911,
+              "depth_mm": 746,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 30,
+              "left_mm": 350,
+              "right_mm": 350,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://commercial.appliancesonline.com.au/public/manuals/WSE6640BA-Westinghouse-Specifications-Sheet.pdf",
+              "extraction_date": "2026-05-09T03:36:22.193Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dishwasher-adw1149": {
+      "category": "dishwasher",
+      "brand": "Westinghouse",
+      "model": "WSF6604XB",
+      "evidence": [
+        {
+          "type": "owner_manual",
+          "status": "candidate",
+          "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/3/0/6/6/3066951a7ccf5fafcdc3e0eeb91d98ade3945e25_WSF6604WB_Westinghouse_User_Manual.pdf",
+          "local_path": "westinghouse/wsf6604wb-user-manual.pdf",
+          "verified_at": "2026-05-09",
+          "notes": "Trusted fallback Westinghouse user manual hosted by Appliances Online; WSF6604WB manual used for WSF6604XB same-series dimensional extraction."
+        },
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/3/0/6/6/3066951a7ccf5fafcdc3e0eeb91d98ade3945e25_WSF6604WB_Westinghouse_User_Manual.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/WSF6604XB.json",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WSF6604XB",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 598,
+              "depth_mm": 598,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://commercial.appliancesonline.com.au/manuals/ak/3/0/6/6/3066951a7ccf5fafcdc3e0eeb91d98ade3945e25_WSF6604WB_Westinghouse_User_Manual.pdf",
+              "extraction_date": "2026-05-09T03:36:37.649Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dishwasher-adw1155": {
+      "category": "dishwasher",
+      "brand": "Westinghouse",
+      "model": "WSF6606XB",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://commercial.appliancesonline.com.au/public/manuals/WSF6606X-Westinghouse-Specifications-Sheet.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/WSF6606XB.json",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WSF6606XB",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 598,
+              "depth_mm": 598,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://commercial.appliancesonline.com.au/public/manuals/WSF6606X-Westinghouse-Specifications-Sheet.pdf",
+              "extraction_date": "2026-05-09T03:36:43.165Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "washing_machine-acw1242": {
+      "category": "washing_machine",
+      "brand": "Westinghouse",
+      "model": "WWF1044M7SA",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/5/4/e/4/54e4d400d0e2fc29c5d47f487ab7ede5426ff771_Westinghouse_WWF1044M7SA_Factsheet__1_.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/WWF1044M7SA.json",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WWF1044M7SA",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 600,
+              "depth_mm": 660,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://commercial.appliancesonline.com.au/manuals/ak/5/4/e/4/54e4d400d0e2fc29c5d47f487ab7ede5426ff771_Westinghouse_WWF1044M7SA_Factsheet__1_.pdf",
+              "extraction_date": "2026-05-09T03:37:27.946Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "washing_machine-acw1243": {
+      "category": "washing_machine",
+      "brand": "Westinghouse",
+      "model": "WWF9024M5SA",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/b/6/6/1/b66155b700f22290d55751769bee853cc7a247df_Westinghouse_WWF9024M5SA_Factsheet__1_.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/WWF9024M5SA.json",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WWF9024M5SA",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 600,
+              "depth_mm": 660,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://commercial.appliancesonline.com.au/manuals/ak/b/6/6/1/b66155b700f22290d55751769bee853cc7a247df_Westinghouse_WWF9024M5SA_Factsheet__1_.pdf",
+              "extraction_date": "2026-05-09T03:37:35.166Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dr3": {
+      "category": "dryer",
+      "brand": "Electrolux",
+      "model": "EDH803BEWA Heat Pump — 8kg",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://commercial.appliancesonline.com.au/public/manuals/EDH803BEWA-Electrolux-Specifications-Sheet.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/EDH803BEWA.json",
+          "extracted": {
+            "brand": "Electrolux",
+            "sku": "EDH803BEWA",
+            "category": "DRYER",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 600,
+              "depth_mm": 665,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://commercial.appliancesonline.com.au/public/manuals/EDH803BEWA-Electrolux-Specifications-Sheet.pdf",
+              "extraction_date": "2026-05-09T03:36:49.306Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dryer-acd0788": {
+      "category": "dryer",
+      "brand": "Electrolux",
+      "model": "EDV605H3WC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/d/7/e/2/d7e29d214f2e4ae675965724e2bfae2f462549a0_Electrolux_EDV605H3WC_Factsheet.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/EDV605H3WC.json",
+          "extracted": {
+            "brand": "Electrolux",
+            "sku": "EDV605H3WC",
+            "category": "DRYER",
+            "dimensions": {
+              "height_mm": 795,
+              "width_mm": 560,
+              "depth_mm": 600,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://commercial.appliancesonline.com.au/manuals/ak/d/7/e/2/d7e29d214f2e4ae675965724e2bfae2f462549a0_Electrolux_EDV605H3WC_Factsheet.pdf",
+              "extraction_date": "2026-05-09T03:36:56.080Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dryer-acd0789": {
+      "category": "dryer",
+      "brand": "Electrolux",
+      "model": "EDV705H3WC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/b/5/7/e/b57e4730d952fa76093dfb152bc519c36d67fd23_Electrolux_EDV705H3WC_Factsheet.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/EDV705H3WC.json",
+          "extracted": {
+            "brand": "Electrolux",
+            "sku": "EDV705H3WC",
+            "category": "DRYER",
+            "dimensions": {
+              "height_mm": 795,
+              "width_mm": 600,
+              "depth_mm": 600,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://commercial.appliancesonline.com.au/manuals/ak/b/5/7/e/b57e4730d952fa76093dfb152bc519c36d67fd23_Electrolux_EDV705H3WC_Factsheet.pdf",
+              "extraction_date": "2026-05-09T03:37:01.670Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "washing_machine-acw1469": {
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "model": "EWF1043R7WC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/f/f/3/e/ff3e125e7880481b455a8cd38a4a4073efdb7892_Electrolux_EWF1043R7WC_Factsheet.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/EWF1043R7WC.json",
+          "extracted": {
+            "brand": "Electrolux",
+            "sku": "EWF1043R7WC",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 600,
+              "depth_mm": 659,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://commercial.appliancesonline.com.au/manuals/ak/f/f/3/e/ff3e125e7880481b455a8cd38a4a4073efdb7892_Electrolux_EWF1043R7WC_Factsheet.pdf",
+              "extraction_date": "2026-05-09T03:37:09.281Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "washing_machine-acw1478": {
+      "category": "washing_machine",
+      "brand": "Electrolux",
+      "model": "EWF9043R7WC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/4/b/4/c/4b4c97d7d4f64f47408dc1b89cec41a26ea68eac_Electrolux_EWF9043R7WC_Factsheet.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/EWF9043R7WC.json",
+          "extracted": {
+            "brand": "Electrolux",
+            "sku": "EWF9043R7WC",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 600,
+              "depth_mm": 659,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://commercial.appliancesonline.com.au/manuals/ak/4/b/4/c/4b4c97d7d4f64f47408dc1b89cec41a26ea68eac_Electrolux_EWF9043R7WC_Factsheet.pdf",
+              "extraction_date": "2026-05-09T03:37:16.127Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf2472": {
+      "category": "fridge",
+      "brand": "CHIQ",
+      "model": "CRSR088DW",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://cdn.shopify.com/s/files/1/0714/2345/9578/files/CRSR089DR1_SPEC.pdf?v=1746179563",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/CRSR088DW.json",
+          "extracted": {
+            "brand": "CHIQ",
+            "sku": "CRSR088DW",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 831,
+              "width_mm": 474,
+              "depth_mm": 447,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://cdn.shopify.com/s/files/1/0714/2345/9578/files/CRSR089DR1_SPEC.pdf?v=1746179563",
+              "extraction_date": "2026-05-09T02:23:05.988Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "f3": {
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF730QZUVX1 French Door 726L",
+      "evidence": [
+        {
+          "type": "quick_reference_guide",
+          "status": "candidate",
+          "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4f4ee4ee/QRG/AU/QRG-AU-26614.pdf",
+          "verified_at": "2026-05-09",
+          "notes": "Official Fisher & Paykel Australia quick reference guide for RF730QZUVB1/RF730QZUVX1 family. Retailer URLs for this catalog item point to RF730QZUVB1; manual review should confirm finish/model mapping."
+        },
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4f4ee4ee/QRG/AU/QRG-AU-26614.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/RF730QZUVX1.json",
+          "extracted": {
+            "brand": "Fisher & Paykel",
+            "sku": "RF730QZUVX1",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1900,
+              "width_mm": 905,
+              "depth_mm": 748,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 20,
+              "left_mm": 20,
+              "right_mm": 20,
+              "rear_mm": 30
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4f4ee4ee/QRG/AU/QRG-AU-26614.pdf",
+              "extraction_date": "2026-05-09T02:23:19.807Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "f7": {
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF520BHS French Door 520L",
+      "evidence": [
+        {
+          "type": "quick_reference_guide",
+          "status": "candidate",
+          "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwe8c6d1bb/QRG/AU/QRG-AU-62207.pdf",
+          "verified_at": "2026-05-09",
+          "notes": "Official Haier Australia QRG for HRF520BS bottom-freezer family. Retailer URLs include HRF520BHS/HRF520BS, while catalog title says French Door; requires manual reconciliation before approval."
+        },
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwe8c6d1bb/QRG/AU/QRG-AU-62207.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HRF520BHS-French-Door-520L.json",
+          "extracted": {
+            "brand": "Haier",
+            "sku": "HRF520BHS French Door 520L",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1725,
+              "width_mm": 790,
+              "depth_mm": 686,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwe8c6d1bb/QRG/AU/QRG-AU-62207.pdf",
+              "extraction_date": "2026-05-09T03:35:18.296Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3513": {
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRBF46",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://hisense.co.nz/wp-content/uploads/2025/08/HRBF46-Consumer-Specs.pdf",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/HRBF46.json",
+          "extracted": {
+            "brand": "Hisense",
+            "sku": "HRBF46",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 500,
+              "width_mm": 445,
+              "depth_mm": 468,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 100,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://hisense.co.nz/wp-content/uploads/2025/08/HRBF46-Consumer-Specs.pdf",
+              "extraction_date": "2026-05-09T02:23:34.080Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3423": {
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-B505BB",
+      "evidence": [
+        {
+          "type": "owner_manual",
+          "status": "candidate",
+          "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=e90biPiGzIqrNrTcShSiIA",
+          "local_path": "lg/gf-b505bb-owner-manual.pdf",
+          "verified_at": "2026-05-09",
+          "notes": "Official LG support CDN PDF resolved from LG AU manual API."
+        },
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=e90biPiGzIqrNrTcShSiIA",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/GF-B505BB.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GF-B505BB",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1787,
+              "width_mm": 835,
+              "depth_mm": 730,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/downloadFile?fileId=e90biPiGzIqrNrTcShSiIA",
+              "extraction_date": "2026-05-09T03:35:23.819Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3292": {
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-LN500MBL",
+      "evidence": [
+        {
+          "type": "owner_manual",
+          "status": "candidate",
+          "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
+          "local_path": "lg/gf-ln500mbl-owner-manual.pdf",
+          "verified_at": "2026-05-09",
+          "notes": "Official LG support CDN PDF resolved from LG AU manual API."
+        },
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/GF-LN500MBL.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GF-LN500MBL",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1787,
+              "width_mm": 835,
+              "depth_mm": 730,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
+              "extraction_date": "2026-05-09T03:35:28.719Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf3177": {
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-V500MBLC",
+      "evidence": [
+        {
+          "type": "owner_manual",
+          "status": "candidate",
+          "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
+          "local_path": "lg/gf-v500mblc-owner-manual.pdf",
+          "verified_at": "2026-05-09",
+          "notes": "Official LG support CDN PDF resolved from LG AU manual API; same official manual family as GF-LN500MBL."
+        },
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/GF-V500MBLC.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GF-V500MBLC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1787,
+              "width_mm": 835,
+              "depth_mm": 730,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
+              "extraction_date": "2026-05-09T03:35:33.020Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "fridge-arf2606": {
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-B655PL",
+      "evidence": [
+        {
+          "type": "owner_manual",
+          "status": "candidate",
+          "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TCA8L39ERMmdd8YMLQNkbg",
+          "local_path": "lg/gs-b655pl-owner-manual.pdf",
+          "verified_at": "2026-05-09",
+          "notes": "Official LG support CDN PDF resolved from LG AU manual API."
+        },
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TCA8L39ERMmdd8YMLQNkbg",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/GS-B655PL.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GS-B655PL",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1790,
+              "width_mm": 913,
+              "depth_mm": 735,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TCA8L39ERMmdd8YMLQNkbg",
+              "extraction_date": "2026-05-09T03:35:37.523Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "dishwasher-adw1232": {
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD4B15PS",
+      "evidence": [
+        {
+          "type": "owner_manual",
+          "status": "candidate",
+          "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=jgKGpTUBKxpnjNpGPXQzUA",
+          "local_path": "lg/xd4b15ps-owner-manual.pdf",
+          "verified_at": "2026-05-09",
+          "notes": "Official LG support CDN PDF resolved from LG AU manual API."
+        },
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=jgKGpTUBKxpnjNpGPXQzUA",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/XD4B15PS.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "XD4B15PS",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 600,
+              "depth_mm": 600,
+              "door_open_90_depth_mm": 50
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/downloadFile?fileId=jgKGpTUBKxpnjNpGPXQzUA",
+              "extraction_date": "2026-05-09T03:36:27.945Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
+    },
+    "washing_machine-acw1082": {
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WD1275A1",
+      "evidence": [
+        {
+          "type": "owner_manual",
+          "status": "candidate",
+          "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=XSzB9y7vFqHz12fgVCRvHw",
+          "local_path": "lg/wd1275a1-owner-manual.pdf",
+          "verified_at": "2026-05-09",
+          "notes": "Official LG support CDN PDF resolved from LG AU manual API."
+        },
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=XSzB9y7vFqHz12fgVCRvHw",
+          "verified_at": "2026-05-09",
+          "raw_json_path": "data/pdf-evidence-raw/WD1275A1.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "WD1275A1",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 600,
+              "depth_mm": 475,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 100,
+              "left_mm": 20,
+              "right_mm": 20,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/downloadFile?fileId=XSzB9y7vFqHz12fgVCRvHw",
+              "extraction_date": "2026-05-09T03:37:20.482Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ],
+      "has_pdf_evidence": true
     }
   }
 }

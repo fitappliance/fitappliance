@@ -1,3 +1,5 @@
+require('dotenv').config({ quiet: true });
+
 function normalizeToken(value) {
   return String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
 }

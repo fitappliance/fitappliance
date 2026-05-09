@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "dishwasher-adw1276",
+  "category": "dishwasher",
+  "brand": "Haier",
+  "model": "HDW15F4B1",
+  "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HDW15F4B1",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 597,
+      "depth_mm": 599,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf",
+      "extraction_date": "2026-05-09T00:39:33.936Z",
+      "confidence_score": 0.9
+    }
+  }
+}

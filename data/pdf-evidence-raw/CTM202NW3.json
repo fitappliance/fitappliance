@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2861",
+  "category": "fridge",
+  "brand": "CHIQ",
+  "model": "CTM202NW",
+  "source_url": "https://chiq.com.au/cdn/shop/files/CTM202NW3_SPEC.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "CHiQ",
+    "sku": "CTM202NW3",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1465,
+      "width_mm": 545,
+      "depth_mm": 590,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://chiq.com.au/cdn/shop/files/CTM202NW3_SPEC.pdf",
+      "extraction_date": "2026-05-09T00:30:01.077Z",
+      "confidence_score": 0.9
+    }
+  }
+}
