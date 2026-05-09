@@ -30,6 +30,14 @@ Primary command:
 node scripts/discovery-pipeline/1-scout.js --retailer=appliancesonline
 ```
 
+Supported retailers:
+
+- `appliancesonline`
+- `the-good-guys` / `tgg`
+- `jb-hi-fi` / `jbhifi` / `jb`
+- `bing-lee` / `binglee` / `bl`
+- `harvey-norman` / `harveynorman` / `hn` (adapter contract exists, but current sitemap fetch may return bot challenge HTML)
+
 Optional safer command:
 
 ```bash
@@ -45,6 +53,11 @@ Current files:
 - `scripts/discovery-pipeline/1-scout.js` - CLI runner
 - `scripts/discovery-pipeline/adapters/index.js` - adapter registry
 - `scripts/discovery-pipeline/adapters/appliances-online.js` - pilot retailer adapter
+- `scripts/discovery-pipeline/adapters/the-good-guys.js` - The Good Guys sitemap adapter
+- `scripts/discovery-pipeline/adapters/jb-hi-fi.js` - JB Hi-Fi sitemap adapter
+- `scripts/discovery-pipeline/adapters/bing-lee.js` - Bing Lee sitemap adapter; uses browser-like user agent because transparent bot UA is challenged
+- `scripts/discovery-pipeline/adapters/harvey-norman.js` - Harvey Norman sitemap adapter; use browser/代理 follow-up if Node fetch is challenged
+- `scripts/discovery-pipeline/adapters/url-discovery.js` - shared URL slug parser for retailer adapters
 - `scripts/discovery-pipeline/lib/sitemap.js` - sitemap XML fetch and parsing helpers
 - `scripts/discovery-pipeline/lib/catalog.js` - catalog diff and report writer
 - `data/discovery-report.json` - output report
@@ -55,6 +68,7 @@ Rules:
 - Use polite delays; default is 1000ms between sitemap fetches.
 - Do not scrape checkout, account, or private API surfaces.
 - Treat scout output as candidates only. Do not write directly into runtime catalog.
+- If a retailer serves bot-challenge HTML instead of XML, stop that retailer run and report it rather than escalating to heavy scraping inside the standard scout.
 
 ## 2. Search And Seed Evidence URLs
 
