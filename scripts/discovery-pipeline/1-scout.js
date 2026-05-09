@@ -47,6 +47,7 @@ async function runScout({
     fetchImpl,
     maxSitemaps,
     timeoutMs,
+    userAgent: adapter.userAgent,
   });
   const allDiscoveries = adapter.extractDiscoveries(productUrls);
   const delta = diffDiscoveries(allDiscoveries, existingModelSet);

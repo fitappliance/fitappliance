@@ -32,6 +32,7 @@ async function fetchText(url, {
     const response = await fetchImpl(url, {
       headers: {
         accept: 'application/xml,text/xml,text/plain,*/*',
+        'accept-language': 'en-AU,en;q=0.9',
         'user-agent': userAgent,
       },
       signal: controller.signal,
@@ -55,6 +56,7 @@ async function collectSitemapUrls(seedUrls, {
   fetchImpl,
   maxSitemaps = 25,
   timeoutMs = 30000,
+  userAgent,
 } = {}) {
   const queue = [...seedUrls];
   const visited = new Set();
@@ -67,7 +69,7 @@ async function collectSitemapUrls(seedUrls, {
     visited.add(sitemapUrl);
     fetchedSitemaps.push(sitemapUrl);
 
-    const xml = await fetchText(sitemapUrl, { fetchImpl, timeoutMs });
+    const xml = await fetchText(sitemapUrl, { fetchImpl, timeoutMs, userAgent });
     const locs = parseSitemapXml(xml);
     for (const loc of locs) {
       if (looksLikeSitemapUrl(loc) && !visited.has(loc)) {
