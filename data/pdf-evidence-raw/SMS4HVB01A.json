@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-107181",
+  "category": "dishwasher",
+  "brand": "Bosch",
+  "model": "SMS4HVB01A",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/2/a/2/52a2ff468b08cdccf2544916fad66dfcae5f7af4_SMS4HVB01A_Bosch_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "SMS4HVB01A",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/2/a/2/52a2ff468b08cdccf2544916fad66dfcae5f7af4_SMS4HVB01A_Bosch_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:33:26.979Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-62316",
+  "category": "dryer",
+  "brand": "Esatto",
+  "model": "EHPD7",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/7/4/d/374d4b109dc46da7d4ec63f80db351991baab1ea_EHPD7_Esatto_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "EHPD7",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 595,
+      "depth_mm": 622,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/7/4/d/374d4b109dc46da7d4ec63f80db351991baab1ea_EHPD7_Esatto_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:58:37.907Z",
+      "confidence_score": 0.9
+    }
+  }
+}

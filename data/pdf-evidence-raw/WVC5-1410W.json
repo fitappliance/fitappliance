@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-111909",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WVC5-1410W",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/d/c/d/0dcd78d7fb4b1a88893e4ec687327fc731f4a728_LG_WVC5_1410W_User_Manual.PDF",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WVC5-1410W",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 565,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 5,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 100
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/d/c/d/0dcd78d7fb4b1a88893e4ec687327fc731f4a728_LG_WVC5_1410W_User_Manual.PDF",
+      "extraction_date": "2026-05-09T10:07:40.777Z",
+      "confidence_score": 0.9
+    }
+  }
+}

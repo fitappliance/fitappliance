@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-103526",
+  "category": "washing_machine",
+  "brand": "Beko",
+  "model": "BWD7541W",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/b/7/8/1b7805f36c062bb9c370205bb06fc66e812eb08a_BWD7541W_Beko_Specification_Sheet_2021.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "BWD7541W",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 840,
+      "width_mm": 600,
+      "depth_mm": 541,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/b/7/8/1b7805f36c062bb9c370205bb06fc66e812eb08a_BWD7541W_Beko_Specification_Sheet_2021.pdf",
+      "extraction_date": "2026-05-09T09:59:56.007Z",
+      "confidence_score": 0.9
+    }
+  }
+}

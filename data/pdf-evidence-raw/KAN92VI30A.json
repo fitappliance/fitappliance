@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-56912",
+  "category": "fridge",
+  "brand": "Bosch",
+  "model": "KAN92VI30A",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/a/b/a/5aba7a41248acb121b1e5c3b12a614a0c38278e3_KAN92VI30A_Bosch_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "KAN92VI30A",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1756,
+      "width_mm": 912,
+      "depth_mm": 732,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/a/b/a/5aba7a41248acb121b1e5c3b12a614a0c38278e3_KAN92VI30A_Bosch_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:06:25.762Z",
+      "confidence_score": 0.9
+    }
+  }
+}

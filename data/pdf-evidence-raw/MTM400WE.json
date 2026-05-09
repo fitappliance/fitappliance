@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-57849",
+  "category": "fridge",
+  "brand": "Midea",
+  "model": "MTM400WE",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/4/9/2/2492ca8532d20fc951f9b1f437c41d4fd5f3e702_Midea_MTM400WE_400L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Midea",
+    "sku": "MTM400WE",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1712,
+      "width_mm": 696,
+      "depth_mm": 685,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/4/9/2/2492ca8532d20fc951f9b1f437c41d4fd5f3e702_Midea_MTM400WE_400L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:39:10.710Z",
+      "confidence_score": 0.9
+    }
+  }
+}

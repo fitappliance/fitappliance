@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-72964",
+  "category": "dishwasher",
+  "brand": "Beko",
+  "model": "BDF1620W",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/b/5/8/5b583e75edd6ca26810b683694516d39ad3da83a_Beko_Specification_Sheet_2021_BDF1620W.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "BDF1620W",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 865,
+      "width_mm": 598,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": 1150
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/b/5/8/5b583e75edd6ca26810b683694516d39ad3da83a_Beko_Specification_Sheet_2021_BDF1620W.pdf",
+      "extraction_date": "2026-05-09T08:30:01.381Z",
+      "confidence_score": 0.9
+    }
+  }
+}

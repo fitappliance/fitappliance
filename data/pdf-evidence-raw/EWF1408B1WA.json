@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-69709",
+  "category": "washing_machine",
+  "brand": "Electrolux",
+  "model": "EWF1408B1WA",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/5/4/1/b54167cbddc027a96bcf26b382e15f4bdbefbcf4_EWF1408B1WA_Electrolux_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Electrolux",
+    "sku": "EWF1408B1WA",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 1010,
+      "width_mm": 686,
+      "depth_mm": 858,
+      "door_open_90_depth_mm": 425
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/5/4/1/b54167cbddc027a96bcf26b382e15f4bdbefbcf4_EWF1408B1WA_Electrolux_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:03:19.800Z",
+      "confidence_score": 0.9
+    }
+  }
+}

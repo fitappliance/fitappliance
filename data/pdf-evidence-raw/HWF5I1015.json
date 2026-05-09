@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-178019",
+  "category": "washing_machine",
+  "brand": "Hisense",
+  "model": "HWF5I1015",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/3/7/d/737d1fc03fde01e27a91844b6a122790c9090eaa_2026_Hisense_AU___Consumer_Spec__HWF5I1015_.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HWF5I1015",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 595,
+      "depth_mm": 550,
+      "door_open_90_depth_mm": 528
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/3/7/d/737d1fc03fde01e27a91844b6a122790c9090eaa_2026_Hisense_AU___Consumer_Spec__HWF5I1015_.pdf",
+      "extraction_date": "2026-05-09T10:07:22.791Z",
+      "confidence_score": 0.9
+    }
+  }
+}

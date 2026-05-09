@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-54403",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SR419WTC",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/8/6/a/186a238091f374b7cd105ccb2d289ae8790ea8ed_Samsung_SR419WTC_419L_Top_Mount_Refrigerator_Twin_Cooling_Plus_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SR419WTC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1785,
+      "width_mm": 675,
+      "depth_mm": 668,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/8/6/a/186a238091f374b7cd105ccb2d289ae8790ea8ed_Samsung_SR419WTC_419L_Top_Mount_Refrigerator_Twin_Cooling_Plus_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:41:48.771Z",
+      "confidence_score": 0.9
+    }
+  }
+}

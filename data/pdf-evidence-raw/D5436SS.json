@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-45538",
+  "category": "dishwasher",
+  "brand": "ASKO",
+  "model": "D5436SS",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/0/5/9/b0595aa465e0422358c120b6c8ab044985c0baa7_Asko_Dishwasher_D5436SS_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "ASKO",
+    "sku": "D5436SS",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 820,
+      "width_mm": 596,
+      "depth_mm": 550,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/0/5/9/b0595aa465e0422358c120b6c8ab044985c0baa7_Asko_Dishwasher_D5436SS_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:27:29.722Z",
+      "confidence_score": 0.9
+    }
+  }
+}

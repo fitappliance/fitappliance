@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-86475",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GS-L668MBNL",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/6/6/0/266041644110c0a3df7295c08f2a63283127a5b0_GS_L668MBNL_LG_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GS-L668MBNL",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1790,
+      "width_mm": 912,
+      "depth_mm": 738,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/6/6/0/266041644110c0a3df7295c08f2a63283127a5b0_GS_L668MBNL_LG_User_Manual.pdf",
+      "extraction_date": "2026-05-09T09:36:12.926Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-40199",
+  "category": "dryer",
+  "brand": "Haier",
+  "model": "HDY-M40",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/2/4/5/0245112094fa41e809447ff88a21a238c12197c9_Haier_HDY_M40_4kg_Dryer_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HDY-M40",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 830,
+      "width_mm": 600,
+      "depth_mm": 560,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/2/4/5/0245112094fa41e809447ff88a21a238c12197c9_Haier_HDY_M40_4kg_Dryer_User_Manual.pdf",
+      "extraction_date": "2026-05-09T08:59:46.458Z",
+      "confidence_score": 0.9
+    }
+  }
+}

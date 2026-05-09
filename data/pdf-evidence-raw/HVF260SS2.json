@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-49045",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HVF260SS2",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/7/0/8/b708c092d0386355db18484b064d72c0d028ad5b_HVF260SS2_Haier_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HVF260SS2",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1670,
+      "width_mm": 595,
+      "depth_mm": 685,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/7/0/8/b708c092d0386355db18484b064d72c0d028ad5b_HVF260SS2_Haier_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:27:44.551Z",
+      "confidence_score": 0.9
+    }
+  }
+}

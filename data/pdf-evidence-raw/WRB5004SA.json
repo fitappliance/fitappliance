@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53552",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WRB5004SA",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/8/9/c/d89cd74efef64bb64372eb717d09c63dff4e9693_Westinghouse_WRB5004SA_501L_Upright_Fridge_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WRB5004SA",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 699,
+      "depth_mm": 720,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/8/9/c/d89cd74efef64bb64372eb717d09c63dff4e9693_Westinghouse_WRB5004SA_501L_Upright_Fridge_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:55:25.191Z",
+      "confidence_score": 0.9
+    }
+  }
+}

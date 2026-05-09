@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53446",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HR6TFF437SD",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/6/7/8/d678beffe0e259b8595f93bd330778fb105fad25_HR6TFF437SD_Hisense_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HR6TFF437SD",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1756,
+      "width_mm": 680,
+      "depth_mm": 735,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/6/7/8/d678beffe0e259b8595f93bd330778fb105fad25_HR6TFF437SD_Hisense_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:32:42.323Z",
+      "confidence_score": 0.9
+    }
+  }
+}

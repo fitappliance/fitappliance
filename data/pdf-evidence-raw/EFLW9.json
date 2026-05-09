@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-62283",
+  "category": "washing_machine",
+  "brand": "Esatto",
+  "model": "EFLW9",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/5/c/9/75c9d10c814f860f198592c9d3d339e63812ceb6_Esatto_EFLW9_9kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "EFLW9",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 595,
+      "depth_mm": 565,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/5/c/9/75c9d10c814f860f198592c9d3d339e63812ceb6_Esatto_EFLW9_9kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:04:00.024Z",
+      "confidence_score": 0.9
+    }
+  }
+}

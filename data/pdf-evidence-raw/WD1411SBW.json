@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-63614",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WD1411SBW",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/4/e/d/e4edfd54cb01c9f7de27958195af478535bac9e9_WD1411SBW_LG_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WD1411SBW",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 680,
+      "door_open_90_depth_mm": 312
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/4/e/d/e4edfd54cb01c9f7de27958195af478535bac9e9_WD1411SBW_LG_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:07:44.053Z",
+      "confidence_score": 0.9
+    }
+  }
+}

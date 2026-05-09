@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53126",
+  "category": "dishwasher",
+  "brand": "Smeg",
+  "model": "DWAFI6314",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/7/4/8/f7480f1a8298f06a1d5fddae0b4e61284c2a5e52_Smeg_DWAFI6314_Fully_Integrated_DishDrawer_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "DWAFI6314",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 818,
+      "width_mm": 598,
+      "depth_mm": 570,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/7/4/8/f7480f1a8298f06a1d5fddae0b4e61284c2a5e52_Smeg_DWAFI6314_Fully_Integrated_DishDrawer_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:51:25.173Z",
+      "confidence_score": 0.9
+    }
+  }
+}

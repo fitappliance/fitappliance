@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-11970",
+  "category": "dishwasher",
+  "brand": "ASKO",
+  "model": "D5424SS",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/6/e/1/76e195745965763f941485720e53def6be90e787_Asko_D5424SS_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "ASKO",
+    "sku": "D5424SS",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 820,
+      "width_mm": 596,
+      "depth_mm": 559,
+      "door_open_90_depth_mm": 1198
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/6/e/1/76e195745965763f941485720e53def6be90e787_Asko_D5424SS_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:27:25.774Z",
+      "confidence_score": 0.9
+    }
+  }
+}

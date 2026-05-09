@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-101978",
+  "category": "dishwasher",
+  "brand": "Beko",
+  "model": "BDF1640DX",
+  "source_url": "https://www.appliancesonline.com.au/ak/c/a/c/7/cac70f72bd4c03946d7b4e4fdca1360ccfdb226a_Beko_Specification_Sheet_2021_BDF1640DX.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "BDF1640DX",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 865,
+      "width_mm": 598,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/c/a/c/7/cac70f72bd4c03946d7b4e4fdca1360ccfdb226a_Beko_Specification_Sheet_2021_BDF1640DX.pdf",
+      "extraction_date": "2026-05-09T08:30:20.033Z",
+      "confidence_score": 0.9
+    }
+  }
+}

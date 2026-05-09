@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-144762",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GT-2S",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/e/7/c/5e7c4f055c6ee8afa1ddf367fd893c060dfdd2b5_4a7598e728594b9bac44393a46338aa3e675a863_GT_2S___Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GT-2S",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1680,
+      "width_mm": 555,
+      "depth_mm": 637,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/e/7/c/5e7c4f055c6ee8afa1ddf367fd893c060dfdd2b5_4a7598e728594b9bac44393a46338aa3e675a863_GT_2S___Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:33:43.092Z",
+      "confidence_score": 0.9
+    }
+  }
+}

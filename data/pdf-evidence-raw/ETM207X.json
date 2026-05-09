@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-57877",
+  "category": "fridge",
+  "brand": "Esatto",
+  "model": "ETM207X",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/d/9/f/1d9f5cfe250896b4ef1aaaa5d1983ad57b035627_ETM207X_Esatto_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "ETM207X",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1372,
+      "width_mm": 545,
+      "depth_mm": 623,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/d/9/f/1d9f5cfe250896b4ef1aaaa5d1983ad57b035627_ETM207X_Esatto_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:15:01.900Z",
+      "confidence_score": 0.9
+    }
+  }
+}

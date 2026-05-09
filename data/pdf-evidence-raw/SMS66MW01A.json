@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-61048",
+  "category": "dishwasher",
+  "brand": "Bosch",
+  "model": "SMS66MW01A",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/4/5/9/1459360c51359f724022679a8d6bd47071ff0333_SMS66MW01A_Bosch_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "SMS66MW01A",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/4/5/9/1459360c51359f724022679a8d6bd47071ff0333_SMS66MW01A_Bosch_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:34:13.772Z",
+      "confidence_score": 0.9
+    }
+  }
+}

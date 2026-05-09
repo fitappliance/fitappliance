@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-62774",
+  "category": "fridge",
+  "brand": "Beko",
+  "model": "BBM407PX",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/b/0/2/3b02ed85cb37953ec4aa30d9086ae5f174fa09a8_Beko_BBM407PX_407L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "BBM407PX",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1720,
+      "width_mm": 700,
+      "depth_mm": 660,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/b/0/2/3b02ed85cb37953ec4aa30d9086ae5f174fa09a8_Beko_BBM407PX_407L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:02:05.631Z",
+      "confidence_score": 0.9
+    }
+  }
+}

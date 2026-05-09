@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-158623",
+  "category": "dishwasher",
+  "brand": "Whirlpool",
+  "model": "WFO3033PLAUS",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/9/9/e/f99e1004b0ca893679095150103a87d78ce48c1e_Whirlpool_WFO3033PLAUS_Spec_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Whirlpool",
+    "sku": "WFO3033PLAUS",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 590,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/9/9/e/f99e1004b0ca893679095150103a87d78ce48c1e_Whirlpool_WFO3033PLAUS_Spec_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:55:33.430Z",
+      "confidence_score": 0.9
+    }
+  }
+}

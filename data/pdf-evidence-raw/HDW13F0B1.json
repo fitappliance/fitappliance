@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-168357",
+  "category": "dishwasher",
+  "brand": "Haier",
+  "model": "HDW13F0B1",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/7/c/4/87c478ab67fb7290f7ffd4c83c91a59fd5f293e3_HDW13F0B1_Haier_Spec_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HDW13F0B1",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 859,
+      "width_mm": 597,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/7/c/4/87c478ab67fb7290f7ffd4c83c91a59fd5f293e3_HDW13F0B1_Haier_Spec_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:41:06.529Z",
+      "confidence_score": 0.9
+    }
+  }
+}

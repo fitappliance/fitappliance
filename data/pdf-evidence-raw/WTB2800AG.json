@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-56622",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WTB2800AG",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/e/1/6/0e167135c25b50bb4e4b928fb49457d7e387e7a3_WTB2800AG_Westinghouse_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WTB2800AG",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1605,
+      "width_mm": 540,
+      "depth_mm": 615,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/e/1/6/0e167135c25b50bb4e4b928fb49457d7e387e7a3_WTB2800AG_Westinghouse_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:56:24.210Z",
+      "confidence_score": 0.9
+    }
+  }
+}

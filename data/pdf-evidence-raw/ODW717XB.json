@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-38654",
+  "category": "dishwasher",
+  "brand": "Omega",
+  "model": "ODW717XB",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/1/1/4/2114811d252679d5cfb63ffee68febced3730cd1_06112014102713ODW717XB.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Omega",
+    "sku": "ODW717XB",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 598,
+      "depth_mm": 594,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/1/1/4/2114811d252679d5cfb63ffee68febced3730cd1_06112014102713ODW717XB.pdf",
+      "extraction_date": "2026-05-09T08:48:20.597Z",
+      "confidence_score": 0.9
+    }
+  }
+}

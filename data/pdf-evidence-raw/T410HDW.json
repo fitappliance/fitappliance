@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-66214",
+  "category": "dryer",
+  "brand": "ASKO",
+  "model": "T410HDW",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/c/3/7/0c376f84a83e297263b775a26c3c633fc142d030_T410HDW_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "ASKO",
+    "sku": "T410HDW",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 595,
+      "depth_mm": 755,
+      "door_open_90_depth_mm": 340
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/c/3/7/0c376f84a83e297263b775a26c3c633fc142d030_T410HDW_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:56:17.255Z",
+      "confidence_score": 0.9
+    }
+  }
+}

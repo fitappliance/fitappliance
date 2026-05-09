@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-163188",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GF-B589PLE",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/6/4/8/8648c67487182ad4b4b289d7cc551e3aef3b2ce6_GF_B589PLE_LG_User_manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GF-B589PLE",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1776,
+      "width_mm": 836,
+      "depth_mm": 731,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/6/4/8/8648c67487182ad4b4b289d7cc551e3aef3b2ce6_GF_B589PLE_LG_User_manual.pdf",
+      "extraction_date": "2026-05-09T09:35:21.171Z",
+      "confidence_score": 0.9
+    }
+  }
+}

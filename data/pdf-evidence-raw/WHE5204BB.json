@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-77090",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WHE5204BB",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/5/3/f/d53f60ce9d9ef3f3d3aa6a1036034befab87a549_WHE5204BB_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WHE5204BB",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 796,
+      "depth_mm": 769,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/5/3/f/d53f60ce9d9ef3f3d3aa6a1036034befab87a549_WHE5204BB_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:54:23.354Z",
+      "confidence_score": 0.9
+    }
+  }
+}

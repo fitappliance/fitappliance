@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-58435",
+  "category": "fridge",
+  "brand": "Esatto",
+  "model": "ETM239W",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/7/3/e/d73efe82404f9728c88966e39978b5d6cae6f869_Esatto_ETM239W_239L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "ETM239W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1522,
+      "width_mm": 545,
+      "depth_mm": 623,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/7/3/e/d73efe82404f9728c88966e39978b5d6cae6f869_Esatto_ETM239W_239L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:15:06.939Z",
+      "confidence_score": 0.9
+    }
+  }
+}

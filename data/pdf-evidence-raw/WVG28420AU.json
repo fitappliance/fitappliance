@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-67576",
+  "category": "washing_machine",
+  "brand": "Bosch",
+  "model": "WVG28420AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/c/1/8/7c18a247b631d1c791f83d9945fe537d0be0b886_WVG28420AU_Bosch_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "WVG28420AU",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 600,
+      "depth_mm": 590,
+      "door_open_90_depth_mm": 180
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/c/1/8/7c18a247b631d1c791f83d9945fe537d0be0b886_WVG28420AU_Bosch_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:02:11.160Z",
+      "confidence_score": 0.9
+    }
+  }
+}

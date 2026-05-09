@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-97643",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SRF5500S",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/9/4/d/f94d7ca20e9014fe323903284623fb78ad954303_SRF5500S_Samsung_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SRF5500S",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1793,
+      "width_mm": 833,
+      "depth_mm": 650,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/9/4/d/f94d7ca20e9014fe323903284623fb78ad954303_SRF5500S_Samsung_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:40:14.979Z",
+      "confidence_score": 0.9
+    }
+  }
+}

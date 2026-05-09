@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-157113",
+  "category": "dishwasher",
+  "brand": "Whirlpool",
+  "model": "WIE2C19AUSA",
+  "source_url": "https://www.appliancesonline.com.au/ak/c/4/9/a/c49adef8041a3d1e401ea28ab34f1292d6f5781b_Whirlpool_WIE2C19AUSA_Spec_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Whirlpool",
+    "sku": "WIE2C19AUSA",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 820,
+      "width_mm": 598,
+      "depth_mm": 555,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/c/4/9/a/c49adef8041a3d1e401ea28ab34f1292d6f5781b_Whirlpool_WIE2C19AUSA_Spec_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:55:00.292Z",
+      "confidence_score": 0.9
+    }
+  }
+}

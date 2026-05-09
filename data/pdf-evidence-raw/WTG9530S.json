@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-55753",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WTG9530S",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/f/0/3/7f0332fcdda0c2fabaa37a76a235c21d2bab94a4_WTG9530S_LG_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WTG9530S",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 1020,
+      "width_mm": 635,
+      "depth_mm": 700,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/f/0/3/7f0332fcdda0c2fabaa37a76a235c21d2bab94a4_WTG9530S_LG_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:10:24.554Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-60270",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SRF644CDLS",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/8/a/1/38a19d330fabdb471cfbae0804b1cfbcaa6e1a9c_Samsung_SRF644CDLS_647L_French_Flat_Door_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SRF644CDLS",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1777,
+      "width_mm": 908,
+      "depth_mm": 742,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/8/a/1/38a19d330fabdb471cfbae0804b1cfbcaa6e1a9c_Samsung_SRF644CDLS_647L_French_Flat_Door_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:42:40.847Z",
+      "confidence_score": 0.9
+    }
+  }
+}

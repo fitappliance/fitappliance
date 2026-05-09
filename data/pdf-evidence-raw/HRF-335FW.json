@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-24452",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HRF-335FW",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/5/d/6/05d625e074932e08b9aa7b65d9a8bd9fa85e3704_Haier_HRF_335FW_335L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HRF-335FW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1770,
+      "width_mm": 598,
+      "depth_mm": 668,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/5/d/6/05d625e074932e08b9aa7b65d9a8bd9fa85e3704_Haier_HRF_335FW_335L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:23:16.786Z",
+      "confidence_score": 0.9
+    }
+  }
+}

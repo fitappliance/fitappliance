@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-56932",
+  "category": "dryer",
+  "brand": "Haier",
+  "model": "HDV50E1",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/d/d/9/5dd96be349bb36c0927ca30594a37e9e6d60bb2b_HDV50E1_Haier_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HDV50E1",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 830,
+      "width_mm": 600,
+      "depth_mm": 495,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/d/d/9/5dd96be349bb36c0927ca30594a37e9e6d60bb2b_HDV50E1_Haier_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:59:33.042Z",
+      "confidence_score": 0.9
+    }
+  }
+}

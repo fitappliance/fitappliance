@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-33314",
+  "category": "dishwasher",
+  "brand": "Electrolux",
+  "model": "ESF6800ROX",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/e/2/7/7e271ecb05cac6f861c5fa77652a29676cfb1d87_esf6800rox_usermanual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Electrolux",
+    "sku": "ESF6800ROX",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 596,
+      "depth_mm": 610,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/e/2/7/7e271ecb05cac6f861c5fa77652a29676cfb1d87_esf6800rox_usermanual.pdf",
+      "extraction_date": "2026-05-09T08:38:01.724Z",
+      "confidence_score": 0.9
+    }
+  }
+}

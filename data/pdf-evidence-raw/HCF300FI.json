@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-178662",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HCF300FI",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/8/c/9/a8c9c8ddc319e895e23e5876cabf33f89d60d306_HCF300FI_Haier_Specification_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HCF300FI",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 865,
+      "width_mm": 1205,
+      "depth_mm": 620,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/8/c/9/a8c9c8ddc319e895e23e5876cabf33f89d60d306_HCF300FI_Haier_Specification_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:22:58.564Z",
+      "confidence_score": 0.9
+    }
+  }
+}

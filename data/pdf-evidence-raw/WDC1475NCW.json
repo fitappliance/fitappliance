@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-61776",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WDC1475NCW",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/4/6/6/e4665538a04f8460270326fca69ded47e929d288_WDC1475NCW_LG_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WDC1475NCW",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 560,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 5,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 100
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/4/6/6/e4665538a04f8460270326fca69ded47e929d288_WDC1475NCW_LG_User_Manual.pdf",
+      "extraction_date": "2026-05-09T10:09:49.488Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-76007",
+  "category": "dishwasher",
+  "brand": "Beko",
+  "model": "BDF1410X",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/8/7/d/887d3f0ba65f73cfc2d8d4570b3db51bd42dd0ab_Beko_Specification_Sheet_2021_BDF1410X.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "BDF1410X",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 865,
+      "width_mm": 598,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/8/7/d/887d3f0ba65f73cfc2d8d4570b3db51bd42dd0ab_Beko_Specification_Sheet_2021_BDF1410X.pdf",
+      "extraction_date": "2026-05-09T08:29:56.971Z",
+      "confidence_score": 0.9
+    }
+  }
+}

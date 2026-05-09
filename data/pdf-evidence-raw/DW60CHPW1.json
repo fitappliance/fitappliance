@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-42535",
+  "category": "dishwasher",
+  "brand": "Fisher & Paykel",
+  "model": "DW60CHPW1",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/1/b/5/21b57e8990fd3d6ed42d3f331580889f173de4bf_Fisher_and_Paykel_Dishwasher_DW60CHPW1_Installation_and_Operation_Guide.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "DW60CHPW1",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 598,
+      "depth_mm": 612,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/1/b/5/21b57e8990fd3d6ed42d3f331580889f173de4bf_Fisher_and_Paykel_Dishwasher_DW60CHPW1_Installation_and_Operation_Guide.pdf",
+      "extraction_date": "2026-05-09T08:40:02.021Z",
+      "confidence_score": 0.9
+    }
+  }
+}

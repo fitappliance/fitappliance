@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-80585",
+  "category": "fridge",
+  "brand": "Beko",
+  "model": "BAF369W",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/5/4/9/f549e5c7c1c45f02498906dc6d6da4d17146abb5_BAF369W_Beko_Specification_Sheet_Updated_2024__1_.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "BAF369W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1714,
+      "width_mm": 595,
+      "depth_mm": 650,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/5/4/9/f549e5c7c1c45f02498906dc6d6da4d17146abb5_BAF369W_Beko_Specification_Sheet_Updated_2024__1_.pdf",
+      "extraction_date": "2026-05-09T09:01:38.471Z",
+      "confidence_score": 0.9
+    }
+  }
+}

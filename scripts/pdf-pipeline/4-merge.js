@@ -60,6 +60,10 @@ function loadRuntimeCatalog(repoRoot = process.cwd()) {
   return rows;
 }
 
+function loadManualEvidenceManifest(repoRoot = process.cwd()) {
+  return readJson(path.join(repoRoot, 'data', 'manual-evidence.json'), { products: {} });
+}
+
 function isValidRawEvidence(value) {
   return Boolean(
     value
@@ -111,13 +115,13 @@ function buildEvidenceIndex(entries) {
         continue;
       }
       byProductId.set(productId, entry);
-      continue;
     }
 
-    for (const sku of getEvidenceSkuCandidates(entry)) {
-      if (!bySku.has(sku)) {
+    for (const sku of new Set(getEvidenceSkuCandidates(entry))) {
+      const existing = bySku.get(sku);
+      if (!existing) {
         bySku.set(sku, entry);
-      } else {
+      } else if (existing !== entry) {
         duplicateEntries.push(entry);
         break;
       }
@@ -147,6 +151,26 @@ function findEvidenceForProduct(product, evidenceIndex) {
   return null;
 }
 
+function findManifestEntryForEvidence(evidence, manifest) {
+  const products = manifest?.products || {};
+  if (evidence?.product_id && products[String(evidence.product_id)]) {
+    return products[String(evidence.product_id)];
+  }
+
+  const evidenceSkus = new Set(getEvidenceSkuCandidates(evidence));
+  if (evidenceSkus.size === 0) return null;
+
+  return Object.values(products).find((entry) => {
+    const entrySkus = [
+      entry?.model,
+      entry?.sku,
+      entry?.product?.model,
+      entry?.product?.sku
+    ].map(normalizeToken).filter(Boolean);
+    return entrySkus.some((sku) => evidenceSkus.has(sku));
+  }) || null;
+}
+
 function mergeEvidenceIntoProduct(product, evidence) {
   const extracted = evidence?.extracted || {};
   const dimensions = extracted.dimensions || {};
@@ -174,6 +198,25 @@ function mergeEvidenceIntoProduct(product, evidence) {
       raw_json_path: evidence.raw_json_path
     }
   };
+}
+
+function isDiscoveryManifestEntry(entry) {
+  return Boolean(entry?.product && entry?.discovery?.retailer_key === 'appliancesonline');
+}
+
+function buildDiscoveryProductFromEvidence(evidence, manifestEntry) {
+  if (!isDiscoveryManifestEntry(manifestEntry)) return null;
+  const product = {
+    ...(manifestEntry.product || {}),
+    id: evidence.product_id || manifestEntry.product.id,
+    cat: manifestEntry.category || manifestEntry.product.cat || String(evidence.extracted?.category || '').toLowerCase(),
+    brand: manifestEntry.brand || manifestEntry.product.brand || evidence.brand,
+    model: manifestEntry.model || manifestEntry.product.model || evidence.model || evidence.extracted?.sku,
+    unavailable: false,
+    retailers: Array.isArray(manifestEntry.product?.retailers) ? manifestEntry.product.retailers : []
+  };
+
+  return mergeEvidenceIntoProduct(product, evidence);
 }
 
 function buildSummary({ products, evidenceEntries, mergedProducts, unmatchedEvidence, duplicateEvidence }) {
@@ -206,16 +249,46 @@ function buildFinalCatalog({
   evidenceDir = path.join(repoRoot, DEFAULT_EVIDENCE_DIR)
 } = {}) {
   const products = loadRuntimeCatalog(repoRoot);
+  const manualEvidence = loadManualEvidenceManifest(repoRoot);
   const evidenceEntries = loadRawEvidenceEntries({ repoRoot, evidenceDir });
   const evidenceIndex = buildEvidenceIndex(evidenceEntries);
   const usedEvidencePaths = new Set();
+  const existingProductTokens = new Set(products.flatMap((product) => [
+    normalizeToken(product.id),
+    normalizeToken(product.model),
+    normalizeToken(product.sku)
+  ].filter(Boolean)));
 
-  const finalProducts = products.map((product) => {
+  const baseProducts = products.map((product) => {
     const evidence = findEvidenceForProduct(product, evidenceIndex);
     if (!evidence) return { ...product };
+    if (usedEvidencePaths.has(evidence.raw_json_path)) return { ...product };
     usedEvidencePaths.add(evidence.raw_json_path);
     return mergeEvidenceIntoProduct(product, evidence);
   });
+
+  const discoveryProducts = evidenceEntries
+    .filter((entry) => !usedEvidencePaths.has(entry.raw_json_path))
+    .filter((entry) => !evidenceIndex.duplicateEntries.some((duplicate) => duplicate.raw_json_path === entry.raw_json_path))
+    .map((entry) => ({
+      entry,
+      manifestEntry: findManifestEntryForEvidence(entry, manualEvidence)
+    }))
+    .map(({ entry, manifestEntry }) => buildDiscoveryProductFromEvidence(entry, manifestEntry))
+    .filter(Boolean)
+    .filter((product) => {
+      const tokens = [
+        normalizeToken(product.id),
+        normalizeToken(product.model),
+        normalizeToken(product.sku)
+      ].filter(Boolean);
+      if (tokens.some((token) => existingProductTokens.has(token))) return false;
+      tokens.forEach((token) => existingProductTokens.add(token));
+      usedEvidencePaths.add(product.evidence.raw_json_path);
+      return true;
+    });
+
+  const finalProducts = [...baseProducts, ...discoveryProducts];
 
   const mergedProducts = finalProducts.filter((product) => product.data_source === 'official_pdf');
   const unmatchedEvidence = evidenceEntries
@@ -297,3 +370,4 @@ exports.runMerge = runMerge;
 exports.loadRawEvidenceEntries = loadRawEvidenceEntries;
 exports.loadRuntimeCatalog = loadRuntimeCatalog;
 exports.findEvidenceForProduct = findEvidenceForProduct;
+exports.buildDiscoveryProductFromEvidence = buildDiscoveryProductFromEvidence;

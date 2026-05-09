@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-77147",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WFB4204WBR",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/4/1/7/94174b2142eb0e8849f2a9d160f641147c54c7b2_WFB4204WBR_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WFB4204WBR",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 699,
+      "depth_mm": 769,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/4/1/7/94174b2142eb0e8849f2a9d160f641147c54c7b2_WFB4204WBR_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:54:10.329Z",
+      "confidence_score": 0.9
+    }
+  }
+}

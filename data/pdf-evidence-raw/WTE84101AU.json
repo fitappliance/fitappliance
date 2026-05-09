@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-3001",
+  "category": "dryer",
+  "brand": "Bosch",
+  "model": "WTE84101AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/0/a/1/e0a1c0d9e5d04c9eb488a24540cb45aacb379b90_wte84101au.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "WTE84101AU",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 842,
+      "width_mm": 598,
+      "depth_mm": 599,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/0/a/1/e0a1c0d9e5d04c9eb488a24540cb45aacb379b90_wte84101au.pdf",
+      "extraction_date": "2026-05-09T08:57:29.257Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-33315",
+  "category": "dishwasher",
+  "brand": "Electrolux",
+  "model": "ESL6610RO",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/2/d/6/42d631f69bbcc659a2aa172b8cb30abbe8f201c6_esl6610ro_usermanual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Electrolux",
+    "sku": "ESL6610RO",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 818,
+      "width_mm": 596,
+      "depth_mm": 550,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 2,
+      "left_mm": 5,
+      "right_mm": 5,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/2/d/6/42d631f69bbcc659a2aa172b8cb30abbe8f201c6_esl6610ro_usermanual.pdf",
+      "extraction_date": "2026-05-09T08:38:19.079Z",
+      "confidence_score": 0.9
+    }
+  }
+}

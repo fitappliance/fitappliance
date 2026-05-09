@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-145112",
+  "category": "dishwasher",
+  "brand": "Fisher & Paykel",
+  "model": "DW60UNT4X2",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/9/8/f/a98f7b9314fe14a64c95e465bc00187450ab2394_QRG_AU_82437.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "DW60UNT4X2",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 857,
+      "width_mm": 597,
+      "depth_mm": 574,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/9/8/f/a98f7b9314fe14a64c95e465bc00187450ab2394_QRG_AU_82437.pdf",
+      "extraction_date": "2026-05-09T08:41:02.623Z",
+      "confidence_score": 0.9
+    }
+  }
+}

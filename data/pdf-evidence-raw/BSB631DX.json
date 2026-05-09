@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-62160",
+  "category": "fridge",
+  "brand": "Beko",
+  "model": "BSB631DX",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/6/a/6/d6a6c379f461bd7d40a1e76edf3267bbbc821cbc_Beko_BSB631DX_631L_Side_by_Side_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "BSB631DX",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1790,
+      "width_mm": 910,
+      "depth_mm": 720,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/6/a/6/d6a6c379f461bd7d40a1e76edf3267bbbc821cbc_Beko_BSB631DX_631L_Side_by_Side_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:02:39.615Z",
+      "confidence_score": 0.9
+    }
+  }
+}

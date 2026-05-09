@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53125",
+  "category": "dishwasher",
+  "brand": "Smeg",
+  "model": "DWA6214S",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/7/8/3/3783299008bd20143c21e2baab247a9bcef005af_Smeg_DWA6214S_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "DWA6214S",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 598,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/7/8/3/3783299008bd20143c21e2baab247a9bcef005af_Smeg_DWA6214S_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:50:10.366Z",
+      "confidence_score": 0.9
+    }
+  }
+}

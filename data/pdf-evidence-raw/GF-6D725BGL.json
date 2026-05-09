@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53029",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GF-6D725BGL",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/f/4/a/4f4a059759af24b70e9999b130988e496c0e8cf4_LG_GF_6D725BGL_725L_French_Door_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GF-6D725BGL",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1800,
+      "width_mm": 912,
+      "depth_mm": 758,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/f/4/a/4f4a059759af24b70e9999b130988e496c0e8cf4_LG_GF_6D725BGL_725L_French_Door_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:36:20.425Z",
+      "confidence_score": 0.9
+    }
+  }
+}

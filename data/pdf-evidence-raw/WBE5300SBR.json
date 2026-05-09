@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-77083",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WBE5300SBR",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/2/f/6/82f6554c9300d92777ec07393b1cf5c7a106e46a_WBE5300SBR_Westinghouse_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WBE5300SBR",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 796,
+      "depth_mm": 723,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/2/f/6/82f6554c9300d92777ec07393b1cf5c7a106e46a_WBE5300SBR_Westinghouse_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:52:45.727Z",
+      "confidence_score": 0.9
+    }
+  }
+}

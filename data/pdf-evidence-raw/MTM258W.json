@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-50193",
+  "category": "fridge",
+  "brand": "Midea",
+  "model": "MTM258W",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/4/6/a/a46ade996c23c726bc44d26819ea6cfe1e54c86c_Midea_MTM258W_258L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Midea",
+    "sku": "MTM258W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1585,
+      "width_mm": 545,
+      "depth_mm": 585,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/4/6/a/a46ade996c23c726bc44d26819ea6cfe1e54c86c_Midea_MTM258W_258L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:38:57.104Z",
+      "confidence_score": 0.9
+    }
+  }
+}

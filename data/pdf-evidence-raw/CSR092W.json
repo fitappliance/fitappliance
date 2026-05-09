@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-71020",
+  "category": "fridge",
+  "brand": "CHiQ",
+  "model": "CSR092W",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/9/e/4/19e4cf680e6a9100daae926f5e2612097bd30aa7_CSR092W_CHiQ_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "CHiQ",
+    "sku": "CSR092W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 831,
+      "width_mm": 474,
+      "depth_mm": 447,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/9/e/4/19e4cf680e6a9100daae926f5e2612097bd30aa7_CSR092W_CHiQ_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:10:30.754Z",
+      "confidence_score": 0.9
+    }
+  }
+}

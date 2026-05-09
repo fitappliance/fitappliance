@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-52110",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SR342WTC",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/8/8/c/588ce95923401d6d310b2979d12543b43b1616dd_Samsung_SR342WTC_341L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SR342WTC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1715,
+      "width_mm": 600,
+      "depth_mm": 672,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/8/8/c/588ce95923401d6d310b2979d12543b43b1616dd_Samsung_SR342WTC_341L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:41:31.579Z",
+      "confidence_score": 0.9
+    }
+  }
+}

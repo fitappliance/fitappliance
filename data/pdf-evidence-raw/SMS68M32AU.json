@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-45245",
+  "category": "dishwasher",
+  "brand": "Bosch",
+  "model": "SMS68M32AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/a/2/5/4a2528e937dfe06840058f53857c3596bb0315f4_Bosch_SMS68M32AU_Serie_6_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "SMS68M32AU",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/a/2/5/4a2528e937dfe06840058f53857c3596bb0315f4_Bosch_SMS68M32AU_Serie_6_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:34:22.230Z",
+      "confidence_score": 0.9
+    }
+  }
+}

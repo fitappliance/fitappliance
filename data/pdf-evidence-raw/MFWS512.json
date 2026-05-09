@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-46273",
+  "category": "washing_machine",
+  "brand": "Midea",
+  "model": "MFWS512",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/1/3/f/213f043aa6a0e6f90cf629dde31c63d2ca9bca18_Midea_MFWS512_5kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Midea",
+    "sku": "MFWS512",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 595,
+      "depth_mm": 470,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/1/3/f/213f043aa6a0e6f90cf629dde31c63d2ca9bca18_Midea_MFWS512_5kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:10:54.722Z",
+      "confidence_score": 0.9
+    }
+  }
+}

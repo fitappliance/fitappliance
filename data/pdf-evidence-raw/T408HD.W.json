@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-64001",
+  "category": "dryer",
+  "brand": "ASKO",
+  "model": "T408HD.W",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/9/2/0/59202eeb8fbf141fca78b4c6254b0a08a15df8ec_Asko_T408HD.W_8kg_Heat_Pump_Dryer_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "ASKO",
+    "sku": "T408HD.W",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 595,
+      "depth_mm": 640,
+      "door_open_90_depth_mm": 1165
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/9/2/0/59202eeb8fbf141fca78b4c6254b0a08a15df8ec_Asko_T408HD.W_8kg_Heat_Pump_Dryer_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:56:04.149Z",
+      "confidence_score": 0.9
+    }
+  }
+}

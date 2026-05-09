@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-52802",
+  "category": "dishwasher",
+  "brand": "Electrolux",
+  "model": "ESF8725ROX",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/7/f/4/67f43b5b71e519d86bd40001e99cf0446dda5739_Electrolux_ESF8725ROX_Dishwasher_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Electrolux",
+    "sku": "ESF8725ROX",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 596,
+      "depth_mm": 610,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/7/f/4/67f43b5b71e519d86bd40001e99cf0446dda5739_Electrolux_ESF8725ROX_Dishwasher_User_Manual.pdf",
+      "extraction_date": "2026-05-09T08:38:05.394Z",
+      "confidence_score": 0.9
+    }
+  }
+}

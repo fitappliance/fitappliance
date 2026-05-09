@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-70360",
+  "category": "washing_machine",
+  "brand": "Haier",
+  "model": "HWF80BW2",
+  "source_url": "https://www.appliancesonline.com.au/ak/c/2/3/c/c23cf4c2c80258ec243343e6f03fb98799477333_HWF80BW2_Haier_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HWF80BW2",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 595,
+      "depth_mm": 650,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/c/2/3/c/c23cf4c2c80258ec243343e6f03fb98799477333_HWF80BW2_Haier_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:06:23.883Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-55750",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WD1408NPW",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/1/1/d/611dea24bf66c8d4ed7ac39aba6a7a33b7ea66c7_LG_WD1408NPW_8kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WD1408NPW",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 675,
+      "door_open_90_depth_mm": 312
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/1/1/d/611dea24bf66c8d4ed7ac39aba6a7a33b7ea66c7_LG_WD1408NPW_8kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:09:06.236Z",
+      "confidence_score": 0.9
+    }
+  }
+}

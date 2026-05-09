@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-84363",
+  "category": "dishwasher",
+  "brand": "Westinghouse",
+  "model": "WSF6606KXA",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/2/9/b/f29bc74bb4149f1bc263db40fa7c52b10e800339_WSF6606KXA_Westinghouse_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WSF6606KXA",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 598,
+      "depth_mm": 598,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/2/9/b/f29bc74bb4149f1bc263db40fa7c52b10e800339_WSF6606KXA_Westinghouse_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:54:05.396Z",
+      "confidence_score": 0.9
+    }
+  }
+}

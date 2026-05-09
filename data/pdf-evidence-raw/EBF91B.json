@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-73153",
+  "category": "fridge",
+  "brand": "Esatto",
+  "model": "EBF91B",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/5/5/0/45508988a93676bec279e1225bfe40c8dd2aefde_Esatto_ProductCard_EBF91B.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "EBF91B",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 837,
+      "width_mm": 470,
+      "depth_mm": 492,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/5/5/0/45508988a93676bec279e1225bfe40c8dd2aefde_Esatto_ProductCard_EBF91B.pdf",
+      "extraction_date": "2026-05-09T09:14:26.428Z",
+      "confidence_score": 0.9
+    }
+  }
+}

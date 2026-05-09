@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-73519",
+  "category": "fridge",
+  "brand": "CHiQ",
+  "model": "CSF185W",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/5/b/2/e5b2ea7024d4475eeb9779d6d970176eb5e0635b_CSF185W_CHiQ_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "CHiQ",
+    "sku": "CSF185W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1460,
+      "width_mm": 545,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/5/b/2/e5b2ea7024d4475eeb9779d6d970176eb5e0635b_CSF185W_CHiQ_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:10:26.469Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-47911",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SRF751CCSS",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/c/9/7/ec9757992a6d67e4ee482c3aa4605db629bc9cba_SRF751CCSS_Samsung_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SRF751CCSS",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1749,
+      "width_mm": 908,
+      "depth_mm": 733,
+      "door_open_90_depth_mm": 1256
+    },
+    "clearance_requirements": {
+      "top_mm": 52,
+      "left_mm": 80,
+      "right_mm": 80,
+      "rear_mm": 52
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/c/9/7/ec9757992a6d67e4ee482c3aa4605db629bc9cba_SRF751CCSS_Samsung_User_Manual.pdf",
+      "extraction_date": "2026-05-09T09:43:12.432Z",
+      "confidence_score": 0.9
+    }
+  }
+}

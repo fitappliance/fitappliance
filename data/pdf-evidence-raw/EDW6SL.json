@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-57645",
+  "category": "dishwasher",
+  "brand": "Esatto",
+  "model": "EDW6SL",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/4/9/1/3491720a9e9da0ad69598b608902a5d0878166fa_Esatto_EDW6SL_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "EDW6SL",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 580,
+      "door_open_90_depth_mm": 1175
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/4/9/1/3491720a9e9da0ad69598b608902a5d0878166fa_Esatto_EDW6SL_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:38:58.554Z",
+      "confidence_score": 0.9
+    }
+  }
+}

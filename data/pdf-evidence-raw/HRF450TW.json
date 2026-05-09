@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-172640",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HRF450TW",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/5/d/8/a5d82ced56f8ef038e5dc140ac5c5b404229c400_QRG_AU_62413.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HRF450TW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1775,
+      "width_mm": 700,
+      "depth_mm": 695,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/5/d/8/a5d82ced56f8ef038e5dc140ac5c5b404229c400_QRG_AU_62413.pdf",
+      "extraction_date": "2026-05-09T09:23:44.344Z",
+      "confidence_score": 0.9
+    }
+  }
+}

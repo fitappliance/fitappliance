@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-77099",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WTB4600SBL",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/0/a/5/90a57d4a313da7d498660052799bcf77a172f85a_WTB4600SBL_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WTB4600SBL",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 699,
+      "depth_mm": 723,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/0/a/5/90a57d4a313da7d498660052799bcf77a172f85a_WTB4600SBL_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:57:21.043Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53441",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HR6TFF230",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/3/3/b/033b8220ad1964ec29684abc63ba79c588f587de_Hisense_HR6TFF230_230L_Top_Mount_Fridge_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HR6TFF230",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1301,
+      "width_mm": 960,
+      "depth_mm": 740,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 75
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/3/3/b/033b8220ad1964ec29684abc63ba79c588f587de_Hisense_HR6TFF230_230L_Top_Mount_Fridge_User_Manual.pdf",
+      "extraction_date": "2026-05-09T09:32:24.226Z",
+      "confidence_score": 0.9
+    }
+  }
+}

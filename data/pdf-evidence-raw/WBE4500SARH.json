@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-48216",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WBE4500SARH",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/4/c/8/44c8df61f406b71e4fd9bba46908bdaa80316b40_Westinghouse_WBE4500SARH_455L_Bottom_Mount_Fridge_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WBE4500SARH",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1705,
+      "width_mm": 699,
+      "depth_mm": 727,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/4/c/8/44c8df61f406b71e4fd9bba46908bdaa80316b40_Westinghouse_WBE4500SARH_455L_Bottom_Mount_Fridge_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:51:26.021Z",
+      "confidence_score": 0.9
+    }
+  }
+}

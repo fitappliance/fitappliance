@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-55657",
+  "category": "washing_machine",
+  "brand": "Bosch",
+  "model": "WAT24220AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/7/7/c/477c27d5af402679c0a32b38b5878e7c5a5378e1_WAT24220AU_Bosch_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "WAT24220AU",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 848,
+      "width_mm": 598,
+      "depth_mm": 590,
+      "door_open_90_depth_mm": 165
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/7/7/c/477c27d5af402679c0a32b38b5878e7c5a5378e1_WAT24220AU_Bosch_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:01:20.749Z",
+      "confidence_score": 0.9
+    }
+  }
+}

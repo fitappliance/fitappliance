@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-52322",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GB-W450UPLX",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/6/0/c/e60c45a04c9ebcffa25667a2bf5d929a3b1dad00_LG_GB_W450UPLX_450L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GB-W450UPLX",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 710,
+      "depth_mm": 740,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/6/0/c/e60c45a04c9ebcffa25667a2bf5d929a3b1dad00_LG_GB_W450UPLX_450L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:37:43.392Z",
+      "confidence_score": 0.9
+    }
+  }
+}

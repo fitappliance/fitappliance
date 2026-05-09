@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-104789",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HVF91VW",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/9/e/4/99e4db5c1164449dcc1f14bdff81b648c95aff92_HVF91VW_Haier_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HVF91VW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 550,
+      "depth_mm": 580,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/9/e/4/99e4db5c1164449dcc1f14bdff81b648c95aff92_HVF91VW_Haier_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:24:54.168Z",
+      "confidence_score": 0.9
+    }
+  }
+}

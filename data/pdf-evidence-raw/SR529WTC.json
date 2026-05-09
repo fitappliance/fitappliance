@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-52116",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SR529WTC",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/8/d/2/a8d2e23e52b8b0f51b4f8b337eef8cfdd053b239_Samsung_SR529WTC_533L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SR529WTC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1785,
+      "width_mm": 790,
+      "depth_mm": 720,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/8/d/2/a8d2e23e52b8b0f51b4f8b337eef8cfdd053b239_Samsung_SR529WTC_533L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:42:16.194Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-160662",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HRF90UC",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/3/2/9/53296d56985d94f266313760364da145158895dc_QRG_AU_62285.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HRF90UC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 475,
+      "depth_mm": 455,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/3/2/9/53296d56985d94f266313760364da145158895dc_QRG_AU_62285.pdf",
+      "extraction_date": "2026-05-09T09:24:51.103Z",
+      "confidence_score": 0.9
+    }
+  }
+}

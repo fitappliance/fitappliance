@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-68338",
+  "category": "washing_machine",
+  "brand": "Esatto",
+  "model": "ETL6.1",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/9/e/c/d9ecb6ce9fbe4d58e9b72a85b54676afd8e6a6b7_ETL6.1_Esatto_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "ETL6.1",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 948,
+      "width_mm": 550,
+      "depth_mm": 565,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/9/e/c/d9ecb6ce9fbe4d58e9b72a85b54676afd8e6a6b7_ETL6.1_Esatto_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:04:03.359Z",
+      "confidence_score": 0.9
+    }
+  }
+}

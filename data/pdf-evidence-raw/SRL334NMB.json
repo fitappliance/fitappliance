@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-141942",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SRL334NMB",
+  "source_url": "https://www.appliancesonline.com.au/ak/c/f/8/2/cf82ae92917001e329afc948d5e0e2acacf64a0b_SRL334NMB_Samsung_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SRL334NMB",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1700,
+      "width_mm": 595,
+      "depth_mm": 663,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/c/f/8/2/cf82ae92917001e329afc948d5e0e2acacf64a0b_SRL334NMB_Samsung_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:39:48.221Z",
+      "confidence_score": 0.9
+    }
+  }
+}

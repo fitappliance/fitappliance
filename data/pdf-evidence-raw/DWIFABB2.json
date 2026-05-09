@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-84169",
+  "category": "dishwasher",
+  "brand": "Smeg",
+  "model": "DWIFABB2",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/6/e/f/66efb541599cd936671e9508495c98032681bbad_DWIFABB2___Spec_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "DWIFABB2",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 818,
+      "width_mm": 598,
+      "depth_mm": 545,
+      "door_open_90_depth_mm": 1171
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/6/e/f/66efb541599cd936671e9508495c98032681bbad_DWIFABB2___Spec_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:49:27.147Z",
+      "confidence_score": 0.9
+    }
+  }
+}

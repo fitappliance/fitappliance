@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-50910",
+  "category": "washing_machine",
+  "brand": "Fisher & Paykel",
+  "model": "WH8560J2",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/e/2/9/8e293cb256975102acf9700d384eed1ec489a492_WH8560J2_Fisher___Paykel_8.5_kg_Front_Load_Washing_Machine_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "WH8560J2",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 590,
+      "door_open_90_depth_mm": 1010
+    },
+    "clearance_requirements": {
+      "top_mm": 20,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/e/2/9/8e293cb256975102acf9700d384eed1ec489a492_WH8560J2_Fisher___Paykel_8.5_kg_Front_Load_Washing_Machine_User_Manual.pdf",
+      "extraction_date": "2026-05-09T10:05:46.248Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-59196",
+  "category": "fridge",
+  "brand": "Beko",
+  "model": "CN151140ZW",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/a/0/5/1a05d3ddc3c2677fb285eddbc3e6f848165f4850_Beko_CN151140ZW_505L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "CN151140ZW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1720,
+      "width_mm": 740,
+      "depth_mm": 770,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/a/0/5/1a05d3ddc3c2677fb285eddbc3e6f848165f4850_Beko_CN151140ZW_505L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:04:15.765Z",
+      "confidence_score": 0.9
+    }
+  }
+}

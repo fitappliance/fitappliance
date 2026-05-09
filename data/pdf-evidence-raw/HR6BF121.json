@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53422",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HR6BF121",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/1/6/c/f16ca30a90d6a62c5ab80deabd09671f6ee2c49c_Hisense_HR6BF121_120L_Bar_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HR6BF121",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 820,
+      "width_mm": 515,
+      "depth_mm": 543,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/1/6/c/f16ca30a90d6a62c5ab80deabd09671f6ee2c49c_Hisense_HR6BF121_120L_Bar_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:30:31.137Z",
+      "confidence_score": 0.9
+    }
+  }
+}

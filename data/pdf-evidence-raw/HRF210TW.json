@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-172635",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HRF210TW",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/d/2/1/bd215159603478a482e5d9dd91269627d99ea595_QRG_AU_62407__1_.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HRF210TW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1465,
+      "width_mm": 545,
+      "depth_mm": 565,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/d/2/1/bd215159603478a482e5d9dd91269627d99ea595_QRG_AU_62407__1_.pdf",
+      "extraction_date": "2026-05-09T09:22:33.144Z",
+      "confidence_score": 0.9
+    }
+  }
+}

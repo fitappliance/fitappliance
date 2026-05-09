@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-62312",
+  "category": "fridge",
+  "brand": "Esatto",
+  "model": "EBF46W",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/5/c/5/55c5595db242f09738f4aa47d64d527c85b3e628_Esatto_EBF46W_46L_Bar_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "EBF46W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 492,
+      "width_mm": 472,
+      "depth_mm": 450,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/5/c/5/55c5595db242f09738f4aa47d64d527c85b3e628_Esatto_EBF46W_46L_Bar_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:14:17.333Z",
+      "confidence_score": 0.9
+    }
+  }
+}

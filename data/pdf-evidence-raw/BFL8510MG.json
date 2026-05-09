@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-62153",
+  "category": "washing_machine",
+  "brand": "Beko",
+  "model": "BFL8510MG",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/c/7/7/ac776a3edf82bb4c2525042dae97fa5af85053e6_Beko_BFL8510MG_8.5kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "BFL8510MG",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 846,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/c/7/7/ac776a3edf82bb4c2525042dae97fa5af85053e6_Beko_BFL8510MG_8.5kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:00:09.188Z",
+      "confidence_score": 0.9
+    }
+  }
+}

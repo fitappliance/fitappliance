@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-77087",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WBE5304BBR",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/0/f/9/f0f95b9732970b0289caa4c042ca7ca2304d34f0_WBE5304BBR_Westinghouse_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WBE5304BBR",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 796,
+      "depth_mm": 769,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/0/f/9/f0f95b9732970b0289caa4c042ca7ca2304d34f0_WBE5304BBR_Westinghouse_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:53:15.681Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-59484",
+  "category": "dryer",
+  "brand": "Bosch",
+  "model": "WTY877W0AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/a/e/b/faebd291a3d3487c2987849309dd2b96d6490071_Bosch_WTY877W0AU_9kg_Heat_Pump_Dryer_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "WTY877W0AU",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 842,
+      "width_mm": 598,
+      "depth_mm": 599,
+      "door_open_90_depth_mm": 180
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/a/e/b/faebd291a3d3487c2987849309dd2b96d6490071_Bosch_WTY877W0AU_9kg_Heat_Pump_Dryer_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:57:49.197Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-169303",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WXLC-1016G",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/4/e/b/14ebb2e818a3f26482fe75f0855ab2c7b3235857_WM_EAP_MFL71989930_00_250527_00_OM_PRINT.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WXLC-1016G",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 950,
+      "width_mm": 650,
+      "depth_mm": 780,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 5,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 100
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/4/e/b/14ebb2e818a3f26482fe75f0855ab2c7b3235857_WM_EAP_MFL71989930_00_250527_00_OM_PRINT.pdf",
+      "extraction_date": "2026-05-09T10:08:01.140Z",
+      "confidence_score": 0.9
+    }
+  }
+}

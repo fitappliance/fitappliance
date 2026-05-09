@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-50179",
+  "category": "fridge",
+  "brand": "Midea",
+  "model": "MCH295W",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/e/8/2/fe823f6112157bafd8887f0a7e1afbf875ec9c80_Midea_MCH295W_295L_Chest_Freezer_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Midea",
+    "sku": "MCH295W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 1115,
+      "depth_mm": 670,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 700,
+      "left_mm": 200,
+      "right_mm": 200,
+      "rear_mm": 200
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/e/8/2/fe823f6112157bafd8887f0a7e1afbf875ec9c80_Midea_MCH295W_295L_Chest_Freezer_User_Manual.pdf",
+      "extraction_date": "2026-05-09T09:38:08.200Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-73369",
+  "category": "fridge",
+  "brand": "Esatto",
+  "model": "ECF418W",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/c/3/1/ac310396e118bc45f12d54eac4b9c308ea7a17d0_ECF418W_Esatto_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "ECF418W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 825,
+      "width_mm": 1416,
+      "depth_mm": 750,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/c/3/1/ac310396e118bc45f12d54eac4b9c308ea7a17d0_ECF418W_Esatto_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:13:54.119Z",
+      "confidence_score": 0.9
+    }
+  }
+}

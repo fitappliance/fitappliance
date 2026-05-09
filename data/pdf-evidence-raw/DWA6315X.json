@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53501",
+  "category": "dishwasher",
+  "brand": "Smeg",
+  "model": "DWA6315X",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/5/c/7/35c757744c6e2be8a072b8d184975352dfd6b2d4_Smeg_DWA6315X_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "DWA6315X",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 598,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/5/c/7/35c757744c6e2be8a072b8d184975352dfd6b2d4_Smeg_DWA6315X_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:50:52.093Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-86322",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WBB3400AH-X",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/8/8/c/988c86ae0776731ade38c208011673bc66d1c67f_WBB3400AH_X_Westinghouse_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WBB3400AH-X",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1645,
+      "width_mm": 598,
+      "depth_mm": 650,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/8/8/c/988c86ae0776731ade38c208011673bc66d1c67f_WBB3400AH_X_Westinghouse_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:49:34.156Z",
+      "confidence_score": 0.9
+    }
+  }
+}

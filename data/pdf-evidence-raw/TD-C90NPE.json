@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-55749",
+  "category": "dryer",
+  "brand": "LG",
+  "model": "TD-C90NPE",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/8/5/5/a855741bfe68b2a63b482b96bdf14df1329013e7_TD_C90NPE_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "TD-C90NPE",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 680,
+      "door_open_90_depth_mm": 360
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/8/5/5/a855741bfe68b2a63b482b96bdf14df1329013e7_TD_C90NPE_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:59:58.188Z",
+      "confidence_score": 0.9
+    }
+  }
+}

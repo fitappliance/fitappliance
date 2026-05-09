@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-154128",
+  "category": "fridge",
+  "brand": "Beko",
+  "model": "BBMB445PX",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/3/2/3/232353f1e5d89b03b7aec0577e6f7ef33c4d13f0_BBMB445PX_Beko_Specification_Sheet_2023.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "BBMB445PX",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1770,
+      "width_mm": 756,
+      "depth_mm": 700,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/3/2/3/232353f1e5d89b03b7aec0577e6f7ef33c4d13f0_BBMB445PX_Beko_Specification_Sheet_2023.pdf",
+      "extraction_date": "2026-05-09T09:01:48.356Z",
+      "confidence_score": 0.9
+    }
+  }
+}

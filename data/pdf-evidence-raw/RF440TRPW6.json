@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-62567",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "RF440TRPW6",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/f/2/f/df2f96977816d0c9c4482eec45ddce0f8280f9a3_Fisher___Paykel_RF440TRPW6_447L_ActiveSmart_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "RF440TRPW6",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1720,
+      "width_mm": 680,
+      "depth_mm": 695,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 30
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/f/2/f/df2f96977816d0c9c4482eec45ddce0f8280f9a3_Fisher___Paykel_RF440TRPW6_447L_ActiveSmart_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:19:36.231Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-78606",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HR6TFF459",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/8/e/7/58e7f6d5fd0222534617e436281c52bbac875d2f_HR6TFF459_Hisense_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HR6TFF459",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1720,
+      "width_mm": 704,
+      "depth_mm": 685,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 100
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/8/e/7/58e7f6d5fd0222534617e436281c52bbac875d2f_HR6TFF459_Hisense_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:29:04.160Z",
+      "confidence_score": 0.9
+    }
+  }
+}

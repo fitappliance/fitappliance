@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-127724",
+  "category": "fridge",
+  "brand": "CHiQ",
+  "model": "CFD502NBS",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/5/3/3/d533d1a7966f1c5019628b2e07624df1d123d530_CFD502NBS_CHiQ_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "CHiQ",
+    "sku": "CFD502NBS",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1810,
+      "width_mm": 785,
+      "depth_mm": 716,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/5/3/3/d533d1a7966f1c5019628b2e07624df1d123d530_CFD502NBS_CHiQ_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:08:52.696Z",
+      "confidence_score": 0.9
+    }
+  }
+}

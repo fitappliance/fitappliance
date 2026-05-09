@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-74657",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "RF388FRDW1",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/3/0/a/f30a448df6e175ee483e167b289857b922786bc8_RF388FRDW1_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "RF388FRDW1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1695,
+      "width_mm": 635,
+      "depth_mm": 715,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/3/0/a/f30a448df6e175ee483e167b289857b922786bc8_RF388FRDW1_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:19:27.631Z",
+      "confidence_score": 0.9
+    }
+  }
+}

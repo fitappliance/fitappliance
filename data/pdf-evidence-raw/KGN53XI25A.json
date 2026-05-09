@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-32728",
+  "category": "fridge",
+  "brand": "Bosch",
+  "model": "KGN53XI25A",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/f/0/3/4f0338707be45f753378ea6c41e2645a017114a0_Bosch_KGN53XI25A_452L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "KGN53XI25A",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1700,
+      "width_mm": 700,
+      "depth_mm": 770,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/f/0/3/4f0338707be45f753378ea6c41e2645a017114a0_Bosch_KGN53XI25A_452L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:06:35.282Z",
+      "confidence_score": 0.9
+    }
+  }
+}

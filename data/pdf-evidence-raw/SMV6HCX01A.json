@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-102167",
+  "category": "dishwasher",
+  "brand": "Bosch",
+  "model": "SMV6HCX01A",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/9/7/b/597b279d46d7aff5b5bc28ab6defa8172e817574_SMV6HCX01A_Bosch_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "SMV6HCX01A",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 815,
+      "width_mm": 598,
+      "depth_mm": 550,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/9/7/b/597b279d46d7aff5b5bc28ab6defa8172e817574_SMV6HCX01A_Bosch_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:37:12.009Z",
+      "confidence_score": 0.9
+    }
+  }
+}

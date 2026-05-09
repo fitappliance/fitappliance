@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-92114",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "RF605QZUVB1",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/7/e/0/87e0dd003b643e1b122860caaf6f062a6185963c_QRG_AU_26553_RF605QZUVB1.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "RF605QZUVB1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1790,
+      "width_mm": 905,
+      "depth_mm": 688,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/7/e/0/87e0dd003b643e1b122860caaf6f062a6185963c_QRG_AU_26553_RF605QZUVB1.pdf",
+      "extraction_date": "2026-05-09T09:16:33.650Z",
+      "confidence_score": 0.9
+    }
+  }
+}

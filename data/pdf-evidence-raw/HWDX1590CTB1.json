@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-162746",
+  "category": "washing_machine",
+  "brand": "Haier",
+  "model": "HWDX1590CTB1",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/e/2/f/9e2fba8c1240dd8bff546a77c843cc98a097a3ec_QRG_AU_62381.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HWDX1590CTB1",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 985,
+      "width_mm": 701,
+      "depth_mm": 688,
+      "door_open_90_depth_mm": 1265
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/e/2/f/9e2fba8c1240dd8bff546a77c843cc98a097a3ec_QRG_AU_62381.pdf",
+      "extraction_date": "2026-05-09T10:05:54.075Z",
+      "confidence_score": 0.9
+    }
+  }
+}

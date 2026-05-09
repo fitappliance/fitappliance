@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53531",
+  "category": "fridge",
+  "brand": "Electrolux",
+  "model": "ERE5047SA",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/9/5/e/195ecde86b32e9783fa3f9663cca3487aaa95b34_ERE5047SA_Electrolux_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Electrolux",
+    "sku": "ERE5047SA",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 699,
+      "depth_mm": 773,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/9/5/e/195ecde86b32e9783fa3f9663cca3487aaa95b34_ERE5047SA_Electrolux_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:12:45.629Z",
+      "confidence_score": 0.9
+    }
+  }
+}

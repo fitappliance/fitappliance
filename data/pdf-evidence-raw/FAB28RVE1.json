@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-29107",
+  "category": "fridge",
+  "brand": "Smeg",
+  "model": "FAB28RVE1",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/6/6/3/166391d49d861d848dc056ec41045de725134efe_FAB28RVE1_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "FAB28RVE1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1510,
+      "width_mm": 600,
+      "depth_mm": 732,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/6/6/3/166391d49d861d848dc056ec41045de725134efe_FAB28RVE1_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:46:50.563Z",
+      "confidence_score": 0.9
+    }
+  }
+}

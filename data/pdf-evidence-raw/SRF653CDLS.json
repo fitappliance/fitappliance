@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-54884",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SRF653CDLS",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/9/8/d/698d6a26032a2314f143944493c170b42282e997_Samsung_SRF653CDLS_653L_French_Door_Fridge_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SRF653CDLS",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1777,
+      "width_mm": 908,
+      "depth_mm": 788,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/9/8/d/698d6a26032a2314f143944493c170b42282e997_Samsung_SRF653CDLS_653L_French_Door_Fridge_User_Manual.pdf",
+      "extraction_date": "2026-05-09T09:42:50.464Z",
+      "confidence_score": 0.9
+    }
+  }
+}

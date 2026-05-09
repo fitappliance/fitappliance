@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-154868",
+  "category": "fridge",
+  "brand": "Miele",
+  "model": "KS4783EDETCCS",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/6/9/e/869e53ef06c8909b58ff2213bea46a1b722b1652_KS4783_SpecSheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Miele",
+    "sku": "KS4783EDETCCS",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1850,
+      "width_mm": 600,
+      "depth_mm": 675,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/6/9/e/869e53ef06c8909b58ff2213bea46a1b722b1652_KS4783_SpecSheet.pdf",
+      "extraction_date": "2026-05-09T09:39:40.989Z",
+      "confidence_score": 0.9
+    }
+  }
+}

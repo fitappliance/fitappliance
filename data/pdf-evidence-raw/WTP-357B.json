@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-103181",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WXLC-1116B-WTP357B",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/c/0/0/6c00ecc1ff4a5d467f706b641f5cc02124699c7d_WXLC_1116B_WTP357B_LG_Specifications_Sheet_2.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WTP-357B",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 360,
+      "width_mm": 700,
+      "depth_mm": 790,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/c/0/0/6c00ecc1ff4a5d467f706b641f5cc02124699c7d_WXLC_1116B_WTP357B_LG_Specifications_Sheet_2.pdf",
+      "extraction_date": "2026-05-09T10:08:08.732Z",
+      "confidence_score": 0.9
+    }
+  }
+}

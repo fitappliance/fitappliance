@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53445",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HR6TFF437",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/1/b/3/61b3d018863939c6c325d93f1d96f8a6e9436891_Hisense_HR6TFF437_436L_Top_Mount_Fridge_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HR6TFF437",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1756,
+      "width_mm": 680,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 75
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/1/b/3/61b3d018863939c6c325d93f1d96f8a6e9436891_Hisense_HR6TFF437_436L_Top_Mount_Fridge_User_Manual.pdf",
+      "extraction_date": "2026-05-09T09:32:38.987Z",
+      "confidence_score": 0.9
+    }
+  }
+}

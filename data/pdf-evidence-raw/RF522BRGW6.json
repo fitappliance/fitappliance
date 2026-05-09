@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-55912",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "RF522BRGW6",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/2/2/e/322e56ed7629f257f51c0447dc900230459b8180_Fisher___Paykel_RF522BRGW6_519L_Bottom_Mount_Fridge_Quick_Guide.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "RF522BRGW6",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1720,
+      "width_mm": 790,
+      "depth_mm": 695,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 30
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/2/2/e/322e56ed7629f257f51c0447dc900230459b8180_Fisher___Paykel_RF522BRGW6_519L_Bottom_Mount_Fridge_Quick_Guide.pdf",
+      "extraction_date": "2026-05-09T09:20:41.969Z",
+      "confidence_score": 0.9
+    }
+  }
+}

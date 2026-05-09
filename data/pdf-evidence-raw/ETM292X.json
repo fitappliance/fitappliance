@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-57880",
+  "category": "fridge",
+  "brand": "Esatto",
+  "model": "ETM292X",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/b/3/0/6b30e5533c2a0d97ca52faf8537180ec131ea1e9_Esatto_ETM292X_292L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "ETM292X",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1519,
+      "width_mm": 610,
+      "depth_mm": 663,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/b/3/0/6b30e5533c2a0d97ca52faf8537180ec131ea1e9_Esatto_ETM292X_292L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:15:21.051Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-48240",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WBE4504SARH",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/f/3/7/2f371c425a74cab8bf1698001d402f3ac4c5edcb_WBE4504SARH_Westinghouse_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WBE4504SARH",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 766,
+      "width_mm": 699,
+      "depth_mm": 1725,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 30,
+      "right_mm": 30,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/f/3/7/2f371c425a74cab8bf1698001d402f3ac4c5edcb_WBE4504SARH_Westinghouse_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:52:11.295Z",
+      "confidence_score": 0.9
+    }
+  }
+}

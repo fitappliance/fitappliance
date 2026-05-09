@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-19659",
+  "category": "fridge",
+  "brand": "Beko",
+  "model": "DNE25020S",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/1/c/1/51c1d1e19d98e5837a4f0798e9b95db2ea6fba19_Beko_DNE25020S_253L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "DNE25020S",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1580,
+      "width_mm": 545,
+      "depth_mm": 595,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/1/c/1/51c1d1e19d98e5837a4f0798e9b95db2ea6fba19_Beko_DNE25020S_253L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:04:34.094Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-48229",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WTB3700WF",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/f/6/d/ff6d9e799e3c66d0140c80474839cebae3d54c1c_Westinghouse_WTB3700WF_370L_Fridge_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WTB3700WF",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1740,
+      "width_mm": 598,
+      "depth_mm": 650,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 595,
+      "right_mm": 595,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/f/6/d/ff6d9e799e3c66d0140c80474839cebae3d54c1c_Westinghouse_WTB3700WF_370L_Fridge_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:57:03.142Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-83638",
+  "category": "dishwasher",
+  "brand": "Smeg",
+  "model": "DWA4510X2",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/b/b/7/7bb705d5aae235c814effe2fb4109c37214b835f_DWA4510X2_Smeg_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "DWA4510X2",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 848,
+      "width_mm": 448,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/b/b/7/7bb705d5aae235c814effe2fb4109c37214b835f_DWA4510X2_Smeg_Datasheet.pdf",
+      "extraction_date": "2026-05-09T08:50:00.427Z",
+      "confidence_score": 0.9
+    }
+  }
+}

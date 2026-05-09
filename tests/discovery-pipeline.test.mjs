@@ -42,6 +42,21 @@ test('Appliances Online adapter extracts category, brand, and model from product
   );
 });
 
+test('Appliances Online adapter avoids capacity and dimension tokens when extracting model numbers', () => {
+  const discoveries = appliancesOnline.extractDiscoveries([
+    'https://www.appliancesonline.com.au/product/beko-290l-upright-freezer-bvf290w/',
+    'https://www.appliancesonline.com.au/product/bosch-serie-6-45cm-under-bench-dishwasher-spu6ims01a/',
+  ]);
+
+  assert.deepEqual(
+    discoveries.map(({ brand, model, category }) => ({ brand, model, category })),
+    [
+      { brand: 'Beko', model: 'BVF290W', category: 'fridge' },
+      { brand: 'Bosch', model: 'SPU6IMS01A', category: 'dishwasher' },
+    ],
+  );
+});
+
 test('discovery diff excludes models already present in catalog-final', () => {
   const existing = buildExistingModelSet({
     products: [

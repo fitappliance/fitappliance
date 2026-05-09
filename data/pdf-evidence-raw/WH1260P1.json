@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "product_id": "washing_machine-acw1341",
+  "product_id": "ao-62058",
   "category": "washing_machine",
   "brand": "Fisher & Paykel",
-  "model": "WL8058G1",
-  "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw04688bff/QRG/NZ/QRG-NZ-93237.pdf",
+  "model": "WH1260P1",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/a/0/f/5a0f73ce5b062420ae1b75f96325e713f45af1b8_WH1260P1_Fisher___Paykel_Specifications_Sheet.pdf",
   "verified_at": "2026-05-09",
   "extracted": {
     "brand": "Fisher & Paykel",
     "sku": "WH1260P1",
     "category": "WASHING_MACHINE",
     "dimensions": {
-      "height_mm": 850,
-      "width_mm": 600,
-      "depth_mm": 665,
+      "height_mm": 1020,
+      "width_mm": 580,
+      "depth_mm": 600,
       "door_open_90_depth_mm": null
     },
     "clearance_requirements": {
@@ -28,8 +28,8 @@
       "reversible_door": null
     },
     "metadata": {
-      "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw04688bff/QRG/NZ/QRG-NZ-93237.pdf",
-      "extraction_date": "2026-05-09T00:50:52.034Z",
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/a/0/f/5a0f73ce5b062420ae1b75f96325e713f45af1b8_WH1260P1_Fisher___Paykel_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:04:42.808Z",
       "confidence_score": 0.9
     }
   }

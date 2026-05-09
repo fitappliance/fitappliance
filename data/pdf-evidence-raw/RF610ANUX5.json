@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-92116",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "RF610ANUX5",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/3/5/c/b35cdee6aa645db16f9495215d9485b0c8f845d3_QRG_AU_26511_RF610ANUX5.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "RF610ANUX5",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1790,
+      "width_mm": 900,
+      "depth_mm": 695,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 20,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 30
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/3/5/c/b35cdee6aa645db16f9495215d9485b0c8f845d3_QRG_AU_26511_RF610ANUX5.pdf",
+      "extraction_date": "2026-05-09T09:16:48.602Z",
+      "confidence_score": 0.9
+    }
+  }
+}

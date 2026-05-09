@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-63972",
+  "category": "dishwasher",
+  "brand": "ASKO",
+  "model": "DFI666GXXL.AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/1/d/8/b1d8983b0279405654f2199875148833b3228e39_Asko_DFI666GXXL.AU_Fully_Integrated_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "ASKO",
+    "sku": "DFI666GXXL.AU",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 859,
+      "width_mm": 596,
+      "depth_mm": 574,
+      "door_open_90_depth_mm": 1253
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/1/d/8/b1d8983b0279405654f2199875148833b3228e39_Asko_DFI666GXXL.AU_Fully_Integrated_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:29:45.555Z",
+      "confidence_score": 0.9
+    }
+  }
+}

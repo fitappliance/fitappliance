@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-67924",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WQE6060SA",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/3/4/0/0340185873b00f997f61da6fdb6e19b6f3343ee6_WQE6060SA_Westinghouse_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WQE6060SA",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 896,
+      "depth_mm": 781,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/3/4/0/0340185873b00f997f61da6fdb6e19b6f3343ee6_WQE6060SA_Westinghouse_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:55:17.714Z",
+      "confidence_score": 0.9
+    }
+  }
+}

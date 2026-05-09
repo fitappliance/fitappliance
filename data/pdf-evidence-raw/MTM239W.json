@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-54593",
+  "category": "fridge",
+  "brand": "Midea",
+  "model": "MTM239W",
+  "source_url": "https://www.appliancesonline.com.au/ak/c/8/e/6/c8e6c1a064e02e9992be048d454804bd81394ed4_Midea_MTM239W_239L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Midea",
+    "sku": "MTM239W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1522,
+      "width_mm": 545,
+      "depth_mm": 623,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/c/8/e/6/c8e6c1a064e02e9992be048d454804bd81394ed4_Midea_MTM239W_239L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:38:54.004Z",
+      "confidence_score": 0.9
+    }
+  }
+}

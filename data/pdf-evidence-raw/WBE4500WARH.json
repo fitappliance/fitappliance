@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-48843",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WBE4500WARH",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/a/1/c/4a1ca6c8c8596fc9db23c6887b3d1b5d038aa4d7_Westinghouse_WBE4500WARH_450L_Bottom_Mount_Fridge_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WBE4500WARH",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1705,
+      "width_mm": 1725,
+      "depth_mm": 1725,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/a/1/c/4a1ca6c8c8596fc9db23c6887b3d1b5d038aa4d7_Westinghouse_WBE4500WARH_450L_Bottom_Mount_Fridge_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:51:45.273Z",
+      "confidence_score": 0.65
+    }
+  }
+}

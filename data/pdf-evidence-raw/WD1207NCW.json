@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-61774",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WD1207NCW",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/3/1/a/031a4494b10d9a280c80893e348be2b3db10e186_LG_WD1207NCW_7kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WD1207NCW",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 610,
+      "door_open_90_depth_mm": 350
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/3/1/a/031a4494b10d9a280c80893e348be2b3db10e186_LG_WD1207NCW_7kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:08:50.919Z",
+      "confidence_score": 0.9
+    }
+  }
+}

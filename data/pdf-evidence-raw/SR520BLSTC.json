@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-61857",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SR520BLSTC",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/9/c/2/e9c24f2dae2a2b779d5e957a349ed295f82da903_SR520BLSTC_Samsung_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SR520BLSTC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1697,
+      "width_mm": 729,
+      "depth_mm": 810,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/9/c/2/e9c24f2dae2a2b779d5e957a349ed295f82da903_SR520BLSTC_Samsung_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:42:11.400Z",
+      "confidence_score": 0.9
+    }
+  }
+}

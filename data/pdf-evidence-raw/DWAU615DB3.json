@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-101283",
+  "category": "dishwasher",
+  "brand": "Smeg",
+  "model": "DWAU615DB3",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/f/7/5/af7523e8522b959fc92a01411a595f4c25e4a043_DWAU615DB3_Smeg_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "DWAU615DB3",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 818,
+      "width_mm": 598,
+      "depth_mm": 570,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/f/7/5/af7523e8522b959fc92a01411a595f4c25e4a043_DWAU615DB3_Smeg_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:52:24.172Z",
+      "confidence_score": 0.9
+    }
+  }
+}

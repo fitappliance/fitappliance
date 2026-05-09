@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53108",
+  "category": "dishwasher",
+  "brand": "Omega",
+  "model": "ODW300X",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/c/b/9/acb9ae029d57d47760167d120ef663e4f62bdd22_Omega_ODW300X_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Omega",
+    "sku": "ODW300X",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 450,
+      "depth_mm": 585,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/c/b/9/acb9ae029d57d47760167d120ef663e4f62bdd22_Omega_ODW300X_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:47:44.337Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-55621",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HCF101",
+  "source_url": "https://www.appliancesonline.com.au/ak/c/e/6/5/ce65283a710bac3d513dab7fd08e8b566d3d975b_HCF101_Haier_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HCF101",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 570,
+      "depth_mm": 550,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/c/e/6/5/ce65283a710bac3d513dab7fd08e8b566d3d975b_HCF101_Haier_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:25:20.717Z",
+      "confidence_score": 0.9
+    }
+  }
+}

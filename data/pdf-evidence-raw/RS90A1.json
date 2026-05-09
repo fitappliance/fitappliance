@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-46147",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "RS90A1",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/6/d/5/06d593eb2df48ac4191b8a1f7e511118729f7be2_QRG_AU_26874_RS90A1.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "RS90A1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1798,
+      "width_mm": 896,
+      "depth_mm": 610,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/6/d/5/06d593eb2df48ac4191b8a1f7e511118729f7be2_QRG_AU_26874_RS90A1.pdf",
+      "extraction_date": "2026-05-09T09:21:50.781Z",
+      "confidence_score": 0.9
+    }
+  }
+}

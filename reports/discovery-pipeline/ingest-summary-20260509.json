@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-09",
+  "source": "Appliances Online discovery ingest",
+  "discovery": {
+    "input_discoveries": 1549,
+    "evidence_seeded": 1479,
+    "seed_failures": 70,
+    "seed_report_path": "reports/discovery-pipeline/evidence-seed-20260509.json"
+  },
+  "pdf_batch": {
+    "approved_discovery_evidence": 1321,
+    "raw_evidence_files_total": 1376,
+    "batch_report_path": "reports/pdf-batch-results.md"
+  },
+  "final_catalog": {
+    "output_path": "data/catalog-final.json",
+    "summary": {
+      "total_products": 3395,
+      "active_products": 1273,
+      "evidence_files": 1376,
+      "merged_products": 1360,
+      "unmatched_evidence_files": 3,
+      "duplicate_evidence_files": 16,
+      "categories": {
+        "fridge": 1964,
+        "dishwasher": 678,
+        "dryer": 142,
+        "washing_machine": 611
+      },
+      "official_pdf_by_category": {
+        "fridge": 756,
+        "dishwasher": 333,
+        "dryer": 73,
+        "washing_machine": 198
+      }
+    },
+    "discovery_products_in_catalog": 1207,
+    "discovery_official_pdf_in_catalog": 1207,
+    "discovery_official_pdf_by_category": {
+      "dishwasher": 319,
+      "fridge": 639,
+      "dryer": 68,
+      "washing_machine": 181
+    },
+    "unmatched_evidence": [
+      {
+        "raw_json_path": "data/pdf-evidence-raw/CBM394NSS.json",
+        "product_id": "ao-103819",
+        "model": "CBM394NSS",
+        "category": "fridge"
+      },
+      {
+        "raw_json_path": "data/pdf-evidence-raw/CTM202NW.json",
+        "product_id": "ao-130135",
+        "model": "CTM202NW",
+        "category": "fridge"
+      },
+      {
+        "raw_json_path": "data/pdf-evidence-raw/WH1260P1.json",
+        "product_id": "ao-62058",
+        "model": "WH1260P1",
+        "category": "washing_machine"
+      }
+    ],
+    "duplicate_evidence_count": 16
+  },
+  "notes": [
+    "Seed failures are products where AO exposed no usable PDF manual/spec sheet through its public product/manual APIs.",
+    "Batch failures are logged in reports/pdf-batch-results.md and do not block successful SKU ingestion.",
+    "Merge writes data/catalog-final.json only; public/data/*.json is unchanged."
+  ]
+}

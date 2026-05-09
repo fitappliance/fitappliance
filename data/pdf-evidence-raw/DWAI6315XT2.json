@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-78432",
+  "category": "dishwasher",
+  "brand": "Smeg",
+  "model": "DWAI6315XT2",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/6/e/7/86e7bba172e080b48bb0707ef0d875497d120ed1_DWAI6315XT2_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "DWAI6315XT2",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 858,
+      "width_mm": 598,
+      "depth_mm": 547,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/6/e/7/86e7bba172e080b48bb0707ef0d875497d120ed1_DWAI6315XT2_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:52:04.427Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-102559",
+  "category": "dishwasher",
+  "brand": "LG",
+  "model": "XD3A25UNS",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/2/b/6/12b63bcfb04858a9da87b954221195d80d5adfc3_XD3A25UNS_SpecSheet_210816_v3.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "XD3A25UNS",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 815,
+      "width_mm": 600,
+      "depth_mm": 567,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/2/b/6/12b63bcfb04858a9da87b954221195d80d5adfc3_XD3A25UNS_SpecSheet_210816_v3.pdf",
+      "extraction_date": "2026-05-09T08:44:15.043Z",
+      "confidence_score": 0.9
+    }
+  }
+}

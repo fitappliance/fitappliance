@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-42541",
+  "category": "dishwasher",
+  "brand": "Samsung",
+  "model": "DW60H6050FW",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/b/c/2/0bc27eb7d8c0bfeb24a87d969267a83d306b5128_Samsung_Freestanding_Dishwasher_DW60H6050FW_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "DW60H6050FW",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 598,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/b/c/2/0bc27eb7d8c0bfeb24a87d969267a83d306b5128_Samsung_Freestanding_Dishwasher_DW60H6050FW_User_Manual.pdf",
+      "extraction_date": "2026-05-09T08:49:13.607Z",
+      "confidence_score": 0.9
+    }
+  }
+}

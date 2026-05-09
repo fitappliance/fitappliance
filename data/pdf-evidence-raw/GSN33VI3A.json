@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-88757",
+  "category": "fridge",
+  "brand": "Bosch",
+  "model": "GSN33VI3A",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/5/7/2/5572fe622fa32b0c59250f3a5b4d57af95212146_GSN33VI3A_Bosch_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "GSN33VI3A",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1760,
+      "width_mm": 600,
+      "depth_mm": 650,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/5/7/2/5572fe622fa32b0c59250f3a5b4d57af95212146_GSN33VI3A_Bosch_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:06:00.045Z",
+      "confidence_score": 0.9
+    }
+  }
+}

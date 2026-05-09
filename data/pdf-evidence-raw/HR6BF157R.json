@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53428",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HR6BF157R",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/4/d/b/74db34ea39631e31c6e2f6eaccf49db809312d5a_HR6BF157R_Hisense_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HR6BF157R",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1130,
+      "width_mm": 519,
+      "depth_mm": 528,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/4/d/b/74db34ea39631e31c6e2f6eaccf49db809312d5a_HR6BF157R_Hisense_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:30:52.389Z",
+      "confidence_score": 0.9
+    }
+  }
+}

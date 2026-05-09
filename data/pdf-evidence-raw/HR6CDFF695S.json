@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-65982",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HR6CDFF695S",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/9/8/1/6981b924bc15d8efb3bb43ecb597bf28e0e14b76_HR6CDFF695S_Hisense_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HR6CDFF695S",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1932,
+      "width_mm": 980,
+      "depth_mm": 857,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/9/8/1/6981b924bc15d8efb3bb43ecb597bf28e0e14b76_HR6CDFF695S_Hisense_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:31:39.235Z",
+      "confidence_score": 0.9
+    }
+  }
+}

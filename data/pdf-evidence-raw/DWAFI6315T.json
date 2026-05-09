@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53503",
+  "category": "dishwasher",
+  "brand": "Smeg",
+  "model": "DWAFI6315T",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/2/1/8/921861bec43262b5b8d766c1f0c5528267bfd978_Smeg_DWAFI6315T_Fully_Integrated_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "DWAFI6315T",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 858,
+      "width_mm": 598,
+      "depth_mm": 547,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/2/1/8/921861bec43262b5b8d766c1f0c5528267bfd978_Smeg_DWAFI6315T_Fully_Integrated_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:51:31.869Z",
+      "confidence_score": 0.9
+    }
+  }
+}

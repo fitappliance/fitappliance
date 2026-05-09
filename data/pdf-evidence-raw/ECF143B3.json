@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-165056",
+  "category": "fridge",
+  "brand": "Esatto",
+  "model": "ECF143B3",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/d/e/b/edeb1932673da1fe7a13265c8b5f2f385aec1157_Esatto_ProductCard_ECF143B3.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "ECF143B3",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 560,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/d/e/b/edeb1932673da1fe7a13265c8b5f2f385aec1157_Esatto_ProductCard_ECF143B3.pdf",
+      "extraction_date": "2026-05-09T09:13:18.268Z",
+      "confidence_score": 0.9
+    }
+  }
+}

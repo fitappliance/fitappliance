@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-172814",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WQE5400SD",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/5/8/a/458a03fa64d5e4de7b9269fc353d382cf23c6d4c_Westinghouse_WQE5400SD_Factsheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WQE5400SD",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 896,
+      "depth_mm": 730,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/5/8/a/458a03fa64d5e4de7b9269fc353d382cf23c6d4c_Westinghouse_WQE5400SD_Factsheet.pdf",
+      "extraction_date": "2026-05-09T09:50:01.358Z",
+      "confidence_score": 0.9
+    }
+  }
+}

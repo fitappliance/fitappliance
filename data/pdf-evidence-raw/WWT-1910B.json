@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-170805",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WWT-1910B",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/1/f/3/91f34606575caf5cca4a157a52b3aa1cdcaef213_WM_EAP_MFL71983233_00_241022_00_OM_WEB__1_.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WWT-1910B",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 1890,
+      "width_mm": 700,
+      "depth_mm": 830,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 300,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 200
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/1/f/3/91f34606575caf5cca4a157a52b3aa1cdcaef213_WM_EAP_MFL71983233_00_241022_00_OM_WEB__1_.pdf",
+      "extraction_date": "2026-05-09T10:08:13.133Z",
+      "confidence_score": 0.9
+    }
+  }
+}

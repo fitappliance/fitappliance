@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-52324",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GF-B620PL",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/4/e/a/44ea10177cfda430a1b5adf2ec6ee88cb0c7310a_GF_B620PL_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GF-B620PL",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1780,
+      "width_mm": 915,
+      "depth_mm": 763,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/4/e/a/44ea10177cfda430a1b5adf2ec6ee88cb0c7310a_GF_B620PL_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:36:38.908Z",
+      "confidence_score": 0.9
+    }
+  }
+}

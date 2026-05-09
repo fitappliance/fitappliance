@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53420",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HR6AFF355D",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/1/b/0/b1b0d570133acdee1cb71d9c717b20c4957c5dcd_Hisense_HR6AFF355D_355L_Upright_Fridge_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HR6AFF355D",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1746,
+      "width_mm": 700,
+      "depth_mm": 700,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 75
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/1/b/0/b1b0d570133acdee1cb71d9c717b20c4957c5dcd_Hisense_HR6AFF355D_355L_Upright_Fridge_User_Manual.pdf",
+      "extraction_date": "2026-05-09T09:30:24.066Z",
+      "confidence_score": 0.9
+    }
+  }
+}

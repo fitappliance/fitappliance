@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-73520",
+  "category": "fridge",
+  "brand": "CHiQ",
+  "model": "CSR127B",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/b/c/c/8bcce8ed3a617fc2f21919cde8554a6ac4c17ad6_CSR127B_CHiQ_Specifications_Sheet_2.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "CHiQ",
+    "sku": "CSR127B",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 494,
+      "depth_mm": 555,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/b/c/c/8bcce8ed3a617fc2f21919cde8554a6ac4c17ad6_CSR127B_CHiQ_Specifications_Sheet_2.pdf",
+      "extraction_date": "2026-05-09T09:10:34.714Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53436",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HR6CF146",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/5/f/3/05f37e89b66208d7f4b66c2a4ff1319665dfcd89_Hisense_HR6CF146_145L_Chest_Freezer_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HR6CF146",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 823,
+      "width_mm": 727,
+      "depth_mm": 560,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/5/f/3/05f37e89b66208d7f4b66c2a4ff1319665dfcd89_Hisense_HR6CF146_145L_Chest_Freezer_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:31:42.551Z",
+      "confidence_score": 0.9
+    }
+  }
+}

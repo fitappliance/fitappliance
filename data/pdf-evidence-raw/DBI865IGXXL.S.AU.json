@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-63968",
+  "category": "dishwasher",
+  "brand": "ASKO",
+  "model": "DBI865IGXXL.S.AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/c/4/f/c/c4fcc585c44cce34ae08978d03e81bfd08091bda_Asko_DBI865IGXXL.S.AU_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "ASKO",
+    "sku": "DBI865IGXXL.S.AU",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 859,
+      "width_mm": 596,
+      "depth_mm": 574,
+      "door_open_90_depth_mm": 1253
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/c/4/f/c/c4fcc585c44cce34ae08978d03e81bfd08091bda_Asko_DBI865IGXXL.S.AU_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:29:28.362Z",
+      "confidence_score": 0.9
+    }
+  }
+}

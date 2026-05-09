@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-105621",
+  "category": "fridge",
+  "brand": "Smeg",
+  "model": "FAB10HRRD5AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/b/1/3/db13d83f38a5acee283b649f52c81d196f0a9acf_FAB10HRRD5AU_Smeg_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "FAB10HRRD5AU",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 980,
+      "width_mm": 545,
+      "depth_mm": 659,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/b/1/3/db13d83f38a5acee283b649f52c81d196f0a9acf_FAB10HRRD5AU_Smeg_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:43:28.543Z",
+      "confidence_score": 0.9
+    }
+  }
+}
