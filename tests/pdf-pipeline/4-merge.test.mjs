@@ -175,3 +175,166 @@ test('runMerge writes data/catalog-final.json and never rewrites public catalog 
   const output = JSON.parse(fs.readFileSync(result.outputPath, 'utf8'));
   assert.equal(output.products.find((product) => product.id === 'fridge-arf2964').data_source, 'official_pdf');
 });
+
+test('final catalog builder can add verified discovery products that are not in runtime catalog yet', () => {
+  const repoRoot = makeRepo();
+  writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {
+    schema_version: 1,
+    products: {
+      'ao-79153': {
+        category: 'washing_machine',
+        brand: 'LG',
+        model: 'WV5-1408W',
+        source_url: 'https://example.com/wv5.pdf',
+        discovery: {
+          retailer: 'Appliances Online',
+          retailer_key: 'appliancesonline',
+          product_id: 79153,
+          product_url: 'https://www.appliancesonline.com.au/product/lg-wv5-1408w/'
+        },
+        product: {
+          id: 'ao-79153',
+          cat: 'washing_machine',
+          brand: 'LG',
+          model: 'WV5-1408W',
+          displayName: 'LG Series 5 8kg Front Load Washing Machine WV5-1408W',
+          unavailable: false,
+          retailers: [
+            { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-wv5-1408w/', p: 931 }
+          ]
+        }
+      }
+    }
+  });
+  writeJson(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'WV5-1408W.json'), {
+    schema_version: 1,
+    product_id: 'ao-79153',
+    category: 'washing_machine',
+    brand: 'LG',
+    model: 'WV5-1408W',
+    source_url: 'https://example.com/wv5.pdf',
+    verified_at: '2026-05-09',
+    extracted: {
+      brand: 'LG',
+      sku: 'WV5-1408W',
+      category: 'WASHING_MACHINE',
+      dimensions: {
+        height_mm: 850,
+        width_mm: 600,
+        depth_mm: 605,
+        door_open_90_depth_mm: null
+      },
+      clearance_requirements: {
+        top_mm: 0,
+        left_mm: 0,
+        right_mm: 0,
+        rear_mm: 150
+      },
+      flags: {
+        requires_plumbing: true,
+        ventilation_required: false,
+        reversible_door: null
+      },
+      metadata: {
+        source_pdf_url: 'https://example.com/wv5.pdf',
+        extraction_date: '2026-05-09T00:00:00.000Z',
+        confidence_score: 0.91
+      }
+    }
+  });
+
+  const result = buildFinalCatalog({ repoRoot });
+  const discoveryProduct = result.catalog.products.find((product) => product.id === 'ao-79153');
+
+  assert.equal(result.summary.total_products, 4);
+  assert.equal(discoveryProduct.data_source, 'official_pdf');
+  assert.equal(discoveryProduct.w, 600);
+  assert.equal(discoveryProduct.unavailable, false);
+  assert.equal(discoveryProduct.retailers[0].n, 'Appliances Online');
+  assert.equal(result.summary.official_pdf_by_category.washing_machine, 1);
+});
+
+test('final catalog builder matches discovery evidence to existing catalog products by SKU when AO product id differs', () => {
+  const repoRoot = makeRepo();
+  fs.rmSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'RF730QNUVX1.json'));
+  writeJson(path.join(repoRoot, 'public', 'data', 'fridges.json'), {
+    products: [
+      {
+        id: 'fridge-baf369w',
+        cat: 'fridge',
+        brand: 'Beko',
+        model: 'BAF369W',
+        w: 595,
+        h: 1714,
+        d: 655,
+        unavailable: true
+      }
+    ]
+  });
+  writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {
+    schema_version: 1,
+    products: {
+      'ao-80585': {
+        category: 'fridge',
+        brand: 'Beko',
+        model: 'BAF369W',
+        discovery: {
+          retailer_key: 'appliancesonline'
+        },
+        product: {
+          id: 'ao-80585',
+          cat: 'fridge',
+          brand: 'Beko',
+          model: 'BAF369W',
+          unavailable: false
+        }
+      }
+    }
+  });
+  writeJson(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'BAF369W.json'), {
+    schema_version: 1,
+    product_id: 'ao-80585',
+    category: 'fridge',
+    brand: 'Beko',
+    model: 'BAF369W',
+    source_url: 'https://example.com/baf369w.pdf',
+    verified_at: '2026-05-09',
+    extracted: {
+      brand: 'Beko',
+      sku: 'BAF369W',
+      category: 'FRIDGE',
+      dimensions: {
+        height_mm: 1714,
+        width_mm: 595,
+        depth_mm: 655,
+        door_open_90_depth_mm: null
+      },
+      clearance_requirements: {
+        top_mm: 50,
+        left_mm: 10,
+        right_mm: 10,
+        rear_mm: 30
+      },
+      flags: {
+        requires_plumbing: false,
+        ventilation_required: true,
+        reversible_door: null
+      },
+      metadata: {
+        source_pdf_url: 'https://example.com/baf369w.pdf',
+        extraction_date: '2026-05-09T00:00:00.000Z',
+        confidence_score: 0.9
+      }
+    }
+  });
+
+  const result = buildFinalCatalog({ repoRoot });
+  const merged = result.catalog.products.find((product) => product.id === 'fridge-baf369w');
+
+  assert.equal(result.summary.total_products, 2);
+  assert.equal(result.summary.merged_products, 1);
+  assert.equal(result.summary.unmatched_evidence_files, 0);
+  assert.equal(result.catalog.products.some((product) => product.id === 'ao-80585'), false);
+  assert.equal(merged.data_source, 'official_pdf');
+  assert.equal(merged.evidence.source_url, 'https://example.com/baf369w.pdf');
+});

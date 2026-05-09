@@ -64,22 +64,61 @@ function hasLettersAndDigits(value) {
   return /[a-z]/i.test(value) && /\d/.test(value);
 }
 
+function isCapacityOrDimensionToken(value) {
+  return /^\d+(?:\.\d+)?(?:l|kg|cm|mm|place|star|stars)$/i.test(value);
+}
+
+function isWeakDescriptorToken(value) {
+  return /^(series|serie|class|door|load|front|top|heat|pump|vented|condenser|freestanding|built|under|bench)$/i.test(value);
+}
+
+function scoreModelToken(token) {
+  if (!hasLettersAndDigits(token)) return -100;
+  if (isCapacityOrDimensionToken(token)) return -100;
+  if (isWeakDescriptorToken(token)) return -50;
+
+  const letters = (token.match(/[a-z]/gi) || []).length;
+  const digits = (token.match(/\d/g) || []).length;
+  let score = token.length;
+  if (letters >= 2) score += 6;
+  if (digits >= 2) score += 6;
+  if (token.length >= 6) score += 6;
+  if (/^[a-z]{1,4}\d/i.test(token)) score += 4;
+  return score;
+}
+
 function extractModelFromSlug(slug, brandPrefix) {
   const remaining = slug.replace(new RegExp(`^${brandPrefix}-?`), '');
   const tokens = remaining.split('-').filter(Boolean);
+  const candidates = [];
 
   for (let index = 0; index < tokens.length; index += 1) {
     const token = tokens[index];
     if (!hasLettersAndDigits(token)) continue;
 
-    if (token.length < 5 && tokens[index + 1] && /\d/.test(tokens[index + 1])) {
-      return `${token}-${tokens[index + 1]}`.toUpperCase();
+    if (
+      token.length < 5
+      && !isCapacityOrDimensionToken(token)
+      && tokens[index + 1]
+      && hasLettersAndDigits(tokens[index + 1])
+      && !isCapacityOrDimensionToken(tokens[index + 1])
+    ) {
+      const combined = `${token}-${tokens[index + 1]}`;
+      candidates.push({
+        model: combined.toUpperCase(),
+        score: scoreModelToken(token) + scoreModelToken(tokens[index + 1]) + 8
+      });
     }
 
-    return token.toUpperCase();
+    candidates.push({
+      model: token.toUpperCase(),
+      score: scoreModelToken(token)
+    });
   }
 
-  return '';
+  return candidates
+    .filter((candidate) => candidate.score > 0)
+    .sort((a, b) => b.score - a.score)[0]?.model || '';
 }
 
 function extractDiscovery(url) {
@@ -114,6 +153,7 @@ module.exports = {
   displayName: DISPLAY_NAME,
   extractDiscoveries,
   extractDiscovery,
+  extractModelFromSlug,
   retailer: RETAILER,
   sitemapUrls: ['https://www.appliancesonline.com.au/public/sitemaps/sitemap-products.xml'],
 };
