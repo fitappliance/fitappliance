@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-09",
+  "source": "The Good Guys, JB Hi-Fi, and Bing Lee discovery ingest",
+  "scope": {
+    "retailers": [
+      "the-good-guys",
+      "jb-hi-fi",
+      "bing-lee"
+    ],
+    "skipped": [
+      "harvey-norman"
+    ]
+  },
+  "discovery": {
+    "total_candidates": 687,
+    "retailers": {
+      "the-good-guys": {
+        "discovery_report": "reports/discovery-pipeline/discovery-the-good-guys-20260509.json",
+        "seed_report": "reports/discovery-pipeline/evidence-seed-the-good-guys-direct-20260509.json",
+        "discovered_candidates": 260,
+        "discovered_by_category": {
+          "dishwasher": 66,
+          "dryer": 56,
+          "fridge": 73,
+          "washing_machine": 65
+        },
+        "pdf_seeded_or_already_approved": 26,
+        "needs_source": 234
+      },
+      "jb-hi-fi": {
+        "discovery_report": "reports/discovery-pipeline/discovery-jb-hi-fi-20260509.json",
+        "seed_report": "reports/discovery-pipeline/evidence-seed-jb-hi-fi-direct-20260509.json",
+        "discovered_candidates": 157,
+        "discovered_by_category": {
+          "dishwasher": 29,
+          "dryer": 31,
+          "fridge": 76,
+          "washing_machine": 21
+        },
+        "pdf_seeded_or_already_approved": 6,
+        "needs_source": 151
+      },
+      "bing-lee": {
+        "discovery_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json",
+        "seed_report": "reports/discovery-pipeline/evidence-seed-bing-lee-direct-20260509.json",
+        "discovered_candidates": 270,
+        "discovered_by_category": {
+          "dishwasher": 19,
+          "dryer": 30,
+          "fridge": 140,
+          "washing_machine": 81
+        },
+        "pdf_seeded_or_already_approved": 14,
+        "needs_source": 256
+      }
+    }
+  },
+  "pdf_seed": {
+    "pdf_seeded_or_already_approved_events": 46,
+    "unique_skus_with_pdf": 33,
+    "needs_source": 641,
+    "strategy": "direct official Bosch AU specsheet pattern; search-engine failures are downgraded to needs_source"
+  },
+  "pdf_batch": {
+    "successes": 33,
+    "failures": 0,
+    "discrepancies": 0,
+    "batch_report_path": "reports/pdf-batch-results.md"
+  },
+  "final_catalog": {
+    "output_path": "data/catalog-final.json",
+    "summary": {
+      "total_products": 3428,
+      "active_products": 1306,
+      "evidence_files": 1409,
+      "merged_products": 1393,
+      "unmatched_evidence_files": 3,
+      "duplicate_evidence_files": 16,
+      "categories": {
+        "fridge": 1967,
+        "dishwasher": 691,
+        "dryer": 147,
+        "washing_machine": 623
+      },
+      "official_pdf_by_category": {
+        "fridge": 759,
+        "dishwasher": 346,
+        "dryer": 78,
+        "washing_machine": 210
+      }
+    }
+  },
+  "notes": [
+    "Direct Bosch AU specsheet URLs produced 33 unique validated evidence files across TGG/JB/Bing Lee candidates.",
+    "Non-Bosch candidates were retained as needs_source evidence slots for future manual/PDF search passes.",
+    "Harvey Norman was intentionally skipped for this ingest wave.",
+    "Merge writes data/catalog-final.json only; public/data/*.json is unchanged."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "discovery-dishwasher-fisher-paykel-dd60scx9",
+  "category": "dishwasher",
+  "brand": "Fisher & Paykel",
+  "model": "DD60SCX9",
+  "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw276d83c8/QRG/AU/QRG-AU-82316.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "DD60SCX9",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 410,
+      "width_mm": 599,
+      "depth_mm": 573,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": false,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw276d83c8/QRG/AU/QRG-AU-82316.pdf",
+      "extraction_date": "2026-05-09T16:11:02.557Z",
+      "confidence_score": 0.85
+    }
+  }
+}

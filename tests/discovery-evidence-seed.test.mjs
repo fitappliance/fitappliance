@@ -130,3 +130,54 @@ test('discovery evidence seeding writes manual-evidence candidate entries and co
   assert.equal(manifest.products['ao-79153'].product.w, 600);
   assert.equal(manifest.products['ao-79153'].product.unavailable, false);
 });
+
+test('discovery evidence seeding supports non-AO retailer candidates via PDF search', async () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fitappliance-seed-generic-'));
+  const discoveryPath = path.join(tmp, 'data', 'discovery-report.json');
+  const manualEvidencePath = path.join(tmp, 'data', 'manual-evidence.json');
+  const reportPath = path.join(tmp, 'reports', 'seed.json');
+  writeJson(discoveryPath, {
+    schema_version: 1,
+    retailer: 'jb-hi-fi',
+    new_discoveries: {
+      fridge: {
+        Bosch: [
+          {
+            brand: 'Bosch',
+            model: 'KFD96AXEAA',
+            retailer: 'JB Hi-Fi',
+            retailer_key: 'jb-hi-fi',
+            source: 'sitemap',
+            url: 'https://www.jbhifi.com.au/products/bosch-kfd96axeaa-574l-quad-door-refrigerator'
+          }
+        ]
+      }
+    }
+  });
+  writeJson(manualEvidencePath, {
+    schema_version: 1,
+    products: {}
+  });
+
+  const result = await seedDiscoveryEvidence({
+    delayMs: 0,
+    discoveryReportPath: discoveryPath,
+    manualEvidencePath,
+    outputReportPath: reportPath,
+    pdfSearch: async () => ({
+      url: 'https://media3.bosch-home.com/Documents/specsheet/en-AU/KFD96AXEAA.pdf',
+      source: 'duckduckgo-html'
+    }),
+    runAt: '2026-05-09T00:00:00.000Z'
+  });
+
+  const manifest = JSON.parse(fs.readFileSync(manualEvidencePath, 'utf8'));
+  const entry = manifest.products['discovery-fridge-bosch-kfd96axeaa'];
+
+  assert.equal(result.report.seeded_count, 1);
+  assert.equal(result.report.failure_count, 0);
+  assert.equal(entry.source_url, 'https://media3.bosch-home.com/Documents/specsheet/en-AU/KFD96AXEAA.pdf');
+  assert.equal(entry.discovery.retailer_key, 'jb-hi-fi');
+  assert.equal(entry.product.retailers[0].n, 'JB Hi-Fi');
+  assert.equal(entry.product.unavailable, false);
+});

@@ -67,6 +67,7 @@ function groupDiscoveries(discoveries) {
             model: item.model,
             url: item.url,
             retailer: item.retailer,
+            retailer_key: item.retailer_key,
             source: item.source,
           },
         ],

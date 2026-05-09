@@ -5,6 +5,7 @@ const path = require('node:path');
 const { Readable } = require('node:stream');
 const { Transform } = require('node:stream');
 const { pipeline } = require('node:stream/promises');
+const { findFisherPaykelOfficialPdf } = require('./fisher-paykel-official');
 
 const DEFAULT_USER_AGENT = 'FitApplianceBot/1.0 (+https://www.fitappliance.com.au/about)';
 const DEFAULT_MAX_BYTES = 15 * 1024 * 1024;
@@ -89,6 +90,13 @@ function normalizeSku(value) {
     .replace(/[^a-z0-9]+/g, '');
 }
 
+function isFisherPaykelTarget(target = {}) {
+  return /fisher\s*&\s*paykel|f&p|fisherpaykel/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
 function getTargetIds(target = {}) {
   return [
     target.id,
@@ -166,14 +174,37 @@ function findManualEvidenceSourceUrl(target, manualEvidence) {
 async function resolvePdfSourceUrl(target, {
   repoRoot = process.cwd(),
   manualEvidence = loadManualEvidence(repoRoot),
-  searchPdf = null
+  searchPdf = null,
+  fisherPaykelOfficialFinder = findFisherPaykelOfficialPdf,
+  fetchImpl = globalThis.fetch,
+  timeoutMs = DEFAULT_TIMEOUT_MS,
+  userAgent = DEFAULT_USER_AGENT
 } = {}) {
   const manualSource = findManualEvidenceSourceUrl(target, manualEvidence);
   if (manualSource) {
     return { sourceUrl: manualSource, source: 'manual-evidence' };
   }
 
+  let officialError = null;
+  if (isFisherPaykelTarget(target) && fisherPaykelOfficialFinder) {
+    try {
+      const official = await fisherPaykelOfficialFinder(target, {
+        fetchImpl,
+        timeoutMs,
+        userAgent
+      });
+      if (official?.sourceUrl) {
+        return { sourceUrl: official.sourceUrl, source: official.source };
+      }
+    } catch (error) {
+      officialError = error;
+    }
+  }
+
   if (!searchPdf) {
+    if (officialError) {
+      throw officialError;
+    }
     throw new Error('PDF source URL not found in manual-evidence; provide searchPdf fallback or seed data/manual-evidence.json');
   }
 

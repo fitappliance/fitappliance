@@ -201,7 +201,7 @@ function mergeEvidenceIntoProduct(product, evidence) {
 }
 
 function isDiscoveryManifestEntry(entry) {
-  return Boolean(entry?.product && entry?.discovery?.retailer_key === 'appliancesonline');
+  return Boolean(entry?.product && entry?.discovery?.retailer_key);
 }
 
 function buildDiscoveryProductFromEvidence(evidence, manifestEntry) {

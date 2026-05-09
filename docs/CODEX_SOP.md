@@ -78,6 +78,15 @@ Primary manifest:
 
 - `data/manual-evidence.json`
 
+Primary command:
+
+```bash
+node scripts/discovery-pipeline/2-seed-evidence.js \
+  --discovery=reports/discovery-pipeline/discovery-the-good-guys-YYYYMMDD.json \
+  --output=reports/discovery-pipeline/evidence-seed-the-good-guys-YYYYMMDD.json \
+  --delay-ms=1000
+```
+
 Accepted URL sources:
 
 - Official manufacturer PDF URLs are preferred.
@@ -90,6 +99,11 @@ Accepted URL sources:
 Rules:
 
 - Prefer direct PDF links.
+- For Bosch AU models, try the direct official media pattern before using search engines:
+  - `https://media3.bosch-home.com/Documents/specsheet/en-AU/<MODEL>.pdf`
+- Discovery report rows must preserve `retailer_key` so seeded entries know whether they came from Appliances Online, The Good Guys, JB Hi-Fi, Bing Lee, or another adapter.
+- Non-Appliances-Online discovery entries are allowed. If a direct PDF is found, seed the evidence URL and create a reviewable runtime product slot. If no accepted PDF is found, keep the product slot with `status: "needs_source"` and record the failure in the seed report.
+- Search engine discovery is best-effort only. DuckDuckGo and Yahoo HTML can time out or throttle. Do not block the full ingest on those failures; record `needs_source` and continue.
 - Candidate entries must remain reviewable.
 - Do not hallucinate model-to-PDF matches. If uncertain, mark for manual review.
 
@@ -186,6 +200,7 @@ Output:
 Rules:
 
 - Merge verified raw evidence into catalog output.
+- Discovery evidence entries from any registered retailer are valid when they include `discovery.retailer_key` and a verified `source_url`; do not restrict merge/batch processing to Appliances Online.
 - Do not overwrite live `public/data/*.json` directly from the batch runner.
 - Add `data_source: "official_pdf"` when dimensions come from validated PDF evidence.
 - Keep audit visibility for significant dimension conflicts.

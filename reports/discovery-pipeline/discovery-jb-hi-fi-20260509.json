@@ -1,0 +1,1214 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-09T12:04:04.989Z",
+  "retailer": "jb-hi-fi",
+  "source_urls": [
+    "https://www.jbhifi.com.au/sitemap.xml",
+    "https://www.jbhifi.com.au/sitemap_agentic_discovery.xml",
+    "https://www.jbhifi.com.au/sitemap_products_1.xml?from=1614264664162&to=1620503036002",
+    "https://www.jbhifi.com.au/sitemap_products_2.xml?from=1620504019042&to=1625063293026",
+    "https://www.jbhifi.com.au/sitemap_products_3.xml?from=1625063751778&to=3828540047458",
+    "https://www.jbhifi.com.au/sitemap_products_4.xml?from=3828540080226&to=4422513295494",
+    "https://www.jbhifi.com.au/sitemap_products_5.xml?from=4422515425414&to=6535246545097",
+    "https://www.jbhifi.com.au/sitemap_products_6.xml?from=6535246577865&to=6663957250249",
+    "https://www.jbhifi.com.au/sitemap_products_7.xml?from=6663957348553&to=6664357347529",
+    "https://www.jbhifi.com.au/sitemap_products_8.xml?from=6664357380297&to=6664591048905",
+    "https://www.jbhifi.com.au/sitemap_products_9.xml?from=6664591081673&to=6664853684425",
+    "https://www.jbhifi.com.au/sitemap_products_10.xml?from=6664853717193&to=7332218110153",
+    "https://www.jbhifi.com.au/sitemap_products_11.xml?from=7332218634441&to=7332479664329",
+    "https://www.jbhifi.com.au/sitemap_products_12.xml?from=7332479697097&to=7332801216713",
+    "https://www.jbhifi.com.au/sitemap_products_13.xml?from=7332801249481&to=7333019975881",
+    "https://www.jbhifi.com.au/sitemap_products_14.xml?from=7333020008649&to=7333214290121",
+    "https://www.jbhifi.com.au/sitemap_products_15.xml?from=7333214355657&to=7333412831433",
+    "https://www.jbhifi.com.au/sitemap_products_16.xml?from=7333412864201&to=7333590073545",
+    "https://www.jbhifi.com.au/sitemap_products_17.xml?from=7333590106313&to=7333821513929",
+    "https://www.jbhifi.com.au/sitemap_products_18.xml?from=7333821677769&to=7333962547401",
+    "https://www.jbhifi.com.au/sitemap_products_19.xml?from=7333962580169&to=7334117933257",
+    "https://www.jbhifi.com.au/sitemap_products_20.xml?from=7334117966025&to=7334282330313",
+    "https://www.jbhifi.com.au/sitemap_products_21.xml?from=7334282428617&to=7334461014217",
+    "https://www.jbhifi.com.au/sitemap_products_22.xml?from=7334461046985&to=7334622167241",
+    "https://www.jbhifi.com.au/sitemap_products_23.xml?from=7334622265545&to=7334787350729"
+  ],
+  "summary": {
+    "new_discovery_count": 157,
+    "categories": {
+      "dishwasher": 29,
+      "dryer": 31,
+      "fridge": 76,
+      "washing_machine": 21
+    }
+  },
+  "new_discoveries": {
+    "dishwasher": {
+      "Asko": [
+        {
+          "model": "DBI343ID",
+          "url": "https://www.jbhifi.com.au/products/asko-dbi343id-w-au-14-place-setting-built-in-classic-dishwasher-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DBI364ID",
+          "url": "https://www.jbhifi.com.au/products/asko-dbi364id-bs-au-16-place-setting-built-in-classic-dishwasher-black-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DBI565IK",
+          "url": "https://www.jbhifi.com.au/products/asko-dbi565ik-bs-au-16-place-setting-built-in-logic-dishwasher-black-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DBI766IQXXL",
+          "url": "https://www.jbhifi.com.au/products/asko-dbi766iqxxl-bs-au-16-place-setting-built-in-style-dishwasher-xxl-black-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DFI564D",
+          "url": "https://www.jbhifi.com.au/products/asko-dfi564d-au-16-place-setting-fully-integrated-logic-dishwasher",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DFI766U",
+          "url": "https://www.jbhifi.com.au/products/asko-dfi766u-au-16-place-setting-fully-integrated-style-dishwasher",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DFI766UXXL",
+          "url": "https://www.jbhifi.com.au/products/asko-dfi766uxxl-au-16-place-setting-fully-integrated-style-dishwasher-xxl",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DSD767UXXL",
+          "url": "https://www.jbhifi.com.au/products/asko-dsd767uxxl-au-16-place-setting-fully-integrated-style-dishwasher-with-sliding-door-xxl",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Beko": [
+        {
+          "model": "BDBU1430X",
+          "url": "https://www.jbhifi.com.au/products/beko-bdbu1430x-14-place-setting-built-in-dishwasher-platinum-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "BDFB1630B",
+          "url": "https://www.jbhifi.com.au/products/beko-bdfb1630b-16-place-setting-freestanding-dishwasher-glossy-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "BDFB1650ADX",
+          "url": "https://www.jbhifi.com.au/products/beko-bdfb1650adx-16-place-setting-freestanding-dishwasher-with-autodose-dark-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Bosch": [
+        {
+          "model": "SMS24AI01A",
+          "url": "https://www.jbhifi.com.au/products/bosch-sms24ai01a-series-2-13-place-freestanding-dishwasher",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMS2ITW01A",
+          "url": "https://www.jbhifi.com.au/products/bosch-sms2itw01a-series-2-13-place-setting-frestanding-dishwasher",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMS4HVI01A",
+          "url": "https://www.jbhifi.com.au/products/bosch-sms4hvi01a-series-4-14-place-setting-freestanding-dishwasher-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Fisher & Paykel": [
+        {
+          "model": "DW60FC1B2",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc1b2-15-place-setting-freestanding-dishwasher-black-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60FC1X3",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc1x3-15-place-setting-freestanding-dishwasher-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60FC2B2",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc2b2-15-place-setting-freestanding-dishwasher-black-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60FC2X3",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc2x3-15-place-setting-freestanding-dishwasher-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60FC4B2",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc4b2-15-place-setting-freestanding-dishwasher-black-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60FC4X3",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc4x3-15-place-setting-freestanding-dishwasher-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Haier": [
+        {
+          "model": "HDW13F0S1",
+          "url": "https://www.jbhifi.com.au/products/haier-hdw13f0s1-300-series-13-place-setting-freestanding-dishwasher-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDW13F0W1",
+          "url": "https://www.jbhifi.com.au/products/haier-hdw13f0w1-300-series-13-place-setting-freestanding-dishwasher-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Hisense": [
+        {
+          "model": "HSAA16FS",
+          "url": "https://www.jbhifi.com.au/products/hisense-hsaa16fs-16-place-setting-freestanding-dishwasher-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HSAP16FB",
+          "url": "https://www.jbhifi.com.au/products/hisense-hsap16fb-16-place-setting-freestanding-dishwasher-black-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HSCE14FS",
+          "url": "https://www.jbhifi.com.au/products/hisense-hsce14fs-14-place-setting-freestanding-dishwasher-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "LG": [
+        {
+          "model": "XD2A25MB",
+          "url": "https://www.jbhifi.com.au/products/lg-xd2a25mb-truesteam-15-place-setting-freestanding-dishwasher-matte-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Solt": [
+        {
+          "model": "GGSDW6013W",
+          "url": "https://www.jbhifi.com.au/products/solt-ggsdw6013w-13-place-setting-freestanding-dishwasher-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GGSDW6013X",
+          "url": "https://www.jbhifi.com.au/products/solt-ggsdw6013x-13-place-setting-freestanding-dishwasher-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Westinghouse": [
+        {
+          "model": "WSF6608KXB",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wsf6608kxb-15-place-setting-freestanding-dishwasher-dark-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "dryer": {
+      "Asko": [
+        {
+          "model": "T208C",
+          "url": "https://www.jbhifi.com.au/products/asko-t208c-8kg-classic-condenser-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "T410HD",
+          "url": "https://www.jbhifi.com.au/products/asko-t410hd-10kg-logic-heat-pump-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "T608HX",
+          "url": "https://www.jbhifi.com.au/products/asko-t608hx-style-8kg-pro-home-heat-pump-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Beko": [
+        {
+          "model": "BDPB104HW",
+          "url": "https://www.jbhifi.com.au/products/beko-bdpb104hw-10kg-hybrid-heat-pump-dryer-with-steam",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "BDPB8010W",
+          "url": "https://www.jbhifi.com.au/products/beko-bdpb8010w-8kg-heat-pump-condensor-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "BDPB802SW",
+          "url": "https://www.jbhifi.com.au/products/beko-bdpb802sw-8kg-heat-pump-dryer-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "BDPB904HG",
+          "url": "https://www.jbhifi.com.au/products/beko-bdpb904hg-9kg-hybrid-heat-pump-dryer-graphite",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "BDPB904HW",
+          "url": "https://www.jbhifi.com.au/products/beko-bdpb904hw-9kg-hybrid-heat-pump-dryer-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Bosch": [
+        {
+          "model": "WQG235DRAU",
+          "url": "https://www.jbhifi.com.au/products/bosch-wqg235drau-series-6-8kg-heat-pump-dryer-graphite",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WQG24201AU",
+          "url": "https://www.jbhifi.com.au/products/bosch-wqg24201au-series-8-9kg-heat-pump-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WTH83002AU",
+          "url": "https://www.jbhifi.com.au/products/bosch-wth83002au-series-4-8kg-heat-pump-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Electrolux": [
+        {
+          "model": "EDH903R7SC",
+          "url": "https://www.jbhifi.com.au/products/electrolux-edh903r7sc-ultimatecare-700-9kg-heat-pump-dryer-dark-onyx",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "EDH903R7WC",
+          "url": "https://www.jbhifi.com.au/products/electrolux-edh903r7wc-ultimatecare-700-9kg-heat-pump-dryer-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Fisher & Paykel": [
+        {
+          "model": "DE6060M2",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-de6060m2-6kg-vented-dryer-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DE7060G2",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-de7060g2-7kg-vented-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DE7060P2",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-de7060p2-7kg-vented-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Haier": [
+        {
+          "model": "HDHP10PXB1",
+          "url": "https://www.jbhifi.com.au/products/haier-hdhp10pxb1-10kg-heat-pump-condenser-dryer-dark",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDHPS70LW1",
+          "url": "https://www.jbhifi.com.au/products/haier-hdhps70lw1-7kg-heat-pump-dryer-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDV60AWW1",
+          "url": "https://www.jbhifi.com.au/products/haier-hdv60aww1-6kg-sensor-vented-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDV70AWW1",
+          "url": "https://www.jbhifi.com.au/products/haier-hdv70aww1-7kg-sensor-vented-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Hisense": [
+        {
+          "model": "HDF8I10HB",
+          "url": "https://www.jbhifi.com.au/products/hisense-hdf8i10hb-8i-series-10kg-heat-pump-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDFS10HPB",
+          "url": "https://www.jbhifi.com.au/products/hisense-hdfs10hpb-10kg-series-9-pump-dryer-charcoal-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDFS80HS",
+          "url": "https://www.jbhifi.com.au/products/hisense-hdfs80hs-8kg-series-3-heat-pump-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "LG": [
+        {
+          "model": "DVH5-08W",
+          "url": "https://www.jbhifi.com.au/products/lg-dvh5-08w-series-5-8kg-heat-pump-dryer-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Samsung": [
+        {
+          "model": "DV90BB9440GB",
+          "url": "https://www.jbhifi.com.au/products/samsung-dv90bb9440gb-9kg-bespoke-smart-heatpump-dryer-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DV90T6440LB",
+          "url": "https://www.jbhifi.com.au/products/samsung-dv90t6440lb-9kg-smart-heat-pump-dryer-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "DV91T6440LE",
+          "url": "https://www.jbhifi.com.au/products/samsung-dv91t6440le-9kg-smart-heat-pump-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Westinghouse": [
+        {
+          "model": "WDH804N7WA",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wdh804n7wa-8kg-easycare-500-series-heat-pump-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WDH904N7SA",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wdh904n7sa-9kg-easycare-700-series-heat-pump-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WDV556N3WB",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wdv556n3wb-5-5kg-vented-clothes-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WDV656N3WB",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wdv656n3wb-6-5kg-vented-clothes-dryer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "fridge": {
+      "CHiQ": [
+        {
+          "model": "CBM230NS3",
+          "url": "https://www.jbhifi.com.au/products/chiq-cbm230ns3-231l-bottom-mount-fridge-silver",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "CBM280NB3",
+          "url": "https://www.jbhifi.com.au/products/chiq-cbm280nb3-283l-bottom-mount-fridge-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "CBM393NB3",
+          "url": "https://www.jbhifi.com.au/products/chiq-cbm393nb3-396l-bottom-mount-fridge-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "CCD503NB",
+          "url": "https://www.jbhifi.com.au/products/chiq-ccd503nb-503l-quad-door-fridge-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "CCD601NBS",
+          "url": "https://www.jbhifi.com.au/products/chiq-ccd601nbs-601l-quad-door-fridge",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "CCSR241DW",
+          "url": "https://www.jbhifi.com.au/products/chiq-ccsr241dw-241l-single-door-fridge-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "CRBM227NW3",
+          "url": "https://www.jbhifi.com.au/products/chiq-crbm227nw3-231l-retro-bottom-mount-fridge-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "CRSR089DR1",
+          "url": "https://www.jbhifi.com.au/products/chiq-crsr089dr1-90l-retro-style-bar-fridge-red",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "CRSR090DB1",
+          "url": "https://www.jbhifi.com.au/products/chiq-crsr090db1-90l-retro-style-bar-fridge-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "CSH311NWL3",
+          "url": "https://www.jbhifi.com.au/products/chiq-csh311nwl3-311l-hybrid-fridge-freezer-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "CTM201NB3",
+          "url": "https://www.jbhifi.com.au/products/chiq-ctm201nb3-202l-top-mount-fridge-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "CTM202NW3",
+          "url": "https://www.jbhifi.com.au/products/chiq-ctm202nw3-202l-top-mount-fridge-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "CTM348NW5E",
+          "url": "https://www.jbhifi.com.au/products/chiq-ctm348nw5e-348l-top-mount-fridge-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "CTM514NB3",
+          "url": "https://www.jbhifi.com.au/products/chiq-ctm514nb3-515l-top-mount-fridge-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Fisher & Paykel": [
+        {
+          "model": "RF500QNB1",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf500qnb1-498l-quad-door-fridge-black-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF500QNUB1",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf500qnub1-498l-quad-door-ice-water-fridge-black-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF605QDUVB2",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qduvb2-538l-french-door-fridge-black-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF605QDUVX2",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qduvx2-538l-french-door-fridge-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF605QDVB2",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qdvb2-538l-french-door-fridge-black-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF605QNUVB1",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qnuvb1-538l-french-door-fridge-black-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF605QNUVX1",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qnuvx1-538l-french-door-fridge-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF610ANUB5",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf610anub5-569l-french-door-fridge-black-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF730QNUVB1",
+          "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf730qnuvb1-690l-quad-door-ice-water-fridge-black-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Haier": [
+        {
+          "model": "HRF420BEC",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf420bec-433l-bottom-mount-fridge",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF420BHC",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf420bhc-431l-bottom-mount-fridge-with-water-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF420BW",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf420bw-433l-bottom-mount-fridge-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF516YHC",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf516yhc-463l-french-door-fridge-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF530YC",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf530yc-463l-quad-door-fridge-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF530YS",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf530ys-463l-quad-door-fridge-satina",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF575XHC",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf575xhc-574l-s-three-door-side-by-side-fridge-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF575XHS",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf575xhs-574l-s-three-door-side-by-side-fridge-satina",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF575XS",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf575xs-574l-s-three-door-side-by-side-fridge-satina",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF580YHN",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf580yhn-508l-quad-door-refrigerator-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF580YHS",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf580yhs-508l-quad-door-fridge-satina",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF680YPS",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf680yps-623l-quad-door-fridge-with-ice-water-satina",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF680YS",
+          "url": "https://www.jbhifi.com.au/products/haier-hrf680ys-623l-quad-door-fridge-satina",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Hisense": [
+        {
+          "model": "HRBF126B",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrbf126b-124l-bar-fridge-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRBF126S",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrbf126s-124l-bar-fridge-silver",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRBM500TBW",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrbm500tbw-500l-pureflat-bottom-mount-fridge-dark-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRCD454SW",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrcd454sw-454l-french-door-fridge-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRCD483TS",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrcd483ts-483l-french-door-fridge-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRTF206S",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrtf206s-205l-top-mount-fridge-silver",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRTF325S",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrtf325s-326l-top-mount-fridge-silver",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRTF424S",
+          "url": "https://www.jbhifi.com.au/products/hisense-hrtf424s-424l-top-mount-fridge-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "LG": [
+        {
+          "model": "F324MBL",
+          "url": "https://www.jbhifi.com.au/products/lg-gp-f324mbl-324l-upright-freezer-matte-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GB-455BTL",
+          "url": "https://www.jbhifi.com.au/products/lg-gb-455btl-420l-bottom-mount-fridge-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GB-455MBL",
+          "url": "https://www.jbhifi.com.au/products/lg-gb-455mbl-420l-bottom-mount-fridge-matte-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GB-455WL",
+          "url": "https://www.jbhifi.com.au/products/lg-gb-455wl-420l-bottom-mount-fridge-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GB-B300MWH",
+          "url": "https://www.jbhifi.com.au/products/lg-gb-b300mwh-335l-bottom-mount-fridge-matte-white-finish",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GB-B300PL",
+          "url": "https://www.jbhifi.com.au/products/lg-gb-b300pl-335l-bottom-mount-fridge-stainless-finish",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GF-B505PL",
+          "url": "https://www.jbhifi.com.au/products/lg-gf-b505pl-530l-slim-french-door-fridge-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GF-L500MBL",
+          "url": "https://www.jbhifi.com.au/products/lg-gf-l500mbl-506l-slim-french-door-fridge-matte-black-plumbed",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GF-L500PL",
+          "url": "https://www.jbhifi.com.au/products/lg-gf-l500pl-506l-slim-french-door-fridge-stainless-plumbed",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GF-L700MBL",
+          "url": "https://www.jbhifi.com.au/products/lg-gf-l700mbl-637l-french-door-fridge-matte-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GF-LN500PL",
+          "url": "https://www.jbhifi.com.au/products/lg-gf-ln500pl-506l-slim-french-door-fridge-stainless-non-plumbed",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GF-V900MB",
+          "url": "https://www.jbhifi.com.au/products/lg-gf-v900mb-847l-french-door-fridge-with-instaview-matte-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GS-L600MBL",
+          "url": "https://www.jbhifi.com.au/products/lg-gs-l600mbl-635l-side-by-side-fridge-matte-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GS-L600PL",
+          "url": "https://www.jbhifi.com.au/products/lg-gs-l600pl-642l-side-by-side-fridge-stainless",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GT-3S",
+          "url": "https://www.jbhifi.com.au/products/lg-gt-3s-315l-top-mount-fridge-stainless-finish",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GT-5MB",
+          "url": "https://www.jbhifi.com.au/products/lg-gt-5mb-375l-top-mount-fridge-matte-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "GT-5S",
+          "url": "https://www.jbhifi.com.au/products/lg-gt-5s-375l-top-mount-fridge-stainless-finish",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "R386MBL",
+          "url": "https://www.jbhifi.com.au/products/lg-gp-r386mbl-386l-single-door-fridge-matte-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Samsung": [
+        {
+          "model": "SRF5300BD",
+          "url": "https://www.jbhifi.com.au/products/samsung-srf5300bd-495l-french-door-fridge-matte-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRF5300SD",
+          "url": "https://www.jbhifi.com.au/products/samsung-srf5300sd-495l-french-door-fridge-silver",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRF7500SB",
+          "url": "https://www.jbhifi.com.au/products/samsung-srf7500sb-648l-french-4-door-fridge-with-beverage-centre-stainless-steel",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRL4200S",
+          "url": "https://www.jbhifi.com.au/products/samsung-srl4200s-427l-bottom-mount-fridge-silver",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRL4600BD",
+          "url": "https://www.jbhifi.com.au/products/samsung-srl4600bd-455l-bottom-mount-refrigerator-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRL4600S",
+          "url": "https://www.jbhifi.com.au/products/samsung-srl4600s-458l-bottom-mount-fridge-silver",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRS6100S",
+          "url": "https://www.jbhifi.com.au/products/samsung-srs6100s-655l-smart-side-by-side-refrigerator",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Westinghouse": [
+        {
+          "model": "WBB3100WK",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wbb3100wk-308l-bottom-mount-fridge-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WBB3400AK",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wbb3400ak-335l-bottom-mount-fridge-silver",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WBE4302AC",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wbe4302ac-r-425l-bottom-mount-fridge-silver-right",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WBE5300SC",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wbe5300sc-r-496l-bottom-mount-fridge-stainless-steel-right",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WBE5304BC",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wbe5304bc-r-496l-bottom-mount-fridge-dark-stainless-steel-right",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WTM3100WL",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wtm3100wl-312l-top-mount-fridge-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WTM5002WD",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wtm5002wd-503l-top-mount-fridge-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "washing_machine": {
+      "CHiQ": [
+        {
+          "model": "WDFL85T48B5",
+          "url": "https://www.jbhifi.com.au/products/chiq-wdfl85t48b5-8-5kg-front-load-washer-5kg-dryer-combo-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WTL64FDB",
+          "url": "https://www.jbhifi.com.au/products/chiq-wtl64fdb-6-5kg-top-load-washer-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WTL79FDB",
+          "url": "https://www.jbhifi.com.au/products/chiq-wtl79fdb-8kg-top-load-washer-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Haier": [
+        {
+          "model": "HWD9050AN1",
+          "url": "https://www.jbhifi.com.au/products/haier-hwd9050an1-9kg-5kg-washer-dryer-combo",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWF12PXB1",
+          "url": "https://www.jbhifi.com.au/products/haier-hwf12pxb1-600-series-12kg-front-load-washer-dark",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT08AN1",
+          "url": "https://www.jbhifi.com.au/products/haier-hwt08an1-8kg-top-load-washing-machine",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT09AD1",
+          "url": "https://www.jbhifi.com.au/products/haier-hwt09ad1-9kg-top-load-washer",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT09AN1",
+          "url": "https://www.jbhifi.com.au/products/haier-hwt09an1-9kg-top-load-washing-machine",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT10AD1",
+          "url": "https://www.jbhifi.com.au/products/haier-hwt10ad1-10kg-top-load-washer-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT10ADB1",
+          "url": "https://www.jbhifi.com.au/products/haier-hwt10adb1-10kg-top-load-washer-dark",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT10AN1",
+          "url": "https://www.jbhifi.com.au/products/haier-hwt10an1-10kg-top-load-washing-machine",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT10ANB1",
+          "url": "https://www.jbhifi.com.au/products/haier-hwt10anb1-10kg-top-load-washing-machine-graphite",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT12AD1",
+          "url": "https://www.jbhifi.com.au/products/haier-hwt12ad1-12kg-top-load-washer-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT60AA1",
+          "url": "https://www.jbhifi.com.au/products/haier-hwt60aa1-6kg-top-load-washing-machine",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT75AA1",
+          "url": "https://www.jbhifi.com.au/products/haier-hwt75aa1-7-5kg-top-load-washing-machine",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Hisense": [
+        {
+          "model": "HWFS1214PB",
+          "url": "https://www.jbhifi.com.au/products/hisense-hwfs1214pb-12kg-series-9-front-loader-washer-charcoal-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "LG": [
+        {
+          "model": "WV5-1208W",
+          "url": "https://www.jbhifi.com.au/products/lg-wv5-1208w-8kg-slim-series-5-front-load-washing-machine-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WV9-1412W",
+          "url": "https://www.jbhifi.com.au/products/lg-wv9-1412w-series-9-12kg-front-load-washer-white",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Samsung": [
+        {
+          "model": "WW90DG6U34LB",
+          "url": "https://www.jbhifi.com.au/products/samsung-ww90dg6u34lb-9kg-smart-front-load-washer-black",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ],
+      "Westinghouse": [
+        {
+          "model": "WWT1084C7WA",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wwt1084c7wa-10kg-top-load-washing-machine",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        },
+        {
+          "model": "WWT8084J7WA",
+          "url": "https://www.jbhifi.com.au/products/westinghouse-wwt8084j7wa-8kg-top-load-washing-machine",
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "source": "sitemap"
+        }
+      ]
+    }
+  }
+}

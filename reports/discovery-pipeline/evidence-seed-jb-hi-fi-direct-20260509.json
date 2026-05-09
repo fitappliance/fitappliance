@@ -1,0 +1,1108 @@
+{
+  "schema_version": 1,
+  "run_at": "2026-05-09T13:43:11.165Z",
+  "discovery_report_path": "reports/discovery-pipeline/discovery-jb-hi-fi-20260509.json",
+  "manual_evidence_path": "data/manual-evidence.json",
+  "scanned_count": 157,
+  "seeded_count": 0,
+  "skipped_count": 6,
+  "failure_count": 151,
+  "seeded": [],
+  "skipped": [
+    {
+      "id": "discovery-dishwasher-bosch-sms24ai01a",
+      "brand": "Bosch",
+      "model": "SMS24AI01A",
+      "reason": "already has approved evidence"
+    },
+    {
+      "id": "discovery-dishwasher-bosch-sms2itw01a",
+      "brand": "Bosch",
+      "model": "SMS2ITW01A",
+      "reason": "already has approved evidence"
+    },
+    {
+      "id": "discovery-dishwasher-bosch-sms4hvi01a",
+      "brand": "Bosch",
+      "model": "SMS4HVI01A",
+      "reason": "already has approved evidence"
+    },
+    {
+      "id": "discovery-dryer-bosch-wqg235drau",
+      "brand": "Bosch",
+      "model": "WQG235DRAU",
+      "reason": "already has approved evidence"
+    },
+    {
+      "id": "discovery-dryer-bosch-wqg24201au",
+      "brand": "Bosch",
+      "model": "WQG24201AU",
+      "reason": "already has approved evidence"
+    },
+    {
+      "id": "discovery-dryer-bosch-wth83002au",
+      "brand": "Bosch",
+      "model": "WTH83002AU",
+      "reason": "already has approved evidence"
+    }
+  ],
+  "failures": [
+    {
+      "brand": "Asko",
+      "model": "DBI343ID",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/asko-dbi343id-w-au-14-place-setting-built-in-classic-dishwasher-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Asko",
+      "model": "DBI364ID",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/asko-dbi364id-bs-au-16-place-setting-built-in-classic-dishwasher-black-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Asko",
+      "model": "DBI565IK",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/asko-dbi565ik-bs-au-16-place-setting-built-in-logic-dishwasher-black-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Asko",
+      "model": "DBI766IQXXL",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/asko-dbi766iqxxl-bs-au-16-place-setting-built-in-style-dishwasher-xxl-black-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Asko",
+      "model": "DFI564D",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/asko-dfi564d-au-16-place-setting-fully-integrated-logic-dishwasher",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Asko",
+      "model": "DFI766U",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/asko-dfi766u-au-16-place-setting-fully-integrated-style-dishwasher",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Asko",
+      "model": "DFI766UXXL",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/asko-dfi766uxxl-au-16-place-setting-fully-integrated-style-dishwasher-xxl",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Asko",
+      "model": "DSD767UXXL",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/asko-dsd767uxxl-au-16-place-setting-fully-integrated-style-dishwasher-with-sliding-door-xxl",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Beko",
+      "model": "BDBU1430X",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/beko-bdbu1430x-14-place-setting-built-in-dishwasher-platinum-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Beko",
+      "model": "BDFB1630B",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/beko-bdfb1630b-16-place-setting-freestanding-dishwasher-glossy-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Beko",
+      "model": "BDFB1650ADX",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/beko-bdfb1650adx-16-place-setting-freestanding-dishwasher-with-autodose-dark-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC1B2",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc1b2-15-place-setting-freestanding-dishwasher-black-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC1X3",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc1x3-15-place-setting-freestanding-dishwasher-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC2B2",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc2b2-15-place-setting-freestanding-dishwasher-black-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC2X3",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc2x3-15-place-setting-freestanding-dishwasher-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC4B2",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc4b2-15-place-setting-freestanding-dishwasher-black-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "DW60FC4X3",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-dw60fc4x3-15-place-setting-freestanding-dishwasher-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HDW13F0S1",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/haier-hdw13f0s1-300-series-13-place-setting-freestanding-dishwasher-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HDW13F0W1",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/haier-hdw13f0w1-300-series-13-place-setting-freestanding-dishwasher-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HSAA16FS",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/hisense-hsaa16fs-16-place-setting-freestanding-dishwasher-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HSAP16FB",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/hisense-hsap16fb-16-place-setting-freestanding-dishwasher-black-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HSCE14FS",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/hisense-hsce14fs-14-place-setting-freestanding-dishwasher-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "XD2A25MB",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/lg-xd2a25mb-truesteam-15-place-setting-freestanding-dishwasher-matte-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Solt",
+      "model": "GGSDW6013W",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/solt-ggsdw6013w-13-place-setting-freestanding-dishwasher-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Solt",
+      "model": "GGSDW6013X",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/solt-ggsdw6013x-13-place-setting-freestanding-dishwasher-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Westinghouse",
+      "model": "WSF6608KXB",
+      "category": "dishwasher",
+      "url": "https://www.jbhifi.com.au/products/westinghouse-wsf6608kxb-15-place-setting-freestanding-dishwasher-dark-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Asko",
+      "model": "T208C",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/asko-t208c-8kg-classic-condenser-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Asko",
+      "model": "T410HD",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/asko-t410hd-10kg-logic-heat-pump-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Asko",
+      "model": "T608HX",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/asko-t608hx-style-8kg-pro-home-heat-pump-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Beko",
+      "model": "BDPB104HW",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/beko-bdpb104hw-10kg-hybrid-heat-pump-dryer-with-steam",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Beko",
+      "model": "BDPB8010W",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/beko-bdpb8010w-8kg-heat-pump-condensor-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Beko",
+      "model": "BDPB802SW",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/beko-bdpb802sw-8kg-heat-pump-dryer-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Beko",
+      "model": "BDPB904HG",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/beko-bdpb904hg-9kg-hybrid-heat-pump-dryer-graphite",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Beko",
+      "model": "BDPB904HW",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/beko-bdpb904hw-9kg-hybrid-heat-pump-dryer-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Electrolux",
+      "model": "EDH903R7SC",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/electrolux-edh903r7sc-ultimatecare-700-9kg-heat-pump-dryer-dark-onyx",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Electrolux",
+      "model": "EDH903R7WC",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/electrolux-edh903r7wc-ultimatecare-700-9kg-heat-pump-dryer-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "DE6060M2",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-de6060m2-6kg-vented-dryer-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "DE7060G2",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-de7060g2-7kg-vented-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "DE7060P2",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-de7060p2-7kg-vented-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HDHP10PXB1",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/haier-hdhp10pxb1-10kg-heat-pump-condenser-dryer-dark",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HDHPS70LW1",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/haier-hdhps70lw1-7kg-heat-pump-dryer-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HDV60AWW1",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/haier-hdv60aww1-6kg-sensor-vented-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HDV70AWW1",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/haier-hdv70aww1-7kg-sensor-vented-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HDF8I10HB",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/hisense-hdf8i10hb-8i-series-10kg-heat-pump-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HDFS10HPB",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/hisense-hdfs10hpb-10kg-series-9-pump-dryer-charcoal-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HDFS80HS",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/hisense-hdfs80hs-8kg-series-3-heat-pump-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "DVH5-08W",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/lg-dvh5-08w-series-5-8kg-heat-pump-dryer-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Samsung",
+      "model": "DV90BB9440GB",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/samsung-dv90bb9440gb-9kg-bespoke-smart-heatpump-dryer-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Samsung",
+      "model": "DV90T6440LB",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/samsung-dv90t6440lb-9kg-smart-heat-pump-dryer-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Samsung",
+      "model": "DV91T6440LE",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/samsung-dv91t6440le-9kg-smart-heat-pump-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Westinghouse",
+      "model": "WDH804N7WA",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/westinghouse-wdh804n7wa-8kg-easycare-500-series-heat-pump-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Westinghouse",
+      "model": "WDH904N7SA",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/westinghouse-wdh904n7sa-9kg-easycare-700-series-heat-pump-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Westinghouse",
+      "model": "WDV556N3WB",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/westinghouse-wdv556n3wb-5-5kg-vented-clothes-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Westinghouse",
+      "model": "WDV656N3WB",
+      "category": "dryer",
+      "url": "https://www.jbhifi.com.au/products/westinghouse-wdv656n3wb-6-5kg-vented-clothes-dryer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "CBM230NS3",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/chiq-cbm230ns3-231l-bottom-mount-fridge-silver",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "CBM280NB3",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/chiq-cbm280nb3-283l-bottom-mount-fridge-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "CBM393NB3",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/chiq-cbm393nb3-396l-bottom-mount-fridge-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "CCD503NB",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/chiq-ccd503nb-503l-quad-door-fridge-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "CCD601NBS",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/chiq-ccd601nbs-601l-quad-door-fridge",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "CCSR241DW",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/chiq-ccsr241dw-241l-single-door-fridge-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "CRBM227NW3",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/chiq-crbm227nw3-231l-retro-bottom-mount-fridge-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "CRSR089DR1",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/chiq-crsr089dr1-90l-retro-style-bar-fridge-red",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "CRSR090DB1",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/chiq-crsr090db1-90l-retro-style-bar-fridge-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "CSH311NWL3",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/chiq-csh311nwl3-311l-hybrid-fridge-freezer-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "CTM201NB3",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/chiq-ctm201nb3-202l-top-mount-fridge-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "CTM202NW3",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/chiq-ctm202nw3-202l-top-mount-fridge-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "CTM348NW5E",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/chiq-ctm348nw5e-348l-top-mount-fridge-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "CTM514NB3",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/chiq-ctm514nb3-515l-top-mount-fridge-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "RF500QNB1",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf500qnb1-498l-quad-door-fridge-black-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "RF500QNUB1",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf500qnub1-498l-quad-door-ice-water-fridge-black-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "RF605QDUVB2",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qduvb2-538l-french-door-fridge-black-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "RF605QDUVX2",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qduvx2-538l-french-door-fridge-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "RF605QDVB2",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qdvb2-538l-french-door-fridge-black-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "RF605QNUVB1",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qnuvb1-538l-french-door-fridge-black-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "RF605QNUVX1",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf605qnuvx1-538l-french-door-fridge-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "RF610ANUB5",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf610anub5-569l-french-door-fridge-black-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Fisher & Paykel",
+      "model": "RF730QNUVB1",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/fisher-paykel-rf730qnuvb1-690l-quad-door-ice-water-fridge-black-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HRF420BEC",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/haier-hrf420bec-433l-bottom-mount-fridge",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HRF420BHC",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/haier-hrf420bhc-431l-bottom-mount-fridge-with-water-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HRF420BW",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/haier-hrf420bw-433l-bottom-mount-fridge-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HRF516YHC",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/haier-hrf516yhc-463l-french-door-fridge-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HRF530YC",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/haier-hrf530yc-463l-quad-door-fridge-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HRF530YS",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/haier-hrf530ys-463l-quad-door-fridge-satina",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HRF575XHC",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/haier-hrf575xhc-574l-s-three-door-side-by-side-fridge-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HRF575XHS",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/haier-hrf575xhs-574l-s-three-door-side-by-side-fridge-satina",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HRF575XS",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/haier-hrf575xs-574l-s-three-door-side-by-side-fridge-satina",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HRF580YHN",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/haier-hrf580yhn-508l-quad-door-refrigerator-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HRF580YHS",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/haier-hrf580yhs-508l-quad-door-fridge-satina",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HRF680YPS",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/haier-hrf680yps-623l-quad-door-fridge-with-ice-water-satina",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HRF680YS",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/haier-hrf680ys-623l-quad-door-fridge-satina",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HRBF126B",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/hisense-hrbf126b-124l-bar-fridge-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HRBF126S",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/hisense-hrbf126s-124l-bar-fridge-silver",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HRBM500TBW",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/hisense-hrbm500tbw-500l-pureflat-bottom-mount-fridge-dark-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HRCD454SW",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/hisense-hrcd454sw-454l-french-door-fridge-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HRCD483TS",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/hisense-hrcd483ts-483l-french-door-fridge-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HRTF206S",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/hisense-hrtf206s-205l-top-mount-fridge-silver",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HRTF325S",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/hisense-hrtf325s-326l-top-mount-fridge-silver",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HRTF424S",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/hisense-hrtf424s-424l-top-mount-fridge-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "F324MBL",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gp-f324mbl-324l-upright-freezer-matte-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GB-455BTL",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gb-455btl-420l-bottom-mount-fridge-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GB-455MBL",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gb-455mbl-420l-bottom-mount-fridge-matte-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GB-455WL",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gb-455wl-420l-bottom-mount-fridge-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GB-B300MWH",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gb-b300mwh-335l-bottom-mount-fridge-matte-white-finish",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GB-B300PL",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gb-b300pl-335l-bottom-mount-fridge-stainless-finish",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GF-B505PL",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gf-b505pl-530l-slim-french-door-fridge-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GF-L500MBL",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gf-l500mbl-506l-slim-french-door-fridge-matte-black-plumbed",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GF-L500PL",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gf-l500pl-506l-slim-french-door-fridge-stainless-plumbed",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GF-L700MBL",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gf-l700mbl-637l-french-door-fridge-matte-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GF-LN500PL",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gf-ln500pl-506l-slim-french-door-fridge-stainless-non-plumbed",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GF-V900MB",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gf-v900mb-847l-french-door-fridge-with-instaview-matte-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GS-L600MBL",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gs-l600mbl-635l-side-by-side-fridge-matte-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GS-L600PL",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gs-l600pl-642l-side-by-side-fridge-stainless",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GT-3S",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gt-3s-315l-top-mount-fridge-stainless-finish",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GT-5MB",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gt-5mb-375l-top-mount-fridge-matte-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "GT-5S",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gt-5s-375l-top-mount-fridge-stainless-finish",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "R386MBL",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/lg-gp-r386mbl-386l-single-door-fridge-matte-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Samsung",
+      "model": "SRF5300BD",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/samsung-srf5300bd-495l-french-door-fridge-matte-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Samsung",
+      "model": "SRF5300SD",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/samsung-srf5300sd-495l-french-door-fridge-silver",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Samsung",
+      "model": "SRF7500SB",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/samsung-srf7500sb-648l-french-4-door-fridge-with-beverage-centre-stainless-steel",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Samsung",
+      "model": "SRL4200S",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/samsung-srl4200s-427l-bottom-mount-fridge-silver",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Samsung",
+      "model": "SRL4600BD",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/samsung-srl4600bd-455l-bottom-mount-refrigerator-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Samsung",
+      "model": "SRL4600S",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/samsung-srl4600s-458l-bottom-mount-fridge-silver",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Samsung",
+      "model": "SRS6100S",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/samsung-srs6100s-655l-smart-side-by-side-refrigerator",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Westinghouse",
+      "model": "WBB3100WK",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/westinghouse-wbb3100wk-308l-bottom-mount-fridge-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Westinghouse",
+      "model": "WBB3400AK",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/westinghouse-wbb3400ak-335l-bottom-mount-fridge-silver",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Westinghouse",
+      "model": "WBE4302AC",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/westinghouse-wbe4302ac-r-425l-bottom-mount-fridge-silver-right",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Westinghouse",
+      "model": "WBE5300SC",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/westinghouse-wbe5300sc-r-496l-bottom-mount-fridge-stainless-steel-right",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Westinghouse",
+      "model": "WBE5304BC",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/westinghouse-wbe5304bc-r-496l-bottom-mount-fridge-dark-stainless-steel-right",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Westinghouse",
+      "model": "WTM3100WL",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/westinghouse-wtm3100wl-312l-top-mount-fridge-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Westinghouse",
+      "model": "WTM5002WD",
+      "category": "fridge",
+      "url": "https://www.jbhifi.com.au/products/westinghouse-wtm5002wd-503l-top-mount-fridge-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "WDFL85T48B5",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/chiq-wdfl85t48b5-8-5kg-front-load-washer-5kg-dryer-combo-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "WTL64FDB",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/chiq-wtl64fdb-6-5kg-top-load-washer-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "CHiQ",
+      "model": "WTL79FDB",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/chiq-wtl79fdb-8kg-top-load-washer-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HWD9050AN1",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/haier-hwd9050an1-9kg-5kg-washer-dryer-combo",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HWF12PXB1",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/haier-hwf12pxb1-600-series-12kg-front-load-washer-dark",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HWT08AN1",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/haier-hwt08an1-8kg-top-load-washing-machine",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HWT09AD1",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/haier-hwt09ad1-9kg-top-load-washer",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HWT09AN1",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/haier-hwt09an1-9kg-top-load-washing-machine",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HWT10AD1",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/haier-hwt10ad1-10kg-top-load-washer-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HWT10ADB1",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/haier-hwt10adb1-10kg-top-load-washer-dark",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HWT10AN1",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/haier-hwt10an1-10kg-top-load-washing-machine",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HWT10ANB1",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/haier-hwt10anb1-10kg-top-load-washing-machine-graphite",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HWT12AD1",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/haier-hwt12ad1-12kg-top-load-washer-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HWT60AA1",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/haier-hwt60aa1-6kg-top-load-washing-machine",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Haier",
+      "model": "HWT75AA1",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/haier-hwt75aa1-7-5kg-top-load-washing-machine",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Hisense",
+      "model": "HWFS1214PB",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/hisense-hwfs1214pb-12kg-series-9-front-loader-washer-charcoal-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "WV5-1208W",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/lg-wv5-1208w-8kg-slim-series-5-front-load-washing-machine-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "LG",
+      "model": "WV9-1412W",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/lg-wv9-1412w-series-9-12kg-front-load-washer-white",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Samsung",
+      "model": "WW90DG6U34LB",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/samsung-ww90dg6u34lb-9kg-smart-front-load-washer-black",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Westinghouse",
+      "model": "WWT1084C7WA",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/westinghouse-wwt1084c7wa-10kg-top-load-washing-machine",
+      "reason": "no accepted official/trusted PDF source found"
+    },
+    {
+      "brand": "Westinghouse",
+      "model": "WWT8084J7WA",
+      "category": "washing_machine",
+      "url": "https://www.jbhifi.com.au/products/westinghouse-wwt8084j7wa-8kg-top-load-washing-machine",
+      "reason": "no accepted official/trusted PDF source found"
+    }
+  ]
+}
