@@ -1,0 +1,372 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+
+import {
+  compareDimensions,
+  findPdfSourceUrl,
+  loadBatchTargets,
+  runBatch,
+  writeBatchReport
+} from '../../scripts/pdf-pipeline/run-batch.js';
+
+function writeJson(filePath, value) {
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`);
+}
+
+function makeRepo() {
+  const repoRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'fitappliance-pdf-batch-'));
+  const products = [
+    {
+      id: 'active-missing',
+      cat: 'fridge',
+      brand: 'Hisense',
+      model: 'HRTF206',
+      w: 550,
+      h: 1410,
+      d: 490,
+      unavailable: false,
+      retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/hisense-hrtf206' }]
+    },
+    {
+      id: 'active-done',
+      cat: 'fridge',
+      brand: 'LG',
+      model: 'GF-A',
+      w: 700,
+      h: 1700,
+      d: 700,
+      unavailable: false,
+      evidence: { has_pdf_evidence: true }
+    },
+    {
+      id: 'archived-missing',
+      cat: 'fridge',
+      brand: 'Old',
+      model: 'OLD',
+      w: 600,
+      h: 1600,
+      d: 600,
+      unavailable: true
+    }
+  ];
+  writeJson(path.join(repoRoot, 'public', 'data', 'fridges.json'), { products });
+  for (const fileName of ['dishwashers.json', 'dryers.json', 'washing-machines.json']) {
+    writeJson(path.join(repoRoot, 'public', 'data', fileName), { products: [] });
+  }
+  writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {
+    schema_version: 1,
+    storage: {
+      root_env: 'EVIDENCE_ROOT_DIR',
+      path_rule: 'Each evidence.local_path is relative to EVIDENCE_ROOT_DIR.'
+    },
+    products: {
+      'active-missing': {
+        category: 'fridge',
+        brand: 'Hisense',
+        model: 'HRTF206',
+        evidence: [
+          {
+            type: 'spec_sheet',
+            status: 'candidate',
+            source_url: 'https://example.com/HRTF206-Spec.pdf',
+            verified_at: '2026-05-08'
+          }
+        ]
+      }
+    }
+  });
+  return repoRoot;
+}
+
+const strictData = {
+  brand: 'Hisense',
+  sku: 'HRTF206',
+  category: 'FRIDGE',
+  dimensions: {
+    height_mm: 1456,
+    width_mm: 550,
+    depth_mm: 562,
+    door_open_90_depth_mm: null
+  },
+  clearance_requirements: {
+    top_mm: 100,
+    left_mm: 50,
+    right_mm: 50,
+    rear_mm: 50
+  },
+  flags: {
+    requires_plumbing: false,
+    ventilation_required: true,
+    reversible_door: false
+  },
+  metadata: {
+    source_pdf_url: 'https://example.com/HRTF206-Spec.pdf',
+    extraction_date: '2026-05-08T00:00:00.000Z',
+    confidence_score: 0.97
+  }
+};
+
+test('batch target identification selects active products missing PDF evidence only', () => {
+  const repoRoot = makeRepo();
+  const targets = loadBatchTargets({ repoRoot });
+
+  assert.deepEqual(targets.map((target) => target.id), ['active-missing']);
+  assert.equal(targets[0].brand, 'Hisense');
+  assert.equal(targets[0].sku, 'HRTF206');
+});
+
+test('batch target identification can limit processing to explicit SKUs', () => {
+  const repoRoot = makeRepo();
+  const fridgesPath = path.join(repoRoot, 'public', 'data', 'fridges.json');
+  const fridges = JSON.parse(fs.readFileSync(fridgesPath, 'utf8'));
+  fridges.products.push({
+    id: 'active-second',
+    cat: 'fridge',
+    brand: 'Fisher & Paykel',
+    model: 'RF605QDVX2',
+    w: 905,
+    h: 1790,
+    d: 688,
+    unavailable: false
+  });
+  writeJson(fridgesPath, fridges);
+
+  const targets = loadBatchTargets({ repoRoot, skus: ['RF605QDVX2'] });
+
+  assert.deepEqual(targets.map((target) => target.sku), ['RF605QDVX2']);
+});
+
+test('batch target identification accepts short SKU filters for catalog models with title suffixes', () => {
+  const repoRoot = makeRepo();
+  const fridgesPath = path.join(repoRoot, 'public', 'data', 'fridges.json');
+  const fridges = JSON.parse(fs.readFileSync(fridgesPath, 'utf8'));
+  fridges.products.push({
+    id: 'active-title-suffix',
+    cat: 'fridge',
+    brand: 'Fisher & Paykel',
+    model: 'RF730QZUVX1 French Door 726L',
+    w: 905,
+    h: 1900,
+    d: 748,
+    unavailable: false
+  });
+  writeJson(fridgesPath, fridges);
+
+  const targets = loadBatchTargets({ repoRoot, skus: ['RF730QZUVX1'] });
+
+  assert.deepEqual(targets.map((target) => target.id), ['active-title-suffix']);
+});
+
+test('batch target identification does not match short incidental SKU tokens', () => {
+  const repoRoot = makeRepo();
+  const fridgesPath = path.join(repoRoot, 'public', 'data', 'fridges.json');
+  const fridges = JSON.parse(fs.readFileSync(fridgesPath, 'utf8'));
+  fridges.products.push({
+    id: 'active-short-token',
+    cat: 'fridge',
+    brand: 'Haier',
+    model: 'HRF520BHS French Door 520L',
+    sku: 'RF',
+    w: 790,
+    h: 1725,
+    d: 686,
+    unavailable: false
+  });
+  writeJson(fridgesPath, fridges);
+
+  const targets = loadBatchTargets({ repoRoot, skus: ['RF730QNUVX1'] });
+
+  assert.deepEqual(targets.map((target) => target.id), []);
+});
+
+test('findPdfSourceUrl prefers manual-evidence source URLs before search APIs', async () => {
+  const repoRoot = makeRepo();
+  const target = loadBatchTargets({ repoRoot })[0];
+  const result = await findPdfSourceUrl(target, {
+    repoRoot,
+    searchPdf: async () => {
+      throw new Error('search should not run when manual source exists');
+    }
+  });
+
+  assert.equal(result.sourceUrl, 'https://example.com/HRTF206-Spec.pdf');
+  assert.equal(result.source, 'manual-evidence');
+});
+
+test('compareDimensions reports significant legacy-vs-PDF deltas', () => {
+  const deltas = compareDimensions(
+    { w: 550, h: 1410, d: 490 },
+    strictData,
+    { thresholdMm: 5 }
+  );
+
+  assert.deepEqual(deltas, [
+    { axis: 'height', legacy: 1410, pdf: 1456, delta_mm: 46 },
+    { axis: 'depth', legacy: 490, pdf: 562, delta_mm: 72 }
+  ]);
+});
+
+test('runBatch continues after failures and writes an audit report', async () => {
+  const repoRoot = makeRepo();
+  const extraFailure = {
+    id: 'active-failure',
+    cat: 'fridge',
+    brand: 'FailCo',
+    model: 'FAIL1',
+    w: 600,
+    h: 1600,
+    d: 600,
+    unavailable: false
+  };
+  const fridgesPath = path.join(repoRoot, 'public', 'data', 'fridges.json');
+  const fridges = JSON.parse(fs.readFileSync(fridgesPath, 'utf8'));
+  fridges.products.push(extraFailure);
+  writeJson(fridgesPath, fridges);
+  const evidencePath = path.join(repoRoot, 'data', 'manual-evidence.json');
+  const evidence = JSON.parse(fs.readFileSync(evidencePath, 'utf8'));
+  evidence.products['active-failure'] = {
+    category: 'fridge',
+    brand: 'FailCo',
+    model: 'FAIL1',
+    evidence: [
+      {
+        type: 'spec_sheet',
+        status: 'candidate',
+        source_url: 'https://example.com/FAIL1-Spec.pdf',
+        verified_at: '2026-05-08'
+      }
+    ]
+  };
+  writeJson(evidencePath, evidence);
+
+  const result = await runBatch({
+    repoRoot,
+    delayMs: 0,
+    fetchPdfImpl: async (_url, destPath) => {
+      fs.mkdirSync(path.dirname(destPath), { recursive: true });
+      fs.writeFileSync(destPath, '%PDF fixture');
+      return { path: destPath, cached: false, bytes: 12 };
+    },
+    extractTextImpl: async () => ({ text: 'fixture text', pageCount: 1, info: {} }),
+    parseTextImpl: async (_text, { target }) => {
+      if (target.id === 'active-failure') throw new Error('PDF not found');
+      return strictData;
+    },
+    validateStrictImpl: (candidate) => ({
+      valid: candidate.sku === 'HRTF206',
+      errors: [],
+      requiresManualReview: false,
+      data: candidate
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 1);
+  assert.equal(result.discrepancies.length, 2);
+  assert.equal(fs.existsSync(path.join(repoRoot, 'reports', 'pdf-batch-results.md')), true);
+  const report = fs.readFileSync(path.join(repoRoot, 'reports', 'pdf-batch-results.md'), 'utf8');
+  assert.match(report, /Successful Runs/);
+  assert.match(report, /Significant Discrepancies/);
+  assert.match(report, /PDF not found/);
+});
+
+test('runBatch fails fast with a clear .env error when the OpenAI key is missing', async () => {
+  const repoRoot = makeRepo();
+
+  await assert.rejects(() => runBatch({
+    repoRoot,
+    delayMs: 0,
+    env: {},
+    logger: { log() {}, warn() {}, error() {} }
+  }), /Missing API Key in \.env file/);
+});
+
+test('runBatch processes only explicit SKUs when skus is provided', async () => {
+  const repoRoot = makeRepo();
+  const fridgesPath = path.join(repoRoot, 'public', 'data', 'fridges.json');
+  const fridges = JSON.parse(fs.readFileSync(fridgesPath, 'utf8'));
+  fridges.products.push({
+    id: 'active-second',
+    cat: 'fridge',
+    brand: 'Fisher & Paykel',
+    model: 'RF605QDVX2',
+    w: 905,
+    h: 1790,
+    d: 688,
+    unavailable: false
+  });
+  writeJson(fridgesPath, fridges);
+  const evidencePath = path.join(repoRoot, 'data', 'manual-evidence.json');
+  const evidence = JSON.parse(fs.readFileSync(evidencePath, 'utf8'));
+  evidence.products['active-second'] = {
+    category: 'fridge',
+    brand: 'Fisher & Paykel',
+    model: 'RF605QDVX2',
+    evidence: [
+      {
+        type: 'spec_sheet',
+        status: 'candidate',
+        source_url: 'https://example.com/RF605QDVX2.pdf',
+        verified_at: '2026-05-09'
+      }
+    ]
+  };
+  writeJson(evidencePath, evidence);
+
+  const processed = [];
+  const result = await runBatch({
+    repoRoot,
+    skus: ['RF605QDVX2'],
+    delayMs: 0,
+    fetchPdfImpl: async (_url, destPath) => {
+      fs.mkdirSync(path.dirname(destPath), { recursive: true });
+      fs.writeFileSync(destPath, '%PDF fixture');
+      return { path: destPath, cached: false, bytes: 12 };
+    },
+    extractTextImpl: async () => ({ text: 'fixture text', pageCount: 1, info: {} }),
+    parseTextImpl: async (_text, { target }) => {
+      processed.push(target.sku);
+      return {
+        ...strictData,
+        brand: 'Fisher & Paykel',
+        sku: target.sku,
+        metadata: {
+          ...strictData.metadata,
+          source_pdf_url: 'https://example.com/RF605QDVX2.pdf'
+        }
+      };
+    },
+    validateStrictImpl: (candidate) => ({
+      valid: true,
+      errors: [],
+      requiresManualReview: false,
+      data: candidate
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.deepEqual(processed, ['RF605QDVX2']);
+  assert.equal(result.targets.length, 1);
+  assert.equal(result.successes.length, 1);
+});
+
+test('writeBatchReport renders empty sections without throwing', () => {
+  const repoRoot = makeRepo();
+  const outputPath = writeBatchReport({
+    repoRoot,
+    successes: [],
+    discrepancies: [],
+    failures: [],
+    runAt: '2026-05-08T00:00:00.000Z'
+  });
+
+  const report = fs.readFileSync(outputPath, 'utf8');
+  assert.match(report, /No successful runs/);
+  assert.match(report, /No significant discrepancies/);
+  assert.match(report, /No failures/);
+});

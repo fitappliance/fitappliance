@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "dr3",
+  "category": "dryer",
+  "brand": "Electrolux",
+  "model": "EDH803BEWA Heat Pump — 8kg",
+  "source_url": "https://commercial.appliancesonline.com.au/public/manuals/EDH803BEWA-Electrolux-Specifications-Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Electrolux",
+    "sku": "EDH803BEWA",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 665,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://commercial.appliancesonline.com.au/public/manuals/EDH803BEWA-Electrolux-Specifications-Sheet.pdf",
+      "extraction_date": "2026-05-09T03:36:49.306Z",
+      "confidence_score": 0.9
+    }
+  }
+}

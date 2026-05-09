@@ -22,10 +22,15 @@ Zero hallucination rules:
 - Do not guess ambiguous dimensions. Use null and lower confidence when the PDF text does not clearly map a number to width, height, depth, or clearance.
 - Extract required installation air gaps for top, side, rear, and front when stated.
 - If the document states a cavity dimension instead of a clearance, calculate the clearance only when both the cavity dimension and product dimension are explicit in the source text.
+- Return millimetre fields as whole numbers. If the source has a decimal millimetre value, round to the nearest integer.
+- If multiple models appear in one PDF, extract data for the target model in TARGET PRODUCT CONTEXT. Use that target brand/model/category for brand, model, and category unless the PDF clearly contradicts it.
 - Preserve a short source_quote proving the most important dimension or clearance value.
 
 Use null when the PDF does not state a value. Convert inches to millimetres.
 Do not include markdown or commentary.
+
+TARGET PRODUCT CONTEXT:
+{{TARGET_CONTEXT}}
 
 PDF TEXT:
 {{TEXT}}`;

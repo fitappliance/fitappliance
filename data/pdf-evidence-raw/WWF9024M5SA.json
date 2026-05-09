@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "washing_machine-acw1243",
+  "category": "washing_machine",
+  "brand": "Westinghouse",
+  "model": "WWF9024M5SA",
+  "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/b/6/6/1/b66155b700f22290d55751769bee853cc7a247df_Westinghouse_WWF9024M5SA_Factsheet__1_.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WWF9024M5SA",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 660,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://commercial.appliancesonline.com.au/manuals/ak/b/6/6/1/b66155b700f22290d55751769bee853cc7a247df_Westinghouse_WWF9024M5SA_Factsheet__1_.pdf",
+      "extraction_date": "2026-05-09T03:37:35.166Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,3 +1,5 @@
+require('dotenv').config({ quiet: true });
+
 const {
   ALLOWED_CATEGORIES,
   ALLOWED_CONFIDENCE,

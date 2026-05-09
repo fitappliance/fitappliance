@@ -78,6 +78,58 @@ test('pdf pipeline zod validation: marks low confidence candidates for manual re
   assert.equal(result.requiresManualReview, true);
 });
 
+test('pdf pipeline zod validation: rounds decimal millimetre values before strict parsing', () => {
+  const result = validateApplianceDimension({
+    ...validCandidate,
+    dimensions: {
+      height_mm: 1784.6,
+      width_mm: 912.4,
+      depth_mm: 724.5,
+      door_open_90_depth_mm: 1142.2
+    },
+    clearance_requirements: {
+      top_mm: 19.6,
+      left_mm: 4.4,
+      right_mm: 4.5,
+      rear_mm: 10.1
+    }
+  });
+
+  assert.equal(result.valid, true);
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 1785,
+    width_mm: 912,
+    depth_mm: 725,
+    door_open_90_depth_mm: 1142
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 20,
+    left_mm: 4,
+    right_mm: 5,
+    rear_mm: 10
+  });
+});
+
+test('pdf pipeline zod validation: fills missing brand sku and category from target context', () => {
+  const result = validateApplianceDimension({
+    ...validCandidate,
+    brand: null,
+    sku: null,
+    category: null
+  }, {
+    target: {
+      brand: 'Hisense',
+      sku: 'HRSBS632BW',
+      category: 'fridge'
+    }
+  });
+
+  assert.equal(result.valid, true);
+  assert.equal(result.data.brand, 'Hisense');
+  assert.equal(result.data.sku, 'HRSBS632BW');
+  assert.equal(result.data.category, 'FRIDGE');
+});
+
 test('pdf pipeline zod validation: normalizes legacy B1 extraction shape into strict schema', () => {
   const normalized = normalizeApplianceDimensionCandidate({
     brand: 'Bosch',

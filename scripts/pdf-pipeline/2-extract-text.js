@@ -1,3 +1,5 @@
+require('dotenv').config({ quiet: true });
+
 const fs = require('node:fs');
 const { PDFParse } = require('pdf-parse');
 

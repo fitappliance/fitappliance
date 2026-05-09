@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "dishwasher-adw1149",
+  "category": "dishwasher",
+  "brand": "Westinghouse",
+  "model": "WSF6604XB",
+  "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/3/0/6/6/3066951a7ccf5fafcdc3e0eeb91d98ade3945e25_WSF6604WB_Westinghouse_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WSF6604XB",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 598,
+      "depth_mm": 598,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://commercial.appliancesonline.com.au/manuals/ak/3/0/6/6/3066951a7ccf5fafcdc3e0eeb91d98ade3945e25_WSF6604WB_Westinghouse_User_Manual.pdf",
+      "extraction_date": "2026-05-09T03:36:37.649Z",
+      "confidence_score": 0.9
+    }
+  }
+}
