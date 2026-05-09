@@ -1,0 +1,1994 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-09T12:04:05.000Z",
+  "retailer": "bing-lee",
+  "source_urls": [
+    "https://binglee.com.au/sitemap.xml",
+    "https://www.binglee.com.au/public/sitemap-articles.xml",
+    "https://www.binglee.com.au/public/sitemap-products.xml",
+    "https://www.binglee.com.au/public/sitemap-brands.xml",
+    "https://www.binglee.com.au/public/sitemap-locations.xml",
+    "https://www.binglee.com.au/public/sitemap-categories.xml",
+    "https://www.binglee.com.au/public/sitemap-brand-categories.xml",
+    "https://www.binglee.com.au/public/sitemap-custom.xml"
+  ],
+  "summary": {
+    "new_discovery_count": 270,
+    "categories": {
+      "dishwasher": 19,
+      "dryer": 30,
+      "fridge": 140,
+      "washing_machine": 81
+    }
+  },
+  "new_discoveries": {
+    "dishwasher": {
+      "Bosch": [
+        {
+          "model": "SMS24AI01A",
+          "url": "https://www.binglee.com.au/products/series-2-free-standing-dishwasher-60-cm-silver-inox-sms24ai01a",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMS2ITI02A",
+          "url": "https://www.binglee.com.au/products/bosch-series-2-free-standing-dishwasher-60-cm-stainless-steel-sms2iti02a",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMS2ITW01A",
+          "url": "https://www.binglee.com.au/products/bosch-serie-2-60cm-freestanding-dishwasher-sms2itw01a",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMS4HVI01A",
+          "url": "https://www.binglee.com.au/products/bosch-sms4hvi01a-60cm-freestanding-dishwasher",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMS8EDI01A",
+          "url": "https://www.binglee.com.au/products/bosch-sms8edi01a-60cm-freestanding-dishwasher",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMU8ECS01A",
+          "url": "https://www.binglee.com.au/products/60cm-series-8-built-under-dishwasher-brushed-steel-anti-fingerprint-smu8ecs01a",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMU8ZCS01A",
+          "url": "https://www.binglee.com.au/products/series-8-built-under-dishwasher-60cm-smu8zcs01a",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMV4HTX01A",
+          "url": "https://www.binglee.com.au/products/bosch-smv4htx01a-60cm-fully-integrated-dishwasher",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Fisher & Paykel": [
+        {
+          "model": "DD60SCX9",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-dd60scx9-dishdrawer-single-dishwasher",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Haier": [
+        {
+          "model": "HDFS143BBSAU",
+          "url": "https://www.binglee.com.au/products/14pl-60cm-fstand-dish-blk-hdfs143bbsau",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDFS143BSAU",
+          "url": "https://www.binglee.com.au/products/14pl-60cm-fstand-dish-ss-hdfs143bsau",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Miele": [
+        {
+          "model": "G5000SCCLST",
+          "url": "https://www.binglee.com.au/products/miele-freestanding-dishwasher-g5000scclst",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Smeg": [
+        {
+          "model": "DWAI6D15XT3",
+          "url": "https://www.binglee.com.au/products/smeg-dwai6d15xt3-60cm-semi-integrated-dishwasher",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Westinghouse": [
+        {
+          "model": "WSF6602WC",
+          "url": "https://www.binglee.com.au/products/14pl-60cm-6p-fstand-dish-white-wsf6602wc",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WSF6602XC",
+          "url": "https://www.binglee.com.au/products/14pl-60cm-6p-fstand-dish-silv-wsf6602xc",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WSF6604XC",
+          "url": "https://www.binglee.com.au/products/14pl-60cm-8p-fstand-dish-silv-wsf6604xc",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WSF6606KXC",
+          "url": "https://www.binglee.com.au/products/15pl-60cm-8p-fstand-dish-dss-wsf6606kxc",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WSF6606XC",
+          "url": "https://www.binglee.com.au/products/15pl-60cm-8p-fstand-dish-ss-wsf6606xc",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WSF6608XC",
+          "url": "https://www.binglee.com.au/products/15pl-60cm-10p-fstand-dish-ss-wsf6608xc",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "dryer": {
+      "Asko": [
+        {
+          "model": "T410HD",
+          "url": "https://www.binglee.com.au/products/asko-t410hd-w-au-10kg-heat-pump-logic-dryer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "T784C",
+          "url": "https://www.binglee.com.au/products/asko-t784c-6-5kg-sensor-condenser-dryer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Electrolux": [
+        {
+          "model": "EDH804U5WB",
+          "url": "https://www.binglee.com.au/products/electrolux-heatpump-dryer-8kg-sensor-dry-edh804u5wb",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "EDV605H3WB",
+          "url": "https://www.binglee.com.au/products/electrolux-edv605h3wb-6kg-vented-tumble-dryer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "EDV705H3WB",
+          "url": "https://www.binglee.com.au/products/electrolux-edv705h3wb-7kg-vented-tumble-dryer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "EDV705N3SC",
+          "url": "https://www.binglee.com.au/products/dark-onyx-7kg-vented-dryer-edv705n3sc",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Fisher & Paykel": [
+        {
+          "model": "DE6060M2",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-de6060m2-6kg-vented-dryer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "DH8060P3",
+          "url": "https://www.binglee.com.au/products/8kg-heat-pump-dryer-dh8060p3",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "DH9060FS1",
+          "url": "https://www.binglee.com.au/products/9kg-heat-pump-dryer-dh9060fs1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "DH9060PG2",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-graphite-heatpump-9kg-dryer-dh9060pg2",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "DK4W",
+          "url": "https://www.binglee.com.au/products/fisher-and-paykel-dryer-venting-kit-dk4w",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Haier": [
+        {
+          "model": "HDHP80ANB1",
+          "url": "https://www.binglee.com.au/products/haier-8kg-heat-pump-dryer-hdhp80anb1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDHP80AW1",
+          "url": "https://www.binglee.com.au/products/8kg-heat-pump-dryer-rev-tumble-hdhp80aw1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "LG": [
+        {
+          "model": "DVH10-10B",
+          "url": "https://www.binglee.com.au/products/lg-heat-pump-10kg-dryer-black-dvh10-10b",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "DVH5-08W",
+          "url": "https://www.binglee.com.au/products/lg-dvh5-08w-8kg-heat-pump-dryer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "DVH9-09B",
+          "url": "https://www.binglee.com.au/products/lg-dvh9-09b-9kg-heat-pump-dryer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "DVH9-09W",
+          "url": "https://www.binglee.com.au/products/lg-dvh9-09w-9kg-heat-pump-dryer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Midea": [
+        {
+          "model": "MD200H80WBW",
+          "url": "https://www.binglee.com.au/products/wht-8kg-heat-pump-dryer-md200h80wbw-au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Miele": [
+        {
+          "model": "TWC220WP",
+          "url": "https://www.binglee.com.au/products/miele-8kg-heat-pump-dryer-twc220wp",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "TWH780WP",
+          "url": "https://www.binglee.com.au/products/miele-9kg-heat-pump-dryer-twh780wp",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "TWL780WP",
+          "url": "https://www.binglee.com.au/products/miele-9kg-heat-pump-dryer-twl780wp",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "TWR780WP",
+          "url": "https://www.binglee.com.au/products/miele-9kg-heat-pump-dryer-twr780wp",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Samsung": [
+        {
+          "model": "DV80T5420AB",
+          "url": "https://www.binglee.com.au/products/samsung-black-8kg-smart-ai-heat-pump-dryer-dv80t5420ab",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "DV80T5420AW",
+          "url": "https://www.binglee.com.au/products/samsung-dv80t5420aw-8kg-smart-ai-heat-pump-dryer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "DV90T7440BT",
+          "url": "https://www.binglee.com.au/products/samsung-dv90t7440bt-sa-9kg-heat-pump-dryer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Westinghouse": [
+        {
+          "model": "WDH804N7WA",
+          "url": "https://www.binglee.com.au/products/westinghouse-8kg-easycare-500-series-heat-pump-dryer-wdh804n7wa",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WDH904N7SA",
+          "url": "https://www.binglee.com.au/products/9kg-heat-pump-dryer-onyx-wdh904n7sa",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WDH904N7WA",
+          "url": "https://www.binglee.com.au/products/9kg-heat-pump-dryer-white-wdh904n7wa",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WDV556N3WB",
+          "url": "https://www.binglee.com.au/products/westinghouse-5-5kg-vented-sensor-dryer-wdv556n3wb",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WDV656N3WB",
+          "url": "https://www.binglee.com.au/products/westinghouse-6-5kg-vented-sensor-dryer-wdv656n3wb",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "fridge": {
+      "CHiQ": [
+        {
+          "model": "CTM202NW3",
+          "url": "https://www.binglee.com.au/products/202l-top-mount-fridge-white-ctm202nw3",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "CTM410NW4",
+          "url": "https://www.binglee.com.au/products/410-litres-top-mount-fridge-ctm410nw4",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "CTM515NW4",
+          "url": "https://www.binglee.com.au/products/515-litres-top-mount-fridge-ctm515nw4",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Electrolux": [
+        {
+          "model": "EBE5307BC",
+          "url": "https://www.binglee.com.au/products/electrolux-ebe5307bc-l-529l-bottom-mount-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Fisher & Paykel": [
+        {
+          "model": "RF500QNB1",
+          "url": "https://www.binglee.com.au/products/freestanding-quad-door-refrigerator-freezer-79cm-498l-black-stainless-steel-rf500qnb1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF500QNUB1",
+          "url": "https://www.binglee.com.au/products/freestanding-quad-door-refrigerator-freezer-79cm-498l-ice-and-water-black-stainless-steel-rf500qnub1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF505BRNB1",
+          "url": "https://www.binglee.com.au/products/ds-515l-bottom-mount-rf505brnb1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF505BRNQX1",
+          "url": "https://www.binglee.com.au/products/ss-515l-bottom-mount-fridge-rf505brnqx1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF522BRPW6",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rf522brpw6-519l-bottom-mount-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF605QDUVB2",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rf605qduvb2-605l-quad-door-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF605QDUVX2",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rf605qduvx2-605l-quad-door-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF605QDVB2",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rf605qdvb2-605l-french-door-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF605QNUVB1",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rf605qnuvb1-605l-freestanding-quad-door-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF605QNUVX1",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rf605qnuvx1-605l-quad-door-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF610ANUB5",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rf610anub5-614l-french-door-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF730QNUVB1",
+          "url": "https://www.binglee.com.au/products/freestanding-quad-door-refrigerator-freezer-905cm-690l-ice-and-water-black-stainless-steel-rf730qnuvb1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RS4621FRJE1",
+          "url": "https://www.binglee.com.au/products/intergrated-46cm-freezer-rh-rs4621frje1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RS4621FRJK1",
+          "url": "https://www.binglee.com.au/products/rh-integ-column-freezer-242l-rs4621frjk1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RS6121FRJE1",
+          "url": "https://www.binglee.com.au/products/intergrated-61cm-freezer-rh-rs6121frje1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RS6121SRHE1",
+          "url": "https://www.binglee.com.au/products/intergrated-61cm-fridge-rh-rs6121srhe1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RS6121SRHK1",
+          "url": "https://www.binglee.com.au/products/351l-integrated-fridge-rs6121srhk1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RS7621FRJE1",
+          "url": "https://www.binglee.com.au/products/intergrated-76cm-freezer-rh-rs7621frje1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RS7621SRHE1",
+          "url": "https://www.binglee.com.au/products/intergrated-76cm-fridge-rh-rs7621srhe1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RS7621SRK1",
+          "url": "https://www.binglee.com.au/products/rh-integ-column-fridge-498l-rs7621srk1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RS7621WRUK1",
+          "url": "https://www.binglee.com.au/products/449l-integrated-fridge-rs7621wruk1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "RS80AU1",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-rs80au1-455l-integrated-french-door-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Haier": [
+        {
+          "model": "HRF115UG2",
+          "url": "https://www.binglee.com.au/products/blk-114l-bar-fridge-hrf115ug2",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF130UG2",
+          "url": "https://www.binglee.com.au/products/blk-129l-bar-fridge-hrf130ug2",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF210TS",
+          "url": "https://www.binglee.com.au/products/satina-208l-top-mount-fridge-hrf210ts",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF330TS",
+          "url": "https://www.binglee.com.au/products/satina-311l-top-mount-fridge-hrf330ts",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF330TW",
+          "url": "https://www.binglee.com.au/products/wht-311l-top-mount-fridge-hrf330tw",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF346BW",
+          "url": "https://www.binglee.com.au/products/wht-334l-bottom-mount-hrf346bw",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF420BEC",
+          "url": "https://www.binglee.com.au/products/black-433l-bottom-mount-8star-frdge-hrf420bec",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF420BHC",
+          "url": "https://www.binglee.com.au/products/refrigerator-freezer-70cm-420l-water-bottom-freezer-black-hrf420bhc",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF420BW",
+          "url": "https://www.binglee.com.au/products/refrigerator-freezer-70cm-420l-bottom-freezer-white-hrf420bw",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF450TS",
+          "url": "https://www.binglee.com.au/products/satina-443l-top-mount-fridge-hrf450ts",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF510BW",
+          "url": "https://www.binglee.com.au/products/wht-517l-bottom-mount-hrf510bw",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF516YHC",
+          "url": "https://www.binglee.com.au/products/463l-french-door-refrigerator-hrf516yhc",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF530YC",
+          "url": "https://www.binglee.com.au/products/quad-door-refrigerator-freezer-83cm-463l-black-hrf530yc",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF530YS",
+          "url": "https://www.binglee.com.au/products/quad-door-refrigerator-freezer-83cm-463l-satina-hrf530ys",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF575XHC",
+          "url": "https://www.binglee.com.au/products/three-door-side-by-side-refrigerator-freezer-90-5cm-575l-water-black-hrf575xhc",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF575XHS",
+          "url": "https://www.binglee.com.au/products/three-door-side-by-side-refrigerator-freezer-90-5cm-575l-water-satina-hrf575xhs",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF575XS",
+          "url": "https://www.binglee.com.au/products/three-door-side-by-side-refrigerator-freezer-90-5cm-575l-satina-hrf575xs",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF580YHS",
+          "url": "https://www.binglee.com.au/products/quad-door-refrigerator-freezer-83cm-508l-water-satina-hrf580yhs",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF580YPS",
+          "url": "https://www.binglee.com.au/products/quad-door-refrigerator-freezer-83cm-507l-ice-and-water-satina-hrf580yps",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF680YPS",
+          "url": "https://www.binglee.com.au/products/quad-door-refrigerator-freezer-91cm-623l-ice-and-water-satina-hrf680yps",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF680YS",
+          "url": "https://www.binglee.com.au/products/quad-door-refrigerator-freezer-91cm-623l-satina-hrf680ys",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF680YZS",
+          "url": "https://www.binglee.com.au/products/601l-600-series-quad-door-refrigerator-freezer-satina-hrf680yzs",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF90UG2",
+          "url": "https://www.binglee.com.au/products/blk-90l-bar-fridge-hrf90ug2",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Hisense": [
+        {
+          "model": "HRBM500TBW",
+          "url": "https://www.binglee.com.au/products/500l-pureflat-bottom-mount-non-plumbed-refrigerator-dark-stainless-hrbm500tbw",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRBM503E",
+          "url": "https://www.binglee.com.au/products/503l-pureflat-bottom-mount-refrigerator-dark-stainless-hrbm503e",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRCD483TS",
+          "url": "https://www.binglee.com.au/products/483l-pureflat-french-door-fridge-stainless-steel-hrcd483ts",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRCD640TSW",
+          "url": "https://www.binglee.com.au/products/640l-pureflex-french-door-stainless-steel-hrcd640tsw",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRTF206S",
+          "url": "https://www.binglee.com.au/products/205l-top-mount-silver-hrtf206s",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRTF325S",
+          "url": "https://www.binglee.com.au/products/326l-top-mount-silver-hrtf325s",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRTF424S",
+          "url": "https://www.binglee.com.au/products/silver-424l-top-mount-hrtf424s",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "LG": [
+        {
+          "model": "GB-455BTL",
+          "url": "https://www.binglee.com.au/products/lg-gb-455btl-454l-bottom-mount-fridge-black-steel",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "GB-455MBL",
+          "url": "https://www.binglee.com.au/products/lg-gb-455mbl-454l-bottom-mount-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "GB-455WL",
+          "url": "https://www.binglee.com.au/products/lg-gb-455wl-454l-bottom-mount-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "GB455PL",
+          "url": "https://www.binglee.com.au/products/lg-gb455pl-454l-bottom-mount-fridge-platinum",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "GS-N635PL",
+          "url": "https://www.binglee.com.au/products/lg-stainless-635l-side-by-side-non-plumbed-fridge-gs-n635pl",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "GT-3S",
+          "url": "https://www.binglee.com.au/products/lg-315l-top-mount-fridge-silver-gt-3s",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Mitsubishi": [
+        {
+          "model": "CX450ER",
+          "url": "https://www.binglee.com.au/products/mitsubishi-450l-multi-drawer-fridge-black-stainless-mr-cx450er-bst",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WX470F",
+          "url": "https://www.binglee.com.au/products/mitsubishi-mr-wx470f-s-a-470l-multi-drawer-fridge-argent-silver",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WX700C",
+          "url": "https://www.binglee.com.au/products/mitsubishi-mr-wx700c-s-a-700l-multi-drawer-fridge-argent-silver",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Samsung": [
+        {
+          "model": "HAFIN3",
+          "url": "https://www.binglee.com.au/products/samsung-refrigerator-water-filter-hafin3-exp",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRF5300BD",
+          "url": "https://www.binglee.com.au/products/495l-french-door-refrigerator-freezer-drawer-black-srf5300bd",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRF5300SD",
+          "url": "https://www.binglee.com.au/products/samsung-srf5300sd-498l-french-door-refrigerator",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRF7100B",
+          "url": "https://www.binglee.com.au/products/649l-4-door-french-door-refrigerator-black-srf7100b",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRF7100S",
+          "url": "https://www.binglee.com.au/products/649l-4-door-french-door-refrigerator-silver-srf7100s",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRF7300BA",
+          "url": "https://www.binglee.com.au/products/samsung-srf7300ba-649l-french-door-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRF7400BB",
+          "url": "https://www.binglee.com.au/products/648l-non-plumbed-french-door-refrigerator-with-internal-beverage-centretm-srf7400bb",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRF7500SB",
+          "url": "https://www.binglee.com.au/products/samsung-srf7500sb-648l-french-door-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRL4200S",
+          "url": "https://www.binglee.com.au/products/silver-427l-bottom-mount-srl4200s",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRL446DLS",
+          "url": "https://www.binglee.com.au/products/samsung-srl446dls-424l-bottom-mount-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRL456LS",
+          "url": "https://www.binglee.com.au/products/samsung-srl456ls-458l-bottom-mount-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRL4600S",
+          "url": "https://www.binglee.com.au/products/458l-smart-bottom-mount-refrigerator-silver-srl4600s",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRS6100B",
+          "url": "https://www.binglee.com.au/products/655l-side-by-side-refrigerator-spacemax-black-srs6100b",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRS6100S",
+          "url": "https://www.binglee.com.au/products/silver-655l-side-by-side-srs6100s",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRS6300B",
+          "url": "https://www.binglee.com.au/products/634l-sbs-with-water-srs6300b",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRS6500BA",
+          "url": "https://www.binglee.com.au/products/615l-side-by-side-refrigerator-ai-home-black-srs6500ba",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRS6800BFH",
+          "url": "https://www.binglee.com.au/products/615l-side-by-side-refrigerator-family-hub-black-srs6800bfh",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Smeg": [
+        {
+          "model": "FAB28LBL5AU",
+          "url": "https://www.binglee.com.au/products/smeg-270l-retro-fridge-left-hand-black-fab28lbl5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB28LCR5AU",
+          "url": "https://www.binglee.com.au/products/smeg-270l-retro-fridge-left-hand-cream-fab28lcr5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB28LPB5AU",
+          "url": "https://www.binglee.com.au/products/smeg-270l-retro-fridge-left-hand-pastel-blue-fab28lpb5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB28LPG5AU",
+          "url": "https://www.binglee.com.au/products/smeg-270l-retro-fridge-left-hand-pastel-green-fab28lpg5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB28LRD5AU",
+          "url": "https://www.binglee.com.au/products/smeg-270l-retro-fridge-left-hand-red-fab28lrd5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB28LWH5AU",
+          "url": "https://www.binglee.com.au/products/smeg-270l-retro-fridge-left-hand-white-fab28lwh5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB28RBL5AU",
+          "url": "https://www.binglee.com.au/products/smeg-270l-retro-fridge-right-hand-black-fab28rbl5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB28RCR5AU",
+          "url": "https://www.binglee.com.au/products/smeg-270l-retro-fridge-right-hand-cream-fab28rcr5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB28RPB5AU",
+          "url": "https://www.binglee.com.au/products/smeg-270l-retro-fridge-right-hand-pastel-blue-fab28rpb5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB28RPG5AU",
+          "url": "https://www.binglee.com.au/products/smeg-270l-retro-fridge-right-hand-pastel-green-fab28rpg5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB28RRD5AU",
+          "url": "https://www.binglee.com.au/products/smeg-270l-retro-fridge-right-hand-red-fab28rrd5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB28RWH5AU",
+          "url": "https://www.binglee.com.au/products/smeg-270l-retro-fridge-right-hand-white-fab28rwh5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB32LBL5AU",
+          "url": "https://www.binglee.com.au/products/smeg-331l-bottom-mount-left-hand-black-fab32lbl5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB32LCR5AU",
+          "url": "https://www.binglee.com.au/products/smeg-331l-bottom-mount-left-hand-cream-fab32lcr5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB32LPB5AU",
+          "url": "https://www.binglee.com.au/products/smeg-331l-bottom-mount-left-hand-pastel-blue-fab32lpb5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB32LPG5AU",
+          "url": "https://www.binglee.com.au/products/smeg-331l-bottom-mount-left-hand-pastel-green-fab32lpg5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB32LRD5AU",
+          "url": "https://www.binglee.com.au/products/smeg-331l-bottom-mount-left-hand-red-fab32lrd5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB32LWH5AU",
+          "url": "https://www.binglee.com.au/products/smeg-331l-bottom-mount-left-hand-white-fab32lwh5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB32RBL5AU",
+          "url": "https://www.binglee.com.au/products/smeg-331l-bottom-mount-right-hand-black-fab32rbl5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB32RCR5AU",
+          "url": "https://www.binglee.com.au/products/smeg-331l-bottom-mount-right-hand-cream-fab32rcr5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB32RPB5AU",
+          "url": "https://www.binglee.com.au/products/smeg-331l-bottom-mount-right-hand-pastel-blue-fab32rpb5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB32RPG5AU",
+          "url": "https://www.binglee.com.au/products/smeg-331l-bottom-mount-right-hand-pastel-green-fab32rpg5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB32RRD5AU",
+          "url": "https://www.binglee.com.au/products/smeg-331l-bottom-mount-right-hand-red-fab32rrd5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB38RBL5AU",
+          "url": "https://www.binglee.com.au/products/smeg-510l-bottom-mount-right-hand-black-fab38rbl5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB38RCR5AU",
+          "url": "https://www.binglee.com.au/products/smeg-510l-bottom-mount-right-hand-cream-fab38rcr5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB38RPG5AU",
+          "url": "https://www.binglee.com.au/products/smeg-510l-bottom-mount-right-hand-pastel-green-fab38rpg5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB38RPGAU",
+          "url": "https://www.binglee.com.au/products/smeg-fab38rpgau-510l-50s-retro-style-bottom-mount-fridge-pastel-green",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB38RRD5AU",
+          "url": "https://www.binglee.com.au/products/smeg-510l-bottom-mount-right-hand-red-fab38rrd5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB38RWH5AU",
+          "url": "https://www.binglee.com.au/products/smeg-510l-bottom-mount-right-hand-white-fab38rwh5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB50LBL5AU",
+          "url": "https://www.binglee.com.au/products/smeg-467l-top-mount-left-hand-black-fab50lbl5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB50LCR5AU",
+          "url": "https://www.binglee.com.au/products/smeg-467l-top-mount-left-hand-cream-fab50lcr5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB50RBL5AU",
+          "url": "https://www.binglee.com.au/products/smeg-467l-top-mount-right-hand-black-fab50rbl5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB50RCR5AU",
+          "url": "https://www.binglee.com.au/products/smeg-467l-top-mount-right-hand-cream-fab50rcr5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB50RPB5AU",
+          "url": "https://www.binglee.com.au/products/smeg-467l-top-mount-right-hand-pastel-blue-fab50rpb5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB50RPG5AU",
+          "url": "https://www.binglee.com.au/products/smeg-467l-top-mount-right-hand-pastel-green-fab50rpg5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB50RRD5AU",
+          "url": "https://www.binglee.com.au/products/smeg-467l-top-mount-right-hand-red-fab50rrd5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "FAB50RWH5AU",
+          "url": "https://www.binglee.com.au/products/smeg-467l-top-mount-right-hand-white-fab50rwh5au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "SABI256BM",
+          "url": "https://www.binglee.com.au/products/smeg-fully-integrated-fridge-and-freezer-sabi256bm",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Westinghouse": [
+        {
+          "model": "WBB3100WK",
+          "url": "https://www.binglee.com.au/products/white-308l-bottom-mount-wbb3100wk",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WBB3400AK",
+          "url": "https://www.binglee.com.au/products/silver-335l-bottom-mount-wbb3400ak",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WBE4302ACL",
+          "url": "https://www.binglee.com.au/products/westinghouse-left-hand-silver-425l-bottom-mount-fridge-wbe4302acl",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WBE4302ACR",
+          "url": "https://www.binglee.com.au/products/westinghouse-right-hand-silver-425l-bottom-mount-fridge-wbe4302acr",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WBE4302WCL",
+          "url": "https://www.binglee.com.au/products/westinhouse-left-hand-white-425l-bottom-mount-fridge-wbe4302wcl",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WBE4302WCR",
+          "url": "https://www.binglee.com.au/products/westinhouse-right-hand-white-425l-bottom-mount-fridge-wbe4302wcr",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WBE5300BC",
+          "url": "https://www.binglee.com.au/products/westinghouse-wbe5300bc-r-528l-bottom-mount-refrigerator",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WBE5300SC",
+          "url": "https://www.binglee.com.au/products/westinghouse-wbe5300sc-r-528l-bottom-mount-refrigerator",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WBE5304BC",
+          "url": "https://www.binglee.com.au/products/westinghouse-wbe5304bc-r-528l-dark-stainless-bottom-mount-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WBE5304SC",
+          "url": "https://www.binglee.com.au/products/westinghouse-wbe5304sc-r-528l-stainless-steel-bottom-mount-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WFB4204SC",
+          "url": "https://www.binglee.com.au/products/westinghouse-wfb4204sc-l-425l-frost-free-vertical-freezer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WQE4900BA",
+          "url": "https://www.binglee.com.au/products/496l-french-door-refrigerator-matte-charcoal-black-wqe4900ba",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WQE5400BD",
+          "url": "https://www.binglee.com.au/products/blk-547l-quad-door-wqe5400bd",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WQE6000SB",
+          "url": "https://www.binglee.com.au/products/westinghouse-wqe6000sb-600l-stainless-steel-4-door-french-door",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WRB5004SC",
+          "url": "https://www.binglee.com.au/products/westinghouse-wrb5004sc-r-501l-stainless-steel-single-door-fridge",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WSE6640BA",
+          "url": "https://www.binglee.com.au/products/westinghouse-619l-side-by-side-non-plumbed-dispenser-fridge-black-wse6640ba",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WTM2500BA",
+          "url": "https://www.binglee.com.au/products/blk-247l-top-mount-fridge-wtm2500ba-x",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WTM2500WA",
+          "url": "https://www.binglee.com.au/products/wht-247l-top-mount-fridge-wtm2500wa-x",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WTM3100WL",
+          "url": "https://www.binglee.com.au/products/white-312l-top-mount-wtm3100wl-x",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WTM5002WD",
+          "url": "https://www.binglee.com.au/products/white-503l-top-mount-right-wtm5002wd-r",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "washing_machine": {
+      "Asko": [
+        {
+          "model": "T208C",
+          "url": "https://www.binglee.com.au/products/asko-t208c-w-au-8kg-front-load-dryer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "T208H",
+          "url": "https://www.binglee.com.au/products/asko-t208h-w-au-8kg-front-load-dryer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "T408HD",
+          "url": "https://www.binglee.com.au/products/asko-t408hd-w-au-8kg-front-load-dryer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "W2084C",
+          "url": "https://www.binglee.com.au/products/asko-w2084c-w-au-8kg-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "W4086C",
+          "url": "https://www.binglee.com.au/products/asko-w4086c-w-au-8kg-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "W4086P",
+          "url": "https://www.binglee.com.au/products/asko-w4086p-w-au-8kg-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "W4104C",
+          "url": "https://www.binglee.com.au/products/asko-w4104c-w-au-10kg-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Bosch": [
+        {
+          "model": "WAN24121AU",
+          "url": "https://www.binglee.com.au/products/bosch-8kg-1200rpm-front-load-washing-machine-wan24121au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WAN24126AU",
+          "url": "https://www.binglee.com.au/products/9kg-1200rpm-front-loader-wan24126au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WGG24409AU",
+          "url": "https://www.binglee.com.au/products/9kg-front-load-washer-wgg24409au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WGG244A0AU",
+          "url": "https://www.binglee.com.au/products/9kg-series-8-front-loader-idos-wgg244a0au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WGG244A1AU",
+          "url": "https://www.binglee.com.au/products/9kg-series-8-front-loader-washing-machine-white-wgg244a1au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WGG244ARAU",
+          "url": "https://www.binglee.com.au/products/9kg-series-6-washing-machine-front-loader-wgg244arau",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Electrolux": [
+        {
+          "model": "EDH903R7WC",
+          "url": "https://www.binglee.com.au/products/wht-9kg-s700-front-loader-edh903r7wc",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "EWF8024Q5WB",
+          "url": "https://www.binglee.com.au/products/electrolux-8kg-ultimatecare-front-load-washer-ultramix-ewf8024q5wb",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "EWF9042R7WB",
+          "url": "https://www.binglee.com.au/products/electrolux-9kg-ultimatecare-700-front-load-washer-ewf9042r7wb",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Fisher & Paykel": [
+        {
+          "model": "DE7060G2",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-de7060g2-7kg-front-load-vented-dryer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1060P5",
+          "url": "https://www.binglee.com.au/products/wht-10kg-front-load-flexidose-wh1060p5",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1060PG5",
+          "url": "https://www.binglee.com.au/products/grph-10kg-front-load-wh1060pg5",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1160F2",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-wh1160f2-11kg-front-loader-washing-machine-with-activeintelligence-and-steam-care",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1260H5",
+          "url": "https://www.binglee.com.au/products/wht-12kg-front-load-flexidose-wh1260h5",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1260HG5",
+          "url": "https://www.binglee.com.au/products/grph-12kg-front-load-flexidose-wh1260hg5",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1260P5",
+          "url": "https://www.binglee.com.au/products/wht-12kg-front-load-flexidose-wh1260p5",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1260PG5",
+          "url": "https://www.binglee.com.au/products/grph-12kg-front-load-wh1260pg5",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1260R5",
+          "url": "https://www.binglee.com.au/products/wht-12kg-front-load-flexidose-wh1260r5",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1260RG5",
+          "url": "https://www.binglee.com.au/products/grph-12kg-front-load-flexidose-wh1260rg5",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1260T5",
+          "url": "https://www.binglee.com.au/products/wht-12kg-front-load-flexidose-wh1260t5",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1260TG5",
+          "url": "https://www.binglee.com.au/products/grph-12kg-front-load-flexidose-wh1260tg5",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH8060J3",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-wh8060j3-8kg-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH8060J5",
+          "url": "https://www.binglee.com.au/products/wht-8kg-front-load-autodose-wh8060j5",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH8560P3",
+          "url": "https://www.binglee.com.au/products/fisher-paykel-wh8560p3-8-5kg-front-load-washer-with-steam-refresh",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH9060P5",
+          "url": "https://www.binglee.com.au/products/wht-9kg-front-load-flexidose-wh9060p5",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH9060PG5",
+          "url": "https://www.binglee.com.au/products/grph-9kg-front-load-wh9060pg5",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Haier": [
+        {
+          "model": "HWF10AN1",
+          "url": "https://www.binglee.com.au/products/haier-hwf10an1-10kg-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWF85AN1",
+          "url": "https://www.binglee.com.au/products/haier-hwf85an1-8-5kg-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWF85ANB1",
+          "url": "https://www.binglee.com.au/products/haier-front-loader-washing-machine8-5kg-hwf85anb1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWF90AN1",
+          "url": "https://www.binglee.com.au/products/haier-hwf90an1-9kg-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWF95AN1",
+          "url": "https://www.binglee.com.au/products/haier-hwf95an1-9-5kg-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWF95ANB1",
+          "url": "https://www.binglee.com.au/products/haier-front-loader-washing-machine-9-5kg-black-hwf95anb1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT08AN1",
+          "url": "https://www.binglee.com.au/products/8kg-top-load-washer-hwt08an1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT09AD1",
+          "url": "https://www.binglee.com.au/products/top-loader-washing-machine-9kg-uv-protect-white-hwt09ad1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT09AN1",
+          "url": "https://www.binglee.com.au/products/haier-hwt09an1-9kg-top-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT10AN1",
+          "url": "https://www.binglee.com.au/products/haier-hwt10an1-9kg-top-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT10ANB1",
+          "url": "https://www.binglee.com.au/products/haier-top-loader-washing-machine-10kg-hwt10anb1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT60AA1",
+          "url": "https://www.binglee.com.au/products/haier-6kg-top-load-washing-machine-hwt60aa1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT75AA1",
+          "url": "https://www.binglee.com.au/products/haier-7-5kg-top-load-washing-machine-hwt75aa1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "LG": [
+        {
+          "model": "WD18DB8995BZ",
+          "url": "https://www.binglee.com.au/products/bespoke-ai-heat-pump-washer-dryer-combo-wd18db8995bz",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WD85SW1",
+          "url": "https://www.binglee.com.au/products/front-load-washer-and-dryer-combo-85kg-washer-5kg-dryer-wd85sw1",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WD90T554DBW",
+          "url": "https://www.binglee.com.au/products/9kg6kg-addwash-washer-dryer-combo-white-wd90t554dbw",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WV10-1412B",
+          "url": "https://www.binglee.com.au/products/lg-black-12kg-series-10-front-load-washer-wv10-1412b",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WV5-1208W",
+          "url": "https://www.binglee.com.au/products/lg-8kg-1200rpm-front-load-washing-machine-wv5-1208w",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WV5-1409W",
+          "url": "https://www.binglee.com.au/products/lg-wv5-1409w-9kg-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WV5-1410W",
+          "url": "https://www.binglee.com.au/products/lg-wv5-1410w-10kg-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WV9-1409B",
+          "url": "https://www.binglee.com.au/products/lg-wv9-1409b-9kg-front-load-washing-machine",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WV9-1412B",
+          "url": "https://www.binglee.com.au/products/lg-black-12kg-front-load-washing-machine-steam-wv9-1412b",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WV9-1412W",
+          "url": "https://www.binglee.com.au/products/lg-wv9-1412w-12kg-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WVC9-1412B",
+          "url": "https://www.binglee.com.au/products/12-8kg-series-9-front-load-washer-dryer-combo-wvc9-1412b",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Midea": [
+        {
+          "model": "MF110W80BW",
+          "url": "https://www.binglee.com.au/products/wht-8kg-front-loader-mf110w80bw-au",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Miele": [
+        {
+          "model": "WWR860",
+          "url": "https://www.binglee.com.au/products/miele-wwr860-wps-9kg-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Samsung": [
+        {
+          "model": "WA12A8376GW",
+          "url": "https://www.binglee.com.au/products/samsung-12kg-steam-bubble-top-load-washer-wa12a8376gw",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW11CG604DLE",
+          "url": "https://www.binglee.com.au/products/11kg-smart-front-loader-ww11cg604dle",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW11CG60ADLB",
+          "url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-blk-ww11cg60adlb",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW11CG60ADLE",
+          "url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-white-ww11cg60adle",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW11CGC0ADAE",
+          "url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-white-ww11cgc0adae",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW12BB944DGB",
+          "url": "https://www.binglee.com.au/products/12kg-bespoke-bubblewash-smart-front-load-washer-with-ai-wash-and-auto-dispense-black-ww12bb944dgb",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW12BB944DGH",
+          "url": "https://www.binglee.com.au/products/12kg-bespoke-bubblewash-smart-front-load-washer-ww12bb944dgh",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW12BB94ADGB",
+          "url": "https://www.binglee.com.au/products/12kg-bespoke-fl-washer-blk-ww12bb94adgb",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW12BB94ADGH",
+          "url": "https://www.binglee.com.au/products/12kg-bespoke-fl-washer-white-ww12bb94adgh",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW85T3040WW",
+          "url": "https://www.binglee.com.au/products/samsung-ww85t3040ww-8-5kg-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW85T504DAE",
+          "url": "https://www.binglee.com.au/products/samsung-ww85t504dae-8-5kg-bubblewash-smart-ai-front-load-washer",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW90DG6U34LE",
+          "url": "https://www.binglee.com.au/products/wht-9kg-front-load-washer-ww90dg6u34le",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW90DG6U3ALB",
+          "url": "https://www.binglee.com.au/products/9kg-smart-fl-washer-blk-ww90dg6u3alb",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW90DG6U3ALE",
+          "url": "https://www.binglee.com.au/products/9kg-smart-fl-washer-wht-ww90dg6u3ale",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW90T504DAW",
+          "url": "https://www.binglee.com.au/products/white-9kg-front-load-washer-ww90t504daw",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ],
+      "Westinghouse": [
+        {
+          "model": "WWF1044M7WA",
+          "url": "https://www.binglee.com.au/products/westinghouse-10kg-1400rpm-front-load-washing-machine-wwf1044m7wa",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WWF7524N3WA",
+          "url": "https://www.binglee.com.au/products/westinghouse-7-5kg-1200rpm-front-load-washing-machine-wwf7524n3wa",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WWF8024M5WA",
+          "url": "https://www.binglee.com.au/products/westinghouse-8kg-1200rpm-front-load-washing-machine-wwf8024m5wa",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WWT1084C7WA",
+          "url": "https://www.binglee.com.au/products/westinghouse-10kg-top-load-inverter-washer-wwt1084c7wa",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WWT1284M7WA",
+          "url": "https://www.binglee.com.au/products/westinghouse-12kg-top-load-inverter-washer-wwt1284m7wa",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WWT8084J7WA",
+          "url": "https://www.binglee.com.au/products/westinghouse-8kg-top-load-washer-wwt8084j7wa",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        },
+        {
+          "model": "WWT9084C7WA",
+          "url": "https://www.binglee.com.au/products/westinghouse-9kg-top-load-inverter-washer-wwt9084c7wa",
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "source": "sitemap"
+        }
+      ]
+    }
+  }
+}

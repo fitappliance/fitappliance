@@ -8,6 +8,9 @@ const {
   fetchAppliancesOnlineProductBundle,
   sleep
 } = require('./lib/appliances-online-product-api.js');
+const {
+  searchPdfForDiscovery
+} = require('./lib/pdf-search.js');
 
 const REPO_ROOT = path.resolve(__dirname, '../..');
 const DEFAULT_DISCOVERY_REPORT = path.join(REPO_ROOT, 'data', 'discovery-report.json');
@@ -61,8 +64,45 @@ function normalizeKey(value) {
     .replace(/[^a-z0-9]+/g, '');
 }
 
+function slugPart(value) {
+  return String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'unknown';
+}
+
+function discoveryProductId(discovery) {
+  return `discovery-${slugPart(discovery.category)}-${slugPart(discovery.brand)}-${slugPart(discovery.model)}`;
+}
+
+function discoveryRetailer(discovery, seededAt) {
+  return {
+    n: discovery.retailer || discovery.retailer_key || 'Retailer',
+    url: discovery.url,
+    p: null,
+    verified_at: seededAt,
+    source: discovery.source || 'sitemap'
+  };
+}
+
+function mergeRetailers(existingRetailers = [], nextRetailer) {
+  const byName = new Map();
+  for (const retailer of existingRetailers.filter(Boolean)) {
+    byName.set(String(retailer.n || '').toLowerCase(), retailer);
+  }
+  if (nextRetailer?.n) {
+    byName.set(String(nextRetailer.n).toLowerCase(), {
+      ...(byName.get(String(nextRetailer.n).toLowerCase()) || {}),
+      ...nextRetailer
+    });
+  }
+  return [...byName.values()];
+}
+
 function flattenDiscoveryReport(report, { category = null } = {}) {
   const grouped = report?.new_discoveries || {};
+  const reportRetailerKey = report?.retailer || null;
   const rows = [];
   for (const [cat, brands] of Object.entries(grouped)) {
     if (category && cat !== category) continue;
@@ -74,7 +114,7 @@ function flattenDiscoveryReport(report, { category = null } = {}) {
           model: item.model,
           url: item.url,
           retailer: item.retailer || 'Appliances Online',
-          retailer_key: item.retailer_key || 'appliancesonline',
+          retailer_key: item.retailer_key || reportRetailerKey || 'appliancesonline',
           source: item.source || 'sitemap'
         });
       }
@@ -100,7 +140,7 @@ function hasExistingApprovedEvidence(entry) {
   return (entry?.evidence || []).some((item) => item?.has_pdf_evidence === true || item?.status === 'approved');
 }
 
-function buildManifestEntry({ bundle, selectedManual, seededAt }) {
+function buildManifestEntry({ bundle, selectedManual, seededAt, sourceReport }) {
   const product = bundle.product;
   const productId = product.id;
   return {
@@ -119,7 +159,7 @@ function buildManifestEntry({ bundle, selectedManual, seededAt }) {
       discovery: {
         ...product.discovery,
         source_discovery_url: bundle.discovery.url,
-        source_report: 'data/discovery-report.json'
+        source_report: sourceReport
       },
       evidence: [
         {
@@ -135,6 +175,86 @@ function buildManifestEntry({ bundle, selectedManual, seededAt }) {
   };
 }
 
+function buildGenericProductStub(discovery, { seededAt, existingProduct = null } = {}) {
+  const productId = discoveryProductId(discovery);
+  const retailer = discoveryRetailer(discovery, seededAt);
+  return {
+    ...(existingProduct || {}),
+    id: existingProduct?.id || productId,
+    cat: existingProduct?.cat || discovery.category,
+    brand: existingProduct?.brand || discovery.brand,
+    model: existingProduct?.model || discovery.model,
+    displayName: existingProduct?.displayName || `${discovery.brand} ${discovery.model}`,
+    title: existingProduct?.title || `${discovery.brand} ${discovery.model}`,
+    slug: existingProduct?.slug || productId,
+    w: existingProduct?.w ?? null,
+    h: existingProduct?.h ?? null,
+    d: existingProduct?.d ?? null,
+    unavailable: false,
+    retailers: mergeRetailers(existingProduct?.retailers || [], retailer),
+    discovery: {
+      ...(existingProduct?.discovery || {}),
+      retailer: discovery.retailer,
+      retailer_key: discovery.retailer_key,
+      product_url: discovery.url,
+      source: discovery.source || 'sitemap'
+    }
+  };
+}
+
+function buildGenericManifestEntry({ discovery, pdfSource, seededAt, existing = null, sourceReport }) {
+  const productId = discoveryProductId(discovery);
+  const product = buildGenericProductStub(discovery, {
+    seededAt,
+    existingProduct: existing?.product || null
+  });
+  const existingEvidence = Array.isArray(existing?.evidence) ? existing.evidence : [];
+  const sourceUrl = pdfSource?.url || existing?.source_url || null;
+  const evidenceItem = sourceUrl
+    ? {
+        type: 'spec_sheet',
+        status: 'candidate',
+        source_url: sourceUrl,
+        seeded_at: seededAt,
+        source: pdfSource?.source || 'pdf-search',
+        title: `${discovery.brand} ${discovery.model} PDF`
+      }
+    : null;
+
+  return {
+    productId,
+    entry: {
+      ...(existing || {}),
+      productId,
+      category: product.cat,
+      brand: product.brand,
+      model: product.model,
+      sku: product.model,
+      ...(sourceUrl ? { source_url: sourceUrl } : {}),
+      type: sourceUrl ? 'spec_sheet' : existing?.type,
+      status: sourceUrl ? 'candidate' : (existing?.status || 'needs_source'),
+      has_pdf_evidence: existing?.has_pdf_evidence === true,
+      seeded_at: seededAt,
+      product,
+      discovery: {
+        ...(existing?.discovery || {}),
+        retailer: discovery.retailer,
+        retailer_key: discovery.retailer_key,
+        product_url: discovery.url,
+        source: discovery.source || 'sitemap',
+        source_discovery_url: discovery.url,
+        source_report: sourceReport
+      },
+      evidence: evidenceItem
+        ? [
+            ...existingEvidence.filter((item) => item?.source_url !== evidenceItem.source_url),
+            evidenceItem
+          ]
+        : existingEvidence
+    }
+  };
+}
+
 async function seedDiscoveryEvidence({
   discoveryReportPath = DEFAULT_DISCOVERY_REPORT,
   manualEvidencePath = DEFAULT_MANUAL_EVIDENCE,
@@ -144,6 +264,7 @@ async function seedDiscoveryEvidence({
   fetchImpl = globalThis.fetch,
   limit = null,
   logger = console,
+  pdfSearch = searchPdfForDiscovery,
   runAt = new Date().toISOString(),
   timeoutMs = 30_000
 } = {}) {
@@ -153,6 +274,7 @@ async function seedDiscoveryEvidence({
     ...readJson(manualEvidencePath, DEFAULT_MANIFEST)
   };
   const products = { ...(manifest.products || {}) };
+  const sourceReport = path.relative(REPO_ROOT, discoveryReportPath) || discoveryReportPath;
   const candidates = dedupeDiscoveries(flattenDiscoveryReport(discoveryReport, { category }));
   const targets = Number.isFinite(limit) && limit >= 0 ? candidates.slice(0, limit) : candidates;
   const seeded = [];
@@ -164,6 +286,52 @@ async function seedDiscoveryEvidence({
     const discovery = targets[index];
     logger.log(`[seed] ${index + 1}/${targets.length} ${discovery.category} ${discovery.brand} ${discovery.model}`);
     try {
+      if (discovery.retailer_key !== 'appliancesonline') {
+        const productId = discoveryProductId(discovery);
+        const existing = products[productId];
+        const pdfSource = existing?.source_url
+          ? { url: existing.source_url, source: 'manual-evidence-existing' }
+          : await pdfSearch(discovery, { fetchImpl, timeoutMs });
+        const { entry } = buildGenericManifestEntry({
+          discovery,
+          pdfSource,
+          seededAt,
+          existing,
+          sourceReport
+        });
+        products[productId] = entry;
+
+        if (!pdfSource?.url) {
+          failures.push({
+            brand: discovery.brand,
+            model: discovery.model,
+            category: discovery.category,
+            url: discovery.url,
+            reason: 'no accepted official/trusted PDF source found'
+          });
+        } else if (hasExistingApprovedEvidence(existing)) {
+          skipped.push({
+            id: productId,
+            brand: entry.brand,
+            model: entry.model,
+            reason: 'already has approved evidence'
+          });
+        } else {
+          seeded.push({
+            id: productId,
+            brand: entry.brand,
+            model: entry.model,
+            category: entry.category,
+            source_url: entry.source_url,
+            retailer_url: discovery.url
+          });
+        }
+        if (delayMs > 0 && index < targets.length - 1) {
+          await sleep(delayMs);
+        }
+        continue;
+      }
+
       const bundle = await fetchAppliancesOnlineProductBundle(discovery, { fetchImpl, timeoutMs });
       const existing = products[bundle.product.id];
       if (hasExistingApprovedEvidence(existing)) {
@@ -185,7 +353,8 @@ async function seedDiscoveryEvidence({
         const { productId, entry } = buildManifestEntry({
           bundle,
           selectedManual: bundle.selectedManual,
-          seededAt
+          seededAt,
+          sourceReport
         });
         products[productId] = {
           ...(products[productId] || {}),

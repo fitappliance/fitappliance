@@ -165,21 +165,22 @@ test('discovery diff excludes models already present in catalog-final', () => {
 
 test('discovery report groups new discoveries by category and brand', () => {
   const discoveries = [
-    { retailer: 'Appliances Online', category: 'fridge', brand: 'LG', model: 'GF-L706PL', url: 'https://example.test/lg' },
-    { retailer: 'Appliances Online', category: 'fridge', brand: 'LG', model: 'GF-B505BB', url: 'https://example.test/lg2' },
-    { retailer: 'Appliances Online', category: 'dryer', brand: 'Fisher & Paykel', model: 'DH9060FS1', url: 'https://example.test/fp' },
+    { retailer: 'JB Hi-Fi', retailer_key: 'jb-hi-fi', category: 'fridge', brand: 'LG', model: 'GF-L706PL', url: 'https://example.test/lg' },
+    { retailer: 'JB Hi-Fi', retailer_key: 'jb-hi-fi', category: 'fridge', brand: 'LG', model: 'GF-B505BB', url: 'https://example.test/lg2' },
+    { retailer: 'JB Hi-Fi', retailer_key: 'jb-hi-fi', category: 'dryer', brand: 'Fisher & Paykel', model: 'DH9060FS1', url: 'https://example.test/fp' },
   ];
 
   const report = buildDiscoveryReport({
     discoveries,
-    retailer: 'appliancesonline',
+    retailer: 'jb-hi-fi',
     generatedAt: '2026-05-09T00:00:00.000Z',
-    sourceUrls: ['https://www.appliancesonline.com.au/sitemap.xml'],
+    sourceUrls: ['https://www.jbhifi.com.au/sitemap.xml'],
   });
 
   assert.equal(report.schema_version, 1);
   assert.equal(report.summary.new_discovery_count, 3);
   assert.equal(report.new_discoveries.fridge.LG.length, 2);
+  assert.equal(report.new_discoveries.fridge.LG[0].retailer_key, 'jb-hi-fi');
   assert.equal(report.new_discoveries.dryer['Fisher & Paykel'][0].model, 'DH9060FS1');
 });
 

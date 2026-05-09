@@ -12,23 +12,23 @@
   },
   "latest_verified_at": "2026-05-09",
   "summary": {
-    "total_products": 3395,
-    "active_products": 1273,
-    "evidence_files": 1376,
-    "merged_products": 1360,
+    "total_products": 3428,
+    "active_products": 1306,
+    "evidence_files": 1409,
+    "merged_products": 1393,
     "unmatched_evidence_files": 3,
     "duplicate_evidence_files": 16,
     "categories": {
-      "fridge": 1964,
-      "dishwasher": 678,
-      "dryer": 142,
-      "washing_machine": 611
+      "fridge": 1967,
+      "dishwasher": 691,
+      "dryer": 147,
+      "washing_machine": 623
     },
     "official_pdf_by_category": {
-      "fridge": 756,
-      "dishwasher": 333,
-      "dryer": 73,
-      "washing_machine": 198
+      "fridge": 759,
+      "dishwasher": 346,
+      "dryer": 78,
+      "washing_machine": 210
     }
   },
   "unmatched_evidence": [
@@ -1345,6 +1345,13 @@
       "displayName": "BEKO Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/f/5/4/9/f549e5c7c1c45f02498906dc6d6da4d17146abb5_BAF369W_Beko_Specification_Sheet_Updated_2024__1_.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/BAF369W.json"
+      },
       "dimensions": {
         "height_mm": 1714,
         "width_mm": 595,
@@ -1362,14 +1369,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/f/5/4/9/f549e5c7c1c45f02498906dc6d6da4d17146abb5_BAF369W_Beko_Specification_Sheet_Updated_2024__1_.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/BAF369W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-zrf0896",
@@ -2047,6 +2047,13 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/6/e/d/f/6edf766e6eb4b06cd1d37f8befbf3b36c207c08a_CBM282NBS5E_SPEC.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/CBM282NBS5E.json"
+      },
       "dimensions": {
         "height_mm": 1520,
         "width_mm": 595,
@@ -2064,14 +2071,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/6/e/d/f/6edf766e6eb4b06cd1d37f8befbf3b36c207c08a_CBM282NBS5E_SPEC.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/CBM282NBS5E.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2654",
@@ -2762,6 +2762,13 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/0/9/b/2/09b2dec8a12d8a25e9d5b7a68db7c9349d71bc83_CSF085DW_CHiQ_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/CSF085DW.json"
+      },
       "dimensions": {
         "height_mm": 845,
         "width_mm": 549,
@@ -2779,14 +2786,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/0/9/b/2/09b2dec8a12d8a25e9d5b7a68db7c9349d71bc83_CSF085DW_CHiQ_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/CSF085DW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2517",
@@ -2813,6 +2813,13 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/6/0/b/6/60b66f4682bb8f2d3d9d193f7db73e09c0ec9e23_CSF165NSS_CHiQ_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/CSF165NSS.json"
+      },
       "dimensions": {
         "height_mm": 1443,
         "width_mm": 540,
@@ -2830,14 +2837,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/6/0/b/6/60b66f4682bb8f2d3d9d193f7db73e09c0ec9e23_CSF165NSS_CHiQ_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/CSF165NSS.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2474",
@@ -3095,6 +3095,13 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/3/e/4/e/3e4e628a3855bba67ed24525b05b51f388d69f98_CSH310NBSL_CHiQ_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/CSH310NBSL.json"
+      },
       "dimensions": {
         "height_mm": 1570,
         "width_mm": 710,
@@ -3112,14 +3119,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/3/e/4/e/3e4e628a3855bba67ed24525b05b51f388d69f98_CSH310NBSL_CHiQ_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/CSH310NBSL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2484",
@@ -3196,6 +3196,13 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/8/8/6/1/886117b52ced18118ffd2bb232f3f27facfafce2_CSR092DW___ChiQ___Specification_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/CSR092DW.json"
+      },
       "dimensions": {
         "height_mm": 831,
         "width_mm": 474,
@@ -3213,14 +3220,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/8/8/6/1/886117b52ced18118ffd2bb232f3f27facfafce2_CSR092DW___ChiQ___Specification_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/CSR092DW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2524",
@@ -3247,6 +3247,13 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/b/c/1/2/bc12415a358f03e74a700d79e0734035c258ed13_CSR102DW_CHiQ_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/CSR102DW.json"
+      },
       "dimensions": {
         "height_mm": 845,
         "width_mm": 549,
@@ -3264,14 +3271,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/b/c/1/2/bc12415a358f03e74a700d79e0734035c258ed13_CSR102DW_CHiQ_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/CSR102DW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3201",
@@ -3373,6 +3373,13 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/7/1/3/7/7137a55d80eedd1ce03511c7848f9b3f6ab2c042_CSR241DW_SPEC.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/CSR241DW.json"
+      },
       "dimensions": {
         "height_mm": 1440,
         "width_mm": 540,
@@ -3390,14 +3397,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/7/1/3/7/7137a55d80eedd1ce03511c7848f9b3f6ab2c042_CSR241DW_SPEC.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/CSR241DW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2522",
@@ -3735,6 +3735,13 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/1/b/9/e/1b9ef2b5390ae06ba60189cb6ff53584fca8e7ba_CTM255NW_CHiQ_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/CTM255NW.json"
+      },
       "dimensions": {
         "height_mm": 1700,
         "width_mm": 545,
@@ -3752,14 +3759,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/1/b/9/e/1b9ef2b5390ae06ba60189cb6ff53584fca8e7ba_CTM255NW_CHiQ_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/CTM255NW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2863",
@@ -4062,6 +4062,13 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/4/a/2/2/4a22a5434b863cb9fb15fdf17a8bf259ac661d8c_CTM515NW_CHiQ_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/CTM515NW.json"
+      },
       "dimensions": {
         "height_mm": 1680,
         "width_mm": 750,
@@ -4079,14 +4086,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/4/a/2/2/4a22a5434b863cb9fb15fdf17a8bf259ac661d8c_CTM515NW_CHiQ_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/CTM515NW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2958",
@@ -5395,6 +5395,13 @@
       "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/5/a/c/c/5acc221c944c21b05d68ad1026e09dfb531921f2_EHE5267SC_Electrolux_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/EHE5267SC.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 796,
@@ -5412,14 +5419,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/5/a/c/c/5acc221c944c21b05d68ad1026e09dfb531921f2_EHE5267SC_Electrolux_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/EHE5267SC.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3685",
@@ -5524,6 +5524,13 @@
       "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/6/9/2/8/692850c396e75db97f7cfc59c8043421289a5c72_Electrolux_EQE5657BA_Factsheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/EQE5657BA.json"
+      },
       "dimensions": {
         "height_mm": 1795,
         "width_mm": 896,
@@ -5541,14 +5548,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/6/9/2/8/692850c396e75db97f7cfc59c8043421289a5c72_Electrolux_EQE5657BA_Factsheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/EQE5657BA.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3736",
@@ -5731,6 +5731,13 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Chest",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/d/0/b/8/d0b8908bd328fa4d73d9d02e3c2496b5bc9527f5_EBF196W_Esatto_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/EBF196W.json"
+      },
       "dimensions": {
         "height_mm": 1232,
         "width_mm": 550,
@@ -5748,14 +5755,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/d/0/b/8/d0b8908bd328fa4d73d9d02e3c2496b5bc9527f5_EBF196W_Esatto_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/EBF196W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2426",
@@ -5886,6 +5886,13 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/4/6/2/d/462d5aa21dd67add0c30ecc132d59cb8acb6610c_EBM325W_Esatto_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/EBM325W.json"
+      },
       "dimensions": {
         "height_mm": 1724,
         "width_mm": 595,
@@ -5903,14 +5910,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/4/6/2/d/462d5aa21dd67add0c30ecc132d59cb8acb6610c_EBM325W_Esatto_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/EBM325W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2566",
@@ -5989,6 +5989,13 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Chest",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/e/d/e/b/edeb1932673da1fe7a13265c8b5f2f385aec1157_Esatto_ProductCard_ECF143B3.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/ECF143B3.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 600,
@@ -6006,14 +6013,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/e/d/e/b/edeb1932673da1fe7a13265c8b5f2f385aec1157_Esatto_ProductCard_ECF143B3.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/ECF143B3.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3427",
@@ -6040,6 +6040,13 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Chest",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/e/b/e/3/ebe322b59c8cd368ad5cf0ef5f08aed4383be48a_Esatto_ProductCard_ECF198B3.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/ECF198B3.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 770,
@@ -6057,14 +6064,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/e/b/e/3/ebe322b59c8cd368ad5cf0ef5f08aed4383be48a_Esatto_ProductCard_ECF198B3.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/ECF198B3.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2544",
@@ -6091,6 +6091,13 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Chest",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/8/5/b/2/85b2018b2510abd0ca687a6aae73a03abb386028_ECF198W2_Esatto_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/ECF198W2.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 816,
@@ -6108,14 +6115,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/8/5/b/2/85b2018b2510abd0ca687a6aae73a03abb386028_ECF198W2_Esatto_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/ECF198W2.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2436",
@@ -6142,6 +6142,13 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Chest",
       "priorityScore": 18,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/a/c/3/1/ac310396e118bc45f12d54eac4b9c308ea7a17d0_ECF418W_Esatto_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/ECF418W.json"
+      },
       "dimensions": {
         "height_mm": 825,
         "width_mm": 1416,
@@ -6159,14 +6166,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/a/c/3/1/ac310396e118bc45f12d54eac4b9c308ea7a17d0_ECF418W_Esatto_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/ECF418W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2560",
@@ -6219,6 +6219,13 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/9/0/f/2/90f2ec40d52ff26acc12bf1bd55607da151aff90_ETM236W_Esatto_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/ETM236W.json"
+      },
       "dimensions": {
         "height_mm": 1522,
         "width_mm": 545,
@@ -6236,14 +6243,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/9/0/f/2/90f2ec40d52ff26acc12bf1bd55607da151aff90_ETM236W_Esatto_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/ETM236W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3732",
@@ -6296,6 +6296,13 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/6/2/d/b/62db7e6a74500b746f0a186e456372418d1b7018_ETM314W_Esatto_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/ETM314W.json"
+      },
       "dimensions": {
         "height_mm": 1620,
         "width_mm": 595,
@@ -6313,14 +6320,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/6/2/d/b/62db7e6a74500b746f0a186e456372418d1b7018_ETM314W_Esatto_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/ETM314W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3742",
@@ -6451,6 +6451,13 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/9/9/7/3/99733373d2877a7422275ee6ce949e9498d297f6_Esatto_ProductCard_EUF88W.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/EUF88W.json"
+      },
       "dimensions": {
         "height_mm": 845,
         "width_mm": 553,
@@ -6468,14 +6475,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/9/9/7/3/99733373d2877a7422275ee6ce949e9498d297f6_Esatto_ProductCard_EUF88W.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/EUF88W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2431",
@@ -8715,6 +8715,13 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 42,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/e/9/5/5/e955d9e29c926a56ea616c5b303ff86924a0c4db_RF308FLDW2_Fisher___Paykel_User_Manual.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/RF308FLDW2.json"
+      },
       "dimensions": {
         "height_mm": 1695,
         "width_mm": 635,
@@ -8732,14 +8739,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/e/9/5/5/e955d9e29c926a56ea616c5b303ff86924a0c4db_RF308FLDW2_Fisher___Paykel_User_Manual.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/RF308FLDW2.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2494",
@@ -8792,6 +8792,13 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 42,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/3/9/4/1/3941df8a80404a744456ac9ec7f29fc3f1c7edcd_RF388FLDW2_Fisher___Paykel_User_Manual.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/RF388FLDW2.json"
+      },
       "dimensions": {
         "height_mm": 1695,
         "width_mm": 635,
@@ -8809,14 +8816,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/3/9/4/1/3941df8a80404a744456ac9ec7f29fc3f1c7edcd_RF388FLDW2_Fisher___Paykel_User_Manual.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/RF388FLDW2.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2493",
@@ -9590,6 +9590,13 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/d/f/e/d/dfede72c8be7ee167ae4e601751e61200a0e7299_QRG_AU_26936.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/RS4621FLJE1.json"
+      },
       "dimensions": {
         "height_mm": 2134,
         "width_mm": 451,
@@ -9607,14 +9614,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/d/f/e/d/dfede72c8be7ee167ae4e601751e61200a0e7299_QRG_AU_26936.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/RS4621FLJE1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3183",
@@ -9849,6 +9849,13 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/0/d/e/3/0de3f96fe555e70e9b11a46c05a976c466acb228_QRG_AU_26946.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/RS6121FLJE1.json"
+      },
       "dimensions": {
         "height_mm": 2134,
         "width_mm": 603,
@@ -9866,14 +9873,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/0/d/e/3/0de3f96fe555e70e9b11a46c05a976c466acb228_QRG_AU_26946.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/RS6121FLJE1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3180",
@@ -9952,6 +9952,13 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/5/f/7/e/5f7ecab3d9df36507735f25ae65f7fa9ef659b86_Fisher_and_Paykel___RS6121SLHK1___Specifications_Sheet_UPDATED_2025.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/RS6121SLHK1.json"
+      },
       "dimensions": {
         "height_mm": 2134,
         "width_mm": 603,
@@ -9969,14 +9976,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/5/f/7/e/5f7ecab3d9df36507735f25ae65f7fa9ef659b86_Fisher_and_Paykel___RS6121SLHK1___Specifications_Sheet_UPDATED_2025.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/RS6121SLHK1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3478",
@@ -10055,6 +10055,13 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/6/e/5/0/6e5087514d5c676541399708d76c50e4eb970ff8_QRG_AU_26956.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/RS7621FLJE1.json"
+      },
       "dimensions": {
         "height_mm": 2134,
         "width_mm": 756,
@@ -10072,14 +10079,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/6/e/5/0/6e5087514d5c676541399708d76c50e4eb970ff8_QRG_AU_26956.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/RS7621FLJE1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3181",
@@ -10210,6 +10210,13 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/7/f/e/2/7fe27787e1b5a7054609620a8e67af6677d5253e_RS7621WLUK1_Fisher___Paykel_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/RS7621WLUK1.json"
+      },
       "dimensions": {
         "height_mm": 2134,
         "width_mm": 756,
@@ -10227,14 +10234,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/7/f/e/2/7fe27787e1b5a7054609620a8e67af6677d5253e_RS7621WLUK1_Fisher___Paykel_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/RS7621WLUK1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3349",
@@ -10914,6 +10914,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Chest",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/5/d/e/c/5decfeeafedb886d4e030a42408523e3f99abd8d_Haier___HCF200FI___Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HCF200FI.json"
+      },
       "dimensions": {
         "height_mm": 865,
         "width_mm": 940,
@@ -10931,14 +10938,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/5/d/e/c/5decfeeafedb886d4e030a42408523e3f99abd8d_Haier___HCF200FI___Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HCF200FI.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3789",
@@ -10965,6 +10965,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Chest",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/a/8/c/9/a8c9c8ddc319e895e23e5876cabf33f89d60d306_HCF300FI_Haier_Specification_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HCF300FI.json"
+      },
       "dimensions": {
         "height_mm": 865,
         "width_mm": 1205,
@@ -10982,14 +10989,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/a/8/c/9/a8c9c8ddc319e895e23e5876cabf33f89d60d306_HCF300FI_Haier_Specification_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HCF300FI.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3640",
@@ -11068,6 +11068,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Chest",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/9/5/a/a/95aa062b9294643b81869ee3f8674dd12a882a57_HCF324W2_Haier_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HCF324W2.json"
+      },
       "dimensions": {
         "height_mm": 845,
         "width_mm": 920,
@@ -11085,14 +11092,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/9/5/a/a/95aa062b9294643b81869ee3f8674dd12a882a57_HCF324W2_Haier_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HCF324W2.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3790",
@@ -11119,6 +11119,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Chest",
       "priorityScore": 66,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/d/d/7/9/dd792e3da5690c2ef21bb3b8b65314b93ee92b41_HCF420W_Haier_Specification_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HCF420W.json"
+      },
       "dimensions": {
         "height_mm": 845,
         "width_mm": 1320,
@@ -11136,14 +11143,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/d/d/7/9/dd792e3da5690c2ef21bb3b8b65314b93ee92b41_HCF420W_Haier_Specification_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HCF420W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3791",
@@ -11170,6 +11170,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Chest",
       "priorityScore": 66,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/a/4/4/b/a44b0374e5c64427b4902d122e252e823cf9dfd6_HCF520W_Haier_Specifciation_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HCF520W.json"
+      },
       "dimensions": {
         "height_mm": 845,
         "width_mm": 1545,
@@ -11187,14 +11194,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/a/4/4/b/a44b0374e5c64427b4902d122e252e823cf9dfd6_HCF520W_Haier_Specifciation_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HCF520W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3792",
@@ -11221,6 +11221,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Chest",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/1/3/a/8/13a8af398609c3c465b5f939a1d6f077e25ccc71_HCF720W_Haier_Specification_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HCF720W.json"
+      },
       "dimensions": {
         "height_mm": 845,
         "width_mm": 2042,
@@ -11238,14 +11245,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/1/3/a/8/13a8af398609c3c465b5f939a1d6f077e25ccc71_HCF720W_Haier_Specification_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HCF720W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3127",
@@ -11324,6 +11324,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/1/2/d/8/12d8bf59fccc139dc50a1891ba0486b25e19af91_QRG_AU_62405.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRF115UW2.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 545,
@@ -11341,14 +11348,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/1/2/d/8/12d8bf59fccc139dc50a1891ba0486b25e19af91_QRG_AU_62405.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRF115UW2.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2253",
@@ -11545,6 +11545,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/d/9/8/2/d9822fc7737b56ff2bf274def67e7cd158eb0757_HRF220VW_Haier_Specification_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRF220VW.json"
+      },
       "dimensions": {
         "height_mm": 1380,
         "width_mm": 545,
@@ -11562,14 +11569,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/d/9/8/2/d9822fc7737b56ff2bf274def67e7cd158eb0757_HRF220VW_Haier_Specification_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRF220VW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2286",
@@ -11622,6 +11622,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/5/6/d/d/56dd4e579eedd3e886ec1fb67f509c9171f1eded_HRF241VW_Haier_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRF241VW.json"
+      },
       "dimensions": {
         "height_mm": 1426,
         "width_mm": 544,
@@ -11639,14 +11646,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/5/6/d/d/56dd4e579eedd3e886ec1fb67f509c9171f1eded_HRF241VW_Haier_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRF241VW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3467",
@@ -12074,6 +12074,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/8/a/6/2/8a62d0ad8d7e80cc3642078ac3cec82e2df7d2c8_HRF50UW_Haier_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRF50UW.json"
+      },
       "dimensions": {
         "height_mm": 510,
         "width_mm": 440,
@@ -12091,14 +12098,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/8/a/6/2/8a62d0ad8d7e80cc3642078ac3cec82e2df7d2c8_HRF50UW_Haier_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRF50UW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3501",
@@ -12198,6 +12198,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 66,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/b/f/e/8/bfe8ee034a5353a21df4ef36ca4d102eef8ac271_QRG_AU_62292.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRF510BS.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 790,
@@ -12215,14 +12222,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/b/f/e/8/bfe8ee034a5353a21df4ef36ca4d102eef8ac271_QRG_AU_62292.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRF510BS.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3499",
@@ -12275,6 +12275,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/8/9/8/4/89842cf0a987a7fc969fbc15ca7f3455e8cd4dc0_QRG_NZ_62295.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRF510FS.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 790,
@@ -12292,14 +12299,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/8/9/8/4/89842cf0a987a7fc969fbc15ca7f3455e8cd4dc0_QRG_NZ_62295.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRF510FS.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "f7",
@@ -12418,6 +12418,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/c/a/b/1/cab10417a9003bc492ec0c3ddcc21c30fdc21e30_QRG_AU_62248.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRF575XC.json"
+      },
       "dimensions": {
         "height_mm": 1775,
         "width_mm": 905,
@@ -12435,14 +12442,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/c/a/b/1/cab10417a9003bc492ec0c3ddcc21c30fdc21e30_QRG_AU_62248.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRF575XC.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3352",
@@ -12495,6 +12495,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/9/b/b/0/9bb0d188de77fa63330e66446b911ab31e9e1a1e_HRF80UW_Haier_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRF80UW.json"
+      },
       "dimensions": {
         "height_mm": 700,
         "width_mm": 480,
@@ -12512,14 +12519,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/9/b/b/0/9bb0d188de77fa63330e66446b911ab31e9e1a1e_HRF80UW_Haier_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRF80UW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3277",
@@ -12546,6 +12546,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/5/3/2/9/53296d56985d94f266313760364da145158895dc_QRG_AU_62285.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRF90UC.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 475,
@@ -12563,14 +12570,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/5/3/2/9/53296d56985d94f266313760364da145158895dc_QRG_AU_62285.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRF90UC.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3598",
@@ -12663,6 +12663,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/4/7/c/8/47c85b63085dce95b3662f47a7fda81c411f21b2_QRG_AU_62417.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HVF170VW.json"
+      },
       "dimensions": {
         "height_mm": 1380,
         "width_mm": 545,
@@ -12680,14 +12687,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/4/7/c/8/47c85b63085dce95b3662f47a7fda81c411f21b2_QRG_AU_62417.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HVF170VW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2280",
@@ -12714,6 +12714,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/b/d/0/c/bd0cc5469050d9df5cb1cfce64dd51c8eca939b0_HVF175VW_Haier_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HVF175VW.json"
+      },
       "dimensions": {
         "height_mm": 1426,
         "width_mm": 544,
@@ -12731,14 +12738,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/b/d/0/c/bd0cc5469050d9df5cb1cfce64dd51c8eca939b0_HVF175VW_Haier_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HVF175VW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3118",
@@ -12791,6 +12791,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 66,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/d/9/b/1/d9b1cdb114a71b4755dd7738af12f76f5e2a3ed6_QRG_AU_62419.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HVF275DW.json"
+      },
       "dimensions": {
         "height_mm": 1775,
         "width_mm": 597,
@@ -12808,14 +12815,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/d/9/b/1/d9b1cdb114a71b4755dd7738af12f76f5e2a3ed6_QRG_AU_62419.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HVF275DW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3571",
@@ -12894,6 +12894,13 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/9/9/e/4/99e4db5c1164449dcc1f14bdff81b648c95aff92_HVF91VW_Haier_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HVF91VW.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 550,
@@ -12911,14 +12918,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/9/9/e/4/99e4db5c1164449dcc1f14bdff81b648c95aff92_HVF91VW_Haier_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HVF91VW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2186",
@@ -14027,6 +14027,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/3/1/4/2/314270d8fe3c475ef8fa4e1927824887939ede98_HRBF45_Hisense_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRBF45.json"
+      },
       "dimensions": {
         "height_mm": 500,
         "width_mm": 445,
@@ -14044,14 +14051,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/3/1/4/2/314270d8fe3c475ef8fa4e1927824887939ede98_HRBF45_Hisense_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRBF45.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3513",
@@ -14144,6 +14144,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/d/7/8/b/d78b107ff50c8704be72c521258bec76666fc635_HRBF47_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRBF47.json"
+      },
       "dimensions": {
         "height_mm": 510,
         "width_mm": 439,
@@ -14161,14 +14168,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/d/7/8/b/d78b107ff50c8704be72c521258bec76666fc635_HRBF47_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRBF47.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2651",
@@ -14325,6 +14325,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
       "priorityScore": 66,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/b/2/c/8/b2c88a5d6924f5817e9f59794af256f28d0c7b53_HRBM483B_Specs_FINAL.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRBM483B.json"
+      },
       "dimensions": {
         "height_mm": 1756,
         "width_mm": 794,
@@ -14342,14 +14349,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/b/2/c/8/b2c88a5d6924f5817e9f59794af256f28d0c7b53_HRBM483B_Specs_FINAL.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRBM483B.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3099",
@@ -14376,6 +14376,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/e/f/0/6/ef06f78ac1f7a69fa721fcce24c82130dd1cf33d_HRBM503S_ConsumerSpecs_.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRBM503S.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 794,
@@ -14393,14 +14400,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/e/f/0/6/ef06f78ac1f7a69fa721fcce24c82130dd1cf33d_HRBM503S_ConsumerSpecs_.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRBM503S.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2644",
@@ -14708,6 +14708,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/e/b/0/c/eb0c4d055489c97b0d6e4779e4a688a90cd3e84e_Hisense___HRCD615TBW___Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRCD615TBW.json"
+      },
       "dimensions": {
         "height_mm": 1790,
         "width_mm": 914,
@@ -14725,14 +14732,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/e/b/0/c/eb0c4d055489c97b0d6e4779e4a688a90cd3e84e_Hisense___HRCD615TBW___Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRCD615TBW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3665",
@@ -14785,6 +14785,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/3/8/e/6/38e6e96abed20ae05153dc98342eb8974699ab27_HRCD640TB_Specs_0821.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRCD640TB.json"
+      },
       "dimensions": {
         "height_mm": 1790,
         "width_mm": 914,
@@ -14802,14 +14809,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/3/8/e/6/38e6e96abed20ae05153dc98342eb8974699ab27_HRCD640TB_Specs_0821.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRCD640TB.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3453",
@@ -15365,6 +15365,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/a/7/b/3/a7b30ddf7e52ecfd0abf92291def2b239fc1c655_HRFD577B_Hisense_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRFD577B.json"
+      },
       "dimensions": {
         "height_mm": 1776,
         "width_mm": 912,
@@ -15382,14 +15389,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/a/7/b/3/a7b30ddf7e52ecfd0abf92291def2b239fc1c655_HRFD577B_Hisense_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRFD577B.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3116",
@@ -15494,6 +15494,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/a/2/4/b/a24b17e62b4736a961ed45949f07b145c0a1c9ea_Hisense___HRSBS540BW___Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRSBS540BW.json"
+      },
       "dimensions": {
         "height_mm": 1786,
         "width_mm": 911,
@@ -15511,14 +15518,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/a/2/4/b/a24b17e62b4736a961ed45949f07b145c0a1c9ea_Hisense___HRSBS540BW___Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRSBS540BW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2403",
@@ -15545,6 +15545,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/9/7/b/f/97bfb685ae8ef264821a8d1f1e98f2d25f05d598_HRSBS578BW_Hisense_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRSBS578BW.json"
+      },
       "dimensions": {
         "height_mm": 1792,
         "width_mm": 908,
@@ -15562,14 +15569,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/9/7/b/f/97bfb685ae8ef264821a8d1f1e98f2d25f05d598_HRSBS578BW_Hisense_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRSBS578BW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3579",
@@ -15714,6 +15714,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/a/b/6/8/ab681b358ea67e241fb6b9b2b54dfeae325060d6_2024_Hisense_AU___Consumer_Spec__HRSBS649SW_.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRSBS649SW.json"
+      },
       "dimensions": {
         "height_mm": 1795,
         "width_mm": 910,
@@ -15731,14 +15738,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/a/b/6/8/ab681b358ea67e241fb6b9b2b54dfeae325060d6_2024_Hisense_AU___Consumer_Spec__HRSBS649SW_.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRSBS649SW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3192",
@@ -15765,6 +15765,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 66,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/3/d/5/b/3d5b384d5a520887a8da6170ca40381816d0f090_Consumer_Specs_HRCSBS652B.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRSBS652B.json"
+      },
       "dimensions": {
         "height_mm": 1795,
         "width_mm": 910,
@@ -15782,14 +15789,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/3/d/5/b/3d5b384d5a520887a8da6170ca40381816d0f090_Consumer_Specs_HRCSBS652B.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRSBS652B.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2670",
@@ -15973,6 +15973,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/4/4/4/c/444c1d3a5997aa5eb9667497bbd2ba6073562532_HRTF326_Hisense_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRTF326.json"
+      },
       "dimensions": {
         "height_mm": 1696,
         "width_mm": 595,
@@ -15990,14 +15997,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/4/4/4/c/444c1d3a5997aa5eb9667497bbd2ba6073562532_HRTF326_Hisense_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRTF326.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3394",
@@ -16024,6 +16024,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/8/9/c/a/89ca2ec6ee4db3b115a33155509a820b8c62e02a_HRTF424_Specs_FINAL.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRTF424.json"
+      },
       "dimensions": {
         "height_mm": 1720,
         "width_mm": 704,
@@ -16041,14 +16048,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/8/9/c/a/89ca2ec6ee4db3b115a33155509a820b8c62e02a_HRTF424_Specs_FINAL.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRTF424.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2640",
@@ -16074,6 +16074,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/f/9/5/2/f9529f4fbae43890fd8f51e98590b70ddd8efc35_HRTF496SW_Specs_FINAL.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRTF496SW.json"
+      },
       "dimensions": {
         "height_mm": 1720,
         "width_mm": 794,
@@ -16091,14 +16098,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/f/9/5/2/f9529f4fbae43890fd8f51e98590b70ddd8efc35_HRTF496SW_Specs_FINAL.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRTF496SW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3563",
@@ -16149,6 +16149,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/d/4/9/c/d49ca99d920d03dd8ee1ce543c9fadf4fc4d23ee_HRTF504_Hisense_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRTF504.json"
+      },
       "dimensions": {
         "height_mm": 1720,
         "width_mm": 794,
@@ -16166,14 +16173,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/d/4/9/c/d49ca99d920d03dd8ee1ce543c9fadf4fc4d23ee_HRTF504_Hisense_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRTF504.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2637",
@@ -16226,6 +16226,13 @@
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/b/d/6/2/bd6236a674e07e4e6029241152c2c5e049c40739_HRVF155_Hisense_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/HRVF155.json"
+      },
       "dimensions": {
         "height_mm": 1434,
         "width_mm": 550,
@@ -16243,14 +16250,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/b/d/6/2/bd6236a674e07e4e6029241152c2c5e049c40739_HRVF155_Hisense_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/HRVF155.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2946",
@@ -17905,6 +17905,13 @@
       "displayName": "Ilve Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/0/6/5/2/06520a63140736b9a6eb222a52c271a1d5c28a16_ILFRZ217I_ILVE_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/ILFRZ217I.json"
+      },
       "dimensions": {
         "height_mm": 1770,
         "width_mm": 540,
@@ -17922,14 +17929,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/0/6/5/2/06520a63140736b9a6eb222a52c271a1d5c28a16_ILFRZ217I_ILVE_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/ILFRZ217I.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3152",
@@ -20708,6 +20708,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/2/6/4/4/2644590e2a301419539ec34a1abb7fc6cf52f620_GF_B505MBL_SpecSheet_V2_240214.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-B505MBL.json"
+      },
       "dimensions": {
         "height_mm": 1780,
         "width_mm": 595,
@@ -20725,14 +20732,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/2/6/4/4/2644590e2a301419539ec34a1abb7fc6cf52f620_GF_B505MBL_SpecSheet_V2_240214.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GF-B505MBL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2853",
@@ -20785,6 +20785,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/8/6/4/8/8648c67487182ad4b4b289d7cc551e3aef3b2ce6_GF_B589PLE_LG_User_manual.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-B589PLE.json"
+      },
       "dimensions": {
         "height_mm": 1776,
         "width_mm": 836,
@@ -20802,14 +20809,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/8/6/4/8/8648c67487182ad4b4b289d7cc551e3aef3b2ce6_GF_B589PLE_LG_User_manual.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GF-B589PLE.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2548",
@@ -21368,6 +21368,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/6/6/e/8/66e88a2d4f473ec3be29f1e4b9e9ea06becf6c6b_GF_V900MBLC_Specsheet_V2_230809.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-V900MBLC.json"
+      },
       "dimensions": {
         "height_mm": 1790,
         "width_mm": 900,
@@ -21385,14 +21392,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/6/6/e/8/66e88a2d4f473ec3be29f1e4b9e9ea06becf6c6b_GF_V900MBLC_Specsheet_V2_230809.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GF-V900MBLC.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2383",
@@ -21497,6 +21497,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/a/e/7/f/ae7f318c42cf95135a839a5a6379d0c20950280a_GP_R386MBL_LG_User_Manual.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GP-R386MBL.json"
+      },
       "dimensions": {
         "height_mm": 1860,
         "width_mm": 595,
@@ -21514,14 +21521,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/a/e/7/f/ae7f318c42cf95135a839a5a6379d0c20950280a_GP_R386MBL_LG_User_Manual.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GP-R386MBL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3383",
@@ -21815,6 +21815,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/7/1/d/f/71df1ff984ea3bf864617c79a3d5fe2b03740a12_REF_GAP_MFL72093738_00_240820_00_OM_WEB.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-N599PL.json"
+      },
       "dimensions": {
         "height_mm": 1790,
         "width_mm": 913,
@@ -21832,14 +21839,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/7/1/d/f/71df1ff984ea3bf864617c79a3d5fe2b03740a12_REF_GAP_MFL72093738_00_240820_00_OM_WEB.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GS-N599PL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3215",
@@ -22074,6 +22074,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/5/e/7/c/5e7c4f055c6ee8afa1ddf367fd893c060dfdd2b5_4a7598e728594b9bac44393a46338aa3e675a863_GT_2S___Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GT-2S.json"
+      },
       "dimensions": {
         "height_mm": 1680,
         "width_mm": 555,
@@ -22091,14 +22098,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/5/e/7/c/5e7c4f055c6ee8afa1ddf367fd893c060dfdd2b5_4a7598e728594b9bac44393a46338aa3e675a863_GT_2S___Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GT-2S.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3566",
@@ -22540,6 +22540,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/2/7/1/d/271d48f85a111984fa25207508c672edb7c6f9ad_SG_5I700TSL_LG_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SG-5I700TSL.json"
+      },
       "dimensions": {
         "height_mm": 1788,
         "width_mm": 912,
@@ -22557,14 +22564,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/2/7/1/d/271d48f85a111984fa25207508c672edb7c6f9ad_SG_5I700TSL_LG_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/SG-5I700TSL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2912",
@@ -32872,6 +32872,13 @@
       "displayName": "TCL Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/7/6/7/0/7670c10ba7020ad18240bfabe50c6fafff30d97e_P454TMW_TCL_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/P454TMW.json"
+      },
       "dimensions": {
         "height_mm": 1780,
         "width_mm": 710,
@@ -32889,14 +32896,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/7/6/7/0/7670c10ba7020ad18240bfabe50c6fafff30d97e_P454TMW_TCL_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/P454TMW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3249",
@@ -33105,6 +33105,13 @@
       "displayName": "TCL Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/e/f/3/3/ef336ee322aaf73ac567587c71470f4e3c7a66bc_TRF630SHG_Product_Specifications.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/TRF630SHG.json"
+      },
       "dimensions": {
         "height_mm": 1768,
         "width_mm": 920,
@@ -33122,14 +33129,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/e/f/3/3/ef336ee322aaf73ac567587c71470f4e3c7a66bc_TRF630SHG_Product_Specifications.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/TRF630SHG.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2788",
@@ -35606,6 +35606,13 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Chest",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/a/f/5/4/af544e8613ee44798f17f964d823702803cfa673_WCM5000WE_Westinghouse_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WCM5000WE.json"
+      },
       "dimensions": {
         "height_mm": 847,
         "width_mm": 1646,
@@ -35623,14 +35630,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/a/f/5/4/af544e8613ee44798f17f964d823702803cfa673_WCM5000WE_Westinghouse_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/WCM5000WE.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2589",
@@ -35683,6 +35683,13 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Chest",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/c/a/8/3/ca831f6d7605c27e8b22c4c3961dd76a19abaef9_WCM7000WE_Westinghouse_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WCM7000WE.json"
+      },
       "dimensions": {
         "height_mm": 873,
         "width_mm": 2145,
@@ -35700,14 +35707,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/c/a/8/3/ca831f6d7605c27e8b22c4c3961dd76a19abaef9_WCM7000WE_Westinghouse_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/WCM7000WE.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2947",
@@ -35734,6 +35734,13 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/8/2/1/e/821ec24fe2e1b0c9320693dad3f3dd9555c5f63c_WFB2804AB_Westinghouse_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WFB2804AB.json"
+      },
       "dimensions": {
         "height_mm": 1720,
         "width_mm": 597,
@@ -35751,14 +35758,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/8/2/1/e/821ec24fe2e1b0c9320693dad3f3dd9555c5f63c_WFB2804AB_Westinghouse_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/WFB2804AB.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3829",
@@ -36149,6 +36149,13 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/e/b/0/a/eb0a94e4ea026d3641d53b1a5fd1eaf8e9cff37b_WIM1000WD_Westinghouse_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WIM1000WD.json"
+      },
       "dimensions": {
         "height_mm": 847,
         "width_mm": 480,
@@ -36166,14 +36173,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/e/b/0/a/eb0a94e4ea026d3641d53b1a5fd1eaf8e9cff37b_WIM1000WD_Westinghouse_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/WIM1000WD.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2427",
@@ -36304,6 +36304,13 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/4/5/8/a/458a03fa64d5e4de7b9269fc353d382cf23c6d4c_Westinghouse_WQE5400SD_Factsheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WQE5400SD.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 896,
@@ -36321,14 +36328,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/4/5/8/a/458a03fa64d5e4de7b9269fc353d382cf23c6d4c_Westinghouse_WQE5400SD_Factsheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/WQE5400SD.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2923",
@@ -36355,6 +36355,13 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/a/4/6/0/a4609480495426df9353ec515cc0324f35ec8a56_Westinghouse_WQE5600BA_Factsheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WQE5600BA.json"
+      },
       "dimensions": {
         "height_mm": 1795,
         "width_mm": 896,
@@ -36372,14 +36379,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/a/4/6/0/a4609480495426df9353ec515cc0324f35ec8a56_Westinghouse_WQE5600BA_Factsheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/WQE5600BA.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3367",
@@ -36635,6 +36635,13 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/1/a/a/d/1aad4c4e1e9cca90d3dafe211f0cacf5495e5f72_WQE6060SB_Westinghouse_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WQE6060SB.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 896,
@@ -36652,14 +36659,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/1/a/a/d/1aad4c4e1e9cca90d3dafe211f0cacf5495e5f72_WQE6060SB_Westinghouse_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/WQE6060SB.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3258",
@@ -39210,6 +39210,13 @@
       "displayName": "ASKO Dishwasher",
       "readableSpec": "Built-in Dishwasher",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/c/4/f/c/c4fcc585c44cce34ae08978d03e81bfd08091bda_Asko_DBI865IGXXL.S.AU_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/DBI865IGXXL.S.AU.json"
+      },
       "dimensions": {
         "height_mm": 859,
         "width_mm": 596,
@@ -39227,14 +39234,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/c/4/f/c/c4fcc585c44cce34ae08978d03e81bfd08091bda_Asko_DBI865IGXXL.S.AU_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/DBI865IGXXL.S.AU.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw0929",
@@ -39260,6 +39260,13 @@
       "displayName": "ASKO Dishwasher",
       "readableSpec": "Built-in Dishwasher",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/f/d/4/4/fd441cb720bf39340c99134d8415bdc14ee612b3_Asko_DFI643.AU_Fully_Integrated_Dishwasher_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/DFI643.AU.json"
+      },
       "dimensions": {
         "height_mm": 819,
         "width_mm": 596,
@@ -39277,14 +39284,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/f/d/4/4/fd441cb720bf39340c99134d8415bdc14ee612b3_Asko_DFI643.AU_Fully_Integrated_Dishwasher_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/DFI643.AU.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw0930",
@@ -48024,6 +48024,13 @@
       "displayName": "ASKO Dryer",
       "readableSpec": "Condenser",
       "priorityScore": 12,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/5/a/d/b/5adbbdce4cef864ed5795fde4ed10348be1d7419_T208C.W.AU_Asko_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/T208C.W.AU.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 595,
@@ -48041,14 +48048,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/5/a/d/b/5adbbdce4cef864ed5795fde4ed10348be1d7419_T208C.W.AU_Asko_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/T208C.W.AU.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dryer-zcd0074",
@@ -48624,6 +48624,13 @@
       "displayName": "Esatto Dryer",
       "readableSpec": "Vented",
       "priorityScore": 12,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/1/d/c/a/1dca95ac2b0cfbfb19647b7a127fc78c02239a9c_EVD7_Esatto_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/EVD7.json"
+      },
       "dimensions": {
         "height_mm": 840,
         "width_mm": 595,
@@ -48641,14 +48648,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/1/d/c/a/1dca95ac2b0cfbfb19647b7a127fc78c02239a9c_EVD7_Esatto_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/EVD7.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dryer-acd0693",
@@ -51499,6 +51499,13 @@
       "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/b/c/1/4/bc1484fbdfcb72684eeb54a2e51164acfc384d36_Electrolux_EWF8023P5WC_Factsheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/EWF8023P5WC.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 600,
@@ -51516,14 +51523,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/b/c/1/4/bc1484fbdfcb72684eeb54a2e51164acfc384d36_Electrolux_EWF8023P5WC_Factsheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/EWF8023P5WC.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1245",
@@ -56028,6 +56028,13 @@
       "displayName": "LG AI DD",
       "readableSpec": "Front Loader",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/0/d/c/d/0dcd78d7fb4b1a88893e4ec687327fc731f4a728_LG_WVC5_1410W_User_Manual.PDF",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WVC5-1410W.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 600,
@@ -56045,14 +56052,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/0/d/c/d/0dcd78d7fb4b1a88893e4ec687327fc731f4a728_LG_WVC5_1410W_User_Manual.PDF",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/WVC5-1410W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1293",
@@ -56105,6 +56105,13 @@
       "displayName": "LG Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/a/2/0/c/a20c2047b91fa4b953c7fe71e969db2d5d40ab3c_WWT_1209B_Specsheet_230426_v1__1_.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WWT-1209B.json"
+      },
       "dimensions": {
         "height_mm": 1655,
         "width_mm": 600,
@@ -56122,14 +56129,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/a/2/0/c/a20c2047b91fa4b953c7fe71e969db2d5d40ab3c_WWT_1209B_Specsheet_230426_v1__1_.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/WWT-1209B.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1453",
@@ -56156,6 +56156,13 @@
       "displayName": "LG Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/9/1/f/3/91f34606575caf5cca4a157a52b3aa1cdcaef213_WM_EAP_MFL71983233_00_241022_00_OM_WEB__1_.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WWT-1910B.json"
+      },
       "dimensions": {
         "height_mm": 1890,
         "width_mm": 700,
@@ -56173,14 +56180,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/9/1/f/3/91f34606575caf5cca4a157a52b3aa1cdcaef213_WM_EAP_MFL71983233_00_241022_00_OM_WEB__1_.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/WWT-1910B.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1685",
@@ -97138,6 +97138,165 @@
       }
     },
     {
+      "id": "discovery-fridge-bosch-kfd96axeaa",
+      "cat": "fridge",
+      "brand": "Bosch",
+      "model": "KFD96AXEAA",
+      "displayName": "Bosch KFD96AXEAA",
+      "title": "Bosch KFD96AXEAA",
+      "slug": "discovery-fridge-bosch-kfd96axeaa",
+      "w": 905,
+      "h": 1830,
+      "d": 731,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-574l-quad-door-refrigerator-kfd96axeaa",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-574l-quad-door-refrigerator-kfd96axeaa",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 1830,
+        "width_mm": 905,
+        "depth_mm": 731,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFD96AXEAA.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/KFD96AXEAA.json"
+      }
+    },
+    {
+      "id": "discovery-fridge-bosch-kfi96axeaa",
+      "cat": "fridge",
+      "brand": "Bosch",
+      "model": "KFI96AXEAA",
+      "displayName": "Bosch KFI96AXEAA",
+      "title": "Bosch KFI96AXEAA",
+      "slug": "discovery-fridge-bosch-kfi96axeaa",
+      "w": 905,
+      "h": 1830,
+      "d": 731,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-574l-quad-door-refrigerator-kfi96axeaa",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-574l-quad-door-refrigerator-kfi96axeaa",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 1830,
+        "width_mm": 905,
+        "depth_mm": 731,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFI96AXEAA.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/KFI96AXEAA.json"
+      }
+    },
+    {
+      "id": "discovery-fridge-bosch-kfn96axeaa",
+      "cat": "fridge",
+      "brand": "Bosch",
+      "model": "KFN96AXEAA",
+      "displayName": "Bosch KFN96AXEAA",
+      "title": "Bosch KFN96AXEAA",
+      "slug": "discovery-fridge-bosch-kfn96axeaa",
+      "w": 905,
+      "h": 1830,
+      "d": 731,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-605l-quad-door-refrigerator-kfn96axeaa",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-605l-quad-door-refrigerator-kfn96axeaa",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 1830,
+        "width_mm": 905,
+        "depth_mm": 731,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFN96AXEAA.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/KFN96AXEAA.json"
+      }
+    },
+    {
       "id": "ao-140367",
       "cat": "fridge",
       "brand": "Bosch",
@@ -105562,6 +105721,59 @@
       }
     },
     {
+      "id": "discovery-dishwasher-bosch-sbi8ecs01a",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SBI8ECS01A",
+      "displayName": "Bosch SBI8ECS01A",
+      "title": "Bosch SBI8ECS01A",
+      "slug": "discovery-dishwasher-bosch-sbi8ecs01a",
+      "w": 598,
+      "h": 865,
+      "d": 573,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-series-8-60cm-semi-integrated-dishwasher-tall-tub-brushed-steel-sbi8ecs01a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-series-8-60cm-semi-integrated-dishwasher-tall-tub-brushed-steel-sbi8ecs01a",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 865,
+        "width_mm": 598,
+        "depth_mm": 573,
+        "door_open_90_depth_mm": 1200
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8ECS01A.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SBI8ECS01A.json"
+      }
+    },
+    {
       "id": "ao-103523",
       "cat": "dishwasher",
       "brand": "Bosch",
@@ -105616,6 +105828,59 @@
       }
     },
     {
+      "id": "discovery-dishwasher-bosch-sbt8zc801a",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SBT8ZC801A",
+      "displayName": "Bosch SBT8ZC801A",
+      "title": "Bosch SBT8ZC801A",
+      "slug": "discovery-dishwasher-bosch-sbt8zc801a",
+      "w": 598,
+      "h": 865,
+      "d": 550,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-fully-integrated-dishwasher-sbt8zc801a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-fully-integrated-dishwasher-sbt8zc801a",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 865,
+        "width_mm": 598,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": 1200
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBT8ZC801A.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SBT8ZC801A.json"
+      }
+    },
+    {
       "id": "ao-84989",
       "cat": "dishwasher",
       "brand": "Bosch",
@@ -105667,6 +105932,59 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/SBV88TX06A.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-bosch-sbv8ecx01a",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SBV8ECX01A",
+      "displayName": "Bosch SBV8ECX01A",
+      "title": "Bosch SBV8ECX01A",
+      "slug": "discovery-dishwasher-bosch-sbv8ecx01a",
+      "w": 598,
+      "h": 865,
+      "d": 550,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-series-8-60cm-fully-integrated-dishwasher-tall-tub-sbv8ecx01a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-series-8-60cm-fully-integrated-dishwasher-tall-tub-sbv8ecx01a",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 865,
+        "width_mm": 598,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": 1200
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV8ECX01A.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SBV8ECX01A.json"
       }
     },
     {
@@ -106696,6 +107014,59 @@
       }
     },
     {
+      "id": "discovery-dishwasher-bosch-smp6hcb01a",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMP6HCB01A",
+      "displayName": "Bosch SMP6HCB01A",
+      "title": "Bosch SMP6HCB01A",
+      "slug": "discovery-dishwasher-bosch-smp6hcb01a",
+      "w": 598,
+      "h": 815,
+      "d": 573,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-series-6-built-under-dishwasher-smp6hcb01a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-series-6-built-under-dishwasher-smp6hcb01a",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 815,
+        "width_mm": 598,
+        "depth_mm": 573,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMP6HCB01A.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SMP6HCB01A.json"
+      }
+    },
+    {
       "id": "ao-156678",
       "cat": "dishwasher",
       "brand": "Bosch",
@@ -106747,6 +107118,200 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/SMP6HCS01A.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-bosch-sms24ai01a",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS24AI01A",
+      "displayName": "Bosch SMS24AI01A",
+      "title": "Bosch SMS24AI01A",
+      "slug": "discovery-dishwasher-bosch-sms24ai01a",
+      "w": 600,
+      "h": 845,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-series-2-freestanding-dishwasher-silver-inox-sms24ai01a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/bosch-sms24ai01a-series-2-13-place-freestanding-dishwasher",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/series-2-free-standing-dishwasher-60-cm-silver-inox-sms24ai01a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/series-2-free-standing-dishwasher-60-cm-silver-inox-sms24ai01a",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": 1155
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS24AI01A.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SMS24AI01A.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-bosch-sms2iti02a",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS2ITI02A",
+      "displayName": "Bosch SMS2ITI02A",
+      "title": "Bosch SMS2ITI02A",
+      "slug": "discovery-dishwasher-bosch-sms2iti02a",
+      "w": 600,
+      "h": 845,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-series-2-freestanding-dishwasher-stainless-steel-sms2iti02a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/bosch-series-2-free-standing-dishwasher-60-cm-stainless-steel-sms2iti02a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/bosch-series-2-free-standing-dishwasher-60-cm-stainless-steel-sms2iti02a",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS2ITI02A.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SMS2ITI02A.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-bosch-sms2itw01a",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS2ITW01A",
+      "displayName": "Bosch SMS2ITW01A",
+      "title": "Bosch SMS2ITW01A",
+      "slug": "discovery-dishwasher-bosch-sms2itw01a",
+      "w": 600,
+      "h": 845,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-series-2-60cm-freestanding-dishwasher-white-sms2itw01a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/bosch-sms2itw01a-series-2-13-place-setting-frestanding-dishwasher",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/bosch-serie-2-60cm-freestanding-dishwasher-sms2itw01a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/bosch-serie-2-60cm-freestanding-dishwasher-sms2itw01a",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS2ITW01A.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SMS2ITW01A.json"
       }
     },
     {
@@ -107125,6 +107690,73 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/SMS4HVB01A.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-bosch-sms4hvi01a",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS4HVI01A",
+      "displayName": "Bosch SMS4HVI01A",
+      "title": "Bosch SMS4HVI01A",
+      "slug": "discovery-dishwasher-bosch-sms4hvi01a",
+      "w": 600,
+      "h": 845,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-series-4-freestanding-dishwasher-stainless-steel-sms4hvi01a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/bosch-sms4hvi01a-series-4-14-place-setting-freestanding-dishwasher-stainless-steel",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/bosch-sms4hvi01a-60cm-freestanding-dishwasher",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/bosch-sms4hvi01a-60cm-freestanding-dishwasher",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVI01A.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SMS4HVI01A.json"
       }
     },
     {
@@ -108262,6 +108894,112 @@
       }
     },
     {
+      "id": "discovery-dishwasher-bosch-sms8edi01a",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS8EDI01A",
+      "displayName": "Bosch SMS8EDI01A",
+      "title": "Bosch SMS8EDI01A",
+      "slug": "discovery-dishwasher-bosch-sms8edi01a",
+      "w": 600,
+      "h": 845,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/bosch-sms8edi01a-60cm-freestanding-dishwasher",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/bosch-sms8edi01a-60cm-freestanding-dishwasher",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": 1155
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS8EDI01A.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SMS8EDI01A.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-bosch-smt8zc801a",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMT8ZC801A",
+      "displayName": "Bosch SMT8ZC801A",
+      "title": "Bosch SMT8ZC801A",
+      "slug": "discovery-dishwasher-bosch-smt8zc801a",
+      "w": 598,
+      "h": 815,
+      "d": 550,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-series-8-accentline-fully-integrated-dishwasher-smt8zc801a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-series-8-accentline-fully-integrated-dishwasher-smt8zc801a",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 815,
+        "width_mm": 598,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": 1150
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMT8ZC801A.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SMT8ZC801A.json"
+      }
+    },
+    {
       "id": "ao-61050",
       "cat": "dishwasher",
       "brand": "Bosch",
@@ -109288,6 +110026,59 @@
       }
     },
     {
+      "id": "discovery-dishwasher-bosch-smu8ecs01a",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMU8ECS01A",
+      "displayName": "Bosch SMU8ECS01A",
+      "title": "Bosch SMU8ECS01A",
+      "slug": "discovery-dishwasher-bosch-smu8ecs01a",
+      "w": 598,
+      "h": 815,
+      "d": 573,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/60cm-series-8-built-under-dishwasher-brushed-steel-anti-fingerprint-smu8ecs01a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/60cm-series-8-built-under-dishwasher-brushed-steel-anti-fingerprint-smu8ecs01a",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 815,
+        "width_mm": 598,
+        "depth_mm": 573,
+        "door_open_90_depth_mm": 1150
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ECS01A.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SMU8ECS01A.json"
+      }
+    },
+    {
       "id": "ao-103494",
       "cat": "dishwasher",
       "brand": "Bosch",
@@ -109342,6 +110133,59 @@
       }
     },
     {
+      "id": "discovery-dishwasher-bosch-smu8zcs01a",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMU8ZCS01A",
+      "displayName": "Bosch SMU8ZCS01A",
+      "title": "Bosch SMU8ZCS01A",
+      "slug": "discovery-dishwasher-bosch-smu8zcs01a",
+      "w": 598,
+      "h": 815,
+      "d": 573,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/series-8-built-under-dishwasher-60cm-smu8zcs01a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/series-8-built-under-dishwasher-60cm-smu8zcs01a",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 815,
+        "width_mm": 598,
+        "depth_mm": 573,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMU8ZCS01A.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SMU8ZCS01A.json"
+      }
+    },
+    {
       "id": "ao-61054",
       "cat": "dishwasher",
       "brand": "Bosch",
@@ -109393,6 +110237,66 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/SMV46GX01A.json"
+      }
+    },
+    {
+      "id": "discovery-dishwasher-bosch-smv4htx01a",
+      "cat": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMV4HTX01A",
+      "displayName": "Bosch SMV4HTX01A",
+      "title": "Bosch SMV4HTX01A",
+      "slug": "discovery-dishwasher-bosch-smv4htx01a",
+      "w": 598,
+      "h": 815,
+      "d": 550,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-series-4-60cm-fully-integrated-dishwasher-smv4htx01a",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/bosch-smv4htx01a-60cm-fully-integrated-dishwasher",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/bosch-smv4htx01a-60cm-fully-integrated-dishwasher",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 815,
+        "width_mm": 598,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": 1155
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMV4HTX01A.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SMV4HTX01A.json"
       }
     },
     {
@@ -114364,6 +115268,225 @@
       }
     },
     {
+      "id": "discovery-washing-machine-bosch-wan24121au",
+      "cat": "washing_machine",
+      "brand": "Bosch",
+      "model": "WAN24121AU",
+      "displayName": "Bosch WAN24121AU",
+      "title": "Bosch WAN24121AU",
+      "slug": "discovery-washing-machine-bosch-wan24121au",
+      "w": 598,
+      "h": 848,
+      "d": 550,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/bosch-8kg-1200rpm-front-load-washing-machine-wan24121au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/bosch-8kg-1200rpm-front-load-washing-machine-wan24121au",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 848,
+        "width_mm": 598,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": 600
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN24121AU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WAN24121AU.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-bosch-wan24126au",
+      "cat": "washing_machine",
+      "brand": "Bosch",
+      "model": "WAN24126AU",
+      "displayName": "Bosch WAN24126AU",
+      "title": "Bosch WAN24126AU",
+      "slug": "discovery-washing-machine-bosch-wan24126au",
+      "w": 598,
+      "h": 845,
+      "d": 590,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wan24126au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/9kg-1200rpm-front-loader-wan24126au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/9kg-1200rpm-front-loader-wan24126au",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 598,
+        "depth_mm": 590,
+        "door_open_90_depth_mm": 171
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN24126AU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WAN24126AU.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-bosch-wan28227au",
+      "cat": "washing_machine",
+      "brand": "Bosch",
+      "model": "WAN28227AU",
+      "displayName": "Bosch WAN28227AU",
+      "title": "Bosch WAN28227AU",
+      "slug": "discovery-washing-machine-bosch-wan28227au",
+      "w": 598,
+      "h": 845,
+      "d": 590,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wan28227au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wan28227au",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 598,
+        "depth_mm": 590,
+        "door_open_90_depth_mm": 160
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN28227AU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WAN28227AU.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-bosch-wan28288au",
+      "cat": "washing_machine",
+      "brand": "Bosch",
+      "model": "WAN28288AU",
+      "displayName": "Bosch WAN28288AU",
+      "title": "Bosch WAN28288AU",
+      "slug": "discovery-washing-machine-bosch-wan28288au",
+      "w": 598,
+      "h": 845,
+      "d": 588,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-8kg-front-load-washer-wan28288au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-8kg-front-load-washer-wan28288au",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 598,
+        "depth_mm": 588,
+        "door_open_90_depth_mm": 632
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN28288AU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WAN28288AU.json"
+      }
+    },
+    {
       "id": "ao-47452",
       "cat": "washing_machine",
       "brand": "Bosch",
@@ -119170,6 +120293,218 @@
       }
     },
     {
+      "id": "discovery-washing-machine-bosch-wgg24402au",
+      "cat": "washing_machine",
+      "brand": "Bosch",
+      "model": "WGG24402AU",
+      "displayName": "Bosch WGG24402AU",
+      "title": "Bosch WGG24402AU",
+      "slug": "discovery-washing-machine-bosch-wgg24402au",
+      "w": 598,
+      "h": 848,
+      "d": 590,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wgg24402au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wgg24402au",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 848,
+        "width_mm": 598,
+        "depth_mm": 590,
+        "door_open_90_depth_mm": 636
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24402AU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WGG24402AU.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-bosch-wgg24403au",
+      "cat": "washing_machine",
+      "brand": "Bosch",
+      "model": "WGG24403AU",
+      "displayName": "Bosch WGG24403AU",
+      "title": "Bosch WGG24403AU",
+      "slug": "discovery-washing-machine-bosch-wgg24403au",
+      "w": 598,
+      "h": 848,
+      "d": 590,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-series-8-front-load-washer-wgg24403au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-9kg-series-8-front-load-washer-wgg24403au",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 848,
+        "width_mm": 598,
+        "depth_mm": 590,
+        "door_open_90_depth_mm": 636
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24403AU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WGG24403AU.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-bosch-wgg24409au",
+      "cat": "washing_machine",
+      "brand": "Bosch",
+      "model": "WGG24409AU",
+      "displayName": "Bosch WGG24409AU",
+      "title": "Bosch WGG24409AU",
+      "slug": "discovery-washing-machine-bosch-wgg24409au",
+      "w": 598,
+      "h": 848,
+      "d": 590,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/9kg-front-load-washer-wgg24409au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/9kg-front-load-washer-wgg24409au",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 848,
+        "width_mm": 598,
+        "depth_mm": 590,
+        "door_open_90_depth_mm": 165
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24409AU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WGG24409AU.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-bosch-wgg2441rau",
+      "cat": "washing_machine",
+      "brand": "Bosch",
+      "model": "WGG2441RAU",
+      "displayName": "Bosch WGG2441RAU",
+      "title": "Bosch WGG2441RAU",
+      "slug": "discovery-washing-machine-bosch-wgg2441rau",
+      "w": 598,
+      "h": 845,
+      "d": 590,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wgg2441rau",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wgg2441rau",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 598,
+        "depth_mm": 590,
+        "door_open_90_depth_mm": 636
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2441RAU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WGG2441RAU.json"
+      }
+    },
+    {
       "id": "ao-159927",
       "cat": "washing_machine",
       "brand": "Bosch",
@@ -119221,6 +120556,225 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/WGG2449RAU.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-bosch-wgg244a0au",
+      "cat": "washing_machine",
+      "brand": "Bosch",
+      "model": "WGG244A0AU",
+      "displayName": "Bosch WGG244A0AU",
+      "title": "Bosch WGG244A0AU",
+      "slug": "discovery-washing-machine-bosch-wgg244a0au",
+      "w": 598,
+      "h": 848,
+      "d": 590,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/9kg-series-8-front-loader-idos-wgg244a0au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/9kg-series-8-front-loader-idos-wgg244a0au",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 848,
+        "width_mm": 598,
+        "depth_mm": 590,
+        "door_open_90_depth_mm": 165
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A0AU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WGG244A0AU.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-bosch-wgg244a1au",
+      "cat": "washing_machine",
+      "brand": "Bosch",
+      "model": "WGG244A1AU",
+      "displayName": "Bosch WGG244A1AU",
+      "title": "Bosch WGG244A1AU",
+      "slug": "discovery-washing-machine-bosch-wgg244a1au",
+      "w": 598,
+      "h": 848,
+      "d": 590,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wgg244a1au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/9kg-series-8-front-loader-washing-machine-white-wgg244a1au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/9kg-series-8-front-loader-washing-machine-white-wgg244a1au",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 848,
+        "width_mm": 598,
+        "depth_mm": 590,
+        "door_open_90_depth_mm": 636
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244A1AU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WGG244A1AU.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-bosch-wgg244arau",
+      "cat": "washing_machine",
+      "brand": "Bosch",
+      "model": "WGG244ARAU",
+      "displayName": "Bosch WGG244ARAU",
+      "title": "Bosch WGG244ARAU",
+      "slug": "discovery-washing-machine-bosch-wgg244arau",
+      "w": 598,
+      "h": 848,
+      "d": 590,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/9kg-series-6-washing-machine-front-loader-wgg244arau",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/9kg-series-6-washing-machine-front-loader-wgg244arau",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 848,
+        "width_mm": 598,
+        "depth_mm": 590,
+        "door_open_90_depth_mm": 165
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG244ARAU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WGG244ARAU.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-bosch-wgg254z1au",
+      "cat": "washing_machine",
+      "brand": "Bosch",
+      "model": "WGG254Z1AU",
+      "displayName": "Bosch WGG254Z1AU",
+      "title": "Bosch WGG254Z1AU",
+      "slug": "discovery-washing-machine-bosch-wgg254z1au",
+      "w": 598,
+      "h": 845,
+      "d": 590,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-10kg-front-load-washer-wgg254z1au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-10kg-front-load-washer-wgg254z1au",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 598,
+        "depth_mm": 590,
+        "door_open_90_depth_mm": 636
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG254Z1AU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WGG254Z1AU.json"
       }
     },
     {
@@ -121003,6 +122557,232 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/WQE6870BA.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-bosch-wqg235d8au",
+      "cat": "dryer",
+      "brand": "Bosch",
+      "model": "WQG235D8AU",
+      "displayName": "Bosch WQG235D8AU",
+      "title": "Bosch WQG235D8AU",
+      "slug": "discovery-dryer-bosch-wqg235d8au",
+      "w": 598,
+      "h": 842,
+      "d": 613,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-8kg-heat-pump-dryer-wqg235d8au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-8kg-heat-pump-dryer-wqg235d8au",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 842,
+        "width_mm": 598,
+        "depth_mm": 613,
+        "door_open_90_depth_mm": 170
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG235D8AU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WQG235D8AU.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-bosch-wqg235drau",
+      "cat": "dryer",
+      "brand": "Bosch",
+      "model": "WQG235DRAU",
+      "displayName": "Bosch WQG235DRAU",
+      "title": "Bosch WQG235DRAU",
+      "slug": "discovery-dryer-bosch-wqg235drau",
+      "w": 598,
+      "h": 842,
+      "d": 613,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-8kg-heat-pump-dryer-wqg235drau",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/bosch-wqg235drau-series-6-8kg-heat-pump-dryer-graphite",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "JB Hi-Fi",
+        "retailer_key": "jb-hi-fi",
+        "product_url": "https://www.jbhifi.com.au/products/bosch-wqg235drau-series-6-8kg-heat-pump-dryer-graphite",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 842,
+        "width_mm": 598,
+        "depth_mm": 613,
+        "door_open_90_depth_mm": 648
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG235DRAU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WQG235DRAU.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-bosch-wqg24200au",
+      "cat": "dryer",
+      "brand": "Bosch",
+      "model": "WQG24200AU",
+      "displayName": "Bosch WQG24200AU",
+      "title": "Bosch WQG24200AU",
+      "slug": "discovery-dryer-bosch-wqg24200au",
+      "w": 598,
+      "h": 842,
+      "d": 613,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-heat-pump-dryer-wqg24200au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/bosch-9kg-heat-pump-dryer-wqg24200au",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 842,
+        "width_mm": 598,
+        "depth_mm": 613,
+        "door_open_90_depth_mm": 175
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG24200AU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WQG24200AU.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-bosch-wqg24201au",
+      "cat": "dryer",
+      "brand": "Bosch",
+      "model": "WQG24201AU",
+      "displayName": "Bosch WQG24201AU",
+      "title": "Bosch WQG24201AU",
+      "slug": "discovery-dryer-bosch-wqg24201au",
+      "w": 598,
+      "h": 842,
+      "d": 613,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-heat-pump-dryer-wqg24201au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/bosch-wqg24201au-series-8-9kg-heat-pump-dryer",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "JB Hi-Fi",
+        "retailer_key": "jb-hi-fi",
+        "product_url": "https://www.jbhifi.com.au/products/bosch-wqg24201au-series-8-9kg-heat-pump-dryer",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 842,
+        "width_mm": 598,
+        "depth_mm": 613,
+        "door_open_90_depth_mm": 175
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG24201AU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WQG24201AU.json"
       }
     },
     {
@@ -124837,6 +126617,66 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/WTG9530S.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-bosch-wth83002au",
+      "cat": "dryer",
+      "brand": "Bosch",
+      "model": "WTH83002AU",
+      "displayName": "Bosch WTH83002AU",
+      "title": "Bosch WTH83002AU",
+      "slug": "discovery-dryer-bosch-wth83002au",
+      "w": 598,
+      "h": 842,
+      "d": 613,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/bosch-8kg-heat-pump-dryer-wth83002au",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/bosch-wth83002au-series-4-8kg-heat-pump-dryer",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "JB Hi-Fi",
+        "retailer_key": "jb-hi-fi",
+        "product_url": "https://www.jbhifi.com.au/products/bosch-wth83002au-series-4-8kg-heat-pump-dryer",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 842,
+        "width_mm": 598,
+        "depth_mm": 613,
+        "door_open_90_depth_mm": 170
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH83002AU.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WTH83002AU.json"
       }
     },
     {

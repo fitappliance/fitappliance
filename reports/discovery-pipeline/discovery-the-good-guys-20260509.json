@@ -1,0 +1,1952 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-09T12:04:04.988Z",
+  "retailer": "the-good-guys",
+  "source_urls": [
+    "https://www.thegoodguys.com.au/sitemap.xml",
+    "https://sitemap.thegoodguys.com.au/product_sitemap_1.xml",
+    "https://sitemap.thegoodguys.com.au/product_sitemap_2.xml",
+    "https://sitemap.thegoodguys.com.au/product_sitemap_3.xml",
+    "https://sitemap.thegoodguys.com.au/product_sitemap_4.xml",
+    "https://sitemap.thegoodguys.com.au/brand_sitemap_1.xml",
+    "https://sitemap.thegoodguys.com.au/category_sitemap_1.xml",
+    "https://sitemap.thegoodguys.com.au/content_sitemap_1.xml",
+    "https://sitemap.thegoodguys.com.au/article_sitemap_1.xml",
+    "https://sitemap.thegoodguys.com.au/storelocation_sitemap_1.xml"
+  ],
+  "summary": {
+    "new_discovery_count": 260,
+    "categories": {
+      "dishwasher": 66,
+      "dryer": 56,
+      "fridge": 73,
+      "washing_machine": 65
+    }
+  },
+  "new_discoveries": {
+    "dishwasher": {
+      "Asko": [
+        {
+          "model": "DBI343IDSAU",
+          "url": "https://www.thegoodguys.com.au/asko-classic-built-in-dishwasher-82cm-stainless-steel-dbi343idsau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DBI364IDBSAU",
+          "url": "https://www.thegoodguys.com.au/asko-classic-built-in-dishwasher-82cm-black-steel-dbi364idbsau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DBI364IDSAU",
+          "url": "https://www.thegoodguys.com.au/asko-classic-built-in-dishwasher-82cm-stainless-steel-dbi364idsau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DBI565IKBSAU",
+          "url": "https://www.thegoodguys.com.au/asko-logic-built-in-dishwasher-82cm-black-steel-dbi565ikbsau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DBI565IKSAU",
+          "url": "https://www.thegoodguys.com.au/asko-logic-built-in-dishwasher-82cm-stainless-steel-dbi565iksau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DBI565IKWAU",
+          "url": "https://www.thegoodguys.com.au/asko-logic-built-in-dishwasher-82cm-white-dbi565ikwau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DBI766IQSAU",
+          "url": "https://www.thegoodguys.com.au/asko-style-built-in-dishwasher-82cm-stainless-steel-dbi766iqsau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DBI766IQXXLBSAU",
+          "url": "https://www.thegoodguys.com.au/asko-style-built-in-dishwasher-86cm-black-steel-dbi766iqxxlbsau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DFI564DAU",
+          "url": "https://www.thegoodguys.com.au/asko-logic-fully-integrated-82cm-dishwasher-dfi564dau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DFI766UAU",
+          "url": "https://www.thegoodguys.com.au/asko-style-fully-integrated-82cm-dishwasher-dfi766uau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DFI766UXXLAU",
+          "url": "https://www.thegoodguys.com.au/asko-style-fully-integrated-83cm-dishwasher-dfi766uxxlau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DSD767UXXLAU",
+          "url": "https://www.thegoodguys.com.au/asko-style-fully-integrated-86cm-dishwasher-dsd767uxxlau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDFS143BBSAU",
+          "url": "https://www.thegoodguys.com.au/asko-freestanding-dishwasher-black-steel-hdfs143bbsau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDFS143BSAU",
+          "url": "https://www.thegoodguys.com.au/asko-freestanding-dishwasher-stainless-steel-hdfs143bsau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Beko": [
+        {
+          "model": "BDBU1430X",
+          "url": "https://www.thegoodguys.com.au/beko-60cm-14-place-setting-built-under-dishwasher-platinum-steel-bdbu1430x",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Bosch": [
+        {
+          "model": "SBI8ECS01A",
+          "url": "https://www.thegoodguys.com.au/bosch-series-8-60cm-semi-integrated-dishwasher-tall-tub-brushed-steel-sbi8ecs01a",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SBT8ZC801A",
+          "url": "https://www.thegoodguys.com.au/bosch-fully-integrated-dishwasher-sbt8zc801a",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SBV8ECX01A",
+          "url": "https://www.thegoodguys.com.au/bosch-series-8-60cm-fully-integrated-dishwasher-tall-tub-sbv8ecx01a",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMP6HCB01A",
+          "url": "https://www.thegoodguys.com.au/bosch-series-6-built-under-dishwasher-smp6hcb01a",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMS24AI01A",
+          "url": "https://www.thegoodguys.com.au/bosch-series-2-freestanding-dishwasher-silver-inox-sms24ai01a",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMS2ITI02A",
+          "url": "https://www.thegoodguys.com.au/bosch-series-2-freestanding-dishwasher-stainless-steel-sms2iti02a",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMS2ITW01A",
+          "url": "https://www.thegoodguys.com.au/bosch-series-2-60cm-freestanding-dishwasher-white-sms2itw01a",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMS4HVI01A",
+          "url": "https://www.thegoodguys.com.au/bosch-series-4-freestanding-dishwasher-stainless-steel-sms4hvi01a",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMT8ZC801A",
+          "url": "https://www.thegoodguys.com.au/bosch-series-8-accentline-fully-integrated-dishwasher-smt8zc801a",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SMV4HTX01A",
+          "url": "https://www.thegoodguys.com.au/bosch-series-4-60cm-fully-integrated-dishwasher-smv4htx01a",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Electrolux": [
+        {
+          "model": "ESF97400ROX",
+          "url": "https://www.thegoodguys.com.au/electrolux-60cm-built-under-dishwasher-esf97400rox",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Fisher & Paykel": [
+        {
+          "model": "DW60FC1B2",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-freestanding-dishwasher-black-stainless-steel-dw60fc1b2",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60FC1X3",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-freestanding-dishwasher-stainless-steel-dw60fc1x3",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60FC2B2",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-freestanding-dishwasher-black-stainless-steel-dw60fc2b2",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60FC2X3",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-freestanding-dishwasher-stainless-steel-dw60fc2x3",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60FC4B2",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-freestanding-dishwasher-black-stainless-steel-dw60fc4b2",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60U4I2",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-60cm-fully-integrated-integrated-dishwasher-dw60u4i2",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60UN2B2",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-black-stainless-steel-dw60un2b2",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60UN2X2",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-stainless-steel-dw60un2x2",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60UN4B2",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-black-stainless-steel-dw60un4b2",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60UN4X2",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-stainless-steel-dw60un4x2",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60UNT4B2",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-built-under-dishwasher-tall-black-stainless-steel-dw60unt4b2",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Haier": [
+        {
+          "model": "HDW13F0S1",
+          "url": "https://www.thegoodguys.com.au/haier-300-series-freestanding-dishwasher-satina-hdw13f0s1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDW13F0W1",
+          "url": "https://www.thegoodguys.com.au/haier-300-series-freestanding-dishwasher-white-hdw13f0w1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDW15F4S1",
+          "url": "https://www.thegoodguys.com.au/haier-600-series-freestanding-dishwasher-steam-dual-power-spray-arm-satina-hdw15f4s1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Hisense": [
+        {
+          "model": "HSAA16FS",
+          "url": "https://www.thegoodguys.com.au/hisense-freestanding-dishwasher-stainless-steel-hsaa16fs",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HSAP16FB",
+          "url": "https://www.thegoodguys.com.au/hisense-freestanding-dishwasher-black-steel-hsap16fb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HSCE14FS",
+          "url": "https://www.thegoodguys.com.au/hisense-60cm-freestanding-dishwasher-stainless-steel-hsce14fs",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "LG": [
+        {
+          "model": "XD2A25MB",
+          "url": "https://www.thegoodguys.com.au/lg-matte-black-true-steam-dishwasher-xd2a25mb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Miele": [
+        {
+          "model": "K2O",
+          "url": "https://www.thegoodguys.com.au/miele-autodos-obsidian-black-fascia-fully-integrated-xxl-dishwasher-g-7799-scvi-xxl-k2o",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Omega": [
+        {
+          "model": "ODWF4510X",
+          "url": "https://www.thegoodguys.com.au/omega-freestanding-dishwasher-stainless-steel-odwf4510x",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "ODWF6014BX",
+          "url": "https://www.thegoodguys.com.au/omega-freestanding-dishwasher-black-stainless-steel-odwf6014bx",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "ODWIF6015",
+          "url": "https://www.thegoodguys.com.au/omega-fully-integrated-dishwasher-odwif6015",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "ODWIS6015X",
+          "url": "https://www.thegoodguys.com.au/omega-semi-integrated-dishwasher-odwis6015x",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Samsung": [
+        {
+          "model": "DW60BG750FSL",
+          "url": "https://www.thegoodguys.com.au/samsung-freestanding-smart-dishwasher-stainless-steel-with-auto-open-door-dw60bg750fsl",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DW60M6055FS",
+          "url": "https://www.thegoodguys.com.au/samsung-60cm-stainless-steel-freestanding-dishwasher-dw60m6055fs",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Smeg": [
+        {
+          "model": "DWAFI6224",
+          "url": "https://www.thegoodguys.com.au/smeg-fully-integrated-dishwasher-dwafi6224-4",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DWAU6224N4",
+          "url": "https://www.thegoodguys.com.au/smeg-matte-black-underbench-dishwasher-dwau6224n4",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DWAU6224X4",
+          "url": "https://www.thegoodguys.com.au/smeg-stainless-steel-underbench-dishwasher-dwau6224x4",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DWAU6234X4",
+          "url": "https://www.thegoodguys.com.au/smeg-60cm-sapphire-premium-underbench-dishwasher-stainless-steel-dwau6234x4",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DWIFABB4",
+          "url": "https://www.thegoodguys.com.au/smeg-built-in-fab-dishwasher-retro-design-white-dwifabb4",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DWIFABNE4",
+          "url": "https://www.thegoodguys.com.au/smeg-built-in-fab-dishwasher-retro-design-black-dwifabne4",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DWIFABP4",
+          "url": "https://www.thegoodguys.com.au/smeg-built-in-fab-dishwasher-retro-design-cream-dwifabp4",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Solt": [
+        {
+          "model": "GGSDW6013W",
+          "url": "https://www.thegoodguys.com.au/solt-freestanding-dishwasher-white-ggsdw6013w",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GGSDW6013X",
+          "url": "https://www.thegoodguys.com.au/solt-freestanding-dishwasher-stainless-steel-ggsdw6013x",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Westinghouse": [
+        {
+          "model": "WSF6602WC",
+          "url": "https://www.thegoodguys.com.au/westinghouse-60cm-white-14-place-freestanding-dishwasher-wsf6602wc",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WSF6602XC",
+          "url": "https://www.thegoodguys.com.au/westinghouse-60cm-silver-14-place-freestanding-dishwasher-wsf6602xc",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WSF6606KXC",
+          "url": "https://www.thegoodguys.com.au/westinghouse-60cm-dark-stainless-steel-15-place-freestanding-dishwasher-wsf6606kxc",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WSF6606XC",
+          "url": "https://www.thegoodguys.com.au/westinghouse-60cm-stainless-steel-15-place-freestanding-dishwasher-wsf6606xc",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WSF6608KXC",
+          "url": "https://www.thegoodguys.com.au/westinghouse-60cm-dark-stainless-steel-15-place-freestanding-dishwasher-wsf6608kxc",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WSF6608XC",
+          "url": "https://www.thegoodguys.com.au/westinghouse-60cm-stainless-steel-15-place-freestanding-dishwasher-wsf6608xc",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "dryer": {
+      "Asko": [
+        {
+          "model": "T108HWAU",
+          "url": "https://www.thegoodguys.com.au/asko-8kg-classic-heat-pump-dryer-t108hwau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "T208C",
+          "url": "https://www.thegoodguys.com.au/asko-8kg-classic-condenser-dryer-t208c",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "T308HCWAU",
+          "url": "https://www.thegoodguys.com.au/asko-8kg-logic-heat-pump-dryer-t308hcwau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "T410HD",
+          "url": "https://www.thegoodguys.com.au/asko-10kg-logic-heat-pump-dryer-t410hd",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "T608HXWAU",
+          "url": "https://www.thegoodguys.com.au/asko-8kg-style-heat-pump-dryer-t608hxwau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Bosch": [
+        {
+          "model": "WQG235D8AU",
+          "url": "https://www.thegoodguys.com.au/bosch-8kg-heat-pump-dryer-wqg235d8au",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WQG235DRAU",
+          "url": "https://www.thegoodguys.com.au/bosch-8kg-heat-pump-dryer-wqg235drau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WQG24200AU",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-heat-pump-dryer-wqg24200au",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WQG24201AU",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-heat-pump-dryer-wqg24201au",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WTH83002AU",
+          "url": "https://www.thegoodguys.com.au/bosch-8kg-heat-pump-dryer-wth83002au",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Electrolux": [
+        {
+          "model": "EDH803R7WC",
+          "url": "https://www.thegoodguys.com.au/electrolux-8kg-heat-pump-dryer-edh803r7wc",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "EDH903R7SC",
+          "url": "https://www.thegoodguys.com.au/electrolux-9kg-heat-pump-dryer-edh903r7sc",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "EDH903R7WC",
+          "url": "https://www.thegoodguys.com.au/electrolux-9kg-heat-pump-dryer-edh903r7wc",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "EDV705N3SC",
+          "url": "https://www.thegoodguys.com.au/electrolux-7kg-vented-dryer-edv705n3sc",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Fisher & Paykel": [
+        {
+          "model": "DE6060M2",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-6kg-sensor-dryer-de6060m2",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DE7060G2",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-7kg-sensor-dryer-de7060g2",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DH1060DG5",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-series-7-contemporary-heat-pump-dryer-dh1060dg5",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DH1060RG5",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-series-7-contemporary-heat-pump-dryer-dh1060rg5",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DH8060J5",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-series-5-contemporary-heat-pump-dryer-dh8060j5",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DH8060P3",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-heat-pump-dryer-dh8060p3",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DH8060P5",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-series-5-contemporary-heat-pump-dryer-dh8060p5",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DH9060H1",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060h1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DH9060HG1",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060hg1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DH9060HLG1",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060hlg1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DH9060PG2",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060pg2",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Haier": [
+        {
+          "model": "HDHP10DB1",
+          "url": "https://www.thegoodguys.com.au/haier-10kg-heat-pump-dryer-hdhp10db1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDHP90NW1",
+          "url": "https://www.thegoodguys.com.au/haier-9kg-heat-pump-dryer-hdhp90nw1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDHPS70LW1",
+          "url": "https://www.thegoodguys.com.au/haier-7kg-heat-pump-dryer-hdhps70lw1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDHPS80KW1",
+          "url": "https://www.thegoodguys.com.au/haier-8kg-300-series-heat-pump-dryer-hdhps80kw1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDHPS80NB1",
+          "url": "https://www.thegoodguys.com.au/haier-8kg-500-series-heat-pump-dryer-hdhps80nb1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDV60AWW1",
+          "url": "https://www.thegoodguys.com.au/haier-6kg-vented-dryer-hdv60aww1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDV70AWW1",
+          "url": "https://www.thegoodguys.com.au/haier-7kg-vented-dryer-hdv70aww1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Hisense": [
+        {
+          "model": "HDF8I10HB",
+          "url": "https://www.thegoodguys.com.au/hisense-10kg-series-8i-heat-pump-dryer-hdf8i10hb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDFS10HPB",
+          "url": "https://www.thegoodguys.com.au/hisense-10kg-heat-pump-dryer-hdfs10hpb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HDFS80HS",
+          "url": "https://www.thegoodguys.com.au/hisense-8kg-heat-pump-dryer-hdfs80hs",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "LG": [
+        {
+          "model": "DVH1-08WP",
+          "url": "https://www.thegoodguys.com.au/lg-8kg-series-1-heat-pump-dryer-dvh1-08wp",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DVH5-08W",
+          "url": "https://www.thegoodguys.com.au/lg-8kg-heat-pump-dryer-dvh5-08w",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DXH9-09MB",
+          "url": "https://www.thegoodguys.com.au/lg-9kg-heat-pump-dryer-dxh9-09mb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DXH9-10MB",
+          "url": "https://www.thegoodguys.com.au/lg-10kg-heat-pump-dryer-dxh9-10mb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DXH9-10W",
+          "url": "https://www.thegoodguys.com.au/lg-10kg-series-9-ai-heat-pump-dryer-dxh9-10w",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Miele": [
+        {
+          "model": "TWC340",
+          "url": "https://www.thegoodguys.com.au/miele-8kg-heat-pump-dryer-twc340-wp",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "TWD640",
+          "url": "https://www.thegoodguys.com.au/miele-9kg-heat-pump-dryer-twd640-wp",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Samsung": [
+        {
+          "model": "DV90BB9440GB",
+          "url": "https://www.thegoodguys.com.au/samsung-bespoke-9kg-heat-pump-dryer-dv90bb9440gb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DV90BB9440GH",
+          "url": "https://www.thegoodguys.com.au/samsung-bespoke-9kg-heat-pump-dryer-dv90bb9440gh",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DV90T6440LB",
+          "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-heat-pump-dryer-dv90t6440lb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "DV91T6440LE",
+          "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-heat-pump-dryer-dv91t6440le",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Solt": [
+        {
+          "model": "GGSHPD800S2W",
+          "url": "https://www.thegoodguys.com.au/solt-8kg-heat-pump-dryer-ggshpd800s2w",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GGSHPD800W",
+          "url": "https://www.thegoodguys.com.au/solt-8kg-heat-pump-dryer-ggshpd800w",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GGSHPD88B",
+          "url": "https://www.thegoodguys.com.au/solt-8kg-heat-pump-dryer-ggshpd88b",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GGSHPD88W",
+          "url": "https://www.thegoodguys.com.au/solt-8kg-heat-pump-dryer-ggshpd88w",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Westinghouse": [
+        {
+          "model": "WDH804N7WA",
+          "url": "https://www.thegoodguys.com.au/westinghouse-8kg-heat-pump-dryer-wdh804n7wa",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WDH804N8SA",
+          "url": "https://www.thegoodguys.com.au/westinghouse-8kg-heat-pump-dryer-wdh804n8sa",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WDH904N7SA",
+          "url": "https://www.thegoodguys.com.au/westinghouse-9kg-heat-pump-dryer-wdh904n7sa",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WDH904N7WA",
+          "url": "https://www.thegoodguys.com.au/westinghouse-9kg-heat-pump-dryer-wdh904n7wa",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WDV556N3WB",
+          "url": "https://www.thegoodguys.com.au/westinghouse-55kg-vented-dryer-wdv556n3wb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WDV656N3WB",
+          "url": "https://www.thegoodguys.com.au/westinghouse-65kg-vented-dryer-wdv656n3wb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "fridge": {
+      "Bosch": [
+        {
+          "model": "KFD96AXEAA",
+          "url": "https://www.thegoodguys.com.au/bosch-574l-quad-door-refrigerator-kfd96axeaa",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "KFI96AXEAA",
+          "url": "https://www.thegoodguys.com.au/bosch-574l-quad-door-refrigerator-kfi96axeaa",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "KFN96AXEAA",
+          "url": "https://www.thegoodguys.com.au/bosch-605l-quad-door-refrigerator-kfn96axeaa",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "CHiQ": [
+        {
+          "model": "CBM280NB3",
+          "url": "https://www.thegoodguys.com.au/chiq-283l-bottom-mount-refrigerator-cbm280nb3",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "CBM393NB3",
+          "url": "https://www.thegoodguys.com.au/chiq-396l-bottom-mount-refrigerator-cbm393nb3",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "CCD503NB",
+          "url": "https://www.thegoodguys.com.au/chiq-503l-french-door-refrigerator-ccd503nb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "CCF141BE",
+          "url": "https://www.thegoodguys.com.au/chiq-142l-hybrid-chest-freezer-ccf141be",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "CCF198BE",
+          "url": "https://www.thegoodguys.com.au/chiq-199l-hybrid-chest-freezer-ccf198be",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "CCF499B5E",
+          "url": "https://www.thegoodguys.com.au/chiq-500l-hybrid-chest-freezer-ccf499b5e",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "CCF699BE",
+          "url": "https://www.thegoodguys.com.au/chiq-700l-hybrid-chest-freezer-ccf699be",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "CSH311NWL3",
+          "url": "https://www.thegoodguys.com.au/chiq-311l-vertical-hybrid-freezer-csh311nwl3",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "CSH379NBSL5",
+          "url": "https://www.thegoodguys.com.au/chiq-380l-vertical-hybrid-freezer-csh379nbsl5",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "CTM201NB3",
+          "url": "https://www.thegoodguys.com.au/chiq-202l-top-mount-refrigerator-ctm201nb3",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "CTM202NW3",
+          "url": "https://www.thegoodguys.com.au/chiq-202l-top-mount-refrigerator-ctm202nw3",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "CTM514NB4",
+          "url": "https://www.thegoodguys.com.au/chiq-515l-top-mount-refrigerator-ctm514nb4",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Electrolux": [
+        {
+          "model": "EHE6191BB",
+          "url": "https://www.thegoodguys.com.au/electrolux-609l-french-door-refrigerator-ehe6191bb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Fisher & Paykel": [
+        {
+          "model": "RF500QNB1",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-498l-quad-door-refrigerator-rf500qnb1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF500QNUB1",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-498l-quad-door-refrigerator-rf500qnub1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF505BRNB1",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-515l-bottom-mount-refrigerator-rf505brnb1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF605QNUVB1",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-538l-quad-door-refrigerator-rf605qnuvb1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF605QNUVX1",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-538l-quad-door-refrigerator-rf605qnuvx1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF610ANUB5",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-569l-french-door-refrigerator-rf610anub5",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "RF730QNUVB1",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-690l-quad-door-refrigerator-rf730qnuvb1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Haier": [
+        {
+          "model": "HRF420BHC",
+          "url": "https://www.thegoodguys.com.au/haier-431l-bottom-mount-refrigerator-hrf420bhc",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF530YC",
+          "url": "https://www.thegoodguys.com.au/haier-463l-quad-door-refrigerator-hrf530yc",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF530YS",
+          "url": "https://www.thegoodguys.com.au/haier-463l-quad-door-refrigerator-hrf530ys",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF575XHS",
+          "url": "https://www.thegoodguys.com.au/haier-574l-side-by-side-refrigerator-hrf575xhs",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF580YHN",
+          "url": "https://www.thegoodguys.com.au/haier-508l-quad-door-refrigerator-hrf580yhn",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF580YHS",
+          "url": "https://www.thegoodguys.com.au/haier-508l-quad-door-refrigerator-hrf580yhs",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRF680YZS",
+          "url": "https://www.thegoodguys.com.au/haier-601l-quad-door-refrigerator-hrf680yzs",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HVF275DC",
+          "url": "https://www.thegoodguys.com.au/haier-272l-vertical-hybrid-freezer-hvf275dc",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Hisense": [
+        {
+          "model": "HRBF126B",
+          "url": "https://www.thegoodguys.com.au/hisense-124l-bar-fridge-hrbf126b",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRBF126S",
+          "url": "https://www.thegoodguys.com.au/hisense-124l-bar-fridge-hrbf126s",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRBF179",
+          "url": "https://www.thegoodguys.com.au/hisense-179l-bar-fridge-hrbf179",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRBM418E",
+          "url": "https://www.thegoodguys.com.au/hisense-417l-bottom-mount-refrigerator-hrbm418e",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRBM500TBW",
+          "url": "https://www.thegoodguys.com.au/hisense-500l-bottom-mount-refrigerator-hrbm500tbw",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRCD483TS",
+          "url": "https://www.thegoodguys.com.au/hisense-483l-french-door-refrigerator-hrcd483ts",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRCD640TSW",
+          "url": "https://www.thegoodguys.com.au/hisense-640l-french-door-refrigerator-hrcd640tsw",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRTF206S",
+          "url": "https://www.thegoodguys.com.au/hisense-205l-top-mount-refrigerator-hrtf206s",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HRTF325S",
+          "url": "https://www.thegoodguys.com.au/hisense-326l-top-mount-refrigerator-hrtf325s",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "LG": [
+        {
+          "model": "GB-455BTL",
+          "url": "https://www.thegoodguys.com.au/lg-420l-bottom-mount-refrigerator-gb-455btl",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GB-455MBL",
+          "url": "https://www.thegoodguys.com.au/lg-420l-bottom-mount-refrigerator-gb-455mbl",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GB-455WL",
+          "url": "https://www.thegoodguys.com.au/lg-420l-bottom-mount-refrigerator-gb-455wl",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GB-B300MWH",
+          "url": "https://www.thegoodguys.com.au/lg-335l-bottom-mount-refrigerator-gb-b300mwh",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GF-B505PL",
+          "url": "https://www.thegoodguys.com.au/lg-530l-french-door-refrigerator-gf-b505pl",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GF-L500MBL",
+          "url": "https://www.thegoodguys.com.au/lg-506l-french-door-refrigerator-gf-l500mbl",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GF-L500PL",
+          "url": "https://www.thegoodguys.com.au/lg-506l-french-door-refrigerator-gf-l500pl",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GF-L700MBL",
+          "url": "https://www.thegoodguys.com.au/lg-637l-french-door-refrigerator-gf-l700mbl",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GF-LN500PL",
+          "url": "https://www.thegoodguys.com.au/lg-506l-french-door-refrigerator-gf-ln500pl",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GF-VN500PL",
+          "url": "https://www.thegoodguys.com.au/lg-508l-instaview-refrigerator-gf-vn500pl",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GS-D600PLC",
+          "url": "https://www.thegoodguys.com.au/lg-635l-side-by-side-refrigerator-gs-d600plc",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GT-2WI",
+          "url": "https://www.thegoodguys.com.au/lg-266l-top-mount-refrigerator-gt-2wi",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GT-3S",
+          "url": "https://www.thegoodguys.com.au/lg-315l-top-mount-refrigerator-gt-3s",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GT-5MB",
+          "url": "https://www.thegoodguys.com.au/lg-375l-top-mount-refrigerator-gt-5mb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "GT-5S",
+          "url": "https://www.thegoodguys.com.au/lg-375l-top-mount-refrigerator-gt-5s",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Samsung": [
+        {
+          "model": "SRF5300BD",
+          "url": "https://www.thegoodguys.com.au/samsung-495l-french-door-refrigerator-srf5300bd",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRF5300SD",
+          "url": "https://www.thegoodguys.com.au/samsung-495l-french-door-refrigerator-srf5300sd",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRF7100B",
+          "url": "https://www.thegoodguys.com.au/samsung-649l-french-door-refrigerator-srf7100b",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRF7400BB",
+          "url": "https://www.thegoodguys.com.au/samsung-648l-french-door-refrigerator-srf7400bb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRF7500SB",
+          "url": "https://www.thegoodguys.com.au/samsung-648l-french-door-refrigerator-srf7500sb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRF9900BFH",
+          "url": "https://www.thegoodguys.com.au/samsung-bespoke-809l-ai-family-hub-refrigerator-srf9900bfh",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRFX7600W",
+          "url": "https://www.thegoodguys.com.au/samsung-648l-french-door-refrigerator-srfx7600w",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRL4200S",
+          "url": "https://www.thegoodguys.com.au/samsung-427l-bottom-mount-refrigerator-srl4200s",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SRS6100S",
+          "url": "https://www.thegoodguys.com.au/samsung-655l-side-by-side-refrigerator-srs6100s",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Smeg": [
+        {
+          "model": "FAB50LCR5AU",
+          "url": "https://www.thegoodguys.com.au/smeg-pf-fab50-top-mount-refrigerator-cream-fab50lcr5au",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "SABI256BM",
+          "url": "https://www.thegoodguys.com.au/smeg-242l-integrated-bottom-mount-refrigerator-sabi256bm",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Solt": [
+        {
+          "model": "GGSBM325DS",
+          "url": "https://www.thegoodguys.com.au/solt-325l-bottom-mount-refrigerator-ggsbm325ds",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "TCL": [
+        {
+          "model": "P220TMB",
+          "url": "https://www.thegoodguys.com.au/tcl-197l-top-mount-refrigerator-p220tmb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Westinghouse": [
+        {
+          "model": "WBE4302AC",
+          "url": "https://www.thegoodguys.com.au/westinghouse-425l-bottom-mount-refrigerator-wbe4302ac-r",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WBE5300SC",
+          "url": "https://www.thegoodguys.com.au/westinghouse-496l-bottom-mount-refrigerator-wbe5300sc-r",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WQE4900BA",
+          "url": "https://www.thegoodguys.com.au/westinghouse-496l-quad-door-refrigerator-wqe4900ba",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WTM2500BA",
+          "url": "https://www.thegoodguys.com.au/westinghouse-247l-top-mount-refrigerator-wtm2500ba-x",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WTM3100WL",
+          "url": "https://www.thegoodguys.com.au/westinghouse-312l-top-mount-refrigerator-wtm3100wl-x",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ]
+    },
+    "washing_machine": {
+      "Asko": [
+        {
+          "model": "W1084WAU",
+          "url": "https://www.thegoodguys.com.au/asko-8kg-classic-front-load-washer-w1084wau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "W3086CWAU",
+          "url": "https://www.thegoodguys.com.au/asko-8kg-logic-front-load-washer-w3086cwau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Bosch": [
+        {
+          "model": "WAN24126AU",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wan24126au",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WAN28227AU",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wan28227au",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WAN28288AU",
+          "url": "https://www.thegoodguys.com.au/bosch-8kg-front-load-washer-wan28288au",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WGG24402AU",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wgg24402au",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WGG24403AU",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-series-8-front-load-washer-wgg24403au",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WGG2441RAU",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wgg2441rau",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WGG244A1AU",
+          "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wgg244a1au",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WGG254Z1AU",
+          "url": "https://www.thegoodguys.com.au/bosch-10kg-front-load-washer-wgg254z1au",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "CHiQ": [
+        {
+          "model": "WFL85SW1",
+          "url": "https://www.thegoodguys.com.au/chiq-85kg-front-load-washer-wfl85sw1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Electrolux": [
+        {
+          "model": "EWF1043R7SCS",
+          "url": "https://www.thegoodguys.com.au/electrolux-10kg-front-load-washer-ewf1043r7scs",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "EWF1043R7WCS",
+          "url": "https://www.thegoodguys.com.au/electrolux-10kg-front-load-washer-ewf1043r7wcs",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "EWF1243R7SCS",
+          "url": "https://www.thegoodguys.com.au/electrolux-12kg-front-load-washer-ewf1243r7scs",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Fisher & Paykel": [
+        {
+          "model": "WH1060DG5",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-series-7-contemporary-front-load-washer-wh1060dg5",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1060P5",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-series-5-contemporary-front-load-washer-wh1060p5",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1060SG1",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-front-load-washer-wh1060sg1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1260DG5",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-12kg-series-7-contemporary-front-load-washer-wh1260dg5",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH1260RG5",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-12kg-series-7-contemporary-front-load-washer-wh1260rg5",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH8060J3",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-front-load-washer-wh8060j3",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH8060J5",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-series-5-contemporary-front-load-washer-wh8060j5",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WH9060P5",
+          "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-series-5-contemporary-front-load-washer-wh9060p5",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Haier": [
+        {
+          "model": "HLC1290CTB2",
+          "url": "https://www.thegoodguys.com.au/haier-laundry-centre-12kg-9kg-600-series-combo-washer-dryer-hlc1290ctb2",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWD9060MW1",
+          "url": "https://www.thegoodguys.com.au/haier-9kg-6kg-500-series-combo-washer-dryer-hwd9060mw1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWF10NW1",
+          "url": "https://www.thegoodguys.com.au/haier-10kg-front-load-washer-hwf10nw1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWF12DB1",
+          "url": "https://www.thegoodguys.com.au/haier-12kg-front-load-washer-hwf12db1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWF75AW3",
+          "url": "https://www.thegoodguys.com.au/haier-75kg-front-load-washer-hwf75aw3",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWF75KW1",
+          "url": "https://www.thegoodguys.com.au/haier-75kg-300-series-front-load-washer-hwf75kw1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWF85KB1",
+          "url": "https://www.thegoodguys.com.au/haier-85kg-300-series-front-load-washer-hwf85kb1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWF85KW1",
+          "url": "https://www.thegoodguys.com.au/haier-85kg-300-series-front-load-washer-hwf85kw1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWF95AN1",
+          "url": "https://www.thegoodguys.com.au/haier-95kg-front-load-washer-hwf95an1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWFS95NB1",
+          "url": "https://www.thegoodguys.com.au/haier-95kg-500-series-front-load-washer-hwfs95nb1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT08AN1",
+          "url": "https://www.thegoodguys.com.au/haier-8kg-top-load-washer-hwt08an1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT10AD1",
+          "url": "https://www.thegoodguys.com.au/haier-10kg-top-load-washer-hwt10ad1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT10ANB1",
+          "url": "https://www.thegoodguys.com.au/haier-10kg-top-load-washer-hwt10anb1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT12AD1",
+          "url": "https://www.thegoodguys.com.au/haier-12kg-top-load-washer-hwt12ad1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "HWT75AA1",
+          "url": "https://www.thegoodguys.com.au/haier-75kg-top-load-washer-hwt75aa1",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "LG": [
+        {
+          "model": "1014GX",
+          "url": "https://www.thegoodguys.com.au/lg-14kg-front-load-washer-wxls-1014gx",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "1014WX",
+          "url": "https://www.thegoodguys.com.au/lg-14kg-front-load-washer-wxls-1014wx",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "1016GX",
+          "url": "https://www.thegoodguys.com.au/lg-16kg-10kg-combo-washer-dryer-wxlc-1016gx",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "1210BX",
+          "url": "https://www.thegoodguys.com.au/lg-washtower-12kg-10kg-combo-washer-dryer-wwt-1210bx",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "1910BX",
+          "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910bx",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "1910FGX",
+          "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910fgx",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WTX5-12W",
+          "url": "https://www.thegoodguys.com.au/lg-12kg-ai-top-load-washer-wtx5-12w",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WV5-1208W",
+          "url": "https://www.thegoodguys.com.au/lg-8kg-front-load-washer-wv5-1208w",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WV5-1410W",
+          "url": "https://www.thegoodguys.com.au/lg-10kg-front-load-washer-wv5-1410w",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WV9-1412W",
+          "url": "https://www.thegoodguys.com.au/lg-12kg-front-load-washer-wv9-1412w",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WX10-1410MB",
+          "url": "https://www.thegoodguys.com.au/lg-10kg-front-load-washing-machine-wx10-1410mb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WX9-1409MB",
+          "url": "https://www.thegoodguys.com.au/lg-9kg-font-load-washing-machine-wx9-1409mb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WX9-1412W",
+          "url": "https://www.thegoodguys.com.au/lg-12kg-series-9-ai-front-load-washer-wx9-1412w",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WXC10-1412W",
+          "url": "https://www.thegoodguys.com.au/lg-12-8kg-10-series-ai-combo-washer-dryer-wxc10-1412w",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Miele": [
+        {
+          "model": "WWD380",
+          "url": "https://www.thegoodguys.com.au/miele-9kg-front-load-washer-wwd380-wcs",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Samsung": [
+        {
+          "model": "WW12BB944DGB",
+          "url": "https://www.thegoodguys.com.au/samsung-bespoke-12kg-front-load-washer-ww12bb944dgb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW90DG6U34LB",
+          "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-front-load-washer-ww90dg6u34lb",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW90DG6U34LE",
+          "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-front-load-washer-ww90dg6u34le",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WW90DG6U3ALE",
+          "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-front-load-washer-ww90dg6u3ale",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Solt": [
+        {
+          "model": "GGSTLW55B2",
+          "url": "https://www.thegoodguys.com.au/solt-55kg-top-load-washer-ggstlw55b2",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ],
+      "Westinghouse": [
+        {
+          "model": "WWF1044M7SAS",
+          "url": "https://www.thegoodguys.com.au/westinghouse-10kg-front-load-washer-wwf1044m7sas",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WWF1044M7WAS",
+          "url": "https://www.thegoodguys.com.au/westinghouse-10kg-front-load-washer-wwf1044m7was",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WWF7524N3WAS",
+          "url": "https://www.thegoodguys.com.au/westinghouse-75kg-front-load-washer-wwf7524n3was",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WWF8024M5WAS",
+          "url": "https://www.thegoodguys.com.au/westinghouse-8kg-front-load-washer-wwf8024m5was",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WWF9024M5WAS",
+          "url": "https://www.thegoodguys.com.au/westinghouse-9kg-front-load-washer-wwf9024m5was",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WWT1084C7WA",
+          "url": "https://www.thegoodguys.com.au/westinghouse-10kg-top-load-washer-wwt1084c7wa",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WWT8084J7WA",
+          "url": "https://www.thegoodguys.com.au/westinghouse-8kg-top-load-washer-wwt8084j7wa",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        },
+        {
+          "model": "WWW9024M5SAS",
+          "url": "https://www.thegoodguys.com.au/westinghouse-9kg-5kg-combo-washer-dryer-www9024m5sas",
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "source": "sitemap"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "discovery-dishwasher-bosch-sms2itw01a",
+  "category": "dishwasher",
+  "brand": "Bosch",
+  "model": "SMS2ITW01A",
+  "source_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS2ITW01A.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "SMS2ITW01A",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS2ITW01A.pdf",
+      "extraction_date": "2026-05-09T13:26:01.841Z",
+      "confidence_score": 0.9
+    }
+  }
+}

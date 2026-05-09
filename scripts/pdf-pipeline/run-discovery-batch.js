@@ -51,7 +51,7 @@ function isDiscoveryCandidate(entry) {
     && entry.source_url
     && entry.status !== 'rejected'
     && entry.product
-    && entry.discovery?.retailer_key === 'appliancesonline'
+    && entry.discovery?.retailer_key
   );
 }
 
