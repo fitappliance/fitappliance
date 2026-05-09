@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-96676",
+  "category": "washing_machine",
+  "brand": "Samsung",
+  "model": "WD95T754DBT",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/c/a/f/ecaf1603c21ae2bf0dac0dc505fe82b52ce45b71_WD95T754DBT_Samsung_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "WD95T754DBT",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/c/a/f/ecaf1603c21ae2bf0dac0dc505fe82b52ce45b71_WD95T754DBT_Samsung_Datasheet.pdf",
+      "extraction_date": "2026-05-09T10:12:10.657Z",
+      "confidence_score": 0.9
+    }
+  }
+}

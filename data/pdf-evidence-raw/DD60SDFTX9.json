@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-64075",
+  "category": "dishwasher",
+  "brand": "Fisher & Paykel",
+  "model": "DD60SDFTX9",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/c/f/6/5cf6275182c0b4f652e523cbc1f5b73c8805d50c_DD60SDFTX9_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "DD60SDFTX9",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 478,
+      "width_mm": 599,
+      "depth_mm": 573,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/c/f/6/5cf6275182c0b4f652e523cbc1f5b73c8805d50c_DD60SDFTX9_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:39:32.602Z",
+      "confidence_score": 0.9
+    }
+  }
+}

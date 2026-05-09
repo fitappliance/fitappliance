@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-56191",
+  "category": "washing_machine",
+  "brand": "Midea",
+  "model": "MTWM95",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/c/e/b/bceb496c9ef6a8dd219fc4cf8b75b1829f36a9d3_Midea_MTWM95_9.5Kg_Top_Load_Washing_Machine_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Midea",
+    "sku": "MTWM95",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 1015,
+      "width_mm": 601,
+      "depth_mm": 625,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/c/e/b/bceb496c9ef6a8dd219fc4cf8b75b1829f36a9d3_Midea_MTWM95_9.5Kg_Top_Load_Washing_Machine_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:11:19.918Z",
+      "confidence_score": 0.9
+    }
+  }
+}

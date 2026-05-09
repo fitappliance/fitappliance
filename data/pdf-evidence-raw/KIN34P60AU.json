@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-49950",
+  "category": "fridge",
+  "brand": "Bosch",
+  "model": "KIN34P60AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/f/f/2/7ff26c695849728f7159b485f8ade6a7395c6f60_Bosch_KIN34P60AU_287L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "KIN34P60AU",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1772,
+      "width_mm": 556,
+      "depth_mm": 545,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 3,
+      "left_mm": 2,
+      "right_mm": 2,
+      "rear_mm": 5
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/f/f/2/7ff26c695849728f7159b485f8ade6a7395c6f60_Bosch_KIN34P60AU_287L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:06:40.167Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-66604",
+  "category": "dishwasher",
+  "brand": "Bosch",
+  "model": "SMS66JI01A",
+  "source_url": "https://www.appliancesonline.com.au/ak/c/9/f/6/c9f61f09e5923a1927b062d3535dd77a9fbb9049_SMS66JI01A_Bosch_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "SMS66JI01A",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/c/9/f/6/c9f61f09e5923a1927b062d3535dd77a9fbb9049_SMS66JI01A_Bosch_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:34:06.838Z",
+      "confidence_score": 0.9
+    }
+  }
+}

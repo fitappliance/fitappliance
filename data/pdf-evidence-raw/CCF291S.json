@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-70969",
+  "category": "fridge",
+  "brand": "CHiQ",
+  "model": "CCF291S",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/f/4/8/4f48de2c02481e2df3b2708d32ca0dd769763f0d_CCF291S_CHiQ_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "CHiQ",
+    "sku": "CCF291S",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 835,
+      "width_mm": 1055,
+      "depth_mm": 735,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/f/4/8/4f48de2c02481e2df3b2708d32ca0dd769763f0d_CCF291S_CHiQ_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:09:53.824Z",
+      "confidence_score": 0.9
+    }
+  }
+}

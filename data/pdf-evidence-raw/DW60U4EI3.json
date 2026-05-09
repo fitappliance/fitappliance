@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-177608",
+  "category": "dishwasher",
+  "brand": "Fisher & Paykel",
+  "model": "DW60U4EI3",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/6/3/6/86365216a50d1ad79e26da3b3ef26b6c5fbf82e0_QRG_AU_85731_DW60U4EI3.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "DW60U4EI3",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 597,
+      "depth_mm": 554,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/6/3/6/86365216a50d1ad79e26da3b3ef26b6c5fbf82e0_QRG_AU_85731_DW60U4EI3.pdf",
+      "extraction_date": "2026-05-09T08:40:40.980Z",
+      "confidence_score": 0.9
+    }
+  }
+}

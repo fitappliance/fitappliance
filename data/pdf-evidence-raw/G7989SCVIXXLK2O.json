@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-162468",
+  "category": "dishwasher",
+  "brand": "Miele",
+  "model": "G7989SCVIXXLK2O",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/9/f/1/49f1e62c4a6b89f90b2f00b34247c1b6d9b58b2a_G7989_SCVi_K2O_XXL_12531740.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Miele",
+    "sku": "G7989SCVIXXLK2O",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 598,
+      "depth_mm": 550,
+      "door_open_90_depth_mm": 1205
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/9/f/1/49f1e62c4a6b89f90b2f00b34247c1b6d9b58b2a_G7989_SCVi_K2O_XXL_12531740.pdf",
+      "extraction_date": "2026-05-09T08:47:24.284Z",
+      "confidence_score": 0.9
+    }
+  }
+}

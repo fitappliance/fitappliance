@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-71189",
+  "category": "fridge",
+  "brand": "Electrolux",
+  "model": "EFE4227SB",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/d/2/a/ed2a1ce44c83ac4deaa845f69bb8a84a1fb0f4dd_EFE4227SB_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Electrolux",
+    "sku": "EFE4227SB",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 699,
+      "depth_mm": 773,
+      "door_open_90_depth_mm": 773
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/d/2/a/ed2a1ce44c83ac4deaa845f69bb8a84a1fb0f4dd_EFE4227SB_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:12:26.981Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-34040",
+  "category": "washing_machine",
+  "brand": "Fisher & Paykel",
+  "model": "MW60",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/c/5/6/ec5606ac61bfd50dc57f688601c963f8388e5ea4_Fisher___Paykel_MW60_QuickSmart__6kg_Top_Load_Washing_Machine_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "MW60",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 1030,
+      "width_mm": 560,
+      "depth_mm": 560,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/c/5/6/ec5606ac61bfd50dc57f688601c963f8388e5ea4_Fisher___Paykel_MW60_QuickSmart__6kg_Top_Load_Washing_Machine_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:04:51.814Z",
+      "confidence_score": 0.9
+    }
+  }
+}

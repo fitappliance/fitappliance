@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-67915",
+  "category": "fridge",
+  "brand": "Electrolux",
+  "model": "EHE6899BA",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/0/6/5/f065e15cd415828212a1e27d08a32cd56b355291_EHE6899BA_Electrolux_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Electrolux",
+    "sku": "EHE6899BA",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1782,
+      "width_mm": 913,
+      "depth_mm": 746,
+      "door_open_90_depth_mm": 1189
+    },
+    "clearance_requirements": {
+      "top_mm": 25,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/0/6/5/f065e15cd415828212a1e27d08a32cd56b355291_EHE6899BA_Electrolux_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:12:41.543Z",
+      "confidence_score": 0.9
+    }
+  }
+}

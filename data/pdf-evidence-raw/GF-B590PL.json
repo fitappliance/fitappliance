@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-79123",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GF-B590PL",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/9/3/d/393d305875059ef7f90c70c5621b1f9a9dfd2fad_GF_B590PL_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GF-B590PL",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1787,
+      "width_mm": 835,
+      "depth_mm": 618,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/9/3/d/393d305875059ef7f90c70c5621b1f9a9dfd2fad_GF_B590PL_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:35:24.704Z",
+      "confidence_score": 0.9
+    }
+  }
+}

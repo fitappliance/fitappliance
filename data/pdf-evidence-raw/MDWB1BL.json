@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-66240",
+  "category": "dishwasher",
+  "brand": "Midea",
+  "model": "MDWB1BL",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/4/1/9/3419062d4d19268ebfaa78fb0fd93d9947c44163_MDWB1BL_Midea_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Midea",
+    "sku": "MDWB1BL",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 438,
+      "width_mm": 550,
+      "depth_mm": 500,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/4/1/9/3419062d4d19268ebfaa78fb0fd93d9947c44163_MDWB1BL_Midea_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:44:44.677Z",
+      "confidence_score": 0.9
+    }
+  }
+}

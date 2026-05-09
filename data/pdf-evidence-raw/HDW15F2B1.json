@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-132904",
+  "category": "dishwasher",
+  "brand": "Haier",
+  "model": "HDW15F2B1",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/f/5/c/ef5cbc3ae252f1842d259028f770cc993b6589b6_QRG_AU_61614.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HDW15F2B1",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 873,
+      "width_mm": 597,
+      "depth_mm": 599,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/f/5/c/ef5cbc3ae252f1842d259028f770cc993b6589b6_QRG_AU_61614.pdf",
+      "extraction_date": "2026-05-09T08:41:49.585Z",
+      "confidence_score": 0.9
+    }
+  }
+}

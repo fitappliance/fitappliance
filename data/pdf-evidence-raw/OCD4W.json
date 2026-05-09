@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-32202",
+  "category": "dryer",
+  "brand": "Omega",
+  "model": "OCD4W",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/c/9/1/5c918ac70adb5e4d41ba4c470494e9684786202d_OCD4W_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Omega",
+    "sku": "OCD4W",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 700,
+      "width_mm": 600,
+      "depth_mm": 435,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/c/9/1/5c918ac70adb5e4d41ba4c470494e9684786202d_OCD4W_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:00:40.851Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-35924",
+  "category": "dishwasher",
+  "brand": "Westinghouse",
+  "model": "WSF6606X",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/2/2/7/3227c0db8070ba9bc0550cca050bbd8d31e5293f_WSF6606X_Westinghouse_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WSF6606X",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 598,
+      "depth_mm": 598,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/2/2/7/3227c0db8070ba9bc0550cca050bbd8d31e5293f_WSF6606X_Westinghouse_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:54:16.331Z",
+      "confidence_score": 0.9
+    }
+  }
+}

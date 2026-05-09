@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-38574",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WD12595FD6",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/4/7/5/d47508a47ba9703c1c3a332d3a4b5e1688cced88_LG_Washer_Dryer_Combo_WD12595FD6_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WD12595FD6",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 982,
+      "width_mm": 686,
+      "depth_mm": 767,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 20,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 100
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/4/7/5/d47508a47ba9703c1c3a332d3a4b5e1688cced88_LG_Washer_Dryer_Combo_WD12595FD6_User_Manual.pdf",
+      "extraction_date": "2026-05-09T10:08:55.427Z",
+      "confidence_score": 0.9
+    }
+  }
+}

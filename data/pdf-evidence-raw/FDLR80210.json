@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-69211",
+  "category": "washing_machine",
+  "brand": "Whirlpool",
+  "model": "FDLR80210",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/4/f/1/b4f1377e385c6d49ff3d69c9f5babb921ab46ac1_FDLR80210_Whirlpool_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Whirlpool",
+    "sku": "FDLR80210",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 595,
+      "depth_mm": 630,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/4/f/1/b4f1377e385c6d49ff3d69c9f5babb921ab46ac1_FDLR80210_Whirlpool_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:14:36.010Z",
+      "confidence_score": 0.9
+    }
+  }
+}

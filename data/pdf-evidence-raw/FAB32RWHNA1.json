@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-38231",
+  "category": "fridge",
+  "brand": "Smeg",
+  "model": "FAB32RWHNA1",
+  "source_url": "https://www.appliancesonline.com.au/ak/c/0/b/2/c0b21e18df332c3b1dc330cab28a2b0d69c6e27b_Smeg_FAB32RWHNA1_326L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "FAB32RWHNA1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1926,
+      "width_mm": 600,
+      "depth_mm": 720,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/c/0/b/2/c0b21e18df332c3b1dc330cab28a2b0d69c6e27b_Smeg_FAB32RWHNA1_326L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:47:47.598Z",
+      "confidence_score": 0.9
+    }
+  }
+}

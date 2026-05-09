@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-178017",
+  "category": "washing_machine",
+  "brand": "Hisense",
+  "model": "HWF3S7514X",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/0/b/7/50b7ceecc2f75640a53e0354db752a19fcfc0cf9_2026_Hisense_AU___Consumer_Spec__HWF3S7514X_.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HWF3S7514X",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 595,
+      "depth_mm": 510,
+      "door_open_90_depth_mm": 520
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/0/b/7/50b7ceecc2f75640a53e0354db752a19fcfc0cf9_2026_Hisense_AU___Consumer_Spec__HWF3S7514X_.pdf",
+      "extraction_date": "2026-05-09T10:07:15.385Z",
+      "confidence_score": 0.9
+    }
+  }
+}

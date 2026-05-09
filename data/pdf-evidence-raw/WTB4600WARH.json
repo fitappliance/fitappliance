@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-47456",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WTB4600WARH",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/0/3/0/3030e7477af5f91ead9e26b85383cee8e7cf5c95_Westinghouse_WTB4600WARH_460L_Top_Mount_Fridge_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WTB4600WARH",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 699,
+      "depth_mm": 727,
+      "door_open_90_depth_mm": 300
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/0/3/0/3030e7477af5f91ead9e26b85383cee8e7cf5c95_Westinghouse_WTB4600WARH_460L_Top_Mount_Fridge_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:57:34.866Z",
+      "confidence_score": 0.9
+    }
+  }
+}

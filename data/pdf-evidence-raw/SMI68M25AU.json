@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-45238",
+  "category": "dishwasher",
+  "brand": "Bosch",
+  "model": "SMI68M25AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/3/3/7/133718c778f5a9fe9a0a197a314a16855e0c0a48_Bosch_SMI68M25AU_Semi_Integrated_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "SMI68M25AU",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 815,
+      "width_mm": 598,
+      "depth_mm": 573,
+      "door_open_90_depth_mm": 1150
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/3/3/7/133718c778f5a9fe9a0a197a314a16855e0c0a48_Bosch_SMI68M25AU_Semi_Integrated_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:32:12.590Z",
+      "confidence_score": 0.9
+    }
+  }
+}

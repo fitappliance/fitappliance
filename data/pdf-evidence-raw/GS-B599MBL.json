@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-163193",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GS-B599MBL",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/3/4/a/934a632fb128faa844112760da93bf31a105dbf6_REF_GAP_MFL72093732_00_240717_00_OM_PRINT.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GS-B599MBL",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1790,
+      "width_mm": 913,
+      "depth_mm": 735,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/3/4/a/934a632fb128faa844112760da93bf31a105dbf6_REF_GAP_MFL72093732_00_240717_00_OM_PRINT.pdf",
+      "extraction_date": "2026-05-09T09:36:09.071Z",
+      "confidence_score": 0.9
+    }
+  }
+}

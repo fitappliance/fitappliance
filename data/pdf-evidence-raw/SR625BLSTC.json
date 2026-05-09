@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-60267",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SR625BLSTC",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/4/7/3/a473243cd4a8fed9f620a911fb5eca790ca6d369_Samsung_SR625BLSTC_628L_Top_Mount_Fridge_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SR625BLSTC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1722,
+      "width_mm": 836,
+      "depth_mm": 810,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/4/7/3/a473243cd4a8fed9f620a911fb5eca790ca6d369_Samsung_SR625BLSTC_628L_Top_Mount_Fridge_User_Manual.pdf",
+      "extraction_date": "2026-05-09T09:42:25.467Z",
+      "confidence_score": 0.9
+    }
+  }
+}

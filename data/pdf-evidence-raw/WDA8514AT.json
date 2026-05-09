@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-59266",
+  "category": "washing_machine",
+  "brand": "Beko",
+  "model": "WDA8514AT",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/8/2/2/582261f70bbb32c914d098d0996ca558bde0e6ce_Beko_WDA8514AT_Washer_Dryer_Combo_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "WDA8514AT",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 840,
+      "width_mm": 600,
+      "depth_mm": 630,
+      "door_open_90_depth_mm": 1650
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/8/2/2/582261f70bbb32c914d098d0996ca558bde0e6ce_Beko_WDA8514AT_Washer_Dryer_Combo_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:00:17.140Z",
+      "confidence_score": 0.9
+    }
+  }
+}

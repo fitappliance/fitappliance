@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-49226",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WF-T8582",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/6/f/4/f6f46457309ecc8ad8525497c91f949350c661f2_LG_WF_T8582_8.5kg_Top_Load_Washing_Machine_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WF-T8582",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 1020,
+      "width_mm": 632,
+      "depth_mm": 670,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/6/f/4/f6f46457309ecc8ad8525497c91f949350c661f2_LG_WF_T8582_8.5kg_Top_Load_Washing_Machine_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:08:30.131Z",
+      "confidence_score": 0.9
+    }
+  }
+}

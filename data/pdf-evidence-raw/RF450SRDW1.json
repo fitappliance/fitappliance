@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-74587",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "RF450SRDW1",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/e/3/1/2e31aff39ade956fac0347c75c854c381246ab3a_RF450SRDW1_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "RF450SRDW1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1695,
+      "width_mm": 635,
+      "depth_mm": 715,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 30
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/e/3/1/2e31aff39ade956fac0347c75c854c381246ab3a_RF450SRDW1_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:19:54.854Z",
+      "confidence_score": 0.9
+    }
+  }
+}

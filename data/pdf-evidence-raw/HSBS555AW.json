@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-56936",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HSBS555AW",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/4/9/8/0498fb69675b3301775ecee26e84e8bb310d034b_Haier_HSBS555AW_555L_Side_by_Side_Fridge_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HSBS555AW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1790,
+      "width_mm": 908,
+      "depth_mm": 655,
+      "door_open_90_depth_mm": 1610
+    },
+    "clearance_requirements": {
+      "top_mm": 25,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/4/9/8/0498fb69675b3301775ecee26e84e8bb310d034b_Haier_HSBS555AW_555L_Side_by_Side_Fridge_User_Manual.pdf",
+      "extraction_date": "2026-05-09T09:27:13.912Z",
+      "confidence_score": 0.9
+    }
+  }
+}

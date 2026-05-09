@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-48455",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "E522BLE5",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/5/6/7/4567bc2770387e3fa0bb6684789647919d4672a8_Fisher___Paykel_E522BLE5_519L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "E522BLE5",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1702,
+      "width_mm": 787,
+      "depth_mm": 711,
+      "door_open_90_depth_mm": 787
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 127,
+      "right_mm": 127,
+      "rear_mm": 25
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/5/6/7/4567bc2770387e3fa0bb6684789647919d4672a8_Fisher___Paykel_E522BLE5_519L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:18:24.383Z",
+      "confidence_score": 0.9
+    }
+  }
+}

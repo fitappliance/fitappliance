@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-72573",
+  "category": "washing_machine",
+  "brand": "Hisense",
+  "model": "HWFL1014V",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/e/5/8/2e58d63799a04b9433428147083aa18abd67e0e8_HWFL1014V_Hisense_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HWFL1014V",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 595,
+      "depth_mm": 660,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/e/5/8/2e58d63799a04b9433428147083aa18abd67e0e8_HWFL1014V_Hisense_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:07:33.052Z",
+      "confidence_score": 0.9
+    }
+  }
+}

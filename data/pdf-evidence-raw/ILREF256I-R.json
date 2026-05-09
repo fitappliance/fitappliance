@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-75029",
+  "category": "fridge",
+  "brand": "ILVE",
+  "model": "ILREF256I/R",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/8/6/a/586af4d2f905e62d5e656100549d5b8f613813cf_ILREF256I_R_ILVE_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "ILVE",
+    "sku": "ILREF256I/R",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1848,
+      "width_mm": 540,
+      "depth_mm": 540,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/8/6/a/586af4d2f905e62d5e656100549d5b8f613813cf_ILREF256I_R_ILVE_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:33:34.692Z",
+      "confidence_score": 0.9
+    }
+  }
+}

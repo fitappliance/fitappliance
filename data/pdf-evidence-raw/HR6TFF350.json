@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53443",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HR6TFF350",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/8/b/8/28b8b1f11ffca84b123a6e504a2b09a6fbdcdc61_Hisense_HR6TFF350_350L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HR6TFF350",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1698,
+      "width_mm": 595,
+      "depth_mm": 675,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/8/b/8/28b8b1f11ffca84b123a6e504a2b09a6fbdcdc61_Hisense_HR6TFF350_350L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:32:30.929Z",
+      "confidence_score": 0.9
+    }
+  }
+}

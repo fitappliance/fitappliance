@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53550",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WFB4204SA",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/7/4/0/07408ff53e432b45623352c8c7e73760f7041f8b_Westinghouse_WFB4204SA_425L_Upright_Freezer_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WFB4204SA",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 699,
+      "depth_mm": 720,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/7/4/0/07408ff53e432b45623352c8c7e73760f7041f8b_Westinghouse_WFB4204SA_425L_Upright_Freezer_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:53:49.829Z",
+      "confidence_score": 0.9
+    }
+  }
+}

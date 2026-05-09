@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-73255",
+  "category": "washing_machine",
+  "brand": "Electrolux",
+  "model": "EWW1042ADWA",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/c/d/b/1cdb17d67fd846f8cdba150ff9c8abe366de9f2c_EWW1042ADWA_Electrolux_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Electrolux",
+    "sku": "EWW1042ADWA",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 659,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/c/d/b/1cdb17d67fd846f8cdba150ff9c8abe366de9f2c_EWW1042ADWA_Electrolux_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:02:37.730Z",
+      "confidence_score": 0.9
+    }
+  }
+}

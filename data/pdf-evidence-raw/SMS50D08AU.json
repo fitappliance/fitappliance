@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-33697",
+  "category": "dishwasher",
+  "brand": "Bosch",
+  "model": "SMS50D08AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/f/b/d/9fbdd575842b22b0ddaca65931244a8d4ccb9062_Bosch_SMS50D08AU_Serie_4_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "SMS50D08AU",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/f/b/d/9fbdd575842b22b0ddaca65931244a8d4ccb9062_Bosch_SMS50D08AU_Serie_4_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:33:31.697Z",
+      "confidence_score": 0.9
+    }
+  }
+}

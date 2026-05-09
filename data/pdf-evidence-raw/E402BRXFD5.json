@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-57433",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "E402BRXFD5",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/d/e/9/5de9244aa081c1bf21fe69fe54543603c39884ce_Fisher___Paykel_E402BRXFD5_403L_ActiveSmart__Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "E402BRXFD5",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1715,
+      "width_mm": 635,
+      "depth_mm": 695,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 30
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/d/e/9/5de9244aa081c1bf21fe69fe54543603c39884ce_Fisher___Paykel_E402BRXFD5_403L_ActiveSmart__Bottom_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:17:28.497Z",
+      "confidence_score": 0.9
+    }
+  }
+}

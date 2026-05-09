@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-63721",
+  "category": "dishwasher",
+  "brand": "Smeg",
+  "model": "DWA6315X1",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/f/0/6/0f06050faae37926906ec6c8bf634d5a0b103f65_Smeg_DWA6315X1_60cm_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "DWA6315X1",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 598,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/f/0/6/0f06050faae37926906ec6c8bf634d5a0b103f65_Smeg_DWA6315X1_60cm_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:50:55.724Z",
+      "confidence_score": 0.9
+    }
+  }
+}

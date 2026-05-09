@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-59218",
+  "category": "fridge",
+  "brand": "Beko",
+  "model": "DN151130X",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/b/f/6/abf6cd45679c89545df8968db56a99e337eeea5b_Beko_DN151130X_510L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "DN151130X",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1850,
+      "width_mm": 595,
+      "depth_mm": 650,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/b/f/6/abf6cd45679c89545df8968db56a99e337eeea5b_Beko_DN151130X_510L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:04:29.962Z",
+      "confidence_score": 0.9
+    }
+  }
+}

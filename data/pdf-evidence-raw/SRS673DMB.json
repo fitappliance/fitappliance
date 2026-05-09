@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-77014",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SRS673DMB",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/e/9/3/4e93e82c8beac7eb3a0fc34de282b597554629d4_SRS673DMB_Samsung_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SRS673DMB",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1780,
+      "width_mm": 912,
+      "depth_mm": 716,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/e/9/3/4e93e82c8beac7eb3a0fc34de282b597554629d4_SRS673DMB_Samsung_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:41:00.334Z",
+      "confidence_score": 0.9
+    }
+  }
+}

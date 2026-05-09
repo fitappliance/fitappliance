@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-71089",
+  "category": "dishwasher",
+  "brand": "ILVE",
+  "model": "IVDFI55ND",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/4/5/f/d45f181f5f7d8b8343fc2c08c10cfcd078affe54_IVDFI55ND_ILVE_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "ILVE",
+    "sku": "IVDFI55ND",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 438,
+      "width_mm": 550,
+      "depth_mm": 518,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/4/5/f/d45f181f5f7d8b8343fc2c08c10cfcd078affe54_IVDFI55ND_ILVE_Datasheet.pdf",
+      "extraction_date": "2026-05-09T08:42:49.787Z",
+      "confidence_score": 0.9
+    }
+  }
+}

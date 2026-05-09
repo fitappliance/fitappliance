@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-149676",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GF-V900MBLC",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/6/e/8/66e88a2d4f473ec3be29f1e4b9e9ea06becf6c6b_GF_V900MBLC_Specsheet_V2_230809.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GF-V900MBLC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1790,
+      "width_mm": 900,
+      "depth_mm": 720,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/6/e/8/66e88a2d4f473ec3be29f1e4b9e9ea06becf6c6b_GF_V900MBLC_Specsheet_V2_230809.pdf",
+      "extraction_date": "2026-05-09T09:36:34.675Z",
+      "confidence_score": 0.9
+    }
+  }
+}

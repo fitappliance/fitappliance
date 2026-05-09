@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-86652",
+  "category": "fridge",
+  "brand": "Miele",
+  "model": "FN28262WS",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/1/9/6/e1962b80ba5fd17bdecb4da58123d61d5aff7e09_FN28262WS_Miele_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Miele",
+    "sku": "FN28262WS",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1850,
+      "width_mm": 600,
+      "depth_mm": 623,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/1/9/6/e1962b80ba5fd17bdecb4da58123d61d5aff7e09_FN28262WS_Miele_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:39:22.587Z",
+      "confidence_score": 0.9
+    }
+  }
+}

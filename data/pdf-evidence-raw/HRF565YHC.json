@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-86921",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HRF565YHC",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/c/5/0/ac505a4674fce73b1f8ec50268abb8533760cac6_HRF565YHC_Haier_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HRF565YHC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1804,
+      "width_mm": 833,
+      "depth_mm": 716,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/c/5/0/ac505a4674fce73b1f8ec50268abb8533760cac6_HRF565YHC_Haier_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:24:24.422Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-153205",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HCF137",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/3/c/4/73c476eaf2835909459881352f50a3bc3caa9f98_QRG_AU_62253.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HCF137",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 630,
+      "depth_mm": 555,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/3/c/4/73c476eaf2835909459881352f50a3bc3caa9f98_QRG_AU_62253.pdf",
+      "extraction_date": "2026-05-09T09:22:16.284Z",
+      "confidence_score": 0.9
+    }
+  }
+}

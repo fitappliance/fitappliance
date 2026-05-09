@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-42682",
+  "category": "dishwasher",
+  "brand": "LG",
+  "model": "LD-1481S4",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/9/3/1/19313d06307d0f8f18b907bb483729180bbe10c4_LG_Dishwasher_LD_1481S4_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "LD-1481S4",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/9/3/1/19313d06307d0f8f18b907bb483729180bbe10c4_LG_Dishwasher_LD_1481S4_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:43:20.453Z",
+      "confidence_score": 0.9
+    }
+  }
+}

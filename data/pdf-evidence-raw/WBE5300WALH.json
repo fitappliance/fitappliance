@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-48242",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WBE5300WALH",
+  "source_url": "https://www.appliancesonline.com.au/ak/c/f/f/b/cffba79d102eefcdcc37650859294fa48122bc56_Westinghouse_WBE5300WAL_530L_Bottom_Mount_Fridge_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WBE5300WALH",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 796,
+      "depth_mm": 727,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/c/f/f/b/cffba79d102eefcdcc37650859294fa48122bc56_Westinghouse_WBE5300WAL_530L_Bottom_Mount_Fridge_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:52:53.470Z",
+      "confidence_score": 0.65
+    }
+  }
+}

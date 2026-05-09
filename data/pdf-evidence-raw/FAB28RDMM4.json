@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-79002",
+  "category": "fridge",
+  "brand": "Smeg",
+  "model": "FAB28RDMM4",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/4/9/e/149e5e94134273ff6265e503fba89b457e12e499_FAB28RDMM4_Smeg_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "FAB28RDMM4",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1540,
+      "width_mm": 601,
+      "depth_mm": 728,
+      "door_open_90_depth_mm": 926
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/4/9/e/149e5e94134273ff6265e503fba89b457e12e499_FAB28RDMM4_Smeg_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:43:42.742Z",
+      "confidence_score": 0.9
+    }
+  }
+}

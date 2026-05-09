@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-65307",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "TWIN171611C",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/2/5/2/5252b6baab1bcffc4a42ec12afd0ac034c49ed69_TWIN171611C_LG_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "TWIN171611C",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 1220,
+      "width_mm": 600,
+      "depth_mm": 700,
+      "door_open_90_depth_mm": 312
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/2/5/2/5252b6baab1bcffc4a42ec12afd0ac034c49ed69_TWIN171611C_LG_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:08:43.877Z",
+      "confidence_score": 0.9
+    }
+  }
+}

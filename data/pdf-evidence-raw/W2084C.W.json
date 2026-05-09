@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-64005",
+  "category": "washing_machine",
+  "brand": "ASKO",
+  "model": "W2084C.W",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/3/e/b/03eb248f1e9f64bb7c3ebe77d3c0cbd226012192_productSheet_000000000000592099_bs_asko_au_en_AU.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "ASKO",
+    "sku": "W2084C.W",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 595,
+      "depth_mm": 585,
+      "door_open_90_depth_mm": 310
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/3/e/b/03eb248f1e9f64bb7c3ebe77d3c0cbd226012192_productSheet_000000000000592099_bs_asko_au_en_AU.pdf",
+      "extraction_date": "2026-05-09T09:59:21.372Z",
+      "confidence_score": 0.9
+    }
+  }
+}

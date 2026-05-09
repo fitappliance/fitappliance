@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-86440",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HR6CF144",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/8/3/d/b83d20925442ed55a4675ade3d04d1cfd5a49083_HR6CF144_Hisense_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HR6CF144",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 859,
+      "width_mm": 625,
+      "depth_mm": 559,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/8/3/d/b83d20925442ed55a4675ade3d04d1cfd5a49083_HR6CF144_Hisense_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:28:00.854Z",
+      "confidence_score": 0.9
+    }
+  }
+}

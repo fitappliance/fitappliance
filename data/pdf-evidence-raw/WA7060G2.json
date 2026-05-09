@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-56032",
+  "category": "washing_machine",
+  "brand": "Fisher & Paykel",
+  "model": "WA7060G2",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/c/3/b/3c3b60a23493741d2e9904ce22ca0c911fe5ef3e_WA7060G2_Fisher___Paykel_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "WA7060G2",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 1050,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/c/3/b/3c3b60a23493741d2e9904ce22ca0c911fe5ef3e_WA7060G2_Fisher___Paykel_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:04:58.906Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-113736",
+  "category": "dishwasher",
+  "brand": "LG",
+  "model": "XD4B24PS",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/e/c/f/9ecf353f38c1ba2e140dec3a91a84ca51ff4b4b3_XD4B24PS_LG_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "XD4B24PS",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/e/c/f/9ecf353f38c1ba2e140dec3a91a84ca51ff4b4b3_XD4B24PS_LG_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:44:26.683Z",
+      "confidence_score": 0.9
+    }
+  }
+}

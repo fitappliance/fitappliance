@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-104980",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HRBF179R",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/5/7/1/a571e8fa7a10f87ff3b8964c083c55e76ca01d41_HRBF179R_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HRBF179R",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1229,
+      "width_mm": 515,
+      "depth_mm": 514,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/5/7/1/a571e8fa7a10f87ff3b8964c083c55e76ca01d41_HRBF179R_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:28:13.854Z",
+      "confidence_score": 0.9
+    }
+  }
+}

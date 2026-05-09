@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-49109",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HRF502TS1",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/a/4/9/ea495ad59b905aef47e46067207b6bec3ec994ab_Haier_HRF502TS1_502L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HRF502TS1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1809,
+      "width_mm": 723,
+      "depth_mm": 749,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/a/4/9/ea495ad59b905aef47e46067207b6bec3ec994ab_Haier_HRF502TS1_502L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:26:36.781Z",
+      "confidence_score": 0.9
+    }
+  }
+}

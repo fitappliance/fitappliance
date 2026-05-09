@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-77107",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WTB5400WBL",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/6/e/3/76e328d7eccb0066e413f0f5fac4239041b8c90c_WTB5400WBL_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WTB5400WBL",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 796,
+      "depth_mm": 723,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/6/e/3/76e328d7eccb0066e413f0f5fac4239041b8c90c_WTB5400WBL_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:58:36.307Z",
+      "confidence_score": 0.9
+    }
+  }
+}

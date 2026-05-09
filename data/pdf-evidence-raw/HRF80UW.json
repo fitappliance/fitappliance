@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-105284",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HRF80UW",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/b/b/0/9bb0d188de77fa63330e66446b911ab31e9e1a1e_HRF80UW_Haier_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HRF80UW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 700,
+      "width_mm": 480,
+      "depth_mm": 445,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/b/b/0/9bb0d188de77fa63330e66446b911ab31e9e1a1e_HRF80UW_Haier_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:24:47.493Z",
+      "confidence_score": 0.9
+    }
+  }
+}

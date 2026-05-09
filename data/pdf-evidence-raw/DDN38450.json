@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-59208",
+  "category": "dishwasher",
+  "brand": "Beko",
+  "model": "DDN38450",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/2/7/2/8272c750cf9837b37531384294e24d50544a0d90_Beko_DDN38450_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "DDN38450",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 815,
+      "width_mm": 598,
+      "depth_mm": 570,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/2/7/2/8272c750cf9837b37531384294e24d50544a0d90_Beko_DDN38450_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:30:43.031Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-63794",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WD1013NDW",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/4/d/0/94d0842870e1f923809f3ad8ca8b33935f47bb76_WD1013NDW_LG_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WD1013NDW",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 940,
+      "width_mm": 645,
+      "depth_mm": 770,
+      "door_open_90_depth_mm": 430
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/4/d/0/94d0842870e1f923809f3ad8ca8b33935f47bb76_WD1013NDW_LG_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:08:47.749Z",
+      "confidence_score": 0.9
+    }
+  }
+}

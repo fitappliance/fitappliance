@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-104788",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HVF175VW",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/d/0/c/bd0cc5469050d9df5cb1cfce64dd51c8eca939b0_HVF175VW_Haier_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HVF175VW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1426,
+      "width_mm": 544,
+      "depth_mm": 571,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/d/0/c/bd0cc5469050d9df5cb1cfce64dd51c8eca939b0_HVF175VW_Haier_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:22:19.605Z",
+      "confidence_score": 0.9
+    }
+  }
+}

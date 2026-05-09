@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-54404",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SR420LSTC",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/d/6/2/dd625431e5829d36d7b79122675aacfb4ea84d7e_Samsung_SR420LSTC_419L_Top_Mount_Fridge_with_Twin_Cooling_Plus__Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SR420LSTC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1785,
+      "width_mm": 675,
+      "depth_mm": 668,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/d/6/2/dd625431e5829d36d7b79122675aacfb4ea84d7e_Samsung_SR420LSTC_419L_Top_Mount_Fridge_with_Twin_Cooling_Plus__Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:41:52.638Z",
+      "confidence_score": 0.9
+    }
+  }
+}

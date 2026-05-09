@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-56332",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HBM340SA1",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/4/7/2/94724a30e4d6020bc7327ca76c93da472ebb02a2_HBM340SA1_Haier_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HBM340SA1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1702,
+      "width_mm": 595,
+      "depth_mm": 642,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/4/7/2/94724a30e4d6020bc7327ca76c93da472ebb02a2_HBM340SA1_Haier_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:25:01.476Z",
+      "confidence_score": 0.9
+    }
+  }
+}

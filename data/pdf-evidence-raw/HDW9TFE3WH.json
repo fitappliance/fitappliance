@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-37928",
+  "category": "dishwasher",
+  "brand": "Haier",
+  "model": "HDW9TFE3WH",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/5/e/3/75e3d158a6e48e9af016caa66dcc034297f122f3_HDW9TFE3WH_Haier_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HDW9TFE3WH",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 450,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/5/e/3/75e3d158a6e48e9af016caa66dcc034297f122f3_HDW9TFE3WH_Haier_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:42:33.132Z",
+      "confidence_score": 0.9
+    }
+  }
+}

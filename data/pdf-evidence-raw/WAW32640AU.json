@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-46466",
+  "category": "washing_machine",
+  "brand": "Bosch",
+  "model": "WAW32640AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/1/a/e/d1aefe20e27b512b3aa96b9325175b677ee6c9e9_Bosch_WAW32640AU_8.5kg_Front_Load_I_DOS_Washing_Machine_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "WAW32640AU",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 848,
+      "width_mm": 598,
+      "depth_mm": 590,
+      "door_open_90_depth_mm": 171
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/1/a/e/d1aefe20e27b512b3aa96b9325175b677ee6c9e9_Bosch_WAW32640AU_8.5kg_Front_Load_I_DOS_Washing_Machine_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:00:49.121Z",
+      "confidence_score": 0.9
+    }
+  }
+}

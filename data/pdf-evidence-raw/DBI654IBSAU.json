@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-66168",
+  "category": "dishwasher",
+  "brand": "ASKO",
+  "model": "DBI654IBSAU",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/2/3/9/f239a7ad3c40a158288254ea5d1da13bb9c5e7d1_DBI654IBSAU_Asko_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "ASKO",
+    "sku": "DBI654IBSAU",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 819,
+      "width_mm": 596,
+      "depth_mm": 559,
+      "door_open_90_depth_mm": 1198
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/2/3/9/f239a7ad3c40a158288254ea5d1da13bb9c5e7d1_DBI654IBSAU_Asko_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:29:15.919Z",
+      "confidence_score": 0.9
+    }
+  }
+}

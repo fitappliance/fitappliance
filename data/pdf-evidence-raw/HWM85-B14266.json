@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-49113",
+  "category": "washing_machine",
+  "brand": "Haier",
+  "model": "HWM85-B14266",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/1/5/6/4156a0249ac0d02e3d562c0d725943e010e03b7a_Haier_HWM85_B14266_8.5kg_Front_Load_Washing_Machine_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HWM85-B14266",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/1/5/6/4156a0249ac0d02e3d562c0d725943e010e03b7a_Haier_HWM85_B14266_8.5kg_Front_Load_Washing_Machine_User_Manual.pdf",
+      "extraction_date": "2026-05-09T10:06:43.533Z",
+      "confidence_score": 0.65
+    }
+  }
+}

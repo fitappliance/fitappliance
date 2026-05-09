@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-61042",
+  "category": "dishwasher",
+  "brand": "Bosch",
+  "model": "SMI88TS02A",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/4/8/b/a48bce343d877f319ae98c0ad76f35bc97fd2a80_SMI88TS02A_Bosch_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "SMI88TS02A",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 815,
+      "width_mm": 598,
+      "depth_mm": 573,
+      "door_open_90_depth_mm": 1150
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/4/8/b/a48bce343d877f319ae98c0ad76f35bc97fd2a80_SMI88TS02A_Bosch_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:32:25.393Z",
+      "confidence_score": 0.9
+    }
+  }
+}

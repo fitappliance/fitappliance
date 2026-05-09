@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-168674",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HRF510FHS",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/8/0/5/98053db698c85cf88d45b950912475d0c9574bb9_QRG_AU_62296.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HRF510FHS",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 790,
+      "depth_mm": 700,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/8/0/5/98053db698c85cf88d45b950912475d0c9574bb9_QRG_AU_62296.pdf",
+      "extraction_date": "2026-05-09T09:24:04.374Z",
+      "confidence_score": 0.9
+    }
+  }
+}

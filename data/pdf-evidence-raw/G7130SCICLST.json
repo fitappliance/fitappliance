@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-162457",
+  "category": "dishwasher",
+  "brand": "Miele",
+  "model": "G7130SCICLST",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/8/a/6/88a6c350b5ee4b174dc62b488dadc4a991625926_G7130_SCi_12531640.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Miele",
+    "sku": "G7130SCICLST",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 805,
+      "width_mm": 598,
+      "depth_mm": 570,
+      "door_open_90_depth_mm": 1165
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/8/a/6/88a6c350b5ee4b174dc62b488dadc4a991625926_G7130_SCi_12531640.pdf",
+      "extraction_date": "2026-05-09T08:46:33.158Z",
+      "confidence_score": 0.9
+    }
+  }
+}

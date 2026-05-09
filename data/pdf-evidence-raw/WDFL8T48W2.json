@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-127721",
+  "category": "washing_machine",
+  "brand": "CHiQ",
+  "model": "WDFL8T48W2",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/3/3/6/d336f7e530efecfe28991966fdc79df54582729d_WDFL8T48W2_CHiQ_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "CHiQ",
+    "sku": "WDFL8T48W2",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 847,
+      "width_mm": 600,
+      "depth_mm": 577,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/3/3/6/d336f7e530efecfe28991966fdc79df54582729d_WDFL8T48W2_CHiQ_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:02:32.528Z",
+      "confidence_score": 0.9
+    }
+  }
+}

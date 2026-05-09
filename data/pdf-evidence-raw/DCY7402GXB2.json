@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-59207",
+  "category": "dryer",
+  "brand": "Beko",
+  "model": "DCY7402GXB2",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/e/c/1/3ec143afb08db594b32289037bc13cd33eb19689_Beko_DCY7402GXB2_7kg_Condenser_Dryer_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "DCY7402GXB2",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 846,
+      "width_mm": 597,
+      "depth_mm": 558,
+      "door_open_90_depth_mm": 1780
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/e/c/1/3ec143afb08db594b32289037bc13cd33eb19689_Beko_DCY7402GXB2_7kg_Condenser_Dryer_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:57:07.331Z",
+      "confidence_score": 0.9
+    }
+  }
+}

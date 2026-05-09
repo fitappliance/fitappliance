@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-47680",
+  "category": "washing_machine",
+  "brand": "Fisher & Paykel",
+  "model": "WA8060G1",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/6/b/1/86b153e3f8a802d64269c1e6df15260ca0bdfe2f_Fisher___Paykel_WA8060G1_8kg_Top_Load_Washing_Machine_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "WA8060G1",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 1075,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 40
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/6/b/1/86b153e3f8a802d64269c1e6df15260ca0bdfe2f_Fisher___Paykel_WA8060G1_8kg_Top_Load_Washing_Machine_User_Manual.pdf",
+      "extraction_date": "2026-05-09T10:05:24.772Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-54662",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "E522BRXFDJ5",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/f/3/1/df31a60e77d1b5a5b50c23ad6ee6266260cd7255_E522BRXFDJ5_Fisher___Paykel_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "E522BRXFDJ5",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1715,
+      "width_mm": 790,
+      "depth_mm": 695,
+      "door_open_90_depth_mm": 1433
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/f/3/1/df31a60e77d1b5a5b50c23ad6ee6266260cd7255_E522BRXFDJ5_Fisher___Paykel_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:18:49.107Z",
+      "confidence_score": 0.9
+    }
+  }
+}

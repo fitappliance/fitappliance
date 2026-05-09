@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-110216",
+  "category": "dryer",
+  "brand": "Westinghouse",
+  "model": "WDV457H3WB",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/c/f/6/1cf68b28d8b60a42560ce0587728fe2b3f8e9e7b_WDV457H3WB_Westinghouse_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WDV457H3WB",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 795,
+      "width_mm": 600,
+      "depth_mm": 520,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/c/f/6/1cf68b28d8b60a42560ce0587728fe2b3f8e9e7b_WDV457H3WB_Westinghouse_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:01:16.314Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-71386",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HRF516YHS",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/c/b/0/2cb0c410ac4775f13729e7ea610d41349760a3f7_HRF516YHS_Haier_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HRF516YHS",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1804,
+      "width_mm": 833,
+      "depth_mm": 666,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/c/b/0/2cb0c410ac4775f13729e7ea610d41349760a3f7_HRF516YHS_Haier_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:26:43.751Z",
+      "confidence_score": 0.9
+    }
+  }
+}

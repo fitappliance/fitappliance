@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-162458",
+  "category": "dishwasher",
+  "brand": "Miele",
+  "model": "G7130SCUCLST",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/b/4/3/2b43ba3532cacb0c5be03766ad79b25637d633c6_G7130_SCU_CLST_12531620.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Miele",
+    "sku": "G7130SCUCLST",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 805,
+      "width_mm": 598,
+      "depth_mm": 570,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/b/4/3/2b43ba3532cacb0c5be03766ad79b25637d633c6_G7130_SCU_CLST_12531620.pdf",
+      "extraction_date": "2026-05-09T08:46:36.775Z",
+      "confidence_score": 0.9
+    }
+  }
+}

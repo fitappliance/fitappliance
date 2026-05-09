@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-102630",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HRTF504",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/4/9/c/d49ca99d920d03dd8ee1ce543c9fadf4fc4d23ee_HRTF504_Hisense_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HRTF504",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1720,
+      "width_mm": 794,
+      "depth_mm": 685,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/4/9/c/d49ca99d920d03dd8ee1ce543c9fadf4fc4d23ee_HRTF504_Hisense_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:29:21.338Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-83891",
+  "category": "washing_machine",
+  "brand": "Esatto",
+  "model": "ETLW100B",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/b/6/d/0b6da57ed1aec3de9f8cd1cb3ac09e88b5ea0398_ETLW100B_Esatto_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "ETLW100B",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 1000,
+      "width_mm": 630,
+      "depth_mm": 601,
+      "door_open_90_depth_mm": 413
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/b/6/d/0b6da57ed1aec3de9f8cd1cb3ac09e88b5ea0398_ETLW100B_Esatto_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:04:22.932Z",
+      "confidence_score": 0.9
+    }
+  }
+}

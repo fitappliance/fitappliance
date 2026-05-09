@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-103161",
+  "category": "fridge",
+  "brand": "CHiQ",
+  "model": "CSR125DW",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/7/1/1/1711580c3a03ef50386501111a8a938af9f9c385_CSR125DW_CHiQ_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "CHiQ",
+    "sku": "CSR125DW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 847,
+      "width_mm": 494,
+      "depth_mm": 551,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/7/1/1/1711580c3a03ef50386501111a8a938af9f9c385_CSR125DW_CHiQ_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:06:55.030Z",
+      "confidence_score": 0.9
+    }
+  }
+}

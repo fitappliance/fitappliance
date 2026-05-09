@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-66218",
+  "category": "washing_machine",
+  "brand": "ASKO",
+  "model": "W4104CW",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/b/1/3/3b13d5f14a1be853d439ea95ced4544d0c257c47_W4104CW_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "ASKO",
+    "sku": "W4104CW",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 595,
+      "depth_mm": 695,
+      "door_open_90_depth_mm": 1080
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/b/1/3/3b13d5f14a1be853d439ea95ced4544d0c257c47_W4104CW_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:59:51.683Z",
+      "confidence_score": 0.9
+    }
+  }
+}

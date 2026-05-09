@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-172798",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "RS6121FLJE1",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/d/e/3/0de3f96fe555e70e9b11a46c05a976c466acb228_QRG_AU_26946.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "RS6121FLJE1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 2134,
+      "width_mm": 603,
+      "depth_mm": 610,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 3,
+      "left_mm": 3,
+      "right_mm": 3,
+      "rear_mm": 3
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/d/e/3/0de3f96fe555e70e9b11a46c05a976c466acb228_QRG_AU_26946.pdf",
+      "extraction_date": "2026-05-09T09:15:59.040Z",
+      "confidence_score": 0.9
+    }
+  }
+}

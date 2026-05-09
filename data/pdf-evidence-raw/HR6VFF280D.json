@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53451",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HR6VFF280D",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/3/a/2/13a232978356b9d02c14da85f0293f263d20103f_HR6VFF280D_Hisense_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HR6VFF280D",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1746,
+      "width_mm": 595,
+      "depth_mm": 700,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/3/a/2/13a232978356b9d02c14da85f0293f263d20103f_HR6VFF280D_Hisense_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:33:08.667Z",
+      "confidence_score": 0.9
+    }
+  }
+}

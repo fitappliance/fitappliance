@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-49974",
+  "category": "fridge",
+  "brand": "Smeg",
+  "model": "FAB32LPGNA1",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/d/c/d/5dcd1c5fa91864e70d50a35f6eab18c9b6209c90_Smeg_FAB32LPGNA1_330L_Bottom_Mount_Fridge_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "FAB32LPGNA1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1926,
+      "width_mm": 600,
+      "depth_mm": 720,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/d/c/d/5dcd1c5fa91864e70d50a35f6eab18c9b6209c90_Smeg_FAB32LPGNA1_330L_Bottom_Mount_Fridge_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:47:12.888Z",
+      "confidence_score": 0.9
+    }
+  }
+}

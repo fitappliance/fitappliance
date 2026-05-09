@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-149112",
+  "category": "fridge",
+  "brand": "Whirlpool",
+  "model": "WB3560UEXX",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/a/1/3/fa131c4aa97f5a47d2e591a8c762f815a1b1046a_Whirlpool_WB3560EUXX_Spec_Sheet__1_.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Whirlpool",
+    "sku": "WB3560UEXX",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1801,
+      "width_mm": 632,
+      "depth_mm": 717,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/a/1/3/fa131c4aa97f5a47d2e591a8c762f815a1b1046a_Whirlpool_WB3560EUXX_Spec_Sheet__1_.pdf",
+      "extraction_date": "2026-05-09T09:59:13.602Z",
+      "confidence_score": 0.9
+    }
+  }
+}

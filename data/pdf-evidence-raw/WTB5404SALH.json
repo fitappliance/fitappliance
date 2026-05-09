@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-47526",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WTB5404SALH",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/c/6/a/1c6ad238fde3fbe32f18b24bc86981b1fa18d4c8_WTB5404SALH_Westinghouse_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WTB5404SALH",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 796,
+      "depth_mm": 641,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 30,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 70
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/c/6/a/1c6ad238fde3fbe32f18b24bc86981b1fa18d4c8_WTB5404SALH_Westinghouse_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:58:47.500Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-65241",
+  "category": "dishwasher",
+  "brand": "Omega",
+  "model": "OSI604",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/e/2/e/9e2e9e9e2f06eb8004669b6cfa95a8e02a4213e9_OSI604_Omega_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Omega",
+    "sku": "OSI604",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 815,
+      "width_mm": 598,
+      "depth_mm": 550,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/e/2/e/9e2e9e9e2f06eb8004669b6cfa95a8e02a4213e9_OSI604_Omega_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:48:45.854Z",
+      "confidence_score": 0.9
+    }
+  }
+}

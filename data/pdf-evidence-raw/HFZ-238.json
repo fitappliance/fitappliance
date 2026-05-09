@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-40200",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HFZ-238",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/4/3/a/843a9649f6d9bc5671ca9f7b407871c97c47c992_Haier_HFZ_238_245L_Upright_Freezer_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HFZ-238",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1705,
+      "width_mm": 580,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/4/3/a/843a9649f6d9bc5671ca9f7b407871c97c47c992_Haier_HFZ_238_245L_Upright_Freezer_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:22:42.801Z",
+      "confidence_score": 0.9
+    }
+  }
+}

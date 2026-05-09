@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-73207",
+  "category": "fridge",
+  "brand": "Smeg",
+  "model": "SR611X",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/c/4/f/5c4fec9da381e2252efbbb3e2b16e4b4c32e0fe2_SR611X_Smeg_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "SR611X",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1770,
+      "width_mm": 912,
+      "depth_mm": 735,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/c/4/f/5c4fec9da381e2252efbbb3e2b16e4b4c32e0fe2_SR611X_Smeg_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:44:17.200Z",
+      "confidence_score": 0.9
+    }
+  }
+}

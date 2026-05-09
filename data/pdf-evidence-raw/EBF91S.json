@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-58681",
+  "category": "fridge",
+  "brand": "Esatto",
+  "model": "EBF91S",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/a/4/6/7a4682dde57209ac9a606f481a4621ca0bdd5ef2_Esatto_ProductCard_EBF91S.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "EBF91S",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 837,
+      "width_mm": 470,
+      "depth_mm": 492,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/a/4/6/7a4682dde57209ac9a606f481a4621ca0bdd5ef2_Esatto_ProductCard_EBF91S.pdf",
+      "extraction_date": "2026-05-09T09:14:29.583Z",
+      "confidence_score": 0.9
+    }
+  }
+}

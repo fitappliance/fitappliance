@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-162742",
+  "category": "dishwasher",
+  "brand": "Haier",
+  "model": "HDW15U3S1",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/4/e/1/f4e16ffb9fe4af9d4b78dbada32514cb939f2bcf_QRG_AU_61660.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HDW15U3S1",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 597,
+      "depth_mm": 574,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/4/e/1/f4e16ffb9fe4af9d4b78dbada32514cb939f2bcf_QRG_AU_61660.pdf",
+      "extraction_date": "2026-05-09T08:42:12.292Z",
+      "confidence_score": 0.9
+    }
+  }
+}

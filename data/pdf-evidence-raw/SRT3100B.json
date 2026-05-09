@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-103791",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SRT3100B",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/0/4/e/404e37bb0bb995fd31c82ceee7592e5f73174372_SRT3100B_Samsung_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SRT3100B",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1635,
+      "width_mm": 600,
+      "depth_mm": 672,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/0/4/e/404e37bb0bb995fd31c82ceee7592e5f73174372_SRT3100B_Samsung_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:39:44.627Z",
+      "confidence_score": 0.9
+    }
+  }
+}

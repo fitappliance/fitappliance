@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-150875",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SRT4200S",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/9/b/a/39baa395fb8eb616f40166ec38457395f9c692db_SRT4200S_Spec_Sheet_Final.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SRT4200S",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1715,
+      "width_mm": 700,
+      "depth_mm": 672,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/9/b/a/39baa395fb8eb616f40166ec38457395f9c692db_SRT4200S_Spec_Sheet_Final.pdf",
+      "extraction_date": "2026-05-09T09:39:58.075Z",
+      "confidence_score": 0.9
+    }
+  }
+}

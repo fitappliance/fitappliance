@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-70960",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "RS7621SLK1",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/8/7/0/3870ec03d1df325a626fa8b91e2308887305adc5_RS7621SLK1_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "RS7621SLK1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 2134,
+      "width_mm": 756,
+      "depth_mm": 610,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 3,
+      "left_mm": 3,
+      "right_mm": 3,
+      "rear_mm": 3
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/8/7/0/3870ec03d1df325a626fa8b91e2308887305adc5_RS7621SLK1_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:21:46.613Z",
+      "confidence_score": 0.9
+    }
+  }
+}

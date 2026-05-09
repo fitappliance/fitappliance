@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-79127",
+  "category": "dishwasher",
+  "brand": "Haier",
+  "model": "HDW15V2S1",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/2/1/6/12163034e00f9a948eb66cbda8e6e1457158c403_HDW15V2S1_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HDW15V2S1",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 598,
+      "depth_mm": 598,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/2/1/6/12163034e00f9a948eb66cbda8e6e1457158c403_HDW15V2S1_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:42:16.183Z",
+      "confidence_score": 0.9
+    }
+  }
+}

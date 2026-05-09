@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-99518",
+  "category": "fridge",
+  "brand": "Bosch",
+  "model": "KGN36VI3AA",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/3/8/7/b3875ba2bc11e20f054c9283c3ad60cd4964ed65_KGN36VI3AA_Bosch_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "KGN36VI3AA",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1860,
+      "width_mm": 600,
+      "depth_mm": 660,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/3/8/7/b3875ba2bc11e20f054c9283c3ad60cd4964ed65_KGN36VI3AA_Bosch_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:06:06.869Z",
+      "confidence_score": 0.9
+    }
+  }
+}

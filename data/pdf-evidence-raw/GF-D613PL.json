@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-52325",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GF-D613PL",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/7/a/0/57a0c5b10274d642886ff7d1a77623285ad76aac_LG_GF_D613PL_613L_French_Door_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GF-D613PL",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1780,
+      "width_mm": 915,
+      "depth_mm": 770,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/7/a/0/57a0c5b10274d642886ff7d1a77623285ad76aac_LG_GF_D613PL_613L_French_Door_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:36:49.049Z",
+      "confidence_score": 0.9
+    }
+  }
+}

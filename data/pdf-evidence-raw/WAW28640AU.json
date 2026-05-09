@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-63684",
+  "category": "washing_machine",
+  "brand": "Bosch",
+  "model": "WAW28640AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/5/f/1/55f173a6f597d7312f4bbf0069991146502903b3_Bosch_WAW28640AU_Serie_8_9kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "WAW28640AU",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 848,
+      "width_mm": 598,
+      "depth_mm": 590,
+      "door_open_90_depth_mm": 1710
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/5/f/1/55f173a6f597d7312f4bbf0069991146502903b3_Bosch_WAW28640AU_Serie_8_9kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:01:33.254Z",
+      "confidence_score": 0.9
+    }
+  }
+}

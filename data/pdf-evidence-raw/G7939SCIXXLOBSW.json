@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-162467",
+  "category": "dishwasher",
+  "brand": "Miele",
+  "model": "G7939SCIXXLOBSW",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/c/2/9/2c295461d96c2beea8d53ccfdc8389ea5603e23d_G7939_SCi_XXL_OBSW_12531730.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Miele",
+    "sku": "G7939SCIXXLOBSW",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 598,
+      "depth_mm": 570,
+      "door_open_90_depth_mm": 1205
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/c/2/9/2c295461d96c2beea8d53ccfdc8389ea5603e23d_G7939_SCi_XXL_OBSW_12531730.pdf",
+      "extraction_date": "2026-05-09T08:47:19.064Z",
+      "confidence_score": 0.9
+    }
+  }
+}

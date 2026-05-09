@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-54988",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WD1410SBW",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/0/b/8/d0b8b54e17c0e4cb72b9e013026b902fb459526a_LG_WD1410SBW_10kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WD1410SBW",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 680,
+      "door_open_90_depth_mm": 160
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/0/b/8/d0b8b54e17c0e4cb72b9e013026b902fb459526a_LG_WD1410SBW_10kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:09:21.438Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-68088",
+  "category": "dryer",
+  "brand": "Samsung",
+  "model": "DV80M5010QW",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/5/c/f/d5cfcd6cf92685f8f454dbf568f339e662c3d6ee_DV80M5010QW_Samsung_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "DV80M5010QW",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 640,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/5/c/f/d5cfcd6cf92685f8f454dbf568f339e662c3d6ee_DV80M5010QW_Samsung_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:00:59.260Z",
+      "confidence_score": 0.9
+    }
+  }
+}

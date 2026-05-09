@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-63613",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WD1409NCW",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/8/0/5/58057ba0dadcccdc52543f0542ae0e54db156e60_LG_WD1409NCW_9kg_Front_Load_Washing_Machine_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WD1409NCW",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 610,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 5,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 100
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/8/0/5/58057ba0dadcccdc52543f0542ae0e54db156e60_LG_WD1409NCW_9kg_Front_Load_Washing_Machine_User_Manual.pdf",
+      "extraction_date": "2026-05-09T10:09:13.972Z",
+      "confidence_score": 0.9
+    }
+  }
+}

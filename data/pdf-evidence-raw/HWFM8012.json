@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-72574",
+  "category": "washing_machine",
+  "brand": "Hisense",
+  "model": "HWFM8012",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/1/6/d/d16daea9ffef5f573ad1331a408c6bea159dad2b_HWFM8012_Hisense_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HWFM8012",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 595,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/1/6/d/d16daea9ffef5f573ad1331a408c6bea159dad2b_HWFM8012_Hisense_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:07:36.271Z",
+      "confidence_score": 0.9
+    }
+  }
+}

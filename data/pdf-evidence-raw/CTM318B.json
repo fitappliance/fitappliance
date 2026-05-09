@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-79170",
+  "category": "fridge",
+  "brand": "CHiQ",
+  "model": "CTM318B",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/4/4/d/b44d141c80c3fb9ce2b52539a63fc33a48b1fe01_CTM318B_CHiQ_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "CHiQ",
+    "sku": "CTM318B",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1520,
+      "width_mm": 595,
+      "depth_mm": 670,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/4/4/d/b44d141c80c3fb9ce2b52539a63fc33a48b1fe01_CTM318B_CHiQ_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:11:13.699Z",
+      "confidence_score": 0.9
+    }
+  }
+}

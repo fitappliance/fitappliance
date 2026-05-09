@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-11772",
+  "category": "dishwasher",
+  "brand": "Smeg",
+  "model": "DWA157B",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/2/d/a/22daf88bb19af743b46d166d1c0d92ebf47e9def_dwa157b.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "DWA157B",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 598,
+      "depth_mm": 596,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/2/d/a/22daf88bb19af743b46d166d1c0d92ebf47e9def_dwa157b.pdf",
+      "extraction_date": "2026-05-09T08:49:35.442Z",
+      "confidence_score": 0.9
+    }
+  }
+}

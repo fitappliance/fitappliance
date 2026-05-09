@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-52135",
+  "category": "dishwasher",
+  "brand": "Smeg",
+  "model": "DWAI6314X",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/1/8/b/218b4bfe62e41bf911641517d8eb36c632bc75fd_Smeg_DWAI6314X_Semi_Integrated_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "DWAI6314X",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 868,
+      "width_mm": 598,
+      "depth_mm": 570,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/1/8/b/218b4bfe62e41bf911641517d8eb36c632bc75fd_Smeg_DWAI6314X_Semi_Integrated_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:51:51.815Z",
+      "confidence_score": 0.9
+    }
+  }
+}

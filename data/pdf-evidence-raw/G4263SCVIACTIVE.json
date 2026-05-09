@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-52893",
+  "category": "dishwasher",
+  "brand": "Miele",
+  "model": "G4263SCVIACTIVE",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/4/4/e/744ed912f348b113987b6f74560979536d11e89a_G4263SCVIACTIVE_Miele_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Miele",
+    "sku": "G4263SCVIACTIVE",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 805,
+      "width_mm": 598,
+      "depth_mm": 570,
+      "door_open_90_depth_mm": 1165
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/4/4/e/744ed912f348b113987b6f74560979536d11e89a_G4263SCVIACTIVE_Miele_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:45:25.819Z",
+      "confidence_score": 0.9
+    }
+  }
+}

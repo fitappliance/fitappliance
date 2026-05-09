@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-153208",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HCF97",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/6/0/9/8609397e57bdc61f582b0c9815e18293a78533b5_QRG_AU_62252.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HCF97",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 545,
+      "depth_mm": 500,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/6/0/9/8609397e57bdc61f582b0c9815e18293a78533b5_QRG_AU_62252.pdf",
+      "extraction_date": "2026-05-09T09:24:56.757Z",
+      "confidence_score": 0.9
+    }
+  }
+}

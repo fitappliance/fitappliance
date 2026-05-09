@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-20681",
+  "category": "dishwasher",
+  "brand": "ILVE",
+  "model": "IVFSD60",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/3/b/9/63b93f728ccd40bb4245ad7e4f5d183e9866b6de_ivfsd60_installationandoperatinginstructions.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "ILVE",
+    "sku": "IVFSD60",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 598,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/3/b/9/63b93f728ccd40bb4245ad7e4f5d183e9866b6de_ivfsd60_installationandoperatinginstructions.pdf",
+      "extraction_date": "2026-05-09T08:43:10.828Z",
+      "confidence_score": 0.9
+    }
+  }
+}

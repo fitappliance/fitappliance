@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-33404",
+  "category": "dishwasher",
+  "brand": "LG",
+  "model": "LD1484T4",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/e/2/0/3e20c9dd109499f2e9ea939abaf0accf8c6b5f70_LG_LD1484T4_Freestanding_Stainless_Dishwasher_with_True_Steam__Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "LD1484T4",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/e/2/0/3e20c9dd109499f2e9ea939abaf0accf8c6b5f70_LG_LD1484T4_Freestanding_Stainless_Dishwasher_with_True_Steam__Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:43:37.013Z",
+      "confidence_score": 0.9
+    }
+  }
+}

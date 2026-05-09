@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-82876",
+  "category": "dishwasher",
+  "brand": "Bosch",
+  "model": "SMU88TS02A",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/c/2/0/ec20d34bc9d985a295b830becb3647bd3003e68e_SMU88TS02A_Bosch_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "SMU88TS02A",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 815,
+      "width_mm": 598,
+      "depth_mm": 573,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/c/2/0/ec20d34bc9d985a295b830becb3647bd3003e68e_SMU88TS02A_Bosch_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:36:35.621Z",
+      "confidence_score": 0.9
+    }
+  }
+}

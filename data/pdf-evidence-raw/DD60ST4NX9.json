@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-153385",
+  "category": "dishwasher",
+  "brand": "Fisher & Paykel",
+  "model": "DD60ST4NX9",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/6/2/9/b6292127b3e8808a5f30f5b6ae76d46f81578115_SpecificationGuide_DD60ST4NX9_DD60ST4NB9_DD60ST4ZB9_DD60ST4HNX9_DD60ST4HNB9_DD60ST4HZB9.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "DD60ST4NX9",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 454,
+      "width_mm": 599,
+      "depth_mm": 573,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/6/2/9/b6292127b3e8808a5f30f5b6ae76d46f81578115_SpecificationGuide_DD60ST4NX9_DD60ST4NB9_DD60ST4ZB9_DD60ST4HNX9_DD60ST4HNB9_DD60ST4HZB9.pdf",
+      "extraction_date": "2026-05-09T08:39:44.484Z",
+      "confidence_score": 0.9
+    }
+  }
+}

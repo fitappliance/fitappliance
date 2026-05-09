@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-59259",
+  "category": "fridge",
+  "brand": "Beko",
+  "model": "RDNE400K30ZX",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/3/a/1/43a1574a6890a42b9852f6a151019cb727e1b59e_Beko_RDNE400K30ZX_400L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "RDNE400K30ZX",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1850,
+      "width_mm": 595,
+      "depth_mm": 650,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/3/a/1/43a1574a6890a42b9852f6a151019cb727e1b59e_Beko_RDNE400K30ZX_400L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:05:43.321Z",
+      "confidence_score": 0.9
+    }
+  }
+}

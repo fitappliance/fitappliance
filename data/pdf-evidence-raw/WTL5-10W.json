@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-157410",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WTL5-10W",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/c/9/a/dc9a4a9d1c47c45fcdfcd6ed90723695bd10dd2e_WTL5_10W_Specsheet_230929_V1.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WTL5-10W",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/c/9/a/dc9a4a9d1c47c45fcdfcd6ed90723695bd10dd2e_WTL5_10W_Specsheet_230929_V1.pdf",
+      "extraction_date": "2026-05-09T10:10:28.199Z",
+      "confidence_score": 0.9
+    }
+  }
+}

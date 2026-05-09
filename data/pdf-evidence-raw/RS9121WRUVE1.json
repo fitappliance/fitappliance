@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-166524",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "RS9121WRUVE1",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/d/3/f/8d3f7375169b6196d8453b09cbd63b2b5d7a0f73_Fisher_and_Paykel___RS9121WRUVE1___Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "RS9121WRUVE1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 2134,
+      "width_mm": 908,
+      "depth_mm": 610,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 3,
+      "left_mm": 3,
+      "right_mm": 3,
+      "rear_mm": 3
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/d/3/f/8d3f7375169b6196d8453b09cbd63b2b5d7a0f73_Fisher_and_Paykel___RS9121WRUVE1___Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:16:37.644Z",
+      "confidence_score": 0.9
+    }
+  }
+}

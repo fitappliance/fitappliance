@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-84989",
+  "category": "dishwasher",
+  "brand": "Bosch",
+  "model": "SBV88TX06A",
+  "source_url": "https://www.appliancesonline.com.au/ak/f/7/2/b/f72bf6c50bef0c3c91a9ec7efebd4441bdb84f38_SBV88TX06A_Bosch_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "SBV88TX06A",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 865,
+      "width_mm": 598,
+      "depth_mm": 550,
+      "door_open_90_depth_mm": 1200
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/7/2/b/f72bf6c50bef0c3c91a9ec7efebd4441bdb84f38_SBV88TX06A_Bosch_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:31:27.636Z",
+      "confidence_score": 0.9
+    }
+  }
+}

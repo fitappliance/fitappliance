@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-56603",
+  "category": "dishwasher",
+  "brand": "Haier",
+  "model": "HDW15G3X",
+  "source_url": "https://www.appliancesonline.com.au/ak/2/c/6/b/2c6ba1e2b41712f4d587cfe2b35b5c89d5a33f11_Haier_HDW15G3X_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HDW15G3X",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 598,
+      "depth_mm": 598,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/2/c/6/b/2c6ba1e2b41712f4d587cfe2b35b5c89d5a33f11_Haier_HDW15G3X_Freestanding_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:42:05.685Z",
+      "confidence_score": 0.9
+    }
+  }
+}

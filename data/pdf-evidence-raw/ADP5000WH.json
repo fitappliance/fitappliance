@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-11571",
+  "category": "dishwasher",
+  "brand": "Whirlpool",
+  "model": "ADP5000WH",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/5/a/0/75a03239d79edebd7f88a26ab0312541191e2cc8_productsheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Whirlpool",
+    "sku": "ADP5000WH",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 590,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/5/a/0/75a03239d79edebd7f88a26ab0312541191e2cc8_productsheet.pdf",
+      "extraction_date": "2026-05-09T08:55:21.347Z",
+      "confidence_score": 0.9
+    }
+  }
+}

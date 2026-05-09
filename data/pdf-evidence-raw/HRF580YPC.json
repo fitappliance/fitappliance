@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-129001",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HRF580YPC",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/8/1/8/3818dbaf57a9f2f2ca9a40e1ad27ef9c588c5a2c_QRG_AU_62245.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HRF580YPC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1775,
+      "width_mm": 830,
+      "depth_mm": 705,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/8/1/8/3818dbaf57a9f2f2ca9a40e1ad27ef9c588c5a2c_QRG_AU_62245.pdf",
+      "extraction_date": "2026-05-09T09:23:58.336Z",
+      "confidence_score": 0.9
+    }
+  }
+}

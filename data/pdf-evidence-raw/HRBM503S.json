@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-145070",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HRBM503S",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/f/0/6/ef06f78ac1f7a69fa721fcce24c82130dd1cf33d_HRBM503S_ConsumerSpecs_.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HRBM503S",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 794,
+      "depth_mm": 749,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/f/0/6/ef06f78ac1f7a69fa721fcce24c82130dd1cf33d_HRBM503S_ConsumerSpecs_.pdf",
+      "extraction_date": "2026-05-09T09:29:16.630Z",
+      "confidence_score": 0.9
+    }
+  }
+}

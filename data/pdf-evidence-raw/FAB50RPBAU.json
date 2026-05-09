@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-65869",
+  "category": "fridge",
+  "brand": "Smeg",
+  "model": "FAB50RPBAU",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/d/7/8/bd780617da0517bb806db775f046b68a78c127a2_FAB50RPBAU_Smeg_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "FAB50RPBAU",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1872,
+      "width_mm": 796,
+      "depth_mm": 780,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/d/7/8/bd780617da0517bb806db775f046b68a78c127a2_FAB50RPBAU_Smeg_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:48:18.210Z",
+      "confidence_score": 0.9
+    }
+  }
+}

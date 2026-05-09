@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-96216",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HRCD650SW",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/0/e/7/70e7c730d2c620deb9a653ea27433aa1b308ab4d_HRCD650SW_Hisense_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HRCD650SW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1785,
+      "width_mm": 912,
+      "depth_mm": 725,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/0/e/7/70e7c730d2c620deb9a653ea27433aa1b308ab4d_HRCD650SW_Hisense_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:30:03.296Z",
+      "confidence_score": 0.9
+    }
+  }
+}

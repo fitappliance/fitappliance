@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-41158",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HSBS610IS",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/2/8/a/a28afa02fbb477363b9743120d6ba841528de2de_Haier_HSBS610IS_604L_Side_by_Side_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HSBS610IS",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1790,
+      "width_mm": 908,
+      "depth_mm": 710,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/2/8/a/a28afa02fbb477363b9743120d6ba841528de2de_Haier_HSBS610IS_604L_Side_by_Side_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:27:17.501Z",
+      "confidence_score": 0.9
+    }
+  }
+}

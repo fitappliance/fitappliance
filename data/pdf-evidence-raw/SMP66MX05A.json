@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-104886",
+  "category": "dishwasher",
+  "brand": "Bosch",
+  "model": "SMP66MX05A",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/d/a/5/bda5de081ab7f489741a9772eee8cf4df63dcebf_SMP66MX05A_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "SMP66MX05A",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 815,
+      "width_mm": 598,
+      "depth_mm": 573,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/d/a/5/bda5de081ab7f489741a9772eee8cf4df63dcebf_SMP66MX05A_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:32:44.019Z",
+      "confidence_score": 0.9
+    }
+  }
+}

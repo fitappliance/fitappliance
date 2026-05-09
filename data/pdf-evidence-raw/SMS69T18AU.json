@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-31083",
+  "category": "dishwasher",
+  "brand": "Bosch",
+  "model": "SMS69T18AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/c/3/a/3c3a2ce5af53c25c0261e7face751a71ed3840b0_sms69t18au_installationinstructions.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "SMS69T18AU",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 815,
+      "width_mm": 598,
+      "depth_mm": 573,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 30,
+      "left_mm": 2,
+      "right_mm": 2,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/c/3/a/3c3a2ce5af53c25c0261e7face751a71ed3840b0_sms69t18au_installationinstructions.pdf",
+      "extraction_date": "2026-05-09T08:34:30.892Z",
+      "confidence_score": 0.9
+    }
+  }
+}

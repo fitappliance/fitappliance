@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-61422",
+  "category": "dryer",
+  "brand": "Electrolux",
+  "model": "EDH3586GDW",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/8/d/8/b8d83fd4a0da89cf7b37bd1e4605550dc91e9752_EDH3586GDW_Electrolux_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Electrolux",
+    "sku": "EDH3586GDW",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": 380
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/8/d/8/b8d83fd4a0da89cf7b37bd1e4605550dc91e9752_EDH3586GDW_Electrolux_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:58:10.847Z",
+      "confidence_score": 0.9
+    }
+  }
+}

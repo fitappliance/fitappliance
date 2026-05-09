@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-63772",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GT-442SDC",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/6/2/1/16211c62b5a97a319a43b3a7b12581e50834d3f9_GT_442SDC_LG_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GT-442SDC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1690,
+      "width_mm": 700,
+      "depth_mm": 730,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/6/2/1/16211c62b5a97a319a43b3a7b12581e50834d3f9_GT_442SDC_LG_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:34:37.779Z",
+      "confidence_score": 0.9
+    }
+  }
+}

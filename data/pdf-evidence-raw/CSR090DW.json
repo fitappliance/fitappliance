@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-103158",
+  "category": "fridge",
+  "brand": "CHiQ",
+  "model": "CSR090DW",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/3/8/8/33885ecd012e4f95bcb0336336c31f146d4881bd_CSR090DW_CHiQ_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "CHiQ",
+    "sku": "CSR090DW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 831,
+      "width_mm": 474,
+      "depth_mm": 447,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/3/8/8/33885ecd012e4f95bcb0336336c31f146d4881bd_CSR090DW_CHiQ_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:09:25.218Z",
+      "confidence_score": 0.9
+    }
+  }
+}

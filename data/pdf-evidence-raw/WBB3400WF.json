@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-48213",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WBB3400WF",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/9/a/e/79ae573a08aff8c6d0a1a7e5ae7f056a91cfcda4_Westinghouse_WBB3400WF_340L_Bottom_Mount_Fridge_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WBB3400WF",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1631,
+      "width_mm": 1646,
+      "depth_mm": 1646,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/9/a/e/79ae573a08aff8c6d0a1a7e5ae7f056a91cfcda4_Westinghouse_WBB3400WF_340L_Bottom_Mount_Fridge_Datasheet.pdf",
+      "extraction_date": "2026-05-09T09:50:58.300Z",
+      "confidence_score": 0.9
+    }
+  }
+}

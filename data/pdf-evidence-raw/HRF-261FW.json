@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-24451",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HRF-261FW",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/5/2/4/55246ef6f5c9a2521e2498a9a64733db0924906c_HRF_261FW_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HRF-261FW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1610,
+      "width_mm": 595,
+      "depth_mm": 650,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/5/2/4/55246ef6f5c9a2521e2498a9a64733db0924906c_HRF_261FW_User_Manual.pdf",
+      "extraction_date": "2026-05-09T09:22:49.932Z",
+      "confidence_score": 0.9
+    }
+  }
+}

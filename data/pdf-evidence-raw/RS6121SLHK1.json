@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-105296",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "RS6121SLHK1",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/f/7/e/5f7ecab3d9df36507735f25ae65f7fa9ef659b86_Fisher_and_Paykel___RS6121SLHK1___Specifications_Sheet_UPDATED_2025.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "RS6121SLHK1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 2134,
+      "width_mm": 603,
+      "depth_mm": 610,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/f/7/e/5f7ecab3d9df36507735f25ae65f7fa9ef659b86_Fisher_and_Paykel___RS6121SLHK1___Specifications_Sheet_UPDATED_2025.pdf",
+      "extraction_date": "2026-05-09T09:16:51.876Z",
+      "confidence_score": 0.9
+    }
+  }
+}

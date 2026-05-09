@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-66212",
+  "category": "dryer",
+  "brand": "ASKO",
+  "model": "T208HW",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/c/f/0/6cf0b3ad394ad4bd03c91e246ff5ae2c99f996a7_T208HW_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "ASKO",
+    "sku": "T208HW",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 595,
+      "depth_mm": 640,
+      "door_open_90_depth_mm": 1165
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/c/f/0/6cf0b3ad394ad4bd03c91e246ff5ae2c99f996a7_T208HW_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:55:59.761Z",
+      "confidence_score": 0.9
+    }
+  }
+}

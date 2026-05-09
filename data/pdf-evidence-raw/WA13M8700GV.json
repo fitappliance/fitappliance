@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-60274",
+  "category": "washing_machine",
+  "brand": "Samsung",
+  "model": "WA13M8700GV",
+  "source_url": "https://www.appliancesonline.com.au/ak/1/e/e/7/1ee72cde7d72194c91c9615ab450b0337ef3692c_WA13M8700GV_Samsung_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "WA13M8700GV",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 1077,
+      "width_mm": 686,
+      "depth_mm": 744,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/e/e/7/1ee72cde7d72194c91c9615ab450b0337ef3692c_WA13M8700GV_Samsung_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:12:23.096Z",
+      "confidence_score": 0.9
+    }
+  }
+}

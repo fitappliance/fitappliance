@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-86302",
+  "category": "fridge",
+  "brand": "Electrolux",
+  "model": "EHE5267SC",
+  "source_url": "https://www.appliancesonline.com.au/ak/5/a/c/c/5acc221c944c21b05d68ad1026e09dfb531921f2_EHE5267SC_Electrolux_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Electrolux",
+    "sku": "EHE5267SC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 796,
+      "depth_mm": 781,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/a/c/c/5acc221c944c21b05d68ad1026e09dfb531921f2_EHE5267SC_Electrolux_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:11:34.548Z",
+      "confidence_score": 0.9
+    }
+  }
+}

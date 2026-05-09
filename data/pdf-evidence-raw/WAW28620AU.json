@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-63683",
+  "category": "washing_machine",
+  "brand": "Bosch",
+  "model": "WAW28620AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/3/f/7/63f79721680e2e5ed67e7377fe4837f456e2413a_WAW28620AU_Bosch_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "WAW28620AU",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 848,
+      "width_mm": 598,
+      "depth_mm": 590,
+      "door_open_90_depth_mm": 171
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/3/f/7/63f79721680e2e5ed67e7377fe4837f456e2413a_WAW28620AU_Bosch_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:01:29.260Z",
+      "confidence_score": 0.9
+    }
+  }
+}

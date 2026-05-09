@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-40513",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GF-5D906SL",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/6/7/4/66743ad54b765ddd9789dd1341af828cb69ae895_LG_GF_5D906SL_906L_French_Door_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GF-5D906SL",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1800,
+      "width_mm": 912,
+      "depth_mm": 915,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/6/7/4/66743ad54b765ddd9789dd1341af828cb69ae895_LG_GF_5D906SL_906L_French_Door_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:35:37.262Z",
+      "confidence_score": 0.9
+    }
+  }
+}

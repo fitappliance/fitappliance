@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-96217",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HRTF535SW",
+  "source_url": "https://www.appliancesonline.com.au/ak/d/0/c/f/d0cfea3d736fdb4bc65efa77c871a8de8e2725b3_HRTF535SW_Hisense_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HRTF535SW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1720,
+      "width_mm": 794,
+      "depth_mm": 685,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/0/c/f/d0cfea3d736fdb4bc65efa77c871a8de8e2725b3_HRTF535SW_Hisense_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:29:25.064Z",
+      "confidence_score": 0.9
+    }
+  }
+}

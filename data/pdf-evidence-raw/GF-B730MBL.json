@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-84967",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GF-B730MBL",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/d/e/6/3de634a9af43f94a94148d3c495bcdc20962ebdc_GF_B730MBL_LG_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GF-B730MBL",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1787,
+      "width_mm": 912,
+      "depth_mm": 739,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/d/e/6/3de634a9af43f94a94148d3c495bcdc20962ebdc_GF_B730MBL_LG_User_Manual.pdf",
+      "extraction_date": "2026-05-09T09:36:31.333Z",
+      "confidence_score": 0.9
+    }
+  }
+}

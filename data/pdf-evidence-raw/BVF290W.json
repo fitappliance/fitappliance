@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-80587",
+  "category": "fridge",
+  "brand": "Beko",
+  "model": "BVF290W",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/b/2/d/3b2d76a1ada815cbb5566959b0dc25a1e199a2f1_BVF290W_Updated_Beko_New_Specification_Sheet_2023.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "BVF290W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1714,
+      "width_mm": 595,
+      "depth_mm": 650,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/b/2/d/3b2d76a1ada815cbb5566959b0dc25a1e199a2f1_BVF290W_Updated_Beko_New_Specification_Sheet_2023.pdf",
+      "extraction_date": "2026-05-09T09:01:28.441Z",
+      "confidence_score": 0.9
+    }
+  }
+}

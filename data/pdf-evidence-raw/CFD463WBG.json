@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-77649",
+  "category": "fridge",
+  "brand": "CHiQ",
+  "model": "CFD463WBG",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/5/c/e/45ce9b22f8f42c94610c554e4143e55ae4f43d68_CFD463WBG_CHiQ_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "CHiQ",
+    "sku": "CFD463WBG",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1815,
+      "width_mm": 785,
+      "depth_mm": 685,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/5/c/e/45ce9b22f8f42c94610c554e4143e55ae4f43d68_CFD463WBG_CHiQ_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:08:47.160Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-57866",
+  "category": "fridge",
+  "brand": "Esatto",
+  "model": "EBF95S",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/5/c/0/75c08fc38c92fd42bc43ce0b837d0f5693d91908_Esatto_EBF95S_95L_Bar_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "EBF95S",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 472,
+      "depth_mm": 450,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/5/c/0/75c08fc38c92fd42bc43ce0b837d0f5693d91908_Esatto_EBF95S_95L_Bar_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:14:40.880Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-51897",
+  "category": "dryer",
+  "brand": "Midea",
+  "model": "MDV07",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/0/9/f/309fb330a3904bc20b4de611ebce220241daca41_Midea_MDV07_7kg_Vented_Dryer_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Midea",
+    "sku": "MDV07",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 840,
+      "width_mm": 595,
+      "depth_mm": 555,
+      "door_open_90_depth_mm": 180
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/0/9/f/309fb330a3904bc20b4de611ebce220241daca41_Midea_MDV07_7kg_Vented_Dryer_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:00:19.455Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-103149",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SRF630BFH2",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/9/e/3/99e3186cc76bb2c6777969f545171bcf21f710db_SRF630BFH2_Sampford_IXL_User_Manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SRF630BFH2",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1777,
+      "width_mm": 908,
+      "depth_mm": 742,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 95,
+      "right_mm": 95,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/9/e/3/99e3186cc76bb2c6777969f545171bcf21f710db_SRF630BFH2_Sampford_IXL_User_Manual.pdf",
+      "extraction_date": "2026-05-09T09:40:31.289Z",
+      "confidence_score": 0.9
+    }
+  }
+}

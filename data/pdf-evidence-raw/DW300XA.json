@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-1713",
+  "category": "dishwasher",
+  "brand": "Omega",
+  "model": "DW300XA",
+  "source_url": "https://www.appliancesonline.com.au/ak/4/3/9/7/4397d528d61408247e8944d58d34331e35bd7dab_dw300xa_product_manual.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Omega",
+    "sku": "DW300XA",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 445,
+      "depth_mm": 580,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/3/9/7/4397d528d61408247e8944d58d34331e35bd7dab_dw300xa_product_manual.pdf",
+      "extraction_date": "2026-05-09T08:47:36.728Z",
+      "confidence_score": 0.9
+    }
+  }
+}

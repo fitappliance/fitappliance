@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-84580",
+  "category": "dishwasher",
+  "brand": "ASKO",
+  "model": "DBI253IBS",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/6/b/6/66b6e74cdf52d022db6541732b7b1833d1a26a59_DBI253IBS_ASKO_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "ASKO",
+    "sku": "DBI253IBS",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 819,
+      "width_mm": 596,
+      "depth_mm": 559,
+      "door_open_90_depth_mm": 1198
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/6/b/6/66b6e74cdf52d022db6541732b7b1833d1a26a59_DBI253IBS_ASKO_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:28:46.477Z",
+      "confidence_score": 0.9
+    }
+  }
+}

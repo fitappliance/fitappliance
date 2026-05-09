@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-50175",
+  "category": "fridge",
+  "brand": "Midea",
+  "model": "MB112W",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/0/0/1/600161b72f3c775c683bad1e56ff2ec439d1873e_Midea_MB112W_112L_Bar_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Midea",
+    "sku": "MB112W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 860,
+      "width_mm": 470,
+      "depth_mm": 500,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/0/0/1/600161b72f3c775c683bad1e56ff2ec439d1873e_Midea_MB112W_112L_Bar_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:37:47.561Z",
+      "confidence_score": 0.9
+    }
+  }
+}

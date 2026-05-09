@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-40198",
+  "category": "dryer",
+  "brand": "Haier",
+  "model": "HDY-E60",
+  "source_url": "https://www.appliancesonline.com.au/ak/6/2/9/c/629c4bac9ff353fd5aafc12aa27c60c43fb49eee_Haier_HDY_E60_6kg_Dryer_Datasheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HDY-E60",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 830,
+      "width_mm": 600,
+      "depth_mm": 560,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/2/9/c/629c4bac9ff353fd5aafc12aa27c60c43fb49eee_Haier_HDY_E60_6kg_Dryer_Datasheet.pdf",
+      "extraction_date": "2026-05-09T08:59:28.431Z",
+      "confidence_score": 0.9
+    }
+  }
+}

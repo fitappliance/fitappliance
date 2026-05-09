@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-145960",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WQE5600BA",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/4/6/0/a4609480495426df9353ec515cc0324f35ec8a56_Westinghouse_WQE5600BA_Factsheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WQE5600BA",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1795,
+      "width_mm": 896,
+      "depth_mm": 723,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/4/6/0/a4609480495426df9353ec515cc0324f35ec8a56_Westinghouse_WQE5600BA_Factsheet.pdf",
+      "extraction_date": "2026-05-09T09:50:05.389Z",
+      "confidence_score": 0.9
+    }
+  }
+}

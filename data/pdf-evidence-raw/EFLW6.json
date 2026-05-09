@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-57646",
+  "category": "washing_machine",
+  "brand": "Esatto",
+  "model": "EFLW6",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/d/6/2/9d62ae077d3dc88985b9a97783fd0fb4aa526bd9_EFLW6_Esatto_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "EFLW6",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 595,
+      "depth_mm": 495,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/d/6/2/9d62ae077d3dc88985b9a97783fd0fb4aa526bd9_EFLW6_Esatto_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T10:03:52.950Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-50176",
+  "category": "fridge",
+  "brand": "Midea",
+  "model": "MB46W",
+  "source_url": "https://www.appliancesonline.com.au/ak/9/a/7/a/9a7a601b1471ea931c0fc49381e3c21f56137497_Midea_MB46W_46L_Bar_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Midea",
+    "sku": "MB46W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 492,
+      "width_mm": 472,
+      "depth_mm": 450,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/a/7/a/9a7a601b1471ea931c0fc49381e3c21f56137497_Midea_MB46W_46L_Bar_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:37:51.051Z",
+      "confidence_score": 0.9
+    }
+  }
+}

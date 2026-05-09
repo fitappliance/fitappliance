@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-49108",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HRF422TW1",
+  "source_url": "https://www.appliancesonline.com.au/ak/3/9/0/a/390a6f8cbc23a53bb1dd4bf0cbac6bcff8fa7e74_Haier_HRF422TW1_422L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HRF422TW1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1724,
+      "width_mm": 723,
+      "depth_mm": 694,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/9/0/a/390a6f8cbc23a53bb1dd4bf0cbac6bcff8fa7e74_Haier_HRF422TW1_422L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:26:24.698Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-65871",
+  "category": "fridge",
+  "brand": "Smeg",
+  "model": "FAB50RWHAU",
+  "source_url": "https://www.appliancesonline.com.au/ak/b/0/c/0/b0c01221b0bc2077389b25915e53c0a690d8e322_FAB50RWHAU_Smeg_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "FAB50RWHAU",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1872,
+      "width_mm": 796,
+      "depth_mm": 780,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/0/c/0/b0c01221b0bc2077389b25915e53c0a690d8e322_FAB50RWHAU_Smeg_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T09:48:27.505Z",
+      "confidence_score": 0.9
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-45240",
+  "category": "dishwasher",
+  "brand": "Bosch",
+  "model": "SMP63M05AU",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/a/5/3/aa53a75b13b030d87a4b69abc9f6c538d3320019_Bosch_SMP63M05AU_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Bosch",
+    "sku": "SMP63M05AU",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 815,
+      "width_mm": 598,
+      "depth_mm": 573,
+      "door_open_90_depth_mm": 1150
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/a/5/3/aa53a75b13b030d87a4b69abc9f6c538d3320019_Bosch_SMP63M05AU_Under_Bench_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:32:28.977Z",
+      "confidence_score": 0.9
+    }
+  }
+}

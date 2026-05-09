@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-53505",
+  "category": "dishwasher",
+  "brand": "Smeg",
+  "model": "DWAFI6D15T",
+  "source_url": "https://www.appliancesonline.com.au/ak/8/0/a/f/80afd88ea0fc06b1275e60e36e3eb3489899e4f1_Smeg_DWAFI6D15T_Diamond_Series_Fully_Integrated_Dishwasher_Specifications_Sheet.pdf",
+  "verified_at": "2026-05-09",
+  "extracted": {
+    "brand": "Smeg",
+    "sku": "DWAFI6D15T",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 860,
+      "width_mm": 598,
+      "depth_mm": 547,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/0/a/f/80afd88ea0fc06b1275e60e36e3eb3489899e4f1_Smeg_DWAFI6D15T_Diamond_Series_Fully_Integrated_Dishwasher_Specifications_Sheet.pdf",
+      "extraction_date": "2026-05-09T08:51:40.472Z",
+      "confidence_score": 0.9
+    }
+  }
+}
