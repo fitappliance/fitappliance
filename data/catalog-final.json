@@ -12,22 +12,22 @@
   },
   "latest_verified_at": "2026-05-10",
   "summary": {
-    "total_products": 3513,
-    "active_products": 1390,
-    "evidence_files": 1494,
-    "merged_products": 1478,
+    "total_products": 3514,
+    "active_products": 1391,
+    "evidence_files": 1495,
+    "merged_products": 1479,
     "unmatched_evidence_files": 3,
     "duplicate_evidence_files": 16,
     "categories": {
       "fridge": 1986,
       "dishwasher": 704,
-      "dryer": 162,
+      "dryer": 163,
       "washing_machine": 661
     },
     "official_pdf_by_category": {
       "fridge": 778,
       "dishwasher": 359,
-      "dryer": 93,
+      "dryer": 94,
       "washing_machine": 248
     }
   },
@@ -70912,6 +70912,59 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/DV80M5010QW.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-samsung-dv80t5420ab",
+      "cat": "dryer",
+      "brand": "Samsung",
+      "model": "DV80T5420AB",
+      "displayName": "Samsung DV80T5420AB",
+      "title": "Samsung DV80T5420AB",
+      "slug": "discovery-dryer-samsung-dv80t5420ab",
+      "w": 600,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/samsung-black-8kg-smart-ai-heat-pump-dryer-dv80t5420ab",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/samsung-black-8kg-smart-ai-heat-pump-dryer-dv80t5420ab",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": 1100
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": false,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV80T5420AB%2FSA&CttFileID=8356851&CDCttType=UM&VPath=UM%2F202111%2F20211109150424357%2FU-PJT_DRYER_SimpleUX_WEB_DC68-04169H-02_AU_English.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/DV80T5420AB.json"
       }
     },
     {

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "discovery-dryer-samsung-dv80t5420ab",
+  "category": "dryer",
+  "brand": "Samsung",
+  "model": "DV80T5420AB",
+  "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV80T5420AB%2FSA&CttFileID=8356851&CDCttType=UM&VPath=UM%2F202111%2F20211109150424357%2FU-PJT_DRYER_SimpleUX_WEB_DC68-04169H-02_AU_English.pdf",
+  "verified_at": "2026-05-10",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "DV80T5420AB",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": 1100
+    },
+    "clearance_requirements": {
+      "top_mm": 25,
+      "left_mm": 25,
+      "right_mm": 25,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": false,
+      "reversible_door": true
+    },
+    "metadata": {
+      "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV80T5420AB%2FSA&CttFileID=8356851&CDCttType=UM&VPath=UM%2F202111%2F20211109150424357%2FU-PJT_DRYER_SimpleUX_WEB_DC68-04169H-02_AU_English.pdf",
+      "extraction_date": "2026-05-10T13:18:06.726Z",
+      "confidence_score": 0.88
+    }
+  }
+}
