@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-56968",
+  "category": "washing_machine",
+  "brand": "Samsung",
+  "model": "WW75K5210WW",
+  "source_url": "https://www.appliancesonline.com.au/ak/e/7/2/f/e72f0957eb92244ac873f165c32985646a4f8d31_Samsung_WW75K5210WW_AddWash_7.5_kg_Front_Load_Washing_Machine_User_Manual.pdf",
+  "verified_at": "2026-05-10",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "WW75K5210WW",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 25,
+      "left_mm": 25,
+      "right_mm": 25,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": false,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/7/2/f/e72f0957eb92244ac873f165c32985646a4f8d31_Samsung_WW75K5210WW_AddWash_7.5_kg_Front_Load_Washing_Machine_User_Manual.pdf",
+      "extraction_date": "2026-05-10T10:18:31.456Z",
+      "confidence_score": 0.88
+    }
+  }
+}

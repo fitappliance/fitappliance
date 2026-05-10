@@ -270,6 +270,99 @@ test('Samsung parser extracts washer dimensions from A/B/C labelled specificatio
   assert.equal(validateApplianceDimension(result.data).valid, true);
 });
 
+test('Samsung parser extracts legacy L1a washer-dryer compact W x D x H dimensions with wildcard model match', () => {
+  const text = `
+    Washing Machine
+    User manual
+    Installation requirements
+    Alcove or closet installation
+    Minimum clearance for stable operation:
+    Sides 25 mm Rear 50 mm
+    Top 25 mm Front 550 mm
+    Specification sheet
+    TYPE FRONT LOADING WASHING MACHINE
+    MODEL NAME  WD10J8*****
+    WASH AND SPIN CAPACITY  10.0 kg
+    DRY CAPACITY  5.0 kg
+    DIMENSIONS  W600×D600×H850 (mm)
+    WATER PRESSURE  50 kPa ~ 800 kPa
+  `;
+
+  const result = parseSamsungText(text, {
+    target: { brand: 'Samsung', sku: 'WD10J8420GW', category: 'washing_machine' },
+    sourceUrl: SOURCE_URL,
+    extractionDate: EXTRACTION_DATE
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 850,
+    width_mm: 600,
+    depth_mm: 600,
+    door_open_90_depth_mm: null
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 25,
+    left_mm: 25,
+    right_mm: 25,
+    rear_mm: 50
+  });
+  assert.equal(validateApplianceDimension(result.data).valid, true);
+});
+
+test('Samsung parser selects the matching compact dimensions block from multiple wildcard model names', () => {
+  const text = `
+    Washing Machine
+    User manual
+    Installation requirements
+    Alcove or closet installation
+    Minimum clearance for stable operation:
+    Sides 25 mm Rear 50 mm
+    Top 25 mm Front 550 mm
+    Specification sheet
+    " * " Asterisk(s) means variant model and can be varied (0-9) or (A-Z).
+    Type Front loading washing machine
+    Model name WW85J54****  WW75J52****
+    Dimensions W600 x D600 x H850 (mm)
+    Water pressure 50-800 kPa
+  `;
+
+  const result = parseSamsungText(text, {
+    target: { brand: 'Samsung', sku: 'WW75J5210IW', category: 'washing_machine' },
+    sourceUrl: SOURCE_URL,
+    extractionDate: EXTRACTION_DATE
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 850,
+    width_mm: 600,
+    depth_mm: 600,
+    door_open_90_depth_mm: null
+  });
+  assert.equal(validateApplianceDimension(result.data).valid, true);
+});
+
+test('Samsung parser fails closed when compact wildcard model names do not cover the target SKU', () => {
+  const text = `
+    Washing Machine
+    User manual
+    Installation requirements
+    Alcove or closet installation
+    Minimum clearance for stable operation:
+    Sides 25 mm Rear 50 mm
+    Top 25 mm Front 550 mm
+    Specification sheet
+    Type Front loading washing machine
+    Model name WW85J54****  WW75J52****
+    Dimensions W600 x D600 x H850 (mm)
+  `;
+
+  assert.throws(() => parseSamsungText(text, {
+    target: { brand: 'Samsung', sku: 'WW90DG6U34LB', category: 'washing_machine' },
+    sourceUrl: SOURCE_URL,
+    extractionDate: EXTRACTION_DATE
+  }), /target SKU did not match/i);
+});
+
 test('Samsung parser can read AO fridge spec sheet dimensions but still requires clearance before full parse', () => {
   const text = `
     Specification/Information

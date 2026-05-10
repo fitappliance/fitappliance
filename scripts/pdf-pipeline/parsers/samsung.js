@@ -33,6 +33,28 @@ function normalizeWhitespace(text) {
   return String(text || '').replace(/\r/g, '').replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
 }
 
+function normalizeModelToken(value, { keepWildcard = false } = {}) {
+  const allowed = keepWildcard ? /[^A-Z0-9*]+/g : /[^A-Z0-9]+/g;
+  return String(value || '').trim().toUpperCase().replace(/\/SA$/i, '').replace(allowed, '');
+}
+
+function modelPatternMatchesSku(modelPattern, sku) {
+  const pattern = normalizeModelToken(modelPattern, { keepWildcard: true });
+  const target = normalizeModelToken(sku);
+  if (!pattern || !target) return false;
+  if (!pattern.includes('*')) return pattern === target;
+  const escaped = pattern
+    .replace(/[\\^$+?.()|[\]{}]/g, '\\$&')
+    .replace(/\*+/g, '[A-Z0-9]*');
+  return new RegExp(`^${escaped}$`).test(target);
+}
+
+function extractModelPatterns(rawText) {
+  return [...String(rawText || '').toUpperCase().matchAll(/[A-Z0-9*\/-]+/g)]
+    .map((match) => normalizeModelToken(match[0], { keepWildcard: true }))
+    .filter((token) => /^[A-Z]{2,}\d/.test(token));
+}
+
 function patternMatches(source, pattern) {
   const flags = pattern.flags.includes('g') ? pattern.flags : `${pattern.flags}g`;
   const matcher = new RegExp(pattern.source, flags);
@@ -180,24 +202,55 @@ function extractSamsungWasherDimensions(sections, sku) {
       door_open_90_depth_mm: null
     };
   }
-  const family = String(sku || '').toUpperCase().match(/^WW(\d{2})/)?.[1] || '';
+
+  const compactBlocks = normalizeWhitespace(text).split('\n').flatMap((line, index, lines) => {
+    const modelLine = line.match(/\bModel name\s+(.+)/i);
+    if (!modelLine) return [];
+    const window = lines.slice(index, index + 12).join(' ');
+    const dimensions = window.match(/\bDIMENSIONS?\s+W\s*(\d+(?:\.\d+)?)\s*[x×]\s*D\s*(\d+(?:\.\d+)?)\s*[x×]\s*H\s*(\d+(?:\.\d+)?)\s*\(mm\)/i);
+    if (!dimensions) return [];
+    const models = extractModelPatterns(modelLine[1]);
+    return [{
+      models,
+      width: dimensions[1],
+      depth: dimensions[2],
+      height: dimensions[3],
+      source: 'compact'
+    }];
+  });
+  const selectedCompact = compactBlocks.find((block) => block.models.some((model) => modelPatternMatchesSku(model, sku)));
+  if (selectedCompact) {
+    return {
+      width_mm: parseMm(selectedCompact.width, 'washer width'),
+      height_mm: parseMm(selectedCompact.height, 'washer height'),
+      depth_mm: parseMm(selectedCompact.depth, 'washer depth'),
+      door_open_90_depth_mm: null
+    };
+  }
+  if (compactBlocks.length) {
+    throw new Error('Samsung washing machine parser found compact dimensions, but target SKU did not match document model wildcard.');
+  }
+
   const plainBlocks = [...text.matchAll(/Model name\s+(WW\d{2}[A-Z0-9*]+)[\s\S]*?Dimensions\s+Width\s+(\d+(?:\.\d+)?)\s*mm\s+Height\s+(\d+(?:\.\d+)?)\s*mm\s+Depth\s+(\d+(?:\.\d+)?)\s*mm/gi)]
     .map((match) => ({
-      model: match[1],
+      models: [match[1]],
       width: match[2],
       height: match[3],
       depth: match[4]
     }));
   const labelledBlocks = [...text.matchAll(/Model name\s+(WW\d{2}[A-Z0-9*]+)[\s\S]*?Dimensions\s+A\s*\(Width\)\s+(\d+(?:\.\d+)?)\s*mm\s+B\s*\(Height\)\s+(\d+(?:\.\d+)?)\s*mm\s+C\s*\(Depth\)\s+(\d+(?:\.\d+)?)\s*mm/gi)]
     .map((match) => ({
-      model: match[1],
+      models: [match[1]],
       width: match[2],
       height: match[3],
       depth: match[4]
     }));
   const blocks = [...plainBlocks, ...labelledBlocks];
-  const selected = blocks.find((block) => !family || block.model.startsWith(`WW${family}`)) || blocks[0];
+  const selected = blocks.find((block) => block.models.some((model) => modelPatternMatchesSku(model, sku)));
   if (!selected) {
+    if (blocks.length) {
+      throw new Error('Samsung washing machine parser found specification dimensions, but target SKU did not match document model wildcard.');
+    }
     throw new Error('Samsung washing machine parser could not find a model-specific specification dimensions block.');
   }
   return {
@@ -351,5 +404,6 @@ async function parseSamsungPdf(pdfPath, options = {}) {
 exports.extractSamsungClearance = extractSamsungClearance;
 exports.extractSamsungDimensions = extractSamsungDimensions;
 exports.extractSamsungSections = extractSamsungSections;
+exports.modelPatternMatchesSku = modelPatternMatchesSku;
 exports.parseSamsungPdf = parseSamsungPdf;
 exports.parseSamsungText = parseSamsungText;

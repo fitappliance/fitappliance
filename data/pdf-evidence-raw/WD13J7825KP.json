@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-52845",
+  "category": "washing_machine",
+  "brand": "Samsung",
+  "model": "WD13J7825KP",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/7/5/4/77542c25103a9858b63eda9bed29b00454790933_Samsung_WD13J7825KP_13kg_Front_Load_Washing_Machine_User_Manual.pdf",
+  "verified_at": "2026-05-10",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "WD13J7825KP",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 990,
+      "width_mm": 686,
+      "depth_mm": 811,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 25,
+      "left_mm": 25,
+      "right_mm": 25,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": false,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/7/5/4/77542c25103a9858b63eda9bed29b00454790933_Samsung_WD13J7825KP_13kg_Front_Load_Washing_Machine_User_Manual.pdf",
+      "extraction_date": "2026-05-10T10:18:30.617Z",
+      "confidence_score": 0.88
+    }
+  }
+}
