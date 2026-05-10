@@ -382,6 +382,91 @@ test('runBatch processes Fisher & Paykel targets with official QRG plus install 
   });
 });
 
+test('runBatch lets Fisher & Paykel manual-evidence spec sheets rescue models without PDPs', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'ao-1053',
+    brand: 'Fisher & Paykel',
+    sku: 'E450LXFD',
+    category: 'fridge',
+    product: {
+      id: 'ao-1053',
+      cat: 'fridge',
+      brand: 'Fisher & Paykel',
+      model: 'E450LXFD',
+      w: 635,
+      h: 1695,
+      d: 695,
+      unavailable: false
+    }
+  };
+  writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {
+    schema_version: 1,
+    products: {
+      'ao-1053': {
+        category: 'fridge',
+        brand: 'Fisher & Paykel',
+        model: 'E450LXFD',
+        source_url: 'https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf',
+        type: 'spec_sheet',
+        status: 'candidate',
+        product: target.product,
+        evidence: [
+          {
+            type: 'spec_sheet',
+            status: 'candidate',
+            source_url: 'https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf'
+          }
+        ]
+      }
+    }
+  });
+
+  const fetchedUrls = [];
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    fisherPaykelOfficialFinder: async () => {
+      throw new Error('product_page_not_found');
+    },
+    fetchPdfImpl: async (url) => {
+      fetchedUrls.push(url);
+      return { path: url, cached: false, bytes: 12 };
+    },
+    extractTextImpl: async () => ({
+      text: `
+        SPEC SHEET > E450LXFD1
+        Freestanding Refrigerator
+        DIMENSIONS
+        Depth 695mm
+        Height 1695mm
+        Width 635mm
+        Minimum air clearance - at rear 30mm
+        Minimum air clearance - each side 20mm
+        Minimum air clearance - on top 50mm
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.deepEqual(fetchedUrls, [
+    'https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf'
+  ]);
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'E450LXFD.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 50,
+    left_mm: 20,
+    right_mm: 20,
+    rear_mm: 30
+  });
+});
+
 test('runBatch processes only explicit SKUs when skus is provided', async () => {
   const repoRoot = makeRepo();
   const fridgesPath = path.join(repoRoot, 'public', 'data', 'fridges.json');

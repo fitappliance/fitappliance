@@ -4,7 +4,7 @@ require('dotenv').config({ quiet: true });
 const fs = require('node:fs');
 const path = require('node:path');
 
-const { fetchPdf, resolvePdfSourceUrl } = require('./1-fetch');
+const { fetchPdf, findManualEvidenceSourceUrl, resolvePdfSourceUrl } = require('./1-fetch');
 const { extractText } = require('./2-extract-text');
 const { createEnvLlmCaller, extractStructuredData } = require('./3-ai-parse');
 const { validateApplianceDimension } = require('./4-validate');
@@ -252,21 +252,40 @@ function fisherPaykelResourceSource(resource) {
 async function parseFisherPaykelTarget({
   target,
   repoRoot,
+  manualEvidence,
   fisherPaykelOfficialFinder,
   fetchPdfImpl,
   extractTextImpl,
   timeoutMs,
   userAgent
 }) {
-  const official = await fisherPaykelOfficialFinder(target, {
-    timeoutMs,
-    userAgent
-  });
-  const resources = getFisherPaykelResources(official)
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const manualResource = manualSourceUrl
+    ? normalizeFisherPaykelResource({
+      url: manualSourceUrl,
+      type: 'specification_sheet',
+      source: 'manual-evidence',
+      score: 1000
+    })
+    : null;
+
+  let official = null;
+  let officialError = null;
+  try {
+    official = await fisherPaykelOfficialFinder(target, {
+      timeoutMs,
+      userAgent
+    });
+  } catch (error) {
+    officialError = error;
+  }
+
+  const resources = [manualResource, ...getFisherPaykelResources(official)]
+    .filter(Boolean)
     .filter((resource) => resource.type !== 'energy_label');
 
   if (resources.length === 0) {
-    throw new Error(official?.reason || 'Fisher & Paykel official PDF resources not found');
+    throw officialError || new Error(official?.reason || 'Fisher & Paykel official PDF resources not found');
   }
 
   const fetchedTextByUrl = new Map();
@@ -501,6 +520,7 @@ async function runBatch({
         const parsed = await parseFisherPaykelTarget({
           target,
           repoRoot,
+          manualEvidence,
           fisherPaykelOfficialFinder,
           fetchPdfImpl,
           extractTextImpl

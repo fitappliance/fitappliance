@@ -147,6 +147,38 @@ test('Fisher & Paykel parser rejects manifest category when QRG text indicates a
   }), /category mismatch/i);
 });
 
+test('Fisher & Paykel parser accepts washer dryer combo pages for washing machine manifest rows', () => {
+  const text = `
+    QUICK REFERENCE GUIDE > WD8560F1
+    Washer Dryer Combo
+    Front Loader Washer Dryer, 8.5kg wash / 5kg dry
+    DIMENSIONS
+    Height 850 mm
+    Width 600 mm
+    Depth 645 mm
+    FEATURES
+    Condenser Dryer function included.
+  `;
+
+  const result = parseFisherPaykelText(text, {
+    target: {
+      brand: 'Fisher & Paykel',
+      sku: 'WD8560F1',
+      category: 'washing_machine'
+    },
+    sourceUrl: 'https://www.fisherpaykel.com/qrg-wd8560f1.pdf',
+    extractionDate: '2026-05-09T00:00:00.000Z'
+  });
+
+  assert.equal(result.data.category, 'WASHING_MACHINE');
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 850,
+    width_mm: 600,
+    depth_mm: 645,
+    door_open_90_depth_mm: null
+  });
+});
+
 test('Fisher & Paykel parser treats front-loader washer pages as washing machines even when dryer stacking text appears', () => {
   const text = `
     QUICK REFERENCE GUIDE > WH1260H5
@@ -177,6 +209,178 @@ test('Fisher & Paykel parser treats front-loader washer pages as washing machine
     depth_mm: 675,
     door_open_90_depth_mm: null
   });
+});
+
+test('Fisher & Paykel parser records explicit zero-clearance fridge wording without guessing', () => {
+  const text = `
+    QUICK REFERENCE GUIDE > RS7621SRK1
+    Integrated Refrigerator Freezer
+    DIMENSIONS
+    Height 2134 mm
+    Width 756 mm
+    Depth 610 mm
+    Designed to fit flush with surrounding cabinetry.
+    Zero clearance installation when installed according to this guide.
+  `;
+
+  const result = parseFisherPaykelText(text, {
+    target: {
+      brand: 'Fisher & Paykel',
+      sku: 'RS7621SRK1',
+      category: 'fridge'
+    },
+    sourceUrl: 'https://www.fisherpaykel.com/qrg-rs7621srk1.pdf',
+    extractionDate: '2026-05-09T00:00:00.000Z'
+  });
+
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 0,
+    right_mm: 0,
+    rear_mm: 0
+  });
+  assert.ok(result.warnings.some((warning) => /zero-clearance wording/i.test(warning)));
+});
+
+test('Fisher & Paykel parser derives integrated-column clearances from cavity dimensions', () => {
+  const text = `
+    QUICK REFERENCE GUIDE > RS4621FRJK1
+    Integrated Column Freezer
+    DIMENSIONS
+    Height 2134 mm
+    Width 451 mm
+    Depth 610 mm
+    Installation Dimensions
+    Minimum inside width of cabinetry frame 457 mm
+    Minimum internal depth of cabinetry 635 mm
+    Minimum internal height of cabinetry 2134 mm
+  `;
+
+  const result = parseFisherPaykelText(text, {
+    target: {
+      brand: 'Fisher & Paykel',
+      sku: 'RS4621FRJK1',
+      category: 'fridge'
+    },
+    sourceUrl: 'https://www.fisherpaykel.com/qrg-rs4621frjk1.pdf',
+    extractionDate: '2026-05-09T00:00:00.000Z'
+  });
+
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 3,
+    right_mm: 3,
+    rear_mm: 25
+  });
+  assert.ok(result.warnings.some((warning) => /cavity dimensions/i.test(warning)));
+});
+
+test('Fisher & Paykel parser supports legacy spec-sheet dimensions in depth-height-width order', () => {
+  const text = `
+    SPEC SHEET > E450LXFD1 > Vertical Refrigerator 451L
+    E450LXFD1
+    Vertical Refrigerator 451L
+    Dimensions
+    Depth 695mm
+    Height 1695mm
+    Width 635mm
+    Specifications
+    Measurements
+    Depth - door closed not including handle 695mm
+    Height - incl. feet and hinge cap 1695mm
+    Minimum air clearance - at rear 30mm
+    Minimum air clearance - each side 20mm
+    Minimum air clearance - on top 50mm
+  `;
+
+  const result = parseFisherPaykelText(text, {
+    target: {
+      brand: 'Fisher & Paykel',
+      sku: 'E450LXFD',
+      category: 'fridge'
+    },
+    sourceUrl: 'https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf',
+    extractionDate: '2026-05-10T00:00:00.000Z'
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 1695,
+    width_mm: 635,
+    depth_mm: 695,
+    door_open_90_depth_mm: null
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 50,
+    left_mm: 20,
+    right_mm: 20,
+    rear_mm: 30
+  });
+  assert.ok(result.warnings.some((warning) => /spec-sheet/i.test(warning)));
+});
+
+test('Fisher & Paykel parser supports integrated fridge data sheets with cavity-derived clearance', () => {
+  const text = `
+    DATA SHEET
+    Model no:
+    RS9120WRU1 (with Stainless Door panels PART NO. RD9120WRU)
+    Product Dimensions mm
+    a Overall height of fridge 2130
+    B Overall width of fridge 906
+    c Depth of fridge front panels (excl. handles) 19
+    D Overall depth of fridge (excl. front door panels) 606
+    Clearance Dimensions mm
+    Minimum cabinetry gap from edge of product 4
+    Overall height of cavity 2134
+    Overall width of cavity 914
+    Overall minimum depth of cavity 635
+  `;
+
+  const result = parseFisherPaykelText(text, {
+    target: {
+      brand: 'Fisher & Paykel',
+      sku: 'RS9120WRU1',
+      category: 'fridge'
+    },
+    sourceUrl: 'https://dam.fisherpaykel.com/KZ3PKN00/at/st7kprvwb6fg56j9mth6jpm/FP-DataSheet-RS9120WRU1-IntegratedFridgeFreezer-AU-90001400A.pdf',
+    extractionDate: '2026-05-10T00:00:00.000Z'
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 2130,
+    width_mm: 906,
+    depth_mm: 606,
+    door_open_90_depth_mm: null
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 4,
+    left_mm: 4,
+    right_mm: 4,
+    rear_mm: 29
+  });
+  assert.ok(result.warnings.some((warning) => /data-sheet/i.test(warning)));
+  assert.ok(result.warnings.some((warning) => /cavity dimensions/i.test(warning)));
+});
+
+test('Fisher & Paykel parser still fails closed for fridge clearance when flush wording is ambiguous', () => {
+  const text = `
+    QUICK REFERENCE GUIDE > RS7621SRK1
+    Integrated Refrigerator Freezer
+    DIMENSIONS
+    Height 2134 mm
+    Width 756 mm
+    Depth 610 mm
+    Premium flush cabinetry aesthetic.
+  `;
+
+  assert.throws(() => parseFisherPaykelText(text, {
+    target: {
+      brand: 'Fisher & Paykel',
+      sku: 'RS7621SRK1',
+      category: 'fridge'
+    },
+    sourceUrl: 'https://www.fisherpaykel.com/qrg-rs7621srk1.pdf',
+    extractionDate: '2026-05-09T00:00:00.000Z'
+  }), /clearance/i);
 });
 
 test('Fisher & Paykel parser supports installation-guide product-dimensions tables', () => {

@@ -58,6 +58,21 @@ function inferCategoryFromText(text) {
   return signals[0]?.category || '';
 }
 
+function isWasherDryerComboText(text) {
+  return /\bwasher\s*[-/]?\s*dryer\b|\bwasher\s+dryer\s+combo\b|\bwash\s*&\s*dry\b/i.test(String(text || ''));
+}
+
+function categoriesCompatible(targetCategory, inferredCategory, text) {
+  if (!targetCategory || !inferredCategory || targetCategory === inferredCategory) return true;
+  if (targetCategory === 'WASHING_MACHINE' && inferredCategory === 'DRYER' && isWasherDryerComboText(text)) {
+    return true;
+  }
+  if (targetCategory === 'DRYER' && inferredCategory === 'WASHING_MACHINE' && isWasherDryerComboText(text)) {
+    return true;
+  }
+  return false;
+}
+
 function extractDimensions(text, warnings, targetSku = '') {
   const match = String(text || '').match(
     /DIMENSIONS\s+Height\s+(\d+(?:\.\d+)?(?:\s*-\s*\d+(?:\.\d+)?)?)\s*mm\s+Width\s+(\d+(?:\.\d+)?)\s*mm\s+Depth\s+(\d+(?:\.\d+)?)\s*mm/i
@@ -70,6 +85,12 @@ function extractDimensions(text, warnings, targetSku = '') {
       door_open_90_depth_mm: null
     };
   }
+
+  const specSheetDimensions = extractSpecSheetDimensions(text, warnings);
+  if (specSheetDimensions) return specSheetDimensions;
+
+  const dataSheetDimensions = extractDataSheetDimensions(text, warnings);
+  if (dataSheetDimensions) return dataSheetDimensions;
 
   return extractDimensionsFromInstallationTable(text, warnings, targetSku);
 }
@@ -108,6 +129,43 @@ function parseModelHeader(line, targetSku) {
 
 function rowValues(line) {
   return (String(line || '').match(/\d+(?:\.\d+)?/g) || []).map((value) => Math.round(Number(value)));
+}
+
+function extractSpecSheetDimensions(text, warnings) {
+  const section = String(text || '').match(/\bDimensions\b([\s\S]{0,500}?)(?:\n\s*Specifications\b|\bSpecifications\b|$)/i)?.[1] || '';
+  if (!section) return null;
+
+  const height = findClearance(section, /\bHeight\s+(\d+(?:\.\d+)?)\s*mm/i);
+  const width = findClearance(section, /\bWidth\s+(\d+(?:\.\d+)?)\s*mm/i);
+  const depth = findClearance(section, /\bDepth\s+(\d+(?:\.\d+)?)\s*mm/i);
+  if (!height || !width || !depth) return null;
+
+  warnings.push('Parsed dimensions from Fisher & Paykel legacy spec-sheet dimensions block.');
+  return {
+    height_mm: height,
+    width_mm: width,
+    depth_mm: depth,
+    door_open_90_depth_mm: null
+  };
+}
+
+function extractDataSheetDimensions(text, warnings) {
+  const section = String(text || '').match(/\bProduct\s+Dimensions\s+mm\b([\s\S]{0,900}?)(?:\bClearance\s+Dimensions\b|\bDATE\b|$)/i)?.[1] || '';
+  if (!section) return null;
+
+  const height = findClearance(section, /Overall\s+height\s+of\s+(?:fridge|product)\*?\s+(\d+(?:\.\d+)?)/i);
+  const width = findClearance(section, /Overall\s+width\s+of\s+(?:fridge|product)\s+(\d+(?:\.\d+)?)/i);
+  const depth = findClearance(section, /Overall\s+depth\s+of\s+(?:fridge|product)(?:\s*\([^)]*\))?\s+(\d+(?:\.\d+)?)/i);
+  const doorOpen = findClearance(section, /Depth\s+of\s+door\s+\(widest\s+opening\)[^\n]*\s+(\d+(?:\.\d+)?)/i);
+  if (!height || !width || !depth) return null;
+
+  warnings.push('Parsed dimensions from Fisher & Paykel integrated data-sheet table.');
+  return {
+    height_mm: height,
+    width_mm: width,
+    depth_mm: depth,
+    door_open_90_depth_mm: doorOpen || null
+  };
 }
 
 function numberNearLabel(lines, pattern) {
@@ -251,7 +309,51 @@ function findClearance(text, pattern) {
   return match ? Math.round(Number(match[1])) : null;
 }
 
-function extractClearance(text, category, warnings, targetSku = '') {
+function extractExplicitZeroClearance(text, warnings) {
+  const haystack = String(text || '');
+  const hasExplicitZero = /\bzero\s+clearance\b/i.test(haystack)
+    || /\b0\s*mm\s+(?:minimum\s+)?(?:air\s+)?clearance\b/i.test(haystack)
+    || /\bdesigned\s+to\s+fit\s+flush\b/i.test(haystack)
+    || (/\bflush\s+fit(?:ting)?\b/i.test(haystack) && /\bintegrated\b|\bbuilt[-\s]?in\b|\bcabinetry\b|\bcavity\b/i.test(haystack));
+  if (!hasExplicitZero) return null;
+
+  warnings.push('Parsed 0mm clearances from explicit Fisher & Paykel zero-clearance wording.');
+  return {
+    top_mm: 0,
+    left_mm: 0,
+    right_mm: 0,
+    rear_mm: 0
+  };
+}
+
+function extractClearanceFromInstallationDimensions(text, dimensions, warnings) {
+  if (!dimensions) return null;
+  const haystack = String(text || '');
+  const cavityWidth = findClearance(haystack, /Minimum\s+inside\s+width\s+of\s+cabinetry\s+frame\s+(\d+(?:\.\d+)?)\s*mm/i)
+    ?? findClearance(haystack, /Minimum\s+internal\s+width\s+of\s+cabinetry\s+(\d+(?:\.\d+)?)\s*mm/i)
+    ?? findClearance(haystack, /Overall\s+width\s+of\s+cavity\s+(\d+(?:\.\d+)?)(?:\s*mm)?/i);
+  const cavityDepth = findClearance(haystack, /Minimum\s+internal\s+depth\s+of\s+cabinetry\s+(\d+(?:\.\d+)?)\s*mm/i)
+    ?? findClearance(haystack, /Minimum\s+overall\s+depth\s+of\s+cavity\*?\s+(\d+(?:\.\d+)?)\s*mm/i)
+    ?? findClearance(haystack, /Overall\s+minimum\s+depth\s+of\s+cavity\s+(\d+(?:\.\d+)?)(?:\s*mm)?/i);
+  const cavityHeight = findClearance(haystack, /Minimum\s+internal\s+height\s+of\s+cabinetry\s+(\d+(?:\.\d+)?)\s*mm/i)
+    ?? findClearance(haystack, /Overall\s+height\s+of\s+cavity\s+(\d+(?:\.\d+)?)(?:\s*mm)?/i);
+
+  if (cavityWidth == null || cavityDepth == null || cavityHeight == null) return null;
+  const sideTotal = cavityWidth - dimensions.width_mm;
+  const rear = cavityDepth - dimensions.depth_mm;
+  const top = cavityHeight - dimensions.height_mm;
+  if (sideTotal < 0 || rear < 0 || top < 0) return null;
+
+  warnings.push('Derived Fisher & Paykel clearances from explicit installation cavity dimensions.');
+  return {
+    top_mm: Math.round(top),
+    left_mm: Math.round(sideTotal / 2),
+    right_mm: Math.round(sideTotal / 2),
+    rear_mm: Math.round(rear)
+  };
+}
+
+function extractClearance(text, category, warnings, targetSku = '', dimensions = null) {
   const rear = findClearance(text, /Minimum\s+air\s+clearance\s*-\s*at\s+rear\s+(\d+(?:\.\d+)?)\s*mm/i);
   const side = findClearance(text, /Minimum\s+air\s+clearance\s*-\s*each\s+side\s+(\d+(?:\.\d+)?)\s*mm/i);
   const top = findClearance(text, /Minimum\s+air\s+clearance\s*-\s*on\s+top\s+(\d+(?:\.\d+)?)\s*mm/i);
@@ -268,6 +370,16 @@ function extractClearance(text, category, warnings, targetSku = '') {
   const installationClearance = extractClearanceFromInstallationTable(text, warnings, targetSku);
   if (installationClearance) {
     return installationClearance;
+  }
+
+  const installationDimensionClearance = extractClearanceFromInstallationDimensions(text, dimensions, warnings);
+  if (installationDimensionClearance) {
+    return installationDimensionClearance;
+  }
+
+  const explicitZeroClearance = extractExplicitZeroClearance(text, warnings);
+  if (explicitZeroClearance) {
+    return explicitZeroClearance;
   }
 
   if (category === 'FRIDGE') {
@@ -355,7 +467,7 @@ function parseFisherPaykelText(text, options = {}) {
   const warnings = [];
   const targetCategory = normalizeCategory(firstNonBlank(target.category, target.cat, target.product?.cat));
   const inferredCategory = inferCategoryFromText(text);
-  if (targetCategory && inferredCategory && targetCategory !== inferredCategory) {
+  if (!categoriesCompatible(targetCategory, inferredCategory, text)) {
     throw new Error(`Fisher & Paykel category mismatch: target ${targetCategory} but QRG text indicates ${inferredCategory}.`);
   }
   const category = firstNonBlank(targetCategory, inferredCategory);
@@ -372,7 +484,7 @@ function parseFisherPaykelText(text, options = {}) {
 
   const normalizedCategory = normalizeCategory(category);
   const dimensions = extractDimensions(text, warnings, sku);
-  const clearance = extractClearance(text, normalizedCategory, warnings, sku);
+  const clearance = extractClearance(text, normalizedCategory, warnings, sku, dimensions);
 
   return {
     data: {
