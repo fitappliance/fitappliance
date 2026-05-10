@@ -268,14 +268,14 @@ function extractSamsungWasherDimensions(sections, sku) {
     throw new Error('Samsung washing machine parser found compact dimensions, but target SKU did not match document model wildcard.');
   }
 
-  const plainBlocks = [...text.matchAll(/Model name\s+(WW\d{2}[A-Z0-9*]+)[\s\S]*?Dimensions\s+Width\s+(\d+(?:\.\d+)?)\s*mm\s+Height\s+(\d+(?:\.\d+)?)\s*mm\s+Depth\s+(\d+(?:\.\d+)?)\s*mm/gi)]
+  const plainBlocks = [...text.matchAll(/Model name\s+([A-Z]{2,}\d[A-Z0-9*]+)[\s\S]*?Dimensions\s+Width\s+(\d+(?:\.\d+)?)\s*mm\s+Height\s+(\d+(?:\.\d+)?)\s*mm\s+Depth\s+(\d+(?:\.\d+)?)\s*mm/gi)]
     .map((match) => ({
       models: [match[1]],
       width: match[2],
       height: match[3],
       depth: match[4]
     }));
-  const labelledBlocks = [...text.matchAll(/Model name\s+(WW\d{2}[A-Z0-9*]+)[\s\S]*?Dimensions\s+A\s*\(Width\)\s+(\d+(?:\.\d+)?)\s*mm\s+B\s*\(Height\)\s+(\d+(?:\.\d+)?)\s*mm\s+C\s*\(Depth\)\s+(\d+(?:\.\d+)?)\s*mm/gi)]
+  const labelledBlocks = [...text.matchAll(/Model name\s+([A-Z]{2,}\d[A-Z0-9*]+)[\s\S]*?Dimensions\s+A\s*\(Width\)\s+(\d+(?:\.\d+)?)\s*mm\s+B\s*\(Height\)\s+(\d+(?:\.\d+)?)\s*mm\s+C\s*\(Depth\)\s+(\d+(?:\.\d+)?)\s*mm/gi)]
     .map((match) => ({
       models: [match[1]],
       width: match[2],
@@ -283,7 +283,9 @@ function extractSamsungWasherDimensions(sections, sku) {
       depth: match[4]
     }));
   const blocks = [...plainBlocks, ...labelledBlocks];
-  const selected = blocks.find((block) => block.models.some((model) => modelPatternMatchesSku(model, sku)));
+  const selected = blocks.find((block) => (
+    block.models.some((model) => modelTokenMatchesSku(model, sku, { allowPrefix: true }))
+  ));
   if (!selected) {
     if (blocks.length) {
       throw new Error('Samsung washing machine parser found specification dimensions, but target SKU did not match document model wildcard.');

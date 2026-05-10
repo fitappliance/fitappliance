@@ -10,8 +10,8 @@ Remaining unresolved candidates: 59
 
 - Bucket A: Missing Source (PDP 404): 29
 - Bucket B: Missing Clearance: 1
-- Bucket C: Unverified Alias: 0
-- Bucket D: Unreadable Layout: 29
+- Bucket C: Unverified Alias: 1
+- Bucket D: Unreadable Layout: 28
 
 ## Interpretation
 
@@ -73,14 +73,16 @@ Count: 1
 
 A document appears to describe an engineering/family model rather than the target marketing SKU.
 
-Count: 0
+Count: 1
 
-No failures in this bucket.
+| SKU | Category | Reason | Error |
+| --- | --- | --- | --- |
+| WW90DG6U34LB | washing_machine | Unverified Alias | L1c micro-pilot found readable A/B/C dimensions and alcove clearance, but the official Samsung support PDF for WW90DG6U34LBSA declares model family WW9*DG5*****, which conflicts with target WW90DG6U34LB. Keep fail-closed until alias is independently verified. |
 ## Bucket D: Unreadable Layout
 
 A source document exists, but the current layout-aware parser cannot extract safe dimensions.
 
-Count: 29
+Count: 28
 
 | SKU | Category | Reason | Error |
 | --- | --- | --- | --- |
@@ -111,5 +113,4 @@ Count: 29
 | WW75J5210IW | washing_machine | Missing Dimensions Section | Samsung washing machine parser could not find a model-specific specification dimensions block. |
 | WW75J54E0IW | washing_machine | Missing Dimensions Section | Samsung washing machine parser could not find a model-specific specification dimensions block. |
 | WW75K5210WW | washing_machine | Missing Dimensions Section | Samsung washing machine parser could not find a model-specific specification dimensions block. |
-| WW90DG6U34LB | washing_machine | Missing Dimensions Section | Samsung washing machine parser could not find a model-specific specification dimensions block. |
 | WW95N54F5CW | washing_machine | Missing Dimensions Section | Samsung layout-aware parser could not locate installation/specification sections. |

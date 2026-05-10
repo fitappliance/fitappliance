@@ -270,6 +270,76 @@ test('Samsung parser extracts washer dimensions from A/B/C labelled specificatio
   assert.equal(validateApplianceDimension(result.data).valid, true);
 });
 
+test('Samsung parser accepts A/B/C labelled dimensions when document model is a safe target prefix', () => {
+  const text = `
+    Washing Machine
+    User manual
+    Installation requirements
+    Alcove installation
+    Minimum clearance for stable operation:
+    Sides 25 mm
+    Top 25 mm
+    Rear 50 mm
+    Front 550 mm
+    Specification sheet
+    Type Front loading washing machine
+    Model name WW90DG
+    Dimensions
+    A (Width) 600 mm
+    B (Height) 850 mm
+    C (Depth) 595 mm
+    D 625 mm
+    E 1070 mm
+  `;
+
+  const result = parseSamsungText(text, {
+    target: { brand: 'Samsung', sku: 'WW90DG6U34LB', category: 'washing_machine' },
+    sourceUrl: SOURCE_URL,
+    extractionDate: EXTRACTION_DATE
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 850,
+    width_mm: 600,
+    depth_mm: 595,
+    door_open_90_depth_mm: null
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 25,
+    left_mm: 25,
+    right_mm: 25,
+    rear_mm: 50
+  });
+  assert.equal(validateApplianceDimension(result.data).valid, true);
+});
+
+test('Samsung parser still rejects A/B/C labelled dimensions when wildcard family conflicts with target SKU', () => {
+  const text = `
+    Washing Machine
+    User manual
+    Installation requirements
+    Alcove installation
+    Minimum clearance for stable operation:
+    Sides 25 mm
+    Top 25 mm
+    Rear 50 mm
+    Front 550 mm
+    Specification sheet
+    Type Front loading washing machine
+    Model name WW9*DG5*****
+    Dimensions
+    A (Width) 600 mm
+    B (Height) 850 mm
+    C (Depth) 595 mm
+  `;
+
+  assert.throws(() => parseSamsungText(text, {
+    target: { brand: 'Samsung', sku: 'WW90DG6U34LB', category: 'washing_machine' },
+    sourceUrl: SOURCE_URL,
+    extractionDate: EXTRACTION_DATE
+  }), /target SKU did not match/i);
+});
+
 test('Samsung parser extracts legacy L1a washer-dryer compact W x D x H dimensions with wildcard model match', () => {
   const text = `
     Washing Machine
