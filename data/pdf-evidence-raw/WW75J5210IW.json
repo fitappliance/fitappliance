@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-63478",
+  "category": "washing_machine",
+  "brand": "Samsung",
+  "model": "WW75J5210IW",
+  "source_url": "https://www.appliancesonline.com.au/ak/a/0/2/1/a021a3844aa8e1ae593cd2efb35a99d46f8267b8_Samsung_WW75J5210IW_7.5kg_Front_Load_Washing_Machine_User_Manual.pdf",
+  "verified_at": "2026-05-10",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "WW75J5210IW",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 25,
+      "left_mm": 25,
+      "right_mm": 25,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": false,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/0/2/1/a021a3844aa8e1ae593cd2efb35a99d46f8267b8_Samsung_WW75J5210IW_7.5kg_Front_Load_Washing_Machine_User_Manual.pdf",
+      "extraction_date": "2026-05-10T10:18:31.252Z",
+      "confidence_score": 0.88
+    }
+  }
+}

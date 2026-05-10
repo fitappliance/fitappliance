@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-46346",
+  "category": "washing_machine",
+  "brand": "Samsung",
+  "model": "WD75J5410AW",
+  "source_url": "https://www.appliancesonline.com.au/ak/7/c/9/a/7c9aa22b659fb892624b5aaba0f4387efc90602c_Samsung_Washer_Dryer_Combo_WD75J5410AW_User_Manual.pdf",
+  "verified_at": "2026-05-10",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "WD75J5410AW",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 25,
+      "left_mm": 25,
+      "right_mm": 25,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": false,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/c/9/a/7c9aa22b659fb892624b5aaba0f4387efc90602c_Samsung_Washer_Dryer_Combo_WD75J5410AW_User_Manual.pdf",
+      "extraction_date": "2026-05-10T10:18:30.830Z",
+      "confidence_score": 0.88
+    }
+  }
+}
