@@ -171,6 +171,15 @@ function findManualEvidenceSourceUrl(target, manualEvidence) {
   return item?.source_url || null;
 }
 
+function findManualEvidenceVerifiedAlias(target, manualEvidence) {
+  const entry = findManualEvidenceEntry(target, manualEvidence);
+  if (!entry) return null;
+  const directAlias = String(entry.verified_alias || '').trim();
+  if (directAlias) return directAlias;
+  const item = getEvidenceItems(entry).find((candidate) => String(candidate?.verified_alias || '').trim());
+  return item ? String(item.verified_alias).trim() : null;
+}
+
 async function resolvePdfSourceUrl(target, {
   repoRoot = process.cwd(),
   manualEvidence = loadManualEvidence(repoRoot),
@@ -308,7 +317,9 @@ async function fetchPdf(url, destPath, opts = {}) {
 
 exports.fetchPdf = fetchPdf;
 exports.fetchPdfForTarget = fetchPdfForTarget;
+exports.findManualEvidenceEntry = findManualEvidenceEntry;
 exports.findManualEvidenceSourceUrl = findManualEvidenceSourceUrl;
+exports.findManualEvidenceVerifiedAlias = findManualEvidenceVerifiedAlias;
 exports.loadManualEvidence = loadManualEvidence;
 exports.resolvePdfSourceUrl = resolvePdfSourceUrl;
 exports.DEFAULT_USER_AGENT = DEFAULT_USER_AGENT;

@@ -328,6 +328,77 @@ test('final catalog builder can add verified non-AO discovery products', () => {
   assert.equal(discoveryProduct.w, 905);
 });
 
+test('final catalog builder can add manual catalog entries as archived verified evidence', () => {
+  const repoRoot = makeRepo();
+  fs.rmSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'RF730QNUVX1.json'));
+  writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {
+    schema_version: 1,
+    products: {
+      'fridge-manual-samsung-srf7300bss': {
+        category: 'fridge',
+        brand: 'Samsung',
+        model: 'SRF7300BSS',
+        manual_catalog_entry: true,
+        product: {
+          id: 'fridge-manual-samsung-srf7300bss',
+          cat: 'fridge',
+          brand: 'Samsung',
+          model: 'SRF7300BSS',
+          displayName: 'Samsung SRF7300BSS',
+          unavailable: true,
+          retailers: []
+        }
+      }
+    }
+  });
+  writeJson(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'SRF7300BSS.json'), {
+    schema_version: 1,
+    product_id: 'fridge-manual-samsung-srf7300bss',
+    category: 'fridge',
+    brand: 'Samsung',
+    model: 'SRF7300BSS',
+    source_url: 'https://downloadcenter.samsung.com/content/UM/202604/OID38284-04_T-TYPE_RF7000A_EN_260417.pdf',
+    verified_at: '2026-05-10',
+    extracted: {
+      brand: 'Samsung',
+      sku: 'SRF7300BSS',
+      category: 'FRIDGE',
+      dimensions: {
+        height_mm: 1779,
+        width_mm: 912,
+        depth_mm: 723,
+        door_open_90_depth_mm: 1472
+      },
+      clearance_requirements: {
+        top_mm: 50,
+        left_mm: 50,
+        right_mm: 50,
+        rear_mm: 50
+      },
+      flags: {
+        requires_plumbing: false,
+        ventilation_required: true,
+        reversible_door: null
+      },
+      metadata: {
+        source_pdf_url: 'https://downloadcenter.samsung.com/content/UM/202604/OID38284-04_T-TYPE_RF7000A_EN_260417.pdf',
+        extraction_date: '2026-05-10T00:00:00.000Z',
+        confidence_score: 0.9,
+        verified_alias: 'RF59A7010B1/SA'
+      }
+    }
+  });
+
+  const result = buildFinalCatalog({ repoRoot });
+  const product = result.catalog.products.find((row) => row.id === 'fridge-manual-samsung-srf7300bss');
+
+  assert.equal(product.data_source, 'official_pdf');
+  assert.equal(product.unavailable, true);
+  assert.equal(product.w, 912);
+  assert.equal(product.evidence.verified_alias, 'RF59A7010B1/SA');
+  assert.equal(result.summary.unmatched_evidence_files, 0);
+});
+
 test('final catalog builder matches discovery evidence to existing catalog products by SKU when AO product id differs', () => {
   const repoRoot = makeRepo();
   fs.rmSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'RF730QNUVX1.json'));

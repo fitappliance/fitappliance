@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 
 import { validateApplianceDimension } from '../../scripts/pdf-pipeline/4-validate.js';
 import {
+  extractSamsungDimensions,
   extractSamsungSections,
   parseSamsungText
 } from '../../scripts/pdf-pipeline/parsers/samsung.js';
@@ -57,6 +58,74 @@ test('Samsung parser extracts fridge manual dimensions and clearance from instal
   });
   assert.equal(result.data.flags.ventilation_required, true);
   assert.equal(result.data.flags.requires_plumbing, false);
+  assert.equal(validateApplianceDimension(result.data).valid, true);
+});
+
+test('Samsung parser accepts fridge clearance table phrased as more than 50 mm', () => {
+  const text = `
+    Refrigerator
+    User manual
+    STEP 1 Select a site
+    Clearance
+    See the following figures and tables for installation space requirements.
+    Depth “A” 723 mm
+    Width “B” 912 mm
+    Height “C” 1748 mm
+    Overall Height “D” 1779 mm
+    01 more than 50 mm
+    recommended
+    02 125°
+    03 1472 mm
+    04 282 mm
+    05 610 mm
+    06 47 mm
+    07 1093 mm
+  `;
+
+  const result = parseSamsungText(text, {
+    target: { brand: 'Samsung', sku: 'RF59A7010B1', category: 'fridge' },
+    sourceUrl: SOURCE_URL,
+    extractionDate: EXTRACTION_DATE
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 1779,
+    width_mm: 912,
+    depth_mm: 723,
+    door_open_90_depth_mm: 1472
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 50,
+    left_mm: 50,
+    right_mm: 50,
+    rear_mm: 50
+  });
+  assert.equal(validateApplianceDimension(result.data).valid, true);
+});
+
+test('Samsung parser records a verified alias without changing the target SKU', () => {
+  const text = `
+    Refrigerator
+    User manual
+    STEP 1 Select a site
+    Clearance
+    Depth “A” 723 mm
+    Width “B” 912 mm
+    Height “C” 1748 mm
+    Overall Height “D” 1779 mm
+    01 more than 50 mm
+    03 1472 mm
+  `;
+
+  const result = parseSamsungText(text, {
+    target: { brand: 'Samsung', sku: 'SRF7300BSS', category: 'fridge' },
+    sourceUrl: SOURCE_URL,
+    extractionDate: EXTRACTION_DATE,
+    verifiedAlias: 'RF59A7010B1/SA'
+  });
+
+  assert.equal(result.data.sku, 'SRF7300BSS');
+  assert.equal(result.data.metadata.verified_alias, 'RF59A7010B1/SA');
   assert.equal(validateApplianceDimension(result.data).valid, true);
 });
 
@@ -199,6 +268,56 @@ test('Samsung parser extracts washer dimensions from A/B/C labelled specificatio
     rear_mm: 50
   });
   assert.equal(validateApplianceDimension(result.data).valid, true);
+});
+
+test('Samsung parser can read AO fridge spec sheet dimensions but still requires clearance before full parse', () => {
+  const text = `
+    Specification/Information
+    Code SR399WTC
+    Customer Code (SAP) RT35K5035WW/SA
+    Measurement Specifications
+    Height (mm) 1715
+    Width (mm) 675
+    Depth w. Door (mm) 668
+    Depth w/o. Door (mm) 668
+  `;
+  const sections = extractSamsungSections(text);
+
+  assert.deepEqual(extractSamsungDimensions(sections, 'FRIDGE', 'SR399WTC'), {
+    height_mm: 1715,
+    width_mm: 675,
+    depth_mm: 668,
+    door_open_90_depth_mm: null
+  });
+  assert.throws(() => parseSamsungText(text, {
+    target: { brand: 'Samsung', sku: 'SR399WTC', category: 'fridge' },
+    sourceUrl: SOURCE_URL,
+    extractionDate: EXTRACTION_DATE
+  }), /installation section/i);
+});
+
+test('Samsung parser can read AO washer net dimensions but still requires installation clearance before full parse', () => {
+  const text = `
+    SPECIFICATIONS
+    Model Code WW90DG6U34LB
+    Material Code WW90DG6U34LBSA
+    PHYSICAL SPECIFICATION
+    Gross Dimension (WxHxD) 670 x 890 x 660 mm
+    Net Dimension (WxHxD) 600 x 850 x 595 mm
+  `;
+  const sections = extractSamsungSections(text);
+
+  assert.deepEqual(extractSamsungDimensions(sections, 'WASHING_MACHINE', 'WW90DG6U34LB'), {
+    width_mm: 600,
+    height_mm: 850,
+    depth_mm: 595,
+    door_open_90_depth_mm: null
+  });
+  assert.throws(() => parseSamsungText(text, {
+    target: { brand: 'Samsung', sku: 'WW90DG6U34LB', category: 'washing_machine' },
+    sourceUrl: SOURCE_URL,
+    extractionDate: EXTRACTION_DATE
+  }), /installation section/i);
 });
 
 test('Samsung parser fails closed when dishwasher manual lacks explicit clearance figures', () => {

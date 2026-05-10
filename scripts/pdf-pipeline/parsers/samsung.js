@@ -115,6 +115,18 @@ function extractSamsungFridgeDimensions(sections) {
   const width = text.match(/Width\s+[“"']?B[”"']?\s+(\d+(?:\.\d+)?)\s*mm/i)?.[1];
   const height = text.match(/Overall\s+Height\s+[“"']?D[”"']?\s+(\d+(?:\.\d+)?)\s*mm/i)?.[1]
     || text.match(/Height\s+[“"']?C[”"']?\s+(\d+(?:\.\d+)?)\s*mm/i)?.[1];
+  const specDepth = text.match(/Depth\s+w\.\s*Door\s*\(mm\)\s+(\d+(?:\.\d+)?)/i)?.[1]
+    || text.match(/Depth\s*\(mm\)\s+(\d+(?:\.\d+)?)/i)?.[1];
+  const specWidth = text.match(/Width\s*\(mm\)\s+(\d+(?:\.\d+)?)/i)?.[1];
+  const specHeight = text.match(/Height\s*\(mm\)\s+(\d+(?:\.\d+)?)/i)?.[1];
+  if (specHeight && specWidth && specDepth) {
+    return {
+      height_mm: parseMm(specHeight, 'fridge height'),
+      width_mm: parseMm(specWidth, 'fridge width'),
+      depth_mm: parseMm(specDepth, 'fridge depth'),
+      door_open_90_depth_mm: null
+    };
+  }
   if (!height || !width || !depth) {
     throw new Error('Samsung fridge parser could not find dimensions inside installation/specification sections.');
   }
@@ -130,6 +142,7 @@ function extractSamsungFridgeDimensions(sections) {
 function extractSamsungFridgeClearance(sections) {
   const text = sections.installation;
   const value = text.match(/\b01\s+(\d+(?:\.\d+)?)\s*mm/i)?.[1]
+    || text.match(/\b01\s+more\s+than\s+(\d+(?:\.\d+)?)\s*mm/i)?.[1]
     || text.match(/Allow clearance[^.\n]*(\d+(?:\.\d+)?)\s*mm/i)?.[1];
   if (!value) {
     throw new Error('Samsung fridge parser requires explicit clearance figures in the installation section.');
@@ -158,6 +171,15 @@ function extractSamsungDryerDimensions(sections) {
 
 function extractSamsungWasherDimensions(sections, sku) {
   const text = sections.specification;
+  const netDimensions = text.match(/Net\s+Dimension\s*\(WxHxD\)\s+(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)\s*mm/i);
+  if (netDimensions) {
+    return {
+      width_mm: parseMm(netDimensions[1], 'washer width'),
+      height_mm: parseMm(netDimensions[2], 'washer height'),
+      depth_mm: parseMm(netDimensions[3], 'washer depth'),
+      door_open_90_depth_mm: null
+    };
+  }
   const family = String(sku || '').toUpperCase().match(/^WW(\d{2})/)?.[1] || '';
   const plainBlocks = [...text.matchAll(/Model name\s+(WW\d{2}[A-Z0-9*]+)[\s\S]*?Dimensions\s+Width\s+(\d+(?:\.\d+)?)\s*mm\s+Height\s+(\d+(?:\.\d+)?)\s*mm\s+Depth\s+(\d+(?:\.\d+)?)\s*mm/gi)]
     .map((match) => ({
@@ -286,6 +308,7 @@ function parseSamsungText(text, options = {}) {
   const brand = firstNonBlank(target.brand, target.product?.brand, 'Samsung');
   const sourceUrl = firstNonBlank(options.sourceUrl, target.source_url);
   const extractionDate = firstNonBlank(options.extractionDate, new Date().toISOString());
+  const verifiedAlias = firstNonBlank(options.verifiedAlias, target.verified_alias);
   if (!sku) throw new Error('Samsung parser requires a SKU/model target.');
   if (!sourceUrl) throw new Error('Samsung parser requires sourceUrl metadata.');
 
@@ -312,7 +335,8 @@ function parseSamsungText(text, options = {}) {
       metadata: {
         source_pdf_url: sourceUrl,
         extraction_date: extractionDate,
-        confidence_score: confidenceFor(category, warnings)
+        confidence_score: confidenceFor(category, warnings),
+        ...(verifiedAlias ? { verified_alias: verifiedAlias } : {})
       }
     },
     warnings

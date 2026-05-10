@@ -1,12 +1,12 @@
 # PDF Batch Results
 
-Run at: 2026-05-10T01:00:42.060Z
+Run at: 2026-05-10T04:49:04.363Z
 
 ## Successful Runs
 
 | SKU | Product | Category | Confidence | Source |
 | --- | --- | --- | ---: | --- |
-| E450LXFD | Fisher & Paykel | fridge | 0.85 | https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf |
+| SRF7300BSS | Samsung | fridge | 0.9 | https://downloadcenter.samsung.com/content/UM/202604/20260429141101705/OID38284-04_T-TYPE_RF7000A_EN_260417.pdf |
 
 ## Significant Discrepancies
 

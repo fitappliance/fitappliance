@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-manual-samsung-srf7300bss",
+  "category": "fridge",
+  "brand": "Samsung",
+  "model": "SRF7300BSS",
+  "source_url": "https://downloadcenter.samsung.com/content/UM/202604/20260429141101705/OID38284-04_T-TYPE_RF7000A_EN_260417.pdf",
+  "verified_at": "2026-05-10",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "SRF7300BSS",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1779,
+      "width_mm": 912,
+      "depth_mm": 723,
+      "door_open_90_depth_mm": 1472
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://downloadcenter.samsung.com/content/UM/202604/20260429141101705/OID38284-04_T-TYPE_RF7000A_EN_260417.pdf",
+      "extraction_date": "2026-05-10T04:49:04.307Z",
+      "confidence_score": 0.9,
+      "verified_alias": "RF59A7010B1/SA"
+    }
+  }
+}

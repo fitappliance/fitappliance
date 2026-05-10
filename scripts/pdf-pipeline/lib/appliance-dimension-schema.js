@@ -51,7 +51,8 @@ const ApplianceDimensionSchema = z.object({
   metadata: z.object({
     source_pdf_url: z.string().url(),
     extraction_date: z.string().datetime(),
-    confidence_score: z.number().min(0).max(1)
+    confidence_score: z.number().min(0).max(1),
+    verified_alias: z.string().trim().min(1).optional()
   }).strict()
 }).strict();
 
@@ -114,7 +115,8 @@ function normalizeApplianceDimensionCandidate(candidate = {}, opts = {}) {
     metadata: {
       source_pdf_url: candidate.metadata?.source_pdf_url ?? candidate.source_pdf_url,
       extraction_date: candidate.metadata?.extraction_date ?? candidate.extraction_date,
-      confidence_score: confidenceScore
+      confidence_score: confidenceScore,
+      verified_alias: candidate.metadata?.verified_alias ?? candidate.verified_alias
     }
   };
 }
