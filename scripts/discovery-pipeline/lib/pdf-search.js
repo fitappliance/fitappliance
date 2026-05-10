@@ -151,7 +151,8 @@ function scorePdfUrl(value, discovery) {
 function buildSearchQueries(discovery) {
   const brand = String(discovery?.brand || '').trim();
   const model = String(discovery?.model || '').trim();
-  const officialHosts = OFFICIAL_HOSTS_BY_BRAND[brand.toLowerCase()] || [];
+  const brandKey = brand.toLowerCase();
+  const officialHosts = OFFICIAL_HOSTS_BY_BRAND[brandKey] || [];
   const base = `${brand} ${model}`.trim();
   const queries = [
     `"${model}" "${brand}" (specification sheet OR datasheet OR factsheet OR installation manual) filetype:pdf`,
@@ -160,6 +161,11 @@ function buildSearchQueries(discovery) {
 
   for (const host of officialHosts.slice(0, 2)) {
     queries.unshift(`site:${host} "${model}" filetype:pdf`);
+  }
+
+  if (brandKey === 'samsung') {
+    queries.unshift(`site:commercial.appliancesonline.com.au "${model}" Samsung (specification sheet OR spec sheet OR manual) filetype:pdf`);
+    queries.unshift(`site:images.samsung.com "${model}" (onepager OR "one pager" OR specification) filetype:pdf`);
   }
 
   return [...new Set(queries.filter((query) => query.trim()))];

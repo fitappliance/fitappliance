@@ -6,6 +6,7 @@ const require = createRequire(import.meta.url);
 
 const {
   buildDirectPdfCandidates,
+  buildSearchQueries,
   extractDuckDuckGoResultUrls,
   extractYahooResultUrls,
   searchPdfForDiscovery,
@@ -33,6 +34,14 @@ test('Yahoo result parser extracts decoded RU redirect URLs', () => {
   assert.deepEqual(extractYahooResultUrls(html), [
     'https://media3.bosch-home.com/Documents/specsheet/en-AU/KFD96AXEAA.pdf',
   ]);
+});
+
+test('PDF search adds Samsung fallback search domains for one-pagers and trusted retailer PDFs', () => {
+  const queries = buildSearchQueries({ brand: 'Samsung', model: 'SRF5300BD' });
+
+  assert.ok(queries.some((query) => query.includes('site:samsung.com')));
+  assert.ok(queries.some((query) => query.includes('site:images.samsung.com') && query.includes('onepager')));
+  assert.ok(queries.some((query) => query.includes('site:commercial.appliancesonline.com.au')));
 });
 
 test('PDF search prefers accepted official manufacturer PDF URLs that contain the model', async () => {

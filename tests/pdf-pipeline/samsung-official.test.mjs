@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
+  buildSamsungSupportUrls,
   buildSamsungSupportModelVariants,
   extractSamsungPdfResources,
   findSamsungOfficialPdf,
@@ -14,6 +15,17 @@ test('Samsung official finder normalizes SKU values for support lookup', () => {
   assert.deepEqual(buildSamsungSupportModelVariants('DW60BG750FSL'), [
     'DW60BG750FSL',
     'DW60BG750FSLSA'
+  ]);
+});
+
+test('Samsung official finder includes legacy dot support URLs for older AU models', () => {
+  const urls = buildSamsungSupportUrls('DW60M6055FS').map((candidate) => candidate.url);
+
+  assert.deepEqual(urls, [
+    'https://www.samsung.com/au/support/model/DW60M6055FS/',
+    'https://www.samsung.com/au/support/model/DW60M6055FSSA/',
+    'https://www.samsung.com/au/support/model.DW60M6055FS_SA/',
+    'https://www.samsung.com/au/support/model/DW60M6055FS/SA/'
   ]);
 });
 
@@ -82,4 +94,24 @@ test('Samsung official finder retries the AU support model suffix and returns th
   assert.equal(result.matchedSku, 'DV90BB9440GBSA');
   assert.equal(result.source, 'samsung-official-user_manual');
   assert.match(result.sourceUrl, /ModelName=DV90BB9440GB/);
+});
+
+test('Samsung official finder retries legacy dot support pages when modern support routes 404', async () => {
+  const calls = [];
+  const result = await findSamsungOfficialPdf({ sku: 'DW60M6055FS' }, {
+    fetchImpl: async (url) => {
+      calls.push(String(url));
+      if (String(url).includes('/au/support/model.DW60M6055FS_SA/')) {
+        return new Response(`
+          <li data-sdf-prop="contents">{"manuals":[{"description":"User Manual","englishDescription":"User Manual","fileName":"DD81-02437J_DW5500MM_SENZ_User_Manual.pdf","contentsTypeCode":"UM","downloadUrl":"https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&ModelName=DW60M6055FS&CttFileID=8336188","languageList":[{"code":"EN","name":"ENGLISH"}],"areaList":[{"code":"AU"}]}]}</li>
+        `, { status: 200 });
+      }
+      return new Response('', { status: 404 });
+    }
+  });
+
+  assert.equal(calls.length, 3);
+  assert.equal(result.matchedSku, 'DW60M6055FS_SA');
+  assert.equal(result.supportUrl, 'https://www.samsung.com/au/support/model.DW60M6055FS_SA/');
+  assert.match(result.sourceUrl, /ModelName=DW60M6055FS/);
 });

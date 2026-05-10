@@ -70,6 +70,34 @@ function buildSamsungSupportModelVariants(sku) {
   return [...variants];
 }
 
+function stripAustraliaSuffix(sku) {
+  return normalizeSku(sku).replace(/SA$/i, '');
+}
+
+function buildSamsungSupportUrls(sku) {
+  const urls = [];
+  const seen = new Set();
+  const add = (url, matchedSku) => {
+    if (seen.has(url)) return;
+    seen.add(url);
+    urls.push({ url, matchedSku });
+  };
+
+  for (const variant of buildSamsungSupportModelVariants(sku)) {
+    add(`${SAMSUNG_AU_BASE_URL}/au/support/model/${variant}/`, variant);
+  }
+
+  const baseSku = stripAustraliaSuffix(sku);
+  if (baseSku) {
+    // Older Samsung AU support pages use the legacy Demandware-style route:
+    // /au/support/model.SKU_SA/. Several live manuals are only exposed there.
+    add(`${SAMSUNG_AU_BASE_URL}/au/support/model.${baseSku}_SA/`, `${baseSku}_SA`);
+    add(`${SAMSUNG_AU_BASE_URL}/au/support/model/${baseSku}/SA/`, `${baseSku}/SA`);
+  }
+
+  return urls;
+}
+
 function classifySamsungResource(resource = {}) {
   const haystack = [
     resource.type,
@@ -205,11 +233,11 @@ function extractSamsungPdfResources(html, sku = '') {
 async function findSamsungOfficialPdf(target, opts = {}) {
   const sku = target?.sku || target?.model || target?.product?.model || target?.product?.sku;
   if (!sku) throw new Error('Samsung official finder requires sku/model');
-  const variants = buildSamsungSupportModelVariants(sku);
+  const supportUrls = buildSamsungSupportUrls(sku);
   let lastError = null;
 
-  for (const variant of variants) {
-    const supportUrl = `${SAMSUNG_AU_BASE_URL}/au/support/model/${variant}/`;
+  for (const candidate of supportUrls) {
+    const supportUrl = candidate.url;
     try {
       const html = await fetchHtml(supportUrl, opts);
       const resources = extractSamsungPdfResources(html, sku);
@@ -217,7 +245,7 @@ async function findSamsungOfficialPdf(target, opts = {}) {
       if (best) {
         return {
           sku,
-          matchedSku: variant,
+          matchedSku: candidate.matchedSku,
           supportUrl,
           sourceUrl: best.url,
           source: `samsung-official-${best.type}`,
@@ -232,8 +260,8 @@ async function findSamsungOfficialPdf(target, opts = {}) {
 
   return {
     sku,
-    matchedSku: variants[variants.length - 1] || normalizeSku(sku),
-    supportUrl: variants.length ? `${SAMSUNG_AU_BASE_URL}/au/support/model/${variants.at(-1)}/` : '',
+    matchedSku: supportUrls.at(-1)?.matchedSku || normalizeSku(sku),
+    supportUrl: supportUrls.at(-1)?.url || '',
     sourceUrl: null,
     source: 'samsung-official',
     resources: [],
@@ -242,6 +270,7 @@ async function findSamsungOfficialPdf(target, opts = {}) {
 }
 
 exports.absoluteSamsungUrl = absoluteSamsungUrl;
+exports.buildSamsungSupportUrls = buildSamsungSupportUrls;
 exports.buildSamsungSupportModelVariants = buildSamsungSupportModelVariants;
 exports.extractSamsungPdfResources = extractSamsungPdfResources;
 exports.findSamsungOfficialPdf = findSamsungOfficialPdf;
