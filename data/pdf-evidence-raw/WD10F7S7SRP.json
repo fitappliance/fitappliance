@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-31204",
+  "category": "washing_machine",
+  "brand": "Samsung",
+  "model": "WD10F7S7SRP",
+  "source_url": "https://www.appliancesonline.com.au/ak/0/e/d/e/0ede69751366c95b9ea601581540d055d495a6ee_wd10f7s7srp_usermanual.pdf",
+  "verified_at": "2026-05-10",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "WD10F7S7SRP",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 984,
+      "width_mm": 686,
+      "depth_mm": 820,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 432,
+      "left_mm": 25,
+      "right_mm": 25,
+      "rear_mm": 150
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": false,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/e/d/e/0ede69751366c95b9ea601581540d055d495a6ee_wd10f7s7srp_usermanual.pdf",
+      "extraction_date": "2026-05-10T11:37:56.381Z",
+      "confidence_score": 0.88
+    }
+  }
+}

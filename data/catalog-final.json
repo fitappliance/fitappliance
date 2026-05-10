@@ -12,23 +12,23 @@
   },
   "latest_verified_at": "2026-05-10",
   "summary": {
-    "total_products": 3510,
-    "active_products": 1387,
-    "evidence_files": 1491,
-    "merged_products": 1475,
+    "total_products": 3513,
+    "active_products": 1390,
+    "evidence_files": 1494,
+    "merged_products": 1478,
     "unmatched_evidence_files": 3,
     "duplicate_evidence_files": 16,
     "categories": {
       "fridge": 1986,
       "dishwasher": 704,
       "dryer": 162,
-      "washing_machine": 658
+      "washing_machine": 661
     },
     "official_pdf_by_category": {
       "fridge": 778,
       "dishwasher": 359,
       "dryer": 93,
-      "washing_machine": 245
+      "washing_machine": 248
     }
   },
   "unmatched_evidence": [
@@ -120337,6 +120337,60 @@
       }
     },
     {
+      "id": "ao-12108",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WD0754W8E",
+      "displayName": "Samsung WD0754W8E Washer Dryer Combo",
+      "title": "Samsung WD0754W8E Washer Dryer Combo",
+      "slug": "ao-wd0754w8e",
+      "w": 598,
+      "h": 844,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd0754w8e",
+          "p": 744,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 12108,
+        "product_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd0754w8e",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 844,
+        "width_mm": 598,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/c/3/4/e/c34e697a12e8a5b058a926d744bf67cc0829c77f_wd0754w8e.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WD0754W8E.json"
+      }
+    },
+    {
       "id": "ao-63794",
       "cat": "washing_machine",
       "brand": "LG",
@@ -120388,6 +120442,60 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/WD1013NDW.json"
+      }
+    },
+    {
+      "id": "ao-31204",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WD10F7S7SRP",
+      "displayName": "Samsung WD10F7S7SRP 10kg Washer 7kg Dryer Combo",
+      "title": "Samsung WD10F7S7SRP 10kg Washer 7kg Dryer Combo",
+      "slug": "ao-wd10f7s7srp",
+      "w": 686,
+      "h": 984,
+      "d": 820,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/samsung-wd10f7s7srp-10kg-front-load-washer-dryer-combo",
+          "p": 1741,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 31204,
+        "product_url": "https://www.appliancesonline.com.au/product/samsung-wd10f7s7srp-10kg-front-load-washer-dryer-combo",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 984,
+        "width_mm": 686,
+        "depth_mm": 820,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 432,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 150
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/0/e/d/e/0ede69751366c95b9ea601581540d055d495a6ee_wd10f7s7srp_usermanual.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WD10F7S7SRP.json"
       }
     },
     {
@@ -121630,6 +121738,60 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/WD8560F1.json"
+      }
+    },
+    {
+      "id": "ao-31205",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WD856UHSAWQ",
+      "displayName": "Samsung WD856UHSAWQ 8.5kg Washer 6kg Dryer Combo",
+      "title": "Samsung WD856UHSAWQ 8.5kg Washer 6kg Dryer Combo",
+      "slug": "ao-wd856uhsawq",
+      "w": 600,
+      "h": 850,
+      "d": 650,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd856uhsawq",
+          "p": 1278,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 31205,
+        "product_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd856uhsawq",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 650,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/0/2/3/3/02336ecdeedf26244cad6dc98e6e2ec8419eeff0_wd856uhsawq_installationcareandusemanual.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WD856UHSAWQ.json"
       }
     },
     {

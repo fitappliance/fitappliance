@@ -363,6 +363,127 @@ test('Samsung parser fails closed when compact wildcard model names do not cover
   }), /target SKU did not match/i);
 });
 
+test('Samsung parser extracts legacy L1b exact inline dimensions with dashed alcove clearance', () => {
+  const text = `
+    Washing Machine
+    User manual
+    Alcove or closet installation
+    For alcove or closet installation, the washing machine requires the following minimum clearances of:
+    Sides – 25 mm Rear – 150 mm
+    Top – 432 mm Front – 51 mm
+    APPENDIX
+    SPECIFICATIONS
+    TYPE FRONT LOADING WASHING MACHINE
+    DIMENSIONS WD10F7S7SRP W686mm X D820mm X H984mm
+    WATER PRESSURE 50 kPa ~ 800 kPa
+  `;
+
+  const result = parseSamsungText(text, {
+    target: { brand: 'Samsung', sku: 'WD10F7S7SRP', category: 'washing_machine' },
+    sourceUrl: SOURCE_URL,
+    extractionDate: EXTRACTION_DATE
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 984,
+    width_mm: 686,
+    depth_mm: 820,
+    door_open_90_depth_mm: null
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 432,
+    left_mm: 25,
+    right_mm: 25,
+    rear_mm: 150
+  });
+  assert.equal(validateApplianceDimension(result.data).valid, true);
+});
+
+test('Samsung parser extracts legacy L1b inline dimensions with wildcard model token', () => {
+  const text = `
+    Washing Machine
+    User manual
+    Alcove or closet installation
+    Sides - 25 mm Rear - 50 mm
+    Top - 25 mm Front - 465 mm
+    Appendix SPECIFICATIONS
+    Type FRONT LOADING WASHING MACHINE
+    DIMENSIONS WD856UHSA** W600mm X D650mm X H850mm
+  `;
+
+  const result = parseSamsungText(text, {
+    target: { brand: 'Samsung', sku: 'WD856UHSAWQ', category: 'washing_machine' },
+    sourceUrl: SOURCE_URL,
+    extractionDate: EXTRACTION_DATE
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 850,
+    width_mm: 600,
+    depth_mm: 650,
+    door_open_90_depth_mm: null
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 25,
+    left_mm: 25,
+    right_mm: 25,
+    rear_mm: 50
+  });
+  assert.equal(validateApplianceDimension(result.data).valid, true);
+});
+
+test('Samsung parser extracts legacy L1b inline dimensions with approved prefix family token', () => {
+  const text = `
+    Washing Machine
+    User manual
+    Alcove or closet installation
+    Sides - 25 mm Rear - 50 mm
+    Top - 25 mm Front - 465 mm
+    Appendix SPECIFICATIONS
+    Type FRONT LOADING WASHING MACHINE
+    DIMENSIONS WD0754 / WD0752 W598mm X D600mm X H844mm
+  `;
+
+  const result = parseSamsungText(text, {
+    target: { brand: 'Samsung', sku: 'WD0754W8E', category: 'washing_machine' },
+    sourceUrl: SOURCE_URL,
+    extractionDate: EXTRACTION_DATE
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 844,
+    width_mm: 598,
+    depth_mm: 600,
+    door_open_90_depth_mm: null
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 25,
+    left_mm: 25,
+    right_mm: 25,
+    rear_mm: 50
+  });
+  assert.equal(validateApplianceDimension(result.data).valid, true);
+});
+
+test('Samsung parser fails closed when L1b inline dimension tokens do not match target SKU', () => {
+  const text = `
+    Washing Machine
+    User manual
+    Alcove or closet installation
+    Sides - 25 mm Rear - 50 mm
+    Top - 25 mm Front - 465 mm
+    Appendix SPECIFICATIONS
+    Type FRONT LOADING WASHING MACHINE
+    DIMENSIONS WD0754 / WD0752 W598mm X D600mm X H844mm
+  `;
+
+  assert.throws(() => parseSamsungText(text, {
+    target: { brand: 'Samsung', sku: 'WW90DG6U34LB', category: 'washing_machine' },
+    sourceUrl: SOURCE_URL,
+    extractionDate: EXTRACTION_DATE
+  }), /target SKU did not match/i);
+});
+
 test('Samsung parser can read AO fridge spec sheet dimensions but still requires clearance before full parse', () => {
   const text = `
     Specification/Information
