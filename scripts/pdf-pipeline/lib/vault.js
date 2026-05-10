@@ -115,6 +115,7 @@ function upsertManualEvidence(manifest, {
     source_url: effectiveSourceUrl,
     verified_at: verifiedDate,
     raw_json_path: rawJsonRelativePath,
+    ...(strictData.metadata?.verified_alias ? { verified_alias: strictData.metadata.verified_alias } : {}),
     extracted: strictData
   };
 
@@ -127,6 +128,7 @@ function upsertManualEvidence(manifest, {
       brand: product.brand || existing.brand || strictData.brand,
       model: product.model || existing.model || strictData.sku,
       has_pdf_evidence: true,
+      ...(strictData.metadata?.verified_alias ? { verified_alias: strictData.metadata.verified_alias } : {}),
       evidence: [
         ...existingEvidence.filter((item) => !isSameEvidenceItem(item, type, effectiveSourceUrl)),
         evidenceItem

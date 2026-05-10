@@ -4,7 +4,12 @@ require('dotenv').config({ quiet: true });
 const fs = require('node:fs');
 const path = require('node:path');
 
-const { fetchPdf, findManualEvidenceSourceUrl, resolvePdfSourceUrl } = require('./1-fetch');
+const {
+  fetchPdf,
+  findManualEvidenceSourceUrl,
+  findManualEvidenceVerifiedAlias,
+  resolvePdfSourceUrl
+} = require('./1-fetch');
 const { extractText } = require('./2-extract-text');
 const { createEnvLlmCaller, extractStructuredData } = require('./3-ai-parse');
 const { validateApplianceDimension } = require('./4-validate');
@@ -393,6 +398,7 @@ async function parseSamsungTarget({
   extractTextImpl
 }) {
   const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const verifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
   const official = manualSourceUrl
     ? null
     : await samsungOfficialFinder(target, {
@@ -415,7 +421,8 @@ async function parseSamsungTarget({
   const parsed = parseSamsungText(textResult.text, {
     target,
     sourceUrl,
-    extractionDate: new Date().toISOString()
+    extractionDate: new Date().toISOString(),
+    verifiedAlias
   });
 
   return {

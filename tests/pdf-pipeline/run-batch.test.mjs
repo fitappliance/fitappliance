@@ -455,6 +455,81 @@ test('runBatch processes Samsung targets with the official finder and layout-awa
   });
 });
 
+test('runBatch preserves Samsung verified_alias metadata from manual evidence', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'samsung-srf7300bss',
+    brand: 'Samsung',
+    sku: 'SRF7300BSS',
+    category: 'fridge',
+    product: {
+      id: 'samsung-srf7300bss',
+      cat: 'fridge',
+      brand: 'Samsung',
+      model: 'SRF7300BSS',
+      w: 912,
+      h: 1779,
+      d: 723,
+      unavailable: false
+    }
+  };
+  writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {
+    schema_version: 1,
+    products: {
+      'samsung-srf7300bss': {
+        category: 'fridge',
+        brand: 'Samsung',
+        model: 'SRF7300BSS',
+        verified_alias: 'RF59A7010B1/SA',
+        source_url: 'https://downloadcenter.samsung.com/content/UM/202604/OID38284-04_T-TYPE_RF7000A_EN_260417.pdf',
+        type: 'user_manual',
+        status: 'candidate',
+        evidence: [
+          {
+            type: 'user_manual',
+            status: 'candidate',
+            source_url: 'https://downloadcenter.samsung.com/content/UM/202604/OID38284-04_T-TYPE_RF7000A_EN_260417.pdf',
+            verified_alias: 'RF59A7010B1/SA'
+          }
+        ]
+      }
+    }
+  });
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    samsungOfficialFinder: async () => {
+      throw new Error('official finder should be bypassed');
+    },
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        Refrigerator
+        User manual
+        STEP 1 Select a site
+        Clearance
+        Depth “A” 723 mm
+        Width “B” 912 mm
+        Height “C” 1748 mm
+        Overall Height “D” 1779 mm
+        01 more than 50 mm
+        03 1472 mm
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'SRF7300BSS.json'), 'utf8'));
+  assert.equal(raw.extracted.metadata.verified_alias, 'RF59A7010B1/SA');
+});
+
 test('runBatch lets Fisher & Paykel manual-evidence spec sheets rescue models without PDPs', async () => {
   const repoRoot = makeRepo();
   const target = {

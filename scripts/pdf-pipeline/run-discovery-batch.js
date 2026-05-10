@@ -55,7 +55,7 @@ function isDiscoveryCandidate(entry) {
     && (entry.source_url || isFisherPaykelEntry(entry))
     && entry.status !== 'rejected'
     && entry.product
-    && entry.discovery?.retailer_key
+    && (entry.discovery?.retailer_key || entry.manual_catalog_entry === true)
   );
 }
 

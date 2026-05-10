@@ -12,20 +12,20 @@
   },
   "latest_verified_at": "2026-05-10",
   "summary": {
-    "total_products": 3503,
+    "total_products": 3504,
     "active_products": 1381,
-    "evidence_files": 1484,
-    "merged_products": 1468,
+    "evidence_files": 1485,
+    "merged_products": 1469,
     "unmatched_evidence_files": 3,
     "duplicate_evidence_files": 16,
     "categories": {
-      "fridge": 1985,
+      "fridge": 1986,
       "dishwasher": 704,
       "dryer": 162,
       "washing_machine": 652
     },
     "official_pdf_by_category": {
-      "fridge": 777,
+      "fridge": 778,
       "dishwasher": 359,
       "dryer": 93,
       "washing_machine": 239
@@ -114837,6 +114837,46 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/SRF717CDBLS.json"
+      }
+    },
+    {
+      "id": "fridge-manual-samsung-srf7300bss",
+      "cat": "fridge",
+      "brand": "Samsung",
+      "model": "SRF7300BSS",
+      "displayName": "Samsung SRF7300BSS",
+      "title": "Samsung SRF7300BSS",
+      "slug": "fridge-manual-samsung-srf7300bss",
+      "unavailable": true,
+      "retailers": [],
+      "w": 912,
+      "h": 1779,
+      "d": 723,
+      "dimensions": {
+        "height_mm": 1779,
+        "width_mm": 912,
+        "depth_mm": 723,
+        "door_open_90_depth_mm": 1472
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://downloadcenter.samsung.com/content/UM/202604/20260429141101705/OID38284-04_T-TYPE_RF7000A_EN_260417.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.9,
+        "verified_alias": "RF59A7010B1/SA",
+        "raw_json_path": "data/pdf-evidence-raw/SRF7300BSS.json"
       }
     },
     {
