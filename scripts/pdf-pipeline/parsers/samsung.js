@@ -49,6 +49,19 @@ function modelPatternMatchesSku(modelPattern, sku) {
   return new RegExp(`^${escaped}$`).test(target);
 }
 
+function modelTokenMatchesSku(modelToken, sku, { allowPrefix = false } = {}) {
+  const pattern = normalizeModelToken(modelToken, { keepWildcard: true });
+  const target = normalizeModelToken(sku);
+  if (!pattern || !target) return false;
+  if (modelPatternMatchesSku(pattern, target)) return true;
+  return Boolean(
+    allowPrefix
+    && !pattern.includes('*')
+    && pattern.length >= 6
+    && target.startsWith(pattern)
+  );
+}
+
 function extractModelPatterns(rawText) {
   return [...String(rawText || '').toUpperCase().matchAll(/[A-Z0-9*\/-]+/g)]
     .map((match) => normalizeModelToken(match[0], { keepWildcard: true }))
@@ -203,6 +216,30 @@ function extractSamsungWasherDimensions(sections, sku) {
     };
   }
 
+  const inlineBlocks = [...text.matchAll(/\bDIMENSIONS?\s+([A-Z0-9*\/\s-]{3,120}?)\s+W\s*(\d+(?:\.\d+)?)\s*mm?\s*[x×]\s*D\s*(\d+(?:\.\d+)?)\s*mm?\s*[x×]\s*H\s*(\d+(?:\.\d+)?)\s*mm?/gi)]
+    .map((match) => ({
+      models: extractModelPatterns(match[1]),
+      width: match[2],
+      depth: match[3],
+      height: match[4],
+      source: 'legacy-inline'
+    }))
+    .filter((block) => block.models.length > 0);
+  const selectedInline = inlineBlocks.find((block) => (
+    block.models.some((model) => modelTokenMatchesSku(model, sku, { allowPrefix: true }))
+  ));
+  if (selectedInline) {
+    return {
+      width_mm: parseMm(selectedInline.width, 'washer width'),
+      height_mm: parseMm(selectedInline.height, 'washer height'),
+      depth_mm: parseMm(selectedInline.depth, 'washer depth'),
+      door_open_90_depth_mm: null
+    };
+  }
+  if (inlineBlocks.length) {
+    throw new Error('Samsung washing machine parser found L1b inline dimensions, but target SKU did not match document model token.');
+  }
+
   const compactBlocks = normalizeWhitespace(text).split('\n').flatMap((line, index, lines) => {
     const modelLine = line.match(/\bModel name\s+(.+)/i);
     if (!modelLine) return [];
@@ -285,10 +322,11 @@ function extractAlcoveClearance(sections, category) {
       rear_mm: parseMm(table[4], `${category} rear clearance`)
     };
   }
+  const namedMm = (label) => text.match(new RegExp(`${label}\\s*(?:[-–—:]\\s*)?(\\d+(?:\\.\\d+)?)\\s*mm`, 'i'))?.[1];
   const list = {
-    side: text.match(/Sides\s+(\d+(?:\.\d+)?)\s*mm/i)?.[1],
-    top: text.match(/Top\s+(\d+(?:\.\d+)?)\s*mm/i)?.[1],
-    rear: text.match(/Rear\s+(\d+(?:\.\d+)?)\s*mm/i)?.[1]
+    side: namedMm('Sides'),
+    top: namedMm('Top'),
+    rear: namedMm('Rear')
   };
   if (list.side && list.top && list.rear) {
     return {

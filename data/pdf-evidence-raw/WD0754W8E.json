@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-12108",
+  "category": "washing_machine",
+  "brand": "Samsung",
+  "model": "WD0754W8E",
+  "source_url": "https://www.appliancesonline.com.au/ak/c/3/4/e/c34e697a12e8a5b058a926d744bf67cc0829c77f_wd0754w8e.pdf",
+  "verified_at": "2026-05-10",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "WD0754W8E",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 844,
+      "width_mm": 598,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 25,
+      "left_mm": 25,
+      "right_mm": 25,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": false,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.appliancesonline.com.au/ak/c/3/4/e/c34e697a12e8a5b058a926d744bf67cc0829c77f_wd0754w8e.pdf",
+      "extraction_date": "2026-05-10T11:37:57.100Z",
+      "confidence_score": 0.88
+    }
+  }
+}
