@@ -12,23 +12,23 @@
   },
   "latest_verified_at": "2026-05-10",
   "summary": {
-    "total_products": 3504,
-    "active_products": 1381,
-    "evidence_files": 1485,
-    "merged_products": 1469,
+    "total_products": 3510,
+    "active_products": 1387,
+    "evidence_files": 1491,
+    "merged_products": 1475,
     "unmatched_evidence_files": 3,
     "duplicate_evidence_files": 16,
     "categories": {
       "fridge": 1986,
       "dishwasher": 704,
       "dryer": 162,
-      "washing_machine": 652
+      "washing_machine": 658
     },
     "official_pdf_by_category": {
       "fridge": 778,
       "dishwasher": 359,
       "dryer": 93,
-      "washing_machine": 239
+      "washing_machine": 245
     }
   },
   "unmatched_evidence": [
@@ -120391,6 +120391,60 @@
       }
     },
     {
+      "id": "ao-45419",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WD10J8420GW",
+      "displayName": "Samsung WD10J8420GW Washer Dryer Combo",
+      "title": "Samsung WD10J8420GW Washer Dryer Combo",
+      "slug": "ao-wd10j8420gw",
+      "w": 600,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd10j8420gw",
+          "p": 1330,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 45419,
+        "product_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd10j8420gw",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/0/e/8/1/0e813333f5762ed9f243facc585b6eee13559b87_Samsung_Washer_Dryer_Combo_WD10J8420GW_User_Manual.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WD10J8420GW.json"
+      }
+    },
+    {
       "id": "ao-61774",
       "cat": "washing_machine",
       "brand": "LG",
@@ -120550,6 +120604,60 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/WD1275TC5W.json"
+      }
+    },
+    {
+      "id": "ao-52845",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WD13J7825KP",
+      "displayName": "Samsung WD13J7825KP AddWash 13kg/7kg Washer Dryer Combo",
+      "title": "Samsung WD13J7825KP AddWash 13kg/7kg Washer Dryer Combo",
+      "slug": "ao-wd13j7825kp",
+      "w": 686,
+      "h": 990,
+      "d": 811,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/samsung-wd13j7825kp-13kg-front-load-washer-dryer-combo",
+          "p": 1909,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 52845,
+        "product_url": "https://www.appliancesonline.com.au/product/samsung-wd13j7825kp-13kg-front-load-washer-dryer-combo",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 990,
+        "width_mm": 686,
+        "depth_mm": 811,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/7/7/5/4/77542c25103a9858b63eda9bed29b00454790933_Samsung_WD13J7825KP_13kg_Front_Load_Washing_Machine_User_Manual.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WD13J7825KP.json"
       }
     },
     {
@@ -121363,6 +121471,60 @@
       }
     },
     {
+      "id": "ao-46346",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WD75J5410AW",
+      "displayName": "Samsung WD75J5410AW 7.5kg/4kg Washer Dryer Combo",
+      "title": "Samsung WD75J5410AW 7.5kg/4kg Washer Dryer Combo",
+      "slug": "ao-wd75j5410aw",
+      "w": 600,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd75j5410aw",
+          "p": 976,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 46346,
+        "product_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd75j5410aw",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/7/c/9/a/7c9aa22b659fb892624b5aaba0f4387efc90602c_Samsung_Washer_Dryer_Combo_WD75J5410AW_User_Manual.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WD75J5410AW.json"
+      }
+    },
+    {
       "id": "ao-61858",
       "cat": "washing_machine",
       "brand": "Samsung",
@@ -121468,6 +121630,60 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/WD8560F1.json"
+      }
+    },
+    {
+      "id": "ao-60276",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WD85K6410OW",
+      "displayName": "Samsung 8.5kg/6kg AddWash Washer Dryer Combo WD85K6410OW",
+      "title": "Samsung 8.5kg/6kg AddWash Washer Dryer Combo WD85K6410OW",
+      "slug": "ao-wd85k6410ow",
+      "w": 600,
+      "h": 850,
+      "d": 650,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/samsung-wd85k6410ow-8-5kg-washer-6kg-dryer-combo",
+          "p": 1686,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 60276,
+        "product_url": "https://www.appliancesonline.com.au/product/samsung-wd85k6410ow-8-5kg-washer-6kg-dryer-combo",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 650,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/7/b/5/d/7b5d9aa8035db39126fdcd744137e0797cdb41a7_Samsung_WD85K6410OW_8.5kg_Washer_6kg_Dryer_Combo_User_Manual.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WD85K6410OW.json"
       }
     },
     {
@@ -131705,6 +131921,114 @@
         "verified_at": "2026-05-10",
         "confidence_score": 0.88,
         "raw_json_path": "data/pdf-evidence-raw/WW12BB94ADGH.json"
+      }
+    },
+    {
+      "id": "ao-63478",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW75J5210IW",
+      "displayName": "Samsung WW75J5210IW 7.5kg Front Load Washing Machine",
+      "title": "Samsung WW75J5210IW 7.5kg Front Load Washing Machine",
+      "slug": "ao-ww75j5210iw",
+      "w": 600,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/samsung-ww75j5210iw-7-5kg-front-load-washing-machine",
+          "p": 569,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 63478,
+        "product_url": "https://www.appliancesonline.com.au/product/samsung-ww75j5210iw-7-5kg-front-load-washing-machine",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/a/0/2/1/a021a3844aa8e1ae593cd2efb35a99d46f8267b8_Samsung_WW75J5210IW_7.5kg_Front_Load_Washing_Machine_User_Manual.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WW75J5210IW.json"
+      }
+    },
+    {
+      "id": "ao-56968",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW75K5210WW",
+      "displayName": "Samsung WW75K5210WW AddWash 7.5 kg Front Load Washing Machine",
+      "title": "Samsung WW75K5210WW AddWash 7.5 kg Front Load Washing Machine",
+      "slug": "ao-ww75k5210ww",
+      "w": 600,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/samsung-ww75k5210ww-addwash-75kg-front-load-washing-machine",
+          "p": 969,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 56968,
+        "product_url": "https://www.appliancesonline.com.au/product/samsung-ww75k5210ww-addwash-75kg-front-load-washing-machine",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/e/7/2/f/e72f0957eb92244ac873f165c32985646a4f8d31_Samsung_WW75K5210WW_AddWash_7.5_kg_Front_Load_Washing_Machine_User_Manual.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WW75K5210WW.json"
       }
     },
     {
