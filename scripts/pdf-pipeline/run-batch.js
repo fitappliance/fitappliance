@@ -11,6 +11,8 @@ const { validateApplianceDimension } = require('./4-validate');
 const { saveExtractionToVault } = require('./lib/vault');
 const { findFisherPaykelOfficialPdf } = require('./fisher-paykel-official');
 const { parseFisherPaykelText } = require('./parsers/fisher-paykel');
+const { findSamsungOfficialPdf } = require('./samsung-official');
+const { parseSamsungText } = require('./parsers/samsung');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
 const FISHER_PAYKEL_MAX_BYTES = 30 * 1024 * 1024;
@@ -73,6 +75,13 @@ function normalizeSku(value) {
 
 function isFisherPaykelTarget(target = {}) {
   return /fisher\s*&\s*paykel|f&p|fisherpaykel/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isSamsungTarget(target = {}) {
+  return /samsung/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -375,6 +384,47 @@ async function parseFisherPaykelTarget({
   throw new Error(`Fisher & Paykel official documents failed: ${errors.join(' | ')}`);
 }
 
+async function parseSamsungTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  samsungOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await samsungOfficialFinder(target, {
+      timeoutMs: 60_000
+    });
+  const sourceUrl = manualSourceUrl || official?.sourceUrl;
+  if (!sourceUrl) {
+    throw new Error(official?.reason || 'Samsung official PDF resources not found');
+  }
+  const source = manualSourceUrl ? 'manual-evidence' : (official?.source || 'samsung-official');
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}.pdf`
+  );
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath);
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseSamsungText(textResult.text, {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString()
+  });
+
+  return {
+    candidate: parsed.data,
+    sourceUrl,
+    source
+  };
+}
+
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
   const dimensions = strictData?.dimensions || {};
   const pairs = [
@@ -494,7 +544,8 @@ async function runBatch({
   validateStrictImpl = validateApplianceDimension,
   saveToVaultImpl = saveExtractionToVault,
   searchPdf = null,
-  fisherPaykelOfficialFinder = findFisherPaykelOfficialPdf
+  fisherPaykelOfficialFinder = findFisherPaykelOfficialPdf,
+  samsungOfficialFinder = findSamsungOfficialPdf
 } = {}) {
   const batchTargets = targets || loadBatchTargets({ repoRoot, category, limit, skus });
   const manualEvidence = loadManualEvidence(repoRoot);
@@ -502,7 +553,9 @@ async function runBatch({
   const discrepancies = [];
   const failures = [];
 
-  const needsDefaultLlm = !parseTextImpl && batchTargets.some((target) => !isFisherPaykelTarget(target));
+  const needsDefaultLlm = !parseTextImpl && batchTargets.some((target) => (
+    !isFisherPaykelTarget(target) && !isSamsungTarget(target)
+  ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
   }
@@ -522,6 +575,18 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           fisherPaykelOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isSamsungTarget(target)) {
+        const parsed = await parseSamsungTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          samsungOfficialFinder,
           fetchPdfImpl,
           extractTextImpl
         });
@@ -656,3 +721,4 @@ exports.buildPdfSearchQuery = buildPdfSearchQuery;
 exports.searchManufacturerPdf = searchManufacturerPdf;
 exports.MISSING_API_KEY_MESSAGE = MISSING_API_KEY_MESSAGE;
 exports.parseFisherPaykelTarget = parseFisherPaykelTarget;
+exports.parseSamsungTarget = parseSamsungTarget;

@@ -382,6 +382,79 @@ test('runBatch processes Fisher & Paykel targets with official QRG plus install 
   });
 });
 
+test('runBatch processes Samsung targets with the official finder and layout-aware parser without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'samsung-ww11',
+    brand: 'Samsung',
+    sku: 'WW11CG604DLE',
+    category: 'washing_machine',
+    product: {
+      id: 'samsung-ww11',
+      cat: 'washing_machine',
+      brand: 'Samsung',
+      model: 'WW11CG604DLE',
+      w: 600,
+      h: 850,
+      d: 600,
+      unavailable: false
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    samsungOfficialFinder: async () => ({
+      sourceUrl: 'https://org.downloadcenter.samsung.com/ww11.pdf',
+      source: 'samsung-official-user_manual',
+      resourceType: 'user_manual'
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        Washing Machine
+        User manual
+        Installation requirements
+        Alcove installation
+        Minimum clearance for stable operation:
+        Sides 25 mm
+        Top 25 mm
+        Rear 50 mm
+        Front 550 mm
+        Specification sheet
+        Type Front loading washing machine
+        Model name WW11CG******
+        Dimensions
+        A (Width) 600 mm
+        B (Height) 850 mm
+        C (Depth) 600 mm
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'samsung-official-user_manual');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'WW11CG604DLE.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.dimensions, {
+    height_mm: 850,
+    width_mm: 600,
+    depth_mm: 600,
+    door_open_90_depth_mm: null
+  });
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 25,
+    left_mm: 25,
+    right_mm: 25,
+    rear_mm: 50
+  });
+});
+
 test('runBatch lets Fisher & Paykel manual-evidence spec sheets rescue models without PDPs', async () => {
   const repoRoot = makeRepo();
   const target = {

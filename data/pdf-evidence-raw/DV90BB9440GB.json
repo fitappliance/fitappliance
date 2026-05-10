@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "discovery-dryer-samsung-dv90bb9440gb",
+  "category": "dryer",
+  "brand": "Samsung",
+  "model": "DV90BB9440GB",
+  "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GB&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
+  "verified_at": "2026-05-10",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "DV90BB9440GB",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": 1100
+    },
+    "clearance_requirements": {
+      "top_mm": 25,
+      "left_mm": 25,
+      "right_mm": 25,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": false,
+      "reversible_door": true
+    },
+    "metadata": {
+      "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GB&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
+      "extraction_date": "2026-05-10T01:40:09.853Z",
+      "confidence_score": 0.88
+    }
+  }
+}
