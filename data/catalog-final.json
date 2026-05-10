@@ -10,22 +10,22 @@
     ],
     "evidence_dir": "data/pdf-evidence-raw"
   },
-  "latest_verified_at": "2026-05-09",
+  "latest_verified_at": "2026-05-10",
   "summary": {
-    "total_products": 3481,
-    "active_products": 1359,
-    "evidence_files": 1462,
-    "merged_products": 1446,
+    "total_products": 3490,
+    "active_products": 1368,
+    "evidence_files": 1471,
+    "merged_products": 1455,
     "unmatched_evidence_files": 3,
     "duplicate_evidence_files": 16,
     "categories": {
-      "fridge": 1975,
+      "fridge": 1984,
       "dishwasher": 704,
       "dryer": 160,
       "washing_machine": 642
     },
     "official_pdf_by_category": {
-      "fridge": 767,
+      "fridge": 776,
       "dishwasher": 359,
       "dryer": 91,
       "washing_machine": 229
@@ -76014,6 +76014,60 @@
       }
     },
     {
+      "id": "ao-1053",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "E450LXFD",
+      "displayName": "Fisher & Paykel E450LXFD 451L Upright Fridge",
+      "title": "Fisher & Paykel E450LXFD 451L Upright Fridge",
+      "slug": "ao-e450lxfd",
+      "w": 635,
+      "h": 1695,
+      "d": 695,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/fisher-paykel-e450lxfd-451l-upright-fridge",
+          "p": 1736,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 1053,
+        "product_url": "https://www.appliancesonline.com.au/product/fisher-paykel-e450lxfd-451l-upright-fridge",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 1695,
+        "width_mm": 635,
+        "depth_mm": 695,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 30
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/E450LXFD.json"
+      }
+    },
+    {
       "id": "ao-48284",
       "cat": "fridge",
       "brand": "Fisher & Paykel",
@@ -106078,6 +106132,60 @@
       }
     },
     {
+      "id": "ao-42035",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF610ADUQSX4",
+      "displayName": "Fisher & Paykel RF610ADUQSX4 614L French Door Fridge",
+      "title": "Fisher & Paykel RF610ADUQSX4 614L French Door Fridge",
+      "slug": "ao-rf610aduqsx4",
+      "w": 900,
+      "h": 1790,
+      "d": 695,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/fisher-paykel-rf610aduqsx4-614l-french-door-fridge",
+          "p": 3204,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 42035,
+        "product_url": "https://www.appliancesonline.com.au/product/fisher-paykel-rf610aduqsx4-614l-french-door-fridge",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 900,
+        "depth_mm": 695,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.94,
+        "raw_json_path": "data/pdf-evidence-raw/RF610ADUQSX4.json"
+      }
+    },
+    {
       "id": "ao-48469",
       "cat": "fridge",
       "brand": "Fisher & Paykel",
@@ -106590,6 +106698,165 @@
       }
     },
     {
+      "id": "discovery-fridge-fisher-paykel-rs4621frje1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RS4621FRJE1",
+      "displayName": "Fisher & Paykel RS4621FRJE1",
+      "title": "Fisher & Paykel RS4621FRJE1",
+      "slug": "discovery-fridge-fisher-paykel-rs4621frje1",
+      "w": 451,
+      "h": 2134,
+      "d": 610,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/intergrated-46cm-freezer-rh-rs4621frje1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/intergrated-46cm-freezer-rh-rs4621frje1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 451,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 3,
+        "right_mm": 3,
+        "rear_mm": 25
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwc8eebcc3/QRG/AU/QRG-AU-26941.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/RS4621FRJE1.json"
+      }
+    },
+    {
+      "id": "discovery-fridge-fisher-paykel-rs4621frjk1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RS4621FRJK1",
+      "displayName": "Fisher & Paykel RS4621FRJK1",
+      "title": "Fisher & Paykel RS4621FRJK1",
+      "slug": "discovery-fridge-fisher-paykel-rs4621frjk1",
+      "w": 451,
+      "h": 2134,
+      "d": 610,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/rh-integ-column-freezer-242l-rs4621frjk1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/rh-integ-column-freezer-242l-rs4621frjk1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 451,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 3,
+        "right_mm": 3,
+        "rear_mm": 25
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw56dad114/QRG/AU/QRG-AU-26156.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/RS4621FRJK1.json"
+      }
+    },
+    {
+      "id": "discovery-fridge-fisher-paykel-rs6121frje1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RS6121FRJE1",
+      "displayName": "Fisher & Paykel RS6121FRJE1",
+      "title": "Fisher & Paykel RS6121FRJE1",
+      "slug": "discovery-fridge-fisher-paykel-rs6121frje1",
+      "w": 603,
+      "h": 2134,
+      "d": 610,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/intergrated-61cm-freezer-rh-rs6121frje1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/intergrated-61cm-freezer-rh-rs6121frje1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 603,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 4,
+        "right_mm": 4,
+        "rear_mm": 25
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw15716aa1/QRG/AU/QRG-AU-26951.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/RS6121FRJE1.json"
+      }
+    },
+    {
       "id": "ao-71030",
       "cat": "fridge",
       "brand": "Fisher & Paykel",
@@ -106806,6 +107073,59 @@
       }
     },
     {
+      "id": "discovery-fridge-fisher-paykel-rs7621frje1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RS7621FRJE1",
+      "displayName": "Fisher & Paykel RS7621FRJE1",
+      "title": "Fisher & Paykel RS7621FRJE1",
+      "slug": "discovery-fridge-fisher-paykel-rs7621frje1",
+      "w": 756,
+      "h": 2134,
+      "d": 610,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/intergrated-76cm-freezer-rh-rs7621frje1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/intergrated-76cm-freezer-rh-rs7621frje1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 756,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 3,
+        "right_mm": 3,
+        "rear_mm": 25
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw37973d29/QRG/AU/QRG-AU-26961.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/RS7621FRJE1.json"
+      }
+    },
+    {
       "id": "ao-70900",
       "cat": "fridge",
       "brand": "Fisher & Paykel",
@@ -106968,6 +107288,59 @@
       }
     },
     {
+      "id": "discovery-fridge-fisher-paykel-rs7621srk1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RS7621SRK1",
+      "displayName": "Fisher & Paykel RS7621SRK1",
+      "title": "Fisher & Paykel RS7621SRK1",
+      "slug": "discovery-fridge-fisher-paykel-rs7621srk1",
+      "w": 756,
+      "h": 2134,
+      "d": 610,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/rh-integ-column-fridge-498l-rs7621srk1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/rh-integ-column-fridge-498l-rs7621srk1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 756,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 3,
+        "right_mm": 3,
+        "rear_mm": 25
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwc2242f2d/QRG/AU/QRG-AU-26162.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/RS7621SRK1.json"
+      }
+    },
+    {
       "id": "ao-172809",
       "cat": "fridge",
       "brand": "Fisher & Paykel",
@@ -107019,6 +107392,59 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/RS7621WRUE1.json"
+      }
+    },
+    {
+      "id": "discovery-fridge-fisher-paykel-rs7621wruk1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RS7621WRUK1",
+      "displayName": "Fisher & Paykel RS7621WRUK1",
+      "title": "Fisher & Paykel RS7621WRUK1",
+      "slug": "discovery-fridge-fisher-paykel-rs7621wruk1",
+      "w": 756,
+      "h": 2134,
+      "d": 610,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/449l-integrated-fridge-rs7621wruk1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/449l-integrated-fridge-rs7621wruk1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 756,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw321ac9c6/QRG/AU/QRG-AU-25691.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/RS7621WRUK1.json"
       }
     },
     {
@@ -107127,6 +107553,60 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/RS9120WRJ1.json"
+      }
+    },
+    {
+      "id": "ao-62196",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RS9120WRU1",
+      "displayName": "Fisher & Paykel Series 7 477L Integrated Bottom Mount Refrigerator with Ice and Water Right Hinge RS9120WRU1",
+      "title": "Fisher & Paykel Series 7 477L Integrated Bottom Mount Refrigerator with Ice and Water Right Hinge RS9120WRU1",
+      "slug": "ao-rs9120wru1",
+      "w": 906,
+      "h": 2130,
+      "d": 606,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/fisher-paykel-rs9120wru1-525l-integrated-activesmart-bottom-mount-fridge",
+          "p": 8499,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 62196,
+        "product_url": "https://www.appliancesonline.com.au/product/fisher-paykel-rs9120wru1-525l-integrated-activesmart-bottom-mount-fridge",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 2130,
+        "width_mm": 906,
+        "depth_mm": 606,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 4,
+        "left_mm": 4,
+        "right_mm": 4,
+        "rear_mm": 29
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/9mpt78hhk37b6vp8j3pn4w/FP-PlanningGuide-RS9120WRU1-IntegratedFridgeFreezer-AU-90001400A.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/RS9120WRU1.json"
       }
     },
     {

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "ao-62196",
+  "category": "fridge",
+  "brand": "Fisher & Paykel",
+  "model": "RS9120WRU1",
+  "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/9mpt78hhk37b6vp8j3pn4w/FP-PlanningGuide-RS9120WRU1-IntegratedFridgeFreezer-AU-90001400A.pdf",
+  "verified_at": "2026-05-10",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "RS9120WRU1",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 2130,
+      "width_mm": 906,
+      "depth_mm": 606,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 4,
+      "left_mm": 4,
+      "right_mm": 4,
+      "rear_mm": 29
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/9mpt78hhk37b6vp8j3pn4w/FP-PlanningGuide-RS9120WRU1-IntegratedFridgeFreezer-AU-90001400A.pdf",
+      "extraction_date": "2026-05-10T00:56:20.351Z",
+      "confidence_score": 0.85
+    }
+  }
+}
