@@ -4,13 +4,15 @@ require('dotenv').config({ quiet: true });
 const fs = require('node:fs');
 const path = require('node:path');
 
-const { fetchPdf, resolvePdfSourceUrl } = require('./1-fetch');
+const { fetchPdf, findManualEvidenceSourceUrl, resolvePdfSourceUrl } = require('./1-fetch');
 const { extractText } = require('./2-extract-text');
 const { createEnvLlmCaller, extractStructuredData } = require('./3-ai-parse');
 const { validateApplianceDimension } = require('./4-validate');
 const { saveExtractionToVault } = require('./lib/vault');
 const { findFisherPaykelOfficialPdf } = require('./fisher-paykel-official');
 const { parseFisherPaykelText } = require('./parsers/fisher-paykel');
+const { findSamsungOfficialPdf } = require('./samsung-official');
+const { parseSamsungText } = require('./parsers/samsung');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
 const FISHER_PAYKEL_MAX_BYTES = 30 * 1024 * 1024;
@@ -73,6 +75,13 @@ function normalizeSku(value) {
 
 function isFisherPaykelTarget(target = {}) {
   return /fisher\s*&\s*paykel|f&p|fisherpaykel/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isSamsungTarget(target = {}) {
+  return /samsung/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -252,21 +261,40 @@ function fisherPaykelResourceSource(resource) {
 async function parseFisherPaykelTarget({
   target,
   repoRoot,
+  manualEvidence,
   fisherPaykelOfficialFinder,
   fetchPdfImpl,
   extractTextImpl,
   timeoutMs,
   userAgent
 }) {
-  const official = await fisherPaykelOfficialFinder(target, {
-    timeoutMs,
-    userAgent
-  });
-  const resources = getFisherPaykelResources(official)
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const manualResource = manualSourceUrl
+    ? normalizeFisherPaykelResource({
+      url: manualSourceUrl,
+      type: 'specification_sheet',
+      source: 'manual-evidence',
+      score: 1000
+    })
+    : null;
+
+  let official = null;
+  let officialError = null;
+  try {
+    official = await fisherPaykelOfficialFinder(target, {
+      timeoutMs,
+      userAgent
+    });
+  } catch (error) {
+    officialError = error;
+  }
+
+  const resources = [manualResource, ...getFisherPaykelResources(official)]
+    .filter(Boolean)
     .filter((resource) => resource.type !== 'energy_label');
 
   if (resources.length === 0) {
-    throw new Error(official?.reason || 'Fisher & Paykel official PDF resources not found');
+    throw officialError || new Error(official?.reason || 'Fisher & Paykel official PDF resources not found');
   }
 
   const fetchedTextByUrl = new Map();
@@ -354,6 +382,47 @@ async function parseFisherPaykelTarget({
   }
 
   throw new Error(`Fisher & Paykel official documents failed: ${errors.join(' | ')}`);
+}
+
+async function parseSamsungTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  samsungOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await samsungOfficialFinder(target, {
+      timeoutMs: 60_000
+    });
+  const sourceUrl = manualSourceUrl || official?.sourceUrl;
+  if (!sourceUrl) {
+    throw new Error(official?.reason || 'Samsung official PDF resources not found');
+  }
+  const source = manualSourceUrl ? 'manual-evidence' : (official?.source || 'samsung-official');
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}.pdf`
+  );
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath);
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseSamsungText(textResult.text, {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString()
+  });
+
+  return {
+    candidate: parsed.data,
+    sourceUrl,
+    source
+  };
 }
 
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
@@ -475,7 +544,8 @@ async function runBatch({
   validateStrictImpl = validateApplianceDimension,
   saveToVaultImpl = saveExtractionToVault,
   searchPdf = null,
-  fisherPaykelOfficialFinder = findFisherPaykelOfficialPdf
+  fisherPaykelOfficialFinder = findFisherPaykelOfficialPdf,
+  samsungOfficialFinder = findSamsungOfficialPdf
 } = {}) {
   const batchTargets = targets || loadBatchTargets({ repoRoot, category, limit, skus });
   const manualEvidence = loadManualEvidence(repoRoot);
@@ -483,7 +553,9 @@ async function runBatch({
   const discrepancies = [];
   const failures = [];
 
-  const needsDefaultLlm = !parseTextImpl && batchTargets.some((target) => !isFisherPaykelTarget(target));
+  const needsDefaultLlm = !parseTextImpl && batchTargets.some((target) => (
+    !isFisherPaykelTarget(target) && !isSamsungTarget(target)
+  ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
   }
@@ -501,7 +573,20 @@ async function runBatch({
         const parsed = await parseFisherPaykelTarget({
           target,
           repoRoot,
+          manualEvidence,
           fisherPaykelOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isSamsungTarget(target)) {
+        const parsed = await parseSamsungTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          samsungOfficialFinder,
           fetchPdfImpl,
           extractTextImpl
         });
@@ -636,3 +721,4 @@ exports.buildPdfSearchQuery = buildPdfSearchQuery;
 exports.searchManufacturerPdf = searchManufacturerPdf;
 exports.MISSING_API_KEY_MESSAGE = MISSING_API_KEY_MESSAGE;
 exports.parseFisherPaykelTarget = parseFisherPaykelTarget;
+exports.parseSamsungTarget = parseSamsungTarget;

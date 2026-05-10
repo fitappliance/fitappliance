@@ -10,25 +10,25 @@
     ],
     "evidence_dir": "data/pdf-evidence-raw"
   },
-  "latest_verified_at": "2026-05-09",
+  "latest_verified_at": "2026-05-10",
   "summary": {
-    "total_products": 3481,
-    "active_products": 1359,
-    "evidence_files": 1462,
-    "merged_products": 1446,
+    "total_products": 3503,
+    "active_products": 1381,
+    "evidence_files": 1484,
+    "merged_products": 1468,
     "unmatched_evidence_files": 3,
     "duplicate_evidence_files": 16,
     "categories": {
-      "fridge": 1975,
+      "fridge": 1985,
       "dishwasher": 704,
-      "dryer": 160,
-      "washing_machine": 642
+      "dryer": 162,
+      "washing_machine": 652
     },
     "official_pdf_by_category": {
-      "fridge": 767,
+      "fridge": 777,
       "dishwasher": 359,
-      "dryer": 91,
-      "washing_machine": 229
+      "dryer": 93,
+      "washing_machine": 239
     }
   },
   "unmatched_evidence": [
@@ -70915,6 +70915,119 @@
       }
     },
     {
+      "id": "discovery-dryer-samsung-dv90bb9440gb",
+      "cat": "dryer",
+      "brand": "Samsung",
+      "model": "DV90BB9440GB",
+      "displayName": "Samsung DV90BB9440GB",
+      "title": "Samsung DV90BB9440GB",
+      "slug": "discovery-dryer-samsung-dv90bb9440gb",
+      "w": 600,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/samsung-bespoke-9kg-heat-pump-dryer-dv90bb9440gb",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "JB Hi-Fi",
+          "url": "https://www.jbhifi.com.au/products/samsung-dv90bb9440gb-9kg-bespoke-smart-heatpump-dryer-black",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "JB Hi-Fi",
+        "retailer_key": "jb-hi-fi",
+        "product_url": "https://www.jbhifi.com.au/products/samsung-dv90bb9440gb-9kg-bespoke-smart-heatpump-dryer-black",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": 1100
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": false,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GB&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/DV90BB9440GB.json"
+      }
+    },
+    {
+      "id": "discovery-dryer-samsung-dv90bb9440gh",
+      "cat": "dryer",
+      "brand": "Samsung",
+      "model": "DV90BB9440GH",
+      "displayName": "Samsung DV90BB9440GH",
+      "title": "Samsung DV90BB9440GH",
+      "slug": "discovery-dryer-samsung-dv90bb9440gh",
+      "w": 600,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/samsung-bespoke-9kg-heat-pump-dryer-dv90bb9440gh",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/samsung-bespoke-9kg-heat-pump-dryer-dv90bb9440gh",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": 1100
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": false,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GH&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/DV90BB9440GH.json"
+      }
+    },
+    {
       "id": "ao-67735",
       "cat": "dryer",
       "brand": "Samsung",
@@ -76011,6 +76124,60 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/E442BRXFDJ5.json"
+      }
+    },
+    {
+      "id": "ao-1053",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "E450LXFD",
+      "displayName": "Fisher & Paykel E450LXFD 451L Upright Fridge",
+      "title": "Fisher & Paykel E450LXFD 451L Upright Fridge",
+      "slug": "ao-e450lxfd",
+      "w": 635,
+      "h": 1695,
+      "d": 695,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/fisher-paykel-e450lxfd-451l-upright-fridge",
+          "p": 1736,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 1053,
+        "product_url": "https://www.appliancesonline.com.au/product/fisher-paykel-e450lxfd-451l-upright-fridge",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 1695,
+        "width_mm": 635,
+        "depth_mm": 695,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 30
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/E450LXFD.json"
       }
     },
     {
@@ -106078,6 +106245,60 @@
       }
     },
     {
+      "id": "ao-42035",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF610ADUQSX4",
+      "displayName": "Fisher & Paykel RF610ADUQSX4 614L French Door Fridge",
+      "title": "Fisher & Paykel RF610ADUQSX4 614L French Door Fridge",
+      "slug": "ao-rf610aduqsx4",
+      "w": 900,
+      "h": 1790,
+      "d": 695,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/fisher-paykel-rf610aduqsx4-614l-french-door-fridge",
+          "p": 3204,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 42035,
+        "product_url": "https://www.appliancesonline.com.au/product/fisher-paykel-rf610aduqsx4-614l-french-door-fridge",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 900,
+        "depth_mm": 695,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.94,
+        "raw_json_path": "data/pdf-evidence-raw/RF610ADUQSX4.json"
+      }
+    },
+    {
       "id": "ao-48469",
       "cat": "fridge",
       "brand": "Fisher & Paykel",
@@ -106590,6 +106811,165 @@
       }
     },
     {
+      "id": "discovery-fridge-fisher-paykel-rs4621frje1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RS4621FRJE1",
+      "displayName": "Fisher & Paykel RS4621FRJE1",
+      "title": "Fisher & Paykel RS4621FRJE1",
+      "slug": "discovery-fridge-fisher-paykel-rs4621frje1",
+      "w": 451,
+      "h": 2134,
+      "d": 610,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/intergrated-46cm-freezer-rh-rs4621frje1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/intergrated-46cm-freezer-rh-rs4621frje1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 451,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 3,
+        "right_mm": 3,
+        "rear_mm": 25
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwc8eebcc3/QRG/AU/QRG-AU-26941.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/RS4621FRJE1.json"
+      }
+    },
+    {
+      "id": "discovery-fridge-fisher-paykel-rs4621frjk1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RS4621FRJK1",
+      "displayName": "Fisher & Paykel RS4621FRJK1",
+      "title": "Fisher & Paykel RS4621FRJK1",
+      "slug": "discovery-fridge-fisher-paykel-rs4621frjk1",
+      "w": 451,
+      "h": 2134,
+      "d": 610,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/rh-integ-column-freezer-242l-rs4621frjk1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/rh-integ-column-freezer-242l-rs4621frjk1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 451,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 3,
+        "right_mm": 3,
+        "rear_mm": 25
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw56dad114/QRG/AU/QRG-AU-26156.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/RS4621FRJK1.json"
+      }
+    },
+    {
+      "id": "discovery-fridge-fisher-paykel-rs6121frje1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RS6121FRJE1",
+      "displayName": "Fisher & Paykel RS6121FRJE1",
+      "title": "Fisher & Paykel RS6121FRJE1",
+      "slug": "discovery-fridge-fisher-paykel-rs6121frje1",
+      "w": 603,
+      "h": 2134,
+      "d": 610,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/intergrated-61cm-freezer-rh-rs6121frje1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/intergrated-61cm-freezer-rh-rs6121frje1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 603,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 4,
+        "right_mm": 4,
+        "rear_mm": 25
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw15716aa1/QRG/AU/QRG-AU-26951.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/RS6121FRJE1.json"
+      }
+    },
+    {
       "id": "ao-71030",
       "cat": "fridge",
       "brand": "Fisher & Paykel",
@@ -106806,6 +107186,59 @@
       }
     },
     {
+      "id": "discovery-fridge-fisher-paykel-rs7621frje1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RS7621FRJE1",
+      "displayName": "Fisher & Paykel RS7621FRJE1",
+      "title": "Fisher & Paykel RS7621FRJE1",
+      "slug": "discovery-fridge-fisher-paykel-rs7621frje1",
+      "w": 756,
+      "h": 2134,
+      "d": 610,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/intergrated-76cm-freezer-rh-rs7621frje1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/intergrated-76cm-freezer-rh-rs7621frje1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 756,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 3,
+        "right_mm": 3,
+        "rear_mm": 25
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw37973d29/QRG/AU/QRG-AU-26961.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/RS7621FRJE1.json"
+      }
+    },
+    {
       "id": "ao-70900",
       "cat": "fridge",
       "brand": "Fisher & Paykel",
@@ -106968,6 +107401,59 @@
       }
     },
     {
+      "id": "discovery-fridge-fisher-paykel-rs7621srk1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RS7621SRK1",
+      "displayName": "Fisher & Paykel RS7621SRK1",
+      "title": "Fisher & Paykel RS7621SRK1",
+      "slug": "discovery-fridge-fisher-paykel-rs7621srk1",
+      "w": 756,
+      "h": 2134,
+      "d": 610,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/rh-integ-column-fridge-498l-rs7621srk1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/rh-integ-column-fridge-498l-rs7621srk1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 756,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 3,
+        "right_mm": 3,
+        "rear_mm": 25
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwc2242f2d/QRG/AU/QRG-AU-26162.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/RS7621SRK1.json"
+      }
+    },
+    {
       "id": "ao-172809",
       "cat": "fridge",
       "brand": "Fisher & Paykel",
@@ -107019,6 +107505,59 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/RS7621WRUE1.json"
+      }
+    },
+    {
+      "id": "discovery-fridge-fisher-paykel-rs7621wruk1",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RS7621WRUK1",
+      "displayName": "Fisher & Paykel RS7621WRUK1",
+      "title": "Fisher & Paykel RS7621WRUK1",
+      "slug": "discovery-fridge-fisher-paykel-rs7621wruk1",
+      "w": 756,
+      "h": 2134,
+      "d": 610,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/449l-integrated-fridge-rs7621wruk1",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/449l-integrated-fridge-rs7621wruk1",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 756,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw321ac9c6/QRG/AU/QRG-AU-25691.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/RS7621WRUK1.json"
       }
     },
     {
@@ -107127,6 +107666,60 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/RS9120WRJ1.json"
+      }
+    },
+    {
+      "id": "ao-62196",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RS9120WRU1",
+      "displayName": "Fisher & Paykel Series 7 477L Integrated Bottom Mount Refrigerator with Ice and Water Right Hinge RS9120WRU1",
+      "title": "Fisher & Paykel Series 7 477L Integrated Bottom Mount Refrigerator with Ice and Water Right Hinge RS9120WRU1",
+      "slug": "ao-rs9120wru1",
+      "w": 906,
+      "h": 2130,
+      "d": 606,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/fisher-paykel-rs9120wru1-525l-integrated-activesmart-bottom-mount-fridge",
+          "p": 8499,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 62196,
+        "product_url": "https://www.appliancesonline.com.au/product/fisher-paykel-rs9120wru1-525l-integrated-activesmart-bottom-mount-fridge",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 2130,
+        "width_mm": 906,
+        "depth_mm": 606,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 4,
+        "left_mm": 4,
+        "right_mm": 4,
+        "rear_mm": 29
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/9mpt78hhk37b6vp8j3pn4w/FP-PlanningGuide-RS9120WRU1-IntegratedFridgeFreezer-AU-90001400A.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.85,
+        "raw_json_path": "data/pdf-evidence-raw/RS9120WRU1.json"
       }
     },
     {
@@ -113542,6 +114135,60 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/SR625BLSTC.json"
+      }
+    },
+    {
+      "id": "ao-97642",
+      "cat": "fridge",
+      "brand": "Samsung",
+      "model": "SRF5300SD",
+      "displayName": "Samsung 498L French Door Frost Free Fridge SRF5300SD",
+      "title": "Samsung 498L French Door Frost Free Fridge SRF5300SD",
+      "slug": "ao-srf5300sd",
+      "w": 817,
+      "h": 1776,
+      "d": 715,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/samsung-498l-french-door-fridge-srf5300sd",
+          "p": 1463,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 97642,
+        "product_url": "https://www.appliancesonline.com.au/product/samsung-498l-french-door-fridge-srf5300sd",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 1776,
+        "width_mm": 817,
+        "depth_mm": 715,
+        "door_open_90_depth_mm": 1393
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/a/a/6/3/aa633cbe679abeec6a289913e831b0fe2724ab5b_SRF5300SD_Samsung_User_Manual.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/SRF5300SD.json"
       }
     },
     {
@@ -130643,6 +131290,384 @@
       }
     },
     {
+      "id": "discovery-washing-machine-samsung-ww11cg604dle",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW11CG604DLE",
+      "displayName": "Samsung WW11CG604DLE",
+      "title": "Samsung WW11CG604DLE",
+      "slug": "discovery-washing-machine-samsung-ww11cg604dle",
+      "w": 600,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/11kg-smart-front-loader-ww11cg604dle",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/11kg-smart-front-loader-ww11cg604dle",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CG604DLE&CttFileID=9716081&CDCttType=UM&VPath=UM%2F202406%2F20240601161223350%2FDC68-04493F-00_IB_B-PJT_B11_WASHER-MD_SimpleUX_EN_240424.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WW11CG604DLE.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-samsung-ww11cg60adlb",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW11CG60ADLB",
+      "displayName": "Samsung WW11CG60ADLB",
+      "title": "Samsung WW11CG60ADLB",
+      "slug": "discovery-washing-machine-samsung-ww11cg60adlb",
+      "w": 600,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-blk-ww11cg60adlb",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-blk-ww11cg60adlb",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CG60ADLB&CttFileID=11284915&CDCttType=UM&VPath=UM%2F202602%2F20260211103223036%2FDC68-04493F-00_IB_B-PJT_B11_WASHER-MD_SimpleUX_EN_240424.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WW11CG60ADLB.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-samsung-ww11cg60adle",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW11CG60ADLE",
+      "displayName": "Samsung WW11CG60ADLE",
+      "title": "Samsung WW11CG60ADLE",
+      "slug": "discovery-washing-machine-samsung-ww11cg60adle",
+      "w": 600,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-white-ww11cg60adle",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-white-ww11cg60adle",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CG60ADLE&CttFileID=11284915&CDCttType=UM&VPath=UM%2F202602%2F20260211103223036%2FDC68-04493F-00_IB_B-PJT_B11_WASHER-MD_SimpleUX_EN_240424.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WW11CG60ADLE.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-samsung-ww11cgc0adae",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW11CGC0ADAE",
+      "displayName": "Samsung WW11CGC0ADAE",
+      "title": "Samsung WW11CGC0ADAE",
+      "slug": "discovery-washing-machine-samsung-ww11cgc0adae",
+      "w": 600,
+      "h": 850,
+      "d": 600,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-white-ww11cgc0adae",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-white-ww11cgc0adae",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CGC0ADAE&CttFileID=9832270&CDCttType=UM&VPath=UM%2F202408%2F20240805130241972%2FDC68-04493M-00_IB_B-PJT-B11_WASHER-MD_EN_240531.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WW11CGC0ADAE.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-samsung-ww12bb944dgb",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW12BB944DGB",
+      "displayName": "Samsung WW12BB944DGB",
+      "title": "Samsung WW12BB944DGB",
+      "slug": "discovery-washing-machine-samsung-ww12bb944dgb",
+      "w": 600,
+      "h": 850,
+      "d": 695,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/samsung-bespoke-12kg-front-load-washer-ww12bb944dgb",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/12kg-bespoke-bubblewash-smart-front-load-washer-with-ai-wash-and-auto-dispense-black-ww12bb944dgb",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/12kg-bespoke-bubblewash-smart-front-load-washer-with-ai-wash-and-auto-dispense-black-ww12bb944dgb",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 695,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WW12BB944DGB.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-samsung-ww12bb944dgh",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW12BB944DGH",
+      "displayName": "Samsung WW12BB944DGH",
+      "title": "Samsung WW12BB944DGH",
+      "slug": "discovery-washing-machine-samsung-ww12bb944dgh",
+      "w": 600,
+      "h": 850,
+      "d": 695,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/12kg-bespoke-bubblewash-smart-front-load-washer-ww12bb944dgh",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/12kg-bespoke-bubblewash-smart-front-load-washer-ww12bb944dgh",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 695,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGH&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WW12BB944DGH.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-samsung-ww12bb94adgh",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW12BB94ADGH",
+      "displayName": "Samsung WW12BB94ADGH",
+      "title": "Samsung WW12BB94ADGH",
+      "slug": "discovery-washing-machine-samsung-ww12bb94adgh",
+      "w": 600,
+      "h": 850,
+      "d": 695,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/12kg-bespoke-fl-washer-white-ww12bb94adgh",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/12kg-bespoke-fl-washer-white-ww12bb94adgh",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 695,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB94ADGH&CttFileID=11298569&CDCttType=UM&VPath=UM%2F202602%2F20260225092633863%2FOID139018_IB_B-PJT_WASHER-AD_SimpleUX_EN_251211.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WW12BB94ADGH.json"
+      }
+    },
+    {
       "id": "ao-66929",
       "cat": "washing_machine",
       "brand": "Samsung",
@@ -130964,6 +131989,179 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/WW85T554DAW.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-samsung-ww90dg6u34le",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW90DG6U34LE",
+      "displayName": "Samsung WW90DG6U34LE",
+      "title": "Samsung WW90DG6U34LE",
+      "slug": "discovery-washing-machine-samsung-ww90dg6u34le",
+      "w": 600,
+      "h": 850,
+      "d": 595,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-front-load-washer-ww90dg6u34le",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/wht-9kg-front-load-washer-ww90dg6u34le",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/wht-9kg-front-load-washer-ww90dg6u34le",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 595,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW90DG6U34LESA&CttFileID=10388112&CDCttType=UM&VPath=UM%2F202505%2F20250514163744690%2FOID80230_IB_D-PJT_WASHER-AD_SimpleUX_EN__250325.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WW90DG6U34LE.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-samsung-ww90dg6u3alb",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW90DG6U3ALB",
+      "displayName": "Samsung WW90DG6U3ALB",
+      "title": "Samsung WW90DG6U3ALB",
+      "slug": "discovery-washing-machine-samsung-ww90dg6u3alb",
+      "w": 600,
+      "h": 850,
+      "d": 595,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/9kg-smart-fl-washer-blk-ww90dg6u3alb",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/9kg-smart-fl-washer-blk-ww90dg6u3alb",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 595,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW90DG6U3ALB&CttFileID=11364936&CDCttType=UM&VPath=UM%2F202604%2F20260408143907954%2FWeb_IB_D-PJT_WASHER-MD_SimpleUX_EN_v1.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WW90DG6U3ALB.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-samsung-ww90dg6u3ale",
+      "cat": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW90DG6U3ALE",
+      "displayName": "Samsung WW90DG6U3ALE",
+      "title": "Samsung WW90DG6U3ALE",
+      "slug": "discovery-washing-machine-samsung-ww90dg6u3ale",
+      "w": 600,
+      "h": 850,
+      "d": 595,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-front-load-washer-ww90dg6u3ale",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        },
+        {
+          "n": "Bing Lee",
+          "url": "https://www.binglee.com.au/products/9kg-smart-fl-washer-wht-ww90dg6u3ale",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "Bing Lee",
+        "retailer_key": "bing-lee",
+        "product_url": "https://www.binglee.com.au/products/9kg-smart-fl-washer-wht-ww90dg6u3ale",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 595,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW90DG6U3ALE&CttFileID=11364936&CDCttType=UM&VPath=UM%2F202604%2F20260408143907954%2FWeb_IB_D-PJT_WASHER-MD_SimpleUX_EN_v1.pdf",
+        "verified_at": "2026-05-10",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/WW90DG6U3ALE.json"
       }
     },
     {

@@ -21,7 +21,7 @@ function decodeHtml(value) {
 }
 
 function absoluteFisherPaykelUrl(url) {
-  return new URL(decodeHtml(url), FP_BASE_URL).toString();
+  return new URL(decodeHtml(url).replace(/\\\//g, '/'), FP_BASE_URL).toString();
 }
 
 async function fetchHtml(url, {
@@ -70,7 +70,44 @@ function extractProductPageUrls(searchHtml, sku) {
       urls.add(absoluteFisherPaykelUrl(rawUrl));
     }
   }
+
+  const genericHrefPattern = /href=["']([^"']+\.html[^"']*)["']/gi;
+  while ((match = genericHrefPattern.exec(String(searchHtml || '')))) {
+    const rawUrl = match[1];
+    if (!rawUrl) continue;
+    const normalizedUrl = normalizeSku(rawUrl);
+    if (normalizedUrl.includes(targetSku)) {
+      urls.add(absoluteFisherPaykelUrl(rawUrl));
+    }
+  }
+
   return [...urls];
+}
+
+function buildFisherPaykelSkuSearchVariants(sku) {
+  const exact = normalizeSku(sku);
+  if (!exact) return [];
+  const variants = new Set([exact]);
+
+  // Older F&P feeds can omit the product revision digit from the public model
+  // page/PDF (for example E450LXFD -> E450LXFD1). Try this before broader
+  // suffix stripping so we stay specific and avoid unrelated family matches.
+  if (!/\d$/.test(exact) && exact.length >= 5 && /\d/.test(exact)) {
+    variants.add(`${exact}1`);
+  }
+
+  // F&P retailer feeds sometimes append finish/channel suffixes (for example
+  // RF610ADUQSX4). Strip only long suffixes from a model that already has a
+  // clear alpha+numeric base; never fall back to very broad searches.
+  const knownSuffixMatch = exact.match(/^(.*?)(?:QSX\d+|SX\d+|XFD|WFD|BFD)$/);
+  if (knownSuffixMatch) {
+    const base = knownSuffixMatch[1];
+    if (base.length >= 5 && /\d/.test(base)) {
+      variants.add(base);
+    }
+  }
+
+  return [...variants];
 }
 
 function classifyResource(context, url) {
@@ -119,6 +156,19 @@ function extractPdfResources(productHtml) {
     });
   }
 
+  const statePdfPattern = /(https?:\\?\/\\?\/[^"'<>\s]+?\.pdf(?:\?[^"'<>\s]*)?)/gi;
+  while ((match = statePdfPattern.exec(html))) {
+    const rawUrl = match[1];
+    const context = html.slice(Math.max(0, match.index - 180), Math.min(html.length, match.index + rawUrl.length + 180));
+    const url = absoluteFisherPaykelUrl(rawUrl);
+    const type = classifyResource(context, url);
+    resources.push({
+      url,
+      type,
+      score: scoreResource({ type })
+    });
+  }
+
   const deduped = new Map();
   for (const resource of resources) {
     const existing = deduped.get(resource.url);
@@ -131,16 +181,24 @@ function extractPdfResources(productHtml) {
 }
 
 async function findFisherPaykelProductPage(sku, opts = {}) {
-  const url = `${FP_BASE_URL}/au/search/?q=${encodeURIComponent(sku)}`;
-  const html = await fetchHtml(url, opts);
-  const productPageUrl = extractProductPageUrls(html, sku)[0] || null;
-  return { productPageUrl, searchUrl: url, searchHtml: html };
+  const variants = buildFisherPaykelSkuSearchVariants(sku);
+  let lastSearch = { productPageUrl: null, searchUrl: '', searchHtml: '', matchedSku: variants[0] || normalizeSku(sku) };
+
+  for (const variant of variants) {
+    const url = `${FP_BASE_URL}/au/search/?q=${encodeURIComponent(variant)}`;
+    const html = await fetchHtml(url, opts);
+    const productPageUrl = extractProductPageUrls(html, variant)[0] || null;
+    lastSearch = { productPageUrl, searchUrl: url, searchHtml: html, matchedSku: variant };
+    if (productPageUrl) return lastSearch;
+  }
+
+  return lastSearch;
 }
 
 async function findFisherPaykelOfficialPdf(target, opts = {}) {
   const sku = target?.sku || target?.model || target?.product?.model || target?.product?.sku;
   if (!sku) throw new Error('Fisher & Paykel official finder requires sku/model');
-  const { productPageUrl, searchUrl } = await findFisherPaykelProductPage(sku, opts);
+  const { productPageUrl, searchUrl, matchedSku } = await findFisherPaykelProductPage(sku, opts);
   if (!productPageUrl) {
     return {
       sku,
@@ -148,6 +206,7 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
       productPageUrl: null,
       sourceUrl: null,
       source: 'fisher-paykel-official',
+      matchedSku,
       reason: 'product_page_not_found'
     };
   }
@@ -169,6 +228,7 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
 
   return {
     sku,
+    matchedSku,
     searchUrl,
     productPageUrl,
     sourceUrl: best.url,
@@ -180,6 +240,7 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
 
 exports.extractProductPageUrls = extractProductPageUrls;
 exports.extractPdfResources = extractPdfResources;
+exports.buildFisherPaykelSkuSearchVariants = buildFisherPaykelSkuSearchVariants;
 exports.findFisherPaykelOfficialPdf = findFisherPaykelOfficialPdf;
 exports.findFisherPaykelProductPage = findFisherPaykelProductPage;
 exports.normalizeSku = normalizeSku;

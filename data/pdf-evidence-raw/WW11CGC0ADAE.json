@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "discovery-washing-machine-samsung-ww11cgc0adae",
+  "category": "washing_machine",
+  "brand": "Samsung",
+  "model": "WW11CGC0ADAE",
+  "source_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CGC0ADAE&CttFileID=9832270&CDCttType=UM&VPath=UM%2F202408%2F20240805130241972%2FDC68-04493M-00_IB_B-PJT-B11_WASHER-MD_EN_240531.pdf",
+  "verified_at": "2026-05-10",
+  "extracted": {
+    "brand": "Samsung",
+    "sku": "WW11CGC0ADAE",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 600,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 25,
+      "left_mm": 25,
+      "right_mm": 25,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": false,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CGC0ADAE&CttFileID=9832270&CDCttType=UM&VPath=UM%2F202408%2F20240805130241972%2FDC68-04493M-00_IB_B-PJT-B11_WASHER-MD_EN_240531.pdf",
+      "extraction_date": "2026-05-10T01:40:59.107Z",
+      "confidence_score": 0.88
+    }
+  }
+}

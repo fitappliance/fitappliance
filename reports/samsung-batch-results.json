@@ -1,0 +1,4827 @@
+{
+  "runDate": "2026-05-10",
+  "targets": 73,
+  "successes": [
+    {
+      "key": "discovery-dryer-samsung-dv90bb9440gb",
+      "entry": {
+        "productId": "discovery-dryer-samsung-dv90bb9440gb",
+        "category": "dryer",
+        "brand": "Samsung",
+        "model": "DV90BB9440GB",
+        "sku": "DV90BB9440GB",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-dryer-samsung-dv90bb9440gb",
+          "cat": "dryer",
+          "brand": "Samsung",
+          "model": "DV90BB9440GB",
+          "displayName": "Samsung DV90BB9440GB",
+          "title": "Samsung DV90BB9440GB",
+          "slug": "discovery-dryer-samsung-dv90bb9440gb",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-bespoke-9kg-heat-pump-dryer-dv90bb9440gb",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "JB Hi-Fi",
+              "url": "https://www.jbhifi.com.au/products/samsung-dv90bb9440gb-9kg-bespoke-smart-heatpump-dryer-black",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "JB Hi-Fi",
+            "retailer_key": "jb-hi-fi",
+            "product_url": "https://www.jbhifi.com.au/products/samsung-dv90bb9440gb-9kg-bespoke-smart-heatpump-dryer-black",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "product_url": "https://www.jbhifi.com.au/products/samsung-dv90bb9440gb-9kg-bespoke-smart-heatpump-dryer-black",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.jbhifi.com.au/products/samsung-dv90bb9440gb-9kg-bespoke-smart-heatpump-dryer-black",
+          "source_report": "reports/discovery-pipeline/discovery-jb-hi-fi-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "DV90BB9440GB",
+      "brand": "Samsung",
+      "category": "dryer",
+      "source": "samsung-official-user_manual",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GB&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
+      "data": {
+        "brand": "Samsung",
+        "sku": "DV90BB9440GB",
+        "category": "DRYER",
+        "dimensions": {
+          "width_mm": 600,
+          "height_mm": 850,
+          "depth_mm": 600,
+          "door_open_90_depth_mm": 1100
+        },
+        "clearance_requirements": {
+          "left_mm": 25,
+          "right_mm": 25,
+          "top_mm": 25,
+          "rear_mm": 50
+        },
+        "flags": {
+          "requires_plumbing": false,
+          "ventilation_required": false,
+          "reversible_door": true
+        },
+        "metadata": {
+          "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GB&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
+          "extraction_date": "2026-05-10T01:40:09.853Z",
+          "confidence_score": 0.88
+        }
+      },
+      "warnings": []
+    },
+    {
+      "key": "discovery-dryer-samsung-dv90bb9440gh",
+      "entry": {
+        "productId": "discovery-dryer-samsung-dv90bb9440gh",
+        "category": "dryer",
+        "brand": "Samsung",
+        "model": "DV90BB9440GH",
+        "sku": "DV90BB9440GH",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-dryer-samsung-dv90bb9440gh",
+          "cat": "dryer",
+          "brand": "Samsung",
+          "model": "DV90BB9440GH",
+          "displayName": "Samsung DV90BB9440GH",
+          "title": "Samsung DV90BB9440GH",
+          "slug": "discovery-dryer-samsung-dv90bb9440gh",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-bespoke-9kg-heat-pump-dryer-dv90bb9440gh",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "The Good Guys",
+            "retailer_key": "the-good-guys",
+            "product_url": "https://www.thegoodguys.com.au/samsung-bespoke-9kg-heat-pump-dryer-dv90bb9440gh",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "product_url": "https://www.thegoodguys.com.au/samsung-bespoke-9kg-heat-pump-dryer-dv90bb9440gh",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.thegoodguys.com.au/samsung-bespoke-9kg-heat-pump-dryer-dv90bb9440gh",
+          "source_report": "reports/discovery-pipeline/discovery-the-good-guys-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "DV90BB9440GH",
+      "brand": "Samsung",
+      "category": "dryer",
+      "source": "samsung-official-user_manual",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GH&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
+      "data": {
+        "brand": "Samsung",
+        "sku": "DV90BB9440GH",
+        "category": "DRYER",
+        "dimensions": {
+          "width_mm": 600,
+          "height_mm": 850,
+          "depth_mm": 600,
+          "door_open_90_depth_mm": 1100
+        },
+        "clearance_requirements": {
+          "left_mm": 25,
+          "right_mm": 25,
+          "top_mm": 25,
+          "rear_mm": 50
+        },
+        "flags": {
+          "requires_plumbing": false,
+          "ventilation_required": false,
+          "reversible_door": true
+        },
+        "metadata": {
+          "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GH&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
+          "extraction_date": "2026-05-10T01:40:11.362Z",
+          "confidence_score": 0.88
+        }
+      },
+      "warnings": []
+    },
+    {
+      "key": "ao-97642",
+      "entry": {
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRF5300SD",
+        "sku": "SRF5300SD",
+        "source_url": "https://www.appliancesonline.com.au/ak/a/a/6/3/aa633cbe679abeec6a289913e831b0fe2724ab5b_SRF5300SD_Samsung_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-97642",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRF5300SD",
+          "displayName": "Samsung 498L French Door Frost Free Fridge SRF5300SD",
+          "title": "Samsung 498L French Door Frost Free Fridge SRF5300SD",
+          "slug": "ao-srf5300sd",
+          "w": 817,
+          "h": 1776,
+          "d": 715,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-498l-french-door-fridge-srf5300sd",
+              "p": 1463,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 97642,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-498l-french-door-fridge-srf5300sd",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 97642,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-498l-french-door-fridge-srf5300sd",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-498l-french-door-fridge-srf5300sd/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/a/a/6/3/aa633cbe679abeec6a289913e831b0fe2724ab5b_SRF5300SD_Samsung_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "SRF5300SD - Samsung - User Manual"
+          }
+        ]
+      },
+      "sku": "SRF5300SD",
+      "brand": "Samsung",
+      "category": "fridge",
+      "source": "manual-evidence",
+      "sourceUrl": "https://www.appliancesonline.com.au/ak/a/a/6/3/aa633cbe679abeec6a289913e831b0fe2724ab5b_SRF5300SD_Samsung_User_Manual.pdf",
+      "data": {
+        "brand": "Samsung",
+        "sku": "SRF5300SD",
+        "category": "FRIDGE",
+        "dimensions": {
+          "height_mm": 1776,
+          "width_mm": 817,
+          "depth_mm": 715,
+          "door_open_90_depth_mm": 1393
+        },
+        "clearance_requirements": {
+          "top_mm": 50,
+          "left_mm": 50,
+          "right_mm": 50,
+          "rear_mm": 50
+        },
+        "flags": {
+          "requires_plumbing": true,
+          "ventilation_required": true,
+          "reversible_door": null
+        },
+        "metadata": {
+          "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/a/6/3/aa633cbe679abeec6a289913e831b0fe2724ab5b_SRF5300SD_Samsung_User_Manual.pdf",
+          "extraction_date": "2026-05-10T01:40:21.027Z",
+          "confidence_score": 0.9
+        }
+      },
+      "warnings": []
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww11cg604dle",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww11cg604dle",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW11CG604DLE",
+        "sku": "WW11CG604DLE",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww11cg604dle",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW11CG604DLE",
+          "displayName": "Samsung WW11CG604DLE",
+          "title": "Samsung WW11CG604DLE",
+          "slug": "discovery-washing-machine-samsung-ww11cg604dle",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/11kg-smart-front-loader-ww11cg604dle",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/11kg-smart-front-loader-ww11cg604dle",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/11kg-smart-front-loader-ww11cg604dle",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/11kg-smart-front-loader-ww11cg604dle",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW11CG604DLE",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "source": "samsung-official-user_manual",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CG604DLE&CttFileID=9716081&CDCttType=UM&VPath=UM%2F202406%2F20240601161223350%2FDC68-04493F-00_IB_B-PJT_B11_WASHER-MD_SimpleUX_EN_240424.pdf",
+      "data": {
+        "brand": "Samsung",
+        "sku": "WW11CG604DLE",
+        "category": "WASHING_MACHINE",
+        "dimensions": {
+          "width_mm": 600,
+          "height_mm": 850,
+          "depth_mm": 600,
+          "door_open_90_depth_mm": null
+        },
+        "clearance_requirements": {
+          "left_mm": 25,
+          "right_mm": 25,
+          "top_mm": 25,
+          "rear_mm": 50
+        },
+        "flags": {
+          "requires_plumbing": true,
+          "ventilation_required": false,
+          "reversible_door": null
+        },
+        "metadata": {
+          "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CG604DLE&CttFileID=9716081&CDCttType=UM&VPath=UM%2F202406%2F20240601161223350%2FDC68-04493F-00_IB_B-PJT_B11_WASHER-MD_SimpleUX_EN_240424.pdf",
+          "extraction_date": "2026-05-10T01:40:53.818Z",
+          "confidence_score": 0.88
+        }
+      },
+      "warnings": []
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww11cg60adlb",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww11cg60adlb",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW11CG60ADLB",
+        "sku": "WW11CG60ADLB",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww11cg60adlb",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW11CG60ADLB",
+          "displayName": "Samsung WW11CG60ADLB",
+          "title": "Samsung WW11CG60ADLB",
+          "slug": "discovery-washing-machine-samsung-ww11cg60adlb",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-blk-ww11cg60adlb",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-blk-ww11cg60adlb",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-blk-ww11cg60adlb",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-blk-ww11cg60adlb",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW11CG60ADLB",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "source": "samsung-official-user_manual",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CG60ADLB&CttFileID=11284915&CDCttType=UM&VPath=UM%2F202602%2F20260211103223036%2FDC68-04493F-00_IB_B-PJT_B11_WASHER-MD_SimpleUX_EN_240424.pdf",
+      "data": {
+        "brand": "Samsung",
+        "sku": "WW11CG60ADLB",
+        "category": "WASHING_MACHINE",
+        "dimensions": {
+          "width_mm": 600,
+          "height_mm": 850,
+          "depth_mm": 600,
+          "door_open_90_depth_mm": null
+        },
+        "clearance_requirements": {
+          "left_mm": 25,
+          "right_mm": 25,
+          "top_mm": 25,
+          "rear_mm": 50
+        },
+        "flags": {
+          "requires_plumbing": true,
+          "ventilation_required": false,
+          "reversible_door": null
+        },
+        "metadata": {
+          "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CG60ADLB&CttFileID=11284915&CDCttType=UM&VPath=UM%2F202602%2F20260211103223036%2FDC68-04493F-00_IB_B-PJT_B11_WASHER-MD_SimpleUX_EN_240424.pdf",
+          "extraction_date": "2026-05-10T01:40:55.102Z",
+          "confidence_score": 0.88
+        }
+      },
+      "warnings": []
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww11cg60adle",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww11cg60adle",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW11CG60ADLE",
+        "sku": "WW11CG60ADLE",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww11cg60adle",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW11CG60ADLE",
+          "displayName": "Samsung WW11CG60ADLE",
+          "title": "Samsung WW11CG60ADLE",
+          "slug": "discovery-washing-machine-samsung-ww11cg60adle",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-white-ww11cg60adle",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-white-ww11cg60adle",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-white-ww11cg60adle",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-white-ww11cg60adle",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW11CG60ADLE",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "source": "samsung-official-user_manual",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CG60ADLE&CttFileID=11284915&CDCttType=UM&VPath=UM%2F202602%2F20260211103223036%2FDC68-04493F-00_IB_B-PJT_B11_WASHER-MD_SimpleUX_EN_240424.pdf",
+      "data": {
+        "brand": "Samsung",
+        "sku": "WW11CG60ADLE",
+        "category": "WASHING_MACHINE",
+        "dimensions": {
+          "width_mm": 600,
+          "height_mm": 850,
+          "depth_mm": 600,
+          "door_open_90_depth_mm": null
+        },
+        "clearance_requirements": {
+          "left_mm": 25,
+          "right_mm": 25,
+          "top_mm": 25,
+          "rear_mm": 50
+        },
+        "flags": {
+          "requires_plumbing": true,
+          "ventilation_required": false,
+          "reversible_door": null
+        },
+        "metadata": {
+          "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CG60ADLE&CttFileID=11284915&CDCttType=UM&VPath=UM%2F202602%2F20260211103223036%2FDC68-04493F-00_IB_B-PJT_B11_WASHER-MD_SimpleUX_EN_240424.pdf",
+          "extraction_date": "2026-05-10T01:40:57.987Z",
+          "confidence_score": 0.88
+        }
+      },
+      "warnings": []
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww11cgc0adae",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww11cgc0adae",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW11CGC0ADAE",
+        "sku": "WW11CGC0ADAE",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww11cgc0adae",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW11CGC0ADAE",
+          "displayName": "Samsung WW11CGC0ADAE",
+          "title": "Samsung WW11CGC0ADAE",
+          "slug": "discovery-washing-machine-samsung-ww11cgc0adae",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-white-ww11cgc0adae",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-white-ww11cgc0adae",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-white-ww11cgc0adae",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/11kg-smart-fl-washer-white-ww11cgc0adae",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW11CGC0ADAE",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "source": "samsung-official-user_manual",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CGC0ADAE&CttFileID=9832270&CDCttType=UM&VPath=UM%2F202408%2F20240805130241972%2FDC68-04493M-00_IB_B-PJT-B11_WASHER-MD_EN_240531.pdf",
+      "data": {
+        "brand": "Samsung",
+        "sku": "WW11CGC0ADAE",
+        "category": "WASHING_MACHINE",
+        "dimensions": {
+          "width_mm": 600,
+          "height_mm": 850,
+          "depth_mm": 600,
+          "door_open_90_depth_mm": null
+        },
+        "clearance_requirements": {
+          "left_mm": 25,
+          "right_mm": 25,
+          "top_mm": 25,
+          "rear_mm": 50
+        },
+        "flags": {
+          "requires_plumbing": true,
+          "ventilation_required": false,
+          "reversible_door": null
+        },
+        "metadata": {
+          "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CGC0ADAE&CttFileID=9832270&CDCttType=UM&VPath=UM%2F202408%2F20240805130241972%2FDC68-04493M-00_IB_B-PJT-B11_WASHER-MD_EN_240531.pdf",
+          "extraction_date": "2026-05-10T01:40:59.107Z",
+          "confidence_score": 0.88
+        }
+      },
+      "warnings": []
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww12bb944dgb",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww12bb944dgb",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW12BB944DGB",
+        "sku": "WW12BB944DGB",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww12bb944dgb",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW12BB944DGB",
+          "displayName": "Samsung WW12BB944DGB",
+          "title": "Samsung WW12BB944DGB",
+          "slug": "discovery-washing-machine-samsung-ww12bb944dgb",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-bespoke-12kg-front-load-washer-ww12bb944dgb",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/12kg-bespoke-bubblewash-smart-front-load-washer-with-ai-wash-and-auto-dispense-black-ww12bb944dgb",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/12kg-bespoke-bubblewash-smart-front-load-washer-with-ai-wash-and-auto-dispense-black-ww12bb944dgb",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/12kg-bespoke-bubblewash-smart-front-load-washer-with-ai-wash-and-auto-dispense-black-ww12bb944dgb",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/12kg-bespoke-bubblewash-smart-front-load-washer-with-ai-wash-and-auto-dispense-black-ww12bb944dgb",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW12BB944DGB",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "source": "samsung-official-user_manual",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+      "data": {
+        "brand": "Samsung",
+        "sku": "WW12BB944DGB",
+        "category": "WASHING_MACHINE",
+        "dimensions": {
+          "width_mm": 600,
+          "height_mm": 850,
+          "depth_mm": 695,
+          "door_open_90_depth_mm": null
+        },
+        "clearance_requirements": {
+          "left_mm": 25,
+          "right_mm": 25,
+          "top_mm": 25,
+          "rear_mm": 50
+        },
+        "flags": {
+          "requires_plumbing": true,
+          "ventilation_required": false,
+          "reversible_door": null
+        },
+        "metadata": {
+          "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+          "extraction_date": "2026-05-10T01:41:04.995Z",
+          "confidence_score": 0.88
+        }
+      },
+      "warnings": []
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww12bb944dgh",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww12bb944dgh",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW12BB944DGH",
+        "sku": "WW12BB944DGH",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww12bb944dgh",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW12BB944DGH",
+          "displayName": "Samsung WW12BB944DGH",
+          "title": "Samsung WW12BB944DGH",
+          "slug": "discovery-washing-machine-samsung-ww12bb944dgh",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/12kg-bespoke-bubblewash-smart-front-load-washer-ww12bb944dgh",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/12kg-bespoke-bubblewash-smart-front-load-washer-ww12bb944dgh",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/12kg-bespoke-bubblewash-smart-front-load-washer-ww12bb944dgh",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/12kg-bespoke-bubblewash-smart-front-load-washer-ww12bb944dgh",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW12BB944DGH",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "source": "samsung-official-user_manual",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGH&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+      "data": {
+        "brand": "Samsung",
+        "sku": "WW12BB944DGH",
+        "category": "WASHING_MACHINE",
+        "dimensions": {
+          "width_mm": 600,
+          "height_mm": 850,
+          "depth_mm": 695,
+          "door_open_90_depth_mm": null
+        },
+        "clearance_requirements": {
+          "left_mm": 25,
+          "right_mm": 25,
+          "top_mm": 25,
+          "rear_mm": 50
+        },
+        "flags": {
+          "requires_plumbing": true,
+          "ventilation_required": false,
+          "reversible_door": null
+        },
+        "metadata": {
+          "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGH&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+          "extraction_date": "2026-05-10T01:41:06.454Z",
+          "confidence_score": 0.88
+        }
+      },
+      "warnings": []
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww12bb94adgh",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww12bb94adgh",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW12BB94ADGH",
+        "sku": "WW12BB94ADGH",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww12bb94adgh",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW12BB94ADGH",
+          "displayName": "Samsung WW12BB94ADGH",
+          "title": "Samsung WW12BB94ADGH",
+          "slug": "discovery-washing-machine-samsung-ww12bb94adgh",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/12kg-bespoke-fl-washer-white-ww12bb94adgh",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/12kg-bespoke-fl-washer-white-ww12bb94adgh",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/12kg-bespoke-fl-washer-white-ww12bb94adgh",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/12kg-bespoke-fl-washer-white-ww12bb94adgh",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW12BB94ADGH",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "source": "samsung-official-user_manual",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB94ADGH&CttFileID=11298569&CDCttType=UM&VPath=UM%2F202602%2F20260225092633863%2FOID139018_IB_B-PJT_WASHER-AD_SimpleUX_EN_251211.pdf",
+      "data": {
+        "brand": "Samsung",
+        "sku": "WW12BB94ADGH",
+        "category": "WASHING_MACHINE",
+        "dimensions": {
+          "width_mm": 600,
+          "height_mm": 850,
+          "depth_mm": 695,
+          "door_open_90_depth_mm": null
+        },
+        "clearance_requirements": {
+          "left_mm": 25,
+          "right_mm": 25,
+          "top_mm": 25,
+          "rear_mm": 50
+        },
+        "flags": {
+          "requires_plumbing": true,
+          "ventilation_required": false,
+          "reversible_door": null
+        },
+        "metadata": {
+          "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB94ADGH&CttFileID=11298569&CDCttType=UM&VPath=UM%2F202602%2F20260225092633863%2FOID139018_IB_B-PJT_WASHER-AD_SimpleUX_EN_251211.pdf",
+          "extraction_date": "2026-05-10T01:41:09.410Z",
+          "confidence_score": 0.88
+        }
+      },
+      "warnings": []
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww90dg6u34le",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww90dg6u34le",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW90DG6U34LE",
+        "sku": "WW90DG6U34LE",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww90dg6u34le",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW90DG6U34LE",
+          "displayName": "Samsung WW90DG6U34LE",
+          "title": "Samsung WW90DG6U34LE",
+          "slug": "discovery-washing-machine-samsung-ww90dg6u34le",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-front-load-washer-ww90dg6u34le",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/wht-9kg-front-load-washer-ww90dg6u34le",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/wht-9kg-front-load-washer-ww90dg6u34le",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/wht-9kg-front-load-washer-ww90dg6u34le",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/wht-9kg-front-load-washer-ww90dg6u34le",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW90DG6U34LE",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "source": "samsung-official-user_manual",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW90DG6U34LESA&CttFileID=10388112&CDCttType=UM&VPath=UM%2F202505%2F20250514163744690%2FOID80230_IB_D-PJT_WASHER-AD_SimpleUX_EN__250325.pdf",
+      "data": {
+        "brand": "Samsung",
+        "sku": "WW90DG6U34LE",
+        "category": "WASHING_MACHINE",
+        "dimensions": {
+          "width_mm": 600,
+          "height_mm": 850,
+          "depth_mm": 595,
+          "door_open_90_depth_mm": null
+        },
+        "clearance_requirements": {
+          "left_mm": 25,
+          "right_mm": 25,
+          "top_mm": 25,
+          "rear_mm": 50
+        },
+        "flags": {
+          "requires_plumbing": true,
+          "ventilation_required": false,
+          "reversible_door": null
+        },
+        "metadata": {
+          "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW90DG6U34LESA&CttFileID=10388112&CDCttType=UM&VPath=UM%2F202505%2F20250514163744690%2FOID80230_IB_D-PJT_WASHER-AD_SimpleUX_EN__250325.pdf",
+          "extraction_date": "2026-05-10T01:41:16.793Z",
+          "confidence_score": 0.88
+        }
+      },
+      "warnings": []
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww90dg6u3alb",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww90dg6u3alb",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW90DG6U3ALB",
+        "sku": "WW90DG6U3ALB",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww90dg6u3alb",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW90DG6U3ALB",
+          "displayName": "Samsung WW90DG6U3ALB",
+          "title": "Samsung WW90DG6U3ALB",
+          "slug": "discovery-washing-machine-samsung-ww90dg6u3alb",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/9kg-smart-fl-washer-blk-ww90dg6u3alb",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/9kg-smart-fl-washer-blk-ww90dg6u3alb",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/9kg-smart-fl-washer-blk-ww90dg6u3alb",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/9kg-smart-fl-washer-blk-ww90dg6u3alb",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW90DG6U3ALB",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "source": "samsung-official-user_manual",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW90DG6U3ALB&CttFileID=11364936&CDCttType=UM&VPath=UM%2F202604%2F20260408143907954%2FWeb_IB_D-PJT_WASHER-MD_SimpleUX_EN_v1.pdf",
+      "data": {
+        "brand": "Samsung",
+        "sku": "WW90DG6U3ALB",
+        "category": "WASHING_MACHINE",
+        "dimensions": {
+          "width_mm": 600,
+          "height_mm": 850,
+          "depth_mm": 595,
+          "door_open_90_depth_mm": null
+        },
+        "clearance_requirements": {
+          "left_mm": 25,
+          "right_mm": 25,
+          "top_mm": 25,
+          "rear_mm": 50
+        },
+        "flags": {
+          "requires_plumbing": true,
+          "ventilation_required": false,
+          "reversible_door": null
+        },
+        "metadata": {
+          "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW90DG6U3ALB&CttFileID=11364936&CDCttType=UM&VPath=UM%2F202604%2F20260408143907954%2FWeb_IB_D-PJT_WASHER-MD_SimpleUX_EN_v1.pdf",
+          "extraction_date": "2026-05-10T01:41:18.159Z",
+          "confidence_score": 0.88
+        }
+      },
+      "warnings": []
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww90dg6u3ale",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww90dg6u3ale",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW90DG6U3ALE",
+        "sku": "WW90DG6U3ALE",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww90dg6u3ale",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW90DG6U3ALE",
+          "displayName": "Samsung WW90DG6U3ALE",
+          "title": "Samsung WW90DG6U3ALE",
+          "slug": "discovery-washing-machine-samsung-ww90dg6u3ale",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-front-load-washer-ww90dg6u3ale",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/9kg-smart-fl-washer-wht-ww90dg6u3ale",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/9kg-smart-fl-washer-wht-ww90dg6u3ale",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/9kg-smart-fl-washer-wht-ww90dg6u3ale",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/9kg-smart-fl-washer-wht-ww90dg6u3ale",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW90DG6U3ALE",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "source": "samsung-official-user_manual",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW90DG6U3ALE&CttFileID=11364936&CDCttType=UM&VPath=UM%2F202604%2F20260408143907954%2FWeb_IB_D-PJT_WASHER-MD_SimpleUX_EN_v1.pdf",
+      "data": {
+        "brand": "Samsung",
+        "sku": "WW90DG6U3ALE",
+        "category": "WASHING_MACHINE",
+        "dimensions": {
+          "width_mm": 600,
+          "height_mm": 850,
+          "depth_mm": 595,
+          "door_open_90_depth_mm": null
+        },
+        "clearance_requirements": {
+          "left_mm": 25,
+          "right_mm": 25,
+          "top_mm": 25,
+          "rear_mm": 50
+        },
+        "flags": {
+          "requires_plumbing": true,
+          "ventilation_required": false,
+          "reversible_door": null
+        },
+        "metadata": {
+          "source_pdf_url": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW90DG6U3ALE&CttFileID=11364936&CDCttType=UM&VPath=UM%2F202604%2F20260408143907954%2FWeb_IB_D-PJT_WASHER-MD_SimpleUX_EN_v1.pdf",
+          "extraction_date": "2026-05-10T01:41:19.439Z",
+          "confidence_score": 0.88
+        }
+      },
+      "warnings": []
+    }
+  ],
+  "failures": [
+    {
+      "key": "discovery-dishwasher-samsung-dw60bg750fsl",
+      "entry": {
+        "productId": "discovery-dishwasher-samsung-dw60bg750fsl",
+        "category": "dishwasher",
+        "brand": "Samsung",
+        "model": "DW60BG750FSL",
+        "sku": "DW60BG750FSL",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-dishwasher-samsung-dw60bg750fsl",
+          "cat": "dishwasher",
+          "brand": "Samsung",
+          "model": "DW60BG750FSL",
+          "displayName": "Samsung DW60BG750FSL",
+          "title": "Samsung DW60BG750FSL",
+          "slug": "discovery-dishwasher-samsung-dw60bg750fsl",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-freestanding-smart-dishwasher-stainless-steel-with-auto-open-door-dw60bg750fsl",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "The Good Guys",
+            "retailer_key": "the-good-guys",
+            "product_url": "https://www.thegoodguys.com.au/samsung-freestanding-smart-dishwasher-stainless-steel-with-auto-open-door-dw60bg750fsl",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "product_url": "https://www.thegoodguys.com.au/samsung-freestanding-smart-dishwasher-stainless-steel-with-auto-open-door-dw60bg750fsl",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.thegoodguys.com.au/samsung-freestanding-smart-dishwasher-stainless-steel-with-auto-open-door-dw60bg750fsl",
+          "source_report": "reports/discovery-pipeline/discovery-the-good-guys-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "DW60BG750FSL",
+      "brand": "Samsung",
+      "category": "dishwasher",
+      "reason": "Missing Clearance Section",
+      "error": "Samsung dishwasher parser requires explicit clearance figures in an installation section."
+    },
+    {
+      "key": "ao-40722",
+      "entry": {
+        "category": "dishwasher",
+        "brand": "Samsung",
+        "model": "DW5343TGBSL",
+        "sku": "DW5343TGBSL",
+        "source_url": "https://www.appliancesonline.com.au/ak/1/f/6/9/1f6923ec8d99699e4f573d5ddefca64fcffaf771_Samsung_Dishwasher_DW5343TGBSL_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-40722",
+          "cat": "dishwasher",
+          "brand": "Samsung",
+          "model": "DW5343TGBSL",
+          "displayName": "Samsung DW5343TGBSL Dishwasher",
+          "title": "Samsung DW5343TGBSL Dishwasher",
+          "slug": "ao-dw5343tgbsl",
+          "w": 598,
+          "h": 845,
+          "d": 570,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-dishwasher-dw5343tgbsl",
+              "p": 792,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 40722,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-dishwasher-dw5343tgbsl",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 40722,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-dishwasher-dw5343tgbsl",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-dishwasher-dw5343tgbsl/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/1/f/6/9/1f6923ec8d99699e4f573d5ddefca64fcffaf771_Samsung_Dishwasher_DW5343TGBSL_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung Dishwasher DW5343TGBSL User Manual"
+          }
+        ]
+      },
+      "sku": "DW5343TGBSL",
+      "brand": "Samsung",
+      "category": "dishwasher",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung dishwasher parser could not find Width x Depth x Height inside the specification section."
+    },
+    {
+      "key": "ao-40940",
+      "entry": {
+        "category": "dishwasher",
+        "brand": "Samsung",
+        "model": "DW60H9950FS",
+        "sku": "DW60H9950FS",
+        "source_url": "https://www.appliancesonline.com.au/ak/8/6/4/9/8649536e69255d3e1bcf72321d00231c7652ad64_Samsung_WaterWall_Dishwasher_DW60H9950FS_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-40940",
+          "cat": "dishwasher",
+          "brand": "Samsung",
+          "model": "DW60H9950FS",
+          "displayName": "Samsung DW60H9950FS WaterWall Freestanding Dishwasher",
+          "title": "Samsung DW60H9950FS WaterWall Freestanding Dishwasher",
+          "slug": "ao-dw60h9950fs",
+          "w": 598,
+          "h": 845,
+          "d": 600,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-waterwall-dishwasher-dw60h9950fs",
+              "p": 1307,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 40940,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-waterwall-dishwasher-dw60h9950fs",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 40940,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-waterwall-dishwasher-dw60h9950fs",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-waterwall-dishwasher-dw60h9950fs/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/8/6/4/9/8649536e69255d3e1bcf72321d00231c7652ad64_Samsung_WaterWall_Dishwasher_DW60H9950FS_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung WaterWall Dishwasher DW60H9950FS User Manual"
+          }
+        ]
+      },
+      "sku": "DW60H9950FS",
+      "brand": "Samsung",
+      "category": "dishwasher",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung dishwasher parser could not find Width x Depth x Height inside the specification section."
+    },
+    {
+      "key": "ao-41195",
+      "entry": {
+        "category": "dishwasher",
+        "brand": "Samsung",
+        "model": "DW60H9950FW",
+        "sku": "DW60H9950FW",
+        "source_url": "https://www.appliancesonline.com.au/ak/2/b/1/5/2b1577cf4406b9915524018780bfda6c246c3302_Samsung_WaterWall_Dishwasher_DW60H9950FW_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-41195",
+          "cat": "dishwasher",
+          "brand": "Samsung",
+          "model": "DW60H9950FW",
+          "displayName": "Samsung DW60H9950FW WaterWall Freestanding Dishwasher",
+          "title": "Samsung DW60H9950FW WaterWall Freestanding Dishwasher",
+          "slug": "ao-dw60h9950fw",
+          "w": 598,
+          "h": 845,
+          "d": 575,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-waterwall-dishwasher-dw60h9950fw",
+              "p": 1218,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 41195,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-waterwall-dishwasher-dw60h9950fw",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 41195,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-waterwall-dishwasher-dw60h9950fw",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-waterwall-dishwasher-dw60h9950fw/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/2/b/1/5/2b1577cf4406b9915524018780bfda6c246c3302_Samsung_WaterWall_Dishwasher_DW60H9950FW_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung WaterWall Dishwasher DW60H9950FW User Manual"
+          }
+        ]
+      },
+      "sku": "DW60H9950FW",
+      "brand": "Samsung",
+      "category": "dishwasher",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung dishwasher parser could not find Width x Depth x Height inside the specification section."
+    },
+    {
+      "key": "ao-61887",
+      "entry": {
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SR269MW",
+        "sku": "SR269MW",
+        "source_url": "https://www.appliancesonline.com.au/ak/d/c/d/2/dcd2eaa90733819e396d67f2191b43e414da6a03_Samsung_SR269MW_270L_Top_Mount_Fridge_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-61887",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SR269MW",
+          "displayName": "Samsung SR269MW 270L Top Mount Fridge",
+          "title": "Samsung SR269MW 270L Top Mount Fridge",
+          "slug": "ao-sr269mw",
+          "w": 555,
+          "h": 1635,
+          "d": 637,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-sr269mw-270l-top-mount-fridge",
+              "p": 499,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 61887,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-sr269mw-270l-top-mount-fridge",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 61887,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-sr269mw-270l-top-mount-fridge",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-sr269mw-270l-top-mount-fridge/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/d/c/d/2/dcd2eaa90733819e396d67f2191b43e414da6a03_Samsung_SR269MW_270L_Top_Mount_Fridge_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung SR269MW 270L Top Mount Fridge User Manual"
+          }
+        ]
+      },
+      "sku": "SR269MW",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung layout-aware parser could not locate installation/specification sections."
+    },
+    {
+      "key": "ao-61888",
+      "entry": {
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SR270MLS",
+        "sku": "SR270MLS",
+        "source_url": "https://www.appliancesonline.com.au/ak/b/3/8/4/b384c7b5b5eeafbcb20ebcbf2408dcee48df380c_Samsung_SR270MLS_270L_Top_Mount__Fridge_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-61888",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SR270MLS",
+          "displayName": "Samsung 270L Top Mount Fridge SR270MLS",
+          "title": "Samsung 270L Top Mount Fridge SR270MLS",
+          "slug": "ao-sr270mls",
+          "w": 555,
+          "h": 1635,
+          "d": 637,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-sr270mls-270l-top-mount-fridge",
+              "p": 797,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 61888,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-sr270mls-270l-top-mount-fridge",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 61888,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-sr270mls-270l-top-mount-fridge",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-sr270mls-270l-top-mount-fridge/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/b/3/8/4/b384c7b5b5eeafbcb20ebcbf2408dcee48df380c_Samsung_SR270MLS_270L_Top_Mount__Fridge_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung SR270MLS 270L Top Mount  Fridge User Manual"
+          }
+        ]
+      },
+      "sku": "SR270MLS",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung layout-aware parser could not locate installation/specification sections."
+    },
+    {
+      "key": "ao-52111",
+      "entry": {
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SR343LSTC",
+        "sku": "SR343LSTC",
+        "source_url": "https://www.appliancesonline.com.au/ak/1/4/0/8/140809b5f993c17fb5b9c62d06bf4612b8a22cb3_Samsung_SR343LSTC_343L_Top_Mount_Fridge_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-52111",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SR343LSTC",
+          "displayName": "Samsung 343L Top Mount Fridge SR343LSTC",
+          "title": "Samsung 343L Top Mount Fridge SR343LSTC",
+          "slug": "ao-sr343lstc",
+          "w": 600,
+          "h": 1715,
+          "d": 672,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-sr343lstc-341l-top-mount-fridge",
+              "p": 1019,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 52111,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-sr343lstc-341l-top-mount-fridge",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 52111,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-sr343lstc-341l-top-mount-fridge",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-sr343lstc-341l-top-mount-fridge/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/1/4/0/8/140809b5f993c17fb5b9c62d06bf4612b8a22cb3_Samsung_SR343LSTC_343L_Top_Mount_Fridge_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung SR343LSTC 343L Top Mount Fridge User Manual"
+          }
+        ]
+      },
+      "sku": "SR343LSTC",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung fridge parser could not find dimensions inside installation/specification sections."
+    },
+    {
+      "key": "ao-63476",
+      "entry": {
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SR397BTC",
+        "sku": "SR397BTC",
+        "source_url": "https://www.appliancesonline.com.au/ak/7/2/f/f/72ff84009f6fc4283f2178273546ffe470b6a1f7_Samsung_SR397BTC_400L_Top_Mount_Fridge_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-63476",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SR397BTC",
+          "displayName": "Samsung SR397BTC 400L Top Mount Fridge",
+          "title": "Samsung SR397BTC 400L Top Mount Fridge",
+          "slug": "ao-sr397btc",
+          "w": 675,
+          "h": 1715,
+          "d": 668,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-sr397btc-400l-top-mount-fridge",
+              "p": 657,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 63476,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-sr397btc-400l-top-mount-fridge",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 63476,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-sr397btc-400l-top-mount-fridge",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-sr397btc-400l-top-mount-fridge/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/7/2/f/f/72ff84009f6fc4283f2178273546ffe470b6a1f7_Samsung_SR397BTC_400L_Top_Mount_Fridge_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung SR397BTC 400L Top Mount Fridge User Manual"
+          }
+        ]
+      },
+      "sku": "SR397BTC",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung fridge parser could not find dimensions inside installation/specification sections."
+    },
+    {
+      "key": "ao-52112",
+      "entry": {
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SR399WTC",
+        "sku": "SR399WTC",
+        "source_url": "https://www.appliancesonline.com.au/ak/8/3/8/e/838e2f6f98aa11992268d01062104442144a15c7_Samsung_SR399WTC_400L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-52112",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SR399WTC",
+          "displayName": "Samsung SR399WTC 400L Top Mount Fridge with Twin Cooling Plus™",
+          "title": "Samsung SR399WTC 400L Top Mount Fridge with Twin Cooling Plus™",
+          "slug": "ao-sr399wtc",
+          "w": 675,
+          "h": 1715,
+          "d": 668,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-sr399wtc-400l-top-mount-fridge",
+              "p": 774,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 52112,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-sr399wtc-400l-top-mount-fridge",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 52112,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-sr399wtc-400l-top-mount-fridge",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-sr399wtc-400l-top-mount-fridge/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/8/3/8/e/838e2f6f98aa11992268d01062104442144a15c7_Samsung_SR399WTC_400L_Top_Mount_Fridge_Specifications_Sheet.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung SR399WTC 400L Top Mount Fridge Specifications Sheet"
+          }
+        ]
+      },
+      "sku": "SR399WTC",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung fridge parser could not find dimensions inside installation/specification sections."
+    },
+    {
+      "key": "ao-52117",
+      "entry": {
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SR627BCTC",
+        "sku": "SR627BCTC",
+        "source_url": "https://www.appliancesonline.com.au/ak/7/8/f/9/78f93fadeef47817322b88f762e9e47cea97b288_Samsung_SR627BCTC_629L_Top_Mount_Fridge_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-52117",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SR627BCTC",
+          "displayName": "Samsung SR627BCTC 629L Top Mount Fridge",
+          "title": "Samsung SR627BCTC 629L Top Mount Fridge",
+          "slug": "ao-sr627bctc",
+          "w": 836,
+          "h": 1787,
+          "d": 788,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-sr627bctc-629l-top-mount-fridge",
+              "p": 1029,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 52117,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-sr627bctc-629l-top-mount-fridge",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 52117,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-sr627bctc-629l-top-mount-fridge",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-sr627bctc-629l-top-mount-fridge/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/7/8/f/9/78f93fadeef47817322b88f762e9e47cea97b288_Samsung_SR627BCTC_629L_Top_Mount_Fridge_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung SR627BCTC 629L Top Mount Fridge User Manual"
+          }
+        ]
+      },
+      "sku": "SR627BCTC",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung fridge parser could not find dimensions inside installation/specification sections."
+    },
+    {
+      "key": "ao-61889",
+      "entry": {
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRL453DW",
+        "sku": "SRL453DW",
+        "source_url": "https://www.appliancesonline.com.au/ak/9/8/4/c/984c304fe68e5d253643877aa3652997b4e48589_Samsung_SRL453DW_458L_Bottom_Mount_Fridge_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-61889",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRL453DW",
+          "displayName": "Samsung SRL453DW 458L Bottom Mount Fridge",
+          "title": "Samsung SRL453DW 458L Bottom Mount Fridge",
+          "slug": "ao-srl453dw",
+          "w": 700,
+          "h": 1700,
+          "d": 705,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-srl453dw-458l-bottom-mount-fridge",
+              "p": 959,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 61889,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-srl453dw-458l-bottom-mount-fridge",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 61889,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-srl453dw-458l-bottom-mount-fridge",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-srl453dw-458l-bottom-mount-fridge/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/9/8/4/c/984c304fe68e5d253643877aa3652997b4e48589_Samsung_SRL453DW_458L_Bottom_Mount_Fridge_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung SRL453DW 458L Bottom Mount Fridge User Manual"
+          }
+        ]
+      },
+      "sku": "SRL453DW",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung layout-aware parser could not locate installation/specification sections."
+    },
+    {
+      "key": "ao-45803",
+      "entry": {
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRL454DSP",
+        "sku": "SRL454DSP",
+        "source_url": "https://www.appliancesonline.com.au/ak/c/2/c/c/c2cc7db3775c43eb75499a32532bfdfbc32dc97c_SRL454DSP_Samsung_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-45803",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRL454DSP",
+          "displayName": "Samsung SRL454DSP 458L Bottom Mount Refrigerator",
+          "title": "Samsung SRL454DSP 458L Bottom Mount Refrigerator",
+          "slug": "ao-srl454dsp",
+          "w": 700,
+          "h": 1700,
+          "d": 705,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-458l-bottom-mount-refrigerator-srl454dsp",
+              "p": 1018,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 45803,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-458l-bottom-mount-refrigerator-srl454dsp",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 45803,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-458l-bottom-mount-refrigerator-srl454dsp",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-458l-bottom-mount-refrigerator-srl454dsp/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/c/2/c/c/c2cc7db3775c43eb75499a32532bfdfbc32dc97c_SRL454DSP_Samsung_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "SRL454DSP - Samsung - User Manual"
+          }
+        ]
+      },
+      "sku": "SRL454DSP",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung layout-aware parser could not locate installation/specification sections."
+    },
+    {
+      "key": "ao-60273",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WA11M8700GV",
+        "sku": "WA11M8700GV",
+        "source_url": "https://www.appliancesonline.com.au/ak/2/b/f/2/2bf2453ba35a193490f556b65a1c32e1b2b1f5f7_Samsung_WA11M8700GV_11kg_Activ_DualWash_Top_Load_Washing_Machine_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-60273",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WA11M8700GV",
+          "displayName": "Samsung 11kg Activ DualWash Top Load Washing Machine WA11M8700GV",
+          "title": "Samsung 11kg Activ DualWash Top Load Washing Machine WA11M8700GV",
+          "slug": "ao-wa11m8700gv",
+          "w": 686,
+          "h": 1077,
+          "d": 744,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-wa11m8700gv-13kg-activ-dualwash-top-load-washing-machine",
+              "p": 1055,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 60273,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-wa11m8700gv-13kg-activ-dualwash-top-load-washing-machine",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 60273,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-wa11m8700gv-13kg-activ-dualwash-top-load-washing-machine",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-wa11m8700gv-13kg-activ-dualwash-top-load-washing-machine/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/2/b/f/2/2bf2453ba35a193490f556b65a1c32e1b2b1f5f7_Samsung_WA11M8700GV_11kg_Activ_DualWash_Top_Load_Washing_Machine_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung WA11M8700GV 11kg Activ DualWash Top Load Washing Machine User Manual"
+          }
+        ]
+      },
+      "sku": "WA11M8700GV",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "ao-108992",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WA14A8377GV",
+        "sku": "WA14A8377GV",
+        "source_url": "https://www.appliancesonline.com.au/ak/c/3/e/e/c3eeb0fbcb6bc15badd9fd1cecbcb84857a45d8a_WA14A8377GV_Samsung_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-108992",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WA14A8377GV",
+          "displayName": "Samsung 14kg Top Load Washing Machine WA14A8377GV",
+          "title": "Samsung 14kg Top Load Washing Machine WA14A8377GV",
+          "slug": "ao-wa14a8377gv",
+          "w": 700,
+          "h": 1131,
+          "d": 748,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-14kg-top-load-washing-machine-wa14a8377gv",
+              "p": 1135,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 108992,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-14kg-top-load-washing-machine-wa14a8377gv",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 108992,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-14kg-top-load-washing-machine-wa14a8377gv",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-14kg-top-load-washing-machine-wa14a8377gv/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/c/3/e/e/c3eeb0fbcb6bc15badd9fd1cecbcb84857a45d8a_WA14A8377GV_Samsung_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "WA14A8377GV - Samsung - User Manual"
+          }
+        ]
+      },
+      "sku": "WA14A8377GV",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "ao-12108",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WD0754W8E",
+        "sku": "WD0754W8E",
+        "source_url": "https://www.appliancesonline.com.au/ak/c/3/4/e/c34e697a12e8a5b058a926d744bf67cc0829c77f_wd0754w8e.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-12108",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WD0754W8E",
+          "displayName": "Samsung WD0754W8E Washer Dryer Combo",
+          "title": "Samsung WD0754W8E Washer Dryer Combo",
+          "slug": "ao-wd0754w8e",
+          "w": 598,
+          "h": 844,
+          "d": 600,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd0754w8e",
+              "p": 744,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 12108,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd0754w8e",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 12108,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd0754w8e",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd0754w8e/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/c/3/4/e/c34e697a12e8a5b058a926d744bf67cc0829c77f_wd0754w8e.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung Washer Dryer Combo WD0754W8E User Manual"
+          }
+        ]
+      },
+      "sku": "WD0754W8E",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "ao-31204",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WD10F7S7SRP",
+        "sku": "WD10F7S7SRP",
+        "source_url": "https://www.appliancesonline.com.au/ak/0/e/d/e/0ede69751366c95b9ea601581540d055d495a6ee_wd10f7s7srp_usermanual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-31204",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WD10F7S7SRP",
+          "displayName": "Samsung WD10F7S7SRP 10kg Washer 7kg Dryer Combo",
+          "title": "Samsung WD10F7S7SRP 10kg Washer 7kg Dryer Combo",
+          "slug": "ao-wd10f7s7srp",
+          "w": 686,
+          "h": 984,
+          "d": 860,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-wd10f7s7srp-10kg-front-load-washer-dryer-combo",
+              "p": 1741,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 31204,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-wd10f7s7srp-10kg-front-load-washer-dryer-combo",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 31204,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-wd10f7s7srp-10kg-front-load-washer-dryer-combo",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-wd10f7s7srp-10kg-front-load-washer-dryer-combo/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/0/e/d/e/0ede69751366c95b9ea601581540d055d495a6ee_wd10f7s7srp_usermanual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "WD10F7S7SRP User Manual"
+          }
+        ]
+      },
+      "sku": "WD10F7S7SRP",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "ao-40868",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WD10F8K9ABG",
+        "sku": "WD10F8K9ABG",
+        "source_url": "https://www.appliancesonline.com.au/ak/c/4/b/3/c4b3601c05c76023ac48fb0d1ffaa2cb2415b3a4_Samsung_Combo_10kg_Washer_8kg_Dryer_WD10F8K9ABG_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-40868",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WD10F8K9ABG",
+          "displayName": "Samsung WD10F8K9ABG 10kg Washer 8kg Dryer Combo with WiFi",
+          "title": "Samsung WD10F8K9ABG 10kg Washer 8kg Dryer Combo with WiFi",
+          "slug": "ao-wd10f8k9abg",
+          "w": 686,
+          "h": 990,
+          "d": 865,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd10f8k9abg",
+              "p": 3482,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 40868,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd10f8k9abg",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 40868,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd10f8k9abg",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd10f8k9abg/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/c/4/b/3/c4b3601c05c76023ac48fb0d1ffaa2cb2415b3a4_Samsung_Combo_10kg_Washer_8kg_Dryer_WD10F8K9ABG_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung Combo 10kg Washer/8kg Dryer WD10F8K9ABG User Manual"
+          }
+        ]
+      },
+      "sku": "WD10F8K9ABG",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "ao-45419",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WD10J8420GW",
+        "sku": "WD10J8420GW",
+        "source_url": "https://www.appliancesonline.com.au/ak/0/e/8/1/0e813333f5762ed9f243facc585b6eee13559b87_Samsung_Washer_Dryer_Combo_WD10J8420GW_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-45419",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WD10J8420GW",
+          "displayName": "Samsung WD10J8420GW Washer Dryer Combo",
+          "title": "Samsung WD10J8420GW Washer Dryer Combo",
+          "slug": "ao-wd10j8420gw",
+          "w": 600,
+          "h": 850,
+          "d": 600,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd10j8420gw",
+              "p": 1330,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 45419,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd10j8420gw",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 45419,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd10j8420gw",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd10j8420gw/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/0/e/8/1/0e813333f5762ed9f243facc585b6eee13559b87_Samsung_Washer_Dryer_Combo_WD10J8420GW_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung Washer Dryer Combo WD10J8420GW User Manual"
+          }
+        ]
+      },
+      "sku": "WD10J8420GW",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "ao-52845",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WD13J7825KP",
+        "sku": "WD13J7825KP",
+        "source_url": "https://www.appliancesonline.com.au/ak/7/7/5/4/77542c25103a9858b63eda9bed29b00454790933_Samsung_WD13J7825KP_13kg_Front_Load_Washing_Machine_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-52845",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WD13J7825KP",
+          "displayName": "Samsung WD13J7825KP AddWash 13kg/7kg Washer Dryer Combo",
+          "title": "Samsung WD13J7825KP AddWash 13kg/7kg Washer Dryer Combo",
+          "slug": "ao-wd13j7825kp",
+          "w": 686,
+          "h": 990,
+          "d": 811,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-wd13j7825kp-13kg-front-load-washer-dryer-combo",
+              "p": 1909,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 52845,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-wd13j7825kp-13kg-front-load-washer-dryer-combo",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 52845,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-wd13j7825kp-13kg-front-load-washer-dryer-combo",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-wd13j7825kp-13kg-front-load-washer-dryer-combo/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/7/7/5/4/77542c25103a9858b63eda9bed29b00454790933_Samsung_WD13J7825KP_13kg_Front_Load_Washing_Machine_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung WD13J7825KP 13kg Front Load Washing Machine User Manual"
+          }
+        ]
+      },
+      "sku": "WD13J7825KP",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "ao-46346",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WD75J5410AW",
+        "sku": "WD75J5410AW",
+        "source_url": "https://www.appliancesonline.com.au/ak/7/c/9/a/7c9aa22b659fb892624b5aaba0f4387efc90602c_Samsung_Washer_Dryer_Combo_WD75J5410AW_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-46346",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WD75J5410AW",
+          "displayName": "Samsung WD75J5410AW 7.5kg/4kg Washer Dryer Combo",
+          "title": "Samsung WD75J5410AW 7.5kg/4kg Washer Dryer Combo",
+          "slug": "ao-wd75j5410aw",
+          "w": 600,
+          "h": 850,
+          "d": 550,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd75j5410aw",
+              "p": 976,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 46346,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd75j5410aw",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 46346,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd75j5410aw",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd75j5410aw/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/7/c/9/a/7c9aa22b659fb892624b5aaba0f4387efc90602c_Samsung_Washer_Dryer_Combo_WD75J5410AW_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung Washer Dryer Combo WD75J5410AW User Manual"
+          }
+        ]
+      },
+      "sku": "WD75J5410AW",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "ao-31205",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WD856UHSAWQ",
+        "sku": "WD856UHSAWQ",
+        "source_url": "https://www.appliancesonline.com.au/ak/0/2/3/3/02336ecdeedf26244cad6dc98e6e2ec8419eeff0_wd856uhsawq_installationcareandusemanual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-31205",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WD856UHSAWQ",
+          "displayName": "Samsung WD856UHSAWQ 8.5kg Washer 6kg Dryer Combo",
+          "title": "Samsung WD856UHSAWQ 8.5kg Washer 6kg Dryer Combo",
+          "slug": "ao-wd856uhsawq",
+          "w": 600,
+          "h": 850,
+          "d": 650,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd856uhsawq",
+              "p": 1278,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 31205,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd856uhsawq",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 31205,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd856uhsawq",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-washer-dryer-combo-wd856uhsawq/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/0/2/3/3/02336ecdeedf26244cad6dc98e6e2ec8419eeff0_wd856uhsawq_installationcareandusemanual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "WD856UHSAWQ Installation, Care and Use Manual"
+          }
+        ]
+      },
+      "sku": "WD856UHSAWQ",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "ao-60276",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WD85K6410OW",
+        "sku": "WD85K6410OW",
+        "source_url": "https://www.appliancesonline.com.au/ak/7/b/5/d/7b5d9aa8035db39126fdcd744137e0797cdb41a7_Samsung_WD85K6410OW_8.5kg_Washer_6kg_Dryer_Combo_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-60276",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WD85K6410OW",
+          "displayName": "Samsung 8.5kg/6kg AddWash Washer Dryer Combo WD85K6410OW",
+          "title": "Samsung 8.5kg/6kg AddWash Washer Dryer Combo WD85K6410OW",
+          "slug": "ao-wd85k6410ow",
+          "w": 600,
+          "h": 840,
+          "d": 725,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-wd85k6410ow-8-5kg-washer-6kg-dryer-combo",
+              "p": 1686,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 60276,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-wd85k6410ow-8-5kg-washer-6kg-dryer-combo",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 60276,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-wd85k6410ow-8-5kg-washer-6kg-dryer-combo",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-wd85k6410ow-8-5kg-washer-6kg-dryer-combo/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/7/b/5/d/7b5d9aa8035db39126fdcd744137e0797cdb41a7_Samsung_WD85K6410OW_8.5kg_Washer_6kg_Dryer_Combo_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung WD85K6410OW 8.5kg Washer 6kg Dryer Combo User Manual"
+          }
+        ]
+      },
+      "sku": "WD85K6410OW",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "ao-50684",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WF16J9000KW",
+        "sku": "WF16J9000KW",
+        "source_url": "https://www.appliancesonline.com.au/ak/2/b/e/a/2bea4551d8d653bb38c139982bc898ddfaccd337_Samsung_WF16J9000KW_Front_Load_Washing_Machine_Quick_Guide.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-50684",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WF16J9000KW",
+          "displayName": "Samsung WF16J9000KW Front Load Washing Machine",
+          "title": "Samsung WF16J9000KW Front Load Washing Machine",
+          "slug": "ao-wf16j9000kw",
+          "w": 686,
+          "h": 990,
+          "d": 865,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-wf16j9000kw-front-load-washing-machine",
+              "p": 2052,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 50684,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-wf16j9000kw-front-load-washing-machine",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 50684,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-wf16j9000kw-front-load-washing-machine",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-wf16j9000kw-front-load-washing-machine/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/2/b/e/a/2bea4551d8d653bb38c139982bc898ddfaccd337_Samsung_WF16J9000KW_Front_Load_Washing_Machine_Quick_Guide.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung WF16J9000KW Front Load Washing Machine Quick Guide"
+          }
+        ]
+      },
+      "sku": "WF16J9000KW",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung layout-aware parser could not locate installation/specification sections."
+    },
+    {
+      "key": "ao-52847",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW11K8412OW",
+        "sku": "WW11K8412OW",
+        "source_url": "https://www.appliancesonline.com.au/ak/5/d/d/e/5dde51b443c827be563d601a6535d6274edc398a_WW11K8412OW_Samsung_Specifications_Sheet.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-52847",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW11K8412OW",
+          "displayName": "Samsung WW11K8412OW AddWash 11kg Front Load Washing Machine",
+          "title": "Samsung WW11K8412OW AddWash 11kg Front Load Washing Machine",
+          "slug": "ao-ww11k8412ow",
+          "w": 600,
+          "h": 850,
+          "d": 695,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-ww11k8412ow-11kg-front-load-washing-machine",
+              "p": 1781,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 52847,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-ww11k8412ow-11kg-front-load-washing-machine",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 52847,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-ww11k8412ow-11kg-front-load-washing-machine",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-ww11k8412ow-11kg-front-load-washing-machine/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/5/d/d/e/5dde51b443c827be563d601a6535d6274edc398a_WW11K8412OW_Samsung_Specifications_Sheet.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "WW11K8412OW - Samsung - Specifications Sheet"
+          }
+        ]
+      },
+      "sku": "WW11K8412OW",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung layout-aware parser could not locate installation/specification sections."
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww12bb94adgb",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww12bb94adgb",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW12BB94ADGB",
+        "sku": "WW12BB94ADGB",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww12bb94adgb",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW12BB94ADGB",
+          "displayName": "Samsung WW12BB94ADGB",
+          "title": "Samsung WW12BB94ADGB",
+          "slug": "discovery-washing-machine-samsung-ww12bb94adgb",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/12kg-bespoke-fl-washer-blk-ww12bb94adgb",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/12kg-bespoke-fl-washer-blk-ww12bb94adgb",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/12kg-bespoke-fl-washer-blk-ww12bb94adgb",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/12kg-bespoke-fl-washer-blk-ww12bb94adgb",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW12BB94ADGB",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "ao-63478",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW75J5210IW",
+        "sku": "WW75J5210IW",
+        "source_url": "https://www.appliancesonline.com.au/ak/a/0/2/1/a021a3844aa8e1ae593cd2efb35a99d46f8267b8_Samsung_WW75J5210IW_7.5kg_Front_Load_Washing_Machine_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-63478",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW75J5210IW",
+          "displayName": "Samsung WW75J5210IW 7.5kg Front Load Washing Machine",
+          "title": "Samsung WW75J5210IW 7.5kg Front Load Washing Machine",
+          "slug": "ao-ww75j5210iw",
+          "w": 600,
+          "h": 850,
+          "d": 600,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-ww75j5210iw-7-5kg-front-load-washing-machine",
+              "p": 569,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 63478,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-ww75j5210iw-7-5kg-front-load-washing-machine",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 63478,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-ww75j5210iw-7-5kg-front-load-washing-machine",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-ww75j5210iw-7-5kg-front-load-washing-machine/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/a/0/2/1/a021a3844aa8e1ae593cd2efb35a99d46f8267b8_Samsung_WW75J5210IW_7.5kg_Front_Load_Washing_Machine_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung WW75J5210IW 7.5kg Front Load Washing Machine User Manual"
+          }
+        ]
+      },
+      "sku": "WW75J5210IW",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "ao-66928",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW75J54E0IW",
+        "sku": "WW75J54E0IW",
+        "source_url": "https://www.appliancesonline.com.au/ak/1/e/d/8/1ed8410e65fbd5962d29df99f705dfd2b97ca68b_WW75J54E0IW_Samsung_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-66928",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW75J54E0IW",
+          "displayName": "Samsung 7.5kg BubbleWash Front Load Washing Machine with Steam WW75J54E0IW",
+          "title": "Samsung 7.5kg BubbleWash Front Load Washing Machine with Steam WW75J54E0IW",
+          "slug": "ao-ww75j54e0iw",
+          "w": 600,
+          "h": 850,
+          "d": 660,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-ww75j54e0iw-7-5kg-bubblewash-front-load-washing-machine",
+              "p": 729,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 66928,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-ww75j54e0iw-7-5kg-bubblewash-front-load-washing-machine",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 66928,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-ww75j54e0iw-7-5kg-bubblewash-front-load-washing-machine",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-ww75j54e0iw-7-5kg-bubblewash-front-load-washing-machine/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/1/e/d/8/1ed8410e65fbd5962d29df99f705dfd2b97ca68b_WW75J54E0IW_Samsung_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "WW75J54E0IW - Samsung - User Manual"
+          }
+        ]
+      },
+      "sku": "WW75J54E0IW",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "ao-56968",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW75K5210WW",
+        "sku": "WW75K5210WW",
+        "source_url": "https://www.appliancesonline.com.au/ak/e/7/2/f/e72f0957eb92244ac873f165c32985646a4f8d31_Samsung_WW75K5210WW_AddWash_7.5_kg_Front_Load_Washing_Machine_User_Manual.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-56968",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW75K5210WW",
+          "displayName": "Samsung WW75K5210WW AddWash 7.5 kg Front Load Washing Machine",
+          "title": "Samsung WW75K5210WW AddWash 7.5 kg Front Load Washing Machine",
+          "slug": "ao-ww75k5210ww",
+          "w": 600,
+          "h": 850,
+          "d": 600,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-ww75k5210ww-addwash-75kg-front-load-washing-machine",
+              "p": 969,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 56968,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-ww75k5210ww-addwash-75kg-front-load-washing-machine",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 56968,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-ww75k5210ww-addwash-75kg-front-load-washing-machine",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-ww75k5210ww-addwash-75kg-front-load-washing-machine/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/e/7/2/f/e72f0957eb92244ac873f165c32985646a4f8d31_Samsung_WW75K5210WW_AddWash_7.5_kg_Front_Load_Washing_Machine_User_Manual.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "Samsung WW75K5210WW AddWash 7.5 kg Front Load Washing Machine User Manual"
+          }
+        ]
+      },
+      "sku": "WW75K5210WW",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww90dg6u34lb",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww90dg6u34lb",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW90DG6U34LB",
+        "sku": "WW90DG6U34LB",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww90dg6u34lb",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW90DG6U34LB",
+          "displayName": "Samsung WW90DG6U34LB",
+          "title": "Samsung WW90DG6U34LB",
+          "slug": "discovery-washing-machine-samsung-ww90dg6u34lb",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-front-load-washer-ww90dg6u34lb",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "JB Hi-Fi",
+              "url": "https://www.jbhifi.com.au/products/samsung-ww90dg6u34lb-9kg-smart-front-load-washer-black",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "JB Hi-Fi",
+            "retailer_key": "jb-hi-fi",
+            "product_url": "https://www.jbhifi.com.au/products/samsung-ww90dg6u34lb-9kg-smart-front-load-washer-black",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "product_url": "https://www.jbhifi.com.au/products/samsung-ww90dg6u34lb-9kg-smart-front-load-washer-black",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.jbhifi.com.au/products/samsung-ww90dg6u34lb-9kg-smart-front-load-washer-black",
+          "source_report": "reports/discovery-pipeline/discovery-jb-hi-fi-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW90DG6U34LB",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung washing machine parser could not find a model-specific specification dimensions block."
+    },
+    {
+      "key": "ao-87107",
+      "entry": {
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW95N54F5CW",
+        "sku": "WW95N54F5CW",
+        "source_url": "https://www.appliancesonline.com.au/ak/f/0/4/f/f04fa87dbbe907173fe54e1d4269c0a277718d48_WW95N54F5CW_Samsung_Quick_Guide.pdf",
+        "type": "spec_sheet",
+        "status": "candidate",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "ao-87107",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW95N54F5CW",
+          "displayName": "Samsung 9.5kg Front Load Washing Machine WW95N54F5CW",
+          "title": "Samsung 9.5kg Front Load Washing Machine WW95N54F5CW",
+          "slug": "ao-ww95n54f5cw",
+          "w": 600,
+          "h": 850,
+          "d": 680,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Appliances Online",
+              "url": "https://www.appliancesonline.com.au/product/samsung-95kg-front-load-washing-machine-ww95n54f5cw",
+              "p": 755,
+              "verified_at": "2026-05-09",
+              "source": "appliances-online-api"
+            }
+          ],
+          "discovery": {
+            "retailer": "Appliances Online",
+            "retailer_key": "appliancesonline",
+            "product_id": 87107,
+            "product_url": "https://www.appliancesonline.com.au/product/samsung-95kg-front-load-washing-machine-ww95n54f5cw",
+            "source": "appliances-online-api"
+          }
+        },
+        "discovery": {
+          "retailer": "Appliances Online",
+          "retailer_key": "appliancesonline",
+          "product_id": 87107,
+          "product_url": "https://www.appliancesonline.com.au/product/samsung-95kg-front-load-washing-machine-ww95n54f5cw",
+          "source": "appliances-online-api",
+          "source_discovery_url": "https://www.appliancesonline.com.au/product/samsung-95kg-front-load-washing-machine-ww95n54f5cw/",
+          "source_report": "data/discovery-report.json"
+        },
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://www.appliancesonline.com.au/ak/f/0/4/f/f04fa87dbbe907173fe54e1d4269c0a277718d48_WW95N54F5CW_Samsung_Quick_Guide.pdf",
+            "seeded_at": "2026-05-09",
+            "source": "appliances-online-manuals-api",
+            "title": "WW95N54F5CW - Samsung - Quick Guide"
+          }
+        ]
+      },
+      "sku": "WW95N54F5CW",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "Missing Dimensions Section",
+      "error": "Samsung layout-aware parser could not locate installation/specification sections."
+    },
+    {
+      "key": "discovery-dishwasher-samsung-dw60m6055fs",
+      "entry": {
+        "productId": "discovery-dishwasher-samsung-dw60m6055fs",
+        "category": "dishwasher",
+        "brand": "Samsung",
+        "model": "DW60M6055FS",
+        "sku": "DW60M6055FS",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-dishwasher-samsung-dw60m6055fs",
+          "cat": "dishwasher",
+          "brand": "Samsung",
+          "model": "DW60M6055FS",
+          "displayName": "Samsung DW60M6055FS",
+          "title": "Samsung DW60M6055FS",
+          "slug": "discovery-dishwasher-samsung-dw60m6055fs",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-60cm-stainless-steel-freestanding-dishwasher-dw60m6055fs",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "The Good Guys",
+            "retailer_key": "the-good-guys",
+            "product_url": "https://www.thegoodguys.com.au/samsung-60cm-stainless-steel-freestanding-dishwasher-dw60m6055fs",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "product_url": "https://www.thegoodguys.com.au/samsung-60cm-stainless-steel-freestanding-dishwasher-dw60m6055fs",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.thegoodguys.com.au/samsung-60cm-stainless-steel-freestanding-dishwasher-dw60m6055fs",
+          "source_report": "reports/discovery-pipeline/discovery-the-good-guys-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "DW60M6055FS",
+      "brand": "Samsung",
+      "category": "dishwasher",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-dryer-samsung-dv80t5420ab",
+      "entry": {
+        "productId": "discovery-dryer-samsung-dv80t5420ab",
+        "category": "dryer",
+        "brand": "Samsung",
+        "model": "DV80T5420AB",
+        "sku": "DV80T5420AB",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-dryer-samsung-dv80t5420ab",
+          "cat": "dryer",
+          "brand": "Samsung",
+          "model": "DV80T5420AB",
+          "displayName": "Samsung DV80T5420AB",
+          "title": "Samsung DV80T5420AB",
+          "slug": "discovery-dryer-samsung-dv80t5420ab",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/samsung-black-8kg-smart-ai-heat-pump-dryer-dv80t5420ab",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/samsung-black-8kg-smart-ai-heat-pump-dryer-dv80t5420ab",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/samsung-black-8kg-smart-ai-heat-pump-dryer-dv80t5420ab",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/samsung-black-8kg-smart-ai-heat-pump-dryer-dv80t5420ab",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "DV80T5420AB",
+      "brand": "Samsung",
+      "category": "dryer",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-dryer-samsung-dv80t5420aw",
+      "entry": {
+        "productId": "discovery-dryer-samsung-dv80t5420aw",
+        "category": "dryer",
+        "brand": "Samsung",
+        "model": "DV80T5420AW",
+        "sku": "DV80T5420AW",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-dryer-samsung-dv80t5420aw",
+          "cat": "dryer",
+          "brand": "Samsung",
+          "model": "DV80T5420AW",
+          "displayName": "Samsung DV80T5420AW",
+          "title": "Samsung DV80T5420AW",
+          "slug": "discovery-dryer-samsung-dv80t5420aw",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/samsung-dv80t5420aw-8kg-smart-ai-heat-pump-dryer",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/samsung-dv80t5420aw-8kg-smart-ai-heat-pump-dryer",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/samsung-dv80t5420aw-8kg-smart-ai-heat-pump-dryer",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/samsung-dv80t5420aw-8kg-smart-ai-heat-pump-dryer",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "DV80T5420AW",
+      "brand": "Samsung",
+      "category": "dryer",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-dryer-samsung-dv90t6440lb",
+      "entry": {
+        "productId": "discovery-dryer-samsung-dv90t6440lb",
+        "category": "dryer",
+        "brand": "Samsung",
+        "model": "DV90T6440LB",
+        "sku": "DV90T6440LB",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-dryer-samsung-dv90t6440lb",
+          "cat": "dryer",
+          "brand": "Samsung",
+          "model": "DV90T6440LB",
+          "displayName": "Samsung DV90T6440LB",
+          "title": "Samsung DV90T6440LB",
+          "slug": "discovery-dryer-samsung-dv90t6440lb",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-heat-pump-dryer-dv90t6440lb",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "JB Hi-Fi",
+              "url": "https://www.jbhifi.com.au/products/samsung-dv90t6440lb-9kg-smart-heat-pump-dryer-black",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "JB Hi-Fi",
+            "retailer_key": "jb-hi-fi",
+            "product_url": "https://www.jbhifi.com.au/products/samsung-dv90t6440lb-9kg-smart-heat-pump-dryer-black",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "product_url": "https://www.jbhifi.com.au/products/samsung-dv90t6440lb-9kg-smart-heat-pump-dryer-black",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.jbhifi.com.au/products/samsung-dv90t6440lb-9kg-smart-heat-pump-dryer-black",
+          "source_report": "reports/discovery-pipeline/discovery-jb-hi-fi-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "DV90T6440LB",
+      "brand": "Samsung",
+      "category": "dryer",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-dryer-samsung-dv90t7440bt",
+      "entry": {
+        "productId": "discovery-dryer-samsung-dv90t7440bt",
+        "category": "dryer",
+        "brand": "Samsung",
+        "model": "DV90T7440BT",
+        "sku": "DV90T7440BT",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-dryer-samsung-dv90t7440bt",
+          "cat": "dryer",
+          "brand": "Samsung",
+          "model": "DV90T7440BT",
+          "displayName": "Samsung DV90T7440BT",
+          "title": "Samsung DV90T7440BT",
+          "slug": "discovery-dryer-samsung-dv90t7440bt",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/samsung-dv90t7440bt-sa-9kg-heat-pump-dryer",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/samsung-dv90t7440bt-sa-9kg-heat-pump-dryer",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/samsung-dv90t7440bt-sa-9kg-heat-pump-dryer",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/samsung-dv90t7440bt-sa-9kg-heat-pump-dryer",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "DV90T7440BT",
+      "brand": "Samsung",
+      "category": "dryer",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-dryer-samsung-dv91t6440le",
+      "entry": {
+        "productId": "discovery-dryer-samsung-dv91t6440le",
+        "category": "dryer",
+        "brand": "Samsung",
+        "model": "DV91T6440LE",
+        "sku": "DV91T6440LE",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-dryer-samsung-dv91t6440le",
+          "cat": "dryer",
+          "brand": "Samsung",
+          "model": "DV91T6440LE",
+          "displayName": "Samsung DV91T6440LE",
+          "title": "Samsung DV91T6440LE",
+          "slug": "discovery-dryer-samsung-dv91t6440le",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-heat-pump-dryer-dv91t6440le",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "JB Hi-Fi",
+              "url": "https://www.jbhifi.com.au/products/samsung-dv91t6440le-9kg-smart-heat-pump-dryer",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "JB Hi-Fi",
+            "retailer_key": "jb-hi-fi",
+            "product_url": "https://www.jbhifi.com.au/products/samsung-dv91t6440le-9kg-smart-heat-pump-dryer",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "product_url": "https://www.jbhifi.com.au/products/samsung-dv91t6440le-9kg-smart-heat-pump-dryer",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.jbhifi.com.au/products/samsung-dv91t6440le-9kg-smart-heat-pump-dryer",
+          "source_report": "reports/discovery-pipeline/discovery-jb-hi-fi-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "DV91T6440LE",
+      "brand": "Samsung",
+      "category": "dryer",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-hafin3",
+      "entry": {
+        "productId": "discovery-fridge-samsung-hafin3",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "HAFIN3",
+        "sku": "HAFIN3",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-hafin3",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "HAFIN3",
+          "displayName": "Samsung HAFIN3",
+          "title": "Samsung HAFIN3",
+          "slug": "discovery-fridge-samsung-hafin3",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/samsung-refrigerator-water-filter-hafin3-exp",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/samsung-refrigerator-water-filter-hafin3-exp",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/samsung-refrigerator-water-filter-hafin3-exp",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/samsung-refrigerator-water-filter-hafin3-exp",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "HAFIN3",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srf5300bd",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srf5300bd",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRF5300BD",
+        "sku": "SRF5300BD",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srf5300bd",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRF5300BD",
+          "displayName": "Samsung SRF5300BD",
+          "title": "Samsung SRF5300BD",
+          "slug": "discovery-fridge-samsung-srf5300bd",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-495l-french-door-refrigerator-srf5300bd",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "JB Hi-Fi",
+              "url": "https://www.jbhifi.com.au/products/samsung-srf5300bd-495l-french-door-fridge-matte-black",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/495l-french-door-refrigerator-freezer-drawer-black-srf5300bd",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/495l-french-door-refrigerator-freezer-drawer-black-srf5300bd",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/495l-french-door-refrigerator-freezer-drawer-black-srf5300bd",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/495l-french-door-refrigerator-freezer-drawer-black-srf5300bd",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRF5300BD",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srf7100b",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srf7100b",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRF7100B",
+        "sku": "SRF7100B",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srf7100b",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRF7100B",
+          "displayName": "Samsung SRF7100B",
+          "title": "Samsung SRF7100B",
+          "slug": "discovery-fridge-samsung-srf7100b",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-649l-french-door-refrigerator-srf7100b",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/649l-4-door-french-door-refrigerator-black-srf7100b",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/649l-4-door-french-door-refrigerator-black-srf7100b",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/649l-4-door-french-door-refrigerator-black-srf7100b",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/649l-4-door-french-door-refrigerator-black-srf7100b",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRF7100B",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srf7100s",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srf7100s",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRF7100S",
+        "sku": "SRF7100S",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srf7100s",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRF7100S",
+          "displayName": "Samsung SRF7100S",
+          "title": "Samsung SRF7100S",
+          "slug": "discovery-fridge-samsung-srf7100s",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/649l-4-door-french-door-refrigerator-silver-srf7100s",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/649l-4-door-french-door-refrigerator-silver-srf7100s",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/649l-4-door-french-door-refrigerator-silver-srf7100s",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/649l-4-door-french-door-refrigerator-silver-srf7100s",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRF7100S",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srf7300ba",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srf7300ba",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRF7300BA",
+        "sku": "SRF7300BA",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srf7300ba",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRF7300BA",
+          "displayName": "Samsung SRF7300BA",
+          "title": "Samsung SRF7300BA",
+          "slug": "discovery-fridge-samsung-srf7300ba",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/samsung-srf7300ba-649l-french-door-fridge",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/samsung-srf7300ba-649l-french-door-fridge",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/samsung-srf7300ba-649l-french-door-fridge",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/samsung-srf7300ba-649l-french-door-fridge",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRF7300BA",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "fridge-manual-samsung-srf7300bss",
+      "entry": {
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRF7300BSS",
+        "evidence": [
+          {
+            "type": "spec_sheet",
+            "status": "candidate",
+            "source_url": "https://images.samsung.com/is/content/samsung/assets/nz/ha/guides/fridge/SRF7300SA.pdf",
+            "local_path": "samsung/srf7300bss-srf7300sa-guide.pdf",
+            "verified_at": "2026-05-09",
+            "notes": "Official Samsung-hosted SRF7300SA guide seeded for the SRF7300 family. Exact SRF7300BSS official PDF was not found; keep candidate status until extraction/manual review confirms applicability."
+          }
+        ]
+      },
+      "sku": "SRF7300BSS",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srf7400bb",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srf7400bb",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRF7400BB",
+        "sku": "SRF7400BB",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srf7400bb",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRF7400BB",
+          "displayName": "Samsung SRF7400BB",
+          "title": "Samsung SRF7400BB",
+          "slug": "discovery-fridge-samsung-srf7400bb",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-648l-french-door-refrigerator-srf7400bb",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/648l-non-plumbed-french-door-refrigerator-with-internal-beverage-centretm-srf7400bb",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/648l-non-plumbed-french-door-refrigerator-with-internal-beverage-centretm-srf7400bb",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/648l-non-plumbed-french-door-refrigerator-with-internal-beverage-centretm-srf7400bb",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/648l-non-plumbed-french-door-refrigerator-with-internal-beverage-centretm-srf7400bb",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRF7400BB",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srf7500sb",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srf7500sb",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRF7500SB",
+        "sku": "SRF7500SB",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srf7500sb",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRF7500SB",
+          "displayName": "Samsung SRF7500SB",
+          "title": "Samsung SRF7500SB",
+          "slug": "discovery-fridge-samsung-srf7500sb",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-648l-french-door-refrigerator-srf7500sb",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "JB Hi-Fi",
+              "url": "https://www.jbhifi.com.au/products/samsung-srf7500sb-648l-french-4-door-fridge-with-beverage-centre-stainless-steel",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/samsung-srf7500sb-648l-french-door-fridge",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/samsung-srf7500sb-648l-french-door-fridge",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/samsung-srf7500sb-648l-french-door-fridge",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/samsung-srf7500sb-648l-french-door-fridge",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRF7500SB",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srf9900bfh",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srf9900bfh",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRF9900BFH",
+        "sku": "SRF9900BFH",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srf9900bfh",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRF9900BFH",
+          "displayName": "Samsung SRF9900BFH",
+          "title": "Samsung SRF9900BFH",
+          "slug": "discovery-fridge-samsung-srf9900bfh",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-bespoke-809l-ai-family-hub-refrigerator-srf9900bfh",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "The Good Guys",
+            "retailer_key": "the-good-guys",
+            "product_url": "https://www.thegoodguys.com.au/samsung-bespoke-809l-ai-family-hub-refrigerator-srf9900bfh",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "product_url": "https://www.thegoodguys.com.au/samsung-bespoke-809l-ai-family-hub-refrigerator-srf9900bfh",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.thegoodguys.com.au/samsung-bespoke-809l-ai-family-hub-refrigerator-srf9900bfh",
+          "source_report": "reports/discovery-pipeline/discovery-the-good-guys-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRF9900BFH",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srfx7600w",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srfx7600w",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRFX7600W",
+        "sku": "SRFX7600W",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srfx7600w",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRFX7600W",
+          "displayName": "Samsung SRFX7600W",
+          "title": "Samsung SRFX7600W",
+          "slug": "discovery-fridge-samsung-srfx7600w",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-648l-french-door-refrigerator-srfx7600w",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "The Good Guys",
+            "retailer_key": "the-good-guys",
+            "product_url": "https://www.thegoodguys.com.au/samsung-648l-french-door-refrigerator-srfx7600w",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "The Good Guys",
+          "retailer_key": "the-good-guys",
+          "product_url": "https://www.thegoodguys.com.au/samsung-648l-french-door-refrigerator-srfx7600w",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.thegoodguys.com.au/samsung-648l-french-door-refrigerator-srfx7600w",
+          "source_report": "reports/discovery-pipeline/discovery-the-good-guys-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRFX7600W",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srl4200s",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srl4200s",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRL4200S",
+        "sku": "SRL4200S",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srl4200s",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRL4200S",
+          "displayName": "Samsung SRL4200S",
+          "title": "Samsung SRL4200S",
+          "slug": "discovery-fridge-samsung-srl4200s",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-427l-bottom-mount-refrigerator-srl4200s",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "JB Hi-Fi",
+              "url": "https://www.jbhifi.com.au/products/samsung-srl4200s-427l-bottom-mount-fridge-silver",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/silver-427l-bottom-mount-srl4200s",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/silver-427l-bottom-mount-srl4200s",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/silver-427l-bottom-mount-srl4200s",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/silver-427l-bottom-mount-srl4200s",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRL4200S",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srl446dls",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srl446dls",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRL446DLS",
+        "sku": "SRL446DLS",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srl446dls",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRL446DLS",
+          "displayName": "Samsung SRL446DLS",
+          "title": "Samsung SRL446DLS",
+          "slug": "discovery-fridge-samsung-srl446dls",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/samsung-srl446dls-424l-bottom-mount-fridge",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/samsung-srl446dls-424l-bottom-mount-fridge",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/samsung-srl446dls-424l-bottom-mount-fridge",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/samsung-srl446dls-424l-bottom-mount-fridge",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRL446DLS",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srl456ls",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srl456ls",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRL456LS",
+        "sku": "SRL456LS",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srl456ls",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRL456LS",
+          "displayName": "Samsung SRL456LS",
+          "title": "Samsung SRL456LS",
+          "slug": "discovery-fridge-samsung-srl456ls",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/samsung-srl456ls-458l-bottom-mount-fridge",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/samsung-srl456ls-458l-bottom-mount-fridge",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/samsung-srl456ls-458l-bottom-mount-fridge",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/samsung-srl456ls-458l-bottom-mount-fridge",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRL456LS",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srl4600bd",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srl4600bd",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRL4600BD",
+        "sku": "SRL4600BD",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srl4600bd",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRL4600BD",
+          "displayName": "Samsung SRL4600BD",
+          "title": "Samsung SRL4600BD",
+          "slug": "discovery-fridge-samsung-srl4600bd",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "JB Hi-Fi",
+              "url": "https://www.jbhifi.com.au/products/samsung-srl4600bd-455l-bottom-mount-refrigerator-black",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "JB Hi-Fi",
+            "retailer_key": "jb-hi-fi",
+            "product_url": "https://www.jbhifi.com.au/products/samsung-srl4600bd-455l-bottom-mount-refrigerator-black",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "JB Hi-Fi",
+          "retailer_key": "jb-hi-fi",
+          "product_url": "https://www.jbhifi.com.au/products/samsung-srl4600bd-455l-bottom-mount-refrigerator-black",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.jbhifi.com.au/products/samsung-srl4600bd-455l-bottom-mount-refrigerator-black",
+          "source_report": "reports/discovery-pipeline/discovery-jb-hi-fi-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRL4600BD",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srl4600s",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srl4600s",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRL4600S",
+        "sku": "SRL4600S",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srl4600s",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRL4600S",
+          "displayName": "Samsung SRL4600S",
+          "title": "Samsung SRL4600S",
+          "slug": "discovery-fridge-samsung-srl4600s",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "JB Hi-Fi",
+              "url": "https://www.jbhifi.com.au/products/samsung-srl4600s-458l-bottom-mount-fridge-silver",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/458l-smart-bottom-mount-refrigerator-silver-srl4600s",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/458l-smart-bottom-mount-refrigerator-silver-srl4600s",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/458l-smart-bottom-mount-refrigerator-silver-srl4600s",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/458l-smart-bottom-mount-refrigerator-silver-srl4600s",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRL4600S",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srs6100b",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srs6100b",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRS6100B",
+        "sku": "SRS6100B",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srs6100b",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRS6100B",
+          "displayName": "Samsung SRS6100B",
+          "title": "Samsung SRS6100B",
+          "slug": "discovery-fridge-samsung-srs6100b",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/655l-side-by-side-refrigerator-spacemax-black-srs6100b",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/655l-side-by-side-refrigerator-spacemax-black-srs6100b",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/655l-side-by-side-refrigerator-spacemax-black-srs6100b",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/655l-side-by-side-refrigerator-spacemax-black-srs6100b",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRS6100B",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srs6100s",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srs6100s",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRS6100S",
+        "sku": "SRS6100S",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srs6100s",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRS6100S",
+          "displayName": "Samsung SRS6100S",
+          "title": "Samsung SRS6100S",
+          "slug": "discovery-fridge-samsung-srs6100s",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "The Good Guys",
+              "url": "https://www.thegoodguys.com.au/samsung-655l-side-by-side-refrigerator-srs6100s",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "JB Hi-Fi",
+              "url": "https://www.jbhifi.com.au/products/samsung-srs6100s-655l-smart-side-by-side-refrigerator",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            },
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/silver-655l-side-by-side-srs6100s",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/silver-655l-side-by-side-srs6100s",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/silver-655l-side-by-side-srs6100s",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/silver-655l-side-by-side-srs6100s",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRS6100S",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srs6300b",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srs6300b",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRS6300B",
+        "sku": "SRS6300B",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srs6300b",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRS6300B",
+          "displayName": "Samsung SRS6300B",
+          "title": "Samsung SRS6300B",
+          "slug": "discovery-fridge-samsung-srs6300b",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/634l-sbs-with-water-srs6300b",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/634l-sbs-with-water-srs6300b",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/634l-sbs-with-water-srs6300b",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/634l-sbs-with-water-srs6300b",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRS6300B",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srs6500ba",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srs6500ba",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRS6500BA",
+        "sku": "SRS6500BA",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srs6500ba",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRS6500BA",
+          "displayName": "Samsung SRS6500BA",
+          "title": "Samsung SRS6500BA",
+          "slug": "discovery-fridge-samsung-srs6500ba",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/615l-side-by-side-refrigerator-ai-home-black-srs6500ba",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/615l-side-by-side-refrigerator-ai-home-black-srs6500ba",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/615l-side-by-side-refrigerator-ai-home-black-srs6500ba",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/615l-side-by-side-refrigerator-ai-home-black-srs6500ba",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRS6500BA",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-fridge-samsung-srs6800bfh",
+      "entry": {
+        "productId": "discovery-fridge-samsung-srs6800bfh",
+        "category": "fridge",
+        "brand": "Samsung",
+        "model": "SRS6800BFH",
+        "sku": "SRS6800BFH",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-fridge-samsung-srs6800bfh",
+          "cat": "fridge",
+          "brand": "Samsung",
+          "model": "SRS6800BFH",
+          "displayName": "Samsung SRS6800BFH",
+          "title": "Samsung SRS6800BFH",
+          "slug": "discovery-fridge-samsung-srs6800bfh",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/615l-side-by-side-refrigerator-family-hub-black-srs6800bfh",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/615l-side-by-side-refrigerator-family-hub-black-srs6800bfh",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/615l-side-by-side-refrigerator-family-hub-black-srs6800bfh",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/615l-side-by-side-refrigerator-family-hub-black-srs6800bfh",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "SRS6800BFH",
+      "brand": "Samsung",
+      "category": "fridge",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-washing-machine-samsung-wa12a8376gw",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-wa12a8376gw",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WA12A8376GW",
+        "sku": "WA12A8376GW",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-wa12a8376gw",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WA12A8376GW",
+          "displayName": "Samsung WA12A8376GW",
+          "title": "Samsung WA12A8376GW",
+          "slug": "discovery-washing-machine-samsung-wa12a8376gw",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/samsung-12kg-steam-bubble-top-load-washer-wa12a8376gw",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/samsung-12kg-steam-bubble-top-load-washer-wa12a8376gw",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/samsung-12kg-steam-bubble-top-load-washer-wa12a8376gw",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/samsung-12kg-steam-bubble-top-load-washer-wa12a8376gw",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WA12A8376GW",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww85t3040ww",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww85t3040ww",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW85T3040WW",
+        "sku": "WW85T3040WW",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww85t3040ww",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW85T3040WW",
+          "displayName": "Samsung WW85T3040WW",
+          "title": "Samsung WW85T3040WW",
+          "slug": "discovery-washing-machine-samsung-ww85t3040ww",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/samsung-ww85t3040ww-8-5kg-front-load-washer",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/samsung-ww85t3040ww-8-5kg-front-load-washer",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/samsung-ww85t3040ww-8-5kg-front-load-washer",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/samsung-ww85t3040ww-8-5kg-front-load-washer",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW85T3040WW",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww85t504dae",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww85t504dae",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW85T504DAE",
+        "sku": "WW85T504DAE",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww85t504dae",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW85T504DAE",
+          "displayName": "Samsung WW85T504DAE",
+          "title": "Samsung WW85T504DAE",
+          "slug": "discovery-washing-machine-samsung-ww85t504dae",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/samsung-ww85t504dae-8-5kg-bubblewash-smart-ai-front-load-washer",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/samsung-ww85t504dae-8-5kg-bubblewash-smart-ai-front-load-washer",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/samsung-ww85t504dae-8-5kg-bubblewash-smart-ai-front-load-washer",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/samsung-ww85t504dae-8-5kg-bubblewash-smart-ai-front-load-washer",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW85T504DAE",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    },
+    {
+      "key": "discovery-washing-machine-samsung-ww90t504daw",
+      "entry": {
+        "productId": "discovery-washing-machine-samsung-ww90t504daw",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW90T504DAW",
+        "sku": "WW90T504DAW",
+        "status": "needs_source",
+        "has_pdf_evidence": false,
+        "seeded_at": "2026-05-09",
+        "product": {
+          "id": "discovery-washing-machine-samsung-ww90t504daw",
+          "cat": "washing_machine",
+          "brand": "Samsung",
+          "model": "WW90T504DAW",
+          "displayName": "Samsung WW90T504DAW",
+          "title": "Samsung WW90T504DAW",
+          "slug": "discovery-washing-machine-samsung-ww90t504daw",
+          "w": null,
+          "h": null,
+          "d": null,
+          "unavailable": false,
+          "retailers": [
+            {
+              "n": "Bing Lee",
+              "url": "https://www.binglee.com.au/products/white-9kg-front-load-washer-ww90t504daw",
+              "p": null,
+              "verified_at": "2026-05-09",
+              "source": "sitemap"
+            }
+          ],
+          "discovery": {
+            "retailer": "Bing Lee",
+            "retailer_key": "bing-lee",
+            "product_url": "https://www.binglee.com.au/products/white-9kg-front-load-washer-ww90t504daw",
+            "source": "sitemap"
+          }
+        },
+        "discovery": {
+          "retailer": "Bing Lee",
+          "retailer_key": "bing-lee",
+          "product_url": "https://www.binglee.com.au/products/white-9kg-front-load-washer-ww90t504daw",
+          "source": "sitemap",
+          "source_discovery_url": "https://www.binglee.com.au/products/white-9kg-front-load-washer-ww90t504daw",
+          "source_report": "reports/discovery-pipeline/discovery-bing-lee-20260509.json"
+        },
+        "evidence": []
+      },
+      "sku": "WW90T504DAW",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "reason": "PDP Not Found / source missing",
+      "error": "Samsung official fetch failed with HTTP 404"
+    }
+  ],
+  "byCat": {
+    "dryer": 2,
+    "fridge": 1,
+    "washing_machine": 10
+  },
+  "failByReason": {
+    "Missing Dimensions Section": 29,
+    "Missing Clearance Section": 1,
+    "PDP Not Found / source missing": 30
+  }
+}
