@@ -2,6 +2,7 @@ import { displayBrandName } from './brand-utils.js';
 import { renderFitScoreCardBlock } from './fit-score-ring.js';
 import { renderProductThumb } from './product-thumb.js';
 import { isRetailerProductPageUrl } from './retailer-modal.js';
+import { computeBreakdown } from './score-breakdown.js';
 
 function escHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -235,7 +236,9 @@ export function buildFitHealthHtml(product) {
 
 function buildFitScoreHtml(product) {
   if (product?.fitScoreNumeric === null || product?.fitScoreNumeric === undefined) return '';
-  return renderFitScoreCardBlock(product.fitScoreNumeric);
+  return renderFitScoreCardBlock(product.fitScoreNumeric, {
+    breakdown: computeBreakdown(product)
+  });
 }
 
 function normalizeAxisGapEntry(entry = {}) {
