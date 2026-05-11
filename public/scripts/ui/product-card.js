@@ -1,4 +1,5 @@
 import { displayBrandName } from './brand-utils.js';
+import { renderFitScoreCardBlock } from './fit-score-ring.js';
 import { renderProductThumb } from './product-thumb.js';
 import { isRetailerProductPageUrl } from './retailer-modal.js';
 
@@ -230,6 +231,11 @@ export function buildFitHealthHtml(product) {
       <span class="fit-help-tooltip" role="tooltip">${escHtml(copy.help)}</span>
     </details>
   </div>`;
+}
+
+function buildFitScoreHtml(product) {
+  if (product?.fitScoreNumeric === null || product?.fitScoreNumeric === undefined) return '';
+  return renderFitScoreCardBlock(product.fitScoreNumeric);
 }
 
 function normalizeAxisGapEntry(entry = {}) {
@@ -672,7 +678,7 @@ function buildZoneA(product, deps = {}) {
       <div class="card-zone-thumb-half">${renderProductThumb(product)}</div>
       ${hasUsableCavity(cavity) ? `<div class="card-zone-wire-half">${renderMiniFrontWireframe(product, cavity)}</div>` : ''}
     </div>
-    <div class="card-zone-fit">${buildFitHealthHtml(product)}</div>
+    <div class="card-zone-fit">${buildFitHealthHtml(product)}${buildFitScoreHtml(product)}</div>
   </div>`;
 }
 
