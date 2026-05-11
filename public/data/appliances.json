@@ -4257,12 +4257,12 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "direct_url": "https://www.fisherpaykel.com/nz/dishwashing/integrated-dishwashers/series-9-integrated-tall-dishwasher-dw60ut4i2-82440.html",
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
@@ -4317,11 +4317,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw567152d4/QRG/AU/QRG-AU-82439.pdf",
@@ -4331,7 +4331,7 @@
     {
       "id": "dishwasher-adw1368",
       "cat": "dishwasher",
-      "brand": "FISHER & PAYKEL",
+      "brand": "Fisher & Paykel",
       "model": "DW60U4EI3",
       "w": 600,
       "h": 820,
@@ -4348,7 +4348,15 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/8/6/3/6/86365216a50d1ad79e26da3b3ef26b6c5fbf82e0_QRG_AU_85731_DW60U4EI3.pdf",
+        "verified_at": "2026-05-09"
+      },
+      "displayName": "Fisher & Paykel Dishwasher",
+      "readableSpec": "Built-in Dishwasher",
+      "priorityScore": 66
     },
     {
       "id": "dishwasher-adw1329",
@@ -4766,11 +4774,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Haier Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 54,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw154d412d/QRG/AU/QRG-AU-61659.pdf",
@@ -4818,11 +4826,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Haier Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw7db79904/QRG/AU/QRG-AU-61616.pdf",
@@ -4870,11 +4878,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Haier Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf",
@@ -4915,11 +4923,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Haier Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 54,
+      "priorityScore": 92,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwa742cfeb/QRG/AU/QRG-AU-61615.pdf",
@@ -4953,11 +4961,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Haier Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 54,
+      "priorityScore": 72,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw8aa1b475/QRG/AU/QRG-AU-61611.pdf",
@@ -5073,11 +5081,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Hisense Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 54,
+      "priorityScore": 92,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dtc-aus-api.hisense.com/medias/HSBE15FS-SPEC.pdf?context=bWFzdGVyfG1hbnVhbHwxMTkyNzN8YXBwbGljYXRpb24vcGRmfGFETXpMMmhqT1M4NE9ESTJORGN4TlRjNU5qYzRMMGhUUWtVeE5VWlRMVk5RUlVNdWNHUm18YjdhMTdkYTgxYzZkZjhmYTBhZGMyNzEyM2ZiOWQwZmViYjZlMzlkMGEwOTc0OTgxN2U3MWFlZDcxYmYzYmE3Yw",
@@ -5136,11 +5144,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Hisense Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 54,
+      "priorityScore": 72,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dtc-aus-api.hisense.com/medias/HSCM15FS-Spec.pdf?context=bWFzdGVyfE1hbnVhbHwyMjA2NzV8YXBwbGljYXRpb24vcGRmfGFESTJMMmd6T1M4NE9EQTFOVFl6T1RVM01qYzRMMGhUUTAweE5VWlRMVk53WldNdWNHUm18NGRjYzgwZjhkMDdhN2M2ZWM4ZmY0YzE5MGI4YzIyMmYxYmUzYzBkNjdmNTY3MzAyNWYzMzBkNjhkYzRlNDg3NQ",
@@ -6007,11 +6015,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "LG QuadWash",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 54,
+      "priorityScore": 90,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=jgKGpTUBKxpnjNpGPXQzUA",
@@ -6671,7 +6679,7 @@
     {
       "id": "dishwasher-adw0932",
       "cat": "dishwasher",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "G 4980 Vi",
       "w": 598,
       "h": 805,
@@ -6689,14 +6697,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE AutoOpen",
+      "displayName": "Miele AutoOpen",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "dishwasher-adw1264",
       "cat": "dishwasher",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "G 5000",
       "w": 598,
       "h": 805,
@@ -6714,14 +6722,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE AutoOpen",
+      "displayName": "Miele AutoOpen",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "dishwasher-adw1265",
       "cat": "dishwasher",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "G 5000 SC",
       "w": 598,
       "h": 805,
@@ -6739,14 +6747,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE AutoOpen",
+      "displayName": "Miele AutoOpen",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "dishwasher-adw1266",
       "cat": "dishwasher",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "G 5210 SC",
       "w": 598,
       "h": 845,
@@ -6765,14 +6773,14 @@
       "unavailable": true,
       "inferred_door_swing": true,
       "direct_url": "https://www.harveynorman.com.au/miele-g-5210-sc-active-plus-freestanding-dishwasher-clean-steel.html",
-      "displayName": "MIELE AutoOpen",
+      "displayName": "Miele AutoOpen",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "dishwasher-adw1267",
       "cat": "dishwasher",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "G 5430 SCi",
       "w": 448,
       "h": 805,
@@ -6790,14 +6798,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE AutoOpen",
+      "displayName": "Miele AutoOpen",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "dishwasher-adw0854",
       "cat": "dishwasher",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "G 6999 SCVi XXL",
       "w": 598,
       "h": 910,
@@ -6815,14 +6823,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE AutoOpen",
+      "displayName": "Miele AutoOpen",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "dishwasher-adw0785",
       "cat": "dishwasher",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "G 6xxx",
       "w": 598,
       "h": 870,
@@ -6840,14 +6848,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE AutoOpen",
+      "displayName": "Miele AutoOpen",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "dishwasher-adw1093",
       "cat": "dishwasher",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "G 7130 SC",
       "w": 598,
       "h": 845,
@@ -6865,14 +6873,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE AutoOpen",
+      "displayName": "Miele AutoOpen",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "dishwasher-adw1090",
       "cat": "dishwasher",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "G 7185 SCVi XXL",
       "w": 598,
       "h": 845,
@@ -6890,14 +6898,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE AutoOpen",
+      "displayName": "Miele AutoOpen",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "dishwasher-adw1094",
       "cat": "dishwasher",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "G 7719 SCi XXL",
       "w": 598,
       "h": 845,
@@ -6915,14 +6923,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE AutoOpen",
+      "displayName": "Miele AutoOpen",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "dishwasher-adw0888",
       "cat": "dishwasher",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "G7314SCU",
       "w": 598,
       "h": 845,
@@ -6940,14 +6948,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE AutoOpen",
+      "displayName": "Miele AutoOpen",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "dishwasher-adw0884",
       "cat": "dishwasher",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "G7969SCVi",
       "w": 598,
       "h": 845,
@@ -6965,9 +6973,9 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE AutoOpen",
+      "displayName": "Miele AutoOpen",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "dishwasher-adw0967",
@@ -9162,11 +9170,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 54,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/3/0/6/6/3066951a7ccf5fafcdc3e0eeb91d98ade3945e25_WSF6604WB_Westinghouse_User_Manual.pdf",
@@ -9214,11 +9222,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 54,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/public/manuals/WSF6606X-Westinghouse-Specifications-Sheet.pdf",
@@ -9718,7 +9726,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "CHiQ Dryer",
+      "readableSpec": "Condenser",
+      "priorityScore": 0
     },
     {
       "id": "dryer-acd0672",
@@ -9777,11 +9788,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Electrolux Dryer",
       "readableSpec": "8kg Heat Pump",
-      "priorityScore": 66,
+      "priorityScore": 84,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/public/manuals/EDH803BEWA-Electrolux-Specifications-Sheet.pdf",
@@ -9830,11 +9841,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Electrolux Dryer",
       "readableSpec": "Condenser",
-      "priorityScore": 42,
+      "priorityScore": 90,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/d/7/e/2/d7e29d214f2e4ae675965724e2bfae2f462549a0_Electrolux_EDV605H3WC_Factsheet.pdf",
@@ -9883,11 +9894,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Electrolux Dryer",
       "readableSpec": "Condenser",
-      "priorityScore": 42,
+      "priorityScore": 90,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/b/5/7/e/b57e4730d952fa76093dfb152bc519c36d67fd23_Electrolux_EDV705H3WC_Factsheet.pdf",
@@ -10449,11 +10460,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Dryer",
       "readableSpec": "Condenser",
-      "priorityScore": 66,
+      "priorityScore": 84,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf2923d5c/QRG/AU/QRG-AU-26081.pdf",
@@ -10559,7 +10570,15 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/5/d/d/9/5dd96be349bb36c0927ca30594a37e9e6d60bb2b_HDV50E1_Haier_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09"
+      },
+      "displayName": "Haier Dryer",
+      "readableSpec": "Vented",
+      "priorityScore": 42
     },
     {
       "id": "dryer-acd0871",
@@ -13298,7 +13317,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
@@ -13843,7 +13862,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
@@ -14618,7 +14637,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
@@ -14684,7 +14703,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
@@ -19628,11 +19647,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw979a5de4/QRG/AU/QRG-AU-26619.pdf",
@@ -19688,11 +19707,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw999e7360/QRG/AU/QRG-AU-26621.pdf",
@@ -19838,11 +19857,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48,
+      "priorityScore": 84,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/kqhc7pf72fqkjx79msg6pt7/FP-DataSheet-RF522ADX5-FreestandingFrenchDoorFridgeFreezer-AU-NZ-90001329A.pdf",
@@ -19943,11 +19962,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/cbbn79vcvrvc73p85qfgzj9/FP-DataSheet-RF605QDVX2-FreestandingQuadDoorFridgeFreezer-AU-90001458A.pdf",
@@ -20003,11 +20022,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw16a75371/QRG/AU/QRG-AU-26504.pdf",
@@ -20056,11 +20075,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw465c28eb/QRG/AU/QRG-AU-26616.pdf",
@@ -20117,11 +20136,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "726L French-Door",
-      "priorityScore": 54,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4f4ee4ee/QRG/AU/QRG-AU-26614.pdf",
@@ -21708,11 +21727,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48,
+      "priorityScore": 84,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw366ab621/QRG/AU/QRG-AU-62231.pdf",
@@ -22102,11 +22121,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 66,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw23400534/QRG/AU/QRG-AU-62271.pdf",
@@ -22155,11 +22174,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 66,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwd0f727cb/QRG/AU/QRG-AU-62269.pdf",
@@ -22241,11 +22260,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw5653a84c/QRG/AU/QRG-AU-62198.pdf",
@@ -22325,11 +22344,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 66,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw57e105ea/QRG/AU/QRG-AU-62293.pdf",
@@ -22459,7 +22478,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "520L French-Door",
@@ -22650,11 +22669,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54,
+      "priorityScore": 90,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw31058f38/QRG/AU/QRG-AU-62401.pdf",
@@ -23888,11 +23907,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dtc-aus-api.hisense.com/medias/HRBF126-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDU4NTN8YXBwbGljYXRpb24vcGRmfGFESTNMMmd3TXk4NE9ETXpPREV4TlRjNE9URXdMMGhTUWtZeE1qWXRVM0JsWXk1d1pHWXw4NWU4M2Y1YjExODUyZGRmMjc4ZjdmY2QwOGJkMTE4NjUxOGRjMzA4MWE0ZTQ4MjU1ZjJhZGRjZDhkZGEzYzY3",
@@ -23991,11 +24010,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54,
+      "priorityScore": 90,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://hisense.co.nz/wp-content/uploads/2025/08/HRBF46-Consumer-Specs.pdf",
@@ -24676,11 +24695,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dtc-aus-api.hisense.com/medias/HRCD640TBW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNjYzMDR8YXBwbGljYXRpb24vcGRmfGFERm1MMmhsTXk4NE9EQTBNVEF3T0RZMk1EYzRMMGhTUTBRMk5EQlVRbGN0VTNCbFl5NXdaR1l8MGRhNTM3OGQyMDRhMTM4MzA5YmQyMTA0ZTIzZDVjMDNjYzYxMzBhZGMzNmFhNGJlYTYwYTM2MGZiYTRhYmYyMw",
@@ -25361,11 +25380,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 54,
+      "priorityScore": 90,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dtc-aus-api.hisense.com/medias/HRSBS632BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNjU5NTF8YXBwbGljYXRpb24vcGRmfGFHWXhMMmhsWXk4NE9EQTBNRGs1TkRnNU9ESXlMMGhTVTBKVE5qTXlRbGN0VTNCbFl5NXdaR1l8YWI1ZGFmNDA2MDUzN2ViNWY0ZWVlMGU5MTlhZThlMDk1NDQyZmU4NTQ5N2IwZTg5NmNmNGNmZWIxNGQ5MTk2MA",
@@ -25535,11 +25554,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dtc-aus-api.hisense.com/medias/HRTF206-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDI1MDh8YXBwbGljYXRpb24vcGRmfGFHSTJMMmd3Wmk4NE9EQTBNVEEzTXpVME1UUXlMMGhTVkVZeU1EWXRVM0JsWXk1d1pHWXw5MDY2ZmY5ODYyNWFkNmZmY2NlMjM5Yzg5YzY4YWFmM2RkNGJmYWIwNzhhNmE3YmZkM2UyZTMzYjBmZDU3Nzdi",
@@ -25588,10 +25607,10 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dtc-aus-api.hisense.com/medias/HRTF325-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzgzOTJ8YXBwbGljYXRpb24vcGRmfGFETTBMMmczWXk4NE9EQTBNRGs0TWpjM05EQTJMMGhTVkVZek1qVXRVM0JsWXk1d1pHWXw5NDkzMGRlMDk4ODc5ZmU0NWMwNDRjYjkxYmE4NWZhODk4ZDY2NmE5ZmFjNmU3Yzk5MjNmNjc4MzdkNjRhYTFh",
@@ -25836,11 +25855,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48,
+      "priorityScore": 84,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dtc-aus-api.hisense.com/medias/HRVF240-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2MjQ4OXxhcHBsaWNhdGlvbi9wZGZ8YUdKaUwyZzBaaTg0T0RBME1URXhOamM1TlRFNEwwaFNWa1l5TkRBdFUzQmxZeTV3WkdZfGU2MmY1MjQ4NzM5YTE3Y2FiMDcwYzNhYTc5OTBjYjE0OTVhNTA3MjhmOGIzNTYxNDRiMzRlOTE5NDg3OTFlNzc",
@@ -25922,11 +25941,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dtc-aus-api.hisense.com/medias/HRVF384S-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNjM3OTB8YXBwbGljYXRpb24vcGRmfGFHUTJMMmcyWmk4NE9EQTBNVEEyTmpBd05EYzRMMGhTVmtZek9EUlRMVk53WldNdWNHUm18ZDExOGRhYjc5NWVlMmQ1YTY5YjVlZTlmODIzOTQyNjRkM2FlOTFmMjY5Nzk1YTYyN2VhZjYyYjFjOThhY2U1Mw",
@@ -30115,11 +30134,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=e90biPiGzIqrNrTcShSiIA",
@@ -30386,11 +30405,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf",
@@ -30459,11 +30478,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60,
+      "priorityScore": 96,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
@@ -30571,11 +30590,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
@@ -30958,11 +30977,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 54,
+      "priorityScore": 72,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TCA8L39ERMmdd8YMLQNkbg",
@@ -33107,7 +33126,7 @@
     {
       "id": "fridge-arf3910",
       "cat": "fridge",
-      "brand": "LIEBHERR",
+      "brand": "Liebherr",
       "model": "Msdh 9012",
       "w": 906,
       "h": 1805,
@@ -33125,7 +33144,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Liebherr Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 45
     },
     {
       "id": "fridge-arf3042",
@@ -34456,7 +34478,7 @@
     {
       "id": "fridge-arf3053",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "F 2671 Vi",
       "w": 610,
       "h": 2134,
@@ -34475,14 +34497,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 48
     },
     {
       "id": "fridge-arf2347",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "FN 28262ws",
       "w": 600,
       "h": 1852,
@@ -34501,14 +34523,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3882",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "FNS 37402 i",
       "w": 560,
       "h": 1772,
@@ -34527,14 +34549,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 48
     },
     {
       "id": "fridge-arf2967",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "FNS 4382 E edt/cs",
       "w": 597,
       "h": 1855,
@@ -34553,14 +34575,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf3144",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "FNS 4782 E bst",
       "w": 597,
       "h": 1855,
@@ -34579,14 +34601,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf2969",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "FNS 4782 E edt/cs",
       "w": 597,
       "h": 1855,
@@ -34605,14 +34627,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf2918",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "FNS 7740 F",
       "w": 560,
       "h": 1772,
@@ -34631,14 +34653,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf2919",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "FNS 7794 E",
       "w": 560,
       "h": 1772,
@@ -34657,14 +34679,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3058",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "K 2601 Vi",
       "w": 610,
       "h": 2134,
@@ -34683,14 +34705,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf3048",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "K 2802 Vi",
       "w": 610,
       "h": 2134,
@@ -34709,14 +34731,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf2365",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "K 28202D ws",
       "w": 600,
       "h": 1852,
@@ -34735,14 +34757,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3884",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "K 31222 Ui",
       "w": 600,
       "h": 820,
@@ -34761,14 +34783,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf3055",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KF 2981 Vi",
       "w": 915,
       "h": 2134,
@@ -34787,14 +34809,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Pure",
+      "displayName": "Miele Pure",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf2364",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KFN 28032D ws",
       "w": 600,
       "h": 1817,
@@ -34813,14 +34835,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Active",
+      "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf2978",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KFN 4375 DD edt/cs",
       "w": 597,
       "h": 1855,
@@ -34839,14 +34861,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Active",
+      "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf3373",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KFN 4776 ED",
       "w": 747,
       "h": 1855,
@@ -34865,14 +34887,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Active",
+      "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf2350",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KFNS 37432 iD",
       "w": 560,
       "h": 1772,
@@ -34891,14 +34913,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Active",
+      "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf2360",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KFNS 37452 iDE",
       "w": 560,
       "h": 1772,
@@ -34917,14 +34939,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Active",
+      "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf2358",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KFNS 37682 iD",
       "w": 560,
       "h": 1772,
@@ -34943,14 +34965,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Active",
+      "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf2351",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KFNS 37692 iDE",
       "w": 560,
       "h": 1772,
@@ -34969,14 +34991,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Active",
+      "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 48
     },
     {
       "id": "fridge-arf3030",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KFNS 7734 D",
       "w": 560,
       "h": 1772,
@@ -34995,14 +35017,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Active",
+      "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf2695",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KFNS 7784 D",
       "w": 560,
       "h": 1772,
@@ -35021,14 +35043,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Active",
+      "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf2693",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KFNS 7785 D",
       "w": 560,
       "h": 1772,
@@ -35047,14 +35069,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Active",
+      "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf2694",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KFNS 7795 D",
       "w": 560,
       "h": 1772,
@@ -35073,14 +35095,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Active",
+      "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf3883",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KS 37422 iD",
       "w": 560,
       "h": 1772,
@@ -35098,14 +35120,14 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "fridge-arf2363",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KS 37472 iD",
       "w": 560,
       "h": 1772,
@@ -35123,14 +35145,14 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "fridge-arf2975",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KS 4383 ED edt/cs",
       "w": 597,
       "h": 1855,
@@ -35149,14 +35171,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf3145",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KS 4783 ED bst",
       "w": 597,
       "h": 1855,
@@ -35175,14 +35197,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf2976",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KS 4783 ED edt/cs",
       "w": 597,
       "h": 1855,
@@ -35201,14 +35223,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf2991",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KS 7743 E",
       "w": 560,
       "h": 1772,
@@ -35226,14 +35248,14 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf2992",
       "cat": "fridge",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "KS 7793 D",
       "w": 560,
       "h": 1772,
@@ -35251,9 +35273,9 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "displayName": "MIELE Fridge",
+      "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 36
+      "priorityScore": 66
     },
     {
       "id": "fridge-arf2909",
@@ -42620,7 +42642,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Teco Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 18
     },
     {
       "id": "fridge-arf2723",
@@ -44302,12 +44327,12 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "direct_url": "https://www.jbhifi.com.au/search?query=WBB3100AK",
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/5/8/4/a/584a6500746d4ac08894cb2885b8fb75677fccdf_Westinghouse_WBB3100AK_Factsheet.pdf",
@@ -44429,11 +44454,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60,
+      "priorityScore": 96,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/c/2/1/9/c2196990eaca36d9cc8beddf629cbcce69813aa9_Westinghouse_WBE4302WC_Factsheet.pdf",
@@ -44508,11 +44533,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/c/3/c/e/c3ce246e89658bddb9f1f65a561866755470b059_WBE5300WC_L_Westinghouse_Specifications_Sheet.pdf",
@@ -45553,11 +45578,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/public/manuals/WQE6000BB-Westinghouse-Specifications-Sheet.pdf",
@@ -46020,11 +46045,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 60,
+      "priorityScore": 88,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/public/manuals/WSE6640BA-Westinghouse-Specifications-Sheet.pdf",
@@ -48622,11 +48647,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/f/f/3/e/ff3e125e7880481b455a8cd38a4a4073efdb7892_Electrolux_EWF1043R7WC_Factsheet.pdf",
@@ -48777,11 +48802,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 60,
+      "priorityScore": 88,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/4/b/4/c/4b4c97d7d4f64f47408dc1b89cec41a26ea68eac_Electrolux_EWF9043R7WC_Factsheet.pdf",
@@ -49870,11 +49895,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw950cf313/QRG/AU/QRG-AU-93292.pdf",
@@ -49935,11 +49960,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 60,
+      "priorityScore": 78,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8684392f/QRG/AU/QRG-AU-92298.pdf",
@@ -50144,11 +50169,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Washing Machine",
       "readableSpec": "Top Loader",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw04688bff/QRG/NZ/QRG-NZ-93237.pdf",
@@ -50684,12 +50709,12 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "direct_url": "https://www.appliancesonline.com.au/product/hisense-series-5i-12kg-max-drum-front-load-washing-machine-white-hwf5i1215/",
       "displayName": "Hisense Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 60,
+      "priorityScore": 98,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1215-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDZ8YXBwbGljYXRpb24vcGRmfGFERmpMMmhsTXk4NE9EazRNekk1T1RNMU9UQXlMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRJeE5Ta3VjR1JtfDI1YmYzMjZlMzY5OWIwOGMxZTJhNmI1ZDUxNjc4ZTU2OGVmZjI0NjUyZmJlNGYzYWRmZDhmMjhjYTVmY2YwODA",
@@ -50757,11 +50782,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Hisense Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 60,
+      "priorityScore": 88,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dtc-aus-api.hisense.com/medias/HWF5S1214-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNTU3MDR8YXBwbGljYXRpb24vcGRmfGFHWXpMMmhoWWk4NE9EQTBNVEEwTVRReU9EYzRMMGhYUmpWVE1USXhOQzFUY0dWakxuQmtaZ3w2NGJjYzNiOTdlMzFkNjViYjE1NDljNTcwNzkyYWQyMjE1ODA0NmFiMmZlNDAwMzY2YmYyMWQwZGE4Zjk5ZmEx",
@@ -50803,11 +50828,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Hisense Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 60,
+      "priorityScore": 88,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dtc-aus-api.hisense.com/medias/HWF8i1015B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjcxMDd8YXBwbGljYXRpb24vcGRmfGFHTmhMMmc0WlM4NE9EQTNNRGM0TURBeU56RTRMMGhYUmpocE1UQXhOVUl0VTNCbFl5NXdaR1l8NzBhNjNiNjkwOGM3ZmFjZjdiNGQyZGEyNjgyZDExNWJlYjJlYjNmYWQwNjk0YzAzYzcwMWY0NDQyYWJhMzhiNw",
@@ -50882,11 +50907,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Hisense Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 60,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dtc-aus-api.hisense.com/medias/HWFS1015E-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2Mjk5NHxhcHBsaWNhdGlvbi9wZGZ8YURkaUwyaGtaUzg0T0RBME1EazBOVEE1TURnMkwwaFhSbE14TURFMVJTMVRjR1ZqTG5Ca1pnfDg4YWU1MTE2NzA0NGE2MTBhMDI1NjhmYmY1MjAxMjk0NDE4M2RiZDYwNzEyZTI1OWFiMzE0ZDZkOWFlMzIzNGQ",
@@ -50928,11 +50953,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Hisense Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 60,
+      "priorityScore": 98,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://dtc-aus-api.hisense.com/medias/HWFS7514S-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjAzNTI2fGFwcGxpY2F0aW9uL3BkZnxhRE5sTDJnME5TODRPREEwTVRFeE16VXhPRE00TDBoWFJsTTNOVEUwVXkxVGNHVmpMbkJrWmd8MWUyNjY3YzM2NDFiNDNlMzg2NzQ3ODE2MDAwNGI1NmUxNjJjN2NjZmVmMmUyY2YwYzEyOTY3M2VjNDc5ZmM2Yw",
@@ -52085,11 +52110,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "LG Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 60,
+      "priorityScore": 78,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=XSzB9y7vFqHz12fgVCRvHw",
@@ -52437,11 +52462,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "LG Washing Machine",
       "readableSpec": "Top Loader",
-      "priorityScore": 60,
+      "priorityScore": 78,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://www.lg.com/content/dam/channel/wcms/au/images/wm/features/WTL9-12B_Specsheet_231010_V1.pdf",
@@ -54287,7 +54312,7 @@
     {
       "id": "washing_machine-acw1553",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WCA020",
       "w": 596,
       "h": 850,
@@ -54306,14 +54331,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "washing_machine-acw1153",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WDD 030",
       "w": 596,
       "h": 850,
@@ -54332,14 +54357,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1530",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WEA125",
       "w": 596,
       "h": 850,
@@ -54358,14 +54383,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1535",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WQ 1200 WPS",
       "w": 596,
       "h": 850,
@@ -54384,14 +54409,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1556",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WTD 161 WCS",
       "w": 596,
       "h": 850,
@@ -54410,14 +54435,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "washing_machine-acw1097",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WTD160WCS",
       "w": 596,
       "h": 850,
@@ -54436,14 +54461,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "washing_machine-acw1206",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WTH 130 WPM",
       "w": 596,
       "h": 850,
@@ -54462,14 +54487,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 24
+      "priorityScore": 54
     },
     {
       "id": "washing_machine-acw1559",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WTR 871 WPM",
       "w": 596,
       "h": 850,
@@ -54488,14 +54513,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1086",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WTR870WPM",
       "w": 596,
       "h": 850,
@@ -54514,14 +54539,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1557",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WTW 871 WPM",
       "w": 596,
       "h": 850,
@@ -54540,14 +54565,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1087",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WTW870WPM",
       "w": 596,
       "h": 850,
@@ -54566,14 +54591,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1207",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WTZH 730 WPM",
       "w": 586,
       "h": 850,
@@ -54592,14 +54617,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1529",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WWB360",
       "w": 596,
       "h": 850,
@@ -54618,14 +54643,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1271",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WWD164",
       "w": 596,
       "h": 850,
@@ -54644,14 +54669,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1115",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WWH860",
       "w": 593,
       "h": 850,
@@ -54670,14 +54695,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1434",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WWI 860",
       "w": 596,
       "h": 850,
@@ -54696,14 +54721,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1566",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WWI 861",
       "w": 596,
       "h": 850,
@@ -54722,14 +54747,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1308",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WWR 860 WPS",
       "w": 596,
       "h": 850,
@@ -54748,14 +54773,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1558",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WWR 861",
       "w": 596,
       "h": 850,
@@ -54774,14 +54799,14 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1307",
       "cat": "washing_machine",
-      "brand": "MIELE",
+      "brand": "Miele",
       "model": "WWV 980 WPS",
       "w": 596,
       "h": 850,
@@ -54800,9 +54825,9 @@
       "sponsored": false,
       "unavailable": true,
       "inferred_door_swing": true,
-      "displayName": "MIELE PowerWash",
+      "displayName": "Miele PowerWash",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 60
     },
     {
       "id": "washing_machine-acw1428",
@@ -58275,11 +58300,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 60,
+      "priorityScore": 98,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/5/4/e/4/54e4d400d0e2fc29c5d47f487ab7ede5426ff771_Westinghouse_WWF1044M7SA_Factsheet__1_.pdf",
@@ -58335,11 +58360,11 @@
         }
       ],
       "sponsored": false,
-      "unavailable": true,
+      "unavailable": false,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 54,
+      "priorityScore": 100,
       "evidence": {
         "has_pdf_evidence": true,
         "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/b/6/6/1/b66155b700f22290d55751769bee853cc7a247df_Westinghouse_WWF9024M5SA_Factsheet__1_.pdf",

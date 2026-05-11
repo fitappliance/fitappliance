@@ -14,7 +14,6 @@ const CATALOG_FILES = [
   'public/data/dryers.json',
   'public/data/washing-machines.json'
 ];
-const RAW_CATALOG_ALIAS_EXCEPTIONS = new Set(['MIELE']);
 
 function loadProducts() {
   return CATALOG_FILES.flatMap((file) => {
@@ -51,15 +50,16 @@ test('catalog cleanup: runtime brand casing matches brand-canon aliases', () => 
       canonical: canonicalizeBrand(product.brand)
     }))
     .filter(({ product, canonical }) => product.brand !== canonical)
-    .filter(({ product }) => !RAW_CATALOG_ALIAS_EXCEPTIONS.has(product.brand))
     .map(({ product, canonical }) => `${product.__file}:${product.id}:${product.brand}->${canonical}`);
 
   assert.deepEqual(mismatches, []);
 });
 
-test('catalog cleanup: raw MIELE rows are display-normalized through brand-canon', () => {
+test('catalog cleanup: runtime Miele rows are canonicalized before display', () => {
   const rawMieleRows = loadProducts().filter((product) => product.brand === 'MIELE');
+  const canonicalMieleRows = loadProducts().filter((product) => product.brand === 'Miele');
 
-  assert.ok(rawMieleRows.length > 0);
+  assert.equal(rawMieleRows.length, 0);
+  assert.ok(canonicalMieleRows.length > 0);
   assert.equal(canonicalizeBrand('MIELE'), 'Miele');
 });
