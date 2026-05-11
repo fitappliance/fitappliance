@@ -75,11 +75,12 @@ test('retailer metrics docs: expansion plan category table matches current catal
 });
 
 test('retailer metrics docs: promotion copy does not overclaim inventory, prices, or complete coverage', () => {
+  const { totals } = computeMetrics();
   const promotion = readText('docs/promotion-kit.md');
 
-  assert.match(promotion, /2,188 raw appliance spec rows/);
-  assert.match(promotion, /66 products with verified retailer product-page links/);
-  assert.match(promotion, /177 verified retailer product-page links/);
+  assert.match(promotion, new RegExp(`${fmt(totals.products)} raw appliance spec rows`));
+  assert.match(promotion, new RegExp(`${fmt(totals.linkedProducts)} products with verified retailer product-page links`));
+  assert.match(promotion, new RegExp(`${fmt(totals.retailerLinks)} verified retailer product-page links`));
   assert.doesNotMatch(promotion, /100% door swing coverage/i);
   assert.doesNotMatch(promotion, /No affiliate links until/i);
   assert.doesNotMatch(promotion, /most comprehensive Australian appliance sizing database/i);

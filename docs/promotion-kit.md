@@ -4,10 +4,10 @@ _Auto-generated 2026-04-18 from live database_
 ---
 
 ## Site Stats (Current)
-- **2,188 raw appliance spec rows** across fridges, washing machines, dishwashers, and dryers
+- **2,193 raw appliance spec rows** across fridges, washing machines, dishwashers, and dryers
 - **66 products with verified retailer product-page links** across the five tracked AU retailers
 - **177 verified retailer product-page links**; live price rows are not yet captured
-- **286 brand clearance pages** with installation-specific ventilation data
+- **289 brand clearance pages** with installation-specific ventilation data
 - **Door swing estimates for the raw specs catalog** where manufacturer values are unavailable
 - **38 comparison pages** covering top brand pairs in each category
 - Data sourced from the Australian Government Energy Rating database
@@ -23,7 +23,7 @@ _Auto-generated 2026-04-18 from live database_
 > Moving apartments and measuring for a new fridge is a nightmare. I kept finding specs online but no tool that
 > checked whether the ventilation clearances were met (which can affect airflow and performance).
 >
-> Built fitappliance.com.au — it checks 2,188 raw appliance spec rows, checks your exact cavity dimensions,
+> Built fitappliance.com.au — it checks 2,193 raw appliance spec rows, checks your exact cavity dimensions,
 > and shows which models fit with proper clearance. Also has brand-specific requirements (LG needs more rear
 > clearance than Hisense, for example).
 >
@@ -43,7 +43,7 @@ _Auto-generated 2026-04-18 from live database_
 **Body:**
 > Not a deal but a tool I built that OzBargain users might find useful when shopping for appliances.
 >
-> **FitAppliance** covers 2,188 fridge/washer/dishwasher/dryer spec rows with:
+> **FitAppliance** covers 2,193 fridge/washer/dishwasher/dryer spec rows with:
 > - Exact dimensions from the Australian Energy Rating database
 > - Brand-specific ventilation clearance requirements
 > - Door swing estimates where manufacturer values are unavailable
@@ -65,13 +65,13 @@ _Auto-generated 2026-04-18 from live database_
 > you need to leave around the fridge) varies by brand and matters for airflow and performance.
 >
 > Built a free checker: **fitappliance.com.au**
-> Covers 2,188 raw spec rows, 286 brand-specific clearance guides, and verified retailer product-page links where available.
+> Covers 2,193 raw spec rows, 289 brand-specific clearance guides, and verified retailer product-page links where available.
 
 ---
 
 ## Key Differentiators (for any platform)
 1. **Per-brand clearance data** — not just dimensions. LG, WESTINGHOUSE and HISENSE all have different requirements.
-2. **2,188 raw spec rows** — a broad Australian appliance sizing database, with retailer-link coverage tracked separately.
+2. **2,193 raw spec rows** — a broad Australian appliance sizing database, with retailer-link coverage tracked separately.
 3. **Door swing estimates** — useful delivery and daily-use context where manufacturer values are unavailable.
 4. **Energy efficiency + energy-cost estimates** built in.
 5. **No account needed** — open URL, get answer.
