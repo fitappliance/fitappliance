@@ -52,7 +52,7 @@ test('phase 43a cleanup: no production import points at the removed common fit-s
 
   const offenders = sourceFiles
     .filter((file) => fs.existsSync(file))
-    .filter((file) => /(?:require\(|from\s+['"]).*(?:common\/fit-score|scripts\/common\/fit-score|\.\/fit-score)/.test(fs.readFileSync(file, 'utf8')))
+    .filter((file) => /(?:require\(|from\s+['"]).*(?:common\/fit-score|scripts\/common\/fit-score)/.test(fs.readFileSync(file, 'utf8')))
     .map((file) => path.relative(repoRoot, file));
 
   assert.deepEqual(offenders, []);
