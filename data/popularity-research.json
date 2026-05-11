@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "last_researched": "2026-05-04",
-  "cursor": 663,
-  "researched": 663,
-  "totalCatalog": 2188,
+  "last_researched": "2026-05-11",
+  "cursor": 729,
+  "researched": 729,
+  "totalCatalog": 2193,
   "skipped": [
     {
       "id": "f6",
@@ -37,7 +37,7 @@
     }
   ],
   "last_batch": {
-    "researched": 3,
+    "researched": 66,
     "skipped": 0
   },
   "products": {
@@ -253,6 +253,121 @@
       "priceMaxAud": 400,
       "researchedAt": "2026-04-23",
       "retailers": []
+    },
+    "dishwasher-adw1232": {
+      "retailersAvailable": 1,
+      "retailersChecked": 2,
+      "reviewCountSum": 88,
+      "priceMinAud": 5,
+      "priceMaxAud": 99900,
+      "researchedAt": "2026-05-11",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/lg-quadwash-freestanding-dishwasher-stainless-steel-xd4b15ps/",
+          "p": null
+        }
+      ]
+    },
+    "dishwasher-adw1149": {
+      "retailersAvailable": 2,
+      "retailersChecked": 3,
+      "reviewCountSum": 0,
+      "priceMinAud": null,
+      "priceMaxAud": null,
+      "researchedAt": "2026-05-11",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/westinghouse-60cm-freestanding-sensor-wash-dishwasher-stainless-steel-wsf6604xb/",
+          "p": null
+        },
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au/westinghouse-wsf6604xb-60cm-14-place-setting-freestanding-dishwasher-stainless-steel.html",
+          "p": null
+        }
+      ]
+    },
+    "dishwasher-adw1155": {
+      "retailersAvailable": 2,
+      "retailersChecked": 3,
+      "reviewCountSum": 0,
+      "priceMinAud": null,
+      "priceMaxAud": null,
+      "researchedAt": "2026-05-11",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/westinghouse-60cm-stainless-steel-auto-door-dishwasher-wsf6606xb/",
+          "p": null
+        },
+        {
+          "n": "Harvey Norman",
+          "url": "https://www.harveynorman.com.au/westinghouse-60cm-15-place-setting-freestanding-dishwasher-stainless-steel.html",
+          "p": null
+        }
+      ]
+    },
+    "dr3": {
+      "retailersAvailable": 1,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": null,
+      "priceMaxAud": null,
+      "researchedAt": "2026-05-11",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/electrolux-8kg-heat-pump-dryer-edh803bewa",
+          "p": null
+        }
+      ]
+    },
+    "dryer-acd0788": {
+      "retailersAvailable": 1,
+      "retailersChecked": 3,
+      "reviewCountSum": 55,
+      "priceMinAud": 11,
+      "priceMaxAud": 549,
+      "researchedAt": "2026-05-11",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/electrolux-300-series-6kg-vented-clothes-dryer-edv605h3wc/",
+          "p": null
+        }
+      ]
+    },
+    "dryer-acd0789": {
+      "retailersAvailable": 1,
+      "retailersChecked": 3,
+      "reviewCountSum": 22,
+      "priceMinAud": 11,
+      "priceMaxAud": 549,
+      "researchedAt": "2026-05-11",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/electrolux-300-series-7kg-vented-clothes-dryer-edv705h3wc/",
+          "p": null
+        }
+      ]
+    },
+    "dryer-acd0898": {
+      "retailersAvailable": 1,
+      "retailersChecked": 1,
+      "reviewCountSum": 0,
+      "priceMinAud": null,
+      "priceMaxAud": null,
+      "researchedAt": "2026-05-11",
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/fisher-paykel-dh8060p1-8kg-heat-pump-dryer/",
+          "p": null
+        }
+      ]
     }
   }
 }
