@@ -254,6 +254,104 @@ test('final catalog builder can add verified discovery products that are not in 
   assert.equal(result.summary.official_pdf_by_category.washing_machine, 1);
 });
 
+test('final catalog builder preserves third-party dimension evidence without marking it official PDF verified', () => {
+  const repoRoot = makeRepo();
+  fs.rmSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'RF730QNUVX1.json'));
+  writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {
+    schema_version: 1,
+    products: {
+      'ao-61887': {
+        category: 'fridge',
+        brand: 'Samsung',
+        model: 'SR269MW',
+        verified_alias: 'RT29',
+        discovery: {
+          retailer: 'Appliances Online',
+          retailer_key: 'appliancesonline',
+          product_id: 61887,
+          product_url: 'https://www.appliancesonline.com.au/product/samsung-sr269mw-270l-top-mount-fridge'
+        },
+        product: {
+          id: 'ao-61887',
+          cat: 'fridge',
+          brand: 'Samsung',
+          model: 'SR269MW',
+          displayName: 'Samsung SR269MW 270L Top Mount Fridge',
+          unavailable: false,
+          retailers: [
+            { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/samsung-sr269mw-270l-top-mount-fridge', p: 499 }
+          ]
+        }
+      }
+    }
+  });
+  writeJson(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'SR269MW.json'), {
+    schema_version: 1,
+    product_id: 'ao-61887',
+    category: 'fridge',
+    brand: 'Samsung',
+    model: 'SR269MW',
+    data_source: 'third_party_retailer_spec',
+    has_pdf_evidence: false,
+    source_url: 'https://www.appliancesonline.com.au/product/samsung-sr269mw-270l-top-mount-fridge',
+    verified_at: '2026-05-11',
+    extracted: {
+      brand: 'Samsung',
+      sku: 'SR269MW',
+      category: 'FRIDGE',
+      dimensions: {
+        height_mm: 1635,
+        width_mm: 555,
+        depth_mm: 637,
+        door_open_90_depth_mm: null
+      },
+      clearance_requirements: {
+        top_mm: 100,
+        left_mm: 50,
+        right_mm: 50,
+        rear_mm: 50
+      },
+      flags: {
+        requires_plumbing: false,
+        ventilation_required: true,
+        reversible_door: false
+      },
+      metadata: {
+        source_pdf_url: 'https://example.com/samsung-sr269mw-user-manual.pdf',
+        extraction_date: '2026-05-11T00:00:00.000Z',
+        confidence_score: 0.72,
+        verified_alias: 'RT29',
+        data_source: 'third_party_retailer_spec',
+        has_pdf_evidence: false,
+        source_type: 'mixed_retailer_dimensions_pdf_clearance',
+        dimension_source: 'Appliances Online specifications tab',
+        clearance_source: 'Samsung user manual page 14'
+      }
+    }
+  });
+
+  const result = buildFinalCatalog({ repoRoot });
+  const product = result.catalog.products.find((row) => row.id === 'ao-61887');
+
+  assert.equal(product.data_source, 'third_party_retailer_spec');
+  assert.equal(product.evidence.has_pdf_evidence, false);
+  assert.equal(product.evidence.source_type, 'mixed_retailer_dimensions_pdf_clearance');
+  assert.equal(product.evidence.dimension_source, 'Appliances Online specifications tab');
+  assert.equal(product.evidence.clearance_source, 'Samsung user manual page 14');
+  assert.equal(product.evidence.verified_alias, 'RT29');
+  assert.equal(product.w, 555);
+  assert.equal(product.h, 1635);
+  assert.equal(product.d, 637);
+  assert.deepEqual(product.clearance_requirements, {
+    top_mm: 100,
+    left_mm: 50,
+    right_mm: 50,
+    rear_mm: 50
+  });
+  assert.equal(result.summary.merged_products, 0);
+  assert.equal(result.summary.official_pdf_by_category.fridge, 0);
+});
+
 test('final catalog builder can add verified non-AO discovery products', () => {
   const repoRoot = makeRepo();
   writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {

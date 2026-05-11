@@ -177,6 +177,10 @@ function mergeEvidenceIntoProduct(product, evidence) {
   const clearanceRequirements = extracted.clearance_requirements || {};
   const flags = extracted.flags || {};
   const metadata = extracted.metadata || {};
+  const dataSource = evidence?.data_source || metadata.data_source || 'official_pdf';
+  const hasPdfEvidence = typeof evidence?.has_pdf_evidence === 'boolean'
+    ? evidence.has_pdf_evidence
+    : (typeof metadata.has_pdf_evidence === 'boolean' ? metadata.has_pdf_evidence : dataSource === 'official_pdf');
 
   return {
     ...product,
@@ -186,16 +190,20 @@ function mergeEvidenceIntoProduct(product, evidence) {
     dimensions: { ...dimensions },
     clearance_requirements: { ...clearanceRequirements },
     flags: { ...flags },
-    data_source: 'official_pdf',
+    data_source: dataSource,
     evidence: {
       ...(product.evidence && typeof product.evidence === 'object' && !Array.isArray(product.evidence)
         ? product.evidence
         : {}),
-      has_pdf_evidence: true,
+      has_pdf_evidence: hasPdfEvidence,
       source_url: evidence.source_url || metadata.source_pdf_url || null,
       verified_at: evidence.verified_at || String(metadata.extraction_date || '').slice(0, 10) || null,
       confidence_score: metadata.confidence_score ?? null,
       ...(metadata.verified_alias ? { verified_alias: metadata.verified_alias } : {}),
+      ...(metadata.source_type ? { source_type: metadata.source_type } : {}),
+      ...(metadata.dimension_source ? { dimension_source: metadata.dimension_source } : {}),
+      ...(metadata.clearance_source ? { clearance_source: metadata.clearance_source } : {}),
+      ...(metadata.notes ? { notes: metadata.notes } : {}),
       raw_json_path: evidence.raw_json_path
     }
   };
