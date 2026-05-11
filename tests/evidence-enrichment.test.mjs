@@ -105,6 +105,28 @@ test('buildEvidencePatch only returns approved PDF evidence', () => {
   }), null);
 });
 
+test('buildEvidencePatch preserves approved third-party evidence without upgrading it to PDF verified', () => {
+  const entry = {
+    evidence: [
+      {
+        type: 'third_party_spec',
+        status: 'approved',
+        source_url: 'https://www.appliancesonline.com.au/product/example',
+        verified_at: '2026-05-11',
+        has_pdf_evidence: false,
+        source_type: 'mixed_retailer_dimensions_pdf_clearance',
+      },
+    ],
+  };
+
+  assert.deepEqual(buildEvidencePatch(entry), {
+    has_pdf_evidence: false,
+    source_url: 'https://www.appliancesonline.com.au/product/example',
+    verified_at: '2026-05-11',
+    source_type: 'mixed_retailer_dimensions_pdf_clearance',
+  });
+});
+
 test('applyEvidence patches only matching approved manual evidence entries', () => {
   const products = [
     makeProduct(),

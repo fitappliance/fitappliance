@@ -10,16 +10,16 @@
     ],
     "evidence_dir": "data/pdf-evidence-raw"
   },
-  "latest_verified_at": "2026-05-10",
+  "latest_verified_at": "2026-05-11",
   "summary": {
-    "total_products": 3513,
-    "active_products": 1390,
-    "evidence_files": 1494,
+    "total_products": 3514,
+    "active_products": 1391,
+    "evidence_files": 1495,
     "merged_products": 1478,
     "unmatched_evidence_files": 3,
     "duplicate_evidence_files": 16,
     "categories": {
-      "fridge": 1986,
+      "fridge": 1987,
       "dishwasher": 704,
       "dryer": 162,
       "washing_machine": 661
@@ -113379,6 +113379,65 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/SPU6IMS01A.json"
+      }
+    },
+    {
+      "id": "ao-61887",
+      "cat": "fridge",
+      "brand": "Samsung",
+      "model": "SR269MW",
+      "displayName": "Samsung SR269MW 270L Top Mount Fridge",
+      "title": "Samsung SR269MW 270L Top Mount Fridge",
+      "slug": "ao-sr269mw",
+      "w": 555,
+      "h": 1635,
+      "d": 637,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/samsung-sr269mw-270l-top-mount-fridge",
+          "p": 499,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 61887,
+        "product_url": "https://www.appliancesonline.com.au/product/samsung-sr269mw-270l-top-mount-fridge",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 1635,
+        "width_mm": 555,
+        "depth_mm": 637,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "third_party_retailer_spec",
+      "evidence": {
+        "has_pdf_evidence": false,
+        "source_url": "https://www.appliancesonline.com.au/product/samsung-sr269mw-270l-top-mount-fridge",
+        "verified_at": "2026-05-11",
+        "confidence_score": 0.72,
+        "verified_alias": "RT29",
+        "source_type": "mixed_retailer_dimensions_pdf_clearance",
+        "dimension_source": "Appliances Online specifications screenshot supplied by user on 2026-05-11",
+        "clearance_source": "Samsung SR269MW user manual page 14, RT29 family installation clearance",
+        "notes": "Bare W/H/D are from Appliances Online specifications, not the Samsung PDF. Samsung PDF provides RT29-family installation clearance only.",
+        "raw_json_path": "data/pdf-evidence-raw/SR269MW.json"
       }
     },
     {

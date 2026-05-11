@@ -17,6 +17,10 @@ function isPlainObject(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
 
+function isNonEmptyString(value) {
+  return typeof value === 'string' && value.trim().length > 0;
+}
+
 function toDateStamp(value) {
   const raw = String(value ?? '').trim();
   const direct = raw.match(/^\d{4}-\d{2}-\d{2}/)?.[0] ?? '';
@@ -68,9 +72,10 @@ function buildEvidencePatch(manualEntry) {
 
   const sourceUrl = getSourceUrl(approved);
   return {
-    has_pdf_evidence: true,
+    has_pdf_evidence: typeof approved.has_pdf_evidence === 'boolean' ? approved.has_pdf_evidence : true,
     ...(sourceUrl ? { source_url: sourceUrl } : {}),
     verified_at: getVerifiedAt(approved),
+    ...(isNonEmptyString(approved.source_type) ? { source_type: approved.source_type } : {}),
   };
 }
 
