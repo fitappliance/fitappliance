@@ -105,6 +105,7 @@ function getEvidenceSkuCandidates(evidence) {
 function buildEvidenceIndex(entries) {
   const byProductId = new Map();
   const bySku = new Map();
+  const ambiguousSkuTokens = new Set();
   const duplicateEntries = [];
 
   for (const entry of entries) {
@@ -118,17 +119,23 @@ function buildEvidenceIndex(entries) {
     }
 
     for (const sku of new Set(getEvidenceSkuCandidates(entry))) {
+      if (ambiguousSkuTokens.has(sku)) continue;
       const existing = bySku.get(sku);
       if (!existing) {
         bySku.set(sku, entry);
       } else if (existing !== entry) {
-        duplicateEntries.push(entry);
+        // SKU/model tokens are only a fallback path. Some legitimate AO bundles
+        // and add-ons normalize to the same token (for example WTP-357B and
+        // WTP357B), but they still have distinct product ids. Treat that token
+        // as ambiguous instead of throwing either product away.
+        bySku.delete(sku);
+        ambiguousSkuTokens.add(sku);
         break;
       }
     }
   }
 
-  return { byProductId, bySku, duplicateEntries };
+  return { byProductId, bySku, duplicateEntries, ambiguousSkuTokens };
 }
 
 function findEvidenceForProduct(product, evidenceIndex) {

@@ -352,6 +352,101 @@ test('final catalog builder preserves third-party dimension evidence without mar
   assert.equal(result.summary.official_pdf_by_category.fridge, 0);
 });
 
+test('final catalog builder keeps distinct product-id matches when normalized SKU tokens collide', () => {
+  const repoRoot = makeRepo();
+  fs.rmSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'RF730QNUVX1.json'));
+  writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {
+    schema_version: 1,
+    products: {
+      'ao-103181': {
+        category: 'washing_machine',
+        brand: 'LG',
+        model: 'WXLC-1116B-WTP357B',
+        discovery: { retailer_key: 'appliancesonline' },
+        product: {
+          id: 'ao-103181',
+          cat: 'washing_machine',
+          brand: 'LG',
+          model: 'WXLC-1116B-WTP357B',
+          unavailable: false
+        }
+      },
+      'ao-103064': {
+        category: 'washing_machine',
+        brand: 'LG',
+        model: 'WTP357B',
+        discovery: { retailer_key: 'appliancesonline' },
+        product: {
+          id: 'ao-103064',
+          cat: 'washing_machine',
+          brand: 'LG',
+          model: 'WTP357B',
+          unavailable: false
+        }
+      }
+    }
+  });
+
+  const baseEvidence = {
+    schema_version: 1,
+    category: 'washing_machine',
+    brand: 'LG',
+    source_url: 'https://example.com/lg.pdf',
+    verified_at: '2026-05-09',
+    extracted: {
+      brand: 'LG',
+      category: 'WASHING_MACHINE',
+      dimensions: {
+        height_mm: 360,
+        width_mm: 700,
+        depth_mm: 790,
+        door_open_90_depth_mm: null
+      },
+      clearance_requirements: {
+        top_mm: 0,
+        left_mm: 0,
+        right_mm: 0,
+        rear_mm: 0
+      },
+      flags: {
+        requires_plumbing: false,
+        ventilation_required: true,
+        reversible_door: null
+      },
+      metadata: {
+        source_pdf_url: 'https://example.com/lg.pdf',
+        extraction_date: '2026-05-09T00:00:00.000Z',
+        confidence_score: 0.9
+      }
+    }
+  };
+  writeJson(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'WTP-357B.json'), {
+    ...baseEvidence,
+    product_id: 'ao-103181',
+    model: 'WXLC-1116B-WTP357B',
+    extracted: {
+      ...baseEvidence.extracted,
+      sku: 'WTP-357B'
+    }
+  });
+  writeJson(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'WTP357B.json'), {
+    ...baseEvidence,
+    product_id: 'ao-103064',
+    model: 'WTP357B',
+    extracted: {
+      ...baseEvidence.extracted,
+      sku: 'WTP357B'
+    }
+  });
+
+  const result = buildFinalCatalog({ repoRoot });
+
+  assert.equal(result.catalog.products.some((product) => product.id === 'ao-103181'), true);
+  assert.equal(result.catalog.products.some((product) => product.id === 'ao-103064'), true);
+  assert.equal(result.catalog.duplicate_evidence.length, 0);
+  assert.equal(result.catalog.unmatched_evidence.length, 0);
+});
+
 test('final catalog builder can add verified non-AO discovery products', () => {
   const repoRoot = makeRepo();
   writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {

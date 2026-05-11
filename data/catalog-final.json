@@ -12,23 +12,23 @@
   },
   "latest_verified_at": "2026-05-11",
   "summary": {
-    "total_products": 3514,
-    "active_products": 1391,
+    "total_products": 3515,
+    "active_products": 1392,
     "evidence_files": 1495,
-    "merged_products": 1478,
-    "unmatched_evidence_files": 3,
-    "duplicate_evidence_files": 16,
+    "merged_products": 1479,
+    "unmatched_evidence_files": 15,
+    "duplicate_evidence_files": 0,
     "categories": {
       "fridge": 1987,
       "dishwasher": 704,
       "dryer": 162,
-      "washing_machine": 661
+      "washing_machine": 662
     },
     "official_pdf_by_category": {
       "fridge": 778,
       "dishwasher": 359,
       "dryer": 93,
-      "washing_machine": 248
+      "washing_machine": 249
     }
   },
   "unmatched_evidence": [
@@ -41,26 +41,6 @@
     {
       "raw_json_path": "data/pdf-evidence-raw/CTM202NW.json",
       "product_id": "ao-130135",
-      "model": "CTM202NW",
-      "category": "fridge"
-    },
-    {
-      "raw_json_path": "data/pdf-evidence-raw/WH1260P1.json",
-      "product_id": "ao-62058",
-      "model": "WH1260P1",
-      "category": "washing_machine"
-    }
-  ],
-  "duplicate_evidence": [
-    {
-      "raw_json_path": "data/pdf-evidence-raw/CBM394NSS6E.json",
-      "product_id": "fridge-arf2654",
-      "model": "CBM394NSS",
-      "category": "fridge"
-    },
-    {
-      "raw_json_path": "data/pdf-evidence-raw/CTM202NW3.json",
-      "product_id": "fridge-arf2861",
       "model": "CTM202NW",
       "category": "fridge"
     },
@@ -137,18 +117,13 @@
       "category": "washing_machine"
     },
     {
-      "raw_json_path": "data/pdf-evidence-raw/WL8058G1.json",
-      "product_id": "washing_machine-acw1231",
+      "raw_json_path": "data/pdf-evidence-raw/WH1260P1.json",
+      "product_id": "ao-62058",
       "model": "WH1260P1",
-      "category": "washing_machine"
-    },
-    {
-      "raw_json_path": "data/pdf-evidence-raw/WTP357B.json",
-      "product_id": "ao-103064",
-      "model": "WTP357B",
       "category": "washing_machine"
     }
   ],
+  "duplicate_evidence": [],
   "products": [
     {
       "id": "fridge-arf3576",
@@ -131062,6 +131037,60 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/WTP20WY.json"
+      }
+    },
+    {
+      "id": "ao-103064",
+      "cat": "washing_machine",
+      "brand": "LG",
+      "model": "WTP357B",
+      "displayName": "LG 3.5kg TWIN Wash® Washing Machine WTP357B",
+      "title": "LG 3.5kg TWIN Wash® Washing Machine WTP357B",
+      "slug": "ao-wtp357b",
+      "w": 700,
+      "h": 360,
+      "d": 790,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/lg-35kg-twin-wash-washing-machine-wtp357b",
+          "p": 854,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 103064,
+        "product_url": "https://www.appliancesonline.com.au/product/lg-35kg-twin-wash-washing-machine-wtp357b",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 360,
+        "width_mm": 700,
+        "depth_mm": 790,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/d/1/a/3/d1a3733b97b9eace154789b1b7bd0a0f84c74653_WTP357B_LG_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WTP357B.json"
       }
     },
     {
