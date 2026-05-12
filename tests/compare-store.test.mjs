@@ -40,18 +40,19 @@ function makeSnapshot(slug, overrides = {}) {
   };
 }
 
-test('phase 45c compare store: fourth add is rejected at capacity', async () => {
+test('phase 58 compare store: fifth add is rejected at capacity', async () => {
   const { createCompareStore } = await loadStore();
   const store = createCompareStore({ storage: createMemoryStorage() });
 
   assert.equal(store.add(makeSnapshot('p1')).ok, true);
   assert.equal(store.add(makeSnapshot('p2')).ok, true);
   assert.equal(store.add(makeSnapshot('p3')).ok, true);
-  const fourth = store.add(makeSnapshot('p4'));
+  assert.equal(store.add(makeSnapshot('p4')).ok, true);
+  const fifth = store.add(makeSnapshot('p5'));
 
-  assert.equal(fourth.ok, false);
-  assert.equal(fourth.reason, 'capacity');
-  assert.deepEqual(store.list().map((entry) => entry.id), ['p1', 'p2', 'p3']);
+  assert.equal(fifth.ok, false);
+  assert.equal(fifth.reason, 'capacity');
+  assert.deepEqual(store.list().map((entry) => entry.id), ['p1', 'p2', 'p3', 'p4']);
 });
 
 test('phase 45c compare store: duplicate slug is not added twice', async () => {
