@@ -2,9 +2,92 @@
 .tco-row, .card-energy-line, .data-trust-line,
 .fit-axis-bar, .fit-axis-bar__label,
 table.compare-table td, table.compare-table th,
-.results-meta-chip, .facet-range-output {
+.results-meta-chip, .facet-range-output,
+.hero-trust-strip, .hero-sample-chip {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum";
+}
+
+.hero-trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 20px;
+  margin-bottom: 24px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.hero-trust-item {
+  white-space: nowrap;
+}
+
+.hero-sample-searches {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.hero-sample-label {
+  font-size: 12px;
+  color: var(--ink-3, #6b6b6b);
+  margin-right: 4px;
+}
+
+.hero-sample-chip {
+  display: inline-flex;
+  align-items: center;
+  background: #f0eeea;
+  border: 1px solid var(--border, #d0cfc8);
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink, #1a1a1a);
+  cursor: pointer;
+}
+
+.hero-sample-chip:hover {
+  background: #e8e6e1;
+  border-color: var(--copper, #d97706);
+}
+
+.hero-secondary-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--ink-3, #6b6b6b);
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+
+.hero-secondary-link:hover {
+  color: var(--copper, #d97706);
+}
+
+.how-we-score {
+  max-width: 720px;
+  margin: 48px auto;
+  padding: 32px 24px;
+  background: var(--paper, #fafaf7);
+  border: 1px solid var(--border, #d0cfc8);
+  border-radius: 4px;
+}
+
+.how-we-score h2 {
+  margin-top: 0;
+}
+
+.how-we-score ul {
+  margin: 16px 0;
+  padding-left: 20px;
+}
+
+.how-we-score li {
+  margin-bottom: 8px;
 }
 
 .search-summary {

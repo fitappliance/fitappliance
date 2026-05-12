@@ -461,7 +461,13 @@ nav {
   <div class="hero-inner">
     <div class="hero-eyebrow"><span></span> <span id="heroEyebrowText">Appliance fit, with practical clearance built in</span></div>
     <h1 id="heroTitle">Measure once. Find the appliances that actually fit.</h1>
-    <p class="hero-sub" id="heroSub">Enter your cavity dimensions and narrow the list with practical airflow buffers, door-swing and access checks.</p>
+    <p class="hero-sub" id="heroSub">Enter your cavity. Get a 0-100 Fit Score for every appliance that fits.</p>
+
+    <div class="hero-trust-strip" role="note">
+      <span class="hero-trust-item">▸ 2,170+ Australian appliances</span>
+      <span class="hero-trust-item" id="hero-verified-count">▸ 1,475 manufacturer PDFs verified</span>
+      <span class="hero-trust-item">▸ Updated daily</span>
+    </div>
 
     <div class="search-card" id="searchForm">
       <div class="sc-head">
@@ -508,6 +514,22 @@ nav {
         </div>
       </div>
       <div class="space-alerts" id="spaceAlerts" aria-label="Non-standard space alerts" aria-live="polite" hidden></div>
+
+      <div class="hero-sample-searches" aria-label="Sample searches">
+        <span class="hero-sample-label">Try a sample search:</span>
+        <button type="button" class="hero-sample-chip" data-sample-search='{"cat":"fridge","w":600,"h":1900,"d":650}'>
+          Standard fridge 600 × 1900 × 650
+        </button>
+        <button type="button" class="hero-sample-chip" data-sample-search='{"cat":"fridge","w":500,"h":850,"d":500}'>
+          Bar fridge 500 × 850 × 500
+        </button>
+        <button type="button" class="hero-sample-chip" data-sample-search='{"cat":"dishwasher","w":600,"h":850,"d":600}'>
+          Dishwasher 600 × 850 × 600
+        </button>
+        <button type="button" class="hero-sample-chip" data-sample-search='{"cat":"washing_machine","w":600,"h":850,"d":600}'>
+          Washing machine 600 × 850 × 600
+        </button>
+      </div>
 
       <!-- Filters -->
       <div class="extra-grid">
@@ -559,10 +581,23 @@ nav {
         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="white" stroke-width="1.8"/><path d="M12 12l3.5 3.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
         <span id="heroCtaText">Find fitting models</span>
       </button>
+      <a href="#how-we-score" class="hero-secondary-link">How is Fit Score calculated? →</a>
       <p class="fit-checker-link"><a href="/tools/fit-checker">Try the fit checker →</a></p>
       <div id="searchHistoryMount"></div>
     </div>
   </div>
+</section>
+
+<section id="how-we-score" class="how-we-score">
+  <h2>How is Fit Score calculated?</h2>
+  <p>Every cavity and appliance pair gets a deterministic 0-100 score. The score factors:</p>
+  <ul>
+    <li><strong>Width spare</strong> (40% weight) — how much breathing room remains on each side.</li>
+    <li><strong>Height spare</strong> (30%) — clearance above the appliance.</li>
+    <li><strong>Depth spare</strong> (30%) — clearance behind the appliance.</li>
+    <li><strong>Binding penalty</strong> — if the tightest axis is &lt;10mm spare, the score is reduced.</li>
+  </ul>
+  <p>Click the score ring on any product result to see the full breakdown for your cavity.</p>
 </section>
 
 <!-- TRUST STRIP -->
@@ -948,6 +983,7 @@ import { buildSpaceAlerts } from './scripts/space-alerts.mjs';
 import { buildBrandOptions } from './scripts/ui/filters.js';
 import { computeFitScore } from './scripts/ui/fit-score.js';
 import { applySliderFilters, normalizeDensity, sortRowsForRtings } from './scripts/ui/range-filters.js';
+import { bindHeroSampleSearches } from './scripts/ui/hero-funnel.js';
 import { clearSaved, getSavedIds, isProductSaved, saveProduct, unsaveProduct } from './scripts/ui/saved-matches.js';
 import {
   buildSearchHistoryHtml,
@@ -1125,7 +1161,6 @@ function applyUiCopy(copy) {
 
   setText('heroEyebrowText', hero.eyebrow);
   setText('heroTitle', hero.title);
-  setText('heroSub', hero.sub);
   setText('heroCtaText', hero.cta);
   setText('footerSummary', footer.brandSummary);
   setText('footerMetaLine', footer.metaLine);
@@ -1485,6 +1520,12 @@ document.getElementById('catPills').addEventListener('click', async e => {
   const p = e.target.closest('.cat-pill');
   if (!p) return;
   await setCategory(p.dataset.cat);
+});
+
+bindHeroSampleSearches(document, {
+  setCategory,
+  search: () => doSearch(),
+  scrollTarget: () => document.getElementById('resultsSection'),
 });
 
 function scrollToSearch() {
