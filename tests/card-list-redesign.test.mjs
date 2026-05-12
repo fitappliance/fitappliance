@@ -29,6 +29,7 @@ function makeMatch(overrides = {}) {
     url: '/appliances/lg-gf-l708mbl',
     retailers: [{ n: 'The Good Guys', p: 1299, url: 'https://example.com/lg' }],
     fitGapMm: 18,
+    fitScoreNumeric: 88,
     ...overrides
   };
 }
@@ -69,12 +70,15 @@ test('phase 48 card redesign: title is brand plus model and subtitle carries rea
   assert.match(html, /<div class="card-subtitle">708L French door fridge<\/div>/);
 });
 
-test('phase 48 card redesign: fit badge is compact and stateful', async () => {
+test('phase 58 card redesign: numeric fit score replaces legacy fit badge states', async () => {
   const { buildCardHtml } = await loadSearchDom();
+  const html = buildCardHtml(makeMatch({ fitScoreNumeric: 88, fitGapMm: 22 }));
 
-  assert.match(buildCardHtml(makeMatch({ fitGapMm: 22 })), /fit-badge--exact/);
-  assert.match(buildCardHtml(makeMatch({ fitGapMm: 4, fitsTightly: true })), /fit-badge--tight/);
-  assert.match(buildCardHtml(makeMatch({ cavityNeededMm: 12 })), /fit-badge--relax/);
+  assert.match(html, /class="fit-score-block"/);
+  assert.match(html, /class="fit-score-ring fit-score-ring--strong"/);
+  assert.match(html, />88<\/text>/);
+  assert.doesNotMatch(html, /fit-badge--(?:exact|tight|relax)/);
+  assert.doesNotMatch(html, /Perfect fit|Tight fit|Won't fit/);
 });
 
 test('phase 48 card redesign: old giant clearance badge and per-card commission copy are gone', async () => {

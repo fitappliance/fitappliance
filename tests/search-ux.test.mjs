@@ -84,7 +84,7 @@ test('phase 42a search-ux: zero tolerance excludes a 2mm oversize result', async
   assert.equal(matches.length, 0);
 });
 
-test('phase 42a search-ux: 5mm tolerance includes a 2mm oversize result and marks tight fit', async () => {
+test('phase 58 search-ux: tolerance does not include a product that fails required clearance', async () => {
   const { findSearchMatches } = await loadSearchCore();
   const matches = findSearchMatches([
     makeProduct({ id: 'oversize', w: 603 })
@@ -96,9 +96,7 @@ test('phase 42a search-ux: 5mm tolerance includes a 2mm oversize result and mark
     toleranceMm: 5
   }, { clearanceDefaults: makeDefaults() });
 
-  assert.equal(matches.length, 1);
-  assert.equal(matches[0].id, 'oversize');
-  assert.equal(matches[0].fitsTightly, true);
+  assert.equal(matches.length, 0);
 });
 
 test('phase 42a search-ux: tighter fit outranks looser fit when priority is equal', async () => {

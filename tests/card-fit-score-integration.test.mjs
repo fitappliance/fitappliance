@@ -30,21 +30,22 @@ function makeProduct(overrides = {}) {
   };
 }
 
-test('phase 58 card integration: buildRow renders score block alongside fit health', async () => {
+test('phase 58 card integration: buildRow renders score block as the only fit verdict', async () => {
   const { buildRow } = await import(`${productCardUrl}?cacheBust=${Date.now()}`);
   const html = buildRow(makeProduct(), {
     annualEnergyCost: () => '88',
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /class="fit-health/);
   assert.match(html, /class="fit-score-popover"/);
   assert.match(html, /class="score-breakdown"/);
   assert.match(html, /92/);
   assert.match(html, /Excellent fit/);
+  assert.doesNotMatch(html, /class="fit-health/);
+  assert.doesNotMatch(html, /fit-badge--(?:exact|tight|relax)/);
 });
 
-test('phase 58 card integration: missing fitScoreNumeric does not render score block', async () => {
+test('phase 58 card integration: missing fitScoreNumeric does not fall back to legacy fit health', async () => {
   const { buildRow } = await import(`${productCardUrl}?cacheBust=${Date.now()}`);
   const product = makeProduct();
   delete product.fitScoreNumeric;
@@ -53,6 +54,7 @@ test('phase 58 card integration: missing fitScoreNumeric does not render score b
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /class="fit-health/);
   assert.doesNotMatch(html, /fit-score-block|fit-score-popover/);
+  assert.doesNotMatch(html, /class="fit-health/);
+  assert.doesNotMatch(html, /Perfect fit|Tight fit|Won't fit/);
 });

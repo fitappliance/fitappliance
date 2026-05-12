@@ -586,8 +586,12 @@
   height:60px;
   display:block;
 }
-.card-zone-fit { align-self:flex-start; }
-.p-card--rtings .card-zone-fit { margin-left:auto; }
+.card-zone-fit {
+  align-self:flex-start;
+  display:grid;
+  justify-items:start;
+}
+.p-card--rtings .card-zone-fit { margin-left:0; }
 .card-zone-b { min-width:0; }
 .card-zone-heading {
   display:grid;
@@ -1700,7 +1704,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   display:inline-flex;
   align-items:center;
   gap:8px;
-  margin-left:12px;
+  margin-left:0;
 }
 .fit-score-ring {
   width:40px;
@@ -1736,7 +1740,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 .fit-score-popover {
   position:relative;
   display:inline-block;
-  margin-left:12px;
+  margin-left:0;
 }
 .fit-score-summary {
   display:inline-flex;

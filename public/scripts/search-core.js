@@ -305,6 +305,7 @@
     if (axisEntries.length === 0) return null;
 
     const axisScores = axisEntries.map((entry) => computeAxisScore(entry.cavity, entry.appliance, entry.clearanceMm));
+    const axisSpare = axisEntries.map((entry) => entry.cavity - entry.appliance - entry.clearanceMm);
     const fitScore = Math.min(...axisScores);
     const sortScore = axisScores.reduce((sum, score) => sum + score, 0) / axisScores.length;
     const cavityMin = Math.min(...axisEntries.map((entry) => entry.cavity));
@@ -312,13 +313,13 @@
     const threshold = -(toleranceMm / cavityMin);
     const exactFit = axisScores.every((score) => score >= 0);
     const fitsTightly = axisScores.some((score) => score < 0.02);
-    const axisGaps = axisEntries.map((entry) => ({
+    const axisGaps = axisEntries.map((entry, index) => ({
       axis: entry.key === 'w' ? 'width' : entry.key === 'h' ? 'height' : 'depth',
       label: entry.key === 'w' ? 'W' : entry.key === 'h' ? 'H' : 'D',
       cavity: Math.round(entry.cavity),
       appliance: Math.round(entry.appliance),
       clearanceMm: Math.round(entry.clearanceMm),
-      gapMm: Math.round(entry.cavity - entry.appliance - entry.clearanceMm)
+      gapMm: Math.round(axisSpare[index])
     }));
     const binding = axisGaps
       .slice()
@@ -339,6 +340,7 @@
       }),
       sortScore,
       threshold,
+      requiredClearancePass: axisSpare.every((gap) => Number.isFinite(gap) && gap >= 0),
       exactFit,
       fitsTightly: fitsTightly || fitScore < 0,
       axisGaps,
@@ -626,6 +628,7 @@
           clearanceMode
         });
         if (!fitMeta) return null;
+        if (!fitMeta.requiredClearancePass) return null;
         if (fitMeta.fitScore < fitMeta.threshold) return null;
         return buildResult(product, fitMeta, filters);
       })

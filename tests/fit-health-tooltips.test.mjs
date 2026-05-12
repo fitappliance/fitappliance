@@ -9,6 +9,7 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'
 const searchDomPath = path.join(repoRoot, 'public', 'scripts', 'search-dom.js');
 const productCardPath = path.join(repoRoot, 'public', 'scripts', 'ui', 'product-card.js');
 const stylesPath = path.join(repoRoot, 'public', 'styles.css');
+const deferredStylesPath = path.join(repoRoot, 'public', 'styles-deferred.css');
 
 async function loadSearchDom() {
   const module = await import(`${pathToFileURL(searchDomPath).href}?cacheBust=${Date.now()}`);
@@ -35,56 +36,63 @@ function makeMatch(overrides = {}) {
     features: ['Upright', '5T', 'Class 5'],
     retailers: [{ n: 'JB Hi-Fi', p: null, url: 'https://www.jbhifi.com.au/products/hisense-hrcd640tbw' }],
     fitGapMm: 24,
+    fitScoreNumeric: 91,
+    fitAxisGaps: [
+      { axis: 'width', label: 'W', cavity: 1000, appliance: 912, clearanceMm: 10, gapMm: 78 },
+      { axis: 'height', label: 'H', cavity: 1900, appliance: 1785, clearanceMm: 20, gapMm: 95 },
+      { axis: 'depth', label: 'D', cavity: 800, appliance: 725, clearanceMm: 10, gapMm: 65 }
+    ],
+    bindingAxis: 'depth',
     ...overrides
   };
 }
 
-test('phase 51 fit health: perfect fit renders green verdict with tooltip copy', async () => {
+test('phase 58 fit verdict: search-dom card renders numeric score instead of legacy text pill', async () => {
   const { buildCardHtml } = await loadSearchDom();
-  const dom = new JSDOM(buildCardHtml(makeMatch({ fitGapMm: 24 })));
-  const badge = dom.window.document.querySelector('.fit-health');
+  const dom = new JSDOM(buildCardHtml(makeMatch({ fitScoreNumeric: 91 })));
+  const score = dom.window.document.querySelector('.fit-score-block');
 
-  assert.ok(badge);
-  assert.ok(badge.classList.contains('fit-health--perfect'));
-  assert.ok(badge.classList.contains('fit-badge--exact'), 'legacy exact class should remain for compatibility');
-  assert.match(badge.textContent ?? '', /Perfect fit/);
-  assert.match(badge.textContent ?? '', /24mm spare/);
-  assert.ok(badge.querySelector('.fit-health-light'));
-
-  const popover = badge.querySelector('.fit-help-popover');
-  const help = badge.querySelector('.fit-help');
-  const tooltip = badge.querySelector('.fit-help-tooltip');
-  assert.equal(popover?.tagName, 'DETAILS');
-  assert.equal(help?.tagName, 'SUMMARY');
-  assert.equal(help?.getAttribute('aria-label'), 'What does Perfect fit mean?');
-  assert.match(tooltip?.textContent ?? '', /practical clearance buffer/i);
+  assert.ok(score);
+  assert.match(score.textContent ?? '', /91/);
+  assert.match(score.textContent ?? '', /Excellent fit/);
+  assert.equal(dom.window.document.querySelector('.fit-health'), null);
+  assert.equal(dom.window.document.querySelector('.fit-badge--exact, .fit-badge--tight, .fit-badge--relax'), null);
 });
 
-test('phase 51 fit health: tight fit renders amber verdict and ventilation nudge', async () => {
-  const { buildCardHtml } = await loadSearchDom();
-  const dom = new JSDOM(buildCardHtml(makeMatch({ fitGapMm: 3, fitsTightly: true })));
-  const badge = dom.window.document.querySelector('.fit-health');
+test('phase 58 fit verdict: live list-row renderer surfaces only the score popover', async () => {
+  const { buildRow } = await loadProductCard();
+  const html = buildRow(makeMatch(), {
+    annualEnergyCost: () => '132',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+  const dom = new JSDOM(html);
 
-  assert.ok(badge?.classList.contains('fit-health--tight'));
-  assert.ok(badge?.classList.contains('fit-badge--tight'));
-  assert.match(badge?.textContent ?? '', /Tight fit/);
-  assert.match(badge?.textContent ?? '', /3mm spare/);
-  assert.match(dom.window.document.body.textContent ?? '', /verify ventilation/i);
+  assert.ok(dom.window.document.querySelector('.fit-score-popover'));
+  assert.ok(dom.window.document.querySelector('.score-breakdown'));
+  assert.match(dom.window.document.querySelector('.fit-score-label')?.textContent ?? '', /91/);
+  assert.equal(dom.window.document.querySelector('.fit-health'), null);
+  assert.doesNotMatch(html, /Perfect fit|Tight fit|Won't fit/);
 });
 
-test('phase 51 fit health: blocked near miss renders red verdict with needed cavity amount', async () => {
-  const { buildCardHtml } = await loadSearchDom();
-  const dom = new JSDOM(buildCardHtml(makeMatch({ cavityNeededMm: 18, fitGapMm: 18 })));
-  const badge = dom.window.document.querySelector('.fit-health');
+test('phase 58 fit verdict: missing numeric score does not fall back to removed legacy pill', async () => {
+  const { buildRow, buildCard } = await loadProductCard();
+  const noScore = makeMatch();
+  delete noScore.fitScoreNumeric;
+  const rowHtml = buildRow(noScore, {
+    annualEnergyCost: () => '132',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+  const cardHtml = buildCard(noScore, {
+    tcoHtml: () => '',
+    retailersHtml: () => '',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
 
-  assert.ok(badge?.classList.contains('fit-health--blocked'));
-  assert.ok(badge?.classList.contains('fit-badge--relax'));
-  assert.match(badge?.textContent ?? '', /Won't fit/);
-  assert.match(badge?.textContent ?? '', /\+18mm cavity needed/);
-  assert.match(badge?.querySelector('.fit-help-tooltip')?.textContent ?? '', /larger cavity/i);
+  assert.doesNotMatch(rowHtml, /fit-score-block|fit-score-popover|fit-health/);
+  assert.doesNotMatch(cardHtml, /fit-score-block|fit-score-popover|fit-health/);
 });
 
-test('phase 51 fit health: manufacturer clearance advisory includes contextual rear-clearance help', async () => {
+test('phase 58 fit verdict: manufacturer clearance advisory keeps contextual help without layout popover overlap', async () => {
   const { buildCardHtml } = await loadSearchDom();
   const html = buildCardHtml(makeMatch({
     brand: '<img src=x onerror=alert(1)>',
@@ -96,53 +104,15 @@ test('phase 51 fit health: manufacturer clearance advisory includes contextual r
   assert.ok(advisory);
   assert.match(advisory.textContent ?? '', /\+50mm rear/);
   assert.match(advisory.querySelector('.fit-help')?.getAttribute('title') ?? '', /plugs, compressors, hoses and ventilation/i);
+  assert.equal(dom.window.document.querySelector('.fit-help-popover'), null);
   assert.doesNotMatch(html, /<img/i);
   assert.doesNotMatch(html, /onerror/i);
 });
 
-test('phase 51 fit health: live list-row renderer shows the verdict in product cards', async () => {
-  const { buildRow } = await loadProductCard();
-  const html = buildRow(makeMatch({ fitScore: 0.04, fitGapMm: undefined }), {
-    annualEnergyCost: () => '132',
-    resolveRetailerUrl: (retailer) => retailer.url
-  });
-  const dom = new JSDOM(html);
-  const badge = dom.window.document.querySelector('.fit-health');
+test('phase 58 fit verdict: styles place score ring at the card anchor without legacy pill dependency', () => {
+  const css = `${fs.readFileSync(stylesPath, 'utf8')}\n${fs.readFileSync(deferredStylesPath, 'utf8')}`;
 
-  assert.ok(badge, 'the live homepage row renderer must surface fit-health');
-  assert.ok(badge?.classList.contains('fit-health--perfect'));
-  assert.match(badge?.textContent ?? '', /Perfect fit/);
-  assert.match(badge?.textContent ?? '', /29mm spare/);
-  assert.equal(badge?.querySelector('.fit-help-popover')?.tagName, 'DETAILS');
-  assert.match(badge?.querySelector('.fit-help-tooltip')?.textContent ?? '', /practical clearance buffer/i);
-});
-
-test('phase 51 fit health: live grid-card renderer shows tight and blocked verdicts', async () => {
-  const { buildCard } = await loadProductCard();
-  const tightHtml = buildCard(makeMatch({ fitGapMm: 2, fitsTightly: true }), {
-    tcoHtml: () => '',
-    retailersHtml: () => '',
-    resolveRetailerUrl: (retailer) => retailer.url
-  });
-  const blockedHtml = buildCard(makeMatch({ cavityNeededMm: 12 }), {
-    tcoHtml: () => '',
-    retailersHtml: () => '',
-    resolveRetailerUrl: (retailer) => retailer.url
-  });
-
-  assert.match(tightHtml, /fit-health--tight/);
-  assert.match(tightHtml, /Tight fit/);
-  assert.match(blockedHtml, /fit-health--blocked/);
-  assert.match(blockedHtml, /\+12mm cavity needed/);
-});
-
-test('phase 51 fit health: styles define traffic-light states and accessible tooltip affordance', () => {
-  const css = fs.readFileSync(stylesPath, 'utf8');
-
-  assert.match(css, /\.fit-health--perfect/);
-  assert.match(css, /\.fit-health--tight/);
-  assert.match(css, /\.fit-health--blocked/);
-  assert.match(css, /\.fit-health-light/);
-  assert.match(css, /\.fit-help/);
-  assert.match(css, /\.fit-help-popover\[open\] \.fit-help-tooltip/);
+  assert.match(css, /\.card-zone-fit\s*\{[\s\S]*justify-items:start/);
+  assert.match(css, /\.fit-score-ring--excellent/);
+  assert.match(css, /\.fit-score-popover\s*\{[\s\S]*margin-left:0/);
 });
