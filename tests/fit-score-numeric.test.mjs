@@ -169,3 +169,54 @@ test('phase 58 fit score: search results expose fitScoreNumeric beside legacy fi
   assert.equal(rows[0].fitScoreNumeric, 100);
   assert.equal(typeof rows[0].fitScore, 'number');
 });
+
+test('search filtering: tolerance cannot admit products that fail required clearance', async () => {
+  const { searchWithFacets } = await loadSearchCore();
+  const { rows } = searchWithFacets([
+    {
+      id: 'too-wide-fridge',
+      cat: 'fridge',
+      brand: 'LG',
+      model: 'GB596',
+      w: 596,
+      h: 1800,
+      d: 620,
+      unavailable: false,
+      retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/lg-gb596' }]
+    }
+  ], {
+    cat: 'fridge',
+    w: 600,
+    h: 1900,
+    d: 650,
+    toleranceMm: 10
+  }, {}, { retailerOnly: false });
+
+  assert.equal(rows.length, 0);
+});
+
+test('search filtering: exact zero practical clearance remains eligible', async () => {
+  const { searchWithFacets } = await loadSearchCore();
+  const { rows } = searchWithFacets([
+    {
+      id: 'zero-gap-fridge',
+      cat: 'fridge',
+      brand: 'LG',
+      model: 'GB590',
+      w: 590,
+      h: 1880,
+      d: 640,
+      unavailable: false,
+      retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/lg-gb590' }]
+    }
+  ], {
+    cat: 'fridge',
+    w: 600,
+    h: 1900,
+    d: 650,
+    toleranceMm: 10
+  }, {}, { retailerOnly: false });
+
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0].tightestGapMm, 0);
+});

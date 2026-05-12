@@ -1040,44 +1040,43 @@
     return 'exact';
   }
 
-  function getFitHealthCopy(state, gap) {
-    if (state === 'relax') {
-      return {
-        tone: 'blocked',
-        label: "Won't fit",
-        detail: `+${Math.max(0, Math.ceil(Number(gap) || 0))}mm cavity needed`,
-        help: 'This product needs a larger cavity before the practical clearance buffer can pass. Re-measure width, height and depth before ordering.'
-      };
-    }
-    if (state === 'tight') {
-      return {
-        tone: 'tight',
-        label: 'Tight fit',
-        detail: `${Math.max(0, Math.round(Number(gap) || 0))}mm spare`,
-        help: 'This product passes the fit check but has very little spare room. Verify ventilation, door swing and delivery path before ordering.'
-      };
-    }
-    return {
-      tone: 'perfect',
-      label: 'Perfect fit',
-      detail: `${Math.max(0, Math.round(Number(gap) || 0))}mm spare`,
-      help: 'This product passes the practical clearance buffer for the cavity you entered. Still confirm the product manual before purchase.'
-    };
+  function fitScoreTier(score) {
+    const value = Math.max(0, Math.min(100, Math.round(Number(score) || 0)));
+    if (value >= 90) return 'excellent';
+    if (value >= 75) return 'strong';
+    if (value >= 60) return 'workable';
+    if (value >= 40) return 'tight';
+    if (value >= 1) return 'marginal';
+    return 'no-fit';
   }
 
-  function buildFitBadgeHtml(match) {
-    const state = getFitBadgeState(match);
-    const gap = getFitGapMm(match);
-    const copy = getFitHealthCopy(state, gap);
-    const legacyClass = state === 'relax' ? 'fit-badge--relax' : state === 'tight' ? 'fit-badge--tight' : 'fit-badge--exact';
-    return `<div class="fit-health fit-health--${escHtml(copy.tone)} fit-badge ${legacyClass}" data-fit-health="${escHtml(copy.tone)}">
-      <span class="fit-health-light" aria-hidden="true"></span>
-      <span class="fit-health-label">${escHtml(copy.label)}</span>
-      <span class="fit-health-detail">${escHtml(copy.detail)}</span>
-      <details class="fit-help-popover">
-        <summary class="fit-help" aria-label="What does ${escHtml(copy.label)} mean?">?</summary>
-        <span class="fit-help-tooltip" role="tooltip">${escHtml(copy.help)}</span>
-      </details>
+  function fitScoreLabel(score) {
+    return {
+      excellent: 'Excellent fit',
+      strong: 'Strong fit',
+      workable: 'Workable fit',
+      tight: 'Tight fit',
+      marginal: 'Marginal fit',
+      'no-fit': "Won't fit"
+    }[fitScoreTier(score)];
+  }
+
+  function buildFitScoreHtml(match) {
+    const parsed = Number(match?.fitScoreNumeric);
+    if (!Number.isFinite(parsed)) return '';
+    const value = Math.max(0, Math.min(100, Math.round(parsed)));
+    const tier = fitScoreTier(value);
+    const label = fitScoreLabel(value);
+    const radius = 17;
+    const circumference = 2 * Math.PI * radius;
+    const offset = circumference * (1 - (value / 100));
+    return `<div class="fit-score-block" data-fit-score-tier="${escHtml(tier)}">
+      <svg class="fit-score-ring fit-score-ring--${escHtml(tier)}" role="img" aria-label="Fit score ${value} out of 100, ${escHtml(label)}" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <circle class="fit-score-ring-track" cx="20" cy="20" r="${radius}" fill="none" stroke="currentColor" stroke-opacity="0.18" stroke-width="4"></circle>
+        <circle class="fit-score-ring-value" cx="20" cy="20" r="${radius}" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="${circumference.toFixed(2)}" stroke-dashoffset="${offset.toFixed(2)}" transform="rotate(-90 20 20)"></circle>
+        <text class="fit-score-number" x="20" y="24" text-anchor="middle">${value}</text>
+      </svg>
+      <span class="fit-score-label">${value} — ${escHtml(label)}</span>
     </div>`;
   }
 
@@ -1402,7 +1401,8 @@
               </div>
             </div>
             <div class="card-fit-row">
-              ${buildFitBadgeHtml(match)}
+              ${buildNearMissBadgeHtml(match)}
+              ${buildFitScoreHtml(match)}
               ${isTight ? '<span class="warning-pill">verify ventilation</span>' : ''}
               ${match.showPopularityBadge ? '<span class="fit-badge fit-badge--popular">Popular in AU</span>' : ''}
               ${buildAwkwardSpaceTagsHtml(match)}

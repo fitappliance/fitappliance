@@ -169,71 +169,6 @@ function getLinkedRetailers(product) {
     .filter((retailer) => isRetailerProductPageUrl(retailer?.url ?? retailer?.href));
 }
 
-function getFitGapMm(product) {
-  const needed = Number(product?.cavityNeededMm);
-  if (Number.isFinite(needed) && needed > 0) return Math.ceil(needed);
-  const explicit = Number(product?.fitGapMm ?? product?.gapMm ?? product?.tightestGapMm);
-  if (Number.isFinite(explicit)) return Math.round(explicit);
-  const score = Number(product?.fitScore);
-  const minDimension = Math.min(
-    ...[product?.w, product?.h, product?.d]
-      .map((value) => Number(value))
-      .filter((value) => Number.isFinite(value) && value > 0)
-  );
-  if (Number.isFinite(score) && Number.isFinite(minDimension)) {
-    return Math.max(0, Math.round(score * minDimension));
-  }
-  return product?.fitsTightly ? 4 : 20;
-}
-
-function getFitBadgeState(product) {
-  const needed = Number(product?.cavityNeededMm);
-  if (Number.isFinite(needed) && needed > 0) return 'relax';
-  if (product?.fitsTightly || getFitGapMm(product) < 5) return 'tight';
-  return 'exact';
-}
-
-function getFitHealthCopy(state, gap) {
-  if (state === 'relax') {
-    return {
-      tone: 'blocked',
-      label: "Won't fit",
-      detail: `+${Math.max(0, Math.ceil(Number(gap) || 0))}mm cavity needed`,
-      help: 'This product needs a larger cavity before the practical clearance buffer can pass. Re-measure width, height and depth before ordering.'
-    };
-  }
-  if (state === 'tight') {
-    return {
-      tone: 'tight',
-      label: 'Tight fit',
-      detail: `${Math.max(0, Math.round(Number(gap) || 0))}mm spare`,
-      help: 'This product passes the fit check but has very little spare room. Verify ventilation, door swing and delivery path before ordering.'
-    };
-  }
-  return {
-    tone: 'perfect',
-    label: 'Perfect fit',
-    detail: `${Math.max(0, Math.round(Number(gap) || 0))}mm spare`,
-    help: 'This product passes the practical clearance buffer for the cavity you entered. Still confirm the product manual before purchase.'
-  };
-}
-
-export function buildFitHealthHtml(product) {
-  const state = getFitBadgeState(product);
-  const gap = getFitGapMm(product);
-  const copy = getFitHealthCopy(state, gap);
-  const legacyClass = state === 'relax' ? 'fit-badge--relax' : state === 'tight' ? 'fit-badge--tight' : 'fit-badge--exact';
-  return `<div class="fit-health fit-health--${escHtml(copy.tone)} fit-badge ${legacyClass}" data-fit-health="${escHtml(copy.tone)}">
-    <span class="fit-health-light" aria-hidden="true"></span>
-    <span class="fit-health-label">${escHtml(copy.label)}</span>
-    <span class="fit-health-detail">${escHtml(copy.detail)}</span>
-    <details class="fit-help-popover">
-      <summary class="fit-help" aria-label="What does ${escHtml(copy.label)} mean?">?</summary>
-      <span class="fit-help-tooltip" role="tooltip">${escHtml(copy.help)}</span>
-    </details>
-  </div>`;
-}
-
 function buildFitScoreHtml(product) {
   if (product?.fitScoreNumeric === null || product?.fitScoreNumeric === undefined) return '';
   return renderFitScoreCardBlock(product.fitScoreNumeric, {
@@ -681,7 +616,7 @@ function buildZoneA(product, deps = {}) {
       <div class="card-zone-thumb-half">${renderProductThumb(product)}</div>
       ${hasUsableCavity(cavity) ? `<div class="card-zone-wire-half">${renderMiniFrontWireframe(product, cavity)}</div>` : ''}
     </div>
-    <div class="card-zone-fit">${buildFitHealthHtml(product)}${buildFitScoreHtml(product)}</div>
+    <div class="card-zone-fit">${buildFitScoreHtml(product)}</div>
   </div>`;
 }
 
