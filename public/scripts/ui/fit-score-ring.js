@@ -1,3 +1,6 @@
+import { renderBreakdownHtml } from './score-breakdown.js';
+import { renderTooltipHtml } from './tooltips-dictionary.js';
+
 function escHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
     '&': '&amp;',
@@ -56,9 +59,41 @@ export function renderFitScoreCardBlock(score, options = {}) {
   const value = normalizeScore(score);
   const label = getFitScoreLabel(value);
   const inlineLabel = options.compact === true ? `${value}` : `${value} — ${label}`;
+  const tier = getFitScoreTier(value);
+  const breakdownHtml = options.breakdown
+    ? renderBreakdownHtml(options.breakdown, value)
+    : '';
 
-  return `<div class="fit-score-block" data-fit-score-tier="${escHtml(getFitScoreTier(value))}">
-    ${renderFitScoreRing(value, options)}
-    <span class="fit-score-label">${escHtml(inlineLabel)}</span>
-  </div>`;
+  if (!breakdownHtml) {
+    return `<div class="fit-score-block" data-fit-score-tier="${escHtml(tier)}">
+      ${renderFitScoreRing(value, options)}
+      <span class="fit-score-label">${escHtml(inlineLabel)}</span>
+    </div>`;
+  }
+
+  return `<details class="fit-score-popover" data-fit-score-tier="${escHtml(tier)}">
+    <summary class="fit-score-summary" aria-label="Show Fit Score breakdown">
+      ${renderFitScoreRing(value, options)}
+      <span class="fit-score-label">${escHtml(inlineLabel)}</span>
+      ${renderTooltipHtml('fit-score')}
+    </summary>
+    <div class="fit-score-popover__panel">${breakdownHtml}</div>
+  </details>`;
+}
+
+export function bindFitScorePopoverEsc(root = globalThis.document) {
+  if (!root?.addEventListener || root.__fitScoreEscBound) return;
+  root.__fitScoreEscBound = true;
+  root.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    const openPopover = root.querySelector?.('.fit-score-popover[open]');
+    if (openPopover) {
+      openPopover.open = false;
+      openPopover.querySelector?.('summary')?.focus?.();
+    }
+  });
+}
+
+if (typeof document !== 'undefined') {
+  bindFitScorePopoverEsc(document);
 }

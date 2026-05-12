@@ -38,7 +38,8 @@ test('phase 58 card integration: buildRow renders score block alongside fit heal
   });
 
   assert.match(html, /class="fit-health/);
-  assert.match(html, /class="fit-score-block"/);
+  assert.match(html, /class="fit-score-popover"/);
+  assert.match(html, /class="score-breakdown"/);
   assert.match(html, /92/);
   assert.match(html, /Excellent fit/);
 });
@@ -53,5 +54,5 @@ test('phase 58 card integration: missing fitScoreNumeric does not render score b
   });
 
   assert.match(html, /class="fit-health/);
-  assert.doesNotMatch(html, /fit-score-block/);
+  assert.doesNotMatch(html, /fit-score-block|fit-score-popover/);
 });
