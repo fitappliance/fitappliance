@@ -6,7 +6,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "build": "node scripts/pick-review-pilot.js && node scripts/generate-ui-copy.js && node scripts/generate-brand-pages.js && node scripts/inject-video-schema.js && node scripts/generate-comparisons.js && node scripts/generate-compare-vs-pages.js && node scripts/generate-guides.js && node scripts/generate-location-pages.js && node scripts/generate-sitemap.js && node scripts/generate-sw.js",
+    "build": "node scripts/pick-review-pilot.js && npm run build-evidence-index && node scripts/generate-ui-copy.js && node scripts/generate-brand-pages.js && node scripts/inject-video-schema.js && node scripts/generate-comparisons.js && node scripts/generate-compare-vs-pages.js && node scripts/generate-guides.js && node scripts/generate-location-pages.js && node scripts/generate-sitemap.js && node scripts/generate-sw.js",
     "test": "node --test tests/*.test.mjs tests/pdf-pipeline/*.test.mjs",
     "sync": "node scripts/sync.js && node scripts/split-appliances.js",
     "sync-verify": "npm run sync && npm run generate-comparisons && npm run verify-compare-quality",
@@ -34,6 +34,7 @@
     "enrich-appliances": "node scripts/enrich-appliances.js",
     "enrich-evidence": "node scripts/enrich-evidence.js",
     "enrich-manual-retailers": "node scripts/enrich-manual-retailers.js",
+    "build-evidence-index": "node scripts/build-evidence-index.js",
     "gsc-fetch": "node scripts/gsc-fetch.js",
     "keyword-gap": "node scripts/keyword-gap.js",
     "aggregate-errors": "node scripts/aggregate-errors.js",
@@ -44,7 +45,7 @@
     "open-perf-pr": "node scripts/open-perf-pr.js",
     "perf-diagnose": "node scripts/perf-diagnose.js",
     "generate-pages": "npm run pick-review-pilot && node scripts/generate-brand-pages.js && node scripts/inject-video-schema.js && node scripts/generate-comparisons.js && npm run generate-compare-vs",
-    "generate-all": "npm run enrich-evidence && npm run enrich-manual-retailers && npm run generate-ui-copy && npm run generate-pages && npm run generate-cavity && npm run generate-doorway && npm run generate-guides && npm run generate-location && npm run generate-sitemap && npm run generate-sw && npm run generate-og-images && npm run optimize-og-images && npm run generate-image-sitemap && npm run generate-rss && npm run build-link-graph && npm run validate-schema",
+    "generate-all": "npm run enrich-evidence && npm run enrich-manual-retailers && npm run build-evidence-index && npm run generate-ui-copy && npm run generate-pages && npm run generate-cavity && npm run generate-doorway && npm run generate-guides && npm run generate-location && npm run generate-sitemap && npm run generate-sw && npm run generate-og-images && npm run optimize-og-images && npm run generate-image-sitemap && npm run generate-rss && npm run build-link-graph && npm run validate-schema",
     "validate-videos": "node scripts/validate-videos.js",
     "inject-video-schema": "node scripts/inject-video-schema.js",
     "validate-reviews": "node scripts/validate-reviews.js",

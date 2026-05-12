@@ -2,9 +2,10 @@
 'use strict';
 
 const path = require('node:path');
-const { mkdirSync, readFileSync, writeFileSync } = require('node:fs');
+const { existsSync, mkdirSync, readFileSync, writeFileSync } = require('node:fs');
 
 const { SITE_ORIGIN } = require('./common/site-origin.js');
+const { buildEvidenceIndexFromFile } = require('./build-evidence-index.js');
 
 const DEFAULT_CAVITY_WIDTHS = Object.freeze([540, 580, 600, 620, 640, 700, 800, 900]);
 const PRACTICAL_CLEARANCE = Object.freeze({ side: 5, top: 20, rear: 10 });
@@ -53,6 +54,21 @@ function loadCatalog(repoRoot = path.resolve(__dirname, '..')) {
   return Object.entries(CATEGORY_FILE_BY_CAT).flatMap(([cat, fileName]) => {
     const data = JSON.parse(readFileSync(path.join(repoRoot, 'public', 'data', fileName), 'utf8'));
     return (data.products ?? []).map((product) => ({ ...product, cat: product.cat ?? cat }));
+  });
+}
+
+function loadEvidenceIndex(repoRoot = path.resolve(__dirname, '..')) {
+  const outputPath = path.join(repoRoot, 'public', 'data', 'evidence-index.json');
+  if (existsSync(outputPath)) {
+    return JSON.parse(readFileSync(outputPath, 'utf8'));
+  }
+  const manualEvidencePath = path.join(repoRoot, 'data', 'manual-evidence.json');
+  if (!existsSync(manualEvidencePath)) {
+    return {};
+  }
+  return buildEvidenceIndexFromFile({
+    repoRoot,
+    outputPath
   });
 }
 
@@ -394,7 +410,56 @@ function renderAlternatives(alternatives, cavityW) {
   ].join('\n');
 }
 
-function buildFitCheckPage(product, cavityW, allProducts = []) {
+function formatEvidenceDate(value) {
+  const raw = String(value ?? '').trim();
+  const direct = raw.match(/^\d{4}-\d{2}-\d{2}/)?.[0] ?? '';
+  if (!direct) return '';
+  const [year, month, day] = direct.split('-').map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day));
+  return new Intl.DateTimeFormat('en-AU', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    timeZone: 'UTC'
+  }).format(date);
+}
+
+function isSafeEvidenceUrl(value) {
+  const raw = String(value ?? '').trim();
+  if (!raw) return false;
+  try {
+    const parsed = new URL(raw);
+    return parsed.protocol === 'https:' || parsed.protocol === 'http:';
+  } catch {
+    return false;
+  }
+}
+
+function renderStaticProvenanceBlock(product, evidenceIndex = {}) {
+  const entry = evidenceIndex[String(product?.id ?? '')];
+  if (!entry) {
+    return `<div class="data-provenance data-provenance--fallback">
+        <span class="data-provenance__label">Evidence</span>
+        <span class="data-provenance__copy">Retailer or catalog spec. Official PDF verification pending.</span>
+      </div>`;
+  }
+  const date = formatEvidenceDate(entry.extractedAt);
+  const source = String(entry.source ?? 'official_pdf').replace(/[_-]+/g, ' ');
+  if (entry.verified === true && isSafeEvidenceUrl(entry.pdfUrl)) {
+    return `<div class="data-provenance data-provenance--verified">
+        <span class="data-provenance__label">Verified against official PDF</span>
+        <a class="data-provenance__link" href="${escAttr(entry.pdfUrl)}" target="_blank" rel="noopener">View ${escHtml(source)}</a>
+        ${date ? `<span class="data-provenance__date">Extracted ${escHtml(date)}</span>` : ''}
+      </div>`;
+  }
+  return `<div class="data-provenance data-provenance--pending">
+        <span class="data-provenance__label">Evidence pending review</span>
+        <span class="data-provenance__copy">PDF source captured, but not yet approved for runtime data.</span>
+        ${date ? `<span class="data-provenance__date">Captured ${escHtml(date)}</span>` : ''}
+      </div>`;
+}
+
+function buildFitCheckPage(product, cavityW, allProducts = [], options = {}) {
   const name = productName(product);
   const brandSlug = slugify(product?.brand);
   const modelSlug = slugify(product?.model || product?.id);
@@ -423,6 +488,7 @@ function buildFitCheckPage(product, cavityW, allProducts = []) {
     })
     .join('\n');
 
+  const evidenceIndex = options.evidenceIndex ?? {};
   const html = `<!doctype html>
 <html lang="en-AU">
 <head>
@@ -475,6 +541,7 @@ function buildFitCheckPage(product, cavityW, allProducts = []) {
           <tr><th>Depth</th><td>${escHtml(product.d)}mm</td></tr>
         </tbody>
       </table>
+      ${renderStaticProvenanceBlock(product, evidenceIndex)}
     </section>
     <section>
       <h2>Clearance breakdown</h2>
@@ -564,12 +631,13 @@ function textSimilarity(leftHtml, rightHtml) {
 function writePages(combinations, options = {}) {
   const repoRoot = options.repoRoot ?? path.resolve(__dirname, '..');
   const allProducts = options.allProducts ?? loadCatalog(repoRoot);
+  const evidenceIndex = options.evidenceIndex ?? loadEvidenceIndex(repoRoot);
   const outputDir = path.join(repoRoot, 'pages', 'fit-check');
   const reportDir = path.join(repoRoot, 'reports', 'fit-check');
   mkdirSync(outputDir, { recursive: true });
   mkdirSync(reportDir, { recursive: true });
 
-  const builtPages = combinations.map((combo) => buildFitCheckPage(combo.product, combo.cavityW, allProducts));
+  const builtPages = combinations.map((combo) => buildFitCheckPage(combo.product, combo.cavityW, allProducts, { evidenceIndex }));
   const pages = [];
   for (const page of builtPages) {
     const peerLinks = builtPages
