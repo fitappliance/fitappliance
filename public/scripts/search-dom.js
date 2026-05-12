@@ -1446,6 +1446,72 @@
     return true;
   }
 
+  function renderLiveFitPreview(container, {
+    cavity,
+    product,
+    clearance
+  } = {}) {
+    if (!container) return false;
+    const fitRenderer = globalScope?.FitVisualization;
+    const isoRenderer = globalScope?.IsoProjection;
+    if (!product || !cavity || !fitRenderer?.identifyBindingConstraint) {
+      container.textContent = '';
+      container.hidden = true;
+      return false;
+    }
+
+    const bindingAxis = fitRenderer.identifyBindingConstraint(cavity, product, clearance);
+    const name = safeDisplayText(product?.displayName || [product?.brand, product?.model].filter(Boolean).join(' '), 'Top result');
+    const svg = isoRenderer?.renderIsoFitSvg
+      ? isoRenderer.renderIsoFitSvg({
+        cavity,
+        product,
+        clearance,
+        bindingAxis
+      })
+      : fitRenderer.renderFitSvg?.({
+        cavity,
+        product,
+        clearance,
+        view: 'front'
+      }) ?? '';
+
+    container.hidden = false;
+    container.innerHTML = `<aside class="live-fit-preview" data-live-fit-preview aria-label="Live fit preview for top result">
+      <button type="button" class="live-fit-preview__toggle" data-live-fit-preview-toggle aria-expanded="true">
+        <span class="live-fit-preview__icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" focusable="false"><path d="M8 11l8-5 8 5-8 5-8-5z"/><path d="M8 11v10l8 5V16"/><path d="M24 11v10l-8 5"/></svg>
+        </span>
+        <span>
+          <strong>Live Fit Preview</strong>
+          <small>${escHtml(name)} · binding ${escHtml(bindingAxis)}</small>
+        </span>
+      </button>
+      <div class="live-fit-preview__panel" data-live-fit-preview-panel>
+        <div class="live-fit-preview__svg">${svg}</div>
+        <button type="button" class="live-fit-preview__expand" data-live-fit-preview-expand>Expand 3D view</button>
+      </div>
+    </aside>`;
+
+    const toggle = container.querySelector('[data-live-fit-preview-toggle]');
+    const panel = container.querySelector('[data-live-fit-preview-panel]');
+    toggle?.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') !== 'false';
+      toggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      panel.hidden = expanded;
+    });
+    container.querySelector('[data-live-fit-preview-expand]')?.addEventListener('click', () => {
+      openFitVizModal({
+        trigger: container.querySelector('[data-live-fit-preview-expand]'),
+        cavity,
+        product,
+        clearance,
+        view: 'iso'
+      });
+    });
+    return true;
+  }
+
   function buildRetailerFilterBannerHtml({
     count = 0,
     fallback = false,
@@ -2310,6 +2376,7 @@
     renderLiveCount,
     renderMobileFilterSheet,
     renderFitVisualization,
+    renderLiveFitPreview,
     renderDensityToggle,
     renderPresetChips,
     renderSaveSearchButton,

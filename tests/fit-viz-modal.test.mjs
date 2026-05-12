@@ -154,6 +154,44 @@ test('phase 53 fit-viz modal: Escape closes while 3D tab is active', async () =>
   assert.equal(window.document.querySelector('.fit-viz-modal'), null);
 });
 
+test('phase 58 live fit preview: renders fixed preview widget with isometric top-result SVG', async () => {
+  const isoCalls = installIsoProjectionStub();
+  const SearchDom = await loadSearchDomWithViz();
+  const window = makeWindow();
+  const root = window.document.getElementById('root');
+
+  const rendered = SearchDom.renderLiveFitPreview(root, fixture);
+
+  assert.equal(rendered, true);
+  assert.equal(root.hidden, false);
+  assert.ok(root.querySelector('[data-live-fit-preview]'));
+  assert.match(root.textContent, /Live Fit Preview/);
+  assert.match(root.innerHTML, /3D ISO/);
+  assert.equal(isoCalls.length, 1);
+  assert.deepEqual(isoCalls[0].cavity, fixture.cavity);
+  assert.deepEqual(isoCalls[0].product, fixture.product);
+});
+
+test('phase 58 live fit preview: toggle collapses and expand opens the 3D modal', async () => {
+  installIsoProjectionStub();
+  const SearchDom = await loadSearchDomWithViz();
+  const window = makeWindow();
+  const root = window.document.getElementById('root');
+
+  SearchDom.renderLiveFitPreview(root, fixture);
+  const toggle = root.querySelector('[data-live-fit-preview-toggle]');
+  const panel = root.querySelector('[data-live-fit-preview-panel]');
+  toggle.click();
+  assert.equal(toggle.getAttribute('aria-expanded'), 'false');
+  assert.equal(panel.hidden, true);
+
+  toggle.click();
+  root.querySelector('[data-live-fit-preview-expand]').click();
+  const modal = window.document.querySelector('.fit-viz-modal');
+  assert.ok(modal);
+  assert.equal(modal.querySelector('[data-fit-viz-modal-tab="iso"]').getAttribute('aria-selected'), 'true');
+});
+
 test('phase 48 fit-viz modal: escape and overlay close the dialog', async () => {
   const SearchDom = await loadSearchDomWithViz();
   const window = makeWindow();

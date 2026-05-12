@@ -2163,7 +2163,7 @@ function renderResults() {
   const retailerBanner = buildRetailerFilterBannerHtml();
 
   if (currentMatchRows.length===0) {
-    SearchDom.renderFitVisualization(document.querySelector('[data-fit-viz]'), {});
+    SearchDom.renderLiveFitPreview(document.querySelector('[data-fit-viz]'), {});
     container.className='product-list';
     if (currentNearMissRows.length > 0) {
       empty.classList.remove('show');
@@ -2183,7 +2183,7 @@ function renderResults() {
     return;
   }
   empty.classList.remove('show');
-  SearchDom.renderFitVisualization(document.querySelector('[data-fit-viz]'), {
+  SearchDom.renderLiveFitPreview(document.querySelector('[data-fit-viz]'), {
     cavity: lastSearchFilters,
     product: currentMatchRows[0],
     clearance: currentMatchRows[0]?.clearance ?? SearchCore.getEffectiveClearance(currentCat, currentMatchRows[0]?.brand || '__default__', currentClearanceMode, {

@@ -168,12 +168,12 @@ test('phase 48 fit visualization: three-view group stays below the 6KB inline bu
   assert.ok(Buffer.byteLength(html, 'utf8') <= 6144);
 });
 
-test('phase 48 fit visualization: homepage has a mount and imports visualization before search-dom', () => {
+test('phase 58 fit visualization: homepage has a mount and wires the floating live preview', () => {
   const html = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
 
   assert.match(html, /data-fit-viz/);
   assert.match(html, /import '\/scripts\/iso-projection\.js(?:\?[^']+)?';\s*import '\/scripts\/fit-visualization\.js(?:\?[^']+)?';\s*import '\/scripts\/search-dom\.js(?:\?[^']+)?';/);
-  assert.match(html, /SearchDom\.renderFitVisualization/);
+  assert.match(html, /SearchDom\.renderLiveFitPreview/);
 });
 
 test('phase 48 fit visualization: renderer is fast enough for repeated search updates', () => {
