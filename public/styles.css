@@ -2,7 +2,7 @@
 .tco-row, .card-energy-line, .data-trust-line,
 .fit-axis-bar, .fit-axis-bar__label,
 table.compare-table td, table.compare-table th,
-.results-meta-chip {
+.results-meta-chip, .facet-range-output {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum";
 }
@@ -187,6 +187,14 @@ table.compare-table td, table.compare-table th,
   background: var(--white);
 }
 
+.facet-sidebar {
+  position: sticky;
+  top: 80px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .facet-bar {
   display: flex;
   flex-direction: column;
@@ -267,6 +275,105 @@ table.compare-table td, table.compare-table th,
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
+}
+
+.facet-range-group {
+  gap: 6px;
+}
+
+.facet-range-output {
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
+.facet-range {
+  position: relative;
+  min-height: 30px;
+  display: grid;
+  align-items: center;
+}
+
+.facet-range input[type="range"] {
+  grid-area: 1 / 1;
+  width: 100%;
+  margin: 0;
+  accent-color: var(--copper);
+}
+
+.facet-range:not(.facet-range--single) input[type="range"]:last-child {
+  pointer-events: none;
+}
+
+.facet-range:not(.facet-range--single) input[type="range"]:last-child::-webkit-slider-thumb {
+  pointer-events: auto;
+}
+
+.facet-range:not(.facet-range--single) input[type="range"]:last-child::-moz-range-thumb {
+  pointer-events: auto;
+}
+
+.facet-toggle--verified {
+  justify-content: flex-start;
+  line-height: 1.35;
+}
+
+.facet-toggle--verified input {
+  margin-top: 2px;
+  accent-color: var(--green);
+}
+
+.density-toggle {
+  display: inline-flex;
+  gap: 4px;
+  margin: 0 0 14px;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--paper);
+}
+
+.density-toggle button {
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--ink-3);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.density-toggle button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.result-list--compact .fit-axis-bars,
+.result-list--compact .clearance-bars,
+.result-list--compact .card-zone-tech-specs,
+.result-list--compact .data-trust-line,
+.result-list--compact .delivery-check,
+.result-list--compact .card-warning,
+.result-list--compact .retailer-commission-note,
+.result-list--compact .card-zone-model {
+  display: none;
+}
+
+.result-list--compact .fit-result-item {
+  padding-block: 10px;
+}
+
+.result-list--compact .card-zone-title {
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.result-list--detailed .data-trust-line,
+.result-list--detailed .clearance-bars {
+  display: flex;
 }
 
 .fit-retailer-summary {
@@ -1168,6 +1275,12 @@ body.scroll-locked {
 
   .facet-shell {
     display: none;
+  }
+
+  .facet-sidebar {
+    position: static;
+    max-height: none;
+    overflow: visible;
   }
 
   .mobile-sheet .facet-shell,

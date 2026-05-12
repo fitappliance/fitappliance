@@ -148,6 +148,93 @@
     });
   }
 
+  const RANGE_FILTERS = Object.freeze([
+    { id: 'width', title: 'Cavity width', unit: 'mm', min: 400, max: 1200, step: 10, minKey: 'widthMin', maxKey: 'widthMax' },
+    { id: 'height', title: 'Cavity height', unit: 'mm', min: 800, max: 2200, step: 10, minKey: 'heightMin', maxKey: 'heightMax' },
+    { id: 'depth', title: 'Cavity depth', unit: 'mm', min: 400, max: 800, step: 10, minKey: 'depthMin', maxKey: 'depthMax' },
+    { id: 'score', title: 'Fit score', unit: '', min: 0, max: 100, step: 5, minKey: 'scoreMin', single: true },
+    { id: 'stars', title: 'Energy stars', unit: '★', min: 1, max: 7, step: 1, minKey: 'starsMin', maxKey: 'starsMax' },
+    { id: 'price', title: 'Price', unit: '$', min: 0, max: 10000, step: 100, minKey: 'priceMin', maxKey: 'priceMax' }
+  ]);
+
+  function finiteOrFallback(value, fallback) {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : fallback;
+  }
+
+  function formatRangeValue(value, unit) {
+    const rounded = Math.round(Number(value));
+    if (unit === '$') return `$${rounded.toLocaleString('en-AU')}`;
+    if (unit === '★') return `${rounded}★`;
+    return unit ? `${rounded}${unit}` : String(rounded);
+  }
+
+  function syncRangeOutput(output, config, minInput, maxInput) {
+    if (!output) return;
+    const left = formatRangeValue(minInput.value, config.unit);
+    if (config.single) {
+      output.textContent = `${left}+`;
+      return;
+    }
+    const right = formatRangeValue(maxInput.value, config.unit);
+    output.textContent = `${left}–${right}`;
+  }
+
+  function renderRangeFilter(doc, config, activeFacets, onChange) {
+    const section = doc.createElement('section');
+    section.className = 'facet-group facet-range-group';
+    section.dataset.rangeFacet = config.id;
+
+    const title = doc.createElement('h3');
+    title.className = 'facet-title';
+    title.textContent = config.title;
+
+    const output = doc.createElement('output');
+    output.className = 'facet-range-output';
+    output.setAttribute('aria-live', 'polite');
+
+    const rail = doc.createElement('div');
+    rail.className = `facet-range${config.single ? ' facet-range--single' : ''}`;
+
+    const minInput = doc.createElement('input');
+    minInput.type = 'range';
+    minInput.min = String(config.min);
+    minInput.max = String(config.max);
+    minInput.step = String(config.step);
+    minInput.value = String(finiteOrFallback(activeFacets?.[config.minKey], config.min));
+    minInput.dataset.sliderKey = config.minKey;
+    setAriaLabel(minInput, `${config.title} minimum`);
+
+    const maxInput = doc.createElement('input');
+    if (!config.single) {
+      maxInput.type = 'range';
+      maxInput.min = String(config.min);
+      maxInput.max = String(config.max);
+      maxInput.step = String(config.step);
+      maxInput.value = String(finiteOrFallback(activeFacets?.[config.maxKey], config.max));
+      maxInput.dataset.sliderKey = config.maxKey;
+      setAriaLabel(maxInput, `${config.title} maximum`);
+    }
+
+    const emit = (key, value) => {
+      syncRangeOutput(output, config, minInput, maxInput);
+      onChange?.({ type: 'slider', key, value });
+    };
+    minInput.addEventListener('input', () => emit(config.minKey, minInput.value));
+    minInput.addEventListener('change', () => emit(config.minKey, minInput.value));
+    rail.appendChild(minInput);
+
+    if (!config.single) {
+      maxInput.addEventListener('input', () => emit(config.maxKey, maxInput.value));
+      maxInput.addEventListener('change', () => emit(config.maxKey, maxInput.value));
+      rail.appendChild(maxInput);
+    }
+
+    syncRangeOutput(output, config, minInput, maxInput);
+    section.append(title, output, rail);
+    return section;
+  }
+
   function renderFacetBar(container, counts = {}, activeFacets = {}, onChange) {
     if (!container) return;
     container.textContent = '';
@@ -193,59 +280,28 @@
       container.appendChild(section);
     }
 
-    const priceSection = doc.createElement('section');
-    priceSection.className = 'facet-group';
-    const priceTitle = doc.createElement('h3');
-    priceTitle.className = 'facet-title';
-    priceTitle.textContent = 'Price';
-    priceSection.appendChild(priceTitle);
-    const priceRow = doc.createElement('div');
-    priceRow.className = 'facet-price-row';
-    const minInput = doc.createElement('input');
-    minInput.type = 'number';
-    minInput.min = '0';
-    minInput.placeholder = 'Min';
-    minInput.value = activeFacets?.priceMin ?? '';
-    minInput.dataset.facetPriceMin = '1';
-    setAriaLabel(minInput, 'Minimum price');
-    minInput.addEventListener('change', () => onChange?.({ type: 'priceMin', value: minInput.value }));
-    const maxInput = doc.createElement('input');
-    maxInput.type = 'number';
-    maxInput.min = '0';
-    maxInput.placeholder = 'Max';
-    maxInput.value = activeFacets?.priceMax ?? '';
-    maxInput.dataset.facetPriceMax = '1';
-    setAriaLabel(maxInput, 'Maximum price');
-    maxInput.addEventListener('change', () => onChange?.({ type: 'priceMax', value: maxInput.value }));
-    priceRow.append(minInput, maxInput);
-    priceSection.appendChild(priceRow);
-    container.appendChild(priceSection);
+    const verificationSection = doc.createElement('section');
+    verificationSection.className = 'facet-group';
+    const verifiedToggle = doc.createElement('label');
+    verifiedToggle.className = `facet-toggle facet-toggle--verified${activeFacets?.verifiedOnly === true ? ' facet-toggle--active' : ''}`;
+    const verifiedInput = doc.createElement('input');
+    verifiedInput.type = 'checkbox';
+    verifiedInput.dataset.verifiedOnly = '1';
+    verifiedInput.checked = activeFacets?.verifiedOnly === true;
+    setAriaLabel(verifiedInput, 'Show only Verified Fit products');
+    const verifiedLabel = doc.createElement('span');
+    verifiedLabel.textContent = 'Show only Verified Fit products';
+    verifiedInput.addEventListener('change', () => {
+      verifiedToggle.classList.toggle('facet-toggle--active', verifiedInput.checked);
+      onChange?.({ type: 'verifiedOnly', value: verifiedInput.checked });
+    });
+    verifiedToggle.append(verifiedInput, verifiedLabel);
+    verificationSection.appendChild(verifiedToggle);
+    container.appendChild(verificationSection);
 
-    const starsSection = doc.createElement('section');
-    starsSection.className = 'facet-group';
-    const starsTitle = doc.createElement('h3');
-    starsTitle.className = 'facet-title';
-    starsTitle.textContent = 'Energy stars';
-    starsSection.appendChild(starsTitle);
-    const starsList = doc.createElement('div');
-    starsList.className = 'facet-options';
-    starsList.setAttribute('role', 'radiogroup');
-    setAriaLabel(starsList, 'Minimum energy stars');
-    const starCounts = Object.entries(counts?.stars ?? {});
-    for (const [stars, count] of starCounts) {
-      const button = doc.createElement('button');
-      button.type = 'button';
-      button.className = `facet-option${Number(activeFacets?.stars) === Number(stars) ? ' facet-option--active' : ''}`;
-      button.dataset.facetStars = stars;
-      button.setAttribute('role', 'radio');
-      button.setAttribute('tabindex', '0');
-      button.setAttribute('aria-checked', Number(activeFacets?.stars) === Number(stars) ? 'true' : 'false');
-      button.textContent = `${stars}+ (${count})`;
-      bindToggleButton(button, { type: 'stars', value: Number(stars) }, onChange);
-      starsList.appendChild(button);
-    }
-    starsSection.appendChild(starsList);
-    container.appendChild(starsSection);
+    RANGE_FILTERS.forEach((config) => {
+      container.appendChild(renderRangeFilter(doc, config, activeFacets, onChange));
+    });
 
     const retailerSection = doc.createElement('section');
     retailerSection.className = 'facet-group';
@@ -296,8 +352,32 @@
     if (activeFacets?.priceMax !== null && activeFacets?.priceMax !== undefined) {
       chips.push({ key: 'priceMax', value: activeFacets.priceMax, label: `Max $${activeFacets.priceMax}` });
     }
+    [
+      ['widthMin', 'W min'],
+      ['widthMax', 'W max'],
+      ['heightMin', 'H min'],
+      ['heightMax', 'H max'],
+      ['depthMin', 'D min'],
+      ['depthMax', 'D max']
+    ].forEach(([key, label]) => {
+      if (activeFacets?.[key] !== null && activeFacets?.[key] !== undefined) {
+        chips.push({ key, value: activeFacets[key], label: `${label} ${activeFacets[key]}mm` });
+      }
+    });
     if (activeFacets?.stars !== null && activeFacets?.stars !== undefined) {
       chips.push({ key: 'stars', value: activeFacets.stars, label: `${activeFacets.stars}+ stars` });
+    }
+    if (activeFacets?.scoreMin !== null && activeFacets?.scoreMin !== undefined) {
+      chips.push({ key: 'scoreMin', value: activeFacets.scoreMin, label: `Fit Score ${activeFacets.scoreMin}+` });
+    }
+    if (activeFacets?.starsMin !== null && activeFacets?.starsMin !== undefined) {
+      chips.push({ key: 'starsMin', value: activeFacets.starsMin, label: `${activeFacets.starsMin}★ min` });
+    }
+    if (activeFacets?.starsMax !== null && activeFacets?.starsMax !== undefined) {
+      chips.push({ key: 'starsMax', value: activeFacets.starsMax, label: `${activeFacets.starsMax}★ max` });
+    }
+    if (activeFacets?.verifiedOnly === true) {
+      chips.push({ key: 'verifiedOnly', value: true, label: 'Verified Fit only' });
     }
     if (activeFacets?.availableOnly === true) {
       chips.push({ key: 'availableOnly', value: true, label: 'Available in AU' });
@@ -320,7 +400,7 @@
     }
   }
 
-  function renderSortDropdown(container, currentSort = 'best-fit', onChange) {
+  function renderSortDropdown(container, currentSort = 'fit-score-desc', onChange) {
     if (!container) return;
     container.textContent = '';
     const doc = container.ownerDocument;
@@ -332,21 +412,47 @@
     select.dataset.sortSelect = '1';
     setAriaLabel(select, 'Sort results');
     [
-      ['best-fit', 'Best fit'],
-      ['price-asc', 'Price ↑'],
-      ['price-desc', 'Price ↓'],
-      ['popularity', 'Popularity'],
-      ['stars', 'Energy stars']
+      ['fit-score-desc', 'Fit Score (high to low)'],
+      ['verified-first', 'Verified first'],
+      ['price-asc', 'Price (low to high)'],
+      ['price-desc', 'Price (high to low)'],
+      ['stars', 'Energy Stars (high to low)'],
+      ['brand', 'Brand (A-Z)'],
+      ['best-fit', 'Legacy best fit']
     ].forEach(([value, labelText]) => {
       const option = doc.createElement('option');
       option.value = value;
       option.textContent = labelText;
       select.appendChild(option);
     });
-    select.value = currentSort;
+    select.value = [...select.options].some((option) => option.value === currentSort) ? currentSort : 'fit-score-desc';
     select.addEventListener('change', () => onChange?.(select.value));
     label.append(text, select);
     container.appendChild(label);
+  }
+
+  function renderDensityToggle(container, currentDensity = 'standard', onChange) {
+    if (!container) return;
+    container.textContent = '';
+    const doc = container.ownerDocument;
+    const group = doc.createElement('div');
+    group.className = 'density-toggle';
+    group.setAttribute('role', 'group');
+    group.setAttribute('aria-label', 'Result density');
+    [
+      ['compact', 'Compact'],
+      ['standard', 'Standard'],
+      ['detailed', 'Detailed']
+    ].forEach(([value, label]) => {
+      const button = doc.createElement('button');
+      button.type = 'button';
+      button.dataset.density = value;
+      button.setAttribute('aria-pressed', currentDensity === value ? 'true' : 'false');
+      button.textContent = label;
+      button.addEventListener('click', () => onChange?.(value));
+      group.appendChild(button);
+    });
+    container.appendChild(group);
   }
 
   function renderLiveCount(el, totalMatches, totalCatalog) {
@@ -2183,6 +2289,7 @@
     renderLiveCount,
     renderMobileFilterSheet,
     renderFitVisualization,
+    renderDensityToggle,
     renderPresetChips,
     renderSaveSearchButton,
     renderSearchResults,

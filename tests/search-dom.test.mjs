@@ -56,20 +56,21 @@ test('phase 45a search-dom: renderActiveChips renders removable chips for each a
   assert.equal(removed.length, 1);
 });
 
-test('phase 45a search-dom: renderSortDropdown renders five sort options', async () => {
+test('phase 45a search-dom: renderSortDropdown renders RTINGS sort options', async () => {
   const { renderSortDropdown } = await loadSearchDom();
   const window = makeWindow();
   const container = window.document.getElementById('sort');
 
-  renderSortDropdown(container, 'price-asc', () => {});
+  renderSortDropdown(container, 'fit-score-desc', () => {});
 
   const select = container.querySelector('select');
   assert.ok(select);
-  assert.equal(select.querySelectorAll('option').length, 5);
-  assert.equal(select.value, 'price-asc');
+  assert.equal(select.querySelectorAll('option').length, 7);
+  assert.equal(select.value, 'fit-score-desc');
+  assert.match(select.textContent, /Fit Score \(high to low\)/);
 });
 
-test('phase 45a search-dom: stars facet exposes a radiogroup label for assistive tech', async () => {
+test('phase 58 search-dom: stars facet is rendered as a millimeter-style range control', async () => {
   const { renderFacetBar } = await loadSearchDom();
   const window = makeWindow();
   const container = window.document.getElementById('facet');
@@ -82,10 +83,10 @@ test('phase 45a search-dom: stars facet exposes a radiogroup label for assistive
     availableOnly: true
   }, () => {});
 
-  const starsList = container.querySelector('.facet-group:nth-of-type(3) .facet-options');
-  assert.ok(starsList);
-  assert.equal(starsList.getAttribute('role'), 'radiogroup');
-  assert.equal(starsList.getAttribute('aria-label'), 'Minimum energy stars');
+  const starsRange = container.querySelector('[data-range-facet="stars"]');
+  assert.ok(starsRange);
+  assert.equal(starsRange.querySelectorAll('input[type="range"]').length, 2);
+  assert.match(starsRange.textContent, /Energy stars/i);
 });
 
 test('phase 45a search-dom: renderLiveCount writes the visible result copy', async () => {
