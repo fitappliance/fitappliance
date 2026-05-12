@@ -769,6 +769,57 @@
   line-height: 1.35;
   margin-top: 7px;
 }
+
+.data-provenance {
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--line-default, #d0cfc8);
+  border-left-width: 3px;
+  background: #f9fafb;
+  color: var(--ink-secondary, #6b6b6b);
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.data-provenance--verified {
+  border-left-color: var(--accent-green, #2e7d32);
+  background: #ecfdf5;
+}
+
+.data-provenance--pending {
+  border-left-color: var(--accent-amber, #b06900);
+  background: #fffbeb;
+}
+
+.data-provenance--fallback {
+  border-left-color: var(--ink-tertiary, #9c9c9c);
+  background: #f9fafb;
+}
+
+.data-provenance__label {
+  color: var(--ink-primary, #1a1a1a);
+  font-weight: 800;
+}
+
+.data-provenance__copy,
+.data-provenance__date {
+  color: var(--ink-secondary, #6b6b6b);
+}
+
+.data-provenance__link {
+  color: var(--ink-primary, #1a1a1a);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.data-provenance__link:hover,
+.data-provenance__link:focus-visible {
+  color: var(--accent-orange, #d97706);
+}
 .c-price.no-price, .p-row-price.no-price {
   color: var(--ink-3);
   font-family: 'Outfit', sans-serif;
@@ -846,6 +897,63 @@
   .data-trust-line {
     font-size: 12px;
   }
+}
+
+/* Phase 57 T4: instrument-panel austerity and tighter data density. */
+.p-card,
+.p-row,
+.p-row--rtings,
+.p-card--rtings,
+.card-availability,
+.retailer-accordion-content,
+.delivery-check,
+.data-provenance,
+.verdict-box,
+.alternative-card,
+.compare-table-shell,
+.facet-option,
+.facet-toggle,
+.sort-dropdown select,
+.facet-price-row input {
+  border-radius: 4px;
+}
+
+.p-card,
+.p-row,
+.p-row--rtings,
+.p-card--rtings,
+.card-availability,
+.retailer-accordion-content,
+.data-provenance {
+  box-shadow: 0 1px 0 rgb(0 0 0 / 4%);
+}
+
+.dim-tag,
+.spec-chip,
+.clearance-bar-label,
+.fit-axis-bar,
+.results-meta-chip,
+.data-trust-line,
+.data-provenance,
+.card-zone-tech-specs {
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+input,
+select,
+textarea {
+  border-radius: 2px;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent-orange, #d97706);
+  outline-offset: 2px;
 }
 /* ACCC-compliant: affiliate disclosure right on button */
 .btn-buy::after { content:'↗';font-size:11px;opacity:.7; }

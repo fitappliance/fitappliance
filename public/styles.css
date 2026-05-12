@@ -1,9 +1,55 @@
+:root {
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --ink-primary: #1a1a1a;
+  --ink-secondary: #6b6b6b;
+  --ink-tertiary: #9c9c9c;
+  --line-default: #d0cfc8;
+  --accent-orange: #d97706;
+  --accent-green: #2e7d32;
+  --accent-amber: #b06900;
+  --accent-red: #c62828;
+  --ink: var(--ink-primary);
+  --ink-2: var(--ink-secondary);
+  --ink-3: var(--ink-tertiary);
+  --border: var(--line-default);
+  --copper: var(--accent-orange);
+  --green: var(--accent-green);
+  --amber: var(--accent-amber);
+  --red: var(--accent-red);
+}
+
+body {
+  font-family: var(--font-display);
+  color: var(--ink-primary);
+}
+
+small,
+caption,
+.caption {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
 .dim-tag, .spec-chip, .p-row-dims, .card-specs-row,
 .tco-row, .card-energy-line, .data-trust-line,
 .fit-axis-bar, .fit-axis-bar__label,
 table.compare-table td, table.compare-table th,
 .results-meta-chip, .facet-range-output,
-.hero-trust-strip, .hero-sample-chip {
+.hero-trust-strip, .hero-sample-chip,
+.clearance-bar-label, .clearance-bar-track,
+.data-provenance, .evidence-receipt {
+  font-family: var(--font-mono);
+}
+
+.dim-tag, .spec-chip, .p-row-dims, .card-specs-row,
+.tco-row, .card-energy-line, .data-trust-line,
+.fit-axis-bar, .fit-axis-bar__label,
+table.compare-table td, table.compare-table th,
+.results-meta-chip, .facet-range-output,
+.hero-trust-strip, .hero-sample-chip,
+.clearance-bar-label, .clearance-bar-track,
+.data-provenance, .evidence-receipt {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum";
 }

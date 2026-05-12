@@ -1,8 +1,18 @@
 import { displayBrandName } from './brand-utils.js';
 import { renderFitScoreCardBlock } from './fit-score-ring.js';
 import { renderProductThumb } from './product-thumb.js';
+import { loadEvidenceIndex, renderProvenanceBlock } from './provenance.js';
 import { isRetailerProductPageUrl } from './retailer-modal.js';
 import { computeBreakdown } from './score-breakdown.js';
+
+let runtimeEvidenceIndex = {};
+loadEvidenceIndex()
+  .then((index) => {
+    runtimeEvidenceIndex = index;
+  })
+  .catch(() => {
+    runtimeEvidenceIndex = {};
+  });
 
 function escHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (char) => ({
@@ -783,11 +793,13 @@ function buildReplacementCtaHtml(product) {
 }
 
 function buildZoneB(product, deps, primaryTitle, modelLine) {
+  const evidenceIndex = deps.evidenceIndex ?? runtimeEvidenceIndex;
   return `<div class="card-zone-b">
     ${buildTitleHtml(product, primaryTitle, modelLine)}
     ${buildClearanceBarsHtml(product, deps)}
     ${buildTechSpecsHtml(product, deps)}
     ${buildDataTrustLine(product, deps.capturedDate ?? '')}
+    ${renderProvenanceBlock(product, evidenceIndex)}
     ${buildEvidenceReceiptHtml(product)}
     ${buildFeatureFlagsHtml(product)}
     ${buildDeliveryCheckHtml(product)}
