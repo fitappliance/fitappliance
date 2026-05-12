@@ -644,6 +644,7 @@ nav {
           List (recommended)
         </button>
       </div>
+      <div data-density-toggle></div>
 
       <!-- Product output -->
       <div id="productGrid" class="product-list"></div>
@@ -659,7 +660,7 @@ nav {
     </div>
 
     <!-- SIDEBAR -->
-    <aside class="sidebar">
+    <aside class="sidebar facet-sidebar">
 
       <div class="scard facet-shell">
         <div class="scard-title">Refine results</div>
@@ -946,6 +947,7 @@ import { buildReplacementDimensionState, findReplacementSource, getReplacementSu
 import { buildSpaceAlerts } from './scripts/space-alerts.mjs';
 import { buildBrandOptions } from './scripts/ui/filters.js';
 import { computeFitScore } from './scripts/ui/fit-score.js';
+import { applySliderFilters, normalizeDensity, sortRowsForRtings } from './scripts/ui/range-filters.js';
 import { clearSaved, getSavedIds, isProductSaved, saveProduct, unsaveProduct } from './scripts/ui/saved-matches.js';
 import {
   buildSearchHistoryHtml,
@@ -1208,7 +1210,9 @@ let activeFacetState = {
   availableOnly: false,
   retailerOnly: true,
 };
-let currentSortBy = 'best-fit';
+const DENSITY_STORAGE_KEY = 'fitappliance-result-density';
+let currentSortBy = 'fit-score-desc';
+let currentDensity = readDensityPreference();
 let currentClearanceMode = 'practical';
 let lastSearchFilters = null;
 let lastSearchContext = null;
@@ -1403,9 +1407,19 @@ async function readUrlParams() {
   activeFacetState = normalizeHomeFacets(parsedState.facets ?? {});
   activeFacetState = normalizeHomeFacets({
     ...activeFacetState,
-    retailerOnly: parsedState.retailerOnly
+    retailerOnly: parsedState.retailerOnly,
+    widthMin: params.get('widthMin'),
+    widthMax: params.get('widthMax'),
+    heightMin: params.get('heightMin'),
+    heightMax: params.get('heightMax'),
+    depthMin: params.get('depthMin'),
+    depthMax: params.get('depthMax'),
+    scoreMin: params.get('scoreMin'),
+    starsMin: params.get('starsMin'),
+    starsMax: params.get('starsMax'),
+    verifiedOnly: params.get('verifiedOnly') === '1'
   });
-  currentSortBy = parsedState.sortBy ?? 'best-fit';
+  currentSortBy = params.get('sort') || parsedState.sortBy || 'fit-score-desc';
   currentClearanceMode = parsedState.clearanceMode ?? 'practical';
   syncLegacyFacetInputs();
 
@@ -1579,9 +1593,37 @@ function normalizeHomeFacets(next = {}) {
     priceMin: parsePositiveInteger(next.priceMin),
     priceMax: parsePositiveInteger(next.priceMax),
     stars: parsePositiveInteger(next.stars),
+    widthMin: parsePositiveInteger(next.widthMin),
+    widthMax: parsePositiveInteger(next.widthMax),
+    heightMin: parsePositiveInteger(next.heightMin),
+    heightMax: parsePositiveInteger(next.heightMax),
+    depthMin: parsePositiveInteger(next.depthMin),
+    depthMax: parsePositiveInteger(next.depthMax),
+    scoreMin: parsePositiveInteger(next.scoreMin),
+    starsMin: parsePositiveInteger(next.starsMin),
+    starsMax: parsePositiveInteger(next.starsMax),
     availableOnly: next.availableOnly === true,
     retailerOnly: next.retailerOnly !== false,
+    verifiedOnly: next.verifiedOnly === true
   };
+}
+
+function readDensityPreference() {
+  try {
+    return normalizeDensity(localStorage.getItem(DENSITY_STORAGE_KEY));
+  } catch {
+    return 'standard';
+  }
+}
+
+function setDensityPreference(value) {
+  currentDensity = normalizeDensity(value);
+  try {
+    localStorage.setItem(DENSITY_STORAGE_KEY, currentDensity);
+  } catch {
+    // Ignore storage errors; density still updates for this render.
+  }
+  renderResults();
 }
 
 function syncLegacyFacetInputs() {
@@ -1612,7 +1654,7 @@ function filterOperationalPool(rows, context = {}) {
 
 function mergeManagedSearchParams(baseParams, nextParams) {
   const merged = new URLSearchParams(baseParams);
-  ['cat', 'w', 'h', 'd', 'tol', 'preset', 'brand', 'pmin', 'pmax', 'stars', 'avail', 'sort', 'mode', 'showAll', 'door', 'dwelling']
+  ['cat', 'w', 'h', 'd', 'tol', 'preset', 'brand', 'pmin', 'pmax', 'stars', 'avail', 'sort', 'mode', 'showAll', 'door', 'dwelling', 'widthMin', 'widthMax', 'heightMin', 'heightMax', 'depthMin', 'depthMax', 'scoreMin', 'starsMin', 'starsMax', 'verifiedOnly']
     .forEach((key) => merged.delete(key));
   for (const [key, value] of nextParams.entries()) {
     merged.set(key, value);
@@ -1629,6 +1671,20 @@ function updateSearchUrl(context = {}) {
     clearanceMode: currentClearanceMode,
     retailerOnly: activeFacetState.retailerOnly !== false
   });
+  if (currentSortBy) {
+    serialized.set('sort', currentSortBy);
+  }
+  if (activeFacetState.scoreMin !== null && activeFacetState.scoreMin !== undefined) {
+    serialized.set('scoreMin', String(activeFacetState.scoreMin));
+  }
+  ['widthMin', 'widthMax', 'heightMin', 'heightMax', 'depthMin', 'depthMax', 'starsMin', 'starsMax'].forEach((key) => {
+    if (activeFacetState[key] !== null && activeFacetState[key] !== undefined) {
+      serialized.set(key, String(activeFacetState[key]));
+    }
+  });
+  if (activeFacetState.verifiedOnly === true) {
+    serialized.set('verifiedOnly', '1');
+  }
   if (context?.doorW && context.doorW !== DEFAULT_DOORWAY_MM) {
     serialized.set('door', String(context.doorW));
   }
@@ -1644,6 +1700,13 @@ function countActiveFacets(facets = activeFacetState) {
   if (facets?.priceMin !== null && facets?.priceMin !== undefined) count += 1;
   if (facets?.priceMax !== null && facets?.priceMax !== undefined) count += 1;
   if (facets?.stars !== null && facets?.stars !== undefined) count += 1;
+  ['widthMin', 'widthMax', 'heightMin', 'heightMax', 'depthMin', 'depthMax'].forEach((key) => {
+    if (facets?.[key] !== null && facets?.[key] !== undefined) count += 1;
+  });
+  if (facets?.scoreMin !== null && facets?.scoreMin !== undefined) count += 1;
+  if (facets?.starsMin !== null && facets?.starsMin !== undefined) count += 1;
+  if (facets?.starsMax !== null && facets?.starsMax !== undefined) count += 1;
+  if (facets?.verifiedOnly === true) count += 1;
   if (facets?.availableOnly === true) count += 1;
   return count;
 }
@@ -1654,8 +1717,18 @@ function clearAllFacets() {
     priceMin: null,
     priceMax: null,
     stars: null,
+    widthMin: null,
+    widthMax: null,
+    heightMin: null,
+    heightMax: null,
+    depthMin: null,
+    depthMax: null,
+    scoreMin: null,
+    starsMin: null,
+    starsMax: null,
     availableOnly: false,
-    retailerOnly: true
+    retailerOnly: true,
+    verifiedOnly: false
   });
   syncLegacyFacetInputs();
   refreshSearchResults();
@@ -1708,7 +1781,7 @@ async function restoreSavedSearchState(state = {}) {
   if (state.h) document.getElementById('inH').value = String(state.h);
   if (state.d) document.getElementById('inD').value = String(state.d);
   activeFacetState = normalizeHomeFacets(state.facets || {});
-  currentSortBy = state.sortBy || 'best-fit';
+  currentSortBy = state.sortBy || 'fit-score-desc';
   currentClearanceMode = SearchCore.normalizeClearanceMode?.(state.clearanceMode) ?? 'practical';
   syncLegacyFacetInputs();
   doSearch({ preserveExistingFacets: true, toleranceMm: Number(state.tol ?? state.toleranceMm ?? 5) });
@@ -1734,6 +1807,11 @@ function renderFacetChrome(counts = {}) {
       currentSortBy = value;
       scheduleFacetRefresh();
     }
+  );
+  SearchDom.renderDensityToggle(
+    document.querySelector('[data-density-toggle]'),
+    currentDensity,
+    setDensityPreference
   );
   SearchDom.renderLiveCount(
     document.querySelector('[data-live-count]'),
@@ -1775,6 +1853,10 @@ function applyFacetDelta(delta) {
   } else if (delta?.type === 'stars') {
     const parsedStars = parsePositiveInteger(delta.value);
     next.stars = next.stars === parsedStars ? null : parsedStars;
+  } else if (delta?.type === 'slider') {
+    next[delta.key] = parsePositiveInteger(delta.value);
+  } else if (delta?.type === 'verifiedOnly') {
+    next.verifiedOnly = Boolean(delta.value);
   } else if (delta?.type === 'availableOnly') {
     next.availableOnly = Boolean(delta.value);
   } else if (delta?.type === 'retailerOnly') {
@@ -1800,8 +1882,18 @@ function handleActiveChipRemove(delta) {
     activeFacetState = normalizeHomeFacets({ ...activeFacetState, priceMin: null });
   } else if (delta?.key === 'priceMax') {
     activeFacetState = normalizeHomeFacets({ ...activeFacetState, priceMax: null });
+  } else if (['widthMin', 'widthMax', 'heightMin', 'heightMax', 'depthMin', 'depthMax'].includes(delta?.key)) {
+    activeFacetState = normalizeHomeFacets({ ...activeFacetState, [delta.key]: null });
   } else if (delta?.key === 'stars') {
     activeFacetState = normalizeHomeFacets({ ...activeFacetState, stars: null });
+  } else if (delta?.key === 'scoreMin') {
+    activeFacetState = normalizeHomeFacets({ ...activeFacetState, scoreMin: null });
+  } else if (delta?.key === 'starsMin') {
+    activeFacetState = normalizeHomeFacets({ ...activeFacetState, starsMin: null });
+  } else if (delta?.key === 'starsMax') {
+    activeFacetState = normalizeHomeFacets({ ...activeFacetState, starsMax: null });
+  } else if (delta?.key === 'verifiedOnly') {
+    activeFacetState = normalizeHomeFacets({ ...activeFacetState, verifiedOnly: false });
   } else if (delta?.key === 'availableOnly') {
     activeFacetState = normalizeHomeFacets({ ...activeFacetState, availableOnly: false });
   }
@@ -1834,10 +1926,10 @@ function refreshSearchResults() {
     ? operationalPool.filter((product) => SearchCore.hasRetailerLink?.(product) ?? (Array.isArray(product?.retailers) && product.retailers.length > 0))
     : operationalPool;
   let facetResult = SearchCore.applyFacets(retailerPool, activeFacetState);
-  currentMatchRows = SearchCore.sortMatches(facetResult.rows, currentSortBy);
+  currentMatchRows = sortRowsForRtings(applySliderFilters(facetResult.rows, activeFacetState), currentSortBy);
   if (retailerOnly && currentMatchRows.length === 0) {
     const fallbackFacetResult = SearchCore.applyFacets(operationalPool, activeFacetState);
-    const fallbackRows = SearchCore.sortMatches(fallbackFacetResult.rows, currentSortBy);
+    const fallbackRows = sortRowsForRtings(applySliderFilters(fallbackFacetResult.rows, activeFacetState), currentSortBy);
     if (fallbackRows.length > 0) {
       currentMatchRows = fallbackRows;
       facetResult = fallbackFacetResult;
@@ -1853,7 +1945,10 @@ function refreshSearchResults() {
       ...searchOptions,
       limit: 10
     }).filter((row) => filterOperationalPool([row], lastSearchContext).length === 1);
-    currentNearMissRows = SearchCore.applyFacets(nearMissPool, activeFacetState).rows.slice(0, 10);
+    currentNearMissRows = sortRowsForRtings(
+      applySliderFilters(SearchCore.applyFacets(nearMissPool, activeFacetState).rows, activeFacetState),
+      currentSortBy
+    ).slice(0, 10);
   } else {
     currentNearMissRows = [];
   }
@@ -2055,7 +2150,7 @@ function renderResults() {
   });
 
   if (currentView === 'list') {
-    container.className = 'product-list';
+    container.className = `product-list result-list--${currentDensity}`;
     container.innerHTML = retailerBanner + renderProducts(display, (product) => buildRow(product, {
       annualEnergyCost,
       lifetimeCost,
@@ -2064,7 +2159,7 @@ function renderResults() {
       capturedDate: CATEGORY_CAPTURED_DATES[product.cat] ?? APPLIANCES_META?.last_updated ?? ''
     }));
   } else {
-    container.className = 'product-grid';
+    container.className = `product-grid result-list--${currentDensity}`;
     container.innerHTML = retailerBanner + renderProducts(display, (product) => buildCard(product, {
       tcoHtml,
       retailersHtml,
