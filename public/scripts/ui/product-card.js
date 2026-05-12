@@ -241,6 +241,186 @@ function productText(product) {
   ].map((value) => String(value ?? '')).join(' ');
 }
 
+function slugifyAssetPart(value) {
+  return String(value ?? '')
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+function categoryAssetSlug(cat) {
+  return {
+    fridge: 'fridge',
+    dishwasher: 'dishwasher',
+    dryer: 'dryer',
+    washing_machine: 'washing-machine'
+  }[cat] || slugifyAssetPart(cat);
+}
+
+function isSafeImageUrl(value) {
+  const raw = String(value ?? '').trim();
+  if (!raw) return false;
+  if (raw.startsWith('/')) return !raw.startsWith('//');
+  try {
+    const parsed = new URL(raw);
+    return parsed.protocol === 'https:' || parsed.protocol === 'http:';
+  } catch {
+    return false;
+  }
+}
+
+function getExplicitPhotoCandidates(product = {}) {
+  const directValues = [
+    product.image,
+    product.image_url,
+    product.imageUrl,
+    product.photo,
+    product.photo_url,
+    product.photoUrl,
+    product.thumbnail,
+    product.thumbnail_url,
+    product.thumbnailUrl
+  ];
+  const media = Array.isArray(product.media) ? product.media : [];
+  const mediaValues = media.flatMap((item) => [
+    item?.url,
+    item?.src,
+    item?.image,
+    item?.image_url,
+    item?.thumbnail_url
+  ]);
+  return [...directValues, ...mediaValues]
+    .map((value) => String(value ?? '').trim())
+    .filter(isSafeImageUrl);
+}
+
+export function getProductPhotoCandidates(product = {}) {
+  const brandSlug = slugifyAssetPart(displayBrandName(product?.brand) || product?.brand);
+  const catSlug = categoryAssetSlug(product?.cat);
+  const localCandidates = brandSlug && catSlug
+    ? [
+      `/og-images/${brandSlug}-${catSlug}.webp`,
+      `/og-images/${brandSlug}-${catSlug}.png`
+    ]
+    : [];
+  return [...new Set([...getExplicitPhotoCandidates(product), ...localCandidates])];
+}
+
+function getPhotoTitle(product = {}) {
+  return buildPrimaryTitle(product) || [displayBrandName(product?.brand), product?.model].filter(Boolean).join(' ') || 'Appliance';
+}
+
+function compactDimensions(product = {}) {
+  const parts = [
+    ['W', product?.w],
+    ['H', product?.h],
+    ['D', product?.d]
+  ]
+    .map(([label, value]) => {
+      const number = toPositiveNumber(value);
+      return number ? `${label} ${Math.round(number)}mm` : '';
+    })
+    .filter(Boolean);
+  return parts.join(' · ');
+}
+
+export function handleProductPhotoError(image) {
+  if (!image) return;
+  const fallbacks = String(image.dataset.photoFallbacks ?? '')
+    .split('|')
+    .map((value) => value.trim())
+    .filter(Boolean);
+  const next = fallbacks.shift();
+  if (next) {
+    image.dataset.photoFallbacks = fallbacks.join('|');
+    image.src = next;
+    return;
+  }
+  image.hidden = true;
+  image.closest?.('.product-photo-thumb')?.classList.add('product-photo-thumb--fallback-only');
+  const lightboxFallback = image.closest?.('.product-photo-lightbox__media')?.querySelector('.product-photo-lightbox__fallback');
+  lightboxFallback?.setAttribute('aria-hidden', 'false');
+}
+
+export function openProductPhotoLightboxFromButton(button) {
+  const doc = button?.ownerDocument ?? (typeof document !== 'undefined' ? document : null);
+  if (!doc) return false;
+  doc.querySelectorAll('.product-photo-lightbox').forEach((node) => node.remove());
+
+  const title = button.getAttribute('data-photo-title') || 'Appliance';
+  const model = button.getAttribute('data-photo-model') || '';
+  const brand = button.getAttribute('data-photo-brand') || '';
+  const dims = button.getAttribute('data-photo-dims') || '';
+  const src = button.getAttribute('data-photo-src') || '';
+  const fallbacks = button.getAttribute('data-photo-fallbacks') || '';
+
+  const overlay = doc.createElement('div');
+  overlay.className = 'product-photo-lightbox';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('aria-label', `${title} photo details`);
+  overlay.innerHTML = `
+    <div class="product-photo-lightbox__panel">
+      <button type="button" class="product-photo-lightbox__close" aria-label="Close product photo">×</button>
+      <div class="product-photo-lightbox__media">
+        ${src ? `<img src="${escHtml(src)}" data-photo-fallbacks="${escHtml(fallbacks)}" alt="${escHtml(title)} product image" onerror="handleProductPhotoError(this)">` : ''}
+        <div class="product-photo-lightbox__fallback" aria-hidden="${src ? 'true' : 'false'}">${renderProductThumb({ brand })}</div>
+      </div>
+      <div class="product-photo-lightbox__copy">
+        <p class="product-photo-lightbox__brand">${escHtml(brand)}</p>
+        <h3>${escHtml(title)}</h3>
+        ${model ? `<p>Model ${escHtml(model)}</p>` : ''}
+        ${dims ? `<p>${escHtml(dims)}</p>` : ''}
+      </div>
+    </div>
+  `;
+  const close = () => {
+    overlay.remove();
+    button.focus?.();
+  };
+  overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) close();
+  });
+  overlay.querySelector('.product-photo-lightbox__panel')?.addEventListener('click', (event) => event.stopPropagation());
+  overlay.querySelector('.product-photo-lightbox__close')?.addEventListener('click', close);
+  const keydown = (event) => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      doc.removeEventListener('keydown', keydown);
+      close();
+    }
+  };
+  doc.addEventListener('keydown', keydown);
+  doc.body?.appendChild(overlay);
+  overlay.querySelector('.product-photo-lightbox__close')?.focus?.();
+  return true;
+}
+
+if (typeof globalThis !== 'undefined') {
+  if (typeof globalThis.handleProductPhotoError !== 'function') {
+    globalThis.handleProductPhotoError = handleProductPhotoError;
+  }
+  if (typeof globalThis.openProductPhotoLightboxFromButton !== 'function') {
+    globalThis.openProductPhotoLightboxFromButton = openProductPhotoLightboxFromButton;
+  }
+}
+
+export function renderProductPhotoThumb(product = {}) {
+  const candidates = getProductPhotoCandidates(product);
+  const [primary, ...fallbacks] = candidates;
+  const title = getPhotoTitle(product);
+  const brand = displayBrandName(product?.brand);
+  const model = String(product?.model ?? '').trim();
+  const dims = compactDimensions(product);
+  return `<button type="button" class="product-photo-thumb${primary ? '' : ' product-photo-thumb--fallback-only'}" aria-label="Open image preview for ${escHtml(title)}" onclick="openProductPhotoLightboxFromButton(this)" data-photo-title="${escHtml(title)}" data-photo-brand="${escHtml(brand)}" data-photo-model="${escHtml(model)}" data-photo-dims="${escHtml(dims)}" data-photo-src="${escHtml(primary ?? '')}" data-photo-fallbacks="${escHtml(fallbacks.join('|'))}">
+    <span class="product-photo-thumb__fallback">${renderProductThumb(product)}</span>
+    ${primary ? `<img class="product-photo-thumb__image" src="${escHtml(primary)}" data-photo-fallbacks="${escHtml(fallbacks.join('|'))}" alt="" loading="lazy" decoding="async" onerror="handleProductPhotoError(this)">` : ''}
+    <span class="product-photo-thumb__zoom" aria-hidden="true">⌕</span>
+  </button>`;
+}
+
 export function buildFeatureFlagsHtml(product) {
   const text = productText(product).toLowerCase();
   const isFridge = product?.cat === 'fridge';
@@ -576,46 +756,9 @@ export function buildClearanceBarsHtml(product, deps = {}) {
   </div>`;
 }
 
-export function renderMiniFrontWireframe(product = {}, cavity = {}) {
-  const productW = toPositiveNumber(product?.w);
-  const productH = toPositiveNumber(product?.h);
-  const cavityW = toPositiveNumber(cavity?.w);
-  const cavityH = toPositiveNumber(cavity?.h);
-  const safeLabel = escHtml(`${displayBrandName(product?.brand)} ${product?.model ?? ''}`.trim() || 'Appliance');
-
-  if (!productW || !productH || !cavityW || !cavityH) {
-    return `<svg class="mini-front-wireframe" role="img" aria-label="${safeLabel} front fit preview unavailable" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-      <rect x="14" y="10" width="32" height="40" rx="2" fill="#eeece6" stroke="#2c2c2c" stroke-width="1"/>
-      <text x="30" y="35" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#6b6b6b">—</text>
-    </svg>`;
-  }
-
-  const outer = { x: 6, y: 6, w: 48, h: 48 };
-  const ratioW = Math.max(0.12, Math.min(1, productW / cavityW));
-  const ratioH = Math.max(0.12, Math.min(1, productH / cavityH));
-  const innerW = Math.max(8, Math.round(outer.w * ratioW));
-  const innerH = Math.max(8, Math.round(outer.h * ratioH));
-  const innerX = Math.round(outer.x + (outer.w - innerW) / 2);
-  const innerY = Math.round(outer.y + (outer.h - innerH) / 2);
-
-  return `<svg class="mini-front-wireframe" role="img" aria-label="${safeLabel} mini front fit preview" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-    <rect x="${outer.x}" y="${outer.y}" width="${outer.w}" height="${outer.h}" rx="3" fill="none" stroke="#2c2c2c" stroke-width="1.2"/>
-    <rect x="${innerX}" y="${innerY}" width="${innerW}" height="${innerH}" rx="2" fill="#eeece6" fill-opacity="0.7" stroke="#2c2c2c" stroke-width="1"/>
-  </svg>`;
-}
-
-function hasUsableCavity(cavity = {}) {
-  return Boolean(toPositiveNumber(cavity?.w) && toPositiveNumber(cavity?.h));
-}
-
 function buildZoneA(product, deps = {}) {
-  const cavity = resolveCardCavity(product, deps);
-  const title = `${displayBrandName(product?.brand)} ${product?.model ?? ''}`.trim() || 'appliance';
-  return `<div class="card-zone-a" role="button" tabindex="0" aria-label="Open fit visualization for ${escHtml(title)}" data-fit-viz-card-trigger="${escHtml(product?.id ?? '')}">
-    <div class="card-zone-thumb-split">
-      <div class="card-zone-thumb-half">${renderProductThumb(product)}</div>
-      ${hasUsableCavity(cavity) ? `<div class="card-zone-wire-half">${renderMiniFrontWireframe(product, cavity)}</div>` : ''}
-    </div>
+  return `<div class="card-zone-a">
+    ${renderProductPhotoThumb(product)}
     <div class="card-zone-fit">${buildFitScoreHtml(product)}</div>
   </div>`;
 }

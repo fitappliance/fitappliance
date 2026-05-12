@@ -122,19 +122,31 @@ test('active/current UI: archived rows show replacement CTA instead of retailer 
   assert.doesNotMatch(html, /retailer-brand-card--jb-hi-fi/);
 });
 
-test('phase 55 card refactor: mini front wireframe uses cavity and product rectangles', async () => {
-  const { renderMiniFrontWireframe } = await import(productCardModuleUrl);
-  const html = renderMiniFrontWireframe(makeProduct(), { w: 600, h: 1900, d: 650 });
+test('phase 58 trust visualization: card replaces mini wireframe with clickable product photo thumbnail', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct(), {
+    annualEnergyCost: () => '88',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
 
-  assert.match(html, /class="mini-front-wireframe"/);
-  assert.equal((html.match(/<rect\b/g) ?? []).length, 2);
-  assert.match(html, /viewBox="0 0 60 60"/);
+  assert.match(html, /class="product-photo-thumb/);
+  assert.match(html, /product-photo-thumb__zoom/);
+  assert.match(html, /openProductPhotoLightboxFromButton/);
+  assert.doesNotMatch(html, /mini-front-wireframe/);
+  assert.doesNotMatch(html, /card-zone-wire-half/);
 });
 
-test('phase 55 card refactor: mini front wireframe has a no-cavity placeholder state', async () => {
-  const { renderMiniFrontWireframe } = await import(productCardModuleUrl);
-  const html = renderMiniFrontWireframe(makeProduct(), null);
+test('phase 58 trust visualization: photo thumbnail uses explicit image first and local asset fallbacks', async () => {
+  const { getProductPhotoCandidates, renderProductPhotoThumb } = await import(productCardModuleUrl);
+  const product = makeProduct({
+    image_url: 'https://cdn.example.com/hisense.png'
+  });
 
-  assert.equal((html.match(/<rect\b/g) ?? []).length, 1);
-  assert.match(html, />—<\/text>/);
+  const candidates = getProductPhotoCandidates(product);
+  assert.equal(candidates[0], 'https://cdn.example.com/hisense.png');
+  assert.ok(candidates.includes('/og-images/hisense-fridge.webp'));
+
+  const html = renderProductPhotoThumb(product);
+  assert.match(html, /src="https:\/\/cdn\.example\.com\/hisense\.png"/);
+  assert.match(html, /data-photo-fallbacks="\/og-images\/hisense-fridge\.webp\|\/og-images\/hisense-fridge\.png"/);
 });

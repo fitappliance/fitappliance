@@ -72,6 +72,30 @@ test('phase 48 card polish: mobile product thumbnails shrink to 64px', () => {
   assert.match(css, /\.fit-thumb\s*\{[^}]*width:\s*64px;[^}]*height:\s*64px/);
 });
 
+test('phase 58 trust visualization: product photo thumbnails replace split wireframe styling', () => {
+  const block = blockFor('.product-photo-thumb');
+  const zoom = blockFor('.product-photo-thumb__zoom');
+
+  assert.match(block, /width:\s*120px/);
+  assert.match(block, /height:\s*120px/);
+  assert.match(block, /cursor:\s*pointer/);
+  assert.match(zoom, /position:\s*absolute/);
+  assert.doesNotMatch(css, /mini-front-wireframe/);
+  assert.doesNotMatch(css, /card-zone-wire-half/);
+});
+
+test('phase 58 trust visualization: live fit preview is fixed and compact', () => {
+  const block = blockFor('.live-fit-preview');
+  const icon = blockFor('.live-fit-preview__icon');
+  const svg = blockFor('.live-fit-preview__svg svg');
+
+  assert.match(block, /position:\s*fixed/);
+  assert.match(block, /bottom:\s*18px/);
+  assert.match(block, /z-index:\s*90/);
+  assert.match(icon, /width:\s*38px/);
+  assert.match(svg, /max-width:\s*280px/);
+});
+
 test('phase 48 card polish: online compare button uses one clear CTA style', () => {
   const block = blockFor('.btn-search-online');
   const hover = blockFor('.btn-search-online:hover');
