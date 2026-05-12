@@ -171,6 +171,132 @@
     return clamp((cavity - appliance - clearanceMm) / cavity, -0.05, 0.5);
   }
 
+  function fitScoreAxisSpare(entry = {}, fallback = {}) {
+    const direct = Number(entry.spareMm ?? entry.gapMm ?? entry.gap ?? entry.spare);
+    if (Number.isFinite(direct)) return direct;
+    const cavity = Number(entry.cavity ?? fallback.cavity);
+    const appliance = Number(entry.appliance ?? fallback.appliance);
+    const clearanceMm = Number(entry.clearanceMm ?? fallback.clearanceMm ?? 0);
+    if (!Number.isFinite(cavity) || !Number.isFinite(appliance)) return null;
+    return cavity - appliance - (Number.isFinite(clearanceMm) ? clearanceMm : 0);
+  }
+
+  function normalizeFitScoreAxis(axis) {
+    const value = String(axis ?? '').trim().toLowerCase();
+    if (value === 'w') return 'width';
+    if (value === 'h') return 'height';
+    if (value === 'd') return 'depth';
+    return ['width', 'height', 'depth'].includes(value) ? value : '';
+  }
+
+  function deriveFitScoreAxisGaps(input = {}) {
+    const { axisGaps, cavity, applianceDims, clearance } = input && typeof input === 'object' ? input : {};
+    const fromEntries = Array.isArray(axisGaps)
+      ? axisGaps
+        .map((entry) => {
+          const axis = normalizeFitScoreAxis(entry?.axis ?? entry?.key);
+          const spareMm = fitScoreAxisSpare(entry);
+          return axis && Number.isFinite(spareMm) ? { axis, spareMm } : null;
+        })
+        .filter(Boolean)
+      : [];
+    if (fromEntries.length > 0) return fromEntries;
+
+    const cavityByAxis = {
+      width: Number(cavity?.w),
+      height: Number(cavity?.h),
+      depth: Number(cavity?.d)
+    };
+    const applianceByAxis = {
+      width: Number(applianceDims?.w),
+      height: Number(applianceDims?.h),
+      depth: Number(applianceDims?.d)
+    };
+    const clearanceByAxis = {
+      width: Number(clearance?.sides ?? clearance?.side ?? 0) * 2,
+      height: Number(clearance?.top ?? 0),
+      depth: Number(clearance?.rear ?? 0)
+    };
+
+    return ['width', 'height', 'depth']
+      .map((axis) => {
+        const cavityMm = cavityByAxis[axis];
+        const applianceMm = applianceByAxis[axis];
+        const clearanceMm = clearanceByAxis[axis];
+        if (!Number.isFinite(cavityMm) || cavityMm <= 0 || !Number.isFinite(applianceMm) || applianceMm <= 0) {
+          return null;
+        }
+        return {
+          axis,
+          spareMm: cavityMm - applianceMm - (Number.isFinite(clearanceMm) ? clearanceMm : 0)
+        };
+      })
+      .filter(Boolean);
+  }
+
+  function deriveFitScoreDimensionGaps(input = {}) {
+    return deriveFitScoreAxisGaps({
+      cavity: input?.cavity,
+      applianceDims: input?.applianceDims,
+      clearance: input?.clearance
+    });
+  }
+
+  function computeFitScoreNumeric(input = {}) {
+    const safeInput = input && typeof input === 'object' ? input : {};
+    const entries = deriveFitScoreAxisGaps(safeInput);
+    if (entries.length === 0) return 0;
+    const dimensionEntries = deriveFitScoreDimensionGaps(safeInput);
+    if (dimensionEntries.some((entry) => entry.spareMm < 0)) return 0;
+    if (entries.some((entry) => entry.spareMm < 0)) return 0;
+
+    const cavityByAxis = {
+      width: Number(safeInput?.cavity?.w),
+      height: Number(safeInput?.cavity?.h),
+      depth: Number(safeInput?.cavity?.d)
+    };
+    const weights = { width: 0.40, height: 0.30, depth: 0.30 };
+    let weighted = 0;
+
+    for (const entry of entries) {
+      const cavityMm = cavityByAxis[entry.axis] || Number(entry.cavity);
+      if (!Number.isFinite(cavityMm) || cavityMm <= 0) continue;
+      const ratio = Math.max(0, Number(entry.spareMm)) / cavityMm;
+      const axisFactor = Math.min(1, ratio / 0.2);
+      weighted += axisFactor * (weights[entry.axis] ?? 0);
+    }
+
+    const tightest = Math.min(...entries.map((entry) => entry.spareMm));
+    let penalty = 1;
+    if (tightest < 5) penalty = 0.85;
+    else if (tightest < 10) penalty = 0.95;
+
+    const raw = weighted * 100 * penalty;
+    if (!Number.isFinite(raw)) return 0;
+    return Math.max(0, Math.min(100, Math.round(raw)));
+  }
+
+  function getFitScoreTier(score) {
+    const value = Math.max(0, Math.min(100, Math.round(Number(score) || 0)));
+    if (value >= 90) return 'excellent';
+    if (value >= 75) return 'strong';
+    if (value >= 60) return 'workable';
+    if (value >= 40) return 'tight';
+    if (value >= 1) return 'marginal';
+    return 'no-fit';
+  }
+
+  function getFitScoreLabel(score) {
+    return {
+      excellent: 'Excellent fit',
+      strong: 'Strong fit',
+      workable: 'Workable fit',
+      tight: 'Tight fit',
+      marginal: 'Marginal fit',
+      'no-fit': "Won't fit"
+    }[getFitScoreTier(score)];
+  }
+
   function computeFitMeta(product, filters, options = {}) {
     const category = filters?.cat ?? product?.cat;
     const clearanceMode = normalizeClearanceMode(filters?.clearanceMode ?? options.clearanceMode);
@@ -197,9 +323,20 @@
     const binding = axisGaps
       .slice()
       .sort((left, right) => left.gapMm - right.gapMm)[0] ?? null;
+    const cavity = {
+      w: toMm(filters?.w),
+      h: toMm(filters?.h),
+      d: toMm(filters?.d)
+    };
 
     return {
       fitScore,
+      fitScoreNumeric: computeFitScoreNumeric({
+        axisGaps,
+        cavity,
+        applianceDims: { w: Number(product?.w), h: Number(product?.h), d: Number(product?.d) },
+        clearance
+      }),
       sortScore,
       threshold,
       exactFit,
@@ -320,6 +457,7 @@
     return {
       ...product,
       fitScore: fitMeta.fitScore,
+      fitScoreNumeric: fitMeta.fitScoreNumeric,
       sortScore: fitMeta.sortScore,
       exactFit: fitMeta.exactFit,
       fitsTightly: fitMeta.fitsTightly,
@@ -664,9 +802,12 @@
     calculateClearanceDeficit,
     applyFacets,
     computeAxisScore,
+    computeFitScoreNumeric,
     computeFitMeta,
     findSearchMatches,
     getCategoryClearance,
+    getFitScoreLabel,
+    getFitScoreTier,
     getAwkwardSpaceFlags,
     getEffectiveClearance,
     hasRetailerLink,

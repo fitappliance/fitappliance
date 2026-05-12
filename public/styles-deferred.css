@@ -1695,6 +1695,59 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   }
 }
 
+/* Phase 58 R1 — Fit Score Ring */
+.fit-score-block {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-left:12px;
+}
+.fit-score-ring {
+  width:40px;
+  height:40px;
+  display:block;
+  flex:0 0 auto;
+}
+.fit-score-ring--excellent,
+.fit-score-ring--strong {
+  color:#2e7d32;
+}
+.fit-score-ring--workable,
+.fit-score-ring--tight {
+  color:#b06900;
+}
+.fit-score-ring--marginal {
+  color:#c62828;
+}
+.fit-score-ring--no-fit {
+  color:#6b6b6b;
+}
+.fit-score-number {
+  font-family:var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-weight:700;
+  font-size:14px;
+  fill:currentColor;
+}
+.fit-score-label {
+  font-size:12px;
+  font-weight:500;
+  color:var(--ink-secondary, #6b6b6b);
+}
+
+@media(max-width:660px){
+  .fit-score-block {
+    margin-left:0;
+    gap:6px;
+  }
+  .fit-score-ring {
+    width:32px;
+    height:32px;
+  }
+  .fit-score-number {
+    font-size:12px;
+  }
+}
+
 @media (min-width:661px) {
   .float-bar { display: none !important; }
 }
