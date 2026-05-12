@@ -2168,6 +2168,9 @@
     items = [],
     shareUrl = '',
     onShare,
+    onRemove,
+    onClear,
+    onAddAnother,
     onClose
   } = {}) {
     if (!container) return;
@@ -2209,6 +2212,18 @@
     const body = doc.createElement('div');
     body.className = 'compare-modal-body';
     const cells = rows.map((row) => row.snapshot);
+    const tableRenderer = globalScope?.CompareTable?.renderCompareTable;
+    const compareTableHtml = typeof tableRenderer === 'function'
+      ? tableRenderer(cells)
+      : `
+        ${renderCompareInsightPanel(cells)}
+        ${renderCompareReportSummary(cells)}
+        ${renderCompareProductHeader(cells)}
+        <p class="compare-scroll-hint">Swipe sideways to compare product columns.</p>
+        <div class="compare-v2-sections">
+          ${getCompareSections().map((section) => renderCompareSection(section, cells)).join('')}
+        </div>
+      `;
     body.innerHTML = `
       <div class="compare-v2-toolbar">
         <p>Side-by-side fit, delivery, and retailer data. Differences are highlighted.</p>
@@ -2217,13 +2232,7 @@
           <button type="button" class="secondary compare-diff-toggle" data-compare-differences-only aria-pressed="false">Only show differences</button>
         </div>
       </div>
-      ${renderCompareInsightPanel(cells)}
-      ${renderCompareReportSummary(cells)}
-      ${renderCompareProductHeader(cells)}
-      <p class="compare-scroll-hint">Swipe sideways to compare product columns.</p>
-      <div class="compare-v2-sections">
-        ${getCompareSections().map((section) => renderCompareSection(section, cells)).join('')}
-      </div>
+      ${compareTableHtml}
     `;
     const diffToggle = body.querySelector('[data-compare-differences-only]');
     diffToggle?.addEventListener('click', () => {
@@ -2236,6 +2245,18 @@
     });
     body.querySelector('[data-compare-share]')?.addEventListener('click', () => {
       onShare?.(shareUrl);
+    });
+    body.querySelectorAll('[data-compare-remove]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const id = String(button.getAttribute('data-compare-remove') ?? '').trim();
+        if (id) onRemove?.(id);
+      });
+    });
+    body.querySelector('[data-compare-clear-all]')?.addEventListener('click', () => {
+      onClear?.();
+    });
+    body.querySelector('[data-compare-add-another]')?.addEventListener('click', () => {
+      onAddAnother?.();
     });
     const action = doc.createElement('button');
     action.type = 'button';

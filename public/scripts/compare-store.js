@@ -2,7 +2,7 @@
 
 (function attachCompareStore(globalScope) {
   const STORAGE_KEY = 'fitappliance.compare.v1';
-  const MAX_COMPARE = 3;
+  const MAX_COMPARE = 4;
 
   function clone(value) {
     try {

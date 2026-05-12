@@ -972,6 +972,7 @@ import '/scripts/search-core.js';
 import '/scripts/iso-projection.js';
 import '/scripts/fit-visualization.js';
 import '/scripts/search-dom.js?v=20260504-mobile-trust';
+import '/scripts/ui/compare-table.js';
 import '/scripts/saved-search-store.js';
 import '/scripts/compare-store.js';
 import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/product-card.js';
@@ -2222,7 +2223,7 @@ function renderResults() {
   SearchDom.bindCompareButtons(container, {
     compareStore,
     onChange: renderCompareSurfaces,
-    onLimit: () => showToast('Max 3 items to compare')
+    onLimit: () => showToast('Max 4 items to compare')
   });
   renderCompareSurfaces();
 }
@@ -2510,6 +2511,28 @@ function openCompareTable() {
     items: selected,
     shareUrl: buildCompareShareUrl(),
     onShare: copyCompareShareLink,
+    onRemove: (id) => {
+      compareStore.remove(id);
+      syncCompareListFromStore();
+      renderResults();
+      if (compareStore.list().length >= 2) {
+        openCompareTable();
+      } else {
+        closeCompareModal();
+        showToast('Select at least 2 items to compare');
+      }
+    },
+    onClear: () => {
+      compareStore.clear();
+      syncCompareListFromStore();
+      renderResults();
+      closeCompareModal();
+    },
+    onAddAnother: () => {
+      closeCompareModal();
+      document.getElementById('resultsSection')?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
+      showToast('Choose another result and press Compare');
+    },
     onClose: () => {
       document.body.style.overflow = '';
     }
@@ -2635,7 +2658,7 @@ function buildCompareShareUrl() {
   const ids = compareStore.list()
     .map((entry) => entry.id)
     .filter(Boolean)
-    .slice(0, 3);
+    .slice(0, 4);
   const url = new URL(window.location.href);
   if (ids.length > 0) {
     url.searchParams.set('compareIds', ids.join(','));
@@ -2652,7 +2675,7 @@ function restoreCompareFromUrlParam({ open = true } = {}) {
   const ids = raw.split(',')
     .map((value) => value.trim())
     .filter(Boolean)
-    .slice(0, 3);
+    .slice(0, 4);
   if (ids.length === 0) return false;
 
   ids.forEach((id) => {
@@ -2685,7 +2708,7 @@ function addCompare(id, label) {
   if (!product) { showToast('Load this category before comparing'); return; }
   if (compareStore.has(id)) { showToast('Already in compare list'); return; }
   const result = compareStore.add(buildCompareSnapshotFromProduct(product, label));
-  if (result?.ok === false && result.reason === 'capacity') { showToast('Max 3 items to compare'); return; }
+  if (result?.ok === false && result.reason === 'capacity') { showToast('Max 4 items to compare'); return; }
   syncCompareListFromStore();
   updateCompareBar();
   showToast(`✓ Added to compare: ${label}`);

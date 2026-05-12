@@ -184,7 +184,7 @@ async function generateSitemap({
       loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/compare/${row.slug}`),
       lastmod,
       changefreq: 'monthly',
-      priority: '0.6'
+      priority: '0.5'
     })
   );
 
