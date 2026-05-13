@@ -99,6 +99,10 @@ function isArchivedProduct(product) {
   return product?.unavailable === true;
 }
 
+function isReplacementSearchProduct(product) {
+  return String(product?.searchMode ?? '').trim() === 'replacement';
+}
+
 function buildEvidenceBadgeHtml(product) {
   if (!hasPdfEvidence(product)) return '';
   return '<span class="badge-verified" title="Dimensions verified against manufacturer spec sheet">✓ Verified Fit</span>';
@@ -107,6 +111,11 @@ function buildEvidenceBadgeHtml(product) {
 function buildArchivedBadgeHtml(product) {
   if (!isArchivedProduct(product)) return '';
   return '<span class="badge-archived" title="This older model has no verified current retailer listing">Archived Model</span>';
+}
+
+function buildSizeMatchBadgeHtml(product) {
+  if (!isReplacementSearchProduct(product)) return '';
+  return '<span class="size-match-badge" title="Matched by old appliance outside dimensions">Size Match</span>';
 }
 
 function isSafeEvidenceUrl(value) {
@@ -188,6 +197,7 @@ function getLinkedRetailers(product) {
 }
 
 function buildFitScoreHtml(product) {
+  if (isReplacementSearchProduct(product)) return '';
   if (product?.fitScoreNumeric === null || product?.fitScoreNumeric === undefined) return '';
   return renderFitScoreCardBlock(product.fitScoreNumeric, {
     breakdown: computeBreakdown(product)
@@ -774,10 +784,23 @@ export function buildClearanceBarsHtml(product, deps = {}) {
   </div>`;
 }
 
+function buildReplacementCavityAlertHtml(product) {
+  if (!isReplacementSearchProduct(product)) return '';
+  const required = product?.requiredCavityMm ?? {};
+  const w = Math.round(toPositiveNumber(required?.w) ?? 0);
+  const h = Math.round(toPositiveNumber(required?.h) ?? 0);
+  const d = Math.round(toPositiveNumber(required?.d) ?? 0);
+  if (!w || !h || !d) return '';
+  return `<div class="replacement-cavity-alert" role="note">
+    <strong>Requires minimum cavity:</strong>
+    <span>${escHtml(w)}W × ${escHtml(h)}H × ${escHtml(d)}D mm for safe ventilation. Please verify.</span>
+  </div>`;
+}
+
 function buildZoneA(product, deps = {}) {
   return `<div class="card-zone-a">
     ${renderProductPhotoThumb(product)}
-    <div class="card-zone-fit">${buildFitScoreHtml(product)}</div>
+    <div class="card-zone-fit">${buildSizeMatchBadgeHtml(product)}${buildFitScoreHtml(product)}</div>
   </div>`;
 }
 
@@ -882,6 +905,7 @@ function buildZoneB(product, deps, primaryTitle, modelLine) {
   return `<div class="card-zone-b">
     ${buildTitleHtml(product, primaryTitle, modelLine)}
     ${buildClearanceBarsHtml(product, deps)}
+    ${buildReplacementCavityAlertHtml(product)}
     ${buildTechSpecsHtml(product, deps)}
     ${buildDataTrustLine(product, deps.capturedDate ?? '')}
     ${buildProvenanceHtml(product, deps)}

@@ -1519,3 +1519,134 @@ body.scroll-locked {
   font-size: 12px;
   line-height: 1.35;
 }
+
+.search-mode-toggle {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
+  text-align: left;
+}
+
+.search-mode-toggle legend {
+  grid-column: 1 / -1;
+  margin-bottom: 2px;
+  color: var(--ink-3, #6b6b6b);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.search-mode-option {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3px 9px;
+  align-items: start;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border, #d0cfc8);
+  border-radius: var(--r-sm, 4px);
+  background: #faf8f4;
+  cursor: pointer;
+}
+
+.search-mode-option input {
+  margin-top: 4px;
+  accent-color: var(--copper, #d97706);
+}
+
+.search-mode-option span {
+  color: var(--ink, #1a1a1a);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.search-mode-option small {
+  grid-column: 2;
+  color: var(--ink-3, #6b6b6b);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.search-mode-option--active {
+  border-color: var(--copper, #d97706);
+  background: #fff7ed;
+  box-shadow: inset 3px 0 0 var(--copper, #d97706);
+}
+
+.float-bar-mode {
+  display: inline-flex;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 999px;
+}
+
+.float-bar-mode button {
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255,255,255,.72);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 5px 9px;
+  cursor: pointer;
+}
+
+.float-bar-mode button[aria-pressed="true"] {
+  background: #fff;
+  color: var(--ink, #1a1a1a);
+}
+
+.size-match-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 74px;
+  padding: 7px 9px;
+  border: 1.5px solid #1f2937;
+  background: #f3f4f6;
+  color: #111827;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.replacement-cavity-alert {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin: 8px 0 0;
+  padding: 9px 11px;
+  border: 1px solid #b45309;
+  border-left-width: 4px;
+  background: #fffbeb;
+  color: #78350f;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.replacement-cavity-alert strong {
+  color: #111827;
+  font-weight: 900;
+}
+
+@media (max-width: 640px) {
+  .search-mode-toggle {
+    grid-template-columns: 1fr;
+  }
+
+  .float-bar-mode {
+    display: none;
+  }
+}

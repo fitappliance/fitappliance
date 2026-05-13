@@ -424,6 +424,10 @@ nav {
       <div class="float-bar-kicker" id="floatBarKicker" hidden>Compare intent detected</div>
       <div class="float-bar-summary" id="floatBarSummary">Fridge · 600mm</div>
     </div>
+    <div class="float-bar-mode" aria-label="Search mode">
+      <button type="button" data-float-search-mode="cavity" aria-pressed="true">Cavity</button>
+      <button type="button" data-float-search-mode="replacement" aria-pressed="false">Old appliance</button>
+    </div>
     <button class="float-bar-edit" id="floatBarEdit" onclick="scrollToSearch()" aria-label="Edit search">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
@@ -474,6 +478,20 @@ nav {
         <div class="sc-title">Enter your available cavity space</div>
       </div>
       <p class="field-note" style="margin:-10px 0 18px">Tip: type 60cm or 60 and FitAppliance will convert it to 600mm.</p>
+
+      <fieldset class="search-mode-toggle" aria-label="What did you measure?">
+        <legend>Search mode</legend>
+        <label class="search-mode-option search-mode-option--active" data-search-mode-option="cavity">
+          <input type="radio" name="searchMode" value="cavity" checked>
+          <span>I measured my empty cavity</span>
+          <small>Strict appliance + clearance fit score</small>
+        </label>
+        <label class="search-mode-option" data-search-mode-option="replacement">
+          <input type="radio" name="searchMode" value="replacement">
+          <span>I measured my old appliance</span>
+          <small>Physical size match, then show required cavity</small>
+        </label>
+      </fieldset>
 
       <!-- Category -->
       <div class="cat-pills" id="catPills" style="margin-bottom:20px">
@@ -1331,6 +1349,52 @@ function useOldModelSize() {
   showToast('Filled dimensions from the old model');
 }
 
+function readSearchModeFromControls() {
+  const checked = document.querySelector('input[name="searchMode"]:checked');
+  return SearchCore.normalizeSearchMode?.(checked?.value ?? currentSearchMode) ?? 'cavity';
+}
+
+function setSearchMode(mode, options = {}) {
+  const next = SearchCore.normalizeSearchMode?.(mode) ?? 'cavity';
+  if (currentSearchMode === next && !options.force) {
+    syncSearchModeControls();
+    return;
+  }
+  currentSearchMode = next;
+  syncSearchModeControls();
+  updateFloatBarSummary();
+  if (options.refresh && lastSearchFilters) {
+    refreshSearchResults();
+  }
+}
+
+function syncSearchModeControls() {
+  const mode = SearchCore.normalizeSearchMode?.(currentSearchMode) ?? 'cavity';
+  document.querySelectorAll('input[name="searchMode"]').forEach((input) => {
+    input.checked = input.value === mode;
+  });
+  document.querySelectorAll('[data-search-mode-option]').forEach((option) => {
+    const selected = option.getAttribute('data-search-mode-option') === mode;
+    option.classList.toggle('search-mode-option--active', selected);
+  });
+  document.querySelectorAll('[data-float-search-mode]').forEach((button) => {
+    const selected = button.getAttribute('data-float-search-mode') === mode;
+    button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+  });
+  const title = document.querySelector('.sc-title');
+  if (title) {
+    title.textContent = mode === 'replacement'
+      ? 'Enter your old appliance dimensions'
+      : 'Enter your available cavity space';
+  }
+  const widthLabel = document.querySelector('label[for="inW"]');
+  const heightLabel = document.querySelector('label[for="inH"]');
+  const depthLabel = document.querySelector('label[for="inD"]');
+  if (widthLabel) widthLabel.textContent = mode === 'replacement' ? 'Old appliance width' : 'Cavity Width';
+  if (heightLabel) heightLabel.textContent = mode === 'replacement' ? 'Old appliance height' : 'Cavity Height';
+  if (depthLabel) depthLabel.textContent = mode === 'replacement' ? 'Old appliance depth' : 'Cavity Depth';
+}
+
 function renderSpaceAlertsForDimensions({ w, h, d, door } = {}) {
   const container = document.getElementById('spaceAlerts');
   if (!container) return;
@@ -1462,6 +1526,7 @@ async function readUrlParams() {
   currentSortBy = params.get('sort') || parsedState.sortBy || 'fit-score-desc';
   currentClearanceMode = parsedState.clearanceMode ?? 'practical';
   currentSearchMode = SearchCore.normalizeSearchMode?.(parsedState.searchMode ?? 'cavity') ?? 'cavity';
+  syncSearchModeControls();
   syncLegacyFacetInputs();
 
   const widthInput = document.getElementById('inW');
@@ -1551,6 +1616,7 @@ function updateFloatBarSummary() {
     ? activeFacetState.brand[0]
     : (activeFacetState.brand.length > 1 ? `${activeFacetState.brand.length} brands` : '');
   const parts = [CATEGORY_LABELS[currentCat] ?? 'Appliances'];
+  parts.push(currentSearchMode === 'replacement' ? 'Old appliance mode' : 'Cavity mode');
 
   if (width && height && depth) {
     parts.push(`${width}×${height}×${depth}mm`);
@@ -1833,6 +1899,7 @@ async function restoreSavedSearchState(state = {}) {
   currentSortBy = state.sortBy || 'fit-score-desc';
   currentClearanceMode = SearchCore.normalizeClearanceMode?.(state.clearanceMode) ?? 'practical';
   currentSearchMode = SearchCore.normalizeSearchMode?.(state.searchMode ?? 'cavity') ?? 'cavity';
+  syncSearchModeControls();
   syncLegacyFacetInputs();
   doSearch({ preserveExistingFacets: true, toleranceMm: Number(state.tol ?? state.toleranceMm ?? 5) });
 }
@@ -2023,6 +2090,8 @@ function refreshSearchResults() {
    SEARCH
 ══════════════════════════════════════════════════════════ */
 function doSearch(options = {}) {
+  currentSearchMode = readSearchModeFromControls();
+  syncSearchModeControls();
   const normalizedDimensions = normalizeSearchDimensions({
     w: document.getElementById('inW').value,
     h: document.getElementById('inH').value,
@@ -2793,6 +2862,7 @@ async function applySearch(params = {}) {
   if (params.w) document.getElementById('inW').value = String(params.w);
   if (params.h) document.getElementById('inH').value = String(params.h);
   if (params.d) document.getElementById('inD').value = String(params.d);
+  if (params.searchMode) setSearchMode(params.searchMode, { force: true });
   document.getElementById('inBrand').value = params.brand ?? '';
   if (params.door) document.getElementById('inDoor').value = String(params.door);
   if (params.dwelling) document.getElementById('inDwelling').value = String(params.dwelling);
@@ -2974,6 +3044,12 @@ document.getElementById('oldModelInput')?.addEventListener('keydown', (event) =>
     });
   });
 });
+document.querySelectorAll('input[name="searchMode"]').forEach((input) => {
+  input.addEventListener('change', () => setSearchMode(input.value, { refresh: true }));
+});
+document.querySelectorAll('[data-float-search-mode]').forEach((button) => {
+  button.addEventListener('click', () => setSearchMode(button.getAttribute('data-float-search-mode'), { refresh: true }));
+});
 
 const initialCategory = await bootstrapApplianceData();
 restoreSavedFromUrlParam();
@@ -2987,6 +3063,7 @@ renderSavedPanel();
 initFloatBar();
 initBuyClickTracking();
 updateFloatBarSummary();
+syncSearchModeControls();
 }
 </script>
 </body>
