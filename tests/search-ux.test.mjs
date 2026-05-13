@@ -335,5 +335,6 @@ test('phase 45c search-ux: restore saved search applies category facets and sort
 
   assert.match(indexHtml, /activeFacetState\s*=\s*normalizeHomeFacets\(state\.facets/);
   assert.match(indexHtml, /currentSortBy\s*=\s*state\.sortBy/);
+  assert.match(indexHtml, /currentSearchMode\s*=\s*SearchCore\.normalizeSearchMode\?\.\(state\.searchMode/);
   assert.match(indexHtml, /doSearch\(\{\s*preserveExistingFacets:\s*true,\s*toleranceMm:/);
 });
