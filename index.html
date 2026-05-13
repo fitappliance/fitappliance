@@ -292,6 +292,47 @@ nav {
   color:var(--green);
   font-weight:600;
 }
+.saved-appliance-picker {
+  margin-top:12px;
+  padding-top:12px;
+  border-top:1px solid var(--border);
+}
+.saved-appliance-picker[hidden] { display:none !important; }
+.saved-appliance-picker__head {
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  margin-bottom:8px;
+}
+.saved-appliance-picker__chips {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.saved-appliance-chip {
+  appearance:none;
+  border:1px solid var(--border);
+  background:var(--white);
+  color:var(--ink);
+  border-radius:999px;
+  padding:7px 11px;
+  font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+}
+.saved-appliance-chip:hover,
+.saved-appliance-chip:focus {
+  border-color:var(--copper);
+  outline:none;
+  box-shadow:0 0 0 3px rgba(181,90,44,.12);
+}
+.saved-appliance-picker__empty {
+  font-size:13px;
+  color:var(--ink-3);
+}
 .space-alerts {
   display:grid;
   gap:8px;
@@ -513,6 +554,10 @@ nav {
         </div>
         <p class="field-note">We can use a matching old model as a starting point, but always re-measure the actual cavity before buying.</p>
         <div class="replacement-status" id="replacementStatus" aria-live="polite"></div>
+        <div class="saved-appliance-picker" data-saved-appliance-picker hidden>
+          <div class="saved-appliance-picker__head">Use a saved appliance</div>
+          <div class="saved-appliance-picker__chips" data-saved-appliance-chips></div>
+        </div>
       </div>
 
       <!-- Dimensions -->
@@ -1007,6 +1052,7 @@ import { computeFitScore } from './scripts/ui/fit-score.js';
 import { applySliderFilters, normalizeDensity, sortRowsForRtings } from './scripts/ui/range-filters.js';
 import { bindHeroSampleSearches } from './scripts/ui/hero-funnel.js';
 import { clearSaved, getSavedIds, isProductSaved, saveProduct, unsaveProduct } from './scripts/ui/saved-matches.js';
+import { createAccountStore } from './scripts/account-store.mjs';
 import {
   buildSearchHistoryHtml,
   clearSearchHistory,
@@ -1294,6 +1340,7 @@ const CATEGORY_DATA_FILES = {
 const brandSelect = document.getElementById('inBrand');
 const savedSearchStore = SavedSearchStore.createSavedSearchStore();
 const compareStore = CompareStore.createCompareStore();
+const accountStore = createAccountStore();
 
 function refreshBrandOptions() {
   brandSelect.innerHTML = buildBrandOptions(PRODUCTS, currentCat);
@@ -1315,6 +1362,70 @@ function renderOldModelSuggestions() {
   list.innerHTML = rows
     .map((product) => `<option value="${escHtml(replacementOptionLabel(product))}">${escHtml(product.displayName ?? product.model ?? '')}</option>`)
     .join('');
+}
+
+function savedApplianceLabel(item = {}) {
+  const brand = String(item.brand ?? '').trim();
+  const model = String(item.model ?? '').trim();
+  const cat = accountStore.categoryLabel?.(item.category) ?? CATEGORY_LABELS[item.category] ?? 'Appliance';
+  return [brand, model].filter(Boolean).join(' ') || cat;
+}
+
+function getSavedAppliancesForCurrentCategory() {
+  try {
+    return accountStore
+      .listInventory()
+      .filter((item) => item?.category === currentCat && item?.is_current !== false);
+  } catch {
+    return [];
+  }
+}
+
+function renderSavedApplianceChips() {
+  const picker = document.querySelector('[data-saved-appliance-picker]');
+  const chips = document.querySelector('[data-saved-appliance-chips]');
+  if (!picker || !chips) return;
+  const isReplacementMode = (SearchCore.normalizeSearchMode?.(currentSearchMode) ?? 'cavity') === 'replacement';
+  const profile = accountStore.getCurrentAccount();
+  picker.hidden = !isReplacementMode || !profile;
+  if (picker.hidden) {
+    chips.innerHTML = '';
+    return;
+  }
+  const items = getSavedAppliancesForCurrentCategory();
+  if (items.length === 0) {
+    chips.innerHTML = '<span class="saved-appliance-picker__empty">No saved appliances for this category yet.</span>';
+    return;
+  }
+  chips.innerHTML = items.map((item) => `
+    <button type="button" class="saved-appliance-chip" data-saved-appliance-id="${escHtml(item.id)}">
+      ${escHtml(savedApplianceLabel(item))}
+      <span aria-hidden="true">·</span>
+      ${Number(item.width)}×${Number(item.height)}×${Number(item.depth)}mm
+    </button>
+  `).join('');
+}
+
+async function applySavedApplianceForReplacement(id) {
+  const item = accountStore.listInventory().find((entry) => entry.id === id);
+  if (!item) {
+    showToast('Saved appliance not found');
+    return;
+  }
+  if (item.category && item.category !== currentCat) {
+    await setCategory(item.category);
+  }
+  setSearchMode('replacement', { force: true, clearDimensions: false });
+  document.getElementById('inW').value = String(item.width);
+  document.getElementById('inH').value = String(item.height);
+  document.getElementById('inD').value = String(item.depth);
+  const status = document.getElementById('replacementStatus');
+  if (status) {
+    status.textContent = `Using saved ${savedApplianceLabel(item)} dimensions: ${item.width}×${item.height}×${item.depth}mm.`;
+  }
+  renderSpaceAlertsForDimensions({ w: item.width, h: item.height, d: item.depth, door: document.getElementById('inDoor')?.value });
+  updateFloatBarSummary();
+  doSearch();
 }
 
 function useOldModelSize() {
@@ -1419,6 +1530,7 @@ function syncSearchModeControls() {
   if (widthLabel) widthLabel.textContent = mode === 'replacement' ? 'OLD MACHINE WIDTH' : 'CAVITY WIDTH';
   if (heightLabel) heightLabel.textContent = mode === 'replacement' ? 'OLD MACHINE HEIGHT' : 'CAVITY HEIGHT';
   if (depthLabel) depthLabel.textContent = mode === 'replacement' ? 'OLD MACHINE DEPTH' : 'CAVITY DEPTH';
+  renderSavedApplianceChips();
 }
 
 function renderSpaceAlertsForDimensions({ w, h, d, door } = {}) {
@@ -1603,6 +1715,7 @@ async function setCategory(cat, { scroll = false } = {}) {
   currentCat = nextCat;
   await loadCategory(nextCat);
   refreshBrandOptions();
+  renderSavedApplianceChips();
   if (scroll) {
     document.getElementById('search')?.scrollIntoView({ behavior:'smooth', block:'start' });
   }
@@ -3035,6 +3148,7 @@ Object.assign(window, {
   removeCompare,
   toggleSave,
   removeSaved,
+  applySavedApplianceForReplacement,
   copyCurrentSearchLink,
   copySavedShareLink,
   copyCompareShareLink,
@@ -3059,6 +3173,11 @@ document.getElementById('oldModelInput')?.addEventListener('keydown', (event) =>
     event.preventDefault();
     useOldModelSize();
   }
+});
+document.querySelector('[data-saved-appliance-chips]')?.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-saved-appliance-id]');
+  if (!button) return;
+  applySavedApplianceForReplacement(button.getAttribute('data-saved-appliance-id'));
 });
 ['inW','inH','inD','inDoor'].forEach(id => {
   document.getElementById(id)?.addEventListener('change', () => {
