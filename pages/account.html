@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Appliances — FitAppliance</title>
+  <meta name="description" content="Save your current appliance dimensions for one-click replacement searches on FitAppliance.">
+  <meta name="article:modified_time" content="2026-05-13T00:00:00+08:00">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body { background:#faf8f3; }
+    .account-shell { max-width:1120px; margin:0 auto; padding:32px 20px 64px; }
+    .account-nav { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:28px; }
+    .account-nav a { color:#2c2c2c; text-decoration:none; font-weight:700; }
+    .account-nav .home-link { color:#b55a2c; }
+    .account-panel { background:#fff; border:1px solid #ded6ca; border-radius:16px; padding:24px; box-shadow:0 10px 30px rgba(44,44,44,.04); }
+    .account-panel h1 { font-size:clamp(32px,4vw,54px); margin:4px 0 12px; letter-spacing:-.02em; }
+    .account-panel h2 { font-size:18px; margin:0 0 14px; }
+    .account-kicker { margin:0; color:#6b6b6b; text-transform:uppercase; letter-spacing:.08em; font-weight:800; font-size:13px; }
+    .account-copy { color:#4b4b4b; max-width:760px; line-height:1.6; }
+    .account-message { border:1px solid #d9cbb8; background:#fff8ec; padding:12px 14px; border-radius:8px; margin:18px 0; font-weight:700; }
+    .account-auth-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin-top:22px; }
+    .account-form, .inventory-form { border:1px solid #e7dfd4; border-radius:12px; padding:18px; background:#fdfbf7; }
+    .account-form label, .inventory-form label { display:flex; flex-direction:column; gap:6px; margin:0 0 12px; font-weight:700; color:#4b4b4b; }
+    .account-form input, .inventory-form input, .inventory-form select { border:1px solid #d8cfc3; border-radius:8px; padding:10px 12px; font:inherit; background:#fff; }
+    .account-form button, .inventory-form button, .account-toolbar button, .inventory-actions button { border:1px solid #121212; background:#121212; color:#fff; border-radius:8px; padding:10px 14px; font-weight:800; cursor:pointer; }
+    .account-toolbar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:18px; }
+    .inventory-form { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; align-items:end; margin-bottom:24px; }
+    .inventory-form h2 { grid-column:1 / -1; }
+    .inventory-current { flex-direction:row !important; align-items:center; }
+    .inventory-current input { width:auto; }
+    .inventory-section__head { display:flex; justify-content:space-between; align-items:end; gap:16px; border-top:1px solid #e7dfd4; padding-top:18px; }
+    .inventory-section__head p { margin:0; color:#6b6b6b; font-weight:700; }
+    .inventory-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:16px; }
+    .inventory-card { border:1px solid #e0d7cb; border-radius:12px; padding:16px; background:#fff; }
+    .inventory-card__head, .inventory-dims, .inventory-actions { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .inventory-card__head span, .inventory-dims span { background:#eef7ef; color:#236a3a; border-radius:7px; padding:4px 8px; font-weight:800; font-size:13px; }
+    .inventory-card__head span:last-child { background:#f5f3ee; color:#4b4b4b; }
+    .inventory-card h3 { margin:12px 0; font-size:20px; }
+    .inventory-actions { margin-top:14px; }
+    .inventory-actions button { background:#fff; color:#2c2c2c; border-color:#d8cfc3; }
+    .empty-inventory { border:1px dashed #d8cfc3; border-radius:12px; color:#6b6b6b; padding:18px; margin-top:16px; }
+    .account-footer { display:flex; gap:14px; flex-wrap:wrap; margin-top:22px; color:#6b6b6b; font-size:13px; }
+    .account-footer a { color:#4b4b4b; font-weight:700; }
+    @media (max-width:760px) {
+      .account-auth-grid, .inventory-grid { grid-template-columns:1fr; }
+      .inventory-form { grid-template-columns:1fr; }
+      .account-toolbar, .inventory-section__head { align-items:flex-start; flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <main class="account-shell">
+    <nav class="account-nav" aria-label="Account navigation">
+      <a href="/" class="logo">Fit<b>Appliance</b></a>
+      <a href="/" class="home-link">Back to fit checker</a>
+    </nav>
+    <div data-account-app>
+      <noscript>Enable JavaScript to manage My Appliances.</noscript>
+      <section class="account-panel">
+        <p class="account-kicker">Local device account</p>
+        <h1>My Appliances</h1>
+        <p class="account-copy">Fridge · Washing Machine · Dishwasher · Dryer</p>
+      </section>
+    </div>
+    <footer class="account-footer">
+      <a href="/methodology">Methodology</a>
+      <a href="/about/editorial-standards">Editorial standards</a>
+      <a href="/affiliate-disclosure">Affiliate disclosure</a>
+      <a href="/privacy-policy">Privacy policy</a>
+    </footer>
+  </main>
+  <script type="module" src="/scripts/account-dashboard.mjs"></script>
+</body>
+</html>
