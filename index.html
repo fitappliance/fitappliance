@@ -978,6 +978,7 @@ import '/scripts/compare-store.js';
 import { buildCard, buildRow, starsHtml, warningsHtml } from './scripts/ui/product-card.js';
 import { displayBrandName } from './scripts/ui/brand-utils.js';
 import { renderFreshnessBanner } from './scripts/ui/freshness.js';
+import { loadEvidenceIndex } from './scripts/ui/provenance.js';
 import { normalizeSearchDimensions } from './scripts/search-inputs.mjs';
 import { buildReplacementDimensionState, findReplacementSource, getReplacementSuggestionRows } from './scripts/replacement-matcher.mjs';
 import { buildSpaceAlerts } from './scripts/space-alerts.mjs';
@@ -1260,6 +1261,7 @@ let compareList = [];
 let COMPARE_INTENT = null;
 let PRODUCTS = [];
 let APPLIANCES_META = null;
+let EVIDENCE_INDEX = {};
 const loadedCats = new Set();
 const CATEGORY_CAPTURED_DATES = {};
 const CATEGORY_DATA_FILES = {
@@ -1378,6 +1380,7 @@ async function loadCategory(cat) {
 
 async function bootstrapApplianceData() {
   const initialCat = readUrlParamCat() ?? 'fridge';
+  EVIDENCE_INDEX = await loadEvidenceIndex().catch(() => ({}));
 
   try {
     APPLIANCES_META = await fetch('/data/appliances-meta.json').then(requireJson);
@@ -2198,6 +2201,7 @@ function renderResults() {
       lifetimeCost,
       resolveRetailerUrl,
       isSaved: isProductSaved,
+      evidenceIndex: EVIDENCE_INDEX,
       capturedDate: CATEGORY_CAPTURED_DATES[product.cat] ?? APPLIANCES_META?.last_updated ?? ''
     }));
   } else {
@@ -2209,6 +2213,7 @@ function renderResults() {
       warningsHtml,
       resolveRetailerUrl,
       isSaved: isProductSaved,
+      evidenceIndex: EVIDENCE_INDEX,
       capturedDate: CATEGORY_CAPTURED_DATES[product.cat] ?? APPLIANCES_META?.last_updated ?? ''
     }));
   }
