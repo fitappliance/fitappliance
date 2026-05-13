@@ -1000,6 +1000,7 @@ nav {
 
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
+<div class="asset-capture-toast" data-asset-capture hidden></div>
 
 <!-- COMPARE BAR -->
 <div class="compare-bar" id="compareBar">
@@ -1818,10 +1819,76 @@ function trackBuyClick(payload) {
   });
 }
 
+function productFromBuyLink(link) {
+  const productId = link?.dataset?.productId ?? '';
+  return PRODUCTS.find((product) => product.id === productId) ?? null;
+}
+
+function recordPendingPurchaseFromLink(link) {
+  if (!accountStore.getCurrentAccount()) return { ok: false, skipped: true };
+  const product = productFromBuyLink(link);
+  if (!product) return { ok: false, error: 'Product not loaded' };
+  const result = accountStore.recordPendingAsset({
+    product_id: product.id,
+    category: product.cat,
+    brand: product.brand,
+    model: product.model,
+    width: product.w,
+    height: product.h,
+    depth: product.d,
+    retailer: link?.dataset?.retailer ?? '',
+    target_url: link?.dataset?.targetUrl ?? link?.href ?? ''
+  });
+  if (result.ok) {
+    renderAssetCapturePrompt();
+  }
+  return result;
+}
+
+function renderAssetCapturePrompt() {
+  const container = document.querySelector('[data-asset-capture]');
+  if (!container) return;
+  const profile = accountStore.getCurrentAccount();
+  const pending = profile ? accountStore.listPendingAssets()[0] : null;
+  if (!pending) {
+    container.hidden = true;
+    container.innerHTML = '';
+    return;
+  }
+  const label = [pending.brand, pending.model].filter(Boolean).join(' ') || 'this appliance';
+  container.hidden = false;
+  container.innerHTML = `
+    <p class="asset-capture-toast__label">Digital home</p>
+    <p class="asset-capture-toast__title">Did you purchase ${escHtml(label)}? Add it to My Appliances.</p>
+    <div class="asset-capture-toast__actions">
+      <button type="button" data-asset-confirm="${escHtml(pending.id)}">Add to inventory</button>
+      <button type="button" data-asset-dismiss="${escHtml(pending.id)}">Not now</button>
+    </div>
+  `;
+}
+
+function bindAssetCapturePrompt() {
+  document.querySelector('[data-asset-capture]')?.addEventListener('click', (event) => {
+    const confirm = event.target.closest('[data-asset-confirm]');
+    const dismiss = event.target.closest('[data-asset-dismiss]');
+    if (confirm) {
+      const result = accountStore.confirmPendingAsset(confirm.getAttribute('data-asset-confirm'));
+      showToast(result.ok ? 'Added to My Appliances' : (result.error ?? 'Could not add appliance'));
+      renderAssetCapturePrompt();
+      return;
+    }
+    if (dismiss) {
+      accountStore.dismissPendingAsset(dismiss.getAttribute('data-asset-dismiss'));
+      renderAssetCapturePrompt();
+    }
+  });
+}
+
 function initBuyClickTracking() {
   document.addEventListener('click', (event) => {
     const link = event.target?.closest?.('a[data-buy-click="1"]');
     if (!link) return;
+    recordPendingPurchaseFromLink(link);
     trackBuyClick({
       product_id: link.dataset.productId ?? '',
       brand: link.dataset.brand ?? '',
@@ -3207,6 +3274,8 @@ updateCompareBar();
 renderSavedPanel();
 initFloatBar();
 initBuyClickTracking();
+bindAssetCapturePrompt();
+renderAssetCapturePrompt();
 updateFloatBarSummary();
 syncSearchModeControls();
 }

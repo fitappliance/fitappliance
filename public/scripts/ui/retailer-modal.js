@@ -110,6 +110,7 @@ function buildRetailerLinkAttributes(product, retailer, targetUrl) {
       data-brand="${escHtml(product?.brand ?? '')}"
       data-model="${escHtml(product?.model ?? '')}"
       data-retailer="${escHtml(safeRetailerDisplayName(retailer.n))}"
+      data-target-url="${escHtml(targetUrl ?? '')}"
       data-price="${retailer.p ?? 0}"`;
 }
 
