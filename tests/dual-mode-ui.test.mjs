@@ -50,6 +50,28 @@ test('dual-mode UI: search mode state is read from controls before running a sea
   assert.match(indexHtml, /function\s+syncSearchModeControls/);
 });
 
+test('dual-mode UI: old-appliance lookup is hidden by default and bound to replacement mode', () => {
+  assert.match(indexHtml, /data-replacement-finder[^>]*hidden/);
+  assert.match(indexHtml, /replacementFinder\.hidden\s*=\s*mode\s*!==\s*'replacement'/);
+});
+
+test('dual-mode UI: hero title and dimension labels use mode-specific terminology', () => {
+  assert.match(indexHtml, /Enter your old appliance details/);
+  assert.match(indexHtml, /Enter your available cavity space/);
+  assert.match(indexHtml, /OLD MACHINE WIDTH/);
+  assert.match(indexHtml, /OLD MACHINE HEIGHT/);
+  assert.match(indexHtml, /OLD MACHINE DEPTH/);
+  assert.match(indexHtml, /CAVITY WIDTH/);
+  assert.match(indexHtml, /CAVITY HEIGHT/);
+  assert.match(indexHtml, /CAVITY DEPTH/);
+});
+
+test('dual-mode UI: switching modes clears incompatible dimension inputs', () => {
+  assert.match(indexHtml, /function\s+clearDimensionInputsForModeSwitch/);
+  assert.match(indexHtml, /clearDimensionInputsForModeSwitch\(\)/);
+  assert.match(indexHtml, /replacementStatus\.textContent\s*=\s*''/);
+});
+
 test('dual-mode card: replacement rows show size match instead of numeric fit score', async () => {
   const { buildRow } = await import(`${productCardModuleUrl}?cacheBust=${Date.now()}`);
   const html = buildRow(makeReplacementProduct(), {

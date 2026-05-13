@@ -252,6 +252,7 @@ nav {
   background:#FCFAF6;
   text-align:left;
 }
+.replacement-finder[hidden] { display:none !important; }
 .replacement-finder label {
   display:block;
   font-size:11px;
@@ -502,7 +503,7 @@ nav {
       </div>
 
       <!-- Old model matcher -->
-      <div class="replacement-finder" data-replacement-finder>
+      <div class="replacement-finder" data-replacement-finder hidden>
         <label for="oldModelInput">Replacing an old appliance?</label>
         <div class="replacement-row">
           <input id="oldModelInput" list="oldModelSuggestions" autocomplete="off" placeholder="Try old model, e.g. Westinghouse WTB4600WA">
@@ -1354,16 +1355,36 @@ function readSearchModeFromControls() {
   return SearchCore.normalizeSearchMode?.(checked?.value ?? currentSearchMode) ?? 'cavity';
 }
 
+function clearDimensionInputsForModeSwitch() {
+  ['inW', 'inH', 'inD'].forEach((id) => {
+    const input = document.getElementById(id);
+    if (input) input.value = '';
+  });
+  const replacementStatus = document.getElementById('replacementStatus');
+  if (replacementStatus) replacementStatus.textContent = '';
+  renderSpaceAlertsForDimensions({
+    w: '',
+    h: '',
+    d: '',
+    door: document.getElementById('inDoor')?.value
+  });
+}
+
 function setSearchMode(mode, options = {}) {
   const next = SearchCore.normalizeSearchMode?.(mode) ?? 'cavity';
-  if (currentSearchMode === next && !options.force) {
+  const changed = currentSearchMode !== next;
+  if (!changed && !options.force) {
     syncSearchModeControls();
     return;
   }
   currentSearchMode = next;
+  const clearedDimensions = changed && options.clearDimensions !== false;
+  if (clearedDimensions) {
+    clearDimensionInputsForModeSwitch();
+  }
   syncSearchModeControls();
   updateFloatBarSummary();
-  if (options.refresh && lastSearchFilters) {
+  if (options.refresh && lastSearchFilters && !clearedDimensions) {
     refreshSearchResults();
   }
 }
@@ -1384,15 +1405,19 @@ function syncSearchModeControls() {
   const title = document.querySelector('.sc-title');
   if (title) {
     title.textContent = mode === 'replacement'
-      ? 'Enter your old appliance dimensions'
+      ? 'Enter your old appliance details'
       : 'Enter your available cavity space';
+  }
+  const replacementFinder = document.querySelector('[data-replacement-finder]');
+  if (replacementFinder) {
+    replacementFinder.hidden = mode !== 'replacement';
   }
   const widthLabel = document.querySelector('label[for="inW"]');
   const heightLabel = document.querySelector('label[for="inH"]');
   const depthLabel = document.querySelector('label[for="inD"]');
-  if (widthLabel) widthLabel.textContent = mode === 'replacement' ? 'Old appliance width' : 'Cavity Width';
-  if (heightLabel) heightLabel.textContent = mode === 'replacement' ? 'Old appliance height' : 'Cavity Height';
-  if (depthLabel) depthLabel.textContent = mode === 'replacement' ? 'Old appliance depth' : 'Cavity Depth';
+  if (widthLabel) widthLabel.textContent = mode === 'replacement' ? 'OLD MACHINE WIDTH' : 'CAVITY WIDTH';
+  if (heightLabel) heightLabel.textContent = mode === 'replacement' ? 'OLD MACHINE HEIGHT' : 'CAVITY HEIGHT';
+  if (depthLabel) depthLabel.textContent = mode === 'replacement' ? 'OLD MACHINE DEPTH' : 'CAVITY DEPTH';
 }
 
 function renderSpaceAlertsForDimensions({ w, h, d, door } = {}) {
@@ -2862,7 +2887,7 @@ async function applySearch(params = {}) {
   if (params.w) document.getElementById('inW').value = String(params.w);
   if (params.h) document.getElementById('inH').value = String(params.h);
   if (params.d) document.getElementById('inD').value = String(params.d);
-  if (params.searchMode) setSearchMode(params.searchMode, { force: true });
+  if (params.searchMode) setSearchMode(params.searchMode, { force: true, clearDimensions: false });
   document.getElementById('inBrand').value = params.brand ?? '';
   if (params.door) document.getElementById('inDoor').value = String(params.door);
   if (params.dwelling) document.getElementById('inDwelling').value = String(params.dwelling);
