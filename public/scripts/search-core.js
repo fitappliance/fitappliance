@@ -8,6 +8,11 @@
     manufacturer: null
   });
   const DEFAULT_CLEARANCE_MODE = 'practical';
+  const SEARCH_MODES = Object.freeze({
+    cavity: 'cavity',
+    replacement: 'replacement'
+  });
+  const DEFAULT_SEARCH_MODE = 'cavity';
   const CLEARANCE_DEFAULTS = {
     fridge: { ...PRACTICAL_CLEARANCE },
     dishwasher: { ...PRACTICAL_CLEARANCE },
@@ -90,6 +95,13 @@
     return Object.prototype.hasOwnProperty.call(CLEARANCE_MODES, next)
       ? next
       : DEFAULT_CLEARANCE_MODE;
+  }
+
+  function normalizeSearchMode(mode) {
+    const next = String(mode ?? '').trim();
+    return Object.prototype.hasOwnProperty.call(SEARCH_MODES, next)
+      ? next
+      : DEFAULT_SEARCH_MODE;
   }
 
   function getCategoryClearance(defaults, category) {
@@ -300,8 +312,12 @@
   function computeFitMeta(product, filters, options = {}) {
     const category = filters?.cat ?? product?.cat;
     const clearanceMode = normalizeClearanceMode(filters?.clearanceMode ?? options.clearanceMode);
+    const searchMode = normalizeSearchMode(filters?.searchMode ?? options.searchMode);
     const clearance = getEffectiveClearance(category, product?.brand, clearanceMode, options);
-    const axisEntries = getAxisEntries(product, filters, clearance);
+    const filterClearance = searchMode === 'replacement'
+      ? normalizeClearance({ side: 0, top: 0, rear: 0 })
+      : clearance;
+    const axisEntries = getAxisEntries(product, filters, filterClearance);
     if (axisEntries.length === 0) return null;
 
     const axisScores = axisEntries.map((entry) => computeAxisScore(entry.cavity, entry.appliance, entry.clearanceMm));
@@ -309,7 +325,9 @@
     const fitScore = Math.min(...axisScores);
     const sortScore = axisScores.reduce((sum, score) => sum + score, 0) / axisScores.length;
     const cavityMin = Math.min(...axisEntries.map((entry) => entry.cavity));
-    const toleranceMm = Number.isFinite(Number(filters?.toleranceMm)) ? Number(filters.toleranceMm) : 0;
+    const toleranceMm = searchMode === 'replacement'
+      ? 0
+      : (Number.isFinite(Number(filters?.toleranceMm)) ? Number(filters.toleranceMm) : 0);
     const threshold = -(toleranceMm / cavityMin);
     const exactFit = axisScores.every((score) => score >= 0);
     const fitsTightly = axisScores.some((score) => score < 0.02);
@@ -332,18 +350,31 @@
 
     return {
       fitScore,
-      fitScoreNumeric: computeFitScoreNumeric({
-        axisGaps,
-        cavity,
-        applianceDims: { w: Number(product?.w), h: Number(product?.h), d: Number(product?.d) },
-        clearance
-      }),
+      fitScoreNumeric: searchMode === 'replacement'
+        ? null
+        : computeFitScoreNumeric({
+          axisGaps,
+          cavity,
+          applianceDims: { w: Number(product?.w), h: Number(product?.h), d: Number(product?.d) },
+          clearance
+        }),
       sortScore,
       threshold,
       requiredClearancePass: axisSpare.every((gap) => Number.isFinite(gap) && gap >= 0),
       exactFit,
       fitsTightly: fitsTightly || fitScore < 0,
       axisGaps,
+      searchMode,
+      requiredCavityMm: {
+        w: Math.round(Number(product?.w ?? 0) + (Number(clearance?.sides ?? clearance?.side ?? 0) * 2)),
+        h: Math.round(Number(product?.h ?? 0) + Number(clearance?.top ?? 0)),
+        d: Math.round(Number(product?.d ?? 0) + Number(clearance?.rear ?? 0))
+      },
+      sizeMatchGaps: {
+        w: Math.round((toMm(filters?.w) ?? 0) - Number(product?.w ?? 0)),
+        h: Math.round((toMm(filters?.h) ?? 0) - Number(product?.h ?? 0)),
+        d: Math.round((toMm(filters?.d) ?? 0) - Number(product?.d ?? 0))
+      },
       bindingAxis: binding?.axis ?? '',
       tightestGapMm: binding?.gapMm ?? null,
       clearance,
@@ -467,6 +498,9 @@
       clearanceMode: fitMeta.clearanceMode,
       manufacturerClearance: fitMeta.manufacturerClearance,
       fitAxisGaps: fitMeta.axisGaps,
+      searchMode: fitMeta.searchMode,
+      requiredCavityMm: fitMeta.requiredCavityMm,
+      sizeMatchGaps: fitMeta.sizeMatchGaps,
       bindingAxis: fitMeta.bindingAxis,
       tightestGapMm: fitMeta.tightestGapMm,
       showPopularityBadge: Number(product?.priorityScore ?? 0) >= 70,
@@ -613,6 +647,7 @@
     clearanceDefaults = CLEARANCE_DEFAULTS,
     brandSpecificClearance = null,
     clearanceMode = DEFAULT_CLEARANCE_MODE,
+    searchMode = DEFAULT_SEARCH_MODE,
     limit = 60
   } = {}) {
     const rows = Array.isArray(products) ? products : [];
@@ -625,7 +660,8 @@
         const fitMeta = computeFitMeta(product, filters, {
           clearanceDefaults,
           brandSpecificClearance,
-          clearanceMode
+          clearanceMode,
+          searchMode
         });
         if (!fitMeta) return null;
         if (!fitMeta.requiredClearancePass) return null;
@@ -642,6 +678,7 @@
       clearanceDefaults: options.clearanceDefaults ?? CLEARANCE_DEFAULTS,
       brandSpecificClearance: options.brandSpecificClearance,
       clearanceMode: options.clearanceMode ?? filters?.clearanceMode ?? DEFAULT_CLEARANCE_MODE,
+      searchMode: options.searchMode ?? filters?.searchMode ?? DEFAULT_SEARCH_MODE,
       limit: options.limit ?? Number.MAX_SAFE_INTEGER
     });
     const retailerPool = normalizeRetailerOnly(filters, options)
@@ -737,7 +774,9 @@
     if (facets.stars !== null) params.set('stars', String(facets.stars));
     if (facets.availableOnly === true) params.set('avail', '1');
     const clearanceMode = normalizeClearanceMode(state?.clearanceMode);
+    const searchMode = normalizeSearchMode(state?.searchMode);
     if (clearanceMode !== DEFAULT_CLEARANCE_MODE) params.set('mode', clearanceMode);
+    if (searchMode !== DEFAULT_SEARCH_MODE) params.set('searchMode', searchMode);
     if (state?.retailerOnly === false) params.set('showAll', '1');
     if (state?.sortBy) params.set('sort', normalizeSortBy(state.sortBy));
     return params;
@@ -755,7 +794,8 @@
     const rawPriceMin = normalizeNumberOrNull(params.get('pmin'));
     const rawPriceMax = normalizeNumberOrNull(params.get('pmax'));
     const rawStars = normalizeNumberOrNull(params.get('stars'));
-    return {
+    const searchMode = normalizeSearchMode(params.get('searchMode'));
+    const parsed = {
       cat: params.get('cat') || null,
       w: toMm(params.get('w')),
       h: toMm(params.get('h')),
@@ -774,6 +814,10 @@
       retailerOnly: params.get('showAll') !== '1',
       sortBy: normalizeSortBy(params.get('sort'))
     };
+    if (searchMode !== DEFAULT_SEARCH_MODE) {
+      parsed.searchMode = searchMode;
+    }
+    return parsed;
   }
 
   function buildEmptyState({
@@ -800,6 +844,8 @@
     CLEARANCE_DEFAULTS,
     CLEARANCE_MODES,
     DEFAULT_CLEARANCE_MODE,
+    DEFAULT_SEARCH_MODE,
+    SEARCH_MODES,
     buildEmptyState,
     buildNearMisses,
     calculateClearanceDeficit,
@@ -817,6 +863,7 @@
     isCurrentProduct,
     isRetailerProductPageUrl,
     normalizeClearanceMode,
+    normalizeSearchMode,
     parseSearchParams,
     searchWithFacets,
     serializeSearchState,

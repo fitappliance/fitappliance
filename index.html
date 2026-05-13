@@ -1251,6 +1251,7 @@ const DENSITY_STORAGE_KEY = 'fitappliance-result-density';
 let currentSortBy = 'fit-score-desc';
 let currentDensity = readDensityPreference();
 let currentClearanceMode = 'practical';
+let currentSearchMode = 'cavity';
 let lastSearchFilters = null;
 let lastSearchContext = null;
 let currentNearMissRows = [];
@@ -1460,6 +1461,7 @@ async function readUrlParams() {
   });
   currentSortBy = params.get('sort') || parsedState.sortBy || 'fit-score-desc';
   currentClearanceMode = parsedState.clearanceMode ?? 'practical';
+  currentSearchMode = SearchCore.normalizeSearchMode?.(parsedState.searchMode ?? 'cavity') ?? 'cavity';
   syncLegacyFacetInputs();
 
   const widthInput = document.getElementById('inW');
@@ -1699,7 +1701,7 @@ function filterOperationalPool(rows, context = {}) {
 
 function mergeManagedSearchParams(baseParams, nextParams) {
   const merged = new URLSearchParams(baseParams);
-  ['cat', 'w', 'h', 'd', 'tol', 'preset', 'brand', 'pmin', 'pmax', 'stars', 'avail', 'sort', 'mode', 'showAll', 'door', 'dwelling', 'widthMin', 'widthMax', 'heightMin', 'heightMax', 'depthMin', 'depthMax', 'scoreMin', 'starsMin', 'starsMax', 'verifiedOnly']
+  ['cat', 'w', 'h', 'd', 'tol', 'preset', 'brand', 'pmin', 'pmax', 'stars', 'avail', 'sort', 'mode', 'searchMode', 'showAll', 'door', 'dwelling', 'widthMin', 'widthMax', 'heightMin', 'heightMax', 'depthMin', 'depthMax', 'scoreMin', 'starsMin', 'starsMax', 'verifiedOnly']
     .forEach((key) => merged.delete(key));
   for (const [key, value] of nextParams.entries()) {
     merged.set(key, value);
@@ -1714,6 +1716,7 @@ function updateSearchUrl(context = {}) {
     facets: activeFacetState,
     sortBy: currentSortBy,
     clearanceMode: currentClearanceMode,
+    searchMode: currentSearchMode,
     retailerOnly: activeFacetState.retailerOnly !== false
   });
   if (currentSortBy) {
@@ -1792,6 +1795,7 @@ function getCurrentSearchState() {
     facets: normalizeHomeFacets(activeFacetState),
     sortBy: currentSortBy,
     clearanceMode: currentClearanceMode,
+    searchMode: currentSearchMode,
     retailerOnly: activeFacetState.retailerOnly !== false
   };
 }
@@ -1828,6 +1832,7 @@ async function restoreSavedSearchState(state = {}) {
   activeFacetState = normalizeHomeFacets(state.facets || {});
   currentSortBy = state.sortBy || 'fit-score-desc';
   currentClearanceMode = SearchCore.normalizeClearanceMode?.(state.clearanceMode) ?? 'practical';
+  currentSearchMode = SearchCore.normalizeSearchMode?.(state.searchMode ?? 'cavity') ?? 'cavity';
   syncLegacyFacetInputs();
   doSearch({ preserveExistingFacets: true, toleranceMm: Number(state.tol ?? state.toleranceMm ?? 5) });
 }
@@ -1959,11 +1964,13 @@ function refreshSearchResults() {
   const searchOptions = {
     limit: Number.MAX_SAFE_INTEGER,
     brandSpecificClearance: BRAND_CLEARANCE,
-    clearanceMode: currentClearanceMode
+    clearanceMode: currentClearanceMode,
+    searchMode: currentSearchMode
   };
   const dimensionPool = SearchCore.findSearchMatches(PRODUCTS, {
     ...lastSearchFilters,
-    clearanceMode: currentClearanceMode
+    clearanceMode: currentClearanceMode,
+    searchMode: currentSearchMode
   }, searchOptions);
   const operationalPool = filterOperationalPool(dimensionPool, lastSearchContext);
   const retailerOnly = activeFacetState.retailerOnly !== false;
@@ -1982,7 +1989,7 @@ function refreshSearchResults() {
     }
   }
   filteredResults = currentMatchRows.slice(0, RESULTS_CAP);
-  if (currentMatchRows.length === 0) {
+  if (currentMatchRows.length === 0 && currentSearchMode === 'cavity') {
     const nearMissPool = SearchCore.buildNearMisses(PRODUCTS, {
       ...lastSearchFilters,
       clearanceMode: currentClearanceMode
@@ -2074,8 +2081,8 @@ function doSearch(options = {}) {
   const usableW = w - sideClearance*2, usableH = h - cl.top, usableD = d - cl.rear;
   const clearanceLabel = currentClearanceMode === 'manufacturer' ? 'Manufacturer clearance' : currentClearanceMode === 'physical' ? 'Physical fit' : 'Practical clearance';
   document.getElementById('resultsMeta').innerHTML = `
-    <span class="results-meta-chip">Cavity: ${w}×${h}×${d}mm</span>
-    <span class="results-meta-chip">${clearanceLabel}: ${usableW}×${usableH}×${usableD}mm</span>
+    <span class="results-meta-chip">${currentSearchMode === 'replacement' ? 'Old appliance' : 'Cavity'}: ${w}×${h}×${d}mm</span>
+    <span class="results-meta-chip">${currentSearchMode === 'replacement' ? 'Replacement mode: physical size match' : `${clearanceLabel}: ${usableW}×${usableH}×${usableD}mm`}</span>
     <span class="results-meta-chip">Doorway: ${doorW}mm</span>
   `;
 
@@ -2085,7 +2092,8 @@ function doSearch(options = {}) {
     h,
     d,
     toleranceMm: Number.isFinite(Number(options?.toleranceMm)) ? Number(options.toleranceMm) : 5,
-    clearanceMode: currentClearanceMode
+    clearanceMode: currentClearanceMode,
+    searchMode: currentSearchMode
   };
   lastSearchContext = { doorW, dwelling };
   if (!options?.preserveExistingFacets) {
@@ -2099,7 +2107,7 @@ function doSearch(options = {}) {
 
   refreshSearchResults();
 
-  recordSearch({ cat: currentCat, w, h, d, brand: activeFacetState.brand.join(','), door: doorW, dwelling });
+  recordSearch({ cat: currentCat, w, h, d, brand: activeFacetState.brand.join(','), door: doorW, dwelling, searchMode: currentSearchMode });
   renderSearchHistoryChips();
   updateFloatBarSummary();
 }
