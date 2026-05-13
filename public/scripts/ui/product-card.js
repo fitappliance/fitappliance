@@ -1,6 +1,7 @@
 import { displayBrandName } from './brand-utils.js';
 import { renderFitScoreCardBlock } from './fit-score-ring.js';
 import { renderProductThumb } from './product-thumb.js';
+import { renderProvenanceBlock } from './provenance.js';
 import { isRetailerProductPageUrl } from './retailer-modal.js';
 import { computeBreakdown } from './score-breakdown.js';
 
@@ -137,6 +138,23 @@ export function buildEvidenceReceiptHtml(product) {
     ${sourceLink}
     ${verifiedAt ? `<span class="evidence-date">Extracted: ${escHtml(verifiedAt)}</span>` : ''}
   </div>`;
+}
+
+function hasEvidenceIndex(deps = {}) {
+  const index = deps?.evidenceIndex;
+  return Boolean(index && typeof index === 'object' && Object.keys(index).length > 0);
+}
+
+function buildProvenanceHtml(product, deps = {}) {
+  if (hasEvidenceIndex(deps)) {
+    return renderProvenanceBlock(product, deps.evidenceIndex);
+  }
+
+  if (hasPdfEvidence(product)) {
+    return buildEvidenceReceiptHtml(product);
+  }
+
+  return renderProvenanceBlock(product, {});
 }
 
 function replacementDimensionArg(value) {
@@ -866,7 +884,7 @@ function buildZoneB(product, deps, primaryTitle, modelLine) {
     ${buildClearanceBarsHtml(product, deps)}
     ${buildTechSpecsHtml(product, deps)}
     ${buildDataTrustLine(product, deps.capturedDate ?? '')}
-    ${buildEvidenceReceiptHtml(product)}
+    ${buildProvenanceHtml(product, deps)}
     ${buildFeatureFlagsHtml(product)}
     ${buildDeliveryCheckHtml(product)}
   </div>`;

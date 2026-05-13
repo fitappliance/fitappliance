@@ -1,9 +1,49 @@
+:root {
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  --ink-primary: #1a1a1a;
+  --ink-secondary: #3f3f3f;
+  --ink-tertiary: #6b6b6b;
+  --line-default: #d0cfc8;
+  --accent-orange: #d97706;
+  --accent-green: #047857;
+  --accent-amber: #b06900;
+  --accent-red: #c62828;
+  --ink: var(--ink-primary);
+  --ink-2: var(--ink-secondary);
+  --ink-3: var(--ink-tertiary);
+  --border: var(--line-default);
+  --copper: var(--accent-orange);
+  --green: var(--accent-green);
+  --amber: var(--accent-amber);
+  --red: var(--accent-red);
+  --r-sm: 4px;
+}
+
+body {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+.p-row--rtings,
+.p-card--rtings {
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px #d0cfc8, 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+input,
+select,
+textarea {
+  border-radius: 2px;
+}
+
 .dim-tag, .spec-chip, .p-row-dims, .card-specs-row,
 .tco-row, .card-energy-line, .data-trust-line,
 .fit-axis-bar, .fit-axis-bar__label,
 table.compare-table td, table.compare-table th,
 .results-meta-chip, .facet-range-output,
-.hero-trust-strip, .hero-sample-chip {
+.hero-trust-strip, .hero-sample-chip,
+.provenance-block, .provenance-date {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum";
 }
@@ -542,6 +582,8 @@ table.compare-table td, table.compare-table th,
   gap: 16px;
   padding: 16px;
   align-items: start;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px #d0cfc8, 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 .card-thumb-cell {

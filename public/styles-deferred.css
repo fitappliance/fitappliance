@@ -885,6 +885,49 @@
   line-height: 1.35;
   margin-top: 7px;
 }
+.provenance-block {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:8px;
+  padding:7px 9px;
+  border:1px solid var(--line-default, #d0cfc8);
+  border-left-width:3px;
+  border-radius:4px;
+  background:#f9fafb;
+  color:var(--ink-secondary, #3f3f3f);
+  font-family:var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+  font-size:12px;
+  line-height:1.35;
+}
+.provenance-block--verified {
+  border-left-color:var(--accent-green, #047857);
+  background:#ecfdf5;
+}
+.provenance-block--pending {
+  border-left-color:var(--accent-amber, #b06900);
+  background:#fffbeb;
+}
+.provenance-block--fallback {
+  border-left-color:var(--ink-tertiary, #6b6b6b);
+}
+.provenance-state {
+  color:var(--ink-primary, #1a1a1a);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.provenance-link {
+  color:var(--ink-secondary, #3f3f3f);
+  font-weight:800;
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:2px;
+}
+.provenance-date {
+  color:var(--ink-tertiary, #6b6b6b);
+}
 .c-price.no-price, .p-row-price.no-price {
   color: var(--ink-3);
   font-family: 'Outfit', sans-serif;
