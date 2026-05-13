@@ -100,3 +100,41 @@ test('account store: inventory entries preserve replacement dimensions as intege
     is_current: true
   });
 });
+
+test('account store: pending purchase can be confirmed into active inventory', async () => {
+  const { createAccountStore } = await import(`${accountStoreUrl}?t=${Date.now()}`);
+  const storage = makeStorage();
+  let id = 0;
+  const store = createAccountStore({ storage, sessionStorage: storage, idFactory: (prefix) => `${prefix}-${++id}` });
+  await store.signup({ email: 'owner@example.com', password: 'correct-horse-1' });
+
+  const pending = store.recordPendingAsset({
+    product_id: 'fridge-123',
+    category: 'fridge',
+    brand: 'Hisense',
+    model: 'HRTF206',
+    width: 550,
+    height: 1410,
+    depth: 490,
+    retailer: 'JB Hi-Fi',
+    target_url: 'https://www.jbhifi.com.au/products/hisense-hrtf206'
+  });
+
+  assert.equal(pending.ok, true);
+  assert.equal(store.listPendingAssets().length, 1);
+
+  const confirmed = store.confirmPendingAsset(pending.item.id);
+
+  assert.equal(confirmed.ok, true);
+  assert.equal(store.listPendingAssets().length, 0);
+  assert.deepEqual(store.listInventory()[0], {
+    id: 'appliance-4',
+    category: 'fridge',
+    brand: 'Hisense',
+    model: 'HRTF206',
+    width: 550,
+    height: 1410,
+    depth: 490,
+    is_current: true
+  });
+});

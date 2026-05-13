@@ -866,7 +866,15 @@ function buildAvailabilityAccordion(product, deps = {}) {
     ? `<div class="retailer-accordion-links">
         ${retailers.map((retailer) => {
           const name = String(retailer?.n ?? retailer?.name ?? 'Retailer').trim() || 'Retailer';
-          return `<a class="${retailerLinkClassName(name)}" href="${escHtml(resolveRetailerUrl(retailer))}" target="_blank" rel="sponsored nofollow noopener"><span class="retailer-brand-wordmark">${escHtml(name)}</span><span aria-hidden="true">→</span></a>`;
+          const targetUrl = resolveRetailerUrl(retailer);
+          return `<a class="${retailerLinkClassName(name)}" href="${escHtml(targetUrl)}" target="_blank" rel="sponsored nofollow noopener"
+            data-buy-click="1"
+            data-product-id="${escHtml(product?.id ?? '')}"
+            data-brand="${escHtml(product?.brand ?? '')}"
+            data-model="${escHtml(product?.model ?? '')}"
+            data-retailer="${escHtml(name)}"
+            data-target-url="${escHtml(targetUrl)}"
+            data-price="${Number.isFinite(retailer?.p) ? retailer.p : 0}"><span class="retailer-brand-wordmark">${escHtml(name)}</span><span aria-hidden="true">→</span></a>`;
         }).join('')}
       </div>
       <p class="retailer-commission-note">We may earn a commission. <a href="/affiliate-disclosure">Disclosure</a>.</p>`
