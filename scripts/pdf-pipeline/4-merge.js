@@ -158,6 +158,12 @@ function findEvidenceForProduct(product, evidenceIndex) {
   return null;
 }
 
+function catalogCategoryFromEvidence(extractedCategory) {
+  const normalized = String(extractedCategory || '').trim().toUpperCase();
+  if (normalized === 'WASHTOWER_COMBO') return 'washtower_combo';
+  return '';
+}
+
 function findManifestEntryForEvidence(evidence, manifest) {
   const products = manifest?.products || {};
   if (evidence?.product_id && products[String(evidence.product_id)]) {
@@ -185,12 +191,14 @@ function mergeEvidenceIntoProduct(product, evidence) {
   const flags = extracted.flags || {};
   const metadata = extracted.metadata || {};
   const dataSource = evidence?.data_source || metadata.data_source || 'official_pdf';
+  const extractedCatalogCategory = catalogCategoryFromEvidence(extracted.category);
   const hasPdfEvidence = typeof evidence?.has_pdf_evidence === 'boolean'
     ? evidence.has_pdf_evidence
     : (typeof metadata.has_pdf_evidence === 'boolean' ? metadata.has_pdf_evidence : dataSource === 'official_pdf');
 
   return {
     ...product,
+    ...(extractedCatalogCategory ? { cat: extractedCatalogCategory } : {}),
     w: dimensions.width_mm,
     h: dimensions.height_mm,
     d: dimensions.depth_mm,
@@ -262,6 +270,9 @@ function buildCatalogProductFromEvidence(entry, manifestEntry) {
 function buildSummary({ products, evidenceEntries, mergedProducts, unmatchedEvidence, duplicateEvidence }) {
   const activeProducts = products.filter((product) => product.unavailable === false).length;
   const officialPdfProducts = mergedProducts.length;
+  const baseCategories = CATALOG_FILES.map(([category]) => category);
+  const categories = uniqueSorted([...baseCategories, ...products.map((product) => product.cat)]);
+  const officialPdfCategories = uniqueSorted([...baseCategories, ...mergedProducts.map((product) => product.cat)]);
   return {
     total_products: products.length,
     active_products: activeProducts,
@@ -270,13 +281,13 @@ function buildSummary({ products, evidenceEntries, mergedProducts, unmatchedEvid
     unmatched_evidence_files: unmatchedEvidence.length,
     duplicate_evidence_files: duplicateEvidence.length,
     categories: Object.fromEntries(
-      CATALOG_FILES.map(([category]) => [
+      categories.map((category) => [
         category,
         products.filter((product) => product.cat === category).length
       ])
     ),
     official_pdf_by_category: Object.fromEntries(
-      CATALOG_FILES.map(([category]) => [
+      officialPdfCategories.map((category) => [
         category,
         mergedProducts.filter((product) => product.cat === category).length
       ])

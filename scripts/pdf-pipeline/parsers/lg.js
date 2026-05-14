@@ -74,12 +74,22 @@ function wildcardPatternMatches(pattern, target) {
   return true;
 }
 
+function prefixedLaundryTowerModelMatchesSku(modelToken, sku) {
+  const source = normalizeModelToken(modelToken, { keepWildcard: true });
+  const target = normalizeModelToken(sku);
+  if (!source || !target || !/^\d/.test(target)) return false;
+  if (source.includes('*')) return false;
+  if (!/^(?:WWT|WXT|WK|WXLC|WXL|WXC|WT)/.test(source)) return false;
+  return source.endsWith(target) && source.length - target.length <= 5;
+}
+
 function lgModelMatchesSku(modelToken, sku) {
   const source = normalizeModelToken(modelToken, { keepWildcard: true });
   const target = normalizeModelToken(sku);
   if (!source || !target) return false;
   if (source === target) return true;
   if (wildcardPatternMatches(source, target)) return true;
+  if (prefixedLaundryTowerModelMatchesSku(source, target)) return true;
   return Boolean(
     !source.includes('*')
     && source.length >= 6
@@ -119,6 +129,7 @@ function inferCategoryFromText(text) {
 }
 
 function categoriesCompatible(targetCategory, inferredCategory) {
+  if (targetCategory === 'WASHING_MACHINE' && inferredCategory === 'WASHTOWER_COMBO') return true;
   return !targetCategory || !inferredCategory || targetCategory === inferredCategory;
 }
 
@@ -391,7 +402,9 @@ function parseLgText(text, options = {}) {
   if (!categoriesCompatible(targetCategory, inferredCategory)) {
     throw new Error(`LG category mismatch: target ${targetCategory} but document text indicates ${inferredCategory}.`);
   }
-  const category = normalizeCategory(firstNonBlank(targetCategory, inferredCategory));
+  const category = targetCategory === 'WASHING_MACHINE' && inferredCategory === 'WASHTOWER_COMBO'
+    ? 'WASHTOWER_COMBO'
+    : normalizeCategory(firstNonBlank(targetCategory, inferredCategory));
   if (!category || !Object.values(CATEGORY_MAP).includes(category)) {
     throw new Error(`Unsupported LG category: ${category || 'missing'}`);
   }

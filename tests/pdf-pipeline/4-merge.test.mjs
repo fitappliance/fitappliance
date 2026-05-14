@@ -149,6 +149,116 @@ test('final merge overlays official PDF dimensions, clearance and flags without 
   assert.equal(merged.evidence.has_pdf_evidence, true);
 });
 
+test('final merge promotes verified WashTower evidence into the dedicated catalog category', () => {
+  const product = {
+    id: 'discovery-washing-machine-lg-1910bx',
+    cat: 'washing_machine',
+    brand: 'LG',
+    model: '1910BX'
+  };
+  const evidence = {
+    product_id: 'discovery-washing-machine-lg-1910bx',
+    source_url: 'https://gscs-b2c.lge.com/open/downloadFile?fileId=aDEyNnLn9ZhB6npLvfqKzA',
+    verified_at: '2026-05-14',
+    extracted: {
+      dimensions: {
+        height_mm: 1890,
+        width_mm: 700,
+        depth_mm: 830,
+        door_open_90_depth_mm: 1460
+      },
+      category: 'WASHTOWER_COMBO',
+      clearance_requirements: {
+        top_mm: 110,
+        left_mm: 50,
+        right_mm: 50,
+        rear_mm: 200
+      },
+      flags: {
+        requires_plumbing: true,
+        ventilation_required: true,
+        reversible_door: null
+      },
+      metadata: {
+        source_pdf_url: 'https://gscs-b2c.lge.com/open/downloadFile?fileId=aDEyNnLn9ZhB6npLvfqKzA',
+        extraction_date: '2026-05-14T00:00:00.000Z',
+        confidence_score: 0.9
+      }
+    }
+  };
+
+  const merged = mergeEvidenceIntoProduct(product, evidence);
+
+  assert.equal(merged.cat, 'washtower_combo');
+  assert.equal(merged.w, 700);
+  assert.equal(merged.h, 1890);
+  assert.equal(merged.d, 830);
+  assert.equal(merged.flags.requires_plumbing, true);
+});
+
+test('final catalog summary includes evidence-only categories such as WashTower Combo', () => {
+  const repoRoot = makeRepo();
+  writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {
+    schema_version: 1,
+    products: {
+      'discovery-washing-machine-lg-1910bx': {
+        category: 'washing_machine',
+        brand: 'LG',
+        model: '1910BX',
+        discovery: { retailer_key: 'the-good-guys' },
+        product: {
+          id: 'discovery-washing-machine-lg-1910bx',
+          cat: 'washing_machine',
+          brand: 'LG',
+          model: '1910BX',
+          unavailable: false
+        }
+      }
+    }
+  });
+  writeJson(path.join(repoRoot, 'data', 'pdf-evidence-raw', '1910BX.json'), {
+    schema_version: 1,
+    product_id: 'discovery-washing-machine-lg-1910bx',
+    category: 'washing_machine',
+    brand: 'LG',
+    model: '1910BX',
+    source_url: 'https://example.com/wwt-1910bx.pdf',
+    verified_at: '2026-05-14',
+    extracted: {
+      brand: 'LG',
+      sku: '1910BX',
+      category: 'WASHTOWER_COMBO',
+      dimensions: {
+        height_mm: 1890,
+        width_mm: 700,
+        depth_mm: 830,
+        door_open_90_depth_mm: 1460
+      },
+      clearance_requirements: {
+        top_mm: 110,
+        left_mm: 50,
+        right_mm: 50,
+        rear_mm: 200
+      },
+      flags: {
+        requires_plumbing: true,
+        ventilation_required: true,
+        reversible_door: null
+      },
+      metadata: {
+        source_pdf_url: 'https://example.com/wwt-1910bx.pdf',
+        extraction_date: '2026-05-14T00:00:00.000Z',
+        confidence_score: 0.9
+      }
+    }
+  });
+
+  const result = buildFinalCatalog({ repoRoot });
+
+  assert.equal(result.summary.categories.washtower_combo, 1);
+  assert.equal(result.summary.official_pdf_by_category.washtower_combo, 1);
+});
+
 test('final catalog builder keeps unmatched products and reports merge counts', () => {
   const repoRoot = makeRepo();
   const result = buildFinalCatalog({ repoRoot });

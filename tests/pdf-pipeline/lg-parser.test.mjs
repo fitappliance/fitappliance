@@ -102,8 +102,25 @@ test('LG model matcher accepts safe suffixes and wildcards without broad false p
   assert.equal(lgModelMatchesSku('GF-V900', 'GF-V900MBS'), true);
   assert.equal(lgModelMatchesSku('GF-V9**', 'GF-V900MBS'), true);
   assert.equal(lgModelMatchesSku('WV9-1412W', 'WV9-1412W'), true);
+  assert.equal(lgModelMatchesSku('WWT-1910BX', '1910BX'), true);
   assert.equal(lgModelMatchesSku('GF-V8**', 'GF-V900MBS'), false);
   assert.equal(lgModelMatchesSku('GF', 'GF-V900MBS'), false);
+  assert.equal(lgModelMatchesSku('ABC-1910BX', '1910BX'), false);
+});
+
+test('LG parser upgrades shorthand washing-machine WashTower manifests to WashTower Combo', async () => {
+  const result = await parseLgPdf(path.join(fixtureDir, 'washtower-wwt-1910bx.pdf'), {
+    target: { brand: 'LG', sku: '1910BX', category: 'washing_machine' },
+    sourceUrl: fixtures['WWT-1910BX'].sourceUrl,
+    verifiedAlias: 'WWT-1910BX',
+    extractionDate: EXTRACTION_DATE
+  });
+
+  assert.equal(result.data.category, 'WASHTOWER_COMBO');
+  assert.equal(result.data.sku, '1910BX');
+  assert.deepEqual(result.data.dimensions, fixtures['WWT-1910BX'].expected.dimensions);
+  assert.deepEqual(result.data.clearance_requirements, fixtures['WWT-1910BX'].expected.clearance);
+  assert.equal(result.data.metadata.verified_alias, 'WWT-1910BX');
 });
 
 test('LG parser handles WashTower as one tall appliance instead of a split washer/dryer', () => {

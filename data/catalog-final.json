@@ -12,23 +12,25 @@
   },
   "latest_verified_at": "2026-05-14",
   "summary": {
-    "total_products": 3527,
-    "active_products": 1399,
-    "evidence_files": 1505,
-    "merged_products": 1488,
+    "total_products": 3529,
+    "active_products": 1401,
+    "evidence_files": 1507,
+    "merged_products": 1490,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
-      "fridge": 1989,
       "dishwasher": 706,
       "dryer": 168,
-      "washing_machine": 664
+      "fridge": 1989,
+      "washing_machine": 664,
+      "washtower_combo": 2
     },
     "official_pdf_by_category": {
-      "fridge": 778,
       "dishwasher": 361,
       "dryer": 98,
-      "washing_machine": 251
+      "fridge": 778,
+      "washing_machine": 251,
+      "washtower_combo": 2
     }
   },
   "unmatched_evidence": [
@@ -61926,6 +61928,112 @@
       "displayName": "Yokohama Washing Machine",
       "readableSpec": "Top Loader",
       "priorityScore": 18
+    },
+    {
+      "id": "discovery-washing-machine-lg-1910bx",
+      "cat": "washtower_combo",
+      "brand": "LG",
+      "model": "1910BX",
+      "displayName": "LG 1910BX",
+      "title": "LG 1910BX",
+      "slug": "discovery-washing-machine-lg-1910bx",
+      "w": 700,
+      "h": 1890,
+      "d": 830,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910bx",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910bx",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 1890,
+        "width_mm": 700,
+        "depth_mm": 830,
+        "door_open_90_depth_mm": 1460
+      },
+      "clearance_requirements": {
+        "top_mm": 110,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 200
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=aDEyNnLn9ZhB6npLvfqKzA",
+        "verified_at": "2026-05-14",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/1910BX.json"
+      }
+    },
+    {
+      "id": "discovery-washing-machine-lg-1910fgx",
+      "cat": "washtower_combo",
+      "brand": "LG",
+      "model": "1910FGX",
+      "displayName": "LG 1910FGX",
+      "title": "LG 1910FGX",
+      "slug": "discovery-washing-machine-lg-1910fgx",
+      "w": 700,
+      "h": 1890,
+      "d": 830,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "The Good Guys",
+          "url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910fgx",
+          "p": null,
+          "verified_at": "2026-05-09",
+          "source": "sitemap"
+        }
+      ],
+      "discovery": {
+        "retailer": "The Good Guys",
+        "retailer_key": "the-good-guys",
+        "product_url": "https://www.thegoodguys.com.au/lg-washtower-19kg-10kg-combo-washer-dryer-wwt-1910fgx",
+        "source": "sitemap"
+      },
+      "dimensions": {
+        "height_mm": 1890,
+        "width_mm": 700,
+        "depth_mm": 830,
+        "door_open_90_depth_mm": 1460
+      },
+      "clearance_requirements": {
+        "top_mm": 110,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 200
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=aDEyNnLn9ZhB6npLvfqKzA",
+        "verified_at": "2026-05-14",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/1910FGX.json"
+      }
     },
     {
       "id": "ao-11859",
