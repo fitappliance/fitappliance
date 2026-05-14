@@ -3,6 +3,7 @@ export const ACCOUNT_SESSION_KEY = 'fitappliance.accountSession.v1';
 export const INVENTORY_CATEGORIES = Object.freeze([
   'fridge',
   'washing_machine',
+  'washtower_combo',
   'dishwasher',
   'dryer',
 ]);
@@ -12,6 +13,7 @@ const PASSWORD_ITERATIONS = 120000;
 const CATEGORY_LABELS = Object.freeze({
   fridge: 'Fridge',
   washing_machine: 'Washing Machine',
+  washtower_combo: 'WashTower / Combo',
   dishwasher: 'Dishwasher',
   dryer: 'Dryer',
 });

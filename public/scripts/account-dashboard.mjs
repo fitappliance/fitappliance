@@ -6,6 +6,7 @@ const app = document.querySelector('[data-account-app]');
 const CATEGORY_LABELS = {
   fridge: 'Fridge',
   washing_machine: 'Washing Machine',
+  washtower_combo: 'WashTower / Combo',
   dishwasher: 'Dishwasher',
   dryer: 'Dryer',
 };
@@ -104,7 +105,7 @@ function renderDashboard(message = '') {
       <section class="inventory-section" aria-label="Saved appliances">
         <div class="inventory-section__head">
           <h2>Saved appliances</h2>
-          <p>Fridge · Washing Machine · Dishwasher · Dryer</p>
+          <p>Fridge · Washing Machine · WashTower / Combo · Dishwasher · Dryer</p>
         </div>
         ${renderInventoryRows(rows)}
       </section>

@@ -16,13 +16,15 @@ test('account dashboard: account route and page shell are present', () => {
   assert.match(page, /account-dashboard\.mjs/);
 });
 
-test('account dashboard: supports the four core appliance categories', () => {
+test('account dashboard: supports the four core categories and WashTower / Combo', () => {
   const page = fs.readFileSync(path.join(repoRoot, 'pages', 'account.html'), 'utf8');
 
   assert.match(page, /Fridge/);
   assert.match(page, /Washing Machine/);
   assert.match(page, /Dishwasher/);
   assert.match(page, /Dryer/);
+  const dashboard = fs.readFileSync(path.join(repoRoot, 'public', 'scripts', 'account-dashboard.mjs'), 'utf8');
+  assert.match(dashboard, /WashTower \/ Combo/);
 });
 
 test('account dashboard: homepage navigation exposes account entry point', () => {

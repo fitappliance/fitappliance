@@ -47,7 +47,7 @@ test('account store: login validates password and exposes the active local profi
   assert.equal(store.getSession()?.email, 'owner@example.com');
 });
 
-test('account store: inventory supports the four core appliance categories', async () => {
+test('account store: inventory supports core categories plus WashTower / Combo', async () => {
   const { createAccountStore, INVENTORY_CATEGORIES } = await import(`${accountStoreUrl}?t=${Date.now()}`);
   const storage = makeStorage();
   let id = 0;
@@ -68,7 +68,7 @@ test('account store: inventory supports the four core appliance categories', asy
   }
 
   const rows = store.listInventory();
-  assert.equal(rows.length, 4);
+  assert.equal(rows.length, 5);
   assert.deepEqual(rows.map((row) => row.category).sort(), [...INVENTORY_CATEGORIES].sort());
 });
 
