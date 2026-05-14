@@ -5,6 +5,11 @@ const CATEGORY_MAP = {
   refrigerator: 'FRIDGE',
   dishwasher: 'DISHWASHER',
   oven: 'OVEN',
+  washtower_combo: 'WASHTOWER_COMBO',
+  'washtower-combo': 'WASHTOWER_COMBO',
+  washtower: 'WASHTOWER_COMBO',
+  'wash tower': 'WASHTOWER_COMBO',
+  'laundry tower': 'WASHTOWER_COMBO',
   washing_machine: 'WASHING_MACHINE',
   'washing-machine': 'WASHING_MACHINE',
   washer: 'WASHING_MACHINE',
@@ -30,7 +35,7 @@ const nonNegativeMm = z.preprocess(roundFiniteNumber, z.number().int().min(0));
 const ApplianceDimensionSchema = z.object({
   brand: z.string().trim().min(1),
   sku: z.string().trim().min(1),
-  category: z.enum(['FRIDGE', 'DISHWASHER', 'OVEN', 'WASHING_MACHINE', 'DRYER']),
+  category: z.enum(['FRIDGE', 'DISHWASHER', 'OVEN', 'WASHING_MACHINE', 'DRYER', 'WASHTOWER_COMBO']),
   dimensions: z.object({
     height_mm: positiveMm,
     width_mm: positiveMm,
