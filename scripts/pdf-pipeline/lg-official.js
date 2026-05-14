@@ -16,6 +16,38 @@ function normalizeLookupSku(value) {
     .replace(/[^A-Z0-9-]+/g, '');
 }
 
+function collectPotentialLookupText(target = {}) {
+  return [
+    target.sku,
+    target.model,
+    target.product?.model,
+    target.product?.sku,
+    target.product?.displayName,
+    target.product?.title,
+    target.product?.slug,
+    target.product?.discovery?.product_url,
+    target.discovery?.product_url,
+    target.discovery?.source_discovery_url
+  ].filter(Boolean).join(' ');
+}
+
+function extractLookupSkusFromText(text) {
+  const source = String(text || '').toUpperCase();
+  const matches = [...source.matchAll(/\b(?:WWT|WXT|WK|WXLC|WXLS|WXL|WXC|WV|WTX|WTL|WTG|WTR|WTS|WD|DVH|DXH|XD|GF|GT|GB|GS|R)[A-Z0-9-]*\d[A-Z0-9-]*\b/g)]
+    .map((match) => normalizeLookupSku(match[0]))
+    .filter((sku) => sku.length >= 5);
+  return matches;
+}
+
+function buildLookupCandidates(target = {}) {
+  const original = normalizeLookupSku(target.sku || target.model || target.product?.model);
+  const candidates = [
+    original,
+    ...extractLookupSkusFromText(collectPotentialLookupText(target))
+  ].filter(Boolean);
+  return [...new Set(candidates)];
+}
+
 function buildLgDownloadUrl(fileId) {
   const id = String(fileId || '').trim();
   if (!id) return '';
@@ -59,39 +91,46 @@ async function findLgOfficialPdf(target = {}, {
   fetchImpl = globalThis.fetch,
   endpoint = SUPPORT_API_URL
 } = {}) {
-  const sku = normalizeLookupSku(target.sku || target.model || target.product?.model);
-  if (!sku) throw new Error('LG official finder requires a SKU');
+  const lookupCandidates = buildLookupCandidates(target);
+  if (!lookupCandidates.length) throw new Error('LG official finder requires a SKU');
   if (!fetchImpl) throw new Error('LG official finder requires fetch');
 
-  const response = await fetchImpl(endpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'User-Agent': 'FitApplianceBot/1.0 (+https://www.fitappliance.com.au/about)',
-      'X-Lge-LocaleCode': 'AU'
-    },
-    body: JSON.stringify({ csSalesCode: sku })
-  });
-  if (!response.ok) {
-    throw new Error(`LG support API failed with HTTP ${response.status}`);
-  }
-  const payload = await response.json();
-  const row = selectBestManualRow(getManualRows(payload));
-  if (!row) {
-    throw new Error(`LG official PDF not found for ${sku}`);
+  const attempted = [];
+  for (const lookupSku of lookupCandidates) {
+    attempted.push(lookupSku);
+    const response = await fetchImpl(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'FitApplianceBot/1.0 (+https://www.fitappliance.com.au/about)',
+        'X-Lge-LocaleCode': 'AU'
+      },
+      body: JSON.stringify({ csSalesCode: lookupSku })
+    });
+    if (!response.ok) {
+      throw new Error(`LG support API failed with HTTP ${response.status}`);
+    }
+    const payload = await response.json();
+    const row = selectBestManualRow(getManualRows(payload));
+    if (!row) continue;
+
+    return {
+      sourceUrl: buildLgDownloadUrl(row.fileName),
+      source: 'lg-official-support-manual',
+      resourceType: row.manualType || 'Owner Manual',
+      originalFileName: row.originalFileName || '',
+      docId: row.docId || '',
+      modelName: payload.retrieveManualSoftwareList?.modelList?.modelName || '',
+      lookupSku
+    };
   }
 
-  return {
-    sourceUrl: buildLgDownloadUrl(row.fileName),
-    source: 'lg-official-support-manual',
-    resourceType: row.manualType || 'Owner Manual',
-    originalFileName: row.originalFileName || '',
-    docId: row.docId || '',
-    modelName: payload.retrieveManualSoftwareList?.modelList?.modelName || ''
-  };
+  throw new Error(`LG official PDF not found for ${attempted.join(', ')}`);
 }
 
+exports.buildLookupCandidates = buildLookupCandidates;
 exports.buildLgDownloadUrl = buildLgDownloadUrl;
+exports.extractLookupSkusFromText = extractLookupSkusFromText;
 exports.findLgOfficialPdf = findLgOfficialPdf;
 exports.getManualRows = getManualRows;
 exports.normalizeLookupSku = normalizeLookupSku;

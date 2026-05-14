@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "discovery-washing-machine-lg-1910bx",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "1910BX",
+  "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=aDEyNnLn9ZhB6npLvfqKzA",
+  "verified_at": "2026-05-14",
+  "extracted": {
+    "brand": "LG",
+    "sku": "1910BX",
+    "category": "WASHTOWER_COMBO",
+    "dimensions": {
+      "height_mm": 1890,
+      "width_mm": 700,
+      "depth_mm": 830,
+      "door_open_90_depth_mm": 1460
+    },
+    "clearance_requirements": {
+      "top_mm": 110,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 200
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=aDEyNnLn9ZhB6npLvfqKzA",
+      "extraction_date": "2026-05-14T14:48:21.905Z",
+      "confidence_score": 0.9
+    }
+  }
+}
