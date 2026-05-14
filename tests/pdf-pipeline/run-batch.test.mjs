@@ -455,6 +455,89 @@ test('runBatch processes Samsung targets with the official finder and layout-awa
   });
 });
 
+test('runBatch routes LG targets through the strict LG parser without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'lg-wv9',
+    brand: 'LG',
+    sku: 'WV9-1412W',
+    category: 'washing_machine',
+    product: {
+      id: 'lg-wv9',
+      cat: 'washing_machine',
+      brand: 'LG',
+      model: 'WV9-1412W',
+      w: 600,
+      h: 850,
+      d: 610,
+      unavailable: false
+    }
+  };
+  writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {
+    schema_version: 1,
+    products: {
+      'lg-wv9': {
+        category: 'washing_machine',
+        brand: 'LG',
+        model: 'WV9-1412W',
+        evidence: [
+          {
+            type: 'user_manual',
+            status: 'candidate',
+            source_url: 'https://www.lg.com/au/support/product/lg-WV9-1412W'
+          }
+        ]
+      }
+    }
+  });
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        LG Washing Machine
+        INSTALLATION
+        Specifications
+        Dimension(mm)
+        WV9-1410B / WV9-1410W
+        WV9-1412W / WV9-1412B
+        Model WV9-1410B / WV9-1410W WV9-1412W / WV9-1412B
+        Product Weight 70 kg 73 kg
+        W 600 D 560 D" 1100
+        H 850 D' 620
+        W 600 D 610 D" 1135
+        H 850 D' 660
+        To ensure sufficient clearance for water inlet hoses, drain hose and airflow,
+        allow minimum clearances of at least 20 mm at the sides and 100 mm behind the appliance.
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'manual-evidence');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'WV9-1412W.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.dimensions, {
+    height_mm: 850,
+    width_mm: 600,
+    depth_mm: 610,
+    door_open_90_depth_mm: 1135
+  });
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 20,
+    right_mm: 20,
+    rear_mm: 100
+  });
+});
+
 test('runBatch preserves Samsung verified_alias metadata from manual evidence', async () => {
   const repoRoot = makeRepo();
   const target = {

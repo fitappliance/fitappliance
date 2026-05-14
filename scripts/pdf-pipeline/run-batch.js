@@ -18,6 +18,7 @@ const { findFisherPaykelOfficialPdf } = require('./fisher-paykel-official');
 const { parseFisherPaykelText } = require('./parsers/fisher-paykel');
 const { findSamsungOfficialPdf } = require('./samsung-official');
 const { parseSamsungText } = require('./parsers/samsung');
+const { parseLgText } = require('./parsers/lg');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
 const FISHER_PAYKEL_MAX_BYTES = 30 * 1024 * 1024;
@@ -87,6 +88,13 @@ function isFisherPaykelTarget(target = {}) {
 
 function isSamsungTarget(target = {}) {
   return /samsung/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isLgTarget(target = {}) {
+  return /\blg\b|lg electronics/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -432,6 +440,51 @@ async function parseSamsungTarget({
   };
 }
 
+async function parseLgTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  fetchPdfImpl,
+  extractTextImpl,
+  searchPdf,
+  env,
+  fisherPaykelOfficialFinder
+}) {
+  const resolved = await findPdfSourceUrl(target, {
+    repoRoot,
+    manualEvidence,
+    searchPdf,
+    env,
+    fisherPaykelOfficialFinder
+  });
+  const sourceUrl = resolved.sourceUrl;
+  if (!sourceUrl) {
+    throw new Error('LG official PDF source URL not found');
+  }
+  const verifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}.pdf`
+  );
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath);
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseLgText(textResult.text, {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString(),
+    verifiedAlias
+  });
+
+  return {
+    candidate: parsed.data,
+    sourceUrl,
+    source: resolved.source || 'lg-parser'
+  };
+}
+
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
   const dimensions = strictData?.dimensions || {};
   const pairs = [
@@ -561,7 +614,7 @@ async function runBatch({
   const failures = [];
 
   const needsDefaultLlm = !parseTextImpl && batchTargets.some((target) => (
-    !isFisherPaykelTarget(target) && !isSamsungTarget(target)
+    !isFisherPaykelTarget(target) && !isSamsungTarget(target) && !isLgTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -596,6 +649,20 @@ async function runBatch({
           samsungOfficialFinder,
           fetchPdfImpl,
           extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isLgTarget(target)) {
+        const parsed = await parseLgTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          fetchPdfImpl,
+          extractTextImpl,
+          searchPdf,
+          env,
+          fisherPaykelOfficialFinder
         });
         sourceUrl = parsed.sourceUrl;
         source = parsed.source;
@@ -729,3 +796,4 @@ exports.searchManufacturerPdf = searchManufacturerPdf;
 exports.MISSING_API_KEY_MESSAGE = MISSING_API_KEY_MESSAGE;
 exports.parseFisherPaykelTarget = parseFisherPaykelTarget;
 exports.parseSamsungTarget = parseSamsungTarget;
+exports.parseLgTarget = parseLgTarget;
