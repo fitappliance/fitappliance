@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source": "data/manual-evidence.json",
-  "last_updated": "2026-05-10",
+  "last_updated": "2026-05-14",
   "products": {
     "ao-100087": {
       "product_id": "ao-100087",
@@ -13109,15 +13109,15 @@
     },
     "ao-65625": {
       "product_id": "ao-65625",
-      "status": "pending",
+      "status": "verified",
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD3A15BS",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "source_type": "spec_sheet",
-      "source_url": "https://www.appliancesonline.com.au/ak/9/9/a/e/99ae5513d5b3466d6a551dbcc97940e0b75afc35_XD3A15BS_LG_Specifications_Sheet.pdf",
-      "verified_at": "",
-      "confidence_score": null
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=irYywwLMKQrdaYb9RwmJA",
+      "verified_at": "2026-05-14",
+      "confidence_score": 0.88
     },
     "ao-65626": {
       "product_id": "ao-65626",
@@ -18473,15 +18473,15 @@
     },
     "discovery-dishwasher-lg-xd2a25mb": {
       "product_id": "discovery-dishwasher-lg-xd2a25mb",
-      "status": "pending",
+      "status": "verified",
       "category": "dishwasher",
       "brand": "LG",
       "model": "XD2A25MB",
-      "has_pdf_evidence": false,
-      "source_type": "manual_evidence",
-      "source_url": "",
-      "verified_at": "",
-      "confidence_score": null
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=XFUDD7WCYvPmtwnCUJg7w",
+      "verified_at": "2026-05-14",
+      "confidence_score": 0.88
     },
     "discovery-dishwasher-miele-g5000scclst": {
       "product_id": "discovery-dishwasher-miele-g5000scclst",
@@ -19409,63 +19409,63 @@
     },
     "discovery-dryer-lg-dvh1-08wp": {
       "product_id": "discovery-dryer-lg-dvh1-08wp",
-      "status": "pending",
+      "status": "verified",
       "category": "dryer",
       "brand": "LG",
       "model": "DVH1-08WP",
-      "has_pdf_evidence": false,
-      "source_type": "manual_evidence",
-      "source_url": "",
-      "verified_at": "",
-      "confidence_score": null
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
+      "verified_at": "2026-05-14",
+      "confidence_score": 0.88
     },
     "discovery-dryer-lg-dvh10-10b": {
       "product_id": "discovery-dryer-lg-dvh10-10b",
-      "status": "pending",
+      "status": "verified",
       "category": "dryer",
       "brand": "LG",
       "model": "DVH10-10B",
-      "has_pdf_evidence": false,
-      "source_type": "manual_evidence",
-      "source_url": "",
-      "verified_at": "",
-      "confidence_score": null
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=l3ZnOgt0HYfuYHxXjG8Fw",
+      "verified_at": "2026-05-14",
+      "confidence_score": 0.88
     },
     "discovery-dryer-lg-dvh5-08w": {
       "product_id": "discovery-dryer-lg-dvh5-08w",
-      "status": "pending",
+      "status": "verified",
       "category": "dryer",
       "brand": "LG",
       "model": "DVH5-08W",
-      "has_pdf_evidence": false,
-      "source_type": "manual_evidence",
-      "source_url": "",
-      "verified_at": "",
-      "confidence_score": null
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=pUof6XKiAKggTDi5Im6WeA",
+      "verified_at": "2026-05-14",
+      "confidence_score": 0.88
     },
     "discovery-dryer-lg-dvh9-09b": {
       "product_id": "discovery-dryer-lg-dvh9-09b",
-      "status": "pending",
+      "status": "verified",
       "category": "dryer",
       "brand": "LG",
       "model": "DVH9-09B",
-      "has_pdf_evidence": false,
-      "source_type": "manual_evidence",
-      "source_url": "",
-      "verified_at": "",
-      "confidence_score": null
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=pUof6XKiAKggTDi5Im6WeA",
+      "verified_at": "2026-05-14",
+      "confidence_score": 0.88
     },
     "discovery-dryer-lg-dvh9-09w": {
       "product_id": "discovery-dryer-lg-dvh9-09w",
-      "status": "pending",
+      "status": "verified",
       "category": "dryer",
       "brand": "LG",
       "model": "DVH9-09W",
-      "has_pdf_evidence": false,
-      "source_type": "manual_evidence",
-      "source_url": "",
-      "verified_at": "",
-      "confidence_score": null
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=pUof6XKiAKggTDi5Im6WeA",
+      "verified_at": "2026-05-14",
+      "confidence_score": 0.88
     },
     "discovery-dryer-lg-dxh9-09mb": {
       "product_id": "discovery-dryer-lg-dxh9-09mb",
@@ -23237,27 +23237,27 @@
     },
     "discovery-washing-machine-lg-wv9-1412b": {
       "product_id": "discovery-washing-machine-lg-wv9-1412b",
-      "status": "pending",
+      "status": "verified",
       "category": "washing_machine",
       "brand": "LG",
       "model": "WV9-1412B",
-      "has_pdf_evidence": false,
-      "source_type": "manual_evidence",
-      "source_url": "",
-      "verified_at": "",
-      "confidence_score": null
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=HJoJF6sjLmW0vxZag11e5g",
+      "verified_at": "2026-05-14",
+      "confidence_score": 0.88
     },
     "discovery-washing-machine-lg-wv9-1412w": {
       "product_id": "discovery-washing-machine-lg-wv9-1412w",
-      "status": "pending",
+      "status": "verified",
       "category": "washing_machine",
       "brand": "LG",
       "model": "WV9-1412W",
-      "has_pdf_evidence": false,
-      "source_type": "manual_evidence",
-      "source_url": "",
-      "verified_at": "",
-      "confidence_score": null
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=HJoJF6sjLmW0vxZag11e5g",
+      "verified_at": "2026-05-14",
+      "confidence_score": 0.88
     },
     "discovery-washing-machine-lg-wvc9-1412b": {
       "product_id": "discovery-washing-machine-lg-wvc9-1412b",
@@ -24353,15 +24353,15 @@
     },
     "fridge-manual-lg-gf-l706pl": {
       "product_id": "fridge-manual-lg-gf-l706pl",
-      "status": "pending",
+      "status": "verified",
       "category": "fridge",
       "brand": "LG",
       "model": "GF-L706PL",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "source_type": "spec_sheet",
-      "source_url": "https://www.lg.com/au/lgecs.downloadFile.ldwf?DOC_ID=20221101178242&ORIGINAL_NAME_b1_a1=EPM_CNZ1_20221101130836365.PDF&FILE_NAME=%5BEPM_CNZ1_20221101130836365%5D.pdf&TC=DwnCmd&GSRI_DOC=GSRI&SPEC_DOWNLOAD=N",
-      "verified_at": "2026-05-09",
-      "confidence_score": null
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=fedUnZXjQscQf6x6ynOeEQ",
+      "verified_at": "2026-05-14",
+      "confidence_score": 0.9
     },
     "fridge-manual-samsung-srf7300bss": {
       "product_id": "fridge-manual-samsung-srf7300bss",

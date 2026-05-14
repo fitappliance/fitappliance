@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-manual-lg-gf-l706pl",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GF-L706PL",
+  "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=fedUnZXjQscQf6x6ynOeEQ",
+  "verified_at": "2026-05-14",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GF-L706PL",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1793,
+      "width_mm": 912,
+      "depth_mm": 744,
+      "door_open_90_depth_mm": 1699
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=fedUnZXjQscQf6x6ynOeEQ",
+      "extraction_date": "2026-05-14T12:21:05.094Z",
+      "confidence_score": 0.9
+    }
+  }
+}
