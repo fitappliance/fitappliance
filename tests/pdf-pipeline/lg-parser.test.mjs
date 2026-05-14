@@ -61,6 +61,17 @@ const fixtures = {
       requires_plumbing: true,
       ventilation_required: false
     }
+  },
+  'WWT-1910BX': {
+    file: 'washtower-wwt-1910bx.pdf',
+    category: 'washtower_combo',
+    sourceUrl: 'https://gscs-b2c.lge.com/open/downloadFile?fileId=aDEyNnLn9ZhB6npLvfqKzA',
+    expected: {
+      dimensions: { height_mm: 1890, width_mm: 700, depth_mm: 830, door_open_90_depth_mm: 1460 },
+      clearance: { top_mm: 110, left_mm: 50, right_mm: 50, rear_mm: 200 },
+      requires_plumbing: true,
+      ventilation_required: true
+    }
   }
 };
 
@@ -107,11 +118,21 @@ test('LG parser handles WashTower as one tall appliance instead of a split washe
     W 700 D 770 D" 1410
     H 1890
     Installation Location Requirements
-    To ensure sufficient clearance for water inlet hoses, drain hose and airflow,
-    allow minimum clearances of at least 20 mm at the sides and 100 mm behind the appliance.
-    Keep at least 20 mm between the top of the appliance and any cabinet.
+  Dimension (Width X Depth X Height) 700 mm X 770 mm X 1890 mm
+  Floor Installation
+  *1 minimum space for installation
+  To ensure sufficient clearance for water inlet hoses, drain hose and airflow,
+  allow minimum clearances on the sides and behind the appliance.
+  A 30 cm*1
+  W 70 cm
+  B 5 cm
+  C 10 cm
+  D 77 cm
+  D' 141 cm*1
+  H 189 cm
+  H' 200 cm
   `, {
-    target: { brand: 'LG', sku: 'WWT-1710B', category: 'washing_machine' },
+    target: { brand: 'LG', sku: 'WWT-1710B', category: 'washtower_combo' },
     sourceUrl: 'https://www.lg.com/au/support/product/lg-WWT-1710B',
     extractionDate: EXTRACTION_DATE
   });
@@ -123,11 +144,12 @@ test('LG parser handles WashTower as one tall appliance instead of a split washe
     door_open_90_depth_mm: 1410
   });
   assert.deepEqual(result.data.clearance_requirements, {
-    top_mm: 20,
-    left_mm: 20,
-    right_mm: 20,
+    top_mm: 110,
+    left_mm: 50,
+    right_mm: 50,
     rear_mm: 100
   });
+  assert.equal(result.data.category, 'WASHTOWER_COMBO');
   assert.equal(result.data.flags.requires_plumbing, true);
 });
 

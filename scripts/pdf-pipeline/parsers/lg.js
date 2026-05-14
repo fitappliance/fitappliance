@@ -5,6 +5,11 @@ const CATEGORY_MAP = {
   refrigerator: 'FRIDGE',
   dishwasher: 'DISHWASHER',
   dryer: 'DRYER',
+  washtower_combo: 'WASHTOWER_COMBO',
+  'washtower-combo': 'WASHTOWER_COMBO',
+  washtower: 'WASHTOWER_COMBO',
+  'wash tower': 'WASHTOWER_COMBO',
+  'laundry tower': 'WASHTOWER_COMBO',
   washing_machine: 'WASHING_MACHINE',
   'washing-machine': 'WASHING_MACHINE',
   washer: 'WASHING_MACHINE'
@@ -102,7 +107,8 @@ function inferCategoryFromText(text) {
   const signals = [
     ['DISHWASHER', /\bDishwasher\b/i],
     ['DRYER', /\bHeat\s+Pump\s+Dryer\b|\bDryer\b/i],
-    ['WASHING_MACHINE', /\bWashTower\b|\bWashing\s+Machine\b|\bFront\s+Load(?:er)?\b|\bWasher\b/i],
+    ['WASHTOWER_COMBO', /\bWashTower\b|\bLaundry\s+Tower\b/i],
+    ['WASHING_MACHINE', /\bWashing\s+Machine\b|\bFront\s+Load(?:er)?\b|\bWasher\b/i],
     ['FRIDGE', /\bRefrigerator\b|\bFridge\b|\bFreezer\b/i]
   ].map(([category, pattern]) => {
     const match = head.match(pattern);
@@ -204,6 +210,54 @@ function extractLgWasherLikeDimensions(text, sku, category) {
   };
 }
 
+function extractLgWashTowerInstallationGroups(text) {
+  const window = findSpecInstallationWindow(text);
+  const source = compactWhitespace(window);
+  const floor = source.match(/\bFloor\s+Installation\b([\s\S]*?)(?:\bVentilation\b|\bAmbient\s+Temperature\b|$)/i)?.[1] || source;
+  const groups = [...floor.matchAll(/\bA\s+(\d+(?:\.\d+)?)\s*cm(?:\*1)?\s+W\s+(\d+(?:\.\d+)?)\s*cm\s+B\s+(\d+(?:\.\d+)?)\s*cm\s+C\s+(\d+(?:\.\d+)?)\s*cm\s+D\s+(\d+(?:\.\d+)?)\s*cm\s+D['’]\s+(\d+(?:\.\d+)?)\s*cm(?:\*1)?\s+H\s+(\d+(?:\.\d+)?)\s*cm\s+H['’]\s+(\d+(?:\.\d+)?)\s*cm/gi)]
+    .map((match) => ({
+      faucet: parseMm(match[1], 'washtower faucet clearance') * 10,
+      width: parseMm(match[2], 'washtower installation width') * 10,
+      side: parseMm(match[3], 'washtower side clearance') * 10,
+      rear: parseMm(match[4], 'washtower rear clearance') * 10,
+      depth: parseMm(match[5], 'washtower installation depth') * 10,
+      doorOpen: parseMm(match[6], 'washtower door open depth') * 10,
+      height: parseMm(match[7], 'washtower installation height') * 10,
+      totalHeight: parseMm(match[8], 'washtower total installation height') * 10
+    }));
+  if (!groups.length) {
+    throw new Error("LG WashTower parser requires the Floor Installation A/W/B/C/D'/H/H' table.");
+  }
+  return groups;
+}
+
+function extractLgWashTowerDimensions(text) {
+  const window = findSpecInstallationWindow(text);
+  const source = compactWhitespace(window);
+  const dimensions = source.match(/\bDimension\s*\(\s*Width\s*X\s*Depth\s*X\s*Height\s*\)\s+(\d+(?:\.\d+)?)\s*mm\s*X\s*(\d+(?:\.\d+)?)\s*mm\s*X\s*(\d+(?:\.\d+)?)\s*mm/i);
+  if (!dimensions) {
+    throw new Error('LG WashTower parser could not find Width X Depth X Height dimensions.');
+  }
+  const groups = extractLgWashTowerInstallationGroups(window);
+  const width = parseMm(dimensions[1], 'washtower width');
+  const depth = parseMm(dimensions[2], 'washtower depth');
+  const height = parseMm(dimensions[3], 'washtower height');
+  const dimensionMatchesInstallationTable = groups.some((group) => (
+    group.width === width
+    && group.depth === depth
+    && group.height === height
+  ));
+  if (!dimensionMatchesInstallationTable) {
+    throw new Error('LG WashTower dimensions do not match the Floor Installation table.');
+  }
+  return {
+    width_mm: width,
+    height_mm: height,
+    depth_mm: depth,
+    door_open_90_depth_mm: Math.max(...groups.map((group) => group.doorOpen))
+  };
+}
+
 function extractLgDishwasherDimensions(text) {
   const window = findSpecInstallationWindow(text);
   const source = compactWhitespace(window);
@@ -221,6 +275,7 @@ function extractLgDishwasherDimensions(text) {
 
 function extractLgDimensions(text, category, sku) {
   if (category === 'FRIDGE') return extractLgFridgeDimensions(text, sku);
+  if (category === 'WASHTOWER_COMBO') return extractLgWashTowerDimensions(text);
   if (category === 'WASHING_MACHINE') return extractLgWasherLikeDimensions(text, sku, category);
   if (category === 'DRYER') return extractLgWasherLikeDimensions(text, sku, category);
   if (category === 'DISHWASHER') return extractLgDishwasherDimensions(text);
@@ -286,15 +341,26 @@ function extractLgDishwasherClearance(text) {
   };
 }
 
+function extractLgWashTowerClearance(text) {
+  const groups = extractLgWashTowerInstallationGroups(text);
+  return {
+    top_mm: Math.max(...groups.map((group) => Math.max(0, group.totalHeight - group.height))),
+    left_mm: Math.max(...groups.map((group) => group.side)),
+    right_mm: Math.max(...groups.map((group) => group.side)),
+    rear_mm: Math.max(...groups.map((group) => group.rear))
+  };
+}
+
 function extractLgClearance(text, category) {
   if (category === 'FRIDGE') return extractLgFridgeClearance(text);
+  if (category === 'WASHTOWER_COMBO') return extractLgWashTowerClearance(text);
   if (category === 'WASHING_MACHINE' || category === 'DRYER') return extractLgWasherLikeClearance(text, category);
   if (category === 'DISHWASHER') return extractLgDishwasherClearance(text);
   throw new Error(`Unsupported LG category: ${category}`);
 }
 
 function inferRequiresPlumbing(text, category) {
-  if (category === 'DISHWASHER' || category === 'WASHING_MACHINE') return true;
+  if (category === 'DISHWASHER' || category === 'WASHING_MACHINE' || category === 'WASHTOWER_COMBO') return true;
   if (category === 'FRIDGE') return /plumbed|water\s+line|water\s+supply|water\s+filter|icemaker/i.test(text);
   if (category === 'DRYER') return /drain\s+hose|condens(?:ing|ate)|water\s+collection\s+tank/i.test(text);
   return false;
@@ -302,6 +368,7 @@ function inferRequiresPlumbing(text, category) {
 
 function inferVentilationRequired(text, category) {
   if (category === 'FRIDGE') return true;
+  if (category === 'WASHTOWER_COMBO') return true;
   if (category === 'DRYER') return false;
   return false;
 }
@@ -312,6 +379,7 @@ function inferReversibleDoor(text) {
 }
 
 function confidenceFor(category) {
+  if (category === 'WASHTOWER_COMBO') return 0.9;
   if (category === 'FRIDGE') return 0.9;
   return 0.88;
 }
