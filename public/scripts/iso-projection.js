@@ -59,23 +59,36 @@
   }
 
   function makeProjector(pointGroups) {
-    const projected = pointGroups.flatMap((points) => Object.values(points).map((point) => toIso(point.x, point.y, point.z)));
-    const minX = Math.min(...projected.map((point) => point.sx));
-    const maxX = Math.max(...projected.map((point) => point.sx));
-    const minY = Math.min(...projected.map((point) => point.sy));
-    const maxY = Math.max(...projected.map((point) => point.sy));
+    let minX = Infinity;
+    let maxX = -Infinity;
+    let minY = Infinity;
+    let maxY = -Infinity;
+    for (const points of pointGroups) {
+      for (const point of Object.values(points)) {
+        const projected = toIso(point.x, point.y, point.z);
+        if (projected.sx < minX) minX = projected.sx;
+        if (projected.sx > maxX) maxX = projected.sx;
+        if (projected.sy < minY) minY = projected.sy;
+        if (projected.sy > maxY) maxY = projected.sy;
+      }
+    }
     const width = Math.max(1, maxX - minX);
     const height = Math.max(1, maxY - minY);
     const scale = (VIEWBOX * 0.7) / Math.max(width, height);
     const offsetX = (VIEWBOX - width * scale) / 2 - minX * scale;
     const offsetY = (VIEWBOX - height * scale) / 2 - minY * scale;
+    const cache = new WeakMap();
 
     return function project(point) {
+      const cached = cache.get(point);
+      if (cached) return cached;
       const raw = toIso(point.x, point.y, point.z);
-      return {
-        x: Number((raw.sx * scale + offsetX).toFixed(2)),
-        y: Number((raw.sy * scale + offsetY).toFixed(2))
+      const projected = {
+        x: Math.round((raw.sx * scale + offsetX) * 100) / 100,
+        y: Math.round((raw.sy * scale + offsetY) * 100) / 100
       };
+      cache.set(point, projected);
+      return projected;
     };
   }
 

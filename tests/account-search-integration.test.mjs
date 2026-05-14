@@ -25,6 +25,8 @@ test('saved appliance chips populate replacement search inputs and trigger searc
   assert.match(indexHtml, /data-saved-appliance-id/);
   assert.match(indexHtml, /setSearchMode\('replacement', \{ force: true, clearDimensions: false \}\)/);
   assert.match(indexHtml, /document\.getElementById\('inW'\)\.value = String\(item\.width\)/);
+  assert.match(indexHtml, /replacementSourceCategory:\s*currentReplacementSourceCategory/);
+  assert.match(indexHtml, /currentReplacementSourceCategory\s*=\s*item\.category/);
   assert.match(indexHtml, /doSearch\(\)/);
 });
 

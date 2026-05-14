@@ -13,6 +13,8 @@
     replacement: 'replacement'
   });
   const DEFAULT_SEARCH_MODE = 'cavity';
+  const WASHTOWER_COMBO_CATEGORY = 'washtower_combo';
+  const STANDARD_LAUNDRY_REPLACEMENT_CATEGORIES = new Set(['washing_machine', 'dryer']);
   const CLEARANCE_DEFAULTS = {
     fridge: { ...PRACTICAL_CLEARANCE },
     dishwasher: { ...PRACTICAL_CLEARANCE },
@@ -24,7 +26,8 @@
     fridge: 'Fridges',
     dishwasher: 'Dishwashers',
     dryer: 'Dryers',
-    washing_machine: 'Washing Machines'
+    washing_machine: 'Washing Machines',
+    washtower_combo: 'WashTower / Combo'
   };
 
   const CATEGORY_PRESETS = {
@@ -104,6 +107,18 @@
       : DEFAULT_SEARCH_MODE;
   }
 
+  function normalizeReplacementSourceCategory(category) {
+    const next = String(category ?? '').trim().toLowerCase();
+    if (!next) return '';
+    const normalized = next
+      .replace(/[\s/]+/g, '_')
+      .replace(/-+/g, '_');
+    if (['washtower', 'wash_tower', 'laundry_tower', 'combo', 'washtower_combo'].includes(normalized)) {
+      return WASHTOWER_COMBO_CATEGORY;
+    }
+    return Object.prototype.hasOwnProperty.call(CATEGORY_LABELS, normalized) ? normalized : '';
+  }
+
   function getCategoryClearance(defaults, category) {
     const row = defaults?.[category] ?? CLEARANCE_DEFAULTS?.[category] ?? {};
     return normalizeClearance(row);
@@ -137,6 +152,55 @@
     const matcher = pattern instanceof RegExp ? pattern : new RegExp(String(pattern ?? ''), 'i');
     return (Array.isArray(product?.features) ? product.features : [])
       .some((feature) => matcher.test(String(feature ?? '')));
+  }
+
+  function collectProductSearchText(product) {
+    const fields = [
+      product?.cat,
+      product?.category,
+      product?.subcategory,
+      product?.brand,
+      product?.model,
+      product?.displayName,
+      product?.readableSpec,
+      product?.type,
+      product?.configuration,
+      ...(Array.isArray(product?.features) ? product.features : [])
+    ];
+    return fields
+      .map((value) => String(value ?? '').trim())
+      .filter(Boolean)
+      .join(' ');
+  }
+
+  function isWashtowerComboProduct(product) {
+    const explicitCategory = normalizeReplacementSourceCategory(product?.cat)
+      || normalizeReplacementSourceCategory(product?.category)
+      || normalizeReplacementSourceCategory(product?.subcategory);
+    if (explicitCategory === WASHTOWER_COMBO_CATEGORY) return true;
+    const text = collectProductSearchText(product);
+    return /(?:wash\s*tower|washtower|laundry\s*tower|washer[-\s]?dryer\s*tower|stacked\s+washer\s+dryer|all[-\s]?in[-\s]?one\s+laundry\s+tower|\bWWT[-\w]*\b|\bWK[-\w]*\b)/i.test(text);
+  }
+
+  function categoryMatches(product, category) {
+    if (!category) return true;
+    if (category === WASHTOWER_COMBO_CATEGORY) return isWashtowerComboProduct(product);
+    return product?.cat === category;
+  }
+
+  function passesReplacementQuarantine(product, filters, searchMode) {
+    if (normalizeSearchMode(searchMode ?? filters?.searchMode) !== SEARCH_MODES.replacement) return true;
+    const sourceCategory = normalizeReplacementSourceCategory(filters?.replacementSourceCategory);
+    const isTower = isWashtowerComboProduct(product);
+
+    if (sourceCategory === WASHTOWER_COMBO_CATEGORY) return isTower;
+    if (!isTower) return true;
+    if (STANDARD_LAUNDRY_REPLACEMENT_CATEGORIES.has(sourceCategory)) return false;
+
+    const inputHeight = toMm(filters?.h);
+    const productHeight = toMm(product?.h);
+    if (inputHeight && productHeight && inputHeight + 200 <= productHeight) return false;
+    return true;
   }
 
   function getAwkwardSpaceFlags(product = {}) {
@@ -310,9 +374,12 @@
   }
 
   function computeFitMeta(product, filters, options = {}) {
-    const category = filters?.cat ?? product?.cat;
+    const category = filters?.cat === WASHTOWER_COMBO_CATEGORY ? product?.cat : (filters?.cat ?? product?.cat);
     const clearanceMode = normalizeClearanceMode(filters?.clearanceMode ?? options.clearanceMode);
     const searchMode = normalizeSearchMode(filters?.searchMode ?? options.searchMode);
+    const replacementSourceCategory = normalizeReplacementSourceCategory(
+      filters?.replacementSourceCategory ?? options.replacementSourceCategory
+    );
     const clearance = getEffectiveClearance(category, product?.brand, clearanceMode, options);
     const filterClearance = searchMode === 'replacement'
       ? normalizeClearance({ side: 0, top: 0, rear: 0 })
@@ -365,6 +432,7 @@
       fitsTightly: fitsTightly || fitScore < 0,
       axisGaps,
       searchMode,
+      replacementSourceCategory,
       requiredCavityMm: {
         w: Math.round(Number(product?.w ?? 0) + (Number(clearance?.sides ?? clearance?.side ?? 0) * 2)),
         h: Math.round(Number(product?.h ?? 0) + Number(clearance?.top ?? 0)),
@@ -499,6 +567,7 @@
       manufacturerClearance: fitMeta.manufacturerClearance,
       fitAxisGaps: fitMeta.axisGaps,
       searchMode: fitMeta.searchMode,
+      replacementSourceCategory: fitMeta.replacementSourceCategory,
       requiredCavityMm: fitMeta.requiredCavityMm,
       sizeMatchGaps: fitMeta.sizeMatchGaps,
       bindingAxis: fitMeta.bindingAxis,
@@ -648,25 +717,36 @@
     brandSpecificClearance = null,
     clearanceMode = DEFAULT_CLEARANCE_MODE,
     searchMode = DEFAULT_SEARCH_MODE,
+    replacementSourceCategory = null,
     limit = 60
   } = {}) {
     const rows = Array.isArray(products) ? products : [];
     const hasAtLeastOneDimension = [filters?.w, filters?.h, filters?.d].some((value) => toMm(value));
     if (!hasAtLeastOneDimension) return [];
+    const nextSearchMode = normalizeSearchMode(filters?.searchMode ?? searchMode);
+    const nextFilters = {
+      ...filters,
+      searchMode: nextSearchMode,
+      replacementSourceCategory: normalizeReplacementSourceCategory(
+        filters?.replacementSourceCategory ?? replacementSourceCategory
+      )
+    };
 
     return rows
-      .filter((product) => !filters?.cat || product?.cat === filters.cat)
+      .filter((product) => categoryMatches(product, nextFilters?.cat))
       .map((product) => {
-        const fitMeta = computeFitMeta(product, filters, {
+        if (!passesReplacementQuarantine(product, nextFilters, nextSearchMode)) return null;
+        const fitMeta = computeFitMeta(product, nextFilters, {
           clearanceDefaults,
           brandSpecificClearance,
           clearanceMode,
-          searchMode
+          searchMode: nextSearchMode,
+          replacementSourceCategory: nextFilters.replacementSourceCategory
         });
         if (!fitMeta) return null;
         if (!fitMeta.requiredClearancePass) return null;
         if (fitMeta.fitScore < fitMeta.threshold) return null;
-        return buildResult(product, fitMeta, filters);
+        return buildResult(product, fitMeta, nextFilters);
       })
       .filter(Boolean)
       .sort(compareMatches)
@@ -679,6 +759,7 @@
       brandSpecificClearance: options.brandSpecificClearance,
       clearanceMode: options.clearanceMode ?? filters?.clearanceMode ?? DEFAULT_CLEARANCE_MODE,
       searchMode: options.searchMode ?? filters?.searchMode ?? DEFAULT_SEARCH_MODE,
+      replacementSourceCategory: options.replacementSourceCategory ?? filters?.replacementSourceCategory,
       limit: options.limit ?? Number.MAX_SAFE_INTEGER
     });
     const retailerPool = normalizeRetailerOnly(filters, options)
@@ -775,8 +856,10 @@
     if (facets.availableOnly === true) params.set('avail', '1');
     const clearanceMode = normalizeClearanceMode(state?.clearanceMode);
     const searchMode = normalizeSearchMode(state?.searchMode);
+    const replacementSourceCategory = normalizeReplacementSourceCategory(state?.replacementSourceCategory);
     if (clearanceMode !== DEFAULT_CLEARANCE_MODE) params.set('mode', clearanceMode);
     if (searchMode !== DEFAULT_SEARCH_MODE) params.set('searchMode', searchMode);
+    if (replacementSourceCategory) params.set('replaceCat', replacementSourceCategory);
     if (state?.retailerOnly === false) params.set('showAll', '1');
     if (state?.sortBy) params.set('sort', normalizeSortBy(state.sortBy));
     return params;
@@ -816,6 +899,10 @@
     };
     if (searchMode !== DEFAULT_SEARCH_MODE) {
       parsed.searchMode = searchMode;
+    }
+    const replacementSourceCategory = normalizeReplacementSourceCategory(params.get('replaceCat'));
+    if (replacementSourceCategory) {
+      parsed.replacementSourceCategory = replacementSourceCategory;
     }
     return parsed;
   }
@@ -862,7 +949,9 @@
     hasRetailerLink,
     isCurrentProduct,
     isRetailerProductPageUrl,
+    isWashtowerComboProduct,
     normalizeClearanceMode,
+    normalizeReplacementSourceCategory,
     normalizeSearchMode,
     parseSearchParams,
     searchWithFacets,
