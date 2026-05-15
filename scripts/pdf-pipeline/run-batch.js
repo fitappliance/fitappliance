@@ -22,6 +22,7 @@ const { findLgOfficialPdf } = require('./lg-official');
 const { parseLgText } = require('./parsers/lg');
 const { findWestinghouseOfficialPdf } = require('./westinghouse-official');
 const { parseWestinghouseText } = require('./parsers/westinghouse');
+const { discoverThirdPartyPdf } = require('./third-party-fallback');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
 const FISHER_PAYKEL_MAX_BYTES = 30 * 1024 * 1024;
@@ -80,6 +81,51 @@ function normalizeSku(value) {
     .trim()
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '');
+}
+
+function isThirdPartyFallbackSource(source) {
+  return /^third-party-fallback(?::|$)/i.test(String(source || ''));
+}
+
+function thirdPartySkuEvidenceCandidates(target = {}) {
+  const rawValues = [
+    target.sku,
+    target.model,
+    target.product?.sku,
+    target.product?.model
+  ].filter(Boolean);
+  const candidates = new Set();
+
+  for (const value of rawValues) {
+    const raw = String(value || '').trim();
+    const full = normalizeSku(raw);
+    if (full.length >= 4 && full.length <= 32 && /\d/.test(full)) {
+      candidates.add(full);
+    }
+
+    const tokens = raw.match(/[A-Za-z][A-Za-z0-9-]*\d[A-Za-z0-9-]*/g) || [];
+    for (const token of tokens) {
+      const normalized = normalizeSku(token);
+      if (normalized.length >= 4 && normalized.length <= 32 && /\d/.test(normalized)) {
+        candidates.add(normalized);
+      }
+    }
+  }
+
+  return [...candidates];
+}
+
+function assertThirdPartyTextContainsExactSku(text, target, source) {
+  if (!isThirdPartyFallbackSource(source)) return;
+  const candidates = thirdPartySkuEvidenceCandidates(target);
+  if (candidates.length === 0) {
+    throw new Error(`Third-party PDF text cannot prove exact SKU ${target?.sku || target?.product?.model || ''}`.trim());
+  }
+  const normalizedText = normalizeSku(text);
+  const matched = candidates.some((candidate) => normalizedText.includes(candidate));
+  if (!matched) {
+    throw new Error(`Third-party PDF text does not contain exact SKU ${target?.sku || candidates[0]}`);
+  }
 }
 
 function isFisherPaykelTarget(target = {}) {
@@ -290,6 +336,52 @@ function fisherPaykelResourceSource(resource) {
   return `fisher-paykel-official-${resource.type || 'pdf'}`;
 }
 
+async function findThirdPartySource(target, thirdPartyFinder) {
+  if (!thirdPartyFinder) return null;
+  const result = await thirdPartyFinder(target);
+  if (!result?.sourceUrl) return null;
+  return {
+    sourceUrl: result.sourceUrl,
+    source: result.source || 'third-party-fallback',
+    resourceType: result.resourceType || 'specification_sheet'
+  };
+}
+
+function annotateSourceMetadata(candidate, source) {
+  return {
+    ...candidate,
+    metadata: {
+      ...(candidate.metadata || {}),
+      ...(source ? { source_type: source } : {})
+    }
+  };
+}
+
+async function findGenericPdfSource(target, {
+  repoRoot,
+  manualEvidence,
+  searchPdf,
+  env,
+  fisherPaykelOfficialFinder,
+  thirdPartyFinder
+}) {
+  try {
+    return await findPdfSourceUrl(target, {
+      repoRoot,
+      manualEvidence,
+      searchPdf,
+      env,
+      fisherPaykelOfficialFinder
+    });
+  } catch (officialError) {
+    const fallback = await findThirdPartySource(target, thirdPartyFinder).catch((fallbackError) => {
+      throw new Error(`${officialError.message} | ${fallbackError.message}`);
+    });
+    if (fallback?.sourceUrl) return fallback;
+    throw officialError;
+  }
+}
+
 async function parseFisherPaykelTarget({
   target,
   repoRoot,
@@ -298,7 +390,8 @@ async function parseFisherPaykelTarget({
   fetchPdfImpl,
   extractTextImpl,
   timeoutMs,
-  userAgent
+  userAgent,
+  thirdPartyFinder
 }) {
   const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
   const manualResource = manualSourceUrl
@@ -326,7 +419,20 @@ async function parseFisherPaykelTarget({
     .filter((resource) => resource.type !== 'energy_label');
 
   if (resources.length === 0) {
-    throw officialError || new Error(official?.reason || 'Fisher & Paykel official PDF resources not found');
+    const fallback = await findThirdPartySource(target, thirdPartyFinder).catch((error) => {
+      officialError = officialError || error;
+      return null;
+    });
+    if (fallback?.sourceUrl) {
+      resources.push({
+        url: fallback.sourceUrl,
+        type: fallback.resourceType,
+        source: fallback.source,
+        score: 1
+      });
+    } else {
+      throw officialError || new Error(official?.reason || 'Fisher & Paykel official PDF resources not found');
+    }
   }
 
   const fetchedTextByUrl = new Map();
@@ -375,9 +481,9 @@ async function parseFisherPaykelTarget({
     const primaryDocument = await fetchResourceText(primary, index);
     try {
       return {
-        candidate: parseDocuments([primaryDocument], primary.url).data,
+        candidate: annotateSourceMetadata(parseDocuments([primaryDocument], primary.url).data, primary.source || fisherPaykelResourceSource(primary)),
         sourceUrl: primary.url,
-        source: fisherPaykelResourceSource(primary)
+        source: primary.source || fisherPaykelResourceSource(primary)
       };
     } catch (error) {
       errors.push(`${primary.type}: ${error.message}`);
@@ -388,9 +494,12 @@ async function parseFisherPaykelTarget({
         const installationDocument = await fetchResourceText(installation, primaryResources.length + installIndex);
         try {
           return {
-            candidate: parseDocuments([primaryDocument, installationDocument], primary.url).data,
+            candidate: annotateSourceMetadata(
+              parseDocuments([primaryDocument, installationDocument], primary.url).data,
+              `${primary.source || fisherPaykelResourceSource(primary)}+installation_manual`
+            ),
             sourceUrl: primary.url,
-            source: `${fisherPaykelResourceSource(primary)}+installation_manual`
+            source: `${primary.source || fisherPaykelResourceSource(primary)}+installation_manual`
           };
         } catch (combinedError) {
           errors.push(`${primary.type}+installation_manual: ${combinedError.message}`);
@@ -404,9 +513,9 @@ async function parseFisherPaykelTarget({
     const installationDocument = await fetchResourceText(installation, primaryResources.length + index);
     try {
       return {
-        candidate: parseDocuments([installationDocument], installation.url).data,
+        candidate: annotateSourceMetadata(parseDocuments([installationDocument], installation.url).data, installation.source || fisherPaykelResourceSource(installation)),
         sourceUrl: installation.url,
-        source: fisherPaykelResourceSource(installation)
+        source: installation.source || fisherPaykelResourceSource(installation)
       };
     } catch (error) {
       errors.push(`${installation.type}: ${error.message}`);
@@ -468,50 +577,113 @@ async function parseLgTarget({
   searchPdf,
   env,
   fisherPaykelOfficialFinder,
-  lgOfficialFinder
+  lgOfficialFinder,
+  thirdPartyFinder
 }) {
   const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
-  const official = manualSourceUrl
-    ? null
-    : await lgOfficialFinder(target);
-  const resolved = manualSourceUrl
-    ? await findPdfSourceUrl(target, {
+  const sourceCandidates = [];
+  const errors = [];
+
+  if (manualSourceUrl) {
+    const resolved = await findPdfSourceUrl(target, {
       repoRoot,
       manualEvidence,
       searchPdf,
       env,
       fisherPaykelOfficialFinder
-    })
-    : {
-      sourceUrl: official?.sourceUrl,
-      source: official?.source || 'lg-official'
-    };
-  const sourceUrl = resolved.sourceUrl;
-  if (!sourceUrl) {
-    throw new Error('LG official PDF source URL not found');
+    });
+    sourceCandidates.push(resolved);
+  } else {
+    try {
+      const official = await lgOfficialFinder(target);
+      if (official?.sourceUrl) {
+        sourceCandidates.push({
+          sourceUrl: official.sourceUrl,
+          source: official.source || 'lg-official'
+        });
+      }
+    } catch (error) {
+      errors.push(`lg-official: ${error.message}`);
+    }
   }
-  const verifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
-  const pdfPath = path.join(
-    repoRoot,
-    '.tmp',
-    'pdfs',
-    slugPathPart(target.brand),
-    `${slugPathPart(target.sku)}.pdf`
-  );
-  const fetched = await fetchPdfImpl(sourceUrl, pdfPath);
-  const textResult = await extractTextImpl(fetched.path);
-  const parsed = parseLgText(textResult.text, {
-    target,
-    sourceUrl,
-    extractionDate: new Date().toISOString(),
-    verifiedAlias
-  });
 
-  return {
-    candidate: parsed.data,
-    sourceUrl,
-    source: resolved.source || 'lg-parser'
-  };
+  if (sourceCandidates.length === 0) {
+    const fallback = await findThirdPartySource(target, thirdPartyFinder).catch((error) => {
+      errors.push(`third-party-fallback: ${error.message}`);
+      return null;
+    });
+    if (fallback?.sourceUrl) sourceCandidates.push(fallback);
+  }
+
+  if (sourceCandidates.length === 0) {
+    throw new Error(errors.join(' | ') || 'LG PDF source URL not found');
+  }
+
+  const verifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
+
+  for (const resolved of sourceCandidates) {
+    const sourceUrl = resolved.sourceUrl;
+    try {
+      const pdfPath = path.join(
+        repoRoot,
+        '.tmp',
+        'pdfs',
+        slugPathPart(target.brand),
+        `${slugPathPart(target.sku)}-${slugPathPart(resolved.source || 'source')}.pdf`
+      );
+      const fetched = await fetchPdfImpl(sourceUrl, pdfPath);
+      const textResult = await extractTextImpl(fetched.path);
+      const parsed = parseLgText(textResult.text, {
+        target,
+        sourceUrl,
+        extractionDate: new Date().toISOString(),
+        verifiedAlias
+      });
+
+      return {
+        candidate: annotateSourceMetadata(parsed.data, resolved.source || 'lg-parser'),
+        sourceUrl,
+        source: resolved.source || 'lg-parser'
+      };
+    } catch (error) {
+      errors.push(`${resolved.source || sourceUrl}: ${error.message}`);
+    }
+  }
+
+  if (!manualSourceUrl) {
+    const fallback = await findThirdPartySource(target, thirdPartyFinder).catch((error) => {
+      errors.push(`third-party-fallback: ${error.message}`);
+      return null;
+    });
+    if (fallback?.sourceUrl && !sourceCandidates.some((candidate) => candidate.sourceUrl === fallback.sourceUrl)) {
+      try {
+        const pdfPath = path.join(
+          repoRoot,
+          '.tmp',
+          'pdfs',
+          slugPathPart(target.brand),
+          `${slugPathPart(target.sku)}-${slugPathPart(fallback.source || 'source')}.pdf`
+        );
+        const fetched = await fetchPdfImpl(fallback.sourceUrl, pdfPath);
+        const textResult = await extractTextImpl(fetched.path);
+        const parsed = parseLgText(textResult.text, {
+          target,
+          sourceUrl: fallback.sourceUrl,
+          extractionDate: new Date().toISOString(),
+          verifiedAlias
+        });
+        return {
+          candidate: annotateSourceMetadata(parsed.data, fallback.source || 'third-party-fallback'),
+          sourceUrl: fallback.sourceUrl,
+          source: fallback.source || 'third-party-fallback'
+        };
+      } catch (error) {
+        errors.push(`${fallback.source || fallback.sourceUrl}: ${error.message}`);
+      }
+    }
+  }
+
+  throw new Error(errors.join(' | ') || 'LG strict parser rejected all PDF sources');
 }
 
 async function parseWestinghouseTarget({
@@ -676,6 +848,7 @@ async function runBatch({
   validateStrictImpl = validateApplianceDimension,
   saveToVaultImpl = saveExtractionToVault,
   searchPdf = null,
+  thirdPartyFinder = discoverThirdPartyPdf,
   fisherPaykelOfficialFinder = findFisherPaykelOfficialPdf,
   samsungOfficialFinder = findSamsungOfficialPdf,
   lgOfficialFinder = findLgOfficialPdf,
@@ -722,7 +895,8 @@ async function runBatch({
           manualEvidence,
           fisherPaykelOfficialFinder,
           fetchPdfImpl,
-          extractTextImpl
+          extractTextImpl,
+          thirdPartyFinder
         });
         sourceUrl = parsed.sourceUrl;
         source = parsed.source;
@@ -749,7 +923,8 @@ async function runBatch({
           searchPdf,
           env,
           fisherPaykelOfficialFinder,
-          lgOfficialFinder
+          lgOfficialFinder,
+          thirdPartyFinder
         });
         sourceUrl = parsed.sourceUrl;
         source = parsed.source;
@@ -767,12 +942,13 @@ async function runBatch({
         source = parsed.source;
         candidate = parsed.candidate;
       } else {
-        const resolved = await findPdfSourceUrl(target, {
+        const resolved = await findGenericPdfSource(target, {
           repoRoot,
           manualEvidence,
           searchPdf,
           env,
-          fisherPaykelOfficialFinder
+          fisherPaykelOfficialFinder,
+          thirdPartyFinder
         });
         sourceUrl = resolved.sourceUrl;
         source = resolved.source;
@@ -785,10 +961,12 @@ async function runBatch({
         );
         const fetched = await fetchPdfImpl(sourceUrl, pdfPath);
         const textResult = await extractTextImpl(fetched.path);
+        assertThirdPartyTextContainsExactSku(textResult.text, target, source);
         candidate = parseTextImpl
           ? await parseTextImpl(textResult.text, { target, sourceUrl, source, fetched, textResult })
           : await defaultParseText(textResult.text, { target, sourceUrl, source, fetched, textResult }, env);
       }
+      candidate = annotateSourceMetadata(candidate, source);
       const validation = validateStrictImpl(candidate, { target });
 
       if (!validation.valid) {

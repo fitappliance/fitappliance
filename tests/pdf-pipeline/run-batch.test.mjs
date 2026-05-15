@@ -630,6 +630,68 @@ test('runBatch can discover LG official manuals without manual-evidence URLs', a
   });
 });
 
+test('runBatch falls back to trusted third-party PDFs for LG only after official lookup fails', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'lg-gb335pl',
+    brand: 'LG',
+    sku: 'GB-335PL',
+    category: 'fridge',
+    product: {
+      id: 'lg-gb335pl',
+      cat: 'fridge',
+      brand: 'LG',
+      model: 'GB-335PL',
+      w: 595,
+      h: 1720,
+      d: 677,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    lgOfficialFinder: async () => {
+      throw new Error('official lookup failed');
+    },
+    thirdPartyFinder: async () => ({
+      sourceUrl: 'https://commercial.appliancesonline.com.au/manuals/GB-335PL_Specifications_Sheet.pdf',
+      source: 'third-party-fallback:commercial.appliancesonline.com.au'
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        OWNER'S MANUAL
+        FRIDGE & FREEZER
+        GB-335WL / GB-335PL / GB-W335MBL / GB-335MBL
+        Dimensions and Clearances
+        Allow over 50 mm of clearance from each adjacent wall when installing the appliance.
+        Size (mm)
+        a b
+        A 595 595
+        B 1720/1860/2030 1720/1860/2030
+        C 682 677
+        D 615 610
+        E 682 677
+        F 1230 1225
+        G 995 995
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'third-party-fallback:commercial.appliancesonline.com.au');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'GB-335PL.json'), 'utf8'));
+  assert.equal(raw.extracted.metadata.source_type, 'third-party-fallback:commercial.appliancesonline.com.au');
+});
+
 test('runBatch processes Westinghouse targets with the official finder and parser without an API key', async () => {
   const repoRoot = makeRepo();
   const target = {
@@ -846,6 +908,194 @@ test('runBatch lets Fisher & Paykel manual-evidence spec sheets rescue models wi
     right_mm: 20,
     rear_mm: 30
   });
+});
+
+test('runBatch falls back to trusted third-party PDFs for Fisher & Paykel after official resources fail', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'ao-1053',
+    brand: 'Fisher & Paykel',
+    sku: 'E450LXFD',
+    category: 'fridge',
+    product: {
+      id: 'ao-1053',
+      cat: 'fridge',
+      brand: 'Fisher & Paykel',
+      model: 'E450LXFD',
+      w: 635,
+      h: 1695,
+      d: 695,
+      unavailable: false
+    }
+  };
+  writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {
+    schema_version: 1,
+    products: {}
+  });
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    fisherPaykelOfficialFinder: async () => {
+      throw new Error('product_page_not_found');
+    },
+    thirdPartyFinder: async () => ({
+      sourceUrl: 'https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf',
+      source: 'third-party-fallback:commercial.appliancesonline.com.au'
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        SPEC SHEET > E450LXFD1
+        Freestanding Refrigerator
+        DIMENSIONS
+        Depth 695mm
+        Height 1695mm
+        Width 635mm
+        Minimum air clearance - at rear 30mm
+        Minimum air clearance - each side 20mm
+        Minimum air clearance - on top 50mm
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'third-party-fallback:commercial.appliancesonline.com.au');
+});
+
+test('runBatch uses generic third-party fallback only when PDF text contains the exact SKU', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'midea-mxyz123',
+    brand: 'Midea',
+    sku: 'MXYZ123',
+    category: 'dishwasher',
+    product: {
+      id: 'midea-mxyz123',
+      cat: 'dishwasher',
+      brand: 'Midea',
+      model: 'MXYZ123',
+      w: 598,
+      h: 845,
+      d: 600,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    searchPdf: async () => {
+      throw new Error('official search failed');
+    },
+    thirdPartyFinder: async () => ({
+      sourceUrl: 'https://commercial.appliancesonline.com.au/manuals/MXYZ123_Midea_Specifications_Sheet.pdf',
+      source: 'third-party-fallback:commercial.appliancesonline.com.au'
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: 'Midea dishwasher model MXYZ123 installation dimensions and clearance.',
+      pageCount: 1,
+      info: {}
+    }),
+    parseTextImpl: async (_text, { sourceUrl }) => ({
+      brand: 'Midea',
+      sku: 'MXYZ123',
+      category: 'DISHWASHER',
+      dimensions: {
+        height_mm: 845,
+        width_mm: 598,
+        depth_mm: 600,
+        door_open_90_depth_mm: null
+      },
+      clearance_requirements: {
+        top_mm: 0,
+        left_mm: 5,
+        right_mm: 5,
+        rear_mm: 10
+      },
+      flags: {
+        requires_plumbing: false,
+        ventilation_required: true,
+        reversible_door: null
+      },
+      metadata: {
+        source_pdf_url: sourceUrl,
+        extraction_date: '2026-05-16T00:00:00.000Z',
+        confidence_score: 0.91
+      }
+    }),
+    validateStrictImpl: (candidate) => ({
+      valid: true,
+      errors: [],
+      requiresManualReview: false,
+      data: candidate
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'third-party-fallback:commercial.appliancesonline.com.au');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'MXYZ123.json'), 'utf8'));
+  assert.equal(raw.extracted.metadata.source_type, 'third-party-fallback:commercial.appliancesonline.com.au');
+});
+
+test('runBatch rejects generic third-party fallback before parsing when exact SKU is absent', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'midea-mxyz123',
+    brand: 'Midea',
+    sku: 'MXYZ123',
+    category: 'dishwasher',
+    product: {
+      id: 'midea-mxyz123',
+      cat: 'dishwasher',
+      brand: 'Midea',
+      model: 'MXYZ123',
+      w: 598,
+      h: 845,
+      d: 600,
+      unavailable: true
+    }
+  };
+  let parseCalls = 0;
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    searchPdf: async () => {
+      throw new Error('official search failed');
+    },
+    thirdPartyFinder: async () => ({
+      sourceUrl: 'https://commercial.appliancesonline.com.au/manuals/OTHER_Midea_Specifications_Sheet.pdf',
+      source: 'third-party-fallback:commercial.appliancesonline.com.au'
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: 'Midea dishwasher model OTHER installation dimensions and clearance.',
+      pageCount: 1,
+      info: {}
+    }),
+    parseTextImpl: async () => {
+      parseCalls += 1;
+      return strictData;
+    },
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(parseCalls, 0);
+  assert.equal(result.successes.length, 0);
+  assert.equal(result.failures.length, 1);
+  assert.match(result.failures[0].reason, /does not contain exact SKU MXYZ123/);
 });
 
 test('runBatch processes only explicit SKUs when skus is provided', async () => {
