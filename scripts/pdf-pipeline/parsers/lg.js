@@ -167,11 +167,85 @@ function extractDimensionBlocks(text) {
     }));
 }
 
-function extractLgFridgeDimensions(text, sku) {
+function parseSlashMmList(value) {
+  return String(value || '')
+    .split('/')
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .map((part) => parseMm(part, 'slash-separated fridge dimension'));
+}
+
+function parseOldLgFridgeSizeRows(window) {
+  const rows = {};
+  const lines = normalizeWhitespace(window)
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
+  for (const line of lines) {
+    const row = line.match(/^([A-H])\s+(\d+(?:\/\d+)*)\s+(\d+(?:\/\d+)*)\b/i);
+    if (row) rows[row[1].toUpperCase()] = [row[2], row[3]];
+  }
+  return rows;
+}
+
+function pickOldLgFridgeColumn(rows, product = {}) {
+  const targetWidth = Number(product?.w);
+  const targetHeight = Number(product?.h);
+  const targetDepth = Number(product?.d);
+  if (!Number.isFinite(targetWidth) || !Number.isFinite(targetHeight) || !Number.isFinite(targetDepth)) {
+    throw new Error('LG old fridge table requires catalog W/H/D to disambiguate model columns.');
+  }
+
+  const candidates = [0, 1].map((column) => {
+    const width = parseMm(rows.A[column], 'old fridge width');
+    const heights = parseSlashMmList(rows.B[column]);
+    const depth = parseMm(rows.C[column], 'old fridge depth');
+    const doorOpen = parseMm(rows.G[column], 'old fridge door open depth');
+    let score = 0;
+    if (width === targetWidth) score += 2;
+    if (depth === targetDepth) score += 2;
+    if (heights.includes(targetHeight)) score += 2;
+    return {
+      column,
+      score,
+      width_mm: width,
+      height_mm: heights.includes(targetHeight) ? targetHeight : heights[0],
+      depth_mm: depth,
+      door_open_90_depth_mm: doorOpen
+    };
+  });
+
+  candidates.sort((a, b) => b.score - a.score || a.column - b.column);
+  if (candidates[0].score < 4 || candidates[0].score === candidates[1].score) {
+    throw new Error('LG old fridge table could not safely disambiguate the requested model column.');
+  }
+  return candidates[0];
+}
+
+function extractOldLgFridgeDimensions(text, product) {
+  const rows = parseOldLgFridgeSizeRows(text);
+  for (const rowName of ['A', 'B', 'C', 'G']) {
+    if (!rows[rowName]) {
+      throw new Error('LG old fridge parser could not find a complete Size(mm) a/b table.');
+    }
+  }
+  const picked = pickOldLgFridgeColumn(rows, product);
+  return {
+    width_mm: picked.width_mm,
+    height_mm: picked.height_mm,
+    depth_mm: picked.depth_mm,
+    door_open_90_depth_mm: picked.door_open_90_depth_mm
+  };
+}
+
+function extractLgFridgeDimensions(text, sku, product = {}) {
   const window = findSpecInstallationWindow(text);
   const source = compactWhitespace(window);
   const table = source.match(/\bSize\s*\(mm\)\s*-?\s*Type\s+1\s+Type\s+2\s+A\s+(\d+)\s+(\d+)\s+B\s+(\d+)\s+(\d+)\s+C\s+(\d+)\s+(\d+)\s+D\s+(\d+)\s+(\d+)\s+E\s+(\d+)\s+(\d+)\s+F\s+(\d+)\s+(\d+)\s+G\s+(\d+)\s+(\d+)\s+H\s+(\d+)\s+(\d+)/i);
   if (!table) {
+    if (/\bSize\s*\(mm\)/i.test(source)) {
+      return extractOldLgFridgeDimensions(window, product);
+    }
     throw new Error('LG fridge parser could not find the Type 1 / Type 2 dimensions table.');
   }
 
@@ -284,8 +358,8 @@ function extractLgDishwasherDimensions(text) {
   };
 }
 
-function extractLgDimensions(text, category, sku) {
-  if (category === 'FRIDGE') return extractLgFridgeDimensions(text, sku);
+function extractLgDimensions(text, category, sku, product = {}) {
+  if (category === 'FRIDGE') return extractLgFridgeDimensions(text, sku, product);
   if (category === 'WASHTOWER_COMBO') return extractLgWashTowerDimensions(text);
   if (category === 'WASHING_MACHINE') return extractLgWasherLikeDimensions(text, sku, category);
   if (category === 'DRYER') return extractLgWasherLikeDimensions(text, sku, category);
@@ -295,6 +369,16 @@ function extractLgDimensions(text, category, sku) {
 
 function extractLgFridgeClearance(text) {
   const source = compactWhitespace(text);
+  const adjacent = source.match(/Allow\s+over\s+(\d+(?:\.\d+)?)\s*mm\s+of\s+clearance\s+from\s+each\s+adjacent\s+wall/i)?.[1];
+  if (adjacent) {
+    const mm = parseMm(adjacent, 'fridge adjacent-wall clearance');
+    return {
+      top_mm: 0,
+      left_mm: mm,
+      right_mm: mm,
+      rear_mm: mm
+    };
+  }
   const rear = source.match(/Allow\s+over\s+(\d+(?:\.\d+)?)\s*mm\s+of\s+clearance\s+between\s+the\s+back\s+of\s+the\s+appliance\s+and\s+the\s+wall/i)?.[1];
   if (!rear) {
     throw new Error('LG fridge parser requires an explicit rear clearance statement.');
@@ -417,9 +501,9 @@ function parseLgText(text, options = {}) {
   if (!sku) throw new Error('LG parser requires a SKU/model target.');
   if (!sourceUrl) throw new Error('LG parser requires sourceUrl metadata.');
 
+  assertModelSupportedByDocument(text, sku, verifiedAlias);
   const boundedText = findSpecInstallationWindow(text);
-  assertModelSupportedByDocument(boundedText, sku, verifiedAlias);
-  const dimensions = extractLgDimensions(boundedText, category, sku);
+  const dimensions = extractLgDimensions(boundedText, category, sku, target.product);
   const clearance = extractLgClearance(boundedText, category);
 
   return {

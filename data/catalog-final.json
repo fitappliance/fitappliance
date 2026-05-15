@@ -10,12 +10,12 @@
     ],
     "evidence_dir": "data/pdf-evidence-raw"
   },
-  "latest_verified_at": "2026-05-14",
+  "latest_verified_at": "2026-05-15",
   "summary": {
     "total_products": 3529,
     "active_products": 1401,
-    "evidence_files": 1507,
-    "merged_products": 1490,
+    "evidence_files": 1542,
+    "merged_products": 1525,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -26,9 +26,9 @@
       "washtower_combo": 2
     },
     "official_pdf_by_category": {
-      "dishwasher": 361,
+      "dishwasher": 362,
       "dryer": 98,
-      "fridge": 778,
+      "fridge": 812,
       "washing_machine": 251,
       "washtower_combo": 2
     }
@@ -20407,7 +20407,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Essential",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1720,
+        "width_mm": 595,
+        "depth_mm": 677,
+        "door_open_90_depth_mm": 995
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=h8kS0aDP3UiEAwMJDvnjvQ",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GB-335PL.json"
+      }
     },
     {
       "id": "fridge-arf2270",
@@ -20434,7 +20459,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Essential",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1720,
+        "width_mm": 700,
+        "depth_mm": 700,
+        "door_open_90_depth_mm": 1318
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=V0vh6JCWRhumlf01kQSig",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GB-455BLE.json"
+      }
     },
     {
       "id": "fridge-arf3411",
@@ -20539,7 +20589,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Essential",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1720,
+        "width_mm": 595,
+        "depth_mm": 677,
+        "door_open_90_depth_mm": 995
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=h8kS0aDP3UiEAwMJDvnjvQ",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GB-W335MBL.json"
+      }
     },
     {
       "id": "fridge-arf2271",
@@ -20565,7 +20640,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Essential",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1720,
+        "width_mm": 700,
+        "depth_mm": 700,
+        "door_open_90_depth_mm": 1318
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=V0vh6JCWRhumlf01kQSig",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GB-W455MBL.json"
+      }
     },
     {
       "id": "fridge-arf3463",
@@ -20826,8 +20926,8 @@
       "brand": "LG",
       "model": "GF-B700PL",
       "w": 914,
-      "h": 1792,
-      "d": 729,
+      "h": 1787,
+      "d": 725,
       "kwh_year": 460,
       "stars": 4,
       "price": null,
@@ -20844,7 +20944,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1787,
+        "width_mm": 914,
+        "depth_mm": 725,
+        "door_open_90_depth_mm": 1667
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=j2YvjRAcs71zGaEKRiNdQ",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-B700PL.json"
+      }
     },
     {
       "id": "fridge-arf3246",
@@ -20870,7 +20995,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1787,
+        "width_mm": 914,
+        "depth_mm": 725,
+        "door_open_90_depth_mm": 1667
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=j2YvjRAcs71zGaEKRiNdQ",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-B705MBL.json"
+      }
     },
     {
       "id": "fridge-arf3095",
@@ -21114,7 +21264,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1792,
+        "width_mm": 914,
+        "depth_mm": 733,
+        "door_open_90_depth_mm": 1108
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=S9KtCjoQL26KeRDXtNn2w",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-LN700MBL.json"
+      }
     },
     {
       "id": "fridge-arf3096",
@@ -21298,7 +21473,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1792,
+        "width_mm": 914,
+        "depth_mm": 729,
+        "door_open_90_depth_mm": 1104
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=S9KtCjoQL26KeRDXtNn2w",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-V700MBLC.json"
+      }
     },
     {
       "id": "fridge-arf2763",
@@ -21324,7 +21524,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1793,
+        "width_mm": 912,
+        "depth_mm": 744,
+        "door_open_90_depth_mm": 1699
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qnKDotrworMx9VsLukCvw",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-V706MBLC.json"
+      }
     },
     {
       "id": "fridge-arf3135",
@@ -21384,7 +21609,7 @@
       "model": "GF-V910MBL",
       "w": 912,
       "h": 1793,
-      "d": 933,
+      "d": 919,
       "kwh_year": 630,
       "stars": 4,
       "price": null,
@@ -21401,7 +21626,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1793,
+        "width_mm": 912,
+        "depth_mm": 919,
+        "door_open_90_depth_mm": 1699
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=fedUnZXjQscQf6x6ynOeEQ",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-V910MBL.json"
+      }
     },
     {
       "id": "fridge-arf2421",
@@ -21410,7 +21660,7 @@
       "model": "GF-V910MBLC",
       "w": 912,
       "h": 1793,
-      "d": 933,
+      "d": 919,
       "kwh_year": 630,
       "stars": 4,
       "price": null,
@@ -21427,7 +21677,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1793,
+        "width_mm": 912,
+        "depth_mm": 919,
+        "door_open_90_depth_mm": 1699
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=q3ft1itHU07FJfSYJmH0Dg",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-V910MBLC.json"
+      }
     },
     {
       "id": "fridge-arf3675",
@@ -22004,7 +22279,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1573,
+        "width_mm": 555,
+        "depth_mm": 637,
+        "door_open_90_depth_mm": 1137
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=sy7QbebvamiaOLA1j1WoBg",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GT-1SI.json"
+      }
     },
     {
       "id": "fridge-arf2478",
@@ -22107,7 +22407,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1680,
+        "width_mm": 555,
+        "depth_mm": 637,
+        "door_open_90_depth_mm": 1137
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=sy7QbebvamiaOLA1j1WoBg",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GT-2SI.json"
+      }
     },
     {
       "id": "fridge-arf2798",
@@ -35220,8 +35545,8 @@
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WBB3400AH",
-      "w": 1645,
-      "h": 598,
+      "w": 598,
+      "h": 1645,
       "d": 650,
       "kwh_year": 310,
       "stars": 4,
@@ -35240,15 +35565,40 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1645,
+        "width_mm": 598,
+        "depth_mm": 650,
+        "door_open_90_depth_mm": 1199
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51192",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WBB3400AH.json"
+      }
     },
     {
       "id": "fridge-arf3870",
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WBB3400WK",
-      "w": 1756,
-      "h": 598,
+      "w": 598,
+      "h": 1756,
       "d": 650,
       "kwh_year": 315,
       "stars": 4,
@@ -35266,15 +35616,40 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1756,
+        "width_mm": 598,
+        "depth_mm": 650,
+        "door_open_90_depth_mm": 1199
+      },
+      "clearance_requirements": {
+        "top_mm": 90,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=53210",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WBB3400WK.json"
+      }
     },
     {
       "id": "fridge-arf2537",
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WBB3700AH",
-      "w": 1755,
-      "h": 598,
+      "w": 598,
+      "h": 1755,
       "d": 650,
       "kwh_year": 315,
       "stars": 4,
@@ -35293,7 +35668,32 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1755,
+        "width_mm": 598,
+        "depth_mm": 650,
+        "door_open_90_depth_mm": 1199
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51192",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WBB3700AH.json"
+      }
     },
     {
       "id": "fridge-arf2745",
@@ -35366,8 +35766,8 @@
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WBE4500WC",
-      "w": 1725,
-      "h": 699,
+      "w": 699,
+      "h": 1725,
       "d": 723,
       "kwh_year": 292,
       "stars": 5,
@@ -35385,7 +35785,32 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 699,
+        "depth_mm": 723,
+        "door_open_90_depth_mm": 1360
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51195",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WBE4500WC.json"
+      }
     },
     {
       "id": "fridge-arf3827",
@@ -35800,8 +36225,8 @@
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WFB4204WC",
-      "w": 1725,
-      "h": 699,
+      "w": 699,
+      "h": 1725,
       "d": 769,
       "kwh_year": 309,
       "stars": 4,
@@ -35819,7 +36244,32 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 699,
+        "depth_mm": 769,
+        "door_open_90_depth_mm": 1360
+      },
+      "clearance_requirements": {
+        "top_mm": 30,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51198",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WFB4204WC.json"
+      }
     },
     {
       "id": "fridge-arf3876",
@@ -35854,7 +36304,7 @@
       "model": "WFM1700WE",
       "w": 550,
       "h": 1434,
-      "d": 614,
+      "d": 560,
       "kwh_year": 228,
       "stars": 3,
       "price": null,
@@ -35871,7 +36321,32 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1434,
+        "width_mm": 550,
+        "depth_mm": 560,
+        "door_open_90_depth_mm": 1065
+      },
+      "clearance_requirements": {
+        "top_mm": 30,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51198",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WFM1700WE.json"
+      }
     },
     {
       "id": "fridge-arf3868",
@@ -35982,9 +36457,9 @@
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WHE6000SB",
-      "w": 1725,
-      "h": 896,
-      "d": 781,
+      "w": 896,
+      "h": 1725,
+      "d": 641,
       "kwh_year": 382,
       "stars": 4,
       "price": null,
@@ -36001,16 +36476,41 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 896,
+        "depth_mm": 641,
+        "door_open_90_depth_mm": 1105
+      },
+      "clearance_requirements": {
+        "top_mm": 30,
+        "left_mm": 5,
+        "right_mm": 5,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51196",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WHE6000SB.json"
+      }
     },
     {
       "id": "fridge-arf2396",
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WHE6060SB",
-      "w": 1725,
-      "h": 896,
-      "d": 781,
+      "w": 896,
+      "h": 1725,
+      "d": 641,
       "kwh_year": 382,
       "stars": 4,
       "price": null,
@@ -36027,16 +36527,41 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 896,
+        "depth_mm": 641,
+        "door_open_90_depth_mm": 1105
+      },
+      "clearance_requirements": {
+        "top_mm": 30,
+        "left_mm": 5,
+        "right_mm": 5,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51196",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WHE6060SB.json"
+      }
     },
     {
       "id": "fridge-arf3833",
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WHE6170SB",
-      "w": 1782,
-      "h": 913,
-      "d": 749,
+      "w": 913,
+      "h": 1782,
+      "d": 813,
       "kwh_year": 485,
       "stars": 4,
       "price": null,
@@ -36053,16 +36578,41 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1782,
+        "width_mm": 913,
+        "depth_mm": 813,
+        "door_open_90_depth_mm": 1189
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 10,
+        "right_mm": 10,
+        "rear_mm": 35
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51196",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WHE6170SB.json"
+      }
     },
     {
       "id": "fridge-arf3834",
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WHE6270**",
-      "w": 1782,
-      "h": 913,
-      "d": 749,
+      "w": 913,
+      "h": 1782,
+      "d": 813,
       "kwh_year": 497,
       "stars": 4,
       "price": null,
@@ -36079,7 +36629,32 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1782,
+        "width_mm": 913,
+        "depth_mm": 813,
+        "door_open_90_depth_mm": 1189
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 10,
+        "right_mm": 10,
+        "rear_mm": 35
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51196",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WHE6270.json"
+      }
     },
     {
       "id": "fridge-arf2395",
@@ -36727,8 +37302,8 @@
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WQE6870SA",
-      "w": 1782,
-      "h": 913,
+      "w": 913,
+      "h": 1782,
       "d": 749,
       "kwh_year": 501,
       "stars": 4,
@@ -36746,7 +37321,32 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1782,
+        "width_mm": 913,
+        "depth_mm": 749,
+        "door_open_90_depth_mm": 1189
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 10,
+        "right_mm": 10,
+        "rear_mm": 35
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51196",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WQE6870SA.json"
+      }
     },
     {
       "id": "fridge-arf2523",
@@ -36772,7 +37372,32 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1746,
+        "width_mm": 595,
+        "depth_mm": 700,
+        "door_open_90_depth_mm": 1175
+      },
+      "clearance_requirements": {
+        "top_mm": 30,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51198",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WRB3504-A.json"
+      }
     },
     {
       "id": "fridge-arf2948",
@@ -36824,16 +37449,41 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1746,
+        "width_mm": 595,
+        "depth_mm": 700,
+        "door_open_90_depth_mm": 1175
+      },
+      "clearance_requirements": {
+        "top_mm": 30,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51198",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WRB3504SA.json"
+      }
     },
     {
       "id": "fridge-arf3835",
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WRB5004WC",
-      "w": 1725,
-      "h": 699,
-      "d": 769,
+      "w": 699,
+      "h": 1725,
+      "d": 641,
       "kwh_year": 195,
       "stars": 4,
       "price": null,
@@ -36850,7 +37500,32 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 699,
+        "depth_mm": 641,
+        "door_open_90_depth_mm": 1360
+      },
+      "clearance_requirements": {
+        "top_mm": 30,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51198",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WRB5004WC.json"
+      }
     },
     {
       "id": "fridge-arf2432",
@@ -36885,7 +37560,7 @@
       "model": "WRM2400WE",
       "w": 550,
       "h": 1434,
-      "d": 548,
+      "d": 545,
       "kwh_year": 175,
       "stars": 3,
       "price": null,
@@ -36902,7 +37577,32 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1434,
+        "width_mm": 550,
+        "depth_mm": 545,
+        "door_open_90_depth_mm": 1050
+      },
+      "clearance_requirements": {
+        "top_mm": 30,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51198",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WRM2400WE.json"
+      }
     },
     {
       "id": "fridge-arf3073",
@@ -37235,8 +37935,8 @@
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WTB2300WH",
-      "w": 1405,
-      "h": 540,
+      "w": 540,
+      "h": 1405,
       "d": 615,
       "kwh_year": 259,
       "stars": 3,
@@ -37254,7 +37954,32 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1405,
+        "width_mm": 540,
+        "depth_mm": 615,
+        "door_open_90_depth_mm": 1108
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51194",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WTB2300WH.json"
+      }
     },
     {
       "id": "fridge-arf2581",
@@ -37287,8 +38012,8 @@
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WTB2800WH",
-      "w": 1605,
-      "h": 540,
+      "w": 540,
+      "h": 1605,
       "d": 615,
       "kwh_year": 283,
       "stars": 3,
@@ -37306,15 +38031,40 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1605,
+        "width_mm": 540,
+        "depth_mm": 615,
+        "door_open_90_depth_mm": 1108
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51194",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WTB2800WH.json"
+      }
     },
     {
       "id": "fridge-arf2649",
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WTB3100WK",
-      "w": 1645,
-      "h": 598,
+      "w": 598,
+      "h": 1646,
       "d": 650,
       "kwh_year": 336,
       "stars": 3,
@@ -37332,15 +38082,40 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1646,
+        "width_mm": 598,
+        "depth_mm": 650,
+        "door_open_90_depth_mm": 1199
+      },
+      "clearance_requirements": {
+        "top_mm": 90,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=53211",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WTB3100WK.json"
+      }
     },
     {
       "id": "fridge-arf2496",
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WTB3400WH",
-      "w": 1645,
-      "h": 598,
+      "w": 598,
+      "h": 1645,
       "d": 650,
       "kwh_year": 343,
       "stars": 3,
@@ -37358,15 +38133,40 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1645,
+        "width_mm": 598,
+        "depth_mm": 650,
+        "door_open_90_depth_mm": 1199
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51194",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WTB3400WH.json"
+      }
     },
     {
       "id": "fridge-arf2647",
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WTB3400WK",
-      "w": 1756,
-      "h": 598,
+      "w": 598,
+      "h": 1756,
       "d": 650,
       "kwh_year": 339,
       "stars": 3,
@@ -37384,15 +38184,40 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1756,
+        "width_mm": 598,
+        "depth_mm": 650,
+        "door_open_90_depth_mm": 1199
+      },
+      "clearance_requirements": {
+        "top_mm": 90,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=53211",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WTB3400WK.json"
+      }
     },
     {
       "id": "fridge-arf2449",
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WTB3700WH",
-      "w": 1755,
-      "h": 598,
+      "w": 598,
+      "h": 1755,
       "d": 650,
       "kwh_year": 349,
       "stars": 3,
@@ -37410,7 +38235,32 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1755,
+        "width_mm": 598,
+        "depth_mm": 650,
+        "door_open_90_depth_mm": 1199
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51194",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WTB3700WH.json"
+      }
     },
     {
       "id": "fridge-arf2439",
@@ -44445,8 +45295,8 @@
       "brand": "LG",
       "model": "XD3A25UMB",
       "w": 600,
-      "h": 850,
-      "d": 600,
+      "h": 815,
+      "d": 567,
       "kwh_year": 246,
       "stars": 4,
       "price": null,
@@ -44462,7 +45312,32 @@
       "inferred_door_swing": true,
       "displayName": "LG QuadWash",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 815,
+        "width_mm": 600,
+        "depth_mm": 567,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=emu7beepFnNfwAFPbsIIvw",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.88,
+        "raw_json_path": "data/pdf-evidence-raw/XD3A25UMB.json"
+      }
     },
     {
       "id": "dishwasher-adw0982",

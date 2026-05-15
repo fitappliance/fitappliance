@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3092",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GF-B700PL",
+  "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=j2YvjRAcs71zGaEKRiNdQ",
+  "verified_at": "2026-05-15",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GF-B700PL",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1787,
+      "width_mm": 914,
+      "depth_mm": 725,
+      "door_open_90_depth_mm": 1667
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=j2YvjRAcs71zGaEKRiNdQ",
+      "extraction_date": "2026-05-15T17:09:21.371Z",
+      "confidence_score": 0.9
+    }
+  }
+}

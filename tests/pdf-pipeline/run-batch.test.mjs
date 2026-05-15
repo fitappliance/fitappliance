@@ -119,6 +119,34 @@ test('batch target identification selects active products missing PDF evidence o
   assert.equal(targets[0].sku, 'HRTF206');
 });
 
+test('batch target identification can include archived products for coverage expansion sweeps', () => {
+  const repoRoot = makeRepo();
+  const targets = loadBatchTargets({ repoRoot, includeArchived: true });
+
+  assert.deepEqual(targets.map((target) => target.id), ['active-missing', 'archived-missing']);
+});
+
+test('batch target identification can filter by brand for coverage expansion sweeps', () => {
+  const repoRoot = makeRepo();
+  const fridgesPath = path.join(repoRoot, 'public', 'data', 'fridges.json');
+  const fridges = JSON.parse(fs.readFileSync(fridgesPath, 'utf8'));
+  fridges.products.push({
+    id: 'archived-lg',
+    cat: 'fridge',
+    brand: 'LG',
+    model: 'GB-335PL',
+    w: 595,
+    h: 1720,
+    d: 677,
+    unavailable: true
+  });
+  writeJson(fridgesPath, fridges);
+
+  const targets = loadBatchTargets({ repoRoot, includeArchived: true, brand: 'LG' });
+
+  assert.deepEqual(targets.map((target) => target.id), ['archived-lg']);
+});
+
 test('batch target identification can limit processing to explicit SKUs', () => {
   const repoRoot = makeRepo();
   const fridgesPath = path.join(repoRoot, 'public', 'data', 'fridges.json');
@@ -535,6 +563,128 @@ test('runBatch routes LG targets through the strict LG parser without an API key
     left_mm: 20,
     right_mm: 20,
     rear_mm: 100
+  });
+});
+
+test('runBatch can discover LG official manuals without manual-evidence URLs', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'lg-gb335pl',
+    brand: 'LG',
+    sku: 'GB-335PL',
+    category: 'fridge',
+    product: {
+      id: 'lg-gb335pl',
+      cat: 'fridge',
+      brand: 'LG',
+      model: 'GB-335PL',
+      w: 595,
+      h: 1720,
+      d: 677,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    lgOfficialFinder: async () => ({
+      sourceUrl: 'https://gscs-b2c.lge.com/open/downloadFile?fileId=gb335pl',
+      source: 'lg-official-support-manual',
+      resourceType: 'Owner Manual'
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        OWNER'S MANUAL
+        FRIDGE & FREEZER
+        GB-335WL / GB-335PL / GB-W335MBL / GB-335MBL
+        Dimensions and Clearances
+        Allow over 50 mm of clearance from each adjacent wall when installing the appliance.
+        Size (mm)
+        a b
+        A 595 595
+        B 1720/1860/2030 1720/1860/2030
+        C 682 677
+        D 615 610
+        E 682 677
+        F 1230 1225
+        G 995 995
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.successes[0].source, 'lg-official-support-manual');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'GB-335PL.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 50,
+    right_mm: 50,
+    rear_mm: 50
+  });
+});
+
+test('runBatch processes Westinghouse targets with the official finder and parser without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'west-wbb3400ah',
+    brand: 'Westinghouse',
+    sku: 'WBB3400AH',
+    category: 'fridge',
+    product: {
+      id: 'west-wbb3400ah',
+      cat: 'fridge',
+      brand: 'Westinghouse',
+      model: 'WBB3400AH',
+      w: 598,
+      h: 1645,
+      d: 650,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    westinghouseOfficialFinder: async () => ({
+      sourceUrl: 'https://www.westinghouse.com.au/documenthandler.ashx?assetid=511925',
+      source: 'westinghouse-official-dimension_sheet',
+      resourceType: 'dimension_sheet'
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        Dimension and installation guide
+        Dimensions Product Height (H) Product Width (W) Product Depth (D) Product Depth (D2)
+        WBB3700AH/ WH 1755 598 650 1199
+        WBB3400AH/ WH 1645 598 650 1199
+        Airspace Side - both Top Behind
+        WBB3700AH/ WH 30 50 50
+        WBB3400AH/ WH 30 50 50
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'westinghouse-official-dimension_sheet');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'WBB3400AH.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.dimensions, {
+    height_mm: 1645,
+    width_mm: 598,
+    depth_mm: 650,
+    door_open_90_depth_mm: 1199
   });
 });
 

@@ -170,6 +170,52 @@ test('LG parser handles WashTower as one tall appliance instead of a split washe
   assert.equal(result.data.flags.requires_plumbing, true);
 });
 
+test('LG parser handles older fridge Size(mm) a/b tables with explicit adjacent-wall clearance', () => {
+  const result = parseLgText(`
+    OWNER'S MANUAL
+    FRIDGE & FREEZER
+    GB-335WL / GB-335PL / GB-W335MBL / GB-335MBL
+
+    Dimensions and Clearances
+    Allow over 50 mm of clearance from each adjacent wall when installing the appliance.
+    Size (mm)
+    a b
+    A 595 595
+    B 1720/1860/2030 1720/1860/2030
+    C 682 677
+    D 615 610
+    E 682 677
+    F 1230 1225
+    G 995 995
+  `, {
+    target: {
+      brand: 'LG',
+      sku: 'GB-335PL',
+      category: 'fridge',
+      product: {
+        w: 595,
+        h: 1720,
+        d: 677
+      }
+    },
+    sourceUrl: 'https://www.lg.com/au/support/product/lg-GB-335PL',
+    extractionDate: EXTRACTION_DATE
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 1720,
+    width_mm: 595,
+    depth_mm: 677,
+    door_open_90_depth_mm: 995
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 50,
+    right_mm: 50,
+    rear_mm: 50
+  });
+});
+
 test('LG parser fails closed when a document has dimensions but no explicit clearance', () => {
   assert.throws(() => parseLgText(`
     LG Washing Machine

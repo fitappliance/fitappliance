@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2394",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WQE6870SA",
+  "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51196",
+  "verified_at": "2026-05-15",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WQE6870SA",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1782,
+      "width_mm": 913,
+      "depth_mm": 749,
+      "door_open_90_depth_mm": 1189
+    },
+    "clearance_requirements": {
+      "top_mm": 25,
+      "left_mm": 10,
+      "right_mm": 10,
+      "rear_mm": 35
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://resource.electrolux.com.au/Public/File/?Id=51196",
+      "extraction_date": "2026-05-15T17:48:58.419Z",
+      "confidence_score": 0.9
+    }
+  }
+}
