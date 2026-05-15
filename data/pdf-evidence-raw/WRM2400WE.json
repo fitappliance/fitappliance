@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3878",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WRM2400WE",
+  "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51198",
+  "verified_at": "2026-05-15",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WRM2400WE",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1434,
+      "width_mm": 550,
+      "depth_mm": 545,
+      "door_open_90_depth_mm": 1050
+    },
+    "clearance_requirements": {
+      "top_mm": 30,
+      "left_mm": 30,
+      "right_mm": 30,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://resource.electrolux.com.au/Public/File/?Id=51198",
+      "extraction_date": "2026-05-15T17:48:58.768Z",
+      "confidence_score": 0.9
+    }
+  }
+}

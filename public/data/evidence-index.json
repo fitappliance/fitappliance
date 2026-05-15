@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source": "data/manual-evidence.json",
-  "last_updated": "2026-05-14",
+  "last_updated": "2026-05-15",
   "products": {
     "ao-100087": {
       "product_id": "ao-100087",
@@ -23763,6 +23763,18 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "dishwasher-adw1131": {
+      "product_id": "dishwasher-adw1131",
+      "status": "verified",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD3A25UMB",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=emu7beepFnNfwAFPbsIIvw",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.88
+    },
     "dishwasher-adw1146": {
       "product_id": "dishwasher-adw1146",
       "status": "verified",
@@ -23943,6 +23955,138 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "fridge-arf2264": {
+      "product_id": "fridge-arf2264",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GB-335PL",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=h8kS0aDP3UiEAwMJDvnjvQ",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2270": {
+      "product_id": "fridge-arf2270",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GB-455BLE",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=V0vh6JCWRhumlf01kQSig",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2271": {
+      "product_id": "fridge-arf2271",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GB-W455MBL",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=V0vh6JCWRhumlf01kQSig",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2383": {
+      "product_id": "fridge-arf2383",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-V910MBL",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=fedUnZXjQscQf6x6ynOeEQ",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2388": {
+      "product_id": "fridge-arf2388",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GB-W335MBL",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=h8kS0aDP3UiEAwMJDvnjvQ",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2394": {
+      "product_id": "fridge-arf2394",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE6870SA",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51196",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2396": {
+      "product_id": "fridge-arf2396",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE6060SB",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51196",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2401": {
+      "product_id": "fridge-arf2401",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WRB3504SA",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51198",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2402": {
+      "product_id": "fridge-arf2402",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE6000SB",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51196",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2421": {
+      "product_id": "fridge-arf2421",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-V910MBLC",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=q3ft1itHU07FJfSYJmH0Dg",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2441": {
+      "product_id": "fridge-arf2441",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB2800WH",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51194",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
     "fridge-arf2444": {
       "product_id": "fridge-arf2444",
       "status": "verified",
@@ -23953,6 +24097,18 @@
       "source_type": "spec_sheet",
       "source_url": "https://commercial.appliancesonline.com.au/public/manuals/WQE6000BB-Westinghouse-Specifications-Sheet.pdf",
       "verified_at": "2026-05-09",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2449": {
+      "product_id": "fridge-arf2449",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB3700WH",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51194",
+      "verified_at": "2026-05-15",
       "confidence_score": 0.9
     },
     "fridge-arf2472": {
@@ -23967,6 +24123,54 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "fridge-arf2496": {
+      "product_id": "fridge-arf2496",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB3400WH",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51194",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2497": {
+      "product_id": "fridge-arf2497",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBB3400AH",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51192",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2523": {
+      "product_id": "fridge-arf2523",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WRB3504*A",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51198",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2537": {
+      "product_id": "fridge-arf2537",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBB3700AH",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51192",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
     "fridge-arf2606": {
       "product_id": "fridge-arf2606",
       "status": "verified",
@@ -23977,6 +24181,30 @@
       "source_type": "spec_sheet",
       "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TCA8L39ERMmdd8YMLQNkbg",
       "verified_at": "2026-05-09",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2647": {
+      "product_id": "fridge-arf2647",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB3400WK",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=53211",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2649": {
+      "product_id": "fridge-arf2649",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB3100WK",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=53211",
+      "verified_at": "2026-05-15",
       "confidence_score": 0.9
     },
     "fridge-arf2654": {
@@ -24013,6 +24241,18 @@
       "source_type": "spec_sheet",
       "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/c/2/1/9/c2196990eaca36d9cc8beddf629cbcce69813aa9_Westinghouse_WBE4302WC_Factsheet.pdf",
       "verified_at": "2026-05-09",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2763": {
+      "product_id": "fridge-arf2763",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-V706MBLC",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qnKDotrworMx9VsLukCvw",
+      "verified_at": "2026-05-15",
       "confidence_score": 0.9
     },
     "fridge-arf2831": {
@@ -24087,6 +24327,18 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "fridge-arf3027": {
+      "product_id": "fridge-arf3027",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-V700MBLC",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=S9KtCjoQL26KeRDXtNn2w",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
     "fridge-arf3054": {
       "product_id": "fridge-arf3054",
       "status": "verified",
@@ -24135,6 +24387,18 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "fridge-arf3092": {
+      "product_id": "fridge-arf3092",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-B700PL",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=j2YvjRAcs71zGaEKRiNdQ",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
     "fridge-arf3094": {
       "product_id": "fridge-arf3094",
       "status": "verified",
@@ -24157,6 +24421,30 @@
       "source_type": "spec_sheet",
       "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
       "verified_at": "2026-05-09",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3244": {
+      "product_id": "fridge-arf3244",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-LN700MBL",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=S9KtCjoQL26KeRDXtNn2w",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3246": {
+      "product_id": "fridge-arf3246",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-B705MBL",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=j2YvjRAcs71zGaEKRiNdQ",
+      "verified_at": "2026-05-15",
       "confidence_score": 0.9
     },
     "fridge-arf3292": {
@@ -24279,6 +24567,18 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "fridge-arf3566": {
+      "product_id": "fridge-arf3566",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GT-2SI",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=sy7QbebvamiaOLA1j1WoBg",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
     "fridge-arf3570": {
       "product_id": "fridge-arf3570",
       "status": "verified",
@@ -24315,6 +24615,42 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "fridge-arf3637": {
+      "product_id": "fridge-arf3637",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GT-1SI",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=sy7QbebvamiaOLA1j1WoBg",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3822": {
+      "product_id": "fridge-arf3822",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB2300WH",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51194",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3826": {
+      "product_id": "fridge-arf3826",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBE4500WC",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51195",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
     "fridge-arf3827": {
       "product_id": "fridge-arf3827",
       "status": "verified",
@@ -24327,6 +24663,54 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "fridge-arf3829": {
+      "product_id": "fridge-arf3829",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WFB4204WC",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51198",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3833": {
+      "product_id": "fridge-arf3833",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE6170SB",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51196",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3834": {
+      "product_id": "fridge-arf3834",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE6270**",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51196",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3835": {
+      "product_id": "fridge-arf3835",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WRB5004WC",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51198",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
     "fridge-arf3865": {
       "product_id": "fridge-arf3865",
       "status": "verified",
@@ -24337,6 +24721,42 @@
       "source_type": "spec_sheet",
       "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/5/8/4/a/584a6500746d4ac08894cb2885b8fb75677fccdf_Westinghouse_WBB3100AK_Factsheet.pdf",
       "verified_at": "2026-05-09",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3870": {
+      "product_id": "fridge-arf3870",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBB3400WK",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=53210",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3877": {
+      "product_id": "fridge-arf3877",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WFM1700WE",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51198",
+      "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3878": {
+      "product_id": "fridge-arf3878",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WRM2400WE",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51198",
+      "verified_at": "2026-05-15",
       "confidence_score": 0.9
     },
     "fridge-manual-hisense-hrbm418d": {

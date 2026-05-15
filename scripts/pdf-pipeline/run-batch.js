@@ -18,7 +18,10 @@ const { findFisherPaykelOfficialPdf } = require('./fisher-paykel-official');
 const { parseFisherPaykelText } = require('./parsers/fp');
 const { findSamsungOfficialPdf } = require('./samsung-official');
 const { parseSamsungText } = require('./parsers/samsung');
+const { findLgOfficialPdf } = require('./lg-official');
 const { parseLgText } = require('./parsers/lg');
+const { findWestinghouseOfficialPdf } = require('./westinghouse-official');
+const { parseWestinghouseText } = require('./parsers/westinghouse');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
 const FISHER_PAYKEL_MAX_BYTES = 30 * 1024 * 1024;
@@ -100,6 +103,13 @@ function isLgTarget(target = {}) {
   ].filter(Boolean).join(' '));
 }
 
+function isWestinghouseTarget(target = {}) {
+  return /westinghouse/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
 function getProductSkuCandidates(product) {
   return [
     product?.model,
@@ -154,14 +164,23 @@ function loadManualEvidence(repoRoot = process.cwd()) {
   return readJson(path.join(repoRoot, 'data', 'manual-evidence.json'), { products: {} });
 }
 
-function loadBatchTargets({ repoRoot = process.cwd(), category = null, limit = null, skus = null } = {}) {
+function loadBatchTargets({
+  repoRoot = process.cwd(),
+  category = null,
+  limit = null,
+  skus = null,
+  includeArchived = false,
+  brand = null
+} = {}) {
   const skuFilter = Array.isArray(skus)
     ? new Set(skus.map(normalizeSku).filter(Boolean))
     : null;
+  const brandKey = normalizeBrandKey(brand);
   const products = loadCatalogProducts(repoRoot)
-    .filter((product) => product.unavailable === false)
+    .filter((product) => includeArchived || product.unavailable === false)
     .filter((product) => !hasPdfEvidence(product))
     .filter((product) => !category || product.cat === category)
+    .filter((product) => !brandKey || normalizeBrandKey(product.brand) === brandKey)
     .filter((product) => matchesSkuFilter(product, skuFilter));
 
   const targets = products.map((product) => ({
@@ -448,15 +467,25 @@ async function parseLgTarget({
   extractTextImpl,
   searchPdf,
   env,
-  fisherPaykelOfficialFinder
+  fisherPaykelOfficialFinder,
+  lgOfficialFinder
 }) {
-  const resolved = await findPdfSourceUrl(target, {
-    repoRoot,
-    manualEvidence,
-    searchPdf,
-    env,
-    fisherPaykelOfficialFinder
-  });
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await lgOfficialFinder(target);
+  const resolved = manualSourceUrl
+    ? await findPdfSourceUrl(target, {
+      repoRoot,
+      manualEvidence,
+      searchPdf,
+      env,
+      fisherPaykelOfficialFinder
+    })
+    : {
+      sourceUrl: official?.sourceUrl,
+      source: official?.source || 'lg-official'
+    };
   const sourceUrl = resolved.sourceUrl;
   if (!sourceUrl) {
     throw new Error('LG official PDF source URL not found');
@@ -482,6 +511,49 @@ async function parseLgTarget({
     candidate: parsed.data,
     sourceUrl,
     source: resolved.source || 'lg-parser'
+  };
+}
+
+async function parseWestinghouseTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  westinghouseOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await westinghouseOfficialFinder(target, { knownOnly: true });
+  const sourceUrl = manualSourceUrl || official?.sourceUrl;
+  if (!sourceUrl) {
+    throw new Error(official?.reason || 'Westinghouse official PDF resources not found');
+  }
+  const source = manualSourceUrl ? 'manual-evidence' : (official?.source || 'westinghouse-official');
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}.pdf`
+  );
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath, {
+    retries: 1,
+    timeoutMs: 15_000,
+    userAgent: 'Mozilla/5.0'
+  });
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseWestinghouseText(textResult.text, {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString()
+  });
+
+  return {
+    candidate: parsed.data,
+    sourceUrl,
+    source
   };
 }
 
@@ -605,16 +677,30 @@ async function runBatch({
   saveToVaultImpl = saveExtractionToVault,
   searchPdf = null,
   fisherPaykelOfficialFinder = findFisherPaykelOfficialPdf,
-  samsungOfficialFinder = findSamsungOfficialPdf
+  samsungOfficialFinder = findSamsungOfficialPdf,
+  lgOfficialFinder = findLgOfficialPdf,
+  westinghouseOfficialFinder = findWestinghouseOfficialPdf,
+  includeArchived = false,
+  brand = null
 } = {}) {
-  const batchTargets = targets || loadBatchTargets({ repoRoot, category, limit, skus });
+  const batchTargets = targets || loadBatchTargets({
+    repoRoot,
+    category,
+    limit,
+    skus,
+    includeArchived,
+    brand
+  });
   const manualEvidence = loadManualEvidence(repoRoot);
   const successes = [];
   const discrepancies = [];
   const failures = [];
 
   const needsDefaultLlm = !parseTextImpl && batchTargets.some((target) => (
-    !isFisherPaykelTarget(target) && !isSamsungTarget(target) && !isLgTarget(target)
+    !isFisherPaykelTarget(target)
+    && !isSamsungTarget(target)
+    && !isLgTarget(target)
+    && !isWestinghouseTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -662,7 +748,20 @@ async function runBatch({
           extractTextImpl,
           searchPdf,
           env,
-          fisherPaykelOfficialFinder
+          fisherPaykelOfficialFinder,
+          lgOfficialFinder
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isWestinghouseTarget(target)) {
+        const parsed = await parseWestinghouseTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          westinghouseOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
         });
         sourceUrl = parsed.sourceUrl;
         source = parsed.source;
@@ -764,7 +863,9 @@ function parseCliArgs(argv) {
   for (const arg of argv) {
     if (arg.startsWith('--limit=')) args.limit = Number.parseInt(arg.slice('--limit='.length), 10);
     if (arg.startsWith('--category=')) args.category = arg.slice('--category='.length);
+    if (arg.startsWith('--brand=')) args.brand = arg.slice('--brand='.length);
     if (arg.startsWith('--delay-ms=')) args.delayMs = Number.parseInt(arg.slice('--delay-ms='.length), 10);
+    if (arg === '--include-archived') args.includeArchived = true;
     if (arg.startsWith('--sku=')) {
       args.skus = arg.slice('--sku='.length).split(',').map((sku) => sku.trim()).filter(Boolean);
     }
@@ -797,3 +898,4 @@ exports.MISSING_API_KEY_MESSAGE = MISSING_API_KEY_MESSAGE;
 exports.parseFisherPaykelTarget = parseFisherPaykelTarget;
 exports.parseSamsungTarget = parseSamsungTarget;
 exports.parseLgTarget = parseLgTarget;
+exports.parseWestinghouseTarget = parseWestinghouseTarget;
