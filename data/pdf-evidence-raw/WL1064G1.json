@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "washing_machine-acw1353",
+  "category": "washing_machine",
+  "brand": "Fisher & Paykel",
+  "model": "WL1064G1",
+  "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw922657a6/QRG/AU/QRG-AU-93297.pdf",
+  "verified_at": "2026-05-15",
+  "extracted": {
+    "brand": "Fisher & Paykel",
+    "sku": "WL1064G1",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 1095,
+      "width_mm": 640,
+      "depth_mm": 650,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": false,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw922657a6/QRG/AU/QRG-AU-93297.pdf",
+      "extraction_date": "2026-05-15T18:32:39.722Z",
+      "confidence_score": 0.85,
+      "source_type": "fisher-paykel-official-quick_reference_guide"
+    }
+  }
+}
