@@ -1,11 +1,15 @@
 {
   "version": 2,
   "name": "fitappliance",
+  "buildCommand": "npm run build",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "regions": ["syd1"],
   "rewrites": [
     { "source": "/google32758d7798f4a670.html", "destination": "/google32758d7798f4a670.html" },
     { "source": "/google5keGnUyvuq31_mxZ9pNVPIsh7BzKBbM7aHdxUTZZDJM.html", "destination": "/google5keGnUyvuq31_mxZ9pNVPIsh7BzKBbM7aHdxUTZZDJM.html" },
     { "source": "/data/:path*",          "destination": "/public/data/:path*" },
+    { "source": "/pdf-evidence/:path*",  "destination": "/data/pdf-evidence/:path*" },
     { "source": "/scripts/:path*",       "destination": "/public/scripts/:path*" },
     { "source": "/icons/:path*",         "destination": "/public/icons/:path*" },
     { "source": "/manifest.webmanifest", "destination": "/public/manifest.webmanifest" },
@@ -60,6 +64,42 @@
     },
     {
       "source": "/data/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/pdf-evidence/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/og-images/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/icons/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/scripts/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/styles.css",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/styles-deferred.css",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
       ]
