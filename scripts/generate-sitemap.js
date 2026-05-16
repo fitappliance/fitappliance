@@ -5,6 +5,7 @@ const { mkdir, readdir, readFile, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { toAbsoluteSitemapLoc } = require('./common/sitemap-loc.js');
 const { toDateOnly } = require('./common/file-dates.js');
+const { selectVerifiedProducts, slugifyProduct } = require('./generate-product-pages.js');
 
 const STATIC_PAGES = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
@@ -16,6 +17,7 @@ const STATIC_PAGES = [
   { path: '/about', changefreq: 'monthly', priority: '0.6' },
   { path: '/methodology', changefreq: 'monthly', priority: '0.6' },
   { path: '/about/editorial-standards', changefreq: 'monthly', priority: '0.6' },
+  { path: '/products', changefreq: 'monthly', priority: '0.7' },
   { path: '/subscribe', changefreq: 'monthly', priority: '0.5' },
   { path: '/tools/fit-checker', changefreq: 'monthly', priority: '0.6' }
 ];
@@ -89,6 +91,45 @@ async function readFitCheckRows(repoRoot) {
   }
 }
 
+async function readProductRows(repoRoot, productIndexPath = null, { allowCatalogFallback = false } = {}) {
+  const indexPath = productIndexPath ?? path.join(repoRoot, 'pages', 'products', 'index.json');
+  try {
+    const rows = JSON.parse(await readFile(indexPath, 'utf8'));
+    return Array.isArray(rows)
+      ? rows
+        .filter((row) => row?.slug || row?.url)
+        .map((row) => ({
+          slug: row.slug ?? String(row.url).split('/').pop(),
+          url: row.url ?? `/products/${row.slug}`,
+          cat: row.cat ?? null,
+          brand: row.brand ?? null,
+          model: row.model ?? null
+        }))
+      : [];
+  } catch (error) {
+    if (!error || error.code !== 'ENOENT') throw error;
+  }
+
+  if (!allowCatalogFallback) return [];
+
+  try {
+    const catalog = JSON.parse(await readFile(path.join(repoRoot, 'data', 'catalog-final.json'), 'utf8'));
+    return selectVerifiedProducts(catalog.products ?? []).map((product) => {
+      const slug = slugifyProduct(product);
+      return {
+        slug,
+        url: `/products/${slug}`,
+        cat: product.cat,
+        brand: product.brand,
+        model: product.model
+      };
+    });
+  } catch (error) {
+    if (error && error.code === 'ENOENT') return [];
+    throw error;
+  }
+}
+
 async function generateSitemap({
   repoRoot = path.resolve(__dirname, '..'),
   brandsIndexPath = path.join(repoRoot, 'pages', 'brands', 'index.json'),
@@ -98,6 +139,7 @@ async function generateSitemap({
   guideIndexPath = null,
   locationIndexPath = null,
   fitCheckDir = null,
+  productIndexPath = null,
   outputPath = path.join(repoRoot, 'public', 'sitemap.xml'),
   baseUrl = SITE_ORIGIN,
   today = null,
@@ -125,6 +167,11 @@ async function generateSitemap({
     ?? path.join(path.dirname(path.dirname(brandsIndexPath)), 'location', 'index.json');
   const effectiveFitCheckDir = fitCheckDir
     ?? path.join(path.dirname(path.dirname(brandsIndexPath)), 'fit-check');
+  const effectiveProductIndexPath = productIndexPath
+    ?? path.join(path.dirname(path.dirname(brandsIndexPath)), 'products', 'index.json');
+  const defaultBrandsIndexPath = path.join(repoRoot, 'pages', 'brands', 'index.json');
+  const allowProductCatalogFallback = productIndexPath == null
+    && path.resolve(brandsIndexPath) === path.resolve(defaultBrandsIndexPath);
 
   const brandRows = await readJsonIfExists(brandsIndexPath);
   const compareRows = await readJsonIfExists(effectiveCompareIndexPath);
@@ -133,6 +180,9 @@ async function generateSitemap({
   const guideRows = await readJsonIfExists(effectiveGuideIndexPath);
   const locationRows = await readJsonIfExists(effectiveLocationIndexPath);
   const fitCheckRows = await readFitCheckRows(path.dirname(path.dirname(effectiveFitCheckDir)));
+  const productRows = await readProductRows(repoRoot, effectiveProductIndexPath, {
+    allowCatalogFallback: allowProductCatalogFallback
+  });
   const sortedBrands = sortBrandEntries(Array.isArray(brandRows) ? brandRows : []);
   const sortedComparisons = [...(Array.isArray(compareRows) ? compareRows : [])].sort((left, right) => {
     const leftCat = String(left?.cat ?? '');
@@ -161,6 +211,15 @@ async function generateSitemap({
     const rightCity = String(right?.citySlug ?? '');
     if (leftCity !== rightCity) return leftCity.localeCompare(rightCity);
     return String(left?.category ?? '').localeCompare(String(right?.category ?? ''));
+  });
+  const sortedProducts = [...productRows].sort((left, right) => {
+    const leftCat = String(left?.cat ?? '');
+    const rightCat = String(right?.cat ?? '');
+    if (leftCat !== rightCat) return leftCat.localeCompare(rightCat);
+    const leftBrand = String(left?.brand ?? '');
+    const rightBrand = String(right?.brand ?? '');
+    if (leftBrand !== rightBrand) return leftBrand.localeCompare(rightBrand);
+    return String(left?.model ?? left?.slug ?? '').localeCompare(String(right?.model ?? right?.slug ?? ''));
   });
   const lastmod = today ?? await readSiteContentDate(repoRoot, '1970-01-01');
 
@@ -232,6 +291,14 @@ async function generateSitemap({
       priority: '0.6'
     })
   );
+  const productNodes = sortedProducts.map((row) =>
+    buildUrlNode({
+      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/products/${row.slug}`),
+      lastmod,
+      changefreq: 'monthly',
+      priority: '0.7'
+    })
+  );
 
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
@@ -244,13 +311,14 @@ async function generateSitemap({
     ...guideNodes,
     ...locationNodes,
     ...fitCheckNodes,
+    ...productNodes,
     '</urlset>',
     ''
   ].join('\n');
 
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, xml, 'utf8');
-  const urlCount = STATIC_PAGES.length + brandNodes.length + comparisonNodes.length + cavityNodes.length + doorwayNodes.length + guideNodes.length + locationNodes.length + fitCheckNodes.length;
+  const urlCount = STATIC_PAGES.length + brandNodes.length + comparisonNodes.length + cavityNodes.length + doorwayNodes.length + guideNodes.length + locationNodes.length + fitCheckNodes.length + productNodes.length;
   logger.log(`Generated sitemap with ${urlCount} URLs at ${outputPath}`);
 
   return { urlCount, outputPath };
@@ -266,6 +334,7 @@ if (require.main === module) {
 module.exports = {
   readSiteContentDate,
   readFitCheckRows,
+  readProductRows,
   generateSitemap,
   STATIC_PAGES,
   PRIORITY_BY_CAT

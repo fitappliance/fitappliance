@@ -34,6 +34,7 @@ test('vercel production config: compliance and static app routes are reachable',
   assert.equal(routes.get('/privacy'), '/pages/privacy.html');
   assert.equal(routes.get('/terms'), '/pages/terms.html');
   assert.equal(routes.get('/contact'), '/pages/contact.html');
+  assert.equal(routes.get('/products/:slug'), '/pages/products/:slug.html');
   assert.equal(routes.get('/data/:path*'), '/public/data/:path*');
   assert.equal(routes.get('/scripts/:path*'), '/public/scripts/:path*');
 });

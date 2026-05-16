@@ -27,13 +27,15 @@ function extractNodes(xmlText) {
   return nodes;
 }
 
-async function createWorkspace(indexRows, compareRows = null) {
+async function createWorkspace(indexRows, compareRows = null, productRows = null) {
   const rootDir = await mkdtemp(path.join(tmpdir(), 'fitappliance-sitemap-'));
   const brandsDir = path.join(rootDir, 'pages', 'brands');
   const compareDir = path.join(rootDir, 'pages', 'compare');
+  const productsDir = path.join(rootDir, 'pages', 'products');
   const outputPath = path.join(rootDir, 'public', 'sitemap.xml');
   const brandsIndexPath = path.join(brandsDir, 'index.json');
   const compareIndexPath = path.join(compareDir, 'index.json');
+  const productIndexPath = path.join(productsDir, 'index.json');
 
   await mkdir(brandsDir, { recursive: true });
   await writeFile(brandsIndexPath, `${JSON.stringify(indexRows, null, 2)}\n`, 'utf8');
@@ -41,11 +43,16 @@ async function createWorkspace(indexRows, compareRows = null) {
     await mkdir(compareDir, { recursive: true });
     await writeFile(compareIndexPath, `${JSON.stringify(compareRows, null, 2)}\n`, 'utf8');
   }
+  if (productRows) {
+    await mkdir(productsDir, { recursive: true });
+    await writeFile(productIndexPath, `${JSON.stringify(productRows, null, 2)}\n`, 'utf8');
+  }
 
   return {
     rootDir,
     brandsIndexPath,
     compareIndexPath,
+    productIndexPath,
     outputPath
   };
 }
@@ -159,6 +166,7 @@ test('task 9.1 sitemap: keeps static URLs first and sorts brand URLs by category
     'https://www.fitappliance.com.au/about',
     'https://www.fitappliance.com.au/methodology',
     'https://www.fitappliance.com.au/about/editorial-standards',
+    'https://www.fitappliance.com.au/products',
     'https://www.fitappliance.com.au/subscribe',
     'https://www.fitappliance.com.au/tools/fit-checker'
   ]);
@@ -223,4 +231,35 @@ test('task 9.1 sitemap: includes compare pages when compare index exists', async
   const nodes = extractNodes(xml);
   assert.equal(result.urlCount, STATIC_PAGES.length + 2);
   assert.ok(nodes.some((node) => node.loc.endsWith('/compare/lg-vs-samsung-fridge-clearance')));
+});
+
+test('technical SEO: sitemap includes verified product pages with monthly metadata', async () => {
+  const { generateSitemap, STATIC_PAGES } = await import(sitemapModuleUrl);
+  const workspace = await createWorkspace(
+    [],
+    null,
+    [
+      {
+        slug: 'lg-wwt-1910bx-washing-machine-acw1910',
+        url: '/products/lg-wwt-1910bx-washing-machine-acw1910',
+        cat: 'washtower_combo'
+      }
+    ]
+  );
+
+  const result = await generateSitemap({
+    brandsIndexPath: workspace.brandsIndexPath,
+    productIndexPath: workspace.productIndexPath,
+    outputPath: workspace.outputPath,
+    today: '2026-05-17',
+    logger: { log() {} }
+  });
+
+  const xml = await readFile(workspace.outputPath, 'utf8');
+  const nodes = extractNodes(xml);
+  const productNode = nodes.find((node) => node.loc.endsWith('/products/lg-wwt-1910bx-washing-machine-acw1910'));
+
+  assert.equal(result.urlCount, STATIC_PAGES.length + 1);
+  assert.equal(productNode?.changefreq, 'monthly');
+  assert.equal(productNode?.priority, '0.7');
 });

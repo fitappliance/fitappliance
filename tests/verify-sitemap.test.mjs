@@ -43,6 +43,7 @@ test('phase 43a quick wins: verify-sitemap fails when one expected route is miss
   <url><loc>https://www.fitappliance.com.au/about</loc></url>
   <url><loc>https://www.fitappliance.com.au/methodology</loc></url>
   <url><loc>https://www.fitappliance.com.au/about/editorial-standards</loc></url>
+  <url><loc>https://www.fitappliance.com.au/products</loc></url>
   <url><loc>https://www.fitappliance.com.au/subscribe</loc></url>
 </urlset>`);
 
@@ -68,4 +69,23 @@ test('phase 54 fit-check pages: verify-sitemap expects generated fit-check route
   const expectedRoutes = await collectExpectedRoutes(root);
 
   assert.equal(expectedRoutes.has('/fit-check/bosch-heat-pump-in-620mm-cavity'), true);
+});
+
+test('technical SEO: verify-sitemap expects generated product routes', async () => {
+  const { collectExpectedRoutes } = await import(moduleUrl);
+  const root = await makeWorkspace();
+  await fs.mkdir(path.join(root, 'pages', 'products'), { recursive: true });
+  await fs.writeFile(
+    path.join(root, 'pages', 'products', 'lg-wwt-1910bx-washtower.html'),
+    '<!doctype html>'
+  );
+  await fs.writeFile(
+    path.join(root, 'pages', 'products', 'index.json'),
+    '[]'
+  );
+
+  const expectedRoutes = await collectExpectedRoutes(root);
+
+  assert.equal(expectedRoutes.has('/products/lg-wwt-1910bx-washtower'), true);
+  assert.equal(expectedRoutes.has('/products/index'), false);
 });
