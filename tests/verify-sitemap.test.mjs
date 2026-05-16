@@ -14,7 +14,10 @@ async function makeWorkspace() {
   await fs.mkdir(path.join(root, 'public'), { recursive: true });
   await fs.writeFile(path.join(root, 'pages', 'brands', 'lg-fridge-clearance.html'), '<!doctype html>');
   await fs.writeFile(path.join(root, 'pages', 'affiliate-disclosure.html'), '<!doctype html>');
+  await fs.writeFile(path.join(root, 'pages', 'privacy.html'), '<!doctype html>');
   await fs.writeFile(path.join(root, 'pages', 'privacy-policy.html'), '<!doctype html>');
+  await fs.writeFile(path.join(root, 'pages', 'terms.html'), '<!doctype html>');
+  await fs.writeFile(path.join(root, 'pages', 'contact.html'), '<!doctype html>');
   await fs.writeFile(path.join(root, 'pages', 'subscribe.html'), '<!doctype html>');
   await fs.writeFile(path.join(root, 'pages', 'about.html'), '<!doctype html>');
   await fs.writeFile(path.join(root, 'pages', 'methodology.html'), '<!doctype html>');
@@ -33,7 +36,10 @@ test('phase 43a quick wins: verify-sitemap fails when one expected route is miss
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.fitappliance.com.au/</loc></url>
   <url><loc>https://www.fitappliance.com.au/affiliate-disclosure</loc></url>
+  <url><loc>https://www.fitappliance.com.au/privacy</loc></url>
   <url><loc>https://www.fitappliance.com.au/privacy-policy</loc></url>
+  <url><loc>https://www.fitappliance.com.au/terms</loc></url>
+  <url><loc>https://www.fitappliance.com.au/contact</loc></url>
   <url><loc>https://www.fitappliance.com.au/about</loc></url>
   <url><loc>https://www.fitappliance.com.au/methodology</loc></url>
   <url><loc>https://www.fitappliance.com.au/about/editorial-standards</loc></url>

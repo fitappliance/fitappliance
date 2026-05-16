@@ -122,17 +122,17 @@ test('phase 47: About page uses user-supplied founder and contact facts', () => 
   assert.ok(html.includes('JZ'), 'About page should name JZ as the public founder signature');
   assert.ok(html.includes(`${remote}/issues/new`), 'About page should link to GitHub issues for contact');
   assert.ok(html.includes(`${remote}/discussions`), 'About page should link to GitHub discussions for feature ideas');
-  assert.equal(html.includes('mailto:hello@fitappliance.com.au'), false, 'About page must not expose an active mailto link yet');
+  assert.ok(html.includes('mailto:hello@fitappliance.com.au'), 'About page should expose the active corporate mailbox');
   assert.match(visibleText(html), /\bI\b/, 'About page should include first-person founder context');
   assert.match(visibleText(html), /solo|one-person|independent/i, 'About page should disclose solo operation');
 });
 
-test('phase 47: About page can mention pending email only as non-clickable placeholder text', () => {
+test('phase 57: About page exposes active domain-matched email contact', () => {
   const html = readPage('pages/about.html');
   const text = visibleText(html);
-  assert.ok(text.includes('hello@fitappliance.com.au'), 'About page should mention the future email address as text');
-  assert.match(text, /being set up|when active/i, 'About page should explain email is not active yet');
-  assert.doesNotMatch(html, /href=["']mailto:/i, 'About page should not contain mailto hrefs');
+  assert.ok(text.includes('hello@fitappliance.com.au'), 'About page should mention the corporate email address as text');
+  assert.doesNotMatch(text, /being set up|when active/i, 'About page should no longer describe email as pending');
+  assert.match(html, /href=["']mailto:hello@fitappliance\.com\.au["']/i, 'About page should contain the active mailto href');
 });
 
 test('phase 47: Editorial standards route corrections through GitHub issues', () => {
