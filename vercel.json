@@ -33,6 +33,7 @@
     { "source": "/about",                "destination": "/pages/about.html" },
     { "source": "/methodology",          "destination": "/pages/methodology.html" },
     { "source": "/about/editorial-standards", "destination": "/pages/about/editorial-standards.html" },
+    { "source": "/products/:slug",       "destination": "/pages/products/:slug.html" },
     { "source": "/brands/:slug",         "destination": "/pages/brands/:slug.html" },
     { "source": "/compare/:slug",        "destination": "/pages/compare/:slug.html" },
     { "source": "/cavity/:slug",         "destination": "/pages/cavity/:slug.html" },

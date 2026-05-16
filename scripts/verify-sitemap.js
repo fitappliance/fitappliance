@@ -15,6 +15,7 @@ const STATIC_PAGE_ROUTES = [
   '/about',
   '/methodology',
   '/about/editorial-standards',
+  '/products',
   '/subscribe',
   '/tools/fit-checker'
 ];
@@ -71,6 +72,7 @@ async function collectExpectedRoutes(repoRoot) {
       else if (rel.startsWith('fit-check/')) expected.add(`/fit-check/${rel.slice('fit-check/'.length, -5)}`);
       else if (rel.startsWith('guides/')) expected.add(`/guides/${rel.slice('guides/'.length, -5)}`);
       else if (rel.startsWith('location/')) expected.add(`/${rel.slice(0, -5)}`);
+      else if (rel.startsWith('products/')) expected.add(`/products/${rel.slice('products/'.length, -5)}`);
       else if (rel.startsWith('tools/')) expected.add(`/tools/${rel.slice('tools/'.length, -5)}`);
     }
   }
