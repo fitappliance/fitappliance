@@ -8,7 +8,10 @@ const { SITE_ORIGIN } = require('./common/site-origin.js');
 const STATIC_PAGE_ROUTES = [
   '/',
   '/affiliate-disclosure',
+  '/privacy',
   '/privacy-policy',
+  '/terms',
+  '/contact',
   '/about',
   '/methodology',
   '/about/editorial-standards',
@@ -52,7 +55,10 @@ async function collectExpectedRoutes(repoRoot) {
       const rel = path.relative(pagesDir, fullPath).replace(/\\/g, '/');
       if (rel === 'affiliate-disclosure.html'
         || rel === 'about.html'
+        || rel === 'privacy.html'
         || rel === 'privacy-policy.html'
+        || rel === 'terms.html'
+        || rel === 'contact.html'
         || rel === 'methodology.html'
         || rel === 'subscribe.html'
         || rel === 'about/editorial-standards.html') {

@@ -10,7 +10,7 @@
   "@type": "AboutPage",
   "name": "About FitAppliance",
   "headline": "About FitAppliance",
-  "description": "Why FitAppliance exists, who runs it, how it makes money, and what the appliance fit checker does and does not do.",
+  "description": "Why FitAppliance exists, who runs it, how it makes money, and how its fail-closed PDF validation supports appliance fit decisions.",
   "url": "https://www.fitappliance.com.au/about",
   "datePublished": "2026-04-26T00:00:00.000Z",
   "dateModified": "2026-04-26T00:00:00.000Z",
@@ -25,8 +25,8 @@
   }
 }
   </script>
-  <meta name="description" content="Why FitAppliance exists, who runs it, how it makes money, and what the appliance fit checker does and does not do.">
-  <meta name="article:modified_time" content="2026-04-26T00:00:00Z">
+  <meta name="description" content="Why FitAppliance exists, who runs it, how it makes money, and how its fail-closed PDF validation supports appliance fit decisions.">
+  <meta name="article:modified_time" content="2026-05-17T00:00:00Z">
   <link rel="canonical" href="https://www.fitappliance.com.au/about">
   <style>
     :root { --ink:#131210; --ink-2:#3d3a35; --paper:#faf8f4; --border:#e0d9ce; --copper:#b55a2c; --white:#fff; }
@@ -48,7 +48,7 @@
   <main>
     <a href="/">← Back to FitAppliance</a>
     <h1>About FitAppliance</h1>
-    <p class="meta">Last reviewed: 26 April 2026</p>
+    <p class="meta">Last reviewed: 17 May 2026</p>
 
     <h2>Why this site exists</h2>
     <p>I built FitAppliance after a very ordinary household job turned into a very annoying one. I was replacing a
@@ -64,11 +64,16 @@
     helps other Australian households avoid the same heavy, expensive mistake, even better.</p>
 
     <h2>What we do</h2>
-    <p>FitAppliance is a sizing and fit tool for Australian appliances. You enter the cavity dimensions you have at
+    <p>FitAppliance is a premium Australian data-driven utility for appliance fit decisions. You enter the cavity dimensions you have at
     home. The site compares those measurements with appliance dimensions, brand-specific clearance rules, door swing
     data, doorway access notes and energy star information. The current raw specs catalogue covers 2,188 products
     across four categories: fridges, washing machines, dryers and dishwashers. Retailer links are tracked separately
     and only shown when a product-page URL has been manually reviewed.</p>
+
+    <p>The core data principle is fail-closed PDF validation. If a manufacturer document, retailer specification sheet,
+    or parser cannot provide a defensible width, height, depth and clearance reading, the product should stay unverified
+    rather than receive a trust badge. That discipline exists because appliance returns are expensive for households,
+    retailers and delivery teams.</p>
 
     <p>The public search experience is backed by code that anyone can inspect. The fit pipeline lives in
     <code>public/scripts/search-core.js</code>. Door swing inference is documented in
@@ -119,20 +124,25 @@
     that matters more than sounding polished.</p>
 
     <h2>Contact</h2>
-    <p>The clearest way to reach me is through GitHub:</p>
+    <p>The clearest way to reach me for business, affiliate and data enquiries is email:
+    <a href="mailto:hello@fitappliance.com.au">hello@fitappliance.com.au</a>.</p>
+    <p>You can also use GitHub for public, technical corrections:</p>
     <ul>
       <li>Report a data error or bug:
         <a href="https://github.com/fitappliance/fitappliance/issues/new">open an issue</a>.</li>
       <li>Suggest a feature or new appliance category:
         <a href="https://github.com/fitappliance/fitappliance/discussions">start a discussion</a>.</li>
     </ul>
-    <p>Email contact (<code>hello@fitappliance.com.au</code>) is being set up. When active, it will appear here.</p>
+    <p>Please include the product model, retailer link and the measured cavity dimensions when reporting a fit-data issue.</p>
 
     <h2>Last reviewed</h2>
-    <p>This page was last reviewed on 26 April 2026. Material changes should be visible in the GitHub commit history.</p>
+    <p>This page was last reviewed on 17 May 2026. Material changes should be visible in the GitHub commit history.</p>
 
     <footer>
       <a href="/about">About</a> ·
+      <a href="/privacy">Privacy</a> ·
+      <a href="/terms">Terms</a> ·
+      <a href="/contact">Contact</a> ·
       <a href="/methodology">Methodology</a> ·
       <a href="/about/editorial-standards">Editorial standards</a> ·
       <a href="/affiliate-disclosure">Affiliate disclosure</a>

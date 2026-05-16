@@ -1,28 +1,28 @@
 {
   "summary": {
-    "totalPages": 814,
-    "totalEdges": 11740,
+    "totalPages": 817,
+    "totalEdges": 11768,
     "orphanPages": 0,
-    "averageInlinks": 14.42
+    "averageInlinks": 14.4
   },
   "orphanUrls": [],
   "nodes": [
     {
       "url": "/",
       "file": "index.html",
-      "inlinks": 813,
-      "outlinks": 7
+      "inlinks": 816,
+      "outlinks": 11
     },
     {
       "url": "/about",
       "file": "pages/about.html",
-      "inlinks": 2,
-      "outlinks": 4
+      "inlinks": 6,
+      "outlinks": 7
     },
     {
       "url": "/about/editorial-standards",
       "file": "pages/about/editorial-standards.html",
-      "inlinks": 813,
+      "inlinks": 816,
       "outlinks": 4
     },
     {
@@ -34,7 +34,7 @@
     {
       "url": "/affiliate-disclosure",
       "file": "pages/affiliate-disclosure.html",
-      "inlinks": 346,
+      "inlinks": 349,
       "outlinks": 4
     },
     {
@@ -2978,6 +2978,12 @@
       "outlinks": 4
     },
     {
+      "url": "/contact",
+      "file": "pages/contact.html",
+      "inlinks": 4,
+      "outlinks": 7
+    },
+    {
       "url": "/doorway/600mm-fridge-doorway",
       "file": "pages/doorway/600mm-fridge-doorway.html",
       "inlinks": 9,
@@ -4870,8 +4876,14 @@
     {
       "url": "/methodology",
       "file": "pages/methodology.html",
-      "inlinks": 813,
+      "inlinks": 816,
       "outlinks": 4
+    },
+    {
+      "url": "/privacy",
+      "file": "pages/privacy.html",
+      "inlinks": 4,
+      "outlinks": 7
     },
     {
       "url": "/privacy-policy",
@@ -4884,6 +4896,12 @@
       "file": "pages/subscribe.html",
       "inlinks": 1,
       "outlinks": 4
+    },
+    {
+      "url": "/terms",
+      "file": "pages/terms.html",
+      "inlinks": 4,
+      "outlinks": 7
     },
     {
       "url": "/tools/fit-checker",
