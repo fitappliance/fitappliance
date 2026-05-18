@@ -12,7 +12,7 @@ Australian retailers.
 
 | Metric | Count | Meaning |
 | --- | ---: | --- |
-| Raw specs catalog | 2,193 | Sizing/spec rows across fridges, dishwashers, dryers, and washing machines. |
+| Raw specs catalog | 2,206 | Sizing/spec rows across fridges, dishwashers, dryers, and washing machines. |
 | Retailer-verified products | 66 | Products with at least one verified product-page link from the five tracked retailers. |
 | Verified retailer links | 177 | Total product-page links across JB Hi-Fi, Appliances Online, The Good Guys, Harvey Norman, and Bing Lee. |
 | Multi-retailer products | 58 | Products with two or more verified retailer product-page links. |
@@ -22,11 +22,11 @@ Australian retailers.
 
 | Category | Raw specs | Retailer-verified products | Verified retailer links | Multi-retailer products | Link coverage |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Fridges | 1,327 | 36 | 108 | 35 | 2.7% |
+| Fridges | 1,339 | 36 | 108 | 35 | 2.7% |
 | Dishwashers | 360 | 12 | 30 | 10 | 3.3% |
 | Dryers | 76 | 4 | 8 | 2 | 5.3% |
-| Washing machines | 430 | 14 | 31 | 11 | 3.3% |
-| **Total** | **2,193** | **66** | **177** | **58** | **3.0%** |
+| Washing machines | 431 | 14 | 31 | 11 | 3.2% |
+| **Total** | **2,206** | **66** | **177** | **58** | **3.0%** |
 
 ## Retailer Gaps On Already-Linked Products
 

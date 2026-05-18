@@ -3,7 +3,7 @@
 Status: active guardrails added on 2026-05-04.
 
 This audit checks the claims users actually see in the interface, not just whether
-catalog JSON is schema-valid. The current raw specs catalog has 2,193 products;
+catalog JSON is schema-valid. The current raw specs catalog has 2,206 products;
 retailer-verified products: 66; verified retailer product-page links in total:
 177; live price rows: 0. That means the UI must be careful about three words:
 price, stock, and requirement.
@@ -22,11 +22,11 @@ price, stock, and requirement.
 
 | Category | Products | Products with retailer links | Verified retailer links | Multi-retailer products | Positive price rows |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Fridges | 1,327 | 36 | 108 | 35 | 0 |
+| Fridges | 1,339 | 36 | 108 | 35 | 0 |
 | Dishwashers | 360 | 12 | 30 | 10 | 0 |
 | Dryers | 76 | 4 | 8 | 2 | 0 |
-| Washing machines | 430 | 14 | 31 | 11 | 0 |
-| **Total** | **2,193** | **66** | **177** | **58** | **0** |
+| Washing machines | 431 | 14 | 31 | 11 | 0 |
+| **Total** | **2,206** | **66** | **177** | **58** | **0** |
 
 ## Guardrails
 
