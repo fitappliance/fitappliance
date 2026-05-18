@@ -96,13 +96,27 @@ test('vercel production config: current GSC 404 examples have durable redirects'
 test('vercel production config: runtime data and evidence files have bounded CDN caching', () => {
   const config = loadVercelConfig();
 
-  const dataCache = headerValue(findHeaderRule(config, '/data/:path*'), 'Cache-Control');
+  const dataRule = findHeaderRule(config, '/data/:path*');
+  const dataCache = headerValue(dataRule, 'Cache-Control');
   assert.match(dataCache, /max-age=86400/);
   assert.match(dataCache, /stale-while-revalidate=604800/);
+  assert.equal(headerValue(dataRule, 'X-Robots-Tag'), 'noindex');
 
-  const evidenceCache = headerValue(findHeaderRule(config, '/pdf-evidence/:path*'), 'Cache-Control');
+  const evidenceRule = findHeaderRule(config, '/pdf-evidence/:path*');
+  const evidenceCache = headerValue(evidenceRule, 'Cache-Control');
   assert.match(evidenceCache, /max-age=86400/);
   assert.match(evidenceCache, /stale-while-revalidate=604800/);
+  assert.equal(headerValue(evidenceRule, 'X-Robots-Tag'), 'noindex');
+});
+
+test('vercel production config: JavaScript modules are not treated as indexable pages', () => {
+  const config = loadVercelConfig();
+
+  const scriptsRule = findHeaderRule(config, '/scripts/:path*');
+  const scriptCache = headerValue(scriptsRule, 'Cache-Control');
+  assert.match(scriptCache, /max-age=86400/);
+  assert.match(scriptCache, /stale-while-revalidate=604800/);
+  assert.equal(headerValue(scriptsRule, 'X-Robots-Tag'), 'noindex');
 });
 
 test('vercel production config: immutable generated media avoids repeated bandwidth', () => {
