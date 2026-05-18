@@ -80,7 +80,7 @@ test('cf submission prep: vercel and sitemap infrastructure include the complian
   const rewrites = vercel.rewrites ?? [];
   for (const route of ['/privacy', '/terms', '/contact']) {
     assert.ok(
-      rewrites.some((row) => row.source === route && row.destination === `/pages${route}.html`),
+      rewrites.some((row) => row.source === route && row.destination === `/pages${route}`),
       `vercel.json should route ${route}`
     );
   }

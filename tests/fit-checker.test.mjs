@@ -92,7 +92,7 @@ test('phase 25 fit-checker: vercel rewrite exists for /tools/:slug', () => {
   const config = JSON.parse(fs.readFileSync(path.join(repoRoot, 'vercel.json'), 'utf8'));
   const rewrite = (config.rewrites ?? []).find((row) => row.source === '/tools/:slug');
   assert.ok(rewrite, 'missing /tools/:slug rewrite');
-  assert.equal(rewrite.destination, '/pages/tools/:slug.html');
+  assert.equal(rewrite.destination, '/pages/tools/:slug');
 });
 
 test('phase 25 fit-checker: script avoids console.log statements', () => {

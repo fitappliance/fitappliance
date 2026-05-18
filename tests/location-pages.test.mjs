@@ -140,7 +140,7 @@ test('phase 24: vercel rewrite includes /location/:city/:category route', () => 
   const rewrites = Array.isArray(config.rewrites) ? config.rewrites : [];
   const rewrite = rewrites.find((row) => row.source === '/location/:city/:category');
   assert.ok(rewrite, 'vercel.json should include /location/:city/:category rewrite');
-  assert.equal(rewrite.destination, '/pages/location/:city/:category.html');
+  assert.equal(rewrite.destination, '/pages/location/:city/:category');
 });
 
 test('phase 24: sitemap, rss, and image-sitemap include location pages', () => {

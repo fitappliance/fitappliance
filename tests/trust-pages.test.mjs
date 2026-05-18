@@ -192,8 +192,8 @@ test('phase 47: /about is routable and included in sitemap generation', () => {
   const vercel = JSON.parse(fs.readFileSync(path.join(ROOT, 'vercel.json'), 'utf8'));
   const rewrites = vercel.rewrites ?? [];
   assert.ok(
-    rewrites.some((row) => row.source === '/about' && row.destination === '/pages/about.html'),
-    'vercel.json should rewrite /about to pages/about.html'
+    rewrites.some((row) => row.source === '/about' && row.destination === '/pages/about'),
+    'vercel.json should rewrite /about to pages/about'
   );
 
   const sitemapScript = readPage('scripts/generate-sitemap.js');
