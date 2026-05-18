@@ -30,11 +30,12 @@ test('vercel production config: compliance and static app routes are reachable',
   const config = loadVercelConfig();
   const routes = new Map((config.rewrites ?? []).map((rewrite) => [rewrite.source, rewrite.destination]));
 
-  assert.equal(routes.get('/about'), '/pages/about.html');
-  assert.equal(routes.get('/privacy'), '/pages/privacy.html');
-  assert.equal(routes.get('/terms'), '/pages/terms.html');
-  assert.equal(routes.get('/contact'), '/pages/contact.html');
-  assert.equal(routes.get('/products/:slug'), '/pages/products/:slug.html');
+  assert.equal(routes.get('/about'), '/pages/about');
+  assert.equal(routes.get('/privacy'), '/pages/privacy');
+  assert.equal(routes.get('/terms'), '/pages/terms');
+  assert.equal(routes.get('/contact'), '/pages/contact');
+  assert.equal(routes.get('/products'), '/pages/products');
+  assert.equal(routes.get('/products/:slug'), '/pages/products/:slug');
   assert.equal(routes.get('/data/:path*'), '/public/data/:path*');
   assert.equal(routes.get('/scripts/:path*'), '/public/scripts/:path*');
 });
