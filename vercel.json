@@ -7,6 +7,61 @@
   "regions": ["syd1"],
   "redirects": [
     {
+      "source": "/fit-check/panasonic-nr-tc221busa-in-800mm-cavity",
+      "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+      "permanent": true
+    },
+    {
+      "source": "/fit-check/panasonic-nr-tc221busa-in-700mm-cavity",
+      "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+      "permanent": true
+    },
+    {
+      "source": "/fit-check/panasonic-nr-tc221busa-in-620mm-cavity",
+      "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+      "permanent": true
+    },
+    {
+      "source": "/fit-check/panasonic-nr-tc221busa-in-600mm-cavity",
+      "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+      "permanent": true
+    },
+    {
+      "source": "/fit-check/panasonic-nr-tc221busa-in-580mm-cavity",
+      "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+      "permanent": true
+    },
+    {
+      "source": "/fit-check/lg-wtx3-09g-in-620mm-cavity",
+      "destination": "/brands/lg-washing-machine-clearance",
+      "permanent": true
+    },
+    {
+      "source": "/fit-check/hisense-hcf7s1014b-in-640mm-cavity",
+      "destination": "/brands/hisense-washing-machine-clearance",
+      "permanent": true
+    },
+    {
+      "source": "/cavity",
+      "destination": "/tools/fit-checker",
+      "permanent": true
+    },
+    {
+      "source": "/doorway",
+      "destination": "/tools/fit-checker",
+      "permanent": true
+    },
+    {
+      "source": "/location",
+      "destination": "/tools/fit-checker",
+      "permanent": true
+    },
+    {
+      "source": "/location/:city",
+      "destination": "/location/:city/fridge",
+      "permanent": true
+    },
+    {
       "source": "/compare/euro-vs-robinhood-dryer-clearance",
       "destination": "/brands/euro-dryer-clearance",
       "permanent": true
@@ -14,11 +69,6 @@
     {
       "source": "/compare/smeg-vs-miele-dishwasher-clearance",
       "destination": "/compare/fisher-paykel-vs-miele-dishwasher-clearance",
-      "permanent": true
-    },
-    {
-      "source": "/location/canberra",
-      "destination": "/location/canberra/fridge",
       "permanent": true
     }
   ],

@@ -44,6 +44,43 @@ test('vercel production config: current GSC 404 examples have durable redirects'
   const config = loadVercelConfig();
   const redirects = new Map((config.redirects ?? []).map((redirect) => [redirect.source, redirect]));
 
+  for (const width of [800, 700, 620, 600, 580]) {
+    assert.deepEqual(redirects.get(`/fit-check/panasonic-nr-tc221busa-in-${width}mm-cavity`), {
+      source: `/fit-check/panasonic-nr-tc221busa-in-${width}mm-cavity`,
+      destination: '/fit-check/panasonic-nr-tc221busa-in-640mm-cavity',
+      permanent: true
+    });
+  }
+  assert.deepEqual(redirects.get('/fit-check/lg-wtx3-09g-in-620mm-cavity'), {
+    source: '/fit-check/lg-wtx3-09g-in-620mm-cavity',
+    destination: '/brands/lg-washing-machine-clearance',
+    permanent: true
+  });
+  assert.deepEqual(redirects.get('/fit-check/hisense-hcf7s1014b-in-640mm-cavity'), {
+    source: '/fit-check/hisense-hcf7s1014b-in-640mm-cavity',
+    destination: '/brands/hisense-washing-machine-clearance',
+    permanent: true
+  });
+  assert.deepEqual(redirects.get('/cavity'), {
+    source: '/cavity',
+    destination: '/tools/fit-checker',
+    permanent: true
+  });
+  assert.deepEqual(redirects.get('/doorway'), {
+    source: '/doorway',
+    destination: '/tools/fit-checker',
+    permanent: true
+  });
+  assert.deepEqual(redirects.get('/location'), {
+    source: '/location',
+    destination: '/tools/fit-checker',
+    permanent: true
+  });
+  assert.deepEqual(redirects.get('/location/:city'), {
+    source: '/location/:city',
+    destination: '/location/:city/fridge',
+    permanent: true
+  });
   assert.deepEqual(redirects.get('/compare/euro-vs-robinhood-dryer-clearance'), {
     source: '/compare/euro-vs-robinhood-dryer-clearance',
     destination: '/brands/euro-dryer-clearance',
@@ -52,11 +89,6 @@ test('vercel production config: current GSC 404 examples have durable redirects'
   assert.deepEqual(redirects.get('/compare/smeg-vs-miele-dishwasher-clearance'), {
     source: '/compare/smeg-vs-miele-dishwasher-clearance',
     destination: '/compare/fisher-paykel-vs-miele-dishwasher-clearance',
-    permanent: true
-  });
-  assert.deepEqual(redirects.get('/location/canberra'), {
-    source: '/location/canberra',
-    destination: '/location/canberra/fridge',
     permanent: true
   });
 });
