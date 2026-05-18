@@ -5,6 +5,23 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "regions": ["syd1"],
+  "redirects": [
+    {
+      "source": "/compare/euro-vs-robinhood-dryer-clearance",
+      "destination": "/brands/euro-dryer-clearance",
+      "permanent": true
+    },
+    {
+      "source": "/compare/smeg-vs-miele-dishwasher-clearance",
+      "destination": "/compare/fisher-paykel-vs-miele-dishwasher-clearance",
+      "permanent": true
+    },
+    {
+      "source": "/location/canberra",
+      "destination": "/location/canberra/fridge",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/google32758d7798f4a670.html", "destination": "/google32758d7798f4a670.html" },
     { "source": "/google5keGnUyvuq31_mxZ9pNVPIsh7BzKBbM7aHdxUTZZDJM.html", "destination": "/google5keGnUyvuq31_mxZ9pNVPIsh7BzKBbM7aHdxUTZZDJM.html" },
