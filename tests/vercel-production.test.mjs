@@ -40,6 +40,27 @@ test('vercel production config: compliance and static app routes are reachable',
   assert.equal(routes.get('/scripts/:path*'), '/public/scripts/:path*');
 });
 
+test('vercel production config: current GSC 404 examples have durable redirects', () => {
+  const config = loadVercelConfig();
+  const redirects = new Map((config.redirects ?? []).map((redirect) => [redirect.source, redirect]));
+
+  assert.deepEqual(redirects.get('/compare/euro-vs-robinhood-dryer-clearance'), {
+    source: '/compare/euro-vs-robinhood-dryer-clearance',
+    destination: '/brands/euro-dryer-clearance',
+    permanent: true
+  });
+  assert.deepEqual(redirects.get('/compare/smeg-vs-miele-dishwasher-clearance'), {
+    source: '/compare/smeg-vs-miele-dishwasher-clearance',
+    destination: '/compare/fisher-paykel-vs-miele-dishwasher-clearance',
+    permanent: true
+  });
+  assert.deepEqual(redirects.get('/location/canberra'), {
+    source: '/location/canberra',
+    destination: '/location/canberra/fridge',
+    permanent: true
+  });
+});
+
 test('vercel production config: runtime data and evidence files have bounded CDN caching', () => {
   const config = loadVercelConfig();
 
