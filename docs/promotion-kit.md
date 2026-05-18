@@ -1,15 +1,15 @@
 # FitAppliance Promotion Kit
-_Auto-generated 2026-04-18 from live database_
+_Auto-generated 2026-05-18 from live database_
 
 ---
 
 ## Site Stats (Current)
-- **2,193 raw appliance spec rows** across fridges, washing machines, dishwashers, and dryers
+- **2,206 raw appliance spec rows** across fridges, washing machines, dishwashers, and dryers
 - **66 products with verified retailer product-page links** across the five tracked AU retailers
 - **177 verified retailer product-page links**; live price rows are not yet captured
-- **289 brand clearance pages** with installation-specific ventilation data
+- **290 brand clearance pages** with installation-specific ventilation data
 - **Door swing estimates for the raw specs catalog** where manufacturer values are unavailable
-- **38 comparison pages** covering top brand pairs in each category
+- **140 comparison pages** covering top brand pairs in each category
 - Data sourced from the Australian Government Energy Rating database
 
 ---
@@ -23,7 +23,7 @@ _Auto-generated 2026-04-18 from live database_
 > Moving apartments and measuring for a new fridge is a nightmare. I kept finding specs online but no tool that
 > checked whether the ventilation clearances were met (which can affect airflow and performance).
 >
-> Built fitappliance.com.au — it checks 2,193 raw appliance spec rows, checks your exact cavity dimensions,
+> Built fitappliance.com.au — it checks 2,206 raw appliance spec rows, checks your exact cavity dimensions,
 > and shows which models fit with proper clearance. Also has brand-specific requirements (LG needs more rear
 > clearance than Hisense, for example).
 >
@@ -43,7 +43,7 @@ _Auto-generated 2026-04-18 from live database_
 **Body:**
 > Not a deal but a tool I built that OzBargain users might find useful when shopping for appliances.
 >
-> **FitAppliance** covers 2,193 fridge/washer/dishwasher/dryer spec rows with:
+> **FitAppliance** covers 2,206 fridge/washer/dishwasher/dryer spec rows with:
 > - Exact dimensions from the Australian Energy Rating database
 > - Brand-specific ventilation clearance requirements
 > - Door swing estimates where manufacturer values are unavailable
@@ -65,13 +65,13 @@ _Auto-generated 2026-04-18 from live database_
 > you need to leave around the fridge) varies by brand and matters for airflow and performance.
 >
 > Built a free checker: **fitappliance.com.au**
-> Covers 2,193 raw spec rows, 289 brand-specific clearance guides, and verified retailer product-page links where available.
+> Covers 2,206 raw spec rows, 290 brand-specific clearance guides, and verified retailer product-page links where available.
 
 ---
 
 ## Key Differentiators (for any platform)
 1. **Per-brand clearance data** — not just dimensions. LG, WESTINGHOUSE and HISENSE all have different requirements.
-2. **2,193 raw spec rows** — a broad Australian appliance sizing database, with retailer-link coverage tracked separately.
+2. **2,206 raw spec rows** — a broad Australian appliance sizing database, with retailer-link coverage tracked separately.
 3. **Door swing estimates** — useful delivery and daily-use context where manufacturer values are unavailable.
 4. **Energy efficiency + energy-cost estimates** built in.
 5. **No account needed** — open URL, get answer.
@@ -79,16 +79,16 @@ _Auto-generated 2026-04-18 from live database_
 ---
 
 ## SEO Targets (top 10 by traffic potential)
-1. "westinghouse fridge clearance australia" — 79 Westinghouse fridge models in database
-2. "hisense fridge clearance australia" — 73 Hisense fridge models in database
+1. "westinghouse fridge clearance australia" — 91 Westinghouse fridge models in database
+2. "hisense fridge clearance australia" — 75 Hisense fridge models in database
 3. "chiq fridge clearance australia" — 69 CHiQ fridge models in database
 4. "lg fridge clearance australia" — 67 LG fridge models in database
-5. "fisher & paykel fridge clearance australia" — 58 Fisher & Paykel fridge models in database
-6. "lg washing machine clearance australia" — 51 LG washing machine models in database
-7. "kogan fridge clearance australia" — 43 Kogan fridge models in database
-8. "liebherr fridge clearance australia" — 40 Liebherr fridge models in database
-9. "sub-zero fridge clearance australia" — 38 Sub-Zero fridge models in database
-10. "miele fridge clearance australia" — 31 MIELE fridge models in database
+5. "fisher & paykel fridge clearance australia" — 59 Fisher & Paykel fridge models in database
+6. "haier fridge clearance australia" — 52 Haier fridge models in database
+7. "liebherr fridge clearance australia" — 52 Liebherr fridge models in database
+8. "lg washing machine clearance australia" — 51 LG washing machine models in database
+9. "kogan fridge clearance australia" — 45 Kogan fridge models in database
+10. "sub-zero fridge clearance australia" — 38 Sub-Zero fridge models in database
 
 ---
 _Next update: run `node scripts/generate-promotion-kit.js`_

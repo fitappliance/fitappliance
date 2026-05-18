@@ -36,7 +36,7 @@ test('task 16 promotion-kit: buildPromoKit output includes product count in mark
   const { buildPromoKit, buildPromoStats } = await import(moduleUrl);
   const stats = buildPromoStats(appliancesFixture, [{ slug: 'lg-fridge-clearance' }], []);
   const markdown = buildPromoKit(stats, { today: '2026-04-15' });
-  assert.match(markdown, /\*\*5 appliance models\*\*/);
+  assert.match(markdown, /\*\*5 raw appliance spec rows\*\*/);
 });
 
 test('task 16 promotion-kit: buildPromoKit output includes today date in header', async () => {

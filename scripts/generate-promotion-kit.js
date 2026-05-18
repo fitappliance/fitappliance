@@ -64,8 +64,18 @@ function buildPromoStats(appliancesDoc, brandsIndexRows, compareIndexRows) {
     comparePages: Array.isArray(compareIndexRows) ? compareIndexRows.length : 0,
     doorSwingCovered,
     doorSwingCoveragePct: coveragePct,
+    retailerVerifiedProducts: products.filter((product) => (product?.retailers ?? []).length > 0).length,
+    retailerLinks: products.reduce((sum, product) => sum + (product?.retailers ?? []).length, 0),
+    priceRows: products.reduce(
+      (sum, product) => sum + (product?.retailers ?? []).filter((retailer) => Number(retailer?.p ?? retailer?.price) > 0).length,
+      0
+    ),
     topQueries: buildTopQueries(products, 10)
   };
+}
+
+function fmt(value) {
+  return Number(value ?? 0).toLocaleString('en-AU');
 }
 
 function buildPromoKit(stats, { today }) {
@@ -79,10 +89,12 @@ _Auto-generated ${today} from live database_
 ---
 
 ## Site Stats (Current)
-- **${stats.totalProducts} appliance models** across ${stats.totalBrands} brands (fridges, washing machines, dishwashers, dryers)
-- **${stats.brandPages} brand clearance pages** with installation-specific ventilation data
-- **${stats.doorSwingCoveragePct}% door swing coverage** — ${stats.doorSwingCovered} models with confirmed clearance data
-- **${stats.comparePages} comparison pages** covering top brand pairs in each category
+- **${fmt(stats.totalProducts)} raw appliance spec rows** across fridges, washing machines, dishwashers, and dryers
+- **${fmt(stats.retailerVerifiedProducts)} products with verified retailer product-page links** across the five tracked AU retailers
+- **${fmt(stats.retailerLinks)} verified retailer product-page links**; live price rows are ${stats.priceRows === 0 ? 'not yet captured' : fmt(stats.priceRows)}
+- **${fmt(stats.brandPages)} brand clearance pages** with installation-specific ventilation data
+- **Door swing estimates for the raw specs catalog** where manufacturer values are unavailable
+- **${fmt(stats.comparePages)} comparison pages** covering top brand pairs in each category
 - Data sourced from the Australian Government Energy Rating database
 
 ---
@@ -96,7 +108,7 @@ _Auto-generated ${today} from live database_
 > Moving apartments and measuring for a new fridge is a nightmare. I kept finding specs online but no tool that
 > checked whether the ventilation clearances were met (which can affect airflow and performance).
 >
-> Built fitappliance.com.au — it covers ${stats.totalProducts} models across ${stats.totalBrands} brands, checks your exact cavity dimensions,
+> Built fitappliance.com.au — it checks ${fmt(stats.totalProducts)} raw appliance spec rows, checks your exact cavity dimensions,
 > and shows which models fit with proper clearance. Also has brand-specific requirements (LG needs more rear
 > clearance than Hisense, for example).
 >
@@ -109,20 +121,20 @@ _Auto-generated ${today} from live database_
 ## Platform: OzBargain (as a free tool post)
 
 **Title:**
-> Free Tool: Check if LG Fridge Fits Your Kitchen Before Buying (AU Data, ${stats.totalProducts} Models)
+> Free Tool: Check if LG Fridge Fits Your Kitchen Before Buying (AU sizing data)
 
 **Tags:** Free, Tools, Home Improvement, Appliances
 
 **Body:**
 > Not a deal but a tool I built that OzBargain users might find useful when shopping for appliances.
 >
-> **FitAppliance** covers ${stats.totalProducts} fridge/washer/dishwasher/dryer models with:
+> **FitAppliance** covers ${fmt(stats.totalProducts)} fridge/washer/dishwasher/dryer spec rows with:
 > - Exact dimensions from the Australian Energy Rating database
 > - Brand-specific ventilation clearance requirements
-> - ${stats.doorSwingCoveragePct}% of models have door swing clearance data
+> - Door swing estimates where manufacturer values are unavailable
 > - Works on mobile — check in-store before you buy
 >
-> No affiliate links until I've secured proper partnerships.
+> Some retailer links may be affiliate links where verified product pages are available.
 > Feedback welcome — still adding more data.
 >
 > fitappliance.com.au
@@ -138,15 +150,15 @@ _Auto-generated ${today} from live database_
 > you need to leave around the fridge) varies by brand and matters for airflow and performance.
 >
 > Built a free checker: **fitappliance.com.au**
-> Covers ${stats.totalProducts} models, ${stats.totalBrands} brands, ${stats.brandPages} brand-specific clearance guides.
+> Covers ${fmt(stats.totalProducts)} raw spec rows, ${fmt(stats.brandPages)} brand-specific clearance guides, and verified retailer product-page links where available.
 
 ---
 
 ## Key Differentiators (for any platform)
-1. **Brand-specific clearance data** — not just dimensions. LG, WESTINGHOUSE and HISENSE all have different requirements.
-2. **${stats.totalProducts} models** — the most comprehensive Australian appliance sizing database.
-3. **Door swing data** — ${stats.doorSwingCoveragePct}% coverage. Most tools don't include this.
-4. **Energy efficiency + total cost of ownership** built in.
+1. **Per-brand clearance data** — not just dimensions. LG, WESTINGHOUSE and HISENSE all have different requirements.
+2. **${fmt(stats.totalProducts)} raw spec rows** — a broad Australian appliance sizing database, with retailer-link coverage tracked separately.
+3. **Door swing estimates** — useful delivery and daily-use context where manufacturer values are unavailable.
+4. **Energy efficiency + energy-cost estimates** built in.
 5. **No account needed** — open URL, get answer.
 
 ---
@@ -172,7 +184,7 @@ async function generatePromotionKit({
   const brandsIndexRows = await readJson(brandsIndexPath, []);
   const compareIndexRows = await readJson(compareIndexPath, []);
   const stats = buildPromoStats(appliancesDoc, brandsIndexRows, compareIndexRows);
-  const markdown = buildPromoKit(stats, { today });
+  const markdown = buildPromoKit(stats, { today }).trimEnd();
 
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, `${markdown}\n`, 'utf8');

@@ -3,6 +3,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { isRetailerProductPageUrl } = require('../public/scripts/search-core.js');
+const { canonicalizeBrand } = require('./brand-canon.js');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 const MANUAL_RETAILERS_PATH = path.join(REPO_ROOT, 'data', 'manual-retailers.json');
@@ -77,10 +78,12 @@ function applyManualRetailers(products, manualDocument) {
   if (!Array.isArray(products)) return [];
 
   return products.map((product) => {
+    const canonicalBrand = canonicalizeBrand(product?.brand);
     const entry = getApprovedManualEntry(product, manualDocument);
     if (!entry) {
       return {
         ...product,
+        brand: canonicalBrand,
         unavailable: true,
       };
     }
@@ -89,6 +92,7 @@ function applyManualRetailers(products, manualDocument) {
     const retailers = mergeRetailers(existingRetailers, entry.retailers);
     return {
       ...product,
+      brand: canonicalBrand,
       retailers,
       unavailable: false,
     };
