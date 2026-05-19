@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1697,
-    "merged_products": 1680,
+    "evidence_files": 1700,
+    "merged_products": 1683,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -26,7 +26,7 @@
       "washtower_combo": 2
     },
     "official_pdf_by_category": {
-      "dishwasher": 379,
+      "dishwasher": 382,
       "dryer": 100,
       "fridge": 937,
       "washing_machine": 262,
@@ -22175,6 +22175,14 @@
       "displayName": "Kogan Fridge",
       "readableSpec": "Upright",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://assets.kogan.com/files/usermanuals/KAMFREN522A_UG.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/KAMFREN522A.json"
+      },
       "dimensions": {
         "height_mm": 1692,
         "width_mm": 750,
@@ -22192,15 +22200,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://assets.kogan.com/files/usermanuals/KAMFREN522A_UG.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/KAMFREN522A.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3323",
@@ -22331,6 +22331,14 @@
       "displayName": "Kogan Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://assets.kogan.com/files/usermanuals/KATFSBS503A_UG.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/KATFSBS503A.json"
+      },
       "dimensions": {
         "height_mm": 1768,
         "width_mm": 920,
@@ -22348,15 +22356,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://assets.kogan.com/files/usermanuals/KATFSBS503A_UG.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/KATFSBS503A.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-zrf0890",
@@ -50478,9 +50478,9 @@
       "cat": "dishwasher",
       "brand": "Omega",
       "model": "ODW300XN",
-      "w": 448,
-      "h": 845,
-      "d": 600,
+      "w": 450,
+      "h": 850,
+      "d": 585,
       "kwh_year": 189,
       "stars": 4,
       "price": null,
@@ -50496,7 +50496,33 @@
       "inferred_door_swing": true,
       "displayName": "Omega Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 39
+      "priorityScore": 39,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 450,
+        "depth_mm": 585,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/Omega-Dishwashers-Specifications-ODW300XN.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ODW300XN.json"
+      }
     },
     {
       "id": "dishwasher-zdw0270",
@@ -50630,7 +50656,7 @@
       "model": "ODW707X",
       "w": 598,
       "h": 845,
-      "d": 600,
+      "d": 594,
       "kwh_year": 259,
       "stars": 4,
       "price": null,
@@ -50646,7 +50672,33 @@
       "inferred_door_swing": true,
       "displayName": "Omega Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 39
+      "priorityScore": 39,
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 598,
+        "depth_mm": 594,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/Omega-Dishwashers-Specifications-ODW707X.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ODW707X.json"
+      }
     },
     {
       "id": "dishwasher-adw1057",
@@ -50796,7 +50848,33 @@
       "inferred_door_swing": true,
       "displayName": "Omega Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 33
+      "priorityScore": 33,
+      "dimensions": {
+        "height_mm": 815,
+        "width_mm": 598,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/OFI700.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/OFI700.json"
+      }
     },
     {
       "id": "dishwasher-zdw0291",

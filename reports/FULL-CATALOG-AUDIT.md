@@ -5,9 +5,9 @@ Generated: 2026-05-19
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1686
-- Missing PDF evidence: 1855
-- Overall coverage: 47.6%
+- Verified with PDF evidence: 1689
+- Missing PDF evidence: 1852
+- Overall coverage: 47.7%
 
 ## Coverage By Brand
 
@@ -27,7 +27,7 @@ Generated: 2026-05-19
 | Electrolux | 85 | 55 | 30 | 64.7% |
 | Beko | 82 | 82 | 0 | 100.0% |
 | CHIQ | 82 | 39 | 43 | 47.6% |
-| Omega | 65 | 23 | 42 | 35.4% |
+| Omega | 65 | 26 | 39 | 40.0% |
 | Kogan | 60 | 5 | 55 | 8.3% |
 | CHiQ | 53 | 53 | 0 | 100.0% |
 | Artusi | 52 | 0 | 52 | 0.0% |
