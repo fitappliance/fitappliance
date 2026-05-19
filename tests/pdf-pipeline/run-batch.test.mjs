@@ -1101,6 +1101,69 @@ test('runBatch processes Miele manual-evidence spec sheets with the strict Miele
   });
 });
 
+test('runBatch processes Miele official Product Sheets with verified aliases without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'dishwasher-g7130',
+    brand: 'Miele',
+    sku: 'G 7130 SCU',
+    category: 'dishwasher',
+    product: {
+      id: 'dishwasher-g7130',
+      cat: 'dishwasher',
+      brand: 'Miele',
+      model: 'G 7130 SCU',
+      w: 598,
+      h: 805,
+      d: 570,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    mielePdfFinder: async () => ({
+      sourceUrl: 'https://www.miele.com.au/media/ex/au/specsheets/12531620.pdf',
+      source: 'miele-official-product-sheet',
+      verifiedAlias: 'G7130SCU'
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        Product Sheet
+        Technical data
+        Niche width minimal in mm 600
+        Niche width max in mm 600
+        Niche height minimal in mm 805
+        Niche height maximal in mm 870
+        Niche depth in mm 570
+        Appliance width in mm 598
+        Appliance height in mm 805
+        Appliance depth in mm 570
+        Depth with door open in cm 116.5
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'miele-official-product-sheet');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'G-7130-SCU.json'), 'utf8'));
+  assert.equal(raw.extracted.metadata.verified_alias, 'G7130SCU');
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 1,
+    right_mm: 1,
+    rear_mm: 0
+  });
+});
+
 test('runBatch processes Kogan official washer manuals through the strict Kogan parser without an API key', async () => {
   const repoRoot = makeRepo();
   const target = {

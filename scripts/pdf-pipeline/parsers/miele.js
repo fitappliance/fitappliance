@@ -53,6 +53,15 @@ function parseMmFromLabel(source, label, { required = true } = {}) {
   return Math.round(Number(match[1]));
 }
 
+function parseMmFromLabels(source, labels, { required = true, errorLabel = labels[0] } = {}) {
+  for (const label of labels) {
+    const value = parseMmFromLabel(source, label, { required: false });
+    if (Number.isFinite(value)) return value;
+  }
+  if (required) throw new Error(`Miele parser requires ${errorLabel}.`);
+  return null;
+}
+
 function parseDoorOpenDepth(source) {
   const cm = source.match(/Depth\s+with\s+door\s+open\s+in\s+cm\s+(\d+(?:\.\d+)?)/i);
   if (cm) return Math.round(Number(cm[1]) * 10);
@@ -114,9 +123,24 @@ function getTargetCategory(options = {}) {
 function extractNicheAndApplianceDimensions(text) {
   const source = normalizeWhitespace(text);
   const niche = {
-    width: parseMmFromLabel(source, 'Niche width in mm', { required: false }),
-    height: parseMmFromLabel(source, 'Niche height in mm', { required: false }),
-    depth: parseMmFromLabel(source, 'Niche depth in mm', { required: false })
+    width: parseMmFromLabels(source, [
+      'Niche width minimal in mm',
+      'Niche width in mm min.',
+      'Niche width in mm min',
+      'Niche width in mm'
+    ], { required: false }),
+    height: parseMmFromLabels(source, [
+      'Niche height minimal in mm',
+      'Niche height in mm min.',
+      'Niche height in mm min',
+      'Niche height in mm'
+    ], { required: false }),
+    depth: parseMmFromLabels(source, [
+      'Niche depth in mm',
+      'Niche depth minimal in mm',
+      'Niche depth in mm min.',
+      'Niche depth in mm min'
+    ], { required: false })
   };
   if (!Number.isFinite(niche.width) || !Number.isFinite(niche.height) || !Number.isFinite(niche.depth)) {
     throw new Error('Miele parser requires explicit niche dimensions.');

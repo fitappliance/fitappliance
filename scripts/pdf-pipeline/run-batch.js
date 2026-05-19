@@ -30,7 +30,7 @@ const { findEsattoOfficialPdf } = require('./esatto-official');
 const { parseEsattoText } = require('./parsers/esatto');
 const { findMideaOfficialPdf } = require('./midea-official');
 const { parseMideaText } = require('./parsers/midea');
-const { findMieleManualEvidencePdf } = require('./miele-official');
+const { findMielePdf } = require('./miele-official');
 const { parseMieleText } = require('./parsers/miele');
 const { findKoganOfficialPdf } = require('./kogan-official');
 const { parseKoganText } = require('./parsers/kogan');
@@ -1030,13 +1030,13 @@ async function parseMieleTarget({
   target,
   repoRoot,
   manualEvidence,
-  mieleManualEvidenceFinder,
+  mielePdfFinder,
   fetchPdfImpl,
   extractTextImpl
 }) {
-  const resolved = mieleManualEvidenceFinder(target, manualEvidence);
+  const resolved = await mielePdfFinder(target, manualEvidence);
   if (!resolved?.sourceUrl) {
-    throw new Error('Miele strict parser requires an exact or conservative manual-evidence specification sheet source.');
+    throw new Error(resolved?.reason || 'Miele strict parser requires an exact or conservative specification sheet source.');
   }
 
   const pdfPath = path.join(
@@ -1054,7 +1054,8 @@ async function parseMieleTarget({
   const parsed = parseMieleText(textResult.text, {
     target,
     sourceUrl: resolved.sourceUrl,
-    extractionDate: new Date().toISOString()
+    extractionDate: new Date().toISOString(),
+    verifiedAlias: /^miele-official/i.test(String(resolved.source || '')) ? resolved.verifiedAlias : undefined
   });
 
   return {
@@ -1342,7 +1343,7 @@ async function runBatch({
   chiqOfficialFinder = findChiqOfficialPdf,
   esattoOfficialFinder = findEsattoOfficialPdf,
   mideaOfficialFinder = findMideaOfficialPdf,
-  mieleManualEvidenceFinder = findMieleManualEvidencePdf,
+  mielePdfFinder = findMielePdf,
   koganOfficialFinder = findKoganOfficialPdf,
   liebherrOfficialFinder = findLiebherrOfficialPdf,
   includeArchived = false,
@@ -1493,7 +1494,7 @@ async function runBatch({
           target,
           repoRoot,
           manualEvidence,
-          mieleManualEvidenceFinder,
+          mielePdfFinder,
           fetchPdfImpl,
           extractTextImpl
         });
