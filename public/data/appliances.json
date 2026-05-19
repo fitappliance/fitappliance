@@ -6544,7 +6544,12 @@
       "inferred_door_swing": true,
       "displayName": "Midea Dishwasher",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/kitchen%20appliances/dishwashers/mdw6099b15bdx/MDW6099B15BDX-60cm-15-Place-Dishwasher-Easy-Lift-Spec-Sheet.pdf",
+        "verified_at": "2026-05-19"
+      }
     },
     {
       "id": "dishwasher-adw1201",

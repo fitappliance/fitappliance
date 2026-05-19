@@ -5,8 +5,8 @@ Generated: 2026-05-19
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1661
-- Missing PDF evidence: 1880
+- Verified with PDF evidence: 1662
+- Missing PDF evidence: 1879
 - Overall coverage: 46.9%
 
 ## Coverage By Brand
@@ -20,7 +20,7 @@ Generated: 2026-05-19
 | Hisense | 165 | 131 | 34 | 79.4% |
 | Bosch | 153 | 149 | 4 | 97.4% |
 | Smeg | 117 | 99 | 18 | 84.6% |
-| Midea | 107 | 40 | 67 | 37.4% |
+| Midea | 107 | 41 | 66 | 38.3% |
 | Esatto | 102 | 74 | 28 | 72.5% |
 | Samsung | 97 | 93 | 4 | 95.9% |
 | Miele | 86 | 25 | 61 | 29.1% |
