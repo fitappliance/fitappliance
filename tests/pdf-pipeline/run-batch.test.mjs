@@ -1158,6 +1158,102 @@ test('runBatch processes Kogan official washer manuals through the strict Kogan 
   });
 });
 
+test('runBatch processes Liebherr retailer-hosted spec plus installation documents without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'fridge-liebherr-cnef4315',
+    brand: 'Liebherr',
+    sku: 'CNef 4315',
+    category: 'fridge',
+    product: {
+      id: 'fridge-liebherr-cnef4315',
+      cat: 'fridge',
+      brand: 'Liebherr',
+      model: 'CNef 4315',
+      w: 600,
+      h: 1850,
+      d: 665,
+      unavailable: true
+    }
+  };
+  writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {
+    schema_version: 1,
+    products: {
+      'fridge-liebherr-cnef4315': {
+        category: 'fridge',
+        brand: 'Liebherr',
+        model: 'CNef 4315',
+        evidence: [
+          {
+            type: 'spec_sheet',
+            status: 'candidate',
+            source_url: 'https://www.appliancesonline.com.au/public/manuals/CNEF4315-Liebherr-Specifications-Sheet.pdf'
+          }
+        ]
+      }
+    }
+  });
+  let officialFinderCalled = false;
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    liebherrOfficialFinder: async () => {
+      officialFinderCalled = true;
+      return {
+        sourceUrl: 'https://www.appliancesonline.com.au/public/manuals/CNEF4315-Liebherr-Specifications-Sheet.pdf',
+        source: 'liebherr-retailer-specification_sheet',
+        resourceType: 'specification_sheet',
+        resources: [
+          {
+            sourceUrl: 'https://www.appliancesonline.com.au/public/manuals/CNEF4315-Liebherr-Specifications-Sheet.pdf',
+            source: 'liebherr-retailer-specification_sheet',
+            resourceType: 'specification_sheet',
+            score: 100
+          },
+          {
+            sourceUrl: 'https://www.appliancesonline.com.au/public/manuals/CNEF4315-Liebherr-User-Manual.pdf',
+            source: 'liebherr-retailer-user_manual',
+            resourceType: 'user_manual',
+            score: 70
+          }
+        ]
+      };
+    },
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async (filePath) => ({
+      text: filePath.includes('Specifications')
+        ? `
+          Liebherr CNef 4315 freestanding fridge freezer
+          Product dimensions (H/W/D) cm
+          185 / 60 / 66.5
+        `
+        : `
+          Liebherr CNef 4315
+          Ventilation requirements
+          The depth of the ventilation shaft must be at least 50 mm.
+        `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(officialFinderCalled, true);
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.match(result.successes[0].source, /liebherr-retailer-specification_sheet/);
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'CNef-4315.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 0,
+    right_mm: 0,
+    rear_mm: 50
+  });
+});
+
 test('runBatch preserves Samsung verified_alias metadata from manual evidence', async () => {
   const repoRoot = makeRepo();
   const target = {

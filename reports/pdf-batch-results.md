@@ -1,14 +1,13 @@
 # PDF Batch Results
 
-Run at: 2026-05-19T19:40:30.402Z
+Run at: 2026-05-19T20:38:53.497Z
 
 ## Successful Runs
 
 | SKU | Product | Category | Confidence | Source |
 | --- | --- | --- | ---: | --- |
-| KAMFWASH80A | Kogan | washing_machine | 0.91 | https://assets.kogan.com/files/usermanuals/KAMFWASH80A_UG.pdf |
-| KAMFWASH90A | Kogan | washing_machine | 0.91 | https://assets.kogan.com/files/usermanuals/KAMFWASH90A_UG.pdf |
-| KATFWASH11A | Kogan | washing_machine | 0.91 | https://assets.kogan.com/files/usermanuals/KATFWASH11A_UG.pdf |
+| ICNh 5123 | Liebherr | fridge | 0.86 | https://www.appliancesonline.com.au/public/manuals/ICNH5123LH-Liebherr-Specifications-Sheet.pdf |
+| ICNh 5133 | Liebherr | fridge | 0.86 | https://www.appliancesonline.com.au/public/manuals/ICNH5133RH-Liebherr-Specifications-Sheet.pdf |
 
 ## Significant Discrepancies
 
@@ -18,60 +17,53 @@ No significant discrepancies.
 
 | SKU | Product | Reason |
 | --- | --- | --- |
-| KA84WCFREZA | Kogan | Kogan parser could not verify category FRIDGE against document text. |
-| KA93SCFRDGA | Kogan | Kogan official PDF resources not found for KA93SCFRDGA: https://assets.kogan.com/files/usermanuals/KA93SCFRDGA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KA93SCFRDGA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KA93SCFRDGA_User_Manual.pdf: 403 |
-| KAH085LTMFA | Kogan | Kogan official PDF resources not found for KAH085LTMFA: https://assets.kogan.com/files/usermanuals/KAH085LTMFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH085LTMFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH085LTMFA_User_Manual.pdf: 403 |
-| KAH121LBRFA | Kogan | Kogan parser could not verify SKU KAH121LBRFA against document text. |
-| KAH125LTMFA | Kogan | Kogan official PDF resources not found for KAH125LTMFA: https://assets.kogan.com/files/usermanuals/KAH125LTMFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH125LTMFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH125LTMFA_User_Manual.pdf: 403 |
-| KAH230LBMFA | Kogan | Kogan official PDF resources not found for KAH230LBMFA: https://assets.kogan.com/files/usermanuals/KAH230LBMFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH230LBMFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH230LBMFA_User_Manual.pdf: 403 |
-| KAH247TMSFA | Kogan | Kogan official PDF resources not found for KAH247TMSFA: https://assets.kogan.com/files/usermanuals/KAH247TMSFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH247TMSFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH247TMSFA_User_Manual.pdf: 403 |
-| KAH334LTMFA | Kogan | Kogan official PDF resources not found for KAH334LTMFA: https://assets.kogan.com/files/usermanuals/KAH334LTMFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH334LTMFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH334LTMFA_User_Manual.pdf: 403 |
-| KAH415LTMFA | Kogan | Kogan official PDF resources not found for KAH415LTMFA: https://assets.kogan.com/files/usermanuals/KAH415LTMFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH415LTMFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH415LTMFA_User_Manual.pdf: 403 |
-| KAH46LBRSFA | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
-| KAH480LTMFA | Kogan | Kogan official PDF resources not found for KAH480LTMFA: https://assets.kogan.com/files/usermanuals/KAH480LTMFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH480LTMFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH480LTMFA_User_Manual.pdf: 403 |
-| KAH75BARFRA | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
-| KAH91LURFZA | Kogan | Kogan official PDF resources not found for KAH91LURFZA: https://assets.kogan.com/files/usermanuals/KAH91LURFZA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH91LURFZA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH91LURFZA_User_Manual.pdf: 403 |
-| KAHFREN464A | Kogan | Kogan official PDF resources not found for KAHFREN464A: https://assets.kogan.com/files/usermanuals/KAHFREN464A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFREN464A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFREN464A_User_Manual.pdf: 403 |
-| KAHFRZU161A | Kogan | Kogan official PDF resources not found for KAHFRZU161A: https://assets.kogan.com/files/usermanuals/KAHFRZU161A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFRZU161A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFRZU161A_User_Manual.pdf: 403 |
-| KAHFRZU168A | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
-| KAHFRZU204A | Kogan | Kogan official PDF resources not found for KAHFRZU204A: https://assets.kogan.com/files/usermanuals/KAHFRZU204A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFRZU204A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFRZU204A_User_Manual.pdf: 403 |
-| KAHFSBS592A | Kogan | Kogan official PDF resources not found for KAHFSBS592A: https://assets.kogan.com/files/usermanuals/KAHFSBS592A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFSBS592A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFSBS592A_User_Manual.pdf: 403 |
-| KAM093LIBFA | Kogan | Kogan official PDF resources not found for KAM093LIBFA: https://assets.kogan.com/files/usermanuals/KAM093LIBFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM093LIBFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM093LIBFA_User_Manual.pdf: 403 |
-| KAM123LBRSFA | Kogan | Kogan official PDF resources not found for KAM123LBRSFA: https://assets.kogan.com/files/usermanuals/KAM123LBRSFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM123LBRSFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM123LBRSFA_User_Manual.pdf: 403 |
-| KAM124LIBFA | Kogan | Kogan official PDF resources not found for KAM124LIBFA: https://assets.kogan.com/files/usermanuals/KAM124LIBFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM124LIBFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM124LIBFA_User_Manual.pdf: 403 |
-| KAM130LAFGA | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
-| KAM162UPWFA | Kogan | Kogan official PDF resources not found for KAM162UPWFA: https://assets.kogan.com/files/usermanuals/KAM162UPWFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM162UPWFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM162UPWFA_User_Manual.pdf: 403 |
-| KAM236TMSFA | Kogan | Kogan official PDF resources not found for KAM236TMSFA: https://assets.kogan.com/files/usermanuals/KAM236TMSFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM236TMSFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM236TMSFA_User_Manual.pdf: 403 |
-| KAM314TMSFF | Kogan | Kogan official PDF resources not found for KAM314TMSFF: https://assets.kogan.com/files/usermanuals/KAM314TMSFF_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM314TMSFF_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM314TMSFF_User_Manual.pdf: 403 |
-| KAM325BMSFA | Kogan | Kogan official PDF resources not found for KAM325BMSFA: https://assets.kogan.com/files/usermanuals/KAM325BMSFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM325BMSFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM325BMSFA_User_Manual.pdf: 403 |
-| KAM338TMSFA | Kogan | Kogan official PDF resources not found for KAM338TMSFA: https://assets.kogan.com/files/usermanuals/KAM338TMSFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM338TMSFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM338TMSFA_User_Manual.pdf: 403 |
-| KAM418CHWZA | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
-| KAM431FRSFA | Kogan | Kogan parser could not verify SKU KAM431FRSFA against document text. |
-| KAM43BEVFGF | Kogan | Kogan official PDF resources not found for KAM43BEVFGF: https://assets.kogan.com/files/usermanuals/KAM43BEVFGF_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM43BEVFGF_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM43BEVFGF_User_Manual.pdf: 403 |
-| KAM43LBRSFA | Kogan | Kogan official PDF resources not found for KAM43LBRSFA: https://assets.kogan.com/files/usermanuals/KAM43LBRSFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM43LBRSFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM43LBRSFA_User_Manual.pdf: 403 |
-| KAM44BEVFGA | Kogan | Kogan official PDF resources not found for KAM44BEVFGA: https://assets.kogan.com/files/usermanuals/KAM44BEVFGA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM44BEVFGA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM44BEVFGA_User_Manual.pdf: 403 |
-| KAM65LBRSFA | Kogan | Kogan official PDF resources not found for KAM65LBRSFA: https://assets.kogan.com/files/usermanuals/KAM65LBRSFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM65LBRSFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM65LBRSFA_User_Manual.pdf: 403 |
-| KAM66GLAFGA | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
-| KAM87LTMSFA | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
-| KAM93BEVFGA | Kogan | Kogan official PDF resources not found for KAM93BEVFGA: https://assets.kogan.com/files/usermanuals/KAM93BEVFGA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM93BEVFGA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM93BEVFGA_User_Manual.pdf: 403 |
-| KAM93GLAFGA | Kogan | Kogan official PDF resources not found for KAM93GLAFGA: https://assets.kogan.com/files/usermanuals/KAM93GLAFGA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM93GLAFGA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM93GLAFGA_User_Manual.pdf: 403 |
-| KAM99LCHFZA | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
-| KAMFREN490A | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
-| KAMFREN522A | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
-| KAMFSBS548A | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
-| KAMFSBS551A | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
-| KAT412BMFWA | Kogan | Kogan official PDF resources not found for KAT412BMFWA: https://assets.kogan.com/files/usermanuals/KAT412BMFWA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAT412BMFWA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAT412BMFWA_User_Manual.pdf: 403 |
-| KAT416BMFNA | Kogan | Kogan official PDF resources not found for KAT416BMFNA: https://assets.kogan.com/files/usermanuals/KAT416BMFNA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAT416BMFNA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAT416BMFNA_User_Manual.pdf: 403 |
-| KATFSBS503A | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
-| KABNCHTPDWA | Kogan | Kogan parser does not yet have a fail-closed extractor for DISHWASHER. |
-| KABNCTPDW8A | Kogan | Kogan official PDF resources not found for KABNCTPDW8A: https://assets.kogan.com/files/usermanuals/KABNCTPDW8A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KABNCTPDW8A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KABNCTPDW8A_User_Manual.pdf: 403 |
-| KAWWASH9D6A | Kogan | Kogan official PDF resources not found for KAWWASH9D6A: https://assets.kogan.com/files/usermanuals/KAWWASH9D6A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAWWASH9D6A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAWWASH9D6A_User_Manual.pdf: 403 |
-| KAFWASH75TA | Kogan | Kogan parser rejected dimensions due to catalog cross-check mismatch: h catalog=520 pdf=850, d catalog=850 pdf=560 |
-| KAFWASH85TA | Kogan | Kogan official PDF resources not found for KAFWASH85TA: https://assets.kogan.com/files/usermanuals/KAFWASH85TA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAFWASH85TA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAFWASH85TA_User_Manual.pdf: 403 |
-| KATFWASH10A | Kogan | Kogan official PDF resources not found for KATFWASH10A: https://assets.kogan.com/files/usermanuals/KATFWASH10A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATFWASH10A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATFWASH10A_User_Manual.pdf: 403 |
-| KATFWASH75A | Kogan | Kogan official PDF resources not found for KATFWASH75A: https://assets.kogan.com/files/usermanuals/KATFWASH75A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATFWASH75A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATFWASH75A_User_Manual.pdf: 403 |
-| KATFWASH85A | Kogan | Kogan official PDF resources not found for KATFWASH85A: https://assets.kogan.com/files/usermanuals/KATFWASH85A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATFWASH85A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATFWASH85A_User_Manual.pdf: 403 |
-| KATTLWASH8A | Kogan | Kogan official PDF resources not found for KATTLWASH8A: https://assets.kogan.com/files/usermanuals/KATTLWASH8A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATTLWASH8A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATTLWASH8A_User_Manual.pdf: 403 |
-| KATTLWASH9A | Kogan | Kogan official PDF resources not found for KATTLWASH9A: https://assets.kogan.com/files/usermanuals/KATTLWASH9A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATTLWASH9A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATTLWASH9A_User_Manual.pdf: 403 |
-| KAWFLWASM7A | Kogan | Kogan official PDF resources not found for KAWFLWASM7A: https://assets.kogan.com/files/usermanuals/KAWFLWASM7A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAWFLWASM7A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAWFLWASM7A_User_Manual.pdf: 403 |
-| KAWWAS11D7A | Kogan | Kogan official PDF resources not found for KAWWAS11D7A: https://assets.kogan.com/files/usermanuals/KAWWAS11D7A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAWWAS11D7A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAWWAS11D7A_User_Manual.pdf: 403 |
+| CBNsdh 7653 | Liebherr | Liebherr PDF resources not found for CBNsdh 7653 |
+| CNef4315 | Liebherr | Liebherr parser could not find explicit ventilation/clearance requirements. |
+| CNPef 4416 | Liebherr | Liebherr PDF resources not found for CNPef 4416 |
+| CNPef 4516 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
+| ECBN 6156 | Liebherr | Liebherr parser rejected dimensions due to catalog cross-check mismatch: h catalog=2072 pdf=2027 |
+| ECBN 7870 | Liebherr | Liebherr PDF resources not found for ECBN 7870 |
+| ECBN 8872 | Liebherr | Liebherr PDF resources not found for ECBN 8872 |
+| ECBN5066 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
+| ECBN6256 | Liebherr | Liebherr parser could not verify SKU ECBN6256 against document text. |
+| ECBNh 9972 | Liebherr | Liebherr PDF resources not found for ECBNh 9972 |
+| ECN 7860 | Liebherr | Liebherr PDF resources not found for ECN 7860 |
+| EFNh 9671 | Liebherr | Liebherr PDF resources not found for EFNh 9671 |
+| EFNh 9771 | Liebherr | Liebherr PDF resources not found for EFNh 9771 |
+| EGN 9171 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
+| EKB 9471 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
+| EKB 9671 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
+| ICBNh 5193 | Liebherr | Liebherr PDF resources not found for ICBNh 5193 |
+| ICBNh5173 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
+| ICNh 5173 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
+| ICNh5103 | Liebherr | Liebherr PDF resources not found for ICNh5103 |
+| IRBh 5120 | Liebherr | Liebherr PDF resources not found for IRBh 5120 |
+| IRBh 5170 | Liebherr | Liebherr PDF resources not found for IRBh 5170 |
+| IRBh 5180 | Liebherr | Liebherr PDF resources not found for IRBh 5180 |
+| IRBPh 5170 | Liebherr | Liebherr PDF resources not found for IRBPh 5170 |
+| Msdh 9012 | Liebherr | Liebherr PDF resources not found for Msdh 9012 |
+| SBNbsh 5264 | Liebherr | Liebherr PDF resources not found for SBNbsh 5264 |
+| SCNsdh 5253 | Liebherr | Liebherr PDF resources not found for SCNsdh 5253 |
+| SFNbsh 5267 | Liebherr | Liebherr PDF resources not found for SFNbsh 5267 |
+| SFNsdh 5227 | Liebherr | Liebherr PDF resources not found for SFNsdh 5227 |
+| SFNsdh 5267 | Liebherr | Liebherr PDF resources not found for SFNsdh 5267 |
+| SGNef 3036 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
+| SGNPes 4365 | Liebherr | Liebherr PDF resources not found for SGNPes 4365 |
+| SIFNh 5128 | Liebherr | Liebherr PDF resources not found for SIFNh 5128 |
+| SIFNh 5188 | Liebherr | Liebherr PDF resources not found for SIFNh 5188 |
+| SIGN3576 | Liebherr | Liebherr PDF resources not found for SIGN3576 |
+| SIKB 3520 | Liebherr | Liebherr PDF resources not found for SIKB 3520 |
+| SIKB3550 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
+| SKBes 4350 | Liebherr | Liebherr PDF resources not found for SKBes 4350 |
+| SKBes 4360 | Liebherr | Liebherr PDF resources not found for SKBes 4360 |
+| SKef 4260 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
+| SRBsdh 5260 | Liebherr | Liebherr PDF resources not found for SRBsdh 5260 |
+| SRsdh 5220 | Liebherr | Liebherr PDF resources not found for SRsdh 5220 |
+| SUFNh 3653 | Liebherr | Liebherr PDF resources not found for SUFNh 3653 |
+| SUIG 1514 | Liebherr | Liebherr parser could not verify SKU SUIG 1514 against document text. |
+| SUIK 1510 | Liebherr | Liebherr parser could not verify SKU SUIK 1510 against document text. |
+| SUIKo 1550 | Liebherr | Liebherr PDF resources not found for SUIKo 1550 |
+| SWTNes 4265 | Liebherr | Liebherr PDF resources not found for SWTNes 4265 |
+| UKes1752 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
+| URh 3600 | Liebherr | Liebherr PDF resources not found for URh 3600 |
+| URPh 3650 | Liebherr | Liebherr PDF resources not found for URPh 3650 |
