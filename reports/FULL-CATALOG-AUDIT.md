@@ -5,9 +5,9 @@ Generated: 2026-05-19
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1662
-- Missing PDF evidence: 1879
-- Overall coverage: 46.9%
+- Verified with PDF evidence: 1665
+- Missing PDF evidence: 1876
+- Overall coverage: 47.0%
 
 ## Coverage By Brand
 
@@ -28,7 +28,7 @@ Generated: 2026-05-19
 | Beko | 82 | 82 | 0 | 100.0% |
 | CHIQ | 82 | 39 | 43 | 47.6% |
 | Omega | 65 | 23 | 42 | 35.4% |
-| Kogan | 60 | 0 | 60 | 0.0% |
+| Kogan | 60 | 3 | 57 | 5.0% |
 | CHiQ | 53 | 53 | 0 | 100.0% |
 | Artusi | 52 | 0 | 52 | 0.0% |
 | Liebherr | 52 | 0 | 52 | 0.0% |

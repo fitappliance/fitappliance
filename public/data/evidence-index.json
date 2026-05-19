@@ -26727,6 +26727,30 @@
       "verified_at": "2026-05-15",
       "confidence_score": 0.85
     },
+    "washing_machine-acw1400": {
+      "product_id": "washing_machine-acw1400",
+      "status": "verified",
+      "category": "washing_machine",
+      "brand": "Kogan",
+      "model": "KAMFWASH80A",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://assets.kogan.com/files/usermanuals/KAMFWASH80A_UG.pdf",
+      "verified_at": "2026-05-19",
+      "confidence_score": 0.91
+    },
+    "washing_machine-acw1404": {
+      "product_id": "washing_machine-acw1404",
+      "status": "verified",
+      "category": "washing_machine",
+      "brand": "Kogan",
+      "model": "KAMFWASH90A",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://assets.kogan.com/files/usermanuals/KAMFWASH90A_UG.pdf",
+      "verified_at": "2026-05-19",
+      "confidence_score": 0.91
+    },
     "washing_machine-acw1412": {
       "product_id": "washing_machine-acw1412",
       "status": "pending",
@@ -26990,6 +27014,18 @@
       "source_url": "",
       "verified_at": "",
       "confidence_score": null
+    },
+    "washing_machine-acw1607": {
+      "product_id": "washing_machine-acw1607",
+      "status": "verified",
+      "category": "washing_machine",
+      "brand": "Kogan",
+      "model": "KATFWASH11A",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://assets.kogan.com/files/usermanuals/KATFWASH11A_UG.pdf",
+      "verified_at": "2026-05-19",
+      "confidence_score": 0.91
     },
     "washing_machine-acw1631": {
       "product_id": "washing_machine-acw1631",

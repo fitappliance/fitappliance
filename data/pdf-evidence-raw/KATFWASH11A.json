@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "washing_machine-acw1607",
+  "category": "washing_machine",
+  "brand": "Kogan",
+  "model": "KATFWASH11A",
+  "source_url": "https://assets.kogan.com/files/usermanuals/KATFWASH11A_UG.pdf",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Kogan",
+    "sku": "KATFWASH11A",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 595,
+      "depth_mm": 595,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 20
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://assets.kogan.com/files/usermanuals/KATFWASH11A_UG.pdf",
+      "extraction_date": "2026-05-19T19:40:26.499Z",
+      "confidence_score": 0.91,
+      "source_type": "kogan-official-user_manual"
+    }
+  }
+}

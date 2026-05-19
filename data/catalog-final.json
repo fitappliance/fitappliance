@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1673,
-    "merged_products": 1656,
+    "evidence_files": 1676,
+    "merged_products": 1659,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -29,7 +29,7 @@
       "dishwasher": 376,
       "dryer": 99,
       "fridge": 920,
-      "washing_machine": 259,
+      "washing_machine": 262,
       "washtower_combo": 2
     }
   },
@@ -49345,6 +49345,14 @@
       "displayName": "Midea Dishwasher",
       "readableSpec": "Built-in Dishwasher",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/kitchen%20appliances/dishwashers/mdw6099b15bdx/MDW6099B15BDX-60cm-15-Place-Dishwasher-Easy-Lift-Spec-Sheet.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "midea-official-specification_sheet+midea-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/MDW6099B15BDX.json"
+      },
       "dimensions": {
         "height_mm": 815,
         "width_mm": 598,
@@ -49362,15 +49370,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/kitchen%20appliances/dishwashers/mdw6099b15bdx/MDW6099B15BDX-60cm-15-Place-Dishwasher-Easy-Lift-Spec-Sheet.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "midea-official-specification_sheet+midea-official-user_manual",
-        "raw_json_path": "data/pdf-evidence-raw/MDW6099B15BDX.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw1201",
@@ -59476,7 +59476,33 @@
       "inferred_door_swing": true,
       "displayName": "Kogan Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 595,
+        "depth_mm": 475,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 20
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://assets.kogan.com/files/usermanuals/KAMFWASH80A_UG.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "kogan-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/KAMFWASH80A.json"
+      }
     },
     {
       "id": "washing_machine-acw1404",
@@ -59502,7 +59528,33 @@
       "inferred_door_swing": true,
       "displayName": "Kogan Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 595,
+        "depth_mm": 535,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 20
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://assets.kogan.com/files/usermanuals/KAMFWASH90A_UG.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "kogan-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/KAMFWASH90A.json"
+      }
     },
     {
       "id": "washing_machine-acw1519",
@@ -59554,7 +59606,33 @@
       "inferred_door_swing": true,
       "displayName": "Kogan Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 595,
+        "depth_mm": 595,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 20
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://assets.kogan.com/files/usermanuals/KATFWASH11A_UG.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "kogan-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/KATFWASH11A.json"
+      }
     },
     {
       "id": "washing_machine-acw1298",

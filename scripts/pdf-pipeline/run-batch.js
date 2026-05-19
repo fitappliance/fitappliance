@@ -32,12 +32,15 @@ const { findMideaOfficialPdf } = require('./midea-official');
 const { parseMideaText } = require('./parsers/midea');
 const { findMieleManualEvidencePdf } = require('./miele-official');
 const { parseMieleText } = require('./parsers/miele');
+const { findKoganOfficialPdf } = require('./kogan-official');
+const { parseKoganText } = require('./parsers/kogan');
 const { discoverThirdPartyPdf } = require('./third-party-fallback');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
 const FISHER_PAYKEL_MAX_BYTES = 30 * 1024 * 1024;
 const MIDEA_MAX_BYTES = 35 * 1024 * 1024;
 const MIELE_MAX_BYTES = 20 * 1024 * 1024;
+const KOGAN_MAX_BYTES = 25 * 1024 * 1024;
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -198,6 +201,13 @@ function isMideaTarget(target = {}) {
 
 function isMieleTarget(target = {}) {
   return /miele/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isKoganTarget(target = {}) {
+  return /kogan/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -1044,6 +1054,48 @@ async function parseMieleTarget({
   };
 }
 
+async function parseKoganTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  koganOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await koganOfficialFinder(target);
+  const sourceUrl = manualSourceUrl || official?.sourceUrl;
+  if (!sourceUrl) {
+    throw new Error(official?.reason || 'Kogan official PDF resources not found');
+  }
+  const source = manualSourceUrl ? 'manual-evidence' : (official?.source || 'kogan-official');
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}-${slugPathPart(source)}.pdf`
+  );
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath, {
+    timeoutMs: 60_000,
+    maxBytes: KOGAN_MAX_BYTES
+  });
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseKoganText(textResult.text, {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString()
+  });
+
+  return {
+    candidate: annotateSourceMetadata(parsed.data, source),
+    sourceUrl,
+    source
+  };
+}
+
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
   const dimensions = strictData?.dimensions || {};
   const pairs = [
@@ -1173,6 +1225,7 @@ async function runBatch({
   esattoOfficialFinder = findEsattoOfficialPdf,
   mideaOfficialFinder = findMideaOfficialPdf,
   mieleManualEvidenceFinder = findMieleManualEvidencePdf,
+  koganOfficialFinder = findKoganOfficialPdf,
   includeArchived = false,
   brand = null
 } = {}) {
@@ -1199,6 +1252,7 @@ async function runBatch({
     && !isEsattoTarget(target)
     && !isMideaTarget(target)
     && !isMieleTarget(target)
+    && !isKoganTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -1320,6 +1374,18 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           mieleManualEvidenceFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isKoganTarget(target)) {
+        const parsed = await parseKoganTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          koganOfficialFinder,
           fetchPdfImpl,
           extractTextImpl
         });
@@ -1467,3 +1533,4 @@ exports.parseChiqTarget = parseChiqTarget;
 exports.parseEsattoTarget = parseEsattoTarget;
 exports.parseMideaTarget = parseMideaTarget;
 exports.parseMieleTarget = parseMieleTarget;
+exports.parseKoganTarget = parseKoganTarget;
