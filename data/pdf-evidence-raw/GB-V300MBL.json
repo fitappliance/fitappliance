@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3451",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GB-V300MBL",
+  "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=5ouq1nL856o4jsao2rViIA",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GB-V300MBL",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1720,
+      "width_mm": 600,
+      "depth_mm": 720,
+      "door_open_90_depth_mm": 1030
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=5ouq1nL856o4jsao2rViIA",
+      "extraction_date": "2026-05-19T14:12:15.282Z",
+      "confidence_score": 0.9
+    }
+  }
+}

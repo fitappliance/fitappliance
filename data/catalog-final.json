@@ -12,23 +12,23 @@
   },
   "latest_verified_at": "2026-05-19",
   "summary": {
-    "total_products": 3540,
-    "active_products": 1399,
-    "evidence_files": 1575,
-    "merged_products": 1558,
+    "total_products": 3541,
+    "active_products": 1400,
+    "evidence_files": 1591,
+    "merged_products": 1574,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
       "dishwasher": 706,
       "dryer": 168,
-      "fridge": 1999,
+      "fridge": 2000,
       "washing_machine": 665,
       "washtower_combo": 2
     },
     "official_pdf_by_category": {
       "dishwasher": 374,
       "dryer": 99,
-      "fridge": 826,
+      "fridge": 842,
       "washing_machine": 257,
       "washtower_combo": 2
     }
@@ -20849,7 +20849,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Essential",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1720,
+        "width_mm": 600,
+        "depth_mm": 720,
+        "door_open_90_depth_mm": 1030
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c3NATjI0w03U3bkNvJTJaw",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GB-B300MBL.json"
+      }
     },
     {
       "id": "fridge-arf3451",
@@ -20875,7 +20900,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Essential",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1720,
+        "width_mm": 600,
+        "depth_mm": 720,
+        "door_open_90_depth_mm": 1030
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=5ouq1nL856o4jsao2rViIA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GB-V300MBL.json"
+      }
     },
     {
       "id": "fridge-arf3412",
@@ -20901,7 +20951,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Essential",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1720,
+        "width_mm": 600,
+        "depth_mm": 720,
+        "door_open_90_depth_mm": 1030
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c3NATjI0w03U3bkNvJTJaw",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GB-W300MBL.json"
+      }
     },
     {
       "id": "fridge-arf2388",
@@ -21179,7 +21254,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1787,
+        "width_mm": 835,
+        "depth_mm": 734,
+        "door_open_90_depth_mm": 1562
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=gHqp5PhnAxC8JH3sckpkVw",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-B530BL.json"
+      }
     },
     {
       "id": "fridge-arf3456",
@@ -21256,7 +21356,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1787,
+        "width_mm": 835,
+        "depth_mm": 734,
+        "door_open_90_depth_mm": 1562
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=gHqp5PhnAxC8JH3sckpkVw",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-B590BLE.json"
+      }
     },
     {
       "id": "fridge-arf3092",
@@ -21759,7 +21884,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1787,
+        "width_mm": 835,
+        "depth_mm": 734,
+        "door_open_90_depth_mm": 1562
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4BVmESxM2waikj04qc4fUg",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-V570MBLC.json"
+      }
     },
     {
       "id": "fridge-arf2311",
@@ -21785,7 +21935,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1787,
+        "width_mm": 835,
+        "depth_mm": 734,
+        "door_open_90_depth_mm": 1562
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4BVmESxM2waikj04qc4fUg",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-V570PNL.json"
+      }
     },
     {
       "id": "fridge-arf3027",
@@ -22143,7 +22318,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1786,
+        "width_mm": 910,
+        "depth_mm": 643,
+        "door_open_90_depth_mm": 1097
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=dULQ9mWiNttaK8UmRxKtjQ",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-B500MB.json"
+      }
     },
     {
       "id": "fridge-arf3369",
@@ -22169,7 +22369,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 913,
+        "depth_mm": 735,
+        "door_open_90_depth_mm": 1180
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=doLEvu69LVO4mSljEhHGDA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-B599PL.json"
+      }
     },
     {
       "id": "fridge-arf3517",
@@ -22195,7 +22420,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 66
+      "priorityScore": 66,
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 913,
+        "depth_mm": 735,
+        "door_open_90_depth_mm": 1180
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=DkauLu0LKvARJsbA0PCiA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-B599PLB.json"
+      }
     },
     {
       "id": "fridge-arf3259",
@@ -22221,7 +22471,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 913,
+        "depth_mm": 735,
+        "door_open_90_depth_mm": 1180
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-B600MBL.json"
+      }
     },
     {
       "id": "fridge-arf2606",
@@ -22306,7 +22581,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 913,
+        "depth_mm": 735,
+        "door_open_90_depth_mm": 1180
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-D600BML.json"
+      }
     },
     {
       "id": "fridge-arf3255",
@@ -22332,7 +22632,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 913,
+        "depth_mm": 735,
+        "door_open_90_depth_mm": 1180
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-D600MBLC.json"
+      }
     },
     {
       "id": "fridge-arf2608",
@@ -22461,7 +22786,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 913,
+        "depth_mm": 735,
+        "door_open_90_depth_mm": 1180
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-N600PL.json"
+      }
     },
     {
       "id": "fridge-arf3257",
@@ -22487,7 +22837,32 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 913,
+        "depth_mm": 735,
+        "door_open_90_depth_mm": 1180
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-V600MBLC.json"
+      }
     },
     {
       "id": "fridge-arf2596",
@@ -23134,6 +23509,14 @@
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=feLeOVbe7DABWnJeatsRg",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "GP-F324MBL",
+        "raw_json_path": "data/pdf-evidence-raw/MP-F324.json"
+      },
       "dimensions": {
         "height_mm": 1860,
         "width_mm": 595,
@@ -23151,15 +23534,7 @@
         "ventilation_required": true,
         "reversible_door": true
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=feLeOVbe7DABWnJeatsRg",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "verified_alias": "GP-F324MBL",
-        "raw_json_path": "data/pdf-evidence-raw/MP-F324.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2605",
@@ -90240,6 +90615,60 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/GSN33VI3A.json"
+      }
+    },
+    {
+      "id": "ao-79126",
+      "cat": "fridge",
+      "brand": "LG",
+      "model": "GT-279BPL",
+      "displayName": "LG 279L Top Mount Frost Free Fridge GT-279BPL",
+      "title": "LG 279L Top Mount Frost Free Fridge GT-279BPL",
+      "slug": "ao-gt-279bpl",
+      "w": 555,
+      "h": 1665,
+      "d": 620,
+      "unavailable": false,
+      "retailers": [
+        {
+          "n": "Appliances Online",
+          "url": "https://www.appliancesonline.com.au/product/lg-279l-top-mount-fridge-gt-279bpl",
+          "p": 862,
+          "verified_at": "2026-05-09",
+          "source": "appliances-online-api"
+        }
+      ],
+      "discovery": {
+        "retailer": "Appliances Online",
+        "retailer_key": "appliancesonline",
+        "product_id": 79126,
+        "product_url": "https://www.appliancesonline.com.au/product/lg-279l-top-mount-fridge-gt-279bpl",
+        "source": "appliances-online-api"
+      },
+      "dimensions": {
+        "height_mm": 1665,
+        "width_mm": 555,
+        "depth_mm": 620,
+        "door_open_90_depth_mm": 1130
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=TZeDKr8byA9LNdheupkg",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GT-279BPL.json"
       }
     },
     {

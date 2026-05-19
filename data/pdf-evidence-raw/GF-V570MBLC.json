@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2773",
+  "category": "fridge",
+  "brand": "LG",
+  "model": "GF-V570MBLC",
+  "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4BVmESxM2waikj04qc4fUg",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "LG",
+    "sku": "GF-V570MBLC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1787,
+      "width_mm": 835,
+      "depth_mm": 734,
+      "door_open_90_depth_mm": 1562
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4BVmESxM2waikj04qc4fUg",
+      "extraction_date": "2026-05-19T14:12:15.282Z",
+      "confidence_score": 0.9
+    }
+  }
+}
