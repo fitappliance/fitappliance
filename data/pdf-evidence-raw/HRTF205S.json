@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2670",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HRTF205S",
+  "source_url": "https://dtc-aus-api.hisense.com/medias/HRTF205S-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNjc1NDV8YXBwbGljYXRpb24vcGRmfGFHTXdMMmhrTlM4NE9EQTBNVEExTnpRNE5URXdMMGhTVkVZeU1EVlRMVk53WldNdWNHUm18YjEwMjNmYjViZDRkYjQ3MzZmMTAxYTBiZGYzZTViMTU2YzU0OTYxNzc5MWNkM2NlOWRlZGUzNjljM2M5NmRmZg",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HRTF205S",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1456,
+      "width_mm": 550,
+      "depth_mm": 562,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": false
+    },
+    "metadata": {
+      "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRTF205S-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNjc1NDV8YXBwbGljYXRpb24vcGRmfGFHTXdMMmhrTlM4NE9EQTBNVEExTnpRNE5URXdMMGhTVkVZeU1EVlRMVk53WldNdWNHUm18YjEwMjNmYjViZDRkYjQ3MzZmMTAxYTBiZGYzZTViMTU2YzU0OTYxNzc5MWNkM2NlOWRlZGUzNjljM2M5NmRmZg",
+      "extraction_date": "2026-05-19T15:03:56.368Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
+    }
+  }
+}

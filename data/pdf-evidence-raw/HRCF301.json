@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3330",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HRCF301",
+  "source_url": "https://dtc-aus-api.hisense.com/medias/HRCF301-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjY1MTR8YXBwbGljYXRpb24vcGRmfGFEVTNMMmd4Tmk4NE9EQTBNVEF5TmpZNE16RTRMMGhTUTBZek1ERXRVM0JsWXk1d1pHWXwwMTJmNjgyYzFiNjc0ZTY4MmQyMzJkM2I0NjNiNzJiN2I5OWE5ZmQ5NTlmNWRiNmZlZDY1OTAzODYzNzYxN2M2",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HRCF301",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 847,
+      "width_mm": 1114,
+      "depth_mm": 630,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": false
+    },
+    "metadata": {
+      "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRCF301-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjY1MTR8YXBwbGljYXRpb24vcGRmfGFEVTNMMmd4Tmk4NE9EQTBNVEF5TmpZNE16RTRMMGhTUTBZek1ERXRVM0JsWXk1d1pHWXwwMTJmNjgyYzFiNjc0ZTY4MmQyMzJkM2I0NjNiNzJiN2I5OWE5ZmQ5NTlmNWRiNmZlZDY1OTAzODYzNzYxN2M2",
+      "extraction_date": "2026-05-19T15:03:53.250Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
+    }
+  }
+}

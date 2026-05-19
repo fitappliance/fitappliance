@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1591,
-    "merged_products": 1574,
+    "evidence_files": 1628,
+    "merged_products": 1611,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -28,7 +28,7 @@
     "official_pdf_by_category": {
       "dishwasher": 374,
       "dryer": 99,
-      "fridge": 842,
+      "fridge": 879,
       "washing_machine": 257,
       "washtower_combo": 2
     }
@@ -14086,7 +14086,7 @@
       "brand": "Hisense",
       "model": "HRBC113",
       "w": 475,
-      "h": 845,
+      "h": 840,
       "d": 448,
       "kwh_year": 146,
       "stars": 2,
@@ -14105,7 +14105,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 42
+      "priorityScore": 42,
+      "dimensions": {
+        "height_mm": 840,
+        "width_mm": 475,
+        "depth_mm": 448,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 35,
+        "left_mm": 35,
+        "right_mm": 35,
+        "rear_mm": 35
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRBC113-Specs-for-consumer-1.pdf?context=bWFzdGVyfE1hbnVhbHw1MzM1NDl8YXBwbGljYXRpb24vcGRmfGFHVmtMMmc0WWk4NE9EUTVPVGN6TlRFd01UYzBMMGhTUWtNeE1UTmZVM0JsWTNNZ1ptOXlJR052Ym5OMWJXVnlJREV1Y0dSbXwzZDdiNTNlZjA1ZTBmZTAzN2QzZWQ1YWYxYzFhOTlhMjk4ZmVjN2ZhYzVmZWQ5MzY3NDQ0ODZjNGUzZjY1ZGRi",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRBC113.json"
+      }
     },
     {
       "id": "fridge-arf3340",
@@ -14113,7 +14139,7 @@
       "brand": "Hisense",
       "model": "HRBC137",
       "w": 595,
-      "h": 820,
+      "h": 819,
       "d": 575,
       "kwh_year": 139,
       "stars": 3,
@@ -14131,7 +14157,33 @@
       "direct_url": "https://www.jbhifi.com.au/search?query=HRBC137",
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 819,
+        "width_mm": 595,
+        "depth_mm": 575,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 10,
+        "left_mm": 35,
+        "right_mm": 35,
+        "rear_mm": 35
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRBC137.json"
+      }
     },
     {
       "id": "fridge-arf3237",
@@ -14140,7 +14192,7 @@
       "model": "HRBC140",
       "w": 595,
       "h": 862,
-      "d": 600,
+      "d": 647,
       "kwh_year": 160,
       "stars": 3,
       "price": null,
@@ -14156,7 +14208,33 @@
       "unavailable": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 862,
+        "width_mm": 595,
+        "depth_mm": 647,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRBC140-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMDQzNjh8YXBwbGljYXRpb24vcGRmfGFHSTNMMmhrWmk4NE9EQTBNVEF3T1RZME16Z3lMMGhTUWtNeE5EQXRVM0JsWXk1d1pHWXxlNTc3YjM1ZDFjYzliNGExNDg5YTY5NWZlMmI1ZjFkNTMzOGMwNmJjZDYzMGY4YjU5MzE4N2VlYzA3OGMwODk5",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRBC140.json"
+      }
     },
     {
       "id": "fridge-arf2667",
@@ -14208,7 +14286,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 840,
+        "width_mm": 475,
+        "depth_mm": 556,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRBF125-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjU1ODh8YXBwbGljYXRpb24vcGRmfGFHSTRMMmd3WXk4NE9EQTBNVEEzTkRFNU5qYzRMMGhTUWtZeE1qVXRVM0JsWXk1d1pHWXwxMWIxOGE4YjA5ZGZkNjQ5MGE2YmNlYzcyZGRjNTkyYmYyM2NjY2JhZDhhMDkwNmU2ZDZkMDQzZjk4ZjNkZDc2",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRBF125.json"
+      }
     },
     {
       "id": "fridge-arf3512",
@@ -14321,7 +14425,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1229,
+        "width_mm": 515,
+        "depth_mm": 514,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRBF179B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNzI1NTl8YXBwbGljYXRpb24vcGRmfGFHSmpMMmhqTVM4NE9EQTBNRGsxTWpJNU9UZ3lMMGhTUWtZeE56bENMVk53WldNdWNHUm18Njc3YzdlOWU0MjUzNGMzNDU2NmIzOTFjYTMxMmUyNDIxYWU3Nzc5ZjUyODRkYTBjNWRhNjlkZjA2ZTVhMWE1OA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRBF179B.json"
+      }
     },
     {
       "id": "fridge-arf2786",
@@ -14541,7 +14671,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1720,
+        "width_mm": 704,
+        "depth_mm": 694,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRBM417C-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2ODcyNXxhcHBsaWNhdGlvbi9wZGZ8YUdRMUwyZzRZUzg0T0RBME1UQXhNekkwT0RNd0wwaFNRazAwTVRkRExWTndaV011Y0dSbXxjYmM4ZDhiYmE5ZjU5ZjNiM2JiNWMwOTM0ZmU5OGU1N2M4MzUxNTM5MWNkMjQ5MjIwZGYxODI3YmI5ZGE4ZGYz",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRBM417C.json"
+      }
     },
     {
       "id": "fridge-arf3433",
@@ -14567,7 +14723,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 66
+      "priorityScore": 66,
+      "dimensions": {
+        "height_mm": 1720,
+        "width_mm": 704,
+        "depth_mm": 694,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRBM418B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNzEzMjd8YXBwbGljYXRpb24vcGRmfGFHTmpMMmd4TXk4NE9EQTBNVEV3T0RJM05UVXdMMGhTUWswME1UaENMVk53WldNdWNHUm18NzE3MGFhNGFmYzQxZTI4OTYzYzU5MTFiMWVkNzhjMTM5ZWRmZmRmMzc1NDcxMjYxYTYyZDVhNjBlNTg1YmJiYg",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRBM418B.json"
+      }
     },
     {
       "id": "fridge-arf3435",
@@ -14593,7 +14775,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1720,
+        "width_mm": 704,
+        "depth_mm": 694,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRBM418S-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw0OTY5NjJ8YXBwbGljYXRpb24vcGRmfGFHVXpMMmhsTVM4NE9EQTBNRGswTmpBM016a3dMMGhTUWswME1UaFRMVk53WldNdWNHUm18MjUzZjE0NjQwNGViNjkzMzMxYTZiYWViMzQ3NjkxZTBiMzI0NzllOGQyMWQyZDA2YjQ2NmI4NmE4YzFjZGFiNA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRBM418S.json"
+      }
     },
     {
       "id": "fridge-arf3903",
@@ -14619,7 +14827,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1720,
+        "width_mm": 704,
+        "depth_mm": 694,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRBM419B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODIxOTF8YXBwbGljYXRpb24vcGRmfGFHWTFMMmd6TUM4NE9URTJNVFkzTURZMU5qTXdMMGhTUWswME1UbENMVk53WldNdWNHUm18MjY3NTQyMGVhNWFmYjZmNGU4Yzg5MzZkY2UwYjRhZDMwNTg4NWNiNDEyZDg2Y2EyNzlkY2FkZWM3MzczODY4Nw",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRBM419B.json"
+      }
     },
     {
       "id": "fridge-arf2629",
@@ -14628,7 +14862,7 @@
       "model": "HRBM482SW",
       "w": 794,
       "h": 1756,
-      "d": 686,
+      "d": 676,
       "kwh_year": 338,
       "stars": 5,
       "price": null,
@@ -14645,7 +14879,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1756,
+        "width_mm": 794,
+        "depth_mm": 676,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/manual-HRBM482SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNzQ0OTl8YXBwbGljYXRpb24vcGRmfGFEWXhMMmc0WkM4NE56azRPRGszTnpZMk5ETXdMMGhTUWswME9ESlRWeTFUY0dWakxuQmtaZ3w5Y2U5OTgwMmYwZmMwYzA2ZDM5YWNjMTY1YTgxMDZlYTNjM2ViNTI5NDk0NWM2OTIwZTMwMmViODRiNmQxM2Zl",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRBM482SW.json"
+      }
     },
     {
       "id": "fridge-arf2639",
@@ -14798,7 +15058,33 @@
       "unavailable": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1817,
+        "width_mm": 794,
+        "depth_mm": 706,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCD454BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDcwNTh8YXBwbGljYXRpb24vcGRmfGFEazJMMmhrT0M4NE9EQTBNVEE1T1RjMU5UZ3lMMGhTUTBRME5UUkNWeTFUY0dWakxuQmtaZ3xiMjVkNWE0YjkxNWMyNWZlNTg0NTcxMDliNzViYWY5OGViYjM0YjQ2MWJkMGMzNzk2MWZjODdjYWY1YTUyYjFi",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCD454BW.json"
+      }
     },
     {
       "id": "fridge-arf3272",
@@ -14823,7 +15109,33 @@
       "unavailable": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 66
+      "priorityScore": 66,
+      "dimensions": {
+        "height_mm": 1785,
+        "width_mm": 794,
+        "depth_mm": 698,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCD483E-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNjM1MDB8YXBwbGljYXRpb24vcGRmfGFEZGlMMmc0WXk4NE9EQTBNRGs0TnpBek16a3dMMGhTUTBRME9ETkZMVk53WldNdWNHUm18NDhjNjc2YWFkMzMwY2UyNGE4MjZhZmI4NzQ2YzJhYTk5ZGU5OTMyMDNhODYxMzU3Mjg1Zjk2MjNlZGZlYjZhNg",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCD483E.json"
+      }
     },
     {
       "id": "fridge-arf3439",
@@ -14848,7 +15160,33 @@
       "unavailable": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1785,
+        "width_mm": 794,
+        "depth_mm": 698,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCD483G-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNTg3NTV8YXBwbGljYXRpb24vcGRmfGFESmxMMmhrTlM4NE9EQTBNVEE1T0RjM01qYzRMMGhTUTBRME9ETkhMVk53WldNdWNHUm18ODZlYjY4NTk0MjQ4ODQwMGU5MWMxZGRlMTY1YzY5N2U1NzQ0NjEyODU3NTRhZDAzZTYxNTJlN2YwZTRiODVmZg",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCD483G.json"
+      }
     },
     {
       "id": "fridge-arf3199",
@@ -14873,7 +15211,33 @@
       "unavailable": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1785,
+        "width_mm": 794,
+        "depth_mm": 698,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCD483TBW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMDIwMDR8YXBwbGljYXRpb24vcGRmfGFEQTJMMmd4Tnk4NE9EQTBNVEF5TmpBeU56Z3lMMGhTUTBRME9ETlVRbGN0VTNCbFl5NXdaR1l8NTNhY2MyMTk4MDBjZjY3NTdhNWVjY2ZhZDRhMGQzMTQ0NmY3MDgwMTA2NGQ3MGE1N2NjYzNiM2EzNGQyYmFjZg",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCD483TBW.json"
+      }
     },
     {
       "id": "fridge-arf3442",
@@ -14898,7 +15262,33 @@
       "unavailable": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1785,
+        "width_mm": 794,
+        "depth_mm": 698,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCD483TSW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyODI5NDB8YXBwbGljYXRpb24vcGRmfGFHWmhMMmczT0M4NE9EQTBNRGt6TmpnNU9EZzJMMGhTUTBRME9ETlVVMWN0VTNCbFl5NXdaR1l8Mzk5ZDBmZDUwMTgwZjFkMzU5N2U0NWI5OGEyMjNmNDEyNzAzMTY3MzAwNzlkOGFjMWVmNTcxMWYxNGM4OGU5Nw",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCD483TSW.json"
+      }
     },
     {
       "id": "f4",
@@ -14950,7 +15340,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1785,
+        "width_mm": 912,
+        "depth_mm": 725,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCD585BWB.json"
+      }
     },
     {
       "id": "fridge-arf3162",
@@ -14976,7 +15392,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1785,
+        "width_mm": 912,
+        "depth_mm": 725,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCD586TBWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw1MjcxNnxhcHBsaWNhdGlvbi9wZGZ8YURWbUwyZ3daaTg0T0RBME1UQTNNemcyT1RFd0wwaFNRMFExT0RaVVFsZENMVk53WldNdWNHUm18NzQ0NDA1YzQ2YzQ4MmRiNGNkY2RhMTcxMDgyZjA3N2EyNmYxZGIzNTE4ZjkwMDdjODM5OTNjNTg3Yjk1YmQ4MQ",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCD586TBWB.json"
+      }
     },
     {
       "id": "fridge-arf2477",
@@ -15002,7 +15444,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1785,
+        "width_mm": 912,
+        "depth_mm": 725,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/manual-HRCD609B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMzYzMDN8YXBwbGljYXRpb24vcGRmfGFEVTFMMmcyT0M4NE56azRPVEExTWpNM05UTTBMMGhTUTBRMk1EbENMVk53WldNdWNHUm18MTBhYjlmMzBhNmMwMmI5YTM4NDNmYzMxOTY0YTQ0MjFkMDNkYjRjMDM1ZTRmNzA4NjQ4ODNmODMwZDliZDQ0ZQ",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCD609B.json"
+      }
     },
     {
       "id": "fridge-arf3141",
@@ -15028,7 +15496,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1785,
+        "width_mm": 912,
+        "depth_mm": 725,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCD610TS.json"
+      }
     },
     {
       "id": "fridge-arf3666",
@@ -15086,9 +15580,9 @@
       "cat": "fridge",
       "brand": "Hisense",
       "model": "HRCD615TBWV",
-      "w": 912,
-      "h": 1785,
-      "d": 725,
+      "w": 914,
+      "h": 1790,
+      "d": 730,
       "kwh_year": 497,
       "stars": 4,
       "price": null,
@@ -15105,7 +15599,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 914,
+        "depth_mm": 730,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 12,
+        "left_mm": 12,
+        "right_mm": 12,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/Specs-HRCD615TBWV.pdf?context=bWFzdGVyfE1hbnVhbHw0NTQ4NDh8YXBwbGljYXRpb24vcGRmfGFHSmhMMmhtT0M4NE9EVTFPRGN4TXpJME1Ua3dMMU53WldOelgwaFNRMFEyTVRWVVFsZFdMbkJrWmd8NDM3YzBiNDkyYmI2MGQ2YWVjNDZlYzNjMDA0Yjk5NDA2MTkwMGIxMWFmYmRhNWIxMzRiYjNiNGE0ODFiNmE3Yg",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCD615TBWV.json"
+      }
     },
     {
       "id": "fridge-arf3454",
@@ -15269,7 +15789,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 854,
+        "width_mm": 625,
+        "depth_mm": 559,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCF144-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODMwNDd8YXBwbGljYXRpb24vcGRmfGFHVTJMMmhrWmk4NE9EQTBNVEExTkRVek5UazRMMGhTUTBZeE5EUXRVM0JsWXk1d1pHWXw3YTA5MzZhNzU5NzM5OGZmODhlZWJiOWQyYTJhYzUwOWZhNzZlMmQzNDQ2NzIxNGQ5YTMwMDAwYmExM2Y2YTQ2",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCF144.json"
+      }
     },
     {
       "id": "fridge-arf2583",
@@ -15321,7 +15867,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 66
+      "priorityScore": 66,
+      "dimensions": {
+        "height_mm": 854,
+        "width_mm": 625,
+        "depth_mm": 559,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCF146-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjY2NDF8YXBwbGljYXRpb24vcGRmfGFEUmlMMmd3WlM4NE9EQTBNRGt5TmpBNE5UUXlMMGhTUTBZeE5EWXRVM0JsWXk1d1pHWXxmYzE3MWViNmNkZGNhYjhiNGM0YzA2NzEzNDBhNjU1MjIxNTk2MDhiZDdiZWE1MWRlNzk3NTMwYjA5MGUzM2Nh",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCF146.json"
+      }
     },
     {
       "id": "fridge-arf2844",
@@ -15347,7 +15919,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 854,
+        "width_mm": 802,
+        "depth_mm": 559,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCF199-Spec-0105update.pdf?context=bWFzdGVyfG1hbnVhbHwxNzc0NzF8YXBwbGljYXRpb24vcGRmfGFHRTFMMmhsTVM4NE9ERTBNalEyTlRJM01EQTJMMGhTUTBZeE9Ua3RVM0JsWXkwd01UQTFkWEJrWVhSbExuQmtaZ3xjMTZiODNiOTIwMTdiMGNiZjBjOWJkZWJiYmMxMjVkZTNlMThiM2QwZjFhNjkzOTE0Y2EzNmEyYzg1NTE2ZWJk",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCF199.json"
+      }
     },
     {
       "id": "fridge-arf2588",
@@ -15399,7 +15997,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 66
+      "priorityScore": 66,
+      "dimensions": {
+        "height_mm": 854,
+        "width_mm": 802,
+        "depth_mm": 559,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCF201-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzg3Nzl8YXBwbGljYXRpb24vcGRmfGFHSmxMMmhrTnk4NE9EQTBNRGswTXpFeU5EYzRMMGhTUTBZeU1ERXRVM0JsWXk1d1pHWXwzNzg0MjBhZTZiZTY0NDA0NjJhZmQ1MGFmNWNkNDMzODUwYTQ1NjQwNGM5M2ZhMGVhZDFkN2Q3MzFkNDM2ZTEz",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCF201.json"
+      }
     },
     {
       "id": "fridge-arf2843",
@@ -15425,7 +16049,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 847,
+        "width_mm": 1114,
+        "depth_mm": 630,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCF297-Spec-0105update.pdf?context=bWFzdGVyfG1hbnVhbHwxOTEzODh8YXBwbGljYXRpb24vcGRmfGFHVTBMMmhsTUM4NE9ERTBNalEyTlRreU5UUXlMMGhTUTBZeU9UY3RVM0JsWXkwd01UQTFkWEJrWVhSbExuQmtaZ3xkMTE1ZjZjNDU2Mzg5NGRhMjVhOTI5OGUxOGMzOTI0ZjQzYTcyMWU1Mzc1YzdmOTY2OTcxZDY3ZDA4YTEwNTA1",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCF297.json"
+      }
     },
     {
       "id": "fridge-arf2348",
@@ -15451,7 +16101,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 847,
+        "width_mm": 1114,
+        "depth_mm": 630,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/manual-HRCF300-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTg5NzZ8YXBwbGljYXRpb24vcGRmfGFEUXlMMmcyWWk4NE56azRPVEF6TWpNNE5qZzJMMGhTUTBZek1EQXRVM0JsWXk1d1pHWXxjZmM4ZmZhMGNhM2ExN2FkOGJiNjI2NjFlYmFlYjY2YTdmZDUwOTMwNjM5M2E3MTBlNDU2MGJjMDY4ZWI1Nzc0",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCF300.json"
+      }
     },
     {
       "id": "fridge-arf3330",
@@ -15477,7 +16153,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 66
+      "priorityScore": 66,
+      "dimensions": {
+        "height_mm": 847,
+        "width_mm": 1114,
+        "depth_mm": 630,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCF301-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjY1MTR8YXBwbGljYXRpb24vcGRmfGFEVTNMMmd4Tmk4NE9EQTBNVEF5TmpZNE16RTRMMGhTUTBZek1ERXRVM0JsWXk1d1pHWXwwMTJmNjgyYzFiNjc0ZTY4MmQyMzJkM2I0NjNiNzJiN2I5OWE5ZmQ5NTlmNWRiNmZlZDY1OTAzODYzNzYxN2M2",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCF301.json"
+      }
     },
     {
       "id": "fridge-arf3558",
@@ -15503,7 +16205,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 858,
+        "width_mm": 1429,
+        "depth_mm": 746,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCF439-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw0NzA0NnxhcHBsaWNhdGlvbi9wZGZ8YUdVMEwyZ3hOaTg0T0RFNU1UY3hPREU1TlRVd0wwaFNRMFkwTXprdFUzQmxZeTV3WkdZfDBhMGIwNTVmMWQxYjdkNTMyNjRiOTcwZTJjOTI5ZjJjZmZlYTg4MmM2OTg5MWNjYzMyZmFlNzcxZjJiNzgxNzU",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCF439.json"
+      }
     },
     {
       "id": "fridge-arf2839",
@@ -15529,7 +16257,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 847,
+        "width_mm": 1646,
+        "depth_mm": 717,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCF500-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTQzMTF8YXBwbGljYXRpb24vcGRmfGFHRmtMMmc0TWk4NE9EQTBNRGs0TkRReE1qUTJMMGhTUTBZMU1EQXRVM0JsWXk1d1pHWXw5YzQ0NjRiNzRhOWJjZTIyNDQzNmIxN2VkOTQ1OTBmMmJmMDcyODRkMjgxMjlkNmY3M2E3OTEzNTVhYTc5NzZh",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCF500.json"
+      }
     },
     {
       "id": "fridge-arf3408",
@@ -15537,7 +16291,7 @@
       "brand": "Hisense",
       "model": "HRCF501",
       "w": 1646,
-      "h": 857,
+      "h": 847,
       "d": 717,
       "kwh_year": 166,
       "stars": 5,
@@ -15555,7 +16309,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 847,
+        "width_mm": 1646,
+        "depth_mm": 717,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCF501-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzUwOTB8YXBwbGljYXRpb24vcGRmfGFEbGlMMmczWmk4NE9EQTBNRGs0TXpjMU56RXdMMGhTUTBZMU1ERXRVM0JsWXk1d1pHWXw2NzA4NTQ0ZmRlMDgxYmZiMzVlYzAyM2YzM2VlNzIwY2Y0OTc1YTc2MmQwNjgyMDFmNDg1NmNmZmI0NTc4NWYz",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCF501.json"
+      }
     },
     {
       "id": "fridge-arf2638",
@@ -15607,7 +16387,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 826,
+        "width_mm": 2145,
+        "depth_mm": 758,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRCF702.json"
+      }
     },
     {
       "id": "fridge-arf3888",
@@ -15762,7 +16568,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1785,
+        "width_mm": 914,
+        "depth_mm": 730,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRFD634BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTg4OHxhcHBsaWNhdGlvbi9wZGZ8YUdFMEwyZzNPQzg0T0RBME1Ea3pOalUzTVRFNEwwaFNSa1EyTXpSQ1Z5MVRjR1ZqTG5Ca1pnfGNiMjc4YTBkZjllZmVmM2QxMzU3NmYzZDc3YWNkY2I1ZWQ3MDFiNzEyZmY2Mzc1MDI1YWZjOTMxMjg0NGRhZTU",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRFD634BW.json"
+      }
     },
     {
       "id": "fridge-arf3552",
@@ -15788,7 +16620,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1785,
+        "width_mm": 914,
+        "depth_mm": 730,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRFD635SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTcxMTd8YXBwbGljYXRpb24vcGRmfGFEWmtMMmc0TlM4NE9ERTVNakV5TVRVMk9UVTRMMGhTUmtRMk16VlRWeTFUY0dWakxuQmtaZ3wzOWU4MWU5ZDljNzQ2MjgwZTE3ZTlmZWQ4NjEwZjlhM2YwN2Q4ZjgyYmMyYmRhZTc1ZGVhNTAxMzIxYTZlNGRi",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRFD635SW.json"
+      }
     },
     {
       "id": "fridge-arf2736",
@@ -15924,8 +16782,8 @@
       "brand": "Hisense",
       "model": "HRSBS613BWX",
       "w": 910,
-      "h": 1795,
-      "d": 717,
+      "h": 1790,
+      "d": 730,
       "kwh_year": 494,
       "stars": 4,
       "price": null,
@@ -15942,7 +16800,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 910,
+        "depth_mm": 730,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRSBS613BWX-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNTA1MDV8YXBwbGljYXRpb24vcGRmfGFHUTNMMmd4WXk4NE9ETTFORFEzTnpnek5EVTBMMGhTVTBKVE5qRXpRbGRZTFZOd1pXTXVjR1JtfGQ1ZGE4YTg4YjkxNWE5ZmMyMzU4MzQzZDRlMzMyYjAwZjc1ZDc0NmRmYmI1ZTVhYjdlN2FjYmFmYjdiNWVmYTg",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRSBS613BWX.json"
+      }
     },
     {
       "id": "fridge-arf2860",
@@ -16016,8 +16900,8 @@
       "brand": "Hisense",
       "model": "HRSBS633BW",
       "w": 910,
-      "h": 1795,
-      "d": 717,
+      "h": 1790,
+      "d": 730,
       "kwh_year": 500,
       "stars": 4,
       "price": null,
@@ -16034,7 +16918,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 910,
+        "depth_mm": 730,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRSBS633BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMzk5ODV8YXBwbGljYXRpb24vcGRmfGFEaGhMMmhrTUM4NE9ESTJORGN5TkRZME5ERTBMMGhTVTBKVE5qTXpRbGN0VTNCbFl5NXdaR1l8OTljNDMzYTE4MmI5NWYyNzYxZjFjZTBmYWNjOWVhMmRjY2RhOTc1M2ExYTE1YWMwMjdkOWIyNWJhNGMxNDBiZA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRSBS633BW.json"
+      }
     },
     {
       "id": "fridge-arf3306",
@@ -16144,7 +17054,7 @@
       "brand": "Hisense",
       "model": "HRTF205S",
       "w": 550,
-      "h": 1459,
+      "h": 1456,
       "d": 562,
       "kwh_year": 268,
       "stars": 3,
@@ -16162,7 +17072,33 @@
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1456,
+        "width_mm": 550,
+        "depth_mm": 562,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRTF205S-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNjc1NDV8YXBwbGljYXRpb24vcGRmfGFHTXdMMmhrTlM4NE9EQTBNVEExTnpRNE5URXdMMGhTVkVZeU1EVlRMVk53WldNdWNHUm18YjEwMjNmYjViZDRkYjQ3MzZmMTAxYTBiZGYzZTViMTU2YzU0OTYxNzc5MWNkM2NlOWRlZGUzNjljM2M5NmRmZg",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRTF205S.json"
+      }
     },
     {
       "id": "fridge-arf3335",
@@ -16470,7 +17406,33 @@
       "unavailable": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1720,
+        "width_mm": 794,
+        "depth_mm": 685,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": false
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dtc-aus-api.hisense.com/medias/HRTF497SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw1MzA2NDF8YXBwbGljYXRpb24vcGRmfGFEVmlMMmcxWmk4NE9ETXpPREV5TXpNeU5UYzBMMGhTVkVZME9UZFRWeTFUY0dWakxuQmtaZ3w1MDdiNDMyYjRhNTkyMjkyNDY3ZjBmMzU2NTRjMjQzMjkwYWMxN2RlOTY3MmE5MmM0ZmExOTYzYWYyMzZlNWNl",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.92,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/HRTF497SW.json"
+      }
     },
     {
       "id": "fridge-arf2331",
@@ -20850,6 +21812,13 @@
       "displayName": "LG Essential",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c3NATjI0w03U3bkNvJTJaw",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GB-B300MBL.json"
+      },
       "dimensions": {
         "height_mm": 1720,
         "width_mm": 600,
@@ -20867,14 +21836,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c3NATjI0w03U3bkNvJTJaw",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GB-B300MBL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3451",
@@ -20901,6 +21863,13 @@
       "displayName": "LG Essential",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=5ouq1nL856o4jsao2rViIA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GB-V300MBL.json"
+      },
       "dimensions": {
         "height_mm": 1720,
         "width_mm": 600,
@@ -20918,14 +21887,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=5ouq1nL856o4jsao2rViIA",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GB-V300MBL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3412",
@@ -20952,6 +21914,13 @@
       "displayName": "LG Essential",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c3NATjI0w03U3bkNvJTJaw",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GB-W300MBL.json"
+      },
       "dimensions": {
         "height_mm": 1720,
         "width_mm": 600,
@@ -20969,14 +21938,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c3NATjI0w03U3bkNvJTJaw",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GB-W300MBL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2388",
@@ -21255,6 +22217,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=gHqp5PhnAxC8JH3sckpkVw",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-B530BL.json"
+      },
       "dimensions": {
         "height_mm": 1787,
         "width_mm": 835,
@@ -21272,14 +22241,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=gHqp5PhnAxC8JH3sckpkVw",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GF-B530BL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3456",
@@ -21357,6 +22319,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=gHqp5PhnAxC8JH3sckpkVw",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-B590BLE.json"
+      },
       "dimensions": {
         "height_mm": 1787,
         "width_mm": 835,
@@ -21374,14 +22343,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=gHqp5PhnAxC8JH3sckpkVw",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GF-B590BLE.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3092",
@@ -21885,6 +22847,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4BVmESxM2waikj04qc4fUg",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-V570MBLC.json"
+      },
       "dimensions": {
         "height_mm": 1787,
         "width_mm": 835,
@@ -21902,14 +22871,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4BVmESxM2waikj04qc4fUg",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GF-V570MBLC.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2311",
@@ -21936,6 +22898,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4BVmESxM2waikj04qc4fUg",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GF-V570PNL.json"
+      },
       "dimensions": {
         "height_mm": 1787,
         "width_mm": 835,
@@ -21953,14 +22922,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4BVmESxM2waikj04qc4fUg",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GF-V570PNL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3027",
@@ -22319,6 +23281,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=dULQ9mWiNttaK8UmRxKtjQ",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-B500MB.json"
+      },
       "dimensions": {
         "height_mm": 1786,
         "width_mm": 910,
@@ -22336,14 +23305,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=dULQ9mWiNttaK8UmRxKtjQ",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GS-B500MB.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3369",
@@ -22370,6 +23332,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=doLEvu69LVO4mSljEhHGDA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-B599PL.json"
+      },
       "dimensions": {
         "height_mm": 1790,
         "width_mm": 913,
@@ -22387,14 +23356,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=doLEvu69LVO4mSljEhHGDA",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GS-B599PL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3517",
@@ -22421,6 +23383,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 66,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=DkauLu0LKvARJsbA0PCiA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-B599PLB.json"
+      },
       "dimensions": {
         "height_mm": 1790,
         "width_mm": 913,
@@ -22438,14 +23407,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=DkauLu0LKvARJsbA0PCiA",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GS-B599PLB.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3259",
@@ -22472,6 +23434,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-B600MBL.json"
+      },
       "dimensions": {
         "height_mm": 1790,
         "width_mm": 913,
@@ -22489,14 +23458,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GS-B600MBL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2606",
@@ -22582,6 +23544,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-D600BML.json"
+      },
       "dimensions": {
         "height_mm": 1790,
         "width_mm": 913,
@@ -22599,14 +23568,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GS-D600BML.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3255",
@@ -22633,6 +23595,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-D600MBLC.json"
+      },
       "dimensions": {
         "height_mm": 1790,
         "width_mm": 913,
@@ -22650,14 +23619,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GS-D600MBLC.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2608",
@@ -22787,6 +23749,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-N600PL.json"
+      },
       "dimensions": {
         "height_mm": 1790,
         "width_mm": 913,
@@ -22804,14 +23773,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GS-N600PL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3257",
@@ -22838,6 +23800,13 @@
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/GS-V600MBLC.json"
+      },
       "dimensions": {
         "height_mm": 1790,
         "width_mm": 913,
@@ -22855,14 +23824,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/GS-V600MBLC.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2596",

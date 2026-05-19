@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3563",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HRTF497SW",
+  "source_url": "https://dtc-aus-api.hisense.com/medias/HRTF497SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw1MzA2NDF8YXBwbGljYXRpb24vcGRmfGFEVmlMMmcxWmk4NE9ETXpPREV5TXpNeU5UYzBMMGhTVkVZME9UZFRWeTFUY0dWakxuQmtaZ3w1MDdiNDMyYjRhNTkyMjkyNDY3ZjBmMzU2NTRjMjQzMjkwYWMxN2RlOTY3MmE5MmM0ZmExOTYzYWYyMzZlNWNl",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HRTF497SW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1720,
+      "width_mm": 794,
+      "depth_mm": 685,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": false
+    },
+    "metadata": {
+      "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRTF497SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw1MzA2NDF8YXBwbGljYXRpb24vcGRmfGFEVmlMMmcxWmk4NE9ETXpPREV5TXpNeU5UYzBMMGhTVkVZME9UZFRWeTFUY0dWakxuQmtaZ3w1MDdiNDMyYjRhNTkyMjkyNDY3ZjBmMzU2NTRjMjQzMjkwYWMxN2RlOTY3MmE5MmM0ZmExOTYzYWYyMzZlNWNl",
+      "extraction_date": "2026-05-19T15:03:56.472Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
+    }
+  }
+}

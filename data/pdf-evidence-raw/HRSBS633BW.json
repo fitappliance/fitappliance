@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3572",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HRSBS633BW",
+  "source_url": "https://dtc-aus-api.hisense.com/medias/HRSBS633BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMzk5ODV8YXBwbGljYXRpb24vcGRmfGFEaGhMMmhrTUM4NE9ESTJORGN5TkRZME5ERTBMMGhTVTBKVE5qTXpRbGN0VTNCbFl5NXdaR1l8OTljNDMzYTE4MmI5NWYyNzYxZjFjZTBmYWNjOWVhMmRjY2RhOTc1M2ExYTE1YWMwMjdkOWIyNWJhNGMxNDBiZA",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HRSBS633BW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1790,
+      "width_mm": 910,
+      "depth_mm": 730,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": false
+    },
+    "metadata": {
+      "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRSBS633BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMzk5ODV8YXBwbGljYXRpb24vcGRmfGFEaGhMMmhrTUM4NE9ESTJORGN5TkRZME5ERTBMMGhTVTBKVE5qTXpRbGN0VTNCbFl5NXdaR1l8OTljNDMzYTE4MmI5NWYyNzYxZjFjZTBmYWNjOWVhMmRjY2RhOTc1M2ExYTE1YWMwMjdkOWIyNWJhNGMxNDBiZA",
+      "extraction_date": "2026-05-19T15:03:56.252Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
+    }
+  }
+}
