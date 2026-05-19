@@ -5994,7 +5994,12 @@
       "inferred_door_swing": true,
       "displayName": "LG QuadWash",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=jgKGpTUBKxpnjNpGPXQzUA",
+        "verified_at": "2026-05-19"
+      }
     },
     {
       "id": "dishwasher-adw1131",
@@ -31905,7 +31910,12 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
+        "verified_at": "2026-05-19"
+      }
     },
     {
       "id": "fridge-arf2603",

@@ -107,6 +107,22 @@ test('LG lookup candidate builder extracts full laundry tower model from retaile
   }), ['1016GX', 'WXLC-1016GX']);
 });
 
+test('LG lookup candidate builder extracts GP refrigeration support model from retailer slug', () => {
+  assert.deepEqual(buildLookupCandidates({
+    sku: 'F324MBL',
+    product: {
+      discovery: {
+        product_url: 'https://www.jbhifi.com.au/products/lg-gp-f324mbl-324l-upright-freezer-matte-black'
+      }
+    }
+  }), ['F324MBL', 'GP-F324MBL']);
+});
+
+test('LG lookup candidate builder derives known AU support aliases for catalog-only models', () => {
+  assert.deepEqual(buildLookupCandidates({ sku: 'GS-VB600PL' }), ['GS-VB600PL', 'GS-B600PL']);
+  assert.deepEqual(buildLookupCandidates({ sku: 'XD3' }), ['XD3', 'XD3A25PS']);
+});
+
 test('LG official finder fails closed when the support API returns no PDF rows', async () => {
   await assert.rejects(() => findLgOfficialPdf({ sku: 'UNKNOWN' }, {
     fetchImpl: async () => ({

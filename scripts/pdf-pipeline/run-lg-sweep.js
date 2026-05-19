@@ -108,6 +108,35 @@ function hasExistingRawEvidence(target, rawIndex) {
   return rawIndex.skus.has(normalizeSku(target.sku));
 }
 
+function loadCatalogFinalProducts(repoRoot) {
+  const catalog = readJson(path.join(repoRoot, 'data', 'catalog-final.json'), { products: [] });
+  if (Array.isArray(catalog.products)) return catalog.products;
+  return Object.values(catalog.products || {});
+}
+
+function isLgCatalogProduct(product = {}) {
+  return /\blg\b|lg electronics/i.test(String(product.brand || ''));
+}
+
+function hasRuntimePdfEvidence(product = {}) {
+  return product.data_source === 'official_pdf'
+    || product.evidence?.has_pdf_evidence === true
+    || Boolean(product.evidence?.raw_json_path);
+}
+
+function buildTargetFromCatalogProduct(product = {}) {
+  return {
+    id: product.id,
+    brand: product.brand || 'LG',
+    sku: product.model || product.sku,
+    category: product.cat || product.category,
+    product,
+    sourceUrl: '',
+    verifiedAlias: '',
+    entry: null
+  };
+}
+
 function collectLgSweepTargets({
   repoRoot = process.cwd(),
   includeExistingRaw = false
@@ -115,7 +144,7 @@ function collectLgSweepTargets({
   const manifest = readJson(path.join(repoRoot, 'data', 'manual-evidence.json'), { products: {} });
   const rawIndex = loadRawEvidenceIndex(repoRoot);
   const products = manifest.products || {};
-  return Object.entries(products)
+  const manifestTargets = Object.entries(products)
     .filter(([, entry]) => isLgEvidenceEntry(entry))
     .filter(([, entry]) => !isInvalidEntry(entry))
     .map(([id, entry]) => {
@@ -132,7 +161,18 @@ function collectLgSweepTargets({
       };
     })
     .filter((target) => target.sku)
-    .filter((target) => includeExistingRaw || !hasExistingRawEvidence(target, rawIndex))
+    .filter((target) => includeExistingRaw || !hasExistingRawEvidence(target, rawIndex));
+
+  const manifestIds = new Set(manifestTargets.map((target) => String(target.id)));
+  const catalogTargets = loadCatalogFinalProducts(repoRoot)
+    .filter((product) => product?.id && isLgCatalogProduct(product))
+    .filter((product) => !hasRuntimePdfEvidence(product))
+    .filter((product) => !manifestIds.has(String(product.id)))
+    .map(buildTargetFromCatalogProduct)
+    .filter((target) => target.sku)
+    .filter((target) => includeExistingRaw || !hasExistingRawEvidence(target, rawIndex));
+
+  return [...manifestTargets, ...catalogTargets]
     .sort((a, b) => {
       const sourceRank = Number(Boolean(b.sourceUrl)) - Number(Boolean(a.sourceUrl));
       return sourceRank || a.id.localeCompare(b.id);
@@ -258,7 +298,8 @@ async function runLgSweep({
       if (official?.sourceUrl) {
         sourceCandidates.push({
           sourceUrl: official.sourceUrl,
-          source: official.source || 'lg-official-support-manual'
+          source: official.source || 'lg-official-support-manual',
+          verifiedAlias: normalizeSku(official.lookupSku) !== normalizeSku(target.sku) ? official.lookupSku : ''
         });
       }
     } catch (error) {
@@ -307,7 +348,7 @@ async function runLgSweep({
             target,
             sourceUrl,
             extractionDate: runAt,
-            verifiedAlias: target.verifiedAlias
+            verifiedAlias: target.verifiedAlias || candidate.verifiedAlias
           });
           const validation = validateStrictImpl(parsed.data);
           if (!validation.valid) {

@@ -16,6 +16,22 @@ function normalizeLookupSku(value) {
     .replace(/[^A-Z0-9-]+/g, '');
 }
 
+function trimLookupSkuCandidate(value) {
+  const parts = normalizeLookupSku(value).split('-').filter(Boolean);
+  const kept = [];
+  for (const part of parts) {
+    if (
+      kept.length > 0
+      && (/^\d+(?:L|KG|CM|MM|PLACE|PLACES)$/i.test(part)
+        || /^(?:UPRIGHT|FREEZER|FRIDGE|REFRIGERATOR|BOTTOM|MOUNT|FRENCH|DOOR|WASHER|DRYER|COMBO|DISHWASHER|BLACK|WHITE|MATTE|PLATINUM|STAINLESS|FINISH|WITH)$/i.test(part))
+    ) {
+      break;
+    }
+    kept.push(part);
+  }
+  return kept.join('-') || normalizeLookupSku(value);
+}
+
 function collectPotentialLookupText(target = {}) {
   return [
     target.sku,
@@ -33,16 +49,33 @@ function collectPotentialLookupText(target = {}) {
 
 function extractLookupSkusFromText(text) {
   const source = String(text || '').toUpperCase();
-  const matches = [...source.matchAll(/\b(?:WWT|WXT|WK|WXLC|WXLS|WXL|WXC|WV|WTX|WTL|WTG|WTR|WTS|WD|DVH|DXH|XD|GF|GT|GB|GS|R)[A-Z0-9-]*\d[A-Z0-9-]*\b/g)]
-    .map((match) => normalizeLookupSku(match[0]))
+  const matches = [...source.matchAll(/\b(?:WWT|WXT|WK|WXLC|WXLS|WXL|WXC|WV|WTX|WTL|WTG|WTR|WTS|WD|DVH|DXH|XD|GF|GP|GT|GB|GS|MP|R)[A-Z0-9-]*\d[A-Z0-9-]*\b/g)]
+    .map((match) => trimLookupSkuCandidate(match[0]))
     .filter((sku) => sku.length >= 5);
   return matches;
+}
+
+function buildDerivedLookupCandidates(original) {
+  const sku = normalizeLookupSku(original);
+  const candidates = [];
+
+  if (sku === 'XD3') {
+    candidates.push('XD3A25PS');
+  }
+
+  const sideBySideMatch = sku.match(/^GS-([A-Z])B(\d{3}[A-Z0-9]*)$/);
+  if (sideBySideMatch) {
+    candidates.push(`GS-B${sideBySideMatch[2]}`);
+  }
+
+  return candidates;
 }
 
 function buildLookupCandidates(target = {}) {
   const original = normalizeLookupSku(target.sku || target.model || target.product?.model);
   const candidates = [
     original,
+    ...buildDerivedLookupCandidates(original),
     ...extractLookupSkusFromText(collectPotentialLookupText(target))
   ].filter(Boolean);
   return [...new Set(candidates)];
@@ -136,3 +169,4 @@ exports.getManualRows = getManualRows;
 exports.normalizeLookupSku = normalizeLookupSku;
 exports.normalizeSku = normalizeSku;
 exports.selectBestManualRow = selectBestManualRow;
+exports.trimLookupSkuCandidate = trimLookupSkuCandidate;
