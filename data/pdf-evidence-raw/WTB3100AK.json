@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3926",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WTB3100AK",
+  "source_url": "https://resource.electrolux.com.au/Public/File/?Id=53211",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WTB3100AK",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1646,
+      "width_mm": 598,
+      "depth_mm": 650,
+      "door_open_90_depth_mm": 1199
+    },
+    "clearance_requirements": {
+      "top_mm": 90,
+      "left_mm": 30,
+      "right_mm": 30,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://resource.electrolux.com.au/Public/File/?Id=53211",
+      "extraction_date": "2026-05-19T15:16:55.681Z",
+      "confidence_score": 0.9,
+      "source_type": "westinghouse-official-known-dimension_sheet"
+    }
+  }
+}
