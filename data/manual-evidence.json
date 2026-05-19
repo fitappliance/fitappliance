@@ -163878,6 +163878,402 @@
           }
         }
       ]
+    },
+    "fridge-arf3170": {
+      "category": "fridge",
+      "brand": "Robinhood",
+      "model": "RHBFD121W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHBFD121W_RHBFD121X_Manual_2023.08.10.pdf?v=1698203902",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/RHBFD121W.json",
+          "extracted": {
+            "brand": "Robinhood",
+            "sku": "RHBFD121W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 840,
+              "width_mm": 495,
+              "depth_mm": 560,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 200,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHBFD121W_RHBFD121X_Manual_2023.08.10.pdf?v=1698203902",
+              "extraction_date": "2026-05-19T21:59:36.243Z",
+              "confidence_score": 0.91,
+              "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2529": {
+      "category": "fridge",
+      "brand": "Robinhood",
+      "model": "RHBFD121X",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHBFD121W_RHBFD121X_Manual_2023.08.10.pdf?v=1698203902",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/RHBFD121X.json",
+          "extracted": {
+            "brand": "Robinhood",
+            "sku": "RHBFD121X",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 840,
+              "width_mm": 495,
+              "depth_mm": 560,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 200,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHBFD121W_RHBFD121X_Manual_2023.08.10.pdf?v=1698203902",
+              "extraction_date": "2026-05-19T21:59:36.430Z",
+              "confidence_score": 0.91,
+              "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2989": {
+      "category": "fridge",
+      "brand": "Robinhood",
+      "model": "RHBFD78W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/1596067461_205594944_RHBFD78W_RHBFD78X_IM_v1_18_12_2019.pdf?v=1616404845",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/RHBFD78W.json",
+          "extracted": {
+            "brand": "Robinhood",
+            "sku": "RHBFD78W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 700,
+              "width_mm": 480,
+              "depth_mm": 445,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 200,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/1596067461_205594944_RHBFD78W_RHBFD78X_IM_v1_18_12_2019.pdf?v=1616404845",
+              "extraction_date": "2026-05-19T22:00:02.534Z",
+              "confidence_score": 0.91,
+              "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2563": {
+      "category": "fridge",
+      "brand": "Robinhood",
+      "model": "RHUFZ168W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHUFZ168W_manual_09.07.25.pdf?v=1752204176",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/RHUFZ168W.json",
+          "extracted": {
+            "brand": "Robinhood",
+            "sku": "RHUFZ168W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1426,
+              "width_mm": 545,
+              "depth_mm": 571,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 200,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHUFZ168W_manual_09.07.25.pdf?v=1752204176",
+              "extraction_date": "2026-05-19T22:01:36.648Z",
+              "confidence_score": 0.91,
+              "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "dryer-zcd0112": {
+      "category": "dryer",
+      "brand": "Robinhood",
+      "model": "RHSD7W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHSD7W_Manual_2023.08.11_69bced83-f056-4f1f-ba7b-ea53621dfdf5.pdf?v=1692056689",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/RHSD7W.json",
+          "extracted": {
+            "brand": "Robinhood",
+            "sku": "RHSD7W",
+            "category": "DRYER",
+            "dimensions": {
+              "height_mm": 840,
+              "width_mm": 595,
+              "depth_mm": 555,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHSD7W_Manual_2023.08.11_69bced83-f056-4f1f-ba7b-ea53621dfdf5.pdf?v=1692056689",
+              "extraction_date": "2026-05-19T22:01:39.963Z",
+              "confidence_score": 0.91,
+              "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2593": {
+      "category": "fridge",
+      "brand": "Robinhood",
+      "model": "RHUFD242W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHUFD242W_manual_16.08.21.pdf?v=1669679279",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/RHUFD242W.json",
+          "extracted": {
+            "brand": "Robinhood",
+            "sku": "RHUFD242W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1426,
+              "width_mm": 545,
+              "depth_mm": 555,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 200,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHUFD242W_manual_16.08.21.pdf?v=1669679279",
+              "extraction_date": "2026-05-19T22:01:36.503Z",
+              "confidence_score": 0.91,
+              "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "dishwasher-adw1047": {
+      "category": "dishwasher",
+      "brand": "Robinhood",
+      "model": "RHDW45PS",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHDW45PS_Manual_2023.07.25.pdf?v=1692568186",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/RHDW45PS.json",
+          "extracted": {
+            "brand": "Robinhood",
+            "sku": "RHDW45PS",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 845,
+              "width_mm": 448,
+              "depth_mm": 600,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHDW45PS_Manual_2023.07.25.pdf?v=1692568186",
+              "extraction_date": "2026-05-19T22:01:38.947Z",
+              "confidence_score": 0.91,
+              "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "dishwasher-zdw0273": {
+      "category": "dishwasher",
+      "brand": "Robinhood",
+      "model": "RHDW613X",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHDW613W_RHDW613X_Manual_06.12.2024.pdf?v=1747882601",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/RHDW613X.json",
+          "extracted": {
+            "brand": "Robinhood",
+            "sku": "RHDW613X",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 845,
+              "width_mm": 598,
+              "depth_mm": 600,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHDW613W_RHDW613X_Manual_06.12.2024.pdf?v=1747882601",
+              "extraction_date": "2026-05-19T22:01:39.355Z",
+              "confidence_score": 0.91,
+              "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "dishwasher-adw1062": {
+      "category": "dishwasher",
+      "brand": "Robinhood",
+      "model": "RHFIDW55S",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHFIDW55S_Manual_2023.07.26.pdf?v=1692574043",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/RHFIDW55S.json",
+          "extracted": {
+            "brand": "Robinhood",
+            "sku": "RHFIDW55S",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 452,
+              "width_mm": 550,
+              "depth_mm": 518,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHFIDW55S_Manual_2023.07.26.pdf?v=1692574043",
+              "extraction_date": "2026-05-19T22:01:39.770Z",
+              "confidence_score": 0.91,
+              "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet"
+            }
+          }
+        }
+      ]
     }
   }
 }

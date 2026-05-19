@@ -1749,3 +1749,92 @@ test('writeBatchReport renders empty sections without throwing', () => {
   assert.match(report, /No significant discrepancies/);
   assert.match(report, /No failures/);
 });
+
+test('runBatch processes Robinhood targets with official manual plus technical sheet without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'robinhood-rhbfd121w',
+    brand: 'Robinhood',
+    sku: 'RHBFD121W',
+    category: 'fridge',
+    product: {
+      id: 'robinhood-rhbfd121w',
+      cat: 'fridge',
+      brand: 'Robinhood',
+      model: 'RHBFD121W',
+      w: 495,
+      h: 840,
+      d: 560,
+      unavailable: true
+    }
+  };
+  const fetchedUrls = [];
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    robinhoodOfficialFinder: async () => ({
+      sourceUrl: 'https://cdn.shopify.com/files/RHBFD121W_RHBFD121X_Manual.pdf',
+      source: 'robinhood-official-user_manual',
+      resourceType: 'user_manual',
+      resources: [
+        {
+          sourceUrl: 'https://cdn.shopify.com/files/RHBFD121W_RHBFD121X_Manual.pdf',
+          source: 'robinhood-official-user_manual',
+          resourceType: 'user_manual',
+          score: 190
+        },
+        {
+          sourceUrl: 'https://cdn.shopify.com/files/RHBFD121X_RHBFD121W_Technical_Sheet.pdf',
+          source: 'robinhood-official-specification_sheet',
+          resourceType: 'specification_sheet',
+          score: 180
+        }
+      ]
+    }),
+    fetchPdfImpl: async (url) => {
+      fetchedUrls.push(url);
+      return { path: url, cached: false, bytes: 12 };
+    },
+    extractTextImpl: async (url) => {
+      if (String(url).includes('Manual')) {
+        return {
+          text: `
+            ROBINHOOD BAR FRIDGE 121L
+            Model Numbers: RHBFD121W, RHBFD121X
+            Allow at least 10 cm of space around the back and sides of the appliance,
+            which allows the proper air circulation, and at least 20cm above the unit.
+          `,
+          pageCount: 1,
+          info: {}
+        };
+      }
+      return {
+        text: `
+          ROBINHOOD BAR FRIDGE 121L STAINLESS STEEL & WHITE
+          RHBFD121X (Stainless Steel); RHBFD121W (White)
+          Product Dimension (mm) W495 x D560 x H840
+        `,
+        pageCount: 1,
+        info: {}
+      };
+    },
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.deepEqual(fetchedUrls, [
+    'https://cdn.shopify.com/files/RHBFD121W_RHBFD121X_Manual.pdf',
+    'https://cdn.shopify.com/files/RHBFD121X_RHBFD121W_Technical_Sheet.pdf'
+  ]);
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'RHBFD121W.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 200,
+    left_mm: 100,
+    right_mm: 100,
+    rear_mm: 100
+  });
+});

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3170",
+  "category": "fridge",
+  "brand": "Robinhood",
+  "model": "RHBFD121W",
+  "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHBFD121W_RHBFD121X_Manual_2023.08.10.pdf?v=1698203902",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Robinhood",
+    "sku": "RHBFD121W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 840,
+      "width_mm": 495,
+      "depth_mm": 560,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 200,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 100
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHBFD121W_RHBFD121X_Manual_2023.08.10.pdf?v=1698203902",
+      "extraction_date": "2026-05-19T21:59:36.243Z",
+      "confidence_score": 0.91,
+      "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet"
+    }
+  }
+}

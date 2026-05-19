@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1686,
-    "merged_products": 1669,
+    "evidence_files": 1695,
+    "merged_products": 1678,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -26,9 +26,9 @@
       "washtower_combo": 2
     },
     "official_pdf_by_category": {
-      "dishwasher": 376,
-      "dryer": 99,
-      "fridge": 930,
+      "dishwasher": 379,
+      "dryer": 100,
+      "fridge": 935,
       "washing_machine": 262,
       "washtower_combo": 2
     }
@@ -28435,6 +28435,15 @@
       "displayName": "Miele Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738280_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "FNS7740F",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/FNS-7740-F.json"
+      },
       "dimensions": {
         "height_mm": 1770,
         "width_mm": 559,
@@ -28452,16 +28461,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738280_OVE_OV-en-CE.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "verified_alias": "FNS7740F",
-        "source_type": "miele-official-product-sheet",
-        "raw_json_path": "data/pdf-evidence-raw/FNS-7740-F.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2919",
@@ -28488,6 +28488,15 @@
       "displayName": "Miele Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738290_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "FNS7794E",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/FNS-7794-E.json"
+      },
       "dimensions": {
         "height_mm": 1770,
         "width_mm": 559,
@@ -28505,16 +28514,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738290_OVE_OV-en-CE.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "verified_alias": "FNS7794E",
-        "source_type": "miele-official-product-sheet",
-        "raw_json_path": "data/pdf-evidence-raw/FNS-7794-E.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3058",
@@ -28878,6 +28878,15 @@
       "displayName": "Miele Active",
       "readableSpec": "Upright",
       "priorityScore": 66,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_12426100_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "KFNS7734D",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/KFNS-7734-D.json"
+      },
       "dimensions": {
         "height_mm": 1770,
         "width_mm": 559,
@@ -28895,16 +28904,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://media.miele.com/downloads/n-/ce/FS_12426100_OVE_OV-en-CE.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "verified_alias": "KFNS7734D",
-        "source_type": "miele-official-product-sheet",
-        "raw_json_path": "data/pdf-evidence-raw/KFNS-7734-D.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2695",
@@ -28931,6 +28931,15 @@
       "displayName": "Miele Active",
       "readableSpec": "Upright",
       "priorityScore": 66,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738320_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "KFNS7784D",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/KFNS-7784-D.json"
+      },
       "dimensions": {
         "height_mm": 1770,
         "width_mm": 559,
@@ -28948,16 +28957,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738320_OVE_OV-en-CE.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "verified_alias": "KFNS7784D",
-        "source_type": "miele-official-product-sheet",
-        "raw_json_path": "data/pdf-evidence-raw/KFNS-7784-D.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2693",
@@ -28984,6 +28984,15 @@
       "displayName": "Miele Active",
       "readableSpec": "Upright",
       "priorityScore": 66,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738340_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "KFNS7785D",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/KFNS-7785-D.json"
+      },
       "dimensions": {
         "height_mm": 1770,
         "width_mm": 559,
@@ -29001,16 +29010,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738340_OVE_OV-en-CE.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "verified_alias": "KFNS7785D",
-        "source_type": "miele-official-product-sheet",
-        "raw_json_path": "data/pdf-evidence-raw/KFNS-7785-D.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2694",
@@ -29037,6 +29037,15 @@
       "displayName": "Miele Active",
       "readableSpec": "Upright",
       "priorityScore": 66,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738390_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "KFNS7795D",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/KFNS-7795-D.json"
+      },
       "dimensions": {
         "height_mm": 1770,
         "width_mm": 559,
@@ -29054,16 +29063,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738390_OVE_OV-en-CE.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "verified_alias": "KFNS7795D",
-        "source_type": "miele-official-product-sheet",
-        "raw_json_path": "data/pdf-evidence-raw/KFNS-7795-D.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3883",
@@ -29217,6 +29217,15 @@
       "displayName": "Miele Fridge",
       "readableSpec": "Upright",
       "priorityScore": 66,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738400_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "KS7743E",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/KS-7743-E.json"
+      },
       "dimensions": {
         "height_mm": 1770,
         "width_mm": 559,
@@ -29234,16 +29243,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738400_OVE_OV-en-CE.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "verified_alias": "KS7743E",
-        "source_type": "miele-official-product-sheet",
-        "raw_json_path": "data/pdf-evidence-raw/KS-7743-E.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2992",
@@ -29269,6 +29269,15 @@
       "displayName": "Miele Fridge",
       "readableSpec": "Upright",
       "priorityScore": 66,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738410_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "KS7793D",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/KS-7793-D.json"
+      },
       "dimensions": {
         "height_mm": 1770,
         "width_mm": 559,
@@ -29286,16 +29295,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738410_OVE_OV-en-CE.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "verified_alias": "KS7793D",
-        "source_type": "miele-official-product-sheet",
-        "raw_json_path": "data/pdf-evidence-raw/KS-7793-D.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2909",
@@ -32442,7 +32442,33 @@
       "inferred_door_swing": true,
       "displayName": "Robinhood Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 840,
+        "width_mm": 495,
+        "depth_mm": 560,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHBFD121W_RHBFD121X_Manual_2023.08.10.pdf?v=1698203902",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/RHBFD121W.json"
+      }
     },
     {
       "id": "fridge-arf2529",
@@ -32468,7 +32494,33 @@
       "inferred_door_swing": true,
       "displayName": "Robinhood Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 840,
+        "width_mm": 495,
+        "depth_mm": 560,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHBFD121W_RHBFD121X_Manual_2023.08.10.pdf?v=1698203902",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/RHBFD121X.json"
+      }
     },
     {
       "id": "fridge-arf2990",
@@ -32503,7 +32555,7 @@
       "model": "RHBFD78W",
       "w": 480,
       "h": 700,
-      "d": 450,
+      "d": 445,
       "kwh_year": 124,
       "stars": 3,
       "price": null,
@@ -32520,7 +32572,33 @@
       "inferred_door_swing": true,
       "displayName": "Robinhood Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 700,
+        "width_mm": 480,
+        "depth_mm": 445,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/1596067461_205594944_RHBFD78W_RHBFD78X_IM_v1_18_12_2019.pdf?v=1616404845",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/RHBFD78W.json"
+      }
     },
     {
       "id": "fridge-zrf0917",
@@ -32891,9 +32969,9 @@
       "cat": "fridge",
       "brand": "Robinhood",
       "model": "RHUFD242W",
-      "w": 544,
+      "w": 545,
       "h": 1426,
-      "d": 556,
+      "d": 555,
       "kwh_year": 130,
       "stars": 5,
       "price": null,
@@ -32910,14 +32988,40 @@
       "inferred_door_swing": true,
       "displayName": "Robinhood Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 1426,
+        "width_mm": 545,
+        "depth_mm": 555,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHUFD242W_manual_16.08.21.pdf?v=1669679279",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/RHUFD242W.json"
+      }
     },
     {
       "id": "fridge-arf2563",
       "cat": "fridge",
       "brand": "Robinhood",
       "model": "RHUFZ168W",
-      "w": 544,
+      "w": 545,
       "h": 1426,
       "d": 571,
       "kwh_year": 236,
@@ -32936,7 +33040,33 @@
       "inferred_door_swing": true,
       "displayName": "Robinhood Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 1426,
+        "width_mm": 545,
+        "depth_mm": 571,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHUFZ168W_manual_09.07.25.pdf?v=1752204176",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/RHUFZ168W.json"
+      }
     },
     {
       "id": "fridge-arf3171",
@@ -50964,15 +51094,41 @@
       "inferred_door_swing": true,
       "displayName": "Robinhood Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 448,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHDW45PS_Manual_2023.07.25.pdf?v=1692568186",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/RHDW45PS.json"
+      }
     },
     {
       "id": "dishwasher-zdw0273",
       "cat": "dishwasher",
       "brand": "Robinhood",
       "model": "RHDW613X",
-      "w": 600,
-      "h": 850,
+      "w": 598,
+      "h": 845,
       "d": 600,
       "kwh_year": 293,
       "stars": 3,
@@ -50989,7 +51145,33 @@
       "inferred_door_swing": true,
       "displayName": "Robinhood Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 598,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHDW613W_RHDW613X_Manual_06.12.2024.pdf?v=1747882601",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/RHDW613X.json"
+      }
     },
     {
       "id": "dishwasher-adw1062",
@@ -51014,7 +51196,33 @@
       "inferred_door_swing": true,
       "displayName": "Robinhood Dishwasher",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 452,
+        "width_mm": 550,
+        "depth_mm": 518,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHFIDW55S_Manual_2023.07.26.pdf?v=1692574043",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/RHFIDW55S.json"
+      }
     },
     {
       "id": "d3",
@@ -54399,7 +54607,33 @@
       "inferred_door_swing": true,
       "displayName": "Robinhood Dryer",
       "readableSpec": "Vented",
-      "priorityScore": 12
+      "priorityScore": 12,
+      "dimensions": {
+        "height_mm": 840,
+        "width_mm": 595,
+        "depth_mm": 555,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHSD7W_Manual_2023.08.11_69bced83-f056-4f1f-ba7b-ea53621dfdf5.pdf?v=1692056689",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/RHSD7W.json"
+      }
     },
     {
       "id": "dryer-zcd0114",
