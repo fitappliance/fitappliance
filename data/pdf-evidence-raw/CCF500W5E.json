@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3555",
+  "category": "fridge",
+  "brand": "CHIQ",
+  "model": "CCF500W5E",
+  "source_url": "https://chiq.com.au/cdn/shop/files/CCF500W5E_SPEC.pdf",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "CHiQ",
+    "sku": "CCF500W5E",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 835,
+      "width_mm": 1650,
+      "depth_mm": 735,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://chiq.com.au/cdn/shop/files/CCF500W5E_SPEC.pdf",
+      "extraction_date": "2026-05-19T15:41:47.963Z",
+      "confidence_score": 0.9,
+      "source_type": "chiq-official-spec_sheet"
+    }
+  }
+}

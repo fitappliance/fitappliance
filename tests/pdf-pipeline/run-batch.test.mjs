@@ -821,6 +821,64 @@ test('runBatch processes Hisense targets with the official finder and parser wit
   });
 });
 
+test('runBatch processes CHIQ targets with the official finder and parser without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'chiq-cbc064bg',
+    brand: 'CHIQ',
+    sku: 'CBC064BG',
+    category: 'fridge',
+    product: {
+      id: 'chiq-cbc064bg',
+      cat: 'fridge',
+      brand: 'CHIQ',
+      model: 'CBC064BG',
+      w: 470,
+      h: 635,
+      d: 439,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    chiqOfficialFinder: async () => ({
+      sourceUrl: 'https://chiq.com.au/cdn/shop/files/CBC064BG_SPEC.pdf',
+      source: 'chiq-official-spec_sheet',
+      resourceType: 'spec_sheet'
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        CBC064BG
+        Product Dimensions
+        (WHD)mm
+        470 x 635 x 439
+        Ventilation Requirements
+        5 cm Left & Right sides
+        5 cm Back
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'chiq-official-spec_sheet');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'CBC064BG.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 50,
+    right_mm: 50,
+    rear_mm: 50
+  });
+});
+
 test('runBatch preserves Samsung verified_alias metadata from manual evidence', async () => {
   const repoRoot = makeRepo();
   const target = {

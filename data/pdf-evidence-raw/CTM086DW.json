@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3200",
+  "category": "fridge",
+  "brand": "CHIQ",
+  "model": "CTM086DW",
+  "source_url": "https://chiq.com.au/cdn/shop/files/CTM086DW_SPEC.pdf",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "CHiQ",
+    "sku": "CTM086DW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 845,
+      "width_mm": 470,
+      "depth_mm": 500,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://chiq.com.au/cdn/shop/files/CTM086DW_SPEC.pdf",
+      "extraction_date": "2026-05-19T15:42:16.162Z",
+      "confidence_score": 0.9,
+      "source_type": "chiq-official-spec_sheet"
+    }
+  }
+}

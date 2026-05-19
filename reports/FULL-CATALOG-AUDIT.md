@@ -5,9 +5,9 @@ Generated: 2026-05-19
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1623
-- Missing PDF evidence: 1918
-- Overall coverage: 45.8%
+- Verified with PDF evidence: 1648
+- Missing PDF evidence: 1893
+- Overall coverage: 46.5%
 
 ## Coverage By Brand
 
@@ -26,7 +26,7 @@ Generated: 2026-05-19
 | Miele | 86 | 25 | 61 | 29.1% |
 | Electrolux | 85 | 55 | 30 | 64.7% |
 | Beko | 82 | 82 | 0 | 100.0% |
-| CHIQ | 82 | 14 | 68 | 17.1% |
+| CHIQ | 82 | 39 | 43 | 47.6% |
 | Omega | 65 | 23 | 42 | 35.4% |
 | Kogan | 60 | 0 | 60 | 0.0% |
 | CHiQ | 53 | 53 | 0 | 100.0% |
