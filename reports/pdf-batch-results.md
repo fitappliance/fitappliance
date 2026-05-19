@@ -1,12 +1,10 @@
 # PDF Batch Results
 
-Run at: 2026-05-19T18:19:02.119Z
+Run at: 2026-05-19T19:12:16.873Z
 
 ## Successful Runs
 
-| SKU | Product | Category | Confidence | Source |
-| --- | --- | --- | ---: | --- |
-| MDW6099B15BDX | Midea | dishwasher | 0.9 | https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/kitchen%20appliances/dishwashers/mdw6099b15bdx/MDW6099B15BDX-60cm-15-Place-Dishwasher-Easy-Lift-Spec-Sheet.pdf |
+No successful runs.
 
 ## Significant Discrepancies
 
@@ -16,69 +14,64 @@ No significant discrepancies.
 
 | SKU | Product | Reason |
 | --- | --- | --- |
-| 353483 | Midea | Midea product page not found for 353483 |
-| MDRC284FZE01APE | Midea | Midea FRIDGE parser requires explicit clearance rules before ingest. |
-| MDRC499FZF01AP | Midea | Midea FRIDGE parser requires explicit clearance rules before ingest. |
-| MDRC698FZM01AP | Midea | Midea product page not found for MDRC698FZM01AP |
-| MDRD130FGF01AP | Midea | Midea product page not found for MDRD130FGF01AP |
-| MDRD181FGF01AP | Midea | Midea product page not found for MDRD181FGF01AP |
-| MDRF632FGD46APW | Midea | Midea FRIDGE parser requires explicit clearance rules before ingest. |
-| MDRT134FGF09AP | Midea | Midea product page not found for MDRT134FGF09AP |
-| MDRT346MTF28AP | Midea | Midea product page not found for MDRT346MTF28AP |
-| MDRT489MTE01AP | Midea | Midea product page not found for MDRT489MTE01AP |
-| MDRT580MTF45AP | Midea | PDF fetch failed with HTTP 404 |
-| MDRU229FGF01AP | Midea | Midea product page not found for MDRU229FGF01AP |
-| MDRU333FGF02AP | Midea | Midea product page not found for MDRU333FGF02AP |
-| MERB430FGF28AP | Midea | Midea product page not found for MERB430FGF28AP |
-| MERC151FZFO1AP | Midea | Midea product page not found for MERC151FZFO1AP |
-| MERC280FZF01APE | Midea | Midea product page not found for MERC280FZF01APE |
-| MERC405FZF01APE | Midea | Midea product page not found for MERC405FZF01APE |
-| MERD181FGF30AP | Midea | Midea product page not found for MERD181FGF30AP |
-| MERF632FIF28APD | Midea | Midea product page not found for MERF632FIF28APD |
-| MERS79IMYEDXAP | Midea | Midea product page not found for MERS79IMYEDXAP |
-| MERT134FGF30AP | Midea | Midea product page not found for MERT134FGF30AP |
-| 340251 | Midea | Midea product page not found for 340251 |
-| 340454 | Midea | Midea product page not found for 340454 |
-| 340457 | Midea | Midea product page not found for 340457 |
-| 340458 | Midea | Midea product page not found for 340458 |
-| 340460 | Midea | Midea product page not found for 340460 |
-| 340520 | Midea | Midea product page not found for 340520 |
-| 340535 | Midea | Midea product page not found for 340535 |
-| 340607 | Midea | Midea product page not found for 340607 |
-| 340645 | Midea | Midea product page not found for 340645 |
-| MDW15GSS | Midea | Midea product page not found for MDW15GSS |
-| MDW4581F9UX | Midea | Midea product page not found for MDW4581F9UX |
-| MDW6063F12UX | Midea | Midea product page not found for MDW6063F12UX |
-| MDW6065F14UX | Midea | Midea dishwasher parser requires explicit cabinet opening dimensions. |
-| MDW6094F15BX | Midea | Midea product page not found for MDW6094F15BX |
-| MDWB1W | Midea | Midea product page not found for MDWB1W |
-| MDWMINIS | Midea | Midea product page not found for MDWMINIS |
-| MDWPF1433F(SS)-WG | Midea | Midea dishwasher parser requires explicit cabinet opening dimensions. |
-| MDWSDSS | Midea | Midea product page not found for MDWSDSS |
-| WQP12-5201C | Midea | Midea product page not found for WQP12-5201C |
-| WQP12-7609S-AU | Midea | Midea product page not found for WQP12-7609S-AU |
-| WQP12-9501A-AU | Midea | Midea product page not found for WQP12-9501A-AU |
-| WQP4-2605 | Midea | Midea product page not found for WQP4-2605 |
-| 361176 MDS70-VR072/A04-AU | Midea | Midea product page not found for 361176 MDS70-VR072/A04-AU |
-| DMDV70 | Midea | Midea product page not found for DMDV70 |
-| 360117 MAE100-2004TPS/01FM-AU-P1 | Midea | Midea product page not found for 360117 MAE100-2004TPS/01FM-AU-P1 |
-| 360174  MAE70-504TPS/01FM-AU-S1 | Midea | Midea product page not found for 360174  MAE70-504TPS/01FM-AU-S1 |
-| 360192  MAE90-804TPS/01FM-AU | Midea | Midea product page not found for 360192  MAE90-804TPS/01FM-AU |
-| 360220 MFM110-U1401B/C19E-AU | Midea | Midea product page not found for 360220 MFM110-U1401B/C19E-AU |
-| 360315 MFM80-DU1401B/C19E-AU | Midea | Midea product page not found for 360315 MFM80-DU1401B/C19E-AU |
-| 360463 MFN60-JU1209B/D03E-AU | Midea | Midea product page not found for 360463 MFN60-JU1209B/D03E-AU |
-| 360487 MFM80-U1401B/C14E-AU | Midea | Midea product page not found for 360487 MFM80-U1401B/C14E-AU |
-| 360489 MFN80-U1409B/D03E-AU | Midea | Midea product page not found for 360489 MFN80-U1409B/D03E-AU |
-| 360496 MFL100-JM1415BIM/H01EPW-AU(5) | Midea | Midea product page not found for 360496 MFL100-JM1415BIM/H01EPW-AU(5) |
-| DMWM55G2 | Midea | Midea product page not found for DMWM55G2 |
-| MF110W80B/W-AU | Midea | Midea WASHING_MACHINE parser requires explicit clearance rules before ingest. |
-| MF110W90B/W-AU | Midea | Midea product page not found for MF110W90B/W-AU |
-| MF200W100WB/T | Midea | Midea WASHING_MACHINE parser requires explicit clearance rules before ingest. |
-| MF200W90WB/W | Midea | Midea parser could not verify SKU MF200W90WB/W against document text or official source URL. |
-| MF210W100BW | Midea | Midea PDF not found: https://www.midea.com/au/laundry/washing-machines/front-load/midea-mf210-front-load-washer-mf210w100bw.mf210w100bw: no manualsdownload endpoint |
-| MF210W80BW | Midea | Midea product page not found for MF210W80BW |
-| MF210W90BW | Midea | Midea PDF not found: https://www.midea.com/au/laundry/washing-machines/front-load/midea-mf-210-front-load-washer-mf210w90bw.mf210w90bw: no manualsdownload endpoint |
-| MT512W100RDW | Midea | Midea product page not found for MT512W100RDW |
-| MT512W70RUW | Midea | Midea product page not found for MT512W70RUW |
-| MT512W80RUW | Midea | Midea WASHING_MACHINE parser requires explicit clearance rules before ingest. |
-| MT512W90RUW | Midea | Midea WASHING_MACHINE parser requires explicit clearance rules before ingest. |
+| F 2671 Vi | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| FNS 37402 i | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| FNS 4382 E edt/cs | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| FNS 4782 E bst | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| FNS 4782 E edt/cs | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| FNS 7740 F | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| FNS 7794 E | Miele | Miele parser could not verify SKU FNS 7794 E against document model aliases. |
+| K 2601 Vi | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| K 2802 Vi | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| K 31222 Ui | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KF 2981 Vi | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KFN 28032D ws | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KFN 4375 DD edt/cs | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KFN 4776 ED | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KFNS 37432 iD | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KFNS 37452 iDE | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KFNS 37682 iD | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KFNS 37692 iDE | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KFNS 7734 D | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KFNS 7784 D | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KFNS 7785 D | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KFNS 7795 D | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KS 37422 iD | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KS 37472 iD | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KS 4383 ED edt/cs | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KS 4783 ED bst | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KS 4783 ED edt/cs | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KS 7743 E | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KS 7793 D | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| G 4980 Vi | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| G 5000 | Miele | Miele parser requires explicit niche dimensions. |
+| G 5000 SC | Miele | Miele parser requires explicit niche dimensions. |
+| G 5210 SC | Miele | Miele parser requires explicit niche dimensions. |
+| G 5430 SCi | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| G 6999 SCVi XXL | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| G 6xxx | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| G 7130 SC | Miele | Miele parser could not verify SKU G 7130 SC against document model aliases. |
+| G 7185 SCVi XXL | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| G 7719 SCi XXL | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| G7314SCU | Miele | Miele parser requires explicit niche dimensions. |
+| G7969SCVi | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WCA020 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WDD 030 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WEA125 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WQ 1200 WPS | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WTD 161 WCS | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WTD160WCS | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WTH 130 WPM | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WTR 871 WPM | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WTR870WPM | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WTW 871 WPM | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WTW870WPM | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WTZH 730 WPM | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WWB360 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WWD164 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WWH860 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WWI 860 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WWI 861 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WWR 860 WPS | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WWR 861 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| WWV 980 WPS | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
