@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source": "data/manual-evidence.json",
-  "last_updated": "2026-05-15",
+  "last_updated": "2026-05-19",
   "products": {
     "ao-100087": {
       "product_id": "ao-100087",
@@ -23895,6 +23895,18 @@
       "verified_at": "2026-05-15",
       "confidence_score": 0.88
     },
+    "dishwasher-adw1132": {
+      "product_id": "dishwasher-adw1132",
+      "status": "pending",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD4B24UPS",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
     "dishwasher-adw1146": {
       "product_id": "dishwasher-adw1146",
       "status": "verified",
@@ -24147,6 +24159,18 @@
       "verified_at": "2026-05-15",
       "confidence_score": 0.9
     },
+    "fridge-arf2311": {
+      "product_id": "fridge-arf2311",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-V570PNL",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
     "fridge-arf2320": {
       "product_id": "fridge-arf2320",
       "status": "verified",
@@ -24339,6 +24363,90 @@
       "verified_at": "2026-05-15",
       "confidence_score": 0.9
     },
+    "fridge-arf2546": {
+      "product_id": "fridge-arf2546",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-L677SL",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "fridge-arf2548": {
+      "product_id": "fridge-arf2548",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-B590BLE",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "fridge-arf2569": {
+      "product_id": "fridge-arf2569",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "MF-B664",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "fridge-arf2596": {
+      "product_id": "fridge-arf2596",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-V635PLC",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "fridge-arf2597": {
+      "product_id": "fridge-arf2597",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "MP-F324",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=feLeOVbe7DABWnJeatsRg",
+      "verified_at": "2026-05-19",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2599": {
+      "product_id": "fridge-arf2599",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-L635PLF",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "fridge-arf2603": {
+      "product_id": "fridge-arf2603",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-VB655PL",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
     "fridge-arf2606": {
       "product_id": "fridge-arf2606",
       "status": "verified",
@@ -24350,6 +24458,18 @@
       "source_url": "https://gscs-b2c.lge.com/downloadFile?fileId=TCA8L39ERMmdd8YMLQNkbg",
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
+    },
+    "fridge-arf2608": {
+      "product_id": "fridge-arf2608",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-D635PLC",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
     },
     "fridge-arf2647": {
       "product_id": "fridge-arf2647",
@@ -24411,6 +24531,18 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "fridge-arf2762": {
+      "product_id": "fridge-arf2762",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GT-5W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
     "fridge-arf2763": {
       "product_id": "fridge-arf2763",
       "status": "verified",
@@ -24422,6 +24554,30 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qnKDotrworMx9VsLukCvw",
       "verified_at": "2026-05-15",
       "confidence_score": 0.9
+    },
+    "fridge-arf2773": {
+      "product_id": "fridge-arf2773",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-V570MBLC",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "fridge-arf2790": {
+      "product_id": "fridge-arf2790",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GT-4W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
     },
     "fridge-arf2831": {
       "product_id": "fridge-arf2831",
@@ -24458,6 +24614,18 @@
       "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw19e549a9/QRG/AU/QRG-AU-26198.pdf",
       "verified_at": "2026-05-15",
       "confidence_score": 0.85
+    },
+    "fridge-arf2853": {
+      "product_id": "fridge-arf2853",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-B530BL",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
     },
     "fridge-arf2860": {
       "product_id": "fridge-arf2860",
@@ -24591,6 +24759,18 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "fridge-arf3069": {
+      "product_id": "fridge-arf3069",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GT-1S",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
     "fridge-arf3074": {
       "product_id": "fridge-arf3074",
       "status": "verified",
@@ -24638,6 +24818,30 @@
       "source_url": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf",
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
+    },
+    "fridge-arf3095": {
+      "product_id": "fridge-arf3095",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-D700MBLC",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "fridge-arf3096": {
+      "product_id": "fridge-arf3096",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-MV600",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
     },
     "fridge-arf3177": {
       "product_id": "fridge-arf3177",
@@ -24687,6 +24891,18 @@
       "verified_at": "2026-05-15",
       "confidence_score": 0.85
     },
+    "fridge-arf3215": {
+      "product_id": "fridge-arf3215",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-N600PL",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
     "fridge-arf3244": {
       "product_id": "fridge-arf3244",
       "status": "verified",
@@ -24710,6 +24926,42 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=j2YvjRAcs71zGaEKRiNdQ",
       "verified_at": "2026-05-15",
       "confidence_score": 0.9
+    },
+    "fridge-arf3255": {
+      "product_id": "fridge-arf3255",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-D600MBLC",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "fridge-arf3257": {
+      "product_id": "fridge-arf3257",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-V600MBLC",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "fridge-arf3259": {
+      "product_id": "fridge-arf3259",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-B600MBL",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
     },
     "fridge-arf3292": {
       "product_id": "fridge-arf3292",
@@ -24771,6 +25023,42 @@
       "verified_at": "2026-05-15",
       "confidence_score": 0.85
     },
+    "fridge-arf3369": {
+      "product_id": "fridge-arf3369",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-B599PL",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "fridge-arf3380": {
+      "product_id": "fridge-arf3380",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GT-8S",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "fridge-arf3383": {
+      "product_id": "fridge-arf3383",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-B500MB",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
     "fridge-arf3396": {
       "product_id": "fridge-arf3396",
       "status": "verified",
@@ -24782,6 +25070,30 @@
       "source_url": "https://chiq.com.au/cdn/shop/files/CTM200NSS5E_SPEC.pdf",
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
+    },
+    "fridge-arf3411": {
+      "product_id": "fridge-arf3411",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GB-B300MBL",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "fridge-arf3412": {
+      "product_id": "fridge-arf3412",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GB-W300MBL",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
     },
     "fridge-arf3423": {
       "product_id": "fridge-arf3423",
@@ -24795,6 +25107,18 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "fridge-arf3451": {
+      "product_id": "fridge-arf3451",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GB-V300MBL",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
     "fridge-arf3453": {
       "product_id": "fridge-arf3453",
       "status": "verified",
@@ -24806,6 +25130,30 @@
       "source_url": "https://dtc-aus-api.hisense.com/medias/HRCD640TBW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNjYzMDR8YXBwbGljYXRpb24vcGRmfGFERm1MMmhsTXk4NE9EQTBNVEF3T0RZMk1EYzRMMGhTUTBRMk5EQlVRbGN0VTNCbFl5NXdaR1l8MGRhNTM3OGQyMDRhMTM4MzA5YmQyMTA0ZTIzZDVjMDNjYzYxMzBhZGMzNmFhNGJlYTYwYTM2MGZiYTRhYmYyMw",
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
+    },
+    "fridge-arf3458": {
+      "product_id": "fridge-arf3458",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GT-7MB",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "fridge-arf3463": {
+      "product_id": "fridge-arf3463",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-B400P",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
     },
     "fridge-arf3501": {
       "product_id": "fridge-arf3501",
@@ -24842,6 +25190,18 @@
       "source_url": "https://hisense.co.nz/wp-content/uploads/2025/08/HRBF46-Consumer-Specs.pdf",
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
+    },
+    "fridge-arf3517": {
+      "product_id": "fridge-arf3517",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-B599PLB",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
     },
     "fridge-arf3523": {
       "product_id": "fridge-arf3523",
@@ -24938,6 +25298,30 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=sy7QbebvamiaOLA1j1WoBg",
       "verified_at": "2026-05-15",
       "confidence_score": 0.9
+    },
+    "fridge-arf3675": {
+      "product_id": "fridge-arf3675",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-VN600BM",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "fridge-arf3780": {
+      "product_id": "fridge-arf3780",
+      "status": "pending",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-D600BML",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
     },
     "fridge-arf3822": {
       "product_id": "fridge-arf3822",
@@ -25119,6 +25503,54 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "washing_machine-acw1125": {
+      "product_id": "washing_machine-acw1125",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WD1216HTE",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1178": {
+      "product_id": "washing_machine-acw1178",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WD1610NSW",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1182": {
+      "product_id": "washing_machine-acw1182",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WV10-1412W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1185": {
+      "product_id": "washing_machine-acw1185",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WV10-1410W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
     "washing_machine-acw1231": {
       "product_id": "washing_machine-acw1231",
       "status": "verified",
@@ -25155,6 +25587,54 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "washing_machine-acw1268": {
+      "product_id": "washing_machine-acw1268",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WV9-1609B",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1274": {
+      "product_id": "washing_machine-acw1274",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTG6520",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1276": {
+      "product_id": "washing_machine-acw1276",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WV9-1610B",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1293": {
+      "product_id": "washing_machine-acw1293",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WVC9-1412W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
     "washing_machine-acw1306": {
       "product_id": "washing_machine-acw1306",
       "status": "verified",
@@ -25190,6 +25670,42 @@
       "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw96ed6823/QRG/AU/QRG-AU-92299.pdf",
       "verified_at": "2026-05-15",
       "confidence_score": 0.85
+    },
+    "washing_machine-acw1332": {
+      "product_id": "washing_machine-acw1332",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTG8020W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1335": {
+      "product_id": "washing_machine-acw1335",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTL3-09G",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1336": {
+      "product_id": "washing_machine-acw1336",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTL9-14W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
     },
     "washing_machine-acw1341": {
       "product_id": "washing_machine-acw1341",
@@ -25251,6 +25767,42 @@
       "verified_at": "2026-05-15",
       "confidence_score": 0.85
     },
+    "washing_machine-acw1412": {
+      "product_id": "washing_machine-acw1412",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTG1434BHF",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1415": {
+      "product_id": "washing_machine-acw1415",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTG8521",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1417": {
+      "product_id": "washing_machine-acw1417",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTG1234WF",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
     "washing_machine-acw1423": {
       "product_id": "washing_machine-acw1423",
       "status": "verified",
@@ -25263,6 +25815,54 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "washing_machine-acw1427": {
+      "product_id": "washing_machine-acw1427",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WXLS-1014G",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1443": {
+      "product_id": "washing_machine-acw1443",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WV5-1275W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1447": {
+      "product_id": "washing_machine-acw1447",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WV6-1409W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1450": {
+      "product_id": "washing_machine-acw1450",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WV1-1208W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
     "washing_machine-acw1454": {
       "product_id": "washing_machine-acw1454",
       "status": "verified",
@@ -25274,6 +25874,30 @@
       "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf26f4376/QRG/AU/QRG-AU-92275.pdf",
       "verified_at": "2026-05-15",
       "confidence_score": 0.85
+    },
+    "washing_machine-acw1455": {
+      "product_id": "washing_machine-acw1455",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTG7520",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1456": {
+      "product_id": "washing_machine-acw1456",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTL1-85W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
     },
     "washing_machine-acw1462": {
       "product_id": "washing_machine-acw1462",
@@ -25311,6 +25935,66 @@
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
     },
+    "washing_machine-acw1484": {
+      "product_id": "washing_machine-acw1484",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WVC5-1409W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1505": {
+      "product_id": "washing_machine-acw1505",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WXLC-1016GX",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1506": {
+      "product_id": "washing_machine-acw1506",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WX9-1409W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1507": {
+      "product_id": "washing_machine-acw1507",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WX9-1410MB",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1515": {
+      "product_id": "washing_machine-acw1515",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTX10-16G",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
     "washing_machine-acw1520": {
       "product_id": "washing_machine-acw1520",
       "status": "verified",
@@ -25322,6 +26006,66 @@
       "source_url": "https://dtc-aus-api.hisense.com/medias/HWF8i1015B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjcxMDd8YXBwbGljYXRpb24vcGRmfGFHTmhMMmc0WlM4NE9EQTNNRGM0TURBeU56RTRMMGhYUmpocE1UQXhOVUl0VTNCbFl5NXdaR1l8NzBhNjNiNjkwOGM3ZmFjZjdiNGQyZGEyNjgyZDExNWJlYjJlYjNmYWQwNjk0YzAzYzcwMWY0NDQyYWJhMzhiNw",
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
+    },
+    "washing_machine-acw1574": {
+      "product_id": "washing_machine-acw1574",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTX9-14W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1580": {
+      "product_id": "washing_machine-acw1580",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WV6-1410W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1631": {
+      "product_id": "washing_machine-acw1631",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTX5-12G",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1684": {
+      "product_id": "washing_machine-acw1684",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WXC101412MB",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1685": {
+      "product_id": "washing_machine-acw1685",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WX10-1412MB",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
     },
     "washing_machine-acw1701": {
       "product_id": "washing_machine-acw1701",
@@ -25346,6 +26090,78 @@
       "source_url": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1215-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDZ8YXBwbGljYXRpb24vcGRmfGFERmpMMmhsTXk4NE9EazRNekk1T1RNMU9UQXlMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRJeE5Ta3VjR1JtfDI1YmYzMjZlMzY5OWIwOGMxZTJhNmI1ZDUxNjc4ZTU2OGVmZjI0NjUyZmJlNGYzYWRmZDhmMjhjYTVmY2YwODA",
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
+    },
+    "washing_machine-acw1745": {
+      "product_id": "washing_machine-acw1745",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WX3-1409W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1747": {
+      "product_id": "washing_machine-acw1747",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WX3-1410W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1750": {
+      "product_id": "washing_machine-acw1750",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTX3-09G",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1751": {
+      "product_id": "washing_machine-acw1751",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WTX3-08W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1769": {
+      "product_id": "washing_machine-acw1769",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WX3-1208W",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
+    },
+    "washing_machine-acw1773": {
+      "product_id": "washing_machine-acw1773",
+      "status": "pending",
+      "category": "washing_machine",
+      "brand": "LG",
+      "model": "WX3-1408G",
+      "has_pdf_evidence": false,
+      "source_type": "manual_evidence",
+      "source_url": "",
+      "verified_at": "",
+      "confidence_score": null
     }
   }
 }
