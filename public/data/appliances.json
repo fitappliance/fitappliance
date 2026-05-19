@@ -29988,7 +29988,12 @@
       "inferred_door_swing": true,
       "displayName": "Kogan Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://assets.kogan.com/files/usermanuals/KAMFREN522A_UG.pdf",
+        "verified_at": "2026-05-19"
+      }
     },
     {
       "id": "fridge-arf3323",
@@ -30118,7 +30123,12 @@
       "inferred_door_swing": true,
       "displayName": "Kogan Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://assets.kogan.com/files/usermanuals/KATFSBS503A_UG.pdf",
+        "verified_at": "2026-05-19"
+      }
     },
     {
       "id": "fridge-zrf0890",
