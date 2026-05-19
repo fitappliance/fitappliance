@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2435",
+  "category": "fridge",
+  "brand": "Esatto",
+  "model": "EUF172S",
+  "source_url": "https://esatto.house/s/EUF172W_EUF172S_UserManual_V20.pdf",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "EUF172S",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1420,
+      "width_mm": 550,
+      "depth_mm": 550,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 200,
+      "left_mm": 200,
+      "right_mm": 200,
+      "rear_mm": 150
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://esatto.house/s/EUF172W_EUF172S_UserManual_V20.pdf",
+      "extraction_date": "2026-05-19T17:26:51.415Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
+    }
+  }
+}

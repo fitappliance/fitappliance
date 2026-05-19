@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2981",
+  "category": "fridge",
+  "brand": "Esatto",
+  "model": "EUF268W",
+  "source_url": "https://esatto.house/s/Esatto_UserManual_EUF268W-V21.pdf",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "EUF268W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1722,
+      "width_mm": 595,
+      "depth_mm": 632,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 300,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 100
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://esatto.house/s/Esatto_UserManual_EUF268W-V21.pdf",
+      "extraction_date": "2026-05-19T17:26:51.568Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
+    }
+  }
+}

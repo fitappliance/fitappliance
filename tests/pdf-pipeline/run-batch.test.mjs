@@ -119,6 +119,40 @@ test('batch target identification selects active products missing PDF evidence o
   assert.equal(targets[0].sku, 'HRTF206');
 });
 
+test('batch target identification prefers catalog-final when available', () => {
+  const repoRoot = makeRepo();
+  writeJson(path.join(repoRoot, 'data', 'catalog-final.json'), {
+    products: [
+      {
+        id: 'final-missing',
+        cat: 'dishwasher',
+        brand: 'Miele',
+        model: 'G5000SCUBRWS',
+        w: 598,
+        h: 805,
+        d: 570,
+        unavailable: true
+      },
+      {
+        id: 'final-done',
+        cat: 'dishwasher',
+        brand: 'Miele',
+        model: 'G4203SCIACTIVE',
+        w: 598,
+        h: 805,
+        d: 570,
+        unavailable: true,
+        evidence: { has_pdf_evidence: true }
+      }
+    ]
+  });
+
+  const targets = loadBatchTargets({ repoRoot, includeArchived: true, brand: 'Miele' });
+
+  assert.deepEqual(targets.map((target) => target.id), ['final-missing']);
+  assert.equal(targets[0].category, 'dishwasher');
+});
+
 test('batch target identification can include archived products for coverage expansion sweeps', () => {
   const repoRoot = makeRepo();
   const targets = loadBatchTargets({ repoRoot, includeArchived: true });
@@ -876,6 +910,60 @@ test('runBatch processes CHIQ targets with the official finder and parser withou
     left_mm: 50,
     right_mm: 50,
     rear_mm: 50
+  });
+});
+
+test('runBatch processes Esatto targets with the official finder and parser without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'esatto-ebf124w',
+    brand: 'Esatto',
+    sku: 'EBF124W',
+    category: 'fridge',
+    product: {
+      id: 'esatto-ebf124w',
+      cat: 'fridge',
+      brand: 'Esatto',
+      model: 'EBF124W',
+      w: 501,
+      h: 858,
+      d: 540,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    esattoOfficialFinder: async () => ({
+      sourceUrl: 'https://esatto.house/s/EBF124W_UserManual.pdf',
+      source: 'esatto-official-user_manual'
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        Model: EBF124W
+        Clearances: Allow at least 10cm clear space at the back, 10cm at the sides of the unit and 20cm between the top and any surface above.
+        Product Dimensions: W 501 × D 540 × H 858 (mm)
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'esatto-official-user_manual');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'EBF124W.json'), 'utf8'));
+  assert.equal(raw.extracted.metadata.source_type, 'esatto-official-user_manual');
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 200,
+    left_mm: 100,
+    right_mm: 100,
+    rear_mm: 100
   });
 });
 

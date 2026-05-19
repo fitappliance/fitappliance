@@ -1,28 +1,28 @@
 {
   "summary": {
-    "totalPages": 2466,
-    "totalEdges": 24961,
+    "totalPages": 2477,
+    "totalEdges": 25049,
     "orphanPages": 0,
-    "averageInlinks": 10.12
+    "averageInlinks": 10.11
   },
   "orphanUrls": [],
   "nodes": [
     {
       "url": "/",
       "file": "index.html",
-      "inlinks": 2465,
+      "inlinks": 2476,
       "outlinks": 12
     },
     {
       "url": "/about",
       "file": "pages/about.html",
-      "inlinks": 1654,
+      "inlinks": 1665,
       "outlinks": 7
     },
     {
       "url": "/about/editorial-standards",
       "file": "pages/about/editorial-standards.html",
-      "inlinks": 2465,
+      "inlinks": 2476,
       "outlinks": 4
     },
     {
@@ -2986,7 +2986,7 @@
     {
       "url": "/contact",
       "file": "pages/contact.html",
-      "inlinks": 1652,
+      "inlinks": 1663,
       "outlinks": 7
     },
     {
@@ -4882,13 +4882,13 @@
     {
       "url": "/methodology",
       "file": "pages/methodology.html",
-      "inlinks": 2465,
+      "inlinks": 2476,
       "outlinks": 4
     },
     {
       "url": "/privacy",
       "file": "pages/privacy.html",
-      "inlinks": 1652,
+      "inlinks": 1663,
       "outlinks": 7
     },
     {
@@ -4901,7 +4901,7 @@
       "url": "/products",
       "file": "pages/products.html",
       "inlinks": 1,
-      "outlinks": 1654
+      "outlinks": 1665
     },
     {
       "url": "/products/asko-d5424ss-ao-11970",
@@ -7370,8 +7370,20 @@
       "outlinks": 7
     },
     {
+      "url": "/products/esatto-ebf124w-fridge-arf3707",
+      "file": "pages/products/esatto-ebf124w-fridge-arf3707.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/esatto-ebf129s-ao-73356",
       "file": "pages/products/esatto-ebf129s-ao-73356.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/esatto-ebf129w-fridge-arf2430",
+      "file": "pages/products/esatto-ebf129w-fridge-arf2430.html",
       "inlinks": 1,
       "outlinks": 7
     },
@@ -7400,6 +7412,12 @@
       "outlinks": 7
     },
     {
+      "url": "/products/esatto-ebf69w-fridge-arf2426",
+      "file": "pages/products/esatto-ebf69w-fridge-arf2426.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/esatto-ebf91b-ao-73153",
       "file": "pages/products/esatto-ebf91b-ao-73153.html",
       "inlinks": 1,
@@ -7418,6 +7436,12 @@
       "outlinks": 7
     },
     {
+      "url": "/products/esatto-ebf95w-fridge-arf2420",
+      "file": "pages/products/esatto-ebf95w-fridge-arf2420.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/esatto-ebf95wg-ao-71491",
       "file": "pages/products/esatto-ebf95wg-ao-71491.html",
       "inlinks": 1,
@@ -7430,8 +7454,20 @@
       "outlinks": 7
     },
     {
+      "url": "/products/esatto-ebm529w-fridge-arf2566",
+      "file": "pages/products/esatto-ebm529w-fridge-arf2566.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/esatto-ecd7-ao-62315",
       "file": "pages/products/esatto-ecd7-ao-62315.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/esatto-ecf142w2-fridge-arf2545",
+      "file": "pages/products/esatto-ecf142w2-fridge-arf2545.html",
       "inlinks": 1,
       "outlinks": 7
     },
@@ -7522,6 +7558,12 @@
     {
       "url": "/products/esatto-edw7w-ao-57870",
       "file": "pages/products/esatto-edw7w-ao-57870.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/esatto-edwi605s-dishwasher-adw1009",
+      "file": "pages/products/esatto-edwi605s-dishwasher-adw1009.html",
       "inlinks": 1,
       "outlinks": 7
     },
@@ -7664,14 +7706,32 @@
       "outlinks": 7
     },
     {
+      "url": "/products/esatto-etm413w-fridge-arf2564",
+      "file": "pages/products/esatto-etm413w-fridge-arf2564.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/esatto-etm413x-ao-109061",
       "file": "pages/products/esatto-etm413x-ao-109061.html",
       "inlinks": 1,
       "outlinks": 7
     },
     {
+      "url": "/products/esatto-euf172s-fridge-arf2435",
+      "file": "pages/products/esatto-euf172s-fridge-arf2435.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/esatto-euf172w-ao-57882",
       "file": "pages/products/esatto-euf172w-ao-57882.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/esatto-euf268w-fridge-arf2981",
+      "file": "pages/products/esatto-euf268w-fridge-arf2981.html",
       "inlinks": 1,
       "outlinks": 7
     },
@@ -7696,6 +7756,12 @@
     {
       "url": "/products/esatto-euf92s-ao-57654",
       "file": "pages/products/esatto-euf92s-ao-57654.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/esatto-euf92w-fridge-arf2431",
+      "file": "pages/products/esatto-euf92w-fridge-arf2431.html",
       "inlinks": 1,
       "outlinks": 7
     },
@@ -14794,7 +14860,7 @@
     {
       "url": "/terms",
       "file": "pages/terms.html",
-      "inlinks": 1652,
+      "inlinks": 1663,
       "outlinks": 7
     },
     {

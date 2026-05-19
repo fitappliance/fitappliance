@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2545",
+  "category": "fridge",
+  "brand": "Esatto",
+  "model": "ECF142W2",
+  "source_url": "https://esatto.house/s/ECF142W2_ECF198W2_UserManual_V32_FA_0223.pdf",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "ECF142W2",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 632,
+      "depth_mm": 550,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 700,
+      "left_mm": 200,
+      "right_mm": 200,
+      "rear_mm": 200
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://esatto.house/s/ECF142W2_ECF198W2_UserManual_V32_FA_0223.pdf",
+      "extraction_date": "2026-05-19T17:26:50.559Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
+    }
+  }
+}

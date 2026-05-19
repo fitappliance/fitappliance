@@ -5,9 +5,9 @@ Generated: 2026-05-19
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1648
-- Missing PDF evidence: 1893
-- Overall coverage: 46.5%
+- Verified with PDF evidence: 1659
+- Missing PDF evidence: 1882
+- Overall coverage: 46.9%
 
 ## Coverage By Brand
 
@@ -21,7 +21,7 @@ Generated: 2026-05-19
 | Bosch | 153 | 149 | 4 | 97.4% |
 | Smeg | 117 | 99 | 18 | 84.6% |
 | Midea | 107 | 40 | 67 | 37.4% |
-| Esatto | 102 | 63 | 39 | 61.8% |
+| Esatto | 102 | 74 | 28 | 72.5% |
 | Samsung | 97 | 93 | 4 | 95.9% |
 | Miele | 86 | 25 | 61 | 29.1% |
 | Electrolux | 85 | 55 | 30 | 64.7% |

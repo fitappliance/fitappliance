@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2430",
+  "category": "fridge",
+  "brand": "Esatto",
+  "model": "EBF129W",
+  "source_url": "https://esatto.house/s/EBF129W_EBF129S_UserManual_V14_0723_FA.pdf",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "EBF129W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 860,
+      "width_mm": 501,
+      "depth_mm": 540,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 200,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 100
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": true
+    },
+    "metadata": {
+      "source_pdf_url": "https://esatto.house/s/EBF129W_EBF129S_UserManual_V14_0723_FA.pdf",
+      "extraction_date": "2026-05-19T17:26:49.213Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
+    }
+  }
+}
