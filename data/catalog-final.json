@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1700,
-    "merged_products": 1683,
+    "evidence_files": 1702,
+    "merged_products": 1685,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -26,9 +26,9 @@
       "washtower_combo": 2
     },
     "official_pdf_by_category": {
-      "dishwasher": 382,
+      "dishwasher": 383,
       "dryer": 100,
-      "fridge": 937,
+      "fridge": 938,
       "washing_machine": 262,
       "washtower_combo": 2
     }
@@ -24838,7 +24838,33 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1790,
+        "width_mm": 913,
+        "depth_mm": 735,
+        "door_open_90_depth_mm": 1180
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "GS-B600PL",
+        "raw_json_path": "data/pdf-evidence-raw/GS-VB600PL.json"
+      }
     },
     {
       "id": "fridge-arf2603",
@@ -49204,7 +49230,33 @@
       "inferred_door_swing": true,
       "displayName": "LG QuadWash",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=jgKGpTUBKxpnjNpGPXQzUA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.88,
+        "verified_alias": "XD3A25PS",
+        "raw_json_path": "data/pdf-evidence-raw/XD3.json"
+      }
     },
     {
       "id": "dishwasher-adw1131",
@@ -50497,6 +50549,14 @@
       "displayName": "Omega Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 39,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/Omega-Dishwashers-Specifications-ODW300XN.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ODW300XN.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 450,
@@ -50514,15 +50574,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/Omega-Dishwashers-Specifications-ODW300XN.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/ODW300XN.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-zdw0270",
@@ -50673,6 +50725,14 @@
       "displayName": "Omega Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 39,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/Omega-Dishwashers-Specifications-ODW707X.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ODW707X.json"
+      },
       "dimensions": {
         "height_mm": 845,
         "width_mm": 598,
@@ -50690,15 +50750,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/Omega-Dishwashers-Specifications-ODW707X.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/ODW707X.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw1057",
@@ -50849,6 +50901,14 @@
       "displayName": "Omega Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 33,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/OFI700.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/OFI700.json"
+      },
       "dimensions": {
         "height_mm": 815,
         "width_mm": 598,
@@ -50866,15 +50926,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/OFI700.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/OFI700.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-zdw0291",

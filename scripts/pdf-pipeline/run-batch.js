@@ -695,7 +695,8 @@ async function parseLgTarget({
       if (official?.sourceUrl) {
         sourceCandidates.push({
           sourceUrl: official.sourceUrl,
-          source: official.source || 'lg-official'
+          source: official.source || 'lg-official',
+          verifiedAlias: normalizeSku(official.lookupSku) !== normalizeSku(target.sku) ? official.lookupSku : ''
         });
       }
     } catch (error) {
@@ -733,7 +734,7 @@ async function parseLgTarget({
         target,
         sourceUrl,
         extractionDate: new Date().toISOString(),
-        verifiedAlias
+        verifiedAlias: verifiedAlias || resolved.verifiedAlias
       });
 
       return {
@@ -766,7 +767,7 @@ async function parseLgTarget({
           target,
           sourceUrl: fallback.sourceUrl,
           extractionDate: new Date().toISOString(),
-          verifiedAlias
+          verifiedAlias: verifiedAlias || fallback.verifiedAlias
         });
         return {
           candidate: annotateSourceMetadata(parsed.data, fallback.source || 'third-party-fallback'),

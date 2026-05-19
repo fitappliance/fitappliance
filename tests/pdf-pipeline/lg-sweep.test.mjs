@@ -103,16 +103,49 @@ function makeRepo() {
       sku: 'GF-L706PL'
     }
   });
+  writeJson(path.join(repoRoot, 'data', 'catalog-final.json'), {
+    products: [
+      {
+        id: 'catalog-lg-missing',
+        cat: 'fridge',
+        brand: 'LG',
+        model: 'GS-VB600PL',
+        w: 913,
+        h: 1790,
+        d: 735,
+        discovery: {
+          product_url: 'https://www.lg.com/au/support/product-support/cs-GS-B600PL/'
+        }
+      },
+      {
+        id: 'catalog-lg-existing',
+        cat: 'fridge',
+        brand: 'LG',
+        model: 'GF-L706PL',
+        w: 912,
+        h: 1793,
+        d: 744
+      },
+      {
+        id: 'catalog-not-lg',
+        cat: 'fridge',
+        brand: 'Samsung',
+        model: 'SRF7300BSS'
+      }
+    ]
+  });
   return repoRoot;
 }
 
-test('collectLgSweepTargets selects pending LG ledger entries and skips existing raw evidence', () => {
+test('collectLgSweepTargets selects pending LG ledger and catalog entries and skips existing raw evidence', () => {
   const repoRoot = makeRepo();
   const targets = collectLgSweepTargets({ repoRoot });
 
-  assert.deepEqual(targets.map((target) => target.id), ['lg-ok', 'lg-missing-pdf']);
+  assert.deepEqual(targets.map((target) => target.id), ['lg-ok', 'catalog-lg-missing', 'lg-missing-pdf']);
   assert.equal(targets[0].sourceUrl, 'https://example.com/wv9.pdf');
+  assert.equal(targets[1].sku, 'GS-VB600PL');
   assert.equal(targets[1].sourceUrl, '');
+  assert.equal(targets[2].sourceUrl, '');
 });
 
 test('categorizeLgFailure maps parser and fetch failures to stable buckets', () => {
@@ -153,10 +186,10 @@ test('runLgSweep writes raw evidence for successes and a markdown report for fai
     logger: { log() {}, warn() {}, error() {} }
   });
 
-  assert.equal(result.processed, 2);
+  assert.equal(result.processed, 3);
   assert.equal(result.successes.length, 1);
-  assert.equal(result.failures.length, 1);
-  assert.equal(result.failures[0].bucket, 'Missing PDF');
+  assert.equal(result.failures.length, 2);
+  assert.deepEqual(result.failures.map((failure) => failure.bucket), ['Missing PDF', 'Missing PDF']);
 
   const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'WV9-1412W.json'), 'utf8'));
   assert.equal(raw.product_id, 'lg-ok');
@@ -175,4 +208,63 @@ test('runLgSweep writes raw evidence for successes and a markdown report for fai
   assert.match(report, /Successful Verified Fit Extractions/);
   assert.match(report, /Fail-closed Buckets/);
   assert.match(report, /lg-missing-pdf/);
+  assert.match(report, /catalog-lg-missing/);
+});
+
+test('runLgSweep uses official lookup SKU as a verified alias for shortened catalog SKUs', async () => {
+  const repoRoot = makeRepo();
+  const targets = [{
+    id: 'catalog-lg-short',
+    brand: 'LG',
+    sku: '1412W',
+    category: 'washing_machine',
+    product: {
+      id: 'catalog-lg-short',
+      cat: 'washing_machine',
+      brand: 'LG',
+      model: '1412W',
+      w: 600,
+      h: 850,
+      d: 610,
+      discovery: {
+        product_url: 'https://www.thegoodguys.com.au/lg-12kg-front-load-washer-wv9-1412w'
+      }
+    }
+  }];
+
+  const result = await runLgSweep({
+    repoRoot,
+    delayMs: 0,
+    targets,
+    lgOfficialFinder: async () => ({
+      sourceUrl: 'https://gscs-b2c.lge.com/open/downloadFile?fileId=wv9',
+      source: 'lg-official-support-manual',
+      lookupSku: 'WV9-1412W'
+    }),
+    fetchPdfImpl: async (_url, destPath) => {
+      fs.mkdirSync(path.dirname(destPath), { recursive: true });
+      fs.writeFileSync(destPath, '%PDF fixture');
+      return { path: destPath, cached: false, bytes: 12 };
+    },
+    extractTextImpl: async () => ({
+      text: `
+        LG Washing Machine
+        INSTALLATION
+        Specifications
+        Dimension(mm)
+        WV9-1412W
+        W 600 D 610 D" 1135
+        H 850 D' 660
+        To ensure sufficient clearance for water inlet hoses, drain hose and airflow,
+        allow minimum clearances of at least 20 mm at the sides and 100 mm behind the appliance.
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', '1412W.json'), 'utf8'));
+  assert.equal(raw.extracted.metadata.verified_alias, 'WV9-1412W');
 });
