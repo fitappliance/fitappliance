@@ -305,9 +305,26 @@ test('runBatch continues after failures and writes an audit report', async () =>
 
 test('runBatch fails fast with a clear .env error when the OpenAI key is missing', async () => {
   const repoRoot = makeRepo();
+  const target = {
+    id: 'generic-missing',
+    brand: 'Generic',
+    sku: 'GEN100',
+    category: 'fridge',
+    product: {
+      id: 'generic-missing',
+      cat: 'fridge',
+      brand: 'Generic',
+      model: 'GEN100',
+      w: 600,
+      h: 1600,
+      d: 600,
+      unavailable: false
+    }
+  };
 
   await assert.rejects(() => runBatch({
     repoRoot,
+    targets: [target],
     delayMs: 0,
     env: {},
     logger: { log() {}, warn() {}, error() {} }
@@ -747,6 +764,60 @@ test('runBatch processes Westinghouse targets with the official finder and parse
     width_mm: 598,
     depth_mm: 650,
     door_open_90_depth_mm: 1199
+  });
+});
+
+test('runBatch processes Hisense targets with the official finder and parser without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'hisense-hrbm418s',
+    brand: 'Hisense',
+    sku: 'HRBM418S',
+    category: 'fridge',
+    product: {
+      id: 'hisense-hrbm418s',
+      cat: 'fridge',
+      brand: 'Hisense',
+      model: 'HRBM418S',
+      w: 704,
+      h: 1720,
+      d: 694,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    hisenseOfficialFinder: async () => ({
+      sourceUrl: 'https://dtc-aus-api.hisense.com/medias/HRBM418S-Spec.pdf',
+      source: 'hisense-official-specification_doc',
+      resourceType: 'specification_doc'
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        Model Number HRBM418S
+        Dimensions (Net) (W X H X D) 704x1720x694 mm
+        Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'hisense-official-specification_doc');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'HRBM418S.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 100,
+    left_mm: 50,
+    right_mm: 50,
+    rear_mm: 50
   });
 });
 

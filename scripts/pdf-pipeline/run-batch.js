@@ -22,6 +22,8 @@ const { findLgOfficialPdf } = require('./lg-official');
 const { parseLgText } = require('./parsers/lg');
 const { findWestinghouseOfficialPdf } = require('./westinghouse-official');
 const { parseWestinghouseText } = require('./parsers/westinghouse');
+const { findHisenseOfficialPdf } = require('./hisense-official');
+const { parseHisenseText } = require('./parsers/hisense');
 const { discoverThirdPartyPdf } = require('./third-party-fallback');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
@@ -151,6 +153,13 @@ function isLgTarget(target = {}) {
 
 function isWestinghouseTarget(target = {}) {
   return /westinghouse/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isHisenseTarget(target = {}) {
+  return /hisense/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -729,6 +738,49 @@ async function parseWestinghouseTarget({
   };
 }
 
+async function parseHisenseTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  hisenseOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const verifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await hisenseOfficialFinder(target);
+  const sourceUrl = manualSourceUrl || official?.sourceUrl;
+  if (!sourceUrl) {
+    throw new Error(official?.reason || 'Hisense official PDF resources not found');
+  }
+  const source = manualSourceUrl ? 'manual-evidence' : (official?.source || 'hisense-official');
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}.pdf`
+  );
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath, {
+    timeoutMs: 60_000
+  });
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseHisenseText(textResult.text, {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString(),
+    verifiedAlias
+  });
+
+  return {
+    candidate: parsed.data,
+    sourceUrl,
+    source
+  };
+}
+
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
   const dimensions = strictData?.dimensions || {};
   const pairs = [
@@ -853,6 +905,7 @@ async function runBatch({
   samsungOfficialFinder = findSamsungOfficialPdf,
   lgOfficialFinder = findLgOfficialPdf,
   westinghouseOfficialFinder = findWestinghouseOfficialPdf,
+  hisenseOfficialFinder = findHisenseOfficialPdf,
   includeArchived = false,
   brand = null
 } = {}) {
@@ -874,6 +927,7 @@ async function runBatch({
     && !isSamsungTarget(target)
     && !isLgTarget(target)
     && !isWestinghouseTarget(target)
+    && !isHisenseTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -935,6 +989,18 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           westinghouseOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isHisenseTarget(target)) {
+        const parsed = await parseHisenseTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          hisenseOfficialFinder,
           fetchPdfImpl,
           extractTextImpl
         });
@@ -1077,3 +1143,4 @@ exports.parseFisherPaykelTarget = parseFisherPaykelTarget;
 exports.parseSamsungTarget = parseSamsungTarget;
 exports.parseLgTarget = parseLgTarget;
 exports.parseWestinghouseTarget = parseWestinghouseTarget;
+exports.parseHisenseTarget = parseHisenseTarget;

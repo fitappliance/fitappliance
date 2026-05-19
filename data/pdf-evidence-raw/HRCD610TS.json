@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3141",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HRCD610TS",
+  "source_url": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HRCD610TS",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1785,
+      "width_mm": 912,
+      "depth_mm": 725,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": false
+    },
+    "metadata": {
+      "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRCD610TS-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw4NTQzNXxhcHBsaWNhdGlvbi9wZGZ8YURWaEwyZzBOaTg0T0RBME1EazJOemN3TURjNEwwaFNRMFEyTVRCVVV5MVRjR1ZqTG5Ca1pnfDkxNTFjOTdjMmNlN2U5N2JlZGU2YmZkMDM0N2E1OWQ4MWZhNWQ3ZjlkOTMxODAxY2I2ODY4ZWE0YWY4NDFkNTk",
+      "extraction_date": "2026-05-19T15:03:51.906Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
+    }
+  }
+}

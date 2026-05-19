@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2629",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HRBM482SW",
+  "source_url": "https://dtc-aus-api.hisense.com/medias/manual-HRBM482SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNzQ0OTl8YXBwbGljYXRpb24vcGRmfGFEWXhMMmc0WkM4NE56azRPRGszTnpZMk5ETXdMMGhTUWswME9ESlRWeTFUY0dWakxuQmtaZ3w5Y2U5OTgwMmYwZmMwYzA2ZDM5YWNjMTY1YTgxMDZlYTNjM2ViNTI5NDk0NWM2OTIwZTMwMmViODRiNmQxM2Zl",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HRBM482SW",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1756,
+      "width_mm": 794,
+      "depth_mm": 676,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": true
+    },
+    "metadata": {
+      "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/manual-HRBM482SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNzQ0OTl8YXBwbGljYXRpb24vcGRmfGFEWXhMMmc0WkM4NE56azRPRGszTnpZMk5ETXdMMGhTUWswME9ESlRWeTFUY0dWakxuQmtaZ3w5Y2U5OTgwMmYwZmMwYzA2ZDM5YWNjMTY1YTgxMDZlYTNjM2ViNTI5NDk0NWM2OTIwZTMwMmViODRiNmQxM2Zl",
+      "extraction_date": "2026-05-19T15:03:49.465Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3272",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HRCD483E",
+  "source_url": "https://dtc-aus-api.hisense.com/medias/HRCD483E-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNjM1MDB8YXBwbGljYXRpb24vcGRmfGFEZGlMMmc0WXk4NE9EQTBNRGs0TnpBek16a3dMMGhTUTBRME9ETkZMVk53WldNdWNHUm18NDhjNjc2YWFkMzMwY2UyNGE4MjZhZmI4NzQ2YzJhYTk5ZGU5OTMyMDNhODYxMzU3Mjg1Zjk2MjNlZGZlYjZhNg",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HRCD483E",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1785,
+      "width_mm": 794,
+      "depth_mm": 698,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 100,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": false
+    },
+    "metadata": {
+      "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRCD483E-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNjM1MDB8YXBwbGljYXRpb24vcGRmfGFEZGlMMmc0WXk4NE9EQTBNRGs0TnpBek16a3dMMGhTUTBRME9ETkZMVk53WldNdWNHUm18NDhjNjc2YWFkMzMwY2UyNGE4MjZhZmI4NzQ2YzJhYTk5ZGU5OTMyMDNhODYxMzU3Mjg1Zjk2MjNlZGZlYjZhNg",
+      "extraction_date": "2026-05-19T15:03:50.077Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
+    }
+  }
+}

@@ -5,9 +5,9 @@ Generated: 2026-05-19
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1580
-- Missing PDF evidence: 1961
-- Overall coverage: 44.6%
+- Verified with PDF evidence: 1617
+- Missing PDF evidence: 1924
+- Overall coverage: 45.7%
 
 ## Coverage By Brand
 
@@ -17,7 +17,7 @@ Generated: 2026-05-19
 | LG | 247 | 172 | 75 | 69.6% |
 | Westinghouse | 222 | 156 | 66 | 70.3% |
 | Haier | 184 | 152 | 32 | 82.6% |
-| Hisense | 165 | 94 | 71 | 57.0% |
+| Hisense | 165 | 131 | 34 | 79.4% |
 | Bosch | 153 | 149 | 4 | 97.4% |
 | Smeg | 117 | 99 | 18 | 84.6% |
 | Midea | 107 | 40 | 67 | 37.4% |

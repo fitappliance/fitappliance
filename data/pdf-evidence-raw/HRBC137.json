@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3340",
+  "category": "fridge",
+  "brand": "Hisense",
+  "model": "HRBC137",
+  "source_url": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Hisense",
+    "sku": "HRBC137",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 819,
+      "width_mm": 595,
+      "depth_mm": 575,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 10,
+      "left_mm": 35,
+      "right_mm": 35,
+      "rear_mm": 35
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": true
+    },
+    "metadata": {
+      "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
+      "extraction_date": "2026-05-19T15:03:47.660Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
+    }
+  }
+}
