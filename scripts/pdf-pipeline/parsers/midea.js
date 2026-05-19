@@ -108,6 +108,60 @@ function extractDishwasherOpening(text, dimensions) {
   };
 }
 
+function extractChestFreezerDimensions(text, sku) {
+  const source = normalizeWhitespace(text);
+  const directMatch = source.match(/Product\s+Dimensions\s+W\s*x\s*D\s*x\s*H\s+(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)\s*mm/i);
+  if (directMatch) {
+    return {
+      width_mm: parseMm(directMatch[1], 'width'),
+      depth_mm: parseMm(directMatch[2], 'depth'),
+      height_mm: parseMm(directMatch[3], 'height'),
+      door_open_90_depth_mm: null
+    };
+  }
+
+  const skuKey = normalizeSku(sku);
+  const tableMatch = source.match(/Product\s+model\s+([\s\S]{0,260}?)(?:Total\s+Volume|Freezer\s+compartment|Rated\s+Voltage|Refrigerant|Foaming\s+Agent)[\s\S]{0,900}?Overall\s+Dimension\s*\(mm\)\s+((?:\d+(?:\.\d+)?\s*x\s*\d+(?:\.\d+)?\s*x\s*\d+(?:\.\d+)?\s*)+)/i);
+  if (!tableMatch) {
+    throw new Error('Midea chest freezer parser requires explicit overall dimensions.');
+  }
+
+  const modelTokens = [...tableMatch[1].matchAll(/[A-Z0-9][A-Z0-9/().-]{3,}/gi)]
+    .map((match) => match[0]);
+  const dimensionTokens = [...tableMatch[2].matchAll(/(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)\s*x\s*(\d+(?:\.\d+)?)/gi)];
+  const modelIndex = modelTokens.findIndex((model) => normalizeSku(model) === skuKey);
+  if (modelIndex < 0 || !dimensionTokens[modelIndex]) {
+    throw new Error(`Midea chest freezer parser could not match ${sku} to an overall-dimension row.`);
+  }
+
+  const match = dimensionTokens[modelIndex];
+  return {
+    width_mm: parseMm(match[1], 'width'),
+    depth_mm: parseMm(match[2], 'depth'),
+    height_mm: parseMm(match[3], 'height'),
+    door_open_90_depth_mm: null
+  };
+}
+
+function extractChestFreezerClearance(text) {
+  const source = normalizeWhitespace(text);
+  if (!/\bChest\s+Freezer\b/i.test(source)) {
+    throw new Error('Midea fridge parser only supports chest freezer documents with explicit clearance rules.');
+  }
+  const clearanceMatch = source.match(/Dimensions\s+and\s+Clearances[\s\S]{0,900}?Allow\s+over\s+(\d+(?:\.\d+)?)\s*mm\s+of\s+clearance\s+from\s+each\s+adjacent\s+wall/i);
+  if (!clearanceMatch) {
+    throw new Error('Midea chest freezer parser requires explicit adjacent-wall clearance.');
+  }
+
+  const wallClearance = parseMm(clearanceMatch[1], 'adjacent-wall clearance');
+  return {
+    top_mm: 0,
+    left_mm: wallClearance,
+    right_mm: wallClearance,
+    rear_mm: wallClearance
+  };
+}
+
 function parseMideaText(text, options = {}) {
   const sku = getTargetSku(options);
   const category = getTargetCategory(options);
@@ -123,6 +177,9 @@ function parseMideaText(text, options = {}) {
   if (category === 'DISHWASHER') {
     dimensions = extractDishwasherDimensions(text);
     clearance = extractDishwasherOpening(text, dimensions);
+  } else if (category === 'FRIDGE') {
+    dimensions = extractChestFreezerDimensions(text, sku);
+    clearance = extractChestFreezerClearance(text);
   } else {
     throw new Error(`Midea ${category} parser requires explicit clearance rules before ingest.`);
   }
@@ -137,7 +194,7 @@ function parseMideaText(text, options = {}) {
       clearance_requirements: clearance,
       flags: {
         requires_plumbing: category === 'DISHWASHER' || category === 'WASHING_MACHINE',
-        ventilation_required: false,
+        ventilation_required: category === 'FRIDGE',
         reversible_door: null
       },
       metadata: {
