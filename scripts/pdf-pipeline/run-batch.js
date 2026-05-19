@@ -28,10 +28,13 @@ const { findChiqOfficialPdf } = require('./chiq-official');
 const { parseChiqText } = require('./parsers/chiq');
 const { findEsattoOfficialPdf } = require('./esatto-official');
 const { parseEsattoText } = require('./parsers/esatto');
+const { findMideaOfficialPdf } = require('./midea-official');
+const { parseMideaText } = require('./parsers/midea');
 const { discoverThirdPartyPdf } = require('./third-party-fallback');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
 const FISHER_PAYKEL_MAX_BYTES = 30 * 1024 * 1024;
+const MIDEA_MAX_BYTES = 35 * 1024 * 1024;
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -178,6 +181,13 @@ function isChiqTarget(target = {}) {
 
 function isEsattoTarget(target = {}) {
   return /esatto/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isMideaTarget(target = {}) {
+  return /midea/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -892,6 +902,100 @@ async function parseEsattoTarget({
   };
 }
 
+function getMideaResources(official) {
+  const resources = Array.isArray(official?.resources) ? official.resources : [];
+  const primary = official?.sourceUrl
+    ? [{
+        sourceUrl: official.sourceUrl,
+        url: official.sourceUrl,
+        source: official.source || 'midea-official',
+        resourceType: official.resourceType || 'pdf',
+        score: 1000
+      }]
+    : [];
+  const deduped = new Map();
+  for (const resource of [...primary, ...resources]) {
+    const url = resource?.sourceUrl || resource?.url;
+    if (!url) continue;
+    const normalized = {
+      ...resource,
+      sourceUrl: url,
+      url,
+      source: resource.source || `midea-official-${resource.resourceType || 'pdf'}`,
+      resourceType: resource.resourceType || 'pdf',
+      score: Number.isFinite(resource.score) ? resource.score : 0
+    };
+    const existing = deduped.get(url);
+    if (!existing || normalized.score > existing.score) deduped.set(url, normalized);
+  }
+  return [...deduped.values()].sort((a, b) => b.score - a.score || a.url.localeCompare(b.url));
+}
+
+async function parseMideaTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  mideaOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await mideaOfficialFinder(target, { timeoutMs: 60_000 });
+  const resources = manualSourceUrl
+    ? [{
+        sourceUrl: manualSourceUrl,
+        url: manualSourceUrl,
+        source: 'manual-evidence',
+        resourceType: 'pdf',
+        score: 1000
+      }]
+    : getMideaResources(official);
+
+  if (resources.length === 0) {
+    throw new Error(official?.reason || 'Midea official PDF resources not found');
+  }
+
+  const documents = [];
+  for (let index = 0; index < resources.length; index += 1) {
+    const resource = resources[index];
+    const pdfPath = path.join(
+      repoRoot,
+      '.tmp',
+      'pdfs',
+      slugPathPart(target.brand),
+      `${slugPathPart(target.sku)}-${slugPathPart(resource.resourceType || `doc-${index}`)}.pdf`
+    );
+    const fetched = await fetchPdfImpl(resource.sourceUrl, pdfPath, {
+      timeoutMs: 60_000,
+      maxBytes: MIDEA_MAX_BYTES
+    });
+    const textResult = await extractTextImpl(fetched.path);
+    documents.push({
+      resource,
+      text: textResult.text
+    });
+  }
+
+  const sourceUrl = resources.find((resource) => resource.resourceType === 'specification_sheet')?.sourceUrl
+    || resources[0].sourceUrl;
+  const source = resources.map((resource) => resource.source || `midea-official-${resource.resourceType || 'pdf'}`)
+    .filter(Boolean)
+    .join('+');
+  const parsed = parseMideaText(documents.map((document) => document.text).join('\n\n'), {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString()
+  });
+
+  return {
+    candidate: annotateSourceMetadata(parsed.data, source || 'midea-official'),
+    sourceUrl,
+    source: source || 'midea-official'
+  };
+}
+
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
   const dimensions = strictData?.dimensions || {};
   const pairs = [
@@ -1019,6 +1123,7 @@ async function runBatch({
   hisenseOfficialFinder = findHisenseOfficialPdf,
   chiqOfficialFinder = findChiqOfficialPdf,
   esattoOfficialFinder = findEsattoOfficialPdf,
+  mideaOfficialFinder = findMideaOfficialPdf,
   includeArchived = false,
   brand = null
 } = {}) {
@@ -1043,6 +1148,7 @@ async function runBatch({
     && !isHisenseTarget(target)
     && !isChiqTarget(target)
     && !isEsattoTarget(target)
+    && !isMideaTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -1140,6 +1246,18 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           esattoOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isMideaTarget(target)) {
+        const parsed = await parseMideaTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          mideaOfficialFinder,
           fetchPdfImpl,
           extractTextImpl
         });
@@ -1285,3 +1403,4 @@ exports.parseWestinghouseTarget = parseWestinghouseTarget;
 exports.parseHisenseTarget = parseHisenseTarget;
 exports.parseChiqTarget = parseChiqTarget;
 exports.parseEsattoTarget = parseEsattoTarget;
+exports.parseMideaTarget = parseMideaTarget;

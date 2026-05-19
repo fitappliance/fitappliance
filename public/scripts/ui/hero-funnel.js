@@ -28,9 +28,14 @@ export async function applyHeroSampleSearch(button, {
   root.getElementById('inD').value = String(sample.d);
   search();
 
-  setTimeout(() => {
+  const scroll = () => {
     scrollTarget()?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
-  }, delayMs);
+  };
+  if (delayMs <= 0) {
+    scroll();
+  } else {
+    setTimeout(scroll, delayMs);
+  }
   return true;
 }
 

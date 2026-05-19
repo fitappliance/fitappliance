@@ -967,6 +967,67 @@ test('runBatch processes Esatto targets with the official finder and parser with
   });
 });
 
+test('runBatch processes Midea targets with official spec plus manual documents without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'dishwasher-mdw6099b15bdx',
+    brand: 'Midea',
+    sku: 'MDW6099B15BDX',
+    category: 'dishwasher',
+    product: {
+      id: 'dishwasher-mdw6099b15bdx',
+      cat: 'dishwasher',
+      brand: 'Midea',
+      model: 'MDW6099B15BDX',
+      w: 598,
+      h: 815,
+      d: 570,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    mideaOfficialFinder: async () => ({
+      sourceUrl: 'https://www.midea.com/spec-mdw6099b15bdx.pdf',
+      source: 'midea-official-specification_sheet',
+      resourceType: 'specification_sheet',
+      resources: [
+        {
+          sourceUrl: 'https://www.midea.com/spec-mdw6099b15bdx.pdf',
+          source: 'midea-official-specification_sheet',
+          resourceType: 'specification_sheet',
+          score: 100
+        },
+        {
+          sourceUrl: 'https://www.midea.com/manual-mdw6099b15bdx.pdf',
+          source: 'midea-official-user_manual',
+          resourceType: 'user_manual',
+          score: 90
+        }
+      ]
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async (filePath) => ({
+      text: filePath.includes('spec')
+        ? 'MDW6099B15BDX Product Dimensions W x D x H 598 x 570 x 815mm 1175mm'
+        : 'Selecting the best location for the dishwasher Less than 5 mm between the top of dishwasher and cabinet. 90 ° 90 ° 580mm 820mm Space between cabinet bottom and floor 600 mm(for 60cm model)',
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.match(result.successes[0].source, /midea-official-specification_sheet/);
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'MDW6099B15BDX.json'), 'utf8'));
+  assert.equal(raw.extracted.dimensions.height_mm, 815);
+  assert.equal(raw.extracted.clearance_requirements.rear_mm, 10);
+});
+
 test('runBatch preserves Samsung verified_alias metadata from manual evidence', async () => {
   const repoRoot = makeRepo();
   const target = {

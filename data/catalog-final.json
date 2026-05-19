@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1672,
-    "merged_products": 1655,
+    "evidence_files": 1673,
+    "merged_products": 1656,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -26,7 +26,7 @@
       "washtower_combo": 2
     },
     "official_pdf_by_category": {
-      "dishwasher": 375,
+      "dishwasher": 376,
       "dryer": 99,
       "fridge": 920,
       "washing_machine": 259,
@@ -49344,7 +49344,33 @@
       "inferred_door_swing": true,
       "displayName": "Midea Dishwasher",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 815,
+        "width_mm": 598,
+        "depth_mm": 570,
+        "door_open_90_depth_mm": 1175
+      },
+      "clearance_requirements": {
+        "top_mm": 5,
+        "left_mm": 1,
+        "right_mm": 1,
+        "rear_mm": 10
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/kitchen%20appliances/dishwashers/mdw6099b15bdx/MDW6099B15BDX-60cm-15-Place-Dishwasher-Easy-Lift-Spec-Sheet.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "midea-official-specification_sheet+midea-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/MDW6099B15BDX.json"
+      }
     },
     {
       "id": "dishwasher-adw1201",
@@ -59711,6 +59737,14 @@
       "displayName": "LG Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c5KT0VXQEkTcJ8ojmWFA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.88,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/WD1216HTE.json"
+      },
       "dimensions": {
         "height_mm": 990,
         "width_mm": 700,
@@ -59728,15 +59762,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c5KT0VXQEkTcJ8ojmWFA",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.88,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/WD1216HTE.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1082",
@@ -59822,6 +59848,14 @@
       "displayName": "LG Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=9h6qB3b1EeYjHTHq8UfNig",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.88,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/WD1610NSW.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 600,
@@ -59839,15 +59873,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=9h6qB3b1EeYjHTHq8UfNig",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.88,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/WD1610NSW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "w2",

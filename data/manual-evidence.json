@@ -163238,6 +163238,50 @@
           }
         }
       ]
+    },
+    "dishwasher-adw1362": {
+      "category": "dishwasher",
+      "brand": "Midea",
+      "model": "MDW6099B15BDX",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/kitchen%20appliances/dishwashers/mdw6099b15bdx/MDW6099B15BDX-60cm-15-Place-Dishwasher-Easy-Lift-Spec-Sheet.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/MDW6099B15BDX.json",
+          "extracted": {
+            "brand": "Midea",
+            "sku": "MDW6099B15BDX",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 815,
+              "width_mm": 598,
+              "depth_mm": 570,
+              "door_open_90_depth_mm": 1175
+            },
+            "clearance_requirements": {
+              "top_mm": 5,
+              "left_mm": 1,
+              "right_mm": 1,
+              "rear_mm": 10
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": false,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/kitchen%20appliances/dishwashers/mdw6099b15bdx/MDW6099B15BDX-60cm-15-Place-Dishwasher-Easy-Lift-Spec-Sheet.pdf",
+              "extraction_date": "2026-05-19T18:18:58.653Z",
+              "confidence_score": 0.9,
+              "source_type": "midea-official-specification_sheet+midea-official-user_manual"
+            }
+          }
+        }
+      ]
     }
   }
 }
