@@ -162678,6 +162678,490 @@
           }
         }
       ]
+    },
+    "fridge-arf3707": {
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "EBF124W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://esatto.house/s/EBF124W_UserManual-V13_1025.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/EBF124W.json",
+          "extracted": {
+            "brand": "Esatto",
+            "sku": "EBF124W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 858,
+              "width_mm": 501,
+              "depth_mm": 540,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 200,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": true
+            },
+            "metadata": {
+              "source_pdf_url": "https://esatto.house/s/EBF124W_UserManual-V13_1025.pdf",
+              "extraction_date": "2026-05-19T17:26:49.053Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2430": {
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "EBF129W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://esatto.house/s/EBF129W_EBF129S_UserManual_V14_0723_FA.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/EBF129W.json",
+          "extracted": {
+            "brand": "Esatto",
+            "sku": "EBF129W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 860,
+              "width_mm": 501,
+              "depth_mm": 540,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 200,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": true
+            },
+            "metadata": {
+              "source_pdf_url": "https://esatto.house/s/EBF129W_EBF129S_UserManual_V14_0723_FA.pdf",
+              "extraction_date": "2026-05-19T17:26:49.213Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2426": {
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "EBF69W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://esatto.house/s/EBF69W_EBF95W_UserManual_V12.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/EBF69W.json",
+          "extracted": {
+            "brand": "Esatto",
+            "sku": "EBF69W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 630,
+              "width_mm": 445,
+              "depth_mm": 510,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 300,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://esatto.house/s/EBF69W_EBF95W_UserManual_V12.pdf",
+              "extraction_date": "2026-05-19T17:26:49.347Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2420": {
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "EBF95W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://esatto.house/s/EBF69W_EBF95W_UserManual_V13.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/EBF95W.json",
+          "extracted": {
+            "brand": "Esatto",
+            "sku": "EBF95W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 860,
+              "width_mm": 472,
+              "depth_mm": 450,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 300,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://esatto.house/s/EBF69W_EBF95W_UserManual_V13.pdf",
+              "extraction_date": "2026-05-19T17:26:49.979Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2566": {
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "EBM529W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://esatto.house/s/EBM529W_EBM529X_UserManual_V20_0323.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/EBM529W.json",
+          "extracted": {
+            "brand": "Esatto",
+            "sku": "EBM529W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1692,
+              "width_mm": 750,
+              "depth_mm": 785,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 200,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": true
+            },
+            "metadata": {
+              "source_pdf_url": "https://esatto.house/s/EBM529W_EBM529X_UserManual_V20_0323.pdf",
+              "extraction_date": "2026-05-19T17:26:50.420Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2545": {
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "ECF142W2",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://esatto.house/s/ECF142W2_ECF198W2_UserManual_V32_FA_0223.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/ECF142W2.json",
+          "extracted": {
+            "brand": "Esatto",
+            "sku": "ECF142W2",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 632,
+              "depth_mm": 550,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 700,
+              "left_mm": 200,
+              "right_mm": 200,
+              "rear_mm": 200
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://esatto.house/s/ECF142W2_ECF198W2_UserManual_V32_FA_0223.pdf",
+              "extraction_date": "2026-05-19T17:26:50.559Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2564": {
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "ETM413W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://esatto.house/s/ETM413W_ETM413X_UserManual_V11-FA.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/ETM413W.json",
+          "extracted": {
+            "brand": "Esatto",
+            "sku": "ETM413W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1723,
+              "width_mm": 700,
+              "depth_mm": 670,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 300,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://esatto.house/s/ETM413W_ETM413X_UserManual_V11-FA.pdf",
+              "extraction_date": "2026-05-19T17:26:51.269Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2435": {
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "EUF172S",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://esatto.house/s/EUF172W_EUF172S_UserManual_V20.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/EUF172S.json",
+          "extracted": {
+            "brand": "Esatto",
+            "sku": "EUF172S",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1420,
+              "width_mm": 550,
+              "depth_mm": 550,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 200,
+              "left_mm": 200,
+              "right_mm": 200,
+              "rear_mm": 150
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://esatto.house/s/EUF172W_EUF172S_UserManual_V20.pdf",
+              "extraction_date": "2026-05-19T17:26:51.415Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2981": {
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "EUF268W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://esatto.house/s/Esatto_UserManual_EUF268W-V21.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/EUF268W.json",
+          "extracted": {
+            "brand": "Esatto",
+            "sku": "EUF268W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1722,
+              "width_mm": 595,
+              "depth_mm": 632,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 300,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://esatto.house/s/Esatto_UserManual_EUF268W-V21.pdf",
+              "extraction_date": "2026-05-19T17:26:51.568Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2431": {
+      "category": "fridge",
+      "brand": "Esatto",
+      "model": "EUF92W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://esatto.house/s/EUF92W_EUF92S_UserManual_V20.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/EUF92W.json",
+          "extracted": {
+            "brand": "Esatto",
+            "sku": "EUF92W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 860,
+              "width_mm": 501,
+              "depth_mm": 540,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 200,
+              "left_mm": 200,
+              "right_mm": 200,
+              "rear_mm": 150
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://esatto.house/s/EUF92W_EUF92S_UserManual_V20.pdf",
+              "extraction_date": "2026-05-19T17:26:51.697Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "dishwasher-adw1009": {
+      "category": "dishwasher",
+      "brand": "Esatto",
+      "model": "EDWI605S",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://esatto.house/s/EDWI605S_UserManual_V20-1123.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/EDWI605S.json",
+          "extracted": {
+            "brand": "Esatto",
+            "sku": "EDWI605S",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 815,
+              "width_mm": 598,
+              "depth_mm": 550,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 5,
+              "left_mm": 1,
+              "right_mm": 1,
+              "rear_mm": 30
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": false,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://esatto.house/s/EDWI605S_UserManual_V20-1123.pdf",
+              "extraction_date": "2026-05-19T17:26:54.350Z",
+              "confidence_score": 0.9,
+              "source_type": "esatto-official-user_manual"
+            }
+          }
+        }
+      ]
     }
   }
 }

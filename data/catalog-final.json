@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1659,
-    "merged_products": 1642,
+    "evidence_files": 1670,
+    "merged_products": 1653,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -26,9 +26,9 @@
       "washtower_combo": 2
     },
     "official_pdf_by_category": {
-      "dishwasher": 374,
+      "dishwasher": 375,
       "dryer": 99,
-      "fridge": 910,
+      "fridge": 920,
       "washing_machine": 257,
       "washtower_combo": 2
     }
@@ -1900,6 +1900,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CBC064BG_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CBC064BG.json"
+      },
       "dimensions": {
         "height_mm": 635,
         "width_mm": 470,
@@ -1917,15 +1925,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CBC064BG_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CBC064BG.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3375",
@@ -1952,6 +1952,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CBC094BG_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CBC094BG.json"
+      },
       "dimensions": {
         "height_mm": 833,
         "width_mm": 474,
@@ -1969,15 +1977,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CBC094BG_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CBC094BG.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3379",
@@ -2004,6 +2004,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CBC233BG_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CBC233BG.json"
+      },
       "dimensions": {
         "height_mm": 1440,
         "width_mm": 540,
@@ -2021,15 +2029,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CBC233BG_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CBC233BG.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2462",
@@ -2263,6 +2263,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CCD499NWS_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CCD499NWS.json"
+      },
       "dimensions": {
         "height_mm": 1775,
         "width_mm": 853,
@@ -2280,15 +2288,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CCD499NWS_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CCD499NWS.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3239",
@@ -2419,6 +2419,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Chest",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CCF142WE_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CCF142WE.json"
+      },
       "dimensions": {
         "height_mm": 835,
         "width_mm": 635,
@@ -2436,15 +2444,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CCF142WE_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CCF142WE.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3632",
@@ -2523,6 +2523,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Chest",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CCF199WE_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CCF199WE.json"
+      },
       "dimensions": {
         "height_mm": 835,
         "width_mm": 823,
@@ -2540,15 +2548,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CCF199WE_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CCF199WE.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2955",
@@ -2627,6 +2627,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Chest",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CCF299WE_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CCF299WE.json"
+      },
       "dimensions": {
         "height_mm": 835,
         "width_mm": 1125,
@@ -2644,15 +2652,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CCF299WE_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CCF299WE.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2636",
@@ -2705,6 +2705,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Chest",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CCF500W5E_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CCF500W5E.json"
+      },
       "dimensions": {
         "height_mm": 835,
         "width_mm": 1650,
@@ -2722,15 +2730,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CCF500W5E_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CCF500W5E.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3554",
@@ -2757,6 +2757,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Chest",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CCF500WE_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CCF500WE.json"
+      },
       "dimensions": {
         "height_mm": 835,
         "width_mm": 1650,
@@ -2774,15 +2782,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CCF500WE_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CCF500WE.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2954",
@@ -2809,6 +2809,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Chest",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CCF700WE_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CCF700WE.json"
+      },
       "dimensions": {
         "height_mm": 945,
         "width_mm": 1880,
@@ -2826,15 +2834,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CCF700WE_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CCF700WE.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2855",
@@ -2979,6 +2979,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CRSR125DB_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CRSR125DB.json"
+      },
       "dimensions": {
         "height_mm": 847,
         "width_mm": 494,
@@ -2996,15 +3004,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CRSR125DB_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CRSR125DB.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2857",
@@ -3159,6 +3159,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CSH093NW_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CSH093NW.json"
+      },
       "dimensions": {
         "height_mm": 977,
         "width_mm": 475,
@@ -3176,15 +3184,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CSH093NW_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CSH093NW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3376",
@@ -3211,6 +3211,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CSH121NBS_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CSH121NBS.json"
+      },
       "dimensions": {
         "height_mm": 1155,
         "width_mm": 475,
@@ -3228,15 +3236,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CSH121NBS_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CSH121NBS.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3721",
@@ -3263,6 +3263,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CSH145NW_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CSH145NW.json"
+      },
       "dimensions": {
         "height_mm": 900,
         "width_mm": 600,
@@ -3280,15 +3288,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CSH145NW_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CSH145NW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3398",
@@ -3340,6 +3340,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CSH164NBS_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CSH164NBS.json"
+      },
       "dimensions": {
         "height_mm": 1443,
         "width_mm": 540,
@@ -3357,15 +3365,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CSH164NBS_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CSH164NBS.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3399",
@@ -3417,6 +3417,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CSH206NW_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CSH206NW.json"
+      },
       "dimensions": {
         "height_mm": 1700,
         "width_mm": 540,
@@ -3434,15 +3442,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CSH206NW_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CSH206NW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2818",
@@ -3722,6 +3722,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CSR124DBS_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CSR124DBS.json"
+      },
       "dimensions": {
         "height_mm": 847,
         "width_mm": 494,
@@ -3739,15 +3747,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CSR124DBS_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CSR124DBS.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2778",
@@ -3875,6 +3875,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CSS556NBD4E_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CSS556NBD4E.json"
+      },
       "dimensions": {
         "height_mm": 1770,
         "width_mm": 912,
@@ -3892,15 +3900,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CSS556NBD4E_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CSS556NBD4E.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2817",
@@ -3952,6 +3952,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CTM086DW_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CTM086DW.json"
+      },
       "dimensions": {
         "height_mm": 845,
         "width_mm": 470,
@@ -3969,15 +3977,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CTM086DW_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CTM086DW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2473",
@@ -4004,6 +4004,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CTM118DW_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CTM118DW.json"
+      },
       "dimensions": {
         "height_mm": 1137,
         "width_mm": 474,
@@ -4021,15 +4029,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CTM118DW_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CTM118DW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2460",
@@ -4313,6 +4313,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CTM255NW5E_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CTM255NW5E.json"
+      },
       "dimensions": {
         "height_mm": 1700,
         "width_mm": 545,
@@ -4330,15 +4338,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CTM255NW5E_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CTM255NW5E.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2518",
@@ -4439,6 +4439,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CTM347NB5E_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CTM347NB5E.json"
+      },
       "dimensions": {
         "height_mm": 1700,
         "width_mm": 595,
@@ -4456,15 +4464,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CTM347NB5E_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CTM347NB5E.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3724",
@@ -4540,6 +4540,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CTM407NB4_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CTM407NB4.json"
+      },
       "dimensions": {
         "height_mm": 1680,
         "width_mm": 700,
@@ -4557,15 +4565,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CTM407NB4_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CTM407NB4.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3384",
@@ -4591,6 +4591,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CTM408NSS5E_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CTM408NSS5E.json"
+      },
       "dimensions": {
         "height_mm": 1680,
         "width_mm": 700,
@@ -4608,15 +4616,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CTM408NSS5E_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CTM408NSS5E.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3386",
@@ -4643,6 +4643,14 @@
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://chiq.com.au/cdn/shop/files/CTM512NSS5E_SPEC.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "chiq-official-spec_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/CTM512NSS5E.json"
+      },
       "dimensions": {
         "height_mm": 1680,
         "width_mm": 750,
@@ -4660,15 +4668,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://chiq.com.au/cdn/shop/files/CTM512NSS5E_SPEC.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "chiq-official-spec_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/CTM512NSS5E.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2727",
@@ -6311,7 +6311,33 @@
       "inferred_door_swing": true,
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 858,
+        "width_mm": 501,
+        "depth_mm": 540,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EBF124W_UserManual-V13_1025.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EBF124W.json"
+      }
     },
     {
       "id": "fridge-arf2430",
@@ -6337,7 +6363,33 @@
       "inferred_door_swing": true,
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 860,
+        "width_mm": 501,
+        "depth_mm": 540,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EBF129W_EBF129S_UserManual_V14_0723_FA.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EBF129W.json"
+      }
     },
     {
       "id": "fridge-arf2549",
@@ -6414,7 +6466,33 @@
       "inferred_door_swing": true,
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 630,
+        "width_mm": 445,
+        "depth_mm": 510,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 300,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EBF69W_EBF95W_UserManual_V12.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EBF69W.json"
+      }
     },
     {
       "id": "fridge-arf3473",
@@ -6474,7 +6552,7 @@
       "brand": "Esatto",
       "model": "EBF95W",
       "w": 472,
-      "h": 850,
+      "h": 860,
       "d": 450,
       "kwh_year": 108,
       "stars": 4,
@@ -6492,7 +6570,33 @@
       "inferred_door_swing": true,
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 860,
+        "width_mm": 472,
+        "depth_mm": 450,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 300,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EBF69W_EBF95W_UserManual_V13.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EBF95W.json"
+      }
     },
     {
       "id": "fridge-arf3016",
@@ -6552,7 +6656,7 @@
       "model": "EBM529W",
       "w": 750,
       "h": 1692,
-      "d": 705,
+      "d": 785,
       "kwh_year": 440,
       "stars": 4,
       "price": null,
@@ -6569,7 +6673,33 @@
       "inferred_door_swing": true,
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 1692,
+        "width_mm": 750,
+        "depth_mm": 785,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EBM529W_EBM529X_UserManual_V20_0323.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EBM529W.json"
+      }
     },
     {
       "id": "fridge-arf2545",
@@ -6595,7 +6725,33 @@
       "inferred_door_swing": true,
       "displayName": "Esatto Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 632,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 700,
+        "left_mm": 200,
+        "right_mm": 200,
+        "rear_mm": 200
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/ECF142W2_ECF198W2_UserManual_V32_FA_0223.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ECF142W2.json"
+      }
     },
     {
       "id": "fridge-arf3424",
@@ -7005,7 +7161,33 @@
       "inferred_door_swing": true,
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 1723,
+        "width_mm": 700,
+        "depth_mm": 670,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 300,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/ETM413W_ETM413X_UserManual_V11-FA.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ETM413W.json"
+      }
     },
     {
       "id": "fridge-arf2435",
@@ -7031,7 +7213,33 @@
       "inferred_door_swing": true,
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 1420,
+        "width_mm": 550,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 200,
+        "right_mm": 200,
+        "rear_mm": 150
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EUF172W_EUF172S_UserManual_V20.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EUF172S.json"
+      }
     },
     {
       "id": "fridge-arf2981",
@@ -7057,7 +7265,33 @@
       "inferred_door_swing": true,
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 1722,
+        "width_mm": 595,
+        "depth_mm": 632,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 300,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/Esatto_UserManual_EUF268W-V21.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EUF268W.json"
+      }
     },
     {
       "id": "fridge-arf3704",
@@ -7134,7 +7368,33 @@
       "inferred_door_swing": true,
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 860,
+        "width_mm": 501,
+        "depth_mm": 540,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 200,
+        "right_mm": 200,
+        "rear_mm": 150
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EUF92W_EUF92S_UserManual_V20.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EUF92W.json"
+      }
     },
     {
       "id": "fridge-arf2721",
@@ -45065,7 +45325,33 @@
       "inferred_door_swing": true,
       "displayName": "Esatto Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 815,
+        "width_mm": 598,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 5,
+        "left_mm": 1,
+        "right_mm": 1,
+        "rear_mm": 30
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EDWI605S_UserManual_V20-1123.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "esatto-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/EDWI605S.json"
+      }
     },
     {
       "id": "dishwasher-adw1091",

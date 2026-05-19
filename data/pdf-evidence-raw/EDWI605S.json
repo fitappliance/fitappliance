@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "dishwasher-adw1009",
+  "category": "dishwasher",
+  "brand": "Esatto",
+  "model": "EDWI605S",
+  "source_url": "https://esatto.house/s/EDWI605S_UserManual_V20-1123.pdf",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "EDWI605S",
+    "category": "DISHWASHER",
+    "dimensions": {
+      "height_mm": 815,
+      "width_mm": 598,
+      "depth_mm": 550,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 5,
+      "left_mm": 1,
+      "right_mm": 1,
+      "rear_mm": 30
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": false,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://esatto.house/s/EDWI605S_UserManual_V20-1123.pdf",
+      "extraction_date": "2026-05-19T17:26:54.350Z",
+      "confidence_score": 0.9,
+      "source_type": "esatto-official-user_manual"
+    }
+  }
+}

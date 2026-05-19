@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2431",
+  "category": "fridge",
+  "brand": "Esatto",
+  "model": "EUF92W",
+  "source_url": "https://esatto.house/s/EUF92W_EUF92S_UserManual_V20.pdf",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Esatto",
+    "sku": "EUF92W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 860,
+      "width_mm": 501,
+      "depth_mm": 540,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 200,
+      "left_mm": 200,
+      "right_mm": 200,
+      "rear_mm": 150
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://esatto.house/s/EUF92W_EUF92S_UserManual_V20.pdf",
+      "extraction_date": "2026-05-19T17:26:51.697Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
+    }
+  }
+}

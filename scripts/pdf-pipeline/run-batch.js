@@ -26,6 +26,8 @@ const { findHisenseOfficialPdf } = require('./hisense-official');
 const { parseHisenseText } = require('./parsers/hisense');
 const { findChiqOfficialPdf } = require('./chiq-official');
 const { parseChiqText } = require('./parsers/chiq');
+const { findEsattoOfficialPdf } = require('./esatto-official');
+const { parseEsattoText } = require('./parsers/esatto');
 const { discoverThirdPartyPdf } = require('./third-party-fallback');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
@@ -174,6 +176,13 @@ function isChiqTarget(target = {}) {
   ].filter(Boolean).join(' '));
 }
 
+function isEsattoTarget(target = {}) {
+  return /esatto/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
 function getProductSkuCandidates(product) {
   return [
     product?.model,
@@ -209,6 +218,15 @@ function hasPdfEvidence(product) {
 }
 
 function loadCatalogProducts(repoRoot = process.cwd()) {
+  const finalCatalogPath = path.join(repoRoot, 'data', 'catalog-final.json');
+  const finalCatalog = readJson(finalCatalogPath, null);
+  if (Array.isArray(finalCatalog?.products)) {
+    return finalCatalog.products.map((product) => ({
+      ...product,
+      cat: product.cat || product.category
+    }));
+  }
+
   const products = [];
   for (const [category, fileName] of CATALOG_FILES) {
     const filePath = path.join(repoRoot, 'public', 'data', fileName);
@@ -833,6 +851,47 @@ async function parseChiqTarget({
   };
 }
 
+async function parseEsattoTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  esattoOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await esattoOfficialFinder(target);
+  const sourceUrl = manualSourceUrl || official?.sourceUrl;
+  if (!sourceUrl) {
+    throw new Error(official?.reason || 'Esatto official PDF resources not found');
+  }
+  const source = manualSourceUrl ? 'manual-evidence' : (official?.source || 'esatto-official');
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}.pdf`
+  );
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath, {
+    timeoutMs: 60_000
+  });
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseEsattoText(textResult.text, {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString()
+  });
+
+  return {
+    candidate: annotateSourceMetadata(parsed.data, source),
+    sourceUrl,
+    source
+  };
+}
+
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
   const dimensions = strictData?.dimensions || {};
   const pairs = [
@@ -959,6 +1018,7 @@ async function runBatch({
   westinghouseOfficialFinder = findWestinghouseOfficialPdf,
   hisenseOfficialFinder = findHisenseOfficialPdf,
   chiqOfficialFinder = findChiqOfficialPdf,
+  esattoOfficialFinder = findEsattoOfficialPdf,
   includeArchived = false,
   brand = null
 } = {}) {
@@ -982,6 +1042,7 @@ async function runBatch({
     && !isWestinghouseTarget(target)
     && !isHisenseTarget(target)
     && !isChiqTarget(target)
+    && !isEsattoTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -1067,6 +1128,18 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           chiqOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isEsattoTarget(target)) {
+        const parsed = await parseEsattoTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          esattoOfficialFinder,
           fetchPdfImpl,
           extractTextImpl
         });
@@ -1211,3 +1284,4 @@ exports.parseLgTarget = parseLgTarget;
 exports.parseWestinghouseTarget = parseWestinghouseTarget;
 exports.parseHisenseTarget = parseHisenseTarget;
 exports.parseChiqTarget = parseChiqTarget;
+exports.parseEsattoTarget = parseEsattoTarget;
