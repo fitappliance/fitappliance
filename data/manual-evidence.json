@@ -164274,6 +164274,94 @@
           }
         }
       ]
+    },
+    "fridge-arf3809": {
+      "category": "fridge",
+      "brand": "Kogan",
+      "model": "KATFSBS503A",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://assets.kogan.com/files/usermanuals/KATFSBS503A_UG.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/KATFSBS503A.json",
+          "extracted": {
+            "brand": "Kogan",
+            "sku": "KATFSBS503A",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1768,
+              "width_mm": 920,
+              "depth_mm": 630,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 50,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://assets.kogan.com/files/usermanuals/KATFSBS503A_UG.pdf",
+              "extraction_date": "2026-05-19T22:23:23.315Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3557": {
+      "category": "fridge",
+      "brand": "Kogan",
+      "model": "KAMFREN522A",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://assets.kogan.com/files/usermanuals/KAMFREN522A_UG.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/KAMFREN522A.json",
+          "extracted": {
+            "brand": "Kogan",
+            "sku": "KAMFREN522A",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1692,
+              "width_mm": 750,
+              "depth_mm": 785,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 100,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 75
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://assets.kogan.com/files/usermanuals/KAMFREN522A_UG.pdf",
+              "extraction_date": "2026-05-19T22:23:21.670Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
     }
   }
 }
