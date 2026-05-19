@@ -1,98 +1,94 @@
 # PDF Batch Results
 
-Run at: 2026-05-19T15:16:56.829Z
+Run at: 2026-05-19T15:42:54.524Z
 
 ## Successful Runs
 
 | SKU | Product | Category | Confidence | Source |
 | --- | --- | --- | ---: | --- |
-| WQE6000SB | Westinghouse | fridge | 0.9 | https://resource.electrolux.com.au/Public/File/?Id=51196 |
-| WQE6060BB | Westinghouse | fridge | 0.9 | https://resource.electrolux.com.au/Public/File/?Id=51196 |
-| WTB2800AH | Westinghouse | fridge | 0.9 | https://resource.electrolux.com.au/Public/File/?Id=51194 |
-| WTB3100AK | Westinghouse | fridge | 0.9 | https://resource.electrolux.com.au/Public/File/?Id=53211 |
-| WTB3400AH | Westinghouse | fridge | 0.9 | https://resource.electrolux.com.au/Public/File/?Id=51194 |
-| WTB3700** | Westinghouse | fridge | 0.9 | https://resource.electrolux.com.au/Public/File/?Id=51194 |
+| CBC064BG | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CBC064BG_SPEC.pdf |
+| CBC094BG | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CBC094BG_SPEC.pdf |
+| CBC233BG | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CBC233BG_SPEC.pdf |
+| CCD499NWS | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CCD499NWS_SPEC.pdf |
+| CCF142WE | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CCF142WE_SPEC.pdf |
+| CCF199WE | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CCF199WE_SPEC.pdf |
+| CCF299WE | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CCF299WE_SPEC.pdf |
+| CCF500W5E | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CCF500W5E_SPEC.pdf |
+| CCF500WE | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CCF500WE_SPEC.pdf |
+| CCF700WE | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CCF700WE_SPEC.pdf |
+| CRSR125DB | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CRSR125DB_SPEC.pdf |
+| CSH093NW | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CSH093NW_SPEC.pdf |
+| CSH121NBS | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CSH121NBS_SPEC.pdf |
+| CSH145NW | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CSH145NW_SPEC.pdf |
+| CSH164NBS | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CSH164NBS_SPEC.pdf |
+| CSH206NW | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CSH206NW_SPEC.pdf |
+| CSR124DBS | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CSR124DBS_SPEC.pdf |
+| CSS556NBD4E | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CSS556NBD4E_SPEC.pdf |
+| CTM086DW | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CTM086DW_SPEC.pdf |
+| CTM118DW | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CTM118DW_SPEC.pdf |
+| CTM255NW5E | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CTM255NW5E_SPEC.pdf |
+| CTM347NB5E | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CTM347NB5E_SPEC.pdf |
+| CTM407NB4 | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CTM407NB4_SPEC.pdf |
+| CTM408NSS5E | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CTM408NSS5E_SPEC.pdf |
+| CTM512NSS5E | CHIQ | fridge | 0.9 | https://chiq.com.au/cdn/shop/files/CTM512NSS5E_SPEC.pdf |
 
 ## Significant Discrepancies
 
 | SKU | Axis | Legacy | PDF | Delta |
 | --- | --- | ---: | ---: | ---: |
-| WQE6000SB | width | 1725mm | 896mm | -829mm |
-| WQE6000SB | height | 896mm | 1725mm | +829mm |
-| WQE6000SB | depth | 781mm | 641mm | -140mm |
-| WQE6060BB | width | 1725mm | 896mm | -829mm |
-| WQE6060BB | height | 896mm | 1725mm | +829mm |
-| WQE6060BB | depth | 781mm | 641mm | -140mm |
-| WTB2800AH | width | 1605mm | 540mm | -1065mm |
-| WTB2800AH | height | 540mm | 1605mm | +1065mm |
-| WTB3100AK | width | 1645mm | 598mm | -1047mm |
-| WTB3100AK | height | 598mm | 1646mm | +1048mm |
-| WTB3400AH | width | 1645mm | 598mm | -1047mm |
-| WTB3400AH | height | 598mm | 1645mm | +1047mm |
-| WTB3700** | width | 1755mm | 598mm | -1157mm |
-| WTB3700** | height | 598mm | 1755mm | +1157mm |
+| CCF500WE | width | 1880mm | 1650mm | -230mm |
+| CCF500WE | height | 945mm | 835mm | -110mm |
+| CSH164NBS | width | 547mm | 540mm | -7mm |
+| CSH164NBS | height | 1448mm | 1443mm | -5mm |
+| CSH164NBS | depth | 599mm | 590mm | -9mm |
+| CSH206NW | width | 547mm | 540mm | -7mm |
+| CSH206NW | height | 1705mm | 1700mm | -5mm |
+| CSH206NW | depth | 599mm | 590mm | -9mm |
 
 ## Failures
 
 | SKU | Product | Reason |
 | --- | --- | --- |
-| WBE5314SA Bottom Mount 528L | Westinghouse | Westinghouse known dimension guide not found for WBE5314SA Bottom Mount 528L |
-| WCM1400WD | Westinghouse | Westinghouse known dimension guide not found for WCM1400WD |
-| WCM1400WE | Westinghouse | Westinghouse known dimension guide not found for WCM1400WE |
-| WCM2000WD | Westinghouse | Westinghouse known dimension guide not found for WCM2000WD |
-| WCM2000WE | Westinghouse | Westinghouse known dimension guide not found for WCM2000WE |
-| WCM3000WE | Westinghouse | Westinghouse known dimension guide not found for WCM3000WE |
-| WCM7000WD | Westinghouse | Westinghouse known dimension guide not found for WCM7000WD |
-| WFM0900WD | Westinghouse | Westinghouse known dimension guide not found for WFM0900WD |
-| WHE5204BC | Westinghouse | Westinghouse known dimension guide not found for WHE5204BC |
-| WHE5264SC | Westinghouse | Westinghouse known dimension guide not found for WHE5264SC |
-| WHE5600SD | Westinghouse | Westinghouse known dimension guide not found for WHE5600SD |
-| WHE5650SD | Westinghouse | Westinghouse known dimension guide not found for WHE5650SD |
-| WHE6874SA | Westinghouse | Westinghouse known dimension guide not found for WHE6874SA |
-| WHE7074SA | Westinghouse | Westinghouse known dimension guide not found for WHE7074SA |
-| WIM1000WC | Westinghouse | Westinghouse known dimension guide not found for WIM1000WC |
-| WIM1200AD | Westinghouse | Westinghouse known dimension guide not found for WIM1200AD |
-| WIM1200AE | Westinghouse | Westinghouse known dimension guide not found for WIM1200AE |
-| WQE4900AA | Westinghouse | Westinghouse known dimension guide not found for WQE4900AA |
-| WQE4960AA | Westinghouse | Westinghouse known dimension guide not found for WQE4960AA |
-| WQE5600BB | Westinghouse | Westinghouse known dimension guide not found for WQE5600BB |
-| WQE5650BA | Westinghouse | Westinghouse parser requires an explicit Airspace clearance table. |
-| WQE5660BA | Westinghouse | Westinghouse known dimension guide not found for WQE5660BA |
-| WQE5700BD | Westinghouse | Westinghouse known dimension guide not found for WQE5700BD |
-| WQE5750BB | Westinghouse | Westinghouse known dimension guide not found for WQE5750BB |
-| WQE5760BB | Westinghouse | Westinghouse known dimension guide not found for WQE5760BB |
-| WQE6170BB | Westinghouse | Westinghouse known dimension guide not found for WQE6170BB |
-| WRB3504AB | Westinghouse | Westinghouse known dimension guide not found for WRB3504AB |
-| WRM1400WD | Westinghouse | Westinghouse known dimension guide not found for WRM1400WD |
-| WRM2400WF | Westinghouse | Westinghouse known dimension guide not found for WRM2400WF |
-| WSE6170SA | Westinghouse | Westinghouse known dimension guide not found for WSE6170SA |
-| WSE6200SA | Westinghouse | Westinghouse known dimension guide not found for WSE6200SA |
-| WSE6200SB | Westinghouse | Westinghouse known dimension guide not found for WSE6200SB |
-| WSE6200WB | Westinghouse | Westinghouse known dimension guide not found for WSE6200WB |
-| WSE6240BB | Westinghouse | Westinghouse known dimension guide not found for WSE6240BB |
-| WSE6630BA | Westinghouse | Westinghouse known dimension guide not found for WSE6630BA |
-| WSE6670SA | Westinghouse | Westinghouse known dimension guide not found for WSE6670SA |
-| WSE6870SA | Westinghouse | Westinghouse known dimension guide not found for WSE6870SA |
-| WSE6900SA | Westinghouse | Westinghouse known dimension guide not found for WSE6900SA |
-| WTB2500AH | Westinghouse | Westinghouse known dimension guide not found for WTB2500AH |
-| WTB4600WC | Westinghouse | Westinghouse known dimension guide not found for WTB4600WC |
-| WTB5400WC | Westinghouse | Westinghouse known dimension guide not found for WTB5400WC |
-| WTM2500AA | Westinghouse | Westinghouse known dimension guide not found for WTM2500AA |
-| WTM3100SL | Westinghouse | Westinghouse known dimension guide not found for WTM3100SL |
-| WTM3400WL | Westinghouse | Westinghouse known dimension guide not found for WTM3400WL |
-| WTM4302WD | Westinghouse | Westinghouse known dimension guide not found for WTM4302WD |
-| WTM5002SD | Westinghouse | Westinghouse known dimension guide not found for WTM5002SD |
-| WTM5002WE | Westinghouse | Westinghouse known dimension guide not found for WTM5002WE |
-| WHE7074BA | Westinghouse | Westinghouse known dimension guide not found for WHE7074BA |
-| WTB4600SC | Westinghouse | Westinghouse known dimension guide not found for WTB4600SC |
-| WTB5400SC | Westinghouse | Westinghouse known dimension guide not found for WTB5400SC |
-| WSF6602XB | Westinghouse | Westinghouse known dimension guide not found for WSF6602XB |
-| WSF6608XB | Westinghouse | Westinghouse known dimension guide not found for WSF6608XB |
-| WSU6608XB | Westinghouse | Westinghouse known dimension guide not found for WSU6608XB |
-| WWF1042M7WA 10kg Front Loader | Westinghouse | Westinghouse known dimension guide not found for WWF1042M7WA 10kg Front Loader |
-| WWT1084C7SA | Westinghouse | Westinghouse known dimension guide not found for WWT1084C7SA |
-| WWT1184C7WA | Westinghouse | Westinghouse known dimension guide not found for WWT1184C7WA |
-| WWT6084J5WA | Westinghouse | Westinghouse known dimension guide not found for WWT6084J5WA |
-| WWT7084J5WA | Westinghouse | Westinghouse known dimension guide not found for WWT7084J5WA |
-| WWT9084C7SA | Westinghouse | Westinghouse known dimension guide not found for WWT9084C7SA |
-| WWW9024M5SA | Westinghouse | Westinghouse known dimension guide not found for WWW9024M5SA |
+| CBM230NS | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CBM230NS_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CBM230NS_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CBM230NS_spec.pdf \| https://chiq.com.au/cdn/shop/files/CBM230NS_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CBM230NS_specifications_sheet.pdf |
+| CBM280NB | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CBM280NB_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CBM280NB_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CBM280NB_spec.pdf \| https://chiq.com.au/cdn/shop/files/CBM280NB_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CBM280NB_specifications_sheet.pdf |
+| CCD598NWS | CHIQ | CHIQ parser could not find explicit ventilation requirements. |
+| CCF098DB | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CCF098DB_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CCF098DB_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CCF098DB_spec.pdf \| https://chiq.com.au/cdn/shop/files/CCF098DB_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CCF098DB_specifications_sheet.pdf |
+| CCF14**E | CHIQ | CHIQ official finder requires a concrete SKU |
+| CCF141DB | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CCF141DB_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CCF141DB_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CCF141DB_spec.pdf \| https://chiq.com.au/cdn/shop/files/CCF141DB_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CCF141DB_specifications_sheet.pdf |
+| CCF19**E | CHIQ | CHIQ official finder requires a concrete SKU |
+| CCF199DW | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CCF199DW_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CCF199DW_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CCF199DW_spec.pdf \| https://chiq.com.au/cdn/shop/files/CCF199DW_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CCF199DW_specifications_sheet.pdf |
+| CCF254WE | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CCF254WE_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CCF254WE_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CCF254WE_spec.pdf \| https://chiq.com.au/cdn/shop/files/CCF254WE_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CCF254WE_specifications_sheet.pdf |
+| CCF292DW | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CCF292DW_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CCF292DW_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CCF292DW_spec.pdf \| https://chiq.com.au/cdn/shop/files/CCF292DW_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CCF292DW_specifications_sheet.pdf |
+| CCF500DW | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CCF500DW_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CCF500DW_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CCF500DW_spec.pdf \| https://chiq.com.au/cdn/shop/files/CCF500DW_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CCF500DW_specifications_sheet.pdf |
+| CFD501NB | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CFD501NB_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CFD501NB_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CFD501NB_spec.pdf \| https://chiq.com.au/cdn/shop/files/CFD501NB_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CFD501NB_specifications_sheet.pdf |
+| CRBM228NR2 | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CRBM228NR2_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CRBM228NR2_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CRBM228NR2_spec.pdf \| https://chiq.com.au/cdn/shop/files/CRBM228NR2_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CRBM228NR2_specifications_sheet.pdf |
+| CSF205NSS | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CSF205NSS_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CSF205NSS_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CSF205NSS_spec.pdf \| https://chiq.com.au/cdn/shop/files/CSF205NSS_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CSF205NSS_specifications_sheet.pdf |
+| CSH16*N** | CHIQ | CHIQ official finder requires a concrete SKU |
+| CSH20*N** | CHIQ | CHIQ official finder requires a concrete SKU |
+| CSH31***** | CHIQ | CHIQ official finder requires a concrete SKU |
+| CSH380NWL | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CSH380NWL_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CSH380NWL_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CSH380NWL_spec.pdf \| https://chiq.com.au/cdn/shop/files/CSH380NWL_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CSH380NWL_specifications_sheet.pdf |
+| CSR046DW | CHIQ | CHIQ parser could not find explicit ventilation requirements. |
+| CSR120DW | CHIQ | CHIQ parser could not find explicit ventilation requirements. |
+| CSR205DW | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CSR205DW_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CSR205DW_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CSR205DW_spec.pdf \| https://chiq.com.au/cdn/shop/files/CSR205DW_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CSR205DW_specifications_sheet.pdf |
+| CSS556NBD | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CSS556NBD_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CSS556NBD_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CSS556NBD_spec.pdf \| https://chiq.com.au/cdn/shop/files/CSS556NBD_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CSS556NBD_specifications_sheet.pdf |
+| CSS61*N**D | CHIQ | CHIQ official finder requires a concrete SKU |
+| CTM199NB | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CTM199NB_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CTM199NB_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CTM199NB_spec.pdf \| https://chiq.com.au/cdn/shop/files/CTM199NB_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CTM199NB_specifications_sheet.pdf |
+| CTM255NW2 | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CTM255NW2_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CTM255NW2_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CTM255NW2_spec.pdf \| https://chiq.com.au/cdn/shop/files/CTM255NW2_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CTM255NW2_specifications_sheet.pdf |
+| CTM296NBS | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CTM296NBS_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CTM296NBS_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CTM296NBS_spec.pdf \| https://chiq.com.au/cdn/shop/files/CTM296NBS_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CTM296NBS_specifications_sheet.pdf |
+| CTM347NB | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CTM347NB_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CTM347NB_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CTM347NB_spec.pdf \| https://chiq.com.au/cdn/shop/files/CTM347NB_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CTM347NB_specifications_sheet.pdf |
+| CTM347NB2 | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CTM347NB2_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CTM347NB2_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CTM347NB2_spec.pdf \| https://chiq.com.au/cdn/shop/files/CTM347NB2_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CTM347NB2_specifications_sheet.pdf |
+| CTM40*N*S5E | CHIQ | CHIQ official finder requires a concrete SKU |
+| CTM407NB | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/CTM407NB_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/CTM407NB_Spec.pdf \| https://chiq.com.au/cdn/shop/files/CTM407NB_spec.pdf \| https://chiq.com.au/cdn/shop/files/CTM407NB_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/CTM407NB_specifications_sheet.pdf |
+| WD100TW | CHIQ | CHIQ parser could not verify SKU WD100TW against document model tokens. |
+| WD85PLSW | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/WD85PLSW_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/WD85PLSW_Spec.pdf \| https://chiq.com.au/cdn/shop/files/WD85PLSW_spec.pdf \| https://chiq.com.au/cdn/shop/files/WD85PLSW_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/WD85PLSW_specifications_sheet.pdf |
+| WD85SB1 | CHIQ | CHIQ parser could not verify SKU WD85SB1 against document model tokens. |
+| WDFL8T48B3 | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/WDFL8T48B3_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/WDFL8T48B3_Spec.pdf \| https://chiq.com.au/cdn/shop/files/WDFL8T48B3_spec.pdf \| https://chiq.com.au/cdn/shop/files/WDFL8T48B3_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/WDFL8T48B3_specifications_sheet.pdf |
+| WFL100PLSW | CHIQ | CHIQ parser could not find explicit ventilation requirements. |
+| WFL100TDW | CHIQ | CHIQ parser could not find explicit ventilation requirements. |
+| WFL85PL48G1 | CHIQ | CHIQ parser could not find explicit ventilation requirements. |
+| WFL85PL48W1 | CHIQ | CHIQ parser could not find explicit ventilation requirements. |
+| WFL85PLSW | CHIQ | CHIQ parser could not find explicit ventilation requirements. |
+| WFL8T48W2 | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/WFL8T48W2_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/WFL8T48W2_Spec.pdf \| https://chiq.com.au/cdn/shop/files/WFL8T48W2_spec.pdf \| https://chiq.com.au/cdn/shop/files/WFL8T48W2_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/WFL8T48W2_specifications_sheet.pdf |
+| WTL63FDG | CHIQ | CHIQ parser could not find explicit ventilation requirements. |
+| WTL78FDG | CHIQ | CHIQ parser could not find explicit ventilation requirements. |
+| WTL80W | CHIQ | CHIQ official spec sheet not found: https://chiq.com.au/cdn/shop/files/WTL80W_SPEC.pdf \| https://chiq.com.au/cdn/shop/files/WTL80W_Spec.pdf \| https://chiq.com.au/cdn/shop/files/WTL80W_spec.pdf \| https://chiq.com.au/cdn/shop/files/WTL80W_Specifications_Sheet.pdf \| https://chiq.com.au/cdn/shop/files/WTL80W_specifications_sheet.pdf |

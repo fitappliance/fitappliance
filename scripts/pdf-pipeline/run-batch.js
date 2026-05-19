@@ -24,6 +24,8 @@ const { findWestinghouseOfficialPdf } = require('./westinghouse-official');
 const { parseWestinghouseText } = require('./parsers/westinghouse');
 const { findHisenseOfficialPdf } = require('./hisense-official');
 const { parseHisenseText } = require('./parsers/hisense');
+const { findChiqOfficialPdf } = require('./chiq-official');
+const { parseChiqText } = require('./parsers/chiq');
 const { discoverThirdPartyPdf } = require('./third-party-fallback');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
@@ -160,6 +162,13 @@ function isWestinghouseTarget(target = {}) {
 
 function isHisenseTarget(target = {}) {
   return /hisense/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isChiqTarget(target = {}) {
+  return /\bchiq\b/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -781,6 +790,49 @@ async function parseHisenseTarget({
   };
 }
 
+async function parseChiqTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  chiqOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const verifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await chiqOfficialFinder(target);
+  const sourceUrl = manualSourceUrl || official?.sourceUrl;
+  if (!sourceUrl) {
+    throw new Error(official?.reason || 'CHIQ official PDF resources not found');
+  }
+  const source = manualSourceUrl ? 'manual-evidence' : (official?.source || 'chiq-official');
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}.pdf`
+  );
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath, {
+    timeoutMs: 60_000
+  });
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseChiqText(textResult.text, {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString(),
+    verifiedAlias
+  });
+
+  return {
+    candidate: parsed.data,
+    sourceUrl,
+    source
+  };
+}
+
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
   const dimensions = strictData?.dimensions || {};
   const pairs = [
@@ -906,6 +958,7 @@ async function runBatch({
   lgOfficialFinder = findLgOfficialPdf,
   westinghouseOfficialFinder = findWestinghouseOfficialPdf,
   hisenseOfficialFinder = findHisenseOfficialPdf,
+  chiqOfficialFinder = findChiqOfficialPdf,
   includeArchived = false,
   brand = null
 } = {}) {
@@ -928,6 +981,7 @@ async function runBatch({
     && !isLgTarget(target)
     && !isWestinghouseTarget(target)
     && !isHisenseTarget(target)
+    && !isChiqTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -1001,6 +1055,18 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           hisenseOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isChiqTarget(target)) {
+        const parsed = await parseChiqTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          chiqOfficialFinder,
           fetchPdfImpl,
           extractTextImpl
         });
@@ -1144,3 +1210,4 @@ exports.parseSamsungTarget = parseSamsungTarget;
 exports.parseLgTarget = parseLgTarget;
 exports.parseWestinghouseTarget = parseWestinghouseTarget;
 exports.parseHisenseTarget = parseHisenseTarget;
+exports.parseChiqTarget = parseChiqTarget;
