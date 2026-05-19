@@ -38,6 +38,8 @@ const { findLiebherrOfficialPdf } = require('./liebherr-official');
 const { parseLiebherrText } = require('./parsers/liebherr');
 const { findRobinhoodOfficialPdf } = require('./robinhood-official');
 const { parseRobinhoodText } = require('./parsers/robinhood');
+const { findOmegaOfficialPdf } = require('./omega-official');
+const { parseOmegaText } = require('./parsers/omega');
 const { discoverThirdPartyPdf } = require('./third-party-fallback');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
@@ -47,6 +49,7 @@ const MIELE_MAX_BYTES = 20 * 1024 * 1024;
 const KOGAN_MAX_BYTES = 25 * 1024 * 1024;
 const LIEBHERR_MAX_BYTES = 30 * 1024 * 1024;
 const ROBINHOOD_MAX_BYTES = 25 * 1024 * 1024;
+const OMEGA_MAX_BYTES = 20 * 1024 * 1024;
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -228,6 +231,13 @@ function isLiebherrTarget(target = {}) {
 
 function isRobinhoodTarget(target = {}) {
   return /robinhood/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isOmegaTarget(target = {}) {
+  return /omega/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -1339,6 +1349,96 @@ async function parseRobinhoodTarget({
   };
 }
 
+function getOmegaResources(official) {
+  const resources = Array.isArray(official?.resources) ? official.resources : [];
+  const primary = official?.sourceUrl
+    ? [{
+        sourceUrl: official.sourceUrl,
+        url: official.sourceUrl,
+        source: official.source || 'omega-official-spec_sheet',
+        resourceType: official.resourceType || 'specification_sheet',
+        score: 1000
+      }]
+    : [];
+  const deduped = new Map();
+  for (const resource of [...primary, ...resources]) {
+    const url = resource?.sourceUrl || resource?.url;
+    if (!url) continue;
+    const normalized = {
+      ...resource,
+      sourceUrl: url,
+      url,
+      source: resource.source || `omega-official-${resource.resourceType || 'pdf'}`,
+      resourceType: resource.resourceType || 'pdf',
+      score: Number.isFinite(resource.score) ? resource.score : 0
+    };
+    const existing = deduped.get(url);
+    if (!existing || normalized.score > existing.score) deduped.set(url, normalized);
+  }
+  return [...deduped.values()].sort((a, b) => b.score - a.score || a.url.localeCompare(b.url));
+}
+
+async function parseOmegaTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  omegaOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await omegaOfficialFinder(target, { timeoutMs: 45_000 });
+  const resources = manualSourceUrl
+    ? [{
+        sourceUrl: manualSourceUrl,
+        url: manualSourceUrl,
+        source: 'manual-evidence',
+        resourceType: 'pdf',
+        score: 1000
+      }]
+    : getOmegaResources(official);
+
+  if (resources.length === 0) {
+    throw new Error(official?.reason || 'Omega official PDF resources not found');
+  }
+
+  const errors = [];
+  for (let index = 0; index < resources.length; index += 1) {
+    const resource = resources[index];
+    const pdfPath = path.join(
+      repoRoot,
+      '.tmp',
+      'pdfs',
+      slugPathPart(target.brand),
+      `${slugPathPart(target.sku)}-${slugPathPart(resource.resourceType || `doc-${index}`)}.pdf`
+    );
+    try {
+      const fetched = await fetchPdfImpl(resource.sourceUrl, pdfPath, {
+        timeoutMs: 60_000,
+        maxBytes: OMEGA_MAX_BYTES
+      });
+      const textResult = await extractTextImpl(fetched.path);
+      const parsed = parseOmegaText(textResult.text, {
+        target,
+        sourceUrl: resource.sourceUrl,
+        extractionDate: new Date().toISOString()
+      });
+
+      return {
+        candidate: annotateSourceMetadata(parsed.data, resource.source || 'omega-official-spec_sheet'),
+        sourceUrl: resource.sourceUrl,
+        source: resource.source || 'omega-official-spec_sheet'
+      };
+    } catch (error) {
+      errors.push(`${resource.resourceType || resource.sourceUrl}: ${error.message}`);
+    }
+  }
+
+  throw new Error(`Omega official documents failed: ${errors.join(' | ')}`);
+}
+
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
   const dimensions = strictData?.dimensions || {};
   const pairs = [
@@ -1471,6 +1571,7 @@ async function runBatch({
   koganOfficialFinder = findKoganOfficialPdf,
   liebherrOfficialFinder = findLiebherrOfficialPdf,
   robinhoodOfficialFinder = findRobinhoodOfficialPdf,
+  omegaOfficialFinder = findOmegaOfficialPdf,
   includeArchived = false,
   brand = null
 } = {}) {
@@ -1500,6 +1601,7 @@ async function runBatch({
     && !isKoganTarget(target)
     && !isLiebherrTarget(target)
     && !isRobinhoodTarget(target)
+    && !isOmegaTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -1663,6 +1765,18 @@ async function runBatch({
         sourceUrl = parsed.sourceUrl;
         source = parsed.source;
         candidate = parsed.candidate;
+      } else if (!parseTextImpl && isOmegaTarget(target)) {
+        const parsed = await parseOmegaTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          omegaOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
       } else {
         const resolved = await findGenericPdfSource(target, {
           repoRoot,
@@ -1807,3 +1921,4 @@ exports.parseMieleTarget = parseMieleTarget;
 exports.parseKoganTarget = parseKoganTarget;
 exports.parseLiebherrTarget = parseLiebherrTarget;
 exports.parseRobinhoodTarget = parseRobinhoodTarget;
+exports.parseOmegaTarget = parseOmegaTarget;

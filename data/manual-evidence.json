@@ -164362,6 +164362,138 @@
           }
         }
       ]
+    },
+    "dishwasher-zdw0275": {
+      "category": "dishwasher",
+      "brand": "Omega",
+      "model": "OFI700",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/OFI700.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/OFI700.json",
+          "extracted": {
+            "brand": "Omega",
+            "sku": "OFI700",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 815,
+              "width_mm": 598,
+              "depth_mm": 550,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": false,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/OFI700.pdf",
+              "extraction_date": "2026-05-19T22:53:26.146Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "dishwasher-adw0948": {
+      "category": "dishwasher",
+      "brand": "Omega",
+      "model": "ODW300XN",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/Omega-Dishwashers-Specifications-ODW300XN.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/ODW300XN.json",
+          "extracted": {
+            "brand": "Omega",
+            "sku": "ODW300XN",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 450,
+              "depth_mm": 585,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": false,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/Omega-Dishwashers-Specifications-ODW300XN.pdf",
+              "extraction_date": "2026-05-19T22:53:25.171Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "dishwasher-adw0940": {
+      "category": "dishwasher",
+      "brand": "Omega",
+      "model": "ODW707X",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/Omega-Dishwashers-Specifications-ODW707X.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/ODW707X.json",
+          "extracted": {
+            "brand": "Omega",
+            "sku": "ODW707X",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 845,
+              "width_mm": 598,
+              "depth_mm": 594,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": false,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://cdn.shopify.com/s/files/1/0722/3433/6499/files/Omega-Dishwashers-Specifications-ODW707X.pdf",
+              "extraction_date": "2026-05-19T22:53:25.731Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
     }
   }
 }

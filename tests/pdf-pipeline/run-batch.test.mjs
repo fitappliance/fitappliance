@@ -1838,3 +1838,69 @@ test('runBatch processes Robinhood targets with official manual plus technical s
     rear_mm: 100
   });
 });
+
+test('runBatch processes Omega exact official specification sheets without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'omega-odw707x',
+    brand: 'Omega',
+    sku: 'ODW707X',
+    category: 'dishwasher',
+    product: {
+      id: 'omega-odw707x',
+      cat: 'dishwasher',
+      brand: 'Omega',
+      model: 'ODW707X',
+      w: 598,
+      h: 845,
+      d: 600,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    omegaOfficialFinder: async () => ({
+      sourceUrl: 'https://cdn.shopify.com/s/files/Omega-Dishwashers-Specifications-ODW707X.pdf',
+      source: 'omega-official-spec_sheet',
+      resourceType: 'specification_sheet',
+      resources: [
+        {
+          sourceUrl: 'https://cdn.shopify.com/s/files/Omega-Dishwashers-Specifications-ODW707X.pdf',
+          source: 'omega-official-spec_sheet',
+          resourceType: 'specification_sheet',
+          score: 100
+        }
+      ]
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        OMEGA DISHWASHERS ODW707X
+        Dimensions/Weight
+        Overall Dimensions (mm): 845(h) x 598(w) x 594(d)
+        Technical Details
+        Dishwasher Type: Freestanding, with a Removable Worktop
+        WARNING: technical specifications and product sizes can be varied by the manufacturer without notice.
+        Cutouts for appliances should only be by physical product measurements.
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'ODW707X.json'), 'utf8'));
+  assert.equal(raw.extracted.metadata.source_type, 'omega-official-spec_sheet');
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 0,
+    right_mm: 0,
+    rear_mm: 0
+  });
+});
