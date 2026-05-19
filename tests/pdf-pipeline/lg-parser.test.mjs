@@ -216,6 +216,40 @@ test('LG parser handles older fridge Size(mm) a/b tables with explicit adjacent-
   });
 });
 
+test('LG parser handles legacy washer Size W/D/H line with cm additional clearance', () => {
+  const result = parseLgText(`
+    OWNER'S MANUAL
+    WASHING MACHINE
+    Specifications
+    Model WD1216HTE
+    Wash Capacity 16 kg (Wash) / 9 kg (Dry)
+    Size 700 mm (W) x 835 mm (D) x 990 mm (H)
+    Product Weight 105 kg
+
+    Installation Place Requirements
+    Additional Clearance : For the wall, 10 cm: rear
+    /2.5 cm: right & left side
+  `, {
+    target: { brand: 'LG', sku: 'WD1216HTE', category: 'washing_machine' },
+    sourceUrl: 'https://gscs-b2c.lge.com/open/downloadFile?fileId=c5KT0VXQEkTcJ8ojmWFA',
+    extractionDate: EXTRACTION_DATE
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 990,
+    width_mm: 700,
+    depth_mm: 835,
+    door_open_90_depth_mm: null
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 25,
+    right_mm: 25,
+    rear_mm: 100
+  });
+  assert.equal(result.data.flags.requires_plumbing, true);
+});
+
 test('LG parser requires explicit verified_alias for manual cross-model support aliases', () => {
   const text = `
     OWNER'S MANUAL

@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1670,
-    "merged_products": 1653,
+    "evidence_files": 1672,
+    "merged_products": 1655,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -29,7 +29,7 @@
       "dishwasher": 375,
       "dryer": 99,
       "fridge": 920,
-      "washing_machine": 257,
+      "washing_machine": 259,
       "washtower_combo": 2
     }
   },
@@ -6312,6 +6312,14 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EBF124W_UserManual-V13_1025.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EBF124W.json"
+      },
       "dimensions": {
         "height_mm": 858,
         "width_mm": 501,
@@ -6329,15 +6337,7 @@
         "ventilation_required": true,
         "reversible_door": true
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://esatto.house/s/EBF124W_UserManual-V13_1025.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/EBF124W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2430",
@@ -6364,6 +6364,14 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EBF129W_EBF129S_UserManual_V14_0723_FA.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EBF129W.json"
+      },
       "dimensions": {
         "height_mm": 860,
         "width_mm": 501,
@@ -6381,15 +6389,7 @@
         "ventilation_required": true,
         "reversible_door": true
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://esatto.house/s/EBF129W_EBF129S_UserManual_V14_0723_FA.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/EBF129W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2549",
@@ -6467,6 +6467,14 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EBF69W_EBF95W_UserManual_V12.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EBF69W.json"
+      },
       "dimensions": {
         "height_mm": 630,
         "width_mm": 445,
@@ -6484,15 +6492,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://esatto.house/s/EBF69W_EBF95W_UserManual_V12.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/EBF69W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3473",
@@ -6571,6 +6571,14 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EBF69W_EBF95W_UserManual_V13.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EBF95W.json"
+      },
       "dimensions": {
         "height_mm": 860,
         "width_mm": 472,
@@ -6588,15 +6596,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://esatto.house/s/EBF69W_EBF95W_UserManual_V13.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/EBF95W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3016",
@@ -6674,6 +6674,14 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EBM529W_EBM529X_UserManual_V20_0323.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EBM529W.json"
+      },
       "dimensions": {
         "height_mm": 1692,
         "width_mm": 750,
@@ -6691,15 +6699,7 @@
         "ventilation_required": true,
         "reversible_door": true
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://esatto.house/s/EBM529W_EBM529X_UserManual_V20_0323.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/EBM529W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2545",
@@ -6726,6 +6726,14 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Chest",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/ECF142W2_ECF198W2_UserManual_V32_FA_0223.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ECF142W2.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 632,
@@ -6743,15 +6751,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://esatto.house/s/ECF142W2_ECF198W2_UserManual_V32_FA_0223.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/ECF142W2.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3424",
@@ -7162,6 +7162,14 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/ETM413W_ETM413X_UserManual_V11-FA.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ETM413W.json"
+      },
       "dimensions": {
         "height_mm": 1723,
         "width_mm": 700,
@@ -7179,15 +7187,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://esatto.house/s/ETM413W_ETM413X_UserManual_V11-FA.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/ETM413W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2435",
@@ -7214,6 +7214,14 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EUF172W_EUF172S_UserManual_V20.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EUF172S.json"
+      },
       "dimensions": {
         "height_mm": 1420,
         "width_mm": 550,
@@ -7231,15 +7239,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://esatto.house/s/EUF172W_EUF172S_UserManual_V20.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/EUF172S.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2981",
@@ -7266,6 +7266,14 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/Esatto_UserManual_EUF268W-V21.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EUF268W.json"
+      },
       "dimensions": {
         "height_mm": 1722,
         "width_mm": 595,
@@ -7283,15 +7291,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://esatto.house/s/Esatto_UserManual_EUF268W-V21.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/EUF268W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3704",
@@ -7369,6 +7369,14 @@
       "displayName": "Esatto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EUF92W_EUF92S_UserManual_V20.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EUF92W.json"
+      },
       "dimensions": {
         "height_mm": 860,
         "width_mm": 501,
@@ -7386,15 +7394,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://esatto.house/s/EUF92W_EUF92S_UserManual_V20.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/EUF92W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2721",
@@ -45326,6 +45326,14 @@
       "displayName": "Esatto Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 18,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://esatto.house/s/EDWI605S_UserManual_V20-1123.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "esatto-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/EDWI605S.json"
+      },
       "dimensions": {
         "height_mm": 815,
         "width_mm": 598,
@@ -45343,15 +45351,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://esatto.house/s/EDWI605S_UserManual_V20-1123.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "esatto-official-user_manual",
-        "raw_json_path": "data/pdf-evidence-raw/EDWI605S.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw1091",
@@ -59710,7 +59710,33 @@
       "inferred_door_swing": true,
       "displayName": "LG Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 990,
+        "width_mm": 700,
+        "depth_mm": 835,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 20,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c5KT0VXQEkTcJ8ojmWFA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.88,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/WD1216HTE.json"
+      }
     },
     {
       "id": "washing_machine-acw1082",
@@ -59795,7 +59821,33 @@
       "inferred_door_swing": true,
       "displayName": "LG Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 675,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 5,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=9h6qB3b1EeYjHTHq8UfNig",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.88,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/WD1610NSW.json"
+      }
     },
     {
       "id": "w2",
