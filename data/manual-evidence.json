@@ -79647,7 +79647,7 @@
       "source_url": "https://www.appliancesonline.com.au/ak/b/f/d/e/bfde6816e66db86b53210cc1ff5523cb20eb7bbd_GT_279BPL_LG_User_Manual.pdf",
       "type": "spec_sheet",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "seeded_at": "2026-05-09",
       "product": {
         "id": "ao-79126",
@@ -79695,6 +79695,41 @@
           "seeded_at": "2026-05-09",
           "source": "appliances-online-manuals-api",
           "title": "GT-279BPL - LG - User Manual"
+        },
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=TZeDKr8byA9LNdheupkg",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GT-279BPL.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GT-279BPL",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1665,
+              "width_mm": 555,
+              "depth_mm": 620,
+              "door_open_90_depth_mm": 1130
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=TZeDKr8byA9LNdheupkg",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
         }
       ]
     },
@@ -157400,12 +157435,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c3NATjI0w03U3bkNvJTJaw",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GB-B300MBL",
       "original_file_name": "REF_GAP_MFL72119704_00_240826_00_OM_WEB.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c3NATjI0w03U3bkNvJTJaw",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GB-B300MBL.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GB-B300MBL",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1720,
+              "width_mm": 600,
+              "depth_mm": 720,
+              "door_open_90_depth_mm": 1030
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c3NATjI0w03U3bkNvJTJaw",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf3451": {
       "category": "fridge",
@@ -157425,12 +157497,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=5ouq1nL856o4jsao2rViIA",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GB-V300MBL",
       "original_file_name": "REF_GAP_MFL72149402_00_240924_00_OM_WEB.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=5ouq1nL856o4jsao2rViIA",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GB-V300MBL.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GB-V300MBL",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1720,
+              "width_mm": 600,
+              "depth_mm": 720,
+              "door_open_90_depth_mm": 1030
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=5ouq1nL856o4jsao2rViIA",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf3412": {
       "category": "fridge",
@@ -157450,12 +157559,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c3NATjI0w03U3bkNvJTJaw",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GB-W300MBL",
       "original_file_name": "REF_GAP_MFL72119704_00_240826_00_OM_WEB.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c3NATjI0w03U3bkNvJTJaw",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GB-W300MBL.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GB-W300MBL",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1720,
+              "width_mm": 600,
+              "depth_mm": 720,
+              "door_open_90_depth_mm": 1030
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c3NATjI0w03U3bkNvJTJaw",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf3463": {
       "category": "fridge",
@@ -157500,12 +157646,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=gHqp5PhnAxC8JH3sckpkVw",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GF-B530BL",
       "original_file_name": "REF_GAP_MFL71782421_01_230609_00_OM_WEB.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=gHqp5PhnAxC8JH3sckpkVw",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GF-B530BL.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GF-B530BL",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1787,
+              "width_mm": 835,
+              "depth_mm": 734,
+              "door_open_90_depth_mm": 1562
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=gHqp5PhnAxC8JH3sckpkVw",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf2548": {
       "category": "fridge",
@@ -157525,12 +157708,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=gHqp5PhnAxC8JH3sckpkVw",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GF-B590BLE",
       "original_file_name": "REF_GAP_MFL71782421_01_230609_00_OM_WEB.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=gHqp5PhnAxC8JH3sckpkVw",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GF-B590BLE.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GF-B590BLE",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1787,
+              "width_mm": 835,
+              "depth_mm": 734,
+              "door_open_90_depth_mm": 1562
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=gHqp5PhnAxC8JH3sckpkVw",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf3095": {
       "category": "fridge",
@@ -157625,12 +157845,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4BVmESxM2waikj04qc4fUg",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GF-V570MBLC",
       "original_file_name": "REF_GAP_MFL70525072_09_240715_00_OM_WEB.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4BVmESxM2waikj04qc4fUg",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GF-V570MBLC.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GF-V570MBLC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1787,
+              "width_mm": 835,
+              "depth_mm": 734,
+              "door_open_90_depth_mm": 1562
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4BVmESxM2waikj04qc4fUg",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf2311": {
       "category": "fridge",
@@ -157650,12 +157907,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4BVmESxM2waikj04qc4fUg",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GF-V570PNL",
       "original_file_name": "REF_GAP_MFL70525072_09_240715_00_OM_WEB.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4BVmESxM2waikj04qc4fUg",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GF-V570PNL.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GF-V570PNL",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1787,
+              "width_mm": 835,
+              "depth_mm": 734,
+              "door_open_90_depth_mm": 1562
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4BVmESxM2waikj04qc4fUg",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf3675": {
       "category": "fridge",
@@ -157700,12 +157994,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=dULQ9mWiNttaK8UmRxKtjQ",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GS-B500MB",
       "original_file_name": "REF_GAP_MFL72093101_00_240625_00_OM_PRINT_user_manual.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=dULQ9mWiNttaK8UmRxKtjQ",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GS-B500MB.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GS-B500MB",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1786,
+              "width_mm": 910,
+              "depth_mm": 643,
+              "door_open_90_depth_mm": 1097
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=dULQ9mWiNttaK8UmRxKtjQ",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf3369": {
       "category": "fridge",
@@ -157725,12 +158056,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=doLEvu69LVO4mSljEhHGDA",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GS-B599PL",
       "original_file_name": "REF_GAP_MFL72093732_00_240717_00_OM_PRINT.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=doLEvu69LVO4mSljEhHGDA",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GS-B599PL.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GS-B599PL",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1790,
+              "width_mm": 913,
+              "depth_mm": 735,
+              "door_open_90_depth_mm": 1180
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=doLEvu69LVO4mSljEhHGDA",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf3517": {
       "category": "fridge",
@@ -157750,12 +158118,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=DkauLu0LKvARJsbA0PCiA",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GS-B599PLB",
       "original_file_name": "REF_GAP_MFL72093752_00_250115_00_OM_PRINT.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=DkauLu0LKvARJsbA0PCiA",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GS-B599PLB.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GS-B599PLB",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1790,
+              "width_mm": 913,
+              "depth_mm": 735,
+              "door_open_90_depth_mm": 1180
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=DkauLu0LKvARJsbA0PCiA",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf3259": {
       "category": "fridge",
@@ -157775,12 +158180,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GS-B600MBL",
       "original_file_name": "REF_GAP_MFL72073917_01_251205_00_OM_WEB.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GS-B600MBL.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GS-B600MBL",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1790,
+              "width_mm": 913,
+              "depth_mm": 735,
+              "door_open_90_depth_mm": 1180
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf3780": {
       "category": "fridge",
@@ -157800,12 +158242,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GS-D600BML",
       "original_file_name": "REF_GAP_MFL72073917_01_251205_00_OM_WEB.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GS-D600BML.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GS-D600BML",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1790,
+              "width_mm": 913,
+              "depth_mm": 735,
+              "door_open_90_depth_mm": 1180
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf3255": {
       "category": "fridge",
@@ -157825,12 +158304,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GS-D600MBLC",
       "original_file_name": "REF_GAP_MFL72073914_00_231122_00_OM_WEB.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GS-D600MBLC.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GS-D600MBLC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1790,
+              "width_mm": 913,
+              "depth_mm": 735,
+              "door_open_90_depth_mm": 1180
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf2608": {
       "category": "fridge",
@@ -157900,12 +158416,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GS-N600PL",
       "original_file_name": "REF_GAP_MFL72073914_00_231122_00_OM_WEB.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GS-N600PL.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GS-N600PL",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1790,
+              "width_mm": 913,
+              "depth_mm": 735,
+              "door_open_90_depth_mm": 1180
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf3257": {
       "category": "fridge",
@@ -157925,12 +158478,49 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "GS-V600MBLC",
       "original_file_name": "REF_GAP_MFL72073914_00_231122_00_OM_WEB.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/GS-V600MBLC.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "GS-V600MBLC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1790,
+              "width_mm": 913,
+              "depth_mm": 735,
+              "door_open_90_depth_mm": 1180
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=4dEfGRBm7iKDAciS6QAuA",
+              "extraction_date": "2026-05-19T14:12:15.282Z",
+              "confidence_score": 0.9
+            }
+          }
+        }
+      ]
     },
     "fridge-arf2596": {
       "category": "fridge",

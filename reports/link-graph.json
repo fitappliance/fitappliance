@@ -1,28 +1,28 @@
 {
   "summary": {
-    "totalPages": 2382,
-    "totalEdges": 24289,
+    "totalPages": 2398,
+    "totalEdges": 24417,
     "orphanPages": 0,
-    "averageInlinks": 10.2
+    "averageInlinks": 10.18
   },
   "orphanUrls": [],
   "nodes": [
     {
       "url": "/",
       "file": "index.html",
-      "inlinks": 2381,
+      "inlinks": 2397,
       "outlinks": 12
     },
     {
       "url": "/about",
       "file": "pages/about.html",
-      "inlinks": 1570,
+      "inlinks": 1586,
       "outlinks": 7
     },
     {
       "url": "/about/editorial-standards",
       "file": "pages/about/editorial-standards.html",
-      "inlinks": 2381,
+      "inlinks": 2397,
       "outlinks": 4
     },
     {
@@ -2986,7 +2986,7 @@
     {
       "url": "/contact",
       "file": "pages/contact.html",
-      "inlinks": 1568,
+      "inlinks": 1584,
       "outlinks": 7
     },
     {
@@ -4882,13 +4882,13 @@
     {
       "url": "/methodology",
       "file": "pages/methodology.html",
-      "inlinks": 2381,
+      "inlinks": 2397,
       "outlinks": 4
     },
     {
       "url": "/privacy",
       "file": "pages/privacy.html",
-      "inlinks": 1568,
+      "inlinks": 1584,
       "outlinks": 7
     },
     {
@@ -4901,7 +4901,7 @@
       "url": "/products",
       "file": "pages/products.html",
       "inlinks": 1,
-      "outlinks": 1570
+      "outlinks": 1586
     },
     {
       "url": "/products/asko-d5424ss-ao-11970",
@@ -10694,6 +10694,24 @@
       "outlinks": 7
     },
     {
+      "url": "/products/lg-gb-b300mbl-fridge-arf3411",
+      "file": "pages/products/lg-gb-b300mbl-fridge-arf3411.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/lg-gb-v300mbl-fridge-arf3451",
+      "file": "pages/products/lg-gb-v300mbl-fridge-arf3451.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/lg-gb-w300mbl-fridge-arf3412",
+      "file": "pages/products/lg-gb-w300mbl-fridge-arf3412.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/lg-gb-w335mbl-fridge-arf2388",
       "file": "pages/products/lg-gb-w335mbl-fridge-arf2388.html",
       "inlinks": 1,
@@ -10748,8 +10766,20 @@
       "outlinks": 7
     },
     {
+      "url": "/products/lg-gf-b530bl-fridge-arf2853",
+      "file": "pages/products/lg-gf-b530bl-fridge-arf2853.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/lg-gf-b589ple-fridge-arf3456",
       "file": "pages/products/lg-gf-b589ple-fridge-arf3456.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/lg-gf-b590ble-fridge-arf2548",
+      "file": "pages/products/lg-gf-b590ble-fridge-arf2548.html",
       "inlinks": 1,
       "outlinks": 7
     },
@@ -10868,6 +10898,18 @@
       "outlinks": 7
     },
     {
+      "url": "/products/lg-gf-v570mblc-fridge-arf2773",
+      "file": "pages/products/lg-gf-v570mblc-fridge-arf2773.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/lg-gf-v570pnl-fridge-arf2311",
+      "file": "pages/products/lg-gf-v570pnl-fridge-arf2311.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/lg-gf-v700bslc-ao-149675",
       "file": "pages/products/lg-gf-v700bslc-ao-149675.html",
       "inlinks": 1,
@@ -10934,8 +10976,32 @@
       "outlinks": 7
     },
     {
+      "url": "/products/lg-gs-b500mb-fridge-arf3383",
+      "file": "pages/products/lg-gs-b500mb-fridge-arf3383.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/lg-gs-b599mbl-ao-163193",
       "file": "pages/products/lg-gs-b599mbl-ao-163193.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/lg-gs-b599pl-fridge-arf3369",
+      "file": "pages/products/lg-gs-b599pl-fridge-arf3369.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/lg-gs-b599plb-fridge-arf3517",
+      "file": "pages/products/lg-gs-b599plb-fridge-arf3517.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/lg-gs-b600mbl-fridge-arf3259",
+      "file": "pages/products/lg-gs-b600mbl-fridge-arf3259.html",
       "inlinks": 1,
       "outlinks": 7
     },
@@ -10964,6 +11030,18 @@
       "outlinks": 7
     },
     {
+      "url": "/products/lg-gs-d600bml-fridge-arf3780",
+      "file": "pages/products/lg-gs-d600bml-fridge-arf3780.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/lg-gs-d600mblc-fridge-arf3255",
+      "file": "pages/products/lg-gs-d600mblc-fridge-arf3255.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/lg-gs-d665bsl-ao-55857",
       "file": "pages/products/lg-gs-d665bsl-ao-55857.html",
       "inlinks": 1,
@@ -10988,6 +11066,18 @@
       "outlinks": 7
     },
     {
+      "url": "/products/lg-gs-n600pl-fridge-arf3215",
+      "file": "pages/products/lg-gs-n600pl-fridge-arf3215.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/lg-gs-v600mblc-fridge-arf3257",
+      "file": "pages/products/lg-gs-v600mblc-fridge-arf3257.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/lg-gs-v635mblc-ao-104496",
       "file": "pages/products/lg-gs-v635mblc-ao-104496.html",
       "inlinks": 1,
@@ -11002,6 +11092,12 @@
     {
       "url": "/products/lg-gt-1si-fridge-arf3637",
       "file": "pages/products/lg-gt-1si-fridge-arf3637.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/lg-gt-279bpl-ao-79126",
+      "file": "pages/products/lg-gt-279bpl-ao-79126.html",
       "inlinks": 1,
       "outlinks": 7
     },
@@ -14290,7 +14386,7 @@
     {
       "url": "/terms",
       "file": "pages/terms.html",
-      "inlinks": 1568,
+      "inlinks": 1584,
       "outlinks": 7
     },
     {

@@ -1,21 +1,21 @@
 # Full Catalog PDF Coverage Audit
 
-Generated: 2026-05-15
+Generated: 2026-05-19
 
 ## Summary
 
-- Total SKUs: 3529
-- Verified with PDF evidence: 1563
-- Missing PDF evidence: 1966
-- Overall coverage: 44.3%
+- Total SKUs: 3541
+- Verified with PDF evidence: 1580
+- Missing PDF evidence: 1961
+- Overall coverage: 44.6%
 
 ## Coverage By Brand
 
 | Brand | Total SKUs | Verified (PDF) | Missing PDF | Coverage % |
 |---|---:|---:|---:|---:|
 | Fisher & Paykel | 289 | 245 | 44 | 84.8% |
-| LG | 246 | 155 | 91 | 63.0% |
-| Westinghouse | 213 | 156 | 57 | 73.2% |
+| LG | 247 | 172 | 75 | 69.6% |
+| Westinghouse | 222 | 156 | 66 | 70.3% |
 | Haier | 184 | 152 | 32 | 82.6% |
 | Hisense | 165 | 94 | 71 | 57.0% |
 | Bosch | 153 | 149 | 4 | 97.4% |
@@ -38,9 +38,9 @@ Generated: 2026-05-15
 | VOGUE | 41 | 0 | 41 | 0.0% |
 | Eurotech | 38 | 0 | 38 | 0.0% |
 | Sub-Zero | 38 | 0 | 38 | 0.0% |
+| TECO | 38 | 0 | 38 | 0.0% |
 | Euromaid | 37 | 0 | 37 | 0.0% |
 | TCL | 37 | 7 | 30 | 18.9% |
-| TECO | 37 | 0 | 37 | 0.0% |
 | HELLER | 35 | 0 | 35 | 0.0% |
 | Living & Co | 28 | 0 | 28 | 0.0% |
 | BEKO | 27 | 1 | 26 | 3.7% |
@@ -163,6 +163,7 @@ Generated: 2026-05-15
 | Pulmuone | 1 | 0 | 1 | 0.0% |
 | RYOBI | 1 | 0 | 1 | 0.0% |
 | SAMSUNG ELECTRONICS | 1 | 0 | 1 | 0.0% |
+| SHOME I SEIKI | 1 | 0 | 1 | 0.0% |
 | Swift | 1 | 0 | 1 | 0.0% |
 | TRIESTE | 1 | 0 | 1 | 0.0% |
 | Venini | 1 | 0 | 1 | 0.0% |
