@@ -1028,6 +1028,79 @@ test('runBatch processes Midea targets with official spec plus manual documents 
   assert.equal(raw.extracted.clearance_requirements.rear_mm, 10);
 });
 
+test('runBatch processes Miele manual-evidence spec sheets with the strict Miele parser without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'dishwasher-g5000',
+    brand: 'Miele',
+    sku: 'G 5000',
+    category: 'dishwasher',
+    product: {
+      id: 'dishwasher-g5000',
+      cat: 'dishwasher',
+      brand: 'Miele',
+      model: 'G 5000',
+      w: 598,
+      h: 805,
+      d: 570,
+      unavailable: true
+    }
+  };
+  writeJson(path.join(repoRoot, 'data', 'manual-evidence.json'), {
+    schema_version: 1,
+    products: {
+      'ao-g5000': {
+        category: 'dishwasher',
+        brand: 'Miele',
+        model: 'G5000BKBRWS',
+        evidence: [
+          {
+            type: 'spec_sheet',
+            status: 'candidate',
+            source_url: 'https://www.appliancesonline.com.au/G5000BKBRWS_Miele_Specifications_Sheet.pdf'
+          }
+        ]
+      }
+    }
+  });
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        Miele G 5000 SC BRWS
+        Technical data
+        Niche width in mm 600
+        Niche height in mm 805
+        Niche depth in mm 570
+        Appliance width in mm 598
+        Appliance height in mm 805
+        Appliance depth in mm 570
+        Depth with door open in cm 116.5
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'manual-evidence:miele-family-spec_sheet');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'G-5000.json'), 'utf8'));
+  assert.equal(raw.extracted.metadata.verified_alias, 'G5000SCBRWS');
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 1,
+    right_mm: 1,
+    rear_mm: 0
+  });
+});
+
 test('runBatch preserves Samsung verified_alias metadata from manual evidence', async () => {
   const repoRoot = makeRepo();
   const target = {

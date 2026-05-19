@@ -30,11 +30,14 @@ const { findEsattoOfficialPdf } = require('./esatto-official');
 const { parseEsattoText } = require('./parsers/esatto');
 const { findMideaOfficialPdf } = require('./midea-official');
 const { parseMideaText } = require('./parsers/midea');
+const { findMieleManualEvidencePdf } = require('./miele-official');
+const { parseMieleText } = require('./parsers/miele');
 const { discoverThirdPartyPdf } = require('./third-party-fallback');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
 const FISHER_PAYKEL_MAX_BYTES = 30 * 1024 * 1024;
 const MIDEA_MAX_BYTES = 35 * 1024 * 1024;
+const MIELE_MAX_BYTES = 20 * 1024 * 1024;
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -188,6 +191,13 @@ function isEsattoTarget(target = {}) {
 
 function isMideaTarget(target = {}) {
   return /midea/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isMieleTarget(target = {}) {
+  return /miele/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -996,6 +1006,44 @@ async function parseMideaTarget({
   };
 }
 
+async function parseMieleTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  mieleManualEvidenceFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const resolved = mieleManualEvidenceFinder(target, manualEvidence);
+  if (!resolved?.sourceUrl) {
+    throw new Error('Miele strict parser requires an exact or conservative manual-evidence specification sheet source.');
+  }
+
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}-${slugPathPart(resolved.source || 'source')}.pdf`
+  );
+  const fetched = await fetchPdfImpl(resolved.sourceUrl, pdfPath, {
+    timeoutMs: 60_000,
+    maxBytes: MIELE_MAX_BYTES
+  });
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseMieleText(textResult.text, {
+    target,
+    sourceUrl: resolved.sourceUrl,
+    extractionDate: new Date().toISOString()
+  });
+
+  return {
+    candidate: annotateSourceMetadata(parsed.data, resolved.source || 'miele-manual-evidence'),
+    sourceUrl: resolved.sourceUrl,
+    source: resolved.source || 'miele-manual-evidence'
+  };
+}
+
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
   const dimensions = strictData?.dimensions || {};
   const pairs = [
@@ -1124,6 +1172,7 @@ async function runBatch({
   chiqOfficialFinder = findChiqOfficialPdf,
   esattoOfficialFinder = findEsattoOfficialPdf,
   mideaOfficialFinder = findMideaOfficialPdf,
+  mieleManualEvidenceFinder = findMieleManualEvidencePdf,
   includeArchived = false,
   brand = null
 } = {}) {
@@ -1149,6 +1198,7 @@ async function runBatch({
     && !isChiqTarget(target)
     && !isEsattoTarget(target)
     && !isMideaTarget(target)
+    && !isMieleTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -1258,6 +1308,18 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           mideaOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isMieleTarget(target)) {
+        const parsed = await parseMieleTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          mieleManualEvidenceFinder,
           fetchPdfImpl,
           extractTextImpl
         });
@@ -1404,3 +1466,4 @@ exports.parseHisenseTarget = parseHisenseTarget;
 exports.parseChiqTarget = parseChiqTarget;
 exports.parseEsattoTarget = parseEsattoTarget;
 exports.parseMideaTarget = parseMideaTarget;
+exports.parseMieleTarget = parseMieleTarget;
