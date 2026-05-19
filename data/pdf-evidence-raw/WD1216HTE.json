@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "washing_machine-acw1125",
+  "category": "washing_machine",
+  "brand": "LG",
+  "model": "WD1216HTE",
+  "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c5KT0VXQEkTcJ8ojmWFA",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "LG",
+    "sku": "WD1216HTE",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 990,
+      "width_mm": 700,
+      "depth_mm": 835,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 20,
+      "left_mm": 25,
+      "right_mm": 25,
+      "rear_mm": 100
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": false,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c5KT0VXQEkTcJ8ojmWFA",
+      "extraction_date": "2026-05-19T17:48:20.772Z",
+      "confidence_score": 0.88,
+      "source_type": "manual-evidence"
+    }
+  }
+}

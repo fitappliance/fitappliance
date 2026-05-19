@@ -53212,7 +53212,12 @@
       "inferred_door_swing": true,
       "displayName": "LG Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c5KT0VXQEkTcJ8ojmWFA",
+        "verified_at": "2026-05-19"
+      }
     },
     {
       "id": "washing_machine-acw1082",
@@ -53277,7 +53282,12 @@
       "inferred_door_swing": true,
       "displayName": "LG Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=9h6qB3b1EeYjHTHq8UfNig",
+        "verified_at": "2026-05-19"
+      }
     },
     {
       "id": "w2",

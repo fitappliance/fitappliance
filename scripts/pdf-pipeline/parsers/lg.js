@@ -46,6 +46,12 @@ function parseMm(value, label) {
   return Math.round(Number(match[1]));
 }
 
+function parseCmAsMm(value, label) {
+  const match = String(value || '').match(/(\d+(?:\.\d+)?)/);
+  if (!match) throw new Error(`Unable to parse LG ${label} from "${value}"`);
+  return Math.round(Number(match[1]) * 10);
+}
+
 function normalizeModelToken(value, { keepWildcard = false } = {}) {
   const allowed = keepWildcard ? /[^A-Z0-9*]+/g : /[^A-Z0-9]+/g;
   return String(value || '')
@@ -321,6 +327,16 @@ function extractLgWasherLikeDimensions(text, sku, category) {
   const window = findSpecInstallationWindow(text);
   const blocks = extractDimensionBlocks(window);
   if (!blocks.length) {
+    const source = compactWhitespace(window);
+    const legacySize = source.match(/\bSize\s+(\d+(?:\.\d+)?)\s*mm\s*\(\s*W\s*\)\s*x\s*(\d+(?:\.\d+)?)\s*mm\s*\(\s*D\s*\)\s*x\s*(\d+(?:\.\d+)?)\s*mm\s*\(\s*H\s*\)/i);
+    if (legacySize) {
+      return {
+        width_mm: parseMm(legacySize[1], `${category} legacy width`),
+        height_mm: parseMm(legacySize[3], `${category} legacy height`),
+        depth_mm: parseMm(legacySize[2], `${category} legacy depth`),
+        door_open_90_depth_mm: null
+      };
+    }
     throw new Error(`LG ${category.toLowerCase()} parser could not find a W/H/D dimensions block.`);
   }
 
@@ -433,9 +449,18 @@ function extractLgFridgeClearance(text) {
 function extractLgWasherLikeClearance(text, category) {
   const source = compactWhitespace(text);
   const sideRear = source.match(/(?:minimum\s+)?clearances\s+of\s+at\s+least\s+(\d+(?:\.\d+)?)\s*mm\s+at\s+the\s+sides\s+and\s+(\d+(?:\.\d+)?)\s*mm\s+behind\s+the\s+appliance/i);
+  const cmSideRear = source.match(/Additional\s+Clearance\s*:\s*For\s+the\s+wall,\s*(\d+(?:\.\d+)?)\s*cm\s*:\s*rear\s*\/\s*(\d+(?:\.\d+)?)\s*cm\s*:\s*right\s*&\s*left\s*side/i);
   const top = source.match(/(?:clearance\s+of\s+approximately|Keep\s+at\s+least)\s+(\d+(?:\.\d+)?)\s*mm\s+(?:is\s+left\s+)?between\s+the\s+top\s+of\s+the\s+appliance/i)?.[1];
 
   if (category === 'WASHING_MACHINE') {
+    if (cmSideRear) {
+      return {
+        top_mm: top ? parseMm(top, 'washing machine top clearance') : 0,
+        left_mm: parseCmAsMm(cmSideRear[2], 'washing machine side clearance'),
+        right_mm: parseCmAsMm(cmSideRear[2], 'washing machine side clearance'),
+        rear_mm: parseCmAsMm(cmSideRear[1], 'washing machine rear clearance')
+      };
+    }
     if (!sideRear) {
       throw new Error('LG washing machine parser requires explicit side and rear clearance figures.');
     }

@@ -5,8 +5,8 @@ Generated: 2026-05-19
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1659
-- Missing PDF evidence: 1882
+- Verified with PDF evidence: 1661
+- Missing PDF evidence: 1880
 - Overall coverage: 46.9%
 
 ## Coverage By Brand
@@ -14,7 +14,7 @@ Generated: 2026-05-19
 | Brand | Total SKUs | Verified (PDF) | Missing PDF | Coverage % |
 |---|---:|---:|---:|---:|
 | Fisher & Paykel | 289 | 245 | 44 | 84.8% |
-| LG | 247 | 172 | 75 | 69.6% |
+| LG | 247 | 174 | 73 | 70.4% |
 | Westinghouse | 222 | 162 | 60 | 73.0% |
 | Haier | 184 | 152 | 32 | 82.6% |
 | Hisense | 165 | 131 | 34 | 79.4% |

@@ -158740,12 +158740,50 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c5KT0VXQEkTcJ8ojmWFA",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "WD1216HTE",
       "original_file_name": "MFL69283958_TT_WD_EAP_161220.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c5KT0VXQEkTcJ8ojmWFA",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/WD1216HTE.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "WD1216HTE",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 990,
+              "width_mm": 700,
+              "depth_mm": 835,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 20,
+              "left_mm": 25,
+              "right_mm": 25,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": false,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c5KT0VXQEkTcJ8ojmWFA",
+              "extraction_date": "2026-05-19T17:48:20.772Z",
+              "confidence_score": 0.88,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
     },
     "washing_machine-acw1178": {
       "category": "washing_machine",
@@ -158765,12 +158803,50 @@
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=9h6qB3b1EeYjHTHq8UfNig",
       "type": "user_manual",
       "status": "candidate",
-      "has_pdf_evidence": false,
+      "has_pdf_evidence": true,
       "discovered_at": "2026-05-19T12:15:51.075Z",
       "discovery_source": "lg-official-support-manual",
       "lookup_sku": "WD1610NSW",
       "original_file_name": "G+Best_HP_AP_170324_p.pdf",
-      "notes": "LG PDF hunter candidate. Requires parser validation before approval."
+      "notes": "LG PDF hunter candidate. Requires parser validation before approval.",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=9h6qB3b1EeYjHTHq8UfNig",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/WD1610NSW.json",
+          "extracted": {
+            "brand": "LG",
+            "sku": "WD1610NSW",
+            "category": "WASHING_MACHINE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 600,
+              "depth_mm": 675,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 5,
+              "left_mm": 50,
+              "right_mm": 50,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": false,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=9h6qB3b1EeYjHTHq8UfNig",
+              "extraction_date": "2026-05-19T17:48:21.036Z",
+              "confidence_score": 0.88,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
     },
     "washing_machine-acw1417": {
       "category": "washing_machine",

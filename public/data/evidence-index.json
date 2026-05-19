@@ -26453,27 +26453,27 @@
     },
     "washing_machine-acw1125": {
       "product_id": "washing_machine-acw1125",
-      "status": "pending",
+      "status": "verified",
       "category": "washing_machine",
       "brand": "LG",
       "model": "WD1216HTE",
-      "has_pdf_evidence": false,
-      "source_type": "manual_evidence",
-      "source_url": "",
-      "verified_at": "",
-      "confidence_score": null
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=c5KT0VXQEkTcJ8ojmWFA",
+      "verified_at": "2026-05-19",
+      "confidence_score": 0.88
     },
     "washing_machine-acw1178": {
       "product_id": "washing_machine-acw1178",
-      "status": "pending",
+      "status": "verified",
       "category": "washing_machine",
       "brand": "LG",
       "model": "WD1610NSW",
-      "has_pdf_evidence": false,
-      "source_type": "manual_evidence",
-      "source_url": "",
-      "verified_at": "",
-      "confidence_score": null
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=9h6qB3b1EeYjHTHq8UfNig",
+      "verified_at": "2026-05-19",
+      "confidence_score": 0.88
     },
     "washing_machine-acw1182": {
       "product_id": "washing_machine-acw1182",
