@@ -32951,7 +32951,12 @@
       "inferred_door_swing": true,
       "displayName": "Liebherr Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 51
+      "priorityScore": 51,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/public/manuals/ICNH5123LH-Liebherr-Specifications-Sheet.pdf",
+        "verified_at": "2026-05-19"
+      }
     },
     {
       "id": "fridge-zrf0760",
@@ -32977,7 +32982,12 @@
       "inferred_door_swing": true,
       "displayName": "Liebherr Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 51
+      "priorityScore": 51,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/public/manuals/ICNH5133RH-Liebherr-Specifications-Sheet.pdf",
+        "verified_at": "2026-05-19"
+      }
     },
     {
       "id": "fridge-zrf0754",

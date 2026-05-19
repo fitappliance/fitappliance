@@ -34,6 +34,8 @@ const { findMieleManualEvidencePdf } = require('./miele-official');
 const { parseMieleText } = require('./parsers/miele');
 const { findKoganOfficialPdf } = require('./kogan-official');
 const { parseKoganText } = require('./parsers/kogan');
+const { findLiebherrOfficialPdf } = require('./liebherr-official');
+const { parseLiebherrText } = require('./parsers/liebherr');
 const { discoverThirdPartyPdf } = require('./third-party-fallback');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
@@ -41,6 +43,7 @@ const FISHER_PAYKEL_MAX_BYTES = 30 * 1024 * 1024;
 const MIDEA_MAX_BYTES = 35 * 1024 * 1024;
 const MIELE_MAX_BYTES = 20 * 1024 * 1024;
 const KOGAN_MAX_BYTES = 25 * 1024 * 1024;
+const LIEBHERR_MAX_BYTES = 30 * 1024 * 1024;
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -208,6 +211,13 @@ function isMieleTarget(target = {}) {
 
 function isKoganTarget(target = {}) {
   return /kogan/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isLiebherrTarget(target = {}) {
+  return /liebherr/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -1096,6 +1106,114 @@ async function parseKoganTarget({
   };
 }
 
+function getLiebherrResources(official) {
+  const resources = Array.isArray(official?.resources) ? official.resources : [];
+  const primary = official?.sourceUrl
+    ? [{
+        sourceUrl: official.sourceUrl,
+        url: official.sourceUrl,
+        source: official.source || 'liebherr-retailer',
+        resourceType: official.resourceType || 'pdf',
+        score: 1000
+      }]
+    : [];
+  const deduped = new Map();
+  for (const resource of [...primary, ...resources]) {
+    const url = resource?.sourceUrl || resource?.url;
+    if (!url) continue;
+    const normalized = {
+      ...resource,
+      sourceUrl: url,
+      url,
+      source: resource.source || `liebherr-retailer-${resource.resourceType || 'pdf'}`,
+      resourceType: resource.resourceType || 'pdf',
+      score: Number.isFinite(resource.score) ? resource.score : 0
+    };
+    const existing = deduped.get(url);
+    if (!existing || normalized.score > existing.score) deduped.set(url, normalized);
+  }
+  return [...deduped.values()].sort((a, b) => b.score - a.score || a.url.localeCompare(b.url));
+}
+
+async function parseLiebherrTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  liebherrOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  let official = null;
+  let officialError = null;
+  try {
+    official = await liebherrOfficialFinder(target, { timeoutMs: 45_000 });
+  } catch (error) {
+    officialError = error;
+  }
+  const manualResources = manualSourceUrl
+    ? [{
+        sourceUrl: manualSourceUrl,
+        url: manualSourceUrl,
+        source: 'manual-evidence',
+        resourceType: 'pdf',
+        score: 1000
+      }]
+    : [];
+  const resources = [...manualResources, ...getLiebherrResources(official)];
+
+  if (resources.length === 0) {
+    throw new Error(officialError?.message || official?.reason || 'Liebherr PDF resources not found');
+  }
+
+  const documents = [];
+  const errors = [];
+  for (let index = 0; index < resources.length; index += 1) {
+    const resource = resources[index];
+    const pdfPath = path.join(
+      repoRoot,
+      '.tmp',
+      'pdfs',
+      slugPathPart(target.brand),
+      `${slugPathPart(target.sku)}-${slugPathPart(resource.resourceType || `doc-${index}`)}.pdf`
+    );
+    try {
+      const fetched = await fetchPdfImpl(resource.sourceUrl, pdfPath, {
+        timeoutMs: 60_000,
+        maxBytes: LIEBHERR_MAX_BYTES
+      });
+      const textResult = await extractTextImpl(fetched.path);
+      documents.push({
+        resource,
+        text: textResult.text
+      });
+    } catch (error) {
+      errors.push(`${resource.resourceType || resource.sourceUrl}: ${error.message}`);
+    }
+  }
+
+  if (documents.length === 0) {
+    throw new Error(`Liebherr PDF resources could not be read: ${errors.join(' | ')}`);
+  }
+
+  const sourceUrl = documents.find((document) => document.resource.resourceType === 'specification_sheet')?.resource.sourceUrl
+    || documents[0].resource.sourceUrl;
+  const source = [...new Set(documents.map((document) => document.resource.source || `liebherr-retailer-${document.resource.resourceType || 'pdf'}`)
+    .filter(Boolean))]
+    .join('+');
+  const parsed = parseLiebherrText(documents.map((document) => document.text).join('\n\n'), {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString()
+  });
+
+  return {
+    candidate: annotateSourceMetadata(parsed.data, source || 'liebherr-retailer'),
+    sourceUrl,
+    source: source || 'liebherr-retailer'
+  };
+}
+
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
   const dimensions = strictData?.dimensions || {};
   const pairs = [
@@ -1226,6 +1344,7 @@ async function runBatch({
   mideaOfficialFinder = findMideaOfficialPdf,
   mieleManualEvidenceFinder = findMieleManualEvidencePdf,
   koganOfficialFinder = findKoganOfficialPdf,
+  liebherrOfficialFinder = findLiebherrOfficialPdf,
   includeArchived = false,
   brand = null
 } = {}) {
@@ -1253,6 +1372,7 @@ async function runBatch({
     && !isMideaTarget(target)
     && !isMieleTarget(target)
     && !isKoganTarget(target)
+    && !isLiebherrTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -1386,6 +1506,18 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           koganOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isLiebherrTarget(target)) {
+        const parsed = await parseLiebherrTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          liebherrOfficialFinder,
           fetchPdfImpl,
           extractTextImpl
         });
@@ -1534,3 +1666,4 @@ exports.parseEsattoTarget = parseEsattoTarget;
 exports.parseMideaTarget = parseMideaTarget;
 exports.parseMieleTarget = parseMieleTarget;
 exports.parseKoganTarget = parseKoganTarget;
+exports.parseLiebherrTarget = parseLiebherrTarget;

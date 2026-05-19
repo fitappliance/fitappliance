@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1676,
-    "merged_products": 1659,
+    "evidence_files": 1678,
+    "merged_products": 1661,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -28,7 +28,7 @@
     "official_pdf_by_category": {
       "dishwasher": 376,
       "dryer": 99,
-      "fridge": 920,
+      "fridge": 922,
       "washing_machine": 262,
       "washtower_combo": 2
     }
@@ -26003,7 +26003,33 @@
       "inferred_door_swing": true,
       "displayName": "Liebherr Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 51
+      "priorityScore": 51,
+      "dimensions": {
+        "height_mm": 1772,
+        "width_mm": 560,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/public/manuals/ICNH5123LH-Liebherr-Specifications-Sheet.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.86,
+        "source_type": "manual-evidence+liebherr-retailer-specification_sheet+liebherr-retailer-installation_guide+liebherr-retailer-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/ICNh-5123.json"
+      }
     },
     {
       "id": "fridge-zrf0760",
@@ -26029,7 +26055,33 @@
       "inferred_door_swing": true,
       "displayName": "Liebherr Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 51
+      "priorityScore": 51,
+      "dimensions": {
+        "height_mm": 1772,
+        "width_mm": 560,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/public/manuals/ICNH5133RH-Liebherr-Specifications-Sheet.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.86,
+        "source_type": "manual-evidence+liebherr-retailer-specification_sheet+liebherr-retailer-installation_guide+liebherr-retailer-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/ICNh-5133.json"
+      }
     },
     {
       "id": "fridge-zrf0754",
@@ -59477,6 +59529,14 @@
       "displayName": "Kogan Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://assets.kogan.com/files/usermanuals/KAMFWASH80A_UG.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "kogan-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/KAMFWASH80A.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 595,
@@ -59494,15 +59554,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://assets.kogan.com/files/usermanuals/KAMFWASH80A_UG.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.91,
-        "source_type": "kogan-official-user_manual",
-        "raw_json_path": "data/pdf-evidence-raw/KAMFWASH80A.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1404",
@@ -59529,6 +59581,14 @@
       "displayName": "Kogan Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://assets.kogan.com/files/usermanuals/KAMFWASH90A_UG.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "kogan-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/KAMFWASH90A.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 595,
@@ -59546,15 +59606,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://assets.kogan.com/files/usermanuals/KAMFWASH90A_UG.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.91,
-        "source_type": "kogan-official-user_manual",
-        "raw_json_path": "data/pdf-evidence-raw/KAMFWASH90A.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1519",
@@ -59607,6 +59659,14 @@
       "displayName": "Kogan Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://assets.kogan.com/files/usermanuals/KATFWASH11A_UG.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.91,
+        "source_type": "kogan-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/KATFWASH11A.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 595,
@@ -59624,15 +59684,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://assets.kogan.com/files/usermanuals/KATFWASH11A_UG.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.91,
-        "source_type": "kogan-official-user_manual",
-        "raw_json_path": "data/pdf-evidence-raw/KATFWASH11A.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1298",

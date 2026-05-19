@@ -5,9 +5,9 @@ Generated: 2026-05-19
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1665
-- Missing PDF evidence: 1876
-- Overall coverage: 47.0%
+- Verified with PDF evidence: 1667
+- Missing PDF evidence: 1874
+- Overall coverage: 47.1%
 
 ## Coverage By Brand
 
@@ -31,7 +31,7 @@ Generated: 2026-05-19
 | Kogan | 60 | 3 | 57 | 5.0% |
 | CHiQ | 53 | 53 | 0 | 100.0% |
 | Artusi | 52 | 0 | 52 | 0.0% |
-| Liebherr | 52 | 0 | 52 | 0.0% |
+| Liebherr | 52 | 2 | 50 | 3.8% |
 | Robinhood | 46 | 0 | 46 | 0.0% |
 | ASKO | 42 | 29 | 13 | 69.0% |
 | Inalto | 41 | 0 | 41 | 0.0% |
