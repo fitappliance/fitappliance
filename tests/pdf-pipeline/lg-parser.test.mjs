@@ -216,6 +216,63 @@ test('LG parser handles older fridge Size(mm) a/b tables with explicit adjacent-
   });
 });
 
+test('LG parser requires explicit verified_alias for manual cross-model support aliases', () => {
+  const text = `
+    OWNER'S MANUAL
+    FRIDGE & FREEZER
+    GP-F324PL / GP-F324MBL
+
+    Dimensions and Clearances
+    Allow over 50 mm of clearance between the back of the appliance and the wall.
+    Size (mm)
+    A 595
+    B 1860
+    C 707
+    D 600
+    E 666
+    F 707
+    G 1225
+    H 816
+  `;
+
+  const options = {
+    target: {
+      brand: 'LG',
+      sku: 'MP-F324',
+      category: 'fridge',
+      product: {
+        w: 595,
+        h: 1860,
+        d: 707
+      }
+    },
+    sourceUrl: 'https://gscs-b2c.lge.com/open/downloadFile?fileId=feLeOVbe7DABWnJeatsRg',
+    extractionDate: EXTRACTION_DATE
+  };
+
+  assert.throws(() => parseLgText(text, options), /verify SKU MP-F324/);
+
+  const result = parseLgText(text, {
+    ...options,
+    verifiedAlias: 'GP-F324MBL'
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 1860,
+    width_mm: 595,
+    depth_mm: 707,
+    door_open_90_depth_mm: 1225
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 0,
+    right_mm: 0,
+    rear_mm: 50
+  });
+  assert.equal(result.data.flags.requires_plumbing, false);
+  assert.equal(result.data.metadata.verified_alias, 'GP-F324MBL');
+});
+
 test('LG parser fails closed when a document has dimensions but no explicit clearance', () => {
   assert.throws(() => parseLgText(`
     LG Washing Machine

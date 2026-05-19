@@ -106,8 +106,8 @@ function extractModelTokens(text) {
 }
 
 function assertModelSupportedByDocument(text, sku, verifiedAlias = '') {
-  if (verifiedAlias && lgModelMatchesSku(verifiedAlias, sku)) return;
   const tokens = extractModelTokens(text);
+  if (verifiedAlias && tokens.some((token) => lgModelMatchesSku(token, verifiedAlias))) return;
   if (tokens.some((token) => lgModelMatchesSku(token, sku))) return;
   throw new Error(`LG parser could not verify SKU ${sku} against document model tokens.`);
 }
@@ -188,6 +188,43 @@ function parseOldLgFridgeSizeRows(window) {
   return rows;
 }
 
+function parseSingleOldLgFridgeSizeRows(window) {
+  const rows = {};
+  const lines = normalizeWhitespace(window)
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
+  for (const line of lines) {
+    const row = line.match(/^([A-H])\s+(\d+(?:\/\d+)*)\b/i);
+    if (row) rows[row[1].toUpperCase()] = row[2];
+  }
+  return rows;
+}
+
+function pickSingleOldLgFridgeDimensions(rows, product = {}) {
+  const width = parseMm(rows.A, 'old fridge width');
+  const height = parseMm(rows.B, 'old fridge height');
+  const depth = parseMm(rows.C, 'old fridge depth');
+  const doorOpen = parseMm(rows.G, 'old fridge door open depth');
+  const targetWidth = Number(product?.w);
+  const targetHeight = Number(product?.h);
+  const targetDepth = Number(product?.d);
+  if (
+    Number.isFinite(targetWidth)
+    && Number.isFinite(targetHeight)
+    && Number.isFinite(targetDepth)
+    && (width !== targetWidth || height !== targetHeight || depth !== targetDepth)
+  ) {
+    throw new Error('LG old fridge single-column table does not match catalog W/H/D.');
+  }
+  return {
+    width_mm: width,
+    height_mm: height,
+    depth_mm: depth,
+    door_open_90_depth_mm: doorOpen
+  };
+}
+
 function pickOldLgFridgeColumn(rows, product = {}) {
   const targetWidth = Number(product?.w);
   const targetHeight = Number(product?.h);
@@ -224,18 +261,20 @@ function pickOldLgFridgeColumn(rows, product = {}) {
 
 function extractOldLgFridgeDimensions(text, product) {
   const rows = parseOldLgFridgeSizeRows(text);
-  for (const rowName of ['A', 'B', 'C', 'G']) {
-    if (!rows[rowName]) {
-      throw new Error('LG old fridge parser could not find a complete Size(mm) a/b table.');
-    }
+  if (['A', 'B', 'C', 'G'].every((rowName) => rows[rowName])) {
+    const picked = pickOldLgFridgeColumn(rows, product);
+    return {
+      width_mm: picked.width_mm,
+      height_mm: picked.height_mm,
+      depth_mm: picked.depth_mm,
+      door_open_90_depth_mm: picked.door_open_90_depth_mm
+    };
   }
-  const picked = pickOldLgFridgeColumn(rows, product);
-  return {
-    width_mm: picked.width_mm,
-    height_mm: picked.height_mm,
-    depth_mm: picked.depth_mm,
-    door_open_90_depth_mm: picked.door_open_90_depth_mm
-  };
+  const singleRows = parseSingleOldLgFridgeSizeRows(text);
+  if (['A', 'B', 'C', 'G'].every((rowName) => singleRows[rowName])) {
+    return pickSingleOldLgFridgeDimensions(singleRows, product);
+  }
+  throw new Error('LG old fridge parser could not find a complete Size(mm) table.');
 }
 
 function extractLgFridgeDimensions(text, sku, product = {}) {
@@ -456,7 +495,9 @@ function extractLgClearance(text, category) {
 
 function inferRequiresPlumbing(text, category) {
   if (category === 'DISHWASHER' || category === 'WASHING_MACHINE' || category === 'WASHTOWER_COMBO') return true;
-  if (category === 'FRIDGE') return /plumbed|water\s+line|water\s+supply|water\s+filter|icemaker/i.test(text);
+  if (category === 'FRIDGE') {
+    return /plumbed|water\s+supply|water\s+filter|water\s+inlet|connect(?:ing)?\s+(?:the\s+)?water\s+line|water\s+line\s+connect/i.test(text);
+  }
   if (category === 'DRYER') return /drain\s+hose|condens(?:ing|ate)|water\s+collection\s+tank/i.test(text);
   return false;
 }

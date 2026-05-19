@@ -31924,7 +31924,12 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=feLeOVbe7DABWnJeatsRg",
+        "verified_at": "2026-05-19"
+      }
     },
     {
       "id": "fridge-arf2605",

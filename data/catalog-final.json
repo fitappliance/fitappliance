@@ -10,25 +10,25 @@
     ],
     "evidence_dir": "data/pdf-evidence-raw"
   },
-  "latest_verified_at": "2026-05-15",
+  "latest_verified_at": "2026-05-19",
   "summary": {
-    "total_products": 3529,
-    "active_products": 1401,
-    "evidence_files": 1574,
-    "merged_products": 1557,
+    "total_products": 3540,
+    "active_products": 1399,
+    "evidence_files": 1575,
+    "merged_products": 1558,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
       "dishwasher": 706,
       "dryer": 168,
-      "fridge": 1989,
-      "washing_machine": 664,
+      "fridge": 1999,
+      "washing_machine": 665,
       "washtower_combo": 2
     },
     "official_pdf_by_category": {
       "dishwasher": 374,
       "dryer": 99,
-      "fridge": 825,
+      "fridge": 826,
       "washing_machine": 257,
       "washtower_combo": 2
     }
@@ -8878,6 +8878,14 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwdc84d0fc/QRG/AU/QRG-AU-26364.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.94,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/RF442B.json"
+      },
       "dimensions": {
         "height_mm": 1720,
         "width_mm": 680,
@@ -8895,15 +8903,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwdc84d0fc/QRG/AU/QRG-AU-26364.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.94,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/RF442B.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3054",
@@ -9260,6 +9260,14 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf01911b1/QRG/AU/QRG-AU-26421.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.94,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/RF522BLPW6.json"
+      },
       "dimensions": {
         "height_mm": 1720,
         "width_mm": 790,
@@ -9277,15 +9285,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf01911b1/QRG/AU/QRG-AU-26421.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.94,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/RF522BLPW6.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3588",
@@ -9676,6 +9676,14 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 42,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw43cc2d03/QRG/AU/QRG-AU-26155.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/RS4621FLJK1.json"
+      },
       "dimensions": {
         "height_mm": 2134,
         "width_mm": 451,
@@ -9693,15 +9701,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw43cc2d03/QRG/AU/QRG-AU-26155.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/RS4621FLJK1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3303",
@@ -9728,6 +9728,14 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 66,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw7599cfc7/QRG/AU/QRG-AU-26703.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/RS6009SBL1.json"
+      },
       "dimensions": {
         "height_mm": 864,
         "width_mm": 592,
@@ -9745,15 +9753,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw7599cfc7/QRG/AU/QRG-AU-26703.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/RS6009SBL1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3337",
@@ -9780,6 +9780,14 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwc984dcd8/QRG/AU/QRG-AU-26702.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/RS6009SBLT1.json"
+      },
       "dimensions": {
         "height_mm": 864,
         "width_mm": 592,
@@ -9797,15 +9805,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwc984dcd8/QRG/AU/QRG-AU-26702.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/RS6009SBLT1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2890",
@@ -9832,6 +9832,14 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0697870b/QRG/AU/QRG-AU-26200.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/RS6019BRU1.json"
+      },
       "dimensions": {
         "height_mm": 1870,
         "width_mm": 592,
@@ -9849,15 +9857,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0697870b/QRG/AU/QRG-AU-26200.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/RS6019BRU1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2852",
@@ -9884,6 +9884,14 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw19e549a9/QRG/AU/QRG-AU-26198.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/RS6019F2L1.json"
+      },
       "dimensions": {
         "height_mm": 1870,
         "width_mm": 592,
@@ -9901,15 +9909,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw19e549a9/QRG/AU/QRG-AU-26198.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/RS6019F2L1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3052",
@@ -9936,6 +9936,14 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwdee1d8f4/QRG/AU/QRG-AU-26199.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/RS6019F3LJ1.json"
+      },
       "dimensions": {
         "height_mm": 1870,
         "width_mm": 592,
@@ -9953,15 +9961,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwdee1d8f4/QRG/AU/QRG-AU-26199.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/RS6019F3LJ1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2837",
@@ -9988,6 +9988,14 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8267d0ef/QRG/AU/QRG-AU-26196.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/RS6019S2R1.json"
+      },
       "dimensions": {
         "height_mm": 1870,
         "width_mm": 592,
@@ -10005,15 +10013,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8267d0ef/QRG/AU/QRG-AU-26196.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/RS6019S2R1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3051",
@@ -10040,6 +10040,14 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9f4befcb/QRG/AU/QRG-AU-26197.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/RS6019S3RH1.json"
+      },
       "dimensions": {
         "height_mm": 1870,
         "width_mm": 592,
@@ -10057,15 +10065,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9f4befcb/QRG/AU/QRG-AU-26197.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/RS6019S3RH1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3479",
@@ -10143,6 +10143,14 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 42,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw5946fef9/QRG/AU/QRG-AU-26159.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/RS6121FLJK1.json"
+      },
       "dimensions": {
         "height_mm": 2134,
         "width_mm": 603,
@@ -10160,15 +10168,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw5946fef9/QRG/AU/QRG-AU-26159.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/RS6121FLJK1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3477",
@@ -10298,6 +10298,14 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw768f3f01/QRG/AU/QRG-AU-25692.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/RS6121WLUK1.json"
+      },
       "dimensions": {
         "height_mm": 2134,
         "width_mm": 603,
@@ -10315,15 +10323,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw768f3f01/QRG/AU/QRG-AU-25692.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/RS6121WLUK1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3476",
@@ -10401,6 +10401,14 @@
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
       "priorityScore": 42,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw60e2175f/QRG/AU/QRG-AU-26163.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/RS7621FLJK1.json"
+      },
       "dimensions": {
         "height_mm": 2134,
         "width_mm": 756,
@@ -10418,15 +10426,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw60e2175f/QRG/AU/QRG-AU-26163.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/RS7621FLJK1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3485",
@@ -23133,7 +23133,33 @@
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1860,
+        "width_mm": 595,
+        "depth_mm": 707,
+        "door_open_90_depth_mm": 1225
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=feLeOVbe7DABWnJeatsRg",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "GP-F324MBL",
+        "raw_json_path": "data/pdf-evidence-raw/MP-F324.json"
+      }
     },
     {
       "id": "fridge-arf2605",
@@ -23911,6 +23937,32 @@
       "priorityScore": 45
     },
     {
+      "id": "fridge-arf3910",
+      "cat": "fridge",
+      "brand": "Liebherr",
+      "model": "Msdh 9012",
+      "w": 906,
+      "h": 1805,
+      "d": 745,
+      "kwh_year": 339,
+      "stars": 5,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5B",
+        "Class 6"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Liebherr Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 45
+    },
+    {
       "id": "fridge-arf2985",
       "cat": "fridge",
       "brand": "Liebherr",
@@ -24543,32 +24595,6 @@
         "Upright",
         "1",
         "Class 1"
-      ],
-      "retailers": [],
-      "sponsored": false,
-      "unavailable": true,
-      "inferred_door_swing": true,
-      "displayName": "Liebherr Fridge",
-      "readableSpec": "Upright",
-      "priorityScore": 45
-    },
-    {
-      "id": "fridge-arf3910",
-      "cat": "fridge",
-      "brand": "Liebherr",
-      "model": "Msdh 9012",
-      "w": 906,
-      "h": 1805,
-      "d": 745,
-      "kwh_year": 339,
-      "stars": 5,
-      "price": null,
-      "emoji": "🧊",
-      "door_swing_mm": 0,
-      "features": [
-        "Upright",
-        "5B",
-        "Class 6"
       ],
       "retailers": [],
       "sponsored": false,
@@ -34115,6 +34141,32 @@
       "priorityScore": 18
     },
     {
+      "id": "fridge-arf3915",
+      "cat": "fridge",
+      "brand": "TECO",
+      "model": "TFF203SNTDM",
+      "w": 545,
+      "h": 1272,
+      "d": 610,
+      "kwh_year": 272,
+      "stars": 3,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 545,
+      "features": [
+        "Upright",
+        "5T",
+        "Class 5"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Teco Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 18
+    },
+    {
       "id": "fridge-arf2692",
       "cat": "fridge",
       "brand": "TECO",
@@ -38809,6 +38861,342 @@
       "priorityScore": 54
     },
     {
+      "id": "fridge-arf3916",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE7074BA",
+      "w": 1728,
+      "h": 913,
+      "d": 803,
+      "kwh_year": 501,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5B",
+        "Class 6"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Westinghouse Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 54
+    },
+    {
+      "id": "fridge-arf3917",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE6000SB",
+      "w": 1725,
+      "h": 896,
+      "d": 781,
+      "kwh_year": 382,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5B",
+        "Class 6"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Westinghouse Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 54
+    },
+    {
+      "id": "fridge-arf3918",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE6060BB",
+      "w": 1725,
+      "h": 896,
+      "d": 781,
+      "kwh_year": 382,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5B",
+        "Class 6"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Westinghouse Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 54
+    },
+    {
+      "id": "fridge-arf3919",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE6870BA",
+      "w": 913,
+      "h": 1782,
+      "d": 749,
+      "kwh_year": 501,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5B",
+        "Class 6"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/f/9/b/1/f9b1d4a978ca25214eaf188d92f707d6b2bfb363_Westinghouse_WQE6870BA_Factsheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WQE6870BA.json"
+      },
+      "displayName": "Westinghouse Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1782,
+        "width_mm": 913,
+        "depth_mm": 749,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf"
+    },
+    {
+      "id": "fridge-arf3920",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB2800AH",
+      "w": 1605,
+      "h": 540,
+      "d": 615,
+      "kwh_year": 283,
+      "stars": 3,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5T",
+        "Class 5"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Westinghouse Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 48
+    },
+    {
+      "id": "fridge-arf3926",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB3100AK",
+      "w": 1645,
+      "h": 598,
+      "d": 650,
+      "kwh_year": 336,
+      "stars": 3,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5T",
+        "Class 5"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Westinghouse Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 48
+    },
+    {
+      "id": "fridge-arf3921",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB3400AH",
+      "w": 1645,
+      "h": 598,
+      "d": 650,
+      "kwh_year": 343,
+      "stars": 3,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5T",
+        "Class 5"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Westinghouse Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 48
+    },
+    {
+      "id": "fridge-arf3925",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB3400AK",
+      "w": 598,
+      "h": 1756,
+      "d": 650,
+      "kwh_year": 339,
+      "stars": 3,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5T",
+        "Class 5"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/1/5/4/6/1546cacf3b8f63bd50dcffa82314444b15260a25_WTB3400AK_Westinghouse_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/WTB3400AK.json"
+      },
+      "displayName": "Westinghouse Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1756,
+        "width_mm": 598,
+        "depth_mm": 650,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf"
+    },
+    {
+      "id": "fridge-arf3922",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB3700**",
+      "w": 1755,
+      "h": 598,
+      "d": 650,
+      "kwh_year": 349,
+      "stars": 3,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5T",
+        "Class 5"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Westinghouse Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 48
+    },
+    {
+      "id": "fridge-arf3923",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB4600SC",
+      "w": 1725,
+      "h": 699,
+      "d": 769,
+      "kwh_year": 336,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5T",
+        "Class 5"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Westinghouse Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 54
+    },
+    {
+      "id": "fridge-arf3924",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB5400SC",
+      "w": 1725,
+      "h": 796,
+      "d": 723,
+      "kwh_year": 353,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5T",
+        "Class 5"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Westinghouse Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 54
+    },
+    {
       "id": "fridge-arf3511",
       "cat": "fridge",
       "brand": "WHIRLPOOL",
@@ -43210,6 +43598,14 @@
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Built-in Dishwasher",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwd8639737/QRG/AU/QRG-AU-82882.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/DD60D4ZB9.json"
+      },
       "dimensions": {
         "height_mm": 820,
         "width_mm": 599,
@@ -43227,15 +43623,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwd8639737/QRG/AU/QRG-AU-82882.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/DD60D4ZB9.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw0863",
@@ -43311,6 +43699,14 @@
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Built-in Dishwasher",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw79740695/QRG/AU/QRG-AU-82326.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/DD60DDFB9.json"
+      },
       "dimensions": {
         "height_mm": 820,
         "width_mm": 599,
@@ -43328,15 +43724,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw79740695/QRG/AU/QRG-AU-82326.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/DD60DDFB9.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw1066",
@@ -43362,6 +43750,14 @@
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Built-in Dishwasher",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw64758f22/QRG/AU/QRG-AU-82319.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/DD60DI9.json"
+      },
       "dimensions": {
         "height_mm": 820,
         "width_mm": 599,
@@ -43379,15 +43775,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw64758f22/QRG/AU/QRG-AU-82319.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/DD60DI9.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw1270",
@@ -43413,6 +43801,14 @@
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Built-in Dishwasher",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwd3125a0b/QRG/AU/QRG-AU-82168.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/DD60DTX6I1.json"
+      },
       "dimensions": {
         "height_mm": 865,
         "width_mm": 599,
@@ -43430,15 +43826,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwd3125a0b/QRG/AU/QRG-AU-82168.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/DD60DTX6I1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw0771",
@@ -43464,6 +43852,14 @@
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Built-in Dishwasher",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dweb2041ee/QRG/AU/QRG-AU-82318.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/DD60SCTX9.json"
+      },
       "dimensions": {
         "height_mm": 454,
         "width_mm": 599,
@@ -43481,15 +43877,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dweb2041ee/QRG/AU/QRG-AU-82318.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/DD60SCTX9.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "d2",
@@ -43541,6 +43929,14 @@
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Built-in Dishwasher",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw7d126a2f/QRG/AU/QRG-AU-82327.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/DD60SDFTB9.json"
+      },
       "dimensions": {
         "height_mm": 478,
         "width_mm": 599,
@@ -43558,15 +43954,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw7d126a2f/QRG/AU/QRG-AU-82327.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/DD60SDFTB9.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw0911",
@@ -43592,6 +43980,14 @@
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9488b99a/QRG/AU/QRG-AU-82321.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/DD60SI9.json"
+      },
       "dimensions": {
         "height_mm": 410,
         "width_mm": 599,
@@ -43609,15 +44005,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9488b99a/QRG/AU/QRG-AU-82321.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/DD60SI9.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw1048",
@@ -43643,6 +44031,14 @@
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Built-in Dishwasher",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw2923350e/QRG/AU/QRG-AU-82885.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/DD60ST4ZB9.json"
+      },
       "dimensions": {
         "height_mm": 454,
         "width_mm": 599,
@@ -43660,15 +44056,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw2923350e/QRG/AU/QRG-AU-82885.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/DD60ST4ZB9.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw1070",
@@ -43694,6 +44082,14 @@
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Built-in Dishwasher",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwdf81343e/QRG/AU/QRG-AU-82320.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/DD60STI9.json"
+      },
       "dimensions": {
         "height_mm": 454,
         "width_mm": 599,
@@ -43711,15 +44107,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwdf81343e/QRG/AU/QRG-AU-82320.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/DD60STI9.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw1273",
@@ -43745,6 +44133,14 @@
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Built-in Dishwasher",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwec374218/QRG/AU/QRG-AU-82170.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/DD60STX6I1.json"
+      },
       "dimensions": {
         "height_mm": 454,
         "width_mm": 599,
@@ -43762,15 +44158,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwec374218/QRG/AU/QRG-AU-82170.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/DD60STX6I1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw0796",
@@ -43821,6 +44209,14 @@
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9f17b837/QRG/AU/QRG-AU-82426.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/DW60FC1X2.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 597,
@@ -43838,15 +44234,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw9f17b837/QRG/AU/QRG-AU-82426.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/DW60FC1X2.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw0797",
@@ -43949,6 +44337,56 @@
       "priorityScore": 54
     },
     {
+      "id": "dishwasher-adw1368",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60U4EI3",
+      "w": 597,
+      "h": 850,
+      "d": 554,
+      "kwh_year": 121,
+      "stars": 6,
+      "price": null,
+      "emoji": "🍽️",
+      "door_swing_mm": 0,
+      "features": [
+        "Built-in",
+        "Single product class"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/8/6/3/6/86365216a50d1ad79e26da3b3ef26b6c5fbf82e0_QRG_AU_85731_DW60U4EI3.pdf",
+        "verified_at": "2026-05-09",
+        "confidence_score": 0.9,
+        "raw_json_path": "data/pdf-evidence-raw/DW60U4EI3.json"
+      },
+      "displayName": "Fisher & Paykel Dishwasher",
+      "readableSpec": "Built-in Dishwasher",
+      "priorityScore": 66,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 597,
+        "depth_mm": 554,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf"
+    },
+    {
       "id": "dishwasher-adw0989",
       "cat": "dishwasher",
       "brand": "Fisher & Paykel",
@@ -43997,6 +44435,14 @@
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe73d757b/QRG/AU/QRG-AU-82428.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/DW60UC2X.json"
+      },
       "dimensions": {
         "height_mm": 820,
         "width_mm": 597,
@@ -44014,15 +44460,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe73d757b/QRG/AU/QRG-AU-82428.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/DW60UC2X.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw0959",
@@ -44161,56 +44599,6 @@
         "height_mm": 857,
         "width_mm": 597,
         "depth_mm": 574,
-        "door_open_90_depth_mm": null
-      },
-      "clearance_requirements": {
-        "top_mm": 0,
-        "left_mm": 0,
-        "right_mm": 0,
-        "rear_mm": 0
-      },
-      "flags": {
-        "requires_plumbing": false,
-        "ventilation_required": true,
-        "reversible_door": null
-      },
-      "data_source": "official_pdf"
-    },
-    {
-      "id": "dishwasher-adw1368",
-      "cat": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60U4EI3",
-      "w": 597,
-      "h": 850,
-      "d": 554,
-      "kwh_year": 121,
-      "stars": 6,
-      "price": null,
-      "emoji": "🍽️",
-      "door_swing_mm": 0,
-      "features": [
-        "Built-in",
-        "Single product class"
-      ],
-      "retailers": [],
-      "sponsored": false,
-      "unavailable": true,
-      "inferred_door_swing": true,
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/8/6/3/6/86365216a50d1ad79e26da3b3ef26b6c5fbf82e0_QRG_AU_85731_DW60U4EI3.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/DW60U4EI3.json"
-      },
-      "displayName": "Fisher & Paykel Dishwasher",
-      "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 66,
-      "dimensions": {
-        "height_mm": 850,
-        "width_mm": 597,
-        "depth_mm": 554,
         "door_open_90_depth_mm": null
       },
       "clearance_requirements": {
@@ -50624,6 +51012,14 @@
       "displayName": "Fisher & Paykel Dryer",
       "readableSpec": "Vented",
       "priorityScore": 42,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw556b2a32/QRG/AU/QRG-AU-93277.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/DE5060.json"
+      },
       "dimensions": {
         "height_mm": 830,
         "width_mm": 600,
@@ -50641,15 +51037,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw556b2a32/QRG/AU/QRG-AU-93277.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/DE5060.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dryer-acd0898",
@@ -52732,7 +53120,7 @@
       "w": 600,
       "h": 847,
       "d": 577,
-      "kwh_year": 162,
+      "kwh_year": 321,
       "stars": 4,
       "price": null,
       "emoji": "🫧",
@@ -54468,6 +54856,14 @@
       "displayName": "Fisher & Paykel Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwc2de7645/QRG/AU/QRG-AU-92297.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/WH1160HG1.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 600,
@@ -54485,15 +54881,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwc2de7645/QRG/AU/QRG-AU-92297.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/WH1160HG1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1231",
@@ -54631,6 +55019,14 @@
       "displayName": "Fisher & Paykel Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf26f4376/QRG/AU/QRG-AU-92275.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/WH9060J3.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 600,
@@ -54648,15 +55044,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf26f4376/QRG/AU/QRG-AU-92275.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/WH9060J3.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1353",
@@ -54683,6 +55071,14 @@
       "displayName": "Fisher & Paykel Washing Machine",
       "readableSpec": "Top Loader",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw922657a6/QRG/AU/QRG-AU-93297.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/WL1064G1.json"
+      },
       "dimensions": {
         "height_mm": 1095,
         "width_mm": 640,
@@ -54700,15 +55096,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw922657a6/QRG/AU/QRG-AU-93297.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/WL1064G1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1352",
@@ -54735,6 +55123,14 @@
       "displayName": "Fisher & Paykel Washing Machine",
       "readableSpec": "Top Loader",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw2362baad/QRG/AU/QRG-AU-93298.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/WL1064P1.json"
+      },
       "dimensions": {
         "height_mm": 1095,
         "width_mm": 640,
@@ -54752,15 +55148,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw2362baad/QRG/AU/QRG-AU-93298.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/WL1064P1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1351",
@@ -54787,6 +55175,14 @@
       "displayName": "Fisher & Paykel Washing Machine",
       "readableSpec": "Top Loader",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe9bebb15/QRG/AU/QRG-AU-93299.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/WL1264P1.json"
+      },
       "dimensions": {
         "height_mm": 1095,
         "width_mm": 640,
@@ -54804,15 +55200,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe9bebb15/QRG/AU/QRG-AU-93299.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/WL1264P1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1341",
@@ -54892,6 +55280,14 @@
       "displayName": "Fisher & Paykel Washing Machine",
       "readableSpec": "Top Loader",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw96ed6823/QRG/AU/QRG-AU-92299.pdf",
+        "verified_at": "2026-05-15",
+        "confidence_score": 0.85,
+        "source_type": "fisher-paykel-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/WL9058G1.json"
+      },
       "dimensions": {
         "height_mm": 1020,
         "width_mm": 580,
@@ -54909,15 +55305,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw96ed6823/QRG/AU/QRG-AU-92299.pdf",
-        "verified_at": "2026-05-15",
-        "confidence_score": 0.85,
-        "source_type": "fisher-paykel-official-quick_reference_guide",
-        "raw_json_path": "data/pdf-evidence-raw/WL9058G1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1329",
@@ -61382,6 +61770,32 @@
       "displayName": "SEIKI Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 0
+    },
+    {
+      "id": "washing_machine-acw1797",
+      "cat": "washing_machine",
+      "brand": "SHOME I SEIKI",
+      "model": "SC-600AU7FL",
+      "w": 595,
+      "h": 850,
+      "d": 440,
+      "kwh_year": 301,
+      "stars": 3,
+      "price": null,
+      "emoji": "🫧",
+      "door_swing_mm": 0,
+      "features": [
+        "Drum",
+        "Front",
+        "Single product class"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "SHOME I SEIKI Washing Machine",
+      "readableSpec": "Front Loader",
+      "priorityScore": 18
     },
     {
       "id": "washing_machine-acw1472",
@@ -128767,60 +129181,6 @@
       }
     },
     {
-      "id": "ao-88955",
-      "cat": "fridge",
-      "brand": "Westinghouse",
-      "model": "WQE6870BA",
-      "displayName": "Westinghouse 609L Quad Door Refrigerator Dark Stainless Steel WQE6870BA",
-      "title": "Westinghouse 609L Quad Door Refrigerator Dark Stainless Steel WQE6870BA",
-      "slug": "ao-wqe6870ba",
-      "w": 913,
-      "h": 1782,
-      "d": 749,
-      "unavailable": false,
-      "retailers": [
-        {
-          "n": "Appliances Online",
-          "url": "https://www.appliancesonline.com.au/product/westinghouse-680l-dark-stainless-steel-french-door-fridge-wqe6870ba",
-          "p": 3449,
-          "verified_at": "2026-05-09",
-          "source": "appliances-online-api"
-        }
-      ],
-      "discovery": {
-        "retailer": "Appliances Online",
-        "retailer_key": "appliancesonline",
-        "product_id": 88955,
-        "product_url": "https://www.appliancesonline.com.au/product/westinghouse-680l-dark-stainless-steel-french-door-fridge-wqe6870ba",
-        "source": "appliances-online-api"
-      },
-      "dimensions": {
-        "height_mm": 1782,
-        "width_mm": 913,
-        "depth_mm": 749,
-        "door_open_90_depth_mm": null
-      },
-      "clearance_requirements": {
-        "top_mm": 0,
-        "left_mm": 0,
-        "right_mm": 0,
-        "rear_mm": 0
-      },
-      "flags": {
-        "requires_plumbing": false,
-        "ventilation_required": true,
-        "reversible_door": null
-      },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/f/9/b/1/f9b1d4a978ca25214eaf188d92f707d6b2bfb363_Westinghouse_WQE6870BA_Factsheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/WQE6870BA.json"
-      }
-    },
-    {
       "id": "discovery-dryer-bosch-wqg235d8au",
       "cat": "dryer",
       "brand": "Bosch",
@@ -130934,60 +131294,6 @@
         "verified_at": "2026-05-09",
         "confidence_score": 0.9,
         "raw_json_path": "data/pdf-evidence-raw/WTB3400AG.json"
-      }
-    },
-    {
-      "id": "ao-110593",
-      "cat": "fridge",
-      "brand": "Westinghouse",
-      "model": "WTB3400AK",
-      "displayName": "Westinghouse 341L Top Mount Fridge Silver WTB3400AK",
-      "title": "Westinghouse 341L Top Mount Fridge Silver WTB3400AK",
-      "slug": "ao-wtb3400ak",
-      "w": 598,
-      "h": 1756,
-      "d": 650,
-      "unavailable": false,
-      "retailers": [
-        {
-          "n": "Appliances Online",
-          "url": "https://www.appliancesonline.com.au/product/westinghouse-341l-top-mount-fridge-silver-wtb3400ak",
-          "p": 980,
-          "verified_at": "2026-05-09",
-          "source": "appliances-online-api"
-        }
-      ],
-      "discovery": {
-        "retailer": "Appliances Online",
-        "retailer_key": "appliancesonline",
-        "product_id": 110593,
-        "product_url": "https://www.appliancesonline.com.au/product/westinghouse-341l-top-mount-fridge-silver-wtb3400ak",
-        "source": "appliances-online-api"
-      },
-      "dimensions": {
-        "height_mm": 1756,
-        "width_mm": 598,
-        "depth_mm": 650,
-        "door_open_90_depth_mm": null
-      },
-      "clearance_requirements": {
-        "top_mm": 0,
-        "left_mm": 0,
-        "right_mm": 0,
-        "rear_mm": 0
-      },
-      "flags": {
-        "requires_plumbing": false,
-        "ventilation_required": true,
-        "reversible_door": null
-      },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/ak/1/5/4/6/1546cacf3b8f63bd50dcffa82314444b15260a25_WTB3400AK_Westinghouse_Specifications_Sheet.pdf",
-        "verified_at": "2026-05-09",
-        "confidence_score": 0.9,
-        "raw_json_path": "data/pdf-evidence-raw/WTB3400AK.json"
       }
     },
     {
