@@ -1,69 +1,82 @@
 # PDF Batch Results
 
-Run at: 2026-05-19T20:38:53.497Z
+Run at: 2026-05-19T21:19:43.244Z
 
 ## Successful Runs
 
 | SKU | Product | Category | Confidence | Source |
 | --- | --- | --- | ---: | --- |
-| ICNh 5123 | Liebherr | fridge | 0.86 | https://www.appliancesonline.com.au/public/manuals/ICNH5123LH-Liebherr-Specifications-Sheet.pdf |
-| ICNh 5133 | Liebherr | fridge | 0.86 | https://www.appliancesonline.com.au/public/manuals/ICNH5133RH-Liebherr-Specifications-Sheet.pdf |
+| FNS 7740 F | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_11738280_OVE_OV-en-CE.pdf |
+| FNS 7794 E | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_11738290_OVE_OV-en-CE.pdf |
+| KFNS 7734 D | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_12426100_OVE_OV-en-CE.pdf |
+| KFNS 7784 D | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_11738320_OVE_OV-en-CE.pdf |
+| KFNS 7785 D | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_11738340_OVE_OV-en-CE.pdf |
+| KFNS 7795 D | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_11738390_OVE_OV-en-CE.pdf |
+| KS 7743 E | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_11738400_OVE_OV-en-CE.pdf |
+| KS 7793 D | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_11738410_OVE_OV-en-CE.pdf |
 
 ## Significant Discrepancies
 
-No significant discrepancies.
+| SKU | Axis | Legacy | PDF | Delta |
+| --- | --- | ---: | ---: | ---: |
+| FNS 7740 F | depth | 550mm | 544mm | -6mm |
+| FNS 7794 E | depth | 550mm | 544mm | -6mm |
+| KFNS 7784 D | depth | 550mm | 544mm | -6mm |
 
 ## Failures
 
 | SKU | Product | Reason |
 | --- | --- | --- |
-| CBNsdh 7653 | Liebherr | Liebherr PDF resources not found for CBNsdh 7653 |
-| CNef4315 | Liebherr | Liebherr parser could not find explicit ventilation/clearance requirements. |
-| CNPef 4416 | Liebherr | Liebherr PDF resources not found for CNPef 4416 |
-| CNPef 4516 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
-| ECBN 6156 | Liebherr | Liebherr parser rejected dimensions due to catalog cross-check mismatch: h catalog=2072 pdf=2027 |
-| ECBN 7870 | Liebherr | Liebherr PDF resources not found for ECBN 7870 |
-| ECBN 8872 | Liebherr | Liebherr PDF resources not found for ECBN 8872 |
-| ECBN5066 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
-| ECBN6256 | Liebherr | Liebherr parser could not verify SKU ECBN6256 against document text. |
-| ECBNh 9972 | Liebherr | Liebherr PDF resources not found for ECBNh 9972 |
-| ECN 7860 | Liebherr | Liebherr PDF resources not found for ECN 7860 |
-| EFNh 9671 | Liebherr | Liebherr PDF resources not found for EFNh 9671 |
-| EFNh 9771 | Liebherr | Liebherr PDF resources not found for EFNh 9771 |
-| EGN 9171 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
-| EKB 9471 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
-| EKB 9671 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
-| ICBNh 5193 | Liebherr | Liebherr PDF resources not found for ICBNh 5193 |
-| ICBNh5173 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
-| ICNh 5173 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
-| ICNh5103 | Liebherr | Liebherr PDF resources not found for ICNh5103 |
-| IRBh 5120 | Liebherr | Liebherr PDF resources not found for IRBh 5120 |
-| IRBh 5170 | Liebherr | Liebherr PDF resources not found for IRBh 5170 |
-| IRBh 5180 | Liebherr | Liebherr PDF resources not found for IRBh 5180 |
-| IRBPh 5170 | Liebherr | Liebherr PDF resources not found for IRBPh 5170 |
-| Msdh 9012 | Liebherr | Liebherr PDF resources not found for Msdh 9012 |
-| SBNbsh 5264 | Liebherr | Liebherr PDF resources not found for SBNbsh 5264 |
-| SCNsdh 5253 | Liebherr | Liebherr PDF resources not found for SCNsdh 5253 |
-| SFNbsh 5267 | Liebherr | Liebherr PDF resources not found for SFNbsh 5267 |
-| SFNsdh 5227 | Liebherr | Liebherr PDF resources not found for SFNsdh 5227 |
-| SFNsdh 5267 | Liebherr | Liebherr PDF resources not found for SFNsdh 5267 |
-| SGNef 3036 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
-| SGNPes 4365 | Liebherr | Liebherr PDF resources not found for SGNPes 4365 |
-| SIFNh 5128 | Liebherr | Liebherr PDF resources not found for SIFNh 5128 |
-| SIFNh 5188 | Liebherr | Liebherr PDF resources not found for SIFNh 5188 |
-| SIGN3576 | Liebherr | Liebherr PDF resources not found for SIGN3576 |
-| SIKB 3520 | Liebherr | Liebherr PDF resources not found for SIKB 3520 |
-| SIKB3550 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
-| SKBes 4350 | Liebherr | Liebherr PDF resources not found for SKBes 4350 |
-| SKBes 4360 | Liebherr | Liebherr PDF resources not found for SKBes 4360 |
-| SKef 4260 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
-| SRBsdh 5260 | Liebherr | Liebherr PDF resources not found for SRBsdh 5260 |
-| SRsdh 5220 | Liebherr | Liebherr PDF resources not found for SRsdh 5220 |
-| SUFNh 3653 | Liebherr | Liebherr PDF resources not found for SUFNh 3653 |
-| SUIG 1514 | Liebherr | Liebherr parser could not verify SKU SUIG 1514 against document text. |
-| SUIK 1510 | Liebherr | Liebherr parser could not verify SKU SUIK 1510 against document text. |
-| SUIKo 1550 | Liebherr | Liebherr PDF resources not found for SUIKo 1550 |
-| SWTNes 4265 | Liebherr | Liebherr PDF resources not found for SWTNes 4265 |
-| UKes1752 | Liebherr | Liebherr parser could not find explicit W/H/D dimensions. |
-| URh 3600 | Liebherr | Liebherr PDF resources not found for URh 3600 |
-| URPh 3650 | Liebherr | Liebherr PDF resources not found for URPh 3650 |
+| F 2671 Vi | Miele | Miele parser requires explicit niche dimensions. |
+| FNS 37402 i | Miele | Miele official Product Sheet not found for FNS 37402 i |
+| FNS 4382 E edt/cs | Miele | Miele official Product Sheet not found for FNS 4382 E edt/cs |
+| FNS 4782 E bst | Miele | Miele official Product Sheet not found for FNS 4782 E bst |
+| FNS 4782 E edt/cs | Miele | Miele official Product Sheet not found for FNS 4782 E edt/cs |
+| K 2601 Vi | Miele | Miele parser requires explicit niche dimensions. |
+| K 2802 Vi | Miele | Miele official Product Sheet not found for K 2802 Vi |
+| K 31222 Ui | Miele | Miele official Product Sheet not found for K 31222 Ui |
+| KF 2981 Vi | Miele | Miele official Product Sheet not found for KF 2981 Vi |
+| KFN 28032D ws | Miele | Miele official Product Sheet not found for KFN 28032D ws |
+| KFN 4375 DD edt/cs | Miele | Miele parser requires explicit niche dimensions. |
+| KFN 4776 ED | Miele | No Product Sheet PDF for material 11954020 |
+| KFNS 37432 iD | Miele | Miele official Product Sheet not found for KFNS 37432 iD |
+| KFNS 37452 iDE | Miele | Miele official Product Sheet not found for KFNS 37452 iDE |
+| KFNS 37682 iD | Miele | Miele official Product Sheet not found for KFNS 37682 iD |
+| KFNS 37692 iDE | Miele | Miele official Product Sheet not found for KFNS 37692 iDE |
+| KS 37422 iD | Miele | Miele official Product Sheet not found for KS 37422 iD |
+| KS 37472 iD | Miele | Miele official Product Sheet not found for KS 37472 iD |
+| KS 4383 ED edt/cs | Miele | Miele official Product Sheet not found for KS 4383 ED edt/cs |
+| KS 4783 ED bst | Miele | Miele official Product Sheet not found for KS 4783 ED bst |
+| KS 4783 ED edt/cs | Miele | Miele official Product Sheet not found for KS 4783 ED edt/cs |
+| G 4980 Vi | Miele | Miele official Product Sheet not found for G 4980 Vi |
+| G 5000 | Miele | Miele parser requires explicit niche dimensions. |
+| G 5000 SC | Miele | Miele parser requires explicit niche dimensions. |
+| G 5210 SC | Miele | Miele parser requires explicit niche dimensions. |
+| G 5430 SCi | Miele | Miele official Product Sheet not found for G 5430 SCi |
+| G 6999 SCVi XXL | Miele | Miele official Product Sheet not found for G 6999 SCVi XXL |
+| G 6xxx | Miele | Miele official Product Sheet not found for G 6xxx |
+| G 7130 SC | Miele | Miele parser could not verify SKU G 7130 SC against document model aliases. |
+| G 7185 SCVi XXL | Miele | No Product Sheet PDF for material 12531660 |
+| G 7719 SCi XXL | Miele | No Product Sheet PDF for material 12531710 |
+| G7314SCU | Miele | Miele parser requires explicit niche dimensions. |
+| G7969SCVi | Miele | Miele official Product Sheet not found for G7969SCVi |
+| WCA020 | Miele | Miele official Product Sheet not found for WCA020 |
+| WDD 030 | Miele | Miele official Product Sheet not found for WDD 030 |
+| WEA125 | Miele | No Product Sheet PDF for material 12704840 |
+| WQ 1200 WPS | Miele | No Product Sheet PDF for material 12695710 |
+| WTD 161 WCS | Miele | Miele official Product Sheet not found for WTD 161 WCS |
+| WTD160WCS | Miele | Miele official Product Sheet not found for WTD160WCS |
+| WTH 130 WPM | Miele | Miele official Product Sheet not found for WTH 130 WPM |
+| WTR 871 WPM | Miele | Miele official Product Sheet not found for WTR 871 WPM |
+| WTR870WPM | Miele | Miele official Product Sheet not found for WTR870WPM |
+| WTW 871 WPM | Miele | Miele official Product Sheet not found for WTW 871 WPM |
+| WTW870WPM | Miele | Miele official Product Sheet not found for WTW870WPM |
+| WTZH 730 WPM | Miele | Miele official Product Sheet not found for WTZH 730 WPM |
+| WWB360 | Miele | No Product Sheet PDF for material 12704850 |
+| WWD164 | Miele | Miele official Product Sheet not found for WWD164 |
+| WWH860 | Miele | Miele official Product Sheet not found for WWH860 |
+| WWI 860 | Miele | Miele official Product Sheet not found for WWI 860 |
+| WWI 861 | Miele | No Product Sheet PDF for material 12952430 |
+| WWR 860 WPS | Miele | Miele official Product Sheet not found for WWR 860 WPS |
+| WWR 861 | Miele | Miele official Product Sheet not found for WWR 861 |
+| WWV 980 WPS | Miele | Miele official Product Sheet not found for WWV 980 WPS |

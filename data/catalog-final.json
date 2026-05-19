@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1678,
-    "merged_products": 1661,
+    "evidence_files": 1686,
+    "merged_products": 1669,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -28,7 +28,7 @@
     "official_pdf_by_category": {
       "dishwasher": 376,
       "dryer": 99,
-      "fridge": 922,
+      "fridge": 930,
       "washing_machine": 262,
       "washtower_combo": 2
     }
@@ -26004,6 +26004,14 @@
       "displayName": "Liebherr Fridge",
       "readableSpec": "Upright",
       "priorityScore": 51,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/public/manuals/ICNH5123LH-Liebherr-Specifications-Sheet.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.86,
+        "source_type": "manual-evidence+liebherr-retailer-specification_sheet+liebherr-retailer-installation_guide+liebherr-retailer-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/ICNh-5123.json"
+      },
       "dimensions": {
         "height_mm": 1772,
         "width_mm": 560,
@@ -26021,15 +26029,7 @@
         "ventilation_required": true,
         "reversible_door": true
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/public/manuals/ICNH5123LH-Liebherr-Specifications-Sheet.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.86,
-        "source_type": "manual-evidence+liebherr-retailer-specification_sheet+liebherr-retailer-installation_guide+liebherr-retailer-user_manual",
-        "raw_json_path": "data/pdf-evidence-raw/ICNh-5123.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-zrf0760",
@@ -26056,6 +26056,14 @@
       "displayName": "Liebherr Fridge",
       "readableSpec": "Upright",
       "priorityScore": 51,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/public/manuals/ICNH5133RH-Liebherr-Specifications-Sheet.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.86,
+        "source_type": "manual-evidence+liebherr-retailer-specification_sheet+liebherr-retailer-installation_guide+liebherr-retailer-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/ICNh-5133.json"
+      },
       "dimensions": {
         "height_mm": 1772,
         "width_mm": 560,
@@ -26073,15 +26081,7 @@
         "ventilation_required": true,
         "reversible_door": true
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.appliancesonline.com.au/public/manuals/ICNH5133RH-Liebherr-Specifications-Sheet.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.86,
-        "source_type": "manual-evidence+liebherr-retailer-specification_sheet+liebherr-retailer-installation_guide+liebherr-retailer-user_manual",
-        "raw_json_path": "data/pdf-evidence-raw/ICNh-5133.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-zrf0754",
@@ -28415,9 +28415,9 @@
       "cat": "fridge",
       "brand": "Miele",
       "model": "FNS 7740 F",
-      "w": 560,
-      "h": 1772,
-      "d": 550,
+      "w": 559,
+      "h": 1770,
+      "d": 544,
       "kwh_year": 207,
       "stars": 4,
       "price": null,
@@ -28434,16 +28434,43 @@
       "inferred_door_swing": true,
       "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1770,
+        "width_mm": 559,
+        "depth_mm": 544,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 2,
+        "left_mm": 0,
+        "right_mm": 1,
+        "rear_mm": 6
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738280_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "FNS7740F",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/FNS-7740-F.json"
+      }
     },
     {
       "id": "fridge-arf2919",
       "cat": "fridge",
       "brand": "Miele",
       "model": "FNS 7794 E",
-      "w": 560,
-      "h": 1772,
-      "d": 550,
+      "w": 559,
+      "h": 1770,
+      "d": 544,
       "kwh_year": 207,
       "stars": 4,
       "price": null,
@@ -28460,7 +28487,34 @@
       "inferred_door_swing": true,
       "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1770,
+        "width_mm": 559,
+        "depth_mm": 544,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 2,
+        "left_mm": 0,
+        "right_mm": 1,
+        "rear_mm": 6
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738290_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "FNS7794E",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/FNS-7794-E.json"
+      }
     },
     {
       "id": "fridge-arf3058",
@@ -28804,9 +28858,9 @@
       "cat": "fridge",
       "brand": "Miele",
       "model": "KFNS 7734 D",
-      "w": 560,
-      "h": 1772,
-      "d": 550,
+      "w": 559,
+      "h": 1770,
+      "d": 546,
       "kwh_year": 176,
       "stars": 6,
       "price": null,
@@ -28823,16 +28877,43 @@
       "inferred_door_swing": true,
       "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 66
+      "priorityScore": 66,
+      "dimensions": {
+        "height_mm": 1770,
+        "width_mm": 559,
+        "depth_mm": 546,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 2,
+        "left_mm": 0,
+        "right_mm": 1,
+        "rear_mm": 4
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_12426100_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "KFNS7734D",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/KFNS-7734-D.json"
+      }
     },
     {
       "id": "fridge-arf2695",
       "cat": "fridge",
       "brand": "Miele",
       "model": "KFNS 7784 D",
-      "w": 560,
-      "h": 1772,
-      "d": 550,
+      "w": 559,
+      "h": 1770,
+      "d": 544,
       "kwh_year": 175,
       "stars": 6,
       "price": null,
@@ -28849,16 +28930,43 @@
       "inferred_door_swing": true,
       "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 66
+      "priorityScore": 66,
+      "dimensions": {
+        "height_mm": 1770,
+        "width_mm": 559,
+        "depth_mm": 544,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 2,
+        "left_mm": 0,
+        "right_mm": 1,
+        "rear_mm": 6
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738320_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "KFNS7784D",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/KFNS-7784-D.json"
+      }
     },
     {
       "id": "fridge-arf2693",
       "cat": "fridge",
       "brand": "Miele",
       "model": "KFNS 7785 D",
-      "w": 560,
-      "h": 1772,
-      "d": 550,
+      "w": 559,
+      "h": 1770,
+      "d": 546,
       "kwh_year": 183,
       "stars": 6,
       "price": null,
@@ -28875,16 +28983,43 @@
       "inferred_door_swing": true,
       "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 66
+      "priorityScore": 66,
+      "dimensions": {
+        "height_mm": 1770,
+        "width_mm": 559,
+        "depth_mm": 546,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 2,
+        "left_mm": 0,
+        "right_mm": 1,
+        "rear_mm": 4
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738340_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "KFNS7785D",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/KFNS-7785-D.json"
+      }
     },
     {
       "id": "fridge-arf2694",
       "cat": "fridge",
       "brand": "Miele",
       "model": "KFNS 7795 D",
-      "w": 560,
-      "h": 1772,
-      "d": 550,
+      "w": 559,
+      "h": 1770,
+      "d": 546,
       "kwh_year": 181,
       "stars": 6,
       "price": null,
@@ -28901,7 +29036,34 @@
       "inferred_door_swing": true,
       "displayName": "Miele Active",
       "readableSpec": "Upright",
-      "priorityScore": 66
+      "priorityScore": 66,
+      "dimensions": {
+        "height_mm": 1770,
+        "width_mm": 559,
+        "depth_mm": 546,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 2,
+        "left_mm": 0,
+        "right_mm": 1,
+        "rear_mm": 4
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738390_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "KFNS7795D",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/KFNS-7795-D.json"
+      }
     },
     {
       "id": "fridge-arf3883",
@@ -29036,9 +29198,9 @@
       "cat": "fridge",
       "brand": "Miele",
       "model": "KS 7743 E",
-      "w": 560,
-      "h": 1772,
-      "d": 550,
+      "w": 559,
+      "h": 1770,
+      "d": 546,
       "kwh_year": 110,
       "stars": 6,
       "price": null,
@@ -29054,16 +29216,43 @@
       "unavailable": true,
       "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 66
+      "priorityScore": 66,
+      "dimensions": {
+        "height_mm": 1770,
+        "width_mm": 559,
+        "depth_mm": 546,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 2,
+        "left_mm": 0,
+        "right_mm": 1,
+        "rear_mm": 4
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738400_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "KS7743E",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/KS-7743-E.json"
+      }
     },
     {
       "id": "fridge-arf2992",
       "cat": "fridge",
       "brand": "Miele",
       "model": "KS 7793 D",
-      "w": 560,
-      "h": 1772,
-      "d": 550,
+      "w": 559,
+      "h": 1770,
+      "d": 546,
       "kwh_year": 110,
       "stars": 6,
       "price": null,
@@ -29079,7 +29268,34 @@
       "unavailable": true,
       "displayName": "Miele Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 66
+      "priorityScore": 66,
+      "dimensions": {
+        "height_mm": 1770,
+        "width_mm": 559,
+        "depth_mm": 546,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 2,
+        "left_mm": 0,
+        "right_mm": 1,
+        "rear_mm": 4
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738410_OVE_OV-en-CE.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "KS7793D",
+        "source_type": "miele-official-product-sheet",
+        "raw_json_path": "data/pdf-evidence-raw/KS-7793-D.json"
+      }
     },
     {
       "id": "fridge-arf2909",
