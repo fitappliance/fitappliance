@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "dryer-zcd0112",
+  "category": "dryer",
+  "brand": "Robinhood",
+  "model": "RHSD7W",
+  "source_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHSD7W_Manual_2023.08.11_69bced83-f056-4f1f-ba7b-ea53621dfdf5.pdf?v=1692056689",
+  "verified_at": "2026-05-19",
+  "extracted": {
+    "brand": "Robinhood",
+    "sku": "RHSD7W",
+    "category": "DRYER",
+    "dimensions": {
+      "height_mm": 840,
+      "width_mm": 595,
+      "depth_mm": 555,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 100
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHSD7W_Manual_2023.08.11_69bced83-f056-4f1f-ba7b-ea53621dfdf5.pdf?v=1692056689",
+      "extraction_date": "2026-05-19T22:01:39.963Z",
+      "confidence_score": 0.91,
+      "source_type": "robinhood-official-user_manual+robinhood-official-specification_sheet"
+    }
+  }
+}

@@ -1,82 +1,66 @@
 # PDF Batch Results
 
-Run at: 2026-05-19T21:19:43.244Z
+Run at: 2026-05-19T22:01:44.521Z
 
 ## Successful Runs
 
 | SKU | Product | Category | Confidence | Source |
 | --- | --- | --- | ---: | --- |
-| FNS 7740 F | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_11738280_OVE_OV-en-CE.pdf |
-| FNS 7794 E | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_11738290_OVE_OV-en-CE.pdf |
-| KFNS 7734 D | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_12426100_OVE_OV-en-CE.pdf |
-| KFNS 7784 D | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_11738320_OVE_OV-en-CE.pdf |
-| KFNS 7785 D | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_11738340_OVE_OV-en-CE.pdf |
-| KFNS 7795 D | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_11738390_OVE_OV-en-CE.pdf |
-| KS 7743 E | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_11738400_OVE_OV-en-CE.pdf |
-| KS 7793 D | Miele | fridge | 0.9 | https://media.miele.com/downloads/n-/ce/FS_11738410_OVE_OV-en-CE.pdf |
+| RHBFD121W | Robinhood | fridge | 0.91 | https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHBFD121W_RHBFD121X_Manual_2023.08.10.pdf?v=1698203902 |
+| RHBFD121X | Robinhood | fridge | 0.91 | https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHBFD121W_RHBFD121X_Manual_2023.08.10.pdf?v=1698203902 |
+| RHBFD78W | Robinhood | fridge | 0.91 | https://cdn.shopify.com/s/files/1/0509/7979/9197/files/1596067461_205594944_RHBFD78W_RHBFD78X_IM_v1_18_12_2019.pdf?v=1616404845 |
+| RHUFD242W | Robinhood | fridge | 0.91 | https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHUFD242W_manual_16.08.21.pdf?v=1669679279 |
+| RHUFZ168W | Robinhood | fridge | 0.91 | https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHUFZ168W_manual_09.07.25.pdf?v=1752204176 |
+| RHDW45PS | Robinhood | dishwasher | 0.91 | https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHDW45PS_Manual_2023.07.25.pdf?v=1692568186 |
+| RHDW613X | Robinhood | dishwasher | 0.91 | https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHDW613W_RHDW613X_Manual_06.12.2024.pdf?v=1747882601 |
+| RHFIDW55S | Robinhood | dishwasher | 0.91 | https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHFIDW55S_Manual_2023.07.26.pdf?v=1692574043 |
+| RHSD7W | Robinhood | dryer | 0.91 | https://cdn.shopify.com/s/files/1/0509/7979/9197/files/RHSD7W_Manual_2023.08.11_69bced83-f056-4f1f-ba7b-ea53621dfdf5.pdf?v=1692056689 |
 
 ## Significant Discrepancies
 
 | SKU | Axis | Legacy | PDF | Delta |
 | --- | --- | ---: | ---: | ---: |
-| FNS 7740 F | depth | 550mm | 544mm | -6mm |
-| FNS 7794 E | depth | 550mm | 544mm | -6mm |
-| KFNS 7784 D | depth | 550mm | 544mm | -6mm |
+| RHBFD78W | depth | 450mm | 445mm | -5mm |
+| RHDW613X | height | 850mm | 845mm | -5mm |
 
 ## Failures
 
 | SKU | Product | Reason |
 | --- | --- | --- |
-| F 2671 Vi | Miele | Miele parser requires explicit niche dimensions. |
-| FNS 37402 i | Miele | Miele official Product Sheet not found for FNS 37402 i |
-| FNS 4382 E edt/cs | Miele | Miele official Product Sheet not found for FNS 4382 E edt/cs |
-| FNS 4782 E bst | Miele | Miele official Product Sheet not found for FNS 4782 E bst |
-| FNS 4782 E edt/cs | Miele | Miele official Product Sheet not found for FNS 4782 E edt/cs |
-| K 2601 Vi | Miele | Miele parser requires explicit niche dimensions. |
-| K 2802 Vi | Miele | Miele official Product Sheet not found for K 2802 Vi |
-| K 31222 Ui | Miele | Miele official Product Sheet not found for K 31222 Ui |
-| KF 2981 Vi | Miele | Miele official Product Sheet not found for KF 2981 Vi |
-| KFN 28032D ws | Miele | Miele official Product Sheet not found for KFN 28032D ws |
-| KFN 4375 DD edt/cs | Miele | Miele parser requires explicit niche dimensions. |
-| KFN 4776 ED | Miele | No Product Sheet PDF for material 11954020 |
-| KFNS 37432 iD | Miele | Miele official Product Sheet not found for KFNS 37432 iD |
-| KFNS 37452 iDE | Miele | Miele official Product Sheet not found for KFNS 37452 iDE |
-| KFNS 37682 iD | Miele | Miele official Product Sheet not found for KFNS 37682 iD |
-| KFNS 37692 iDE | Miele | Miele official Product Sheet not found for KFNS 37692 iDE |
-| KS 37422 iD | Miele | Miele official Product Sheet not found for KS 37422 iD |
-| KS 37472 iD | Miele | Miele official Product Sheet not found for KS 37472 iD |
-| KS 4383 ED edt/cs | Miele | Miele official Product Sheet not found for KS 4383 ED edt/cs |
-| KS 4783 ED bst | Miele | Miele official Product Sheet not found for KS 4783 ED bst |
-| KS 4783 ED edt/cs | Miele | Miele official Product Sheet not found for KS 4783 ED edt/cs |
-| G 4980 Vi | Miele | Miele official Product Sheet not found for G 4980 Vi |
-| G 5000 | Miele | Miele parser requires explicit niche dimensions. |
-| G 5000 SC | Miele | Miele parser requires explicit niche dimensions. |
-| G 5210 SC | Miele | Miele parser requires explicit niche dimensions. |
-| G 5430 SCi | Miele | Miele official Product Sheet not found for G 5430 SCi |
-| G 6999 SCVi XXL | Miele | Miele official Product Sheet not found for G 6999 SCVi XXL |
-| G 6xxx | Miele | Miele official Product Sheet not found for G 6xxx |
-| G 7130 SC | Miele | Miele parser could not verify SKU G 7130 SC against document model aliases. |
-| G 7185 SCVi XXL | Miele | No Product Sheet PDF for material 12531660 |
-| G 7719 SCi XXL | Miele | No Product Sheet PDF for material 12531710 |
-| G7314SCU | Miele | Miele parser requires explicit niche dimensions. |
-| G7969SCVi | Miele | Miele official Product Sheet not found for G7969SCVi |
-| WCA020 | Miele | Miele official Product Sheet not found for WCA020 |
-| WDD 030 | Miele | Miele official Product Sheet not found for WDD 030 |
-| WEA125 | Miele | No Product Sheet PDF for material 12704840 |
-| WQ 1200 WPS | Miele | No Product Sheet PDF for material 12695710 |
-| WTD 161 WCS | Miele | Miele official Product Sheet not found for WTD 161 WCS |
-| WTD160WCS | Miele | Miele official Product Sheet not found for WTD160WCS |
-| WTH 130 WPM | Miele | Miele official Product Sheet not found for WTH 130 WPM |
-| WTR 871 WPM | Miele | Miele official Product Sheet not found for WTR 871 WPM |
-| WTR870WPM | Miele | Miele official Product Sheet not found for WTR870WPM |
-| WTW 871 WPM | Miele | Miele official Product Sheet not found for WTW 871 WPM |
-| WTW870WPM | Miele | Miele official Product Sheet not found for WTW870WPM |
-| WTZH 730 WPM | Miele | Miele official Product Sheet not found for WTZH 730 WPM |
-| WWB360 | Miele | No Product Sheet PDF for material 12704850 |
-| WWD164 | Miele | Miele official Product Sheet not found for WWD164 |
-| WWH860 | Miele | Miele official Product Sheet not found for WWH860 |
-| WWI 860 | Miele | Miele official Product Sheet not found for WWI 860 |
-| WWI 861 | Miele | No Product Sheet PDF for material 12952430 |
-| WWR 860 WPS | Miele | Miele official Product Sheet not found for WWR 860 WPS |
-| WWR 861 | Miele | Miele official Product Sheet not found for WWR 861 |
-| WWV 980 WPS | Miele | Miele official Product Sheet not found for WWV 980 WPS |
+| RCFA147WH | Robinhood | Robinhood fridge text has rear spacing but no explicit top and side clearance. |
+| RCFA202WH | Robinhood | Robinhood parser could not find explicit W/D/H product dimensions. |
+| RCFA303WH | Robinhood | Robinhood parser could not find explicit W/D/H product dimensions. |
+| RCFA395WH | Robinhood | Robinhood parser could not find explicit W/D/H product dimensions. |
+| RHBFD126W | Robinhood | Robinhood fridge explicit top and side clearance not found. |
+| RHBMF230MSD | Robinhood | Robinhood official PDF resources not found for RHBMF230MSD |
+| RHBMF323MSD | Robinhood | Robinhood official PDF resources not found for RHBMF323MSD |
+| RHBMF459MSD | Robinhood | Robinhood official PDF resources not found for RHBMF459MSD |
+| RHCF100 | Robinhood | Robinhood parser could not find explicit W/D/H product dimensions. |
+| RHCF198 | Robinhood | Robinhood official PDF resources not found for RHCF198 |
+| RHCF200 | Robinhood | Robinhood parser could not find explicit W/D/H product dimensions. |
+| RHCF260 | Robinhood | Robinhood parser could not find explicit W/D/H product dimensions. |
+| RHCF288 | Robinhood | Robinhood fridge explicit top and side clearance not found. |
+| RHCF98 | Robinhood | Robinhood official PDF resources not found for RHCF98 |
+| RHTMF197W | Robinhood | Robinhood fridge explicit top and side clearance not found. |
+| RHTMF221W | Robinhood | Robinhood parser rejected dimensions due to catalog cross-check mismatch: w catalog=500 pdf=545 |
+| RHTMF269W | Robinhood | Robinhood fridge explicit top and side clearance not found. |
+| RHTMF334MSD | Robinhood | Robinhood official PDF resources not found for RHTMF334MSD |
+| RHTMF415MSD | Robinhood | Robinhood official PDF resources not found for RHTMF415MSD |
+| RHUTMF85W | Robinhood | Robinhood parser rejected dimensions due to catalog cross-check mismatch: d catalog=520 pdf=500 |
+| RHVF204W | Robinhood | Robinhood fridge explicit top and side clearance not found. |
+| RHVFF332X | Robinhood | Robinhood fridge explicit top and side clearance not found. |
+| DWH15P8FBK | Robinhood | Robinhood parser could not find explicit W/D/H product dimensions. |
+| RHVD45UDW | Robinhood | Robinhood parser rejected dimensions due to catalog cross-check mismatch: d catalog=435 pdf=465 |
+| RHVD6UDW | Robinhood | Robinhood dryer explicit rear wall clearance not found. |
+| RHVD70W | Robinhood | Robinhood dryer explicit rear wall clearance not found. |
+| RHFL100MSD | Robinhood | Robinhood official PDF resources not found for RHFL100MSD |
+| RHFL80MSD | Robinhood | Robinhood official PDF resources not found for RHFL80MSD |
+| RHFL90MSD | Robinhood | Robinhood official PDF resources not found for RHFL90MSD |
+| RHTL55W | Robinhood | Robinhood parser does not yet have fail-closed clearance logic for WASHING_MACHINE. |
+| RHTL65MSD | Robinhood | Robinhood official PDF resources not found for RHTL65MSD |
+| RHTL65W | Robinhood | Robinhood parser does not yet have fail-closed clearance logic for WASHING_MACHINE. |
+| RHTL75MSD | Robinhood | Robinhood official PDF resources not found for RHTL75MSD |
+| RHTL7W | Robinhood | Robinhood parser does not yet have fail-closed clearance logic for WASHING_MACHINE. |
+| RHWDC106W | Robinhood | Robinhood official PDF resources not found for RHWDC106W |
+| RHWM9W | Robinhood | Robinhood parser could not find explicit W/D/H product dimensions. |
+| WMFLA75W | Robinhood | Robinhood parser does not yet have fail-closed clearance logic for WASHING_MACHINE. |

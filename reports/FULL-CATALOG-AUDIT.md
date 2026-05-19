@@ -5,9 +5,9 @@ Generated: 2026-05-19
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1675
-- Missing PDF evidence: 1866
-- Overall coverage: 47.3%
+- Verified with PDF evidence: 1684
+- Missing PDF evidence: 1857
+- Overall coverage: 47.6%
 
 ## Coverage By Brand
 
@@ -32,7 +32,7 @@ Generated: 2026-05-19
 | CHiQ | 53 | 53 | 0 | 100.0% |
 | Artusi | 52 | 0 | 52 | 0.0% |
 | Liebherr | 52 | 2 | 50 | 3.8% |
-| Robinhood | 46 | 0 | 46 | 0.0% |
+| Robinhood | 46 | 9 | 37 | 19.6% |
 | ASKO | 42 | 29 | 13 | 69.0% |
 | Inalto | 41 | 0 | 41 | 0.0% |
 | VOGUE | 41 | 0 | 41 | 0.0% |
