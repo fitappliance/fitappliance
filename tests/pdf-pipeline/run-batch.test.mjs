@@ -1101,6 +1101,63 @@ test('runBatch processes Miele manual-evidence spec sheets with the strict Miele
   });
 });
 
+test('runBatch processes Kogan official washer manuals through the strict Kogan parser without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'washing-machine-kamfwash90a',
+    brand: 'Kogan',
+    sku: 'KAMFWASH90A',
+    category: 'washing_machine',
+    product: {
+      id: 'washing-machine-kamfwash90a',
+      cat: 'washing_machine',
+      brand: 'Kogan',
+      model: 'KAMFWASH90A',
+      w: 595,
+      h: 850,
+      d: 535,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    koganOfficialFinder: async () => ({
+      sourceUrl: 'https://assets.kogan.com/files/usermanuals/KAMFWASH90A_UG.pdf',
+      source: 'kogan-official-user_manual',
+      resourceType: 'user_manual'
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        9KG FRONT LOAD BLDC INVERTER WASHING MACHINE
+        KAMFWASH90A
+        Placement
+        Ensure there is 20mm of space on the back and sides of the washing machine.
+        Specifications
+        Dimension 595 x 535 x 850mm
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'kogan-official-user_manual');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'KAMFWASH90A.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 20,
+    right_mm: 20,
+    rear_mm: 20
+  });
+});
+
 test('runBatch preserves Samsung verified_alias metadata from manual evidence', async () => {
   const repoRoot = makeRepo();
   const target = {

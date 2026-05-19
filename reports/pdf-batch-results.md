@@ -1,10 +1,14 @@
 # PDF Batch Results
 
-Run at: 2026-05-19T19:12:16.873Z
+Run at: 2026-05-19T19:40:30.402Z
 
 ## Successful Runs
 
-No successful runs.
+| SKU | Product | Category | Confidence | Source |
+| --- | --- | --- | ---: | --- |
+| KAMFWASH80A | Kogan | washing_machine | 0.91 | https://assets.kogan.com/files/usermanuals/KAMFWASH80A_UG.pdf |
+| KAMFWASH90A | Kogan | washing_machine | 0.91 | https://assets.kogan.com/files/usermanuals/KAMFWASH90A_UG.pdf |
+| KATFWASH11A | Kogan | washing_machine | 0.91 | https://assets.kogan.com/files/usermanuals/KATFWASH11A_UG.pdf |
 
 ## Significant Discrepancies
 
@@ -14,64 +18,60 @@ No significant discrepancies.
 
 | SKU | Product | Reason |
 | --- | --- | --- |
-| F 2671 Vi | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| FNS 37402 i | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| FNS 4382 E edt/cs | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| FNS 4782 E bst | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| FNS 4782 E edt/cs | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| FNS 7740 F | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| FNS 7794 E | Miele | Miele parser could not verify SKU FNS 7794 E against document model aliases. |
-| K 2601 Vi | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| K 2802 Vi | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| K 31222 Ui | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KF 2981 Vi | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KFN 28032D ws | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KFN 4375 DD edt/cs | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KFN 4776 ED | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KFNS 37432 iD | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KFNS 37452 iDE | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KFNS 37682 iD | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KFNS 37692 iDE | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KFNS 7734 D | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KFNS 7784 D | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KFNS 7785 D | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KFNS 7795 D | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KS 37422 iD | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KS 37472 iD | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KS 4383 ED edt/cs | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KS 4783 ED bst | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KS 4783 ED edt/cs | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KS 7743 E | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| KS 7793 D | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| G 4980 Vi | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| G 5000 | Miele | Miele parser requires explicit niche dimensions. |
-| G 5000 SC | Miele | Miele parser requires explicit niche dimensions. |
-| G 5210 SC | Miele | Miele parser requires explicit niche dimensions. |
-| G 5430 SCi | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| G 6999 SCVi XXL | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| G 6xxx | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| G 7130 SC | Miele | Miele parser could not verify SKU G 7130 SC against document model aliases. |
-| G 7185 SCVi XXL | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| G 7719 SCi XXL | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| G7314SCU | Miele | Miele parser requires explicit niche dimensions. |
-| G7969SCVi | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WCA020 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WDD 030 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WEA125 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WQ 1200 WPS | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WTD 161 WCS | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WTD160WCS | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WTH 130 WPM | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WTR 871 WPM | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WTR870WPM | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WTW 871 WPM | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WTW870WPM | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WTZH 730 WPM | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WWB360 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WWD164 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WWH860 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WWI 860 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WWI 861 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WWR 860 WPS | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WWR 861 | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
-| WWV 980 WPS | Miele | Miele strict parser requires an exact or conservative manual-evidence specification sheet source. |
+| KA84WCFREZA | Kogan | Kogan parser could not verify category FRIDGE against document text. |
+| KA93SCFRDGA | Kogan | Kogan official PDF resources not found for KA93SCFRDGA: https://assets.kogan.com/files/usermanuals/KA93SCFRDGA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KA93SCFRDGA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KA93SCFRDGA_User_Manual.pdf: 403 |
+| KAH085LTMFA | Kogan | Kogan official PDF resources not found for KAH085LTMFA: https://assets.kogan.com/files/usermanuals/KAH085LTMFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH085LTMFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH085LTMFA_User_Manual.pdf: 403 |
+| KAH121LBRFA | Kogan | Kogan parser could not verify SKU KAH121LBRFA against document text. |
+| KAH125LTMFA | Kogan | Kogan official PDF resources not found for KAH125LTMFA: https://assets.kogan.com/files/usermanuals/KAH125LTMFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH125LTMFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH125LTMFA_User_Manual.pdf: 403 |
+| KAH230LBMFA | Kogan | Kogan official PDF resources not found for KAH230LBMFA: https://assets.kogan.com/files/usermanuals/KAH230LBMFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH230LBMFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH230LBMFA_User_Manual.pdf: 403 |
+| KAH247TMSFA | Kogan | Kogan official PDF resources not found for KAH247TMSFA: https://assets.kogan.com/files/usermanuals/KAH247TMSFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH247TMSFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH247TMSFA_User_Manual.pdf: 403 |
+| KAH334LTMFA | Kogan | Kogan official PDF resources not found for KAH334LTMFA: https://assets.kogan.com/files/usermanuals/KAH334LTMFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH334LTMFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH334LTMFA_User_Manual.pdf: 403 |
+| KAH415LTMFA | Kogan | Kogan official PDF resources not found for KAH415LTMFA: https://assets.kogan.com/files/usermanuals/KAH415LTMFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH415LTMFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH415LTMFA_User_Manual.pdf: 403 |
+| KAH46LBRSFA | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
+| KAH480LTMFA | Kogan | Kogan official PDF resources not found for KAH480LTMFA: https://assets.kogan.com/files/usermanuals/KAH480LTMFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH480LTMFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH480LTMFA_User_Manual.pdf: 403 |
+| KAH75BARFRA | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
+| KAH91LURFZA | Kogan | Kogan official PDF resources not found for KAH91LURFZA: https://assets.kogan.com/files/usermanuals/KAH91LURFZA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH91LURFZA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAH91LURFZA_User_Manual.pdf: 403 |
+| KAHFREN464A | Kogan | Kogan official PDF resources not found for KAHFREN464A: https://assets.kogan.com/files/usermanuals/KAHFREN464A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFREN464A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFREN464A_User_Manual.pdf: 403 |
+| KAHFRZU161A | Kogan | Kogan official PDF resources not found for KAHFRZU161A: https://assets.kogan.com/files/usermanuals/KAHFRZU161A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFRZU161A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFRZU161A_User_Manual.pdf: 403 |
+| KAHFRZU168A | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
+| KAHFRZU204A | Kogan | Kogan official PDF resources not found for KAHFRZU204A: https://assets.kogan.com/files/usermanuals/KAHFRZU204A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFRZU204A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFRZU204A_User_Manual.pdf: 403 |
+| KAHFSBS592A | Kogan | Kogan official PDF resources not found for KAHFSBS592A: https://assets.kogan.com/files/usermanuals/KAHFSBS592A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFSBS592A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAHFSBS592A_User_Manual.pdf: 403 |
+| KAM093LIBFA | Kogan | Kogan official PDF resources not found for KAM093LIBFA: https://assets.kogan.com/files/usermanuals/KAM093LIBFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM093LIBFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM093LIBFA_User_Manual.pdf: 403 |
+| KAM123LBRSFA | Kogan | Kogan official PDF resources not found for KAM123LBRSFA: https://assets.kogan.com/files/usermanuals/KAM123LBRSFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM123LBRSFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM123LBRSFA_User_Manual.pdf: 403 |
+| KAM124LIBFA | Kogan | Kogan official PDF resources not found for KAM124LIBFA: https://assets.kogan.com/files/usermanuals/KAM124LIBFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM124LIBFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM124LIBFA_User_Manual.pdf: 403 |
+| KAM130LAFGA | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
+| KAM162UPWFA | Kogan | Kogan official PDF resources not found for KAM162UPWFA: https://assets.kogan.com/files/usermanuals/KAM162UPWFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM162UPWFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM162UPWFA_User_Manual.pdf: 403 |
+| KAM236TMSFA | Kogan | Kogan official PDF resources not found for KAM236TMSFA: https://assets.kogan.com/files/usermanuals/KAM236TMSFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM236TMSFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM236TMSFA_User_Manual.pdf: 403 |
+| KAM314TMSFF | Kogan | Kogan official PDF resources not found for KAM314TMSFF: https://assets.kogan.com/files/usermanuals/KAM314TMSFF_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM314TMSFF_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM314TMSFF_User_Manual.pdf: 403 |
+| KAM325BMSFA | Kogan | Kogan official PDF resources not found for KAM325BMSFA: https://assets.kogan.com/files/usermanuals/KAM325BMSFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM325BMSFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM325BMSFA_User_Manual.pdf: 403 |
+| KAM338TMSFA | Kogan | Kogan official PDF resources not found for KAM338TMSFA: https://assets.kogan.com/files/usermanuals/KAM338TMSFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM338TMSFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM338TMSFA_User_Manual.pdf: 403 |
+| KAM418CHWZA | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
+| KAM431FRSFA | Kogan | Kogan parser could not verify SKU KAM431FRSFA against document text. |
+| KAM43BEVFGF | Kogan | Kogan official PDF resources not found for KAM43BEVFGF: https://assets.kogan.com/files/usermanuals/KAM43BEVFGF_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM43BEVFGF_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM43BEVFGF_User_Manual.pdf: 403 |
+| KAM43LBRSFA | Kogan | Kogan official PDF resources not found for KAM43LBRSFA: https://assets.kogan.com/files/usermanuals/KAM43LBRSFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM43LBRSFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM43LBRSFA_User_Manual.pdf: 403 |
+| KAM44BEVFGA | Kogan | Kogan official PDF resources not found for KAM44BEVFGA: https://assets.kogan.com/files/usermanuals/KAM44BEVFGA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM44BEVFGA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM44BEVFGA_User_Manual.pdf: 403 |
+| KAM65LBRSFA | Kogan | Kogan official PDF resources not found for KAM65LBRSFA: https://assets.kogan.com/files/usermanuals/KAM65LBRSFA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM65LBRSFA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM65LBRSFA_User_Manual.pdf: 403 |
+| KAM66GLAFGA | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
+| KAM87LTMSFA | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
+| KAM93BEVFGA | Kogan | Kogan official PDF resources not found for KAM93BEVFGA: https://assets.kogan.com/files/usermanuals/KAM93BEVFGA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM93BEVFGA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM93BEVFGA_User_Manual.pdf: 403 |
+| KAM93GLAFGA | Kogan | Kogan official PDF resources not found for KAM93GLAFGA: https://assets.kogan.com/files/usermanuals/KAM93GLAFGA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM93GLAFGA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAM93GLAFGA_User_Manual.pdf: 403 |
+| KAM99LCHFZA | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
+| KAMFREN490A | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
+| KAMFREN522A | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
+| KAMFSBS548A | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
+| KAMFSBS551A | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
+| KAT412BMFWA | Kogan | Kogan official PDF resources not found for KAT412BMFWA: https://assets.kogan.com/files/usermanuals/KAT412BMFWA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAT412BMFWA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAT412BMFWA_User_Manual.pdf: 403 |
+| KAT416BMFNA | Kogan | Kogan official PDF resources not found for KAT416BMFNA: https://assets.kogan.com/files/usermanuals/KAT416BMFNA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAT416BMFNA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAT416BMFNA_User_Manual.pdf: 403 |
+| KATFSBS503A | Kogan | Kogan parser does not yet have a fail-closed extractor for FRIDGE. |
+| KABNCHTPDWA | Kogan | Kogan parser does not yet have a fail-closed extractor for DISHWASHER. |
+| KABNCTPDW8A | Kogan | Kogan official PDF resources not found for KABNCTPDW8A: https://assets.kogan.com/files/usermanuals/KABNCTPDW8A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KABNCTPDW8A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KABNCTPDW8A_User_Manual.pdf: 403 |
+| KAWWASH9D6A | Kogan | Kogan official PDF resources not found for KAWWASH9D6A: https://assets.kogan.com/files/usermanuals/KAWWASH9D6A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAWWASH9D6A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAWWASH9D6A_User_Manual.pdf: 403 |
+| KAFWASH75TA | Kogan | Kogan parser rejected dimensions due to catalog cross-check mismatch: h catalog=520 pdf=850, d catalog=850 pdf=560 |
+| KAFWASH85TA | Kogan | Kogan official PDF resources not found for KAFWASH85TA: https://assets.kogan.com/files/usermanuals/KAFWASH85TA_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAFWASH85TA_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAFWASH85TA_User_Manual.pdf: 403 |
+| KATFWASH10A | Kogan | Kogan official PDF resources not found for KATFWASH10A: https://assets.kogan.com/files/usermanuals/KATFWASH10A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATFWASH10A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATFWASH10A_User_Manual.pdf: 403 |
+| KATFWASH75A | Kogan | Kogan official PDF resources not found for KATFWASH75A: https://assets.kogan.com/files/usermanuals/KATFWASH75A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATFWASH75A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATFWASH75A_User_Manual.pdf: 403 |
+| KATFWASH85A | Kogan | Kogan official PDF resources not found for KATFWASH85A: https://assets.kogan.com/files/usermanuals/KATFWASH85A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATFWASH85A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATFWASH85A_User_Manual.pdf: 403 |
+| KATTLWASH8A | Kogan | Kogan official PDF resources not found for KATTLWASH8A: https://assets.kogan.com/files/usermanuals/KATTLWASH8A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATTLWASH8A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATTLWASH8A_User_Manual.pdf: 403 |
+| KATTLWASH9A | Kogan | Kogan official PDF resources not found for KATTLWASH9A: https://assets.kogan.com/files/usermanuals/KATTLWASH9A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATTLWASH9A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KATTLWASH9A_User_Manual.pdf: 403 |
+| KAWFLWASM7A | Kogan | Kogan official PDF resources not found for KAWFLWASM7A: https://assets.kogan.com/files/usermanuals/KAWFLWASM7A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAWFLWASM7A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAWFLWASM7A_User_Manual.pdf: 403 |
+| KAWWAS11D7A | Kogan | Kogan official PDF resources not found for KAWWAS11D7A: https://assets.kogan.com/files/usermanuals/KAWWAS11D7A_UG.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAWWAS11D7A_UG_V1.1.pdf: 403 \| https://assets.kogan.com/files/usermanuals/KAWWAS11D7A_User_Manual.pdf: 403 |
