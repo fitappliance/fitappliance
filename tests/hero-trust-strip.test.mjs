@@ -22,7 +22,7 @@ test('phase 58 hero trust strip: renders appliance count, verified PDF count, an
 
   assert.equal(items.length, 3);
   assert.match(items[0], /2,170\+ Australian appliances/);
-  assert.match(items[1], new RegExp(`${approvedPdfEvidenceCount().toLocaleString()} manufacturer PDFs verified`));
+  assert.match(items[1], new RegExp(`${approvedPdfEvidenceCount().toLocaleString()} PDF evidence sources verified`));
   assert.match(items[2], /Updated daily/);
 });
 

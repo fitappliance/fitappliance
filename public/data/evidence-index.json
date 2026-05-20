@@ -28214,6 +28214,30 @@
       "source_url": "",
       "verified_at": "",
       "confidence_score": null
+    },
+    "washing_machine-zcw0233": {
+      "product_id": "washing_machine-zcw0233",
+      "status": "verified",
+      "category": "washing_machine",
+      "brand": "VOGUE",
+      "model": "360113",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://trade-depot.s3.ap-southeast-2.amazonaws.com/files/products/manuals/360113_User_Manual.pdf",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.88
+    },
+    "washing_machine-zcw0239": {
+      "product_id": "washing_machine-zcw0239",
+      "status": "verified",
+      "category": "washing_machine",
+      "brand": "VOGUE",
+      "model": "360116",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://trade-depot.s3.ap-southeast-2.amazonaws.com/files/products/manuals/360116_User_Manual.pdf",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.88
     }
   }
 }
