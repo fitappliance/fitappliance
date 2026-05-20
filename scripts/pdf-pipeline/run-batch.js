@@ -40,6 +40,8 @@ const { findRobinhoodOfficialPdf } = require('./robinhood-official');
 const { parseRobinhoodText } = require('./parsers/robinhood');
 const { findOmegaOfficialPdf } = require('./omega-official');
 const { parseOmegaText } = require('./parsers/omega');
+const { findSubZeroOfficialPdf } = require('./sub-zero-official');
+const { parseSubZeroText } = require('./parsers/sub-zero');
 const { discoverThirdPartyPdf } = require('./third-party-fallback');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
@@ -50,6 +52,7 @@ const KOGAN_MAX_BYTES = 25 * 1024 * 1024;
 const LIEBHERR_MAX_BYTES = 30 * 1024 * 1024;
 const ROBINHOOD_MAX_BYTES = 25 * 1024 * 1024;
 const OMEGA_MAX_BYTES = 20 * 1024 * 1024;
+const SUB_ZERO_MAX_BYTES = 25 * 1024 * 1024;
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -238,6 +241,13 @@ function isRobinhoodTarget(target = {}) {
 
 function isOmegaTarget(target = {}) {
   return /omega/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isSubZeroTarget(target = {}) {
+  return /sub[-\s]?zero/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -1440,6 +1450,96 @@ async function parseOmegaTarget({
   throw new Error(`Omega official documents failed: ${errors.join(' | ')}`);
 }
 
+function getSubZeroResources(official) {
+  const resources = Array.isArray(official?.resources) ? official.resources : [];
+  const primary = official?.sourceUrl
+    ? [{
+        sourceUrl: official.sourceUrl,
+        url: official.sourceUrl,
+        source: official.source || 'sub-zero-official-quick_reference_guide',
+        resourceType: official.resourceType || 'quick_reference_guide',
+        score: 1000
+      }]
+    : [];
+  const deduped = new Map();
+  for (const resource of [...primary, ...resources]) {
+    const url = resource?.sourceUrl || resource?.url;
+    if (!url || resource.resourceType === 'energy_guide' || resource.resourceType === 'user_manual') continue;
+    const normalized = {
+      ...resource,
+      sourceUrl: url,
+      url,
+      source: resource.source || `sub-zero-official-${resource.resourceType || 'pdf'}`,
+      resourceType: resource.resourceType || 'pdf',
+      score: Number.isFinite(resource.score) ? resource.score : 0
+    };
+    const existing = deduped.get(url);
+    if (!existing || normalized.score > existing.score) deduped.set(url, normalized);
+  }
+  return [...deduped.values()].sort((a, b) => b.score - a.score || a.url.localeCompare(b.url));
+}
+
+async function parseSubZeroTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  subZeroOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await subZeroOfficialFinder(target, { timeoutMs: 60_000 });
+  const resources = manualSourceUrl
+    ? [{
+        sourceUrl: manualSourceUrl,
+        url: manualSourceUrl,
+        source: 'manual-evidence',
+        resourceType: 'pdf',
+        score: 1000
+      }]
+    : getSubZeroResources(official);
+
+  if (resources.length === 0) {
+    throw new Error(official?.reason || 'Sub-Zero official PDF resources not found');
+  }
+
+  const errors = [];
+  for (let index = 0; index < resources.length; index += 1) {
+    const resource = resources[index];
+    const pdfPath = path.join(
+      repoRoot,
+      '.tmp',
+      'pdfs',
+      slugPathPart(target.brand),
+      `${slugPathPart(target.sku)}-${slugPathPart(resource.resourceType || `doc-${index}`)}.pdf`
+    );
+    try {
+      const fetched = await fetchPdfImpl(resource.sourceUrl, pdfPath, {
+        timeoutMs: 60_000,
+        maxBytes: SUB_ZERO_MAX_BYTES
+      });
+      const textResult = await extractTextImpl(fetched.path);
+      const parsed = parseSubZeroText(textResult.text, {
+        target,
+        sourceUrl: resource.sourceUrl,
+        extractionDate: new Date().toISOString()
+      });
+
+      return {
+        candidate: annotateSourceMetadata(parsed.data, resource.source || 'sub-zero-official-quick_reference_guide'),
+        sourceUrl: resource.sourceUrl,
+        source: resource.source || 'sub-zero-official-quick_reference_guide'
+      };
+    } catch (error) {
+      errors.push(`${resource.resourceType || resource.sourceUrl}: ${error.message}`);
+    }
+  }
+
+  throw new Error(`Sub-Zero official documents failed: ${errors.join(' | ')}`);
+}
+
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
   const dimensions = strictData?.dimensions || {};
   const pairs = [
@@ -1573,6 +1673,7 @@ async function runBatch({
   liebherrOfficialFinder = findLiebherrOfficialPdf,
   robinhoodOfficialFinder = findRobinhoodOfficialPdf,
   omegaOfficialFinder = findOmegaOfficialPdf,
+  subZeroOfficialFinder = findSubZeroOfficialPdf,
   includeArchived = false,
   brand = null
 } = {}) {
@@ -1603,6 +1704,7 @@ async function runBatch({
     && !isLiebherrTarget(target)
     && !isRobinhoodTarget(target)
     && !isOmegaTarget(target)
+    && !isSubZeroTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -1778,6 +1880,18 @@ async function runBatch({
         sourceUrl = parsed.sourceUrl;
         source = parsed.source;
         candidate = parsed.candidate;
+      } else if (!parseTextImpl && isSubZeroTarget(target)) {
+        const parsed = await parseSubZeroTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          subZeroOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
       } else {
         const resolved = await findGenericPdfSource(target, {
           repoRoot,
@@ -1923,3 +2037,4 @@ exports.parseKoganTarget = parseKoganTarget;
 exports.parseLiebherrTarget = parseLiebherrTarget;
 exports.parseRobinhoodTarget = parseRobinhoodTarget;
 exports.parseOmegaTarget = parseOmegaTarget;
+exports.parseSubZeroTarget = parseSubZeroTarget;
