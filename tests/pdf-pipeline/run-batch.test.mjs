@@ -918,6 +918,84 @@ test('runBatch processes CHIQ targets with the official finder and parser withou
   });
 });
 
+test('runBatch processes Artusi dishwasher targets with official finder resources without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'artusi-adw5009x',
+    brand: 'Artusi',
+    sku: 'ADW5009X',
+    category: 'dishwasher',
+    product: {
+      id: 'artusi-adw5009x',
+      cat: 'dishwasher',
+      brand: 'Artusi',
+      model: 'ADW5009X',
+      w: 598,
+      h: 845,
+      d: 600,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    artusiOfficialFinder: async () => ({
+      sourceUrl: 'https://artusi.com.au/wp-content/uploads/2025/11/PF_ADW5009_Artusi-1.pdf',
+      source: 'artusi-official-specification_sheet',
+      resourceType: 'specification_sheet',
+      resources: [
+        {
+          sourceUrl: 'https://artusi.com.au/wp-content/uploads/2025/11/PF_ADW5009_Artusi-1.pdf',
+          source: 'artusi-official-specification_sheet',
+          resourceType: 'specification_sheet',
+          score: 100
+        },
+        {
+          sourceUrl: 'https://artusi.com.au/wp-content/uploads/2025/11/ADW5009-User-Manual.pdf',
+          source: 'artusi-official-user_manual',
+          resourceType: 'user_manual',
+          score: 80
+        }
+      ]
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        ARTUSI ADW5009X ADW5009B ADW5009W ADW5009MB
+        Positioning The Appliance
+        The back should rest against the wall behind it, and the sides, along the adjacent cabinets or walls.
+        The height of the dishwasher, 845 mm, has been designed in order to allow the machine to be fitted between existing cabinets of the same height.
+        TECHNICAL INFORMATION
+        Height (H)
+        Width (W)
+        Depth (D1)
+        Depth (D2)
+        845mm
+        598mm
+        600mm (with the door closed)
+        1175mm (with the door opened 90°)
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'artusi-official-specification_sheet+artusi-official-user_manual');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'ADW5009X.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 0,
+    right_mm: 0,
+    rear_mm: 0
+  });
+});
+
 test('runBatch processes Esatto targets with the official finder and parser without an API key', async () => {
   const repoRoot = makeRepo();
   const target = {

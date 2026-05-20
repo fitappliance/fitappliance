@@ -42,6 +42,8 @@ const { findOmegaOfficialPdf } = require('./omega-official');
 const { parseOmegaText } = require('./parsers/omega');
 const { findSubZeroOfficialPdf } = require('./sub-zero-official');
 const { parseSubZeroText } = require('./parsers/sub-zero');
+const { findArtusiOfficialPdf } = require('./artusi-official');
+const { parseArtusiText } = require('./parsers/artusi');
 const { discoverThirdPartyPdf } = require('./third-party-fallback');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
@@ -53,6 +55,7 @@ const LIEBHERR_MAX_BYTES = 30 * 1024 * 1024;
 const ROBINHOOD_MAX_BYTES = 25 * 1024 * 1024;
 const OMEGA_MAX_BYTES = 20 * 1024 * 1024;
 const SUB_ZERO_MAX_BYTES = 25 * 1024 * 1024;
+const ARTUSI_MAX_BYTES = 30 * 1024 * 1024;
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -248,6 +251,13 @@ function isOmegaTarget(target = {}) {
 
 function isSubZeroTarget(target = {}) {
   return /sub[-\s]?zero/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isArtusiTarget(target = {}) {
+  return /artusi/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -1479,6 +1489,35 @@ function getSubZeroResources(official) {
   return [...deduped.values()].sort((a, b) => b.score - a.score || a.url.localeCompare(b.url));
 }
 
+function getArtusiResources(official) {
+  const resources = Array.isArray(official?.resources) ? official.resources : [];
+  const primary = official?.sourceUrl
+    ? [{
+        sourceUrl: official.sourceUrl,
+        url: official.sourceUrl,
+        source: official.source || 'artusi-official',
+        resourceType: official.resourceType || 'pdf',
+        score: 1000
+      }]
+    : [];
+  const deduped = new Map();
+  for (const resource of [...primary, ...resources]) {
+    const url = resource?.sourceUrl || resource?.url;
+    if (!url) continue;
+    const normalized = {
+      ...resource,
+      sourceUrl: url,
+      url,
+      source: resource.source || `artusi-official-${resource.resourceType || 'pdf'}`,
+      resourceType: resource.resourceType || 'pdf',
+      score: Number.isFinite(resource.score) ? resource.score : 0
+    };
+    const existing = deduped.get(url);
+    if (!existing || normalized.score > existing.score) deduped.set(url, normalized);
+  }
+  return [...deduped.values()].sort((a, b) => b.score - a.score || a.url.localeCompare(b.url));
+}
+
 async function parseSubZeroTarget({
   target,
   repoRoot,
@@ -1538,6 +1577,80 @@ async function parseSubZeroTarget({
   }
 
   throw new Error(`Sub-Zero official documents failed: ${errors.join(' | ')}`);
+}
+
+async function parseArtusiTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  artusiOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await artusiOfficialFinder(target, { timeoutMs: 45_000 });
+  const resources = manualSourceUrl
+    ? [{
+        sourceUrl: manualSourceUrl,
+        url: manualSourceUrl,
+        source: 'manual-evidence',
+        resourceType: 'pdf',
+        score: 1000
+      }]
+    : getArtusiResources(official);
+
+  if (resources.length === 0) {
+    throw new Error(official?.reason || 'Artusi official PDF resources not found');
+  }
+
+  const documents = [];
+  const errors = [];
+  for (let index = 0; index < resources.length; index += 1) {
+    const resource = resources[index];
+    const pdfPath = path.join(
+      repoRoot,
+      '.tmp',
+      'pdfs',
+      slugPathPart(target.brand),
+      `${slugPathPart(target.sku)}-${slugPathPart(resource.resourceType || `doc-${index}`)}.pdf`
+    );
+    try {
+      const fetched = await fetchPdfImpl(resource.sourceUrl, pdfPath, {
+        timeoutMs: 60_000,
+        maxBytes: ARTUSI_MAX_BYTES
+      });
+      const textResult = await extractTextImpl(fetched.path);
+      documents.push({
+        resource,
+        text: textResult.text
+      });
+    } catch (error) {
+      errors.push(`${resource.resourceType || resource.sourceUrl}: ${error.message}`);
+    }
+  }
+
+  if (documents.length === 0) {
+    throw new Error(`Artusi PDF resources could not be read: ${errors.join(' | ')}`);
+  }
+
+  const sourceUrl = documents.find((document) => document.resource.resourceType === 'specification_sheet')?.resource.sourceUrl
+    || documents[0].resource.sourceUrl;
+  const source = [...new Set(documents.map((document) => document.resource.source || `artusi-official-${document.resource.resourceType || 'pdf'}`)
+    .filter(Boolean))]
+    .join('+');
+  const parsed = parseArtusiText(documents.map((document) => document.text).join('\n\n'), {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString()
+  });
+
+  return {
+    candidate: annotateSourceMetadata(parsed.data, source || 'artusi-official'),
+    sourceUrl,
+    source: source || 'artusi-official'
+  };
 }
 
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
@@ -1674,6 +1787,7 @@ async function runBatch({
   robinhoodOfficialFinder = findRobinhoodOfficialPdf,
   omegaOfficialFinder = findOmegaOfficialPdf,
   subZeroOfficialFinder = findSubZeroOfficialPdf,
+  artusiOfficialFinder = findArtusiOfficialPdf,
   includeArchived = false,
   brand = null
 } = {}) {
@@ -1705,6 +1819,7 @@ async function runBatch({
     && !isRobinhoodTarget(target)
     && !isOmegaTarget(target)
     && !isSubZeroTarget(target)
+    && !isArtusiTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -1892,6 +2007,18 @@ async function runBatch({
         sourceUrl = parsed.sourceUrl;
         source = parsed.source;
         candidate = parsed.candidate;
+      } else if (!parseTextImpl && isArtusiTarget(target)) {
+        const parsed = await parseArtusiTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          artusiOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
       } else {
         const resolved = await findGenericPdfSource(target, {
           repoRoot,
@@ -2038,3 +2165,4 @@ exports.parseLiebherrTarget = parseLiebherrTarget;
 exports.parseRobinhoodTarget = parseRobinhoodTarget;
 exports.parseOmegaTarget = parseOmegaTarget;
 exports.parseSubZeroTarget = parseSubZeroTarget;
+exports.parseArtusiTarget = parseArtusiTarget;
