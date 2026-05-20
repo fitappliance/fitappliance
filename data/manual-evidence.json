@@ -164586,6 +164586,94 @@
           }
         }
       ]
+    },
+    "fridge-arf3710": {
+      "category": "fridge",
+      "brand": "Midea",
+      "model": "MDRC284FZE01APE",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc284fze01ape/MDRC284FZE01APE-198L-Chest-Freezer-Spec-Sheet.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/MDRC284FZE01APE.json",
+          "extracted": {
+            "brand": "Midea",
+            "sku": "MDRC284FZE01APE",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 770,
+              "depth_mm": 560,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc284fze01ape/MDRC284FZE01APE-198L-Chest-Freezer-Spec-Sheet.pdf",
+              "extraction_date": "2026-05-19T23:49:18.105Z",
+              "confidence_score": 0.9,
+              "source_type": "midea-official-specification_sheet+midea-official-user_manual"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3772": {
+      "category": "fridge",
+      "brand": "Midea",
+      "model": "MDRC499FZF01AP",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc499fzf01ap/MDRC499FZF01AP-User-Manual.pdf",
+          "verified_at": "2026-05-19",
+          "raw_json_path": "data/pdf-evidence-raw/MDRC499FZF01AP.json",
+          "extracted": {
+            "brand": "Midea",
+            "sku": "MDRC499FZF01AP",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 853,
+              "width_mm": 1255,
+              "depth_mm": 745,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc499fzf01ap/MDRC499FZF01AP-User-Manual.pdf",
+              "extraction_date": "2026-05-19T23:49:18.265Z",
+              "confidence_score": 0.9,
+              "source_type": "midea-official-user_manual"
+            }
+          }
+        }
+      ]
     }
   }
 }

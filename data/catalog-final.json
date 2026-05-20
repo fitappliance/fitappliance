@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1702,
-    "merged_products": 1685,
+    "evidence_files": 1704,
+    "merged_products": 1687,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -28,7 +28,7 @@
     "official_pdf_by_category": {
       "dishwasher": 383,
       "dryer": 100,
-      "fridge": 938,
+      "fridge": 940,
       "washing_machine": 262,
       "washtower_combo": 2
     }
@@ -24839,6 +24839,14 @@
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "verified_alias": "GS-B600PL",
+        "raw_json_path": "data/pdf-evidence-raw/GS-VB600PL.json"
+      },
       "dimensions": {
         "height_mm": 1790,
         "width_mm": 913,
@@ -24856,15 +24864,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=R7d8TnMM55jQiIKQn92WA",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "verified_alias": "GS-B600PL",
-        "raw_json_path": "data/pdf-evidence-raw/GS-VB600PL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2603",
@@ -27811,7 +27811,33 @@
       "inferred_door_swing": true,
       "displayName": "Midea Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 36
+      "priorityScore": 36,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 770,
+        "depth_mm": 560,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc284fze01ape/MDRC284FZE01APE-198L-Chest-Freezer-Spec-Sheet.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "midea-official-specification_sheet+midea-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/MDRC284FZE01APE.json"
+      }
     },
     {
       "id": "fridge-arf3772",
@@ -27819,8 +27845,8 @@
       "brand": "Midea",
       "model": "MDRC499FZF01AP",
       "w": 1255,
-      "h": 825,
-      "d": 705,
+      "h": 853,
+      "d": 745,
       "kwh_year": 300,
       "stars": 4,
       "price": null,
@@ -27837,7 +27863,33 @@
       "inferred_door_swing": true,
       "displayName": "Midea Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 853,
+        "width_mm": 1255,
+        "depth_mm": 745,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc499fzf01ap/MDRC499FZF01AP-User-Manual.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "midea-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/MDRC499FZF01AP.json"
+      }
     },
     {
       "id": "fridge-arf3839",
@@ -49231,6 +49283,14 @@
       "displayName": "LG QuadWash",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=jgKGpTUBKxpnjNpGPXQzUA",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.88,
+        "verified_alias": "XD3A25PS",
+        "raw_json_path": "data/pdf-evidence-raw/XD3.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 600,
@@ -49248,15 +49308,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=jgKGpTUBKxpnjNpGPXQzUA",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.88,
-        "verified_alias": "XD3A25PS",
-        "raw_json_path": "data/pdf-evidence-raw/XD3.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw1131",

@@ -1,63 +1,86 @@
 # PDF Batch Results
 
-Run at: 2026-05-19T22:53:26.604Z
+Run at: 2026-05-19T23:49:25.062Z
 
 ## Successful Runs
 
 | SKU | Product | Category | Confidence | Source |
 | --- | --- | --- | ---: | --- |
-| ODW300XN | Omega | dishwasher | 0.9 | https://cdn.shopify.com/s/files/1/0722/3433/6499/files/Omega-Dishwashers-Specifications-ODW300XN.pdf |
-| ODW707X | Omega | dishwasher | 0.9 | https://cdn.shopify.com/s/files/1/0722/3433/6499/files/Omega-Dishwashers-Specifications-ODW707X.pdf |
-| OFI700 | Omega | dishwasher | 0.9 | https://cdn.shopify.com/s/files/1/0722/3433/6499/files/OFI700.pdf |
+| MDRC284FZE01APE | Midea | fridge | 0.9 | https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc284fze01ape/MDRC284FZE01APE-198L-Chest-Freezer-Spec-Sheet.pdf |
+| MDRC499FZF01AP | Midea | fridge | 0.9 | https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc499fzf01ap/MDRC499FZF01AP-User-Manual.pdf |
 
 ## Significant Discrepancies
 
 | SKU | Axis | Legacy | PDF | Delta |
 | --- | --- | ---: | ---: | ---: |
-| ODW300XN | height | 845mm | 850mm | +5mm |
-| ODW300XN | depth | 600mm | 585mm | -15mm |
-| ODW707X | depth | 600mm | 594mm | -6mm |
+| MDRC499FZF01AP | height | 825mm | 853mm | +28mm |
+| MDRC499FZF01AP | depth | 705mm | 745mm | +40mm |
 
 ## Failures
 
 | SKU | Product | Reason |
 | --- | --- | --- |
-| OBFD127B | Omega | Omega official specification sheet not found for OBFD127B |
-| OBFZ91B | Omega | Omega official specification sheet not found for OBFZ91B |
-| OBMF243FI | Omega | Omega official specification sheet not found for OBMF243FI |
-| OBMF266FI | Omega | Omega official documents failed: specification_sheet: Omega fridge explicit cabinet clearance is not text-readable. |
-| OBMF357W | Omega | Omega official specification sheet not found for OBMF357W |
-| OCB140SB | Omega | Omega official specification sheet not found for OCB140SB |
-| OCBFS102SB | Omega | Omega official specification sheet not found for OCBFS102SB |
-| OFDF473X | Omega | Omega official specification sheet not found for OFDF473X |
-| OIF4DF526PRO | Omega | Omega official specification sheet not found for OIF4DF526PRO |
-| OIFDF439 | Omega | Omega official specification sheet not found for OIFDF439 |
-| OIFDF534 | Omega | Omega official specification sheet not found for OIFDF534 |
-| OIFF341 | Omega | Omega official specification sheet not found for OIFF341 |
-| OIFFBM267 | Omega | Omega official specification sheet not found for OIFFBM267 |
-| OIFFBM400 | Omega | Omega official specification sheet not found for OIFFBM400 |
-| OIFFBM427 | Omega | Omega official specification sheet not found for OIFFBM427 |
-| OIFFBM427PRO | Omega | Omega official specification sheet not found for OIFFBM427PRO |
-| OIFFU212 | Omega | Omega official specification sheet not found for OIFFU212 |
-| OIFRU304 | Omega | Omega official specification sheet not found for OIFRU304 |
-| OIFSBS541 | Omega | Omega official specification sheet not found for OIFSBS541 |
-| OSBS583WBX | Omega | Omega official specification sheet not found for OSBS583WBX |
-| OTMF450X | Omega | Omega official specification sheet not found for OTMF450X |
-| OVFZ161B | Omega | Omega official specification sheet not found for OVFZ161B |
-| ODW310X | Omega | Omega official specification sheet not found for ODW310X |
-| ODW6014X | Omega | Omega official specification sheet not found for ODW6014X |
-| ODW6015XDC | Omega | Omega official specification sheet not found for ODW6015XDC |
-| ODW700W | Omega | Omega official documents failed: specification_sheet: Omega parser could not verify SKU ODW700W against document text. |
-| ODW702 | Omega | Omega official specification sheet not found for ODW702 |
-| ODW715X | Omega | Omega official specification sheet not found for ODW715X |
-| ODW717 | Omega | Omega official specification sheet not found for ODW717 |
-| ODWF6014X | Omega | Omega official specification sheet not found for ODWF6014X |
-| ODWIF60152 | Omega | Omega official specification sheet not found for ODWIF60152 |
-| OFI101X | Omega | Omega official specification sheet not found for OFI101X |
-| OCD45W.1 | Omega | Omega official specification sheet not found for OCD45W.1 |
-| OVD7 | Omega | Omega official specification sheet not found for OVD7 |
-| OVD8W | Omega | Omega official specification sheet not found for OVD8W |
-| OFL80D50W | Omega | Omega official specification sheet not found for OFL80D50W |
-| OFLW1000AW | Omega | Omega official specification sheet not found for OFLW1000AW |
-| OFLW800W | Omega | Omega official specification sheet not found for OFLW800W |
-| OFLW900AM | Omega | Omega official specification sheet not found for OFLW900AM |
+| 353483 | Midea | Midea product page not found for 353483 |
+| MDRC698FZM01AP | Midea | Midea product page not found for MDRC698FZM01AP |
+| MDRD130FGF01AP | Midea | Midea product page not found for MDRD130FGF01AP |
+| MDRD181FGF01AP | Midea | Midea product page not found for MDRD181FGF01AP |
+| MDRF632FGD46APW | Midea | Midea fridge parser only supports chest freezer documents with explicit clearance rules. |
+| MDRT134FGF09AP | Midea | Midea product page not found for MDRT134FGF09AP |
+| MDRT346MTF28AP | Midea | Midea product page not found for MDRT346MTF28AP |
+| MDRT489MTE01AP | Midea | Midea product page not found for MDRT489MTE01AP |
+| MDRT580MTF45AP | Midea | PDF fetch failed with HTTP 404 |
+| MDRU229FGF01AP | Midea | Midea product page not found for MDRU229FGF01AP |
+| MDRU333FGF02AP | Midea | Midea product page not found for MDRU333FGF02AP |
+| MERB430FGF28AP | Midea | Midea product page not found for MERB430FGF28AP |
+| MERC151FZFO1AP | Midea | Midea product page not found for MERC151FZFO1AP |
+| MERC280FZF01APE | Midea | Midea product page not found for MERC280FZF01APE |
+| MERC405FZF01APE | Midea | Midea product page not found for MERC405FZF01APE |
+| MERD181FGF30AP | Midea | Midea product page not found for MERD181FGF30AP |
+| MERF632FIF28APD | Midea | Midea product page not found for MERF632FIF28APD |
+| MERS79IMYEDXAP | Midea | Midea product page not found for MERS79IMYEDXAP |
+| MERT134FGF30AP | Midea | Midea product page not found for MERT134FGF30AP |
+| 340251 | Midea | Midea product page not found for 340251 |
+| 340454 | Midea | Midea product page not found for 340454 |
+| 340457 | Midea | Midea product page not found for 340457 |
+| 340458 | Midea | Midea product page not found for 340458 |
+| 340460 | Midea | Midea product page not found for 340460 |
+| 340520 | Midea | Midea product page not found for 340520 |
+| 340535 | Midea | Midea product page not found for 340535 |
+| 340607 | Midea | Midea product page not found for 340607 |
+| 340645 | Midea | Midea product page not found for 340645 |
+| MDW15GSS | Midea | Midea product page not found for MDW15GSS |
+| MDW4581F9UX | Midea | Midea product page not found for MDW4581F9UX |
+| MDW6063F12UX | Midea | Midea product page not found for MDW6063F12UX |
+| MDW6065F14UX | Midea | Midea dishwasher parser requires explicit cabinet opening dimensions. |
+| MDW6094F15BX | Midea | Midea product page not found for MDW6094F15BX |
+| MDWB1W | Midea | Midea product page not found for MDWB1W |
+| MDWMINIS | Midea | Midea product page not found for MDWMINIS |
+| MDWPF1433F(SS)-WG | Midea | Midea dishwasher parser requires explicit cabinet opening dimensions. |
+| MDWSDSS | Midea | Midea product page not found for MDWSDSS |
+| WQP12-5201C | Midea | Midea product page not found for WQP12-5201C |
+| WQP12-7609S-AU | Midea | Midea product page not found for WQP12-7609S-AU |
+| WQP12-9501A-AU | Midea | Midea product page not found for WQP12-9501A-AU |
+| WQP4-2605 | Midea | Midea product page not found for WQP4-2605 |
+| 361176 MDS70-VR072/A04-AU | Midea | Midea product page not found for 361176 MDS70-VR072/A04-AU |
+| DMDV70 | Midea | Midea product page not found for DMDV70 |
+| 360117 MAE100-2004TPS/01FM-AU-P1 | Midea | Midea product page not found for 360117 MAE100-2004TPS/01FM-AU-P1 |
+| 360174  MAE70-504TPS/01FM-AU-S1 | Midea | Midea product page not found for 360174  MAE70-504TPS/01FM-AU-S1 |
+| 360192  MAE90-804TPS/01FM-AU | Midea | Midea product page not found for 360192  MAE90-804TPS/01FM-AU |
+| 360220 MFM110-U1401B/C19E-AU | Midea | Midea product page not found for 360220 MFM110-U1401B/C19E-AU |
+| 360315 MFM80-DU1401B/C19E-AU | Midea | Midea product page not found for 360315 MFM80-DU1401B/C19E-AU |
+| 360463 MFN60-JU1209B/D03E-AU | Midea | Midea product page not found for 360463 MFN60-JU1209B/D03E-AU |
+| 360487 MFM80-U1401B/C14E-AU | Midea | Midea product page not found for 360487 MFM80-U1401B/C14E-AU |
+| 360489 MFN80-U1409B/D03E-AU | Midea | Midea product page not found for 360489 MFN80-U1409B/D03E-AU |
+| 360496 MFL100-JM1415BIM/H01EPW-AU(5) | Midea | Midea product page not found for 360496 MFL100-JM1415BIM/H01EPW-AU(5) |
+| DMWM55G2 | Midea | Midea product page not found for DMWM55G2 |
+| MF110W80B/W-AU | Midea | Midea WASHING_MACHINE parser requires explicit clearance rules before ingest. |
+| MF110W90B/W-AU | Midea | Midea product page not found for MF110W90B/W-AU |
+| MF200W100WB/T | Midea | Midea WASHING_MACHINE parser requires explicit clearance rules before ingest. |
+| MF200W90WB/W | Midea | Midea parser could not verify SKU MF200W90WB/W against document text or official source URL. |
+| MF210W100BW | Midea | Midea PDF not found: https://www.midea.com/au/laundry/washing-machines/front-load/midea-mf210-front-load-washer-mf210w100bw.mf210w100bw: no manualsdownload endpoint |
+| MF210W80BW | Midea | Midea product page not found for MF210W80BW |
+| MF210W90BW | Midea | Midea PDF not found: https://www.midea.com/au/laundry/washing-machines/front-load/midea-mf-210-front-load-washer-mf210w90bw.mf210w90bw: no manualsdownload endpoint |
+| MT512W100RDW | Midea | Midea product page not found for MT512W100RDW |
+| MT512W70RUW | Midea | Midea product page not found for MT512W70RUW |
+| MT512W80RUW | Midea | Midea WASHING_MACHINE parser requires explicit clearance rules before ingest. |
+| MT512W90RUW | Midea | Midea WASHING_MACHINE parser requires explicit clearance rules before ingest. |

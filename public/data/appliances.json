@@ -34694,7 +34694,12 @@
       "inferred_door_swing": true,
       "displayName": "Midea Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 36
+      "priorityScore": 36,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc284fze01ape/MDRC284FZE01APE-198L-Chest-Freezer-Spec-Sheet.pdf",
+        "verified_at": "2026-05-19"
+      }
     },
     {
       "id": "fridge-arf3772",
@@ -34720,7 +34725,12 @@
       "inferred_door_swing": true,
       "displayName": "Midea Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc499fzf01ap/MDRC499FZF01AP-User-Manual.pdf",
+        "verified_at": "2026-05-19"
+      }
     },
     {
       "id": "fridge-arf3839",

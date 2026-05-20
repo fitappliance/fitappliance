@@ -63,3 +63,72 @@ test('Midea parser fails closed when the official PDF does not prove the target 
     sourceUrl: 'https://www.midea.com/content/dam/midea-aem/au/pdp/mdw6099b15bdx/spec.pdf'
   }), /could not verify SKU MDW6065F14UX/);
 });
+
+test('Midea parser extracts single-model chest freezer dimensions with explicit adjacent-wall clearance', () => {
+  const result = parseMideaText(`
+    Chest Freezer
+    MDRC499FZF01AP
+    SPECIFICATIONS
+    Product model MDRC499FZF01AP
+    Freezer compartment Volume(L) 362
+    Overall Dimension (mm) 1255x745x853
+
+    PRODUCT INSTALLATION
+    Dimensions and Clearances
+    Allow over 100 mm of clearance from each adjacent wall when installing the appliance.
+    Required space for air circulation
+  `, {
+    target: { brand: 'Midea', sku: 'MDRC499FZF01AP', category: 'fridge' },
+    sourceUrl: 'https://www.midea.com/content/dam/midea-aem/au/pdp/mdrc499fzf01ap/manual.pdf',
+    extractionDate: '2026-05-19T00:00:00.000Z'
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    width_mm: 1255,
+    depth_mm: 745,
+    height_mm: 853,
+    door_open_90_depth_mm: null
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 100,
+    right_mm: 100,
+    rear_mm: 100
+  });
+  assert.equal(result.data.flags.ventilation_required, true);
+});
+
+test('Midea parser selects the matching row from a multi-model chest freezer dimension table', () => {
+  const result = parseMideaText(`
+    MDRC284FZE01APE
+    Product Dimensions W x D x H 770 x 560 x 850mm
+
+    Chest Freezer
+    USER MANUAL
+    SPECIFICATIONS
+    Product model MDRC154FZE01APE MDRC211FZE01APE MDRC284FZE01APE
+    Total Volume(L) 99 143 198
+    Overall Dimension (mm) 547x446x850 600x560x850 770x560x850
+
+    Dimensions and Clearances
+    Too small of a distance from adjacent items may result in the degradation of freezing capability.
+    Allow over 100 mm of clearance from each adjacent wall when installing the appliance.
+  `, {
+    target: { brand: 'Midea', sku: 'MDRC284FZE01APE', category: 'fridge' },
+    sourceUrl: 'https://www.midea.com/content/dam/midea-aem/au/pdp/mdrc284fze01ape/spec.pdf',
+    extractionDate: '2026-05-19T00:00:00.000Z'
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    width_mm: 770,
+    depth_mm: 560,
+    height_mm: 850,
+    door_open_90_depth_mm: null
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 100,
+    right_mm: 100,
+    rear_mm: 100
+  });
+});
