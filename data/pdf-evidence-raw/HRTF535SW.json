@@ -5,7 +5,7 @@
   "brand": "Hisense",
   "model": "HRTF535SW",
   "source_url": "https://www.appliancesonline.com.au/ak/d/0/c/f/d0cfea3d736fdb4bc65efa77c871a8de8e2725b3_HRTF535SW_Hisense_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRTF535SW",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": false
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/0/c/f/d0cfea3d736fdb4bc65efa77c871a8de8e2725b3_HRTF535SW_Hisense_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:29:25.064Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:58.090Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

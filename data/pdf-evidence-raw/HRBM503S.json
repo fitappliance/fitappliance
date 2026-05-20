@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-145070",
+  "product_id": "fridge-arf3099",
   "category": "fridge",
   "brand": "Hisense",
   "model": "HRBM503S",
   "source_url": "https://www.appliancesonline.com.au/ak/e/f/0/6/ef06f78ac1f7a69fa721fcce24c82130dd1cf33d_HRBM503S_ConsumerSpecs_.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRBM503S",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": true
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/f/0/6/ef06f78ac1f7a69fa721fcce24c82130dd1cf33d_HRBM503S_ConsumerSpecs_.pdf",
-      "extraction_date": "2026-05-09T09:29:16.630Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:28.395Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

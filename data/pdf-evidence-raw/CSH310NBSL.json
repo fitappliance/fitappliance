@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-142299",
+  "product_id": "fridge-arf2820",
   "category": "fridge",
-  "brand": "CHiQ",
+  "brand": "CHIQ",
   "model": "CSH310NBSL",
   "source_url": "https://www.appliancesonline.com.au/ak/3/e/4/e/3e4e628a3855bba67ed24525b05b51f388d69f98_CSH310NBSL_CHiQ_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "CHiQ",
     "sku": "CSH310NBSL",
@@ -13,7 +13,7 @@
     "dimensions": {
       "height_mm": 1570,
       "width_mm": 710,
-      "depth_mm": 705,
+      "depth_mm": 770,
       "door_open_90_depth_mm": null
     },
     "clearance_requirements": {
@@ -29,8 +29,9 @@
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/e/4/e/3e4e628a3855bba67ed24525b05b51f388d69f98_CSH310NBSL_CHiQ_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:08:01.579Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:28:17.370Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
     }
   }
 }

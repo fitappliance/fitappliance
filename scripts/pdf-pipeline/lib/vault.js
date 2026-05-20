@@ -99,10 +99,55 @@ function hasExtractedClearanceEvidence(strictData) {
   ));
 }
 
+function hasNonZeroExtractedClearance(strictData) {
+  const clearance = strictData?.clearance_requirements;
+  return ['top_mm', 'left_mm', 'right_mm', 'rear_mm'].some((key) => (
+    typeof clearance?.[key] === 'number' && Number.isFinite(clearance[key]) && clearance[key] > 0
+  ));
+}
+
+function getHostname(value) {
+  const raw = String(value ?? '').trim();
+  if (!raw) return '';
+  try {
+    return new URL(raw).hostname.toLowerCase();
+  } catch {
+    return '';
+  }
+}
+
+function isRetailerOrThirdPartySource(sourceType, sourceUrl) {
+  const normalizedSource = String(sourceType ?? '').toLowerCase();
+  if (normalizedSource.includes('retailer') || normalizedSource.includes('third_party')) return true;
+  const host = getHostname(sourceUrl);
+  return [
+    'appliancesonline.com.au',
+    'commercial.appliancesonline.com.au',
+    'thegoodguys.com.au',
+    'harveynorman.com.au',
+    'binglee.com.au',
+    'device.report',
+    'manualslib.com',
+    'usermanuals.au',
+  ].some((domain) => host === domain || host.endsWith(`.${domain}`));
+}
+
+function hasExplicitClearanceEvidence(strictData) {
+  const metadata = strictData?.metadata ?? {};
+  if (metadata.clearance_verified === true) return true;
+  if (Array.isArray(metadata.verified_fields) && metadata.verified_fields.includes('clearance')) return true;
+  if (String(metadata.clearance_source ?? '').trim()) return true;
+  return hasExtractedClearanceEvidence(strictData) && hasNonZeroExtractedClearance(strictData);
+}
+
 function inferTrustMetadata(strictData) {
   const sourceType = String(strictData?.metadata?.source_type || 'official_pdf').trim() || 'official_pdf';
-  const normalizedSource = sourceType.toLowerCase();
-  if (normalizedSource.includes('retailer') || normalizedSource.includes('third_party')) {
+  const sourceUrl = strictData?.metadata?.source_pdf_url;
+  const explicit = String(strictData?.metadata?.trust_level ?? '').trim();
+  if (explicit === 'retailer_spec') {
+    return { trust_level: 'retailer_spec', verified_fields: ['dimensions'], clearance_verified: false, source_type: sourceType };
+  }
+  if (isRetailerOrThirdPartySource(sourceType, sourceUrl)) {
     return {
       trust_level: 'retailer_spec',
       verified_fields: ['dimensions'],
@@ -110,7 +155,13 @@ function inferTrustMetadata(strictData) {
       source_type: sourceType
     };
   }
-  const isVerifiedFit = hasExtractedDimensionsEvidence(strictData) && hasExtractedClearanceEvidence(strictData);
+  if (explicit === 'verified_fit' && hasExplicitClearanceEvidence(strictData)) {
+    return { trust_level: 'verified_fit', verified_fields: ['dimensions', 'clearance'], clearance_verified: true, source_type: sourceType };
+  }
+  if (explicit === 'dimensions_verified') {
+    return { trust_level: 'dimensions_verified', verified_fields: ['dimensions'], clearance_verified: false, source_type: sourceType };
+  }
+  const isVerifiedFit = hasExtractedDimensionsEvidence(strictData) && hasExplicitClearanceEvidence(strictData);
   return {
     trust_level: isVerifiedFit ? 'verified_fit' : 'dimensions_verified',
     verified_fields: isVerifiedFit ? ['dimensions', 'clearance'] : ['dimensions'],

@@ -77,6 +77,57 @@ test('build-evidence-index infers Verified Fit from extracted dimensions and cle
   assert.equal(index.products['fridge-full'].clearance_verified, true);
 });
 
+test('build-evidence-index does not treat default zero clearance as Verified Fit', () => {
+  const index = buildIndex({
+    products: {
+      'fridge-zero': {
+        category: 'fridge',
+        brand: 'LG',
+        model: 'ZERO',
+        evidence: [{
+          status: 'approved',
+          has_pdf_evidence: true,
+          source_url: 'https://example.com/zero.pdf',
+          verified_at: '2026-05-07',
+          extracted: {
+            dimensions: { height_mm: 1700, width_mm: 700, depth_mm: 700 },
+            clearance_requirements: { top_mm: 0, left_mm: 0, right_mm: 0, rear_mm: 0 },
+          },
+        }],
+      },
+    },
+  });
+
+  assert.equal(index.products['fridge-zero'].trust_level, 'dimensions_verified');
+  assert.deepEqual(index.products['fridge-zero'].verified_fields, ['dimensions']);
+  assert.equal(index.products['fridge-zero'].clearance_verified, false);
+});
+
+test('build-evidence-index downgrades retailer-hosted source URLs to Retailer Spec', () => {
+  const index = buildIndex({
+    products: {
+      retailer: {
+        category: 'fridge',
+        brand: 'LG',
+        model: 'RETAIL',
+        evidence: [{
+          status: 'approved',
+          has_pdf_evidence: true,
+          source_url: 'https://commercial.appliancesonline.com.au/manuals/example.pdf',
+          verified_at: '2026-05-07',
+          trust_level: 'verified_fit',
+          verified_fields: ['dimensions', 'clearance'],
+          clearance_verified: true,
+        }],
+      },
+    },
+  });
+
+  assert.equal(index.products.retailer.trust_level, 'retailer_spec');
+  assert.deepEqual(index.products.retailer.verified_fields, ['dimensions']);
+  assert.equal(index.products.retailer.clearance_verified, false);
+});
+
 test('build-evidence-index preserves explicit Verified Fit and retailer spec tiers', () => {
   const index = buildIndex({
     products: {

@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-102620",
+  "product_id": "fridge-arf2390",
   "category": "fridge",
   "brand": "Hisense",
   "model": "HRFD577B",
   "source_url": "https://www.appliancesonline.com.au/ak/a/7/b/3/a7b30ddf7e52ecfd0abf92291def2b239fc1c655_HRFD577B_Hisense_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRFD577B",
@@ -29,8 +29,9 @@
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/7/b/3/a7b30ddf7e52ecfd0abf92291def2b239fc1c655_HRFD577B_Hisense_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:29:31.976Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:33.416Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

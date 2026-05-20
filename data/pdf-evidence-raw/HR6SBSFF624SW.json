@@ -5,7 +5,7 @@
   "brand": "Hisense",
   "model": "HR6SBSFF624SW",
   "source_url": "https://www.appliancesonline.com.au/ak/0/5/3/1/0531c765e25b89aa501c7e516e73760e87b7dd93_HR6SBSFF624SW_Hisense_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HR6SBSFF624SW",
@@ -23,14 +23,15 @@
       "rear_mm": 50
     },
     "flags": {
-      "requires_plumbing": false,
+      "requires_plumbing": true,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": false
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/0/5/3/1/0531c765e25b89aa501c7e516e73760e87b7dd93_HR6SBSFF624SW_Hisense_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:32:10.909Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:52.362Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

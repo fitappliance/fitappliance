@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-102629",
+  "product_id": "fridge-arf2640",
   "category": "fridge",
   "brand": "Hisense",
   "model": "HRTF496SW",
   "source_url": "https://www.appliancesonline.com.au/ak/f/9/5/2/f9529f4fbae43890fd8f51e98590b70ddd8efc35_HRTF496SW_Specs_FINAL.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRTF496SW",
@@ -23,14 +23,15 @@
       "rear_mm": 50
     },
     "flags": {
-      "requires_plumbing": false,
+      "requires_plumbing": true,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": false
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/9/5/2/f9529f4fbae43890fd8f51e98590b70ddd8efc35_HRTF496SW_Specs_FINAL.pdf",
-      "extraction_date": "2026-05-09T09:29:12.175Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:35.637Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

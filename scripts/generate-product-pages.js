@@ -81,6 +81,49 @@ function getClearance(product, key) {
   return Number.isFinite(Number(value)) ? Math.max(0, roundMm(value)) : 0;
 }
 
+function getEvidenceTrustLevel(product) {
+  const level = String(product?.evidence?.trust_level ?? product?.trust_level ?? '').trim();
+  if (['verified_fit', 'dimensions_verified', 'retailer_spec'].includes(level)) return level;
+  if (product?.evidence?.clearance_verified === true) return 'verified_fit';
+  if (product?.evidence?.has_pdf_evidence === true) return 'dimensions_verified';
+  return 'retailer_spec';
+}
+
+function getEvidenceTrustCopy(product) {
+  const trustLevel = getEvidenceTrustLevel(product);
+  if (trustLevel === 'verified_fit') {
+    return {
+      label: 'Verified Fit',
+      titleSuffix: 'Exact Dimensions & Verified Cavity Fit',
+      descriptionVerb: 'verified dimensions and manufacturer clearance requirements',
+      sourceProperty: 'Official PDF dimensions and clearance evidence captured by FitAppliance',
+      sourceLabel: 'Official PDF evidence',
+      faqVerification: 'Yes. FitAppliance has linked this model to PDF evidence with explicit dimensions and installation clearance data.',
+      cavityAnswerSuffix: 'once verified clearance requirements are included.'
+    };
+  }
+  if (trustLevel === 'dimensions_verified') {
+    return {
+      label: 'Dimensions Verified',
+      titleSuffix: 'Exact Dimensions & Clearance Estimate',
+      descriptionVerb: 'PDF-backed dimensions with conservative clearance estimates',
+      sourceProperty: 'Official PDF dimensions evidence captured by FitAppliance; clearance is estimated until explicit installation clearance is verified',
+      sourceLabel: 'Official dimensions evidence',
+      faqVerification: 'Partially. FitAppliance has verified the physical dimensions from PDF evidence, but installation clearance is treated as an estimate until explicit clearance evidence is captured.',
+      cavityAnswerSuffix: 'using the currently recorded clearance estimate.'
+    };
+  }
+  return {
+    label: 'Retailer Spec',
+    titleSuffix: 'Retailer Dimensions',
+    descriptionVerb: 'retailer-sourced dimensions with unverified installation clearance',
+    sourceProperty: 'Retailer dimensions evidence captured by FitAppliance; installation clearance is not verified',
+    sourceLabel: 'Retailer specification evidence',
+    faqVerification: 'No. FitAppliance has retailer-sourced dimensions for this model, but it is not marked as Verified Fit because installation clearance evidence is missing.',
+    cavityAnswerSuffix: 'using unverified clearance assumptions.'
+  };
+}
+
 function selectVerifiedProducts(products) {
   return [...(Array.isArray(products) ? products : [])]
     .filter((product) => (
@@ -98,11 +141,13 @@ function selectVerifiedProducts(products) {
 }
 
 function buildAdditionalProperties(product) {
+  const trustCopy = getEvidenceTrustCopy(product);
   const properties = [
     { '@type': 'PropertyValue', name: 'Width clearance', value: `${getClearance(product, 'left_mm')}mm left, ${getClearance(product, 'right_mm')}mm right` },
     { '@type': 'PropertyValue', name: 'Top clearance', value: getClearance(product, 'top_mm'), unitCode: 'MMT' },
     { '@type': 'PropertyValue', name: 'Rear clearance', value: getClearance(product, 'rear_mm'), unitCode: 'MMT' },
-    { '@type': 'PropertyValue', name: 'Verified source', value: 'Official PDF evidence captured by FitAppliance' }
+    { '@type': 'PropertyValue', name: 'Evidence trust level', value: trustCopy.label },
+    { '@type': 'PropertyValue', name: 'Evidence source', value: trustCopy.sourceProperty }
   ];
 
   if (product?.data_source) {
@@ -133,7 +178,7 @@ function buildProductJsonLd(product) {
     '@type': 'Product',
     '@id': `${canonical}#product`,
     name,
-    description: `${name} exact dimensions and verified cavity-fit data for Australian homes.`,
+    description: `${name} ${getEvidenceTrustCopy(product).descriptionVerb} for Australian homes.`,
     sku: String(product?.model ?? product?.id ?? ''),
     mpn: String(product?.model ?? product?.id ?? ''),
     category: categoryLabel(product),
@@ -201,6 +246,7 @@ function buildBreadcrumbJsonLd(product) {
 
 function buildFaqJsonLd(product) {
   const name = productName(product);
+  const trustCopy = getEvidenceTrustCopy(product);
   const width = getDimension(product, 'width_mm', 'w');
   const height = getDimension(product, 'height_mm', 'h');
   const depth = getDimension(product, 'depth_mm', 'd');
@@ -224,7 +270,7 @@ function buildFaqJsonLd(product) {
         name: `What cavity size does the ${name} need?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Allow at least ${requiredWidth}mm width, ${requiredHeight}mm height, and ${requiredDepth}mm depth once verified clearance requirements are included.`
+          text: `Allow at least ${requiredWidth}mm width, ${requiredHeight}mm height, and ${requiredDepth}mm depth ${trustCopy.cavityAnswerSuffix}`
         }
       },
       {
@@ -232,7 +278,7 @@ function buildFaqJsonLd(product) {
         name: `Is the ${name} verified by FitAppliance?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Yes. FitAppliance has linked this model to PDF evidence and records the source date where available.`
+          text: trustCopy.faqVerification
         }
       }
     ]
@@ -262,6 +308,7 @@ function renderRetailerLinks(product) {
 function buildProductPageHtml(product) {
   const name = productName(product);
   const category = categoryLabel(product);
+  const trustCopy = getEvidenceTrustCopy(product);
   const canonical = productUrl(product);
   const width = getDimension(product, 'width_mm', 'w');
   const height = getDimension(product, 'height_mm', 'h');
@@ -272,8 +319,8 @@ function buildProductPageHtml(product) {
   const titleSubject = new RegExp(`\\b${category.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(name)
     ? name
     : `${name} ${category}`;
-  const title = `${titleSubject} Exact Dimensions & Verified Cavity Fit | FitAppliance`;
-  const description = `${name} verified dimensions: W ${width}mm, H ${height}mm, D ${depth}mm. Check safe cavity size and clearance requirements before buying in Australia.`;
+  const title = `${titleSubject} ${trustCopy.titleSuffix} | FitAppliance`;
+  const description = `${name}: W ${width}mm, H ${height}mm, D ${depth}mm. ${trustCopy.descriptionVerb}. Check safe cavity size before buying in Australia.`;
   const sourceUrl = /^https?:\/\//i.test(String(product?.evidence?.source_url ?? ''))
     ? product.evidence.source_url
     : null;
@@ -299,6 +346,8 @@ ${head}
     .sku-table{width:100%;border-collapse:collapse}
     .sku-table th,.sku-table td{border-bottom:1px solid #eee7dc;padding:10px;text-align:left}
     .sku-badge{display:inline-block;border:1px solid #047857;background:#ecfdf5;color:#047857;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;font-weight:700;padding:2px 6px}
+    .sku-badge--dimensions_verified{border-color:#0369a1;background:#f0f9ff;color:#075985}
+    .sku-badge--retailer_spec{border-color:#92400e;background:#fffbeb;color:#92400e}
     .sku-source{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;background:#f9fafb;border:1px solid #e5e7eb;padding:12px;margin-top:16px}
     .retailer-strip{display:flex;flex-wrap:wrap;gap:8px}.retailer-strip a{border:1px solid #d8cfc1;padding:8px 10px;color:#1f1f1f;text-decoration:none}
     @media(max-width:760px){.sku-grid{grid-template-columns:1fr}.sku-page{padding:28px 16px 56px}}
@@ -317,9 +366,9 @@ ${head}
   <main class="sku-page">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> → <a href="${escAttr(CATEGORY_HUBS[product?.cat] ?? '/')}">${escHtml(category)} dimensions</a> → ${escHtml(name)}</nav>
     <p class="sku-kicker" data-source="catalog-final">${escHtml(product?.brand ?? '')} · ${escHtml(category)} · Model ${escHtml(product?.model ?? product?.id ?? '')}</p>
-    <h1 class="sku-title">${escHtml(name)} exact dimensions and verified cavity fit</h1>
+    <h1 class="sku-title">${escHtml(name)} ${escHtml(trustCopy.titleSuffix.toLowerCase())}</h1>
     <p data-source="pdf-evidence">${escHtml(description)}</p>
-    <p data-source="pdf-evidence"><span class="sku-badge">Verified PDF evidence</span></p>
+    <p data-source="pdf-evidence"><span class="sku-badge sku-badge--${escAttr(getEvidenceTrustLevel(product))}">${escHtml(trustCopy.label)}</span></p>
     <div class="sku-grid">
       <section class="sku-panel">
         <h2>Physical dimensions</h2>
@@ -355,7 +404,7 @@ ${head}
       </table>
       <div class="sku-source">
         Source of truth:
-        ${sourceUrl ? `<a href="${escAttr(sourceUrl)}" target="_blank" rel="noopener">PDF evidence</a>` : 'PDF evidence captured'}
+        ${sourceUrl ? `<a href="${escAttr(sourceUrl)}" target="_blank" rel="noopener">${escHtml(trustCopy.sourceLabel)}</a>` : escHtml(trustCopy.sourceLabel)}
         ${product?.evidence?.verified_at ? ` · Verified ${escHtml(product.evidence.verified_at)}` : ''}
       </div>
     </section>
@@ -432,9 +481,9 @@ ${links}
 <body>
   <header>
     <a href="/">FitAppliance</a>
-    <p class="eyebrow">Verified product pages</p>
-    <h1>PDF-backed appliance dimensions</h1>
-    <p>These pages expose crawlable Product, Breadcrumb and FAQ structured data for appliances with captured evidence.</p>
+    <p class="eyebrow">Evidence-backed product pages</p>
+    <h1>Evidence-backed appliance dimensions</h1>
+    <p>These pages expose crawlable Product, Breadcrumb and FAQ structured data for appliances with captured evidence tiers.</p>
   </header>
   <main>
 ${sections}
@@ -481,7 +530,7 @@ async function generateProductPages({
 
   await writeFile(path.join(outputDir, 'index.json'), `${JSON.stringify(rows, null, 2)}\n`, 'utf8');
   await writeFile(path.join(repoRoot, 'pages', 'products.html'), buildProductIndexHtml(rows), 'utf8');
-  logger.log(`Generated ${rows.length} verified product pages to ${path.relative(repoRoot, outputDir)}`);
+  logger.log(`Generated ${rows.length} evidence-backed product pages to ${path.relative(repoRoot, outputDir)}`);
   return { count: rows.length, rows };
 }
 

@@ -5,7 +5,7 @@
   "brand": "Hisense",
   "model": "HR6FDFF701BW",
   "source_url": "https://www.appliancesonline.com.au/ak/c/2/a/9/c2a9a35c82258e21e8c5a5f358cceb99abd45407_HR6FDFF701BW_Hisense_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HR6FDFF701BW",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": false
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/c/2/a/9/c2a9a35c82258e21e8c5a5f358cceb99abd45407_HR6FDFF701BW_Hisense_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:30:15.417Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:51.319Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

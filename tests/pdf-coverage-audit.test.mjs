@@ -17,18 +17,19 @@ const {
 
 test('PDF coverage audit counts total, verified, missing and percentage by brand', () => {
   const rows = buildPdfCoverageRows([
-    { id: 'a', brand: 'Fisher & Paykel', evidence: { has_pdf_evidence: true } },
+    { id: 'a', brand: 'Fisher & Paykel', evidence: { has_pdf_evidence: true, trust_level: 'verified_fit' } },
     { id: 'b', brand: 'Fisher & Paykel' },
-    { id: 'c', brand: 'LG', data_source: 'official_pdf' }
+    { id: 'c', brand: 'LG', evidence: { has_pdf_evidence: true, trust_level: 'dimensions_verified' } },
+    { id: 'd', brand: 'LG', evidence: { trust_level: 'retailer_spec' } }
   ], {
     products: {
-      c: { has_pdf_evidence: true }
+      c: { has_pdf_evidence: true, trust_level: 'dimensions_verified' }
     }
   });
 
   assert.deepEqual(rows, [
-    { brand: 'Fisher & Paykel', total: 2, verified: 1, missing: 1, coverage: 50 },
-    { brand: 'LG', total: 1, verified: 1, missing: 0, coverage: 100 }
+    { brand: 'Fisher & Paykel', total: 2, verified_fit: 1, dimensions_verified: 0, retailer_spec: 0, missing: 1, evidenceCoverage: 50, verifiedFitCoverage: 50 },
+    { brand: 'LG', total: 2, verified_fit: 0, dimensions_verified: 1, retailer_spec: 1, missing: 0, evidenceCoverage: 100, verifiedFitCoverage: 0 }
   ]);
 });
 
@@ -38,26 +39,26 @@ test('PDF coverage audit treats evidence-index verification as source of truth',
     { id: 'fridge-b', brand: 'Samsung', evidence: { has_pdf_evidence: false } }
   ], {
     products: {
-      'fridge-a': { status: 'verified', has_pdf_evidence: true },
+      'fridge-a': { status: 'verified', has_pdf_evidence: true, trust_level: 'verified_fit' },
       'fridge-b': { status: 'pending', has_pdf_evidence: false }
     }
   });
 
   assert.deepEqual(rows, [
-    { brand: 'Samsung', total: 2, verified: 1, missing: 1, coverage: 50 }
+    { brand: 'Samsung', total: 2, verified_fit: 1, dimensions_verified: 0, retailer_spec: 0, missing: 1, evidenceCoverage: 50, verifiedFitCoverage: 50 }
   ]);
 });
 
 test('PDF coverage markdown renders deterministic summary table', () => {
   const markdown = renderPdfCoverageMarkdown([
-    { brand: 'LG', total: 10, verified: 7, missing: 3, coverage: 70 },
-    { brand: 'Samsung', total: 5, verified: 1, missing: 4, coverage: 20 }
+    { brand: 'LG', total: 10, verified_fit: 5, dimensions_verified: 2, retailer_spec: 1, missing: 2, evidenceCoverage: 80, verifiedFitCoverage: 50 },
+    { brand: 'Samsung', total: 5, verified_fit: 1, dimensions_verified: 0, retailer_spec: 0, missing: 4, evidenceCoverage: 20, verifiedFitCoverage: 20 }
   ], { generatedAt: '2026-05-15' });
 
   assert.match(markdown, /^# Full Catalog PDF Coverage Audit/m);
-  assert.match(markdown, /\| Brand \| Total SKUs \| Verified \(PDF\) \| Missing PDF \| Coverage % \|/);
-  assert.match(markdown, /\| LG \| 10 \| 7 \| 3 \| 70\.0% \|/);
-  assert.match(markdown, /\| Samsung \| 5 \| 1 \| 4 \| 20\.0% \|/);
+  assert.match(markdown, /\| Brand \| Total SKUs \| Verified Fit \| Dimensions Verified \| Retailer Spec \| Missing Evidence \| Evidence Coverage % \| Verified Fit % \|/);
+  assert.match(markdown, /\| LG \| 10 \| 5 \| 2 \| 1 \| 2 \| 80\.0% \| 50\.0% \|/);
+  assert.match(markdown, /\| Samsung \| 5 \| 1 \| 0 \| 0 \| 4 \| 20\.0% \| 20\.0% \|/);
 });
 
 test('PDF coverage audit writes a report from explicit file paths', () => {

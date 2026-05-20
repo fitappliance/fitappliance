@@ -5,7 +5,7 @@
   "brand": "LG",
   "model": "GF-L500MWH",
   "source_url": "https://www.appliancesonline.com.au/ak/d/c/8/c/dc8c53366e2e09dbdba4591da433b2eee43e1bb3_REF_GAP_MFL72105420_01_240624_00_OM_WEB.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "LG",
     "sku": "GF-L500MWH",
@@ -14,23 +14,24 @@
       "height_mm": 1787,
       "width_mm": 835,
       "depth_mm": 730,
-      "door_open_90_depth_mm": null
+      "door_open_90_depth_mm": 1065
     },
     "clearance_requirements": {
       "top_mm": 0,
-      "left_mm": 50,
-      "right_mm": 50,
+      "left_mm": 0,
+      "right_mm": 0,
       "rear_mm": 50
     },
     "flags": {
-      "requires_plumbing": false,
+      "requires_plumbing": true,
       "ventilation_required": true,
       "reversible_door": null
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/c/8/c/dc8c53366e2e09dbdba4591da433b2eee43e1bb3_REF_GAP_MFL72105420_01_240624_00_OM_WEB.pdf",
-      "extraction_date": "2026-05-09T09:35:06.134Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:10:53.386Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
     }
   }
 }

@@ -33,7 +33,10 @@ function makeProduct(overrides = {}) {
     evidence: {
       has_pdf_evidence: true,
       source_url: 'https://gscs-b2c.lge.com/open/downloadFile?fileId=aDEyNnLn9ZhB6npLvfqKzA',
-      verified_at: '2026-05-09'
+      verified_at: '2026-05-09',
+      trust_level: 'verified_fit',
+      verified_fields: ['dimensions', 'clearance'],
+      clearance_verified: true,
     },
     dimensions: {
       width_mm: 600,
@@ -67,7 +70,8 @@ test('technical SEO: product schema includes physical dimensions and verified ev
   assert.deepEqual(schema.height, { '@type': 'QuantitativeValue', value: 1890, unitCode: 'MMT' });
   assert.deepEqual(schema.depth, { '@type': 'QuantitativeValue', value: 660, unitCode: 'MMT' });
   assert.ok(schema.additionalProperty.some((row) => row.name === 'Rear clearance' && row.value === 50));
-  assert.ok(schema.additionalProperty.some((row) => row.name === 'Verified source' && /Official PDF/.test(row.value)));
+  assert.ok(schema.additionalProperty.some((row) => row.name === 'Evidence trust level' && row.value === 'Verified Fit'));
+  assert.ok(schema.additionalProperty.some((row) => row.name === 'Evidence source' && /dimensions and clearance/.test(row.value)));
 });
 
 test('technical SEO: product page renders canonical, Product, Breadcrumb, and FAQ schema', () => {
@@ -81,6 +85,38 @@ test('technical SEO: product page renders canonical, Product, Breadcrumb, and FA
   assert.ok(jsonLd.some((block) => block['@type'] === 'Product'), 'Product JSON-LD missing');
   assert.ok(jsonLd.some((block) => block['@type'] === 'BreadcrumbList'), 'Breadcrumb JSON-LD missing');
   assert.ok(jsonLd.some((block) => block['@type'] === 'FAQPage'), 'FAQ JSON-LD missing');
+});
+
+test('technical SEO: dimensions-only and retailer spec pages avoid Verified Fit wording', () => {
+  const dimensionsOnly = buildProductPageHtml(makeProduct({
+    evidence: {
+      has_pdf_evidence: true,
+      source_url: 'https://example.com/dimensions.pdf',
+      verified_at: '2026-05-09',
+      trust_level: 'dimensions_verified',
+      verified_fields: ['dimensions'],
+      clearance_verified: false,
+    },
+    data_source: 'official_pdf_dimensions_only',
+  }));
+  assert.match(dimensionsOnly, /Dimensions Verified/);
+  assert.match(dimensionsOnly, /Exact Dimensions &amp; Clearance Estimate/);
+  assert.doesNotMatch(dimensionsOnly, /Verified PDF evidence/);
+
+  const retailerSpec = buildProductPageHtml(makeProduct({
+    evidence: {
+      has_pdf_evidence: false,
+      source_url: 'https://www.appliancesonline.com.au/product/example',
+      verified_at: '2026-05-09',
+      trust_level: 'retailer_spec',
+      verified_fields: ['dimensions'],
+      clearance_verified: false,
+    },
+    data_source: 'retailer_spec',
+  }));
+  assert.match(retailerSpec, /Retailer Spec/);
+  assert.match(retailerSpec, /Retailer Dimensions/);
+  assert.doesNotMatch(retailerSpec, /Verified Cavity Fit/);
 });
 
 test('technical SEO: generated product pages include only PDF-verified SKUs', async () => {

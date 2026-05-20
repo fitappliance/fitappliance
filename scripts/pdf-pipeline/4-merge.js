@@ -181,7 +181,52 @@ function hasClearanceEvidence(clearanceRequirements) {
     .every((key) => Number.isFinite(Number(clearanceRequirements[key])));
 }
 
+function hasNonZeroClearanceEvidence(clearanceRequirements) {
+  if (!isPlainObject(clearanceRequirements)) return false;
+  return ['top_mm', 'left_mm', 'right_mm', 'rear_mm']
+    .some((key) => Number.isFinite(Number(clearanceRequirements[key])) && Number(clearanceRequirements[key]) > 0);
+}
+
+function getHostname(value) {
+  const raw = String(value ?? '').trim();
+  if (!raw) return '';
+  try {
+    return new URL(raw).hostname.toLowerCase();
+  } catch {
+    return '';
+  }
+}
+
+function isRetailerOrThirdPartySource(sourceType, sourceUrl) {
+  const normalizedSource = String(sourceType ?? '').toLowerCase();
+  if (normalizedSource.includes('retailer') || normalizedSource.includes('third_party')) return true;
+  const host = getHostname(sourceUrl);
+  return [
+    'appliancesonline.com.au',
+    'commercial.appliancesonline.com.au',
+    'thegoodguys.com.au',
+    'harveynorman.com.au',
+    'binglee.com.au',
+    'device.report',
+    'manualslib.com',
+    'usermanuals.au',
+  ].some((domain) => host === domain || host.endsWith(`.${domain}`));
+}
+
+function hasExplicitClearanceEvidence(evidence, clearanceRequirements) {
+  const metadata = evidence?.extracted?.metadata || {};
+  if (evidence?.clearance_verified === true || metadata.clearance_verified === true) return true;
+  const fields = [
+    ...(Array.isArray(evidence?.verified_fields) ? evidence.verified_fields : []),
+    ...(Array.isArray(metadata.verified_fields) ? metadata.verified_fields : []),
+  ];
+  if (fields.includes('clearance')) return true;
+  if (String(evidence?.clearance_source || metadata.clearance_source || '').trim()) return true;
+  return hasClearanceEvidence(clearanceRequirements) && hasNonZeroClearanceEvidence(clearanceRequirements);
+}
+
 function normalizeVerifiedFields(fields, hasDimensions, hasClearance) {
+  if (!hasClearance) return hasDimensions ? ['dimensions'] : [];
   if (Array.isArray(fields)) {
     return [...new Set(fields.filter((field) => ['dimensions', 'clearance'].includes(field)))];
   }
@@ -194,12 +239,15 @@ function normalizeVerifiedFields(fields, hasDimensions, hasClearance) {
 function inferEvidenceTrust({ evidence, dataSource, hasPdfEvidence, hasDimensions, hasClearance }) {
   const metadata = evidence?.extracted?.metadata || {};
   const explicit = String(evidence?.trust_level || metadata.trust_level || '').trim();
-  if (['verified_fit', 'dimensions_verified', 'retailer_spec'].includes(explicit)) return explicit;
+  if (explicit === 'retailer_spec') return 'retailer_spec';
 
   const sourceType = String(evidence?.source_type || metadata.source_type || dataSource || '').toLowerCase();
-  if (hasPdfEvidence === false || sourceType.includes('retailer') || sourceType.includes('third_party')) {
+  const sourceUrl = evidence?.source_url || metadata.source_pdf_url || '';
+  if (hasPdfEvidence === false || isRetailerOrThirdPartySource(sourceType, sourceUrl)) {
     return 'retailer_spec';
   }
+  if (explicit === 'verified_fit' && hasClearance) return 'verified_fit';
+  if (explicit === 'dimensions_verified') return 'dimensions_verified';
   if (hasDimensions && hasClearance) return 'verified_fit';
   if (hasDimensions) return 'dimensions_verified';
   return 'retailer_spec';
@@ -241,6 +289,7 @@ function mergeEvidenceIntoProduct(product, evidence) {
   const extractedCatalogCategory = catalogCategoryFromEvidence(extracted.category);
   const hasDimensions = hasDimensionEvidence(dimensions);
   const hasClearance = hasClearanceEvidence(clearanceRequirements);
+  const hasVerifiedFitClearance = hasExplicitClearanceEvidence(evidence, clearanceRequirements);
   const explicitDataSource = evidence?.data_source || metadata.data_source || '';
   const hasPdfEvidence = typeof evidence?.has_pdf_evidence === 'boolean'
     ? evidence.has_pdf_evidence
@@ -250,13 +299,13 @@ function mergeEvidenceIntoProduct(product, evidence) {
     dataSource: explicitDataSource,
     hasPdfEvidence,
     hasDimensions,
-    hasClearance
+    hasClearance: hasVerifiedFitClearance
   });
   const dataSource = dataSourceForTrust({ explicitDataSource, trustLevel });
   const verifiedFields = normalizeVerifiedFields(
     evidence?.verified_fields || metadata.verified_fields,
     hasDimensions,
-    trustLevel === 'verified_fit' && hasClearance
+    trustLevel === 'verified_fit' && hasVerifiedFitClearance
   );
   const clearanceVerified = trustLevel === 'verified_fit' && verifiedFields.includes('clearance');
 

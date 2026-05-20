@@ -157,6 +157,61 @@ test('buildEvidencePatch infers Verified Fit from extracted dimensions and clear
   });
 });
 
+test('buildEvidencePatch keeps all-zero clearance as dimensions verified unless explicitly sourced', () => {
+  const entry = {
+    evidence: [
+      {
+        type: 'spec_sheet',
+        status: 'approved',
+        has_pdf_evidence: true,
+        source_url: 'https://example.com/zero.pdf',
+        verified_at: '2026-05-11',
+        extracted: {
+          dimensions: { height_mm: 1700, width_mm: 700, depth_mm: 700 },
+          clearance_requirements: { top_mm: 0, left_mm: 0, right_mm: 0, rear_mm: 0 },
+        },
+      },
+    ],
+  };
+
+  assert.deepEqual(buildEvidencePatch(entry), {
+    has_pdf_evidence: true,
+    source_url: 'https://example.com/zero.pdf',
+    verified_at: '2026-05-11',
+    source_type: 'official_pdf',
+    trust_level: 'dimensions_verified',
+    verified_fields: ['dimensions'],
+    clearance_verified: false,
+  });
+});
+
+test('buildEvidencePatch downgrades retailer-hosted PDFs to Retailer Spec even if stale metadata says Verified Fit', () => {
+  const entry = {
+    evidence: [
+      {
+        type: 'spec_sheet',
+        status: 'approved',
+        has_pdf_evidence: true,
+        source_url: 'https://commercial.appliancesonline.com.au/manuals/example.pdf',
+        verified_at: '2026-05-11',
+        trust_level: 'verified_fit',
+        verified_fields: ['dimensions', 'clearance'],
+        clearance_verified: true,
+      },
+    ],
+  };
+
+  assert.deepEqual(buildEvidencePatch(entry), {
+    has_pdf_evidence: true,
+    source_url: 'https://commercial.appliancesonline.com.au/manuals/example.pdf',
+    verified_at: '2026-05-11',
+    source_type: 'retailer_spec',
+    trust_level: 'retailer_spec',
+    verified_fields: ['dimensions'],
+    clearance_verified: false,
+  });
+});
+
 test('buildEvidencePatch preserves approved third-party evidence without upgrading it to PDF verified', () => {
   const entry = {
     evidence: [

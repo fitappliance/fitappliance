@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-102607",
+  "product_id": "fridge-arf2639",
   "category": "fridge",
   "brand": "Hisense",
   "model": "HRBM483B",
   "source_url": "https://www.appliancesonline.com.au/ak/b/2/c/8/b2c88a5d6924f5817e9f59794af256f28d0c7b53_HRBM483B_Specs_FINAL.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRBM483B",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": true
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/2/c/8/b2c88a5d6924f5817e9f59794af256f28d0c7b53_HRBM483B_Specs_FINAL.pdf",
-      "extraction_date": "2026-05-09T09:29:08.485Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:28.175Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-163196",
+  "product_id": "fridge-arf3370",
   "category": "fridge",
   "brand": "LG",
   "model": "GS-N599PL",
   "source_url": "https://www.appliancesonline.com.au/ak/7/1/d/f/71df1ff984ea3bf864617c79a3d5fe2b03740a12_REF_GAP_MFL72093738_00_240820_00_OM_WEB.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "LG",
     "sku": "GS-N599PL",
@@ -14,23 +14,24 @@
       "height_mm": 1790,
       "width_mm": 913,
       "depth_mm": 735,
-      "door_open_90_depth_mm": null
+      "door_open_90_depth_mm": 1180
     },
     "clearance_requirements": {
       "top_mm": 0,
-      "left_mm": 50,
-      "right_mm": 50,
+      "left_mm": 0,
+      "right_mm": 0,
       "rear_mm": 50
     },
     "flags": {
-      "requires_plumbing": false,
+      "requires_plumbing": true,
       "ventilation_required": true,
       "reversible_door": null
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/1/d/f/71df1ff984ea3bf864617c79a3d5fe2b03740a12_REF_GAP_MFL72093738_00_240820_00_OM_WEB.pdf",
-      "extraction_date": "2026-05-09T09:35:44.899Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:10:00.989Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
     }
   }
 }

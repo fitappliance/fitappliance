@@ -5,7 +5,7 @@
   "brand": "Hisense",
   "model": "HR6BF170B",
   "source_url": "https://www.appliancesonline.com.au/ak/9/5/3/4/9534da769a20eb24e74aaa295acf6a41355184b0_HR6BF170B_Hisense_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HR6BF170B",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": false
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/5/3/4/9534da769a20eb24e74aaa295acf6a41355184b0_HR6BF170B_Hisense_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:28:07.612Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:48.825Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

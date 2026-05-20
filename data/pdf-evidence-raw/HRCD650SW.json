@@ -5,7 +5,7 @@
   "brand": "Hisense",
   "model": "HRCD650SW",
   "source_url": "https://www.appliancesonline.com.au/ak/7/0/e/7/70e7c730d2c620deb9a653ea27433aa1b308ab4d_HRCD650SW_Hisense_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRCD650SW",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": false
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/0/e/7/70e7c730d2c620deb9a653ea27433aa1b308ab4d_HRCD650SW_Hisense_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:30:03.296Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:57.446Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

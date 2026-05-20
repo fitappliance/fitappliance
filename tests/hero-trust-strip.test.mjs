@@ -7,22 +7,33 @@ import { JSDOM } from 'jsdom';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-function approvedPdfEvidenceCount() {
-  const manifest = JSON.parse(readFileSync(path.join(repoRoot, 'data', 'manual-evidence.json'), 'utf8'));
-  return Object.values(manifest.products ?? {}).filter((entry) => (
-    Array.isArray(entry.evidence)
-    && entry.evidence.some((evidence) => evidence?.status === 'approved' && evidence?.source_url)
-  )).length;
+function auditTrustCounts() {
+  const audit = readFileSync(path.join(repoRoot, 'reports', 'FULL-CATALOG-AUDIT.md'), 'utf8');
+  const verifiedFit = Number(audit.match(/- Verified Fit: (\d+)/)?.[1] ?? Number.NaN);
+  const dimensionsVerified = Number(audit.match(/- Dimensions Verified: (\d+)/)?.[1] ?? Number.NaN);
+  const retailerSpec = Number(audit.match(/- Retailer Spec: (\d+)/)?.[1] ?? Number.NaN);
+
+  assert.ok(Number.isFinite(verifiedFit), 'audit report must include Verified Fit count');
+  assert.ok(Number.isFinite(dimensionsVerified), 'audit report must include Dimensions Verified count');
+  assert.ok(Number.isFinite(retailerSpec), 'audit report must include Retailer Spec count');
+
+  return {
+    verifiedFit,
+    evidenceBacked: verifiedFit + dimensionsVerified + retailerSpec,
+  };
 }
 
-test('phase 58 hero trust strip: renders appliance count, verified PDF count, and update cadence', () => {
+test('phase 58 hero trust strip: renders appliance count, trust-tier evidence count, and update cadence', () => {
   const html = readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
   const dom = new JSDOM(html);
   const items = [...dom.window.document.querySelectorAll('.hero-trust-item')].map((item) => item.textContent.trim());
+  const { verifiedFit, evidenceBacked } = auditTrustCounts();
 
   assert.equal(items.length, 3);
   assert.match(items[0], /2,170\+ Australian appliances/);
-  assert.match(items[1], new RegExp(`${approvedPdfEvidenceCount().toLocaleString()} PDF evidence sources verified`));
+  assert.match(items[1], new RegExp(`${verifiedFit.toLocaleString()} Verified Fit records`));
+  assert.match(items[1], new RegExp(`${evidenceBacked.toLocaleString()} evidence-backed specs`));
+  assert.doesNotMatch(items[1], /PDF evidence sources verified/);
   assert.match(items[2], /Updated daily/);
 });
 

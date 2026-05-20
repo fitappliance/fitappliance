@@ -5,7 +5,7 @@
   "brand": "Esatto",
   "model": "EBF129S",
   "source_url": "https://www.appliancesonline.com.au/ak/e/2/e/3/e2e36723e0cf2262208a7603b2b8cedf24195014_EBF129S_Esatto_User_Manual.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Esatto",
     "sku": "EBF129S",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": true
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/e/2/e/3/e2e36723e0cf2262208a7603b2b8cedf24195014_EBF129S_Esatto_User_Manual.pdf",
-      "extraction_date": "2026-05-09T09:13:14.721Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:21:52.613Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
     }
   }
 }

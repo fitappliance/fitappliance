@@ -119,6 +119,27 @@ test('batch target identification selects active products missing PDF evidence o
   assert.equal(targets[0].sku, 'HRTF206');
 });
 
+test('batch target identification can reprocess weak evidence tiers under the new trust model', () => {
+  const repoRoot = makeRepo();
+  const catalogPath = path.join(repoRoot, 'data', 'catalog-final.json');
+  writeJson(catalogPath, {
+    products: [
+      { id: 'missing', cat: 'fridge', brand: 'LG', model: 'MISS', unavailable: false },
+      { id: 'dims', cat: 'fridge', brand: 'LG', model: 'DIMS', unavailable: false, evidence: { has_pdf_evidence: true, trust_level: 'dimensions_verified' } },
+      { id: 'retailer', cat: 'fridge', brand: 'LG', model: 'RETAIL', unavailable: false, evidence: { has_pdf_evidence: false, trust_level: 'retailer_spec' } },
+      { id: 'fit', cat: 'fridge', brand: 'LG', model: 'FIT', unavailable: false, evidence: { has_pdf_evidence: true, trust_level: 'verified_fit' } },
+    ],
+  });
+
+  const targets = loadBatchTargets({
+    repoRoot,
+    brand: 'LG',
+    targetTrustLevels: 'missing,dimensions_verified,retailer_spec',
+  });
+
+  assert.deepEqual(targets.map((target) => target.id), ['missing', 'dims', 'retailer']);
+});
+
 test('batch target identification prefers catalog-final when available', () => {
   const repoRoot = makeRepo();
   writeJson(path.join(repoRoot, 'data', 'catalog-final.json'), {

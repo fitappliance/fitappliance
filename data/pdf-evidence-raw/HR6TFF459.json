@@ -5,7 +5,7 @@
   "brand": "Hisense",
   "model": "HR6TFF459",
   "source_url": "https://www.appliancesonline.com.au/ak/5/8/e/7/58e7f6d5fd0222534617e436281c52bbac875d2f_HR6TFF459_Hisense_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HR6TFF459",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": false
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/5/8/e/7/58e7f6d5fd0222534617e436281c52bbac875d2f_HR6TFF459_Hisense_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:29:04.160Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:54.356Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

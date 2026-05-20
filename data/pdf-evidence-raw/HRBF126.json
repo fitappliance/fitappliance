@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-167426",
+  "product_id": "fridge-arf3512",
   "category": "fridge",
   "brand": "Hisense",
   "model": "HRBF126",
-  "source_url": "https://www.appliancesonline.com.au/ak/f/a/e/f/faef2f64c470dcbaaa8de68bfcff3af654aefcaf_HRBF126_Consumer_Specs.pdf",
-  "verified_at": "2026-05-09",
+  "source_url": "https://dtc-aus-api.hisense.com/medias/HRBF126-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDU4NTN8YXBwbGljYXRpb24vcGRmfGFESTNMMmd3TXk4NE9ETXpPREV4TlRjNE9URXdMMGhTUWtZeE1qWXRVM0JsWXk1d1pHWXw4NWU4M2Y1YjExODUyZGRmMjc4ZjdmY2QwOGJkMTE4NjUxOGRjMzA4MWE0ZTQ4MjU1ZjJhZGRjZDhkZGEzYzY3",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRBF126",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": true
     },
     "metadata": {
-      "source_pdf_url": "https://www.appliancesonline.com.au/ak/f/a/e/f/faef2f64c470dcbaaa8de68bfcff3af654aefcaf_HRBF126_Consumer_Specs.pdf",
-      "extraction_date": "2026-05-09T09:27:56.474Z",
-      "confidence_score": 0.9
+      "source_pdf_url": "https://dtc-aus-api.hisense.com/medias/HRBF126-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDU4NTN8YXBwbGljYXRpb24vcGRmfGFESTNMMmd3TXk4NE9ETXpPREV4TlRjNE9URXdMMGhTUWtZeE1qWXRVM0JsWXk1d1pHWXw4NWU4M2Y1YjExODUyZGRmMjc4ZjdmY2QwOGJkMTE4NjUxOGRjMzA4MWE0ZTQ4MjU1ZjJhZGRjZDhkZGEzYzY3",
+      "extraction_date": "2026-05-20T15:18:26.954Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

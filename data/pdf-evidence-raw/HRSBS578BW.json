@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-102621",
+  "product_id": "fridge-arf2403",
   "category": "fridge",
   "brand": "Hisense",
   "model": "HRSBS578BW",
   "source_url": "https://www.appliancesonline.com.au/ak/9/7/b/f/97bfb685ae8ef264821a8d1f1e98f2d25f05d598_HRSBS578BW_Hisense_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRSBS578BW",
@@ -23,14 +23,15 @@
       "rear_mm": 50
     },
     "flags": {
-      "requires_plumbing": false,
+      "requires_plumbing": true,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": false
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/7/b/f/97bfb685ae8ef264821a8d1f1e98f2d25f05d598_HRSBS578BW_Hisense_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:29:39.161Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:34.336Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

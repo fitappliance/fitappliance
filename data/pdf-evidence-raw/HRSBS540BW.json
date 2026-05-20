@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-178140",
+  "product_id": "fridge-arf3446",
   "category": "fridge",
   "brand": "Hisense",
   "model": "HRSBS540BW",
   "source_url": "https://www.appliancesonline.com.au/ak/a/2/4/b/a24b17e62b4736a961ed45949f07b145c0a1c9ea_Hisense___HRSBS540BW___Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRSBS540BW",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": false
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/2/4/b/a24b17e62b4736a961ed45949f07b145c0a1c9ea_Hisense___HRSBS540BW___Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:29:28.882Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:34.118Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

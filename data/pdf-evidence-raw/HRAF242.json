@@ -5,7 +5,7 @@
   "brand": "Hisense",
   "model": "HRAF242",
   "source_url": "https://www.appliancesonline.com.au/ak/9/0/8/1/9081e7ff9cde1d14382e7baa1d7a5d7874a6f31f_HRAF242_Specs.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRAF242",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": true
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/9/0/8/1/9081e7ff9cde1d14382e7baa1d7a5d7874a6f31f_HRAF242_Specs.pdf",
-      "extraction_date": "2026-05-09T09:28:30.442Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:56.150Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

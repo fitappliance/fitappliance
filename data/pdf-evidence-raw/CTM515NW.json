@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-104863",
+  "product_id": "fridge-arf2727",
   "category": "fridge",
-  "brand": "CHiQ",
+  "brand": "CHIQ",
   "model": "CTM515NW",
   "source_url": "https://www.appliancesonline.com.au/ak/4/a/2/2/4a22a5434b863cb9fb15fdf17a8bf259ac661d8c_CTM515NW_CHiQ_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "CHiQ",
     "sku": "CTM515NW",
@@ -29,8 +29,9 @@
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/a/2/2/4a22a5434b863cb9fb15fdf17a8bf259ac661d8c_CTM515NW_CHiQ_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:08:56.440Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:28:45.067Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
     }
   }
 }

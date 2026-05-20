@@ -5,7 +5,7 @@
   "brand": "Hisense",
   "model": "HRBF179R",
   "source_url": "https://www.appliancesonline.com.au/ak/a/5/7/1/a571e8fa7a10f87ff3b8964c083c55e76ca01d41_HRBF179R_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRBF179R",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": false
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/5/7/1/a571e8fa7a10f87ff3b8964c083c55e76ca01d41_HRBF179R_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:28:13.854Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:56.367Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

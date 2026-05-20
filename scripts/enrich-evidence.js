@@ -40,16 +40,43 @@ function isHttpUrl(value) {
   }
 }
 
+function getHostname(value) {
+  const raw = String(value ?? '').trim();
+  if (!raw) return '';
+  try {
+    return new URL(raw).hostname.toLowerCase();
+  } catch {
+    return '';
+  }
+}
+
+function isRetailerOrThirdPartySource(sourceType, sourceUrl) {
+  const normalizedSource = String(sourceType ?? '').toLowerCase();
+  if (normalizedSource.includes('retailer') || normalizedSource.includes('third_party')) return true;
+  const host = getHostname(sourceUrl);
+  return [
+    'appliancesonline.com.au',
+    'commercial.appliancesonline.com.au',
+    'thegoodguys.com.au',
+    'harveynorman.com.au',
+    'binglee.com.au',
+    'device.report',
+    'manualslib.com',
+    'usermanuals.au',
+  ].some((domain) => host === domain || host.endsWith(`.${domain}`));
+}
+
 function normalizeKey(value) {
   return String(value ?? '').trim().toLowerCase();
 }
 
 function normalizeVerifiedFields(fields, trustLevel) {
+  if (trustLevel !== 'verified_fit') return ['dimensions'];
   if (Array.isArray(fields)) {
     const next = [...new Set(fields.filter((field) => ['dimensions', 'clearance'].includes(field)))];
     if (next.length > 0) return next;
   }
-  return trustLevel === 'verified_fit' ? ['dimensions', 'clearance'] : ['dimensions'];
+  return ['dimensions', 'clearance'];
 }
 
 function hasExtractedDimensionsEvidence(evidence) {
@@ -66,20 +93,44 @@ function hasExtractedClearanceEvidence(evidence) {
   ));
 }
 
-function inferTrustLevel(evidence, hasPdfEvidence, sourceType) {
+function hasNonZeroExtractedClearance(evidence) {
+  const clearance = evidence?.extracted?.clearance_requirements;
+  return ['top_mm', 'left_mm', 'right_mm', 'rear_mm'].some((key) => (
+    typeof clearance?.[key] === 'number' && Number.isFinite(clearance[key]) && clearance[key] > 0
+  ));
+}
+
+function hasExplicitClearanceEvidence(evidence) {
+  if (evidence?.clearance_verified === true) return true;
+  if (Array.isArray(evidence?.verified_fields) && evidence.verified_fields.includes('clearance')) return true;
+  const metadata = evidence?.extracted?.metadata ?? {};
+  if (isNonEmptyString(evidence?.clearance_source) || isNonEmptyString(metadata.clearance_source)) return true;
+  return hasExtractedClearanceEvidence(evidence) && hasNonZeroExtractedClearance(evidence);
+}
+
+function inferTrustLevel(evidence, hasPdfEvidence, sourceType, sourceUrl = '') {
   const explicit = String(evidence?.trust_level ?? '').trim();
-  if (['verified_fit', 'dimensions_verified', 'retailer_spec'].includes(explicit)) return explicit;
-  const normalizedSource = String(sourceType ?? '').toLowerCase();
-  if (hasPdfEvidence === false || normalizedSource.includes('retailer') || normalizedSource.includes('third_party')) {
+  if (explicit === 'retailer_spec') return 'retailer_spec';
+  if (hasPdfEvidence === false || isRetailerOrThirdPartySource(sourceType, sourceUrl)) {
     return 'retailer_spec';
   }
+  if (explicit === 'verified_fit' && hasExplicitClearanceEvidence(evidence)) return 'verified_fit';
+  if (explicit === 'dimensions_verified') return 'dimensions_verified';
   if (
-    evidence?.clearance_verified === true
-    || (hasExtractedDimensionsEvidence(evidence) && hasExtractedClearanceEvidence(evidence))
+    hasExtractedDimensionsEvidence(evidence)
+    && hasExplicitClearanceEvidence(evidence)
   ) {
     return 'verified_fit';
   }
   return 'dimensions_verified';
+}
+
+function normalizeSourceTypeForTrust(sourceType, sourceUrl) {
+  if (!isRetailerOrThirdPartySource(sourceType, sourceUrl)) return sourceType;
+  const normalized = String(sourceType ?? '').toLowerCase();
+  return ['official_pdf', 'manual_evidence', 'spec_sheet', 'installation_manual'].includes(normalized)
+    ? 'retailer_spec'
+    : sourceType;
 }
 
 function getSourceUrl(evidence) {
@@ -113,9 +164,12 @@ function buildEvidencePatch(manualEntry) {
   const sourceType = isNonEmptyString(approved.source_type)
     ? approved.source_type
     : (hasPdfEvidence ? 'official_pdf' : 'retailer_spec');
-  const trustLevel = inferTrustLevel(approved, hasPdfEvidence, sourceType);
+  const trustLevel = inferTrustLevel(approved, hasPdfEvidence, sourceType, sourceUrl);
+  const effectiveSourceType = normalizeSourceTypeForTrust(sourceType, sourceUrl);
   const verifiedFields = normalizeVerifiedFields(approved.verified_fields, trustLevel);
-  const clearanceVerified = typeof approved.clearance_verified === 'boolean'
+  const clearanceVerified = trustLevel !== 'verified_fit'
+    ? false
+    : typeof approved.clearance_verified === 'boolean'
     ? approved.clearance_verified
     : trustLevel === 'verified_fit';
 
@@ -123,7 +177,7 @@ function buildEvidencePatch(manualEntry) {
     has_pdf_evidence: hasPdfEvidence,
     ...(sourceUrl ? { source_url: sourceUrl } : {}),
     verified_at: getVerifiedAt(approved),
-    source_type: sourceType,
+    source_type: effectiveSourceType,
     trust_level: trustLevel,
     verified_fields: verifiedFields,
     clearance_verified: clearanceVerified,

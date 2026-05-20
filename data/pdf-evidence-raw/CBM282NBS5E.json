@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-163152",
+  "product_id": "fridge-arf3385",
   "category": "fridge",
-  "brand": "CHiQ",
+  "brand": "CHIQ",
   "model": "CBM282NBS5E",
   "source_url": "https://www.appliancesonline.com.au/ak/6/e/d/f/6edf766e6eb4b06cd1d37f8befbf3b36c207c08a_CBM282NBS5E_SPEC.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "CHiQ",
     "sku": "CBM282NBS5E",
@@ -29,8 +29,9 @@
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/6/e/d/f/6edf766e6eb4b06cd1d37f8befbf3b36c207c08a_CBM282NBS5E_SPEC.pdf",
-      "extraction_date": "2026-05-09T09:07:47.465Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:27:48.217Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
     }
   }
 }

@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-164456",
+  "product_id": "fridge-arf3454",
   "category": "fridge",
   "brand": "Hisense",
   "model": "HRCD640TB",
   "source_url": "https://www.appliancesonline.com.au/ak/3/8/e/6/38e6e96abed20ae05153dc98342eb8974699ab27_HRCD640TB_Specs_0821.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRCD640TB",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": true
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/8/e/6/38e6e96abed20ae05153dc98342eb8974699ab27_HRCD640TB_Specs_0821.pdf",
-      "extraction_date": "2026-05-09T09:29:57.073Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:30.336Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

@@ -141,6 +141,22 @@ test('vault trust metadata distinguishes dimension-only and retailer-sourced evi
     source_type: 'official_pdf',
   });
 
+  const allZeroClearance = {
+    ...strictFixture,
+    clearance_requirements: {
+      top_mm: 0,
+      left_mm: 0,
+      right_mm: 0,
+      rear_mm: 0,
+    },
+  };
+  assert.deepEqual(inferTrustMetadata(allZeroClearance), {
+    trust_level: 'dimensions_verified',
+    verified_fields: ['dimensions'],
+    clearance_verified: false,
+    source_type: 'official_pdf',
+  });
+
   assert.deepEqual(inferTrustMetadata({
     ...strictFixture,
     metadata: {

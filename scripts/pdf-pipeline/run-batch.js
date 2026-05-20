@@ -368,6 +368,28 @@ function hasPdfEvidence(product) {
   return product?.evidence?.has_pdf_evidence === true;
 }
 
+function getProductTrustLevel(product) {
+  const explicit = String(product?.evidence?.trust_level || product?.trust_level || '').trim();
+  if (['verified_fit', 'dimensions_verified', 'retailer_spec'].includes(explicit)) return explicit;
+  if (hasPdfEvidence(product)) return 'dimensions_verified';
+  return 'missing';
+}
+
+function parseTargetTrustLevels(value) {
+  const raw = Array.isArray(value) ? value.join(',') : String(value || 'missing');
+  const levels = raw.split(',')
+    .map((item) => item.trim())
+    .filter(Boolean);
+  const valid = new Set(['missing', 'retailer_spec', 'dimensions_verified', 'verified_fit', 'any']);
+  const next = levels.filter((level) => valid.has(level));
+  return new Set(next.length > 0 ? next : ['missing']);
+}
+
+function matchesTargetTrust(product, targetTrustLevels) {
+  if (!targetTrustLevels || targetTrustLevels.has('any')) return true;
+  return targetTrustLevels.has(getProductTrustLevel(product));
+}
+
 function loadCatalogProducts(repoRoot = process.cwd()) {
   const finalCatalogPath = path.join(repoRoot, 'data', 'catalog-final.json');
   const finalCatalog = readJson(finalCatalogPath, null);
@@ -403,15 +425,17 @@ function loadBatchTargets({
   limit = null,
   skus = null,
   includeArchived = false,
-  brand = null
+  brand = null,
+  targetTrustLevels = null
 } = {}) {
   const skuFilter = Array.isArray(skus)
     ? new Set(skus.map(normalizeSku).filter(Boolean))
     : null;
   const brandKey = normalizeBrandKey(brand);
+  const trustFilter = parseTargetTrustLevels(targetTrustLevels);
   const products = loadCatalogProducts(repoRoot)
     .filter((product) => includeArchived || product.unavailable === false)
-    .filter((product) => !hasPdfEvidence(product))
+    .filter((product) => matchesTargetTrust(product, trustFilter))
     .filter((product) => !category || product.cat === category)
     .filter((product) => !brandKey || normalizeBrandKey(product.brand) === brandKey)
     .filter((product) => matchesSkuFilter(product, skuFilter));
@@ -2286,7 +2310,8 @@ async function runBatch({
   inaltoOfficialFinder = findInaltoOfficialPdf,
   vogueOfficialFinder = findVogueOfficialPdf,
   includeArchived = false,
-  brand = null
+  brand = null,
+  targetTrustLevels = null
 } = {}) {
   const batchTargets = targets || loadBatchTargets({
     repoRoot,
@@ -2294,7 +2319,8 @@ async function runBatch({
     limit,
     skus,
     includeArchived,
-    brand
+    brand,
+    targetTrustLevels
   });
   const manualEvidence = loadManualEvidence(repoRoot);
   const successes = [];
@@ -2708,6 +2734,7 @@ function parseCliArgs(argv) {
     if (arg.startsWith('--limit=')) args.limit = Number.parseInt(arg.slice('--limit='.length), 10);
     if (arg.startsWith('--category=')) args.category = arg.slice('--category='.length);
     if (arg.startsWith('--brand=')) args.brand = arg.slice('--brand='.length);
+    if (arg.startsWith('--target-trust=')) args.targetTrustLevels = arg.slice('--target-trust='.length);
     if (arg.startsWith('--delay-ms=')) args.delayMs = Number.parseInt(arg.slice('--delay-ms='.length), 10);
     if (arg === '--include-archived') args.includeArchived = true;
     if (arg.startsWith('--sku=')) {
