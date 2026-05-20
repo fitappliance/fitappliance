@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source": "data/manual-evidence.json",
-  "last_updated": "2026-05-19",
+  "last_updated": "2026-05-20",
   "products": {
     "ao-100087": {
       "product_id": "ao-100087",
@@ -24447,6 +24447,18 @@
       "verified_at": "2026-05-19",
       "confidence_score": 0.9
     },
+    "fridge-arf2432": {
+      "product_id": "fridge-arf2432",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WRM1400WD",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTE1&lang=",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
     "fridge-arf2435": {
       "product_id": "fridge-arf2435",
       "status": "verified",
@@ -25335,6 +25347,18 @@
       "verified_at": "",
       "confidence_score": null
     },
+    "fridge-arf3073": {
+      "product_id": "fridge-arf3073",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WRM2400WF",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTczMjk1&lang=",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
     "fridge-arf3074": {
       "product_id": "fridge-arf3074",
       "status": "verified",
@@ -26079,6 +26103,54 @@
       "verified_at": "2026-05-19",
       "confidence_score": 0.92
     },
+    "fridge-arf3447": {
+      "product_id": "fridge-arf3447",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTM3100SL",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0MzU1&lang=",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3448": {
+      "product_id": "fridge-arf3448",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTM4302WD",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang=",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3449": {
+      "product_id": "fridge-arf3449",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTM5002SD",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang=",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3450": {
+      "product_id": "fridge-arf3450",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTM3400WL",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0MzU1&lang=",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
     "fridge-arf3451": {
       "product_id": "fridge-arf3451",
       "status": "verified",
@@ -26089,6 +26161,18 @@
       "source_type": "spec_sheet",
       "source_url": "https://gscs-b2c.lge.com/open/downloadFile?fileId=5ouq1nL856o4jsao2rViIA",
       "verified_at": "2026-05-19",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3452": {
+      "product_id": "fridge-arf3452",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTM5002WE",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang=",
+      "verified_at": "2026-05-20",
       "confidence_score": 0.9
     },
     "fridge-arf3453": {
@@ -26198,6 +26282,18 @@
       "source_url": "https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ",
       "verified_at": "2026-05-19",
       "confidence_score": 0.92
+    },
+    "fridge-arf3540": {
+      "product_id": "fridge-arf3540",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTM2500AA",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjU4OTU1&lang=",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
     },
     "fridge-arf3548": {
       "product_id": "fridge-arf3548",
@@ -26365,6 +26461,30 @@
       "source_type": "spec_sheet",
       "source_url": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw31058f38/QRG/AU/QRG-AU-62401.pdf",
       "verified_at": "2026-05-09",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3613": {
+      "product_id": "fridge-arf3613",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE5650SD",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjY1NzU1&lang=",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3614": {
+      "product_id": "fridge-arf3614",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE5600SD",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjY1NzU1&lang=",
+      "verified_at": "2026-05-20",
       "confidence_score": 0.9
     },
     "fridge-arf3637": {
@@ -26619,6 +26739,18 @@
       "verified_at": "2026-05-15",
       "confidence_score": 0.9
     },
+    "fridge-arf3876": {
+      "product_id": "fridge-arf3876",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WFM0900WD",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTE1&lang=",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
     "fridge-arf3877": {
       "product_id": "fridge-arf3877",
       "status": "verified",
@@ -26713,6 +26845,18 @@
       "source_type": "spec_sheet",
       "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51194",
       "verified_at": "2026-05-19",
+      "confidence_score": 0.9
+    },
+    "fridge-arf3924": {
+      "product_id": "fridge-arf3924",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB5400SC",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTc1&lang=",
+      "verified_at": "2026-05-20",
       "confidence_score": 0.9
     },
     "fridge-arf3926": {

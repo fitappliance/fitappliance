@@ -1,13 +1,13 @@
 # Full Catalog PDF Coverage Audit
 
-Generated: 2026-05-19
+Generated: 2026-05-20
 
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1693
-- Missing PDF evidence: 1848
-- Overall coverage: 47.8%
+- Verified with PDF evidence: 1705
+- Missing PDF evidence: 1836
+- Overall coverage: 48.2%
 
 ## Coverage By Brand
 
@@ -15,7 +15,7 @@ Generated: 2026-05-19
 |---|---:|---:|---:|---:|
 | Fisher & Paykel | 289 | 245 | 44 | 84.8% |
 | LG | 247 | 176 | 71 | 71.3% |
-| Westinghouse | 222 | 162 | 60 | 73.0% |
+| Westinghouse | 222 | 174 | 48 | 78.4% |
 | Haier | 184 | 152 | 32 | 82.6% |
 | Hisense | 165 | 131 | 34 | 79.4% |
 | Bosch | 153 | 149 | 4 | 97.4% |

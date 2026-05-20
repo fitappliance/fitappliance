@@ -762,16 +762,20 @@ test('runBatch processes Westinghouse targets with the official finder and parse
     }
   };
 
+  let finderOptions = null;
   const result = await runBatch({
     repoRoot,
     targets: [target],
     delayMs: 0,
     env: {},
-    westinghouseOfficialFinder: async () => ({
+    westinghouseOfficialFinder: async (_target, options) => {
+      finderOptions = options;
+      return ({
       sourceUrl: 'https://www.westinghouse.com.au/documenthandler.ashx?assetid=511925',
       source: 'westinghouse-official-dimension_sheet',
       resourceType: 'dimension_sheet'
-    }),
+      });
+    },
     fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
     extractTextImpl: async () => ({
       text: `
@@ -791,6 +795,7 @@ test('runBatch processes Westinghouse targets with the official finder and parse
 
   assert.equal(result.successes.length, 1);
   assert.equal(result.failures.length, 0);
+  assert.notEqual(finderOptions?.knownOnly, true);
   assert.equal(result.successes[0].source, 'westinghouse-official-dimension_sheet');
   const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'WBB3400AH.json'), 'utf8'));
   assert.deepEqual(raw.extracted.dimensions, {
