@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3619",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HRF330TG",
+  "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/bsmh5cv59gr8tkjkf74f7/Haier-SpecificationGuide-en-HRF330TW-HRF330TS-HRF330TG-RefrigeratorTopFreezer-0-90004640A-AU-NZ.pdf",
+  "verified_at": "2026-05-20",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HRF330TG",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1652,
+      "width_mm": 595,
+      "depth_mm": 672,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 25,
+      "right_mm": 25,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": true
+    },
+    "metadata": {
+      "source_pdf_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/bsmh5cv59gr8tkjkf74f7/Haier-SpecificationGuide-en-HRF330TW-HRF330TS-HRF330TG-RefrigeratorTopFreezer-0-90004640A-AU-NZ.pdf",
+      "extraction_date": "2026-05-20T07:07:51.590Z",
+      "confidence_score": 0.95,
+      "source_type": "haier-official-specification_guide"
+    }
+  }
+}

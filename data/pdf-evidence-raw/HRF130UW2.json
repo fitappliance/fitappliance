@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3599",
+  "category": "fridge",
+  "brand": "Haier",
+  "model": "HRF130UW2",
+  "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/6jsb4hvrwtcxx3ctn7qj2j/Haier-SpecificationGuide-en-HRF130UW2-HRF130UG2-BarRefrigerator-0-90004783A-AU-NZ.pdf",
+  "verified_at": "2026-05-20",
+  "extracted": {
+    "brand": "Haier",
+    "sku": "HRF130UW2",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 545,
+      "depth_mm": 566,
+      "door_open_90_depth_mm": 996
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 25,
+      "right_mm": 25,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": true
+    },
+    "metadata": {
+      "source_pdf_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/6jsb4hvrwtcxx3ctn7qj2j/Haier-SpecificationGuide-en-HRF130UW2-HRF130UG2-BarRefrigerator-0-90004783A-AU-NZ.pdf",
+      "extraction_date": "2026-05-20T07:07:45.441Z",
+      "confidence_score": 0.95,
+      "source_type": "haier-official-specification_guide"
+    }
+  }
+}
