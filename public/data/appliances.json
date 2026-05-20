@@ -43644,7 +43644,12 @@
       "inferred_door_swing": true,
       "displayName": "Teco Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://appliances.teco.com.au/wp-content/uploads/sites/2/2024/07/TFF334WNTAH-User-Manual.pdf",
+        "verified_at": "2026-05-20"
+      }
     },
     {
       "id": "fridge-arf3269",
@@ -43670,7 +43675,12 @@
       "inferred_door_swing": true,
       "displayName": "Teco Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.teco.com.au/wp-content/uploads/2024/10/TFF415WNTAH-User-Manual-v1s.pdf",
+        "verified_at": "2026-05-20"
+      }
     },
     {
       "id": "fridge-arf3533",

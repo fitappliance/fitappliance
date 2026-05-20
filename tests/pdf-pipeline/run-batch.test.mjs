@@ -1174,6 +1174,78 @@ test('runBatch processes Euromaid official specification sheets without an API k
   });
 });
 
+test('runBatch processes TECO official user manuals without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'fridge-tff334wntah',
+    brand: 'TECO',
+    sku: 'TFF334WNTAH',
+    category: 'fridge',
+    product: {
+      id: 'fridge-tff334wntah',
+      cat: 'fridge',
+      brand: 'TECO',
+      model: 'TFF334WNTAH',
+      w: 600,
+      h: 1700,
+      d: 665,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    tecoOfficialFinder: async () => ({
+      sourceUrl: 'https://appliances.teco.com.au/wp-content/uploads/sites/2/2024/07/TFF334WNTAH-User-Manual.pdf',
+      source: 'teco-official-user_manual',
+      resourceType: 'user_manual',
+      resources: [
+        {
+          sourceUrl: 'https://appliances.teco.com.au/wp-content/uploads/sites/2/2024/07/TFF334WNTAH-User-Manual.pdf',
+          source: 'teco-official-user_manual',
+          resourceType: 'user_manual',
+          score: 100
+        }
+      ]
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        TECO REFRIGERATOR/ FREEZER User Manual
+        Model:
+        TFF334WNTAH
+        TFF334SNTAH
+        Leave a minimum of 50mm between each side of the appliance and the wall.
+        The top of the appliance should have a minimum of 100mm clearance.
+        This allows for proper air circulation.
+        SPECIFICATIONS
+        TFF334WNTAH
+        Width 600
+        Dimension Depth 665
+        (mm)
+        Height 1700
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'teco-official-user_manual');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'TFF334WNTAH.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 100,
+    left_mm: 50,
+    right_mm: 50,
+    rear_mm: 50
+  });
+});
+
 test('runBatch processes Miele manual-evidence spec sheets with the strict Miele parser without an API key', async () => {
   const repoRoot = makeRepo();
   const target = {

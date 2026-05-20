@@ -5,9 +5,9 @@ Generated: 2026-05-20
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1726
-- Missing PDF evidence: 1815
-- Overall coverage: 48.7%
+- Verified with PDF evidence: 1728
+- Missing PDF evidence: 1813
+- Overall coverage: 48.8%
 
 ## Coverage By Brand
 
@@ -38,7 +38,7 @@ Generated: 2026-05-20
 | VOGUE | 41 | 0 | 41 | 0.0% |
 | Eurotech | 38 | 0 | 38 | 0.0% |
 | Sub-Zero | 38 | 7 | 31 | 18.4% |
-| TECO | 38 | 0 | 38 | 0.0% |
+| TECO | 38 | 2 | 36 | 5.3% |
 | Euromaid | 37 | 13 | 24 | 35.1% |
 | TCL | 37 | 7 | 30 | 18.9% |
 | HELLER | 35 | 0 | 35 | 0.0% |
