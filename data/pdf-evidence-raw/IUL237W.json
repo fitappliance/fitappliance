@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2557",
+  "category": "fridge",
+  "brand": "Inalto",
+  "model": "IUL237W",
+  "source_url": "https://inalto.house/s/IUL237W_UserManual_V20-FA.pdf",
+  "verified_at": "2026-05-20",
+  "extracted": {
+    "brand": "Inalto",
+    "sku": "IUL237W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1420,
+      "width_mm": 550,
+      "depth_mm": 550,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 300,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 100
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://inalto.house/s/IUL237W_UserManual_V20-FA.pdf",
+      "extraction_date": "2026-05-20T08:19:33.701Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
+    }
+  }
+}

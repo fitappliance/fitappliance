@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1757,
-    "merged_products": 1740,
+    "evidence_files": 1764,
+    "merged_products": 1747,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -28,7 +28,7 @@
     "official_pdf_by_category": {
       "dishwasher": 387,
       "dryer": 100,
-      "fridge": 982,
+      "fridge": 989,
       "washing_machine": 269,
       "washtower_combo": 2
     }
@@ -20928,7 +20928,33 @@
       "inferred_door_swing": true,
       "displayName": "Inalto Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 860,
+        "width_mm": 501,
+        "depth_mm": 540,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://inalto.house/s/IBF129S-W_Manual_V10.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/IBF129S.json"
+      }
     },
     {
       "id": "fridge-arf3650",
@@ -20954,7 +20980,33 @@
       "inferred_door_swing": true,
       "displayName": "Inalto Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 492,
+        "width_mm": 472,
+        "depth_mm": 450,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 200,
+        "right_mm": 200,
+        "rear_mm": 150
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://inalto.house/s/IBF46W_UserManual_V21-0322.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/IBF46W.json"
+      }
     },
     {
       "id": "fridge-arf3651",
@@ -21058,7 +21110,33 @@
       "inferred_door_swing": true,
       "displayName": "Inalto Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 600,
+        "depth_mm": 560,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 700,
+        "left_mm": 200,
+        "right_mm": 200,
+        "rear_mm": 200
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://inalto.house/s/ICF142B2_ICF198B2_UserManual-V13-0825-WEB-g83d.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ICF142B2.json"
+      }
     },
     {
       "id": "fridge-arf3655",
@@ -21084,7 +21162,33 @@
       "inferred_door_swing": true,
       "displayName": "Inalto Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 632,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 700,
+        "left_mm": 200,
+        "right_mm": 200,
+        "rear_mm": 200
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://inalto.house/s/ICF142W2_ICF198W2_UserManual_V14.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ICF142W2.json"
+      }
     },
     {
       "id": "fridge-arf3660",
@@ -21110,7 +21214,33 @@
       "inferred_door_swing": true,
       "displayName": "Inalto Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 770,
+        "depth_mm": 560,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 700,
+        "left_mm": 200,
+        "right_mm": 200,
+        "rear_mm": 200
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://inalto.house/s/ICF142B2_ICF198B2_UserManual-V13-0825-WEB.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ICF198B2.json"
+      }
     },
     {
       "id": "fridge-arf3217",
@@ -21292,7 +21422,33 @@
       "inferred_door_swing": true,
       "displayName": "Inalto Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 1420,
+        "width_mm": 550,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 200,
+        "right_mm": 200,
+        "rear_mm": 150
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://inalto.house/s/IUF172W_UserManual_V20-63k8.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/IUF172W.json"
+      }
     },
     {
       "id": "fridge-arf2454",
@@ -21370,7 +21526,33 @@
       "inferred_door_swing": true,
       "displayName": "Inalto Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 12
+      "priorityScore": 12,
+      "dimensions": {
+        "height_mm": 1420,
+        "width_mm": 550,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 300,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://inalto.house/s/IUL237W_UserManual_V20-FA.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/IUL237W.json"
+      }
     },
     {
       "id": "fridge-arf2442",
@@ -57107,6 +57289,14 @@
       "displayName": "BEKO Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/457100052700-BFLB1010W/en-GB-457100052700-MDM2-USER-MANUAL-FILE-en-GB.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "beko-official",
+        "raw_json_path": "data/pdf-evidence-raw/BFLB1010W.json"
+      },
       "dimensions": {
         "height_mm": 840,
         "width_mm": 600,
@@ -57124,15 +57314,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/457100052700-BFLB1010W/en-GB-457100052700-MDM2-USER-MANUAL-FILE-en-GB.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "beko-official",
-        "raw_json_path": "data/pdf-evidence-raw/BFLB1010W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1439",
@@ -57159,6 +57341,14 @@
       "displayName": "BEKO Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178557500-BFLB1020W/en-GB-7178557500-MDM2-USER-MANUAL-FILE-en-GB.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "beko-official",
+        "raw_json_path": "data/pdf-evidence-raw/BFLB1020W.json"
+      },
       "dimensions": {
         "height_mm": 840,
         "width_mm": 600,
@@ -57176,15 +57366,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178557500-BFLB1020W/en-GB-7178557500-MDM2-USER-MANUAL-FILE-en-GB.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "beko-official",
-        "raw_json_path": "data/pdf-evidence-raw/BFLB1020W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1658",
@@ -57263,6 +57445,14 @@
       "displayName": "BEKO Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/457100019700-BFLB8010W/en-GB-457100019700-MDM2-USER-MANUAL-FILE-en-GB.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "beko-official",
+        "raw_json_path": "data/pdf-evidence-raw/BFLB8010W.json"
+      },
       "dimensions": {
         "height_mm": 840,
         "width_mm": 600,
@@ -57280,15 +57470,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/457100019700-BFLB8010W/en-GB-457100019700-MDM2-USER-MANUAL-FILE-en-GB.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "beko-official",
-        "raw_json_path": "data/pdf-evidence-raw/BFLB8010W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1287",
@@ -57315,6 +57497,14 @@
       "displayName": "BEKO Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178552800-BFLB8020W/en-GB-7178552800-20221220081277-User-Manual---File-Longen-GB.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "beko-official",
+        "raw_json_path": "data/pdf-evidence-raw/BFLB8020W.json"
+      },
       "dimensions": {
         "height_mm": 840,
         "width_mm": 600,
@@ -57332,15 +57522,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178552800-BFLB8020W/en-GB-7178552800-20221220081277-User-Manual---File-Longen-GB.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "beko-official",
-        "raw_json_path": "data/pdf-evidence-raw/BFLB8020W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1552",
@@ -57393,6 +57575,14 @@
       "displayName": "BEKO Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178544400-BFLB902ADW/en-GB-7178544400-Manual-7178544400-en-US20220615-121505-579.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "beko-official",
+        "raw_json_path": "data/pdf-evidence-raw/BFLB902ADW.json"
+      },
       "dimensions": {
         "height_mm": 840,
         "width_mm": 600,
@@ -57410,15 +57600,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178544400-BFLB902ADW/en-GB-7178544400-Manual-7178544400-en-US20220615-121505-579.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "beko-official",
-        "raw_json_path": "data/pdf-evidence-raw/BFLB902ADW.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1214",
@@ -57445,6 +57627,14 @@
       "displayName": "BEKO Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178543900-BFLB904ADG/en-GB-7178543900-MDM2-USER-MANUAL-FILE-en-GB.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "beko-official",
+        "raw_json_path": "data/pdf-evidence-raw/BFLB904ADG.json"
+      },
       "dimensions": {
         "height_mm": 840,
         "width_mm": 600,
@@ -57462,15 +57652,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178543900-BFLB904ADG/en-GB-7178543900-MDM2-USER-MANUAL-FILE-en-GB.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "beko-official",
-        "raw_json_path": "data/pdf-evidence-raw/BFLB904ADG.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "washing_machine-acw1541",
@@ -57575,6 +57757,14 @@
       "displayName": "BEKO Washing Machine",
       "readableSpec": "Front Loader",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178544200-BWDB9540W/en-GB-7178544200-MDM2-USER-MANUAL-FILE-en-GB.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "beko-official",
+        "raw_json_path": "data/pdf-evidence-raw/BWDB9540W.json"
+      },
       "dimensions": {
         "height_mm": 840,
         "width_mm": 600,
@@ -57592,15 +57782,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178544200-BWDB9540W/en-GB-7178544200-MDM2-USER-MANUAL-FILE-en-GB.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "beko-official",
-        "raw_json_path": "data/pdf-evidence-raw/BWDB9540W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "w3",
