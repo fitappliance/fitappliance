@@ -5,7 +5,7 @@
   "brand": "Hisense",
   "model": "HRBM292S",
   "source_url": "https://www.appliancesonline.com.au/ak/8/8/5/2/88525a1c84780d819a21c4d8c96fe950a245ecd3_HRBM292S_Hisense_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRBM292S",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": true
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/8/5/2/88525a1c84780d819a21c4d8c96fe950a245ecd3_HRBM292S_Hisense_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:28:34.526Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:56.582Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

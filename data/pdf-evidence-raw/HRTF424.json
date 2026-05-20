@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-102627",
+  "product_id": "fridge-arf3394",
   "category": "fridge",
   "brand": "Hisense",
   "model": "HRTF424",
   "source_url": "https://www.appliancesonline.com.au/ak/8/9/c/a/89ca2ec6ee4db3b115a33155509a820b8c62e02a_HRTF424_Specs_FINAL.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRTF424",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": false
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/9/c/a/89ca2ec6ee4db3b115a33155509a820b8c62e02a_HRTF424_Specs_FINAL.pdf",
-      "extraction_date": "2026-05-09T09:28:52.260Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:35.420Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

@@ -72,6 +72,10 @@ test('schema accepts verified evidence object on a valid appliance product', () 
       has_pdf_evidence: true,
       source_url: 'https://example.com/HRTF206-Spec.pdf',
       verified_at: '2026-05-07',
+      trust_level: 'verified_fit',
+      verified_fields: ['dimensions', 'clearance'],
+      clearance_verified: true,
+      source_type: 'official_pdf',
     },
   }));
 
@@ -84,25 +88,128 @@ test('schema rejects malformed evidence instead of silently ignoring it', () => 
       has_pdf_evidence: 'yes',
       source_url: 'not-a-url',
       verified_at: 'May 7',
+      trust_level: 'magic',
+      verified_fields: ['dimensions', 'guesswork'],
+      clearance_verified: 'no',
     },
   }));
 
   assert.ok(errors.some((error) => error.includes('evidence.has_pdf_evidence')));
   assert.ok(errors.some((error) => error.includes('evidence.source_url')));
   assert.ok(errors.some((error) => error.includes('evidence.verified_at')));
+  assert.ok(errors.some((error) => error.includes('evidence.trust_level')));
+  assert.ok(errors.some((error) => error.includes('evidence.verified_fields')));
+  assert.ok(errors.some((error) => error.includes('evidence.clearance_verified')));
 });
 
-test('buildEvidencePatch only returns approved PDF evidence', () => {
+test('buildEvidencePatch returns approved PDF evidence as dimensions-only unless clearance is explicit', () => {
   const entry = makeManualEvidence().products['fridge-arf3335'];
   assert.deepEqual(buildEvidencePatch(entry), {
     has_pdf_evidence: true,
     source_url: 'https://example.com/HRTF206-Spec.pdf',
     verified_at: '2026-05-07',
+    trust_level: 'dimensions_verified',
+    verified_fields: ['dimensions'],
+    clearance_verified: false,
+    source_type: 'official_pdf',
   });
 
   assert.equal(buildEvidencePatch({
     evidence: [{ type: 'spec_sheet', status: 'candidate', source_url: 'https://example.com/a.pdf', verified_at: '2026-05-07' }],
   }), null);
+});
+
+test('buildEvidencePatch infers Verified Fit from extracted dimensions and clearance', () => {
+  const entry = {
+    evidence: [
+      {
+        type: 'spec_sheet',
+        status: 'approved',
+        has_pdf_evidence: true,
+        source_url: 'https://example.com/full.pdf',
+        verified_at: '2026-05-11',
+        extracted: {
+          dimensions: {
+            height_mm: 1456,
+            width_mm: 550,
+            depth_mm: 562,
+            door_open_90_depth_mm: null,
+          },
+          clearance_requirements: {
+            top_mm: 100,
+            left_mm: 50,
+            right_mm: 50,
+            rear_mm: 50,
+          },
+        },
+      },
+    ],
+  };
+
+  assert.deepEqual(buildEvidencePatch(entry), {
+    has_pdf_evidence: true,
+    source_url: 'https://example.com/full.pdf',
+    verified_at: '2026-05-11',
+    source_type: 'official_pdf',
+    trust_level: 'verified_fit',
+    verified_fields: ['dimensions', 'clearance'],
+    clearance_verified: true,
+  });
+});
+
+test('buildEvidencePatch keeps all-zero clearance as dimensions verified unless explicitly sourced', () => {
+  const entry = {
+    evidence: [
+      {
+        type: 'spec_sheet',
+        status: 'approved',
+        has_pdf_evidence: true,
+        source_url: 'https://example.com/zero.pdf',
+        verified_at: '2026-05-11',
+        extracted: {
+          dimensions: { height_mm: 1700, width_mm: 700, depth_mm: 700 },
+          clearance_requirements: { top_mm: 0, left_mm: 0, right_mm: 0, rear_mm: 0 },
+        },
+      },
+    ],
+  };
+
+  assert.deepEqual(buildEvidencePatch(entry), {
+    has_pdf_evidence: true,
+    source_url: 'https://example.com/zero.pdf',
+    verified_at: '2026-05-11',
+    source_type: 'official_pdf',
+    trust_level: 'dimensions_verified',
+    verified_fields: ['dimensions'],
+    clearance_verified: false,
+  });
+});
+
+test('buildEvidencePatch downgrades retailer-hosted PDFs to Retailer Spec even if stale metadata says Verified Fit', () => {
+  const entry = {
+    evidence: [
+      {
+        type: 'spec_sheet',
+        status: 'approved',
+        has_pdf_evidence: true,
+        source_url: 'https://commercial.appliancesonline.com.au/manuals/example.pdf',
+        verified_at: '2026-05-11',
+        trust_level: 'verified_fit',
+        verified_fields: ['dimensions', 'clearance'],
+        clearance_verified: true,
+      },
+    ],
+  };
+
+  assert.deepEqual(buildEvidencePatch(entry), {
+    has_pdf_evidence: true,
+    source_url: 'https://commercial.appliancesonline.com.au/manuals/example.pdf',
+    verified_at: '2026-05-11',
+    source_type: 'retailer_spec',
+    trust_level: 'retailer_spec',
+    verified_fields: ['dimensions'],
+    clearance_verified: false,
+  });
 });
 
 test('buildEvidencePatch preserves approved third-party evidence without upgrading it to PDF verified', () => {
@@ -124,6 +231,37 @@ test('buildEvidencePatch preserves approved third-party evidence without upgradi
     source_url: 'https://www.appliancesonline.com.au/product/example',
     verified_at: '2026-05-11',
     source_type: 'mixed_retailer_dimensions_pdf_clearance',
+    trust_level: 'retailer_spec',
+    verified_fields: ['dimensions'],
+    clearance_verified: false,
+  });
+});
+
+test('buildEvidencePatch preserves explicit Verified Fit evidence tier', () => {
+  const entry = {
+    evidence: [
+      {
+        type: 'installation_manual',
+        status: 'approved',
+        source_url: 'https://example.com/install.pdf',
+        verified_at: '2026-05-11',
+        has_pdf_evidence: true,
+        trust_level: 'verified_fit',
+        verified_fields: ['dimensions', 'clearance'],
+        clearance_verified: true,
+        source_type: 'official_pdf',
+      },
+    ],
+  };
+
+  assert.deepEqual(buildEvidencePatch(entry), {
+    has_pdf_evidence: true,
+    source_url: 'https://example.com/install.pdf',
+    verified_at: '2026-05-11',
+    source_type: 'official_pdf',
+    trust_level: 'verified_fit',
+    verified_fields: ['dimensions', 'clearance'],
+    clearance_verified: true,
   });
 });
 

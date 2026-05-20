@@ -5,7 +5,7 @@
   "brand": "Miele",
   "model": "G4203SCUACTIVECLST",
   "source_url": "https://www.appliancesonline.com.au/ak/1/9/6/5/1965df065c7d5d95db81602416fb2ca5dea3e067_G4203SCUACTIVECLST_Miele_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Miele",
     "sku": "G4203SCUACTIVECLST",
@@ -18,19 +18,21 @@
     },
     "clearance_requirements": {
       "top_mm": 0,
-      "left_mm": 0,
-      "right_mm": 0,
+      "left_mm": 1,
+      "right_mm": 1,
       "rear_mm": 0
     },
     "flags": {
-      "requires_plumbing": false,
+      "requires_plumbing": true,
       "ventilation_required": true,
       "reversible_door": null
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/9/6/5/1965df065c7d5d95db81602416fb2ca5dea3e067_G4203SCUACTIVECLST_Miele_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T08:45:22.058Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:24:51.894Z",
+      "confidence_score": 0.9,
+      "verified_alias": "G4203SCUACTIVECLST",
+      "source_type": "manual-evidence"
     }
   }
 }

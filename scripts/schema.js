@@ -34,6 +34,17 @@ function isHttpUrl(value) {
   }
 }
 
+const EVIDENCE_TRUST_LEVELS = new Set([
+  'verified_fit',
+  'dimensions_verified',
+  'retailer_spec'
+]);
+
+const EVIDENCE_VERIFIED_FIELDS = new Set([
+  'dimensions',
+  'clearance'
+]);
+
 function validateRetailer(retailer, productId, errors) {
   if (!isPlainObject(retailer)) {
     errors.push(`Product ${productId} retailer entries must be objects`);
@@ -73,6 +84,38 @@ function validateEvidence(evidence, productId, errors) {
 
   if (!isIsoDate(evidence.verified_at)) {
     errors.push(`Product ${productId} evidence.verified_at must be YYYY-MM-DD`);
+  }
+
+  if (
+    Object.prototype.hasOwnProperty.call(evidence, 'trust_level') &&
+    !EVIDENCE_TRUST_LEVELS.has(evidence.trust_level)
+  ) {
+    errors.push(`Product ${productId} evidence.trust_level must be verified_fit, dimensions_verified, or retailer_spec`);
+  }
+
+  if (Object.prototype.hasOwnProperty.call(evidence, 'verified_fields')) {
+    if (
+      !Array.isArray(evidence.verified_fields) ||
+      evidence.verified_fields.some((field) => !EVIDENCE_VERIFIED_FIELDS.has(field))
+    ) {
+      errors.push(`Product ${productId} evidence.verified_fields must contain only dimensions and clearance`);
+    }
+  }
+
+  if (
+    Object.prototype.hasOwnProperty.call(evidence, 'clearance_verified') &&
+    typeof evidence.clearance_verified !== 'boolean'
+  ) {
+    errors.push(`Product ${productId} evidence.clearance_verified must be boolean when provided`);
+  }
+
+  if (
+    Object.prototype.hasOwnProperty.call(evidence, 'source_type') &&
+    evidence.source_type !== undefined &&
+    evidence.source_type !== null &&
+    !isNonEmptyString(evidence.source_type)
+  ) {
+    errors.push(`Product ${productId} evidence.source_type must be a non-empty string when provided`);
   }
 }
 

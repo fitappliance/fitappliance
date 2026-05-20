@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-102625",
+  "product_id": "fridge-arf2645",
   "category": "fridge",
   "brand": "Hisense",
   "model": "HRTF326",
   "source_url": "https://www.appliancesonline.com.au/ak/4/4/4/c/444c1d3a5997aa5eb9667497bbd2ba6073562532_HRTF326_Hisense_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRTF326",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": true
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/4/4/4/c/444c1d3a5997aa5eb9667497bbd2ba6073562532_HRTF326_Hisense_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:28:41.857Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:35.205Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

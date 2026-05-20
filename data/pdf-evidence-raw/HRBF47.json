@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-104981",
+  "product_id": "fridge-arf2553",
   "category": "fridge",
   "brand": "Hisense",
   "model": "HRBF47",
   "source_url": "https://www.appliancesonline.com.au/ak/d/7/8/b/d78b107ff50c8704be72c521258bec76666fc635_HRBF47_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRBF47",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": true
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/d/7/8/b/d78b107ff50c8704be72c521258bec76666fc635_HRBF47_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:28:56.457Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:27.408Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

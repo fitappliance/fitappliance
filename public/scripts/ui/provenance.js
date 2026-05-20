@@ -65,27 +65,71 @@ export function getProductProvenance(productId, indexMap = {}) {
 
 function provenanceFromProductEvidence(product = {}) {
   const evidence = product?.evidence;
-  if (!evidence || evidence?.has_pdf_evidence !== true) return null;
+  if (!evidence || typeof evidence !== 'object' || Array.isArray(evidence)) return null;
   return {
-    status: 'verified',
-    has_pdf_evidence: true,
+    status: evidence.status ?? 'verified',
+    has_pdf_evidence: evidence.has_pdf_evidence === true,
+    trust_level: evidence.trust_level ?? '',
+    verified_fields: Array.isArray(evidence.verified_fields) ? evidence.verified_fields : [],
+    clearance_verified: evidence.clearance_verified === true,
     source_url: evidence.source_url ?? '',
     verified_at: toDateStamp(evidence.verified_at),
-    source_type: 'runtime_product_evidence'
+    source_type: evidence.source_type ?? 'runtime_product_evidence'
   };
+}
+
+function getTrustLevel(provenance = {}) {
+  const explicit = String(provenance?.trust_level ?? '').trim();
+  if (['verified_fit', 'dimensions_verified', 'retailer_spec'].includes(explicit)) return explicit;
+  if (
+    provenance?.clearance_verified === true ||
+    (Array.isArray(provenance?.verified_fields) && provenance.verified_fields.includes('clearance'))
+  ) {
+    return 'verified_fit';
+  }
+  if (provenance?.has_pdf_evidence === true) return 'dimensions_verified';
+  return 'retailer_spec';
+}
+
+function sourceAnchor(provenance, label, fallbackLabel) {
+  const sourceUrl = String(provenance?.source_url ?? '').trim();
+  return isSafeSourceUrl(sourceUrl)
+    ? `<a class="provenance-link" href="${escHtml(sourceUrl)}" target="_blank" rel="noopener">${escHtml(label)}</a>`
+    : `<span class="provenance-link provenance-link--captured">${escHtml(fallbackLabel)}</span>`;
 }
 
 function renderVerifiedProvenance(provenance) {
   const date = toDateStamp(provenance?.verified_at);
-  const sourceUrl = String(provenance?.source_url ?? '').trim();
-  const source = isSafeSourceUrl(sourceUrl)
-    ? `<a class="provenance-link" href="${escHtml(sourceUrl)}" target="_blank" rel="noopener">Manufacturer PDF</a>`
-    : '<span class="provenance-link provenance-link--captured">Manufacturer PDF captured</span>';
+  const source = sourceAnchor(provenance, 'Official PDF', 'Official PDF captured');
 
   return `<div class="provenance-block provenance-block--verified">
-    <span class="provenance-state">Verified source</span>
+    <span class="provenance-state">Verified Fit</span>
     ${source}
     ${date ? `<span class="provenance-date">verified ${escHtml(date)}</span>` : ''}
+  </div>`;
+}
+
+function renderDimensionsProvenance(provenance) {
+  const date = toDateStamp(provenance?.verified_at);
+  const source = sourceAnchor(provenance, 'Dimension source', 'Dimension source captured');
+
+  return `<div class="provenance-block provenance-block--dimensions">
+    <span class="provenance-state">Dimensions verified</span>
+    ${source}
+    <span>clearance estimated</span>
+    ${date ? `<span class="provenance-date">verified ${escHtml(date)}</span>` : ''}
+  </div>`;
+}
+
+function renderRetailerProvenance(provenance = {}) {
+  const date = toDateStamp(provenance?.verified_at);
+  const source = sourceAnchor(provenance, 'Retailer source', 'Retailer source captured');
+
+  return `<div class="provenance-block provenance-block--retailer">
+    <span class="provenance-state">Retailer dimensions</span>
+    ${source}
+    <span>installation clearance not verified</span>
+    ${date ? `<span class="provenance-date">checked ${escHtml(date)}</span>` : ''}
   </div>`;
 }
 
@@ -98,7 +142,7 @@ function renderPendingProvenance() {
 
 function renderFallbackProvenance() {
   return `<div class="provenance-block provenance-block--fallback">
-    <span class="provenance-state">Retailer spec</span>
+    <span class="provenance-state">Retailer dimensions</span>
     <span>Specs from publicly listed retailer feeds. Manufacturer PDF verification pending.</span>
   </div>`;
 }
@@ -107,7 +151,10 @@ export function renderProvenanceBlock(product = {}, indexMap = {}) {
   const indexed = getProductProvenance(product?.id ?? product?.product_id ?? product?.slug, indexMap);
   const provenance = indexed ?? provenanceFromProductEvidence(product);
   if (provenance?.status === 'verified' || provenance?.has_pdf_evidence === true) {
-    return renderVerifiedProvenance(provenance);
+    const trustLevel = getTrustLevel(provenance);
+    if (trustLevel === 'verified_fit') return renderVerifiedProvenance(provenance);
+    if (trustLevel === 'dimensions_verified') return renderDimensionsProvenance(provenance);
+    return renderRetailerProvenance(provenance);
   }
   if (provenance?.status === 'pending') {
     return renderPendingProvenance(provenance);

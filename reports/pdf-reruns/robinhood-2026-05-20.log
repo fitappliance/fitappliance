@@ -1,0 +1,79 @@
+Processing 1/40: Robinhood RCFA147WH
+Failed Robinhood RCFA147WH: Robinhood fridge text has rear spacing but no explicit top and side clearance.
+Processing 2/40: Robinhood RCFA202WH
+Failed Robinhood RCFA202WH: Robinhood parser could not find explicit W/D/H product dimensions.
+Processing 3/40: Robinhood RCFA303WH
+Failed Robinhood RCFA303WH: Robinhood parser could not find explicit W/D/H product dimensions.
+Processing 4/40: Robinhood RCFA395WH
+Failed Robinhood RCFA395WH: Robinhood parser could not find explicit W/D/H product dimensions.
+Processing 5/40: Robinhood RHBFD126W
+Failed Robinhood RHBFD126W: Robinhood fridge explicit top and side clearance not found.
+Processing 6/40: Robinhood RHBMF230MSD
+Failed Robinhood RHBMF230MSD: Robinhood official PDF resources not found for RHBMF230MSD
+Processing 7/40: Robinhood RHBMF323MSD
+Failed Robinhood RHBMF323MSD: Robinhood official PDF resources not found for RHBMF323MSD
+Processing 8/40: Robinhood RHBMF459MSD
+Failed Robinhood RHBMF459MSD: Robinhood official PDF resources not found for RHBMF459MSD
+Processing 9/40: Robinhood RHCF100
+Failed Robinhood RHCF100: Robinhood parser could not find explicit W/D/H product dimensions.
+Processing 10/40: Robinhood RHCF198
+Failed Robinhood RHCF198: Robinhood official PDF resources not found for RHCF198
+Processing 11/40: Robinhood RHCF200
+Failed Robinhood RHCF200: Robinhood parser could not find explicit W/D/H product dimensions.
+Processing 12/40: Robinhood RHCF260
+Failed Robinhood RHCF260: Robinhood parser could not find explicit W/D/H product dimensions.
+Processing 13/40: Robinhood RHCF288
+Failed Robinhood RHCF288: Robinhood fridge explicit top and side clearance not found.
+Processing 14/40: Robinhood RHCF98
+Failed Robinhood RHCF98: Robinhood official PDF resources not found for RHCF98
+Processing 15/40: Robinhood RHTMF197W
+Failed Robinhood RHTMF197W: Robinhood fridge explicit top and side clearance not found.
+Processing 16/40: Robinhood RHTMF221W
+Failed Robinhood RHTMF221W: Robinhood parser rejected dimensions due to catalog cross-check mismatch: w catalog=500 pdf=545
+Processing 17/40: Robinhood RHTMF269W
+Failed Robinhood RHTMF269W: Robinhood fridge explicit top and side clearance not found.
+Processing 18/40: Robinhood RHTMF334MSD
+Failed Robinhood RHTMF334MSD: Robinhood official PDF resources not found for RHTMF334MSD
+Processing 19/40: Robinhood RHTMF415MSD
+Failed Robinhood RHTMF415MSD: Robinhood official PDF resources not found for RHTMF415MSD
+Processing 20/40: Robinhood RHUTMF85W
+Failed Robinhood RHUTMF85W: Robinhood parser rejected dimensions due to catalog cross-check mismatch: d catalog=520 pdf=500
+Processing 21/40: Robinhood RHVF204W
+Failed Robinhood RHVF204W: Robinhood fridge explicit top and side clearance not found.
+Processing 22/40: Robinhood RHVFF332X
+Failed Robinhood RHVFF332X: Robinhood fridge explicit top and side clearance not found.
+Processing 23/40: Robinhood DWH15P8FBK
+Failed Robinhood DWH15P8FBK: Robinhood parser could not find explicit W/D/H product dimensions.
+Processing 24/40: Robinhood RHDW45PS
+Processing 25/40: Robinhood RHDW613X
+Processing 26/40: Robinhood RHFIDW55S
+Processing 27/40: Robinhood RHVD45UDW
+Failed Robinhood RHVD45UDW: Robinhood parser rejected dimensions due to catalog cross-check mismatch: d catalog=435 pdf=465
+Processing 28/40: Robinhood RHVD6UDW
+Failed Robinhood RHVD6UDW: Robinhood dryer explicit rear wall clearance not found.
+Processing 29/40: Robinhood RHVD70W
+Failed Robinhood RHVD70W: Robinhood dryer explicit rear wall clearance not found.
+Processing 30/40: Robinhood RHFL100MSD
+Failed Robinhood RHFL100MSD: Robinhood official PDF resources not found for RHFL100MSD
+Processing 31/40: Robinhood RHFL80MSD
+Failed Robinhood RHFL80MSD: Robinhood official PDF resources not found for RHFL80MSD
+Processing 32/40: Robinhood RHFL90MSD
+Failed Robinhood RHFL90MSD: Robinhood official PDF resources not found for RHFL90MSD
+Processing 33/40: Robinhood RHTL55W
+Failed Robinhood RHTL55W: Robinhood parser does not yet have fail-closed clearance logic for WASHING_MACHINE.
+Processing 34/40: Robinhood RHTL65MSD
+Failed Robinhood RHTL65MSD: Robinhood official PDF resources not found for RHTL65MSD
+Processing 35/40: Robinhood RHTL65W
+Failed Robinhood RHTL65W: Robinhood parser does not yet have fail-closed clearance logic for WASHING_MACHINE.
+Processing 36/40: Robinhood RHTL75MSD
+Failed Robinhood RHTL75MSD: Robinhood official PDF resources not found for RHTL75MSD
+Processing 37/40: Robinhood RHTL7W
+Failed Robinhood RHTL7W: Robinhood parser does not yet have fail-closed clearance logic for WASHING_MACHINE.
+Processing 38/40: Robinhood RHWDC106W
+Failed Robinhood RHWDC106W: Robinhood official PDF resources not found for RHWDC106W
+Processing 39/40: Robinhood RHWM9W
+Failed Robinhood RHWM9W: Robinhood parser could not find explicit W/D/H product dimensions.
+Processing 40/40: Robinhood WMFLA75W
+Failed Robinhood WMFLA75W: Robinhood parser does not yet have fail-closed clearance logic for WASHING_MACHINE.
+PDF batch complete: 3 success, 37 failures, 0 discrepancies
+Report: /Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2/reports/pdf-batch-results.md

@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-154775",
+  "product_id": "fridge-arf3192",
   "category": "fridge",
   "brand": "Hisense",
   "model": "HRSBS652B",
   "source_url": "https://www.appliancesonline.com.au/ak/3/d/5/b/3d5b384d5a520887a8da6170ca40381816d0f090_Consumer_Specs_HRCSBS652B.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRSBS652B",
@@ -29,8 +29,9 @@
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/d/5/b/3d5b384d5a520887a8da6170ca40381816d0f090_Consumer_Specs_HRCSBS652B.pdf",
-      "extraction_date": "2026-05-09T09:30:06.970Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:34.989Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

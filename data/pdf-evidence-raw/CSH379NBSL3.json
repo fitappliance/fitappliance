@@ -5,7 +5,7 @@
   "brand": "CHiQ",
   "model": "CSH379NBSL3",
   "source_url": "https://www.appliancesonline.com.au/ak/3/8/0/a/380af840ab598aa9387434d16e20f66add64b338_CSH379NBSL3_SPEC_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "CHiQ",
     "sku": "CSH379NBSL3",
@@ -13,7 +13,7 @@
     "dimensions": {
       "height_mm": 1855,
       "width_mm": 710,
-      "depth_mm": 705,
+      "depth_mm": 770,
       "door_open_90_depth_mm": null
     },
     "clearance_requirements": {
@@ -29,8 +29,9 @@
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/3/8/0/a/380af840ab598aa9387434d16e20f66add64b338_CSH379NBSL3_SPEC_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:08:21.348Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:29:03.755Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
     }
   }
 }

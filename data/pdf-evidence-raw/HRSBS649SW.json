@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-162341",
+  "product_id": "fridge-arf3306",
   "category": "fridge",
   "brand": "Hisense",
   "model": "HRSBS649SW",
   "source_url": "https://www.appliancesonline.com.au/ak/a/b/6/8/ab681b358ea67e241fb6b9b2b54dfeae325060d6_2024_Hisense_AU___Consumer_Spec__HRSBS649SW_.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRSBS649SW",
@@ -23,14 +23,15 @@
       "rear_mm": 50
     },
     "flags": {
-      "requires_plumbing": false,
+      "requires_plumbing": true,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": false
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/a/b/6/8/ab681b358ea67e241fb6b9b2b54dfeae325060d6_2024_Hisense_AU___Consumer_Spec__HRSBS649SW_.pdf",
-      "extraction_date": "2026-05-09T09:30:00.101Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:34.770Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

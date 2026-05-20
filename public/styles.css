@@ -1431,6 +1431,24 @@ body.scroll-locked {
   letter-spacing: 0.02em;
 }
 
+.badge-evidence--verified {
+  border-color: #047857;
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.badge-evidence--dimensions {
+  border-color: #0f766e;
+  background: #f0fdfa;
+  color: #0f766e;
+}
+
+.badge-evidence--retailer {
+  border-color: #6b7280;
+  background: #f9fafb;
+  color: #374151;
+}
+
 .badge-archived {
   display: inline-block;
   width: fit-content;
@@ -1460,6 +1478,18 @@ body.scroll-locked {
   line-height: 1.45;
 }
 
+.evidence-receipt--verified_fit {
+  border-left: 3px solid #047857;
+}
+
+.evidence-receipt--dimensions_verified {
+  border-left: 3px solid #0f766e;
+}
+
+.evidence-receipt--retailer_spec {
+  border-left: 3px solid #6b7280;
+}
+
 .evidence-label {
   color: #111827;
   font-weight: 700;
@@ -1478,6 +1508,10 @@ body.scroll-locked {
 }
 
 .evidence-date {
+  color: #6b7280;
+}
+
+.evidence-note {
   color: #6b7280;
 }
 

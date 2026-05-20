@@ -5,7 +5,7 @@
   "brand": "Hisense",
   "model": "HRSBS578SW",
   "source_url": "https://www.appliancesonline.com.au/ak/b/3/6/1/b3612405aa6e9d5a15e9043e04eee6d88d557afa_HRSBS578SW_Hisense_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRSBS578SW",
@@ -23,14 +23,15 @@
       "rear_mm": 50
     },
     "flags": {
-      "requires_plumbing": false,
+      "requires_plumbing": true,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": false
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/3/6/1/b3612405aa6e9d5a15e9043e04eee6d88d557afa_HRSBS578SW_Hisense_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:29:35.236Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:57.660Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

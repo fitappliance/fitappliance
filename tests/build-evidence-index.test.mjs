@@ -31,9 +31,144 @@ test('build-evidence-index projects approved PDF evidence into a slim runtime ma
   assert.equal(index.schema_version, 1);
   assert.equal(index.products['fridge-alpha'].status, 'verified');
   assert.equal(index.products['fridge-alpha'].has_pdf_evidence, true);
+  assert.equal(index.products['fridge-alpha'].trust_level, 'dimensions_verified');
+  assert.deepEqual(index.products['fridge-alpha'].verified_fields, ['dimensions']);
+  assert.equal(index.products['fridge-alpha'].clearance_verified, false);
   assert.equal(index.products['fridge-alpha'].source_url, 'https://example.com/spec.pdf');
   assert.equal(index.products['fridge-alpha'].verified_at, '2026-05-07');
   assert.equal(index.products['fridge-alpha'].confidence_score, 0.91);
+});
+
+test('build-evidence-index infers Verified Fit from extracted dimensions and clearance', () => {
+  const index = buildIndex({
+    products: {
+      'fridge-full': {
+        category: 'fridge',
+        brand: 'Fisher & Paykel',
+        model: 'RF605QDVX2',
+        evidence: [{
+          status: 'approved',
+          type: 'spec_sheet',
+          has_pdf_evidence: true,
+          source_url: 'https://example.com/full.pdf',
+          verified_at: '2026-05-07',
+          extracted: {
+            dimensions: {
+              height_mm: 1790,
+              width_mm: 905,
+              depth_mm: 688,
+              door_open_90_depth_mm: null,
+            },
+            clearance_requirements: {
+              top_mm: 0,
+              left_mm: 20,
+              right_mm: 20,
+              rear_mm: 30,
+            },
+            metadata: { confidence_score: 0.9 },
+          },
+        }],
+      },
+    },
+  });
+
+  assert.equal(index.products['fridge-full'].trust_level, 'verified_fit');
+  assert.deepEqual(index.products['fridge-full'].verified_fields, ['dimensions', 'clearance']);
+  assert.equal(index.products['fridge-full'].clearance_verified, true);
+});
+
+test('build-evidence-index does not treat default zero clearance as Verified Fit', () => {
+  const index = buildIndex({
+    products: {
+      'fridge-zero': {
+        category: 'fridge',
+        brand: 'LG',
+        model: 'ZERO',
+        evidence: [{
+          status: 'approved',
+          has_pdf_evidence: true,
+          source_url: 'https://example.com/zero.pdf',
+          verified_at: '2026-05-07',
+          extracted: {
+            dimensions: { height_mm: 1700, width_mm: 700, depth_mm: 700 },
+            clearance_requirements: { top_mm: 0, left_mm: 0, right_mm: 0, rear_mm: 0 },
+          },
+        }],
+      },
+    },
+  });
+
+  assert.equal(index.products['fridge-zero'].trust_level, 'dimensions_verified');
+  assert.deepEqual(index.products['fridge-zero'].verified_fields, ['dimensions']);
+  assert.equal(index.products['fridge-zero'].clearance_verified, false);
+});
+
+test('build-evidence-index downgrades retailer-hosted source URLs to Retailer Spec', () => {
+  const index = buildIndex({
+    products: {
+      retailer: {
+        category: 'fridge',
+        brand: 'LG',
+        model: 'RETAIL',
+        evidence: [{
+          status: 'approved',
+          has_pdf_evidence: true,
+          source_url: 'https://commercial.appliancesonline.com.au/manuals/example.pdf',
+          verified_at: '2026-05-07',
+          trust_level: 'verified_fit',
+          verified_fields: ['dimensions', 'clearance'],
+          clearance_verified: true,
+        }],
+      },
+    },
+  });
+
+  assert.equal(index.products.retailer.trust_level, 'retailer_spec');
+  assert.deepEqual(index.products.retailer.verified_fields, ['dimensions']);
+  assert.equal(index.products.retailer.clearance_verified, false);
+});
+
+test('build-evidence-index preserves explicit Verified Fit and retailer spec tiers', () => {
+  const index = buildIndex({
+    products: {
+      full: {
+        category: 'fridge',
+        brand: 'LG',
+        model: 'FULL',
+        evidence: [{
+          status: 'approved',
+          source_url: 'https://example.com/full.pdf',
+          verified_at: '2026-05-07',
+          trust_level: 'verified_fit',
+          verified_fields: ['dimensions', 'clearance'],
+          clearance_verified: true,
+          has_pdf_evidence: true
+        }]
+      },
+      retailer: {
+        category: 'dryer',
+        brand: 'Samsung',
+        model: 'RETAIL',
+        evidence: [{
+          status: 'approved',
+          source_url: 'https://www.appliancesonline.com.au/product/example',
+          verified_at: '2026-05-07',
+          trust_level: 'retailer_spec',
+          verified_fields: ['dimensions'],
+          clearance_verified: false,
+          has_pdf_evidence: false
+        }]
+      }
+    }
+  });
+
+  assert.equal(index.products.full.status, 'verified');
+  assert.equal(index.products.full.trust_level, 'verified_fit');
+  assert.deepEqual(index.products.full.verified_fields, ['dimensions', 'clearance']);
+  assert.equal(index.products.full.clearance_verified, true);
+  assert.equal(index.products.retailer.status, 'verified');
+  assert.equal(index.products.retailer.trust_level, 'retailer_spec');
+  assert.equal(index.products.retailer.has_pdf_evidence, false);
 });
 
 test('build-evidence-index excludes invalid products and keeps pending evidence visible', () => {

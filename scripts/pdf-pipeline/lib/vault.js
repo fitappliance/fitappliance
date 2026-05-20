@@ -85,6 +85,91 @@ function isSameEvidenceItem(item, type, sourceUrl) {
   return item?.type === type && item?.source_url === sourceUrl;
 }
 
+function hasExtractedDimensionsEvidence(strictData) {
+  const dimensions = strictData?.dimensions;
+  return ['height_mm', 'width_mm', 'depth_mm'].every((key) => (
+    typeof dimensions?.[key] === 'number' && Number.isFinite(dimensions[key]) && dimensions[key] > 0
+  ));
+}
+
+function hasExtractedClearanceEvidence(strictData) {
+  const clearance = strictData?.clearance_requirements;
+  return ['top_mm', 'left_mm', 'right_mm', 'rear_mm'].every((key) => (
+    typeof clearance?.[key] === 'number' && Number.isFinite(clearance[key]) && clearance[key] >= 0
+  ));
+}
+
+function hasNonZeroExtractedClearance(strictData) {
+  const clearance = strictData?.clearance_requirements;
+  return ['top_mm', 'left_mm', 'right_mm', 'rear_mm'].some((key) => (
+    typeof clearance?.[key] === 'number' && Number.isFinite(clearance[key]) && clearance[key] > 0
+  ));
+}
+
+function getHostname(value) {
+  const raw = String(value ?? '').trim();
+  if (!raw) return '';
+  try {
+    return new URL(raw).hostname.toLowerCase();
+  } catch {
+    return '';
+  }
+}
+
+function isRetailerOrThirdPartySource(sourceType, sourceUrl) {
+  const normalizedSource = String(sourceType ?? '').toLowerCase();
+  if (normalizedSource.includes('retailer') || normalizedSource.includes('third_party')) return true;
+  const host = getHostname(sourceUrl);
+  return [
+    'appliancesonline.com.au',
+    'commercial.appliancesonline.com.au',
+    'thegoodguys.com.au',
+    'harveynorman.com.au',
+    'binglee.com.au',
+    'device.report',
+    'manualslib.com',
+    'usermanuals.au',
+  ].some((domain) => host === domain || host.endsWith(`.${domain}`));
+}
+
+function hasExplicitClearanceEvidence(strictData) {
+  const metadata = strictData?.metadata ?? {};
+  if (metadata.clearance_verified === true) return true;
+  if (Array.isArray(metadata.verified_fields) && metadata.verified_fields.includes('clearance')) return true;
+  if (String(metadata.clearance_source ?? '').trim()) return true;
+  return hasExtractedClearanceEvidence(strictData) && hasNonZeroExtractedClearance(strictData);
+}
+
+function inferTrustMetadata(strictData) {
+  const sourceType = String(strictData?.metadata?.source_type || 'official_pdf').trim() || 'official_pdf';
+  const sourceUrl = strictData?.metadata?.source_pdf_url;
+  const explicit = String(strictData?.metadata?.trust_level ?? '').trim();
+  if (explicit === 'retailer_spec') {
+    return { trust_level: 'retailer_spec', verified_fields: ['dimensions'], clearance_verified: false, source_type: sourceType };
+  }
+  if (isRetailerOrThirdPartySource(sourceType, sourceUrl)) {
+    return {
+      trust_level: 'retailer_spec',
+      verified_fields: ['dimensions'],
+      clearance_verified: false,
+      source_type: sourceType
+    };
+  }
+  if (explicit === 'verified_fit' && hasExplicitClearanceEvidence(strictData)) {
+    return { trust_level: 'verified_fit', verified_fields: ['dimensions', 'clearance'], clearance_verified: true, source_type: sourceType };
+  }
+  if (explicit === 'dimensions_verified') {
+    return { trust_level: 'dimensions_verified', verified_fields: ['dimensions'], clearance_verified: false, source_type: sourceType };
+  }
+  const isVerifiedFit = hasExtractedDimensionsEvidence(strictData) && hasExplicitClearanceEvidence(strictData);
+  return {
+    trust_level: isVerifiedFit ? 'verified_fit' : 'dimensions_verified',
+    verified_fields: isVerifiedFit ? ['dimensions', 'clearance'] : ['dimensions'],
+    clearance_verified: isVerifiedFit,
+    source_type: sourceType
+  };
+}
+
 function upsertManualEvidence(manifest, {
   productId,
   product = {},
@@ -108,6 +193,7 @@ function upsertManualEvidence(manifest, {
   const existing = next.products[productId] || {};
   const existingEvidence = Array.isArray(existing.evidence) ? existing.evidence : [];
   const type = 'spec_sheet';
+  const trust = inferTrustMetadata(strictData);
   const evidenceItem = {
     type,
     status: 'approved',
@@ -115,6 +201,10 @@ function upsertManualEvidence(manifest, {
     source_url: effectiveSourceUrl,
     verified_at: verifiedDate,
     raw_json_path: rawJsonRelativePath,
+    trust_level: trust.trust_level,
+    verified_fields: trust.verified_fields,
+    clearance_verified: trust.clearance_verified,
+    source_type: trust.source_type,
     ...(strictData.metadata?.verified_alias ? { verified_alias: strictData.metadata.verified_alias } : {}),
     extracted: strictData
   };
@@ -128,6 +218,7 @@ function upsertManualEvidence(manifest, {
       brand: product.brand || existing.brand || strictData.brand,
       model: product.model || existing.model || strictData.sku,
       has_pdf_evidence: true,
+      trust_level: trust.trust_level,
       ...(strictData.metadata?.verified_alias ? { verified_alias: strictData.metadata.verified_alias } : {}),
       evidence: [
         ...existingEvidence.filter((item) => !isSameEvidenceItem(item, type, effectiveSourceUrl)),
@@ -178,3 +269,4 @@ function saveExtractionToVault({
 exports.saveExtractionToVault = saveExtractionToVault;
 exports.upsertManualEvidence = upsertManualEvidence;
 exports.writeEvidenceVaultEntry = writeEvidenceVaultEntry;
+exports.inferTrustMetadata = inferTrustMetadata;

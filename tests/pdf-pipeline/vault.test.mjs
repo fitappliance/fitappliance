@@ -5,6 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 
 import {
+  inferTrustMetadata,
   saveExtractionToVault,
   upsertManualEvidence,
   writeEvidenceVaultEntry
@@ -106,6 +107,9 @@ test('vault upserts approved manual evidence without mutating unrelated products
   assert.equal(next.products['fridge-arf3335'].evidence[0].source_url, strictFixture.metadata.source_pdf_url);
   assert.equal(next.products['fridge-arf3335'].evidence[0].verified_at, '2026-05-08');
   assert.equal(next.products['fridge-arf3335'].evidence[0].raw_json_path, 'data/pdf-evidence-raw/HRTF206.json');
+  assert.equal(next.products['fridge-arf3335'].evidence[0].trust_level, 'verified_fit');
+  assert.deepEqual(next.products['fridge-arf3335'].evidence[0].verified_fields, ['dimensions', 'clearance']);
+  assert.equal(next.products['fridge-arf3335'].evidence[0].clearance_verified, true);
 });
 
 test('saveExtractionToVault writes both raw JSON and manual-evidence manifest', () => {
@@ -123,4 +127,46 @@ test('saveExtractionToVault writes both raw JSON and manual-evidence manifest', 
   assert.equal(result.productId, 'fridge-arf3335');
   assert.equal(manifest.products['fridge-arf3335'].has_pdf_evidence, true);
   assert.equal(manifest.products['fridge-arf3335'].evidence[0].extracted.sku, 'HRTF206');
+});
+
+test('vault trust metadata distinguishes dimension-only and retailer-sourced evidence', () => {
+  const dimensionOnly = {
+    ...strictFixture,
+    clearance_requirements: undefined,
+  };
+  assert.deepEqual(inferTrustMetadata(dimensionOnly), {
+    trust_level: 'dimensions_verified',
+    verified_fields: ['dimensions'],
+    clearance_verified: false,
+    source_type: 'official_pdf',
+  });
+
+  const allZeroClearance = {
+    ...strictFixture,
+    clearance_requirements: {
+      top_mm: 0,
+      left_mm: 0,
+      right_mm: 0,
+      rear_mm: 0,
+    },
+  };
+  assert.deepEqual(inferTrustMetadata(allZeroClearance), {
+    trust_level: 'dimensions_verified',
+    verified_fields: ['dimensions'],
+    clearance_verified: false,
+    source_type: 'official_pdf',
+  });
+
+  assert.deepEqual(inferTrustMetadata({
+    ...strictFixture,
+    metadata: {
+      ...strictFixture.metadata,
+      source_type: 'third_party_fallback',
+    },
+  }), {
+    trust_level: 'retailer_spec',
+    verified_fields: ['dimensions'],
+    clearance_verified: false,
+    source_type: 'third_party_fallback',
+  });
 });

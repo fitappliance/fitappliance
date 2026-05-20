@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-163882",
+  "product_id": "fridge-arf3377",
   "category": "fridge",
-  "brand": "CHiQ",
+  "brand": "CHIQ",
   "model": "CSR241DW",
   "source_url": "https://www.appliancesonline.com.au/ak/7/1/3/7/7137a55d80eedd1ce03511c7848f9b3f6ab2c042_CSR241DW_SPEC.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "CHiQ",
     "sku": "CSR241DW",
@@ -29,8 +29,9 @@
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/7/1/3/7/7137a55d80eedd1ce03511c7848f9b3f6ab2c042_CSR241DW_SPEC.pdf",
-      "extraction_date": "2026-05-09T09:07:38.501Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:28:24.341Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
     }
   }
 }

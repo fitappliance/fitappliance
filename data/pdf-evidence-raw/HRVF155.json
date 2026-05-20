@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-102631",
+  "product_id": "fridge-arf2594",
   "category": "fridge",
   "brand": "Hisense",
   "model": "HRVF155",
   "source_url": "https://www.appliancesonline.com.au/ak/b/d/6/2/bd6236a674e07e4e6029241152c2c5e049c40739_HRVF155_Hisense_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRVF155",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": true
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/b/d/6/2/bd6236a674e07e4e6029241152c2c5e049c40739_HRVF155_Hisense_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:28:04.744Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:36.654Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

@@ -38,15 +38,58 @@ test('renderProvenanceBlock renders verified manufacturer PDF state', async () =
     'fridge-1': {
       status: 'verified',
       has_pdf_evidence: true,
+      trust_level: 'verified_fit',
+      verified_fields: ['dimensions', 'clearance'],
+      clearance_verified: true,
       source_url: 'https://example.com/spec.pdf',
       verified_at: '2026-05-07'
     }
   });
 
   assert.match(html, /provenance-block--verified/);
-  assert.match(html, /Manufacturer PDF/);
+  assert.match(html, /Verified Fit/);
+  assert.match(html, /Official PDF/);
   assert.match(html, /verified 2026-05-07/);
   assert.match(html, /rel="noopener"/);
+});
+
+test('renderProvenanceBlock separates dimension-only PDF evidence from Verified Fit', async () => {
+  const { renderProvenanceBlock } = await loadModule();
+  const html = renderProvenanceBlock({ id: 'fridge-1' }, {
+    'fridge-1': {
+      status: 'verified',
+      has_pdf_evidence: true,
+      trust_level: 'dimensions_verified',
+      verified_fields: ['dimensions'],
+      clearance_verified: false,
+      source_url: 'https://example.com/spec.pdf',
+      verified_at: '2026-05-07'
+    }
+  });
+
+  assert.match(html, /provenance-block--dimensions/);
+  assert.match(html, /Dimensions verified/);
+  assert.match(html, /clearance estimated/);
+  assert.doesNotMatch(html, /Verified Fit/);
+});
+
+test('renderProvenanceBlock labels retailer specification evidence explicitly', async () => {
+  const { renderProvenanceBlock } = await loadModule();
+  const html = renderProvenanceBlock({ id: 'fridge-1' }, {
+    'fridge-1': {
+      status: 'verified',
+      has_pdf_evidence: false,
+      trust_level: 'retailer_spec',
+      verified_fields: ['dimensions'],
+      clearance_verified: false,
+      source_url: 'https://www.appliancesonline.com.au/product/example',
+      verified_at: '2026-05-07'
+    }
+  });
+
+  assert.match(html, /provenance-block--retailer/);
+  assert.match(html, /Retailer dimensions/);
+  assert.doesNotMatch(html, /Verified Fit/);
 });
 
 test('renderProvenanceBlock renders pending and fallback states', async () => {
@@ -58,7 +101,7 @@ test('renderProvenanceBlock renders pending and fallback states', async () => {
   );
   assert.match(
     renderProvenanceBlock({ id: 'unknown' }, {}),
-    /Retailer spec/
+    /Retailer dimensions/
   );
 });
 
@@ -75,5 +118,5 @@ test('renderProvenanceBlock escapes unsafe source content', async () => {
 
   assert.doesNotMatch(html, /javascript:/i);
   assert.doesNotMatch(html, /onerror/i);
-  assert.match(html, /Manufacturer PDF captured/);
+  assert.match(html, /Dimension source captured/);
 });

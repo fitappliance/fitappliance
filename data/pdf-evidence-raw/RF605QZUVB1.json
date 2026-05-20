@@ -4,8 +4,8 @@
   "category": "fridge",
   "brand": "Fisher & Paykel",
   "model": "RF605QZUVB1",
-  "source_url": "https://www.appliancesonline.com.au/ak/8/7/e/0/87e0dd003b643e1b122860caaf6f062a6185963c_QRG_AU_26553_RF605QZUVB1.pdf",
-  "verified_at": "2026-05-09",
+  "source_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Fisher & Paykel",
     "sku": "RF605QZUVB1",
@@ -17,20 +17,21 @@
       "door_open_90_depth_mm": null
     },
     "clearance_requirements": {
-      "top_mm": 0,
-      "left_mm": 0,
-      "right_mm": 0,
-      "rear_mm": 0
+      "top_mm": 20,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 30
     },
     "flags": {
-      "requires_plumbing": false,
+      "requires_plumbing": true,
       "ventilation_required": true,
       "reversible_door": null
     },
     "metadata": {
-      "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/7/e/0/87e0dd003b643e1b122860caaf6f062a6185963c_QRG_AU_26553_RF605QZUVB1.pdf",
-      "extraction_date": "2026-05-09T09:16:33.650Z",
-      "confidence_score": 0.9
+      "source_pdf_url": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+      "extraction_date": "2026-05-20T15:06:10.267Z",
+      "confidence_score": 0.94,
+      "source_type": "fisher-paykel-official-quick_reference_guide"
     }
   }
 }

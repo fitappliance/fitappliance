@@ -5,7 +5,7 @@
   "brand": "Hisense",
   "model": "HRWC46",
   "source_url": "https://www.appliancesonline.com.au/ak/8/e/c/3/8ec3296945644e247c80730d9d14692612e6b9b9_HRWC46_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "Hisense",
     "sku": "HRWC46",
@@ -25,12 +25,13 @@
     "flags": {
       "requires_plumbing": false,
       "ventilation_required": true,
-      "reversible_door": null
+      "reversible_door": false
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/8/e/c/3/8ec3296945644e247c80730d9d14692612e6b9b9_HRWC46_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:33:19.210Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:18:58.623Z",
+      "confidence_score": 0.92,
+      "source_type": "manual-evidence"
     }
   }
 }

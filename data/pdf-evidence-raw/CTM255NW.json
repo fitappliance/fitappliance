@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "product_id": "ao-103162",
+  "product_id": "fridge-arf2457",
   "category": "fridge",
-  "brand": "CHiQ",
+  "brand": "CHIQ",
   "model": "CTM255NW",
   "source_url": "https://www.appliancesonline.com.au/ak/1/b/9/e/1b9ef2b5390ae06ba60189cb6ff53584fca8e7ba_CTM255NW_CHiQ_Specifications_Sheet.pdf",
-  "verified_at": "2026-05-09",
+  "verified_at": "2026-05-20",
   "extracted": {
     "brand": "CHiQ",
     "sku": "CTM255NW",
@@ -29,8 +29,9 @@
     },
     "metadata": {
       "source_pdf_url": "https://www.appliancesonline.com.au/ak/1/b/9/e/1b9ef2b5390ae06ba60189cb6ff53584fca8e7ba_CTM255NW_CHiQ_Specifications_Sheet.pdf",
-      "extraction_date": "2026-05-09T09:07:43.392Z",
-      "confidence_score": 0.9
+      "extraction_date": "2026-05-20T15:28:30.366Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
     }
   }
 }
