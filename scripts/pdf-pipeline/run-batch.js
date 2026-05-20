@@ -54,6 +54,8 @@ const { findArtusiOfficialPdf } = require('./artusi-official');
 const { parseArtusiText } = require('./parsers/artusi');
 const { findBekoOfficialPdf } = require('./beko-official');
 const { parseBekoText } = require('./parsers/beko');
+const { findInaltoOfficialPdf } = require('./inalto-official');
+const { parseInaltoText } = require('./parsers/inalto');
 const { discoverThirdPartyPdf } = require('./third-party-fallback');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
@@ -72,6 +74,7 @@ const ELECTROLUX_MAX_BYTES = 30 * 1024 * 1024;
 const HAIER_MAX_BYTES = 30 * 1024 * 1024;
 const BEKO_MAX_BYTES = 30 * 1024 * 1024;
 const BEKO_BROWSER_USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
+const INALTO_MAX_BYTES = 30 * 1024 * 1024;
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -309,6 +312,13 @@ function isTecoTarget(target = {}) {
 
 function isBekoTarget(target = {}) {
   return /\bbeko\b/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isInaltoTarget(target = {}) {
+  return /\binalto\b/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -2033,6 +2043,52 @@ async function parseBekoTarget({
   };
 }
 
+async function parseInaltoTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  inaltoOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const verifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await inaltoOfficialFinder(target, { timeoutMs: 30_000 });
+  const sourceUrl = manualSourceUrl || official?.sourceUrl;
+  if (!sourceUrl) {
+    throw new Error(official?.reason || 'Inalto official PDF resources not found');
+  }
+  const source = manualSourceUrl ? 'manual-evidence' : (official?.source || 'inalto-official');
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}-${slugPathPart(source)}.pdf`
+  );
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath, {
+    force: true,
+    retries: 1,
+    timeoutMs: 60_000,
+    maxBytes: INALTO_MAX_BYTES
+  });
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseInaltoText(textResult.text, {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString(),
+    verifiedAlias
+  });
+
+  return {
+    candidate: annotateSourceMetadata(parsed.data, source),
+    sourceUrl,
+    source
+  };
+}
+
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
   const dimensions = strictData?.dimensions || {};
   const pairs = [
@@ -2173,6 +2229,7 @@ async function runBatch({
   subZeroOfficialFinder = findSubZeroOfficialPdf,
   artusiOfficialFinder = findArtusiOfficialPdf,
   bekoOfficialFinder = findBekoOfficialPdf,
+  inaltoOfficialFinder = findInaltoOfficialPdf,
   includeArchived = false,
   brand = null
 } = {}) {
@@ -2210,6 +2267,7 @@ async function runBatch({
     && !isSubZeroTarget(target)
     && !isArtusiTarget(target)
     && !isBekoTarget(target)
+    && !isInaltoTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -2469,6 +2527,18 @@ async function runBatch({
         sourceUrl = parsed.sourceUrl;
         source = parsed.source;
         candidate = parsed.candidate;
+      } else if (!parseTextImpl && isInaltoTarget(target)) {
+        const parsed = await parseInaltoTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          inaltoOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
       } else {
         const resolved = await findGenericPdfSource(target, {
           repoRoot,
@@ -2620,3 +2690,4 @@ exports.parseOmegaTarget = parseOmegaTarget;
 exports.parseSubZeroTarget = parseSubZeroTarget;
 exports.parseArtusiTarget = parseArtusiTarget;
 exports.parseBekoTarget = parseBekoTarget;
+exports.parseInaltoTarget = parseInaltoTarget;

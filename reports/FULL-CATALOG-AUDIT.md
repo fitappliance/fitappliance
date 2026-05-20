@@ -5,9 +5,9 @@ Generated: 2026-05-20
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1746
-- Missing PDF evidence: 1795
-- Overall coverage: 49.3%
+- Verified with PDF evidence: 1753
+- Missing PDF evidence: 1788
+- Overall coverage: 49.5%
 
 ## Coverage By Brand
 
@@ -34,7 +34,7 @@ Generated: 2026-05-20
 | Liebherr | 52 | 2 | 50 | 3.8% |
 | Robinhood | 46 | 9 | 37 | 19.6% |
 | ASKO | 42 | 29 | 13 | 69.0% |
-| Inalto | 41 | 0 | 41 | 0.0% |
+| Inalto | 41 | 7 | 34 | 17.1% |
 | VOGUE | 41 | 0 | 41 | 0.0% |
 | Eurotech | 38 | 0 | 38 | 0.0% |
 | Sub-Zero | 38 | 7 | 31 | 18.4% |

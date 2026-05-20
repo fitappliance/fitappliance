@@ -167006,6 +167006,314 @@
           }
         }
       ]
+    },
+    "fridge-arf2938": {
+      "category": "fridge",
+      "brand": "Inalto",
+      "model": "IBF129S",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://inalto.house/s/IBF129S-W_Manual_V10.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/IBF129S.json",
+          "extracted": {
+            "brand": "Inalto",
+            "sku": "IBF129S",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 860,
+              "width_mm": 501,
+              "depth_mm": 540,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 200,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": true
+            },
+            "metadata": {
+              "source_pdf_url": "https://inalto.house/s/IBF129S-W_Manual_V10.pdf",
+              "extraction_date": "2026-05-20T08:19:22.659Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3650": {
+      "category": "fridge",
+      "brand": "Inalto",
+      "model": "IBF46W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://inalto.house/s/IBF46W_UserManual_V21-0322.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/IBF46W.json",
+          "extracted": {
+            "brand": "Inalto",
+            "sku": "IBF46W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 492,
+              "width_mm": 472,
+              "depth_mm": 450,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 200,
+              "left_mm": 200,
+              "right_mm": 200,
+              "rear_mm": 150
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://inalto.house/s/IBF46W_UserManual_V21-0322.pdf",
+              "extraction_date": "2026-05-20T08:19:22.876Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3658": {
+      "category": "fridge",
+      "brand": "Inalto",
+      "model": "ICF142B2",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://inalto.house/s/ICF142B2_ICF198B2_UserManual-V13-0825-WEB-g83d.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/ICF142B2.json",
+          "extracted": {
+            "brand": "Inalto",
+            "sku": "ICF142B2",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 600,
+              "depth_mm": 560,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 700,
+              "left_mm": 200,
+              "right_mm": 200,
+              "rear_mm": 200
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://inalto.house/s/ICF142B2_ICF198B2_UserManual-V13-0825-WEB-g83d.pdf",
+              "extraction_date": "2026-05-20T08:19:24.430Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3655": {
+      "category": "fridge",
+      "brand": "Inalto",
+      "model": "ICF142W2",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://inalto.house/s/ICF142W2_ICF198W2_UserManual_V14.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/ICF142W2.json",
+          "extracted": {
+            "brand": "Inalto",
+            "sku": "ICF142W2",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 632,
+              "depth_mm": 550,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 700,
+              "left_mm": 200,
+              "right_mm": 200,
+              "rear_mm": 200
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://inalto.house/s/ICF142W2_ICF198W2_UserManual_V14.pdf",
+              "extraction_date": "2026-05-20T08:19:24.859Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3660": {
+      "category": "fridge",
+      "brand": "Inalto",
+      "model": "ICF198B2",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://inalto.house/s/ICF142B2_ICF198B2_UserManual-V13-0825-WEB.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/ICF198B2.json",
+          "extracted": {
+            "brand": "Inalto",
+            "sku": "ICF198B2",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 770,
+              "depth_mm": 560,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 700,
+              "left_mm": 200,
+              "right_mm": 200,
+              "rear_mm": 200
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://inalto.house/s/ICF142B2_ICF198B2_UserManual-V13-0825-WEB.pdf",
+              "extraction_date": "2026-05-20T08:19:25.293Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2463": {
+      "category": "fridge",
+      "brand": "Inalto",
+      "model": "IUF172W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://inalto.house/s/IUF172W_UserManual_V20-63k8.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/IUF172W.json",
+          "extracted": {
+            "brand": "Inalto",
+            "sku": "IUF172W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1420,
+              "width_mm": 550,
+              "depth_mm": 550,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 200,
+              "left_mm": 200,
+              "right_mm": 200,
+              "rear_mm": 150
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://inalto.house/s/IUF172W_UserManual_V20-63k8.pdf",
+              "extraction_date": "2026-05-20T08:19:32.518Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2557": {
+      "category": "fridge",
+      "brand": "Inalto",
+      "model": "IUL237W",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://inalto.house/s/IUL237W_UserManual_V20-FA.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/IUL237W.json",
+          "extracted": {
+            "brand": "Inalto",
+            "sku": "IUL237W",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1420,
+              "width_mm": 550,
+              "depth_mm": 550,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 300,
+              "left_mm": 100,
+              "right_mm": 100,
+              "rear_mm": 100
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://inalto.house/s/IUL237W_UserManual_V20-FA.pdf",
+              "extraction_date": "2026-05-20T08:19:33.701Z",
+              "confidence_score": 0.9,
+              "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
     }
   }
 }

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3658",
+  "category": "fridge",
+  "brand": "Inalto",
+  "model": "ICF142B2",
+  "source_url": "https://inalto.house/s/ICF142B2_ICF198B2_UserManual-V13-0825-WEB-g83d.pdf",
+  "verified_at": "2026-05-20",
+  "extracted": {
+    "brand": "Inalto",
+    "sku": "ICF142B2",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 850,
+      "width_mm": 600,
+      "depth_mm": 560,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 700,
+      "left_mm": 200,
+      "right_mm": 200,
+      "rear_mm": 200
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://inalto.house/s/ICF142B2_ICF198B2_UserManual-V13-0825-WEB-g83d.pdf",
+      "extraction_date": "2026-05-20T08:19:24.430Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
+    }
+  }
+}
