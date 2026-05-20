@@ -23871,6 +23871,18 @@
       "verified_at": "2026-05-15",
       "confidence_score": 0.85
     },
+    "dishwasher-adw1046": {
+      "product_id": "dishwasher-adw1046",
+      "status": "verified",
+      "category": "dishwasher",
+      "brand": "Euromaid",
+      "model": "EDW6014X",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2023-08/Spec%20Sheet%20-%2060cm%20Freestanding%20Dishwasher%20Stainless%20Steel%20-%20EDW6014X.pdf",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
     "dishwasher-adw1047": {
       "product_id": "dishwasher-adw1047",
       "status": "verified",
@@ -24013,6 +24025,18 @@
       "source_type": "spec_sheet",
       "source_url": "https://commercial.appliancesonline.com.au/public/manuals/WSF6606X-Westinghouse-Specifications-Sheet.pdf",
       "verified_at": "2026-05-09",
+      "confidence_score": 0.9
+    },
+    "dishwasher-adw1189": {
+      "product_id": "dishwasher-adw1189",
+      "status": "verified",
+      "category": "dishwasher",
+      "brand": "Euromaid",
+      "model": "E14FID",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2024-09/Spec%20Sheet%20-%2060cm%20Fully%20Integrated%20Dishwasher%20-%20E14FID.pdf",
+      "verified_at": "2026-05-20",
       "confidence_score": 0.9
     },
     "dishwasher-adw1232": {
@@ -24963,6 +24987,102 @@
       "verified_at": "2026-05-19",
       "confidence_score": 0.92
     },
+    "fridge-arf2672": {
+      "product_id": "fridge-arf2672",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Euromaid",
+      "model": "ETM221W",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-01/Spec%20Sheet%20-%20198%20Litre%20Top%20Mount%20White%20-%20ETM221W.pdf",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2676": {
+      "product_id": "fridge-arf2676",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Euromaid",
+      "model": "EBF78W",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-10/Spec%20Sheet%20-%2075%20Litre%20Bar%20Fridge%20White%20-%20EBF78W.pdf",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2677": {
+      "product_id": "fridge-arf2677",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Euromaid",
+      "model": "EBF126S",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-10/Spec%20Sheet%20-%20121%20Litre%20Bar%20Fridge%20Stainless%20-%20EBF126S.pdf",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2684": {
+      "product_id": "fridge-arf2684",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Euromaid",
+      "model": "ETM87W",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-10/Spec%20Sheet%20-%2085L%20Top%20Mount%20Fridge%20White%20-%20ETM87W.pdf",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2685": {
+      "product_id": "fridge-arf2685",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Euromaid",
+      "model": "ECFR145W",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-03/Spec%20Sheet%20-%20142%20Litre%20Chest%20Freezer%20White%20-%20ECFR145W.pdf",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2686": {
+      "product_id": "fridge-arf2686",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Euromaid",
+      "model": "ECFR316W",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2021-12/Spec%20Sheet%20-%20308%20Litre%20Chest%20Freezer%20White%20-%20ECFR316W.pdf",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2689": {
+      "product_id": "fridge-arf2689",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Euromaid",
+      "model": "ETM362S",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2023-03/Spec%20Sheet%20-%20334%20Litre%20Top%20Mount%20Stainless%20-%20ETM362S.pdf",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2690": {
+      "product_id": "fridge-arf2690",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Euromaid",
+      "model": "ECFR200W",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-03/Spec%20Sheet%20-%20198%20Litre%20Chest%20Freezer%20White%20-%20ECFR200W.pdf",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
     "fridge-arf2693": {
       "product_id": "fridge-arf2693",
       "status": "verified",
@@ -24997,6 +25117,42 @@
       "source_type": "spec_sheet",
       "source_url": "https://media.miele.com/downloads/n-/ce/FS_11738320_OVE_OV-en-CE.pdf",
       "verified_at": "2026-05-19",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2697": {
+      "product_id": "fridge-arf2697",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Euromaid",
+      "model": "EUFR168W",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-09/Spec%20Sheet%20-%20168%20Litre%20Upright%20Freezer%20White%20-%20EUFR168W.pdf",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2698": {
+      "product_id": "fridge-arf2698",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Euromaid",
+      "model": "EUF242W",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-09/Spec%20Sheet%20-%20242%20Litre%20Upright%20Fridge%20White%20-%20EUF242W_0.pdf",
+      "verified_at": "2026-05-20",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2701": {
+      "product_id": "fridge-arf2701",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Euromaid",
+      "model": "ESBS563S",
+      "has_pdf_evidence": true,
+      "source_type": "spec_sheet",
+      "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-10/Spec%20Sheet%20-%20532L%20Side%20By%20Side%20Fridge%20Stainless%20Steel%20-%20ESBS563S.pdf",
+      "verified_at": "2026-05-20",
       "confidence_score": 0.9
     },
     "fridge-arf2733": {

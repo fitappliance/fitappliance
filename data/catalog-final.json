@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1724,
-    "merged_products": 1707,
+    "evidence_files": 1737,
+    "merged_products": 1720,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -26,9 +26,9 @@
       "washtower_combo": 2
     },
     "official_pdf_by_category": {
-      "dishwasher": 384,
+      "dishwasher": 386,
       "dryer": 100,
-      "fridge": 959,
+      "fridge": 970,
       "washing_machine": 262,
       "washtower_combo": 2
     }
@@ -7584,7 +7584,7 @@
       "brand": "Euromaid",
       "model": "EBF126S",
       "w": 495,
-      "h": 840,
+      "h": 838,
       "d": 560,
       "kwh_year": 132,
       "stars": 3,
@@ -7602,7 +7602,33 @@
       "inferred_door_swing": true,
       "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 838,
+        "width_mm": 495,
+        "depth_mm": 560,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 22,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 40
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-10/Spec%20Sheet%20-%20121%20Litre%20Bar%20Fridge%20Stainless%20-%20EBF126S.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/EBF126S.json"
+      }
     },
     {
       "id": "fridge-arf2678",
@@ -7654,7 +7680,33 @@
       "inferred_door_swing": true,
       "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 700,
+        "width_mm": 480,
+        "depth_mm": 450,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-10/Spec%20Sheet%20-%2075%20Litre%20Bar%20Fridge%20White%20-%20EBF78W.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/EBF78W.json"
+      }
     },
     {
       "id": "fridge-arf2685",
@@ -7663,7 +7715,7 @@
       "model": "ECFR145W",
       "w": 705,
       "h": 845,
-      "d": 545,
+      "d": 550,
       "kwh_year": 217,
       "stars": 3,
       "price": null,
@@ -7680,16 +7732,42 @@
       "inferred_door_swing": true,
       "displayName": "Euromaid Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 705,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 700,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-03/Spec%20Sheet%20-%20142%20Litre%20Chest%20Freezer%20White%20-%20ECFR145W.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual+euromaid-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/ECFR145W.json"
+      }
     },
     {
       "id": "fridge-arf2690",
       "cat": "fridge",
       "brand": "Euromaid",
       "model": "ECFR200W",
-      "w": 905,
+      "w": 910,
       "h": 845,
-      "d": 545,
+      "d": 550,
       "kwh_year": 253,
       "stars": 3,
       "price": null,
@@ -7706,7 +7784,33 @@
       "inferred_door_swing": true,
       "displayName": "Euromaid Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 910,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 700,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-03/Spec%20Sheet%20-%20198%20Litre%20Chest%20Freezer%20White%20-%20ECFR200W.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual+euromaid-official-user_manual+euromaid-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/ECFR200W.json"
+      }
     },
     {
       "id": "fridge-arf2686",
@@ -7732,7 +7836,33 @@
       "inferred_door_swing": true,
       "displayName": "Euromaid Fridge",
       "readableSpec": "Chest",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 1120,
+        "depth_mm": 700,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 700,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2021-12/Spec%20Sheet%20-%20308%20Litre%20Chest%20Freezer%20White%20-%20ECFR316W.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/ECFR316W.json"
+      }
     },
     {
       "id": "fridge-arf2925",
@@ -7810,7 +7940,33 @@
       "inferred_door_swing": true,
       "displayName": "Euromaid Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 1770,
+        "width_mm": 900,
+        "depth_mm": 660,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-10/Spec%20Sheet%20-%20532L%20Side%20By%20Side%20Fridge%20Stainless%20Steel%20-%20ESBS563S.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/ESBS563S.json"
+      }
     },
     {
       "id": "fridge-arf2475",
@@ -7843,7 +7999,7 @@
       "cat": "fridge",
       "brand": "Euromaid",
       "model": "ETM221W",
-      "w": 500,
+      "w": 550,
       "h": 1430,
       "d": 600,
       "kwh_year": 240,
@@ -7862,7 +8018,33 @@
       "inferred_door_swing": true,
       "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 1430,
+        "width_mm": 550,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-01/Spec%20Sheet%20-%20198%20Litre%20Top%20Mount%20White%20-%20ETM221W.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/ETM221W.json"
+      }
     },
     {
       "id": "fridge-arf2709",
@@ -7895,9 +8077,9 @@
       "cat": "fridge",
       "brand": "Euromaid",
       "model": "ETM362S",
-      "w": 600,
+      "w": 605,
       "h": 1700,
-      "d": 665,
+      "d": 670,
       "kwh_year": 319,
       "stars": 4,
       "price": null,
@@ -7914,7 +8096,33 @@
       "inferred_door_swing": true,
       "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 1700,
+        "width_mm": 605,
+        "depth_mm": 670,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2023-03/Spec%20Sheet%20-%20334%20Litre%20Top%20Mount%20Stainless%20-%20ETM362S.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/ETM362S.json"
+      }
     },
     {
       "id": "fridge-arf2700",
@@ -7966,16 +8174,42 @@
       "inferred_door_swing": true,
       "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 480,
+        "depth_mm": 520,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 10,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-10/Spec%20Sheet%20-%2085L%20Top%20Mount%20Fridge%20White%20-%20ETM87W.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/ETM87W.json"
+      }
     },
     {
       "id": "fridge-arf2698",
       "cat": "fridge",
       "brand": "Euromaid",
       "model": "EUF242W",
-      "w": 544,
+      "w": 545,
       "h": 1426,
-      "d": 556,
+      "d": 555,
       "kwh_year": 130,
       "stars": 5,
       "price": null,
@@ -7992,14 +8226,40 @@
       "inferred_door_swing": true,
       "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 1426,
+        "width_mm": 545,
+        "depth_mm": 555,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-09/Spec%20Sheet%20-%20242%20Litre%20Upright%20Fridge%20White%20-%20EUF242W_0.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/EUF242W.json"
+      }
     },
     {
       "id": "fridge-arf2697",
       "cat": "fridge",
       "brand": "Euromaid",
       "model": "EUFR168W",
-      "w": 544,
+      "w": 545,
       "h": 1426,
       "d": 571,
       "kwh_year": 236,
@@ -8018,7 +8278,33 @@
       "inferred_door_swing": true,
       "displayName": "Euromaid Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 1426,
+        "width_mm": 545,
+        "depth_mm": 571,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 200,
+        "left_mm": 100,
+        "right_mm": 100,
+        "rear_mm": 100
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-09/Spec%20Sheet%20-%20168%20Litre%20Upright%20Freezer%20White%20-%20EUFR168W.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/EUFR168W.json"
+      }
     },
     {
       "id": "fridge-arf2916",
@@ -43820,6 +44106,14 @@
       "displayName": "Artusi Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://artusi.com.au/wp-content/uploads/2025/11/PF_ADW5009_Artusi-1.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "artusi-official-specification_sheet+artusi-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/ADW5009X.json"
+      },
       "dimensions": {
         "height_mm": 845,
         "width_mm": 598,
@@ -43837,15 +44131,7 @@
         "ventilation_required": false,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://artusi.com.au/wp-content/uploads/2025/11/PF_ADW5009_Artusi-1.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "artusi-official-specification_sheet+artusi-official-user_manual",
-        "raw_json_path": "data/pdf-evidence-raw/ADW5009X.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw0850",
@@ -46699,7 +46985,33 @@
       "inferred_door_swing": true,
       "displayName": "Euromaid Dishwasher",
       "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 860,
+        "width_mm": 598,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 10,
+        "left_mm": 1,
+        "right_mm": 1,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2024-09/Spec%20Sheet%20-%2060cm%20Fully%20Integrated%20Dishwasher%20-%20E14FID.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/E14FID.json"
+      }
     },
     {
       "id": "dishwasher-adw1214",
@@ -46732,8 +47044,8 @@
       "brand": "Euromaid",
       "model": "EDW6014X",
       "w": 598,
-      "h": 845,
-      "d": 600,
+      "h": 860,
+      "d": 595,
       "kwh_year": 320,
       "stars": 3,
       "price": null,
@@ -46749,7 +47061,33 @@
       "inferred_door_swing": true,
       "displayName": "Euromaid Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 18
+      "priorityScore": 18,
+      "dimensions": {
+        "height_mm": 860,
+        "width_mm": 598,
+        "depth_mm": 595,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 10,
+        "left_mm": 23,
+        "right_mm": 24,
+        "rear_mm": 5
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": false,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2023-08/Spec%20Sheet%20-%2060cm%20Freestanding%20Dishwasher%20Stainless%20Steel%20-%20EDW6014X.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/EDW6014X.json"
+      }
     },
     {
       "id": "dishwasher-adw1028",

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2697",
+  "category": "fridge",
+  "brand": "Euromaid",
+  "model": "EUFR168W",
+  "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-09/Spec%20Sheet%20-%20168%20Litre%20Upright%20Freezer%20White%20-%20EUFR168W.pdf",
+  "verified_at": "2026-05-20",
+  "extracted": {
+    "brand": "Euromaid",
+    "sku": "EUFR168W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1426,
+      "width_mm": 545,
+      "depth_mm": 571,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 200,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 100
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-09/Spec%20Sheet%20-%20168%20Litre%20Upright%20Freezer%20White%20-%20EUFR168W.pdf",
+      "extraction_date": "2026-05-20T03:57:28.079Z",
+      "confidence_score": 0.9,
+      "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual"
+    }
+  }
+}

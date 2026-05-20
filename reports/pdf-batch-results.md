@@ -1,69 +1,63 @@
 # PDF Batch Results
 
-Run at: 2026-05-20T02:42:47.258Z
+Run at: 2026-05-20T03:58:36.738Z
 
 ## Successful Runs
 
 | SKU | Product | Category | Confidence | Source |
 | --- | --- | --- | ---: | --- |
-| ADW5009X | Artusi | dishwasher | 0.9 | https://artusi.com.au/wp-content/uploads/2025/11/PF_ADW5009_Artusi-1.pdf |
+| EBF126S | Euromaid | fridge | 0.9 | https://www.euromaid.com/sites/g/files/emiian466/files/2022-10/Spec%20Sheet%20-%20121%20Litre%20Bar%20Fridge%20Stainless%20-%20EBF126S.pdf |
+| EBF78W | Euromaid | fridge | 0.9 | https://www.euromaid.com/sites/g/files/emiian466/files/2022-10/Spec%20Sheet%20-%2075%20Litre%20Bar%20Fridge%20White%20-%20EBF78W.pdf |
+| ECFR145W | Euromaid | fridge | 0.9 | https://www.euromaid.com/sites/g/files/emiian466/files/2022-03/Spec%20Sheet%20-%20142%20Litre%20Chest%20Freezer%20White%20-%20ECFR145W.pdf |
+| ECFR200W | Euromaid | fridge | 0.9 | https://www.euromaid.com/sites/g/files/emiian466/files/2022-03/Spec%20Sheet%20-%20198%20Litre%20Chest%20Freezer%20White%20-%20ECFR200W.pdf |
+| ECFR316W | Euromaid | fridge | 0.9 | https://www.euromaid.com/sites/g/files/emiian466/files/2021-12/Spec%20Sheet%20-%20308%20Litre%20Chest%20Freezer%20White%20-%20ECFR316W.pdf |
+| ESBS563S | Euromaid | fridge | 0.9 | https://www.euromaid.com/sites/g/files/emiian466/files/2022-10/Spec%20Sheet%20-%20532L%20Side%20By%20Side%20Fridge%20Stainless%20Steel%20-%20ESBS563S.pdf |
+| ETM221W | Euromaid | fridge | 0.9 | https://www.euromaid.com/sites/g/files/emiian466/files/2022-01/Spec%20Sheet%20-%20198%20Litre%20Top%20Mount%20White%20-%20ETM221W.pdf |
+| ETM362S | Euromaid | fridge | 0.9 | https://www.euromaid.com/sites/g/files/emiian466/files/2023-03/Spec%20Sheet%20-%20334%20Litre%20Top%20Mount%20Stainless%20-%20ETM362S.pdf |
+| ETM87W | Euromaid | fridge | 0.9 | https://www.euromaid.com/sites/g/files/emiian466/files/2022-10/Spec%20Sheet%20-%2085L%20Top%20Mount%20Fridge%20White%20-%20ETM87W.pdf |
+| EUF242W | Euromaid | fridge | 0.9 | https://www.euromaid.com/sites/g/files/emiian466/files/2022-09/Spec%20Sheet%20-%20242%20Litre%20Upright%20Fridge%20White%20-%20EUF242W_0.pdf |
+| EUFR168W | Euromaid | fridge | 0.9 | https://www.euromaid.com/sites/g/files/emiian466/files/2022-09/Spec%20Sheet%20-%20168%20Litre%20Upright%20Freezer%20White%20-%20EUFR168W.pdf |
+| E14FID | Euromaid | dishwasher | 0.9 | https://www.euromaid.com/sites/g/files/emiian466/files/2024-09/Spec%20Sheet%20-%2060cm%20Fully%20Integrated%20Dishwasher%20-%20E14FID.pdf |
+| EDW6014X | Euromaid | dishwasher | 0.9 | https://www.euromaid.com/sites/g/files/emiian466/files/2023-08/Spec%20Sheet%20-%2060cm%20Freestanding%20Dishwasher%20Stainless%20Steel%20-%20EDW6014X.pdf |
 
 ## Significant Discrepancies
 
-No significant discrepancies.
+| SKU | Axis | Legacy | PDF | Delta |
+| --- | --- | ---: | ---: | ---: |
+| ECFR145W | depth | 545mm | 550mm | +5mm |
+| ECFR200W | width | 905mm | 910mm | +5mm |
+| ECFR200W | depth | 545mm | 550mm | +5mm |
+| ETM221W | width | 500mm | 550mm | +50mm |
+| ETM362S | width | 600mm | 605mm | +5mm |
+| ETM362S | depth | 665mm | 670mm | +5mm |
+| EDW6014X | height | 845mm | 860mm | +15mm |
+| EDW6014X | depth | 600mm | 595mm | -5mm |
 
 ## Failures
 
 | SKU | Product | Reason |
 | --- | --- | --- |
-| AFBM462X | Artusi | Artusi parser rejected dimensions due to catalog cross-check mismatch: w catalog=760 pdf=700, h catalog=1860 pdf=1730, d catalog=750 pdf=712 |
-| AFDF620X | Artusi | Artusi FRIDGE parser could not find explicit W/H/D dimensions. |
-| AFR115B | Artusi | Artusi FRIDGE parser could not find explicit W/H/D dimensions. |
-| AFTM343X | Artusi | Artusi fridge explicit ventilation clearance is not text-readable. |
-| AINT119 | Artusi | Artusi FRIDGE parser could not find explicit W/H/D dimensions. |
-| AINT119/2 | Artusi | Artusi FRIDGE parser could not find explicit W/H/D dimensions. |
-| AINT119/NF2 | Artusi | Artusi parser could not verify SKU AINT119/NF2 against document text or official source URL. |
-| AINT119NF | Artusi | Artusi parser could not verify SKU AINT119NF against document text or official source URL. |
-| AINT3000 | Artusi | Artusi FRIDGE parser could not find explicit W/H/D dimensions. |
-| AINT4100 | Artusi | Artusi FRIDGE parser could not find explicit W/H/D dimensions. |
-| AINT5100 | Artusi | Artusi FRIDGE parser could not find explicit W/H/D dimensions. |
-| AINT7000 | Artusi | Artusi parser rejected dimensions due to catalog cross-check mismatch: w catalog=540 pdf=690, d catalog=690 pdf=550 |
-| AINT7600 | Artusi | Artusi fridge explicit ventilation clearance is not text-readable. |
-| AINT7600IW | Artusi | Artusi fridge explicit ventilation clearance is not text-readable. |
-| AINT8900FD | Artusi | Artusi official PDF resources not found for AINT8900FD |
-| AINT8900FDI | Artusi | Artusi official PDF resources not found for AINT8900FDI |
-| AINT9100FD | Artusi | Artusi fridge explicit ventilation clearance is not text-readable. |
-| AINT9100FDIW | Artusi | Artusi fridge explicit ventilation clearance is not text-readable. |
-| AOFDZ127X | Artusi | Artusi parser could not verify SKU AOFDZ127X against document text or official source URL. |
-| ARET130B | Artusi | Artusi parser could not verify SKU ARET130B against document text or official source URL. |
-| AUBF620X | Artusi | Artusi parser could not verify SKU AUBF620X against document text or official source URL. |
-| ADW***** | Artusi | Artusi official PDF resources not found for ADW***** |
-| ADW4001X | Artusi | Artusi dishwasher explicit wall/cabinet positioning basis not found. |
-| ADW4501X | Artusi | Artusi parser could not verify SKU ADW4501X against document text or official source URL. |
-| ADW4509X | Artusi | Artusi parser could not verify SKU ADW4509X against document text or official source URL. |
-| ADW5001B | Artusi | Artusi dishwasher explicit wall/cabinet positioning basis not found. |
-| ADW5001X | Artusi | Artusi dishwasher explicit wall/cabinet positioning basis not found. |
-| ADW5002B | Artusi | Artusi dishwasher explicit wall/cabinet positioning basis not found. |
-| ADW5003B | Artusi | Artusi dishwasher explicit wall/cabinet positioning basis not found. |
-| ADW5008X | Artusi | Artusi dishwasher explicit wall/cabinet positioning basis not found. |
-| ADW5607B | Artusi | Artusi official PDF resources not found for ADW5607B |
-| ADW5608B | Artusi | Artusi DISHWASHER parser could not find explicit W/H/D dimensions. |
-| ADW612X | Artusi | Artusi official PDF resources not found for ADW612X |
-| ADW7003B | Artusi | Artusi parser could not verify SKU ADW7003B against document text or official source URL. |
-| ADW8TTX | Artusi | Artusi dishwasher explicit wall/cabinet positioning basis not found. |
-| ADWFI451 | Artusi | Artusi parser rejected dimensions due to catalog cross-check mismatch: h catalog=845 pdf=815, d catalog=600 pdf=550 |
-| ADWFI603 | Artusi | Artusi parser rejected dimensions due to catalog cross-check mismatch: h catalog=870 pdf=815 |
-| ADWFI603/1 | Artusi | Artusi dishwasher explicit wall/cabinet positioning basis not found. |
-| ADWFI700 | Artusi | Artusi DISHWASHER parser could not find explicit W/H/D dimensions. |
-| ADWFI700/1 | Artusi | Artusi parser could not verify SKU ADWFI700/1 against document text or official source URL. |
-| ADWSI600- ADW7000X | Artusi | Artusi official PDF resources not found for ADWSI600- ADW7000X |
-| PADW5005W | Artusi | Artusi official PDF resources not found for PADW5005W |
-| ACD45A | Artusi | Artusi official PDF resources not found for ACD45A |
-| ACD60A | Artusi | Artusi official PDF resources not found for ACD60A |
-| ADW845 | Artusi | Artusi official PDF resources not found for ADW845 |
-| AWD845W/1 | Artusi | Artusi WASHING_MACHINE explicit installation clearance is not text-readable. |
-| AWD850W | Artusi | Artusi WASHING_MACHINE explicit installation clearance is not text-readable. |
-| AWM1712W | Artusi | Artusi WASHING_MACHINE parser could not find explicit W/H/D dimensions. |
-| AWM1814W | Artusi | Artusi WASHING_MACHINE parser could not find explicit W/H/D dimensions. |
-| AWM1916W | Artusi | Artusi WASHING_MACHINE explicit installation clearance is not text-readable. |
-| AWM5000W | Artusi | Artusi parser rejected dimensions due to catalog cross-check mismatch: d catalog=530 pdf=497 |
+| EBF42W | Euromaid | Euromaid fridge parser requires explicit Product and Min Clearance dimensions. |
+| ECFR688W | Euromaid | Euromaid fridge parser requires explicit Product and Min Clearance dimensions. |
+| ESBS460S | Euromaid | Euromaid PDF not found for ESBS460S |
+| ESBSW535S | Euromaid | Euromaid PDF not found for ESBSW535S |
+| ETM269BKS | Euromaid | Euromaid fridge parser requires explicit Product and Min Clearance dimensions. |
+| ETM512BKS | Euromaid | Euromaid fridge parser requires explicit Product and Min Clearance dimensions. |
+| E14DWB | Euromaid | Euromaid dishwasher parser requires explicit Product and Cut-Out dimensions. |
+| E14DWX | Euromaid | Euromaid dishwasher parser requires explicit Product and Cut-Out dimensions. |
+| EDW14W | Euromaid | Euromaid dishwasher parser requires explicit Product and Cut-Out dimensions. |
+| EDWB14G | Euromaid | Euromaid dishwasher parser requires explicit Product and Cut-Out dimensions. |
+| EDWB14S | Euromaid | Euromaid dishwasher parser requires explicit Product and Cut-Out dimensions. |
+| EDWB16 | Euromaid | Euromaid dishwasher parser requires explicit Product and Cut-Out dimensions. |
+| CD7KG | Euromaid | Euromaid DRYER parser requires explicit full clearance data before ingest. |
+| EFL700WPRO | Euromaid | Euromaid WASHING_MACHINE parser requires explicit full clearance data before ingest. |
+| EFL900WPRO | Euromaid | Euromaid WASHING_MACHINE parser requires explicit full clearance data before ingest. |
+| EFLP1000W | Euromaid | Euromaid WASHING_MACHINE parser requires explicit full clearance data before ingest. |
+| EFLP850W | Euromaid | Euromaid WASHING_MACHINE parser requires explicit full clearance data before ingest. |
+| ETL1000FCW | Euromaid | Euromaid WASHING_MACHINE parser requires explicit full clearance data before ingest. |
+| ETL550FCW | Euromaid | Euromaid WASHING_MACHINE parser requires explicit full clearance data before ingest. |
+| ETL700FCW | Euromaid | Euromaid WASHING_MACHINE parser requires explicit full clearance data before ingest. |
+| ETL800FCW | Euromaid | Euromaid WASHING_MACHINE parser requires explicit full clearance data before ingest. |
+| ETTW800 | Euromaid | Euromaid WASHING_MACHINE parser requires explicit full clearance data before ingest. |
+| WM5PRO | Euromaid | Euromaid WASHING_MACHINE parser requires explicit full clearance data before ingest. |
+| WM7PRO | Euromaid | Euromaid WASHING_MACHINE parser requires explicit full clearance data before ingest. |

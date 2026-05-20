@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2698",
+  "category": "fridge",
+  "brand": "Euromaid",
+  "model": "EUF242W",
+  "source_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-09/Spec%20Sheet%20-%20242%20Litre%20Upright%20Fridge%20White%20-%20EUF242W_0.pdf",
+  "verified_at": "2026-05-20",
+  "extracted": {
+    "brand": "Euromaid",
+    "sku": "EUF242W",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1426,
+      "width_mm": 545,
+      "depth_mm": 555,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 200,
+      "left_mm": 100,
+      "right_mm": 100,
+      "rear_mm": 100
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.euromaid.com/sites/g/files/emiian466/files/2022-09/Spec%20Sheet%20-%20242%20Litre%20Upright%20Fridge%20White%20-%20EUF242W_0.pdf",
+      "extraction_date": "2026-05-20T03:57:20.699Z",
+      "confidence_score": 0.9,
+      "source_type": "euromaid-official-specification_sheet+euromaid-official-user_manual"
+    }
+  }
+}

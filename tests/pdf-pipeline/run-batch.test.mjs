@@ -1111,6 +1111,69 @@ test('runBatch processes Midea targets with official spec plus manual documents 
   assert.equal(raw.extracted.clearance_requirements.rear_mm, 10);
 });
 
+test('runBatch processes Euromaid official specification sheets without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'fridge-etm221w',
+    brand: 'Euromaid',
+    sku: 'ETM221W',
+    category: 'fridge',
+    product: {
+      id: 'fridge-etm221w',
+      cat: 'fridge',
+      brand: 'Euromaid',
+      model: 'ETM221W',
+      w: 550,
+      h: 1430,
+      d: 600,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    euromaidOfficialFinder: async () => ({
+      sourceUrl: 'https://www.euromaid.com/sites/g/files/emiian466/files/2022-01/Spec%20Sheet%20-%20198%20Litre%20Top%20Mount%20White%20-%20ETM221W.pdf',
+      source: 'euromaid-official-specification_sheet',
+      resourceType: 'specification_sheet',
+      resources: [
+        {
+          sourceUrl: 'https://www.euromaid.com/sites/g/files/emiian466/files/2022-01/Spec%20Sheet%20-%20198%20Litre%20Top%20Mount%20White%20-%20ETM221W.pdf',
+          source: 'euromaid-official-specification_sheet',
+          resourceType: 'specification_sheet',
+          score: 100
+        }
+      ]
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        Euromaid ETM221W Top Mount Fridge
+        DIMENSIONS (H x W x D)
+        Product (mm) 1430 x 550 x 600
+        Min Clearance* (mm) 1480 x 650 x 650
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'euromaid-official-specification_sheet');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'ETM221W.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 50,
+    left_mm: 50,
+    right_mm: 50,
+    rear_mm: 50
+  });
+});
+
 test('runBatch processes Miele manual-evidence spec sheets with the strict Miele parser without an API key', async () => {
   const repoRoot = makeRepo();
   const target = {
