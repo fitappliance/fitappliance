@@ -52,6 +52,8 @@ const { findSubZeroOfficialPdf } = require('./sub-zero-official');
 const { parseSubZeroText } = require('./parsers/sub-zero');
 const { findArtusiOfficialPdf } = require('./artusi-official');
 const { parseArtusiText } = require('./parsers/artusi');
+const { findBekoOfficialPdf } = require('./beko-official');
+const { parseBekoText } = require('./parsers/beko');
 const { discoverThirdPartyPdf } = require('./third-party-fallback');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
@@ -68,6 +70,8 @@ const EUROMAID_MAX_BYTES = 30 * 1024 * 1024;
 const TECO_MAX_BYTES = 30 * 1024 * 1024;
 const ELECTROLUX_MAX_BYTES = 30 * 1024 * 1024;
 const HAIER_MAX_BYTES = 30 * 1024 * 1024;
+const BEKO_MAX_BYTES = 30 * 1024 * 1024;
+const BEKO_BROWSER_USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -298,6 +302,13 @@ function isEuromaidTarget(target = {}) {
 
 function isTecoTarget(target = {}) {
   return /\bteco\b/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isBekoTarget(target = {}) {
+  return /\bbeko\b/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -1975,6 +1986,53 @@ async function parseArtusiTarget({
   };
 }
 
+async function parseBekoTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  bekoOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const verifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await bekoOfficialFinder(target, { timeoutMs: 30_000 });
+  const sourceUrl = manualSourceUrl || official?.sourceUrl;
+  if (!sourceUrl) {
+    throw new Error(official?.reason || 'Beko official PDF resources not found');
+  }
+  const source = manualSourceUrl ? 'manual-evidence' : (official?.source || 'beko-official');
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}-${slugPathPart(source)}.pdf`
+  );
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath, {
+    force: true,
+    retries: 1,
+    timeoutMs: 60_000,
+    maxBytes: BEKO_MAX_BYTES,
+    userAgent: BEKO_BROWSER_USER_AGENT
+  });
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseBekoText(textResult.text, {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString(),
+    verifiedAlias
+  });
+
+  return {
+    candidate: annotateSourceMetadata(parsed.data, source),
+    sourceUrl,
+    source
+  };
+}
+
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
   const dimensions = strictData?.dimensions || {};
   const pairs = [
@@ -2114,6 +2172,7 @@ async function runBatch({
   omegaOfficialFinder = findOmegaOfficialPdf,
   subZeroOfficialFinder = findSubZeroOfficialPdf,
   artusiOfficialFinder = findArtusiOfficialPdf,
+  bekoOfficialFinder = findBekoOfficialPdf,
   includeArchived = false,
   brand = null
 } = {}) {
@@ -2150,6 +2209,7 @@ async function runBatch({
     && !isOmegaTarget(target)
     && !isSubZeroTarget(target)
     && !isArtusiTarget(target)
+    && !isBekoTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -2397,6 +2457,18 @@ async function runBatch({
         sourceUrl = parsed.sourceUrl;
         source = parsed.source;
         candidate = parsed.candidate;
+      } else if (!parseTextImpl && isBekoTarget(target)) {
+        const parsed = await parseBekoTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          bekoOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
       } else {
         const resolved = await findGenericPdfSource(target, {
           repoRoot,
@@ -2547,3 +2619,4 @@ exports.parseRobinhoodTarget = parseRobinhoodTarget;
 exports.parseOmegaTarget = parseOmegaTarget;
 exports.parseSubZeroTarget = parseSubZeroTarget;
 exports.parseArtusiTarget = parseArtusiTarget;
+exports.parseBekoTarget = parseBekoTarget;

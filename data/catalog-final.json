@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1750,
-    "merged_products": 1733,
+    "evidence_files": 1757,
+    "merged_products": 1740,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -29,7 +29,7 @@
       "dishwasher": 387,
       "dryer": 100,
       "fridge": 982,
-      "washing_machine": 262,
+      "washing_machine": 269,
       "washtower_combo": 2
     }
   },
@@ -13114,6 +13114,14 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/6jsb4hvrwtcxx3ctn7qj2j/Haier-SpecificationGuide-en-HRF130UW2-HRF130UG2-BarRefrigerator-0-90004783A-AU-NZ.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.95,
+        "source_type": "haier-official-specification_guide",
+        "raw_json_path": "data/pdf-evidence-raw/HRF130UW2.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 545,
@@ -13131,15 +13139,7 @@
         "ventilation_required": true,
         "reversible_door": true
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/6jsb4hvrwtcxx3ctn7qj2j/Haier-SpecificationGuide-en-HRF130UW2-HRF130UG2-BarRefrigerator-0-90004783A-AU-NZ.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.95,
-        "source_type": "haier-official-specification_guide",
-        "raw_json_path": "data/pdf-evidence-raw/HRF130UW2.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3169",
@@ -13192,6 +13192,14 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/78gk49chnb3wbnmh38wkh5b8/Haier-SpecificationGuide-en-HRF210TW-HRF210TS-HRF210TG-RefrigeratorTopFreezer-0-90004639A-AU-NZ.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.95,
+        "source_type": "haier-official-specification_guide",
+        "raw_json_path": "data/pdf-evidence-raw/HRF210TG.json"
+      },
       "dimensions": {
         "height_mm": 1465,
         "width_mm": 545,
@@ -13209,15 +13217,7 @@
         "ventilation_required": true,
         "reversible_door": true
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/78gk49chnb3wbnmh38wkh5b8/Haier-SpecificationGuide-en-HRF210TW-HRF210TS-HRF210TG-RefrigeratorTopFreezer-0-90004639A-AU-NZ.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.95,
-        "source_type": "haier-official-specification_guide",
-        "raw_json_path": "data/pdf-evidence-raw/HRF210TG.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2188",
@@ -13424,6 +13424,14 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/bsmh5cv59gr8tkjkf74f7/Haier-SpecificationGuide-en-HRF330TW-HRF330TS-HRF330TG-RefrigeratorTopFreezer-0-90004640A-AU-NZ.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.95,
+        "source_type": "haier-official-specification_guide",
+        "raw_json_path": "data/pdf-evidence-raw/HRF330TG.json"
+      },
       "dimensions": {
         "height_mm": 1652,
         "width_mm": 595,
@@ -13441,15 +13449,7 @@
         "ventilation_required": true,
         "reversible_door": true
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/bsmh5cv59gr8tkjkf74f7/Haier-SpecificationGuide-en-HRF330TW-HRF330TS-HRF330TG-RefrigeratorTopFreezer-0-90004640A-AU-NZ.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.95,
-        "source_type": "haier-official-specification_guide",
-        "raw_json_path": "data/pdf-evidence-raw/HRF330TG.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-zrf0852",
@@ -13719,6 +13719,14 @@
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/3ghntkjbjhbr3c8fjrw33sbs/Haier-SpecificationGuide-en-HRF450TW-HRF450TS-HRF450TG-RefrigeratorTopFreezer-0-90004641A-AU-NZ.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.95,
+        "source_type": "haier-official-specification_guide",
+        "raw_json_path": "data/pdf-evidence-raw/HRF450TG.json"
+      },
       "dimensions": {
         "height_mm": 1775,
         "width_mm": 700,
@@ -13736,15 +13744,7 @@
         "ventilation_required": true,
         "reversible_door": true
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/3ghntkjbjhbr3c8fjrw33sbs/Haier-SpecificationGuide-en-HRF450TW-HRF450TS-HRF450TG-RefrigeratorTopFreezer-0-90004641A-AU-NZ.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.95,
-        "source_type": "haier-official-specification_guide",
-        "raw_json_path": "data/pdf-evidence-raw/HRF450TG.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3573",
@@ -49090,6 +49090,14 @@
       "displayName": "Haier Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/qx986nsk67fvnrjgjjprh9g/Haier-SpecificationGuide-en-HDW13F0PS1-FreestandingDishwasher-0-90003697B-AU-NZ.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.95,
+        "source_type": "haier-official-specification_guide",
+        "raw_json_path": "data/pdf-evidence-raw/HDW13F0PS1.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 597,
@@ -49107,15 +49115,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/qx986nsk67fvnrjgjjprh9g/Haier-SpecificationGuide-en-HDW13F0PS1-FreestandingDishwasher-0-90003697B-AU-NZ.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.95,
-        "source_type": "haier-official-specification_guide",
-        "raw_json_path": "data/pdf-evidence-raw/HDW13F0PS1.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "dishwasher-adw1081",
@@ -57088,7 +57088,7 @@
       "brand": "BEKO",
       "model": "BFLB1010W",
       "w": 600,
-      "h": 845,
+      "h": 840,
       "d": 630,
       "kwh_year": 243,
       "stars": 5,
@@ -57106,7 +57106,33 @@
       "inferred_door_swing": true,
       "displayName": "BEKO Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 840,
+        "width_mm": 600,
+        "depth_mm": 630,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/457100052700-BFLB1010W/en-GB-457100052700-MDM2-USER-MANUAL-FILE-en-GB.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "beko-official",
+        "raw_json_path": "data/pdf-evidence-raw/BFLB1010W.json"
+      }
     },
     {
       "id": "washing_machine-acw1439",
@@ -57114,7 +57140,7 @@
       "brand": "BEKO",
       "model": "BFLB1020W",
       "w": 600,
-      "h": 845,
+      "h": 840,
       "d": 630,
       "kwh_year": 314,
       "stars": 5,
@@ -57132,7 +57158,33 @@
       "inferred_door_swing": true,
       "displayName": "BEKO Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 840,
+        "width_mm": 600,
+        "depth_mm": 630,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178557500-BFLB1020W/en-GB-7178557500-MDM2-USER-MANUAL-FILE-en-GB.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "beko-official",
+        "raw_json_path": "data/pdf-evidence-raw/BFLB1020W.json"
+      }
     },
     {
       "id": "washing_machine-acw1658",
@@ -57192,8 +57244,8 @@
       "brand": "BEKO",
       "model": "BFLB8010W",
       "w": 600,
-      "h": 845,
-      "d": 546,
+      "h": 840,
+      "d": 540,
       "kwh_year": 256,
       "stars": 5,
       "price": null,
@@ -57210,7 +57262,33 @@
       "inferred_door_swing": true,
       "displayName": "BEKO Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 840,
+        "width_mm": 600,
+        "depth_mm": 540,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/457100019700-BFLB8010W/en-GB-457100019700-MDM2-USER-MANUAL-FILE-en-GB.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "beko-official",
+        "raw_json_path": "data/pdf-evidence-raw/BFLB8010W.json"
+      }
     },
     {
       "id": "washing_machine-acw1287",
@@ -57236,7 +57314,33 @@
       "inferred_door_swing": true,
       "displayName": "BEKO Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 840,
+        "width_mm": 600,
+        "depth_mm": 550,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178552800-BFLB8020W/en-GB-7178552800-20221220081277-User-Manual---File-Longen-GB.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "beko-official",
+        "raw_json_path": "data/pdf-evidence-raw/BFLB8020W.json"
+      }
     },
     {
       "id": "washing_machine-acw1552",
@@ -57288,7 +57392,33 @@
       "inferred_door_swing": true,
       "displayName": "BEKO Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 840,
+        "width_mm": 600,
+        "depth_mm": 580,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178544400-BFLB902ADW/en-GB-7178544400-Manual-7178544400-en-US20220615-121505-579.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "beko-official",
+        "raw_json_path": "data/pdf-evidence-raw/BFLB902ADW.json"
+      }
     },
     {
       "id": "washing_machine-acw1214",
@@ -57314,7 +57444,33 @@
       "inferred_door_swing": true,
       "displayName": "BEKO Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 840,
+        "width_mm": 600,
+        "depth_mm": 580,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178543900-BFLB904ADG/en-GB-7178543900-MDM2-USER-MANUAL-FILE-en-GB.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "beko-official",
+        "raw_json_path": "data/pdf-evidence-raw/BFLB904ADG.json"
+      }
     },
     {
       "id": "washing_machine-acw1541",
@@ -57400,7 +57556,7 @@
       "brand": "BEKO",
       "model": "BWDB9540W",
       "w": 600,
-      "h": 845,
+      "h": 840,
       "d": 600,
       "kwh_year": 176,
       "stars": 4,
@@ -57418,7 +57574,33 @@
       "inferred_door_swing": true,
       "displayName": "BEKO Washing Machine",
       "readableSpec": "Front Loader",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "dimensions": {
+        "height_mm": 840,
+        "width_mm": 600,
+        "depth_mm": 600,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178544200-BWDB9540W/en-GB-7178544200-MDM2-USER-MANUAL-FILE-en-GB.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "beko-official",
+        "raw_json_path": "data/pdf-evidence-raw/BWDB9540W.json"
+      }
     },
     {
       "id": "w3",

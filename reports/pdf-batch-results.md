@@ -1,51 +1,49 @@
 # PDF Batch Results
 
-Run at: 2026-05-20T07:08:10.590Z
+Run at: 2026-05-20T07:52:02.223Z
 
 ## Successful Runs
 
 | SKU | Product | Category | Confidence | Source |
 | --- | --- | --- | ---: | --- |
-| HRF130UW2 | Haier | fridge | 0.95 | https://dam.fisherpaykel.com/KZ3PKN00/at/6jsb4hvrwtcxx3ctn7qj2j/Haier-SpecificationGuide-en-HRF130UW2-HRF130UG2-BarRefrigerator-0-90004783A-AU-NZ.pdf |
-| HRF210TG | Haier | fridge | 0.95 | https://dam.fisherpaykel.com/KZ3PKN00/at/78gk49chnb3wbnmh38wkh5b8/Haier-SpecificationGuide-en-HRF210TW-HRF210TS-HRF210TG-RefrigeratorTopFreezer-0-90004639A-AU-NZ.pdf |
-| HRF330TG | Haier | fridge | 0.95 | https://dam.fisherpaykel.com/KZ3PKN00/at/bsmh5cv59gr8tkjkf74f7/Haier-SpecificationGuide-en-HRF330TW-HRF330TS-HRF330TG-RefrigeratorTopFreezer-0-90004640A-AU-NZ.pdf |
-| HRF450TG | Haier | fridge | 0.95 | https://dam.fisherpaykel.com/KZ3PKN00/at/3ghntkjbjhbr3c8fjrw33sbs/Haier-SpecificationGuide-en-HRF450TW-HRF450TS-HRF450TG-RefrigeratorTopFreezer-0-90004641A-AU-NZ.pdf |
-| HDW13F0PS1 | Haier | dishwasher | 0.95 | https://dam.fisherpaykel.com/KZ3PKN00/at/qx986nsk67fvnrjgjjprh9g/Haier-SpecificationGuide-en-HDW13F0PS1-FreestandingDishwasher-0-90003697B-AU-NZ.pdf |
+| BFLB1010W | BEKO | washing_machine | 0.9 | https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/457100052700-BFLB1010W/en-GB-457100052700-MDM2-USER-MANUAL-FILE-en-GB.pdf |
+| BFLB1020W | BEKO | washing_machine | 0.9 | https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178557500-BFLB1020W/en-GB-7178557500-MDM2-USER-MANUAL-FILE-en-GB.pdf |
+| BFLB8010W | BEKO | washing_machine | 0.9 | https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/457100019700-BFLB8010W/en-GB-457100019700-MDM2-USER-MANUAL-FILE-en-GB.pdf |
+| BFLB8020W | BEKO | washing_machine | 0.9 | https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178552800-BFLB8020W/en-GB-7178552800-20221220081277-User-Manual---File-Longen-GB.pdf |
+| BFLB902ADW | BEKO | washing_machine | 0.9 | https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178544400-BFLB902ADW/en-GB-7178544400-Manual-7178544400-en-US20220615-121505-579.pdf |
+| BFLB904ADG | BEKO | washing_machine | 0.9 | https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178543900-BFLB904ADG/en-GB-7178543900-MDM2-USER-MANUAL-FILE-en-GB.pdf |
+| BWDB9540W | BEKO | washing_machine | 0.9 | https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7178544200-BWDB9540W/en-GB-7178544200-MDM2-USER-MANUAL-FILE-en-GB.pdf |
 
 ## Significant Discrepancies
 
 | SKU | Axis | Legacy | PDF | Delta |
 | --- | --- | ---: | ---: | ---: |
-| HDW13F0PS1 | depth | 610mm | 599mm | -11mm |
+| BFLB1010W | height | 845mm | 840mm | -5mm |
+| BFLB1020W | height | 845mm | 840mm | -5mm |
+| BFLB8010W | height | 845mm | 840mm | -5mm |
+| BFLB8010W | depth | 546mm | 540mm | -6mm |
+| BWDB9540W | height | 845mm | 840mm | -5mm |
 
 ## Failures
 
 | SKU | Product | Reason |
 | --- | --- | --- |
-| HCF137W | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
-| HCF140W | Haier | Haier parser requires explicit Overall height, width, and depth. |
-| HCF194W | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
-| HCF195W | Haier | Haier parser requires explicit Overall height, width, and depth. |
-| HCF300W | Haier | Haier parser requires explicit Overall height, width, and depth. |
-| HCF301W | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
-| HCF97W | Haier | Haier parser requires explicit Overall height, width, and depth. |
-| HRB227W | Haier | Haier product page not found for HRB227W |
-| HRF200TW | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
-| HRF220TW3 | Haier | Haier product page not found for HRF220TW3 |
-| HRF230BW | Haier | Haier product page not found for HRF230BW |
-| HRF318BS | Haier | Haier product page not found for HRF318BS |
-| HRF340B Series | Haier | Haier product page not found for HRF340B Series |
-| HRF340BS2 | Haier | Haier product page not found for HRF340BS2 |
-| HRF346BS | Haier | Haier product page not found for HRF346BS |
-| HRF40UW2 | Haier | Haier parser requires explicit cavity dimensions before ingest. |
-| HRF510FHC | Haier | Haier parser requires explicit Overall height, width, and depth. |
-| HRF523XHG Series | Haier | Haier parser requires explicit Overall height, width, and depth. |
-| HRF680YZC | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
-| HVF260WH3 | Haier | Haier product page not found for HVF260WH3 |
-| HVF430VW | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
-| HVF90VW | Haier | Haier parser requires explicit cavity dimensions before ingest. |
-| HDW10F1S1 | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
-| HDW13V1W1 | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
-| HDW9TFE3SS2 | Haier | Haier product page not found for HDW9TFE3SS2 |
-| HWMSP60 | Haier | Haier product page not found for HWMSP60 |
-| HWMSP70 | Haier | Haier product page not found for HWMSP70 |
+| BBM230W | BEKO | Beko official PDF resources not found for BBM230W: |
+| BBM335W | BEKO | Beko official PDF resources not found for BBM335W: |
+| BDF1401X | BEKO | Beko parser requires explicit Height, Width and Depth rows. |
+| BDF1410W | BEKO | Beko official PDF resources not found for BDF1410W: |
+| BDFB1410X | BEKO | Beko parser requires explicit Height, Width and Depth rows. |
+| BDFB1420X | BEKO | Beko official PDF resources not found for BDFB1420X: |
+| BDFB1430B | BEKO | Beko parser requires explicit Height, Width and Depth rows. |
+| BDFB1630W | BEKO | Beko parser requires explicit Height, Width and Depth rows. |
+| BDI1420 | BEKO | Beko parser requires explicit Height, Width and Depth rows. |
+| BDCB8020W | BEKO | Beko parser requires explicit freestanding/built-in context before accepting zero clearance. |
+| BFL104ADW | BEKO | Beko official PDF resources not found for BFL104ADW: |
+| BFL7510W | BEKO | Beko official PDF resources not found for BFL7510W: |
+| BFL7520W | BEKO | Beko official PDF resources not found for BFL7520W: |
+| BFLB123ADW | BEKO | Beko official PDF resources not found for BFLB123ADW: |
+| BFLB124ADW | BEKO | Beko official PDF resources not found for BFLB124ADW: |
+| BFLB9010W | BEKO | Beko official PDF resources not found for BFLB9010W: |
+| BTL10W | BEKO | Beko parser requires explicit Height, Width and Depth rows. |
+| BTL90W | BEKO | Beko official PDF resources not found for BTL90W: |
+| BWDB8420W | BEKO | Beko parser requires explicit Height, Width and Depth rows. |
