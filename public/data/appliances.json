@@ -550,7 +550,12 @@
       "inferred_door_swing": true,
       "displayName": "Artusi Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 24
+      "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://artusi.com.au/wp-content/uploads/2025/11/PF_ADW5009_Artusi-1.pdf",
+        "verified_at": "2026-05-20"
+      }
     },
     {
       "id": "dishwasher-adw0850",
