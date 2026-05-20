@@ -5,9 +5,9 @@ Generated: 2026-05-20
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1728
-- Missing PDF evidence: 1813
-- Overall coverage: 48.8%
+- Verified with PDF evidence: 1734
+- Missing PDF evidence: 1807
+- Overall coverage: 49.0%
 
 ## Coverage By Brand
 
@@ -24,7 +24,7 @@ Generated: 2026-05-20
 | Esatto | 102 | 74 | 28 | 72.5% |
 | Samsung | 97 | 93 | 4 | 95.9% |
 | Miele | 86 | 33 | 53 | 38.4% |
-| Electrolux | 85 | 55 | 30 | 64.7% |
+| Electrolux | 85 | 61 | 24 | 71.8% |
 | Beko | 82 | 82 | 0 | 100.0% |
 | CHIQ | 82 | 39 | 43 | 47.6% |
 | Omega | 65 | 26 | 39 | 40.0% |

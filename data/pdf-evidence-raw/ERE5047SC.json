@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3869",
+  "category": "fridge",
+  "brand": "Electrolux",
+  "model": "ERE5047SC",
+  "source_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTI1&lang=",
+  "verified_at": "2026-05-20",
+  "extracted": {
+    "brand": "Electrolux",
+    "sku": "ERE5047SC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1725,
+      "width_mm": 699,
+      "depth_mm": 773,
+      "door_open_90_depth_mm": 1360
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 30,
+      "right_mm": 30,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTI1&lang=",
+      "extraction_date": "2026-05-20T05:52:46.029Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
+    }
+  }
+}

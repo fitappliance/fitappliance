@@ -1,58 +1,62 @@
 # PDF Batch Results
 
-Run at: 2026-05-20T04:40:23.850Z
+Run at: 2026-05-20T05:53:01.433Z
 
 ## Successful Runs
 
 | SKU | Product | Category | Confidence | Source |
 | --- | --- | --- | ---: | --- |
-| TFF334WNTAH | TECO | fridge | 0.88 | https://appliances.teco.com.au/wp-content/uploads/sites/2/2024/07/TFF334WNTAH-User-Manual.pdf |
-| TFF415WNTAH | TECO | fridge | 0.88 | https://www.teco.com.au/wp-content/uploads/2024/10/TFF415WNTAH-User-Manual-v1s.pdf |
+| EBE4507SC | Electrolux | fridge | 0.9 | https://resource.electrolux.com.au/Public/File/?Id=51297 |
+| EBE5307SC | Electrolux | fridge | 0.9 | https://resource.electrolux.com.au/Public/File/?Id=51296 |
+| EFE4227SC | Electrolux | fridge | 0.9 | https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTI1&lang= |
+| EHE6899SA | Electrolux | fridge | 0.9 | https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTQ1&lang= |
+| EQE5607BA | Electrolux | fridge | 0.9 | https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTY3OTM1&lang= |
+| ERE5047SC | Electrolux | fridge | 0.9 | https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTI1&lang= |
 
 ## Significant Discrepancies
 
 | SKU | Axis | Legacy | PDF | Delta |
 | --- | --- | ---: | ---: | ---: |
-| TFF415WNTAH | width | 700mm | 710mm | +10mm |
-| TFF415WNTAH | depth | 680mm | 685mm | +5mm |
+| EBE4507SC | width | 1725mm | 699mm | -1026mm |
+| EBE4507SC | height | 699mm | 1725mm | +1026mm |
+| EBE4507SC | depth | 723mm | 773mm | +50mm |
+| EBE5307SC | width | 1725mm | 796mm | -929mm |
+| EBE5307SC | height | 796mm | 1725mm | +929mm |
+| EFE4227SC | width | 1725mm | 699mm | -1026mm |
+| EFE4227SC | height | 699mm | 1725mm | +1026mm |
+| EHE6899SA | width | 1782mm | 913mm | -869mm |
+| EHE6899SA | height | 913mm | 1782mm | +869mm |
+| EHE6899SA | depth | 803mm | 746mm | -57mm |
+| EQE5607BA | width | 1795mm | 896mm | -899mm |
+| EQE5607BA | height | 896mm | 1795mm | +899mm |
+| ERE5047SC | width | 1725mm | 699mm | -1026mm |
+| ERE5047SC | height | 699mm | 1725mm | +1026mm |
 
 ## Failures
 
 | SKU | Product | Reason |
 | --- | --- | --- |
-| TAF230WMPCM | TECO | TECO official documents failed: user_manual: TECO fridge parser requires Width, Depth, and Height in Specifications. |
-| TBF115GBAH | TECO | TECO product page not found for TBF115GBAH |
-| TBF117WMDAG | TECO | TECO product page not found for TBF117WMDAG |
-| TBF121WMAH | TECO | TECO official PDF resources not found for TBF121WMAH: https://appliances.teco.com.au/product/121l-silver-bar-fridge/: no exact SKU PDF resources \| https://appliances.teco.com.au/product/121l-white-bar-fridge/: no exact SKU PDF resources |
-| TBF41WMAH | TECO | TECO product page not found for TBF41WMAH |
-| TBF45WMAG | TECO | TECO official documents failed: user_manual: TECO fridge parser requires Width, Depth, and Height in Specifications. |
-| TBF74WMDBW | TECO | TECO product page not found for TBF74WMDBW |
-| TBF75WMAH | TECO | TECO official documents failed: user_manual: TECO fridge parser requires Width, Depth, and Height in Specifications. |
-| TBF85WMTAH | TECO | TECO product page not found for TBF85WMTAH |
-| TBF86WMTAG | TECO | TECO product page not found for TBF86WMTAG |
-| TCF142WMIH | TECO | TECO official documents failed: user_manual: TECO fridge parser requires Width, Depth, and Height in Specifications. |
-| TCF198WMIH | TECO | TECO official PDF resources not found for TCF198WMIH: https://appliances.teco.com.au/product/198l-chest-freezer/: no exact SKU PDF resources |
-| TFF203SNTDM | TECO | TECO product page not found for TFF203SNTDM |
-| TFF203WNTDM | TECO | TECO official documents failed: user_manual: TECO fridge parser requires Width, Depth, and Height in Specifications. |
-| TFF236SNTDM | TECO | TECO product page not found for TFF236SNTDM |
-| TFF236WNTDM | TECO | TECO official documents failed: user_manual: TECO parser could not verify SKU TFF236WNTDM against document text. |
-| TFF278WNTAG | TECO | TECO product page not found for TFF278WNTAG |
-| TFF513WNTVAH | TECO | TECO product page not found for TFF513WNTVAH |
-| TVF161WNAH | TECO | TECO official documents failed: user_manual: TECO fridge parser requires Width, Depth, and Height in Specifications. |
-| TVF162WMPCM | TECO | TECO product page not found for TVF162WMPCM |
-| TVF84WMBM | TECO | TECO product page not found for TVF84WMBM |
-| TVF91WMAH | TECO | TECO product page not found for TVF91WMAH |
-| TDW06WCM | TECO | TECO official documents failed: user_manual: TECO DISHWASHER parser requires explicit full clearance data before ingest. |
-| TDW09FIAM | TECO | TECO official documents failed: user_manual: TECO DISHWASHER parser requires explicit full clearance data before ingest. |
-| TDW09WAM | TECO | TECO official documents failed: user_manual: TECO DISHWASHER parser requires explicit full clearance data before ingest. |
-| TDW14FIAM | TECO | TECO official documents failed: user_manual: TECO DISHWASHER parser requires explicit full clearance data before ingest. |
-| TDW14WBM | TECO | TECO official PDF resources not found for TDW14WBM: https://appliances.teco.com.au/product/60cm-freestanding-white-14-place-setting/: no exact SKU PDF resources |
-| TWM100TCM | TECO | TECO official PDF resources not found for TWM100TCM: https://appliances.teco.com.au/product/10kg-top-load-washing-machine/: no exact SKU PDF resources |
-| TWM100TTBH | TECO | TECO official documents failed: user_manual: TECO parser could not verify SKU TWM100TTBH against document text. |
-| TWM120TDVAW | TECO | TECO product page not found for TWM120TDVAW |
-| TWM55TCM | TECO | TECO official PDF resources not found for TWM55TCM: https://appliances.teco.com.au/product/5-5kg-top-load-washing-machine/: no exact SKU PDF resources |
-| TWM60FAS | TECO | TECO product page not found for TWM60FAS |
-| TWM60TAW | TECO | TECO product page not found for TWM60TAW |
-| TWM70TAW | TECO | TECO product page not found for TWM70TAW |
-| TWM80FAS | TECO | TECO official PDF resources not found for TWM80FAS: https://appliances.teco.com.au/product/8kg-family-front-load-washer/: no exact SKU PDF resources |
-| TWM85TAW | TECO | TECO product page not found for TWM85TAW |
+| EBE4302BD | Electrolux | Electrolux parser requires an explicit Dimensions table. |
+| EBE5002SD-R | Electrolux | Electrolux parser requires an explicit Dimensions table. |
+| EBE5367BC | Electrolux | Electrolux product page not found for EBE5367BC |
+| EHE5267B Bottom Mount 520L | Electrolux | Electrolux parser could not verify SKU EHE5267B Bottom Mount 520L against document model tokens. |
+| EHE6191SB | Electrolux | Electrolux product page not found for EHE6191SB |
+| EQE5757BB | Electrolux | Electrolux product page not found for EQE5757BB |
+| EQE6160BA | Electrolux | Electrolux product page not found for EQE6160BA |
+| EQE6870SA | Electrolux | Electrolux PDF not found: https://www.electrolux.com.au/support/eqe6870sa/: no downloadable PDF links |
+| ESF6604XB | Electrolux | Electrolux PDF not found: https://www.electrolux.com.au/support/esf6604xb/: no downloadable PDF links |
+| ESF8725RKX | Electrolux | Electrolux PDF not found: https://www.electrolux.com.au/support/esf8725rkx/: no downloadable PDF links |
+| ESF97400RKX | Electrolux | Electrolux PDF not found: https://www.electrolux.com.au/support/esf97400rkx/: no downloadable PDF links |
+| ESL79200RO | Electrolux | Electrolux PDF not found: https://www.electrolux.com.au/support/esl79200ro/: no downloadable PDF links |
+| KESB7200L UltimateCare — 14 Place | Electrolux | Electrolux product page not found for KESB7200L UltimateCare — 14 Place |
+| EWW1043R7 | Electrolux | Electrolux parser could not verify SKU EWW1043R7 against document model tokens. |
+| EWW1242R9 | Electrolux | Electrolux parser could not verify SKU EWW1242R9 against document model tokens. |
+| EWW1243R7 | Electrolux | Electrolux parser could not verify SKU EWW1243R7 against document model tokens. |
+| EWF1042R9SC | Electrolux | Electrolux WASHING_MACHINE parser requires explicit airspace and dimension rows. |
+| EWF1242R9 | Electrolux | Electrolux parser could not verify SKU EWF1242R9 against document model tokens. |
+| EWF1243R7 | Electrolux | Electrolux parser could not verify SKU EWF1243R7 against document model tokens. |
+| EWF9024Q5SB | Electrolux | Electrolux product page not found for EWF9024Q5SB |
+| EWW1043R7SCS | Electrolux | Electrolux parser could not verify SKU EWW1043R7SCS against document model tokens. |
+| EWW1242R9WC | Electrolux | Electrolux WASHING_MACHINE parser requires explicit airspace and dimension rows. |
+| EWW1243R7WC | Electrolux | Electrolux parser could not verify SKU EWW1243R7WC against document model tokens. |
+| WE170V | Electrolux | Electrolux product page not found for WE170V |

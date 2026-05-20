@@ -1,28 +1,28 @@
 {
   "summary": {
-    "totalPages": 2546,
-    "totalEdges": 25601,
+    "totalPages": 2552,
+    "totalEdges": 25649,
     "orphanPages": 0,
-    "averageInlinks": 10.06
+    "averageInlinks": 10.05
   },
   "orphanUrls": [],
   "nodes": [
     {
       "url": "/",
       "file": "index.html",
-      "inlinks": 2545,
+      "inlinks": 2551,
       "outlinks": 12
     },
     {
       "url": "/about",
       "file": "pages/about.html",
-      "inlinks": 1734,
+      "inlinks": 1740,
       "outlinks": 7
     },
     {
       "url": "/about/editorial-standards",
       "file": "pages/about/editorial-standards.html",
-      "inlinks": 2545,
+      "inlinks": 2551,
       "outlinks": 4
     },
     {
@@ -2986,7 +2986,7 @@
     {
       "url": "/contact",
       "file": "pages/contact.html",
-      "inlinks": 1732,
+      "inlinks": 1738,
       "outlinks": 7
     },
     {
@@ -4882,13 +4882,13 @@
     {
       "url": "/methodology",
       "file": "pages/methodology.html",
-      "inlinks": 2545,
+      "inlinks": 2551,
       "outlinks": 4
     },
     {
       "url": "/privacy",
       "file": "pages/privacy.html",
-      "inlinks": 1732,
+      "inlinks": 1738,
       "outlinks": 7
     },
     {
@@ -4901,7 +4901,7 @@
       "url": "/products",
       "file": "pages/products.html",
       "inlinks": 1,
-      "outlinks": 1734
+      "outlinks": 1740
     },
     {
       "url": "/products/artusi-adw5009x-dishwasher-adw1249",
@@ -7040,6 +7040,12 @@
       "outlinks": 7
     },
     {
+      "url": "/products/electrolux-ebe4507sc-fridge-arf2489",
+      "file": "pages/products/electrolux-ebe4507sc-fridge-arf2489.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/electrolux-ebe5307bb-l-ao-71184",
       "file": "pages/products/electrolux-ebe5307bb-l-ao-71184.html",
       "inlinks": 1,
@@ -7054,6 +7060,12 @@
     {
       "url": "/products/electrolux-ebe5307sb-l-ao-71186",
       "file": "pages/products/electrolux-ebe5307sb-l-ao-71186.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/electrolux-ebe5307sc-fridge-arf2400",
+      "file": "pages/products/electrolux-ebe5307sc-fridge-arf2400.html",
       "inlinks": 1,
       "outlinks": 7
     },
@@ -7136,6 +7148,12 @@
       "outlinks": 7
     },
     {
+      "url": "/products/electrolux-efe4227sc-fridge-arf3828",
+      "file": "pages/products/electrolux-efe4227sc-fridge-arf3828.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/electrolux-efe4227sc-l-ao-86300",
       "file": "pages/products/electrolux-efe4227sc-l-ao-86300.html",
       "inlinks": 1,
@@ -7172,6 +7190,18 @@
       "outlinks": 7
     },
     {
+      "url": "/products/electrolux-ehe6899sa-fridge-arf2393",
+      "file": "pages/products/electrolux-ehe6899sa-fridge-arf2393.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/electrolux-eqe5607ba-fridge-arf2939",
+      "file": "pages/products/electrolux-eqe5607ba-fridge-arf2939.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/electrolux-eqe5657ba-fridge-arf2940",
       "file": "pages/products/electrolux-eqe5657ba-fridge-arf2940.html",
       "inlinks": 1,
@@ -7186,6 +7216,12 @@
     {
       "url": "/products/electrolux-ere5047sb-ao-71192",
       "file": "pages/products/electrolux-ere5047sb-ao-71192.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/electrolux-ere5047sc-fridge-arf3869",
+      "file": "pages/products/electrolux-ere5047sc-fridge-arf3869.html",
       "inlinks": 1,
       "outlinks": 7
     },
@@ -15274,7 +15310,7 @@
     {
       "url": "/terms",
       "file": "pages/terms.html",
-      "inlinks": 1732,
+      "inlinks": 1738,
       "outlinks": 7
     },
     {
