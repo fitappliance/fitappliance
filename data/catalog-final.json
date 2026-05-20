@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1764,
-    "merged_products": 1747,
+    "evidence_files": 1766,
+    "merged_products": 1749,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -29,7 +29,7 @@
       "dishwasher": 387,
       "dryer": 100,
       "fridge": 989,
-      "washing_machine": 269,
+      "washing_machine": 271,
       "washtower_combo": 2
     }
   },
@@ -20929,6 +20929,14 @@
       "displayName": "Inalto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://inalto.house/s/IBF129S-W_Manual_V10.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/IBF129S.json"
+      },
       "dimensions": {
         "height_mm": 860,
         "width_mm": 501,
@@ -20946,15 +20954,7 @@
         "ventilation_required": true,
         "reversible_door": true
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://inalto.house/s/IBF129S-W_Manual_V10.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/IBF129S.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3650",
@@ -20981,6 +20981,14 @@
       "displayName": "Inalto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://inalto.house/s/IBF46W_UserManual_V21-0322.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/IBF46W.json"
+      },
       "dimensions": {
         "height_mm": 492,
         "width_mm": 472,
@@ -20998,15 +21006,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://inalto.house/s/IBF46W_UserManual_V21-0322.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/IBF46W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3651",
@@ -21111,6 +21111,14 @@
       "displayName": "Inalto Fridge",
       "readableSpec": "Chest",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://inalto.house/s/ICF142B2_ICF198B2_UserManual-V13-0825-WEB-g83d.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ICF142B2.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 600,
@@ -21128,15 +21136,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://inalto.house/s/ICF142B2_ICF198B2_UserManual-V13-0825-WEB-g83d.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/ICF142B2.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3655",
@@ -21163,6 +21163,14 @@
       "displayName": "Inalto Fridge",
       "readableSpec": "Chest",
       "priorityScore": 18,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://inalto.house/s/ICF142W2_ICF198W2_UserManual_V14.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ICF142W2.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 632,
@@ -21180,15 +21188,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://inalto.house/s/ICF142W2_ICF198W2_UserManual_V14.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/ICF142W2.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3660",
@@ -21215,6 +21215,14 @@
       "displayName": "Inalto Fridge",
       "readableSpec": "Chest",
       "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://inalto.house/s/ICF142B2_ICF198B2_UserManual-V13-0825-WEB.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ICF198B2.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 770,
@@ -21232,15 +21240,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://inalto.house/s/ICF142B2_ICF198B2_UserManual-V13-0825-WEB.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/ICF198B2.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3217",
@@ -21423,6 +21423,14 @@
       "displayName": "Inalto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://inalto.house/s/IUF172W_UserManual_V20-63k8.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/IUF172W.json"
+      },
       "dimensions": {
         "height_mm": 1420,
         "width_mm": 550,
@@ -21440,15 +21448,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://inalto.house/s/IUF172W_UserManual_V20-63k8.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/IUF172W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2454",
@@ -21527,6 +21527,14 @@
       "displayName": "Inalto Fridge",
       "readableSpec": "Upright",
       "priorityScore": 12,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://inalto.house/s/IUL237W_UserManual_V20-FA.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/IUL237W.json"
+      },
       "dimensions": {
         "height_mm": 1420,
         "width_mm": 550,
@@ -21544,15 +21552,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://inalto.house/s/IUL237W_UserManual_V20-FA.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/IUL237W.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2442",
@@ -68158,7 +68158,33 @@
       "inferred_door_swing": true,
       "displayName": "Vogue Washing Machine",
       "readableSpec": "Top Loader",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 1070,
+        "width_mm": 640,
+        "depth_mm": 684,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 45
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://trade-depot.s3.ap-southeast-2.amazonaws.com/files/products/manuals/360113_User_Manual.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.88,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/360113.json"
+      }
     },
     {
       "id": "washing_machine-zcw0239",
@@ -68184,7 +68210,33 @@
       "inferred_door_swing": true,
       "displayName": "Vogue Washing Machine",
       "readableSpec": "Top Loader",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "dimensions": {
+        "height_mm": 1060,
+        "width_mm": 601,
+        "depth_mm": 700,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 20,
+        "right_mm": 20,
+        "rear_mm": 45
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://trade-depot.s3.ap-southeast-2.amazonaws.com/files/products/manuals/360116_User_Manual.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.88,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/360116.json"
+      }
     },
     {
       "id": "washing_machine-zcw0252",

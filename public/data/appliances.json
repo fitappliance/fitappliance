@@ -59578,7 +59578,12 @@
       "inferred_door_swing": true,
       "displayName": "Vogue Washing Machine",
       "readableSpec": "Top Loader",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://trade-depot.s3.ap-southeast-2.amazonaws.com/files/products/manuals/360113_User_Manual.pdf",
+        "verified_at": "2026-05-20"
+      }
     },
     {
       "id": "washing_machine-zcw0239",
@@ -59604,7 +59609,12 @@
       "inferred_door_swing": true,
       "displayName": "Vogue Washing Machine",
       "readableSpec": "Top Loader",
-      "priorityScore": 30
+      "priorityScore": 30,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://trade-depot.s3.ap-southeast-2.amazonaws.com/files/products/manuals/360116_User_Manual.pdf",
+        "verified_at": "2026-05-20"
+      }
     },
     {
       "id": "washing_machine-zcw0252",

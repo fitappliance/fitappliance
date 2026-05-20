@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "washing_machine-zcw0239",
+  "category": "washing_machine",
+  "brand": "VOGUE",
+  "model": "360116",
+  "source_url": "https://trade-depot.s3.ap-southeast-2.amazonaws.com/files/products/manuals/360116_User_Manual.pdf",
+  "verified_at": "2026-05-20",
+  "extracted": {
+    "brand": "VOGUE",
+    "sku": "360116",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 1060,
+      "width_mm": 601,
+      "depth_mm": 700,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 20,
+      "right_mm": 20,
+      "rear_mm": 45
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://trade-depot.s3.ap-southeast-2.amazonaws.com/files/products/manuals/360116_User_Manual.pdf",
+      "extraction_date": "2026-05-20T09:07:41.007Z",
+      "confidence_score": 0.88,
+      "source_type": "manual-evidence"
+    }
+  }
+}

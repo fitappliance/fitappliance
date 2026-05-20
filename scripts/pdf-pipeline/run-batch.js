@@ -56,6 +56,8 @@ const { findBekoOfficialPdf } = require('./beko-official');
 const { parseBekoText } = require('./parsers/beko');
 const { findInaltoOfficialPdf } = require('./inalto-official');
 const { parseInaltoText } = require('./parsers/inalto');
+const { findVogueOfficialPdf } = require('./vogue-official');
+const { parseVogueText } = require('./parsers/vogue');
 const { discoverThirdPartyPdf } = require('./third-party-fallback');
 
 const MISSING_API_KEY_MESSAGE = 'Missing API Key in .env file';
@@ -75,6 +77,7 @@ const HAIER_MAX_BYTES = 30 * 1024 * 1024;
 const BEKO_MAX_BYTES = 30 * 1024 * 1024;
 const BEKO_BROWSER_USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36';
 const INALTO_MAX_BYTES = 30 * 1024 * 1024;
+const VOGUE_MAX_BYTES = 30 * 1024 * 1024;
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -319,6 +322,13 @@ function isBekoTarget(target = {}) {
 
 function isInaltoTarget(target = {}) {
   return /\binalto\b/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isVogueTarget(target = {}) {
+  return /\bvogue\b/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -2089,6 +2099,50 @@ async function parseInaltoTarget({
   };
 }
 
+async function parseVogueTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  vogueOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await vogueOfficialFinder(target, { timeoutMs: 30_000 });
+  const sourceUrl = manualSourceUrl || official?.sourceUrl;
+  if (!sourceUrl) {
+    throw new Error(official?.reason || 'VOGUE official PDF resources not found');
+  }
+  const source = manualSourceUrl ? 'manual-evidence' : (official?.source || 'vogue-official');
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}-${slugPathPart(source)}.pdf`
+  );
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath, {
+    force: true,
+    retries: 1,
+    timeoutMs: 60_000,
+    maxBytes: VOGUE_MAX_BYTES
+  });
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseVogueText(textResult.text, {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString()
+  });
+
+  return {
+    candidate: annotateSourceMetadata(parsed.data, source),
+    sourceUrl,
+    source
+  };
+}
+
 function compareDimensions(product, strictData, { thresholdMm = 5 } = {}) {
   const dimensions = strictData?.dimensions || {};
   const pairs = [
@@ -2230,6 +2284,7 @@ async function runBatch({
   artusiOfficialFinder = findArtusiOfficialPdf,
   bekoOfficialFinder = findBekoOfficialPdf,
   inaltoOfficialFinder = findInaltoOfficialPdf,
+  vogueOfficialFinder = findVogueOfficialPdf,
   includeArchived = false,
   brand = null
 } = {}) {
@@ -2268,6 +2323,7 @@ async function runBatch({
     && !isArtusiTarget(target)
     && !isBekoTarget(target)
     && !isInaltoTarget(target)
+    && !isVogueTarget(target)
   ));
   if (needsDefaultLlm) {
     assertOpenAiApiKey(env);
@@ -2539,6 +2595,18 @@ async function runBatch({
         sourceUrl = parsed.sourceUrl;
         source = parsed.source;
         candidate = parsed.candidate;
+      } else if (!parseTextImpl && isVogueTarget(target)) {
+        const parsed = await parseVogueTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          vogueOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
       } else {
         const resolved = await findGenericPdfSource(target, {
           repoRoot,
@@ -2691,3 +2759,4 @@ exports.parseSubZeroTarget = parseSubZeroTarget;
 exports.parseArtusiTarget = parseArtusiTarget;
 exports.parseBekoTarget = parseBekoTarget;
 exports.parseInaltoTarget = parseInaltoTarget;
+exports.parseVogueTarget = parseVogueTarget;

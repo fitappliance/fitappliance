@@ -5,9 +5,9 @@ Generated: 2026-05-20
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1753
-- Missing PDF evidence: 1788
-- Overall coverage: 49.5%
+- Verified with PDF evidence: 1755
+- Missing PDF evidence: 1786
+- Overall coverage: 49.6%
 
 ## Coverage By Brand
 
@@ -35,7 +35,7 @@ Generated: 2026-05-20
 | Robinhood | 46 | 9 | 37 | 19.6% |
 | ASKO | 42 | 29 | 13 | 69.0% |
 | Inalto | 41 | 7 | 34 | 17.1% |
-| VOGUE | 41 | 0 | 41 | 0.0% |
+| VOGUE | 41 | 2 | 39 | 4.9% |
 | Eurotech | 38 | 0 | 38 | 0.0% |
 | Sub-Zero | 38 | 7 | 31 | 18.4% |
 | TECO | 38 | 2 | 36 | 5.3% |
