@@ -5,9 +5,9 @@ Generated: 2026-05-20
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1739
-- Missing PDF evidence: 1802
-- Overall coverage: 49.1%
+- Verified with PDF evidence: 1746
+- Missing PDF evidence: 1795
+- Overall coverage: 49.3%
 
 ## Coverage By Brand
 
@@ -43,7 +43,7 @@ Generated: 2026-05-20
 | TCL | 37 | 7 | 30 | 18.9% |
 | HELLER | 35 | 0 | 35 | 0.0% |
 | Living & Co | 28 | 0 | 28 | 0.0% |
-| BEKO | 27 | 1 | 26 | 3.7% |
+| BEKO | 27 | 8 | 19 | 29.6% |
 | Panasonic | 27 | 0 | 27 | 0.0% |
 | SEIKI | 27 | 0 | 27 | 0.0% |
 | Solt | 26 | 0 | 26 | 0.0% |

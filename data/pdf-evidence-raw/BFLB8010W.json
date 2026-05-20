@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "washing_machine-acw1645",
+  "category": "washing_machine",
+  "brand": "BEKO",
+  "model": "BFLB8010W",
+  "source_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/457100019700-BFLB8010W/en-GB-457100019700-MDM2-USER-MANUAL-FILE-en-GB.pdf",
+  "verified_at": "2026-05-20",
+  "extracted": {
+    "brand": "Beko",
+    "sku": "BFLB8010W",
+    "category": "WASHING_MACHINE",
+    "dimensions": {
+      "height_mm": 840,
+      "width_mm": 600,
+      "depth_mm": 540,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/457100019700-BFLB8010W/en-GB-457100019700-MDM2-USER-MANUAL-FILE-en-GB.pdf",
+      "extraction_date": "2026-05-20T07:51:49.557Z",
+      "confidence_score": 0.9,
+      "source_type": "beko-official"
+    }
+  }
+}
