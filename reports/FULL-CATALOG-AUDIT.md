@@ -5,9 +5,9 @@ Generated: 2026-05-20
 ## Summary
 
 - Total SKUs: 3541
-- Verified with PDF evidence: 1705
-- Missing PDF evidence: 1836
-- Overall coverage: 48.2%
+- Verified with PDF evidence: 1712
+- Missing PDF evidence: 1829
+- Overall coverage: 48.3%
 
 ## Coverage By Brand
 
@@ -37,7 +37,7 @@ Generated: 2026-05-20
 | Inalto | 41 | 0 | 41 | 0.0% |
 | VOGUE | 41 | 0 | 41 | 0.0% |
 | Eurotech | 38 | 0 | 38 | 0.0% |
-| Sub-Zero | 38 | 0 | 38 | 0.0% |
+| Sub-Zero | 38 | 7 | 31 | 18.4% |
 | TECO | 38 | 0 | 38 | 0.0% |
 | Euromaid | 37 | 0 | 37 | 0.0% |
 | TCL | 37 | 7 | 30 | 18.9% |

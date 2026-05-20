@@ -1909,3 +1909,81 @@ test('runBatch processes Omega exact official specification sheets without an AP
     rear_mm: 0
   });
 });
+
+test('runBatch processes Sub-Zero official built-in QRGs without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'sub-zero-icbbi-36f',
+    brand: 'Sub-Zero',
+    sku: 'ICBBI-36F/O-RH',
+    category: 'fridge',
+    product: {
+      id: 'sub-zero-icbbi-36f',
+      cat: 'fridge',
+      brand: 'Sub-Zero',
+      model: 'ICBBI-36F/O-RH',
+      w: 914,
+      h: 2134,
+      d: 610,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    subZeroOfficialFinder: async () => ({
+      sourceUrl: 'https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36f/icb-built-in-refrigeration-qr-sheet-36fo-st.pdf',
+      source: 'sub-zero-official-quick_reference_guide',
+      resourceType: 'quick_reference_guide',
+      resources: [
+        {
+          sourceUrl: 'https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36f/icb-built-in-refrigeration-qr-sheet-36fo-st.pdf',
+          source: 'sub-zero-official-quick_reference_guide',
+          resourceType: 'quick_reference_guide',
+          score: 100
+        }
+      ]
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: `
+        91 CM BUILT-IN FREEZER - PANEL READY
+        I C B B I - 3 6 F / O
+
+        PRODUCT SPECIFICATIONS
+        Model ICBBI-36F/O
+        Dimensions 914mmW x 2134mmH x 610mmD
+        Plumbing Supply 6.35 mm OD copper line
+
+        DIMENSIONS
+        STANDARD INSTALLATION
+        OPENING HEIGHT
+        OPENING DEPTH
+        OPENING WIDTH
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'ICBBI-36F-O-RH.json'), 'utf8'));
+  assert.equal(raw.extracted.metadata.source_type, 'sub-zero-official-quick_reference_guide');
+  assert.deepEqual(raw.extracted.dimensions, {
+    height_mm: 2134,
+    width_mm: 914,
+    depth_mm: 610,
+    door_open_90_depth_mm: null
+  });
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 0,
+    right_mm: 0,
+    rear_mm: 0
+  });
+});

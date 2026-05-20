@@ -165202,6 +165202,314 @@
           }
         }
       ]
+    },
+    "fridge-arf2134": {
+      "category": "fridge",
+      "brand": "Sub-Zero",
+      "model": "ICBBI-36F/O-RH",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36f/icb-built-in-refrigeration-qr-sheet-36fo-st.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/ICBBI-36F-O-RH.json",
+          "extracted": {
+            "brand": "Sub-Zero",
+            "sku": "ICBBI-36F/O-RH",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 2134,
+              "width_mm": 914,
+              "depth_mm": 610,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36f/icb-built-in-refrigeration-qr-sheet-36fo-st.pdf",
+              "extraction_date": "2026-05-20T02:03:33.734Z",
+              "confidence_score": 0.9,
+              "source_type": "sub-zero-official-quick_reference_guide"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2141": {
+      "category": "fridge",
+      "brand": "Sub-Zero",
+      "model": "ICBBI-36R/O-LH",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36r/icb-built-in-refrigeration-qr-sheet-36ro-st.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/ICBBI-36R-O-LH.json",
+          "extracted": {
+            "brand": "Sub-Zero",
+            "sku": "ICBBI-36R/O-LH",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 2134,
+              "width_mm": 914,
+              "depth_mm": 610,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36r/icb-built-in-refrigeration-qr-sheet-36ro-st.pdf",
+              "extraction_date": "2026-05-20T02:03:39.351Z",
+              "confidence_score": 0.9,
+              "source_type": "sub-zero-official-quick_reference_guide"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2180": {
+      "category": "fridge",
+      "brand": "Sub-Zero",
+      "model": "ICBBI-36S/S/TH",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36s/icb-built-in-refrigeration-qr-sheet-36ss-st.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/ICBBI-36S-S-TH.json",
+          "extracted": {
+            "brand": "Sub-Zero",
+            "sku": "ICBBI-36S/S/TH",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 2134,
+              "width_mm": 914,
+              "depth_mm": 610,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36s/icb-built-in-refrigeration-qr-sheet-36ss-st.pdf",
+              "extraction_date": "2026-05-20T02:03:45.124Z",
+              "confidence_score": 0.9,
+              "source_type": "sub-zero-official-quick_reference_guide"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2135": {
+      "category": "fridge",
+      "brand": "Sub-Zero",
+      "model": "ICBBI-36UFDID/S/TH",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icb-bi-36ufdid/icb-built-in-refrigeration-qr-sheet-36ufdids-st.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/ICBBI-36UFDID-S-TH.json",
+          "extracted": {
+            "brand": "Sub-Zero",
+            "sku": "ICBBI-36UFDID/S/TH",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 2134,
+              "width_mm": 914,
+              "depth_mm": 610,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icb-bi-36ufdid/icb-built-in-refrigeration-qr-sheet-36ufdids-st.pdf",
+              "extraction_date": "2026-05-20T02:03:50.975Z",
+              "confidence_score": 0.9,
+              "source_type": "sub-zero-official-quick_reference_guide"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf1952": {
+      "category": "fridge",
+      "brand": "Sub-Zero",
+      "model": "ICBBI-36UID/O-LH",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36uid/icb-built-in-refrigeration-qr-sheet-36uido-st.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/ICBBI-36UID-O-LH.json",
+          "extracted": {
+            "brand": "Sub-Zero",
+            "sku": "ICBBI-36UID/O-LH",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 2134,
+              "width_mm": 914,
+              "depth_mm": 610,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36uid/icb-built-in-refrigeration-qr-sheet-36uido-st.pdf",
+              "extraction_date": "2026-05-20T02:03:56.755Z",
+              "confidence_score": 0.9,
+              "source_type": "sub-zero-official-quick_reference_guide"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2139": {
+      "category": "fridge",
+      "brand": "Sub-Zero",
+      "model": "ICBBI-42UFDID/S/TH",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-42ufdid/icb-built-in-refrigeration-qr-sheet-42ufdids-st.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/ICBBI-42UFDID-S-TH.json",
+          "extracted": {
+            "brand": "Sub-Zero",
+            "sku": "ICBBI-42UFDID/S/TH",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 2134,
+              "width_mm": 1067,
+              "depth_mm": 610,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-42ufdid/icb-built-in-refrigeration-qr-sheet-42ufdids-st.pdf",
+              "extraction_date": "2026-05-20T02:04:12.688Z",
+              "confidence_score": 0.9,
+              "source_type": "sub-zero-official-quick_reference_guide"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf1986": {
+      "category": "fridge",
+      "brand": "Sub-Zero",
+      "model": "ICBBI-48S/O",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-48s/icb-built-in-refrigeration-qr-sheet-48so-st.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/ICBBI-48S-O.json",
+          "extracted": {
+            "brand": "Sub-Zero",
+            "sku": "ICBBI-48S/O",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 2134,
+              "width_mm": 1219,
+              "depth_mm": 610,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-48s/icb-built-in-refrigeration-qr-sheet-48so-st.pdf",
+              "extraction_date": "2026-05-20T02:04:19.268Z",
+              "confidence_score": 0.9,
+              "source_type": "sub-zero-official-quick_reference_guide"
+            }
+          }
+        }
+      ]
     }
   }
 }

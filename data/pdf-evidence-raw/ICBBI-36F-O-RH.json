@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2134",
+  "category": "fridge",
+  "brand": "Sub-Zero",
+  "model": "ICBBI-36F/O-RH",
+  "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36f/icb-built-in-refrigeration-qr-sheet-36fo-st.pdf",
+  "verified_at": "2026-05-20",
+  "extracted": {
+    "brand": "Sub-Zero",
+    "sku": "ICBBI-36F/O-RH",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 2134,
+      "width_mm": 914,
+      "depth_mm": 610,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36f/icb-built-in-refrigeration-qr-sheet-36fo-st.pdf",
+      "extraction_date": "2026-05-20T02:03:33.734Z",
+      "confidence_score": 0.9,
+      "source_type": "sub-zero-official-quick_reference_guide"
+    }
+  }
+}

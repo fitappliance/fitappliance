@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2180",
+  "category": "fridge",
+  "brand": "Sub-Zero",
+  "model": "ICBBI-36S/S/TH",
+  "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36s/icb-built-in-refrigeration-qr-sheet-36ss-st.pdf",
+  "verified_at": "2026-05-20",
+  "extracted": {
+    "brand": "Sub-Zero",
+    "sku": "ICBBI-36S/S/TH",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 2134,
+      "width_mm": 914,
+      "depth_mm": 610,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36s/icb-built-in-refrigeration-qr-sheet-36ss-st.pdf",
+      "extraction_date": "2026-05-20T02:03:45.124Z",
+      "confidence_score": 0.9,
+      "source_type": "sub-zero-official-quick_reference_guide"
+    }
+  }
+}

@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1716,
-    "merged_products": 1699,
+    "evidence_files": 1723,
+    "merged_products": 1706,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -28,7 +28,7 @@
     "official_pdf_by_category": {
       "dishwasher": 383,
       "dryer": 100,
-      "fridge": 952,
+      "fridge": 959,
       "washing_machine": 262,
       "washtower_combo": 2
     }
@@ -34992,7 +34992,33 @@
       "inferred_door_swing": true,
       "displayName": "Sub-Zero Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 0
+      "priorityScore": 0,
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 914,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36f/icb-built-in-refrigeration-qr-sheet-36fo-st.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "sub-zero-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/ICBBI-36F-O-RH.json"
+      }
     },
     {
       "id": "fridge-arf2141",
@@ -35018,7 +35044,33 @@
       "inferred_door_swing": true,
       "displayName": "Sub-Zero Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 0
+      "priorityScore": 0,
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 914,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36r/icb-built-in-refrigeration-qr-sheet-36ro-st.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "sub-zero-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/ICBBI-36R-O-LH.json"
+      }
     },
     {
       "id": "fridge-arf2180",
@@ -35044,7 +35096,33 @@
       "inferred_door_swing": true,
       "displayName": "Sub-Zero Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 0
+      "priorityScore": 0,
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 914,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36s/icb-built-in-refrigeration-qr-sheet-36ss-st.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "sub-zero-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/ICBBI-36S-S-TH.json"
+      }
     },
     {
       "id": "fridge-arf2135",
@@ -35070,7 +35148,33 @@
       "inferred_door_swing": true,
       "displayName": "Sub-Zero Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 0
+      "priorityScore": 0,
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 914,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icb-bi-36ufdid/icb-built-in-refrigeration-qr-sheet-36ufdids-st.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "sub-zero-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/ICBBI-36UFDID-S-TH.json"
+      }
     },
     {
       "id": "fridge-arf1952",
@@ -35096,7 +35200,33 @@
       "inferred_door_swing": true,
       "displayName": "Sub-Zero Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 0
+      "priorityScore": 0,
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 914,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-36uid/icb-built-in-refrigeration-qr-sheet-36uido-st.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "sub-zero-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/ICBBI-36UID-O-LH.json"
+      }
     },
     {
       "id": "fridge-arf2022",
@@ -35174,7 +35304,33 @@
       "inferred_door_swing": true,
       "displayName": "Sub-Zero Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 0
+      "priorityScore": 0,
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 1067,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-42ufdid/icb-built-in-refrigeration-qr-sheet-42ufdids-st.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "sub-zero-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/ICBBI-42UFDID-S-TH.json"
+      }
     },
     {
       "id": "fridge-arf1986",
@@ -35200,7 +35356,33 @@
       "inferred_door_swing": true,
       "displayName": "Sub-Zero Fridge",
       "readableSpec": "Side By Side",
-      "priorityScore": 0
+      "priorityScore": 0,
+      "dimensions": {
+        "height_mm": 2134,
+        "width_mm": 1219,
+        "depth_mm": 610,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 0,
+        "right_mm": 0,
+        "rear_mm": 0
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://au.subzero-wolf.com/en/products/assets/sub-zero/built-in-refrigeration/qr-sheets/icbbi-48s/icb-built-in-refrigeration-qr-sheet-48so-st.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "sub-zero-official-quick_reference_guide",
+        "raw_json_path": "data/pdf-evidence-raw/ICBBI-48S-O.json"
+      }
     },
     {
       "id": "fridge-arf1899",
@@ -39461,6 +39643,14 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTE1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WFM0900WD.json"
+      },
       "dimensions": {
         "height_mm": 845,
         "width_mm": 560,
@@ -39478,15 +39668,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTE1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "westinghouse-official-dimension_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/WFM0900WD.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3877",
@@ -39616,6 +39798,14 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjY1NzU1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WHE5600SD.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 896,
@@ -39633,15 +39823,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjY1NzU1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "westinghouse-official-dimension_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/WHE5600SD.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3613",
@@ -39668,6 +39850,14 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjY1NzU1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WHE5650SD.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 896,
@@ -39685,15 +39875,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjY1NzU1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "westinghouse-official-dimension_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/WHE5650SD.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2402",
@@ -40795,6 +40977,14 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTE1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WRM1400WD.json"
+      },
       "dimensions": {
         "height_mm": 845,
         "width_mm": 560,
@@ -40812,15 +41002,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTE1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "westinghouse-official-dimension_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/WRM1400WD.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3878",
@@ -40898,6 +41080,14 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTczMjk1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WRM2400WF.json"
+      },
       "dimensions": {
         "height_mm": 1434,
         "width_mm": 550,
@@ -40915,15 +41105,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTczMjk1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "westinghouse-official-dimension_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/WRM2400WF.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2530",
@@ -41634,6 +41816,14 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjU4OTU1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WTM2500AA.json"
+      },
       "dimensions": {
         "height_mm": 1667,
         "width_mm": 540,
@@ -41651,15 +41841,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjU4OTU1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "westinghouse-official-dimension_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/WTM2500AA.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3447",
@@ -41686,6 +41868,14 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0MzU1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WTM3100SL.json"
+      },
       "dimensions": {
         "height_mm": 1646,
         "width_mm": 598,
@@ -41703,15 +41893,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0MzU1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "westinghouse-official-dimension_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/WTM3100SL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3450",
@@ -41738,6 +41920,14 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0MzU1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WTM3400WL.json"
+      },
       "dimensions": {
         "height_mm": 1756,
         "width_mm": 598,
@@ -41755,15 +41945,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0MzU1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "westinghouse-official-dimension_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/WTM3400WL.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3448",
@@ -41790,6 +41972,14 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WTM4302WD.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 699,
@@ -41807,15 +41997,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "westinghouse-official-dimension_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/WTM4302WD.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3449",
@@ -41842,6 +42024,14 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WTM5002SD.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 796,
@@ -41859,15 +42049,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "westinghouse-official-dimension_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/WTM5002SD.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3452",
@@ -41894,6 +42076,14 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WTM5002WE.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 796,
@@ -41911,15 +42101,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "westinghouse-official-dimension_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/WTM5002WE.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3916",
@@ -42412,6 +42594,14 @@
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTc1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WTB5400SC.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 796,
@@ -42429,15 +42619,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTc1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "westinghouse-official-dimension_sheet",
-        "raw_json_path": "data/pdf-evidence-raw/WTB5400SC.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3511",
