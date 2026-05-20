@@ -147,6 +147,61 @@ test('final merge overlays official PDF dimensions, clearance and flags without 
   assert.deepEqual(merged.clearance_requirements, evidence.extracted.clearance_requirements);
   assert.deepEqual(merged.flags, evidence.extracted.flags);
   assert.equal(merged.evidence.has_pdf_evidence, true);
+  assert.equal(merged.evidence.trust_level, 'verified_fit');
+  assert.deepEqual(merged.evidence.verified_fields, ['dimensions', 'clearance']);
+  assert.equal(merged.evidence.clearance_verified, true);
+});
+
+test('final merge accepts dimension-only PDF evidence without upgrading to Verified Fit', () => {
+  const product = {
+    id: 'fridge-dim-only',
+    model: 'DIMONLY',
+    w: 600,
+    h: 1700,
+    d: 650,
+    clearance_requirements: {
+      top_mm: 50,
+      left_mm: 10,
+      right_mm: 10,
+      rear_mm: 50
+    },
+    flags: {
+      requires_plumbing: false,
+      ventilation_required: true,
+      reversible_door: null
+    }
+  };
+  const evidence = {
+    product_id: 'fridge-dim-only',
+    source_url: 'https://example.com/dimensions.pdf',
+    verified_at: '2026-05-20',
+    extracted: {
+      dimensions: {
+        height_mm: 1710,
+        width_mm: 605,
+        depth_mm: 655,
+        door_open_90_depth_mm: null
+      },
+      metadata: {
+        source_pdf_url: 'https://example.com/dimensions.pdf',
+        extraction_date: '2026-05-20T00:00:00.000Z',
+        confidence_score: 0.88
+      }
+    }
+  };
+
+  const merged = mergeEvidenceIntoProduct(product, evidence);
+
+  assert.equal(merged.w, 605);
+  assert.equal(merged.h, 1710);
+  assert.equal(merged.d, 655);
+  assert.deepEqual(merged.clearance_requirements, product.clearance_requirements);
+  assert.deepEqual(merged.flags, product.flags);
+  assert.equal(merged.data_source, 'official_pdf_dimensions_only');
+  assert.equal(merged.evidence.has_pdf_evidence, true);
+  assert.equal(merged.evidence.trust_level, 'dimensions_verified');
+  assert.deepEqual(merged.evidence.verified_fields, ['dimensions']);
+  assert.equal(merged.evidence.clearance_verified, false);
 });
 
 test('final merge promotes verified WashTower evidence into the dedicated catalog category', () => {
@@ -445,6 +500,9 @@ test('final catalog builder preserves third-party dimension evidence without mar
 
   assert.equal(product.data_source, 'third_party_retailer_spec');
   assert.equal(product.evidence.has_pdf_evidence, false);
+  assert.equal(product.evidence.trust_level, 'retailer_spec');
+  assert.deepEqual(product.evidence.verified_fields, ['dimensions']);
+  assert.equal(product.evidence.clearance_verified, false);
   assert.equal(product.evidence.source_type, 'mixed_retailer_dimensions_pdf_clearance');
   assert.equal(product.evidence.dimension_source, 'Appliances Online specifications tab');
   assert.equal(product.evidence.clearance_source, 'Samsung user manual page 14');

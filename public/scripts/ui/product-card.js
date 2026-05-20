@@ -95,6 +95,63 @@ function hasPdfEvidence(product) {
   return product?.evidence?.has_pdf_evidence === true;
 }
 
+function hasClearanceEvidence(product) {
+  const clearance = product?.clearance_requirements;
+  if (!clearance || typeof clearance !== 'object' || Array.isArray(clearance)) return false;
+  return ['top_mm', 'left_mm', 'right_mm', 'rear_mm']
+    .every((key) => Number.isFinite(Number(clearance[key])));
+}
+
+function getEvidenceTrustLevel(product) {
+  const evidence = product?.evidence;
+  if (!evidence || typeof evidence !== 'object' || Array.isArray(evidence)) return '';
+  const explicit = String(evidence.trust_level ?? '').trim();
+  if (['verified_fit', 'dimensions_verified', 'retailer_spec'].includes(explicit)) return explicit;
+  if (evidence.clearance_verified === true) return 'verified_fit';
+  if (product?.data_source === 'official_pdf' && hasClearanceEvidence(product)) return 'verified_fit';
+  if (hasPdfEvidence(product)) return 'dimensions_verified';
+  if (evidence.source_url || evidence.source_type) return 'retailer_spec';
+  return '';
+}
+
+function getEvidenceTrustCopy(product) {
+  const trustLevel = getEvidenceTrustLevel(product);
+  if (trustLevel === 'verified_fit') {
+    return {
+      level: trustLevel,
+      badgeText: '✓ Verified Fit',
+      badgeClass: 'badge-evidence--verified',
+      title: 'Dimensions and clearance verified against source evidence',
+      receiptLabel: 'Source of Truth:',
+      sourceText: 'Official Spec Sheet (PDF)',
+      receiptNote: 'Dimensions and clearance verified'
+    };
+  }
+  if (trustLevel === 'dimensions_verified') {
+    return {
+      level: trustLevel,
+      badgeText: 'Dimensions verified',
+      badgeClass: 'badge-evidence--dimensions',
+      title: 'Bare dimensions verified; clearance is estimated from conservative defaults',
+      receiptLabel: 'Dimensions verified · clearance estimated',
+      sourceText: 'Dimension source',
+      receiptNote: 'Clearance estimated'
+    };
+  }
+  if (trustLevel === 'retailer_spec') {
+    return {
+      level: trustLevel,
+      badgeText: 'Retailer dimensions',
+      badgeClass: 'badge-evidence--retailer',
+      title: 'Retailer specification dimensions; installation clearance is not verified',
+      receiptLabel: 'Retailer dimensions only',
+      sourceText: 'Retailer source',
+      receiptNote: 'Installation clearance not verified'
+    };
+  }
+  return null;
+}
+
 function isArchivedProduct(product) {
   return product?.unavailable === true;
 }
@@ -104,8 +161,9 @@ function isReplacementSearchProduct(product) {
 }
 
 function buildEvidenceBadgeHtml(product) {
-  if (!hasPdfEvidence(product)) return '';
-  return '<span class="badge-verified" title="Dimensions verified against manufacturer spec sheet">✓ Verified Fit</span>';
+  const copy = getEvidenceTrustCopy(product);
+  if (!copy) return '';
+  return `<span class="badge-verified badge-evidence ${escHtml(copy.badgeClass)}" title="${escHtml(copy.title)}">${escHtml(copy.badgeText)}</span>`;
 }
 
 function buildArchivedBadgeHtml(product) {
@@ -134,17 +192,19 @@ function isSafeEvidenceUrl(value) {
 
 export function buildEvidenceReceiptHtml(product) {
   const evidence = product?.evidence;
-  if (!hasPdfEvidence(product) || !evidence) return '';
+  const copy = getEvidenceTrustCopy(product);
+  if (!copy || !evidence) return '';
 
   const sourceUrl = String(evidence.source_url ?? '').trim();
   const sourceLink = isSafeEvidenceUrl(sourceUrl)
-    ? `<a href="${escHtml(sourceUrl)}" target="_blank" rel="noopener" class="evidence-link">Official Spec Sheet (PDF)</a>`
-    : '<span class="evidence-link evidence-link--missing">Official spec evidence captured</span>';
+    ? `<a href="${escHtml(sourceUrl)}" target="_blank" rel="noopener" class="evidence-link">${escHtml(copy.sourceText)}</a>`
+    : `<span class="evidence-link evidence-link--missing">${escHtml(copy.sourceText)} captured</span>`;
   const verifiedAt = toDateStamp(evidence.verified_at);
 
-  return `<div class="evidence-receipt">
-    <span class="evidence-label">Source of Truth:</span>
+  return `<div class="evidence-receipt evidence-receipt--${escHtml(copy.level)}">
+    <span class="evidence-label">${escHtml(copy.receiptLabel)}</span>
     ${sourceLink}
+    <span class="evidence-note">${escHtml(copy.receiptNote)}</span>
     ${verifiedAt ? `<span class="evidence-date">Extracted: ${escHtml(verifiedAt)}</span>` : ''}
   </div>`;
 }
@@ -159,7 +219,7 @@ function buildProvenanceHtml(product, deps = {}) {
     return renderProvenanceBlock(product, deps.evidenceIndex);
   }
 
-  if (hasPdfEvidence(product)) {
+  if (getEvidenceTrustLevel(product)) {
     return buildEvidenceReceiptHtml(product);
   }
 

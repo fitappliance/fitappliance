@@ -40,6 +40,9 @@ test('product card renders provenance block after trust line for verified eviden
       'fridge-verified': {
         status: 'verified',
         has_pdf_evidence: true,
+        trust_level: 'verified_fit',
+        verified_fields: ['dimensions', 'clearance'],
+        clearance_verified: true,
         source_url: 'https://example.com/spec.pdf',
         verified_at: '2026-05-07'
       }
@@ -49,7 +52,7 @@ test('product card renders provenance block after trust line for verified eviden
   assert.match(html, /data-trust-line/);
   assert.match(html, /provenance-block--verified/);
   assert.ok(html.indexOf('data-trust-line') < html.indexOf('provenance-block--verified'));
-  assert.match(html, /Manufacturer PDF/);
+  assert.match(html, /Official PDF/);
 });
 
 test('product card renders retailer spec provenance fallback when evidence is missing', async () => {

@@ -905,6 +905,14 @@
   border-left-color:var(--accent-green, #047857);
   background:#ecfdf5;
 }
+.provenance-block--dimensions {
+  border-left-color:#0f766e;
+  background:#f0fdfa;
+}
+.provenance-block--retailer {
+  border-left-color:var(--ink-tertiary, #6b6b6b);
+  background:#f9fafb;
+}
 .provenance-block--pending {
   border-left-color:var(--accent-amber, #b06900);
   background:#fffbeb;

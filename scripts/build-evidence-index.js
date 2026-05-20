@@ -26,6 +26,44 @@ function pickEvidenceEntry(entry = {}) {
   return rows[0] ?? null;
 }
 
+function normalizeVerifiedFields(fields, trustLevel) {
+  if (Array.isArray(fields)) {
+    const next = [...new Set(fields.filter((field) => ['dimensions', 'clearance'].includes(field)))];
+    if (next.length > 0) return next;
+  }
+  return trustLevel === 'verified_fit' ? ['dimensions', 'clearance'] : ['dimensions'];
+}
+
+function hasExtractedDimensionsEvidence(evidence) {
+  const dimensions = evidence?.extracted?.dimensions;
+  return ['height_mm', 'width_mm', 'depth_mm'].every((key) => (
+    typeof dimensions?.[key] === 'number' && Number.isFinite(dimensions[key]) && dimensions[key] > 0
+  ));
+}
+
+function hasExtractedClearanceEvidence(evidence) {
+  const clearance = evidence?.extracted?.clearance_requirements;
+  return ['top_mm', 'left_mm', 'right_mm', 'rear_mm'].every((key) => (
+    typeof clearance?.[key] === 'number' && Number.isFinite(clearance[key]) && clearance[key] >= 0
+  ));
+}
+
+function inferTrustLevel(evidence, hasPdfEvidence, sourceType) {
+  const explicit = String(evidence?.trust_level ?? '').trim();
+  if (['verified_fit', 'dimensions_verified', 'retailer_spec'].includes(explicit)) return explicit;
+  const normalizedSource = String(sourceType ?? '').toLowerCase();
+  if (hasPdfEvidence === false || normalizedSource.includes('retailer') || normalizedSource.includes('third_party')) {
+    return 'retailer_spec';
+  }
+  if (
+    evidence?.clearance_verified === true
+    || (hasExtractedDimensionsEvidence(evidence) && hasExtractedClearanceEvidence(evidence))
+  ) {
+    return 'verified_fit';
+  }
+  return 'dimensions_verified';
+}
+
 function buildIndex(manualEvidence) {
   const products = manualEvidence?.products && typeof manualEvidence.products === 'object'
     ? manualEvidence.products
@@ -37,12 +75,20 @@ function buildIndex(manualEvidence) {
     if (entry.status === 'invalid' || entry.invalid === true) continue;
 
     const evidence = pickEvidenceEntry(entry);
-    const hasPdfEvidence = entry.has_pdf_evidence === true || evidence?.has_pdf_evidence === true || evidence?.status === 'approved';
-    const status = hasPdfEvidence ? 'verified' : evidence ? 'pending' : 'pending';
+    const hasPdfEvidence = typeof evidence?.has_pdf_evidence === 'boolean'
+      ? evidence.has_pdf_evidence
+      : (entry.has_pdf_evidence === true || evidence?.status === 'approved');
+    const isApproved = entry.has_pdf_evidence === true || evidence?.status === 'approved' || evidence?.has_pdf_evidence === true;
+    const status = isApproved ? 'verified' : evidence ? 'pending' : 'pending';
     const sourceUrl = String(evidence?.source_url ?? evidence?.metadata?.source_pdf_url ?? '').trim();
     const verifiedAt = toDateStamp(evidence?.verified_at ?? evidence?.metadata?.extraction_date ?? entry.verified_at);
-    const sourceType = String(evidence?.type ?? 'manual_evidence').trim() || 'manual_evidence';
+    const sourceType = String(evidence?.source_type ?? evidence?.type ?? 'manual_evidence').trim() || 'manual_evidence';
     const confidence = Number(evidence?.extracted?.metadata?.confidence_score ?? evidence?.metadata?.confidence_score);
+    const trustLevel = inferTrustLevel(evidence, hasPdfEvidence, sourceType);
+    const verifiedFields = normalizeVerifiedFields(evidence?.verified_fields, trustLevel);
+    const clearanceVerified = typeof evidence?.clearance_verified === 'boolean'
+      ? evidence.clearance_verified
+      : trustLevel === 'verified_fit';
 
     index[productId] = {
       product_id: productId,
@@ -51,6 +97,9 @@ function buildIndex(manualEvidence) {
       brand: entry.brand ?? '',
       model: entry.model ?? '',
       has_pdf_evidence: hasPdfEvidence,
+      trust_level: trustLevel,
+      verified_fields: verifiedFields,
+      clearance_verified: clearanceVerified,
       source_type: sourceType,
       source_url: sourceUrl,
       verified_at: verifiedAt,
