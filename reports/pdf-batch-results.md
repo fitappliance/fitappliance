@@ -1,62 +1,51 @@
 # PDF Batch Results
 
-Run at: 2026-05-20T05:53:01.433Z
+Run at: 2026-05-20T07:08:10.590Z
 
 ## Successful Runs
 
 | SKU | Product | Category | Confidence | Source |
 | --- | --- | --- | ---: | --- |
-| EBE4507SC | Electrolux | fridge | 0.9 | https://resource.electrolux.com.au/Public/File/?Id=51297 |
-| EBE5307SC | Electrolux | fridge | 0.9 | https://resource.electrolux.com.au/Public/File/?Id=51296 |
-| EFE4227SC | Electrolux | fridge | 0.9 | https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTI1&lang= |
-| EHE6899SA | Electrolux | fridge | 0.9 | https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTQ1&lang= |
-| EQE5607BA | Electrolux | fridge | 0.9 | https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTY3OTM1&lang= |
-| ERE5047SC | Electrolux | fridge | 0.9 | https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTI1&lang= |
+| HRF130UW2 | Haier | fridge | 0.95 | https://dam.fisherpaykel.com/KZ3PKN00/at/6jsb4hvrwtcxx3ctn7qj2j/Haier-SpecificationGuide-en-HRF130UW2-HRF130UG2-BarRefrigerator-0-90004783A-AU-NZ.pdf |
+| HRF210TG | Haier | fridge | 0.95 | https://dam.fisherpaykel.com/KZ3PKN00/at/78gk49chnb3wbnmh38wkh5b8/Haier-SpecificationGuide-en-HRF210TW-HRF210TS-HRF210TG-RefrigeratorTopFreezer-0-90004639A-AU-NZ.pdf |
+| HRF330TG | Haier | fridge | 0.95 | https://dam.fisherpaykel.com/KZ3PKN00/at/bsmh5cv59gr8tkjkf74f7/Haier-SpecificationGuide-en-HRF330TW-HRF330TS-HRF330TG-RefrigeratorTopFreezer-0-90004640A-AU-NZ.pdf |
+| HRF450TG | Haier | fridge | 0.95 | https://dam.fisherpaykel.com/KZ3PKN00/at/3ghntkjbjhbr3c8fjrw33sbs/Haier-SpecificationGuide-en-HRF450TW-HRF450TS-HRF450TG-RefrigeratorTopFreezer-0-90004641A-AU-NZ.pdf |
+| HDW13F0PS1 | Haier | dishwasher | 0.95 | https://dam.fisherpaykel.com/KZ3PKN00/at/qx986nsk67fvnrjgjjprh9g/Haier-SpecificationGuide-en-HDW13F0PS1-FreestandingDishwasher-0-90003697B-AU-NZ.pdf |
 
 ## Significant Discrepancies
 
 | SKU | Axis | Legacy | PDF | Delta |
 | --- | --- | ---: | ---: | ---: |
-| EBE4507SC | width | 1725mm | 699mm | -1026mm |
-| EBE4507SC | height | 699mm | 1725mm | +1026mm |
-| EBE4507SC | depth | 723mm | 773mm | +50mm |
-| EBE5307SC | width | 1725mm | 796mm | -929mm |
-| EBE5307SC | height | 796mm | 1725mm | +929mm |
-| EFE4227SC | width | 1725mm | 699mm | -1026mm |
-| EFE4227SC | height | 699mm | 1725mm | +1026mm |
-| EHE6899SA | width | 1782mm | 913mm | -869mm |
-| EHE6899SA | height | 913mm | 1782mm | +869mm |
-| EHE6899SA | depth | 803mm | 746mm | -57mm |
-| EQE5607BA | width | 1795mm | 896mm | -899mm |
-| EQE5607BA | height | 896mm | 1795mm | +899mm |
-| ERE5047SC | width | 1725mm | 699mm | -1026mm |
-| ERE5047SC | height | 699mm | 1725mm | +1026mm |
+| HDW13F0PS1 | depth | 610mm | 599mm | -11mm |
 
 ## Failures
 
 | SKU | Product | Reason |
 | --- | --- | --- |
-| EBE4302BD | Electrolux | Electrolux parser requires an explicit Dimensions table. |
-| EBE5002SD-R | Electrolux | Electrolux parser requires an explicit Dimensions table. |
-| EBE5367BC | Electrolux | Electrolux product page not found for EBE5367BC |
-| EHE5267B Bottom Mount 520L | Electrolux | Electrolux parser could not verify SKU EHE5267B Bottom Mount 520L against document model tokens. |
-| EHE6191SB | Electrolux | Electrolux product page not found for EHE6191SB |
-| EQE5757BB | Electrolux | Electrolux product page not found for EQE5757BB |
-| EQE6160BA | Electrolux | Electrolux product page not found for EQE6160BA |
-| EQE6870SA | Electrolux | Electrolux PDF not found: https://www.electrolux.com.au/support/eqe6870sa/: no downloadable PDF links |
-| ESF6604XB | Electrolux | Electrolux PDF not found: https://www.electrolux.com.au/support/esf6604xb/: no downloadable PDF links |
-| ESF8725RKX | Electrolux | Electrolux PDF not found: https://www.electrolux.com.au/support/esf8725rkx/: no downloadable PDF links |
-| ESF97400RKX | Electrolux | Electrolux PDF not found: https://www.electrolux.com.au/support/esf97400rkx/: no downloadable PDF links |
-| ESL79200RO | Electrolux | Electrolux PDF not found: https://www.electrolux.com.au/support/esl79200ro/: no downloadable PDF links |
-| KESB7200L UltimateCare — 14 Place | Electrolux | Electrolux product page not found for KESB7200L UltimateCare — 14 Place |
-| EWW1043R7 | Electrolux | Electrolux parser could not verify SKU EWW1043R7 against document model tokens. |
-| EWW1242R9 | Electrolux | Electrolux parser could not verify SKU EWW1242R9 against document model tokens. |
-| EWW1243R7 | Electrolux | Electrolux parser could not verify SKU EWW1243R7 against document model tokens. |
-| EWF1042R9SC | Electrolux | Electrolux WASHING_MACHINE parser requires explicit airspace and dimension rows. |
-| EWF1242R9 | Electrolux | Electrolux parser could not verify SKU EWF1242R9 against document model tokens. |
-| EWF1243R7 | Electrolux | Electrolux parser could not verify SKU EWF1243R7 against document model tokens. |
-| EWF9024Q5SB | Electrolux | Electrolux product page not found for EWF9024Q5SB |
-| EWW1043R7SCS | Electrolux | Electrolux parser could not verify SKU EWW1043R7SCS against document model tokens. |
-| EWW1242R9WC | Electrolux | Electrolux WASHING_MACHINE parser requires explicit airspace and dimension rows. |
-| EWW1243R7WC | Electrolux | Electrolux parser could not verify SKU EWW1243R7WC against document model tokens. |
-| WE170V | Electrolux | Electrolux product page not found for WE170V |
+| HCF137W | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
+| HCF140W | Haier | Haier parser requires explicit Overall height, width, and depth. |
+| HCF194W | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
+| HCF195W | Haier | Haier parser requires explicit Overall height, width, and depth. |
+| HCF300W | Haier | Haier parser requires explicit Overall height, width, and depth. |
+| HCF301W | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
+| HCF97W | Haier | Haier parser requires explicit Overall height, width, and depth. |
+| HRB227W | Haier | Haier product page not found for HRB227W |
+| HRF200TW | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
+| HRF220TW3 | Haier | Haier product page not found for HRF220TW3 |
+| HRF230BW | Haier | Haier product page not found for HRF230BW |
+| HRF318BS | Haier | Haier product page not found for HRF318BS |
+| HRF340B Series | Haier | Haier product page not found for HRF340B Series |
+| HRF340BS2 | Haier | Haier product page not found for HRF340BS2 |
+| HRF346BS | Haier | Haier product page not found for HRF346BS |
+| HRF40UW2 | Haier | Haier parser requires explicit cavity dimensions before ingest. |
+| HRF510FHC | Haier | Haier parser requires explicit Overall height, width, and depth. |
+| HRF523XHG Series | Haier | Haier parser requires explicit Overall height, width, and depth. |
+| HRF680YZC | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
+| HVF260WH3 | Haier | Haier product page not found for HVF260WH3 |
+| HVF430VW | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
+| HVF90VW | Haier | Haier parser requires explicit cavity dimensions before ingest. |
+| HDW10F1S1 | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
+| HDW13V1W1 | Haier | Haier parser requires an official Specification Guide with cavity dimensions. |
+| HDW9TFE3SS2 | Haier | Haier product page not found for HDW9TFE3SS2 |
+| HWMSP60 | Haier | Haier product page not found for HWMSP60 |
+| HWMSP70 | Haier | Haier product page not found for HWMSP70 |

@@ -166478,6 +166478,226 @@
           }
         }
       ]
+    },
+    "fridge-arf3599": {
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF130UW2",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/6jsb4hvrwtcxx3ctn7qj2j/Haier-SpecificationGuide-en-HRF130UW2-HRF130UG2-BarRefrigerator-0-90004783A-AU-NZ.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/HRF130UW2.json",
+          "extracted": {
+            "brand": "Haier",
+            "sku": "HRF130UW2",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 545,
+              "depth_mm": 566,
+              "door_open_90_depth_mm": 996
+            },
+            "clearance_requirements": {
+              "top_mm": 50,
+              "left_mm": 25,
+              "right_mm": 25,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": true
+            },
+            "metadata": {
+              "source_pdf_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/6jsb4hvrwtcxx3ctn7qj2j/Haier-SpecificationGuide-en-HRF130UW2-HRF130UG2-BarRefrigerator-0-90004783A-AU-NZ.pdf",
+              "extraction_date": "2026-05-20T07:07:45.441Z",
+              "confidence_score": 0.95,
+              "source_type": "haier-official-specification_guide"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3618": {
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF210TG",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/78gk49chnb3wbnmh38wkh5b8/Haier-SpecificationGuide-en-HRF210TW-HRF210TS-HRF210TG-RefrigeratorTopFreezer-0-90004639A-AU-NZ.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/HRF210TG.json",
+          "extracted": {
+            "brand": "Haier",
+            "sku": "HRF210TG",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1465,
+              "width_mm": 545,
+              "depth_mm": 565,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 50,
+              "left_mm": 25,
+              "right_mm": 25,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": true
+            },
+            "metadata": {
+              "source_pdf_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/78gk49chnb3wbnmh38wkh5b8/Haier-SpecificationGuide-en-HRF210TW-HRF210TS-HRF210TG-RefrigeratorTopFreezer-0-90004639A-AU-NZ.pdf",
+              "extraction_date": "2026-05-20T07:07:48.695Z",
+              "confidence_score": 0.95,
+              "source_type": "haier-official-specification_guide"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3619": {
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF330TG",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/bsmh5cv59gr8tkjkf74f7/Haier-SpecificationGuide-en-HRF330TW-HRF330TS-HRF330TG-RefrigeratorTopFreezer-0-90004640A-AU-NZ.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/HRF330TG.json",
+          "extracted": {
+            "brand": "Haier",
+            "sku": "HRF330TG",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1652,
+              "width_mm": 595,
+              "depth_mm": 672,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 50,
+              "left_mm": 25,
+              "right_mm": 25,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": true
+            },
+            "metadata": {
+              "source_pdf_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/bsmh5cv59gr8tkjkf74f7/Haier-SpecificationGuide-en-HRF330TW-HRF330TS-HRF330TG-RefrigeratorTopFreezer-0-90004640A-AU-NZ.pdf",
+              "extraction_date": "2026-05-20T07:07:51.590Z",
+              "confidence_score": 0.95,
+              "source_type": "haier-official-specification_guide"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3611": {
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF450TG",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/3ghntkjbjhbr3c8fjrw33sbs/Haier-SpecificationGuide-en-HRF450TW-HRF450TS-HRF450TG-RefrigeratorTopFreezer-0-90004641A-AU-NZ.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/HRF450TG.json",
+          "extracted": {
+            "brand": "Haier",
+            "sku": "HRF450TG",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1775,
+              "width_mm": 700,
+              "depth_mm": 695,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 100,
+              "left_mm": 25,
+              "right_mm": 25,
+              "rear_mm": 50
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": true
+            },
+            "metadata": {
+              "source_pdf_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/3ghntkjbjhbr3c8fjrw33sbs/Haier-SpecificationGuide-en-HRF450TW-HRF450TS-HRF450TG-RefrigeratorTopFreezer-0-90004641A-AU-NZ.pdf",
+              "extraction_date": "2026-05-20T07:07:55.582Z",
+              "confidence_score": 0.95,
+              "source_type": "haier-official-specification_guide"
+            }
+          }
+        }
+      ]
+    },
+    "dishwasher-adw1241": {
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW13F0PS1",
+      "has_pdf_evidence": true,
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/qx986nsk67fvnrjgjjprh9g/Haier-SpecificationGuide-en-HDW13F0PS1-FreestandingDishwasher-0-90003697B-AU-NZ.pdf",
+          "verified_at": "2026-05-20",
+          "raw_json_path": "data/pdf-evidence-raw/HDW13F0PS1.json",
+          "extracted": {
+            "brand": "Haier",
+            "sku": "HDW13F0PS1",
+            "category": "DISHWASHER",
+            "dimensions": {
+              "height_mm": 850,
+              "width_mm": 597,
+              "depth_mm": 599,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 1,
+              "right_mm": 2,
+              "rear_mm": 1
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/qx986nsk67fvnrjgjjprh9g/Haier-SpecificationGuide-en-HDW13F0PS1-FreestandingDishwasher-0-90003697B-AU-NZ.pdf",
+              "extraction_date": "2026-05-20T07:08:08.586Z",
+              "confidence_score": 0.95,
+              "source_type": "haier-official-specification_guide"
+            }
+          }
+        }
+      ]
     }
   }
 }

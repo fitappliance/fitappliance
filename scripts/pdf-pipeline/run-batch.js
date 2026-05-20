@@ -26,6 +26,8 @@ const { findElectroluxOfficialPdf } = require('./electrolux-official');
 const { parseElectroluxText } = require('./parsers/electrolux');
 const { findHisenseOfficialPdf } = require('./hisense-official');
 const { parseHisenseText } = require('./parsers/hisense');
+const { findHaierOfficialPdf } = require('./haier-official');
+const { parseHaierText } = require('./parsers/haier');
 const { findChiqOfficialPdf } = require('./chiq-official');
 const { parseChiqText } = require('./parsers/chiq');
 const { findEsattoOfficialPdf } = require('./esatto-official');
@@ -65,6 +67,7 @@ const ARTUSI_MAX_BYTES = 30 * 1024 * 1024;
 const EUROMAID_MAX_BYTES = 30 * 1024 * 1024;
 const TECO_MAX_BYTES = 30 * 1024 * 1024;
 const ELECTROLUX_MAX_BYTES = 30 * 1024 * 1024;
+const HAIER_MAX_BYTES = 30 * 1024 * 1024;
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -204,6 +207,13 @@ function isElectroluxTarget(target = {}) {
 
 function isHisenseTarget(target = {}) {
   return /hisense/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isHaierTarget(target = {}) {
+  return /haier/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -959,6 +969,50 @@ async function parseHisenseTarget({
 
   return {
     candidate: parsed.data,
+    sourceUrl,
+    source
+  };
+}
+
+async function parseHaierTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  haierOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const verifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await haierOfficialFinder(target);
+  const sourceUrl = manualSourceUrl || official?.sourceUrl;
+  if (!sourceUrl) {
+    throw new Error(official?.reason || 'Haier official Specification Guide resources not found');
+  }
+  const source = manualSourceUrl ? 'manual-evidence' : (official?.source || 'haier-official');
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}.pdf`
+  );
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath, {
+    timeoutMs: 60_000,
+    maxBytes: HAIER_MAX_BYTES
+  });
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseHaierText(textResult.text, {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString(),
+    verifiedAlias
+  });
+
+  return {
+    candidate: annotateSourceMetadata(parsed.data, source),
     sourceUrl,
     source
   };
@@ -2047,6 +2101,7 @@ async function runBatch({
   westinghouseOfficialFinder = findWestinghouseOfficialPdf,
   electroluxOfficialFinder = findElectroluxOfficialPdf,
   hisenseOfficialFinder = findHisenseOfficialPdf,
+  haierOfficialFinder = findHaierOfficialPdf,
   chiqOfficialFinder = findChiqOfficialPdf,
   esattoOfficialFinder = findEsattoOfficialPdf,
   mideaOfficialFinder = findMideaOfficialPdf,
@@ -2082,6 +2137,7 @@ async function runBatch({
     && !isWestinghouseTarget(target)
     && !isElectroluxTarget(target)
     && !isHisenseTarget(target)
+    && !isHaierTarget(target)
     && !isChiqTarget(target)
     && !isEsattoTarget(target)
     && !isMideaTarget(target)
@@ -2179,6 +2235,18 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           hisenseOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isHaierTarget(target)) {
+        const parsed = await parseHaierTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          haierOfficialFinder,
           fetchPdfImpl,
           extractTextImpl
         });
@@ -2467,6 +2535,7 @@ exports.parseLgTarget = parseLgTarget;
 exports.parseWestinghouseTarget = parseWestinghouseTarget;
 exports.parseElectroluxTarget = parseElectroluxTarget;
 exports.parseHisenseTarget = parseHisenseTarget;
+exports.parseHaierTarget = parseHaierTarget;
 exports.parseChiqTarget = parseChiqTarget;
 exports.parseEsattoTarget = parseEsattoTarget;
 exports.parseMideaTarget = parseMideaTarget;

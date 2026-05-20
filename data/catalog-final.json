@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1745,
-    "merged_products": 1728,
+    "evidence_files": 1750,
+    "merged_products": 1733,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -26,9 +26,9 @@
       "washtower_combo": 2
     },
     "official_pdf_by_category": {
-      "dishwasher": 386,
+      "dishwasher": 387,
       "dryer": 100,
-      "fridge": 978,
+      "fridge": 982,
       "washing_machine": 262,
       "washtower_combo": 2
     }
@@ -5872,6 +5872,14 @@
       "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51297",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EBE4507SC.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 699,
@@ -5889,15 +5897,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51297",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/EBE4507SC.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3133",
@@ -5950,6 +5950,14 @@
       "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
       "priorityScore": 60,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51296",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EBE5307SC.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 796,
@@ -5967,15 +5975,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51296",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/EBE5307SC.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2445",
@@ -6028,6 +6028,14 @@
       "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
       "priorityScore": 48,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTI1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EFE4227SC.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 699,
@@ -6045,15 +6053,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTI1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/EFE4227SC.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "f8",
@@ -6183,6 +6183,14 @@
       "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTQ1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EHE6899SA.json"
+      },
       "dimensions": {
         "height_mm": 1782,
         "width_mm": 913,
@@ -6200,15 +6208,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTQ1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/EHE6899SA.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2939",
@@ -6235,6 +6235,14 @@
       "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTY3OTM1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EQE5607BA.json"
+      },
       "dimensions": {
         "height_mm": 1795,
         "width_mm": 896,
@@ -6252,15 +6260,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTY3OTM1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/EQE5607BA.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf2940",
@@ -6416,6 +6416,14 @@
       "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
       "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTI1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ERE5047SC.json"
+      },
       "dimensions": {
         "height_mm": 1725,
         "width_mm": 699,
@@ -6433,15 +6441,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTI1&lang=",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.9,
-        "source_type": "manual-evidence",
-        "raw_json_path": "data/pdf-evidence-raw/ERE5047SC.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3707",
@@ -13096,7 +13096,7 @@
       "model": "HRF130UW2",
       "w": 545,
       "h": 850,
-      "d": 562,
+      "d": 566,
       "kwh_year": 100,
       "stars": 5,
       "price": null,
@@ -13113,7 +13113,33 @@
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 545,
+        "depth_mm": 566,
+        "door_open_90_depth_mm": 996
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/6jsb4hvrwtcxx3ctn7qj2j/Haier-SpecificationGuide-en-HRF130UW2-HRF130UG2-BarRefrigerator-0-90004783A-AU-NZ.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.95,
+        "source_type": "haier-official-specification_guide",
+        "raw_json_path": "data/pdf-evidence-raw/HRF130UW2.json"
+      }
     },
     {
       "id": "fridge-arf3169",
@@ -13148,7 +13174,7 @@
       "model": "HRF210TG",
       "w": 545,
       "h": 1465,
-      "d": 561,
+      "d": 565,
       "kwh_year": 201,
       "stars": 5,
       "price": null,
@@ -13165,7 +13191,33 @@
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1465,
+        "width_mm": 545,
+        "depth_mm": 565,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/78gk49chnb3wbnmh38wkh5b8/Haier-SpecificationGuide-en-HRF210TW-HRF210TS-HRF210TG-RefrigeratorTopFreezer-0-90004639A-AU-NZ.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.95,
+        "source_type": "haier-official-specification_guide",
+        "raw_json_path": "data/pdf-evidence-raw/HRF210TG.json"
+      }
     },
     {
       "id": "fridge-arf2188",
@@ -13371,7 +13423,33 @@
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1652,
+        "width_mm": 595,
+        "depth_mm": 672,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/bsmh5cv59gr8tkjkf74f7/Haier-SpecificationGuide-en-HRF330TW-HRF330TS-HRF330TG-RefrigeratorTopFreezer-0-90004640A-AU-NZ.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.95,
+        "source_type": "haier-official-specification_guide",
+        "raw_json_path": "data/pdf-evidence-raw/HRF330TG.json"
+      }
     },
     {
       "id": "fridge-zrf0852",
@@ -13640,7 +13718,33 @@
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1775,
+        "width_mm": 700,
+        "depth_mm": 695,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 100,
+        "left_mm": 25,
+        "right_mm": 25,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": true
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/3ghntkjbjhbr3c8fjrw33sbs/Haier-SpecificationGuide-en-HRF450TW-HRF450TS-HRF450TG-RefrigeratorTopFreezer-0-90004641A-AU-NZ.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.95,
+        "source_type": "haier-official-specification_guide",
+        "raw_json_path": "data/pdf-evidence-raw/HRF450TG.json"
+      }
     },
     {
       "id": "fridge-arf3573",
@@ -48967,9 +49071,9 @@
       "cat": "dishwasher",
       "brand": "Haier",
       "model": "HDW13F0PS1",
-      "w": 598,
+      "w": 597,
       "h": 850,
-      "d": 610,
+      "d": 599,
       "kwh_year": 305,
       "stars": 3,
       "price": null,
@@ -48985,7 +49089,33 @@
       "inferred_door_swing": true,
       "displayName": "Haier Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 850,
+        "width_mm": 597,
+        "depth_mm": 599,
+        "door_open_90_depth_mm": null
+      },
+      "clearance_requirements": {
+        "top_mm": 0,
+        "left_mm": 1,
+        "right_mm": 2,
+        "rear_mm": 1
+      },
+      "flags": {
+        "requires_plumbing": true,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://dam.fisherpaykel.com/KZ3PKN00/at/qx986nsk67fvnrjgjjprh9g/Haier-SpecificationGuide-en-HDW13F0PS1-FreestandingDishwasher-0-90003697B-AU-NZ.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.95,
+        "source_type": "haier-official-specification_guide",
+        "raw_json_path": "data/pdf-evidence-raw/HDW13F0PS1.json"
+      }
     },
     {
       "id": "dishwasher-adw1081",
