@@ -30,6 +30,8 @@ const { findEsattoOfficialPdf } = require('./esatto-official');
 const { parseEsattoText } = require('./parsers/esatto');
 const { findMideaOfficialPdf } = require('./midea-official');
 const { parseMideaText } = require('./parsers/midea');
+const { findEuromaidOfficialPdf } = require('./euromaid-official');
+const { parseEuromaidText } = require('./parsers/euromaid');
 const { findMielePdf } = require('./miele-official');
 const { parseMieleText } = require('./parsers/miele');
 const { findKoganOfficialPdf } = require('./kogan-official');
@@ -56,6 +58,7 @@ const ROBINHOOD_MAX_BYTES = 25 * 1024 * 1024;
 const OMEGA_MAX_BYTES = 20 * 1024 * 1024;
 const SUB_ZERO_MAX_BYTES = 25 * 1024 * 1024;
 const ARTUSI_MAX_BYTES = 30 * 1024 * 1024;
+const EUROMAID_MAX_BYTES = 30 * 1024 * 1024;
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -258,6 +261,13 @@ function isSubZeroTarget(target = {}) {
 
 function isArtusiTarget(target = {}) {
   return /artusi/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isEuromaidTarget(target = {}) {
+  return /euromaid/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -1067,6 +1077,109 @@ async function parseMideaTarget({
   };
 }
 
+function getEuromaidResources(official) {
+  const resources = Array.isArray(official?.resources) ? official.resources : [];
+  const primary = official?.sourceUrl
+    ? [{
+        sourceUrl: official.sourceUrl,
+        url: official.sourceUrl,
+        source: official.source || 'euromaid-official',
+        resourceType: official.resourceType || 'pdf',
+        score: 1000
+      }]
+    : [];
+  const deduped = new Map();
+  for (const resource of [...primary, ...resources]) {
+    const url = resource?.sourceUrl || resource?.url;
+    if (!url) continue;
+    const normalized = {
+      ...resource,
+      sourceUrl: url,
+      url,
+      source: resource.source || `euromaid-official-${resource.resourceType || 'pdf'}`,
+      resourceType: resource.resourceType || 'pdf',
+      score: Number.isFinite(resource.score) ? resource.score : 0
+    };
+    const existing = deduped.get(url);
+    if (!existing || normalized.score > existing.score) deduped.set(url, normalized);
+  }
+  return [...deduped.values()].sort((a, b) => b.score - a.score || a.url.localeCompare(b.url));
+}
+
+async function parseEuromaidTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  euromaidOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await euromaidOfficialFinder(target, { timeoutMs: 60_000 });
+  const resources = manualSourceUrl
+    ? [{
+        sourceUrl: manualSourceUrl,
+        url: manualSourceUrl,
+        source: 'manual-evidence',
+        resourceType: 'pdf',
+        score: 1000
+      }]
+    : getEuromaidResources(official);
+
+  if (resources.length === 0) {
+    throw new Error(official?.reason || 'Euromaid official PDF resources not found');
+  }
+
+  const documents = [];
+  const errors = [];
+  for (let index = 0; index < resources.length; index += 1) {
+    const resource = resources[index];
+    const pdfPath = path.join(
+      repoRoot,
+      '.tmp',
+      'pdfs',
+      slugPathPart(target.brand),
+      `${slugPathPart(target.sku)}-${slugPathPart(resource.resourceType || `doc-${index}`)}.pdf`
+    );
+    try {
+      const fetched = await fetchPdfImpl(resource.sourceUrl, pdfPath, {
+        timeoutMs: 60_000,
+        maxBytes: EUROMAID_MAX_BYTES
+      });
+      const textResult = await extractTextImpl(fetched.path);
+      documents.push({
+        resource,
+        text: textResult.text
+      });
+    } catch (error) {
+      errors.push(`${resource.resourceType || resource.sourceUrl}: ${error.message}`);
+    }
+  }
+
+  if (documents.length === 0) {
+    throw new Error(`Euromaid official documents failed: ${errors.join(' | ')}`);
+  }
+
+  const sourceUrl = resources.find((resource) => resource.resourceType === 'specification_sheet')?.sourceUrl
+    || resources[0].sourceUrl;
+  const source = resources.map((resource) => resource.source || `euromaid-official-${resource.resourceType || 'pdf'}`)
+    .filter(Boolean)
+    .join('+');
+  const parsed = parseEuromaidText(documents.map((document) => document.text).join('\n\n'), {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString()
+  });
+
+  return {
+    candidate: annotateSourceMetadata(parsed.data, source || 'euromaid-official'),
+    sourceUrl,
+    source: source || 'euromaid-official'
+  };
+}
+
 async function parseMieleTarget({
   target,
   repoRoot,
@@ -1781,6 +1894,7 @@ async function runBatch({
   chiqOfficialFinder = findChiqOfficialPdf,
   esattoOfficialFinder = findEsattoOfficialPdf,
   mideaOfficialFinder = findMideaOfficialPdf,
+  euromaidOfficialFinder = findEuromaidOfficialPdf,
   mielePdfFinder = findMielePdf,
   koganOfficialFinder = findKoganOfficialPdf,
   liebherrOfficialFinder = findLiebherrOfficialPdf,
@@ -1813,6 +1927,7 @@ async function runBatch({
     && !isChiqTarget(target)
     && !isEsattoTarget(target)
     && !isMideaTarget(target)
+    && !isEuromaidTarget(target)
     && !isMieleTarget(target)
     && !isKoganTarget(target)
     && !isLiebherrTarget(target)
@@ -1929,6 +2044,18 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           mideaOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isEuromaidTarget(target)) {
+        const parsed = await parseEuromaidTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          euromaidOfficialFinder,
           fetchPdfImpl,
           extractTextImpl
         });
@@ -2159,6 +2286,7 @@ exports.parseHisenseTarget = parseHisenseTarget;
 exports.parseChiqTarget = parseChiqTarget;
 exports.parseEsattoTarget = parseEsattoTarget;
 exports.parseMideaTarget = parseMideaTarget;
+exports.parseEuromaidTarget = parseEuromaidTarget;
 exports.parseMieleTarget = parseMieleTarget;
 exports.parseKoganTarget = parseKoganTarget;
 exports.parseLiebherrTarget = parseLiebherrTarget;
