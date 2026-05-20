@@ -32,6 +32,8 @@ const { findMideaOfficialPdf } = require('./midea-official');
 const { parseMideaText } = require('./parsers/midea');
 const { findEuromaidOfficialPdf } = require('./euromaid-official');
 const { parseEuromaidText } = require('./parsers/euromaid');
+const { findTecoOfficialPdf } = require('./teco-official');
+const { parseTecoText } = require('./parsers/teco');
 const { findMielePdf } = require('./miele-official');
 const { parseMieleText } = require('./parsers/miele');
 const { findKoganOfficialPdf } = require('./kogan-official');
@@ -59,6 +61,7 @@ const OMEGA_MAX_BYTES = 20 * 1024 * 1024;
 const SUB_ZERO_MAX_BYTES = 25 * 1024 * 1024;
 const ARTUSI_MAX_BYTES = 30 * 1024 * 1024;
 const EUROMAID_MAX_BYTES = 30 * 1024 * 1024;
+const TECO_MAX_BYTES = 30 * 1024 * 1024;
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -268,6 +271,13 @@ function isArtusiTarget(target = {}) {
 
 function isEuromaidTarget(target = {}) {
   return /euromaid/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isTecoTarget(target = {}) {
+  return /\bteco\b/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -1180,6 +1190,96 @@ async function parseEuromaidTarget({
   };
 }
 
+function getTecoResources(official) {
+  const resources = Array.isArray(official?.resources) ? official.resources : [];
+  const primary = official?.sourceUrl
+    ? [{
+        sourceUrl: official.sourceUrl,
+        url: official.sourceUrl,
+        source: official.source || 'teco-official',
+        resourceType: official.resourceType || 'pdf',
+        score: 1000
+      }]
+    : [];
+  const deduped = new Map();
+  for (const resource of [...primary, ...resources]) {
+    const url = resource?.sourceUrl || resource?.url;
+    if (!url) continue;
+    const normalized = {
+      ...resource,
+      sourceUrl: url,
+      url,
+      source: resource.source || `teco-official-${resource.resourceType || 'pdf'}`,
+      resourceType: resource.resourceType || 'pdf',
+      score: Number.isFinite(resource.score) ? resource.score : 0
+    };
+    const existing = deduped.get(url);
+    if (!existing || normalized.score > existing.score) deduped.set(url, normalized);
+  }
+  return [...deduped.values()].sort((a, b) => b.score - a.score || a.url.localeCompare(b.url));
+}
+
+async function parseTecoTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  tecoOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await tecoOfficialFinder(target, { timeoutMs: 60_000 });
+  const resources = manualSourceUrl
+    ? [{
+        sourceUrl: manualSourceUrl,
+        url: manualSourceUrl,
+        source: 'manual-evidence',
+        resourceType: 'pdf',
+        score: 1000
+      }]
+    : getTecoResources(official);
+
+  if (resources.length === 0) {
+    throw new Error(official?.reason || 'TECO official PDF resources not found');
+  }
+
+  const errors = [];
+  for (let index = 0; index < resources.length; index += 1) {
+    const resource = resources[index];
+    const pdfPath = path.join(
+      repoRoot,
+      '.tmp',
+      'pdfs',
+      slugPathPart(target.brand),
+      `${slugPathPart(target.sku)}-${slugPathPart(resource.resourceType || `doc-${index}`)}.pdf`
+    );
+    try {
+      const fetched = await fetchPdfImpl(resource.sourceUrl, pdfPath, {
+        timeoutMs: 60_000,
+        maxBytes: TECO_MAX_BYTES
+      });
+      const textResult = await extractTextImpl(fetched.path);
+      const parsed = parseTecoText(textResult.text, {
+        target,
+        sourceUrl: resource.sourceUrl,
+        extractionDate: new Date().toISOString()
+      });
+
+      return {
+        candidate: annotateSourceMetadata(parsed.data, resource.source || 'teco-official-user_manual'),
+        sourceUrl: resource.sourceUrl,
+        source: resource.source || 'teco-official-user_manual'
+      };
+    } catch (error) {
+      errors.push(`${resource.resourceType || resource.sourceUrl}: ${error.message}`);
+    }
+  }
+
+  throw new Error(`TECO official documents failed: ${errors.join(' | ')}`);
+}
+
 async function parseMieleTarget({
   target,
   repoRoot,
@@ -1895,6 +1995,7 @@ async function runBatch({
   esattoOfficialFinder = findEsattoOfficialPdf,
   mideaOfficialFinder = findMideaOfficialPdf,
   euromaidOfficialFinder = findEuromaidOfficialPdf,
+  tecoOfficialFinder = findTecoOfficialPdf,
   mielePdfFinder = findMielePdf,
   koganOfficialFinder = findKoganOfficialPdf,
   liebherrOfficialFinder = findLiebherrOfficialPdf,
@@ -1928,6 +2029,7 @@ async function runBatch({
     && !isEsattoTarget(target)
     && !isMideaTarget(target)
     && !isEuromaidTarget(target)
+    && !isTecoTarget(target)
     && !isMieleTarget(target)
     && !isKoganTarget(target)
     && !isLiebherrTarget(target)
@@ -2056,6 +2158,18 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           euromaidOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isTecoTarget(target)) {
+        const parsed = await parseTecoTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          tecoOfficialFinder,
           fetchPdfImpl,
           extractTextImpl
         });
