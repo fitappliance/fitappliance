@@ -22,6 +22,8 @@ const { findLgOfficialPdf } = require('./lg-official');
 const { parseLgText } = require('./parsers/lg');
 const { findWestinghouseOfficialPdf } = require('./westinghouse-official');
 const { parseWestinghouseText } = require('./parsers/westinghouse');
+const { findElectroluxOfficialPdf } = require('./electrolux-official');
+const { parseElectroluxText } = require('./parsers/electrolux');
 const { findHisenseOfficialPdf } = require('./hisense-official');
 const { parseHisenseText } = require('./parsers/hisense');
 const { findChiqOfficialPdf } = require('./chiq-official');
@@ -62,6 +64,7 @@ const SUB_ZERO_MAX_BYTES = 25 * 1024 * 1024;
 const ARTUSI_MAX_BYTES = 30 * 1024 * 1024;
 const EUROMAID_MAX_BYTES = 30 * 1024 * 1024;
 const TECO_MAX_BYTES = 30 * 1024 * 1024;
+const ELECTROLUX_MAX_BYTES = 30 * 1024 * 1024;
 
 const CATALOG_FILES = [
   ['fridge', 'fridges.json'],
@@ -187,6 +190,13 @@ function isLgTarget(target = {}) {
 
 function isWestinghouseTarget(target = {}) {
   return /westinghouse/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isElectroluxTarget(target = {}) {
+  return /electrolux/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -861,6 +871,51 @@ async function parseWestinghouseTarget({
 
   return {
     candidate: parsed.data,
+    sourceUrl,
+    source
+  };
+}
+
+async function parseElectroluxTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  electroluxOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await electroluxOfficialFinder(target, { timeoutMs: 60_000 });
+  const sourceUrl = manualSourceUrl || official?.sourceUrl;
+  if (!sourceUrl) {
+    throw new Error(official?.reason || 'Electrolux official PDF resources not found');
+  }
+  const source = manualSourceUrl ? 'manual-evidence' : (official?.source || 'electrolux-official');
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}.pdf`
+  );
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath, {
+    force: true,
+    retries: 1,
+    timeoutMs: 60_000,
+    maxBytes: ELECTROLUX_MAX_BYTES,
+    userAgent: 'curl/8.7.1'
+  });
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseElectroluxText(textResult.text, {
+    target,
+    sourceUrl,
+    extractionDate: new Date().toISOString()
+  });
+
+  return {
+    candidate: annotateSourceMetadata(parsed.data, source),
     sourceUrl,
     source
   };
@@ -1990,6 +2045,7 @@ async function runBatch({
   samsungOfficialFinder = findSamsungOfficialPdf,
   lgOfficialFinder = findLgOfficialPdf,
   westinghouseOfficialFinder = findWestinghouseOfficialPdf,
+  electroluxOfficialFinder = findElectroluxOfficialPdf,
   hisenseOfficialFinder = findHisenseOfficialPdf,
   chiqOfficialFinder = findChiqOfficialPdf,
   esattoOfficialFinder = findEsattoOfficialPdf,
@@ -2024,6 +2080,7 @@ async function runBatch({
     && !isSamsungTarget(target)
     && !isLgTarget(target)
     && !isWestinghouseTarget(target)
+    && !isElectroluxTarget(target)
     && !isHisenseTarget(target)
     && !isChiqTarget(target)
     && !isEsattoTarget(target)
@@ -2098,6 +2155,18 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           westinghouseOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isElectroluxTarget(target)) {
+        const parsed = await parseElectroluxTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          electroluxOfficialFinder,
           fetchPdfImpl,
           extractTextImpl
         });
@@ -2396,6 +2465,7 @@ exports.parseFisherPaykelTarget = parseFisherPaykelTarget;
 exports.parseSamsungTarget = parseSamsungTarget;
 exports.parseLgTarget = parseLgTarget;
 exports.parseWestinghouseTarget = parseWestinghouseTarget;
+exports.parseElectroluxTarget = parseElectroluxTarget;
 exports.parseHisenseTarget = parseHisenseTarget;
 exports.parseChiqTarget = parseChiqTarget;
 exports.parseEsattoTarget = parseEsattoTarget;

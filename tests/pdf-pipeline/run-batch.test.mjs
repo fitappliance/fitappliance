@@ -806,6 +806,69 @@ test('runBatch processes Westinghouse targets with the official finder and parse
   });
 });
 
+test('runBatch processes Electrolux targets with the official finder and parser without an API key', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'electrolux-ebe4507sc',
+    brand: 'Electrolux',
+    sku: 'EBE4507SC',
+    category: 'fridge',
+    product: {
+      id: 'electrolux-ebe4507sc',
+      cat: 'fridge',
+      brand: 'Electrolux',
+      model: 'EBE4507SC',
+      w: 699,
+      h: 1725,
+      d: 773,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    electroluxOfficialFinder: async () => ({
+      sourceUrl: 'https://resource.electrolux.com.au/Public/File/?Id=51297',
+      source: 'electrolux-official-known-dimension_sheet',
+      resourceType: 'dimension_sheet'
+    }),
+    fetchPdfImpl: async (url, _path, options = {}) => {
+      assert.equal(options.userAgent, 'curl/8.7.1');
+      return { path: url, cached: false, bytes: 12 };
+    },
+    extractTextImpl: async () => ({
+      text: `
+        Refrigeration Dimension Guide
+        Models:
+        EBE4507BC, EBE4507SC
+        Dimensions Product Height Product Width Product Depth Product Depth (Door Open)
+        EBE4507BC 1725 699 773 1360
+        EBE4507SC 1725 699 773 1360
+        Airspace Side - both Top Behind
+        EBE4507BC 30 50 50
+        EBE4507SC 30 50 50
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'electrolux-official-known-dimension_sheet');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'EBE4507SC.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 50,
+    left_mm: 30,
+    right_mm: 30,
+    rear_mm: 50
+  });
+});
+
 test('runBatch processes Hisense targets with the official finder and parser without an API key', async () => {
   const repoRoot = makeRepo();
   const target = {

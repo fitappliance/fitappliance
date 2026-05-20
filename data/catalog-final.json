@@ -14,8 +14,8 @@
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1739,
-    "merged_products": 1722,
+    "evidence_files": 1745,
+    "merged_products": 1728,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -28,7 +28,7 @@
     "official_pdf_by_category": {
       "dishwasher": 386,
       "dryer": 100,
-      "fridge": 972,
+      "fridge": 978,
       "washing_machine": 262,
       "washtower_combo": 2
     }
@@ -5852,9 +5852,9 @@
       "cat": "fridge",
       "brand": "Electrolux",
       "model": "EBE4507SC",
-      "w": 1725,
-      "h": 699,
-      "d": 723,
+      "w": 699,
+      "h": 1725,
+      "d": 773,
       "kwh_year": 291,
       "stars": 5,
       "price": null,
@@ -5871,7 +5871,33 @@
       "inferred_door_swing": true,
       "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 699,
+        "depth_mm": 773,
+        "door_open_90_depth_mm": 1360
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51297",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EBE4507SC.json"
+      }
     },
     {
       "id": "fridge-arf3133",
@@ -5904,8 +5930,8 @@
       "cat": "fridge",
       "brand": "Electrolux",
       "model": "EBE5307SC",
-      "w": 1725,
-      "h": 796,
+      "w": 796,
+      "h": 1725,
       "d": 773,
       "kwh_year": 310,
       "stars": 5,
@@ -5923,7 +5949,33 @@
       "inferred_door_swing": true,
       "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 796,
+        "depth_mm": 773,
+        "door_open_90_depth_mm": 1457
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51296",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EBE5307SC.json"
+      }
     },
     {
       "id": "fridge-arf2445",
@@ -5956,8 +6008,8 @@
       "cat": "fridge",
       "brand": "Electrolux",
       "model": "EFE4227SC",
-      "w": 1725,
-      "h": 699,
+      "w": 699,
+      "h": 1725,
       "d": 773,
       "kwh_year": 386,
       "stars": 3,
@@ -5975,7 +6027,33 @@
       "inferred_door_swing": true,
       "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 699,
+        "depth_mm": 773,
+        "door_open_90_depth_mm": 1360
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTI1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EFE4227SC.json"
+      }
     },
     {
       "id": "f8",
@@ -6085,9 +6163,9 @@
       "cat": "fridge",
       "brand": "Electrolux",
       "model": "EHE6899SA",
-      "w": 1782,
-      "h": 913,
-      "d": 803,
+      "w": 913,
+      "h": 1782,
+      "d": 746,
       "kwh_year": 501,
       "stars": 4,
       "price": null,
@@ -6104,15 +6182,41 @@
       "inferred_door_swing": true,
       "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1782,
+        "width_mm": 913,
+        "depth_mm": 746,
+        "door_open_90_depth_mm": 1189
+      },
+      "clearance_requirements": {
+        "top_mm": 25,
+        "left_mm": 10,
+        "right_mm": 10,
+        "rear_mm": 35
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTQ1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EHE6899SA.json"
+      }
     },
     {
       "id": "fridge-arf2939",
       "cat": "fridge",
       "brand": "Electrolux",
       "model": "EQE5607BA",
-      "w": 1795,
-      "h": 896,
+      "w": 896,
+      "h": 1795,
       "d": 755,
       "kwh_year": 406,
       "stars": 4,
@@ -6130,7 +6234,33 @@
       "inferred_door_swing": true,
       "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1795,
+        "width_mm": 896,
+        "depth_mm": 755,
+        "door_open_90_depth_mm": 1112
+      },
+      "clearance_requirements": {
+        "top_mm": 5,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 30
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTY3OTM1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/EQE5607BA.json"
+      }
     },
     {
       "id": "fridge-arf2940",
@@ -6266,9 +6396,9 @@
       "cat": "fridge",
       "brand": "Electrolux",
       "model": "ERE5047SC",
-      "w": 1725,
-      "h": 699,
-      "d": 769,
+      "w": 699,
+      "h": 1725,
+      "d": 773,
       "kwh_year": 216,
       "stars": 4,
       "price": null,
@@ -6285,7 +6415,33 @@
       "inferred_door_swing": true,
       "displayName": "Electrolux Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 699,
+        "depth_mm": 773,
+        "door_open_90_depth_mm": 1360
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTI1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "manual-evidence",
+        "raw_json_path": "data/pdf-evidence-raw/ERE5047SC.json"
+      }
     },
     {
       "id": "fridge-arf3707",
@@ -37538,6 +37694,14 @@
       "displayName": "Teco Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://appliances.teco.com.au/wp-content/uploads/sites/2/2024/07/TFF334WNTAH-User-Manual.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.88,
+        "source_type": "teco-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/TFF334WNTAH.json"
+      },
       "dimensions": {
         "height_mm": 1700,
         "width_mm": 600,
@@ -37555,15 +37719,7 @@
         "ventilation_required": true,
         "reversible_door": true
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://appliances.teco.com.au/wp-content/uploads/sites/2/2024/07/TFF334WNTAH-User-Manual.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.88,
-        "source_type": "teco-official-user_manual",
-        "raw_json_path": "data/pdf-evidence-raw/TFF334WNTAH.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3269",
@@ -37590,6 +37746,14 @@
       "displayName": "Teco Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.teco.com.au/wp-content/uploads/2024/10/TFF415WNTAH-User-Manual-v1s.pdf",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.88,
+        "source_type": "teco-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/TFF415WNTAH.json"
+      },
       "dimensions": {
         "height_mm": 1780,
         "width_mm": 710,
@@ -37607,15 +37771,7 @@
         "ventilation_required": true,
         "reversible_door": true
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.teco.com.au/wp-content/uploads/2024/10/TFF415WNTAH-User-Manual-v1s.pdf",
-        "verified_at": "2026-05-20",
-        "confidence_score": 0.88,
-        "source_type": "teco-official-user_manual",
-        "raw_json_path": "data/pdf-evidence-raw/TFF415WNTAH.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3533",

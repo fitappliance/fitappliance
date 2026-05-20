@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2393",
+  "category": "fridge",
+  "brand": "Electrolux",
+  "model": "EHE6899SA",
+  "source_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTQ1&lang=",
+  "verified_at": "2026-05-20",
+  "extracted": {
+    "brand": "Electrolux",
+    "sku": "EHE6899SA",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1782,
+      "width_mm": 913,
+      "depth_mm": 746,
+      "door_open_90_depth_mm": 1189
+    },
+    "clearance_requirements": {
+      "top_mm": 25,
+      "left_mm": 10,
+      "right_mm": 10,
+      "rear_mm": 35
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.electrolux.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTEyOTQ1&lang=",
+      "extraction_date": "2026-05-20T05:52:43.019Z",
+      "confidence_score": 0.9,
+      "source_type": "manual-evidence"
+    }
+  }
+}
