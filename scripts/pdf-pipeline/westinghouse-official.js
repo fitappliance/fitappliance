@@ -1,5 +1,5 @@
 const SITEMAP_URL = 'https://www.westinghouse.com.au/sitemap.xml';
-const USER_AGENT = 'FitApplianceBot/1.0 (+https://www.fitappliance.com.au/about)';
+const USER_AGENT = 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 const RESOURCE_BASE = 'https://resource.electrolux.com.au/Public/File/?Id=';
 const { westinghouseModelMatchesSku } = require('./parsers/westinghouse');
 

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3540",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WTM2500AA",
+  "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjU4OTU1&lang=",
+  "verified_at": "2026-05-20",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WTM2500AA",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1667,
+      "width_mm": 540,
+      "depth_mm": 555,
+      "door_open_90_depth_mm": 1053
+    },
+    "clearance_requirements": {
+      "top_mm": 50,
+      "left_mm": 50,
+      "right_mm": 50,
+      "rear_mm": 50
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjU4OTU1&lang=",
+      "extraction_date": "2026-05-20T00:25:28.120Z",
+      "confidence_score": 0.9,
+      "source_type": "westinghouse-official-dimension_sheet"
+    }
+  }
+}

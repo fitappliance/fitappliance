@@ -794,7 +794,7 @@ async function parseWestinghouseTarget({
   const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
   const official = manualSourceUrl
     ? null
-    : await westinghouseOfficialFinder(target, { knownOnly: true });
+    : await westinghouseOfficialFinder(target, { timeoutMs: 60_000 });
   const sourceUrl = manualSourceUrl || official?.sourceUrl;
   if (!sourceUrl) {
     throw new Error(official?.reason || 'Westinghouse official PDF resources not found');

@@ -60,20 +60,25 @@ test('Westinghouse official finder prefers dimension sheets over fact sheets', (
 });
 
 test('Westinghouse official finder returns a dimension sheet for the matched product page', async () => {
+  const userAgents = [];
   const result = await findWestinghouseOfficialPdf({
     brand: 'Westinghouse',
     sku: 'WBB3400AH',
     category: 'fridge'
   }, {
-    fetchImpl: fetchMock({
+    fetchImpl: async (url, init = {}) => {
+      userAgents.push(init.headers?.['User-Agent'] || init.headers?.['user-agent'] || '');
+      return fetchMock({
       'https://www.westinghouse.com.au/sitemap.xml': sitemapXml,
       'https://www.westinghouse.com.au/fridges-and-freezers/fridges/wbb3400ah-x/': productHtml
-    })
+      })(url);
+    }
   });
 
   assert.equal(result.sourceUrl, 'https://www.westinghouse.com.au/documenthandler.ashx?assetid=511925&documenttype=Dimension%20Sheet');
   assert.equal(result.source, 'westinghouse-official-dimension_sheet');
   assert.equal(result.resourceType, 'dimension_sheet');
+  assert.equal(userAgents.every((value) => value.includes('Mozilla/5.0')), true);
 });
 
 test('Westinghouse official finder can use known official dimension-guide families when support pages hide resources', async () => {

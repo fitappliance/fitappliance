@@ -1,86 +1,88 @@
 # PDF Batch Results
 
-Run at: 2026-05-19T23:49:25.062Z
+Run at: 2026-05-20T00:25:51.872Z
 
 ## Successful Runs
 
 | SKU | Product | Category | Confidence | Source |
 | --- | --- | --- | ---: | --- |
-| MDRC284FZE01APE | Midea | fridge | 0.9 | https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc284fze01ape/MDRC284FZE01APE-198L-Chest-Freezer-Spec-Sheet.pdf |
-| MDRC499FZF01AP | Midea | fridge | 0.9 | https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc499fzf01ap/MDRC499FZF01AP-User-Manual.pdf |
+| WFM0900WD | Westinghouse | fridge | 0.9 | https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTE1&lang= |
+| WHE5600SD | Westinghouse | fridge | 0.9 | https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjY1NzU1&lang= |
+| WHE5650SD | Westinghouse | fridge | 0.9 | https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjY1NzU1&lang= |
+| WRM1400WD | Westinghouse | fridge | 0.9 | https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTE1&lang= |
+| WRM2400WF | Westinghouse | fridge | 0.9 | https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTczMjk1&lang= |
+| WTM2500AA | Westinghouse | fridge | 0.9 | https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjU4OTU1&lang= |
+| WTM3100SL | Westinghouse | fridge | 0.9 | https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0MzU1&lang= |
+| WTM3400WL | Westinghouse | fridge | 0.9 | https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0MzU1&lang= |
+| WTM4302WD | Westinghouse | fridge | 0.9 | https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang= |
+| WTM5002SD | Westinghouse | fridge | 0.9 | https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang= |
+| WTM5002WE | Westinghouse | fridge | 0.9 | https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang= |
+| WTB5400SC | Westinghouse | fridge | 0.9 | https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTc1&lang= |
 
 ## Significant Discrepancies
 
 | SKU | Axis | Legacy | PDF | Delta |
 | --- | --- | ---: | ---: | ---: |
-| MDRC499FZF01AP | height | 825mm | 853mm | +28mm |
-| MDRC499FZF01AP | depth | 705mm | 745mm | +40mm |
+| WFM0900WD | width | 555mm | 560mm | +5mm |
+| WFM0900WD | height | 850mm | 845mm | -5mm |
+| WHE5600SD | depth | 781mm | 730mm | -51mm |
+| WHE5650SD | depth | 781mm | 730mm | -51mm |
+| WRM1400WD | width | 555mm | 560mm | +5mm |
+| WRM1400WD | height | 850mm | 845mm | -5mm |
+| WTM2500AA | width | 545mm | 540mm | -5mm |
+| WTM2500AA | depth | 560mm | 555mm | -5mm |
+| WTB5400SC | width | 1725mm | 796mm | -929mm |
+| WTB5400SC | height | 796mm | 1725mm | +929mm |
 
 ## Failures
 
 | SKU | Product | Reason |
 | --- | --- | --- |
-| 353483 | Midea | Midea product page not found for 353483 |
-| MDRC698FZM01AP | Midea | Midea product page not found for MDRC698FZM01AP |
-| MDRD130FGF01AP | Midea | Midea product page not found for MDRD130FGF01AP |
-| MDRD181FGF01AP | Midea | Midea product page not found for MDRD181FGF01AP |
-| MDRF632FGD46APW | Midea | Midea fridge parser only supports chest freezer documents with explicit clearance rules. |
-| MDRT134FGF09AP | Midea | Midea product page not found for MDRT134FGF09AP |
-| MDRT346MTF28AP | Midea | Midea product page not found for MDRT346MTF28AP |
-| MDRT489MTE01AP | Midea | Midea product page not found for MDRT489MTE01AP |
-| MDRT580MTF45AP | Midea | PDF fetch failed with HTTP 404 |
-| MDRU229FGF01AP | Midea | Midea product page not found for MDRU229FGF01AP |
-| MDRU333FGF02AP | Midea | Midea product page not found for MDRU333FGF02AP |
-| MERB430FGF28AP | Midea | Midea product page not found for MERB430FGF28AP |
-| MERC151FZFO1AP | Midea | Midea product page not found for MERC151FZFO1AP |
-| MERC280FZF01APE | Midea | Midea product page not found for MERC280FZF01APE |
-| MERC405FZF01APE | Midea | Midea product page not found for MERC405FZF01APE |
-| MERD181FGF30AP | Midea | Midea product page not found for MERD181FGF30AP |
-| MERF632FIF28APD | Midea | Midea product page not found for MERF632FIF28APD |
-| MERS79IMYEDXAP | Midea | Midea product page not found for MERS79IMYEDXAP |
-| MERT134FGF30AP | Midea | Midea product page not found for MERT134FGF30AP |
-| 340251 | Midea | Midea product page not found for 340251 |
-| 340454 | Midea | Midea product page not found for 340454 |
-| 340457 | Midea | Midea product page not found for 340457 |
-| 340458 | Midea | Midea product page not found for 340458 |
-| 340460 | Midea | Midea product page not found for 340460 |
-| 340520 | Midea | Midea product page not found for 340520 |
-| 340535 | Midea | Midea product page not found for 340535 |
-| 340607 | Midea | Midea product page not found for 340607 |
-| 340645 | Midea | Midea product page not found for 340645 |
-| MDW15GSS | Midea | Midea product page not found for MDW15GSS |
-| MDW4581F9UX | Midea | Midea product page not found for MDW4581F9UX |
-| MDW6063F12UX | Midea | Midea product page not found for MDW6063F12UX |
-| MDW6065F14UX | Midea | Midea dishwasher parser requires explicit cabinet opening dimensions. |
-| MDW6094F15BX | Midea | Midea product page not found for MDW6094F15BX |
-| MDWB1W | Midea | Midea product page not found for MDWB1W |
-| MDWMINIS | Midea | Midea product page not found for MDWMINIS |
-| MDWPF1433F(SS)-WG | Midea | Midea dishwasher parser requires explicit cabinet opening dimensions. |
-| MDWSDSS | Midea | Midea product page not found for MDWSDSS |
-| WQP12-5201C | Midea | Midea product page not found for WQP12-5201C |
-| WQP12-7609S-AU | Midea | Midea product page not found for WQP12-7609S-AU |
-| WQP12-9501A-AU | Midea | Midea product page not found for WQP12-9501A-AU |
-| WQP4-2605 | Midea | Midea product page not found for WQP4-2605 |
-| 361176 MDS70-VR072/A04-AU | Midea | Midea product page not found for 361176 MDS70-VR072/A04-AU |
-| DMDV70 | Midea | Midea product page not found for DMDV70 |
-| 360117 MAE100-2004TPS/01FM-AU-P1 | Midea | Midea product page not found for 360117 MAE100-2004TPS/01FM-AU-P1 |
-| 360174  MAE70-504TPS/01FM-AU-S1 | Midea | Midea product page not found for 360174  MAE70-504TPS/01FM-AU-S1 |
-| 360192  MAE90-804TPS/01FM-AU | Midea | Midea product page not found for 360192  MAE90-804TPS/01FM-AU |
-| 360220 MFM110-U1401B/C19E-AU | Midea | Midea product page not found for 360220 MFM110-U1401B/C19E-AU |
-| 360315 MFM80-DU1401B/C19E-AU | Midea | Midea product page not found for 360315 MFM80-DU1401B/C19E-AU |
-| 360463 MFN60-JU1209B/D03E-AU | Midea | Midea product page not found for 360463 MFN60-JU1209B/D03E-AU |
-| 360487 MFM80-U1401B/C14E-AU | Midea | Midea product page not found for 360487 MFM80-U1401B/C14E-AU |
-| 360489 MFN80-U1409B/D03E-AU | Midea | Midea product page not found for 360489 MFN80-U1409B/D03E-AU |
-| 360496 MFL100-JM1415BIM/H01EPW-AU(5) | Midea | Midea product page not found for 360496 MFL100-JM1415BIM/H01EPW-AU(5) |
-| DMWM55G2 | Midea | Midea product page not found for DMWM55G2 |
-| MF110W80B/W-AU | Midea | Midea WASHING_MACHINE parser requires explicit clearance rules before ingest. |
-| MF110W90B/W-AU | Midea | Midea product page not found for MF110W90B/W-AU |
-| MF200W100WB/T | Midea | Midea WASHING_MACHINE parser requires explicit clearance rules before ingest. |
-| MF200W90WB/W | Midea | Midea parser could not verify SKU MF200W90WB/W against document text or official source URL. |
-| MF210W100BW | Midea | Midea PDF not found: https://www.midea.com/au/laundry/washing-machines/front-load/midea-mf210-front-load-washer-mf210w100bw.mf210w100bw: no manualsdownload endpoint |
-| MF210W80BW | Midea | Midea product page not found for MF210W80BW |
-| MF210W90BW | Midea | Midea PDF not found: https://www.midea.com/au/laundry/washing-machines/front-load/midea-mf-210-front-load-washer-mf210w90bw.mf210w90bw: no manualsdownload endpoint |
-| MT512W100RDW | Midea | Midea product page not found for MT512W100RDW |
-| MT512W70RUW | Midea | Midea product page not found for MT512W70RUW |
-| MT512W80RUW | Midea | Midea WASHING_MACHINE parser requires explicit clearance rules before ingest. |
-| MT512W90RUW | Midea | Midea WASHING_MACHINE parser requires explicit clearance rules before ingest. |
+| WBE5314SA Bottom Mount 528L | Westinghouse | Westinghouse PDF not found: https://www.westinghouse.com.au/support/wbe5314sa/: no downloadable PDF links |
+| WCM1400WD | Westinghouse | Westinghouse PDF not found: https://www.westinghouse.com.au/support/wcm1400wd/: no downloadable PDF links |
+| WCM1400WE | Westinghouse | Westinghouse product page not found for WCM1400WE |
+| WCM2000WD | Westinghouse | Westinghouse PDF not found: https://www.westinghouse.com.au/support/wcm2000wd/: no downloadable PDF links |
+| WCM2000WE | Westinghouse | Westinghouse PDF not found: https://www.westinghouse.com.au/support/wcm2000we/: no downloadable PDF links |
+| WCM3000WE | Westinghouse | Westinghouse PDF not found: https://www.westinghouse.com.au/support/wcm3000we/: no downloadable PDF links |
+| WCM7000WD | Westinghouse | Westinghouse product page not found for WCM7000WD |
+| WHE5204BC | Westinghouse | Westinghouse product page not found for WHE5204BC |
+| WHE5264SC | Westinghouse | Westinghouse product page not found for WHE5264SC |
+| WHE6874SA | Westinghouse | Westinghouse product page not found for WHE6874SA |
+| WHE7074SA | Westinghouse | Westinghouse product page not found for WHE7074SA |
+| WIM1000WC | Westinghouse | Westinghouse PDF not found: https://www.westinghouse.com.au/support/wim1000wc/: no downloadable PDF links |
+| WIM1200AD | Westinghouse | Westinghouse product page not found for WIM1200AD |
+| WIM1200AE | Westinghouse | Westinghouse parser could not find an Airspace clearance row for WIM1200AE. |
+| WQE4900AA | Westinghouse | Westinghouse parser could not verify SKU WQE4900AA against document model tokens. |
+| WQE4960AA | Westinghouse | Westinghouse parser could not verify SKU WQE4960AA against document model tokens. |
+| WQE5600BB | Westinghouse | Westinghouse parser requires an explicit Airspace clearance table. |
+| WQE5650BA | Westinghouse | Westinghouse parser requires an explicit Airspace clearance table. |
+| WQE5660BA | Westinghouse | Westinghouse parser requires an explicit Airspace clearance table. |
+| WQE5700BD | Westinghouse | Westinghouse parser requires an explicit Airspace clearance table. |
+| WQE5750BB | Westinghouse | Westinghouse parser requires an explicit Airspace clearance table. |
+| WQE5760BB | Westinghouse | Westinghouse parser requires an explicit Airspace clearance table. |
+| WQE6170BB | Westinghouse | Westinghouse parser requires an explicit Airspace clearance table. |
+| WRB3504AB | Westinghouse | Westinghouse PDF not found: https://www.westinghouse.com.au/support/wrb3504ab/: no downloadable PDF links |
+| WSE6170SA | Westinghouse | Westinghouse product page not found for WSE6170SA |
+| WSE6200SA | Westinghouse | Westinghouse product page not found for WSE6200SA |
+| WSE6200SB | Westinghouse | Westinghouse parser could not find a dimensions row for WSE6200SB. |
+| WSE6200WB | Westinghouse | Westinghouse parser could not find a dimensions row for WSE6200WB. |
+| WSE6240BB | Westinghouse | Westinghouse parser could not find a dimensions row for WSE6240BB. |
+| WSE6630BA | Westinghouse | Westinghouse product page not found for WSE6630BA |
+| WSE6670SA | Westinghouse | Westinghouse parser could not find a dimensions row for WSE6670SA. |
+| WSE6870SA | Westinghouse | Westinghouse PDF not found: https://www.westinghouse.com.au/support/wse6870sa/: no downloadable PDF links |
+| WSE6900SA | Westinghouse | Westinghouse PDF not found: https://www.westinghouse.com.au/support/wse6900sa/: no downloadable PDF links |
+| WTB2500AH | Westinghouse | Westinghouse product page not found for WTB2500AH |
+| WTB4600WC | Westinghouse | Westinghouse PDF not found: https://www.westinghouse.com.au/support/wtb4600wc/: no downloadable PDF links |
+| WTB5400WC | Westinghouse | Westinghouse product page not found for WTB5400WC |
+| WHE7074BA | Westinghouse | Westinghouse product page not found for WHE7074BA |
+| WTB4600SC | Westinghouse | Westinghouse PDF not found: https://www.westinghouse.com.au/support/wtb4600sc/: no downloadable PDF links |
+| WSF6602XB | Westinghouse | Westinghouse DISHWASHER parser requires explicit airspace and dimension rows. |
+| WSF6608XB | Westinghouse | Westinghouse DISHWASHER parser requires explicit airspace and dimension rows. |
+| WSU6608XB | Westinghouse | Westinghouse product page not found for WSU6608XB |
+| WWF1042M7WA 10kg Front Loader | Westinghouse | Westinghouse product page not found for WWF1042M7WA 10kg Front Loader |
+| WWT1084C7SA | Westinghouse | Westinghouse parser could not verify SKU WWT1084C7SA against document model tokens. |
+| WWT1184C7WA | Westinghouse | Westinghouse WASHING_MACHINE parser requires explicit airspace and dimension rows. |
+| WWT6084J5WA | Westinghouse | Westinghouse WASHING_MACHINE parser requires explicit airspace and dimension rows. |
+| WWT7084J5WA | Westinghouse | Westinghouse WASHING_MACHINE parser requires explicit airspace and dimension rows. |
+| WWT9084C7SA | Westinghouse | Westinghouse parser could not verify SKU WWT9084C7SA against document model tokens. |
+| WWW9024M5SA | Westinghouse | Westinghouse PDF not found: https://www.westinghouse.com.au/support/www9024m5sa/: no downloadable PDF links |

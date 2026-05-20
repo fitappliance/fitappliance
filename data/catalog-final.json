@@ -10,12 +10,12 @@
     ],
     "evidence_dir": "data/pdf-evidence-raw"
   },
-  "latest_verified_at": "2026-05-19",
+  "latest_verified_at": "2026-05-20",
   "summary": {
     "total_products": 3541,
     "active_products": 1400,
-    "evidence_files": 1704,
-    "merged_products": 1687,
+    "evidence_files": 1716,
+    "merged_products": 1699,
     "unmatched_evidence_files": 16,
     "duplicate_evidence_files": 0,
     "categories": {
@@ -28,7 +28,7 @@
     "official_pdf_by_category": {
       "dishwasher": 383,
       "dryer": 100,
-      "fridge": 940,
+      "fridge": 952,
       "washing_machine": 262,
       "washtower_combo": 2
     }
@@ -27812,6 +27812,14 @@
       "displayName": "Midea Fridge",
       "readableSpec": "Chest",
       "priorityScore": 36,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc284fze01ape/MDRC284FZE01APE-198L-Chest-Freezer-Spec-Sheet.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "midea-official-specification_sheet+midea-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/MDRC284FZE01APE.json"
+      },
       "dimensions": {
         "height_mm": 850,
         "width_mm": 770,
@@ -27829,15 +27837,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc284fze01ape/MDRC284FZE01APE-198L-Chest-Freezer-Spec-Sheet.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "midea-official-specification_sheet+midea-official-user_manual",
-        "raw_json_path": "data/pdf-evidence-raw/MDRC284FZE01APE.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3772",
@@ -27864,6 +27864,14 @@
       "displayName": "Midea Fridge",
       "readableSpec": "Chest",
       "priorityScore": 24,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc499fzf01ap/MDRC499FZF01AP-User-Manual.pdf",
+        "verified_at": "2026-05-19",
+        "confidence_score": 0.9,
+        "source_type": "midea-official-user_manual",
+        "raw_json_path": "data/pdf-evidence-raw/MDRC499FZF01AP.json"
+      },
       "dimensions": {
         "height_mm": 853,
         "width_mm": 1255,
@@ -27881,15 +27889,7 @@
         "ventilation_required": true,
         "reversible_door": null
       },
-      "data_source": "official_pdf",
-      "evidence": {
-        "has_pdf_evidence": true,
-        "source_url": "https://www.midea.com/content/dam/midea-aem/au/au-new/pdp/refrigerator/chest-freezer/mdrc499fzf01ap/MDRC499FZF01AP-User-Manual.pdf",
-        "verified_at": "2026-05-19",
-        "confidence_score": 0.9,
-        "source_type": "midea-official-user_manual",
-        "raw_json_path": "data/pdf-evidence-raw/MDRC499FZF01AP.json"
-      }
+      "data_source": "official_pdf"
     },
     {
       "id": "fridge-arf3839",
@@ -39441,8 +39441,8 @@
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WFM0900WD",
-      "w": 555,
-      "h": 850,
+      "w": 560,
+      "h": 845,
       "d": 575,
       "kwh_year": 133,
       "stars": 5,
@@ -39460,7 +39460,33 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 60
+      "priorityScore": 60,
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 560,
+        "depth_mm": 575,
+        "door_open_90_depth_mm": 1095
+      },
+      "clearance_requirements": {
+        "top_mm": 30,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTE1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WFM0900WD.json"
+      }
     },
     {
       "id": "fridge-arf3877",
@@ -39572,7 +39598,7 @@
       "model": "WHE5600SD",
       "w": 896,
       "h": 1725,
-      "d": 781,
+      "d": 730,
       "kwh_year": 382,
       "stars": 4,
       "price": null,
@@ -39589,7 +39615,33 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 896,
+        "depth_mm": 730,
+        "door_open_90_depth_mm": 1108
+      },
+      "clearance_requirements": {
+        "top_mm": 30,
+        "left_mm": 5,
+        "right_mm": 5,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjY1NzU1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WHE5600SD.json"
+      }
     },
     {
       "id": "fridge-arf3613",
@@ -39598,7 +39650,7 @@
       "model": "WHE5650SD",
       "w": 896,
       "h": 1725,
-      "d": 781,
+      "d": 730,
       "kwh_year": 382,
       "stars": 4,
       "price": null,
@@ -39615,7 +39667,33 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 896,
+        "depth_mm": 730,
+        "door_open_90_depth_mm": 1108
+      },
+      "clearance_requirements": {
+        "top_mm": 30,
+        "left_mm": 5,
+        "right_mm": 5,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjY1NzU1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WHE5650SD.json"
+      }
     },
     {
       "id": "fridge-arf2402",
@@ -40697,8 +40775,8 @@
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WRM1400WD",
-      "w": 555,
-      "h": 850,
+      "w": 560,
+      "h": 845,
       "d": 575,
       "kwh_year": 133,
       "stars": 3,
@@ -40716,7 +40794,33 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 845,
+        "width_mm": 560,
+        "depth_mm": 575,
+        "door_open_90_depth_mm": 1170
+      },
+      "clearance_requirements": {
+        "top_mm": 30,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTE1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WRM1400WD.json"
+      }
     },
     {
       "id": "fridge-arf3878",
@@ -40776,7 +40880,7 @@
       "model": "WRM2400WF",
       "w": 550,
       "h": 1434,
-      "d": 542,
+      "d": 545,
       "kwh_year": 175,
       "stars": 3,
       "price": null,
@@ -40793,7 +40897,33 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 48
+      "priorityScore": 48,
+      "dimensions": {
+        "height_mm": 1434,
+        "width_mm": 550,
+        "depth_mm": 545,
+        "door_open_90_depth_mm": 1050
+      },
+      "clearance_requirements": {
+        "top_mm": 30,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTczMjk1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WRM2400WF.json"
+      }
     },
     {
       "id": "fridge-arf2530",
@@ -41484,9 +41614,9 @@
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WTM2500AA",
-      "w": 545,
-      "h": 1670,
-      "d": 560,
+      "w": 540,
+      "h": 1667,
+      "d": 555,
       "kwh_year": 263,
       "stars": 4,
       "price": null,
@@ -41503,7 +41633,33 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1667,
+        "width_mm": 540,
+        "depth_mm": 555,
+        "door_open_90_depth_mm": 1053
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 50,
+        "right_mm": 50,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjU4OTU1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WTM2500AA.json"
+      }
     },
     {
       "id": "fridge-arf3447",
@@ -41529,7 +41685,33 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1646,
+        "width_mm": 598,
+        "depth_mm": 650,
+        "door_open_90_depth_mm": 1199
+      },
+      "clearance_requirements": {
+        "top_mm": 90,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0MzU1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WTM3100SL.json"
+      }
     },
     {
       "id": "fridge-arf3450",
@@ -41555,7 +41737,33 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1756,
+        "width_mm": 598,
+        "depth_mm": 650,
+        "door_open_90_depth_mm": 1199
+      },
+      "clearance_requirements": {
+        "top_mm": 90,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0MzU1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WTM3400WL.json"
+      }
     },
     {
       "id": "fridge-arf3448",
@@ -41581,7 +41789,33 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 699,
+        "depth_mm": 723,
+        "door_open_90_depth_mm": 1360
+      },
+      "clearance_requirements": {
+        "top_mm": 90,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WTM4302WD.json"
+      }
     },
     {
       "id": "fridge-arf3449",
@@ -41607,7 +41841,33 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 796,
+        "depth_mm": 723,
+        "door_open_90_depth_mm": 1457
+      },
+      "clearance_requirements": {
+        "top_mm": 90,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WTM5002SD.json"
+      }
     },
     {
       "id": "fridge-arf3452",
@@ -41616,7 +41876,7 @@
       "model": "WTM5002WE",
       "w": 796,
       "h": 1725,
-      "d": 723,
+      "d": 727,
       "kwh_year": 394,
       "stars": 4,
       "price": null,
@@ -41633,7 +41893,33 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 796,
+        "depth_mm": 727,
+        "door_open_90_depth_mm": 1457
+      },
+      "clearance_requirements": {
+        "top_mm": 90,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WTM5002WE.json"
+      }
     },
     {
       "id": "fridge-arf3916",
@@ -42106,8 +42392,8 @@
       "cat": "fridge",
       "brand": "Westinghouse",
       "model": "WTB5400SC",
-      "w": 1725,
-      "h": 796,
+      "w": 796,
+      "h": 1725,
       "d": 723,
       "kwh_year": 353,
       "stars": 4,
@@ -42125,7 +42411,33 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "dimensions": {
+        "height_mm": 1725,
+        "width_mm": 796,
+        "depth_mm": 723,
+        "door_open_90_depth_mm": 1457
+      },
+      "clearance_requirements": {
+        "top_mm": 50,
+        "left_mm": 30,
+        "right_mm": 30,
+        "rear_mm": 50
+      },
+      "flags": {
+        "requires_plumbing": false,
+        "ventilation_required": true,
+        "reversible_door": null
+      },
+      "data_source": "official_pdf",
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTc1&lang=",
+        "verified_at": "2026-05-20",
+        "confidence_score": 0.9,
+        "source_type": "westinghouse-official-dimension_sheet",
+        "raw_json_path": "data/pdf-evidence-raw/WTB5400SC.json"
+      }
     },
     {
       "id": "fridge-arf3511",

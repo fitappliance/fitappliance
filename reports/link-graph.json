@@ -1,28 +1,28 @@
 {
   "summary": {
-    "totalPages": 2511,
-    "totalEdges": 25321,
+    "totalPages": 2523,
+    "totalEdges": 25417,
     "orphanPages": 0,
-    "averageInlinks": 10.08
+    "averageInlinks": 10.07
   },
   "orphanUrls": [],
   "nodes": [
     {
       "url": "/",
       "file": "index.html",
-      "inlinks": 2510,
+      "inlinks": 2522,
       "outlinks": 12
     },
     {
       "url": "/about",
       "file": "pages/about.html",
-      "inlinks": 1699,
+      "inlinks": 1711,
       "outlinks": 7
     },
     {
       "url": "/about/editorial-standards",
       "file": "pages/about/editorial-standards.html",
-      "inlinks": 2510,
+      "inlinks": 2522,
       "outlinks": 4
     },
     {
@@ -2986,7 +2986,7 @@
     {
       "url": "/contact",
       "file": "pages/contact.html",
-      "inlinks": 1697,
+      "inlinks": 1709,
       "outlinks": 7
     },
     {
@@ -4882,13 +4882,13 @@
     {
       "url": "/methodology",
       "file": "pages/methodology.html",
-      "inlinks": 2510,
+      "inlinks": 2522,
       "outlinks": 4
     },
     {
       "url": "/privacy",
       "file": "pages/privacy.html",
-      "inlinks": 1697,
+      "inlinks": 1709,
       "outlinks": 7
     },
     {
@@ -4901,7 +4901,7 @@
       "url": "/products",
       "file": "pages/products.html",
       "inlinks": 1,
-      "outlinks": 1699
+      "outlinks": 1711
     },
     {
       "url": "/products/asko-d5424ss-ao-11970",
@@ -14306,6 +14306,12 @@
       "outlinks": 7
     },
     {
+      "url": "/products/westinghouse-wfm0900wd-fridge-arf3876",
+      "file": "pages/products/westinghouse-wfm0900wd-fridge-arf3876.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/westinghouse-wfm1700we-fridge-arf3877",
       "file": "pages/products/westinghouse-wfm1700we-fridge-arf3877.html",
       "inlinks": 1,
@@ -14338,6 +14344,18 @@
     {
       "url": "/products/westinghouse-whe5264sb-ao-77092",
       "file": "pages/products/westinghouse-whe5264sb-ao-77092.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/westinghouse-whe5600sd-fridge-arf3614",
+      "file": "pages/products/westinghouse-whe5600sd-fridge-arf3614.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/westinghouse-whe5650sd-fridge-arf3613",
+      "file": "pages/products/westinghouse-whe5650sd-fridge-arf3613.html",
       "inlinks": 1,
       "outlinks": 7
     },
@@ -14540,8 +14558,20 @@
       "outlinks": 7
     },
     {
+      "url": "/products/westinghouse-wrm1400wd-fridge-arf2432",
+      "file": "pages/products/westinghouse-wrm1400wd-fridge-arf2432.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/westinghouse-wrm2400we-fridge-arf3878",
       "file": "pages/products/westinghouse-wrm2400we-fridge-arf3878.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/westinghouse-wrm2400wf-fridge-arf3073",
+      "file": "pages/products/westinghouse-wrm2400wf-fridge-arf3073.html",
       "inlinks": 1,
       "outlinks": 7
     },
@@ -14888,6 +14918,12 @@
       "outlinks": 7
     },
     {
+      "url": "/products/westinghouse-wtb5400sc-fridge-arf3924",
+      "file": "pages/products/westinghouse-wtb5400sc-fridge-arf3924.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/westinghouse-wtb5400sc-l-ao-86376",
       "file": "pages/products/westinghouse-wtb5400sc-l-ao-86376.html",
       "inlinks": 1,
@@ -14942,8 +14978,44 @@
       "outlinks": 7
     },
     {
+      "url": "/products/westinghouse-wtm2500aa-fridge-arf3540",
+      "file": "pages/products/westinghouse-wtm2500aa-fridge-arf3540.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
       "url": "/products/westinghouse-wtm2500wa-x-ao-172411",
       "file": "pages/products/westinghouse-wtm2500wa-x-ao-172411.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/westinghouse-wtm3100sl-fridge-arf3447",
+      "file": "pages/products/westinghouse-wtm3100sl-fridge-arf3447.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/westinghouse-wtm3400wl-fridge-arf3450",
+      "file": "pages/products/westinghouse-wtm3400wl-fridge-arf3450.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/westinghouse-wtm4302wd-fridge-arf3448",
+      "file": "pages/products/westinghouse-wtm4302wd-fridge-arf3448.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/westinghouse-wtm5002sd-fridge-arf3449",
+      "file": "pages/products/westinghouse-wtm5002sd-fridge-arf3449.html",
+      "inlinks": 1,
+      "outlinks": 7
+    },
+    {
+      "url": "/products/westinghouse-wtm5002we-fridge-arf3452",
+      "file": "pages/products/westinghouse-wtm5002we-fridge-arf3452.html",
       "inlinks": 1,
       "outlinks": 7
     },
@@ -15064,7 +15136,7 @@
     {
       "url": "/terms",
       "file": "pages/terms.html",
-      "inlinks": 1697,
+      "inlinks": 1709,
       "outlinks": 7
     },
     {
