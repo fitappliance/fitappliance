@@ -192,6 +192,23 @@ test('phase 58 live fit preview: toggle collapses and expand opens the 3D modal'
   assert.equal(modal.querySelector('[data-fit-viz-modal-tab="iso"]').getAttribute('aria-selected'), 'true');
 });
 
+test('phase 58 live fit preview: mobile defaults to collapsed to avoid covering results', async () => {
+  installIsoProjectionStub();
+  const SearchDom = await loadSearchDomWithViz();
+  const window = makeWindow();
+  window.matchMedia = () => ({ matches: true });
+  const root = window.document.getElementById('root');
+
+  SearchDom.renderLiveFitPreview(root, fixture);
+  const preview = root.querySelector('[data-live-fit-preview]');
+  const toggle = root.querySelector('[data-live-fit-preview-toggle]');
+  const panel = root.querySelector('[data-live-fit-preview-panel]');
+
+  assert.equal(preview.classList.contains('is-collapsed'), true);
+  assert.equal(toggle.getAttribute('aria-expanded'), 'false');
+  assert.equal(panel.hidden, true);
+});
+
 test('phase 48 fit-viz modal: escape and overlay close the dialog', async () => {
   const SearchDom = await loadSearchDomWithViz();
   const window = makeWindow();

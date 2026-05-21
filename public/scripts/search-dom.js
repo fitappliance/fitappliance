@@ -561,6 +561,7 @@
     summary.type = 'button';
     summary.className = 'saved-search-dropdown__toggle';
     summary.dataset.savedSearchToggle = '1';
+    summary.setAttribute('aria-expanded', 'false');
     summary.textContent = `Saved searches (${rows.length})`;
     setAriaLabel(summary, `Saved searches (${rows.length})`);
     wrapper.appendChild(summary);
@@ -568,6 +569,7 @@
     const list = doc.createElement('div');
     list.className = 'saved-search-dropdown__list';
     list.dataset.savedSearchList = '1';
+    list.hidden = true;
 
     if (rows.length === 0) {
       const empty = doc.createElement('p');
@@ -614,6 +616,11 @@
     }
 
     wrapper.appendChild(list);
+    summary.addEventListener('click', () => {
+      const expanded = summary.getAttribute('aria-expanded') === 'true';
+      summary.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      list.hidden = expanded;
+    });
     container.appendChild(wrapper);
   }
 
@@ -1476,9 +1483,14 @@
         view: 'front'
       }) ?? '';
 
+    const previewWindow = container?.ownerDocument?.defaultView ?? (typeof window !== 'undefined' ? window : null);
+    const isMobilePreview = typeof previewWindow?.matchMedia === 'function'
+      && previewWindow.matchMedia('(max-width: 660px)').matches;
+    const previewExpanded = !isMobilePreview;
+
     container.hidden = false;
     container.innerHTML = `<aside class="live-fit-preview" data-live-fit-preview aria-label="Live fit preview for top result">
-      <button type="button" class="live-fit-preview__toggle" data-live-fit-preview-toggle aria-expanded="true">
+      <button type="button" class="live-fit-preview__toggle" data-live-fit-preview-toggle aria-expanded="${previewExpanded ? 'true' : 'false'}">
         <span class="live-fit-preview__icon" aria-hidden="true">
           <svg viewBox="0 0 32 32" focusable="false"><path d="M8 11l8-5 8 5-8 5-8-5z"/><path d="M8 11v10l8 5V16"/><path d="M24 11v10l-8 5"/></svg>
         </span>
@@ -1487,18 +1499,20 @@
           <small>${escHtml(name)} · binding ${escHtml(bindingAxis)}</small>
         </span>
       </button>
-      <div class="live-fit-preview__panel" data-live-fit-preview-panel>
+      <div class="live-fit-preview__panel" data-live-fit-preview-panel${previewExpanded ? '' : ' hidden'}>
         <div class="live-fit-preview__svg">${svg}</div>
         <button type="button" class="live-fit-preview__expand" data-live-fit-preview-expand>Expand 3D view</button>
       </div>
     </aside>`;
 
+    container.querySelector('[data-live-fit-preview]')?.classList.toggle('is-collapsed', !previewExpanded);
     const toggle = container.querySelector('[data-live-fit-preview-toggle]');
     const panel = container.querySelector('[data-live-fit-preview-panel]');
     toggle?.addEventListener('click', () => {
       const expanded = toggle.getAttribute('aria-expanded') !== 'false';
       toggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
       panel.hidden = expanded;
+      container.querySelector('[data-live-fit-preview]')?.classList.toggle('is-collapsed', expanded);
     });
     container.querySelector('[data-live-fit-preview-expand]')?.addEventListener('click', () => {
       openFitVizModal({
