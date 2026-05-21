@@ -43,11 +43,21 @@ function productName(product) {
   const model = String(product?.model ?? '').trim();
   const displayName = String(product?.displayName ?? '').trim();
   const cleanName = (value) => String(value ?? '').replace(/[™®]/g, '').replace(/\s+/g, ' ').trim();
+  const normalizedModel = model.replace(/[^a-z0-9]/gi, '').toLowerCase();
+  const includesModel = (value) => {
+    if (!normalizedModel) return true;
+    return String(value ?? '').replace(/[^a-z0-9]/gi, '').toLowerCase().includes(normalizedModel);
+  };
+  const withModel = (value) => {
+    const cleaned = cleanName(value);
+    if (!model || includesModel(cleaned)) return cleaned;
+    return cleanName(`${cleaned} ${model}`);
+  };
   if (displayName && displayName.toLowerCase().startsWith(brand.toLowerCase())) {
-    return cleanName(displayName);
+    return withModel(displayName);
   }
   if (displayName && displayName.length > model.length + brand.length + 2) {
-    return cleanName(`${brand} ${displayName}`);
+    return withModel(`${brand} ${displayName}`);
   }
   return cleanName(`${brand} ${model}`);
 }
