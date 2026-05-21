@@ -156,6 +156,23 @@ test('phase 45c saved-search UI: empty dropdown shows a friendly empty state', a
   assert.match(mount.textContent, /No saved searches yet/);
 });
 
+test('phase 45c saved-search UI: dropdown list is collapsed until requested', async () => {
+  const { renderSavedSearchDropdown } = await loadSearchDom();
+  const window = makeWindow();
+  const mount = window.document.getElementById('saved');
+
+  renderSavedSearchDropdown(mount, { store: makeStore() });
+  const toggle = mount.querySelector('[data-saved-search-toggle]');
+  const list = mount.querySelector('[data-saved-search-list]');
+
+  assert.equal(toggle.getAttribute('aria-expanded'), 'false');
+  assert.equal(list.hidden, true);
+
+  toggle.click();
+  assert.equal(toggle.getAttribute('aria-expanded'), 'true');
+  assert.equal(list.hidden, false);
+});
+
 test('phase 45c saved-search UI: saved search names are rendered without HTML execution', async () => {
   const { renderSavedSearchDropdown } = await loadSearchDom();
   const window = makeWindow();

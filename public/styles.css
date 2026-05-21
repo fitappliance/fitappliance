@@ -59,6 +59,8 @@ table.compare-table td, table.compare-table th,
 }
 
 .hero-trust-item {
+  min-width: 0;
+  overflow-wrap: anywhere;
   white-space: nowrap;
 }
 
@@ -79,6 +81,7 @@ table.compare-table td, table.compare-table th,
 .hero-sample-chip {
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
   background: #f0eeea;
   border: 1px solid var(--border, #d0cfc8);
   border-radius: 4px;
@@ -88,6 +91,8 @@ table.compare-table td, table.compare-table th,
   font-weight: 700;
   color: var(--ink, #1a1a1a);
   cursor: pointer;
+  white-space: normal;
+  text-align: left;
 }
 
 .hero-sample-chip:hover {
@@ -1297,6 +1302,15 @@ body.scroll-locked {
     justify-content: flex-start;
   }
 
+  .retailer-filter-banner {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .retailer-filter-banner .secondary {
+    width: 100%;
+  }
+
   .mobile-sheet-trigger {
     display: inline-flex;
   }
@@ -1584,6 +1598,7 @@ body.scroll-locked {
   border-radius: var(--r-sm, 4px);
   background: #faf8f4;
   cursor: pointer;
+  min-width: 0;
 }
 
 .search-mode-option input {
@@ -1596,6 +1611,8 @@ body.scroll-locked {
   font-size: 13px;
   font-weight: 800;
   line-height: 1.25;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .search-mode-option small {
@@ -1604,6 +1621,8 @@ body.scroll-locked {
   font-size: 12px;
   font-weight: 600;
   line-height: 1.35;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .search-mode-option--active {

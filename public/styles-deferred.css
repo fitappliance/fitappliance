@@ -2062,6 +2062,9 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   border-radius:10px;
   box-shadow:0 16px 40px rgba(28,24,20,.16);
 }
+.fit-score-popover:not([open]) .fit-score-popover__panel {
+  display:none;
+}
 .score-breakdown__summary {
   display:flex;
   align-items:center;
@@ -2116,6 +2119,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   cursor:help;
 }
 .metric-tooltip__bubble {
+  display:none;
   position:absolute;
   left:50%;
   bottom:calc(100% + 8px);
@@ -2136,6 +2140,7 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 .metric-tooltip:hover .metric-tooltip__bubble,
 .metric-tooltip:focus .metric-tooltip__bubble,
 .metric-tooltip:focus-within .metric-tooltip__bubble {
+  display:block;
   opacity:1;
 }
 
@@ -2155,9 +2160,39 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
     font-size:12px;
   }
   .fit-score-popover__panel {
-    left:50%;
-    transform:translateX(-50%);
-    overflow-x:auto;
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:14px;
+    top:auto;
+    width:auto;
+    max-width:none;
+    max-height:70vh;
+    transform:none;
+    overflow:auto;
+  }
+  .score-breakdown__table {
+    table-layout:fixed;
+  }
+  .score-breakdown__table th,
+  .score-breakdown__table td {
+    overflow-wrap:anywhere;
+    white-space:normal;
+  }
+  .float-bar {
+    width:100vw;
+    max-width:100%;
+    overflow:hidden;
+    padding:10px 12px;
+  }
+  .float-bar-inner {
+    width:100%;
+    min-width:0;
+  }
+  .float-bar-summary {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
   }
 }
 
@@ -2195,9 +2230,59 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   .fit-thumb { width:64px;height:64px; }
 }
 @media(max-width:660px){
+  .topbar {
+    padding-left:12px;
+    padding-right:12px;
+    overflow-wrap:anywhere;
+  }
+  nav {
+    height:58px;
+    padding:0 16px;
+    gap:12px;
+  }
+  .logo {
+    flex-shrink:0;
+    font-size:22px;
+  }
+  .nav-right {
+    min-width:0;
+    gap:10px;
+  }
   .nav-right .nav-link { display:none; }
-  .search-card { padding:22px 18px; }
-  .dim-grid { grid-template-columns:1fr 1fr; }
+  .nav-btn {
+    max-width:132px;
+    overflow:hidden;
+    padding:8px 12px;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .hero-inner,
+  .hero-sub {
+    max-width:100%;
+  }
+  .hero-trust-strip {
+    display:grid;
+    grid-template-columns:1fr;
+    justify-items:center;
+  }
+  .hero-trust-item {
+    max-width:100%;
+    text-align:center;
+    white-space:normal;
+  }
+  .search-card {
+    width:100%;
+    max-width:calc(100vw - 32px);
+    overflow:hidden;
+    padding:22px 18px;
+  }
+  .search-mode-toggle {
+    grid-template-columns:1fr;
+  }
+  .search-mode-option {
+    min-width:0;
+  }
+  .dim-grid { grid-template-columns:1fr; }
   .extra-grid { grid-template-columns:1fr; }
   .hero { padding:48px 16px 80px; }
   .footer-grid { grid-template-columns:1fr;gap:28px; }
@@ -2261,10 +2346,37 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
     min-height:220px;
   }
   .live-fit-preview {
-    right:10px;
-    bottom:10px;
-    width:calc(100vw - 20px);
+    left:12px;
+    right:12px;
+    bottom:12px;
+    width:auto;
     border-radius:14px;
+  }
+  .live-fit-preview.is-collapsed {
+    left:auto;
+    width:58px;
+    height:58px;
+    overflow:hidden;
+  }
+  .live-fit-preview.is-collapsed .live-fit-preview__toggle {
+    justify-content:center;
+    height:58px;
+    padding:0;
+    border-radius:14px;
+  }
+  .live-fit-preview.is-collapsed .live-fit-preview__toggle > span:not(.live-fit-preview__icon) {
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+  }
+  .live-fit-preview__panel[hidden] {
+    display:none;
   }
   .live-fit-preview__svg svg {
     max-width:230px;
