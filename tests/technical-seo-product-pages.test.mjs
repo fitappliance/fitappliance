@@ -12,6 +12,7 @@ const {
   buildProductJsonLd,
   buildProductPageHtml,
   generateProductPages,
+  productName,
   slugifyProduct,
   selectVerifiedProducts
 } = require('../scripts/generate-product-pages.js');
@@ -85,6 +86,26 @@ test('technical SEO: product page renders canonical, Product, Breadcrumb, and FA
   assert.ok(jsonLd.some((block) => block['@type'] === 'Product'), 'Product JSON-LD missing');
   assert.ok(jsonLd.some((block) => block['@type'] === 'BreadcrumbList'), 'Breadcrumb JSON-LD missing');
   assert.ok(jsonLd.some((block) => block['@type'] === 'FAQPage'), 'FAQ JSON-LD missing');
+});
+
+test('technical SEO: product names always include model for unique GSC crawl signals', () => {
+  assert.equal(
+    productName(makeProduct({
+      brand: 'CHIQ',
+      model: 'CSH310NBSL',
+      displayName: 'CHiQ Fridge'
+    })),
+    'CHiQ Fridge CSH310NBSL'
+  );
+
+  assert.equal(
+    productName(makeProduct({
+      brand: 'Westinghouse',
+      model: 'WBE5300SBL',
+      displayName: 'Westinghouse 528L Bottom Mount Fridge WBE5300SBL'
+    })),
+    'Westinghouse 528L Bottom Mount Fridge WBE5300SBL'
+  );
 });
 
 test('technical SEO: dimensions-only and retailer spec pages avoid Verified Fit wording', () => {
