@@ -23,6 +23,8 @@ test('mobile visual layout: small screens use a single-column dimension form', (
 test('mobile visual layout: search shell cannot exceed phone viewport width', () => {
   const mobileCss = deferred.match(/@media\(max-width:660px\)\{([\s\S]*?)@media\(max-width:360px\)/)?.[1] ?? '';
 
+  assert.match(styles, /body\s*\{[\s\S]*background:\s*#faf8f4;/);
+  assert.match(styles, /body\s*\{[\s\S]*margin:\s*0;/);
   assert.match(mobileCss, /\.search-card\s*\{[\s\S]*max-width:calc\(100vw - 32px\);/);
   assert.match(mobileCss, /\.search-card\s*\{[\s\S]*overflow:hidden;/);
   assert.match(mobileCss, /\.search-mode-toggle\s*\{[\s\S]*grid-template-columns:1fr;/);
@@ -42,6 +44,9 @@ test('mobile visual layout: compact navigation preserves the primary CTA on phon
   assert.match(mobileCss, /nav\s*\{[\s\S]*padding:0 16px;/);
   assert.match(mobileCss, /\.nav-btn\s*\{[\s\S]*max-width:132px;/);
   assert.match(mobileCss, /\.nav-btn\s*\{[\s\S]*text-overflow:ellipsis;/);
+  assert.match(styles, /\.site-header\s*\{[\s\S]*justify-content:\s*space-between;/);
+  assert.match(styles, /@media \(max-width: 640px\) \{[\s\S]*\.site-header nav a:not\(\.btn\)\s*\{[\s\S]*display:\s*none;/);
+  assert.match(styles, /@media \(max-width: 640px\) \{[\s\S]*\.site-header nav \.btn\s*\{[\s\S]*min-height:\s*40px;/);
 });
 
 test('mobile visual layout: closed score popovers do not create horizontal scroll', () => {
@@ -74,4 +79,37 @@ test('mobile visual layout: retailer summary CTA stacks instead of squeezing tex
 
   assert.match(mobileCss, /\.retailer-filter-banner\s*\{[\s\S]*flex-direction:\s*column;/);
   assert.match(mobileCss, /\.retailer-filter-banner \.secondary\s*\{[\s\S]*width:\s*100%;/);
+});
+
+test('mobile visual layout: compare pages avoid nested vertical table scroll on phones', () => {
+  const compareCss = deferred.match(/@media\(max-width:760px\)\{([\s\S]*)$/)?.[1] ?? '';
+
+  assert.match(deferred, /\.compare-static-page\s*\{[\s\S]*width:min\(1120px, calc\(100% - 48px\)\);/);
+  assert.match(compareCss, /\.compare-static-page\s*\{[\s\S]*width:100%;/);
+  assert.match(compareCss, /\.compare-table-wrap\s*\{[\s\S]*max-height:none;/);
+  assert.match(compareCss, /\.compare-table-wrap\s*\{[\s\S]*overflow-x:auto;/);
+  assert.match(compareCss, /\.compare-table-wrap\s*\{[\s\S]*overflow-y:visible;/);
+  assert.match(compareCss, /\.compare-table--rtings\s*\{[\s\S]*min-width:calc\(132px \+ \(230px \* var\(--compare-count, 2\)\)\);/);
+});
+
+test('mobile visual layout: compare product headers and help bubbles fit touch screens', () => {
+  const compareCss = deferred.match(/@media\(max-width:760px\)\{([\s\S]*)$/)?.[1] ?? '';
+  const scoreCss = deferred.match(/@media\(max-width:660px\)\{([\s\S]*?)@media \(min-width:661px\)/)?.[1] ?? '';
+
+  assert.match(compareCss, /\.compare-product-card\s*\{[\s\S]*grid-template-columns:32px minmax\(0, 1fr\);/);
+  assert.match(compareCss, /\.compare-product-avatar\s*\{[\s\S]*width:32px;/);
+  assert.match(compareCss, /\.compare-product-copy strong,\s*[\s\S]*\.compare-product-copy span\s*\{[\s\S]*overflow-wrap:anywhere;/);
+  assert.match(compareCss, /\.compare-product-copy span:last-child\s*\{[\s\S]*display:none;/);
+  assert.match(scoreCss, /\.metric-tooltip__bubble\s*\{[\s\S]*position:fixed;/);
+  assert.match(scoreCss, /\.metric-tooltip__bubble\s*\{[\s\S]*left:12px;/);
+  assert.match(scoreCss, /\.metric-tooltip__bubble\s*\{[\s\S]*right:12px;/);
+});
+
+test('mobile visual layout: product images and lightbox stay scaled for phone screens', () => {
+  const mobileCss = deferred.match(/@media\(max-width:660px\)\{([\s\S]*?)@media\(max-width:360px\)/)?.[1] ?? '';
+
+  assert.match(mobileCss, /\.product-photo-thumb\s*\{[\s\S]*width:86px;[\s\S]*height:86px;/);
+  assert.match(mobileCss, /\.product-photo-thumb__image\s*\{[\s\S]*padding:6px;/);
+  assert.match(mobileCss, /\.product-photo-lightbox__media img\s*\{[\s\S]*max-height:52vh;/);
+  assert.match(mobileCss, /\.product-photo-lightbox__copy h3\s*\{[\s\S]*font-size:20px;/);
 });
