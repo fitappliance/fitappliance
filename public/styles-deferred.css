@@ -2179,6 +2179,14 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
     overflow-wrap:anywhere;
     white-space:normal;
   }
+  .metric-tooltip__bubble {
+    position:fixed;
+    left:12px;
+    right:12px;
+    bottom:76px;
+    width:auto;
+    transform:none;
+  }
   .float-bar {
     width:100vw;
     max-width:100%;
@@ -2326,6 +2334,9 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
     height:86px;
     border-radius:12px;
   }
+  .product-photo-thumb__image {
+    padding:6px;
+  }
   .product-photo-thumb__zoom {
     width:22px;
     height:22px;
@@ -2344,6 +2355,12 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   }
   .product-photo-lightbox__media {
     min-height:220px;
+  }
+  .product-photo-lightbox__media img {
+    max-height:52vh;
+  }
+  .product-photo-lightbox__copy h3 {
+    font-size:20px;
   }
   .live-fit-preview {
     left:12px;
@@ -2406,6 +2423,38 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
 }
 
 /* Phase 58 R4: RTINGS-style full-width compare table */
+.compare-static-page {
+  width:min(1120px, calc(100% - 48px));
+  margin:0 auto;
+  padding:24px 0 64px;
+  color:var(--ink);
+}
+.compare-static-page .back-link {
+  display:inline-flex;
+  align-items:center;
+  min-height:36px;
+  color:var(--copper);
+  font-weight:800;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.compare-static-hero {
+  max-width:780px;
+  padding:18px 0 22px;
+}
+.compare-static-hero h1 {
+  margin:6px 0 10px;
+  color:var(--ink);
+  font-family:'Instrument Serif', Georgia, serif;
+  font-size:clamp(34px, 6vw, 56px);
+  line-height:1;
+}
+.compare-static-hero p:last-child {
+  margin:0;
+  color:var(--ink-2);
+  font-size:16px;
+  line-height:1.5;
+}
 .compare-table-shell {
   display:block;
   width:100%;
@@ -2624,16 +2673,91 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   background:#fff;
 }
 @media(max-width:760px){
+  .compare-static-page {
+    width:100%;
+    padding:14px 8px 44px;
+  }
+  .compare-static-page .back-link {
+    min-height:42px;
+    padding:0 6px;
+    font-size:14px;
+  }
+  .compare-static-hero {
+    padding:10px 8px 16px;
+  }
+  .compare-static-hero h1 {
+    font-size:34px;
+    line-height:1.04;
+  }
+  .compare-static-hero p:last-child {
+    font-size:14px;
+  }
+  .compare-table-shell {
+    border-radius:12px;
+  }
   .compare-table-toolbar {
     flex-direction:column;
+    gap:12px;
+    padding:14px;
   }
   .compare-table-actions {
     justify-content:flex-start;
+    width:100%;
+  }
+  .compare-table-action {
+    flex:1 1 0;
+    min-height:44px;
+    text-align:center;
   }
   .compare-table-wrap {
-    max-height:70vh;
+    max-height:none;
+    overflow-x:auto;
+    overflow-y:visible;
+    -webkit-overflow-scrolling:touch;
   }
   .compare-table--rtings {
-    min-width:860px;
+    min-width:calc(132px + (230px * var(--compare-count, 2)));
+    font-size:12.5px;
+  }
+  .compare-table--rtings th,
+  .compare-table--rtings td {
+    padding:10px;
+  }
+  .compare-metric-head {
+    width:132px;
+  }
+  .compare-product-card {
+    grid-template-columns:32px minmax(0, 1fr);
+    gap:8px;
+  }
+  .compare-product-avatar {
+    width:32px;
+    height:32px;
+    border-radius:7px;
+    font-size:12px;
+  }
+  .compare-product-copy strong,
+  .compare-product-copy span {
+    overflow-wrap:anywhere;
+  }
+  .compare-product-copy span:last-child {
+    display:none;
+  }
+  .compare-score-cell,
+  .compare-remove {
+    grid-column:1 / -1;
+    text-align:left;
+  }
+  .compare-scroll-hint {
+    display:block;
+    margin:0;
+    padding:9px 12px;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    background:#fffaf2;
+    color:var(--ink);
+    text-align:left;
+    font-size:12px;
+    line-height:1.35;
   }
 }
