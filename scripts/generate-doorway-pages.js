@@ -153,21 +153,25 @@ function buildPageHtml({ doorway, matched, adjacentDoorways, relatedDoorways, mo
 ${buildHreflangLinks(canonical)}
   <style>
     :root { --ink:#131210; --ink-2:#3d3a35; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
+    * { box-sizing:border-box; }
     body { margin:0; font-family:Arial, sans-serif; color:var(--ink); background:var(--paper); line-height:1.6; }
     main { max-width:980px; margin:0 auto; padding:40px 20px 60px; }
     h1 { margin:0 0 10px; font-size:34px; }
     p { color:var(--ink-2); }
+    .back-link { display:inline-flex; align-items:center; min-height:44px; color:var(--ink-2); text-decoration:none; font-size:13px; }
     .chip-row { margin-top:16px; display:flex; gap:10px; flex-wrap:wrap; }
-    .chip { background:var(--white); border:1px solid var(--border); border-radius:999px; padding:6px 10px; font-size:13px; text-decoration:none; color:var(--copper); }
+    .chip { display:inline-flex; align-items:center; min-height:44px; background:var(--white); border:1px solid var(--border); border-radius:999px; padding:6px 10px; font-size:13px; text-decoration:none; color:var(--copper); }
     .card-grid { display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); margin-top:18px; }
     .card { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:12px; }
+    .card strong,.meta { overflow-wrap:anywhere; }
     .meta { color:#666; font-size:13px; }
     h2 { margin-top:24px; }
+    @media(max-width:640px){main{width:100%;max-width:100vw;overflow-x:hidden;padding:28px 16px 56px}h1{font-size:30px;line-height:1.1}.card-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <main>
-    <a href="${SITE_ORIGIN}/">← Back to FitAppliance</a>
+    <a class="back-link" href="${SITE_ORIGIN}/">← Back to FitAppliance</a>
     <h1>Fridges that fit through a ${doorway}mm doorway</h1>
     <p id="quick-answer">${matched.length} fridge models can pass a ${doorway}mm doorway using a 10mm handling margin.</p>
     <p>Always confirm diagonal clearance, hallway corners, and stair turns before delivery day.</p>
@@ -203,8 +207,8 @@ ${buildHreflangLinks(canonical)}
       ${GUIDE_HUB_LINKS.map((link) => `<a class="chip" href="${link.url}">${escHtml(link.label)}</a>`).join('')}
     </div>
     <footer style="margin-top:28px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:#666">
-      <a href="/methodology">Methodology</a> ·
-      <a href="/about/editorial-standards">Editorial standards</a>
+      <a href="/methodology" style="display:inline-flex;align-items:center;min-height:44px;color:var(--copper)">Methodology</a> ·
+      <a href="/about/editorial-standards" style="display:inline-flex;align-items:center;min-height:44px;color:var(--copper)">Editorial standards</a>
     </footer>
   </main>
   <script type="application/ld+json">

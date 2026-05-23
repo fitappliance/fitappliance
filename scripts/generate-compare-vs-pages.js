@@ -199,7 +199,7 @@ function buildRetailerCtas(products) {
       const brand = displayBrandName(product.brand);
       const model = String(product.model ?? '').trim();
       const retailerName = String(retailer.n ?? retailer.name ?? 'retailer').trim();
-      return `<a href="${escHtml(retailer.url)}" target="_blank" rel="sponsored nofollow noopener">Check ${escHtml(brand)} ${escHtml(model)} at ${escHtml(retailerName)} →</a>`;
+      return `<a href="${escHtml(retailer.url)}" target="_blank" rel="sponsored nofollow noopener" style="display:inline-flex;align-items:center;min-height:44px">Check ${escHtml(brand)} ${escHtml(model)} at ${escHtml(retailerName)} →</a>`;
     })
     .filter(Boolean);
   if (links.length === 0) return '';
@@ -272,10 +272,10 @@ ${buildHtmlHead({
     <section class="comparison-detail">
       <h2>How to use this comparison</h2>
       <p>Start with the dimensions and clearance rows, then check access, energy, and evidence status. A lower clearance requirement is easier to fit; a higher Fit Score is better only when a cavity has been entered.</p>
-      <p><a href="/?cat=${escHtml(row.cat)}&intent=compare&brand=${encodeURIComponent(brandA)}&vs=${encodeURIComponent(brandB)}">Run a live cavity comparison for ${escHtml(brandA)} vs ${escHtml(brandB)} →</a></p>
+      <p><a href="/?cat=${escHtml(row.cat)}&intent=compare&brand=${encodeURIComponent(brandA)}&vs=${encodeURIComponent(brandB)}" style="display:inline-flex;align-items:center;min-height:44px">Run a live cavity comparison for ${escHtml(brandA)} vs ${escHtml(brandB)} →</a></p>
     </section>
     <footer class="comparison-detail">
-      <p><a href="/methodology">Methodology</a> · <a href="/about/editorial-standards">Editorial standards</a> · <a href="/affiliate-disclosure">Affiliate disclosure</a></p>
+      <p><a href="/methodology" style="display:inline-flex;align-items:center;min-height:44px">Methodology</a> · <a href="/about/editorial-standards" style="display:inline-flex;align-items:center;min-height:44px">Editorial standards</a> · <a href="/affiliate-disclosure" style="display:inline-flex;align-items:center;min-height:44px">Affiliate disclosure</a></p>
     </footer>
   </main>
 </body>

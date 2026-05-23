@@ -539,7 +539,7 @@ ${headMeta}
     * { box-sizing: border-box; }
     body { margin: 0; font-family: 'Outfit', sans-serif; color: var(--ink); background: var(--paper); line-height: 1.65; }
     main { max-width: 980px; margin: 0 auto; padding: 54px 24px 70px; }
-    .back-link { display: inline-block; margin-bottom: 16px; text-decoration: none; color: var(--ink-3); font-size: 13px; }
+    .back-link { display: inline-flex; align-items:center; min-height:44px; margin-bottom: 16px; text-decoration: none; color: var(--ink-3); font-size: 13px; }
     h1 { margin: 0 0 12px; font-family: 'Instrument Serif', serif; font-size: clamp(34px, 5vw, 50px); line-height: 1.08; }
     .hero-media { display:block; margin: 0 0 18px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--white); }
     .hero-media img { width: 100%; height: auto; display: block; }
@@ -552,6 +552,7 @@ ${headMeta}
     .metric b { color: var(--ink); font-size: 18px; }
     .comparison-detail { border: 1px solid var(--border); border-radius: 12px; background: var(--white); padding: 16px; margin-bottom: 18px; }
     .comparison-detail h2 { margin: 0 0 8px; font-size: 19px; }
+    .comparison-detail a { display:inline-flex; align-items:center; min-height:44px; color:var(--copper); }
     .comparison-detail ul { margin: 0; padding-left: 18px; color: var(--ink-2); font-size: 14px; }
     .comparison-models { border: 1px solid var(--border); border-radius: 12px; background: var(--white); padding: 16px; margin-bottom: 18px; }
     .comparison-models h2 { margin: 0 0 10px; font-size: 19px; }
@@ -561,7 +562,7 @@ ${headMeta}
     .model-grid li { margin-bottom: 8px; }
     .sample-thumb { display: block; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin: 0 0 6px; }
     .sample-thumb img { width: 100%; height: auto; display: block; }
-    .model-grid li a { color: var(--copper); font-weight: 700; text-decoration: none; }
+    .model-grid li a { display:inline-flex; align-items:center; min-height:44px; color: var(--copper); font-weight: 700; text-decoration: none; }
     .model-grid li a:hover { text-decoration: underline; }
     .brand-links { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
     .brand-links a, .cta {
@@ -633,25 +634,25 @@ ${headMeta}
     <section style="margin:32px 0;padding:16px 24px;background:#f5f2ec;border-radius:8px;border:1px solid #e0d9ce">
       <p style="font-size:13px;color:#6b6b6b;margin:0 0 10px">Full clearance specifications:</p>
       <div style="display:flex;gap:16px;flex-wrap:wrap">
-        <a href="/brands/${escHtml(slugify(brandA))}-${escHtml(categoryMeta.slug)}-clearance" style="font-size:13px;color:#b55a2c;text-decoration:none">${escHtml(displayBrandA)} ${escHtml(categoryMeta.labelSingular)} clearance specs →</a>
-        <a href="/brands/${escHtml(slugify(brandB))}-${escHtml(categoryMeta.slug)}-clearance" style="font-size:13px;color:#b55a2c;text-decoration:none">${escHtml(displayBrandB)} ${escHtml(categoryMeta.labelSingular)} clearance specs →</a>
+        <a href="/brands/${escHtml(slugify(brandA))}-${escHtml(categoryMeta.slug)}-clearance" style="display:inline-flex;align-items:center;min-height:44px;font-size:13px;color:#b55a2c;text-decoration:none">${escHtml(displayBrandA)} ${escHtml(categoryMeta.labelSingular)} clearance specs →</a>
+        <a href="/brands/${escHtml(slugify(brandB))}-${escHtml(categoryMeta.slug)}-clearance" style="display:inline-flex;align-items:center;min-height:44px;font-size:13px;color:#b55a2c;text-decoration:none">${escHtml(displayBrandB)} ${escHtml(categoryMeta.labelSingular)} clearance specs →</a>
       </div>
     </section>
     ${alsoViewedComparisons.length > 0 ? `<section style="margin:20px 0;padding:16px 24px;background:#f5f2ec;border-radius:8px;border:1px solid #e0d9ce">
       <p style="font-size:13px;color:#6b6b6b;margin:0 0 10px">Also viewed comparisons:</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
-        ${alsoViewedComparisons.map((row) => `<a href="/compare/${escHtml(row.slug)}" style="display:inline-block;padding:6px 14px;border:1px solid #e0d9ce;border-radius:20px;font-size:13px;color:#b55a2c;text-decoration:none;background:#fff">${escHtml(row.label)}</a>`).join('\n        ')}
+        ${alsoViewedComparisons.map((row) => `<a href="/compare/${escHtml(row.slug)}" style="display:inline-flex;align-items:center;min-height:44px;padding:6px 14px;border:1px solid #e0d9ce;border-radius:20px;font-size:13px;color:#b55a2c;text-decoration:none;background:#fff">${escHtml(row.label)}</a>`).join('\n        ')}
       </div>
     </section>` : ''}
     <section style="margin:20px 0;padding:16px 24px;background:#f5f2ec;border-radius:8px;border:1px solid #e0d9ce">
       <p style="font-size:13px;color:#6b6b6b;margin:0 0 10px">Related fitting guides:</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
-        ${GUIDE_HUB_LINKS.map((row) => `<a href="${escHtml(row.url)}" style="display:inline-block;padding:6px 14px;border:1px solid #e0d9ce;border-radius:20px;font-size:13px;color:#b55a2c;text-decoration:none;background:#fff">${escHtml(row.label)}</a>`).join('\n        ')}
+        ${GUIDE_HUB_LINKS.map((row) => `<a href="${escHtml(row.url)}" style="display:inline-flex;align-items:center;min-height:44px;padding:6px 14px;border:1px solid #e0d9ce;border-radius:20px;font-size:13px;color:#b55a2c;text-decoration:none;background:#fff">${escHtml(row.label)}</a>`).join('\n        ')}
       </div>
     </section>
     <footer style="margin-top:16px;padding-top:14px;border-top:1px solid #e0d9ce;font-size:13px;color:#6b6b6b">
-      <a href="/methodology" style="color:#b55a2c;text-decoration:none">Methodology</a> ·
-      <a href="/about/editorial-standards" style="color:#b55a2c;text-decoration:none">Editorial standards</a>
+      <a href="/methodology" style="display:inline-flex;align-items:center;min-height:44px;color:#b55a2c;text-decoration:none">Methodology</a> ·
+      <a href="/about/editorial-standards" style="display:inline-flex;align-items:center;min-height:44px;color:#b55a2c;text-decoration:none">Editorial standards</a>
     </footer>
   </main>
   <script>

@@ -33,6 +33,7 @@ test('mobile visual layout: search shell cannot exceed phone viewport width', ()
 test('mobile visual layout: long trust and mode labels wrap instead of overflowing', () => {
   assert.match(blockFor('.hero-trust-item', styles), /overflow-wrap:\s*anywhere;/);
   assert.match(blockFor('.hero-sample-chip', styles), /white-space:\s*normal;/);
+  assert.match(blockFor('.hero-sample-chip', styles), /min-height:\s*44px;/);
   assert.match(blockFor('.search-mode-option', styles), /min-width:\s*0;/);
   assert.match(blockFor('.search-mode-option span', styles), /overflow-wrap:\s*anywhere;/);
   assert.match(blockFor('.search-mode-option small', styles), /overflow-wrap:\s*anywhere;/);
@@ -45,8 +46,10 @@ test('mobile visual layout: compact navigation preserves the primary CTA on phon
   assert.match(mobileCss, /\.nav-btn\s*\{[\s\S]*max-width:132px;/);
   assert.match(mobileCss, /\.nav-btn\s*\{[\s\S]*text-overflow:ellipsis;/);
   assert.match(styles, /\.site-header\s*\{[\s\S]*justify-content:\s*space-between;/);
+  assert.match(styles, /\.site-header \.brand\s*\{[\s\S]*min-height:\s*44px;/);
+  assert.match(styles, /\.site-header nav a\s*\{[\s\S]*min-height:\s*44px;/);
   assert.match(styles, /@media \(max-width: 640px\) \{[\s\S]*\.site-header nav a:not\(\.btn\)\s*\{[\s\S]*display:\s*none;/);
-  assert.match(styles, /@media \(max-width: 640px\) \{[\s\S]*\.site-header nav \.btn\s*\{[\s\S]*min-height:\s*40px;/);
+  assert.match(styles, /@media \(max-width: 640px\) \{[\s\S]*\.site-header nav \.btn\s*\{[\s\S]*min-height:\s*44px;/);
 });
 
 test('mobile visual layout: closed score popovers do not create horizontal scroll', () => {
@@ -85,11 +88,14 @@ test('mobile visual layout: compare pages avoid nested vertical table scroll on 
   const compareCss = deferred.match(/@media\(max-width:760px\)\{([\s\S]*)$/)?.[1] ?? '';
 
   assert.match(deferred, /\.compare-static-page\s*\{[\s\S]*width:min\(1120px, calc\(100% - 48px\)\);/);
+  assert.match(deferred, /\.compare-static-page\s*\{[\s\S]*box-sizing:border-box;/);
   assert.match(compareCss, /\.compare-static-page\s*\{[\s\S]*width:100%;/);
+  assert.match(compareCss, /\.compare-static-page\s*\{[\s\S]*max-width:100vw;/);
   assert.match(compareCss, /\.compare-table-wrap\s*\{[\s\S]*max-height:none;/);
   assert.match(compareCss, /\.compare-table-wrap\s*\{[\s\S]*overflow-x:auto;/);
   assert.match(compareCss, /\.compare-table-wrap\s*\{[\s\S]*overflow-y:visible;/);
   assert.match(compareCss, /\.compare-table--rtings\s*\{[\s\S]*min-width:calc\(132px \+ \(230px \* var\(--compare-count, 2\)\)\);/);
+  assert.match(compareCss, /\.compare-remove\s*\{[\s\S]*min-height:44px;/);
 });
 
 test('mobile visual layout: compare product headers and help bubbles fit touch screens', () => {
@@ -112,4 +118,36 @@ test('mobile visual layout: product images and lightbox stay scaled for phone sc
   assert.match(mobileCss, /\.product-photo-thumb__image\s*\{[\s\S]*padding:6px;/);
   assert.match(mobileCss, /\.product-photo-lightbox__media img\s*\{[\s\S]*max-height:52vh;/);
   assert.match(mobileCss, /\.product-photo-lightbox__copy h3\s*\{[\s\S]*font-size:20px;/);
+});
+
+test('mobile visual layout: generated linked pages avoid viewport overflow', () => {
+  assert.match(styles, /\.fit-check-page\s*\{[\s\S]*width:\s*min\(980px, calc\(100% - 48px\)\);/);
+  assert.match(styles, /@media \(max-width: 640px\) \{[\s\S]*\.fit-check-page\s*\{[\s\S]*max-width:\s*100vw;/);
+  assert.match(styles, /@media \(max-width: 640px\) \{[\s\S]*\.fit-check-page\s*\{[\s\S]*overflow-x:\s*hidden;/);
+  assert.match(styles, /@media \(max-width: 640px\) \{[\s\S]*\.dimensions-table,\s*[\s\S]*\.clearance-table\s*\{[\s\S]*overflow-x:\s*auto;/);
+  assert.match(styles, /\.fit-check-page \.breadcrumb a\s*\{[\s\S]*min-height:\s*44px;/);
+});
+
+test('mobile visual layout: static trust page wraps long repository links', () => {
+  const editorial = fs.readFileSync(path.join(ROOT, 'pages', 'about', 'editorial-standards.html'), 'utf8');
+
+  assert.match(editorial, /a\s*\{[\s\S]*overflow-wrap:\s*anywhere;/);
+  assert.match(editorial, /main > a:first-child\s*\{[\s\S]*min-height:\s*44px;/);
+  assert.match(editorial, /@media \(max-width: 640px\)\s*\{[\s\S]*overflow-x:\s*hidden;/);
+});
+
+test('mobile visual layout: standalone tool page keeps controls finger-sized', () => {
+  const toolPage = fs.readFileSync(path.join(ROOT, 'pages', 'tools', 'fit-checker.html'), 'utf8');
+
+  assert.match(toolPage, /\.preset-chip\s*\{[\s\S]*min-height:\s*44px;/);
+  assert.match(toolPage, /button\s*\{[\s\S]*min-height:\s*44px;/);
+  assert.match(toolPage, /\.back-link,\s*[\s\S]*footer a\s*\{[\s\S]*min-height:\s*44px;/);
+});
+
+test('mobile visual layout: homepage secondary controls are touch sized', () => {
+  const home = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+
+  assert.match(home, /\.topbar a\s*\{[\s\S]*min-height:44px;/);
+  assert.match(home, /\.adv-toggle\s*\{[\s\S]*min-height:44px;/);
+  assert.match(home, /\.cat-pill\s*\{[\s\S]*min-height:44px;/);
 });

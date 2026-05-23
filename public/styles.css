@@ -39,7 +39,10 @@ body {
 }
 
 .site-header .brand {
+  display: inline-flex;
+  align-items: center;
   flex: 0 0 auto;
+  min-height: 44px;
   color: var(--ink);
   font-family: 'Instrument Serif', Georgia, serif;
   font-size: 30px;
@@ -61,6 +64,10 @@ body {
 }
 
 .site-header nav a {
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
   color: var(--ink);
   font-size: 14px;
   font-weight: 700;
@@ -107,7 +114,7 @@ body {
   }
 
   .site-header nav .btn {
-    min-height: 40px;
+    min-height: 44px;
     padding: 8px 12px;
   }
 }
@@ -130,7 +137,9 @@ textarea {
 table.compare-table td, table.compare-table th,
 .results-meta-chip, .facet-range-output,
 .hero-trust-strip, .hero-sample-chip,
-.provenance-block, .provenance-date {
+.provenance-block, .provenance-date,
+.dimensions-table th, .dimensions-table td,
+.clearance-table th, .clearance-table td {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum";
 }
@@ -168,6 +177,7 @@ table.compare-table td, table.compare-table th,
 .hero-sample-chip {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
   max-width: 100%;
   background: #f0eeea;
   border: 1px solid var(--border, #d0cfc8);
@@ -188,7 +198,9 @@ table.compare-table td, table.compare-table th,
 }
 
 .hero-secondary-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   margin-top: 12px;
   font-size: 13px;
   color: var(--ink-3, #6b6b6b);
@@ -198,6 +210,17 @@ table.compare-table td, table.compare-table th,
 
 .hero-secondary-link:hover {
   color: var(--copper, #d97706);
+}
+
+.fit-checker-link a {
+  display: inline-flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.site-footer a {
+  min-width: 44px;
 }
 
 .how-we-score {
@@ -1120,6 +1143,130 @@ table.compare-table td, table.compare-table th,
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
+}
+
+.fit-check-page {
+  width: min(980px, calc(100% - 48px));
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 48px 0 72px;
+  color: var(--ink);
+}
+
+.fit-check-page .breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  color: var(--ink-3);
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.fit-check-page .breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--copper);
+}
+
+.fit-check-page section {
+  min-width: 0;
+  margin-top: 24px;
+}
+
+.fit-check-page h1 {
+  overflow-wrap: anywhere;
+}
+
+.verdict-box {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  padding: 18px;
+}
+
+.verdict-label {
+  margin: 0 0 6px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dimensions-table,
+.clearance-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.dimensions-table th,
+.dimensions-table td,
+.clearance-table th,
+.clearance-table td {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.fit-check-page .retailer-strip a,
+.fit-check-page .related-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.fit-check-page .faq-list dt {
+  font-weight: 800;
+}
+
+.site-footer {
+  box-sizing: border-box;
+  width: min(980px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 20px 0 48px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--copper);
+}
+
+@media (max-width: 640px) {
+  .fit-check-page {
+    width: 100%;
+    max-width: 100vw;
+    padding: 28px 16px 56px;
+    overflow-x: hidden;
+  }
+
+  .fit-check-page h1 {
+    font-size: clamp(30px, 9vw, 42px);
+    line-height: 1.06;
+  }
+
+  .dimensions-table,
+  .clearance-table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .site-footer {
+    width: 100%;
+    max-width: 100vw;
+    padding: 18px 16px 40px;
+  }
 }
 
 .retailer-chip {
