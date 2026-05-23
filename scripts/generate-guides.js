@@ -830,6 +830,7 @@ ${buildOgImageMeta(ogImage)}
     :root { --ink:#131210; --ink-2:#3d3a35; --ink-3:#6b6b6b; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: Arial, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+    a { overflow-wrap: anywhere; }
     main { max-width: 1100px; margin: 0 auto; padding: 42px 24px 68px; }
     .layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; align-items: start; }
     .content-col { min-width: 0; }
@@ -837,6 +838,7 @@ ${buildOgImageMeta(ogImage)}
     p { color: var(--ink-2); margin: 0 0 14px; }
     .cross { margin: 18px 0 24px; display: flex; flex-wrap: wrap; gap: 8px; }
     .cross a {
+      display: inline-flex; align-items: center; min-height: 44px;
       text-decoration: none; color: var(--copper); background: var(--white);
       border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; font-size: 13px;
     }
@@ -845,6 +847,7 @@ ${buildOgImageMeta(ogImage)}
       margin-top: 14px;
     }
     .grid a {
+      display: flex; align-items: center; min-height: 44px;
       text-decoration: none; color: var(--ink-2); background: var(--white); border: 1px solid var(--border);
       padding: 10px 12px; border-radius: 8px; font-size: 14px;
     }
@@ -894,6 +897,7 @@ ${buildOgImageMeta(ogImage)}
     .subscribe-form { display: flex; flex-direction: column; gap: 10px; }
     .subscribe-form input[type="email"] {
       width: 100%;
+      min-height: 44px;
       border: 1.5px solid var(--border);
       border-radius: 10px;
       background: var(--paper);
@@ -903,6 +907,7 @@ ${buildOgImageMeta(ogImage)}
     }
     .subscribe-form button[type="submit"] {
       width: 100%;
+      min-height: 44px;
       border: none;
       border-radius: 10px;
       background: var(--ink);
@@ -914,7 +919,7 @@ ${buildOgImageMeta(ogImage)}
     }
     .subscribe-form button[type="submit"]:disabled { opacity: .6; cursor: not-allowed; }
     .subscribe-note { margin: 0; font-size: 11px; color: var(--ink-3); line-height: 1.45; }
-    .subscribe-note a { color: var(--copper); }
+    .subscribe-note a { display:inline-flex; align-items:center; min-height:44px; color: var(--copper); }
     .subscribe-hp {
       position: absolute !important;
       left: -9999px !important;
@@ -923,19 +928,28 @@ ${buildOgImageMeta(ogImage)}
       opacity: 0 !important;
       pointer-events: none !important;
     }
+    .subscribe-hp input { display: none !important; }
     .subscribe-status { min-height: 18px; margin: 0; font-size: 12px; color: var(--ink-3); line-height: 1.4; }
     .subscribe-status[data-tone="success"] { color: #0f766e; }
     .subscribe-status[data-tone="error"] { color: #b91c1c; }
     .subscribe-status[data-tone="warn"] { color: #a16207; }
+    .back-link { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink-3); text-decoration: none; font-size: 13px; }
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
       .subscribe-card { position: static; }
+    }
+    @media (max-width: 640px) {
+      main { width: 100%; max-width: 100vw; overflow-x: hidden; padding: 28px 16px 56px; }
+      h1 { font-size: 30px; line-height: 1.1; }
+      .guide-article { padding: 16px; }
+      .grid { grid-template-columns: 1fr; }
+      .guide-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     }
   </style>
 </head>
 <body>
   <main>
-    <a href="/" style="color:var(--ink-3);text-decoration:none;font-size:13px">← Back to FitAppliance</a>
+    <a class="back-link" href="/">← Back to FitAppliance</a>
     <h1>${escHtml(pageTitle)}</h1>
     <p>${escHtml(description)}</p>
     <div class="layout">
@@ -958,8 +972,8 @@ ${buildOgImageMeta(ogImage)}
         </section>
 
         <footer style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--ink-3)">
-          <a href="/methodology">Methodology</a> ·
-          <a href="/about/editorial-standards">Editorial standards</a>
+          <a href="/methodology" style="display:inline-flex;align-items:center;min-height:44px;color:var(--copper)">Methodology</a> ·
+          <a href="/about/editorial-standards" style="display:inline-flex;align-items:center;min-height:44px;color:var(--copper)">Editorial standards</a>
         </footer>
       </div>
 

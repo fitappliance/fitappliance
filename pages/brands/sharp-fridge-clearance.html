@@ -47,7 +47,9 @@
       padding: 56px 24px 72px;
     }
     .back-link {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
       text-decoration: none;
       color: var(--ink-3);
       font-size: 13px;
@@ -101,6 +103,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      min-height: 44px;
       text-decoration: none;
       padding: 12px 20px;
       border-radius: 9px;
@@ -195,6 +198,9 @@
       margin-bottom: 8px;
     }
     .model-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
       font-size: 12.5px;
       color: var(--copper);
       text-decoration: none;
@@ -206,6 +212,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      min-height: 44px;
       text-decoration: none;
       padding: 8px 12px;
       border-radius: 8px;
@@ -226,6 +233,12 @@
       margin-top: 36px;
       font-size: 13px;
       color: var(--ink-3);
+    }
+    footer a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      color: var(--copper);
     }
     .section-title-lg {
       margin: 0 0 12px;
@@ -256,7 +269,9 @@
       gap: 8px;
     }
     .chip-list a {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
       padding: 6px 14px;
       border: 1px solid var(--border);
       border-radius: 20px;
@@ -264,6 +279,21 @@
       color: var(--copper);
       text-decoration: none;
       background: #fff;
+    }
+    @media (max-width: 640px) {
+      main {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        padding: 28px 16px 56px;
+      }
+      h1 {
+        font-size: 30px;
+        line-height: 1.1;
+      }
+      .model-list {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>

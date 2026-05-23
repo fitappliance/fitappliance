@@ -68,7 +68,6 @@ body { font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 
 .tag-blue   { background:var(--blue-bg);color:var(--blue); }
 .tag-copper { background:var(--copper-bg);color:var(--copper); }
 
-/* ─── TOPBAR ─── */
 .topbar {
   background: var(--ink);
   color: rgba(255,255,255,.65);
@@ -77,9 +76,8 @@ body { font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 
   font-size: 12.5px;
   letter-spacing: .02em;
 }
-.topbar a { color: #D4A574; text-decoration: none; border-bottom: 1px solid rgba(212,165,116,.4); }
+.topbar a{display:inline-flex;align-items:center;min-height:44px;color:#D4A574;text-decoration:none;border-bottom:1px solid rgba(212,165,116,.4)}
 
-/* ─── NAV ─── */
 nav {
   background: var(--white);
   border-bottom: 1px solid var(--border);
@@ -94,18 +92,19 @@ nav {
   box-shadow: var(--shadow-sm);
 }
 .logo {
+  display:inline-flex;align-items:center;min-height:44px;
   font-family: 'Instrument Serif', serif;
   font-size: 23px;
   color: var(--ink);
   text-decoration: none;
   letter-spacing: -.3px;
 }
-.logo b { color: var(--copper); font-weight: 400; }
-.nav-right { display:flex;align-items:center;gap:24px; }
-.nav-link { color:var(--ink-2);text-decoration:none;font-size:14px;font-weight:500;transition:color .15s; }
-.nav-link:hover { color:var(--copper); }
-.nav-btn { background:var(--copper);color:#fff;padding:9px 20px;border-radius:var(--r-sm);font-size:13px;font-weight:600;text-decoration:none;transition:background .15s; }
-.nav-btn:hover { background:var(--copper-2); }
+.logo b{color:var(--copper);font-weight:400}
+.nav-right{display:flex;align-items:center;gap:24px}
+.nav-link { display:inline-flex;align-items:center;min-height:44px;color:var(--ink-2);text-decoration:none;font-size:14px;font-weight:500;transition:color .15s; }
+.nav-link:hover{color:var(--copper)}
+.nav-btn { display:inline-flex;align-items:center;justify-content:center;min-height:44px;background:var(--copper);color:#fff;padding:9px 20px;border-radius:var(--r-sm);font-size:13px;font-weight:600;text-decoration:none;transition:background .15s; }
+.nav-btn:hover{background:var(--copper-2)}
 
 /* ─── HERO ─── */
 .hero {
@@ -203,14 +202,15 @@ nav {
 .cat-pills { display:flex;gap:7px;flex-wrap:wrap; }
 .cat-pill {
   display:flex;align-items:center;gap:6px;
+  min-width:44px;min-height:44px;
   padding:8px 16px;border-radius:var(--r-sm);
   border:1.5px solid var(--border);background:transparent;
   font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;font-size:13px;font-weight:600;
   color:var(--ink-3);cursor:pointer;transition:all .18s;
 }
-.cat-pill:hover { border-color:var(--copper);color:var(--copper); }
+.cat-pill:hover{border-color:var(--copper);color:var(--copper)}
 .cat-pill.active { background:var(--ink);border-color:var(--ink);color:#fff; }
-.cat-pill .pi { font-size:16px; }
+.cat-pill .pi{font-size:16px}
 
 /* Dim inputs */
 .dim-grid { display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px; }
@@ -369,6 +369,7 @@ nav {
 /* Advanced toggle */
 .adv-toggle {
   display:flex;align-items:center;gap:6px;
+  min-height:44px;
   font-size:13px;font-weight:500;color:var(--ink-3);
   background:none;border:none;cursor:pointer;padding:0;
   margin-bottom:12px;transition:color .15s;

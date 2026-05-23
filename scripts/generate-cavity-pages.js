@@ -197,7 +197,7 @@ ${ogImageMeta}
     a { color:var(--copper); text-decoration:none; }
     a:hover { text-decoration:underline; }
     .nav, .brands, .compare { margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
-    .chip { background:var(--white); border:1px solid var(--border); border-radius:999px; padding:6px 10px; font-size:13px; }
+    .chip { display:inline-flex; align-items:center; min-height:44px; background:var(--white); border:1px solid var(--border); border-radius:999px; padding:6px 10px; font-size:13px; }
     .tool-callout {
       margin-top: 14px;
       padding: 11px 12px;
@@ -211,12 +211,13 @@ ${ogImageMeta}
       font-size: 13px;
       color: var(--ink-2);
     }
-    .tool-callout a { font-weight: 700; }
+    .tool-callout a { display:inline-flex; align-items:center; min-height:44px; font-weight: 700; }
     .btn-pdf-export {
       border: 1px solid var(--border);
       background: var(--white);
       color: var(--ink-2);
       border-radius: 999px;
+      min-height: 44px;
       padding: 6px 12px;
       font-size: 13px;
       cursor: pointer;
@@ -232,6 +233,13 @@ ${ogImageMeta}
     .measure-step p { margin: 8px 0 0; font-size: 14px; color: var(--ink-2); }
     .measurement-note { margin: 2px 0 0; font-size: 13px; color: var(--ink-3); }
     .page-footer { margin-top:28px; padding-top:16px; border-top:1px solid var(--border); font-size:13px; color:var(--ink-3); }
+    .page-footer a,
+    main > a:first-child {
+      display:inline-flex;
+      align-items:center;
+      min-height:44px;
+      color:var(--copper);
+    }
   </style>
 </head>
 <body>

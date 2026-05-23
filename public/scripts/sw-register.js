@@ -28,6 +28,7 @@ function ensureSwToastStyles() {
       color: #fff;
       cursor: pointer;
       font: inherit;
+      min-height: 44px;
       padding: 6px 10px;
     }
     .sw-update-toast button:hover { background: rgba(255,255,255,.2); }
