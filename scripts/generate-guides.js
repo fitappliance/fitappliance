@@ -797,6 +797,18 @@ function renderGuideArticle(guide) {
         </article>`;
 }
 
+function renderGuideAdUnit() {
+  return `<section class="ad-unit ad-unit--guide-content" data-adsense-unit data-adsense-placement="guide-content" data-ad-status="pending-slot-id" aria-label="Advertisement">
+          <div class="ad-unit__label">Advertisement</div>
+          <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-7257149597818537"
+            data-ad-slot="PENDING_GUIDE_CONTENT_SLOT_ID"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        </section>`;
+}
+
 function buildHubHtml({ guide, links, crossLinks, articleJsonLd, modifiedTime }) {
   const pageTitle = guidePageTitle(guide);
   const title = `${pageTitle} | FitAppliance`;
@@ -826,6 +838,7 @@ ${buildOgImageMeta(ogImage)}
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${escHtml(title)}">
   <meta name="twitter:description" content="${escHtml(description)}">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7257149597818537" crossorigin="anonymous"></script>
   <style>
     :root { --ink:#131210; --ink-2:#3d3a35; --ink-3:#6b6b6b; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
     * { box-sizing: border-box; }
@@ -933,6 +946,28 @@ ${buildOgImageMeta(ogImage)}
     .subscribe-status[data-tone="success"] { color: #0f766e; }
     .subscribe-status[data-tone="error"] { color: #b91c1c; }
     .subscribe-status[data-tone="warn"] { color: #a16207; }
+    .ad-unit {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 280px;
+      margin: 24px 0;
+      padding: 12px;
+      border: 1px solid var(--border);
+      background: #f6f3ec;
+      color: var(--ink-3);
+      overflow: hidden;
+      text-align: center;
+    }
+    .ad-unit__label {
+      margin-bottom: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .ad-unit .adsbygoogle { display: block; min-height: 232px; }
     .back-link { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink-3); text-decoration: none; font-size: 13px; }
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
@@ -955,6 +990,7 @@ ${buildOgImageMeta(ogImage)}
     <div class="layout">
       <div class="content-col">
         ${renderGuideArticle(guide)}
+        ${renderGuideAdUnit()}
 
         <section>
           <h2 class="section-title-lg">Related Guide Hubs</h2>
@@ -993,6 +1029,7 @@ ${buildOgImageMeta(ogImage)}
     </div>
   </main>
   <script defer src="/scripts/subscribe.js"></script>
+  <script type="module" src="/scripts/adsense-slot.js"></script>
 </body>
 </html>
 `;

@@ -1152,13 +1152,6 @@
 .clearance-table tr td:first-child { font-weight:600;padding-right:12px;color:var(--ink); }
 .clearance-table tr td:last-child { color:var(--ink-3); }
 
-.ad-side {
-  background:var(--paper-2);border:1.5px dashed var(--paper-3);
-  border-radius:var(--r);padding:18px;text-align:center;
-  color:var(--ink-3);font-size:11px;
-}
-.ad-side-ph { height:240px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;font-size:12px;color:var(--ink-3); }
-
 /* ─── REBATE CALCULATOR ─── */
 .rebate-panel {
   background:linear-gradient(135deg,var(--ink) 0%,#2A3A5C 100%);

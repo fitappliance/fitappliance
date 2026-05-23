@@ -10,14 +10,14 @@ function read(relativePath) {
   return fs.readFileSync(path.join(repoRoot, relativePath), 'utf8');
 }
 
-test('polish adsense cleanup: manual ad-slot placeholders are removed from homepage and styles', () => {
+test('polish adsense cleanup: obsolete class-based ad-slot placeholders remain removed', () => {
   const indexHtml = read('index.html');
   const stylesCss = read('public/styles.css');
   const deferredCss = read('public/styles-deferred.css');
 
-  assert.doesNotMatch(indexHtml, /ad-slot/);
-  assert.doesNotMatch(stylesCss, /ad-slot/);
-  assert.doesNotMatch(deferredCss, /ad-slot/);
+  assert.doesNotMatch(indexHtml, /class=["'][^"']*\bad-slot\b/);
+  assert.doesNotMatch(stylesCss, /\.ad-slot\b/);
+  assert.doesNotMatch(deferredCss, /\.ad-slot\b/);
 });
 
 test('polish adsense cleanup: AdSense verification script remains in the homepage head', () => {
