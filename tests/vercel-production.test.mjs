@@ -40,6 +40,20 @@ test('vercel production config: compliance and static app routes are reachable',
   assert.equal(routes.get('/scripts/:path*'), '/public/scripts/:path*');
 });
 
+test('vercel production config: CSP permits manual AdSense delivery without allowing wildcard scripts', () => {
+  const config = loadVercelConfig();
+  const globalRule = findHeaderRule(config, '/(.*)');
+  const csp = headerValue(globalRule, 'Content-Security-Policy');
+
+  assert.match(csp, /script-src[^;]*https:\/\/pagead2\.googlesyndication\.com/);
+  assert.match(csp, /script-src[^;]*https:\/\/googleads\.g\.doubleclick\.net/);
+  assert.match(csp, /script-src[^;]*https:\/\/tpc\.googlesyndication\.com/);
+  assert.match(csp, /connect-src[^;]*https:\/\/pagead2\.googlesyndication\.com/);
+  assert.match(csp, /frame-src[^;]*https:\/\/googleads\.g\.doubleclick\.net/);
+  assert.match(csp, /img-src[^;]*https:\/\/\*\.googlesyndication\.com/);
+  assert.doesNotMatch(csp, /script-src[^;]*(?:\s|\*)\*(?:\s|;|$)/);
+});
+
 test('vercel production config: current GSC 404 examples have durable redirects', () => {
   const config = loadVercelConfig();
   const redirects = new Map((config.redirects ?? []).map((redirect) => [redirect.source, redirect]));
