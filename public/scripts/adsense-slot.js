@@ -1,11 +1,11 @@
 const ADSENSE_CLIENT = 'ca-pub-7257149597818537';
 
 const MANUAL_SLOT_IDS = Object.freeze({
-  'footer-top': 'PENDING_FOOTER_TOP_SLOT_ID',
-  'zero-results': 'PENDING_ZERO_RESULTS_SLOT_ID',
-  'guide-content': 'PENDING_GUIDE_CONTENT_SLOT_ID',
-  'about-content': 'PENDING_ABOUT_CONTENT_SLOT_ID',
-  'methodology-content': 'PENDING_METHODOLOGY_CONTENT_SLOT_ID'
+  'footer-top': '7748816473',
+  'zero-results': '3809571463',
+  'guide-content': '7780228766',
+  'about-content': '7780228766',
+  'methodology-content': '7780228766'
 });
 
 function escAttr(value) {

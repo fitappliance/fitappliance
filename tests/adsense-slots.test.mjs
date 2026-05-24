@@ -19,6 +19,10 @@ test('adsense manual slots reserve layout space before ads load', () => {
   assert.match(styles, /display:\s*block/);
   assert.match(helper, /adsbygoogle/);
   assert.match(helper, /ADSENSE_CLIENT\s*=\s*'ca-pub-7257149597818537'/);
+  assert.match(helper, /'footer-top': '7748816473'/);
+  assert.match(helper, /'zero-results': '3809571463'/);
+  assert.match(helper, /'guide-content': '7780228766'/);
+  assert.doesNotMatch(helper, /PENDING_[A-Z_]+_SLOT_ID/);
 });
 
 test('adsense manual slots are only injected into approved safe zones', () => {
