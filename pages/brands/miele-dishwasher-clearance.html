@@ -104,6 +104,7 @@
       align-items: center;
       justify-content: center;
       min-height: 44px;
+      border: 0;
       text-decoration: none;
       padding: 12px 20px;
       border-radius: 9px;
@@ -111,6 +112,8 @@
       color: #fff;
       font-weight: 700;
       font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
       transition: background .15s;
     }
     .cta:hover { background: var(--copper); }
@@ -201,10 +204,15 @@
       display: inline-flex;
       align-items: center;
       min-height: 44px;
+      border: 0;
+      background: transparent;
+      padding: 0;
       font-size: 12.5px;
+      font-family: inherit;
       color: var(--copper);
       text-decoration: none;
       font-weight: 600;
+      cursor: pointer;
     }
     .model-link:hover { text-decoration: underline; }
     .affiliate-cta { margin-top: 8px; }
@@ -330,8 +338,8 @@
       </picture>
       <div class="model-name">G 6999 SCVi XXL</div>
       <div class="model-dims">W 598mm × H 910mm × D 570mm</div>
-      <a class="model-link" href="/?cat=dishwasher&brand=Miele&h=910">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=dishwasher&amp;brand=Miele&amp;h=910" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div><div class="model-item">
       <picture class="model-thumb">
         <source srcset="/og-images/miele-dishwasher.webp" type="image/webp">
@@ -339,8 +347,8 @@
       </picture>
       <div class="model-name">G 6xxx</div>
       <div class="model-dims">W 598mm × H 870mm × D 570mm</div>
-      <a class="model-link" href="/?cat=dishwasher&brand=Miele&h=870">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=dishwasher&amp;brand=Miele&amp;h=870" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div><div class="model-item">
       <picture class="model-thumb">
         <source srcset="/og-images/miele-dishwasher.webp" type="image/webp">
@@ -348,12 +356,12 @@
       </picture>
       <div class="model-name">G 5210 SC</div>
       <div class="model-dims">W 598mm × H 845mm × D 600mm</div>
-      <a class="model-link" href="/?cat=dishwasher&brand=Miele&h=845">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=dishwasher&amp;brand=Miele&amp;h=845" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div>
       </div>
     </section>
-    <a class="cta" href="/?cat=dishwasher&brand=Miele">Find Miele Dishwashers That Fit Your Space</a>
+    <button type="button" class="cta" data-fit-query="/?cat=dishwasher&amp;brand=Miele" onclick="window.location.href=this.dataset.fitQuery">Find Miele Dishwashers That Fit Your Space</button>
     <section class="chip-panel">
       <h2 class="section-title-sm">Compare Miele with other brands</h2>
       <ul class="chip-list">
@@ -368,9 +376,6 @@
       <ul class="chip-list">
         <li><a href="/brands/miele-fridge-clearance">Miele Fridges</a></li>
         <li><a href="/brands/miele-washing-machine-clearance">Miele Washing Machines</a></li>
-        <li><a href="/?cat=fridge&amp;brand=Miele">Miele Fridges fit check</a></li>
-        <li><a href="/?cat=washing_machine&amp;brand=Miele">Miele Washing Machines fit check</a></li>
-        <li><a href="/?cat=dryer&amp;brand=Miele">Miele Dryers fit check</a></li>
       </ul>
     </section>
     <section class="chip-panel">

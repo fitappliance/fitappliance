@@ -104,6 +104,7 @@
       align-items: center;
       justify-content: center;
       min-height: 44px;
+      border: 0;
       text-decoration: none;
       padding: 12px 20px;
       border-radius: 9px;
@@ -111,6 +112,8 @@
       color: #fff;
       font-weight: 700;
       font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
       transition: background .15s;
     }
     .cta:hover { background: var(--copper); }
@@ -201,10 +204,15 @@
       display: inline-flex;
       align-items: center;
       min-height: 44px;
+      border: 0;
+      background: transparent;
+      padding: 0;
       font-size: 12.5px;
+      font-family: inherit;
       color: var(--copper);
       text-decoration: none;
       font-weight: 600;
+      cursor: pointer;
     }
     .model-link:hover { text-decoration: underline; }
     .affiliate-cta { margin-top: 8px; }
@@ -329,8 +337,8 @@
       </picture>
       <div class="model-name">WWF9024M5SA</div>
       <div class="model-dims">W 600mm × H 850mm × D 659mm</div>
-      <a class="model-link" href="/?cat=washing_machine&brand=Westinghouse&h=850">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=washing_machine&amp;brand=Westinghouse&amp;h=850" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div><div class="model-item">
       <picture class="model-thumb">
         <source srcset="/og-images/westinghouse-washing-machine.webp" type="image/webp">
@@ -338,8 +346,8 @@
       </picture>
       <div class="model-name">WWF1044M7SA</div>
       <div class="model-dims">W 597mm × H 848mm × D 659mm</div>
-      <a class="model-link" href="/?cat=washing_machine&brand=Westinghouse&h=848">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=washing_machine&amp;brand=Westinghouse&amp;h=848" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div>
       </div>
     </section>
@@ -354,8 +362,8 @@
       </picture>
       <div class="model-name">WWT1084C7SA</div>
       <div class="model-dims">W 670mm × H 1092mm × D 720mm</div>
-      <a class="model-link" href="/?cat=washing_machine&brand=Westinghouse&h=1092">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=washing_machine&amp;brand=Westinghouse&amp;h=1092" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div><div class="model-item">
       <picture class="model-thumb">
         <source srcset="/og-images/westinghouse-washing-machine.webp" type="image/webp">
@@ -363,8 +371,8 @@
       </picture>
       <div class="model-name">WWT1184C7WA</div>
       <div class="model-dims">W 670mm × H 1092mm × D 720mm</div>
-      <a class="model-link" href="/?cat=washing_machine&brand=Westinghouse&h=1092">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=washing_machine&amp;brand=Westinghouse&amp;h=1092" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div><div class="model-item">
       <picture class="model-thumb">
         <source srcset="/og-images/westinghouse-washing-machine.webp" type="image/webp">
@@ -372,12 +380,12 @@
       </picture>
       <div class="model-name">WWT9084C7SA</div>
       <div class="model-dims">W 670mm × H 1092mm × D 720mm</div>
-      <a class="model-link" href="/?cat=washing_machine&brand=Westinghouse&h=1092">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=washing_machine&amp;brand=Westinghouse&amp;h=1092" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div>
       </div>
     </section>
-    <a class="cta" href="/?cat=washing_machine&brand=Westinghouse">Find Westinghouse Washing Machines That Fit Your Space</a>
+    <button type="button" class="cta" data-fit-query="/?cat=washing_machine&amp;brand=Westinghouse" onclick="window.location.href=this.dataset.fitQuery">Find Westinghouse Washing Machines That Fit Your Space</button>
     <section class="chip-panel">
       <h2 class="section-title-sm">Compare Westinghouse with other brands</h2>
       <ul class="chip-list">
@@ -392,9 +400,6 @@
       <ul class="chip-list">
         <li><a href="/brands/westinghouse-fridge-clearance">Westinghouse Fridges</a></li>
         <li><a href="/brands/westinghouse-dishwasher-clearance">Westinghouse Dishwashers</a></li>
-        <li><a href="/?cat=fridge&amp;brand=Westinghouse">Westinghouse Fridges fit check</a></li>
-        <li><a href="/?cat=dishwasher&amp;brand=Westinghouse">Westinghouse Dishwashers fit check</a></li>
-        <li><a href="/?cat=dryer&amp;brand=Westinghouse">Westinghouse Dryers fit check</a></li>
       </ul>
     </section>
     <section class="chip-panel">

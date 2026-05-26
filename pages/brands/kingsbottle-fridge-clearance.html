@@ -104,6 +104,7 @@
       align-items: center;
       justify-content: center;
       min-height: 44px;
+      border: 0;
       text-decoration: none;
       padding: 12px 20px;
       border-radius: 9px;
@@ -111,6 +112,8 @@
       color: #fff;
       font-weight: 700;
       font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
       transition: background .15s;
     }
     .cta:hover { background: var(--copper); }
@@ -201,10 +204,15 @@
       display: inline-flex;
       align-items: center;
       min-height: 44px;
+      border: 0;
+      background: transparent;
+      padding: 0;
       font-size: 12.5px;
+      font-family: inherit;
       color: var(--copper);
       text-decoration: none;
       font-weight: 600;
+      cursor: pointer;
     }
     .model-link:hover { text-decoration: underline; }
     .affiliate-cta { margin-top: 8px; }
@@ -330,8 +338,8 @@
       </picture>
       <div class="model-name">KB245BX-BK</div>
       <div class="model-dims">W 490mm × H 1775mm × D 540mm</div>
-      <a class="model-link" href="/?cat=fridge&brand=KingsBottle&h=1775">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=fridge&amp;brand=KingsBottle&amp;h=1775" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div><div class="model-item">
       <picture class="model-thumb">
         <source srcset="/og-images/kingsbottle-fridge.webp" type="image/webp">
@@ -339,19 +347,17 @@
       </picture>
       <div class="model-name">KB245HX-BK</div>
       <div class="model-dims">W 490mm × H 1775mm × D 540mm</div>
-      <a class="model-link" href="/?cat=fridge&brand=KingsBottle&h=1775">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=fridge&amp;brand=KingsBottle&amp;h=1775" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div>
       </div>
     </section>
-    <a class="cta" href="/?cat=fridge&brand=KingsBottle">Find KingsBottle Fridges That Fit Your Space</a>
-    
+    <button type="button" class="cta" data-fit-query="/?cat=fridge&amp;brand=KingsBottle" onclick="window.location.href=this.dataset.fitQuery">Find KingsBottle Fridges That Fit Your Space</button>
+
     <section class="chip-panel">
       <h2 class="section-title-sm">Same brand alternatives</h2>
       <ul class="chip-list">
-        <li><a href="/?cat=washing_machine&amp;brand=KingsBottle">KingsBottle Washing Machines fit check</a></li>
-        <li><a href="/?cat=dishwasher&amp;brand=KingsBottle">KingsBottle Dishwashers fit check</a></li>
-        <li><a href="/?cat=dryer&amp;brand=KingsBottle">KingsBottle Dryers fit check</a></li>
+
       </ul>
     </section>
     <section class="chip-panel">

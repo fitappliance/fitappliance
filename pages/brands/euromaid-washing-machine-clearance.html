@@ -104,6 +104,7 @@
       align-items: center;
       justify-content: center;
       min-height: 44px;
+      border: 0;
       text-decoration: none;
       padding: 12px 20px;
       border-radius: 9px;
@@ -111,6 +112,8 @@
       color: #fff;
       font-weight: 700;
       font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
       transition: background .15s;
     }
     .cta:hover { background: var(--copper); }
@@ -201,10 +204,15 @@
       display: inline-flex;
       align-items: center;
       min-height: 44px;
+      border: 0;
+      background: transparent;
+      padding: 0;
       font-size: 12.5px;
+      font-family: inherit;
       color: var(--copper);
       text-decoration: none;
       font-weight: 600;
+      cursor: pointer;
     }
     .model-link:hover { text-decoration: underline; }
     .affiliate-cta { margin-top: 8px; }
@@ -330,8 +338,8 @@
       </picture>
       <div class="model-name">ETL1000FCW</div>
       <div class="model-dims">W 601mm × H 1000mm × D 630mm</div>
-      <a class="model-link" href="/?cat=washing_machine&brand=Euromaid&h=1000">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=washing_machine&amp;brand=Euromaid&amp;h=1000" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div><div class="model-item">
       <picture class="model-thumb">
         <source srcset="/og-images/euromaid-washing-machine.webp" type="image/webp">
@@ -339,8 +347,8 @@
       </picture>
       <div class="model-name">ETL800FCW</div>
       <div class="model-dims">W 580mm × H 965mm × D 596mm</div>
-      <a class="model-link" href="/?cat=washing_machine&brand=Euromaid&h=965">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=washing_machine&amp;brand=Euromaid&amp;h=965" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div><div class="model-item">
       <picture class="model-thumb">
         <source srcset="/og-images/euromaid-washing-machine.webp" type="image/webp">
@@ -348,22 +356,19 @@
       </picture>
       <div class="model-name">ETL700FCW</div>
       <div class="model-dims">W 550mm × H 935mm × D 565mm</div>
-      <a class="model-link" href="/?cat=washing_machine&brand=Euromaid&h=935">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=washing_machine&amp;brand=Euromaid&amp;h=935" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div>
       </div>
     </section>
-    <a class="cta" href="/?cat=washing_machine&brand=Euromaid">Find Euromaid Washing Machines That Fit Your Space</a>
-    
+    <button type="button" class="cta" data-fit-query="/?cat=washing_machine&amp;brand=Euromaid" onclick="window.location.href=this.dataset.fitQuery">Find Euromaid Washing Machines That Fit Your Space</button>
+
     <section class="chip-panel">
       <h2 class="section-title-sm">Same brand alternatives</h2>
       <ul class="chip-list">
         <li><a href="/brands/euromaid-fridge-clearance">Euromaid Fridges</a></li>
         <li><a href="/brands/euromaid-dishwasher-clearance">Euromaid Dishwashers</a></li>
         <li><a href="/brands/euromaid-dryer-clearance">Euromaid Dryers</a></li>
-        <li><a href="/?cat=fridge&amp;brand=Euromaid">Euromaid Fridges fit check</a></li>
-        <li><a href="/?cat=dishwasher&amp;brand=Euromaid">Euromaid Dishwashers fit check</a></li>
-        <li><a href="/?cat=dryer&amp;brand=Euromaid">Euromaid Dryers fit check</a></li>
       </ul>
     </section>
     <section class="chip-panel">

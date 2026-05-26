@@ -47,8 +47,8 @@ test('mobile visual layout: compact navigation preserves the primary CTA on phon
   assert.match(mobileCss, /\.nav-btn\s*\{[\s\S]*text-overflow:ellipsis;/);
   assert.match(styles, /\.site-header\s*\{[\s\S]*justify-content:\s*space-between;/);
   assert.match(styles, /\.site-header \.brand\s*\{[\s\S]*min-height:\s*44px;/);
-  assert.match(styles, /\.site-header nav a\s*\{[\s\S]*min-height:\s*44px;/);
-  assert.match(styles, /@media \(max-width: 640px\) \{[\s\S]*\.site-header nav a:not\(\.btn\)\s*\{[\s\S]*display:\s*none;/);
+  assert.match(styles, /\.site-header nav a,\s*[\s\S]*\.site-header nav button\s*\{[\s\S]*min-height:\s*44px;/);
+  assert.match(styles, /@media \(max-width: 640px\) \{[\s\S]*\.site-header nav a:not\(\.btn\),\s*[\s\S]*\.site-header nav button\s*\{[\s\S]*display:\s*none;/);
   assert.match(styles, /@media \(max-width: 640px\) \{[\s\S]*\.site-header nav \.btn\s*\{[\s\S]*min-height:\s*44px;/);
 });
 

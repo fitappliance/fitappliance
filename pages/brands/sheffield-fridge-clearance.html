@@ -104,6 +104,7 @@
       align-items: center;
       justify-content: center;
       min-height: 44px;
+      border: 0;
       text-decoration: none;
       padding: 12px 20px;
       border-radius: 9px;
@@ -111,6 +112,8 @@
       color: #fff;
       font-weight: 700;
       font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
       transition: background .15s;
     }
     .cta:hover { background: var(--copper); }
@@ -201,10 +204,15 @@
       display: inline-flex;
       align-items: center;
       min-height: 44px;
+      border: 0;
+      background: transparent;
+      padding: 0;
       font-size: 12.5px;
+      font-family: inherit;
       color: var(--copper);
       text-decoration: none;
       font-weight: 600;
+      cursor: pointer;
     }
     .model-link:hover { text-decoration: underline; }
     .affiliate-cta { margin-top: 8px; }
@@ -330,8 +338,8 @@
       </picture>
       <div class="model-name">PLA1356</div>
       <div class="model-dims">W 833mm × H 1820mm × D 706mm</div>
-      <a class="model-link" href="/?cat=fridge&brand=Sheffield&h=1820">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=fridge&amp;brand=Sheffield&amp;h=1820" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div><div class="model-item">
       <picture class="model-thumb">
         <source srcset="/og-images/sheffield-fridge.webp" type="image/webp">
@@ -339,8 +347,8 @@
       </picture>
       <div class="model-name">PLA1365</div>
       <div class="model-dims">W 695mm × H 1725mm × D 670mm</div>
-      <a class="model-link" href="/?cat=fridge&brand=Sheffield&h=1725">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=fridge&amp;brand=Sheffield&amp;h=1725" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div><div class="model-item">
       <picture class="model-thumb">
         <source srcset="/og-images/sheffield-fridge.webp" type="image/webp">
@@ -348,20 +356,17 @@
       </picture>
       <div class="model-name">PLA1364</div>
       <div class="model-dims">W 545mm × H 1654mm × D 615mm</div>
-      <a class="model-link" href="/?cat=fridge&brand=Sheffield&h=1654">Check if this fits your space →</a>
-      
+      <button type="button" class="model-link model-link-button" data-fit-query="/?cat=fridge&amp;brand=Sheffield&amp;h=1654" onclick="window.location.href=this.dataset.fitQuery">Check if this fits your space →</button>
+
     </div>
       </div>
     </section>
-    <a class="cta" href="/?cat=fridge&brand=Sheffield">Find Sheffield Fridges That Fit Your Space</a>
-    
+    <button type="button" class="cta" data-fit-query="/?cat=fridge&amp;brand=Sheffield" onclick="window.location.href=this.dataset.fitQuery">Find Sheffield Fridges That Fit Your Space</button>
+
     <section class="chip-panel">
       <h2 class="section-title-sm">Same brand alternatives</h2>
       <ul class="chip-list">
         <li><a href="/brands/sheffield-dryer-clearance">Sheffield Dryers</a></li>
-        <li><a href="/?cat=washing_machine&amp;brand=Sheffield">Sheffield Washing Machines fit check</a></li>
-        <li><a href="/?cat=dishwasher&amp;brand=Sheffield">Sheffield Dishwashers fit check</a></li>
-        <li><a href="/?cat=dryer&amp;brand=Sheffield">Sheffield Dryers fit check</a></li>
       </ul>
     </section>
     <section class="chip-panel">

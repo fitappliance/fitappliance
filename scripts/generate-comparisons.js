@@ -50,6 +50,14 @@ function slugifyPair(brandA, brandB, catSlug) {
   return `${slugify(brandA)}-vs-${slugify(brandB)}-${slugify(catSlug)}-clearance`;
 }
 
+function brandPagePath(brand, categoryMeta) {
+  return `/brands/${slugify(brand)}-${categoryMeta.slug}-clearance`;
+}
+
+function renderFitQueryButton({ href, label, className = 'cta' }) {
+  return `<button type="button" class="${escHtml(className)}" data-fit-query="${escHtml(href)}" onclick="window.location.href=this.dataset.fitQuery">${escHtml(label)}</button>`;
+}
+
 function hasRetailLink(product) {
   if (!product || typeof product !== 'object') return false;
   if (isRetailerProductPageUrl(product.direct_url)) return true;
@@ -416,8 +424,8 @@ function buildComparisonPageHtml({
   );
   const compareLabel = `${displayBrandA} vs ${displayBrandB}`;
   const compareParam = `${displayBrandA}-vs-${displayBrandB}`;
-  const brandAUrl = `/?cat=${encodeURIComponent(cat)}&brand=${encodeURIComponent(brandA)}&compare=${encodeURIComponent(compareParam)}&vs=${encodeURIComponent(brandB)}`;
-  const brandBUrl = `/?cat=${encodeURIComponent(cat)}&brand=${encodeURIComponent(brandB)}&compare=${encodeURIComponent(compareParam)}&vs=${encodeURIComponent(brandA)}`;
+  const brandAUrl = brandPagePath(brandA, categoryMeta);
+  const brandBUrl = brandPagePath(brandB, categoryMeta);
   const ctaUrl = `/?cat=${encodeURIComponent(cat)}&compare=${encodeURIComponent(compareParam)}&vs=${encodeURIComponent(brandB)}`;
   const hasLinksA = hasSampleRetailLink(modelSamplesA);
   const hasLinksB = hasSampleRetailLink(modelSamplesB);
@@ -568,6 +576,7 @@ ${headMeta}
     .brand-links a, .cta {
       display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
       padding: 10px 16px; border-radius: 8px; background: var(--ink); color: #fff; font-weight: 700; font-size: 13px;
+      border: 0; font-family: inherit; cursor: pointer;
     }
     .brand-links a:hover, .cta:hover { background: var(--copper); }
     @media (max-width: 760px) { .comparison-grid, .model-grid { grid-template-columns: 1fr; } }
@@ -630,7 +639,10 @@ ${headMeta}
         .join('')}</div>` : ''}
     </section>
 
-    <a class="cta" href="${ctaUrl}">Compare ${escHtml(compareLabel)} inside your exact cavity →</a>
+    ${renderFitQueryButton({
+      href: ctaUrl,
+      label: `Compare ${compareLabel} inside your exact cavity →`
+    })}
     <section style="margin:32px 0;padding:16px 24px;background:#f5f2ec;border-radius:8px;border:1px solid #e0d9ce">
       <p style="font-size:13px;color:#6b6b6b;margin:0 0 10px">Full clearance specifications:</p>
       <div style="display:flex;gap:16px;flex-wrap:wrap">

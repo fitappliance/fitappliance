@@ -367,7 +367,7 @@ function renderAlternativeCard(product, verdict, cavityW) {
     </div>
     <div class="card-zone-c">
       <div class="card-zone-actions">
-        <a class="btn-compare" href="/?cat=${escAttr(product?.cat)}&w=${escAttr(cavityW)}">Compare</a>
+        <button type="button" class="btn-compare" data-fit-query="/?cat=${escAttr(product?.cat)}&w=${escAttr(cavityW)}" onclick="window.location.href=this.dataset.fitQuery">Compare</button>
       </div>
       ${buildAlternativeAvailability(product)}
     </div>
@@ -504,9 +504,9 @@ function buildFitCheckPage(product, cavityW, allProducts = [], evidenceIndex = {
   <header class="site-header">
     <a class="brand" href="/">Fit<span>Appliance</span></a>
     <nav aria-label="Primary">
-      <a href="/?cat=fridge">Fridges</a>
-      <a href="/?cat=washing_machine">Laundry</a>
-      <a href="/?cat=dishwasher">Dishwashers</a>
+      <button type="button" data-fit-query="/?cat=fridge" onclick="window.location.href=this.dataset.fitQuery">Fridges</button>
+      <button type="button" data-fit-query="/?cat=washing_machine" onclick="window.location.href=this.dataset.fitQuery">Laundry</button>
+      <button type="button" data-fit-query="/?cat=dishwasher" onclick="window.location.href=this.dataset.fitQuery">Dishwashers</button>
       <a class="btn" href="/#fit-checker">Find your fit</a>
     </nav>
   </header>

@@ -8,6 +8,7 @@ const { buildReviewVideoSection } = require('./common/review-video-renderer.js')
 const { buildHreflangLinks, buildOgImageMeta } = require('./common/html-head.js');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { canonicalizeProducts, canonicalizeRuleDocument } = require('./brand-canon.js');
+const { slugNormalize } = require('./common/slug-normalize.js');
 const { generateMeasurementSvg } = require('./generate-measurement-svg');
 const {
   buildMeasurementHowToJsonLd,
@@ -39,6 +40,14 @@ function escHtml(value) {
     '"': '&quot;',
     "'": '&#39;'
   }[char]));
+}
+
+function brandPagePath(brand) {
+  return `/brands/${slugNormalize(brand)}-fridge-clearance`;
+}
+
+function renderFitQueryButton({ href, label, className = 'chip' }) {
+  return `<button type="button" class="${escHtml(className)}" data-fit-query="${escHtml(href)}" onclick="window.location.href=this.dataset.fitQuery">${escHtml(label)}</button>`;
 }
 
 async function readJson(filePath, fallback = null) {
@@ -197,7 +206,7 @@ ${ogImageMeta}
     a { color:var(--copper); text-decoration:none; }
     a:hover { text-decoration:underline; }
     .nav, .brands, .compare { margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
-    .chip { display:inline-flex; align-items:center; min-height:44px; background:var(--white); border:1px solid var(--border); border-radius:999px; padding:6px 10px; font-size:13px; }
+    .chip { display:inline-flex; align-items:center; min-height:44px; background:var(--white); border:1px solid var(--border); border-radius:999px; padding:6px 10px; font-size:13px; font-family:inherit; color:var(--copper); cursor:pointer; }
     .tool-callout {
       margin-top: 14px;
       padding: 11px 12px;
@@ -256,13 +265,16 @@ ${ogImageMeta}
 
     <div class="nav">
       ${adjacentWidths.previous ? `<a class="chip" href="/cavity/${adjacentWidths.previous}mm-fridge">← ${adjacentWidths.previous}mm</a>` : ''}
-      <a class="chip" href="${SITE_ORIGIN}/?cat=fridge&w=${width}&h=1800&d=700">Run full fit check</a>
+      ${renderFitQueryButton({
+        href: `${SITE_ORIGIN}/?cat=fridge&w=${width}&h=1800&d=700`,
+        label: 'Run full fit check'
+      })}
       ${adjacentWidths.next ? `<a class="chip" href="/cavity/${adjacentWidths.next}mm-fridge">${adjacentWidths.next}mm →</a>` : ''}
     </div>
 
     <h2>Top brands that fit ${width}mm</h2>
     <div class="brands">
-      ${topBrands.map((row) => `<a class="chip" href="/?cat=fridge&brand=${encodeURIComponent(row.brand)}&w=${width}&h=1800&d=700">${escHtml(displayBrandName(row.brand))} (${row.count})</a>`).join('')}
+      ${topBrands.map((row) => `<a class="chip" href="${brandPagePath(row.brand)}">${escHtml(displayBrandName(row.brand))} (${row.count})</a>`).join('')}
     </div>
 
     <h2>Featured models</h2>

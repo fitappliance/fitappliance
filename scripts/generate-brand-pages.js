@@ -47,6 +47,18 @@ function slugify(value) {
   return slugNormalize(value);
 }
 
+function brandPagePath(brand, categoryMeta) {
+  return `/brands/${slugify(brand)}-${categoryMeta.slug}-clearance`;
+}
+
+function renderFitQueryButton({ href, label, className = 'cta' }) {
+  return `<button type="button" class="${escHtml(className)}" data-fit-query="${escHtml(href)}" onclick="window.location.href=this.dataset.fitQuery">${escHtml(label)}</button>`;
+}
+
+function stripTrailingWhitespace(html) {
+  return String(html ?? '').replace(/[ \t]+$/gm, '');
+}
+
 async function readJson(filePath) {
   const text = await readFile(filePath, 'utf8');
   return JSON.parse(text);
@@ -352,7 +364,11 @@ function buildBrandPageHtml({
       </picture>
       <div class="model-name">${escHtml(sample.model)}</div>
       <div class="model-dims">W ${sample.w}mm × H ${sample.h}mm × D ${sample.d}mm</div>
-      <a class="model-link" href="/?cat=${encodeURIComponent(category)}&brand=${encodeURIComponent(brandRaw)}&h=${sample.h}">Check if this fits your space →</a>
+      ${renderFitQueryButton({
+        href: `/?cat=${encodeURIComponent(category)}&brand=${encodeURIComponent(brandRaw)}&h=${sample.h}`,
+        label: 'Check if this fits your space →',
+        className: 'model-link model-link-button'
+      })}
       ${affiliateHtml}
     </div>`;
   }).join('');
@@ -453,6 +469,7 @@ ${headMeta}
       align-items: center;
       justify-content: center;
       min-height: 44px;
+      border: 0;
       text-decoration: none;
       padding: 12px 20px;
       border-radius: 9px;
@@ -460,6 +477,8 @@ ${headMeta}
       color: #fff;
       font-weight: 700;
       font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
       transition: background .15s;
     }
     .cta:hover { background: var(--copper); }
@@ -550,10 +569,15 @@ ${headMeta}
       display: inline-flex;
       align-items: center;
       min-height: 44px;
+      border: 0;
+      background: transparent;
+      padding: 0;
       font-size: 12.5px;
+      font-family: inherit;
       color: var(--copper);
       text-decoration: none;
       font-weight: 600;
+      cursor: pointer;
     }
     .model-link:hover { text-decoration: underline; }
     .affiliate-cta { margin-top: 8px; }
@@ -684,7 +708,10 @@ ${headMeta}
         ${archivedModelPreview}
       </div>
     </section>` : ''}${reviewSectionHtml ? `\n    ${reviewSectionHtml}` : ''}
-    <a class="cta" href="${ctaUrl}">Find ${escHtml(brand)} ${escHtml(categoryMeta.labelPlural)} That Fit Your Space</a>
+    ${renderFitQueryButton({
+      href: ctaUrl,
+      label: `Find ${brand} ${categoryMeta.labelPlural} That Fit Your Space`
+    })}
     ${relatedCompares.length > 0 ? `<section class="chip-panel">
       <h2 class="section-title-sm">Compare ${escHtml(brand)} with other brands</h2>
       <ul class="chip-list">
@@ -895,10 +922,15 @@ async function generateBrandPages(options = {}) {
     if (sameBrandAlternatives.length < 6) {
       const categoryFallbacks = Object.entries(CATEGORY_META)
         .filter(([cat]) => cat !== row.cat)
-        .map(([cat, meta]) => ({
-          url: `/?cat=${encodeURIComponent(cat)}&brand=${encodeURIComponent(row.brand)}`,
-          label: `${displayBrand} ${meta.labelPlural} fit check`
-        }));
+        .map(([cat, meta]) => {
+          const targetSlug = `${slugify(row.brand)}-${meta.slug}-clearance`;
+          if (!pageBySlug.has(targetSlug)) return null;
+          return {
+            url: brandPagePath(row.brand, meta),
+            label: `${displayBrand} ${meta.labelPlural} clearance`
+          };
+        })
+        .filter(Boolean);
       for (const fallback of categoryFallbacks) {
         if (sameBrandAlternatives.length >= 8) break;
         if (sameBrandAlternatives.some((rowAlt) => rowAlt.url === fallback.url)) continue;
@@ -946,7 +978,7 @@ async function generateBrandPages(options = {}) {
       organizationJsonLd: JSON.stringify(buildOrganizationJsonLd(displayBrand, brandMetadata), null, 2),
       modifiedTime: contentModifiedTime
     });
-    await writeFile(row.filePath, html, 'utf8');
+    await writeFile(row.filePath, stripTrailingWhitespace(html), 'utf8');
   }
 
   indexRows.sort((a, b) => {

@@ -106,16 +106,22 @@ body {
   min-width: 0;
 }
 
-.site-header nav a {
+.site-header nav a,
+.site-header nav button {
   display: inline-flex;
   align-items: center;
   min-width: 44px;
   min-height: 44px;
+  border: 0;
+  background: transparent;
+  padding: 0;
   color: var(--ink);
   font-size: 14px;
   font-weight: 700;
+  font-family: inherit;
   text-decoration: none;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .site-header nav .btn {
@@ -148,11 +154,13 @@ body {
     -webkit-overflow-scrolling: touch;
   }
 
-  .site-header nav a {
+  .site-header nav a,
+  .site-header nav button {
     font-size: 13px;
   }
 
-  .site-header nav a:not(.btn) {
+  .site-header nav a:not(.btn),
+  .site-header nav button {
     display: none;
   }
 

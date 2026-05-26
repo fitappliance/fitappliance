@@ -18,7 +18,7 @@
     p { color:var(--ink-2); }
     .back-link { display:inline-flex; align-items:center; min-height:44px; color:var(--ink-2); text-decoration:none; font-size:13px; }
     .chip-row { margin-top:16px; display:flex; gap:10px; flex-wrap:wrap; }
-    .chip { display:inline-flex; align-items:center; min-height:44px; background:var(--white); border:1px solid var(--border); border-radius:999px; padding:6px 10px; font-size:13px; text-decoration:none; color:var(--copper); }
+    .chip { display:inline-flex; align-items:center; min-height:44px; background:var(--white); border:1px solid var(--border); border-radius:999px; padding:6px 10px; font-size:13px; font-family:inherit; text-decoration:none; color:var(--copper); cursor:pointer; }
     .card-grid { display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); margin-top:18px; }
     .card { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:12px; }
     .card strong,.meta { overflow-wrap:anywhere; }
@@ -36,7 +36,7 @@
 
     <div class="chip-row">
       <a class="chip" href="/doorway/620mm-fridge-doorway">← 620mm</a>
-      <a class="chip" href="https://www.fitappliance.com.au/?cat=fridge&w=900&h=1800&d=700&door=630">Run full doorway + cavity check</a>
+      <button type="button" class="chip" data-fit-query="https://www.fitappliance.com.au/?cat=fridge&amp;w=900&amp;h=1800&amp;d=700&amp;door=630" onclick="window.location.href=this.dataset.fitQuery">Run full doorway + cavity check</button>
       <a class="chip" href="/doorway/640mm-fridge-doorway">640mm →</a>
     </div>
 
