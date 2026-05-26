@@ -27,6 +27,10 @@ function escHtml(value) {
   }[char]));
 }
 
+function renderFitQueryButton({ href, label, className = 'chip' }) {
+  return `<button type="button" class="${escHtml(className)}" data-fit-query="${escHtml(href)}" onclick="window.location.href=this.dataset.fitQuery">${escHtml(label)}</button>`;
+}
+
 async function readJson(filePath, fallback = []) {
   try {
     const text = await readFile(filePath, 'utf8');
@@ -292,10 +296,11 @@ ${buildHreflangLinks(canonical)}
     p { margin: 0 0 14px; color: var(--ink-2); }
     .city-meta { color: var(--ink-3); font-size: 13px; margin-bottom: 20px; }
     .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
-    .chip-row a {
+    .chip-row a,
+    .chip-row button {
       display:inline-flex; align-items:center; min-height:44px;
       color: var(--copper); text-decoration: none; background: var(--white); border: 1px solid var(--border);
-      border-radius: 999px; padding: 6px 10px; font-size: 13px;
+      border-radius: 999px; padding: 6px 10px; font-size: 13px; font-family:inherit; cursor:pointer;
     }
     .chip-row a:hover { text-decoration: underline; }
     ul { margin: 0; padding-left: 18px; }
@@ -327,7 +332,10 @@ ${buildHreflangLinks(canonical)}
     <p>${categoryCount > 0 ? `${categoryCount} models are currently listed in this category in our Australian database.` : 'This category guide links to practical fit-check resources across the site.'}</p>
 
     <div class="chip-row">
-      <a href="${SITE_ORIGIN}/?cat=${encodeURIComponent(category.cat ?? 'fridge')}&w=600&h=1800&d=700">Run fit checker for ${escHtml(category.label)}</a>
+      ${renderFitQueryButton({
+        href: `${SITE_ORIGIN}/?cat=${encodeURIComponent(category.cat ?? 'fridge')}&w=600&h=1800&d=700`,
+        label: `Run fit checker for ${category.label}`
+      })}
       <a href="/location/${city.slug}/fridge">Fridge in ${escHtml(city.name)}</a>
       <a href="/location/${city.slug}/dishwasher">Dishwasher in ${escHtml(city.name)}</a>
       <a href="/location/${city.slug}/washing-machine">Washing Machine in ${escHtml(city.name)}</a>

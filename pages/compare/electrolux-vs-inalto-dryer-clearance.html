@@ -66,6 +66,7 @@
     .brand-links a, .cta {
       display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
       padding: 10px 16px; border-radius: 8px; background: var(--ink); color: #fff; font-weight: 700; font-size: 13px;
+      border: 0; font-family: inherit; cursor: pointer;
     }
     .brand-links a:hover, .cta:hover { background: var(--copper); }
     @media (max-width: 760px) { .comparison-grid, .model-grid { grid-template-columns: 1fr; } }
@@ -120,13 +121,13 @@
         </div>
       </div>
       <div class="brand-links">
-        <a href="/?cat=dryer&brand=Electrolux&compare=Electrolux-vs-Inalto&vs=Inalto">Browse Electrolux Dryers</a>
-        <a href="/?cat=dryer&brand=Inalto&compare=Electrolux-vs-Inalto&vs=Electrolux">Browse Inalto Dryers</a>
+        <a href="/brands/electrolux-dryer-clearance">Browse Electrolux Dryers</a>
+        <a href="/brands/inalto-dryer-clearance">Browse Inalto Dryers</a>
       </div>
       
     </section>
 
-    <a class="cta" href="/?cat=dryer&compare=Electrolux-vs-Inalto&vs=Inalto">Compare Electrolux vs Inalto inside your exact cavity →</a>
+    <button type="button" class="cta" data-fit-query="/?cat=dryer&amp;compare=Electrolux-vs-Inalto&amp;vs=Inalto" onclick="window.location.href=this.dataset.fitQuery">Compare Electrolux vs Inalto inside your exact cavity →</button>
     <section style="margin:32px 0;padding:16px 24px;background:#f5f2ec;border-radius:8px;border:1px solid #e0d9ce">
       <p style="font-size:13px;color:#6b6b6b;margin:0 0 10px">Full clearance specifications:</p>
       <div style="display:flex;gap:16px;flex-wrap:wrap">

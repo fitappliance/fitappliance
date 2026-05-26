@@ -18,11 +18,11 @@ const CATEGORY_LABELS = Object.freeze({
 });
 
 const CATEGORY_HUBS = Object.freeze({
-  fridge: '/?cat=fridge',
-  washing_machine: '/?cat=washing_machine',
-  dishwasher: '/?cat=dishwasher',
-  dryer: '/?cat=dryer',
-  washtower_combo: '/?cat=washing_machine&category=washtower_combo'
+  fridge: '/cavity/600mm-fridge',
+  washing_machine: '/tools/fit-checker',
+  dishwasher: '/tools/fit-checker',
+  dryer: '/tools/fit-checker',
+  washtower_combo: '/tools/fit-checker'
 });
 
 function escAttr(value) {
@@ -177,6 +177,79 @@ function buildAdditionalProperties(product) {
   return properties;
 }
 
+function normalizePrice(value) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric) || numeric <= 0) return null;
+  return Math.round(numeric * 100) / 100;
+}
+
+function getPricedRetailerOffers(product) {
+  const productPrice = normalizePrice(product?.price);
+  const retailers = Array.isArray(product?.retailers) ? product.retailers : [];
+
+  return retailers
+    .filter((retailer) => /^https?:\/\//i.test(String(retailer?.url ?? '')))
+    .map((retailer) => {
+      const retailerPrice = normalizePrice(retailer?.p);
+      const price = retailerPrice ?? productPrice;
+      if (price == null) return null;
+      return {
+        name: String(retailer?.n ?? 'Retailer').trim() || 'Retailer',
+        url: String(retailer.url),
+        price
+      };
+    })
+    .filter(Boolean);
+}
+
+function buildOfferJsonLd(product) {
+  const offers = getPricedRetailerOffers(product);
+  if (offers.length === 0) return null;
+
+  const availability = product?.unavailable === true
+    ? 'https://schema.org/OutOfStock'
+    : 'https://schema.org/InStock';
+
+  if (offers.length === 1) {
+    const offer = offers[0];
+    return {
+      '@type': 'Offer',
+      price: offer.price,
+      priceCurrency: 'AUD',
+      availability,
+      itemCondition: 'https://schema.org/NewCondition',
+      url: offer.url,
+      seller: {
+        '@type': 'Organization',
+        name: offer.name
+      }
+    };
+  }
+
+  const prices = offers.map((offer) => offer.price);
+  return {
+    '@type': 'AggregateOffer',
+    lowPrice: Math.min(...prices),
+    highPrice: Math.max(...prices),
+    offerCount: offers.length,
+    priceCurrency: 'AUD',
+    availability,
+    url: productUrl(product),
+    offers: offers.map((offer) => ({
+      '@type': 'Offer',
+      price: offer.price,
+      priceCurrency: 'AUD',
+      availability,
+      itemCondition: 'https://schema.org/NewCondition',
+      url: offer.url,
+      seller: {
+        '@type': 'Organization',
+        name: offer.name
+      }
+    }))
+  };
+}
+
 function buildProductJsonLd(product) {
   const width = getDimension(product, 'width_mm', 'w');
   const height = getDimension(product, 'height_mm', 'h');
@@ -203,23 +276,9 @@ function buildProductJsonLd(product) {
     mainEntityOfPage: canonical
   };
 
-  const firstRetailer = Array.isArray(product?.retailers)
-    ? product.retailers.find((retailer) => /^https?:\/\//i.test(String(retailer?.url ?? '')))
-    : null;
-  if (firstRetailer && Number.isFinite(Number(product?.price)) && Number(product.price) > 0) {
-    schema.offers = {
-      '@type': 'Offer',
-      price: Number(product.price),
-      priceCurrency: 'AUD',
-      availability: product?.unavailable === true
-        ? 'https://schema.org/OutOfStock'
-        : 'https://schema.org/InStock',
-      url: firstRetailer.url,
-      seller: {
-        '@type': 'Organization',
-        name: String(firstRetailer.n ?? 'Retailer')
-      }
-    };
+  const offers = buildOfferJsonLd(product);
+  if (offers) {
+    schema.offers = offers;
   }
 
   return schema;
@@ -310,7 +369,11 @@ function renderRetailerLinks(product) {
   const links = (Array.isArray(product?.retailers) ? product.retailers : [])
     .filter((retailer) => /^https?:\/\//i.test(String(retailer?.url ?? '')) && retailer?.n)
     .slice(0, 5)
-    .map((retailer) => `<a href="${escAttr(retailer.url)}" rel="sponsored nofollow noopener" target="_blank">${escHtml(retailer.n)}</a>`)
+    .map((retailer) => {
+      const price = normalizePrice(retailer?.p) ?? normalizePrice(product?.price);
+      const priceText = price == null ? '' : ` · $${price.toLocaleString('en-AU')}`;
+      return `<a href="${escAttr(retailer.url)}" rel="sponsored nofollow noopener" target="_blank">${escHtml(retailer.n)}${escHtml(priceText)}</a>`;
+    })
     .join('');
   return links || '<span>No verified retailer link recorded.</span>';
 }
@@ -371,9 +434,9 @@ ${head}
   <header class="site-header">
     <a class="brand" href="/">Fit<span>Appliance</span></a>
     <nav aria-label="Primary">
-      <a href="/?cat=fridge">Fridges</a>
-      <a href="/?cat=washing_machine">Laundry</a>
-      <a href="/?cat=dishwasher">Dishwashers</a>
+      <button type="button" data-fit-query="/?cat=fridge" onclick="window.location.href=this.dataset.fitQuery">Fridges</button>
+      <button type="button" data-fit-query="/?cat=washing_machine" onclick="window.location.href=this.dataset.fitQuery">Laundry</button>
+      <button type="button" data-fit-query="/?cat=dishwasher" onclick="window.location.href=this.dataset.fitQuery">Dishwashers</button>
       <a class="btn" href="/#fit-checker">Find your fit</a>
     </nav>
   </header>
@@ -564,6 +627,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  buildOfferJsonLd,
   buildBreadcrumbJsonLd,
   buildFaqJsonLd,
   buildProductJsonLd,
@@ -571,6 +635,7 @@ module.exports = {
   buildProductPageHtml,
   categoryLabel,
   generateProductPages,
+  getPricedRetailerOffers,
   productName,
   selectVerifiedProducts,
   slugifyProduct

@@ -29,6 +29,10 @@ function escHtml(value) {
   }[char]));
 }
 
+function renderFitQueryButton({ href, label, className = 'chip' }) {
+  return `<button type="button" class="${escHtml(className)}" data-fit-query="${escHtml(href)}" onclick="window.location.href=this.dataset.fitQuery">${escHtml(label)}</button>`;
+}
+
 async function readJson(filePath, fallback = null) {
   try {
     const text = await readFile(filePath, 'utf8');
@@ -160,7 +164,7 @@ ${buildHreflangLinks(canonical)}
     p { color:var(--ink-2); }
     .back-link { display:inline-flex; align-items:center; min-height:44px; color:var(--ink-2); text-decoration:none; font-size:13px; }
     .chip-row { margin-top:16px; display:flex; gap:10px; flex-wrap:wrap; }
-    .chip { display:inline-flex; align-items:center; min-height:44px; background:var(--white); border:1px solid var(--border); border-radius:999px; padding:6px 10px; font-size:13px; text-decoration:none; color:var(--copper); }
+    .chip { display:inline-flex; align-items:center; min-height:44px; background:var(--white); border:1px solid var(--border); border-radius:999px; padding:6px 10px; font-size:13px; font-family:inherit; text-decoration:none; color:var(--copper); cursor:pointer; }
     .card-grid { display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); margin-top:18px; }
     .card { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:12px; }
     .card strong,.meta { overflow-wrap:anywhere; }
@@ -178,7 +182,10 @@ ${buildHreflangLinks(canonical)}
 
     <div class="chip-row">
       ${adjacentDoorways.previous ? `<a class="chip" href="/doorway/${adjacentDoorways.previous}mm-fridge-doorway">← ${adjacentDoorways.previous}mm</a>` : ''}
-      <a class="chip" href="${SITE_ORIGIN}/?cat=fridge&w=900&h=1800&d=700&door=${doorway}">Run full doorway + cavity check</a>
+      ${renderFitQueryButton({
+        href: `${SITE_ORIGIN}/?cat=fridge&w=900&h=1800&d=700&door=${doorway}`,
+        label: 'Run full doorway + cavity check'
+      })}
       ${adjacentDoorways.next ? `<a class="chip" href="/doorway/${adjacentDoorways.next}mm-fridge-doorway">${adjacentDoorways.next}mm →</a>` : ''}
     </div>
 

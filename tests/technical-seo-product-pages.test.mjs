@@ -8,6 +8,7 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 
 const {
+  buildOfferJsonLd,
   buildProductIndexHtml,
   buildProductJsonLd,
   buildProductPageHtml,
@@ -75,6 +76,49 @@ test('technical SEO: product schema includes physical dimensions and verified ev
   assert.ok(schema.additionalProperty.some((row) => row.name === 'Evidence source' && /dimensions and clearance/.test(row.value)));
 });
 
+test('technical SEO: product schema adds real Offer from captured retailer price', () => {
+  const schema = buildProductJsonLd(makeProduct({
+    price: null,
+    retailers: [
+      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx', p: 3999 }
+    ]
+  }));
+
+  assert.equal(schema.offers['@type'], 'Offer');
+  assert.equal(schema.offers.price, 3999);
+  assert.equal(schema.offers.priceCurrency, 'AUD');
+  assert.equal(schema.offers.availability, 'https://schema.org/InStock');
+  assert.equal(schema.offers.url, 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx');
+  assert.deepEqual(schema.offers.seller, { '@type': 'Organization', name: 'Appliances Online' });
+});
+
+test('technical SEO: product schema aggregates multiple real retailer prices', () => {
+  const offers = buildOfferJsonLd(makeProduct({
+    retailers: [
+      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx', p: 3999 },
+      { n: 'The Good Guys', url: 'https://www.thegoodguys.com.au/lg-wwt-1910bx', p: 4099 }
+    ]
+  }));
+
+  assert.equal(offers['@type'], 'AggregateOffer');
+  assert.equal(offers.lowPrice, 3999);
+  assert.equal(offers.highPrice, 4099);
+  assert.equal(offers.offerCount, 2);
+  assert.equal(offers.priceCurrency, 'AUD');
+  assert.equal(offers.offers.length, 2);
+});
+
+test('technical SEO: product schema does not invent Offer when price is absent', () => {
+  const schema = buildProductJsonLd(makeProduct({
+    price: null,
+    retailers: [
+      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx', p: null }
+    ]
+  }));
+
+  assert.equal(schema.offers, undefined);
+});
+
 test('technical SEO: product page renders canonical, Product, Breadcrumb, and FAQ schema', () => {
   const product = makeProduct();
   const slug = slugifyProduct(product);
@@ -86,6 +130,16 @@ test('technical SEO: product page renders canonical, Product, Breadcrumb, and FA
   assert.ok(jsonLd.some((block) => block['@type'] === 'Product'), 'Product JSON-LD missing');
   assert.ok(jsonLd.some((block) => block['@type'] === 'BreadcrumbList'), 'Breadcrumb JSON-LD missing');
   assert.ok(jsonLd.some((block) => block['@type'] === 'FAQPage'), 'FAQ JSON-LD missing');
+});
+
+test('technical SEO: product page displays captured retailer price used by Offer schema', () => {
+  const html = buildProductPageHtml(makeProduct({
+    retailers: [
+      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx', p: 3999 }
+    ]
+  }));
+
+  assert.match(html, />Appliances Online · \$3,999<\/a>/);
 });
 
 test('technical SEO: product names always include model for unique GSC crawl signals', () => {
