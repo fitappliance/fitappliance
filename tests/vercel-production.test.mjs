@@ -49,6 +49,7 @@ test('vercel production config: CSP permits manual AdSense delivery without allo
   assert.match(csp, /script-src[^;]*https:\/\/googleads\.g\.doubleclick\.net/);
   assert.match(csp, /script-src[^;]*https:\/\/tpc\.googlesyndication\.com/);
   assert.match(csp, /connect-src[^;]*https:\/\/pagead2\.googlesyndication\.com/);
+  assert.match(csp, /connect-src[^;]*https:\/\/\*\.adtrafficquality\.google/);
   assert.match(csp, /frame-src[^;]*https:\/\/googleads\.g\.doubleclick\.net/);
   assert.match(csp, /img-src[^;]*https:\/\/\*\.googlesyndication\.com/);
   assert.doesNotMatch(csp, /script-src[^;]*(?:\s|\*)\*(?:\s|;|$)/);

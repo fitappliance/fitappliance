@@ -838,9 +838,8 @@ ${buildOgImageMeta(ogImage)}
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${escHtml(title)}">
   <meta name="twitter:description" content="${escHtml(description)}">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7257149597818537" crossorigin="anonymous"></script>
   <style>
-    :root { --ink:#131210; --ink-2:#3d3a35; --ink-3:#6b6b6b; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
+    :root { --ink:#131210; --ink-2:#3d3a35; --ink-3:#6b6b6b; --paper:#faf8f4; --white:#fff; --copper:#A34F22; --border:#e0d9ce; }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: Arial, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
     a { overflow-wrap: anywhere; }

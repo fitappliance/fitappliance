@@ -20,9 +20,12 @@ test('polish adsense cleanup: obsolete class-based ad-slot placeholders remain r
   assert.doesNotMatch(deferredCss, /\.ad-slot\b/);
 });
 
-test('polish adsense cleanup: AdSense verification script remains in the homepage head', () => {
+test('polish adsense cleanup: AdSense loads lazily from the helper, not the homepage head', () => {
   const indexHtml = read('index.html');
+  const helper = read('public/scripts/adsense-slot.js');
 
-  assert.match(indexHtml, /pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-7257149597818537/);
-  assert.match(indexHtml, /crossorigin="anonymous"/);
+  assert.doesNotMatch(indexHtml, /pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?client=ca-pub-7257149597818537/);
+  assert.match(helper, /loadAdSenseScript/);
+  assert.match(helper, /ca-pub-7257149597818537/);
+  assert.match(helper, /crossOrigin\s*=\s*'anonymous'/);
 });

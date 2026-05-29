@@ -15,12 +15,8 @@
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="FitAppliance RSS" href="/rss.xml">
 <link rel="stylesheet" href="/styles.css?v=20260504-mobile-trust">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<!-- Google AdSense verification -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7257149597818537"
-        crossorigin="anonymous"></script>
+<link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
 <script defer src="/scripts/rum.js"></script>
 <script defer src="/scripts/error-beacon.js"></script>
 
@@ -37,8 +33,8 @@
   --paper-2:   #F2EEE7;
   --paper-3:   #E8E2D9;
   --white:     #FFFFFF;
-  --copper:    #B55A2C;
-  --copper-2:  #D4763E;
+  --copper:    #A34F22;
+  --copper-2:  #8F3E12;
   --copper-bg: #FBF0E9;
   --green:     #2E6B3E;
   --green-bg:  #EBF5EE;
@@ -230,7 +226,7 @@ nav {
 }
 .field-wrap input::-webkit-outer-spin-button,
 .field-wrap input::-webkit-inner-spin-button { -webkit-appearance:none; }
-.field-wrap input:focus { outline:none;border-color:var(--copper);box-shadow:0 0 0 3px rgba(181,90,44,.12);background:var(--white); }
+.field-wrap input:focus { outline:none;border-color:var(--copper);box-shadow:0 0 0 3px rgba(163,79,34,.14);background:var(--white); }
 .field-wrap input::placeholder { color:#C4BCAF; }
 .field-unit {
   position:absolute;right:12px;top:50%;transform:translateY(-50%);
@@ -274,7 +270,7 @@ nav {
   color:var(--ink);
   background:var(--white);
 }
-.replacement-row input:focus { outline:none;border-color:var(--copper);box-shadow:0 0 0 3px rgba(181,90,44,.12); }
+.replacement-row input:focus { outline:none;border-color:var(--copper);box-shadow:0 0 0 3px rgba(163,79,34,.14); }
 .replacement-row button {
   border:1.5px solid var(--ink);
   background:var(--ink);
@@ -399,7 +395,7 @@ nav {
   display:flex;align-items:center;justify-content:center;gap:8px;
   letter-spacing:.01em;
 }
-.btn-search:hover { background:var(--copper-2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(181,90,44,.35); }
+.btn-search:hover { background:var(--copper-2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(163,79,34,.32); }
 .btn-search:active { transform:translateY(0); }
 .fit-checker-link {
   margin-top: 10px;
@@ -579,7 +575,7 @@ nav {
           <span class="field-note" id="inDHint">Measure to the shallowest rear pipe, socket or skirting.</span>
         </div>
       </div>
-      <div class="space-alerts" id="spaceAlerts" aria-label="Non-standard space alerts" aria-live="polite" hidden></div>
+      <div class="space-alerts" id="spaceAlerts" role="status" aria-live="polite" hidden></div>
 
       <div class="hero-sample-searches" aria-label="Sample searches">
         <span class="hero-sample-label">Try a sample search:</span>
