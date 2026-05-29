@@ -86,9 +86,10 @@ test('phase 20: non-hero images are lazy-loaded', () => {
   assert.match(html, /loading="lazy"/, 'at least one non-hero image should be lazy-loaded');
 });
 
-test('phase 20: index font loading uses display=swap', () => {
+test('phase 20: index uses local system font stack without render-blocking external font CSS', () => {
   const html = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
-  assert.match(html, /fonts\.googleapis\.com\/css2[^"]*display=swap/);
+  assert.doesNotMatch(html, /fonts\.googleapis\.com\/css2/);
+  assert.match(html, /-apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui/);
 });
 
 test('phase 40: hero eyebrow decorative dot styles do not collapse the text span', () => {

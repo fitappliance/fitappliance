@@ -195,7 +195,7 @@ ${buildHreflangLinks(canonical)}
   <meta property="og:url" content="${canonical}">
 ${ogImageMeta}
   <style>
-    :root { --ink:#131210; --ink-2:#3d3a35; --ink-3:#6b6b6b; --paper:#faf8f4; --white:#fff; --copper:#b55a2c; --border:#e0d9ce; }
+    :root { --ink:#131210; --ink-2:#3d3a35; --ink-3:#6b6b6b; --paper:#faf8f4; --white:#fff; --copper:#A34F22; --border:#e0d9ce; }
     body { margin:0; font-family:Arial, sans-serif; color:var(--ink); background:var(--paper); line-height:1.6; }
     main { max-width:980px; margin:0 auto; padding:40px 20px 60px; }
     h1 { margin:0 0 10px; font-size:34px; }

@@ -291,12 +291,13 @@ test('phase 52 replacement UX: unmatched old models guide users back to cavity d
 
 test('phase 52 space alert UX: homepage renders non-standard space alerts from dimensions', () => {
   const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+  const spaceAlerts = fs.readFileSync(path.join(repoRoot, 'public/scripts/space-alerts.mjs'), 'utf8');
 
   assert.match(indexHtml, /id="spaceAlerts"/);
   assert.match(indexHtml, /space-alerts\.mjs/);
   assert.match(indexHtml, /buildSpaceAlerts\(/);
   assert.match(indexHtml, /space-alert/);
-  assert.match(indexHtml, /Tight delivery path|non-standard space/i);
+  assert.match(spaceAlerts, /Tight delivery path|non-standard space/i);
 });
 
 test('phase 45b search-ux: clear all resets facet state without touching dimension filters', () => {

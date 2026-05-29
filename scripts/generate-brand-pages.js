@@ -385,9 +385,6 @@ function buildBrandPageHtml({
 <html lang="en-AU">
 <head>
 ${headMeta}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --ink:#131210;
@@ -395,7 +392,7 @@ ${headMeta}
       --ink-3:#6B6B6B;
       --paper:#FAF8F4;
       --white:#FFFFFF;
-      --copper:#B55A2C;
+      --copper:#A34F22;
       --border:#E0D9CE;
     }
     * { box-sizing: border-box; }
