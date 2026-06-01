@@ -59,6 +59,28 @@ function validateRetailer(retailer, productId, errors) {
     errors.push(`Product ${productId} retailer url must be a non-empty string`);
   }
 
+  if (
+    Object.prototype.hasOwnProperty.call(retailer, 'affiliate_url') &&
+    retailer.affiliate_url !== undefined &&
+    retailer.affiliate_url !== null &&
+    retailer.affiliate_url !== '' &&
+    !isHttpUrl(retailer.affiliate_url)
+  ) {
+    errors.push(`Product ${productId} retailer affiliate_url must be an http(s) URL when provided`);
+  }
+
+  for (const key of ['affiliate_network', 'affiliate_campaign', 'camref', 'pubref', 'tracking_verified_at']) {
+    if (
+      Object.prototype.hasOwnProperty.call(retailer, key) &&
+      retailer[key] !== undefined &&
+      retailer[key] !== null &&
+      retailer[key] !== '' &&
+      !isNonEmptyString(retailer[key])
+    ) {
+      errors.push(`Product ${productId} retailer ${key} must be a non-empty string when provided`);
+    }
+  }
+
   if (!(retailer.p === null || isNonNegativeInteger(retailer.p))) {
     errors.push(`Product ${productId} retailer price must be null or a non-negative integer`);
   }

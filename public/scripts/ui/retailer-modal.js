@@ -49,6 +49,7 @@ export function isRetailerProductPageUrl(url) {
   const pathname = parsed.pathname.replace(/\/+$/, '').toLowerCase();
   if (!['http:', 'https:'].includes(parsed.protocol)) return false;
   if (!host || pathname === '' || pathname === '/') return false;
+  if (host === 'prf.hn') return false;
   if (['q', 'query', 'searchterm', 'text', 'keyword'].some((key) => parsed.searchParams.has(key))) return false;
   if (/\/(search|searchdisplay|catalogsearch|collections?|category|categories|cart|checkout)(\/|$)/i.test(pathname)) {
     return false;
@@ -71,6 +72,22 @@ function modelTitle(model) {
 function isSearchLikeHref(href) {
   if (typeof href !== 'string') return false;
   return /\/search(?:\/|[?#]|$)/i.test(href) || /[?&](q|query|text|search|keyword)=/i.test(href);
+}
+
+function isSafeHttpUrl(value) {
+  try {
+    const parsed = new URL(String(value ?? '').trim());
+    return parsed.protocol === 'https:' || parsed.protocol === 'http:';
+  } catch {
+    return false;
+  }
+}
+
+export function getRetailerClickUrl(retailer) {
+  const affiliateUrl = String(retailer?.affiliate_url ?? retailer?.affiliateUrl ?? '').trim();
+  if (isSafeHttpUrl(affiliateUrl)) return affiliateUrl;
+  const canonicalUrl = String(retailer?.url ?? retailer?.href ?? '').trim();
+  return isSafeHttpUrl(canonicalUrl) ? canonicalUrl : '';
 }
 
 function slugifyRetailerName(name) {
@@ -124,7 +141,7 @@ function buildRetailerBrandCard(product, retailer, targetUrl) {
   ><span class="retailer-brand-wordmark">${escHtml(meta.wordmark)}</span></a>`;
 }
 
-export function buildRetailerLogoLinks(product, { resolveRetailerUrl = (retailer) => retailer.url } = {}) {
+export function buildRetailerLogoLinks(product, { resolveRetailerUrl = getRetailerClickUrl } = {}) {
   const linked = normalizeLinkedRetailers(product?.retailers);
   if (linked.length === 0) return '';
   const seen = new Set();
@@ -164,7 +181,7 @@ export function buildSearchOnlineButton(
   return `<a class="btn-search-online" href="${escHtml(targetUrl)}" target="_blank" rel="sponsored nofollow noopener">Search this model online<span class="btn-search-note">retailer info not available</span></a>`;
 }
 
-export function buildRetailerModalHtml(product, { resolveRetailerUrl = (retailer) => retailer.url } = {}) {
+export function buildRetailerModalHtml(product, { resolveRetailerUrl = getRetailerClickUrl } = {}) {
   if (!shouldShowRetailerModal(product)) return '';
   const sorted = [...normalizePricedRetailers(product?.retailers)].sort((left, right) => left.p - right.p);
   if (sorted.length < 2) return '';
@@ -213,7 +230,7 @@ export function buildRetailerModalHtml(product, { resolveRetailerUrl = (retailer
 export function buildRetailerTriggerButton(
   product,
   {
-    resolveRetailerUrl = (retailer) => retailer.url,
+    resolveRetailerUrl = getRetailerClickUrl,
     buildNoRetailerUrl = () => '#',
     buildSearchOnlineUrl
   } = {}

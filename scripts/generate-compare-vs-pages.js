@@ -55,6 +55,12 @@ function hasRetailer(product) {
   return Array.isArray(product?.retailers) && product.retailers.some((retailer) => /^https?:\/\//i.test(String(retailer?.url ?? '')));
 }
 
+function retailerClickUrl(retailer) {
+  const affiliateUrl = String(retailer?.affiliate_url ?? '').trim();
+  if (/^https?:\/\//i.test(affiliateUrl)) return affiliateUrl;
+  return String(retailer?.url ?? '').trim();
+}
+
 function scoreProduct(product) {
   const retailerBoost = hasRetailer(product) ? 10000 : 0;
   const activeBoost = product?.unavailable === false ? 5000 : 0;
@@ -199,7 +205,7 @@ function buildRetailerCtas(products) {
       const brand = displayBrandName(product.brand);
       const model = String(product.model ?? '').trim();
       const retailerName = String(retailer.n ?? retailer.name ?? 'retailer').trim();
-      return `<a href="${escHtml(retailer.url)}" target="_blank" rel="sponsored nofollow noopener" style="display:inline-flex;align-items:center;min-height:44px">Check ${escHtml(brand)} ${escHtml(model)} at ${escHtml(retailerName)} →</a>`;
+      return `<a href="${escHtml(retailerClickUrl(retailer))}" target="_blank" rel="sponsored nofollow noopener" style="display:inline-flex;align-items:center;min-height:44px">Check ${escHtml(brand)} ${escHtml(model)} at ${escHtml(retailerName)} →</a>`;
     })
     .filter(Boolean);
   if (links.length === 0) return '';

@@ -111,6 +111,31 @@ test('manual retailer enrich: same retailer name replaces old entry instead of d
   assert.equal(merged[0].p, 1099);
 });
 
+test('manual retailer enrich: affiliate tracking fields are preserved separately from canonical url', () => {
+  const existing = [];
+  const manualRetailers = [
+    {
+      n: 'The Good Guys',
+      url: 'https://www.thegoodguys.com.au/lg-420l-bottom-mount-refrigerator-gb-455pl',
+      affiliate_url: 'https://prf.hn/click/camref:1011l5JNxE/pubref:fridge-lg-gb455pl/destination:https%3A%2F%2Fwww.thegoodguys.com.au%2Flg-420l-bottom-mount-refrigerator-gb-455pl',
+      affiliate_network: 'partnerize',
+      affiliate_campaign: 'The Good Guys Australia',
+      camref: '1011l5JNxE',
+      pubref: 'fridge-lg-gb455pl',
+      tracking_verified_at: '2026-06-01',
+      p: null,
+    },
+  ];
+
+  const merged = mergeRetailers(existing, manualRetailers);
+
+  assert.equal(merged.length, 1);
+  assert.equal(merged[0].url, manualRetailers[0].url);
+  assert.equal(merged[0].affiliate_url, manualRetailers[0].affiliate_url);
+  assert.equal(merged[0].affiliate_network, 'partnerize');
+  assert.equal(merged[0].tracking_verified_at, '2026-06-01');
+});
+
 test('manual retailer enrich: new retailer is appended after existing retailers', () => {
   const existing = [{ n: 'Harvey Norman', url: 'https://www.harveynorman.com.au/p/lg-gth560npl', p: 1199 }];
   const merged = mergeRetailers(existing, approvedEntry.retailers);

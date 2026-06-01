@@ -183,12 +183,22 @@ function normalizePrice(value) {
   return Math.round(numeric * 100) / 100;
 }
 
+function isHttpUrl(value) {
+  return /^https?:\/\//i.test(String(value ?? ''));
+}
+
+function retailerClickUrl(retailer) {
+  const affiliateUrl = String(retailer?.affiliate_url ?? '').trim();
+  if (isHttpUrl(affiliateUrl)) return affiliateUrl;
+  return String(retailer?.url ?? '').trim();
+}
+
 function getPricedRetailerOffers(product) {
   const productPrice = normalizePrice(product?.price);
   const retailers = Array.isArray(product?.retailers) ? product.retailers : [];
 
   return retailers
-    .filter((retailer) => /^https?:\/\//i.test(String(retailer?.url ?? '')))
+    .filter((retailer) => isHttpUrl(retailer?.url))
     .map((retailer) => {
       const retailerPrice = normalizePrice(retailer?.p);
       const price = retailerPrice ?? productPrice;
@@ -367,12 +377,12 @@ function safeJsonLd(value) {
 
 function renderRetailerLinks(product) {
   const links = (Array.isArray(product?.retailers) ? product.retailers : [])
-    .filter((retailer) => /^https?:\/\//i.test(String(retailer?.url ?? '')) && retailer?.n)
+    .filter((retailer) => isHttpUrl(retailer?.url) && retailer?.n)
     .slice(0, 5)
     .map((retailer) => {
       const price = normalizePrice(retailer?.p) ?? normalizePrice(product?.price);
       const priceText = price == null ? '' : ` · $${price.toLocaleString('en-AU')}`;
-      return `<a href="${escAttr(retailer.url)}" rel="sponsored nofollow noopener" target="_blank">${escHtml(retailer.n)}${escHtml(priceText)}</a>`;
+      return `<a href="${escAttr(retailerClickUrl(retailer))}" rel="sponsored nofollow noopener" target="_blank">${escHtml(retailer.n)}${escHtml(priceText)}</a>`;
     })
     .join('');
   return links || '<span>No verified retailer link recorded.</span>';
