@@ -20,13 +20,27 @@ function normalizeRetailerName(value) {
 }
 
 function cloneRetailer(retailer) {
-  return {
+  const cloned = {
     n: String(retailer?.n ?? '').trim(),
     url: String(retailer?.url ?? '').trim(),
     p: retailer?.p ?? null,
     verified_at: retailer?.verified_at ?? null,
     source: retailer?.source ?? 'manual',
   };
+  for (const key of [
+    'affiliate_url',
+    'affiliate_network',
+    'affiliate_campaign',
+    'camref',
+    'pubref',
+    'tracking_verified_at',
+  ]) {
+    const value = retailer?.[key];
+    if (value !== undefined && value !== null && value !== '') {
+      cloned[key] = String(value).trim();
+    }
+  }
+  return cloned;
 }
 
 function mergeRetailers(existingRetailers = [], manualRetailers = []) {

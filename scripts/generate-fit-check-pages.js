@@ -198,7 +198,11 @@ function buildRetailerLinks(product) {
   return retailers
     .filter((retailer) => retailer?.url && retailer?.n)
     .slice(0, 5)
-    .map((retailer) => `<a class="retailer-chip" href="${escAttr(retailer.url)}" rel="sponsored nofollow noopener" target="_blank">${escHtml(retailer.n)}</a>`)
+    .map((retailer) => {
+      const affiliateUrl = String(retailer?.affiliate_url ?? '').trim();
+      const targetUrl = /^https?:\/\//i.test(affiliateUrl) ? affiliateUrl : retailer.url;
+      return `<a class="retailer-chip" href="${escAttr(targetUrl)}" rel="sponsored nofollow noopener" target="_blank">${escHtml(retailer.n)}</a>`;
+    })
     .join('\n');
 }
 

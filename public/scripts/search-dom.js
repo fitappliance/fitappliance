@@ -905,10 +905,30 @@
     return String(retailer?.url ?? retailer?.href ?? retailer?.u ?? retailer?.link ?? '').trim();
   }
 
+  function isSafeHttpUrl(value) {
+    const raw = String(value ?? '').trim();
+    if (!/^https?:\/\//i.test(raw)) return false;
+    try {
+      const parsed = new URL(raw);
+      return parsed.protocol === 'https:' || parsed.protocol === 'http:';
+    } catch {
+      return false;
+    }
+  }
+
+  function getRetailerClickUrl(retailer) {
+    const affiliateUrl = String(retailer?.affiliate_url ?? retailer?.affiliateUrl ?? '').trim();
+    if (affiliateUrl && isSafeHttpUrl(affiliateUrl)) return affiliateUrl;
+    const canonicalUrl = getRetailerUrl(retailer);
+    return canonicalUrl && isSafeHttpUrl(canonicalUrl) ? canonicalUrl : '';
+  }
+
   function isRetailerProductPageUrl(url) {
+    const raw = String(url ?? '').trim();
+    if (!/^https?:\/\//i.test(raw)) return false;
     let parsed;
     try {
-      parsed = new URL(String(url ?? '').trim());
+      parsed = new URL(raw);
     } catch {
       return false;
     }
@@ -916,6 +936,7 @@
     const pathname = parsed.pathname.replace(/\/+$/, '').toLowerCase();
     if (!['http:', 'https:'].includes(parsed.protocol)) return false;
     if (!host || pathname === '' || pathname === '/') return false;
+    if (host === 'prf.hn') return false;
     if (['q', 'query', 'searchterm', 'text', 'keyword'].some((key) => parsed.searchParams.has(key))) return false;
     if (/\/(search|searchdisplay|catalogsearch|collections?|category|categories|cart|checkout)(\/|$)/i.test(pathname)) {
       return false;
@@ -935,7 +956,8 @@
       .map((retailer) => ({
         name: getRetailerName(retailer),
         price: getRetailerPrice(retailer),
-        url: getRetailerUrl(retailer)
+        url: getRetailerUrl(retailer),
+        clickUrl: getRetailerClickUrl(retailer)
       }))
       .map((retailer) => ({
         ...retailer,
@@ -978,7 +1000,8 @@
   function buildRetailerBrandCard(match, retailer) {
     const displayName = safeRetailerDisplayName(retailer.name);
     const meta = getRetailerBrandMeta(displayName);
-    return `<a class="retailer-brand-card retailer-brand-card--${escHtml(meta.slug)}" href="${escHtml(retailer.url)}" target="_blank" rel="sponsored nofollow noopener"
+    const clickUrl = retailer.clickUrl || retailer.url;
+    return `<a class="retailer-brand-card retailer-brand-card--${escHtml(meta.slug)}" href="${escHtml(clickUrl)}" target="_blank" rel="sponsored nofollow noopener"
       aria-label="Open ${escHtml(meta.wordmark)} product page"
       title="${escHtml(meta.wordmark)}"
       data-buy-click="1"
@@ -986,6 +1009,7 @@
       data-brand="${escHtml(safeDisplayText(match?.brand, ''))}"
       data-model="${escHtml(safeDisplayText(match?.model ?? match?.sku, ''))}"
       data-retailer="${escHtml(meta.wordmark)}"
+      data-target-url="${escHtml(clickUrl)}"
       data-price="${Number.isFinite(retailer.price) ? retailer.price : 0}"
     ><span class="retailer-brand-wordmark">${escHtml(meta.wordmark)}</span></a>`;
   }

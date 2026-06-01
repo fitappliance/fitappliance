@@ -89,6 +89,30 @@ test('task 15 retailer-modal: trigger for 1 retailer uses a branded retailer car
   assert.doesNotMatch(html, /openRetailerModal/);
 });
 
+test('partnerize TGG: branded retailer card clicks affiliate URL while retaining canonical validation', async () => {
+  const {
+    buildRetailerTriggerButton,
+    getRetailerClickUrl,
+    isRetailerProductPageUrl
+  } = await import(moduleUrl);
+  const canonicalUrl = 'https://www.thegoodguys.com.au/lg-420l-bottom-mount-refrigerator-gb-455pl';
+  const affiliateUrl = 'https://prf.hn/click/camref:1011l5JNxE/pubref:fridge-lg-gb455pl/destination:https%3A%2F%2Fwww.thegoodguys.com.au%2Flg-420l-bottom-mount-refrigerator-gb-455pl';
+  const retailer = {
+    n: 'The Good Guys',
+    p: null,
+    url: canonicalUrl,
+    affiliate_url: affiliateUrl
+  };
+  const html = buildRetailerTriggerButton(makeProduct({ retailers: [retailer] }));
+
+  assert.equal(isRetailerProductPageUrl(canonicalUrl), true);
+  assert.equal(isRetailerProductPageUrl(affiliateUrl), false);
+  assert.equal(getRetailerClickUrl(retailer), affiliateUrl);
+  assert.match(html, /href="https:\/\/prf\.hn\/click\/camref:1011l5JNxE/);
+  assert.match(html, /data-target-url="https:\/\/prf\.hn\/click\/camref:1011l5JNxE/);
+  assert.match(html, /The Good Guys/);
+});
+
 test('hotfix retailer URL quality: root and search URLs fall back to honest online search', async () => {
   const { buildRetailerTriggerButton, shouldShowRetailerModal } = await import(moduleUrl);
   const product = makeProduct({

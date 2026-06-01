@@ -524,6 +524,7 @@
     const pathname = parsed.pathname.replace(/\/+$/, '').toLowerCase();
     if (!['http:', 'https:'].includes(parsed.protocol)) return false;
     if (!host || pathname === '' || pathname === '/') return false;
+    if (host === 'prf.hn') return false;
     if (['q', 'query', 'searchterm', 'text', 'keyword'].some((key) => parsed.searchParams.has(key))) return false;
     if (/\/(search|searchdisplay|catalogsearch|collections?|category|categories|cart|checkout)(\/|$)/i.test(pathname)) {
       return false;

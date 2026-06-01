@@ -2,7 +2,7 @@ import { displayBrandName } from './brand-utils.js';
 import { renderFitScoreCardBlock } from './fit-score-ring.js';
 import { renderProductThumb } from './product-thumb.js';
 import { renderProvenanceBlock } from './provenance.js';
-import { isRetailerProductPageUrl } from './retailer-modal.js';
+import { getRetailerClickUrl, isRetailerProductPageUrl } from './retailer-modal.js';
 import { computeBreakdown } from './score-breakdown.js';
 
 function escHtml(value) {
@@ -919,7 +919,7 @@ function retailerLinkClassName(name) {
 }
 
 function buildAvailabilityAccordion(product, deps = {}) {
-  const resolveRetailerUrl = deps.resolveRetailerUrl ?? ((retailer) => retailer.url);
+  const resolveRetailerUrl = deps.resolveRetailerUrl ?? getRetailerClickUrl;
   const retailers = getLinkedRetailers(product).slice(0, 5);
   const hasRetailers = retailers.length > 0;
   const body = hasRetailers
