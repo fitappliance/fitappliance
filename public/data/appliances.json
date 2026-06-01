@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "last_updated": "2026-05-25",
+  "last_updated": "2026-06-01",
   "products": [
     {
       "id": "dishwasher-adw1215",
@@ -4484,7 +4484,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "direct_url": "https://www.fisherpaykel.com/nz/dishwashing/integrated-dishwashers/series-9-integrated-tall-dishwasher-dw60ut4i2-82440.html",
       "displayName": "Fisher & Paykel Dishwasher",
@@ -4550,7 +4550,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Dishwasher",
       "readableSpec": "Built-in Dishwasher",
@@ -4566,6 +4566,28 @@
         ],
         "clearance_verified": false
       }
+    },
+    {
+      "id": "dishwasher-adw1390",
+      "cat": "dishwasher",
+      "brand": "FISHER & PAYKEL",
+      "model": "DW60FC3X3",
+      "w": 600,
+      "h": 849,
+      "d": 610,
+      "kwh_year": 246,
+      "stars": 4,
+      "price": null,
+      "emoji": "🍽️",
+      "door_swing_mm": 0,
+      "features": [
+        "Freestanding",
+        "Single product class"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
     },
     {
       "id": "dishwasher-adw1329",
@@ -4995,7 +5017,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
@@ -5053,7 +5075,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
@@ -5111,7 +5133,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
@@ -5162,7 +5184,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
@@ -5206,7 +5228,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
@@ -5332,7 +5354,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
@@ -5401,7 +5423,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
@@ -6302,7 +6324,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG QuadWash",
       "readableSpec": "Freestanding Dishwasher",
@@ -9542,7 +9564,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
@@ -9600,7 +9622,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
@@ -10178,7 +10200,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Electrolux Dryer",
       "readableSpec": "8kg Heat Pump",
@@ -10237,7 +10259,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Electrolux Dryer",
       "readableSpec": "Condenser",
@@ -10296,7 +10318,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Electrolux Dryer",
       "readableSpec": "Condenser",
@@ -10390,6 +10412,29 @@
       "displayName": "Electrolux Dryer",
       "readableSpec": "Condenser",
       "priorityScore": 42
+    },
+    {
+      "id": "dryer-acd0978",
+      "cat": "dryer",
+      "brand": "ELECTROLUX",
+      "model": "EWW1042R7WB",
+      "w": 600,
+      "h": 850,
+      "d": 659,
+      "kwh_year": 229,
+      "stars": 3,
+      "price": null,
+      "emoji": "🌀",
+      "door_swing_mm": 0,
+      "features": [
+        "Condenser",
+        "Autosensing",
+        "Single product class"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
     },
     {
       "id": "dryer-acd0717",
@@ -10885,7 +10930,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Dryer",
       "readableSpec": "Condenser",
@@ -11633,6 +11678,29 @@
       "displayName": "Sheffield Dryer",
       "readableSpec": "Vented",
       "priorityScore": 12
+    },
+    {
+      "id": "dryer-acd0975",
+      "cat": "dryer",
+      "brand": "Solt",
+      "model": "GGSVD55W",
+      "w": 535,
+      "h": 645,
+      "d": 530,
+      "kwh_year": 246,
+      "stars": 2,
+      "price": null,
+      "emoji": "🌀",
+      "door_swing_mm": 0,
+      "features": [
+        "Vented",
+        "Autosensing",
+        "Single product class"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
     },
     {
       "id": "dryer-acd0844",
@@ -13815,7 +13883,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
@@ -14456,7 +14524,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
@@ -15393,7 +15461,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
@@ -15466,7 +15534,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
@@ -20903,7 +20971,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
@@ -20970,7 +21038,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
@@ -21127,7 +21195,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
@@ -21251,7 +21319,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
@@ -21318,7 +21386,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
@@ -21378,7 +21446,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
@@ -21446,7 +21514,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "726L French-Door",
@@ -23245,7 +23313,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
@@ -23693,7 +23761,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
@@ -23752,7 +23820,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
@@ -23856,7 +23924,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
@@ -23952,7 +24020,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
@@ -24104,7 +24172,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "520L French-Door",
@@ -24319,7 +24387,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
@@ -25635,7 +25703,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
@@ -25763,7 +25831,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
@@ -26665,7 +26733,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
@@ -27543,7 +27611,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Side By Side",
@@ -27760,7 +27828,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
@@ -27820,7 +27888,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
       "priorityScore": 100,
@@ -28117,7 +28185,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
@@ -28210,7 +28278,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
@@ -32631,7 +32699,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
@@ -32969,7 +33037,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
@@ -33049,7 +33117,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
@@ -33180,7 +33248,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
@@ -33706,7 +33774,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
@@ -37008,6 +37076,29 @@
       "priorityScore": 30
     },
     {
+      "id": "fridge-arf3932",
+      "cat": "fridge",
+      "brand": "Midea",
+      "model": "MDRF923FIM45APM",
+      "w": 908,
+      "h": 1775,
+      "d": 736,
+      "kwh_year": 500,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5B",
+        "Class 6"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
+    },
+    {
       "id": "fridge-zrf0846",
       "cat": "fridge",
       "brand": "Midea",
@@ -37372,22 +37463,45 @@
       "priorityScore": 12
     },
     {
-      "id": "fridge-arf3932",
+      "id": "fridge-arf3942",
       "cat": "fridge",
-      "brand": "Midea",
-      "model": "MDRF923FIM45APM",
-      "w": 908,
+      "brand": "MIDEA",
+      "model": "MDRD181FGM01AP",
+      "w": 501,
+      "h": 858,
+      "d": 540,
+      "kwh_year": 99,
+      "stars": 5,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 501,
+      "features": [
+        "Upright",
+        "2",
+        "Class 2"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
+    },
+    {
+      "id": "fridge-arf3934",
+      "cat": "fridge",
+      "brand": "MIDEA",
+      "model": "MDRS925FIM45AP",
+      "w": 910,
       "h": 1775,
-      "d": 736,
-      "kwh_year": 500,
+      "d": 735,
+      "kwh_year": 540,
       "stars": 4,
       "price": null,
       "emoji": "🧊",
       "door_swing_mm": 0,
       "features": [
-        "Upright",
-        "5B",
-        "Class 6"
+        "Side by Side",
+        "5S",
+        "Class 7"
       ],
       "retailers": [],
       "sponsored": false,
@@ -44777,6 +44891,29 @@
       "priorityScore": 0
     },
     {
+      "id": "fridge-arf3941",
+      "cat": "fridge",
+      "brand": "Sub-Zero",
+      "model": "ICBID-30R",
+      "w": 762,
+      "h": 876,
+      "d": 610,
+      "kwh_year": 99,
+      "stars": 5,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 762,
+      "features": [
+        "Upright",
+        "1",
+        "Class 1"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
+    },
+    {
       "id": "fridge-arf2128",
       "cat": "fridge",
       "brand": "Sub-Zero",
@@ -47541,7 +47678,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "direct_url": "https://www.jbhifi.com.au/search?query=WBB3100AK",
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
@@ -47710,7 +47847,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
@@ -47807,7 +47944,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
@@ -49028,7 +49165,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
@@ -49704,7 +49841,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Side By Side",
@@ -52786,7 +52923,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
@@ -52953,7 +53090,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
@@ -54052,7 +54189,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Washing Machine",
       "readableSpec": "Front Loader",
@@ -54134,7 +54271,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Washing Machine",
       "readableSpec": "Front Loader",
@@ -54393,7 +54530,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Washing Machine",
       "readableSpec": "Top Loader",
@@ -54950,7 +55087,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "direct_url": "https://www.appliancesonline.com.au/product/hisense-series-5i-12kg-max-drum-front-load-washing-machine-white-hwf5i1215/",
       "displayName": "Hisense Washing Machine",
@@ -55029,7 +55166,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Washing Machine",
       "readableSpec": "Front Loader",
@@ -55081,7 +55218,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Washing Machine",
       "readableSpec": "Front Loader",
@@ -55166,7 +55303,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Washing Machine",
       "readableSpec": "Front Loader",
@@ -55218,7 +55355,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Washing Machine",
       "readableSpec": "Front Loader",
@@ -56429,7 +56566,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG Washing Machine",
       "readableSpec": "Front Loader",
@@ -56800,7 +56937,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG Washing Machine",
       "readableSpec": "Top Loader",
@@ -62713,7 +62850,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Washing Machine",
       "readableSpec": "Front Loader",
@@ -62779,7 +62916,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Washing Machine",
       "readableSpec": "Front Loader",
