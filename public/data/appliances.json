@@ -4599,7 +4599,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Fisher & Paykel Dishwasher",
+      "readableSpec": "Freestanding Dishwasher",
+      "priorityScore": 54
     },
     {
       "id": "dishwasher-adw1329",
@@ -10488,7 +10491,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Electrolux Dryer",
+      "readableSpec": "Condenser",
+      "priorityScore": 48
     },
     {
       "id": "dryer-acd0717",
@@ -11754,7 +11760,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Solt Dryer",
+      "readableSpec": "Vented",
+      "priorityScore": 12
     },
     {
       "id": "dryer-acd0844",
@@ -30780,7 +30789,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "KELVINATOR Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 18
     },
     {
       "id": "fridge-arf2582",
@@ -37240,7 +37252,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Midea Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 24
     },
     {
       "id": "fridge-zrf0846",
@@ -37627,7 +37642,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Midea Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 30
     },
     {
       "id": "fridge-arf3934",
@@ -37650,7 +37668,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Midea Fridge",
+      "readableSpec": "Side By Side",
+      "priorityScore": 24
     },
     {
       "id": "fridge-arf3053",
@@ -45055,7 +45076,10 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true
+      "inferred_door_swing": true,
+      "displayName": "Sub-Zero Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 0
     },
     {
       "id": "fridge-arf2128",
