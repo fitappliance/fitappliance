@@ -18,6 +18,18 @@ function retailerNames(retailers = []) {
   return retailers.map((retailer) => retailer.n);
 }
 
+function assertReviewedPricePolicy(retailer, context) {
+  if (retailer.source === 'partnerize-feed') {
+    assert.equal(retailer.n, 'The Good Guys', `${context} Partnerize feed rows should currently be TGG-only`);
+    assert.ok(Number(retailer.p) > 0, `${context} Partnerize feed rows may expose trusted feed prices`);
+    assert.equal(retailer.affiliate_network, 'partnerize', `${context} must preserve Partnerize attribution`);
+    assert.match(retailer.affiliate_url, /^https:\/\/prf\.hn\/click\//, `${context} must preserve Partnerize tracking URL`);
+    return;
+  }
+
+  assert.equal(retailer.p, null, `${context} non-feed prices stay null until separately verified`);
+}
+
 test('manual retailer data: HRCD640TBW keeps all verified retailer links side by side', () => {
   const manual = readJson('data/manual-retailers.json');
   const entry = manual.products['fridge-arf3453'];
@@ -27,7 +39,7 @@ test('manual retailer data: HRCD640TBW keeps all verified retailer links side by
 
   for (const retailer of entry.retailers) {
     assert.match(retailer.url, /^https:\/\/(www\.)?/, `${retailer.n} should have a real product URL`);
-    assert.equal(retailer.p, null, `${retailer.n} prices stay null until separately verified`);
+    assertReviewedPricePolicy(retailer, `HRCD640TBW ${retailer.n}`);
   }
 });
 

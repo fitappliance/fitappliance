@@ -34,6 +34,10 @@ function cloneRetailer(retailer) {
     'camref',
     'pubref',
     'tracking_verified_at',
+    'stock',
+    'tgg_sku',
+    'feed_title',
+    'feed_model',
   ]) {
     const value = retailer?.[key];
     if (value !== undefined && value !== null && value !== '') {

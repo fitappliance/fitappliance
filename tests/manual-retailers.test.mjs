@@ -42,6 +42,19 @@ function categoryRetailerStats(entries) {
   return { entriesWithNonAoRetailer, retailerCounts };
 }
 
+function assertReviewedPricePolicy(retailer, context) {
+  if (retailer.source === 'partnerize-feed') {
+    assert.equal(retailer.n, 'The Good Guys', `${context} Partnerize feed rows should currently be TGG-only`);
+    assert.ok(Number(retailer.p) > 0, `${context} Partnerize feed rows may expose trusted feed prices`);
+    assert.equal(retailer.affiliate_network, 'partnerize', `${context} must preserve Partnerize attribution`);
+    assert.match(retailer.affiliate_url, /^https:\/\/prf\.hn\/click\//, `${context} must preserve Partnerize tracking URL`);
+    assert.match(retailer.verified_at, /^\d{4}-\d{2}-\d{2}$/, `${context} must preserve feed verification date`);
+    return;
+  }
+
+  assert.equal(retailer.p, null, `${context} non-feed price should remain null until a trusted feed is available`);
+}
+
 test('manual retailers: document has stable schema metadata and consistent approved_count', () => {
   const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
 
@@ -130,9 +143,9 @@ test('manual retailers: washing machine round uses reviewed product-page links',
       const parsed = new URL(retailer.url);
       assert.ok(allowedHosts.includes(parsed.hostname), `${slug} uses unsupported retailer host ${parsed.hostname}`);
       assert.ok(isReviewedRetailerProductPath(parsed), `${slug} must use a direct retailer product URL`);
-      assert.equal(retailer.p, null, `${slug} should keep price null until a trusted feed is available`);
+      assertReviewedPricePolicy(retailer, `${slug} ${retailer.n}`);
       assert.match(retailer.verified_at, /^\d{4}-\d{2}-\d{2}$/);
-      assert.match(retailer.source, /^websearch-/);
+      assert.match(retailer.source, /^(websearch-|partnerize-feed$)/);
     }
   }
 });
@@ -165,9 +178,9 @@ test('manual retailers: dishwasher and dryer rounds use reviewed product-page li
       for (const retailer of entry.retailers) {
         const parsed = new URL(retailer.url);
         assert.ok(isReviewedRetailerProductPath(parsed), `${category} ${slug} must use a direct retailer product URL`);
-        assert.equal(retailer.p, null, `${slug} should keep price null until a trusted feed is available`);
+        assertReviewedPricePolicy(retailer, `${slug} ${retailer.n}`);
         assert.match(retailer.verified_at, /^\d{4}-\d{2}-\d{2}$/);
-        assert.match(retailer.source, /^websearch-/);
+        assert.match(retailer.source, /^(websearch-|partnerize-feed$)/);
       }
     }
   }
@@ -262,8 +275,8 @@ test('manual retailers: reviewed exact-link expansion uses direct retailer produ
       assert.ok(retailer, `${slug} should include ${retailerName} for ${expected.model}`);
       assert.equal(retailer.url, expectedUrl, `${slug} ${retailerName} URL should be the reviewed product page`);
       assert.ok(isReviewedRetailerProductPath(new URL(retailer.url)), `${slug} ${retailerName} must use a direct product URL`);
-      assert.equal(retailer.p, null, `${slug} ${retailerName} should not record live price without a trusted feed`);
-      assert.match(retailer.source, /^websearch-/);
+      assertReviewedPricePolicy(retailer, `${slug} ${retailerName}`);
+      assert.match(retailer.source, /^(websearch-|partnerize-feed$)/);
       assert.match(retailer.verified_at, /^\d{4}-\d{2}-\d{2}$/);
     }
 
@@ -277,7 +290,7 @@ test('manual retailers: reviewed exact-link expansion uses direct retailer produ
   }
 });
 
-test('manual retailers: known The Good Guys category redirects are not exposed as product links', () => {
+test('manual retailers: known The Good Guys category redirects are absent or replaced by Partnerize product links', () => {
   const document = JSON.parse(fs.readFileSync(MANUAL_RETAILERS_PATH, 'utf8'));
   const knownCategoryRedirects = [
     'fridge-arf2444',
@@ -293,10 +306,11 @@ test('manual retailers: known The Good Guys category redirects are not exposed a
   for (const slug of knownCategoryRedirects) {
     const entry = document.products[slug];
     assert.ok(entry, `${slug} should remain documented in manual retailer data`);
-    assert.equal(
-      (entry.retailers ?? []).some((retailer) => retailer.n === 'The Good Guys'),
-      false,
-      `${slug} The Good Guys URL redirects to a category/search page and must not be shown`,
-    );
+    const tgg = (entry.retailers ?? []).find((retailer) => retailer.n === 'The Good Guys');
+    if (!tgg) continue;
+
+    assert.equal(tgg.source, 'partnerize-feed', `${slug} TGG re-entry must come from trusted Partnerize feed`);
+    assert.ok(isReviewedRetailerProductPath(new URL(tgg.url)), `${slug} TGG URL must be a direct product page`);
+    assertReviewedPricePolicy(tgg, `${slug} The Good Guys`);
   }
 });
