@@ -123,6 +123,10 @@ test('manual retailer enrich: affiliate tracking fields are preserved separately
       camref: '1011l5JNxE',
       pubref: 'fridge-lg-gb455pl',
       tracking_verified_at: '2026-06-01',
+      stock: 'Yes',
+      tgg_sku: '50073316',
+      feed_title: 'LG 420L Bottom Mount Refrigerator',
+      feed_model: 'GB-455PL',
       p: null,
     },
   ];
@@ -134,6 +138,10 @@ test('manual retailer enrich: affiliate tracking fields are preserved separately
   assert.equal(merged[0].affiliate_url, manualRetailers[0].affiliate_url);
   assert.equal(merged[0].affiliate_network, 'partnerize');
   assert.equal(merged[0].tracking_verified_at, '2026-06-01');
+  assert.equal(merged[0].stock, 'Yes');
+  assert.equal(merged[0].tgg_sku, '50073316');
+  assert.equal(merged[0].feed_title, 'LG 420L Bottom Mount Refrigerator');
+  assert.equal(merged[0].feed_model, 'GB-455PL');
 });
 
 test('manual retailer enrich: new retailer is appended after existing retailers', () => {

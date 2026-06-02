@@ -5,7 +5,7 @@ Status: active guardrails added on 2026-05-04.
 This audit checks the claims users actually see in the interface, not just whether
 catalog JSON is schema-valid. The current raw specs catalog has 2,214 products;
 retailer-verified products: 66; verified retailer product-page links in total:
-177; live price rows: 0. That means the UI must be careful about three words:
+183; live price rows: 25. That means the UI must be careful about three words:
 price, stock, and requirement.
 
 ## Current Findings
@@ -22,11 +22,11 @@ price, stock, and requirement.
 
 | Category | Products | Products with retailer links | Verified retailer links | Multi-retailer products | Positive price rows |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Fridges | 1,344 | 36 | 108 | 35 | 0 |
-| Dishwashers | 361 | 12 | 30 | 10 | 0 |
-| Dryers | 78 | 4 | 8 | 2 | 0 |
-| Washing machines | 431 | 14 | 31 | 11 | 0 |
-| **Total** | **2,214** | **66** | **177** | **58** | **0** |
+| Fridges | 1,344 | 36 | 113 | 35 | 13 |
+| Dishwashers | 361 | 12 | 30 | 10 | 6 |
+| Dryers | 78 | 4 | 8 | 2 | 2 |
+| Washing machines | 431 | 14 | 32 | 11 | 4 |
+| **Total** | **2,214** | **66** | **183** | **58** | **25** |
 
 ## Guardrails
 
@@ -36,7 +36,7 @@ price, stock, and requirement.
 
 ## Follow-Up Plan
 
-1. Add price capture only when a retailer product page exposes a verifiable current price and `verified_at` date.
+1. Keep price display limited to positive feed/product-page rows with a verifiable `verified_at` date.
 2. Keep retailer-only search wording link-based until true stock status exists.
 3. Treat manufacturer clearance as advisory unless a product-specific manual citation is stored with the product.
 4. Keep rebate content out of product cards unless there is a maintained policy source and eligibility engine.
