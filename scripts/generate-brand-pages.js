@@ -211,14 +211,9 @@ function buildItemListJsonLd({ brand, categoryMeta, products }) {
     itemListElement: rows.map((product, index) => ({
       '@type': 'ListItem',
       position: index + 1,
-      item: {
-        '@type': 'Product',
-        name: `${brand} ${product.model}`,
-        brand: { '@type': 'Brand', name: brand },
-        width: { '@type': 'QuantitativeValue', value: product.w, unitCode: 'MMT' },
-        height: { '@type': 'QuantitativeValue', value: product.h, unitCode: 'MMT' },
-        depth: { '@type': 'QuantitativeValue', value: product.d, unitCode: 'MMT' }
-      }
+      name: `${brand} ${product.model}`,
+      description: `${brand} ${product.model}: W ${product.w}mm x H ${product.h}mm x D ${product.d}mm.`,
+      url: `${SITE_ORIGIN}${brandPagePath(brand, categoryMeta)}`
     }))
   };
 }

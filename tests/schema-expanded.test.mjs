@@ -28,11 +28,18 @@ test('brand pages have BreadcrumbList', () => {
   assert.match(html, /"@type":\s*"BreadcrumbList"/);
 });
 
-test('brand pages have ItemList with dimensions', () => {
+test('brand pages have non-product ItemList entries with dimension text', () => {
   const html = fs.readFileSync(
     path.join(process.cwd(), 'pages', 'brands', 'samsung-fridge-clearance.html'),
     'utf8'
   );
-  assert.match(html, /"@type":\s*"ItemList"/);
-  assert.match(html, /QuantitativeValue/);
+  const schemas = extractJsonLdBlocks(html);
+  const itemList = schemas.find((schema) => schema['@type'] === 'ItemList');
+  assert.ok(itemList, 'ItemList schema missing from brand page');
+  assert.ok(Array.isArray(itemList.itemListElement));
+  assert.ok(itemList.itemListElement.length > 0);
+  assert.equal(itemList.itemListElement[0]['@type'], 'ListItem');
+  assert.equal(itemList.itemListElement[0].item, undefined);
+  assert.doesNotMatch(JSON.stringify(itemList), /"Product"/);
+  assert.match(itemList.itemListElement[0].description, /W \d+mm x H \d+mm x D \d+mm/);
 });

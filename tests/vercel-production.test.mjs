@@ -106,6 +106,31 @@ test('vercel production config: current GSC 404 examples have durable redirects'
     destination: '/compare/fisher-paykel-vs-miele-dishwasher-clearance',
     permanent: true
   });
+  assert.deepEqual(redirects.get('/compare/midea-vs-inalto-washing-machine-clearance'), {
+    source: '/compare/midea-vs-inalto-washing-machine-clearance',
+    destination: '/brands/midea-washing-machine-clearance',
+    permanent: true
+  });
+  assert.deepEqual(redirects.get('/compare/midea-vs-beko-washing-machine-clearance'), {
+    source: '/compare/midea-vs-beko-washing-machine-clearance',
+    destination: '/brands/midea-washing-machine-clearance',
+    permanent: true
+  });
+  assert.deepEqual(redirects.get('/compare/hisense-vs-inalto-washing-machine-clearance'), {
+    source: '/compare/hisense-vs-inalto-washing-machine-clearance',
+    destination: '/brands/hisense-washing-machine-clearance',
+    permanent: true
+  });
+  assert.deepEqual(redirects.get('/products/westinghouse-wtb3400ak-ao-110593'), {
+    source: '/products/westinghouse-wtb3400ak-ao-110593',
+    destination: '/brands/westinghouse-fridge-clearance',
+    permanent: true
+  });
+  assert.deepEqual(redirects.get('/products/westinghouse-wqe6870ba-ao-88955'), {
+    source: '/products/westinghouse-wqe6870ba-ao-88955',
+    destination: '/brands/westinghouse-fridge-clearance',
+    permanent: true
+  });
 });
 
 test('vercel production config: runtime data and evidence files have bounded CDN caching', () => {
