@@ -71,6 +71,7 @@ test('technical SEO: product schema includes physical dimensions and verified ev
   assert.deepEqual(schema.width, { '@type': 'QuantitativeValue', value: 600, unitCode: 'MMT' });
   assert.deepEqual(schema.height, { '@type': 'QuantitativeValue', value: 1890, unitCode: 'MMT' });
   assert.deepEqual(schema.depth, { '@type': 'QuantitativeValue', value: 660, unitCode: 'MMT' });
+  assert.equal(schema.image, 'https://www.fitappliance.com.au/og-images/lg-washing-machine.png');
   assert.ok(schema.additionalProperty.some((row) => row.name === 'Rear clearance' && row.value === 50));
   assert.ok(schema.additionalProperty.some((row) => row.name === 'Evidence trust level' && row.value === 'Verified Fit'));
   assert.ok(schema.additionalProperty.some((row) => row.name === 'Evidence source' && /dimensions and clearance/.test(row.value)));
@@ -90,6 +91,12 @@ test('technical SEO: product schema adds real Offer from captured retailer price
   assert.equal(schema.offers.availability, 'https://schema.org/InStock');
   assert.equal(schema.offers.url, 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx');
   assert.deepEqual(schema.offers.seller, { '@type': 'Organization', name: 'Appliances Online' });
+  assert.equal(schema.offers.shippingDetails['@type'], 'OfferShippingDetails');
+  assert.deepEqual(schema.offers.shippingDetails.shippingDestination, { '@type': 'DefinedRegion', addressCountry: 'AU' });
+  assert.equal(schema.offers.shippingDetails.shippingRate.currency, 'AUD');
+  assert.equal(schema.offers.hasMerchantReturnPolicy['@type'], 'MerchantReturnPolicy');
+  assert.equal(schema.offers.hasMerchantReturnPolicy.returnPolicyCategory, 'https://schema.org/MerchantReturnUnspecified');
+  assert.equal(schema.offers.hasMerchantReturnPolicy.merchantReturnLink, 'https://www.fitappliance.com.au/terms#affiliate-retailer-policies');
 });
 
 test('technical SEO: product schema aggregates multiple real retailer prices', () => {
@@ -105,7 +112,20 @@ test('technical SEO: product schema aggregates multiple real retailer prices', (
   assert.equal(offers.highPrice, 4099);
   assert.equal(offers.offerCount, 2);
   assert.equal(offers.priceCurrency, 'AUD');
+  assert.equal(offers.shippingDetails['@type'], 'OfferShippingDetails');
+  assert.equal(offers.hasMerchantReturnPolicy['@type'], 'MerchantReturnPolicy');
   assert.equal(offers.offers.length, 2);
+  assert.equal(offers.offers[0].shippingDetails['@type'], 'OfferShippingDetails');
+  assert.equal(offers.offers[0].hasMerchantReturnPolicy['@type'], 'MerchantReturnPolicy');
+});
+
+test('technical SEO: product schema falls back to stable image asset when brand category image is absent', () => {
+  const schema = buildProductJsonLd(makeProduct({
+    brand: 'Example Missing Brand',
+    cat: 'fridge'
+  }));
+
+  assert.equal(schema.image, 'https://www.fitappliance.com.au/og-images/guide-appliance-fit-sizing-handbook.png');
 });
 
 test('technical SEO: product schema does not invent Offer when price is absent', () => {
