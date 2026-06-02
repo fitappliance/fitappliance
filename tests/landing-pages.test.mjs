@@ -3,6 +3,11 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 
+function extractJsonLdBlocks(html) {
+  const matches = [...html.matchAll(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/g)];
+  return matches.map((match) => JSON.parse(match[1]));
+}
+
 test('cavity pages generated for common widths', () => {
   const expected = [500, 600, 700, 800, 900, 1000];
   for (const width of expected) {
@@ -14,6 +19,19 @@ test('cavity pages generated for common widths', () => {
   }
 });
 
+test('GSC CTR: cavity pages use search-aligned titles without Product schema', () => {
+  const html = fs.readFileSync(path.join(process.cwd(), 'pages', 'cavity', '600mm-fridge.html'), 'utf8');
+  assert.match(html, /<title>600mm Fridge Cavity: Fridges That Fit 600mm-Wide Spaces \| FitAppliance<\/title>/);
+  assert.match(html, /<meta name="description" content="Find \d+ fridges that fit a 600mm wide Australian kitchen cavity after clearance checks\./);
+
+  const schemas = extractJsonLdBlocks(html);
+  assert.equal(schemas.some((schema) => schema['@type'] === 'Product'), false);
+  assert.ok(schemas.some((schema) => schema['@type'] === 'CollectionPage'));
+  const itemList = schemas.find((schema) => schema['@type'] === 'ItemList');
+  assert.ok(itemList);
+  assert.equal(JSON.stringify(itemList).includes('"Product"'), false);
+});
+
 test('doorway pages generated for common widths', () => {
   const expected = [700, 750, 800, 850, 900];
   for (const width of expected) {
@@ -23,6 +41,15 @@ test('doorway pages generated for common widths', () => {
     assert.match(html, new RegExp(`${width}mm`), `Page should mention ${width}mm`);
     assert.match(html, /application\/ld\+json/, 'Should have JSON-LD');
   }
+});
+
+test('GSC CTR: doorway pages use delivery-intent titles without Product schema', () => {
+  const html = fs.readFileSync(path.join(process.cwd(), 'pages', 'doorway', '700mm-fridge-doorway.html'), 'utf8');
+  assert.match(html, /<title>700mm Doorway Fridge Delivery Check \| Models That Fit \| FitAppliance<\/title>/);
+
+  const schemas = extractJsonLdBlocks(html);
+  assert.equal(schemas.some((schema) => schema['@type'] === 'Product'), false);
+  assert.ok(schemas.some((schema) => schema['@type'] === 'CollectionPage'));
 });
 
 test('sitemap includes cavity and doorway pages', () => {

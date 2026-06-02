@@ -81,6 +81,8 @@ test('phase 58 compare-vs generator: writes new pages and preserves existing cle
   assert.equal(indexRows.filter((row) => row.kind === 'rtings-compare').length, 12);
   const sample = await readFile(path.join(outputDir, `${result.rows[0].slug}.html`), 'utf8');
   assert.match(sample, /compare-table--rtings/);
+  assert.match(sample, /<title>.+ vs .+ .+: Dimensions, Clearance &amp; Fit \| FitAppliance<\/title>/);
+  assert.match(sample, /<meta name="description" content="Compare .+ vs .+ across width, height, depth, clearance, energy and verified evidence before choosing an appliance for an Australian cavity\./);
   assert.match(sample, /"@type": "Article"/);
   assert.match(sample, /"@type": "ItemList"/);
   assert.doesNotMatch(result.rows[0].slug, /-clearance$/);

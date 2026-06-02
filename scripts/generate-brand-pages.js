@@ -296,10 +296,10 @@ function buildBrandPageHtml({
     labelSingular: category
   };
   const categoryHeading = categoryMeta.labelSingular.replace(/\b([a-z])/g, (match) => match.toUpperCase());
-  const title = `${brand} ${categoryHeading} Clearance Requirements Australia | FitAppliance`;
+  const title = `${brand} ${categoryHeading} Dimensions & Clearance Requirements | FitAppliance AU`;
   const description =
-    `${brand} ${categoryMeta.labelSingular} clearance guide for Australian homes. ` +
-    `${side}mm side, ${rear}mm rear and ${top}mm top planning figures. Browse ${count} models and compare the cavity numbers before you buy.`;
+    `${brand} ${categoryMeta.labelSingular} dimensions and clearance guide for Australian homes. ` +
+    `Browse ${count} current and archived models with W/H/D dimensions, ${side}mm side, ${rear}mm rear and ${top}mm top planning figures.`;
   const canonical = `${SITE_ORIGIN}/brands/${slug}`;
   const heroPngPath = `/og-images/${slugify(brandRaw)}-${categoryMeta.slug}.png`;
   const heroWebpPath = `/og-images/${slugify(brandRaw)}-${categoryMeta.slug}.webp`;
@@ -665,7 +665,7 @@ ${headMeta}
 <body>
   <main>
     <a class="back-link" href="${SITE_ORIGIN}">← Back to FitAppliance</a>
-    <h1>${escHtml(brand)} ${escHtml(categoryHeading)} Clearance Requirements</h1>
+    <h1>${escHtml(brand)} ${escHtml(categoryHeading)} dimensions and clearance requirements</h1>
     <picture class="hero-media">
       <source srcset="${heroWebpPath}" type="image/webp">
       <img src="${heroPngPath}" alt="${escHtml(brand)} ${escHtml(categoryHeading)} clearance guide preview" width="1200" height="630" loading="eager" decoding="async" fetchpriority="high">

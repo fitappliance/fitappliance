@@ -164,7 +164,8 @@ test('generateBrandPages uses display-friendly brand names in generated HTML whi
   const hisensePath = path.join(workspace.outputDir, 'hisense-fridge-clearance.html');
   const html = await readFile(hisensePath, 'utf8');
 
-  assert.match(html, /Hisense Fridge Clearance Requirements Australia/);
+  assert.match(html, /Hisense Fridge Dimensions &amp; Clearance Requirements \| FitAppliance AU/);
+  assert.match(html, /Hisense fridge dimensions and clearance guide for Australian homes/);
   assert.match(html, /Find Hisense Fridges That Fit Your Space/);
 });
 

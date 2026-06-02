@@ -78,22 +78,18 @@ function buildFaqJsonLd(doorway) {
   };
 }
 
-function buildProductJsonLd(doorway, matched) {
-  const lead = Array.isArray(matched) && matched.length > 0 ? matched[0] : null;
-  const base = {
+function buildCollectionPageJsonLd(doorway, matched) {
+  return {
     '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: lead ? `${lead.brand} ${lead.model}` : `${doorway}mm fridge doorway shortlist`,
-    description: `${doorway}mm doorway shortlist for fridge delivery access checks in Australia.`,
-    category: 'Refrigerator'
+    '@type': 'CollectionPage',
+    name: `${doorway}mm fridge doorway delivery shortlist`,
+    description: `${matched.length} fridge models can pass a ${doorway}mm doorway with practical handling margin checks for Australian delivery paths.`,
+    url: `${SITE_ORIGIN}/doorway/${doorway}mm-fridge-doorway`,
+    about: {
+      '@type': 'Thing',
+      name: `${doorway}mm fridge doorway access check`
+    }
   };
-  if (lead) {
-    base.brand = { '@type': 'Brand', name: lead.brand };
-    base.width = { '@type': 'QuantitativeValue', value: lead.w, unitCode: 'MMT' };
-    base.height = { '@type': 'QuantitativeValue', value: lead.h, unitCode: 'MMT' };
-    base.depth = { '@type': 'QuantitativeValue', value: lead.d, unitCode: 'MMT' };
-  }
-  return base;
 }
 
 function buildSpeakableJsonLd(doorway) {
@@ -137,12 +133,12 @@ function buildBreadcrumbJsonLd(doorway) {
 }
 
 function buildPageHtml({ doorway, matched, adjacentDoorways, relatedDoorways, modifiedTime }) {
-  const title = `Fridges that fit through a ${doorway}mm doorway | FitAppliance Australia`;
-  const description = `${matched.length} fridge models can pass through a ${doorway}mm doorway with basic handling margin.`;
+  const title = `${doorway}mm Doorway Fridge Delivery Check | Models That Fit | FitAppliance`;
+  const description = `Check ${matched.length} fridge models that can pass a ${doorway}mm doorway with handling margin. Use this before Australian delivery day.`;
   const canonical = `${SITE_ORIGIN}/doorway/${doorway}mm-fridge-doorway`;
   const faqJsonLd = JSON.stringify(buildFaqJsonLd(doorway), null, 2);
   const breadcrumbJsonLd = JSON.stringify(buildBreadcrumbJsonLd(doorway), null, 2);
-  const productJsonLd = JSON.stringify(buildProductJsonLd(doorway, matched), null, 2);
+  const collectionPageJsonLd = JSON.stringify(buildCollectionPageJsonLd(doorway, matched), null, 2);
   const speakableJsonLd = JSON.stringify(buildSpeakableJsonLd(doorway), null, 2);
 
   return `<!doctype html>
@@ -176,7 +172,7 @@ ${buildHreflangLinks(canonical)}
 <body>
   <main>
     <a class="back-link" href="${SITE_ORIGIN}/">← Back to FitAppliance</a>
-    <h1>Fridges that fit through a ${doorway}mm doorway</h1>
+    <h1>${doorway}mm doorway fridge delivery check</h1>
     <p id="quick-answer">${matched.length} fridge models can pass a ${doorway}mm doorway using a 10mm handling margin.</p>
     <p>Always confirm diagonal clearance, hallway corners, and stair turns before delivery day.</p>
 
@@ -225,7 +221,7 @@ ${faqJsonLd}
 ${breadcrumbJsonLd}
   </script>
   <script type="application/ld+json">
-${productJsonLd}
+${collectionPageJsonLd}
   </script>
   <script type="application/ld+json">
 ${speakableJsonLd}
