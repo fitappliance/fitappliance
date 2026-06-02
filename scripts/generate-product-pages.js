@@ -2,6 +2,7 @@
 'use strict';
 
 const path = require('node:path');
+const { existsSync } = require('node:fs');
 const { mkdir, readFile, rm, writeFile } = require('node:fs/promises');
 
 const { SITE_ORIGIN } = require('./common/site-origin.js');
@@ -24,6 +25,17 @@ const CATEGORY_HUBS = Object.freeze({
   dryer: '/tools/fit-checker',
   washtower_combo: '/tools/fit-checker'
 });
+
+const CATEGORY_IMAGE_SLUGS = Object.freeze({
+  fridge: 'fridge',
+  washing_machine: 'washing-machine',
+  dishwasher: 'dishwasher',
+  dryer: 'dryer',
+  washtower_combo: 'washing-machine'
+});
+
+const MERCHANT_POLICY_URL = `${SITE_ORIGIN}/terms#affiliate-retailer-policies`;
+const FALLBACK_PRODUCT_IMAGE = `${SITE_ORIGIN}/og-images/guide-appliance-fit-sizing-handbook.png`;
 
 function escAttr(value) {
   return escHtml(value);
@@ -77,6 +89,26 @@ function slugifyProduct(product) {
 
 function productUrl(product) {
   return `${SITE_ORIGIN}/products/${slugifyProduct(product)}`;
+}
+
+function productImageUrl(product, repoRoot = path.resolve(__dirname, '..')) {
+  const explicitImage = String(
+    product?.image_url ??
+    product?.imageUrl ??
+    product?.image ??
+    ''
+  ).trim();
+  if (isHttpUrl(explicitImage)) return explicitImage;
+
+  const brandSlug = slugNormalize(product?.brand ?? '');
+  const categorySlug = CATEGORY_IMAGE_SLUGS[product?.cat] ?? String(product?.cat ?? 'appliance').replace(/_/g, '-');
+  const imageFile = `${brandSlug}-${categorySlug}.png`;
+  const imagePath = path.join(repoRoot, 'public', 'og-images', imageFile);
+  if (brandSlug && existsSync(imagePath)) {
+    return `${SITE_ORIGIN}/og-images/${imageFile}`;
+  }
+
+  return FALLBACK_PRODUCT_IMAGE;
 }
 
 function getDimension(product, key, fallbackKey) {
@@ -212,6 +244,63 @@ function getPricedRetailerOffers(product) {
     .filter(Boolean);
 }
 
+function buildShippingDetailsJsonLd() {
+  return {
+    '@type': 'OfferShippingDetails',
+    deliveryTime: {
+      '@type': 'ShippingDeliveryTime',
+      handlingTime: {
+        '@type': 'QuantitativeValue',
+        minValue: 0,
+        maxValue: 7,
+        unitCode: 'DAY'
+      },
+      transitTime: {
+        '@type': 'QuantitativeValue',
+        minValue: 1,
+        maxValue: 30,
+        unitCode: 'DAY'
+      }
+    },
+    shippingDestination: {
+      '@type': 'DefinedRegion',
+      addressCountry: 'AU'
+    },
+    shippingRate: {
+      '@type': 'MonetaryAmount',
+      currency: 'AUD',
+      minValue: 0,
+      maxValue: 999
+    }
+  };
+}
+
+function buildMerchantReturnPolicyJsonLd() {
+  return {
+    '@type': 'MerchantReturnPolicy',
+    applicableCountry: 'AU',
+    merchantReturnLink: MERCHANT_POLICY_URL,
+    returnPolicyCategory: 'https://schema.org/MerchantReturnUnspecified'
+  };
+}
+
+function buildRetailerOfferJsonLd(offer, availability) {
+  return {
+    '@type': 'Offer',
+    price: offer.price,
+    priceCurrency: 'AUD',
+    availability,
+    itemCondition: 'https://schema.org/NewCondition',
+    url: offer.url,
+    seller: {
+      '@type': 'Organization',
+      name: offer.name
+    },
+    shippingDetails: buildShippingDetailsJsonLd(),
+    hasMerchantReturnPolicy: buildMerchantReturnPolicyJsonLd()
+  };
+}
+
 function buildOfferJsonLd(product) {
   const offers = getPricedRetailerOffers(product);
   if (offers.length === 0) return null;
@@ -221,19 +310,7 @@ function buildOfferJsonLd(product) {
     : 'https://schema.org/InStock';
 
   if (offers.length === 1) {
-    const offer = offers[0];
-    return {
-      '@type': 'Offer',
-      price: offer.price,
-      priceCurrency: 'AUD',
-      availability,
-      itemCondition: 'https://schema.org/NewCondition',
-      url: offer.url,
-      seller: {
-        '@type': 'Organization',
-        name: offer.name
-      }
-    };
+    return buildRetailerOfferJsonLd(offers[0], availability);
   }
 
   const prices = offers.map((offer) => offer.price);
@@ -245,18 +322,9 @@ function buildOfferJsonLd(product) {
     priceCurrency: 'AUD',
     availability,
     url: productUrl(product),
-    offers: offers.map((offer) => ({
-      '@type': 'Offer',
-      price: offer.price,
-      priceCurrency: 'AUD',
-      availability,
-      itemCondition: 'https://schema.org/NewCondition',
-      url: offer.url,
-      seller: {
-        '@type': 'Organization',
-        name: offer.name
-      }
-    }))
+    shippingDetails: buildShippingDetailsJsonLd(),
+    hasMerchantReturnPolicy: buildMerchantReturnPolicyJsonLd(),
+    offers: offers.map((offer) => buildRetailerOfferJsonLd(offer, availability))
   };
 }
 
@@ -274,6 +342,7 @@ function buildProductJsonLd(product) {
     description: `${name} ${getEvidenceTrustCopy(product).descriptionVerb} for Australian homes.`,
     sku: String(product?.model ?? product?.id ?? ''),
     mpn: String(product?.model ?? product?.id ?? ''),
+    image: productImageUrl(product),
     category: categoryLabel(product),
     brand: {
       '@type': 'Brand',
