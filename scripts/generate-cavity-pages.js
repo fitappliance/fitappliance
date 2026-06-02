@@ -84,31 +84,24 @@ function buildItemListJsonLd(width, products) {
     itemListElement: products.map((product, index) => ({
       '@type': 'ListItem',
       position: index + 1,
-      item: {
-        '@type': 'Product',
-        name: `${product.brand} ${product.model}`,
-        brand: { '@type': 'Brand', name: product.brand }
-      }
+      name: `${displayBrandName(product.brand)} ${product.model}`,
+      description: `${displayBrandName(product.brand)} ${product.model}: W ${product.w}mm x H ${product.h}mm x D ${product.d}mm.`
     }))
   };
 }
 
-function buildProductJsonLd(width, featured) {
-  const lead = Array.isArray(featured) && featured.length > 0 ? featured[0] : null;
-  const base = {
+function buildCollectionPageJsonLd(width, resultCount) {
+  return {
     '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: lead ? `${lead.brand} ${lead.model}` : `${width}mm fridge cavity shortlist`,
-    description: `${width}mm fridge cavity shortlist for Australian installations with brand-specific ventilation clearances.`,
-    category: 'Refrigerator'
+    '@type': 'CollectionPage',
+    name: `${width}mm wide fridge cavity shortlist`,
+    description: `${resultCount} fridge models fit ${width}mm wide Australian kitchen cavities after practical ventilation clearance checks.`,
+    url: `${SITE_ORIGIN}/cavity/${width}mm-fridge`,
+    about: {
+      '@type': 'Thing',
+      name: `${width}mm fridge cavity fit check`
+    }
   };
-  if (lead) {
-    base.brand = { '@type': 'Brand', name: lead.brand };
-    base.width = { '@type': 'QuantitativeValue', value: lead.w, unitCode: 'MMT' };
-    base.height = { '@type': 'QuantitativeValue', value: lead.h, unitCode: 'MMT' };
-    base.depth = { '@type': 'QuantitativeValue', value: lead.d, unitCode: 'MMT' };
-  }
-  return base;
 }
 
 function buildSpeakableJsonLd(canonicalPath) {
@@ -168,13 +161,13 @@ function buildPageHtml({
   measurementStepsHtml,
   howToJsonLd
 }) {
-  const title = `Fridges that fit a ${width}mm cavity (Australia 2026) | FitAppliance`;
-  const description = `${resultCount} fridges fit a ${width}mm kitchen cavity. Includes Samsung, LG, Fisher & Paykel. Free cavity checker.`;
+  const title = `${width}mm Fridge Cavity: Fridges That Fit ${width}mm-Wide Spaces | FitAppliance`;
+  const description = `Find ${resultCount} fridges that fit a ${width}mm wide Australian kitchen cavity after clearance checks. Compare exact W/H/D dimensions before buying.`;
   const canonical = `${SITE_ORIGIN}/cavity/${width}mm-fridge`;
   const ogImageMeta = buildOgImageMeta(CAVITY_OG_IMAGE_PATH);
   const itemListJsonLd = JSON.stringify(buildItemListJsonLd(width, featured), null, 2);
   const breadcrumbJsonLd = JSON.stringify(buildBreadcrumbJsonLd(width), null, 2);
-  const productJsonLd = JSON.stringify(buildProductJsonLd(width, featured), null, 2);
+  const collectionPageJsonLd = JSON.stringify(buildCollectionPageJsonLd(width, resultCount), null, 2);
   const speakableJsonLd = JSON.stringify(buildSpeakableJsonLd(`/cavity/${width}mm-fridge`), null, 2);
   const howToSchemaJsonLd = JSON.stringify(howToJsonLd, null, 2);
 
@@ -254,7 +247,7 @@ ${ogImageMeta}
 <body>
   <main>
     <a href="${SITE_ORIGIN}/">← Back to FitAppliance</a>
-    <h1>Fridges that fit a ${width}mm cavity (Australia 2026)</h1>
+    <h1>${width}mm fridge cavity: fridges that fit ${width}mm wide spaces</h1>
     <p id="quick-answer">${escHtml(introText)}</p>
     <p>Use this page as a quick shortlist, then run your exact height/depth check on the main calculator.</p>
     <div class="tool-callout">
@@ -320,7 +313,7 @@ ${itemListJsonLd}
 ${breadcrumbJsonLd}
   </script>
   <script type="application/ld+json">
-${productJsonLd}
+${collectionPageJsonLd}
   </script>
   <script type="application/ld+json">
 ${speakableJsonLd}

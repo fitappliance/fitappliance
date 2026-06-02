@@ -222,8 +222,8 @@ function buildCompareVsPageHtml({ row, renderCompareTable, lastUpdated = '1970-0
   const brandB = row.brandB.brand;
   const sampleA = normalizeForCompare(row.brandA.products[0]);
   const sampleB = normalizeForCompare(row.brandB.products[0]);
-  const title = `${brandA} vs ${brandB} ${catMeta.label} fit comparison`;
-  const description = `Compare ${brandA} and ${brandB} ${catMeta.plural} by dimensions, clearance, energy, access, and evidence status for Australian appliance cavities.`;
+  const title = `${brandA} vs ${brandB} ${catMeta.plural}: Dimensions, Clearance & Fit | FitAppliance`;
+  const description = `Compare ${brandA} vs ${brandB} ${catMeta.plural} across width, height, depth, clearance, energy and verified evidence before choosing an appliance for an Australian cavity.`;
   const canonical = `${SITE_ORIGIN}/compare/${row.slug}`;
   const tableHtml = renderCompareTable([sampleA, sampleB], { staticPage: true });
 
@@ -267,7 +267,7 @@ ${buildHtmlHead({
     <a class="back-link" href="/">← Back to FitAppliance</a>
     <header class="compare-static-hero">
       <p class="eyebrow">Side-by-side fit comparison</p>
-      <h1>${escHtml(title)}</h1>
+      <h1>${escHtml(`${brandA} vs ${brandB} ${catMeta.plural}`)}</h1>
       <p>${escHtml(description)}</p>
     </header>
     ${tableHtml}
