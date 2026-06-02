@@ -8,6 +8,7 @@ import { mkdtemp, mkdir, readFile, writeFile } from 'node:fs/promises';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const generatorModule = await import(`file://${path.join(repoRoot, 'scripts', 'generate-compare-vs-pages.js')}?cacheBust=${Date.now()}`);
 const {
+  buildCompareVsPageHtml,
   generateCompareVsPages,
   selectCompareVsPairs,
   slugifyCompareVs
@@ -86,4 +87,50 @@ test('phase 58 compare-vs generator: writes new pages and preserves existing cle
   assert.match(sample, /"@type": "Article"/);
   assert.match(sample, /"@type": "ItemList"/);
   assert.doesNotMatch(result.rows[0].slug, /-clearance$/);
+});
+
+test('partnerize compare-vs generator: retailer CTAs use affiliate URL and keep canonical out of click hrefs', () => {
+  const canonicalUrl = 'https://www.thegoodguys.com.au/lg-420l-bottom-mount-refrigerator-gb-455pl';
+  const affiliateUrl = 'https://prf.hn/click/camref:1011l5JNxE/creativeref:1011l64579/destination:https%3A%2F%2Fwww.thegoodguys.com.au%2Flg-420l-bottom-mount-refrigerator-gb-455pl';
+  const html = buildCompareVsPageHtml({
+    lastUpdated: '2026-06-02',
+    renderCompareTable: () => '<table class="compare-table--rtings"></table>',
+    row: {
+      cat: 'fridge',
+      slug: 'lg-vs-hisense-fridge',
+      brandA: {
+        brand: 'LG',
+        count: 1,
+        products: [{
+          id: 'lg-partnerize',
+          cat: 'fridge',
+          brand: 'LG',
+          model: 'GB455PL',
+          displayName: 'LG 420L Bottom Mount Refrigerator',
+          w: 700,
+          h: 1720,
+          d: 700,
+          retailers: [{ n: 'The Good Guys', url: canonicalUrl, affiliate_url: affiliateUrl }]
+        }]
+      },
+      brandB: {
+        brand: 'Hisense',
+        count: 1,
+        products: [{
+          id: 'hisense-one',
+          cat: 'fridge',
+          brand: 'Hisense',
+          model: 'HRTF206',
+          displayName: 'Hisense fridge',
+          w: 550,
+          h: 1410,
+          d: 490,
+          retailers: []
+        }]
+      }
+    }
+  });
+
+  assert.match(html, /href="https:\/\/prf\.hn\/click\/camref:1011l5JNxE/);
+  assert.doesNotMatch(html, new RegExp(`href="${canonicalUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
 });

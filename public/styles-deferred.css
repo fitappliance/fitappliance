@@ -2662,6 +2662,31 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   text-align:left;
   font-weight:800;
 }
+.compare-retailer-links {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.compare-retailer-links a {
+  display:inline-flex;
+  align-items:center;
+  min-height:36px;
+  padding:6px 9px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  color:var(--ink);
+  font-size:12px;
+  font-weight:800;
+  line-height:1.1;
+  text-decoration:none;
+  background:#fff;
+}
+.compare-retailer-links a:hover {
+  border-color:var(--copper);
+  color:var(--copper);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
 .compare-cell--diff {
   background:#fffaf2;
 }

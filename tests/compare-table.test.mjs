@@ -65,3 +65,19 @@ test('phase 58 compare table: empty compare state is explicit', async () => {
   const { renderCompareTable } = await loadCompareTable();
   assert.match(renderCompareTable([]), /Add products to compare/);
 });
+
+test('partnerize compare table: retailer row links to affiliate click URL', async () => {
+  const { renderCompareTable } = await loadCompareTable();
+  const canonicalUrl = 'https://www.thegoodguys.com.au/lg-420l-bottom-mount-refrigerator-gb-455pl';
+  const clickUrl = 'https://prf.hn/click/camref:1011l5JNxE/creativeref:1011l64579/destination:https%3A%2F%2Fwww.thegoodguys.com.au%2Flg-420l-bottom-mount-refrigerator-gb-455pl';
+  const html = renderCompareTable([
+    product({
+      retailers: [{ name: 'The Good Guys', price: 1099, url: canonicalUrl, clickUrl }]
+    })
+  ]);
+
+  assert.match(html, /compare-retailer-links/);
+  assert.match(html, /href="https:\/\/prf\.hn\/click\/camref:1011l5JNxE/);
+  assert.doesNotMatch(html, /href="https:\/\/www\.thegoodguys\.com\.au\/lg-420l-bottom-mount-refrigerator-gb-455pl"/);
+  assert.match(html, /rel="sponsored nofollow noopener"/);
+});

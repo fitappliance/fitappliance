@@ -43,6 +43,27 @@ test('task 18 compare links: buildComparisonPageHtml includes link when sample h
   assert.match(html, /href="https:\/\/shop\.example\.com\/b1"/);
 });
 
+test('partnerize compare links: buildComparisonPageHtml prefers affiliate URL for retailer clicks', async () => {
+  const { buildComparisonPageHtml } = await import(moduleUrl);
+  const canonicalUrl = 'https://www.thegoodguys.com.au/lg-420l-bottom-mount-refrigerator-gb-455pl';
+  const affiliateUrl = 'https://prf.hn/click/camref:1011l5JNxE/creativeref:1011l64579/destination:https%3A%2F%2Fwww.thegoodguys.com.au%2Flg-420l-bottom-mount-refrigerator-gb-455pl';
+  const html = buildComparisonPageHtml(buildFixture({
+    modelSamplesB: [{
+      brand: 'LG',
+      cat: 'fridge',
+      model: 'GB455PL',
+      w: 710,
+      h: 1710,
+      d: 710,
+      bestRetailer: { n: 'The Good Guys', url: canonicalUrl, affiliate_url: affiliateUrl }
+    }]
+  }));
+
+  assert.match(html, /href="https:\/\/prf\.hn\/click\/camref:1011l5JNxE/);
+  assert.doesNotMatch(html, /href="https:\/\/www\.thegoodguys\.com\.au\/lg-420l-bottom-mount-refrigerator-gb-455pl"/);
+});
+
+
 test('task 18 compare links: buildComparisonPageHtml omits link when no URL exists', async () => {
   const { buildComparisonPageHtml } = await import(moduleUrl);
   const html = buildComparisonPageHtml(buildFixture({

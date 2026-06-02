@@ -204,8 +204,10 @@ function pickRetailLink(sample) {
   if (typeof retailerUrl === 'string' && /^https?:\/\//i.test(retailerUrl)) {
     const normalized = normalizeRetailLink(retailerUrl, sample);
     if (!normalized) return null;
+    const affiliateUrl = String(sample.bestRetailer?.affiliate_url ?? '').trim();
+    const clickUrl = /^https?:\/\//i.test(affiliateUrl) ? affiliateUrl : normalized.url;
     return {
-      url: normalized.url,
+      url: clickUrl,
       label: normalized.searchLike
         ? `Search at ${sample.bestRetailer?.n || normalized.hostLabel || 'retailer'}`
         : `Buy from ${sample.bestRetailer?.n || 'retailer'}`
