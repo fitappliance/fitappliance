@@ -83,8 +83,7 @@ test('phase 51 compare tool: report values use explicit human-readable states in
           { name: 'JB Hi-Fi', price: null },
           { name: 'Appliances Online', price: null },
           { name: 'The Good Guys', price: null },
-          { name: 'Harvey Norman', price: null },
-          { name: 'Bing Lee', price: null }
+          { name: 'Harvey Norman', price: null }
         ]
       }),
       makeEntry('b', {
@@ -98,7 +97,7 @@ test('phase 51 compare tool: report values use explicit human-readable states in
   assert.match(modal.textContent, /Tight fit · 3 mm spare/);
   assert.match(modal.textContent, /Binding axis not captured/);
   assert.match(modal.textContent, /No manufacturer advisory/);
-  assert.match(modal.textContent, /5 verified stores: JB Hi-Fi, Appliances Online, The Good Guys, Harvey Norman, Bing Lee/);
+  assert.match(modal.textContent, /4 verified stores: JB Hi-Fi, Appliances Online, The Good Guys, Harvey Norman/);
   assert.match(modal.textContent, /No verified product links/);
   assert.match(modal.textContent, /No captured price — check retailer page/);
   assert.ok(modal.querySelector('.compare-fit-pill--perfect'));
@@ -126,8 +125,7 @@ test('phase 51 compare tool: report recommends a starting point and tags product
           { name: 'JB Hi-Fi', price: null },
           { name: 'Appliances Online', price: null },
           { name: 'The Good Guys', price: null },
-          { name: 'Harvey Norman', price: null },
-          { name: 'Bing Lee', price: null }
+          { name: 'Harvey Norman', price: null }
         ]
       }),
       makeEntry('roomy-fit', {
@@ -142,7 +140,7 @@ test('phase 51 compare tool: report recommends a starting point and tags product
   assert.ok(modal.querySelector('.compare-insight-panel'), 'recommendation panel should render');
   assert.match(modal.textContent, /Recommended starting point/i);
   assert.match(modal.textContent, /Coverage winner/);
-  assert.match(modal.textContent, /5 verified stores/);
+  assert.match(modal.textContent, /4 verified stores/);
   assert.match(modal.textContent, /31 mm spare/);
 
   const headers = [...modal.querySelectorAll('.compare-sticky-product')];
@@ -262,7 +260,7 @@ test('phase 51 compare tool: result card snapshots carry clearance delivery and 
   assert.equal(snapshot.fitSummary.bindingAxis, 'width');
 });
 
-test('phase 51 compare tool: result card compare snapshot preserves all five major retailer links', async () => {
+test('phase 51 compare tool: result card compare snapshot preserves valid major retailer links', async () => {
   const { buildCardHtml } = await loadSearchDom();
   const window = makeWindow();
   const mount = window.document.createElement('div');
@@ -290,12 +288,11 @@ test('phase 51 compare tool: result card compare snapshot preserves all five maj
     'JB Hi-Fi',
     'Appliances Online',
     'The Good Guys',
-    'Harvey Norman',
-    'Bing Lee'
+    'Harvey Norman'
   ]);
 });
 
-test('phase 51 compare tool: homepage compare snapshots carry fit, clearance, delivery and five retailers', () => {
+test('phase 51 compare tool: homepage compare snapshots carry fit, clearance, delivery and retailer links', () => {
   assert.match(indexHtml, /function buildCompareSnapshotFromProduct/);
   assert.match(indexHtml, /fitSummary:\s*\{/);
   assert.match(indexHtml, /practicalClearance:\s*clearance/);

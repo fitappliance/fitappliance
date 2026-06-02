@@ -5,8 +5,8 @@ _Auto-generated 2026-06-02 from live database_
 
 ## Site Stats (Current)
 - **2,214 raw appliance spec rows** across fridges, washing machines, dishwashers, and dryers
-- **66 products with verified retailer product-page links** across the five tracked AU retailers
-- **183 verified retailer product-page links**; live price rows are 25
+- **66 products with verified retailer product-page links** across the currently active tracked AU retailers
+- **157 verified retailer product-page links**; live price rows are 25
 - **290 brand clearance pages** with installation-specific ventilation data
 - **Door swing estimates for the raw specs catalog** where manufacturer values are unavailable
 - **140 comparison pages** covering top brand pairs in each category

@@ -41,6 +41,10 @@ const GUIDE_HUB_LINKS = [
   { url: '/guides/dryer-ventilation-guide', label: 'Dryer ventilation guide hub' },
   { url: '/guides/appliance-fit-sizing-handbook', label: 'Appliance fit sizing handbook' }
 ];
+const BLOCKED_RETAILER_HOSTS = new Set([
+  'binglee.com.au',
+  'www.binglee.com.au'
+]);
 
 function slugify(value) {
   return slugNormalize(value);
@@ -62,7 +66,24 @@ function hasRetailLink(product) {
   if (!product || typeof product !== 'object') return false;
   if (isRetailerProductPageUrl(product.direct_url)) return true;
   return Array.isArray(product.retailers)
-    && product.retailers.some((retailer) => isRetailerProductPageUrl(retailer?.url));
+    && product.retailers.some((retailer) => isRenderableRetailer(retailer));
+}
+
+function retailerHost(retailer) {
+  try {
+    return new URL(String(retailer?.url ?? '')).hostname.toLowerCase();
+  } catch {
+    return '';
+  }
+}
+
+function isBlockedRetailer(retailer) {
+  const name = String(retailer?.n ?? '').trim().toLowerCase();
+  return name === 'bing lee' || BLOCKED_RETAILER_HOSTS.has(retailerHost(retailer));
+}
+
+function isRenderableRetailer(retailer) {
+  return isRetailerProductPageUrl(retailer?.url) && !isBlockedRetailer(retailer);
 }
 
 function compareStableText(left, right) {
@@ -80,7 +101,7 @@ function compareStableText(left, right) {
 function pickBestRetailer(retailers) {
   if (!Array.isArray(retailers)) return null;
   return retailers
-    .filter((retailer) => isRetailerProductPageUrl(retailer?.url))
+    .filter((retailer) => isRenderableRetailer(retailer))
     .sort((left, right) => {
       const leftPrice = Number.isInteger(left.p) && left.p > 0 ? left.p : Number.MAX_SAFE_INTEGER;
       const rightPrice = Number.isInteger(right.p) && right.p > 0 ? right.p : Number.MAX_SAFE_INTEGER;

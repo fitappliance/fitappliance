@@ -9,6 +9,10 @@ const { SITE_ORIGIN } = require('./common/site-origin.js');
 const DEFAULT_CAVITY_WIDTHS = Object.freeze([540, 580, 600, 620, 640, 700, 800, 900]);
 const PRACTICAL_CLEARANCE = Object.freeze({ side: 5, top: 20, rear: 10 });
 const REVIEWED_AT = '2026-05-07T00:00:00+08:00';
+const BLOCKED_RETAILER_HOSTS = new Set([
+  'binglee.com.au',
+  'www.binglee.com.au'
+]);
 const CATEGORY_FILE_BY_CAT = Object.freeze({
   fridge: 'fridges.json',
   dishwasher: 'dishwashers.json',
@@ -37,6 +41,28 @@ function escHtml(value) {
 
 function escAttr(value) {
   return escHtml(value);
+}
+
+function isHttpUrl(value) {
+  return /^https?:\/\//i.test(String(value ?? ''));
+}
+
+function retailerHost(retailer) {
+  try {
+    return new URL(String(retailer?.url ?? '')).hostname.toLowerCase();
+  } catch {
+    return '';
+  }
+}
+
+function isBlockedRetailer(retailer) {
+  const name = String(retailer?.n ?? '').trim().toLowerCase();
+  return name === 'bing lee' || BLOCKED_RETAILER_HOSTS.has(retailerHost(retailer));
+}
+
+function getRenderableRetailers(product) {
+  return (Array.isArray(product?.retailers) ? product.retailers : [])
+    .filter((retailer) => isHttpUrl(retailer?.url) && !isBlockedRetailer(retailer));
 }
 
 function slugify(value) {
@@ -194,13 +220,12 @@ function findAlternatives(product, cavityW, allProducts) {
 }
 
 function buildRetailerLinks(product) {
-  const retailers = Array.isArray(product?.retailers) ? product.retailers : [];
-  return retailers
-    .filter((retailer) => retailer?.url && retailer?.n)
+  return getRenderableRetailers(product)
+    .filter((retailer) => retailer?.n)
     .slice(0, 5)
     .map((retailer) => {
       const affiliateUrl = String(retailer?.affiliate_url ?? '').trim();
-      const targetUrl = /^https?:\/\//i.test(affiliateUrl) ? affiliateUrl : retailer.url;
+      const targetUrl = isHttpUrl(affiliateUrl) ? affiliateUrl : retailer.url;
       return `<a class="retailer-chip" href="${escAttr(targetUrl)}" rel="sponsored nofollow noopener" target="_blank">${escHtml(retailer.n)}</a>`;
     })
     .join('\n');
@@ -434,7 +459,7 @@ function buildFaqItems(product, cavityW, verdict) {
     },
     {
       q: `Where can I buy the ${name} in Australia?`,
-      a: Array.isArray(product.retailers) && product.retailers.length > 0
+      a: getRenderableRetailers(product).length > 0
         ? `Retailer links are shown on this page where FitAppliance has product-page URLs available.`
         : `FitAppliance does not yet have a verified retailer link for this model, so use the dimensions here as a fit check before searching retailers.`
     }

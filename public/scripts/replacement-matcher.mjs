@@ -68,7 +68,7 @@ function isVerifiedRetailerProductPageUrl(url) {
 
   if (host.endsWith('jbhifi.com.au')) return /^\/products\//.test(pathname);
   if (host.endsWith('appliancesonline.com.au') || host.endsWith('appliances-online.com.au')) return /^\/product\//.test(pathname);
-  if (host.endsWith('binglee.com.au')) return /^\/products\//.test(pathname);
+  if (host.endsWith('binglee.com.au')) return false;
   if (host.endsWith('harveynorman.com.au')) return /\.html$/.test(pathname);
   if (host.endsWith('thegoodguys.com.au')) return /^\/[^/]+-[^/]+$/.test(pathname);
 

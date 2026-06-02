@@ -17,6 +17,10 @@ const CATEGORY_META = {
 };
 
 const NEW_PAGE_KIND = 'rtings-compare';
+const BLOCKED_RETAILER_HOSTS = new Set([
+  'binglee.com.au',
+  'www.binglee.com.au'
+]);
 
 function compareText(left, right) {
   return String(left ?? '').localeCompare(String(right ?? ''), 'en-AU', { sensitivity: 'base' })
@@ -52,13 +56,31 @@ function hasDimensions(product) {
 }
 
 function hasRetailer(product) {
-  return Array.isArray(product?.retailers) && product.retailers.some((retailer) => /^https?:\/\//i.test(String(retailer?.url ?? '')));
+  return getRenderableRetailers(product).length > 0;
 }
 
 function retailerClickUrl(retailer) {
   const affiliateUrl = String(retailer?.affiliate_url ?? '').trim();
   if (/^https?:\/\//i.test(affiliateUrl)) return affiliateUrl;
   return String(retailer?.url ?? '').trim();
+}
+
+function retailerHost(retailer) {
+  try {
+    return new URL(String(retailer?.url ?? '')).hostname.toLowerCase();
+  } catch {
+    return '';
+  }
+}
+
+function isBlockedRetailer(retailer) {
+  const name = String(retailer?.n ?? '').trim().toLowerCase();
+  return name === 'bing lee' || BLOCKED_RETAILER_HOSTS.has(retailerHost(retailer));
+}
+
+function getRenderableRetailers(product) {
+  return (Array.isArray(product?.retailers) ? product.retailers : [])
+    .filter((retailer) => /^https?:\/\//i.test(String(retailer?.url ?? '')) && !isBlockedRetailer(retailer));
 }
 
 function scoreProduct(product) {
@@ -176,7 +198,7 @@ function normalizeForCompare(product) {
     kwh_year: product.kwh_year,
     stars: product.stars,
     features: product.features,
-    retailers: product.retailers,
+    retailers: getRenderableRetailers(product),
     evidence: product.evidence,
     data_source: product.data_source,
     unavailable: product.unavailable,
@@ -193,7 +215,7 @@ function normalizeForCompare(product) {
 }
 
 function pickBestRetailer(product) {
-  const retailers = Array.isArray(product?.retailers) ? product.retailers : [];
+  const retailers = getRenderableRetailers(product);
   return retailers.find((retailer) => /^https?:\/\//i.test(String(retailer?.url ?? ''))) ?? null;
 }
 

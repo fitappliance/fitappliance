@@ -37,13 +37,6 @@
           "source": "websearch-harvey-norman"
         },
         {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/508l-slim-french-door-fridge-in-matte-black-finish-gf-v500mblc",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-bing-lee"
-        },
-        {
           "n": "The Good Guys",
           "url": "https://www.thegoodguys.com.au/lg-508l-instaview-refrigerator-gf-v500mblc",
           "p": 3499,
@@ -67,7 +60,12 @@
         "model": "GF-V500MBLC",
         "capacity": "508L",
         "color": "Matte Black"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "fridge-arf3094": {
       "researched_at": "2026-04-29",
@@ -406,16 +404,13 @@
           "p": null,
           "verified_at": "2026-04-29",
           "source": "websearch-appliances-online"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/white-308l-bottom-mount-wbb3100wk",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "JB Hi-Fi: Westinghouse WBB3100WK 308L, variant match to catalog WESTINGHOUSE WBB3100AK; Appliances Online: Westinghouse WBB3100WK 308L, variant match to catalog WESTINGHOUSE WBB3100AK; Bing Lee: Westinghouse WBB3100WK 308L",
+      "removed_retailers": [
+        "Bing Lee",
+        "The Good Guys"
+      ],
+      "notes": "JB Hi-Fi: Westinghouse WBB3100WK 308L, variant match to catalog WESTINGHOUSE WBB3100AK; Appliances Online: Westinghouse WBB3100WK 308L, variant match to catalog WESTINGHOUSE WBB3100AK. Bing Lee link removed on 2026-06-03 because browser audit found a non-exact WBB3100WK variant page for catalog WBB3100AK.",
       "approved_by": "phase-50-round-1-jb-fridges+phase-50-round-2-appliances-online-fridges+phase-50-round-5-bing-lee-fridges",
       "ao_match": {
         "brand": "Westinghouse",
@@ -442,16 +437,12 @@
           "p": null,
           "verified_at": "2026-04-29",
           "source": "websearch-appliances-online"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/westinghouse-619l-side-by-side-non-plumbed-dispenser-fridge-black-wse6640ba",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "JB Hi-Fi: Westinghouse WSE6640BA 619L, variant match to catalog WESTINGHOUSE WSE6640SA; Appliances Online: Westinghouse WSE6640BA 619L, exact match to catalog WESTINGHOUSE WSE6640SA family variant; The Good Guys: Westinghouse WSE6640BA 619L; Bing Lee: Westinghouse WSE6640BA 619L The Good Guys link removed on 2026-05-02 because live redirect resolved to a category/search page rather than this product.",
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "notes": "JB Hi-Fi: Westinghouse WSE6640BA 619L, variant match to catalog WESTINGHOUSE WSE6640SA; Appliances Online: Westinghouse WSE6640BA 619L, exact match to catalog WESTINGHOUSE WSE6640SA family variant; The Good Guys: Westinghouse WSE6640BA 619L. The Good Guys link removed on 2026-05-02 because live redirect resolved to a category/search page rather than this product. Bing Lee link removed on 2026-06-03 because browser audit found a non-exact WSE6640BA variant page for catalog WSE6640SA.",
       "approved_by": "phase-50-round-1-jb-fridges+phase-50-round-2-appliances-online-fridges+phase-50-round-3-the-good-guys-fridges+phase-50-round-5-bing-lee-fridges",
       "ao_match": {
         "brand": "Westinghouse",
@@ -459,10 +450,7 @@
         "capacity": "619L",
         "color": "Black"
       },
-      "tgg_removed_at": "2026-05-02",
-      "removed_retailers": [
-        "The Good Guys"
-      ]
+      "tgg_removed_at": "2026-05-02"
     },
     "fridge-arf3512": {
       "researched_at": "2026-04-29",
@@ -509,13 +497,6 @@
           "p": null,
           "verified_at": "2026-04-29",
           "source": "websearch-harvey-norman"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/white-124l-bar-fridge-hrbf126",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-bing-lee"
         }
       ],
       "notes": "JB Hi-Fi: Hisense HRBF126 124L, exact match to catalog HISENSE HRBF126; Appliances Online: Hisense HRBF126 124L, exact match to catalog HISENSE HRBF126; The Good Guys: Hisense HRBF126 124L; Harvey Norman: Hisense HRBF126 124L; Bing Lee: Hisense HRBF126 124L",
@@ -525,7 +506,12 @@
         "model": "HRBF126",
         "capacity": "124L",
         "color": "White"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "fridge-arf3513": {
       "researched_at": "2026-04-29",
@@ -663,13 +649,6 @@
           "tgg_sku": "50089667",
           "feed_title": "Hisense 205L Top Mount Refrigerator",
           "feed_model": "HRTF206"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/205l-top-mount-white-hrtf206",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-bing-lee"
         }
       ],
       "notes": "JB Hi-Fi: Hisense HRTF206 205L, exact match to catalog HISENSE HRTF206; Appliances Online: Hisense HRTF206 205L, exact match to catalog HISENSE HRTF206; The Good Guys: Hisense HRTF206S 205L; Bing Lee: Hisense HRTF206 205L",
@@ -679,7 +658,12 @@
         "model": "HRTF206",
         "capacity": "205L",
         "color": "White"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "fridge-arf2831": {
       "researched_at": "2026-04-29",
@@ -719,13 +703,6 @@
           "camref": "1011l5JNxE",
           "pubref": "fridge-arf2831",
           "tracking_verified_at": "2026-06-01"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/1-door-ss-hybrid-freezer-384l-hrvf384s",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-bing-lee"
         }
       ],
       "notes": "JB Hi-Fi: Hisense HRVF384S 384L, exact match to catalog HISENSE HRVF384S; Appliances Online: Hisense HRVF384S 384L, exact match to catalog HISENSE HRVF384S; The Good Guys: Hisense HRVF384S 384L; Bing Lee: Hisense HRVF384S 384L",
@@ -735,7 +712,12 @@
         "model": "HRVF384S",
         "capacity": "384L",
         "color": "Brushed Steel"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "fridge-arf2946": {
       "researched_at": "2026-04-29",
@@ -821,13 +803,6 @@
           "p": null,
           "verified_at": "2026-04-29",
           "source": "websearch-harvey-norman"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/640l-pureflex-french-door-dark-stainless-steel-hrcd640tbw",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-bing-lee"
         }
       ],
       "notes": "JB Hi-Fi: Hisense HRCD640TBW 640L, exact match to catalog HISENSE HRCD640TBW; Appliances Online: Hisense HRCD640TBW 640L, exact match to catalog HISENSE HRCD640TBW; The Good Guys: Hisense HRCD640TBW 640L; Harvey Norman: Hisense HRCD640TBW 640L; Bing Lee: Hisense HRCD640TBW 640L",
@@ -837,7 +812,12 @@
         "model": "HRCD640TBW",
         "capacity": "640L",
         "color": "Dark Stainless Steel"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "fridge-arf2860": {
       "researched_at": "2026-04-29",
@@ -906,13 +886,6 @@
           "source": "websearch-appliances-online"
         },
         {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/463l-french-door-refrigerator-hrf516yhc",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-bing-lee"
-        },
-        {
           "n": "The Good Guys",
           "url": "https://www.thegoodguys.com.au/haier-514l-bottom-mount-refrigerator-hrf510bhc",
           "p": 1399,
@@ -929,7 +902,10 @@
           "feed_model": "HRF510BHC"
         }
       ],
-      "notes": "JB Hi-Fi: Haier HRF516YHC 463L, variant match to catalog Haier HRF510BHC; Appliances Online: Haier HRF516YHC 463L, variant match to catalog Haier HRF510BHC; Bing Lee: Haier HRF516YHC 463L",
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "notes": "JB Hi-Fi: Haier HRF516YHC 463L, variant match to catalog Haier HRF510BHC; Appliances Online: Haier HRF516YHC 463L, variant match to catalog Haier HRF510BHC. Bing Lee link removed on 2026-06-03 because browser audit found a non-exact HRF516YHC variant page for catalog HRF510BHC.",
       "approved_by": "phase-50-round-1-jb-fridges+phase-50-round-2-appliances-online-fridges+phase-50-round-5-bing-lee-fridges",
       "ao_match": {
         "brand": "Haier",
@@ -1094,16 +1070,12 @@
           "p": null,
           "verified_at": "2026-04-29",
           "source": "websearch-harvey-norman"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/haier-hrf505vs-505l-vertical-refrigerator",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "JB Hi-Fi: Haier HRF505VS 465L, variant match to catalog HAIER HRF505VW; Appliances Online: Haier HRF505VS 465L, variant match to catalog HAIER HRF505VW; Harvey Norman: Haier HRF505VW 465L; Bing Lee: Haier HRF505VS 465L",
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "notes": "JB Hi-Fi: Haier HRF505VS 465L, variant match to catalog HAIER HRF505VW; Appliances Online: Haier HRF505VS 465L, variant match to catalog HAIER HRF505VW; Harvey Norman: Haier HRF505VW 465L. Bing Lee link removed on 2026-06-03 because browser audit found a non-exact HRF505VS variant page for catalog HRF505VW.",
       "approved_by": "phase-50-round-1-jb-fridges+phase-50-round-2-appliances-online-fridges+phase-50-round-4-harvey-norman-fridges+phase-50-round-5-bing-lee-fridges",
       "ao_match": {
         "brand": "Haier",
@@ -1715,13 +1687,6 @@
           "p": null,
           "verified_at": "2026-04-29",
           "source": "websearch-harvey-norman"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/202l-top-mount-fridge-white-ctm202nw3",
-          "p": null,
-          "verified_at": "2026-04-29",
-          "source": "websearch-bing-lee"
         }
       ],
       "notes": "JB Hi-Fi: CHiQ CTM202NW3 202L, variant match to catalog CHIQ CTM202NW; Appliances Online: CHiQ CTM202NW3 202L, variant match to catalog CHIQ CTM202NW; The Good Guys: CHiQ CTM202NW3 202L; Harvey Norman: CHiQ CTM202NW3 202L; Bing Lee: CHiQ CTM202NW3 202L",
@@ -1731,7 +1696,12 @@
         "model": "CTM202NW3",
         "capacity": "202L",
         "color": "White"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "fridge-arf2472": {
       "researched_at": "2026-04-29",
@@ -1824,16 +1794,12 @@
           "camref": "1011l5JNxE",
           "pubref": "washing_machine-acw1319",
           "tracking_verified_at": "2026-06-01"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/front-load-washer-10kg-series-5-2023-hwfs1015e",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Hisense HWFS1015E 10kg Front Load Washing Machine. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Bing Lee.",
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "notes": "Appliances Online exact match: Hisense HWFS1015E 10kg Front Load Washing Machine. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys. Bing Lee link removed on 2026-06-03 because browser audit hit a DataDome blank page.",
       "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Hisense",
@@ -1854,16 +1820,12 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/12kg-front-load-5-series-hwf5s1214",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Hisense HWF5S1214 12kg Front Load Washing Machine. Additional reviewed retailer links added 2026-05-05: Appliances Online, Bing Lee.",
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "notes": "Appliances Online exact match: Hisense HWF5S1214 12kg Front Load Washing Machine. Bing Lee link removed on 2026-06-03 because browser audit hit a DataDome blank page.",
       "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Hisense",
@@ -1925,13 +1887,6 @@
           "source": "websearch-appliances-online"
         },
         {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/series-8i-10kg-front-load-washer-hwf8i1015bx",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
-        },
-        {
           "n": "The Good Guys",
           "url": "https://www.thegoodguys.com.au/hisense-10kg-series-8i-front-load-washer-hwf8i1015bx",
           "p": 999,
@@ -1948,7 +1903,10 @@
           "feed_model": "HWF8I1015BX"
         }
       ],
-      "notes": "Appliances Online exact match: Hisense HWF8I1015BX Series 8I 10kg TFT Front Load Washer. Additional reviewed retailer links added 2026-05-05: Appliances Online, Bing Lee.",
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "notes": "Appliances Online exact match: Hisense HWF8I1015BX Series 8I 10kg TFT Front Load Washer. Bing Lee link removed on 2026-06-03 because browser audit hit a DataDome blank page.",
       "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Hisense",
@@ -1969,13 +1927,6 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/front-loader-washing-machine-10kg-steam-care-wh1060p4",
-          "p": null,
-          "verified_at": "2026-05-01",
-          "source": "websearch-bing-lee"
         },
         {
           "n": "The Good Guys",
@@ -2001,7 +1952,12 @@
         "model": "WH1060P4",
         "capacity": "10kg",
         "color": "White"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "washing_machine-acw1341": {
       "researched_at": "2026-05-05",
@@ -2031,16 +1987,12 @@
           "tgg_sku": "50087228",
           "feed_title": "Fisher & Paykel 8kg Top Load Washer",
           "feed_model": "WL8058G1"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/top-loader-washing-machine-8kg-uv-sanitise-wl8058g1",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Fisher & Paykel WL8058G1 8kg top load washing machine. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Bing Lee.",
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "notes": "Appliances Online exact match: Fisher & Paykel WL8058G1 8kg top load washing machine. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys. Bing Lee link removed on 2026-06-03 because browser audit hit a DataDome blank page.",
       "approved_by": "phase-50-nonfridge-retailer-expansion",
       "ao_match": {
         "brand": "Fisher & Paykel",
@@ -2140,16 +2092,12 @@
           "p": null,
           "verified_at": "2026-05-05",
           "source": "websearch-harvey-norman"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/9kg-front-loader-dark-grey-wwf9024m5sa",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Westinghouse WWF9024M5SA 9kg EasyCare front load washing machine. The Good Guys variant match: Westinghouse WWF9024M5WAS 9kg front load washer, live product page verified 2026-05-05. Additional reviewed exact product links added 2026-05-05: Harvey Norman, Bing Lee.",
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "notes": "Appliances Online exact match: Westinghouse WWF9024M5SA 9kg EasyCare front load washing machine. The Good Guys variant match: Westinghouse WWF9024M5WAS 9kg front load washer, live product page verified 2026-05-05. Additional reviewed exact product links added 2026-05-05: Harvey Norman. Bing Lee link removed on 2026-06-03 because browser audit hit a DataDome blank page.",
       "approved_by": "phase-50-nonfridge-retailer-expansion+phase-49-westinghouse-exact-links",
       "ao_match": {
         "brand": "Westinghouse",
@@ -2170,13 +2118,6 @@
           "p": null,
           "verified_at": "2026-05-01",
           "source": "websearch-appliances-online"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/white-9kg-700-series-fron-load-ewf9043r7wc",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
         }
       ],
       "notes": "Appliances Online exact match: Electrolux EWF9043R7WC 9kg 700 Series front load washing machine. Additional reviewed retailer links added 2026-05-05: Appliances Online, Bing Lee.",
@@ -2186,7 +2127,12 @@
         "model": "EWF9043R7WC",
         "capacity": "9kg",
         "color": "White"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "washing_machine-acw1469": {
       "researched_at": "2026-05-05",
@@ -2207,13 +2153,6 @@
           "p": null,
           "verified_at": "2026-05-05",
           "source": "websearch-harvey-norman"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/white-10kg-900-series-fronload-ewf1043r7wc",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
         }
       ],
       "notes": "Appliances Online exact match: Electrolux EWF1043R7WC 10kg 700 Series front load washing machine. Additional reviewed retailer links added 2026-05-05: Appliances Online, Harvey Norman, Bing Lee. The Good Guys link omitted because live redirect resolves to a category page rather than this product.",
@@ -2223,7 +2162,12 @@
         "model": "EWF1043R7WC",
         "capacity": "10kg",
         "color": "White"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "washing_machine-acw1345": {
       "researched_at": "2026-05-01",
@@ -2303,13 +2247,6 @@
           "tgg_sku": "50082784",
           "feed_title": "Haier 600 Series Freestanding Dishwasher, Satina",
           "feed_model": "HDW15F3S1"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/15pl-satina-steam-dishwasher-hdw15f3s1",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
         }
       ],
       "notes": "Appliances Online exact match: Haier HDW15F3S1 60cm freestanding dishwasher. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Bing Lee.",
@@ -2319,7 +2256,12 @@
         "model": "HDW15F3S1",
         "type": "Freestanding dishwasher",
         "finish": "Satina Silver"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "dishwasher-adw1276": {
       "researched_at": "2026-05-05",
@@ -2349,13 +2291,6 @@
           "tgg_sku": "50096066",
           "feed_title": "Haier 600 Series Freestanding Dishwasher, Steam, Dual Power Spray Arm, Black",
           "feed_model": "HDW15F4B1"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/600-series-black-freestanding-dishwasher-hdw15f4b1",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
         }
       ],
       "notes": "Appliances Online exact match: Haier HDW15F4B1 60cm black freestanding dishwasher. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Bing Lee.",
@@ -2365,7 +2300,12 @@
         "model": "HDW15F4B1",
         "type": "Freestanding dishwasher",
         "finish": "Black"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "dishwasher-adw1146": {
       "researched_at": "2026-05-05",
@@ -2395,13 +2335,6 @@
           "tgg_sku": "50090480",
           "feed_title": "Haier 500 Series Freestanding Dishwasher, Black",
           "feed_model": "HDW15F1B1"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/15pl-black-dishwasher-hdw15f1b1",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
         }
       ],
       "notes": "Appliances Online exact match: Haier HDW15F1B1 60cm freestanding dishwasher with sanitise. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Bing Lee.",
@@ -2411,7 +2344,12 @@
         "model": "HDW15F1B1",
         "type": "Freestanding dishwasher",
         "finish": "Black"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "dishwasher-adw1233": {
       "researched_at": "2026-05-05",
@@ -2556,13 +2494,6 @@
           "p": null,
           "verified_at": "2026-05-05",
           "source": "websearch-harvey-norman"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/60cm-built-under-dishwasher-dw60uzt4b2",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
         }
       ],
       "notes": "Appliances Online exact match: Fisher & Paykel DW60UZT4B2 tall built-under dishwasher. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Harvey Norman, Bing Lee.",
@@ -2572,7 +2503,12 @@
         "model": "DW60UZT4B2",
         "type": "Tall built-under dishwasher",
         "finish": "Black"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "dishwasher-adw1245": {
       "researched_at": "2026-05-01",
@@ -2652,16 +2588,12 @@
           "p": null,
           "verified_at": "2026-05-05",
           "source": "websearch-harvey-norman"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/60cm-freestanding-dishwasher-stainless-steel-with-14-place-settings-wsf6604xb",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
         }
       ],
-      "notes": "Appliances Online exact match: Westinghouse WSF6604XB 60cm freestanding dishwasher. Additional reviewed exact product links added 2026-05-05: Harvey Norman, Bing Lee.",
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "notes": "Appliances Online exact match: Westinghouse WSF6604XB 60cm freestanding dishwasher. Additional reviewed exact product links added 2026-05-05: Harvey Norman. Bing Lee link removed on 2026-06-03 because browser audit found a category redirect, not a product page.",
       "approved_by": "phase-50-dishwasher-dryer-retailers-round-1+phase-49-westinghouse-exact-links",
       "ao_match": {
         "brand": "Westinghouse",
@@ -2689,13 +2621,6 @@
           "p": null,
           "verified_at": "2026-05-05",
           "source": "websearch-harvey-norman"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/60cm-freestanding-dishwasher-stainless-steel-with-15-place-settings-wsf6606xb",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
         }
       ],
       "notes": "Appliances Online exact match: Westinghouse WSF6606XB 60cm auto-door dishwasher. Additional reviewed exact product links added 2026-05-05: Harvey Norman, Bing Lee. The Good Guys result was excluded because it redirects to a freestanding dishwashers category page.",
@@ -2705,7 +2630,12 @@
         "model": "WSF6606XB",
         "type": "Freestanding dishwasher",
         "finish": "Stainless Steel"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "dishwasher-adw1232": {
       "researched_at": "2026-05-01",
@@ -2811,13 +2741,6 @@
           "tgg_sku": "50093839",
           "feed_title": "Electrolux 6kg Vented Dryer",
           "feed_model": "EDV605H3WC"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/6kg-300-series-vented-dryer-edv605h3wc",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
         }
       ],
       "notes": "Appliances Online exact match: Electrolux EDV605H3WC 6kg vented clothes dryer. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Bing Lee.",
@@ -2827,7 +2750,12 @@
         "model": "EDV605H3WC",
         "capacity": "6kg",
         "type": "Vented dryer"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "dryer-acd0789": {
       "researched_at": "2026-05-05",
@@ -2857,13 +2785,6 @@
           "tgg_sku": "50093840",
           "feed_title": "Electrolux 7kg Vented Dryer",
           "feed_model": "EDV705H3WC"
-        },
-        {
-          "n": "Bing Lee",
-          "url": "https://www.binglee.com.au/products/7kg-300-series-vented-dryer-edv705h3wc",
-          "p": null,
-          "verified_at": "2026-05-05",
-          "source": "websearch-bing-lee"
         }
       ],
       "notes": "Appliances Online exact match: Electrolux EDV705H3WC 7kg vented clothes dryer. Additional reviewed retailer links added 2026-05-05: Appliances Online, The Good Guys, Bing Lee.",
@@ -2873,7 +2794,12 @@
         "model": "EDV705H3WC",
         "capacity": "7kg",
         "type": "Vented dryer"
-      }
+      },
+      "removed_retailers": [
+        "Bing Lee"
+      ],
+      "bing_lee_removed_at": "2026-06-03",
+      "bing_lee_removed_reason": "Bing Lee product pages trigger browser anti-bot verification instead of loading product details."
     },
     "ao-wse6670ba": {
       "researched_at": "2026-06-02",

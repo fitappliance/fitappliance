@@ -134,7 +134,7 @@ test('phase 50 retailer links: result card CTA shows every linked retailer as a 
   assert.doesNotMatch(html, /View at JB Hi-Fi/);
 });
 
-test('phase 50 retailer links: five-store cards show readable branded links instead of acronym dots', async () => {
+test('phase 50 retailer links: multi-store cards show readable branded links instead of acronym dots', async () => {
   const { buildCardHtml } = await loadSearchDom();
   const retailers = [
     ['JB Hi-Fi', 'https://www.jbhifi.com.au/products/hisense-hrcd640tbw'],
@@ -146,14 +146,16 @@ test('phase 50 retailer links: five-store cards show readable branded links inst
 
   const html = buildCardHtml(makeMatch({ brand: 'HISENSE', model: 'HRCD640TBW', retailers }));
 
-  assert.match(html, /card-retailer-panel--multi/);
-  assert.match(html, /Check price at 5 stores/);
+  assert.match(html, /card-retailer-panel/);
+  assert.doesNotMatch(html, /card-retailer-panel--multi/);
+  assert.match(html, /Check price at 4 stores/);
   assert.match(html, /retailer-brand-grid/);
-  assert.equal((html.match(/class="retailer-brand-card/g) ?? []).length, 5);
+  assert.equal((html.match(/class="retailer-brand-card/g) ?? []).length, 4);
   assert.match(html, /aria-label="Open JB Hi-Fi product page"/);
   assert.match(html, /aria-label="Open Harvey Norman product page"/);
   assert.match(html, /retailer-brand-card--harvey-norman/);
   assert.match(html, /retailer-brand-wordmark">Harvey Norman/);
+  assert.doesNotMatch(html, /Bing Lee/);
   assert.doesNotMatch(html, /retailer-brand-mark/);
   assert.doesNotMatch(html, /class="retailer-logo-dot"/);
 });

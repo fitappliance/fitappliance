@@ -5,42 +5,42 @@ Status: active from 2026-05-06.
 This plan separates the sizing catalog from retailer inventory evidence. Do not
 count raw specs as retailer inventory. A raw spec row means FitAppliance has
 dimensions and energy fields for a model. A retailer-verified product means at
-least one manually reviewed product-page URL exists for one of the five tracked
-Australian retailers.
+least one manually reviewed product-page URL exists for one of the currently
+active tracked Australian retailers.
 
 ## Current Baseline
 
 | Metric | Count | Meaning |
 | --- | ---: | --- |
 | Raw specs catalog | 2,214 | Sizing/spec rows across fridges, dishwashers, dryers, and washing machines. |
-| Retailer-verified products | 66 | Products with at least one verified product-page link from the five tracked retailers. |
-| Verified retailer links | 183 | Total product-page links across JB Hi-Fi, Appliances Online, The Good Guys, Harvey Norman, and Bing Lee. |
-| Multi-retailer products | 58 | Products with two or more verified retailer product-page links. |
+| Retailer-verified products | 66 | Products with at least one verified product-page link from the currently active tracked retailers. |
+| Verified retailer links | 157 | Total product-page links across JB Hi-Fi, Appliances Online, The Good Guys, and Harvey Norman. |
+| Multi-retailer products | 55 | Products with two or more verified retailer product-page links. |
 | Live price rows | 25 | Positive retailer prices captured with enough evidence to show as price data. |
 
 ## Coverage By Category
 
 | Category | Raw specs | Retailer-verified products | Verified retailer links | Multi-retailer products | Link coverage |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Fridges | 1,344 | 36 | 113 | 35 | 2.7% |
-| Dishwashers | 361 | 12 | 30 | 10 | 3.3% |
-| Dryers | 78 | 4 | 8 | 2 | 5.1% |
-| Washing machines | 431 | 14 | 32 | 11 | 3.2% |
-| **Total** | **2,214** | **66** | **183** | **58** | **3.0%** |
+| Fridges | 1,344 | 36 | 103 | 34 | 2.7% |
+| Dishwashers | 361 | 12 | 24 | 10 | 3.3% |
+| Dryers | 78 | 4 | 6 | 2 | 5.1% |
+| Washing machines | 431 | 14 | 24 | 9 | 3.2% |
+| **Total** | **2,214** | **66** | **157** | **55** | **3.0%** |
 
 ## Retailer Gaps On Already-Linked Products
 
 This table does not mean every retailer truly sells every product. It shows the
 maximum remaining product-page links if every currently linked product had all
-five retailer URLs.
+four currently active retailer URLs.
 
 | Category | Current links | Maximum links for currently linked products | Upper-bound missing links |
 | --- | ---: | ---: | ---: |
-| Fridge | 113 | 180 | 67 |
-| Dishwasher | 30 | 60 | 30 |
-| Dryer | 8 | 20 | 12 |
-| Washing machine | 32 | 70 | 38 |
-| **Total** | **183** | **330** | **147** |
+| Fridge | 103 | 144 | 41 |
+| Dishwasher | 24 | 48 | 24 |
+| Dryer | 6 | 16 | 10 |
+| Washing machine | 24 | 56 | 32 |
+| **Total** | **157** | **264** | **107** |
 
 ## Batch 1: Complete Existing Linked Products
 
@@ -49,10 +49,10 @@ verified link.
 
 Priority order:
 
-1. Dishwasher: fill remaining JB Hi-Fi, Harvey Norman, The Good Guys, and Bing Lee gaps for the 12 linked products where true product pages exist.
+1. Dishwasher: fill remaining JB Hi-Fi, Harvey Norman, and The Good Guys gaps for the 12 linked products where true product pages exist.
 2. Washing machine: fill remaining retailer gaps for the 14 linked products, starting with LG, Hisense, Fisher & Paykel, Westinghouse, and Electrolux.
-3. Dryer: fill The Good Guys, Bing Lee, Harvey Norman, and JB Hi-Fi gaps for the 4 linked products.
-4. Fridge: fill The Good Guys, Harvey Norman, and Bing Lee gaps for the 36 linked products, but skip category/search pages even when they contain the model in results.
+3. Dryer: fill The Good Guys, Harvey Norman, and JB Hi-Fi gaps for the 4 linked products.
+4. Fridge: fill The Good Guys and Harvey Norman gaps for the 36 linked products, but skip category/search pages even when they contain the model in results.
 
 Acceptance rules:
 

@@ -52,7 +52,10 @@ test('data accuracy audit: retailer product URL classifier accepts known product
   assert.equal(isRetailerProductPageUrl('https://www.thegoodguys.com.au/lg-gb335pl-fridge'), true);
   assert.equal(isRetailerProductPageUrl('https://www.harveynorman.com.au/lg-gb335pl-fridge.html'), true);
   assert.equal(isRetailerProductPageUrl('https://www.harveynorman.com.au/lg-gb335pl-fridge.html/'), true);
-  assert.equal(isRetailerProductPageUrl('https://www.binglee.com.au/products/lg-gb335pl'), true);
+});
+
+test('data accuracy audit: retailer product URL classifier rejects Bing Lee anti-bot product pages', () => {
+  assert.equal(isRetailerProductPageUrl('https://www.binglee.com.au/products/lg-gb335pl'), false);
 });
 
 test('data accuracy audit: retailer URL classification stays aligned with runtime search filtering', () => {

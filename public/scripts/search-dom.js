@@ -944,7 +944,7 @@
 
     if (host.endsWith('jbhifi.com.au')) return /^\/products\//.test(pathname);
     if (host.endsWith('appliancesonline.com.au') || host.endsWith('appliances-online.com.au')) return /^\/product\//.test(pathname);
-    if (host.endsWith('binglee.com.au')) return /^\/products\//.test(pathname);
+    if (host.endsWith('binglee.com.au')) return false;
     if (host.endsWith('harveynorman.com.au')) return /\.html$/.test(pathname);
     if (host.endsWith('thegoodguys.com.au')) return /^\/[^/]+-[^/]+$/.test(pathname);
 
@@ -1591,7 +1591,7 @@
       </div>`;
     }
     return `<div class="retailer-filter-banner">
-      <span>Showing ${safeCount} products with verified retailer product links from major Australian retailers (JB Hi-Fi, Harvey Norman, The Good Guys, Appliances Online, Bing Lee).</span>
+      <span>Showing ${safeCount} products with verified retailer product links from major Australian retailers (JB Hi-Fi, Harvey Norman, The Good Guys, Appliances Online).</span>
       ${showAction ? '<button type="button" class="secondary" data-show-all-products>Show all matching products</button>' : ''}
     </div>`;
   }

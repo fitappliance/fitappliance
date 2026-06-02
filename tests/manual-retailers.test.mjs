@@ -9,7 +9,7 @@ function isReviewedRetailerProductPath(parsedUrl) {
   const host = parsedUrl.hostname.replace(/^www\./, '');
   const pathname = parsedUrl.pathname.replace(/\/+$/, '');
   if (host === 'appliancesonline.com.au') return /^\/product\/[^/]+$/.test(pathname);
-  if (host === 'binglee.com.au') return /^\/products\/[^/]+$/.test(pathname);
+  if (host === 'binglee.com.au') return false;
   if (host === 'harveynorman.com.au') return /\.html$/.test(pathname);
   if (host === 'jbhifi.com.au') return /^\/products\/[^/]+$/.test(pathname);
   if (host === 'thegoodguys.com.au') return /^\/[^/]+-[^/]+$/.test(pathname);
@@ -128,7 +128,6 @@ test('manual retailers: washing machine round uses reviewed product-page links',
 
   const allowedHosts = [
     'www.appliancesonline.com.au',
-    'www.binglee.com.au',
     'www.harveynorman.com.au',
     'www.jbhifi.com.au',
     'www.thegoodguys.com.au',
@@ -191,15 +190,15 @@ test('manual retailers: non-fridge categories keep reviewed non-AO retailer cove
   const minimums = {
     dishwasher: {
       entriesWithNonAoRetailer: 6,
-      retailerCounts: { 'JB Hi-Fi': 1, 'The Good Guys': 7, 'Harvey Norman': 4, 'Bing Lee': 6 },
+      retailerCounts: { 'JB Hi-Fi': 1, 'The Good Guys': 7, 'Harvey Norman': 4 },
     },
     dryer: {
       entriesWithNonAoRetailer: 2,
-      retailerCounts: { 'The Good Guys': 2, 'Bing Lee': 2 },
+      retailerCounts: { 'The Good Guys': 2 },
     },
     washing_machine: {
       entriesWithNonAoRetailer: 9,
-      retailerCounts: { 'The Good Guys': 6, 'Harvey Norman': 3, 'Bing Lee': 8 },
+      retailerCounts: { 'The Good Guys': 6, 'Harvey Norman': 3 },
     },
   };
 
@@ -227,16 +226,15 @@ test('manual retailers: reviewed exact-link expansion uses direct retailer produ
       model: 'WSF6606XB',
       retailers: {
         'Harvey Norman': 'https://www.harveynorman.com.au/westinghouse-60cm-15-place-setting-freestanding-dishwasher-stainless-steel.html',
-        'Bing Lee': 'https://www.binglee.com.au/products/60cm-freestanding-dishwasher-stainless-steel-with-15-place-settings-wsf6606xb',
       },
-      excludedRetailers: ['The Good Guys'],
+      excludedRetailers: ['The Good Guys', 'Bing Lee'],
     },
     'dishwasher-adw1149': {
       model: 'WSF6604XB',
       retailers: {
         'Harvey Norman': 'https://www.harveynorman.com.au/westinghouse-wsf6604xb-60cm-14-place-setting-freestanding-dishwasher-stainless-steel.html',
-        'Bing Lee': 'https://www.binglee.com.au/products/60cm-freestanding-dishwasher-stainless-steel-with-14-place-settings-wsf6604xb',
       },
+      excludedRetailers: ['Bing Lee'],
     },
     'dishwasher-adw1245': {
       model: 'HSBE15FS',
@@ -260,8 +258,8 @@ test('manual retailers: reviewed exact-link expansion uses direct retailer produ
       model: 'WWF9024M5SA',
       retailers: {
         'Harvey Norman': 'https://www.harveynorman.com.au/westinghouse-9kg-easycare-front-load-washing-machine-dark.html',
-        'Bing Lee': 'https://www.binglee.com.au/products/9kg-front-loader-dark-grey-wwf9024m5sa',
       },
+      excludedRetailers: ['Bing Lee'],
     },
   };
 
