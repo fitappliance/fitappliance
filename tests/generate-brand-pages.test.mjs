@@ -59,6 +59,11 @@ async function createWorkspace() {
   return { dataDir, outputDir };
 }
 
+function extractJsonLdBlocks(html) {
+  const matches = [...html.matchAll(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/g)];
+  return matches.map((match) => JSON.parse(match[1]));
+}
+
 test('generateBrandPages creates a brand page when a brand has at least one model', async () => {
   const { generateBrandPages } = await import(generatorModuleUrl);
   const workspace = await createWorkspace();
@@ -243,4 +248,26 @@ test('generateBrandPages injects twitter card meta tags', async () => {
 
   const html = await readFile(path.join(workspace.outputDir, 'samsung-fridge-clearance.html'), 'utf8');
   assert.match(html, /<meta name="twitter:card" content="summary">/);
+});
+
+test('generateBrandPages keeps collection ItemList from becoming product snippet schema', async () => {
+  const { generateBrandPages } = await import(generatorModuleUrl);
+  const workspace = await createWorkspace();
+
+  await generateBrandPages({
+    dataDir: workspace.dataDir,
+    outputDir: workspace.outputDir,
+    logger: { log() {} }
+  });
+
+  const html = await readFile(path.join(workspace.outputDir, 'samsung-fridge-clearance.html'), 'utf8');
+  const schemas = extractJsonLdBlocks(html);
+  const itemList = schemas.find((schema) => schema['@type'] === 'ItemList');
+
+  assert.ok(itemList);
+  assert.ok(itemList.itemListElement.length > 0);
+  assert.equal(itemList.itemListElement[0]['@type'], 'ListItem');
+  assert.equal(itemList.itemListElement[0].item, undefined);
+  assert.doesNotMatch(JSON.stringify(itemList), /"Product"/);
+  assert.match(itemList.itemListElement[0].description, /W 912mm x H 1780mm x D 748mm/);
 });
