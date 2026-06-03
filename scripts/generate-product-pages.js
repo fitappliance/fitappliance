@@ -276,11 +276,12 @@ function buildShippingDetailsJsonLd() {
 }
 
 function buildMerchantReturnPolicyJsonLd() {
+  // Google Merchant listings reject MerchantReturnUnspecified in offer-level
+  // markup. FitAppliance is an affiliate utility, so we link to the retailer
+  // policy disclosure without inventing a universal return window.
   return {
     '@type': 'MerchantReturnPolicy',
-    applicableCountry: 'AU',
-    merchantReturnLink: MERCHANT_POLICY_URL,
-    returnPolicyCategory: 'https://schema.org/MerchantReturnUnspecified'
+    merchantReturnLink: MERCHANT_POLICY_URL
   };
 }
 

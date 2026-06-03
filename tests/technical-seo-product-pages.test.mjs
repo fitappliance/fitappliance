@@ -95,8 +95,9 @@ test('technical SEO: product schema adds real Offer from captured retailer price
   assert.deepEqual(schema.offers.shippingDetails.shippingDestination, { '@type': 'DefinedRegion', addressCountry: 'AU' });
   assert.equal(schema.offers.shippingDetails.shippingRate.currency, 'AUD');
   assert.equal(schema.offers.hasMerchantReturnPolicy['@type'], 'MerchantReturnPolicy');
-  assert.equal(schema.offers.hasMerchantReturnPolicy.returnPolicyCategory, 'https://schema.org/MerchantReturnUnspecified');
   assert.equal(schema.offers.hasMerchantReturnPolicy.merchantReturnLink, 'https://www.fitappliance.com.au/terms#affiliate-retailer-policies');
+  assert.equal(schema.offers.hasMerchantReturnPolicy.returnPolicyCategory, undefined);
+  assert.equal(schema.offers.hasMerchantReturnPolicy.applicableCountry, undefined);
 });
 
 test('technical SEO: product schema aggregates multiple real retailer prices', () => {
@@ -114,9 +115,11 @@ test('technical SEO: product schema aggregates multiple real retailer prices', (
   assert.equal(offers.priceCurrency, 'AUD');
   assert.equal(offers.shippingDetails['@type'], 'OfferShippingDetails');
   assert.equal(offers.hasMerchantReturnPolicy['@type'], 'MerchantReturnPolicy');
+  assert.equal(offers.hasMerchantReturnPolicy.returnPolicyCategory, undefined);
   assert.equal(offers.offers.length, 2);
   assert.equal(offers.offers[0].shippingDetails['@type'], 'OfferShippingDetails');
   assert.equal(offers.offers[0].hasMerchantReturnPolicy['@type'], 'MerchantReturnPolicy');
+  assert.equal(offers.offers[0].hasMerchantReturnPolicy.returnPolicyCategory, undefined);
 });
 
 test('technical SEO: product schema falls back to stable image asset when brand category image is absent', () => {
