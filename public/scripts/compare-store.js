@@ -15,10 +15,16 @@
   function normalizeRetailers(retailers) {
     return (Array.isArray(retailers) ? retailers : [])
       .slice(0, 5)
-      .map((retailer) => ({
-        name: String(retailer?.name ?? retailer?.n ?? '').replace(/\s+/g, ' ').trim(),
-        price: Number.isFinite(Number(retailer?.price ?? retailer?.p)) ? Math.round(Number(retailer.price ?? retailer.p)) : null
-      }))
+      .map((retailer) => {
+        const url = String(retailer?.url ?? '').trim();
+        const clickUrl = String(retailer?.clickUrl ?? retailer?.affiliate_url ?? retailer?.affiliateUrl ?? '').trim();
+        return {
+          name: String(retailer?.name ?? retailer?.n ?? '').replace(/\s+/g, ' ').trim(),
+          price: Number.isFinite(Number(retailer?.price ?? retailer?.p)) ? Math.round(Number(retailer.price ?? retailer.p)) : null,
+          url: /^https?:\/\//i.test(url) ? url : '',
+          clickUrl: /^https?:\/\//i.test(clickUrl) ? clickUrl : ''
+        };
+      })
       .filter((retailer) => retailer.name);
   }
 

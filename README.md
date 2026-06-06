@@ -8,7 +8,7 @@
 - ✅ AUDIT-PHASE43A: P1 + P2 fully closed (13/13)
 - ✅ Search experience: carsales-style facet + sort + URL state + mobile sheet + saved search + RTINGS-style compare reports
 - ✅ PWA: service worker versioning, update toast, offline fallback (Phase 43a §3.6)
-- ✅ Catalog: raw specs catalog: 2,214 products across 4 categories; retailer-verified products: 66; verified retailer links: 183; live price rows: 25
+- ✅ Catalog: raw specs catalog: 2,214 products across 4 categories; retailer-verified products: 66; verified retailer links: 157; live price rows: 25
 - ✅ Data trust: claims cleanup, accuracy audits, retailer URL validation, and date-drift guardrails are active
 - 📊 Test coverage: 790+ tests passing
 
@@ -68,14 +68,14 @@ vercel --prod
 
 ## 💰 Step 2: Set Up Affiliate Accounts (1–3 days for approval)
 
-### Commission Factory (Bing Lee, Appliances Online, JB Hi-Fi)
+### Commission Factory (Appliances Online, JB Hi-Fi; Bing Lee optional)
 
 1. Register at [commissionfactory.com](https://www.commissionfactory.com)
    - Business name: FitAppliance
    - Website: fitappliance.com.au
    - Category: Comparison / Review site
 2. Apply to programmes:
-   - **Bing Lee** — search "Bing Lee" in marketplace → Apply
+   - **Bing Lee** — optional only; Bing Lee is not in the current active verified-link set because browser checks showed anti-bot/product-page access issues
    - **Appliances Online** — search and apply
    - **JB Hi-Fi** — search and apply
 3. Approval typically 2–5 business days

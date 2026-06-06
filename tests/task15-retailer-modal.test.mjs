@@ -38,7 +38,7 @@ test('task 15 retailer-modal: shouldShowRetailerModal true for 2+ retailers', as
     shouldShowRetailerModal(makeProduct({
       retailers: [
         { n: 'JB Hi-Fi', p: 1200, url: 'https://example.com/jb' },
-        { n: 'Bing Lee', p: 1190, url: 'https://example.com/bl' }
+        { n: 'Appliances Online', p: 1190, url: 'https://example.com/ao' }
       ]
     })),
     true
@@ -177,7 +177,7 @@ test('phase 50 retailer links: multiple unpriced retailer links render as select
   assert.doesNotMatch(html, /Buy at JB Hi-Fi/);
 });
 
-test('phase 50 retailer links: five linked retailers use readable branded store cards', async () => {
+test('phase 50 retailer links: linked retailers use readable branded store cards and exclude blocked stores', async () => {
   const { buildRetailerTriggerButton } = await import(moduleUrl);
   const html = buildRetailerTriggerButton(makeProduct({
     retailers: [
@@ -191,17 +191,18 @@ test('phase 50 retailer links: five linked retailers use readable branded store 
     resolveRetailerUrl: (retailer) => retailer.url
   });
 
-  assert.match(html, /retailer-logo-panel--multi/);
-  assert.match(html, /Check price at 5 stores/);
+  assert.match(html, /retailer-logo-panel/);
+  assert.doesNotMatch(html, /retailer-logo-panel--multi/);
+  assert.match(html, /Check price at 4 stores/);
   assert.match(html, /retailer-brand-grid/);
-  assert.equal((html.match(/class="retailer-brand-card/g) ?? []).length, 5);
+  assert.equal((html.match(/class="retailer-brand-card/g) ?? []).length, 4);
   assert.match(html, /retailer-brand-card--jb-hi-fi/);
   assert.match(html, /retailer-brand-card--appliances-online/);
   assert.match(html, /retailer-brand-card--the-good-guys/);
   assert.match(html, /retailer-brand-card--harvey-norman/);
-  assert.match(html, /retailer-brand-card--bing-lee/);
-  assert.match(html, /title="Bing Lee"/);
-  assert.match(html, /class="retailer-brand-wordmark">Bing Lee/);
+  assert.doesNotMatch(html, /retailer-brand-card--bing-lee/);
+  assert.doesNotMatch(html, /title="Bing Lee"/);
+  assert.doesNotMatch(html, /class="retailer-brand-wordmark">Bing Lee/);
   assert.doesNotMatch(html, /retailer-brand-mark/);
   assert.doesNotMatch(html, /class="retailer-logo-dot"/);
 });
@@ -240,7 +241,7 @@ test('task 15 retailer-modal: modal only opens when at least 2 retailer prices a
   const product = makeProduct({
     retailers: [
       { n: 'JB Hi-Fi', p: null, url: 'https://www.jbhifi.com.au/products/lg-gb335pl' },
-      { n: 'Bing Lee', p: undefined, url: 'https://www.binglee.com.au/products/lg-gb335pl' }
+      { n: 'Appliances Online', p: undefined, url: 'https://www.appliancesonline.com.au/product/lg-gb335pl/' }
     ]
   });
 

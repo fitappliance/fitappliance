@@ -113,6 +113,35 @@ function getRetailerCount(product) {
   return Array.isArray(product?.retailers) ? product.retailers.length : 0;
 }
 
+function isHttpUrl(value) {
+  return /^https?:\/\//i.test(String(value ?? '').trim());
+}
+
+function getRetailerClickUrl(retailer) {
+  const clickUrl = String(retailer?.clickUrl ?? retailer?.affiliate_url ?? retailer?.affiliateUrl ?? '').trim();
+  if (isHttpUrl(clickUrl)) return clickUrl;
+  const canonicalUrl = String(retailer?.url ?? '').trim();
+  return isHttpUrl(canonicalUrl) ? canonicalUrl : '';
+}
+
+function getRetailerRows(product) {
+  return (Array.isArray(product?.retailers) ? product.retailers : [])
+    .map((retailer) => ({
+      name: normalizeText(retailer?.name ?? retailer?.n),
+      clickUrl: getRetailerClickUrl(retailer)
+    }))
+    .filter((retailer) => retailer.name && retailer.clickUrl)
+    .slice(0, 5);
+}
+
+function renderRetailerLinks(product) {
+  const rows = getRetailerRows(product);
+  if (rows.length === 0) return `${getRetailerCount(product)} verified link${getRetailerCount(product) === 1 ? '' : 's'}`;
+  return `<div class="compare-retailer-links">${rows.map((retailer) => (
+    `<a href="${escHtml(retailer.clickUrl)}" target="_blank" rel="sponsored nofollow noopener">${escHtml(retailer.name)}</a>`
+  )).join('')}</div>`;
+}
+
 function getCapacityLitres(product) {
   return num(
     product?.capacity_l
@@ -182,7 +211,7 @@ function buildMetricRows(products) {
       section: 'Verification',
       rows: [
         { label: 'Evidence', tooltip: '', direction: 'none', value: (p) => getEvidenceLabel(p).replace(/<[^>]+>/g, ''), render: getEvidenceLabel, html: true },
-        { label: 'Retailer links', tooltip: '', direction: 'higher', value: getRetailerCount, render: (p) => `${getRetailerCount(p)} verified link${getRetailerCount(p) === 1 ? '' : 's'}` },
+        { label: 'Retailer links', tooltip: '', direction: 'higher', value: getRetailerCount, render: renderRetailerLinks, html: true },
         { label: 'Fit score', tooltip: 'fit-score', direction: 'higher', value: getFitScore, render: (p) => formatScore(getFitScore(p)) },
       ]
     }

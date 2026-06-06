@@ -64,6 +64,7 @@
     "ping-indexnow": "node scripts/ping-indexnow.js",
     "audit-compare-links": "node scripts/audit-compare-links.js",
     "audit-link-quality": "node scripts/audit-link-quality.js",
+    "audit-retailer-link-clicks": "node scripts/affiliate/audit-retailer-link-clicks.js",
     "audit-data-accuracy": "node scripts/audit-data-accuracy.js",
     "audit-pdf-evidence": "node scripts/audit-pdf-evidence.js",
     "manual-evidence": "node scripts/manual-evidence.js",

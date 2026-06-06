@@ -40,6 +40,21 @@ function makeSnapshot(slug, overrides = {}) {
   };
 }
 
+test('partnerize compare store: preserves canonical and click URLs in snapshots', async () => {
+  const { createCompareStore } = await loadStore();
+  const store = createCompareStore({ storage: createMemoryStorage() });
+  const canonicalUrl = 'https://www.thegoodguys.com.au/lg-420l-bottom-mount-refrigerator-gb-455pl';
+  const clickUrl = 'https://prf.hn/click/camref:1011l5JNxE/creativeref:1011l64579/destination:https%3A%2F%2Fwww.thegoodguys.com.au%2Flg-420l-bottom-mount-refrigerator-gb-455pl';
+
+  store.add(makeSnapshot('partnerize-tgg', {
+    retailers: [{ name: 'The Good Guys', price: 1099, url: canonicalUrl, clickUrl }]
+  }));
+
+  const [entry] = store.list();
+  assert.equal(entry.snapshot.retailers[0].url, canonicalUrl);
+  assert.equal(entry.snapshot.retailers[0].clickUrl, clickUrl);
+});
+
 test('phase 58 compare store: fifth add is rejected at capacity', async () => {
   const { createCompareStore } = await loadStore();
   const store = createCompareStore({ storage: createMemoryStorage() });

@@ -36,6 +36,10 @@ const CATEGORY_IMAGE_SLUGS = Object.freeze({
 
 const MERCHANT_POLICY_URL = `${SITE_ORIGIN}/terms#affiliate-retailer-policies`;
 const FALLBACK_PRODUCT_IMAGE = `${SITE_ORIGIN}/og-images/guide-appliance-fit-sizing-handbook.png`;
+const BLOCKED_RETAILER_HOSTS = new Set([
+  'binglee.com.au',
+  'www.binglee.com.au'
+]);
 
 function escAttr(value) {
   return escHtml(value);
@@ -219,6 +223,24 @@ function isHttpUrl(value) {
   return /^https?:\/\//i.test(String(value ?? ''));
 }
 
+function retailerHost(retailer) {
+  try {
+    return new URL(String(retailer?.url ?? '')).hostname.toLowerCase();
+  } catch {
+    return '';
+  }
+}
+
+function isBlockedRetailer(retailer) {
+  const name = String(retailer?.n ?? '').trim().toLowerCase();
+  return name === 'bing lee' || BLOCKED_RETAILER_HOSTS.has(retailerHost(retailer));
+}
+
+function getRenderableRetailers(product) {
+  return (Array.isArray(product?.retailers) ? product.retailers : [])
+    .filter((retailer) => isHttpUrl(retailer?.url) && !isBlockedRetailer(retailer));
+}
+
 function retailerClickUrl(retailer) {
   const affiliateUrl = String(retailer?.affiliate_url ?? '').trim();
   if (isHttpUrl(affiliateUrl)) return affiliateUrl;
@@ -227,10 +249,9 @@ function retailerClickUrl(retailer) {
 
 function getPricedRetailerOffers(product) {
   const productPrice = normalizePrice(product?.price);
-  const retailers = Array.isArray(product?.retailers) ? product.retailers : [];
+  const retailers = getRenderableRetailers(product);
 
   return retailers
-    .filter((retailer) => isHttpUrl(retailer?.url))
     .map((retailer) => {
       const retailerPrice = normalizePrice(retailer?.p);
       const price = retailerPrice ?? productPrice;
@@ -446,8 +467,8 @@ function safeJsonLd(value) {
 }
 
 function renderRetailerLinks(product) {
-  const links = (Array.isArray(product?.retailers) ? product.retailers : [])
-    .filter((retailer) => isHttpUrl(retailer?.url) && retailer?.n)
+  const links = getRenderableRetailers(product)
+    .filter((retailer) => retailer?.n)
     .slice(0, 5)
     .map((retailer) => {
       const price = normalizePrice(retailer?.p) ?? normalizePrice(product?.price);

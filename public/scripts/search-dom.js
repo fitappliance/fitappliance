@@ -944,7 +944,7 @@
 
     if (host.endsWith('jbhifi.com.au')) return /^\/products\//.test(pathname);
     if (host.endsWith('appliancesonline.com.au') || host.endsWith('appliances-online.com.au')) return /^\/product\//.test(pathname);
-    if (host.endsWith('binglee.com.au')) return /^\/products\//.test(pathname);
+    if (host.endsWith('binglee.com.au')) return false;
     if (host.endsWith('harveynorman.com.au')) return /\.html$/.test(pathname);
     if (host.endsWith('thegoodguys.com.au')) return /^\/[^/]+-[^/]+$/.test(pathname);
 
@@ -1375,7 +1375,9 @@
         .slice(0, 5)
         .map((retailer) => ({
         name: getRetailerName(retailer),
-        price: getRetailerPrice(retailer)
+        price: getRetailerPrice(retailer),
+        url: getRetailerUrl(retailer),
+        clickUrl: getRetailerClickUrl(retailer)
       })).filter((retailer) => retailer.name),
       stars: Number.isFinite(Number(match?.stars)) ? Number(match.stars) : null
     };
@@ -1589,7 +1591,7 @@
       </div>`;
     }
     return `<div class="retailer-filter-banner">
-      <span>Showing ${safeCount} products with verified retailer product links from major Australian retailers (JB Hi-Fi, Harvey Norman, The Good Guys, Appliances Online, Bing Lee).</span>
+      <span>Showing ${safeCount} products with verified retailer product links from major Australian retailers (JB Hi-Fi, Harvey Norman, The Good Guys, Appliances Online).</span>
       ${showAction ? '<button type="button" class="secondary" data-show-all-products>Show all matching products</button>' : ''}
     </div>`;
   }
@@ -1896,8 +1898,19 @@
   function formatCompareRetailers(snapshot) {
     const retailers = Array.isArray(snapshot?.retailers) ? snapshot.retailers : [];
     if (retailers.length === 0) return 'No verified product links';
-    const names = retailers.map((retailer) => retailer.name).filter(Boolean);
-    return `${names.length} verified store${names.length === 1 ? '' : 's'}: ${names.join(', ')}`;
+    const links = retailers
+      .map((retailer) => ({
+        name: safeDisplayText(retailer?.name, ''),
+        clickUrl: String(retailer?.clickUrl ?? retailer?.affiliate_url ?? retailer?.affiliateUrl ?? retailer?.url ?? '').trim()
+      }))
+      .filter((retailer) => retailer.name && isSafeHttpUrl(retailer.clickUrl));
+    if (links.length === 0) {
+      const names = retailers.map((retailer) => retailer.name).filter(Boolean);
+      return `${names.length} verified store${names.length === 1 ? '' : 's'}: ${names.join(', ')}`;
+    }
+    return `<div class="compare-retailer-links">${links.map((retailer) => (
+      `<a href="${escHtml(retailer.clickUrl)}" target="_blank" rel="sponsored nofollow noopener">${escHtml(retailer.name)}</a>`
+    )).join('')}</div>`;
   }
 
   function getCompareRetailerCount(snapshot) {
@@ -2179,7 +2192,8 @@
             label: 'Verified product links',
             help: 'Retailer links are direct product pages that have been manually reviewed where available.',
             key: (snapshot) => (snapshot?.retailers ?? []).map((retailer) => retailer.name).join('|'),
-            render: formatCompareRetailers
+            render: formatCompareRetailers,
+            html: true
           },
           {
             label: 'Captured price',
