@@ -1,7 +1,7 @@
 {
   "summary": {
     "totalPages": 2573,
-    "totalEdges": 28068,
+    "totalEdges": 28069,
     "orphanPages": 0,
     "averageInlinks": 10.91
   },
@@ -11,7 +11,7 @@
       "url": "/",
       "file": "index.html",
       "inlinks": 2572,
-      "outlinks": 21
+      "outlinks": 22
     },
     {
       "url": "/about",
@@ -484,7 +484,7 @@
     {
       "url": "/brands/esatto-fridge-clearance",
       "file": "pages/brands/esatto-fridge-clearance.html",
-      "inlinks": 16,
+      "inlinks": 14,
       "outlinks": 11
     },
     {
@@ -610,8 +610,8 @@
     {
       "url": "/brands/fhiaba-fridge-clearance",
       "file": "pages/brands/fhiaba-fridge-clearance.html",
-      "inlinks": 2,
-      "outlinks": 8
+      "inlinks": 3,
+      "outlinks": 12
     },
     {
       "url": "/brands/fisher-paykel-dishwasher-clearance",
@@ -628,7 +628,7 @@
     {
       "url": "/brands/fisher-paykel-fridge-clearance",
       "file": "pages/brands/fisher-paykel-fridge-clearance.html",
-      "inlinks": 59,
+      "inlinks": 58,
       "outlinks": 15
     },
     {
@@ -952,7 +952,7 @@
     {
       "url": "/brands/lg-fridge-clearance",
       "file": "pages/brands/lg-fridge-clearance.html",
-      "inlinks": 45,
+      "inlinks": 41,
       "outlinks": 15
     },
     {
@@ -1337,7 +1337,7 @@
       "url": "/brands/robinhood-fridge-clearance",
       "file": "pages/brands/robinhood-fridge-clearance.html",
       "inlinks": 6,
-      "outlinks": 15
+      "outlinks": 11
     },
     {
       "url": "/brands/robinhood-washing-machine-clearance",
@@ -1402,8 +1402,8 @@
     {
       "url": "/brands/seiki-washing-machine-clearance",
       "file": "pages/brands/seiki-washing-machine-clearance.html",
-      "inlinks": 4,
-      "outlinks": 11
+      "inlinks": 3,
+      "outlinks": 10
     },
     {
       "url": "/brands/sharp-fridge-clearance",
@@ -1474,8 +1474,8 @@
     {
       "url": "/brands/solt-washing-machine-clearance",
       "file": "pages/brands/solt-washing-machine-clearance.html",
-      "inlinks": 4,
-      "outlinks": 11
+      "inlinks": 5,
+      "outlinks": 12
     },
     {
       "url": "/brands/stirling-dryer-clearance",
@@ -1732,7 +1732,7 @@
     {
       "url": "/brands/westinghouse-fridge-clearance",
       "file": "pages/brands/westinghouse-fridge-clearance.html",
-      "inlinks": 32,
+      "inlinks": 38,
       "outlinks": 14
     },
     {
@@ -2156,6 +2156,12 @@
       "outlinks": 18
     },
     {
+      "url": "/compare/chiq-vs-fhiaba-fridge",
+      "file": "pages/compare/chiq-vs-fhiaba-fridge.html",
+      "inlinks": 3,
+      "outlinks": 4
+    },
+    {
       "url": "/compare/chiq-vs-heller-fridge",
       "file": "pages/compare/chiq-vs-heller-fridge.html",
       "inlinks": 2,
@@ -2182,12 +2188,6 @@
     {
       "url": "/compare/chiq-vs-miele-fridge",
       "file": "pages/compare/chiq-vs-miele-fridge.html",
-      "inlinks": 3,
-      "outlinks": 4
-    },
-    {
-      "url": "/compare/chiq-vs-robinhood-fridge",
-      "file": "pages/compare/chiq-vs-robinhood-fridge.html",
       "inlinks": 3,
       "outlinks": 4
     },
@@ -2330,9 +2330,15 @@
       "outlinks": 4
     },
     {
+      "url": "/compare/fisher-paykel-vs-fhiaba-fridge",
+      "file": "pages/compare/fisher-paykel-vs-fhiaba-fridge.html",
+      "inlinks": 4,
+      "outlinks": 4
+    },
+    {
       "url": "/compare/fisher-paykel-vs-haier-fridge",
       "file": "pages/compare/fisher-paykel-vs-haier-fridge.html",
-      "inlinks": 4,
+      "inlinks": 3,
       "outlinks": 4
     },
     {
@@ -2392,7 +2398,7 @@
     {
       "url": "/compare/fisher-paykel-vs-liebherr-fridge",
       "file": "pages/compare/fisher-paykel-vs-liebherr-fridge.html",
-      "inlinks": 3,
+      "inlinks": 2,
       "outlinks": 4
     },
     {
@@ -2436,12 +2442,6 @@
       "file": "pages/compare/fisher-paykel-vs-omega-dishwasher-clearance.html",
       "inlinks": 12,
       "outlinks": 18
-    },
-    {
-      "url": "/compare/fisher-paykel-vs-robinhood-fridge",
-      "file": "pages/compare/fisher-paykel-vs-robinhood-fridge.html",
-      "inlinks": 2,
-      "outlinks": 4
     },
     {
       "url": "/compare/fisher-paykel-vs-smeg-dishwasher",
@@ -2498,6 +2498,12 @@
       "outlinks": 4
     },
     {
+      "url": "/compare/haier-vs-fhiaba-fridge",
+      "file": "pages/compare/haier-vs-fhiaba-fridge.html",
+      "inlinks": 3,
+      "outlinks": 4
+    },
+    {
       "url": "/compare/haier-vs-fisher-paykel-dishwasher",
       "file": "pages/compare/haier-vs-fisher-paykel-dishwasher.html",
       "inlinks": 2,
@@ -2506,7 +2512,7 @@
     {
       "url": "/compare/haier-vs-heller-fridge",
       "file": "pages/compare/haier-vs-heller-fridge.html",
-      "inlinks": 2,
+      "inlinks": 1,
       "outlinks": 4
     },
     {
@@ -2570,12 +2576,6 @@
       "outlinks": 4
     },
     {
-      "url": "/compare/haier-vs-robinhood-fridge",
-      "file": "pages/compare/haier-vs-robinhood-fridge.html",
-      "inlinks": 2,
-      "outlinks": 4
-    },
-    {
       "url": "/compare/haier-vs-smeg-dishwasher",
       "file": "pages/compare/haier-vs-smeg-dishwasher.html",
       "inlinks": 1,
@@ -2632,6 +2632,12 @@
     {
       "url": "/compare/hisense-vs-electrolux-washing-machine",
       "file": "pages/compare/hisense-vs-electrolux-washing-machine.html",
+      "inlinks": 2,
+      "outlinks": 4
+    },
+    {
+      "url": "/compare/hisense-vs-fhiaba-fridge",
+      "file": "pages/compare/hisense-vs-fhiaba-fridge.html",
       "inlinks": 2,
       "outlinks": 4
     },
@@ -2744,12 +2750,6 @@
       "outlinks": 4
     },
     {
-      "url": "/compare/hisense-vs-robinhood-fridge",
-      "file": "pages/compare/hisense-vs-robinhood-fridge.html",
-      "inlinks": 2,
-      "outlinks": 4
-    },
-    {
       "url": "/compare/hisense-vs-smeg-dishwasher",
       "file": "pages/compare/hisense-vs-smeg-dishwasher.html",
       "inlinks": 1,
@@ -2795,6 +2795,12 @@
       "url": "/compare/lg-vs-electrolux-washing-machine",
       "file": "pages/compare/lg-vs-electrolux-washing-machine.html",
       "inlinks": 2,
+      "outlinks": 4
+    },
+    {
+      "url": "/compare/lg-vs-fhiaba-fridge",
+      "file": "pages/compare/lg-vs-fhiaba-fridge.html",
+      "inlinks": 1,
       "outlinks": 4
     },
     {
@@ -2846,14 +2852,8 @@
       "outlinks": 18
     },
     {
-      "url": "/compare/lg-vs-robinhood-fridge",
-      "file": "pages/compare/lg-vs-robinhood-fridge.html",
-      "inlinks": 1,
-      "outlinks": 4
-    },
-    {
-      "url": "/compare/lg-vs-seiki-washing-machine-clearance",
-      "file": "pages/compare/lg-vs-seiki-washing-machine-clearance.html",
+      "url": "/compare/lg-vs-solt-washing-machine-clearance",
+      "file": "pages/compare/lg-vs-solt-washing-machine-clearance.html",
       "inlinks": 11,
       "outlinks": 18
     },
@@ -2898,6 +2898,12 @@
       "file": "pages/compare/westinghouse-vs-chiq-fridge-clearance.html",
       "inlinks": 83,
       "outlinks": 18
+    },
+    {
+      "url": "/compare/westinghouse-vs-fhiaba-fridge",
+      "file": "pages/compare/westinghouse-vs-fhiaba-fridge.html",
+      "inlinks": 1,
+      "outlinks": 4
     },
     {
       "url": "/compare/westinghouse-vs-fisher-paykel-fridge-clearance",
@@ -2968,12 +2974,6 @@
     {
       "url": "/compare/westinghouse-vs-miele-fridge",
       "file": "pages/compare/westinghouse-vs-miele-fridge.html",
-      "inlinks": 1,
-      "outlinks": 4
-    },
-    {
-      "url": "/compare/westinghouse-vs-robinhood-fridge",
-      "file": "pages/compare/westinghouse-vs-robinhood-fridge.html",
       "inlinks": 1,
       "outlinks": 4
     },
@@ -4612,7 +4612,7 @@
     {
       "url": "/guides/appliance-fit-sizing-handbook",
       "file": "pages/guides/appliance-fit-sizing-handbook.html",
-      "inlinks": 426,
+      "inlinks": 427,
       "outlinks": 531
     },
     {
