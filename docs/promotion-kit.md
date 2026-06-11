@@ -1,5 +1,5 @@
 # FitAppliance Promotion Kit
-_Auto-generated 2026-06-08 from live database_
+_Auto-generated 2026-06-11 from live database_
 
 ---
 
@@ -79,7 +79,7 @@ _Auto-generated 2026-06-08 from live database_
 ---
 
 ## SEO Targets (top 10 by traffic potential)
-1. "westinghouse fridge clearance australia" — 91 Westinghouse fridge models in database
+1. "westinghouse fridge clearance australia" — 94 Westinghouse fridge models in database
 2. "hisense fridge clearance australia" — 75 Hisense fridge models in database
 3. "chiq fridge clearance australia" — 69 CHiQ fridge models in database
 4. "lg fridge clearance australia" — 67 LG fridge models in database
