@@ -32,6 +32,7 @@ function buildVideoSchema(videos) {
         name: video.oembed.title,
         description: video.oembed.title,
         thumbnailUrl: video.oembed.thumbnail_url,
+        uploadDate: video.uploadDate,
         embedUrl: `https://www.youtube.com/embed/${youtubeId}`,
         contentUrl: video.youtubeUrl,
         publisher: {

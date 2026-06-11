@@ -91,6 +91,13 @@ function normalizeOembedFields(payload) {
   return { title, author_name, author_url, thumbnail_url, provider_name };
 }
 
+function normalizeUploadDate(value) {
+  const raw = String(value ?? '').trim();
+  if (!raw) return '';
+  const parsed = new Date(raw);
+  return Number.isFinite(parsed.getTime()) ? raw : '';
+}
+
 async function validateAndFilterVideos({
   inputVideos,
   fetchImpl = globalThis.fetch,
@@ -134,6 +141,12 @@ async function validateAndFilterVideos({
       continue;
     }
 
+    const uploadDate = normalizeUploadDate(row.uploadDate);
+    if (!uploadDate) {
+      invalid.push({ ...row, reason: 'missing valid uploadDate for VideoObject schema' });
+      continue;
+    }
+
     const authorRule = OFFICIAL_AUTHOR_RULES[brandSlug];
     if (authorRule && !authorRule.test(oembed.author_name)) {
       invalid.push({
@@ -147,6 +160,7 @@ async function validateAndFilterVideos({
       brandSlug,
       youtubeUrl,
       validatedAt: toDateStamp(now),
+      uploadDate,
       oembed
     });
   }
