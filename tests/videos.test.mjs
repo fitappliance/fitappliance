@@ -21,6 +21,8 @@ test('phase 30 videos: all entries have validatedAt within 90 days', () => {
   for (const row of videos) {
     assert.ok(row.validatedAt, 'validatedAt is required for every video entry');
     assert.equal(isWithinDays(row.validatedAt, 90), true, `${row.youtubeUrl} is stale`);
+    assert.ok(row.uploadDate, 'uploadDate is required for Google VideoObject schema');
+    assert.equal(Number.isFinite(new Date(row.uploadDate).getTime()), true, `${row.youtubeUrl} has invalid uploadDate`);
     assert.equal(typeof row.oembed?.title, 'string');
     assert.equal(typeof row.oembed?.author_name, 'string');
     assert.equal(typeof row.oembed?.thumbnail_url, 'string');
@@ -31,14 +33,15 @@ test('phase 30 videos: samsung brand page contains VideoObject schema and facade
   const html = fs.readFileSync(path.join(repoRoot, 'pages', 'brands', 'samsung-fridge-clearance.html'), 'utf8');
   assert.match(html, /id="install-video"/);
   assert.match(html, /"@type":\s*"VideoObject"/);
+  assert.match(html, /"uploadDate":\s*"[0-9]{4}-[0-9]{2}-[0-9]{2}/);
   assert.match(html, /class="video-facade"/);
   assert.match(html, /data-youtube-id="/);
 });
 
 test('phase 30 videos: invalid oEmbed responses are removed from output set', async () => {
   const input = [
-    { brandSlug: 'samsung', youtubeUrl: 'https://www.youtube.com/watch?v=WuPr6D49akQ' },
-    { brandSlug: 'samsung', youtubeUrl: 'https://www.youtube.com/watch?v=invalidid00' }
+    { brandSlug: 'samsung', youtubeUrl: 'https://www.youtube.com/watch?v=WuPr6D49akQ', uploadDate: '2020-09-10T01:07:11-07:00' },
+    { brandSlug: 'samsung', youtubeUrl: 'https://www.youtube.com/watch?v=invalidid00', uploadDate: '2020-09-10T01:07:11-07:00' }
   ];
 
   const result = await validateAndFilterVideos({
