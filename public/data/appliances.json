@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "last_updated": "2026-06-08",
+  "last_updated": "2026-06-15",
   "products": [
     {
       "id": "dishwasher-adw1215",
@@ -4469,6 +4469,56 @@
       }
     },
     {
+      "id": "dishwasher-adw1392",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UDT4X4",
+      "w": 600,
+      "h": 857,
+      "d": 580,
+      "kwh_year": 206,
+      "stars": 5,
+      "price": null,
+      "emoji": "🍽️",
+      "door_swing_mm": 0,
+      "features": [
+        "Built-in",
+        "Single product class"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Fisher & Paykel Dishwasher",
+      "readableSpec": "Built-in Dishwasher",
+      "priorityScore": 60
+    },
+    {
+      "id": "dishwasher-adw1391",
+      "cat": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UM4G4",
+      "w": 600,
+      "h": 857,
+      "d": 580,
+      "kwh_year": 206,
+      "stars": 5,
+      "price": null,
+      "emoji": "🍽️",
+      "door_swing_mm": 0,
+      "features": [
+        "Built-in",
+        "Single product class"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Fisher & Paykel Dishwasher",
+      "readableSpec": "Built-in Dishwasher",
+      "priorityScore": 60
+    },
+    {
       "id": "dishwasher-adw0959",
       "cat": "dishwasher",
       "brand": "Fisher & Paykel",
@@ -4609,56 +4659,6 @@
         ],
         "clearance_verified": false
       }
-    },
-    {
-      "id": "dishwasher-adw1392",
-      "cat": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60UDT4X4",
-      "w": 600,
-      "h": 857,
-      "d": 580,
-      "kwh_year": 206,
-      "stars": 5,
-      "price": null,
-      "emoji": "🍽️",
-      "door_swing_mm": 0,
-      "features": [
-        "Built-in",
-        "Single product class"
-      ],
-      "retailers": [],
-      "sponsored": false,
-      "unavailable": true,
-      "inferred_door_swing": true,
-      "displayName": "Fisher & Paykel Dishwasher",
-      "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 60
-    },
-    {
-      "id": "dishwasher-adw1391",
-      "cat": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DW60UM4G4",
-      "w": 600,
-      "h": 857,
-      "d": 580,
-      "kwh_year": 206,
-      "stars": 5,
-      "price": null,
-      "emoji": "🍽️",
-      "door_swing_mm": 0,
-      "features": [
-        "Built-in",
-        "Single product class"
-      ],
-      "retailers": [],
-      "sponsored": false,
-      "unavailable": true,
-      "inferred_door_swing": true,
-      "displayName": "Fisher & Paykel Dishwasher",
-      "readableSpec": "Built-in Dishwasher",
-      "priorityScore": 60
     },
     {
       "id": "dishwasher-adw1329",
@@ -5335,7 +5335,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
@@ -5467,7 +5467,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
@@ -5536,7 +5536,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
@@ -6437,7 +6437,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG QuadWash",
       "readableSpec": "Freestanding Dishwasher",
@@ -9677,7 +9677,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
@@ -9735,7 +9735,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Dishwasher",
       "readableSpec": "Freestanding Dishwasher",
@@ -10313,7 +10313,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Electrolux Dryer",
       "readableSpec": "8kg Heat Pump",
@@ -11064,7 +11064,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Dryer",
       "readableSpec": "Condenser",
@@ -14052,7 +14052,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
@@ -14693,7 +14693,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
@@ -15636,7 +15636,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
@@ -15715,7 +15715,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "displayName": "CHiQ Fridge",
       "readableSpec": "Upright",
       "priorityScore": 0,
@@ -17306,6 +17306,32 @@
       }
     },
     {
+      "id": "fridge-arf3852",
+      "cat": "fridge",
+      "brand": "Electrolux",
+      "model": "EBE5002BE",
+      "w": 796,
+      "h": 1725,
+      "d": 723,
+      "kwh_year": 254,
+      "stars": 6,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5B",
+        "Class 6"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Electrolux Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 66
+    },
+    {
       "id": "fridge-arf3133",
       "cat": "fridge",
       "brand": "Electrolux",
@@ -17750,32 +17776,6 @@
         ],
         "clearance_verified": true
       }
-    },
-    {
-      "id": "fridge-arf3852",
-      "cat": "fridge",
-      "brand": "Electrolux",
-      "model": "EBE5002BE",
-      "w": 796,
-      "h": 1725,
-      "d": 723,
-      "kwh_year": 254,
-      "stars": 6,
-      "price": null,
-      "emoji": "🧊",
-      "door_swing_mm": 0,
-      "features": [
-        "Upright",
-        "5B",
-        "Class 6"
-      ],
-      "retailers": [],
-      "sponsored": false,
-      "unavailable": true,
-      "inferred_door_swing": true,
-      "displayName": "Electrolux Fridge",
-      "readableSpec": "Upright",
-      "priorityScore": 66
     },
     {
       "id": "fridge-arf3707",
@@ -21732,7 +21732,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "Upright",
@@ -22091,7 +22091,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Fridge",
       "readableSpec": "726L French-Door",
@@ -23890,7 +23890,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
@@ -24338,7 +24338,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
@@ -24510,7 +24510,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
@@ -24774,7 +24774,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "520L French-Door",
@@ -24989,7 +24989,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Haier Fridge",
       "readableSpec": "Upright",
@@ -26311,7 +26311,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
@@ -26439,7 +26439,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
@@ -28228,7 +28228,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Side By Side",
@@ -28827,7 +28827,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
@@ -28926,7 +28926,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Fridge",
       "readableSpec": "Upright",
@@ -31276,6 +31276,29 @@
       "priorityScore": 24
     },
     {
+      "id": "fridge-arf3962",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KBM5302WC",
+      "w": 1725,
+      "h": 796,
+      "d": 723,
+      "kwh_year": 370,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5B",
+        "Class 6"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
+    },
+    {
       "id": "fridge-arf2595",
       "cat": "fridge",
       "brand": "KELVINATOR",
@@ -31354,6 +31377,29 @@
       "priorityScore": 18
     },
     {
+      "id": "fridge-arf3963",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTB2502WB",
+      "w": 1470,
+      "h": 540,
+      "d": 615,
+      "kwh_year": 312,
+      "stars": 3,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5T",
+        "Class 5"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
+    },
+    {
       "id": "fridge-arf2584",
       "cat": "fridge",
       "brand": "KELVINATOR",
@@ -31378,6 +31424,52 @@
       "displayName": "KELVINATOR Fridge",
       "readableSpec": "Upright",
       "priorityScore": 18
+    },
+    {
+      "id": "fridge-arf3964",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTB2802WB",
+      "w": 1605,
+      "h": 540,
+      "d": 615,
+      "kwh_year": 320,
+      "stars": 3,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5T",
+        "Class 5"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
+    },
+    {
+      "id": "fridge-arf3965",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTM4602AC",
+      "w": 1725,
+      "h": 699,
+      "d": 723,
+      "kwh_year": 366,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5T",
+        "Class 5"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
     },
     {
       "id": "fridge-arf2538",
@@ -31430,6 +31522,29 @@
       "displayName": "KELVINATOR Fridge",
       "readableSpec": "Upright",
       "priorityScore": 24
+    },
+    {
+      "id": "fridge-arf3966",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTM5402WC",
+      "w": 1725,
+      "h": 796,
+      "d": 723,
+      "kwh_year": 400,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5T",
+        "Class 5"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
     },
     {
       "id": "fridge-arf3831",
@@ -33040,6 +33155,29 @@
       "priorityScore": 24
     },
     {
+      "id": "fridge-arf3971",
+      "cat": "fridge",
+      "brand": "LG",
+      "model": "*P-F324",
+      "w": 595,
+      "h": 1860,
+      "d": 707,
+      "kwh_year": 256,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "7",
+        "Class 10"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
+    },
+    {
       "id": "fridge-arf2264",
       "cat": "fridge",
       "brand": "LG",
@@ -33382,7 +33520,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Upright",
@@ -34319,6 +34457,29 @@
       }
     },
     {
+      "id": "fridge-arf3972",
+      "cat": "fridge",
+      "brand": "LG",
+      "model": "GP-R386PL",
+      "w": 595,
+      "h": 1860,
+      "d": 707,
+      "kwh_year": 162,
+      "stars": 5,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 595,
+      "features": [
+        "Upright",
+        "1",
+        "Class 1"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
+    },
+    {
       "id": "fridge-arf3383",
       "cat": "fridge",
       "brand": "LG",
@@ -34498,7 +34659,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG Fridge",
       "readableSpec": "Side By Side",
@@ -43987,6 +44148,52 @@
       "priorityScore": 24
     },
     {
+      "id": "fridge-arf3974",
+      "cat": "fridge",
+      "brand": "SHOME I SEIKI",
+      "model": "SC-220AU8TMW",
+      "w": 550,
+      "h": 1466,
+      "d": 595,
+      "kwh_year": 240,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 550,
+      "features": [
+        "Upright",
+        "5T",
+        "Class 5"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
+    },
+    {
+      "id": "fridge-arf3975",
+      "cat": "fridge",
+      "brand": "SHOME I SEIKI",
+      "model": "SC-320AU8TMW",
+      "w": 595,
+      "h": 1664,
+      "d": 644,
+      "kwh_year": 310,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 595,
+      "features": [
+        "Upright",
+        "5T",
+        "Class 5"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
+    },
+    {
       "id": "fridge-arf3494",
       "cat": "fridge",
       "brand": "Simmons",
@@ -48440,7 +48647,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "direct_url": "https://www.jbhifi.com.au/search?query=WBB3100AK",
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
@@ -48536,6 +48743,32 @@
       }
     },
     {
+      "id": "fridge-arf3855",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBB3402BL",
+      "w": 598,
+      "h": 1756,
+      "d": 650,
+      "kwh_year": 290,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5B",
+        "Class 6"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Westinghouse Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 54
+    },
+    {
       "id": "fridge-arf2537",
       "cat": "fridge",
       "brand": "Westinghouse",
@@ -48575,6 +48808,32 @@
       }
     },
     {
+      "id": "fridge-arf3853",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBE4302BE",
+      "w": 699,
+      "h": 1725,
+      "d": 723,
+      "kwh_year": 282,
+      "stars": 5,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5B",
+        "Class 6"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Westinghouse Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 60
+    },
+    {
       "id": "fridge-arf2745",
       "cat": "fridge",
       "brand": "Westinghouse",
@@ -48609,7 +48868,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
@@ -48665,6 +48924,32 @@
       }
     },
     {
+      "id": "fridge-arf3851",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBE5002WE",
+      "w": 796,
+      "h": 1725,
+      "d": 723,
+      "kwh_year": 309,
+      "stars": 5,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5B",
+        "Class 6"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true,
+      "displayName": "Westinghouse Fridge",
+      "readableSpec": "Upright",
+      "priorityScore": 60
+    },
+    {
       "id": "fridge-arf3827",
       "cat": "fridge",
       "brand": "Westinghouse",
@@ -48706,7 +48991,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
@@ -49927,7 +50212,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
@@ -50603,7 +50888,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Side By Side",
@@ -51486,14 +51771,14 @@
       }
     },
     {
-      "id": "fridge-arf3855",
+      "id": "fridge-arf3967",
       "cat": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBB3402BL",
-      "w": 598,
-      "h": 1756,
+      "brand": "WESTINGHOUSE",
+      "model": "WBB3700WH",
+      "w": 1755,
+      "h": 598,
       "d": 650,
-      "kwh_year": 290,
+      "kwh_year": 315,
       "stars": 4,
       "price": null,
       "emoji": "🧊",
@@ -51506,21 +51791,18 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true,
-      "displayName": "Westinghouse Fridge",
-      "readableSpec": "Upright",
-      "priorityScore": 54
+      "inferred_door_swing": true
     },
     {
-      "id": "fridge-arf3853",
+      "id": "fridge-arf3968",
       "cat": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBE4302BE",
-      "w": 699,
-      "h": 1725,
-      "d": 723,
-      "kwh_year": 282,
-      "stars": 5,
+      "brand": "WESTINGHOUSE",
+      "model": "WHE6000BB",
+      "w": 1725,
+      "h": 896,
+      "d": 781,
+      "kwh_year": 382,
+      "stars": 4,
       "price": null,
       "emoji": "🧊",
       "door_swing_mm": 0,
@@ -51532,21 +51814,18 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true,
-      "displayName": "Westinghouse Fridge",
-      "readableSpec": "Upright",
-      "priorityScore": 60
+      "inferred_door_swing": true
     },
     {
-      "id": "fridge-arf3851",
+      "id": "fridge-arf3969",
       "cat": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBE5002WE",
-      "w": 796,
-      "h": 1725,
-      "d": 723,
-      "kwh_year": 309,
-      "stars": 5,
+      "brand": "WESTINGHOUSE",
+      "model": "WHE6060BB",
+      "w": 1725,
+      "h": 896,
+      "d": 781,
+      "kwh_year": 382,
+      "stars": 4,
       "price": null,
       "emoji": "🧊",
       "door_swing_mm": 0,
@@ -51558,10 +51837,30 @@
       "retailers": [],
       "sponsored": false,
       "unavailable": true,
-      "inferred_door_swing": true,
-      "displayName": "Westinghouse Fridge",
-      "readableSpec": "Upright",
-      "priorityScore": 60
+      "inferred_door_swing": true
+    },
+    {
+      "id": "fridge-arf3970",
+      "cat": "fridge",
+      "brand": "WESTINGHOUSE",
+      "model": "WHE6874BA",
+      "w": 1782,
+      "h": 913,
+      "d": 749,
+      "kwh_year": 501,
+      "stars": 4,
+      "price": null,
+      "emoji": "🧊",
+      "door_swing_mm": 0,
+      "features": [
+        "Upright",
+        "5B",
+        "Class 6"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
     },
     {
       "id": "fridge-arf3511",
@@ -53763,7 +54062,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
@@ -53930,7 +54229,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Electrolux Washing Machine",
       "readableSpec": "Front Loader",
@@ -55120,7 +55419,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Fisher & Paykel Washing Machine",
       "readableSpec": "Front Loader",
@@ -56033,7 +56332,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Washing Machine",
       "readableSpec": "Front Loader",
@@ -56192,7 +56491,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Washing Machine",
       "readableSpec": "Front Loader",
@@ -56244,7 +56543,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Hisense Washing Machine",
       "readableSpec": "Front Loader",
@@ -57455,7 +57754,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG Washing Machine",
       "readableSpec": "Front Loader",
@@ -57826,7 +58125,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "LG Washing Machine",
       "readableSpec": "Top Loader",
@@ -61938,6 +62237,29 @@
       "priorityScore": 18
     },
     {
+      "id": "washing_machine-acw1803",
+      "cat": "washing_machine",
+      "brand": "SHOME I SEIKI",
+      "model": "SC-800AU8FL",
+      "w": 595,
+      "h": 850,
+      "d": 540,
+      "kwh_year": 380,
+      "stars": 4,
+      "price": null,
+      "emoji": "🫧",
+      "door_swing_mm": 0,
+      "features": [
+        "Drum",
+        "Front",
+        "Single product class"
+      ],
+      "retailers": [],
+      "sponsored": false,
+      "unavailable": true,
+      "inferred_door_swing": true
+    },
+    {
       "id": "washing_machine-acw1472",
       "cat": "washing_machine",
       "brand": "Smeg",
@@ -63823,7 +64145,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Washing Machine",
       "readableSpec": "Front Loader",
@@ -63895,7 +64217,7 @@
         }
       ],
       "sponsored": false,
-      "unavailable": false,
+      "unavailable": true,
       "inferred_door_swing": true,
       "displayName": "Westinghouse Washing Machine",
       "readableSpec": "Front Loader",
