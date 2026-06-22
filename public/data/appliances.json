@@ -51899,7 +51899,18 @@
       "inferred_door_swing": true,
       "displayName": "Westinghouse Fridge",
       "readableSpec": "Upright",
-      "priorityScore": 54
+      "priorityScore": 54,
+      "evidence": {
+        "has_pdf_evidence": true,
+        "source_url": "https://www.appliancesonline.com.au/ak/0/1/9/2/0192e04f906bcc306046551bd4bf2f3a8373e7f2_WHE6874BA_Westinghouse_Specifications_Sheet.pdf",
+        "verified_at": "2026-05-09",
+        "source_type": "retailer_spec",
+        "trust_level": "retailer_spec",
+        "verified_fields": [
+          "dimensions"
+        ],
+        "clearance_verified": false
+      }
     },
     {
       "id": "fridge-arf3511",
