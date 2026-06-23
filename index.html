@@ -640,7 +640,7 @@ nav {
         <span>Dimensions are your raw cavity. The default fit check uses a practical clearance buffer; brand-specific manufacturer figures are shown as advisory notes so you can verify the model manual before buying.</span>
       </div>
 
-      <button class="btn-search btn-search--primary" onclick="doSearch()">
+      <button class="btn-search btn-search--primary" data-search-submit disabled aria-disabled="true">
         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="white" stroke-width="1.8"/><path d="M12 12l3.5 3.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
         <span id="heroCtaText">Find fitting models</span>
       </button>
@@ -1084,7 +1084,6 @@ import '/scripts/search-core.js';
 import '/scripts/iso-projection.js';
 import '/scripts/fit-visualization.js';
 import '/scripts/search-dom.js?v=20260504-mobile-trust';
-import '/scripts/adsense-slot.js';
 import '/scripts/ui/compare-table.js';
 import '/scripts/saved-search-store.js';
 import '/scripts/compare-store.js';
@@ -1227,6 +1226,16 @@ function scheduleIdleTask(task) {
   }
   window.setTimeout(task, 0);
 }
+
+function loadAdsenseWhenIdle() {
+  scheduleIdleTask(() => {
+    import('/scripts/adsense-slot.js').catch((error) => {
+      console.warn('AdSense helper failed to load', error);
+    });
+  });
+}
+
+loadAdsenseWhenIdle();
 
 function renderBrandDirectory(rows) {
   const grid = document.getElementById('brand-dir-grid');
@@ -1615,6 +1624,13 @@ function renderSpaceAlertsForDimensions({ w, h, d, door } = {}) {
   `).join('');
 }
 
+function setSearchControlsReady(isReady) {
+  document.querySelectorAll('[data-search-submit]').forEach((button) => {
+    button.disabled = !isReady;
+    button.setAttribute('aria-disabled', isReady ? 'false' : 'true');
+  });
+}
+
 function readUrlParamCat() {
   const params = new URLSearchParams(window.location.search);
   const cat = params.get('cat');
@@ -1647,7 +1663,7 @@ async function loadCategory(cat) {
 
 async function bootstrapApplianceData() {
   const initialCat = readUrlParamCat() ?? 'fridge';
-  EVIDENCE_INDEX = await loadEvidenceIndex().catch(() => ({}));
+  startEvidenceIndexLoad();
 
   try {
     APPLIANCES_META = await fetch('/data/appliances-meta.json').then(requireJson);
@@ -1668,6 +1684,19 @@ async function bootstrapApplianceData() {
   }
 
   return initialCat;
+}
+
+function startEvidenceIndexLoad() {
+  loadEvidenceIndex()
+    .then((index) => {
+      EVIDENCE_INDEX = index && typeof index === 'object' ? index : {};
+      if (lastSearchFilters) {
+        renderResults();
+      }
+    })
+    .catch(() => {
+      EVIDENCE_INDEX = {};
+    });
 }
 
 function readCompareIntent(params = new URLSearchParams(window.location.search)) {
@@ -3336,6 +3365,9 @@ document.querySelectorAll('input[name="searchMode"]').forEach((input) => {
 document.querySelectorAll('[data-float-search-mode]').forEach((button) => {
   button.addEventListener('click', () => setSearchMode(button.getAttribute('data-float-search-mode'), { refresh: true }));
 });
+document.querySelectorAll('[data-search-submit]').forEach((button) => {
+  button.addEventListener('click', () => doSearch());
+});
 
 const initialCategory = await bootstrapApplianceData();
 restoreSavedFromUrlParam();
@@ -3352,6 +3384,7 @@ bindAssetCapturePrompt();
 renderAssetCapturePrompt();
 updateFloatBarSummary();
 syncSearchModeControls();
+setSearchControlsReady(true);
 }
 </script>
 </body>

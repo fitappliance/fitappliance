@@ -1916,6 +1916,14 @@ body.scroll-locked {
   box-shadow: inset 3px 0 0 var(--copper, #d97706);
 }
 
+.btn-search:disabled,
+.btn-search[aria-disabled="true"] {
+  opacity: .62;
+  cursor: wait;
+  transform: none;
+  box-shadow: none;
+}
+
 .float-bar-mode {
   display: inline-flex;
   gap: 4px;
