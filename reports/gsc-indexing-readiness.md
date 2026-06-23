@@ -1,6 +1,6 @@
 # GSC Indexing Readiness Audit
 
-Generated: 2026-06-23T05:50:40.461Z
+Generated: 2026-06-23T06:03:54.418Z
 
 ## Summary
 
