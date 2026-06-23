@@ -1,0 +1,111 @@
+{
+  "ok": true,
+  "generatedAt": "2026-06-23T06:27:41.344Z",
+  "summary": {
+    "sitemapUrls": 2573,
+    "htmlRoutes": 2574,
+    "localBrokenLinks": 0,
+    "duplicateCanonicalGroups": 0,
+    "canonicalMismatches": 0,
+    "redirectRules": 18,
+    "gscCsvSamples": 0
+  },
+  "buckets": {
+    "localBrokenLinks": [],
+    "redirectRules": [
+      {
+        "source": "/fit-check/panasonic-nr-tc221busa-in-800mm-cavity",
+        "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+        "permanent": true
+      },
+      {
+        "source": "/fit-check/panasonic-nr-tc221busa-in-700mm-cavity",
+        "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+        "permanent": true
+      },
+      {
+        "source": "/fit-check/panasonic-nr-tc221busa-in-620mm-cavity",
+        "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+        "permanent": true
+      },
+      {
+        "source": "/fit-check/panasonic-nr-tc221busa-in-600mm-cavity",
+        "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+        "permanent": true
+      },
+      {
+        "source": "/fit-check/panasonic-nr-tc221busa-in-580mm-cavity",
+        "destination": "/fit-check/panasonic-nr-tc221busa-in-640mm-cavity",
+        "permanent": true
+      },
+      {
+        "source": "/fit-check/lg-wtx3-09g-in-620mm-cavity",
+        "destination": "/brands/lg-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/fit-check/hisense-hcf7s1014b-in-640mm-cavity",
+        "destination": "/brands/hisense-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/cavity",
+        "destination": "/tools/fit-checker",
+        "permanent": true
+      },
+      {
+        "source": "/doorway",
+        "destination": "/tools/fit-checker",
+        "permanent": true
+      },
+      {
+        "source": "/location",
+        "destination": "/tools/fit-checker",
+        "permanent": true
+      },
+      {
+        "source": "/location/:city",
+        "destination": "/location/:city/fridge",
+        "permanent": true
+      },
+      {
+        "source": "/compare/euro-vs-robinhood-dryer-clearance",
+        "destination": "/brands/euro-dryer-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/smeg-vs-miele-dishwasher-clearance",
+        "destination": "/compare/fisher-paykel-vs-miele-dishwasher-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/midea-vs-inalto-washing-machine-clearance",
+        "destination": "/brands/midea-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/midea-vs-beko-washing-machine-clearance",
+        "destination": "/brands/midea-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/compare/hisense-vs-inalto-washing-machine-clearance",
+        "destination": "/brands/hisense-washing-machine-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/products/westinghouse-wtb3400ak-ao-110593",
+        "destination": "/brands/westinghouse-fridge-clearance",
+        "permanent": true
+      },
+      {
+        "source": "/products/westinghouse-wqe6870ba-ao-88955",
+        "destination": "/brands/westinghouse-fridge-clearance",
+        "permanent": true
+      }
+    ],
+    "duplicateCanonicalGroups": [],
+    "canonicalMismatches": [],
+    "gscCsvSamples": []
+  }
+}

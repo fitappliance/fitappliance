@@ -49,6 +49,10 @@ function slugify(value) {
     .slice(0, 96);
 }
 
+function getFitCheckSlug(product, cavityW) {
+  return `${slugify(product?.brand)}-${slugify(product?.model || product?.id)}-in-${Number(cavityW)}mm-cavity`;
+}
+
 function loadCatalog(repoRoot = path.resolve(__dirname, '..')) {
   return Object.entries(CATEGORY_FILE_BY_CAT).flatMap(([cat, fileName]) => {
     const data = JSON.parse(readFileSync(path.join(repoRoot, 'public', 'data', fileName), 'utf8'));
@@ -452,11 +456,9 @@ function renderAlternatives(alternatives, cavityW) {
   ].join('\n');
 }
 
-function buildFitCheckPage(product, cavityW, allProducts = [], evidenceIndex = {}) {
+function buildFitCheckPage(product, cavityW, allProducts = [], evidenceIndex = {}, availableSlugs = null) {
   const name = productName(product);
-  const brandSlug = slugify(product?.brand);
-  const modelSlug = slugify(product?.model || product?.id);
-  const slug = `${brandSlug}-${modelSlug}-in-${Number(cavityW)}mm-cavity`;
+  const slug = getFitCheckSlug(product, cavityW);
   const verdict = getVerdict(product, cavityW);
   const requiredWidth = getRequiredWidth(product);
   const category = CATEGORY_LABEL_BY_CAT[product?.cat] ?? 'appliance';
@@ -470,15 +472,19 @@ function buildFitCheckPage(product, cavityW, allProducts = [], evidenceIndex = {
   const canonical = `${SITE_ORIGIN}/fit-check/${slug}`;
   const relatedWidths = DEFAULT_CAVITY_WIDTHS
     .filter((width) => width !== Number(cavityW))
+    .map((width) => ({ width, slug: getFitCheckSlug(product, width) }))
+    .filter(({ slug: widthSlug }) => !availableSlugs || availableSlugs.has(widthSlug))
     .slice(0, 6)
-    .map((width) => `<a href="/fit-check/${brandSlug}-${modelSlug}-in-${width}mm-cavity">${width}mm cavity</a>`)
+    .map(({ width, slug: widthSlug }) => `<a href="/fit-check/${widthSlug}">${width}mm cavity</a>`)
     .join('\n');
   const relatedProducts = alternatives
-    .slice(0, 6)
     .map(({ product: alternative }) => {
-      const altSlug = `${slugify(alternative.brand)}-${slugify(alternative.model || alternative.id)}-in-${Number(cavityW)}mm-cavity`;
+      const altSlug = getFitCheckSlug(alternative, cavityW);
+      if (availableSlugs && !availableSlugs.has(altSlug)) return '';
       return `<a href="/fit-check/${altSlug}">${escHtml(productName(alternative))}</a>`;
     })
+    .filter(Boolean)
+    .slice(0, 6)
     .join('\n');
 
   const html = `<!doctype html>
@@ -629,7 +635,8 @@ function writePages(combinations, options = {}) {
   mkdirSync(outputDir, { recursive: true });
   mkdirSync(reportDir, { recursive: true });
 
-  const builtPages = combinations.map((combo) => buildFitCheckPage(combo.product, combo.cavityW, allProducts, evidenceIndex));
+  const availableSlugs = new Set(combinations.map((combo) => getFitCheckSlug(combo.product, combo.cavityW)));
+  const builtPages = combinations.map((combo) => buildFitCheckPage(combo.product, combo.cavityW, allProducts, evidenceIndex, availableSlugs));
   const pages = [];
   for (const page of builtPages) {
     const peerLinks = builtPages
