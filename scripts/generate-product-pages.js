@@ -364,6 +364,10 @@ function buildProductJsonLd(product) {
   return schema;
 }
 
+function hasProductRichResultQualifier(schema) {
+  return Boolean(schema?.offers || schema?.review || schema?.aggregateRating);
+}
+
 function buildBreadcrumbJsonLd(product) {
   const canonical = productUrl(product);
   const category = categoryLabel(product);
@@ -481,14 +485,17 @@ function buildProductPageHtml(product) {
     ? `${String(product.evidence.verified_at).slice(0, 10)}T00:00:00+08:00`
     : '2026-05-09T00:00:00+08:00';
   const head = buildHtmlHead({ title, description, canonical, modifiedTime });
+  const productSchema = buildProductJsonLd(product);
+  const productSchemaScript = hasProductRichResultQualifier(productSchema)
+    ? `  <script type="application/ld+json">${safeJsonLd(productSchema)}</script>\n`
+    : '';
 
   return `<!doctype html>
 <html lang="en-AU">
 <head>
 ${head}
   <link rel="stylesheet" href="/styles.css">
-  <script type="application/ld+json">${safeJsonLd(buildProductJsonLd(product))}</script>
-  <script type="application/ld+json">${safeJsonLd(buildBreadcrumbJsonLd(product))}</script>
+${productSchemaScript}  <script type="application/ld+json">${safeJsonLd(buildBreadcrumbJsonLd(product))}</script>
   <script type="application/ld+json">${safeJsonLd(buildFaqJsonLd(product))}</script>
   <style>
     .sku-page{max-width:980px;margin:0 auto;padding:48px 24px 72px}
@@ -711,6 +718,7 @@ module.exports = {
   buildBreadcrumbJsonLd,
   buildFaqJsonLd,
   buildProductJsonLd,
+  hasProductRichResultQualifier,
   buildProductIndexHtml,
   buildProductPageHtml,
   categoryLabel,

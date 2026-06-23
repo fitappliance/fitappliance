@@ -142,7 +142,7 @@ test('technical SEO: product schema does not invent Offer when price is absent',
   assert.equal(schema.offers, undefined);
 });
 
-test('technical SEO: product page renders canonical, Product, Breadcrumb, and FAQ schema', () => {
+test('technical SEO: product page avoids Product schema when no rich-result qualifier exists', () => {
   const product = makeProduct();
   const slug = slugifyProduct(product);
   const html = buildProductPageHtml(product);
@@ -150,9 +150,23 @@ test('technical SEO: product page renders canonical, Product, Breadcrumb, and FA
 
   assert.match(html, new RegExp(`<link rel="canonical" href="https://www\\.fitappliance\\.com\\.au/products/${slug}">`));
   assert.match(html, /LG WWT-1910BX WashTower Exact Dimensions &amp; Verified Cavity Fit \| FitAppliance/);
-  assert.ok(jsonLd.some((block) => block['@type'] === 'Product'), 'Product JSON-LD missing');
+  assert.equal(jsonLd.some((block) => block['@type'] === 'Product'), false);
   assert.ok(jsonLd.some((block) => block['@type'] === 'BreadcrumbList'), 'Breadcrumb JSON-LD missing');
   assert.ok(jsonLd.some((block) => block['@type'] === 'FAQPage'), 'FAQ JSON-LD missing');
+});
+
+test('technical SEO: product page emits Product schema only with real priced offer', () => {
+  const html = buildProductPageHtml(makeProduct({
+    retailers: [
+      { n: 'Appliances Online', url: 'https://www.appliancesonline.com.au/product/lg-wwt-1910bx', p: 3999 }
+    ]
+  }));
+  const jsonLd = extractJsonLd(html);
+  const productSchema = jsonLd.find((block) => block['@type'] === 'Product');
+
+  assert.ok(productSchema, 'Product JSON-LD missing for priced retailer offer');
+  assert.equal(productSchema.offers['@type'], 'Offer');
+  assert.equal(productSchema.offers.price, 3999);
 });
 
 test('technical SEO: product page displays captured retailer price used by Offer schema', () => {

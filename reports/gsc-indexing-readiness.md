@@ -1,10 +1,10 @@
 # GSC Indexing Readiness Audit
 
-Generated: 2026-06-08T15:33:29.823Z
+Generated: 2026-06-23T06:03:54.418Z
 
 ## Summary
 
-- Sitemap URLs: 2572
+- Sitemap URLs: 2573
 - Product URLs: 1754
 - Missing route files: 0
 - Pages with noindex: 0
@@ -40,9 +40,12 @@ Generated: 2026-06-08T15:33:29.823Z
 
 ## Current GSC Reason Triage
 
-These rows were inspected from the live Search Console `https://fitappliance.com.au/` URL-prefix property on 2026-05-19.
+These rows were inspected from the live Search Console `https://www.fitappliance.com.au/` URL-prefix property on 2026-06-23.
 
-- `Page with redirect` currently points at non-www URLs such as `https://fitappliance.com.au/cavity/500mm-fridge`. This is expected because production canonical URLs use `https://www.fitappliance.com.au`; track indexing in the `https://www.fitappliance.com.au/` URL-prefix property or a domain property.
-- `Redirect error` examples now resolve live via non-www to www and then HTTP 200. Use Search Console's Validate Fix action after deployment.
-- `Not found (404)` examples are legacy URLs and must be kept behind durable redirects: `/compare/euro-vs-robinhood-dryer-clearance`, `/compare/smeg-vs-miele-dishwasher-clearance`, and `/location/canberra`.
-- `Crawled - currently not indexed` examples are live HTTP 200 pages: `/guides/appliance-fit-sizing-handbook`, `/brands/hisense-fridge-clearance`, and `/brands/altus-washing-machine-clearance`. Use URL Inspection request-indexing for these after confirming canonical and schema are valid.
+- Current GSC overview: `2,472 indexed` and `1,165 not indexed` pages. This report still shows `PASS` locally because every sitemap URL resolves to a generated file with a self-canonical URL and no `noindex`.
+- `Page with redirect`: 492 URLs. Treat as expected only for non-canonical URL variants; if exported samples include `https://www.fitappliance.com.au/` URLs, add precise redirect/canonical fixes from those samples.
+- `Alternate page with proper canonical tag`: 282 URLs. This is acceptable for duplicate query/canonical variants, but sample exports should be checked before changing generation logic.
+- `Not found (404)`: 36 URLs. This is the highest-priority actionable bucket; export samples from GSC before adding redirects so legacy paths are mapped exactly instead of guessed.
+- `Crawled - currently not indexed`: 54 URLs and `Discovered - currently not indexed`: 292 URLs. These need post-deploy URL Inspection requests for high-value page patterns after schema fixes are live.
+- `Duplicate without user-selected canonical`: 234 URLs, validation started. Keep monitoring; code changes should be based on exported affected URL patterns, not the aggregate count.
+- Shopping signal on 2026-06-23: Product snippets showed `0 valid / 20 invalid` on overview and detail report had 6 invalid examples for `Either "offers", "review", or "aggregateRating" should be specified`. Product page generation now omits Product JSON-LD unless a real rich-result qualifier is present.
