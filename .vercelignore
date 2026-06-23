@@ -1,0 +1,10 @@
+.git
+.tmp
+.vercel
+node_modules
+test-results
+reports
+docs/pr-assets
+*.log
+*.tmp-*
+.DS_Store
