@@ -1,30 +1,30 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-06-15",
+  "last_updated": "2026-07-06",
   "pilots": [
     {
-      "productId": "fridge-arf3598",
+      "productId": "fridge-arf3335",
       "cat": "fridge",
-      "brand": "Haier",
-      "model": "HRF90UW2",
-      "modelSlug": "haier-hrf90uw2",
-      "brandPageSlug": "haier-fridge-clearance",
-      "cavityPageSlug": "510mm-fridge",
-      "coverageCount": 61,
-      "retailers": 2,
-      "stars": 4
+      "brand": "Hisense",
+      "model": "HRTF206",
+      "modelSlug": "hisense-hrtf206",
+      "brandPageSlug": "hisense-fridge-clearance",
+      "cavityPageSlug": "630mm-fridge",
+      "coverageCount": 49,
+      "retailers": 4,
+      "stars": 5
     },
     {
-      "productId": "fridge-arf2472",
+      "productId": "fridge-arf3316",
       "cat": "fridge",
-      "brand": "CHIQ",
-      "model": "CRSR088DW",
-      "modelSlug": "chiq-crsr088dw",
-      "brandPageSlug": "chiq-fridge-clearance",
-      "cavityPageSlug": "520mm-fridge",
-      "coverageCount": 60,
-      "retailers": 2,
-      "stars": 3
+      "brand": "Hisense",
+      "model": "HRTF325",
+      "modelSlug": "hisense-hrtf325",
+      "brandPageSlug": "hisense-fridge-clearance",
+      "cavityPageSlug": "680mm-fridge",
+      "coverageCount": 44,
+      "retailers": 4,
+      "stars": 5
     },
     {
       "productId": "dryer-acd0788",
@@ -51,16 +51,16 @@
       "stars": 5
     },
     {
-      "productId": "washing_machine-acw1243",
+      "productId": "washing_machine-acw1701",
       "cat": "washing_machine",
-      "brand": "Westinghouse",
-      "model": "WWF9024M5SA",
-      "modelSlug": "westinghouse-wwf9024m5sa",
-      "brandPageSlug": "westinghouse-washing-machine-clearance",
+      "brand": "Fisher & Paykel",
+      "model": "WH1060P4",
+      "modelSlug": "fisher-paykel-wh1060p4",
+      "brandPageSlug": "fisher-paykel-washing-machine-clearance",
       "cavityPageSlug": null,
       "coverageCount": 1,
-      "retailers": 4,
-      "stars": 4
+      "retailers": 3,
+      "stars": 5
     }
   ]
 }

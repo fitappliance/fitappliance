@@ -50,6 +50,16 @@ test('phase 43a: every guide page exposes exactly one Article JSON-LD block', ()
   }
 });
 
+test('phase 43 GEO: guide pages do not add FAQPage JSON-LD for answer blocks', () => {
+  for (const fileName of GUIDE_FILES) {
+    const html = fs.readFileSync(path.join(GUIDES_DIR, fileName), 'utf8');
+    const schemas = extractJsonLdBlocks(html).map((block) => JSON.parse(block));
+
+    assert.equal(schemas.filter((schema) => schema['@type'] === 'Article').length, 1, `${fileName} should keep exactly one Article schema`);
+    assert.equal(schemas.some((schema) => schema['@type'] === 'FAQPage'), false, `${fileName} should not expose FAQPage schema`);
+  }
+});
+
 test('phase 43a: guide Article JSON-LD has required non-empty fields', () => {
   for (const fileName of GUIDE_FILES) {
     const html = fs.readFileSync(path.join(GUIDES_DIR, fileName), 'utf8');

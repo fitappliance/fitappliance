@@ -149,6 +149,7 @@ export function getReplacementSuggestionRows(products, { category, limit = 160, 
   const wantedCategory = String(category ?? '').trim();
   return rows
     .filter((product) => !wantedCategory || product?.cat === wantedCategory)
+    .filter((product) => product?.unavailable !== true)
     .filter((product) => product?.model || product?.displayName)
     .filter((product) => !retailerOnly || hasVerifiedRetailerLink(product))
     .filter(hasCompleteDimensions)

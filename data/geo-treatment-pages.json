@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "experiment": "phase43-geo",
+  "started_at": "2026-07-06",
+  "selection_policy": "Use all five guide pages as treatment. Use only fit-check pages that pass the dimension-axis publishing gate and exist on disk.",
+  "fit_check_target_count": 20,
+  "fit_check_current_count": 10,
+  "treatment": [
+    {
+      "route": "/guides/fridge-clearance-requirements",
+      "template": "guide",
+      "primary_query": "How much clearance does a fridge need in Australia?",
+      "match_key": "guide:fridge-clearance",
+      "evidence_level": "visible-answer-and-evidence-block",
+      "measurement_bucket": "guide-core"
+    },
+    {
+      "route": "/guides/dishwasher-cavity-sizing",
+      "template": "guide",
+      "primary_query": "Will a 600mm dishwasher fit a 600mm cavity?",
+      "match_key": "guide:dishwasher-cavity",
+      "evidence_level": "visible-answer-and-evidence-block",
+      "measurement_bucket": "guide-core"
+    },
+    {
+      "route": "/guides/washing-machine-doorway-access",
+      "template": "guide",
+      "primary_query": "Can a washing machine fit through a 600mm doorway?",
+      "match_key": "guide:washing-machine-doorway",
+      "evidence_level": "visible-answer-and-evidence-block",
+      "measurement_bucket": "guide-core"
+    },
+    {
+      "route": "/guides/dryer-ventilation-guide",
+      "template": "guide",
+      "primary_query": "Which dryer type fits a small laundry?",
+      "match_key": "guide:dryer-ventilation",
+      "evidence_level": "visible-answer-and-evidence-block",
+      "measurement_bucket": "guide-core"
+    },
+    {
+      "route": "/guides/appliance-fit-sizing-handbook",
+      "template": "guide",
+      "primary_query": "How do I check appliance dimensions before delivery?",
+      "match_key": "guide:appliance-sizing-handbook",
+      "evidence_level": "visible-answer-and-evidence-block",
+      "measurement_bucket": "guide-core"
+    },
+    {
+      "route": "/fit-check/fisher-and-paykel-dw60uzt4b2-in-640mm-cavity",
+      "template": "fit-check",
+      "primary_query": "Will the Fisher & Paykel DW60UZT4B2 fit a 640mm cavity?",
+      "match_key": "fit-check:dishwasher:640:pair-a",
+      "evidence_level": "dimension-axis-pass",
+      "measurement_bucket": "fit-check-dishwasher-640"
+    },
+    {
+      "route": "/fit-check/fisher-and-paykel-rf500qnux1-in-900mm-cavity",
+      "template": "fit-check",
+      "primary_query": "Will the Fisher & Paykel RF500QNUX1 fit a 900mm cavity?",
+      "match_key": "fit-check:fridge:900:pair-a",
+      "evidence_level": "dimension-axis-pass",
+      "measurement_bucket": "fit-check-fridge-900"
+    },
+    {
+      "route": "/fit-check/electrolux-ewf1043r7wc-in-640mm-cavity",
+      "template": "fit-check",
+      "primary_query": "Will the Electrolux EWF1043R7WC fit a 640mm cavity?",
+      "match_key": "fit-check:washing-machine:640:pair-a",
+      "evidence_level": "dimension-axis-pass",
+      "measurement_bucket": "fit-check-washing-machine-640"
+    },
+    {
+      "route": "/fit-check/fisher-and-paykel-dw60uzt4b2-in-620mm-cavity",
+      "template": "fit-check",
+      "primary_query": "Will the Fisher & Paykel DW60UZT4B2 fit a 620mm cavity?",
+      "match_key": "fit-check:dishwasher:620:pair-a",
+      "evidence_level": "dimension-axis-pass",
+      "measurement_bucket": "fit-check-dishwasher-620"
+    },
+    {
+      "route": "/fit-check/electrolux-ewf1043r7wc-in-540mm-cavity",
+      "template": "fit-check",
+      "primary_query": "Will the Electrolux EWF1043R7WC fit a 540mm cavity?",
+      "match_key": "fit-check:washing-machine:540:pair-a",
+      "evidence_level": "dimension-axis-pass",
+      "measurement_bucket": "fit-check-washing-machine-540"
+    }
+  ],
+  "controls": [
+    {
+      "route": "/fit-check/fisher-and-paykel-dw60ut4i2-in-640mm-cavity",
+      "template": "fit-check",
+      "primary_query": "Will the Fisher & Paykel DW60UT4I2 fit a 640mm cavity?",
+      "match_key": "fit-check:dishwasher:640:pair-a",
+      "evidence_level": "dimension-axis-pass",
+      "measurement_bucket": "fit-check-dishwasher-640"
+    },
+    {
+      "route": "/fit-check/fisher-and-paykel-rf500qnx1-in-900mm-cavity",
+      "template": "fit-check",
+      "primary_query": "Will the Fisher & Paykel RF500QNX1 fit a 900mm cavity?",
+      "match_key": "fit-check:fridge:900:pair-a",
+      "evidence_level": "dimension-axis-pass",
+      "measurement_bucket": "fit-check-fridge-900"
+    },
+    {
+      "route": "/fit-check/electrolux-ewf1043r7wc-in-620mm-cavity",
+      "template": "fit-check",
+      "primary_query": "Will the Electrolux EWF1043R7WC fit a 620mm cavity?",
+      "match_key": "fit-check:washing-machine:620:pair-a",
+      "evidence_level": "dimension-axis-pass",
+      "measurement_bucket": "fit-check-washing-machine-620"
+    },
+    {
+      "route": "/fit-check/fisher-and-paykel-dw60ut4i2-in-620mm-cavity",
+      "template": "fit-check",
+      "primary_query": "Will the Fisher & Paykel DW60UT4I2 fit a 620mm cavity?",
+      "match_key": "fit-check:dishwasher:620:pair-a",
+      "evidence_level": "dimension-axis-pass",
+      "measurement_bucket": "fit-check-dishwasher-620"
+    },
+    {
+      "route": "/fit-check/fisher-and-paykel-dw60ut4i2-in-540mm-cavity",
+      "template": "fit-check",
+      "primary_query": "Will the Fisher & Paykel DW60UT4I2 fit a 540mm cavity?",
+      "match_key": "fit-check:dishwasher:540:pair-a",
+      "evidence_level": "dimension-axis-pass",
+      "measurement_bucket": "fit-check-dishwasher-540"
+    }
+  ]
+}

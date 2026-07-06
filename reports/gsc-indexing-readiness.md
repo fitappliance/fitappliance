@@ -1,10 +1,10 @@
 # GSC Indexing Readiness Audit
 
-Generated: 2026-06-23T06:03:54.418Z
+Generated: 2026-07-06T12:13:12.426Z
 
 ## Summary
 
-- Sitemap URLs: 2573
+- Sitemap URLs: 2346
 - Product URLs: 1754
 - Missing route files: 0
 - Pages with noindex: 0

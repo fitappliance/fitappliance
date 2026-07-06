@@ -30,6 +30,10 @@ function findFaq(blocks) {
   return blocks.find((block) => getSchemaTypes(block).includes('FAQPage'));
 }
 
+function findProduct(blocks) {
+  return blocks.find((block) => getSchemaTypes(block).includes('Product'));
+}
+
 function validateArticle(article) {
   const errors = [];
   if (!article) return ['missing Article JSON-LD'];
@@ -87,9 +91,11 @@ async function auditFitCheckSchemas({
 
     const article = findArticle(parsedBlocks);
     const faq = findFaq(parsedBlocks);
+    const product = findProduct(parsedBlocks);
     const pageErrors = [
       ...validateArticle(article),
-      ...validateFaq(faq)
+      ...validateFaq(faq),
+      ...(product ? ['fit-check pages must not include Product JSON-LD'] : [])
     ];
 
     for (const issue of pageErrors) {
@@ -100,6 +106,7 @@ async function auditFitCheckSchemas({
       file: relativeFile,
       hasArticle: Boolean(article),
       hasFAQPage: Boolean(faq),
+      hasProduct: Boolean(product),
       jsonLdBlocks: parsedBlocks.length,
       errors: pageErrors.length
     });
@@ -134,5 +141,6 @@ if (require.main === module) {
 module.exports = {
   auditFitCheckSchemas,
   collectJsonLdBlocks,
+  findProduct,
   getSchemaTypes
 };

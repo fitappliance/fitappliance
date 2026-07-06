@@ -1,0 +1,847 @@
+{
+  "schema_version": 1,
+  "generatedAt": "2026-07-06T12:13:10.450Z",
+  "summary": {
+    "issueCount": 49,
+    "blockerCount": 0,
+    "warningCount": 49,
+    "rawEvidenceBlockers": 0,
+    "catalogFinalDriftBlockers": 0,
+    "shapeReviewWarnings": 49
+  },
+  "issues": [
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2392",
+      "cat": "fridge",
+      "brand": "Electrolux",
+      "model": "EQE6870SA",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1782,
+        "h": 913,
+        "d": 749
+      },
+      "diffs": [],
+      "message": "fridge-arf2392 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2395",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE6874SA",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1782,
+        "h": 913,
+        "d": 749
+      },
+      "diffs": [],
+      "message": "fridge-arf2395 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2439",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB4600WC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 699,
+        "d": 769
+      },
+      "diffs": [],
+      "message": "fridge-arf2439 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2442",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KBM4502WC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 699,
+        "d": 723
+      },
+      "diffs": [],
+      "message": "fridge-arf2442 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2443",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB5400WC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 796,
+        "d": 723
+      },
+      "diffs": [],
+      "message": "fridge-arf2443 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2445",
+      "cat": "fridge",
+      "brand": "Electrolux",
+      "model": "EBE5367BC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 796,
+        "d": 773
+      },
+      "diffs": [],
+      "message": "fridge-arf2445 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2461",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE7074SA",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1728,
+        "h": 913,
+        "d": 803
+      },
+      "diffs": [],
+      "message": "fridge-arf2461 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2470",
+      "cat": "fridge",
+      "brand": "Ikea",
+      "model": "HS-65LN(AU) TILLREDA N",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 472,
+        "h": 450,
+        "d": 492
+      },
+      "diffs": [],
+      "message": "fridge-arf2470 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2495",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KBM5302AC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 796,
+        "d": 723
+      },
+      "diffs": [],
+      "message": "fridge-arf2495 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2512",
+      "cat": "fridge",
+      "brand": "Dometic",
+      "model": "DM50C D",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 550,
+        "h": 423,
+        "d": 508
+      },
+      "diffs": [],
+      "message": "fridge-arf2512 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2538",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTM4602WC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 699,
+        "d": 723
+      },
+      "diffs": [],
+      "message": "fridge-arf2538 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2540",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTM5402AC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 796,
+        "d": 723
+      },
+      "diffs": [],
+      "message": "fridge-arf2540 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2581",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB2500AH",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1470,
+        "h": 540,
+        "d": 615
+      },
+      "diffs": [],
+      "message": "fridge-arf2581 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2582",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTB2502AB",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1470,
+        "h": 540,
+        "d": 615
+      },
+      "diffs": [],
+      "message": "fridge-arf2582 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2584",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTB2802AB",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1605,
+        "h": 540,
+        "d": 615
+      },
+      "diffs": [],
+      "message": "fridge-arf2584 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2595",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTB2302AB",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1405,
+        "h": 540,
+        "d": 615
+      },
+      "diffs": [],
+      "message": "fridge-arf2595 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2816",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RB90S64MKIW1",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 855,
+        "h": 640,
+        "d": 557
+      },
+      "diffs": [],
+      "message": "fridge-arf2816 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2826",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RB90S64MKIW1 2",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 855,
+        "h": 640,
+        "d": 557
+      },
+      "diffs": [],
+      "message": "fridge-arf2826 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2921",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE5650BA",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1795,
+        "h": 896,
+        "d": 723
+      },
+      "diffs": [],
+      "message": "fridge-arf2921 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2922",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE5660BA",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1795,
+        "h": 896,
+        "d": 723
+      },
+      "diffs": [],
+      "message": "fridge-arf2922 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2932",
+      "cat": "fridge",
+      "brand": "RYOBI",
+      "model": "R18FRF10",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 670,
+        "h": 350,
+        "d": 440
+      },
+      "diffs": [],
+      "message": "fridge-arf2932 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf2944",
+      "cat": "fridge",
+      "brand": "Electrolux",
+      "model": "EQE6160BA",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1782,
+        "h": 913,
+        "d": 749
+      },
+      "diffs": [],
+      "message": "fridge-arf2944 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3196",
+      "cat": "fridge",
+      "brand": "Germanica",
+      "model": "GR48LTBF",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 472,
+        "h": 450,
+        "d": 492
+      },
+      "diffs": [],
+      "message": "fridge-arf3196 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3258",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE6170BB",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1782,
+        "h": 913,
+        "d": 749
+      },
+      "diffs": [],
+      "message": "fridge-arf3258 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3824",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE5264SC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 796,
+        "d": 769
+      },
+      "diffs": [],
+      "message": "fridge-arf3824 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3868",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE5204BC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 796,
+        "d": 769
+      },
+      "diffs": [],
+      "message": "fridge-arf3868 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3875",
+      "cat": "fridge",
+      "brand": "Fhiaba",
+      "model": "UC2D90POA",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 898,
+        "h": 865,
+        "d": 572
+      },
+      "diffs": [],
+      "message": "fridge-arf3875 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3890",
+      "cat": "fridge",
+      "brand": "Fhiaba",
+      "model": "UC2D90GMIA",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 898,
+        "h": 865,
+        "d": 572
+      },
+      "diffs": [],
+      "message": "fridge-arf3890 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3892",
+      "cat": "fridge",
+      "brand": "Fhiaba",
+      "model": "UC2D90GMA",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 898,
+        "h": 865,
+        "d": 572
+      },
+      "diffs": [],
+      "message": "fridge-arf3892 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3916",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE7074BA",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1728,
+        "h": 913,
+        "d": 803
+      },
+      "diffs": [],
+      "message": "fridge-arf3916 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3923",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB4600SC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 699,
+        "d": 769
+      },
+      "diffs": [],
+      "message": "fridge-arf3923 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3931",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTB2302WB",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1405,
+        "h": 540,
+        "d": 615
+      },
+      "diffs": [],
+      "message": "fridge-arf3931 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3962",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KBM5302WC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 796,
+        "d": 723
+      },
+      "diffs": [],
+      "message": "fridge-arf3962 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3963",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTB2502WB",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1470,
+        "h": 540,
+        "d": 615
+      },
+      "diffs": [],
+      "message": "fridge-arf3963 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3964",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTB2802WB",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1605,
+        "h": 540,
+        "d": 615
+      },
+      "diffs": [],
+      "message": "fridge-arf3964 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3965",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTM4602AC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 699,
+        "d": 723
+      },
+      "diffs": [],
+      "message": "fridge-arf3965 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3966",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTM5402WC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 796,
+        "d": 723
+      },
+      "diffs": [],
+      "message": "fridge-arf3966 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3967",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBB3700WH",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1755,
+        "h": 598,
+        "d": 650
+      },
+      "diffs": [],
+      "message": "fridge-arf3967 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3968",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE6000BB",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 896,
+        "d": 781
+      },
+      "diffs": [],
+      "message": "fridge-arf3968 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3969",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE6060BB",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 896,
+        "d": 781
+      },
+      "diffs": [],
+      "message": "fridge-arf3969 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf3970",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE6874BA",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1782,
+        "h": 913,
+        "d": 749
+      },
+      "diffs": [],
+      "message": "fridge-arf3970 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf4011",
+      "cat": "fridge",
+      "brand": "Electrolux",
+      "model": "EBE5367SC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 796,
+        "d": 773
+      },
+      "diffs": [],
+      "message": "fridge-arf4011 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf4012",
+      "cat": "fridge",
+      "brand": "Electrolux",
+      "model": "EBE4507BC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 699,
+        "d": 723
+      },
+      "diffs": [],
+      "message": "fridge-arf4012 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf4013",
+      "cat": "fridge",
+      "brand": "Electrolux",
+      "model": "EBE5307**",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 796,
+        "d": 773
+      },
+      "diffs": [],
+      "message": "fridge-arf4013 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf4014",
+      "cat": "fridge",
+      "brand": "Electrolux",
+      "model": "EHE6899BA",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1782,
+        "h": 913,
+        "d": 803
+      },
+      "diffs": [],
+      "message": "fridge-arf4014 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf4015",
+      "cat": "fridge",
+      "brand": "Electrolux",
+      "model": "EQE6870BA",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1782,
+        "h": 913,
+        "d": 749
+      },
+      "diffs": [],
+      "message": "fridge-arf4015 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf4016",
+      "cat": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KBM4502**",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 699,
+        "d": 723
+      },
+      "diffs": [],
+      "message": "fridge-arf4016 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-arf4017",
+      "cat": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBE4302BC",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 1725,
+        "h": 699,
+        "d": 723
+      },
+      "diffs": [],
+      "message": "fridge-arf4017 is an upright fridge where width is greater than height; review before GEO treatment"
+    },
+    {
+      "severity": "warning",
+      "code": "upright_fridge_width_gt_height_review",
+      "productId": "fridge-zrf0241",
+      "cat": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RB90S64MKIW",
+      "field": "w,h",
+      "source": null,
+      "dimensions": {
+        "w": 855,
+        "h": 640,
+        "d": 557
+      },
+      "diffs": [],
+      "message": "fridge-zrf0241 is an upright fridge where width is greater than height; review before GEO treatment"
+    }
+  ]
+}

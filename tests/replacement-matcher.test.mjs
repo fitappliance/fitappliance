@@ -150,6 +150,38 @@ test('phase 50 replacement matcher: old-model suggestions only include verified 
   assert.equal(countVerifiedRetailerLinks(suggestions[0]), 1);
 });
 
+test('phase 52 replacement matcher: old-model suggestions exclude unavailable products by default', async () => {
+  const { getReplacementSuggestionRows } = await loadModule();
+  const suggestions = getReplacementSuggestionRows([
+    {
+      id: 'unavailable-linked',
+      cat: 'fridge',
+      brand: 'Hisense',
+      model: 'HRBF126',
+      unavailable: true,
+      priorityScore: 100,
+      retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/hisense-hrbf126-124l-bar-fridge-white' }],
+      w: 475,
+      h: 840,
+      d: 556
+    },
+    {
+      id: 'available-linked',
+      cat: 'fridge',
+      brand: 'Hisense',
+      model: 'HRTF206',
+      unavailable: false,
+      priorityScore: 1,
+      retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/hisense-hrtf206-205l-top-mount-fridge-white' }],
+      w: 550,
+      h: 1456,
+      d: 562
+    }
+  ], { category: 'fridge', limit: 10 });
+
+  assert.deepEqual(suggestions.map((product) => product.id), ['available-linked']);
+});
+
 test('phase 52 replacement matcher: old-model suggestions prefer richer verified retailer coverage', async () => {
   const { getReplacementSuggestionRows } = await loadModule();
   const products = [

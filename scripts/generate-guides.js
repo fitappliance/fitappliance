@@ -7,6 +7,7 @@ const { existsSync, statSync } = require('node:fs');
 const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { buildHreflangLinks, buildOgImageMeta } = require('./common/html-head.js');
+const { renderAnswerTarget, renderEvidenceBox } = require('./common/geo-answer-blocks.js');
 const { buildArticleSchema, serializeJsonLd } = require('./common/schema-jsonld.js');
 const { FIXED_EPOCH_ISO } = require('./common/file-dates.js');
 
@@ -53,6 +54,59 @@ const GUIDE_HUBS = [
     ...GUIDE_DATE_HISTORY
   }
 ];
+
+const GUIDE_GEO_BLOCKS = {
+  'dishwasher-cavity-sizing': {
+    question: 'Will a 600mm dishwasher fit a 600mm cavity?',
+    answer: 'Not automatically. Measure the finished opening, rear services, floor level, and panel clearance before relying on the nominal 600mm size.',
+    caveat: 'Use the product manual when the bay is within 5mm of the listed appliance width.',
+    evidence: [
+      { label: 'Dishwasher cavity sizing guide', href: '/guides/dishwasher-cavity-sizing', detail: 'Visible buyer guide' },
+      { label: 'FitAppliance methodology', href: '/methodology', detail: 'How fit checks are calculated' },
+      { label: 'Editorial standards', href: '/about/editorial-standards', detail: 'Source and review policy' }
+    ]
+  },
+  'washing-machine-doorway-access': {
+    question: 'What decides whether a washing machine fits through a doorway?',
+    answer: 'The narrowest point on the delivery route decides it, including the appliance depth, trolley angle, hallway turn, stair landing, and lift opening.',
+    caveat: 'Measure the route before the laundry cavity if the home has tight halls, stairs, or a European laundry.',
+    evidence: [
+      { label: 'Washing machine doorway guide', href: '/guides/washing-machine-doorway-access', detail: 'Visible delivery planning guide' },
+      { label: 'FitAppliance methodology', href: '/methodology', detail: 'How fit checks are calculated' },
+      { label: 'Editorial standards', href: '/about/editorial-standards', detail: 'Source and review policy' }
+    ]
+  },
+  'fridge-clearance-requirements': {
+    question: 'How much clearance does a fridge need?',
+    answer: 'Use the fridge dimensions plus the model manual side, rear, and top gaps, then check door swing and delivery access before purchase.',
+    caveat: 'A fridge can match the bare cavity width and still fail because of ventilation or door swing.',
+    evidence: [
+      { label: 'Fridge clearance requirements guide', href: '/guides/fridge-clearance-requirements', detail: 'Visible buyer guide' },
+      { label: 'FitAppliance methodology', href: '/methodology', detail: 'How fit checks are calculated' },
+      { label: 'Editorial standards', href: '/about/editorial-standards', detail: 'Source and review policy' }
+    ]
+  },
+  'dryer-ventilation-guide': {
+    question: 'Which dryer type fits a small laundry best?',
+    answer: 'The room decides the dryer type. Check whether the space supports a vent path, drain or tank access, stacking height, airflow, and filter clearance.',
+    caveat: 'A dryer that fits the floor space can still be wrong if moisture or heat cannot leave safely.',
+    evidence: [
+      { label: 'Dryer ventilation guide', href: '/guides/dryer-ventilation-guide', detail: 'Visible buyer guide' },
+      { label: 'FitAppliance methodology', href: '/methodology', detail: 'How fit checks are calculated' },
+      { label: 'Editorial standards', href: '/about/editorial-standards', detail: 'Source and review policy' }
+    ]
+  },
+  'appliance-fit-sizing-handbook': {
+    question: 'What should I measure before buying an appliance?',
+    answer: 'Measure the cavity, delivery route, door swing or hose path, and the manufacturer clearance requirements before comparing final models.',
+    caveat: 'Start with the narrowest constraint, not the most convenient number on the product card.',
+    evidence: [
+      { label: 'Appliance fit sizing handbook', href: '/guides/appliance-fit-sizing-handbook', detail: 'Visible buyer handbook' },
+      { label: 'FitAppliance methodology', href: '/methodology', detail: 'How fit checks are calculated' },
+      { label: 'Editorial standards', href: '/about/editorial-standards', detail: 'Source and review policy' }
+    ]
+  }
+};
 
 const GUIDE_SVGS = {
   fridgeCavity: '<svg viewBox="0 0 400 300" aria-label="Fridge cavity clearance diagram"><rect x="70" y="42" width="170" height="215" fill="#f5f5f5" stroke="#333" stroke-width="2"/><rect x="102" y="78" width="106" height="150" fill="none" stroke="#333" stroke-width="2"/><path d="M102 62h106M52 78v150M240 78h42M102 245h106" stroke="#333" stroke-width="2"/><text x="140" y="56" font-family="sans-serif" font-size="11">width</text><text x="30" y="156" font-family="sans-serif" font-size="11">height</text><text x="250" y="72" font-family="sans-serif" font-size="11">side gap</text><text x="123" y="260" font-family="sans-serif" font-size="11">rear depth</text></svg>',
@@ -809,6 +863,22 @@ function renderGuideAdUnit() {
         </section>`;
 }
 
+function renderGuideGeoBlocks(guide) {
+  const block = GUIDE_GEO_BLOCKS[guide.slug];
+  if (!block) return '';
+  return [
+    renderAnswerTarget({
+      question: block.question,
+      answer: block.answer,
+      caveat: block.caveat
+    }),
+    renderEvidenceBox({
+      title: 'Evidence used',
+      items: block.evidence
+    })
+  ].filter(Boolean).join('\n');
+}
+
 function buildHubHtml({ guide, links, crossLinks, articleJsonLd, modifiedTime }) {
   const pageTitle = guidePageTitle(guide);
   const title = `${pageTitle} | FitAppliance`;
@@ -867,15 +937,29 @@ ${buildOgImageMeta(ogImage)}
     .meta { margin-top: 14px; font-size: 12px; color: var(--ink-3); }
     .section-title-lg { margin: 18px 0 8px; font-size: 18px; }
     .section-title-lg--flush { margin-top: 0; }
-    .guide-article {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 22px;
-      margin: 18px 0 24px;
-    }
-    .guide-article h2 { margin: 26px 0 8px; font-size: 22px; line-height: 1.25; }
-    .guide-article section:first-of-type h2 { margin-top: 18px; }
+	    .guide-article {
+	      background: var(--white);
+	      border: 1px solid var(--border);
+	      border-radius: 14px;
+	      padding: 22px;
+	      margin: 18px 0 24px;
+	    }
+	    .geo-answer-target, .geo-evidence-box {
+	      background: var(--white);
+	      border: 1px solid var(--border);
+	      border-radius: 12px;
+	      padding: 18px;
+	      margin: 18px 0;
+	    }
+	    .geo-answer-target h2, .geo-evidence-box h2 { margin: 0 0 8px; font-size: 20px; line-height: 1.25; }
+	    .geo-answer-target p:last-child { margin-bottom: 0; }
+	    .geo-answer-caveat { color: var(--ink-3); font-size: 14px; }
+	    .geo-evidence-box ul { margin: 0; padding-left: 20px; color: var(--ink-2); }
+	    .geo-evidence-box li { margin: 6px 0; }
+	    .geo-evidence-box a { color: var(--copper); font-weight: 700; }
+	    .geo-evidence-box span { display: block; color: var(--ink-3); font-size: 13px; }
+	    .guide-article h2 { margin: 26px 0 8px; font-size: 22px; line-height: 1.25; }
+	    .guide-article section:first-of-type h2 { margin-top: 18px; }
     .guide-figure {
       margin: 22px 0;
       padding: 14px;
@@ -983,10 +1067,11 @@ ${buildOgImageMeta(ogImage)}
 </head>
 <body>
   <main>
-    <a class="back-link" href="/">← Back to FitAppliance</a>
-    <h1>${escHtml(pageTitle)}</h1>
-    <p>${escHtml(description)}</p>
-    <div class="layout">
+	    <a class="back-link" href="/">← Back to FitAppliance</a>
+	    <h1>${escHtml(pageTitle)}</h1>
+	    <p>${escHtml(description)}</p>
+	    ${renderGuideGeoBlocks(guide)}
+	    <div class="layout">
       <div class="content-col">
         ${renderGuideArticle(guide)}
         ${renderGuideAdUnit()}

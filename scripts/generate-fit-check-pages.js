@@ -2,9 +2,11 @@
 'use strict';
 
 const path = require('node:path');
-const { mkdirSync, readFileSync, writeFileSync } = require('node:fs');
+const { mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } = require('node:fs');
 
 const { SITE_ORIGIN } = require('./common/site-origin.js');
+const { renderAnswerTarget, renderEvidenceBox } = require('./common/geo-answer-blocks.js');
+const { slugNormalize } = require('./common/slug-normalize.js');
 
 const DEFAULT_CAVITY_WIDTHS = Object.freeze([540, 580, 600, 620, 640, 700, 800, 900]);
 const PRACTICAL_CLEARANCE = Object.freeze({ side: 5, top: 20, rear: 10 });
@@ -53,6 +55,36 @@ function getFitCheckSlug(product, cavityW) {
   return `${slugify(product?.brand)}-${slugify(product?.model || product?.id)}-in-${Number(cavityW)}mm-cavity`;
 }
 
+function getProductPageSlug(product) {
+  return slugNormalize([
+    product?.brand,
+    product?.model,
+    product?.id
+  ].filter(Boolean).join(' ')).slice(0, 140);
+}
+
+function getGuideRoute(product) {
+  const guideByCat = {
+    fridge: '/guides/fridge-clearance-requirements',
+    dishwasher: '/guides/dishwasher-cavity-sizing',
+    dryer: '/guides/dryer-ventilation-guide',
+    washing_machine: '/guides/washing-machine-doorway-access'
+  };
+  return guideByCat[product?.cat] ?? '/guides/appliance-fit-sizing-handbook';
+}
+
+function loadGeoTreatmentRoutes(repoRoot = path.resolve(__dirname, '..')) {
+  try {
+    const payload = JSON.parse(readFileSync(path.join(repoRoot, 'data', 'geo-treatment-pages.json'), 'utf8'));
+    return new Set((Array.isArray(payload?.treatment) ? payload.treatment : [])
+      .filter((row) => row?.template === 'fit-check' && row?.route)
+      .map((row) => String(row.route).replace(/\/+$/, '')));
+  } catch (error) {
+    if (error && error.code === 'ENOENT') return new Set();
+    throw error;
+  }
+}
+
 function loadCatalog(repoRoot = path.resolve(__dirname, '..')) {
   return Object.entries(CATEGORY_FILE_BY_CAT).flatMap(([cat, fileName]) => {
     const data = JSON.parse(readFileSync(path.join(repoRoot, 'public', 'data', fileName), 'utf8'));
@@ -66,6 +98,19 @@ function loadEvidenceIndex(repoRoot = path.resolve(__dirname, '..')) {
     return payload.products && typeof payload.products === 'object' ? payload.products : {};
   } catch {
     return {};
+  }
+}
+
+function loadDimensionAxisBlockerIds(repoRoot = path.resolve(__dirname, '..')) {
+  try {
+    const payload = JSON.parse(readFileSync(path.join(repoRoot, 'reports', 'dimension-axis', 'latest.json'), 'utf8'));
+    const issues = Array.isArray(payload?.issues) ? payload.issues : [];
+    return new Set(issues
+      .filter((issue) => issue?.severity === 'blocker' && issue?.productId)
+      .map((issue) => issue.productId));
+  } catch (error) {
+    if (error && error.code === 'ENOENT') return new Set();
+    throw error;
   }
 }
 
@@ -136,8 +181,10 @@ function selectFitCheckCombinations(catalog, options = {}) {
     ? options.cavityWidths.map(Number).filter((value) => Number.isFinite(value) && value > 0)
     : [...DEFAULT_CAVITY_WIDTHS];
   const limit = Number.isFinite(Number(options.limit)) ? Number(options.limit) : Infinity;
+  const blockedProductIds = options.blockedProductIds instanceof Set ? options.blockedProductIds : new Set();
   const products = [...(Array.isArray(catalog) ? catalog : [])]
     .filter((product) => Number.isFinite(Number(product?.w)) && product.w > 0)
+    .filter((product) => !blockedProductIds.has(product?.id))
     .sort(byPriority)
     .slice(0, topN);
 
@@ -151,8 +198,12 @@ function selectFitCheckCombinations(catalog, options = {}) {
   return combinations;
 }
 
-function selectReviewSampleCombinations(catalog) {
-  const all = selectFitCheckCombinations(catalog, { topN: 200, cavityWidths: DEFAULT_CAVITY_WIDTHS });
+function selectReviewSampleCombinations(catalog, options = {}) {
+  const all = selectFitCheckCombinations(catalog, {
+    topN: 200,
+    cavityWidths: DEFAULT_CAVITY_WIDTHS,
+    blockedProductIds: options.blockedProductIds
+  });
   const wanted = [
     ['perfect', 5],
     ['tight', 3],
@@ -445,6 +496,43 @@ function buildFaqItems(product, cavityW, verdict) {
   ];
 }
 
+function buildFitCheckGeoBlocks(product, cavityW, verdict) {
+  const name = productName(product);
+  const category = CATEGORY_LABEL_BY_CAT[product?.cat] ?? 'appliance';
+  const requiredWidth = getRequiredWidth(product);
+  const resultText = verdict.gap >= 0
+    ? `Yes. ${name} is ${product.w}mm wide and needs about ${requiredWidth}mm after side-clearance buffer, so a ${cavityW}mm cavity leaves ${verdict.gap}mm spare width.`
+    : `No. ${name} is ${product.w}mm wide and needs about ${requiredWidth}mm after side-clearance buffer, so a ${cavityW}mm cavity is ${Math.abs(verdict.gap)}mm short.`;
+
+  return [
+    renderAnswerTarget({
+      question: `Will the ${name} fit a ${cavityW}mm cavity?`,
+      answer: resultText,
+      caveat: 'This is a width check only. Confirm height, depth, services, and the manufacturer installation manual before ordering.'
+    }),
+    renderEvidenceBox({
+      title: 'Evidence used',
+      items: [
+        {
+          label: `${name} product dimensions`,
+          href: `/products/${getProductPageSlug(product)}`,
+          detail: `${product.w}mm wide, ${product.h}mm high, ${product.d}mm deep`
+        },
+        {
+          label: `${category} sizing guide`,
+          href: getGuideRoute(product),
+          detail: 'Visible guide explaining cavity, clearance, and access checks'
+        },
+        {
+          label: 'Product dimensions and provenance on this page',
+          href: '#product-dimensions',
+          detail: 'Visible table and source state used for this answer'
+        }
+      ]
+    })
+  ].filter(Boolean).join('\n');
+}
+
 function renderAlternatives(alternatives, cavityW) {
   if (alternatives.length === 0) {
     return '<p>No better-fit alternative is available in the current catalog for this cavity width.</p>';
@@ -456,9 +544,10 @@ function renderAlternatives(alternatives, cavityW) {
   ].join('\n');
 }
 
-function buildFitCheckPage(product, cavityW, allProducts = [], evidenceIndex = {}, availableSlugs = null) {
+function buildFitCheckPage(product, cavityW, allProducts = [], evidenceIndex = {}, availableSlugs = null, options = {}) {
   const name = productName(product);
   const slug = getFitCheckSlug(product, cavityW);
+  const route = `/fit-check/${slug}`;
   const verdict = getVerdict(product, cavityW);
   const requiredWidth = getRequiredWidth(product);
   const category = CATEGORY_LABEL_BY_CAT[product?.cat] ?? 'appliance';
@@ -486,6 +575,8 @@ function buildFitCheckPage(product, cavityW, allProducts = [], evidenceIndex = {
     .filter(Boolean)
     .slice(0, 6)
     .join('\n');
+  const treatmentRoutes = options.geoTreatmentRoutes instanceof Set ? options.geoTreatmentRoutes : new Set();
+  const geoBlocks = treatmentRoutes.has(route) ? buildFitCheckGeoBlocks(product, cavityW, verdict) : '';
 
   const html = `<!doctype html>
 <html lang="en-AU">
@@ -507,6 +598,16 @@ function buildFitCheckPage(product, cavityW, allProducts = [], evidenceIndex = {
   <link rel="stylesheet" href="/styles.css">
   <link rel="preload" href="/styles-deferred.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/styles-deferred.css"></noscript>
+  ${geoBlocks ? `<style>
+    .geo-answer-target, .geo-evidence-box { margin: 18px 0; padding: 18px; border: 1px solid #d8d1c6; border-radius: 12px; background: #fff; }
+    .geo-answer-target h2, .geo-evidence-box h2 { margin: 0 0 8px; font-size: 20px; line-height: 1.25; }
+    .geo-answer-target p:last-child { margin-bottom: 0; }
+    .geo-answer-caveat { color: #6b6b6b; font-size: 14px; }
+    .geo-evidence-box ul { margin: 0; padding-left: 20px; }
+    .geo-evidence-box li { margin: 6px 0; }
+    .geo-evidence-box a { color: #8a3f1d; font-weight: 700; }
+    .geo-evidence-box span { display: block; color: #6b6b6b; font-size: 13px; }
+  </style>` : ''}
   <script type="application/ld+json">${JSON.stringify(articleSchema)}</script>
   <script type="application/ld+json">${JSON.stringify(faqSchema)}</script>
 </head>
@@ -525,12 +626,13 @@ function buildFitCheckPage(product, cavityW, allProducts = [], evidenceIndex = {
       <a href="/">Home</a> <span>→</span> <span>Fit Check</span> <span>→</span> <span>${escHtml(name)}</span>
     </nav>
     <h1>Will the ${escHtml(name)} fit a ${escHtml(cavityW)}mm cavity?</h1>
+    ${geoBlocks}
     <section class="verdict-box verdict-box--${escAttr(verdict.tone)}">
       <p class="verdict-label">${escHtml(verdict.label)}</p>
       <h2>${escHtml(verdict.headline)}</h2>
       <p>Your ${escHtml(cavityW)}mm cavity is compared with the ${escHtml(product.w)}mm product width plus ${PRACTICAL_CLEARANCE.side}mm side clearance on each side.</p>
     </section>
-    <section>
+    <section id="product-dimensions">
       <h2>Product dimensions</h2>
       <table class="dimensions-table">
         <tbody>
@@ -626,17 +728,74 @@ function textSimilarity(leftHtml, rightHtml) {
   return overlap / Math.max(left.size, right.size);
 }
 
+function buildQuarantineRows(products = [], blockedProductIds = new Set()) {
+  if (!(blockedProductIds instanceof Set) || blockedProductIds.size === 0) return [];
+  return [...(Array.isArray(products) ? products : [])]
+    .filter((product) => blockedProductIds.has(product?.id))
+    .sort((left, right) => String(left?.id ?? '').localeCompare(String(right?.id ?? '')))
+    .map((product) => ({
+      id: product.id,
+      cat: product.cat ?? null,
+      brand: product.brand ?? null,
+      model: product.model ?? null,
+      dimensions: {
+        w: product.w ?? null,
+        h: product.h ?? null,
+        d: product.d ?? null
+      },
+      reason: 'dimension-axis-blocker'
+    }));
+}
+
+function writeQuarantineReport({ repoRoot, products, blockedProductIds }) {
+  const quarantineDir = path.join(repoRoot, 'reports', 'fit-check', 'quarantined');
+  mkdirSync(quarantineDir, { recursive: true });
+  const rows = buildQuarantineRows(products, blockedProductIds);
+  const report = {
+    schema_version: 1,
+    generated_at: '2026-05-07',
+    blocker_count: rows.length,
+    products: rows
+  };
+  writeFileSync(
+    path.join(quarantineDir, 'latest.json'),
+    `${JSON.stringify(report, null, 2)}\n`,
+    'utf8'
+  );
+  return report;
+}
+
+function cleanFitCheckHtml(outputDir) {
+  for (const entry of readdirSync(outputDir, { withFileTypes: true })) {
+    if (entry.isFile() && entry.name.endsWith('.html')) {
+      unlinkSync(path.join(outputDir, entry.name));
+    }
+  }
+}
+
 function writePages(combinations, options = {}) {
   const repoRoot = options.repoRoot ?? path.resolve(__dirname, '..');
   const allProducts = options.allProducts ?? loadCatalog(repoRoot);
   const evidenceIndex = options.evidenceIndex ?? loadEvidenceIndex(repoRoot);
+  const blockedProductIds = options.blockedProductIds instanceof Set ? options.blockedProductIds : new Set();
+  const geoTreatmentRoutes = options.geoTreatmentRoutes instanceof Set ? options.geoTreatmentRoutes : loadGeoTreatmentRoutes(repoRoot);
+  const filteredCombinations = [...(Array.isArray(combinations) ? combinations : [])]
+    .filter((combo) => !blockedProductIds.has(combo?.product?.id));
   const outputDir = path.join(repoRoot, 'pages', 'fit-check');
   const reportDir = path.join(repoRoot, 'reports', 'fit-check');
   mkdirSync(outputDir, { recursive: true });
   mkdirSync(reportDir, { recursive: true });
+  cleanFitCheckHtml(outputDir);
 
-  const availableSlugs = new Set(combinations.map((combo) => getFitCheckSlug(combo.product, combo.cavityW)));
-  const builtPages = combinations.map((combo) => buildFitCheckPage(combo.product, combo.cavityW, allProducts, evidenceIndex, availableSlugs));
+  const availableSlugs = new Set(filteredCombinations.map((combo) => getFitCheckSlug(combo.product, combo.cavityW)));
+  const builtPages = filteredCombinations.map((combo) => buildFitCheckPage(
+    combo.product,
+    combo.cavityW,
+    allProducts,
+    evidenceIndex,
+    availableSlugs,
+    { geoTreatmentRoutes }
+  ));
   const pages = [];
   for (const page of builtPages) {
     const peerLinks = builtPages
@@ -672,16 +831,19 @@ function writePages(combinations, options = {}) {
     `${JSON.stringify(report, null, 2)}\n`,
     'utf8'
   );
-  return { count: pages.length, pages };
+  const quarantinedProducts = options.quarantinedProducts ?? allProducts;
+  const quarantine = writeQuarantineReport({ repoRoot, products: quarantinedProducts, blockedProductIds });
+  return { count: pages.length, pages, quarantine };
 }
 
 function main() {
   const repoRoot = path.resolve(__dirname, '..');
   const catalog = loadCatalog(repoRoot);
   const evidenceIndex = loadEvidenceIndex(repoRoot);
-  const combinations = selectReviewSampleCombinations(catalog);
-  const result = writePages(combinations, { repoRoot, allProducts: catalog, evidenceIndex });
-  console.log(`Generated ${result.count} fit-check sample pages`);
+  const blockedProductIds = loadDimensionAxisBlockerIds(repoRoot);
+  const combinations = selectReviewSampleCombinations(catalog, { blockedProductIds });
+  const result = writePages(combinations, { repoRoot, allProducts: catalog, evidenceIndex, blockedProductIds });
+  console.log(`Generated ${result.count} fit-check sample pages; quarantined=${result.quarantine.blocker_count}`);
 }
 
 if (require.main === module) {
@@ -691,10 +853,17 @@ if (require.main === module) {
 module.exports = {
   DEFAULT_CAVITY_WIDTHS,
   buildFitCheckPage,
+  buildFitCheckGeoBlocks,
+  buildQuarantineRows,
+  getFitCheckSlug,
+  getProductPageSlug,
   loadEvidenceIndex,
+  loadDimensionAxisBlockerIds,
+  loadGeoTreatmentRoutes,
   getVerdict,
   selectFitCheckCombinations,
   selectReviewSampleCombinations,
   textSimilarity,
+  writeQuarantineReport,
   writePages
 };

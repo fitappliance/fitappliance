@@ -151,6 +151,18 @@ test('phase 47 guides: every guide includes a checklist and a sizing reference t
   }
 });
 
+test('phase 43 GEO: every guide has visible answer and evidence blocks', () => {
+  for (const fileName of Object.keys(GUIDE_EXPECTATIONS)) {
+    const html = readGuide(fileName);
+    const answerTag = html.match(/<section class="geo-answer-target"[^>]*>/)?.[0] ?? '';
+    const evidenceTag = html.match(/<section class="geo-evidence-box"[^>]*>/)?.[0] ?? '';
+    assert.equal((html.match(/class="geo-answer-target"/g) ?? []).length, 1, `${fileName} should have one GEO answer block`);
+    assert.equal((html.match(/class="geo-evidence-box"/g) ?? []).length, 1, `${fileName} should have one GEO evidence block`);
+    assert.doesNotMatch(answerTag, /hidden|display:\s*none/i, `${fileName} GEO answer must be visible`);
+    assert.doesNotMatch(evidenceTag, /hidden|display:\s*none/i, `${fileName} GEO evidence must be visible`);
+  }
+});
+
 test('phase 47 guides: fridge guide includes separate cavity and door-swing diagrams', () => {
   const html = readGuide('fridge-clearance-requirements.html');
   assert.ok(extractSvgs(html).length >= 2, 'fridge guide should include at least two SVG diagrams');
