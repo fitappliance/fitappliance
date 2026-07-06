@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { describe, it } from 'node:test';
@@ -7,6 +7,7 @@ import * as cheerio from 'cheerio';
 
 import {
   buildFitCheckPage,
+  getFitCheckSlug,
   selectFitCheckCombinations,
   textSimilarity,
   writePages
@@ -20,6 +21,42 @@ function loadCatalog() {
     const data = JSON.parse(readFileSync(path.join(repoRoot, 'public', 'data', file), 'utf8'));
     return data.products ?? [];
   });
+}
+
+function writeGeoTreatmentManifest(repoRoot, { treatmentRoute, controlRoute }) {
+  mkdirSync(path.join(repoRoot, 'data'), { recursive: true });
+  writeFileSync(
+    path.join(repoRoot, 'data', 'geo-treatment-pages.json'),
+    `${JSON.stringify({
+      schema_version: 1,
+      experiment: 'phase43-geo',
+      started_at: '2026-07-06',
+      treatment: [{
+        route: treatmentRoute,
+        template: 'fit-check',
+        primary_query: 'Will the Fisher & Paykel DW60UZT4B2 fit a 640mm cavity?',
+        match_key: 'fit-check:dishwasher:640:test',
+        evidence_level: 'dimension-axis-pass',
+        measurement_bucket: 'fit-check-dishwasher-640'
+      }],
+      controls: [{
+        route: controlRoute,
+        template: 'fit-check',
+        primary_query: 'Will the Fisher & Paykel DW60UT4I2 fit a 640mm cavity?',
+        match_key: 'fit-check:dishwasher:640:test',
+        evidence_level: 'dimension-axis-pass',
+        measurement_bucket: 'fit-check-dishwasher-640'
+      }]
+    }, null, 2)}\n`,
+    'utf8'
+  );
+}
+
+function extractJsonLd(html) {
+  const $ = cheerio.load(html);
+  return $('script[type="application/ld+json"]')
+    .map((_, node) => JSON.parse($(node).text()))
+    .get();
 }
 
 describe('fit-check page generator', () => {
@@ -152,6 +189,51 @@ describe('fit-check page generator', () => {
         assert.equal($('h1').length, 1);
         assert.ok($('script[type="application/ld+json"]').length >= 2);
       }
+    } finally {
+      rmSync(tmpRoot, { force: true, recursive: true });
+    }
+  });
+
+  it('phase 43 GEO treatment adds visible answer/evidence blocks only to treatment fit-check pages', () => {
+    const tmpRoot = mkdtempSync(path.join(tmpdir(), 'fit-check-geo-treatment-'));
+    try {
+      const treatmentProduct = catalog.find((product) => product.model === 'DW60UZT4B2');
+      const controlProduct = catalog.find((product) => product.model === 'DW60UT4I2');
+      assert.ok(treatmentProduct, 'expected DW60UZT4B2 fixture product');
+      assert.ok(controlProduct, 'expected DW60UT4I2 fixture product');
+
+      const treatmentSlug = getFitCheckSlug(treatmentProduct, 640);
+      const controlSlug = getFitCheckSlug(controlProduct, 640);
+      writeGeoTreatmentManifest(tmpRoot, {
+        treatmentRoute: `/fit-check/${treatmentSlug}`,
+        controlRoute: `/fit-check/${controlSlug}`
+      });
+
+      writePages([
+        { product: treatmentProduct, cavityW: 640 },
+        { product: controlProduct, cavityW: 640 }
+      ], { repoRoot: tmpRoot, allProducts: catalog });
+
+      const treatmentHtml = readFileSync(path.join(tmpRoot, 'pages', 'fit-check', `${treatmentSlug}.html`), 'utf8');
+      const controlHtml = readFileSync(path.join(tmpRoot, 'pages', 'fit-check', `${controlSlug}.html`), 'utf8');
+      const treatmentSchemas = extractJsonLd(treatmentHtml);
+      const faqSchema = treatmentSchemas.find((entry) => entry['@type'] === 'FAQPage');
+
+      assert.match(treatmentHtml, /class="geo-answer-target"/);
+      assert.match(treatmentHtml, /class="geo-evidence-box"/);
+      assert.ok(
+        treatmentHtml.indexOf('class="geo-answer-target"') < treatmentHtml.indexOf('<h2>Product dimensions</h2>'),
+        'answer block should appear before long supporting detail'
+      );
+      assert.match(treatmentHtml, /href="\/products\/fisher-paykel-dw60uzt4b2-dishwasher-adw0956"/);
+      assert.match(treatmentHtml, /href="\/guides\/dishwasher-cavity-sizing"/);
+      assert.match(treatmentHtml, /href="#product-dimensions"/);
+      assert.ok(treatmentSchemas.every((entry) => entry['@type'] !== 'Product'), 'fit-check treatment must not add Product schema');
+      assert.ok(faqSchema.mainEntity.some((row) => row.acceptedAnswer.text.includes(`${treatmentProduct.w}mm`)));
+      assert.match(treatmentHtml, new RegExp(`<td>${treatmentProduct.w}mm</td>`));
+
+      assert.doesNotMatch(controlHtml, /class="geo-answer-target"/);
+      assert.doesNotMatch(controlHtml, /class="geo-evidence-box"/);
     } finally {
       rmSync(tmpRoot, { force: true, recursive: true });
     }

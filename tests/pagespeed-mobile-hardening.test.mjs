@@ -30,9 +30,19 @@ test('mobile PageSpeed: AdSense is hydrated lazily instead of loaded from the he
   const html = read('index.html');
   const helper = read('public/scripts/adsense-slot.js');
 
+  assert.doesNotMatch(html, /import\s+['"]\/scripts\/adsense-slot\.js['"]/);
+  assert.match(html, /import\(['"]\/scripts\/adsense-slot\.js['"]\)/);
   assert.doesNotMatch(html, /<script[^>]+pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js/);
   assert.match(helper, /loadAdSenseScript/);
   assert.match(helper, /IntersectionObserver/);
+});
+
+test('mobile PageSpeed: large evidence index is not awaited before initial category data', () => {
+  const html = read('index.html');
+
+  assert.doesNotMatch(html, /await\s+loadEvidenceIndex\(/);
+  assert.match(html, /startEvidenceIndexLoad\(\)/);
+  assert.match(html, /await\s+loadCategory\(initialCat\)/);
 });
 
 test('mobile PageSpeed: favicon and space alert semantics do not generate browser or ARIA errors', () => {

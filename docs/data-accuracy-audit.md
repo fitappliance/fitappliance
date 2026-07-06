@@ -13,6 +13,39 @@ The command scans the four runtime product catalogs under `public/data/` and wri
 
 It does **not** edit catalog data. That is intentional: the audit is a triage layer, not an automatic correction tool.
 
+## Dimension Axis Gate
+
+Use the dimension-axis audit before publishing GEO treatment pages, fit-check pages, or any page that answers buyer sizing questions:
+
+```bash
+npm run audit-dimension-axis
+```
+
+The command scans the runtime product catalogs under `public/data/`, joins raw PDF extraction evidence from `data/pdf-evidence-raw/`, and compares verified `data/catalog-final.json` dimensions against the public runtime data. It writes:
+
+- `reports/dimension-axis/latest.json`
+- `reports/dimension-axis/latest.md`
+
+Blockers mean the public runtime dimensions disagree with verified evidence or look width/height swapped against raw PDF evidence. Blockers must be fixed before expanding GEO pages because answer blocks and FAQ copy will otherwise amplify wrong fit advice. Shape warnings, such as an upright fridge where width is greater than height without raw evidence, are review queues rather than automatic build blockers.
+
+For release gates, run strict mode:
+
+```bash
+npm run audit-dimension-axis -- --strict
+```
+
+## Verified Catalog Overrides
+
+When the dimension-axis audit finds runtime drift against verified `data/catalog-final.json` dimensions, repair the runtime source before regenerating fit-check pages:
+
+```bash
+npm run sync
+```
+
+`npm run sync` now runs `scripts/apply-verified-catalog-overrides.js` between local source sync and `scripts/split-appliances.js`. The override step copies only `w`, `h`, `d`, and `evidence` from `data/catalog-final.json` into `public/data/appliances.json`, and only when the catalog row has `evidence.raw_json_path` or `evidence.confidence_score >= 0.8`.
+
+It must not copy retailer URLs, affiliate links, prices, availability, or purchase metadata from `catalog-final`. Runtime commercial fields remain owned by the public data sync path.
+
 ## Current Baseline
 
 After the 2026-05-04 catalog sync and display-accuracy review, the report is expected to show:

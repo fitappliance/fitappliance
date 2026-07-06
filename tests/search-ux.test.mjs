@@ -251,7 +251,13 @@ test('phase 52 mobile UX: homepage measurement inputs request numeric mobile key
 test('phase 52 mobile UX: primary fit CTA is sticky in the mobile thumb zone', () => {
   const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
 
-  assert.match(indexHtml, /<button class="btn-search btn-search--primary" onclick="doSearch\(\)">/);
+  const primaryButton = indexHtml.match(/<button class="btn-search btn-search--primary"[^>]+data-search-submit[^>]*>/)?.[0] ?? '';
+  assert.match(primaryButton, /disabled/);
+  assert.match(primaryButton, /aria-disabled="true"/);
+  assert.doesNotMatch(primaryButton, /onclick=/);
+  assert.match(indexHtml, /function setSearchControlsReady\(isReady\)/);
+  assert.match(indexHtml, /setSearchControlsReady\(true\)/);
+  assert.match(indexHtml, /querySelectorAll\('\[data-search-submit\]'\)[\s\S]*addEventListener\('click', \(\) => doSearch\(\)\)/);
   assert.match(indexHtml, /@media\(max-width:660px\)\{[\s\S]*\.btn-search--primary\s*\{[\s\S]*position:\s*sticky/);
   assert.match(indexHtml, /@media\(max-width:660px\)\{[\s\S]*\.btn-search--primary\s*\{[\s\S]*bottom:\s*12px/);
 });

@@ -5,6 +5,7 @@ node_modules/
 !public/data/appliances.json
 .vercel
 .DS_Store
+.codegraph/
 test-results/
 reports/copy-lint-*.json
 .codexrules.rtf

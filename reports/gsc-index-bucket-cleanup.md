@@ -1,11 +1,11 @@
 # GSC Index Bucket Cleanup Audit
 
-Generated: 2026-06-23T06:27:41.344Z
+Generated: 2026-07-06T12:47:47.846Z
 
 ## Summary
 
-- Sitemap URLs: 2573
-- Local HTML routes scanned: 2574
+- Sitemap URLs: 2345
+- Local HTML routes scanned: 2346
 - Internal broken-link candidates: 0
 - Duplicate canonical groups in generated HTML: 0
 - Canonical mismatch routes: 0

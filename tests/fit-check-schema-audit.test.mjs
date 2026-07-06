@@ -86,3 +86,26 @@ test('phase 54 A3 schema audit reports missing FAQPage and writes JSON report', 
   assert.match(report.issues[0].issue, /missing FAQPage/);
   assert.equal(written.errors, 1);
 });
+
+test('phase 43 GEO schema audit rejects Product schema on fit-check pages', async () => {
+  const { repoRoot, pagesDir } = await createAuditWorkspace();
+  await writeFile(
+    path.join(pagesDir, 'product-schema.html'),
+    `<html><head>${jsonLd(validArticle)}${jsonLd(validFaq)}${jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: 'Bosch dishwasher'
+    })}</head><body>Product schema should not be present.</body></html>`,
+    'utf8'
+  );
+
+  const report = await auditFitCheckSchemas({
+    repoRoot,
+    pagesDir,
+    outputPath: path.join(repoRoot, 'reports', 'fit-check', 'schema-audit.json'),
+    logger: { log() {} }
+  });
+
+  assert.equal(report.errors, 1);
+  assert.match(report.issues[0].issue, /Product JSON-LD/);
+});
