@@ -41,6 +41,18 @@ The default output is `reports/gsc-genai-import/latest.json`.
 
 The measurement join report writes to `reports/geo/measurement-latest.json` by default. It compares treatment and control routes by `measurement_bucket` and treats manual citations as useful only when the expected route, cited route, required observation fields, and `claim_status` all support the cited answer.
 
+## Crawl Notification
+
+Use the existing IndexNow script for GEO crawl notification. Do not create a second push script.
+
+Before live submission, run a dry run that intersects the Phase 43 manifest with pages changed since the deployment base:
+
+```bash
+npm run ping-indexnow -- --manifest=data/geo-treatment-pages.json --changed-from=origin/main --dry-run --report=reports/indexnow/phase43-dry-run.json
+```
+
+After deployment, remove `--dry-run` and write a dated report for the same selected URL set. An HTTP 200 or 202 response means the endpoint received the URL list only; it is not evidence of indexing, ranking, or AI citation.
+
 ## Fallback
 
 Search Console Generative AI report access may be unavailable for the property during rollout. If that happens, use `docs/phase43-geo-experiment/geo-ai-citation-log.csv` for manual citation checks and keep reviewing standard GSC query/page rows from `npm run gsc-fetch` and `npm run keyword-gap`.
@@ -57,6 +69,7 @@ Do not expand the treatment set until these checks pass:
 - `npm run audit-geo-schema-eligibility -- --no-write`
 - `npm run audit-dimension-axis -- --strict`
 - `npm run validate-schema`
+- `npm run ping-indexnow -- --manifest=data/geo-treatment-pages.json --changed-from=origin/main --dry-run --report=reports/indexnow/phase43-dry-run.json`
 - `node --test tests/geo-treatment-cohort.test.mjs tests/fit-check-pages.test.mjs tests/fit-check-schema-audit.test.mjs`
 
 Fit-check pages with dimension-axis blockers stay out of the experiment even if they appear in Search Console exports.
