@@ -5,11 +5,14 @@ import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const {
+  TGG_CAMPAIGN_TERMS,
   applyPartnerizeTrackingToCatalog,
   applyPartnerizeTrackingToManualRetailers,
+  buildTggCommissionMetadata,
   buildPartnerizeClickUrl,
   importPartnerizeFeedToCatalog,
   importPartnerizeFeedToManualRetailers,
+  isTggExcludedBrand,
   isTheGoodGuysProductUrl,
   parsePartnerizeFeedCsv,
 } = require('../scripts/affiliate/partnerize-tgg.js');
@@ -30,6 +33,41 @@ test('partnerize TGG: builds deeplink with camref, pubref, and encoded destinati
     'https://prf.hn/click/camref:1011l5JNxE/pubref:fridge-lg-gb455pl/destination:https%3A%2F%2Fwww.thegoodguys.com.au%2Flg-420l-bottom-mount-refrigerator-gb-455pl'
   );
   assert.equal(isPartnerizeUrl(url), true);
+});
+
+test('partnerize TGG terms: records core white-goods commission and excluded brands from campaign terms', () => {
+  assert.equal(TGG_CAMPAIGN_TERMS.cookieDays, 7);
+  assert.equal(TGG_CAMPAIGN_TERMS.coreApplianceCpaPercent, 3);
+  assert.equal(TGG_CAMPAIGN_TERMS.excludedBrands.includes('Asko'), true);
+  assert.equal(TGG_CAMPAIGN_TERMS.excludedBrands.includes('Miele'), true);
+  assert.equal(TGG_CAMPAIGN_TERMS.excludedBrands.includes('Loewe'), true);
+  assert.equal(isTggExcludedBrand('MIELE'), true);
+  assert.equal(isTggExcludedBrand('LG'), false);
+});
+
+test('partnerize TGG terms: marks excluded-brand products as zero-commission while preserving link eligibility', () => {
+  assert.deepEqual(
+    buildTggCommissionMetadata({ brand: 'Miele', cat: 'dishwasher' }),
+    {
+      commission_eligible: false,
+      commission_rate_percent: 0,
+      commission_cookie_days: 7,
+      commission_model: 'CPA',
+      commission_terms_observed_at: '2026-07-07',
+      commission_exclusion_reason: 'Brand excluded by The Good Guys Australia Partnerize terms: Miele',
+    }
+  );
+
+  assert.deepEqual(
+    buildTggCommissionMetadata({ brand: 'LG', cat: 'fridge' }),
+    {
+      commission_eligible: true,
+      commission_rate_percent: 3,
+      commission_cookie_days: 7,
+      commission_model: 'CPA',
+      commission_terms_observed_at: '2026-07-07',
+    }
+  );
 });
 
 test('partnerize TGG: refuses non-product and non-TGG destinations', () => {
@@ -255,6 +293,39 @@ test('partnerize TGG feed: imports matching feed rows into catalog-final style p
   assert.equal(retailer.stock, 'Yes');
   assert.equal(retailer.tgg_sku, '50073316');
   assert.equal(retailer.source, 'partnerize-feed');
+});
+
+test('partnerize TGG feed: preserves excluded-brand product links but flags zero commission', () => {
+  const csv = [
+    'Category|Currency|Price|SKU/Unique Identifier|Stock|Title|URL|Brand|ModelNumber',
+    'Cooking & Dishwashers > Dishwashers > Freestanding Dishwashers|AUD|1599.00|G5000SCBRWS|Yes|Miele Dishwasher|https://prf.hn/click/camref:1011l5JNxE/destination:https%3A%2F%2Fwww.thegoodguys.com.au%2Fmiele-freestanding-dishwasher-g5000scbrws|Miele|50090000',
+  ].join('\n');
+  const catalog = {
+    products: [
+      {
+        id: 'dishwasher-miele-g5000scbrws',
+        cat: 'dishwasher',
+        brand: 'Miele',
+        model: 'G5000SCBRWS',
+        retailers: [],
+        unavailable: false,
+      },
+    ],
+  };
+
+  const { document, stats } = importPartnerizeFeedToCatalog({
+    catalogDocument: catalog,
+    feedCsv: csv,
+    verifiedAt: '2026-07-07',
+  });
+  const retailer = document.products[0].retailers[0];
+
+  assert.equal(stats.updatedProducts, 1);
+  assert.equal(retailer.url, 'https://www.thegoodguys.com.au/miele-freestanding-dishwasher-g5000scbrws');
+  assert.equal(retailer.commission_eligible, false);
+  assert.equal(retailer.commission_rate_percent, 0);
+  assert.equal(retailer.commission_cookie_days, 7);
+  assert.match(retailer.commission_exclusion_reason, /Miele/);
 });
 
 test('partnerize TGG feed: does not create approved entries for unknown or archived catalog products by default', () => {

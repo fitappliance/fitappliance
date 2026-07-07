@@ -2,7 +2,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { isTheGoodGuysProductUrl } = require('./partnerize-tgg.js');
+const { TGG_CAMPAIGN_TERMS, isTheGoodGuysProductUrl } = require('./partnerize-tgg.js');
 
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
 const MANUAL_RETAILERS_PATH = path.join(REPO_ROOT, 'data', 'manual-retailers.json');
@@ -131,6 +131,13 @@ Generated: ${new Date().toISOString()}
 - Download/import status: \`${feedStatus}\`.
 - The private feed URL must not be committed. Feed imports should use a local file path via \`--feed\` or \`PARTNERIZE_TGG_FEED_PATH\`.
 
+## Campaign Terms Snapshot
+
+- Cookie period observed in Partnerize: ${TGG_CAMPAIGN_TERMS.cookieDays} days.
+- Core FitAppliance appliance categories map to ${TGG_CAMPAIGN_TERMS.coreApplianceCpaPercent}% CPA in the displayed campaign rates.
+- Excluded brands observed in campaign terms: ${TGG_CAMPAIGN_TERMS.excludedBrands.join(', ')}.
+- Excluded transaction/product cases are retained as zero-commission assumptions, not as reasons to remove user-useful retailer links.
+
 ## Bug Audit
 
 - Canonical retailer URLs are preserved for validation, SEO, and transparency.
@@ -138,6 +145,7 @@ Generated: ${new Date().toISOString()}
 - Search/category URLs are still rejected by product-page validation.
 - No Partnerize private feed URL is stored in the repository.
 - Product feed cannot upgrade a product to \`Verified Fit\`; only official PDF clearance evidence can do that.
+- Excluded-brand links can remain visible, but they must not be counted as commission-eligible or Merchant/Shopping proof.
 `;
 }
 

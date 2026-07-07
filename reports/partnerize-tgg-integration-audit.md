@@ -1,6 +1,6 @@
 # Partnerize TGG Integration Audit
 
-Generated: 2026-06-02T14:50:53.007Z
+Generated: 2026-07-07T13:17:24.377Z
 
 ## Executive Summary
 
@@ -49,6 +49,13 @@ Generated: 2026-06-02T14:50:53.007Z
 - Download/import status: `available for local import via partnerize-tgg --import-feed`.
 - The private feed URL must not be committed. Feed imports should use a local file path via `--feed` or `PARTNERIZE_TGG_FEED_PATH`.
 
+## Campaign Terms Snapshot
+
+- Cookie period observed in Partnerize: 7 days.
+- Core FitAppliance appliance categories map to 3% CPA in the displayed campaign rates.
+- Excluded brands observed in campaign terms: Apple, Playstation 5, Xbox, Nintendo, Asko, Miele, Loewe.
+- Excluded transaction/product cases are retained as zero-commission assumptions, not as reasons to remove user-useful retailer links.
+
 ## Bug Audit
 
 - Canonical retailer URLs are preserved for validation, SEO, and transparency.
@@ -56,3 +63,4 @@ Generated: 2026-06-02T14:50:53.007Z
 - Search/category URLs are still rejected by product-page validation.
 - No Partnerize private feed URL is stored in the repository.
 - Product feed cannot upgrade a product to `Verified Fit`; only official PDF clearance evidence can do that.
+- Excluded-brand links can remain visible, but they must not be counted as commission-eligible or Merchant/Shopping proof.

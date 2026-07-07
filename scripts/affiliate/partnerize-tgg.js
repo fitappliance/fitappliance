@@ -6,6 +6,34 @@ const path = require('node:path');
 const DEFAULT_CAMREF = '1011l5JNxE';
 const TGG_RETAILER_NAME = 'The Good Guys';
 const TGG_HOST = 'thegoodguys.com.au';
+const TGG_CAMPAIGN_TERMS = Object.freeze({
+  campaign: 'The Good Guys Australia',
+  cookieDays: 7,
+  coreApplianceCpaPercent: 3,
+  observedAt: '2026-07-07',
+  excludedBrands: Object.freeze([
+    'Apple',
+    'Playstation 5',
+    'Xbox',
+    'Nintendo',
+    'Asko',
+    'Miele',
+    'Loewe',
+  ]),
+  excludedTransactions: Object.freeze([
+    'Gift cards',
+    'Gold Service Extras',
+    'Home Services',
+    'Fisher & Paykel products flagged as Shipped by Supplier',
+    'Smeg products flagged as Shipped by Supplier',
+    'Physical store transactions',
+    'Phone Sales',
+    'Pay Less Chat',
+    'Commercial website transactions',
+    'Marketplace transactions',
+    'Coupon codes intended for another affiliate',
+  ]),
+});
 const PUBLIC_DATA_FILES = [
   'appliances.json',
   'fridges.json',
@@ -65,6 +93,41 @@ function normalizePubref(value) {
 
 function normalizeModel(value) {
   return String(value ?? '').trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+}
+
+function normalizeCampaignTerm(value) {
+  return String(value ?? '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
+function canonicalExcludedBrand(value) {
+  const normalized = normalizeCampaignTerm(value);
+  return TGG_CAMPAIGN_TERMS.excludedBrands.find((brand) => normalizeCampaignTerm(brand) === normalized) ?? null;
+}
+
+function isTggExcludedBrand(value) {
+  return Boolean(canonicalExcludedBrand(value));
+}
+
+function buildTggCommissionMetadata({ brand, cat } = {}) {
+  const excludedBrand = canonicalExcludedBrand(brand);
+  if (excludedBrand) {
+    return {
+      commission_eligible: false,
+      commission_rate_percent: 0,
+      commission_cookie_days: TGG_CAMPAIGN_TERMS.cookieDays,
+      commission_model: 'CPA',
+      commission_terms_observed_at: TGG_CAMPAIGN_TERMS.observedAt,
+      commission_exclusion_reason: `Brand excluded by The Good Guys Australia Partnerize terms: ${excludedBrand}`,
+    };
+  }
+
+  return {
+    commission_eligible: true,
+    commission_rate_percent: TGG_CAMPAIGN_TERMS.coreApplianceCpaPercent,
+    commission_cookie_days: TGG_CAMPAIGN_TERMS.cookieDays,
+    commission_model: 'CPA',
+    commission_terms_observed_at: TGG_CAMPAIGN_TERMS.observedAt,
+  };
 }
 
 function parseDelimitedRows(source, delimiter = '|') {
@@ -209,7 +272,12 @@ function buildCatalogModelIndex(catalogProducts) {
 function buildFeedRetailer(row, {
   pubref,
   verifiedAt = toIsoDate(),
+  product = null,
 } = {}) {
+  const commissionMetadata = buildTggCommissionMetadata({
+    brand: product?.brand ?? row.brand,
+    cat: product?.cat ?? CORE_FEED_CATEGORY_TO_CATALOG[row.fit_category],
+  });
   return {
     n: TGG_RETAILER_NAME,
     url: row.url,
@@ -225,6 +293,7 @@ function buildFeedRetailer(row, {
     tgg_sku: row.tgg_sku,
     feed_title: row.title,
     feed_model: row.manufacturer_model,
+    ...commissionMetadata,
   };
 }
 
@@ -280,7 +349,7 @@ function importPartnerizeFeedToManualRetailers({
     seenProducts.add(key);
 
     const existingEntry = nextProducts[key] ?? {};
-    const nextRetailer = buildFeedRetailer(row, { pubref: key, verifiedAt });
+    const nextRetailer = buildFeedRetailer(row, { pubref: key, verifiedAt, product });
     const retailers = upsertRetailer(existingEntry.retailers, nextRetailer);
     nextProducts[key] = {
       ...existingEntry,
@@ -356,7 +425,7 @@ function importPartnerizeFeedToCatalog({
     const key = product?.id ?? product?.slug;
     if (!key || updatesByKey.has(key)) continue;
 
-    const nextRetailer = buildFeedRetailer(row, { pubref: key, verifiedAt });
+    const nextRetailer = buildFeedRetailer(row, { pubref: key, verifiedAt, product });
     updatesByKey.set(key, nextRetailer);
     updatedProducts += 1;
   }
@@ -458,6 +527,7 @@ function withPartnerizeRetailer(retailer, {
   camref = DEFAULT_CAMREF,
   pubref = '',
   verifiedAt = toIsoDate(),
+  product = null,
 } = {}) {
   if (!isTheGoodGuysRetailer(retailer)) return { retailer, updated: false, skipped: false };
   if (!isTheGoodGuysProductUrl(retailer?.url)) {
@@ -473,6 +543,10 @@ function withPartnerizeRetailer(retailer, {
     camref,
     pubref: normalizePubref(pubref),
     tracking_verified_at: verifiedAt,
+    ...buildTggCommissionMetadata({
+      brand: product?.brand,
+      cat: product?.cat,
+    }),
   };
   return {
     retailer: nextRetailer,
@@ -499,7 +573,7 @@ function applyPartnerizeTrackingToCatalog(catalogDocument, {
     let changed = false;
     const pubref = product?.id ?? product?.slug ?? product?.model ?? '';
     const retailers = product.retailers.map((retailer) => {
-      const result = withPartnerizeRetailer(retailer, { camref, pubref, verifiedAt });
+      const result = withPartnerizeRetailer(retailer, { camref, pubref, verifiedAt, product });
       if (result.updated) {
         changed = true;
         updatedRetailers += 1;
@@ -683,11 +757,14 @@ if (require.main === module) {
 
 module.exports = {
   DEFAULT_CAMREF,
+  TGG_CAMPAIGN_TERMS,
   applyPartnerizeTrackingToCatalog,
   applyPartnerizeTrackingToManualRetailers,
+  buildTggCommissionMetadata,
   buildPartnerizeClickUrl,
   importPartnerizeFeedToCatalog,
   importPartnerizeFeedToManualRetailers,
+  isTggExcludedBrand,
   isTheGoodGuysProductUrl,
   parsePartnerizeFeedCsv,
   writeCatalogPartnerizeTracking,

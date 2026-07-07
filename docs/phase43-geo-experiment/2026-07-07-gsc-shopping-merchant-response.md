@@ -60,6 +60,19 @@ Keep the current conservative schema posture:
 - Do not add Product schema to fit-check, guide, compare, or brand pages.
 - Let the recrawl requests submitted on 2026-07-07 refresh stale GSC Product summary evidence first.
 
+## Partnerize / The Good Guys Evidence
+
+The Good Guys Australia Partnerize campaign is active for FitAppliance and has real commercial terms:
+
+- Cookie period: 7 days.
+- Core FitAppliance appliance categories shown in the campaign rates are generally 3% CPA: white goods, fridges and freezers, laundry, cooking and dishwashers.
+- Excluded brands include Apple, Playstation 5, Xbox, Nintendo, Asko, Miele, and Loewe.
+- Excluded product/transaction cases include gift cards, service extras, home services, some "Shipped by Supplier" Fisher & Paykel and Smeg products, physical store transactions, phone sales, Pay Less Chat, commercial site orders, marketplace orders, and coupon codes intended for another affiliate.
+
+This supports the current affiliate catalog model, but it still does not make FitAppliance the merchant of record. Partnerize feed rows can provide price, availability, and affiliate-link evidence for Product/Offer markup, but they should not be treated as proof that FitAppliance itself sells, ships, or accepts returns for the product.
+
+Implementation guardrail: `scripts/affiliate/partnerize-tgg.js` stores the TGG campaign terms as code constants. Future TGG imports preserve excluded-brand product links for user utility, but mark them as zero-commission instead of counting them as commission-eligible or Merchant/Shopping proof.
+
 If Shopping/free listings becomes a business goal, treat it as a separate Merchant Center project with explicit owner approval:
 
 - Decide whether FitAppliance is legally and operationally a merchant, affiliate catalog, or comparison/referral site.
