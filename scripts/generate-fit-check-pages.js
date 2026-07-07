@@ -516,7 +516,7 @@ function buildFitCheckGeoBlocks(product, cavityW, verdict) {
         {
           label: `${name} product dimensions`,
           href: `/products/${getProductPageSlug(product)}`,
-          detail: `${product.w}mm wide, ${product.h}mm high, ${product.d}mm deep`
+          detail: `W ${product.w}mm / H ${product.h}mm / D ${product.d}mm`
         },
         {
           label: `${category} sizing guide`,

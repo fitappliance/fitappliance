@@ -228,6 +228,8 @@ describe('fit-check page generator', () => {
       assert.match(treatmentHtml, /href="\/products\/fisher-paykel-dw60uzt4b2-dishwasher-adw0956"/);
       assert.match(treatmentHtml, /href="\/guides\/dishwasher-cavity-sizing"/);
       assert.match(treatmentHtml, /href="#product-dimensions"/);
+      assert.match(treatmentHtml, new RegExp(`W ${treatmentProduct.w}mm / H ${treatmentProduct.h}mm / D ${treatmentProduct.d}mm`));
+      assert.doesNotMatch(treatmentHtml, /85% of users|trim cabinetry|cut cabinetry|zero-click|guaranteed/i);
       assert.ok(treatmentSchemas.every((entry) => entry['@type'] !== 'Product'), 'fit-check treatment must not add Product schema');
       assert.ok(faqSchema.mainEntity.some((row) => row.acceptedAnswer.text.includes(`${treatmentProduct.w}mm`)));
       assert.match(treatmentHtml, new RegExp(`<td>${treatmentProduct.w}mm</td>`));
