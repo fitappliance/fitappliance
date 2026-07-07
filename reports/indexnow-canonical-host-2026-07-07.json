@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "report_date": "2026-07-07",
+  "host": "www.fitappliance.com.au",
+  "includePrefix": null,
+  "selection": {
+    "includePrefix": null,
+    "manifestPath": null,
+    "manifestRouteCount": null,
+    "changedFrom": "41ed71d8",
+    "changedFileCount": 14,
+    "dryRun": false
+  },
+  "urlCount": 5,
+  "urls": [
+    "https://www.fitappliance.com.au/guides/appliance-fit-sizing-handbook",
+    "https://www.fitappliance.com.au/guides/dishwasher-cavity-sizing",
+    "https://www.fitappliance.com.au/guides/dryer-ventilation-guide",
+    "https://www.fitappliance.com.au/guides/fridge-clearance-requirements",
+    "https://www.fitappliance.com.au/guides/washing-machine-doorway-access"
+  ],
+  "selectedRoutes": [
+    "/guides/appliance-fit-sizing-handbook",
+    "/guides/dishwasher-cavity-sizing",
+    "/guides/dryer-ventilation-guide",
+    "/guides/fridge-clearance-requirements",
+    "/guides/washing-machine-doorway-access"
+  ],
+  "responses": [
+    {
+      "engine": "IndexNow API",
+      "endpoint": "https://api.indexnow.org/IndexNow",
+      "statusCode": 200,
+      "ok": true,
+      "body": ""
+    },
+    {
+      "engine": "Bing",
+      "endpoint": "https://www.bing.com/indexnow",
+      "statusCode": 200,
+      "ok": true,
+      "body": ""
+    }
+  ]
+}

@@ -10,7 +10,8 @@ const {
   buildIndexNowPayload,
   filterSitemapUrls,
   parseArgs,
-  pingIndexNow
+  pingIndexNow,
+  toDateStamp
 } = require('../scripts/ping-indexnow.js');
 
 const key = '1234567890abcdef1234567890abcdef';
@@ -76,6 +77,59 @@ test('phase 54 A3 IndexNow ping writes per-engine response report without real n
   assert.equal(report.urlCount, 1);
   assert.deepEqual(report.responses.map((row) => row.statusCode), [200, 200]);
   assert.equal(written.responses[1].engine, 'Yandex');
+});
+
+test('IndexNow report date defaults to the run date instead of a stale constant', async () => {
+  const repoRoot = await mkdtemp(path.join(tmpdir(), 'fitappliance-indexnow-date-'));
+  const publicDir = path.join(repoRoot, 'public');
+  const keyPath = path.join(repoRoot, '.indexnow-key');
+  const sitemapPath = path.join(publicDir, 'sitemap.xml');
+
+  await mkdir(publicDir, { recursive: true });
+  await writeFile(keyPath, `${key}\n`, 'utf8');
+  await writeFile(sitemapPath, [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset>',
+    '<url><loc>https://www.fitappliance.com.au/guides/fridge-clearance-requirements</loc></url>',
+    '</urlset>'
+  ].join('\n'), 'utf8');
+
+  const before = toDateStamp();
+  const report = await pingIndexNow({
+    keyFile: keyPath,
+    sitemapPath,
+    requester: async () => ({ statusCode: 200, body: 'OK' }),
+    logger: { log() {}, error() {} }
+  });
+  const after = toDateStamp();
+
+  assert.ok([before, after].includes(report.report_date), `unexpected report_date ${report.report_date}`);
+});
+
+test('IndexNow report date can be injected for deterministic scheduled runs', async () => {
+  const repoRoot = await mkdtemp(path.join(tmpdir(), 'fitappliance-indexnow-date-injected-'));
+  const publicDir = path.join(repoRoot, 'public');
+  const keyPath = path.join(repoRoot, '.indexnow-key');
+  const sitemapPath = path.join(publicDir, 'sitemap.xml');
+
+  await mkdir(publicDir, { recursive: true });
+  await writeFile(keyPath, `${key}\n`, 'utf8');
+  await writeFile(sitemapPath, [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset>',
+    '<url><loc>https://www.fitappliance.com.au/guides/fridge-clearance-requirements</loc></url>',
+    '</urlset>'
+  ].join('\n'), 'utf8');
+
+  const report = await pingIndexNow({
+    keyFile: keyPath,
+    sitemapPath,
+    reportDate: '2026-07-07',
+    requester: async () => ({ statusCode: 200, body: 'OK' }),
+    logger: { log() {}, error() {} }
+  });
+
+  assert.equal(report.report_date, '2026-07-07');
 });
 
 test('phase 43 GEO IndexNow manifest mode selects only experiment routes', async () => {

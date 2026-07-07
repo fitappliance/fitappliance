@@ -10,12 +10,19 @@ const HOST = 'www.fitappliance.com.au';
 const REPO_ROOT = path.resolve(__dirname, '..');
 const KEY_FILE = path.join(__dirname, '..', '.indexnow-key');
 const SITEMAP = path.join(__dirname, '..', 'public', 'sitemap.xml');
-const DEFAULT_REPORT_DATE = '2026-05-08';
 const ENDPOINTS = {
   api: { name: 'IndexNow API', hostname: 'api.indexnow.org', path: '/IndexNow' },
   bing: { name: 'Bing', hostname: 'www.bing.com', path: '/indexnow' },
   yandex: { name: 'Yandex', hostname: 'yandex.com', path: '/indexnow' }
 };
+
+function toDateStamp(now = new Date()) {
+  const date = now instanceof Date ? now : new Date(now);
+  if (Number.isNaN(date.getTime())) {
+    throw new Error('[indexnow] Invalid report date');
+  }
+  return date.toISOString().slice(0, 10);
+}
 
 function parseSitemapUrls(xmlText) {
   return [...xmlText.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
@@ -187,7 +194,7 @@ async function pingIndexNow({
   dryRun = false,
   endpoints = [ENDPOINTS.api],
   reportPath = null,
-  reportDate = DEFAULT_REPORT_DATE,
+  reportDate = toDateStamp(),
   requester = postJson,
   logger = console
 } = {}) {
@@ -305,5 +312,6 @@ module.exports = {
   loadManifestRoutes,
   parseArgs,
   parseSitemapUrls,
-  pingIndexNow
+  pingIndexNow,
+  toDateStamp
 };
