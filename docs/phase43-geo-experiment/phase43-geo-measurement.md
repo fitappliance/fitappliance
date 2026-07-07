@@ -2,11 +2,23 @@
 
 Phase 43 measures whether evidence-first guide and fit-check pages gain visibility in Search Console Generative AI exports and manual AI citation checks.
 
+## Phase 0 Baseline
+
+The frozen query set is `data/geo-query-set.json`. It records the baseline window, observation window, engines, AU locale/device scope, and raw evidence fields required for manual citation checks.
+
+Run the baseline report before interpreting GEO changes:
+
+```bash
+npm run geo-baseline-report -- --no-write
+```
+
 ## Weekly Commands
 
 Run these commands from the repository root:
 
 ```bash
+npm run geo-baseline-report -- --no-write
+npm run audit-geo-metadata -- --strict-treatment
 npm run gsc-fetch
 npm run keyword-gap
 npm run gsc-genai-import -- --input-dir reports/gsc-genai-exports
@@ -35,6 +47,8 @@ For manual checks, record the exact prompt, engine, country, device, expected ro
 
 Do not expand the treatment set until these checks pass:
 
+- `npm run geo-baseline-report -- --no-write`
+- `npm run audit-geo-metadata -- --strict-treatment`
 - `npm run audit-dimension-axis -- --strict`
 - `npm run validate-schema`
 - `node --test tests/geo-treatment-cohort.test.mjs tests/fit-check-pages.test.mjs tests/fit-check-schema-audit.test.mjs`

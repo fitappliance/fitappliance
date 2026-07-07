@@ -1,0 +1,338 @@
+{
+  "schema_version": 1,
+  "experiment": "phase43-geo",
+  "frozen_at": "2026-07-07",
+  "timezone": "Australia/Perth",
+  "baseline": {
+    "start_date": "2026-06-23",
+    "end_date": "2026-07-06",
+    "source": "pre-remediation snapshot"
+  },
+  "observation": {
+    "start_date": "2026-07-07",
+    "minimum_days": 28,
+    "review_days": [
+      14,
+      28,
+      56
+    ]
+  },
+  "engines": [
+    "google_ai_overviews",
+    "google_ai_mode",
+    "perplexity",
+    "chatgpt_browsing"
+  ],
+  "capture_requirements": {
+    "country": "AU",
+    "locale": "en-AU",
+    "device": "desktop",
+    "requires_raw_answer": true,
+    "requires_cited_url": true,
+    "requires_canonical_route": true,
+    "requires_observed_at": true,
+    "requires_evidence_path": true
+  },
+  "queries": [
+    {
+      "id": "guide-fridge-clearance-au",
+      "query": "How much clearance does a fridge need in Australia?",
+      "intent": "informational",
+      "template": "guide",
+      "measurement_bucket": "guide-core",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [
+        "/guides/fridge-clearance-requirements"
+      ],
+      "control_routes": [],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    },
+    {
+      "id": "guide-dishwasher-cavity-au",
+      "query": "Will a 600mm dishwasher fit a 600mm cavity?",
+      "intent": "informational",
+      "template": "guide",
+      "measurement_bucket": "guide-core",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [
+        "/guides/dishwasher-cavity-sizing"
+      ],
+      "control_routes": [],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    },
+    {
+      "id": "guide-washing-machine-doorway-au",
+      "query": "Can a washing machine fit through a 600mm doorway?",
+      "intent": "informational",
+      "template": "guide",
+      "measurement_bucket": "guide-core",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [
+        "/guides/washing-machine-doorway-access"
+      ],
+      "control_routes": [],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    },
+    {
+      "id": "guide-dryer-ventilation-au",
+      "query": "Which dryer type fits a small laundry?",
+      "intent": "informational",
+      "template": "guide",
+      "measurement_bucket": "guide-core",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [
+        "/guides/dryer-ventilation-guide"
+      ],
+      "control_routes": [],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    },
+    {
+      "id": "guide-appliance-sizing-handbook-au",
+      "query": "How do I check appliance dimensions before delivery?",
+      "intent": "informational",
+      "template": "guide",
+      "measurement_bucket": "guide-core",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [
+        "/guides/appliance-fit-sizing-handbook"
+      ],
+      "control_routes": [],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    },
+    {
+      "id": "fit-check-dishwasher-640-dw60uzt4b2",
+      "query": "Will the Fisher & Paykel DW60UZT4B2 fit a 640mm cavity?",
+      "intent": "fit-check",
+      "template": "fit-check",
+      "measurement_bucket": "fit-check-dishwasher-640",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [
+        "/fit-check/fisher-and-paykel-dw60uzt4b2-in-640mm-cavity"
+      ],
+      "control_routes": [],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    },
+    {
+      "id": "fit-check-fridge-900-rf500qnux1",
+      "query": "Will the Fisher & Paykel RF500QNUX1 fit a 900mm cavity?",
+      "intent": "fit-check",
+      "template": "fit-check",
+      "measurement_bucket": "fit-check-fridge-900",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [
+        "/fit-check/fisher-and-paykel-rf500qnux1-in-900mm-cavity"
+      ],
+      "control_routes": [],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    },
+    {
+      "id": "fit-check-washing-machine-640-ewf1043r7wc",
+      "query": "Will the Electrolux EWF1043R7WC fit a 640mm cavity?",
+      "intent": "fit-check",
+      "template": "fit-check",
+      "measurement_bucket": "fit-check-washing-machine-640",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [
+        "/fit-check/electrolux-ewf1043r7wc-in-640mm-cavity"
+      ],
+      "control_routes": [],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    },
+    {
+      "id": "fit-check-dishwasher-620-dw60uzt4b2",
+      "query": "Will the Fisher & Paykel DW60UZT4B2 fit a 620mm cavity?",
+      "intent": "fit-check",
+      "template": "fit-check",
+      "measurement_bucket": "fit-check-dishwasher-620",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [
+        "/fit-check/fisher-and-paykel-dw60uzt4b2-in-620mm-cavity"
+      ],
+      "control_routes": [],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    },
+    {
+      "id": "fit-check-washing-machine-540-ewf1043r7wc",
+      "query": "Will the Electrolux EWF1043R7WC fit a 540mm cavity?",
+      "intent": "fit-check",
+      "template": "fit-check",
+      "measurement_bucket": "fit-check-washing-machine-540",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [
+        "/fit-check/electrolux-ewf1043r7wc-in-540mm-cavity"
+      ],
+      "control_routes": [],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    },
+    {
+      "id": "control-fit-check-dishwasher-640-dw60ut4i2",
+      "query": "Will the Fisher & Paykel DW60UT4I2 fit a 640mm cavity?",
+      "intent": "fit-check",
+      "template": "fit-check",
+      "measurement_bucket": "fit-check-dishwasher-640",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [],
+      "control_routes": [
+        "/fit-check/fisher-and-paykel-dw60ut4i2-in-640mm-cavity"
+      ],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    },
+    {
+      "id": "control-fit-check-fridge-900-rf500qnx1",
+      "query": "Will the Fisher & Paykel RF500QNX1 fit a 900mm cavity?",
+      "intent": "fit-check",
+      "template": "fit-check",
+      "measurement_bucket": "fit-check-fridge-900",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [],
+      "control_routes": [
+        "/fit-check/fisher-and-paykel-rf500qnx1-in-900mm-cavity"
+      ],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    },
+    {
+      "id": "control-fit-check-washing-machine-620-ewf1043r7wc",
+      "query": "Will the Electrolux EWF1043R7WC fit a 620mm cavity?",
+      "intent": "fit-check",
+      "template": "fit-check",
+      "measurement_bucket": "fit-check-washing-machine-620",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [],
+      "control_routes": [
+        "/fit-check/electrolux-ewf1043r7wc-in-620mm-cavity"
+      ],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    },
+    {
+      "id": "control-fit-check-dishwasher-620-dw60ut4i2",
+      "query": "Will the Fisher & Paykel DW60UT4I2 fit a 620mm cavity?",
+      "intent": "fit-check",
+      "template": "fit-check",
+      "measurement_bucket": "fit-check-dishwasher-620",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [],
+      "control_routes": [
+        "/fit-check/fisher-and-paykel-dw60ut4i2-in-620mm-cavity"
+      ],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    },
+    {
+      "id": "control-fit-check-dishwasher-540-dw60ut4i2",
+      "query": "Will the Fisher & Paykel DW60UT4I2 fit a 540mm cavity?",
+      "intent": "fit-check",
+      "template": "fit-check",
+      "measurement_bucket": "fit-check-dishwasher-540",
+      "country": "AU",
+      "locale": "en-AU",
+      "device": "desktop",
+      "treatment_routes": [],
+      "control_routes": [
+        "/fit-check/fisher-and-paykel-dw60ut4i2-in-540mm-cavity"
+      ],
+      "engines": [
+        "google_ai_overviews",
+        "google_ai_mode",
+        "perplexity",
+        "chatgpt_browsing"
+      ]
+    }
+  ]
+}
