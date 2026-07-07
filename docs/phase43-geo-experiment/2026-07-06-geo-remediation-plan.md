@@ -304,7 +304,7 @@ npm run audit-dimension-axis -- --strict
 npm run gsc-fetch
 npm run keyword-gap
 npm run gsc-genai-import -- --input-dir reports/gsc-genai-exports
-node scripts/generate-geo-measurement-report.js
+npm run geo-measurement-report -- --no-write
 ```
 
 ## Phase E: IndexNow and Crawl Notification
@@ -380,7 +380,7 @@ If Phase D is implemented:
 
 ```text
 npm run geo-baseline-report -- --no-write
-node scripts/generate-geo-measurement-report.js
+npm run geo-measurement-report -- --no-write
 ```
 
 ## Suggested Implementation Order

@@ -22,6 +22,7 @@ npm run audit-geo-metadata -- --strict-treatment
 npm run gsc-fetch
 npm run keyword-gap
 npm run gsc-genai-import -- --input-dir reports/gsc-genai-exports
+npm run geo-measurement-report -- --no-write
 npm run audit-dimension-axis -- --strict
 npm run validate-schema
 ```
@@ -37,6 +38,8 @@ Date,Impressions
 
 The default output is `reports/gsc-genai-import/latest.json`.
 
+The measurement join report writes to `reports/geo/measurement-latest.json` by default. It compares treatment and control routes by `measurement_bucket` and treats manual citations as useful only when the expected route, cited route, required observation fields, and `claim_status` all support the cited answer.
+
 ## Fallback
 
 Search Console Generative AI report access may be unavailable for the property during rollout. If that happens, use `docs/phase43-geo-experiment/geo-ai-citation-log.csv` for manual citation checks and keep reviewing standard GSC query/page rows from `npm run gsc-fetch` and `npm run keyword-gap`.
@@ -49,6 +52,7 @@ Do not expand the treatment set until these checks pass:
 
 - `npm run geo-baseline-report -- --no-write`
 - `npm run audit-geo-metadata -- --strict-treatment`
+- `npm run geo-measurement-report -- --no-write`
 - `npm run audit-dimension-axis -- --strict`
 - `npm run validate-schema`
 - `node --test tests/geo-treatment-cohort.test.mjs tests/fit-check-pages.test.mjs tests/fit-check-schema-audit.test.mjs`
