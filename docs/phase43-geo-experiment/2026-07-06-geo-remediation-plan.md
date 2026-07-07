@@ -54,7 +54,10 @@ Verified on 2026-07-06 from `/Users/clawdbot_jz/Documents/Claude/Projects/Fitmya
   - `blocks=7191`
   - `errors=0`
 - `npm run gsc-indexing-audit`
-  - `PASS sitemap=2345 products=1754`
+  - 2026-07-06 baseline: `PASS sitemap=2345 products=1754`
+  - 2026-07-07 GSC reset: `PASS sitemap=1960 products=1754`
+- `npm run audit-indexability-policy`
+  - 2026-07-07 GSC reset: `PASS sitemap=1960 sitemapViolations=0 missingNoindex=0`
 - Existing Phase43 treatment/control manifest: `data/geo-treatment-pages.json`
   - 5 guide treatment pages
   - 5 fit-check treatment pages
@@ -84,6 +87,7 @@ Verified on 2026-07-06 from `/Users/clawdbot_jz/Documents/Claude/Projects/Fitmya
 - Do not use a 120-word meta description rule. That is too long and likely to be truncated.
 - Do not rely on `.claude` or `.openclaw_context` as the enforcement layer for project rules.
 - Do not treat IndexNow submission as proof of indexing, ranking, or AI citation.
+- Do not expand programmatic GEO pages while GSC is reporting `Crawled - currently not indexed` samples from those same page families. Follow `docs/phase43-geo-experiment/2026-07-07-gsc-indexability-reset.md` first.
 
 ### Accepted with changes
 

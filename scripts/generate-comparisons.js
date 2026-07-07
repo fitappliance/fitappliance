@@ -10,6 +10,7 @@ const { displayBrandName } = require('./utils/brand-utils.js');
 const { loadProvidersFromFile, resolveAffiliateLinkForProduct } = require('./render-affiliate-links.js');
 const { canonicalizeProducts, canonicalizeRuleDocument } = require('./brand-canon.js');
 const { FIXED_EPOCH_ISO, toIsoDateStart } = require('./common/file-dates.js');
+const { robotsMetaTagForRoute } = require('./common/indexability-policy.js');
 const { isRetailerProductPageUrl } = require('../public/scripts/search-core.js');
 
 const CATEGORY_META = {
@@ -525,7 +526,10 @@ function buildComparisonPageHtml({
     description,
     modifiedTime: lastUpdated,
     canonical,
-    extraMeta: `  ${buildSocialMetaTags({ title, description, canonical, ogImageUrl })}`
+    extraMeta: [
+      `  ${buildSocialMetaTags({ title, description, canonical, ogImageUrl })}`,
+      robotsMetaTagForRoute(`/compare/${slug}`, { modelsA, modelsB, cat })
+    ].filter(Boolean).join('\n')
   });
 
   return `<!doctype html>

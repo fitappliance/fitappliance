@@ -8,6 +8,7 @@ const { buildHtmlHead, escHtml } = require('./common/html-head.js');
 const { stringifyJsonLd } = require('./common/schema-jsonld.js');
 const { slugNormalize } = require('./common/slug-normalize.js');
 const { displayBrandName } = require('./utils/brand-utils.js');
+const { robotsMetaTagForRoute } = require('./common/indexability-policy.js');
 
 const CATEGORY_META = {
   fridge: { slug: 'fridge', label: 'fridge', plural: 'fridges' },
@@ -255,7 +256,12 @@ ${buildHtmlHead({
   title,
   description,
   canonical,
-  modifiedTime: lastUpdated
+  modifiedTime: lastUpdated,
+  extraMeta: robotsMetaTagForRoute(`/compare/${row.slug}`, {
+    modelsA: row.brandA.count,
+    modelsB: row.brandB.count,
+    cat: row.cat
+  })
 })}
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/styles-deferred.css">

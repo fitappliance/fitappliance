@@ -23,6 +23,7 @@ test('GSC CTR: cavity pages use search-aligned titles without Product schema', (
   const html = fs.readFileSync(path.join(process.cwd(), 'pages', 'cavity', '600mm-fridge.html'), 'utf8');
   assert.match(html, /<title>600mm Fridge Cavity: Fridges That Fit 600mm-Wide Spaces \| FitAppliance<\/title>/);
   assert.match(html, /<meta name="description" content="Find \d+ fridges that fit a 600mm wide Australian kitchen cavity after clearance checks\./);
+  assert.match(html, /<meta name="robots" content="noindex, follow">/);
 
   const schemas = extractJsonLdBlocks(html);
   assert.equal(schemas.some((schema) => schema['@type'] === 'Product'), false);
@@ -46,14 +47,15 @@ test('doorway pages generated for common widths', () => {
 test('GSC CTR: doorway pages use delivery-intent titles without Product schema', () => {
   const html = fs.readFileSync(path.join(process.cwd(), 'pages', 'doorway', '700mm-fridge-doorway.html'), 'utf8');
   assert.match(html, /<title>700mm Doorway Fridge Delivery Check \| Models That Fit \| FitAppliance<\/title>/);
+  assert.match(html, /<meta name="robots" content="noindex, follow">/);
 
   const schemas = extractJsonLdBlocks(html);
   assert.equal(schemas.some((schema) => schema['@type'] === 'Product'), false);
   assert.ok(schemas.some((schema) => schema['@type'] === 'CollectionPage'));
 });
 
-test('sitemap includes cavity and doorway pages', () => {
+test('GSC indexability: sitemap omits held cavity and doorway pages', () => {
   const sitemap = fs.readFileSync(path.join(process.cwd(), 'public', 'sitemap.xml'), 'utf8');
-  assert.match(sitemap, /\/cavity\//);
-  assert.match(sitemap, /\/doorway\//);
+  assert.doesNotMatch(sitemap, /\/cavity\//);
+  assert.doesNotMatch(sitemap, /\/doorway\//);
 });

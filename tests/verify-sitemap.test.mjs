@@ -54,7 +54,7 @@ test('phase 43a quick wins: verify-sitemap fails when one expected route is miss
   });
 
   assert.equal(result.ok, false);
-  assert.deepEqual(result.missing, ['/brands/lg-fridge-clearance', '/tools/fit-checker']);
+  assert.deepEqual(result.missing, ['/tools/fit-checker']);
 });
 
 test('phase 54 fit-check pages: verify-sitemap expects generated fit-check routes', async () => {
@@ -88,4 +88,35 @@ test('technical SEO: verify-sitemap expects generated product routes', async () 
 
   assert.equal(expectedRoutes.has('/products/lg-wwt-1910bx-washtower'), true);
   assert.equal(expectedRoutes.has('/products/index'), false);
+});
+
+test('GSC indexability: verify-sitemap does not require policy-held thin brand routes', async () => {
+  const { collectExpectedRoutes } = await import(moduleUrl);
+  const root = await makeWorkspace();
+  await fs.writeFile(
+    path.join(root, 'pages', 'brands', 'index.json'),
+    JSON.stringify([
+      {
+        brand: 'Comfee',
+        cat: 'dishwasher',
+        slug: 'comfee-dishwasher-clearance',
+        url: '/brands/comfee-dishwasher-clearance',
+        models: 5
+      },
+      {
+        brand: 'ASKO',
+        cat: 'dishwasher',
+        slug: 'asko-dishwasher-clearance',
+        url: '/brands/asko-dishwasher-clearance',
+        models: 10
+      }
+    ], null, 2)
+  );
+  await fs.writeFile(path.join(root, 'pages', 'brands', 'comfee-dishwasher-clearance.html'), '<!doctype html>');
+  await fs.writeFile(path.join(root, 'pages', 'brands', 'asko-dishwasher-clearance.html'), '<!doctype html>');
+
+  const expectedRoutes = await collectExpectedRoutes(root);
+
+  assert.equal(expectedRoutes.has('/brands/comfee-dishwasher-clearance'), false);
+  assert.equal(expectedRoutes.has('/brands/asko-dishwasher-clearance'), true);
 });

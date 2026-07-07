@@ -8,6 +8,7 @@ const { buildHreflangLinks } = require('./common/html-head.js');
 const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
 const { toIsoDateStart } = require('./common/file-dates.js');
 const { canonicalizeProducts } = require('./brand-canon.js');
+const { robotsMetaTagForRoute } = require('./common/indexability-policy.js');
 
 const CATEGORY_ROWS = [
   { slug: 'dishwasher', label: 'Dishwasher', cat: 'dishwasher' },
@@ -256,6 +257,7 @@ function buildPageHtml({
   const title = `${h1} | FitAppliance`;
   const description = `${category.label} installation resources for ${city.name}, ${city.stateCode}. Browse cavity and doorway fit guides with links to brand clearance pages.`;
   const canonical = `${SITE_ORIGIN}/location/${city.slug}/${category.slug}`;
+  const robotsMeta = robotsMetaTagForRoute(`/location/${city.slug}/${category.slug}`, { models: categoryCount });
 
   const breadcrumbJsonLd = JSON.stringify(buildBreadcrumbJsonLd(city, category), null, 2);
   const itemListJsonLd = JSON.stringify(buildItemListJsonLd(city, category, links), null, 2);
@@ -283,6 +285,7 @@ function buildPageHtml({
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escHtml(title)}</title>
   <meta name="description" content="${escHtml(description)}">
+${robotsMeta}
   <meta name="article:modified_time" content="${escHtml(modifiedTime)}">
   <link rel="canonical" href="${canonical}">
 ${buildHreflangLinks(canonical)}

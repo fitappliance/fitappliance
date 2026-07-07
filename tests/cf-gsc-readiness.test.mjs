@@ -65,7 +65,7 @@ test('GSC readiness: sitemap pages are crawlable, canonicalized, and reportable'
   });
 
   assert.equal(result.ok, true);
-  assert.ok(result.summary.sitemapUrls >= 2300, `expected a large sitemap, got ${result.summary.sitemapUrls}`);
+  assert.ok(result.summary.sitemapUrls >= 1900, `expected a policy-filtered sitemap with product coverage, got ${result.summary.sitemapUrls}`);
   assert.ok(result.summary.productUrls >= 1500, `expected product URLs, got ${result.summary.productUrls}`);
   assert.equal(result.issues.missingFiles.length, 0);
   assert.equal(result.issues.noindex.length, 0);

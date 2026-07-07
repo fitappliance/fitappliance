@@ -4,6 +4,7 @@ const path = require('node:path');
 const { readFile } = require('node:fs/promises');
 const { existsSync } = require('node:fs');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
+const { isIndexableRoute, loadIndexabilityPolicy, normalizeRoute } = require('./common/indexability-policy.js');
 
 const STATIC_PAGE_ROUTES = [
   '/',
@@ -20,11 +21,6 @@ const STATIC_PAGE_ROUTES = [
   '/tools/fit-checker'
 ];
 
-function normalizeRoute(route) {
-  if (!route) return '/';
-  return route === '/' ? route : route.replace(/\/+$/, '');
-}
-
 function extractSitemapRoutes(xml) {
   return new Set(
     Array.from(xml.matchAll(/<loc>(.*?)<\/loc>/g))
@@ -35,8 +31,50 @@ function extractSitemapRoutes(xml) {
   );
 }
 
+async function readJsonIfExists(filePath, fallback = []) {
+  try {
+    return JSON.parse(await readFile(filePath, 'utf8'));
+  } catch (error) {
+    if (error && error.code === 'ENOENT') return fallback;
+    throw error;
+  }
+}
+
+async function loadRouteAttributes(repoRoot) {
+  const attributes = new Map();
+  const brandRows = await readJsonIfExists(path.join(repoRoot, 'pages', 'brands', 'index.json'));
+  const compareRows = await readJsonIfExists(path.join(repoRoot, 'pages', 'compare', 'index.json'));
+
+  for (const row of Array.isArray(brandRows) ? brandRows : []) {
+    attributes.set(normalizeRoute(row.url ?? `/brands/${row.slug}`), {
+      models: Number(row.models ?? row.count ?? 0),
+      cat: row.cat,
+      brand: row.brand
+    });
+  }
+
+  for (const row of Array.isArray(compareRows) ? compareRows : []) {
+    attributes.set(normalizeRoute(row.url ?? `/compare/${row.slug}`), {
+      modelsA: Number(row.modelsA ?? 0),
+      modelsB: Number(row.modelsB ?? 0),
+      cat: row.cat
+    });
+  }
+
+  return attributes;
+}
+
 async function collectExpectedRoutes(repoRoot) {
   const expected = new Set(STATIC_PAGE_ROUTES);
+  const policy = loadIndexabilityPolicy(path.join(repoRoot, 'data', 'indexability-policy.json'));
+  const routeAttributes = await loadRouteAttributes(repoRoot);
+
+  const addRoute = (route) => {
+    const normalizedRoute = normalizeRoute(route);
+    if (isIndexableRoute(normalizedRoute, routeAttributes.get(normalizedRoute) ?? {}, policy)) {
+      expected.add(normalizedRoute);
+    }
+  };
 
   const pagesDir = path.join(repoRoot, 'pages');
   if (!existsSync(pagesDir)) {
@@ -65,15 +103,15 @@ async function collectExpectedRoutes(repoRoot) {
         || rel === 'about/editorial-standards.html') {
         continue;
       }
-      if (rel.startsWith('brands/')) expected.add(`/brands/${rel.slice('brands/'.length, -5)}`);
-      else if (rel.startsWith('compare/')) expected.add(`/compare/${rel.slice('compare/'.length, -5)}`);
-      else if (rel.startsWith('cavity/')) expected.add(`/cavity/${rel.slice('cavity/'.length, -5)}`);
-      else if (rel.startsWith('doorway/')) expected.add(`/doorway/${rel.slice('doorway/'.length, -5)}`);
-      else if (rel.startsWith('fit-check/')) expected.add(`/fit-check/${rel.slice('fit-check/'.length, -5)}`);
-      else if (rel.startsWith('guides/')) expected.add(`/guides/${rel.slice('guides/'.length, -5)}`);
-      else if (rel.startsWith('location/')) expected.add(`/${rel.slice(0, -5)}`);
-      else if (rel.startsWith('products/')) expected.add(`/products/${rel.slice('products/'.length, -5)}`);
-      else if (rel.startsWith('tools/')) expected.add(`/tools/${rel.slice('tools/'.length, -5)}`);
+      if (rel.startsWith('brands/')) addRoute(`/brands/${rel.slice('brands/'.length, -5)}`);
+      else if (rel.startsWith('compare/')) addRoute(`/compare/${rel.slice('compare/'.length, -5)}`);
+      else if (rel.startsWith('cavity/')) addRoute(`/cavity/${rel.slice('cavity/'.length, -5)}`);
+      else if (rel.startsWith('doorway/')) addRoute(`/doorway/${rel.slice('doorway/'.length, -5)}`);
+      else if (rel.startsWith('fit-check/')) addRoute(`/fit-check/${rel.slice('fit-check/'.length, -5)}`);
+      else if (rel.startsWith('guides/')) addRoute(`/guides/${rel.slice('guides/'.length, -5)}`);
+      else if (rel.startsWith('location/')) addRoute(`/${rel.slice(0, -5)}`);
+      else if (rel.startsWith('products/')) addRoute(`/products/${rel.slice('products/'.length, -5)}`);
+      else if (rel.startsWith('tools/')) addRoute(`/tools/${rel.slice('tools/'.length, -5)}`);
     }
   }
 

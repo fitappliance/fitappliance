@@ -17,6 +17,7 @@ const {
 } = require('./generate-measurement-content');
 const { displayBrandName } = require('./utils/brand-utils.js');
 const { toIsoDateStart } = require('./common/file-dates.js');
+const { robotsMetaTagForRoute } = require('./common/indexability-policy.js');
 
 const MIN_WIDTH = 500;
 const MAX_WIDTH = 1100;
@@ -170,6 +171,7 @@ function buildPageHtml({
   const collectionPageJsonLd = JSON.stringify(buildCollectionPageJsonLd(width, resultCount), null, 2);
   const speakableJsonLd = JSON.stringify(buildSpeakableJsonLd(`/cavity/${width}mm-fridge`), null, 2);
   const howToSchemaJsonLd = JSON.stringify(howToJsonLd, null, 2);
+  const robotsMeta = robotsMetaTagForRoute(`/cavity/${width}mm-fridge`, { results: resultCount });
 
   return `<!doctype html>
 <html lang="en-AU">
@@ -178,6 +180,7 @@ function buildPageHtml({
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escHtml(title)}</title>
   <meta name="description" content="${escHtml(description)}">
+${robotsMeta}
   <meta name="article:modified_time" content="${escHtml(modifiedTime)}">
   <link rel="canonical" href="${canonical}">
 ${buildHreflangLinks(canonical)}

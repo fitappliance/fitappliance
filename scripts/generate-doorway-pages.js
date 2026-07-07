@@ -6,6 +6,7 @@ const { mkdir, readdir, readFile, rm, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { buildHreflangLinks } = require('./common/html-head.js');
 const { toIsoDateStart } = require('./common/file-dates.js');
+const { robotsMetaTagForRoute } = require('./common/indexability-policy.js');
 const { canonicalizeProducts } = require('./brand-canon.js');
 
 const MIN_DOORWAY = 600;
@@ -140,6 +141,7 @@ function buildPageHtml({ doorway, matched, adjacentDoorways, relatedDoorways, mo
   const breadcrumbJsonLd = JSON.stringify(buildBreadcrumbJsonLd(doorway), null, 2);
   const collectionPageJsonLd = JSON.stringify(buildCollectionPageJsonLd(doorway, matched), null, 2);
   const speakableJsonLd = JSON.stringify(buildSpeakableJsonLd(doorway), null, 2);
+  const robotsMeta = robotsMetaTagForRoute(`/doorway/${doorway}mm-fridge-doorway`, { results: matched.length });
 
   return `<!doctype html>
 <html lang="en-AU">
@@ -148,6 +150,7 @@ function buildPageHtml({ doorway, matched, adjacentDoorways, relatedDoorways, mo
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escHtml(title)}</title>
   <meta name="description" content="${escHtml(description)}">
+${robotsMeta}
   <meta name="article:modified_time" content="${escHtml(modifiedTime)}">
   <link rel="canonical" href="${canonical}">
 ${buildHreflangLinks(canonical)}

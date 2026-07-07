@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-07",
+  "default_action": "noindex",
+  "notes": [
+    "GSC-first crawl budget policy: keep only pages with enough unique value in the XML sitemap.",
+    "Held pages remain crawlable with noindex, follow so Google can see canonicals and internal links.",
+    "Homepage query URLs are treated as application states, not canonical landing pages."
+  ],
+  "blocked_query_param_sets": [
+    {
+      "route": "/",
+      "required_any": ["cat", "w", "h", "d", "door", "brand", "compare", "vs"],
+      "action": "blocked-query",
+      "reason": "Fit checker query URLs are app states; canonical value belongs to the homepage or generated guide URLs."
+    }
+  ],
+  "rules": [
+    { "match": "exact", "route": "/", "action": "index", "reason": "Primary fit checker and brand signal." },
+    { "match": "exact", "route": "/affiliate-disclosure", "action": "index", "reason": "Trust and affiliate compliance page." },
+    { "match": "exact", "route": "/privacy", "action": "index", "reason": "Trust page." },
+    { "match": "exact", "route": "/privacy-policy", "action": "index", "reason": "Trust page." },
+    { "match": "exact", "route": "/terms", "action": "index", "reason": "Trust page." },
+    { "match": "exact", "route": "/contact", "action": "index", "reason": "Trust page." },
+    { "match": "exact", "route": "/about", "action": "index", "reason": "Entity and editorial context." },
+    { "match": "exact", "route": "/methodology", "action": "index", "reason": "Explains fit logic and data treatment." },
+    { "match": "exact", "route": "/about/editorial-standards", "action": "index", "reason": "GSC sample kept: trust page with editorial process." },
+    { "match": "exact", "route": "/products", "action": "index", "reason": "Product hub." },
+    { "match": "exact", "route": "/subscribe", "action": "index", "reason": "Newsletter and retention page." },
+    { "match": "exact", "route": "/tools/fit-checker", "action": "index", "reason": "Tool landing page." },
+    { "match": "exact", "route": "/account", "action": "noindex", "reason": "Local device account page is not a public search landing page." },
+    { "match": "prefix", "route": "/guides/", "action": "index", "reason": "Editorial guides are the first-wave GSC content set." },
+    { "match": "prefix", "route": "/fit-check/", "action": "index", "reason": "Measured GEO treatment/control pages." },
+    { "match": "prefix", "route": "/products/", "action": "index", "reason": "Verified product pages keep technical SEO coverage." },
+    {
+      "match": "prefix",
+      "route": "/brands/",
+      "action": "threshold",
+      "min_models": 10,
+      "pass_action": "index",
+      "fail_action": "noindex",
+      "reason": "Brand clearance pages need at least 10 models before sitemap inclusion."
+    },
+    {
+      "match": "prefix",
+      "route": "/compare/",
+      "action": "threshold",
+      "min_total_models": 20,
+      "min_each_models": 5,
+      "pass_action": "index",
+      "fail_action": "noindex",
+      "reason": "Comparison pages need enough coverage on both sides before sitemap inclusion."
+    },
+    { "match": "prefix", "route": "/cavity/", "action": "noindex", "reason": "GSC sample bucket: templated cavity pages are held until expanded with stronger evidence blocks." },
+    { "match": "prefix", "route": "/doorway/", "action": "noindex", "reason": "GSC sample bucket: templated doorway pages are held until expanded with stronger evidence blocks." },
+    { "match": "prefix", "route": "/location/", "action": "noindex", "reason": "GSC sample bucket: city/category pages are too thin without local stock or installer data." }
+  ]
+}

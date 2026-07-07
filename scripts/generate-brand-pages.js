@@ -10,6 +10,7 @@ const { slugNormalize } = require('./common/slug-normalize.js');
 const { buildReviewVideoSection } = require('./common/review-video-renderer.js');
 const { displayBrandName } = require('./utils/brand-utils.js');
 const { FIXED_EPOCH_ISO, toIsoDateStart } = require('./common/file-dates.js');
+const { robotsMetaTagForRoute } = require('./common/indexability-policy.js');
 const { loadProvidersFromFile, renderAffiliateCta } = require('./render-affiliate-links.js');
 const { canonicalizeProducts, canonicalizeRuleDocument } = require('./brand-canon.js');
 
@@ -331,7 +332,10 @@ function buildBrandPageHtml({
     description,
     modifiedTime,
     canonical,
-    extraMeta: `  ${buildSocialMetaTags({ title, description, canonical, brandImageUrl: ogImageUrl })}`
+    extraMeta: [
+      `  ${buildSocialMetaTags({ title, description, canonical, brandImageUrl: ogImageUrl })}`,
+      robotsMetaTagForRoute(`/brands/${slug}`, { models: count, cat: category, brand })
+    ].filter(Boolean).join('\n')
   });
   const clearanceContext = buildClearanceContext({
     side,

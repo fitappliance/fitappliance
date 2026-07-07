@@ -5,6 +5,7 @@ const { mkdir, readdir, readFile, writeFile } = require('node:fs/promises');
 const { SITE_ORIGIN } = require('./common/site-origin.js');
 const { toAbsoluteSitemapLoc } = require('./common/sitemap-loc.js');
 const { toDateOnly } = require('./common/file-dates.js');
+const { isIndexableRoute, loadIndexabilityPolicy } = require('./common/indexability-policy.js');
 const { selectVerifiedProducts, slugifyProduct } = require('./generate-product-pages.js');
 
 const STATIC_PAGES = [
@@ -140,6 +141,7 @@ async function generateSitemap({
   locationIndexPath = null,
   fitCheckDir = null,
   productIndexPath = null,
+  indexabilityPolicyPath = path.join(repoRoot, 'data', 'indexability-policy.json'),
   outputPath = path.join(repoRoot, 'public', 'sitemap.xml'),
   baseUrl = SITE_ORIGIN,
   today = null,
@@ -222,83 +224,83 @@ async function generateSitemap({
     return String(left?.model ?? left?.slug ?? '').localeCompare(String(right?.model ?? right?.slug ?? ''));
   });
   const lastmod = today ?? await readSiteContentDate(repoRoot, '1970-01-01');
+  const indexabilityPolicy = loadIndexabilityPolicy(indexabilityPolicyPath);
+  const keepIndexableRows = (rows, getRoute, getAttributes = () => ({})) =>
+    rows.filter((row) => isIndexableRoute(getRoute(row), getAttributes(row), indexabilityPolicy));
 
-  const staticNodes = STATIC_PAGES.map((page) =>
-    buildUrlNode({
-      loc: toAbsoluteSitemapLoc(baseUrl, page.path),
-      lastmod,
-      changefreq: page.changefreq,
-      priority: page.priority
-    })
-  );
+  const staticNodes = STATIC_PAGES
+    .filter((page) => isIndexableRoute(page.path, {}, indexabilityPolicy))
+    .map((page) =>
+      buildUrlNode({
+        loc: toAbsoluteSitemapLoc(baseUrl, page.path),
+        lastmod,
+        changefreq: page.changefreq,
+        priority: page.priority
+      })
+    );
 
-  const brandNodes = sortedBrands.map((row) =>
-    buildUrlNode({
-      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/brands/${row.slug}`),
-      lastmod,
-      changefreq: 'weekly',
-      priority: PRIORITY_BY_CAT[row.cat] ?? '0.6'
-    })
-  );
+  const brandNodes = keepIndexableRows(
+    sortedBrands,
+    (row) => row.url ?? `/brands/${row.slug}`,
+    (row) => ({ models: Number(row.models ?? row.count ?? 0), cat: row.cat, brand: row.brand })
+  ).map((row) => buildUrlNode({
+    loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/brands/${row.slug}`),
+    lastmod,
+    changefreq: 'weekly',
+    priority: PRIORITY_BY_CAT[row.cat] ?? '0.6'
+  }));
 
-  const comparisonNodes = sortedComparisons.map((row) =>
-    buildUrlNode({
-      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/compare/${row.slug}`),
-      lastmod,
-      changefreq: 'monthly',
-      priority: '0.5'
-    })
-  );
+  const comparisonNodes = keepIndexableRows(
+    sortedComparisons,
+    (row) => row.url ?? `/compare/${row.slug}`,
+    (row) => ({ modelsA: Number(row.modelsA ?? 0), modelsB: Number(row.modelsB ?? 0), cat: row.cat })
+  ).map((row) => buildUrlNode({
+    loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/compare/${row.slug}`),
+    lastmod,
+    changefreq: 'monthly',
+    priority: '0.5'
+  }));
 
-  const cavityNodes = sortedCavity.map((row) =>
-    buildUrlNode({
-      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/cavity/${row.slug}`),
-      lastmod,
-      changefreq: 'weekly',
-      priority: '0.6'
-    })
-  );
+  const cavityNodes = keepIndexableRows(sortedCavity, (row) => row.url ?? `/cavity/${row.slug}`).map((row) => buildUrlNode({
+    loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/cavity/${row.slug}`),
+    lastmod,
+    changefreq: 'weekly',
+    priority: '0.6'
+  }));
 
-  const doorwayNodes = sortedDoorway.map((row) =>
-    buildUrlNode({
-      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/doorway/${row.slug}`),
-      lastmod,
-      changefreq: 'weekly',
-      priority: '0.6'
-    })
-  );
-  const guideNodes = sortedGuides.map((row) =>
-    buildUrlNode({
-      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/guides/${row.slug}`),
-      lastmod,
-      changefreq: 'weekly',
-      priority: '0.7'
-    })
-  );
-  const locationNodes = sortedLocations.map((row) =>
-    buildUrlNode({
-      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/location/${row.citySlug}/${row.category}`),
-      lastmod,
-      changefreq: 'weekly',
-      priority: '0.5'
-    })
-  );
-  const fitCheckNodes = fitCheckRows.map((row) =>
-    buildUrlNode({
-      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/fit-check/${row.slug}`),
-      lastmod,
-      changefreq: 'monthly',
-      priority: '0.6'
-    })
-  );
-  const productNodes = sortedProducts.map((row) =>
-    buildUrlNode({
-      loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/products/${row.slug}`),
-      lastmod,
-      changefreq: 'monthly',
-      priority: '0.7'
-    })
-  );
+  const doorwayNodes = keepIndexableRows(sortedDoorway, (row) => row.url ?? `/doorway/${row.slug}`).map((row) => buildUrlNode({
+    loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/doorway/${row.slug}`),
+    lastmod,
+    changefreq: 'weekly',
+    priority: '0.6'
+  }));
+  const guideNodes = keepIndexableRows(sortedGuides, (row) => row.url ?? `/guides/${row.slug}`).map((row) => buildUrlNode({
+    loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/guides/${row.slug}`),
+    lastmod,
+    changefreq: 'weekly',
+    priority: '0.7'
+  }));
+  const locationNodes = keepIndexableRows(
+    sortedLocations,
+    (row) => row.url ?? `/location/${row.citySlug}/${row.category}`
+  ).map((row) => buildUrlNode({
+    loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/location/${row.citySlug}/${row.category}`),
+    lastmod,
+    changefreq: 'weekly',
+    priority: '0.5'
+  }));
+  const fitCheckNodes = keepIndexableRows(fitCheckRows, (row) => row.url ?? `/fit-check/${row.slug}`).map((row) => buildUrlNode({
+    loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/fit-check/${row.slug}`),
+    lastmod,
+    changefreq: 'monthly',
+    priority: '0.6'
+  }));
+  const productNodes = keepIndexableRows(sortedProducts, (row) => row.url ?? `/products/${row.slug}`).map((row) => buildUrlNode({
+    loc: toAbsoluteSitemapLoc(baseUrl, row.url ?? `/products/${row.slug}`),
+    lastmod,
+    changefreq: 'monthly',
+    priority: '0.7'
+  }));
 
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
@@ -318,7 +320,7 @@ async function generateSitemap({
 
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, xml, 'utf8');
-  const urlCount = STATIC_PAGES.length + brandNodes.length + comparisonNodes.length + cavityNodes.length + doorwayNodes.length + guideNodes.length + locationNodes.length + fitCheckNodes.length + productNodes.length;
+  const urlCount = staticNodes.length + brandNodes.length + comparisonNodes.length + cavityNodes.length + doorwayNodes.length + guideNodes.length + locationNodes.length + fitCheckNodes.length + productNodes.length;
   logger.log(`Generated sitemap with ${urlCount} URLs at ${outputPath}`);
 
   return { urlCount, outputPath };

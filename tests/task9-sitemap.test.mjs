@@ -57,12 +57,12 @@ async function createWorkspace(indexRows, compareRows = null, productRows = null
   };
 }
 
-test('task 9.1 sitemap: generates expected URL count with static + brand pages', async () => {
+test('task 9.1 sitemap: generates expected URL count with static + eligible brand pages', async () => {
   const { generateSitemap, STATIC_PAGES } = await import(sitemapModuleUrl);
   const workspace = await createWorkspace([
-    { brand: 'Samsung', cat: 'fridge', slug: 'samsung-fridge-clearance', url: '/brands/samsung-fridge-clearance' },
-    { brand: 'Bosch', cat: 'dishwasher', slug: 'bosch-dishwasher-clearance', url: '/brands/bosch-dishwasher-clearance' },
-    { brand: 'LG', cat: 'dryer', slug: 'lg-dryer-clearance', url: '/brands/lg-dryer-clearance' }
+    { brand: 'Samsung', cat: 'fridge', slug: 'samsung-fridge-clearance', url: '/brands/samsung-fridge-clearance', models: 12 },
+    { brand: 'Bosch', cat: 'dishwasher', slug: 'bosch-dishwasher-clearance', url: '/brands/bosch-dishwasher-clearance', models: 14 },
+    { brand: 'LG', cat: 'dryer', slug: 'lg-dryer-clearance', url: '/brands/lg-dryer-clearance', models: 16 }
   ]);
 
   const result = await generateSitemap({
@@ -79,8 +79,8 @@ test('task 9.1 sitemap: generates expected URL count with static + brand pages',
 test('task 9.1 sitemap: assigns category-based priority values', async () => {
   const { generateSitemap } = await import(sitemapModuleUrl);
   const workspace = await createWorkspace([
-    { brand: 'Samsung', cat: 'fridge', slug: 'samsung-fridge-clearance', url: '/brands/samsung-fridge-clearance' },
-    { brand: 'LG', cat: 'dryer', slug: 'lg-dryer-clearance', url: '/brands/lg-dryer-clearance' }
+    { brand: 'Samsung', cat: 'fridge', slug: 'samsung-fridge-clearance', url: '/brands/samsung-fridge-clearance', models: 12 },
+    { brand: 'LG', cat: 'dryer', slug: 'lg-dryer-clearance', url: '/brands/lg-dryer-clearance', models: 16 }
   ]);
 
   await generateSitemap({
@@ -140,9 +140,9 @@ test('task 9.1 sitemap: includes static pages even when brand index is empty', a
 test('task 9.1 sitemap: keeps static URLs first and sorts brand URLs by category then brand', async () => {
   const { generateSitemap, STATIC_PAGES } = await import(sitemapModuleUrl);
   const workspace = await createWorkspace([
-    { brand: 'Hisense', cat: 'fridge', slug: 'hisense-fridge-clearance', url: '/brands/hisense-fridge-clearance' },
-    { brand: 'Bosch', cat: 'dishwasher', slug: 'bosch-dishwasher-clearance', url: '/brands/bosch-dishwasher-clearance' },
-    { brand: 'LG', cat: 'fridge', slug: 'lg-fridge-clearance', url: '/brands/lg-fridge-clearance' }
+    { brand: 'Hisense', cat: 'fridge', slug: 'hisense-fridge-clearance', url: '/brands/hisense-fridge-clearance', models: 12 },
+    { brand: 'Bosch', cat: 'dishwasher', slug: 'bosch-dishwasher-clearance', url: '/brands/bosch-dishwasher-clearance', models: 14 },
+    { brand: 'LG', cat: 'fridge', slug: 'lg-fridge-clearance', url: '/brands/lg-fridge-clearance', models: 16 }
   ]);
 
   await generateSitemap({
@@ -180,7 +180,7 @@ test('task 9.1 sitemap: keeps static URLs first and sorts brand URLs by category
 test('task 9.1 sitemap: applies passed today value to all lastmod tags', async () => {
   const { generateSitemap } = await import(sitemapModuleUrl);
   const workspace = await createWorkspace([
-    { brand: 'Samsung', cat: 'fridge', slug: 'samsung-fridge-clearance', url: '/brands/samsung-fridge-clearance' }
+    { brand: 'Samsung', cat: 'fridge', slug: 'samsung-fridge-clearance', url: '/brands/samsung-fridge-clearance', models: 12 }
   ]);
 
   await generateSitemap({
@@ -198,7 +198,7 @@ test('task 9.1 sitemap: applies passed today value to all lastmod tags', async (
 test('task 9.1 sitemap: returns urlCount and outputPath in result object', async () => {
   const { generateSitemap } = await import(sitemapModuleUrl);
   const workspace = await createWorkspace([
-    { brand: 'Samsung', cat: 'fridge', slug: 'samsung-fridge-clearance', url: '/brands/samsung-fridge-clearance' }
+    { brand: 'Samsung', cat: 'fridge', slug: 'samsung-fridge-clearance', url: '/brands/samsung-fridge-clearance', models: 12 }
   ]);
 
   const result = await generateSitemap({
@@ -212,11 +212,11 @@ test('task 9.1 sitemap: returns urlCount and outputPath in result object', async
   assert.equal(result.outputPath, workspace.outputPath);
 });
 
-test('task 9.1 sitemap: includes compare pages when compare index exists', async () => {
+test('task 9.1 sitemap: includes eligible compare pages when compare index exists', async () => {
   const { generateSitemap, STATIC_PAGES } = await import(sitemapModuleUrl);
   const workspace = await createWorkspace(
-    [{ brand: 'Samsung', cat: 'fridge', slug: 'samsung-fridge-clearance', url: '/brands/samsung-fridge-clearance' }],
-    [{ brandA: 'LG', brandB: 'Samsung', cat: 'fridge', slug: 'lg-vs-samsung-fridge-clearance', url: '/compare/lg-vs-samsung-fridge-clearance' }]
+    [{ brand: 'Samsung', cat: 'fridge', slug: 'samsung-fridge-clearance', url: '/brands/samsung-fridge-clearance', models: 12 }],
+    [{ brandA: 'LG', brandB: 'Samsung', cat: 'fridge', slug: 'lg-vs-samsung-fridge-clearance', url: '/compare/lg-vs-samsung-fridge-clearance', modelsA: 16, modelsB: 12 }]
   );
 
   const result = await generateSitemap({
@@ -231,6 +231,35 @@ test('task 9.1 sitemap: includes compare pages when compare index exists', async
   const nodes = extractNodes(xml);
   assert.equal(result.urlCount, STATIC_PAGES.length + 2);
   assert.ok(nodes.some((node) => node.loc.endsWith('/compare/lg-vs-samsung-fridge-clearance')));
+});
+
+test('task 9.1 sitemap: excludes policy-held low-coverage programmatic pages', async () => {
+  const { generateSitemap, STATIC_PAGES } = await import(sitemapModuleUrl);
+  const workspace = await createWorkspace(
+    [
+      { brand: 'Comfee', cat: 'dishwasher', slug: 'comfee-dishwasher-clearance', url: '/brands/comfee-dishwasher-clearance', models: 5 },
+      { brand: 'ASKO', cat: 'dishwasher', slug: 'asko-dishwasher-clearance', url: '/brands/asko-dishwasher-clearance', models: 10 }
+    ],
+    [
+      { brandA: 'Euro', brandB: 'Inalto', cat: 'dryer', slug: 'euro-vs-inalto-dryer-clearance', url: '/compare/euro-vs-inalto-dryer-clearance', modelsA: 4, modelsB: 4 },
+      { brandA: 'Fisher & Paykel', brandB: 'Artusi', cat: 'dishwasher', slug: 'fisher-paykel-vs-artusi-dishwasher-clearance', url: '/compare/fisher-paykel-vs-artusi-dishwasher-clearance', modelsA: 28, modelsB: 22 }
+    ]
+  );
+
+  const result = await generateSitemap({
+    brandsIndexPath: workspace.brandsIndexPath,
+    compareIndexPath: workspace.compareIndexPath,
+    outputPath: workspace.outputPath,
+    today: '2026-04-15',
+    logger: { log() {} }
+  });
+
+  const xml = await readFile(workspace.outputPath, 'utf8');
+  assert.equal(result.urlCount, STATIC_PAGES.length + 2);
+  assert.match(xml, /\/brands\/asko-dishwasher-clearance/);
+  assert.match(xml, /\/compare\/fisher-paykel-vs-artusi-dishwasher-clearance/);
+  assert.doesNotMatch(xml, /\/brands\/comfee-dishwasher-clearance/);
+  assert.doesNotMatch(xml, /\/compare\/euro-vs-inalto-dryer-clearance/);
 });
 
 test('technical SEO: sitemap includes verified product pages with monthly metadata', async () => {

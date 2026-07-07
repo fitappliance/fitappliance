@@ -143,11 +143,11 @@ test('phase 24: vercel rewrite includes /location/:city/:category route', () => 
   assert.equal(rewrite.destination, '/pages/location/:city/:category');
 });
 
-test('phase 24: sitemap, rss, and image-sitemap include location pages', () => {
+test('phase 24: RSS and image sitemap keep location discovery while XML sitemap omits noindex location pages', () => {
   const sitemap = fs.readFileSync(path.join(ROOT, 'public', 'sitemap.xml'), 'utf8');
   const rss = fs.readFileSync(path.join(ROOT, 'public', 'rss.xml'), 'utf8');
   const imageSitemap = fs.readFileSync(path.join(ROOT, 'public', 'image-sitemap.xml'), 'utf8');
-  assert.match(sitemap, /\/location\/sydney\/fridge/);
+  assert.doesNotMatch(sitemap, /\/location\/sydney\/fridge/);
   assert.match(rss, /\/location\/sydney\/fridge/);
   assert.match(imageSitemap, /\/location\/sydney\/fridge/);
 });

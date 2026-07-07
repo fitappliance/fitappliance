@@ -41,6 +41,7 @@
     "gsc-fetch": "node scripts/gsc-fetch.js",
     "gsc-indexing-audit": "node scripts/audit-gsc-indexing.js",
     "gsc-bucket-audit": "node scripts/audit-gsc-buckets.js",
+    "audit-indexability-policy": "node scripts/audit-indexability-policy.js",
     "gsc-genai-import": "node scripts/import-gsc-generative-ai-export.js",
     "geo-baseline-report": "node scripts/generate-geo-baseline-report.js",
     "geo-measurement-report": "node scripts/generate-geo-measurement-report.js",
