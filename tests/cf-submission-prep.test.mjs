@@ -65,6 +65,10 @@ test('cf submission prep: required legal routes exist with corporate contact and
 
 test('cf submission prep: homepage footer exposes legal routes and reader-supported disclosure', () => {
   const html = read('index.html');
+  assert.match(
+    html,
+    /<meta name="commission-factory-verification" content="c2057260f52c4799b400990d7727bbfc" \/>/
+  );
   assert.match(html, /href="\/about"/);
   assert.match(html, /href="\/privacy"/);
   assert.match(html, /href="\/terms"/);
