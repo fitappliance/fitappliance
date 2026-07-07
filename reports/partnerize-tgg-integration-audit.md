@@ -1,6 +1,6 @@
 # Partnerize TGG Integration Audit
 
-Generated: 2026-07-07T13:17:24.377Z
+Generated: 2026-07-07T13:39:38.896Z
 
 ## Executive Summary
 
@@ -12,9 +12,9 @@ Generated: 2026-07-07T13:17:24.377Z
 
 | Metric | Count |
 |---|---:|
-| The Good Guys rows | 162 |
-| Canonical product URLs valid | 162 |
-| Partnerize affiliate URLs valid | 162 |
+| The Good Guys rows | 163 |
+| Canonical product URLs valid | 163 |
+| Partnerize affiliate URLs valid | 163 |
 | Missing affiliate URLs | 0 |
 | Bad canonical URLs | 0 |
 | Bad affiliate URLs | 0 |

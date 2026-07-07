@@ -48,6 +48,13 @@ const CORE_FEED_CATEGORY_TO_CATALOG = {
   washing_machine: 'washing_machine',
   washtower_combo: 'washtower_combo',
 };
+const RETAILER_EVIDENCE_HOSTS = Object.freeze([
+  'appliancesonline.com.au',
+  TGG_HOST,
+  'jbhifi.com.au',
+  'harveynorman.com.au',
+  'binglee.com.au',
+]);
 
 function toIsoDate(date = new Date()) {
   return date.toISOString().slice(0, 10);
@@ -93,6 +100,146 @@ function normalizePubref(value) {
 
 function normalizeModel(value) {
   return String(value ?? '').trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+}
+
+function normalizeDimensionSourceText(value) {
+  return String(value ?? '')
+    .replace(/\s+/g, ' ')
+    .replace(/\s+([,.!?])/g, '$1')
+    .trim();
+}
+
+function splitSentences(value) {
+  const text = normalizeDimensionSourceText(value);
+  if (!text) return [];
+  return text.match(/[^.!?]+[.!?]?/g)?.map((sentence) => sentence.trim()).filter(Boolean) ?? [text];
+}
+
+function normalizeDimensionAxis(value) {
+  const normalized = String(value ?? '').trim().toLowerCase();
+  if (['w', 'width', 'wide'].includes(normalized)) return 'w_mm';
+  if (['h', 'height', 'high', 'tall'].includes(normalized)) return 'h_mm';
+  if (['d', 'depth', 'deep'].includes(normalized)) return 'd_mm';
+  return null;
+}
+
+function parseDimensionValue(value, unit = 'mm') {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed) || parsed <= 0) return null;
+  const normalizedUnit = String(unit || 'mm').toLowerCase();
+  const multiplier = /^c(entimet(?:re|er)s?|m)$/i.test(normalizedUnit) ? 10 : 1;
+  const mm = Math.round(parsed * multiplier);
+  return mm >= 20 && mm <= 3000 ? mm : null;
+}
+
+function buildDimensionHint(values, sourceText) {
+  if (!values.w_mm || !values.h_mm || !values.d_mm) return null;
+  return {
+    source: 'partnerize-feed-description',
+    confidence: 'retailer_text_hint',
+    ...values,
+    source_text: sourceText,
+  };
+}
+
+function buildRetailerDimensionHintFields(hint, product) {
+  if (!hint) return {};
+  const fields = { retailer_dimension_hint: hint };
+  const productDimensions = {
+    w_mm: Number(product?.w),
+    h_mm: Number(product?.h),
+    d_mm: Number(product?.d),
+  };
+  if (Object.values(productDimensions).every((value) => Number.isFinite(value) && value > 0)) {
+    const delta = {
+      w_mm: Math.abs(hint.w_mm - productDimensions.w_mm),
+      h_mm: Math.abs(hint.h_mm - productDimensions.h_mm),
+      d_mm: Math.abs(hint.d_mm - productDimensions.d_mm),
+    };
+    fields.retailer_dimension_hint_catalog_delta_mm = delta;
+    fields.retailer_dimension_hint_review_required = Object.values(delta).some((value) => value > 5);
+  }
+  return fields;
+}
+
+function hasAxisRange(sentence) {
+  const unit = '(?:mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)?';
+  const axis = '(?:[WHD]|high|height|tall|wide|width|deep|depth)';
+  const valueRange = `\\b\\d{2,4}(?:\\.\\d+)?\\s*[-–]\\s*\\d{2,4}(?:\\.\\d+)?\\s*${unit}\\s*(?:in\\s+)?${axis}\\b`;
+  const axisRange = `\\b${axis}\\s*(?:of|is|are|:)?\\s*\\d{2,4}(?:\\.\\d+)?\\s*[-–]\\s*\\d{2,4}(?:\\.\\d+)?\\s*${unit}\\b`;
+  return new RegExp(valueRange, 'i').test(sentence) || new RegExp(axisRange, 'i').test(sentence);
+}
+
+function extractLabelledDimensionHint(sentence) {
+  if (!/(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)/i.test(sentence) || hasAxisRange(sentence)) return null;
+  const values = {};
+  const valueThenAxis = /\b(\d{2,4}(?:\.\d+)?)\s*(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)?\s*(?:in\s+)?(high|height|tall|wide|width|deep|depth)\b/gi;
+  const axisThenValue = /\b(height|width|depth)\s*(?:of|is|are|:)?\s*(\d{2,4}(?:\.\d+)?)\s*(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)?\b/gi;
+
+  for (const match of sentence.matchAll(valueThenAxis)) {
+    const axis = normalizeDimensionAxis(match[3]);
+    const value = parseDimensionValue(match[1], match[2]);
+    if (!axis || !value || values[axis]) return null;
+    values[axis] = value;
+  }
+
+  for (const match of sentence.matchAll(axisThenValue)) {
+    const axis = normalizeDimensionAxis(match[1]);
+    if (values[axis]) continue;
+    const value = parseDimensionValue(match[2], match[3]);
+    if (!axis || !value) return null;
+    values[axis] = value;
+  }
+
+  return buildDimensionHint(values, sentence);
+}
+
+function extractHeaderDimensionHint(sentence) {
+  const header = sentence.match(/\b([WHD])(?:idth|eight|epth)?\s*(?:x|×|by)\s*([WHD])(?:idth|eight|epth)?\s*(?:x|×|by)\s*([WHD])(?:idth|eight|epth)?\b/i);
+  if (!header) return null;
+
+  const axes = [header[1], header[2], header[3]].map(normalizeDimensionAxis);
+  if (new Set(axes).size !== 3 || axes.some((axis) => !axis)) return null;
+
+  const remainder = sentence.slice(header.index + header[0].length);
+  if (!/(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)/i.test(remainder)) return null;
+  const numberMatches = [...remainder.matchAll(/(\d{2,4}(?:\.\d+)?)\s*(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)?/gi)].slice(0, 3);
+  if (numberMatches.length !== 3) return null;
+
+  const values = {};
+  for (let index = 0; index < axes.length; index += 1) {
+    const value = parseDimensionValue(numberMatches[index][1], numberMatches[index][2]);
+    if (!value) return null;
+    values[axes[index]] = value;
+  }
+  return buildDimensionHint(values, sentence);
+}
+
+function extractSuffixedAxisDimensionHint(sentence) {
+  if (!/(?:x|×|by)/i.test(sentence) || hasAxisRange(sentence)) return null;
+  const values = {};
+  const valueThenSingleAxis = /(?:^|[^\w])(\d{2,4}(?:\.\d+)?)\s*(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\s*([WHD])(?=\s*(?:x|×|by|[,.]|$))/gi;
+
+  for (const match of sentence.matchAll(valueThenSingleAxis)) {
+    const axis = normalizeDimensionAxis(match[3]);
+    const value = parseDimensionValue(match[1], match[2]);
+    if (!axis || !value || values[axis]) return null;
+    values[axis] = value;
+  }
+
+  return buildDimensionHint(values, sentence);
+}
+
+function extractTggRetailerDimensionHint(value) {
+  for (const sentence of splitSentences(value)) {
+    const labelled = extractLabelledDimensionHint(sentence);
+    if (labelled) return labelled;
+    const header = extractHeaderDimensionHint(sentence);
+    if (header) return header;
+    const suffixed = extractSuffixedAxisDimensionHint(sentence);
+    if (suffixed) return suffixed;
+  }
+  return null;
 }
 
 function normalizeCampaignTerm(value) {
@@ -235,6 +382,7 @@ function parsePartnerizeFeedCsv(source, { requireInStock = true } = {}) {
       const p = parsePositivePrice(row?.PriceSale) ?? parsePositivePrice(row?.Price);
       const stock = String(row?.Stock ?? '').trim();
       const tggSku = String(row?.ModelNumber ?? '').trim();
+      const retailerDimensionHint = extractTggRetailerDimensionHint(row?.Description);
 
       return {
         raw: row,
@@ -250,6 +398,7 @@ function parsePartnerizeFeedCsv(source, { requireInStock = true } = {}) {
         tgg_sku: tggSku,
         title: String(row?.Title ?? '').trim(),
         url,
+        retailer_dimension_hint: retailerDimensionHint,
       };
     })
     .filter((row) => row.fit_category && row.manufacturer_model_normalized && row.url && row.partnerize_url)
@@ -293,6 +442,7 @@ function buildFeedRetailer(row, {
     tgg_sku: row.tgg_sku,
     feed_title: row.title,
     feed_model: row.manufacturer_model,
+    ...buildRetailerDimensionHintFields(row.retailer_dimension_hint, product),
     ...commissionMetadata,
   };
 }
@@ -451,6 +601,137 @@ function importPartnerizeFeedToCatalog({
       skippedCategoryMismatches,
       unmatchedFeedRows,
       updatedProducts,
+    },
+  };
+}
+
+function hasApprovedManualEvidence(entry) {
+  if (!entry || typeof entry !== 'object') return false;
+  if (Array.isArray(entry.evidence)) {
+    return entry.evidence.some((evidence) => (
+      evidence?.status === 'approved' &&
+      ['manufacturer_manual', 'installation_manual', 'spec_sheet'].includes(evidence?.type) &&
+      !isRetailerEvidenceUrl(evidence?.source_url)
+    ));
+  }
+  return entry.has_pdf_evidence === true;
+}
+
+function isRetailerEvidenceUrl(value) {
+  if (!value) return false;
+  try {
+    const host = new URL(String(value)).hostname.replace(/^www\./, '').toLowerCase();
+    return RETAILER_EVIDENCE_HOSTS.some((retailerHost) => host === retailerHost || host.endsWith(`.${retailerHost}`));
+  } catch {
+    return false;
+  }
+}
+
+function isRetailerSpecEvidence(evidence) {
+  const sourceType = String(evidence?.source_type ?? '').trim().toLowerCase();
+  const trustLevel = String(evidence?.trust_level ?? '').trim().toLowerCase();
+  return sourceType === 'retailer_spec' || trustLevel === 'retailer_spec' || isRetailerEvidenceUrl(evidence?.source_url);
+}
+
+function hasProductPdfEvidence(product, manualEvidenceProducts = {}) {
+  const keys = [product?.id, product?.slug].filter(Boolean);
+  if (keys.some((key) => hasApprovedManualEvidence(manualEvidenceProducts[key]))) return true;
+  if (product?.has_pdf_evidence === true) return true;
+  return product?.evidence?.has_pdf_evidence === true && !isRetailerSpecEvidence(product.evidence);
+}
+
+function buildTggPdfEvidenceQueue({
+  catalogDocument,
+  manualEvidenceDocument = {},
+  feedCsv,
+  verifiedAt = toIsoDate(),
+  includeArchived = false,
+  requireInStock = true,
+} = {}) {
+  const catalogProducts = Array.isArray(catalogDocument)
+    ? catalogDocument
+    : Array.isArray(catalogDocument?.products)
+      ? catalogDocument.products
+      : null;
+  if (!Array.isArray(catalogProducts)) throw new Error('catalogDocument products are required');
+
+  const manualEvidenceProducts = manualEvidenceDocument?.products ?? {};
+  const feedRows = parsePartnerizeFeedCsv(feedCsv, { requireInStock });
+  const catalogByModel = buildCatalogModelIndex(catalogProducts);
+  const seenProducts = new Set();
+  const queue = [];
+  let exactMatches = 0;
+  let skippedArchivedMatches = 0;
+  let skippedCategoryMismatches = 0;
+  let skippedExistingPdfEvidence = 0;
+  let unmatchedFeedRows = 0;
+
+  for (const row of feedRows) {
+    const matches = catalogByModel.get(row.manufacturer_model_normalized) ?? [];
+    if (matches.length === 0) {
+      unmatchedFeedRows += 1;
+      continue;
+    }
+    exactMatches += 1;
+
+    const wantedCategory = CORE_FEED_CATEGORY_TO_CATALOG[row.fit_category];
+    const categoryMatches = matches.filter((product) => !wantedCategory || product?.cat === wantedCategory);
+    const product = categoryMatches[0] ?? matches[0];
+    if (wantedCategory && product?.cat !== wantedCategory) {
+      skippedCategoryMismatches += 1;
+      continue;
+    }
+    if (!includeArchived && product?.unavailable !== false) {
+      skippedArchivedMatches += 1;
+      continue;
+    }
+
+    const key = product?.id ?? product?.slug;
+    if (!key || seenProducts.has(key)) continue;
+    seenProducts.add(key);
+
+    if (hasProductPdfEvidence(product, manualEvidenceProducts)) {
+      skippedExistingPdfEvidence += 1;
+      continue;
+    }
+
+    queue.push({
+      product_id: key,
+      category: product.cat,
+      brand: product.brand,
+      model: product.model,
+      priority_score: product.priorityScore ?? 0,
+      retailer: TGG_RETAILER_NAME,
+      retailer_title: row.title,
+      retailer_url: row.url,
+      affiliate_url: row.affiliate_url,
+      price: row.p,
+      stock: row.stock,
+      tgg_sku: row.tgg_sku,
+      feed_model: row.manufacturer_model,
+      feed_category: row.feed_category,
+      ...buildRetailerDimensionHintFields(row.retailer_dimension_hint, product),
+      dimensions_verified: false,
+      pdf_evidence_status: 'missing_official_pdf',
+      verified_at: verifiedAt,
+    });
+  }
+
+  queue.sort((a, b) => (
+    (b.priority_score - a.priority_score) ||
+    String(a.product_id).localeCompare(String(b.product_id))
+  ));
+
+  return {
+    queue,
+    stats: {
+      feedRows: feedRows.length,
+      exactMatches,
+      queuedProducts: queue.length,
+      skippedArchivedMatches,
+      skippedCategoryMismatches,
+      skippedExistingPdfEvidence,
+      unmatchedFeedRows,
     },
   };
 }
@@ -762,6 +1043,8 @@ module.exports = {
   applyPartnerizeTrackingToManualRetailers,
   buildTggCommissionMetadata,
   buildPartnerizeClickUrl,
+  buildTggPdfEvidenceQueue,
+  extractTggRetailerDimensionHint,
   importPartnerizeFeedToCatalog,
   importPartnerizeFeedToManualRetailers,
   isTggExcludedBrand,
