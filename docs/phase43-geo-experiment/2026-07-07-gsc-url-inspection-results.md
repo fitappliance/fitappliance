@@ -35,8 +35,8 @@ The product sample is indexed. Its Product rich-result issue should not be fixed
 
 Request indexing only after the live test passes:
 
-- Safe to request indexing now: `https://www.fitappliance.com.au/fit-check/electrolux-ewf1043r7wc-in-640mm-cavity`.
-- Run live test before requesting indexing: `https://www.fitappliance.com.au/guides/appliance-fit-sizing-handbook`.
-- Run live test before requesting indexing: `https://www.fitappliance.com.au/products/artusi-adw5009x-dishwasher-adw1249`, mainly to refresh the stale Product summary snapshot.
+- Completed on 2026-07-07 20:41-20:50 AWST: requested indexing for `https://www.fitappliance.com.au/fit-check/electrolux-ewf1043r7wc-in-640mm-cavity` after live test showed "URL can be indexed".
+- Completed on 2026-07-07 20:47-20:50 AWST: requested indexing for `https://www.fitappliance.com.au/guides/appliance-fit-sizing-handbook` after live test showed "URL can be indexed".
+- Completed on 2026-07-07 20:49-20:50 AWST: requested indexing for `https://www.fitappliance.com.au/products/artusi-adw5009x-dishwasher-adw1249` after live test showed "URL can be indexed" and only the valid breadcrumb enhancement remained. The stale Product summary issue did not appear in the live test.
 
 Do not submit the apex sitemap again. Keep both properties available for historical comparison, but make `https://www.fitappliance.com.au/` the operational property for sitemap submission, URL inspection, and recrawl requests.
