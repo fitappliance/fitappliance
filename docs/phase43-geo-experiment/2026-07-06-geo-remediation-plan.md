@@ -215,6 +215,7 @@ npm run audit-geo-metadata -- --strict-treatment
 
 ```text
 node --test tests/geo-schema-eligibility.test.mjs
+npm run audit-geo-schema-eligibility -- --no-write
 npm run validate-schema
 node --test tests/fit-check-schema-audit.test.mjs
 ```
@@ -381,6 +382,12 @@ If Phase D is implemented:
 ```text
 npm run geo-baseline-report -- --no-write
 npm run geo-measurement-report -- --no-write
+```
+
+If Phase B is implemented:
+
+```text
+npm run audit-geo-schema-eligibility -- --no-write
 ```
 
 ## Suggested Implementation Order

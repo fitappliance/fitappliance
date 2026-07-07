@@ -23,6 +23,7 @@ npm run gsc-fetch
 npm run keyword-gap
 npm run gsc-genai-import -- --input-dir reports/gsc-genai-exports
 npm run geo-measurement-report -- --no-write
+npm run audit-geo-schema-eligibility -- --no-write
 npm run audit-dimension-axis -- --strict
 npm run validate-schema
 ```
@@ -53,6 +54,7 @@ Do not expand the treatment set until these checks pass:
 - `npm run geo-baseline-report -- --no-write`
 - `npm run audit-geo-metadata -- --strict-treatment`
 - `npm run geo-measurement-report -- --no-write`
+- `npm run audit-geo-schema-eligibility -- --no-write`
 - `npm run audit-dimension-axis -- --strict`
 - `npm run validate-schema`
 - `node --test tests/geo-treatment-cohort.test.mjs tests/fit-check-pages.test.mjs tests/fit-check-schema-audit.test.mjs`

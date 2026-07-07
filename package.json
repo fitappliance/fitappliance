@@ -72,6 +72,7 @@
     "audit-link-quality": "node scripts/audit-link-quality.js",
     "audit-adsense-readiness": "node scripts/audit-adsense-readiness.js",
     "audit-dimension-axis": "node scripts/audit-dimension-axis.js",
+    "audit-geo-schema-eligibility": "node scripts/audit-geo-schema-eligibility.js",
     "audit-data-accuracy": "node scripts/audit-data-accuracy.js",
     "audit-pdf-evidence": "node scripts/audit-pdf-evidence.js",
     "manual-evidence": "node scripts/manual-evidence.js",
