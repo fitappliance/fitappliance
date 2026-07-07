@@ -26,6 +26,34 @@ test('vercel production config: clean urls and canonical slash behavior are expl
   assert.equal(config.buildCommand, 'npm run build');
 });
 
+test('vercel production config: apex host permanently redirects to canonical www host', () => {
+  const config = loadVercelConfig();
+  const redirects = config.redirects ?? [];
+  const apexRedirect = redirects.find((redirect) => {
+    return redirect.source === '/:path*'
+      && redirect.destination === 'https://www.fitappliance.com.au/:path*'
+      && Array.isArray(redirect.has)
+      && redirect.has.some((condition) => {
+        return condition.type === 'header'
+          && condition.key.toLowerCase() === 'host'
+          && condition.value === 'fitappliance.com.au';
+      });
+  });
+
+  assert.deepEqual(apexRedirect, {
+    source: '/:path*',
+    has: [
+      {
+        type: 'header',
+        key: 'host',
+        value: 'fitappliance.com.au'
+      }
+    ],
+    destination: 'https://www.fitappliance.com.au/:path*',
+    permanent: true
+  });
+});
+
 test('vercel production config: compliance and static app routes are reachable', () => {
   const config = loadVercelConfig();
   const routes = new Map((config.rewrites ?? []).map((rewrite) => [rewrite.source, rewrite.destination]));

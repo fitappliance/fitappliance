@@ -1,24 +1,15 @@
 # Deployment Notes
 
-## Apex Domain → Direct 200 for ads.txt
+## Canonical Host
 
-**Current state:** `fitappliance.com.au` redirects (307) to `www.fitappliance.com.au`.
-The IAB spec allows one redirect for ads.txt, so this is technically compliant.
-However, to serve the apex domain directly:
+`https://www.fitappliance.com.au` is the canonical production host used by canonical tags, hreflang links, JSON-LD, sitemap URLs, and IndexNow payloads.
 
-**Manual step in Vercel Dashboard:**
-1. Go to: fitappliance project → Settings → Domains
-2. If `www.fitappliance.com.au` is set as "Primary Domain", click the ⋮ menu next to `fitappliance.com.au`
-3. Select "Redirect to this domain" → change the redirect to go FROM www TO apex
-4. Alternatively: click "Set as Primary" on `fitappliance.com.au`
-5. After saving, both `fitappliance.com.au/ads.txt` and `www.fitappliance.com.au/ads.txt` return 200
+`https://fitappliance.com.au` must permanently redirect to the matching `www` URL. The redirect is defined in `vercel.json` with a `host: fitappliance.com.au` condition so it is controlled by the repository instead of only by Vercel's primary-domain redirect.
 
-**No code change required** — `v2/vercel.json` already has correct routing.
-The redirect is configured at the Vercel platform CDN level, not in vercel.json.
+## Verification after deployment
 
-## Verification after domain change:
 ```bash
-curl -I https://fitappliance.com.au/ads.txt # should be HTTP/2 200
-curl -I https://fitappliance.com.au/robots.txt # should be HTTP/2 200
-curl -I https://fitappliance.com.au/sitemap.xml # should be HTTP/2 200
+curl -I https://fitappliance.com.au/ # should be HTTP/2 308 to https://www.fitappliance.com.au/
+curl -I https://fitappliance.com.au/ads.txt # should be HTTP/2 308 to https://www.fitappliance.com.au/ads.txt
+curl -I https://www.fitappliance.com.au/sitemap.xml # should be HTTP/2 200
 ```

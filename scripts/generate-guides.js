@@ -11,7 +11,6 @@ const { renderAnswerTarget, renderEvidenceBox } = require('./common/geo-answer-b
 const { buildArticleSchema, serializeJsonLd } = require('./common/schema-jsonld.js');
 const { FIXED_EPOCH_ISO } = require('./common/file-dates.js');
 
-const ARTICLE_SCHEMA_ORIGIN = 'https://fitappliance.com.au';
 const GUIDE_DATE_HISTORY = {
   publishedAt: '2026-04-18T12:11:49.000Z',
   modifiedAt: '2026-04-25T00:00:00.000Z'
@@ -733,8 +732,8 @@ function resolveGuideArticleDates({ repoRoot, filePath, guide = {} }) {
 }
 
 function buildGuideArticleJsonLd({ guide, datePublished, dateModified, wordCount }) {
-  const articleUrl = `${ARTICLE_SCHEMA_ORIGIN}/guides/${guide.slug}`;
-  const imageUrl = `${ARTICLE_SCHEMA_ORIGIN}/og-images/guide-${guide.slug}.png`;
+  const articleUrl = `${SITE_ORIGIN}/guides/${guide.slug}`;
+  const imageUrl = `${SITE_ORIGIN}/og-images/guide-${guide.slug}.png`;
 
   const schema = buildArticleSchema({
     headline: guidePageTitle(guide),
@@ -743,8 +742,8 @@ function buildGuideArticleJsonLd({ guide, datePublished, dateModified, wordCount
     dateModified,
     image: imageUrl,
     url: articleUrl,
-    publisherUrl: ARTICLE_SCHEMA_ORIGIN,
-    publisherLogoUrl: `${ARTICLE_SCHEMA_ORIGIN}/icons/icon-512.png`
+    publisherUrl: SITE_ORIGIN,
+    publisherLogoUrl: `${SITE_ORIGIN}/icons/icon-512.png`
   });
   if (Number.isInteger(wordCount)) {
     schema.wordCount = wordCount;

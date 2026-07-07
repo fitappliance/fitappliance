@@ -8,7 +8,7 @@ const ROOT = process.cwd();
 const GUIDES_DIR = path.join(ROOT, 'pages', 'guides');
 const require = createRequire(import.meta.url);
 const { GUIDE_HUBS, resolveGuideArticleDates } = require('../scripts/generate-guides.js');
-const PRODUCTION_HOST = 'fitappliance.com.au';
+const PRODUCTION_HOST = 'www.fitappliance.com.au';
 const PRODUCTION_ORIGIN = `https://${PRODUCTION_HOST}/`;
 const GUIDE_FILES = [
   'appliance-fit-sizing-handbook.html',

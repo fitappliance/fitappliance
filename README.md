@@ -89,7 +89,7 @@ vercel --prod
 1. Buy domain at [VentraIP](https://ventraip.com.au) or [Crazy Domains](https://www.crazydomains.com.au) — ~$20/year
 2. In Vercel dashboard → Domains → Add `fitappliance.com.au`
 3. Update DNS: add CNAME record `76.76.21.21` (Vercel's IP)
-4. Add `www.fitappliance.com.au` → redirects to apex
+4. Add `www.fitappliance.com.au` as the canonical host. Keep `fitappliance.com.au` redirecting permanently to `www.fitappliance.com.au`.
 
 ---
 
