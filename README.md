@@ -10,7 +10,34 @@
 - ✅ PWA: service worker versioning, update toast, offline fallback (Phase 43a §3.6)
 - ✅ Catalog: raw specs catalog: 2,268 products across 4 categories; retailer-verified products: 66; verified retailer links: 183; live price rows: 25
 - ✅ Data trust: claims cleanup, accuracy audits, retailer URL validation, and date-drift guardrails are active
-- 📊 Test coverage: 790+ tests passing
+- 📊 Test coverage: 1,500+ tests passing
+
+---
+
+## Data veracity and fit logic
+
+FitAppliance is a pre-purchase fit checker for Australian appliance cavities. It helps screen likely fit problems before a buyer orders, but it is not an installer certification.
+
+The public catalog starts from retailer and product-page data in `public/data/`. Higher-trust rows can carry manufacturer PDF evidence from `data/manual-evidence.json` and `public/data/evidence-index.json`. The evidence tiers used in generated pages are:
+
+- `Retailer Spec`: dimensions came from retailer or product-page data, and installation clearance is not verified.
+- `Dimensions Verified`: width, height, and depth are backed by approved manufacturer PDF evidence, but clearance is still treated as an estimate.
+- `Verified Fit`: both dimensions and clearance requirements have approved evidence.
+
+The fit math uses millimetres. It compares the product `w`, `h`, and `d` fields with the user's cavity dimensions. Practical clearance mode is the default: 5mm side clearance on each side, 20mm top clearance, and 10mm rear clearance. Physical mode uses zero clearance. Manufacturer mode uses captured brand or category clearance where available.
+
+Use these checks before publishing pages that answer sizing questions:
+
+```bash
+npm run audit-dimension-axis -- --strict
+npm run audit-data-accuracy
+npm run audit-pdf-evidence -- --output /tmp/fitappliance-pdf-evidence-audit
+npm run validate-schema
+```
+
+Known limits are documented rather than hidden. Prices and stock can change after capture. Retailer pages do not count as manufacturer dimensional evidence. Door swing, hoses, power sockets, floor level, skirting, and delivery access can still make a nominal fit fail in a real home. Buyers should remeasure the finished cavity and check the installation manual before ordering.
+
+Related docs: `docs/data-accuracy-audit.md`, `docs/pdf-evidence-audit.md`, and `docs/phase43-geo-experiment/phase43-geo-measurement.md`.
 
 ---
 
