@@ -30,6 +30,32 @@ test('mobile visual layout: search shell cannot exceed phone viewport width', ()
   assert.match(mobileCss, /\.search-mode-toggle\s*\{[\s\S]*grid-template-columns:1fr;/);
 });
 
+test('mobile visual layout: primary search action appears before optional refinements', () => {
+  const home = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  const ctaIndex = home.indexOf('data-search-submit');
+  const samplesIndex = home.indexOf('class="hero-sample-searches"');
+  const filtersIndex = home.indexOf('class="extra-grid"');
+  const hintIndex = home.indexOf('class="sc-hint"');
+
+  assert.notEqual(ctaIndex, -1, 'homepage should include the primary search submit button');
+  assert.ok(ctaIndex < samplesIndex, 'primary search action should come before sample searches on mobile');
+  assert.ok(ctaIndex < filtersIndex, 'primary search action should come before optional brand and budget filters');
+  assert.ok(ctaIndex < hintIndex, 'primary search action should come before explanatory notes');
+});
+
+test('mobile visual layout: hero compresses trust proof instead of pushing the search CTA deep below the fold', () => {
+  const criticalMobile = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8')
+    .match(/@media\(max-width:660px\)\{([\s\S]*?)@media\(max-width:420px\)/)?.[1] ?? '';
+  const mobileCss = deferred.match(/@media\(max-width:660px\)\{([\s\S]*?)@media\(max-width:360px\)/)?.[1] ?? '';
+  const trustBlock = mobileCss.match(/\.hero-trust-strip\s*\{([^{}]*)\}/)?.[1] ?? '';
+
+  assert.match(criticalMobile, /\.hero\s*\{[\s\S]*padding:36px 14px 52px;/);
+  assert.match(criticalMobile, /\.hero h1\s*\{[\s\S]*font-size:clamp\(34px, 10vw, 44px\);/);
+  assert.match(trustBlock, /flex-wrap:nowrap;/);
+  assert.match(trustBlock, /overflow-x:auto;/);
+  assert.doesNotMatch(trustBlock, /grid-template-columns:1fr;/);
+});
+
 test('mobile visual layout: long trust and mode labels wrap instead of overflowing', () => {
   assert.match(blockFor('.hero-trust-item', styles), /overflow-wrap:\s*anywhere;/);
   assert.match(blockFor('.hero-sample-chip', styles), /white-space:\s*normal;/);
@@ -150,4 +176,11 @@ test('mobile visual layout: homepage secondary controls are touch sized', () => 
   assert.match(home, /\.topbar a\s*\{[\s\S]*min-height:44px;/);
   assert.match(home, /\.adv-toggle\s*\{[\s\S]*min-height:44px;/);
   assert.match(home, /\.cat-pill\s*\{[\s\S]*min-height:44px;/);
+});
+
+test('mobile visual layout: result filter sheet controls are finger-sized', () => {
+  assert.match(styles, /\.mobile-sheet-trigger\s*\{[\s\S]*min-height:\s*44px;/);
+  assert.match(styles, /\.mobile-sheet__close\s*\{[\s\S]*width:\s*44px;[\s\S]*height:\s*44px;/);
+  assert.match(styles, /\.mobile-sheet__tabs button\s*\{[\s\S]*min-height:\s*44px;/);
+  assert.match(styles, /\.mobile-sheet__clear,\s*[\s\S]*\.mobile-sheet__apply\s*\{[\s\S]*min-height:\s*44px;/);
 });

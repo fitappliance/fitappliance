@@ -435,11 +435,12 @@ nav {
 }
 @media(max-width:660px){
   .nav-right .nav-link { display:none; }
-  .search-card { padding:22px 18px; }
-  .dim-grid { grid-template-columns:1fr 1fr; }
+  .search-card{padding:18px 14px}
+  .dim-grid { grid-template-columns:1fr; }
   .extra-grid { grid-template-columns:1fr; }
   .replacement-row { grid-template-columns:1fr; }
-  .hero { padding:48px 16px 80px; }
+  .hero { padding:36px 14px 52px; }
+  .hero h1{font-size:clamp(34px, 10vw, 44px);}
   .cat-pills { gap:5px; }
   .cat-pill { font-size:12px;padding:7px 11px; }
   .btn-search--primary {
@@ -578,6 +579,11 @@ nav {
       </div>
       <div class="space-alerts" id="spaceAlerts" role="status" aria-live="polite" hidden></div>
 
+      <button class="btn-search btn-search--primary" data-search-submit disabled aria-disabled="true">
+        <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="white" stroke-width="1.8"/><path d="M12 12l3.5 3.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span id="heroCtaText">Find fitting models</span>
+      </button>
+
       <div class="hero-sample-searches" aria-label="Sample searches">
         <span class="hero-sample-label">Try a sample search:</span>
         <button type="button" class="hero-sample-chip" data-sample-search='{"cat":"fridge","w":600,"h":1900,"d":650}'>
@@ -640,10 +646,6 @@ nav {
         <span>Dimensions are your raw cavity. The default fit check uses a practical clearance buffer; brand-specific manufacturer figures are shown as advisory notes so you can verify the model manual before buying.</span>
       </div>
 
-      <button class="btn-search btn-search--primary" data-search-submit disabled aria-disabled="true">
-        <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="white" stroke-width="1.8"/><path d="M12 12l3.5 3.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
-        <span id="heroCtaText">Find fitting models</span>
-      </button>
       <a href="#how-we-score" class="hero-secondary-link">How is Fit Score calculated? →</a>
       <p class="fit-checker-link"><a href="/tools/fit-checker">Try the fit checker →</a></p>
       <div id="searchHistoryMount"></div>
