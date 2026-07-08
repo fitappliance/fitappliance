@@ -46,8 +46,8 @@ test('cf submission prep: DNS verifier reports MX, SPF and DMARC checks with res
   assert.equal(result.ok, true);
 });
 
-test('cf submission prep: required legal routes exist with corporate contact and disclaimers', () => {
-  for (const route of ['about', 'privacy', 'terms', 'contact']) {
+test('cf submission prep: required review routes exist with corporate contact and disclaimers', () => {
+  for (const route of ['about', 'privacy', 'terms', 'contact', 'partners']) {
     const filePath = path.join(ROOT, 'pages', `${route}.html`);
     assert.ok(fs.existsSync(filePath), `pages/${route}.html should exist`);
     const html = read(`pages/${route}.html`);
@@ -61,6 +61,12 @@ test('cf submission prep: required legal routes exist with corporate contact and
   assert.match(read('pages/privacy.html'), /saved spatial dimensions/i);
   assert.match(read('pages/terms.html'), /manual structural modifications/i);
   assert.match(read('pages/terms.html'), /affiliate links disclosure/i);
+  const partners = read('pages/partners.html');
+  assert.match(partners, /advertiser review/i);
+  assert.match(partners, /organic search/i);
+  assert.match(partners, /no unsolicited email/i);
+  assert.match(partners, /no brand bidding/i);
+  assert.match(partners, /hello@fitappliance\.com\.au/);
 });
 
 test('cf submission prep: homepage footer exposes legal routes and reader-supported disclosure', () => {
@@ -73,16 +79,18 @@ test('cf submission prep: homepage footer exposes legal routes and reader-suppor
   assert.match(html, /href="\/privacy"/);
   assert.match(html, /href="\/terms"/);
   assert.match(html, /href="\/contact"/);
+  assert.match(html, /href="\/partners"/);
   assert.match(
     visibleText(html),
     /FitAppliance is reader-supported\. When you buy through links on our site, we may earn an affiliate commission\./
   );
+  assert.doesNotMatch(visibleText(html), /\b\d+(?:\.\d+)?%\s*(?:commission|CPA|·)/i);
 });
 
 test('cf submission prep: vercel and sitemap infrastructure include the compliance routes', () => {
   const vercel = JSON.parse(read('vercel.json'));
   const rewrites = vercel.rewrites ?? [];
-  for (const route of ['/privacy', '/terms', '/contact']) {
+  for (const route of ['/privacy', '/terms', '/contact', '/partners']) {
     assert.ok(
       rewrites.some((row) => row.source === route && row.destination === `/pages${route}`),
       `vercel.json should route ${route}`
@@ -90,9 +98,15 @@ test('cf submission prep: vercel and sitemap infrastructure include the complian
   }
 
   const sitemapScript = read('scripts/generate-sitemap.js');
-  for (const route of ['/privacy', '/terms', '/contact']) {
+  for (const route of ['/privacy', '/terms', '/contact', '/partners']) {
     assert.match(sitemapScript, new RegExp(`path:\\s*'${route}'`));
   }
+
+  const indexabilityPolicy = JSON.parse(read('data/indexability-policy.json'));
+  assert.ok(
+    indexabilityPolicy.rules?.some((rule) => rule.match === 'exact' && rule.route === '/partners' && rule.action === 'index'),
+    'indexability policy should allow /partners in the generated sitemap'
+  );
 });
 
 test('cf submission prep: Commission Factory manifest is copy-paste ready', () => {

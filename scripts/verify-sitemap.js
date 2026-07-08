@@ -13,6 +13,7 @@ const STATIC_PAGE_ROUTES = [
   '/privacy-policy',
   '/terms',
   '/contact',
+  '/partners',
   '/about',
   '/methodology',
   '/about/editorial-standards',
@@ -98,6 +99,7 @@ async function collectExpectedRoutes(repoRoot) {
         || rel === 'privacy-policy.html'
         || rel === 'terms.html'
         || rel === 'contact.html'
+        || rel === 'partners.html'
         || rel === 'methodology.html'
         || rel === 'subscribe.html'
         || rel === 'about/editorial-standards.html') {

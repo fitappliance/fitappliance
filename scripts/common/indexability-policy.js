@@ -23,6 +23,7 @@ const DEFAULT_POLICY = {
     { match: 'exact', route: '/privacy-policy', action: 'index' },
     { match: 'exact', route: '/terms', action: 'index' },
     { match: 'exact', route: '/contact', action: 'index' },
+    { match: 'exact', route: '/partners', action: 'index' },
     { match: 'exact', route: '/about', action: 'index' },
     { match: 'exact', route: '/methodology', action: 'index' },
     { match: 'exact', route: '/about/editorial-standards', action: 'index' },

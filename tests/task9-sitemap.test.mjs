@@ -163,6 +163,7 @@ test('task 9.1 sitemap: keeps static URLs first and sorts brand URLs by category
     'https://www.fitappliance.com.au/privacy-policy',
     'https://www.fitappliance.com.au/terms',
     'https://www.fitappliance.com.au/contact',
+    'https://www.fitappliance.com.au/partners',
     'https://www.fitappliance.com.au/about',
     'https://www.fitappliance.com.au/methodology',
     'https://www.fitappliance.com.au/about/editorial-standards',

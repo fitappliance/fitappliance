@@ -15,6 +15,7 @@ const STATIC_PAGES = [
   { path: '/privacy-policy', changefreq: 'monthly', priority: '0.4' },
   { path: '/terms', changefreq: 'monthly', priority: '0.4' },
   { path: '/contact', changefreq: 'monthly', priority: '0.4' },
+  { path: '/partners', changefreq: 'monthly', priority: '0.5' },
   { path: '/about', changefreq: 'monthly', priority: '0.6' },
   { path: '/methodology', changefreq: 'monthly', priority: '0.6' },
   { path: '/about/editorial-standards', changefreq: 'monthly', priority: '0.6' },

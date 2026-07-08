@@ -22,6 +22,7 @@
     { "match": "exact", "route": "/privacy-policy", "action": "index", "reason": "Trust page." },
     { "match": "exact", "route": "/terms", "action": "index", "reason": "Trust page." },
     { "match": "exact", "route": "/contact", "action": "index", "reason": "Trust page." },
+    { "match": "exact", "route": "/partners", "action": "index", "reason": "Advertiser review and affiliate-network compliance page." },
     { "match": "exact", "route": "/about", "action": "index", "reason": "Entity and editorial context." },
     { "match": "exact", "route": "/methodology", "action": "index", "reason": "Explains fit logic and data treatment." },
     { "match": "exact", "route": "/about/editorial-standards", "action": "index", "reason": "GSC sample kept: trust page with editorial process." },
