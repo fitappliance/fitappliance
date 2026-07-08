@@ -1,7 +1,7 @@
 /* FitAppliance deferred homepage styles.
    Loaded asynchronously after above-fold critical CSS. */
 /* ─── RESULTS ─── */
-.results-wrap { max-width:1220px;margin:0 auto;padding:36px 24px 80px; }
+.results-wrap { max-width:1280px;margin:0 auto;padding:44px 32px 90px; }
 
 .float-bar {
   position: fixed;
@@ -213,7 +213,7 @@
 }
 
 /* Layout */
-.results-body { display:grid;grid-template-columns:1fr 290px;gap:28px;align-items:start; }
+.results-body { display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:32px;align-items:start; }
 
 /* VIEW TOGGLE */
 .view-toggle { display:flex;gap:4px;margin-bottom:18px; }

@@ -14,7 +14,7 @@
 <link rel="alternate" hreflang="x-default" href="https://www.fitappliance.com.au/">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="FitAppliance RSS" href="/rss.xml">
-<link rel="stylesheet" href="/styles.css?v=20260504-mobile-trust">
+<link rel="stylesheet" href="/styles.css?v=20260708-desktop-trust">
 <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
 <link rel="apple-touch-icon" href="/icons/icon-192.png">
 <script defer src="/scripts/rum.js"></script>
@@ -105,7 +105,7 @@ nav {
 /* ─── HERO ─── */
 .hero {
   background: var(--ink);
-  padding: 72px 24px 110px;
+  padding: 56px 24px 76px;
   position: relative;
   overflow: hidden;
 }
@@ -116,19 +116,8 @@ nav {
   opacity: .4;
   pointer-events: none;
 }
-.hero-glow-1 {
-  position:absolute;top:-100px;right:-60px;
-  width:500px;height:500px;
-  background:radial-gradient(circle, rgba(181,90,44,.18) 0%, transparent 65%);
-  pointer-events:none;
-}
-.hero-glow-2 {
-  position:absolute;bottom:-80px;left:-80px;
-  width:400px;height:400px;
-  background:radial-gradient(circle, rgba(46,107,62,.12) 0%, transparent 65%);
-  pointer-events:none;
-}
 .hero-inner { max-width:760px;margin:0 auto;text-align:center;position:relative;z-index:2; }
+.hero-copy { min-width:0; }
 .hero-eyebrow {
   display:inline-flex;align-items:center;gap:8px;
   background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
@@ -168,7 +157,7 @@ nav {
   color: rgba(255,255,255,.55);
   font-size: 17px;
   max-width: 500px;
-  margin: 0 auto 52px;
+  margin: 0 auto 32px;
   line-height: 1.75;
   font-weight: 300;
 }
@@ -240,114 +229,6 @@ nav {
   font-weight:500;
   line-height:1.45;
 }
-.replacement-finder {
-  margin:0 0 16px;
-  padding:14px;
-  border:1px solid var(--border);
-  border-radius:var(--r-sm);
-  background:#FCFAF6;
-  text-align:left;
-}
-.replacement-finder[hidden] { display:none !important; }
-.replacement-finder label {
-  display:block;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.07em;
-  text-transform:uppercase;
-  color:var(--ink-3);
-  margin-bottom:8px;
-}
-.replacement-row { display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center; }
-.replacement-row input {
-  width:100%;
-  padding:11px 13px;
-  border:1.5px solid var(--border);
-  border-radius:var(--r-sm);
-  font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
-  font-size:14px;
-  font-weight:500;
-  color:var(--ink);
-  background:var(--white);
-}
-.replacement-row input:focus { outline:none;border-color:var(--copper);box-shadow:0 0 0 3px rgba(163,79,34,.14); }
-.replacement-row button {
-  border:1.5px solid var(--ink);
-  background:var(--ink);
-  color:#fff;
-  border-radius:var(--r-sm);
-  padding:11px 14px;
-  font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
-  font-size:13px;
-  font-weight:700;
-  cursor:pointer;
-}
-.replacement-status {
-  margin-top:8px;
-  font-size:12px;
-  color:var(--green);
-  font-weight:600;
-}
-.saved-appliance-picker {
-  margin-top:12px;
-  padding-top:12px;
-  border-top:1px solid var(--border);
-}
-.saved-appliance-picker[hidden] { display:none !important; }
-.saved-appliance-picker__head {
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--ink-3);
-  margin-bottom:8px;
-}
-.saved-appliance-picker__chips {
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-.saved-appliance-chip {
-  appearance:none;
-  border:1px solid var(--border);
-  background:var(--white);
-  color:var(--ink);
-  border-radius:999px;
-  padding:7px 11px;
-  font-family:'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
-  font-size:13px;
-  font-weight:700;
-  cursor:pointer;
-}
-.saved-appliance-chip:hover,
-.saved-appliance-chip:focus {
-  border-color:var(--copper);
-  outline:none;
-  box-shadow:0 0 0 3px rgba(181,90,44,.12);
-}
-.saved-appliance-picker__empty {
-  font-size:13px;
-  color:var(--ink-3);
-}
-.space-alerts {
-  display:grid;
-  gap:8px;
-  margin:-2px 0 14px;
-  text-align:left;
-}
-.space-alert {
-  border:1px solid var(--border);
-  border-radius:var(--r-sm);
-  padding:10px 12px;
-  background:var(--paper);
-  color:var(--ink-2);
-  font-size:12px;
-  line-height:1.45;
-}
-.space-alert strong { display:block;color:var(--ink);font-size:12px;margin-bottom:2px; }
-.space-alert--warning { background:var(--amber-bg);border-color:rgba(196,122,26,.35); }
-.space-alert--warning strong { color:var(--amber); }
-
 /* Extra inputs row */
 .extra-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px; }
 .extra-grid select {
@@ -397,6 +278,9 @@ nav {
 }
 .btn-search:hover { background:var(--copper-2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(163,79,34,.32); }
 .btn-search:active { transform:translateY(0); }
+.btn-search > * {
+  pointer-events:none;
+}
 .fit-checker-link {
   margin-top: 10px;
   text-align: center;
@@ -416,6 +300,24 @@ nav {
 }
 .trust-item { display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);font-weight:500; }
 .trust-item strong { color:var(--ink); }
+
+@media(min-width:960px){
+  .hero { padding:52px 32px 72px; }
+  .hero-inner { display:grid;grid-template-columns:minmax(0,.9fr) minmax(560px,680px);gap:44px;align-items:start;max-width:1180px;text-align:left; }
+  .hero-copy { padding-top:28px; }
+  .hero-eyebrow { justify-content:flex-start;margin-bottom:22px; }
+  .hero h1 { font-size:clamp(48px,5vw,66px);margin-bottom:20px; }
+  .hero-sub { margin:0 0 24px;max-width:440px;font-size:16px;line-height:1.65; }
+  .hero-trust-strip { justify-content:flex-start;margin-bottom:0;gap:8px; }
+  .hero-trust-item { white-space:normal;padding:6px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(255,255,255,.06);line-height:1.35; }
+  .search-card { margin:0;max-width:none;padding:24px 28px 24px;border-radius:18px; }
+  .sc-head { margin-bottom:16px; }
+  .search-mode-toggle { margin:0 0 12px; }
+  .cat-pills { margin-bottom:14px !important; }
+  .dim-grid { margin-bottom:12px; }
+  .field-note { font-size:10.5px; }
+  .hero-sample-searches { gap:6px;margin-top:12px; }
+}
 
 /* ─── CRITICAL MOBILE ADJUSTMENTS ─── */
 @media(max-width:768px){
@@ -438,7 +340,6 @@ nav {
   .search-card{padding:18px 14px}
   .dim-grid { grid-template-columns:1fr; }
   .extra-grid { grid-template-columns:1fr; }
-  .replacement-row { grid-template-columns:1fr; }
   .hero { padding:36px 14px 52px; }
   .hero h1{font-size:clamp(34px, 10vw, 44px);}
   .cat-pills { gap:5px; }
@@ -454,8 +355,8 @@ nav {
   .dim-grid { grid-template-columns:1fr; }
 }
 </style>
-<link rel="preload" href="/styles-deferred.css?v=20260504-mobile-trust" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="/styles-deferred.css?v=20260504-mobile-trust"></noscript>
+<link rel="preload" href="/styles-deferred.css?v=20260708-desktop-trust" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/styles-deferred.css?v=20260708-desktop-trust"></noscript>
 </head>
 <body>
 <div class="float-bar" id="floatBar" hidden aria-label="Active search filters">
@@ -502,17 +403,17 @@ nav {
 <!-- HERO -->
 <section class="hero" id="search">
   <div class="hero-grain"></div>
-  <div class="hero-glow-1"></div>
-  <div class="hero-glow-2"></div>
   <div class="hero-inner">
-    <div class="hero-eyebrow"><span></span> <span id="heroEyebrowText">Appliance fit, with practical clearance built in</span></div>
-    <h1 id="heroTitle">Measure once. Find the appliances that actually fit.</h1>
-    <p class="hero-sub" id="heroSub">Enter your cavity. Get a 0-100 Fit Score for every appliance that fits.</p>
+    <div class="hero-copy">
+      <div class="hero-eyebrow"><span></span> <span id="heroEyebrowText">Appliance fit, with practical clearance built in</span></div>
+      <h1 id="heroTitle">Measure once. Find the appliances that actually fit.</h1>
+      <p class="hero-sub" id="heroSub">Enter your cavity. Get a 0-100 Fit Score for every appliance that fits.</p>
 
-    <div class="hero-trust-strip" role="note">
-      <span class="hero-trust-item">▸ 2,170+ Australian appliances</span>
-      <span class="hero-trust-item" id="hero-verified-count">▸ 280 Verified Fit records · 1,805 evidence-backed specs</span>
-      <span class="hero-trust-item">▸ Updated daily</span>
+      <div class="hero-trust-strip" role="note">
+        <span class="hero-trust-item">▸ 2,170+ Australian appliances</span>
+        <span class="hero-trust-item" id="hero-verified-count">▸ 280 Verified Fit records · 1,805 evidence-backed specs</span>
+        <span class="hero-trust-item">▸ Updated daily</span>
+      </div>
     </div>
 
     <div class="search-card" id="searchForm">
@@ -1097,13 +998,13 @@ nav {
   </div>
 </div>
 
-<script defer src="/scripts/sw-register.js?v=20260504-mobile-trust"></script>
+<script defer src="/scripts/sw-register.js?v=20260708-desktop-trust"></script>
 <script defer src="/scripts/subscribe.js"></script>
 <script type="module">
 import '/scripts/search-core.js';
 import '/scripts/iso-projection.js';
 import '/scripts/fit-visualization.js';
-import '/scripts/search-dom.js?v=20260504-mobile-trust';
+import '/scripts/search-dom.js?v=20260708-desktop-trust';
 import '/scripts/ui/compare-table.js';
 import '/scripts/saved-search-store.js';
 import '/scripts/compare-store.js';
@@ -3369,15 +3270,18 @@ document.querySelector('[data-saved-appliance-chips]')?.addEventListener('click'
   if (!button) return;
   applySavedApplianceForReplacement(button.getAttribute('data-saved-appliance-id'));
 });
-['inW','inH','inD','inDoor'].forEach(id => {
-  document.getElementById(id)?.addEventListener('change', () => {
-    renderSpaceAlertsForDimensions({
-      w: document.getElementById('inW')?.value,
-      h: document.getElementById('inH')?.value,
-      d: document.getElementById('inD')?.value,
-      door: document.getElementById('inDoor')?.value
-    });
+function renderSpaceAlertsFromInputs() {
+  renderSpaceAlertsForDimensions({
+    w: document.getElementById('inW')?.value,
+    h: document.getElementById('inH')?.value,
+    d: document.getElementById('inD')?.value,
+    door: document.getElementById('inDoor')?.value
   });
+}
+['inW','inH','inD','inDoor'].forEach(id => {
+  const input = document.getElementById(id);
+  input?.addEventListener('input', renderSpaceAlertsFromInputs);
+  input?.addEventListener('change', renderSpaceAlertsFromInputs);
 });
 document.querySelectorAll('input[name="searchMode"]').forEach((input) => {
   input.addEventListener('change', () => setSearchMode(input.value, { refresh: true }));
