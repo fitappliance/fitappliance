@@ -14,6 +14,12 @@ Our traffic acquisition strategy is SEO-led and intent-led. FitAppliance targets
 
 The site generates structured, useful pages around appliance dimensions, brand clearances, fit-check scenarios, comparison pages and methodology content. These pages are designed for users with immediate purchase intent rather than broad browsing traffic. We also maintain transparent methodology, privacy, terms, contact and affiliate-disclosure pages to support search trust, partner review and user confidence.
 
+## Search Console evidence
+
+Google Search Console has 28+ days of data for the canonical `https://www.fitappliance.com.au/` property. The latest reviewed snapshot from 7 July 2026 recorded 471 web search clicks, 2,185 indexed pages and indexed enhancement coverage for breadcrumb/video surfaces. These figures are submitted as evidence that the site has real search engagement and populated indexable content; they are not a promise of future traffic or conversion performance.
+
+Public partner-review evidence page: https://www.fitappliance.com.au/partners
+
 ## Audience and conversion profile
 
 FitAppliance visitors are typically close to purchase. They have a measured cavity, a shortlist of models, or an old appliance they need to replace. That creates a high conversion-rate profile because outbound clicks happen after the user has reduced a major purchase risk.

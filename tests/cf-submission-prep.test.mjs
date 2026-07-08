@@ -67,6 +67,10 @@ test('cf submission prep: required review routes exist with corporate contact an
   assert.match(partners, /no unsolicited email/i);
   assert.match(partners, /no brand bidding/i);
   assert.match(partners, /hello@fitappliance\.com\.au/);
+  assert.match(partners, /Google Search Console/i);
+  assert.match(partners, /28\+ days/i);
+  assert.match(partners, /471 web search clicks/i);
+  assert.match(partners, /2,185 indexed pages/i);
 });
 
 test('cf submission prep: homepage footer exposes legal routes and reader-supported disclosure', () => {
@@ -87,6 +91,10 @@ test('cf submission prep: homepage footer exposes legal routes and reader-suppor
   assert.match(visibleText(html), /ABN 46 168 974 169/);
   assert.match(html, /mailto:hello@fitappliance\.com\.au"/);
   assert.doesNotMatch(visibleText(html), /\b\d+(?:\.\d+)?%\s*(?:commission|CPA|·)/i);
+  assert.doesNotMatch(visibleText(html), /Commission Factory/i);
+  assert.doesNotMatch(html, /coming soon/i);
+  const imageTags = [...html.matchAll(/<img\b[^>]*src="\/og-images\/[^"]+\.(?:png|webp)"[^>]*>/gi)];
+  assert.ok(imageTags.length >= 4, `homepage should expose quality appliance imagery; found ${imageTags.length}`);
 });
 
 test('cf submission prep: vercel and sitemap infrastructure include the compliance routes', () => {
@@ -115,6 +123,10 @@ test('cf submission prep: Commission Factory manifest is copy-paste ready', () =
   const manifest = read('reports/cf-application-manifest.md');
   assert.match(manifest, /FitAppliance is an Australian appliance-fit utility/i);
   assert.match(manifest, /Traffic acquisition strategy/i);
+  assert.match(manifest, /Search Console evidence/i);
+  assert.match(manifest, /28\+ days/i);
+  assert.match(manifest, /471 web search clicks/i);
+  assert.match(manifest, /2,185 indexed pages/i);
   assert.match(manifest, /high-intent/i);
   assert.match(manifest, /hello@fitappliance\.com\.au/);
   assert.doesNotMatch(manifest, /\bguarantee(?:d)? conversion/i);
