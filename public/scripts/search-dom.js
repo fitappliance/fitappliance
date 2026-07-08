@@ -49,22 +49,7 @@
   }
 
   function buildZeroResultsAdHtml() {
-    if (typeof globalScope?.FitAdsense?.buildAdSlotHtml === 'function') {
-      return globalScope.FitAdsense.buildAdSlotHtml({
-        placement: 'zero-results',
-        minHeight: 280,
-        label: 'Advertisement'
-      });
-    }
-    return `<section class="ad-unit ad-unit--zero-results" data-adsense-unit data-adsense-placement="zero-results" data-ad-status="ready" style="--ad-unit-min-height:280px" aria-label="Advertisement">
-      <div class="ad-unit__label">Advertisement</div>
-      <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-7257149597818537"
-        data-ad-slot="3809571463"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-    </section>`;
+    return '';
   }
 
   function hydrateAds(root) {

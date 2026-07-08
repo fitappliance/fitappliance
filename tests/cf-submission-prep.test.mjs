@@ -97,6 +97,25 @@ test('cf submission prep: homepage footer exposes legal routes and reader-suppor
   assert.ok(imageTags.length >= 4, `homepage should expose quality appliance imagery; found ${imageTags.length}`);
 });
 
+test('cf submission prep: review surfaces do not show empty advertising placeholders', () => {
+  const reviewPages = [
+    'index.html',
+    'pages/about.html',
+    'pages/methodology.html',
+    'pages/partners.html',
+    'pages/guides/appliance-fit-sizing-handbook.html',
+    'pages/guides/fridge-clearance-requirements.html',
+  ];
+
+  for (const pagePath of reviewPages) {
+    const html = read(pagePath);
+    assert.doesNotMatch(html, /data-adsense-unit/i, `${pagePath} should not prerender an AdSense unit during affiliate review`);
+    assert.doesNotMatch(html, /<ins\b[^>]*class="adsbygoogle"/i, `${pagePath} should not prerender an adsbygoogle placeholder`);
+    assert.doesNotMatch(html, /aria-label="Advertisement"/i, `${pagePath} should not expose an empty Advertisement landmark`);
+    assert.doesNotMatch(html, /<div class="ad-unit__label">Advertisement<\/div>/i, `${pagePath} should not expose an empty Advertisement label`);
+  }
+});
+
 test('cf submission prep: vercel and sitemap infrastructure include the compliance routes', () => {
   const vercel = JSON.parse(read('vercel.json'));
   const rewrites = vercel.rewrites ?? [];
