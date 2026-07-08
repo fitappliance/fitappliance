@@ -84,6 +84,8 @@ test('cf submission prep: homepage footer exposes legal routes and reader-suppor
     visibleText(html),
     /FitAppliance is reader-supported\. When you buy through links on our site, we may earn an affiliate commission\./
   );
+  assert.match(visibleText(html), /ABN 46 168 974 169/);
+  assert.match(html, /mailto:hello@fitappliance\.com\.au"/);
   assert.doesNotMatch(visibleText(html), /\b\d+(?:\.\d+)?%\s*(?:commission|CPA|·)/i);
 });
 
