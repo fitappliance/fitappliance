@@ -20,8 +20,8 @@ Google AdSense flagged the site for low-value content. The likely risk profile i
 ## Content Evidence
 
 - Original utility layer: homepage includes a dedicated explanation of the appliance-fit calculation, evidence labels, and separation between content, ads and affiliate links.
-- Deep editorial pages: methodology has 1865 visible words; editorial standards has 1037 visible words; guide hubs listed: 5.
-- Sitemap shape: 2572 URLs total; 2556 programmatic URLs; programmaticUrlRatio 99.4%.
+- Deep editorial pages: methodology has 1864 visible words; editorial standards has 1037 visible words; guide hubs listed: 5.
+- Sitemap shape: 1961 URLs total; 1944 programmatic URLs; programmaticUrlRatio 99.1%.
 - Minimum content requirements: the homepage, trust pages and guide hub now make clear that FitAppliance provides unique fit calculations, not generic product-list aggregation.
 - User experience: manual AdSense units are kept in footer, long-form content and zero-result zones, not beside the primary cavity input or affiliate retailer buttons.
 
@@ -29,16 +29,14 @@ Google AdSense flagged the site for low-value content. The likely risk profile i
 
 - about: 2
 - affiliate-disclosure: 1
-- brands: 290
-- cavity: 61
-- compare: 140
+- brands: 67
+- compare: 112
 - contact: 1
-- doorway: 31
-- fit-check: 239
+- fit-check: 10
 - guides: 5
 - home: 1
-- location: 40
 - methodology: 1
+- partners: 1
 - privacy: 1
 - privacy-policy: 1
 - products: 1755

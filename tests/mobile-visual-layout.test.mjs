@@ -25,9 +25,14 @@ test('mobile visual layout: search shell cannot exceed phone viewport width', ()
 
   assert.match(styles, /body\s*\{[\s\S]*background:\s*#faf8f4;/);
   assert.match(styles, /body\s*\{[\s\S]*margin:\s*0;/);
+  assert.match(mobileCss, /\.hero-inner\s*\{[\s\S]*display:flex;/);
+  assert.match(mobileCss, /\.hero-inner\s*\{[\s\S]*flex-direction:column;/);
+  assert.match(mobileCss, /\.search-card\s*\{[\s\S]*order:-1;/);
   assert.match(mobileCss, /\.search-card\s*\{[\s\S]*max-width:calc\(100vw - 32px\);/);
   assert.match(mobileCss, /\.search-card\s*\{[\s\S]*overflow:hidden;/);
-  assert.match(mobileCss, /\.search-mode-toggle\s*\{[\s\S]*grid-template-columns:1fr;/);
+  assert.match(mobileCss, /\.search-mode-toggle\s*\{[\s\S]*grid-template-columns:repeat\(2,minmax\(0,1fr\)\);/);
+  assert.match(mobileCss, /\.search-mode-option small\s*\{[\s\S]*display:none;/);
+  assert.match(mobileCss, /\.cat-pills\s*\{[\s\S]*flex-wrap:nowrap;/);
 });
 
 test('mobile visual layout: primary search action appears before optional refinements', () => {
@@ -51,6 +56,7 @@ test('mobile visual layout: hero compresses trust proof instead of pushing the s
 
   assert.match(criticalMobile, /\.hero\s*\{[\s\S]*padding:36px 14px 52px;/);
   assert.match(criticalMobile, /\.hero h1\s*\{[\s\S]*font-size:clamp\(34px, 10vw, 44px\);/);
+  assert.match(criticalMobile, /\.measurement-console\s*\{[\s\S]*display:none;/);
   assert.match(trustBlock, /flex-wrap:nowrap;/);
   assert.match(trustBlock, /overflow-x:auto;/);
   assert.doesNotMatch(trustBlock, /grid-template-columns:1fr;/);
@@ -97,9 +103,9 @@ test('mobile visual layout: floating result controls stay inside phone viewport'
   assert.match(scoreCss, /\.float-bar\s*\{[\s\S]*width:100vw;/);
   assert.match(scoreCss, /\.float-bar\s*\{[\s\S]*overflow:hidden;/);
   assert.match(scoreCss, /\.float-bar-summary\s*\{[\s\S]*text-overflow:ellipsis;/);
-  assert.match(mobileCss, /\.live-fit-preview\s*\{[\s\S]*left:12px;/);
-  assert.match(mobileCss, /\.live-fit-preview\s*\{[\s\S]*width:auto;/);
-  assert.match(mobileCss, /\.live-fit-preview\.is-collapsed\s*\{[\s\S]*width:58px;[\s\S]*height:58px;/);
+  assert.match(mobileCss, /\.live-fit-preview\s*\{[\s\S]*position:static;/);
+  assert.match(mobileCss, /\.live-fit-preview\s*\{[\s\S]*width:100%;/);
+  assert.match(mobileCss, /\.live-fit-preview\.is-collapsed\s*\{[\s\S]*width:100%;[\s\S]*height:auto;/);
   assert.match(mobileCss, /\.live-fit-preview__panel\[hidden\]\s*\{[\s\S]*display:none;/);
 });
 

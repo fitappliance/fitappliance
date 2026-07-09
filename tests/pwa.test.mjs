@@ -68,3 +68,14 @@ test('phase 33 pwa: sw-register is non-blocking and loaded with defer in homepag
   const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
   assert.match(indexHtml, /<script defer src="\/scripts\/sw-register\.js(?:\?[^"]+)?"><\/script>/);
 });
+
+test('phase 60 pwa: install prompt does not auto-cover first search results', () => {
+  const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+  const beforeInstallBlock = indexHtml.match(/window\.addEventListener\('beforeinstallprompt',\s*\(event\)\s*=>\s*\{([\s\S]*?)\n\s*\}\);/)?.[1] ?? '';
+
+  assert.match(indexHtml, /<div class="install-prompt" id="installPrompt" hidden>/);
+  assert.match(beforeInstallBlock, /event\.preventDefault\(\)/);
+  assert.match(beforeInstallBlock, /deferredInstallPrompt\s*=\s*event/);
+  assert.doesNotMatch(beforeInstallBlock, /showInstallPromptIfEligible\(\)/);
+  assert.doesNotMatch(beforeInstallBlock, /removeAttribute\('hidden'\)/);
+});

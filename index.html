@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FitAppliance | Appliance Fit Checker for Australian Homes</title>
 <meta name="description" content="Check appliance fit for Australian homes with practical clearance buffers, doorway access notes and energy data.">
-<meta name="theme-color" content="#131210">
+<meta name="theme-color" content="#FAF8F4">
 <meta name="article:modified_time" content="2026-04-18T00:00:00Z">
 <link rel="canonical" href="https://www.fitappliance.com.au/">
 <link rel="alternate" hreflang="en-AU" href="https://www.fitappliance.com.au/">
@@ -104,10 +104,11 @@ nav {
 
 /* ─── HERO ─── */
 .hero {
-  background: var(--ink);
+  background: var(--paper);
   padding: 56px 24px 76px;
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid var(--border);
 }
 .hero-grain {
   position: absolute;
@@ -120,8 +121,8 @@ nav {
 .hero-copy { min-width:0; }
 .hero-eyebrow {
   display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
-  color:rgba(255,255,255,.88);font-size:12px;font-weight:600;
+  background:var(--white);border:1px solid var(--border);
+  color:var(--ink-2);font-size:12px;font-weight:700;
   padding:5px 16px;border-radius:100px;margin-bottom:28px;
   letter-spacing:.07em;text-transform:uppercase;
   max-width:100%;
@@ -147,14 +148,14 @@ nav {
 .hero h1 {
   font-family:'Instrument Serif',serif;
   font-size: clamp(40px,6.5vw,70px);
-  color: #fff;
+  color: var(--ink);
   line-height: 1.06;
   letter-spacing: -1px;
   margin-bottom: 22px;
 }
-.hero h1 em { font-style:italic;color:#D4A574; }
+.hero h1 em { font-style:italic;color:var(--copper); }
 .hero-sub {
-  color: rgba(255,255,255,.55);
+  color: var(--ink-3);
   font-size: 17px;
   max-width: 500px;
   margin: 0 auto 32px;
@@ -165,11 +166,12 @@ nav {
 /* ─── SEARCH CARD ─── */
 .search-card {
   background: var(--white);
-  border-radius: 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
   padding: 34px 36px 30px;
   max-width: 820px;
   margin: 0 auto;
-  box-shadow: 0 28px 80px rgba(0,0,0,.28);
+  box-shadow: var(--shadow);
   position: relative;
   z-index: 3;
 }
@@ -182,6 +184,13 @@ nav {
   flex-wrap: wrap;
 }
 .sc-title { font-family:'Instrument Serif',serif;font-size:20px;color:var(--ink);letter-spacing:-.2px; }
+.search-mode-toggle{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 18px;padding:0;border:0;text-align:left}
+.search-mode-toggle legend{grid-column:1/-1;margin-bottom:2px;color:var(--ink-3);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.search-mode-option{display:grid;grid-template-columns:auto 1fr;gap:3px 9px;align-items:start;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--r-sm);background:var(--paper);min-width:0;cursor:pointer}
+.search-mode-option input{margin-top:4px;accent-color:var(--copper)}
+.search-mode-option span{color:var(--ink);font-size:13px;font-weight:800;line-height:1.25;overflow-wrap:anywhere}
+.search-mode-option small{grid-column:2;color:var(--ink-3);font-size:12px;font-weight:600;line-height:1.35;overflow-wrap:anywhere}
+.search-mode-option--active{border-color:var(--copper);background:var(--copper-bg);box-shadow:inset 3px 0 0 var(--copper)}
 
 /* Category pills */
 .cat-pills { display:flex;gap:7px;flex-wrap:wrap; }
@@ -229,6 +238,9 @@ nav {
   font-weight:500;
   line-height:1.45;
 }
+.hero-sample-searches{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:12px}
+.hero-sample-label{color:var(--ink-2);font-size:12px;font-weight:600}
+.hero-sample-chip{min-height:32px;border:1px solid var(--border);border-radius:999px;background:var(--paper);padding:5px 9px;color:var(--ink-2);font:600 12px/1.2 'Outfit',sans-serif;white-space:normal;cursor:pointer}
 /* Extra inputs row */
 .extra-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px; }
 .extra-grid select {
@@ -308,8 +320,8 @@ nav {
   .hero-eyebrow { justify-content:flex-start;margin-bottom:22px; }
   .hero h1 { font-size:clamp(48px,5vw,66px);margin-bottom:20px; }
   .hero-sub { margin:0 0 24px;max-width:440px;font-size:16px;line-height:1.65; }
-  .hero-trust-strip { justify-content:flex-start;margin-bottom:0;gap:8px; }
-  .hero-trust-item { white-space:normal;padding:6px 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(255,255,255,.06);line-height:1.35; }
+  .hero-trust-strip { justify-content:flex-start;margin-bottom:0;gap:8px;color:var(--ink-2); }
+  .hero-trust-item { white-space:normal;padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:var(--white);color:var(--ink-2);line-height:1.35; }
   .search-card { margin:0;max-width:none;padding:24px 28px 24px;border-radius:18px; }
   .sc-head { margin-bottom:16px; }
   .search-mode-toggle { margin:0 0 12px; }
@@ -337,13 +349,18 @@ nav {
 }
 @media(max-width:660px){
   .nav-right .nav-link { display:none; }
-  .search-card{padding:18px 14px}
+  .hero-inner{display:flex;flex-direction:column;}
+  .search-card{order:-1;padding:18px 14px}
+  .search-mode-toggle { grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-bottom:14px; }
+  .search-mode-option { padding:9px; }
+  .search-mode-option small { display:none; }
+  .measurement-console { display:none; }
   .dim-grid { grid-template-columns:1fr; }
   .extra-grid { grid-template-columns:1fr; }
   .hero { padding:36px 14px 52px; }
   .hero h1{font-size:clamp(34px, 10vw, 44px);}
-  .cat-pills { gap:5px; }
-  .cat-pill { font-size:12px;padding:7px 11px; }
+  .cat-pills { flex-wrap:nowrap;overflow-x:auto;gap:5px;padding-bottom:2px; }
+  .cat-pill { flex:0 0 auto;font-size:12px;padding:7px 11px; }
   .btn-search--primary {
     position: sticky;
     bottom: 12px;
@@ -410,9 +427,40 @@ nav {
       <p class="hero-sub" id="heroSub">Enter your cavity. Get a 0-100 Fit Score for every appliance that fits.</p>
 
       <div class="hero-trust-strip" role="note">
-        <span class="hero-trust-item">▸ 2,170+ Australian appliances</span>
-        <span class="hero-trust-item" id="hero-verified-count">▸ 280 Verified Fit records · 1,805 evidence-backed specs</span>
-        <span class="hero-trust-item">▸ Updated daily</span>
+        <span class="hero-trust-item">2,170+ Australian appliances</span>
+        <span class="hero-trust-item" id="hero-verified-count">280 Verified Fit records · 1,805 evidence-backed specs</span>
+        <span class="hero-trust-item">Updated daily</span>
+      </div>
+
+      <div class="measurement-console" aria-label="Cavity measurement preview">
+        <div class="measurement-console__header">
+          <div>
+            <span class="measurement-console__label">Measurement console</span>
+            <strong>Three axes before retailer links</strong>
+          </div>
+          <span>W × H × D</span>
+        </div>
+        <div class="measurement-console__diagram">
+          <div class="cavity-frame" aria-hidden="true">
+            <span class="measurement-axis measurement-axis--width">Cavity width</span>
+            <span class="measurement-axis measurement-axis--height">Cavity height</span>
+            <span class="measurement-axis measurement-axis--depth">Cavity depth</span>
+          </div>
+          <div class="measurement-console__checks">
+            <div>
+              <strong>Practical clearance</strong>
+              <span>Appliance dimensions plus fit buffer.</span>
+            </div>
+            <div>
+              <strong>Doorway path</strong>
+              <span>Narrowest delivery point checked separately.</span>
+            </div>
+            <div>
+              <strong>Manual advisory</strong>
+              <span>Manufacturer notes stay visible, not hidden.</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -786,22 +834,22 @@ nav {
         <a href="/about/editorial-standards">Editorial standards</a>
       </div>
     </div>
-    <div class="editorial-value-grid" aria-label="FitAppliance content quality signals">
+    <div class="editorial-value-grid review-ready-panel" aria-label="FitAppliance content quality signals">
       <article>
-        <strong>Deep buyer guides</strong>
+        <strong>Manual-backed guides</strong>
         <span>Five long-form guides cover fridge clearance, dishwasher cavities, dryer ventilation, washing-machine doorway access and general appliance sizing.</span>
       </article>
       <article>
-        <strong>Evidence labels</strong>
+        <strong>Evidence-labelled results</strong>
         <span>Cards distinguish Verified Fit, Dimensions Verified and Retailer Spec so users can see whether clearance was proved or estimated.</span>
       </article>
       <article>
-        <strong>Programmatic pages with context</strong>
+        <strong>Indexed page families</strong>
         <span>Brand, cavity, doorway, product and comparison pages link back to methodology and guide hubs instead of standing alone as doorway pages.</span>
       </article>
       <article>
-        <strong>Manual resubmission ready</strong>
-        <span>Ownership, ads.txt, contact, privacy, terms, affiliate disclosure and public correction routes are visible from the primary navigation layer.</span>
+        <strong>Affiliate and contact details</strong>
+        <span>ABN 46 168 974 169, hello@fitappliance.com.au, privacy, terms, affiliate disclosure and public correction routes are visible from the primary navigation layer.</span>
       </article>
     </div>
   </div>
@@ -1121,7 +1169,6 @@ function setupInstallPrompt() {
   window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
     deferredInstallPrompt = event;
-    showInstallPromptIfEligible();
   });
 
   window.addEventListener('appinstalled', () => {

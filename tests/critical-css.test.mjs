@@ -45,7 +45,7 @@ test('phase 43a critical-css: deferred stylesheet exists and carries the non-cri
 
 test('phase 43a critical-css: above-fold selectors remain inline', () => {
   const inline = readIndex().match(/<style>([\s\S]*?)<\/style>/)?.[1] ?? '';
-  for (const selector of [':root', 'html', 'body', '.topbar', 'nav', '.hero', '.search-card', '.cat-pills', '.dim-grid', '.field-wrap', '.btn-search']) {
+  for (const selector of [':root', 'html', 'body', '.topbar', 'nav', '.hero', '.search-card', '.search-mode-toggle', '.search-mode-option', '.hero-sample-chip', '.cat-pills', '.dim-grid', '.field-wrap', '.btn-search']) {
     assert.match(inline, selectorRegex(selector), `${selector} should stay inline`);
   }
 });

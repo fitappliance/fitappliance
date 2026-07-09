@@ -52,35 +52,31 @@ test('phase 43a sw: register script listens for controllerchange updates', () =>
   assert.match(REGISTER_SOURCE, /controllerchange/);
 });
 
-test('phase 43a sw: controllerchange shows a refresh toast', async () => {
+test('phase 60 sw: controllerchange marks update state without a refresh toast', async () => {
   const { window, getControllerChangeHandler } = await setupDom();
   const handler = getControllerChangeHandler();
 
   assert.equal(typeof handler, 'function', 'controllerchange handler should be registered');
   handler();
 
-  const toast = window.document.querySelector('.sw-update-toast');
-  assert.ok(toast, 'update toast should be rendered');
-  assert.match(toast.textContent, /New version available/i);
-  assert.ok(toast.querySelector('button'), 'refresh button should be present');
+  assert.equal(window.__fitApplianceServiceWorkerUpdated, true);
+  assert.equal(window.document.querySelector('.sw-update-toast'), null);
 });
 
-test('phase 43a sw: refresh button reloads via injected reload hook', async () => {
+test('phase 60 sw: controllerchange does not trigger an immediate reload', async () => {
   const { window, getControllerChangeHandler, getReloadCount } = await setupDom();
 
   getControllerChangeHandler()();
-  window.document.querySelector('.sw-update-toast button').click();
 
-  assert.equal(getReloadCount(), 1);
+  assert.equal(window.__fitApplianceServiceWorkerUpdated, true);
+  assert.equal(getReloadCount(), 0);
 });
 
-test('phase 43a sw: update toast auto-removes after five seconds', async () => {
+test('phase 60 sw: update handling schedules no visual timeout', async () => {
   const { window, getControllerChangeHandler, timeouts } = await setupDom();
 
   getControllerChangeHandler()();
-  const timeout = timeouts.find((row) => row.delay === 5000);
-  assert.ok(timeout, 'toast should schedule a five second dismissal');
-  timeout.handler();
 
+  assert.equal(timeouts.length, 0);
   assert.equal(window.document.querySelector('.sw-update-toast'), null);
 });

@@ -84,14 +84,17 @@ test('phase 58 trust visualization: product photo thumbnails replace split wiref
   assert.doesNotMatch(css, /card-zone-wire-half/);
 });
 
-test('phase 58 trust visualization: live fit preview is fixed and compact', () => {
+test('phase 60 review polish: live fit preview docks in-page instead of covering results', () => {
   const block = blockFor('.live-fit-preview');
   const icon = blockFor('.live-fit-preview__icon');
   const svg = blockFor('.live-fit-preview__svg svg');
 
-  assert.match(block, /position:\s*fixed/);
-  assert.match(block, /bottom:\s*18px/);
-  assert.match(block, /z-index:\s*90/);
+  assert.match(block, /position:\s*sticky/);
+  assert.match(block, /top:\s*84px/);
+  assert.match(block, /max-width:\s*360px/);
+  assert.doesNotMatch(block, /position:\s*fixed/);
+  assert.doesNotMatch(block, /bottom:\s*18px/);
+  assert.match(block, /z-index:\s*2/);
   assert.match(icon, /width:\s*38px/);
   assert.match(svg, /max-width:\s*280px/);
 });
