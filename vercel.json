@@ -135,6 +135,7 @@
     { "source": "/contact",            "destination": "/pages/contact" },
     { "source": "/partners",           "destination": "/pages/partners" },
     { "source": "/subscribe",            "destination": "/pages/subscribe" },
+    { "source": "/subscribe/thanks",     "destination": "/pages/subscribe/thanks" },
     { "source": "/account",              "destination": "/pages/account" },
     { "source": "/about",                "destination": "/pages/about" },
     { "source": "/methodology",          "destination": "/pages/methodology" },

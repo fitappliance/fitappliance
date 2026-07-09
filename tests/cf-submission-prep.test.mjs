@@ -88,7 +88,7 @@ test('cf submission prep: homepage footer exposes legal routes and reader-suppor
     visibleText(html),
     /FitAppliance is reader-supported\. When you buy through links on our site, we may earn an affiliate commission\./
   );
-  assert.match(visibleText(html), /ABN 46 168 974 169/);
+  assert.match(visibleText(html), /ABN:? 46 168 974 169/);
   assert.match(html, /mailto:hello@fitappliance\.com\.au"/);
   assert.doesNotMatch(visibleText(html), /\b\d+(?:\.\d+)?%\s*(?:commission|CPA|·)/i);
   assert.doesNotMatch(visibleText(html), /Commission Factory/i);
@@ -151,17 +151,24 @@ test('cf submission prep: reviewer and legal pages expose the same business iden
     if (!pagePath.endsWith('/editorial-standards.html')) {
       assert.match(html, /mailto:hello@fitappliance\.com\.au/, `${pagePath} should link the domain contact mailbox`);
     }
-    assert.match(text, /ABN 46 168 974 169/, `${pagePath} should expose the FitAppliance ABN`);
+    assert.match(text, /ABN:? 46 168 974 169/, `${pagePath} should expose the FitAppliance ABN`);
   }
 });
 
 test('cf submission prep: vercel and sitemap infrastructure include the compliance routes', () => {
   const vercel = JSON.parse(read('vercel.json'));
   const rewrites = vercel.rewrites ?? [];
-  for (const route of ['/privacy', '/terms', '/contact', '/partners']) {
+  const requiredRewrites = new Map([
+    ['/privacy', '/pages/privacy'],
+    ['/terms', '/pages/terms'],
+    ['/contact', '/pages/contact'],
+    ['/partners', '/pages/partners'],
+    ['/subscribe/thanks', '/pages/subscribe/thanks'],
+  ]);
+  for (const [source, destination] of requiredRewrites) {
     assert.ok(
-      rewrites.some((row) => row.source === route && row.destination === `/pages${route}`),
-      `vercel.json should route ${route}`
+      rewrites.some((row) => row.source === source && row.destination === destination),
+      `vercel.json should route ${source}`
     );
   }
 

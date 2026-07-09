@@ -52,7 +52,7 @@ test('taste redesign: trust proof is presented as review-ready content, not a ge
   assert.match(indexHtml, /Evidence-labelled results/i);
   assert.match(indexHtml, /Affiliate and contact details/i);
   assert.match(indexHtml, /hello@fitappliance\.com\.au/);
-  assert.match(indexHtml, /ABN 46 168 974 169/);
+  assert.match(indexHtml, /ABN:? 46 168 974 169/);
 });
 
 test('taste redesign: reviewer identity copy matches the actual footer and reviewer pages', () => {
