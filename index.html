@@ -849,9 +849,47 @@ nav {
       </article>
       <article>
         <strong>Affiliate and contact details</strong>
-        <span>ABN 46 168 974 169, hello@fitappliance.com.au, privacy, terms, affiliate disclosure and public correction routes are visible from the primary navigation layer.</span>
+        <span>ABN 46 168 974 169, hello@fitappliance.com.au, privacy, terms, affiliate disclosure and public correction routes are visible from the footer and advertiser-review pages.</span>
       </article>
     </div>
+  </div>
+</section>
+
+<section class="reviewer-visual-sec" aria-labelledby="reviewer-visual-title">
+  <div class="reviewer-visual-inner">
+    <div class="reviewer-visual-copy">
+      <span class="editorial-value-kicker">Real-world measurement context</span>
+      <h2 id="reviewer-visual-title">Fit checks show the room problem before the product link.</h2>
+      <p>
+        The homepage now exposes the same evidence path used in the app: measure the cavity,
+        check the narrowest doorway, then confirm manufacturer manual clearance notes before
+        opening retailer pages.
+      </p>
+      <ul class="reviewer-visual-list">
+        <li>Room-first context for cavity width, height and depth.</li>
+        <li>Delivery path notes before purchase intent.</li>
+        <li>Manual evidence and affiliate disclosure kept visible for review.</li>
+      </ul>
+    </div>
+    <figure class="reviewer-evidence-scene" role="img" aria-label="Cavity measurement scene showing doorway path and manual clearance notes">
+      <div class="reviewer-evidence-scene__wall" aria-hidden="true">
+        <div class="reviewer-evidence-scene__cavity">
+          <span class="reviewer-evidence-scene__cabinet reviewer-evidence-scene__cabinet--left"></span>
+          <span class="reviewer-evidence-scene__appliance"></span>
+          <span class="reviewer-evidence-scene__cabinet reviewer-evidence-scene__cabinet--right"></span>
+          <span class="reviewer-evidence-scene__measure reviewer-evidence-scene__measure--width">620mm cavity</span>
+          <span class="reviewer-evidence-scene__measure reviewer-evidence-scene__measure--gap">40mm practical clearance</span>
+        </div>
+        <div class="reviewer-evidence-scene__doorway">
+          <span>Doorway path</span>
+          <strong>810mm</strong>
+        </div>
+      </div>
+      <figcaption class="reviewer-evidence-scene__manual">
+        <strong>Manual note</strong>
+        <span>Confirm side, rear and top clearance in the model PDF before ordering.</span>
+      </figcaption>
+    </figure>
   </div>
 </section>
 
@@ -863,19 +901,19 @@ nav {
     </div>
     <div class="visual-proof-grid">
       <article class="visual-proof-item">
-        <img src="/og-images/guide-fridge-clearance-requirements.webp" alt="Fridge clearance requirements guide cover" width="1200" height="630" loading="lazy" decoding="async">
+        <img src="/og-images/guide-fridge-clearance-requirements.webp" alt="Fridge clearance requirements guide cover" width="1200" height="630" loading="eager" decoding="async">
         <a href="/guides/fridge-clearance-requirements">Fridge clearance requirements <span>Manual-backed spacing guidance for Australian fridge cavities.</span></a>
       </article>
       <article class="visual-proof-item">
-        <img src="/og-images/guide-washing-machine-doorway-access.webp" alt="Washing machine doorway access guide cover" width="1200" height="630" loading="lazy" decoding="async">
+        <img src="/og-images/guide-washing-machine-doorway-access.webp" alt="Washing machine doorway access guide cover" width="1200" height="630" loading="eager" decoding="async">
         <a href="/guides/washing-machine-doorway-access">Washing machine doorway access <span>Delivery-path checks before selecting a laundry appliance.</span></a>
       </article>
       <article class="visual-proof-item">
-        <img src="/og-images/bosch-dishwasher.webp" alt="Bosch dishwasher clearance guide cover" width="1200" height="630" loading="lazy" decoding="async">
+        <img src="/og-images/bosch-dishwasher.webp" alt="Bosch dishwasher clearance guide cover" width="1200" height="630" loading="eager" decoding="async">
         <a href="/brands/bosch-dishwasher-clearance">Bosch dishwasher clearance <span>Brand/category page with dishwasher fit and dimension signals.</span></a>
       </article>
       <article class="visual-proof-item">
-        <img src="/og-images/fisher-paykel-dryer.webp" alt="Fisher and Paykel dryer clearance guide cover" width="1200" height="630" loading="lazy" decoding="async">
+        <img src="/og-images/fisher-paykel-dryer.webp" alt="Fisher and Paykel dryer clearance guide cover" width="1200" height="630" loading="eager" decoding="async">
         <a href="/brands/fisher-paykel-dryer-clearance">Fisher &amp; Paykel dryer fit <span>Dryer clearance and apartment-safety context for shoppers.</span></a>
       </article>
     </div>
@@ -1018,13 +1056,7 @@ nav {
 <div class="asset-capture-toast" data-asset-capture hidden></div>
 
 <!-- COMPARE BAR -->
-<div class="compare-bar" id="compareBar">
-  <div>
-    <div style="font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px">Comparing <span id="compareCount">0</span> items</div>
-    <div class="compare-bar-items" id="compareItems"></div>
-  </div>
-  <button class="btn-compare-now" onclick="openCompareTable()">Compare Now →</button>
-</div>
+<div class="compare-bar" id="compareBar" hidden aria-hidden="true"></div>
 
 <div class="compare-modal" id="compareModal" hidden>
   <div class="compare-modal-backdrop" onclick="closeCompareModal()"></div>

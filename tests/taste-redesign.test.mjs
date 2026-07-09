@@ -55,6 +55,31 @@ test('taste redesign: trust proof is presented as review-ready content, not a ge
   assert.match(indexHtml, /ABN 46 168 974 169/);
 });
 
+test('taste redesign: reviewer identity copy matches the actual footer and reviewer pages', () => {
+  assert.doesNotMatch(indexHtml, /primary navigation layer/i);
+  assert.match(indexHtml, /footer and advertiser-review pages/i);
+});
+
+test('taste redesign: quality imagery shows a measurement evidence scene, not only guide thumbnails', () => {
+  assert.match(indexHtml, /class="[^"]*\breviewer-evidence-scene\b[^"]*"/);
+  assert.match(indexHtml, /aria-label="[^"]*cavity[^"]*doorway[^"]*manual/i);
+  assert.match(indexHtml, /real-world measurement context/i);
+  assert.match(indexHtml, /class="[^"]*\breviewer-evidence-scene__manual\b[^"]*"/);
+  assert.match(combinedCss, /\.reviewer-evidence-scene\s*\{/);
+  assert.match(combinedCss, /\.reviewer-evidence-scene__manual\s*\{/);
+});
+
+test('taste redesign: reviewer proof thumbnails do not lazy-load into blank application screenshots', () => {
+  const section = indexHtml.match(/<section class="visual-proof-sec"[\s\S]*?<\/section>/)?.[0] ?? '';
+  const imageTags = [...section.matchAll(/<img\b[^>]*>/gi)].map((match) => match[0]);
+
+  assert.equal(imageTags.length, 4);
+  for (const imageTag of imageTags) {
+    assert.match(imageTag, /loading="eager"/i);
+    assert.doesNotMatch(imageTag, /loading="lazy"/i);
+  }
+});
+
 test('taste redesign: dark standalone sections are removed from the light utility flow', () => {
   const how = blockFor('.how-sec', deferredCss);
   const footer = exactBlockFor('footer', deferredCss);

@@ -1,11 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { JSDOM } from 'jsdom';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const searchDomPath = path.join(repoRoot, 'public', 'scripts', 'search-dom.js');
+
+test('cf readiness: homepage compare tray is hidden and empty before JavaScript hydrates it', () => {
+  const html = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+  const compareMarkup = html.match(/<div class="compare-bar" id="compareBar"[\s\S]*?<\/div>\s*(?:\n\s*<div class="compare-modal"|$)/)?.[0] ?? '';
+
+  assert.match(compareMarkup, /<div class="compare-bar" id="compareBar"[^>]*\bhidden\b/);
+  assert.match(compareMarkup, /\baria-hidden="true"/);
+  assert.doesNotMatch(compareMarkup, /Comparing\s*<span[^>]*>\s*0\s*<\/span>\s*items/i);
+  assert.doesNotMatch(compareMarkup, /Compare Now/i);
+});
 
 async function loadSearchDom() {
   const module = await import(`${pathToFileURL(searchDomPath).href}?cacheBust=${Date.now()}`);

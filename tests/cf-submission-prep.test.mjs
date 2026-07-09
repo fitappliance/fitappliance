@@ -116,6 +116,45 @@ test('cf submission prep: review surfaces do not show empty advertising placehol
   }
 });
 
+test('cf submission prep: subscribe route is an opt-in form, not a premature confirmation page', () => {
+  const subscribe = read('pages/subscribe.html');
+  const subscribeText = visibleText(subscribe);
+
+  assert.match(subscribe, /<form\b[^>]*class="[^"]*\bsubscribe-form\b/i);
+  assert.match(subscribe, /name="email"/i);
+  assert.match(subscribe, /action="\/api\/subscribe"/i);
+  assert.match(subscribeText, /one-click unsubscribe/i);
+  assert.doesNotMatch(subscribeText, /^Check your inbox\b/i);
+
+  assert.ok(fs.existsSync(path.join(ROOT, 'pages', 'subscribe', 'thanks.html')));
+  const thanks = read('pages/subscribe/thanks.html');
+  assert.match(visibleText(thanks), /Check your inbox/i);
+  assert.doesNotMatch(thanks, /<form\b[^>]*class="[^"]*\bsubscribe-form\b/i);
+  assert.match(thanks, /<meta name="robots" content="noindex, follow">/i);
+});
+
+test('cf submission prep: reviewer and legal pages expose the same business identity', () => {
+  const reviewerPages = [
+    'pages/about.html',
+    'pages/contact.html',
+    'pages/privacy.html',
+    'pages/terms.html',
+    'pages/partners.html',
+    'pages/affiliate-disclosure.html',
+    'pages/about/editorial-standards.html',
+  ];
+
+  for (const pagePath of reviewerPages) {
+    const html = read(pagePath);
+    const text = visibleText(html);
+    assert.match(text, /hello@fitappliance\.com\.au/, `${pagePath} should expose the domain contact mailbox`);
+    if (!pagePath.endsWith('/editorial-standards.html')) {
+      assert.match(html, /mailto:hello@fitappliance\.com\.au/, `${pagePath} should link the domain contact mailbox`);
+    }
+    assert.match(text, /ABN 46 168 974 169/, `${pagePath} should expose the FitAppliance ABN`);
+  }
+});
+
 test('cf submission prep: vercel and sitemap infrastructure include the compliance routes', () => {
   const vercel = JSON.parse(read('vercel.json'));
   const rewrites = vercel.rewrites ?? [];
