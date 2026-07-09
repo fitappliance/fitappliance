@@ -77,7 +77,7 @@ test('cf submission prep: homepage footer exposes legal routes and reader-suppor
   const html = read('index.html');
   assert.match(
     html,
-    /<meta name="commission-factory-verification" content="c2057260f52c4799b400990d7727bbfc" \/>/
+    /<meta name="commission-factory-verification" content="80a2b938ce344403a5bf0c76f4612d0c" \/>/
   );
   assert.match(html, /href="\/about"/);
   assert.match(html, /href="\/privacy"/);
