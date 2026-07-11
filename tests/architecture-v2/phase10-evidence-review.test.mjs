@@ -18,6 +18,7 @@ const selection = {
 };
 
 const acquisition = {
+  schemaVersion: 1,
   entries: [
     {
       legacyRuntimeId: 'fridge-a', outcome: 'acquired', sourceUrl: 'https://media3.bosch-home.com/a.pdf',
@@ -70,6 +71,37 @@ test('requires exact identity, official PDF provenance, rendered review, and all
     selection, acquisition,
     input: { ...input, reviews: [{ ...input.reviews[0], fields: approvedFields.slice(0, 2) }, input.reviews[1]] },
   }), /three closed-envelope dimensions/i);
+});
+
+test('new Phase 10 acquisitions cannot approve a PDF without MinerU JSON provenance', () => {
+  const modern = {
+    ...acquisition,
+    schemaVersion: 2,
+    extractionFormat: 'mineru_content_list_v2',
+    entries: acquisition.entries.map((entry) => entry.outcome !== 'acquired' ? entry : {
+      ...entry,
+      parserVersion: 'MinerU-3.4.4',
+      derivedArtifact: {
+        schemaVersion: 1, format: 'content_list_v2', parserName: 'MinerU', parserVersion: '3.4.4',
+        modelRevision: 'ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+        backend: 'pipeline', method: 'auto', tableEnabled: true, formulaEnabled: false,
+        sourcePdfSha256: entry.sha256, contentSha256: 'b'.repeat(64),
+        objectPath: `evidence/derived/mineru-json/sha256/bb/bb/${'b'.repeat(64)}.json`,
+        byteSize: 200, pageCount: entry.pageCount,
+      },
+    }),
+  };
+  assert.equal(reviewPhase10Evidence({ selection, acquisition: modern, input }).summary.approved, 1);
+  assert.throws(() => reviewPhase10Evidence({
+    selection,
+    acquisition: {
+      ...modern,
+      entries: modern.entries.map((entry) => entry.outcome === 'acquired'
+        ? { ...entry, derivedArtifact: undefined }
+        : entry),
+    },
+    input,
+  }), /MinerU|provenance/i);
 });
 
 test('builds a dimensions-only projection without inventing complete clearance', () => {

@@ -1,5 +1,9 @@
 # PLAN-PHASE57: Engineered Trust — Data Provenance & Verification UX
 
+> Historical plan. As of 2026-07-12, PDF evidence is converted to policy-pinned
+> MinerU `content_list_v2` JSON before reading. Any direct `pdf-parse` guidance
+> below is superseded and cannot produce a current approval receipt.
+
 **Start**: 2026-05-08 (after Phase 53-56 complete)
 **Estimated duration**: 14-18 days, 5 PRs
 **Goal**: Transform FitAppliance from "another data site" into a tool users **cross-reference before purchase decisions** by exposing the manufacturer-PDF data chain and adding verification UX.

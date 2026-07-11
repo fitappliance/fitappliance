@@ -175,7 +175,7 @@ function parseChiqText(text, options = {}) {
 }
 
 async function parseChiqPdf(pdfPath, options = {}) {
-  const text = await extractText(pdfPath);
+  const { text } = await extractText(pdfPath);
   return parseChiqText(text, options);
 }
 

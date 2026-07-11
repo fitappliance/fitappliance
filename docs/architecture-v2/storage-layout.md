@@ -63,7 +63,9 @@ the Architecture V2 root are rejected by the path-contract test.
 ├── evidence/
 │   ├── objects/sha256/aa/<full-sha256>.pdf
 │   ├── text/sha256/aa/<full-sha256>.txt
+│   ├── derived/mineru-json/sha256/aa/bb/<full-sha256>.json
 │   └── renders/sha256/aa/<full-sha256>/page-0001.png
+├── tools/mineru/              # local Python environment, config and model cache
 ├── review-workspaces/
 │   └── phase-XX/             # contact sheets and temporary reviewer exports
 ├── cache/
@@ -86,6 +88,7 @@ new review lifecycle.
 | Provenance index | URL, SHA-256, page, quote, parser version | repository `data/` | tracked |
 | Derived deployment | public projection, category JSON, HTML pages | repository generated paths | tracked until CI publishes independently |
 | Original evidence | manufacturer PDF, retailer source snapshot | external `evidence/` or `imports/` | never |
+| Structured PDF evidence | MinerU `content_list_v2.json`, bound to source PDF hash | external `evidence/derived/mineru-json/` | never |
 | Visual review artifact | rendered PDF page, contact sheet | external `evidence/renders/` | never |
 | Disposable work | downloads, OCR scratch, test browser output | external `cache/work/` | never |
 | Durable conclusion | completion audit, phase report | repository `docs/` | tracked |
@@ -105,6 +108,9 @@ new review lifecycle.
    to external `cache/work/v2/tmp`.
 6. Generated files are never edited manually; their source input or generator
    must be changed instead.
+7. New PDF evidence must pass through the policy-pinned MinerU JSON converter.
+   Legacy `.txt` objects are frozen compatibility snapshots and cannot issue a
+   new verification receipt.
 
 ## Backup policy
 

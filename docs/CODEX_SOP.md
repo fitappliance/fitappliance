@@ -127,7 +127,7 @@ Environment:
 - `OPENAI_API_KEY` is read from `.env` for downstream parse steps.
 - If missing, pipeline entry scripts must print `Missing API Key in .env file`.
 
-## 4. Extract Text/Layout
+## 4. Convert PDF to MinerU JSON
 
 Primary script:
 
@@ -135,9 +135,14 @@ Primary script:
 
 Rules:
 
-- Preserve enough context for layout-aware parsing.
-- Be cautious with table extraction because plain text extraction can destroy row/column relationships.
-- If a PDF is ambiguous, fail for manual review rather than guessing.
+- Run MinerU 3.4.4 `pipeline` with table extraction before any PDF content is
+  consumed. `extractText()` is only a JSON compatibility view.
+- Persist the source PDF hash, `content_list_v2.json` hash, page, bbox and
+  fragment hash. Never approve from an unbound text file.
+- Accept grouped dimensions only when the source states the axis order. Reject
+  packaged dimensions and unlabeled triples.
+- If identity, axes, units or values are ambiguous, leave the field unknown and
+  quarantine automatically rather than guessing.
 
 ## 5. AI Parse
 

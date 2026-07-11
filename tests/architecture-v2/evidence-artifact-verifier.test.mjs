@@ -4,7 +4,6 @@ import { createHash } from 'node:crypto';
 
 import {
   extractClaimsFromHtml,
-  extractClaimsFromPdfText,
   verifyAndAttestResolutionArtifact,
   verifyAttestedResolutionArtifact,
 } from '../../src/domain/evidence-artifact-verifier.mjs';
@@ -13,8 +12,13 @@ import {
   validateClaimSemantics,
   validateClaimsSemantics,
 } from '../../src/domain/evidence-claim-semantics.mjs';
+import {
+  buildMineruDerivedArtifact,
+  parseMineruContentListV2,
+} from '../../src/domain/mineru-document.mjs';
 
 const identity = { brand: 'Westinghouse', model: 'WHE6874BA', category: 'fridge' };
+const MINERU_MODEL_REVISION = 'ed6b654c018d742e65a17671e379c5e6ecc87ec9';
 
 function html(model = 'WHE6874BA') {
   return Buffer.from(`<!doctype html><html><head>
@@ -135,20 +139,113 @@ test('HTML extractor derives requested claims from source text instead of copied
   });
 });
 
-test('PDF extractor accepts claims only on pages scoped to the exact model', () => {
-  const text = `WHE6874BA Installation guide\nTotal width (mm) 913 mm\nTotal height (mm) 1782 mm\nTotal depth (mm) 803 mm\fWHE6874SA\nTotal width (mm) 999 mm`;
-  const claims = extractClaimsFromPdfText(text, {
-    caseIdentity: identity,
+test('PDF approval requires hash-bound MinerU JSON and replays claims from that JSON', () => {
+  const pdfBytes = Buffer.from('%PDF-1.7\nimmutable test artifact');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: 'Hisense HRCD640TBW Specifications' }], level: 2 },
+      bbox: [80, 60, 400, 120],
+    },
+    {
+      type: 'table',
+      content: {
+        html: '<table><tr><td>Model Number</td><td>HRCD640TBW</td></tr><tr><td>Dimensions (Net) (W x H x D)</td><td>914 x 1790 x 730 mm</td></tr></table>',
+        table_caption: [], table_footnote: [], table_type: 'complex_table', table_nest_level: 1,
+      },
+      bbox: [80, 200, 800, 900],
+    },
+  ]]));
+  const pdfIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
+  const parsed = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION, caseIdentity: pdfIdentity,
     fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
   });
-  assert.deepEqual(claims.map((claim) => [claim.field, claim.value, claim.page]), [
-    ['closedEnvelope.widthMm', 913, 1],
-    ['closedEnvelope.heightMm', 1782, 1],
-    ['closedEnvelope.depthMm', 803, 1],
-  ]);
-  assert.throws(() => extractClaimsFromPdfText('WHE6874SA\nTotal width (mm) 913 mm', {
-    caseIdentity: identity, fields: ['closedEnvelope.widthMm'],
-  }), /no exact-model PDF evidence/i);
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION, pageCount: 1,
+  });
+  const pdfSource = {
+    authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+    sourceUrl: 'https://dtc-aus-api.hisense.com/medias/HRCD640TBW.pdf',
+    finalUrl: 'https://dtc-aus-api.hisense.com/medias/HRCD640TBW.pdf', redirectChain: [],
+    retrievedAt: '2026-07-11T14:30:00.000Z', contentSha256: pdfHash,
+    objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+    contentType: 'application/pdf', byteSize: pdfBytes.length,
+    identity: { brand: 'Hisense', model: 'HRCD640TBW', outcome: 'exact' },
+    claims: parsed.claims, derivedArtifact,
+  };
+  const attested = verifyAndAttestResolutionArtifact({
+    source: pdfSource, caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, verifiedAt: '2026-07-11T14:35:00.000Z',
+  });
+  assert.equal(attested.derivedArtifact.contentSha256, derivedArtifact.contentSha256);
+  assert.equal(verifyAttestedResolutionArtifact({
+    source: attested, caseIdentity: pdfIdentity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+  }), true);
+
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: pdfSource, caseIdentity: pdfIdentity, bytes: pdfBytes,
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+  }), /MinerU JSON|derived artifact/i);
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: pdfSource, caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: Buffer.concat([jsonBytes, Buffer.from(' ')]),
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+  }), /hash|byte size/i);
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: { ...pdfSource, claims: pdfSource.claims.map((claim) => (
+      claim.field === 'closedEnvelope.widthMm' ? { ...claim, value: 730 } : claim
+    )) },
+    caseIdentity: pdfIdentity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+  }), /claim.*MinerU|MinerU.*claim/i);
+});
+
+test('a model-scoped PDF header still needs an independent exact-model source URL', () => {
+  const pdfIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
+  const pdfBytes = Buffer.from('%PDF-1.7\nheader-scoped artifact');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'page_header',
+      content: { page_header_content: [{ type: 'text', content: 'QUICK REFERENCE GUIDE > HRCD640TBW' }] },
+      bbox: [40, 20, 500, 45],
+    },
+    {
+      type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'Width 914 mm' }] },
+      bbox: [355, 147, 633, 171],
+    },
+  ]]));
+  const parsed = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: pdfIdentity, fields: ['closedEnvelope.widthMm'],
+  });
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+  });
+  const source = {
+    authority: 'manufacturer',
+    sourceUrl: 'https://dtc-aus-api.hisense.com/medias/generic-guide.pdf',
+    finalUrl: 'https://dtc-aus-api.hisense.com/medias/generic-guide.pdf', redirectChain: [],
+    retrievedAt: '2026-07-11T10:00:00.000Z', contentSha256: pdfHash,
+    objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+    contentType: 'application/pdf', byteSize: pdfBytes.length,
+    identity: { brand: 'Hisense', model: 'HRCD640TBW', outcome: 'exact' },
+    claims: parsed.claims, derivedArtifact,
+  };
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source, caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, verifiedAt: '2026-07-11T10:01:00.000Z',
+  }), /two independent identity signals/i);
+
+  const exactUrl = 'https://dtc-aus-api.hisense.com/medias/HRCD640TBW.pdf';
+  const attested = verifyAndAttestResolutionArtifact({
+    source: { ...source, sourceUrl: exactUrl, finalUrl: exactUrl },
+    caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, verifiedAt: '2026-07-11T10:01:00.000Z',
+  });
+  assert.ok(attested.identitySignals.some((signal) => signal.type === 'pdf_source_url_model'));
 });
 
 test('artifact verification catches hash drift, claim drift, and multi-product quote leakage', () => {

@@ -4,7 +4,8 @@ import { extractClaimsFromHtml, verifyAndAttestResolutionArtifact } from './evid
 import { recordResearchAttempt } from './evidence-research-state.mjs';
 import { discoverCandidateUrls } from './evidence-source-discovery.mjs';
 import { resolutionFieldsForCase } from './evidence-resolution-loop.mjs';
-import { isOfficialBrandUrl } from './evidence-source-verifier.mjs';
+import { isOfficialBrandUrl, verifyVerificationReceipt } from './evidence-source-verifier.mjs';
+import { parseMineruContentListV2 } from './mineru-document.mjs';
 
 const MAX_ARTIFACT_BYTES = 20 * 1024 * 1024;
 
@@ -99,18 +100,36 @@ async function acquireCandidate(caseRecord, candidateUrl, options) {
   const fetched = await fetchWithRetry(candidateUrl, caseRecord.brand, options);
   const hash = createHash('sha256').update(fetched.bytes).digest('hex');
   const unchanged = (caseRecord.sources ?? []).find((source) => source.contentSha256 === hash);
-  if (unchanged) return { unchanged };
+  const caseIdentity = { brand: caseRecord.brand, model: caseRecord.model, category: caseRecord.category };
+  if (unchanged) {
+    try {
+      verifyVerificationReceipt(unchanged, caseIdentity, { asOf: options.now });
+      return { unchanged };
+    } catch {
+      // Reprocess unchanged bytes when the parser or evidence policy has advanced.
+    }
+  }
   const fields = resolutionFieldsForCase(caseRecord);
   let claims;
-  let extractedText = null;
+  let derivedArtifact = null;
+  let derivedArtifactBytes = null;
   if (fetched.contentType === 'text/html') {
     claims = extractClaimsFromHtml(fetched.bytes, { category: caseRecord.category, fields });
   } else {
-    if (typeof options.extractPdfText !== 'function' || typeof options.extractPdfClaims !== 'function') {
-      throw new Error('PDF extractor unavailable');
+    if (typeof options.processPdf !== 'function') {
+      throw new Error('MinerU PDF processor unavailable');
     }
-    extractedText = await options.extractPdfText(fetched.bytes);
-    claims = await options.extractPdfClaims(extractedText, { caseRecord, fields });
+    const processed = await options.processPdf(fetched.bytes, { caseRecord, fields });
+    derivedArtifact = processed?.derivedArtifact;
+    derivedArtifactBytes = processed?.jsonBytes;
+    if (!derivedArtifact || !derivedArtifactBytes) throw new Error('MinerU PDF processor returned no JSON artifact');
+    claims = parseMineruContentListV2(derivedArtifactBytes, {
+      pdfSha256: hash,
+      parserVersion: derivedArtifact.parserVersion,
+      modelRevision: derivedArtifact.modelRevision,
+      caseIdentity,
+      fields,
+    }).claims;
   }
   if (!claims.length) throw new Error('no supported evidence claims extracted');
   const supersedesContentSha256 = (caseRecord.sources ?? [])
@@ -134,15 +153,18 @@ async function acquireCandidate(caseRecord, candidateUrl, options) {
     supersedesContentSha256,
     identity: { brand: caseRecord.brand, model: caseRecord.model, outcome: 'exact' },
     claims,
+    ...(derivedArtifact ? { derivedArtifact } : {}),
   };
   const attested = verifyAndAttestResolutionArtifact({
     source,
-    caseIdentity: { brand: caseRecord.brand, model: caseRecord.model, category: caseRecord.category },
+    caseIdentity,
     bytes: fetched.bytes,
-    extractedText,
+    derivedArtifactBytes,
     verifiedAt: options.now,
   });
-  return { source: attested, bytes: fetched.bytes };
+  const objects = [{ objectPath: attested.objectPath, bytes: fetched.bytes }];
+  if (derivedArtifact) objects.push({ objectPath: derivedArtifact.objectPath, bytes: derivedArtifactBytes });
+  return { source: attested, objects, replacesExistingHash: Boolean(unchanged) };
 }
 
 export async function runEvidenceResearchCycle(caseRecord, options = {}) {
@@ -180,9 +202,12 @@ export async function runEvidenceResearchCycle(caseRecord, options = {}) {
         if (caseRecord.automationState === 'reconciliation_required') continue;
         return { caseRecord: structuredClone(caseRecord), failures, unchanged: true };
       }
-      await options.writeObject(acquired.source.objectPath, acquired.bytes);
+      for (const object of acquired.objects) await options.writeObject(object.objectPath, object.bytes);
       return {
-        caseRecord: recordResearchAttempt(caseRecord, { outcome: 'verified', source: acquired.source }, now),
+        caseRecord: recordResearchAttempt(caseRecord, {
+          outcome: 'verified', source: acquired.source,
+          replaceExisting: acquired.replacesExistingHash,
+        }, now),
         failures,
         unchanged: false,
       };

@@ -24,7 +24,26 @@ export function recordResearchAttempt(caseRecord, result, at) {
   if (outcome === 'verified') {
     const source = result?.source;
     const hash = requiredText(source?.contentSha256, 'verified source hash');
-    if (sources.some((candidate) => candidate.contentSha256 === hash)) return structuredClone(caseRecord);
+    const existingIndex = sources.findIndex((candidate) => candidate.contentSha256 === hash);
+    if (existingIndex >= 0) {
+      if (result.replaceExisting !== true) return structuredClone(caseRecord);
+      const replacedSources = structuredClone(sources);
+      replacedSources[existingIndex] = structuredClone(source);
+      return {
+        ...structuredClone(caseRecord),
+        sources: replacedSources,
+        history: [...(caseRecord.history ?? []), {
+          at: validTime(at),
+          attempt,
+          outcome: 'verified',
+          candidateUrl: source.finalUrl ?? null,
+          sourceSha256: hash,
+          reason: 'source_reverified',
+        }],
+        automationState: 'evidence_collected',
+        terminalReason: null,
+      };
+    }
   }
   const nextAttempt = Math.min(maxAttempts, attempt + 1);
   const exhausted = outcome !== 'verified' && nextAttempt >= maxAttempts;

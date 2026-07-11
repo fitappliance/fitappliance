@@ -91,16 +91,91 @@ function normalizedSignals(signals) {
   return result;
 }
 
-function normalizedClaims(claims) {
+function normalizedBbox(value) {
+  if (!Array.isArray(value) || value.length !== 4
+    || value.some((coordinate) => !Number.isFinite(coordinate) || coordinate < 0 || coordinate > 1000)
+    || value[0] >= value[2] || value[1] >= value[3]) {
+    throw new TypeError('claim bbox invalid');
+  }
+  return value.map(Number);
+}
+
+function normalizedClaims(claims, contentType) {
   if (!Array.isArray(claims) || claims.length === 0) throw new TypeError('source claims required');
-  return claims.map((claim) => ({
-    field: requiredText(claim?.field, 'claim field'),
-    value: claim?.value,
-    unit: requiredText(claim?.unit, 'claim unit'),
-    label: requiredText(claim?.label, 'claim label'),
-    quote: requiredText(claim?.quote, 'claim quote'),
-  })).sort((left, right) => left.field.localeCompare(right.field)
+  return claims.map((claim) => {
+    const normalized = {
+      field: requiredText(claim?.field, 'claim field'),
+      value: claim?.value,
+      unit: requiredText(claim?.unit, 'claim unit'),
+      label: requiredText(claim?.label, 'claim label'),
+      quote: requiredText(claim?.quote, 'claim quote'),
+    };
+    if (contentType === 'application/pdf') {
+      if (!Number.isInteger(claim?.page) || claim.page < 1) throw new TypeError('PDF claim page required');
+      const fragmentSha256 = requiredText(claim?.fragmentSha256, 'PDF claim fragment SHA-256');
+      if (!/^[a-f0-9]{64}$/.test(fragmentSha256)) throw new TypeError('PDF claim fragment SHA-256 invalid');
+      normalized.page = claim.page;
+      normalized.bbox = normalizedBbox(claim.bbox);
+      normalized.fragmentSha256 = fragmentSha256;
+      normalized.semanticBasis = requiredText(claim?.semanticBasis, 'PDF claim semantic basis');
+      for (const key of ['axisOrder', 'sourceValues', 'sourceValuesMm']) {
+        if (claim[key] != null) {
+          if (!Array.isArray(claim[key])) throw new TypeError(`PDF claim ${key} must be an array`);
+          normalized[key] = [...claim[key]];
+        }
+      }
+      if (claim.sourceUnit != null) normalized.sourceUnit = requiredText(claim.sourceUnit, 'PDF claim source unit');
+    }
+    return normalized;
+  }).sort((left, right) => left.field.localeCompare(right.field)
     || JSON.stringify(left.value).localeCompare(JSON.stringify(right.value)));
+}
+
+function normalizedDerivedArtifact(source) {
+  const contentType = requiredText(source?.contentType, 'content type').toLowerCase();
+  if (contentType !== 'application/pdf') return null;
+  const artifact = source?.derivedArtifact;
+  const required = resolutionPolicy.pdfEvidence;
+  if (!artifact || artifact.schemaVersion !== 1
+    || artifact.format !== required.requiredFormat
+    || artifact.parserName !== required.parserName
+    || artifact.parserVersion !== required.parserVersion
+    || artifact.modelRevision !== required.modelRevision
+    || artifact.backend !== required.backend
+    || artifact.method !== required.method
+    || artifact.tableEnabled !== true || artifact.formulaEnabled !== false) {
+    throw new TypeError('current MinerU JSON derived artifact required');
+  }
+  const sourcePdfSha256 = requiredText(artifact.sourcePdfSha256, 'derived source PDF SHA-256');
+  const contentSha256 = requiredText(artifact.contentSha256, 'derived JSON SHA-256');
+  if (!/^[a-f0-9]{64}$/.test(sourcePdfSha256) || sourcePdfSha256 !== source.contentSha256) {
+    throw new TypeError('derived artifact source PDF binding invalid');
+  }
+  if (!/^[a-f0-9]{64}$/.test(contentSha256)) throw new TypeError('derived JSON SHA-256 invalid');
+  const expectedPrefix = `evidence/derived/mineru-json/sha256/${contentSha256.slice(0, 2)}/${contentSha256.slice(2, 4)}/`;
+  const objectPath = requiredText(artifact.objectPath, 'derived JSON object path');
+  if (objectPath.startsWith('/') || objectPath.split('/').includes('..')
+    || !objectPath.startsWith(expectedPrefix) || !objectPath.endsWith(`/${contentSha256}.json`)) {
+    throw new TypeError('content-addressed derived JSON path required');
+  }
+  if (!Number.isInteger(artifact.byteSize) || artifact.byteSize < 2) throw new TypeError('derived JSON byte size invalid');
+  if (!Number.isInteger(artifact.pageCount) || artifact.pageCount < 1) throw new TypeError('derived JSON page count invalid');
+  return {
+    schemaVersion: 1,
+    format: artifact.format,
+    parserName: artifact.parserName,
+    parserVersion: artifact.parserVersion,
+    modelRevision: artifact.modelRevision,
+    backend: artifact.backend,
+    method: artifact.method,
+    tableEnabled: true,
+    formulaEnabled: false,
+    sourcePdfSha256,
+    contentSha256,
+    objectPath,
+    byteSize: artifact.byteSize,
+    pageCount: artifact.pageCount,
+  };
 }
 
 function normalizedSupersededHashes(values) {
@@ -113,6 +188,7 @@ function normalizedSupersededHashes(values) {
 
 function receiptPayload(source, caseIdentity, verifiedAt) {
   const identity = normalizedIdentity(caseIdentity);
+  const contentType = requiredText(source?.contentType, 'content type').toLowerCase();
   return {
     schemaVersion: resolutionPolicy.receiptSchemaVersion,
     policyVersion: resolutionPolicy.policyVersion,
@@ -126,12 +202,13 @@ function receiptPayload(source, caseIdentity, verifiedAt) {
       retrievedAt: requiredText(source?.retrievedAt, 'retrieval time'),
       contentSha256: requiredText(source?.contentSha256, 'content SHA-256'),
       objectPath: requiredText(source?.objectPath, 'object path'),
-      contentType: requiredText(source?.contentType, 'content type').toLowerCase(),
+      contentType,
       byteSize: source?.byteSize,
       supersedesContentSha256: normalizedSupersededHashes(source?.supersedesContentSha256),
+      derivedArtifact: normalizedDerivedArtifact(source),
     },
     identitySignals: normalizedSignals(source?.identitySignals),
-    claims: normalizedClaims(source?.claims),
+    claims: normalizedClaims(source?.claims, contentType),
   };
 }
 
@@ -164,7 +241,8 @@ export function validateTrustedSourceMetadata(source, caseIdentity, options = {}
   if (normalizedSupersededHashes(source?.supersedesContentSha256).includes(source.contentSha256)) {
     throw new TypeError('source cannot supersede itself');
   }
-  if (!['text/html', 'application/pdf'].includes(requiredText(source?.contentType, 'content type').toLowerCase())) {
+  const contentType = requiredText(source?.contentType, 'content type').toLowerCase();
+  if (!['text/html', 'application/pdf'].includes(contentType)) {
     throw new TypeError('unsupported content type');
   }
   if (source?.identity?.outcome !== 'exact'
@@ -173,6 +251,8 @@ export function validateTrustedSourceMetadata(source, caseIdentity, options = {}
     throw new TypeError('source identity does not match case identity');
   }
   normalizedSignals(source?.identitySignals);
+  normalizedClaims(source?.claims, contentType);
+  normalizedDerivedArtifact(source);
   return true;
 }
 

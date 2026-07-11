@@ -142,6 +142,32 @@ test('exact manufacturer evidence resolves the conflict and strips every unappro
   assert.equal(product.evidence.v2_resolution.status, 'resolved');
 });
 
+test('autonomous resolution preserves adjustable height ranges and uses the maximum for legacy fit fields', () => {
+  const ranged = exactManufacturerSource({
+    claims: exactManufacturerSource().claims.map((claim) => claim.field === 'closedEnvelope.heightMm'
+      ? {
+        ...claim,
+        value: { minimumMm: 1750, maximumMm: 1782 },
+        label: 'Total height', quote: 'Total height 1750 - 1782 mm',
+        semanticBasis: 'explicit_label_range', sourceUnit: 'mm',
+        sourceValues: [1750, 1782], sourceValuesMm: [1750, 1782],
+      }
+      : claim),
+  });
+  const resolution = adjudicateResolutionCase(resolutionCase({ sources: [ranged] }));
+  assert.equal(resolution.status, 'resolved');
+  assert.deepEqual(resolution.values['closedEnvelope.heightMm'], { minimumMm: 1750, maximumMm: 1782 });
+
+  const product = applyResolutionToProduct({
+    id: 'ao-88474', cat: 'fridge', brand: 'Westinghouse', model: 'WHE6874BA',
+    w: 913, h: 1782, d: 803, evidence: {},
+  }, resolution);
+  assert.equal(product.h, 1782);
+  assert.equal(product.dimensions.height_mm, 1782);
+  assert.deepEqual(product.dimensions.height_range_mm, { minimumMm: 1750, maximumMm: 1782 });
+  assert.deepEqual(product.geometry_v2.closedEnvelope.heightMm, { minimumMm: 1750, maximumMm: 1782 });
+});
+
 test('conflicting current manufacturer claims trigger bounded reconciliation before terminal quarantine', () => {
   const second = exactManufacturerSource({
     sourceUrl: 'https://www.westinghouse.com.au/support/whe6874ba-conflict',

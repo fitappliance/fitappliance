@@ -15,6 +15,10 @@ test('global manufacturer hosts cannot silently supply a different national mark
     objectPath: `evidence/web/sha256/aa/aa/${'a'.repeat(64)}.html`, contentType: 'text/html', byteSize: 100,
     identity: { brand: 'Samsung', model: 'MODEL-X', outcome: 'exact' },
     identitySignals: [{ type: 'canonical_url', value: 'x' }, { type: 'product_model', value: 'MODEL-X' }],
+    claims: [{
+      field: 'closedEnvelope.widthMm', value: 600, unit: 'mm',
+      label: 'Total width (mm)', quote: 'Total width (mm) 600 mm',
+    }],
   };
   assert.throws(() => validateTrustedSourceMetadata(base, {
     brand: 'Samsung', model: 'MODEL-X', category: 'fridge',

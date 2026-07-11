@@ -1,5 +1,6 @@
 import { classifyTransportHost } from './source-provenance.mjs';
 import { createSourceDocument } from './source-document.mjs';
+import { evidenceSourcePolicy } from './evidence-source-verifier.mjs';
 
 const DIMENSION_FIELDS = new Set([
   'closedEnvelope.widthMm',
@@ -82,6 +83,27 @@ function validateField(field, acquisition) {
   });
 }
 
+function hasCurrentMineruProvenance(acquired) {
+  const artifact = acquired?.derivedArtifact;
+  const required = evidenceSourcePolicy.resolutionPolicy.pdfEvidence;
+  return acquired?.parserVersion === `MinerU-${required.parserVersion}`
+    && artifact?.schemaVersion === 1
+    && artifact.format === required.requiredFormat
+    && artifact.parserName === required.parserName
+    && artifact.parserVersion === required.parserVersion
+    && artifact.modelRevision === required.modelRevision
+    && artifact.backend === required.backend
+    && artifact.method === required.method
+    && artifact.tableEnabled === true
+    && artifact.formulaEnabled === false
+    && artifact.sourcePdfSha256 === acquired.sha256
+    && /^[a-f0-9]{64}$/.test(text(artifact.contentSha256))
+    && Number.isInteger(artifact.pageCount)
+    && artifact.pageCount === acquired.pageCount
+    && Number.isInteger(artifact.byteSize)
+    && artifact.byteSize > 1;
+}
+
 export function reviewPhase10Evidence({ selection, acquisition, input }) {
   if (!Array.isArray(selection?.products) || !Array.isArray(acquisition?.entries) || !Array.isArray(input?.reviews)) {
     throw new TypeError('Phase 10 selection, acquisition, and review input required');
@@ -120,12 +142,18 @@ export function reviewPhase10Evidence({ selection, acquisition, input }) {
       });
     }
 
+    const legacySnapshot = (acquisition.schemaVersion ?? 1) === 1;
     const reproducible = acquired.outcome === 'acquired'
       && acquired.contentType === 'application/pdf'
       && classifyTransportHost(acquired.finalUrl) === 'manufacturer'
       && /^[a-f0-9]{64}$/i.test(text(acquired.sha256))
       && Number.isInteger(acquired.pageCount) && acquired.pageCount > 0
       && text(acquired.parserVersion)
+      && (legacySnapshot || (
+        acquisition.schemaVersion === 2
+        && acquisition.extractionFormat === 'mineru_content_list_v2'
+        && hasCurrentMineruProvenance(acquired)
+      ))
       && review.renderedPageVerified === true;
     if (!reproducible) throw new TypeError(`rendered official PDF provenance required: ${legacyRuntimeId}`);
     const fields = rawFields.map((field) => validateField(field, acquired));

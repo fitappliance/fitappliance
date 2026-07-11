@@ -8,6 +8,7 @@ import {
   validateClaimsSemantics,
 } from './evidence-claim-semantics.mjs';
 import { createVerificationReceipt, verifyVerificationReceipt } from './evidence-source-verifier.mjs';
+import { parseMineruContentListV2 } from './mineru-document.mjs';
 
 function normalizedText(value) {
   return String(value ?? '').replace(/\s+/g, ' ').trim();
@@ -62,25 +63,53 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
   return { signals, text: normalizedText(text) };
 }
 
-function pdfIdentitySignals(source, caseIdentity, extractedText) {
-  if (!normalizedText(extractedText)) throw new TypeError('PDF extracted text required');
-  const pages = String(extractedText).split('\f');
-  const modelPages = new Set();
-  for (const claim of source.claims ?? []) {
-    if (!Number.isInteger(claim.page) || claim.page < 1 || claim.page > pages.length) {
-      throw new TypeError(`valid PDF page required for ${claim.field}`);
-    }
-    const page = normalizedText(pages[claim.page - 1]);
-    if (!containsExactModel(page, caseIdentity.model)) throw new Error(`exact model missing from PDF claim page ${claim.page}`);
-    if (!page.toLowerCase().includes(normalizedText(claim.quote).toLowerCase())) {
-      throw new Error(`claim quote missing from PDF page ${claim.page}`);
-    }
-    modelPages.add(claim.page);
+function canonicalize(value) {
+  if (Array.isArray(value)) return value.map(canonicalize);
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.keys(value).sort().map((key) => [key, canonicalize(value[key])]));
   }
-  return {
-    signals: [...modelPages].sort((a, b) => a - b).map((page) => ({ type: 'pdf_model_page', value: `${caseIdentity.model}:page:${page}` })),
-    text: normalizedText(extractedText),
-  };
+  return value;
+}
+
+function pdfIdentitySignals(source, caseIdentity, derivedArtifactBytes) {
+  if (!derivedArtifactBytes) throw new TypeError('MinerU JSON derived artifact required for PDF evidence');
+  const derived = source?.derivedArtifact;
+  if (!derived || derived.schemaVersion !== 1 || derived.format !== 'content_list_v2'
+    || derived.parserName !== 'MinerU' || derived.backend !== 'pipeline'
+    || derived.method !== 'auto' || derived.tableEnabled !== true || derived.formulaEnabled !== false) {
+    throw new TypeError('valid MinerU JSON derived artifact metadata required');
+  }
+  const bytes = Buffer.from(derivedArtifactBytes);
+  const hash = createHash('sha256').update(bytes).digest('hex');
+  if (hash !== derived.contentSha256) throw new Error('MinerU JSON hash mismatch');
+  if (bytes.length !== derived.byteSize) throw new Error('MinerU JSON byte size mismatch');
+  if (derived.sourcePdfSha256 !== source.contentSha256) throw new Error('MinerU JSON is not bound to source PDF');
+  const expectedPrefix = `evidence/derived/mineru-json/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/`;
+  if (typeof derived.objectPath !== 'string' || !derived.objectPath.startsWith(expectedPrefix)
+    || !derived.objectPath.endsWith(`/${hash}.json`)) {
+    throw new TypeError('content-addressed MinerU JSON object path required');
+  }
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256: source.contentSha256,
+    parserVersion: derived.parserVersion,
+    modelRevision: derived.modelRevision,
+    caseIdentity,
+    fields: (source.claims ?? []).map((claim) => claim.field),
+  });
+  if (parsed.pageCount !== derived.pageCount) throw new Error('MinerU JSON page count mismatch');
+  if (JSON.stringify(canonicalize(parsed.claims)) !== JSON.stringify(canonicalize(source.claims))) {
+    throw new Error('source claims do not match replayed MinerU JSON claims');
+  }
+  const signals = [...parsed.identitySignals];
+  const exactModelUrl = [...new Set([source.sourceUrl, source.finalUrl])].find((value) => {
+    try {
+      return containsExactModel(new URL(value).pathname, caseIdentity.model);
+    } catch {
+      return false;
+    }
+  });
+  if (exactModelUrl) signals.push({ type: 'pdf_source_url_model', value: exactModelUrl });
+  return { signals, text: parsed.documentText };
 }
 
 function verifyQuotes(source, text) {
@@ -140,48 +169,15 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
   return claims;
 }
 
-export function extractClaimsFromPdfText(extractedText, { caseIdentity, fields }) {
-  if (!Array.isArray(fields) || !fields.length) throw new TypeError('requested evidence fields required');
-  const candidates = new Map(fields.map((field) => [field, []]));
-  const pages = String(extractedText ?? '').split('\f');
-  pages.forEach((pageText, pageIndex) => {
-    if (!containsExactModel(pageText, caseIdentity.model)) return;
-    for (const rawLine of pageText.split(/\r?\n/)) {
-      const quote = normalizedText(rawLine);
-      if (!quote) continue;
-      const label = quote.replace(/\s+[-+]?\d+(?:\.\d+)?\s*(?:mm|millimet(?:re|er)s?)?\s*$/i, '').trim();
-      for (const field of fields) {
-        const rule = evidenceFieldRules[field];
-        if (!rule || !rule.label.test(label) || (rule.reject && rule.reject.test(label))) continue;
-        try {
-          candidates.get(field).push({
-            ...claimFromEvidenceFragment(field, label, quote, { category: caseIdentity.category }),
-            page: pageIndex + 1,
-          });
-        } catch {
-          // Unscoped or ambiguous PDF rows are not evidence.
-        }
-      }
-    }
-  });
-  const claims = [];
-  for (const field of fields) {
-    const fieldClaims = candidates.get(field);
-    const values = new Set(fieldClaims.map((claim) => JSON.stringify(claim.value)));
-    if (values.size > 1) throw new Error(`ambiguous extracted PDF values for ${field}`);
-    if (fieldClaims.length) claims.push(fieldClaims[0]);
-  }
-  if (!claims.length) throw new Error('no exact-model PDF evidence extracted');
-  return claims;
-}
-
-export function verifyAndAttestResolutionArtifact({ source, caseIdentity, bytes, extractedText = null, verifiedAt }) {
+export function verifyAndAttestResolutionArtifact({
+  source, caseIdentity, bytes, derivedArtifactBytes = null, verifiedAt,
+}) {
   const buffer = verifyBytes(source, bytes);
   let identityProof;
   if (source.contentType === 'text/html') {
     identityProof = htmlIdentitySignals(source, caseIdentity, buffer);
   } else if (source.contentType === 'application/pdf') {
-    identityProof = pdfIdentitySignals(source, caseIdentity, extractedText);
+    identityProof = pdfIdentitySignals(source, caseIdentity, derivedArtifactBytes);
   } else {
     throw new TypeError('unsupported artifact content type');
   }
@@ -195,12 +191,12 @@ export function verifyAndAttestResolutionArtifact({ source, caseIdentity, bytes,
   return attested;
 }
 
-export function verifyAttestedResolutionArtifact({ source, caseIdentity, bytes, extractedText = null }) {
+export function verifyAttestedResolutionArtifact({ source, caseIdentity, bytes, derivedArtifactBytes = null }) {
   const rebuilt = verifyAndAttestResolutionArtifact({
     source: { ...source, verificationReceipt: undefined },
     caseIdentity,
     bytes,
-    extractedText,
+    derivedArtifactBytes,
     verifiedAt: source?.verificationReceipt?.verifiedAt,
   });
   if (rebuilt.verificationReceipt.bindingSha256 !== source?.verificationReceipt?.bindingSha256) {

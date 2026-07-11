@@ -9,6 +9,7 @@ import {
 } from '../../src/domain/evidence-source-verifier.mjs';
 
 const HASH = 'a'.repeat(64);
+const JSON_HASH = 'b'.repeat(64);
 const caseIdentity = Object.freeze({
   brand: 'Westinghouse', model: 'WHE6874BA', category: 'fridge',
 });
@@ -34,6 +35,35 @@ function source(overrides = {}) {
     ],
     ...overrides,
   };
+}
+
+function pdfSource(overrides = {}) {
+  return source({
+    sourceUrl: 'https://www.westinghouse.com.au/support/WHE6874BA.pdf',
+    finalUrl: 'https://www.westinghouse.com.au/support/WHE6874BA.pdf',
+    objectPath: `evidence/web/sha256/aa/aa/${HASH}.pdf`,
+    contentType: 'application/pdf',
+    identitySignals: [
+      { type: 'mineru_title_model', value: 'WHE6874BA:page:1' },
+      { type: 'mineru_table_model', value: `WHE6874BA:page:1:${'c'.repeat(64)}` },
+    ],
+    claims: [{
+      field: 'closedEnvelope.widthMm', value: 913, unit: 'mm',
+      label: 'Dimensions (W x H x D)', quote: 'Dimensions (W x H x D) 913 x 1782 x 803 mm',
+      page: 1, bbox: [80, 200, 800, 900], fragmentSha256: 'c'.repeat(64),
+      semanticBasis: 'explicit_axis_sequence', axisOrder: ['width', 'height', 'depth'],
+      sourceUnit: 'mm', sourceValues: [913, 1782, 803], sourceValuesMm: [913, 1782, 803],
+    }],
+    derivedArtifact: {
+      schemaVersion: 1, format: 'content_list_v2', parserName: 'MinerU', parserVersion: '3.4.4',
+      modelRevision: 'ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+      backend: 'pipeline', method: 'auto', tableEnabled: true, formulaEnabled: false,
+      sourcePdfSha256: HASH, contentSha256: JSON_HASH,
+      objectPath: `evidence/derived/mineru-json/sha256/bb/bb/${JSON_HASH}.json`,
+      byteSize: 4567, pageCount: 1,
+    },
+    ...overrides,
+  });
 }
 
 test('brand policy rejects self-declared manufacturers and cross-brand redirects', () => {
@@ -87,6 +117,26 @@ test('receipt rejects malformed artifact metadata and verification timestamps', 
   assert.throws(() => createVerificationReceipt(source(), caseIdentity, {
     verifiedAt: 'not-a-date',
   }), /verification time/i);
+});
+
+test('PDF receipt requires and binds MinerU JSON plus page-level claim provenance', () => {
+  assert.throws(() => createVerificationReceipt(pdfSource({ derivedArtifact: undefined }), caseIdentity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+  }), /MinerU|derived artifact/i);
+
+  const input = pdfSource();
+  input.verificationReceipt = createVerificationReceipt(input, caseIdentity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+  });
+  assert.equal(verifyVerificationReceipt(input, caseIdentity, {
+    asOf: '2026-07-11T15:00:00.000Z',
+  }), true);
+  assert.throws(() => verifyVerificationReceipt({
+    ...input, derivedArtifact: { ...input.derivedArtifact, contentSha256: 'd'.repeat(64) },
+  }, caseIdentity, { asOf: '2026-07-11T15:00:00.000Z' }), /path|receipt digest/i);
+  assert.throws(() => verifyVerificationReceipt({
+    ...input, claims: [{ ...input.claims[0], bbox: [81, 200, 800, 900] }],
+  }, caseIdentity, { asOf: '2026-07-11T15:00:00.000Z' }), /receipt digest/i);
 });
 
 test('freshness is evaluated independently from immutable receipt integrity', () => {

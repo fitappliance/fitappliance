@@ -10,7 +10,11 @@ function urlHasExactModel(value, model) {
   try {
     const url = new URL(value);
     const target = modelKey(model);
-    return url.pathname.split('/').filter(Boolean).some((segment) => modelKey(decodeURIComponent(segment)) === target);
+    return url.pathname.split('/').filter(Boolean).some((segment) => {
+      const decoded = decodeURIComponent(segment);
+      const withoutDocumentExtension = decoded.replace(/\.(?:pdf|html?)$/i, '');
+      return modelKey(decoded) === target || modelKey(withoutDocumentExtension) === target;
+    });
   } catch {
     return false;
   }

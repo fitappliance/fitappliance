@@ -1,19 +1,15 @@
 #!/usr/bin/env node
 
 import { createHash } from 'node:crypto';
-import { execFile as execFileCallback } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
-import { promisify } from 'node:util';
 import { isAbsolute, resolve, sep } from 'node:path';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { validateResolutionObjectPath } from '../../src/domain/evidence-resolution-loop.mjs';
 import { verifyAttestedResolutionArtifact } from '../../src/domain/evidence-artifact-verifier.mjs';
-import { load } from 'cheerio';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
-const execFile = promisify(execFileCallback);
 
 function resolveWithin(root, relativePath) {
   if (isAbsolute(relativePath)) throw new TypeError('absolute evidence object path rejected');
@@ -36,19 +32,14 @@ async function main(args) {
       const bytes = await readFile(objectPath);
       const actual = createHash('sha256').update(bytes).digest('hex');
       if (actual !== source.contentSha256) throw new Error(`resolution object hash mismatch: ${caseRecord.id}`);
-      let extractedText;
-      if (relativePath.toLowerCase().endsWith('.html')) {
-        extractedText = load(bytes.toString('utf8')).text();
-      } else if (relativePath.toLowerCase().endsWith('.pdf')) {
-        ({ stdout: extractedText } = await execFile('pdftotext', ['-layout', objectPath, '-']));
-      } else {
-        extractedText = bytes.toString('utf8');
-      }
+      const derivedArtifactBytes = source.contentType === 'application/pdf'
+        ? await readFile(resolveWithin(storageRoot, source.derivedArtifact?.objectPath))
+        : null;
       verifyAttestedResolutionArtifact({
         source,
         caseIdentity: { brand: caseRecord.brand, model: caseRecord.model, category: caseRecord.category },
         bytes,
-        extractedText,
+        derivedArtifactBytes,
       });
       checked += 1;
     }

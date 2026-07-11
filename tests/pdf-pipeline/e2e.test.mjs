@@ -7,6 +7,9 @@ import { extractText } from '../../scripts/pdf-pipeline/2-extract-text.js';
 import { extractStructuredData } from '../../scripts/pdf-pipeline/3-ai-parse.js';
 import { validateExtracted } from '../../scripts/pdf-pipeline/4-validate.js';
 import { prepareCatalogPatch } from '../../scripts/pdf-pipeline/5-merge.js';
+import { installMineruTestProcessor } from './helpers/mineru-test-processor.mjs';
+
+installMineruTestProcessor();
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const fixturePdf = path.join(repoRoot, 'tests', 'pdf-pipeline', 'fixtures', 'sample-bosch-fridge.pdf');
@@ -49,4 +52,3 @@ test('pdf pipeline e2e: fixture PDF moves through extract parse validate and pat
   assert.equal(patch.matched.id, 'bosch-b36fd52sns');
   assert.equal(typeof patch.patch, 'object');
 });
-

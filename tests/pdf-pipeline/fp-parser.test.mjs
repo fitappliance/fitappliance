@@ -2,9 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { installMineruTestProcessor } from './helpers/mineru-test-processor.mjs';
 import { createRequire } from 'node:module';
 
 import { validateApplianceDimension } from '../../scripts/pdf-pipeline/4-validate.js';
+
+installMineruTestProcessor();
 
 const require = createRequire(import.meta.url);
 const {

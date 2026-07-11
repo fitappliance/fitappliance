@@ -5,6 +5,7 @@ import { promisify } from 'node:util';
 import { dirname, isAbsolute, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { findEvidenceReviewCandidates } from '../../src/domain/evidence-review-candidates.mjs';
+import { inspectMineruContentListV2 } from '../../src/domain/mineru-document.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 
 const execFile = promisify(execFileCallback);
@@ -55,7 +56,21 @@ async function main(args) {
       continue;
     }
     const pdfPath = resolveWithin(storageRoot, entry.workspace.pdf);
-    const text = await readFile(resolveWithin(storageRoot, entry.workspace.text), 'utf8');
+    let text;
+    let extraction = null;
+    if (acquisition.schemaVersion === 2) {
+      if (acquisition.extractionFormat !== 'mineru_content_list_v2' || !entry.workspace.json) {
+        throw new TypeError(`MinerU JSON workspace required for ${entry.legacyRuntimeId}`);
+      }
+      extraction = inspectMineruContentListV2(await readFile(resolveWithin(storageRoot, entry.workspace.json)));
+      if (extraction.contentSha256 !== entry.derivedArtifact?.contentSha256
+        || extraction.pageCount !== entry.pageCount) {
+        throw new Error(`MinerU JSON provenance mismatch for ${entry.legacyRuntimeId}`);
+      }
+      text = extraction.pages.map((page) => page.text).join('\f');
+    } else {
+      text = await readFile(resolveWithin(storageRoot, entry.workspace.text), 'utf8');
+    }
     const candidates = findEvidenceReviewCandidates({ model: entry.model, text });
     const reviewPages = entry.pageCount <= 3
       ? Array.from({ length: entry.pageCount }, (_, index) => index + 1)
@@ -74,6 +89,11 @@ async function main(args) {
       acquisitionOutcome: 'acquired', documentSha256: entry.sha256, pageCount: entry.pageCount,
       identityPages: candidates.identityPages, dimensionPages: candidates.dimensionPages,
       spacePages: candidates.spacePages, reviewPages, snippets: candidates.snippets,
+      extraction: extraction ? {
+        format: extraction.format,
+        contentSha256: extraction.contentSha256,
+        parserVersion: entry.derivedArtifact.parserVersion,
+      } : { format: 'legacy_text_snapshot', parserVersion: entry.parserVersion },
       reviewStatus: 'pending_visual_review',
       workspace: { renderDirectory: renderDirectoryRelative, contactSheet: contactSheetRelative },
     });

@@ -1,7 +1,7 @@
 const FIELD_RULES = Object.freeze({
-  'closedEnvelope.widthMm': { label: /\b(?:total|overall|external|product)?\s*width\b/i, kind: 'dimension', axis: 'width', reject: /cabinet|cut[ -]?out|cavity|packag/i },
-  'closedEnvelope.heightMm': { label: /\b(?:total|overall|external|product)?\s*height\b/i, kind: 'dimension', axis: 'height', reject: /cabinet|cut[ -]?out|cavity|packag|lid\s*open/i },
-  'closedEnvelope.depthMm': { label: /\b(?:total|overall|external|product)?\s*depth\b/i, kind: 'dimension', axis: 'depth', reject: /cabinet|cut[ -]?out|cavity|packag|door\s*open|with\s*(?:the\s*)?door/i },
+  'closedEnvelope.widthMm': { label: /(?:\b(?:total|overall|external|product)?\s*width\b|^\s*(?:total|overall|external|product)?\s*wide(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'width', reject: /cabinet|cut[ -]?out|cavity|packag/i },
+  'closedEnvelope.heightMm': { label: /(?:\b(?:total|overall|external|product)?\s*height\b|^\s*(?:total|overall|external|product)?\s*high(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'height', reject: /cabinet|cut[ -]?out|cavity|packag|lid\s*open/i },
+  'closedEnvelope.depthMm': { label: /(?:\b(?:total|overall|external|product)?\s*depth\b|^\s*(?:total|overall|external|product)?\s*deep(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'depth', reject: /cabinet|cut[ -]?out|cavity|packag|door\s*open|with\s*(?:the\s*)?door/i },
   'installation.leftMm': { label: /(?:left.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}left)/i, kind: 'clearance' },
   'installation.rightMm': { label: /(?:right.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}right)/i, kind: 'clearance' },
   'installation.topMm': { label: /(?:air\s*space\s*above|top|overhead).{0,30}(?:clearance|space|gap|cabinet)|air\s*space\s*above\s*cabinet/i, kind: 'clearance' },
@@ -81,13 +81,130 @@ function validateRange(claim, context, rule) {
     const ranges = CATEGORY_RANGES[context.category];
     if (!ranges) throw new TypeError(`unsupported category range ${context.category}`);
     const [minimum, maximum] = ranges[rule.axis];
-    if (claim.value < minimum || claim.value > maximum) {
+    const values = claim.value && typeof claim.value === 'object'
+      ? [claim.value.minimumMm, claim.value.maximumMm]
+      : [claim.value];
+    if (values.some((value) => !Number.isInteger(value) || value < minimum || value > maximum)
+      || (values.length === 2 && values[0] > values[1])) {
       throw new RangeError(`${claim.field} outside ${context.category} range`);
     }
     return;
   }
   const maximum = rule.kind === 'clearance' || rule.kind === 'service' ? 1000 : 3000;
   if (claim.value < 0 || claim.value > maximum) throw new RangeError(`${claim.field} outside supported range`);
+}
+
+const GROUPED_AXIS_LABELS = Object.freeze({
+  width: '(?:w|width|wide)',
+  height: '(?:h|height|high)',
+  depth: '(?:d|depth|deep)',
+  sides: '(?:side|sides)',
+  left: 'left',
+  right: 'right',
+  rear: '(?:back|rear|behind)',
+  top: '(?:top|above|overhead)',
+  front: 'front',
+});
+
+function groupedFieldAxis(field, rule, axisOrder) {
+  if (rule.kind === 'dimension') return rule.axis;
+  const expected = {
+    'installation.leftMm': ['left', 'sides'],
+    'installation.rightMm': ['right', 'sides'],
+    'installation.rearMm': ['rear'],
+    'installation.topMm': ['top'],
+    'installation.frontMm': ['front'],
+  }[field] ?? [];
+  return expected.find((axis) => axisOrder.includes(axis)) ?? null;
+}
+
+function assertGroupedClaim(claim, context, rule, combined) {
+  const dimensionSequence = claim.semanticBasis === 'explicit_axis_sequence';
+  const namedSequence = claim.semanticBasis === 'explicit_named_sequence';
+  if (!dimensionSequence && !namedSequence) return false;
+  if ((dimensionSequence && rule.kind !== 'dimension')
+    || (namedSequence && rule.kind !== 'clearance')) {
+    throw new TypeError(`grouped semantic basis does not prove ${claim.field}`);
+  }
+  const axisOrder = claim.axisOrder;
+  const sourceValues = claim.sourceValues;
+  const valuesMm = claim.sourceValuesMm;
+  if (!Array.isArray(axisOrder) || axisOrder.length < 2
+    || new Set(axisOrder).size !== axisOrder.length
+    || axisOrder.some((axis) => !GROUPED_AXIS_LABELS[axis])
+    || !Array.isArray(sourceValues) || !Array.isArray(valuesMm)
+    || sourceValues.length !== axisOrder.length || valuesMm.length !== axisOrder.length
+    || sourceValues.some((value) => !Number.isFinite(value))
+    || valuesMm.some((value) => !Number.isInteger(value))) {
+    throw new TypeError(`grouped source sequence invalid for ${claim.field}`);
+  }
+  const sourceUnit = claim.sourceUnit;
+  if (!['mm', 'cm'].includes(sourceUnit)) throw new TypeError(`grouped source unit invalid for ${claim.field}`);
+  const multiplier = sourceUnit === 'cm' ? 10 : 1;
+  if (sourceValues.some((value, index) => value * multiplier !== valuesMm[index])) {
+    throw new TypeError(`grouped source conversion invalid for ${claim.field}`);
+  }
+  const separator = '\\s*(?:x|×|/|,|\\bby\\b)\\s*';
+  const sequencePattern = axisOrder.map((axis) => `\\b${GROUPED_AXIS_LABELS[axis]}\\b`).join(separator);
+  const compactDimensionPattern = dimensionSequence
+    ? new RegExp(`(?:^|[^a-z0-9])${axisOrder.map((axis) => axis[0]).join('\\s*[x×/]\\s*')}(?:$|[^a-z0-9])`, 'i')
+    : null;
+  if (!(new RegExp(sequencePattern, 'i').test(claim.label)
+      || compactDimensionPattern?.test(claim.label))
+    || (dimensionSequence && !/\b(?:dimension|dimensions|size)\b/i.test(claim.label))
+    || (namedSequence && !/\b(?:clearance|clearances|space|gap)\b/i.test(claim.label))) {
+    throw new TypeError(`explicit grouped label does not prove ${claim.field}`);
+  }
+  const claimAxis = groupedFieldAxis(claim.field, rule, axisOrder);
+  const valueIndex = axisOrder.indexOf(claimAxis);
+  if (!claimAxis || valueIndex < 0 || valuesMm[valueIndex] !== claim.value) {
+    throw new TypeError(`grouped axis value does not prove ${claim.field}`);
+  }
+  const unitPattern = sourceUnit === 'cm'
+    ? /\b(?:cm|centimet(?:re|er)s?)\b/i
+    : /\b(?:mm|millimet(?:re|er)s?)\b/i;
+  if (!unitPattern.test(combined)
+    || !sourceValues.every((value) => quotedNumbers(claim.quote).includes(value))) {
+    throw new TypeError(`grouped quote does not prove ${claim.field}`);
+  }
+  validateRange(claim, context, rule);
+  return true;
+}
+
+function assertLabelledRangeClaim(claim, context, rule, combined) {
+  if (claim.semanticBasis !== 'explicit_label_range') return false;
+  if (claim.field !== 'closedEnvelope.heightMm' || rule.kind !== 'dimension' || rule.axis !== 'height') {
+    throw new TypeError(`range semantic basis does not prove ${claim.field}`);
+  }
+  const range = claim.value;
+  if (!range || typeof range !== 'object' || Array.isArray(range)
+    || !Number.isInteger(range.minimumMm) || !Number.isInteger(range.maximumMm)
+    || range.minimumMm > range.maximumMm) {
+    throw new TypeError('valid adjustable height range required');
+  }
+  if (!rule.label.test(claim.label) || (rule.reject && rule.reject.test(claim.label))) {
+    throw new TypeError('explicit height label required for range');
+  }
+  if (!Array.isArray(claim.sourceValues) || claim.sourceValues.length !== 2
+    || !Array.isArray(claim.sourceValuesMm) || claim.sourceValuesMm.length !== 2
+    || !['mm', 'cm'].includes(claim.sourceUnit)) {
+    throw new TypeError('range source sequence invalid');
+  }
+  const multiplier = claim.sourceUnit === 'cm' ? 10 : 1;
+  if (claim.sourceValues.some((value, index) => value * multiplier !== claim.sourceValuesMm[index])
+    || claim.sourceValuesMm[0] !== range.minimumMm || claim.sourceValuesMm[1] !== range.maximumMm
+    || !/(?:-|–|—|\bto\b)/i.test(claim.quote)) {
+    throw new TypeError('range quote does not prove adjustable height');
+  }
+  const unitPattern = claim.sourceUnit === 'cm'
+    ? /\b(?:cm|centimet(?:re|er)s?)\b/i
+    : /\b(?:mm|millimet(?:re|er)s?)\b/i;
+  if (!unitPattern.test(combined)
+    || !claim.sourceValues.every((value) => quotedNumbers(claim.quote).includes(value))) {
+    throw new TypeError('range quote or unit invalid');
+  }
+  validateRange(claim, context, rule);
+  return true;
 }
 
 export function validateClaimSemantics(claim, context) {
@@ -97,7 +214,9 @@ export function validateClaimSemantics(claim, context) {
   const label = requiredText(claim?.label, 'claim label');
   const quote = requiredText(claim?.quote, 'claim quote');
   const combined = `${label} ${quote}`;
-  if (!rule.label.test(combined) || (rule.reject && rule.reject.test(combined))) {
+  if (assertLabelledRangeClaim(claim, context, rule, combined)) return true;
+  if (assertGroupedClaim(claim, context, rule, combined)) return true;
+  if (!rule.label.test(label) || (rule.reject && rule.reject.test(label))) {
     throw new TypeError(`field label does not prove ${field}`);
   }
   if (rule.kind === 'boolean') {

@@ -183,7 +183,13 @@ function normalizeSource(source, caseRecord, options = {}) {
     if (!SUPPORTED_FIELDS.has(field)) throw new TypeError(`unsupported resolution field ${field}`);
     const expectedUnit = field === 'flags.requiresPlumbing' ? 'boolean' : 'mm';
     if (claim.unit !== expectedUnit) throw new TypeError(`invalid unit for ${field}`);
-    if (expectedUnit === 'mm' && (!Number.isInteger(claim.value) || claim.value < 0 || claim.value > 5000)) {
+    const heightRange = field === 'closedEnvelope.heightMm'
+      && claim.value && typeof claim.value === 'object' && !Array.isArray(claim.value)
+      && Number.isInteger(claim.value.minimumMm) && Number.isInteger(claim.value.maximumMm)
+      && claim.value.minimumMm > 0 && claim.value.minimumMm <= claim.value.maximumMm
+      && claim.value.maximumMm <= 5000;
+    if (expectedUnit === 'mm' && !heightRange
+      && (!Number.isInteger(claim.value) || claim.value < 0 || claim.value > 5000)) {
       throw new TypeError(`invalid millimetre value for ${field}`);
     }
     if (expectedUnit === 'boolean' && typeof claim.value !== 'boolean') throw new TypeError(`invalid boolean for ${field}`);
@@ -385,7 +391,13 @@ export function applyResolutionToProduct(input, resolution) {
     'operation.doorOpenDepthMm': 'door_open_90_depth_mm',
   };
   for (const [field, key] of Object.entries(dimensionMap)) {
-    if (Object.hasOwn(resolution.values, field)) dimensions[key] = resolution.values[field];
+    if (!Object.hasOwn(resolution.values, field)) continue;
+    if (field === 'closedEnvelope.heightMm' && typeof resolution.values[field] === 'object') {
+      dimensions[key] = resolution.values[field].maximumMm;
+      dimensions.height_range_mm = structuredClone(resolution.values[field]);
+    } else {
+      dimensions[key] = resolution.values[field];
+    }
   }
   const clearances = {};
   const clearanceMap = {
@@ -403,7 +415,9 @@ export function applyResolutionToProduct(input, resolution) {
     flags.requires_plumbing = resolution.values['flags.requiresPlumbing'];
   }
   product.w = resolution.values['closedEnvelope.widthMm'];
-  product.h = resolution.values['closedEnvelope.heightMm'];
+  product.h = typeof resolution.values['closedEnvelope.heightMm'] === 'object'
+    ? resolution.values['closedEnvelope.heightMm'].maximumMm
+    : resolution.values['closedEnvelope.heightMm'];
   product.d = resolution.values['closedEnvelope.depthMm'];
   product.dimensions = dimensions;
   product.clearance_requirements = clearances;

@@ -1,5 +1,11 @@
 # PLAN-PHASE53-56: A + B + D Execution Plan
 
+> Historical plan. As of 2026-07-12, every new PDF must use the policy-pinned
+> MinerU `content_list_v2` workflow in
+> `docs/architecture-v2/automated-evidence-resolution.md`. References below to
+> direct `pdf-parse` extraction describe the old implementation and cannot
+> issue current evidence receipts.
+
 **Start**: 2026-05-07
 **Estimated duration**: 18-21 days, 7 PRs
 **Goal**: Programmatic SEO + PDF data pipeline + 2.5D fit-viz tab

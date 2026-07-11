@@ -21,12 +21,14 @@ field or override a terminal decision.
 
 ## Trust Boundaries
 
-Treat case JSON, candidate URLs, redirects, HTML, PDFs, extracted text, legacy
+Treat case JSON, candidate URLs, redirects, HTML, PDFs, MinerU JSON, compatibility text, legacy
 catalog fields, and generated manifests as untrusted. A source becomes usable
 only after all of these checks pass:
 
 - the requested and final HTTPS hosts are approved for the case brand;
 - the raw bytes hash matches their content-addressed object path;
+- each PDF has policy-pinned MinerU `content_list_v2` output whose hash and
+  parser configuration are bound to the immutable source PDF;
 - retrieval time is valid RFC 3339, not in the future, and within policy;
 - an exact model identity is proven by source structure, not self-declaration;
 - each value is parsed from its quoted evidence with the expected field label
@@ -48,13 +50,17 @@ Unknown brands, hosts, source types, and fields fail closed.
 
 ### Artifact Verifier
 
-The verifier reads immutable HTML or PDF bytes. HTML identity needs an exact
+The verifier reads immutable HTML directly. PDF claims are rebuilt only from
+MinerU `content_list_v2.json`; plain text extraction cannot issue a receipt.
+HTML identity needs an exact
 canonical product URL plus a second independent product signal such as title,
 product metadata, or a product element attribute. PDF claims must name the exact
 model in the same page or declared model section. Model matching uses bounded,
 normalised tokens so `ABC1` does not match `ABC12`.
 
-The verifier parses values from the evidence fragment. A stored claim cannot
+PDF claims retain page, bbox, fragment hash, source unit and explicit axis
+sequence or field label. Packaged dimensions, unlabeled triples and parser
+version drift fail closed. The verifier parses values from the evidence fragment. A stored claim cannot
 say `value: 1` while quoting `913 mm`. It emits a content-bound receipt; builds
 recompute the receipt digest and reject edited metadata or claims.
 
@@ -115,4 +121,3 @@ receipts, missing objects, interrupted retries, duplicate cases, non-evidence
 quarantine bypass attempts, unresolved products still online, and deterministic
 replay. Full project tests, lint, build, schema, geometry, aliases, link graph,
 desktop/mobile browser checks, and production checks remain final gates.
-

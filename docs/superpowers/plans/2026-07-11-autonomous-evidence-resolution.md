@@ -6,7 +6,7 @@
 
 **Architecture:** Separate network discovery/acquisition from a deterministic verifier and adjudicator. Bind every accepted claim to an immutable source object and a policy-derived receipt, then make canonical quarantine coverage and typed release grants mandatory publication gates.
 
-**Tech Stack:** Node.js 20+, ES modules, native `fetch`, Cheerio, Poppler, Node test runner, JSON policy and state artifacts.
+**Tech Stack:** Node.js 20+, ES modules, native `fetch`, Cheerio, MinerU 3.4.4 pipeline, Poppler for visual renders only, Node test runner, JSON policy and state artifacts.
 
 ## Global Constraints
 
@@ -104,6 +104,24 @@
 - [ ] Update durable operating and recovery documentation.
 - [ ] Run focused tests and commit the production gate.
 
+### Task 5A: JSON-first PDF Evidence
+
+**Files:**
+- Create: `src/domain/mineru-document.mjs`
+- Create: `src/domain/mineru-runner.mjs`
+- Create: `scripts/architecture-v2/parse-pdf-with-mineru.mjs`
+- Modify: PDF acquisition, research, replay and legacy compatibility workflows
+- Test: `tests/architecture-v2/mineru-*.test.mjs`
+
+- [x] Install MinerU and model assets outside Git on project external storage.
+- [x] Require policy-pinned `content_list_v2` JSON for every new PDF receipt.
+- [x] Bind PDF hash, JSON hash, parser configuration, page, bbox, fragment and
+  axis semantics; reject packaged or unlabeled dimensions.
+- [x] Migrate the automated runner, Phase 10 v2 acquisition, replay verifier
+  and legacy brand-parser adapter to JSON-first processing.
+- [x] Validate real Hisense table and Haier QRG/range layouts.
+- [ ] Complete full regression, review and production integration.
+
 ### Task 6: Adversarial Regression and Reusable Skill
 
 **Files:**
@@ -130,4 +148,3 @@
   horizontal overflow, links, schema, and production Sentinel.
 - [ ] Record final commit, deployment ID, test totals, residual risks, and
   untouched user files.
-

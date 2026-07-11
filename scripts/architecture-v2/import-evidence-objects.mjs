@@ -12,6 +12,8 @@ import {
   buildEvidenceObjectRecords,
 } from '../../src/domain/evidence-object-store.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
+import { inspectMineruContentListV2 } from '../../src/domain/mineru-document.mjs';
+import { evidenceSourcePolicy } from '../../src/domain/evidence-source-verifier.mjs';
 
 const execFile = promisify(execFileCallback);
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -87,6 +89,31 @@ async function renderReviewPage(pdfPath, target, page) {
   }
 }
 
+async function verifyPhase10MineruEntry(acquisition, acquired, storageRoot) {
+  if (acquisition.schemaVersion !== 2) return null;
+  if (acquisition.extractionFormat !== 'mineru_content_list_v2'
+    || !acquired.workspace?.json || !acquired.workspace?.text || !acquired.derivedArtifact) {
+    throw new TypeError(`Phase 10 MinerU provenance missing for ${acquired.legacyRuntimeId}`);
+  }
+  const jsonPath = resolveWithin(storageRoot, acquired.workspace.json);
+  const jsonBytes = await readFile(jsonPath);
+  const inspection = inspectMineruContentListV2(jsonBytes);
+  const artifact = acquired.derivedArtifact;
+  const required = evidenceSourcePolicy.resolutionPolicy.pdfEvidence;
+  if (inspection.contentSha256 !== artifact.contentSha256
+    || inspection.pageCount !== acquired.pageCount
+    || artifact.sourcePdfSha256 !== acquired.sha256
+    || artifact.parserName !== required.parserName || artifact.parserVersion !== required.parserVersion
+    || artifact.modelRevision !== required.modelRevision) {
+    throw new Error(`Phase 10 MinerU artifact mismatch for ${acquired.legacyRuntimeId}`);
+  }
+  const objectPath = resolveWithin(storageRoot, artifact.objectPath);
+  if (await sha256(objectPath) !== artifact.contentSha256) {
+    throw new Error(`Phase 10 MinerU object hash mismatch for ${acquired.legacyRuntimeId}`);
+  }
+  return { jsonPath, inspection };
+}
+
 export async function importEvidenceObjects({
   storageRoot,
   sourceDirectory = defaultSourceDirectory,
@@ -122,8 +149,13 @@ export async function importEvidenceObjects({
   const records = buildEvidenceObjectRecords({ dimensionReviews, spaceReviews, bundles, fileFacts });
   const phase10CandidateByLegacy = new Map(phase10Candidates.documents.map((row) => [row.legacyRuntimeId, row]));
   for (const acquired of phase10Acquisition.entries.filter((row) => row.outcome === 'acquired')) {
-    const pdfPath = resolveWithin(phase10SourceDirectory, `${acquired.legacyRuntimeId}.pdf`);
-    const textPath = resolveWithin(phase10SourceDirectory, `${acquired.legacyRuntimeId}.txt`);
+    const pdfPath = phase10Acquisition.schemaVersion === 2
+      ? resolveWithin(storageRoot, acquired.workspace.pdf)
+      : resolveWithin(phase10SourceDirectory, `${acquired.legacyRuntimeId}.pdf`);
+    const textPath = phase10Acquisition.schemaVersion === 2
+      ? resolveWithin(storageRoot, acquired.workspace.text)
+      : resolveWithin(phase10SourceDirectory, `${acquired.legacyRuntimeId}.txt`);
+    await verifyPhase10MineruEntry(phase10Acquisition, acquired, storageRoot);
     const actualHash = await sha256(pdfPath);
     if (actualHash !== acquired.sha256) throw new Error(`Phase 10 source PDF hash mismatch for ${acquired.legacyRuntimeId}`);
     const actualPages = await pdfPageCount(pdfPath);
@@ -207,6 +239,10 @@ export async function verifyEvidenceObjects({ storageRoot, indexPath = defaultIn
       const renderPath = resolveWithin(storageRoot, `${document.paths.renderDirectory}/page-${String(page).padStart(4, '0')}.png`);
       if ((await stat(renderPath)).size < 8) throw new Error(`review render is empty: ${renderPath}`);
     }
+  }
+  const phase10Acquisition = await readJson(resolveArchitectureV2Path(repoRoot, 'phase10Acquisition'));
+  for (const acquired of phase10Acquisition.entries.filter((row) => row.outcome === 'acquired')) {
+    await verifyPhase10MineruEntry(phase10Acquisition, acquired, storageRoot);
   }
   return index.summary;
 }

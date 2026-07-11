@@ -212,7 +212,7 @@ function parseHisenseText(text, options = {}) {
 }
 
 async function parseHisensePdf(pdfPath, options = {}) {
-  const text = await extractText(pdfPath);
+  const { text } = await extractText(pdfPath);
   return parseHisenseText(text, options);
 }
 

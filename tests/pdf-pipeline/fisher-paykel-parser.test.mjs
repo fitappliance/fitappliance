@@ -6,6 +6,9 @@ import { createRequire } from 'node:module';
 
 import { extractText } from '../../scripts/pdf-pipeline/2-extract-text.js';
 import { validateApplianceDimension } from '../../scripts/pdf-pipeline/4-validate.js';
+import { installMineruTestProcessor } from './helpers/mineru-test-processor.mjs';
+
+installMineruTestProcessor();
 
 const require = createRequire(import.meta.url);
 const {

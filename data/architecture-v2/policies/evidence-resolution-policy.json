@@ -1,7 +1,15 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-11.3",
+  "policyVersion": "2026-07-11.5",
   "receiptSchemaVersion": 1,
+  "pdfEvidence": {
+    "requiredFormat": "content_list_v2",
+    "parserName": "MinerU",
+    "parserVersion": "3.4.4",
+    "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+    "backend": "pipeline",
+    "method": "auto"
+  },
   "maximumRedirects": 5,
   "maximumFutureClockSkewMinutes": 5,
   "releasableQuarantineReasonPatterns": [
