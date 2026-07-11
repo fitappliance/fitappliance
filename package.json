@@ -14,7 +14,7 @@
     "build:source-document-registry": "node scripts/architecture-v2/build-source-document-registry.mjs",
     "audit:geometry-migration": "npm run build:source-document-registry && node scripts/architecture-v2/geometry-migration-audit.mjs",
     "publish:catalog": "npm run build:public-projection-v2 && node scripts/architecture-v2/publish-runtime-projection.js",
-    "build": "npm run publish:catalog && node scripts/pick-review-pilot.js && node scripts/generate-ui-copy.js && node scripts/generate-brand-pages.js && node scripts/inject-video-schema.js && node scripts/generate-comparisons.js && node scripts/generate-compare-vs-pages.js && node scripts/generate-guides.js && node scripts/generate-location-pages.js && node scripts/generate-product-pages.js && node scripts/generate-sitemap.js && node scripts/generate-sw.js",
+    "build": "node scripts/vendor-web-vitals.js && npm run publish:catalog && node scripts/pick-review-pilot.js && node scripts/generate-ui-copy.js && node scripts/generate-brand-pages.js && node scripts/inject-video-schema.js && node scripts/generate-comparisons.js && node scripts/generate-compare-vs-pages.js && node scripts/generate-guides.js && node scripts/generate-location-pages.js && node scripts/generate-product-pages.js && node scripts/generate-sitemap.js && node scripts/generate-sw.js",
     "test": "node --test tests/*.test.mjs tests/pdf-pipeline/*.test.mjs",
     "test:architecture-v2": "node --test tests/architecture-v2/*.test.mjs",
     "audit:architecture-v2": "node scripts/architecture-v2/shadow-audit.mjs",
@@ -95,7 +95,8 @@
     "lint": "node --check scripts/*.js scripts/sources/*.js scripts/utils/*.js tests/*.test.mjs && sh -c 'for f in public/scripts/ui/*.js; do node --input-type=module --check < \"$f\"; done'"
   },
   "dependencies": {
-    "googleapis": "^171.4.0"
+    "googleapis": "^171.4.0",
+    "web-vitals": "^4.2.4"
   },
   "devDependencies": {
     "cheerio": "^1.2.0",

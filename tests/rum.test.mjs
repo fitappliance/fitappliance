@@ -71,6 +71,13 @@ test('phase 43a rum: client fetch path silently drops rejected RUM responses', (
   assert.doesNotMatch(source, /throw\s+new\s+Error/);
 });
 
+test('production RUM imports Web Vitals from the same origin allowed by CSP', () => {
+  const source = fs.readFileSync(rumScriptPath, 'utf8');
+  assert.match(source, /WEB_VITALS_MODULE\s*=\s*['"]\/scripts\/vendor\/web-vitals\.js['"]/);
+  assert.doesNotMatch(source, /WEB_VITALS_MODULE\s*=\s*['"]https?:\/\//);
+  assert.ok(fs.existsSync(path.join(repoRoot, 'public', 'scripts', 'vendor', 'web-vitals.js')));
+});
+
 test('phase 26 rum: API rejects non-POST requests', async () => {
   const { createRumHandler } = require(apiPath);
   const handler = createRumHandler();

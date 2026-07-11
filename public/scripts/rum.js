@@ -3,7 +3,7 @@
 (function startRum(globalScope) {
   const SAMPLE_RATE = 0.1;
   const ENDPOINT = '/api/rum';
-  const WEB_VITALS_MODULE = 'https://unpkg.com/web-vitals@4/dist/web-vitals.attribution.js?module';
+  const WEB_VITALS_MODULE = '/scripts/vendor/web-vitals.js';
 
   if (!globalScope || !globalScope.location || globalScope.location.origin !== 'https://www.fitappliance.com.au') {
     return;
