@@ -16,7 +16,7 @@ Last updated: 2026-07-11
 
 ## Phase 2 - Canonical identity
 
-- `data/architecture-v2/canonical-registry.json` contains 3,593 canonical
+- `data/architecture-v2/generated/canonical-registry.json` contains 3,593 canonical
   products and 3,593 reversible legacy mappings across the runtime and
   evidence-page source sets. Ten rows are quarantined.
 - Nine runtime rows remain quarantined. `ao-88474` is additionally quarantined
@@ -27,7 +27,7 @@ Last updated: 2026-07-11
 
 ## Phase 3 - Retailer observations
 
-- `data/architecture-v2/retailer-observations.json` contains 183 historical
+- `data/architecture-v2/observations/retailer-observations.json` contains 183 historical
   observations across 66 products and five retailers.
 - Twenty-five observations originate from Partnerize and 158 are explicitly
   marked as legacy catalog observations.
@@ -76,9 +76,9 @@ Last updated: 2026-07-11
 
 ## Phase 7 - Projection and deletion preparation
 
-- `data/architecture-v2/public-catalog-projection.json` is the V2 runtime view
+- `data/architecture-v2/generated/public-catalog-projection.json` is the V2 runtime view
   for 2,259 non-quarantined products.
-- `data/architecture-v2/public-catalog-projection.json` is the only public
+- `data/architecture-v2/generated/public-catalog-projection.json` is the only public
   projection: 3,520 products after 21 evidence/geometry quarantine decisions.
 - Product, brand, comparison and browser outputs all consume this projection;
   1,739 products currently satisfy the evidence-page publication gate.
@@ -87,7 +87,7 @@ Last updated: 2026-07-11
 - The legacy runtime snapshot, dual page projection, runtime selector and
   environment-variable switch were deleted after owner approval on 2026-07-11.
 - Historical identifier mappings remain in
-  `data/architecture-v2/historical-identifier-mappings.json` for audit and URL
+  `data/architecture-v2/generated/historical-identifier-mappings.json` for audit and URL
   traceability.
 
 ## Rollback gate

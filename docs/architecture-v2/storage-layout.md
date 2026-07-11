@@ -52,9 +52,9 @@ public/                       # generated deploy assets
 pages/                        # generated static pages
 ```
 
-Current flat paths under `data/architecture-v2/` remain supported until build
-scripts are migrated together. Files must not be moved individually because the
-current source-document and review-bundle builders still reference those paths.
+The ownership layout above became mandatory in Phase 10. All consumers resolve
+these files through `src/domain/architecture-v2-paths.mjs`; flat JSON files at
+the Architecture V2 root are rejected by the path-contract test.
 
 ## External-drive layout
 

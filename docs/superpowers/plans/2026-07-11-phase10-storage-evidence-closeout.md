@@ -26,12 +26,12 @@ and close every pending alias disposition without weakening approval gates.
 
 ## Phase 10B: Storage-normalised build graph
 
-- [ ] Add one Architecture V2 path registry and path-contract tests.
-- [ ] Split policies, decisions, reviews, observations and generated artifacts.
-- [ ] Replace the source-document/review-bundle cycle with one-directional
+- [x] Add one Architecture V2 path registry and path-contract tests.
+- [x] Split policies, decisions, reviews, observations and generated artifacts.
+- [x] Replace the source-document/review-bundle cycle with one-directional
   source inputs -> review decisions -> generated registries -> public output.
-- [ ] Preserve compatibility for runtime/public URLs and historical IDs.
-- [ ] Prove a clean build succeeds without the external drive.
+- [x] Preserve compatibility for runtime/public URLs and historical IDs.
+- [x] Prove a clean build succeeds without the external drive.
 
 ## Phase 10C: Forty-model evidence batch
 

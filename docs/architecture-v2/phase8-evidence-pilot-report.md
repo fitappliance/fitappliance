@@ -60,10 +60,10 @@ approved fields and the fact that installation clearance remains unapproved.
 
 The reproducible inputs are:
 
-- `data/architecture-v2/evidence-pilot.json`
-- `data/architecture-v2/evidence-review-bundles.json`
-- `data/architecture-v2/evidence-pilot-review-input.json`
-- `data/architecture-v2/evidence-pilot-review-manifest.json`
+- `data/architecture-v2/reviews/phase-08/evidence-pilot.json`
+- `data/architecture-v2/generated/evidence-review-bundles.json`
+- `data/architecture-v2/reviews/phase-08/evidence-pilot-review-input.json`
+- `data/architecture-v2/generated/evidence-pilot-review-manifest.json`
 
 Downloaded PDFs and rendered contact sheets are temporary review artifacts and
 are not committed. Their SHA-256 values are retained in the review manifest and

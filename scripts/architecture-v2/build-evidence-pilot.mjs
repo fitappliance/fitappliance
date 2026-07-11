@@ -2,17 +2,28 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { selectEvidencePilot } from '../../src/domain/evidence-pilot.mjs';
+import { buildLegacySourceDocuments } from '../../src/domain/source-document-seed.mjs';
+import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
+import brandCanon from '../brand-canon.js';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
-const catalog = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/public-catalog-projection.json'), 'utf8'));
-const sourceRegistry = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/source-documents.json'), 'utf8'));
+const catalog = JSON.parse(await readFile(resolve(root, 'data/catalog-final.json'), 'utf8'));
+const manual = JSON.parse(await readFile(resolve(root, 'data/manual-evidence.json'), 'utf8'));
+const canonical = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'canonicalRegistry'), 'utf8'));
+const canonicalByLegacy = new Map(canonical.identifierMappings.map((row) => [row.legacyRuntimeId, row.canonicalProductId]));
+const candidateProducts = catalog.products.map((row) => ({
+  ...row,
+  brand: brandCanon.canonicalizeBrand(row.brand),
+  canonicalProductId: canonicalByLegacy.get(String(row.id).toLowerCase()),
+}));
+const sourceDocuments = buildLegacySourceDocuments({ manual, canonical });
 const categoryTargets = { fridge: 5, dishwasher: 5, dryer: 5, washing_machine: 5 };
-const outputPath = resolve(root, 'data/architecture-v2/evidence-pilot.json');
+const outputPath = resolveArchitectureV2Path(root, 'phase08Selection');
 let existing = null;
 try { existing = JSON.parse(await readFile(outputPath, 'utf8')); } catch {}
 if (existing?.frozen === true) {
-  const productIds = new Set(catalog.products.map((row) => row.canonicalProductId));
-  const documentIds = new Set(sourceRegistry.documents.map((row) => row.id));
+  const productIds = new Set(candidateProducts.map((row) => row.canonicalProductId));
+  const documentIds = new Set(sourceDocuments.map((row) => row.id));
   if (existing.products.length !== 20 || new Set(existing.products.map((row) => row.canonicalProductId)).size !== 20) {
     throw new TypeError('frozen evidence pilot must contain 20 unique products');
   }
@@ -23,9 +34,9 @@ if (existing?.frozen === true) {
   console.log(JSON.stringify({ products: existing.products.length, frozen: true }));
   process.exit(0);
 }
-const products = selectEvidencePilot({
-  products: catalog.products,
-  sourceDocuments: sourceRegistry.documents,
+const selectedProducts = selectEvidencePilot({
+  products: candidateProducts,
+  sourceDocuments,
   limit: 20,
   brandLimit: 3,
   categoryTargets,
@@ -42,7 +53,7 @@ const output = {
     requiredRetailerLinks: 1,
     ranking: ['manufacturer_transport', 'retailer_count', 'priority_score', 'brand_model_id'],
   },
-  products,
+  products: selectedProducts,
 };
 await writeFile(outputPath, `${JSON.stringify(output, null, 2)}\n`);
-console.log(JSON.stringify({ products: products.length, categories: Object.groupBy(products, (row) => row.category) }, (_, value) => Array.isArray(value) ? value.length : value));
+console.log(JSON.stringify({ products: selectedProducts.length, categories: Object.groupBy(selectedProducts, (row) => row.category) }, (_, value) => Array.isArray(value) ? value.length : value));

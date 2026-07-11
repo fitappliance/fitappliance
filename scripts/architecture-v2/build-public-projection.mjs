@@ -6,13 +6,14 @@ import { applyEvidencePilotReview, buildPilotEvidenceProjection } from '../../sr
 import { buildSpaceEvidenceProjection } from '../../src/domain/space-evidence-review.mjs';
 import { createCategoryGeometry } from '../../src/domain/category-geometry.mjs';
 import brandCanon from '../brand-canon.js';
+import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
-const registry = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/canonical-registry.json'), 'utf8'));
+const registry = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'canonicalRegistry'), 'utf8'));
 const catalog = JSON.parse(await readFile(resolve(root, 'data/catalog-final.json'), 'utf8'));
-const reviewBundles = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/evidence-review-bundles.json'), 'utf8'));
-const reviewManifest = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/evidence-pilot-review-manifest.json'), 'utf8'));
-const spaceReviewManifest = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/space-evidence-pilot-review-manifest.json'), 'utf8'));
+const reviewBundles = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'evidenceReviewBundles'), 'utf8'));
+const reviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'dimensionReviewManifest'), 'utf8'));
+const spaceReviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'spaceReviewManifest'), 'utf8'));
 const pilotEvidence = buildPilotEvidenceProjection(applyEvidencePilotReview({ bundles: reviewBundles.bundles, manifest: reviewManifest }));
 const spaceEvidence = buildSpaceEvidenceProjection(spaceReviewManifest.results);
 const canonicalByLegacy = new Map(registry.identifierMappings.map((row) => [row.legacyRuntimeId, row.canonicalProductId]));
@@ -78,5 +79,5 @@ const filtered = {
     }),
 };
 const projection = buildPublicProjection(registry, filtered);
-await writeFile(resolve(root, 'data/architecture-v2/public-catalog-projection.json'), `${JSON.stringify(projection)}\n`);
+await writeFile(resolveArchitectureV2Path(root, 'publicProjection'), `${JSON.stringify(projection)}\n`);
 console.log(JSON.stringify({ products: projection.products.length, quarantined: registry.quarantine.length }));

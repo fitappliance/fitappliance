@@ -27,7 +27,7 @@
 - Create: `src/domain/evidence-pilot.mjs`
 - Create: `scripts/architecture-v2/build-evidence-pilot.mjs`
 - Create: `tests/architecture-v2/evidence-pilot.test.mjs`
-- Create: `data/architecture-v2/evidence-pilot.json`
+- Create: `data/architecture-v2/reviews/phase-08/evidence-pilot.json`
 
 **Interfaces:**
 - `selectEvidencePilot({ products, sourceDocuments, limit, brandLimit, categoryTargets })`
@@ -46,7 +46,7 @@
 - Create: `src/domain/evidence-review.mjs`
 - Create: `scripts/architecture-v2/build-evidence-review-bundles.mjs`
 - Create: `tests/architecture-v2/evidence-review.test.mjs`
-- Create: `data/architecture-v2/evidence-review-bundles.json`
+- Create: `data/architecture-v2/generated/evidence-review-bundles.json`
 
 **Interfaces:**
 - `createReviewBundle({ product, sourceDocument, rawExtraction })`

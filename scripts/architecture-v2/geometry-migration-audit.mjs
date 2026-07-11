@@ -2,10 +2,11 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { migrateGeometry, auditImpossibleGeometry } from '../../src/domain/geometry-migration.mjs';
+import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
-const catalog = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/public-catalog-projection.json'), 'utf8'));
-const sourceRegistry = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/source-documents.json'), 'utf8'));
+const catalog = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'publicProjection'), 'utf8'));
+const sourceRegistry = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'sourceDocuments'), 'utf8'));
 const approvedEvidence = sourceRegistry.documents
   .filter((document) => document.state === 'approved')
   .flatMap((document) => document.productLinks.flatMap((link) => document.fields.map((field) => ({

@@ -12,8 +12,8 @@ const document = {
   id: 'doc_exact', authorType: 'manufacturer', transportHostType: 'manufacturer',
   identityOutcome: 'exact', sha256: 'a'.repeat(64), pageCount: 20, parserVersion: 'pdftotext-26.06.0',
 };
-const bundles = JSON.parse(fs.readFileSync('data/architecture-v2/evidence-review-bundles.json', 'utf8')).bundles;
-const dimensionManifest = JSON.parse(fs.readFileSync('data/architecture-v2/evidence-pilot-review-manifest.json', 'utf8'));
+const bundles = JSON.parse(fs.readFileSync('data/architecture-v2/generated/evidence-review-bundles.json', 'utf8')).bundles;
+const dimensionManifest = JSON.parse(fs.readFileSync('data/architecture-v2/generated/evidence-pilot-review-manifest.json', 'utf8'));
 const base = {
   legacyRuntimeId: 'model-1', canonicalProductId: 'cp_1', document,
   field: 'installation.rearMm', value: 30, unit: 'mm', page: 2,
@@ -47,7 +47,7 @@ test('requires the same reproducibility gate as dimension evidence', () => {
 });
 
 test('committed pilot covers all ten approved dimension documents and preserves partial trust', () => {
-  const input = JSON.parse(fs.readFileSync('data/architecture-v2/space-evidence-pilot-input.json', 'utf8'));
+  const input = JSON.parse(fs.readFileSync('data/architecture-v2/reviews/phase-09/space-evidence-pilot-input.json', 'utf8'));
   const results = applySpaceEvidenceReview(input, { bundles, dimensionManifest });
   assert.equal(input.reviews.length, 10);
   assert.equal(new Set(input.reviews.map((row) => row.legacyRuntimeId)).size, 10);

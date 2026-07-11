@@ -2,12 +2,13 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { applySpaceEvidenceReview } from '../../src/domain/space-evidence-review.mjs';
+import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
 const readJson = async (path) => JSON.parse(await readFile(resolve(root, path), 'utf8'));
-const input = await readJson('data/architecture-v2/space-evidence-pilot-input.json');
-const bundles = (await readJson('data/architecture-v2/evidence-review-bundles.json')).bundles;
-const dimensionManifest = await readJson('data/architecture-v2/evidence-pilot-review-manifest.json');
+const input = await readJson(resolveArchitectureV2Path(root, 'phase09SpaceInput'));
+const bundles = (await readJson(resolveArchitectureV2Path(root, 'evidenceReviewBundles'))).bundles;
+const dimensionManifest = await readJson(resolveArchitectureV2Path(root, 'dimensionReviewManifest'));
 const results = applySpaceEvidenceReview(input, { bundles, dimensionManifest });
 const output = {
   schemaVersion: 1,
@@ -25,5 +26,5 @@ const output = {
     documentsWithoutCandidates: input.reviews.filter((row) => !row.fields.length).length,
   },
 };
-await writeFile(resolve(root, 'data/architecture-v2/space-evidence-pilot-review-manifest.json'), `${JSON.stringify(output, null, 2)}\n`);
+await writeFile(resolveArchitectureV2Path(root, 'spaceReviewManifest'), `${JSON.stringify(output, null, 2)}\n`);
 console.log(JSON.stringify(output.summary));

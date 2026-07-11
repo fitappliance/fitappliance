@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
 const readJson = async (relativePath) => JSON.parse(await readFile(resolve(root, relativePath), 'utf8'));
-const input = await readJson('data/architecture-v2/evidence-pilot-review-input.json');
-const bundles = (await readJson('data/architecture-v2/evidence-review-bundles.json')).bundles;
+const input = await readJson(resolveArchitectureV2Path(root, 'phase08DimensionInput'));
+const bundles = (await readJson(resolveArchitectureV2Path(root, 'evidenceReviewBundles'))).bundles;
 const bundleMap = new Map(bundles.map((row) => [row.product.legacyRuntimeId, row]));
 const reviews = input.reviews.map((review) => {
   const bundle = bundleMap.get(review.id);
@@ -35,5 +36,5 @@ const reviews = input.reviews.map((review) => {
   };
 });
 const output = { schemaVersion: 1, reviewedAt: input.reviewedAt, reviews };
-await writeFile(resolve(root, 'data/architecture-v2/evidence-pilot-review-manifest.json'), `${JSON.stringify(output, null, 2)}\n`);
+await writeFile(resolveArchitectureV2Path(root, 'dimensionReviewManifest'), `${JSON.stringify(output, null, 2)}\n`);
 console.log(JSON.stringify({ reviews: reviews.length, fields: reviews.reduce((sum, row) => sum + row.fields.length, 0) }));

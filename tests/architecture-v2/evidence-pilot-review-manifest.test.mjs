@@ -4,8 +4,8 @@ import fs from 'node:fs';
 import { applyEvidencePilotReview, buildPilotEvidenceProjection } from '../../src/domain/evidence-review.mjs';
 import { evaluateFit } from '../../src/domain/fit-decision.mjs';
 
-const bundles = JSON.parse(fs.readFileSync('data/architecture-v2/evidence-review-bundles.json', 'utf8')).bundles;
-const manifest = JSON.parse(fs.readFileSync('data/architecture-v2/evidence-pilot-review-manifest.json', 'utf8'));
+const bundles = JSON.parse(fs.readFileSync('data/architecture-v2/generated/evidence-review-bundles.json', 'utf8')).bundles;
+const manifest = JSON.parse(fs.readFileSync('data/architecture-v2/generated/evidence-pilot-review-manifest.json', 'utf8'));
 
 test('pilot review manifest covers all 20 bundles and all 60 candidate fields', () => {
   assert.equal(manifest.reviews.length, 20);
@@ -38,7 +38,7 @@ test('every approved pilot field retains reproducible page evidence', () => {
 });
 
 test('source-document registry imports pilot lifecycle outcomes', () => {
-  const registry = JSON.parse(fs.readFileSync('data/architecture-v2/source-documents.json', 'utf8'));
+  const registry = JSON.parse(fs.readFileSync('data/architecture-v2/generated/source-documents.json', 'utf8'));
   const pilotDocumentIds = new Set(bundles.map((row) => row.sourceDocument.id));
   const documents = registry.documents.filter((row) => pilotDocumentIds.has(row.id));
   assert.equal(documents.filter((row) => row.state === 'approved').length, 10);
@@ -48,12 +48,12 @@ test('source-document registry imports pilot lifecycle outcomes', () => {
 });
 
 test('Phase 9 space facts reach source documents and public geometry without inventing unknowns', () => {
-  const registry = JSON.parse(fs.readFileSync('data/architecture-v2/source-documents.json', 'utf8'));
+  const registry = JSON.parse(fs.readFileSync('data/architecture-v2/generated/source-documents.json', 'utf8'));
   const document = registry.documents.find((row) => row.id === 'doc_06e6f7a227e50660c2073cbd');
   assert.equal(document.fields.find((row) => row.field === 'installation.rearMm')?.value, 30);
   assert.equal(document.fields.find((row) => row.field === 'installation.frontMm'), undefined);
 
-  const projection = JSON.parse(fs.readFileSync('data/architecture-v2/public-catalog-projection.json', 'utf8'));
+  const projection = JSON.parse(fs.readFileSync('data/architecture-v2/generated/public-catalog-projection.json', 'utf8'));
   const product = projection.products.find((row) => row.id === 'ao-92114');
   assert.equal(product.geometry_v2.installation.rearMm, 30);
   assert.equal(product.geometry_v2.installation.frontMm, null);

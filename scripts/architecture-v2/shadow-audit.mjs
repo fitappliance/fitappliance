@@ -3,6 +3,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 
 import { adaptLegacyAppliance } from '../../src/adapters/legacy-appliance.mjs';
 
@@ -129,7 +130,7 @@ function main(args) {
   if (args.length > 0) {
     throw new TypeError('shadow audit accepts no arguments or output path');
   }
-  const catalog = readJson(path.join(repoRoot, 'data/architecture-v2/public-catalog-projection.json'));
+  const catalog = readJson(resolveArchitectureV2Path(repoRoot, 'publicProjection'));
   const evidencePath = path.join(repoRoot, 'public/data/evidence-index.json');
   const evidence = existsSync(evidencePath) ? readJson(evidencePath) : null;
   process.stdout.write(`${JSON.stringify(auditCatalog(catalog, evidence), null, 2)}\n`);

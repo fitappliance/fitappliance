@@ -109,10 +109,10 @@ export function buildEvidenceObjectRecords({ dimensionReviews, spaceReviews, bun
     const bundle = bundleByLegacyId.get(legacyRuntimeId);
     if (!bundle) throw new TypeError(`missing evidence bundle for ${legacyRuntimeId}`);
     const sourceDocument = bundle.sourceDocument ?? {};
-    if (normalizeHash(sourceDocument.sha256) !== sha256) {
+    if (sourceDocument.sha256 != null && normalizeHash(sourceDocument.sha256) !== sha256) {
       throw new TypeError(`document hash mismatch for ${legacyRuntimeId}`);
     }
-    if (positiveInteger(sourceDocument.pageCount, 'source page count') !== pageCount) {
+    if (sourceDocument.pageCount != null && positiveInteger(sourceDocument.pageCount, 'source page count') !== pageCount) {
       throw new TypeError(`document page count mismatch for ${legacyRuntimeId}`);
     }
 

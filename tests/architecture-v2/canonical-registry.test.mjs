@@ -7,7 +7,7 @@ import { buildCanonicalRegistry, extractGemsRegistrationFromLegacyId } from '../
 test('canonical registry build inputs survive the Vercel reports exclusion', () => {
   const source = readFileSync(new URL('../../scripts/architecture-v2/build-canonical-registry.mjs', import.meta.url), 'utf8');
   assert.doesNotMatch(source, /reports\/architecture-v2/);
-  assert.match(source, /data\/architecture-v2\/phase1-quarantine-disposition\.json/);
+  assert.match(source, /resolveArchitectureV2Path\(root, 'phase1QuarantineDisposition'\)/);
 });
 
 const catalog = { products: [

@@ -11,11 +11,12 @@ import {
   buildEvidenceObjectIndex,
   buildEvidenceObjectRecords,
 } from '../../src/domain/evidence-object-store.mjs';
+import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 
 const execFile = promisify(execFileCallback);
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const defaultSourceDirectory = resolve(repoRoot, 'tmp/pdfs/phase8');
-const defaultIndexPath = resolve(repoRoot, 'data/architecture-v2/evidence-object-index.json');
+const defaultIndexPath = resolveArchitectureV2Path(repoRoot, 'evidenceObjectIndex');
 
 async function readJson(path) {
   return JSON.parse(await readFile(path, 'utf8'));
@@ -89,9 +90,9 @@ async function renderReviewPage(pdfPath, target, page) {
 export async function importEvidenceObjects({ storageRoot, sourceDirectory = defaultSourceDirectory, indexPath = defaultIndexPath }) {
   if (!storageRoot) throw new TypeError('storage root required');
   await access(storageRoot, constants.W_OK);
-  const dimensionReviews = (await readJson(resolve(repoRoot, 'data/architecture-v2/evidence-pilot-review-input.json'))).reviews;
-  const spaceReviews = (await readJson(resolve(repoRoot, 'data/architecture-v2/space-evidence-pilot-input.json'))).reviews;
-  const bundles = (await readJson(resolve(repoRoot, 'data/architecture-v2/evidence-review-bundles.json'))).bundles;
+  const dimensionReviews = (await readJson(resolveArchitectureV2Path(repoRoot, 'phase08DimensionInput'))).reviews;
+  const spaceReviews = (await readJson(resolveArchitectureV2Path(repoRoot, 'phase09SpaceInput'))).reviews;
+  const bundles = (await readJson(resolveArchitectureV2Path(repoRoot, 'evidenceReviewBundles'))).bundles;
   const fileFacts = new Map();
 
   for (const review of dimensionReviews) {

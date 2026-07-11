@@ -80,7 +80,7 @@ and remediation plan. Data evidence through `b308983e` is included.
 - `scripts/architecture-v2/audit-model-aliases.mjs`
 - `tests/architecture-v2/model-alias.test.mjs`
 - `tests/fixtures/architecture-v2/model-aliases.json`
-- `data/architecture-v2/phase1-quarantine-disposition.json`
+- `data/architecture-v2/decisions/phase1-quarantine-disposition.json`
 
 ### Modify
 

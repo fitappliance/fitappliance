@@ -26,7 +26,8 @@ async function publishRuntimeProjection({ root, catalog, logger = console }) {
 async function main() {
   const root = path.resolve(__dirname, '../..');
   const readJson = async (file) => JSON.parse(await fs.readFile(path.join(root, file), 'utf8'));
-  const catalog = await readJson('data/architecture-v2/public-catalog-projection.json');
+  const { architectureV2Paths } = await import('../../src/domain/architecture-v2-paths.mjs');
+  const catalog = await readJson(architectureV2Paths.publicProjection);
   await publishRuntimeProjection({ root, catalog });
 }
 
