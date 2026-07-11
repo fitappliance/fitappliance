@@ -4,9 +4,9 @@ _Auto-generated 2026-07-06 from live database_
 ---
 
 ## Site Stats (Current)
-- **3,517 raw appliance spec rows** across fridges, washing machines, dishwashers, and dryers
-- **1,383 products with verified retailer product-page links** across tracked AU retailers
-- **1,613 verified retailer product-page links**; live price rows are 1,357
+- **3,518 raw appliance spec rows** across fridges, washing machines, dishwashers, and dryers
+- **1,384 products with verified retailer product-page links** across tracked AU retailers
+- **1,614 verified retailer product-page links**; live price rows are 1,358
 - Brand and comparison pages generated from the current public catalog projection
 - Door-opening space is shown only where explicit evidence or an auditable 90-degree depth calculation exists
 - Source and evidence strength are tracked per product; retailer pages are not treated as manufacturer evidence
@@ -22,7 +22,7 @@ _Auto-generated 2026-07-06 from live database_
 > Moving apartments and measuring for a new fridge is a nightmare. I kept finding specs online but no tool that
 > checked whether the ventilation clearances were met (which can affect airflow and performance).
 >
-> Built fitappliance.com.au — it checks 3,517 raw appliance spec rows, checks your exact cavity dimensions,
+> Built fitappliance.com.au — it checks 3,518 raw appliance spec rows, checks your exact cavity dimensions,
 > and shows which models fit with proper clearance. Also has brand-specific requirements (LG needs more rear
 > clearance than Hisense, for example).
 >

@@ -12,21 +12,21 @@ Australian retailers.
 
 | Metric | Count | Meaning |
 | --- | ---: | --- |
-| Raw specs catalog | 3,517 | Sizing/spec rows across fridges, dishwashers, dryers, and washing machines. |
-| Retailer-verified products | 1,383 | Products with at least one verified product-page link from the five tracked retailers. |
-| Verified retailer links | 1,613 | Total product-page links across JB Hi-Fi, Appliances Online, The Good Guys, Harvey Norman, and Bing Lee. |
+| Raw specs catalog | 3,518 | Sizing/spec rows across fridges, dishwashers, dryers, and washing machines. |
+| Retailer-verified products | 1,384 | Products with at least one verified product-page link from the five tracked retailers. |
+| Verified retailer links | 1,614 | Total product-page links across JB Hi-Fi, Appliances Online, The Good Guys, Harvey Norman, and Bing Lee. |
 | Multi-retailer products | 161 | Products with two or more verified retailer product-page links. |
-| Live price rows | 1,357 | Positive retailer prices captured with enough evidence to show as price data. |
+| Live price rows | 1,358 | Positive retailer prices captured with enough evidence to show as price data. |
 
 ## Coverage By Category
 
 | Category | Raw specs | Retailer-verified products | Verified retailer links | Multi-retailer products | Link coverage |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Fridges | 1,984 | 686 | 796 | 64 | 34.6% |
+| Fridges | 1,985 | 687 | 797 | 64 | 34.6% |
 | Dishwashers | 703 | 355 | 424 | 58 | 50.5% |
 | Dryers | 167 | 95 | 111 | 12 | 56.9% |
 | Washing machines | 663 | 247 | 282 | 27 | 37.3% |
-| **Total** | **3,517** | **1,383** | **1,613** | **161** | **39.3%** |
+| **Total** | **3,518** | **1,384** | **1,614** | **161** | **39.3%** |
 
 ## Retailer Gaps On Already-Linked Products
 

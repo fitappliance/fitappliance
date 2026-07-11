@@ -159,11 +159,11 @@ test('vercel production config: current GSC 404 examples have durable redirects'
     destination: '/brands/westinghouse-fridge-clearance',
     permanent: true
   });
-  assert.deepEqual(redirects.get('/products/westinghouse-whe6874ba-ao-88474'), {
-    source: '/products/westinghouse-whe6874ba-ao-88474',
-    destination: '/brands/westinghouse-fridge-clearance',
-    permanent: true
-  });
+  assert.equal(
+    redirects.has('/products/westinghouse-whe6874ba-ao-88474'),
+    false,
+    'machine-resolved products must not retain a quarantine redirect',
+  );
 });
 
 test('vercel production config: runtime data and evidence files have bounded CDN caching', () => {

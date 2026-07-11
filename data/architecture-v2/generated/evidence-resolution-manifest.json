@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "results": [
+    {
+      "legacyRuntimeId": "ao-88474",
+      "brand": "Westinghouse",
+      "model": "WHE6874BA",
+      "plan": {
+        "caseId": "resolution_westinghouse_whe6874ba_v1",
+        "status": "evidence_collected",
+        "hypotheses": [
+          "legacy_field_is_stale",
+          "approved_scope_is_narrower_than_public_projection",
+          "exact_model_source_can_resolve_conflict"
+        ],
+        "researchTasks": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "authorityOrder": [
+              "manufacturer_product_page",
+              "manufacturer_manual",
+              "regulator",
+              "independent_market"
+            ],
+            "query": "Westinghouse WHE6874BA closed envelope.depth mm",
+            "exactModelRequired": true
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "authorityOrder": [
+              "manufacturer_product_page",
+              "manufacturer_manual",
+              "regulator",
+              "independent_market"
+            ],
+            "query": "Westinghouse WHE6874BA closed envelope.height mm",
+            "exactModelRequired": true
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "authorityOrder": [
+              "manufacturer_product_page",
+              "manufacturer_manual",
+              "regulator",
+              "independent_market"
+            ],
+            "query": "Westinghouse WHE6874BA closed envelope.width mm",
+            "exactModelRequired": true
+          },
+          {
+            "field": "flags.requiresPlumbing",
+            "authorityOrder": [
+              "manufacturer_product_page",
+              "manufacturer_manual",
+              "regulator",
+              "independent_market"
+            ],
+            "query": "Westinghouse WHE6874BA plumbed water supply required OR water connection OR ice and water installation",
+            "exactModelRequired": true
+          }
+        ],
+        "attempt": 2,
+        "maxAttempts": 3,
+        "requiresHumanReview": false
+      },
+      "decision": {
+        "caseId": "resolution_westinghouse_whe6874ba_v1",
+        "status": "resolved",
+        "terminalReason": null,
+        "approvedFields": [
+          "closedEnvelope.depthMm",
+          "closedEnvelope.heightMm",
+          "closedEnvelope.widthMm",
+          "flags.requiresPlumbing",
+          "installation.topMm",
+          "operation.doorOpenDepthMm"
+        ],
+        "values": {
+          "closedEnvelope.depthMm": 803,
+          "closedEnvelope.heightMm": 1782,
+          "closedEnvelope.widthMm": 913,
+          "flags.requiresPlumbing": true,
+          "installation.topMm": 25,
+          "operation.doorOpenDepthMm": 1189
+        },
+        "provenance": {
+          "closedEnvelope.depthMm": [
+            {
+              "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/",
+              "contentSha256": "472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650",
+              "objectPath": "evidence/web/sha256/47/2d/472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650.html",
+              "retrievedAt": "2026-07-11T14:30:00.000Z",
+              "sourceType": "official_exact_model_product_page",
+              "label": "Total depth (mm)",
+              "quote": "Total depth (mm) 803 mm"
+            }
+          ],
+          "closedEnvelope.heightMm": [
+            {
+              "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/",
+              "contentSha256": "472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650",
+              "objectPath": "evidence/web/sha256/47/2d/472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650.html",
+              "retrievedAt": "2026-07-11T14:30:00.000Z",
+              "sourceType": "official_exact_model_product_page",
+              "label": "Total height (mm)",
+              "quote": "Total height (mm) 1782 mm"
+            }
+          ],
+          "closedEnvelope.widthMm": [
+            {
+              "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/",
+              "contentSha256": "472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650",
+              "objectPath": "evidence/web/sha256/47/2d/472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650.html",
+              "retrievedAt": "2026-07-11T14:30:00.000Z",
+              "sourceType": "official_exact_model_product_page",
+              "label": "Total width (mm)",
+              "quote": "Total width (mm) 913 mm"
+            }
+          ],
+          "flags.requiresPlumbing": [
+            {
+              "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/",
+              "contentSha256": "472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650",
+              "objectPath": "evidence/web/sha256/47/2d/472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650.html",
+              "retrievedAt": "2026-07-11T14:30:00.000Z",
+              "sourceType": "official_exact_model_product_page",
+              "label": "Plumbed water supply required",
+              "quote": "Plumbed water supply required Yes"
+            }
+          ],
+          "installation.topMm": [
+            {
+              "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/",
+              "contentSha256": "472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650",
+              "objectPath": "evidence/web/sha256/47/2d/472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650.html",
+              "retrievedAt": "2026-07-11T14:30:00.000Z",
+              "sourceType": "official_exact_model_product_page",
+              "label": "Air space above cabinet (mm)",
+              "quote": "Air space above cabinet (mm) 25"
+            }
+          ],
+          "operation.doorOpenDepthMm": [
+            {
+              "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/",
+              "contentSha256": "472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650",
+              "objectPath": "evidence/web/sha256/47/2d/472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650.html",
+              "retrievedAt": "2026-07-11T14:30:00.000Z",
+              "sourceType": "official_exact_model_product_page",
+              "label": "Depth door open 90degree (mm)",
+              "quote": "Depth door open 90degree (mm) 1189"
+            }
+          ]
+        },
+        "contradictions": [],
+        "missingReleaseFields": [],
+        "publication": {
+          "release": true,
+          "stripUnapprovedLegacyFields": true
+        },
+        "requiresHumanReview": false
+      }
+    }
+  ],
+  "releasedLegacyIds": [
+    "ao-88474"
+  ],
+  "summary": {
+    "cases": 1,
+    "resolved": 1,
+    "researchRequired": 0,
+    "quarantined": 0,
+    "requiresHumanReview": 0
+  }
+}

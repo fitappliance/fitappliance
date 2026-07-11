@@ -77,6 +77,43 @@ test('technical SEO: product schema includes physical dimensions and verified ev
   assert.ok(schema.additionalProperty.some((row) => row.name === 'Evidence source' && /dimensions and clearance/.test(row.value)));
 });
 
+test('technical SEO: machine-resolved pages omit unknown clearance instead of inventing zero', () => {
+  const product = makeProduct({
+    cat: 'fridge', brand: 'Westinghouse', model: 'WHE6874BA',
+    displayName: 'Westinghouse WHE6874BA Fridge', w: 913, h: 1782, d: 803,
+    dimensions: { width_mm: 913, height_mm: 1782, depth_mm: 803, door_open_90_depth_mm: 1189 },
+    clearance_requirements: { top_mm: 25 },
+    evidence: {
+      has_pdf_evidence: false,
+      has_official_evidence: true,
+      source_url: 'https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/',
+      source_type: 'official_manufacturer_html',
+      verified_at: '2026-07-11',
+      trust_level: 'dimensions_verified',
+      v2_resolution: {
+        status: 'resolved',
+        approved_fields: [
+          'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+          'installation.topMm', 'operation.doorOpenDepthMm', 'flags.requiresPlumbing',
+        ],
+      },
+    },
+  });
+  const schema = buildProductJsonLd(product);
+  const html = buildProductPageHtml(product);
+
+  assert.equal(selectVerifiedProducts([product]).length, 1);
+  assert.equal(schema.additionalProperty.some((row) => row.name === 'Width clearance'), false);
+  assert.equal(schema.additionalProperty.some((row) => row.name === 'Rear clearance'), false);
+  assert.ok(schema.additionalProperty.some((row) => row.name === 'Top clearance' && row.value === 25));
+  assert.match(html, /<tr><th>Left<\/th><td>Unknown<\/td><\/tr>/);
+  assert.match(html, /<tr><th>Rear<\/th><td>Unknown<\/td><\/tr>/);
+  assert.doesNotMatch(html, /PDF-backed/);
+  assert.match(html, /manufacturer-backed/i);
+  assert.doesNotMatch(html, /Allow at least 913mm width, 1807mm height, and 803mm depth/);
+  assert.match(html, /Width and depth clearance remain unknown/);
+});
+
 test('technical SEO: product schema adds real Offer from captured retailer price', () => {
   const schema = buildProductJsonLd(makeProduct({
     price: null,

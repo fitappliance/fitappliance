@@ -77,10 +77,9 @@ available; it does not claim that the products are unrelated. Clearance,
 plumbing, door swing, ventilation, service space, and operational fields are
 never inherited through Tier B.
 
-The active `ao-88474` WHE6874BA row remains in publication quarantine even
-though the dimensions alias is approved. Its legacy projection still carries
-unreviewed clearance and operation fields, and its `requires_plumbing: false`
-flag conflicts with the exact target PDF's `Plumbed water supply: Yes`. The
-product can be released only after the projection consumes the approved W/H/D
-without carrying those unrelated legacy claims, or after those fields receive
-their own exact-target review.
+The active `ao-88474` WHE6874BA row was initially kept in publication quarantine
+even though the dimensions alias was approved. The autonomous evidence loop
+then found the exact Westinghouse product page, approved explicit W/H/D,
+90-degree door depth, top air space and plumbing claims, and reconstructed the
+public object from those claims. Legacy side/rear clearance and unrelated flags
+were removed, so the row is now released without broadening the Tier B alias.

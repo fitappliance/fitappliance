@@ -19,10 +19,9 @@ Last updated: 2026-07-11
 - `data/architecture-v2/generated/canonical-registry.json` contains 3,593 canonical
   products and 3,593 reversible legacy mappings across the runtime and
   evidence-page source sets. Ten rows are quarantined.
-- Nine runtime rows remain quarantined. `ao-88474` is additionally quarantined
-  in the evidence-page source set because it collides with `fridge-arf3970` on
-  Westinghouse WHE6874BA while the attached source PDF fails exact-product
-  evidence checks.
+- Eight original alias-candidate runtime rows remain quarantined. `ao-88474`
+  was released later by exact-model automated evidence resolution; it no longer
+  depends on the colliding evidence-page source for public field truth.
 - Canonical IDs are deterministic and do not depend on retailer identifiers.
 
 ## Phase 3 - Retailer observations
@@ -79,7 +78,7 @@ Last updated: 2026-07-11
 - `data/architecture-v2/generated/public-catalog-projection.json` is the V2 runtime view
   for 2,259 non-quarantined products.
 - `data/architecture-v2/generated/public-catalog-projection.json` is the only public
-  projection: 3,520 products after 21 evidence/geometry quarantine decisions.
+  projection: 3,521 products after 20 evidence/geometry quarantine decisions.
 - Product, brand, comparison and browser outputs all consume this projection;
   1,739 products currently satisfy the evidence-page publication gate.
 - Legacy IDs remain the public URL identity and each row carries its canonical

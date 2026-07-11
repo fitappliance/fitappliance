@@ -52,8 +52,9 @@ and close every pending alias disposition without weakening approval gates.
 - [x] Record each target as approved, rejected or pending-more-evidence with a
   durable investigation artifact.
 - [x] Regenerate canonical publication quarantine without silent drops. The
-  dimensions-approved WHE6874BA runtime row remains held because its legacy
-  projection still exposes unreviewed clearance, operation and plumbing fields.
+  dimensions-approved WHE6874BA runtime row was initially held because its
+  legacy projection exposed unrelated fields; the later autonomous evidence
+  loop resolved and sanitized that row without broadening alias scope.
 
 ## Phase 10E: Verification and production
 

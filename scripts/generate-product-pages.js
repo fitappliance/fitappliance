@@ -120,7 +120,23 @@ function getDimension(product, key, fallbackKey) {
 
 function getClearance(product, key) {
   const value = product?.clearance_requirements?.[key];
-  return Number.isFinite(Number(value)) ? Math.max(0, roundMm(value)) : 0;
+  if (Number.isFinite(Number(value))) return Math.max(0, roundMm(value));
+  return product?.evidence?.v2_resolution?.status === 'resolved' ? null : 0;
+}
+
+function formatMillimetres(value) {
+  return Number.isInteger(value) ? `${value}mm` : 'Unknown';
+}
+
+function sumKnown(base, ...clearances) {
+  return clearances.every(Number.isInteger)
+    ? base + clearances.reduce((sum, value) => sum + value, 0)
+    : null;
+}
+
+function reviewedFields(product) {
+  const review = product?.evidence?.v2_resolution ?? product?.evidence?.v2_review;
+  return new Set(review?.approved_fields ?? []);
 }
 
 function getEvidenceTrustLevel(product) {
@@ -133,37 +149,90 @@ function getEvidenceTrustLevel(product) {
 
 function getEvidenceTrustCopy(product) {
   const trustLevel = getEvidenceTrustLevel(product);
+  const manufacturerHtml = product?.evidence?.source_type === 'official_manufacturer_html';
+  if (!manufacturerHtml) {
+    if (trustLevel === 'verified_fit') {
+      return {
+        label: 'Verified Fit',
+        titleSuffix: 'Exact Dimensions & Verified Cavity Fit',
+        descriptionVerb: 'verified dimensions and manufacturer clearance requirements',
+        sourceProperty: 'Official PDF dimensions and clearance evidence captured by FitAppliance',
+        sourceLabel: 'Official PDF evidence',
+        faqVerification: 'Yes. FitAppliance has linked this model to PDF evidence with explicit dimensions and installation clearance data.',
+        cavityAnswerSuffix: 'once verified clearance requirements are included.'
+      };
+    }
+    if (trustLevel === 'dimensions_verified') {
+      const hasApprovedSpace = Object.keys(product?.evidence?.v2_review?.approved_space_values ?? {}).length > 0;
+      if (hasApprovedSpace) {
+        return {
+          label: 'Dimensions Verified',
+          titleSuffix: 'Exact Dimensions & Partial Space Evidence',
+          descriptionVerb: 'PDF-backed dimensions with selected manufacturer space requirements',
+          sourceProperty: 'Official PDF dimensions and selected space fields captured by FitAppliance; remaining space requirements are unknown or estimated',
+          sourceLabel: 'Official dimensions and partial space evidence',
+          faqVerification: 'Partially. FitAppliance has verified the physical dimensions and selected installation or operating-space fields from manufacturer PDF evidence. Remaining space requirements are still unknown or estimated.',
+          cavityAnswerSuffix: 'using approved fields where available and estimates for the remaining requirements.'
+        };
+      }
+      return {
+        label: 'Dimensions Verified',
+        titleSuffix: 'Exact Dimensions & Clearance Estimate',
+        descriptionVerb: 'PDF-backed dimensions with conservative clearance estimates',
+        sourceProperty: 'Official PDF dimensions evidence captured by FitAppliance; clearance is estimated until explicit installation clearance is verified',
+        sourceLabel: 'Official dimensions evidence',
+        faqVerification: 'Partially. FitAppliance has verified the physical dimensions from PDF evidence, but installation clearance is treated as an estimate until explicit clearance evidence is captured.',
+        cavityAnswerSuffix: 'using the currently recorded clearance estimate.'
+      };
+    }
+    return {
+      label: 'Retailer Spec',
+      titleSuffix: 'Retailer Dimensions',
+      descriptionVerb: 'retailer-sourced dimensions with unverified installation clearance',
+      sourceProperty: 'Retailer dimensions evidence captured by FitAppliance; installation clearance is not verified',
+      sourceLabel: 'Retailer specification evidence',
+      faqVerification: 'No. FitAppliance has retailer-sourced dimensions for this model, but it is not marked as Verified Fit because installation clearance evidence is missing.',
+      cavityAnswerSuffix: 'using unverified clearance assumptions.'
+    };
+  }
+  const evidenceAdjective = manufacturerHtml ? 'manufacturer' : 'PDF';
+  const descriptionAdjective = manufacturerHtml ? 'Manufacturer' : 'PDF';
+  const evidenceMedium = manufacturerHtml ? 'manufacturer page' : 'PDF';
+  const sourceLabel = manufacturerHtml ? 'Official manufacturer evidence' : 'Official PDF evidence';
+  const approvedFields = reviewedFields(product);
+  const hasApprovedSpace = [...approvedFields].some((field) => (
+    field.startsWith('installation.') || field.startsWith('operation.') || field.startsWith('service.')
+  ));
   if (trustLevel === 'verified_fit') {
     return {
       label: 'Verified Fit',
       titleSuffix: 'Exact Dimensions & Verified Cavity Fit',
       descriptionVerb: 'verified dimensions and manufacturer clearance requirements',
-      sourceProperty: 'Official PDF dimensions and clearance evidence captured by FitAppliance',
-      sourceLabel: 'Official PDF evidence',
-      faqVerification: 'Yes. FitAppliance has linked this model to PDF evidence with explicit dimensions and installation clearance data.',
+      sourceProperty: `Official ${evidenceAdjective} dimensions and clearance evidence captured by FitAppliance`,
+      sourceLabel,
+      faqVerification: `Yes. FitAppliance has linked this model to ${evidenceMedium} evidence with explicit dimensions and installation clearance data.`,
       cavityAnswerSuffix: 'once verified clearance requirements are included.'
     };
   }
   if (trustLevel === 'dimensions_verified') {
-    const hasApprovedSpace = Object.keys(product?.evidence?.v2_review?.approved_space_values ?? {}).length > 0;
     if (hasApprovedSpace) {
       return {
         label: 'Dimensions Verified',
         titleSuffix: 'Exact Dimensions & Partial Space Evidence',
-        descriptionVerb: 'PDF-backed dimensions with selected manufacturer space requirements',
-        sourceProperty: 'Official PDF dimensions and selected space fields captured by FitAppliance; remaining space requirements are unknown or estimated',
-        sourceLabel: 'Official dimensions and partial space evidence',
-        faqVerification: 'Partially. FitAppliance has verified the physical dimensions and selected installation or operating-space fields from manufacturer PDF evidence. Remaining space requirements are still unknown or estimated.',
+        descriptionVerb: `${descriptionAdjective}-backed dimensions with selected manufacturer space requirements`,
+        sourceProperty: `Official ${evidenceAdjective} dimensions and selected space fields captured by FitAppliance; remaining space requirements are unknown`,
+        sourceLabel: manufacturerHtml ? 'Official manufacturer dimensions and partial space evidence' : 'Official dimensions and partial space evidence',
+        faqVerification: `Partially. FitAppliance has verified the physical dimensions and selected installation or operating-space fields from ${evidenceMedium} evidence. Remaining space requirements are unknown.`,
         cavityAnswerSuffix: 'using approved fields where available and estimates for the remaining requirements.'
       };
     }
     return {
       label: 'Dimensions Verified',
       titleSuffix: 'Exact Dimensions & Clearance Estimate',
-      descriptionVerb: 'PDF-backed dimensions with conservative clearance estimates',
-      sourceProperty: 'Official PDF dimensions evidence captured by FitAppliance; clearance is estimated until explicit installation clearance is verified',
-      sourceLabel: 'Official dimensions evidence',
-      faqVerification: 'Partially. FitAppliance has verified the physical dimensions from PDF evidence, but installation clearance is treated as an estimate until explicit clearance evidence is captured.',
+      descriptionVerb: `${descriptionAdjective}-backed dimensions with conservative clearance estimates`,
+      sourceProperty: `Official ${evidenceAdjective} dimensions evidence captured by FitAppliance; clearance is unknown until explicit installation evidence is captured`,
+      sourceLabel: manufacturerHtml ? 'Official manufacturer dimensions evidence' : 'Official dimensions evidence',
+      faqVerification: `Partially. FitAppliance has verified the physical dimensions from ${evidenceMedium} evidence, but installation clearance remains unknown until explicit evidence is captured.`,
       cavityAnswerSuffix: 'using the currently recorded clearance estimate.'
     };
   }
@@ -185,7 +254,8 @@ function formatReviewDate(value) {
 }
 
 function buildV2ReviewHtml(product) {
-  const review = product?.evidence?.v2_review;
+  const isResolution = product?.evidence?.v2_resolution?.status === 'resolved';
+  const review = product?.evidence?.v2_resolution ?? product?.evidence?.v2_review;
   if (!review) return '';
   const labels = {
     'closedEnvelope.widthMm': 'width',
@@ -216,7 +286,10 @@ function buildV2ReviewHtml(product) {
     'closedEnvelope.heightMm',
     'closedEnvelope.depthMm'
   ].every((field) => approvedFields.has(field));
-  const limitation = Object.keys(spaceValues).length > 0
+  const hasApprovedSpaceFields = [...approvedFields].some((field) => (
+    field.startsWith('installation.') || field.startsWith('operation.') || field.startsWith('service.')
+  ));
+  const limitation = Object.keys(spaceValues).length > 0 || (isResolution && hasApprovedSpaceFields)
     ? 'These fields are approved individually. Verified Fit is not granted because the remaining space requirements are unknown.'
     : hasApprovedDimensions
       ? 'Installation clearance remains unapproved and is shown only as an estimate.'
@@ -224,7 +297,7 @@ function buildV2ReviewHtml(product) {
   return `\n    <section class="sku-panel" style="margin-top:24px" data-v2-evidence-review>
     <h2>Architecture V2 evidence review</h2>
     <p><strong>Approved fields:</strong> ${escHtml(approvedCopy.charAt(0).toUpperCase() + approvedCopy.slice(1))}</p>
-${approvedSpace ? `    <ul>${approvedSpace}</ul>\n` : ''}    <p><strong>Reviewed:</strong> ${escHtml(formatReviewDate(review.reviewed_at))}</p>
+${approvedSpace ? `    <ul>${approvedSpace}</ul>\n` : ''}    <p><strong>Reviewed:</strong> ${escHtml(formatReviewDate(review.reviewed_at ?? product?.evidence?.verified_at))}</p>
     <p>${escHtml(limitation)}</p>
   </section>`;
 }
@@ -232,7 +305,7 @@ ${approvedSpace ? `    <ul>${approvedSpace}</ul>\n` : ''}    <p><strong>Reviewed
 function selectVerifiedProducts(products) {
   return [...(Array.isArray(products) ? products : [])]
     .filter((product) => (
-      product?.evidence?.has_pdf_evidence === true &&
+      (product?.evidence?.has_pdf_evidence === true || product?.evidence?.has_official_evidence === true) &&
       isFinitePositive(getDimension(product, 'width_mm', 'w')) &&
       isFinitePositive(getDimension(product, 'height_mm', 'h')) &&
       isFinitePositive(getDimension(product, 'depth_mm', 'd'))
@@ -247,13 +320,34 @@ function selectVerifiedProducts(products) {
 
 function buildAdditionalProperties(product) {
   const trustCopy = getEvidenceTrustCopy(product);
+  if (product?.evidence?.v2_resolution?.status !== 'resolved') {
+    return [
+      { '@type': 'PropertyValue', name: 'Width clearance', value: `${getClearance(product, 'left_mm')}mm left, ${getClearance(product, 'right_mm')}mm right` },
+      { '@type': 'PropertyValue', name: 'Top clearance', value: getClearance(product, 'top_mm'), unitCode: 'MMT' },
+      { '@type': 'PropertyValue', name: 'Rear clearance', value: getClearance(product, 'rear_mm'), unitCode: 'MMT' },
+      { '@type': 'PropertyValue', name: 'Evidence trust level', value: trustCopy.label },
+      { '@type': 'PropertyValue', name: 'Evidence source', value: trustCopy.sourceProperty },
+      ...(product?.data_source ? [{ '@type': 'PropertyValue', name: 'Data source', value: String(product.data_source) }] : []),
+      ...(product?.evidence?.verified_at ? [{ '@type': 'PropertyValue', name: 'Verified at', value: String(product.evidence.verified_at) }] : []),
+      ...(isFinitePositive(product?.dimensions?.door_open_90_depth_mm) ? [{
+        '@type': 'PropertyValue', name: 'Door open 90 degree depth',
+        value: roundMm(product.dimensions.door_open_90_depth_mm), unitCode: 'MMT'
+      }] : [])
+    ];
+  }
+  const left = getClearance(product, 'left_mm');
+  const right = getClearance(product, 'right_mm');
+  const top = getClearance(product, 'top_mm');
+  const rear = getClearance(product, 'rear_mm');
   const properties = [
-    { '@type': 'PropertyValue', name: 'Width clearance', value: `${getClearance(product, 'left_mm')}mm left, ${getClearance(product, 'right_mm')}mm right` },
-    { '@type': 'PropertyValue', name: 'Top clearance', value: getClearance(product, 'top_mm'), unitCode: 'MMT' },
-    { '@type': 'PropertyValue', name: 'Rear clearance', value: getClearance(product, 'rear_mm'), unitCode: 'MMT' },
     { '@type': 'PropertyValue', name: 'Evidence trust level', value: trustCopy.label },
     { '@type': 'PropertyValue', name: 'Evidence source', value: trustCopy.sourceProperty }
   ];
+  if (Number.isInteger(left) && Number.isInteger(right)) {
+    properties.unshift({ '@type': 'PropertyValue', name: 'Width clearance', value: `${left}mm left, ${right}mm right` });
+  }
+  if (Number.isInteger(top)) properties.unshift({ '@type': 'PropertyValue', name: 'Top clearance', value: top, unitCode: 'MMT' });
+  if (Number.isInteger(rear)) properties.unshift({ '@type': 'PropertyValue', name: 'Rear clearance', value: rear, unitCode: 'MMT' });
 
   if (product?.data_source) {
     properties.push({ '@type': 'PropertyValue', name: 'Data source', value: String(product.data_source) });
@@ -466,9 +560,39 @@ function buildFaqJsonLd(product) {
   const width = getDimension(product, 'width_mm', 'w');
   const height = getDimension(product, 'height_mm', 'h');
   const depth = getDimension(product, 'depth_mm', 'd');
-  const requiredWidth = width + getClearance(product, 'left_mm') + getClearance(product, 'right_mm');
-  const requiredHeight = height + getClearance(product, 'top_mm');
-  const requiredDepth = depth + getClearance(product, 'rear_mm');
+  if (product?.evidence?.v2_resolution?.status !== 'resolved') {
+    const requiredWidth = width + getClearance(product, 'left_mm') + getClearance(product, 'right_mm');
+    const requiredHeight = height + getClearance(product, 'top_mm');
+    const requiredDepth = depth + getClearance(product, 'rear_mm');
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        { '@type': 'Question', name: `What are the exact dimensions of the ${name}?`, acceptedAnswer: { '@type': 'Answer', text: `${name} measures ${width}mm wide, ${height}mm high, and ${depth}mm deep.` } },
+        { '@type': 'Question', name: `What cavity size does the ${name} need?`, acceptedAnswer: { '@type': 'Answer', text: `Allow at least ${requiredWidth}mm width, ${requiredHeight}mm height, and ${requiredDepth}mm depth ${trustCopy.cavityAnswerSuffix}` } },
+        { '@type': 'Question', name: `Is the ${name} verified by FitAppliance?`, acceptedAnswer: { '@type': 'Answer', text: trustCopy.faqVerification } }
+      ]
+    };
+  }
+  const requiredWidth = sumKnown(width, getClearance(product, 'left_mm'), getClearance(product, 'right_mm'));
+  const requiredHeight = sumKnown(height, getClearance(product, 'top_mm'));
+  const requiredDepth = sumKnown(depth, getClearance(product, 'rear_mm'));
+  const knownMinimums = [
+    Number.isInteger(requiredWidth) ? `${requiredWidth}mm width` : null,
+    Number.isInteger(requiredHeight) ? `${requiredHeight}mm height` : null,
+    Number.isInteger(requiredDepth) ? `${requiredDepth}mm depth` : null,
+  ].filter(Boolean);
+  const unknownAxes = [
+    Number.isInteger(requiredWidth) ? null : 'width',
+    Number.isInteger(requiredHeight) ? null : 'height',
+    Number.isInteger(requiredDepth) ? null : 'depth',
+  ].filter(Boolean);
+  const unknownCopy = unknownAxes.length
+    ? `${unknownAxes[0].charAt(0).toUpperCase()}${unknownAxes[0].slice(1)}${unknownAxes.slice(1).map((axis) => ` and ${axis}`).join('')}`
+    : '';
+  const cavityAnswer = unknownAxes.length === 0
+    ? `Allow at least ${knownMinimums.join(', ').replace(/, ([^,]*)$/, ', and $1')} ${trustCopy.cavityAnswerSuffix}`
+    : `${knownMinimums.length ? `Known approved minimum: ${knownMinimums.join(', ')}. ` : ''}${unknownCopy} clearance remain unknown.`;
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -486,7 +610,7 @@ function buildFaqJsonLd(product) {
         name: `What cavity size does the ${name} need?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `Allow at least ${requiredWidth}mm width, ${requiredHeight}mm height, and ${requiredDepth}mm depth ${trustCopy.cavityAnswerSuffix}`
+          text: cavityAnswer
         }
       },
       {
@@ -533,9 +657,9 @@ function buildProductPageHtml(product) {
   const width = getDimension(product, 'width_mm', 'w');
   const height = getDimension(product, 'height_mm', 'h');
   const depth = getDimension(product, 'depth_mm', 'd');
-  const requiredWidth = width + getClearance(product, 'left_mm') + getClearance(product, 'right_mm');
-  const requiredHeight = height + getClearance(product, 'top_mm');
-  const requiredDepth = depth + getClearance(product, 'rear_mm');
+  const requiredWidth = sumKnown(width, getClearance(product, 'left_mm'), getClearance(product, 'right_mm'));
+  const requiredHeight = sumKnown(height, getClearance(product, 'top_mm'));
+  const requiredDepth = sumKnown(depth, getClearance(product, 'rear_mm'));
   const titleSubject = new RegExp(`\\b${category.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(name)
     ? name
     : `${name} ${category}`;
@@ -594,8 +718,8 @@ ${productSchemaScript}  <script type="application/ld+json">${safeJsonLd(buildBre
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> → <a href="${escAttr(CATEGORY_HUBS[product?.cat] ?? '/')}">${escHtml(category)} dimensions</a> → ${escHtml(name)}</nav>
     <p class="sku-kicker" data-source="catalog-final">${escHtml(product?.brand ?? '')} · ${escHtml(category)} · Model ${escHtml(product?.model ?? product?.id ?? '')}</p>
     <h1 class="sku-title">${escHtml(name)} ${escHtml(trustCopy.titleSuffix.toLowerCase())}</h1>
-    <p data-source="pdf-evidence">${escHtml(description)}</p>
-    <p data-source="pdf-evidence"><span class="sku-badge sku-badge--${escAttr(getEvidenceTrustLevel(product))}">${escHtml(trustCopy.label)}</span></p>
+    <p data-source="${product?.evidence?.v2_resolution?.status === 'resolved' ? 'evidence' : 'pdf-evidence'}">${escHtml(description)}</p>
+    <p data-source="${product?.evidence?.v2_resolution?.status === 'resolved' ? 'evidence' : 'pdf-evidence'}"><span class="sku-badge sku-badge--${escAttr(getEvidenceTrustLevel(product))}">${escHtml(trustCopy.label)}</span></p>
     <div class="sku-grid">
       <section class="sku-panel">
         <h2>Physical dimensions</h2>
@@ -612,9 +736,9 @@ ${isFinitePositive(product?.dimensions?.door_open_90_depth_mm) ? `            <t
         <h2>Minimum cavity to verify</h2>
         <table class="sku-table">
           <tbody>
-            <tr><th>Required width</th><td>${requiredWidth}mm</td></tr>
-            <tr><th>Required height</th><td>${requiredHeight}mm</td></tr>
-            <tr><th>Required depth</th><td>${requiredDepth}mm</td></tr>
+            <tr><th>Required width</th><td>${formatMillimetres(requiredWidth)}</td></tr>
+            <tr><th>Required height</th><td>${formatMillimetres(requiredHeight)}</td></tr>
+            <tr><th>Required depth</th><td>${formatMillimetres(requiredDepth)}</td></tr>
           </tbody>
         </table>
       </section>
@@ -623,10 +747,10 @@ ${isFinitePositive(product?.dimensions?.door_open_90_depth_mm) ? `            <t
       <h2>Clearance requirements</h2>
       <table class="sku-table">
         <tbody>
-          <tr><th>Left</th><td>${getClearance(product, 'left_mm')}mm</td></tr>
-          <tr><th>Right</th><td>${getClearance(product, 'right_mm')}mm</td></tr>
-          <tr><th>Top</th><td>${getClearance(product, 'top_mm')}mm</td></tr>
-          <tr><th>Rear</th><td>${getClearance(product, 'rear_mm')}mm</td></tr>
+          <tr><th>Left</th><td>${formatMillimetres(getClearance(product, 'left_mm'))}</td></tr>
+          <tr><th>Right</th><td>${formatMillimetres(getClearance(product, 'right_mm'))}</td></tr>
+          <tr><th>Top</th><td>${formatMillimetres(getClearance(product, 'top_mm'))}</td></tr>
+          <tr><th>Rear</th><td>${formatMillimetres(getClearance(product, 'rear_mm'))}</td></tr>
         </tbody>
       </table>
       <div class="sku-source">

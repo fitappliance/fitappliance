@@ -45,9 +45,14 @@ function normalizeIdentityDecisions(decisions) {
   return result;
 }
 
-export function buildCanonicalRegistry(catalog, { quarantineLegacyIds = [], identityDecisions = [] } = {}) {
+export function buildCanonicalRegistry(catalog, {
+  quarantineLegacyIds = [],
+  releasedLegacyIds = [],
+  identityDecisions = [],
+} = {}) {
   if (!catalog || !Array.isArray(catalog.products)) throw new TypeError('catalog products must be an array');
   const forced = new Set(quarantineLegacyIds.map((value) => text(value, 'quarantine legacy ID').toLowerCase()));
+  const released = new Set(releasedLegacyIds.map((value) => text(value, 'released legacy ID').toLowerCase()));
   const decisions = normalizeIdentityDecisions(identityDecisions);
   const legacyIds = new Set();
   const groups = new Map();
@@ -69,7 +74,7 @@ export function buildCanonicalRegistry(catalog, { quarantineLegacyIds = [], iden
     for (const row of rows) {
       const reasons = [];
       if (collision) reasons.push('manufacturer_identity_collision');
-      if (forced.has(row.legacyId)) reasons.push('phase1_dimension_quarantine');
+      if (forced.has(row.legacyId) && !released.has(row.legacyId)) reasons.push('phase1_dimension_quarantine');
       if (reasons.length) {
         quarantine.push({ legacyRuntimeId: row.legacyId, brand: row.product.brand, model: row.product.model, reasons });
         continue;

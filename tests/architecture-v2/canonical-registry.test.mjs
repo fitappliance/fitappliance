@@ -60,3 +60,19 @@ test('a reviewed rename decision can preserve an existing canonical ID', () => {
   assert.equal(renamed.products[0].id, initial.products[0].id);
   assert.throws(() => buildCanonicalRegistry(catalog, { identityDecisions: [{ legacyRuntimeId: 'fridge-a1', status: 'approved' }] }), /decision/i);
 });
+
+test('automated evidence resolution releases forced quarantine but never identity collisions', () => {
+  const input = { products: [
+    { id: 'fridge-release', cat: 'fridge', brand: 'A', model: 'M1' },
+    { id: 'fridge-collision-a', cat: 'fridge', brand: 'B', model: 'M2' },
+    { id: 'fridge-collision-b', cat: 'fridge', brand: 'B', model: 'M2' },
+  ] };
+  const result = buildCanonicalRegistry(input, {
+    quarantineLegacyIds: ['fridge-release', 'fridge-collision-a'],
+    releasedLegacyIds: ['fridge-release', 'fridge-collision-a'],
+  });
+
+  assert.ok(result.identifierMappings.some((row) => row.legacyRuntimeId === 'fridge-release'));
+  assert.ok(result.quarantine.some((row) => row.legacyRuntimeId === 'fridge-collision-a'));
+  assert.ok(result.quarantine.some((row) => row.legacyRuntimeId === 'fridge-collision-b'));
+});

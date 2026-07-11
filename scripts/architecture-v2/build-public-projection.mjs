@@ -8,6 +8,7 @@ import { createCategoryGeometry } from '../../src/domain/category-geometry.mjs';
 import brandCanon from '../brand-canon.js';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { buildPhase10EvidenceProjection } from '../../src/domain/phase10-evidence-review.mjs';
+import { applyResolutionToProduct } from '../../src/domain/evidence-resolution-loop.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
 const registry = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'canonicalRegistry'), 'utf8'));
@@ -16,16 +17,25 @@ const reviewBundles = JSON.parse(await readFile(resolveArchitectureV2Path(root, 
 const reviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'dimensionReviewManifest'), 'utf8'));
 const spaceReviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'spaceReviewManifest'), 'utf8'));
 const phase10ReviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'phase10ReviewManifest'), 'utf8'));
+const resolutionManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'evidenceResolutionManifest'), 'utf8'));
 const pilotEvidence = buildPilotEvidenceProjection(applyEvidencePilotReview({ bundles: reviewBundles.bundles, manifest: reviewManifest }));
 for (const [id, review] of buildPhase10EvidenceProjection(phase10ReviewManifest.outcomes)) pilotEvidence.set(id, review);
 const spaceEvidence = buildSpaceEvidenceProjection(spaceReviewManifest.results);
 const canonicalByLegacy = new Map(registry.identifierMappings.map((row) => [row.legacyRuntimeId, row.canonicalProductId]));
 const quarantined = new Set(registry.quarantine.map((row) => row.legacyRuntimeId));
+const resolutionByLegacy = new Map(resolutionManifest.results.map((row) => [row.legacyRuntimeId, row.decision]));
 const filtered = {
   ...catalog,
   products: catalog.products
     .filter((row) => !quarantined.has(String(row.id).toLowerCase()))
     .map((row) => {
+      const resolution = resolutionByLegacy.get(String(row.id).toLowerCase());
+      if (resolution?.status === 'resolved' && resolution?.publication?.release === true) {
+        return {
+          ...applyResolutionToProduct(row, resolution),
+          brand: brandCanon.canonicalizeBrand(row.brand),
+        };
+      }
       const canonicalProductId = canonicalByLegacy.get(String(row.id).toLowerCase());
       const review = pilotEvidence.get(canonicalProductId);
       if (!review) return { ...row, brand: brandCanon.canonicalizeBrand(row.brand) };

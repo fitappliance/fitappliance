@@ -14,8 +14,10 @@ export const architectureV2Paths = Object.freeze({
   phase10AcquisitionInput: `${base}/reviews/phase-10/evidence-acquisition-input.json`,
   phase10ReviewInput: `${base}/reviews/phase-10/evidence-review-input.json`,
   phase10AliasEvidenceObjects: `${base}/reviews/phase-10/alias-evidence-objects.json`,
+  evidenceResolutionInput: `${base}/reviews/automated/evidence-resolution-cases.json`,
   retailerObservations: `${base}/observations/retailer-observations.json`,
   canonicalRegistry: `${base}/generated/canonical-registry.json`,
+  evidenceResolutionManifest: `${base}/generated/evidence-resolution-manifest.json`,
   evidenceObjectIndex: `${base}/generated/evidence-object-index.json`,
   evidenceReviewBundles: `${base}/generated/evidence-review-bundles.json`,
   dimensionReviewManifest: `${base}/generated/evidence-pilot-review-manifest.json`,
@@ -30,7 +32,8 @@ export const architectureV2Paths = Object.freeze({
 });
 
 export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
-  canonicalRegistry: Object.freeze([]),
+  evidenceResolutionManifest: Object.freeze([]),
+  canonicalRegistry: Object.freeze(['evidenceResolutionManifest']),
   phase10EvidenceBatch: Object.freeze([]),
   phase10Acquisition: Object.freeze(['phase10EvidenceBatch']),
   evidenceReviewBundles: Object.freeze(['canonicalRegistry']),

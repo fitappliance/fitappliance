@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "id": "resolution_westinghouse_whe6874ba_v1",
+      "legacyRuntimeId": "ao-88474",
+      "brand": "Westinghouse",
+      "model": "WHE6874BA",
+      "initialFailure": {
+        "code": "approved_scope_conflicts_with_legacy_projection",
+        "conflictingFields": [
+          "flags.requiresPlumbing"
+        ],
+        "detail": "Dimensions-only alias approval conflicted with unrelated legacy clearance, operation, and plumbing fields."
+      },
+      "attempt": 2,
+      "maxAttempts": 3,
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_product_page",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/",
+          "retrievedAt": "2026-07-11T14:30:00.000Z",
+          "contentSha256": "472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650",
+          "objectPath": "evidence/web/sha256/47/2d/472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650.html",
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WHE6874BA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": 913,
+              "unit": "mm",
+              "label": "Total width (mm)",
+              "quote": "Total width (mm) 913 mm"
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": 1782,
+              "unit": "mm",
+              "label": "Total height (mm)",
+              "quote": "Total height (mm) 1782 mm"
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": 803,
+              "unit": "mm",
+              "label": "Total depth (mm)",
+              "quote": "Total depth (mm) 803 mm"
+            },
+            {
+              "field": "operation.doorOpenDepthMm",
+              "value": 1189,
+              "unit": "mm",
+              "label": "Depth door open 90degree (mm)",
+              "quote": "Depth door open 90degree (mm) 1189"
+            },
+            {
+              "field": "installation.topMm",
+              "value": 25,
+              "unit": "mm",
+              "label": "Air space above cabinet (mm)",
+              "quote": "Air space above cabinet (mm) 25"
+            },
+            {
+              "field": "flags.requiresPlumbing",
+              "value": true,
+              "unit": "boolean",
+              "label": "Plumbed water supply required",
+              "quote": "Plumbed water supply required Yes"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

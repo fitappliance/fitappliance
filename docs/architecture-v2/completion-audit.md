@@ -29,7 +29,7 @@ place until the Phase 10 atomic storage-normalisation migration.
 | 6 | Legacy width parity | Complete | Historical parity evidence retained; browser/domain FitDecision contract is tested directly |
 | 6 | Production FitDecision cutover | Complete | Browser results expose explicit V2 outcomes and reject `NO_FIT` |
 | 6 | Mobile/desktop browser QA | Complete | Deployed desktop, zero-result and 390x844 mobile flows passed with zero final console errors |
-| 7 | Stable public projection | Complete | Production marker reports one 3,520-product V2 projection; 21 invalid/ambiguous rows are quarantined |
+| 7 | Stable public projection | Complete | Current build reports one 3,521-product V2 projection; 20 invalid/ambiguous rows are quarantined |
 | 7 | All generators/browser use canonical view | Complete | Browser, category, product, retailer and audit jobs use the same projection |
 | 7 | Legacy deletion | Complete | Snapshot, selector, dual projection and runtime switch removed with owner approval; historical mappings retained |
 
@@ -44,7 +44,8 @@ place until the Phase 10 atomic storage-normalisation migration.
 ## Phase 7 production evidence
 
 - Deployment commit: `7381c96d`.
-- Marker: schema 2, V2 active, 3,520 products, no rollback projection.
+- Historical Phase 7 marker: schema 2, V2 active, 3,520 products, no rollback
+  projection. The current automated-resolution build contains 3,521 products.
 - Desktop: 900 x 1900 x 800 fridge search returned 27 results with zero
   browser console errors.
 - Mobile: 390 x 844 viewport returned results with no horizontal overflow.

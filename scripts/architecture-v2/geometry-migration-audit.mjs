@@ -3,16 +3,19 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { migrateGeometry, auditImpossibleGeometry } from '../../src/domain/geometry-migration.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
+import { buildResolutionFieldEvidence } from '../../src/domain/evidence-resolution-loop.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
 const catalog = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'publicProjection'), 'utf8'));
 const sourceRegistry = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'sourceDocuments'), 'utf8'));
+const resolutionManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'evidenceResolutionManifest'), 'utf8'));
 const approvedEvidence = sourceRegistry.documents
   .filter((document) => document.state === 'approved')
   .flatMap((document) => document.productLinks.flatMap((link) => document.fields.map((field) => ({
     legacyRuntimeId: link.legacyRuntimeId, field: field.field, value: field.value,
     unit: field.unit, status: 'approved', sourceDocumentId: document.id,
-  }))));
+  }))))
+  .concat(buildResolutionFieldEvidence(resolutionManifest));
 const evidenceByLegacy = new Map();
 for (const evidence of approvedEvidence) {
   if (!evidenceByLegacy.has(evidence.legacyRuntimeId)) evidenceByLegacy.set(evidence.legacyRuntimeId, []);

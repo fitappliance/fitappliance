@@ -59,10 +59,11 @@ runtime remains fail-closed where evidence does not support fit claims.
   generation evidence with a conflicting envelope.
 - Rejected records have a reviewer, date, and rationale. Registry/disposition
   drift is now a failing audit.
-- `ao-88474` WHE6874BA remains in publication quarantine: its legacy projection
-  still carries unreviewed clearance/operation claims and a plumbing flag that
-  conflicts with the exact target PDF. Dimensions-only approval does not
-  release unrelated fields.
+- At the initial Phase 10 closeout, `ao-88474` remained in publication
+  quarantine because its dimensions-only approval could not release unrelated
+  legacy fields. The subsequent automated-resolution loop found the exact
+  manufacturer page, approved W/H/D, 90-degree door depth, top air space and
+  plumbing, stripped all other legacy fit fields, and released the product.
 
 ## Verification
 
@@ -85,22 +86,23 @@ runtime remains fail-closed where evidence does not support fit claims.
 - Production Sentinel: 30 uptime checks with 0 failures, 28,676 links with 0
   broken links, 2,331 pages with 0 orphans.
 - Production browser verification passed on the homepage and Bosch KFD96AXEAA
-  evidence page with no console errors or horizontal overflow. The quarantined
-  WHE6874BA product URL redirects to its Westinghouse brand page.
+  evidence page with no console errors or horizontal overflow. WHE6874BA was
+  still redirected at this historical closeout; that redirect is removed by
+  the subsequent automated-resolution change.
 
 ## Residual risks
 
 - Dimension-axis audit still reports 17 blockers in raw evidence and 32 shape
   warnings. It reports zero `catalog-final` drift blockers; no automatic axis
   swap was performed.
-- 3,507 of 3,520 canonical products still lack approved installation-space
+- 3,507 of 3,521 canonical products still lack approved installation-space
   evidence.
 - 1,956 of 2,005 source documents remain quarantined under current V2
   provenance rules.
 - The two no-source and two identity-quarantined Phase 10 products require new
   manufacturer evidence before promotion.
-- WHE6874BA remains held until projection-level field isolation or exact-target
-  review resolves its non-dimension fields.
+- Automated evidence resolution is fail-closed: unresolved or contradictory
+  cases remain quarantined after the configured search-attempt limit.
 
 ## Commits
 
