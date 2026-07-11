@@ -138,6 +138,7 @@ export function buildPilotEvidenceProjection(results) {
       trustLevel: complete ? 'dimensions_verified' : 'retailer_spec',
       reviewStatus,
       approvedFields,
+      values: Object.fromEntries(rows.filter((row) => row.status === 'approved').map((row) => [row.field, row.value])),
       clearanceVerified: false,
       reviewedAt: rows[0]?.reviewedAt ?? null,
       sourceDocumentId: rows[0]?.sourceDocumentId ?? null,

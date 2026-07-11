@@ -253,6 +253,37 @@ test('technical SEO: product page exposes V2 field review without claiming clear
   assert.doesNotMatch(html, /Clearance approved/);
 });
 
+test('technical SEO: product page separates approved installation and operation facts from unknown fit fields', () => {
+  const html = buildProductPageHtml(makeProduct({
+    evidence: {
+      has_pdf_evidence: true,
+      trust_level: 'dimensions_verified',
+      verified_fields: ['dimensions'],
+      clearance_verified: false,
+      v2_review: {
+        status: 'space_partially_approved',
+        reviewed_at: '2026-07-11',
+        approved_fields: [
+          'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+          'installation.leftMm', 'installation.rightMm', 'installation.rearMm',
+          'operation.doorOpenDepthMm',
+        ],
+        approved_space_values: {
+          'installation.leftMm': 20,
+          'installation.rightMm': 20,
+          'installation.rearMm': 100,
+          'operation.doorOpenDepthMm': 1135,
+        },
+      },
+    },
+  }));
+  assert.match(html, /Left installation clearance: 20 mm/);
+  assert.match(html, /Rear installation clearance: 100 mm/);
+  assert.match(html, /Door-open total depth: 1135 mm/);
+  assert.match(html, /remaining space requirements are unknown/i);
+  assert.doesNotMatch(html, />Verified Fit</);
+});
+
 test('technical SEO: generated product pages include only PDF-verified SKUs', async () => {
   const rootDir = await fs.mkdtemp(path.join(os.tmpdir(), 'fitappliance-product-pages-'));
   await fs.mkdir(path.join(rootDir, 'data', 'architecture-v2'), { recursive: true });

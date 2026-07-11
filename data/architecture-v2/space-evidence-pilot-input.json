@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex PDF visual review",
+  "reviewedAt": "2026-07-11",
+  "parserVersion": "pdftotext-26.06.0",
+  "reviews": [
+    {
+      "legacyRuntimeId": "ao-92114",
+      "documentSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+      "pageCount": 3,
+      "fields": [
+        { "field": "installation.rearMm", "value": 30, "page": 2, "quote": "Minimum air clearance - at rear 30 mm", "semanticBasis": "explicit_axis_label" },
+        { "field": "installation.leftMm", "value": 20, "page": 2, "quote": "Minimum air clearance - each side 20 mm", "semanticBasis": "explicit_each_side_label" },
+        { "field": "installation.rightMm", "value": 20, "page": 2, "quote": "Minimum air clearance - each side 20 mm", "semanticBasis": "explicit_each_side_label" },
+        { "field": "installation.topMm", "value": 20, "page": 2, "quote": "Minimum air clearance - on top 20 mm", "semanticBasis": "explicit_axis_label" }
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3512",
+      "documentSha256": "6c9b8413e7027756b02248f0ff847320958cf0369fb67b9ce3819d55e2521f94",
+      "pageCount": 2,
+      "fields": [
+        { "field": "installation.leftMm", "value": 50, "page": 1, "quote": "Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm", "semanticBasis": "explicit_sides_label" },
+        { "field": "installation.rightMm", "value": 50, "page": 1, "quote": "Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm", "semanticBasis": "explicit_sides_label" },
+        { "field": "installation.rearMm", "value": 50, "page": 1, "quote": "Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm", "semanticBasis": "explicit_axis_label" },
+        { "field": "installation.topMm", "value": 100, "page": 1, "quote": "Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm", "semanticBasis": "explicit_axis_label" }
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3453",
+      "documentSha256": "ff9c1735a4871bc809e0baa42ee366d5780e298a6dedad0ca17dd6ef01e8d667",
+      "pageCount": 2,
+      "fields": [
+        { "field": "installation.leftMm", "value": 50, "page": 1, "quote": "Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm", "semanticBasis": "explicit_sides_label" },
+        { "field": "installation.rightMm", "value": 50, "page": 1, "quote": "Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm", "semanticBasis": "explicit_sides_label" },
+        { "field": "installation.rearMm", "value": 50, "page": 1, "quote": "Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm", "semanticBasis": "explicit_axis_label" },
+        { "field": "installation.topMm", "value": 100, "page": 1, "quote": "Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm", "semanticBasis": "explicit_axis_label" }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-lg-dvh5-08w",
+      "documentSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
+      "pageCount": 48,
+      "fields": [
+        { "field": "installation.topMm", "value": 20, "page": 11, "quote": "a clearance of approximately 20 mm is left between the top of the appliance and the underside of any work-top", "semanticBasis": "explicit_axis_label" },
+        { "field": "operation.doorOpenDepthMm", "value": 1115, "page": 10, "quote": "Dimension(mm): D'' 1115", "semanticBasis": "labelled_door_open_diagram" }
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-washing-machine-lg-wv9-1412w",
+      "documentSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
+      "pageCount": 48,
+      "fields": [
+        { "field": "installation.leftMm", "value": 20, "page": 13, "quote": "allow minimum clearances of at least 20 mm at the sides and 100 mm behind the appliance", "semanticBasis": "explicit_sides_label" },
+        { "field": "installation.rightMm", "value": 20, "page": 13, "quote": "allow minimum clearances of at least 20 mm at the sides and 100 mm behind the appliance", "semanticBasis": "explicit_sides_label" },
+        { "field": "installation.rearMm", "value": 100, "page": 13, "quote": "allow minimum clearances of at least 20 mm at the sides and 100 mm behind the appliance", "semanticBasis": "explicit_axis_label" },
+        { "field": "operation.doorOpenDepthMm", "value": 1135, "page": 12, "quote": "WV9-1412W / WV9-1412B Dimension(mm): D'' 1135", "semanticBasis": "labelled_door_open_diagram" }
+      ]
+    },
+    { "legacyRuntimeId": "dryer-acd0788", "documentSha256": "8a7e470a1a7346035ac67ca27ab693732cf5b3c56aa58b29ee0c623a211a585d", "pageCount": 7, "fields": [], "noCandidateReason": "no_explicit_numeric_installation_or_operation_space" },
+    { "legacyRuntimeId": "dryer-acd0789", "documentSha256": "858bcfe2625fee4321045b82065d2805ea4a43b5fddf2948ffe51a4de7acbbb8", "pageCount": 7, "fields": [], "noCandidateReason": "no_explicit_numeric_installation_or_operation_space" },
+    { "legacyRuntimeId": "ao-110216", "documentSha256": "bb4765aed8b51db365365a2352cbf797538c662442e1400ca6d38b19feacd1f5", "pageCount": 6, "fields": [], "noCandidateReason": "no_explicit_numeric_installation_or_operation_space" },
+    { "legacyRuntimeId": "washing_machine-acw1469", "documentSha256": "2ac969549bd7c5e18b6d65d72c95566b044a459ad371318299b1655db17f0fdf", "pageCount": 8, "fields": [], "noCandidateReason": "no_explicit_numeric_installation_or_operation_space" },
+    { "legacyRuntimeId": "washing_machine-acw1319", "documentSha256": "1282141354ddd0d1d197d847a03ce9b4e99e256ee7bcb18c1a38b1c965eb0605", "pageCount": 2, "fields": [], "noCandidateReason": "no_explicit_numeric_installation_or_operation_space" }
+  ]
+}

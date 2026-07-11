@@ -1,6 +1,6 @@
 # Architecture V2 Completion Audit
 
-Status: Phase 1-7 remediation complete; Phase 7 production verified
+Status: Phase 1-7 remediation complete; Phase 8 production verified; Phase 9 local verification complete
 Last audited: 2026-07-11
 
 This document is the requirement-by-requirement truth source. A green unit test
@@ -20,8 +20,8 @@ also exists.
 | 4 | Migrate legacy approvals | Pilot complete | 10 approved, 3 reviewed and 1,992 quarantined documents after the first 20-model field review |
 | 4 | Replace brand-specific resolver entry points | Complete at shared gate | All batch resolver results pass through the common source-result contract; brand discovery remains adapter-specific |
 | 5 | Category/form-factor geometry contracts | Complete | Installation, operation, service and delivery are separate; top/front opening and WashTower contracts differ |
-| 5 | Approved clearance migration | Complete but empty | Evidence-only migrator ran; 0/3,520 products have V2-approved installation evidence |
-| 5 | Full semantic parity | Partial | Impossible-value audit is clean; operation/service/delivery parity awaits approved data |
+| 5 | Approved clearance migration | Pilot complete | Five products have partial V2 space evidence: 16 installation and 2 operation fields; unknown fields remain null |
+| 5 | Full semantic parity | Partial | Impossible-value audit is clean; only two operation fields and no service/delivery fields are approved |
 | 6 | Legacy width parity | Complete | Historical parity evidence retained; browser/domain FitDecision contract is tested directly |
 | 6 | Production FitDecision cutover | Complete | Browser results expose explicit V2 outcomes and reject `NO_FIT` |
 | 6 | Mobile/desktop browser QA | Complete | Deployed desktop, zero-result and 390x844 mobile flows passed with zero final console errors |
@@ -31,7 +31,7 @@ also exists.
 
 ## Current hard gates
 
-1. V2 cannot claim Verified Fit from the Phase 8 pilot because its ten approved documents cover dimensions only and no installation-clearance field is approved.
+1. V2 cannot claim Verified Fit from the current pilot: five products have partial space evidence, but required installation, operation or service fields remain unknown.
 2. Legacy resolver deletion is unsafe until every active manufacturer adapter
    is routed through the common document contract.
 3. Automated public retailer collection remains disabled where terms/path
@@ -56,3 +56,11 @@ dimension fields, 36 approvals, 24 quarantines, ten complete dimensions-only
 documents and zero approved installation-clearance fields. The detailed sample
 decisions and production checks are recorded in
 [`phase8-evidence-pilot-report.md`](./phase8-evidence-pilot-report.md).
+
+## Phase 9 space evidence pilot
+
+Ten complete-dimension documents were audited for installation, operation and
+service space. Five models produced 18 approved fields; five produced explicit
+no-candidate outcomes. The public projection now contains `geometry_v2` with
+unknowns preserved as `null`, and no V2 product was promoted to Verified Fit.
+See [`phase9-space-evidence-pilot-report.md`](./phase9-space-evidence-pilot-report.md).

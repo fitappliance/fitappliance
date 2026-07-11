@@ -145,6 +145,18 @@ function getEvidenceTrustCopy(product) {
     };
   }
   if (trustLevel === 'dimensions_verified') {
+    const hasApprovedSpace = Object.keys(product?.evidence?.v2_review?.approved_space_values ?? {}).length > 0;
+    if (hasApprovedSpace) {
+      return {
+        label: 'Dimensions Verified',
+        titleSuffix: 'Exact Dimensions & Partial Space Evidence',
+        descriptionVerb: 'PDF-backed dimensions with selected manufacturer space requirements',
+        sourceProperty: 'Official PDF dimensions and selected space fields captured by FitAppliance; remaining space requirements are unknown or estimated',
+        sourceLabel: 'Official dimensions and partial space evidence',
+        faqVerification: 'Partially. FitAppliance has verified the physical dimensions and selected installation or operating-space fields from manufacturer PDF evidence. Remaining space requirements are still unknown or estimated.',
+        cavityAnswerSuffix: 'using approved fields where available and estimates for the remaining requirements.'
+      };
+    }
     return {
       label: 'Dimensions Verified',
       titleSuffix: 'Exact Dimensions & Clearance Estimate',
@@ -179,16 +191,34 @@ function buildV2ReviewHtml(product) {
     'closedEnvelope.widthMm': 'width',
     'closedEnvelope.heightMm': 'height',
     'closedEnvelope.depthMm': 'depth',
+    'installation.leftMm': 'left installation clearance',
+    'installation.rightMm': 'right installation clearance',
+    'installation.topMm': 'top installation clearance',
+    'installation.rearMm': 'rear installation clearance',
+    'installation.frontMm': 'front installation clearance',
+    'operation.doorOpenDepthMm': 'door-open total depth',
+    'operation.hingeSideSpaceMm': 'hinge-side operating space',
+    'operation.lidOpenHeightMm': 'lid-open total height',
+    'service.plumbingRearMm': 'rear plumbing space',
+    'service.rearServicesMm': 'rear service space',
+    'service.rearVentilationMm': 'rear ventilation space',
   };
   const approved = (review.approved_fields ?? []).map((field) => labels[field] ?? field);
   const approvedCopy = approved.length ? approved.join(', ') : 'No physical dimensions';
-  const limitation = review.status === 'dimensions_approved'
-    ? 'Installation clearance remains unapproved and is shown only as an estimate.'
-    : 'The document did not pass the complete three-axis identity and field review gate.';
+  const spaceValues = review.approved_space_values ?? {};
+  const approvedSpace = Object.entries(spaceValues).map(([field, value]) => {
+    const label = labels[field] ?? field;
+    return `<li>${escHtml(`${label.charAt(0).toUpperCase()}${label.slice(1)}: ${value} mm`)}</li>`;
+  }).join('');
+  const limitation = review.status === 'space_partially_approved'
+    ? 'These fields are approved individually. Verified Fit is not granted because the remaining space requirements are unknown.'
+    : review.status === 'dimensions_approved'
+      ? 'Installation clearance remains unapproved and is shown only as an estimate.'
+      : 'The document did not pass the complete three-axis identity and field review gate.';
   return `\n    <section class="sku-panel" style="margin-top:24px" data-v2-evidence-review>
     <h2>Architecture V2 evidence review</h2>
     <p><strong>Approved fields:</strong> ${escHtml(approvedCopy.charAt(0).toUpperCase() + approvedCopy.slice(1))}</p>
-    <p><strong>Reviewed:</strong> ${escHtml(formatReviewDate(review.reviewed_at))}</p>
+${approvedSpace ? `    <ul>${approvedSpace}</ul>\n` : ''}    <p><strong>Reviewed:</strong> ${escHtml(formatReviewDate(review.reviewed_at))}</p>
     <p>${escHtml(limitation)}</p>
   </section>`;
 }

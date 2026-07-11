@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { applyEvidencePilotReview, buildPilotEvidenceProjection } from '../../src/domain/evidence-review.mjs';
+import { evaluateFit } from '../../src/domain/fit-decision.mjs';
 
 const bundles = JSON.parse(fs.readFileSync('data/architecture-v2/evidence-review-bundles.json', 'utf8')).bundles;
 const manifest = JSON.parse(fs.readFileSync('data/architecture-v2/evidence-pilot-review-manifest.json', 'utf8'));
@@ -44,4 +45,30 @@ test('source-document registry imports pilot lifecycle outcomes', () => {
   assert.equal(documents.filter((row) => row.state === 'reviewed').length, 3);
   assert.equal(documents.filter((row) => row.state === 'quarantined').length, 7);
   assert.ok(documents.filter((row) => row.state === 'approved').every((row) => /^[a-f0-9]{64}$/.test(row.sha256)));
+});
+
+test('Phase 9 space facts reach source documents and public geometry without inventing unknowns', () => {
+  const registry = JSON.parse(fs.readFileSync('data/architecture-v2/source-documents.json', 'utf8'));
+  const document = registry.documents.find((row) => row.id === 'doc_06e6f7a227e50660c2073cbd');
+  assert.equal(document.fields.find((row) => row.field === 'installation.rearMm')?.value, 30);
+  assert.equal(document.fields.find((row) => row.field === 'installation.frontMm'), undefined);
+
+  const projection = JSON.parse(fs.readFileSync('data/architecture-v2/public-catalog-projection.json', 'utf8'));
+  const product = projection.products.find((row) => row.id === 'ao-92114');
+  assert.equal(product.geometry_v2.installation.rearMm, 30);
+  assert.equal(product.geometry_v2.installation.frontMm, null);
+  assert.equal(product.geometry_v2.operation.doorOpenDepthMm, null);
+  assert.equal(product.evidence.trust_level, 'dimensions_verified');
+  assert.equal(product.evidence.clearance_verified, false);
+
+  const decision = evaluateFit({
+    geometry: product.geometry_v2,
+    cavity: { widthMm: 1000, heightMm: 1900, depthMm: 800 },
+    evidenceLevel: 'dimensions',
+    advisoryChecks: [],
+  });
+  assert.equal(decision.outcome, 'INSUFFICIENT_DATA');
+  assert.equal(decision.checks.find((row) => row.id === 'installation_width').status, 'PASS');
+  assert.equal(decision.checks.find((row) => row.id === 'installation_height').status, 'PASS');
+  assert.equal(decision.checks.find((row) => row.id === 'installation_depth').status, 'UNKNOWN');
 });

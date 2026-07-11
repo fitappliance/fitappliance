@@ -4,12 +4,14 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { createSourceDocument } from '../../src/domain/source-document.mjs';
 import { applyEvidencePilotReview } from '../../src/domain/evidence-review.mjs';
+import { classifyTransportHost } from '../../src/domain/source-provenance.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
 const manual = JSON.parse(await readFile(resolve(root, 'data/manual-evidence.json'), 'utf8'));
 const canonical = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/canonical-registry.json'), 'utf8'));
 const reviewBundles = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/evidence-review-bundles.json'), 'utf8'));
 const reviewManifest = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/evidence-pilot-review-manifest.json'), 'utf8'));
+const spaceReviewManifest = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/space-evidence-pilot-review-manifest.json'), 'utf8'));
 const canonicalByLegacy = new Map(canonical.identifierMappings.map((row) => [row.legacyRuntimeId, row.canonicalProductId]));
 let documents = [];
 for (const [legacyId, product] of Object.entries(manual.products ?? {})) {
@@ -30,7 +32,7 @@ for (const [legacyId, product] of Object.entries(manual.products ?? {})) {
       id: `doc_${createHash('sha256').update(seed).digest('hex').slice(0, 24)}`,
       sourceUrl: evidence.source_url, finalUrl: evidence.source_url,
       authorType: manufacturer ? 'manufacturer' : 'unknown',
-      transportHostType: manufacturer ? 'manufacturer' : /appliancesonline|thegoodguys|harveynorman/i.test(evidence.source_url) ? 'retailer' : 'unknown',
+      transportHostType: classifyTransportHost(evidence.source_url),
       contentType: 'application/pdf', retrievedAt: evidence.verified_at ? `${String(evidence.verified_at).slice(0, 10)}T00:00:00.000Z` : null,
       sha256: evidence.sha256 ?? null, pageCount: null, parserVersion: 'legacy-manual-evidence-v1',
       identityOutcome, fields, state: 'quarantined', history: [],
@@ -43,6 +45,7 @@ const reviewResults = applyEvidencePilotReview({ bundles: reviewBundles.bundles,
 const manifestByLegacy = new Map(reviewManifest.reviews.map((row) => [row.legacyRuntimeId, row]));
 const bundleByDocument = new Map(reviewBundles.bundles.map((row) => [row.sourceDocument.id, row]));
 const resultsByDocument = Map.groupBy(reviewResults, (row) => row.sourceDocumentId);
+const spaceResultsByDocument = Map.groupBy(spaceReviewManifest.results, (row) => row.sourceDocumentId);
 documents = documents.map((document) => {
   const results = resultsByDocument.get(document.id);
   if (!results) return document;
@@ -54,13 +57,15 @@ documents = documents.map((document) => {
     'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
   ].every((field) => approvedNames.has(field));
   const state = completeDimensions ? 'approved' : approved.length ? 'reviewed' : 'quarantined';
+  const spaceResults = spaceResultsByDocument.get(document.id) ?? [];
   return createSourceDocument({
     ...document,
     ...review.document,
-    fields: results.map((row) => ({
+    fields: [...results, ...spaceResults].map((row) => ({
       field: row.field, value: row.value, unit: row.unit, page: row.page,
       quote: row.quote, status: row.status, reason: row.reason,
       reviewer: row.reviewer, reviewedAt: row.reviewedAt,
+      ...(row.semanticBasis ? { semanticBasis: row.semanticBasis } : {}),
     })),
     state,
     history: [{ from: 'legacy_quarantined', to: 'reviewed', reviewedAt: reviewManifest.reviewedAt }],

@@ -11,6 +11,13 @@ test('common PDF source result contract classifies official manufacturer transpo
   });
   assert.equal(result.transportHostType, 'manufacturer');
   assert.equal(result.documentAuthorType, 'manufacturer');
+
+  const lg = validateSourceResult({
+    sourceUrl: 'https://gscs-b2c.lge.com/open/downloadFile?fileId=1',
+    source: 'lg-official-owner_manual', target: { brand: 'LG', sku: 'WV9-1412W' },
+  });
+  assert.equal(lg.transportHostType, 'manufacturer');
+  assert.equal(lg.documentAuthorType, 'manufacturer');
 });
 
 test('retailer transport cannot be promoted by an official-looking source label', () => {

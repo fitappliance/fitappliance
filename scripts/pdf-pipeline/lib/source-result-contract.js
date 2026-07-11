@@ -9,8 +9,8 @@ const RETAILER_HOSTS = new Set([
 ]);
 
 const MANUFACTURER_HOST_SUFFIXES = [
-  'electrolux.com.au', 'fisherpaykel.com', 'samsung.com', 'lg.com', 'hisense.com',
-  'haier.com', 'chiq.com.au', 'midea.com', 'miele.com.au', 'kogan.com', 'liebherr.com',
+  'electrolux.com.au', 'fisherpaykel.com', 'samsung.com', 'lg.com', 'lge.com', 'hisense.com',
+  'haier.com', 'haier.com.au', 'chiq.com.au', 'midea.com', 'miele.com.au', 'kogan.com', 'liebherr.com',
   'robinhood.com.au', 'robinhood.co.nz', 'omegaappliances.com.au', 'subzero-wolf.com',
   'artusi.com.au', 'beko.com', 'inalto.house', 'vogue-appliances.com'
 ];
