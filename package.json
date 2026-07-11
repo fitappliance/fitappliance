@@ -11,6 +11,7 @@
     "test": "node --test tests/*.test.mjs tests/pdf-pipeline/*.test.mjs",
     "test:architecture-v2": "node --test tests/architecture-v2/*.test.mjs",
     "audit:architecture-v2": "node scripts/architecture-v2/shadow-audit.mjs",
+    "audit:model-aliases": "node scripts/architecture-v2/audit-model-aliases.mjs",
     "sync": "node scripts/sync.js && node scripts/apply-verified-catalog-overrides.js && node scripts/split-appliances.js",
     "sync-verify": "npm run sync && npm run generate-comparisons && npm run verify-compare-quality",
     "split-data": "node scripts/split-appliances.js",

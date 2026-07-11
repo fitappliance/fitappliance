@@ -6,6 +6,7 @@ import {
   createFieldEvidence,
   evidenceLevel,
 } from '../../src/domain/evidence.mjs';
+import { createAliasRegistry } from '../../src/domain/model-alias.mjs';
 
 const approvedFixture = {
   id: 'ev_width_001',
@@ -80,21 +81,71 @@ test('approval gate also validates the field fact rather than provenance alone',
   assert.ok(result.reasons.includes('missing_source_document_id'));
 });
 
-test('accepts an alias identity only when the alias mapping was explicitly approved', () => {
-  const unapproved = canApproveEvidence({
-    ...approvedFixture,
-    identityMatch: 'alias',
-    aliasApproved: false,
-  });
-  const approved = canApproveEvidence({
+test('accepts alias evidence only when its exact field is approved by the registry', () => {
+  const aliasRecord = {
+    id: 'alias_fp_rf505_v1',
+    brand: 'Fisher & Paykel',
+    target_model: 'RF505ANUX1',
+    source_model: 'RF505AUX1',
+    status: 'approved',
+    identity_scope: 'manufacturer_model',
+    candidate_fields: ['closedEnvelope.widthMm'],
+    approved_fields: ['closedEnvelope.widthMm'],
+    evidence: [{
+      source_url: 'https://www.fisherpaykel.com/variant-guide.pdf',
+      document_sha256: 'b'.repeat(64),
+      page: 1,
+      quote: 'RF505ANUX1 and RF505AUX1 share overall width.',
+      document_author_type: 'manufacturer',
+      transport_host_type: 'manufacturer',
+    }],
+    decision: { reviewer: 'Jagger Zhang', reviewed_at: '2026-07-11', rationale: 'Explicit manufacturer mapping.' },
+    supersedes: null,
+  };
+  const aliasRegistry = createAliasRegistry({ schema_version: 1, last_updated: '2026-07-11', aliases: [aliasRecord] });
+  const aliasEvidence = {
     ...approvedFixture,
     identityMatch: 'alias',
     aliasApproved: true,
+    aliasDecisionId: aliasRecord.id,
+    manufacturerBrand: aliasRecord.brand,
+    targetModel: aliasRecord.target_model,
+    sourceModel: aliasRecord.source_model,
+  };
+  const unapproved = canApproveEvidence({
+    ...aliasEvidence,
+    aliasApproved: false,
   });
+  const missingRegistry = canApproveEvidence(aliasEvidence);
+  const approved = canApproveEvidence(aliasEvidence, { aliasRegistry });
+  const wrongField = canApproveEvidence({ ...aliasEvidence, field: 'installation.rearMm' }, { aliasRegistry });
 
   assert.equal(unapproved.approved, false);
   assert.ok(unapproved.reasons.includes('identity_not_approved'));
+  assert.ok(missingRegistry.reasons.includes('alias_registry_approval_required'));
   assert.deepEqual(approved, { approved: true, reasons: [] });
+  assert.ok(wrongField.reasons.includes('alias_field_not_approved'));
+});
+
+test('createFieldEvidence preserves the registry decision for alias evidence', () => {
+  const aliasRecord = {
+    id: 'alias_fp_depth_v1', brand: 'Fisher & Paykel', target_model: 'RF505ANUX1', source_model: 'RF505AUX1',
+    status: 'approved', identity_scope: 'manufacturer_model', candidate_fields: ['closedEnvelope.depthMm'],
+    approved_fields: ['closedEnvelope.depthMm'],
+    evidence: [{ source_url: 'https://www.fisherpaykel.com/variant.pdf', document_sha256: 'c'.repeat(64), page: 1, quote: 'Both models share depth.', document_author_type: 'manufacturer', transport_host_type: 'manufacturer' }],
+    decision: { reviewer: 'Jagger Zhang', reviewed_at: '2026-07-11', rationale: 'Explicit mapping.' }, supersedes: null,
+  };
+  const aliasRegistry = createAliasRegistry({ schema_version: 1, last_updated: '2026-07-11', aliases: [aliasRecord] });
+  const evidence = createFieldEvidence({
+    ...approvedFixture,
+    field: 'closedEnvelope.depthMm',
+    identityMatch: 'alias', aliasApproved: true, aliasDecisionId: aliasRecord.id,
+    manufacturerBrand: aliasRecord.brand, targetModel: aliasRecord.target_model, sourceModel: aliasRecord.source_model,
+  }, { aliasRegistry });
+
+  assert.equal(evidence.aliasDecisionId, aliasRecord.id);
+  assert.equal(evidence.targetModel, 'RF505ANUX1');
+  assert.equal(Object.isFrozen(evidence), true);
 });
 
 test('keeps authorship separate from transport and rejects retailer-hosted candidates', () => {
