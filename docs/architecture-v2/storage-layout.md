@@ -23,7 +23,7 @@ Repository:
 External project storage:
 
 ```text
-/Volumes/绿联扩展1T/FitAppliance
+/Volumes/UGREEN-1TB/FitAppliance
 ```
 
 The external volume is HFS+ with ownership disabled. It is suitable for PDF
@@ -59,7 +59,7 @@ current source-document and review-bundle builders still reference those paths.
 ## External-drive layout
 
 ```text
-/Volumes/绿联扩展1T/FitAppliance/
+/Volumes/UGREEN-1TB/FitAppliance/
 ├── evidence/
 │   ├── objects/sha256/aa/<full-sha256>.pdf
 │   ├── text/sha256/aa/<full-sha256>.txt

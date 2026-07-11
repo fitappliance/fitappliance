@@ -1072,7 +1072,7 @@ node -e "const fs=require('node:fs');const a=JSON.parse(fs.readFileSync('./publi
 ### 7.3.1 Manual evidence storage
 
 - Bulky manufacturer PDFs and extraction drafts live outside Git under the
-  Ugreen 1T drive: `/Volumes/绿联扩展1T/FitAppliance/manual-evidence`.
+  UGREEN 1TB drive: `/Volumes/UGREEN-1TB/FitAppliance/manual-evidence`.
 - Override the root with `FITAPPLIANCE_EVIDENCE_ROOT` when the disk is mounted
   somewhere else.
 - Initialize/check the local evidence folders with:
