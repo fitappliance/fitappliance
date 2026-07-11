@@ -1,6 +1,6 @@
 # Architecture V2 Phase 1-7 Execution Status
 
-Status: cutover authorised; deployment verification pending
+Status: production cutover verified; Phase 7 observation window active
 Last updated: 2026-07-11
 
 ## Phase 1 - Alias and quarantine
@@ -68,9 +68,11 @@ Last updated: 2026-07-11
 - This parity result covers the legacy page generator's width semantics only.
   It does not claim parity for operation, service, delivery, or verified-fit
   semantics.
-- The owner authorised production cutover on 2026-07-11. Build output now uses
-  the V2 runtime projection; production deployment and browser QA remain to be
-  recorded.
+- The owner authorised production cutover on 2026-07-11. Build output and the
+  canonical production host now use the V2 runtime projection.
+- Desktop search, zero-result handling, mobile search, horizontal overflow and
+  browser console behavior passed production QA. See
+  `production-cutover-baseline.md`.
 
 ## Phase 7 - Projection and deletion preparation
 

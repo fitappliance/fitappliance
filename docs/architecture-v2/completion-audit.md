@@ -1,6 +1,6 @@
 # Architecture V2 Completion Audit
 
-Status: cutover authorised; deployment and rollback window incomplete
+Status: production cutover verified; rollback window active
 Last audited: 2026-07-11
 
 This document is the requirement-by-requirement truth source. A green unit test
@@ -23,15 +23,15 @@ also exists.
 | 5 | Approved clearance migration | Complete but empty | Evidence-only migrator ran; 0/2,268 products have V2-approved installation evidence |
 | 5 | Full semantic parity | Partial | Impossible-value audit is clean; operation/service/delivery parity awaits approved data |
 | 6 | Legacy width parity | Complete | 18,144 comparisons, zero mismatches |
-| 6 | Production FitDecision cutover | In progress | Owner approved; V2 is build default, with deploy and browser QA pending |
-| 6 | Mobile/desktop browser QA | Not started | Must run against deployed V2 flag, not legacy screenshots |
+| 6 | Production FitDecision cutover | Complete | V2 is the production build default; marker reports 2,259 V2 products |
+| 6 | Mobile/desktop browser QA | Complete | Deployed desktop, zero-result and 390x844 mobile flows passed with zero final console errors |
 | 7 | Stable public projection | Complete | Runtime view has 2,259 products; evidence-page view has 3,534 products and preserves legacy URL identity |
 | 7 | All generators/browser use canonical views | Complete locally | Browser/category data uses runtime view; evidence pages use the explicit page view from the same registry |
 | 7 | Legacy deletion | Not started | Requires successful rollback window and no severity-1 data issue |
 
 ## Current hard gates
 
-1. Production deployment and browser QA must pass before starting the rollback observation window.
+1. Observe production before owner approval of legacy runtime deletion.
 2. V2 cannot claim Verified Fit while the approved document count is zero.
 3. Legacy resolver deletion is unsafe until every active manufacturer adapter
    is routed through the common document contract.
