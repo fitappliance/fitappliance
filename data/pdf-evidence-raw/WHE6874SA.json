@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2395",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WHE6874SA",
+  "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse",
+  "verified_at": "2026-07-11",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WHE6874SA",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1782,
+      "width_mm": 913,
+      "depth_mm": 803,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse",
+      "extraction_date": "2026-07-11T04:57:46.414Z",
+      "confidence_score": 0.9,
+      "verified_alias": "WHE6874SA",
+      "source_type": "westinghouse-official-fact_sheet"
+    }
+  }
+}

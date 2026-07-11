@@ -827,6 +827,59 @@ test('runBatch processes Westinghouse targets with the official finder and parse
   });
 });
 
+test('runBatch falls back to an exact Westinghouse factsheet when the legacy product page is gone', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'fridge-wtb5400wc',
+    brand: 'Westinghouse',
+    sku: 'WTB5400WC',
+    category: 'fridge',
+    product: { id: 'fridge-wtb5400wc', cat: 'fridge', brand: 'Westinghouse', model: 'WTB5400WC', w: 1725, h: 796, d: 723, unavailable: true }
+  };
+  const manualEvidencePath = path.join(repoRoot, 'data', 'manual-evidence.json');
+  const manualEvidence = JSON.parse(fs.readFileSync(manualEvidencePath, 'utf8'));
+  manualEvidence.products[target.id] = {
+    brand: 'Westinghouse',
+    model: 'WTB5400WC',
+    evidence: [{
+      status: 'approved',
+      type: 'spec_sheet',
+      source_url: 'https://www.appliancesonline.com.au/manuals/WTB5400WC.pdf',
+      source_type: 'retailer_spec'
+    }]
+  };
+  writeJson(manualEvidencePath, manualEvidence);
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    westinghouseOfficialFinder: async () => { throw new Error('product page not found'); },
+    westinghouseFactsheetFinder: async () => ({
+      sourceUrl: 'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB5400WC&brand=Westinghouse',
+      source: 'westinghouse-official-fact_sheet',
+      resourceType: 'fact_sheet',
+      verifiedAlias: 'WTB5400WC'
+    }),
+    fetchPdfImpl: async (url, _path, options = {}) => {
+      assert.equal(typeof options.fetchImpl, 'function');
+      return { path: url, cached: false, bytes: 12 };
+    },
+    extractTextImpl: async () => ({
+      text: 'Total height (mm) 1718\nTotal width (mm) 796\nTotal depth (mm) 727',
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'WTB5400WC.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.dimensions, { height_mm: 1718, width_mm: 796, depth_mm: 727, door_open_90_depth_mm: null });
+  assert.equal(raw.extracted.metadata.source_type, 'westinghouse-official-fact_sheet');
+});
+
 test('runBatch processes Electrolux targets with the official finder and parser without an API key', async () => {
   const repoRoot = makeRepo();
   const target = {
@@ -888,6 +941,41 @@ test('runBatch processes Electrolux targets with the official finder and parser 
     right_mm: 30,
     rear_mm: 50
   });
+});
+
+test('runBatch falls back to an exact Electrolux factsheet after product-page discovery fails', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'fridge-eqe6870sa',
+    brand: 'Electrolux',
+    sku: 'EQE6870SA',
+    category: 'fridge',
+    product: { id: 'fridge-eqe6870sa', cat: 'fridge', brand: 'Electrolux', model: 'EQE6870SA', w: 1782, h: 913, d: 749, unavailable: true }
+  };
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    electroluxOfficialFinder: async () => { throw new Error('product page not found'); },
+    electroluxFactsheetFinder: async () => ({
+      sourceUrl: 'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6870SA&brand=Electrolux',
+      source: 'electrolux-official-fact_sheet',
+      resourceType: 'fact_sheet',
+      verifiedAlias: 'EQE6870SA'
+    }),
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: 'Total height (mm) 1782\nTotal width (mm) 913\nTotal depth (mm) 749',
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'electrolux-official-fact_sheet');
 });
 
 test('runBatch processes Kelvinator targets through the exact group factsheet endpoint', async () => {

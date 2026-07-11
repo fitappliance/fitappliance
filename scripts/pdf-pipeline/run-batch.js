@@ -581,6 +581,21 @@ function annotateSourceMetadata(candidate, source) {
   };
 }
 
+function isRetailerHostedEvidence(sourceUrl, sourceType = '') {
+  if (/retailer|third.party/i.test(String(sourceType))) return true;
+  try {
+    const host = new URL(sourceUrl).hostname.toLowerCase();
+    return [
+      'appliancesonline.com.au',
+      'thegoodguys.com.au',
+      'harveynorman.com.au',
+      'binglee.com.au'
+    ].some((domain) => host === domain || host.endsWith(`.${domain}`));
+  } catch {
+    return false;
+  }
+}
+
 async function findGenericPdfSource(target, {
   repoRoot,
   manualEvidence,
@@ -916,18 +931,35 @@ async function parseWestinghouseTarget({
   repoRoot,
   manualEvidence,
   westinghouseOfficialFinder,
+  westinghouseFactsheetFinder,
   fetchPdfImpl,
   extractTextImpl
 }) {
-  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
-  const official = manualSourceUrl
+  const savedManualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const savedManualSourceType = findManualEvidenceSourceType(target, manualEvidence);
+  const manualSourceUrl = isRetailerHostedEvidence(savedManualSourceUrl, savedManualSourceType)
     ? null
-    : await westinghouseOfficialFinder(target, { timeoutMs: 60_000 });
+    : savedManualSourceUrl;
+  const manualSourceType = manualSourceUrl ? savedManualSourceType : null;
+  const manualVerifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
+  let official = null;
+  if (!manualSourceUrl) {
+    try {
+      official = await westinghouseOfficialFinder(target, { timeoutMs: 60_000 });
+    } catch (primaryError) {
+      try {
+        official = await westinghouseFactsheetFinder(target, { timeoutMs: 60_000 });
+      } catch (fallbackError) {
+        throw new Error(`${primaryError.message} | exact factsheet fallback: ${fallbackError.message}`);
+      }
+    }
+  }
   const sourceUrl = manualSourceUrl || official?.sourceUrl;
   if (!sourceUrl) {
     throw new Error(official?.reason || 'Westinghouse official PDF resources not found');
   }
-  const source = manualSourceUrl ? 'manual-evidence' : (official?.source || 'westinghouse-official');
+  const source = manualSourceUrl ? (manualSourceType || 'manual-evidence') : (official?.source || 'westinghouse-official');
+  const factsheet = /\/Factsheet\/RequestPdf/i.test(sourceUrl);
   const pdfPath = path.join(
     repoRoot,
     '.tmp',
@@ -935,17 +967,26 @@ async function parseWestinghouseTarget({
     slugPathPart(target.brand),
     `${slugPathPart(target.sku)}.pdf`
   );
-  const fetched = await fetchPdfImpl(sourceUrl, pdfPath, {
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath, factsheet ? {
+    fetchImpl: electroluxGroupFetch,
+    force: true,
+    retries: 1,
+    timeoutMs: 60_000,
+    maxBytes: ELECTROLUX_MAX_BYTES,
+    userAgent: 'curl/8.7.1'
+  } : {
     retries: 1,
     timeoutMs: 15_000,
     userAgent: 'Mozilla/5.0'
   });
   const textResult = await extractTextImpl(fetched.path);
-  const parsed = parseWestinghouseText(textResult.text, {
-    target,
-    sourceUrl,
-    extractionDate: new Date().toISOString()
-  });
+  const parserOptions = { target, sourceUrl, extractionDate: new Date().toISOString() };
+  const parsed = factsheet
+    ? parseElectroluxText(textResult.text, {
+        ...parserOptions,
+        verifiedAlias: manualVerifiedAlias || official?.verifiedAlias || target.sku
+      })
+    : parseWestinghouseText(textResult.text, parserOptions);
 
   return {
     candidate: parsed.data,
@@ -959,15 +1000,29 @@ async function parseElectroluxTarget({
   repoRoot,
   manualEvidence,
   electroluxOfficialFinder,
+  electroluxFactsheetFinder,
   fetchPdfImpl,
   extractTextImpl
 }) {
-  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
-  const manualSourceType = findManualEvidenceSourceType(target, manualEvidence);
-  const manualVerifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
-  const official = manualSourceUrl
+  const savedManualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const savedManualSourceType = findManualEvidenceSourceType(target, manualEvidence);
+  const manualSourceUrl = isRetailerHostedEvidence(savedManualSourceUrl, savedManualSourceType)
     ? null
-    : await electroluxOfficialFinder(target, { timeoutMs: 60_000 });
+    : savedManualSourceUrl;
+  const manualSourceType = manualSourceUrl ? savedManualSourceType : null;
+  const manualVerifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
+  let official = null;
+  if (!manualSourceUrl) {
+    try {
+      official = await electroluxOfficialFinder(target, { timeoutMs: 60_000 });
+    } catch (primaryError) {
+      try {
+        official = await electroluxFactsheetFinder(target, { timeoutMs: 60_000 });
+      } catch (fallbackError) {
+        throw new Error(`${primaryError.message} | exact factsheet fallback: ${fallbackError.message}`);
+      }
+    }
+  }
   const sourceUrl = manualSourceUrl || official?.sourceUrl;
   if (!sourceUrl) {
     throw new Error(official?.reason || 'Electrolux official PDF resources not found');
@@ -1011,8 +1066,12 @@ async function parseKelvinatorTarget({
   fetchPdfImpl,
   extractTextImpl
 }) {
-  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
-  const manualSourceType = findManualEvidenceSourceType(target, manualEvidence);
+  const savedManualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const savedManualSourceType = findManualEvidenceSourceType(target, manualEvidence);
+  const manualSourceUrl = isRetailerHostedEvidence(savedManualSourceUrl, savedManualSourceType)
+    ? null
+    : savedManualSourceUrl;
+  const manualSourceType = manualSourceUrl ? savedManualSourceType : null;
   const manualVerifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
   const official = manualSourceUrl
     ? null
@@ -2357,7 +2416,9 @@ async function runBatch({
   samsungOfficialFinder = findSamsungOfficialPdf,
   lgOfficialFinder = findLgOfficialPdf,
   westinghouseOfficialFinder = findWestinghouseOfficialPdf,
+  westinghouseFactsheetFinder = findElectroluxGroupFactsheet,
   electroluxOfficialFinder = findElectroluxOfficialPdf,
+  electroluxFactsheetFinder = findElectroluxGroupFactsheet,
   kelvinatorOfficialFinder = findElectroluxGroupFactsheet,
   hisenseOfficialFinder = findHisenseOfficialPdf,
   haierOfficialFinder = findHaierOfficialPdf,
@@ -2479,6 +2540,7 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           westinghouseOfficialFinder,
+          westinghouseFactsheetFinder,
           fetchPdfImpl,
           extractTextImpl
         });
@@ -2491,6 +2553,7 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           electroluxOfficialFinder,
+          electroluxFactsheetFinder,
           fetchPdfImpl,
           extractTextImpl
         });

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3967",
+  "category": "fridge",
+  "brand": "Westinghouse",
+  "model": "WBB3700WH",
+  "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBB3700WH&brand=Westinghouse",
+  "verified_at": "2026-07-11",
+  "extracted": {
+    "brand": "Westinghouse",
+    "sku": "WBB3700WH",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1755,
+      "width_mm": 598,
+      "depth_mm": 650,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": true,
+      "ventilation_required": true,
+      "reversible_door": true
+    },
+    "metadata": {
+      "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBB3700WH&brand=Westinghouse",
+      "extraction_date": "2026-07-11T04:57:42.921Z",
+      "confidence_score": 0.9,
+      "verified_alias": "WBB3700WH",
+      "source_type": "westinghouse-official-fact_sheet"
+    }
+  }
+}

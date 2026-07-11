@@ -171002,6 +171002,654 @@
           }
         }
       ]
+    },
+    "fridge-arf2392": {
+      "category": "fridge",
+      "brand": "Electrolux",
+      "model": "EQE6870SA",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "EQE6870SA",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6870SA&brand=Electrolux",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/EQE6870SA.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "electrolux-official-fact_sheet",
+          "verified_alias": "EQE6870SA",
+          "extracted": {
+            "brand": "Electrolux",
+            "sku": "EQE6870SA",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1782,
+              "width_mm": 913,
+              "depth_mm": 749,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6870SA&brand=Electrolux",
+              "extraction_date": "2026-07-11T04:57:41.799Z",
+              "confidence_score": 0.9,
+              "verified_alias": "EQE6870SA",
+              "source_type": "electrolux-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3967": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBB3700WH",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "WBB3700WH",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBB3700WH&brand=Westinghouse",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/WBB3700WH.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "westinghouse-official-fact_sheet",
+          "verified_alias": "WBB3700WH",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WBB3700WH",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1755,
+              "width_mm": 598,
+              "depth_mm": 650,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": true
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBB3700WH&brand=Westinghouse",
+              "extraction_date": "2026-07-11T04:57:42.921Z",
+              "confidence_score": 0.9,
+              "verified_alias": "WBB3700WH",
+              "source_type": "westinghouse-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3868": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE5204BC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "WHE5204BC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204BC&brand=Westinghouse",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/WHE5204BC.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "westinghouse-official-fact_sheet",
+          "verified_alias": "WHE5204BC",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WHE5204BC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1725,
+              "width_mm": 796,
+              "depth_mm": 769,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204BC&brand=Westinghouse",
+              "extraction_date": "2026-07-11T04:57:43.986Z",
+              "confidence_score": 0.9,
+              "verified_alias": "WHE5204BC",
+              "source_type": "westinghouse-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3824": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE5264SC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "WHE5264SC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/WHE5264SC.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "westinghouse-official-fact_sheet",
+          "verified_alias": "WHE5264SC",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WHE5264SC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1725,
+              "width_mm": 796,
+              "depth_mm": 769,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
+              "extraction_date": "2026-07-11T04:57:45.040Z",
+              "confidence_score": 0.9,
+              "verified_alias": "WHE5264SC",
+              "source_type": "westinghouse-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2395": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE6874SA",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "WHE6874SA",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/WHE6874SA.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "westinghouse-official-fact_sheet",
+          "verified_alias": "WHE6874SA",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WHE6874SA",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1782,
+              "width_mm": 913,
+              "depth_mm": 803,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse",
+              "extraction_date": "2026-07-11T04:57:46.414Z",
+              "confidence_score": 0.9,
+              "verified_alias": "WHE6874SA",
+              "source_type": "westinghouse-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2461": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE7074SA",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "WHE7074SA",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE7074SA&brand=Westinghouse",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/WHE7074SA.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "westinghouse-official-fact_sheet",
+          "verified_alias": "WHE7074SA",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WHE7074SA",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1782,
+              "width_mm": 913,
+              "depth_mm": 803,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE7074SA&brand=Westinghouse",
+              "extraction_date": "2026-07-11T04:57:47.734Z",
+              "confidence_score": 0.9,
+              "verified_alias": "WHE7074SA",
+              "source_type": "westinghouse-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2921": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE5650BA",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "WQE5650BA",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5650BA&brand=Westinghouse",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/WQE5650BA.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "westinghouse-official-fact_sheet",
+          "verified_alias": "WQE5650BA",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WQE5650BA",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1795,
+              "width_mm": 896,
+              "depth_mm": 726,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5650BA&brand=Westinghouse",
+              "extraction_date": "2026-07-11T04:57:49.107Z",
+              "confidence_score": 0.9,
+              "verified_alias": "WQE5650BA",
+              "source_type": "westinghouse-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2922": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE5660BA",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "WQE5660BA",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5660BA&brand=Westinghouse",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/WQE5660BA.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "westinghouse-official-fact_sheet",
+          "verified_alias": "WQE5660BA",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WQE5660BA",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1795,
+              "width_mm": 896,
+              "depth_mm": 723,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5660BA&brand=Westinghouse",
+              "extraction_date": "2026-07-11T04:57:50.414Z",
+              "confidence_score": 0.9,
+              "verified_alias": "WQE5660BA",
+              "source_type": "westinghouse-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3258": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE6170BB",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "WQE6170BB",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6170BB&brand=Westinghouse",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/WQE6170BB.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "westinghouse-official-fact_sheet",
+          "verified_alias": "WQE6170BB",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WQE6170BB",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1782,
+              "width_mm": 913,
+              "depth_mm": 749,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6170BB&brand=Westinghouse",
+              "extraction_date": "2026-07-11T04:57:51.694Z",
+              "confidence_score": 0.9,
+              "verified_alias": "WQE6170BB",
+              "source_type": "westinghouse-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3923": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB4600SC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "WTB4600SC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB4600SC&brand=Westinghouse",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/WTB4600SC.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "westinghouse-official-fact_sheet",
+          "verified_alias": "WTB4600SC",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WTB4600SC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1725,
+              "width_mm": 699,
+              "depth_mm": 723,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB4600SC&brand=Westinghouse",
+              "extraction_date": "2026-07-11T04:57:52.964Z",
+              "confidence_score": 0.9,
+              "verified_alias": "WTB4600SC",
+              "source_type": "westinghouse-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2439": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB4600WC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "WTB4600WC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB4600WC&brand=Westinghouse",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/WTB4600WC.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "westinghouse-official-fact_sheet",
+          "verified_alias": "WTB4600WC",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WTB4600WC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1725,
+              "width_mm": 699,
+              "depth_mm": 723,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB4600WC&brand=Westinghouse",
+              "extraction_date": "2026-07-11T04:57:54.424Z",
+              "confidence_score": 0.9,
+              "verified_alias": "WTB4600WC",
+              "source_type": "westinghouse-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2443": {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB5400WC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "WTB5400WC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB5400WC&brand=Westinghouse",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/WTB5400WC.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "westinghouse-official-fact_sheet",
+          "verified_alias": "WTB5400WC",
+          "extracted": {
+            "brand": "Westinghouse",
+            "sku": "WTB5400WC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1725,
+              "width_mm": 796,
+              "depth_mm": 723,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB5400WC&brand=Westinghouse",
+              "extraction_date": "2026-07-11T04:57:55.430Z",
+              "confidence_score": 0.9,
+              "verified_alias": "WTB5400WC",
+              "source_type": "westinghouse-official-fact_sheet"
+            }
+          }
+        }
+      ]
     }
   }
 }

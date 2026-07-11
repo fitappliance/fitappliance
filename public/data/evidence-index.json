@@ -35498,6 +35498,28 @@
       "verified_at": "2026-05-20",
       "confidence_score": 0.92
     },
+    "fridge-arf2392": {
+      "product_id": "fridge-arf2392",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Electrolux",
+      "model": "EQE6870SA",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "electrolux-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6870SA&brand=Electrolux",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9,
+      "dimensions_mm": {
+        "width": 913,
+        "height": 1782,
+        "depth": 749
+      }
+    },
     "fridge-arf2393": {
       "product_id": "fridge-arf2393",
       "status": "verified",
@@ -35542,6 +35564,28 @@
         "width": 913,
         "height": 1782,
         "depth": 749
+      }
+    },
+    "fridge-arf2395": {
+      "product_id": "fridge-arf2395",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE6874SA",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "westinghouse-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9,
+      "dimensions_mm": {
+        "width": 913,
+        "height": 1782,
+        "depth": 803
       }
     },
     "fridge-arf2396": {
@@ -35814,6 +35858,28 @@
         "depth": 550
       }
     },
+    "fridge-arf2439": {
+      "product_id": "fridge-arf2439",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB4600WC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "westinghouse-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB4600WC&brand=Westinghouse",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9,
+      "dimensions_mm": {
+        "width": 699,
+        "height": 1725,
+        "depth": 723
+      }
+    },
     "fridge-arf2441": {
       "product_id": "fridge-arf2441",
       "status": "verified",
@@ -35857,6 +35923,28 @@
         "width": 699,
         "height": 1718,
         "depth": 730
+      }
+    },
+    "fridge-arf2443": {
+      "product_id": "fridge-arf2443",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB5400WC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "westinghouse-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB5400WC&brand=Westinghouse",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9,
+      "dimensions_mm": {
+        "width": 796,
+        "height": 1725,
+        "depth": 723
       }
     },
     "fridge-arf2444": {
@@ -35915,6 +36003,28 @@
       "source_url": "https://www.appliancesonline.com.au/ak/1/b/9/e/1b9ef2b5390ae06ba60189cb6ff53584fca8e7ba_CTM255NW_CHiQ_Specifications_Sheet.pdf",
       "verified_at": "2026-05-20",
       "confidence_score": 0.9
+    },
+    "fridge-arf2461": {
+      "product_id": "fridge-arf2461",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE7074SA",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "westinghouse-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE7074SA&brand=Westinghouse",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9,
+      "dimensions_mm": {
+        "width": 913,
+        "height": 1782,
+        "depth": 803
+      }
     },
     "fridge-arf2463": {
       "product_id": "fridge-arf2463",
@@ -37683,6 +37793,50 @@
         "depth": 544
       }
     },
+    "fridge-arf2921": {
+      "product_id": "fridge-arf2921",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE5650BA",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "westinghouse-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5650BA&brand=Westinghouse",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9,
+      "dimensions_mm": {
+        "width": 896,
+        "height": 1795,
+        "depth": 726
+      }
+    },
+    "fridge-arf2922": {
+      "product_id": "fridge-arf2922",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE5660BA",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "westinghouse-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE5660BA&brand=Westinghouse",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9,
+      "dimensions_mm": {
+        "width": 896,
+        "height": 1795,
+        "depth": 723
+      }
+    },
     "fridge-arf2938": {
       "product_id": "fridge-arf2938",
       "status": "verified",
@@ -38799,6 +38953,28 @@
         "width": 913,
         "height": 1790,
         "depth": 735
+      }
+    },
+    "fridge-arf3258": {
+      "product_id": "fridge-arf3258",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE6170BB",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "westinghouse-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6170BB&brand=Westinghouse",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9,
+      "dimensions_mm": {
+        "width": 913,
+        "height": 1782,
+        "depth": 749
       }
     },
     "fridge-arf3259": {
@@ -40953,6 +41129,28 @@
         "depth": 615
       }
     },
+    "fridge-arf3824": {
+      "product_id": "fridge-arf3824",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE5264SC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "westinghouse-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9,
+      "dimensions_mm": {
+        "width": 796,
+        "height": 1725,
+        "depth": 769
+      }
+    },
     "fridge-arf3826": {
       "product_id": "fridge-arf3826",
       "status": "verified",
@@ -41124,6 +41322,28 @@
       "source_url": "https://commercial.appliancesonline.com.au/manuals/ak/5/8/4/a/584a6500746d4ac08894cb2885b8fb75677fccdf_Westinghouse_WBB3100AK_Factsheet.pdf",
       "verified_at": "2026-05-09",
       "confidence_score": 0.9
+    },
+    "fridge-arf3868": {
+      "product_id": "fridge-arf3868",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE5204BC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "westinghouse-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204BC&brand=Westinghouse",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9,
+      "dimensions_mm": {
+        "width": 796,
+        "height": 1725,
+        "depth": 769
+      }
     },
     "fridge-arf3869": {
       "product_id": "fridge-arf3869",
@@ -41378,6 +41598,28 @@
         "depth": 650
       }
     },
+    "fridge-arf3923": {
+      "product_id": "fridge-arf3923",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WTB4600SC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "westinghouse-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB4600SC&brand=Westinghouse",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9,
+      "dimensions_mm": {
+        "width": 699,
+        "height": 1725,
+        "depth": 723
+      }
+    },
     "fridge-arf3924": {
       "product_id": "fridge-arf3924",
       "status": "verified",
@@ -41421,6 +41663,28 @@
       "dimensions_mm": {
         "width": 598,
         "height": 1646,
+        "depth": 650
+      }
+    },
+    "fridge-arf3967": {
+      "product_id": "fridge-arf3967",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBB3700WH",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "westinghouse-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBB3700WH&brand=Westinghouse",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9,
+      "dimensions_mm": {
+        "width": 598,
+        "height": 1755,
         "depth": 650
       }
     },
