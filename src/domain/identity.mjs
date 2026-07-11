@@ -11,6 +11,10 @@ const IDENTIFIER_SCHEMES = new Set([
   'legacy_runtime_id',
   'manufacturer_model',
   'gems_model',
+  'gems_registration',
+  'retailer_product_id',
+  'affiliate_feed_sku',
+  'gtin',
 ]);
 
 function requireString(value, field) {

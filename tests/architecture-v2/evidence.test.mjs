@@ -99,7 +99,7 @@ test('accepts alias evidence only when its exact field is approved by the regist
       document_author_type: 'manufacturer',
       transport_host_type: 'manufacturer',
     }],
-    decision: { reviewer: 'Jagger Zhang', reviewed_at: '2026-07-11', rationale: 'Explicit manufacturer mapping.' },
+    decision: { approval_tier: 'tier_a', reviewer: 'Jagger Zhang', reviewed_at: '2026-07-11', rationale: 'Explicit manufacturer mapping.' },
     supersedes: null,
   };
   const aliasRegistry = createAliasRegistry({ schema_version: 1, last_updated: '2026-07-11', aliases: [aliasRecord] });
@@ -133,7 +133,7 @@ test('createFieldEvidence preserves the registry decision for alias evidence', (
     status: 'approved', identity_scope: 'manufacturer_model', candidate_fields: ['closedEnvelope.depthMm'],
     approved_fields: ['closedEnvelope.depthMm'],
     evidence: [{ source_url: 'https://www.fisherpaykel.com/variant.pdf', document_sha256: 'c'.repeat(64), page: 1, quote: 'Both models share depth.', document_author_type: 'manufacturer', transport_host_type: 'manufacturer' }],
-    decision: { reviewer: 'Jagger Zhang', reviewed_at: '2026-07-11', rationale: 'Explicit mapping.' }, supersedes: null,
+    decision: { approval_tier: 'tier_a', reviewer: 'Jagger Zhang', reviewed_at: '2026-07-11', rationale: 'Explicit mapping.' }, supersedes: null,
   };
   const aliasRegistry = createAliasRegistry({ schema_version: 1, last_updated: '2026-07-11', aliases: [aliasRecord] });
   const evidence = createFieldEvidence({

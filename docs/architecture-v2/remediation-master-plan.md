@@ -39,13 +39,13 @@ Architecture V2 is complete only when:
 | Phase | Scope | Status |
 | --- | --- | --- |
 | 0 | Domain contracts and read-only shadow audit | Complete |
-| 1 | Verified dimension overlay and quarantine reduction | Active, baseline complete |
-| 2 | Canonical identity mapping | Not started |
-| 3 | Retailer observation ledger and current-sale reconciliation | Not started |
-| 4 | Source-document registry and PDF evidence state machine | Partially prototyped |
-| 5 | Category geometry and clearance migration | Not started |
-| 6 | FitDecision parity and production cutover | Not started |
-| 7 | Runtime modularization and legacy deletion | Not started |
+| 1 | Verified dimension overlay and quarantine reduction | Guardrails complete; 9 pending |
+| 2 | Canonical identity mapping | Shadow registry complete |
+| 3 | Retailer observation ledger and current-sale reconciliation | Legacy migration complete; collection adapters pending |
+| 4 | Source-document registry and PDF evidence state machine | State machine and quarantine baseline complete |
+| 5 | Category geometry and clearance migration | Contracts complete; evidence migration pending |
+| 6 | FitDecision parity and production cutover | Width parity complete; awaiting cutover approval |
+| 7 | Runtime modularization and legacy deletion | Projection prepared; deletion waits for rollback window |
 
 ## Completed Work
 

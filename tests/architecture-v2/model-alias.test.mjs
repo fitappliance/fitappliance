@@ -49,9 +49,54 @@ function approvedAlias(overrides = {}) {
       transport_host_type: 'manufacturer',
     }],
     decision: {
+      approval_tier: 'tier_a',
       reviewer: 'Jagger Zhang',
       reviewed_at: '2026-07-11',
       rationale: 'Manufacturer variant table explicitly lists both models.',
+    },
+    ...overrides,
+  });
+}
+
+function tierBApprovedAlias(overrides = {}) {
+  const evidence = [
+    {
+      role: 'regulatory_family',
+      source_url: 'https://data.gov.au/example.csv',
+      document_sha256: 'b'.repeat(64),
+      page: 1,
+      quote: 'KTB2502AB and KTB2502WB share registration ARF3963 and family KTB2502**.',
+      document_author_type: 'regulator',
+      transport_host_type: 'regulator',
+    },
+    {
+      role: 'source_dimensions',
+      source_url: 'https://www.kelvinator.com.au/support/ktb2502wb.pdf',
+      document_sha256: 'c'.repeat(64),
+      page: 2,
+      quote: 'KTB2502WB: height 1470 mm, width 540 mm, depth 615 mm.',
+      document_author_type: 'manufacturer',
+      transport_host_type: 'manufacturer',
+      ordered_dimensions_mm: { width: 540, height: 1470, depth: 615 },
+    },
+    ...['retailer-one.example', 'retailer-two.example'].map((host, index) => ({
+      role: 'target_market_dimensions',
+      source_url: `https://${host}/ktb2502ab`,
+      document_sha256: String(index + 1).repeat(64),
+      page: 1,
+      quote: 'KTB2502AB: height 1470 mm, width 540 mm, depth 615 mm.',
+      document_author_type: 'retailer',
+      transport_host_type: 'retailer',
+      ordered_dimensions_mm: { width: 540, height: 1470, depth: 615 },
+    })),
+  ];
+  return approvedAlias({
+    evidence,
+    decision: {
+      approval_tier: 'tier_b',
+      reviewer: 'Jagger Zhang',
+      reviewed_at: '2026-07-11',
+      rationale: 'Regulator family plus matching manufacturer and independent market dimensions.',
     },
     ...overrides,
   });
@@ -73,7 +118,7 @@ test('repository pending registry and disposition cover the frozen baseline with
   const disposition = JSON.parse(readFileSync(new URL('../../reports/architecture-v2/phase1-quarantine-disposition.json', import.meta.url), 'utf8'));
   const registry = createAliasRegistry(registryDocument);
 
-  assert.equal(registry.aliases.length, 8);
+  assert.equal(registry.aliases.length, 9);
   assert.ok(registry.aliases.every((alias) => alias.status === 'pending'));
   assert.equal(disposition.products.length, 9);
   assert.deepEqual(
@@ -147,6 +192,32 @@ test('approved aliases require complete manufacturer provenance and review', () 
     assert.throws(
       () => createAliasRegistry({ schema_version: 1, last_updated: '2026-07-11', aliases: [alias] }),
       /approved|evidence|review|manufacturer|hash|page|quote/i,
+    );
+  }
+});
+
+test('tier B permits dimensions-only approval with regulator family and two independent market sources', () => {
+  const alias = tierBApprovedAlias();
+  const registry = createAliasRegistry({ schema_version: 1, last_updated: '2026-07-11', aliases: [alias] });
+  assert.equal(registry.aliases[0].decision.approval_tier, 'tier_b');
+  assert.deepEqual(registry.aliases[0].approved_fields, DIMENSION_FIELDS);
+});
+
+test('tier B rejects missing roles, duplicate market hosts, inconsistent target dimensions, and broader fields', () => {
+  const base = tierBApprovedAlias();
+  const invalid = [
+    tierBApprovedAlias({ evidence: base.evidence.filter((item) => item.role !== 'regulatory_family') }),
+    tierBApprovedAlias({ evidence: base.evidence.map((item) => item.role === 'target_market_dimensions'
+      ? { ...item, source_url: 'https://same-retailer.example/product' }
+      : item) }),
+    tierBApprovedAlias({ evidence: base.evidence.map((item, index) => index === 3
+      ? { ...item, ordered_dimensions_mm: { width: 541, height: 1470, depth: 615 } }
+      : item) }),
+  ];
+  for (const alias of invalid) {
+    assert.throws(
+      () => createAliasRegistry({ schema_version: 1, last_updated: '2026-07-11', aliases: [alias] }),
+      /tier|evidence|market|dimension|regulator/i,
     );
   }
 });

@@ -7,6 +7,11 @@
     "node": ">=20.0.0"
   },
   "scripts": {
+    "build:canonical-registry": "node scripts/architecture-v2/build-canonical-registry.mjs",
+    "build:retailer-ledger": "npm run build:canonical-registry && node scripts/architecture-v2/build-retailer-ledger.mjs",
+    "audit:fit-parity": "node scripts/architecture-v2/fit-parity-audit.mjs",
+    "build:public-projection-v2": "npm run build:canonical-registry && node scripts/architecture-v2/build-public-projection.mjs",
+    "build:source-document-registry": "node scripts/architecture-v2/build-source-document-registry.mjs",
     "build": "node scripts/pick-review-pilot.js && node scripts/generate-ui-copy.js && node scripts/generate-brand-pages.js && node scripts/inject-video-schema.js && node scripts/generate-comparisons.js && node scripts/generate-compare-vs-pages.js && node scripts/generate-guides.js && node scripts/generate-location-pages.js && node scripts/generate-product-pages.js && node scripts/generate-sitemap.js && node scripts/generate-sw.js",
     "test": "node --test tests/*.test.mjs tests/pdf-pipeline/*.test.mjs",
     "test:architecture-v2": "node --test tests/architecture-v2/*.test.mjs",

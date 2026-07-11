@@ -105,6 +105,19 @@
       "evidence": [],
       "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; the available official guide lists only WTB2500WH." },
       "supersedes": null
+    },
+    {
+      "id": "alias_westinghouse_whe6874ba_to_whe6874sa_v1",
+      "brand": "Westinghouse",
+      "target_model": "WHE6874BA",
+      "source_model": "WHE6874SA",
+      "status": "pending",
+      "identity_scope": "manufacturer_model",
+      "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
+      "approved_fields": [],
+      "evidence": [],
+      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "The target factsheet endpoint returns an error document. The Australian Energy Rating register groups WHE6874BA and WHE6874SA under ARF3970, but independent target-market dimension corroboration is still required." },
+      "supersedes": null
     }
   ]
 }

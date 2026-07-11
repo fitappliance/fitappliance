@@ -1,4 +1,11 @@
 const STATUSES = new Set(['pending', 'approved', 'rejected', 'superseded']);
+const APPROVAL_TIERS = new Set(['tier_a', 'tier_b']);
+const EVIDENCE_ROLES = new Set([
+  'explicit_relationship',
+  'regulatory_family',
+  'source_dimensions',
+  'target_market_dimensions',
+]);
 const ALLOWED_FIELDS = new Set([
   'closedEnvelope.widthMm',
   'closedEnvelope.heightMm',
@@ -44,7 +51,7 @@ function requireFields(value, label) {
   return fields;
 }
 
-function evidenceReasons(evidence) {
+function baseEvidenceReasons(evidence) {
   const reasons = [];
   if (!evidence || typeof evidence !== 'object' || Array.isArray(evidence)) {
     return ['evidence_record_required'];
@@ -57,9 +64,51 @@ function evidenceReasons(evidence) {
   if (!/^[a-f0-9]{64}$/.test(String(evidence.document_sha256 || ''))) reasons.push('document_hash_required');
   if (!Number.isInteger(evidence.page) || evidence.page < 1) reasons.push('positive_page_required');
   if (!String(evidence.quote || '').trim()) reasons.push('source_quote_required');
-  if (evidence.document_author_type !== 'manufacturer') reasons.push('manufacturer_authorship_required');
-  if (evidence.transport_host_type !== 'manufacturer') reasons.push('manufacturer_transport_required');
   return reasons;
+}
+
+function dimensionsKey(value) {
+  if (!value || typeof value !== 'object') return null;
+  const { width, height, depth } = value;
+  if (![width, height, depth].every((item) => Number.isInteger(item) && item > 0)) return null;
+  return `${width}:${height}:${depth}`;
+}
+
+function tierAReasons(evidence) {
+  const reasons = [];
+  if (evidence.length === 0) reasons.push('manufacturer_evidence_required');
+  for (const item of evidence) {
+    for (const reason of baseEvidenceReasons(item)) if (!reasons.includes(reason)) reasons.push(reason);
+    if (item.document_author_type !== 'manufacturer') reasons.push('manufacturer_authorship_required');
+    if (item.transport_host_type !== 'manufacturer') reasons.push('manufacturer_transport_required');
+  }
+  return [...new Set(reasons)];
+}
+
+function tierBReasons(record, evidence) {
+  const reasons = [];
+  for (const item of evidence) {
+    for (const reason of baseEvidenceReasons(item)) if (!reasons.includes(reason)) reasons.push(reason);
+  }
+  const regulatory = evidence.filter((item) => item.role === 'regulatory_family');
+  if (!regulatory.some((item) => item.document_author_type === 'regulator'
+    && item.transport_host_type === 'regulator')) reasons.push('tier_b_regulator_family_required');
+  const manufacturer = evidence.filter((item) => item.role === 'source_dimensions');
+  if (!manufacturer.some((item) => item.document_author_type === 'manufacturer'
+    && item.transport_host_type === 'manufacturer')) reasons.push('tier_b_manufacturer_dimensions_required');
+  const market = evidence.filter((item) => item.role === 'target_market_dimensions');
+  const marketHosts = new Set(market.map((item) => {
+    try { return new URL(item.source_url).hostname.toLowerCase(); } catch { return ''; }
+  }).filter(Boolean));
+  if (marketHosts.size < 2) reasons.push('tier_b_two_independent_market_sources_required');
+  const dimensionKeys = [...manufacturer, ...market].map((item) => dimensionsKey(item.ordered_dimensions_mm));
+  if (dimensionKeys.some((key) => key === null) || new Set(dimensionKeys).size !== 1) {
+    reasons.push('tier_b_ordered_dimensions_must_match');
+  }
+  if (record.approved_fields.some((field) => !ALLOWED_FIELDS.has(field))) {
+    reasons.push('tier_b_dimensions_only');
+  }
+  return [...new Set(reasons)];
 }
 
 export function evaluateAliasCandidate(record) {
@@ -69,14 +118,11 @@ export function evaluateAliasCandidate(record) {
   }
   if (record.status !== 'approved') reasons.push('status_not_approved');
   const evidence = Array.isArray(record.evidence) ? record.evidence : [];
-  if (record.status === 'approved' && evidence.length === 0) reasons.push('manufacturer_evidence_required');
-  for (const item of evidence) {
-    for (const reason of evidenceReasons(item)) {
-      if (!reasons.includes(reason)) reasons.push(reason);
-    }
-  }
   const decision = record.decision;
   if (record.status === 'approved') {
+    const tier = decision?.approval_tier;
+    if (!APPROVAL_TIERS.has(tier)) reasons.push('approval_tier_required');
+    else reasons.push(...(tier === 'tier_a' ? tierAReasons(evidence) : tierBReasons(record, evidence)));
     if (!String(decision?.reviewer || '').trim()) reasons.push('reviewer_required');
     if (!/^\d{4}-\d{2}-\d{2}$/.test(String(decision?.reviewed_at || ''))) reasons.push('review_date_required');
     if (!String(decision?.rationale || '').trim()) reasons.push('review_rationale_required');
@@ -86,7 +132,7 @@ export function evaluateAliasCandidate(record) {
 
 function normalizeEvidence(item) {
   const evidence = requireObject(item, 'alias evidence');
-  return {
+  const normalized = {
     source_url: requireString(evidence.source_url, 'alias evidence source_url'),
     document_sha256: requireString(evidence.document_sha256, 'alias evidence document_sha256'),
     page: evidence.page,
@@ -94,6 +140,19 @@ function normalizeEvidence(item) {
     document_author_type: requireString(evidence.document_author_type, 'alias evidence document_author_type'),
     transport_host_type: requireString(evidence.transport_host_type, 'alias evidence transport_host_type'),
   };
+  if (evidence.role !== undefined) {
+    normalized.role = requireString(evidence.role, 'alias evidence role');
+    if (!EVIDENCE_ROLES.has(normalized.role)) throw new TypeError(`unsupported alias evidence role ${normalized.role}`);
+  }
+  if (evidence.ordered_dimensions_mm !== undefined) {
+    const dimensions = requireObject(evidence.ordered_dimensions_mm, 'ordered_dimensions_mm');
+    normalized.ordered_dimensions_mm = {
+      width: dimensions.width,
+      height: dimensions.height,
+      depth: dimensions.depth,
+    };
+  }
+  return normalized;
 }
 
 function normalizeAlias(input) {
@@ -129,6 +188,9 @@ function normalizeAlias(input) {
     approved_fields: approvedFields,
     evidence: Array.isArray(alias.evidence) ? alias.evidence.map(normalizeEvidence) : [],
     decision: {
+      approval_tier: decision.approval_tier === undefined || decision.approval_tier === null
+        ? null
+        : requireString(decision.approval_tier, 'decision approval_tier'),
       reviewer: decision.reviewer === null ? null : requireString(decision.reviewer, 'decision reviewer'),
       reviewed_at: decision.reviewed_at === null ? null : requireString(decision.reviewed_at, 'decision reviewed_at'),
       rationale: requireString(decision.rationale, 'decision rationale'),
