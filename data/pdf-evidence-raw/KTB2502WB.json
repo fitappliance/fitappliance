@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3963",
+  "category": "fridge",
+  "brand": "KELVINATOR",
+  "model": "KTB2502WB",
+  "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTB2502WB&brand=Kelvinator",
+  "verified_at": "2026-07-11",
+  "extracted": {
+    "brand": "KELVINATOR",
+    "sku": "KTB2502WB",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1470,
+      "width_mm": 540,
+      "depth_mm": 615,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTB2502WB&brand=Kelvinator",
+      "extraction_date": "2026-07-11T05:01:57.472Z",
+      "confidence_score": 0.9,
+      "verified_alias": "KTB2502WB",
+      "source_type": "kelvinator-official-fact_sheet"
+    }
+  }
+}

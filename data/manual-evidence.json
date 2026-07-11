@@ -171650,6 +171650,384 @@
           }
         }
       ]
+    },
+    "fridge-arf2944": {
+      "category": "fridge",
+      "brand": "Electrolux",
+      "model": "EQE6160BA",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "EQE6160BA",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/EQE6160BA.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "electrolux-official-fact_sheet",
+          "verified_alias": "EQE6160BA",
+          "extracted": {
+            "brand": "Electrolux",
+            "sku": "EQE6160BA",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1782,
+              "width_mm": 913,
+              "depth_mm": 749,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": true,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
+              "extraction_date": "2026-07-11T05:01:54.991Z",
+              "confidence_score": 0.9,
+              "verified_alias": "EQE6160BA",
+              "source_type": "electrolux-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3962": {
+      "category": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KBM5302WC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "KBM5302WC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302WC&brand=Kelvinator",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/KBM5302WC.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "kelvinator-official-fact_sheet",
+          "verified_alias": "KBM5302WC",
+          "extracted": {
+            "brand": "KELVINATOR",
+            "sku": "KBM5302WC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1718,
+              "width_mm": 796,
+              "depth_mm": 727,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302WC&brand=Kelvinator",
+              "extraction_date": "2026-07-11T05:01:55.796Z",
+              "confidence_score": 0.9,
+              "verified_alias": "KBM5302WC",
+              "source_type": "kelvinator-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3931": {
+      "category": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTB2302WB",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "KTB2302WB",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTB2302WB&brand=Kelvinator",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/KTB2302WB.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "kelvinator-official-fact_sheet",
+          "verified_alias": "KTB2302WB",
+          "extracted": {
+            "brand": "KELVINATOR",
+            "sku": "KTB2302WB",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1405,
+              "width_mm": 540,
+              "depth_mm": 615,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTB2302WB&brand=Kelvinator",
+              "extraction_date": "2026-07-11T05:01:56.663Z",
+              "confidence_score": 0.9,
+              "verified_alias": "KTB2302WB",
+              "source_type": "kelvinator-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3963": {
+      "category": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTB2502WB",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "KTB2502WB",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTB2502WB&brand=Kelvinator",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/KTB2502WB.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "kelvinator-official-fact_sheet",
+          "verified_alias": "KTB2502WB",
+          "extracted": {
+            "brand": "KELVINATOR",
+            "sku": "KTB2502WB",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1470,
+              "width_mm": 540,
+              "depth_mm": 615,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTB2502WB&brand=Kelvinator",
+              "extraction_date": "2026-07-11T05:01:57.472Z",
+              "confidence_score": 0.9,
+              "verified_alias": "KTB2502WB",
+              "source_type": "kelvinator-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3964": {
+      "category": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTB2802WB",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "KTB2802WB",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTB2802WB&brand=Kelvinator",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/KTB2802WB.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "kelvinator-official-fact_sheet",
+          "verified_alias": "KTB2802WB",
+          "extracted": {
+            "brand": "KELVINATOR",
+            "sku": "KTB2802WB",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1605,
+              "width_mm": 540,
+              "depth_mm": 615,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTB2802WB&brand=Kelvinator",
+              "extraction_date": "2026-07-11T05:01:58.396Z",
+              "confidence_score": 0.9,
+              "verified_alias": "KTB2802WB",
+              "source_type": "kelvinator-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3965": {
+      "category": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTM4602AC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "KTM4602AC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602AC&brand=Kelvinator",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/KTM4602AC.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "kelvinator-official-fact_sheet",
+          "verified_alias": "KTM4602AC",
+          "extracted": {
+            "brand": "KELVINATOR",
+            "sku": "KTM4602AC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1718,
+              "width_mm": 699,
+              "depth_mm": 730,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602AC&brand=Kelvinator",
+              "extraction_date": "2026-07-11T05:01:59.218Z",
+              "confidence_score": 0.9,
+              "verified_alias": "KTM4602AC",
+              "source_type": "kelvinator-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf3966": {
+      "category": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTM5402WC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "KTM5402WC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402WC&brand=Kelvinator",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/KTM5402WC.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "kelvinator-official-fact_sheet",
+          "verified_alias": "KTM5402WC",
+          "extracted": {
+            "brand": "KELVINATOR",
+            "sku": "KTM5402WC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1718,
+              "width_mm": 796,
+              "depth_mm": 727,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402WC&brand=Kelvinator",
+              "extraction_date": "2026-07-11T05:02:00.144Z",
+              "confidence_score": 0.9,
+              "verified_alias": "KTM5402WC",
+              "source_type": "kelvinator-official-fact_sheet"
+            }
+          }
+        }
+      ]
     }
   }
 }

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf3966",
+  "category": "fridge",
+  "brand": "KELVINATOR",
+  "model": "KTM5402WC",
+  "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402WC&brand=Kelvinator",
+  "verified_at": "2026-07-11",
+  "extracted": {
+    "brand": "KELVINATOR",
+    "sku": "KTM5402WC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1718,
+      "width_mm": 796,
+      "depth_mm": 727,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402WC&brand=Kelvinator",
+      "extraction_date": "2026-07-11T05:02:00.144Z",
+      "confidence_score": 0.9,
+      "verified_alias": "KTM5402WC",
+      "source_type": "kelvinator-official-fact_sheet"
+    }
+  }
+}
