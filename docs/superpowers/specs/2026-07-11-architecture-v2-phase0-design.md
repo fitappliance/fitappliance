@@ -171,7 +171,7 @@ The engine returns structured checks rather than only a score:
 
 Outcome precedence is deterministic:
 
-1. Any required FAIL: `NO_FIT`.
+1. Any required axis or applicable operation/service FAIL: `NO_FIT`.
 2. Any required UNKNOWN: `INSUFFICIENT_DATA`.
 3. Required checks pass but an applicable operation/service check is UNKNOWN:
    `CONDITIONAL_FIT`.

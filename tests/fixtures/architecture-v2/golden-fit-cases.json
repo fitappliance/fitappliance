@@ -1,0 +1,91 @@
+[
+  {
+    "name": "verified fit",
+    "geometry": {
+      "closedEnvelope": { "widthMm": 790, "heightMm": 1700, "depthMm": 700 },
+      "installation": { "leftMm": 5, "rightMm": 5, "topMm": 10, "rearMm": 50, "frontMm": 0 }
+    },
+    "cavity": { "widthMm": 810, "heightMm": 1720, "depthMm": 760 },
+    "evidenceLevel": "verified",
+    "advisoryChecks": [
+      { "id": "door_swing", "applicable": true, "status": "PASS" }
+    ],
+    "expected": {
+      "outcome": "VERIFIED_FIT",
+      "statuses": { "installation_width": "PASS", "installation_height": "PASS", "installation_depth": "PASS" },
+      "advisoryStatuses": { "door_swing": "PASS" },
+      "required": { "widthMm": 800, "heightMm": 1710, "depthMm": 750 },
+      "spare": { "widthMm": 10, "heightMm": 10, "depthMm": 10 }
+    }
+  },
+  {
+    "name": "hard width failure outranks unknown depth",
+    "geometry": {
+      "closedEnvelope": { "widthMm": 790, "heightMm": 1700, "depthMm": 700 },
+      "installation": { "leftMm": 5, "rightMm": 5, "topMm": 10, "rearMm": null, "frontMm": 0 }
+    },
+    "cavity": { "widthMm": 795, "heightMm": 1720, "depthMm": 760 },
+    "evidenceLevel": "dimensions",
+    "advisoryChecks": [],
+    "expected": {
+      "outcome": "NO_FIT",
+      "statuses": { "installation_width": "FAIL", "installation_height": "PASS", "installation_depth": "UNKNOWN" },
+      "advisoryStatuses": {},
+      "required": { "widthMm": 800, "heightMm": 1710, "depthMm": null },
+      "spare": { "widthMm": -5, "heightMm": 10, "depthMm": null }
+    }
+  },
+  {
+    "name": "insufficient required geometry",
+    "geometry": {
+      "closedEnvelope": { "widthMm": 790, "heightMm": 1700, "depthMm": 700 },
+      "installation": { "leftMm": 5, "rightMm": 5, "topMm": 10, "rearMm": null, "frontMm": 0 }
+    },
+    "cavity": { "widthMm": 810, "heightMm": 1720, "depthMm": 760 },
+    "evidenceLevel": "dimensions",
+    "advisoryChecks": [],
+    "expected": {
+      "outcome": "INSUFFICIENT_DATA",
+      "statuses": { "installation_width": "PASS", "installation_height": "PASS", "installation_depth": "UNKNOWN" },
+      "advisoryStatuses": {},
+      "required": { "widthMm": 800, "heightMm": 1710, "depthMm": null },
+      "spare": { "widthMm": 10, "heightMm": 10, "depthMm": null }
+    }
+  },
+  {
+    "name": "estimated requirements pass",
+    "geometry": {
+      "closedEnvelope": { "widthMm": 790, "heightMm": 1700, "depthMm": 700 },
+      "installation": { "leftMm": 5, "rightMm": 5, "topMm": 10, "rearMm": 50, "frontMm": 0 }
+    },
+    "cavity": { "widthMm": 810, "heightMm": 1720, "depthMm": 760 },
+    "evidenceLevel": "dimensions",
+    "advisoryChecks": [],
+    "expected": {
+      "outcome": "LIKELY_FIT_ESTIMATED",
+      "statuses": { "installation_width": "PASS", "installation_height": "PASS", "installation_depth": "PASS" },
+      "advisoryStatuses": {},
+      "required": { "widthMm": 800, "heightMm": 1710, "depthMm": 750 },
+      "spare": { "widthMm": 10, "heightMm": 10, "depthMm": 10 }
+    }
+  },
+  {
+    "name": "unknown operation space is conditional",
+    "geometry": {
+      "closedEnvelope": { "widthMm": 790, "heightMm": 1700, "depthMm": 700 },
+      "installation": { "leftMm": 5, "rightMm": 5, "topMm": 10, "rearMm": 50, "frontMm": 0 }
+    },
+    "cavity": { "widthMm": 810, "heightMm": 1720, "depthMm": 760 },
+    "evidenceLevel": "verified",
+    "advisoryChecks": [
+      { "id": "door_swing", "applicable": true, "status": "UNKNOWN" }
+    ],
+    "expected": {
+      "outcome": "CONDITIONAL_FIT",
+      "statuses": { "installation_width": "PASS", "installation_height": "PASS", "installation_depth": "PASS" },
+      "advisoryStatuses": { "door_swing": "UNKNOWN" },
+      "required": { "widthMm": 800, "heightMm": 1710, "depthMm": 750 },
+      "spare": { "widthMm": 10, "heightMm": 10, "depthMm": 10 }
+    }
+  }
+]
