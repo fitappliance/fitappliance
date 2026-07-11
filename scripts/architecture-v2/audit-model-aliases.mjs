@@ -65,7 +65,7 @@ function readJson(filePath) {
 function main(args) {
   if (args.length > 0) throw new TypeError('model alias audit accepts no arguments');
   const registry = readJson(path.join(repoRoot, 'data/model-aliases.json'));
-  const disposition = readJson(path.join(repoRoot, 'reports/architecture-v2/phase1-quarantine-disposition.json'));
+  const disposition = readJson(path.join(repoRoot, 'data/architecture-v2/phase1-quarantine-disposition.json'));
   const result = auditAliasRegistry(registry, disposition);
   process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
   if (result.missingAliasReferences.length > 0) process.exitCode = 1;

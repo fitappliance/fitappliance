@@ -16,7 +16,7 @@ const catalog = {
   last_updated: legacyCatalog.last_updated,
   products: [...productsByLegacyId.values()],
 };
-const disposition = JSON.parse(await readFile(resolve(root, 'reports/architecture-v2/phase1-quarantine-disposition.json'), 'utf8'));
+const disposition = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/phase1-quarantine-disposition.json'), 'utf8'));
 const identityDecisions = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/canonical-identity-decisions.json'), 'utf8'));
 const result = buildCanonicalRegistry(catalog, {
   quarantineLegacyIds: disposition.products.map((row) => row.legacyId),

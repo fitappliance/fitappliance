@@ -115,7 +115,7 @@ test('phase one fixture freezes exactly nine unique quarantine products', () => 
 test('repository pending registry and disposition cover the frozen baseline without approvals', () => {
   const fixture = JSON.parse(readFileSync(new URL('../fixtures/architecture-v2/model-aliases.json', import.meta.url), 'utf8'));
   const registryDocument = JSON.parse(readFileSync(new URL('../../data/model-aliases.json', import.meta.url), 'utf8'));
-  const disposition = JSON.parse(readFileSync(new URL('../../reports/architecture-v2/phase1-quarantine-disposition.json', import.meta.url), 'utf8'));
+  const disposition = JSON.parse(readFileSync(new URL('../../data/architecture-v2/phase1-quarantine-disposition.json', import.meta.url), 'utf8'));
   const registry = createAliasRegistry(registryDocument);
 
   assert.equal(registry.aliases.length, 9);

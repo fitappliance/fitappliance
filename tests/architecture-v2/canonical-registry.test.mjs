@@ -1,7 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 
 import { buildCanonicalRegistry, extractGemsRegistrationFromLegacyId } from '../../src/domain/canonical-registry.mjs';
+
+test('canonical registry build inputs survive the Vercel reports exclusion', () => {
+  const source = readFileSync(new URL('../../scripts/architecture-v2/build-canonical-registry.mjs', import.meta.url), 'utf8');
+  assert.doesNotMatch(source, /reports\/architecture-v2/);
+  assert.match(source, /data\/architecture-v2\/phase1-quarantine-disposition\.json/);
+});
 
 const catalog = { products: [
   { id: 'fridge-a1', cat: 'fridge', brand: 'Example', model: 'ABC-1' },
