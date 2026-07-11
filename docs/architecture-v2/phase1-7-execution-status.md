@@ -97,3 +97,11 @@ Rollback now means reverting the Phase 7 commit and redeploying; there is no
 runtime environment switch and no second production catalog.
 
 The detailed requirement audit is in [`completion-audit.md`](./completion-audit.md).
+
+## Phase 7 production closeout
+
+Commit `7381c96d` was deployed and verified on 2026-07-11. Production serves
+only the schema-2 V2 marker with 3,520 products. Desktop and 390 x 844 mobile
+search checks passed without console errors or horizontal overflow. Sentinel
+reported 30/30 URLs available, 28,676 links with zero broken links, and zero
+indexable orphan pages.

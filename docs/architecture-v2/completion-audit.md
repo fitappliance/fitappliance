@@ -1,6 +1,6 @@
 # Architecture V2 Completion Audit
 
-Status: Phase 7 implementation complete; production verification pending
+Status: Phase 1-7 remediation complete; Phase 7 production verified
 Last audited: 2026-07-11
 
 This document is the requirement-by-requirement truth source. A green unit test
@@ -25,16 +25,26 @@ also exists.
 | 6 | Legacy width parity | Complete | Historical parity evidence retained; browser/domain FitDecision contract is tested directly |
 | 6 | Production FitDecision cutover | Complete | Browser results expose explicit V2 outcomes and reject `NO_FIT` |
 | 6 | Mobile/desktop browser QA | Complete | Deployed desktop, zero-result and 390x844 mobile flows passed with zero final console errors |
-| 7 | Stable public projection | Complete locally | One 3,520-product projection drives runtime and generated pages; 21 invalid/ambiguous rows are quarantined |
-| 7 | All generators/browser use canonical view | Complete locally | Browser, category, product, retailer and audit jobs use the same projection |
-| 7 | Legacy deletion | Complete locally | Snapshot, selector, dual projection and runtime switch removed with owner approval; historical mappings retained |
+| 7 | Stable public projection | Complete | Production marker reports one 3,520-product V2 projection; 21 invalid/ambiguous rows are quarantined |
+| 7 | All generators/browser use canonical view | Complete | Browser, category, product, retailer and audit jobs use the same projection |
+| 7 | Legacy deletion | Complete | Snapshot, selector, dual projection and runtime switch removed with owner approval; historical mappings retained |
 
 ## Current hard gates
 
-1. Deploy the Phase 7 single-projection build and repeat desktop/mobile and
-   Sentinel production checks.
-2. V2 cannot claim Verified Fit while the approved document count is zero.
-3. Legacy resolver deletion is unsafe until every active manufacturer adapter
+1. V2 cannot claim Verified Fit while the approved document count is zero.
+2. Legacy resolver deletion is unsafe until every active manufacturer adapter
    is routed through the common document contract.
-4. Automated public retailer collection remains disabled where terms/path
+3. Automated public retailer collection remains disabled where terms/path
    review is unresolved or access is denied.
+
+## Phase 7 production evidence
+
+- Deployment commit: `7381c96d`.
+- Marker: schema 2, V2 active, 3,520 products, no rollback projection.
+- Desktop: 900 x 1900 x 800 fridge search returned 27 results with zero
+  browser console errors.
+- Mobile: 390 x 844 viewport returned results with no horizontal overflow.
+- Quarantined WHE6200SA page returns 404; newly generated comparison route
+  returns 200.
+- Sentinel: 30 URLs checked with zero failures; 28,676 links checked with zero
+  broken links; 2,331 pages and zero indexable orphans.
