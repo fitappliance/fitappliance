@@ -7,6 +7,7 @@ import { createRequire } from 'node:module';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const rumScriptPath = path.join(repoRoot, 'public', 'scripts', 'rum.js');
+const homepagePath = path.join(repoRoot, 'index.html');
 const apiPath = path.join(repoRoot, 'api', 'rum.js');
 const rateLimitPath = path.join(repoRoot, 'api', '_lib', 'ratelimit.js');
 const require = createRequire(import.meta.url);
@@ -76,6 +77,11 @@ test('production RUM imports Web Vitals from the same origin allowed by CSP', ()
   assert.match(source, /WEB_VITALS_MODULE\s*=\s*['"]\/scripts\/vendor\/web-vitals\.js['"]/);
   assert.doesNotMatch(source, /WEB_VITALS_MODULE\s*=\s*['"]https?:\/\//);
   assert.ok(fs.existsSync(path.join(repoRoot, 'public', 'scripts', 'vendor', 'web-vitals.js')));
+});
+
+test('homepage cache-busts the production RUM loader after vendor changes', () => {
+  const homepage = fs.readFileSync(homepagePath, 'utf8');
+  assert.match(homepage, /src="\/scripts\/rum\.js\?v=2"/);
 });
 
 test('phase 26 rum: API rejects non-POST requests', async () => {
