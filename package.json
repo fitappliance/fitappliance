@@ -9,7 +9,6 @@
   "scripts": {
     "build:canonical-registry": "node scripts/architecture-v2/build-canonical-registry.mjs",
     "build:retailer-ledger": "npm run build:canonical-registry && node scripts/architecture-v2/build-retailer-ledger.mjs",
-    "audit:fit-parity": "node scripts/architecture-v2/fit-parity-audit.mjs",
     "build:public-projection-v2": "npm run build:canonical-registry && node scripts/architecture-v2/build-public-projection.mjs",
     "build:source-document-registry": "node scripts/architecture-v2/build-source-document-registry.mjs",
     "audit:geometry-migration": "npm run build:source-document-registry && node scripts/architecture-v2/geometry-migration-audit.mjs",

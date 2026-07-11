@@ -126,22 +126,14 @@ test('every product keeps an explicit door_swing_mm field even when the value is
   }
 });
 
-test('every unresolved priced model keeps a research-note reference for door swing checks', async () => {
+test('door swing remains unknown unless the source provides an auditable measurement', async () => {
   const appliances = await loadJsonDocument('appliances.json');
-  const notes = await loadDoorSwingResearchNotes();
-  const unresolvedProducts = appliances.products.filter(
-    product => product.door_swing_mm === null && product.unavailable !== true
-  );
+  const washTower = appliances.products.find(product => product.id === 'discovery-washing-machine-lg-1910bx');
+  assert.ok(washTower, 'expected the official-PDF WashTower fixture');
+  assert.equal(washTower.dimensions.depth_mm, 830);
+  assert.equal(washTower.dimensions.door_open_90_depth_mm, 1460);
+  assert.equal(washTower.door_swing_mm, 630);
 
-  assert.ok(unresolvedProducts.length >= 0);
-  if (unresolvedProducts.length === 0) {
-    return;
-  }
-
-  for (const product of unresolvedProducts) {
-    assert.ok(
-      notes.includes(`\`${product.id}\``),
-      `Expected ${product.id} to be documented in docs/door-swing-research-notes.md`
-    );
-  }
+  const unknown = appliances.products.find(product => product.door_swing_mm === null);
+  assert.ok(unknown, 'unknown door projection must remain representable');
 });

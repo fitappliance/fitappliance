@@ -78,19 +78,22 @@ Last updated: 2026-07-11
 
 - `data/architecture-v2/public-catalog-projection.json` is the V2 runtime view
   for 2,259 non-quarantined products.
-- `data/architecture-v2/public-page-projection.json` is the evidence-page view
-  from the same canonical registry: 3,534 products, of which 1,753 currently
-  satisfy the existing PDF-evidence page gate.
+- `data/architecture-v2/public-catalog-projection.json` is the only public
+  projection: 3,520 products after 21 evidence/geometry quarantine decisions.
+- Product, brand, comparison and browser outputs all consume this projection;
+  1,739 products currently satisfy the evidence-page publication gate.
 - Legacy IDs remain the public URL identity and each row carries its canonical
   product ID.
-- No legacy runtime path has been deleted. Deletion must wait for production
-  cutover, browser QA, and the rollback window.
+- The legacy runtime snapshot, dual page projection, runtime selector and
+  environment-variable switch were deleted after owner approval on 2026-07-11.
+- Historical identifier mappings remain in
+  `data/architecture-v2/historical-identifier-mappings.json` for audit and URL
+  traceability.
 
 ## Rollback gate
 
-The owner has approved the public switch. Keep
-`data/architecture-v2/legacy-public-catalog.json` unchanged throughout the
-observation window. Roll back by setting `FITAPPLIANCE_CATALOG_PROJECTION` to
-`legacy` and redeploying, or by reverting the cutover commit.
+The legacy runtime rollback was retired with owner approval on 2026-07-11.
+Rollback now means reverting the Phase 7 commit and redeploying; there is no
+runtime environment switch and no second production catalog.
 
 The detailed requirement audit is in [`completion-audit.md`](./completion-audit.md).

@@ -1,7 +1,19 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-06-29",
+  "last_updated": "2026-05-20",
   "pilots": [
+    {
+      "productId": "ao-62313",
+      "cat": "fridge",
+      "brand": "Esatto",
+      "model": "EBF69S",
+      "modelSlug": "esatto-ebf69s",
+      "brandPageSlug": "esatto-fridge-clearance",
+      "cavityPageSlug": null,
+      "coverageCount": 62,
+      "retailers": 1,
+      "stars": null
+    },
     {
       "productId": "fridge-arf3598",
       "cat": "fridge",
@@ -13,18 +25,6 @@
       "coverageCount": 62,
       "retailers": 2,
       "stars": 4
-    },
-    {
-      "productId": "fridge-arf2472",
-      "cat": "fridge",
-      "brand": "CHIQ",
-      "model": "CRSR088DW",
-      "modelSlug": "chiq-crsr088dw",
-      "brandPageSlug": "chiq-fridge-clearance",
-      "cavityPageSlug": "520mm-fridge",
-      "coverageCount": 60,
-      "retailers": 2,
-      "stars": 3
     },
     {
       "productId": "dryer-acd0788",

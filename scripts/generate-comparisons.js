@@ -813,7 +813,7 @@ async function generateComparisonPages(options = {}) {
       alsoViewedComparisons,
       lastUpdated: row.lastUpdated
     });
-    await writeFile(row.filePath, html, 'utf8');
+    await writeFile(row.filePath, html.replace(/[ \t]+$/gm, ''), 'utf8');
   }
 
   rows.sort((left, right) => {

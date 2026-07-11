@@ -102,7 +102,6 @@ function applyManualRetailers(products, manualDocument) {
       return {
         ...product,
         brand: canonicalBrand,
-        unavailable: true,
       };
     }
 

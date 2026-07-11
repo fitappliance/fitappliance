@@ -669,7 +669,7 @@ ${sections}
 }
 
 async function loadCatalog(repoRoot) {
-  const text = await readFile(path.join(repoRoot, 'data', 'architecture-v2', 'public-page-projection.json'), 'utf8');
+  const text = await readFile(path.join(repoRoot, 'data', 'architecture-v2', 'public-catalog-projection.json'), 'utf8');
   const payload = JSON.parse(text);
   return Array.isArray(payload?.products) ? payload.products : [];
 }

@@ -320,7 +320,7 @@ async function generateCompareVsPages({
 
   const rows = selectCompareVsPairs(products, { targetPages });
   for (const row of rows) {
-    const html = buildCompareVsPageHtml({ row, renderCompareTable, lastUpdated });
+    const html = buildCompareVsPageHtml({ row, renderCompareTable, lastUpdated }).replace(/[ \t]+$/gm, '');
     await writeFile(path.join(outputDir, `${row.slug}.html`), html, 'utf8');
   }
 

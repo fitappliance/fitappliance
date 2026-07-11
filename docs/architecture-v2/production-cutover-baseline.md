@@ -47,20 +47,17 @@ evidence checks and its identity collides with a quarantined runtime row.
 
 ## Rollback
 
-The immutable rollback source is
-`data/architecture-v2/legacy-public-catalog.json`, SHA-256:
+The former runtime snapshot had SHA-256
 `52de8580c71d18be4206d328db950e902bc7ff92c2bc497c33ba985ef50c5349`.
-
-Set `FITAPPLIANCE_CATALOG_PROJECTION=legacy` and redeploy, or revert the
-cutover commits. Do not delete or regenerate the immutable rollback source
-during the observation window.
+It and the runtime environment switch were retired with owner approval on
+2026-07-11. A rollback now requires reverting the Phase 7 commit and
+redeploying; the historical identifier map remains available for traceability.
 
 ## Phase 7 exit gate
 
-Legacy runtime deletion is not authorised by this cutover. It requires a
-separate owner confirmation after observing production for indexing, search,
-runtime-error, and data-integrity regressions. Until then, the rollback source
-and projection selector remain supported production assets.
+Legacy runtime deletion was authorised after observing production for indexing,
+search, runtime-error, and data-integrity regressions. The historical mapping
+remains an audit asset; the runtime projection selector has been removed.
 
 ## Observation log
 

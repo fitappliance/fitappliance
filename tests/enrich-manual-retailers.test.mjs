@@ -55,7 +55,7 @@ test('manual retailer enrich: unapproved candidates are not merged', () => {
 
   const result = applyManualRetailers(products, manual);
 
-  assert.equal(result[0].unavailable, true);
+  assert.equal(result[0].unavailable, false, 'unapproved evidence must not change availability');
   assert.deepEqual(result[0].retailers, products[0].retailers);
   assert.notEqual(result, products, 'array copy should be returned even when no product changes');
 });
@@ -72,7 +72,7 @@ test('manual retailer enrich: approved entry merges into matching product by slu
   assert.equal(result[0].unavailable, false);
 });
 
-test('manual retailer enrich: approved entry without product-page URLs remains archived', () => {
+test('manual retailer enrich: approved entry without product-page URLs preserves existing availability', () => {
   const products = [makeProduct({ unavailable: false })];
   const manual = {
     products: {
@@ -87,10 +87,10 @@ test('manual retailer enrich: approved entry without product-page URLs remains a
 
   const result = applyManualRetailers(products, manual);
 
-  assert.equal(result[0].unavailable, true);
+  assert.equal(result[0].unavailable, false);
 });
 
-test('manual retailer enrich: products absent from manual source of truth are explicitly archived', () => {
+test('manual retailer enrich: products absent from manual source preserve existing availability', () => {
   const products = [makeProduct({
     unavailable: false,
     retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/stale-lg-gth560npl', p: null }],
@@ -98,8 +98,8 @@ test('manual retailer enrich: products absent from manual source of truth are ex
 
   const result = applyManualRetailers(products, { products: {} });
 
-  assert.equal(result[0].unavailable, true);
-  assert.equal(result[0].retailers.length, 1, 'archiving should not mutate existing retailer evidence');
+  assert.equal(result[0].unavailable, false);
+  assert.equal(result[0].retailers.length, 1, 'manual absence should not mutate existing retailer evidence');
 });
 
 test('manual retailer enrich: same retailer name replaces old entry instead of duplicating', () => {

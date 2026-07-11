@@ -16,6 +16,10 @@ function isNonNegativeInteger(value) {
   return Number.isInteger(value) && value >= 0;
 }
 
+function isNonNegativeNumber(value) {
+  return typeof value === 'number' && Number.isFinite(value) && value >= 0;
+}
+
 function isInRange(value, min, max) {
   return typeof value === 'number' && Number.isFinite(value) && value >= min && value <= max;
 }
@@ -81,8 +85,8 @@ function validateRetailer(retailer, productId, errors) {
     }
   }
 
-  if (!(retailer.p === null || isNonNegativeInteger(retailer.p))) {
-    errors.push(`Product ${productId} retailer price must be null or a non-negative integer`);
+  if (!(retailer.p === null || isNonNegativeNumber(retailer.p))) {
+    errors.push(`Product ${productId} retailer price must be null or a non-negative number`);
   }
 }
 
@@ -168,12 +172,12 @@ function validateProduct(product) {
     errors.push(`Product ${product.id ?? '<unknown>'} field d must be an integer in [200, 1500]`);
   }
 
-  if (!isNonNegativeInteger(product.kwh_year) || !isInRange(product.kwh_year, 50, 2000)) {
-    errors.push(`Product ${product.id ?? '<unknown>'} field kwh_year must be in [50, 2000]`);
+  if (product.kwh_year !== null && (!isNonNegativeInteger(product.kwh_year) || !isInRange(product.kwh_year, 50, 2000))) {
+    errors.push(`Product ${product.id ?? '<unknown>'} field kwh_year must be null or in [50, 2000]`);
   }
 
-  if (!Number.isInteger(product.stars) || !isInRange(product.stars, 1, 6)) {
-    errors.push(`Product ${product.id ?? '<unknown>'} field stars must be an integer in [1, 6]`);
+  if (product.stars !== null && (!Number.isInteger(product.stars) || !isInRange(product.stars, 1, 6))) {
+    errors.push(`Product ${product.id ?? '<unknown>'} field stars must be null or an integer in [1, 6]`);
   }
 
   if (

@@ -47,3 +47,18 @@ test('top-opening appliances require lid height instead of front door depth', ()
   assert.ok(audit.missingRequired.includes('operation.lidOpenHeightMm'));
   assert.ok(!audit.missingRequired.includes('operation.doorOpenDepthMm'));
 });
+
+test('WashTower geometry requires front-door operation and rear service space', () => {
+  const geometry = createCategoryGeometry('washtower_combo', {
+    ...shared,
+    operation: { doorOpenDepthMm: null },
+    service: { rearServicesMm: null },
+    delivery: {},
+  });
+  const audit = auditCategoryGeometry('washtower_combo', geometry);
+  assert.deepEqual(audit.missingRequired, [
+    'operation.doorOpenDepthMm',
+    'service.rearServicesMm',
+  ]);
+  assert.ok(audit.nonApplicable.includes('operation.lidOpenHeightMm'));
+});

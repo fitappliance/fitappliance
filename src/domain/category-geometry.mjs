@@ -21,6 +21,11 @@ const CONTRACTS = Object.freeze({
     optional: ['delivery.widthMm', 'delivery.heightMm', 'delivery.depthMm'],
     nonApplicable: ['operation.hingeSideSpaceMm', 'service.plumbingRearMm'],
   },
+  washtower_combo: {
+    required: ['operation.doorOpenDepthMm', 'service.rearServicesMm'],
+    optional: ['delivery.widthMm', 'delivery.heightMm', 'delivery.depthMm'],
+    nonApplicable: ['operation.hingeSideSpaceMm', 'operation.lidOpenHeightMm', 'service.plumbingRearMm'],
+  },
 });
 
 const FORM_FACTOR_REQUIRED = Object.freeze({

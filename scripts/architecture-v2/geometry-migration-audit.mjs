@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import { migrateGeometry, auditImpossibleGeometry } from '../../src/domain/geometry-migration.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
-const catalog = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/legacy-public-catalog.json'), 'utf8'));
+const catalog = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/public-catalog-projection.json'), 'utf8'));
 const sourceRegistry = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/source-documents.json'), 'utf8'));
 const approvedEvidence = sourceRegistry.documents
   .filter((document) => document.state === 'approved')

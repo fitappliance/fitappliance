@@ -414,6 +414,26 @@
       h: toMm(filters?.h),
       d: toMm(filters?.d)
     };
+    const spare = Object.fromEntries(axisGaps.map((entry) => [`${entry.axis}Mm`, entry.gapMm]));
+    const hasCompleteGeometry = ['widthMm', 'heightMm', 'depthMm'].every((axis) => Number.isFinite(spare[axis]));
+    const evidenceLevel = String(product?.evidence?.trust_level ?? product?.trust_level ?? '') === 'verified_fit'
+      ? 'verified'
+      : 'none';
+    const fitDecision = {
+      outcome: axisSpare.some((gap) => Number.isFinite(gap) && gap < 0)
+        ? 'NO_FIT'
+        : !hasCompleteGeometry
+          ? 'INSUFFICIENT_DATA'
+          : evidenceLevel === 'verified'
+            ? 'VERIFIED_FIT'
+            : 'LIKELY_FIT_ESTIMATED',
+      spare: {
+        widthMm: spare.widthMm ?? null,
+        heightMm: spare.heightMm ?? null,
+        depthMm: spare.depthMm ?? null
+      },
+      evidenceLevel
+    };
 
     return {
       fitScore,
@@ -451,7 +471,8 @@
         options.brandSpecificClearance,
         category,
         product?.brand
-      )
+      ),
+      fitDecision
     };
   }
 
@@ -573,6 +594,7 @@
       sizeMatchGaps: fitMeta.sizeMatchGaps,
       bindingAxis: fitMeta.bindingAxis,
       tightestGapMm: fitMeta.tightestGapMm,
+      fitDecision: fitMeta.fitDecision,
       showPopularityBadge: Number(product?.priorityScore ?? 0) >= 70,
       sku: String(product?.model ?? '').trim().split(/\s+/)[0] ?? '',
       url: buildProductUrl(product, filters)
@@ -745,7 +767,7 @@
           replacementSourceCategory: nextFilters.replacementSourceCategory
         });
         if (!fitMeta) return null;
-        if (!fitMeta.requiredClearancePass) return null;
+        if (fitMeta.fitDecision.outcome === 'NO_FIT') return null;
         if (fitMeta.fitScore < fitMeta.threshold) return null;
         return buildResult(product, fitMeta, nextFilters);
       })

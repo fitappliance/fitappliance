@@ -134,9 +134,17 @@ test('phase 48 retailer-only: wide fridge search prefers retailer-verified rows 
 
 test('phase 48 retailer-only: tight cavity with no retailer-verified products has transparent fallback', async () => {
   const { searchWithFacets } = await loadSearchCore();
-  const products = JSON.parse(fs.readFileSync(path.join(repoRoot, 'public', 'data', 'fridges.json'), 'utf8')).products;
-  // Pick a cavity that fits some products but where none of them have retailer data,
-  // so the fallback (retailerOnly=false) is the only way to surface results.
+  const products = [
+    makeProduct({ id: 'catalog-only-compact', w: 440, h: 800, d: 480 }),
+    makeProduct({
+      id: 'retailer-too-wide',
+      w: 590,
+      h: 800,
+      d: 480,
+      unavailable: false,
+      retailers: [{ n: 'JB Hi-Fi', url: 'https://www.jbhifi.com.au/products/retailer-too-wide' }]
+    })
+  ];
   const tightCavity = { cat: 'fridge', w: 450, h: 850, d: 500, toleranceMm: 0 };
   const retailerResult = searchWithFacets(products, tightCavity, {}, { limit: Number.MAX_SAFE_INTEGER });
   const allResult = searchWithFacets(products, tightCavity, {}, {

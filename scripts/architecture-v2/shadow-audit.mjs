@@ -129,7 +129,7 @@ function main(args) {
   if (args.length > 0) {
     throw new TypeError('shadow audit accepts no arguments or output path');
   }
-  const catalog = readJson(path.join(repoRoot, 'data/architecture-v2/legacy-public-catalog.json'));
+  const catalog = readJson(path.join(repoRoot, 'data/architecture-v2/public-catalog-projection.json'));
   const evidencePath = path.join(repoRoot, 'public/data/evidence-index.json');
   const evidence = existsSync(evidencePath) ? readJson(evidencePath) : null;
   process.stdout.write(`${JSON.stringify(auditCatalog(catalog, evidence), null, 2)}\n`);
