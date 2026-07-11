@@ -170,12 +170,12 @@ Files:
 
 Steps:
 
-- [ ] Capture all nine legacy IDs, brands, models, current dimensions, evidence
+- [x] Capture all nine legacy IDs, brands, models, current dimensions, evidence
   tier, endpoint result, and blocking reason.
-- [ ] Add a deterministic test asserting the baseline contains exactly nine
+- [x] Add a deterministic test asserting the baseline contains exactly nine
   unique products.
-- [ ] Assert that each row remains quarantined before aliases are introduced.
-- [ ] Record source retrieval dates; do not store authenticated cookies or
+- [x] Assert that each row remains quarantined before aliases are introduced.
+- [x] Record source retrieval dates; do not store authenticated cookies or
   private feed URLs.
 
 Verification:
@@ -201,16 +201,16 @@ Files:
 
 TDD sequence:
 
-- [ ] Test valid pending and approved records.
-- [ ] Test exact-model self-alias rejection.
-- [ ] Test missing reviewer, hash, page, quote, authorship, or transport.
-- [ ] Test unsupported approved fields.
-- [ ] Test duplicate and contradictory active records.
-- [ ] Test supersession rules.
-- [ ] Test deterministic normalized lookup by brand and target model.
-- [ ] Confirm RED before implementation.
-- [ ] Implement the minimum immutable contract.
-- [ ] Confirm GREEN.
+- [x] Test valid pending and approved records.
+- [x] Test exact-model self-alias rejection.
+- [x] Test missing reviewer, hash, page, quote, authorship, or transport.
+- [x] Test unsupported approved fields.
+- [x] Test duplicate and contradictory active records.
+- [x] Test supersession rules.
+- [x] Test deterministic normalized lookup by brand and target model.
+- [x] Confirm RED before implementation.
+- [x] Implement the minimum immutable contract.
+- [x] Confirm GREEN.
 
 Required interface:
 
@@ -236,13 +236,13 @@ Files:
 
 Steps:
 
-- [ ] Require an approved registry record when `identityMatch` is `alias`.
-- [ ] Require the requested field to be in the alias record's approved scope.
-- [ ] Preserve the alias decision ID in approved field evidence.
-- [ ] Reject an alias approved for dimensions when used for clearance.
-- [ ] Reject an alias whose brand, target model, or source model differs.
-- [ ] Keep retailer-only evidence below the manufacturer approval boundary.
-- [ ] Ensure exact-identity evidence remains unaffected.
+- [x] Require an approved registry record when `identityMatch` is `alias`.
+- [x] Require the requested field to be in the alias record's approved scope.
+- [x] Preserve the alias decision ID in approved field evidence.
+- [x] Reject an alias approved for dimensions when used for clearance.
+- [x] Reject an alias whose brand, target model, or source model differs.
+- [x] Keep retailer-only evidence below the manufacturer approval boundary.
+- [x] Ensure exact-identity evidence remains unaffected.
 
 Acceptance examples:
 

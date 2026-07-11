@@ -343,6 +343,8 @@ relevant generator and browser screenshot/interaction checks before completion.
 | 2026-07-11 | `2057cacd` | 1 | Field-level official dimensions projected into shadow geometry. |
 | 2026-07-11 | `1e79081b` | 1/4 | Official factsheet fallback and retailer-source precedence correction. |
 | 2026-07-11 | `b308983e` | 1 | Seven additional exact dimension records; quarantine reached 9. |
+| 2026-07-11 | `d742e71e` | 1 | Frozen nine-row baseline and immutable pending/approved alias registry. |
+| 2026-07-11 | `1b787822` | 1 | Field evidence requires registry-backed alias approval; alias audit reports 8 pending and 1 no-source quarantine. |
 
 Future batches must append a row with the measured audit result, not only a
 description of code changes.
