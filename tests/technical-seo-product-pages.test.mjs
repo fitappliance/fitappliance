@@ -239,7 +239,7 @@ test('technical SEO: product page exposes V2 field review without claiming clear
       verified_fields: ['dimensions'],
       clearance_verified: false,
       v2_review: {
-        status: 'dimensions_approved',
+        status: 'phase10_reviewed',
         reviewed_at: '2026-07-11',
         approved_fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
         source_document_id: 'doc-test',
@@ -286,8 +286,8 @@ test('technical SEO: product page separates approved installation and operation 
 
 test('technical SEO: generated product pages include only PDF-verified SKUs', async () => {
   const rootDir = await fs.mkdtemp(path.join(os.tmpdir(), 'fitappliance-product-pages-'));
-  await fs.mkdir(path.join(rootDir, 'data', 'architecture-v2'), { recursive: true });
-  await fs.writeFile(path.join(rootDir, 'data', 'architecture-v2', 'public-catalog-projection.json'), `${JSON.stringify({
+  await fs.mkdir(path.join(rootDir, 'data', 'architecture-v2', 'generated'), { recursive: true });
+  await fs.writeFile(path.join(rootDir, 'data', 'architecture-v2', 'generated', 'public-catalog-projection.json'), `${JSON.stringify({
     products: [
       makeProduct(),
       makeProduct({

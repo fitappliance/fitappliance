@@ -57,9 +57,9 @@ and close every pending alias disposition without weakening approval gates.
 
 ## Phase 10E: Verification and production
 
-- [ ] Run focused TDD, Architecture V2, full test, lint, schema, documentation,
+- [x] Run focused TDD, Architecture V2, full test, lint, schema, documentation,
   geometry, alias and object-integrity gates.
-- [ ] Run desktop and 390 x 844 browser QA on representative trust states.
+- [x] Run desktop and 390 x 844 browser QA on representative trust states.
 - [ ] Commit, push, wait for Vercel Ready and run production Sentinel.
 - [ ] Update the completion audit, Phase 10 report and permanent project memory.
 

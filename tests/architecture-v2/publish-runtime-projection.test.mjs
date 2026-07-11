@@ -17,7 +17,8 @@ test('phase 7 removes legacy runtime files and dual-projection code paths', () =
   const publisherSource = readFileSync(path.join(root, 'scripts/architecture-v2/publish-runtime-projection.js'), 'utf8');
   const productGenerator = readFileSync(path.join(root, 'scripts/generate-product-pages.js'), 'utf8');
   assert.doesNotMatch(publisherSource, /FITAPPLIANCE_CATALOG_PROJECTION|rollbackProjection|legacy-public-catalog/);
-  assert.match(productGenerator, /public-catalog-projection\.json/);
+  assert.match(productGenerator, /architecture-v2['"],\s*'generated['"],\s*'public-catalog-projection\.json/);
+  assert.doesNotMatch(productGenerator, /architecture-v2['"],\s*'public-catalog-projection\.json/);
   assert.doesNotMatch(productGenerator, /public-page-projection\.json/);
 });
 

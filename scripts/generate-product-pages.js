@@ -210,9 +210,15 @@ function buildV2ReviewHtml(product) {
     const label = labels[field] ?? field;
     return `<li>${escHtml(`${label.charAt(0).toUpperCase()}${label.slice(1)}: ${value} mm`)}</li>`;
   }).join('');
-  const limitation = review.status === 'space_partially_approved'
+  const approvedFields = new Set(review.approved_fields ?? []);
+  const hasApprovedDimensions = [
+    'closedEnvelope.widthMm',
+    'closedEnvelope.heightMm',
+    'closedEnvelope.depthMm'
+  ].every((field) => approvedFields.has(field));
+  const limitation = Object.keys(spaceValues).length > 0
     ? 'These fields are approved individually. Verified Fit is not granted because the remaining space requirements are unknown.'
-    : review.status === 'dimensions_approved'
+    : hasApprovedDimensions
       ? 'Installation clearance remains unapproved and is shown only as an estimate.'
       : 'The document did not pass the complete three-axis identity and field review gate.';
   return `\n    <section class="sku-panel" style="margin-top:24px" data-v2-evidence-review>
@@ -726,7 +732,13 @@ ${sections}
 }
 
 async function loadCatalog(repoRoot) {
-  const text = await readFile(path.join(repoRoot, 'data', 'architecture-v2', 'public-catalog-projection.json'), 'utf8');
+  const text = await readFile(path.join(
+    repoRoot,
+    'data',
+    'architecture-v2',
+    'generated',
+    'public-catalog-projection.json'
+  ), 'utf8');
   const payload = JSON.parse(text);
   return Array.isArray(payload?.products) ? payload.products : [];
 }
