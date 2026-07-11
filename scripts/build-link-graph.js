@@ -75,6 +75,21 @@ function extractHrefValues(html) {
   return [...matches].map((match) => match[2]);
 }
 
+function isIndexableHtml(html) {
+  for (const match of String(html || '').matchAll(/<meta\b([^>]*)>/gi)) {
+    const attributes = new Map();
+    for (const attribute of match[1].matchAll(/([\w:-]+)\s*=\s*(['"])(.*?)\2/gi)) {
+      attributes.set(attribute[1].toLowerCase(), attribute[3].toLowerCase());
+    }
+    if (attributes.get('name') !== 'robots') continue;
+    const directives = String(attributes.get('content') || '')
+      .split(',')
+      .map((directive) => directive.trim());
+    if (directives.includes('noindex')) return false;
+  }
+  return true;
+}
+
 async function buildLinkGraph({
   repoRoot = path.resolve(__dirname, '..'),
   outputPath = path.join(repoRoot, 'reports', 'link-graph.json'),
@@ -90,7 +105,8 @@ async function buildLinkGraph({
   for (const filePath of htmlFiles) {
     const url = toPageUrl(repoRoot, filePath);
     if (!url) continue;
-    pages.push({ filePath, url });
+    const html = await readFile(filePath, 'utf8');
+    pages.push({ filePath, url, html, indexable: isIndexableHtml(html) });
   }
 
   const urlSet = new Set(pages.map((page) => page.url));
@@ -98,8 +114,7 @@ async function buildLinkGraph({
   const outMap = new Map(pages.map((page) => [page.url, new Set()]));
 
   for (const page of pages) {
-    const html = await readFile(page.filePath, 'utf8');
-    for (const href of extractHrefValues(html)) {
+    for (const href of extractHrefValues(page.html)) {
       const normalized = normalizeHrefToInternalUrl(href, baseUrl);
       if (!normalized || !urlSet.has(normalized)) continue;
       if (normalized === page.url) continue;
@@ -112,13 +127,16 @@ async function buildLinkGraph({
     .map((page) => ({
       url: page.url,
       file: path.relative(repoRoot, page.filePath).replace(/\\/g, '/'),
+      indexable: page.indexable,
       inlinks: inMap.get(page.url).size,
       outlinks: outMap.get(page.url).size
     }))
     .sort((left, right) => left.url.localeCompare(right.url));
 
   const totalEdges = nodes.reduce((sum, node) => sum + node.outlinks, 0);
-  const orphanUrls = nodes.filter((node) => node.inlinks === 0).map((node) => node.url);
+  const orphanUrls = nodes
+    .filter((node) => node.indexable && node.inlinks === 0)
+    .map((node) => node.url);
   const averageInlinks = nodes.length > 0
     ? nodes.reduce((sum, node) => sum + node.inlinks, 0) / nodes.length
     : 0;
@@ -151,6 +169,7 @@ if (require.main === module) {
 
 module.exports = {
   buildLinkGraph,
+  isIndexableHtml,
   normalizeHrefToInternalUrl,
   toPageUrl
 };

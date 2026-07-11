@@ -2,6 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+const { isIndexableHtml } = require('../scripts/build-link-graph.js');
 
 const ROOT = process.cwd();
 const HUB_SLUGS = [
@@ -15,6 +19,12 @@ const HUB_SLUGS = [
 function readText(relativePath) {
   return fs.readFileSync(path.join(ROOT, relativePath), 'utf8');
 }
+
+test('phase 7 observation: noindex workflow pages are not orphan candidates', () => {
+  assert.equal(isIndexableHtml('<meta name="robots" content="noindex, follow">'), false);
+  assert.equal(isIndexableHtml('<meta content="nofollow, noindex" name="robots">'), false);
+  assert.equal(isIndexableHtml('<meta name="robots" content="index, follow">'), true);
+});
 
 test('phase 21: build-link-graph script exists and writes report target', () => {
   const scriptPath = path.join(ROOT, 'scripts', 'build-link-graph.js');

@@ -61,3 +61,20 @@ Legacy runtime deletion is not authorised by this cutover. It requires a
 separate owner confirmation after observing production for indexing, search,
 runtime-error, and data-integrity regressions. Until then, the rollback source
 and projection selector remain supported production assets.
+
+## Observation log
+
+### 2026-07-11 - Observation 1
+
+- Latest production deployment remained Ready.
+- IndexNow post-deploy workflow completed successfully.
+- Uptime check: 30 URLs checked, 0 failures.
+- Broken-link check: 28,881 links checked, 0 broken links.
+- Link graph: 2,347 pages and 24,556 edges.
+- The initial Sentinel run identified `/subscribe/thanks` as an orphan. The
+  page is an intentional form-confirmation destination with `noindex, follow`,
+  so adding it to public navigation would have been incorrect.
+- The link-graph audit now records every page's indexability and applies the
+  orphan failure gate only to indexable pages. Focused tests passed 13/13.
+- Final complete Sentinel result: 0 uptime failures, 0 broken links and 0
+  indexable orphan pages.
