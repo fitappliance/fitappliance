@@ -116,9 +116,11 @@ Geometry is split by purpose:
 Phase 0 implements closed-envelope and installation measurements. Operation and
 delivery remain explicit unknown checks rather than invented values.
 
-Measurements use millimetres and positive finite numbers. Height can be a range
-to support adjustable feet. Every promoted measurement can point to field-level
-evidence.
+Measurements use millimetres. Closed dimensions are positive finite numbers;
+clearances are non-negative finite numbers because an explicit manufacturer
+requirement of `0 mm` is meaningful and is not equivalent to unknown `null`.
+Height can be a range to support adjustable feet. Every promoted measurement can
+point to field-level evidence.
 
 ### Evidence
 

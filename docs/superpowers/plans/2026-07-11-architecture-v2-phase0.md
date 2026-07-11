@@ -85,8 +85,10 @@ git commit -m "feat: add canonical product identity contract"
 
 - [ ] **Step 1: Write failing geometry tests**
 
-Cover positive finite measurements, adjustable height ranges, unknown
-clearances, rejection of zero/negative/NaN values, and no input mutation.
+Cover positive finite closed dimensions, non-negative finite clearances,
+adjustable height ranges, unknown clearances, rejection of invalid values, and
+no input mutation. An explicit manufacturer requirement of `0 mm` is valid and
+must remain distinct from unknown `null`.
 
 - [ ] **Step 2: Verify RED**
 
