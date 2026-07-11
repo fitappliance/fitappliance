@@ -87,6 +87,9 @@ Acceptance evidence:
 
 ## Phase 1: Finish Dimension Quarantine
 
+Detailed execution plan:
+[`phase1-quarantine-alias-plan.md`](./phase1-quarantine-alias-plan.md).
+
 ### Goal
 
 Resolve each of the remaining nine rows through exact evidence or an explicit
@@ -351,4 +354,3 @@ description of code changes.
 3. Research the remaining nine quarantined models without family inference.
 4. Produce a Phase 1 completion report even if unresolved rows remain.
 5. Start canonical identity inventory before broad retailer ingestion changes.
-
