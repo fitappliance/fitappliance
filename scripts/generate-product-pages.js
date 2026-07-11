@@ -166,6 +166,33 @@ function getEvidenceTrustCopy(product) {
   };
 }
 
+function formatReviewDate(value) {
+  const match = String(value ?? '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return String(value ?? 'Unknown date');
+  return `${Number(match[3])} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][Number(match[2]) - 1]} ${match[1]}`;
+}
+
+function buildV2ReviewHtml(product) {
+  const review = product?.evidence?.v2_review;
+  if (!review) return '';
+  const labels = {
+    'closedEnvelope.widthMm': 'width',
+    'closedEnvelope.heightMm': 'height',
+    'closedEnvelope.depthMm': 'depth',
+  };
+  const approved = (review.approved_fields ?? []).map((field) => labels[field] ?? field);
+  const approvedCopy = approved.length ? approved.join(', ') : 'No physical dimensions';
+  const limitation = review.status === 'dimensions_approved'
+    ? 'Installation clearance remains unapproved and is shown only as an estimate.'
+    : 'The document did not pass the complete three-axis identity and field review gate.';
+  return `\n    <section class="sku-panel" style="margin-top:24px" data-v2-evidence-review>
+    <h2>Architecture V2 evidence review</h2>
+    <p><strong>Approved fields:</strong> ${escHtml(approvedCopy.charAt(0).toUpperCase() + approvedCopy.slice(1))}</p>
+    <p><strong>Reviewed:</strong> ${escHtml(formatReviewDate(review.reviewed_at))}</p>
+    <p>${escHtml(limitation)}</p>
+  </section>`;
+}
+
 function selectVerifiedProducts(products) {
   return [...(Array.isArray(products) ? products : [])]
     .filter((product) => (
@@ -571,7 +598,7 @@ ${isFinitePositive(product?.dimensions?.door_open_90_depth_mm) ? `            <t
         ${sourceUrl ? `<a href="${escAttr(sourceUrl)}" target="_blank" rel="noopener">${escHtml(trustCopy.sourceLabel)}</a>` : escHtml(trustCopy.sourceLabel)}
         ${product?.evidence?.verified_at ? ` · Verified ${escHtml(product.evidence.verified_at)}` : ''}
       </div>
-    </section>
+    </section>${buildV2ReviewHtml(product)}
     <section class="sku-panel" style="margin-top:24px">
       <h2>Retailer availability</h2>
       <div class="retailer-strip">${renderRetailerLinks(product)}</div>

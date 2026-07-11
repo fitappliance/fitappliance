@@ -8,6 +8,9 @@
   },
   "scripts": {
     "build:canonical-registry": "node scripts/architecture-v2/build-canonical-registry.mjs",
+    "build:evidence-pilot": "node scripts/architecture-v2/build-evidence-pilot.mjs",
+    "build:evidence-review-bundles": "node scripts/architecture-v2/build-evidence-review-bundles.mjs",
+    "build:evidence-review-manifest": "node scripts/architecture-v2/build-evidence-pilot-review-manifest.mjs",
     "build:retailer-ledger": "npm run build:canonical-registry && node scripts/architecture-v2/build-retailer-ledger.mjs",
     "build:public-projection-v2": "npm run build:canonical-registry && node scripts/architecture-v2/build-public-projection.mjs",
     "build:source-document-registry": "node scripts/architecture-v2/build-source-document-registry.mjs",

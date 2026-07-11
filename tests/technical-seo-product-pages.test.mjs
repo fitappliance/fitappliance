@@ -231,6 +231,28 @@ test('technical SEO: dimensions-only and retailer spec pages avoid Verified Fit 
   assert.doesNotMatch(retailerSpec, /Verified Cavity Fit/);
 });
 
+test('technical SEO: product page exposes V2 field review without claiming clearance approval', () => {
+  const html = buildProductPageHtml(makeProduct({
+    evidence: {
+      has_pdf_evidence: true,
+      trust_level: 'dimensions_verified',
+      verified_fields: ['dimensions'],
+      clearance_verified: false,
+      v2_review: {
+        status: 'dimensions_approved',
+        reviewed_at: '2026-07-11',
+        approved_fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+        source_document_id: 'doc-test',
+      },
+    },
+  }));
+  assert.match(html, /Architecture V2 evidence review/);
+  assert.match(html, /Width, height, depth/);
+  assert.match(html, /Reviewed:<\/strong> 11 Jul 2026/);
+  assert.match(html, /Installation clearance remains unapproved/);
+  assert.doesNotMatch(html, /Clearance approved/);
+});
+
 test('technical SEO: generated product pages include only PDF-verified SKUs', async () => {
   const rootDir = await fs.mkdtemp(path.join(os.tmpdir(), 'fitappliance-product-pages-'));
   await fs.mkdir(path.join(rootDir, 'data', 'architecture-v2'), { recursive: true });

@@ -45,6 +45,7 @@ export function createSourceDocument(input) {
 
 function validateApproval(document) {
   if (!['exact', 'approved_alias'].includes(document.identityOutcome)) throw new TypeError('approved document requires matched identity');
+  if (!/^[a-f0-9]{64}$/i.test(String(document.sha256 ?? ''))) throw new TypeError('approved document requires sha256');
   if (!document.parserVersion || !Number.isInteger(document.pageCount) || document.pageCount < 1) throw new TypeError('approved document requires parser and page count');
   if (!document.fields.length || document.fields.some((field) => !field.field || !Number.isInteger(field.page) || field.page < 1 || !String(field.quote ?? '').trim())) {
     throw new TypeError('approved document requires page-level field evidence');

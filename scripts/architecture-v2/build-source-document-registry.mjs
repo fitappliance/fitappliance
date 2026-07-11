@@ -3,12 +3,15 @@ import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { createSourceDocument } from '../../src/domain/source-document.mjs';
+import { applyEvidencePilotReview } from '../../src/domain/evidence-review.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
 const manual = JSON.parse(await readFile(resolve(root, 'data/manual-evidence.json'), 'utf8'));
 const canonical = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/canonical-registry.json'), 'utf8'));
+const reviewBundles = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/evidence-review-bundles.json'), 'utf8'));
+const reviewManifest = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/evidence-pilot-review-manifest.json'), 'utf8'));
 const canonicalByLegacy = new Map(canonical.identifierMappings.map((row) => [row.legacyRuntimeId, row.canonicalProductId]));
-const documents = [];
+let documents = [];
 for (const [legacyId, product] of Object.entries(manual.products ?? {})) {
   for (const [index, evidence] of (product.evidence ?? []).entries()) {
     if (!evidence.source_url) continue;
@@ -36,6 +39,34 @@ for (const [legacyId, product] of Object.entries(manual.products ?? {})) {
     }));
   }
 }
+const reviewResults = applyEvidencePilotReview({ bundles: reviewBundles.bundles, manifest: reviewManifest });
+const manifestByLegacy = new Map(reviewManifest.reviews.map((row) => [row.legacyRuntimeId, row]));
+const bundleByDocument = new Map(reviewBundles.bundles.map((row) => [row.sourceDocument.id, row]));
+const resultsByDocument = Map.groupBy(reviewResults, (row) => row.sourceDocumentId);
+documents = documents.map((document) => {
+  const results = resultsByDocument.get(document.id);
+  if (!results) return document;
+  const bundle = bundleByDocument.get(document.id);
+  const review = manifestByLegacy.get(bundle.product.legacyRuntimeId);
+  const approved = results.filter((row) => row.status === 'approved');
+  const approvedNames = new Set(approved.map((row) => row.field));
+  const completeDimensions = [
+    'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+  ].every((field) => approvedNames.has(field));
+  const state = completeDimensions ? 'approved' : approved.length ? 'reviewed' : 'quarantined';
+  return createSourceDocument({
+    ...document,
+    ...review.document,
+    fields: results.map((row) => ({
+      field: row.field, value: row.value, unit: row.unit, page: row.page,
+      quote: row.quote, status: row.status, reason: row.reason,
+      reviewer: row.reviewer, reviewedAt: row.reviewedAt,
+    })),
+    state,
+    history: [{ from: 'legacy_quarantined', to: 'reviewed', reviewedAt: reviewManifest.reviewedAt }],
+    rejectionReason: state === 'quarantined' ? results[0].reason : null,
+  });
+});
 documents.sort((a, b) => a.id.localeCompare(b.id));
 const report = {
   schemaVersion: 1, documents,
@@ -44,6 +75,7 @@ const report = {
     exactIdentity: documents.filter((row) => row.identityOutcome === 'exact').length,
     manufacturerTransport: documents.filter((row) => row.transportHostType === 'manufacturer').length,
     approved: documents.filter((row) => row.state === 'approved').length,
+    reviewed: documents.filter((row) => row.state === 'reviewed').length,
     quarantined: documents.filter((row) => row.state === 'quarantined').length,
   },
 };

@@ -17,7 +17,7 @@ also exists.
 | 3 | Live major-retailer collection | Partial | TGG Partnerize is authorised; Bing Lee is historical-only; AO/HN/JB remain disabled pending terms review |
 | 3 | Reproducible raw collection | Partial | New adapter requires raw hash/reference; historical raw payloads cannot be reconstructed |
 | 4 | PDF state machine and common adapter contract | Complete in shadow | Payload signature, lifecycle, hash dedup links, identity and controlled OCR contracts exist |
-| 4 | Migrate legacy approvals | Incomplete by evidence | 2,005 legacy documents quarantined; zero meet complete V2 page/quote/hash/parser provenance |
+| 4 | Migrate legacy approvals | Pilot complete | 10 approved, 3 reviewed and 1,992 quarantined documents after the first 20-model field review |
 | 4 | Replace brand-specific resolver entry points | Complete at shared gate | All batch resolver results pass through the common source-result contract; brand discovery remains adapter-specific |
 | 5 | Category/form-factor geometry contracts | Complete | Installation, operation, service and delivery are separate; top/front opening and WashTower contracts differ |
 | 5 | Approved clearance migration | Complete but empty | Evidence-only migrator ran; 0/3,520 products have V2-approved installation evidence |
@@ -31,7 +31,7 @@ also exists.
 
 ## Current hard gates
 
-1. V2 cannot claim Verified Fit while the approved document count is zero.
+1. V2 cannot claim Verified Fit from the Phase 8 pilot because its ten approved documents cover dimensions only and no installation-clearance field is approved.
 2. Legacy resolver deletion is unsafe until every active manufacturer adapter
    is routed through the common document contract.
 3. Automated public retailer collection remains disabled where terms/path

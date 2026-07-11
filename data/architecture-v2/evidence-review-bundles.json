@@ -1,0 +1,1226 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-20",
+  "bundles": [
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "ao-92114",
+        "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+        "category": "fridge",
+        "brand": "Fisher & Paykel",
+        "model": "RF605QZUVB1",
+        "dimensions": {
+          "widthMm": 905,
+          "heightMm": 1790,
+          "depthMm": 688
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_06e6f7a227e50660c2073cbd",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+        "finalUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "manufacturer",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-20T00:00:00.000Z",
+        "sha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+        "pageCount": 3,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "exact"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/RF605QZUVB1.json",
+        "available": true,
+        "metadataModel": "RF605QZUVB1"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 905,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Product dimensions: Depth 688 mm; Height 1790 mm; Width 905 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 1790,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Product dimensions: Depth 688 mm; Height 1790 mm; Width 905 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 688,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Product dimensions: Depth 688 mm; Height 1790 mm; Width 905 mm",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "ao-48444",
+        "canonicalProductId": "fa_prod_24e6e3527502e1803fd96159",
+        "category": "fridge",
+        "brand": "Fisher & Paykel",
+        "model": "RF522ADUSX5",
+        "dimensions": {
+          "widthMm": 790,
+          "heightMm": 1715,
+          "depthMm": 695
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_4fe6310c39957af167279d10",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8b42e8ee/QRG/AU/QRG-AU-26404.pdf",
+        "finalUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8b42e8ee/QRG/AU/QRG-AU-26404.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "manufacturer",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-20T00:00:00.000Z",
+        "sha256": "fdfd4107f7caa241eb3c29668296780378b5db639ab04bb5e44f408c9ed17ef4",
+        "pageCount": 3,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "ambiguous"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/RF522ADUSX5.json",
+        "available": true,
+        "metadataModel": "RF522ADUSX5"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 790,
+          "unit": "mm",
+          "page": 1,
+          "quote": "No exact identity approval: exact_sales_model_not_visible_on_rendered_page",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 1715,
+          "unit": "mm",
+          "page": 1,
+          "quote": "No exact identity approval: exact_sales_model_not_visible_on_rendered_page",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 695,
+          "unit": "mm",
+          "page": 1,
+          "quote": "No exact identity approval: exact_sales_model_not_visible_on_rendered_page",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "ao-48469",
+        "canonicalProductId": "fa_prod_2a166709ec2d38e57d5c5f58",
+        "category": "fridge",
+        "brand": "Fisher & Paykel",
+        "model": "RF610ADUSX5",
+        "dimensions": {
+          "widthMm": 900,
+          "heightMm": 1790,
+          "depthMm": 695
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_2e71d027b15be05635d72e3d",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
+        "finalUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "manufacturer",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-20T00:00:00.000Z",
+        "sha256": "b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8",
+        "pageCount": 3,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "ambiguous"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/RF610ADUSX5.json",
+        "available": true,
+        "metadataModel": "RF610ADUSX5"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 900,
+          "unit": "mm",
+          "page": 1,
+          "quote": "No exact identity approval: exact_sales_model_not_visible_on_rendered_page",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 1790,
+          "unit": "mm",
+          "page": 1,
+          "quote": "No exact identity approval: exact_sales_model_not_visible_on_rendered_page",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 695,
+          "unit": "mm",
+          "page": 1,
+          "quote": "No exact identity approval: exact_sales_model_not_visible_on_rendered_page",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "fridge-arf3512",
+        "canonicalProductId": "fa_prod_9fb12d0d5028078037ad0bd3",
+        "category": "fridge",
+        "brand": "Hisense",
+        "model": "HRBF126",
+        "dimensions": {
+          "widthMm": 475,
+          "heightMm": 840,
+          "depthMm": 556
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_c4a42742c056798e23024c08",
+        "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBF126-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDU4NTN8YXBwbGljYXRpb24vcGRmfGFESTNMMmd3TXk4NE9ETXpPREV4TlRjNE9URXdMMGhTUWtZeE1qWXRVM0JsWXk1d1pHWXw4NWU4M2Y1YjExODUyZGRmMjc4ZjdmY2QwOGJkMTE4NjUxOGRjMzA4MWE0ZTQ4MjU1ZjJhZGRjZDhkZGEzYzY3",
+        "finalUrl": "https://dtc-aus-api.hisense.com/medias/HRBF126-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDU4NTN8YXBwbGljYXRpb24vcGRmfGFESTNMMmd3TXk4NE9ETXpPREV4TlRjNE9URXdMMGhTUWtZeE1qWXRVM0JsWXk1d1pHWXw4NWU4M2Y1YjExODUyZGRmMjc4ZjdmY2QwOGJkMTE4NjUxOGRjMzA4MWE0ZTQ4MjU1ZjJhZGRjZDhkZGEzYzY3",
+        "authorType": "manufacturer",
+        "transportHostType": "unknown",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-20T00:00:00.000Z",
+        "sha256": "6c9b8413e7027756b02248f0ff847320958cf0369fb67b9ce3819d55e2521f94",
+        "pageCount": 2,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "exact"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/HRBF126.json",
+        "available": true,
+        "metadataModel": "HRBF126"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 475,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Dimensions (Net) (W X H X D) 475 x 840 x 556 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 840,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Dimensions (Net) (W X H X D) 475 x 840 x 556 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 556,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Dimensions (Net) (W X H X D) 475 x 840 x 556 mm",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "fridge-arf3453",
+        "canonicalProductId": "fa_prod_4f9720a58772d653c993a2d6",
+        "category": "fridge",
+        "brand": "Hisense",
+        "model": "HRCD640TBW",
+        "dimensions": {
+          "widthMm": 914,
+          "heightMm": 1790,
+          "depthMm": 730
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_7a69e8d086d92947c8df35e6",
+        "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD640TBW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNjYzMDR8YXBwbGljYXRpb24vcGRmfGFERm1MMmhsTXk4NE9EQTBNVEF3T0RZMk1EYzRMMGhTUTBRMk5EQlVRbGN0VTNCbFl5NXdaR1l8MGRhNTM3OGQyMDRhMTM4MzA5YmQyMTA0ZTIzZDVjMDNjYzYxMzBhZGMzNmFhNGJlYTYwYTM2MGZiYTRhYmYyMw",
+        "finalUrl": "https://dtc-aus-api.hisense.com/medias/HRCD640TBW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNjYzMDR8YXBwbGljYXRpb24vcGRmfGFERm1MMmhsTXk4NE9EQTBNVEF3T0RZMk1EYzRMMGhTUTBRMk5EQlVRbGN0VTNCbFl5NXdaR1l8MGRhNTM3OGQyMDRhMTM4MzA5YmQyMTA0ZTIzZDVjMDNjYzYxMzBhZGMzNmFhNGJlYTYwYTM2MGZiYTRhYmYyMw",
+        "authorType": "manufacturer",
+        "transportHostType": "unknown",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-09T00:00:00.000Z",
+        "sha256": "ff9c1735a4871bc809e0baa42ee366d5780e298a6dedad0ca17dd6ef01e8d667",
+        "pageCount": 2,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "exact"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/HRCD640TBW.json",
+        "available": true,
+        "metadataModel": "HRCD640TBW"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 914,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Dimensions (Net) (W X H X D) 914 x 1790 x 730 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 1790,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Dimensions (Net) (W X H X D) 914 x 1790 x 730 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 730,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Dimensions (Net) (W X H X D) 914 x 1790 x 730 mm",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "dishwasher-adw1146",
+        "canonicalProductId": "fa_prod_c6d5680b0ce52439ffe002b9",
+        "category": "dishwasher",
+        "brand": "Haier",
+        "model": "HDW15F1B1",
+        "dimensions": {
+          "widthMm": 597,
+          "heightMm": 850,
+          "depthMm": 599
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_b4857f67e20a740af996b416",
+        "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw154d412d/QRG/AU/QRG-AU-61659.pdf",
+        "finalUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw154d412d/QRG/AU/QRG-AU-61659.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "unknown",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-09T00:00:00.000Z",
+        "sha256": "b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557",
+        "pageCount": 2,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "exact"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/HDW15F1B1.json",
+        "available": true,
+        "metadataModel": "HDW15F1B1"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 597,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 599,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "dishwasher-adw0961",
+        "canonicalProductId": "fa_prod_062c6c1c2b89378a83e10ee3",
+        "category": "dishwasher",
+        "brand": "Haier",
+        "model": "HDW15F3S1",
+        "dimensions": {
+          "widthMm": 597,
+          "heightMm": 850,
+          "depthMm": 599
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_660b8aaea323ca5986bc62da",
+        "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw7db79904/QRG/AU/QRG-AU-61616.pdf",
+        "finalUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw7db79904/QRG/AU/QRG-AU-61616.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "unknown",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-09T00:00:00.000Z",
+        "sha256": "8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb",
+        "pageCount": 2,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "exact"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/HDW15F3S1.json",
+        "available": true,
+        "metadataModel": "HDW15F3S1"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 597,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 599,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "dishwasher-adw1276",
+        "canonicalProductId": "fa_prod_9f958bd4bcda5ed405fce93f",
+        "category": "dishwasher",
+        "brand": "Haier",
+        "model": "HDW15F4B1",
+        "dimensions": {
+          "widthMm": 597,
+          "heightMm": 850,
+          "depthMm": 599
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_519c3747c4cde16c34d99895",
+        "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf",
+        "finalUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "unknown",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-09T00:00:00.000Z",
+        "sha256": "658a7534c9bc1e033d5e635fc36185deb41bca28ac6ede41e31064c882bab6c5",
+        "pageCount": 3,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "exact"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/HDW15F4B1.json",
+        "available": true,
+        "metadataModel": "HDW15F4B1"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 597,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 599,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "dishwasher-adw1149",
+        "canonicalProductId": "fa_prod_e34124271503b4915b0099bc",
+        "category": "dishwasher",
+        "brand": "Westinghouse",
+        "model": "WSF6604XB",
+        "dimensions": {
+          "widthMm": 598,
+          "heightMm": 850,
+          "depthMm": 598
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_cfc6004111bfc4288806f27e",
+        "sourceUrl": "https://commercial.appliancesonline.com.au/manuals/ak/3/0/6/6/3066951a7ccf5fafcdc3e0eeb91d98ade3945e25_WSF6604WB_Westinghouse_User_Manual.pdf",
+        "finalUrl": "https://commercial.appliancesonline.com.au/manuals/ak/3/0/6/6/3066951a7ccf5fafcdc3e0eeb91d98ade3945e25_WSF6604WB_Westinghouse_User_Manual.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "retailer",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-09T00:00:00.000Z",
+        "sha256": "70124dade32350086dd2f556371322384974494cfc7255b213c97e78ad2df1f5",
+        "pageCount": 21,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "ambiguous"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/WSF6604XB.json",
+        "available": true,
+        "metadataModel": "WSF6604XB"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 598,
+          "unit": "mm",
+          "page": 5,
+          "quote": "No exact identity approval: rendered_document_identifies_WSF6604WB_not_WSF6604XB",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850,
+          "unit": "mm",
+          "page": 5,
+          "quote": "No exact identity approval: rendered_document_identifies_WSF6604WB_not_WSF6604XB",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 598,
+          "unit": "mm",
+          "page": 5,
+          "quote": "No exact identity approval: rendered_document_identifies_WSF6604WB_not_WSF6604XB",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "dishwasher-adw1155",
+        "canonicalProductId": "fa_prod_c807bcb91f4565d29547584a",
+        "category": "dishwasher",
+        "brand": "Westinghouse",
+        "model": "WSF6606XB",
+        "dimensions": {
+          "widthMm": 598,
+          "heightMm": 850,
+          "depthMm": 598
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_3c34cb371e6697d68eca4476",
+        "sourceUrl": "https://commercial.appliancesonline.com.au/public/manuals/WSF6606X-Westinghouse-Specifications-Sheet.pdf",
+        "finalUrl": "https://commercial.appliancesonline.com.au/public/manuals/WSF6606X-Westinghouse-Specifications-Sheet.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "retailer",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-09T00:00:00.000Z",
+        "sha256": "c3f814fbe48d311b7004c0144556cd712d4f1c8b8c4eed8f20a5c41416c9573c",
+        "pageCount": 6,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "ambiguous"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/WSF6606XB.json",
+        "available": true,
+        "metadataModel": "WSF6606XB"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 598,
+          "unit": "mm",
+          "page": 3,
+          "quote": "No exact identity approval: rendered_document_identifies_WSF6606X_not_WSF6606XB",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850,
+          "unit": "mm",
+          "page": 3,
+          "quote": "No exact identity approval: rendered_document_identifies_WSF6606X_not_WSF6606XB",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 598,
+          "unit": "mm",
+          "page": 3,
+          "quote": "No exact identity approval: rendered_document_identifies_WSF6606X_not_WSF6606XB",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "dryer-acd0788",
+        "canonicalProductId": "fa_prod_0a1f1f4f91133203070dc7f3",
+        "category": "dryer",
+        "brand": "Electrolux",
+        "model": "EDV605H3WC",
+        "dimensions": {
+          "widthMm": 560,
+          "heightMm": 795,
+          "depthMm": 600
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_e4da77e0d7f799e823073635",
+        "sourceUrl": "https://commercial.appliancesonline.com.au/manuals/ak/d/7/e/2/d7e29d214f2e4ae675965724e2bfae2f462549a0_Electrolux_EDV605H3WC_Factsheet.pdf",
+        "finalUrl": "https://commercial.appliancesonline.com.au/manuals/ak/d/7/e/2/d7e29d214f2e4ae675965724e2bfae2f462549a0_Electrolux_EDV605H3WC_Factsheet.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "retailer",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-09T00:00:00.000Z",
+        "sha256": "8a7e470a1a7346035ac67ca27ab693732cf5b3c56aa58b29ee0c623a211a585d",
+        "pageCount": 7,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "exact"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/EDV605H3WC.json",
+        "available": true,
+        "metadataModel": "EDV605H3WC"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 560,
+          "unit": "mm",
+          "page": 3,
+          "quote": "DIMENSIONS: Total height 795 mm; Total width 560 mm; Total depth 600 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 795,
+          "unit": "mm",
+          "page": 3,
+          "quote": "DIMENSIONS: Total height 795 mm; Total width 560 mm; Total depth 600 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 600,
+          "unit": "mm",
+          "page": 3,
+          "quote": "DIMENSIONS: Total height 795 mm; Total width 560 mm; Total depth 600 mm",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "dryer-acd0789",
+        "canonicalProductId": "fa_prod_8dc8a9e8a6acbf2d5ed24714",
+        "category": "dryer",
+        "brand": "Electrolux",
+        "model": "EDV705H3WC",
+        "dimensions": {
+          "widthMm": 600,
+          "heightMm": 795,
+          "depthMm": 600
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_30012f3232d09a2fefd6227a",
+        "sourceUrl": "https://commercial.appliancesonline.com.au/manuals/ak/b/5/7/e/b57e4730d952fa76093dfb152bc519c36d67fd23_Electrolux_EDV705H3WC_Factsheet.pdf",
+        "finalUrl": "https://commercial.appliancesonline.com.au/manuals/ak/b/5/7/e/b57e4730d952fa76093dfb152bc519c36d67fd23_Electrolux_EDV705H3WC_Factsheet.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "retailer",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-09T00:00:00.000Z",
+        "sha256": "858bcfe2625fee4321045b82065d2805ea4a43b5fddf2948ffe51a4de7acbbb8",
+        "pageCount": 7,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "exact"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/EDV705H3WC.json",
+        "available": true,
+        "metadataModel": "EDV705H3WC"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 600,
+          "unit": "mm",
+          "page": 3,
+          "quote": "DIMENSIONS: Total height 795 mm; Total width 600 mm; Total depth 600 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 795,
+          "unit": "mm",
+          "page": 3,
+          "quote": "DIMENSIONS: Total height 795 mm; Total width 600 mm; Total depth 600 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 600,
+          "unit": "mm",
+          "page": 3,
+          "quote": "DIMENSIONS: Total height 795 mm; Total width 600 mm; Total depth 600 mm",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "discovery-dryer-lg-dvh5-08w",
+        "canonicalProductId": "fa_prod_e46b9203620dfe6d94864123",
+        "category": "dryer",
+        "brand": "LG",
+        "model": "DVH5-08W",
+        "dimensions": {
+          "widthMm": 600,
+          "heightMm": 850,
+          "depthMm": 690
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_00d590c609c9101dce2a31c7",
+        "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=pUof6XKiAKggTDi5Im6WeA",
+        "finalUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=pUof6XKiAKggTDi5Im6WeA",
+        "authorType": "manufacturer",
+        "transportHostType": "unknown",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-14T00:00:00.000Z",
+        "sha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
+        "pageCount": 48,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "exact"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/DVH5-08W.json",
+        "available": true,
+        "metadataModel": "DVH5-08W"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 600,
+          "unit": "mm",
+          "page": 10,
+          "quote": "Dimension(mm): W 600; H 850; D 690",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850,
+          "unit": "mm",
+          "page": 10,
+          "quote": "Dimension(mm): W 600; H 850; D 690",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 690,
+          "unit": "mm",
+          "page": 10,
+          "quote": "Dimension(mm): W 600; H 850; D 690",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "discovery-dryer-samsung-dv90bb9440gb",
+        "canonicalProductId": "fa_prod_68dc16d1924cbb55bfae1472",
+        "category": "dryer",
+        "brand": "Samsung",
+        "model": "DV90BB9440GB",
+        "dimensions": {
+          "widthMm": 600,
+          "heightMm": 850,
+          "depthMm": 600
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_fc63298372fce3333eef4115",
+        "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GB&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
+        "finalUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GB&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "unknown",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-10T00:00:00.000Z",
+        "sha256": "d5682f81974da77f17d2db44b6192ec3b897c9f889a7ac7ef0baa18747c23741",
+        "pageCount": 56,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "ambiguous"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/DV90BB9440GB.json",
+        "available": true,
+        "metadataModel": "DV90BB9440GB"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 600,
+          "unit": "mm",
+          "page": 55,
+          "quote": "No exact identity approval: series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850,
+          "unit": "mm",
+          "page": 55,
+          "quote": "No exact identity approval: series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 600,
+          "unit": "mm",
+          "page": 55,
+          "quote": "No exact identity approval: series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "ao-110216",
+        "canonicalProductId": "fa_prod_72b69d7fbcd670124ad7b231",
+        "category": "dryer",
+        "brand": "Westinghouse",
+        "model": "WDV457H3WB",
+        "dimensions": {
+          "widthMm": 600,
+          "heightMm": 795,
+          "depthMm": 520
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_ba061ed14a7c0eb295ead6db",
+        "sourceUrl": "https://www.appliancesonline.com.au/ak/1/c/f/6/1cf68b28d8b60a42560ce0587728fe2b3f8e9e7b_WDV457H3WB_Westinghouse_Specifications_Sheet.pdf",
+        "finalUrl": "https://www.appliancesonline.com.au/ak/1/c/f/6/1cf68b28d8b60a42560ce0587728fe2b3f8e9e7b_WDV457H3WB_Westinghouse_Specifications_Sheet.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "retailer",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-09T00:00:00.000Z",
+        "sha256": "bb4765aed8b51db365365a2352cbf797538c662442e1400ca6d38b19feacd1f5",
+        "pageCount": 6,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "exact"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/WDV457H3WB.json",
+        "available": true,
+        "metadataModel": "WDV457H3WB"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 600,
+          "unit": "mm",
+          "page": 3,
+          "quote": "DIMENSIONS: Total height 795 mm; Total width 600 mm; Total depth 520 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 795,
+          "unit": "mm",
+          "page": 3,
+          "quote": "DIMENSIONS: Total height 795 mm; Total width 600 mm; Total depth 520 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 520,
+          "unit": "mm",
+          "page": 3,
+          "quote": "DIMENSIONS: Total height 795 mm; Total width 600 mm; Total depth 520 mm",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "washing_machine-acw1469",
+        "canonicalProductId": "fa_prod_e8acbe0c048f99d385efd94b",
+        "category": "washing_machine",
+        "brand": "Electrolux",
+        "model": "EWF1043R7WC",
+        "dimensions": {
+          "widthMm": 600,
+          "heightMm": 850,
+          "depthMm": 659
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_2024da18c32adc3d920f2801",
+        "sourceUrl": "https://commercial.appliancesonline.com.au/manuals/ak/f/f/3/e/ff3e125e7880481b455a8cd38a4a4073efdb7892_Electrolux_EWF1043R7WC_Factsheet.pdf",
+        "finalUrl": "https://commercial.appliancesonline.com.au/manuals/ak/f/f/3/e/ff3e125e7880481b455a8cd38a4a4073efdb7892_Electrolux_EWF1043R7WC_Factsheet.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "retailer",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-09T00:00:00.000Z",
+        "sha256": "2ac969549bd7c5e18b6d65d72c95566b044a459ad371318299b1655db17f0fdf",
+        "pageCount": 8,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "exact"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/EWF1043R7WC.json",
+        "available": true,
+        "metadataModel": "EWF1043R7WC"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 600,
+          "unit": "mm",
+          "page": 4,
+          "quote": "DIMENSIONS: Total height 850 mm; Total width 600 mm; Total depth 659 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850,
+          "unit": "mm",
+          "page": 4,
+          "quote": "DIMENSIONS: Total height 850 mm; Total width 600 mm; Total depth 659 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 659,
+          "unit": "mm",
+          "page": 4,
+          "quote": "DIMENSIONS: Total height 850 mm; Total width 600 mm; Total depth 659 mm",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "washing_machine-acw1319",
+        "canonicalProductId": "fa_prod_57417c9668113222e878e7b0",
+        "category": "washing_machine",
+        "brand": "Hisense",
+        "model": "HWFS1015E",
+        "dimensions": {
+          "widthMm": 595,
+          "heightMm": 845,
+          "depthMm": 590
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_7ce64094480c7a6fb29751a6",
+        "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWFS1015E-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2Mjk5NHxhcHBsaWNhdGlvbi9wZGZ8YURkaUwyaGtaUzg0T0RBME1EazBOVEE1TURnMkwwaFhSbE14TURFMVJTMVRjR1ZqTG5Ca1pnfDg4YWU1MTE2NzA0NGE2MTBhMDI1NjhmYmY1MjAxMjk0NDE4M2RiZDYwNzEyZTI1OWFiMzE0ZDZkOWFlMzIzNGQ",
+        "finalUrl": "https://dtc-aus-api.hisense.com/medias/HWFS1015E-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2Mjk5NHxhcHBsaWNhdGlvbi9wZGZ8YURkaUwyaGtaUzg0T0RBME1EazBOVEE1TURnMkwwaFhSbE14TURFMVJTMVRjR1ZqTG5Ca1pnfDg4YWU1MTE2NzA0NGE2MTBhMDI1NjhmYmY1MjAxMjk0NDE4M2RiZDYwNzEyZTI1OWFiMzE0ZDZkOWFlMzIzNGQ",
+        "authorType": "manufacturer",
+        "transportHostType": "unknown",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-09T00:00:00.000Z",
+        "sha256": "1282141354ddd0d1d197d847a03ce9b4e99e256ee7bcb18c1a38b1c965eb0605",
+        "pageCount": 2,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "exact"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/HWFS1015E.json",
+        "available": true,
+        "metadataModel": "HWFS1015E"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 595,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Net dimensions: Height 845 mm; Width 595 mm; Depth 590 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 845,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Net dimensions: Height 845 mm; Width 595 mm; Depth 590 mm",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 590,
+          "unit": "mm",
+          "page": 2,
+          "quote": "Net dimensions: Height 845 mm; Width 595 mm; Depth 590 mm",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "discovery-washing-machine-lg-wv9-1412w",
+        "canonicalProductId": "fa_prod_83f22d0c5c24cd044ae00974",
+        "category": "washing_machine",
+        "brand": "LG",
+        "model": "WV9-1412W",
+        "dimensions": {
+          "widthMm": 600,
+          "heightMm": 850,
+          "depthMm": 610
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_16f945e5ff28612d3df2b5f0",
+        "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=HJoJF6sjLmW0vxZag11e5g",
+        "finalUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=HJoJF6sjLmW0vxZag11e5g",
+        "authorType": "manufacturer",
+        "transportHostType": "unknown",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-14T00:00:00.000Z",
+        "sha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
+        "pageCount": 48,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "exact"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/WV9-1412W.json",
+        "available": true,
+        "metadataModel": "WV9-1412W"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 600,
+          "unit": "mm",
+          "page": 12,
+          "quote": "WV9-1412W / WV9-1412B: W 600; H 850; D 610",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850,
+          "unit": "mm",
+          "page": 12,
+          "quote": "WV9-1412W / WV9-1412B: W 600; H 850; D 610",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 610,
+          "unit": "mm",
+          "page": 12,
+          "quote": "WV9-1412W / WV9-1412B: W 600; H 850; D 610",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "discovery-washing-machine-samsung-ww11cg60adle",
+        "canonicalProductId": "fa_prod_00d1f6e82bb2d93e3d47010c",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW11CG60ADLE",
+        "dimensions": {
+          "widthMm": 600,
+          "heightMm": 850,
+          "depthMm": 600
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_f2405a75845af7849ec5ae4e",
+        "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CG60ADLE&CttFileID=11284915&CDCttType=UM&VPath=UM%2F202602%2F20260211103223036%2FDC68-04493F-00_IB_B-PJT_B11_WASHER-MD_SimpleUX_EN_240424.pdf",
+        "finalUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CG60ADLE&CttFileID=11284915&CDCttType=UM&VPath=UM%2F202602%2F20260211103223036%2FDC68-04493F-00_IB_B-PJT_B11_WASHER-MD_SimpleUX_EN_240424.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "unknown",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-10T00:00:00.000Z",
+        "sha256": "1f2460ba7366fa75d802d47a0bcf01b82c5578919e975d935a8d589b4154f9a0",
+        "pageCount": 64,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "ambiguous"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/WW11CG60ADLE.json",
+        "available": true,
+        "metadataModel": "WW11CG60ADLE"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 600,
+          "unit": "mm",
+          "page": 63,
+          "quote": "No exact identity approval: series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850,
+          "unit": "mm",
+          "page": 63,
+          "quote": "No exact identity approval: series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 600,
+          "unit": "mm",
+          "page": 63,
+          "quote": "No exact identity approval: series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    },
+    {
+      "schemaVersion": 1,
+      "status": "pending",
+      "product": {
+        "legacyRuntimeId": "discovery-washing-machine-samsung-ww12bb944dgb",
+        "canonicalProductId": "fa_prod_049da49dd1e75737e8e251bc",
+        "category": "washing_machine",
+        "brand": "Samsung",
+        "model": "WW12BB944DGB",
+        "dimensions": {
+          "widthMm": 600,
+          "heightMm": 850,
+          "depthMm": 695
+        }
+      },
+      "sourceDocument": {
+        "id": "doc_f016bc51535427f0b6bdfbba",
+        "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+        "finalUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+        "authorType": "manufacturer",
+        "transportHostType": "unknown",
+        "contentType": "application/pdf",
+        "retrievedAt": "2026-05-10T00:00:00.000Z",
+        "sha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+        "pageCount": 68,
+        "parserVersion": "pdftotext-26.06.0",
+        "identityOutcome": "ambiguous"
+      },
+      "rawExtraction": {
+        "path": "data/pdf-evidence-raw/WW12BB944DGB.json",
+        "available": true,
+        "metadataModel": "WW12BB944DGB"
+      },
+      "fields": [
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 600,
+          "unit": "mm",
+          "page": 66,
+          "quote": "No exact identity approval: series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850,
+          "unit": "mm",
+          "page": 66,
+          "quote": "No exact identity approval: series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page",
+          "status": "candidate"
+        },
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 695,
+          "unit": "mm",
+          "page": 66,
+          "quote": "No exact identity approval: series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page",
+          "status": "candidate"
+        }
+      ],
+      "decisions": []
+    }
+  ]
+}

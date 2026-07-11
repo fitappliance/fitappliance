@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex PDF visual review",
+  "reviewedAt": "2026-07-11",
+  "parserVersion": "pdftotext-26.06.0",
+  "reviews": [
+    {"id":"ao-92114","hash":"925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73","pages":3,"page":2,"quote":"Product dimensions: Depth 688 mm; Height 1790 mm; Width 905 mm","approve":"all"},
+    {"id":"ao-48444","hash":"fdfd4107f7caa241eb3c29668296780378b5db639ab04bb5e44f408c9ed17ef4","pages":3,"page":1,"reason":"exact_sales_model_not_visible_on_rendered_page"},
+    {"id":"ao-48469","hash":"b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8","pages":3,"page":1,"reason":"exact_sales_model_not_visible_on_rendered_page"},
+    {"id":"fridge-arf3512","hash":"6c9b8413e7027756b02248f0ff847320958cf0369fb67b9ce3819d55e2521f94","pages":2,"page":2,"quote":"Dimensions (Net) (W X H X D) 475 x 840 x 556 mm","approve":"all"},
+    {"id":"fridge-arf3453","hash":"ff9c1735a4871bc809e0baa42ee366d5780e298a6dedad0ca17dd6ef01e8d667","pages":2,"page":2,"quote":"Dimensions (Net) (W X H X D) 914 x 1790 x 730 mm","approve":"all"},
+    {"id":"dishwasher-adw1146","hash":"b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557","pages":2,"page":2,"quote":"Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm","approve":["closedEnvelope.widthMm","closedEnvelope.depthMm"],"fieldReason":"adjustable_height_range_not_representable_as_fixed_height"},
+    {"id":"dishwasher-adw0961","hash":"8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb","pages":2,"page":2,"quote":"Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm","approve":["closedEnvelope.widthMm","closedEnvelope.depthMm"],"fieldReason":"adjustable_height_range_not_representable_as_fixed_height"},
+    {"id":"dishwasher-adw1276","hash":"658a7534c9bc1e033d5e635fc36185deb41bca28ac6ede41e31064c882bab6c5","pages":3,"page":2,"quote":"Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm","approve":["closedEnvelope.widthMm","closedEnvelope.depthMm"],"fieldReason":"adjustable_height_range_not_representable_as_fixed_height"},
+    {"id":"dishwasher-adw1149","hash":"70124dade32350086dd2f556371322384974494cfc7255b213c97e78ad2df1f5","pages":21,"page":5,"reason":"rendered_document_identifies_WSF6604WB_not_WSF6604XB"},
+    {"id":"dishwasher-adw1155","hash":"c3f814fbe48d311b7004c0144556cd712d4f1c8b8c4eed8f20a5c41416c9573c","pages":6,"page":3,"reason":"rendered_document_identifies_WSF6606X_not_WSF6606XB"},
+    {"id":"dryer-acd0788","hash":"8a7e470a1a7346035ac67ca27ab693732cf5b3c56aa58b29ee0c623a211a585d","pages":7,"page":3,"quote":"DIMENSIONS: Total height 795 mm; Total width 560 mm; Total depth 600 mm","approve":"all"},
+    {"id":"dryer-acd0789","hash":"858bcfe2625fee4321045b82065d2805ea4a43b5fddf2948ffe51a4de7acbbb8","pages":7,"page":3,"quote":"DIMENSIONS: Total height 795 mm; Total width 600 mm; Total depth 600 mm","approve":"all"},
+    {"id":"discovery-dryer-lg-dvh5-08w","hash":"2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1","pages":48,"page":10,"quote":"Dimension(mm): W 600; H 850; D 690","approve":"all"},
+    {"id":"discovery-dryer-samsung-dv90bb9440gb","hash":"d5682f81974da77f17d2db44b6192ec3b897c9f889a7ac7ef0baa18747c23741","pages":56,"page":55,"reason":"series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page"},
+    {"id":"ao-110216","hash":"bb4765aed8b51db365365a2352cbf797538c662442e1400ca6d38b19feacd1f5","pages":6,"page":3,"quote":"DIMENSIONS: Total height 795 mm; Total width 600 mm; Total depth 520 mm","approve":"all"},
+    {"id":"washing_machine-acw1469","hash":"2ac969549bd7c5e18b6d65d72c95566b044a459ad371318299b1655db17f0fdf","pages":8,"page":4,"quote":"DIMENSIONS: Total height 850 mm; Total width 600 mm; Total depth 659 mm","approve":"all"},
+    {"id":"washing_machine-acw1319","hash":"1282141354ddd0d1d197d847a03ce9b4e99e256ee7bcb18c1a38b1c965eb0605","pages":2,"page":2,"quote":"Net dimensions: Height 845 mm; Width 595 mm; Depth 590 mm","approve":"all"},
+    {"id":"discovery-washing-machine-lg-wv9-1412w","hash":"2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b","pages":48,"page":12,"quote":"WV9-1412W / WV9-1412B: W 600; H 850; D 610","approve":"all"},
+    {"id":"discovery-washing-machine-samsung-ww11cg60adle","hash":"1f2460ba7366fa75d802d47a0bcf01b82c5578919e975d935a8d589b4154f9a0","pages":64,"page":63,"reason":"series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page"},
+    {"id":"discovery-washing-machine-samsung-ww12bb944dgb","hash":"d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b","pages":68,"page":66,"reason":"series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page"}
+  ]
+}

@@ -40,6 +40,7 @@ test('approval requires exact or reviewed alias identity and page-level field ev
     identityOutcome: 'exact', fields: [{ field: 'closedEnvelope.widthMm', value: 600, unit: 'mm', page: 2, quote: 'Width 600 mm' }],
   });
   assert.equal(transitionSourceDocument(reviewed, 'approved', {}).state, 'approved');
+  assert.throws(() => createSourceDocument({ ...reviewed, state: 'approved', sha256: null }), /sha256/i);
   assert.throws(() => transitionSourceDocument(createSourceDocument({ ...reviewed, fields: [{ field: 'x', value: 1 }] }), 'approved', {}), /field evidence/i);
   assert.throws(() => createSourceDocument({ ...base, state: 'approved' }), /approved document/i);
 });
