@@ -1,6 +1,6 @@
 # Phase 9 Space Evidence Pilot Report
 
-Status: implementation and local runtime verified; production deployment pending
+Status: production verified
 Reviewed: 2026-07-11
 
 ## Scope
@@ -77,5 +77,14 @@ and exact identity remain separate approval gates.
 - Mobile 390 x 844 LG WV9-1412W: no overflow, no console errors, door-open total
   depth shown as 1135 mm.
 
-Production commit, deployment and Sentinel evidence will be added after the
-deployment reaches Ready.
+## Production verification
+
+- Commit: `3f025f72`.
+- Vercel deployment: `dpl_HuUGrCyMeTLcRmbGcU8Piv7EHb9u`, Ready and aliased to
+  `www.fitappliance.com.au`.
+- Production RF605QZUVB1 JSON retains `installation.frontMm: null` and exposes
+  four approved installation fields.
+- Production LG WV9-1412W at 390 x 844 shows the approved 1135 mm door-open
+  total depth with no horizontal overflow or console errors.
+- Sentinel: 30 URLs checked with zero failures; 28,676 links checked with zero
+  broken links; 2,331 pages with zero indexable orphans.
