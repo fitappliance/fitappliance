@@ -1,5 +1,6 @@
 .env
 .tmp/
+.worktrees/
 node_modules/
 *.tmp-*
 !public/data/appliances.json
