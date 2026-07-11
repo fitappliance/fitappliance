@@ -7,6 +7,7 @@ const path = require('node:path');
 const {
   fetchPdf,
   findManualEvidenceSourceUrl,
+  findManualEvidenceSourceType,
   findManualEvidenceVerifiedAlias,
   resolvePdfSourceUrl
 } = require('./1-fetch');
@@ -23,6 +24,10 @@ const { parseLgText } = require('./parsers/lg');
 const { findWestinghouseOfficialPdf } = require('./westinghouse-official');
 const { parseWestinghouseText } = require('./parsers/westinghouse');
 const { findElectroluxOfficialPdf } = require('./electrolux-official');
+const {
+  electroluxGroupFetch,
+  findElectroluxGroupFactsheet
+} = require('./electrolux-group-official');
 const { parseElectroluxText } = require('./parsers/electrolux');
 const { findHisenseOfficialPdf } = require('./hisense-official');
 const { parseHisenseText } = require('./parsers/hisense');
@@ -94,6 +99,7 @@ const MANUFACTURER_DOMAINS = {
   fisherpaykel: 'fisherpaykel.com/au',
   haier: 'haier.com.au',
   hisense: 'hisense.com.au',
+  kelvinator: 'kelvinator.com.au',
   lg: 'lg.com/au',
   miele: 'miele.com.au',
   samsung: 'samsung.com/au',
@@ -210,6 +216,13 @@ function isWestinghouseTarget(target = {}) {
 
 function isElectroluxTarget(target = {}) {
   return /electrolux/i.test([
+    target.brand,
+    target.product?.brand
+  ].filter(Boolean).join(' '));
+}
+
+function isKelvinatorTarget(target = {}) {
+  return /kelvinator/i.test([
     target.brand,
     target.product?.brand
   ].filter(Boolean).join(' '));
@@ -950,6 +963,8 @@ async function parseElectroluxTarget({
   extractTextImpl
 }) {
   const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const manualSourceType = findManualEvidenceSourceType(target, manualEvidence);
+  const manualVerifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
   const official = manualSourceUrl
     ? null
     : await electroluxOfficialFinder(target, { timeoutMs: 60_000 });
@@ -957,7 +972,7 @@ async function parseElectroluxTarget({
   if (!sourceUrl) {
     throw new Error(official?.reason || 'Electrolux official PDF resources not found');
   }
-  const source = manualSourceUrl ? 'manual-evidence' : (official?.source || 'electrolux-official');
+  const source = manualSourceUrl ? (manualSourceType || 'manual-evidence') : (official?.source || 'electrolux-official');
   const pdfPath = path.join(
     repoRoot,
     '.tmp',
@@ -966,6 +981,7 @@ async function parseElectroluxTarget({
     `${slugPathPart(target.sku)}.pdf`
   );
   const fetched = await fetchPdfImpl(sourceUrl, pdfPath, {
+    fetchImpl: electroluxGroupFetch,
     force: true,
     retries: 1,
     timeoutMs: 60_000,
@@ -976,6 +992,56 @@ async function parseElectroluxTarget({
   const parsed = parseElectroluxText(textResult.text, {
     target,
     sourceUrl,
+    verifiedAlias: manualVerifiedAlias || official?.verifiedAlias,
+    extractionDate: new Date().toISOString()
+  });
+
+  return {
+    candidate: annotateSourceMetadata(parsed.data, source),
+    sourceUrl,
+    source
+  };
+}
+
+async function parseKelvinatorTarget({
+  target,
+  repoRoot,
+  manualEvidence,
+  kelvinatorOfficialFinder,
+  fetchPdfImpl,
+  extractTextImpl
+}) {
+  const manualSourceUrl = findManualEvidenceSourceUrl(target, manualEvidence);
+  const manualSourceType = findManualEvidenceSourceType(target, manualEvidence);
+  const manualVerifiedAlias = findManualEvidenceVerifiedAlias(target, manualEvidence);
+  const official = manualSourceUrl
+    ? null
+    : await kelvinatorOfficialFinder(target, { timeoutMs: 60_000 });
+  const sourceUrl = manualSourceUrl || official?.sourceUrl;
+  if (!sourceUrl) {
+    throw new Error(official?.reason || 'Kelvinator official factsheet not found');
+  }
+  const source = manualSourceUrl ? (manualSourceType || 'manual-evidence') : (official?.source || 'kelvinator-official');
+  const pdfPath = path.join(
+    repoRoot,
+    '.tmp',
+    'pdfs',
+    slugPathPart(target.brand),
+    `${slugPathPart(target.sku)}.pdf`
+  );
+  const fetched = await fetchPdfImpl(sourceUrl, pdfPath, {
+    fetchImpl: electroluxGroupFetch,
+    force: true,
+    retries: 1,
+    timeoutMs: 60_000,
+    maxBytes: ELECTROLUX_MAX_BYTES,
+    userAgent: 'curl/8.7.1'
+  });
+  const textResult = await extractTextImpl(fetched.path);
+  const parsed = parseElectroluxText(textResult.text, {
+    target,
+    sourceUrl,
+    verifiedAlias: manualVerifiedAlias || official?.verifiedAlias,
     extractionDate: new Date().toISOString()
   });
 
@@ -2292,6 +2358,7 @@ async function runBatch({
   lgOfficialFinder = findLgOfficialPdf,
   westinghouseOfficialFinder = findWestinghouseOfficialPdf,
   electroluxOfficialFinder = findElectroluxOfficialPdf,
+  kelvinatorOfficialFinder = findElectroluxGroupFactsheet,
   hisenseOfficialFinder = findHisenseOfficialPdf,
   haierOfficialFinder = findHaierOfficialPdf,
   chiqOfficialFinder = findChiqOfficialPdf,
@@ -2333,6 +2400,7 @@ async function runBatch({
     && !isLgTarget(target)
     && !isWestinghouseTarget(target)
     && !isElectroluxTarget(target)
+    && !isKelvinatorTarget(target)
     && !isHisenseTarget(target)
     && !isHaierTarget(target)
     && !isChiqTarget(target)
@@ -2423,6 +2491,18 @@ async function runBatch({
           repoRoot,
           manualEvidence,
           electroluxOfficialFinder,
+          fetchPdfImpl,
+          extractTextImpl
+        });
+        sourceUrl = parsed.sourceUrl;
+        source = parsed.source;
+        candidate = parsed.candidate;
+      } else if (!parseTextImpl && isKelvinatorTarget(target)) {
+        const parsed = await parseKelvinatorTarget({
+          target,
+          repoRoot,
+          manualEvidence,
+          kelvinatorOfficialFinder,
           fetchPdfImpl,
           extractTextImpl
         });
@@ -2771,6 +2851,7 @@ exports.parseSamsungTarget = parseSamsungTarget;
 exports.parseLgTarget = parseLgTarget;
 exports.parseWestinghouseTarget = parseWestinghouseTarget;
 exports.parseElectroluxTarget = parseElectroluxTarget;
+exports.parseKelvinatorTarget = parseKelvinatorTarget;
 exports.parseHisenseTarget = parseHisenseTarget;
 exports.parseHaierTarget = parseHaierTarget;
 exports.parseChiqTarget = parseChiqTarget;

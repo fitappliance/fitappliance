@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "product_id": "fridge-arf2538",
+  "category": "fridge",
+  "brand": "KELVINATOR",
+  "model": "KTM4602WC",
+  "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602WC&brand=Kelvinator",
+  "verified_at": "2026-07-11",
+  "extracted": {
+    "brand": "KELVINATOR",
+    "sku": "KTM4602WC",
+    "category": "FRIDGE",
+    "dimensions": {
+      "height_mm": 1718,
+      "width_mm": 699,
+      "depth_mm": 730,
+      "door_open_90_depth_mm": null
+    },
+    "clearance_requirements": {
+      "top_mm": 0,
+      "left_mm": 0,
+      "right_mm": 0,
+      "rear_mm": 0
+    },
+    "flags": {
+      "requires_plumbing": false,
+      "ventilation_required": true,
+      "reversible_door": null
+    },
+    "metadata": {
+      "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602WC&brand=Kelvinator",
+      "extraction_date": "2026-07-11T04:44:37.450Z",
+      "confidence_score": 0.9,
+      "verified_alias": "KTM4602WC",
+      "source_type": "kelvinator-official-fact_sheet"
+    }
+  }
+}

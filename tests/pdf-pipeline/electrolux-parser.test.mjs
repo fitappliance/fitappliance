@@ -61,6 +61,17 @@ X Y
 Minimum Recommended Airspaces
 `;
 
+const kelvinatorFactsheet = `
+Specifications
+PRODUCT PROFILE DIMENSIONS
+Domestic warranty details 2 Total height (mm) 1718
+Cabinet height (mm) 1705
+Refrigerator Type bottom mount Total width (mm) 796
+Cabinet width (mm) 790
+Total depth (mm) 727
+Cabinet depth (mm) 641
+`;
+
 test('Electrolux parser extracts fridge dimensions and explicit Airspace rows', () => {
   const result = parseElectroluxText(oldDimensionGuide, {
     target: { brand: 'Electrolux', sku: 'EBE4507SC', category: 'fridge' },
@@ -117,4 +128,43 @@ test('Electrolux parser matches hinge variants without broad cross-family matche
   assert.equal(electroluxModelMatchesSku('EFE4227SC-L', 'EFE4227SC'), true);
   assert.equal(electroluxModelMatchesSku('EQE5657BA', 'EQE5607BA'), false);
   assert.equal(electroluxModelMatchesSku('SC', 'EBE4507SC'), false);
+});
+
+test('Electrolux parser accepts dimensions-only factsheets only through an exact official model binding', () => {
+  const result = parseElectroluxText(kelvinatorFactsheet, {
+    target: { brand: 'Kelvinator', sku: 'KBM5302AC', category: 'fridge' },
+    sourceUrl: 'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator',
+    verifiedAlias: 'KBM5302AC',
+    extractionDate: EXTRACTION_DATE
+  });
+
+  assert.deepEqual(result.data.dimensions, {
+    height_mm: 1718,
+    width_mm: 796,
+    depth_mm: 727,
+    door_open_90_depth_mm: null
+  });
+  assert.deepEqual(result.data.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 0,
+    right_mm: 0,
+    rear_mm: 0
+  });
+  assert.equal(result.data.metadata.verified_alias, 'KBM5302AC');
+  assert.match(result.warnings.join(' '), /clearance.*not verified/i);
+  assert.equal(validateApplianceDimension(result.data).valid, true);
+});
+
+test('Electrolux parser rejects factsheet aliases that are not bound to the exact official URL', () => {
+  for (const sourceUrl of [
+    'https://example.com/KBM5302AC.pdf',
+    'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTB2802WB&brand=Kelvinator'
+  ]) {
+    assert.throws(() => parseElectroluxText(kelvinatorFactsheet, {
+      target: { brand: 'Kelvinator', sku: 'KBM5302AC', category: 'fridge' },
+      sourceUrl,
+      verifiedAlias: 'KBM5302AC',
+      extractionDate: EXTRACTION_DATE
+    }), /could not verify SKU/i);
+  }
 });

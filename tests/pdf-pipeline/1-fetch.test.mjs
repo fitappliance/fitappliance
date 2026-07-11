@@ -7,6 +7,7 @@ import path from 'node:path';
 import {
   DEFAULT_TIMEOUT_MS,
   fetchPdf,
+  findManualEvidenceSourceType,
   findManualEvidenceSourceUrl,
   resolvePdfSourceUrl
 } from '../../scripts/pdf-pipeline/1-fetch.js';
@@ -168,7 +169,8 @@ test('pdf pipeline fetch: resolves manual-evidence source_url by product id befo
           {
             type: 'spec_sheet',
             status: 'candidate',
-            source_url: 'https://example.com/RF605QDVX2.pdf'
+            source_url: 'https://example.com/RF605QDVX2.pdf',
+            source_type: 'manufacturer-official-fact_sheet'
           }
         ]
       }
@@ -178,6 +180,10 @@ test('pdf pipeline fetch: resolves manual-evidence source_url by product id befo
   assert.equal(
     findManualEvidenceSourceUrl(target, manualEvidence),
     'https://example.com/RF605QDVX2.pdf'
+  );
+  assert.equal(
+    findManualEvidenceSourceType(target, manualEvidence),
+    'manufacturer-official-fact_sheet'
   );
 
   const result = await resolvePdfSourceUrl(target, {

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-05-20",
+  "last_updated": "2026-07-11",
   "storage": {
     "root_env": "EVIDENCE_ROOT_DIR",
     "path_rule": "Each evidence.local_path is relative to EVIDENCE_ROOT_DIR. Do not store absolute machine paths in this manifest."
@@ -170782,6 +170782,222 @@
               "extraction_date": "2026-05-20T15:28:45.067Z",
               "confidence_score": 0.9,
               "source_type": "manual-evidence"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2495": {
+      "category": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KBM5302AC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "KBM5302AC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/KBM5302AC.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "kelvinator-official-fact_sheet",
+          "verified_alias": "KBM5302AC",
+          "extracted": {
+            "brand": "KELVINATOR",
+            "sku": "KBM5302AC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1718,
+              "width_mm": 796,
+              "depth_mm": 727,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
+              "extraction_date": "2026-07-11T04:47:22.456Z",
+              "confidence_score": 0.9,
+              "verified_alias": "KBM5302AC",
+              "source_type": "kelvinator-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2442": {
+      "category": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KBM4502WC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "KBM4502WC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM4502WC&brand=Kelvinator",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/KBM4502WC.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "kelvinator-official-fact_sheet",
+          "verified_alias": "KBM4502WC",
+          "extracted": {
+            "brand": "KELVINATOR",
+            "sku": "KBM4502WC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1718,
+              "width_mm": 699,
+              "depth_mm": 730,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM4502WC&brand=Kelvinator",
+              "extraction_date": "2026-07-11T04:44:34.142Z",
+              "confidence_score": 0.9,
+              "verified_alias": "KBM4502WC",
+              "source_type": "kelvinator-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2538": {
+      "category": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTM4602WC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "KTM4602WC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602WC&brand=Kelvinator",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/KTM4602WC.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "kelvinator-official-fact_sheet",
+          "verified_alias": "KTM4602WC",
+          "extracted": {
+            "brand": "KELVINATOR",
+            "sku": "KTM4602WC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1718,
+              "width_mm": 699,
+              "depth_mm": 730,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602WC&brand=Kelvinator",
+              "extraction_date": "2026-07-11T04:44:37.450Z",
+              "confidence_score": 0.9,
+              "verified_alias": "KTM4602WC",
+              "source_type": "kelvinator-official-fact_sheet"
+            }
+          }
+        }
+      ]
+    },
+    "fridge-arf2540": {
+      "category": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTM5402AC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_alias": "KTM5402AC",
+      "evidence": [
+        {
+          "type": "spec_sheet",
+          "status": "approved",
+          "has_pdf_evidence": true,
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402AC&brand=Kelvinator",
+          "verified_at": "2026-07-11",
+          "raw_json_path": "data/pdf-evidence-raw/KTM5402AC.json",
+          "trust_level": "dimensions_verified",
+          "verified_fields": [
+            "dimensions"
+          ],
+          "clearance_verified": false,
+          "source_type": "kelvinator-official-fact_sheet",
+          "verified_alias": "KTM5402AC",
+          "extracted": {
+            "brand": "KELVINATOR",
+            "sku": "KTM5402AC",
+            "category": "FRIDGE",
+            "dimensions": {
+              "height_mm": 1718,
+              "width_mm": 796,
+              "depth_mm": 727,
+              "door_open_90_depth_mm": null
+            },
+            "clearance_requirements": {
+              "top_mm": 0,
+              "left_mm": 0,
+              "right_mm": 0,
+              "rear_mm": 0
+            },
+            "flags": {
+              "requires_plumbing": false,
+              "ventilation_required": true,
+              "reversible_door": null
+            },
+            "metadata": {
+              "source_pdf_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402AC&brand=Kelvinator",
+              "extraction_date": "2026-07-11T04:44:38.648Z",
+              "confidence_score": 0.9,
+              "verified_alias": "KTM5402AC",
+              "source_type": "kelvinator-official-fact_sheet"
             }
           }
         }

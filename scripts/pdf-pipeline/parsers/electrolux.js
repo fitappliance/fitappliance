@@ -68,6 +68,38 @@ function assertElectroluxDocument(text, sku) {
   throw new Error(`Electrolux parser could not verify SKU ${sku} against document model tokens.`);
 }
 
+function hasExactOfficialFactsheetBinding({ sourceUrl, sku, verifiedAlias, brand }) {
+  if (normalizeSku(verifiedAlias) !== normalizeSku(sku)) return false;
+  try {
+    const url = new URL(sourceUrl);
+    const sourceBrand = String(url.searchParams.get('brand') || '').trim().toLowerCase();
+    const targetBrand = String(brand || '').trim().toLowerCase();
+    return url.protocol === 'https:'
+      && url.hostname === 'resource.electrolux.com.au'
+      && url.pathname.toLowerCase() === '/factsheet/requestpdf'
+      && normalizeSku(url.searchParams.get('modelNumber')) === normalizeSku(sku)
+      && sourceBrand === targetBrand
+      && ['electrolux', 'kelvinator', 'westinghouse'].includes(targetBrand);
+  } catch {
+    return false;
+  }
+}
+
+function extractFactsheetLabelMm(text, label) {
+  const match = normalizeWhitespace(text).match(new RegExp(`\\bTotal\\s+${label}\\s*\\(mm\\)\\s+(\\d+(?:\\.\\d+)?)\\b`, 'i'));
+  if (!match) throw new Error(`Electrolux factsheet requires an explicit Total ${label} (mm) value.`);
+  return parseMm(match[1], `total ${label}`);
+}
+
+function extractElectroluxFactsheetDimensions(text) {
+  return {
+    height_mm: extractFactsheetLabelMm(text, 'height'),
+    width_mm: extractFactsheetLabelMm(text, 'width'),
+    depth_mm: extractFactsheetLabelMm(text, 'depth'),
+    door_open_90_depth_mm: null
+  };
+}
+
 function findMatchingNumericRow(text, sku, minimumNumbers) {
   const lines = normalizeWhitespace(text).split('\n').map((line) => line.trim()).filter(Boolean);
   for (let index = 0; index < lines.length; index += 1) {
@@ -155,14 +187,25 @@ function parseElectroluxText(text, options = {}) {
   if (!sourceUrl) throw new Error('Electrolux parser requires sourceUrl metadata.');
   if (!category) throw new Error('Electrolux parser requires category metadata.');
 
-  assertElectroluxDocument(text, sku);
-  const dimensions = extractElectroluxDimensions(text, sku, category);
-  const clearance = extractElectroluxClearance(text, sku);
+  const brand = options.target?.brand || options.target?.product?.brand || 'Electrolux';
+  const factsheetBound = hasExactOfficialFactsheetBinding({
+    sourceUrl,
+    sku,
+    verifiedAlias: options.verifiedAlias,
+    brand
+  });
+  if (!factsheetBound) assertElectroluxDocument(text, sku);
+  const dimensions = factsheetBound
+    ? extractElectroluxFactsheetDimensions(text)
+    : extractElectroluxDimensions(text, sku, category);
+  const clearance = factsheetBound
+    ? { top_mm: 0, left_mm: 0, right_mm: 0, rear_mm: 0 }
+    : extractElectroluxClearance(text, sku);
   const extractionDate = options.extractionDate || new Date().toISOString();
 
   return {
     data: {
-      brand: options.target?.brand || options.target?.product?.brand || 'Electrolux',
+      brand,
       sku,
       category,
       dimensions,
@@ -175,10 +218,13 @@ function parseElectroluxText(text, options = {}) {
       metadata: {
         source_pdf_url: sourceUrl,
         extraction_date: extractionDate,
-        confidence_score: 0.9
+        confidence_score: 0.9,
+        ...(factsheetBound ? { verified_alias: options.verifiedAlias } : {})
       }
     },
-    warnings: []
+    warnings: factsheetBound
+      ? ['Official factsheet verifies product dimensions only; installation clearance is not verified.']
+      : []
   };
 }
 
@@ -190,6 +236,8 @@ async function parseElectroluxPdf(pdfPath, options = {}) {
 exports.electroluxModelMatchesSku = electroluxModelMatchesSku;
 exports.extractElectroluxClearance = extractElectroluxClearance;
 exports.extractElectroluxDimensions = extractElectroluxDimensions;
+exports.extractElectroluxFactsheetDimensions = extractElectroluxFactsheetDimensions;
+exports.hasExactOfficialFactsheetBinding = hasExactOfficialFactsheetBinding;
 exports.normalizeSku = normalizeSku;
 exports.parseElectroluxPdf = parseElectroluxPdf;
 exports.parseElectroluxText = parseElectroluxText;

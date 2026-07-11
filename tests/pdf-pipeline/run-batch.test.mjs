@@ -890,6 +890,96 @@ test('runBatch processes Electrolux targets with the official finder and parser 
   });
 });
 
+test('runBatch processes Kelvinator targets through the exact group factsheet endpoint', async () => {
+  const repoRoot = makeRepo();
+  const target = {
+    id: 'fridge-kbm5302ac',
+    brand: 'KELVINATOR',
+    sku: 'KBM5302AC',
+    category: 'fridge',
+    product: {
+      id: 'fridge-kbm5302ac',
+      cat: 'fridge',
+      brand: 'KELVINATOR',
+      model: 'KBM5302AC',
+      w: 1725,
+      h: 796,
+      d: 723,
+      unavailable: true
+    }
+  };
+
+  const result = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    kelvinatorOfficialFinder: async () => ({
+      sourceUrl: 'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator',
+      source: 'kelvinator-official-fact_sheet',
+      resourceType: 'fact_sheet',
+      verifiedAlias: 'KBM5302AC'
+    }),
+    fetchPdfImpl: async (url, _path, options = {}) => {
+      assert.equal(typeof options.fetchImpl, 'function');
+      return { path: url, cached: false, bytes: 12 };
+    },
+    extractTextImpl: async () => ({
+      text: `
+        PRODUCT PROFILE DIMENSIONS
+        Total height (mm) 1718
+        Cabinet height (mm) 1705
+        Total width (mm) 796
+        Cabinet width (mm) 790
+        Total depth (mm) 727
+        Cabinet depth (mm) 641
+      `,
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+
+  assert.equal(result.successes.length, 1);
+  assert.equal(result.failures.length, 0);
+  assert.equal(result.successes[0].source, 'kelvinator-official-fact_sheet');
+  const raw = JSON.parse(fs.readFileSync(path.join(repoRoot, 'data', 'pdf-evidence-raw', 'KBM5302AC.json'), 'utf8'));
+  assert.deepEqual(raw.extracted.dimensions, {
+    height_mm: 1718,
+    width_mm: 796,
+    depth_mm: 727,
+    door_open_90_depth_mm: null
+  });
+  assert.deepEqual(raw.extracted.clearance_requirements, {
+    top_mm: 0,
+    left_mm: 0,
+    right_mm: 0,
+    rear_mm: 0
+  });
+  assert.equal(raw.extracted.metadata.verified_alias, 'KBM5302AC');
+  assert.equal(raw.extracted.metadata.source_type, 'kelvinator-official-fact_sheet');
+
+  const rerun = await runBatch({
+    repoRoot,
+    targets: [target],
+    delayMs: 0,
+    env: {},
+    kelvinatorOfficialFinder: async () => {
+      throw new Error('saved exact evidence should be preferred');
+    },
+    fetchPdfImpl: async (url) => ({ path: url, cached: false, bytes: 12 }),
+    extractTextImpl: async () => ({
+      text: 'Total height (mm) 1718\nTotal width (mm) 796\nTotal depth (mm) 727',
+      pageCount: 1,
+      info: {}
+    }),
+    logger: { log() {}, warn() {}, error() {} }
+  });
+  assert.equal(rerun.successes.length, 1);
+  assert.equal(rerun.failures.length, 0);
+  assert.equal(rerun.successes[0].source, 'kelvinator-official-fact_sheet');
+});
+
 test('runBatch processes Hisense targets with the official finder and parser without an API key', async () => {
   const repoRoot = makeRepo();
   const target = {

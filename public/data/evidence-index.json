@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source": "data/manual-evidence.json",
-  "last_updated": "2026-05-20",
+  "last_updated": "2026-07-11",
   "products": {
     "ao-100087": {
       "product_id": "ao-100087",
@@ -35047,6 +35047,23 @@
       "verified_at": "2026-05-15",
       "confidence_score": 0.9
     },
+    "fridge-arf2442": {
+      "product_id": "fridge-arf2442",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KBM4502WC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "kelvinator-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM4502WC&brand=Kelvinator",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9
+    },
     "fridge-arf2444": {
       "product_id": "fridge-arf2444",
       "status": "verified",
@@ -35188,6 +35205,23 @@
       "verified_at": "2026-05-20",
       "confidence_score": 0.9
     },
+    "fridge-arf2495": {
+      "product_id": "fridge-arf2495",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KBM5302AC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "kelvinator-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9
+    },
     "fridge-arf2496": {
       "product_id": "fridge-arf2496",
       "status": "verified",
@@ -35311,6 +35345,40 @@
       "source_type": "spec_sheet",
       "source_url": "https://resource.electrolux.com.au/Public/File/?Id=51192",
       "verified_at": "2026-05-15",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2538": {
+      "product_id": "fridge-arf2538",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTM4602WC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "kelvinator-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602WC&brand=Kelvinator",
+      "verified_at": "2026-07-11",
+      "confidence_score": 0.9
+    },
+    "fridge-arf2540": {
+      "product_id": "fridge-arf2540",
+      "status": "verified",
+      "category": "fridge",
+      "brand": "KELVINATOR",
+      "model": "KTM5402AC",
+      "has_pdf_evidence": true,
+      "trust_level": "dimensions_verified",
+      "verified_fields": [
+        "dimensions"
+      ],
+      "clearance_verified": false,
+      "source_type": "kelvinator-official-fact_sheet",
+      "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402AC&brand=Kelvinator",
+      "verified_at": "2026-07-11",
       "confidence_score": 0.9
     },
     "fridge-arf2545": {
