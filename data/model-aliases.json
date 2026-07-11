@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-07-11",
+  "aliases": [
+    {
+      "id": "alias_electrolux_ebe5367bc_to_ebe5367sc_v1",
+      "brand": "Electrolux",
+      "target_model": "EBE5367BC",
+      "source_model": "EBE5367SC",
+      "status": "pending",
+      "identity_scope": "manufacturer_model",
+      "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
+      "approved_fields": [],
+      "evidence": [],
+      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; the available official guide lists only EBE5367SC." },
+      "supersedes": null
+    },
+    {
+      "id": "alias_kelvinator_ktb2302ab_to_ktb2302wb_v1",
+      "brand": "Kelvinator",
+      "target_model": "KTB2302AB",
+      "source_model": "KTB2302WB",
+      "status": "pending",
+      "identity_scope": "manufacturer_model",
+      "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
+      "approved_fields": [],
+      "evidence": [],
+      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; no manufacturer variant table has been captured." },
+      "supersedes": null
+    },
+    {
+      "id": "alias_kelvinator_ktb2502ab_to_ktb2502wb_v1",
+      "brand": "Kelvinator",
+      "target_model": "KTB2502AB",
+      "source_model": "KTB2502WB",
+      "status": "pending",
+      "identity_scope": "manufacturer_model",
+      "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
+      "approved_fields": [],
+      "evidence": [],
+      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; no manufacturer variant table has been captured." },
+      "supersedes": null
+    },
+    {
+      "id": "alias_kelvinator_ktb2802ab_to_ktb2802wb_v1",
+      "brand": "Kelvinator",
+      "target_model": "KTB2802AB",
+      "source_model": "KTB2802WB",
+      "status": "pending",
+      "identity_scope": "manufacturer_model",
+      "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
+      "approved_fields": [],
+      "evidence": [],
+      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; no manufacturer variant table has been captured." },
+      "supersedes": null
+    },
+    {
+      "id": "alias_westinghouse_whe6000bb_to_whe6000sb_v1",
+      "brand": "Westinghouse",
+      "target_model": "WHE6000BB",
+      "source_model": "WHE6000SB",
+      "status": "pending",
+      "identity_scope": "manufacturer_model",
+      "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
+      "approved_fields": [],
+      "evidence": [],
+      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; the available official guide lists only WHE6000SB." },
+      "supersedes": null
+    },
+    {
+      "id": "alias_westinghouse_whe6060bb_to_whe6060sb_v1",
+      "brand": "Westinghouse",
+      "target_model": "WHE6060BB",
+      "source_model": "WHE6060SB",
+      "status": "pending",
+      "identity_scope": "manufacturer_model",
+      "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
+      "approved_fields": [],
+      "evidence": [],
+      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; the available official guide lists only WHE6060SB." },
+      "supersedes": null
+    },
+    {
+      "id": "alias_westinghouse_whe7074ba_to_whe7074sa_v1",
+      "brand": "Westinghouse",
+      "target_model": "WHE7074BA",
+      "source_model": "WHE7074SA",
+      "status": "pending",
+      "identity_scope": "manufacturer_model",
+      "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
+      "approved_fields": [],
+      "evidence": [],
+      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; no manufacturer document linking BA and SA has been captured." },
+      "supersedes": null
+    },
+    {
+      "id": "alias_westinghouse_wtb2500ah_to_wtb2500wh_v1",
+      "brand": "Westinghouse",
+      "target_model": "WTB2500AH",
+      "source_model": "WTB2500WH",
+      "status": "pending",
+      "identity_scope": "manufacturer_model",
+      "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
+      "approved_fields": [],
+      "evidence": [],
+      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; the available official guide lists only WTB2500WH." },
+      "supersedes": null
+    }
+  ]
+}
