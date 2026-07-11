@@ -37,7 +37,9 @@ npm run validate-schema
 
 Known limits are documented rather than hidden. Prices and stock can change after capture. Retailer pages do not count as manufacturer dimensional evidence. Door swing, hoses, power sockets, floor level, skirting, and delivery access can still make a nominal fit fail in a real home. Buyers should remeasure the finished cavity and check the installation manual before ordering.
 
-Related docs: `docs/data-accuracy-audit.md`, `docs/pdf-evidence-audit.md`, and `docs/phase43-geo-experiment/phase43-geo-measurement.md`.
+Architecture migration: [`docs/architecture-v2/repository-architecture-audit.md`](docs/architecture-v2/repository-architecture-audit.md) and [`docs/architecture-v2/remediation-master-plan.md`](docs/architecture-v2/remediation-master-plan.md).
+
+Related audits: `docs/data-accuracy-audit.md`, `docs/pdf-evidence-audit.md`, and `docs/phase43-geo-experiment/phase43-geo-measurement.md`.
 
 ---
 
