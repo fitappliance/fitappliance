@@ -29,6 +29,10 @@ Last updated: 2026-07-11
   marked as legacy catalog observations.
 - Collection failure cannot synthesize product unavailability.
 - Retailer dimensions remain hints and cannot become canonical geometry.
+- New collection adapters require a reviewed host policy, rate floor, raw
+  payload hash and source reference. Bing Lee is historical-only after a 403
+  robots response; TGG collection is Partnerize-feed-only. AO, HN and JB remain
+  disabled pending documented terms review.
 
 ## Phase 4 - Source documents
 
@@ -39,6 +43,8 @@ Last updated: 2026-07-11
   quote, hash, parser, and transport provenance.
 - This zero-approval baseline is intentional. Legacy `approved` labels are not
   silently grandfathered into V2.
+- Every migrated document now retains its legacy product link and, when the
+  product is not quarantined, its canonical product link.
 
 ## Phase 5 - Category geometry
 
@@ -48,6 +54,8 @@ Last updated: 2026-07-11
 - Missing requirements remain null; dimensions cannot populate clearance.
 - Full evidence migration remains shadow-only until source documents clear the
   V2 approval gate.
+- The full-catalog audit reports 0 approved installation migrations, 2,268
+  unknown installation records and zero impossible-value outliers.
 
 ## Phase 6 - FitDecision cutover preparation
 
@@ -74,3 +82,5 @@ changes public behavior: wire generators and browser search to the V2
 projection behind a feature flag, deploy, run mobile/desktop browser QA, and
 start the rollback window. Do not perform this step without explicit owner
 confirmation.
+
+The detailed requirement audit is in [`completion-audit.md`](./completion-audit.md).

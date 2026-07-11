@@ -6,7 +6,7 @@ const base = {
   id: 'doc_1', sourceUrl: 'https://manufacturer.example/spec.pdf', finalUrl: null,
   authorType: 'manufacturer', transportHostType: 'manufacturer', contentType: null,
   retrievedAt: null, sha256: null, pageCount: null, parserVersion: null,
-  identityOutcome: null, fields: [], state: 'discovered', history: [],
+  identityOutcome: null, fields: [], productLinks: [{ legacyRuntimeId: 'fridge-1', canonicalProductId: 'fa_prod_1' }], state: 'discovered', history: [],
 };
 
 test('enforces ordered document lifecycle and immutable history', () => {
@@ -26,6 +26,12 @@ test('rejects HTML error payloads masquerading as PDF endpoints', () => {
   const rejected = transitionSourceDocument(fetched, 'rejected', { reason: 'non_pdf_payload' });
   assert.equal(rejected.state, 'rejected');
   assert.equal(rejected.rejectionReason, 'non_pdf_payload');
+});
+
+test('preserves canonical and legacy product links independently of document deduplication', () => {
+  const doc = createSourceDocument(base);
+  assert.deepEqual(doc.productLinks, [{ legacyRuntimeId: 'fridge-1', canonicalProductId: 'fa_prod_1' }]);
+  assert.throws(() => createSourceDocument({ ...base, productLinks: [] }), /product link/i);
 });
 
 test('approval requires exact or reviewed alias identity and page-level field evidence', () => {

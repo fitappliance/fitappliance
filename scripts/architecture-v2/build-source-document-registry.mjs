@@ -6,6 +6,8 @@ import { createSourceDocument } from '../../src/domain/source-document.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
 const manual = JSON.parse(await readFile(resolve(root, 'data/manual-evidence.json'), 'utf8'));
+const canonical = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/canonical-registry.json'), 'utf8'));
+const canonicalByLegacy = new Map(canonical.identifierMappings.map((row) => [row.legacyRuntimeId, row.canonicalProductId]));
 const documents = [];
 for (const [legacyId, product] of Object.entries(manual.products ?? {})) {
   for (const [index, evidence] of (product.evidence ?? []).entries()) {
@@ -29,6 +31,7 @@ for (const [legacyId, product] of Object.entries(manual.products ?? {})) {
       contentType: 'application/pdf', retrievedAt: evidence.verified_at ? `${String(evidence.verified_at).slice(0, 10)}T00:00:00.000Z` : null,
       sha256: evidence.sha256 ?? null, pageCount: null, parserVersion: 'legacy-manual-evidence-v1',
       identityOutcome, fields, state: 'quarantined', history: [],
+      productLinks: [{ legacyRuntimeId: legacyId, canonicalProductId: canonicalByLegacy.get(legacyId.toLowerCase()) ?? null }],
       rejectionReason: 'legacy_evidence_missing_page_level_v2_provenance',
     }));
   }

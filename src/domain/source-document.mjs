@@ -27,10 +27,15 @@ export function createSourceDocument(input) {
     transportHostType: required(input.transportHostType, 'transport host type'), contentType: input.contentType ?? null,
     retrievedAt: input.retrievedAt ?? null, sha256: input.sha256 ?? null, pageCount: input.pageCount ?? null,
     parserVersion: input.parserVersion ?? null, identityOutcome: input.identityOutcome ?? null,
+    productLinks: (input.productLinks ?? []).map((link) => ({
+      legacyRuntimeId: required(link.legacyRuntimeId, 'legacy product link'),
+      canonicalProductId: link.canonicalProductId === null ? null : required(link.canonicalProductId, 'canonical product link'),
+    })),
     fields: (input.fields ?? []).map((field) => ({ ...field })), state,
     history: (input.history ?? []).map((entry) => ({ ...entry })),
     rejectionReason: input.rejectionReason ?? null,
   };
+  if (document.productLinks.length === 0) throw new TypeError('source document requires at least one product link');
   if (state === 'approved') validateApproval(document);
   if ((state === 'rejected' || state === 'quarantined') && !document.rejectionReason) {
     throw new TypeError(`${state} document requires rejection reason`);

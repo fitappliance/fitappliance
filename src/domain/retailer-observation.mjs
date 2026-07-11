@@ -1,5 +1,6 @@
 const AVAILABILITY = new Set(['available', 'unavailable', 'unknown']);
 const SOURCE_TYPES = new Set(['affiliate_feed', 'public_retailer_page', 'legacy_catalog']);
+const LISTING_STATES = new Set(['current', 'stale', 'unavailable', 'redirected', 'relisted']);
 
 function required(value, label) {
   const text = String(value ?? '').trim();
@@ -23,6 +24,8 @@ export function createObservation(input) {
   if (!AVAILABILITY.has(availability)) throw new TypeError(`unsupported availability ${availability}`);
   const sourceType = required(input.sourceType, 'sourceType');
   if (!SOURCE_TYPES.has(sourceType)) throw new TypeError(`unsupported source type ${sourceType}`);
+  const listingState = input.listingState ?? 'current';
+  if (!LISTING_STATES.has(listingState)) throw new TypeError(`unsupported listing state ${listingState}`);
   const url = required(input.url, 'url');
   const parsedUrl = new URL(url);
   if (parsedUrl.protocol !== 'https:') throw new TypeError('retailer URL must use HTTPS');
@@ -41,7 +44,9 @@ export function createObservation(input) {
     imageUrl: input.imageUrl ? String(input.imageUrl).trim() : null,
     retailerProductId: input.retailerProductId ? String(input.retailerProductId).trim() : null,
     sourceType,
+    listingState,
     sourceReference: required(input.sourceReference, 'sourceReference'),
+    rawSourceSha256: input.rawSourceSha256 ?? null,
   };
   if (input.dimensionHint) {
     record.dimensionHint = { ...input.dimensionHint };
