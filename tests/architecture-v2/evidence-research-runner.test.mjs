@@ -63,7 +63,7 @@ test('research cycle discovers, extracts, attests, stores, and advances without 
   assert.equal(result.caseRecord.attempt, 2);
   assert.equal(result.caseRecord.sources.length, 1);
   assert.equal(result.caseRecord.sources[0].claims.find((claim) => claim.field === 'closedEnvelope.widthMm').value, 913);
-  assert.equal(result.caseRecord.sources[0].verificationReceipt.policyVersion, '2026-07-11.2');
+  assert.equal(result.caseRecord.sources[0].verificationReceipt.policyVersion, '2026-07-11.3');
   assert.equal(writes.length, 1);
   assert.match(writes[0].path, /^evidence\/web\/sha256\/[a-f0-9]{2}\/[a-f0-9]{2}\/[a-f0-9]{64}\.html$/);
 });

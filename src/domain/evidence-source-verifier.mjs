@@ -51,7 +51,17 @@ function trustedUrl(value, brand, label) {
   if (!Array.isArray(allowed) || !allowed.some((suffix) => host === suffix || host.endsWith(`.${suffix}`))) {
     throw new TypeError(`${label} is not an official host for ${brand}`);
   }
+  const marketPatterns = manufacturerPolicy.marketPathPatterns?.[brandKey(brand)] ?? [];
+  if (marketPatterns.length && !marketPatterns.some((pattern) => new RegExp(pattern, 'i').test(url.pathname))) {
+    throw new TypeError(`${label} does not match the Australian market`);
+  }
   return url.toString();
+}
+
+export function isReleasableQuarantineReason(value) {
+  const reason = String(value ?? '').trim().toLowerCase();
+  return Boolean(reason) && resolutionPolicy.releasableQuarantineReasonPatterns
+    .some((pattern) => new RegExp(pattern).test(reason));
 }
 
 export function isOfficialBrandUrl(value, brand) {

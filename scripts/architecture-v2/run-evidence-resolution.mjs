@@ -11,6 +11,7 @@ import { promisify } from 'node:util';
 import { extractClaimsFromPdfText } from '../../src/domain/evidence-artifact-verifier.mjs';
 import { runEvidenceResearchCycle } from '../../src/domain/evidence-research-runner.mjs';
 import { adjudicateResolutionCase } from '../../src/domain/evidence-resolution-loop.mjs';
+import { buildResolutionSeedDocument } from '../../src/domain/evidence-resolution-seed.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 
 const execFile = promisify(execFileCallback);
@@ -73,7 +74,13 @@ async function main(args) {
   const storageRoot = argument(args, '--storage-root') ?? process.env.FITAPPLIANCE_STORAGE_ROOT;
   if (!storageRoot) throw new TypeError('storage root required');
   const inputPath = resolve(argument(args, '--input') ?? resolveArchitectureV2Path(repoRoot, 'evidenceResolutionInput'));
-  const document = JSON.parse(await readFile(inputPath, 'utf8'));
+  const storedDocument = JSON.parse(await readFile(inputPath, 'utf8'));
+  const [catalog, publicationQuarantine, phase1Disposition] = await Promise.all([
+    readFile(resolve(repoRoot, 'data/catalog-final.json'), 'utf8').then(JSON.parse),
+    readFile(resolveArchitectureV2Path(repoRoot, 'canonicalPublicationQuarantine'), 'utf8').then(JSON.parse),
+    readFile(resolveArchitectureV2Path(repoRoot, 'phase1QuarantineDisposition'), 'utf8').then(JSON.parse),
+  ]);
+  const document = buildResolutionSeedDocument(storedDocument, { catalog, publicationQuarantine, phase1Disposition });
   if (document.schemaVersion !== 1 || !Array.isArray(document.cases)) throw new TypeError('resolution case document required');
   const writeObject = await createObjectWriter(storageRoot, dryRun);
   const now = new Date().toISOString();

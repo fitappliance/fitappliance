@@ -1,5 +1,9 @@
 import { createCategoryGeometry } from './category-geometry.mjs';
-import { isSourceFresh, verifyVerificationReceipt } from './evidence-source-verifier.mjs';
+import {
+  isReleasableQuarantineReason,
+  isSourceFresh,
+  verifyVerificationReceipt,
+} from './evidence-source-verifier.mjs';
 import { containsExactModel, validateClaimsSemantics } from './evidence-claim-semantics.mjs';
 
 const SUPPORTED_FIELDS = new Set([
@@ -94,8 +98,14 @@ function validateCase(input) {
     brand: requiredText(input.brand, 'brand'),
     model: requiredText(input.model, 'model'),
     category: requiredText(input.category, 'category'),
-    releasableQuarantineReasons: [...new Set((input.releasableQuarantineReasons ?? [])
-      .map((reason) => requiredText(reason, 'releasable quarantine reason').toLowerCase()))].sort(),
+    releasableQuarantineReasons: (() => {
+      const reasons = [...new Set((input.releasableQuarantineReasons ?? [])
+        .map((reason) => requiredText(reason, 'releasable quarantine reason').toLowerCase()))].sort();
+      if (!reasons.length || reasons.some((reason) => !isReleasableQuarantineReason(reason))) {
+        throw new TypeError('policy-approved releasable quarantine reason required');
+      }
+      return reasons;
+    })(),
     initialFailure: {
       ...input.initialFailure,
       code: requiredText(input?.initialFailure?.code, 'initial failure code'),
@@ -200,6 +210,7 @@ function normalizeSource(source, caseRecord, options = {}) {
 function groupClaims(caseRecord, options = {}) {
   const entries = caseRecord.sources.map((source) => normalizeSource(source, caseRecord, options)).filter(Boolean);
   const byHash = new Map(entries.map((entry) => [entry.source.contentSha256, entry]));
+  if (byHash.size !== entries.length) throw new TypeError('duplicate source hash in resolution case');
   const superseded = new Set();
   for (const entry of entries) {
     for (const hash of entry.source.supersedesContentSha256 ?? []) {

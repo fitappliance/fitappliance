@@ -52,9 +52,7 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
     });
   }
   if (productModel) signals.push({ type: 'product_model', value: productModel });
-  if (new Set(signals.map((signal) => signal.type)).size < 2) {
-    throw new Error('independent exact-model identity signals missing');
-  }
+  if (!productModel) throw new Error('exact product model identity signal missing');
   const text = $.root().find('*').contents()
     .filter((_, node) => node.type === 'text')
     .map((_, node) => normalizedText(node.data))
@@ -115,7 +113,8 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
   if (!Array.isArray(fields) || !fields.length) throw new TypeError('requested evidence fields required');
   const $ = load(Buffer.from(bytes).toString('utf8'));
   const candidates = new Map(fields.map((field) => [field, []]));
-  $('body *').each((_, element) => {
+  $('body *').not('script,style,noscript,template').each((_, element) => {
+    if ($(element).closest('[hidden],[aria-hidden="true"],script,style,noscript,template').length) return;
     const label = elementOwnText($, element);
     if (!label) return;
     for (const field of fields) {

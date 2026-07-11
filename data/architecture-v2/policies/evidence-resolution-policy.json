@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-11.2",
+  "policyVersion": "2026-07-11.3",
   "receiptSchemaVersion": 1,
   "maximumRedirects": 5,
   "maximumFutureClockSkewMinutes": 5,
   "releasableQuarantineReasonPatterns": [
     "^phase1_approved_dimensions_alias$",
-    "^approved_alias_dimensions_only_projection_"
+    "^approved_alias_dimensions_only_projection_",
+    "^evidence_projection_hold$"
   ],
   "permanentQuarantineReasonPatterns": [
     "manufacturer_identity_collision",

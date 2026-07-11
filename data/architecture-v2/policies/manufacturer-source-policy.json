@@ -1,7 +1,11 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-11.1",
+  "policyVersion": "2026-07-11.2",
   "maxEvidenceAgeDays": 400,
+  "marketPathPatterns": {
+    "lg": ["^/au(?:/|$)"],
+    "samsung": ["^/au(?:/|$)"]
+  },
   "brands": {
     "artusi": ["artusi.com.au"],
     "beko": ["beko.com"],

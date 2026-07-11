@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import { createCanonicalProduct } from './identity.mjs';
+import { isReleasableQuarantineReason } from './evidence-source-verifier.mjs';
 
 function text(value, label) {
   const result = String(value ?? '').trim();
@@ -58,6 +59,9 @@ function normalizeReleaseGrants(releaseGrants) {
     for (const value of reasons) {
       const reason = quarantineReason(value);
       if (nonReleasableReason(reason)) throw new TypeError(`non-releasable quarantine reason ${reason}`);
+      if (!isReleasableQuarantineReason(reason)) {
+        throw new TypeError(`quarantine reason not approved for automated release: ${reason}`);
+      }
       const key = `${legacyId}\0${caseId}\0${reason}`;
       if (seen.has(key)) throw new TypeError(`duplicate release grant ${legacyId}`);
       seen.add(key);
