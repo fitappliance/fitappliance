@@ -110,6 +110,30 @@
       ]
     },
     {
+      "sha256": "148c96022fe394b0ad19d6342fc5bc686ba1671a221cfc80d26e717e221f07dc",
+      "byteSize": 6191616,
+      "textSha256": "9148bb75cc10202aeedd5d95e53fe34b15a747a918bea9d6dc98d28b505c6ab3",
+      "textByteSize": 13689,
+      "pageCount": 8,
+      "sourceUrls": [
+        "https://www.appliancesonline.com.au/ak/0/1/9/2/0192e04f906bcc306046551bd4bf2f3a8373e7f2_WHE6874BA_Westinghouse_Specifications_Sheet.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/14/148c96022fe394b0ad19d6342fc5bc686ba1671a221cfc80d26e717e221f07dc.pdf",
+        "text": "evidence/text/sha256/14/148c96022fe394b0ad19d6342fc5bc686ba1671a221cfc80d26e717e221f07dc.txt",
+        "renderDirectory": "evidence/renders/sha256/14/148c96022fe394b0ad19d6342fc5bc686ba1671a221cfc80d26e717e221f07dc"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "ao-88474",
+          "canonicalProductId": "fa_prod_ec7d5da97c44f9e0d0de0bcc"
+        }
+      ],
+      "reviewPages": [
+        4
+      ]
+    },
+    {
       "sha256": "1f2460ba7366fa75d802d47a0bcf01b82c5578919e975d935a8d589b4154f9a0",
       "byteSize": 13119944,
       "textSha256": "7a6f6d2a404e5e230004707aaf53b696bfc6b3f36020cef5ee9d35bbc251bdbe",
@@ -827,6 +851,30 @@
       ]
     },
     {
+      "sha256": "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a",
+      "byteSize": 360306,
+      "textSha256": "198b9ede6172493939ade46ff6cedca91eb7b2da4bbcfeed764154c5d1464656",
+      "textByteSize": 14979,
+      "pageCount": 8,
+      "sourceUrls": [
+        "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/a7/a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a.pdf",
+        "text": "evidence/text/sha256/a7/a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a.txt",
+        "renderDirectory": "evidence/renders/sha256/a7/a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "ao-88474",
+          "canonicalProductId": "fa_prod_ec7d5da97c44f9e0d0de0bcc"
+        }
+      ],
+      "reviewPages": [
+        4
+      ]
+    },
+    {
       "sha256": "a85ac2f1727da062b515901eda319f16147312c89d7136643509bd5498f17b06",
       "byteSize": 138506,
       "textSha256": "e5780b7279cbdf4efedaf6c66c85fe5ac8c25fd73bed00b64a3776f1af818206",
@@ -1497,10 +1545,10 @@
     }
   ],
   "summary": {
-    "documents": 57,
-    "productLinks": 58,
-    "reviewPages": 177,
-    "totalBytes": 150678825,
-    "totalTextBytes": 1940712
+    "documents": 59,
+    "productLinks": 60,
+    "reviewPages": 179,
+    "totalBytes": 157230747,
+    "totalTextBytes": 1969380
   }
 }

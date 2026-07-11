@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "storageDirectory": "review-workspaces/phase-10/alias-source",
+  "entries": [
+    {
+      "id": "alias-whe6874ba-source-whe6874sa",
+      "fileStem": "whe6874sa",
+      "sha256": "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a",
+      "pageCount": 8,
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse",
+      "legacyRuntimeId": "ao-88474",
+      "canonicalProductId": "fa_prod_ec7d5da97c44f9e0d0de0bcc",
+      "reviewPages": [4]
+    },
+    {
+      "id": "alias-whe6874ba-target-appliances-online",
+      "fileStem": "whe6874ba-appliances-online",
+      "sha256": "148c96022fe394b0ad19d6342fc5bc686ba1671a221cfc80d26e717e221f07dc",
+      "pageCount": 8,
+      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/1/9/2/0192e04f906bcc306046551bd4bf2f3a8373e7f2_WHE6874BA_Westinghouse_Specifications_Sheet.pdf",
+      "legacyRuntimeId": "ao-88474",
+      "canonicalProductId": "fa_prod_ec7d5da97c44f9e0d0de0bcc",
+      "reviewPages": [4]
+    }
+  ]
+}

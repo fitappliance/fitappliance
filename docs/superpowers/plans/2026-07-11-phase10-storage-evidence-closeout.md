@@ -46,12 +46,14 @@ and close every pending alias disposition without weakening approval gates.
 
 ## Phase 10D: Alias and quarantine closeout
 
-- [ ] Research all nine pending aliases using regulator-family evidence and at
+- [x] Research all nine pending aliases using regulator-family evidence and at
   least two independent market observations where Tier B applies.
-- [ ] Approve only the exact fields allowed by the alias tier.
-- [ ] Record each target as approved, rejected or pending-more-evidence with a
+- [x] Approve only the exact fields allowed by the alias tier.
+- [x] Record each target as approved, rejected or pending-more-evidence with a
   durable investigation artifact.
-- [ ] Regenerate canonical publication quarantine without silent drops.
+- [x] Regenerate canonical publication quarantine without silent drops. The
+  dimensions-approved WHE6874BA runtime row remains held because its legacy
+  projection still exposes unreviewed clearance, operation and plumbing fields.
 
 ## Phase 10E: Verification and production
 

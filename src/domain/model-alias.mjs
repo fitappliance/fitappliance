@@ -197,6 +197,12 @@ function normalizeAlias(input) {
     },
     supersedes: alias.supersedes === null ? null : requireString(alias.supersedes, 'alias supersedes'),
   };
+  if (status === 'rejected' && (
+    !normalized.decision.reviewer
+    || !/^\d{4}-\d{2}-\d{2}$/.test(String(normalized.decision.reviewed_at || ''))
+  )) {
+    throw new TypeError('rejected alias requires reviewer and review date');
+  }
   if (status === 'approved') {
     const evaluation = evaluateAliasCandidate(normalized);
     if (!evaluation.approvable) throw new TypeError(`approved alias evidence invalid: ${evaluation.reasons.join(', ')}`);

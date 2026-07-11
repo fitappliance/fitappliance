@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "retrieved_at": "2026-07-11",
+  "source_url": "https://www.winnings.com.au/p/westinghouse-681l-french-door-fridge-whe6874ba",
+  "source_host": "www.winnings.com.au",
+  "document_author_type": "retailer",
+  "transport_host_type": "retailer",
+  "target": {
+    "brand": "Westinghouse",
+    "model": "WHE6874BA"
+  },
+  "ordered_dimensions_mm": {
+    "width": 913,
+    "height": 1782,
+    "depth": 803
+  },
+  "captured_text": [
+    "Westinghouse 609L French Door Frost Free Fridge WHE6874BA",
+    "Total height (mm): 1782",
+    "Total width (mm): 913",
+    "Total depth (mm): 803"
+  ],
+  "capture_method": "Firecrawl structured extraction from the public product page",
+  "limitations": "This immutable snapshot records the fields used for adjudication. It is retailer corroboration, not manufacturer evidence."
+}

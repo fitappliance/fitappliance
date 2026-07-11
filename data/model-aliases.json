@@ -12,7 +12,7 @@
       "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
       "approved_fields": [],
       "evidence": [],
-      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; the available official guide lists only EBE5367SC." },
+      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "The regulator and Queensland hydrocarbon register link EBE5367BC and EBE5367SC, but no two independent target-model market sources with explicit W/H/D were found. Keep pending; do not inherit dimensions." },
       "supersedes": null
     },
     {
@@ -20,12 +20,12 @@
       "brand": "Kelvinator",
       "target_model": "KTB2302AB",
       "source_model": "KTB2302WB",
-      "status": "pending",
+      "status": "rejected",
       "identity_scope": "manufacturer_model",
       "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
       "approved_fields": [],
       "evidence": [],
-      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; no manufacturer variant table has been captured." },
+      "decision": { "reviewer": "Jagger Zhang", "reviewed_at": "2026-07-11", "rationale": "The regulator family links KTB2302AB and KTB2302WB, but no independent target-model market dimension sources were found. Relationship alone cannot transfer geometry." },
       "supersedes": null
     },
     {
@@ -33,12 +33,12 @@
       "brand": "Kelvinator",
       "target_model": "KTB2502AB",
       "source_model": "KTB2502WB",
-      "status": "pending",
+      "status": "rejected",
       "identity_scope": "manufacturer_model",
       "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
       "approved_fields": [],
       "evidence": [],
-      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; no manufacturer variant table has been captured." },
+      "decision": { "reviewer": "Jagger Zhang", "reviewed_at": "2026-07-11", "rationale": "The regulator family links KTB2502AB and KTB2502WB, but no independent target-model market dimension sources were found. Relationship alone cannot transfer geometry." },
       "supersedes": null
     },
     {
@@ -46,12 +46,12 @@
       "brand": "Kelvinator",
       "target_model": "KTB2802AB",
       "source_model": "KTB2802WB",
-      "status": "pending",
+      "status": "rejected",
       "identity_scope": "manufacturer_model",
       "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
       "approved_fields": [],
       "evidence": [],
-      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; no manufacturer variant table has been captured." },
+      "decision": { "reviewer": "Jagger Zhang", "reviewed_at": "2026-07-11", "rationale": "The regulator family links KTB2802AB and KTB2802WB, but no independent target-model market dimension sources were found. Relationship alone cannot transfer geometry." },
       "supersedes": null
     },
     {
@@ -59,12 +59,12 @@
       "brand": "Westinghouse",
       "target_model": "WHE6000BB",
       "source_model": "WHE6000SB",
-      "status": "pending",
+      "status": "rejected",
       "identity_scope": "manufacturer_model",
       "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
       "approved_fields": [],
       "evidence": [],
-      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; the available official guide lists only WHE6000SB." },
+      "decision": { "reviewer": "Jagger Zhang", "reviewed_at": "2026-07-11", "rationale": "WHE6000BB and WHE6000SB share a regulator family, but no two independent target-model market sources with explicit W/H/D were found. The sibling guide is insufficient." },
       "supersedes": null
     },
     {
@@ -72,12 +72,12 @@
       "brand": "Westinghouse",
       "target_model": "WHE6060BB",
       "source_model": "WHE6060SB",
-      "status": "pending",
+      "status": "rejected",
       "identity_scope": "manufacturer_model",
       "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
       "approved_fields": [],
       "evidence": [],
-      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; the available official guide lists only WHE6060SB." },
+      "decision": { "reviewer": "Jagger Zhang", "reviewed_at": "2026-07-11", "rationale": "WHE6060BB and WHE6060SB share a regulator family, but no two independent target-model market sources with explicit W/H/D were found. The sibling guide is insufficient." },
       "supersedes": null
     },
     {
@@ -85,12 +85,12 @@
       "brand": "Westinghouse",
       "target_model": "WHE7074BA",
       "source_model": "WHE7074SA",
-      "status": "pending",
+      "status": "rejected",
       "identity_scope": "manufacturer_model",
       "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
       "approved_fields": [],
       "evidence": [],
-      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; no manufacturer document linking BA and SA has been captured." },
+      "decision": { "reviewer": "Jagger Zhang", "reviewed_at": "2026-07-11", "rationale": "The regulator and Queensland hydrocarbon register link WHE7074BA and WHE7074SA, but no independent target-model market dimension sources were found. No geometry is transferred." },
       "supersedes": null
     },
     {
@@ -98,12 +98,12 @@
       "brand": "Westinghouse",
       "target_model": "WTB2500AH",
       "source_model": "WTB2500WH",
-      "status": "pending",
+      "status": "rejected",
       "identity_scope": "manufacturer_model",
       "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
       "approved_fields": [],
       "evidence": [],
-      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "Exact target factsheet returns 404; the available official guide lists only WTB2500WH." },
+      "decision": { "reviewer": "Jagger Zhang", "reviewed_at": "2026-07-11", "rationale": "Rejected because WTB2500AH/WH and older WTB2500AH-X/WH-X generations coexist with conflicting envelopes. The exact no-X target lacks two independent market dimension sources, so a suffix-only inference is unsafe." },
       "supersedes": null
     },
     {
@@ -111,12 +111,52 @@
       "brand": "Westinghouse",
       "target_model": "WHE6874BA",
       "source_model": "WHE6874SA",
-      "status": "pending",
+      "status": "approved",
       "identity_scope": "manufacturer_model",
       "candidate_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
-      "approved_fields": [],
-      "evidence": [],
-      "decision": { "reviewer": null, "reviewed_at": null, "rationale": "The target factsheet endpoint returns an error document. The Australian Energy Rating register groups WHE6874BA and WHE6874SA under ARF3970, but independent target-market dimension corroboration is still required." },
+      "approved_fields": ["closedEnvelope.widthMm", "closedEnvelope.heightMm", "closedEnvelope.depthMm"],
+      "evidence": [
+        {
+          "role": "regulatory_family",
+          "source_url": "https://data.gov.au/data/dataset/559708e5-480e-4f94-8429-c49571e82761/resource/0eabca18-49bb-4a9e-8019-28d5d56501c4/download/rf_2026_07_10.csv",
+          "document_sha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "page": 1,
+          "quote": "WHE6874BA and WHE6874SA share registration ARF3970, family WHE6874**, submit ID 177994, and Australia/New Zealand sales markets.",
+          "document_author_type": "regulator",
+          "transport_host_type": "regulator"
+        },
+        {
+          "role": "source_dimensions",
+          "source_url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6874SA&brand=Westinghouse",
+          "document_sha256": "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a",
+          "page": 4,
+          "quote": "WHE6874SA: Total height 1782 mm; Total width 913 mm; Total depth 803 mm.",
+          "document_author_type": "manufacturer",
+          "transport_host_type": "manufacturer",
+          "ordered_dimensions_mm": { "width": 913, "height": 1782, "depth": 803 }
+        },
+        {
+          "role": "target_market_dimensions",
+          "source_url": "https://www.appliancesonline.com.au/ak/0/1/9/2/0192e04f906bcc306046551bd4bf2f3a8373e7f2_WHE6874BA_Westinghouse_Specifications_Sheet.pdf",
+          "document_sha256": "148c96022fe394b0ad19d6342fc5bc686ba1671a221cfc80d26e717e221f07dc",
+          "page": 4,
+          "quote": "WHE6874BA: Total height 1782 mm; Total width 913 mm; Total depth 803 mm.",
+          "document_author_type": "retailer",
+          "transport_host_type": "retailer",
+          "ordered_dimensions_mm": { "width": 913, "height": 1782, "depth": 803 }
+        },
+        {
+          "role": "target_market_dimensions",
+          "source_url": "https://www.winnings.com.au/p/westinghouse-681l-french-door-fridge-whe6874ba",
+          "document_sha256": "965821c5c9b2dee11763e62a5f5c66fb565cb7b5e94185a2b19de1a4d5353615",
+          "page": 1,
+          "quote": "WHE6874BA: Total height 1782 mm; Total width 913 mm; Total depth 803 mm.",
+          "document_author_type": "retailer",
+          "transport_host_type": "retailer",
+          "ordered_dimensions_mm": { "width": 913, "height": 1782, "depth": 803 }
+        }
+      ],
+      "decision": { "approval_tier": "tier_b", "reviewer": "Jagger Zhang", "reviewed_at": "2026-07-11", "rationale": "Dimensions-only approval: regulator family, official WHE6874SA dimensions, and two independent Australian target-market sources all agree on W913 x H1782 x D803. No clearance, service, plumbing, door-swing, or operational fields are inherited." },
       "supersedes": null
     }
   ]

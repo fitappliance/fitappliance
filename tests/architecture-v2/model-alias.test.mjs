@@ -112,14 +112,37 @@ test('phase one fixture freezes exactly nine unique quarantine products', () => 
   assert.equal(new Set(fixture.products.map((row) => `${row.brand}:${row.model}`)).size, 9);
 });
 
-test('repository pending registry and disposition cover the frozen baseline without approvals', () => {
+test('repository alias decisions cover the frozen baseline and expose only the evidenced approval', () => {
   const fixture = JSON.parse(readFileSync(new URL('../fixtures/architecture-v2/model-aliases.json', import.meta.url), 'utf8'));
   const registryDocument = JSON.parse(readFileSync(new URL('../../data/model-aliases.json', import.meta.url), 'utf8'));
   const disposition = JSON.parse(readFileSync(new URL('../../data/architecture-v2/decisions/phase1-quarantine-disposition.json', import.meta.url), 'utf8'));
+  const publicationQuarantine = JSON.parse(readFileSync(
+    new URL('../../data/architecture-v2/decisions/canonical-publication-quarantine.json', import.meta.url),
+    'utf8',
+  ));
   const registry = createAliasRegistry(registryDocument);
 
   assert.equal(registry.aliases.length, 9);
-  assert.ok(registry.aliases.every((alias) => alias.status === 'pending'));
+  assert.deepEqual(
+    Object.fromEntries(['approved', 'pending', 'rejected'].map((status) => [
+      status,
+      registry.aliases.filter((alias) => alias.status === status).length,
+    ])),
+    { approved: 1, pending: 1, rejected: 7 },
+  );
+  assert.deepEqual(
+    registry.aliases.filter((alias) => alias.status === 'approved').map((alias) => alias.target_model),
+    ['WHE6874BA'],
+  );
+  assert.ok(registry.aliases.filter((alias) => alias.status !== 'approved')
+    .every((alias) => alias.approved_fields.length === 0));
+  const whePublicationHold = publicationQuarantine.products
+    .find((row) => row.legacyRuntimeId === 'ao-88474');
+  assert.match(
+    whePublicationHold?.reason ?? '',
+    /dimensions_only.*projection/i,
+    'dimensions-only alias approval must not expose unreviewed legacy fit fields',
+  );
   assert.equal(disposition.products.length, 9);
   assert.deepEqual(
     new Set(disposition.products.map((row) => row.legacyId)),
@@ -192,6 +215,23 @@ test('approved aliases require complete manufacturer provenance and review', () 
     assert.throws(
       () => createAliasRegistry({ schema_version: 1, last_updated: '2026-07-11', aliases: [alias] }),
       /approved|evidence|review|manufacturer|hash|page|quote/i,
+    );
+  }
+});
+
+test('rejected aliases require a reviewer and review date', () => {
+  const rejected = pendingAlias({
+    status: 'rejected',
+    decision: { reviewer: 'Jagger Zhang', reviewed_at: '2026-07-11', rationale: 'Evidence conflicts.' },
+  });
+  assert.doesNotThrow(() => createAliasRegistry({ schema_version: 1, last_updated: '2026-07-11', aliases: [rejected] }));
+  for (const decision of [
+    { reviewer: null, reviewed_at: '2026-07-11', rationale: 'Evidence conflicts.' },
+    { reviewer: 'Jagger Zhang', reviewed_at: null, rationale: 'Evidence conflicts.' },
+  ]) {
+    assert.throws(
+      () => createAliasRegistry({ schema_version: 1, last_updated: '2026-07-11', aliases: [pendingAlias({ status: 'rejected', decision })] }),
+      /rejected.*review/i,
     );
   }
 });

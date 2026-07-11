@@ -4,13 +4,13 @@
   "baseline": { "totalProducts": 2268, "adapted": 2259, "quarantined": 9, "verifiedDimensionOverlays": 331 },
   "products": [
     { "legacyId": "fridge-arf2445", "brand": "Electrolux", "model": "EBE5367BC", "disposition": "pending_more_evidence", "aliasId": "alias_electrolux_ebe5367bc_to_ebe5367sc_v1" },
-    { "legacyId": "fridge-arf2581", "brand": "Westinghouse", "model": "WTB2500AH", "disposition": "pending_more_evidence", "aliasId": "alias_westinghouse_wtb2500ah_to_wtb2500wh_v1" },
-    { "legacyId": "fridge-arf2582", "brand": "Kelvinator", "model": "KTB2502AB", "disposition": "pending_more_evidence", "aliasId": "alias_kelvinator_ktb2502ab_to_ktb2502wb_v1" },
-    { "legacyId": "fridge-arf2584", "brand": "Kelvinator", "model": "KTB2802AB", "disposition": "pending_more_evidence", "aliasId": "alias_kelvinator_ktb2802ab_to_ktb2802wb_v1" },
-    { "legacyId": "fridge-arf2595", "brand": "Kelvinator", "model": "KTB2302AB", "disposition": "pending_more_evidence", "aliasId": "alias_kelvinator_ktb2302ab_to_ktb2302wb_v1" },
-    { "legacyId": "fridge-arf3916", "brand": "Westinghouse", "model": "WHE7074BA", "disposition": "pending_more_evidence", "aliasId": "alias_westinghouse_whe7074ba_to_whe7074sa_v1" },
-    { "legacyId": "fridge-arf3968", "brand": "Westinghouse", "model": "WHE6000BB", "disposition": "pending_more_evidence", "aliasId": "alias_westinghouse_whe6000bb_to_whe6000sb_v1" },
-    { "legacyId": "fridge-arf3969", "brand": "Westinghouse", "model": "WHE6060BB", "disposition": "pending_more_evidence", "aliasId": "alias_westinghouse_whe6060bb_to_whe6060sb_v1" },
-    { "legacyId": "fridge-arf3970", "brand": "Westinghouse", "model": "WHE6874BA", "disposition": "pending_more_evidence", "aliasId": "alias_westinghouse_whe6874ba_to_whe6874sa_v1" }
+    { "legacyId": "fridge-arf2581", "brand": "Westinghouse", "model": "WTB2500AH", "disposition": "rejected_alias", "aliasId": "alias_westinghouse_wtb2500ah_to_wtb2500wh_v1" },
+    { "legacyId": "fridge-arf2582", "brand": "Kelvinator", "model": "KTB2502AB", "disposition": "rejected_alias", "aliasId": "alias_kelvinator_ktb2502ab_to_ktb2502wb_v1" },
+    { "legacyId": "fridge-arf2584", "brand": "Kelvinator", "model": "KTB2802AB", "disposition": "rejected_alias", "aliasId": "alias_kelvinator_ktb2802ab_to_ktb2802wb_v1" },
+    { "legacyId": "fridge-arf2595", "brand": "Kelvinator", "model": "KTB2302AB", "disposition": "rejected_alias", "aliasId": "alias_kelvinator_ktb2302ab_to_ktb2302wb_v1" },
+    { "legacyId": "fridge-arf3916", "brand": "Westinghouse", "model": "WHE7074BA", "disposition": "rejected_alias", "aliasId": "alias_westinghouse_whe7074ba_to_whe7074sa_v1" },
+    { "legacyId": "fridge-arf3968", "brand": "Westinghouse", "model": "WHE6000BB", "disposition": "rejected_alias", "aliasId": "alias_westinghouse_whe6000bb_to_whe6000sb_v1" },
+    { "legacyId": "fridge-arf3969", "brand": "Westinghouse", "model": "WHE6060BB", "disposition": "rejected_alias", "aliasId": "alias_westinghouse_whe6060bb_to_whe6060sb_v1" },
+    { "legacyId": "fridge-arf3970", "brand": "Westinghouse", "model": "WHE6874BA", "disposition": "approved_dimensions_alias", "aliasId": "alias_westinghouse_whe6874ba_to_whe6874sa_v1" }
   ]
 }

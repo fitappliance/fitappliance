@@ -13,6 +13,7 @@ export const architectureV2Paths = Object.freeze({
   phase10SelectionInput: `${base}/reviews/phase-10/evidence-batch-selection-input.json`,
   phase10AcquisitionInput: `${base}/reviews/phase-10/evidence-acquisition-input.json`,
   phase10ReviewInput: `${base}/reviews/phase-10/evidence-review-input.json`,
+  phase10AliasEvidenceObjects: `${base}/reviews/phase-10/alias-evidence-objects.json`,
   retailerObservations: `${base}/observations/retailer-observations.json`,
   canonicalRegistry: `${base}/generated/canonical-registry.json`,
   evidenceObjectIndex: `${base}/generated/evidence-object-index.json`,

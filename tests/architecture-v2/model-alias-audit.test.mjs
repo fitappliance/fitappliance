@@ -31,6 +31,7 @@ test('alias audit reports deterministic status and disposition counts', () => {
     quarantined_no_manufacturer_evidence: 1,
   });
   assert.deepEqual(first.missingAliasReferences, []);
+  assert.deepEqual(first.inconsistentAliasDispositions, []);
   assert.equal(Object.isFrozen(first), true);
 });
 
@@ -39,6 +40,18 @@ test('alias audit reports disposition references absent from the registry', () =
     products: [{ legacyId: 'fridge-one', disposition: 'pending_more_evidence', aliasId: 'alias_missing' }],
   });
   assert.deepEqual(result.missingAliasReferences, [{ legacyId: 'fridge-one', aliasId: 'alias_missing' }]);
+});
+
+test('alias audit reports disposition values that disagree with registry status', () => {
+  const result = auditAliasRegistry(registry, {
+    products: [{ legacyId: 'fridge-one', disposition: 'approved_dimensions_alias', aliasId: 'alias_pending_v1' }],
+  });
+  assert.deepEqual(result.inconsistentAliasDispositions, [{
+    aliasId: 'alias_pending_v1',
+    actual: 'approved_dimensions_alias',
+    expected: 'pending_more_evidence',
+    legacyId: 'fridge-one',
+  }]);
 });
 
 test('alias audit rejects malformed disposition documents', () => {

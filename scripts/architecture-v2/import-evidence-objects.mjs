@@ -100,7 +100,9 @@ export async function importEvidenceObjects({
   const bundles = (await readJson(resolveArchitectureV2Path(repoRoot, 'evidenceReviewBundles'))).bundles;
   const phase10Acquisition = await readJson(resolveArchitectureV2Path(repoRoot, 'phase10Acquisition'));
   const phase10Candidates = await readJson(resolveArchitectureV2Path(repoRoot, 'phase10ReviewCandidates'));
+  const aliasEvidenceObjects = await readJson(resolveArchitectureV2Path(repoRoot, 'phase10AliasEvidenceObjects'));
   const fileFacts = new Map();
+  const sourceFilesByHash = new Map();
 
   for (const review of dimensionReviews) {
     const pdfPath = resolveWithin(sourceDirectory, `${review.id}.pdf`);
@@ -114,6 +116,7 @@ export async function importEvidenceObjects({
       textSha256: await sha256(textPath),
       textByteSize: (await stat(textPath)).size,
     });
+    sourceFilesByHash.set(actualHash, { pdfPath, textPath });
   }
 
   const records = buildEvidenceObjectRecords({ dimensionReviews, spaceReviews, bundles, fileFacts });
@@ -138,14 +141,37 @@ export async function importEvidenceObjects({
       canonicalProductId: acquired.canonicalProductId,
       reviewPages: candidate.reviewPages,
     });
+    sourceFilesByHash.set(actualHash, { pdfPath, textPath });
+  }
+  if (aliasEvidenceObjects.schemaVersion !== 1 || !Array.isArray(aliasEvidenceObjects.entries)) {
+    throw new TypeError('approved alias evidence object manifest invalid');
+  }
+  const aliasSourceDirectory = resolveWithin(storageRoot, aliasEvidenceObjects.storageDirectory);
+  for (const entry of aliasEvidenceObjects.entries) {
+    const pdfPath = resolveWithin(aliasSourceDirectory, `${entry.fileStem}.pdf`);
+    const textPath = resolveWithin(aliasSourceDirectory, `${entry.fileStem}.txt`);
+    const actualHash = await sha256(pdfPath);
+    if (actualHash !== entry.sha256) throw new Error(`approved alias source PDF hash mismatch for ${entry.id}`);
+    const actualPages = await pdfPageCount(pdfPath);
+    if (actualPages !== entry.pageCount) throw new Error(`approved alias source PDF page count mismatch for ${entry.id}`);
+    records.push({
+      sha256: actualHash,
+      byteSize: (await stat(pdfPath)).size,
+      textSha256: await sha256(textPath),
+      textByteSize: (await stat(textPath)).size,
+      pageCount: actualPages,
+      sourceUrl: entry.sourceUrl,
+      legacyRuntimeId: entry.legacyRuntimeId,
+      canonicalProductId: entry.canonicalProductId,
+      reviewPages: entry.reviewPages,
+    });
+    sourceFilesByHash.set(actualHash, { pdfPath, textPath });
   }
   const index = buildEvidenceObjectIndex(records);
   for (const document of index.documents) {
-    const sourceId = document.productLinks[0].legacyRuntimeId;
-    const phase10 = phase10CandidateByLegacy.has(sourceId);
-    const sourceRoot = phase10 ? phase10SourceDirectory : sourceDirectory;
-    const sourcePdf = resolveWithin(sourceRoot, `${sourceId}.pdf`);
-    const sourceText = resolveWithin(sourceRoot, `${sourceId}.txt`);
+    const sourceFiles = sourceFilesByHash.get(document.sha256);
+    if (!sourceFiles) throw new Error(`source files missing for evidence object ${document.sha256}`);
+    const { pdfPath: sourcePdf, textPath: sourceText } = sourceFiles;
     const targetPdf = resolveWithin(storageRoot, document.paths.pdf);
     const targetText = resolveWithin(storageRoot, document.paths.text);
     await access(sourceText, constants.R_OK);

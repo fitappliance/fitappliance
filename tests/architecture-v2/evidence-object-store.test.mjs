@@ -91,21 +91,22 @@ test('rejects review joins with inconsistent document identity', () => {
   assert.throws(() => buildEvidenceObjectRecords(input), /hash mismatch/i);
 });
 
-test('committed object index covers every Phase 8, 9, and 10 reviewed document', async () => {
-  const [index, dimensionInput, spaceInput, phase10Acquisition, phase10Candidates] = await Promise.all([
+test('committed object index covers every Phase 8, 9, 10, and approved-alias document', async () => {
+  const [index, dimensionInput, spaceInput, phase10Acquisition, phase10Candidates, aliasObjects] = await Promise.all([
     readFile('data/architecture-v2/generated/evidence-object-index.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/reviews/phase-08/evidence-pilot-review-input.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/reviews/phase-09/space-evidence-pilot-input.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/generated/phase10-evidence-acquisition.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/generated/phase10-evidence-review-candidates.json', 'utf8').then(JSON.parse),
+    readFile('data/architecture-v2/reviews/phase-10/alias-evidence-objects.json', 'utf8').then(JSON.parse),
   ]);
   const byHash = new Map(index.documents.map((document) => [document.sha256, document]));
   assert.deepEqual(index.summary, {
-    documents: 57,
-    productLinks: 58,
-    reviewPages: 177,
-    totalBytes: 150678825,
-    totalTextBytes: 1940712,
+    documents: 59,
+    productLinks: 60,
+    reviewPages: 179,
+    totalBytes: 157230747,
+    totalTextBytes: 1969380,
   });
   for (const review of dimensionInput.reviews) {
     const document = byHash.get(review.hash);
@@ -126,6 +127,14 @@ test('committed object index covers every Phase 8, 9, and 10 reviewed document',
     assert.ok(document.productLinks.some((row) => row.legacyRuntimeId === acquired.legacyRuntimeId));
     for (const page of candidatesByLegacy.get(acquired.legacyRuntimeId).reviewPages) {
       assert.ok(document.reviewPages.includes(page), `missing Phase 10 review page ${acquired.legacyRuntimeId}:${page}`);
+    }
+  }
+  for (const entry of aliasObjects.entries) {
+    const document = byHash.get(entry.sha256);
+    assert.ok(document, `missing approved-alias object ${entry.id}`);
+    assert.ok(document.productLinks.some((row) => row.legacyRuntimeId === entry.legacyRuntimeId));
+    for (const page of entry.reviewPages) {
+      assert.ok(document.reviewPages.includes(page), `missing approved-alias review page ${entry.id}:${page}`);
     }
   }
 });

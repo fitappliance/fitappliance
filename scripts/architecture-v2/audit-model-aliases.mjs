@@ -23,6 +23,13 @@ function sortedCounts(values, initial = {}) {
   return Object.fromEntries(Object.entries(counts).sort(([left], [right]) => left.localeCompare(right)));
 }
 
+const DISPOSITION_BY_STATUS = Object.freeze({
+  approved: 'approved_dimensions_alias',
+  pending: 'pending_more_evidence',
+  rejected: 'rejected_alias',
+  superseded: 'superseded_alias',
+});
+
 export function auditAliasRegistry(registryDocument, dispositionDocument) {
   const registry = createAliasRegistry(registryDocument);
   if (!dispositionDocument || !Array.isArray(dispositionDocument.products)) {
@@ -42,6 +49,18 @@ export function auditAliasRegistry(registryDocument, dispositionDocument) {
     .filter((alias) => alias.status === 'approved')
     .sort((left, right) => left.id.localeCompare(right.id))
     .map((alias) => [alias.id, [...alias.approved_fields]]));
+  const aliasById = new Map(registry.aliases.map((alias) => [alias.id, alias]));
+  const inconsistentAliasDispositions = dispositionDocument.products
+    .filter((row) => row?.aliasId && aliasById.has(row.aliasId))
+    .map((row) => ({ row, expected: DISPOSITION_BY_STATUS[aliasById.get(row.aliasId).status] }))
+    .filter(({ row, expected }) => row.disposition !== expected)
+    .map(({ row, expected }) => ({
+      aliasId: row.aliasId,
+      actual: String(row.disposition || 'missing'),
+      expected,
+      legacyId: String(row.legacyId || ''),
+    }))
+    .sort((left, right) => left.legacyId.localeCompare(right.legacyId));
 
   return freezeDeep({
     schemaVersion: 1,
@@ -55,6 +74,7 @@ export function auditAliasRegistry(registryDocument, dispositionDocument) {
     dispositionCounts: sortedCounts(dispositionDocument.products.map((row) => String(row?.disposition || 'missing'))),
     approvedFields,
     missingAliasReferences,
+    inconsistentAliasDispositions,
     unreferencedApprovedAliasIds,
   });
 }
@@ -69,7 +89,9 @@ function main(args) {
   const disposition = readJson(resolveArchitectureV2Path(repoRoot, 'phase1QuarantineDisposition'));
   const result = auditAliasRegistry(registry, disposition);
   process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
-  if (result.missingAliasReferences.length > 0) process.exitCode = 1;
+  if (result.missingAliasReferences.length > 0 || result.inconsistentAliasDispositions.length > 0) {
+    process.exitCode = 1;
+  }
 }
 
 if (path.resolve(process.argv[1] || '') === fileURLToPath(import.meta.url)) {
