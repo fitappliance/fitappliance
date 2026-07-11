@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 
 import {
   createVerificationReceipt,
+  isSourceFresh,
   validateTrustedSourceMetadata,
   verifyVerificationReceipt,
 } from '../../src/domain/evidence-source-verifier.mjs';
@@ -86,4 +87,16 @@ test('receipt rejects malformed artifact metadata and verification timestamps', 
   assert.throws(() => createVerificationReceipt(source(), caseIdentity, {
     verifiedAt: 'not-a-date',
   }), /verification time/i);
+});
+
+test('freshness is evaluated independently from immutable receipt integrity', () => {
+  const input = source();
+  input.verificationReceipt = createVerificationReceipt(input, caseIdentity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+  });
+  assert.equal(isSourceFresh(input, '2026-07-12T00:00:00.000Z'), true);
+  assert.equal(isSourceFresh(input, '2028-01-01T00:00:00.000Z'), false);
+  assert.equal(verifyVerificationReceipt(input, caseIdentity, {
+    asOf: input.verificationReceipt.verifiedAt,
+  }), true);
 });

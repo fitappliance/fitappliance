@@ -245,6 +245,15 @@ test('manifest automatically quarantines every non-resolved case', () => {
   }]);
 });
 
+test('expired evidence reopens machine research and quarantines publication', () => {
+  const manifest = buildResolutionManifest({ schemaVersion: 1, cases: [resolutionCase()] }, {
+    asOf: '2028-01-01T00:00:00.000Z',
+  });
+  assert.equal(manifest.results[0].decision.status, 'research_required');
+  assert.deepEqual(manifest.releaseGrants, []);
+  assert.equal(manifest.activeQuarantines[0].reason, 'evidence_resolution_research_required');
+});
+
 test('repository projection publishes the resolved exact model without stale legacy fit fields', async () => {
   const { readFile } = await import('node:fs/promises');
   const projection = JSON.parse(await readFile('data/architecture-v2/generated/public-catalog-projection.json', 'utf8'));

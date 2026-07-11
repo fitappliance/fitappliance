@@ -23,6 +23,11 @@ for (const [id, review] of buildPhase10EvidenceProjection(phase10ReviewManifest.
 const spaceEvidence = buildSpaceEvidenceProjection(spaceReviewManifest.results);
 const canonicalByLegacy = new Map(registry.identifierMappings.map((row) => [row.legacyRuntimeId, row.canonicalProductId]));
 const quarantined = new Set(registry.quarantine.map((row) => row.legacyRuntimeId));
+for (const row of resolutionManifest.activeQuarantines ?? []) {
+  if (!quarantined.has(row.legacyRuntimeId)) {
+    throw new Error(`resolution quarantine missing from canonical registry: ${row.legacyRuntimeId}`);
+  }
+}
 const resolutionByLegacy = new Map(resolutionManifest.results.map((row) => [row.legacyRuntimeId, row.decision]));
 const filtered = {
   ...catalog,

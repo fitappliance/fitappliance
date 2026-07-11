@@ -166,6 +166,18 @@ export function validateTrustedSourceMetadata(source, caseIdentity, options = {}
   return true;
 }
 
+export function isSourceFresh(source, asOf) {
+  try {
+    const retrievedAt = parseTime(source?.retrievedAt, 'retrieval time');
+    const evaluatedAt = parseTime(asOf, 'evaluation time');
+    const futureSkew = resolutionPolicy.maximumFutureClockSkewMinutes * 60 * 1000;
+    const maxAge = manufacturerPolicy.maxEvidenceAgeDays * 24 * 60 * 60 * 1000;
+    return retrievedAt <= evaluatedAt + futureSkew && evaluatedAt - retrievedAt <= maxAge;
+  } catch {
+    return false;
+  }
+}
+
 export function createVerificationReceipt(source, caseIdentity, options = {}) {
   const verifiedAt = requiredText(options.verifiedAt, 'verification time');
   const verifiedMilliseconds = parseTime(verifiedAt, 'verification time');

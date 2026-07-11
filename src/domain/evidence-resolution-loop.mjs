@@ -1,5 +1,5 @@
 import { createCategoryGeometry } from './category-geometry.mjs';
-import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
+import { isSourceFresh, verifyVerificationReceipt } from './evidence-source-verifier.mjs';
 import { containsExactModel, validateClaimsSemantics } from './evidence-claim-semantics.mjs';
 
 const SUPPORTED_FIELDS = new Set([
@@ -146,13 +146,14 @@ export function buildResolutionPlan(input) {
   });
 }
 
-function normalizeSource(source, caseRecord) {
+function normalizeSource(source, caseRecord, options = {}) {
   if (source?.authority !== 'manufacturer') return null;
   verifyVerificationReceipt(source, {
     brand: caseRecord.brand,
     model: caseRecord.model,
     category: caseRecord.category,
   }, { asOf: source?.verificationReceipt?.verifiedAt });
+  if (options.asOf && !isSourceFresh(source, options.asOf)) return null;
   validateClaimsSemantics(source.claims, { category: caseRecord.category });
   const url = new URL(requiredText(source.sourceUrl, 'source URL'));
   if (url.protocol !== 'https:') throw new TypeError('source URL must use HTTPS');
@@ -196,8 +197,8 @@ function normalizeSource(source, caseRecord) {
   return { source, claims };
 }
 
-function groupClaims(caseRecord) {
-  const entries = caseRecord.sources.map((source) => normalizeSource(source, caseRecord)).filter(Boolean);
+function groupClaims(caseRecord, options = {}) {
+  const entries = caseRecord.sources.map((source) => normalizeSource(source, caseRecord, options)).filter(Boolean);
   const byHash = new Map(entries.map((entry) => [entry.source.contentSha256, entry]));
   const superseded = new Set();
   for (const entry of entries) {
@@ -226,9 +227,9 @@ function groupClaims(caseRecord) {
   return { byField, supersededSourceHashes: [...superseded].sort() };
 }
 
-export function adjudicateResolutionCase(input) {
+export function adjudicateResolutionCase(input, options = {}) {
   const caseRecord = validateCase(input);
-  const { byField, supersededSourceHashes } = groupClaims(caseRecord);
+  const { byField, supersededSourceHashes } = groupClaims(caseRecord, options);
   const values = {};
   const provenance = {};
   const contradictions = [];
@@ -276,7 +277,7 @@ export function adjudicateResolutionCase(input) {
   });
 }
 
-export function buildResolutionManifest(input) {
+export function buildResolutionManifest(input, options = {}) {
   if (input?.schemaVersion !== 1 || !Array.isArray(input.cases)) {
     throw new TypeError('resolution input schemaVersion 1 with cases required');
   }
@@ -293,7 +294,7 @@ export function buildResolutionManifest(input) {
       brand: caseRecord.brand,
       model: caseRecord.model,
       plan: buildResolutionPlan(caseRecord),
-      decision: adjudicateResolutionCase(caseRecord),
+      decision: adjudicateResolutionCase(caseRecord, options),
     };
   }).sort((left, right) => left.legacyRuntimeId.localeCompare(right.legacyRuntimeId));
   const releasedLegacyIds = results
