@@ -30,6 +30,8 @@ test('classifies current official asset hosts without promoting retailer mirrors
   assert.equal(classifyTransportHost('https://dtc-aus-api.hisense.com/medias/spec.pdf'), 'manufacturer');
   assert.equal(classifyTransportHost('https://gscs-b2c.lge.com/open/downloadFile?fileId=1'), 'manufacturer');
   assert.equal(classifyTransportHost('https://www.haier.com.au/spec.pdf'), 'manufacturer');
+  assert.equal(classifyTransportHost('https://media3.bosch-home.com/Documents/specsheet/en-AU/model.pdf'), 'manufacturer');
+  assert.equal(classifyTransportHost('https://sys.smeg.com.au/Product/Techspecs/model.pdf'), 'manufacturer');
   assert.equal(classifyTransportHost('https://commercial.appliancesonline.com.au/spec.pdf'), 'retailer');
 });
 

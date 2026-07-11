@@ -8,6 +8,7 @@ const MANUFACTURER_HOST_SUFFIXES = Object.freeze([
   'miele.com.au', 'kogan.com', 'liebherr.com', 'robinhood.com.au',
   'robinhood.co.nz', 'omegaappliances.com.au', 'subzero-wolf.com',
   'artusi.com.au', 'beko.com', 'inalto.house', 'vogue-appliances.com',
+  'bosch-home.com', 'smeg.com.au',
 ]);
 
 function matches(host, suffix) {

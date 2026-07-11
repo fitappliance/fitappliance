@@ -10,12 +10,19 @@ export const architectureV2Paths = Object.freeze({
   phase08Selection: `${base}/reviews/phase-08/evidence-pilot.json`,
   phase08DimensionInput: `${base}/reviews/phase-08/evidence-pilot-review-input.json`,
   phase09SpaceInput: `${base}/reviews/phase-09/space-evidence-pilot-input.json`,
+  phase10SelectionInput: `${base}/reviews/phase-10/evidence-batch-selection-input.json`,
+  phase10AcquisitionInput: `${base}/reviews/phase-10/evidence-acquisition-input.json`,
+  phase10ReviewInput: `${base}/reviews/phase-10/evidence-review-input.json`,
   retailerObservations: `${base}/observations/retailer-observations.json`,
   canonicalRegistry: `${base}/generated/canonical-registry.json`,
   evidenceObjectIndex: `${base}/generated/evidence-object-index.json`,
   evidenceReviewBundles: `${base}/generated/evidence-review-bundles.json`,
   dimensionReviewManifest: `${base}/generated/evidence-pilot-review-manifest.json`,
   historicalIdentifierMappings: `${base}/generated/historical-identifier-mappings.json`,
+  phase10EvidenceBatch: `${base}/generated/phase10-evidence-batch.json`,
+  phase10Acquisition: `${base}/generated/phase10-evidence-acquisition.json`,
+  phase10ReviewCandidates: `${base}/generated/phase10-evidence-review-candidates.json`,
+  phase10ReviewManifest: `${base}/generated/phase10-evidence-review-manifest.json`,
   publicProjection: `${base}/generated/public-catalog-projection.json`,
   sourceDocuments: `${base}/generated/source-documents.json`,
   spaceReviewManifest: `${base}/generated/space-evidence-pilot-review-manifest.json`,
@@ -23,11 +30,14 @@ export const architectureV2Paths = Object.freeze({
 
 export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
   canonicalRegistry: Object.freeze([]),
+  phase10EvidenceBatch: Object.freeze([]),
+  phase10Acquisition: Object.freeze(['phase10EvidenceBatch']),
   evidenceReviewBundles: Object.freeze(['canonicalRegistry']),
   dimensionReviewManifest: Object.freeze(['evidenceReviewBundles']),
   spaceReviewManifest: Object.freeze(['evidenceReviewBundles', 'dimensionReviewManifest']),
-  sourceDocuments: Object.freeze(['canonicalRegistry', 'evidenceReviewBundles', 'dimensionReviewManifest', 'spaceReviewManifest']),
-  publicProjection: Object.freeze(['canonicalRegistry', 'evidenceReviewBundles', 'dimensionReviewManifest', 'spaceReviewManifest']),
+  phase10ReviewManifest: Object.freeze(['phase10EvidenceBatch', 'phase10Acquisition']),
+  sourceDocuments: Object.freeze(['canonicalRegistry', 'evidenceReviewBundles', 'dimensionReviewManifest', 'spaceReviewManifest', 'phase10ReviewManifest']),
+  publicProjection: Object.freeze(['canonicalRegistry', 'evidenceReviewBundles', 'dimensionReviewManifest', 'spaceReviewManifest', 'phase10ReviewManifest']),
 });
 
 export const ARCHITECTURE_V2_BUILD_ORDER = Object.freeze(Object.keys(ARCHITECTURE_V2_BUILD_GRAPH));

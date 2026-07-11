@@ -5,6 +5,7 @@ import { createSourceDocument } from '../../src/domain/source-document.mjs';
 import { applyEvidencePilotReview } from '../../src/domain/evidence-review.mjs';
 import { buildLegacySourceDocuments } from '../../src/domain/source-document-seed.mjs';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
+import { buildPhase10SourceDocuments } from '../../src/domain/phase10-evidence-review.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
 const manual = JSON.parse(await readFile(resolve(root, 'data/manual-evidence.json'), 'utf8'));
@@ -12,6 +13,7 @@ const canonical = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'can
 const reviewBundles = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'evidenceReviewBundles'), 'utf8'));
 const reviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'dimensionReviewManifest'), 'utf8'));
 const spaceReviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'spaceReviewManifest'), 'utf8'));
+const phase10ReviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'phase10ReviewManifest'), 'utf8'));
 let documents = buildLegacySourceDocuments({ manual, canonical });
 const reviewResults = applyEvidencePilotReview({ bundles: reviewBundles.bundles, manifest: reviewManifest });
 const manifestByLegacy = new Map(reviewManifest.reviews.map((row) => [row.legacyRuntimeId, row]));
@@ -44,6 +46,10 @@ documents = documents.map((document) => {
     rejectionReason: state === 'quarantined' ? results[0].reason : null,
   });
 });
+const phase10Documents = buildPhase10SourceDocuments(phase10ReviewManifest.outcomes);
+const documentsById = new Map(documents.map((document) => [document.id, document]));
+for (const document of phase10Documents) documentsById.set(document.id, document);
+documents = [...documentsById.values()];
 documents.sort((a, b) => a.id.localeCompare(b.id));
 const report = {
   schemaVersion: 1, documents,

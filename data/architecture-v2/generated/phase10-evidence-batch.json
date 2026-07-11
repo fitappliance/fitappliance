@@ -1,0 +1,978 @@
+{
+  "schemaVersion": 1,
+  "selectedAt": "2026-07-11",
+  "policy": {
+    "categoryTargets": {
+      "fridge": 10,
+      "dishwasher": 10,
+      "dryer": 10,
+      "washing_machine": 10
+    },
+    "categoryBrandLimit": 4,
+    "globalBrandLimit": 11,
+    "maximumObservationAgeDays": 60
+  },
+  "products": [
+    {
+      "batchRank": 1,
+      "legacyRuntimeId": "fridge-arf3054",
+      "canonicalProductId": "fa_prod_409ff88f87838c9d27705694",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF500QNUX1",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/fisher-and-paykel-498l-quad-door-refrigerator-rf500qnux1",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_69fe54565f274e56525d059a",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw979a5de4/QRG/AU/QRG-AU-26619.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 2,
+      "legacyRuntimeId": "fridge-arf3548",
+      "canonicalProductId": "fa_prod_4a7f77eb2399b59ca5563d51",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF610ADX5",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/fisher-and-paykel-569l-french-door-refrigerator-rf610adx5",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_3e6383af133982fd5540e89d",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw16a75371/QRG/AU/QRG-AU-26504.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 3,
+      "legacyRuntimeId": "fridge-arf3074",
+      "canonicalProductId": "fa_prod_10f6881d59d185463a57f8b6",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF420BS",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/haier-433l-bottom-mount-refrigerator-hrf420bs",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_1d072d368c66f36f655590d4",
+          "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwd0f727cb/QRG/AU/QRG-AU-62269.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 4,
+      "legacyRuntimeId": "fridge-arf3501",
+      "canonicalProductId": "fa_prod_4619a1a7ecab2e53a1e21474",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF510BHC",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/haier-514l-bottom-mount-refrigerator-hrf510bhc",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_ab56b49fc2b05fd0ee5938b3",
+          "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw57e105ea/QRG/AU/QRG-AU-62293.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 5,
+      "legacyRuntimeId": "fridge-arf3335",
+      "canonicalProductId": "fa_prod_248ca182ae8e787affa25e3e",
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRTF206",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/hisense-205l-top-mount-refrigerator-hrtf206",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_6628e64e6bbbf5953fd851ca",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRTF206-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDI1MDh8YXBwbGljYXRpb24vcGRmfGFHSTJMMmd3Wmk4NE9EQTBNVEEzTXpVME1UUXlMMGhTVkVZeU1EWXRVM0JsWXk1d1pHWXw5MDY2ZmY5ODYyNWFkNmZmY2NlMjM5Yzg5YzY4YWFmM2RkNGJmYWIwNzhhNmE3YmZkM2UyZTMzYjBmZDU3Nzdi",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 6,
+      "legacyRuntimeId": "fridge-arf3316",
+      "canonicalProductId": "fa_prod_d9ca9d81328abfe22bcf7318",
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRTF325",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/hisense-326l-top-mount-refrigerator-hrtf325",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_274e724a4c85eaee6fc0a2d8",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRTF325-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzgzOTJ8YXBwbGljYXRpb24vcGRmfGFETTBMMmczWXk4NE9EQTBNRGs0TWpjM05EQTJMMGhTVkVZek1qVXRVM0JsWXk1d1pHWXw5NDkzMGRlMDk4ODc5ZmU0NWMwNDRjYjkxYmE4NWZhODk4ZDY2NmE5ZmFjNmU3Yzk5MjNmNjc4MzdkNjRhYTFh",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 7,
+      "legacyRuntimeId": "fridge-arf3094",
+      "canonicalProductId": "fa_prod_deb632c704c5620713dafb7b",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-L700PL",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/lg-637l-french-door-refrigerator-gf-l700pl",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_928040f9c60950fd6d002f20",
+          "sourceUrl": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 8,
+      "legacyRuntimeId": "fridge-arf3177",
+      "canonicalProductId": "fa_prod_83c263d3a4d601a5e0df6a7d",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-V500MBLC",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/lg-508l-instaview-refrigerator-gf-v500mblc",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_9307fb0dcf5280ceb7a08d84",
+          "sourceUrl": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        },
+        {
+          "sourceDocumentId": "doc_77efaa150f128b66a114cb24",
+          "sourceUrl": "https://gscs-b2c.lge.com/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "ambiguous"
+        }
+      ]
+    },
+    {
+      "batchRank": 9,
+      "legacyRuntimeId": "discovery-fridge-bosch-kfd96axeaa",
+      "canonicalProductId": "fa_prod_8bc6f334dbf9c75416eea7fc",
+      "category": "fridge",
+      "brand": "Bosch",
+      "model": "KFD96AXEAA",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/bosch-574l-quad-door-refrigerator-kfd96axeaa",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_8d958931cc06dbc5d2d397b7",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFD96AXEAA.pdf",
+          "transportHostType": "unknown",
+          "identityOutcome": "ambiguous"
+        }
+      ]
+    },
+    {
+      "batchRank": 10,
+      "legacyRuntimeId": "ao-97642",
+      "canonicalProductId": "fa_prod_b3ff5e116c2b87ffdb717ce8",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF5300SD",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/samsung-495l-french-door-refrigerator-srf5300sd",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_eac67c5c9f171a9b0f170d01",
+          "sourceUrl": "https://www.appliancesonline.com.au/ak/a/a/6/3/aa633cbe679abeec6a289913e831b0fe2724ab5b_SRF5300SD_Samsung_User_Manual.pdf",
+          "transportHostType": "retailer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 11,
+      "legacyRuntimeId": "dishwasher-adw0959",
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/fisher-and-paykel-integrated-dishwasher-tall-dw60ut4i2",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_0d458d31f9d6ae617016b4aa",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 12,
+      "legacyRuntimeId": "ao-150984",
+      "canonicalProductId": "fa_prod_e83b25b67b2dd20a2a1c3b8c",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60D4NX9",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/fisher-and-paykel-double-dishdrawer-dishwasher-stainless-steel-dd60d4nx9",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_7eabf7e2a4577e26597c0811",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf9542760/QRG/AU/QRG-AU-82880.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        },
+        {
+          "sourceDocumentId": "doc_9f7766e4b257f90d5ca421e0",
+          "sourceUrl": "https://www.appliancesonline.com.au/ak/3/3/7/f/337fb1b6627db43b0064720f16247d7a80716b0e_SpecGuide_DD60D4NX9_DD60D4NB9_DD60D4NZ9_DD60D4HNX9_DD60D4HNB9_DD60D4HNZ9.pdf",
+          "transportHostType": "retailer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 13,
+      "legacyRuntimeId": "dishwasher-adw1233",
+      "canonicalProductId": "fa_prod_6bd24b76c0d45dbdab1ec470",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15U2I1",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/haier-integrated-dishwasher-hdw15u2i1",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_809326fb93bbc14cf154be65",
+          "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwa742cfeb/QRG/AU/QRG-AU-61615.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 14,
+      "legacyRuntimeId": "ao-132904",
+      "canonicalProductId": "fa_prod_43be0630d42f1bf6bdfcb231",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F2B1",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/haier-freestanding-dishwasher-black-hdw15f2b1",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_a405d785f64634753533ab1e",
+          "sourceUrl": "https://www.appliancesonline.com.au/ak/e/f/5/c/ef5cbc3ae252f1842d259028f770cc993b6589b6_QRG_AU_61614.pdf",
+          "transportHostType": "retailer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 15,
+      "legacyRuntimeId": "discovery-dishwasher-bosch-sms4hvi01a",
+      "canonicalProductId": "fa_prod_9bf075ae36ec6b6f15b3af01",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS4HVI01A",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/bosch-series-4-freestanding-dishwasher-stainless-steel-sms4hvi01a",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_aae5135bd75ca13d280ea464",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVI01A.pdf",
+          "transportHostType": "unknown",
+          "identityOutcome": "ambiguous"
+        }
+      ]
+    },
+    {
+      "batchRank": 16,
+      "legacyRuntimeId": "ao-127312",
+      "canonicalProductId": "fa_prod_4a618d9f867ec77222f1a02c",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS6HCI02A",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/bosch-series-6-freestanding-dishwasher-stainless-steel-sms6hci02a",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_34cd69ee43dadecec97391f3",
+          "sourceUrl": "https://www.appliancesonline.com.au/ak/1/5/2/7/15273e93a3bea07384129cb182751dc40e1a0490_SMS6HCI02A_Bosch_Specifications_Sheet.pdf",
+          "transportHostType": "retailer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 17,
+      "legacyRuntimeId": "discovery-dishwasher-lg-xd2a25mb",
+      "canonicalProductId": "fa_prod_693c6fa3684bef1660a42e9f",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD2A25MB",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/lg-matte-black-true-steam-dishwasher-xd2a25mb",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_e5d0f0613a7682396a7e43b9",
+          "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=XFUDD7WCYvPmtwnCUJg7w",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 18,
+      "legacyRuntimeId": "ao-113734",
+      "canonicalProductId": "fa_prod_b3d9afc14a1f82b131f296cc",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD3A25MB",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/lg-matte-black-true-steam-dishwasher-xd3a25mb",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_0825bb4656a803d0b60206bb",
+          "sourceUrl": "https://www.appliancesonline.com.au/ak/f/3/9/a/f39a0445114f5ed743a10396c3e9272f10f7608c_XD3A25MB_Specifications_Sheet.pdf",
+          "transportHostType": "retailer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 19,
+      "legacyRuntimeId": "ao-101283",
+      "canonicalProductId": "fa_prod_0910660e1a804a67fa883688",
+      "category": "dishwasher",
+      "brand": "Smeg",
+      "model": "DWAU615DB3",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/smeg-pf-60cm-under-bench-dishwasher-black-dwau615db3",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_28fe3e436f08eaf2476b51dc",
+          "sourceUrl": "https://www.appliancesonline.com.au/ak/a/f/7/5/af7523e8522b959fc92a01411a595f4c25e4a043_DWAU615DB3_Smeg_Specifications_Sheet.pdf",
+          "transportHostType": "retailer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 20,
+      "legacyRuntimeId": "ao-149199",
+      "canonicalProductId": "fa_prod_ff82fde5f185bfd618195514",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDFB1410W",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/beko-freestanding-dishwasher-white-bdfb1410w",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_78bd42a6276a437f50f17bef",
+          "sourceUrl": "https://www.appliancesonline.com.au/ak/9/4/6/1/94619c64215d69f540ead67552744072cf02a4a8_BDFB1410W_Beko_Specification_Sheet___Energy_Update_2025.pdf",
+          "transportHostType": "retailer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 21,
+      "legacyRuntimeId": "discovery-dryer-fisher-paykel-de6060m2",
+      "canonicalProductId": "fa_prod_b3e0fbe01de9f8b2ceaf1e96",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DE6060M2",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/fisher-and-paykel-6kg-sensor-dryer-de6060m2",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_36cb161de0ec13a05de35e2f",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwac9dda29/QRG/AU/QRG-AU-92277.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 22,
+      "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh1060dg5",
+      "canonicalProductId": "fa_prod_3c4cf61393faf23a2b645918",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH1060DG5",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-series-7-contemporary-heat-pump-dryer-dh1060dg5",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_c0fd11f559b60a892851ac39",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw09738459/QRG/AU/QRG-AU-93327.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 23,
+      "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh8060p5",
+      "canonicalProductId": "fa_prod_9367444b758eb067063afbea",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH8060P5",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-series-5-contemporary-heat-pump-dryer-dh8060p5",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_5be9e5c9380620927aaf2d01",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw638d352c/QRG/AU/QRG-AU-93304.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 24,
+      "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh9060h1",
+      "canonicalProductId": "fa_prod_e76a61684d5741f99bae29f6",
+      "category": "dryer",
+      "brand": "Fisher & Paykel",
+      "model": "DH9060H1",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/fisher-and-paykel-9kg-heat-pump-dryer-dh9060h1",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_e276b976ce6c36d9352f3c76",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8e5cecb9/QRG/AU/QRG-AU-92293.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 25,
+      "legacyRuntimeId": "discovery-dryer-bosch-wqg235d8au",
+      "canonicalProductId": "fa_prod_76db556f630f77aabe66a56e",
+      "category": "dryer",
+      "brand": "Bosch",
+      "model": "WQG235D8AU",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/bosch-8kg-heat-pump-dryer-wqg235d8au",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_849e560b2795c96e854651fc",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG235D8AU.pdf",
+          "transportHostType": "unknown",
+          "identityOutcome": "ambiguous"
+        }
+      ]
+    },
+    {
+      "batchRank": 26,
+      "legacyRuntimeId": "discovery-dryer-bosch-wqg235drau",
+      "canonicalProductId": "fa_prod_6c4b23d24a467822bdaf0120",
+      "category": "dryer",
+      "brand": "Bosch",
+      "model": "WQG235DRAU",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/bosch-8kg-heat-pump-dryer-wqg235drau",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_fd4f13308c90d9b49635a408",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG235DRAU.pdf",
+          "transportHostType": "unknown",
+          "identityOutcome": "ambiguous"
+        }
+      ]
+    },
+    {
+      "batchRank": 27,
+      "legacyRuntimeId": "discovery-dryer-bosch-wqg24200au",
+      "canonicalProductId": "fa_prod_2f34addef166fe0b4b84ed15",
+      "category": "dryer",
+      "brand": "Bosch",
+      "model": "WQG24200AU",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/bosch-9kg-heat-pump-dryer-wqg24200au",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_4b49991b7daddad0fd00e6dc",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG24200AU.pdf",
+          "transportHostType": "unknown",
+          "identityOutcome": "ambiguous"
+        }
+      ]
+    },
+    {
+      "batchRank": 28,
+      "legacyRuntimeId": "discovery-dryer-bosch-wqg24201au",
+      "canonicalProductId": "fa_prod_9e6af77de4d1c1ca9e49e87f",
+      "category": "dryer",
+      "brand": "Bosch",
+      "model": "WQG24201AU",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/bosch-9kg-heat-pump-dryer-wqg24201au",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_4b1cf2fa12fce6d61cac0fad",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG24201AU.pdf",
+          "transportHostType": "unknown",
+          "identityOutcome": "ambiguous"
+        }
+      ]
+    },
+    {
+      "batchRank": 29,
+      "legacyRuntimeId": "discovery-dryer-lg-dvh1-08wp",
+      "canonicalProductId": "fa_prod_b9e8f9a4c487a6425fe07a4c",
+      "category": "dryer",
+      "brand": "LG",
+      "model": "DVH1-08WP",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/lg-8kg-series-1-heat-pump-dryer-dvh1-08wp",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_cd13c758669820a9b74ac696",
+          "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 30,
+      "legacyRuntimeId": "discovery-dryer-samsung-dv90bb9440gh",
+      "canonicalProductId": "fa_prod_32d72774c1aeb04e7aea06e3",
+      "category": "dryer",
+      "brand": "Samsung",
+      "model": "DV90BB9440GH",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/samsung-bespoke-9kg-heat-pump-dryer-dv90bb9440gh",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_19787cdc02a75225b05f1c3b",
+          "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GH&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 31,
+      "legacyRuntimeId": "washing_machine-acw1701",
+      "canonicalProductId": "fa_prod_8dd1c56ffb418b190e22ecaf",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1060P4",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/fisher-and-paykel-10kg-front-load-washer-wh1060p4",
+        "source": "partnerize-feed",
+        "observedAt": "2026-06-02"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_e4d2f3f839723bcc2117e88c",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw950cf313/QRG/AU/QRG-AU-93292.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 32,
+      "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh1260dg5",
+      "canonicalProductId": "fa_prod_ec5d273a25ab27339c67b6c0",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH1260DG5",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/fisher-and-paykel-12kg-series-7-contemporary-front-load-washer-wh1260dg5",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_0c8ae30c17866e60e4be4509",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwc6aea06b/QRG/AU/QRG-AU-92331.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 33,
+      "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh8060j5",
+      "canonicalProductId": "fa_prod_2126b4d466a04092b0dff360",
+      "category": "washing_machine",
+      "brand": "Fisher & Paykel",
+      "model": "WH8060J5",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/fisher-and-paykel-8kg-series-5-contemporary-front-load-washer-wh8060j5",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_aa7dfb416ca1e91dc9845861",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw636a518e/QRG/AU/QRG-AU-92303.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 34,
+      "legacyRuntimeId": "washing_machine-acw1734",
+      "canonicalProductId": "fa_prod_37eedb080ca37aaedf4f6772",
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "model": "HWF5I1215",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/hisense-12kg-series-5i-front-load-washer-hwf5i1215",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_3b224897fa266490d46c2156",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1215-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDZ8YXBwbGljYXRpb24vcGRmfGFERmpMMmhsTXk4NE9EazRNekk1T1RNMU9UQXlMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRJeE5Ta3VjR1JtfDI1YmYzMjZlMzY5OWIwOGMxZTJhNmI1ZDUxNjc4ZTU2OGVmZjI0NjUyZmJlNGYzYWRmZDhmMjhjYTVmY2YwODA",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 35,
+      "legacyRuntimeId": "washing_machine-acw1520",
+      "canonicalProductId": "fa_prod_2b767c07d444f1cc165b955f",
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "model": "HWF8I1015BX",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/hisense-10kg-series-8i-front-load-washer-hwf8i1015bx",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_783c1dbf4a19aa82e5455f27",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWF8i1015B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjcxMDd8YXBwbGljYXRpb24vcGRmfGFHTmhMMmc0WlM4NE9EQTNNRGM0TURBeU56RTRMMGhYUmpocE1UQXhOVUl0VTNCbFl5NXdaR1l8NzBhNjNiNjkwOGM3ZmFjZjdiNGQyZGEyNjgyZDExNWJlYjJlYjNmYWQwNjk0YzAzYzcwMWY0NDQyYWJhMzhiNw",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "ambiguous"
+        }
+      ]
+    },
+    {
+      "batchRank": 36,
+      "legacyRuntimeId": "ao-178018",
+      "canonicalProductId": "fa_prod_77299f50a5afccbd92f0551c",
+      "category": "washing_machine",
+      "brand": "Hisense",
+      "model": "HWF3S8514X",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/hisense-85kg-series-3s-front-load-washer-hwf3s8514x",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_28d88ee63c0922bf42c78604",
+          "sourceUrl": "https://www.appliancesonline.com.au/ak/9/f/2/9/9f2929c8bccee4e2248681f816a1d189dddb5ac5_2026_Hisense_AU___Consumer_Spec__HWF3S8514X_.pdf",
+          "transportHostType": "retailer",
+          "identityOutcome": "exact"
+        }
+      ]
+    },
+    {
+      "batchRank": 37,
+      "legacyRuntimeId": "discovery-washing-machine-bosch-wan28227au",
+      "canonicalProductId": "fa_prod_24623740ae259266f9aefa6a",
+      "category": "washing_machine",
+      "brand": "Bosch",
+      "model": "WAN28227AU",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wan28227au",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_519da94966e1203200d73ae9",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN28227AU.pdf",
+          "transportHostType": "unknown",
+          "identityOutcome": "ambiguous"
+        }
+      ]
+    },
+    {
+      "batchRank": 38,
+      "legacyRuntimeId": "discovery-washing-machine-bosch-wgg24402au",
+      "canonicalProductId": "fa_prod_03c7b7d484ef495ac73a0b95",
+      "category": "washing_machine",
+      "brand": "Bosch",
+      "model": "WGG24402AU",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/bosch-9kg-front-load-washer-wgg24402au",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_7afe6d0cd86d3f9f46328437",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24402AU.pdf",
+          "transportHostType": "unknown",
+          "identityOutcome": "ambiguous"
+        }
+      ]
+    },
+    {
+      "batchRank": 39,
+      "legacyRuntimeId": "discovery-washing-machine-bosch-wgg254z1au",
+      "canonicalProductId": "fa_prod_7d63ae58391d83fad7e6b543",
+      "category": "washing_machine",
+      "brand": "Bosch",
+      "model": "WGG254Z1AU",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/bosch-10kg-front-load-washer-wgg254z1au",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "discovery_required",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_9436a049f7b89ac60fc4fd96",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG254Z1AU.pdf",
+          "transportHostType": "unknown",
+          "identityOutcome": "ambiguous"
+        }
+      ]
+    },
+    {
+      "batchRank": 40,
+      "legacyRuntimeId": "discovery-washing-machine-samsung-ww90dg6u3ale",
+      "canonicalProductId": "fa_prod_b5c2676b464e0cd2c83bcb4b",
+      "category": "washing_machine",
+      "brand": "Samsung",
+      "model": "WW90DG6U3ALE",
+      "activeObservation": {
+        "retailer": "The Good Guys",
+        "url": "https://www.thegoodguys.com.au/samsung-9kg-smart-front-load-washer-ww90dg6u3ale",
+        "source": "partnerize-feed",
+        "observedAt": "2026-07-07"
+      },
+      "sourceStatus": "manufacturer_candidate",
+      "sourceCandidates": [
+        {
+          "sourceDocumentId": "doc_35b1abf81878c7f29311b241",
+          "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW90DG6U3ALE&CttFileID=11364936&CDCttType=UM&VPath=UM%2F202604%2F20260408143907954%2FWeb_IB_D-PJT_WASHER-MD_SimpleUX_EN_v1.pdf",
+          "transportHostType": "manufacturer",
+          "identityOutcome": "exact"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "products": 40,
+    "categories": {
+      "dishwasher": 10,
+      "dryer": 10,
+      "fridge": 10,
+      "washing_machine": 10
+    },
+    "brands": {
+      "Beko": 1,
+      "Bosch": 10,
+      "Fisher & Paykel": 11,
+      "Haier": 4,
+      "Hisense": 5,
+      "LG": 5,
+      "Samsung": 3,
+      "Smeg": 1
+    },
+    "categoryBrandMaximums": {
+      "dishwasher": 2,
+      "dryer": 4,
+      "fridge": 2,
+      "washing_machine": 3
+    },
+    "sourceStatuses": {
+      "discovery_required": 17,
+      "manufacturer_candidate": 23
+    }
+  }
+}

@@ -91,19 +91,21 @@ test('rejects review joins with inconsistent document identity', () => {
   assert.throws(() => buildEvidenceObjectRecords(input), /hash mismatch/i);
 });
 
-test('committed object index covers every Phase 8 and Phase 9 reviewed document', async () => {
-  const [index, dimensionInput, spaceInput] = await Promise.all([
+test('committed object index covers every Phase 8, 9, and 10 reviewed document', async () => {
+  const [index, dimensionInput, spaceInput, phase10Acquisition, phase10Candidates] = await Promise.all([
     readFile('data/architecture-v2/generated/evidence-object-index.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/reviews/phase-08/evidence-pilot-review-input.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/reviews/phase-09/space-evidence-pilot-input.json', 'utf8').then(JSON.parse),
+    readFile('data/architecture-v2/generated/phase10-evidence-acquisition.json', 'utf8').then(JSON.parse),
+    readFile('data/architecture-v2/generated/phase10-evidence-review-candidates.json', 'utf8').then(JSON.parse),
   ]);
   const byHash = new Map(index.documents.map((document) => [document.sha256, document]));
   assert.deepEqual(index.summary, {
-    documents: 20,
-    productLinks: 20,
-    reviewPages: 24,
-    totalBytes: 70178518,
-    totalTextBytes: 856145,
+    documents: 57,
+    productLinks: 58,
+    reviewPages: 177,
+    totalBytes: 150678825,
+    totalTextBytes: 1940712,
   });
   for (const review of dimensionInput.reviews) {
     const document = byHash.get(review.hash);
@@ -115,6 +117,15 @@ test('committed object index covers every Phase 8 and Phase 9 reviewed document'
     assert.ok(document, `missing space review object ${review.legacyRuntimeId}`);
     for (const field of review.fields) {
       assert.ok(document.reviewPages.includes(field.page), `missing space review page ${review.legacyRuntimeId}:${field.page}`);
+    }
+  }
+  const candidatesByLegacy = new Map(phase10Candidates.documents.map((row) => [row.legacyRuntimeId, row]));
+  for (const acquired of phase10Acquisition.entries.filter((row) => row.outcome === 'acquired')) {
+    const document = byHash.get(acquired.sha256);
+    assert.ok(document, `missing Phase 10 object ${acquired.legacyRuntimeId}`);
+    assert.ok(document.productLinks.some((row) => row.legacyRuntimeId === acquired.legacyRuntimeId));
+    for (const page of candidatesByLegacy.get(acquired.legacyRuntimeId).reviewPages) {
+      assert.ok(document.reviewPages.includes(page), `missing Phase 10 review page ${acquired.legacyRuntimeId}:${page}`);
     }
   }
 });

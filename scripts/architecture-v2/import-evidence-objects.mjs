@@ -87,12 +87,19 @@ async function renderReviewPage(pdfPath, target, page) {
   }
 }
 
-export async function importEvidenceObjects({ storageRoot, sourceDirectory = defaultSourceDirectory, indexPath = defaultIndexPath }) {
+export async function importEvidenceObjects({
+  storageRoot,
+  sourceDirectory = defaultSourceDirectory,
+  phase10SourceDirectory = resolve(storageRoot ?? '.', 'review-workspaces/phase-10/source'),
+  indexPath = defaultIndexPath,
+}) {
   if (!storageRoot) throw new TypeError('storage root required');
   await access(storageRoot, constants.W_OK);
   const dimensionReviews = (await readJson(resolveArchitectureV2Path(repoRoot, 'phase08DimensionInput'))).reviews;
   const spaceReviews = (await readJson(resolveArchitectureV2Path(repoRoot, 'phase09SpaceInput'))).reviews;
   const bundles = (await readJson(resolveArchitectureV2Path(repoRoot, 'evidenceReviewBundles'))).bundles;
+  const phase10Acquisition = await readJson(resolveArchitectureV2Path(repoRoot, 'phase10Acquisition'));
+  const phase10Candidates = await readJson(resolveArchitectureV2Path(repoRoot, 'phase10ReviewCandidates'));
   const fileFacts = new Map();
 
   for (const review of dimensionReviews) {
@@ -110,11 +117,35 @@ export async function importEvidenceObjects({ storageRoot, sourceDirectory = def
   }
 
   const records = buildEvidenceObjectRecords({ dimensionReviews, spaceReviews, bundles, fileFacts });
+  const phase10CandidateByLegacy = new Map(phase10Candidates.documents.map((row) => [row.legacyRuntimeId, row]));
+  for (const acquired of phase10Acquisition.entries.filter((row) => row.outcome === 'acquired')) {
+    const pdfPath = resolveWithin(phase10SourceDirectory, `${acquired.legacyRuntimeId}.pdf`);
+    const textPath = resolveWithin(phase10SourceDirectory, `${acquired.legacyRuntimeId}.txt`);
+    const actualHash = await sha256(pdfPath);
+    if (actualHash !== acquired.sha256) throw new Error(`Phase 10 source PDF hash mismatch for ${acquired.legacyRuntimeId}`);
+    const actualPages = await pdfPageCount(pdfPath);
+    if (actualPages !== acquired.pageCount) throw new Error(`Phase 10 source PDF page count mismatch for ${acquired.legacyRuntimeId}`);
+    const candidate = phase10CandidateByLegacy.get(acquired.legacyRuntimeId);
+    if (!candidate?.reviewPages?.length) throw new Error(`Phase 10 review pages missing for ${acquired.legacyRuntimeId}`);
+    records.push({
+      sha256: acquired.sha256,
+      byteSize: (await stat(pdfPath)).size,
+      textSha256: await sha256(textPath),
+      textByteSize: (await stat(textPath)).size,
+      pageCount: acquired.pageCount,
+      sourceUrl: acquired.sourceUrl,
+      legacyRuntimeId: acquired.legacyRuntimeId,
+      canonicalProductId: acquired.canonicalProductId,
+      reviewPages: candidate.reviewPages,
+    });
+  }
   const index = buildEvidenceObjectIndex(records);
   for (const document of index.documents) {
     const sourceId = document.productLinks[0].legacyRuntimeId;
-    const sourcePdf = resolveWithin(sourceDirectory, `${sourceId}.pdf`);
-    const sourceText = resolveWithin(sourceDirectory, `${sourceId}.txt`);
+    const phase10 = phase10CandidateByLegacy.has(sourceId);
+    const sourceRoot = phase10 ? phase10SourceDirectory : sourceDirectory;
+    const sourcePdf = resolveWithin(sourceRoot, `${sourceId}.pdf`);
+    const sourceText = resolveWithin(sourceRoot, `${sourceId}.txt`);
     const targetPdf = resolveWithin(storageRoot, document.paths.pdf);
     const targetText = resolveWithin(storageRoot, document.paths.text);
     await access(sourceText, constants.R_OK);
@@ -162,10 +193,12 @@ function optionValue(args, name) {
 async function main(args) {
   const storageRoot = optionValue(args, '--storage-root') ?? process.env.FITAPPLIANCE_STORAGE_ROOT;
   const sourceDirectory = optionValue(args, '--source-dir') ?? defaultSourceDirectory;
+  const phase10SourceDirectory = optionValue(args, '--phase10-source-dir')
+    ?? resolve(storageRoot ?? '.', 'review-workspaces/phase-10/source');
   const indexPath = optionValue(args, '--index') ?? defaultIndexPath;
   const result = args.includes('--verify-only')
     ? await verifyEvidenceObjects({ storageRoot, indexPath })
-    : (await importEvidenceObjects({ storageRoot, sourceDirectory, indexPath })).summary;
+    : (await importEvidenceObjects({ storageRoot, sourceDirectory, phase10SourceDirectory, indexPath })).summary;
   process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
 }
 

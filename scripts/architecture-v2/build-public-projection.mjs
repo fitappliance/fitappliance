@@ -7,6 +7,7 @@ import { buildSpaceEvidenceProjection } from '../../src/domain/space-evidence-re
 import { createCategoryGeometry } from '../../src/domain/category-geometry.mjs';
 import brandCanon from '../brand-canon.js';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
+import { buildPhase10EvidenceProjection } from '../../src/domain/phase10-evidence-review.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
 const registry = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'canonicalRegistry'), 'utf8'));
@@ -14,7 +15,9 @@ const catalog = JSON.parse(await readFile(resolve(root, 'data/catalog-final.json
 const reviewBundles = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'evidenceReviewBundles'), 'utf8'));
 const reviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'dimensionReviewManifest'), 'utf8'));
 const spaceReviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'spaceReviewManifest'), 'utf8'));
+const phase10ReviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'phase10ReviewManifest'), 'utf8'));
 const pilotEvidence = buildPilotEvidenceProjection(applyEvidencePilotReview({ bundles: reviewBundles.bundles, manifest: reviewManifest }));
+for (const [id, review] of buildPhase10EvidenceProjection(phase10ReviewManifest.outcomes)) pilotEvidence.set(id, review);
 const spaceEvidence = buildSpaceEvidenceProjection(spaceReviewManifest.results);
 const canonicalByLegacy = new Map(registry.identifierMappings.map((row) => [row.legacyRuntimeId, row.canonicalProductId]));
 const quarantined = new Set(registry.quarantine.map((row) => row.legacyRuntimeId));
@@ -28,7 +31,8 @@ const filtered = {
       if (!review) return { ...row, brand: brandCanon.canonicalizeBrand(row.brand) };
       const space = spaceEvidence.get(canonicalProductId);
       const values = { ...review.values, ...(space?.values ?? {}) };
-      const geometryV2 = review.trustLevel === 'dimensions_verified' ? createCategoryGeometry(row.cat, {
+      const hasVerifiedDimensions = ['dimensions_verified', 'verified_fit'].includes(review.trustLevel);
+      const geometryV2 = hasVerifiedDimensions ? createCategoryGeometry(row.cat, {
         closedEnvelope: {
           widthMm: values['closedEnvelope.widthMm'] ?? null,
           heightMm: values['closedEnvelope.heightMm'] ?? null,
@@ -58,15 +62,15 @@ const filtered = {
         ...row,
         brand: brandCanon.canonicalizeBrand(row.brand),
         ...(geometryV2 ? { geometry_v2: geometryV2 } : {}),
-        data_source: review.trustLevel === 'dimensions_verified' ? 'official_pdf_dimensions_only' : 'retailer_spec',
+        data_source: hasVerifiedDimensions ? 'official_pdf_dimensions_only' : 'retailer_spec',
         evidence: {
           ...(row.evidence ?? {}),
           has_pdf_evidence: true,
           trust_level: review.trustLevel,
-          verified_fields: review.trustLevel === 'dimensions_verified' ? ['dimensions'] : [],
-          clearance_verified: space?.clearanceVerified === true,
+          verified_fields: hasVerifiedDimensions ? ['dimensions'] : [],
+          clearance_verified: (space?.clearanceVerified ?? review.clearanceVerified) === true,
           v2_review: {
-            status: space ? 'space_partially_approved' : review.reviewStatus,
+            status: space ? 'space_partially_approved' : (review.reviewStatus ?? 'phase10_reviewed'),
             reviewed_at: review.reviewedAt,
             approved_fields: approvedFields,
             approved_space_values: space?.values ?? {},

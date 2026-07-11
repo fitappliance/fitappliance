@@ -3,6 +3,89 @@
   "addressing": "sha256",
   "documents": [
     {
+      "sha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+      "byteSize": 1396440,
+      "textSha256": "fc671796f7888b390b244464983ecfff4283b427102e2265a38ced20cbfb82b3",
+      "textByteSize": 17495,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/05/05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35.pdf",
+        "text": "evidence/text/sha256/05/05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35.txt",
+        "renderDirectory": "evidence/renders/sha256/05/05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "dishwasher-adw0959",
+          "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "sha256": "08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840",
+      "byteSize": 1315453,
+      "textSha256": "07e872bd568cfadd2ef61bfcdcd9a7ebeda45f1afd18060e90048067da6d22d6",
+      "textByteSize": 9329,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG235DRAU.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/08/08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840.pdf",
+        "text": "evidence/text/sha256/08/08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840.txt",
+        "renderDirectory": "evidence/renders/sha256/08/08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-dryer-bosch-wqg235drau",
+          "canonicalProductId": "fa_prod_6c4b23d24a467822bdaf0120"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "sha256": "0f60add258fa3da0c8250cddaddd435dd0f7d5b8c89b64add912f25f53a52b27",
+      "byteSize": 12036154,
+      "textSha256": "e7989fc9e86b7821268acfdc7b78c8892812d78f76b4c3f4114b01d26ad48841",
+      "textByteSize": 133187,
+      "pageCount": 64,
+      "sourceUrls": [
+        "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW90DG6U3ALE&CttFileID=11364936&CDCttType=UM&VPath=UM%2F202604%2F20260408143907954%2FWeb_IB_D-PJT_WASHER-MD_SimpleUX_EN_v1.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/0f/0f60add258fa3da0c8250cddaddd435dd0f7d5b8c89b64add912f25f53a52b27.pdf",
+        "text": "evidence/text/sha256/0f/0f60add258fa3da0c8250cddaddd435dd0f7d5b8c89b64add912f25f53a52b27.txt",
+        "renderDirectory": "evidence/renders/sha256/0f/0f60add258fa3da0c8250cddaddd435dd0f7d5b8c89b64add912f25f53a52b27"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-washing-machine-samsung-ww90dg6u3ale",
+          "canonicalProductId": "fa_prod_b5c2676b464e0cd2c83bcb4b"
+        }
+      ],
+      "reviewPages": [
+        6,
+        7,
+        12,
+        16,
+        17,
+        54,
+        57,
+        62
+      ]
+    },
+    {
       "sha256": "1282141354ddd0d1d197d847a03ce9b4e99e256ee7bcb18c1a38b1c965eb0605",
       "byteSize": 62994,
       "textSha256": "c8f34f3e335765e2d3d696aa1780f0c3574f2fc162f0f13606174a77911fc569",
@@ -51,6 +134,87 @@
       ]
     },
     {
+      "sha256": "1fb14dce702d4c6a84359c12c1b4d482e360ec68a98475342f4f4f1faa899fe3",
+      "byteSize": 11846562,
+      "textSha256": "fce6bb3aad2112dc5c6230cad419930a2e8883b62c4e9f64c7136c534aca3453",
+      "textByteSize": 107526,
+      "pageCount": 53,
+      "sourceUrls": [
+        "https://dtc-aus-api.hisense.com/medias/User-Manul-HWF8I1015BX-0723.pdf?context=bWFzdGVyfE1hbnVhbHwxMTg0NjU2MnxhcHBsaWNhdGlvbi9wZGZ8YUdFNEwyaGtNQzg0T0RjM05qVTFNakk0TkRRMkwxVnpaWElnVFdGdWRXd3RTRmRHT0VreE1ERTFRbGd0TURjeU15NXdaR1l8MGQwOTMyODYyM2ZmZGZjNGI4YTBjYzZlYjA2OTk4ZjFiMmJmNTdiM2NlYjFlODQ4ZDZiNjVlZDAwNDU1YWM3Yw"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/1f/1fb14dce702d4c6a84359c12c1b4d482e360ec68a98475342f4f4f1faa899fe3.pdf",
+        "text": "evidence/text/sha256/1f/1fb14dce702d4c6a84359c12c1b4d482e360ec68a98475342f4f4f1faa899fe3.txt",
+        "renderDirectory": "evidence/renders/sha256/1f/1fb14dce702d4c6a84359c12c1b4d482e360ec68a98475342f4f4f1faa899fe3"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "washing_machine-acw1520",
+          "canonicalProductId": "fa_prod_2b767c07d444f1cc165b955f"
+        }
+      ],
+      "reviewPages": [
+        39
+      ]
+    },
+    {
+      "sha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
+      "byteSize": 2109960,
+      "textSha256": "09f4f000dad21a23c10560346faf16c724cc16614dc66245c38c195841642589",
+      "textByteSize": 101167,
+      "pageCount": 48,
+      "sourceUrls": [
+        "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/22/22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957.pdf",
+        "text": "evidence/text/sha256/22/22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957.txt",
+        "renderDirectory": "evidence/renders/sha256/22/22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-dryer-lg-dvh1-08wp",
+          "canonicalProductId": "fa_prod_b9e8f9a4c487a6425fe07a4c"
+        }
+      ],
+      "reviewPages": [
+        1,
+        5,
+        8,
+        9,
+        12,
+        13,
+        15,
+        44
+      ]
+    },
+    {
+      "sha256": "25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43",
+      "byteSize": 987846,
+      "textSha256": "2eb541c7a3ef1d8d1ba8c2fac00c1f2cd1427e954e42ca5d39a5f2843bf955ac",
+      "textByteSize": 10438,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://sys.smeg.com.au/Product/Techspecs/DWAU615DB3.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/25/25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43.pdf",
+        "text": "evidence/text/sha256/25/25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43.txt",
+        "renderDirectory": "evidence/renders/sha256/25/25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "ao-101283",
+          "canonicalProductId": "fa_prod_0910660e1a804a67fa883688"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
       "sha256": "2ac969549bd7c5e18b6d65d72c95566b044a459ad371318299b1655db17f0fdf",
       "byteSize": 3906962,
       "textSha256": "647bf4769af61050e71bc7f56e0c1c3e766935dc66e1facf77faf9ce752ec625",
@@ -72,6 +236,31 @@
       ],
       "reviewPages": [
         4
+      ]
+    },
+    {
+      "sha256": "2b772df94084a9af0f268dad20ea21e4e56676d096d5f491428ad4079d84d1f8",
+      "byteSize": 208769,
+      "textSha256": "e63694d023b057f64e9074efba313f1e75edb8d9ceeabfce488468b956e0a2a7",
+      "textByteSize": 6799,
+      "pageCount": 2,
+      "sourceUrls": [
+        "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwd0f727cb/QRG/AU/QRG-AU-62269.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/2b/2b772df94084a9af0f268dad20ea21e4e56676d096d5f491428ad4079d84d1f8.pdf",
+        "text": "evidence/text/sha256/2b/2b772df94084a9af0f268dad20ea21e4e56676d096d5f491428ad4079d84d1f8.txt",
+        "renderDirectory": "evidence/renders/sha256/2b/2b772df94084a9af0f268dad20ea21e4e56676d096d5f491428ad4079d84d1f8"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "fridge-arf3074",
+          "canonicalProductId": "fa_prod_10f6881d59d185463a57f8b6"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2
       ]
     },
     {
@@ -100,6 +289,42 @@
       ]
     },
     {
+      "sha256": "2e8a8341d7b50aef67f84bceea136763a67e2b3535717f6559ce1447feefafae",
+      "byteSize": 7154020,
+      "textSha256": "87cf30765143c98200e176c2bdac357b7df30e12217b9c55cd3ee00b619c581d",
+      "textByteSize": 90374,
+      "pageCount": 56,
+      "sourceUrls": [
+        "https://downloadcenter.samsung.com/content/UM/202605/20260518184516600/DA68-04132R-02_FDR_RF5000A_EN_260414.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/2e/2e8a8341d7b50aef67f84bceea136763a67e2b3535717f6559ce1447feefafae.pdf",
+        "text": "evidence/text/sha256/2e/2e8a8341d7b50aef67f84bceea136763a67e2b3535717f6559ce1447feefafae.txt",
+        "renderDirectory": "evidence/renders/sha256/2e/2e8a8341d7b50aef67f84bceea136763a67e2b3535717f6559ce1447feefafae"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "ao-97642",
+          "canonicalProductId": "fa_prod_b3ff5e116c2b87ffdb717ce8"
+        }
+      ],
+      "reviewPages": [
+        5,
+        6,
+        7,
+        9,
+        10,
+        19,
+        20,
+        26,
+        28,
+        33,
+        34,
+        47,
+        48
+      ]
+    },
+    {
       "sha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
       "byteSize": 5885104,
       "textSha256": "2385677024bff03f6307ec442e0d18d279eecbea201e15f14a0749aa8d9a5ea5",
@@ -122,6 +347,186 @@
       "reviewPages": [
         10,
         11
+      ]
+    },
+    {
+      "sha256": "3b05c53d73812d2432a3f7b667a775300b37297f6c410f0d3c7d4b172c8596d7",
+      "byteSize": 1105502,
+      "textSha256": "1825acc718445d9d76a584adcb35ac98c9a2570b093e472fc5264c846b8275cd",
+      "textByteSize": 8456,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN28227AU.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/3b/3b05c53d73812d2432a3f7b667a775300b37297f6c410f0d3c7d4b172c8596d7.pdf",
+        "text": "evidence/text/sha256/3b/3b05c53d73812d2432a3f7b667a775300b37297f6c410f0d3c7d4b172c8596d7.txt",
+        "renderDirectory": "evidence/renders/sha256/3b/3b05c53d73812d2432a3f7b667a775300b37297f6c410f0d3c7d4b172c8596d7"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-washing-machine-bosch-wan28227au",
+          "canonicalProductId": "fa_prod_24623740ae259266f9aefa6a"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "sha256": "40d17cefe10087be1f573254662fcec2aa9a48648c7cdbb1a174a1ef8dc065db",
+      "byteSize": 450974,
+      "textSha256": "f01fab786e20cc8192623b66c8e2cd0fc16c31c1258c1b41c8f4fe5d17ada65b",
+      "textByteSize": 15845,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf9542760/QRG/AU/QRG-AU-82880.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/40/40d17cefe10087be1f573254662fcec2aa9a48648c7cdbb1a174a1ef8dc065db.pdf",
+        "text": "evidence/text/sha256/40/40d17cefe10087be1f573254662fcec2aa9a48648c7cdbb1a174a1ef8dc065db.txt",
+        "renderDirectory": "evidence/renders/sha256/40/40d17cefe10087be1f573254662fcec2aa9a48648c7cdbb1a174a1ef8dc065db"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "ao-150984",
+          "canonicalProductId": "fa_prod_e83b25b67b2dd20a2a1c3b8c"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "sha256": "4770512ae97b65aa1a0d797ff9d6127421bf684630568360c6e03f597a072e24",
+      "byteSize": 536994,
+      "textSha256": "1f83962c4b35befa5fb5f309bd8941bbb0221461223221b19d4bee4576f8d5c4",
+      "textByteSize": 12358,
+      "pageCount": 2,
+      "sourceUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw950cf313/QRG/AU/QRG-AU-93292.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/47/4770512ae97b65aa1a0d797ff9d6127421bf684630568360c6e03f597a072e24.pdf",
+        "text": "evidence/text/sha256/47/4770512ae97b65aa1a0d797ff9d6127421bf684630568360c6e03f597a072e24.txt",
+        "renderDirectory": "evidence/renders/sha256/47/4770512ae97b65aa1a0d797ff9d6127421bf684630568360c6e03f597a072e24"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "washing_machine-acw1701",
+          "canonicalProductId": "fa_prod_8dd1c56ffb418b190e22ecaf"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2
+      ]
+    },
+    {
+      "sha256": "4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575",
+      "byteSize": 1651732,
+      "textSha256": "9a8cc8594a39786e469593a700f71f0e2673d71b9726e6e633842b6ac87fb408",
+      "textByteSize": 9208,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCI02A.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/4d/4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575.pdf",
+        "text": "evidence/text/sha256/4d/4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575.txt",
+        "renderDirectory": "evidence/renders/sha256/4d/4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "ao-127312",
+          "canonicalProductId": "fa_prod_4a618d9f867ec77222f1a02c"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "sha256": "4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0",
+      "byteSize": 138392,
+      "textSha256": "c5392b2ef99910b7ec509a2222c52a47f69a06c963ef7da101fc0346da801acd",
+      "textByteSize": 2979,
+      "pageCount": 2,
+      "sourceUrls": [
+        "https://dtc-aus-api.hisense.com/medias/HRTF325-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzgzOTJ8YXBwbGljYXRpb24vcGRmfGFETTBMMmczWXk4NE9EQTBNRGs0TWpjM05EQTJMMGhTVkVZek1qVXRVM0JsWXk1d1pHWXw5NDkzMGRlMDk4ODc5ZmU0NWMwNDRjYjkxYmE4NWZhODk4ZDY2NmE5ZmFjNmU3Yzk5MjNmNjc4MzdkNjRhYTFh"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/4e/4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0.pdf",
+        "text": "evidence/text/sha256/4e/4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0.txt",
+        "renderDirectory": "evidence/renders/sha256/4e/4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "fridge-arf3316",
+          "canonicalProductId": "fa_prod_d9ca9d81328abfe22bcf7318"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2
+      ]
+    },
+    {
+      "sha256": "54b97d676eb19b474e7b8820e1739dd60802e85719b10ad9bac82d860f7d3512",
+      "byteSize": 669582,
+      "textSha256": "5437e8cea745509a3c61536b61980b3794346e942a0f81651c4f7772815705f9",
+      "textByteSize": 17909,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw636a518e/QRG/AU/QRG-AU-92303.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/54/54b97d676eb19b474e7b8820e1739dd60802e85719b10ad9bac82d860f7d3512.pdf",
+        "text": "evidence/text/sha256/54/54b97d676eb19b474e7b8820e1739dd60802e85719b10ad9bac82d860f7d3512.txt",
+        "renderDirectory": "evidence/renders/sha256/54/54b97d676eb19b474e7b8820e1739dd60802e85719b10ad9bac82d860f7d3512"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh8060j5",
+          "canonicalProductId": "fa_prod_2126b4d466a04092b0dff360"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "sha256": "54e96a80e3b7e1308f717f9a5273dcee81d727056b41c9db2572aee91466edb6",
+      "byteSize": 857708,
+      "textSha256": "c2cf5c142c4ab0bb3e6db202922695625b910a0f8d6c6f44d18194351514a979",
+      "textByteSize": 18399,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwc6aea06b/QRG/AU/QRG-AU-92331.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/54/54e96a80e3b7e1308f717f9a5273dcee81d727056b41c9db2572aee91466edb6.pdf",
+        "text": "evidence/text/sha256/54/54e96a80e3b7e1308f717f9a5273dcee81d727056b41c9db2572aee91466edb6.txt",
+        "renderDirectory": "evidence/renders/sha256/54/54e96a80e3b7e1308f717f9a5273dcee81d727056b41c9db2572aee91466edb6"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh1260dg5",
+          "canonicalProductId": "fa_prod_ec5d273a25ab27339c67b6c0"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
       ]
     },
     {
@@ -198,6 +603,57 @@
       ]
     },
     {
+      "sha256": "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716",
+      "byteSize": 349928,
+      "textSha256": "d4cf44306b3375eeb64cb23525726e78d4d560269744ee0cebcc2ccf4a035f62",
+      "textByteSize": 9033,
+      "pageCount": 2,
+      "sourceUrls": [
+        "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw57e105ea/QRG/AU/QRG-AU-62293.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/77/77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716.pdf",
+        "text": "evidence/text/sha256/77/77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716.txt",
+        "renderDirectory": "evidence/renders/sha256/77/77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "fridge-arf3501",
+          "canonicalProductId": "fa_prod_4619a1a7ecab2e53a1e21474"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2
+      ]
+    },
+    {
+      "sha256": "7da89e80cb17fda5af7337a7f331d13a48a9dbd9326d0ef633b5d9a71ef3ef4d",
+      "byteSize": 1471212,
+      "textSha256": "8a9886f6f85e1ddd237b8242da041b705d74f159bec5a009243bf55f94e46475",
+      "textByteSize": 8599,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24402AU.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/7d/7da89e80cb17fda5af7337a7f331d13a48a9dbd9326d0ef633b5d9a71ef3ef4d.pdf",
+        "text": "evidence/text/sha256/7d/7da89e80cb17fda5af7337a7f331d13a48a9dbd9326d0ef633b5d9a71ef3ef4d.txt",
+        "renderDirectory": "evidence/renders/sha256/7d/7da89e80cb17fda5af7337a7f331d13a48a9dbd9326d0ef633b5d9a71ef3ef4d"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-washing-machine-bosch-wgg24402au",
+          "canonicalProductId": "fa_prod_03c7b7d484ef495ac73a0b95"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
       "sha256": "8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb",
       "byteSize": 482401,
       "textSha256": "d3c4a99d9cc696609c0d6d80fc01e082089375fa4e966d8974719440e205b4a0",
@@ -270,6 +726,57 @@
       ]
     },
     {
+      "sha256": "8c230fe497ca443859a8bb1b01521ce661b71923589ed4a1540e208b05766e02",
+      "byteSize": 365449,
+      "textSha256": "f73238decf48bd601e145c3d64ce47ec9d021da27c316146ee42b8b89a4a7c4d",
+      "textByteSize": 10172,
+      "pageCount": 2,
+      "sourceUrls": [
+        "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwbb887907/QRG/AU/QRG-AU-61614.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/8c/8c230fe497ca443859a8bb1b01521ce661b71923589ed4a1540e208b05766e02.pdf",
+        "text": "evidence/text/sha256/8c/8c230fe497ca443859a8bb1b01521ce661b71923589ed4a1540e208b05766e02.txt",
+        "renderDirectory": "evidence/renders/sha256/8c/8c230fe497ca443859a8bb1b01521ce661b71923589ed4a1540e208b05766e02"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "ao-132904",
+          "canonicalProductId": "fa_prod_43be0630d42f1bf6bdfcb231"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2
+      ]
+    },
+    {
+      "sha256": "908f0d5cef1cf07e97a94ee13068183954549e23f0e7269a6a79d7fb329b4920",
+      "byteSize": 860272,
+      "textSha256": "33129e57aa50c45260048b00657eab58f0bd17328e253cadffd512aaf2ec890c",
+      "textByteSize": 16247,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw09738459/QRG/AU/QRG-AU-93327.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/90/908f0d5cef1cf07e97a94ee13068183954549e23f0e7269a6a79d7fb329b4920.pdf",
+        "text": "evidence/text/sha256/90/908f0d5cef1cf07e97a94ee13068183954549e23f0e7269a6a79d7fb329b4920.txt",
+        "renderDirectory": "evidence/renders/sha256/90/908f0d5cef1cf07e97a94ee13068183954549e23f0e7269a6a79d7fb329b4920"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh1060dg5",
+          "canonicalProductId": "fa_prod_3c4cf61393faf23a2b645918"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
       "sha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
       "byteSize": 136856,
       "textSha256": "c12c53b44877705369970231af13a922c74fce0ebe277ea8cdb5a2121e2905ed",
@@ -290,6 +797,133 @@
         }
       ],
       "reviewPages": [
+        2
+      ]
+    },
+    {
+      "sha256": "9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0",
+      "byteSize": 1688366,
+      "textSha256": "9773fd07716ef929cac4ec1619ecd2f618152a16ec91421758fca492fcd8f488",
+      "textByteSize": 9354,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVI01A.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/9d/9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0.pdf",
+        "text": "evidence/text/sha256/9d/9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0.txt",
+        "renderDirectory": "evidence/renders/sha256/9d/9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-dishwasher-bosch-sms4hvi01a",
+          "canonicalProductId": "fa_prod_9bf075ae36ec6b6f15b3af01"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "sha256": "a85ac2f1727da062b515901eda319f16147312c89d7136643509bd5498f17b06",
+      "byteSize": 138506,
+      "textSha256": "e5780b7279cbdf4efedaf6c66c85fe5ac8c25fd73bed00b64a3776f1af818206",
+      "textByteSize": 4271,
+      "pageCount": 2,
+      "sourceUrls": [
+        "https://dtc-aus-api.hisense.com/medias/2026-Hisense-AU-Consumer-Spec-HWF5I1215-.pdf?context=bWFzdGVyfE1hbnVhbHwxMzg1MDZ8YXBwbGljYXRpb24vcGRmfGFERmpMMmhsTXk4NE9EazRNekk1T1RNMU9UQXlMekl3TWpZZ1NHbHpaVzV6WlNCQlZTQXRJRU52Ym5OMWJXVnlJRk53WldNZ0tFaFhSalZKTVRJeE5Ta3VjR1JtfDI1YmYzMjZlMzY5OWIwOGMxZTJhNmI1ZDUxNjc4ZTU2OGVmZjI0NjUyZmJlNGYzYWRmZDhmMjhjYTVmY2YwODA"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/a8/a85ac2f1727da062b515901eda319f16147312c89d7136643509bd5498f17b06.pdf",
+        "text": "evidence/text/sha256/a8/a85ac2f1727da062b515901eda319f16147312c89d7136643509bd5498f17b06.txt",
+        "renderDirectory": "evidence/renders/sha256/a8/a85ac2f1727da062b515901eda319f16147312c89d7136643509bd5498f17b06"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "washing_machine-acw1734",
+          "canonicalProductId": "fa_prod_37eedb080ca37aaedf4f6772"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2
+      ]
+    },
+    {
+      "sha256": "a979ba676c8b6fb4c2ff23145600d452bb29e3882896721272b2a22a53010463",
+      "byteSize": 1104213,
+      "textSha256": "07df5d4eaf47ba5eebec1516f2ba1b6e5a4d1fb8b4727dda61995ebdf0d332c2",
+      "textByteSize": 9223,
+      "pageCount": 2,
+      "sourceUrls": [
+        "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwa742cfeb/QRG/AU/QRG-AU-61615.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/a9/a979ba676c8b6fb4c2ff23145600d452bb29e3882896721272b2a22a53010463.pdf",
+        "text": "evidence/text/sha256/a9/a979ba676c8b6fb4c2ff23145600d452bb29e3882896721272b2a22a53010463.txt",
+        "renderDirectory": "evidence/renders/sha256/a9/a979ba676c8b6fb4c2ff23145600d452bb29e3882896721272b2a22a53010463"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "dishwasher-adw1233",
+          "canonicalProductId": "fa_prod_6bd24b76c0d45dbdab1ec470"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2
+      ]
+    },
+    {
+      "sha256": "ae265001f3f720fa66b31049117b1ad6937a2e4890c68eb870cf04005141557f",
+      "byteSize": 1366243,
+      "textSha256": "19f4d19a56b7a2e42fe6bcacd45802c5ef489fecb0890bde49023276517bb8d8",
+      "textByteSize": 8510,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG235D8AU.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/ae/ae265001f3f720fa66b31049117b1ad6937a2e4890c68eb870cf04005141557f.pdf",
+        "text": "evidence/text/sha256/ae/ae265001f3f720fa66b31049117b1ad6937a2e4890c68eb870cf04005141557f.txt",
+        "renderDirectory": "evidence/renders/sha256/ae/ae265001f3f720fa66b31049117b1ad6937a2e4890c68eb870cf04005141557f"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-dryer-bosch-wqg235d8au",
+          "canonicalProductId": "fa_prod_76db556f630f77aabe66a56e"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "sha256": "b35f817f7e6e5d2a75e0f5c31c985519f346e998a60f9efd9e378a9796af8b4a",
+      "byteSize": 710057,
+      "textSha256": "b802c0c482e3005516cf9a4206188027e5d50b090d809959ce8afeb4f40c6ac9",
+      "textByteSize": 9192,
+      "pageCount": 2,
+      "sourceUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwac9dda29/QRG/AU/QRG-AU-92277.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/b3/b35f817f7e6e5d2a75e0f5c31c985519f346e998a60f9efd9e378a9796af8b4a.pdf",
+        "text": "evidence/text/sha256/b3/b35f817f7e6e5d2a75e0f5c31c985519f346e998a60f9efd9e378a9796af8b4a.txt",
+        "renderDirectory": "evidence/renders/sha256/b3/b35f817f7e6e5d2a75e0f5c31c985519f346e998a60f9efd9e378a9796af8b4a"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-dryer-fisher-paykel-de6060m2",
+          "canonicalProductId": "fa_prod_b3e0fbe01de9f8b2ceaf1e96"
+        }
+      ],
+      "reviewPages": [
+        1,
         2
       ]
     },
@@ -342,6 +976,32 @@
       ]
     },
     {
+      "sha256": "b8c954080c96bde57c3a3310b0fa8eb2befaf19448228258f8b87ae8ae4e5cc8",
+      "byteSize": 290627,
+      "textSha256": "e50bfec7e5badb07f3b8ebf783220e6ecdf9c47700b931f337d44787c9be4766",
+      "textByteSize": 13290,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw979a5de4/QRG/AU/QRG-AU-26619.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/b8/b8c954080c96bde57c3a3310b0fa8eb2befaf19448228258f8b87ae8ae4e5cc8.pdf",
+        "text": "evidence/text/sha256/b8/b8c954080c96bde57c3a3310b0fa8eb2befaf19448228258f8b87ae8ae4e5cc8.txt",
+        "renderDirectory": "evidence/renders/sha256/b8/b8c954080c96bde57c3a3310b0fa8eb2befaf19448228258f8b87ae8ae4e5cc8"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "fridge-arf3054",
+          "canonicalProductId": "fa_prod_409ff88f87838c9d27705694"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
       "sha256": "bb4765aed8b51db365365a2352cbf797538c662442e1400ca6d38b19feacd1f5",
       "byteSize": 2089626,
       "textSha256": "6a97c47ee1a5b0b9f54cffbc95f2fbe3410c9633712c0eb407ab75016d4317b2",
@@ -390,6 +1050,129 @@
       ]
     },
     {
+      "sha256": "c40bbeb07ba870f53b5b958b8de46b2327e156b371dd2ff22fbec3411209724e",
+      "byteSize": 1749589,
+      "textSha256": "ca2047267ab381ac25e9c5ff9d83985e0701437d626e5201834dfe8bf2e175bd",
+      "textByteSize": 121567,
+      "pageCount": 56,
+      "sourceUrls": [
+        "https://gscs-b2c.lge.com/open/downloadFile?fileId=TrD7hKGAvk5a68JgwLfnmg"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/c4/c40bbeb07ba870f53b5b958b8de46b2327e156b371dd2ff22fbec3411209724e.pdf",
+        "text": "evidence/text/sha256/c4/c40bbeb07ba870f53b5b958b8de46b2327e156b371dd2ff22fbec3411209724e.txt",
+        "renderDirectory": "evidence/renders/sha256/c4/c40bbeb07ba870f53b5b958b8de46b2327e156b371dd2ff22fbec3411209724e"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "fridge-arf3177",
+          "canonicalProductId": "fa_prod_83c263d3a4d601a5e0df6a7d"
+        }
+      ],
+      "reviewPages": [
+        1,
+        5,
+        12,
+        18,
+        21,
+        35,
+        37,
+        42,
+        49,
+        51
+      ]
+    },
+    {
+      "sha256": "c7375afcae85282b37fb59daeb237e6d74844a6d16586f04d1e6fe81a6d75a98",
+      "byteSize": 423406,
+      "textSha256": "c846023e97da588c6192e7edb75ab8e82283652b396b4907a84617cd9f5be109",
+      "textByteSize": 17286,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8e5cecb9/QRG/AU/QRG-AU-92293.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/c7/c7375afcae85282b37fb59daeb237e6d74844a6d16586f04d1e6fe81a6d75a98.pdf",
+        "text": "evidence/text/sha256/c7/c7375afcae85282b37fb59daeb237e6d74844a6d16586f04d1e6fe81a6d75a98.txt",
+        "renderDirectory": "evidence/renders/sha256/c7/c7375afcae85282b37fb59daeb237e6d74844a6d16586f04d1e6fe81a6d75a98"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh9060h1",
+          "canonicalProductId": "fa_prod_e76a61684d5741f99bae29f6"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "sha256": "cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00",
+      "byteSize": 1130681,
+      "textSha256": "6322a3936e1565dd36c923048dbec9c9b0c65baa5f7322f3f8dddfaf7133a639",
+      "textByteSize": 7772,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG24200AU.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/cb/cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00.pdf",
+        "text": "evidence/text/sha256/cb/cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00.txt",
+        "renderDirectory": "evidence/renders/sha256/cb/cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-dryer-bosch-wqg24200au",
+          "canonicalProductId": "fa_prod_2f34addef166fe0b4b84ed15"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "sha256": "cde14b717d6353dca7585bc4d02665b033157dee55e3a709175fb06806bfb8b0",
+      "byteSize": 5749391,
+      "textSha256": "7c845c1726ee58ecc27290eab595d5839a220e4f8358c77f3f3a65133b08dfe5",
+      "textByteSize": 122889,
+      "pageCount": 56,
+      "sourceUrls": [
+        "https://gscs-b2c.lge.com/open/downloadFile?fileId=XFUDD7WCYvPmtwnCUJg7w"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/cd/cde14b717d6353dca7585bc4d02665b033157dee55e3a709175fb06806bfb8b0.pdf",
+        "text": "evidence/text/sha256/cd/cde14b717d6353dca7585bc4d02665b033157dee55e3a709175fb06806bfb8b0.txt",
+        "renderDirectory": "evidence/renders/sha256/cd/cde14b717d6353dca7585bc4d02665b033157dee55e3a709175fb06806bfb8b0"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-dishwasher-lg-xd2a25mb",
+          "canonicalProductId": "fa_prod_693c6fa3684bef1660a42e9f"
+        }
+      ],
+      "reviewPages": [
+        7,
+        9,
+        10,
+        12,
+        13,
+        18,
+        27,
+        30,
+        34,
+        35,
+        36,
+        37,
+        39,
+        51,
+        52
+      ]
+    },
+    {
       "sha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
       "byteSize": 14146867,
       "textSha256": "46a1d57111da83f141308b174d7cd5ee033988f75c9edf9b0fc2665f2294929c",
@@ -414,13 +1197,40 @@
       ]
     },
     {
+      "sha256": "d230e3d6d25a008a09b58479140e62d5f610ecbf46bc2e05eb2e83301f7f8d46",
+      "byteSize": 1151244,
+      "textSha256": "25905bad8fb223de7ab7364d2692f4cc841c850ecf51a36b917c82fe5c159fee",
+      "textByteSize": 8033,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG24201AU.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/d2/d230e3d6d25a008a09b58479140e62d5f610ecbf46bc2e05eb2e83301f7f8d46.pdf",
+        "text": "evidence/text/sha256/d2/d230e3d6d25a008a09b58479140e62d5f610ecbf46bc2e05eb2e83301f7f8d46.txt",
+        "renderDirectory": "evidence/renders/sha256/d2/d230e3d6d25a008a09b58479140e62d5f610ecbf46bc2e05eb2e83301f7f8d46"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-dryer-bosch-wqg24201au",
+          "canonicalProductId": "fa_prod_9e6af77de4d1c1ca9e49e87f"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
       "sha256": "d5682f81974da77f17d2db44b6192ec3b897c9f889a7ac7ef0baa18747c23741",
       "byteSize": 12646994,
       "textSha256": "def48b16af573f14e3320cec723c20d464988c466ef5d07e38d0bd347df8c458",
       "textByteSize": 121483,
       "pageCount": 56,
       "sourceUrls": [
-        "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GB&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf"
+        "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GB&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
+        "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GH&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf"
       ],
       "paths": {
         "pdf": "evidence/objects/sha256/d5/d5682f81974da77f17d2db44b6192ec3b897c9f889a7ac7ef0baa18747c23741.pdf",
@@ -431,10 +1241,209 @@
         {
           "legacyRuntimeId": "discovery-dryer-samsung-dv90bb9440gb",
           "canonicalProductId": "fa_prod_68dc16d1924cbb55bfae1472"
+        },
+        {
+          "legacyRuntimeId": "discovery-dryer-samsung-dv90bb9440gh",
+          "canonicalProductId": "fa_prod_32d72774c1aeb04e7aea06e3"
         }
       ],
       "reviewPages": [
+        5,
+        6,
+        7,
+        10,
+        17,
+        18,
+        36,
+        50,
+        51,
         55
+      ]
+    },
+    {
+      "sha256": "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450",
+      "byteSize": 1012177,
+      "textSha256": "7391c3d5146ac04cd44bcf7b9f1691830756c59ea9bb0521c6955240eeb1c376",
+      "textByteSize": 10357,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG254Z1AU.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/da/da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450.pdf",
+        "text": "evidence/text/sha256/da/da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450.txt",
+        "renderDirectory": "evidence/renders/sha256/da/da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-washing-machine-bosch-wgg254z1au",
+          "canonicalProductId": "fa_prod_7d63ae58391d83fad7e6b543"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "sha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
+      "byteSize": 217068,
+      "textSha256": "1c60f2f3b0a3a2d62c24f057bc28cfc9cf00aecde322ed5c3ef5602459ec438a",
+      "textByteSize": 148,
+      "pageCount": 1,
+      "sourceUrls": [
+        "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/e8/e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25.pdf",
+        "text": "evidence/text/sha256/e8/e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25.txt",
+        "renderDirectory": "evidence/renders/sha256/e8/e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "fridge-arf3094",
+          "canonicalProductId": "fa_prod_deb632c704c5620713dafb7b"
+        }
+      ],
+      "reviewPages": [
+        1
+      ]
+    },
+    {
+      "sha256": "e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c",
+      "byteSize": 1402290,
+      "textSha256": "4f91ddfc421e119918710daf636bb8af969cfa8d59975b6600a64c5f1727ce82",
+      "textByteSize": 6930,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFD96AXEAA.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/e9/e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c.pdf",
+        "text": "evidence/text/sha256/e9/e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c.txt",
+        "renderDirectory": "evidence/renders/sha256/e9/e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-fridge-bosch-kfd96axeaa",
+          "canonicalProductId": "fa_prod_8bc6f334dbf9c75416eea7fc"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "sha256": "eb728821fc93ca4ba5dedadbad827ab9c7dbc744bd3ce6c2bec0ef848793c9d1",
+      "byteSize": 837554,
+      "textSha256": "1dd68bdf4cd6992c1b0a1cb8110048089f6d9336261363cccebf7c30c13d3bd7",
+      "textByteSize": 16866,
+      "pageCount": 3,
+      "sourceUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw638d352c/QRG/AU/QRG-AU-93304.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/eb/eb728821fc93ca4ba5dedadbad827ab9c7dbc744bd3ce6c2bec0ef848793c9d1.pdf",
+        "text": "evidence/text/sha256/eb/eb728821fc93ca4ba5dedadbad827ab9c7dbc744bd3ce6c2bec0ef848793c9d1.txt",
+        "renderDirectory": "evidence/renders/sha256/eb/eb728821fc93ca4ba5dedadbad827ab9c7dbc744bd3ce6c2bec0ef848793c9d1"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh8060p5",
+          "canonicalProductId": "fa_prod_9367444b758eb067063afbea"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "sha256": "ee493062e968e61b7ad60b1c9fd18eae4365edcf1d986d83532aedabbec8285a",
+      "byteSize": 295800,
+      "textSha256": "2e55a51605c0f52af59bcdcd5467b4785f41dcd2c57ad0bc45cbda66128db17e",
+      "textByteSize": 12607,
+      "pageCount": 2,
+      "sourceUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw16a75371/QRG/AU/QRG-AU-26504.pdf"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/ee/ee493062e968e61b7ad60b1c9fd18eae4365edcf1d986d83532aedabbec8285a.pdf",
+        "text": "evidence/text/sha256/ee/ee493062e968e61b7ad60b1c9fd18eae4365edcf1d986d83532aedabbec8285a.txt",
+        "renderDirectory": "evidence/renders/sha256/ee/ee493062e968e61b7ad60b1c9fd18eae4365edcf1d986d83532aedabbec8285a"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "fridge-arf3548",
+          "canonicalProductId": "fa_prod_4a7f77eb2399b59ca5563d51"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2
+      ]
+    },
+    {
+      "sha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+      "byteSize": 15577638,
+      "textSha256": "68fa86ef7b1bc65c52dac99af7bdf57a9305bae85fecc2260b4a54d983711679",
+      "textByteSize": 97849,
+      "pageCount": 48,
+      "sourceUrls": [
+        "https://dtc-aus-api.hisense.com/medias/HWF3S8514X-User-Manual.pdf?context=bWFzdGVyfE1hbnVhbHwxNTU3NzYzOHxhcHBsaWNhdGlvbi9wZGZ8YURsbUwyZzFNeTg0T0RrNE16TTVOelkyTXpBeUwwaFhSak5UT0RVeE5GZ2dMU0JWYzJWeUlFMWhiblZoYkM1d1pHWXw3NDIxMmUyNTA1ZjYwMjhjYjI2NjE2YzNhZmMxZGFjNDAzYzQzNDE1Mzg5MmZiOThlMWZkNjA1ODQwMTJlMTM4"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/f0/f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c.pdf",
+        "text": "evidence/text/sha256/f0/f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c.txt",
+        "renderDirectory": "evidence/renders/sha256/f0/f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "ao-178018",
+          "canonicalProductId": "fa_prod_77299f50a5afccbd92f0551c"
+        }
+      ],
+      "reviewPages": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        9,
+        11,
+        15,
+        31,
+        34,
+        35
+      ]
+    },
+    {
+      "sha256": "f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb",
+      "byteSize": 142508,
+      "textSha256": "90034de113dad46c854b1f7721a54196b088da10ccea9b335c267861ee008ddb",
+      "textByteSize": 2903,
+      "pageCount": 2,
+      "sourceUrls": [
+        "https://dtc-aus-api.hisense.com/medias/HRTF206-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDI1MDh8YXBwbGljYXRpb24vcGRmfGFHSTJMMmd3Wmk4NE9EQTBNVEEzTXpVME1UUXlMMGhTVkVZeU1EWXRVM0JsWXk1d1pHWXw5MDY2ZmY5ODYyNWFkNmZmY2NlMjM5Yzg5YzY4YWFmM2RkNGJmYWIwNzhhNmE3YmZkM2UyZTMzYjBmZDU3Nzdi"
+      ],
+      "paths": {
+        "pdf": "evidence/objects/sha256/f9/f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb.pdf",
+        "text": "evidence/text/sha256/f9/f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb.txt",
+        "renderDirectory": "evidence/renders/sha256/f9/f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb"
+      },
+      "productLinks": [
+        {
+          "legacyRuntimeId": "fridge-arf3335",
+          "canonicalProductId": "fa_prod_248ca182ae8e787affa25e3e"
+        }
+      ],
+      "reviewPages": [
+        1,
+        2
       ]
     },
     {
@@ -488,10 +1497,10 @@
     }
   ],
   "summary": {
-    "documents": 20,
-    "productLinks": 20,
-    "reviewPages": 24,
-    "totalBytes": 70178518,
-    "totalTextBytes": 856145
+    "documents": 57,
+    "productLinks": 58,
+    "reviewPages": 177,
+    "totalBytes": 150678825,
+    "totalTextBytes": 1940712
   }
 }

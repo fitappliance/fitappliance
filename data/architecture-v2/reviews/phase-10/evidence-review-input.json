@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex PDF visual review",
+  "reviewedAt": "2026-07-11",
+  "reviews": [
+    {
+      "legacyRuntimeId": "fridge-arf3054", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":790,"page":1,"quote":"Width 790 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":1790,"page":1,"quote":"Height 1790 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":692,"page":1,"quote":"Depth 692 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3548", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":900,"page":2,"quote":"Product dimensions: Width 900 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":1790,"page":2,"quote":"Product dimensions: Height 1790 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":735,"page":2,"quote":"Depth (including handles) 735 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"installation.leftMm","value":20,"page":2,"quote":"Minimum air clearance - each side 20 mm","semanticBasis":"explicit_each_side_label"},
+        {"field":"installation.rightMm","value":20,"page":2,"quote":"Minimum air clearance - each side 20 mm","semanticBasis":"explicit_each_side_label"},
+        {"field":"installation.topMm","value":50,"page":2,"quote":"Minimum air clearance - on top 50 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3074", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":700,"page":2,"quote":"Product dimensions: Width 700 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":1725,"page":2,"quote":"Product dimensions: Height 1725 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":675,"page":2,"quote":"Product dimensions: Depth 675 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3501", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":790,"page":2,"quote":"Product dimensions: Width 790 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":1725,"page":2,"quote":"Product dimensions: Height 1725 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":707,"page":2,"quote":"Product dimensions: Depth 707 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3335", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":550,"page":2,"quote":"Dimensions (Net) (W X H X D) 550 x 1456 x 562 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":1456,"page":2,"quote":"Dimensions (Net) (W X H X D) 550 x 1456 x 562 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":562,"page":2,"quote":"Dimensions (Net) (W X H X D) 550 x 1456 x 562 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"installation.leftMm","value":50,"page":1,"quote":"Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm","semanticBasis":"explicit_sides_label"},
+        {"field":"installation.rightMm","value":50,"page":1,"quote":"Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm","semanticBasis":"explicit_sides_label"},
+        {"field":"installation.rearMm","value":50,"page":1,"quote":"Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"installation.topMm","value":100,"page":1,"quote":"Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3316", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":595,"page":2,"quote":"Dimensions (Net) (W X H X D) 595 x 1696 x 650 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":1696,"page":2,"quote":"Dimensions (Net) (W X H X D) 595 x 1696 x 650 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":650,"page":2,"quote":"Dimensions (Net) (W X H X D) 595 x 1696 x 650 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"installation.leftMm","value":50,"page":1,"quote":"Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm","semanticBasis":"explicit_sides_label"},
+        {"field":"installation.rightMm","value":50,"page":1,"quote":"Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm","semanticBasis":"explicit_sides_label"},
+        {"field":"installation.rearMm","value":50,"page":1,"quote":"Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"installation.topMm","value":100,"page":1,"quote":"Cabinet clearance [Sides / Back / Top] 50 / 50 / 100 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3094", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":914,"page":1,"quote":"Dimensions: Width 914 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.heightMm","value":1792,"page":1,"quote":"Dimensions: Height 1792 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.depthMm","value":729,"page":1,"quote":"Depth with door and handle 729 mm","semanticBasis":"labelled_dimension_diagram"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "fridge-arf3177", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":835,"page":12,"quote":"Dimensions and Clearances diagram: A 835 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.heightMm","value":1787,"page":12,"quote":"Dimensions and Clearances diagram: B 1787 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.depthMm","value":730,"page":12,"quote":"Dimensions and Clearances diagram: C 730 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"installation.rearMm","value":50,"page":12,"quote":"allow over 50 mm clearance between the back of the appliance and the wall","semanticBasis":"explicit_axis_label"},
+        {"field":"operation.doorOpenDepthMm","value":1416,"page":12,"quote":"Dimensions and Clearances door-open diagram: H 1416 mm","semanticBasis":"labelled_door_open_diagram"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-fridge-bosch-kfd96axeaa", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":905,"page":2,"quote":"Dimensions (H x W x D): 1830 mm x 905 mm x 731 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":1830,"page":2,"quote":"Dimensions (H x W x D): 1830 mm x 905 mm x 731 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":731,"page":2,"quote":"Dimensions (H x W x D): 1830 mm x 905 mm x 731 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"operation.doorOpenDepthMm","value":1102,"page":3,"quote":"Door-open dimension diagram: overall depth 1102 mm","semanticBasis":"labelled_door_open_diagram"},
+        {"field":"operation.hingeSideSpaceMm","value":45,"page":3,"quote":"Door operation diagram: side space 45 mm","semanticBasis":"labelled_clearance_diagram"}
+      ]
+    },
+    {"legacyRuntimeId":"ao-97642","identityOutcome":"ambiguous","fields":[],"reason":"official PDF covers RF44A and RF50A model families but does not print sales model SRF5300SD"},
+
+    {
+      "legacyRuntimeId": "dishwasher-adw0959", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":597,"page":1,"quote":"Width 597 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":{"minimumMm":857,"maximumMm":917},"page":1,"quote":"Height 857 - 917 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":554,"page":1,"quote":"Depth 554 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "ao-150984", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":599,"page":1,"quote":"Width 599 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":{"minimumMm":820,"maximumMm":880},"page":1,"quote":"Height 820 - 880 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":573,"page":1,"quote":"Depth 573 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "dishwasher-adw1233", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":597,"page":1,"quote":"Width 597 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":{"minimumMm":820,"maximumMm":880},"page":1,"quote":"Height 820 - 880 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":554,"page":1,"quote":"Depth 554 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "ao-132904", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":597,"page":1,"quote":"Width 597 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":{"minimumMm":850,"maximumMm":895},"page":1,"quote":"Height 850 - 895 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":599,"page":1,"quote":"Depth 599 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dishwasher-bosch-sms4hvi01a", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":600,"page":2,"quote":"Product Dimensions (H x W x D): 845 x 600 x 600 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":845,"page":2,"quote":"Product Dimensions (H x W x D): 845 x 600 x 600 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":600,"page":2,"quote":"Product Dimensions (H x W x D): 845 x 600 x 600 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"operation.doorOpenDepthMm","value":1155,"page":1,"quote":"Depth with open door 90 degree: 1155 mm","semanticBasis":"labelled_door_open_diagram"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "ao-127312", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":600,"page":2,"quote":"Product Dimensions (H x W x D): 845 x 600 x 600 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":845,"page":2,"quote":"Product Dimensions (H x W x D): 845 x 600 x 600 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":600,"page":2,"quote":"Product Dimensions (H x W x D): 845 x 600 x 600 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"operation.doorOpenDepthMm","value":1155,"page":1,"quote":"Depth with open door 90 degree: 1155 mm","semanticBasis":"labelled_door_open_diagram"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dishwasher-lg-xd2a25mb", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":600,"page":12,"quote":"Dimension (Width X Height X Depth): 600 mm X 850 mm X 600 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":850,"page":12,"quote":"Dimension (Width X Height X Depth): 600 mm X 850 mm X 600 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":600,"page":12,"quote":"Dimension (Width X Height X Depth): 600 mm X 850 mm X 600 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"operation.hingeSideSpaceMm","value":50,"page":13,"quote":"If the appliance is installed in a corner, allow minimum clearance of at least 50 mm between the appliance and an adjacent cabinet or wall","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {"legacyRuntimeId":"ao-113734","identityOutcome":"no_source","fields":[],"reason":"no official-domain PDF found after product and support search"},
+    {
+      "legacyRuntimeId": "ao-101283", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":598,"page":1,"quote":"Dimensions 598mmW x 818mmH x 570mmD","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":818,"page":1,"quote":"Dimensions 598mmW x 818mmH x 570mmD","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":570,"page":1,"quote":"Dimensions 598mmW x 818mmH x 570mmD","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {"legacyRuntimeId":"ao-149199","identityOutcome":"no_source","fields":[],"reason":"official Beko PDF endpoint confirmed but automated acquisition remained blocked with HTTP 403"},
+
+    {
+      "legacyRuntimeId": "discovery-dryer-fisher-paykel-de6060m2", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":600,"page":1,"quote":"Width 600 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":830,"page":1,"quote":"Height 830 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":575,"page":1,"quote":"Depth 575 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh1060dg5", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":602,"page":1,"quote":"Width 602 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":850,"page":1,"quote":"Height 850 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":682,"page":1,"quote":"Depth 682 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh8060p5", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":602,"page":1,"quote":"Width 602 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":850,"page":1,"quote":"Height 850 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":682,"page":1,"quote":"Depth 682 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh9060h1", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":600,"page":1,"quote":"Width 600 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":850,"page":1,"quote":"Height 850 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":655,"page":1,"quote":"Depth 655 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-bosch-wqg235d8au", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":598,"page":2,"quote":"Dimensions (H x W x D): 84.2 cm x 59.8 cm x 61.3 cm (64.8 cm including door handle)","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":{"minimumMm":842,"maximumMm":857},"page":3,"quote":"Dimension diagram: height 842 +15 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.depthMm","value":648,"page":2,"quote":"64.8 cm including door handle","semanticBasis":"explicit_axis_label"},
+        {"field":"operation.doorOpenDepthMm","value":1096,"page":3,"quote":"Door-open dimension diagram: overall depth 1096 mm","semanticBasis":"labelled_door_open_diagram"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-bosch-wqg235drau", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":598,"page":2,"quote":"Dimensions (H x W x D): 84.2 cm x 59.8 cm x 61.3 cm (64.8 cm including door handle)","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":{"minimumMm":842,"maximumMm":857},"page":3,"quote":"Dimension diagram: height 842 +15 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.depthMm","value":648,"page":2,"quote":"64.8 cm including door handle","semanticBasis":"explicit_axis_label"},
+        {"field":"operation.doorOpenDepthMm","value":1096,"page":3,"quote":"Door-open dimension diagram: overall depth 1096 mm","semanticBasis":"labelled_door_open_diagram"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-bosch-wqg24200au", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":598,"page":2,"quote":"Dimensions (H x W x D): 84.2 cm x 59.8 cm x 61.3 cm (64.8 cm including door handle)","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":{"minimumMm":842,"maximumMm":857},"page":3,"quote":"Dimension diagram: height 842 +15 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.depthMm","value":648,"page":2,"quote":"64.8 cm including door handle","semanticBasis":"explicit_axis_label"},
+        {"field":"operation.doorOpenDepthMm","value":1096,"page":3,"quote":"Door-open dimension diagram: overall depth 1096 mm","semanticBasis":"labelled_door_open_diagram"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-bosch-wqg24201au", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":598,"page":2,"quote":"Dimensions (H x W x D): 84.2 cm x 59.8 cm x 61.3 cm (64.8 cm including door handle)","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":{"minimumMm":842,"maximumMm":857},"page":3,"quote":"Dimension diagram: height 842 +15 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.depthMm","value":648,"page":2,"quote":"64.8 cm including door handle","semanticBasis":"explicit_axis_label"},
+        {"field":"operation.doorOpenDepthMm","value":1096,"page":3,"quote":"Door-open dimension diagram: overall depth 1096 mm","semanticBasis":"labelled_door_open_diagram"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-lg-dvh1-08wp", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":600,"page":12,"quote":"Dimension(mm): W 600","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.heightMm","value":850,"page":12,"quote":"Dimension(mm): H 850","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.depthMm","value":660,"page":12,"quote":"Dimension(mm): D 660","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"operation.doorOpenDepthMm","value":1115,"page":12,"quote":"Dimension(mm): D'' 1115","semanticBasis":"labelled_door_open_diagram"},
+        {"field":"installation.leftMm","value":20,"page":13,"quote":"Clearance diagram: B 20 mm at each side","semanticBasis":"labelled_clearance_diagram"},
+        {"field":"installation.rightMm","value":20,"page":13,"quote":"Clearance diagram: B 20 mm at each side","semanticBasis":"labelled_clearance_diagram"},
+        {"field":"installation.rearMm","value":100,"page":13,"quote":"Clearance diagram: A 100 mm behind appliance","semanticBasis":"labelled_clearance_diagram"},
+        {"field":"installation.topMm","value":20,"page":13,"quote":"a clearance of approximately 20 mm is left between the top of the appliance and the underside of any work-top","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-dryer-samsung-dv90bb9440gh", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":600,"page":55,"quote":"Dimension table: A 600 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.heightMm","value":850,"page":55,"quote":"Dimension table: B 850 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.depthMm","value":650,"page":55,"quote":"Dimension table: D 650 mm closed overall depth","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"operation.doorOpenDepthMm","value":1100,"page":55,"quote":"Door-open dimension table: E 1100 mm","semanticBasis":"labelled_door_open_diagram"},
+        {"field":"installation.leftMm","value":25,"page":17,"quote":"Alcove minimum clearances: Sides 25 mm","semanticBasis":"explicit_sides_label"},
+        {"field":"installation.rightMm","value":25,"page":17,"quote":"Alcove minimum clearances: Sides 25 mm","semanticBasis":"explicit_sides_label"},
+        {"field":"installation.topMm","value":25,"page":17,"quote":"Alcove minimum clearances: Top 25 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"installation.frontMm","value":490,"page":17,"quote":"Alcove minimum clearances: Front 490 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"installation.rearMm","value":50,"page":17,"quote":"Alcove minimum clearances: Rear 50 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+
+    {
+      "legacyRuntimeId": "washing_machine-acw1701", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":600,"page":1,"quote":"Width 600 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":850,"page":1,"quote":"Height 850 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":655,"page":1,"quote":"Depth 655 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh1260dg5", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":602,"page":1,"quote":"Width 602 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":850,"page":1,"quote":"Height 850 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":661,"page":1,"quote":"Depth 661 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh8060j5", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":602,"page":1,"quote":"Width 602 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":850,"page":1,"quote":"Height 850 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":593,"page":1,"quote":"Depth 593 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "washing_machine-acw1734", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":595,"page":2,"quote":"Net dimensions (W x H x D) (mm) 595 x 845 x 595","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":845,"page":2,"quote":"Net dimensions (W x H x D) (mm) 595 x 845 x 595","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.depthMm","value":595,"page":2,"quote":"Net dimensions (W x H x D) (mm) 595 x 845 x 595","semanticBasis":"explicit_axis_label"}
+      ]
+    },
+    {"legacyRuntimeId":"washing_machine-acw1520","identityOutcome":"ambiguous","fields":[],"reason":"official PDF filename references HWF8I1015BX but the rendered manual cover prints HWF8I1015B; suffix equivalence is not proven"},
+    {
+      "legacyRuntimeId": "ao-178018", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":595,"page":11,"quote":"Dimensions table: A 595 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.heightMm","value":845,"page":11,"quote":"Dimensions table: B 845 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.depthMm","value":540,"page":11,"quote":"E = appliance depth; dimensions table E 540 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"operation.doorOpenDepthMm","value":1020,"page":11,"quote":"F = Depth with door open; dimensions table F 1020 mm","semanticBasis":"labelled_door_open_diagram"},
+        {"field":"installation.topMm","value":25,"page":15,"quote":"Installation clearance diagram: 25 mm above appliance","semanticBasis":"labelled_clearance_diagram"},
+        {"field":"installation.rearMm","value":50,"page":15,"quote":"Installation clearance diagram: 50 mm behind appliance","semanticBasis":"labelled_clearance_diagram"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-washing-machine-bosch-wan28227au", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":598,"page":2,"quote":"Dimensions (H x W x D): 84.5 cm x 59.8 cm x 59.0 cm (63.2 cm including door handle)","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":{"minimumMm":845,"maximumMm":857},"page":3,"quote":"Dimension diagram: height 845 +12 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.depthMm","value":632,"page":2,"quote":"63.2 cm including door handle","semanticBasis":"explicit_axis_label"},
+        {"field":"operation.doorOpenDepthMm","value":1049,"page":3,"quote":"Door-open dimension diagram: overall depth 1049 mm","semanticBasis":"labelled_door_open_diagram"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-washing-machine-bosch-wgg24402au", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":598,"page":2,"quote":"Dimensions (H x W x D): 84.8 cm x 59.8 cm x 59.0 cm (63.6 cm including door handle)","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":{"minimumMm":848,"maximumMm":860},"page":3,"quote":"Dimension diagram: height 848 +12 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.depthMm","value":636,"page":2,"quote":"63.6 cm including door handle","semanticBasis":"explicit_axis_label"},
+        {"field":"operation.doorOpenDepthMm","value":1073,"page":3,"quote":"Door-open dimension diagram: overall depth 1073 mm","semanticBasis":"labelled_door_open_diagram"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-washing-machine-bosch-wgg254z1au", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":598,"page":2,"quote":"Dimensions (H x W x D): 84.5 cm x 59.8 cm x 59.0 cm (63.6 cm including door handle)","semanticBasis":"explicit_axis_label"},
+        {"field":"closedEnvelope.heightMm","value":{"minimumMm":845,"maximumMm":857},"page":3,"quote":"Dimension diagram: height 845 +12 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.depthMm","value":636,"page":2,"quote":"63.6 cm including door handle","semanticBasis":"explicit_axis_label"},
+        {"field":"operation.doorOpenDepthMm","value":1073,"page":3,"quote":"Door-open dimension diagram: overall depth 1073 mm","semanticBasis":"labelled_door_open_diagram"}
+      ]
+    },
+    {
+      "legacyRuntimeId": "discovery-washing-machine-samsung-ww90dg6u3ale", "identityOutcome": "exact", "renderedPageVerified": true,
+      "fields": [
+        {"field":"closedEnvelope.widthMm","value":600,"page":62,"quote":"A (Width) 600 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.heightMm","value":850,"page":62,"quote":"B (Height) 850 mm","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"closedEnvelope.depthMm","value":625,"page":62,"quote":"Dimension diagram: D 625 mm closed overall depth","semanticBasis":"labelled_dimension_diagram"},
+        {"field":"operation.doorOpenDepthMm","value":1070,"page":62,"quote":"Door-open dimension diagram: E 1070 mm","semanticBasis":"labelled_door_open_diagram"},
+        {"field":"installation.leftMm","value":25,"page":16,"quote":"Minimum clearances for stable operation: Sides 25 mm","semanticBasis":"explicit_sides_label"},
+        {"field":"installation.rightMm","value":25,"page":16,"quote":"Minimum clearances for stable operation: Sides 25 mm","semanticBasis":"explicit_sides_label"},
+        {"field":"installation.topMm","value":25,"page":16,"quote":"Minimum clearances for stable operation: Top 25 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"installation.rearMm","value":50,"page":16,"quote":"Minimum clearances for stable operation: Rear 50 mm","semanticBasis":"explicit_axis_label"},
+        {"field":"installation.frontMm","value":550,"page":16,"quote":"Minimum clearances for stable operation: Front 550 mm","semanticBasis":"explicit_axis_label"}
+      ]
+    }
+  ]
+}

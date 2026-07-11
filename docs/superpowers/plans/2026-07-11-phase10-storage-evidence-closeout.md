@@ -35,13 +35,13 @@ and close every pending alias disposition without weakening approval gates.
 
 ## Phase 10C: Forty-model evidence batch
 
-- [ ] Select ten active exact-model candidates per core category with bounded
+- [x] Select ten active exact-model candidates per core category with bounded
   brand concentration and current retailer links.
-- [ ] Acquire manufacturer product sheets and installation manuals through the
+- [x] Acquire manufacturer product sheets and installation manuals through the
   common source contract.
-- [ ] Review dimensions, installation, operation and service fields page by
+- [x] Review dimensions, installation, operation and service fields page by
   page; quarantine absent, family-only and mismatched documents.
-- [ ] Import approved source objects and update public V2 geometry without
+- [x] Import approved source objects and update public V2 geometry without
   inferring unknown fields.
 
 ## Phase 10D: Alias and quarantine closeout
