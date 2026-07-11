@@ -78,3 +78,7 @@ and projection selector remain supported production assets.
   orphan failure gate only to indexable pages. Focused tests passed 13/13.
 - Final complete Sentinel result: 0 uptime failures, 0 broken links and 0
   indexable orphan pages.
+- The missing GitHub `sentinel-auto` label was created so future failures can
+  open an issue instead of failing during notification.
+- GitHub Actions Sentinel run `29144112503` passed all production checks from a
+  clean CI checkout.
