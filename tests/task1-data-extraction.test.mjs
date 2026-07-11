@@ -43,7 +43,7 @@ test('JSON documents parse and expose schema metadata', async () => {
   const clearance = await loadJsonDocument('clearance.json');
   const rebates = await loadJsonDocument('rebates.json');
 
-  assert.equal(appliances.schema_version, 2);
+  assert.equal(appliances.schema_version, 3);
   assert.match(appliances.last_updated, /^\d{4}-\d{2}-\d{2}$/);
   assert.ok(Array.isArray(appliances.products));
   assert.ok(appliances.products.length > 0);

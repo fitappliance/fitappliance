@@ -44,8 +44,8 @@ Architecture V2 is complete only when:
 | 3 | Retailer observation ledger and current-sale reconciliation | Legacy migration complete; collection adapters pending |
 | 4 | Source-document registry and PDF evidence state machine | State machine and quarantine baseline complete |
 | 5 | Category geometry and clearance migration | Contracts complete; evidence migration pending |
-| 6 | FitDecision parity and production cutover | Width parity complete; awaiting cutover approval |
-| 7 | Runtime modularization and legacy deletion | Projection prepared; deletion waits for rollback window |
+| 6 | FitDecision parity and production cutover | Width parity complete; cutover authorised and deployment pending |
+| 7 | Runtime modularization and legacy deletion | Canonical views wired; deletion waits for rollback window |
 
 ## Completed Work
 

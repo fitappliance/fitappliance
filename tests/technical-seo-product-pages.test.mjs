@@ -233,8 +233,8 @@ test('technical SEO: dimensions-only and retailer spec pages avoid Verified Fit 
 
 test('technical SEO: generated product pages include only PDF-verified SKUs', async () => {
   const rootDir = await fs.mkdtemp(path.join(os.tmpdir(), 'fitappliance-product-pages-'));
-  await fs.mkdir(path.join(rootDir, 'data'), { recursive: true });
-  await fs.writeFile(path.join(rootDir, 'data', 'catalog-final.json'), `${JSON.stringify({
+  await fs.mkdir(path.join(rootDir, 'data', 'architecture-v2'), { recursive: true });
+  await fs.writeFile(path.join(rootDir, 'data', 'architecture-v2', 'public-page-projection.json'), `${JSON.stringify({
     products: [
       makeProduct(),
       makeProduct({

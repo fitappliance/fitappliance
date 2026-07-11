@@ -5,10 +5,22 @@ import { fileURLToPath } from 'node:url';
 import { buildCanonicalRegistry } from '../../src/domain/canonical-registry.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
-const catalog = JSON.parse(await readFile(resolve(root, 'public/data/appliances.json'), 'utf8'));
+const legacyCatalog = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/legacy-public-catalog.json'), 'utf8'));
+const finalCatalog = JSON.parse(await readFile(resolve(root, 'data/catalog-final.json'), 'utf8'));
+const productsByLegacyId = new Map(finalCatalog.products.map((product) => [String(product.id).toLowerCase(), product]));
+for (const product of legacyCatalog.products) {
+  const key = String(product.id).toLowerCase();
+  if (!productsByLegacyId.has(key)) productsByLegacyId.set(key, product);
+}
+const catalog = {
+  last_updated: legacyCatalog.last_updated,
+  products: [...productsByLegacyId.values()],
+};
 const disposition = JSON.parse(await readFile(resolve(root, 'reports/architecture-v2/phase1-quarantine-disposition.json'), 'utf8'));
+const identityDecisions = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/canonical-identity-decisions.json'), 'utf8'));
 const result = buildCanonicalRegistry(catalog, {
   quarantineLegacyIds: disposition.products.map((row) => row.legacyId),
+  identityDecisions: identityDecisions.decisions,
 });
 const output = resolve(root, 'data/architecture-v2/canonical-registry.json');
 await mkdir(dirname(output), { recursive: true });

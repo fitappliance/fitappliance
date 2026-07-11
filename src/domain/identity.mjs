@@ -5,6 +5,7 @@ const ALLOWED_CATEGORIES = new Set([
   'dishwasher',
   'washing_machine',
   'dryer',
+  'washtower_combo',
 ]);
 
 const IDENTIFIER_SCHEMES = new Set([

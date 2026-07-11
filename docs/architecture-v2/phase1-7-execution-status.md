@@ -1,6 +1,6 @@
 # Architecture V2 Phase 1-7 Execution Status
 
-Status: pre-cutover checkpoint
+Status: cutover authorised; deployment verification pending
 Last updated: 2026-07-11
 
 ## Phase 1 - Alias and quarantine
@@ -16,9 +16,13 @@ Last updated: 2026-07-11
 
 ## Phase 2 - Canonical identity
 
-- `data/architecture-v2/canonical-registry.json` contains 2,259 canonical
-  products, 2,259 reversible legacy mappings, and nine quarantine rows.
-- The current catalog has no exact brand/model/category collision.
+- `data/architecture-v2/canonical-registry.json` contains 3,593 canonical
+  products and 3,593 reversible legacy mappings across the runtime and
+  evidence-page source sets. Ten rows are quarantined.
+- Nine runtime rows remain quarantined. `ao-88474` is additionally quarantined
+  in the evidence-page source set because it collides with `fridge-arf3970` on
+  Westinghouse WHE6874BA while the attached source PDF fails exact-product
+  evidence checks.
 - Canonical IDs are deterministic and do not depend on retailer identifiers.
 
 ## Phase 3 - Retailer observations
@@ -57,30 +61,34 @@ Last updated: 2026-07-11
 - The full-catalog audit reports 0 approved installation migrations, 2,268
   unknown installation records and zero impossible-value outliers.
 
-## Phase 6 - FitDecision cutover preparation
+## Phase 6 - FitDecision cutover
 
 - The legacy static width verdict and V2 width decision were compared across
   2,268 products and eight cavity widths: 18,144 comparisons, zero mismatches.
 - This parity result covers the legacy page generator's width semantics only.
   It does not claim parity for operation, service, delivery, or verified-fit
   semantics.
-- Production still uses the legacy projection. Cutover requires owner approval.
+- The owner authorised production cutover on 2026-07-11. Build output now uses
+  the V2 runtime projection; production deployment and browser QA remain to be
+  recorded.
 
 ## Phase 7 - Projection and deletion preparation
 
-- `data/architecture-v2/public-catalog-projection.json` is a non-production V2
-  projection for 2,259 non-quarantined products.
+- `data/architecture-v2/public-catalog-projection.json` is the V2 runtime view
+  for 2,259 non-quarantined products.
+- `data/architecture-v2/public-page-projection.json` is the evidence-page view
+  from the same canonical registry: 3,534 products, of which 1,753 currently
+  satisfy the existing PDF-evidence page gate.
 - Legacy IDs remain the public URL identity and each row carries its canonical
   product ID.
 - No legacy runtime path has been deleted. Deletion must wait for production
   cutover, browser QA, and the rollback window.
 
-## Owner decision gate
+## Rollback gate
 
-The next irreversible-looking step is still reversible in implementation, but
-changes public behavior: wire generators and browser search to the V2
-projection behind a feature flag, deploy, run mobile/desktop browser QA, and
-start the rollback window. Do not perform this step without explicit owner
-confirmation.
+The owner has approved the public switch. Keep
+`data/architecture-v2/legacy-public-catalog.json` unchanged throughout the
+observation window. Roll back by setting `FITAPPLIANCE_CATALOG_PROJECTION` to
+`legacy` and redeploying, or by reverting the cutover commit.
 
 The detailed requirement audit is in [`completion-audit.md`](./completion-audit.md).

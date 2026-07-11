@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import { evaluateFit } from '../../src/domain/fit-decision.mjs';
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
-const catalog = JSON.parse(await readFile(resolve(root, 'public/data/appliances.json'), 'utf8'));
+const catalog = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/legacy-public-catalog.json'), 'utf8'));
 const widths = [540, 580, 600, 620, 640, 700, 800, 900];
 const mismatches = [];
 let comparisons = 0;

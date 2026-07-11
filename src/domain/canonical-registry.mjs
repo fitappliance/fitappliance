@@ -23,9 +23,32 @@ function canonicalId(key) {
   return `fa_prod_${createHash('sha256').update(key).digest('hex').slice(0, 24)}`;
 }
 
-export function buildCanonicalRegistry(catalog, { quarantineLegacyIds = [] } = {}) {
+export function extractGemsRegistrationFromLegacyId(value) {
+  const match = String(value ?? '').toLowerCase().match(/^(?:fridge|dishwasher|washing_machine|dryer)-((?:arf|adw|acw|acd)\d+)$/);
+  return match ? match[1].toUpperCase() : null;
+}
+
+function normalizeIdentityDecisions(decisions) {
+  const result = new Map();
+  for (const decision of decisions ?? []) {
+    const legacyRuntimeId = text(decision?.legacyRuntimeId, 'identity decision legacy ID').toLowerCase();
+    if (decision.status !== 'approved'
+      || !/^fa_prod_[a-f0-9]{24}$/.test(String(decision.canonicalProductId ?? ''))
+      || !String(decision.reviewer ?? '').trim()
+      || !/^\d{4}-\d{2}-\d{2}$/.test(String(decision.reviewedAt ?? ''))
+      || !String(decision.rationale ?? '').trim()) {
+      throw new TypeError(`identity decision invalid for ${legacyRuntimeId}`);
+    }
+    if (result.has(legacyRuntimeId)) throw new TypeError(`duplicate identity decision ${legacyRuntimeId}`);
+    result.set(legacyRuntimeId, decision.canonicalProductId);
+  }
+  return result;
+}
+
+export function buildCanonicalRegistry(catalog, { quarantineLegacyIds = [], identityDecisions = [] } = {}) {
   if (!catalog || !Array.isArray(catalog.products)) throw new TypeError('catalog products must be an array');
   const forced = new Set(quarantineLegacyIds.map((value) => text(value, 'quarantine legacy ID').toLowerCase()));
+  const decisions = normalizeIdentityDecisions(identityDecisions);
   const legacyIds = new Set();
   const groups = new Map();
   for (const product of catalog.products) {
@@ -51,19 +74,27 @@ export function buildCanonicalRegistry(catalog, { quarantineLegacyIds = [] } = {
         quarantine.push({ legacyRuntimeId: row.legacyId, brand: row.product.brand, model: row.product.model, reasons });
         continue;
       }
+      const gemsRegistration = extractGemsRegistrationFromLegacyId(row.legacyId);
+      const identifiers = [
+        { scheme: 'legacy_runtime_id', value: row.legacyId, authority: 'fitappliance_legacy_catalog' },
+        { scheme: 'manufacturer_model', value: row.product.model, authority: row.product.brand },
+      ];
+      if (gemsRegistration) identifiers.push({ scheme: 'gems_registration', value: gemsRegistration, authority: 'australian_energy_rating' });
       const product = createCanonicalProduct({
-        id: canonicalId(key),
+        id: decisions.get(row.legacyId) ?? canonicalId(key),
         category: row.product.cat,
         brand: row.product.brand,
         model: row.product.model,
-        identifiers: [
-          { scheme: 'legacy_runtime_id', value: row.legacyId, authority: 'fitappliance_legacy_catalog' },
-          { scheme: 'manufacturer_model', value: row.product.model, authority: row.product.brand },
-        ],
+        identifiers,
       });
       products.push(product);
       identifierMappings.push({ legacyRuntimeId: row.legacyId, canonicalProductId: product.id });
     }
+  }
+  const canonicalIds = new Set();
+  for (const product of products) {
+    if (canonicalIds.has(product.id)) throw new TypeError(`duplicate canonical product ID ${product.id}`);
+    canonicalIds.add(product.id);
   }
   return Object.freeze({
     schemaVersion: 1,

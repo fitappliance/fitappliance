@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { buildCanonicalRegistry } from '../../src/domain/canonical-registry.mjs';
+import { buildCanonicalRegistry, extractGemsRegistrationFromLegacyId } from '../../src/domain/canonical-registry.mjs';
 
 const catalog = { products: [
   { id: 'fridge-a1', cat: 'fridge', brand: 'Example', model: 'ABC-1' },
@@ -32,4 +32,24 @@ test('quarantines exact manufacturer identity collisions instead of choosing a w
 test('rejects duplicate legacy IDs and malformed catalog rows', () => {
   assert.throws(() => buildCanonicalRegistry({ products: [catalog.products[0], catalog.products[0]] }), /duplicate legacy/i);
   assert.throws(() => buildCanonicalRegistry({ products: [{ id: '', cat: 'fridge' }] }), /non-empty/i);
+});
+
+test('preserves proven GEMS registration identifiers without inferring unknown prefixes', () => {
+  assert.equal(extractGemsRegistrationFromLegacyId('fridge-arf3335'), 'ARF3335');
+  assert.equal(extractGemsRegistrationFromLegacyId('dishwasher-adw1215'), 'ADW1215');
+  assert.equal(extractGemsRegistrationFromLegacyId('dryer-zcd0112'), null);
+  const result = buildCanonicalRegistry({ products: [{ ...catalog.products[0], id: 'fridge-arf3335' }] });
+  assert.ok(result.products[0].identifiers.some((row) => row.scheme === 'gems_registration'));
+});
+
+test('a reviewed rename decision can preserve an existing canonical ID', () => {
+  const initial = buildCanonicalRegistry({ products: [catalog.products[0]] });
+  const renamed = buildCanonicalRegistry({ products: [{ ...catalog.products[0], model: 'ABC-1-NEW' }] }, {
+    identityDecisions: [{
+      legacyRuntimeId: 'fridge-a1', canonicalProductId: initial.products[0].id,
+      status: 'approved', reviewer: 'Jagger Zhang', reviewedAt: '2026-07-11', rationale: 'Manufacturer rename evidence reviewed.',
+    }],
+  });
+  assert.equal(renamed.products[0].id, initial.products[0].id);
+  assert.throws(() => buildCanonicalRegistry(catalog, { identityDecisions: [{ legacyRuntimeId: 'fridge-a1', status: 'approved' }] }), /decision/i);
 });

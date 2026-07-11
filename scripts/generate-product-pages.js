@@ -541,7 +541,7 @@ ${productSchemaScript}  <script type="application/ld+json">${safeJsonLd(buildBre
             <tr><th>Width</th><td>${width}mm</td></tr>
             <tr><th>Height</th><td>${height}mm</td></tr>
             <tr><th>Depth</th><td>${depth}mm</td></tr>
-            ${isFinitePositive(product?.dimensions?.door_open_90_depth_mm) ? `<tr><th>Door open 90° depth</th><td>${roundMm(product.dimensions.door_open_90_depth_mm)}mm</td></tr>` : ''}
+${isFinitePositive(product?.dimensions?.door_open_90_depth_mm) ? `            <tr><th>Door open 90° depth</th><td>${roundMm(product.dimensions.door_open_90_depth_mm)}mm</td></tr>` : ''}
           </tbody>
         </table>
       </section>
@@ -669,7 +669,7 @@ ${sections}
 }
 
 async function loadCatalog(repoRoot) {
-  const text = await readFile(path.join(repoRoot, 'data', 'catalog-final.json'), 'utf8');
+  const text = await readFile(path.join(repoRoot, 'data', 'architecture-v2', 'public-page-projection.json'), 'utf8');
   const payload = JSON.parse(text);
   return Array.isArray(payload?.products) ? payload.products : [];
 }

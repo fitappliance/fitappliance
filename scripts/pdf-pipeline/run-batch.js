@@ -15,6 +15,7 @@ const { extractText } = require('./2-extract-text');
 const { createEnvLlmCaller, extractStructuredData } = require('./3-ai-parse');
 const { validateApplianceDimension } = require('./4-validate');
 const { saveExtractionToVault } = require('./lib/vault');
+const { validateSourceResult } = require('./lib/source-result-contract');
 const { findFisherPaykelOfficialPdf } = require('./fisher-paykel-official');
 const { parseFisherPaykelText } = require('./parsers/fp');
 const { findSamsungOfficialPdf } = require('./samsung-official');
@@ -2439,7 +2440,8 @@ async function runBatch({
   vogueOfficialFinder = findVogueOfficialPdf,
   includeArchived = false,
   brand = null,
-  targetTrustLevels = null
+  targetTrustLevels = null,
+  sourceResultGate = validateSourceResult
 } = {}) {
   const batchTargets = targets || loadBatchTargets({
     repoRoot,
@@ -2801,7 +2803,18 @@ async function runBatch({
           ? await parseTextImpl(textResult.text, { target, sourceUrl, source, fetched, textResult })
           : await defaultParseText(textResult.text, { target, sourceUrl, source, fetched, textResult }, env);
       }
+      const sourceProvenance = sourceResultGate({ sourceUrl, source, target });
+      sourceUrl = sourceProvenance.sourceUrl;
       candidate = annotateSourceMetadata(candidate, source);
+      candidate = {
+        ...candidate,
+        metadata: {
+          ...(candidate.metadata || {}),
+          document_author_type: sourceProvenance.documentAuthorType,
+          transport_host_type: sourceProvenance.transportHostType,
+          approvable_transport: sourceProvenance.approvableTransport
+        }
+      };
       const validation = validateStrictImpl(candidate, { target });
 
       if (!validation.valid) {

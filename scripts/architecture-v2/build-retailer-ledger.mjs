@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { createObservation } from '../../src/domain/retailer-observation.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
-const catalog = JSON.parse(await readFile(resolve(root, 'public/data/appliances.json'), 'utf8'));
+const catalog = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/legacy-public-catalog.json'), 'utf8'));
 const registry = JSON.parse(await readFile(resolve(root, 'data/architecture-v2/canonical-registry.json'), 'utf8'));
 const canonicalByLegacy = new Map(registry.identifierMappings.map((row) => [row.legacyRuntimeId, row.canonicalProductId]));
 const observations = [];
