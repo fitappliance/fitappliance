@@ -79,6 +79,14 @@ runtime remains fail-closed where evidence does not support fit claims.
   - 1440 x 1000 homepage and Phase 10 dimensions-only product page.
   - 390 x 844 homepage, dimensions-only product page, and Verified Fit page.
   - No horizontal overflow and no browser console errors.
+- Production deployment `dpl_BVyEeQbKuuh7EPydFYEATUirJa8G` reached Ready at
+  `https://fitappliance-17mtmald4-fitappliances-projects.vercel.app` and owns
+  both `fitappliance.com.au` aliases.
+- Production Sentinel: 30 uptime checks with 0 failures, 28,676 links with 0
+  broken links, 2,331 pages with 0 orphans.
+- Production browser verification passed on the homepage and Bosch KFD96AXEAA
+  evidence page with no console errors or horizontal overflow. The quarantined
+  WHE6874BA product URL redirects to its Westinghouse brand page.
 
 ## Residual risks
 
@@ -100,6 +108,4 @@ runtime remains fail-closed where evidence does not support fit claims.
 - `149fc0cf` - Architecture V2 storage normalization.
 - `15b0c91d` - forty-model exact evidence review.
 - `22e8959c` - model-alias adjudication.
-
-Deployment and production Sentinel evidence are appended only after the final
-Phase 10E commit is pushed and the Vercel deployment reaches Ready.
+- `31233d5d` - production build path and product-page trust-copy fixes.

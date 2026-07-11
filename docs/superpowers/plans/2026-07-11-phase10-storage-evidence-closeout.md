@@ -60,8 +60,8 @@ and close every pending alias disposition without weakening approval gates.
 - [x] Run focused TDD, Architecture V2, full test, lint, schema, documentation,
   geometry, alias and object-integrity gates.
 - [x] Run desktop and 390 x 844 browser QA on representative trust states.
-- [ ] Commit, push, wait for Vercel Ready and run production Sentinel.
-- [ ] Update the completion audit, Phase 10 report and permanent project memory.
+- [x] Commit, push, wait for Vercel Ready and run production Sentinel.
+- [x] Update the completion audit, Phase 10 report and permanent project memory.
 
 ## Acceptance criteria
 
