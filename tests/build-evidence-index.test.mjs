@@ -75,6 +75,11 @@ test('build-evidence-index infers Verified Fit from extracted dimensions and cle
   assert.equal(index.products['fridge-full'].trust_level, 'verified_fit');
   assert.deepEqual(index.products['fridge-full'].verified_fields, ['dimensions', 'clearance']);
   assert.equal(index.products['fridge-full'].clearance_verified, true);
+  assert.deepEqual(index.products['fridge-full'].dimensions_mm, {
+    width: 905,
+    height: 1790,
+    depth: 688
+  });
 });
 
 test('build-evidence-index does not treat default zero clearance as Verified Fit', () => {
@@ -101,6 +106,11 @@ test('build-evidence-index does not treat default zero clearance as Verified Fit
   assert.equal(index.products['fridge-zero'].trust_level, 'dimensions_verified');
   assert.deepEqual(index.products['fridge-zero'].verified_fields, ['dimensions']);
   assert.equal(index.products['fridge-zero'].clearance_verified, false);
+  assert.deepEqual(index.products['fridge-zero'].dimensions_mm, {
+    width: 700,
+    height: 1700,
+    depth: 700
+  });
 });
 
 test('build-evidence-index downgrades retailer-hosted source URLs to Retailer Spec', () => {
@@ -126,6 +136,7 @@ test('build-evidence-index downgrades retailer-hosted source URLs to Retailer Sp
   assert.equal(index.products.retailer.trust_level, 'retailer_spec');
   assert.deepEqual(index.products.retailer.verified_fields, ['dimensions']);
   assert.equal(index.products.retailer.clearance_verified, false);
+  assert.equal(index.products.retailer.dimensions_mm, undefined);
 });
 
 test('build-evidence-index preserves explicit Verified Fit and retailer spec tiers', () => {

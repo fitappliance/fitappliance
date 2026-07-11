@@ -47,7 +47,33 @@ function hasLegacyClearance(product) {
   return clearanceKeys.some((key) => product[key] !== null && product[key] !== undefined);
 }
 
-function appendEvidenceWarnings(warnings, evidence, productId) {
+function normalizeIdentity(value) {
+  return String(value ?? '').trim().toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
+function verifiedEvidenceDimensions(evidence, legacy, warnings) {
+  if (!evidence || typeof evidence !== 'object' || Array.isArray(evidence)) return null;
+  const identityMatches = evidence.product_id === legacy.id
+    && normalizeIdentity(evidence.brand) === normalizeIdentity(legacy.brand)
+    && normalizeIdentity(evidence.model) === normalizeIdentity(legacy.model);
+  if (!identityMatches) {
+    warnings.push('evidence_identity_mismatch');
+    return null;
+  }
+  const dimensions = evidence.dimensions_mm;
+  const values = [dimensions?.width, dimensions?.height, dimensions?.depth];
+  const eligible = evidence.status === 'verified'
+    && evidence.has_pdf_evidence === true
+    && ['dimensions_verified', 'verified_fit'].includes(evidence.trust_level)
+    && Array.isArray(evidence.verified_fields)
+    && evidence.verified_fields.includes('dimensions')
+    && typeof evidence.confidence_score === 'number'
+    && evidence.confidence_score >= 0.8
+    && values.every((value) => typeof value === 'number' && Number.isFinite(value) && value > 0);
+  return eligible ? { width: values[0], height: values[1], depth: values[2] } : null;
+}
+
+function appendEvidenceWarnings(warnings, evidence, productId, dimensionsApplied = false) {
   if (evidence === null || evidence === undefined) {
     return;
   }
@@ -55,8 +81,12 @@ function appendEvidenceWarnings(warnings, evidence, productId) {
     warnings.push('invalid_evidence_entry_ignored');
     return;
   }
-  if (evidence.product_id && evidence.product_id !== productId) {
+  if (evidence.product_id && evidence.product_id !== productId && !warnings.includes('evidence_identity_mismatch')) {
     warnings.push('evidence_identity_mismatch');
+  }
+  if (dimensionsApplied) {
+    warnings.push('verified_evidence_dimensions_applied');
+    return;
   }
   const retailerOnly = [evidence.trust_level, evidence.source_type]
     .some((value) => /retailer/i.test(String(value ?? '')));
@@ -102,17 +132,27 @@ export function adaptLegacyAppliance(input) {
   }
 
   const dimensions = dimensionState(legacy);
-  if (dimensions === 'invalid') {
+  const evidenceDimensions = verifiedEvidenceDimensions(input.evidence, legacy, warnings);
+  if (dimensions === 'invalid' && !evidenceDimensions) {
     errors.push('invalid_legacy_dimensions');
     return result('quarantined', null, null, warnings, errors);
   }
-  if (dimensions === 'complete' && isObviousUprightInversion(legacy)) {
+  if (!evidenceDimensions && dimensions === 'complete' && isObviousUprightInversion(legacy)) {
     errors.push('suspected_upright_width_height_inversion');
     return result('quarantined', null, null, warnings, errors);
   }
 
   let geometry;
-  if (dimensions === 'complete') {
+  if (evidenceDimensions) {
+    geometry = createGeometry({
+      closedEnvelope: {
+        widthMm: evidenceDimensions.width,
+        heightMm: evidenceDimensions.height,
+        depthMm: evidenceDimensions.depth,
+      },
+      installation: { leftMm: null, rightMm: null, topMm: null, rearMm: null, frontMm: null },
+    });
+  } else if (dimensions === 'complete') {
     geometry = createGeometry({
       closedEnvelope: { widthMm: legacy.w, heightMm: legacy.h, depthMm: legacy.d },
       installation: { leftMm: null, rightMm: null, topMm: null, rearMm: null, frontMm: null },
@@ -133,7 +173,7 @@ export function adaptLegacyAppliance(input) {
   if (hasLegacyClearance(legacy)) {
     warnings.push('legacy_clearance_not_promoted');
   }
-  appendEvidenceWarnings(warnings, input.evidence, legacy.id);
+  appendEvidenceWarnings(warnings, input.evidence, legacy.id, Boolean(evidenceDimensions));
 
   return result('adapted', product, geometry, warnings, errors);
 }

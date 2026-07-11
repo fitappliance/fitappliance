@@ -113,6 +113,29 @@ test('reports duplicate legacy IDs as product-level quarantine problems', () => 
   assert.equal(summary.quarantinedProducts.length, 2);
 });
 
+test('reports an inverted legacy row as adapted when exact official dimensions are available', () => {
+  const evidence = {
+    products: {
+      'fridge-inverted': {
+        product_id: 'fridge-inverted',
+        status: 'verified',
+        brand: 'Electrolux',
+        model: 'EBE5367BC',
+        has_pdf_evidence: true,
+        trust_level: 'dimensions_verified',
+        verified_fields: ['dimensions'],
+        confidence_score: 0.9,
+        dimensions_mm: { width: 796, height: 1725, depth: 773 },
+      },
+    },
+  };
+  const summary = auditCatalog({ products: [catalogFixture.products[2]] }, evidence);
+
+  assert.deepEqual(summary.statusCounts, { adapted: 1, quarantined: 0 });
+  assert.equal(summary.warningCounts.verified_evidence_dimensions_applied, 1);
+  assert.deepEqual(summary.errorCounts, {});
+});
+
 test('rejects malformed top-level catalog and evidence documents', () => {
   for (const catalog of [null, [], {}, { products: {} }]) {
     assert.throws(() => auditCatalog(catalog), /catalog.*products/i);

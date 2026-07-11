@@ -115,6 +115,21 @@ function normalizeSourceTypeForTrust(sourceType, sourceUrl) {
     : sourceType;
 }
 
+function projectVerifiedDimensions(evidence, { trustLevel, hasPdfEvidence, verifiedFields }) {
+  if (
+    hasPdfEvidence !== true
+    || trustLevel === 'retailer_spec'
+    || !verifiedFields.includes('dimensions')
+    || !hasExtractedDimensionsEvidence(evidence)
+  ) return null;
+  const dimensions = evidence.extracted.dimensions;
+  return {
+    width: dimensions.width_mm,
+    height: dimensions.height_mm,
+    depth: dimensions.depth_mm
+  };
+}
+
 function buildIndex(manualEvidence) {
   const products = manualEvidence?.products && typeof manualEvidence.products === 'object'
     ? manualEvidence.products
@@ -143,6 +158,11 @@ function buildIndex(manualEvidence) {
       : typeof evidence?.clearance_verified === 'boolean'
       ? evidence.clearance_verified
       : trustLevel === 'verified_fit';
+    const dimensions = projectVerifiedDimensions(evidence, {
+      trustLevel,
+      hasPdfEvidence,
+      verifiedFields
+    });
 
     index[productId] = {
       product_id: productId,
@@ -157,7 +177,8 @@ function buildIndex(manualEvidence) {
       source_type: effectiveSourceType,
       source_url: sourceUrl,
       verified_at: verifiedAt,
-      confidence_score: Number.isFinite(confidence) ? confidence : null
+      confidence_score: Number.isFinite(confidence) ? confidence : null,
+      ...(dimensions ? { dimensions_mm: dimensions } : {})
     };
   }
 

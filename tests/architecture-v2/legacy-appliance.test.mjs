@@ -89,6 +89,67 @@ test('quarantines an obvious upright fridge width-height inversion without auto-
   assert.ok(result.errors.includes('suspected_upright_width_height_inversion'));
 });
 
+test('replaces inverted legacy axes only with exact field-level official dimension evidence', () => {
+  const result = adaptLegacyAppliance({
+    product: { ...legacyFixture, w: 1725, h: 796, d: 773 },
+    evidence: {
+      product_id: legacyFixture.id,
+      status: 'verified',
+      brand: legacyFixture.brand,
+      model: legacyFixture.model,
+      has_pdf_evidence: true,
+      trust_level: 'dimensions_verified',
+      verified_fields: ['dimensions'],
+      confidence_score: 0.9,
+      dimensions_mm: { width: 796, height: 1725, depth: 773 },
+    },
+  });
+
+  assert.equal(result.status, 'adapted');
+  assert.deepEqual(result.geometry.closedEnvelope, {
+    widthMm: 796,
+    heightMm: { minimumMm: 1725, maximumMm: 1725 },
+    depthMm: 773,
+  });
+  assert.ok(result.warnings.includes('verified_evidence_dimensions_applied'));
+  assert.ok(!result.warnings.includes('legacy_dimensions_unverified'));
+  assert.ok(Object.values(result.geometry.installation).every((value) => value === null));
+});
+
+test('does not use dimension evidence with a mismatched identity or retailer trust', () => {
+  for (const evidence of [
+    {
+      product_id: 'fridge-other',
+      status: 'verified',
+      brand: legacyFixture.brand,
+      model: legacyFixture.model,
+      has_pdf_evidence: true,
+      trust_level: 'dimensions_verified',
+      verified_fields: ['dimensions'],
+      confidence_score: 0.9,
+      dimensions_mm: { width: 796, height: 1725, depth: 773 },
+    },
+    {
+      product_id: legacyFixture.id,
+      status: 'verified',
+      brand: legacyFixture.brand,
+      model: legacyFixture.model,
+      has_pdf_evidence: false,
+      trust_level: 'retailer_spec',
+      verified_fields: ['dimensions'],
+      confidence_score: 0.9,
+      dimensions_mm: { width: 796, height: 1725, depth: 773 },
+    },
+  ]) {
+    const result = adaptLegacyAppliance({
+      product: { ...legacyFixture, w: 1725, h: 796, d: 773 },
+      evidence,
+    });
+    assert.equal(result.status, 'quarantined');
+    assert.ok(result.errors.includes('suspected_upright_width_height_inversion'));
+  }
+});
+
 test('does not misclassify legitimate wide chest products as axis inversions', () => {
   const result = adaptLegacyAppliance({
     product: {
