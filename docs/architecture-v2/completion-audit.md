@@ -7,6 +7,10 @@ This document is the requirement-by-requirement truth source. A green unit test
 does not change an item to complete unless the named runtime or data artifact
 also exists.
 
+Repository and external-evidence placement follows
+[`storage-layout.md`](./storage-layout.md). Current flat data paths remain in
+place until the Phase 10 atomic storage-normalisation migration.
+
 | Phase | Requirement | Status | Current evidence / remaining work |
 | --- | --- | --- | --- |
 | 1 | Alias decision system | Complete | Nine pending decisions, zero approvals; Tier A/Tier B gates in `model-alias.mjs` |

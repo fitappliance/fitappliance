@@ -65,7 +65,7 @@
 - Modify: `scripts/architecture-v2/build-source-document-registry.mjs`
 - Modify: `scripts/generate-product-pages.js`
 - Modify: `tests/technical-seo-product-pages.test.mjs`
-- Create: `tests/architecture-v2/evidence-pilot-integration.test.mjs`
+- Modify: `tests/architecture-v2/evidence-pilot-review-manifest.test.mjs`
 
 **Interfaces:**
 - Approved review fields become source-document field evidence; pending/quarantined bundles remain non-promotable.
