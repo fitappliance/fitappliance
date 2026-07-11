@@ -1,7 +1,7 @@
 const FIELD_RULES = Object.freeze({
-  'closedEnvelope.widthMm': { label: /\b(?:total|overall|product|cabinet)?\s*width\b/i, kind: 'dimension', axis: 'width' },
-  'closedEnvelope.heightMm': { label: /\b(?:total|overall|product|cabinet)?\s*height\b/i, kind: 'dimension', axis: 'height' },
-  'closedEnvelope.depthMm': { label: /\b(?:total|overall|product|cabinet)?\s*depth\b/i, kind: 'dimension', axis: 'depth', reject: /door\s*open|with\s*(?:the\s*)?door/i },
+  'closedEnvelope.widthMm': { label: /\b(?:total|overall|external|product)?\s*width\b/i, kind: 'dimension', axis: 'width', reject: /cabinet|cut[ -]?out|cavity|packag/i },
+  'closedEnvelope.heightMm': { label: /\b(?:total|overall|external|product)?\s*height\b/i, kind: 'dimension', axis: 'height', reject: /cabinet|cut[ -]?out|cavity|packag|lid\s*open/i },
+  'closedEnvelope.depthMm': { label: /\b(?:total|overall|external|product)?\s*depth\b/i, kind: 'dimension', axis: 'depth', reject: /cabinet|cut[ -]?out|cavity|packag|door\s*open|with\s*(?:the\s*)?door/i },
   'installation.leftMm': { label: /(?:left.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}left)/i, kind: 'clearance' },
   'installation.rightMm': { label: /(?:right.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}right)/i, kind: 'clearance' },
   'installation.topMm': { label: /(?:air\s*space\s*above|top|overhead).{0,30}(?:clearance|space|gap|cabinet)|air\s*space\s*above\s*cabinet/i, kind: 'clearance' },
@@ -45,6 +45,27 @@ export function containsExactModel(text, model) {
 function quotedNumbers(value) {
   const withoutAngles = value.replace(/\b(?:90|180)\s*(?:degrees?|deg|°)\b/gi, ' ');
   return (withoutAngles.match(/\b\d+(?:\.\d+)?\b/g) ?? []).map(Number);
+}
+
+export function claimFromEvidenceFragment(field, label, quote, context) {
+  const rule = FIELD_RULES[field];
+  if (!rule) throw new TypeError(`unsupported semantic field ${field}`);
+  const normalizedLabel = requiredText(label, 'claim label');
+  const normalizedQuote = requiredText(quote, 'claim quote');
+  const remainder = normalizedQuote.replace(normalizedLabel, ' ');
+  let claim;
+  if (rule.kind === 'boolean') {
+    const negative = /\b(?:no|not\s+required|does\s+not\s+require|without)\b/i.test(remainder);
+    const positive = /\b(?:yes|required|requires|plumbed)\b/i.test(remainder) && !negative;
+    if (!negative && !positive) throw new TypeError(`boolean value missing for ${field}`);
+    claim = { field, value: !negative, unit: 'boolean', label: normalizedLabel, quote: normalizedQuote };
+  } else {
+    const values = [...new Set(quotedNumbers(remainder))];
+    if (values.length !== 1 || !Number.isInteger(values[0])) throw new TypeError(`unambiguous millimetre value required for ${field}`);
+    claim = { field, value: values[0], unit: 'mm', label: normalizedLabel, quote: normalizedQuote };
+  }
+  validateClaimSemantics(claim, context);
+  return claim;
 }
 
 function validateBoolean(claim, combined) {

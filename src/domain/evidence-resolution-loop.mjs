@@ -113,6 +113,10 @@ function researchFields(caseRecord) {
   return [...fields].sort();
 }
 
+export function resolutionFieldsForCase(input) {
+  return freezeDeep(researchFields(validateCase(input)));
+}
+
 export function buildResolutionPlan(input) {
   const caseRecord = validateCase(input);
   const hypotheses = caseRecord.initialFailure.code === 'approved_scope_conflicts_with_legacy_projection'

@@ -54,6 +54,15 @@ function trustedUrl(value, brand, label) {
   return url.toString();
 }
 
+export function isOfficialBrandUrl(value, brand) {
+  try {
+    trustedUrl(value, brand, 'source URL');
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function normalizedIdentity(caseIdentity) {
   return {
     brand: requiredText(caseIdentity?.brand, 'case brand'),

@@ -9,6 +9,8 @@
   "scripts": {
     "build:evidence-resolution": "node scripts/architecture-v2/build-evidence-resolution-manifest.mjs",
     "verify:evidence-resolution-objects": "node scripts/architecture-v2/verify-evidence-resolution-objects.mjs",
+    "resolve:evidence": "node scripts/architecture-v2/run-evidence-resolution.mjs",
+    "resolve:evidence:dry-run": "node scripts/architecture-v2/run-evidence-resolution.mjs --dry-run",
     "build:canonical-registry": "node scripts/architecture-v2/build-canonical-registry.mjs",
     "build:evidence-pilot": "node scripts/architecture-v2/build-evidence-pilot.mjs",
     "build:phase10-evidence-batch": "node scripts/architecture-v2/build-phase10-evidence-batch.mjs",

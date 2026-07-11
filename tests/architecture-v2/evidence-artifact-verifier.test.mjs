@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 
 import {
+  extractClaimsFromHtml,
+  extractClaimsFromPdfText,
   verifyAndAttestResolutionArtifact,
   verifyAttestedResolutionArtifact,
 } from '../../src/domain/evidence-artifact-verifier.mjs';
@@ -113,6 +115,40 @@ test('HTML artifact needs canonical exact-model scope and independent product id
     }),
     caseIdentity: identity, bytes: wrongBytes, verifiedAt: '2026-07-11T14:35:00.000Z',
   }), /canonical.*model|identity/i);
+});
+
+test('HTML extractor derives requested claims from source text instead of copied values', () => {
+  const claims = extractClaimsFromHtml(html(), {
+    category: 'fridge',
+    fields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+      'operation.doorOpenDepthMm', 'installation.topMm', 'flags.requiresPlumbing',
+    ],
+  });
+  assert.deepEqual(Object.fromEntries(claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': 913,
+    'closedEnvelope.heightMm': 1782,
+    'closedEnvelope.depthMm': 803,
+    'operation.doorOpenDepthMm': 1189,
+    'installation.topMm': 25,
+    'flags.requiresPlumbing': true,
+  });
+});
+
+test('PDF extractor accepts claims only on pages scoped to the exact model', () => {
+  const text = `WHE6874BA Installation guide\nTotal width (mm) 913 mm\nTotal height (mm) 1782 mm\nTotal depth (mm) 803 mm\fWHE6874SA\nTotal width (mm) 999 mm`;
+  const claims = extractClaimsFromPdfText(text, {
+    caseIdentity: identity,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(claims.map((claim) => [claim.field, claim.value, claim.page]), [
+    ['closedEnvelope.widthMm', 913, 1],
+    ['closedEnvelope.heightMm', 1782, 1],
+    ['closedEnvelope.depthMm', 803, 1],
+  ]);
+  assert.throws(() => extractClaimsFromPdfText('WHE6874SA\nTotal width (mm) 913 mm', {
+    caseIdentity: identity, fields: ['closedEnvelope.widthMm'],
+  }), /no exact-model PDF evidence/i);
 });
 
 test('artifact verification catches hash drift, claim drift, and multi-product quote leakage', () => {

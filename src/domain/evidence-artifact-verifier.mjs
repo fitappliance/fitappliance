@@ -1,7 +1,12 @@
 import { createHash } from 'node:crypto';
 import { load } from 'cheerio';
 
-import { containsExactModel, validateClaimsSemantics } from './evidence-claim-semantics.mjs';
+import {
+  claimFromEvidenceFragment,
+  containsExactModel,
+  evidenceFieldRules,
+  validateClaimsSemantics,
+} from './evidence-claim-semantics.mjs';
 import { createVerificationReceipt, verifyVerificationReceipt } from './evidence-source-verifier.mjs';
 
 function normalizedText(value) {
@@ -87,6 +92,88 @@ function verifyQuotes(source, text) {
       throw new Error(`artifact missing claim quote for ${claim.field}`);
     }
   }
+}
+
+function elementOwnText($, element) {
+  return normalizedText($(element).contents()
+    .filter((_, node) => node.type === 'text')
+    .map((_, node) => node.data)
+    .get()
+    .join(' '));
+}
+
+function elementText($, element) {
+  return normalizedText($(element).find('*').contents()
+    .add($(element).contents())
+    .filter((_, node) => node.type === 'text')
+    .map((_, node) => node.data)
+    .get()
+    .join(' '));
+}
+
+export function extractClaimsFromHtml(bytes, { category, fields }) {
+  if (!Array.isArray(fields) || !fields.length) throw new TypeError('requested evidence fields required');
+  const $ = load(Buffer.from(bytes).toString('utf8'));
+  const candidates = new Map(fields.map((field) => [field, []]));
+  $('body *').each((_, element) => {
+    const label = elementOwnText($, element);
+    if (!label) return;
+    for (const field of fields) {
+      const rule = evidenceFieldRules[field];
+      if (!rule || !rule.label.test(label) || (rule.reject && rule.reject.test(label))) continue;
+      const quote = element.tagName === 'dt'
+        ? normalizedText(`${label} ${$(element).next('dd').first().text()}`)
+        : elementText($, $(element).parent().get(0));
+      try {
+        candidates.get(field).push(claimFromEvidenceFragment(field, label, quote, { category }));
+      } catch {
+        // A matching label without an unambiguous value is not evidence.
+      }
+    }
+  });
+  const claims = [];
+  for (const field of fields) {
+    const unique = new Map(candidates.get(field).map((claim) => [`${JSON.stringify(claim.value)}\0${claim.quote}`, claim]));
+    const values = new Set([...unique.values()].map((claim) => JSON.stringify(claim.value)));
+    if (values.size > 1) throw new Error(`ambiguous extracted values for ${field}`);
+    if (unique.size) claims.push([...unique.values()][0]);
+  }
+  return claims;
+}
+
+export function extractClaimsFromPdfText(extractedText, { caseIdentity, fields }) {
+  if (!Array.isArray(fields) || !fields.length) throw new TypeError('requested evidence fields required');
+  const candidates = new Map(fields.map((field) => [field, []]));
+  const pages = String(extractedText ?? '').split('\f');
+  pages.forEach((pageText, pageIndex) => {
+    if (!containsExactModel(pageText, caseIdentity.model)) return;
+    for (const rawLine of pageText.split(/\r?\n/)) {
+      const quote = normalizedText(rawLine);
+      if (!quote) continue;
+      const label = quote.replace(/\s+[-+]?\d+(?:\.\d+)?\s*(?:mm|millimet(?:re|er)s?)?\s*$/i, '').trim();
+      for (const field of fields) {
+        const rule = evidenceFieldRules[field];
+        if (!rule || !rule.label.test(label) || (rule.reject && rule.reject.test(label))) continue;
+        try {
+          candidates.get(field).push({
+            ...claimFromEvidenceFragment(field, label, quote, { category: caseIdentity.category }),
+            page: pageIndex + 1,
+          });
+        } catch {
+          // Unscoped or ambiguous PDF rows are not evidence.
+        }
+      }
+    }
+  });
+  const claims = [];
+  for (const field of fields) {
+    const fieldClaims = candidates.get(field);
+    const values = new Set(fieldClaims.map((claim) => JSON.stringify(claim.value)));
+    if (values.size > 1) throw new Error(`ambiguous extracted PDF values for ${field}`);
+    if (fieldClaims.length) claims.push(fieldClaims[0]);
+  }
+  if (!claims.length) throw new Error('no exact-model PDF evidence extracted');
+  return claims;
 }
 
 export function verifyAndAttestResolutionArtifact({ source, caseIdentity, bytes, extractedText = null, verifiedAt }) {
