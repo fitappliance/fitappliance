@@ -33,10 +33,10 @@
 - `selectEvidencePilot({ products, sourceDocuments, limit, brandLimit, categoryTargets })`
 - Produces `{ schemaVersion, generatedAt, selectionPolicy, products }` with exactly 20 unique canonical IDs.
 
-- [ ] Write failing tests for deterministic ordering, unique products, per-brand cap, category coverage and exclusion of missing/mismatched document candidates.
-- [ ] Run `node --test tests/architecture-v2/evidence-pilot.test.mjs` and confirm the missing module failure.
-- [ ] Implement the pure selector and CLI generator using the unified public projection and source-document registry.
-- [ ] Generate the committed pilot and rerun the focused test.
+- [x] Write failing tests for deterministic ordering, unique products, per-brand cap, category coverage and exclusion of missing/mismatched document candidates.
+- [x] Run `node --test tests/architecture-v2/evidence-pilot.test.mjs` and confirm the missing module failure.
+- [x] Implement the pure selector and CLI generator using the unified public projection and source-document registry.
+- [x] Generate the committed pilot and rerun the focused test.
 
 ### Task 2: Field-Level Review Bundles
 
@@ -52,10 +52,10 @@
 - `createReviewBundle({ product, sourceDocument, rawExtraction })`
 - `reviewField(bundle, decision)` returns approved evidence only when exact identity, hash, page, quote, parser version and rendered-page review are complete.
 
-- [ ] Write failing tests proving incomplete, retailer-authored, family-only, hashless and pageless evidence cannot be approved.
-- [ ] Implement bundle creation with explicit `pending`, `approved`, `rejected` and `quarantined` states.
-- [ ] Generate 20 review bundles without changing trust levels.
-- [ ] Fetch/render available PDFs, record page-level evidence and review decisions; leave unavailable or ambiguous samples blocked with reason codes.
+- [x] Write failing tests proving incomplete, retailer-authored, family-only, hashless and pageless evidence cannot be approved.
+- [x] Implement bundle creation with explicit `pending`, `approved`, `rejected` and `quarantined` states.
+- [x] Generate 20 review bundles without changing trust levels.
+- [x] Fetch/render available PDFs, record page-level evidence and review decisions; leave unavailable or ambiguous samples blocked with reason codes.
 
 ### Task 3: V2 Evidence Projection and Page Presentation
 
@@ -71,10 +71,10 @@
 - Approved review fields become source-document field evidence; pending/quarantined bundles remain non-promotable.
 - Product pages render source type, reviewed date, approved field names and pending limitations without exposing local paths.
 
-- [ ] Write failing integration tests for approval import and non-promotion of pending bundles.
-- [ ] Add the smallest registry import path needed for approved pilot decisions.
-- [ ] Add an evidence-status section to generated product pages with factual labels.
-- [ ] Regenerate pages and verify structured data never claims `Verified Fit` from dimensions-only evidence.
+- [x] Write failing integration tests for approval import and non-promotion of pending bundles.
+- [x] Add the smallest registry import path needed for approved pilot decisions.
+- [x] Add an evidence-status section to generated product pages with factual labels.
+- [x] Regenerate pages and verify structured data never claims `Verified Fit` from dimensions-only evidence.
 
 ### Task 4: Audit, Deploy and Observe
 
@@ -84,10 +84,10 @@
 - Modify: `docs/architecture-v2/completion-audit.md`
 - Create: `docs/architecture-v2/phase8-evidence-pilot-report.md`
 
-- [ ] Run focused tests, `npm run test:architecture-v2`, full tests, schema, model-alias, geometry and source-document audits.
-- [ ] Run `npm run build`, inspect generated product pages and use Playwright at desktop and 390 x 844 mobile viewports.
-- [ ] Record approved, pending, rejected and quarantined sample counts without inflating site-wide coverage.
-- [ ] Commit, push, wait for Vercel Ready, verify production pages and run Sentinel.
+- [x] Run focused tests, `npm run test:architecture-v2`, full tests, schema, model-alias, geometry and source-document audits.
+- [x] Run `npm run build`, inspect generated product pages and use Playwright at desktop and 390 x 844 mobile viewports.
+- [x] Record approved, pending, rejected and quarantined sample counts without inflating site-wide coverage.
+- [x] Commit, push, wait for Vercel Ready, verify production pages and run Sentinel.
 
 ## Acceptance Criteria
 

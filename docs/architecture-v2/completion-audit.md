@@ -48,3 +48,11 @@ also exists.
   returns 200.
 - Sentinel: 30 URLs checked with zero failures; 28,676 links checked with zero
   broken links; 2,331 pages and zero indexable orphans.
+
+## Phase 8 evidence pilot
+
+The first field-level pilot is production verified: 20 documents, 60 candidate
+dimension fields, 36 approvals, 24 quarantines, ten complete dimensions-only
+documents and zero approved installation-clearance fields. The detailed sample
+decisions and production checks are recorded in
+[`phase8-evidence-pilot-report.md`](./phase8-evidence-pilot-report.md).

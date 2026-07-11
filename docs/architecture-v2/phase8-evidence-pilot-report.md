@@ -1,6 +1,6 @@
 # Phase 8 Evidence Pilot Report
 
-Status: implementation complete; production verification pending  
+Status: production verified
 Reviewed: 2026-07-11
 
 ## Scope
@@ -68,3 +68,15 @@ The reproducible inputs are:
 Downloaded PDFs and rendered contact sheets are temporary review artifacts and
 are not committed. Their SHA-256 values are retained in the review manifest and
 the source-document registry.
+
+## Production Verification
+
+- Deployment commit: `c431362a`.
+- RF605QZUVB1 renders `Dimensions Verified`, the three approved axes, review
+  date and an explicit unapproved-clearance limitation.
+- DV90BB9440GB renders `Retailer Spec`, no approved dimensions and the failed
+  identity-gate explanation.
+- Desktop and 390 x 844 mobile checks had zero console errors and no horizontal
+  overflow.
+- Sentinel checked 30 URLs with zero failures and 28,676 links with zero broken
+  links; the 2,331-page graph has zero indexable orphans.
