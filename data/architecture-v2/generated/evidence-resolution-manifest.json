@@ -164,6 +164,17 @@
   "releasedLegacyIds": [
     "ao-88474"
   ],
+  "releaseGrants": [
+    {
+      "legacyRuntimeId": "ao-88474",
+      "caseId": "resolution_westinghouse_whe6874ba_v1",
+      "reasons": [
+        "approved_alias_dimensions_only_projection_still_exposes_unreviewed_clearance_operation_and_plumbing_fields",
+        "phase1_approved_dimensions_alias"
+      ]
+    }
+  ],
+  "activeQuarantines": [],
   "summary": {
     "cases": 1,
     "resolved": 1,

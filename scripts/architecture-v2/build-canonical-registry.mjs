@@ -11,13 +11,20 @@ const disposition = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'p
 const publicationQuarantine = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'canonicalPublicationQuarantine'), 'utf8'));
 const identityDecisions = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'canonicalIdentityDecisions'), 'utf8'));
 const resolutionManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'evidenceResolutionManifest'), 'utf8'));
-const quarantineLegacyIds = [
-  ...disposition.products.map((row) => row.legacyId),
-  ...publicationQuarantine.products.map((row) => row.legacyRuntimeId),
+const quarantineEntries = [
+  ...disposition.products.map((row) => ({
+    legacyRuntimeId: row.legacyId,
+    reason: `phase1_${row.disposition}`,
+  })),
+  ...publicationQuarantine.products.map((row) => ({
+    legacyRuntimeId: row.legacyRuntimeId,
+    reason: row.reason,
+  })),
+  ...resolutionManifest.activeQuarantines,
 ];
 const result = buildCanonicalRegistry(finalCatalog, {
-  quarantineLegacyIds,
-  releasedLegacyIds: resolutionManifest.releasedLegacyIds,
+  quarantineEntries,
+  releaseGrants: resolutionManifest.releaseGrants,
   identityDecisions: identityDecisions.decisions,
 });
 const output = resolveArchitectureV2Path(root, 'canonicalRegistry');

@@ -39,6 +39,11 @@ function resolutionCase(overrides = {}) {
     legacyRuntimeId: 'ao-88474',
     brand: 'Westinghouse',
     model: 'WHE6874BA',
+    category: 'fridge',
+    releasableQuarantineReasons: [
+      'phase1_approved_dimensions_alias',
+      'approved_alias_dimensions_only_projection_still_exposes_unreviewed_clearance_operation_and_plumbing_fields',
+    ],
     initialFailure: {
       code: 'approved_scope_conflicts_with_legacy_projection',
       conflictingFields: ['flags.requiresPlumbing'],
@@ -157,12 +162,35 @@ test('manifest exposes only machine-resolved release IDs and remains determinist
 
   assert.deepEqual(first, second);
   assert.deepEqual(first.releasedLegacyIds, ['ao-88474']);
+  assert.deepEqual(first.releaseGrants, [{
+    legacyRuntimeId: 'ao-88474',
+    caseId: 'resolution_westinghouse_whe6874ba_v1',
+    reasons: [
+      'approved_alias_dimensions_only_projection_still_exposes_unreviewed_clearance_operation_and_plumbing_fields',
+      'phase1_approved_dimensions_alias',
+    ],
+  }]);
+  assert.deepEqual(first.activeQuarantines, []);
   assert.equal(first.summary.resolved, 1);
   assert.equal(first.summary.requiresHumanReview, 0);
   const fields = buildResolutionFieldEvidence(first);
   assert.ok(fields.some((row) => row.legacyRuntimeId === 'ao-88474'
     && row.field === 'installation.topMm' && row.value === 25));
   assert.equal(fields.some((row) => row.field.startsWith('flags.')), false);
+});
+
+test('manifest automatically quarantines every non-resolved case', () => {
+  const manifest = buildResolutionManifest({
+    schemaVersion: 1,
+    cases: [resolutionCase({ id: 'pending-case', attempt: 1, sources: [] })],
+  });
+
+  assert.deepEqual(manifest.releaseGrants, []);
+  assert.deepEqual(manifest.activeQuarantines, [{
+    legacyRuntimeId: 'ao-88474',
+    reason: 'evidence_resolution_research_required',
+    caseId: 'pending-case',
+  }]);
 });
 
 test('repository projection publishes the resolved exact model without stale legacy fit fields', async () => {

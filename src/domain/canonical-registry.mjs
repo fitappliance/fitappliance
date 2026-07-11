@@ -19,6 +19,55 @@ function identityKey(product) {
   return `${text(product.cat, 'category')}\0${brandKey(product.brand)}\0${modelKey(product.model)}`;
 }
 
+const NON_RELEASABLE_REASON_PATTERNS = Object.freeze([
+  /manufacturer_identity_collision/,
+  /not_a_complete_appliance/,
+  /invalid_axis_assignment/,
+  /rejected_alias/,
+  /identity_quarantine/,
+]);
+
+function quarantineReason(value) {
+  return text(value, 'quarantine reason').toLowerCase();
+}
+
+function nonReleasableReason(reason) {
+  return NON_RELEASABLE_REASON_PATTERNS.some((pattern) => pattern.test(reason));
+}
+
+function normalizeQuarantineEntries(quarantineLegacyIds, quarantineEntries) {
+  const byLegacyId = new Map();
+  const add = (legacyRuntimeId, reason) => {
+    const legacyId = text(legacyRuntimeId, 'quarantine legacy ID').toLowerCase();
+    if (!byLegacyId.has(legacyId)) byLegacyId.set(legacyId, new Set());
+    byLegacyId.get(legacyId).add(quarantineReason(reason));
+  };
+  for (const legacyRuntimeId of quarantineLegacyIds ?? []) add(legacyRuntimeId, 'legacy_quarantine');
+  for (const entry of quarantineEntries ?? []) add(entry?.legacyRuntimeId, entry?.reason);
+  return byLegacyId;
+}
+
+function normalizeReleaseGrants(releaseGrants) {
+  const byLegacyId = new Map();
+  const seen = new Set();
+  for (const grant of releaseGrants ?? []) {
+    const legacyId = text(grant?.legacyRuntimeId, 'release legacy ID').toLowerCase();
+    const caseId = text(grant?.caseId, 'release case ID');
+    const reasons = Array.isArray(grant?.reasons) ? grant.reasons : [grant?.reason];
+    if (!reasons.length) throw new TypeError(`release reasons required for ${legacyId}`);
+    for (const value of reasons) {
+      const reason = quarantineReason(value);
+      if (nonReleasableReason(reason)) throw new TypeError(`non-releasable quarantine reason ${reason}`);
+      const key = `${legacyId}\0${caseId}\0${reason}`;
+      if (seen.has(key)) throw new TypeError(`duplicate release grant ${legacyId}`);
+      seen.add(key);
+      if (!byLegacyId.has(legacyId)) byLegacyId.set(legacyId, new Set());
+      byLegacyId.get(legacyId).add(reason);
+    }
+  }
+  return byLegacyId;
+}
+
 function canonicalId(key) {
   return `fa_prod_${createHash('sha256').update(key).digest('hex').slice(0, 24)}`;
 }
@@ -47,12 +96,13 @@ function normalizeIdentityDecisions(decisions) {
 
 export function buildCanonicalRegistry(catalog, {
   quarantineLegacyIds = [],
-  releasedLegacyIds = [],
+  quarantineEntries = [],
+  releaseGrants = [],
   identityDecisions = [],
 } = {}) {
   if (!catalog || !Array.isArray(catalog.products)) throw new TypeError('catalog products must be an array');
-  const forced = new Set(quarantineLegacyIds.map((value) => text(value, 'quarantine legacy ID').toLowerCase()));
-  const released = new Set(releasedLegacyIds.map((value) => text(value, 'released legacy ID').toLowerCase()));
+  const forced = normalizeQuarantineEntries(quarantineLegacyIds, quarantineEntries);
+  const released = normalizeReleaseGrants(releaseGrants);
   const decisions = normalizeIdentityDecisions(identityDecisions);
   const legacyIds = new Set();
   const groups = new Map();
@@ -74,7 +124,10 @@ export function buildCanonicalRegistry(catalog, {
     for (const row of rows) {
       const reasons = [];
       if (collision) reasons.push('manufacturer_identity_collision');
-      if (forced.has(row.legacyId) && !released.has(row.legacyId)) reasons.push('phase1_dimension_quarantine');
+      const releasedReasons = released.get(row.legacyId) ?? new Set();
+      for (const reason of forced.get(row.legacyId) ?? []) {
+        if (!releasedReasons.has(reason)) reasons.push(reason);
+      }
       if (reasons.length) {
         quarantine.push({ legacyRuntimeId: row.legacyId, brand: row.product.brand, model: row.product.model, reasons });
         continue;

@@ -6,6 +6,11 @@
       "legacyRuntimeId": "ao-88474",
       "brand": "Westinghouse",
       "model": "WHE6874BA",
+      "category": "fridge",
+      "releasableQuarantineReasons": [
+        "phase1_approved_dimensions_alias",
+        "approved_alias_dimensions_only_projection_still_exposes_unreviewed_clearance_operation_and_plumbing_fields"
+      ],
       "initialFailure": {
         "code": "approved_scope_conflicts_with_legacy_projection",
         "conflictingFields": [

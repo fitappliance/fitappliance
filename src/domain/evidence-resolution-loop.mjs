@@ -91,6 +91,9 @@ function validateCase(input) {
     legacyRuntimeId: requiredText(input.legacyRuntimeId, 'legacy runtime ID'),
     brand: requiredText(input.brand, 'brand'),
     model: requiredText(input.model, 'model'),
+    category: requiredText(input.category, 'category'),
+    releasableQuarantineReasons: [...new Set((input.releasableQuarantineReasons ?? [])
+      .map((reason) => requiredText(reason, 'releasable quarantine reason').toLowerCase()))].sort(),
     initialFailure: {
       ...input.initialFailure,
       code: requiredText(input?.initialFailure?.code, 'initial failure code'),
@@ -265,11 +268,30 @@ export function buildResolutionManifest(input) {
   const releasedLegacyIds = results
     .filter((row) => row.decision.status === 'resolved' && row.decision.publication.release)
     .map((row) => row.legacyRuntimeId);
+  const releaseGrants = results
+    .filter((row) => row.decision.status === 'resolved' && row.decision.publication.release)
+    .map((row) => {
+      const caseRecord = validateCase(input.cases.find((candidate) => candidate.id === row.decision.caseId));
+      return {
+        legacyRuntimeId: row.legacyRuntimeId,
+        caseId: row.decision.caseId,
+        reasons: caseRecord.releasableQuarantineReasons,
+      };
+    });
+  const activeQuarantines = results
+    .filter((row) => row.decision.status !== 'resolved' || row.decision.publication.release !== true)
+    .map((row) => ({
+      legacyRuntimeId: row.legacyRuntimeId,
+      reason: `evidence_resolution_${row.decision.status}`,
+      caseId: row.decision.caseId,
+    }));
   const count = (status) => results.filter((row) => row.decision.status === status).length;
   return freezeDeep({
     schemaVersion: 1,
     results,
     releasedLegacyIds,
+    releaseGrants,
+    activeQuarantines,
     summary: {
       cases: results.length,
       resolved: count('resolved'),

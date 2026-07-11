@@ -61,18 +61,39 @@ test('a reviewed rename decision can preserve an existing canonical ID', () => {
   assert.throws(() => buildCanonicalRegistry(catalog, { identityDecisions: [{ legacyRuntimeId: 'fridge-a1', status: 'approved' }] }), /decision/i);
 });
 
-test('automated evidence resolution releases forced quarantine but never identity collisions', () => {
+test('automated evidence resolution releases only the exact case-bound quarantine reason', () => {
   const input = { products: [
     { id: 'fridge-release', cat: 'fridge', brand: 'A', model: 'M1' },
+    { id: 'dishwasher-kit', cat: 'dishwasher', brand: 'A', model: 'KIT1' },
     { id: 'fridge-collision-a', cat: 'fridge', brand: 'B', model: 'M2' },
     { id: 'fridge-collision-b', cat: 'fridge', brand: 'B', model: 'M2' },
   ] };
   const result = buildCanonicalRegistry(input, {
-    quarantineLegacyIds: ['fridge-release', 'fridge-collision-a'],
-    releasedLegacyIds: ['fridge-release', 'fridge-collision-a'],
+    quarantineEntries: [
+      { legacyRuntimeId: 'fridge-release', reason: 'evidence_projection_hold' },
+      { legacyRuntimeId: 'dishwasher-kit', reason: 'door_kit_is_not_a_complete_appliance' },
+      { legacyRuntimeId: 'fridge-collision-a', reason: 'evidence_projection_hold' },
+    ],
+    releaseGrants: [
+      { legacyRuntimeId: 'fridge-release', caseId: 'case-1', reason: 'evidence_projection_hold' },
+      { legacyRuntimeId: 'dishwasher-kit', caseId: 'case-2', reason: 'evidence_projection_hold' },
+      { legacyRuntimeId: 'fridge-collision-a', caseId: 'case-3', reason: 'evidence_projection_hold' },
+    ],
   });
 
   assert.ok(result.identifierMappings.some((row) => row.legacyRuntimeId === 'fridge-release'));
+  assert.ok(result.quarantine.some((row) => row.legacyRuntimeId === 'dishwasher-kit'
+    && row.reasons.includes('door_kit_is_not_a_complete_appliance')));
   assert.ok(result.quarantine.some((row) => row.legacyRuntimeId === 'fridge-collision-a'));
   assert.ok(result.quarantine.some((row) => row.legacyRuntimeId === 'fridge-collision-b'));
+});
+
+test('rejects malformed, duplicate, and non-releasable automated grants', () => {
+  assert.throws(() => buildCanonicalRegistry(catalog, {
+    quarantineEntries: [{ legacyRuntimeId: 'fridge-a1', reason: 'manufacturer_identity_collision' }],
+    releaseGrants: [{ legacyRuntimeId: 'fridge-a1', caseId: 'case-1', reason: 'manufacturer_identity_collision' }],
+  }), /non-releasable/i);
+  assert.throws(() => buildCanonicalRegistry(catalog, {
+    releaseGrants: [{ legacyRuntimeId: 'fridge-a1', caseId: '', reason: 'evidence_projection_hold' }],
+  }), /case/i);
 });
