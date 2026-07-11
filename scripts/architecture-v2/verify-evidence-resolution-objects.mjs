@@ -8,7 +8,8 @@ import { isAbsolute, resolve, sep } from 'node:path';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
-import { validateResolutionObjectPath, verifyResolutionSourceText } from '../../src/domain/evidence-resolution-loop.mjs';
+import { validateResolutionObjectPath } from '../../src/domain/evidence-resolution-loop.mjs';
+import { verifyAttestedResolutionArtifact } from '../../src/domain/evidence-artifact-verifier.mjs';
 import { load } from 'cheerio';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -43,7 +44,12 @@ async function main(args) {
       } else {
         extractedText = bytes.toString('utf8');
       }
-      verifyResolutionSourceText(source, extractedText);
+      verifyAttestedResolutionArtifact({
+        source,
+        caseIdentity: { brand: caseRecord.brand, model: caseRecord.model, category: caseRecord.category },
+        bytes,
+        extractedText,
+      });
       checked += 1;
     }
   }

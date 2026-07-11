@@ -10,17 +10,26 @@ import {
   validateResolutionObjectPath,
   verifyResolutionSourceText,
 } from '../../src/domain/evidence-resolution-loop.mjs';
+import { createVerificationReceipt } from '../../src/domain/evidence-source-verifier.mjs';
 
 const HASH = 'a'.repeat(64);
 
 function exactManufacturerSource(overrides = {}) {
-  return {
+  const result = {
     authority: 'manufacturer',
     sourceUrl: 'https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/',
+    finalUrl: 'https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/',
+    redirectChain: [],
     retrievedAt: '2026-07-11T14:30:00.000Z',
     contentSha256: HASH,
     objectPath: `evidence/web/sha256/${HASH.slice(0, 2)}/${HASH.slice(2, 4)}/${HASH}.html`,
+    contentType: 'text/html',
+    byteSize: 1234,
     identity: { brand: 'Westinghouse', model: 'WHE6874BA', outcome: 'exact' },
+    identitySignals: [
+      { type: 'canonical_url', value: 'https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/' },
+      { type: 'product_model', value: 'WHE6874BA' },
+    ],
     claims: [
       { field: 'closedEnvelope.widthMm', value: 913, unit: 'mm', label: 'Total width (mm)', quote: 'Total width (mm) 913 mm' },
       { field: 'closedEnvelope.heightMm', value: 1782, unit: 'mm', label: 'Total height (mm)', quote: 'Total height (mm) 1782 mm' },
@@ -31,6 +40,10 @@ function exactManufacturerSource(overrides = {}) {
     ],
     ...overrides,
   };
+  result.verificationReceipt = createVerificationReceipt(result, {
+    brand: 'Westinghouse', model: 'WHE6874BA', category: 'fridge',
+  }, { verifiedAt: '2026-07-11T14:35:00.000Z' });
+  return result;
 }
 
 function resolutionCase(overrides = {}) {

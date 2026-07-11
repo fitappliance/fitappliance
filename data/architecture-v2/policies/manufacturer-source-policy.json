@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "2026-07-11.1",
+  "maxEvidenceAgeDays": 400,
+  "brands": {
+    "artusi": ["artusi.com.au"],
+    "beko": ["beko.com"],
+    "bosch": ["bosch-home.com"],
+    "chiq": ["chiq.com.au"],
+    "electrolux": ["electrolux.com.au", "resource.electrolux.com.au"],
+    "esatto": ["esatto.house", "residentia.group"],
+    "euromaid": ["euromaid.com.au"],
+    "fisherpaykel": ["fisherpaykel.com"],
+    "haier": ["haier.com", "haier.com.au"],
+    "hisense": ["hisense.com"],
+    "inalto": ["inalto.house", "residentia.group"],
+    "kelvinator": ["kelvinator.com.au", "resource.electrolux.com.au"],
+    "kogan": ["kogan.com"],
+    "lg": ["lg.com", "lge.com"],
+    "liebherr": ["liebherr.com"],
+    "midea": ["midea.com"],
+    "miele": ["miele.com.au"],
+    "omega": ["omegaappliances.com.au"],
+    "robinhood": ["robinhood.com.au", "robinhood.co.nz"],
+    "samsung": ["samsung.com"],
+    "smeg": ["smeg.com.au"],
+    "subzero": ["subzero-wolf.com"],
+    "teco": ["teco.com.au"],
+    "vogue": ["vogue-appliances.com"],
+    "westinghouse": ["westinghouse.com.au", "resource.electrolux.com.au"]
+  }
+}

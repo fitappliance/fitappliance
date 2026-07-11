@@ -25,14 +25,32 @@
           "authority": "manufacturer",
           "sourceType": "official_exact_model_product_page",
           "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/",
+          "finalUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/",
+          "redirectChain": [],
           "retrievedAt": "2026-07-11T14:30:00.000Z",
           "contentSha256": "472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650",
           "objectPath": "evidence/web/sha256/47/2d/472df8253f219eab67de4fd939bb4fc9b0ab84d3c004ac8256c1fe13933aa650.html",
+          "contentType": "text/html",
+          "byteSize": 454658,
           "identity": {
             "brand": "Westinghouse",
             "model": "WHE6874BA",
             "outcome": "exact"
           },
+          "identitySignals": [
+            {
+              "type": "canonical_url",
+              "value": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/"
+            },
+            {
+              "type": "document_title",
+              "value": "609L french door refrigerator - WHE6874BA | Westinghouse Australia"
+            },
+            {
+              "type": "product_model",
+              "value": "WHE6874BA"
+            }
+          ],
           "claims": [
             {
               "field": "closedEnvelope.widthMm",
@@ -76,7 +94,13 @@
               "label": "Plumbed water supply required",
               "quote": "Plumbed water supply required Yes"
             }
-          ]
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 1,
+            "policyVersion": "2026-07-11.1",
+            "verifiedAt": "2026-07-11T14:35:00.000Z",
+            "bindingSha256": "dfe91df792008f84f2f1e27f9beae333fc52dc63c6f9a3d7eec03e9d1f057126"
+          }
         }
       ]
     }

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "2026-07-11.1",
+  "receiptSchemaVersion": 1,
+  "maximumRedirects": 5,
+  "maximumFutureClockSkewMinutes": 5,
+  "releasableQuarantineReasonPatterns": [
+    "^phase1_approved_dimensions_alias$",
+    "^approved_alias_dimensions_only_projection_"
+  ],
+  "permanentQuarantineReasonPatterns": [
+    "manufacturer_identity_collision",
+    "not_a_complete_appliance",
+    "invalid_axis_assignment",
+    "rejected_alias",
+    "identity_quarantine"
+  ]
+}

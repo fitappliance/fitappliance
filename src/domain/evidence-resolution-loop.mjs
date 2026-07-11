@@ -1,4 +1,6 @@
 import { createCategoryGeometry } from './category-geometry.mjs';
+import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
+import { containsExactModel, validateClaimsSemantics } from './evidence-claim-semantics.mjs';
 
 const SUPPORTED_FIELDS = new Set([
   'closedEnvelope.widthMm',
@@ -66,7 +68,7 @@ function normalizedSourceText(value) {
 export function verifyResolutionSourceText(source, extractedText) {
   const text = normalizedSourceText(extractedText);
   const model = requiredText(source?.identity?.model, 'source identity model');
-  if (!text.toUpperCase().includes(model.toUpperCase())) {
+  if (!containsExactModel(text, model)) {
     throw new Error(`resolution source missing exact model ${model}`);
   }
   for (const claim of source.claims ?? []) {
@@ -142,6 +144,12 @@ export function buildResolutionPlan(input) {
 
 function normalizeSource(source, caseRecord) {
   if (source?.authority !== 'manufacturer') return null;
+  verifyVerificationReceipt(source, {
+    brand: caseRecord.brand,
+    model: caseRecord.model,
+    category: caseRecord.category,
+  }, { asOf: source?.verificationReceipt?.verifiedAt });
+  validateClaimsSemantics(source.claims, { category: caseRecord.category });
   const url = new URL(requiredText(source.sourceUrl, 'source URL'));
   if (url.protocol !== 'https:') throw new TypeError('source URL must use HTTPS');
   if (!/^\d{4}-\d{2}-\d{2}T/.test(requiredText(source.retrievedAt, 'retrievedAt'))) {
