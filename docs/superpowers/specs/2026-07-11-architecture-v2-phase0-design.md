@@ -139,12 +139,19 @@ point to field-level evidence.
   quote: 'Overall width 790 mm',
   parserVersion: 'manual-v1',
   identityMatch: 'exact',
+  aliasApproved: false,
+  documentAuthorType: 'manufacturer',
+  transportHostType: 'manufacturer',
   status: 'approved'
 }
 ```
 
 Only `exact` or explicitly approved `alias` identity matches may become
-approved. Missing provenance keeps evidence pending or rejected.
+approved. Automatic Phase 0 approval also requires a manufacturer-authored
+document retrieved from a manufacturer transport host. Authorship and transport
+are recorded separately; retailer-authored or retailer-hosted candidates remain
+pending until a later explicit review policy exists. Missing provenance keeps
+evidence pending or rejected.
 
 ### Fit decision
 
