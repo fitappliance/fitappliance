@@ -189,25 +189,42 @@ function normalizeSource(source, caseRecord) {
       ), 'source type'),
     };
   });
-  return claims;
+  return { source, claims };
 }
 
 function groupClaims(caseRecord) {
+  const entries = caseRecord.sources.map((source) => normalizeSource(source, caseRecord)).filter(Boolean);
+  const byHash = new Map(entries.map((entry) => [entry.source.contentSha256, entry]));
+  const superseded = new Set();
+  for (const entry of entries) {
+    for (const hash of entry.source.supersedesContentSha256 ?? []) {
+      const previous = byHash.get(hash);
+      if (!previous) throw new TypeError(`superseded source ${hash} missing from case`);
+      const currentUrl = new URL(entry.source.finalUrl);
+      const previousUrl = new URL(previous.source.finalUrl);
+      currentUrl.search = ''; currentUrl.hash = ''; currentUrl.pathname = currentUrl.pathname.replace(/\/+$/, '');
+      previousUrl.search = ''; previousUrl.hash = ''; previousUrl.pathname = previousUrl.pathname.replace(/\/+$/, '');
+      if (currentUrl.toString() !== previousUrl.toString()) throw new TypeError('supersession requires the same official resource');
+      if (Date.parse(entry.source.retrievedAt) <= Date.parse(previous.source.retrievedAt)) {
+        throw new TypeError('superseding source must be newer');
+      }
+      superseded.add(hash);
+    }
+  }
   const byField = new Map();
-  for (const source of caseRecord.sources) {
-    const claims = normalizeSource(source, caseRecord);
-    if (!claims) continue;
-    for (const claim of claims) {
+  for (const entry of entries) {
+    if (superseded.has(entry.source.contentSha256)) continue;
+    for (const claim of entry.claims) {
       if (!byField.has(claim.field)) byField.set(claim.field, []);
       byField.get(claim.field).push(claim);
     }
   }
-  return byField;
+  return { byField, supersededSourceHashes: [...superseded].sort() };
 }
 
 export function adjudicateResolutionCase(input) {
   const caseRecord = validateCase(input);
-  const byField = groupClaims(caseRecord);
+  const { byField, supersededSourceHashes } = groupClaims(caseRecord);
   const values = {};
   const provenance = {};
   const contradictions = [];
@@ -229,11 +246,13 @@ export function adjudicateResolutionCase(input) {
     }));
   }
   const approvedFields = Object.keys(values).sort();
-  const missingReleaseFields = REQUIRED_RELEASE_FIELDS.filter((field) => !(field in values));
+  const missingReleaseFields = researchFields(caseRecord).filter((field) => !(field in values));
   if (contradictions.length > 0) {
+    const exhausted = caseRecord.attempt >= caseRecord.maxAttempts;
     return freezeDeep({
-      caseId: caseRecord.id, status: 'quarantined', terminalReason: 'authoritative_evidence_conflict',
-      approvedFields, values, provenance, contradictions,
+      caseId: caseRecord.id, status: exhausted ? 'quarantined' : 'reconciliation_required',
+      terminalReason: exhausted ? 'authoritative_evidence_conflict' : null,
+      approvedFields, values, provenance, contradictions, supersededSourceHashes,
       publication: { release: false, stripUnapprovedLegacyFields: true }, requiresHumanReview: false,
     });
   }
@@ -242,13 +261,13 @@ export function adjudicateResolutionCase(input) {
     return freezeDeep({
       caseId: caseRecord.id, status: exhausted ? 'quarantined' : 'research_required',
       terminalReason: exhausted ? 'evidence_search_exhausted' : null,
-      approvedFields, values, provenance, contradictions: [], missingReleaseFields,
+      approvedFields, values, provenance, contradictions: [], missingReleaseFields, supersededSourceHashes,
       publication: { release: false, stripUnapprovedLegacyFields: true }, requiresHumanReview: false,
     });
   }
   return freezeDeep({
     caseId: caseRecord.id, status: 'resolved', terminalReason: null,
-    approvedFields, values, provenance, contradictions: [], missingReleaseFields: [],
+    approvedFields, values, provenance, contradictions: [], missingReleaseFields: [], supersededSourceHashes,
     publication: { release: true, stripUnapprovedLegacyFields: true }, requiresHumanReview: false,
   });
 }
@@ -304,6 +323,7 @@ export function buildResolutionManifest(input) {
       cases: results.length,
       resolved: count('resolved'),
       researchRequired: count('research_required'),
+      reconciliationRequired: count('reconciliation_required'),
       quarantined: count('quarantined'),
       requiresHumanReview: results.filter((row) => row.decision.requiresHumanReview).length,
     },

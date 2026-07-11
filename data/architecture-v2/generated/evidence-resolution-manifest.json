@@ -153,6 +153,7 @@
         },
         "contradictions": [],
         "missingReleaseFields": [],
+        "supersededSourceHashes": [],
         "publication": {
           "release": true,
           "stripUnapprovedLegacyFields": true
@@ -179,6 +180,7 @@
     "cases": 1,
     "resolved": 1,
     "researchRequired": 0,
+    "reconciliationRequired": 0,
     "quarantined": 0,
     "requiresHumanReview": 0
   }

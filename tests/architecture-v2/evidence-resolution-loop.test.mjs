@@ -14,7 +14,7 @@ import { createVerificationReceipt } from '../../src/domain/evidence-source-veri
 
 const HASH = 'a'.repeat(64);
 
-function exactManufacturerSource(overrides = {}) {
+function exactManufacturerSource(overrides = {}, verifiedAt = '2026-07-11T14:35:00.000Z') {
   const result = {
     authority: 'manufacturer',
     sourceUrl: 'https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/',
@@ -42,7 +42,7 @@ function exactManufacturerSource(overrides = {}) {
   };
   result.verificationReceipt = createVerificationReceipt(result, {
     brand: 'Westinghouse', model: 'WHE6874BA', category: 'fridge',
-  }, { verifiedAt: '2026-07-11T14:35:00.000Z' });
+  }, { verifiedAt });
   return result;
 }
 
@@ -142,7 +142,7 @@ test('exact manufacturer evidence resolves the conflict and strips every unappro
   assert.equal(product.evidence.v2_resolution.status, 'resolved');
 });
 
-test('conflicting exact manufacturer claims remain quarantined without human escalation', () => {
+test('conflicting current manufacturer claims trigger bounded reconciliation before terminal quarantine', () => {
   const second = exactManufacturerSource({
     sourceUrl: 'https://www.westinghouse.com.au/support/whe6874ba-conflict',
     contentSha256: 'b'.repeat(64),
@@ -154,10 +154,49 @@ test('conflicting exact manufacturer claims remain quarantined without human esc
   });
   const resolution = adjudicateResolutionCase(resolutionCase({ sources: [exactManufacturerSource(), second] }));
 
-  assert.equal(resolution.status, 'quarantined');
+  assert.equal(resolution.status, 'reconciliation_required');
   assert.equal(resolution.publication.release, false);
   assert.deepEqual(resolution.contradictions.map((row) => row.field), ['flags.requiresPlumbing']);
   assert.equal(resolution.requiresHumanReview, false);
+
+  const exhausted = adjudicateResolutionCase(resolutionCase({
+    attempt: 3,
+    sources: [exactManufacturerSource(), second],
+  }));
+  assert.equal(exhausted.status, 'quarantined');
+  assert.equal(exhausted.terminalReason, 'authoritative_evidence_conflict');
+});
+
+test('resolution must answer every initial conflicting field instead of resolving by omission', () => {
+  const dimensionsOnly = exactManufacturerSource({
+    claims: exactManufacturerSource().claims.filter((claim) => claim.field.startsWith('closedEnvelope.')),
+  });
+  const resolution = adjudicateResolutionCase(resolutionCase({ sources: [dimensionsOnly] }));
+
+  assert.equal(resolution.status, 'research_required');
+  assert.deepEqual(resolution.missingReleaseFields, ['flags.requiresPlumbing']);
+  assert.equal(resolution.publication.release, false);
+});
+
+test('newer attested snapshot can supersede an older snapshot of the same official resource', () => {
+  const oldSource = exactManufacturerSource();
+  const newer = exactManufacturerSource({
+    retrievedAt: '2026-07-11T15:00:00.000Z',
+    contentSha256: 'd'.repeat(64),
+    objectPath: `evidence/web/sha256/dd/dd/${'d'.repeat(64)}.html`,
+    byteSize: 1400,
+    supersedesContentSha256: [oldSource.contentSha256],
+    claims: oldSource.claims.map((claim) => (
+      claim.field === 'flags.requiresPlumbing'
+        ? { ...claim, value: false, quote: 'Water connection not required', label: 'Water connection' }
+        : claim
+    )),
+  }, '2026-07-11T15:05:00.000Z');
+  const resolution = adjudicateResolutionCase(resolutionCase({ sources: [oldSource, newer] }));
+
+  assert.equal(resolution.status, 'resolved');
+  assert.equal(resolution.values['flags.requiresPlumbing'], false);
+  assert.deepEqual(resolution.supersededSourceHashes, [oldSource.contentSha256]);
 });
 
 test('exhausted evidence search closes automatically as quarantine instead of waiting for a reviewer', () => {

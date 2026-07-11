@@ -84,11 +84,20 @@ function normalizedClaims(claims) {
     || JSON.stringify(left.value).localeCompare(JSON.stringify(right.value)));
 }
 
+function normalizedSupersededHashes(values) {
+  if (values == null) return [];
+  if (!Array.isArray(values)) throw new TypeError('superseded source hashes must be an array');
+  const hashes = [...new Set(values.map((value) => requiredText(value, 'superseded source hash'))) ].sort();
+  if (hashes.some((hash) => !/^[a-f0-9]{64}$/.test(hash))) throw new TypeError('superseded source hash invalid');
+  return hashes;
+}
+
 function receiptPayload(source, caseIdentity, verifiedAt) {
   const identity = normalizedIdentity(caseIdentity);
   return {
     schemaVersion: resolutionPolicy.receiptSchemaVersion,
     policyVersion: resolutionPolicy.policyVersion,
+    manufacturerPolicyVersion: manufacturerPolicy.policyVersion,
     verifiedAt,
     caseIdentity: identity,
     source: {
@@ -100,6 +109,7 @@ function receiptPayload(source, caseIdentity, verifiedAt) {
       objectPath: requiredText(source?.objectPath, 'object path'),
       contentType: requiredText(source?.contentType, 'content type').toLowerCase(),
       byteSize: source?.byteSize,
+      supersedesContentSha256: normalizedSupersededHashes(source?.supersedesContentSha256),
     },
     identitySignals: normalizedSignals(source?.identitySignals),
     claims: normalizedClaims(source?.claims),
@@ -132,6 +142,9 @@ export function validateTrustedSourceMetadata(source, caseIdentity, options = {}
     throw new TypeError('content-addressed object path required');
   }
   if (!Number.isInteger(source?.byteSize) || source.byteSize <= 0) throw new TypeError('positive byte size required');
+  if (normalizedSupersededHashes(source?.supersedesContentSha256).includes(source.contentSha256)) {
+    throw new TypeError('source cannot supersede itself');
+  }
   if (!['text/html', 'application/pdf'].includes(requiredText(source?.contentType, 'content type').toLowerCase())) {
     throw new TypeError('unsupported content type');
   }
@@ -155,6 +168,7 @@ export function createVerificationReceipt(source, caseIdentity, options = {}) {
   return Object.freeze({
     schemaVersion: payload.schemaVersion,
     policyVersion: payload.policyVersion,
+    manufacturerPolicyVersion: payload.manufacturerPolicyVersion,
     verifiedAt,
     bindingSha256: digest(payload),
   });
@@ -163,7 +177,8 @@ export function createVerificationReceipt(source, caseIdentity, options = {}) {
 export function verifyVerificationReceipt(source, caseIdentity, options = {}) {
   const receipt = source?.verificationReceipt;
   if (!receipt || receipt.schemaVersion !== resolutionPolicy.receiptSchemaVersion
-    || receipt.policyVersion !== resolutionPolicy.policyVersion) {
+    || receipt.policyVersion !== resolutionPolicy.policyVersion
+    || receipt.manufacturerPolicyVersion !== manufacturerPolicy.policyVersion) {
     throw new TypeError('current verification receipt required');
   }
   parseTime(receipt.verifiedAt, 'verification time');

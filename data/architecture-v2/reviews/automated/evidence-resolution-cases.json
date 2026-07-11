@@ -97,9 +97,10 @@
           ],
           "verificationReceipt": {
             "schemaVersion": 1,
-            "policyVersion": "2026-07-11.1",
+            "policyVersion": "2026-07-11.2",
+            "manufacturerPolicyVersion": "2026-07-11.1",
             "verifiedAt": "2026-07-11T14:35:00.000Z",
-            "bindingSha256": "dfe91df792008f84f2f1e27f9beae333fc52dc63c6f9a3d7eec03e9d1f057126"
+            "bindingSha256": "3ec899388dd25b75ee718242f770a85e8630cc4790130aa008a6300999b1686d"
           }
         }
       ]
