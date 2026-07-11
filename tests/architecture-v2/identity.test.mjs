@@ -3,7 +3,9 @@ import assert from 'node:assert/strict';
 
 import {
   createCanonicalProduct,
+  createShadowProduct,
   createShadowProductId,
+  findIdentifiers,
   findIdentifier,
   normalizeIdentifier,
 } from '../../src/domain/identity.mjs';
@@ -54,6 +56,35 @@ test('creates deterministic opaque shadow IDs from normalized legacy IDs', () =>
   assert.doesNotMatch(shadowId, /fisher|paykel|rf505/i);
 });
 
+test('creates a deeply frozen shadow candidate from its legacy runtime ID', () => {
+  const input = structuredClone(fixture);
+  delete input.id;
+  input.legacyRuntimeId = ' Legacy-Shadow-001 ';
+  input.identifiers[0].value = input.legacyRuntimeId;
+  const snapshot = structuredClone(input);
+
+  const product = createShadowProduct(input);
+
+  assert.equal(product.id, createShadowProductId(input.legacyRuntimeId));
+  assert.notEqual(product.id, fixture.id);
+  assert.equal(product.kind, 'shadow_candidate');
+  assert.equal(product.identifiers[0].value, 'legacy-shadow-001');
+  assert.deepEqual(input, snapshot);
+  assert.equal(Object.isFrozen(product), true);
+  assert.equal(Object.isFrozen(product.identifiers), true);
+  assert.equal(Object.isFrozen(product.identifiers[0]), true);
+});
+
+test('rejects a shadow candidate whose legacy identifier does not match its source ID', () => {
+  assert.throws(
+    () => createShadowProduct({
+      ...fixture,
+      legacyRuntimeId: 'legacy-shadow-001',
+    }),
+    /matching legacy runtime identifier/i,
+  );
+});
+
 test('creates a deeply frozen canonical product without mutating input', () => {
   const input = structuredClone(fixture);
   const product = createCanonicalProduct(input);
@@ -66,6 +97,7 @@ test('creates a deeply frozen canonical product without mutating input', () => {
   assert.equal(product.identifiers[1].value, 'RF505ANUX1');
   assert.equal(product.identifiers[2].value, 'GEMS-RF505ANUX1');
   assert.equal(product.identifiers[0].authority, 'FitAppliance');
+  assert.equal(findIdentifiers(product, 'manufacturer_model').length, 1);
   assert.equal(findIdentifier(product, 'manufacturer_model').value, 'RF505ANUX1');
   const productWithoutGems = createCanonicalProduct({
     ...input,
@@ -90,10 +122,58 @@ test('rejects empty and duplicate identifiers after normalization', () => {
       ...fixture,
       identifiers: [
         { scheme: 'manufacturer_model', value: 'RF505ANUX1', authority: 'fisher-paykel' },
-        { scheme: 'manufacturer_model', value: ' rf505anux1 ', authority: 'other' },
+        { scheme: 'manufacturer_model', value: ' rf505anux1 ', authority: ' fisher-paykel ' },
       ],
     }),
     /duplicate/i,
+  );
+});
+
+test('keeps distinct same-scheme identifiers and finds exact matches immutably', () => {
+  const product = createCanonicalProduct({
+    ...fixture,
+    identifiers: [
+      { scheme: 'manufacturer_model', value: 'RF505ANUX1', authority: 'fisher-paykel' },
+      { scheme: 'manufacturer_model', value: 'RF505ANUX1-AU', authority: 'other-authority' },
+    ],
+  });
+
+  const all = findIdentifiers(product, 'manufacturer_model');
+  const authorityMatch = findIdentifiers(product, 'manufacturer_model', 'other-authority');
+
+  assert.deepEqual(all, [
+    { scheme: 'manufacturer_model', value: 'RF505ANUX1', authority: 'fisher-paykel' },
+    { scheme: 'manufacturer_model', value: 'RF505ANUX1-AU', authority: 'other-authority' },
+  ]);
+  assert.equal(Object.isFrozen(all), true);
+  assert.equal(Object.isFrozen(authorityMatch), true);
+  assert.deepEqual(authorityMatch, [
+    { scheme: 'manufacturer_model', value: 'RF505ANUX1-AU', authority: 'other-authority' },
+  ]);
+  assert.deepEqual(findIdentifiers(product, 'manufacturer_model', 'missing'), []);
+});
+
+test('throws instead of choosing a first identifier when singular lookup is ambiguous', () => {
+  const product = createCanonicalProduct({
+    ...fixture,
+    identifiers: [
+      { scheme: 'manufacturer_model', value: 'RF505ANUX1', authority: 'fisher-paykel' },
+      { scheme: 'manufacturer_model', value: 'RF505ANUX1-AU', authority: 'other-authority' },
+    ],
+  });
+
+  assert.throws(() => findIdentifier(product, 'manufacturer_model'), /ambiguous/i);
+  assert.equal(
+    findIdentifier(product, 'manufacturer_model', 'other-authority').value,
+    'RF505ANUX1-AU',
+  );
+  assert.equal(findIdentifier(product, 'manufacturer_model', 'missing'), null);
+});
+
+test('rejects shadow IDs at the canonical factory boundary', () => {
+  assert.throws(
+    () => createCanonicalProduct({ ...fixture, id: createShadowProductId(fixture.identifiers[0].value) }),
+    /shadow.*canonical|canonical.*shadow/i,
   );
 });
 

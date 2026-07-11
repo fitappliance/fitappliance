@@ -31,8 +31,10 @@
 **Interfaces:**
 - Produces: `normalizeIdentifier(scheme, value) -> string`
 - Produces: `createShadowProductId(legacyRuntimeId) -> string`
+- Produces: `createShadowProduct(input) -> frozen ShadowProductCandidate`
 - Produces: `createCanonicalProduct(input) -> frozen CanonicalProduct`
-- Produces: `findIdentifier(product, scheme) -> ExternalIdentifier | null`
+- Produces: `findIdentifiers(product, scheme, authority?) -> frozen ExternalIdentifier[]`
+- Produces: `findIdentifier(product, scheme, authority?) -> ExternalIdentifier | null`
 
 - [ ] **Step 1: Write failing identity tests**
 
@@ -51,9 +53,11 @@ Expected: FAIL with `ERR_MODULE_NOT_FOUND` for `src/domain/identity.mjs`.
 
 Use explicit allowed categories and identifier schemes. Trim every identifier,
 uppercase manufacturer and GEMS model identifiers, lowercase FitAppliance
-legacy IDs, reject empty or duplicate `(scheme, value)` pairs, and return new
-frozen objects and arrays. Use built-in `node:crypto` SHA-256 for temporary
-shadow IDs; do not hash brand or display model text.
+legacy IDs, reject empty or duplicate `(scheme, value, authority)` tuples, and
+return new frozen objects and arrays. Canonical construction rejects shadow IDs;
+singular lookup rejects ambiguous matches instead of selecting the first. Use
+built-in `node:crypto` SHA-256 for temporary shadow IDs; do not hash brand or
+display model text.
 
 - [ ] **Step 4: Verify GREEN**
 
@@ -204,7 +208,7 @@ git commit -m "feat: add deterministic fit decisions"
 **Interfaces:**
 - Consumes: one legacy runtime product and optional slim evidence-index entry.
 - Produces: `adaptLegacyAppliance(input) -> { status, product, geometry, warnings, errors }`.
-- Consumes: `createCanonicalProduct` and `createGeometry` from Tasks 1 and 2.
+- Consumes: `createShadowProduct` and `createGeometry` from Tasks 1 and 2.
 
 - [ ] **Step 1: Write failing adapter tests**
 

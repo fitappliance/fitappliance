@@ -90,11 +90,17 @@ model, and a list of external identifiers.
 
 Identifiers are compared only within the same scheme. Normalization may trim,
 case-fold, and remove formatting that a scheme explicitly declares irrelevant;
-it must not perform fuzzy product matching.
+it must not perform fuzzy product matching. Multiple identifiers in one scheme
+are valid when their normalized value or authority differs. Callers requesting a
+single identifier must supply enough authority context to make the result unique;
+ambiguous lookup fails instead of choosing by array order.
 
 Phase 0 may derive a deterministic `fa_shadow_*` ID by hashing the normalized
 `legacy_runtime_id`. Shadow IDs exist only in memory and diagnostic stdout.
-They must never be persisted as canonical mappings or emitted in public data.
+They must never be accepted by the canonical constructor, persisted as canonical
+mappings, or emitted in public data. A shadow candidate is built through a
+separate factory that verifies its external legacy identifier matches the source
+ID used to derive the shadow ID.
 
 ### Geometry
 
