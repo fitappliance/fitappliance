@@ -20,6 +20,20 @@
 - Existing URLs, labels, Fit behavior, and generated output remain unchanged.
 - Every behavior change follows RED-GREEN-REFACTOR.
 
+## Completion Record
+
+Completed on 2026-07-11 in `codex/architecture-v2-phase0`.
+
+- Architecture V2: 45 tests passed; line coverage 95.74%, branch coverage
+  90.42%, and function coverage 98.61%.
+- Legacy regression: 1,551 tests passed; lint passed.
+- Schema validation: 2,348 pages and 7,193 structured-data blocks, 0 errors.
+- Real shadow audit: 2,268 products; 2,236 adapted and 32 quarantined for
+  suspected upright width/height inversion.
+- Production artifacts and `package-lock.json` are unchanged from `main`.
+- No new runtime dependency, credentials, downloaded PDFs, or user data were
+  added.
+
 ---
 
 ### Task 1: Canonical product identity
@@ -36,20 +50,20 @@
 - Produces: `findIdentifiers(product, scheme, authority?) -> frozen ExternalIdentifier[]`
 - Produces: `findIdentifier(product, scheme, authority?) -> ExternalIdentifier | null`
 
-- [ ] **Step 1: Write failing identity tests**
+- [x] **Step 1: Write failing identity tests**
 
 Cover opaque canonical IDs, scheme-scoped normalization, duplicate rejection,
 invalid categories, and input immutability. Use `fa_00000001` as the fixture ID.
 Also assert that `createShadowProductId` is deterministic, opaque, and starts
 with `fa_shadow_`.
 
-- [ ] **Step 2: Verify RED**
+- [x] **Step 2: Verify RED**
 
 Run: `node --test tests/architecture-v2/identity.test.mjs`
 
 Expected: FAIL with `ERR_MODULE_NOT_FOUND` for `src/domain/identity.mjs`.
 
-- [ ] **Step 3: Implement the minimum identity contract**
+- [x] **Step 3: Implement the minimum identity contract**
 
 Use explicit allowed categories and identifier schemes. Trim every identifier,
 uppercase manufacturer and GEMS model identifiers, lowercase FitAppliance
@@ -59,13 +73,13 @@ singular lookup rejects ambiguous matches instead of selecting the first. Use
 built-in `node:crypto` SHA-256 for temporary shadow IDs; do not hash brand or
 display model text.
 
-- [ ] **Step 4: Verify GREEN**
+- [x] **Step 4: Verify GREEN**
 
 Run: `node --test tests/architecture-v2/identity.test.mjs`
 
 Expected: all identity tests pass.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/domain/identity.mjs tests/architecture-v2/identity.test.mjs
@@ -83,33 +97,33 @@ git commit -m "feat: add canonical product identity contract"
 - Produces: `requiredInstallationEnvelope(geometry) -> envelope | null`
 - Consumes: millimetre values or `null`; no string coercion.
 
-- [ ] **Step 1: Write failing geometry tests**
+- [x] **Step 1: Write failing geometry tests**
 
 Cover positive finite closed dimensions, non-negative finite clearances,
 adjustable height ranges, unknown clearances, rejection of invalid values, and
 no input mutation. An explicit manufacturer requirement of `0 mm` is valid and
 must remain distinct from unknown `null`.
 
-- [ ] **Step 2: Verify RED**
+- [x] **Step 2: Verify RED**
 
 Run: `node --test tests/architecture-v2/geometry.test.mjs`
 
 Expected: FAIL with `ERR_MODULE_NOT_FOUND` for `src/domain/geometry.mjs`.
 
-- [ ] **Step 3: Implement geometry and installation-envelope calculation**
+- [x] **Step 3: Implement geometry and installation-envelope calculation**
 
 `requiredInstallationEnvelope` returns `null` when a closed dimension or its
 required clearance is unknown. Width equals product width plus left and right;
 height uses maximum product height plus top; depth equals closed depth plus rear
 and front.
 
-- [ ] **Step 4: Verify GREEN**
+- [x] **Step 4: Verify GREEN**
 
 Run: `node --test tests/architecture-v2/geometry.test.mjs`
 
 Expected: all geometry tests pass.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/domain/geometry.mjs tests/architecture-v2/geometry.test.mjs
@@ -127,31 +141,31 @@ git commit -m "feat: add explicit product geometry contract"
 - Produces: `canApproveEvidence(input) -> { approved, reasons }`
 - Produces: `evidenceLevel(records) -> 'none' | 'dimensions' | 'verified'`
 
-- [ ] **Step 1: Write failing evidence tests**
+- [x] **Step 1: Write failing evidence tests**
 
 Cover required SHA-256, page, quote, parser version, exact/approved-alias
 identity matching, retailer-hosted evidence rejection, and dimensions-only
 versus dimensions-plus-clearance levels.
 
-- [ ] **Step 2: Verify RED**
+- [x] **Step 2: Verify RED**
 
 Run: `node --test tests/architecture-v2/evidence.test.mjs`
 
 Expected: FAIL with `ERR_MODULE_NOT_FOUND` for `src/domain/evidence.mjs`.
 
-- [ ] **Step 3: Implement evidence validation**
+- [x] **Step 3: Implement evidence validation**
 
 Return every rejection reason rather than stopping at the first. `approved`
 status is accepted only when the approval gate is satisfied. Keep document
 authorship separate from transport host.
 
-- [ ] **Step 4: Verify GREEN**
+- [x] **Step 4: Verify GREEN**
 
 Run: `node --test tests/architecture-v2/evidence.test.mjs`
 
 Expected: all evidence tests pass.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/domain/evidence.mjs tests/architecture-v2/evidence.test.mjs
@@ -170,31 +184,31 @@ git commit -m "feat: require reproducible field evidence"
   `evidenceLevel`, and applicable advisory checks.
 - Produces: `evaluateFit(input) -> FitDecision`
 
-- [ ] **Step 1: Add golden fixtures and failing tests**
+- [x] **Step 1: Add golden fixtures and failing tests**
 
 Fixtures must cover `VERIFIED_FIT`, `NO_FIT`, `INSUFFICIENT_DATA`,
 `LIKELY_FIT_ESTIMATED`, and `CONDITIONAL_FIT`. Assert per-axis required,
 available, and spare values as well as final outcome.
 
-- [ ] **Step 2: Verify RED**
+- [x] **Step 2: Verify RED**
 
 Run: `node --test tests/architecture-v2/fit-decision.test.mjs`
 
 Expected: FAIL with `ERR_MODULE_NOT_FOUND` for
 `src/domain/fit-decision.mjs`.
 
-- [ ] **Step 3: Implement outcome precedence and tri-state checks**
+- [x] **Step 3: Implement outcome precedence and tri-state checks**
 
 Evaluate width, height, and depth as required checks. Apply the precedence from
 the design document exactly. Do not create a numeric Fit score.
 
-- [ ] **Step 4: Verify GREEN and fixture determinism**
+- [x] **Step 4: Verify GREEN and fixture determinism**
 
 Run: `node --test tests/architecture-v2/fit-decision.test.mjs`
 
 Expected: all five outcome fixtures pass.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/domain/fit-decision.mjs tests/architecture-v2/fit-decision.test.mjs tests/fixtures/architecture-v2/golden-fit-cases.json
@@ -212,31 +226,31 @@ git commit -m "feat: add deterministic fit decisions"
 - Produces: `adaptLegacyAppliance(input) -> { status, product, geometry, warnings, errors }`.
 - Consumes: `createShadowProduct` and `createGeometry` from Tasks 1 and 2.
 
-- [ ] **Step 1: Write failing adapter tests**
+- [x] **Step 1: Write failing adapter tests**
 
 Cover a valid `w/h/d` row, missing dimensions, obvious upright-fridge axis
 inversion, retailer-only evidence, preservation of the legacy ID, and input
 immutability.
 
-- [ ] **Step 2: Verify RED**
+- [x] **Step 2: Verify RED**
 
 Run: `node --test tests/architecture-v2/legacy-appliance.test.mjs`
 
 Expected: FAIL with `ERR_MODULE_NOT_FOUND` for the adapter.
 
-- [ ] **Step 3: Implement conservative adaptation**
+- [x] **Step 3: Implement conservative adaptation**
 
 Use legacy dimensions only as unverified values. Never read generic
 manufacturer clearance into verified installation requirements. Quarantine
 invalid dimensions and obvious upright-fridge width/height inversions.
 
-- [ ] **Step 4: Verify GREEN**
+- [x] **Step 4: Verify GREEN**
 
 Run: `node --test tests/architecture-v2/legacy-appliance.test.mjs`
 
 Expected: all adapter tests pass.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/adapters/legacy-appliance.mjs tests/architecture-v2/legacy-appliance.test.mjs
@@ -256,18 +270,18 @@ git commit -m "feat: adapt legacy products in shadow mode"
 - Produces: deterministic JSON summary on stdout.
 - Produces: `auditCatalog(document, evidenceIndex) -> summary` for tests.
 
-- [ ] **Step 1: Write failing audit tests**
+- [x] **Step 1: Write failing audit tests**
 
 Assert deterministic category counts, quarantine counts, no input mutation,
 and rejection of malformed top-level catalog documents.
 
-- [ ] **Step 2: Verify RED**
+- [x] **Step 2: Verify RED**
 
 Run: `node --test tests/architecture-v2/shadow-audit.test.mjs`
 
 Expected: FAIL with `ERR_MODULE_NOT_FOUND` for the audit module.
 
-- [ ] **Step 3: Implement the read-only CLI and package scripts**
+- [x] **Step 3: Implement the read-only CLI and package scripts**
 
 Add:
 
@@ -279,7 +293,7 @@ Add:
 The CLI must not accept an output path in Phase 0 and must not call
 `writeFile`, `mkdir`, or `rm`.
 
-- [ ] **Step 4: Verify GREEN against fixtures and the real catalog**
+- [x] **Step 4: Verify GREEN against fixtures and the real catalog**
 
 Run: `npm run test:architecture-v2`
 
@@ -290,7 +304,7 @@ Run: `npm run audit:architecture-v2`
 Expected: valid JSON on stdout with `totalProducts: 2268`; tracked files remain
 unchanged.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add scripts/architecture-v2/shadow-audit.mjs tests/architecture-v2/shadow-audit.test.mjs package.json
@@ -306,13 +320,13 @@ git commit -m "feat: audit legacy catalog in shadow mode"
 - Consumes all Phase 0 modules and existing project contracts.
 - Produces a clean branch ready for review; no production output diff.
 
-- [ ] **Step 1: Run focused tests**
+- [x] **Step 1: Run focused tests**
 
 Run: `npm run test:architecture-v2`
 
 Expected: all Architecture V2 tests pass.
 
-- [ ] **Step 2: Run existing quality gates**
+- [x] **Step 2: Run existing quality gates**
 
 Run: `npm test`
 
@@ -326,7 +340,7 @@ Run: `npm run validate-schema`
 
 Expected: 2,348 pages, 0 errors.
 
-- [ ] **Step 3: Prove production artifacts are unchanged**
+- [x] **Step 3: Prove production artifacts are unchanged**
 
 Run:
 
@@ -336,7 +350,7 @@ git diff --exit-code main -- public/data data pages public/sitemap.xml vercel.js
 
 Expected: exit 0 with no diff.
 
-- [ ] **Step 4: Review dependency and secret surface**
+- [x] **Step 4: Review dependency and secret surface**
 
 Run: `git diff --check main...HEAD`
 
@@ -345,7 +359,7 @@ Expected: exit 0.
 Confirm `package-lock.json` has no Architecture V2 change and no credentials,
 tokens, cookies, PDF downloads, or user data were added.
 
-- [ ] **Step 5: Commit documentation updates if needed**
+- [x] **Step 5: Commit documentation updates if needed**
 
 ```bash
 git add docs/superpowers/specs/2026-07-11-architecture-v2-phase0-design.md docs/superpowers/plans/2026-07-11-architecture-v2-phase0.md
