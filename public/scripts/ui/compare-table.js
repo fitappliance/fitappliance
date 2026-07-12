@@ -82,6 +82,39 @@ function getFitScore(product) {
   );
 }
 
+function isReplacementComparison(products, options = {}) {
+  if (options?.mode === 'replacement') return true;
+  const rows = Array.isArray(products) ? products : [];
+  return rows.length > 0 && rows.every((product) => product?.comparisonMode === 'replacement');
+}
+
+function getReplacementDelta(product, axis) {
+  return num(product?.replacementMatch?.deltasMm?.[axis]);
+}
+
+function getReplacementMaxDelta(product) {
+  return num(product?.replacementMatch?.maxAbsoluteDeltaMm);
+}
+
+function getReplacementTotalDelta(product) {
+  return num(product?.replacementMatch?.totalAbsoluteDeltaMm);
+}
+
+function formatSignedMm(value) {
+  const parsed = round(value);
+  if (parsed === null) return 'Not captured';
+  return `${parsed > 0 ? '+' : ''}${parsed} mm`;
+}
+
+function formatHeightRange(product) {
+  const range = product?.replacementMatch?.candidateHeightRangeMm;
+  const minimum = round(range?.minimum);
+  const maximum = round(range?.maximum);
+  const selected = round(range?.selected);
+  if (minimum === null || maximum === null || selected === null || minimum >= maximum) return 'Fixed height';
+  return `${minimum}–${maximum} mm (${selected} mm setting)`;
+}
+
 function normalizeClearance(product, key) {
   const explicit = product?.[key];
   const fallback = key === 'manufacturerClearance'
@@ -138,7 +171,7 @@ function getWinningValue(values, direction) {
   return direction === 'higher' ? Math.max(...numeric) : Math.min(...numeric);
 }
 
-function buildMetricRows(products) {
+function buildCavityMetricRows(products) {
   return [
     {
       section: 'Dimensions',
@@ -189,11 +222,91 @@ function buildMetricRows(products) {
   ];
 }
 
-function renderHeaderCell(product, index) {
+function buildReplacementMetricRows() {
+  const deltaRow = (axis, label) => ({
+    label,
+    tooltip: '',
+    direction: 'lower',
+    value: (product) => {
+      const value = getReplacementDelta(product, axis);
+      return value === null ? null : Math.abs(value);
+    },
+    render: (product) => formatSignedMm(getReplacementDelta(product, axis))
+  });
+  return [
+    {
+      section: 'Size difference from old appliance',
+      rows: [
+        {
+          label: 'Largest axis difference',
+          tooltip: '',
+          direction: 'lower',
+          value: getReplacementMaxDelta,
+          render: (product) => formatMm(getReplacementMaxDelta(product))
+        },
+        deltaRow('width', 'Width difference'),
+        deltaRow('height', 'Height difference'),
+        deltaRow('depth', 'Depth difference'),
+        {
+          label: 'Total W/H/D difference',
+          tooltip: '',
+          direction: 'lower',
+          value: getReplacementTotalDelta,
+          render: (product) => formatMm(getReplacementTotalDelta(product))
+        }
+      ]
+    },
+    {
+      section: 'Current appliance dimensions',
+      rows: [
+        { label: 'Width', tooltip: '', direction: 'none', value: (product) => num(product?.w), render: (product) => formatMm(product?.w) },
+        { label: 'Height', tooltip: '', direction: 'none', value: (product) => num(product?.h), render: (product) => formatMm(product?.h) },
+        { label: 'Depth', tooltip: '', direction: 'none', value: (product) => num(product?.d), render: (product) => formatMm(product?.d) },
+        {
+          label: 'Height adjustment range',
+          tooltip: '',
+          direction: 'none',
+          value: formatHeightRange,
+          render: formatHeightRange
+        }
+      ]
+    },
+    {
+      section: 'Product details',
+      rows: [
+        { label: 'Energy stars', tooltip: '', direction: 'higher', value: (product) => num(product?.stars), render: (product) => formatStars(product?.stars) },
+        {
+          label: 'Key features',
+          tooltip: '',
+          direction: 'none',
+          value: (product) => (Array.isArray(product?.features) ? product.features.join('|') : ''),
+          render: (product) => (Array.isArray(product?.features) && product.features.length > 0 ? product.features.join(' · ') : 'No feature tags captured')
+        }
+      ]
+    },
+    {
+      section: 'Current availability',
+      rows: [
+        { label: 'Evidence', tooltip: '', direction: 'none', value: (product) => getEvidenceLabel(product).replace(/<[^>]+>/g, ''), render: getEvidenceLabel, html: true },
+        { label: 'Retailer links', tooltip: '', direction: 'higher', value: getRetailerCount, render: (product) => `${getRetailerCount(product)} verified link${getRetailerCount(product) === 1 ? '' : 's'}` }
+      ]
+    }
+  ];
+}
+
+function buildMetricRows(products, options = {}) {
+  return isReplacementComparison(products, options)
+    ? buildReplacementMetricRows()
+    : buildCavityMetricRows(products);
+}
+
+function renderHeaderCell(product, index, comparisonMode) {
   const score = getFitScore(product);
-  const scoreHtml = score === null
-    ? '<span class="compare-score-pending">Score pending</span>'
-    : renderFitScoreRing(score, { title: `${getDisplayName(product)} fit score ${Math.round(score)} out of 100` });
+  const scoreHtml = comparisonMode === 'replacement'
+    ? `<span class="compare-score-pending">Max difference ${escHtml(formatMm(getReplacementMaxDelta(product)))}</span>`
+    : score === null
+      ? '<span class="compare-score-pending">Score pending</span>'
+      : renderFitScoreRing(score, { title: `${getDisplayName(product)} fit score ${Math.round(score)} out of 100` });
   const id = getProductId(product, index);
   return `<th scope="col" class="compare-product-head">
     <div class="compare-product-card">
@@ -243,22 +356,28 @@ export function renderCompareTable(products, options = {}) {
     return '<div class="compare-table-empty">Add products to compare.</div>';
   }
 
-  const sections = buildMetricRows(rows);
+  const replacementMode = isReplacementComparison(rows, options);
+  const comparisonMode = replacementMode ? 'replacement' : 'cavity';
+  const sections = buildMetricRows(rows, { mode: comparisonMode });
   const addAnother = rows.length < MAX_COMPARE_COLUMNS
     ? '<button type="button" class="compare-table-action" data-compare-add-another>Add another to compare</button>'
     : '';
   const cavity = options?.cavity && typeof options.cavity === 'object'
     ? [options.cavity.w, options.cavity.h, options.cavity.d].map((value) => round(value)).filter((value) => value !== null)
     : [];
-  const cavityHtml = cavity.length === 3
+  const cavityHtml = !replacementMode && cavity.length === 3
     ? `<span class="compare-cavity-context">Cavity ${cavity[0]}×${cavity[1]}×${cavity[2]} mm</span>`
     : '';
+  const kicker = replacementMode ? 'Old-appliance size comparison' : 'RTINGS-style comparison';
+  const description = replacementMode
+    ? 'Direct W/H/D differences from the old appliance, plus current product and retailer data.'
+    : 'Sticky product columns, explicit differences, and source status. No hidden price assumptions.';
 
-  return `<section class="compare-table-shell" aria-label="Side-by-side appliance comparison">
+  return `<section class="compare-table-shell" aria-label="${replacementMode ? 'Side-by-side replacement size comparison' : 'Side-by-side appliance comparison'}">
     <div class="compare-table-toolbar">
       <div>
-        <span class="compare-table-kicker">RTINGS-style comparison</span>
-        <p>Sticky product columns, explicit differences, and source status. No hidden price assumptions.</p>
+        <span class="compare-table-kicker">${escHtml(kicker)}</span>
+        <p>${escHtml(description)}</p>
         ${cavityHtml}
       </div>
       <div class="compare-table-actions">
@@ -272,7 +391,7 @@ export function renderCompareTable(products, options = {}) {
         <thead class="compare-sticky-header">
           <tr>
             <th scope="col" class="compare-metric-head">Metric</th>
-            ${rows.map(renderHeaderCell).join('')}
+            ${rows.map((product, index) => renderHeaderCell(product, index, comparisonMode)).join('')}
           </tr>
         </thead>
         <tbody>

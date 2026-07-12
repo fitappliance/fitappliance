@@ -70,6 +70,26 @@ test('phase 45a search-dom: renderSortDropdown renders RTINGS sort options', asy
   assert.match(select.textContent, /Fit Score \(high to low\)/);
 });
 
+test('replacement filter and sort controls remove cavity and Fit semantics', async () => {
+  const { renderFacetBar, renderSortDropdown } = await loadSearchDom();
+  const window = makeWindow();
+  const facet = window.document.getElementById('facet');
+  const sort = window.document.getElementById('sort');
+
+  renderFacetBar(facet, { brand: { Bosch: 2 } }, {
+    scoreMin: 80,
+    verifiedOnly: true,
+  }, () => {}, { searchMode: 'replacement' });
+  renderSortDropdown(sort, 'closest-size', () => {}, { searchMode: 'replacement' });
+
+  assert.match(facet.textContent, /Current appliance width/);
+  assert.doesNotMatch(facet.textContent, /Cavity|Fit score|Verified Fit/i);
+  assert.match(sort.textContent, /Closest size first/);
+  assert.doesNotMatch(sort.textContent, /Fit Score|Verified first|Legacy best fit/i);
+  assert.equal(sort.querySelectorAll('option').length, 5);
+  assert.equal(sort.querySelector('select').value, 'closest-size');
+});
+
 test('phase 58 search-dom: stars facet is rendered as a millimeter-style range control', async () => {
   const { renderFacetBar } = await loadSearchDom();
   const window = makeWindow();
@@ -99,9 +119,8 @@ test('phase 45a search-dom: renderLiveCount writes the visible result copy', asy
   assert.match(String(el.textContent), /Showing 12 of 2,170 appliances/i);
 });
 
-test('replacement CTA estimates cavity dimensions and triggers the main search', async () => {
+test('replacement CTA dispatches the exact old-appliance dimensions without a cavity buffer', async () => {
   const previousDocument = globalThis.document;
-  const previousDoSearch = globalThis.doSearch;
   const previousShowToast = globalThis.showToast;
   const window = new JSDOM(`
     <main>
@@ -114,25 +133,27 @@ test('replacement CTA estimates cavity dimensions and triggers the main search',
     </main>
   `).window;
   globalThis.document = window.document;
-  let searched = false;
+  let detail = null;
   let toast = '';
-  globalThis.doSearch = () => { searched = true; };
   globalThis.showToast = (message) => { toast = message; };
+  window.document.addEventListener('fitappliance:replacement-search', (event) => {
+    detail = event.detail;
+  });
 
   try {
     const { triggerReplacementSearch } = await loadSearchDom();
     triggerReplacementSearch('580', '1780', '620');
 
-    assert.equal(window.document.getElementById('inW').value, '600');
-    assert.equal(window.document.getElementById('inH').value, '1830');
-    assert.equal(window.document.getElementById('inD').value, '670');
+    assert.deepEqual(detail, { w: 580, h: 1780, d: 620 });
+    assert.equal(window.document.getElementById('inW').value, '');
+    assert.equal(window.document.getElementById('inH').value, '');
+    assert.equal(window.document.getElementById('inD').value, '');
     assert.equal(window.document.getElementById('resultsSection').style.display, 'none');
     assert.equal(window.document.querySelector('[data-fit-viz-modal]'), null);
-    assert.equal(searched, true);
-    assert.match(toast, /Estimated cavity based on old model/i);
+    assert.match(toast, /old appliance dimensions/i);
+    assert.doesNotMatch(toast, /cavity|estimated/i);
   } finally {
     globalThis.document = previousDocument;
-    globalThis.doSearch = previousDoSearch;
     globalThis.showToast = previousShowToast;
   }
 });

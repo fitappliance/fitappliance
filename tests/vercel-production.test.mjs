@@ -68,6 +68,28 @@ test('vercel production config: compliance and static app routes are reachable',
   assert.equal(routes.get('/scripts/:path*'), '/public/scripts/:path*');
 });
 
+test('vercel production config: root files do not shadow public script rewrites', () => {
+  const shadowedModules = [];
+  const rootScripts = path.join(repoRoot, 'scripts');
+  const publicScripts = path.join(repoRoot, 'public', 'scripts');
+
+  function visit(directory, relative = '') {
+    if (!fs.existsSync(directory)) return;
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const nextRelative = path.join(relative, entry.name);
+      const nextPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        visit(nextPath, nextRelative);
+      } else if (fs.existsSync(path.join(publicScripts, nextRelative))) {
+        shadowedModules.push(nextRelative);
+      }
+    }
+  }
+
+  visit(rootScripts);
+  assert.deepEqual(shadowedModules, []);
+});
+
 test('vercel production config: CSP permits manual AdSense delivery without allowing wildcard scripts', () => {
   const config = loadVercelConfig();
   const globalRule = findHeaderRule(config, '/(.*)');

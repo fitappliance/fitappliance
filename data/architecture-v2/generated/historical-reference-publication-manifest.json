@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-12T12:40:00.000Z",
+  "sourceReferenceGeneratedAt": "2026-07-12T12:40:00.000Z",
+  "files": {
+    "fridge": {
+      "category": "fridge",
+      "path": "public/data/replacement-reference/fridges.json",
+      "url": "/data/replacement-reference/fridges.json",
+      "records": 4336,
+      "byteLength": 1064773,
+      "contentSha256": "ac6d581173f884506fa86953ff5e080e97bedb56fe8d12367cde6de3c4d16eff"
+    },
+    "dishwasher": {
+      "category": "dishwasher",
+      "path": "public/data/replacement-reference/dishwashers.json",
+      "url": "/data/replacement-reference/dishwashers.json",
+      "records": 1419,
+      "byteLength": 334277,
+      "contentSha256": "c404747be3c86635ca5038bdea90864dd3b5d76166a3daa8dd76a740290a8e6f"
+    },
+    "dryer": {
+      "category": "dryer",
+      "path": "public/data/replacement-reference/dryers.json",
+      "url": "/data/replacement-reference/dryers.json",
+      "records": 843,
+      "byteLength": 202035,
+      "contentSha256": "ce77773428fe6f504c85b30843487c0f57f0a0f2ffc9321bcdadfc79e91c9a27"
+    },
+    "washing_machine": {
+      "category": "washing_machine",
+      "path": "public/data/replacement-reference/washing-machines.json",
+      "url": "/data/replacement-reference/washing-machines.json",
+      "records": 1497,
+      "byteLength": 350215,
+      "contentSha256": "d7c783b1780c6eacbfde52f9efafa4f8fe4d3d7c0d5a18df6567516663d3067a"
+    }
+  },
+  "meta": {
+    "path": "public/data/replacement-reference/meta.json",
+    "url": "/data/replacement-reference/meta.json",
+    "byteLength": 1218,
+    "contentSha256": "bfedec795fe9b897bfbfc412a386ed72e4e6c0de4e88d8733a58b20e6397f429"
+  }
+}

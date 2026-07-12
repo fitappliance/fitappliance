@@ -223,7 +223,9 @@ test('phase 45a search-ux: results count is hidden for empty results and restore
   const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
 
   assert.match(indexHtml, /if\s*\(\s*currentMatchRows\.length\s*===\s*0\s*\)\s*\{[\s\S]*resultsCount\.hidden\s*=\s*true;/);
-  assert.match(indexHtml, /resultsCount\.hidden\s*=\s*false;[\s\S]*resultsCount\.innerHTML\s*=\s*`<b>\$\{currentMatchRows\.length\}/);
+  assert.match(indexHtml, /resultsCount\.hidden\s*=\s*false;[\s\S]*resultsCount\.innerHTML\s*=\s*currentSearchMode\s*===\s*'replacement'/);
+  assert.match(indexHtml, /ranked by size difference/);
+  assert.match(indexHtml, /\$\{catName\} that fit/);
 });
 
 test('phase 45b search-ux: mobile filter sheet is wired to active facet and result counts', () => {
@@ -267,7 +269,7 @@ test('phase 52 input guidance: homepage explains cm shorthand and real-world mea
 
   assert.match(indexHtml, /60cm[\s\S]*600mm/);
   assert.match(indexHtml, /id="inWHint"[\s\S]*inside-to-inside/);
-  assert.match(indexHtml, /id="inHHint"[\s\S]*hinge caps/);
+  assert.match(indexHtml, /id="inHHint"[\s\S]*cabinet underside/);
   assert.match(indexHtml, /id="inDHint"[\s\S]*rear pipe/);
   assert.match(indexHtml, /id="inDoorHint"[\s\S]*lift door/);
   for (const [id, hintId] of [['inW', 'inWHint'], ['inH', 'inHHint'], ['inD', 'inDHint'], ['inDoor', 'inDoorHint']]) {
@@ -283,16 +285,19 @@ test('phase 52 replacement UX: homepage wires old appliance matcher controls', (
   assert.match(indexHtml, /id="oldModelSuggestions"/);
   assert.match(indexHtml, /id="useOldModelBtn"/);
   assert.match(indexHtml, /replacement-matcher\.mjs/);
-  assert.match(indexHtml, /findReplacementSource\(/);
+  assert.match(indexHtml, /resolveReplacementReference\(/);
   assert.match(indexHtml, /buildReplacementDimensionState\(/);
-  assert.match(indexHtml, /old model \${state\.productDimensions\.w}×\${state\.productDimensions\.h}×\${state\.productDimensions\.d}mm plus practical clearance/);
+  assert.match(indexHtml, /Using \${state\.label} outside dimensions: \${w}×\${h}×\${d}mm/);
+  assert.match(indexHtml, /Results compare new appliance W\/H\/D directly with these values/);
+  assert.doesNotMatch(indexHtml, /old model \${state\.productDimensions\.w}×\${state\.productDimensions\.h}×\${state\.productDimensions\.d}mm plus practical clearance/);
 });
 
-test('phase 52 replacement UX: unmatched old models guide users back to cavity dimensions', () => {
+test('phase 52 replacement UX: unmatched old models require measured old-appliance dimensions', () => {
   const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
 
-  assert.match(indexHtml, /We couldn't find exact dimensions/);
-  assert.match(indexHtml, /Enter your cavity dimensions below to find current replacements/);
+  assert.match(indexHtml, /No exact historical record was found/);
+  assert.match(indexHtml, /Enter the old appliance width, height and depth below/);
+  assert.doesNotMatch(indexHtml, /Enter your cavity dimensions below to find current replacements/);
 });
 
 test('phase 52 space alert UX: homepage renders non-standard space alerts from dimensions', () => {
@@ -341,7 +346,8 @@ test('phase 45c search-ux: restore saved search applies category facets and sort
   const indexHtml = fs.readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
 
   assert.match(indexHtml, /activeFacetState\s*=\s*normalizeHomeFacets\(state\.facets/);
-  assert.match(indexHtml, /currentSortBy\s*=\s*state\.sortBy/);
+  assert.match(indexHtml, /currentSortBy\s*=\s*normalizeSortForSearchMode\(state\.sortBy/);
+  assert.doesNotMatch(indexHtml, /currentSortBy\s*=\s*state\.sortBy\s*(?:;|\|\|)/);
   assert.match(indexHtml, /currentSearchMode\s*=\s*SearchCore\.normalizeSearchMode\?\.\(state\.searchMode/);
   assert.match(indexHtml, /doSearch\(\{\s*preserveExistingFacets:\s*true,\s*toleranceMm:/);
 });

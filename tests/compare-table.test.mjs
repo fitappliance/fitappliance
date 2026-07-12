@@ -65,3 +65,41 @@ test('phase 58 compare table: empty compare state is explicit', async () => {
   const { renderCompareTable } = await loadCompareTable();
   assert.match(renderCompareTable([]), /Add products to compare/);
 });
+
+test('replacement comparison renders direct W H D deltas and excludes fit semantics', async () => {
+  const { renderCompareTable } = await loadCompareTable();
+  const html = renderCompareTable([
+    product({
+      slug: 'near',
+      comparisonMode: 'replacement',
+      replacementMatch: {
+        deltasMm: { width: 2, height: -5, depth: 10 },
+        maxAbsoluteDeltaMm: 10,
+        totalAbsoluteDeltaMm: 17,
+        normalizedDistance: 0.01,
+        relation: 'MIXED',
+        candidateHeightRangeMm: { minimum: 850, maximum: 895, selected: 870 },
+      },
+    }),
+    product({
+      slug: 'far',
+      comparisonMode: 'replacement',
+      replacementMatch: {
+        deltasMm: { width: 20, height: 10, depth: -30 },
+        maxAbsoluteDeltaMm: 30,
+        totalAbsoluteDeltaMm: 60,
+        normalizedDistance: 0.03,
+        relation: 'MIXED',
+      },
+    }),
+  ]);
+
+  assert.match(html, /Size difference from old appliance/);
+  assert.match(html, /Largest axis difference/);
+  assert.match(html, /Width difference/);
+  assert.match(html, /\+2 mm/);
+  assert.match(html, /-5 mm/);
+  assert.match(html, /Height adjustment range/);
+  assert.match(html, /850–895 mm \(870 mm setting\)/);
+  assert.doesNotMatch(html, /Fit score|Score pending|Clearance Required|Door &amp; Access|cavity/i);
+});

@@ -103,3 +103,55 @@ test('phase 45c compare store: localStorage write failure does not throw and kee
   assert.equal(result.reason, 'storage_unavailable');
   assert.equal(store.has('p1'), true);
 });
+
+test('replacement snapshots preserve size deltas without synthesising fit, clearance or delivery fields', async () => {
+  const { createCompareStore } = await loadStore();
+  const store = createCompareStore({ storage: createMemoryStorage() });
+  const result = store.add(makeSnapshot('replacement', {
+    comparisonMode: 'replacement',
+    replacementMatch: {
+      deltasMm: { width: 2, height: -5, depth: 10 },
+      maxAbsoluteDeltaMm: 10,
+      totalAbsoluteDeltaMm: 17,
+      normalizedDistance: 0.01,
+      relation: 'MIXED',
+      candidateDimensionSource: 'geometry_v2',
+      candidateHeightRangeMm: { minimum: 850, maximum: 895, selected: 870 },
+    },
+    practicalClearance: { side: 5, top: 20, rear: 10 },
+    fitSummary: { status: 'exact', bindingAxis: 'width', tightestGapMm: 20 },
+    delivery: { doorwayClearanceMm: 700, turnClearanceMm: 800 },
+  }));
+
+  assert.equal(result.ok, true);
+  const snapshot = store.list()[0].snapshot;
+  assert.equal(snapshot.comparisonMode, 'replacement');
+  assert.deepEqual(snapshot.replacementMatch.deltasMm, { width: 2, height: -5, depth: 10 });
+  assert.equal(snapshot.replacementMatch.maxAbsoluteDeltaMm, 10);
+  assert.equal(snapshot.replacementMatch.candidateDimensionSource, 'geometry_v2');
+  assert.deepEqual(snapshot.replacementMatch.candidateHeightRangeMm, { minimum: 850, maximum: 895, selected: 870 });
+  assert.equal(Object.hasOwn(snapshot, 'fitSummary'), false);
+  assert.equal(Object.hasOwn(snapshot, 'practicalClearance'), false);
+  assert.equal(Object.hasOwn(snapshot, 'manufacturerClearance'), false);
+  assert.equal(Object.hasOwn(snapshot, 'delivery'), false);
+});
+
+test('compare store rejects mixing cavity and replacement comparison semantics', async () => {
+  const { createCompareStore } = await loadStore();
+  const store = createCompareStore({ storage: createMemoryStorage() });
+  assert.equal(store.add(makeSnapshot('cavity', { comparisonMode: 'cavity' })).ok, true);
+
+  const mixed = store.add(makeSnapshot('replacement', {
+    comparisonMode: 'replacement',
+    replacementMatch: {
+      deltasMm: { width: 0, height: 0, depth: 0 },
+      maxAbsoluteDeltaMm: 0,
+      totalAbsoluteDeltaMm: 0,
+      normalizedDistance: 0,
+      relation: 'IDENTICAL',
+    },
+  }));
+
+  assert.deepEqual(mixed, { ok: false, reason: 'mode_mismatch' });
+  assert.deepEqual(store.list().map((entry) => entry.id), ['cavity']);
+});

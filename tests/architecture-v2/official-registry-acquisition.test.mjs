@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import {
@@ -28,6 +29,27 @@ test('Energy Rating resource selection uses exact category and newest modified C
 
   assert.equal(resources.fridge.url, 'https://data.gov.au/new-rf.csv');
   assert.equal(resources.dishwasher.url, 'https://data.gov.au/dw.csv');
+});
+
+test('Energy Rating resource selection covers all four FitAppliance categories by default', () => {
+  const resources = selectEnergyRatingResources({ result: { resources: [
+    { name: 'Fridges and Freezers - rf_2026_07_12.csv', format: 'CSV', last_modified: '2026-07-12T00:00:00Z', url: 'https://data.gov.au/rf.csv' },
+    { name: 'Dishwashers - dw_2026_07_12.csv', format: 'CSV', last_modified: '2026-07-12T00:00:00Z', url: 'https://data.gov.au/dw.csv' },
+    { name: 'Clothes Dryers - cd_2026_07_12.csv', format: 'CSV', last_modified: '2026-07-12T00:00:00Z', url: 'https://data.gov.au/cd.csv' },
+    { name: 'Clothes Washers - cw_2026_07_12.csv', format: 'CSV', last_modified: '2026-07-12T00:00:00Z', url: 'https://data.gov.au/cw.csv' },
+  ] } });
+
+  assert.deepEqual(Object.keys(resources), ['fridge', 'dishwasher', 'dryer', 'washing_machine']);
+  assert.equal(resources.dryer.url, 'https://data.gov.au/cd.csv');
+  assert.equal(resources.washing_machine.url, 'https://data.gov.au/cw.csv');
+});
+
+test('official registry acquisition script writes metadata, four Energy CSVs, and WELS', () => {
+  const source = readFileSync('scripts/architecture-v2/acquire-official-registries.mjs', 'utf8');
+  assert.match(source, /const ENERGY_CATEGORIES = Object\.freeze\(\[\s*'fridge',\s*'dishwasher',\s*'dryer',\s*'washing_machine'/s);
+  assert.match(source, /selectEnergyRatingResources\(metadataDocument, ENERGY_CATEGORIES\)/);
+  assert.match(source, /for \(const category of ENERGY_CATEGORIES\)/);
+  assert.match(source, /snapshots\.length !== 6/);
 });
 
 test('registry fetch rejects cross-host redirect and oversized payload', async () => {

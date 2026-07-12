@@ -63,17 +63,6 @@
     return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
   }
 
-  function setInputValue(doc, id, value) {
-    const input = doc?.getElementById?.(id);
-    if (!input) return;
-    input.value = String(value);
-    const EventCtor = doc.defaultView?.Event ?? globalScope?.Event;
-    if (typeof EventCtor === 'function') {
-      input.dispatchEvent(new EventCtor('input', { bubbles: true }));
-      input.dispatchEvent(new EventCtor('change', { bubbles: true }));
-    }
-  }
-
   function showReplacementToast(message) {
     if (typeof globalScope?.showToast === 'function') {
       globalScope.showToast(message);
@@ -97,36 +86,20 @@
     const doc = globalScope?.document;
     if (!doc) return false;
 
-    const estimatedCavityW = width + 20;
-    const estimatedCavityH = height + 50;
-    const estimatedCavityD = depth + 50;
-
     closeFitVizModal();
     doc.querySelectorAll('[data-fit-viz-modal], .fit-viz-modal').forEach((node) => node.remove());
     const resultsSection = doc.getElementById('resultsSection');
     if (resultsSection) resultsSection.style.display = 'none';
 
-    setInputValue(doc, 'inW', estimatedCavityW);
-    setInputValue(doc, 'inH', estimatedCavityH);
-    setInputValue(doc, 'inD', estimatedCavityD);
-
     const searchSection = doc.getElementById('search') ?? doc.querySelector('[data-fit-checker]');
     searchSection?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
-    showReplacementToast('Estimated cavity based on old model. Adjust if needed.');
+    showReplacementToast('Old appliance dimensions loaded for direct size comparison.');
 
-    if (typeof globalScope?.doSearch === 'function') {
-      globalScope.doSearch({ preserveExistingFacets: true });
-    } else {
-      const EventCtor = doc.defaultView?.CustomEvent ?? globalScope?.CustomEvent;
-      if (typeof EventCtor === 'function') {
-        doc.dispatchEvent(new EventCtor('fitappliance:replacement-search', {
-          detail: {
-            w: estimatedCavityW,
-            h: estimatedCavityH,
-            d: estimatedCavityD
-          }
-        }));
-      }
+    const EventCtor = doc.defaultView?.CustomEvent ?? globalScope?.CustomEvent;
+    if (typeof EventCtor === 'function') {
+      doc.dispatchEvent(new EventCtor('fitappliance:replacement-search', {
+        detail: { w: width, h: height, d: depth }
+      }));
     }
     return true;
   }
@@ -245,10 +218,11 @@
     return section;
   }
 
-  function renderFacetBar(container, counts = {}, activeFacets = {}, onChange) {
+  function renderFacetBar(container, counts = {}, activeFacets = {}, onChange, options = {}) {
     if (!container) return;
     container.textContent = '';
     setAriaLabel(container, 'Filter results');
+    const replacementMode = options?.searchMode === 'replacement';
 
     const doc = container.ownerDocument;
     const brandCounts = Object.entries(counts?.brand ?? {});
@@ -290,27 +264,32 @@
       container.appendChild(section);
     }
 
-    const verificationSection = doc.createElement('section');
-    verificationSection.className = 'facet-group';
-    const verifiedToggle = doc.createElement('label');
-    verifiedToggle.className = `facet-toggle facet-toggle--verified${activeFacets?.verifiedOnly === true ? ' facet-toggle--active' : ''}`;
-    const verifiedInput = doc.createElement('input');
-    verifiedInput.type = 'checkbox';
-    verifiedInput.dataset.verifiedOnly = '1';
-    verifiedInput.checked = activeFacets?.verifiedOnly === true;
-    setAriaLabel(verifiedInput, 'Show only Verified Fit products');
-    const verifiedLabel = doc.createElement('span');
-    verifiedLabel.textContent = 'Show only Verified Fit products';
-    verifiedInput.addEventListener('change', () => {
-      verifiedToggle.classList.toggle('facet-toggle--active', verifiedInput.checked);
-      onChange?.({ type: 'verifiedOnly', value: verifiedInput.checked });
-    });
-    verifiedToggle.append(verifiedInput, verifiedLabel);
-    verificationSection.appendChild(verifiedToggle);
-    container.appendChild(verificationSection);
+    if (!replacementMode) {
+      const verificationSection = doc.createElement('section');
+      verificationSection.className = 'facet-group';
+      const verifiedToggle = doc.createElement('label');
+      verifiedToggle.className = `facet-toggle facet-toggle--verified${activeFacets?.verifiedOnly === true ? ' facet-toggle--active' : ''}`;
+      const verifiedInput = doc.createElement('input');
+      verifiedInput.type = 'checkbox';
+      verifiedInput.dataset.verifiedOnly = '1';
+      verifiedInput.checked = activeFacets?.verifiedOnly === true;
+      setAriaLabel(verifiedInput, 'Show only Verified Fit products');
+      const verifiedLabel = doc.createElement('span');
+      verifiedLabel.textContent = 'Show only Verified Fit products';
+      verifiedInput.addEventListener('change', () => {
+        verifiedToggle.classList.toggle('facet-toggle--active', verifiedInput.checked);
+        onChange?.({ type: 'verifiedOnly', value: verifiedInput.checked });
+      });
+      verifiedToggle.append(verifiedInput, verifiedLabel);
+      verificationSection.appendChild(verifiedToggle);
+      container.appendChild(verificationSection);
+    }
 
-    RANGE_FILTERS.forEach((config) => {
-      container.appendChild(renderRangeFilter(doc, config, activeFacets, onChange));
+    RANGE_FILTERS.filter((config) => !replacementMode || config.id !== 'score').forEach((config) => {
+      const modeConfig = replacementMode && ['width', 'height', 'depth'].includes(config.id)
+        ? { ...config, title: `Current appliance ${config.id}` }
+        : config;
+      container.appendChild(renderRangeFilter(doc, modeConfig, activeFacets, onChange));
     });
 
     const retailerSection = doc.createElement('section');
@@ -347,7 +326,7 @@
     container.appendChild(availabilitySection);
   }
 
-  function renderActiveChips(container, activeFacets = {}, onRemove) {
+  function renderActiveChips(container, activeFacets = {}, onRemove, options = {}) {
     if (!container) return;
     container.textContent = '';
 
@@ -377,7 +356,7 @@
     if (activeFacets?.stars !== null && activeFacets?.stars !== undefined) {
       chips.push({ key: 'stars', value: activeFacets.stars, label: `${activeFacets.stars}+ stars` });
     }
-    if (activeFacets?.scoreMin !== null && activeFacets?.scoreMin !== undefined) {
+    if (options?.searchMode !== 'replacement' && activeFacets?.scoreMin !== null && activeFacets?.scoreMin !== undefined) {
       chips.push({ key: 'scoreMin', value: activeFacets.scoreMin, label: `Fit Score ${activeFacets.scoreMin}+` });
     }
     if (activeFacets?.starsMin !== null && activeFacets?.starsMin !== undefined) {
@@ -386,7 +365,7 @@
     if (activeFacets?.starsMax !== null && activeFacets?.starsMax !== undefined) {
       chips.push({ key: 'starsMax', value: activeFacets.starsMax, label: `${activeFacets.starsMax}★ max` });
     }
-    if (activeFacets?.verifiedOnly === true) {
+    if (options?.searchMode !== 'replacement' && activeFacets?.verifiedOnly === true) {
       chips.push({ key: 'verifiedOnly', value: true, label: 'Verified Fit only' });
     }
     if (activeFacets?.availableOnly === true) {
@@ -410,7 +389,7 @@
     }
   }
 
-  function renderSortDropdown(container, currentSort = 'fit-score-desc', onChange) {
+  function renderSortDropdown(container, currentSort = 'fit-score-desc', onChange, options = {}) {
     if (!container) return;
     container.textContent = '';
     const doc = container.ownerDocument;
@@ -421,21 +400,32 @@
     const select = doc.createElement('select');
     select.dataset.sortSelect = '1';
     setAriaLabel(select, 'Sort results');
-    [
-      ['fit-score-desc', 'Fit Score (high to low)'],
-      ['verified-first', 'Verified first'],
-      ['price-asc', 'Price (low to high)'],
-      ['price-desc', 'Price (high to low)'],
-      ['stars', 'Energy Stars (high to low)'],
-      ['brand', 'Brand (A-Z)'],
-      ['best-fit', 'Legacy best fit']
-    ].forEach(([value, labelText]) => {
+    const replacementMode = options?.searchMode === 'replacement';
+    const defaultSort = replacementMode ? 'closest-size' : 'fit-score-desc';
+    const sortOptions = replacementMode
+      ? [
+        ['closest-size', 'Closest size first'],
+        ['price-asc', 'Price (low to high)'],
+        ['price-desc', 'Price (high to low)'],
+        ['stars', 'Energy Stars (high to low)'],
+        ['brand', 'Brand (A-Z)']
+      ]
+      : [
+        ['fit-score-desc', 'Fit Score (high to low)'],
+        ['verified-first', 'Verified first'],
+        ['price-asc', 'Price (low to high)'],
+        ['price-desc', 'Price (high to low)'],
+        ['stars', 'Energy Stars (high to low)'],
+        ['brand', 'Brand (A-Z)'],
+        ['best-fit', 'Legacy best fit']
+      ];
+    sortOptions.forEach(([value, labelText]) => {
       const option = doc.createElement('option');
       option.value = value;
       option.textContent = labelText;
       select.appendChild(option);
     });
-    select.value = [...select.options].some((option) => option.value === currentSort) ? currentSort : 'fit-score-desc';
+    select.value = [...select.options].some((option) => option.value === currentSort) ? currentSort : defaultSort;
     select.addEventListener('change', () => onChange?.(select.value));
     label.append(text, select);
     container.appendChild(label);
@@ -2194,6 +2184,94 @@
     ];
   }
 
+  function isReplacementComparison(cells) {
+    const rows = Array.isArray(cells) ? cells : [];
+    return rows.length > 0 && rows.every((snapshot) => snapshot?.comparisonMode === 'replacement');
+  }
+
+  function formatReplacementDelta(snapshot, axis) {
+    const value = Number(snapshot?.replacementMatch?.deltasMm?.[axis]);
+    if (!Number.isFinite(value)) return 'Not captured';
+    const rounded = Math.round(value);
+    return `${rounded > 0 ? '+' : ''}${rounded} mm`;
+  }
+
+  function getReplacementCompareSections() {
+    return [
+      {
+        title: 'Size difference from old appliance',
+        rows: [
+          {
+            label: 'Largest axis difference',
+            help: 'The largest absolute width, height, or depth change from the old appliance. Smaller is closer in outside size.',
+            key: (snapshot) => String(snapshot?.replacementMatch?.maxAbsoluteDeltaMm ?? ''),
+            render: (snapshot) => formatCompareMm(snapshot?.replacementMatch?.maxAbsoluteDeltaMm)
+          },
+          ...['width', 'height', 'depth'].map((axis) => ({
+            label: `${axis[0].toUpperCase()}${axis.slice(1)} difference`,
+            help: 'Positive means the current appliance is larger; negative means it is smaller.',
+            key: (snapshot) => String(snapshot?.replacementMatch?.deltasMm?.[axis] ?? ''),
+            render: (snapshot) => formatReplacementDelta(snapshot, axis)
+          }))
+        ]
+      },
+      {
+        title: 'Current appliance dimensions',
+        rows: [
+          ['Width', 'w'], ['Height', 'h'], ['Depth', 'd']
+        ].map(([label, key]) => ({
+          label,
+          help: 'The current appliance outside dimension used for direct size comparison.',
+          key: (snapshot) => String(snapshot?.[key] ?? ''),
+          render: (snapshot) => formatCompareMm(snapshot?.[key])
+        })).concat({
+          label: 'Height adjustment range',
+          help: 'The supported levelling range when the appliance height is adjustable.',
+          key: (snapshot) => JSON.stringify(snapshot?.replacementMatch?.candidateHeightRangeMm ?? null),
+          render: (snapshot) => {
+            const range = snapshot?.replacementMatch?.candidateHeightRangeMm;
+            const minimum = Number(range?.minimum);
+            const maximum = Number(range?.maximum);
+            const selected = Number(range?.selected);
+            return [minimum, maximum, selected].every(Number.isFinite) && minimum < maximum
+              ? `${Math.round(minimum)}–${Math.round(maximum)} mm (${Math.round(selected)} mm setting)`
+              : 'Fixed height';
+          }
+        })
+      },
+      {
+        title: 'Current availability',
+        rows: [
+          {
+            label: 'Verified product links',
+            help: 'Direct current retailer product pages captured for this model.',
+            key: (snapshot) => (snapshot?.retailers ?? []).map((retailer) => retailer.name).join('|'),
+            render: formatCompareRetailers
+          },
+          {
+            label: 'Captured price',
+            help: 'Prices appear only when separately captured from a current retailer source.',
+            key: formatComparePrice,
+            render: formatComparePrice
+          }
+        ]
+      }
+    ];
+  }
+
+  function renderReplacementCompareHeader(cells) {
+    const count = Math.max(1, Math.min(3, cells.length));
+    return `<div class="compare-sticky-products" aria-label="Compared replacement candidates" style="--compare-count:${count}">
+      <div class="compare-sticky-products__metric">Products</div>
+      ${cells.map((snapshot) => `
+        <div class="compare-sticky-product">
+          <strong>${escHtml(snapshot?.displayName ?? 'Appliance')}</strong>
+          <span>${escHtml([snapshot?.brand, snapshot?.model].filter(Boolean).join(' ') || 'Model pending')}</span>
+        </div>
+      `).join('')}
+    </div>`;
+  }
+
   function renderCompareProductHeader(cells) {
     const count = Math.max(1, Math.min(3, cells.length));
     const insights = getCompareInsights(cells);
@@ -2332,7 +2410,6 @@
     head.className = 'compare-modal-head';
     const title = doc.createElement('h3');
     title.id = 'searchCompareTitle';
-    title.textContent = 'Compare appliances';
     const closeButton = doc.createElement('button');
     closeButton.type = 'button';
     closeButton.className = 'compare-modal-close';
@@ -2345,10 +2422,20 @@
     const body = doc.createElement('div');
     body.className = 'compare-modal-body';
     const cells = rows.map((row) => row.snapshot);
+    const replacementMode = isReplacementComparison(cells);
+    title.textContent = replacementMode ? 'Compare replacement candidates' : 'Compare appliances';
     const tableRenderer = globalScope?.CompareTable?.renderCompareTable;
     const compareTableHtml = typeof tableRenderer === 'function'
-      ? tableRenderer(cells)
-      : `
+      ? tableRenderer(cells, { mode: replacementMode ? 'replacement' : 'cavity' })
+      : replacementMode
+        ? `
+          ${renderReplacementCompareHeader(cells)}
+          <p class="compare-scroll-hint">Swipe sideways to compare product columns.</p>
+          <div class="compare-v2-sections">
+            ${getReplacementCompareSections().map((section) => renderCompareSection(section, cells)).join('')}
+          </div>
+        `
+        : `
         ${renderCompareInsightPanel(cells)}
         ${renderCompareReportSummary(cells)}
         ${renderCompareProductHeader(cells)}
@@ -2357,9 +2444,12 @@
           ${getCompareSections().map((section) => renderCompareSection(section, cells)).join('')}
         </div>
       `;
+    const toolbarCopy = replacementMode
+      ? 'Side-by-side direct W/H/D differences from the old appliance. No fit or clearance verdict is calculated.'
+      : 'Side-by-side fit, delivery, and retailer data. Differences are highlighted.';
     body.innerHTML = `
       <div class="compare-v2-toolbar">
-        <p>Side-by-side fit, delivery, and retailer data. Differences are highlighted.</p>
+        <p>${escHtml(toolbarCopy)}</p>
         <div class="compare-v2-actions">
           ${shareUrl ? '<button type="button" class="compare-share-link" data-compare-share>Copy compare link</button>' : ''}
           <button type="button" class="secondary compare-diff-toggle" data-compare-differences-only aria-pressed="false">Only show differences</button>

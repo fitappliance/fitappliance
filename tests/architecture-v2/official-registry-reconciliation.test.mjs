@@ -63,6 +63,29 @@ test('Energy Rating normalization preserves raw axes and exact model suffixes', 
   assert.notEqual(observation.identity.modelKey, sibling.identity.modelKey);
 });
 
+test('Energy Rating normalization separates Australian market history from current registry availability', () => {
+  const [historical] = normalizeEnergyRatingRows([{ record: energyRow({
+    SubmitStatus: 'Superseded',
+    'Availability Status': 'Unavailable',
+  }), sourceLine: 2 }], {
+    category: 'fridge',
+    sourceId: 'energy-rating:fridge',
+    snapshotSha256: 'a'.repeat(64),
+  });
+  assert.equal(historical.marketedInAustralia, true);
+  assert.equal(historical.activeInAustralia, false);
+
+  const [foreign] = normalizeEnergyRatingRows([{ record: energyRow({
+    Sold_in: 'New Zealand',
+  }), sourceLine: 3 }], {
+    category: 'fridge',
+    sourceId: 'energy-rating:fridge',
+    snapshotSha256: 'a'.repeat(64),
+  });
+  assert.equal(foreign.marketedInAustralia, false);
+  assert.equal(foreign.activeInAustralia, false);
+});
+
 test('known W/H inversion is AXIS_SUSPECT and never accepted as consistent', () => {
   const observations = normalizeEnergyRatingRows([{ record: energyRow(), sourceLine: 2 }], {
     category: 'fridge',

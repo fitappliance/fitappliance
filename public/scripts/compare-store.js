@@ -62,10 +62,60 @@
     };
   }
 
+  function normalizeComparisonMode(value) {
+    return String(value ?? '').trim() === 'replacement' ? 'replacement' : 'cavity';
+  }
+
+  function normalizeReplacementMatch(match) {
+    if (!match || typeof match !== 'object' || Array.isArray(match)) return null;
+    const deltas = Object.fromEntries(['width', 'height', 'depth'].map((axis) => {
+      const value = Number(match?.deltasMm?.[axis]);
+      return [axis, Number.isFinite(value) ? Math.round(value) : null];
+    }));
+    if (Object.values(deltas).some((value) => value === null)) return null;
+    const maxAbsoluteDeltaMm = Number(match.maxAbsoluteDeltaMm);
+    const totalAbsoluteDeltaMm = Number(match.totalAbsoluteDeltaMm);
+    const normalizedDistance = Number(match.normalizedDistance);
+    if (![maxAbsoluteDeltaMm, totalAbsoluteDeltaMm, normalizedDistance].every(Number.isFinite)) return null;
+    const rawRange = match?.candidateHeightRangeMm;
+    const range = rawRange && typeof rawRange === 'object' && !Array.isArray(rawRange)
+      ? {
+        minimum: Number(rawRange.minimum),
+        maximum: Number(rawRange.maximum),
+        selected: Number(rawRange.selected)
+      }
+      : null;
+    const validRange = range
+      && Object.values(range).every(Number.isFinite)
+      && range.minimum > 0
+      && range.minimum < range.maximum
+      && range.selected >= range.minimum
+      && range.selected <= range.maximum;
+    const dimensionSource = ['geometry_v2', 'catalog'].includes(String(match.candidateDimensionSource ?? ''))
+      ? String(match.candidateDimensionSource)
+      : null;
+    return {
+      deltasMm: deltas,
+      maxAbsoluteDeltaMm: Math.max(0, Math.round(maxAbsoluteDeltaMm)),
+      totalAbsoluteDeltaMm: Math.max(0, Math.round(totalAbsoluteDeltaMm)),
+      normalizedDistance: Math.max(0, normalizedDistance),
+      relation: String(match.relation ?? '').replace(/\s+/g, ' ').trim() || null,
+      ...(dimensionSource ? { candidateDimensionSource: dimensionSource } : {}),
+      ...(validRange ? {
+        candidateHeightRangeMm: {
+          minimum: Math.round(range.minimum),
+          maximum: Math.round(range.maximum),
+          selected: Math.round(range.selected)
+        }
+      } : {})
+    };
+  }
+
   function normalizeSnapshot(snapshot) {
     const slug = String(snapshot?.slug ?? snapshot?.id ?? '').trim();
     if (!slug) return null;
-    return {
+    const comparisonMode = normalizeComparisonMode(snapshot?.comparisonMode);
+    const common = {
       slug,
       displayName: String(snapshot?.displayName ?? snapshot?.name ?? snapshot?.model ?? 'Appliance').replace(/\s+/g, ' ').trim(),
       brand: String(snapshot?.brand ?? '').replace(/\s+/g, ' ').trim(),
@@ -74,13 +124,25 @@
       w: Number.isFinite(Number(snapshot?.w)) ? Math.round(Number(snapshot.w)) : null,
       h: Number.isFinite(Number(snapshot?.h)) ? Math.round(Number(snapshot.h)) : null,
       d: Number.isFinite(Number(snapshot?.d)) ? Math.round(Number(snapshot.d)) : null,
-      practicalClearance: normalizeClearance(snapshot?.practicalClearance ?? snapshot?.clearance),
-      manufacturerClearance: normalizeClearance(snapshot?.manufacturerClearance),
-      fitSummary: normalizeFitSummary(snapshot?.fitSummary),
-      delivery: normalizeDelivery(snapshot?.delivery),
       features: normalizeFeatureList(snapshot?.features),
       retailers: normalizeRetailers(snapshot?.retailers),
       stars: Number.isFinite(Number(snapshot?.stars)) ? Number(snapshot.stars) : null
+    };
+    if (comparisonMode === 'replacement') {
+      const replacementMatch = normalizeReplacementMatch(snapshot?.replacementMatch);
+      return replacementMatch ? {
+        ...common,
+        comparisonMode,
+        replacementMatch
+      } : null;
+    }
+    return {
+      ...common,
+      comparisonMode,
+      practicalClearance: normalizeClearance(snapshot?.practicalClearance ?? snapshot?.clearance),
+      manufacturerClearance: normalizeClearance(snapshot?.manufacturerClearance),
+      fitSummary: normalizeFitSummary(snapshot?.fitSummary),
+      delivery: normalizeDelivery(snapshot?.delivery)
     };
   }
 
@@ -144,6 +206,9 @@
         }
         if (memory.length >= MAX_COMPARE) {
           return { ok: false, reason: 'capacity' };
+        }
+        if (memory.some((entry) => entry.snapshot.comparisonMode !== normalized.comparisonMode)) {
+          return { ok: false, reason: 'mode_mismatch' };
         }
         const date = nowFn?.() ?? new Date();
         const addedAt = date instanceof Date ? date.toISOString() : new Date(date).toISOString();
