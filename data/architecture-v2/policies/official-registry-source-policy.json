@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "2026-07-12.1",
+  "storage": {
+    "rootEnv": "FITAPPLIANCE_STORAGE_ROOT",
+    "normalRoot": "/Volumes/UGREEN-1TB/FitAppliance",
+    "repositoryStoresRawPayloads": false,
+    "normalBuildRequiresExternalStorage": false
+  },
+  "publication": {
+    "mode": "shadow_only",
+    "mayWritePublicProjection": false,
+    "mayPromoteDimensions": false,
+    "mayProduceVerifiedFit": false
+  },
+  "sources": {
+    "energy-rating": {
+      "authority": "Australian Government GEMS regulator",
+      "metadataUrl": "https://data.gov.au/data/api/3/action/package_show?id=energy-rating-for-household-appliances",
+      "allowedHosts": [
+        "data.gov.au"
+      ],
+      "categories": {
+        "fridge": "Fridges and Freezers",
+        "dishwasher": "Dishwashers"
+      },
+      "allowedRoles": [
+        "australian_model_identity",
+        "registration_status",
+        "candidate_dimensions"
+      ],
+      "prohibitedRoles": [
+        "accepted_geometry_without_reconciliation",
+        "installation_clearance",
+        "operation_envelope",
+        "service_space",
+        "verified_fit"
+      ],
+      "licence": {
+        "id": "cc-by-3.0-au",
+        "name": "Creative Commons Attribution 3.0 Australia",
+        "url": "https://creativecommons.org/licenses/by/3.0/au/",
+        "attribution": "Department of Climate Change, Energy, the Environment and Water",
+        "permitsRepositoryDerivatives": true,
+        "scopeNote": "Dataset records and normalized analytical derivatives; preserve attribution and source snapshot hash."
+      },
+      "evidenceUrls": [
+        "https://www.energyrating.gov.au/about-us/gems-regulator/registered-appliance-and-equipment-data",
+        "https://data.gov.au/data/dataset/energy-rating-for-household-appliances"
+      ]
+    },
+    "wels": {
+      "authority": "Australian Government Water Efficiency Labelling and Standards scheme",
+      "downloadUrl": "https://wels-public-register.environment.gov.au/publicregister-allmodels.csv",
+      "allowedHosts": [
+        "wels-public-register.environment.gov.au"
+      ],
+      "allowedRoles": [
+        "exact_model_identity",
+        "variant_identity",
+        "registration_status"
+      ],
+      "prohibitedRoles": [
+        "product_images",
+        "wels_label_reuse",
+        "installation_geometry",
+        "clearance",
+        "water_connection_geometry",
+        "verified_fit"
+      ],
+      "licence": {
+        "id": "cc-by-4.0",
+        "name": "Creative Commons Attribution 4.0 International",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "Department of Climate Change, Energy, the Environment and Water",
+        "permitsRepositoryDerivatives": true,
+        "scopeNote": "Pilot uses textual public-register identity and status fields only. Department terms exclude the WELS label, logos and third-party content; images and labels are not acquired or republished."
+      },
+      "evidenceUrls": [
+        "https://wels-public-register.environment.gov.au/search-all-products/",
+        "https://wels-public-register.environment.gov.au/help/",
+        "https://www.dcceew.gov.au/about/copyright"
+      ]
+    },
+    "eess": {
+      "authority": "Electrical Equipment Safety System",
+      "sourceUrl": "https://www.eess.gov.au/registration/eess-registration-database/",
+      "allowedRoles": [
+        "responsible_supplier_identity",
+        "electrical_registration_corroboration"
+      ],
+      "prohibitedRoles": [
+        "geometry",
+        "installation_clearance",
+        "verified_fit"
+      ],
+      "acquisitionMode": "research_on_demand",
+      "durableMirrorAllowed": false
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-07-12",
+  "publicProjection": {
+    "path": "data/architecture-v2/generated/public-catalog-projection.json",
+    "sha256": "8e8e995640b9910a5a9303b7c6b8bb964220d74bd825a575b78466762d0068b7",
+    "products": 3521
+  },
+  "runtimeCatalog": {
+    "path": "data/catalog-final.json",
+    "sha256": "d0a463cfe05104a64990ea60e52f42164f332bcca787a846a88c12fc80e51198",
+    "products": 3521
+  },
+  "fitPublicationAudit": {
+    "path": "data/architecture-v2/reviews/automated/fit-publication-audit.json",
+    "sha256": "79a436a9a2093233946f99ebb15c484087650f3819c280811a09e9e900b733e4",
+    "violations": 0,
+    "receiptBoundDimensions": 21,
+    "receiptBoundVerifiedFit": 0
+  },
+  "pilotMode": "shadow_only"
+}

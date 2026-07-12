@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-12T11:13:49.000Z",
+  "sourceCounts": {
+    "energy-rating:fridge": {
+      "rows": 3985,
+      "normalized": 3985,
+      "activeInAustralia": 3706
+    },
+    "energy-rating:dishwasher": {
+      "rows": 1426,
+      "normalized": 1426,
+      "activeInAustralia": 1285
+    },
+    "wels:all-models": {
+      "rows": 73855,
+      "normalizedDishwashers": 2652,
+      "activeForSale": 696
+    }
+  },
+  "snapshotHashes": {
+    "energy-rating:dishwasher": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+    "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+    "energy-rating:metadata": "a605b9420c089b02c3c2ed6f5c791ff12111c5ca5b30aea07ca440d98c3b4c71",
+    "wels:all-models": "a9a124213e968ee2ea800c76e2f37a2120b0c4a50848a579c52cb1ff1f9c9446"
+  },
+  "canaries": [
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_062c6c1c2b89378a83e10ee3",
+      "legacyRuntimeId": "dishwasher-adw0961",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F3S1",
+      "exactKey": "dishwasher\u0000HAIER\u0000HDW15F3S1",
+      "catalogDimensionsMm": {
+        "width": 597,
+        "height": 895,
+        "depth": 599
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 610
+      },
+      "deltasMm": {
+        "width": 1,
+        "height": -45,
+        "depth": 11
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1164,
+          "rowFingerprint": "019599ac5ab6431d3164bb3281ef2c93881a1c9431e4e0f96b668f1cefd56eac",
+          "registrationNumber": "ADW1297",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 610
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 757,
+          "rowFingerprint": "17879dcc29f123294ea190f5d78dde60dc038e7ae492da6778114cc9116e5abb",
+          "registrationNumber": "ADW0961",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 610
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c90e7024d4fdcac3eac88bcb",
+      "legacyRuntimeId": "fridge-arf3824",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WHE5264SC",
+      "exactKey": "fridge\u0000WESTINGHOUSE\u0000WHE5264SC",
+      "catalogDimensionsMm": {
+        "width": 796,
+        "height": 1725,
+        "depth": 769
+      },
+      "canPromoteDimensions": false,
+      "state": "AXIS_SUSPECT",
+      "reasonCodes": [
+        "NON_IDENTITY_AXIS_PERMUTATION_MATCHES_CATALOG"
+      ],
+      "registryDimensionsMm": {
+        "width": 1725,
+        "height": 796,
+        "depth": 769
+      },
+      "deltasMm": {
+        "width": 929,
+        "height": -929,
+        "depth": 0
+      },
+      "axisPermutation": {
+        "width": "height",
+        "height": "width",
+        "depth": "depth"
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 3489,
+          "rowFingerprint": "ef762c9b58ab5b4726425492a19a627973e1f38577e772a7608fa89d6544d22e",
+          "registrationNumber": "ARF3824",
+          "dimensionsMm": {
+            "width": 1725,
+            "height": 796,
+            "depth": 769
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_edeb2ff8512e858363c38ffa",
+      "legacyRuntimeId": "fridge-arf2944",
+      "category": "fridge",
+      "brand": "Electrolux",
+      "model": "EQE6160BA",
+      "exactKey": "fridge\u0000ELECTROLUX\u0000EQE6160BA",
+      "catalogDimensionsMm": {
+        "width": 913,
+        "height": 1782,
+        "depth": 749
+      },
+      "canPromoteDimensions": false,
+      "state": "AXIS_SUSPECT",
+      "reasonCodes": [
+        "NON_IDENTITY_AXIS_PERMUTATION_MATCHES_CATALOG"
+      ],
+      "registryDimensionsMm": {
+        "width": 1782,
+        "height": 913,
+        "depth": 749
+      },
+      "deltasMm": {
+        "width": 869,
+        "height": -869,
+        "depth": 0
+      },
+      "axisPermutation": {
+        "width": "height",
+        "height": "width",
+        "depth": "depth"
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 1056,
+          "rowFingerprint": "ea6dba7f081b2809af08489a78e71b747d82156c819fc9bedc03bece125b6525",
+          "registrationNumber": "ARF2944",
+          "dimensionsMm": {
+            "width": 1782,
+            "height": 913,
+            "depth": 749
+          },
+          "qualityFlags": []
+        }
+      ]
+    }
+  ],
+  "rawPayloadsInRepository": false
+}

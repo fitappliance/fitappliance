@@ -1,0 +1,508 @@
+{
+  "schemaVersion": 1,
+  "sourcePilotProducts": 100,
+  "brands": [
+    {
+      "brand": "Fisher & Paykel",
+      "priority": 16,
+      "pilotModels": [
+        "DD60D2NB9",
+        "DD60D2NX9",
+        "DD60D4NB9",
+        "DD60D4NX9",
+        "DD60SCX9",
+        "DD60ST4NB9",
+        "DW60UT4I2",
+        "DW60UZT4B2",
+        "RF605QDVX2",
+        "RF605QNUVB1",
+        "RF605QNUVX1",
+        "RF605QZUVB1",
+        "RF610ANUB5",
+        "RF610ANUX5",
+        "RF730QNUVB1",
+        "RF730QNUVX1"
+      ],
+      "categoryCounts": {
+        "dishwasher": 8,
+        "fridge": 8
+      },
+      "route": {
+        "state": "official_trade_portal_confirmed",
+        "url": "https://www.fisherpaykel.com/au/trade-resources",
+        "evidence": "Official AU trade portal provides dimensions, datasheets, CAD, installation guides and a Design Support contact route."
+      },
+      "requestFields": [
+        "exact AU model code and GTIN",
+        "current/discontinued status and replacement model",
+        "product W/H/D with axis and adjustable ranges",
+        "installation/cavity clearances",
+        "door/lid/drawer operation envelope",
+        "ventilation requirements",
+        "water, power and drainage connection zones and reach",
+        "delivery/package dimensions and weight",
+        "installation guides, QRG, datasheets and CAD URLs"
+      ],
+      "rightsQuestions": [
+        "May FitAppliance cache and display factual fields with attribution?",
+        "May source document links and excerpts be shown to users?",
+        "What update or deletion feed is available?",
+        "Which fields are product, package, cavity or installation measurements?"
+      ],
+      "state": "not_contacted"
+    },
+    {
+      "brand": "Haier",
+      "priority": 16,
+      "pilotModels": [
+        "HDW13F0B1",
+        "HDW15F1B1",
+        "HDW15F1S1",
+        "HDW15F2B1",
+        "HDW15F3S1",
+        "HDW15F4B1",
+        "HDW15U2I1",
+        "HDW15V2B2",
+        "HRF130UW",
+        "HRF420BHS",
+        "HRF420BS",
+        "HRF505VW",
+        "HRF510BHC",
+        "HRF510FHS",
+        "HRF520BHS French Door 520L",
+        "HRF90UW2"
+      ],
+      "categoryCounts": {
+        "dishwasher": 8,
+        "fridge": 8
+      },
+      "route": {
+        "state": "official_contact_research_required",
+        "url": null,
+        "evidence": "Use the manufacturer AU site to identify PIM, e-commerce, trade/specification or data-governance ownership; do not guess an email address."
+      },
+      "requestFields": [
+        "exact AU model code and GTIN",
+        "current/discontinued status and replacement model",
+        "product W/H/D with axis and adjustable ranges",
+        "installation/cavity clearances",
+        "door/lid/drawer operation envelope",
+        "ventilation requirements",
+        "water, power and drainage connection zones and reach",
+        "delivery/package dimensions and weight",
+        "installation guides, QRG, datasheets and CAD URLs"
+      ],
+      "rightsQuestions": [
+        "May FitAppliance cache and display factual fields with attribution?",
+        "May source document links and excerpts be shown to users?",
+        "What update or deletion feed is available?",
+        "Which fields are product, package, cavity or installation measurements?"
+      ],
+      "state": "not_contacted"
+    },
+    {
+      "brand": "Beko",
+      "priority": 14,
+      "pilotModels": [
+        "BDF1620W",
+        "BDF1620X",
+        "BDF1630X",
+        "BDF1640AX",
+        "BDF1640DX",
+        "BDFB1410W",
+        "BDFB1630X",
+        "DDN38450",
+        "HSA21530",
+        "HSA46330",
+        "RCNA340K30ZW",
+        "RCNA340K30ZX",
+        "RDNE400K30ZW",
+        "RDNE400K30ZX"
+      ],
+      "categoryCounts": {
+        "dishwasher": 8,
+        "fridge": 6
+      },
+      "route": {
+        "state": "official_contact_research_required",
+        "url": null,
+        "evidence": "Use the manufacturer AU site to identify PIM, e-commerce, trade/specification or data-governance ownership; do not guess an email address."
+      },
+      "requestFields": [
+        "exact AU model code and GTIN",
+        "current/discontinued status and replacement model",
+        "product W/H/D with axis and adjustable ranges",
+        "installation/cavity clearances",
+        "door/lid/drawer operation envelope",
+        "ventilation requirements",
+        "water, power and drainage connection zones and reach",
+        "delivery/package dimensions and weight",
+        "installation guides, QRG, datasheets and CAD URLs"
+      ],
+      "rightsQuestions": [
+        "May FitAppliance cache and display factual fields with attribution?",
+        "May source document links and excerpts be shown to users?",
+        "What update or deletion feed is available?",
+        "Which fields are product, package, cavity or installation measurements?"
+      ],
+      "state": "not_contacted"
+    },
+    {
+      "brand": "LG",
+      "priority": 13,
+      "pilotModels": [
+        "GF-B505BB",
+        "GF-L700PL",
+        "GF-LN500MBL",
+        "GF-V500MBLC",
+        "GS-B655PL",
+        "XD2A25MB",
+        "XD3A15MB",
+        "XD3A15NS",
+        "XD3A25MB",
+        "XD3A25MW",
+        "XD4B15PS",
+        "XD4B24PS",
+        "XD5B14PS"
+      ],
+      "categoryCounts": {
+        "dishwasher": 8,
+        "fridge": 5
+      },
+      "route": {
+        "state": "official_contact_research_required",
+        "url": null,
+        "evidence": "Use the manufacturer AU site to identify PIM, e-commerce, trade/specification or data-governance ownership; do not guess an email address."
+      },
+      "requestFields": [
+        "exact AU model code and GTIN",
+        "current/discontinued status and replacement model",
+        "product W/H/D with axis and adjustable ranges",
+        "installation/cavity clearances",
+        "door/lid/drawer operation envelope",
+        "ventilation requirements",
+        "water, power and drainage connection zones and reach",
+        "delivery/package dimensions and weight",
+        "installation guides, QRG, datasheets and CAD URLs"
+      ],
+      "rightsQuestions": [
+        "May FitAppliance cache and display factual fields with attribution?",
+        "May source document links and excerpts be shown to users?",
+        "What update or deletion feed is available?",
+        "Which fields are product, package, cavity or installation measurements?"
+      ],
+      "state": "not_contacted"
+    },
+    {
+      "brand": "Bosch",
+      "priority": 10,
+      "pilotModels": [
+        "KFN96AXEAA",
+        "KFN96VPEAA",
+        "SMI4HTS01A",
+        "SMI6HCS01A",
+        "SMS24AI01A",
+        "SMS2ITW01A",
+        "SMS4HTI01A",
+        "SMS4HVB01A",
+        "SMS4HVI01A",
+        "SMS6HAI02A"
+      ],
+      "categoryCounts": {
+        "dishwasher": 8,
+        "fridge": 2
+      },
+      "route": {
+        "state": "official_contact_research_required",
+        "url": null,
+        "evidence": "Use the manufacturer AU site to identify PIM, e-commerce, trade/specification or data-governance ownership; do not guess an email address."
+      },
+      "requestFields": [
+        "exact AU model code and GTIN",
+        "current/discontinued status and replacement model",
+        "product W/H/D with axis and adjustable ranges",
+        "installation/cavity clearances",
+        "door/lid/drawer operation envelope",
+        "ventilation requirements",
+        "water, power and drainage connection zones and reach",
+        "delivery/package dimensions and weight",
+        "installation guides, QRG, datasheets and CAD URLs"
+      ],
+      "rightsQuestions": [
+        "May FitAppliance cache and display factual fields with attribution?",
+        "May source document links and excerpts be shown to users?",
+        "What update or deletion feed is available?",
+        "Which fields are product, package, cavity or installation measurements?"
+      ],
+      "state": "not_contacted"
+    },
+    {
+      "brand": "Hisense",
+      "priority": 10,
+      "pilotModels": [
+        "HRBF126",
+        "HRBF46",
+        "HRCD640TBW",
+        "HRSBS632BW",
+        "HRTF206",
+        "HRTF325",
+        "HRVF240",
+        "HRVF384S",
+        "HSBE15FS",
+        "HSCM15FS"
+      ],
+      "categoryCounts": {
+        "dishwasher": 2,
+        "fridge": 8
+      },
+      "route": {
+        "state": "official_contact_research_required",
+        "url": null,
+        "evidence": "Use the manufacturer AU site to identify PIM, e-commerce, trade/specification or data-governance ownership; do not guess an email address."
+      },
+      "requestFields": [
+        "exact AU model code and GTIN",
+        "current/discontinued status and replacement model",
+        "product W/H/D with axis and adjustable ranges",
+        "installation/cavity clearances",
+        "door/lid/drawer operation envelope",
+        "ventilation requirements",
+        "water, power and drainage connection zones and reach",
+        "delivery/package dimensions and weight",
+        "installation guides, QRG, datasheets and CAD URLs"
+      ],
+      "rightsQuestions": [
+        "May FitAppliance cache and display factual fields with attribution?",
+        "May source document links and excerpts be shown to users?",
+        "What update or deletion feed is available?",
+        "Which fields are product, package, cavity or installation measurements?"
+      ],
+      "state": "not_contacted"
+    },
+    {
+      "brand": "Westinghouse",
+      "priority": 10,
+      "pilotModels": [
+        "WBB3100AK",
+        "WBE4302WC",
+        "WBE5300WC",
+        "WQE4960BA",
+        "WQE6000BB",
+        "WSE6640SA",
+        "WSE6670BA",
+        "WSF6602WB",
+        "WSF6604XB",
+        "WSF6606XB"
+      ],
+      "categoryCounts": {
+        "dishwasher": 3,
+        "fridge": 7
+      },
+      "route": {
+        "state": "official_contact_research_required",
+        "url": null,
+        "evidence": "Use the manufacturer AU site to identify PIM, e-commerce, trade/specification or data-governance ownership; do not guess an email address."
+      },
+      "requestFields": [
+        "exact AU model code and GTIN",
+        "current/discontinued status and replacement model",
+        "product W/H/D with axis and adjustable ranges",
+        "installation/cavity clearances",
+        "door/lid/drawer operation envelope",
+        "ventilation requirements",
+        "water, power and drainage connection zones and reach",
+        "delivery/package dimensions and weight",
+        "installation guides, QRG, datasheets and CAD URLs"
+      ],
+      "rightsQuestions": [
+        "May FitAppliance cache and display factual fields with attribution?",
+        "May source document links and excerpts be shown to users?",
+        "What update or deletion feed is available?",
+        "Which fields are product, package, cavity or installation measurements?"
+      ],
+      "state": "not_contacted"
+    },
+    {
+      "brand": "Samsung",
+      "priority": 6,
+      "pilotModels": [
+        "SRF5300SD",
+        "SRF7500BB",
+        "SRF7900BFH",
+        "SRF9400BFH",
+        "SRF9800BFH",
+        "SRL4200B"
+      ],
+      "categoryCounts": {
+        "dishwasher": 0,
+        "fridge": 6
+      },
+      "route": {
+        "state": "official_contact_research_required",
+        "url": null,
+        "evidence": "Use the manufacturer AU site to identify PIM, e-commerce, trade/specification or data-governance ownership; do not guess an email address."
+      },
+      "requestFields": [
+        "exact AU model code and GTIN",
+        "current/discontinued status and replacement model",
+        "product W/H/D with axis and adjustable ranges",
+        "installation/cavity clearances",
+        "door/lid/drawer operation envelope",
+        "ventilation requirements",
+        "water, power and drainage connection zones and reach",
+        "delivery/package dimensions and weight",
+        "installation guides, QRG, datasheets and CAD URLs"
+      ],
+      "rightsQuestions": [
+        "May FitAppliance cache and display factual fields with attribution?",
+        "May source document links and excerpts be shown to users?",
+        "What update or deletion feed is available?",
+        "Which fields are product, package, cavity or installation measurements?"
+      ],
+      "state": "not_contacted"
+    },
+    {
+      "brand": "Midea",
+      "priority": 2,
+      "pilotModels": [
+        "MDWB1BL",
+        "MDWB1SS"
+      ],
+      "categoryCounts": {
+        "dishwasher": 2,
+        "fridge": 0
+      },
+      "route": {
+        "state": "official_contact_research_required",
+        "url": null,
+        "evidence": "Use the manufacturer AU site to identify PIM, e-commerce, trade/specification or data-governance ownership; do not guess an email address."
+      },
+      "requestFields": [
+        "exact AU model code and GTIN",
+        "current/discontinued status and replacement model",
+        "product W/H/D with axis and adjustable ranges",
+        "installation/cavity clearances",
+        "door/lid/drawer operation envelope",
+        "ventilation requirements",
+        "water, power and drainage connection zones and reach",
+        "delivery/package dimensions and weight",
+        "installation guides, QRG, datasheets and CAD URLs"
+      ],
+      "rightsQuestions": [
+        "May FitAppliance cache and display factual fields with attribution?",
+        "May source document links and excerpts be shown to users?",
+        "What update or deletion feed is available?",
+        "Which fields are product, package, cavity or installation measurements?"
+      ],
+      "state": "not_contacted"
+    },
+    {
+      "brand": "ASKO",
+      "priority": 1,
+      "pilotModels": [
+        "DFI666GXXL.AU"
+      ],
+      "categoryCounts": {
+        "dishwasher": 1,
+        "fridge": 0
+      },
+      "route": {
+        "state": "official_contact_research_required",
+        "url": null,
+        "evidence": "Use the manufacturer AU site to identify PIM, e-commerce, trade/specification or data-governance ownership; do not guess an email address."
+      },
+      "requestFields": [
+        "exact AU model code and GTIN",
+        "current/discontinued status and replacement model",
+        "product W/H/D with axis and adjustable ranges",
+        "installation/cavity clearances",
+        "door/lid/drawer operation envelope",
+        "ventilation requirements",
+        "water, power and drainage connection zones and reach",
+        "delivery/package dimensions and weight",
+        "installation guides, QRG, datasheets and CAD URLs"
+      ],
+      "rightsQuestions": [
+        "May FitAppliance cache and display factual fields with attribution?",
+        "May source document links and excerpts be shown to users?",
+        "What update or deletion feed is available?",
+        "Which fields are product, package, cavity or installation measurements?"
+      ],
+      "state": "not_contacted"
+    },
+    {
+      "brand": "Electrolux",
+      "priority": 1,
+      "pilotModels": [
+        "ESF6700ROW"
+      ],
+      "categoryCounts": {
+        "dishwasher": 1,
+        "fridge": 0
+      },
+      "route": {
+        "state": "official_contact_research_required",
+        "url": null,
+        "evidence": "Use the manufacturer AU site to identify PIM, e-commerce, trade/specification or data-governance ownership; do not guess an email address."
+      },
+      "requestFields": [
+        "exact AU model code and GTIN",
+        "current/discontinued status and replacement model",
+        "product W/H/D with axis and adjustable ranges",
+        "installation/cavity clearances",
+        "door/lid/drawer operation envelope",
+        "ventilation requirements",
+        "water, power and drainage connection zones and reach",
+        "delivery/package dimensions and weight",
+        "installation guides, QRG, datasheets and CAD URLs"
+      ],
+      "rightsQuestions": [
+        "May FitAppliance cache and display factual fields with attribution?",
+        "May source document links and excerpts be shown to users?",
+        "What update or deletion feed is available?",
+        "Which fields are product, package, cavity or installation measurements?"
+      ],
+      "state": "not_contacted"
+    },
+    {
+      "brand": "Ilve",
+      "priority": 1,
+      "pilotModels": [
+        "IVBID10X"
+      ],
+      "categoryCounts": {
+        "dishwasher": 1,
+        "fridge": 0
+      },
+      "route": {
+        "state": "official_contact_research_required",
+        "url": null,
+        "evidence": "Use the manufacturer AU site to identify PIM, e-commerce, trade/specification or data-governance ownership; do not guess an email address."
+      },
+      "requestFields": [
+        "exact AU model code and GTIN",
+        "current/discontinued status and replacement model",
+        "product W/H/D with axis and adjustable ranges",
+        "installation/cavity clearances",
+        "door/lid/drawer operation envelope",
+        "ventilation requirements",
+        "water, power and drainage connection zones and reach",
+        "delivery/package dimensions and weight",
+        "installation guides, QRG, datasheets and CAD URLs"
+      ],
+      "rightsQuestions": [
+        "May FitAppliance cache and display factual fields with attribution?",
+        "May source document links and excerpts be shown to users?",
+        "What update or deletion feed is available?",
+        "Which fields are product, package, cavity or installation measurements?"
+      ],
+      "state": "not_contacted"
+    }
+  ],
+  "summary": {
+    "brands": 12,
+    "confirmedOfficialTradeRoutes": 1,
+    "contactResearchRequired": 11,
+    "messagesSent": 0
+  }
+}

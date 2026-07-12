@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "2026-07-12.1",
+  "acquiredAt": "2026-07-12T11:13:49.000Z",
+  "storage": {
+    "rootEnv": "FITAPPLIANCE_STORAGE_ROOT",
+    "rawPayloadsInRepository": false
+  },
+  "snapshots": [
+    {
+      "kind": "metadata",
+      "category": null,
+      "manifest": {
+        "schemaVersion": 1,
+        "sourceId": "energy-rating:metadata",
+        "sourceUrl": "https://data.gov.au/data/api/3/action/package_show?id=energy-rating-for-household-appliances",
+        "retrievedAt": "2026-07-12T11:13:49.000Z",
+        "contentSha256": "a605b9420c089b02c3c2ed6f5c791ff12111c5ca5b30aea07ca440d98c3b4c71",
+        "metadataSha256": null,
+        "byteLength": 26719,
+        "mediaType": "application/json",
+        "licence": {
+          "id": "cc-by-3.0-au",
+          "name": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/",
+          "attribution": "Department of Climate Change, Energy, the Environment and Water",
+          "permitsRepositoryDerivatives": true,
+          "scopeNote": "Dataset records and normalized analytical derivatives; preserve attribution and source snapshot hash."
+        },
+        "storage": {
+          "rootEnv": "FITAPPLIANCE_STORAGE_ROOT",
+          "objectPath": "registries/objects/sha256/a6/05/a605b9420c089b02c3c2ed6f5c791ff12111c5ca5b30aea07ca440d98c3b4c71.bin"
+        }
+      },
+      "transport": {
+        "finalUrl": "https://data.gov.au/data/api/3/action/package_show?id=energy-rating-for-household-appliances",
+        "etag": null,
+        "lastModified": null
+      }
+    },
+    {
+      "kind": "energy-rating",
+      "category": "fridge",
+      "resource": {
+        "name": "Fridges and Freezers                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        - rf_2026_07_12.csv",
+        "resourceId": "0eabca18-49bb-4a9e-8019-28d5d56501c4",
+        "lastModified": "2026-07-12T08:04:45.729392"
+      },
+      "manifest": {
+        "schemaVersion": 1,
+        "sourceId": "energy-rating:fridge",
+        "sourceUrl": "https://data.gov.au/data/dataset/559708e5-480e-4f94-8429-c49571e82761/resource/0eabca18-49bb-4a9e-8019-28d5d56501c4/download/rf_2026_07_12.csv",
+        "retrievedAt": "2026-07-12T11:13:49.000Z",
+        "contentSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+        "metadataSha256": "a605b9420c089b02c3c2ed6f5c791ff12111c5ca5b30aea07ca440d98c3b4c71",
+        "byteLength": 2567935,
+        "mediaType": "text/csv",
+        "licence": {
+          "id": "cc-by-3.0-au",
+          "name": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/",
+          "attribution": "Department of Climate Change, Energy, the Environment and Water",
+          "permitsRepositoryDerivatives": true,
+          "scopeNote": "Dataset records and normalized analytical derivatives; preserve attribution and source snapshot hash."
+        },
+        "storage": {
+          "rootEnv": "FITAPPLIANCE_STORAGE_ROOT",
+          "objectPath": "registries/objects/sha256/cc/eb/cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775.csv"
+        }
+      },
+      "transport": {
+        "finalUrl": "https://data.gov.au/data/dataset/559708e5-480e-4f94-8429-c49571e82761/resource/0eabca18-49bb-4a9e-8019-28d5d56501c4/download/rf_2026_07_12.csv",
+        "etag": "W/\"1783843487.673-2567935-3711635407\"",
+        "lastModified": "Sun, 12 Jul 2026 08:04:47 GMT"
+      }
+    },
+    {
+      "kind": "energy-rating",
+      "category": "dishwasher",
+      "resource": {
+        "name": "Dishwashers                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         - dw_2026_07_12.csv",
+        "resourceId": "cbe7057d-e132-4297-b8be-eecf8322d4e6",
+        "lastModified": "2026-07-12T08:04:34.862488"
+      },
+      "manifest": {
+        "schemaVersion": 1,
+        "sourceId": "energy-rating:dishwasher",
+        "sourceUrl": "https://data.gov.au/data/dataset/559708e5-480e-4f94-8429-c49571e82761/resource/cbe7057d-e132-4297-b8be-eecf8322d4e6/download/dw_2026_07_12.csv",
+        "retrievedAt": "2026-07-12T11:13:49.000Z",
+        "contentSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+        "metadataSha256": "a605b9420c089b02c3c2ed6f5c791ff12111c5ca5b30aea07ca440d98c3b4c71",
+        "byteLength": 822283,
+        "mediaType": "text/csv",
+        "licence": {
+          "id": "cc-by-3.0-au",
+          "name": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/",
+          "attribution": "Department of Climate Change, Energy, the Environment and Water",
+          "permitsRepositoryDerivatives": true,
+          "scopeNote": "Dataset records and normalized analytical derivatives; preserve attribution and source snapshot hash."
+        },
+        "storage": {
+          "rootEnv": "FITAPPLIANCE_STORAGE_ROOT",
+          "objectPath": "registries/objects/sha256/f3/8a/f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8.csv"
+        }
+      },
+      "transport": {
+        "finalUrl": "https://data.gov.au/data/dataset/559708e5-480e-4f94-8429-c49571e82761/resource/cbe7057d-e132-4297-b8be-eecf8322d4e6/download/dw_2026_07_12.csv",
+        "etag": "W/\"1783843476.617-822283-3669037117\"",
+        "lastModified": "Sun, 12 Jul 2026 08:04:36 GMT"
+      }
+    },
+    {
+      "kind": "wels",
+      "category": "all",
+      "manifest": {
+        "schemaVersion": 1,
+        "sourceId": "wels:all-models",
+        "sourceUrl": "https://wels-public-register.environment.gov.au/publicregister-allmodels.csv",
+        "retrievedAt": "2026-07-12T11:13:49.000Z",
+        "contentSha256": "a9a124213e968ee2ea800c76e2f37a2120b0c4a50848a579c52cb1ff1f9c9446",
+        "metadataSha256": null,
+        "byteLength": 14629341,
+        "mediaType": "text/csv",
+        "licence": {
+          "id": "cc-by-4.0",
+          "name": "Creative Commons Attribution 4.0 International",
+          "url": "https://creativecommons.org/licenses/by/4.0/",
+          "attribution": "Department of Climate Change, Energy, the Environment and Water",
+          "permitsRepositoryDerivatives": true,
+          "scopeNote": "Pilot uses textual public-register identity and status fields only. Department terms exclude the WELS label, logos and third-party content; images and labels are not acquired or republished."
+        },
+        "storage": {
+          "rootEnv": "FITAPPLIANCE_STORAGE_ROOT",
+          "objectPath": "registries/objects/sha256/a9/a1/a9a124213e968ee2ea800c76e2f37a2120b0c4a50848a579c52cb1ff1f9c9446.csv"
+        }
+      },
+      "transport": {
+        "finalUrl": "https://wels-public-register.environment.gov.au/publicregister-allmodels.csv",
+        "etag": null,
+        "lastModified": "Sat, 11 Jul 2026 14:03:12 GMT"
+      }
+    }
+  ]
+}

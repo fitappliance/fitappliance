@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-07-12",
+  "channels": [
+    {
+      "id": "energy-rating",
+      "decision": "adopt_shadow",
+      "auExactSkuCoverage": "measured_in_pilot",
+      "fields": ["brand", "model", "registration", "availability", "candidate_width_height_depth"],
+      "rights": "CC BY 3.0 AU with attribution",
+      "refresh": "daily",
+      "cost": "public",
+      "nextAction": "Run immutable daily snapshots and exact-key reconciliation."
+    },
+    {
+      "id": "wels",
+      "decision": "adopt_identity_shadow",
+      "auExactSkuCoverage": "measure_dishwasher_pilot",
+      "fields": ["brand", "model_name", "model_code", "variant_code", "registration", "status"],
+      "rights": "Department website defaults to CC BY 4.0, excluding WELS labels, logos and third-party content; use textual register fields only and retain attribution.",
+      "refresh": "register about every 30 minutes; complete export overnight",
+      "cost": "public",
+      "nextAction": "Measure exact dishwasher identity coverage and request written confirmation before any broader public data redistribution."
+    },
+    {
+      "id": "gs1-npc",
+      "decision": "probe",
+      "auExactSkuCoverage": "unknown_until_paid_sample",
+      "fields": ["gtin", "trade_item_identity", "product_and_package_measurements", "images"],
+      "rights": "contract_required",
+      "refresh": "supplier_synchronised",
+      "cost": "commercial",
+      "nextAction": "Request a 100-SKU refrigerator/dishwasher sample and written display/redistribution terms."
+    },
+    {
+      "id": "icecat",
+      "decision": "probe",
+      "auExactSkuCoverage": "unknown",
+      "fields": ["product_master", "standardized_specs", "manual_links", "images"],
+      "rights": "Open Icecat brand-authorized subset or commercial Full Icecat contract",
+      "refresh": "provider_feed",
+      "cost": "open_or_commercial",
+      "nextAction": "Test exact AU model suffix coverage against the frozen 100-model pilot before adopting."
+    },
+    {
+      "id": "direct-brand-pim-trade",
+      "decision": "adopt_outreach",
+      "auExactSkuCoverage": "brand_dependent",
+      "fields": ["product_master", "installation_guides", "qrg", "cad", "clearance", "connections"],
+      "rights": "written_brand_terms_required",
+      "refresh": "brand_agreement",
+      "cost": "relationship_or_contract",
+      "nextAction": "Prioritize pilot brands and contact PIM, e-commerce, trade/specification or data-governance teams."
+    }
+  ]
+}

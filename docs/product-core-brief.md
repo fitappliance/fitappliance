@@ -518,6 +518,54 @@ unavailable facts as explicit gaps rather than estimates.
   and stale-client behaviour;
 - keep rollback artifacts and compare live outcomes before expanding coverage.
 
+### 9.1 Implementation checkpoint: official registry and Fit V3 pilot
+
+The first shadow pilot was approved and executed on 2026-07-12. Its durable
+design, task framework, source assessment and outreach package are:
+
+- [Official Registry, Installation Knowledge, and Fit V3 Design](superpowers/specs/2026-07-12-official-registry-installation-fit-v3-design.md)
+- [Official Registry, Installation Knowledge, and Fit V3 Implementation Plan](superpowers/plans/2026-07-12-official-registry-installation-fit-v3.md)
+- [Product Data Source and Brand Outreach Package](architecture-v2/product-data-source-outreach.md)
+
+Current implementation facts:
+
+- Energy Rating metadata, refrigerator CSV, dishwasher CSV, and the complete
+  WELS register CSV are stored as four immutable external SHA-256 objects. A
+  second acquisition reused all four objects, proving idempotent replay.
+- The live snapshots contained 3,985 Energy Rating refrigerator rows, 1,426
+  dishwasher rows, and 73,855 WELS rows. The WELS normalizer identified 2,652
+  dishwasher rows, 696 of which were Registered or Ceasing.
+- Exact Energy Rating reconciliation across the scoped catalogue found 1,258
+  consistent identities, 203 dimension conflicts, 27 suspected axis
+  permutations, 23 internal registry conflicts, 74 exact records without full
+  W/H/D, and 1,103 products without an active exact match. No registry dimension
+  was promoted.
+- The frozen pilot contains 50 currently listed refrigerators and 50 currently
+  listed dishwashers, with a 90-day retailer-verification limit and an eight
+  product per-brand cap. It deliberately includes clean, conflicting, and
+  recovery cases.
+- The form-factor gate identified 48 upright/front-opening refrigerator cases
+  and two chest freezers. Chest freezers require lid-open height; they are not
+  assigned front-door or hinge-side requirements.
+- Within the 50 dishwasher pilot, WELS produced 42 current Registered exact
+  identity matches, four Expired matches, three identity conflicts, and one no
+  match. These results remain identity/status evidence only.
+- Seven pilot products currently have legacy V2 receipt-bound closed-envelope
+  dimensions, but those receipts do not yet carry every V3 exact-model,
+  current-source and applicable-model attestation. V3 placement readiness is
+  therefore zero, none is eligible for `VERIFIED_FIT`, and all 100 remain in
+  the research queue for V3 re-attestation and missing installation fields.
+- The Fit V3 contract now requires current exact-model receipt and fragment
+  hashes, form-factor-specific operation evidence, ventilation, water pressure,
+  power capacity, drainage height/high-loop, delivery path, professional
+  installation applicability, and sufficiently precise site observations.
+- The shadow isolation audit reports zero public hash drift, zero dimension
+  promotions, zero false `VERIFIED_FIT` eligibility, and zero object replay
+  failures.
+
+The pilot is not a public data release. It is the acceptance harness for later
+exact-model PDF, brand-feed, GS1, or Icecat evidence work.
+
 ## 10. Success Metrics
 
 Track coverage and truth separately:
@@ -551,10 +599,13 @@ product-success metrics.
 - preserve tri-state hard Fit checks and outcome precedence;
 - keep scores separate from outcomes;
 - keep unknown values unknown and fail closed on conflicts.
+- freeze the first installation-knowledge pilot at 50 refrigerators and 50
+  dishwashers with current-listing and brand-concentration controls;
+- keep Energy Rating and WELS registry ingestion shadow-only until a separate
+  field publication gate is approved.
 
 ### Open and requiring owner approval or external confirmation
 
-- first pilot scope: recommended refrigerators + dishwashers, 50 each;
 - GS1 NPC recipient eligibility, sample coverage, cost, and redistribution rights;
 - Icecat Australian exact-SKU coverage and licence fit;
 - which manufacturers will provide machine-readable data or written reuse rights;

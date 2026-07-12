@@ -1,0 +1,4823 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-12T11:13:49.000Z",
+  "policyVersion": "2026-07-12.1",
+  "publicationMode": "shadow_only",
+  "repositoryScope": "frozen_pilot_slice_plus_full_summary",
+  "fullArtifact": {
+    "contentSha256": "f21cb0d044cf0759a3307a7c36e5130c72832c7839a79dd4ce0c43a82fb080fb",
+    "byteLength": 3029657,
+    "storage": {
+      "rootEnv": "FITAPPLIANCE_STORAGE_ROOT",
+      "objectPath": "registries/derived/sha256/f2/1c/f21cb0d044cf0759a3307a7c36e5130c72832c7839a79dd4ce0c43a82fb080fb.json"
+    }
+  },
+  "energyRating": [
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_038dc9b0e74e69bf049f6cbd",
+      "legacyRuntimeId": "ao-33312",
+      "category": "dishwasher",
+      "brand": "Electrolux",
+      "model": "ESF6700ROW",
+      "exactKey": "dishwasher\u0000ELECTROLUX\u0000ESF6700ROW",
+      "catalogDimensionsMm": {
+        "width": 596,
+        "height": 850,
+        "depth": 610
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_03d589b78c6f4837a6825ce9",
+      "legacyRuntimeId": "ao-153383",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60D4NB9",
+      "exactKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60D4NB9",
+      "catalogDimensionsMm": {
+        "width": 599,
+        "height": 820,
+        "depth": 573
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 599,
+        "height": 880,
+        "depth": 573
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 60,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 944,
+          "rowFingerprint": "057229185002d3c0c56dc712a03cdffeea98bb3e357761d681b84c83e3550928",
+          "registrationNumber": "ADW1237",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 416,
+          "rowFingerprint": "7952730638854b0d7b79ac2131ea58dcf70e00ead68bda4ebd732dd82ec564b6",
+          "registrationNumber": "ADW1044",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_062c6c1c2b89378a83e10ee3",
+      "legacyRuntimeId": "dishwasher-adw0961",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F3S1",
+      "exactKey": "dishwasher\u0000HAIER\u0000HDW15F3S1",
+      "catalogDimensionsMm": {
+        "width": 597,
+        "height": 895,
+        "depth": 599
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 610
+      },
+      "deltasMm": {
+        "width": 1,
+        "height": -45,
+        "depth": 11
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1164,
+          "rowFingerprint": "019599ac5ab6431d3164bb3281ef2c93881a1c9431e4e0f96b668f1cefd56eac",
+          "registrationNumber": "ADW1297",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 610
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 757,
+          "rowFingerprint": "17879dcc29f123294ea190f5d78dde60dc038e7ae492da6778114cc9116e5abb",
+          "registrationNumber": "ADW0961",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 610
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_06525d5180ee73d79e00936b",
+      "legacyRuntimeId": "ao-104840",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDF1640AX",
+      "exactKey": "dishwasher\u0000BEKO\u0000BDF1640AX",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 865,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_0b8ac4f5a56110f2b8fefc3d",
+      "legacyRuntimeId": "ao-140367",
+      "category": "fridge",
+      "brand": "Bosch",
+      "model": "KFN96VPEAA",
+      "exactKey": "fridge\u0000BOSCH\u0000KFN96VPEAA",
+      "catalogDimensionsMm": {
+        "width": 910,
+        "height": 1830,
+        "depth": 731
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 489,
+          "rowFingerprint": "c7afc449dd7b349aca3d8c8e78a30f226c4073992a262555c6ad636b3af2c634",
+          "registrationNumber": "ARF2797",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_0bd9b11cfb973369769a5d94",
+      "legacyRuntimeId": "ao-84181",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD3A15NS",
+      "exactKey": "dishwasher\u0000LG\u0000XD3A15NS",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 321,
+          "rowFingerprint": "47972217c056702f75b70cfdd10a3c33922c0aa6d83db89fafaa3395e178d656",
+          "registrationNumber": "ADW0983",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 600
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_0c804062773309c4f5e3671a",
+      "legacyRuntimeId": "fridge-arf2964",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF730QNUVX1",
+      "exactKey": "fridge\u0000FISHERANDPAYKEL\u0000RF730QNUVX1",
+      "catalogDimensionsMm": {
+        "width": 905,
+        "height": 1900,
+        "depth": 748
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 905,
+        "height": 1900,
+        "depth": 748
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 1125,
+          "rowFingerprint": "f9821532b648c706850f3218038edcc6e83202ba089f7508c45a2854b8f20269",
+          "registrationNumber": "ARF2964",
+          "dimensionsMm": {
+            "width": 905,
+            "height": 1900,
+            "depth": 748
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_10f6881d59d185463a57f8b6",
+      "legacyRuntimeId": "fridge-arf3074",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF420BS",
+      "exactKey": "fridge\u0000HAIER\u0000HRF420BS",
+      "catalogDimensionsMm": {
+        "width": 700,
+        "height": 1725,
+        "depth": 675
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 700,
+        "height": 1725,
+        "depth": 675
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 1345,
+          "rowFingerprint": "28c4022fec87280ec70e790360901ac42efa7a1fb2f244eb418ddf6af6ad303e",
+          "registrationNumber": "ARF3074",
+          "dimensionsMm": {
+            "width": 700,
+            "height": 1725,
+            "depth": 675
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_1e22efa5bb243f387f279af7",
+      "legacyRuntimeId": "dishwasher-adw0956",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UZT4B2",
+      "exactKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DW60UZT4B2",
+      "catalogDimensionsMm": {
+        "width": 597,
+        "height": 857,
+        "depth": 574
+      },
+      "canPromoteDimensions": false,
+      "state": "REGISTRY_INTERNAL_CONFLICT",
+      "reasonCodes": [
+        "MULTIPLE_EXACT_ROWS_WITH_CONFLICTING_DIMENSIONS"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1141,
+          "rowFingerprint": "7f4b63593a1c5ad780287dee7ca90c1cb873ac3fb685d0567d05b3d6159a5930",
+          "registrationNumber": "ADW1294",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 857,
+            "depth": 580
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 253,
+          "rowFingerprint": "898d947a2dd2abecd525576c8a5bb787635a89306776a9f8e60d23931ed169fe",
+          "registrationNumber": "ADW0956",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 820,
+            "depth": 580
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_1e7cc37976956a0b030f94b1",
+      "legacyRuntimeId": "ao-65627",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD5B14PS",
+      "exactKey": "dishwasher\u0000LG\u0000XD5B14PS",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 326,
+          "rowFingerprint": "88ce52da238af9689b3428525fda2fd4e78ab22a2779ee5f4b4b28cfe73e0c3c",
+          "registrationNumber": "ADW0982",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 600
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_2058e392d0b85760f2db2265",
+      "legacyRuntimeId": "fridge-arf2606",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GS-B655PL",
+      "exactKey": "fridge\u0000LG\u0000GSB655PL",
+      "catalogDimensionsMm": {
+        "width": 913,
+        "height": 1790,
+        "depth": 735
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 912,
+        "height": 1790,
+        "depth": 735
+      },
+      "deltasMm": {
+        "width": -1,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 383,
+          "rowFingerprint": "74fb8359e94d0df122aa49a47934586e557480d76a80a45706a9e708cec30481",
+          "registrationNumber": "ARF2606",
+          "dimensionsMm": {
+            "width": 912,
+            "height": 1790,
+            "depth": 735
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_248ca182ae8e787affa25e3e",
+      "legacyRuntimeId": "fridge-arf3335",
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRTF206",
+      "exactKey": "fridge\u0000HISENSE\u0000HRTF206",
+      "catalogDimensionsMm": {
+        "width": 550,
+        "height": 1456,
+        "depth": 562
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 550,
+        "height": 1410,
+        "depth": 490
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": -46,
+        "depth": -72
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 2058,
+          "rowFingerprint": "4fcbf6997422462270b0b04b96b6ad51334d6c0de46267fcdb4ab0c6c3a161ea",
+          "registrationNumber": "ARF3335",
+          "dimensionsMm": {
+            "width": 550,
+            "height": 1410,
+            "depth": 490
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_248d6f4b8ba174cb26cdd4ff",
+      "legacyRuntimeId": "ao-59208",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "DDN38450",
+      "exactKey": "dishwasher\u0000BEKO\u0000DDN38450",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 815,
+        "depth": 570
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_2614c67d8661f076c8b08a75",
+      "legacyRuntimeId": "ao-168674",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF510FHS",
+      "exactKey": "fridge\u0000HAIER\u0000HRF510FHS",
+      "catalogDimensionsMm": {
+        "width": 790,
+        "height": 1725,
+        "depth": 700
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 790,
+        "height": 1725,
+        "depth": 707
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 7
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 2493,
+          "rowFingerprint": "5d3ce5de30e0d62fbb0c5acf639c0a01fc74e899d96744c66bb9a5e623140efd",
+          "registrationNumber": "ARF3499",
+          "dimensionsMm": {
+            "width": 790,
+            "height": 1725,
+            "depth": 707
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_2a1f15e8ce5ce0ad894c3b07",
+      "legacyRuntimeId": "discovery-dishwasher-bosch-sms2itw01a",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS2ITW01A",
+      "exactKey": "dishwasher\u0000BOSCH\u0000SMS2ITW01A",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1340,
+          "rowFingerprint": "3582f8ff9aa7507d2d870b5a7d00fd65bfd4ca9fdaf2dcdbd35e2f850c476be9",
+          "registrationNumber": "ADW1347",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_2b52267ef5cc4245360ef589",
+      "legacyRuntimeId": "ao-159862",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF9400BFH",
+      "exactKey": "fridge\u0000SAMSUNG\u0000SRF9400BFH",
+      "catalogDimensionsMm": {
+        "width": 912,
+        "height": 1830,
+        "depth": 723
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_340d22f84c74f0acb3b07b17",
+      "legacyRuntimeId": "fridge-arf2946",
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRVF240",
+      "exactKey": "fridge\u0000HISENSE\u0000HRVF240",
+      "catalogDimensionsMm": {
+        "width": 595,
+        "height": 1720,
+        "depth": 590
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 595,
+        "height": 1720,
+        "depth": 590
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 1917,
+          "rowFingerprint": "4c0c6fcc2e7447ee8e792ad0cb0ee2a7139b7680bffd33e96c742bffe9a6ad71",
+          "registrationNumber": "ARF3273",
+          "dimensionsMm": {
+            "width": 595,
+            "height": 1720,
+            "depth": 590
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 1059,
+          "rowFingerprint": "cedc5a55d6e6d9d60e92bf48e57673c6a16724b2d2ec2af2c25c0cfe9caec4d6",
+          "registrationNumber": "ARF2946",
+          "dimensionsMm": {
+            "width": 595,
+            "height": 1720,
+            "depth": 590
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_347e6559ebd5547d55661b22",
+      "legacyRuntimeId": "discovery-fridge-bosch-kfn96axeaa",
+      "category": "fridge",
+      "brand": "Bosch",
+      "model": "KFN96AXEAA",
+      "exactKey": "fridge\u0000BOSCH\u0000KFN96AXEAA",
+      "catalogDimensionsMm": {
+        "width": 905,
+        "height": 1830,
+        "depth": 731
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 772,
+          "rowFingerprint": "72cad56ea6b9504e6d3b0fe2ed2ca70e67a7475e6639a539468104fcd89a9b51",
+          "registrationNumber": "ARF2797",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_3494250b2a85d645b6573ea3",
+      "legacyRuntimeId": "ao-66241",
+      "category": "dishwasher",
+      "brand": "Midea",
+      "model": "MDWB1SS",
+      "exactKey": "dishwasher\u0000MIDEA\u0000MDWB1SS",
+      "catalogDimensionsMm": {
+        "width": 550,
+        "height": 438,
+        "depth": 500
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 550,
+        "height": 438,
+        "depth": 500
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 633,
+          "rowFingerprint": "98f926f79d5e8b8cbfd778c06df6a6706a43f5311161f7fc79e396cf7e2e11f8",
+          "registrationNumber": "ADW1201",
+          "dimensionsMm": {
+            "width": 550,
+            "height": 438,
+            "depth": 500
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_3c21c0bd9837cd721e76e032",
+      "legacyRuntimeId": "fridge-arf2831",
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRVF384S",
+      "exactKey": "fridge\u0000HISENSE\u0000HRVF384S",
+      "catalogDimensionsMm": {
+        "width": 700,
+        "height": 1720,
+        "depth": 750
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 700,
+        "height": 1720,
+        "depth": 746
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": -4
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 794,
+          "rowFingerprint": "8c2167d9ec9259d00bbbdfde6539d40fb1077a2719965014bd659efdc1b1c149",
+          "registrationNumber": "ARF2831",
+          "dimensionsMm": {
+            "width": 700,
+            "height": 1720,
+            "depth": 746
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 2274,
+          "rowFingerprint": "d68ed6720ec8b6642870bfdf4df8993f1ed5a18ac1963fa777c37ebc29d9ffeb",
+          "registrationNumber": "ARF3410",
+          "dimensionsMm": {
+            "width": 700,
+            "height": 1720,
+            "depth": 746
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_43be0630d42f1bf6bdfcb231",
+      "legacyRuntimeId": "ao-132904",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F2B1",
+      "exactKey": "dishwasher\u0000HAIER\u0000HDW15F2B1",
+      "catalogDimensionsMm": {
+        "width": 597,
+        "height": 895,
+        "depth": 599
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 600,
+        "height": 820,
+        "depth": 580
+      },
+      "deltasMm": {
+        "width": 3,
+        "height": -75,
+        "depth": -19
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 913,
+          "rowFingerprint": "f81bd2aaf894f0cc4690972b2fbdfab3b796122ce4d26181f73a3208479104d8",
+          "registrationNumber": "ADW1233",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 820,
+            "depth": 580
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_44fe725f6cd227026f63844b",
+      "legacyRuntimeId": "ao-59252",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "RCNA340K30ZW",
+      "exactKey": "fridge\u0000BEKO\u0000RCNA340K30ZW",
+      "catalogDimensionsMm": {
+        "width": 595,
+        "height": 1754,
+        "depth": 650
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_4619a1a7ecab2e53a1e21474",
+      "legacyRuntimeId": "fridge-arf3501",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF510BHC",
+      "exactKey": "fridge\u0000HAIER\u0000HRF510BHC",
+      "catalogDimensionsMm": {
+        "width": 790,
+        "height": 1725,
+        "depth": 707
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 790,
+        "height": 1725,
+        "depth": 707
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 2496,
+          "rowFingerprint": "257c748beaf843e3c06aac806ef53137bc989da369dcebf9908ef4e3de8d8123",
+          "registrationNumber": "ARF3501",
+          "dimensionsMm": {
+            "width": 790,
+            "height": 1725,
+            "depth": 707
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_46eda5237a7f6f21b7a27bb2",
+      "legacyRuntimeId": "discovery-fridge-fisher-paykel-rf730qnuvb1",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF730QNUVB1",
+      "exactKey": "fridge\u0000FISHERANDPAYKEL\u0000RF730QNUVB1",
+      "catalogDimensionsMm": {
+        "width": 905,
+        "height": 1900,
+        "depth": 748
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 905,
+        "height": 1900,
+        "depth": 748
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 1126,
+          "rowFingerprint": "661aa100facb0f37e7c42cfaf0c03735df0d26db5750f427849f3ea26d994d0f",
+          "registrationNumber": "ARF2964",
+          "dimensionsMm": {
+            "width": 905,
+            "height": 1900,
+            "depth": 748
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_49481a0226b78e0f7d8e1c3c",
+      "legacyRuntimeId": "fridge-arf3423",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-B505BB",
+      "exactKey": "fridge\u0000LG\u0000GFB505BB",
+      "catalogDimensionsMm": {
+        "width": 835,
+        "height": 1787,
+        "depth": 730
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 835,
+        "height": 1787,
+        "depth": 730
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 2312,
+          "rowFingerprint": "4c790925d50c0940b2efcbe42f96de2704422318e761a13f81c3e5cac3aecdc1",
+          "registrationNumber": "ARF3423",
+          "dimensionsMm": {
+            "width": 835,
+            "height": 1787,
+            "depth": 730
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_49a14a97a40476e09c241f9e",
+      "legacyRuntimeId": "ao-71425",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDF1630X",
+      "exactKey": "dishwasher\u0000BEKO\u0000BDF1630X",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_4c5dd632cbad6b5d410cb718",
+      "legacyRuntimeId": "ao-150517",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60D2NB9",
+      "exactKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60D2NB9",
+      "catalogDimensionsMm": {
+        "width": 599,
+        "height": 820,
+        "depth": 573
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 599,
+        "height": 880,
+        "depth": 573
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 60,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 418,
+          "rowFingerprint": "0599ef653e41a61ac440ed48b948d63deaeff8a62b05036765304007e26ddaca",
+          "registrationNumber": "ADW1044",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 947,
+          "rowFingerprint": "0ba1df9bebcbb5e6a901379d229e9b88970faf1daf7186c022424072ede7e687",
+          "registrationNumber": "ADW1237",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_4f9720a58772d653c993a2d6",
+      "legacyRuntimeId": "fridge-arf3453",
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRCD640TBW",
+      "exactKey": "fridge\u0000HISENSE\u0000HRCD640TBW",
+      "catalogDimensionsMm": {
+        "width": 914,
+        "height": 1790,
+        "depth": 730
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 912,
+        "height": 1785,
+        "depth": 725
+      },
+      "deltasMm": {
+        "width": -2,
+        "height": -5,
+        "depth": -5
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 2282,
+          "rowFingerprint": "5979ae1a0c7fcf27a601b15d0a35013465aeca8efa37d2c21b3614c9974fddcf",
+          "registrationNumber": "ARF3453",
+          "dimensionsMm": {
+            "width": 912,
+            "height": 1785,
+            "depth": 725
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_507f501aa288199863392b3c",
+      "legacyRuntimeId": "fridge-arf2253",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF130UW",
+      "exactKey": "fridge\u0000HAIER\u0000HRF130UW",
+      "catalogDimensionsMm": {
+        "width": 495,
+        "height": 828,
+        "depth": 560
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 495,
+        "height": 840,
+        "depth": 560
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 12,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 100,
+          "rowFingerprint": "96f3de20b49f5dc3c995aa023038c8dc58de4cd4a59f1ca36a41bc5d9af406dd",
+          "registrationNumber": "ARF2253",
+          "dimensionsMm": {
+            "width": 495,
+            "height": 840,
+            "depth": 560
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_58f5a7609ebcb420091eb986",
+      "legacyRuntimeId": "ao-141853",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS6HAI02A",
+      "exactKey": "dishwasher\u0000BOSCH\u0000SMS6HAI02A",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1361,
+          "rowFingerprint": "5df2ab442ed413cde07beb5d9f838baf6d29b612490c86f87473647eb8f81b4d",
+          "registrationNumber": "ADW1360",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 74,
+          "rowFingerprint": "b76c48823dea19064296c1a883f0ad032a2d2391cb36567ec58f60ba4648590a",
+          "registrationNumber": "ADW0855",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_5a84ca3b168d4f76044963f4",
+      "legacyRuntimeId": "ao-102182",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMI6HCS01A",
+      "exactKey": "dishwasher\u0000BOSCH\u0000SMI6HCS01A",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 815,
+        "depth": 573
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1348,
+          "rowFingerprint": "d9f2218d81633e40b85600d90f990ad7605e31d59285f43af357be6c6f5fe45f",
+          "registrationNumber": "ADW1353",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_5b2f42e7391d85a23a706df6",
+      "legacyRuntimeId": "fridge-arf3865",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBB3100AK",
+      "exactKey": "fridge\u0000WESTINGHOUSE\u0000WBB3100AK",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 1650,
+        "depth": 650
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 1646,
+        "height": 598,
+        "depth": 650
+      },
+      "deltasMm": {
+        "width": 1048,
+        "height": -1052,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 3588,
+          "rowFingerprint": "e7a7b2c566bdcae059e158433bb1319775cd4581b83084880a59456315deb464",
+          "registrationNumber": "ARF3865",
+          "dimensionsMm": {
+            "width": 1646,
+            "height": 598,
+            "depth": 650
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "legacyRuntimeId": "dishwasher-adw0959",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "exactKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DW60UT4I2",
+      "catalogDimensionsMm": {
+        "width": 597,
+        "height": 917,
+        "depth": 554
+      },
+      "canPromoteDimensions": false,
+      "state": "REGISTRY_INTERNAL_CONFLICT",
+      "reasonCodes": [
+        "MULTIPLE_EXACT_ROWS_WITH_CONFLICTING_DIMENSIONS"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1145,
+          "rowFingerprint": "1a431186fa74f02b41e867c615ac8477830cf0c42953ffc6c245e8b8e646de0d",
+          "registrationNumber": "ADW1295",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 857,
+            "depth": 580
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 667,
+          "rowFingerprint": "44d1e7fa9a098c1fe6835f71a8346469d9a214bba726b61b3fdec5d31436c8b6",
+          "registrationNumber": "ADW0959",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 820,
+            "depth": 580
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_6868cdde53bfa347a96e1a20",
+      "legacyRuntimeId": "ao-153254",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60D2NX9",
+      "exactKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60D2NX9",
+      "catalogDimensionsMm": {
+        "width": 599,
+        "height": 820,
+        "depth": 573
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 599,
+        "height": 880,
+        "depth": 573
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 60,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 419,
+          "rowFingerprint": "3bb4ee0cb74436665046e81d0ec1cc89c06f287e4f41db29dca6d855de1c7b8c",
+          "registrationNumber": "ADW1044",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 946,
+          "rowFingerprint": "83eec6da7e643db8c8cfc3e38983b00c9f88e0cba8e1e40c1931af7aedbc8142",
+          "registrationNumber": "ADW1237",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_68d7810d7cb2acf101260e38",
+      "legacyRuntimeId": "fridge-arf3077",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF420BHS",
+      "exactKey": "fridge\u0000HAIER\u0000HRF420BHS",
+      "catalogDimensionsMm": {
+        "width": 700,
+        "height": 1725,
+        "depth": 675
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 700,
+        "height": 1725,
+        "depth": 675
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 1349,
+          "rowFingerprint": "6751b5d77a0406a179cf4382c3e0386aad1dbd6e309c73d4e2ff3fe05cb922bc",
+          "registrationNumber": "ARF3077",
+          "dimensionsMm": {
+            "width": 700,
+            "height": 1725,
+            "depth": 675
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_693c6fa3684bef1660a42e9f",
+      "legacyRuntimeId": "discovery-dishwasher-lg-xd2a25mb",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD2A25MB",
+      "exactKey": "dishwasher\u0000LG\u0000XD2A25MB",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 797,
+          "rowFingerprint": "41c76d8f5c5060bf7409cb8171e9d353977372fb4753df2a35388b2415c153f5",
+          "registrationNumber": "ADW1131",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 600
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_6bd24b76c0d45dbdab1ec470",
+      "legacyRuntimeId": "dishwasher-adw1233",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15U2I1",
+      "exactKey": "dishwasher\u0000HAIER\u0000HDW15U2I1",
+      "catalogDimensionsMm": {
+        "width": 597,
+        "height": 880,
+        "depth": 554
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 600,
+        "height": 820,
+        "depth": 580
+      },
+      "deltasMm": {
+        "width": 3,
+        "height": -60,
+        "depth": 26
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 912,
+          "rowFingerprint": "bec56878fbc7b2ac199086a44073f037a559ec9160009a8ef7257286e2e87bf9",
+          "registrationNumber": "ADW1233",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 820,
+            "depth": 580
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_6d94b7fe6a48634212faaeb9",
+      "legacyRuntimeId": "f7",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF520BHS French Door 520L",
+      "exactKey": "fridge\u0000HAIER\u0000HRF520BHSFRENCHDOOR520L",
+      "catalogDimensionsMm": {
+        "width": 790,
+        "height": 1725,
+        "depth": 686
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_70dc2c6fcdf91e621419f21d",
+      "legacyRuntimeId": "ao-159863",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF9800BFH",
+      "exactKey": "fridge\u0000SAMSUNG\u0000SRF9800BFH",
+      "catalogDimensionsMm": {
+        "width": 912,
+        "height": 1830,
+        "depth": 861
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_71ba41e4e13dc2f758852acf",
+      "legacyRuntimeId": "ao-107181",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS4HVB01A",
+      "exactKey": "dishwasher\u0000BOSCH\u0000SMS4HVB01A",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1330,
+          "rowFingerprint": "ef410953239e07ec42b2569d0a42b499a0430eceaad71f8c4a699a608e32d27e",
+          "registrationNumber": "ADW1350",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_7236090550350867fad560f2",
+      "legacyRuntimeId": "fridge-arf2887",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QDVX2",
+      "exactKey": "fridge\u0000FISHERANDPAYKEL\u0000RF605QDVX2",
+      "catalogDimensionsMm": {
+        "width": 905,
+        "height": 1790,
+        "depth": 688
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 905,
+        "height": 1790,
+        "depth": 688
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 905,
+          "rowFingerprint": "59058c765eabd160bef985f429d49dd309da9fc3073d4d235c08adc58f3c1aab",
+          "registrationNumber": "ARF2887",
+          "dimensionsMm": {
+            "width": 905,
+            "height": 1790,
+            "depth": 688
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_72da73a8a0488e853655e195",
+      "legacyRuntimeId": "ao-92114",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QZUVB1",
+      "exactKey": "fridge\u0000FISHERANDPAYKEL\u0000RF605QZUVB1",
+      "catalogDimensionsMm": {
+        "width": 905,
+        "height": 1790,
+        "depth": 688
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 905,
+        "height": 1790,
+        "depth": 688
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 911,
+          "rowFingerprint": "60a638da4e2c355f396f73623dbda77fd946e8256ca0e4f737c0c9304b7011e7",
+          "registrationNumber": "ARF2887",
+          "dimensionsMm": {
+            "width": 905,
+            "height": 1790,
+            "depth": 688
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_754f209d58aa0d60f520e7a8",
+      "legacyRuntimeId": "ao-62171",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "HSA46330",
+      "exactKey": "fridge\u0000BEKO\u0000HSA46330",
+      "catalogDimensionsMm": {
+        "width": 1552,
+        "height": 860,
+        "depth": 725
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_775e2ad9d935bc1e139a828d",
+      "legacyRuntimeId": "fridge-arf2745",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBE4302WC",
+      "exactKey": "fridge\u0000WESTINGHOUSE\u0000WBE4302WC",
+      "catalogDimensionsMm": {
+        "width": 699,
+        "height": 1725,
+        "depth": 723
+      },
+      "canPromoteDimensions": false,
+      "state": "AXIS_SUSPECT",
+      "reasonCodes": [
+        "NON_IDENTITY_AXIS_PERMUTATION_MATCHES_CATALOG"
+      ],
+      "registryDimensionsMm": {
+        "width": 1725,
+        "height": 699,
+        "depth": 723
+      },
+      "deltasMm": {
+        "width": 1026,
+        "height": -1026,
+        "depth": 0
+      },
+      "axisPermutation": {
+        "width": "height",
+        "height": "width",
+        "depth": "depth"
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 3781,
+          "rowFingerprint": "ff29c14b2085321e74e209c780a9055127b7ba78ee9e5ce272ef261467d8c840",
+          "registrationNumber": "ARF4017",
+          "dimensionsMm": {
+            "width": 1725,
+            "height": 699,
+            "depth": 723
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_7825f413b85636c3bb56734b",
+      "legacyRuntimeId": "ao-62170",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "HSA21530",
+      "exactKey": "fridge\u0000BEKO\u0000HSA21530",
+      "catalogDimensionsMm": {
+        "width": 751,
+        "height": 912,
+        "depth": 725
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_83c263d3a4d601a5e0df6a7d",
+      "legacyRuntimeId": "fridge-arf3177",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-V500MBLC",
+      "exactKey": "fridge\u0000LG\u0000GFV500MBLC",
+      "catalogDimensionsMm": {
+        "width": 835,
+        "height": 1787,
+        "depth": 730
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 835,
+        "height": 1787,
+        "depth": 734
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 4
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 1768,
+          "rowFingerprint": "6c76fbb3258a2cade3467fe6c6f38f328291d1f99783f480831fe89cc3c9299e",
+          "registrationNumber": "ARF3177",
+          "dimensionsMm": {
+            "width": 835,
+            "height": 1787,
+            "depth": 734
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_86422bbb5614880076006338",
+      "legacyRuntimeId": "ao-113736",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD4B24PS",
+      "exactKey": "dishwasher\u0000LG\u0000XD4B24PS",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 654,
+          "rowFingerprint": "cf24179a6f012fb6b728a573d53efc338d4c5ce282d1dbc7f3f5a532e5254bea",
+          "registrationNumber": "ADW1132",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 600
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_8b35692597ff1ca7ab3820cf",
+      "legacyRuntimeId": "fridge-arf2444",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE6000BB",
+      "exactKey": "fridge\u0000WESTINGHOUSE\u0000WQE6000BB",
+      "catalogDimensionsMm": {
+        "width": 896,
+        "height": 1725,
+        "depth": 781
+      },
+      "canPromoteDimensions": false,
+      "state": "AXIS_SUSPECT",
+      "reasonCodes": [
+        "NON_IDENTITY_AXIS_PERMUTATION_MATCHES_CATALOG"
+      ],
+      "registryDimensionsMm": {
+        "width": 1725,
+        "height": 896,
+        "depth": 781
+      },
+      "deltasMm": {
+        "width": 829,
+        "height": -829,
+        "depth": 0
+      },
+      "axisPermutation": {
+        "width": "height",
+        "height": "width",
+        "depth": "depth"
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 3695,
+          "rowFingerprint": "e978583ad01e4ce1f53c3d2ceeadad8a8d35a03ee9ffe4015d0018058f22248c",
+          "registrationNumber": "ARF3917",
+          "dimensionsMm": {
+            "width": 1725,
+            "height": 896,
+            "depth": 781
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_8c96800ed175cb59b7e7f3c4",
+      "legacyRuntimeId": "discovery-fridge-fisher-paykel-rf605qnuvb1",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QNUVB1",
+      "exactKey": "fridge\u0000FISHERANDPAYKEL\u0000RF605QNUVB1",
+      "catalogDimensionsMm": {
+        "width": 905,
+        "height": 1790,
+        "depth": 688
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 905,
+        "height": 1790,
+        "depth": 688
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 910,
+          "rowFingerprint": "d66ae50b3641383ad3656e89b2a51eb4429ee5de0f202d79522524e8b9442361",
+          "registrationNumber": "ARF2887",
+          "dimensionsMm": {
+            "width": 905,
+            "height": 1790,
+            "depth": 688
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_8f2d51e23c2822e085432238",
+      "legacyRuntimeId": "fridge-arf3598",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF90UW2",
+      "exactKey": "fridge\u0000HAIER\u0000HRF90UW2",
+      "catalogDimensionsMm": {
+        "width": 445,
+        "height": 850,
+        "depth": 478
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 452,
+        "height": 850,
+        "depth": 479
+      },
+      "deltasMm": {
+        "width": 7,
+        "height": 0,
+        "depth": 1
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 2704,
+          "rowFingerprint": "1dbf201dc6c804d87b6f5bd46e52fef20b7189c7d96e980310ed2c16501c3a7b",
+          "registrationNumber": "ARF3598",
+          "dimensionsMm": {
+            "width": 452,
+            "height": 850,
+            "depth": 479
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_90a6f61a78dd5284381531d2",
+      "legacyRuntimeId": "ao-102570",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS4HTI01A",
+      "exactKey": "dishwasher\u0000BOSCH\u0000SMS4HTI01A",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1335,
+          "rowFingerprint": "4678f73acc570a3189fcf23d24e69572512e4cf607fa8aeb9c99d70c4d174589",
+          "registrationNumber": "ADW1351",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9ae8516f7b2c08d5c6fb2c6b",
+      "legacyRuntimeId": "ao-92116",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF610ANUX5",
+      "exactKey": "fridge\u0000FISHERANDPAYKEL\u0000RF610ANUX5",
+      "catalogDimensionsMm": {
+        "width": 900,
+        "height": 1790,
+        "depth": 695
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 900,
+        "height": 1790,
+        "depth": 695
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 2585,
+          "rowFingerprint": "cb6777db39b08e6f109902e3ac825a50ac2805af3d3f3dfe6cc703c3b0889485",
+          "registrationNumber": "ARF3548",
+          "dimensionsMm": {
+            "width": 900,
+            "height": 1790,
+            "depth": 695
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9bf075ae36ec6b6f15b3af01",
+      "legacyRuntimeId": "discovery-dishwasher-bosch-sms4hvi01a",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS4HVI01A",
+      "exactKey": "dishwasher\u0000BOSCH\u0000SMS4HVI01A",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1328,
+          "rowFingerprint": "7e576db1ed524259b084c00d6cebe6434556a6ef7ce998f838306f614a5e1899",
+          "registrationNumber": "ADW1350",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9e74951938c9359be394fe98",
+      "legacyRuntimeId": "discovery-dishwasher-fisher-paykel-dd60scx9",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60SCX9",
+      "exactKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60SCX9",
+      "catalogDimensionsMm": {
+        "width": 599,
+        "height": 410,
+        "depth": 573
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 599,
+        "height": 410,
+        "depth": 573
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 492,
+          "rowFingerprint": "09879502e4352581c2ea1e2d48f402e9659d872ef4d18471625183a85c7d3081",
+          "registrationNumber": "ADW1086",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 410,
+            "depth": 573
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 928,
+          "rowFingerprint": "85aa5d2506d1ee33b0952aa9e143ad13ef99e73295bafd79a8b4da92560347c1",
+          "registrationNumber": "ADW1234",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 410,
+            "depth": 573
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9eac2f6f8218f4b2aeaff0a1",
+      "legacyRuntimeId": "ao-74519",
+      "category": "dishwasher",
+      "brand": "Ilve",
+      "model": "IVBID10X",
+      "exactKey": "dishwasher\u0000ILVE\u0000IVBID10X",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 820,
+        "depth": 570
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 598,
+        "height": 820,
+        "depth": 570
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 556,
+          "rowFingerprint": "dbd3431adb222711ea779d940366f3a36c753d6580c3090df43e84d1b4986b93",
+          "registrationNumber": "ADW1088",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 820,
+            "depth": 570
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9f6b7d531f5bbfcc3ac7fae4",
+      "legacyRuntimeId": "ao-149766",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WQE4960BA",
+      "exactKey": "fridge\u0000WESTINGHOUSE\u0000WQE4960BA",
+      "catalogDimensionsMm": {
+        "width": 836,
+        "height": 1780,
+        "depth": 702
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 836,
+        "height": 1780,
+        "depth": 706
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 4
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 1219,
+          "rowFingerprint": "e4161370d4b073f73f4802602d8885b2bbf618cc2181e31394e7d99f563aa762",
+          "registrationNumber": "ARF3037",
+          "dimensionsMm": {
+            "width": 836,
+            "height": 1780,
+            "depth": 706
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9f958bd4bcda5ed405fce93f",
+      "legacyRuntimeId": "dishwasher-adw1276",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F4B1",
+      "exactKey": "dishwasher\u0000HAIER\u0000HDW15F4B1",
+      "catalogDimensionsMm": {
+        "width": 597,
+        "height": 895,
+        "depth": 599
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 610
+      },
+      "deltasMm": {
+        "width": 1,
+        "height": -45,
+        "depth": 11
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1057,
+          "rowFingerprint": "0d28f7e5ef4bdb0d20040bfefe346bf4a7713e71ae1232cff0bd1ac0a831ddb7",
+          "registrationNumber": "ADW1276",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 610
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9fb12d0d5028078037ad0bd3",
+      "legacyRuntimeId": "fridge-arf3512",
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRBF126",
+      "exactKey": "fridge\u0000HISENSE\u0000HRBF126",
+      "catalogDimensionsMm": {
+        "width": 475,
+        "height": 840,
+        "depth": 556
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 475,
+        "height": 820,
+        "depth": 555
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": -20,
+        "depth": -1
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 2462,
+          "rowFingerprint": "24a7d70aa7c82404b3e41b4387096fc0fde082d84964f6b0d38bbe88dc8dfcfb",
+          "registrationNumber": "ARF3512",
+          "dimensionsMm": {
+            "width": 475,
+            "height": 820,
+            "depth": 555
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9ffb22502ce4f205bcc22ec0",
+      "legacyRuntimeId": "ao-153384",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60ST4NB9",
+      "exactKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60ST4NB9",
+      "catalogDimensionsMm": {
+        "width": 599,
+        "height": 454,
+        "depth": 573
+      },
+      "canPromoteDimensions": false,
+      "state": "REGISTRY_INTERNAL_CONFLICT",
+      "reasonCodes": [
+        "MULTIPLE_EXACT_ROWS_WITH_CONFLICTING_DIMENSIONS"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 950,
+          "rowFingerprint": "1c9288618874a5198e2dd4bf3515b58269b6882e20a741972d2ecfe47a2ec031",
+          "registrationNumber": "ADW1240",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 410,
+            "depth": 573
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 412,
+          "rowFingerprint": "9e62b67f6fdeabc3d99953501a266a2fce0dc56f1c7169aafc7189300986f03c",
+          "registrationNumber": "ADW1048",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_a1725ebc3892da3158722c8f",
+      "legacyRuntimeId": "ao-66240",
+      "category": "dishwasher",
+      "brand": "Midea",
+      "model": "MDWB1BL",
+      "exactKey": "dishwasher\u0000MIDEA\u0000MDWB1BL",
+      "catalogDimensionsMm": {
+        "width": 550,
+        "height": 438,
+        "depth": 500
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 550,
+        "height": 438,
+        "depth": 500
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 632,
+          "rowFingerprint": "40566f94354791552a2600d212c318496b10614399b466d54e1bdeaf5654e885",
+          "registrationNumber": "ADW1201",
+          "dimensionsMm": {
+            "width": 550,
+            "height": 438,
+            "depth": 500
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_a7cc3652bfa5c1f6c770478b",
+      "legacyRuntimeId": "ao-161221",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F1S1",
+      "exactKey": "dishwasher\u0000HAIER\u0000HDW15F1S1",
+      "catalogDimensionsMm": {
+        "width": 597,
+        "height": 873,
+        "depth": 599
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 610
+      },
+      "deltasMm": {
+        "width": 1,
+        "height": -23,
+        "depth": 11
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1169,
+          "rowFingerprint": "244e3f51426654050bce70a930f0f29da84eb296d092d78cc9c304f365705fcc",
+          "registrationNumber": "ADW1296",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 610
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 715,
+          "rowFingerprint": "613b62a6dcfed2c42ecccb0f1331f95e8936bdc0ee181acc66f759dafd40f718",
+          "registrationNumber": "ADW1146",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 610
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_a8b34cd1877411f61fbb7ebd",
+      "legacyRuntimeId": "ao-165971",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD3A25MW",
+      "exactKey": "dishwasher\u0000LG\u0000XD3A25MW",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 796,
+          "rowFingerprint": "e5d77f0094af8b26229915dc74fc27c44a3518a9680286b134ee197d430f62bb",
+          "registrationNumber": "ADW1131",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 600
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_ae99007f50a1fc0aa021fd43",
+      "legacyRuntimeId": "ao-176949",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WSE6670BA",
+      "exactKey": "fridge\u0000WESTINGHOUSE\u0000WSE6670BA",
+      "catalogDimensionsMm": {
+        "width": 911,
+        "height": 1780,
+        "depth": 746
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 911,
+        "height": 1780,
+        "depth": 746
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 2121,
+          "rowFingerprint": "3728afe404d37a54eacc48adcb7be35c0a48d1877ede8fc6234c1e7985e580fe",
+          "registrationNumber": "ARF3378",
+          "dimensionsMm": {
+            "width": 911,
+            "height": 1780,
+            "depth": 746
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_af382b60ea923959df943ab7",
+      "legacyRuntimeId": "discovery-dishwasher-bosch-sms24ai01a",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS24AI01A",
+      "exactKey": "dishwasher\u0000BOSCH\u0000SMS24AI01A",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 351,
+          "rowFingerprint": "0ef50404ace816afb3b69ceef091b636537fa042a8121bcca001ecdef4ae5302",
+          "registrationNumber": "ADW1004",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_b2196ff8b0905cff1c6801e5",
+      "legacyRuntimeId": "dishwasher-adw1344",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15V2B2",
+      "exactKey": "dishwasher\u0000HAIER\u0000HDW15V2B2",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 598
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 597,
+        "height": 870,
+        "depth": 610
+      },
+      "deltasMm": {
+        "width": -1,
+        "height": 20,
+        "depth": 12
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1319,
+          "rowFingerprint": "95309664703c58bc0aef001e6f47571a907353de75b802acd12840bd019846b0",
+          "registrationNumber": "ADW1344",
+          "dimensionsMm": {
+            "width": 597,
+            "height": 870,
+            "depth": 610
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_b3d9afc14a1f82b131f296cc",
+      "legacyRuntimeId": "ao-113734",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD3A25MB",
+      "exactKey": "dishwasher\u0000LG\u0000XD3A25MB",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 790,
+          "rowFingerprint": "0162b88a9d84cbe099252a0eb1d9eefc64ce72c8315b340d7d75bbad39a3b4ba",
+          "registrationNumber": "ADW1131",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 600
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_b3ff5e116c2b87ffdb717ce8",
+      "legacyRuntimeId": "ao-97642",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF5300SD",
+      "exactKey": "fridge\u0000SAMSUNG\u0000SRF5300SD",
+      "catalogDimensionsMm": {
+        "width": 817,
+        "height": 1776,
+        "depth": 715
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_b4a0fbcb9062bcdb3af75244",
+      "legacyRuntimeId": "ao-163069",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRL4200B",
+      "exactKey": "fridge\u0000SAMSUNG\u0000SRL4200B",
+      "catalogDimensionsMm": {
+        "width": 700,
+        "height": 1700,
+        "depth": 705
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_b4f21fb2bfbde16e2fe5b40a",
+      "legacyRuntimeId": "fridge-arf2860",
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRSBS632BW",
+      "exactKey": "fridge\u0000HISENSE\u0000HRSBS632BW",
+      "catalogDimensionsMm": {
+        "width": 910,
+        "height": 1795,
+        "depth": 717
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 910,
+        "height": 1795,
+        "depth": 716.5
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": -0.5
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 829,
+          "rowFingerprint": "70bff07c3b788035fb5c121e2820444fc0dd19ebce710d2676df8ae1af0151a7",
+          "registrationNumber": "ARF2860",
+          "dimensionsMm": {
+            "width": 910,
+            "height": 1795,
+            "depth": 716.5
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_b5b7200a2c55bbb4729343e4",
+      "legacyRuntimeId": "discovery-fridge-fisher-paykel-rf605qnuvx1",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF605QNUVX1",
+      "exactKey": "fridge\u0000FISHERANDPAYKEL\u0000RF605QNUVX1",
+      "catalogDimensionsMm": {
+        "width": 905,
+        "height": 1790,
+        "depth": 688
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 905,
+        "height": 1790,
+        "depth": 688
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 909,
+          "rowFingerprint": "f9aa877dcbd9d520fd0c982af7ddc628caceb06212da036942d0a8e53942f0cd",
+          "registrationNumber": "ARF2887",
+          "dimensionsMm": {
+            "width": 905,
+            "height": 1790,
+            "depth": 688
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_b6ab3751d2af635d8c2216b1",
+      "legacyRuntimeId": "ao-121960",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF7900BFH",
+      "exactKey": "fridge\u0000SAMSUNG\u0000SRF7900BFH",
+      "catalogDimensionsMm": {
+        "width": 912,
+        "height": 1779,
+        "depth": 723
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_b6fe0216586469277deb51b4",
+      "legacyRuntimeId": "ao-101978",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDF1640DX",
+      "exactKey": "dishwasher\u0000BEKO\u0000BDF1640DX",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 865,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_bf5f37509b82baf1044dfb42",
+      "legacyRuntimeId": "fridge-arf3827",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WBE5300WC",
+      "exactKey": "fridge\u0000WESTINGHOUSE\u0000WBE5300WC",
+      "catalogDimensionsMm": {
+        "width": 796,
+        "height": 1725,
+        "depth": 723
+      },
+      "canPromoteDimensions": false,
+      "state": "AXIS_SUSPECT",
+      "reasonCodes": [
+        "NON_IDENTITY_AXIS_PERMUTATION_MATCHES_CATALOG"
+      ],
+      "registryDimensionsMm": {
+        "width": 1725,
+        "height": 796,
+        "depth": 723
+      },
+      "deltasMm": {
+        "width": 929,
+        "height": -929,
+        "depth": 0
+      },
+      "axisPermutation": {
+        "width": "height",
+        "height": "width",
+        "depth": "depth"
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 3504,
+          "rowFingerprint": "c3bf4d877fc2e03baecd56365c07bcadaa8c0ddd20fa1a0277c3781085b5d9d2",
+          "registrationNumber": "ARF3827",
+          "dimensionsMm": {
+            "width": 1725,
+            "height": 796,
+            "depth": 723
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c03f70546b84eff87f02746a",
+      "legacyRuntimeId": "ao-72964",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDF1620W",
+      "exactKey": "dishwasher\u0000BEKO\u0000BDF1620W",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 865,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c10836872988f234eac38f4c",
+      "legacyRuntimeId": "ao-103524",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMI4HTS01A",
+      "exactKey": "dishwasher\u0000BOSCH\u0000SMI4HTS01A",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 815,
+        "depth": 573
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_NO_DIMENSIONS",
+      "reasonCodes": [
+        "EXACT_IDENTITY_WITHOUT_COMPLETE_WHD"
+      ],
+      "registryDimensionsMm": null,
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1332,
+          "rowFingerprint": "b3f433b50c1c8c02afd63ff2e4d51c63249dd75b2a8a7e9362a8ac84b15a4d0b",
+          "registrationNumber": "ADW1346",
+          "dimensionsMm": {
+            "width": null,
+            "height": null,
+            "depth": null
+          },
+          "qualityFlags": [
+            "MISSING_DIMENSIONS"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c1c7eb642dab553f98535f85",
+      "legacyRuntimeId": "ao-149204",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDFB1630X",
+      "exactKey": "dishwasher\u0000BEKO\u0000BDFB1630X",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 600
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 403,
+          "rowFingerprint": "26e2faa237f6a6caf1f7c247132c291608154ca837311795536f5fa1af4de361",
+          "registrationNumber": "ADW1012",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 600
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c41a6900126e62213070f3ff",
+      "legacyRuntimeId": "ao-168357",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW13F0B1",
+      "exactKey": "dishwasher\u0000HAIER\u0000HDW13F0B1",
+      "catalogDimensionsMm": {
+        "width": 597,
+        "height": 859,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 610
+      },
+      "deltasMm": {
+        "width": 1,
+        "height": -9,
+        "depth": 10
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1040,
+          "rowFingerprint": "ead2fef0c50cf2f6d770504f13ad6785ea5aa354fc825af44e2a930a12b83742",
+          "registrationNumber": "ADW1241",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 610
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c6d5680b0ce52439ffe002b9",
+      "legacyRuntimeId": "dishwasher-adw1146",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F1B1",
+      "exactKey": "dishwasher\u0000HAIER\u0000HDW15F1B1",
+      "catalogDimensionsMm": {
+        "width": 597,
+        "height": 895,
+        "depth": 599
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 610
+      },
+      "deltasMm": {
+        "width": 1,
+        "height": -45,
+        "depth": 11
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 714,
+          "rowFingerprint": "665245e471945f749f2258e7d6609db4a9c52a591c2deb41e8678f55138a435e",
+          "registrationNumber": "ADW1146",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 610
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 1170,
+          "rowFingerprint": "8d4c9117b50ffff189afe2fad310cd3058028154f9f2cecb26831cfd9d6dcb79",
+          "registrationNumber": "ADW1296",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 610
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c768e2f4aec276b525dc7fc8",
+      "legacyRuntimeId": "ao-59258",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "RDNE400K30ZW",
+      "exactKey": "fridge\u0000BEKO\u0000RDNE400K30ZW",
+      "catalogDimensionsMm": {
+        "width": 595,
+        "height": 1850,
+        "depth": 650
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c77b1949d0d9f8ba60b1f1fd",
+      "legacyRuntimeId": "dishwasher-adw1245",
+      "category": "dishwasher",
+      "brand": "Hisense",
+      "model": "HSBE15FS",
+      "exactKey": "dishwasher\u0000HISENSE\u0000HSBE15FS",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 845,
+        "depth": 596
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 599,
+        "height": 885,
+        "depth": 597
+      },
+      "deltasMm": {
+        "width": -1,
+        "height": 40,
+        "depth": 1
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 978,
+          "rowFingerprint": "7c874175e95614308dfabe9e11263fde4557eba84654f0306c76eb5f15fbee40",
+          "registrationNumber": "ADW1245",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 885,
+            "depth": 597
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c807bcb91f4565d29547584a",
+      "legacyRuntimeId": "dishwasher-adw1155",
+      "category": "dishwasher",
+      "brand": "Westinghouse",
+      "model": "WSF6606XB",
+      "exactKey": "dishwasher\u0000WESTINGHOUSE\u0000WSF6606XB",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 598
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 598
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 736,
+          "rowFingerprint": "5e589b42eaaeee25f9636b5b1057657f4f4f02a05de0f70f2705f237fc2bcc4f",
+          "registrationNumber": "ADW1155",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 598
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c926208d9eefbec63aeb07a9",
+      "legacyRuntimeId": "discovery-fridge-fisher-paykel-rf610anub5",
+      "category": "fridge",
+      "brand": "Fisher & Paykel",
+      "model": "RF610ANUB5",
+      "exactKey": "fridge\u0000FISHERANDPAYKEL\u0000RF610ANUB5",
+      "catalogDimensionsMm": {
+        "width": 900,
+        "height": 1790,
+        "depth": 695
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 900,
+        "height": 1790,
+        "depth": 695
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 2586,
+          "rowFingerprint": "6fdf4671a62ea13304167401bcd08b0d22d1f40b58684a4c05ce50b613e900b5",
+          "registrationNumber": "ARF3548",
+          "dimensionsMm": {
+            "width": 900,
+            "height": 1790,
+            "depth": 695
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_ce83f74dfe65d69154c16a83",
+      "legacyRuntimeId": "ao-72965",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDF1620X",
+      "exactKey": "dishwasher\u0000BEKO\u0000BDF1620X",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 865,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_d5dac930765190f760b0500f",
+      "legacyRuntimeId": "ao-63972",
+      "category": "dishwasher",
+      "brand": "ASKO",
+      "model": "DFI666GXXL.AU",
+      "exactKey": "dishwasher\u0000ASKO\u0000DFI666GXXLAU",
+      "catalogDimensionsMm": {
+        "width": 596,
+        "height": 859,
+        "depth": 574
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 596,
+        "height": 859,
+        "depth": 574
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 185,
+          "rowFingerprint": "19b4993b0ed2f52342c719f49844753060d6ff284c8cdf8aa289e552e4ab80b4",
+          "registrationNumber": "ADW0931",
+          "dimensionsMm": {
+            "width": 596,
+            "height": 859,
+            "depth": 574
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_d9ca9d81328abfe22bcf7318",
+      "legacyRuntimeId": "fridge-arf3316",
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRTF325",
+      "exactKey": "fridge\u0000HISENSE\u0000HRTF325",
+      "catalogDimensionsMm": {
+        "width": 595,
+        "height": 1696,
+        "depth": 650
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 595,
+        "height": 1650,
+        "depth": 560
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": -46,
+        "depth": -90
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 2055,
+          "rowFingerprint": "6a17c1c854f5ecd29f4ad30adfa901063030ab2998378b5ac8292d5343c48551",
+          "registrationNumber": "ARF3316",
+          "dimensionsMm": {
+            "width": 595,
+            "height": 1650,
+            "depth": 560
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_da2f3742fbb7e0d4a1a4b99d",
+      "legacyRuntimeId": "fridge-arf3292",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-LN500MBL",
+      "exactKey": "fridge\u0000LG\u0000GFLN500MBL",
+      "catalogDimensionsMm": {
+        "width": 835,
+        "height": 1787,
+        "depth": 730
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 835,
+        "height": 1787,
+        "depth": 730
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 1965,
+          "rowFingerprint": "bb5e9567adf744c56481c80cf19d7144e5c3e76677a8985412b668d059ad2c91",
+          "registrationNumber": "ARF3292",
+          "dimensionsMm": {
+            "width": 835,
+            "height": 1787,
+            "depth": 730
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_da38f8560f542087049c5ee1",
+      "legacyRuntimeId": "ao-59253",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "RCNA340K30ZX",
+      "exactKey": "fridge\u0000BEKO\u0000RCNA340K30ZX",
+      "catalogDimensionsMm": {
+        "width": 595,
+        "height": 1754,
+        "depth": 650
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_dace5a50d164f1dd88122d8d",
+      "legacyRuntimeId": "ao-59259",
+      "category": "fridge",
+      "brand": "Beko",
+      "model": "RDNE400K30ZX",
+      "exactKey": "fridge\u0000BEKO\u0000RDNE400K30ZX",
+      "catalogDimensionsMm": {
+        "width": 595,
+        "height": 1850,
+        "depth": 650
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_dcfd3fe78c613ebabdb40d6b",
+      "legacyRuntimeId": "dishwasher-adw0974",
+      "category": "dishwasher",
+      "brand": "Hisense",
+      "model": "HSCM15FS",
+      "exactKey": "dishwasher\u0000HISENSE\u0000HSCM15FS",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 845,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 598,
+        "height": 845,
+        "depth": 600
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 285,
+          "rowFingerprint": "c960fd0df04de6adc0c29fb7a90c727379f4bda1456e072bc3f4e85c72a6ea11",
+          "registrationNumber": "ADW0974",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 845,
+            "depth": 600
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_deb632c704c5620713dafb7b",
+      "legacyRuntimeId": "fridge-arf3094",
+      "category": "fridge",
+      "brand": "LG",
+      "model": "GF-L700PL",
+      "exactKey": "fridge\u0000LG\u0000GFL700PL",
+      "catalogDimensionsMm": {
+        "width": 914,
+        "height": 1792,
+        "depth": 729
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 914,
+        "height": 1792,
+        "depth": 729
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 1414,
+          "rowFingerprint": "cc976a79673f12667e140e615365ab2c1f087a72b6b88a2e5910b25fdc966b32",
+          "registrationNumber": "ARF3094",
+          "dimensionsMm": {
+            "width": 914,
+            "height": 1792,
+            "depth": 729
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_dfc620e57eed5e0b3eddbd3a",
+      "legacyRuntimeId": "ao-102267",
+      "category": "fridge",
+      "brand": "Samsung",
+      "model": "SRF7500BB",
+      "exactKey": "fridge\u0000SAMSUNG\u0000SRF7500BB",
+      "catalogDimensionsMm": {
+        "width": 912,
+        "height": 1779,
+        "depth": 723
+      },
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_REGISTRY_MATCH",
+      "reasonCodes": [
+        "NO_ACTIVE_AU_EXACT_KEY"
+      ],
+      "registryObservations": []
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_e191868e981538ab90701375",
+      "legacyRuntimeId": "fridge-arf2733",
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "model": "WSE6640SA",
+      "exactKey": "fridge\u0000WESTINGHOUSE\u0000WSE6640SA",
+      "catalogDimensionsMm": {
+        "width": 911,
+        "height": 1780,
+        "depth": 746
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 911,
+        "height": 1780,
+        "depth": 746
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 3795,
+          "rowFingerprint": "499f7e0e852874c16e65b4998e071bbdc076a8d07574be35beaf1fe6489a6dcf",
+          "registrationNumber": "ARF4021",
+          "dimensionsMm": {
+            "width": 911,
+            "height": 1780,
+            "depth": 746
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_e34124271503b4915b0099bc",
+      "legacyRuntimeId": "dishwasher-adw1149",
+      "category": "dishwasher",
+      "brand": "Westinghouse",
+      "model": "WSF6604XB",
+      "exactKey": "dishwasher\u0000WESTINGHOUSE\u0000WSF6604XB",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 598
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 598
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 720,
+          "rowFingerprint": "e96dcf0cc0757194b32907c45df7696a49374adcce552240d2b090e8d40ab72d",
+          "registrationNumber": "ADW1149",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 598
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_e594c75ea0cc2af8a3f16c98",
+      "legacyRuntimeId": "ao-113733",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD3A15MB",
+      "exactKey": "dishwasher\u0000LG\u0000XD3A15MB",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 323,
+          "rowFingerprint": "6ace9e76cb1832980596653429c3132f662b05bbddc1b4426a49b9a33fd4d76a",
+          "registrationNumber": "ADW0983",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 600
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_e83b25b67b2dd20a2a1c3b8c",
+      "legacyRuntimeId": "ao-150984",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60D4NX9",
+      "exactKey": "dishwasher\u0000FISHERANDPAYKEL\u0000DD60D4NX9",
+      "catalogDimensionsMm": {
+        "width": 599,
+        "height": 880,
+        "depth": 573
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 599,
+        "height": 880,
+        "depth": 573
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 945,
+          "rowFingerprint": "c5e4069059a7bee66851a8b00ee36af24013af568ad6a00772e99659cc3dec4e",
+          "registrationNumber": "ADW1237",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 417,
+          "rowFingerprint": "f382adff06f94e29cb40d9c292c599f1cb2118c68b4de2332b1fe2a4df7b7f7b",
+          "registrationNumber": "ADW1044",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_eb83316f7761f0b2f28f032a",
+      "legacyRuntimeId": "ao-162328",
+      "category": "dishwasher",
+      "brand": "Westinghouse",
+      "model": "WSF6602WB",
+      "exactKey": "dishwasher\u0000WESTINGHOUSE\u0000WSF6602WB",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 598
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 596,
+        "height": 850,
+        "depth": 598
+      },
+      "deltasMm": {
+        "width": -2,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 718,
+          "rowFingerprint": "490eb68558ea486ffd02178906511302ccd0aad991efabadddc8565c38618a09",
+          "registrationNumber": "ADW1147",
+          "dimensionsMm": {
+            "width": 596,
+            "height": 850,
+            "depth": 598
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_f16e773a242b377cf3fe7e3e",
+      "legacyRuntimeId": "dishwasher-adw1232",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD4B15PS",
+      "exactKey": "dishwasher\u0000LG\u0000XD4B15PS",
+      "catalogDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 600
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 908,
+          "rowFingerprint": "6edc8e92ba3fd6e833176841e5fc52b930a975fbbf25092db82013bf8c328794",
+          "registrationNumber": "ADW1232",
+          "dimensionsMm": {
+            "width": 600,
+            "height": 850,
+            "depth": 600
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_f491bf00786fabb93ac9861f",
+      "legacyRuntimeId": "fridge-arf3573",
+      "category": "fridge",
+      "brand": "Haier",
+      "model": "HRF505VW",
+      "exactKey": "fridge\u0000HAIER\u0000HRF505VW",
+      "catalogDimensionsMm": {
+        "width": 705,
+        "height": 1725,
+        "depth": 691
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_CONSISTENT",
+      "reasonCodes": [
+        "EXACT_IDENTITY_AND_WHD_AGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 705,
+        "height": 1725,
+        "depth": 691
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 0,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 2629,
+          "rowFingerprint": "3e3d94355485072dc8e7fe92a88c8fbd869c7f4fb6f739d12109c48c592f5ad4",
+          "registrationNumber": "ARF3573",
+          "dimensionsMm": {
+            "width": 705,
+            "height": 1725,
+            "depth": 691
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_fad5bc9636ab026de1626aa3",
+      "legacyRuntimeId": "fridge-arf3513",
+      "category": "fridge",
+      "brand": "Hisense",
+      "model": "HRBF46",
+      "exactKey": "fridge\u0000HISENSE\u0000HRBF46",
+      "catalogDimensionsMm": {
+        "width": 445,
+        "height": 500,
+        "depth": 468
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 445,
+        "height": 501,
+        "depth": 471
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": 1,
+        "depth": 3
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:fridge",
+          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
+          "sourceLine": 2461,
+          "rowFingerprint": "4904dfe1aaab9864cbf010d004c10e306ec3967e5baf7cc88c523e4b01ad9346",
+          "registrationNumber": "ARF3513",
+          "dimensionsMm": {
+            "width": 445,
+            "height": 501,
+            "depth": 471
+          },
+          "qualityFlags": []
+        }
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_ff82fde5f185bfd618195514",
+      "legacyRuntimeId": "ao-149199",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDFB1410W",
+      "exactKey": "dishwasher\u0000BEKO\u0000BDFB1410W",
+      "catalogDimensionsMm": {
+        "width": 598,
+        "height": 865,
+        "depth": 600
+      },
+      "canPromoteDimensions": false,
+      "state": "EXACT_DIMENSION_CONFLICT",
+      "reasonCodes": [
+        "ONE_OR_MORE_AXES_DISAGREE"
+      ],
+      "registryDimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 600
+      },
+      "deltasMm": {
+        "width": 0,
+        "height": -15,
+        "depth": 0
+      },
+      "registryObservations": [
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 400,
+          "rowFingerprint": "1bf9884fdc644eed165589a54061a7709834c684ee70243ae0eebf4938749fd9",
+          "registrationNumber": "ADW1039",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 600
+          },
+          "qualityFlags": []
+        },
+        {
+          "sourceId": "energy-rating:dishwasher",
+          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "sourceLine": 959,
+          "rowFingerprint": "b9d6df8353b319a370333a4724efad587f611b7be72a1e7017dd875233d303f6",
+          "registrationNumber": "ADW1243",
+          "dimensionsMm": {
+            "width": 598,
+            "height": 850,
+            "depth": 600
+          },
+          "qualityFlags": []
+        }
+      ]
+    }
+  ],
+  "wels": [
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_038dc9b0e74e69bf049f6cbd",
+      "legacyRuntimeId": "ao-33312",
+      "category": "dishwasher",
+      "brand": "Electrolux",
+      "model": "ESF6700ROW",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_EXPIRED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D01285",
+      "licenceNumber": "0380",
+      "expiryDateRaw": "22/07/2018",
+      "sourceRowFingerprint": "b9e205e33bda766da5ce698aeafd9c35b984b1c04ac8294e18537c1fe204a14b"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_03d589b78c6f4837a6825ce9",
+      "legacyRuntimeId": "ao-153383",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60D4NB9",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D02061",
+      "licenceNumber": "0355",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "f4e5f0219703cd92dc3c59f0973c2286903e7999bde8259ae557c31f614f8b2c"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_062c6c1c2b89378a83e10ee3",
+      "legacyRuntimeId": "dishwasher-adw0961",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F3S1",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02755",
+      "licenceNumber": "1160",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "a9f529b448c6e3d19280396f2521b8d79740200a7156df3dadcd2796d6f0afcc"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_06525d5180ee73d79e00936b",
+      "legacyRuntimeId": "ao-104840",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDF1640AX",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D02196",
+      "licenceNumber": "1268",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "e035d6bec1df2b044cb966738dc3e32afd6d7af521c974bef8ee7181d1626dca"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_0bd9b11cfb973369769a5d94",
+      "legacyRuntimeId": "ao-84181",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD3A15NS",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02080",
+      "licenceNumber": "0351",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "d40221874c7d310377e55c9ddfadf41f8a472ba4e832ffd38f3aac91806cd996"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_1e22efa5bb243f387f279af7",
+      "legacyRuntimeId": "dishwasher-adw0956",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UZT4B2",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02731",
+      "licenceNumber": "0355",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "792cb17c53c679a3eeb23b8826e0b4908e40912fcc30d03245333d93d7165643"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_1e7cc37976956a0b030f94b1",
+      "legacyRuntimeId": "ao-65627",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD5B14PS",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02100",
+      "licenceNumber": "0351",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "da9a69b2d308bfecc2a958eac4dc7e66584feb70ef994f04c3379f9743632339"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_248d6f4b8ba174cb26cdd4ff",
+      "legacyRuntimeId": "ao-59208",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "DDN38450",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_EXPIRED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D01729",
+      "licenceNumber": "1268",
+      "expiryDateRaw": "22/07/2022",
+      "sourceRowFingerprint": "cf29c388e0c5fc8464c07b383d88dca14f2eb0c8acbd8c8c7ada10c3bde0dff7"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_2a1f15e8ce5ce0ad894c3b07",
+      "legacyRuntimeId": "discovery-dishwasher-bosch-sms2itw01a",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS2ITW01A",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02600",
+      "licenceNumber": "0377",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "31613023fa055374644f65a1c8cf776e8d186a6ec25fafe1e8b704cab921aea9"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_3494250b2a85d645b6573ea3",
+      "legacyRuntimeId": "ao-66241",
+      "category": "dishwasher",
+      "brand": "Midea",
+      "model": "MDWB1SS",
+      "canPromoteDimensions": false,
+      "state": "WELS_IDENTITY_CONFLICT",
+      "matchRelationship": "model_code",
+      "registrationNumber": null,
+      "matchingRegistrations": [
+        "D02262",
+        "D02630"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_43be0630d42f1bf6bdfcb231",
+      "legacyRuntimeId": "ao-132904",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F2B1",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02773",
+      "licenceNumber": "1160",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "9d50566927b879477d84201074c315a5fa584679b47c18fb5501718dfb9f40d6"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_49a14a97a40476e09c241f9e",
+      "legacyRuntimeId": "ao-71425",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDF1630X",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02196",
+      "licenceNumber": "1268",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "e035d6bec1df2b044cb966738dc3e32afd6d7af521c974bef8ee7181d1626dca"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_4c5dd632cbad6b5d410cb718",
+      "legacyRuntimeId": "ao-150517",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60D2NB9",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D02061",
+      "licenceNumber": "0355",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "f4e5f0219703cd92dc3c59f0973c2286903e7999bde8259ae557c31f614f8b2c"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_58f5a7609ebcb420091eb986",
+      "legacyRuntimeId": "ao-141853",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS6HAI02A",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02622",
+      "licenceNumber": "0377",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "fdfad9448ed96d0cd37deab76984039a6958d791b1a745cc8b1a99e8366b710a"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_5a84ca3b168d4f76044963f4",
+      "legacyRuntimeId": "ao-102182",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMI6HCS01A",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02554",
+      "licenceNumber": "0377",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "faa4027a14498f98530796a18865e3016343df833a3d55b40a9a152cc0503b62"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_62a2b566297e5b6bb2e13304",
+      "legacyRuntimeId": "dishwasher-adw0959",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DW60UT4I2",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02730",
+      "licenceNumber": "0355",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "d5bbf4a3557b3f4535965f9c2b95a88dc393337ebc52319bcdf28ee2864b8f0f"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_6868cdde53bfa347a96e1a20",
+      "legacyRuntimeId": "ao-153254",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60D2NX9",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D02061",
+      "licenceNumber": "0355",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "f4e5f0219703cd92dc3c59f0973c2286903e7999bde8259ae557c31f614f8b2c"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_693c6fa3684bef1660a42e9f",
+      "legacyRuntimeId": "discovery-dishwasher-lg-xd2a25mb",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD2A25MB",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D02245",
+      "licenceNumber": "0351",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "239c098f275342122bf5563580444827b26ab79e4644c4f2500ec6f3ab638677"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_6bd24b76c0d45dbdab1ec470",
+      "legacyRuntimeId": "dishwasher-adw1233",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15U2I1",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02775",
+      "licenceNumber": "1160",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "128fd30bba9ef6b67c2bb5c37e5a1334b33eece048e6a02da1855ce479a16d1e"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_71ba41e4e13dc2f758852acf",
+      "legacyRuntimeId": "ao-107181",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS4HVB01A",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02592",
+      "licenceNumber": "0377",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "e3348b4c0bf7105f37794d798387e20857edbf5a8b813f82cf057800d453c671"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_86422bbb5614880076006338",
+      "legacyRuntimeId": "ao-113736",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD4B24PS",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02247",
+      "licenceNumber": "0351",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "7fd895b974f3dfbee4b1661dd80fa57bb50d70aa7acd45a7a7aed97adb24e43a"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_90a6f61a78dd5284381531d2",
+      "legacyRuntimeId": "ao-102570",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS4HTI01A",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02588",
+      "licenceNumber": "0377",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "90e269fff4a95a84349f3931113817e4b243acdda3a8d86de50af41e7182c1aa"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9bf075ae36ec6b6f15b3af01",
+      "legacyRuntimeId": "discovery-dishwasher-bosch-sms4hvi01a",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS4HVI01A",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02593",
+      "licenceNumber": "0377",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "a5946d2127ff19dc8f4e2dfa18591c7123a03c61b79c1053efcbe00e0f1f7fe4"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9e74951938c9359be394fe98",
+      "legacyRuntimeId": "discovery-dishwasher-fisher-paykel-dd60scx9",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60SCX9",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_name",
+      "registrationNumber": "D01957",
+      "licenceNumber": "0355",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "7a747a533eda9df8cb5d0d4b5b239f002f5907e935cc322d8c2b91733baae7c2"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9eac2f6f8218f4b2aeaff0a1",
+      "legacyRuntimeId": "ao-74519",
+      "category": "dishwasher",
+      "brand": "Ilve",
+      "model": "IVBID10X",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02293",
+      "licenceNumber": "1067",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "b40f55baeda144246db80641d203e1d11af2ee15487d9b9fd9f1d6b5f183a553"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9f958bd4bcda5ed405fce93f",
+      "legacyRuntimeId": "dishwasher-adw1276",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F4B1",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D45176",
+      "licenceNumber": "1160",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "6c837c342bf2a2693154ebcd4d92cc44c6dc12fe03534763dee844ddf0aa2380"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_9ffb22502ce4f205bcc22ec0",
+      "legacyRuntimeId": "ao-153384",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60ST4NB9",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D02063",
+      "licenceNumber": "0355",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "6d74dbb07566aa00c4a8e7628ac6f8fbc4d1aa3af6ca5ba491ed06df9547296e"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_a1725ebc3892da3158722c8f",
+      "legacyRuntimeId": "ao-66240",
+      "category": "dishwasher",
+      "brand": "Midea",
+      "model": "MDWB1BL",
+      "canPromoteDimensions": false,
+      "state": "WELS_IDENTITY_CONFLICT",
+      "matchRelationship": "model_code",
+      "registrationNumber": null,
+      "matchingRegistrations": [
+        "D02261",
+        "D02629"
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_a7cc3652bfa5c1f6c770478b",
+      "legacyRuntimeId": "ao-161221",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F1S1",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D02924",
+      "licenceNumber": "1160",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "9b7b7e74008999b009149736d173d90d64d60023da60d10d8d2b5b246177c593"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_a8b34cd1877411f61fbb7ebd",
+      "legacyRuntimeId": "ao-165971",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD3A25MW",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D02245",
+      "licenceNumber": "0351",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "239c098f275342122bf5563580444827b26ab79e4644c4f2500ec6f3ab638677"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_af382b60ea923959df943ab7",
+      "legacyRuntimeId": "discovery-dishwasher-bosch-sms24ai01a",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMS24AI01A",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02777",
+      "licenceNumber": "0377",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "b4f302be6d0b6c744e6365c3aa9966f3f70c7f2af14e75da39bf7a153996602e"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_b2196ff8b0905cff1c6801e5",
+      "legacyRuntimeId": "dishwasher-adw1344",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15V2B2",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D47723",
+      "licenceNumber": "1160",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "9d211d7086d6a8e88052eb886c8271ab6309ca6d63dc5ea9dbd69762047fadeb"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_b3d9afc14a1f82b131f296cc",
+      "legacyRuntimeId": "ao-113734",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD3A25MB",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02245",
+      "licenceNumber": "0351",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "239c098f275342122bf5563580444827b26ab79e4644c4f2500ec6f3ab638677"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_b6fe0216586469277deb51b4",
+      "legacyRuntimeId": "ao-101978",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDF1640DX",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D02196",
+      "licenceNumber": "1268",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "e035d6bec1df2b044cb966738dc3e32afd6d7af521c974bef8ee7181d1626dca"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c03f70546b84eff87f02746a",
+      "legacyRuntimeId": "ao-72964",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDF1620W",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_EXPIRED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02209",
+      "licenceNumber": "1268",
+      "expiryDateRaw": "22/07/2025",
+      "sourceRowFingerprint": "2a4d684d5813b9ea40ad0a7d3cb17b9a9cc3a96b68881d9078ff2e2e195702c4"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c10836872988f234eac38f4c",
+      "legacyRuntimeId": "ao-103524",
+      "category": "dishwasher",
+      "brand": "Bosch",
+      "model": "SMI4HTS01A",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02578",
+      "licenceNumber": "0377",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "21c6fec25fc5dba645ce07e71e97a7541785f9aadbef26435630863e1d30a65b"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c1c7eb642dab553f98535f85",
+      "legacyRuntimeId": "ao-149204",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDFB1630X",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02809",
+      "licenceNumber": "1268",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "71fc1d9420b146cf56f3e136171570a7cbde8c77468c4bc742e0882df64deb6d"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c41a6900126e62213070f3ff",
+      "legacyRuntimeId": "ao-168357",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW13F0B1",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D03019",
+      "licenceNumber": "1160",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "ad46470372427da6e49175ee7379c27d79bdf639154c12bf63d7aaeb32a10cd0"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c6d5680b0ce52439ffe002b9",
+      "legacyRuntimeId": "dishwasher-adw1146",
+      "category": "dishwasher",
+      "brand": "Haier",
+      "model": "HDW15F1B1",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02924",
+      "licenceNumber": "1160",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "9b7b7e74008999b009149736d173d90d64d60023da60d10d8d2b5b246177c593"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c77b1949d0d9f8ba60b1f1fd",
+      "legacyRuntimeId": "dishwasher-adw1245",
+      "category": "dishwasher",
+      "brand": "Hisense",
+      "model": "HSBE15FS",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D03023",
+      "licenceNumber": "1376",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "5df4630b5bb471b452e647d50ad9284db7c8a1694a03ca0df986d22aafaf2a88"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_c807bcb91f4565d29547584a",
+      "legacyRuntimeId": "dishwasher-adw1155",
+      "category": "dishwasher",
+      "brand": "Westinghouse",
+      "model": "WSF6606XB",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02962",
+      "licenceNumber": "0380",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "d5105f0271d2b84eb60f96d86dbdccc9a5876adb482ada8e44ac69903a7f48e6"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_ce83f74dfe65d69154c16a83",
+      "legacyRuntimeId": "ao-72965",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDF1620X",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_EXPIRED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02210",
+      "licenceNumber": "1268",
+      "expiryDateRaw": "22/07/2025",
+      "sourceRowFingerprint": "889e2224c13cfcdc1329101418d80553134129f74e9f4545b26c37484e0a8c88"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_d5dac930765190f760b0500f",
+      "legacyRuntimeId": "ao-63972",
+      "category": "dishwasher",
+      "brand": "ASKO",
+      "model": "DFI666GXXL.AU",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02078",
+      "licenceNumber": "0341",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "8582d9cfef5ba1380865fcaf4391728de56d8841bf2abb7ea0a0967b36f6d18b"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_dcfd3fe78c613ebabdb40d6b",
+      "legacyRuntimeId": "dishwasher-adw0974",
+      "category": "dishwasher",
+      "brand": "Hisense",
+      "model": "HSCM15FS",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02763",
+      "licenceNumber": "1376",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "a4d40ec1e657164f13968d2afde7891ceb8e4f6d6d85cc1c3b8260e17fe538b0"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_e34124271503b4915b0099bc",
+      "legacyRuntimeId": "dishwasher-adw1149",
+      "category": "dishwasher",
+      "brand": "Westinghouse",
+      "model": "WSF6604XB",
+      "canPromoteDimensions": false,
+      "state": "NO_EXACT_WELS_MATCH",
+      "matchRelationship": null,
+      "registrationNumber": null
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_e594c75ea0cc2af8a3f16c98",
+      "legacyRuntimeId": "ao-113733",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD3A15MB",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D02080",
+      "licenceNumber": "0351",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "d40221874c7d310377e55c9ddfadf41f8a472ba4e832ffd38f3aac91806cd996"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_e83b25b67b2dd20a2a1c3b8c",
+      "legacyRuntimeId": "ao-150984",
+      "category": "dishwasher",
+      "brand": "Fisher & Paykel",
+      "model": "DD60D4NX9",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D02061",
+      "licenceNumber": "0355",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "f4e5f0219703cd92dc3c59f0973c2286903e7999bde8259ae557c31f614f8b2c"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_eb83316f7761f0b2f28f032a",
+      "legacyRuntimeId": "ao-162328",
+      "category": "dishwasher",
+      "brand": "Westinghouse",
+      "model": "WSF6602WB",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "variant_model_code",
+      "registrationNumber": "D02960",
+      "licenceNumber": "0380",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "fce1a6b92c1b475e01851ac7f8ce5d6b08515e237901ad146ce85d65a3e852ec"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_f16e773a242b377cf3fe7e3e",
+      "legacyRuntimeId": "dishwasher-adw1232",
+      "category": "dishwasher",
+      "brand": "LG",
+      "model": "XD4B15PS",
+      "canPromoteDimensions": false,
+      "state": "WELS_EXACT_REGISTERED",
+      "matchRelationship": "model_code",
+      "registrationNumber": "D02426",
+      "licenceNumber": "0351",
+      "expiryDateRaw": "22/07/2027",
+      "sourceRowFingerprint": "86584642821033c32fc0d0d40f2bbfb89ab56b7ae67f98e74e14439fc3e68173"
+    },
+    {
+      "schemaVersion": 1,
+      "canonicalProductId": "fa_prod_ff82fde5f185bfd618195514",
+      "legacyRuntimeId": "ao-149199",
+      "category": "dishwasher",
+      "brand": "Beko",
+      "model": "BDFB1410W",
+      "canPromoteDimensions": false,
+      "state": "WELS_IDENTITY_CONFLICT",
+      "matchRelationship": "model_code",
+      "registrationNumber": null,
+      "matchingRegistrations": [
+        "D02835",
+        "D03024"
+      ]
+    }
+  ],
+  "summary": {
+    "energyByState": {
+      "AXIS_SUSPECT": 27,
+      "EXACT_CONSISTENT": 1258,
+      "EXACT_DIMENSION_CONFLICT": 203,
+      "EXACT_NO_DIMENSIONS": 74,
+      "NO_EXACT_REGISTRY_MATCH": 1103,
+      "REGISTRY_INTERNAL_CONFLICT": 23
+    },
+    "welsByState": {
+      "NO_EXACT_WELS_MATCH": 162,
+      "WELS_EXACT_CEASING": 28,
+      "WELS_EXACT_EXPIRED": 167,
+      "WELS_EXACT_REGISTERED": 304,
+      "WELS_IDENTITY_CONFLICT": 42
+    },
+    "dimensionsPromoted": 0,
+    "publicWrites": 0
+  }
+}

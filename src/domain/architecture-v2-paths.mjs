@@ -4,6 +4,8 @@ const base = 'data/architecture-v2';
 
 export const architectureV2Paths = Object.freeze({
   retailerSourcePolicy: `${base}/policies/retailer-source-policy.json`,
+  officialRegistrySourcePolicy: `${base}/policies/official-registry-source-policy.json`,
+  productDataChannelMatrix: `${base}/policies/product-data-channel-matrix.json`,
   canonicalIdentityDecisions: `${base}/decisions/canonical-identity-decisions.json`,
   canonicalPublicationQuarantine: `${base}/decisions/canonical-publication-quarantine.json`,
   phase1QuarantineDisposition: `${base}/decisions/phase1-quarantine-disposition.json`,
@@ -22,6 +24,12 @@ export const architectureV2Paths = Object.freeze({
   pdfBrandAcceptanceResults: `${base}/reviews/automated/pdf-brand-acceptance-results.json`,
   identityRangeRecoveryAcceptanceBatch: `${base}/reviews/automated/identity-range-recovery-acceptance-batch.json`,
   identityRangeRecoveryAcceptanceResults: `${base}/reviews/automated/identity-range-recovery-acceptance-results.json`,
+  officialRegistryFitV3Baseline: `${base}/reviews/automated/official-registry-fit-v3-baseline.json`,
+  officialRegistryReconciliation: `${base}/reviews/automated/official-registry-reconciliation.json`,
+  installationResearchQueue: `${base}/reviews/automated/installation-research-queue.json`,
+  fitV3ShadowAudit: `${base}/reviews/automated/fit-v3-shadow-audit.json`,
+  brandDataOutreachQueue: `${base}/reviews/automated/brand-data-outreach-queue.json`,
+  officialRegistryFitV3Audit: `${base}/reviews/automated/official-registry-fit-v3-audit.json`,
   retailerObservations: `${base}/observations/retailer-observations.json`,
   canonicalRegistry: `${base}/generated/canonical-registry.json`,
   evidenceResolutionManifest: `${base}/generated/evidence-resolution-manifest.json`,
@@ -36,6 +44,9 @@ export const architectureV2Paths = Object.freeze({
   publicProjection: `${base}/generated/public-catalog-projection.json`,
   sourceDocuments: `${base}/generated/source-documents.json`,
   spaceReviewManifest: `${base}/generated/space-evidence-pilot-review-manifest.json`,
+  officialRegistrySnapshots: `${base}/generated/official-registry-snapshots.json`,
+  officialRegistryObservations: `${base}/generated/official-registry-observations.json`,
+  installationKnowledgePilot: `${base}/generated/installation-knowledge-pilot.json`,
 });
 
 export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
