@@ -54,10 +54,10 @@
 
 ## Phase 6: Delivery
 
-- [ ] Commit only task-owned files with a conventional commit message.
-- [ ] Push `main` and wait for the deployment to finish.
-- [ ] Verify the production catalog and representative product pages in a browser, including one adjustable-height product and one dimensions-only product.
-- [ ] Update the design/plan checkboxes and final measured metrics.
+- [x] Commit only task-owned files with a conventional commit message.
+- [x] Push `main` and wait for the deployment to finish.
+- [x] Verify the production catalog and representative product pages in a browser, including one adjustable-height product and one dimensions-only product.
+- [x] Update the design/plan checkboxes and final measured metrics.
 
 ## Measured result before delivery
 
@@ -68,6 +68,7 @@
 - Receipt-bound products now project the same geometry through `geometry_v2`, legacy top-level fields, generated product pages, cards, FAQs, and structured data. The post-build legacy drift audit reports zero dimension, door-open, clearance, plumbing, and ventilation leaks.
 - MinerU now preserves strict single-cell specification rows. `RF605QZUVB1` publishes manufacturer clearances of 20 mm left/right/top and 30 mm rear from the same receipt-bound PDF, while missing door-open depth keeps the outcome at `CONDITIONAL_FIT` rather than `VERIFIED_FIT`.
 - Validation passed: 286 Architecture V2 tests, 1,590 full tests, lint, Architecture V2 build, production build, PDF JSON-first audit, historical MinerU replay audit, and fit publication audit.
+- Production deployment `dpl_HQcwLLwMy5QQSoGHkHzMHrEs4RLz` for commit `e002d765b` reached `READY`. Playwright and live JSON checks confirmed the 850-895 mm Haier range, corrected Electrolux axis projection, receipt-bound Fisher & Paykel clearances, conditional-fit downgrade, and zero browser console errors.
 
 ## Stop Conditions
 

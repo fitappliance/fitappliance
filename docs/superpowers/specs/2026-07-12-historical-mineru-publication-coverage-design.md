@@ -1,7 +1,7 @@
 # Historical MinerU and Publication Coverage Design
 
 **Date:** 2026-07-12
-**Status:** Implemented; delivery verification pending
+**Status:** Completed and production-verified
 **Scope:** Architecture V2 evidence ingestion, model identity, geometry projection, and publication safety
 
 ## Problem
@@ -145,7 +145,8 @@ The system does not estimate manufacturer clearances. Until all category-require
 - Eight of nine historical identity cases resolved through exact or strict field-scoped official evidence. `WW12BB944DGB` remains quarantined instead of receiving a weak suffix/family approval.
 - All three adjustable-height products preserve 850-895 mm ranges and use 895 mm for cavity placement. Generated pages, cards, FAQs, and JSON-LD expose the range rather than the former fixed 850 mm value.
 - Receipt-bound fields now replace or clear stale retailer-era top-level dimensions, clearances, door-open depth, plumbing, and ventilation flags. The post-build drift audit reports zero conflicts across all 21 receipt-bound products.
-- Local verification passed with 286 Architecture V2 tests, 1,590 full tests, lint, both builds, the PDF JSON-first audit, the 69-document historical replay audit, and the fit publication audit. Deployment and live-browser evidence remain pending.
+- Local verification passed with 286 Architecture V2 tests, 1,590 full tests, lint, both builds, the PDF JSON-first audit, the 69-document historical replay audit, and the fit publication audit.
+- Production deployment `dpl_HQcwLLwMy5QQSoGHkHzMHrEs4RLz` for commit `e002d765b` reached `READY`. Live Playwright and JSON checks verified the Haier 850-895 mm range, corrected Electrolux W/H/D projection, Fisher & Paykel receipt-bound clearances with a `CONDITIONAL_FIT` outcome, no false `VERIFIED_FIT`, and zero browser console errors.
 
 ## Implementation result
 
