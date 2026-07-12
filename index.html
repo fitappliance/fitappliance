@@ -424,12 +424,12 @@ nav {
     <div class="hero-copy">
       <div class="hero-eyebrow"><span></span> <span id="heroEyebrowText">Appliance fit, with practical clearance built in</span></div>
       <h1 id="heroTitle">Measure once. Find the appliances that actually fit.</h1>
-      <p class="hero-sub" id="heroSub">Enter your cavity. Get a 0-100 Fit Score for every appliance that fits.</p>
+      <p class="hero-sub" id="heroSub">Enter your cavity. Compare a 0-100 size-margin score with an evidence-based fit verdict.</p>
 
       <div class="hero-trust-strip" role="note">
-        <span class="hero-trust-item">2,170+ Australian appliances</span>
-        <span class="hero-trust-item" id="hero-verified-count">280 Verified Fit records · 1,805 evidence-backed specs</span>
-        <span class="hero-trust-item">Updated daily</span>
+        <span class="hero-trust-item">Evidence status shown on every result</span>
+        <span class="hero-trust-item" id="hero-verified-count">No Verified Fit without complete installation evidence</span>
+        <span class="hero-trust-item">Sources and review dates shown</span>
       </div>
 
       <div class="measurement-console" aria-label="Cavity measurement preview">
@@ -475,7 +475,7 @@ nav {
         <label class="search-mode-option search-mode-option--active" data-search-mode-option="cavity">
           <input type="radio" name="searchMode" value="cavity" checked>
           <span>I measured my empty cavity</span>
-          <small>Strict appliance + clearance fit score</small>
+          <small>Size-margin score from appliance + clearance</small>
         </label>
         <label class="search-mode-option" data-search-mode-option="replacement">
           <input type="radio" name="searchMode" value="replacement">
@@ -595,7 +595,7 @@ nav {
         <span>Dimensions are your raw cavity. The default fit check uses a practical clearance buffer; brand-specific manufacturer figures are shown as advisory notes so you can verify the model manual before buying.</span>
       </div>
 
-      <a href="#how-we-score" class="hero-secondary-link">How is Fit Score calculated? →</a>
+      <a href="#how-we-score" class="hero-secondary-link">How is the size-margin score calculated? →</a>
       <p class="fit-checker-link"><a href="/tools/fit-checker">Try the fit checker →</a></p>
       <div id="searchHistoryMount"></div>
     </div>
@@ -603,7 +603,7 @@ nav {
 </section>
 
 <section id="how-we-score" class="how-we-score">
-  <h2>How is Fit Score calculated?</h2>
+  <h2>How is the size-margin score calculated?</h2>
   <p>Every cavity and appliance pair gets a deterministic 0-100 score. The score factors:</p>
   <ul>
     <li><strong>Width spare</strong> (40% weight) — how much breathing room remains on each side.</li>
@@ -611,6 +611,7 @@ nav {
     <li><strong>Depth spare</strong> (30%) — clearance behind the appliance.</li>
     <li><strong>Binding penalty</strong> — if the tightest axis is &lt;10mm spare, the score is reduced.</li>
   </ul>
+  <p>The score ranks dimensional margin only. The separate fit verdict tells you whether clearances came from verified manufacturer evidence, estimated defaults, or incomplete data.</p>
   <p>Click the score ring on any product result to see the full breakdown for your cavity.</p>
 </section>
 
@@ -841,7 +842,7 @@ nav {
       </article>
       <article>
         <strong>Evidence-labelled results</strong>
-        <span>Cards distinguish Verified Fit, Dimensions Verified and Retailer Spec so users can see whether clearance was proved or estimated.</span>
+        <span>Cards distinguish Evidence Pending, Dimensions Verified and Retailer Spec, with Verified Fit only when complete installation evidence is present.</span>
       </article>
       <article>
         <strong>Indexed page families</strong>
@@ -1081,6 +1082,7 @@ nav {
 <script defer src="/scripts/sw-register.js?v=20260708-desktop-trust"></script>
 <script defer src="/scripts/subscribe.js"></script>
 <script type="module">
+import '/scripts/fit-engine.js';
 import '/scripts/search-core.js';
 import '/scripts/iso-projection.js';
 import '/scripts/fit-visualization.js';

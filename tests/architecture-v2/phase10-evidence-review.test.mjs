@@ -158,8 +158,10 @@ test('committed Phase 10 manifest reaches source registry and public geometry co
     publicByLegacy.get('dishwasher-adw0959').geometry_v2.closedEnvelope.heightMm,
     { minimumMm: 857, maximumMm: 917 },
   );
-  assert.equal(publicByLegacy.get('discovery-dryer-samsung-dv90bb9440gh').evidence.trust_level, 'dimensions_verified');
-  assert.equal(publicByLegacy.get('discovery-dryer-samsung-dv90bb9440gh').evidence.clearance_verified, true);
-  assert.equal(publicByLegacy.get('discovery-dryer-samsung-dv90bb9440gh').geometry_v2.installation.frontMm, 490);
+  const legacyReviewedSamsung = publicByLegacy.get('discovery-dryer-samsung-dv90bb9440gh');
+  assert.equal(legacyReviewedSamsung.evidence.trust_level, 'evidence_pending');
+  assert.equal(legacyReviewedSamsung.evidence.clearance_verified, false);
+  assert.equal(legacyReviewedSamsung.geometry_v2_provenance, undefined);
+  assert.equal(legacyReviewedSamsung.geometry_v2.installation.frontMm, 490);
   assert.equal(publicByLegacy.get('washing_machine-acw1520').geometry_v2, undefined);
 });

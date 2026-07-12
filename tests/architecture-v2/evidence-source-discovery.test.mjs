@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 
 import {
   discoverCandidateUrls,
+  discoverRankedCandidateUrls,
   extractSitemapLocations,
 } from '../../src/domain/evidence-source-discovery.mjs';
 
@@ -79,4 +80,29 @@ test('explicit candidates may use opaque official document IDs because PDF ident
   assert.deepEqual(await discoverCandidateUrls({
     brand: 'Fisher & Paykel', model: 'RF605QZUVB1', candidateUrls: [url],
   }), [url]);
+});
+
+test('ranked discovery adds deterministic manufacturer templates before legacy candidates', async () => {
+  const urls = await discoverRankedCandidateUrls({
+    brand: 'Electrolux', model: 'EQE6160BA', category: 'fridge',
+    candidateUrls: ['https://www.electrolux.com.au/legacy/EQE6160BA/'],
+  });
+  assert.deepEqual(urls, [
+    'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux',
+    'https://www.electrolux.com.au/legacy/EQE6160BA/',
+  ]);
+});
+
+test('ranked discovery extracts model-bound PDFs from official product pages', async () => {
+  const pageUrl = 'https://www.westinghouse.com.au/fridges/WHE5264SC/';
+  const pdfUrl = 'https://resource.electrolux.com.au/manuals/WHE5264SC-installation-guide.pdf';
+  const urls = await discoverRankedCandidateUrls({
+    brand: 'Westinghouse', model: 'WHE5264SC', category: 'fridge', productPageUrls: [pageUrl],
+  }, {
+    fetchImpl: async (url) => new Response(url === pageUrl
+      ? `<a href="${pdfUrl}">WHE5264SC installation guide</a>`
+      : '', { status: url === pageUrl ? 200 : 404 }),
+  });
+  assert.equal(urls[0], pdfUrl);
+  assert.ok(urls.includes('https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse'));
 });

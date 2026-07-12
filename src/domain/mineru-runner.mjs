@@ -1,7 +1,7 @@
 import { execFile as execFileCallback } from 'node:child_process';
-import { createHash } from 'node:crypto';
-import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
-import { basename, join, resolve } from 'node:path';
+import { createHash, randomUUID } from 'node:crypto';
+import { mkdir, mkdtemp, readFile, readdir, rename, rm, writeFile } from 'node:fs/promises';
+import { basename, dirname, join, resolve, sep } from 'node:path';
 import { promisify } from 'node:util';
 
 import { buildMineruDerivedArtifact } from './mineru-document.mjs';
@@ -59,6 +59,88 @@ function modelRevision(stdout) {
   return revision;
 }
 
+function sha256(bytes) {
+  return createHash('sha256').update(bytes).digest('hex');
+}
+
+function resolveStoragePath(storageRoot, relativePath) {
+  const path = resolve(storageRoot, ...String(relativePath ?? '').split('/'));
+  if (!path.startsWith(`${storageRoot}${sep}`)) throw new Error('MinerU cache path escaped storage root');
+  return path;
+}
+
+async function writeImmutable(path, bytes, expectedHash) {
+  await mkdir(dirname(path), { recursive: true });
+  try {
+    await writeFile(path, bytes, { flag: 'wx' });
+  } catch (error) {
+    if (error?.code !== 'EEXIST') throw error;
+    const existing = await readFile(path);
+    if (sha256(existing) !== expectedHash) throw new Error('MinerU cache integrity failure: object collision');
+  }
+}
+
+async function readCache(storageRoot, pdfSha256, expected) {
+  const indexPath = join(storageRoot, 'cache', 'mineru-index', `${pdfSha256}.json`);
+  let indexBytes;
+  try {
+    indexBytes = await readFile(indexPath);
+  } catch (error) {
+    if (error?.code === 'ENOENT') return null;
+    throw error;
+  }
+  if (indexBytes.length > 64 * 1024) throw new Error('MinerU cache integrity failure: index too large');
+  let index;
+  try { index = JSON.parse(indexBytes); } catch { throw new Error('MinerU cache integrity failure: invalid index'); }
+  if (index?.schemaVersion !== 1 || index.sourcePdfSha256 !== pdfSha256) {
+    throw new Error('MinerU cache integrity failure: PDF binding mismatch');
+  }
+  if (index.parserVersion !== expected.parserVersion || index.modelRevision !== expected.modelRevision) return null;
+  const artifact = index.derivedArtifact;
+  if (!artifact || artifact.sourcePdfSha256 !== pdfSha256) {
+    throw new Error('MinerU cache integrity failure: artifact binding mismatch');
+  }
+  let jsonBytes;
+  try {
+    jsonBytes = await readFile(resolveStoragePath(storageRoot, artifact.objectPath));
+  } catch (error) {
+    if (error?.code === 'ENOENT') return null;
+    throw error;
+  }
+  let replayed;
+  try {
+    replayed = buildMineruDerivedArtifact(jsonBytes, {
+      pdfSha256,
+      parserVersion: expected.parserVersion,
+      modelRevision: expected.modelRevision,
+    });
+  } catch (error) {
+    throw new Error(`MinerU cache integrity failure: ${error.message}`);
+  }
+  if (JSON.stringify(replayed) !== JSON.stringify(artifact)) {
+    throw new Error('MinerU cache integrity failure: artifact metadata mismatch');
+  }
+  return { jsonBytes, derivedArtifact: replayed };
+}
+
+async function writeCache(storageRoot, result) {
+  const artifact = result.derivedArtifact;
+  const objectPath = resolveStoragePath(storageRoot, artifact.objectPath);
+  await writeImmutable(objectPath, result.jsonBytes, artifact.contentSha256);
+  const indexPath = join(storageRoot, 'cache', 'mineru-index', `${artifact.sourcePdfSha256}.json`);
+  await mkdir(dirname(indexPath), { recursive: true });
+  const temporaryPath = `${indexPath}.${process.pid}.${randomUUID()}.tmp`;
+  const index = Buffer.from(`${JSON.stringify({
+    schemaVersion: 1,
+    sourcePdfSha256: artifact.sourcePdfSha256,
+    parserVersion: artifact.parserVersion,
+    modelRevision: artifact.modelRevision,
+    derivedArtifact: artifact,
+  }, null, 2)}\n`);
+  await writeFile(temporaryPath, index, { flag: 'wx' });
+  await rename(temporaryPath, indexPath);
+}
+
 export async function runMineruPdfToJson(pdfBytes, options = {}) {
   const bytes = validatePdfPayload(
     pdfBytes,
@@ -66,6 +148,12 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
   );
   if (!options.storageRoot) throw new TypeError('storage root required for MinerU work files');
   const storageRoot = resolve(options.storageRoot);
+  const expected = evidenceSourcePolicy.resolutionPolicy.pdfEvidence;
+  const pdfSha256 = sha256(bytes);
+  if (options.cache !== false) {
+    const cached = await readCache(storageRoot, pdfSha256, expected);
+    if (cached) return cached;
+  }
   const workRoot = join(storageRoot, 'cache', 'work', 'mineru');
   await mkdir(workRoot, { recursive: true });
   const workDirectory = await mkdtemp(join(workRoot, 'parse-'));
@@ -73,7 +161,6 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
   const outputPath = join(workDirectory, 'output');
   const mineruBinary = options.mineruBinary ?? process.env.FITAPPLIANCE_MINERU_BIN ?? 'mineru';
   const runCommand = options.runCommand ?? defaultRunCommand;
-  const expected = evidenceSourcePolicy.resolutionPolicy.pdfEvidence;
   try {
     await writeFile(inputPath, bytes);
     await mkdir(outputPath, { recursive: true });
@@ -114,13 +201,14 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
     }
     if (basename(outputs[0]).startsWith('.')) throw new Error('hidden MinerU output rejected');
     const jsonBytes = await readFile(outputs[0]);
-    const pdfSha256 = createHash('sha256').update(bytes).digest('hex');
     const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
       pdfSha256,
       parserVersion: version,
       modelRevision: revision,
     });
-    return { jsonBytes, derivedArtifact };
+    const result = { jsonBytes, derivedArtifact };
+    if (options.cache !== false) await writeCache(storageRoot, result);
+    return result;
   } finally {
     await rm(workDirectory, { recursive: true, force: true });
   }

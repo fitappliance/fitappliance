@@ -34,7 +34,11 @@ test('loadEvidenceIndex degrades to an empty object on fetch errors', async () =
 
 test('renderProvenanceBlock renders verified manufacturer PDF state', async () => {
   const { renderProvenanceBlock } = await loadModule();
-  const html = renderProvenanceBlock({ id: 'fridge-1' }, {
+  const html = renderProvenanceBlock({
+    id: 'fridge-1',
+    fitDecision: { outcome: 'VERIFIED_FIT' },
+    geometry_v2_provenance: { evidenceLevel: 'verified' },
+  }, {
     'fridge-1': {
       status: 'verified',
       has_pdf_evidence: true,
@@ -55,7 +59,9 @@ test('renderProvenanceBlock renders verified manufacturer PDF state', async () =
 
 test('renderProvenanceBlock separates dimension-only PDF evidence from Verified Fit', async () => {
   const { renderProvenanceBlock } = await loadModule();
-  const html = renderProvenanceBlock({ id: 'fridge-1' }, {
+  const html = renderProvenanceBlock({
+    id: 'fridge-1', geometry_v2_provenance: { evidenceLevel: 'dimensions' },
+  }, {
     'fridge-1': {
       status: 'verified',
       has_pdf_evidence: true,
@@ -70,6 +76,15 @@ test('renderProvenanceBlock separates dimension-only PDF evidence from Verified 
   assert.match(html, /provenance-block--dimensions/);
   assert.match(html, /Dimensions verified/);
   assert.match(html, /clearance estimated/);
+  assert.doesNotMatch(html, /Verified Fit/);
+});
+
+test('renderProvenanceBlock treats legacy verified labels as pending without geometry receipts', async () => {
+  const { renderProvenanceBlock } = await loadModule();
+  const html = renderProvenanceBlock({ id: 'legacy' }, {
+    legacy: { status: 'verified', has_pdf_evidence: true, trust_level: 'verified_fit' },
+  });
+  assert.match(html, /Evidence pending/);
   assert.doesNotMatch(html, /Verified Fit/);
 });
 
@@ -97,7 +112,7 @@ test('renderProvenanceBlock renders pending and fallback states', async () => {
 
   assert.match(
     renderProvenanceBlock({ id: 'dryer-1' }, { 'dryer-1': { status: 'pending' } }),
-    /manual verification in progress/
+    /field-level receipt verification pending/
   );
   assert.match(
     renderProvenanceBlock({ id: 'unknown' }, {}),
@@ -118,5 +133,5 @@ test('renderProvenanceBlock escapes unsafe source content', async () => {
 
   assert.doesNotMatch(html, /javascript:/i);
   assert.doesNotMatch(html, /onerror/i);
-  assert.match(html, /Dimension source captured/);
+  assert.match(html, /Evidence pending/);
 });

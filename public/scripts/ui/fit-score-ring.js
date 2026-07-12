@@ -29,13 +29,27 @@ export function getFitScoreTier(score) {
 
 export function getFitScoreLabel(score) {
   return {
-    excellent: 'Excellent fit',
-    strong: 'Strong fit',
-    workable: 'Workable fit',
-    tight: 'Tight fit',
-    marginal: 'Marginal fit',
-    'no-fit': "Won't fit"
+    excellent: 'Excellent margin',
+    strong: 'Strong margin',
+    workable: 'Workable margin',
+    tight: 'Tight margin',
+    marginal: 'Marginal margin',
+    'no-fit': 'No dimensional fit'
   }[getFitScoreTier(score)];
+}
+
+export function getSizeMarginLabel(score) {
+  return getFitScoreLabel(score);
+}
+
+export function getFitDecisionLabel(fitDecision) {
+  return {
+    VERIFIED_FIT: 'Verified fit',
+    LIKELY_FIT_ESTIMATED: 'Estimated clearance',
+    CONDITIONAL_FIT: 'Conditional fit',
+    INSUFFICIENT_DATA: 'Fit data incomplete',
+    NO_FIT: 'Does not fit'
+  }[String(fitDecision?.outcome ?? '').trim()] ?? 'Fit evidence unavailable';
 }
 
 export function renderFitScoreRing(score, options = {}) {
@@ -45,7 +59,7 @@ export function renderFitScoreRing(score, options = {}) {
   const radius = 17;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference * (1 - (value / 100));
-  const title = String(options.title ?? `Fit score ${value} out of 100, ${label}`);
+  const title = String(options.title ?? `Size margin score ${value} out of 100, ${label}`);
 
   return `<svg class="fit-score-ring fit-score-ring--${escHtml(tier)}" role="img" aria-label="${escHtml(title)}" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
     <circle class="fit-score-ring-track" cx="20" cy="20" r="${radius}" fill="none" stroke="currentColor" stroke-opacity="0.18" stroke-width="4"></circle>
@@ -57,24 +71,38 @@ export function renderFitScoreRing(score, options = {}) {
 export function renderFitScoreCardBlock(score, options = {}) {
   if (score === null || score === undefined || score === '') return '';
   const value = normalizeScore(score);
-  const label = getFitScoreLabel(value);
+  const hasFitDecision = Object.prototype.hasOwnProperty.call(options, 'fitDecision');
+  const outcome = String(options.fitDecision?.outcome ?? '').trim();
+  const decisionLabel = hasFitDecision ? getFitDecisionLabel(options.fitDecision) : '';
+  if (outcome === 'INSUFFICIENT_DATA') {
+    return `<div class="fit-score-block fit-score-block--incomplete" data-fit-outcome="INSUFFICIENT_DATA">
+      <span class="fit-score-label">${escHtml(decisionLabel)}</span>
+    </div>`;
+  }
+  const label = hasFitDecision ? getSizeMarginLabel(value) : getFitScoreLabel(value);
   const inlineLabel = options.compact === true ? `${value}` : `${value} — ${label}`;
   const tier = getFitScoreTier(value);
+  const decisionHtml = hasFitDecision
+    ? `<span class="fit-decision-label">${escHtml(decisionLabel)}</span>`
+    : '';
+  const ringOptions = hasFitDecision
+    ? { ...options, title: `Size margin score ${value} out of 100; ${decisionLabel}` }
+    : options;
   const breakdownHtml = options.breakdown
     ? renderBreakdownHtml(options.breakdown, value)
     : '';
 
   if (!breakdownHtml) {
-    return `<div class="fit-score-block" data-fit-score-tier="${escHtml(tier)}">
-      ${renderFitScoreRing(value, options)}
-      <span class="fit-score-label">${escHtml(inlineLabel)}</span>
+    return `<div class="fit-score-block" data-fit-score-tier="${escHtml(tier)}"${hasFitDecision ? ` data-fit-outcome="${escHtml(outcome || 'UNKNOWN')}"` : ''}>
+      ${renderFitScoreRing(value, ringOptions)}
+      <span class="fit-score-copy"><span class="fit-score-label">${escHtml(inlineLabel)}</span>${decisionHtml}</span>
     </div>`;
   }
 
-  return `<details class="fit-score-popover" data-fit-score-tier="${escHtml(tier)}">
-    <summary class="fit-score-summary" aria-label="Show Fit Score breakdown">
-      ${renderFitScoreRing(value, options)}
-      <span class="fit-score-label">${escHtml(inlineLabel)}</span>
+  return `<details class="fit-score-popover" data-fit-score-tier="${escHtml(tier)}"${hasFitDecision ? ` data-fit-outcome="${escHtml(outcome || 'UNKNOWN')}"` : ''}>
+    <summary class="fit-score-summary" aria-label="Show size margin breakdown">
+      ${renderFitScoreRing(value, ringOptions)}
+      <span class="fit-score-copy"><span class="fit-score-label">${escHtml(inlineLabel)}</span>${decisionHtml}</span>
       ${renderTooltipHtml('fit-score')}
     </summary>
     <div class="fit-score-popover__panel">${breakdownHtml}</div>

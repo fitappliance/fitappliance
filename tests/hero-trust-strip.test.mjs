@@ -7,40 +7,34 @@ import { JSDOM } from 'jsdom';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-function auditTrustCounts() {
-  const audit = readFileSync(path.join(repoRoot, 'reports', 'FULL-CATALOG-AUDIT.md'), 'utf8');
-  const verifiedFit = Number(audit.match(/- Verified Fit: (\d+)/)?.[1] ?? Number.NaN);
-  const dimensionsVerified = Number(audit.match(/- Dimensions Verified: (\d+)/)?.[1] ?? Number.NaN);
-  const retailerSpec = Number(audit.match(/- Retailer Spec: (\d+)/)?.[1] ?? Number.NaN);
-
-  assert.ok(Number.isFinite(verifiedFit), 'audit report must include Verified Fit count');
-  assert.ok(Number.isFinite(dimensionsVerified), 'audit report must include Dimensions Verified count');
-  assert.ok(Number.isFinite(retailerSpec), 'audit report must include Retailer Spec count');
-
-  return {
-    verifiedFit,
-    evidenceBacked: verifiedFit + dimensionsVerified + retailerSpec,
-  };
-}
-
-test('phase 58 hero trust strip: renders appliance count, trust-tier evidence count, and update cadence', () => {
+test('hero trust strip states durable evidence controls instead of stale trust counts', () => {
   const html = readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
   const dom = new JSDOM(html);
   const items = [...dom.window.document.querySelectorAll('.hero-trust-item')].map((item) => item.textContent.trim());
-  const { verifiedFit, evidenceBacked } = auditTrustCounts();
 
   assert.equal(items.length, 3);
-  assert.match(items[0], /2,170\+ Australian appliances/);
-  assert.match(items[1], new RegExp(`${verifiedFit.toLocaleString()} Verified Fit records`));
-  assert.match(items[1], new RegExp(`${evidenceBacked.toLocaleString()} evidence-backed specs`));
-  assert.doesNotMatch(items[1], /PDF evidence sources verified/);
-  assert.match(items[2], /Updated daily/);
+  assert.equal(items[0], 'Evidence status shown on every result');
+  assert.equal(items[1], 'No Verified Fit without complete installation evidence');
+  assert.equal(items[2], 'Sources and review dates shown');
+  assert.doesNotMatch(items.join(' '), /\d[\d,]*\s+Verified Fit records/i);
+  assert.doesNotMatch(items.join(' '), /evidence-backed specs/i);
 });
 
-test('phase 58 hero trust strip: hero subheadline is the input-first Fit Score value prop', () => {
+test('homepage evidence explanation includes pending state and the Verified Fit release boundary', () => {
+  const html = readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
+  const dom = new JSDOM(html);
+  const panel = dom.window.document.querySelector('[aria-label="FitAppliance content quality signals"]')?.textContent ?? '';
+
+  assert.match(panel, /Evidence Pending/);
+  assert.match(panel, /Dimensions Verified/);
+  assert.match(panel, /Retailer Spec/);
+  assert.match(panel, /Verified Fit only when complete installation evidence is present/);
+});
+
+test('hero subheadline separates size scoring from the evidence-based fit verdict', () => {
   const html = readFileSync(path.join(repoRoot, 'index.html'), 'utf8');
   const dom = new JSDOM(html);
   const sub = dom.window.document.getElementById('heroSub')?.textContent.trim();
 
-  assert.equal(sub, 'Enter your cavity. Get a 0-100 Fit Score for every appliance that fits.');
+  assert.equal(sub, 'Enter your cavity. Compare a 0-100 size-margin score with an evidence-based fit verdict.');
 });

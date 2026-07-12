@@ -39,6 +39,8 @@ test('product-card renders verified fit badge and source-of-truth receipt for PD
   const { buildRow } = await import(productCardModuleUrl);
   const html = buildRow(makeProduct({
     data_source: 'official_pdf',
+    fitDecision: { outcome: 'VERIFIED_FIT' },
+    geometry_v2_provenance: { evidenceLevel: 'verified' },
     clearance_requirements: {
       top_mm: 50,
       left_mm: 5,
@@ -72,6 +74,7 @@ test('product-card renders verified fit badge and source-of-truth receipt for PD
 test('product-card downgrades PDF dimension-only evidence instead of showing Verified Fit', async () => {
   const { buildRow } = await import(productCardModuleUrl);
   const html = buildRow(makeProduct({
+    geometry_v2_provenance: { evidenceLevel: 'dimensions' },
     evidence: {
       has_pdf_evidence: true,
       source_url: 'https://example.com/HRTF206-Spec.pdf',
@@ -89,6 +92,20 @@ test('product-card downgrades PDF dimension-only evidence instead of showing Ver
   assert.match(html, /Dimensions verified · clearance estimated/);
   assert.doesNotMatch(html, /✓ Verified Fit/);
   assert.doesNotMatch(html, /Source of Truth:/);
+});
+
+test('product-card does not trust a legacy verified_fit label without projected receipts', async () => {
+  const { buildRow } = await import(productCardModuleUrl);
+  const html = buildRow(makeProduct({
+    evidence: {
+      has_pdf_evidence: true,
+      source_url: 'https://example.com/HRTF206-Spec.pdf',
+      trust_level: 'verified_fit',
+      clearance_verified: true,
+    },
+  }), { annualEnergyCost: () => '66' });
+  assert.match(html, /Evidence captured/);
+  assert.doesNotMatch(html, /✓ Verified Fit/);
 });
 
 test('product-card labels explicit retailer specification evidence without PDF trust upgrade', async () => {
@@ -130,6 +147,7 @@ test('verified evidence styles are declared in public/styles.css', () => {
   assert.match(css, /\.badge-evidence--verified/);
   assert.match(css, /\.badge-evidence--dimensions/);
   assert.match(css, /\.badge-evidence--retailer/);
+  assert.match(css, /\.badge-evidence--pending/);
   assert.match(css, /\.evidence-receipt/);
   assert.match(css, /font-family:\s*[^;]*monospace/);
   assert.match(css, /\.evidence-link/);

@@ -6,6 +6,7 @@ import { dirname, isAbsolute, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { runEvidenceResearchCycle } from '../../src/domain/evidence-research-runner.mjs';
+import { projectEvidenceGeometry } from '../../src/domain/evidence-geometry-projector.mjs';
 import { runMineruPdfToJson } from '../../src/domain/mineru-runner.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -46,14 +47,16 @@ async function objectWriter(storageRoot) {
   };
 }
 
-function acceptanceCase(entry) {
+export function acceptanceCase(entry) {
   return {
     id: entry.id,
     legacyRuntimeId: entry.legacyRuntimeId,
     brand: entry.brand,
     model: entry.model,
     category: entry.category,
-    candidateUrls: [entry.url],
+    formFactor: entry.formFactor ?? null,
+    candidateUrls: entry.urls ?? [entry.url],
+    productPageUrls: entry.productPageUrls ?? [],
     releasableQuarantineReasons: ['evidence_projection_hold'],
     initialFailure: {
       code: 'source_identity_or_field_scope_is_incomplete',
@@ -79,6 +82,7 @@ export async function runPdfBrandAcceptanceBatch(batch, options) {
       writeObject,
       fetchAttempts: 1,
       timeoutMs: 30000,
+      allowCurlFallback: true,
       processPdf: async (bytes) => {
         diagnostics.acquisition = 'passed';
         const pdfSha256 = createHash('sha256').update(bytes).digest('hex');
@@ -92,18 +96,30 @@ export async function runPdfBrandAcceptanceBatch(batch, options) {
       },
     });
     const source = result.caseRecord.sources[0] ?? null;
+    const geometryProjection = source ? projectEvidenceGeometry({
+      brand: entry.brand,
+      model: entry.model,
+      category: entry.category,
+      formFactor: entry.formFactor ?? null,
+      sources: [source],
+    }) : null;
     outcomes.push({
       id: entry.id,
       brand: entry.brand,
       model: entry.model,
       category: entry.category,
       requestedUrl: entry.url,
+      requestedUrls: entry.urls ?? [entry.url],
       outcome: source ? 'accepted' : 'quarantined',
       acquisition: diagnostics.acquisition === 'passed' || source ? 'passed' : 'failed',
       mineru: source?.derivedArtifact || diagnostics.mineru === 'passed' ? 'passed' : 'not_run_or_failed',
       identity: source?.identity?.outcome ?? 'not_accepted',
       claims: source?.claims?.map((claim) => ({ field: claim.field, value: claim.value, page: claim.page })) ?? [],
       receipt: source?.verificationReceipt ? 'passed' : 'not_accepted',
+      geometryProjection,
+      artifactType: source?.contentType === 'application/pdf'
+        ? 'pdf'
+        : source?.contentType === 'text/html' ? 'official_html_fallback' : null,
       source: source ? structuredClone(source) : null,
       diagnosticArtifacts: {
         pdfObjectPath: diagnostics.pdfObjectPath,
@@ -120,6 +136,14 @@ export async function runPdfBrandAcceptanceBatch(batch, options) {
     summary: {
       entries: outcomes.length,
       accepted: outcomes.filter((row) => row.outcome === 'accepted').length,
+      acceptedPdf: outcomes.filter((row) => row.artifactType === 'pdf').length,
+      acceptedHtmlFallback: outcomes.filter((row) => row.artifactType === 'official_html_fallback').length,
+      geometryDimensions: outcomes.filter((row) => row.geometryProjection?.evidenceLevel === 'dimensions').length,
+      geometryVerified: outcomes.filter((row) => row.geometryProjection?.evidenceLevel === 'verified').length,
+      fitInsufficient: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'INSUFFICIENT_DATA').length,
+      fitConditional: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'CONDITIONAL_FIT').length,
+      fitEstimated: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'LIKELY_FIT_ESTIMATED').length,
+      fitVerified: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'VERIFIED_FIT').length,
       quarantined: outcomes.filter((row) => row.outcome === 'quarantined').length,
     },
     outcomes,
@@ -140,6 +164,14 @@ async function main(args) {
     summary: {
       entries: outcomes.length,
       accepted: outcomes.filter((row) => row.outcome === 'accepted').length,
+      acceptedPdf: outcomes.filter((row) => row.artifactType === 'pdf').length,
+      acceptedHtmlFallback: outcomes.filter((row) => row.artifactType === 'official_html_fallback').length,
+      geometryDimensions: outcomes.filter((row) => row.geometryProjection?.evidenceLevel === 'dimensions').length,
+      geometryVerified: outcomes.filter((row) => row.geometryProjection?.evidenceLevel === 'verified').length,
+      fitInsufficient: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'INSUFFICIENT_DATA').length,
+      fitConditional: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'CONDITIONAL_FIT').length,
+      fitEstimated: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'LIKELY_FIT_ESTIMATED').length,
+      fitVerified: outcomes.filter((row) => row.geometryProjection?.successfulFitOutcome === 'VERIFIED_FIT').length,
       quarantined: outcomes.filter((row) => row.outcome === 'quarantined').length,
     },
     outcomes,

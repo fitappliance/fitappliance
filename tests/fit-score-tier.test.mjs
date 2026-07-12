@@ -30,10 +30,10 @@ test('phase 58 fit score tiers map documented thresholds', async () => {
 test('phase 58 fit score labels match documented copy', async () => {
   const { getFitScoreLabel } = await loadSearchCore();
 
-  assert.equal(getFitScoreLabel(95), 'Excellent fit');
-  assert.equal(getFitScoreLabel(80), 'Strong fit');
-  assert.equal(getFitScoreLabel(70), 'Workable fit');
-  assert.equal(getFitScoreLabel(45), 'Tight fit');
-  assert.equal(getFitScoreLabel(20), 'Marginal fit');
-  assert.equal(getFitScoreLabel(0), "Won't fit");
+  assert.equal(getFitScoreLabel(95), 'Excellent margin');
+  assert.equal(getFitScoreLabel(80), 'Strong margin');
+  assert.equal(getFitScoreLabel(70), 'Workable margin');
+  assert.equal(getFitScoreLabel(45), 'Tight margin');
+  assert.equal(getFitScoreLabel(20), 'Marginal margin');
+  assert.equal(getFitScoreLabel(0), 'No dimensional fit');
 });

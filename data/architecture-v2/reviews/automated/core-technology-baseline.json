@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-07-12T00:00:00.000Z",
+  "catalog": {
+    "products": 3521,
+    "currentProducts": 1386,
+    "productsWithGeometryV2": 47,
+    "productsLabelledVerifiedFit": 264,
+    "geometryV2WithUnknownInstallationFields": 45,
+    "productsWithLegacyZeroClearance": 1400
+  },
+  "pdfCanary": {
+    "entries": 9,
+    "downloaded": 7,
+    "minerUConverted": 7,
+    "receiptAccepted": 5,
+    "identityQuarantined": 2,
+    "transportFailed": 2
+  },
+  "knownArchitectureFailures": [
+    "browser_fit_reads_top_level_dimensions_instead_of_geometry_v2",
+    "manufacturer_mode_falls_back_to_brand_or_category_default_clearance",
+    "missing_clearance_is_normalized_to_zero",
+    "verified_fit_label_can_exist_without_complete_geometry_v2",
+    "numeric_fit_score_can_rank_products_with_different_evidence_completeness",
+    "pdf_discovery_and_transport_are_split_across_multiple_legacy_and_v2_paths"
+  ]
+}

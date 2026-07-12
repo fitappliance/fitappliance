@@ -1,3 +1,5 @@
+import { classifyGeometryPublication } from './geometry-publication.mjs';
+
 const CATEGORY_MARKERS = Object.freeze({
   fridge: 'FR',
   washing_machine: 'WM',
@@ -24,8 +26,45 @@ function deriveDoorSwing(product) {
 
 export function normalizePublicProduct(product) {
   const retailers = Array.isArray(product?.retailers) ? product.retailers.map((row) => ({ ...row })) : [];
+  const publicationLevel = classifyGeometryPublication(product);
+  const sourceEvidence = product?.evidence && typeof product.evidence === 'object'
+    ? product.evidence
+    : null;
+  let evidence = sourceEvidence ? { ...sourceEvidence } : null;
+  if (evidence || publicationLevel !== 'none') {
+    evidence ??= {};
+    const legacyVerified = evidence.trust_level === 'verified_fit' || evidence.clearance_verified === true;
+    if (publicationLevel === 'verified') {
+      evidence.trust_level = 'verified_fit';
+      evidence.clearance_verified = true;
+      evidence.verified_fields = ['dimensions', 'installation'];
+    } else if (publicationLevel === 'dimensions') {
+      evidence.trust_level = 'dimensions_verified';
+      evidence.clearance_verified = false;
+      evidence.verified_fields = ['dimensions'];
+    } else if (legacyVerified || ['dimensions_verified', 'verified_fit'].includes(evidence.trust_level)) {
+      evidence.trust_level = 'evidence_pending';
+      evidence.clearance_verified = false;
+      evidence.verified_fields = [];
+    } else if (evidence.has_pdf_evidence === true && !evidence.trust_level) {
+      evidence.trust_level = 'evidence_pending';
+      evidence.clearance_verified = false;
+      evidence.verified_fields = [];
+    }
+    if (legacyVerified && publicationLevel !== 'verified') evidence.legacy_trust_downgraded = true;
+  }
+  const sourceProvenance = product?.geometry_v2_provenance;
+  const geometryProvenance = sourceProvenance
+    ? {
+      ...sourceProvenance,
+      evidenceLevel: publicationLevel,
+      ...(sourceProvenance.evidenceLevel !== publicationLevel ? { publicationDowngraded: true } : {}),
+    }
+    : null;
   return Object.freeze({
     ...product,
+    ...(evidence ? { evidence } : {}),
+    ...(geometryProvenance ? { geometry_v2_provenance: geometryProvenance } : {}),
     emoji: typeof product?.emoji === 'string' && product.emoji.trim()
       ? product.emoji.trim()
       : (CATEGORY_MARKERS[product?.cat] ?? 'AP'),

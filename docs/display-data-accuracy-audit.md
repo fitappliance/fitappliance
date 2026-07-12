@@ -7,7 +7,7 @@ catalog JSON is schema-valid.
 <!-- RETAILER_METRICS_SUMMARY:START -->
 The current raw specs catalog has 3,518 products;
 retailer-verified products: 1,384; verified retailer product-page links in total:
-1,614; live price rows: 1,025. That means the UI must be careful about three words:
+1,614; live price rows: 1,358. That means the UI must be careful about three words:
 price, stock, and requirement.
 <!-- RETAILER_METRICS_SUMMARY:END -->
 
@@ -26,11 +26,11 @@ price, stock, and requirement.
 <!-- RETAILER_METRICS_TABLE:START -->
 | Category | Products | Products with retailer links | Verified retailer links | Multi-retailer products | Positive price rows |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Fridges | 1,985 | 687 | 797 | 64 | 434 |
+| Fridges | 1,985 | 687 | 797 | 64 | 676 |
 | Dishwashers | 703 | 355 | 424 | 58 | 381 |
 | Dryers | 167 | 95 | 111 | 12 | 85 |
-| Washing machines | 663 | 247 | 282 | 27 | 125 |
-| **Total** | **3,518** | **1,384** | **1,614** | **161** | **1,025** |
+| Washing machines | 663 | 247 | 282 | 27 | 216 |
+| **Total** | **3,518** | **1,384** | **1,614** | **161** | **1,358** |
 <!-- RETAILER_METRICS_TABLE:END -->
 
 ## Guardrails

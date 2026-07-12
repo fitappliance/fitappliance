@@ -58,8 +58,9 @@ test('Phase 9 space facts reach source documents and public geometry without inv
   assert.equal(product.geometry_v2.installation.rearMm, 30);
   assert.equal(product.geometry_v2.installation.frontMm, null);
   assert.equal(product.geometry_v2.operation.doorOpenDepthMm, null);
-  assert.equal(product.evidence.trust_level, 'dimensions_verified');
+  assert.equal(product.evidence.trust_level, 'evidence_pending');
   assert.equal(product.evidence.clearance_verified, false);
+  assert.equal(product.geometry_v2_provenance, undefined);
 
   const decision = evaluateFit({
     geometry: product.geometry_v2,
@@ -67,8 +68,9 @@ test('Phase 9 space facts reach source documents and public geometry without inv
     evidenceLevel: 'dimensions',
     advisoryChecks: [],
   });
-  assert.equal(decision.outcome, 'INSUFFICIENT_DATA');
+  assert.equal(decision.outcome, 'LIKELY_FIT_ESTIMATED');
   assert.equal(decision.checks.find((row) => row.id === 'installation_width').status, 'PASS');
   assert.equal(decision.checks.find((row) => row.id === 'installation_height').status, 'PASS');
-  assert.equal(decision.checks.find((row) => row.id === 'installation_depth').status, 'UNKNOWN');
+  assert.equal(decision.checks.find((row) => row.id === 'installation_depth').status, 'PASS');
+  assert.equal(decision.required.depthMm, 718);
 });

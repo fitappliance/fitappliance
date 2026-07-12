@@ -105,11 +105,14 @@ function hasClearanceEvidence(product) {
 function getEvidenceTrustLevel(product) {
   const evidence = product?.evidence;
   if (!evidence || typeof evidence !== 'object' || Array.isArray(evidence)) return '';
+  const geometryLevel = product?.geometry_v2_provenance?.evidenceLevel;
+  if (geometryLevel === 'verified' && product?.fitDecision?.outcome === 'VERIFIED_FIT') return 'verified_fit';
+  if (geometryLevel === 'verified') return 'fit_requirements_verified';
+  if (geometryLevel === 'dimensions') return 'dimensions_verified';
   const explicit = String(evidence.trust_level ?? '').trim();
-  if (['verified_fit', 'dimensions_verified', 'retailer_spec'].includes(explicit)) return explicit;
-  if (evidence.clearance_verified === true) return 'verified_fit';
-  if (product?.data_source === 'official_pdf' && hasClearanceEvidence(product)) return 'verified_fit';
-  if (hasPdfEvidence(product)) return 'dimensions_verified';
+  if (explicit === 'retailer_spec') return explicit;
+  if (explicit === 'evidence_pending' || ['verified_fit', 'dimensions_verified'].includes(explicit)) return 'evidence_pending';
+  if (hasPdfEvidence(product)) return 'evidence_pending';
   if (evidence.source_url || evidence.source_type) return 'retailer_spec';
   return '';
 }
@@ -136,6 +139,28 @@ function getEvidenceTrustCopy(product) {
       receiptLabel: 'Dimensions verified · clearance estimated',
       sourceText: 'Dimension source',
       receiptNote: 'Clearance estimated'
+    };
+  }
+  if (trustLevel === 'fit_requirements_verified') {
+    return {
+      level: trustLevel,
+      badgeText: 'Fit requirements verified',
+      badgeClass: 'badge-evidence--verified',
+      title: 'Dimensions and installation requirements are receipt-backed; fit still depends on your measurements',
+      receiptLabel: 'Requirements verified',
+      sourceText: 'Official evidence',
+      receiptNote: 'Enter a complete cavity to verify fit'
+    };
+  }
+  if (trustLevel === 'evidence_pending') {
+    return {
+      level: trustLevel,
+      badgeText: 'Evidence captured',
+      badgeClass: 'badge-evidence--pending',
+      title: 'A source was captured but its fields are not yet receipt-bound for fit publication',
+      receiptLabel: 'Evidence captured · verification pending',
+      sourceText: 'Captured source',
+      receiptNote: 'Not used as verified fit evidence'
     };
   }
   if (trustLevel === 'retailer_spec') {
@@ -260,7 +285,8 @@ function buildFitScoreHtml(product) {
   if (isReplacementSearchProduct(product)) return '';
   if (product?.fitScoreNumeric === null || product?.fitScoreNumeric === undefined) return '';
   return renderFitScoreCardBlock(product.fitScoreNumeric, {
-    breakdown: computeBreakdown(product)
+    breakdown: computeBreakdown(product),
+    fitDecision: product.fitDecision
   });
 }
 
@@ -333,7 +359,7 @@ function slugifyAssetPart(value) {
   return String(value ?? '')
     .trim()
     .toLowerCase()
-    .replace(/&/g, 'and')
+    .replace(/&/g, ' ')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 }

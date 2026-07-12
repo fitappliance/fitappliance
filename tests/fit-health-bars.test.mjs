@@ -10,6 +10,7 @@ const searchCorePath = path.join(repoRoot, 'public', 'scripts', 'search-core.js'
 const productCardPath = path.join(repoRoot, 'public', 'scripts', 'ui', 'product-card.js');
 const searchDomPath = path.join(repoRoot, 'public', 'scripts', 'search-dom.js');
 const stylesPath = path.join(repoRoot, 'public', 'styles.css');
+const deferredStylesPath = path.join(repoRoot, 'public', 'styles-deferred.css');
 
 async function loadSearchCore() {
   const module = await import(`${pathToFileURL(searchCorePath).href}?cacheBust=${Date.now()}`);
@@ -91,6 +92,14 @@ test('fit health bars: product-card row renders W/H/D traffic-light bars', async
   assert.ok(bars[1].classList.contains('clearance-bar--green'));
   assert.ok(bars[2].classList.contains('clearance-bar--red'));
   assert.equal(bars[0].getAttribute('aria-label'), 'Width clearance: 590mm product plus 5mm clearance uses 595mm of 595mm cavity, 0mm spare, binding constraint');
+});
+
+test('fit health bars: a green binding axis is emphasized without a false red warning', () => {
+  const css = fs.readFileSync(deferredStylesPath, 'utf8');
+
+  assert.match(css, /\.clearance-bar--binding \.clearance-bar-label\s*\{[^}]*font-weight:900/);
+  assert.match(css, /\.clearance-bar--red\.clearance-bar--binding \.clearance-bar-label\s*\{[^}]*color:#c62828/);
+  assert.doesNotMatch(css, /(?:^|\n)\.clearance-bar--binding \.clearance-bar-label\s*\{[^}]*color:#c62828/);
 });
 
 test('fit health bars: search-dom list card renderer includes the same per-axis bars', async () => {

@@ -92,7 +92,6 @@ export function requiredInstallationEnvelope(geometry) {
     installation.rightMm,
     installation.topMm,
     installation.rearMm,
-    installation.frontMm,
   ];
   if (requiredValues.some((value) => value === null)) {
     return null;
@@ -101,6 +100,6 @@ export function requiredInstallationEnvelope(geometry) {
   return freezeDeep({
     widthMm: closed.widthMm + installation.leftMm + installation.rightMm,
     heightMm: closed.heightMm.maximumMm + installation.topMm,
-    depthMm: closed.depthMm + installation.rearMm + installation.frontMm,
+    depthMm: closed.depthMm + installation.rearMm,
   });
 }

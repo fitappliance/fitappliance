@@ -61,7 +61,7 @@ test('phase 58 score breakdown renders table and tooltip context', async () => {
   const { computeBreakdown, renderBreakdownHtml } = await loadModule();
   const html = renderBreakdownHtml(computeBreakdown(makeProduct()), 92);
 
-  assert.match(html, /Fit Score 92\/100/);
+  assert.match(html, /Size margin score 92\/100/);
   assert.match(html, /Appliance \+ clearance/);
   assert.match(html, /Binding: width 40mm/);
   assert.match(html, /metric-tooltip/);

@@ -75,6 +75,25 @@ test('non-applicable advisory checks do not make a fit conditional', () => {
   assert.equal(decision.outcome, 'VERIFIED_FIT');
 });
 
+test('fit depth excludes front operation space and uses required rear service maximum', () => {
+  const geometry = {
+    ...createGeometry({
+      closedEnvelope: { widthMm: 600, heightMm: 850, depthMm: 600 },
+      installation: { leftMm: 5, rightMm: 5, topMm: 10, rearMm: 20, frontMm: 600 },
+    }),
+    category: 'dishwasher',
+    service: { rearServicesMm: 80, plumbingRearMm: null, rearVentilationMm: null },
+  };
+  const decision = evaluateFit({
+    geometry,
+    cavity: { widthMm: 610, heightMm: 860, depthMm: 680 },
+    evidenceLevel: 'verified',
+    advisoryChecks: [{ id: 'door_open', applicable: true, status: 'PASS' }],
+  });
+  assert.equal(decision.required.depthMm, 680);
+  assert.equal(decision.outcome, 'VERIFIED_FIT');
+});
+
 test('rejects string cavity dimensions, unknown evidence levels, and invalid checks', () => {
   const geometry = createGeometry(cases[0].geometry);
   assert.throws(

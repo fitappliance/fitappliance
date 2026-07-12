@@ -19,6 +19,7 @@ function makeProduct(overrides = {}) {
     features: ['Top Mount'],
     fitScore: 0.08,
     fitScoreNumeric: 92,
+    fitDecision: { outcome: 'LIKELY_FIT_ESTIMATED' },
     fitAxisGaps: [
       { axis: 'width', label: 'W', cavity: 600, appliance: 550, clearanceMm: 10, gapMm: 40 },
       { axis: 'height', label: 'H', cavity: 1900, appliance: 1410, clearanceMm: 20, gapMm: 470 },
@@ -40,9 +41,46 @@ test('phase 58 card integration: buildRow renders score block as the only fit ve
   assert.match(html, /class="fit-score-popover"/);
   assert.match(html, /class="score-breakdown"/);
   assert.match(html, /92/);
-  assert.match(html, /Excellent fit/);
+  assert.match(html, /Excellent margin/);
+  assert.match(html, /Estimated clearance/);
+  assert.doesNotMatch(html, /Excellent fit/);
   assert.doesNotMatch(html, /class="fit-health/);
   assert.doesNotMatch(html, /fit-badge--(?:exact|tight|relax)/);
+});
+
+test('fit score card keeps the size margin separate from a verified fit verdict', async () => {
+  const { buildRow } = await import(`${productCardUrl}?cacheBust=${Date.now()}`);
+  const html = buildRow(makeProduct({
+    fitDecision: { outcome: 'VERIFIED_FIT' }
+  }), {
+    annualEnergyCost: () => '88',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(html, /92 — Excellent margin/);
+  assert.match(html, /Verified fit/);
+  assert.doesNotMatch(html, /92 — Verified fit/);
+});
+
+test('fit score card exposes conditional and insufficient fit outcomes without a positive fit claim', async () => {
+  const { buildRow } = await import(`${productCardUrl}?cacheBust=${Date.now()}`);
+  const conditional = buildRow(makeProduct({
+    fitDecision: { outcome: 'CONDITIONAL_FIT' }
+  }), {
+    annualEnergyCost: () => '88',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+  const insufficient = buildRow(makeProduct({
+    fitDecision: { outcome: 'INSUFFICIENT_DATA' }
+  }), {
+    annualEnergyCost: () => '88',
+    resolveRetailerUrl: (retailer) => retailer.url
+  });
+
+  assert.match(conditional, /Conditional fit/);
+  assert.doesNotMatch(conditional, /Excellent fit/);
+  assert.match(insufficient, /Fit data incomplete/);
+  assert.doesNotMatch(insufficient, /fit-score-number[^>]*>92/);
 });
 
 test('phase 58 card integration: missing fitScoreNumeric does not fall back to legacy fit health', async () => {

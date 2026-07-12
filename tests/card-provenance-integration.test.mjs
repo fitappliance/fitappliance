@@ -33,7 +33,10 @@ function makeProduct(overrides = {}) {
 
 test('product card renders provenance block after trust line for verified evidence', async () => {
   const { buildRow } = await loadProductCard();
-  const html = buildRow(makeProduct(), {
+  const html = buildRow(makeProduct({
+    fitDecision: { outcome: 'VERIFIED_FIT' },
+    geometry_v2_provenance: { evidenceLevel: 'verified' },
+  }), {
     capturedDate: '2026-05-13',
     annualEnergyCost: () => '80',
     evidenceIndex: {

@@ -208,6 +208,42 @@ test('MinerU treats repeated exact-model page headers as independently repeated 
   assert.ok(parsed.identitySignals.some((signal) => signal.type === 'mineru_repeated_page_header_model'));
 });
 
+test('MinerU accepts an exact model repeated in body headings without accepting sibling models', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [
+      { type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'TCA220WP Active' }] }, bbox: [10, 10, 300, 40] },
+      {
+        type: 'table', content: {
+          html: '<table><tr><td></td><td>Technical data</td></tr><tr><td>Dimensions (W x H x D)</td><td></td></tr><tr><td>Dimensions in mm (width)</td><td>596</td></tr><tr><td>Dimensions in mm (height)</td><td>850</td></tr><tr><td>Dimensions in mm (depth)</td><td>640</td></tr><tr><td>Appliance depth in mm with opened door</td><td>1054</td></tr></table>',
+          table_caption: [], table_footnote: [], table_type: 'complex_table', table_nest_level: 1,
+        }, bbox: [10, 50, 800, 900],
+      },
+    ],
+    [{ type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'TCA220WP Active' }] }, bbox: [10, 10, 300, 40] }],
+  ]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Miele', model: 'TCA220WP', category: 'dryer' },
+    fields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+      'operation.doorOpenDepthMm',
+    ],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': 596,
+    'closedEnvelope.heightMm': 850,
+    'closedEnvelope.depthMm': 640,
+    'operation.doorOpenDepthMm': 1054,
+  });
+  assert.ok(parsed.identitySignals.some((signal) => signal.type === 'mineru_repeated_body_model'));
+
+  assert.throws(() => parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Miele', model: 'TCA221WP', category: 'dryer' },
+    fields: ['closedEnvelope.widthMm'],
+  }), /identity|exact model/i);
+});
+
 test('MinerU parsing fails closed when dimensions lack an explicit axis order', () => {
   const bytes = mineruJson(`<table>
     <tr><td>Model</td><td>HRCD640TBW</td></tr>

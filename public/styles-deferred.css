@@ -874,7 +874,9 @@
 .clearance-bar--striped .clearance-bar-fill {
   background-image:repeating-linear-gradient(45deg, rgb(255 255 255 / 35%) 0 5px, transparent 5px 10px);
 }
-.clearance-bar--binding .clearance-bar-label { color:#c62828; }
+.clearance-bar--binding .clearance-bar-label { color:var(--ink-2);font-weight:900; }
+.clearance-bar--amber.clearance-bar--binding .clearance-bar-label { color:#8a5200; }
+.clearance-bar--red.clearance-bar--binding .clearance-bar-label { color:#c62828; }
 .card-zone-tech-specs {
   color:var(--ink-3);
   font-size:13px;
@@ -2521,6 +2523,23 @@ footer { background:var(--ink);color:rgba(255,255,255,.5);padding:52px 24px 30px
   font-size:12px;
   font-weight:500;
   color:var(--ink-secondary, #6b6b6b);
+}
+.fit-score-copy {
+  display:flex;
+  min-width:0;
+  flex-direction:column;
+  gap:2px;
+}
+.fit-decision-label {
+  font-size:11px;
+  font-weight:700;
+  color:var(--ink, #131210);
+}
+.fit-score-block--incomplete {
+  padding:6px 8px;
+  border:1px solid #d8d1c6;
+  border-radius:6px;
+  background:#f6f3ee;
 }
 .fit-score-popover {
   position:relative;

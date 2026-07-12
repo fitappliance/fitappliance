@@ -1750,6 +1750,12 @@ body.scroll-locked {
   color: #0f766e;
 }
 
+.badge-evidence--pending {
+  border-color: #9a6700;
+  background: #fff8c5;
+  color: #6e4b00;
+}
+
 .badge-evidence--retailer {
   border-color: #6b7280;
   background: #f9fafb;

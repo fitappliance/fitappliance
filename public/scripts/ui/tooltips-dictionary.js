@@ -6,7 +6,7 @@ const TOOLTIP_COPY = {
   'practical-buffer': 'FitAppliance default buffer for real-world measuring error before manufacturer notes are checked.',
   'manufacturer-clearance': 'Brand or manual guidance for ventilation. Always check the installation manual before ordering.',
   'binding-axis': 'The tightest dimension after appliance size and required clearance are subtracted from your cavity.',
-  'fit-score': 'A 0-100 score. Any failed required dimension scores 0; otherwise the score grades spare room efficiency.'
+  'fit-score': 'A 0-100 size-margin score based on appliance, clearance, and cavity dimensions. It is not an installation verdict; read the evidence status beside it.'
 };
 
 function escHtml(value) {

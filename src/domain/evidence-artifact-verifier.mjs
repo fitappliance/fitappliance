@@ -3,6 +3,7 @@ import { load } from 'cheerio';
 
 import {
   claimFromEvidenceFragment,
+  claimsFromExplicitDimensionSequence,
   containsExactModel,
   evidenceFieldRules,
   validateClaimsSemantics,
@@ -34,9 +35,8 @@ function verifyBytes(source, bytes) {
 function htmlIdentitySignals(source, caseIdentity, bytes) {
   const $ = load(bytes.toString('utf8'));
   const canonical = $('link[rel="canonical"]').first().attr('href');
-  if (!canonical || resourceKey(canonical) !== resourceKey(source.finalUrl)
-    || !containsExactModel(new URL(canonical).pathname, caseIdentity.model)) {
-    throw new Error('canonical URL does not prove exact model identity');
+  if (!canonical || resourceKey(canonical) !== resourceKey(source.finalUrl)) {
+    throw new Error('canonical model URL does not match the acquired product resource');
   }
   const signals = [{ type: 'canonical_url', value: canonical }];
   const title = normalizedText($('title').first().text());
@@ -44,7 +44,9 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
   const attributes = [
     'data-item-model', 'data-product-model', 'data-product-id', 'data-ga4-product-id',
     'datalayer-product-id', 'datalayer-origin-productmodelid',
+    'data-modelname', 'data-model-name', 'data-sku', 'data-pim-sku',
   ];
+  const skuAttributes = ['data-modelcode', 'data-model-code', 'data-shop-sku', 'data-bv-product-id'];
   let productModel = null;
   for (const attribute of attributes) {
     $(`[${attribute}]`).each((_, element) => {
@@ -52,6 +54,24 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
       if (!productModel && containsExactModel(value, caseIdentity.model)) productModel = value;
     });
   }
+  const canonicalPath = new URL(canonical).pathname;
+  let canonicalRegionalSku = null;
+  for (const attribute of skuAttributes) {
+    $(`[${attribute}]`).each((_, element) => {
+      const value = normalizedText($(element).attr(attribute));
+      const normalizedModel = normalizedText(caseIdentity.model).toUpperCase().replace(/[^A-Z0-9]/g, '');
+      const normalizedSku = value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+      const suffix = normalizedSku.slice(normalizedModel.length);
+      if (!canonicalRegionalSku && normalizedSku.startsWith(normalizedModel)
+        && /^[A-Z0-9]{1,4}$/.test(suffix) && containsExactModel(canonicalPath, value)) {
+        canonicalRegionalSku = value;
+      }
+    });
+  }
+  if (!containsExactModel(canonicalPath, caseIdentity.model) && !canonicalRegionalSku) {
+    throw new Error('canonical URL does not prove exact model or a page-declared regional SKU');
+  }
+  if (canonicalRegionalSku) signals.push({ type: 'canonical_regional_sku', value: canonicalRegionalSku });
   if (productModel) signals.push({ type: 'product_model', value: productModel });
   if (!productModel) throw new Error('exact product model identity signal missing');
   const text = $.root().find('*').contents()
@@ -142,6 +162,34 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
   if (!Array.isArray(fields) || !fields.length) throw new TypeError('requested evidence fields required');
   const $ = load(Buffer.from(bytes).toString('utf8'));
   const candidates = new Map(fields.map((field) => [field, []]));
+  const structuredCandidates = new Map(fields.map((field) => [field, []]));
+  $('body li, body [role="listitem"], body tr').each((_, row) => {
+    if ($(row).closest('[hidden],[aria-hidden="true"],script,style,noscript,template').length) return;
+    const rowText = elementText($, row);
+    if (!rowText) return;
+    $(row).find('*').addBack().each((__, element) => {
+      const label = elementOwnText($, element);
+      if (!label || $(element).closest('li,[role="listitem"],tr').get(0) !== row) return;
+      const labelIndex = rowText.indexOf(label);
+      if (labelIndex < 0) return;
+      const value = normalizedText(`${rowText.slice(0, labelIndex)} ${rowText.slice(labelIndex + label.length)}`);
+      if (!value) return;
+      const quote = normalizedText(`${label} ${value}`);
+      if (/\b(?:dimension|dimensions|size)\b/i.test(label)) {
+        const grouped = claimsFromExplicitDimensionSequence({ label, value, quote }, { category }, fields);
+        grouped.forEach((claim) => structuredCandidates.get(claim.field)?.push(claim));
+      }
+      for (const field of fields) {
+        const rule = evidenceFieldRules[field];
+        if (!rule || !rule.label.test(label) || (rule.reject && rule.reject.test(label))) continue;
+        try {
+          structuredCandidates.get(field).push(claimFromEvidenceFragment(field, label, quote, { category }));
+        } catch {
+          // The row must contain exactly one semantically valid value for this label.
+        }
+      }
+    });
+  });
   $('body *').not('script,style,noscript,template').each((_, element) => {
     if ($(element).closest('[hidden],[aria-hidden="true"],script,style,noscript,template').length) return;
     const label = elementOwnText($, element);
@@ -161,7 +209,8 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
   });
   const claims = [];
   for (const field of fields) {
-    const unique = new Map(candidates.get(field).map((claim) => [`${JSON.stringify(claim.value)}\0${claim.quote}`, claim]));
+    const preferred = structuredCandidates.get(field).length ? structuredCandidates.get(field) : candidates.get(field);
+    const unique = new Map(preferred.map((claim) => [`${JSON.stringify(claim.value)}\0${claim.quote}`, claim]));
     const values = new Set([...unique.values()].map((claim) => JSON.stringify(claim.value)));
     if (values.size > 1) throw new Error(`ambiguous extracted values for ${field}`);
     if (unique.size) claims.push([...unique.values()][0]);

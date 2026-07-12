@@ -79,8 +79,16 @@ test('resolution planning turns projection conflict into targeted autonomous res
     'exact_model_source_can_resolve_conflict',
   ]);
   assert.ok(plan.researchTasks.some((task) => task.field === 'flags.requiresPlumbing'));
+  assert.ok(plan.researchTasks.some((task) => task.field === 'installation.leftMm'));
+  assert.ok(plan.researchTasks.some((task) => task.field === 'installation.rearMm'));
   assert.ok(plan.researchTasks.every((task) => task.query.includes('WHE6874BA')));
   assert.equal(plan.requiresHumanReview, false);
+
+  const dryerPlan = buildResolutionPlan(resolutionCase({
+    category: 'dryer', formFactor: 'front_loader', sources: [],
+  }));
+  assert.ok(dryerPlan.researchTasks.some((task) => task.field === 'operation.doorOpenDepthMm'));
+  assert.ok(dryerPlan.researchTasks.some((task) => task.field === 'service.rearVentilationMm'));
 });
 
 test('resolution evidence accepts only content-addressed relative object paths', () => {
@@ -140,6 +148,31 @@ test('exact manufacturer evidence resolves the conflict and strips every unappro
   assert.equal(product.evidence.source_type, 'official_manufacturer_html');
   assert.equal(product.evidence.has_official_evidence, true);
   assert.equal(product.evidence.v2_resolution.status, 'resolved');
+  assert.equal(product.geometry_v2_provenance.evidenceLevel, 'dimensions');
+  assert.equal(
+    product.geometry_v2_provenance.fieldEvidence['closedEnvelope.widthMm'].receiptBindingSha256,
+    exactManufacturerSource().verificationReceipt.bindingSha256,
+  );
+  assert.deepEqual(product.geometry_v2_provenance.activeSourceHashes, [HASH]);
+  assert.equal(product.evidence.trust_level, 'dimensions_verified');
+});
+
+test('resolution promotes receipt-bound geometry only when every required placement field is present', () => {
+  const source = exactManufacturerSource({
+    claims: [
+      ...exactManufacturerSource().claims,
+      { field: 'installation.leftMm', value: 5, unit: 'mm', label: 'Left clearance', quote: 'Left clearance 5 mm' },
+      { field: 'installation.rightMm', value: 5, unit: 'mm', label: 'Right clearance', quote: 'Right clearance 5 mm' },
+      { field: 'installation.rearMm', value: 30, unit: 'mm', label: 'Rear clearance', quote: 'Rear clearance 30 mm' },
+    ],
+  });
+  const resolution = adjudicateResolutionCase(resolutionCase({ sources: [source] }));
+  const product = applyResolutionToProduct({
+    id: 'ao-88474', cat: 'fridge', brand: 'Westinghouse', model: 'WHE6874BA', evidence: {},
+  }, resolution);
+  assert.equal(product.geometry_v2_provenance.evidenceLevel, 'verified');
+  assert.equal(product.evidence.trust_level, 'verified_fit');
+  assert.equal(product.evidence.clearance_verified, true);
 });
 
 test('autonomous resolution preserves adjustable height ranges and uses the maximum for legacy fit fields', () => {

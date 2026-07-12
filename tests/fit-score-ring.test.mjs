@@ -18,7 +18,7 @@ test('phase 58 fit score ring renders a 40px SVG with score text', async () => {
   assert.match(html, /<svg[^>]+class="fit-score-ring fit-score-ring--excellent"/);
   assert.match(html, /viewBox="0 0 40 40"/);
   assert.match(html, /role="img"/);
-  assert.match(html, /aria-label="Fit score 92 out of 100, Excellent fit"/);
+  assert.match(html, /aria-label="Size margin score 92 out of 100, Excellent margin"/);
   assert.match(html, /<text[^>]+class="fit-score-number"[^>]*>92<\/text>/);
 });
 
@@ -38,7 +38,14 @@ test('phase 58 fit score card block combines ring and readable label', async () 
 
   assert.match(html, /class="fit-score-block"/);
   assert.match(html, /92/);
-  assert.match(html, /Excellent fit/);
+  assert.match(html, /Excellent margin/);
+});
+
+test('fit score tooltip states that the number is not an installation verdict', () => {
+  const tooltipSource = readFileSync(path.join(repoRoot, 'public', 'scripts', 'ui', 'tooltips-dictionary.js'), 'utf8');
+
+  assert.match(tooltipSource, /size-margin score/i);
+  assert.match(tooltipSource, /not an installation verdict/i);
 });
 
 test('phase 58 fit score ring clamps unsafe values before rendering', async () => {

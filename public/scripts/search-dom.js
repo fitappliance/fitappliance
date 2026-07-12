@@ -1091,33 +1091,50 @@
     return 'no-fit';
   }
 
-  function fitScoreLabel(score) {
+  function sizeMarginLabel(score) {
     return {
-      excellent: 'Excellent fit',
-      strong: 'Strong fit',
-      workable: 'Workable fit',
-      tight: 'Tight fit',
-      marginal: 'Marginal fit',
-      'no-fit': "Won't fit"
+      excellent: 'Excellent margin',
+      strong: 'Strong margin',
+      workable: 'Workable margin',
+      tight: 'Tight margin',
+      marginal: 'Marginal margin',
+      'no-fit': 'No dimensional fit'
     }[fitScoreTier(score)];
+  }
+
+  function fitDecisionLabel(fitDecision) {
+    return {
+      VERIFIED_FIT: 'Verified fit',
+      LIKELY_FIT_ESTIMATED: 'Estimated clearance',
+      CONDITIONAL_FIT: 'Conditional fit',
+      INSUFFICIENT_DATA: 'Fit data incomplete',
+      NO_FIT: 'Does not fit'
+    }[String(fitDecision?.outcome ?? '').trim()] ?? 'Fit evidence unavailable';
   }
 
   function buildFitScoreHtml(match) {
     const parsed = Number(match?.fitScoreNumeric);
     if (!Number.isFinite(parsed)) return '';
+    const outcome = String(match?.fitDecision?.outcome ?? '').trim();
+    const decisionLabel = fitDecisionLabel(match?.fitDecision);
+    if (outcome === 'INSUFFICIENT_DATA') {
+      return `<div class="fit-score-block fit-score-block--incomplete" data-fit-outcome="INSUFFICIENT_DATA">
+        <span class="fit-score-label">${escHtml(decisionLabel)}</span>
+      </div>`;
+    }
     const value = Math.max(0, Math.min(100, Math.round(parsed)));
     const tier = fitScoreTier(value);
-    const label = fitScoreLabel(value);
+    const label = sizeMarginLabel(value);
     const radius = 17;
     const circumference = 2 * Math.PI * radius;
     const offset = circumference * (1 - (value / 100));
-    return `<div class="fit-score-block" data-fit-score-tier="${escHtml(tier)}">
-      <svg class="fit-score-ring fit-score-ring--${escHtml(tier)}" role="img" aria-label="Fit score ${value} out of 100, ${escHtml(label)}" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    return `<div class="fit-score-block" data-fit-score-tier="${escHtml(tier)}" data-fit-outcome="${escHtml(outcome || 'UNKNOWN')}">
+      <svg class="fit-score-ring fit-score-ring--${escHtml(tier)}" role="img" aria-label="Size margin score ${value} out of 100; ${escHtml(decisionLabel)}" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
         <circle class="fit-score-ring-track" cx="20" cy="20" r="${radius}" fill="none" stroke="currentColor" stroke-opacity="0.18" stroke-width="4"></circle>
         <circle class="fit-score-ring-value" cx="20" cy="20" r="${radius}" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="${circumference.toFixed(2)}" stroke-dashoffset="${offset.toFixed(2)}" transform="rotate(-90 20 20)"></circle>
         <text class="fit-score-number" x="20" y="24" text-anchor="middle">${value}</text>
       </svg>
-      <span class="fit-score-label">${value} — ${escHtml(label)}</span>
+      <span class="fit-score-copy"><span class="fit-score-label">${value} — ${escHtml(label)}</span><span class="fit-decision-label">${escHtml(decisionLabel)}</span></span>
     </div>`;
   }
 

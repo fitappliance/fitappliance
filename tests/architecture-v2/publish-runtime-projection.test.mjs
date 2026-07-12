@@ -24,7 +24,7 @@ test('phase 7 removes legacy runtime files and dual-projection code paths', () =
 
 test('publisher writes the canonical catalog and consistent category/meta files', async () => {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'fit-publish-'));
-  const catalog = { schema_version: 3, last_updated: '2026-01-02', products: [{ id: 'new', canonicalProductId: 'fa_prod_1', cat: 'fridge' }] };
+  const catalog = { schema_version: 3, last_updated: '2026-01-02', products: [{ id: 'new', canonicalProductId: 'fa_prod_1', cat: 'fridge', readableSpec: 'Top-mount fridge', priorityScore: 12 }] };
   const result = await publishRuntimeProjection({ root, catalog, logger: { log() {} } });
   assert.equal(result.projection, 'v2');
   assert.equal(JSON.parse(await fs.readFile(path.join(root, 'public/data/appliances.json'))).products[0].id, 'new');
@@ -33,4 +33,17 @@ test('publisher writes the canonical catalog and consistent category/meta files'
   const marker = JSON.parse(await fs.readFile(path.join(root, 'public/data/catalog-projection.json')));
   assert.equal(marker.activeProjection, 'v2');
   assert.equal('rollbackProjection' in marker, false);
+});
+
+test('publisher rejects a projection that dropped deterministic display metadata', async () => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'fit-publish-metadata-'));
+  const catalog = {
+    schema_version: 3,
+    products: [{ id: 'new', canonicalProductId: 'fa_prod_1', cat: 'fridge' }],
+  };
+
+  await assert.rejects(
+    publishRuntimeProjection({ root, catalog, logger: { log() {} } }),
+    /display metadata/i,
+  );
 });

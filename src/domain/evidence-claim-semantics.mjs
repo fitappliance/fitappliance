@@ -1,13 +1,13 @@
 const FIELD_RULES = Object.freeze({
   'closedEnvelope.widthMm': { label: /(?:\b(?:total|overall|external|product)?\s*width\b|^\s*(?:total|overall|external|product)?\s*wide(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'width', reject: /cabinet|cut[ -]?out|cavity|packag/i },
   'closedEnvelope.heightMm': { label: /(?:\b(?:total|overall|external|product)?\s*height\b|^\s*(?:total|overall|external|product)?\s*high(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'height', reject: /cabinet|cut[ -]?out|cavity|packag|lid\s*open/i },
-  'closedEnvelope.depthMm': { label: /(?:\b(?:total|overall|external|product)?\s*depth\b|^\s*(?:total|overall|external|product)?\s*deep(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'depth', reject: /cabinet|cut[ -]?out|cavity|packag|door\s*open|with\s*(?:the\s*)?door/i },
+  'closedEnvelope.depthMm': { label: /(?:\b(?:total|overall|external|product)?\s*depth\b|^\s*(?:total|overall|external|product)?\s*deep(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'depth', reject: /cabinet|cut[ -]?out|cavity|packag|(?:door\s*open(?:ed)?|open(?:ed)?\s*door)/i },
   'installation.leftMm': { label: /(?:left.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}left)/i, kind: 'clearance' },
   'installation.rightMm': { label: /(?:right.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}right)/i, kind: 'clearance' },
   'installation.topMm': { label: /(?:air\s*space\s*above|top|overhead).{0,30}(?:clearance|space|gap|cabinet)|air\s*space\s*above\s*cabinet/i, kind: 'clearance' },
   'installation.rearMm': { label: /(?:rear|behind|back).{0,30}(?:clearance|space|gap|ventilation)|(?:clearance|space|gap).{0,30}(?:rear|behind|back)/i, kind: 'clearance' },
   'installation.frontMm': { label: /front.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}front/i, kind: 'clearance' },
-  'operation.doorOpenDepthMm': { label: /(?:depth.{0,30}door\s*open|door\s*open.{0,30}depth)/i, kind: 'operation' },
+  'operation.doorOpenDepthMm': { label: /(?:depth.{0,40}(?:door\s*open(?:ed)?|open(?:ed)?\s*door)|(?:door\s*open(?:ed)?|open(?:ed)?\s*door).{0,40}depth)/i, kind: 'operation' },
   'operation.hingeSideSpaceMm': { label: /hinge.{0,30}(?:clearance|space|gap)/i, kind: 'operation' },
   'operation.lidOpenHeightMm': { label: /(?:lid\s*open.{0,30}height|height.{0,30}lid\s*open)/i, kind: 'operation' },
   'service.plumbingRearMm': { label: /(?:plumbing|water).{0,30}(?:rear|behind|back).{0,30}(?:clearance|space|gap)/i, kind: 'service' },
@@ -105,6 +105,73 @@ const GROUPED_AXIS_LABELS = Object.freeze({
   top: '(?:top|above|overhead)',
   front: 'front',
 });
+
+const DIMENSION_AXIS_ALIASES = Object.freeze({
+  w: 'width', width: 'width', wide: 'width',
+  h: 'height', height: 'height', high: 'height',
+  d: 'depth', depth: 'depth', deep: 'depth',
+});
+
+function explicitDimensionSequence(label) {
+  const compact = /(?:^|[^a-z0-9])([whd])\s*([x×/])\s*([whd])\s*\2\s*([whd])(?:$|[^a-z0-9])/i
+    .exec(String(label ?? ''));
+  if (compact) {
+    const sequence = [compact[1], compact[3], compact[4]]
+      .map((token) => DIMENSION_AXIS_ALIASES[token.toLowerCase()]);
+    if (new Set(sequence).size === 3) return sequence;
+  }
+  const tokens = Object.keys(DIMENSION_AXIS_ALIASES).sort((left, right) => right.length - left.length).join('|');
+  const separator = '(?:\\s*(?:x|×|/|,|\\bby\\b)\\s*)';
+  const match = new RegExp(`\\b(${tokens})\\b${separator}\\b(${tokens})\\b${separator}\\b(${tokens})\\b`, 'i')
+    .exec(String(label ?? ''));
+  if (!match) return null;
+  const sequence = match.slice(1, 4).map((token) => DIMENSION_AXIS_ALIASES[token.toLowerCase()]);
+  return new Set(sequence).size === 3 ? sequence : null;
+}
+
+export function claimsFromExplicitDimensionSequence(fragment, context, requestedFields, extras = {}) {
+  if (!Array.isArray(requestedFields)) throw new TypeError('requested evidence fields required');
+  const label = String(fragment?.label ?? '').replace(/\s+/g, ' ').trim();
+  const valueText = String(fragment?.value ?? '').replace(/\s+/g, ' ').trim();
+  if (!label || !valueText) return [];
+  if (!/\b(?:dimension|dimensions|size)\b/i.test(label)
+    || /\b(?:packag|shipping|carton|box(?:ed)?|crate)\w*\b/i.test(label)) return [];
+  const axisOrder = explicitDimensionSequence(label);
+  if (!axisOrder) return [];
+  const sourceValues = (valueText.match(/\d+(?:\.\d+)?/g) ?? []).map(Number);
+  if (sourceValues.length !== 3 || sourceValues.some((value) => !Number.isFinite(value))) return [];
+  const units = [...`${label} ${valueText}`.matchAll(/\b(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/gi)]
+    .map((match) => match[1].toLowerCase().startsWith('c') ? 'cm' : 'mm');
+  if (!units.length || new Set(units).size !== 1) return [];
+  const sourceUnit = units[0];
+  const sourceValuesMm = sourceValues.map((value) => value * (sourceUnit === 'cm' ? 10 : 1));
+  if (sourceValuesMm.some((value) => !Number.isInteger(value))) return [];
+  const fieldsByAxis = {
+    width: 'closedEnvelope.widthMm',
+    height: 'closedEnvelope.heightMm',
+    depth: 'closedEnvelope.depthMm',
+  };
+  const quote = requiredText(fragment?.quote ?? `${label} ${valueText}`, 'claim quote');
+  const claims = axisOrder.flatMap((axis, index) => {
+    const field = fieldsByAxis[axis];
+    if (!requestedFields.includes(field)) return [];
+    return [{
+      field,
+      value: sourceValuesMm[index],
+      unit: 'mm',
+      label,
+      quote,
+      semanticBasis: 'explicit_axis_sequence',
+      axisOrder: [...axisOrder],
+      sourceUnit,
+      sourceValues: [...sourceValues],
+      sourceValuesMm: [...sourceValuesMm],
+      ...extras,
+    }];
+  });
+  claims.forEach((claim) => validateClaimSemantics(claim, context));
+  return claims;
+}
 
 function groupedFieldAxis(field, rule, axisOrder) {
   if (rule.kind === 'dimension') return rule.axis;

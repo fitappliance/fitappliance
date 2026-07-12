@@ -9,10 +9,17 @@ import brandCanon from '../brand-canon.js';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { buildPhase10EvidenceProjection } from '../../src/domain/phase10-evidence-review.mjs';
 import { applyResolutionToProduct } from '../../src/domain/evidence-resolution-loop.mjs';
+import readableSpec from '../common/readable-spec.js';
+import popularityScore from '../common/popularity-score.js';
+
+const { enrichReadableCopy } = readableSpec;
+const { computePriorityScore, inferBrandTier } = popularityScore;
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
 const registry = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'canonicalRegistry'), 'utf8'));
 const catalog = JSON.parse(await readFile(resolve(root, 'data/catalog-final.json'), 'utf8'));
+const seriesDictionary = JSON.parse(await readFile(resolve(root, 'data/series-dictionary.json'), 'utf8'));
+const popularityResearch = JSON.parse(await readFile(resolve(root, 'data/popularity-research.json'), 'utf8'));
 const reviewBundles = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'evidenceReviewBundles'), 'utf8'));
 const reviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'dimensionReviewManifest'), 'utf8'));
 const spaceReviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'spaceReviewManifest'), 'utf8'));
@@ -97,6 +104,29 @@ const filtered = {
       };
     }),
 };
-const projection = buildPublicProjection(registry, filtered);
+const displayReady = {
+  ...filtered,
+  products: filtered.products.map((row) => {
+    const readable = enrichReadableCopy(row, { seriesDictionary });
+    const research = popularityResearch?.products?.[row.id]
+      ?? popularityResearch?.products?.[row.slug]
+      ?? null;
+    const priorityScore = computePriorityScore({
+      ...row,
+      brandTier: inferBrandTier(row.brand),
+    }, {
+      now: popularityResearch?.last_researched ?? catalog.last_updated,
+      verifiedAt: research?.researchedAt ?? catalog.last_updated,
+      research,
+    });
+    return {
+      ...row,
+      displayName: String(row.displayName ?? '').trim() ? row.displayName : readable.displayName,
+      readableSpec: readable.readableSpec,
+      priorityScore,
+    };
+  }),
+};
+const projection = buildPublicProjection(registry, displayReady);
 await writeFile(resolveArchitectureV2Path(root, 'publicProjection'), `${JSON.stringify(projection)}\n`);
 console.log(JSON.stringify({ products: projection.products.length, quarantined: registry.quarantine.length }));

@@ -84,6 +84,18 @@ test('claim values must be parsed from the matching field label and unit', () =>
     field: 'flags.requiresPlumbing', value: true, unit: 'boolean',
     label: 'Water connection', quote: 'Water connection not required',
   }, { category: 'fridge' }), /boolean/i);
+  assert.equal(validateClaimSemantics({
+    field: 'closedEnvelope.depthMm', value: 803, unit: 'mm',
+    label: 'Depth with door closed', quote: 'Depth with door closed 803 mm',
+  }, { category: 'fridge' }), true);
+  assert.equal(validateClaimSemantics({
+    field: 'operation.doorOpenDepthMm', value: 1054, unit: 'mm',
+    label: 'Appliance depth in mm with opened door', quote: 'Appliance depth in mm with opened door 1054',
+  }, { category: 'dryer' }), true);
+  assert.throws(() => validateClaimSemantics({
+    field: 'closedEnvelope.depthMm', value: 1054, unit: 'mm',
+    label: 'Appliance depth in mm with opened door', quote: 'Appliance depth in mm with opened door 1054',
+  }, { category: 'dryer' }), /field label/i);
 });
 
 test('category ranges and cross-field geometry reject plausible-looking bad data', () => {
@@ -137,6 +149,62 @@ test('HTML extractor derives requested claims from source text instead of copied
     'installation.topMm': 25,
     'flags.requiresPlumbing': true,
   });
+});
+
+test('HTML extractor prioritises structured product dimensions and rejects packaging dimensions', () => {
+  const samsung = Buffer.from(`<!doctype html><html><head>
+    <title>9kg dryer - DV90BB9440GH | Samsung AU</title>
+    <link rel="canonical" href="https://www.samsung.com/au/dryers/dv90bb9440ghsa/">
+  </head><body data-modelname="DV90BB9440GH" data-modelcode="DV90BB9440GHSA">
+    <section><p>Dimensions</p><span>Width 600 mm</span><span>Height 850 mm</span><span>Depth 650 mm</span></section>
+    <form><label>Depth (mm)</label><span>Ex.: 695</span></form>
+    <ul role="list">
+      <li role="listitem"><p>Product Dimension (WxHxD)</p><p>600 x 850 x 650 mm</p></li>
+      <li role="listitem"><p>Packaging Dimension (WxHxD)</p><p>670 x 895 x 695 mm</p></li>
+      <li role="listitem"><div class="spec-name"><p>Product Depth with door open 90 degree (mm)</p></div><div class="spec-value"><p>1115</p></div></li>
+    </ul>
+  </body></html>`);
+  const claims = extractClaimsFromHtml(samsung, {
+    category: 'dryer',
+    fields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+      'operation.doorOpenDepthMm',
+    ],
+  });
+  assert.deepEqual(Object.fromEntries(claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': 600,
+    'closedEnvelope.heightMm': 850,
+    'closedEnvelope.depthMm': 650,
+    'operation.doorOpenDepthMm': 1115,
+  });
+  assert.ok(claims.filter((claim) => claim.field.startsWith('closedEnvelope.'))
+    .every((claim) => claim.semanticBasis === 'explicit_axis_sequence'));
+
+  const samsungIdentity = { brand: 'Samsung', model: 'DV90BB9440GH', category: 'dryer' };
+  const attested = verifyAndAttestResolutionArtifact({
+    source: source(samsung, {
+      sourceUrl: 'https://www.samsung.com/au/dryers/dv90bb9440ghsa/',
+      finalUrl: 'https://www.samsung.com/au/dryers/dv90bb9440ghsa/',
+      identity: { brand: 'Samsung', model: 'DV90BB9440GH', outcome: 'exact' },
+      claims,
+    }),
+    caseIdentity: samsungIdentity,
+    bytes: samsung,
+    verifiedAt: '2026-07-12T10:00:00.000Z',
+  });
+  assert.ok(attested.identitySignals.some((signal) => signal.type === 'canonical_regional_sku'));
+  assert.ok(attested.identitySignals.some((signal) => signal.type === 'product_model'));
+});
+
+test('HTML grouped dimensions fail closed when structured product rows conflict', () => {
+  const conflicting = Buffer.from(`<!doctype html><html><body><ul>
+    <li><span>Product Dimensions (W x H x D)</span><span>600 x 850 x 650 mm</span></li>
+    <li><span>Product Dimensions (W x H x D)</span><span>700 x 850 x 650 mm</span></li>
+  </ul></body></html>`);
+  assert.throws(() => extractClaimsFromHtml(conflicting, {
+    category: 'dryer',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }), /ambiguous extracted values/i);
 });
 
 test('PDF approval requires hash-bound MinerU JSON and replays claims from that JSON', () => {

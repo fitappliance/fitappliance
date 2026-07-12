@@ -30,7 +30,7 @@ test('phase 58 score popover wraps score ring in details when breakdown exists',
   assert.match(html, /<details class="fit-score-popover"/);
   assert.match(html, /<summary class="fit-score-summary"/);
   assert.match(html, /class="fit-score-popover__panel"/);
-  assert.match(html, /Fit Score 87\/100/);
+  assert.match(html, /Size margin score 87\/100/);
 });
 
 test('phase 58 score popover preserves simple block when breakdown is absent', async () => {

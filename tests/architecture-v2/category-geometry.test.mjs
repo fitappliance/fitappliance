@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createCategoryGeometry, auditCategoryGeometry } from '../../src/domain/category-geometry.mjs';
+import { createCategoryGeometry, auditCategoryGeometry, requiredCategoryPlacementEnvelope } from '../../src/domain/category-geometry.mjs';
 
 const shared = {
   closedEnvelope: { widthMm: 900, heightMm: 1780, depthMm: 700 },
@@ -61,4 +61,27 @@ test('WashTower geometry requires front-door operation and rear service space', 
     'service.rearServicesMm',
   ]);
   assert.ok(audit.nonApplicable.includes('operation.lidOpenHeightMm'));
+});
+
+test('category placement depth uses the largest applicable rear requirement and excludes front space', () => {
+  const geometry = createCategoryGeometry('dishwasher', {
+    ...shared,
+    installation: { ...shared.installation, rearMm: 20, frontMm: 600 },
+    operation: { doorOpenDepthMm: 1300 },
+    service: { rearServicesMm: 80 },
+    delivery: {},
+  });
+  assert.deepEqual(requiredCategoryPlacementEnvelope('dishwasher', geometry), {
+    widthMm: 920, heightMm: 1800, depthMm: 780,
+  });
+});
+
+test('required category service space stays unknown rather than falling back to installation rear', () => {
+  const geometry = createCategoryGeometry('dryer', {
+    ...shared,
+    operation: { doorOpenDepthMm: 1200 },
+    service: { rearVentilationMm: null },
+    delivery: {},
+  });
+  assert.equal(requiredCategoryPlacementEnvelope('dryer', geometry), null);
 });

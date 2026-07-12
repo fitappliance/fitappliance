@@ -2,16 +2,11 @@ import { createHash } from 'node:crypto';
 
 import { extractClaimsFromHtml, verifyAndAttestResolutionArtifact } from './evidence-artifact-verifier.mjs';
 import { recordResearchAttempt } from './evidence-research-state.mjs';
-import { discoverCandidateUrls } from './evidence-source-discovery.mjs';
+import { discoverRankedCandidateUrls } from './evidence-source-discovery.mjs';
 import { resolutionFieldsForCase } from './evidence-resolution-loop.mjs';
-import { isOfficialBrandHostUrl, isOfficialBrandUrl, verifyVerificationReceipt } from './evidence-source-verifier.mjs';
+import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
 import { parseMineruContentListV2 } from './mineru-document.mjs';
-
-const MAX_ARTIFACT_BYTES = 20 * 1024 * 1024;
-
-function normalizeContentType(value) {
-  return String(value ?? '').split(';')[0].trim().toLowerCase();
-}
+import { fetchOfficialArtifactResilient } from './official-artifact-transport.mjs';
 
 function artifactExtension(contentType) {
   if (contentType === 'text/html') return 'html';
@@ -19,47 +14,8 @@ function artifactExtension(contentType) {
   throw new TypeError(`unsupported evidence content type ${contentType || 'missing'}`);
 }
 
-function validatePayloadType(contentType, bytes) {
-  const prefix = Buffer.from(bytes).subarray(0, 16).toString('utf8').trimStart().toLowerCase();
-  if (contentType === 'application/pdf' && !prefix.startsWith('%pdf-')) throw new Error('PDF content type does not match payload');
-  if (contentType === 'text/html' && !prefix.startsWith('<!doctype') && !prefix.startsWith('<html')) {
-    throw new Error('HTML content type does not match payload');
-  }
-}
-
 export async function fetchOfficialArtifact(requestedUrl, brand, options = {}) {
-  const fetchImpl = options.fetchImpl ?? fetch;
-  const maximumRedirects = options.maximumRedirects ?? 5;
-  if (!isOfficialBrandUrl(requestedUrl, brand)) throw new TypeError('requested URL is not an official brand URL');
-  let current = new URL(requestedUrl).toString();
-  const redirectChain = [];
-  for (let redirect = 0; redirect <= maximumRedirects; redirect += 1) {
-    const response = await fetchImpl(current, {
-      redirect: 'manual',
-      signal: options.signal ?? AbortSignal.timeout(options.timeoutMs ?? 30000),
-      headers: {
-        'user-agent': 'FitApplianceEvidenceBot/2.0 (+https://www.fitappliance.com.au/about/editorial-standards)',
-        accept: 'text/html,application/pdf;q=0.9',
-      },
-    });
-    if ([301, 302, 303, 307, 308].includes(response.status)) {
-      if (redirect >= maximumRedirects) throw new Error('official redirect limit exceeded');
-      const location = response.headers.get('location');
-      if (!location) throw new Error('redirect location missing');
-      const next = new URL(location, current).toString();
-      if (!isOfficialBrandHostUrl(next, brand)) throw new Error('redirect escaped official brand hosts');
-      redirectChain.push(next);
-      current = next;
-      continue;
-    }
-    if (!response.ok) throw new Error(`http_${response.status}`);
-    const contentType = normalizeContentType(response.headers.get('content-type'));
-    const bytes = Buffer.from(await response.arrayBuffer());
-    if (!bytes.length || bytes.length > MAX_ARTIFACT_BYTES) throw new Error('artifact size outside limits');
-    validatePayloadType(contentType, bytes);
-    return { requestedUrl: new URL(requestedUrl).toString(), finalUrl: current, redirectChain, contentType, bytes };
-  }
-  throw new Error('unreachable redirect state');
+  return fetchOfficialArtifactResilient(requestedUrl, brand, options);
 }
 
 function sameResource(left, right) {
@@ -196,7 +152,7 @@ export async function runEvidenceResearchCycle(caseRecord, options = {}) {
     unchanged: true,
   });
   try {
-    candidates = await discoverCandidateUrls(caseRecord, options);
+    candidates = await discoverRankedCandidateUrls(caseRecord, options);
   } catch (error) {
     if (options.refresh && (caseRecord.sources ?? []).length) {
       return refreshFailure(`discovery:${error.message}`, [{ candidateUrl: null, reason: error.message }]);

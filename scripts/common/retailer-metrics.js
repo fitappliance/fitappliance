@@ -19,7 +19,10 @@ function metricsForProducts(label, products) {
     retailerLinks: rows.reduce((sum, product) => sum + (product.retailers ?? []).length, 0),
     multiRetailerProducts: rows.filter((product) => (product.retailers ?? []).length > 1).length,
     priceRows: rows.reduce((sum, product) => sum + (product.retailers ?? [])
-      .filter((retailer) => Number.isInteger(retailer?.p) && retailer.p >= 1 && retailer.p <= 100000).length, 0),
+      .filter((retailer) => {
+        const price = Number(retailer?.p ?? retailer?.price);
+        return Number.isFinite(price) && price > 0 && price <= 100000;
+      }).length, 0),
   };
 }
 

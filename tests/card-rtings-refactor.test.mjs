@@ -150,3 +150,17 @@ test('phase 58 trust visualization: photo thumbnail uses explicit image first an
   assert.match(html, /src="https:\/\/cdn\.example\.com\/hisense\.png"/);
   assert.match(html, /data-photo-fallbacks="\/og-images\/hisense-fridge\.webp\|\/og-images\/hisense-fridge\.png"/);
 });
+
+test('product photo candidates use the same ampersand slug convention as generated assets', async () => {
+  const { getProductPhotoCandidates } = await import(productCardModuleUrl);
+  const candidates = getProductPhotoCandidates(makeProduct({
+    brand: 'Fisher & Paykel',
+    image_url: undefined
+  }));
+
+  assert.deepEqual(candidates, [
+    '/og-images/fisher-paykel-fridge.webp',
+    '/og-images/fisher-paykel-fridge.png'
+  ]);
+  assert.ok(candidates.every((candidate) => !candidate.includes('fisher-and-paykel')));
+});

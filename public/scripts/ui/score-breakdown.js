@@ -142,7 +142,7 @@ export function renderBreakdownHtml(breakdown = {}, score = breakdown?.finalScor
 
   return `<div class="score-breakdown" data-final-score="${finalScore}">
     <div class="score-breakdown__summary">
-      <strong>Fit Score ${finalScore}/100</strong>
+      <strong>Size margin score ${finalScore}/100</strong>
       <span>Binding: ${escHtml(breakdown.tightestAxis || 'unknown')} ${Number.isFinite(Number(breakdown.tightestGapMm)) ? `${Math.round(Number(breakdown.tightestGapMm))}mm` : ''}</span>
       ${renderTooltipHtml('binding-axis')}
     </div>

@@ -86,6 +86,7 @@ async function main(args) {
       maximumSitemapDocuments: 12,
       fetchAttempts: 3,
       retryDelayMs: 750,
+      allowCurlFallback: true,
       processPdf: (bytes) => runMineruPdfToJson(bytes, { storageRoot }),
     });
     cases.push(result.caseRecord);

@@ -41,6 +41,7 @@ function isHttpUrl(value) {
 const EVIDENCE_TRUST_LEVELS = new Set([
   'verified_fit',
   'dimensions_verified',
+  'evidence_pending',
   'retailer_spec'
 ]);
 
@@ -116,7 +117,7 @@ function validateEvidence(evidence, productId, errors) {
     Object.prototype.hasOwnProperty.call(evidence, 'trust_level') &&
     !EVIDENCE_TRUST_LEVELS.has(evidence.trust_level)
   ) {
-    errors.push(`Product ${productId} evidence.trust_level must be verified_fit, dimensions_verified, or retailer_spec`);
+    errors.push(`Product ${productId} evidence.trust_level must be verified_fit, dimensions_verified, evidence_pending, or retailer_spec`);
   }
 
   if (Object.prototype.hasOwnProperty.call(evidence, 'verified_fields')) {

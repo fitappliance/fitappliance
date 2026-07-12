@@ -37,6 +37,7 @@ function makeMatch(overrides = {}) {
     retailers: [{ n: 'JB Hi-Fi', p: null, url: 'https://www.jbhifi.com.au/products/hisense-hrcd640tbw' }],
     fitGapMm: 24,
     fitScoreNumeric: 91,
+    fitDecision: { outcome: 'LIKELY_FIT_ESTIMATED' },
     fitAxisGaps: [
       { axis: 'width', label: 'W', cavity: 1000, appliance: 912, clearanceMm: 10, gapMm: 78 },
       { axis: 'height', label: 'H', cavity: 1900, appliance: 1785, clearanceMm: 20, gapMm: 95 },
@@ -54,9 +55,24 @@ test('phase 58 fit verdict: search-dom card renders numeric score instead of leg
 
   assert.ok(score);
   assert.match(score.textContent ?? '', /91/);
-  assert.match(score.textContent ?? '', /Excellent fit/);
+  assert.match(score.textContent ?? '', /Excellent margin/);
+  assert.match(score.textContent ?? '', /Estimated clearance/);
+  assert.doesNotMatch(score.textContent ?? '', /Excellent fit/);
   assert.equal(dom.window.document.querySelector('.fit-health'), null);
   assert.equal(dom.window.document.querySelector('.fit-badge--exact, .fit-badge--tight, .fit-badge--relax'), null);
+});
+
+test('alternate result card fails closed when fit evidence is incomplete', async () => {
+  const { buildCardHtml } = await loadSearchDom();
+  const dom = new JSDOM(buildCardHtml(makeMatch({
+    fitDecision: { outcome: 'INSUFFICIENT_DATA' }
+  })));
+  const score = dom.window.document.querySelector('.fit-score-block');
+
+  assert.ok(score);
+  assert.match(score.textContent ?? '', /Fit data incomplete/);
+  assert.equal(score.querySelector('.fit-score-ring'), null);
+  assert.doesNotMatch(score.textContent ?? '', /Excellent fit/);
 });
 
 test('phase 58 fit verdict: live list-row renderer surfaces only the score popover', async () => {

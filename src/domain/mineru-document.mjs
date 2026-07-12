@@ -3,6 +3,7 @@ import { load } from 'cheerio';
 
 import {
   claimFromEvidenceFragment,
+  claimsFromExplicitDimensionSequence,
   containsExactModel,
   evidenceFieldRules,
   validateClaimsSemantics,
@@ -125,12 +126,6 @@ function parseDocument(jsonBytes) {
   return { bytes, pages: parsedPages, pageCount: parsedPages.length };
 }
 
-const DIMENSION_AXIS = Object.freeze({
-  w: 'width', width: 'width', wide: 'width',
-  h: 'height', height: 'height', high: 'height',
-  d: 'depth', depth: 'depth', deep: 'depth',
-});
-
 const CLEARANCE_AXIS = Object.freeze({
   side: 'sides', sides: 'sides',
   left: 'left', right: 'right',
@@ -140,15 +135,6 @@ const CLEARANCE_AXIS = Object.freeze({
 });
 
 function explicitSequence(label, aliases, expectedLength = null) {
-  if (aliases === DIMENSION_AXIS && expectedLength === 3) {
-    const compact = /(?:^|[^a-z0-9])([whd])\s*([x×/])\s*([whd])\s*\2\s*([whd])(?:$|[^a-z0-9])/i
-      .exec(String(label ?? ''));
-    if (compact) {
-      const sequence = [compact[1], compact[3], compact[4]]
-        .map((token) => aliases[token.toLowerCase()]);
-      if (new Set(sequence).size === sequence.length) return sequence;
-    }
-  }
   const tokenPattern = Object.keys(aliases).sort((a, b) => b.length - a.length).join('|');
   const separator = '(?:\\s*(?:x|×|/|,|\\bby\\b)\\s*)';
   const matcher = new RegExp(`\\b(${tokenPattern})\\b${separator}\\b(${tokenPattern})\\b(?:${separator}\\b(${tokenPattern})\\b)?(?:${separator}\\b(${tokenPattern})\\b)?`, 'i');
@@ -192,23 +178,15 @@ function groupedClaim(field, value, row, fragment, page, sequence, measure, sema
   };
 }
 
-function dimensionClaims(row, fragment, page, fields) {
-  if (!/\b(?:dimension|dimensions|size)\b/i.test(row.label)
-    || /\b(?:packag|shipping|carton|boxed?|crate)\w*\b/i.test(row.label)) return [];
-  const sequence = explicitSequence(row.label, DIMENSION_AXIS, 3);
-  if (!sequence || new Set(sequence).size !== 3) return [];
-  const measure = measurements(row.value, sequence.length);
-  if (!measure) return [];
-  const fieldByAxis = {
-    width: 'closedEnvelope.widthMm',
-    height: 'closedEnvelope.heightMm',
-    depth: 'closedEnvelope.depthMm',
-  };
-  return sequence.flatMap((axis, index) => {
-    const field = fieldByAxis[axis];
-    return fields.includes(field)
-      ? [groupedClaim(field, measure.valuesMm[index], row, fragment, page, sequence, measure, 'explicit_axis_sequence')]
-      : [];
+function dimensionClaims(row, fragment, page, fields, category) {
+  return claimsFromExplicitDimensionSequence({
+    label: row.label,
+    value: row.value,
+    quote: normalizedText(row.quote ?? `${row.label} ${row.value}`),
+  }, { category }, fields, {
+    page,
+    bbox: [...fragment.bbox],
+    fragmentSha256: fragment.fragmentSha256,
   });
 }
 
@@ -297,6 +275,9 @@ function identitySignals(document, model) {
       if (item.type === 'list') signals.push({ type: 'mineru_list_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
       if (item.type === 'table') signals.push({ type: 'mineru_table_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
       if (item.type === 'text') signals.push({ type: 'mineru_text_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
+      if (item.type === 'paragraph') {
+        signals.push({ type: 'mineru_body_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
+      }
       if (item.type === 'page_header') {
         signals.push({ type: 'mineru_page_header_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
       }
@@ -307,6 +288,12 @@ function identitySignals(document, model) {
   if (new Set(headerSignals.map((signal) => signal.value.match(/:page:(\d+)/)?.[1])).size >= 2) {
     unique.set('mineru_repeated_page_header_model\0document', {
       type: 'mineru_repeated_page_header_model', value: `${model}:document:repeated-page-header`,
+    });
+  }
+  const bodySignals = signals.filter((signal) => signal.type === 'mineru_body_model');
+  if (new Set(bodySignals.map((signal) => signal.value.match(/:page:(\d+)/)?.[1])).size >= 2) {
+    unique.set('mineru_repeated_body_model\0document', {
+      type: 'mineru_repeated_body_model', value: `${model}:document:repeated-body-heading`,
     });
   }
   return [...unique.values()].sort((left, right) => left.type.localeCompare(right.type) || left.value.localeCompare(right.value));
@@ -345,10 +332,12 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   document.pages.forEach((items, pageIndex) => {
     const pageSignals = signals.filter((signal) => signal.value.includes(`:page:${pageIndex + 1}`));
     const headerScoped = pageSignals.some((signal) => signal.type === 'mineru_page_header_model');
+    const repeatedBodyScope = signals.some((signal) => signal.type === 'mineru_repeated_body_model');
+    const bodyScoped = repeatedBodyScope && pageSignals.some((signal) => signal.type === 'mineru_body_model');
     const pageScoped = pageSignals.length > 0;
     if (!pageScoped) return;
     for (const fragment of items.filter((item) => (
-      (item.type === 'table' && (headerScoped || containsExactModel(item.text, model)))
+      (item.type === 'table' && (headerScoped || bodyScoped || containsExactModel(item.text, model)))
       || (pageScoped && ['paragraph', 'text'].includes(item.type))
     ))) {
       const rows = fragment.type === 'table'
@@ -356,7 +345,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         : paragraphRows(fragment.text);
       for (const row of rows) {
         const claims = [
-          ...dimensionClaims(row, fragment, pageIndex + 1, fields),
+          ...dimensionClaims(row, fragment, pageIndex + 1, fields, category),
           ...clearanceClaims(row, fragment, pageIndex + 1, fields),
           ...directClaims(row, fragment, pageIndex + 1, fields, category),
         ];

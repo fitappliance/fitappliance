@@ -10,6 +10,12 @@ async function publishRuntimeProjection({ root, catalog, logger = console }) {
   if (catalog.products.some((row) => !String(row.canonicalProductId || '').startsWith('fa_prod_'))) {
     throw new TypeError('V2 runtime projection contains a product without canonical ID');
   }
+  if (catalog.products.some((row) => (
+    !String(row.readableSpec ?? '').trim()
+    || !Number.isFinite(row.priorityScore)
+  ))) {
+    throw new TypeError('V2 runtime projection contains incomplete display metadata');
+  }
   const dataDir = path.join(root, 'public', 'data');
   await fs.mkdir(dataDir, { recursive: true });
   await fs.writeFile(path.join(dataDir, 'appliances.json'), JSON.stringify(catalog));

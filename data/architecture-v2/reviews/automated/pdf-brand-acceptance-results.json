@@ -3,9 +3,17 @@
   "batchId": "major-brands-2026-07-12",
   "reviewedAt": "2026-07-12T00:00:00.000Z",
   "summary": {
-    "entries": 9,
-    "accepted": 5,
-    "quarantined": 4
+    "entries": 10,
+    "accepted": 10,
+    "acceptedPdf": 8,
+    "acceptedHtmlFallback": 2,
+    "geometryDimensions": 10,
+    "geometryVerified": 0,
+    "fitInsufficient": 9,
+    "fitConditional": 1,
+    "fitEstimated": 0,
+    "fitVerified": 0,
+    "quarantined": 0
   },
   "outcomes": [
     {
@@ -14,6 +22,9 @@
       "model": "WAN24126AU",
       "category": "washing_machine",
       "requestedUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN24126AU.pdf",
+      "requestedUrls": [
+        "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN24126AU.pdf"
+      ],
       "outcome": "accepted",
       "acquisition": "passed",
       "mineru": "passed",
@@ -36,6 +47,81 @@
         }
       ],
       "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 845,
+              "maximumMm": 845
+            },
+            "depthMm": 590
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": "front_loader",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN24126AU.pdf",
+            "contentSha256": "eeca4528ae36bc5317c225b56abfc70c8a95a677ebf26ebfd47b5f6433eb5062",
+            "receiptBindingSha256": "e4b50e2a6e74e95d5e4541961c868b711eaf1a24fe746ba7eaca7178708a85a2",
+            "page": 2,
+            "fragmentSha256": "3f4ed4e91abd53194f954031ce69970437cdd96ddb6b3ebbb62df39934161779"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN24126AU.pdf",
+            "contentSha256": "eeca4528ae36bc5317c225b56abfc70c8a95a677ebf26ebfd47b5f6433eb5062",
+            "receiptBindingSha256": "e4b50e2a6e74e95d5e4541961c868b711eaf1a24fe746ba7eaca7178708a85a2",
+            "page": 2,
+            "fragmentSha256": "3f4ed4e91abd53194f954031ce69970437cdd96ddb6b3ebbb62df39934161779"
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN24126AU.pdf",
+            "contentSha256": "eeca4528ae36bc5317c225b56abfc70c8a95a677ebf26ebfd47b5f6433eb5062",
+            "receiptBindingSha256": "e4b50e2a6e74e95d5e4541961c868b711eaf1a24fe746ba7eaca7178708a85a2",
+            "page": 2,
+            "fragmentSha256": "3f4ed4e91abd53194f954031ce69970437cdd96ddb6b3ebbb62df39934161779"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "eeca4528ae36bc5317c225b56abfc70c8a95a677ebf26ebfd47b5f6433eb5062"
+        ]
+      },
+      "artifactType": "pdf",
       "source": {
         "authority": "manufacturer",
         "sourceType": "official_exact_model_pdf",
@@ -60,14 +146,6 @@
             "unit": "mm",
             "label": "- Dimensions (H x W x D)",
             "quote": "- Dimensions (H x W x D): 84.5 cm x 59.8 cm x 59.0 cm (63.3 cm including door handle)",
-            "page": 2,
-            "bbox": [
-              502,
-              570,
-              897,
-              599
-            ],
-            "fragmentSha256": "3f4ed4e91abd53194f954031ce69970437cdd96ddb6b3ebbb62df39934161779",
             "semanticBasis": "explicit_axis_sequence",
             "axisOrder": [
               "height",
@@ -84,7 +162,15 @@
               845,
               598,
               590
-            ]
+            ],
+            "page": 2,
+            "bbox": [
+              502,
+              570,
+              897,
+              599
+            ],
+            "fragmentSha256": "3f4ed4e91abd53194f954031ce69970437cdd96ddb6b3ebbb62df39934161779"
           },
           {
             "field": "closedEnvelope.heightMm",
@@ -92,14 +178,6 @@
             "unit": "mm",
             "label": "- Dimensions (H x W x D)",
             "quote": "- Dimensions (H x W x D): 84.5 cm x 59.8 cm x 59.0 cm (63.3 cm including door handle)",
-            "page": 2,
-            "bbox": [
-              502,
-              570,
-              897,
-              599
-            ],
-            "fragmentSha256": "3f4ed4e91abd53194f954031ce69970437cdd96ddb6b3ebbb62df39934161779",
             "semanticBasis": "explicit_axis_sequence",
             "axisOrder": [
               "height",
@@ -116,7 +194,15 @@
               845,
               598,
               590
-            ]
+            ],
+            "page": 2,
+            "bbox": [
+              502,
+              570,
+              897,
+              599
+            ],
+            "fragmentSha256": "3f4ed4e91abd53194f954031ce69970437cdd96ddb6b3ebbb62df39934161779"
           },
           {
             "field": "closedEnvelope.widthMm",
@@ -124,14 +210,6 @@
             "unit": "mm",
             "label": "- Dimensions (H x W x D)",
             "quote": "- Dimensions (H x W x D): 84.5 cm x 59.8 cm x 59.0 cm (63.3 cm including door handle)",
-            "page": 2,
-            "bbox": [
-              502,
-              570,
-              897,
-              599
-            ],
-            "fragmentSha256": "3f4ed4e91abd53194f954031ce69970437cdd96ddb6b3ebbb62df39934161779",
             "semanticBasis": "explicit_axis_sequence",
             "axisOrder": [
               "height",
@@ -148,7 +226,15 @@
               845,
               598,
               590
-            ]
+            ],
+            "page": 2,
+            "bbox": [
+              502,
+              570,
+              897,
+              599
+            ],
+            "fragmentSha256": "3f4ed4e91abd53194f954031ce69970437cdd96ddb6b3ebbb62df39934161779"
           }
         ],
         "derivedArtifact": {
@@ -220,13 +306,234 @@
       "model": "DVH5-08W",
       "category": "dryer",
       "requestedUrl": "https://www.lg.com/content/dam/channel/wcms/au/images/clothes-dryers/dvh5/DVH5_10G_SpecSheet_230927_v1.pdf",
-      "outcome": "quarantined",
+      "requestedUrls": [
+        "https://www.lg.com/content/dam/channel/wcms/au/images/clothes-dryers/dvh5/DVH5_10G_SpecSheet_230927_v1.pdf",
+        "https://www.lg.com/au/washer-dryers/dryers/dvh5-08w/"
+      ],
+      "outcome": "accepted",
       "acquisition": "passed",
       "mineru": "passed",
-      "identity": "not_accepted",
-      "claims": [],
-      "receipt": "not_accepted",
-      "source": null,
+      "identity": "exact",
+      "claims": [
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 690
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 600
+        },
+        {
+          "field": "operation.doorOpenDepthMm",
+          "value": 1115
+        }
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 690
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": 1115,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": "front_loader",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh5-08w/",
+            "contentSha256": "6d389a5e41f1269abfaa9dd5b7803f348cee6665d7092f4a5ab9944595bed53e",
+            "receiptBindingSha256": "744a2655f7cd39d56cd259e7020af3a736af803c887ad417ea6423c683205cf2",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh5-08w/",
+            "contentSha256": "6d389a5e41f1269abfaa9dd5b7803f348cee6665d7092f4a5ab9944595bed53e",
+            "receiptBindingSha256": "744a2655f7cd39d56cd259e7020af3a736af803c887ad417ea6423c683205cf2",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh5-08w/",
+            "contentSha256": "6d389a5e41f1269abfaa9dd5b7803f348cee6665d7092f4a5ab9944595bed53e",
+            "receiptBindingSha256": "744a2655f7cd39d56cd259e7020af3a736af803c887ad417ea6423c683205cf2",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "operation.doorOpenDepthMm": {
+            "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh5-08w/",
+            "contentSha256": "6d389a5e41f1269abfaa9dd5b7803f348cee6665d7092f4a5ab9944595bed53e",
+            "receiptBindingSha256": "744a2655f7cd39d56cd259e7020af3a736af803c887ad417ea6423c683205cf2",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "6d389a5e41f1269abfaa9dd5b7803f348cee6665d7092f4a5ab9944595bed53e"
+        ]
+      },
+      "artifactType": "official_html_fallback",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_product_page",
+        "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh5-08w/",
+        "finalUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh5-08w/",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T00:00:00.000Z",
+        "contentSha256": "6d389a5e41f1269abfaa9dd5b7803f348cee6665d7092f4a5ab9944595bed53e",
+        "objectPath": "evidence/web/sha256/6d/38/6d389a5e41f1269abfaa9dd5b7803f348cee6665d7092f4a5ab9944595bed53e.html",
+        "contentType": "text/html",
+        "byteSize": 3028014,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "LG",
+          "model": "DVH5-08W",
+          "outcome": "exact"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 690,
+            "unit": "mm",
+            "label": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm)",
+            "quote": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm) 600 x 850 x 690",
+            "semanticBasis": "explicit_axis_sequence",
+            "axisOrder": [
+              "width",
+              "height",
+              "depth"
+            ],
+            "sourceUnit": "mm",
+            "sourceValues": [
+              600,
+              850,
+              690
+            ],
+            "sourceValuesMm": [
+              600,
+              850,
+              690
+            ]
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": 850,
+            "unit": "mm",
+            "label": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm)",
+            "quote": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm) 600 x 850 x 690",
+            "semanticBasis": "explicit_axis_sequence",
+            "axisOrder": [
+              "width",
+              "height",
+              "depth"
+            ],
+            "sourceUnit": "mm",
+            "sourceValues": [
+              600,
+              850,
+              690
+            ],
+            "sourceValuesMm": [
+              600,
+              850,
+              690
+            ]
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 600,
+            "unit": "mm",
+            "label": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm)",
+            "quote": "DIMENSIONS & WEIGHTS - Product Dimensions (WxHxD mm) 600 x 850 x 690",
+            "semanticBasis": "explicit_axis_sequence",
+            "axisOrder": [
+              "width",
+              "height",
+              "depth"
+            ],
+            "sourceUnit": "mm",
+            "sourceValues": [
+              600,
+              850,
+              690
+            ],
+            "sourceValuesMm": [
+              600,
+              850,
+              690
+            ]
+          },
+          {
+            "field": "operation.doorOpenDepthMm",
+            "value": 1115,
+            "unit": "mm",
+            "label": "Product Depth with door open 90˚ (mm)",
+            "quote": "Product Depth with door open 90˚ (mm) 1115"
+          }
+        ],
+        "identitySignals": [
+          {
+            "type": "canonical_url",
+            "value": "https://www.lg.com/au/washer-dryers/dryers/dvh5-08w/"
+          },
+          {
+            "type": "document_title",
+            "value": "8kg Series 5 Heat Pump Dryer - 9 Star - DVH5-08W | LG Australia"
+          },
+          {
+            "type": "product_model",
+            "value": "DVH5-08W.BBWREAP.EHAP.AU.C"
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 1,
+          "policyVersion": "2026-07-11.5",
+          "manufacturerPolicyVersion": "2026-07-11.2",
+          "verifiedAt": "2026-07-12T00:00:00.000Z",
+          "bindingSha256": "744a2655f7cd39d56cd259e7020af3a736af803c887ad417ea6423c683205cf2"
+        }
+      },
       "diagnosticArtifacts": {
         "pdfObjectPath": "evidence/web/sha256/d1/b0/d1b06298dcc262b6b6019f04076a88a0cc96529e7ff60776e3194456a500f39a.pdf",
         "derivedArtifact": {
@@ -259,13 +566,170 @@
       "model": "DV90BB9440GH",
       "category": "dryer",
       "requestedUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GH&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
-      "outcome": "quarantined",
+      "requestedUrls": [
+        "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GH&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
+        "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-bespoke-dryer-ai-dry-9kg-white-dv90bb9440ghsa/"
+      ],
+      "outcome": "accepted",
       "acquisition": "passed",
       "mineru": "passed",
-      "identity": "not_accepted",
-      "claims": [],
-      "receipt": "not_accepted",
-      "source": null,
+      "identity": "exact",
+      "claims": [
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 650
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 600
+        }
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 650
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": "front_loader",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-bespoke-dryer-ai-dry-9kg-white-dv90bb9440ghsa/",
+            "contentSha256": "dae8defd8742852aa0c0e240df6249076a26bf1954b70dd7e95d43296cd28952",
+            "receiptBindingSha256": "fe8451e3399e86a3b4360e1583884be00cb3df7184e11138638a54a2a0a58795",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-bespoke-dryer-ai-dry-9kg-white-dv90bb9440ghsa/",
+            "contentSha256": "dae8defd8742852aa0c0e240df6249076a26bf1954b70dd7e95d43296cd28952",
+            "receiptBindingSha256": "fe8451e3399e86a3b4360e1583884be00cb3df7184e11138638a54a2a0a58795",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-bespoke-dryer-ai-dry-9kg-white-dv90bb9440ghsa/",
+            "contentSha256": "dae8defd8742852aa0c0e240df6249076a26bf1954b70dd7e95d43296cd28952",
+            "receiptBindingSha256": "fe8451e3399e86a3b4360e1583884be00cb3df7184e11138638a54a2a0a58795",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "dae8defd8742852aa0c0e240df6249076a26bf1954b70dd7e95d43296cd28952"
+        ]
+      },
+      "artifactType": "official_html_fallback",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_product_page",
+        "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-bespoke-dryer-ai-dry-9kg-white-dv90bb9440ghsa/",
+        "finalUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-bespoke-dryer-ai-dry-9kg-white-dv90bb9440ghsa/",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T00:00:00.000Z",
+        "contentSha256": "dae8defd8742852aa0c0e240df6249076a26bf1954b70dd7e95d43296cd28952",
+        "objectPath": "evidence/web/sha256/da/e8/dae8defd8742852aa0c0e240df6249076a26bf1954b70dd7e95d43296cd28952.html",
+        "contentType": "text/html",
+        "byteSize": 852206,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "Samsung",
+          "model": "DV90BB9440GH",
+          "outcome": "exact"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 650,
+            "unit": "mm",
+            "label": "Depth",
+            "quote": "Depth 650 mm"
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": 850,
+            "unit": "mm",
+            "label": "Height",
+            "quote": "Height 850 mm"
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 600,
+            "unit": "mm",
+            "label": "Width",
+            "quote": "Width 600 mm"
+          }
+        ],
+        "identitySignals": [
+          {
+            "type": "canonical_url",
+            "value": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-bespoke-dryer-ai-dry-9kg-white-dv90bb9440ghsa/"
+          },
+          {
+            "type": "document_title",
+            "value": "9kg BESPOKE Smart Heat Pump Dryer - DV90BB9440GH | Samsung AU"
+          },
+          {
+            "type": "canonical_regional_sku",
+            "value": "DV90BB9440GHSA"
+          },
+          {
+            "type": "product_model",
+            "value": "dv90bb9440gh"
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 1,
+          "policyVersion": "2026-07-11.5",
+          "manufacturerPolicyVersion": "2026-07-11.2",
+          "verifiedAt": "2026-07-12T00:00:00.000Z",
+          "bindingSha256": "fe8451e3399e86a3b4360e1583884be00cb3df7184e11138638a54a2a0a58795"
+        }
+      },
       "diagnosticArtifacts": {
         "pdfObjectPath": "evidence/web/sha256/d5/68/d5682f81974da77f17d2db44b6192ec3b897c9f889a7ac7ef0baa18747c23741.pdf",
         "derivedArtifact": {
@@ -298,6 +762,9 @@
       "model": "RF605QZUVB1",
       "category": "fridge",
       "requestedUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+      "requestedUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf"
+      ],
       "outcome": "accepted",
       "acquisition": "passed",
       "mineru": "passed",
@@ -320,6 +787,80 @@
         }
       ],
       "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 905,
+            "heightMm": {
+              "minimumMm": 1790,
+              "maximumMm": 1790
+            },
+            "depthMm": 688
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": "upright",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+            "contentSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+            "receiptBindingSha256": "716c5e7f1e537f0a31e37db68fb2ed61a751d319b0edfca46151b8a43b791afc",
+            "page": 1,
+            "fragmentSha256": "6f7674bf9c18d9904dcbe748a4b48a866982d3d891b2264a95304bde14857ec8"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+            "contentSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+            "receiptBindingSha256": "716c5e7f1e537f0a31e37db68fb2ed61a751d319b0edfca46151b8a43b791afc",
+            "page": 1,
+            "fragmentSha256": "4c79edc4764cca217bd4b877329b706715caae6ce192979f4b900de11d94d085"
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+            "contentSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+            "receiptBindingSha256": "716c5e7f1e537f0a31e37db68fb2ed61a751d319b0edfca46151b8a43b791afc",
+            "page": 1,
+            "fragmentSha256": "2856cf94c5af837d5a93163b0235b02976ed3ee909e2366140d70c956d1cc3e8"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73"
+        ]
+      },
+      "artifactType": "pdf",
       "source": {
         "authority": "manufacturer",
         "sourceType": "official_exact_model_pdf",
@@ -456,23 +997,320 @@
       "model": "WHE5264SC",
       "category": "fridge",
       "requestedUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
-      "outcome": "quarantined",
-      "acquisition": "failed",
-      "mineru": "not_run_or_failed",
-      "identity": "not_accepted",
-      "claims": [],
-      "receipt": "not_accepted",
-      "source": null,
-      "diagnosticArtifacts": {
-        "pdfObjectPath": null,
-        "derivedArtifact": null
-      },
-      "failures": [
+      "requestedUrls": [
+        "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse"
+      ],
+      "outcome": "accepted",
+      "acquisition": "passed",
+      "mineru": "passed",
+      "identity": "exact",
+      "claims": [
         {
-          "candidateUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
-          "reason": "The operation was aborted due to timeout"
+          "field": "closedEnvelope.depthMm",
+          "value": 769,
+          "page": 4
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 1725,
+          "page": 4
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 796,
+          "page": 4
+        },
+        {
+          "field": "installation.topMm",
+          "value": 30,
+          "page": 4
+        },
+        {
+          "field": "operation.doorOpenDepthMm",
+          "value": 1057,
+          "page": 4
         }
-      ]
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 796,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 769
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": 30,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": 1057,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": "upright",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
+            "contentSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
+            "receiptBindingSha256": "0480ef4356e1dd605b01c4f6d5d922ecba0e498d262791b4559e2e9afae278cc",
+            "page": 4,
+            "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
+            "contentSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
+            "receiptBindingSha256": "0480ef4356e1dd605b01c4f6d5d922ecba0e498d262791b4559e2e9afae278cc",
+            "page": 4,
+            "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19"
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
+            "contentSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
+            "receiptBindingSha256": "0480ef4356e1dd605b01c4f6d5d922ecba0e498d262791b4559e2e9afae278cc",
+            "page": 4,
+            "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19"
+          },
+          "installation.topMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
+            "contentSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
+            "receiptBindingSha256": "0480ef4356e1dd605b01c4f6d5d922ecba0e498d262791b4559e2e9afae278cc",
+            "page": 4,
+            "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19"
+          },
+          "operation.doorOpenDepthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
+            "contentSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
+            "receiptBindingSha256": "0480ef4356e1dd605b01c4f6d5d922ecba0e498d262791b4559e2e9afae278cc",
+            "page": 4,
+            "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205"
+        ]
+      },
+      "artifactType": "pdf",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_pdf",
+        "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
+        "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T00:00:00.000Z",
+        "contentSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
+        "objectPath": "evidence/web/sha256/74/2e/742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205.pdf",
+        "contentType": "application/pdf",
+        "byteSize": 1129846,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "Westinghouse",
+          "model": "WHE5264SC",
+          "outcome": "exact"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 769,
+            "unit": "mm",
+            "label": "Total depth (mm)",
+            "quote": "Total depth (mm) 769",
+            "page": 4,
+            "bbox": [
+              516,
+              229,
+              941,
+              872
+            ],
+            "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": 1725,
+            "unit": "mm",
+            "label": "Total height (mm)",
+            "quote": "Total height (mm) 1725",
+            "page": 4,
+            "bbox": [
+              516,
+              229,
+              941,
+              872
+            ],
+            "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 796,
+            "unit": "mm",
+            "label": "Total width (mm)",
+            "quote": "Total width (mm) 796",
+            "page": 4,
+            "bbox": [
+              516,
+              229,
+              941,
+              872
+            ],
+            "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "installation.topMm",
+            "value": 30,
+            "unit": "mm",
+            "label": "Air space above cabinet (mm)",
+            "quote": "Air space above cabinet (mm) 30",
+            "page": 4,
+            "bbox": [
+              516,
+              229,
+              941,
+              872
+            ],
+            "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "operation.doorOpenDepthMm",
+            "value": 1057,
+            "unit": "mm",
+            "label": "Depth door open 90degree (mm)",
+            "quote": "Depth door open 90degree (mm) 1057",
+            "page": 4,
+            "bbox": [
+              516,
+              229,
+              941,
+              872
+            ],
+            "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19",
+            "semanticBasis": "explicit_label_value"
+          }
+        ],
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
+          "contentSha256": "9b5677577cc32c9e41a398efadea28e464db6fc6c7854d1b2ab9dfa703eda451",
+          "objectPath": "evidence/derived/mineru-json/sha256/9b/56/9b5677577cc32c9e41a398efadea28e464db6fc6c7854d1b2ab9dfa703eda451.json",
+          "byteSize": 62150,
+          "pageCount": 9
+        },
+        "identitySignals": [
+          {
+            "type": "mineru_page_header_model",
+            "value": "WHE5264SC:page:1:11c4c3028890b484c8d61850cf92e570cc3178812807c883086fd95b165af508"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WHE5264SC:page:2:16329a7b16a1f7daec8bdd1264585266165d910cf556cd325abc2754f547d595"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WHE5264SC:page:3:fc08214b474dd8b7d4dd9a54ccf1a21f368a7ade703ae3732d96e598ff2d3155"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WHE5264SC:page:4:cee8e27fcc466d6ad8ca47c578339b14b9c3c02eff07cf318a6adf520cab0053"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WHE5264SC:page:5:c4d307f6f2680c47ff8d7287bb987f77f5d8c71785e790daa23f66658a4dc74f"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WHE5264SC:page:6:2927917464a51d90087a92b2ed85763c11c114a91a0f8a7ef3677052e896c619"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WHE5264SC:page:7:fb215fda5d987b62c0b62d30d1596db8e7383ace5253fb5f448dc2103d2f3326"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WHE5264SC:page:8:54e35f024f9d0e6c224407d340ceca8b8422033a9b0db3199c7b8f8c8c030845"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WHE5264SC:page:9:4d8d98e0b77bd50053f72a66555434f31113c8687daf4908561d6dfa09dcf58f"
+          },
+          {
+            "type": "mineru_repeated_page_header_model",
+            "value": "WHE5264SC:document:repeated-page-header"
+          },
+          {
+            "type": "mineru_table_model",
+            "value": "WHE5264SC:page:8:80d2d78ca73ab0ce6c52c857ae9977154efbf12c83fff3d93fcdba90d8b43e32"
+          },
+          {
+            "type": "mineru_table_model",
+            "value": "WHE5264SC:page:8:8e46acc68198b8f58e8b91c0c64988eda94d780b2de344e98ff0e63a20d144de"
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 1,
+          "policyVersion": "2026-07-11.5",
+          "manufacturerPolicyVersion": "2026-07-11.2",
+          "verifiedAt": "2026-07-12T00:00:00.000Z",
+          "bindingSha256": "0480ef4356e1dd605b01c4f6d5d922ecba0e498d262791b4559e2e9afae278cc"
+        }
+      },
+      "diagnosticArtifacts": {
+        "pdfObjectPath": "evidence/web/sha256/74/2e/742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205.pdf",
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
+          "contentSha256": "9b5677577cc32c9e41a398efadea28e464db6fc6c7854d1b2ab9dfa703eda451",
+          "objectPath": "evidence/derived/mineru-json/sha256/9b/56/9b5677577cc32c9e41a398efadea28e464db6fc6c7854d1b2ab9dfa703eda451.json",
+          "byteSize": 62150,
+          "pageCount": 9
+        }
+      },
+      "failures": []
     },
     {
       "id": "electrolux-eqe6160ba",
@@ -480,23 +1318,312 @@
       "model": "EQE6160BA",
       "category": "fridge",
       "requestedUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
-      "outcome": "quarantined",
-      "acquisition": "failed",
-      "mineru": "not_run_or_failed",
-      "identity": "not_accepted",
-      "claims": [],
-      "receipt": "not_accepted",
-      "source": null,
-      "diagnosticArtifacts": {
-        "pdfObjectPath": null,
-        "derivedArtifact": null
-      },
-      "failures": [
+      "requestedUrls": [
+        "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux"
+      ],
+      "outcome": "accepted",
+      "acquisition": "passed",
+      "mineru": "passed",
+      "identity": "exact",
+      "claims": [
         {
-          "candidateUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
-          "reason": "The operation was aborted due to timeout"
+          "field": "closedEnvelope.depthMm",
+          "value": 749,
+          "page": 4
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 1782,
+          "page": 4
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 913,
+          "page": 4
+        },
+        {
+          "field": "installation.topMm",
+          "value": 25,
+          "page": 4
+        },
+        {
+          "field": "operation.doorOpenDepthMm",
+          "value": 1189,
+          "page": 4
         }
-      ]
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 913,
+            "heightMm": {
+              "minimumMm": 1782,
+              "maximumMm": 1782
+            },
+            "depthMm": 749
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": 25,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": 1189,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": "upright",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
+            "contentSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
+            "receiptBindingSha256": "8595c71654f2bae33715528125e4aa7b87c8842cf4695664cc00092e833749e8",
+            "page": 4,
+            "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
+            "contentSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
+            "receiptBindingSha256": "8595c71654f2bae33715528125e4aa7b87c8842cf4695664cc00092e833749e8",
+            "page": 4,
+            "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3"
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
+            "contentSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
+            "receiptBindingSha256": "8595c71654f2bae33715528125e4aa7b87c8842cf4695664cc00092e833749e8",
+            "page": 4,
+            "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3"
+          },
+          "installation.topMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
+            "contentSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
+            "receiptBindingSha256": "8595c71654f2bae33715528125e4aa7b87c8842cf4695664cc00092e833749e8",
+            "page": 4,
+            "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3"
+          },
+          "operation.doorOpenDepthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
+            "contentSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
+            "receiptBindingSha256": "8595c71654f2bae33715528125e4aa7b87c8842cf4695664cc00092e833749e8",
+            "page": 4,
+            "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b"
+        ]
+      },
+      "artifactType": "pdf",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_pdf",
+        "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
+        "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T00:00:00.000Z",
+        "contentSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
+        "objectPath": "evidence/web/sha256/7f/64/7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b.pdf",
+        "contentType": "application/pdf",
+        "byteSize": 843286,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "Electrolux",
+          "model": "EQE6160BA",
+          "outcome": "exact"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 749,
+            "unit": "mm",
+            "label": "Total depth (mm)",
+            "quote": "Total depth (mm) 749",
+            "page": 4,
+            "bbox": [
+              516,
+              229,
+              941,
+              887
+            ],
+            "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": 1782,
+            "unit": "mm",
+            "label": "Total height (mm)",
+            "quote": "Total height (mm) 1782",
+            "page": 4,
+            "bbox": [
+              516,
+              229,
+              941,
+              887
+            ],
+            "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 913,
+            "unit": "mm",
+            "label": "Total width (mm)",
+            "quote": "Total width (mm) 913",
+            "page": 4,
+            "bbox": [
+              516,
+              229,
+              941,
+              887
+            ],
+            "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "installation.topMm",
+            "value": 25,
+            "unit": "mm",
+            "label": "Air space above cabinet (mm)",
+            "quote": "Air space above cabinet (mm) 25",
+            "page": 4,
+            "bbox": [
+              516,
+              229,
+              941,
+              887
+            ],
+            "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "operation.doorOpenDepthMm",
+            "value": 1189,
+            "unit": "mm",
+            "label": "Depth door open 90degree (mm)",
+            "quote": "Depth door open 90degree (mm) 1189",
+            "page": 4,
+            "bbox": [
+              516,
+              229,
+              941,
+              887
+            ],
+            "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3",
+            "semanticBasis": "explicit_label_value"
+          }
+        ],
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
+          "contentSha256": "4d545481148f7a4312ae697bf3868c7b9751fdf538a5b810764523ae008d7300",
+          "objectPath": "evidence/derived/mineru-json/sha256/4d/54/4d545481148f7a4312ae697bf3868c7b9751fdf538a5b810764523ae008d7300.json",
+          "byteSize": 62059,
+          "pageCount": 9
+        },
+        "identitySignals": [
+          {
+            "type": "mineru_page_header_model",
+            "value": "EQE6160BA:page:1:e5ed2077c4635297f95550e7b4ea5fa12ee7b2ff6473ae2eb335e63d6af64b0c"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "EQE6160BA:page:2:1ff200c0b4cbaba39aff8451ab6bdeb327b3987b33eefce0430beda10a68c554"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "EQE6160BA:page:3:d60b24ce3b34b1ec71e111d47ae4569bc8830419283dbe7a89389dda79de53bf"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "EQE6160BA:page:4:1cffd2bfc80cadd6a559299bc698ca62bcce946ab662ce72b6cb69bc9d76f177"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "EQE6160BA:page:5:f433026a9515ed5b4b9120584013fcf3734cdc61f2b9d919a706ea79498660d1"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "EQE6160BA:page:6:0bf91a72c873577c34e312e6e80474c21dac4f8e437018759179ce97785ec516"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "EQE6160BA:page:7:4cdbd147ec42ab45e7ae8364ac493cb70c6310486dd1b742dfb13021d6b6dedd"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "EQE6160BA:page:8:044e2a1a500cbeaaed0168e5f35c7ff3ae8d3c05755a3324610ceb05fa943b90"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "EQE6160BA:page:9:99246f60353c87be1fbd82a78024bf1553541965926cd2669c452ece901dfd77"
+          },
+          {
+            "type": "mineru_repeated_page_header_model",
+            "value": "EQE6160BA:document:repeated-page-header"
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 1,
+          "policyVersion": "2026-07-11.5",
+          "manufacturerPolicyVersion": "2026-07-11.2",
+          "verifiedAt": "2026-07-12T00:00:00.000Z",
+          "bindingSha256": "8595c71654f2bae33715528125e4aa7b87c8842cf4695664cc00092e833749e8"
+        }
+      },
+      "diagnosticArtifacts": {
+        "pdfObjectPath": "evidence/web/sha256/7f/64/7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b.pdf",
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
+          "contentSha256": "4d545481148f7a4312ae697bf3868c7b9751fdf538a5b810764523ae008d7300",
+          "objectPath": "evidence/derived/mineru-json/sha256/4d/54/4d545481148f7a4312ae697bf3868c7b9751fdf538a5b810764523ae008d7300.json",
+          "byteSize": 62059,
+          "pageCount": 9
+        }
+      },
+      "failures": []
     },
     {
       "id": "haier-hdw15f4b1",
@@ -504,6 +1631,9 @@
       "model": "HDW15F4B1",
       "category": "dishwasher",
       "requestedUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf",
+      "requestedUrls": [
+        "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf"
+      ],
       "outcome": "accepted",
       "acquisition": "passed",
       "mineru": "passed",
@@ -529,6 +1659,81 @@
         }
       ],
       "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 597,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 895
+            },
+            "depthMm": 599
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": "front_loader",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf",
+            "contentSha256": "658a7534c9bc1e033d5e635fc36185deb41bca28ac6ede41e31064c882bab6c5",
+            "receiptBindingSha256": "2afa46c50f8ec657f0e2c47e816634b7891c90865d9f7d77d836fbe18a1603b0",
+            "page": 1,
+            "fragmentSha256": "6445076d3484b82d092ef90e04ff80ff57cf46f0873fd3efc216aaaf29ac51b7"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf",
+            "contentSha256": "658a7534c9bc1e033d5e635fc36185deb41bca28ac6ede41e31064c882bab6c5",
+            "receiptBindingSha256": "2afa46c50f8ec657f0e2c47e816634b7891c90865d9f7d77d836fbe18a1603b0",
+            "page": 1,
+            "fragmentSha256": "2a887c8aededcb2204dec7a760d8284b94f0eb25dc87c6eafc230b4739e6462f"
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf",
+            "contentSha256": "658a7534c9bc1e033d5e635fc36185deb41bca28ac6ede41e31064c882bab6c5",
+            "receiptBindingSha256": "2afa46c50f8ec657f0e2c47e816634b7891c90865d9f7d77d836fbe18a1603b0",
+            "page": 1,
+            "fragmentSha256": "4cc40dd67c722ddc079ff0cf92741c71af90a4468a220bdaa9e7a800228f7946"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "658a7534c9bc1e033d5e635fc36185deb41bca28ac6ede41e31064c882bab6c5"
+        ]
+      },
+      "artifactType": "pdf",
       "source": {
         "authority": "manufacturer",
         "sourceType": "official_exact_model_pdf",
@@ -677,6 +1882,9 @@
       "model": "HRBC137",
       "category": "fridge",
       "requestedUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
+      "requestedUrls": [
+        "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk"
+      ],
       "outcome": "accepted",
       "acquisition": "passed",
       "mineru": "passed",
@@ -696,9 +1904,131 @@
           "field": "closedEnvelope.widthMm",
           "value": 595,
           "page": 1
+        },
+        {
+          "field": "installation.leftMm",
+          "value": 35,
+          "page": 1
+        },
+        {
+          "field": "installation.rearMm",
+          "value": 35,
+          "page": 1
+        },
+        {
+          "field": "installation.rightMm",
+          "value": 35,
+          "page": 1
+        },
+        {
+          "field": "installation.topMm",
+          "value": 10,
+          "page": 1
         }
       ],
       "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 595,
+            "heightMm": {
+              "minimumMm": 819,
+              "maximumMm": 819
+            },
+            "depthMm": 575
+          },
+          "installation": {
+            "leftMm": 35,
+            "rightMm": 35,
+            "topMm": 10,
+            "rearMm": 35,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": "upright",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
+            "contentSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
+            "receiptBindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010",
+            "page": 1,
+            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
+            "contentSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
+            "receiptBindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010",
+            "page": 1,
+            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
+            "contentSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
+            "receiptBindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010",
+            "page": 1,
+            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
+          },
+          "installation.leftMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
+            "contentSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
+            "receiptBindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010",
+            "page": 1,
+            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
+          },
+          "installation.rearMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
+            "contentSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
+            "receiptBindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010",
+            "page": 1,
+            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
+          },
+          "installation.rightMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
+            "contentSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
+            "receiptBindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010",
+            "page": 1,
+            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
+          },
+          "installation.topMm": {
+            "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
+            "contentSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
+            "receiptBindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010",
+            "page": 1,
+            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": {
+          "widthMm": 665,
+          "heightMm": 829,
+          "depthMm": 610
+        },
+        "missingForVerifiedFit": [
+          "operation.doorOpenDepthMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "CONDITIONAL_FIT",
+        "activeSourceHashes": [
+          "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1"
+        ]
+      },
+      "artifactType": "pdf",
       "source": {
         "authority": "manufacturer",
         "sourceType": "official_exact_model_pdf",
@@ -723,14 +2053,6 @@
             "unit": "mm",
             "label": "Dimensions (Net) (W X H X D)",
             "quote": "Dimensions (Net) (W X H X D) 595×819x575 mm",
-            "page": 1,
-            "bbox": [
-              80,
-              294,
-              912,
-              928
-            ],
-            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8",
             "semanticBasis": "explicit_axis_sequence",
             "axisOrder": [
               "width",
@@ -747,7 +2069,15 @@
               595,
               819,
               575
-            ]
+            ],
+            "page": 1,
+            "bbox": [
+              80,
+              294,
+              912,
+              928
+            ],
+            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
           },
           {
             "field": "closedEnvelope.heightMm",
@@ -755,14 +2085,6 @@
             "unit": "mm",
             "label": "Dimensions (Net) (W X H X D)",
             "quote": "Dimensions (Net) (W X H X D) 595×819x575 mm",
-            "page": 1,
-            "bbox": [
-              80,
-              294,
-              912,
-              928
-            ],
-            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8",
             "semanticBasis": "explicit_axis_sequence",
             "axisOrder": [
               "width",
@@ -779,7 +2101,15 @@
               595,
               819,
               575
-            ]
+            ],
+            "page": 1,
+            "bbox": [
+              80,
+              294,
+              912,
+              928
+            ],
+            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
           },
           {
             "field": "closedEnvelope.widthMm",
@@ -787,14 +2117,6 @@
             "unit": "mm",
             "label": "Dimensions (Net) (W X H X D)",
             "quote": "Dimensions (Net) (W X H X D) 595×819x575 mm",
-            "page": 1,
-            "bbox": [
-              80,
-              294,
-              912,
-              928
-            ],
-            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8",
             "semanticBasis": "explicit_axis_sequence",
             "axisOrder": [
               "width",
@@ -811,6 +2133,142 @@
               595,
               819,
               575
+            ],
+            "page": 1,
+            "bbox": [
+              80,
+              294,
+              912,
+              928
+            ],
+            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
+          },
+          {
+            "field": "installation.leftMm",
+            "value": 35,
+            "unit": "mm",
+            "label": "Cabinet clearance [Sides / Back / Top]",
+            "quote": "Cabinet clearance [Sides / Back / Top] 35 /35 / 10 mm",
+            "page": 1,
+            "bbox": [
+              80,
+              294,
+              912,
+              928
+            ],
+            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8",
+            "semanticBasis": "explicit_named_sequence",
+            "axisOrder": [
+              "sides",
+              "rear",
+              "top"
+            ],
+            "sourceUnit": "mm",
+            "sourceValues": [
+              35,
+              35,
+              10
+            ],
+            "sourceValuesMm": [
+              35,
+              35,
+              10
+            ]
+          },
+          {
+            "field": "installation.rearMm",
+            "value": 35,
+            "unit": "mm",
+            "label": "Cabinet clearance [Sides / Back / Top]",
+            "quote": "Cabinet clearance [Sides / Back / Top] 35 /35 / 10 mm",
+            "page": 1,
+            "bbox": [
+              80,
+              294,
+              912,
+              928
+            ],
+            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8",
+            "semanticBasis": "explicit_named_sequence",
+            "axisOrder": [
+              "sides",
+              "rear",
+              "top"
+            ],
+            "sourceUnit": "mm",
+            "sourceValues": [
+              35,
+              35,
+              10
+            ],
+            "sourceValuesMm": [
+              35,
+              35,
+              10
+            ]
+          },
+          {
+            "field": "installation.rightMm",
+            "value": 35,
+            "unit": "mm",
+            "label": "Cabinet clearance [Sides / Back / Top]",
+            "quote": "Cabinet clearance [Sides / Back / Top] 35 /35 / 10 mm",
+            "page": 1,
+            "bbox": [
+              80,
+              294,
+              912,
+              928
+            ],
+            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8",
+            "semanticBasis": "explicit_named_sequence",
+            "axisOrder": [
+              "sides",
+              "rear",
+              "top"
+            ],
+            "sourceUnit": "mm",
+            "sourceValues": [
+              35,
+              35,
+              10
+            ],
+            "sourceValuesMm": [
+              35,
+              35,
+              10
+            ]
+          },
+          {
+            "field": "installation.topMm",
+            "value": 10,
+            "unit": "mm",
+            "label": "Cabinet clearance [Sides / Back / Top]",
+            "quote": "Cabinet clearance [Sides / Back / Top] 35 /35 / 10 mm",
+            "page": 1,
+            "bbox": [
+              80,
+              294,
+              912,
+              928
+            ],
+            "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8",
+            "semanticBasis": "explicit_named_sequence",
+            "axisOrder": [
+              "sides",
+              "rear",
+              "top"
+            ],
+            "sourceUnit": "mm",
+            "sourceValues": [
+              35,
+              35,
+              10
+            ],
+            "sourceValuesMm": [
+              35,
+              35,
+              10
             ]
           }
         ],
@@ -845,7 +2303,7 @@
           "policyVersion": "2026-07-11.5",
           "manufacturerPolicyVersion": "2026-07-11.2",
           "verifiedAt": "2026-07-12T00:00:00.000Z",
-          "bindingSha256": "7f1962ab6cd2194019e19e7c7749aa9dda803bec6a1fc6c1f10cb5d8b3713b0a"
+          "bindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010"
         }
       },
       "diagnosticArtifacts": {
@@ -875,6 +2333,9 @@
       "model": "DWAU615DB3",
       "category": "dishwasher",
       "requestedUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU615DB3.pdf",
+      "requestedUrls": [
+        "https://sys.smeg.com.au/Product/Techspecs/DWAU615DB3.pdf"
+      ],
       "outcome": "accepted",
       "acquisition": "passed",
       "mineru": "passed",
@@ -897,6 +2358,81 @@
         }
       ],
       "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 818,
+              "maximumMm": 818
+            },
+            "depthMm": 570
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": "front_loader",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU615DB3.pdf",
+            "contentSha256": "25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43",
+            "receiptBindingSha256": "eab811715c7e1a0e4ad224050f4fe7191b26ab7fc9bb429405cefcf6dca1d02c",
+            "page": 1,
+            "fragmentSha256": "7868c9ee239bed4095d384bc8ad32b525eec3937609122412a513e2067152126"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU615DB3.pdf",
+            "contentSha256": "25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43",
+            "receiptBindingSha256": "eab811715c7e1a0e4ad224050f4fe7191b26ab7fc9bb429405cefcf6dca1d02c",
+            "page": 1,
+            "fragmentSha256": "7868c9ee239bed4095d384bc8ad32b525eec3937609122412a513e2067152126"
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU615DB3.pdf",
+            "contentSha256": "25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43",
+            "receiptBindingSha256": "eab811715c7e1a0e4ad224050f4fe7191b26ab7fc9bb429405cefcf6dca1d02c",
+            "page": 1,
+            "fragmentSha256": "7868c9ee239bed4095d384bc8ad32b525eec3937609122412a513e2067152126"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43"
+        ]
+      },
+      "artifactType": "pdf",
       "source": {
         "authority": "manufacturer",
         "sourceType": "official_exact_model_pdf",
@@ -921,14 +2457,6 @@
             "unit": "mm",
             "label": "Dimensions (W x H x D)",
             "quote": "Dimensions 598mmW x 818mmH x 570mmD Finish Black Total functions 11 + 4 Functions Capacity 15 Place settings Warranty Five years parts and labour",
-            "page": 1,
-            "bbox": [
-              47,
-              502,
-              420,
-              594
-            ],
-            "fragmentSha256": "7868c9ee239bed4095d384bc8ad32b525eec3937609122412a513e2067152126",
             "semanticBasis": "explicit_axis_sequence",
             "axisOrder": [
               "width",
@@ -945,7 +2473,15 @@
               598,
               818,
               570
-            ]
+            ],
+            "page": 1,
+            "bbox": [
+              47,
+              502,
+              420,
+              594
+            ],
+            "fragmentSha256": "7868c9ee239bed4095d384bc8ad32b525eec3937609122412a513e2067152126"
           },
           {
             "field": "closedEnvelope.heightMm",
@@ -953,14 +2489,6 @@
             "unit": "mm",
             "label": "Dimensions (W x H x D)",
             "quote": "Dimensions 598mmW x 818mmH x 570mmD Finish Black Total functions 11 + 4 Functions Capacity 15 Place settings Warranty Five years parts and labour",
-            "page": 1,
-            "bbox": [
-              47,
-              502,
-              420,
-              594
-            ],
-            "fragmentSha256": "7868c9ee239bed4095d384bc8ad32b525eec3937609122412a513e2067152126",
             "semanticBasis": "explicit_axis_sequence",
             "axisOrder": [
               "width",
@@ -977,7 +2505,15 @@
               598,
               818,
               570
-            ]
+            ],
+            "page": 1,
+            "bbox": [
+              47,
+              502,
+              420,
+              594
+            ],
+            "fragmentSha256": "7868c9ee239bed4095d384bc8ad32b525eec3937609122412a513e2067152126"
           },
           {
             "field": "closedEnvelope.widthMm",
@@ -985,14 +2521,6 @@
             "unit": "mm",
             "label": "Dimensions (W x H x D)",
             "quote": "Dimensions 598mmW x 818mmH x 570mmD Finish Black Total functions 11 + 4 Functions Capacity 15 Place settings Warranty Five years parts and labour",
-            "page": 1,
-            "bbox": [
-              47,
-              502,
-              420,
-              594
-            ],
-            "fragmentSha256": "7868c9ee239bed4095d384bc8ad32b525eec3937609122412a513e2067152126",
             "semanticBasis": "explicit_axis_sequence",
             "axisOrder": [
               "width",
@@ -1009,7 +2537,15 @@
               598,
               818,
               570
-            ]
+            ],
+            "page": 1,
+            "bbox": [
+              47,
+              502,
+              420,
+              594
+            ],
+            "fragmentSha256": "7868c9ee239bed4095d384bc8ad32b525eec3937609122412a513e2067152126"
           }
         ],
         "derivedArtifact": {
@@ -1070,6 +2606,265 @@
           "contentSha256": "91eeead91920ee1b4a061d99f3a75d8ad5084fc9bc65ca1337fae1043a48d1f4",
           "objectPath": "evidence/derived/mineru-json/sha256/91/ee/91eeead91920ee1b4a061d99f3a75d8ad5084fc9bc65ca1337fae1043a48d1f4.json",
           "byteSize": 39528,
+          "pageCount": 3
+        }
+      },
+      "failures": []
+    },
+    {
+      "id": "miele-tca220wp",
+      "brand": "Miele",
+      "model": "TCA220WP",
+      "category": "dryer",
+      "requestedUrl": "https://www.miele.com.au/media/ex/au/specsheets/12388960.pdf",
+      "requestedUrls": [
+        "https://www.miele.com.au/media/ex/au/specsheets/12388960.pdf"
+      ],
+      "outcome": "accepted",
+      "acquisition": "passed",
+      "mineru": "passed",
+      "identity": "exact",
+      "claims": [
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 640,
+          "page": 2
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850,
+          "page": 2
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 596,
+          "page": 2
+        },
+        {
+          "field": "operation.doorOpenDepthMm",
+          "value": 1054,
+          "page": 2
+        }
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 596,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 640
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": 1054,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": "front_loader",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12388960.pdf",
+            "contentSha256": "a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06",
+            "receiptBindingSha256": "64a501602a9990c8f653f11d566004d7780c31a596c4e75356dc8bd138e4aa22",
+            "page": 2,
+            "fragmentSha256": "9266d950f2bb4f54c9c60125e73fcd5834067c233b576124dc91f31273fd2ed0"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12388960.pdf",
+            "contentSha256": "a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06",
+            "receiptBindingSha256": "64a501602a9990c8f653f11d566004d7780c31a596c4e75356dc8bd138e4aa22",
+            "page": 2,
+            "fragmentSha256": "9266d950f2bb4f54c9c60125e73fcd5834067c233b576124dc91f31273fd2ed0"
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12388960.pdf",
+            "contentSha256": "a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06",
+            "receiptBindingSha256": "64a501602a9990c8f653f11d566004d7780c31a596c4e75356dc8bd138e4aa22",
+            "page": 2,
+            "fragmentSha256": "9266d950f2bb4f54c9c60125e73fcd5834067c233b576124dc91f31273fd2ed0"
+          },
+          "operation.doorOpenDepthMm": {
+            "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12388960.pdf",
+            "contentSha256": "a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06",
+            "receiptBindingSha256": "64a501602a9990c8f653f11d566004d7780c31a596c4e75356dc8bd138e4aa22",
+            "page": 2,
+            "fragmentSha256": "9266d950f2bb4f54c9c60125e73fcd5834067c233b576124dc91f31273fd2ed0"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06"
+        ]
+      },
+      "artifactType": "pdf",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_pdf",
+        "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12388960.pdf",
+        "finalUrl": "https://www.miele.com.au/media/ex/au/specsheets/12388960.pdf",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T00:00:00.000Z",
+        "contentSha256": "a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06",
+        "objectPath": "evidence/web/sha256/a8/72/a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06.pdf",
+        "contentType": "application/pdf",
+        "byteSize": 208113,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "Miele",
+          "model": "TCA220WP",
+          "outcome": "exact"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 640,
+            "unit": "mm",
+            "label": "Dimensions in mm (depth)",
+            "quote": "Dimensions in mm (depth) 640",
+            "page": 2,
+            "bbox": [
+              391,
+              229,
+              931,
+              609
+            ],
+            "fragmentSha256": "9266d950f2bb4f54c9c60125e73fcd5834067c233b576124dc91f31273fd2ed0",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": 850,
+            "unit": "mm",
+            "label": "Dimensions in mm (height)",
+            "quote": "Dimensions in mm (height) 850",
+            "page": 2,
+            "bbox": [
+              391,
+              229,
+              931,
+              609
+            ],
+            "fragmentSha256": "9266d950f2bb4f54c9c60125e73fcd5834067c233b576124dc91f31273fd2ed0",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 596,
+            "unit": "mm",
+            "label": "Dimensions in mm (width)",
+            "quote": "Dimensions in mm (width) 596",
+            "page": 2,
+            "bbox": [
+              391,
+              229,
+              931,
+              609
+            ],
+            "fragmentSha256": "9266d950f2bb4f54c9c60125e73fcd5834067c233b576124dc91f31273fd2ed0",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "operation.doorOpenDepthMm",
+            "value": 1054,
+            "unit": "mm",
+            "label": "Appliance depth in mm with opened door",
+            "quote": "Appliance depth in mm with opened door 1054",
+            "page": 2,
+            "bbox": [
+              391,
+              229,
+              931,
+              609
+            ],
+            "fragmentSha256": "9266d950f2bb4f54c9c60125e73fcd5834067c233b576124dc91f31273fd2ed0",
+            "semanticBasis": "explicit_label_value"
+          }
+        ],
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06",
+          "contentSha256": "9f13f2791030edc9836a4e309ee9e5aa200031ceb798507b43203fecd5b8f304",
+          "objectPath": "evidence/derived/mineru-json/sha256/9f/13/9f13f2791030edc9836a4e309ee9e5aa200031ceb798507b43203fecd5b8f304.json",
+          "byteSize": 19322,
+          "pageCount": 3
+        },
+        "identitySignals": [
+          {
+            "type": "mineru_body_model",
+            "value": "TCA220WP:page:2:1cfaaf8e892be66efd76700fb3e1247123a0e9e2e69e62c37f18627fd288d73b"
+          },
+          {
+            "type": "mineru_body_model",
+            "value": "TCA220WP:page:3:c8906fdc8dcf5ae8cba6cc10e1a4b9c22ba9b004db01bfc96302940d279b9be4"
+          },
+          {
+            "type": "mineru_repeated_body_model",
+            "value": "TCA220WP:document:repeated-body-heading"
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 1,
+          "policyVersion": "2026-07-11.5",
+          "manufacturerPolicyVersion": "2026-07-11.2",
+          "verifiedAt": "2026-07-12T00:00:00.000Z",
+          "bindingSha256": "64a501602a9990c8f653f11d566004d7780c31a596c4e75356dc8bd138e4aa22"
+        }
+      },
+      "diagnosticArtifacts": {
+        "pdfObjectPath": "evidence/web/sha256/a8/72/a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06.pdf",
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06",
+          "contentSha256": "9f13f2791030edc9836a4e309ee9e5aa200031ceb798507b43203fecd5b8f304",
+          "objectPath": "evidence/derived/mineru-json/sha256/9f/13/9f13f2791030edc9836a4e309ee9e5aa200031ceb798507b43203fecd5b8f304.json",
+          "byteSize": 19322,
           "pageCount": 3
         }
       },

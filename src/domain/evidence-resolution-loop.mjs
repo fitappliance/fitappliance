@@ -1,4 +1,8 @@
-import { createCategoryGeometry } from './category-geometry.mjs';
+import {
+  auditCategoryGeometry,
+  createCategoryGeometry,
+  requiredCategoryEvidenceFields,
+} from './category-geometry.mjs';
 import {
   isReleasableQuarantineReason,
   isSourceFresh,
@@ -28,6 +32,13 @@ const REQUIRED_RELEASE_FIELDS = Object.freeze([
   'closedEnvelope.widthMm',
   'closedEnvelope.heightMm',
   'closedEnvelope.depthMm',
+]);
+
+const REQUIRED_PLACEMENT_FIELDS = Object.freeze([
+  'installation.leftMm',
+  'installation.rightMm',
+  'installation.topMm',
+  'installation.rearMm',
 ]);
 
 const RESEARCH_LABELS = Object.freeze({
@@ -98,6 +109,9 @@ function validateCase(input) {
     brand: requiredText(input.brand, 'brand'),
     model: requiredText(input.model, 'model'),
     category: requiredText(input.category, 'category'),
+    formFactor: input.formFactor === undefined || input.formFactor === null
+      ? null
+      : requiredText(input.formFactor, 'form factor'),
     releasableQuarantineReasons: (() => {
       const reasons = [...new Set((input.releasableQuarantineReasons ?? [])
         .map((reason) => requiredText(reason, 'releasable quarantine reason').toLowerCase()))].sort();
@@ -117,9 +131,18 @@ function validateCase(input) {
   };
 }
 
-function researchFields(caseRecord) {
+function releaseFields(caseRecord) {
   const fields = new Set(caseRecord.initialFailure.conflictingFields);
   for (const field of REQUIRED_RELEASE_FIELDS) fields.add(field);
+  return [...fields].sort();
+}
+
+function researchFields(caseRecord) {
+  const fields = new Set(releaseFields(caseRecord));
+  for (const field of REQUIRED_PLACEMENT_FIELDS) fields.add(field);
+  for (const field of requiredCategoryEvidenceFields(caseRecord.category, {
+    formFactor: caseRecord.formFactor,
+  })) fields.add(field);
   return [...fields].sort();
 }
 
@@ -208,6 +231,11 @@ function normalizeSource(source, caseRecord, options = {}) {
           ? 'official_exact_model_pdf'
           : 'official_exact_model_product_page'
       ), 'source type'),
+      receiptBindingSha256: source.verificationReceipt.bindingSha256,
+      page: Number.isInteger(claim.page) && claim.page > 0 ? claim.page : null,
+      fragmentSha256: /^[a-f0-9]{64}$/.test(String(claim.fragmentSha256 ?? ''))
+        ? claim.fragmentSha256
+        : null,
     };
   });
   return { source, claims };
@@ -265,10 +293,13 @@ export function adjudicateResolutionCase(input, options = {}) {
       sourceType: claim.sourceType,
       label: claim.label,
       quote: claim.quote,
+      receiptBindingSha256: claim.receiptBindingSha256,
+      page: claim.page,
+      fragmentSha256: claim.fragmentSha256,
     }));
   }
   const approvedFields = Object.keys(values).sort();
-  const missingReleaseFields = researchFields(caseRecord).filter((field) => !(field in values));
+  const missingReleaseFields = releaseFields(caseRecord).filter((field) => !(field in values));
   if (contradictions.length > 0) {
     const exhausted = caseRecord.attempt >= caseRecord.maxAttempts;
     return freezeDeep({
@@ -377,6 +408,35 @@ function value(values, field) {
   return Object.hasOwn(values, field) ? values[field] : null;
 }
 
+function geometryProvenance(resolution, geometry) {
+  const closedFields = ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
+  const placementFields = ['installation.leftMm', 'installation.rightMm', 'installation.topMm', 'installation.rearMm'];
+  const audit = auditCategoryGeometry(geometry.category, geometry);
+  const hasDimensions = closedFields.every((field) => Object.hasOwn(resolution.values, field));
+  const hasVerifiedRequirements = hasDimensions
+    && placementFields.every((field) => Object.hasOwn(resolution.values, field))
+    && audit.missingRequired.length === 0;
+  const fieldEvidence = {};
+  for (const [field, entries] of Object.entries(resolution.provenance)) {
+    if (field.startsWith('flags.') || !entries.length) continue;
+    const [primary, ...corroborating] = entries;
+    fieldEvidence[field] = {
+      sourceUrl: primary.sourceUrl,
+      contentSha256: primary.contentSha256,
+      receiptBindingSha256: primary.receiptBindingSha256,
+      page: primary.page,
+      fragmentSha256: primary.fragmentSha256,
+      ...(corroborating.length ? { corroborating } : {}),
+    };
+  }
+  return {
+    evidenceLevel: hasVerifiedRequirements ? 'verified' : hasDimensions ? 'dimensions' : 'none',
+    fieldEvidence,
+    activeSourceHashes: [...new Set(Object.values(resolution.provenance).flat()
+      .map((entry) => entry.contentSha256))].sort(),
+  };
+}
+
 export function applyResolutionToProduct(input, resolution) {
   if (resolution?.status !== 'resolved' || resolution?.publication?.release !== true) {
     throw new TypeError('resolved publication decision required');
@@ -423,6 +483,7 @@ export function applyResolutionToProduct(input, resolution) {
   product.clearance_requirements = clearances;
   product.flags = flags;
   product.geometry_v2 = createCategoryGeometry(product.cat, {
+    formFactor: product.geometry_v2?.formFactor ?? null,
     closedEnvelope: {
       widthMm: value(resolution.values, 'closedEnvelope.widthMm'),
       heightMm: value(resolution.values, 'closedEnvelope.heightMm'),
@@ -447,8 +508,12 @@ export function applyResolutionToProduct(input, resolution) {
     },
     delivery: {},
   });
+  product.geometry_v2_provenance = geometryProvenance(resolution, product.geometry_v2);
   product.data_source = 'official_manufacturer_exact_model';
   const primarySource = Object.values(resolution.provenance).flat()[0];
+  const hasPdfEvidence = Object.values(resolution.provenance).flat()
+    .some((entry) => entry.sourceType === 'official_exact_model_pdf');
+  const fitVerified = product.geometry_v2_provenance.evidenceLevel === 'verified';
   const {
     source_url: _legacySourceUrl,
     verified_at: _legacyVerifiedAt,
@@ -458,16 +523,16 @@ export function applyResolutionToProduct(input, resolution) {
   } = product.evidence ?? {};
   product.evidence = {
     ...retainedEvidence,
-    has_pdf_evidence: product.evidence?.has_pdf_evidence === true,
+    has_pdf_evidence: hasPdfEvidence,
     has_official_evidence: true,
     source_url: primarySource.sourceUrl,
     verified_at: primarySource.retrievedAt.slice(0, 10),
     source_type: primarySource.sourceType === 'official_exact_model_product_page'
       ? 'official_manufacturer_html'
       : primarySource.sourceType,
-    trust_level: 'dimensions_verified',
-    verified_fields: ['dimensions'],
-    clearance_verified: false,
+    trust_level: fitVerified ? 'verified_fit' : 'dimensions_verified',
+    verified_fields: fitVerified ? ['dimensions', 'installation'] : ['dimensions'],
+    clearance_verified: fitVerified,
     v2_resolution: {
       case_id: resolution.caseId,
       status: resolution.status,

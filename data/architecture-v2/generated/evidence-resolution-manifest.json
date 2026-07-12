@@ -57,6 +57,50 @@
             ],
             "query": "Westinghouse WHE6874BA plumbed water supply required OR water connection OR ice and water installation",
             "exactModelRequired": true
+          },
+          {
+            "field": "installation.leftMm",
+            "authorityOrder": [
+              "manufacturer_product_page",
+              "manufacturer_manual",
+              "regulator",
+              "independent_market"
+            ],
+            "query": "Westinghouse WHE6874BA left side clearance OR side air space OR minimum side gap",
+            "exactModelRequired": true
+          },
+          {
+            "field": "installation.rearMm",
+            "authorityOrder": [
+              "manufacturer_product_page",
+              "manufacturer_manual",
+              "regulator",
+              "independent_market"
+            ],
+            "query": "Westinghouse WHE6874BA rear clearance OR air space behind cabinet OR back ventilation gap",
+            "exactModelRequired": true
+          },
+          {
+            "field": "installation.rightMm",
+            "authorityOrder": [
+              "manufacturer_product_page",
+              "manufacturer_manual",
+              "regulator",
+              "independent_market"
+            ],
+            "query": "Westinghouse WHE6874BA right side clearance OR side air space OR minimum side gap",
+            "exactModelRequired": true
+          },
+          {
+            "field": "installation.topMm",
+            "authorityOrder": [
+              "manufacturer_product_page",
+              "manufacturer_manual",
+              "regulator",
+              "independent_market"
+            ],
+            "query": "Westinghouse WHE6874BA air space above cabinet OR top clearance OR overhead ventilation gap",
+            "exactModelRequired": true
           }
         ],
         "attempt": 2,
@@ -92,7 +136,10 @@
               "retrievedAt": "2026-07-11T14:30:00.000Z",
               "sourceType": "official_exact_model_product_page",
               "label": "Total depth (mm)",
-              "quote": "Total depth (mm) 803 mm"
+              "quote": "Total depth (mm) 803 mm",
+              "receiptBindingSha256": "0f02fa87a7f496212d48ed4c0a61191f1d0fa8217e405c8415db11ae8da6bd30",
+              "page": null,
+              "fragmentSha256": null
             }
           ],
           "closedEnvelope.heightMm": [
@@ -103,7 +150,10 @@
               "retrievedAt": "2026-07-11T14:30:00.000Z",
               "sourceType": "official_exact_model_product_page",
               "label": "Total height (mm)",
-              "quote": "Total height (mm) 1782 mm"
+              "quote": "Total height (mm) 1782 mm",
+              "receiptBindingSha256": "0f02fa87a7f496212d48ed4c0a61191f1d0fa8217e405c8415db11ae8da6bd30",
+              "page": null,
+              "fragmentSha256": null
             }
           ],
           "closedEnvelope.widthMm": [
@@ -114,7 +164,10 @@
               "retrievedAt": "2026-07-11T14:30:00.000Z",
               "sourceType": "official_exact_model_product_page",
               "label": "Total width (mm)",
-              "quote": "Total width (mm) 913 mm"
+              "quote": "Total width (mm) 913 mm",
+              "receiptBindingSha256": "0f02fa87a7f496212d48ed4c0a61191f1d0fa8217e405c8415db11ae8da6bd30",
+              "page": null,
+              "fragmentSha256": null
             }
           ],
           "flags.requiresPlumbing": [
@@ -125,7 +178,10 @@
               "retrievedAt": "2026-07-11T14:30:00.000Z",
               "sourceType": "official_exact_model_product_page",
               "label": "Plumbed water supply required",
-              "quote": "Plumbed water supply required Yes"
+              "quote": "Plumbed water supply required Yes",
+              "receiptBindingSha256": "0f02fa87a7f496212d48ed4c0a61191f1d0fa8217e405c8415db11ae8da6bd30",
+              "page": null,
+              "fragmentSha256": null
             }
           ],
           "installation.topMm": [
@@ -136,7 +192,10 @@
               "retrievedAt": "2026-07-11T14:30:00.000Z",
               "sourceType": "official_exact_model_product_page",
               "label": "Air space above cabinet (mm)",
-              "quote": "Air space above cabinet (mm) 25"
+              "quote": "Air space above cabinet (mm) 25",
+              "receiptBindingSha256": "0f02fa87a7f496212d48ed4c0a61191f1d0fa8217e405c8415db11ae8da6bd30",
+              "page": null,
+              "fragmentSha256": null
             }
           ],
           "operation.doorOpenDepthMm": [
@@ -147,7 +206,10 @@
               "retrievedAt": "2026-07-11T14:30:00.000Z",
               "sourceType": "official_exact_model_product_page",
               "label": "Depth door open 90degree (mm)",
-              "quote": "Depth door open 90degree (mm) 1189"
+              "quote": "Depth door open 90degree (mm) 1189",
+              "receiptBindingSha256": "0f02fa87a7f496212d48ed4c0a61191f1d0fa8217e405c8415db11ae8da6bd30",
+              "page": null,
+              "fragmentSha256": null
             }
           ]
         },

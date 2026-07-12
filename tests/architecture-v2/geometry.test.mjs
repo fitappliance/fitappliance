@@ -63,6 +63,16 @@ test('calculates the complete required installation envelope using maximum heigh
   assert.equal(Object.isFrozen(envelope), true);
 });
 
+test('front operation space is not added to the cavity depth envelope', () => {
+  const geometry = createGeometry({
+    closedEnvelope: { widthMm: 600, heightMm: 850, depthMm: 600 },
+    installation: { leftMm: 5, rightMm: 5, topMm: 10, rearMm: 20, frontMm: 600 },
+  });
+  assert.deepEqual(requiredInstallationEnvelope(geometry), {
+    widthMm: 610, heightMm: 860, depthMm: 620,
+  });
+});
+
 test('returns null instead of treating an unknown dimension or clearance as zero', () => {
   const unknownRear = createGeometry({
     ...fixture,

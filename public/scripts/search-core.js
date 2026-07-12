@@ -1,6 +1,10 @@
 'use strict';
 
 (function attachSearchCore(globalScope) {
+  const fitEngine = typeof module !== 'undefined' && module.exports
+    ? require('./fit-engine.js')
+    : globalScope?.FitEngine;
+  if (!fitEngine?.evaluateFit) throw new Error('FitEngine must load before SearchCore');
   const PRACTICAL_CLEARANCE = Object.freeze({ rear: 10, side: 5, sides: 5, top: 20 });
   const CLEARANCE_MODES = Object.freeze({
     physical: Object.freeze({ rear: 0, side: 0, sides: 0, top: 0 }),
@@ -146,6 +150,158 @@
       );
     }
     return normalizeClearance(CLEARANCE_MODES[nextMode]);
+  }
+
+  function positiveOrNull(value) {
+    return typeof value === 'number' && Number.isFinite(value) && value > 0 ? value : null;
+  }
+
+  function productClosedEnvelope(product) {
+    const geometry = product?.geometry_v2;
+    if (geometry && typeof geometry === 'object') {
+      const height = geometry.closedEnvelope?.heightMm;
+      return {
+        widthMm: positiveOrNull(geometry.closedEnvelope?.widthMm),
+        heightMm: height && typeof height === 'object'
+          ? {
+            minimumMm: positiveOrNull(height.minimumMm),
+            maximumMm: positiveOrNull(height.maximumMm)
+          }
+          : null,
+        depthMm: positiveOrNull(geometry.closedEnvelope?.depthMm)
+      };
+    }
+    const heightMm = positiveOrNull(product?.h);
+    return {
+      widthMm: positiveOrNull(product?.w),
+      heightMm: heightMm === null ? null : { minimumMm: heightMm, maximumMm: heightMm },
+      depthMm: positiveOrNull(product?.d)
+    };
+  }
+
+  function receiptBoundField(fieldEvidence, field) {
+    const row = fieldEvidence?.[field];
+    return Boolean(
+      row
+      && /^[a-f0-9]{64}$/i.test(String(row.contentSha256 ?? ''))
+      && /^[a-f0-9]{64}$/i.test(String(row.receiptBindingSha256 ?? ''))
+      && /^https:\/\//i.test(String(row.sourceUrl ?? ''))
+    );
+  }
+
+  function receiptBackedEvidenceLevel(product, geometry) {
+    const provenance = product?.geometry_v2_provenance;
+    if (!provenance || !['dimensions', 'verified'].includes(provenance.evidenceLevel)) return 'none';
+    const fieldEvidence = provenance.fieldEvidence;
+    const closedFields = ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
+    if (!closedFields.every((field) => receiptBoundField(fieldEvidence, field))) return 'none';
+    const required = [
+      ...closedFields,
+      'installation.leftMm', 'installation.rightMm', 'installation.topMm', 'installation.rearMm'
+    ];
+    if (['dishwasher', 'washtower_combo'].includes(geometry.category)) {
+      required.push('operation.doorOpenDepthMm', 'service.rearServicesMm');
+    } else if (geometry.category === 'washing_machine') {
+      required.push('service.rearServicesMm');
+      if (geometry.formFactor === 'front_loader') required.push('operation.doorOpenDepthMm');
+      if (geometry.formFactor === 'top_loader') required.push('operation.lidOpenHeightMm');
+    } else if (geometry.category === 'dryer') {
+      required.push('operation.doorOpenDepthMm', 'service.rearVentilationMm');
+    } else if (geometry.category === 'fridge') {
+      if (geometry.formFactor === 'upright') required.push('operation.doorOpenDepthMm');
+      if (geometry.formFactor === 'chest') required.push('operation.lidOpenHeightMm');
+    }
+    return provenance.evidenceLevel === 'verified'
+      && required.every((field) => receiptBoundField(fieldEvidence, field))
+      ? 'verified'
+      : 'dimensions';
+  }
+
+  function nullableNonNegative(value) {
+    return typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : null;
+  }
+
+  function createFitGeometry(product, category, mode, clearance) {
+    const source = product?.geometry_v2;
+    const closedEnvelope = productClosedEnvelope(product);
+    if (mode === 'manufacturer') {
+      return {
+        category,
+        formFactor: source?.formFactor ?? null,
+        closedEnvelope,
+        installation: {
+          leftMm: nullableNonNegative(source?.installation?.leftMm),
+          rightMm: nullableNonNegative(source?.installation?.rightMm),
+          topMm: nullableNonNegative(source?.installation?.topMm),
+          rearMm: nullableNonNegative(source?.installation?.rearMm),
+          frontMm: nullableNonNegative(source?.installation?.frontMm)
+        },
+        operation: {
+          doorOpenDepthMm: nullableNonNegative(source?.operation?.doorOpenDepthMm),
+          hingeSideSpaceMm: nullableNonNegative(source?.operation?.hingeSideSpaceMm),
+          lidOpenHeightMm: nullableNonNegative(source?.operation?.lidOpenHeightMm)
+        },
+        service: {
+          plumbingRearMm: nullableNonNegative(source?.service?.plumbingRearMm),
+          rearServicesMm: nullableNonNegative(source?.service?.rearServicesMm),
+          rearVentilationMm: nullableNonNegative(source?.service?.rearVentilationMm)
+        }
+      };
+    }
+    const side = nullableNonNegative(clearance?.sides ?? clearance?.side) ?? 0;
+    const top = nullableNonNegative(clearance?.top) ?? 0;
+    const rear = nullableNonNegative(clearance?.rear) ?? 0;
+    return {
+      category,
+      formFactor: source?.formFactor ?? null,
+      closedEnvelope,
+      installation: { leftMm: side, rightMm: side, topMm: top, rearMm: rear, frontMm: 0 },
+      operation: {
+        doorOpenDepthMm: nullableNonNegative(source?.operation?.doorOpenDepthMm),
+        hingeSideSpaceMm: nullableNonNegative(source?.operation?.hingeSideSpaceMm),
+        lidOpenHeightMm: nullableNonNegative(source?.operation?.lidOpenHeightMm)
+      },
+      service: {
+        plumbingRearMm: nullableNonNegative(source?.service?.plumbingRearMm),
+        rearServicesMm: rear,
+        rearVentilationMm: rear
+      }
+    };
+  }
+
+  function clearanceFromGeometry(geometry) {
+    const left = geometry.installation.leftMm;
+    const right = geometry.installation.rightMm;
+    const side = left === null || right === null ? null : Math.max(left, right);
+    return {
+      rear: geometry.installation.rearMm,
+      side,
+      sides: side,
+      top: geometry.installation.topMm,
+      left,
+      right
+    };
+  }
+
+  function operationAdvisoryChecks(geometry, cavity) {
+    const doorApplicable = ['dishwasher', 'dryer', 'washtower_combo'].includes(geometry.category)
+      || geometry.formFactor === 'upright'
+      || geometry.formFactor === 'front_loader';
+    const lidApplicable = geometry.formFactor === 'chest' || geometry.formFactor === 'top_loader';
+    const lidRequired = geometry.operation?.lidOpenHeightMm;
+    const availableHeight = cavity.heightMm;
+    return [
+      { id: 'door_open_space', applicable: doorApplicable, status: doorApplicable ? 'UNKNOWN' : 'PASS' },
+      {
+        id: 'lid_open_height',
+        applicable: lidApplicable,
+        status: !lidApplicable
+          ? 'PASS'
+          : lidRequired === null || availableHeight === null
+            ? 'UNKNOWN'
+            : availableHeight >= lidRequired ? 'PASS' : 'FAIL'
+      }
+    ];
   }
 
   function includesFeature(product, pattern) {
@@ -364,12 +520,12 @@
 
   function getFitScoreLabel(score) {
     return {
-      excellent: 'Excellent fit',
-      strong: 'Strong fit',
-      workable: 'Workable fit',
-      tight: 'Tight fit',
-      marginal: 'Marginal fit',
-      'no-fit': "Won't fit"
+      excellent: 'Excellent margin',
+      strong: 'Strong margin',
+      workable: 'Workable margin',
+      tight: 'Tight margin',
+      marginal: 'Marginal margin',
+      'no-fit': 'No dimensional fit'
     }[getFitScoreTier(score)];
   }
 
@@ -380,88 +536,126 @@
     const replacementSourceCategory = normalizeReplacementSourceCategory(
       filters?.replacementSourceCategory ?? options.replacementSourceCategory
     );
-    const clearance = getEffectiveClearance(category, product?.brand, clearanceMode, options);
-    const filterClearance = searchMode === 'replacement'
-      ? normalizeClearance({ side: 0, top: 0, rear: 0 })
-      : clearance;
-    const axisEntries = getAxisEntries(product, filters, filterClearance);
-    if (axisEntries.length === 0) return null;
-
-    const axisScores = axisEntries.map((entry) => computeAxisScore(entry.cavity, entry.appliance, entry.clearanceMm));
-    const axisSpare = axisEntries.map((entry) => entry.cavity - entry.appliance - entry.clearanceMm);
-    const fitScore = Math.min(...axisScores);
-    const sortScore = axisScores.reduce((sum, score) => sum + score, 0) / axisScores.length;
-    const cavityMin = Math.min(...axisEntries.map((entry) => entry.cavity));
+    const fitMode = searchMode === 'replacement' ? 'physical' : clearanceMode;
+    const estimatedClearance = fitMode === 'manufacturer'
+      ? null
+      : getEffectiveClearance(category, product?.brand, fitMode, options);
+    const geometry = createFitGeometry(product, category, fitMode, estimatedClearance);
+    const cavity = {
+      widthMm: toMm(filters?.w),
+      heightMm: toMm(filters?.h),
+      depthMm: toMm(filters?.d)
+    };
+    if ([cavity.widthMm, cavity.heightMm, cavity.depthMm].every((value) => value === null)) return null;
+    const evidenceLevel = fitMode === 'manufacturer'
+      ? receiptBackedEvidenceLevel(product, geometry)
+      : 'none';
+    const fitDecision = fitEngine.evaluateFit({
+      geometry,
+      cavity,
+      evidenceLevel,
+      advisoryChecks: operationAdvisoryChecks(geometry, cavity)
+    });
+    const applianceByAxis = {
+      width: geometry.closedEnvelope.widthMm,
+      height: geometry.closedEnvelope.heightMm?.maximumMm ?? null,
+      depth: geometry.closedEnvelope.depthMm
+    };
+    const keyByAxis = { width: 'w', height: 'h', depth: 'd' };
+    const axisEntries = fitDecision.checks.slice(0, 3)
+      .map((check) => {
+        const axis = check.id.replace('installation_', '');
+        const appliance = applianceByAxis[axis];
+        if (check.availableMm === null || check.requiredMm === null || appliance === null) return null;
+        return {
+          key: keyByAxis[axis],
+          cavity: check.availableMm,
+          appliance,
+          clearanceMm: check.requiredMm - appliance,
+          spareMm: check.spareMm
+        };
+      })
+      .filter(Boolean);
+    const axisScores = axisEntries
+      .map((entry) => computeAxisScore(entry.cavity, entry.appliance, entry.clearanceMm))
+      .filter(Number.isFinite);
+    const fitScore = axisScores.length ? Math.min(...axisScores) : null;
+    const sortScore = axisScores.length
+      ? axisScores.reduce((sum, score) => sum + score, 0) / axisScores.length
+      : null;
+    const cavityMin = axisEntries.length ? Math.min(...axisEntries.map((entry) => entry.cavity)) : null;
     const toleranceMm = searchMode === 'replacement'
       ? 0
       : (Number.isFinite(Number(filters?.toleranceMm)) ? Number(filters.toleranceMm) : 0);
-    const threshold = -(toleranceMm / cavityMin);
-    const exactFit = axisScores.every((score) => score >= 0);
+    const threshold = cavityMin === null ? 0 : -(toleranceMm / cavityMin);
+    const installationChecks = fitDecision.checks.slice(0, 3);
+    const exactFit = installationChecks.every((check) => check.status === 'PASS');
     const fitsTightly = axisScores.some((score) => score < 0.02);
-    const axisGaps = axisEntries.map((entry, index) => ({
+    const axisGaps = axisEntries.map((entry) => ({
       axis: entry.key === 'w' ? 'width' : entry.key === 'h' ? 'height' : 'depth',
       label: entry.key === 'w' ? 'W' : entry.key === 'h' ? 'H' : 'D',
       cavity: Math.round(entry.cavity),
       appliance: Math.round(entry.appliance),
       clearanceMm: Math.round(entry.clearanceMm),
-      gapMm: Math.round(axisSpare[index])
+      gapMm: Math.round(entry.spareMm)
     }));
     const binding = axisGaps
       .slice()
       .sort((left, right) => left.gapMm - right.gapMm)[0] ?? null;
-    const cavity = {
-      w: toMm(filters?.w),
-      h: toMm(filters?.h),
-      d: toMm(filters?.d)
-    };
-    const spare = Object.fromEntries(axisGaps.map((entry) => [`${entry.axis}Mm`, entry.gapMm]));
-    const hasCompleteGeometry = ['widthMm', 'heightMm', 'depthMm'].every((axis) => Number.isFinite(spare[axis]));
-    const evidenceLevel = String(product?.evidence?.trust_level ?? product?.trust_level ?? '') === 'verified_fit'
-      ? 'verified'
-      : 'none';
-    const fitDecision = {
-      outcome: axisSpare.some((gap) => Number.isFinite(gap) && gap < 0)
-        ? 'NO_FIT'
-        : !hasCompleteGeometry
-          ? 'INSUFFICIENT_DATA'
-          : evidenceLevel === 'verified'
-            ? 'VERIFIED_FIT'
-            : 'LIKELY_FIT_ESTIMATED',
-      spare: {
-        widthMm: spare.widthMm ?? null,
-        heightMm: spare.heightMm ?? null,
-        depthMm: spare.depthMm ?? null
-      },
-      evidenceLevel
-    };
+    const recommendationMode = searchMode === 'replacement' ? clearanceMode : fitMode;
+    const recommendationClearance = recommendationMode === 'manufacturer'
+      ? null
+      : getEffectiveClearance(category, product?.brand, recommendationMode, options);
+    const recommendationGeometry = searchMode === 'replacement'
+      ? createFitGeometry(product, category, recommendationMode, recommendationClearance)
+      : geometry;
+    const recommendation = searchMode === 'replacement'
+      ? fitEngine.evaluateFit({
+        geometry: recommendationGeometry,
+        cavity,
+        evidenceLevel: recommendationMode === 'manufacturer'
+          ? receiptBackedEvidenceLevel(product, recommendationGeometry)
+          : 'none',
+        advisoryChecks: operationAdvisoryChecks(recommendationGeometry, cavity)
+      })
+      : fitDecision;
+    const clearance = recommendationMode === 'manufacturer'
+      ? clearanceFromGeometry(recommendationGeometry)
+      : recommendationClearance;
+    const completeAxisChecks = installationChecks.every((check) => check.status !== 'UNKNOWN');
+    const scoreCavity = { w: cavity.widthMm, h: cavity.heightMm, d: cavity.depthMm };
 
     return {
       fitScore,
-      fitScoreNumeric: searchMode === 'replacement'
+      fitScoreNumeric: searchMode === 'replacement' || !completeAxisChecks
         ? null
         : computeFitScoreNumeric({
           axisGaps,
-          cavity,
-          applianceDims: { w: Number(product?.w), h: Number(product?.h), d: Number(product?.d) },
+          cavity: scoreCavity,
+          applianceDims: {
+            w: applianceByAxis.width,
+            h: applianceByAxis.height,
+            d: applianceByAxis.depth
+          },
           clearance
         }),
       sortScore,
       threshold,
-      requiredClearancePass: axisSpare.every((gap) => Number.isFinite(gap) && gap >= 0),
+      requiredClearancePass: installationChecks.every((check) => check.status === 'PASS'),
       exactFit,
-      fitsTightly: fitsTightly || fitScore < 0,
+      fitsTightly: fitsTightly || (Number.isFinite(fitScore) && fitScore < 0),
       axisGaps,
       searchMode,
       replacementSourceCategory,
       requiredCavityMm: {
-        w: Math.round(Number(product?.w ?? 0) + (Number(clearance?.sides ?? clearance?.side ?? 0) * 2)),
-        h: Math.round(Number(product?.h ?? 0) + Number(clearance?.top ?? 0)),
-        d: Math.round(Number(product?.d ?? 0) + Number(clearance?.rear ?? 0))
+        w: recommendation.required.widthMm,
+        h: recommendation.required.heightMm,
+        d: recommendation.required.depthMm
       },
       sizeMatchGaps: {
-        w: Math.round((toMm(filters?.w) ?? 0) - Number(product?.w ?? 0)),
-        h: Math.round((toMm(filters?.h) ?? 0) - Number(product?.h ?? 0)),
-        d: Math.round((toMm(filters?.d) ?? 0) - Number(product?.d ?? 0))
+        w: cavity.widthMm === null || applianceByAxis.width === null ? null : Math.round(cavity.widthMm - applianceByAxis.width),
+        h: cavity.heightMm === null || applianceByAxis.height === null ? null : Math.round(cavity.heightMm - applianceByAxis.height),
+        d: cavity.depthMm === null || applianceByAxis.depth === null ? null : Math.round(cavity.depthMm - applianceByAxis.depth)
       },
       bindingAxis: binding?.axis ?? '',
       tightestGapMm: binding?.gapMm ?? null,
@@ -768,7 +962,8 @@
         });
         if (!fitMeta) return null;
         if (fitMeta.fitDecision.outcome === 'NO_FIT') return null;
-        if (fitMeta.fitScore < fitMeta.threshold) return null;
+        if (fitMeta.clearanceMode === 'manufacturer' && fitMeta.fitDecision.outcome === 'INSUFFICIENT_DATA') return null;
+        if (Number.isFinite(fitMeta.fitScore) && fitMeta.fitScore < fitMeta.threshold) return null;
         return buildResult(product, fitMeta, nextFilters);
       })
       .filter(Boolean)

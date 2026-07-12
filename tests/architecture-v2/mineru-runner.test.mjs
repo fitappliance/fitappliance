@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -99,4 +99,55 @@ test('MinerU runner rejects oversized PDFs before creating work or invoking a pr
     runCommand: async () => { called = true; },
   }), /PDF payload exceeds.*10 bytes/i);
   assert.equal(called, false);
+});
+
+test('MinerU runner reuses a hash-bound JSON artifact without invoking MinerU again', async () => {
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-cache-test-'));
+  let calls = 0;
+  const runCommand = async (_binary, args) => {
+    calls += 1;
+    if (args[0] === '-v') return { stdout: 'mineru, version 3.4.4\nfitappliance-model-revision ed6b654c018d742e65a17671e379c5e6ecc87ec9\n' };
+    const output = args[args.indexOf('-o') + 1];
+    await mkdir(join(output, 'source', 'auto'), { recursive: true });
+    await writeFile(join(output, 'source', 'auto', 'source_content_list_v2.json'), JSON.stringify(contentList));
+    return { stdout: 'done' };
+  };
+  try {
+    const pdf = Buffer.from('%PDF-1.7\ncache-fixture');
+    const first = await runMineruPdfToJson(pdf, { storageRoot, runCommand });
+    const second = await runMineruPdfToJson(pdf, {
+      storageRoot,
+      runCommand: async () => { throw new Error('cache miss'); },
+    });
+    assert.equal(calls, 2);
+    assert.deepEqual(second, first);
+  } finally {
+    await rm(storageRoot, { recursive: true, force: true });
+  }
+});
+
+test('MinerU runner rejects a corrupted cached JSON object instead of trusting or replacing it', async () => {
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-cache-test-'));
+  try {
+    const pdf = Buffer.from('%PDF-1.7\ncorrupt-cache-fixture');
+    const first = await runMineruPdfToJson(pdf, {
+      storageRoot,
+      runCommand: async (_binary, args) => {
+        if (args[0] === '-v') return { stdout: 'mineru, version 3.4.4\nfitappliance-model-revision ed6b654c018d742e65a17671e379c5e6ecc87ec9\n' };
+        const output = args[args.indexOf('-o') + 1];
+        await mkdir(join(output, 'source', 'auto'), { recursive: true });
+        await writeFile(join(output, 'source', 'auto', 'source_content_list_v2.json'), JSON.stringify(contentList));
+        return { stdout: 'done' };
+      },
+    });
+    const objectPath = join(storageRoot, ...first.derivedArtifact.objectPath.split('/'));
+    assert.ok((await readFile(objectPath)).length > 0);
+    await writeFile(objectPath, '{"tampered":true}');
+    await assert.rejects(() => runMineruPdfToJson(pdf, {
+      storageRoot,
+      runCommand: async () => { throw new Error('must not reprocess corruption'); },
+    }), /cache integrity/i);
+  } finally {
+    await rm(storageRoot, { recursive: true, force: true });
+  }
 });

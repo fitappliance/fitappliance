@@ -119,9 +119,30 @@ function getDimension(product, key, fallbackKey) {
 }
 
 function getClearance(product, key) {
-  const value = product?.clearance_requirements?.[key];
-  if (Number.isFinite(Number(value))) return Math.max(0, roundMm(value));
-  return product?.evidence?.v2_resolution?.status === 'resolved' ? null : 0;
+  const fieldByKey = {
+    top_mm: 'installation.topMm',
+    left_mm: 'installation.leftMm',
+    right_mm: 'installation.rightMm',
+    rear_mm: 'installation.rearMm',
+    front_mm: 'installation.frontMm',
+  };
+  const field = fieldByKey[key];
+  const evidence = product?.geometry_v2_provenance?.fieldEvidence?.[field];
+  if (!field || !evidence
+    || !/^[a-f0-9]{64}$/i.test(String(evidence.contentSha256 ?? ''))
+    || !/^[a-f0-9]{64}$/i.test(String(evidence.receiptBindingSha256 ?? ''))) return null;
+  const geometryKey = field.split('.')[1];
+  const value = product?.geometry_v2?.installation?.[geometryKey];
+  return Number.isFinite(value) && value >= 0 ? roundMm(value) : null;
+}
+
+function getReceiptBoundGeometryValue(product, field, section, key) {
+  const evidence = product?.geometry_v2_provenance?.fieldEvidence?.[field];
+  if (!evidence
+    || !/^[a-f0-9]{64}$/i.test(String(evidence.contentSha256 ?? ''))
+    || !/^[a-f0-9]{64}$/i.test(String(evidence.receiptBindingSha256 ?? ''))) return null;
+  const value = product?.geometry_v2?.[section]?.[key];
+  return Number.isFinite(value) && value > 0 ? roundMm(value) : null;
 }
 
 function formatMillimetres(value) {
@@ -140,26 +161,40 @@ function reviewedFields(product) {
 }
 
 function getEvidenceTrustLevel(product) {
+  const geometryLevel = product?.geometry_v2_provenance?.evidenceLevel;
+  if (geometryLevel === 'verified') return 'verified_fit';
+  if (geometryLevel === 'dimensions') return 'dimensions_verified';
   const level = String(product?.evidence?.trust_level ?? product?.trust_level ?? '').trim();
-  if (['verified_fit', 'dimensions_verified', 'retailer_spec'].includes(level)) return level;
-  if (product?.evidence?.clearance_verified === true) return 'verified_fit';
-  if (product?.evidence?.has_pdf_evidence === true) return 'dimensions_verified';
+  if (level === 'retailer_spec') return level;
+  if (level === 'evidence_pending' || ['verified_fit', 'dimensions_verified'].includes(level)) return 'evidence_pending';
+  if (product?.evidence?.has_pdf_evidence === true) return 'evidence_pending';
   return 'retailer_spec';
 }
 
 function getEvidenceTrustCopy(product) {
   const trustLevel = getEvidenceTrustLevel(product);
   const manufacturerHtml = product?.evidence?.source_type === 'official_manufacturer_html';
+  if (trustLevel === 'evidence_pending') {
+    return {
+      label: 'Evidence Pending',
+      titleSuffix: 'Listed Dimensions & Evidence Review',
+      descriptionVerb: 'listed dimensions with field-level verification pending',
+      sourceProperty: 'A source has been captured, but its dimensions and installation fields are not yet receipt-bound for fit publication',
+      sourceLabel: 'Captured evidence source',
+      faqVerification: 'Not yet. A source has been captured, but FitAppliance has not promoted its fields into the receipt-backed geometry used for fit decisions.',
+      cavityAnswerSuffix: 'after confirming the model manual and installation requirements.'
+    };
+  }
   if (!manufacturerHtml) {
     if (trustLevel === 'verified_fit') {
       return {
-        label: 'Verified Fit',
-        titleSuffix: 'Exact Dimensions & Verified Cavity Fit',
+        label: 'Fit Requirements Verified',
+        titleSuffix: 'Exact Dimensions & Verified Installation Requirements',
         descriptionVerb: 'verified dimensions and manufacturer clearance requirements',
         sourceProperty: 'Official PDF dimensions and clearance evidence captured by FitAppliance',
         sourceLabel: 'Official PDF evidence',
-        faqVerification: 'Yes. FitAppliance has linked this model to PDF evidence with explicit dimensions and installation clearance data.',
-        cavityAnswerSuffix: 'once verified clearance requirements are included.'
+        faqVerification: 'FitAppliance has receipt-backed dimensions and installation requirements for this model. Whether it fits depends on the cavity measurements entered in the fit checker.',
+        cavityAnswerSuffix: 'after the verified requirements are compared with your measurements.'
       };
     }
     if (trustLevel === 'dimensions_verified') {
@@ -205,13 +240,13 @@ function getEvidenceTrustCopy(product) {
   ));
   if (trustLevel === 'verified_fit') {
     return {
-      label: 'Verified Fit',
-      titleSuffix: 'Exact Dimensions & Verified Cavity Fit',
+      label: 'Fit Requirements Verified',
+      titleSuffix: 'Exact Dimensions & Verified Installation Requirements',
       descriptionVerb: 'verified dimensions and manufacturer clearance requirements',
       sourceProperty: `Official ${evidenceAdjective} dimensions and clearance evidence captured by FitAppliance`,
       sourceLabel,
-      faqVerification: `Yes. FitAppliance has linked this model to ${evidenceMedium} evidence with explicit dimensions and installation clearance data.`,
-      cavityAnswerSuffix: 'once verified clearance requirements are included.'
+      faqVerification: `FitAppliance has receipt-backed dimensions and installation requirements from ${evidenceMedium} evidence. Whether it fits depends on the cavity measurements entered in the fit checker.`,
+      cavityAnswerSuffix: 'after the verified requirements are compared with your measurements.'
     };
   }
   if (trustLevel === 'dimensions_verified') {
@@ -320,25 +355,16 @@ function selectVerifiedProducts(products) {
 
 function buildAdditionalProperties(product) {
   const trustCopy = getEvidenceTrustCopy(product);
-  if (product?.evidence?.v2_resolution?.status !== 'resolved') {
-    return [
-      { '@type': 'PropertyValue', name: 'Width clearance', value: `${getClearance(product, 'left_mm')}mm left, ${getClearance(product, 'right_mm')}mm right` },
-      { '@type': 'PropertyValue', name: 'Top clearance', value: getClearance(product, 'top_mm'), unitCode: 'MMT' },
-      { '@type': 'PropertyValue', name: 'Rear clearance', value: getClearance(product, 'rear_mm'), unitCode: 'MMT' },
-      { '@type': 'PropertyValue', name: 'Evidence trust level', value: trustCopy.label },
-      { '@type': 'PropertyValue', name: 'Evidence source', value: trustCopy.sourceProperty },
-      ...(product?.data_source ? [{ '@type': 'PropertyValue', name: 'Data source', value: String(product.data_source) }] : []),
-      ...(product?.evidence?.verified_at ? [{ '@type': 'PropertyValue', name: 'Verified at', value: String(product.evidence.verified_at) }] : []),
-      ...(isFinitePositive(product?.dimensions?.door_open_90_depth_mm) ? [{
-        '@type': 'PropertyValue', name: 'Door open 90 degree depth',
-        value: roundMm(product.dimensions.door_open_90_depth_mm), unitCode: 'MMT'
-      }] : [])
-    ];
-  }
   const left = getClearance(product, 'left_mm');
   const right = getClearance(product, 'right_mm');
   const top = getClearance(product, 'top_mm');
   const rear = getClearance(product, 'rear_mm');
+  const doorOpenDepth = getReceiptBoundGeometryValue(
+    product,
+    'operation.doorOpenDepthMm',
+    'operation',
+    'doorOpenDepthMm',
+  );
   const properties = [
     { '@type': 'PropertyValue', name: 'Evidence trust level', value: trustCopy.label },
     { '@type': 'PropertyValue', name: 'Evidence source', value: trustCopy.sourceProperty }
@@ -355,11 +381,11 @@ function buildAdditionalProperties(product) {
   if (product?.evidence?.verified_at) {
     properties.push({ '@type': 'PropertyValue', name: 'Verified at', value: String(product.evidence.verified_at) });
   }
-  if (isFinitePositive(product?.dimensions?.door_open_90_depth_mm)) {
+  if (doorOpenDepth !== null) {
     properties.push({
       '@type': 'PropertyValue',
       name: 'Door open 90 degree depth',
-      value: roundMm(product.dimensions.door_open_90_depth_mm),
+      value: doorOpenDepth,
       unitCode: 'MMT'
     });
   }
@@ -560,20 +586,6 @@ function buildFaqJsonLd(product) {
   const width = getDimension(product, 'width_mm', 'w');
   const height = getDimension(product, 'height_mm', 'h');
   const depth = getDimension(product, 'depth_mm', 'd');
-  if (product?.evidence?.v2_resolution?.status !== 'resolved') {
-    const requiredWidth = width + getClearance(product, 'left_mm') + getClearance(product, 'right_mm');
-    const requiredHeight = height + getClearance(product, 'top_mm');
-    const requiredDepth = depth + getClearance(product, 'rear_mm');
-    return {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        { '@type': 'Question', name: `What are the exact dimensions of the ${name}?`, acceptedAnswer: { '@type': 'Answer', text: `${name} measures ${width}mm wide, ${height}mm high, and ${depth}mm deep.` } },
-        { '@type': 'Question', name: `What cavity size does the ${name} need?`, acceptedAnswer: { '@type': 'Answer', text: `Allow at least ${requiredWidth}mm width, ${requiredHeight}mm height, and ${requiredDepth}mm depth ${trustCopy.cavityAnswerSuffix}` } },
-        { '@type': 'Question', name: `Is the ${name} verified by FitAppliance?`, acceptedAnswer: { '@type': 'Answer', text: trustCopy.faqVerification } }
-      ]
-    };
-  }
   const requiredWidth = sumKnown(width, getClearance(product, 'left_mm'), getClearance(product, 'right_mm'));
   const requiredHeight = sumKnown(height, getClearance(product, 'top_mm'));
   const requiredDepth = sumKnown(depth, getClearance(product, 'rear_mm'));
@@ -587,9 +599,14 @@ function buildFaqJsonLd(product) {
     Number.isInteger(requiredHeight) ? null : 'height',
     Number.isInteger(requiredDepth) ? null : 'depth',
   ].filter(Boolean);
-  const unknownCopy = unknownAxes.length
-    ? `${unknownAxes[0].charAt(0).toUpperCase()}${unknownAxes[0].slice(1)}${unknownAxes.slice(1).map((axis) => ` and ${axis}`).join('')}`
-    : '';
+  const capitalizedUnknownAxes = unknownAxes.map((axis, index) => (
+    index === 0 ? `${axis.charAt(0).toUpperCase()}${axis.slice(1)}` : axis
+  ));
+  const unknownCopy = capitalizedUnknownAxes.length <= 1
+    ? (capitalizedUnknownAxes[0] ?? '')
+    : capitalizedUnknownAxes.length === 2
+      ? capitalizedUnknownAxes.join(' and ')
+      : `${capitalizedUnknownAxes.slice(0, -1).join(', ')}, and ${capitalizedUnknownAxes.at(-1)}`;
   const cavityAnswer = unknownAxes.length === 0
     ? `Allow at least ${knownMinimums.join(', ').replace(/, ([^,]*)$/, ', and $1')} ${trustCopy.cavityAnswerSuffix}`
     : `${knownMinimums.length ? `Known approved minimum: ${knownMinimums.join(', ')}. ` : ''}${unknownCopy} clearance remain unknown.`;

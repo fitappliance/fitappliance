@@ -78,16 +78,15 @@ function provenanceFromProductEvidence(product = {}) {
   };
 }
 
-function getTrustLevel(provenance = {}) {
+function getTrustLevel(provenance = {}, product = {}) {
+  const geometryLevel = product?.geometry_v2_provenance?.evidenceLevel;
+  if (geometryLevel === 'verified' && product?.fitDecision?.outcome === 'VERIFIED_FIT') return 'verified_fit';
+  if (geometryLevel === 'verified') return 'fit_requirements_verified';
+  if (geometryLevel === 'dimensions') return 'dimensions_verified';
   const explicit = String(provenance?.trust_level ?? '').trim();
-  if (['verified_fit', 'dimensions_verified', 'retailer_spec'].includes(explicit)) return explicit;
-  if (
-    provenance?.clearance_verified === true ||
-    (Array.isArray(provenance?.verified_fields) && provenance.verified_fields.includes('clearance'))
-  ) {
-    return 'verified_fit';
-  }
-  if (provenance?.has_pdf_evidence === true) return 'dimensions_verified';
+  if (explicit === 'retailer_spec') return explicit;
+  if (explicit === 'evidence_pending' || ['verified_fit', 'dimensions_verified'].includes(explicit)) return 'evidence_pending';
+  if (provenance?.has_pdf_evidence === true) return 'evidence_pending';
   return 'retailer_spec';
 }
 
@@ -121,6 +120,17 @@ function renderDimensionsProvenance(provenance) {
   </div>`;
 }
 
+function renderRequirementsProvenance(provenance) {
+  const date = toDateStamp(provenance?.verified_at);
+  const source = sourceAnchor(provenance, 'Official evidence', 'Official evidence captured');
+  return `<div class="provenance-block provenance-block--verified">
+    <span class="provenance-state">Fit requirements verified</span>
+    ${source}
+    <span>fit depends on your cavity measurements</span>
+    ${date ? `<span class="provenance-date">verified ${escHtml(date)}</span>` : ''}
+  </div>`;
+}
+
 function renderRetailerProvenance(provenance = {}) {
   const date = toDateStamp(provenance?.verified_at);
   const source = sourceAnchor(provenance, 'Retailer source', 'Retailer source captured');
@@ -136,7 +146,7 @@ function renderRetailerProvenance(provenance = {}) {
 function renderPendingProvenance() {
   return `<div class="provenance-block provenance-block--pending">
     <span class="provenance-state">Evidence pending</span>
-    <span>Manufacturer manual extracted; manual verification in progress.</span>
+    <span>Source captured; field-level receipt verification pending.</span>
   </div>`;
 }
 
@@ -151,9 +161,11 @@ export function renderProvenanceBlock(product = {}, indexMap = {}) {
   const indexed = getProductProvenance(product?.id ?? product?.product_id ?? product?.slug, indexMap);
   const provenance = indexed ?? provenanceFromProductEvidence(product);
   if (provenance?.status === 'verified' || provenance?.has_pdf_evidence === true) {
-    const trustLevel = getTrustLevel(provenance);
+    const trustLevel = getTrustLevel(provenance, product);
     if (trustLevel === 'verified_fit') return renderVerifiedProvenance(provenance);
+    if (trustLevel === 'fit_requirements_verified') return renderRequirementsProvenance(provenance);
     if (trustLevel === 'dimensions_verified') return renderDimensionsProvenance(provenance);
+    if (trustLevel === 'evidence_pending') return renderPendingProvenance();
     return renderRetailerProvenance(provenance);
   }
   if (provenance?.status === 'pending') {

@@ -57,13 +57,57 @@ function makeProduct(overrides = {}) {
   };
 }
 
+function receiptBoundProduct(overrides = {}, evidenceLevel = 'verified') {
+  const product = makeProduct(overrides);
+  const geometry = {
+    category: product.cat,
+    formFactor: null,
+    closedEnvelope: {
+      widthMm: product.w,
+      heightMm: { minimumMm: product.h, maximumMm: product.h },
+      depthMm: product.d,
+    },
+    installation: {
+      leftMm: product.clearance_requirements?.left_mm ?? null,
+      rightMm: product.clearance_requirements?.right_mm ?? null,
+      topMm: product.clearance_requirements?.top_mm ?? null,
+      rearMm: product.clearance_requirements?.rear_mm ?? null,
+      frontMm: null,
+    },
+    operation: {
+      doorOpenDepthMm: product.dimensions?.door_open_90_depth_mm ?? null,
+      hingeSideSpaceMm: null,
+      lidOpenHeightMm: null,
+    },
+    service: { plumbingRearMm: null, rearServicesMm: 50, rearVentilationMm: 50 },
+    delivery: { widthMm: null, heightMm: null, depthMm: null },
+  };
+  const fields = evidenceLevel === 'verified'
+    ? [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+      'installation.leftMm', 'installation.rightMm', 'installation.topMm', 'installation.rearMm',
+      'operation.doorOpenDepthMm', 'service.rearServicesMm',
+    ]
+    : ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
+  const fieldEvidence = Object.fromEntries(fields.map((field) => [field, {
+    sourceUrl: product.evidence.source_url,
+    contentSha256: 'a'.repeat(64),
+    receiptBindingSha256: 'b'.repeat(64),
+  }]));
+  return {
+    ...product,
+    geometry_v2: geometry,
+    geometry_v2_provenance: { evidenceLevel, fieldEvidence },
+  };
+}
+
 function extractJsonLd(html) {
   return [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
     .map((match) => JSON.parse(match[1]));
 }
 
 test('technical SEO: product schema includes physical dimensions and verified evidence', () => {
-  const schema = buildProductJsonLd(makeProduct());
+  const schema = buildProductJsonLd(receiptBoundProduct());
 
   assert.equal(schema['@type'], 'Product');
   assert.equal(schema.name, 'LG WWT-1910BX WashTower');
@@ -73,7 +117,7 @@ test('technical SEO: product schema includes physical dimensions and verified ev
   assert.deepEqual(schema.depth, { '@type': 'QuantitativeValue', value: 660, unitCode: 'MMT' });
   assert.equal(schema.image, 'https://www.fitappliance.com.au/og-images/lg-washing-machine.png');
   assert.ok(schema.additionalProperty.some((row) => row.name === 'Rear clearance' && row.value === 50));
-  assert.ok(schema.additionalProperty.some((row) => row.name === 'Evidence trust level' && row.value === 'Verified Fit'));
+  assert.ok(schema.additionalProperty.some((row) => row.name === 'Evidence trust level' && row.value === 'Fit Requirements Verified'));
   assert.ok(schema.additionalProperty.some((row) => row.name === 'Evidence source' && /dimensions and clearance/.test(row.value)));
 });
 
@@ -99,6 +143,23 @@ test('technical SEO: machine-resolved pages omit unknown clearance instead of in
       },
     },
   });
+  product.geometry_v2 = {
+    category: 'fridge', formFactor: null,
+    closedEnvelope: { widthMm: 913, heightMm: { minimumMm: 1782, maximumMm: 1782 }, depthMm: 803 },
+    installation: { leftMm: null, rightMm: null, topMm: 25, rearMm: null, frontMm: null },
+    operation: { doorOpenDepthMm: 1189, hingeSideSpaceMm: null, lidOpenHeightMm: null },
+    service: { plumbingRearMm: null, rearServicesMm: null, rearVentilationMm: null },
+    delivery: { widthMm: null, heightMm: null, depthMm: null },
+  };
+  product.geometry_v2_provenance = {
+    evidenceLevel: 'dimensions',
+    fieldEvidence: {
+      'closedEnvelope.widthMm': { contentSha256: 'a'.repeat(64), receiptBindingSha256: 'b'.repeat(64) },
+      'closedEnvelope.heightMm': { contentSha256: 'a'.repeat(64), receiptBindingSha256: 'b'.repeat(64) },
+      'closedEnvelope.depthMm': { contentSha256: 'a'.repeat(64), receiptBindingSha256: 'b'.repeat(64) },
+      'installation.topMm': { contentSha256: 'a'.repeat(64), receiptBindingSha256: 'b'.repeat(64) },
+    },
+  };
   const schema = buildProductJsonLd(product);
   const html = buildProductPageHtml(product);
 
@@ -112,6 +173,31 @@ test('technical SEO: machine-resolved pages omit unknown clearance instead of in
   assert.match(html, /manufacturer-backed/i);
   assert.doesNotMatch(html, /Allow at least 913mm width, 1807mm height, and 803mm depth/);
   assert.match(html, /Width and depth clearance remain unknown/);
+});
+
+test('technical SEO: legacy evidence without field receipts never serializes null clearance values', () => {
+  const product = makeProduct({
+    geometry_v2: undefined,
+    geometry_v2_provenance: undefined,
+    evidence: {
+      has_pdf_evidence: true,
+      source_url: 'https://example.com/captured.pdf',
+      verified_at: '2026-05-09',
+      trust_level: 'verified_fit',
+      clearance_verified: true,
+    },
+  });
+  const schema = buildProductJsonLd(product);
+  const html = buildProductPageHtml(product);
+  const faq = extractJsonLd(html).find((entry) => entry['@type'] === 'FAQPage');
+  const cavityAnswer = faq.mainEntity.find((entry) => /What cavity size/.test(entry.name)).acceptedAnswer.text;
+
+  assert.equal(schema.additionalProperty.some((row) => /clearance/i.test(row.name)), false);
+  assert.doesNotMatch(JSON.stringify(schema), /nullmm|"value":null/);
+  assert.doesNotMatch(html, /nullmm/);
+  assert.match(html, /<tr><th>Left<\/th><td>Unknown<\/td><\/tr>/);
+  assert.doesNotMatch(cavityAnswer, /Allow at least/);
+  assert.match(cavityAnswer, /Width, height, and depth clearance remain unknown\./);
 });
 
 test('technical SEO: product schema adds real Offer from captured retailer price', () => {
@@ -180,13 +266,13 @@ test('technical SEO: product schema does not invent Offer when price is absent',
 });
 
 test('technical SEO: product page avoids Product schema when no rich-result qualifier exists', () => {
-  const product = makeProduct();
+  const product = receiptBoundProduct();
   const slug = slugifyProduct(product);
   const html = buildProductPageHtml(product);
   const jsonLd = extractJsonLd(html);
 
   assert.match(html, new RegExp(`<link rel="canonical" href="https://www\\.fitappliance\\.com\\.au/products/${slug}">`));
-  assert.match(html, /LG WWT-1910BX WashTower Exact Dimensions &amp; Verified Cavity Fit \| FitAppliance/);
+  assert.match(html, /LG WWT-1910BX WashTower Exact Dimensions &amp; Verified Installation Requirements \| FitAppliance/);
   assert.equal(jsonLd.some((block) => block['@type'] === 'Product'), false);
   assert.ok(jsonLd.some((block) => block['@type'] === 'BreadcrumbList'), 'Breadcrumb JSON-LD missing');
   assert.ok(jsonLd.some((block) => block['@type'] === 'FAQPage'), 'FAQ JSON-LD missing');
@@ -237,7 +323,7 @@ test('technical SEO: product names always include model for unique GSC crawl sig
 });
 
 test('technical SEO: dimensions-only and retailer spec pages avoid Verified Fit wording', () => {
-  const dimensionsOnly = buildProductPageHtml(makeProduct({
+  const dimensionsOnly = buildProductPageHtml(receiptBoundProduct({
     evidence: {
       has_pdf_evidence: true,
       source_url: 'https://example.com/dimensions.pdf',
@@ -247,7 +333,7 @@ test('technical SEO: dimensions-only and retailer spec pages avoid Verified Fit 
       clearance_verified: false,
     },
     data_source: 'official_pdf_dimensions_only',
-  }));
+  }, 'dimensions'));
   assert.match(dimensionsOnly, /Dimensions Verified/);
   assert.match(dimensionsOnly, /Exact Dimensions &amp; Clearance Estimate/);
   assert.doesNotMatch(dimensionsOnly, /Verified PDF evidence/);

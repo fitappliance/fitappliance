@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "2026-07-12.2",
+  "documentTypePriority": [
+    "installation_guide",
+    "quick_reference_guide",
+    "specification_sheet",
+    "user_manual",
+    "family_manual"
+  ],
+  "transport": {
+    "curlPreferredHosts": ["resource.electrolux.com.au"],
+    "preserveCurlDefaultUserAgentHosts": ["resource.electrolux.com.au"]
+  },
+  "brands": {
+    "electrolux": {
+      "templates": [
+        { "documentType": "specification_sheet", "url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber={model}&brand=Electrolux" }
+      ]
+    },
+    "westinghouse": {
+      "templates": [
+        { "documentType": "specification_sheet", "url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber={model}&brand=Westinghouse" }
+      ]
+    },
+    "kelvinator": {
+      "templates": [
+        { "documentType": "specification_sheet", "url": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber={model}&brand=Kelvinator" }
+      ]
+    },
+    "bosch": {
+      "templates": [
+        { "documentType": "specification_sheet", "url": "https://media3.bosch-home.com/Documents/specsheet/en-AU/{model}.pdf" }
+      ]
+    },
+    "fisherpaykel": { "templates": [] },
+    "haier": { "templates": [] },
+    "hisense": { "templates": [] },
+    "lg": { "templates": [] },
+    "samsung": { "templates": [] },
+    "smeg": {
+      "templates": [
+        { "documentType": "specification_sheet", "url": "https://sys.smeg.com.au/Product/Techspecs/{model}.pdf" }
+      ]
+    },
+    "miele": { "templates": [] }
+  }
+}

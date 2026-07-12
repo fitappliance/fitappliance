@@ -1,6 +1,7 @@
 import { load } from 'cheerio';
 
 import { isOfficialBrandUrl } from './evidence-source-verifier.mjs';
+import { discoverOfficialDocumentCandidates } from './official-document-discovery.mjs';
 
 function modelKey(value) {
   return String(value ?? '').toUpperCase().replace(/[^A-Z0-9]+/g, '');
@@ -58,4 +59,20 @@ export async function discoverCandidateUrls(caseRecord, options = {}) {
     }
   }
   return [...candidates].sort();
+}
+
+export async function discoverRankedCandidateUrls(caseRecord, options = {}) {
+  const explicitUrls = [
+    ...(caseRecord.sources ?? []).map((source) => source.finalUrl ?? source.sourceUrl),
+    ...(caseRecord.candidateUrls ?? []),
+  ].filter(Boolean);
+  const ranked = await discoverOfficialDocumentCandidates({
+    brand: caseRecord.brand,
+    model: caseRecord.model,
+    category: caseRecord.category,
+    explicitUrls,
+    productPageUrls: caseRecord.productPageUrls ?? caseRecord.officialProductPageUrls ?? [],
+  }, options);
+  const legacy = await discoverCandidateUrls(caseRecord, options);
+  return [...new Set([...ranked.map((candidate) => candidate.url), ...legacy])];
 }
