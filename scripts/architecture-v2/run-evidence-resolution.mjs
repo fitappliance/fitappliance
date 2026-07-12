@@ -6,6 +6,7 @@ import { dirname, isAbsolute, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { runEvidenceResearchCycle } from '../../src/domain/evidence-research-runner.mjs';
+import { verifyAndAttestResolutionArtifact } from '../../src/domain/evidence-artifact-verifier.mjs';
 import { adjudicateResolutionCase } from '../../src/domain/evidence-resolution-loop.mjs';
 import { buildResolutionSeedDocument } from '../../src/domain/evidence-resolution-seed.mjs';
 import { runMineruPdfToJson } from '../../src/domain/mineru-runner.mjs';
@@ -50,6 +51,38 @@ async function createObjectWriter(storageRoot, dryRun) {
   };
 }
 
+async function reattestStoredSources(caseRecord, storageRoot, verifiedAt) {
+  const caseIdentity = {
+    brand: caseRecord.brand,
+    model: caseRecord.model,
+    category: caseRecord.category,
+  };
+  const sources = [];
+  for (const source of caseRecord.sources ?? []) {
+    const bytes = await readFile(resolveWithin(storageRoot, source.objectPath));
+    const derivedArtifactBytes = source.derivedArtifact
+      ? await readFile(resolveWithin(storageRoot, source.derivedArtifact.objectPath))
+      : null;
+    sources.push(verifyAndAttestResolutionArtifact({
+      source: { ...source, verificationReceipt: undefined },
+      caseIdentity,
+      bytes,
+      derivedArtifactBytes,
+      verifiedAt,
+    }));
+  }
+  if (!sources.length) throw new Error('stored source required for receipt migration');
+  return {
+    ...caseRecord,
+    sources,
+    refreshHistory: [...(caseRecord.refreshHistory ?? []), {
+      at: verifiedAt,
+      outcome: 'reattested',
+      reason: 'verification_policy_migration',
+    }],
+  };
+}
+
 async function main(args) {
   const dryRun = args.includes('--dry-run');
   const refresh = args.includes('--refresh');
@@ -70,9 +103,27 @@ async function main(args) {
   const cases = [];
   const outcomes = [];
   for (const current of document.cases) {
-    const decision = adjudicateResolutionCase(current);
-    if ((decision.status === 'resolved' && !refresh)
-      || (decision.status === 'quarantined' && !retryTerminal)) {
+    let decision = null;
+    let staleReceiptRefresh = false;
+    try {
+      decision = adjudicateResolutionCase(current);
+    } catch (error) {
+      if (!refresh || !/current verification receipt required/i.test(String(error?.message ?? error))) throw error;
+      staleReceiptRefresh = true;
+    }
+    if (staleReceiptRefresh) {
+      try {
+        const reattested = await reattestStoredSources(current, storageRoot, now);
+        const migratedDecision = adjudicateResolutionCase(reattested);
+        cases.push(reattested);
+        outcomes.push({ caseId: current.id, outcome: 'reattested', status: migratedDecision.status });
+        continue;
+      } catch {
+        // Network research below is the fallback when immutable stored evidence cannot replay.
+      }
+    }
+    if (!staleReceiptRefresh && ((decision.status === 'resolved' && !refresh)
+      || (decision.status === 'quarantined' && !retryTerminal))) {
       cases.push(current);
       outcomes.push({ caseId: current.id, outcome: 'skipped', status: decision.status });
       continue;
@@ -81,7 +132,7 @@ async function main(args) {
       fetchImpl: fetch,
       now,
       writeObject,
-      refresh: decision.status === 'resolved',
+      refresh: staleReceiptRefresh || decision.status === 'resolved',
       sitemapUrls: current.discoverySitemapUrls ?? [],
       maximumSitemapDocuments: 12,
       fetchAttempts: 3,

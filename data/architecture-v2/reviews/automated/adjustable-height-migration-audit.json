@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-12T09:23:02.746Z",
+  "summary": {
+    "cases": 3,
+    "publishedReceiptBoundRange": 3,
+    "indexedPendingReceiptBoundSource": 0,
+    "mineruBackfillPending": 0,
+    "scalarCoercions": 0
+  },
+  "cases": [
+    {
+      "legacyRuntimeId": "dishwasher-adw0961",
+      "brand": "Haier",
+      "model": "HDW15F3S1",
+      "category": "dishwasher",
+      "sourcePdfSha256": "8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb",
+      "sourcePage": 2,
+      "sourceQuote": "Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm",
+      "expectedRange": {
+        "minimumMm": 850,
+        "maximumMm": 895
+      },
+      "scalarCoercionAllowed": false,
+      "placementHeightMm": 895,
+      "mineruStatus": "indexed",
+      "status": "published_receipt_bound_range",
+      "publication": {
+        "release": true,
+        "evidenceLevel": "dimensions",
+        "blocker": null
+      }
+    },
+    {
+      "legacyRuntimeId": "dishwasher-adw1146",
+      "brand": "Haier",
+      "model": "HDW15F1B1",
+      "category": "dishwasher",
+      "sourcePdfSha256": "b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557",
+      "sourcePage": 2,
+      "sourceQuote": "Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm",
+      "expectedRange": {
+        "minimumMm": 850,
+        "maximumMm": 895
+      },
+      "scalarCoercionAllowed": false,
+      "placementHeightMm": 895,
+      "mineruStatus": "indexed",
+      "status": "published_receipt_bound_range",
+      "publication": {
+        "release": true,
+        "evidenceLevel": "dimensions",
+        "blocker": null
+      }
+    },
+    {
+      "legacyRuntimeId": "dishwasher-adw1276",
+      "brand": "Haier",
+      "model": "HDW15F4B1",
+      "category": "dishwasher",
+      "sourcePdfSha256": "658a7534c9bc1e033d5e635fc36185deb41bca28ac6ede41e31064c882bab6c5",
+      "sourcePage": 2,
+      "sourceQuote": "Product dimensions: Depth 599 mm; Height 850 - 895 mm; Width 597 mm",
+      "expectedRange": {
+        "minimumMm": 850,
+        "maximumMm": 895
+      },
+      "scalarCoercionAllowed": false,
+      "placementHeightMm": 895,
+      "mineruStatus": "indexed",
+      "status": "published_receipt_bound_range",
+      "publication": {
+        "release": true,
+        "evidenceLevel": "dimensions",
+        "blocker": null
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-11.2",
+  "policyVersion": "2026-07-12.1",
   "maxEvidenceAgeDays": 400,
   "marketPathPatterns": {
     "lg": ["^/au(?:/|$)", "^/content/dam/channel/wcms/au(?:/|$)"],
@@ -16,7 +16,7 @@
     "euromaid": ["euromaid.com.au"],
     "fisherpaykel": ["fisherpaykel.com"],
     "haier": ["haier.com", "haier.com.au"],
-    "hisense": ["hisense.com"],
+    "hisense": ["hisense.com", "hisense.com.au"],
     "inalto": ["inalto.house", "residentia.group"],
     "kelvinator": ["kelvinator.com.au", "resource.electrolux.com.au"],
     "kogan": ["kogan.com"],

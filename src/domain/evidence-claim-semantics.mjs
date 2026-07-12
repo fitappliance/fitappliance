@@ -1,10 +1,10 @@
 const FIELD_RULES = Object.freeze({
-  'closedEnvelope.widthMm': { label: /(?:\b(?:total|overall|external|product)?\s*width\b|^\s*(?:total|overall|external|product)?\s*wide(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'width', reject: /cabinet|cut[ -]?out|cavity|packag/i },
-  'closedEnvelope.heightMm': { label: /(?:\b(?:total|overall|external|product)?\s*height\b|^\s*(?:total|overall|external|product)?\s*high(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'height', reject: /cabinet|cut[ -]?out|cavity|packag|lid\s*open/i },
-  'closedEnvelope.depthMm': { label: /(?:\b(?:total|overall|external|product)?\s*depth\b|^\s*(?:total|overall|external|product)?\s*deep(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'depth', reject: /cabinet|cut[ -]?out|cavity|packag|(?:door\s*open(?:ed)?|open(?:ed)?\s*door)/i },
-  'installation.leftMm': { label: /(?:left.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}left)/i, kind: 'clearance' },
-  'installation.rightMm': { label: /(?:right.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}right)/i, kind: 'clearance' },
-  'installation.topMm': { label: /(?:air\s*space\s*above|top|overhead).{0,30}(?:clearance|space|gap|cabinet)|air\s*space\s*above\s*cabinet/i, kind: 'clearance' },
+  'closedEnvelope.widthMm': { label: /(?:\b(?:total|overall|external|product)?\s*width\b|^\s*(?:total|overall|external|product)?\s*wide(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'width', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b/i },
+  'closedEnvelope.heightMm': { label: /(?:\b(?:total|overall|external|product)?\s*height\b|^\s*(?:total|overall|external|product)?\s*high(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'height', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b|lid\s*open/i },
+  'closedEnvelope.depthMm': { label: /(?:\b(?:total|overall|external|product)?\s*depth\b|^\s*(?:total|overall|external|product)?\s*deep(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'depth', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b|(?:including|with)\s+(?:the\s+)?handles?|without\s+(?:the\s+)?door|(?:door\s*open(?:ed)?|open(?:ed)?\s*door)/i },
+  'installation.leftMm': { label: /(?:left.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}left|(?:clearance|space|gap).{0,30}(?:each|both)\s+sides?|(?:each|both)\s+sides?.{0,30}(?:clearance|space|gap))/i, kind: 'clearance' },
+  'installation.rightMm': { label: /(?:right.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}right|(?:clearance|space|gap).{0,30}(?:each|both)\s+sides?|(?:each|both)\s+sides?.{0,30}(?:clearance|space|gap))/i, kind: 'clearance' },
+  'installation.topMm': { label: /(?:(?:air\s*space\s*above|top|overhead).{0,30}(?:clearance|space|gap|cabinet)|(?:clearance|space|gap).{0,30}(?:on\s+)?(?:top|above|overhead)|air\s*space\s*above\s*cabinet)/i, kind: 'clearance' },
   'installation.rearMm': { label: /(?:rear|behind|back).{0,30}(?:clearance|space|gap|ventilation)|(?:clearance|space|gap).{0,30}(?:rear|behind|back)/i, kind: 'clearance' },
   'installation.frontMm': { label: /front.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}front/i, kind: 'clearance' },
   'operation.doorOpenDepthMm': { label: /(?:depth.{0,40}(?:door\s*open(?:ed)?|open(?:ed)?\s*door)|(?:door\s*open(?:ed)?|open(?:ed)?\s*door).{0,40}depth)/i, kind: 'operation' },
@@ -113,7 +113,7 @@ const DIMENSION_AXIS_ALIASES = Object.freeze({
 });
 
 function explicitDimensionSequence(label) {
-  const compact = /(?:^|[^a-z0-9])([whd])\s*([x×/])\s*([whd])\s*\2\s*([whd])(?:$|[^a-z0-9])/i
+  const compact = /(?:^|[^a-z0-9])([whd])\s*([x×/*])\s*([whd])\s*\2\s*([whd])(?:$|[^a-z0-9])/i
     .exec(String(label ?? ''));
   if (compact) {
     const sequence = [compact[1], compact[3], compact[4]]
@@ -121,7 +121,7 @@ function explicitDimensionSequence(label) {
     if (new Set(sequence).size === 3) return sequence;
   }
   const tokens = Object.keys(DIMENSION_AXIS_ALIASES).sort((left, right) => right.length - left.length).join('|');
-  const separator = '(?:\\s*(?:x|×|/|,|\\bby\\b)\\s*)';
+  const separator = '(?:\\s*(?:x|×|/|\\*|,|\\bby\\b)\\s*)';
   const match = new RegExp(`\\b(${tokens})\\b${separator}\\b(${tokens})\\b${separator}\\b(${tokens})\\b`, 'i')
     .exec(String(label ?? ''));
   if (!match) return null;
@@ -135,7 +135,7 @@ export function claimsFromExplicitDimensionSequence(fragment, context, requested
   const valueText = String(fragment?.value ?? '').replace(/\s+/g, ' ').trim();
   if (!label || !valueText) return [];
   if (!/\b(?:dimension|dimensions|size)\b/i.test(label)
-    || /\b(?:packag|shipping|carton|box(?:ed)?|crate)\w*\b/i.test(label)) return [];
+    || /\b(?:pack(?:ed|ag(?:e|ed|ing))?|shipping|carton|box(?:ed)?|crate)\b/i.test(label)) return [];
   const axisOrder = explicitDimensionSequence(label);
   if (!axisOrder) return [];
   const sourceValues = (valueText.match(/\d+(?:\.\d+)?/g) ?? []).map(Number);
@@ -211,10 +211,10 @@ function assertGroupedClaim(claim, context, rule, combined) {
   if (sourceValues.some((value, index) => value * multiplier !== valuesMm[index])) {
     throw new TypeError(`grouped source conversion invalid for ${claim.field}`);
   }
-  const separator = '\\s*(?:x|×|/|,|\\bby\\b)\\s*';
+  const separator = '\\s*(?:x|×|/|\\*|,|\\bby\\b)\\s*';
   const sequencePattern = axisOrder.map((axis) => `\\b${GROUPED_AXIS_LABELS[axis]}\\b`).join(separator);
   const compactDimensionPattern = dimensionSequence
-    ? new RegExp(`(?:^|[^a-z0-9])${axisOrder.map((axis) => axis[0]).join('\\s*[x×/]\\s*')}(?:$|[^a-z0-9])`, 'i')
+    ? new RegExp(`(?:^|[^a-z0-9])${axisOrder.map((axis) => axis[0]).join('\\s*[x×/*]\\s*')}(?:$|[^a-z0-9])`, 'i')
     : null;
   if (!(new RegExp(sequencePattern, 'i').test(claim.label)
       || compactDimensionPattern?.test(claim.label))

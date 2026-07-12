@@ -159,9 +159,19 @@ test('committed Phase 10 manifest reaches source registry and public geometry co
     { minimumMm: 857, maximumMm: 917 },
   );
   const legacyReviewedSamsung = publicByLegacy.get('discovery-dryer-samsung-dv90bb9440gh');
-  assert.equal(legacyReviewedSamsung.evidence.trust_level, 'evidence_pending');
+  assert.equal(legacyReviewedSamsung.evidence.trust_level, 'dimensions_verified');
   assert.equal(legacyReviewedSamsung.evidence.clearance_verified, false);
-  assert.equal(legacyReviewedSamsung.geometry_v2_provenance, undefined);
-  assert.equal(legacyReviewedSamsung.geometry_v2.installation.frontMm, 490);
-  assert.equal(publicByLegacy.get('washing_machine-acw1520').geometry_v2, undefined);
+  assert.equal(legacyReviewedSamsung.geometry_v2_provenance.evidenceLevel, 'dimensions');
+  assert.ok(legacyReviewedSamsung.geometry_v2_provenance.fieldEvidence['closedEnvelope.widthMm'].receiptBindingSha256);
+  assert.ok(legacyReviewedSamsung.geometry_v2_provenance.missingForVerifiedFit.includes('installation.leftMm'));
+  assert.equal(legacyReviewedSamsung.geometry_v2.installation.frontMm, null);
+  const recoveredHisense = publicByLegacy.get('washing_machine-acw1520');
+  assert.deepEqual(recoveredHisense.geometry_v2.closedEnvelope, {
+    widthMm: 595,
+    heightMm: { minimumMm: 845, maximumMm: 845 },
+    depthMm: 550,
+  });
+  assert.equal(recoveredHisense.evidence.trust_level, 'dimensions_verified');
+  assert.equal(recoveredHisense.evidence.acceptance.identity_outcome, 'exact');
+  assert.equal(recoveredHisense.evidence.clearance_verified, false);
 });

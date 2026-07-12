@@ -5,6 +5,7 @@ import {
   fetchOfficialArtifact,
   runEvidenceResearchCycle,
 } from '../../src/domain/evidence-research-runner.mjs';
+import { evidenceSourcePolicy } from '../../src/domain/evidence-source-verifier.mjs';
 import { buildMineruDerivedArtifact } from '../../src/domain/mineru-document.mjs';
 import { createHash } from 'node:crypto';
 
@@ -65,7 +66,10 @@ test('research cycle discovers, extracts, attests, stores, and advances without 
   assert.equal(result.caseRecord.attempt, 2);
   assert.equal(result.caseRecord.sources.length, 1);
   assert.equal(result.caseRecord.sources[0].claims.find((claim) => claim.field === 'closedEnvelope.widthMm').value, 913);
-  assert.equal(result.caseRecord.sources[0].verificationReceipt.policyVersion, '2026-07-11.5');
+  assert.equal(
+    result.caseRecord.sources[0].verificationReceipt.policyVersion,
+    evidenceSourcePolicy.resolutionPolicy.policyVersion,
+  );
   assert.equal(writes.length, 1);
   assert.match(writes[0].path, /^evidence\/web\/sha256\/[a-f0-9]{2}\/[a-f0-9]{2}\/[a-f0-9]{64}\.html$/);
 });
@@ -107,7 +111,10 @@ test('unchanged bytes replace a stale policy receipt without consuming an attemp
   });
   assert.equal(replay.caseRecord.attempt, stale.attempt);
   assert.equal(replay.caseRecord.sources.length, 1);
-  assert.equal(replay.caseRecord.sources[0].verificationReceipt.policyVersion, '2026-07-11.5');
+  assert.equal(
+    replay.caseRecord.sources[0].verificationReceipt.policyVersion,
+    evidenceSourcePolicy.resolutionPolicy.policyVersion,
+  );
   assert.equal(replay.caseRecord.history.at(-1).reason, 'source_reverified');
 });
 

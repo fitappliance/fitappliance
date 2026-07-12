@@ -96,12 +96,29 @@
             }
           ],
           "verificationReceipt": {
-            "schemaVersion": 1,
-            "policyVersion": "2026-07-11.5",
-            "manufacturerPolicyVersion": "2026-07-11.2",
-            "verifiedAt": "2026-07-11T14:35:00.000Z",
-            "bindingSha256": "0f02fa87a7f496212d48ed4c0a61191f1d0fa8217e405c8415db11ae8da6bd30"
+            "schemaVersion": 2,
+            "policyVersion": "2026-07-12.2",
+            "manufacturerPolicyVersion": "2026-07-12.1",
+            "verifiedAt": "2026-07-12T09:22:10.676Z",
+            "bindingSha256": "744c30c1c472abf9c2ac47e04d662bc4798ed15262fa47599ddf24412e250168"
           }
+        }
+      ],
+      "refreshHistory": [
+        {
+          "at": "2026-07-12T09:09:46.109Z",
+          "outcome": "failed",
+          "reason": "claim_extraction:no exact-model MinerU evidence with explicit axes extracted;Command failed: curl --location --fail --silent --show-error --max-time 30 --max-redirs 5 --max-filesize 20971520 --user-agent FitApplianceEvidenceBot/3.0 (+https://www.fitappliance.com.au/about/editorial-standards) --header Accept: text/html,application/pdf;q=0.9 --dump-header /var/folders/zy/jxhzsrnx4_s2bf7s5jx116600000gn/T/fitappliance-curl-NwqDyI/headers --output /var/folders/zy/jxhzsrnx4_s2bf7s5jx116600000gn/T/fitappliance-curl-NwqDyI/body --write-out %{url_effective}\n%{content_type}\n https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe6874ba/\ncurl: (92) HTTP/2 stream 1 was not closed cleanly: INTERNAL_ERROR (err 2)\n"
+        },
+        {
+          "at": "2026-07-12T09:12:46.806Z",
+          "outcome": "reattested",
+          "reason": "verification_policy_migration"
+        },
+        {
+          "at": "2026-07-12T09:22:10.676Z",
+          "outcome": "reattested",
+          "reason": "verification_policy_migration"
         }
       ]
     }

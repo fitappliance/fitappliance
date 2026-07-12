@@ -1,0 +1,516 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-11T00:00:00.000Z",
+  "policy": {
+    "exactSourceMayResolve": true,
+    "tierARequiresOfficialCrossReference": true,
+    "tierBRequiresRegulatorFamily": true,
+    "tierBRequiresOfficialDimensions": true,
+    "tierBIndependentTargetMarketSources": 2,
+    "tierBDimensionsOnly": true,
+    "similarityNeverApproves": true
+  },
+  "summary": {
+    "cases": 9,
+    "needsResearch": 0,
+    "resolved": 8,
+    "quarantined": 1,
+    "targetNotVisible": 2,
+    "suffixMismatch": 2,
+    "seriesManualMissingExactSku": 3,
+    "familyOnly": 1,
+    "filenameCoverConflict": 1
+  },
+  "cases": [
+    {
+      "id": "identity-ao-48444",
+      "legacyRuntimeId": "ao-48444",
+      "canonicalProductId": "fa_prod_24e6e3527502e1803fd96159",
+      "brand": "Fisher & Paykel",
+      "category": "fridge",
+      "targetModel": "RF522ADUSX5",
+      "observedModels": [],
+      "failureClass": "target_not_visible",
+      "reason": "exact_sales_model_not_visible_on_rendered_page",
+      "status": "resolved",
+      "requiresHumanReview": false,
+      "researchAttempts": 1,
+      "maximumResearchAttempts": 3,
+      "resolutionRoutes": [
+        "official_exact_model_source",
+        "tier_a",
+        "tier_b"
+      ],
+      "allowedApprovalTiers": [
+        "tier_a",
+        "tier_b"
+      ],
+      "tierBFieldLimit": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "approvedFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "sourceDocument": {
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8b42e8ee/QRG/AU/QRG-AU-26404.pdf",
+        "contentSha256": "fdfd4107f7caa241eb3c29668296780378b5db639ab04bb5e44f408c9ed17ef4",
+        "transportHostType": "manufacturer",
+        "authorType": "manufacturer"
+      },
+      "publication": {
+        "release": true,
+        "terminalWithoutEvidence": "quarantined",
+        "transferableFields": [
+          "closedEnvelope.depthMm",
+          "closedEnvelope.heightMm",
+          "closedEnvelope.widthMm"
+        ]
+      },
+      "resolution": {
+        "acceptanceId": "recovery-fisherpaykel-rf522adusx5",
+        "identityOutcome": "exact",
+        "sourceModel": null,
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe2d58313/QRG/CN/QRG-CN-25440.pdf",
+        "receiptBindingSha256": "dda9b9662b70aef1836589813714e66fc04c24373c07c2ed6e492be406933a51"
+      }
+    },
+    {
+      "id": "identity-ao-48469",
+      "legacyRuntimeId": "ao-48469",
+      "canonicalProductId": "fa_prod_2a166709ec2d38e57d5c5f58",
+      "brand": "Fisher & Paykel",
+      "category": "fridge",
+      "targetModel": "RF610ADUSX5",
+      "observedModels": [],
+      "failureClass": "target_not_visible",
+      "reason": "exact_sales_model_not_visible_on_rendered_page",
+      "status": "resolved",
+      "requiresHumanReview": false,
+      "researchAttempts": 1,
+      "maximumResearchAttempts": 3,
+      "resolutionRoutes": [
+        "official_exact_model_source",
+        "tier_a",
+        "tier_b"
+      ],
+      "allowedApprovalTiers": [
+        "tier_a",
+        "tier_b"
+      ],
+      "tierBFieldLimit": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "approvedFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "sourceDocument": {
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
+        "contentSha256": "b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8",
+        "transportHostType": "manufacturer",
+        "authorType": "manufacturer"
+      },
+      "publication": {
+        "release": true,
+        "terminalWithoutEvidence": "quarantined",
+        "transferableFields": [
+          "closedEnvelope.depthMm",
+          "closedEnvelope.heightMm",
+          "closedEnvelope.widthMm"
+        ]
+      },
+      "resolution": {
+        "acceptanceId": "recovery-fisherpaykel-rf610adusx5",
+        "identityOutcome": "exact",
+        "sourceModel": null,
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw17d50d9a/QRG/ASIA/QRG-Asia-26180.pdf",
+        "receiptBindingSha256": "c07e00a6573e2fde64f80b34d791b0c9d2b55e4e70ddffdb7805df9c21597105"
+      }
+    },
+    {
+      "id": "identity-ao-97642",
+      "legacyRuntimeId": "ao-97642",
+      "canonicalProductId": "fa_prod_b3ff5e116c2b87ffdb717ce8",
+      "brand": "Samsung",
+      "category": "fridge",
+      "targetModel": "SRF5300SD",
+      "observedModels": [
+        "RF44A",
+        "RF50A"
+      ],
+      "failureClass": "family_only",
+      "reason": "official PDF covers RF44A and RF50A model families but does not print sales model SRF5300SD",
+      "status": "resolved",
+      "requiresHumanReview": false,
+      "researchAttempts": 1,
+      "maximumResearchAttempts": 3,
+      "resolutionRoutes": [
+        "official_exact_model_source",
+        "tier_a",
+        "tier_b"
+      ],
+      "allowedApprovalTiers": [
+        "tier_a",
+        "tier_b"
+      ],
+      "tierBFieldLimit": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "approvedFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "sourceDocument": null,
+      "publication": {
+        "release": true,
+        "terminalWithoutEvidence": "quarantined",
+        "transferableFields": [
+          "closedEnvelope.depthMm",
+          "closedEnvelope.heightMm",
+          "closedEnvelope.widthMm"
+        ]
+      },
+      "resolution": {
+        "acceptanceId": "recovery-samsung-srf5300sd",
+        "identityOutcome": "official_marketing_alias",
+        "sourceModel": "RF44A5202SL_SA",
+        "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+        "receiptBindingSha256": "5baa99bcb583f1b76557f5a49b6f4e5c3b73e2ea5cc426eb352696e9b25c5c0e"
+      }
+    },
+    {
+      "id": "identity-discovery-dryer-samsung-dv90bb9440gb",
+      "legacyRuntimeId": "discovery-dryer-samsung-dv90bb9440gb",
+      "canonicalProductId": "fa_prod_68dc16d1924cbb55bfae1472",
+      "brand": "Samsung",
+      "category": "dryer",
+      "targetModel": "DV90BB9440GB",
+      "observedModels": [],
+      "failureClass": "series_manual_missing_exact_sku",
+      "reason": "series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page",
+      "status": "resolved",
+      "requiresHumanReview": false,
+      "researchAttempts": 1,
+      "maximumResearchAttempts": 3,
+      "resolutionRoutes": [
+        "official_exact_model_source",
+        "tier_a",
+        "tier_b"
+      ],
+      "allowedApprovalTiers": [
+        "tier_a",
+        "tier_b"
+      ],
+      "tierBFieldLimit": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "approvedFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "sourceDocument": {
+        "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=DV90BB9440GB&CttFileID=9157242&CDCttType=UM&VPath=UM%2F202304%2F20230425115323308%2FDC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf",
+        "contentSha256": "d5682f81974da77f17d2db44b6192ec3b897c9f889a7ac7ef0baa18747c23741",
+        "transportHostType": "manufacturer",
+        "authorType": "manufacturer"
+      },
+      "publication": {
+        "release": true,
+        "terminalWithoutEvidence": "quarantined",
+        "transferableFields": [
+          "closedEnvelope.depthMm",
+          "closedEnvelope.heightMm",
+          "closedEnvelope.widthMm"
+        ]
+      },
+      "resolution": {
+        "acceptanceId": "recovery-samsung-dv90bb9440gb",
+        "identityOutcome": "exact",
+        "sourceModel": null,
+        "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-dryer-ai-dry-9kg-black-dv90bb9440gbsa/",
+        "receiptBindingSha256": "3bb2c66eb920f0f586981e15249093227f27262790996d2fa6d895d4bd9de1f0"
+      }
+    },
+    {
+      "id": "identity-discovery-washing-machine-samsung-ww11cg60adle",
+      "legacyRuntimeId": "discovery-washing-machine-samsung-ww11cg60adle",
+      "canonicalProductId": "fa_prod_00d1f6e82bb2d93e3d47010c",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "targetModel": "WW11CG60ADLE",
+      "observedModels": [],
+      "failureClass": "series_manual_missing_exact_sku",
+      "reason": "series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page",
+      "status": "resolved",
+      "requiresHumanReview": false,
+      "researchAttempts": 1,
+      "maximumResearchAttempts": 3,
+      "resolutionRoutes": [
+        "official_exact_model_source",
+        "tier_a",
+        "tier_b"
+      ],
+      "allowedApprovalTiers": [
+        "tier_a",
+        "tier_b"
+      ],
+      "tierBFieldLimit": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "approvedFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "sourceDocument": {
+        "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW11CG60ADLE&CttFileID=11284915&CDCttType=UM&VPath=UM%2F202602%2F20260211103223036%2FDC68-04493F-00_IB_B-PJT_B11_WASHER-MD_SimpleUX_EN_240424.pdf",
+        "contentSha256": "1f2460ba7366fa75d802d47a0bcf01b82c5578919e975d935a8d589b4154f9a0",
+        "transportHostType": "manufacturer",
+        "authorType": "manufacturer"
+      },
+      "publication": {
+        "release": true,
+        "terminalWithoutEvidence": "quarantined",
+        "transferableFields": [
+          "closedEnvelope.depthMm",
+          "closedEnvelope.heightMm",
+          "closedEnvelope.widthMm"
+        ]
+      },
+      "resolution": {
+        "acceptanceId": "recovery-samsung-ww11cg60adle",
+        "identityOutcome": "exact",
+        "sourceModel": null,
+        "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-eco-bubble-ai-energy-mode-ai-control-11kg-white-ww11cg60adlesa/",
+        "receiptBindingSha256": "05cbd4734285bde01f29a081f188ecc664125066951ea5963bf5564659038a5a"
+      }
+    },
+    {
+      "id": "identity-discovery-washing-machine-samsung-ww12bb944dgb",
+      "legacyRuntimeId": "discovery-washing-machine-samsung-ww12bb944dgb",
+      "canonicalProductId": "fa_prod_049da49dd1e75737e8e251bc",
+      "brand": "Samsung",
+      "category": "washing_machine",
+      "targetModel": "WW12BB944DGB",
+      "observedModels": [],
+      "failureClass": "series_manual_missing_exact_sku",
+      "reason": "series_manual_does_not_show_exact_sales_model_on_rendered_dimension_page",
+      "status": "quarantined",
+      "requiresHumanReview": false,
+      "researchAttempts": 1,
+      "maximumResearchAttempts": 3,
+      "resolutionRoutes": [
+        "official_exact_model_source",
+        "tier_a",
+        "tier_b"
+      ],
+      "allowedApprovalTiers": [
+        "tier_a",
+        "tier_b"
+      ],
+      "tierBFieldLimit": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "approvedFields": [],
+      "sourceDocument": {
+        "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+        "contentSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+        "transportHostType": "manufacturer",
+        "authorType": "manufacturer"
+      },
+      "publication": {
+        "release": false,
+        "terminalWithoutEvidence": "quarantined",
+        "transferableFields": []
+      },
+      "resolution": null,
+      "terminalReason": "claim_extraction:structured exact model identity signal required in MinerU JSON"
+    },
+    {
+      "id": "identity-dishwasher-adw1149",
+      "legacyRuntimeId": "dishwasher-adw1149",
+      "canonicalProductId": "fa_prod_e34124271503b4915b0099bc",
+      "brand": "Westinghouse",
+      "category": "dishwasher",
+      "targetModel": "WSF6604XB",
+      "observedModels": [
+        "WSF6604WB"
+      ],
+      "failureClass": "suffix_mismatch",
+      "reason": "rendered_document_identifies_WSF6604WB_not_WSF6604XB",
+      "status": "resolved",
+      "requiresHumanReview": false,
+      "researchAttempts": 1,
+      "maximumResearchAttempts": 3,
+      "resolutionRoutes": [
+        "official_exact_model_source",
+        "tier_a",
+        "tier_b"
+      ],
+      "allowedApprovalTiers": [
+        "tier_a",
+        "tier_b"
+      ],
+      "tierBFieldLimit": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "approvedFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "sourceDocument": {
+        "sourceUrl": "https://commercial.appliancesonline.com.au/manuals/ak/3/0/6/6/3066951a7ccf5fafcdc3e0eeb91d98ade3945e25_WSF6604WB_Westinghouse_User_Manual.pdf",
+        "contentSha256": "70124dade32350086dd2f556371322384974494cfc7255b213c97e78ad2df1f5",
+        "transportHostType": "retailer",
+        "authorType": "manufacturer"
+      },
+      "publication": {
+        "release": true,
+        "terminalWithoutEvidence": "quarantined",
+        "transferableFields": [
+          "closedEnvelope.depthMm",
+          "closedEnvelope.heightMm",
+          "closedEnvelope.widthMm"
+        ]
+      },
+      "resolution": {
+        "acceptanceId": "recovery-westinghouse-wsf6604xb",
+        "identityOutcome": "exact",
+        "sourceModel": null,
+        "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6604XB&brand=Westinghouse",
+        "receiptBindingSha256": "b473cee70fffbe279dc4aaaaa274814a59af0c54ddb041af5e93e0158b4e7672"
+      }
+    },
+    {
+      "id": "identity-dishwasher-adw1155",
+      "legacyRuntimeId": "dishwasher-adw1155",
+      "canonicalProductId": "fa_prod_c807bcb91f4565d29547584a",
+      "brand": "Westinghouse",
+      "category": "dishwasher",
+      "targetModel": "WSF6606XB",
+      "observedModels": [
+        "WSF6606X"
+      ],
+      "failureClass": "suffix_mismatch",
+      "reason": "rendered_document_identifies_WSF6606X_not_WSF6606XB",
+      "status": "resolved",
+      "requiresHumanReview": false,
+      "researchAttempts": 1,
+      "maximumResearchAttempts": 3,
+      "resolutionRoutes": [
+        "official_exact_model_source",
+        "tier_a",
+        "tier_b"
+      ],
+      "allowedApprovalTiers": [
+        "tier_a",
+        "tier_b"
+      ],
+      "tierBFieldLimit": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "approvedFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "sourceDocument": {
+        "sourceUrl": "https://commercial.appliancesonline.com.au/public/manuals/WSF6606X-Westinghouse-Specifications-Sheet.pdf",
+        "contentSha256": "c3f814fbe48d311b7004c0144556cd712d4f1c8b8c4eed8f20a5c41416c9573c",
+        "transportHostType": "retailer",
+        "authorType": "manufacturer"
+      },
+      "publication": {
+        "release": true,
+        "terminalWithoutEvidence": "quarantined",
+        "transferableFields": [
+          "closedEnvelope.depthMm",
+          "closedEnvelope.heightMm",
+          "closedEnvelope.widthMm"
+        ]
+      },
+      "resolution": {
+        "acceptanceId": "recovery-westinghouse-wsf6606xb",
+        "identityOutcome": "exact",
+        "sourceModel": null,
+        "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6606XB&brand=Westinghouse",
+        "receiptBindingSha256": "75f1b47b1e9e8c0f28aaa2497af2d7f1eb6d307c4c58efb27a500950b921b50d"
+      }
+    },
+    {
+      "id": "identity-washing_machine-acw1520",
+      "legacyRuntimeId": "washing_machine-acw1520",
+      "canonicalProductId": "fa_prod_2b767c07d444f1cc165b955f",
+      "brand": "Hisense",
+      "category": "washing_machine",
+      "targetModel": "HWF8I1015BX",
+      "observedModels": [
+        "HWF8I1015B"
+      ],
+      "failureClass": "filename_cover_conflict",
+      "reason": "official PDF filename references HWF8I1015BX but the rendered manual cover prints HWF8I1015B; suffix equivalence is not proven",
+      "status": "resolved",
+      "requiresHumanReview": false,
+      "researchAttempts": 1,
+      "maximumResearchAttempts": 3,
+      "resolutionRoutes": [
+        "official_exact_model_source",
+        "tier_a",
+        "tier_b"
+      ],
+      "allowedApprovalTiers": [
+        "tier_a",
+        "tier_b"
+      ],
+      "tierBFieldLimit": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "approvedFields": [
+        "closedEnvelope.depthMm",
+        "closedEnvelope.heightMm",
+        "closedEnvelope.widthMm"
+      ],
+      "sourceDocument": null,
+      "publication": {
+        "release": true,
+        "terminalWithoutEvidence": "quarantined",
+        "transferableFields": [
+          "closedEnvelope.depthMm",
+          "closedEnvelope.heightMm",
+          "closedEnvelope.widthMm"
+        ]
+      },
+      "resolution": {
+        "acceptanceId": "recovery-hisense-hwf8i1015bx",
+        "identityOutcome": "exact",
+        "sourceModel": null,
+        "sourceUrl": "https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer",
+        "receiptBindingSha256": "19d84ec79f8147ee899a80cb8540b091174402e8526c50b7c0bc9cb62e136849"
+      }
+    }
+  ]
+}

@@ -121,6 +121,35 @@ test('technical SEO: product schema includes physical dimensions and verified ev
   assert.ok(schema.additionalProperty.some((row) => row.name === 'Evidence source' && /dimensions and clearance/.test(row.value)));
 });
 
+test('technical SEO: receipt-bound adjustable height remains a range in schema, copy, and cavity maths', () => {
+  const product = receiptBoundProduct({
+    id: 'dishwasher-adw0961',
+    cat: 'dishwasher',
+    brand: 'Haier',
+    model: 'HDW15F3S1',
+    displayName: 'Haier Dishwasher HDW15F3S1',
+    w: 597,
+    h: 850,
+    d: 599,
+    dimensions: { width_mm: 597, height_mm: 850, depth_mm: 599 },
+    clearance_requirements: { left_mm: null, right_mm: null, top_mm: null, rear_mm: null },
+  }, 'dimensions');
+  product.geometry_v2.closedEnvelope.heightMm = { minimumMm: 850, maximumMm: 895 };
+
+  const schema = buildProductJsonLd(product);
+  const html = buildProductPageHtml(product);
+  const faq = extractJsonLd(html).find((entry) => entry['@type'] === 'FAQPage');
+  const dimensionsAnswer = faq.mainEntity.find((entry) => /exact dimensions/.test(entry.name)).acceptedAnswer.text;
+
+  assert.deepEqual(schema.height, {
+    '@type': 'QuantitativeValue', minValue: 850, maxValue: 895, unitCode: 'MMT',
+  });
+  assert.match(html, /W 597mm, H 850-895mm, D 599mm/);
+  assert.match(html, /<tr><th>Height<\/th><td>850-895mm<\/td><\/tr>/);
+  assert.match(dimensionsAnswer, /850-895mm high/);
+  assert.doesNotMatch(html, /<tr><th>Required height<\/th><td>850mm<\/td><\/tr>/);
+});
+
 test('technical SEO: machine-resolved pages omit unknown clearance instead of inventing zero', () => {
   const product = makeProduct({
     cat: 'fridge', brand: 'Westinghouse', model: 'WHE6874BA',

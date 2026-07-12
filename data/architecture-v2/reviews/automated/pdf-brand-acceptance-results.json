@@ -9,8 +9,8 @@
     "acceptedHtmlFallback": 2,
     "geometryDimensions": 10,
     "geometryVerified": 0,
-    "fitInsufficient": 9,
-    "fitConditional": 1,
+    "fitInsufficient": 8,
+    "fitConditional": 2,
     "fitEstimated": 0,
     "fitVerified": 0,
     "quarantined": 0
@@ -86,21 +86,21 @@
           "closedEnvelope.depthMm": {
             "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN24126AU.pdf",
             "contentSha256": "eeca4528ae36bc5317c225b56abfc70c8a95a677ebf26ebfd47b5f6433eb5062",
-            "receiptBindingSha256": "e4b50e2a6e74e95d5e4541961c868b711eaf1a24fe746ba7eaca7178708a85a2",
+            "receiptBindingSha256": "60071c78cbecf7ddccf87242cd5cfedb5e469b908e44c3b239bc3f358fe6b374",
             "page": 2,
             "fragmentSha256": "3f4ed4e91abd53194f954031ce69970437cdd96ddb6b3ebbb62df39934161779"
           },
           "closedEnvelope.heightMm": {
             "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN24126AU.pdf",
             "contentSha256": "eeca4528ae36bc5317c225b56abfc70c8a95a677ebf26ebfd47b5f6433eb5062",
-            "receiptBindingSha256": "e4b50e2a6e74e95d5e4541961c868b711eaf1a24fe746ba7eaca7178708a85a2",
+            "receiptBindingSha256": "60071c78cbecf7ddccf87242cd5cfedb5e469b908e44c3b239bc3f358fe6b374",
             "page": 2,
             "fragmentSha256": "3f4ed4e91abd53194f954031ce69970437cdd96ddb6b3ebbb62df39934161779"
           },
           "closedEnvelope.widthMm": {
             "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN24126AU.pdf",
             "contentSha256": "eeca4528ae36bc5317c225b56abfc70c8a95a677ebf26ebfd47b5f6433eb5062",
-            "receiptBindingSha256": "e4b50e2a6e74e95d5e4541961c868b711eaf1a24fe746ba7eaca7178708a85a2",
+            "receiptBindingSha256": "60071c78cbecf7ddccf87242cd5cfedb5e469b908e44c3b239bc3f358fe6b374",
             "page": 2,
             "fragmentSha256": "3f4ed4e91abd53194f954031ce69970437cdd96ddb6b3ebbb62df39934161779"
           }
@@ -272,11 +272,11 @@
           }
         ],
         "verificationReceipt": {
-          "schemaVersion": 1,
-          "policyVersion": "2026-07-11.5",
-          "manufacturerPolicyVersion": "2026-07-11.2",
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
           "verifiedAt": "2026-07-12T00:00:00.000Z",
-          "bindingSha256": "e4b50e2a6e74e95d5e4541961c868b711eaf1a24fe746ba7eaca7178708a85a2"
+          "bindingSha256": "60071c78cbecf7ddccf87242cd5cfedb5e469b908e44c3b239bc3f358fe6b374"
         }
       },
       "diagnosticArtifacts": {
@@ -371,29 +371,29 @@
         "fieldEvidence": {
           "closedEnvelope.depthMm": {
             "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh5-08w/",
-            "contentSha256": "6d389a5e41f1269abfaa9dd5b7803f348cee6665d7092f4a5ab9944595bed53e",
-            "receiptBindingSha256": "744a2655f7cd39d56cd259e7020af3a736af803c887ad417ea6423c683205cf2",
+            "contentSha256": "6a7fd2ee006ac7e644522aba622fd2230548742316a584f364f1665309367709",
+            "receiptBindingSha256": "271f06db7667f56d0951963b8a99e00bc07c6cfa69ee4553f1839bd9a3b84b8e",
             "page": null,
             "fragmentSha256": null
           },
           "closedEnvelope.heightMm": {
             "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh5-08w/",
-            "contentSha256": "6d389a5e41f1269abfaa9dd5b7803f348cee6665d7092f4a5ab9944595bed53e",
-            "receiptBindingSha256": "744a2655f7cd39d56cd259e7020af3a736af803c887ad417ea6423c683205cf2",
+            "contentSha256": "6a7fd2ee006ac7e644522aba622fd2230548742316a584f364f1665309367709",
+            "receiptBindingSha256": "271f06db7667f56d0951963b8a99e00bc07c6cfa69ee4553f1839bd9a3b84b8e",
             "page": null,
             "fragmentSha256": null
           },
           "closedEnvelope.widthMm": {
             "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh5-08w/",
-            "contentSha256": "6d389a5e41f1269abfaa9dd5b7803f348cee6665d7092f4a5ab9944595bed53e",
-            "receiptBindingSha256": "744a2655f7cd39d56cd259e7020af3a736af803c887ad417ea6423c683205cf2",
+            "contentSha256": "6a7fd2ee006ac7e644522aba622fd2230548742316a584f364f1665309367709",
+            "receiptBindingSha256": "271f06db7667f56d0951963b8a99e00bc07c6cfa69ee4553f1839bd9a3b84b8e",
             "page": null,
             "fragmentSha256": null
           },
           "operation.doorOpenDepthMm": {
             "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh5-08w/",
-            "contentSha256": "6d389a5e41f1269abfaa9dd5b7803f348cee6665d7092f4a5ab9944595bed53e",
-            "receiptBindingSha256": "744a2655f7cd39d56cd259e7020af3a736af803c887ad417ea6423c683205cf2",
+            "contentSha256": "6a7fd2ee006ac7e644522aba622fd2230548742316a584f364f1665309367709",
+            "receiptBindingSha256": "271f06db7667f56d0951963b8a99e00bc07c6cfa69ee4553f1839bd9a3b84b8e",
             "page": null,
             "fragmentSha256": null
           }
@@ -410,7 +410,7 @@
         "verifiedFitEligible": false,
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
-          "6d389a5e41f1269abfaa9dd5b7803f348cee6665d7092f4a5ab9944595bed53e"
+          "6a7fd2ee006ac7e644522aba622fd2230548742316a584f364f1665309367709"
         ]
       },
       "artifactType": "official_html_fallback",
@@ -421,8 +421,8 @@
         "finalUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh5-08w/",
         "redirectChain": [],
         "retrievedAt": "2026-07-12T00:00:00.000Z",
-        "contentSha256": "6d389a5e41f1269abfaa9dd5b7803f348cee6665d7092f4a5ab9944595bed53e",
-        "objectPath": "evidence/web/sha256/6d/38/6d389a5e41f1269abfaa9dd5b7803f348cee6665d7092f4a5ab9944595bed53e.html",
+        "contentSha256": "6a7fd2ee006ac7e644522aba622fd2230548742316a584f364f1665309367709",
+        "objectPath": "evidence/web/sha256/6a/7f/6a7fd2ee006ac7e644522aba622fd2230548742316a584f364f1665309367709.html",
         "contentType": "text/html",
         "byteSize": 3028014,
         "supersedesContentSha256": [],
@@ -527,11 +527,11 @@
           }
         ],
         "verificationReceipt": {
-          "schemaVersion": 1,
-          "policyVersion": "2026-07-11.5",
-          "manufacturerPolicyVersion": "2026-07-11.2",
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
           "verifiedAt": "2026-07-12T00:00:00.000Z",
-          "bindingSha256": "744a2655f7cd39d56cd259e7020af3a736af803c887ad417ea6423c683205cf2"
+          "bindingSha256": "271f06db7667f56d0951963b8a99e00bc07c6cfa69ee4553f1839bd9a3b84b8e"
         }
       },
       "diagnosticArtifacts": {
@@ -627,22 +627,22 @@
         "fieldEvidence": {
           "closedEnvelope.depthMm": {
             "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-bespoke-dryer-ai-dry-9kg-white-dv90bb9440ghsa/",
-            "contentSha256": "dae8defd8742852aa0c0e240df6249076a26bf1954b70dd7e95d43296cd28952",
-            "receiptBindingSha256": "fe8451e3399e86a3b4360e1583884be00cb3df7184e11138638a54a2a0a58795",
+            "contentSha256": "d4ff18811b4c3bce510c9392e332cb3464c64ac4ca90d7587ac9fe7fc3507cc1",
+            "receiptBindingSha256": "347e8b762ed6189b6bf3ea3b616fc6e0e2f36fca28cee43d0b9c0b0c79794f8c",
             "page": null,
             "fragmentSha256": null
           },
           "closedEnvelope.heightMm": {
             "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-bespoke-dryer-ai-dry-9kg-white-dv90bb9440ghsa/",
-            "contentSha256": "dae8defd8742852aa0c0e240df6249076a26bf1954b70dd7e95d43296cd28952",
-            "receiptBindingSha256": "fe8451e3399e86a3b4360e1583884be00cb3df7184e11138638a54a2a0a58795",
+            "contentSha256": "d4ff18811b4c3bce510c9392e332cb3464c64ac4ca90d7587ac9fe7fc3507cc1",
+            "receiptBindingSha256": "347e8b762ed6189b6bf3ea3b616fc6e0e2f36fca28cee43d0b9c0b0c79794f8c",
             "page": null,
             "fragmentSha256": null
           },
           "closedEnvelope.widthMm": {
             "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-bespoke-dryer-ai-dry-9kg-white-dv90bb9440ghsa/",
-            "contentSha256": "dae8defd8742852aa0c0e240df6249076a26bf1954b70dd7e95d43296cd28952",
-            "receiptBindingSha256": "fe8451e3399e86a3b4360e1583884be00cb3df7184e11138638a54a2a0a58795",
+            "contentSha256": "d4ff18811b4c3bce510c9392e332cb3464c64ac4ca90d7587ac9fe7fc3507cc1",
+            "receiptBindingSha256": "347e8b762ed6189b6bf3ea3b616fc6e0e2f36fca28cee43d0b9c0b0c79794f8c",
             "page": null,
             "fragmentSha256": null
           }
@@ -660,7 +660,7 @@
         "verifiedFitEligible": false,
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
-          "dae8defd8742852aa0c0e240df6249076a26bf1954b70dd7e95d43296cd28952"
+          "d4ff18811b4c3bce510c9392e332cb3464c64ac4ca90d7587ac9fe7fc3507cc1"
         ]
       },
       "artifactType": "official_html_fallback",
@@ -671,8 +671,8 @@
         "finalUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-bespoke-dryer-ai-dry-9kg-white-dv90bb9440ghsa/",
         "redirectChain": [],
         "retrievedAt": "2026-07-12T00:00:00.000Z",
-        "contentSha256": "dae8defd8742852aa0c0e240df6249076a26bf1954b70dd7e95d43296cd28952",
-        "objectPath": "evidence/web/sha256/da/e8/dae8defd8742852aa0c0e240df6249076a26bf1954b70dd7e95d43296cd28952.html",
+        "contentSha256": "d4ff18811b4c3bce510c9392e332cb3464c64ac4ca90d7587ac9fe7fc3507cc1",
+        "objectPath": "evidence/web/sha256/d4/ff/d4ff18811b4c3bce510c9392e332cb3464c64ac4ca90d7587ac9fe7fc3507cc1.html",
         "contentType": "text/html",
         "byteSize": 852206,
         "supersedesContentSha256": [],
@@ -723,11 +723,11 @@
           }
         ],
         "verificationReceipt": {
-          "schemaVersion": 1,
-          "policyVersion": "2026-07-11.5",
-          "manufacturerPolicyVersion": "2026-07-11.2",
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
           "verifiedAt": "2026-07-12T00:00:00.000Z",
-          "bindingSha256": "fe8451e3399e86a3b4360e1583884be00cb3df7184e11138638a54a2a0a58795"
+          "bindingSha256": "347e8b762ed6189b6bf3ea3b616fc6e0e2f36fca28cee43d0b9c0b0c79794f8c"
         }
       },
       "diagnosticArtifacts": {
@@ -784,6 +784,26 @@
           "field": "closedEnvelope.widthMm",
           "value": 905,
           "page": 1
+        },
+        {
+          "field": "installation.leftMm",
+          "value": 20,
+          "page": 2
+        },
+        {
+          "field": "installation.rearMm",
+          "value": 30,
+          "page": 2
+        },
+        {
+          "field": "installation.rightMm",
+          "value": 20,
+          "page": 2
+        },
+        {
+          "field": "installation.topMm",
+          "value": 20,
+          "page": 2
         }
       ],
       "receipt": "passed",
@@ -798,10 +818,10 @@
             "depthMm": 688
           },
           "installation": {
-            "leftMm": null,
-            "rightMm": null,
-            "topMm": null,
-            "rearMm": null,
+            "leftMm": 20,
+            "rightMm": 20,
+            "topMm": 20,
+            "rearMm": 30,
             "frontMm": null
           },
           "operation": {
@@ -826,36 +846,64 @@
           "closedEnvelope.depthMm": {
             "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
             "contentSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
-            "receiptBindingSha256": "716c5e7f1e537f0a31e37db68fb2ed61a751d319b0edfca46151b8a43b791afc",
+            "receiptBindingSha256": "f7481ffcaf382b33424102186535fd15bc04f2ad9fd89552c126d021ac4a7c80",
             "page": 1,
             "fragmentSha256": "6f7674bf9c18d9904dcbe748a4b48a866982d3d891b2264a95304bde14857ec8"
           },
           "closedEnvelope.heightMm": {
             "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
             "contentSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
-            "receiptBindingSha256": "716c5e7f1e537f0a31e37db68fb2ed61a751d319b0edfca46151b8a43b791afc",
+            "receiptBindingSha256": "f7481ffcaf382b33424102186535fd15bc04f2ad9fd89552c126d021ac4a7c80",
             "page": 1,
             "fragmentSha256": "4c79edc4764cca217bd4b877329b706715caae6ce192979f4b900de11d94d085"
           },
           "closedEnvelope.widthMm": {
             "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
             "contentSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
-            "receiptBindingSha256": "716c5e7f1e537f0a31e37db68fb2ed61a751d319b0edfca46151b8a43b791afc",
+            "receiptBindingSha256": "f7481ffcaf382b33424102186535fd15bc04f2ad9fd89552c126d021ac4a7c80",
             "page": 1,
             "fragmentSha256": "2856cf94c5af837d5a93163b0235b02976ed3ee909e2366140d70c956d1cc3e8"
+          },
+          "installation.leftMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+            "contentSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+            "receiptBindingSha256": "f7481ffcaf382b33424102186535fd15bc04f2ad9fd89552c126d021ac4a7c80",
+            "page": 2,
+            "fragmentSha256": "08f70eadb238f9e3ad634faf6990da7a3b760195996055479bc7e35238fc059d"
+          },
+          "installation.rearMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+            "contentSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+            "receiptBindingSha256": "f7481ffcaf382b33424102186535fd15bc04f2ad9fd89552c126d021ac4a7c80",
+            "page": 2,
+            "fragmentSha256": "08f70eadb238f9e3ad634faf6990da7a3b760195996055479bc7e35238fc059d"
+          },
+          "installation.rightMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+            "contentSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+            "receiptBindingSha256": "f7481ffcaf382b33424102186535fd15bc04f2ad9fd89552c126d021ac4a7c80",
+            "page": 2,
+            "fragmentSha256": "08f70eadb238f9e3ad634faf6990da7a3b760195996055479bc7e35238fc059d"
+          },
+          "installation.topMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw1ff970d5/QRG/AU/QRG-AU-26553.pdf",
+            "contentSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+            "receiptBindingSha256": "f7481ffcaf382b33424102186535fd15bc04f2ad9fd89552c126d021ac4a7c80",
+            "page": 2,
+            "fragmentSha256": "08f70eadb238f9e3ad634faf6990da7a3b760195996055479bc7e35238fc059d"
           }
         },
         "evidenceLevel": "dimensions",
-        "requiredInstallationEnvelope": null,
+        "requiredInstallationEnvelope": {
+          "widthMm": 945,
+          "heightMm": 1810,
+          "depthMm": 718
+        },
         "missingForVerifiedFit": [
-          "installation.leftMm",
-          "installation.rearMm",
-          "installation.rightMm",
-          "installation.topMm",
           "operation.doorOpenDepthMm"
         ],
         "verifiedFitEligible": false,
-        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "successfulFitOutcome": "CONDITIONAL_FIT",
         "activeSourceHashes": [
           "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73"
         ]
@@ -926,6 +974,70 @@
             ],
             "fragmentSha256": "2856cf94c5af837d5a93163b0235b02976ed3ee909e2366140d70c956d1cc3e8",
             "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "installation.leftMm",
+            "value": 20,
+            "unit": "mm",
+            "label": "Minimum air clearance - each side",
+            "quote": "Minimum air clearance - each side 20 mm",
+            "page": 2,
+            "bbox": [
+              670,
+              262,
+              956,
+              463
+            ],
+            "fragmentSha256": "08f70eadb238f9e3ad634faf6990da7a3b760195996055479bc7e35238fc059d",
+            "semanticBasis": "explicit_each_side_label"
+          },
+          {
+            "field": "installation.rearMm",
+            "value": 30,
+            "unit": "mm",
+            "label": "Minimum air clearance - at rear",
+            "quote": "Minimum air clearance - at rear 30 mm",
+            "page": 2,
+            "bbox": [
+              670,
+              262,
+              956,
+              463
+            ],
+            "fragmentSha256": "08f70eadb238f9e3ad634faf6990da7a3b760195996055479bc7e35238fc059d",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "installation.rightMm",
+            "value": 20,
+            "unit": "mm",
+            "label": "Minimum air clearance - each side",
+            "quote": "Minimum air clearance - each side 20 mm",
+            "page": 2,
+            "bbox": [
+              670,
+              262,
+              956,
+              463
+            ],
+            "fragmentSha256": "08f70eadb238f9e3ad634faf6990da7a3b760195996055479bc7e35238fc059d",
+            "semanticBasis": "explicit_each_side_label"
+          },
+          {
+            "field": "installation.topMm",
+            "value": 20,
+            "unit": "mm",
+            "label": "Minimum air clearance - on top",
+            "quote": "Minimum air clearance - on top 20 mm",
+            "page": 2,
+            "bbox": [
+              670,
+              262,
+              956,
+              463
+            ],
+            "fragmentSha256": "08f70eadb238f9e3ad634faf6990da7a3b760195996055479bc7e35238fc059d",
+            "semanticBasis": "explicit_label_value"
           }
         ],
         "derivedArtifact": {
@@ -963,11 +1075,11 @@
           }
         ],
         "verificationReceipt": {
-          "schemaVersion": 1,
-          "policyVersion": "2026-07-11.5",
-          "manufacturerPolicyVersion": "2026-07-11.2",
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
           "verifiedAt": "2026-07-12T00:00:00.000Z",
-          "bindingSha256": "716c5e7f1e537f0a31e37db68fb2ed61a751d319b0edfca46151b8a43b791afc"
+          "bindingSha256": "f7481ffcaf382b33424102186535fd15bc04f2ad9fd89552c126d021ac4a7c80"
         }
       },
       "diagnosticArtifacts": {
@@ -1071,35 +1183,35 @@
           "closedEnvelope.depthMm": {
             "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
             "contentSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
-            "receiptBindingSha256": "0480ef4356e1dd605b01c4f6d5d922ecba0e498d262791b4559e2e9afae278cc",
+            "receiptBindingSha256": "72c3c15d9c00e4052f73d2aa246f07e9783e2ab7b5b91e6fd649f59bc4243593",
             "page": 4,
             "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19"
           },
           "closedEnvelope.heightMm": {
             "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
             "contentSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
-            "receiptBindingSha256": "0480ef4356e1dd605b01c4f6d5d922ecba0e498d262791b4559e2e9afae278cc",
+            "receiptBindingSha256": "72c3c15d9c00e4052f73d2aa246f07e9783e2ab7b5b91e6fd649f59bc4243593",
             "page": 4,
             "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19"
           },
           "closedEnvelope.widthMm": {
             "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
             "contentSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
-            "receiptBindingSha256": "0480ef4356e1dd605b01c4f6d5d922ecba0e498d262791b4559e2e9afae278cc",
+            "receiptBindingSha256": "72c3c15d9c00e4052f73d2aa246f07e9783e2ab7b5b91e6fd649f59bc4243593",
             "page": 4,
             "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19"
           },
           "installation.topMm": {
             "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
             "contentSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
-            "receiptBindingSha256": "0480ef4356e1dd605b01c4f6d5d922ecba0e498d262791b4559e2e9afae278cc",
+            "receiptBindingSha256": "72c3c15d9c00e4052f73d2aa246f07e9783e2ab7b5b91e6fd649f59bc4243593",
             "page": 4,
             "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19"
           },
           "operation.doorOpenDepthMm": {
             "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse",
             "contentSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
-            "receiptBindingSha256": "0480ef4356e1dd605b01c4f6d5d922ecba0e498d262791b4559e2e9afae278cc",
+            "receiptBindingSha256": "72c3c15d9c00e4052f73d2aa246f07e9783e2ab7b5b91e6fd649f59bc4243593",
             "page": 4,
             "fragmentSha256": "882173cc49a4604a2236e59faf33a93ada7bb7e5d552c05211712e358b80ec19"
           }
@@ -1284,11 +1396,11 @@
           }
         ],
         "verificationReceipt": {
-          "schemaVersion": 1,
-          "policyVersion": "2026-07-11.5",
-          "manufacturerPolicyVersion": "2026-07-11.2",
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
           "verifiedAt": "2026-07-12T00:00:00.000Z",
-          "bindingSha256": "0480ef4356e1dd605b01c4f6d5d922ecba0e498d262791b4559e2e9afae278cc"
+          "bindingSha256": "72c3c15d9c00e4052f73d2aa246f07e9783e2ab7b5b91e6fd649f59bc4243593"
         }
       },
       "diagnosticArtifacts": {
@@ -1392,35 +1504,35 @@
           "closedEnvelope.depthMm": {
             "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
             "contentSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
-            "receiptBindingSha256": "8595c71654f2bae33715528125e4aa7b87c8842cf4695664cc00092e833749e8",
+            "receiptBindingSha256": "8b675e1da3250d398616773e693fb6c18b3a4c4e01faf59d904b3b2421953260",
             "page": 4,
             "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3"
           },
           "closedEnvelope.heightMm": {
             "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
             "contentSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
-            "receiptBindingSha256": "8595c71654f2bae33715528125e4aa7b87c8842cf4695664cc00092e833749e8",
+            "receiptBindingSha256": "8b675e1da3250d398616773e693fb6c18b3a4c4e01faf59d904b3b2421953260",
             "page": 4,
             "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3"
           },
           "closedEnvelope.widthMm": {
             "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
             "contentSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
-            "receiptBindingSha256": "8595c71654f2bae33715528125e4aa7b87c8842cf4695664cc00092e833749e8",
+            "receiptBindingSha256": "8b675e1da3250d398616773e693fb6c18b3a4c4e01faf59d904b3b2421953260",
             "page": 4,
             "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3"
           },
           "installation.topMm": {
             "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
             "contentSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
-            "receiptBindingSha256": "8595c71654f2bae33715528125e4aa7b87c8842cf4695664cc00092e833749e8",
+            "receiptBindingSha256": "8b675e1da3250d398616773e693fb6c18b3a4c4e01faf59d904b3b2421953260",
             "page": 4,
             "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3"
           },
           "operation.doorOpenDepthMm": {
             "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EQE6160BA&brand=Electrolux",
             "contentSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
-            "receiptBindingSha256": "8595c71654f2bae33715528125e4aa7b87c8842cf4695664cc00092e833749e8",
+            "receiptBindingSha256": "8b675e1da3250d398616773e693fb6c18b3a4c4e01faf59d904b3b2421953260",
             "page": 4,
             "fragmentSha256": "0ed8e38e16e74c105cd1a4ee4b4b88ceba0022fc89f28f2db6507b04f8d539c3"
           }
@@ -1597,11 +1709,11 @@
           }
         ],
         "verificationReceipt": {
-          "schemaVersion": 1,
-          "policyVersion": "2026-07-11.5",
-          "manufacturerPolicyVersion": "2026-07-11.2",
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
           "verifiedAt": "2026-07-12T00:00:00.000Z",
-          "bindingSha256": "8595c71654f2bae33715528125e4aa7b87c8842cf4695664cc00092e833749e8"
+          "bindingSha256": "8b675e1da3250d398616773e693fb6c18b3a4c4e01faf59d904b3b2421953260"
         }
       },
       "diagnosticArtifacts": {
@@ -1698,21 +1810,21 @@
           "closedEnvelope.depthMm": {
             "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf",
             "contentSha256": "658a7534c9bc1e033d5e635fc36185deb41bca28ac6ede41e31064c882bab6c5",
-            "receiptBindingSha256": "2afa46c50f8ec657f0e2c47e816634b7891c90865d9f7d77d836fbe18a1603b0",
+            "receiptBindingSha256": "e551a5640d41eb79faea0c3412d205c12f68e981544e85f29a8e9e06e1aaa94d",
             "page": 1,
             "fragmentSha256": "6445076d3484b82d092ef90e04ff80ff57cf46f0873fd3efc216aaaf29ac51b7"
           },
           "closedEnvelope.heightMm": {
             "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf",
             "contentSha256": "658a7534c9bc1e033d5e635fc36185deb41bca28ac6ede41e31064c882bab6c5",
-            "receiptBindingSha256": "2afa46c50f8ec657f0e2c47e816634b7891c90865d9f7d77d836fbe18a1603b0",
+            "receiptBindingSha256": "e551a5640d41eb79faea0c3412d205c12f68e981544e85f29a8e9e06e1aaa94d",
             "page": 1,
             "fragmentSha256": "2a887c8aededcb2204dec7a760d8284b94f0eb25dc87c6eafc230b4739e6462f"
           },
           "closedEnvelope.widthMm": {
             "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw76609ae6/QRG/AU/QRG-AU-61668.pdf",
             "contentSha256": "658a7534c9bc1e033d5e635fc36185deb41bca28ac6ede41e31064c882bab6c5",
-            "receiptBindingSha256": "2afa46c50f8ec657f0e2c47e816634b7891c90865d9f7d77d836fbe18a1603b0",
+            "receiptBindingSha256": "e551a5640d41eb79faea0c3412d205c12f68e981544e85f29a8e9e06e1aaa94d",
             "page": 1,
             "fragmentSha256": "4cc40dd67c722ddc079ff0cf92741c71af90a4468a220bdaa9e7a800228f7946"
           }
@@ -1848,11 +1960,11 @@
           }
         ],
         "verificationReceipt": {
-          "schemaVersion": 1,
-          "policyVersion": "2026-07-11.5",
-          "manufacturerPolicyVersion": "2026-07-11.2",
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
           "verifiedAt": "2026-07-12T00:00:00.000Z",
-          "bindingSha256": "2afa46c50f8ec657f0e2c47e816634b7891c90865d9f7d77d836fbe18a1603b0"
+          "bindingSha256": "e551a5640d41eb79faea0c3412d205c12f68e981544e85f29a8e9e06e1aaa94d"
         }
       },
       "diagnosticArtifacts": {
@@ -1966,49 +2078,49 @@
           "closedEnvelope.depthMm": {
             "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
             "contentSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
-            "receiptBindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010",
+            "receiptBindingSha256": "84c57bc6f6301ef80e175fc49dd2f2e190a2455773b4785aa5225c5b440d19c6",
             "page": 1,
             "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
           },
           "closedEnvelope.heightMm": {
             "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
             "contentSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
-            "receiptBindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010",
+            "receiptBindingSha256": "84c57bc6f6301ef80e175fc49dd2f2e190a2455773b4785aa5225c5b440d19c6",
             "page": 1,
             "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
           },
           "closedEnvelope.widthMm": {
             "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
             "contentSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
-            "receiptBindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010",
+            "receiptBindingSha256": "84c57bc6f6301ef80e175fc49dd2f2e190a2455773b4785aa5225c5b440d19c6",
             "page": 1,
             "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
           },
           "installation.leftMm": {
             "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
             "contentSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
-            "receiptBindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010",
+            "receiptBindingSha256": "84c57bc6f6301ef80e175fc49dd2f2e190a2455773b4785aa5225c5b440d19c6",
             "page": 1,
             "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
           },
           "installation.rearMm": {
             "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
             "contentSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
-            "receiptBindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010",
+            "receiptBindingSha256": "84c57bc6f6301ef80e175fc49dd2f2e190a2455773b4785aa5225c5b440d19c6",
             "page": 1,
             "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
           },
           "installation.rightMm": {
             "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
             "contentSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
-            "receiptBindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010",
+            "receiptBindingSha256": "84c57bc6f6301ef80e175fc49dd2f2e190a2455773b4785aa5225c5b440d19c6",
             "page": 1,
             "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
           },
           "installation.topMm": {
             "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBC137-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDY4NDZ8YXBwbGljYXRpb24vcGRmfGFEa3pMMmhtWWk4NE9EQTBNVEF3TVRFeU5ERTBMMGhTUWtNeE16Y3RVM0JsWXk1d1pHWXwyZWQzZGZlZGU0YTE0ZGQxMjhmZjRiOGUzMjU0ZjVjMmVkYTMzZjk1ZWE2NGZjNGE0ODk4OGY3YzdiYjcwYTVk",
             "contentSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
-            "receiptBindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010",
+            "receiptBindingSha256": "84c57bc6f6301ef80e175fc49dd2f2e190a2455773b4785aa5225c5b440d19c6",
             "page": 1,
             "fragmentSha256": "d97b1efa70bdb3346c630c0d65008b2cb4ddea03d2fa922988be0326095a1ce8"
           }
@@ -2299,11 +2411,11 @@
           }
         ],
         "verificationReceipt": {
-          "schemaVersion": 1,
-          "policyVersion": "2026-07-11.5",
-          "manufacturerPolicyVersion": "2026-07-11.2",
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
           "verifiedAt": "2026-07-12T00:00:00.000Z",
-          "bindingSha256": "61f5ec12a0f0716ec98667b8c2317304e89c7cbf1928204b6e4c2887caa1d010"
+          "bindingSha256": "84c57bc6f6301ef80e175fc49dd2f2e190a2455773b4785aa5225c5b440d19c6"
         }
       },
       "diagnosticArtifacts": {
@@ -2397,21 +2509,21 @@
           "closedEnvelope.depthMm": {
             "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU615DB3.pdf",
             "contentSha256": "25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43",
-            "receiptBindingSha256": "eab811715c7e1a0e4ad224050f4fe7191b26ab7fc9bb429405cefcf6dca1d02c",
+            "receiptBindingSha256": "fc2bb7e0bb9c853b6141c84db04b0673f8ec0139d362d1fc0d6dd53aaba1a888",
             "page": 1,
             "fragmentSha256": "7868c9ee239bed4095d384bc8ad32b525eec3937609122412a513e2067152126"
           },
           "closedEnvelope.heightMm": {
             "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU615DB3.pdf",
             "contentSha256": "25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43",
-            "receiptBindingSha256": "eab811715c7e1a0e4ad224050f4fe7191b26ab7fc9bb429405cefcf6dca1d02c",
+            "receiptBindingSha256": "fc2bb7e0bb9c853b6141c84db04b0673f8ec0139d362d1fc0d6dd53aaba1a888",
             "page": 1,
             "fragmentSha256": "7868c9ee239bed4095d384bc8ad32b525eec3937609122412a513e2067152126"
           },
           "closedEnvelope.widthMm": {
             "sourceUrl": "https://sys.smeg.com.au/Product/Techspecs/DWAU615DB3.pdf",
             "contentSha256": "25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43",
-            "receiptBindingSha256": "eab811715c7e1a0e4ad224050f4fe7191b26ab7fc9bb429405cefcf6dca1d02c",
+            "receiptBindingSha256": "fc2bb7e0bb9c853b6141c84db04b0673f8ec0139d362d1fc0d6dd53aaba1a888",
             "page": 1,
             "fragmentSha256": "7868c9ee239bed4095d384bc8ad32b525eec3937609122412a513e2067152126"
           }
@@ -2583,11 +2695,11 @@
           }
         ],
         "verificationReceipt": {
-          "schemaVersion": 1,
-          "policyVersion": "2026-07-11.5",
-          "manufacturerPolicyVersion": "2026-07-11.2",
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
           "verifiedAt": "2026-07-12T00:00:00.000Z",
-          "bindingSha256": "eab811715c7e1a0e4ad224050f4fe7191b26ab7fc9bb429405cefcf6dca1d02c"
+          "bindingSha256": "fc2bb7e0bb9c853b6141c84db04b0673f8ec0139d362d1fc0d6dd53aaba1a888"
         }
       },
       "diagnosticArtifacts": {
@@ -2686,28 +2798,28 @@
           "closedEnvelope.depthMm": {
             "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12388960.pdf",
             "contentSha256": "a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06",
-            "receiptBindingSha256": "64a501602a9990c8f653f11d566004d7780c31a596c4e75356dc8bd138e4aa22",
+            "receiptBindingSha256": "e3b798dcb3ed4e90f16900418d3e394f814402387e438dfe39da635d5fadc0ed",
             "page": 2,
             "fragmentSha256": "9266d950f2bb4f54c9c60125e73fcd5834067c233b576124dc91f31273fd2ed0"
           },
           "closedEnvelope.heightMm": {
             "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12388960.pdf",
             "contentSha256": "a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06",
-            "receiptBindingSha256": "64a501602a9990c8f653f11d566004d7780c31a596c4e75356dc8bd138e4aa22",
+            "receiptBindingSha256": "e3b798dcb3ed4e90f16900418d3e394f814402387e438dfe39da635d5fadc0ed",
             "page": 2,
             "fragmentSha256": "9266d950f2bb4f54c9c60125e73fcd5834067c233b576124dc91f31273fd2ed0"
           },
           "closedEnvelope.widthMm": {
             "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12388960.pdf",
             "contentSha256": "a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06",
-            "receiptBindingSha256": "64a501602a9990c8f653f11d566004d7780c31a596c4e75356dc8bd138e4aa22",
+            "receiptBindingSha256": "e3b798dcb3ed4e90f16900418d3e394f814402387e438dfe39da635d5fadc0ed",
             "page": 2,
             "fragmentSha256": "9266d950f2bb4f54c9c60125e73fcd5834067c233b576124dc91f31273fd2ed0"
           },
           "operation.doorOpenDepthMm": {
             "sourceUrl": "https://www.miele.com.au/media/ex/au/specsheets/12388960.pdf",
             "contentSha256": "a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06",
-            "receiptBindingSha256": "64a501602a9990c8f653f11d566004d7780c31a596c4e75356dc8bd138e4aa22",
+            "receiptBindingSha256": "e3b798dcb3ed4e90f16900418d3e394f814402387e438dfe39da635d5fadc0ed",
             "page": 2,
             "fragmentSha256": "9266d950f2bb4f54c9c60125e73fcd5834067c233b576124dc91f31273fd2ed0"
           }
@@ -2842,11 +2954,11 @@
           }
         ],
         "verificationReceipt": {
-          "schemaVersion": 1,
-          "policyVersion": "2026-07-11.5",
-          "manufacturerPolicyVersion": "2026-07-11.2",
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
           "verifiedAt": "2026-07-12T00:00:00.000Z",
-          "bindingSha256": "64a501602a9990c8f653f11d566004d7780c31a596c4e75356dc8bd138e4aa22"
+          "bindingSha256": "e3b798dcb3ed4e90f16900418d3e394f814402387e438dfe39da635d5fadc0ed"
         }
       },
       "diagnosticArtifacts": {

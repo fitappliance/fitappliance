@@ -10,9 +10,40 @@ import { evidenceSourcePolicy } from './evidence-source-verifier.mjs';
 const execFile = promisify(execFileCallback);
 const MAX_OUTPUT_FILES = 20000;
 const DEFAULT_MAXIMUM_PDF_BYTES = 100 * 1024 * 1024;
+const DEFAULT_CHUNK_PAGE_COUNT = 20;
 
 async function defaultRunCommand(binary, args, options) {
   return execFile(binary, args, options);
+}
+
+function mineruReportedPageCount(error) {
+  const counts = [...String(error?.message ?? error).matchAll(/\b(\d+)\s+pages?\s+total\b/gi)]
+    .map((match) => Number(match[1]));
+  const unique = [...new Set(counts.filter((value) => Number.isSafeInteger(value) && value > 0))];
+  if (unique.length !== 1) {
+    throw new Error('MinerU command failed before reporting an unambiguous page count', { cause: error });
+  }
+  return unique[0];
+}
+
+function normalizedProcessing(value, pageCount) {
+  const processing = value ?? { strategy: 'whole_document' };
+  if (processing.strategy === 'whole_document') return { strategy: 'whole_document' };
+  if (processing.strategy !== 'page_ranges' || !Array.isArray(processing.ranges) || !processing.ranges.length) {
+    throw new Error('MinerU cache integrity failure: processing strategy invalid');
+  }
+  let expectedStart = 0;
+  const ranges = processing.ranges.map((range) => {
+    if (!Array.isArray(range) || range.length !== 2
+      || !Number.isSafeInteger(range[0]) || !Number.isSafeInteger(range[1])
+      || range[0] !== expectedStart || range[1] < range[0] || range[1] >= pageCount) {
+      throw new Error('MinerU cache integrity failure: page ranges invalid');
+    }
+    expectedStart = range[1] + 1;
+    return [range[0], range[1]];
+  });
+  if (expectedStart !== pageCount) throw new Error('MinerU cache integrity failure: page ranges incomplete');
+  return { strategy: 'page_ranges', ranges };
 }
 
 async function findContentListV2Files(root) {
@@ -80,13 +111,13 @@ async function writeImmutable(path, bytes, expectedHash) {
   }
 }
 
-async function readCache(storageRoot, pdfSha256, expected) {
+async function inspectCache(storageRoot, pdfSha256, expected) {
   const indexPath = join(storageRoot, 'cache', 'mineru-index', `${pdfSha256}.json`);
   let indexBytes;
   try {
     indexBytes = await readFile(indexPath);
   } catch (error) {
-    if (error?.code === 'ENOENT') return null;
+    if (error?.code === 'ENOENT') return { status: 'missing', sourcePdfSha256: pdfSha256 };
     throw error;
   }
   if (indexBytes.length > 64 * 1024) throw new Error('MinerU cache integrity failure: index too large');
@@ -95,16 +126,23 @@ async function readCache(storageRoot, pdfSha256, expected) {
   if (index?.schemaVersion !== 1 || index.sourcePdfSha256 !== pdfSha256) {
     throw new Error('MinerU cache integrity failure: PDF binding mismatch');
   }
-  if (index.parserVersion !== expected.parserVersion || index.modelRevision !== expected.modelRevision) return null;
   const artifact = index.derivedArtifact;
   if (!artifact || artifact.sourcePdfSha256 !== pdfSha256) {
     throw new Error('MinerU cache integrity failure: artifact binding mismatch');
+  }
+  if (index.parserVersion !== expected.parserVersion || index.modelRevision !== expected.modelRevision) {
+    return {
+      status: 'stale',
+      sourcePdfSha256: pdfSha256,
+      parserVersion: index.parserVersion ?? null,
+      modelRevision: index.modelRevision ?? null,
+    };
   }
   let jsonBytes;
   try {
     jsonBytes = await readFile(resolveStoragePath(storageRoot, artifact.objectPath));
   } catch (error) {
-    if (error?.code === 'ENOENT') return null;
+    if (error?.code === 'ENOENT') return { status: 'missing', sourcePdfSha256: pdfSha256 };
     throw error;
   }
   let replayed;
@@ -120,7 +158,26 @@ async function readCache(storageRoot, pdfSha256, expected) {
   if (JSON.stringify(replayed) !== JSON.stringify(artifact)) {
     throw new Error('MinerU cache integrity failure: artifact metadata mismatch');
   }
-  return { jsonBytes, derivedArtifact: replayed };
+  const processing = normalizedProcessing(index.processing, replayed.pageCount);
+  return {
+    status: 'indexed',
+    sourcePdfSha256: pdfSha256,
+    parserVersion: replayed.parserVersion,
+    modelRevision: replayed.modelRevision,
+    jsonBytes,
+    derivedArtifact: replayed,
+    processing,
+  };
+}
+
+async function readCache(storageRoot, pdfSha256, expected) {
+  const inspection = await inspectCache(storageRoot, pdfSha256, expected);
+  if (inspection.status !== 'indexed') return null;
+  return {
+    jsonBytes: inspection.jsonBytes,
+    derivedArtifact: inspection.derivedArtifact,
+    processing: inspection.processing,
+  };
 }
 
 async function writeCache(storageRoot, result) {
@@ -136,6 +193,7 @@ async function writeCache(storageRoot, result) {
     parserVersion: artifact.parserVersion,
     modelRevision: artifact.modelRevision,
     derivedArtifact: artifact,
+    processing: result.processing,
   }, null, 2)}\n`);
   await writeFile(temporaryPath, index, { flag: 'wx' });
   await rename(temporaryPath, indexPath);
@@ -158,12 +216,12 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
   await mkdir(workRoot, { recursive: true });
   const workDirectory = await mkdtemp(join(workRoot, 'parse-'));
   const inputPath = join(workDirectory, 'source.pdf');
-  const outputPath = join(workDirectory, 'output');
+  const outputRoot = join(workDirectory, 'output');
   const mineruBinary = options.mineruBinary ?? process.env.FITAPPLIANCE_MINERU_BIN ?? 'mineru';
   const runCommand = options.runCommand ?? defaultRunCommand;
   try {
     await writeFile(inputPath, bytes);
-    await mkdir(outputPath, { recursive: true });
+    await mkdir(outputRoot, { recursive: true });
     const versionResult = await runCommand(mineruBinary, ['-v'], {
       env: { ...process.env, ...options.env },
       timeout: options.timeoutMs ?? 600000,
@@ -177,14 +235,7 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
     if (revision !== expected.modelRevision) {
       throw new Error(`MinerU model revision ${revision} does not match policy ${expected.modelRevision}`);
     }
-    await runCommand(mineruBinary, [
-      '-p', inputPath,
-      '-o', outputPath,
-      '-b', expected.backend,
-      '-m', expected.method,
-      '-f', 'false',
-      '-t', 'true',
-    ], {
+    const commandOptions = {
       env: {
         ...process.env,
         ...options.env,
@@ -194,22 +245,112 @@ export async function runMineruPdfToJson(pdfBytes, options = {}) {
       },
       timeout: options.timeoutMs ?? 600000,
       maxBuffer: 16 * 1024 * 1024,
-    });
-    const outputs = await findContentListV2Files(outputPath);
-    if (outputs.length !== 1) {
-      throw new Error(`MinerU must produce exactly one content_list_v2 JSON; found ${outputs.length}`);
+    };
+    const invoke = async (range = null) => {
+      const rangeLabel = range ? `range-${range[0]}-${range[1]}` : 'whole-document';
+      const outputPath = join(outputRoot, rangeLabel);
+      await mkdir(outputPath, { recursive: true });
+      const args = [
+        '-p', inputPath,
+        '-o', outputPath,
+        '-b', expected.backend,
+        '-m', expected.method,
+        '-f', 'false',
+        '-t', 'true',
+        ...(range ? ['-s', String(range[0]), '-e', String(range[1])] : []),
+      ];
+      try {
+        await runCommand(mineruBinary, args, commandOptions);
+      } catch (error) {
+        const commandError = new Error(String(error?.message ?? error), { cause: error });
+        commandError.code = 'MINERU_COMMAND_FAILED';
+        throw commandError;
+      }
+      const outputs = await findContentListV2Files(outputPath);
+      if (outputs.length !== 1) {
+        throw new Error(`MinerU must produce exactly one content_list_v2 JSON; found ${outputs.length}`);
+      }
+      if (basename(outputs[0]).startsWith('.')) throw new Error('hidden MinerU output rejected');
+      const jsonBytes = await readFile(outputs[0]);
+      const expectedPages = range ? range[1] - range[0] + 1 : null;
+      buildMineruDerivedArtifact(jsonBytes, {
+        pdfSha256,
+        parserVersion: version,
+        modelRevision: revision,
+        ...(expectedPages ? { pageCount: expectedPages } : {}),
+      });
+      return jsonBytes;
+    };
+
+    let jsonBytes;
+    let processing;
+    try {
+      jsonBytes = await invoke();
+      processing = { strategy: 'whole_document' };
+    } catch (error) {
+      if (error?.code !== 'MINERU_COMMAND_FAILED' || options.pageRangeFallback === false) throw error;
+      const pageCount = options.getPageCount
+        ? await options.getPageCount(bytes)
+        : mineruReportedPageCount(error);
+      if (!Number.isSafeInteger(pageCount) || pageCount < 1) throw new Error('PDF page count invalid');
+      const chunkPageCount = options.chunkPageCount ?? DEFAULT_CHUNK_PAGE_COUNT;
+      if (!Number.isSafeInteger(chunkPageCount) || chunkPageCount < 1 || chunkPageCount > 100) {
+        throw new TypeError('MinerU chunk page count must be between 1 and 100');
+      }
+      const successfulRanges = [];
+      const parseRange = async (start, end) => {
+        try {
+          const rangeBytes = await invoke([start, end]);
+          successfulRanges.push([start, end]);
+          return JSON.parse(rangeBytes);
+        } catch (rangeError) {
+          if (rangeError?.code !== 'MINERU_COMMAND_FAILED' || start === end) throw rangeError;
+          const middle = Math.floor((start + end) / 2);
+          return [
+            ...await parseRange(start, middle),
+            ...await parseRange(middle + 1, end),
+          ];
+        }
+      };
+      const pages = [];
+      for (let start = 0; start < pageCount; start += chunkPageCount) {
+        pages.push(...await parseRange(start, Math.min(pageCount - 1, start + chunkPageCount - 1)));
+      }
+      if (pages.length !== pageCount) throw new Error('MinerU page-range fallback produced incomplete pages');
+      successfulRanges.sort((left, right) => left[0] - right[0]);
+      jsonBytes = Buffer.from(JSON.stringify(pages));
+      processing = normalizedProcessing({ strategy: 'page_ranges', ranges: successfulRanges }, pageCount);
     }
-    if (basename(outputs[0]).startsWith('.')) throw new Error('hidden MinerU output rejected');
-    const jsonBytes = await readFile(outputs[0]);
     const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
       pdfSha256,
       parserVersion: version,
       modelRevision: revision,
     });
-    const result = { jsonBytes, derivedArtifact };
+    const result = { jsonBytes, derivedArtifact, processing };
     if (options.cache !== false) await writeCache(storageRoot, result);
     return result;
   } finally {
     await rm(workDirectory, { recursive: true, force: true });
   }
+}
+
+export async function inspectMineruPdfCache(pdfBytes, options = {}) {
+  const bytes = validatePdfPayload(
+    pdfBytes,
+    options.maximumPdfBytes ?? DEFAULT_MAXIMUM_PDF_BYTES,
+  );
+  if (!options.storageRoot) throw new TypeError('storage root required for MinerU cache inspection');
+  const storageRoot = resolve(options.storageRoot);
+  const expected = evidenceSourcePolicy.resolutionPolicy.pdfEvidence;
+  const inspection = await inspectCache(storageRoot, sha256(bytes), expected);
+  const { jsonBytes: _jsonBytes, ...metadata } = inspection;
+  return freezeResult(metadata);
+}
+
+function freezeResult(value) {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+    Object.freeze(value);
+    for (const child of Object.values(value)) freezeResult(child);
+  }
+  return value;
 }

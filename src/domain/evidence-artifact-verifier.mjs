@@ -23,6 +23,54 @@ function resourceKey(value) {
   return url.toString();
 }
 
+function identifier(value) {
+  return normalizedText(value).toUpperCase().replace(/[^A-Z0-9]+/g, '');
+}
+
+function urlHasExactModelSegment(value, model, base = undefined) {
+  try {
+    return new URL(value, base).pathname.split('/').filter(Boolean).some((segment) => {
+      const decoded = decodeURIComponent(segment).replace(/\.(?:pdf|html?)$/i, '');
+      return containsExactModel(decoded, model);
+    });
+  } catch {
+    return false;
+  }
+}
+
+function structuredProductModel($, model, canonical) {
+  const target = identifier(model);
+  let matched = null;
+  $('script').each((_, element) => {
+    if (matched) return;
+    const raw = String($(element).html() ?? '').trim();
+    if (!raw || raw.length > 5_000_000 || !/^[{[]/.test(raw)) return;
+    let parsed;
+    try { parsed = JSON.parse(raw); } catch { return; }
+    const queue = [{ value: parsed, depth: 0 }];
+    let visited = 0;
+    while (queue.length && !matched && visited < 100_000) {
+      const { value, depth } = queue.shift();
+      visited += 1;
+      if (!value || typeof value !== 'object' || depth > 20) continue;
+      if (!Array.isArray(value)) {
+        const modelValue = ['code', 'model', 'modelCode', 'productCode', 'sku']
+          .map((key) => value[key]).find((candidate) => identifier(candidate) === target);
+        const productUrl = ['url', '@id', 'canonicalUrl']
+          .map((key) => value[key]).find((candidate) => urlHasExactModelSegment(candidate, model, canonical));
+        if (modelValue && productUrl) {
+          matched = normalizedText(modelValue);
+          break;
+        }
+      }
+      for (const child of Object.values(value)) {
+        if (child && typeof child === 'object') queue.push({ value: child, depth: depth + 1 });
+      }
+    }
+  });
+  return matched;
+}
+
 function verifyBytes(source, bytes) {
   if (!Buffer.isBuffer(bytes) && !(bytes instanceof Uint8Array)) throw new TypeError('artifact bytes required');
   const buffer = Buffer.from(bytes);
@@ -54,33 +102,59 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
       if (!productModel && containsExactModel(value, caseIdentity.model)) productModel = value;
     });
   }
-  const canonicalPath = new URL(canonical).pathname;
+  const structuredModel = structuredProductModel($, caseIdentity.model, canonical);
   let canonicalRegionalSku = null;
+  const canonicalModels = new Map();
   for (const attribute of skuAttributes) {
     $(`[${attribute}]`).each((_, element) => {
       const value = normalizedText($(element).attr(attribute));
       const normalizedModel = normalizedText(caseIdentity.model).toUpperCase().replace(/[^A-Z0-9]/g, '');
       const normalizedSku = value.toUpperCase().replace(/[^A-Z0-9]/g, '');
       const suffix = normalizedSku.slice(normalizedModel.length);
+      if (urlHasExactModelSegment(canonical, value)) canonicalModels.set(normalizedSku, value);
       if (!canonicalRegionalSku && normalizedSku.startsWith(normalizedModel)
-        && /^[A-Z0-9]{1,4}$/.test(suffix) && containsExactModel(canonicalPath, value)) {
+        && /^[A-Z0-9]{1,4}$/.test(suffix) && urlHasExactModelSegment(canonical, value)) {
         canonicalRegionalSku = value;
       }
     });
   }
-  if (!containsExactModel(canonicalPath, caseIdentity.model) && !canonicalRegionalSku) {
-    throw new Error('canonical URL does not prove exact model or a page-declared regional SKU');
-  }
-  if (canonicalRegionalSku) signals.push({ type: 'canonical_regional_sku', value: canonicalRegionalSku });
-  if (productModel) signals.push({ type: 'product_model', value: productModel });
-  if (!productModel) throw new Error('exact product model identity signal missing');
   const text = $.root().find('*').contents()
     .filter((_, node) => node.type === 'text')
     .map((_, node) => normalizedText(node.data))
     .get()
     .filter(Boolean)
     .join(' ');
-  return { signals, text: normalizedText(text) };
+  if (urlHasExactModelSegment(canonical, caseIdentity.model) || canonicalRegionalSku) {
+    if (canonicalRegionalSku) signals.push({ type: 'canonical_regional_sku', value: canonicalRegionalSku });
+    if (productModel) signals.push({ type: 'product_model', value: productModel });
+    if (structuredModel) signals.push({ type: 'structured_product_model', value: structuredModel });
+    if (!productModel && !structuredModel) throw new Error('exact product model identity signal missing');
+    return { signals, text: normalizedText(text), identity: {
+      brand: caseIdentity.brand, model: caseIdentity.model, outcome: 'exact',
+    } };
+  }
+
+  const target = identifier(caseIdentity.model);
+  const sourceModels = [...canonicalModels.entries()]
+    .filter(([key]) => key !== target && !key.startsWith(target) && !target.startsWith(key));
+  if (containsExactModel(title, caseIdentity.model) && sourceModels.length === 1) {
+    const [sourceKey, sourceModel] = sourceModels[0];
+    const binding = $('meta[name="description"],meta[property="description"],meta[property="og:description"],meta[name="twitter:description"]')
+      .map((_, element) => normalizedText($(element).attr('content'))).get()
+      .find((value) => containsExactModel(value, caseIdentity.model)
+        && containsExactModel(value, sourceModel) && identifier(sourceModel) === sourceKey);
+    if (binding) {
+      signals.push({ type: 'canonical_source_model', value: sourceModel });
+      signals.push({ type: 'official_alias_binding', value: binding });
+      return { signals, text: normalizedText(text), identity: {
+        brand: caseIdentity.brand,
+        model: caseIdentity.model,
+        outcome: 'official_marketing_alias',
+        sourceModel,
+      } };
+    }
+  }
+  throw new Error('canonical URL does not prove exact model or a strict official marketing alias');
 }
 
 function canonicalize(value) {
@@ -194,12 +268,20 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
     if ($(element).closest('[hidden],[aria-hidden="true"],script,style,noscript,template').length) return;
     const label = elementOwnText($, element);
     if (!label) return;
+    const quote = element.tagName === 'dt'
+      ? normalizedText(`${label} ${$(element).next('dd').first().text()}`)
+      : elementText($, $(element).parent().get(0));
+    if (/\b(?:dimension|dimensions|size)\b/i.test(label) && quote.length <= 500) {
+      const labelIndex = quote.indexOf(label);
+      const value = labelIndex < 0
+        ? ''
+        : normalizedText(`${quote.slice(0, labelIndex)} ${quote.slice(labelIndex + label.length)}`);
+      const grouped = claimsFromExplicitDimensionSequence({ label, value, quote }, { category }, fields);
+      grouped.forEach((claim) => structuredCandidates.get(claim.field)?.push(claim));
+    }
     for (const field of fields) {
       const rule = evidenceFieldRules[field];
       if (!rule || !rule.label.test(label) || (rule.reject && rule.reject.test(label))) continue;
-      const quote = element.tagName === 'dt'
-        ? normalizedText(`${label} ${$(element).next('dd').first().text()}`)
-        : elementText($, $(element).parent().get(0));
       try {
         candidates.get(field).push(claimFromEvidenceFragment(field, label, quote, { category }));
       } catch {
@@ -234,6 +316,7 @@ export function verifyAndAttestResolutionArtifact({
   validateClaimsSemantics(source.claims, caseIdentity);
   const attested = {
     ...source,
+    identity: identityProof.identity ?? source.identity,
     identitySignals: identityProof.signals,
   };
   attested.verificationReceipt = createVerificationReceipt(attested, caseIdentity, { verifiedAt });

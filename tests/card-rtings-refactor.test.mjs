@@ -151,6 +151,43 @@ test('phase 58 trust visualization: photo thumbnail uses explicit image first an
   assert.match(html, /data-photo-fallbacks="\/og-images\/hisense-fridge\.webp\|\/og-images\/hisense-fridge\.png"/);
 });
 
+test('receipt-bound adjustable height is shown as a range and uses its maximum for placement', async () => {
+  const { buildRow, renderProductPhotoThumb } = await import(productCardModuleUrl);
+  const product = makeProduct({
+    cat: 'dishwasher',
+    brand: 'Haier',
+    model: 'HDW15F3S1',
+    w: 597,
+    h: 850,
+    d: 599,
+    fitAxisGaps: [],
+    geometry_v2: {
+      closedEnvelope: {
+        widthMm: 597,
+        heightMm: { minimumMm: 850, maximumMm: 895 },
+        depthMm: 599,
+      },
+    },
+    geometry_v2_provenance: {
+      fieldEvidence: {
+        'closedEnvelope.heightMm': {
+          contentSha256: 'a'.repeat(64),
+          receiptBindingSha256: 'b'.repeat(64),
+        },
+      },
+    },
+  });
+
+  const photo = renderProductPhotoThumb(product);
+  const row = buildRow(product, {
+    cavity: { w: 650, h: 920, d: 650 },
+    annualEnergyCost: () => '',
+    resolveRetailerUrl: (retailer) => retailer.url,
+  });
+  assert.match(photo, /data-photo-dims="W 597mm · H 850-895mm · D 599mm"/);
+  assert.match(row, /H: 895mm \+ 0mm clearance \/ 920mm cavity/);
+});
+
 test('product photo candidates use the same ampersand slug convention as generated assets', async () => {
   const { getProductPhotoCandidates } = await import(productCardModuleUrl);
   const candidates = getProductPhotoCandidates(makeProduct({

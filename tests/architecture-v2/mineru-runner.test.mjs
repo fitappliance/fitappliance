@@ -4,7 +4,7 @@ import { mkdtemp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { runMineruPdfToJson } from '../../src/domain/mineru-runner.mjs';
+import { inspectMineruPdfCache, runMineruPdfToJson } from '../../src/domain/mineru-runner.mjs';
 
 const contentList = [[
   { type: 'title', content: { title_content: [{ type: 'text', content: 'Model A1' }] }, bbox: [1, 1, 10, 10] },
@@ -66,6 +66,53 @@ test('MinerU runner rejects parser drift and ambiguous output sets', async () =>
   }
 });
 
+test('MinerU runner falls back to bounded original-PDF page ranges and bisects a failing range', async () => {
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-range-fallback-'));
+  const parseCalls = [];
+  try {
+    const result = await runMineruPdfToJson(Buffer.from('%PDF-1.7\nrange-fallback-fixture'), {
+      storageRoot,
+      chunkPageCount: 2,
+      runCommand: async (_binary, args) => {
+        if (args[0] === '-v') {
+          return { stdout: 'mineru, version 3.4.4\nfitappliance-model-revision ed6b654c018d742e65a17671e379c5e6ecc87ec9\n' };
+        }
+        const startIndex = args.indexOf('-s');
+        const endIndex = args.indexOf('-e');
+        const range = startIndex < 0 ? null : [Number(args[startIndex + 1]), Number(args[endIndex + 1])];
+        parseCalls.push(range);
+        if (!range) throw new Error('1 document, 3 pages in this batch | 3 pages total | whole-document final assembly failed');
+        if (range[0] === 0 && range[1] === 1) throw new Error('two-page range failed');
+        const output = args[args.indexOf('-o') + 1];
+        await mkdir(join(output, 'source', 'auto'), { recursive: true });
+        const pages = Array.from({ length: range[1] - range[0] + 1 }, (_, offset) => [[{
+          type: 'title',
+          content: { title_content: [{ type: 'text', content: `Page ${range[0] + offset + 1}` }] },
+          bbox: [1, 1, 10, 10],
+        }]]).flat();
+        await writeFile(
+          join(output, 'source', 'auto', 'source_content_list_v2.json'),
+          JSON.stringify(pages),
+        );
+        return { stdout: 'done' };
+      },
+    });
+    assert.deepEqual(parseCalls, [null, [0, 1], [0, 0], [1, 1], [2, 2]]);
+    assert.equal(JSON.parse(result.jsonBytes).length, 3);
+    assert.deepEqual(result.processing, {
+      strategy: 'page_ranges',
+      ranges: [[0, 0], [1, 1], [2, 2]],
+    });
+    const cached = await runMineruPdfToJson(Buffer.from('%PDF-1.7\nrange-fallback-fixture'), {
+      storageRoot,
+      runCommand: async () => { throw new Error('cache should be reused'); },
+    });
+    assert.deepEqual(cached, result);
+  } finally {
+    await rm(storageRoot, { recursive: true, force: true });
+  }
+});
+
 test('MinerU runner does not allow environment variables to spoof model attestation', async () => {
   const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-test-'));
   try {
@@ -121,6 +168,37 @@ test('MinerU runner reuses a hash-bound JSON artifact without invoking MinerU ag
     });
     assert.equal(calls, 2);
     assert.deepEqual(second, first);
+  } finally {
+    await rm(storageRoot, { recursive: true, force: true });
+  }
+});
+
+test('MinerU cache inspection distinguishes missing, current, and stale indexes without parsing', async () => {
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-mineru-cache-inspection-'));
+  const pdf = Buffer.from('%PDF-1.7\ninspection-fixture');
+  try {
+    assert.equal((await inspectMineruPdfCache(pdf, { storageRoot })).status, 'missing');
+    const parsed = await runMineruPdfToJson(pdf, {
+      storageRoot,
+      runCommand: async (_binary, args) => {
+        if (args[0] === '-v') return { stdout: 'mineru, version 3.4.4\nfitappliance-model-revision ed6b654c018d742e65a17671e379c5e6ecc87ec9\n' };
+        const output = args[args.indexOf('-o') + 1];
+        await mkdir(join(output, 'source', 'auto'), { recursive: true });
+        await writeFile(join(output, 'source', 'auto', 'source_content_list_v2.json'), JSON.stringify(contentList));
+        return { stdout: 'done' };
+      },
+    });
+    const current = await inspectMineruPdfCache(pdf, { storageRoot });
+    assert.equal(current.status, 'indexed');
+    assert.deepEqual(current.derivedArtifact, parsed.derivedArtifact);
+
+    const indexPath = join(storageRoot, 'cache', 'mineru-index', `${parsed.derivedArtifact.sourcePdfSha256}.json`);
+    const index = JSON.parse(await readFile(indexPath, 'utf8'));
+    index.parserVersion = '3.3.0';
+    await writeFile(indexPath, `${JSON.stringify(index)}\n`);
+    const stale = await inspectMineruPdfCache(pdf, { storageRoot });
+    assert.equal(stale.status, 'stale');
+    assert.equal(stale.parserVersion, '3.3.0');
   } finally {
     await rm(storageRoot, { recursive: true, force: true });
   }

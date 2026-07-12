@@ -58,9 +58,11 @@ test('Phase 9 space facts reach source documents and public geometry without inv
   assert.equal(product.geometry_v2.installation.rearMm, 30);
   assert.equal(product.geometry_v2.installation.frontMm, null);
   assert.equal(product.geometry_v2.operation.doorOpenDepthMm, null);
-  assert.equal(product.evidence.trust_level, 'evidence_pending');
+  assert.equal(product.evidence.trust_level, 'dimensions_verified');
   assert.equal(product.evidence.clearance_verified, false);
-  assert.equal(product.geometry_v2_provenance, undefined);
+  assert.match(product.evidence.acceptance.receipt_binding_sha256, /^[a-f0-9]{64}$/);
+  assert.deepEqual(product.geometry_v2_provenance.missingForVerifiedFit, ['operation.doorOpenDepthMm']);
+  assert.equal(product.geometry_v2_provenance.verifiedFitEligible, false);
 
   const decision = evaluateFit({
     geometry: product.geometry_v2,

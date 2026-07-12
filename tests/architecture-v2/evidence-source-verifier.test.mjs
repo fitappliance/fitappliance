@@ -84,6 +84,10 @@ test('brand policy rejects self-declared manufacturers and cross-brand redirects
 
 test('official source policy accepts explicit Australian static assets and query market signals', () => {
   assert.equal(isOfficialBrandUrl(
+    'https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer',
+    'Hisense',
+  ), true);
+  assert.equal(isOfficialBrandUrl(
     'https://www.lg.com/content/dam/channel/wcms/au/images/clothes-dryers/dvh5/DVH5-08W.pdf',
     'LG',
   ), true);
@@ -141,6 +145,41 @@ test('verification receipt binds case identity, source metadata, artifact, and c
   assert.throws(() => verifyVerificationReceipt(input, {
     ...caseIdentity, model: 'WHE6874SA',
   }, { asOf: '2026-07-11T15:00:00.000Z' }), /receipt digest|identity/i);
+});
+
+test('verification receipt binds an official marketing alias and rejects broader fields', () => {
+  const identity = { brand: 'Samsung', model: 'SRF5300SD', category: 'fridge' };
+  const alias = source({
+    sourceUrl: 'https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/',
+    finalUrl: 'https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/',
+    identity: {
+      brand: 'Samsung', model: 'SRF5300SD', outcome: 'official_marketing_alias',
+      sourceModel: 'RF44A5202SL/SA',
+    },
+    identitySignals: [
+      { type: 'document_title', value: '495L French Door Fridge SRF5300SD | Samsung AU' },
+      { type: 'canonical_source_model', value: 'RF44A5202SL/SA' },
+      { type: 'official_alias_binding', value: 'SRF5300SD refrigerator RF44A5202SL/SA' },
+    ],
+  });
+  alias.verificationReceipt = createVerificationReceipt(alias, identity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+  });
+  assert.equal(verifyVerificationReceipt(alias, identity, {
+    asOf: '2026-07-11T15:00:00.000Z',
+  }), true);
+  assert.throws(() => verifyVerificationReceipt({
+    ...alias,
+    identity: { ...alias.identity, sourceModel: 'RF44A5202B1/SA' },
+  }, identity, { asOf: '2026-07-11T15:00:00.000Z' }), /receipt|identity/i);
+  assert.throws(() => createVerificationReceipt({
+    ...alias,
+    verificationReceipt: undefined,
+    claims: [{
+      field: 'installation.topMm', value: 25, unit: 'mm',
+      label: 'Top clearance', quote: 'Top clearance 25 mm',
+    }],
+  }, identity, { verifiedAt: '2026-07-11T14:35:00.000Z' }), /dimensions only/i);
 });
 
 test('receipt rejects malformed artifact metadata and verification timestamps', () => {

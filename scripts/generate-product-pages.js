@@ -112,10 +112,59 @@ function productImageUrl(product, repoRoot = path.resolve(__dirname, '..')) {
 }
 
 function getDimension(product, key, fallbackKey) {
+  const receiptField = {
+    width_mm: ['closedEnvelope.widthMm', 'widthMm'],
+    depth_mm: ['closedEnvelope.depthMm', 'depthMm']
+  }[key];
+  if (receiptField) {
+    const receiptValue = getReceiptBoundGeometryValue(
+      product,
+      receiptField[0],
+      'closedEnvelope',
+      receiptField[1]
+    );
+    if (receiptValue !== null) return receiptValue;
+  }
   const fromEvidence = product?.dimensions?.[key];
   if (isFinitePositive(fromEvidence)) return roundMm(fromEvidence);
   if (isFinitePositive(product?.[fallbackKey])) return roundMm(product[fallbackKey]);
   return null;
+}
+
+function getHeightRange(product) {
+  const evidence = product?.geometry_v2_provenance?.fieldEvidence?.['closedEnvelope.heightMm'];
+  const height = product?.geometry_v2?.closedEnvelope?.heightMm;
+  if (evidence
+    && /^[a-f0-9]{64}$/i.test(String(evidence.contentSha256 ?? ''))
+    && /^[a-f0-9]{64}$/i.test(String(evidence.receiptBindingSha256 ?? ''))
+    && height && typeof height === 'object') {
+    const minimumMm = roundMm(height.minimumMm);
+    const maximumMm = roundMm(height.maximumMm);
+    if (isFinitePositive(minimumMm) && isFinitePositive(maximumMm) && minimumMm <= maximumMm) {
+      return { minimumMm, maximumMm };
+    }
+  }
+  const fixed = getDimension(product, 'height_mm', 'h');
+  return isFinitePositive(fixed) ? { minimumMm: fixed, maximumMm: fixed } : null;
+}
+
+function formatHeightRange(range) {
+  if (!range) return 'Unknown';
+  return range.minimumMm === range.maximumMm
+    ? `${range.minimumMm}mm`
+    : `${range.minimumMm}-${range.maximumMm}mm`;
+}
+
+function heightQuantitativeValue(range) {
+  if (range?.minimumMm !== range?.maximumMm) {
+    return {
+      '@type': 'QuantitativeValue',
+      minValue: range?.minimumMm ?? null,
+      maxValue: range?.maximumMm ?? null,
+      unitCode: 'MMT'
+    };
+  }
+  return { '@type': 'QuantitativeValue', value: range?.maximumMm ?? null, unitCode: 'MMT' };
 }
 
 function getClearance(product, key) {
@@ -514,7 +563,7 @@ function buildOfferJsonLd(product) {
 
 function buildProductJsonLd(product) {
   const width = getDimension(product, 'width_mm', 'w');
-  const height = getDimension(product, 'height_mm', 'h');
+  const height = getHeightRange(product);
   const depth = getDimension(product, 'depth_mm', 'd');
   const name = productName(product);
   const canonical = productUrl(product);
@@ -533,7 +582,7 @@ function buildProductJsonLd(product) {
       name: String(product?.brand ?? '').trim()
     },
     width: { '@type': 'QuantitativeValue', value: width, unitCode: 'MMT' },
-    height: { '@type': 'QuantitativeValue', value: height, unitCode: 'MMT' },
+    height: heightQuantitativeValue(height),
     depth: { '@type': 'QuantitativeValue', value: depth, unitCode: 'MMT' },
     additionalProperty: buildAdditionalProperties(product),
     mainEntityOfPage: canonical
@@ -584,10 +633,11 @@ function buildFaqJsonLd(product) {
   const name = productName(product);
   const trustCopy = getEvidenceTrustCopy(product);
   const width = getDimension(product, 'width_mm', 'w');
-  const height = getDimension(product, 'height_mm', 'h');
+  const height = getHeightRange(product);
+  const heightText = formatHeightRange(height);
   const depth = getDimension(product, 'depth_mm', 'd');
   const requiredWidth = sumKnown(width, getClearance(product, 'left_mm'), getClearance(product, 'right_mm'));
-  const requiredHeight = sumKnown(height, getClearance(product, 'top_mm'));
+  const requiredHeight = sumKnown(height?.maximumMm ?? null, getClearance(product, 'top_mm'));
   const requiredDepth = sumKnown(depth, getClearance(product, 'rear_mm'));
   const knownMinimums = [
     Number.isInteger(requiredWidth) ? `${requiredWidth}mm width` : null,
@@ -619,7 +669,7 @@ function buildFaqJsonLd(product) {
         name: `What are the exact dimensions of the ${name}?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `${name} measures ${width}mm wide, ${height}mm high, and ${depth}mm deep.`
+          text: `${name} measures ${width}mm wide, ${heightText} high, and ${depth}mm deep.`
         }
       },
       {
@@ -672,16 +722,17 @@ function buildProductPageHtml(product) {
   const trustCopy = getEvidenceTrustCopy(product);
   const canonical = productUrl(product);
   const width = getDimension(product, 'width_mm', 'w');
-  const height = getDimension(product, 'height_mm', 'h');
+  const height = getHeightRange(product);
+  const heightText = formatHeightRange(height);
   const depth = getDimension(product, 'depth_mm', 'd');
   const requiredWidth = sumKnown(width, getClearance(product, 'left_mm'), getClearance(product, 'right_mm'));
-  const requiredHeight = sumKnown(height, getClearance(product, 'top_mm'));
+  const requiredHeight = sumKnown(height?.maximumMm ?? null, getClearance(product, 'top_mm'));
   const requiredDepth = sumKnown(depth, getClearance(product, 'rear_mm'));
   const titleSubject = new RegExp(`\\b${category.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(name)
     ? name
     : `${name} ${category}`;
   const title = `${titleSubject} ${trustCopy.titleSuffix} | FitAppliance`;
-  const description = `${name}: W ${width}mm, H ${height}mm, D ${depth}mm. ${trustCopy.descriptionVerb}. Check safe cavity size before buying in Australia.`;
+  const description = `${name}: W ${width}mm, H ${heightText}, D ${depth}mm. ${trustCopy.descriptionVerb}. Check safe cavity size before buying in Australia.`;
   const sourceUrl = /^https?:\/\//i.test(String(product?.evidence?.source_url ?? ''))
     ? product.evidence.source_url
     : null;
@@ -743,7 +794,7 @@ ${productSchemaScript}  <script type="application/ld+json">${safeJsonLd(buildBre
         <table class="sku-table">
           <tbody>
             <tr><th>Width</th><td>${width}mm</td></tr>
-            <tr><th>Height</th><td>${height}mm</td></tr>
+            <tr><th>Height</th><td>${heightText}</td></tr>
             <tr><th>Depth</th><td>${depth}mm</td></tr>
 ${isFinitePositive(product?.dimensions?.door_open_90_depth_mm) ? `            <tr><th>Door open 90° depth</th><td>${roundMm(product.dimensions.door_open_90_depth_mm)}mm</td></tr>` : ''}
           </tbody>

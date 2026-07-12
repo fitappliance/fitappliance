@@ -9,6 +9,11 @@ import brandCanon from '../brand-canon.js';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { buildPhase10EvidenceProjection } from '../../src/domain/phase10-evidence-review.mjs';
 import { applyResolutionToProduct } from '../../src/domain/evidence-resolution-loop.mjs';
+import {
+  applyReceiptBoundAcceptance,
+  buildReceiptBoundAcceptanceProjection,
+  mergeReceiptBoundAcceptanceProjections,
+} from '../../src/domain/accepted-evidence-publication.mjs';
 import readableSpec from '../common/readable-spec.js';
 import popularityScore from '../common/popularity-score.js';
 
@@ -25,6 +30,14 @@ const reviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root,
 const spaceReviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'spaceReviewManifest'), 'utf8'));
 const phase10ReviewManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'phase10ReviewManifest'), 'utf8'));
 const resolutionManifest = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'evidenceResolutionManifest'), 'utf8'));
+const acceptanceBatch = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'pdfBrandAcceptanceBatch'), 'utf8'));
+const acceptanceResults = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'pdfBrandAcceptanceResults'), 'utf8'));
+const recoveryAcceptanceBatch = JSON.parse(await readFile(
+  resolveArchitectureV2Path(root, 'identityRangeRecoveryAcceptanceBatch'), 'utf8',
+));
+const recoveryAcceptanceResults = JSON.parse(await readFile(
+  resolveArchitectureV2Path(root, 'identityRangeRecoveryAcceptanceResults'), 'utf8',
+));
 const pilotEvidence = buildPilotEvidenceProjection(applyEvidencePilotReview({ bundles: reviewBundles.bundles, manifest: reviewManifest }));
 for (const [id, review] of buildPhase10EvidenceProjection(phase10ReviewManifest.outcomes)) pilotEvidence.set(id, review);
 const spaceEvidence = buildSpaceEvidenceProjection(spaceReviewManifest.results);
@@ -36,21 +49,38 @@ for (const row of resolutionManifest.activeQuarantines ?? []) {
   }
 }
 const resolutionByLegacy = new Map(resolutionManifest.results.map((row) => [row.legacyRuntimeId, row.decision]));
+const receiptBoundAcceptance = mergeReceiptBoundAcceptanceProjections(
+  buildReceiptBoundAcceptanceProjection({
+    batch: acceptanceBatch,
+    results: acceptanceResults,
+    products: catalog.products,
+  }),
+  buildReceiptBoundAcceptanceProjection({
+    batch: recoveryAcceptanceBatch,
+    results: recoveryAcceptanceResults,
+    products: catalog.products,
+  }),
+);
 const filtered = {
   ...catalog,
   products: catalog.products
     .filter((row) => !quarantined.has(String(row.id).toLowerCase()))
     .map((row) => {
-      const resolution = resolutionByLegacy.get(String(row.id).toLowerCase());
+      const legacyRuntimeId = String(row.id).toLowerCase();
+      const resolution = resolutionByLegacy.get(legacyRuntimeId);
+      const accepted = receiptBoundAcceptance.get(legacyRuntimeId);
+      const canonicalRow = { ...row, brand: brandCanon.canonicalizeBrand(row.brand) };
       if (resolution?.status === 'resolved' && resolution?.publication?.release === true) {
-        return {
+        const resolved = {
           ...applyResolutionToProduct(row, resolution),
           brand: brandCanon.canonicalizeBrand(row.brand),
         };
+        return accepted ? applyReceiptBoundAcceptance(resolved, accepted) : resolved;
       }
-      const canonicalProductId = canonicalByLegacy.get(String(row.id).toLowerCase());
+      if (accepted) return applyReceiptBoundAcceptance(canonicalRow, accepted);
+      const canonicalProductId = canonicalByLegacy.get(legacyRuntimeId);
       const review = pilotEvidence.get(canonicalProductId);
-      if (!review) return { ...row, brand: brandCanon.canonicalizeBrand(row.brand) };
+      if (!review) return canonicalRow;
       const space = spaceEvidence.get(canonicalProductId);
       const values = { ...review.values, ...(space?.values ?? {}) };
       const hasVerifiedDimensions = ['dimensions_verified', 'verified_fit'].includes(review.trustLevel);

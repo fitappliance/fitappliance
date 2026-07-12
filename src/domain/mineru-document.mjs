@@ -60,6 +60,16 @@ function nestedText(value) {
     .join(' ');
 }
 
+function splitSingleCellMeasurement(value) {
+  const cell = normalizedText(value);
+  const scalar = /^(.*?\S)\s+(\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?\s*(?:mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?))$/i.exec(cell);
+  if (scalar) return { label: normalizedText(scalar[1]), value: normalizedText(scalar[2]), quote: cell };
+  const sequence = /^(.*?\S)\s+((?:\d+(?:\.\d+)?\s*(?:mm|cm)?\s*[x×*]\s*){2}\d+(?:\.\d+)?\s*(?:mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?))$/i.exec(cell);
+  return sequence
+    ? { label: normalizedText(sequence[1]), value: normalizedText(sequence[2]), quote: cell }
+    : null;
+}
+
 function tableRows(html) {
   if (typeof html !== 'string' || !html.trim()) return [];
   const $ = load(html, null, false);
@@ -68,6 +78,9 @@ function tableRows(html) {
     const cells = $(row).children('th,td').map((__, cell) => normalizedText($(cell).text())).get();
     if (cells.length >= 2 && cells.some(Boolean)) {
       rows.push({ label: cells[0], value: cells.slice(1).join(' ') });
+    } else if (cells.length === 1) {
+      const split = splitSingleCellMeasurement(cells[0]);
+      if (split) rows.push(split);
     }
   });
   return rows.map((row, index) => {
@@ -136,7 +149,7 @@ const CLEARANCE_AXIS = Object.freeze({
 
 function explicitSequence(label, aliases, expectedLength = null) {
   const tokenPattern = Object.keys(aliases).sort((a, b) => b.length - a.length).join('|');
-  const separator = '(?:\\s*(?:x|×|/|,|\\bby\\b)\\s*)';
+  const separator = '(?:\\s*(?:x|×|/|\\*|,|\\bby\\b)\\s*)';
   const matcher = new RegExp(`\\b(${tokenPattern})\\b${separator}\\b(${tokenPattern})\\b(?:${separator}\\b(${tokenPattern})\\b)?(?:${separator}\\b(${tokenPattern})\\b)?`, 'i');
   const match = matcher.exec(String(label ?? ''));
   if (!match) return null;
@@ -257,7 +270,10 @@ function directClaims(row, fragment, page, fields, category) {
         page,
         bbox: [...fragment.bbox],
         fragmentSha256: fragment.fragmentSha256,
-        semanticBasis: 'explicit_label_value',
+        semanticBasis: ['installation.leftMm', 'installation.rightMm'].includes(field)
+          && /\b(?:each|both)\s+sides?\b/i.test(row.label)
+          ? 'explicit_each_side_label'
+          : 'explicit_label_value',
       });
     } catch {
       // A row that cannot prove one unambiguous value is not evidence.
@@ -302,7 +318,19 @@ function identitySignals(document, model) {
 function paragraphRows(text) {
   const strict = /^([A-Za-z][A-Za-z ()/+.-]{0,80})\s+((?:\d+(?:\.\d+)?)(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?\s*(?:mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?))$/i.exec(text);
   if (strict) return [{ label: normalizedText(strict[1]), value: normalizedText(strict[2]) }];
-  const grouped = /^(.*?\b(?:dimension|dimensions|size)\b.*?\([^)]*[whd]\s*[x×/]\s*[whd]\s*[x×/]\s*[whd][^)]*\))\s*:?[ \t]*((?:\d+(?:\.\d+)?\s*(?:mm|cm)?\s*[x×]\s*){2}\d+(?:\.\d+)?\s*(?:mm|cm))/i.exec(text);
+  if (!/\b(?:pack(?:ed|ing|ag(?:e|ed|ing))?|shipping|carton|box(?:ed)?|crate)\b/i.test(text)) {
+    const axisMatches = [...String(text).matchAll(/\b(width|wide|height|high|depth|deep)\b\s*:?\s*(\d+(?:\.\d+)?)\s*(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/gi)];
+    const axis = { width: 'width', wide: 'width', height: 'height', high: 'height', depth: 'depth', deep: 'depth' };
+    const axes = axisMatches.map((match) => axis[match[1].toLowerCase()]);
+    if (axisMatches.length >= 2 && new Set(axes).size === axisMatches.length) {
+      return axisMatches.map((match) => ({
+        label: match[1],
+        value: `${match[2]} ${match[3]}`,
+        quote: normalizedText(text),
+      }));
+    }
+  }
+  const grouped = /^(.*?\b(?:dimension|dimensions|size)\b.*?\([^)]*[whd]\s*[x×/*]\s*[whd]\s*[x×/*]\s*[whd][^)]*\))\s*:?[ \t]*((?:\d+(?:\.\d+)?\s*(?:mm|cm)?\s*[x×*]\s*){2}\d+(?:\.\d+)?\s*(?:mm|cm))/i.exec(text);
   if (grouped) return [{ label: normalizedText(grouped[1]), value: normalizedText(grouped[2]), quote: normalizedText(text) }];
   const suffixed = /^.*?\b(?:dimension|dimensions|size)\b\s*:?[ \t]*(\d+(?:\.\d+)?)\s*(mm|cm)\s*w\s*[x×]\s*(\d+(?:\.\d+)?)\s*\2\s*h\s*[x×]\s*(\d+(?:\.\d+)?)\s*\2\s*d\b/i.exec(text);
   return suffixed ? [{

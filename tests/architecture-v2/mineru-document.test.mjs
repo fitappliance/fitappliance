@@ -69,6 +69,46 @@ test('MinerU content_list_v2 maps explicit grouped axes without using numeric he
   ]);
 });
 
+test('MinerU preserves single-cell specification rows and maps explicit per-side clearances', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [
+      {
+        type: 'page_header',
+        content: { page_header_content: [{ type: 'text', content: 'QUICK REFERENCE GUIDE > RF605QZUVB1' }] },
+        bbox: [35, 40, 240, 58],
+      },
+      {
+        type: 'table',
+        content: {
+          table_caption: [], table_footnote: [], table_type: 'simple_table', table_nest_level: 1,
+          html: '<table><tr><td>Depth 688 mm</td></tr><tr><td>Height 1790 mm</td></tr><tr><td>Minimum air clearance - at rear 30 mm</td></tr><tr><td>Minimum air clearance - each side 20 mm</td></tr><tr><td>Minimum air clearance - on top 20 mm</td></tr><tr><td>Width 905 mm</td></tr></table>',
+        },
+        bbox: [670, 262, 956, 463],
+      },
+    ],
+  ]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Fisher & Paykel', model: 'RF605QZUVB1', category: 'fridge' },
+    fields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+      'installation.leftMm', 'installation.rightMm', 'installation.rearMm', 'installation.topMm',
+    ],
+  });
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': 905,
+    'closedEnvelope.heightMm': 1790,
+    'closedEnvelope.depthMm': 688,
+    'installation.leftMm': 20,
+    'installation.rightMm': 20,
+    'installation.rearMm': 30,
+    'installation.topMm': 20,
+  });
+  assert.ok(parsed.claims.every((claim) => claim.page === 1));
+  assert.ok(parsed.claims.every((claim) => claim.fragmentSha256?.length === 64));
+});
+
 test('MinerU grouped dimensions honour H x W x D and reject packaged rows', () => {
   const bytes = mineruJson(`<table>
     <tr><td>Model</td><td>HRCD640TBW</td></tr>
@@ -91,6 +131,44 @@ test('MinerU grouped dimensions honour H x W x D and reject packaged rows', () =
     pdfSha256, parserVersion: '3.4.4', modelRevision, caseIdentity: identity,
     fields: ['closedEnvelope.heightMm'],
   }), /no exact-model MinerU evidence/i);
+});
+
+test('MinerU grouped dimensions accept an explicit H*W*D axis order', () => {
+  const bytes = mineruJson(`<table>
+    <tr><td>Model</td><td>HWF8I1015BX</td></tr>
+    <tr><td>Dimensions (H*W*D) Unit: mm</td><td>845*595*550</td></tr>
+  </table>`, 'Hisense HWF8I1015BX Specifications');
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Hisense', model: 'HWF8I1015BX', category: 'washing_machine' },
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(parsed.claims.map((claim) => [claim.field, claim.value]), [
+    ['closedEnvelope.widthMm', 595],
+    ['closedEnvelope.heightMm', 845],
+    ['closedEnvelope.depthMm', 550],
+  ]);
+});
+
+test('MinerU excludes Pack Dimension rows from primary product dimensions', () => {
+  const bytes = mineruJson(`<table>
+    <tr><td>Model</td><td>HRCD640TBW</td></tr>
+    <tr><td>Total height (mm)</td><td>850</td></tr>
+    <tr><td>Total width (mm)</td><td>598</td></tr>
+    <tr><td>Total depth (mm)</td><td>598</td></tr>
+    <tr><td>Pack Dimensions Height (mm)</td><td>881</td></tr>
+    <tr><td>Pack Dimension Width (mm)</td><td>644</td></tr>
+    <tr><td>Pack Dimension Depth (mm)</td><td>661</td></tr>
+  </table>`);
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision, caseIdentity: identity,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(parsed.claims.map((claim) => [claim.field, claim.value]), [
+    ['closedEnvelope.widthMm', 598],
+    ['closedEnvelope.heightMm', 850],
+    ['closedEnvelope.depthMm', 598],
+  ]);
 });
 
 test('MinerU accepts compact explicit WxHxD axis notation without inferring axes', () => {
@@ -162,6 +240,51 @@ test('MinerU accepts exact-model QRG page headers and preserves an adjustable he
   assert.deepEqual(parsed.identitySignals.map((signal) => signal.type), [
     'mineru_page_header_model',
   ]);
+});
+
+test('MinerU accepts individually labelled inline axes and excludes handle-qualified depth', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'page_header',
+      content: { page_header_content: [{ type: 'text', content: 'QUICK REFERENCE GUIDE > RF522ADUSX5' }] },
+      bbox: [35, 40, 240, 58],
+    },
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: 'Height 1715 mm Width 790 mm Depth 695 mm' }] },
+      bbox: [354, 105, 634, 189],
+    },
+    {
+      type: 'table',
+      content: {
+        table_caption: [], table_footnote: [], table_type: 'simple_table', table_nest_level: 1,
+        html: '<table><tr><td>Depth</td><td>695 mm</td></tr><tr><td>Depth (including handles)</td><td>735 mm</td></tr><tr><td>Height</td><td>1715 mm</td></tr><tr><td>Width</td><td>790 mm</td></tr></table>',
+      },
+      bbox: [355, 381, 639, 534],
+    },
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Fisher & Paykel', model: 'RF522ADUSX5', category: 'fridge' },
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': 790,
+    'closedEnvelope.heightMm': 1715,
+    'closedEnvelope.depthMm': 695,
+  });
+  assert.ok(parsed.claims.every((claim) => !/including handles/i.test(claim.label)));
+});
+
+test('handle-qualified depth alone cannot stand in for primary product depth', () => {
+  const bytes = mineruJson(`<table>
+    <tr><td>Model</td><td>HRCD640TBW</td></tr>
+    <tr><td>Depth (including handles)</td><td>735 mm</td></tr>
+  </table>`);
+  assert.throws(() => parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision, caseIdentity: identity,
+    fields: ['closedEnvelope.depthMm'],
+  }), /no exact-model MinerU evidence/i);
 });
 
 test('MinerU rejects merged multi-axis paragraphs but accepts strict individual axis paragraphs', () => {

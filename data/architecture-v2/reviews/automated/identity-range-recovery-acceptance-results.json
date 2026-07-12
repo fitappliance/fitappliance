@@ -1,0 +1,2431 @@
+{
+  "schemaVersion": 1,
+  "batchId": "identity-range-recovery-2026-07-12",
+  "reviewedAt": "2026-07-12T04:00:00.000Z",
+  "summary": {
+    "entries": 11,
+    "accepted": 10,
+    "acceptedPdf": 6,
+    "acceptedHtmlFallback": 4,
+    "geometryDimensions": 10,
+    "geometryVerified": 0,
+    "fitInsufficient": 10,
+    "fitConditional": 0,
+    "fitEstimated": 0,
+    "fitVerified": 0,
+    "quarantined": 1
+  },
+  "outcomes": [
+    {
+      "id": "recovery-fisherpaykel-rf522adusx5",
+      "brand": "Fisher & Paykel",
+      "model": "RF522ADUSX5",
+      "category": "fridge",
+      "requestedUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe2d58313/QRG/CN/QRG-CN-25440.pdf",
+      "requestedUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe2d58313/QRG/CN/QRG-CN-25440.pdf"
+      ],
+      "outcome": "accepted",
+      "acquisition": "passed",
+      "mineru": "passed",
+      "identity": "exact",
+      "claims": [
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 695,
+          "page": 1
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 1715,
+          "page": 1
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 790,
+          "page": 1
+        },
+        {
+          "field": "installation.leftMm",
+          "value": 20,
+          "page": 2
+        },
+        {
+          "field": "installation.rightMm",
+          "value": 20,
+          "page": 2
+        },
+        {
+          "field": "installation.topMm",
+          "value": 50,
+          "page": 2
+        }
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 790,
+            "heightMm": {
+              "minimumMm": 1715,
+              "maximumMm": 1715
+            },
+            "depthMm": 695
+          },
+          "installation": {
+            "leftMm": 20,
+            "rightMm": 20,
+            "topMm": 50,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": "upright",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe2d58313/QRG/CN/QRG-CN-25440.pdf",
+            "contentSha256": "f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402",
+            "receiptBindingSha256": "dda9b9662b70aef1836589813714e66fc04c24373c07c2ed6e492be406933a51",
+            "page": 1,
+            "fragmentSha256": "ad226d6287894c4b96687d2087c4063b594f0eac000a673154ba6455afc24559"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe2d58313/QRG/CN/QRG-CN-25440.pdf",
+            "contentSha256": "f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402",
+            "receiptBindingSha256": "dda9b9662b70aef1836589813714e66fc04c24373c07c2ed6e492be406933a51",
+            "page": 1,
+            "fragmentSha256": "ad226d6287894c4b96687d2087c4063b594f0eac000a673154ba6455afc24559"
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe2d58313/QRG/CN/QRG-CN-25440.pdf",
+            "contentSha256": "f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402",
+            "receiptBindingSha256": "dda9b9662b70aef1836589813714e66fc04c24373c07c2ed6e492be406933a51",
+            "page": 1,
+            "fragmentSha256": "ad226d6287894c4b96687d2087c4063b594f0eac000a673154ba6455afc24559"
+          },
+          "installation.leftMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe2d58313/QRG/CN/QRG-CN-25440.pdf",
+            "contentSha256": "f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402",
+            "receiptBindingSha256": "dda9b9662b70aef1836589813714e66fc04c24373c07c2ed6e492be406933a51",
+            "page": 2,
+            "fragmentSha256": "74d0e26d7b215afbf145d857044ddf5710e0a0de7a5543ecbd50b3d235eab2ae"
+          },
+          "installation.rightMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe2d58313/QRG/CN/QRG-CN-25440.pdf",
+            "contentSha256": "f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402",
+            "receiptBindingSha256": "dda9b9662b70aef1836589813714e66fc04c24373c07c2ed6e492be406933a51",
+            "page": 2,
+            "fragmentSha256": "74d0e26d7b215afbf145d857044ddf5710e0a0de7a5543ecbd50b3d235eab2ae"
+          },
+          "installation.topMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe2d58313/QRG/CN/QRG-CN-25440.pdf",
+            "contentSha256": "f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402",
+            "receiptBindingSha256": "dda9b9662b70aef1836589813714e66fc04c24373c07c2ed6e492be406933a51",
+            "page": 2,
+            "fragmentSha256": "74d0e26d7b215afbf145d857044ddf5710e0a0de7a5543ecbd50b3d235eab2ae"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.rearMm",
+          "operation.doorOpenDepthMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402"
+        ]
+      },
+      "artifactType": "pdf",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_pdf",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe2d58313/QRG/CN/QRG-CN-25440.pdf",
+        "finalUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwe2d58313/QRG/CN/QRG-CN-25440.pdf",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T04:00:00.000Z",
+        "contentSha256": "f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402",
+        "objectPath": "evidence/web/sha256/f7/5c/f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402.pdf",
+        "contentType": "application/pdf",
+        "byteSize": 457321,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "Fisher & Paykel",
+          "model": "RF522ADUSX5",
+          "outcome": "exact"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 695,
+            "unit": "mm",
+            "label": "Depth",
+            "quote": "Depth 695 mm",
+            "page": 1,
+            "bbox": [
+              354,
+              105,
+              634,
+              189
+            ],
+            "fragmentSha256": "ad226d6287894c4b96687d2087c4063b594f0eac000a673154ba6455afc24559",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": 1715,
+            "unit": "mm",
+            "label": "Height",
+            "quote": "Height 1715 mm",
+            "page": 1,
+            "bbox": [
+              354,
+              105,
+              634,
+              189
+            ],
+            "fragmentSha256": "ad226d6287894c4b96687d2087c4063b594f0eac000a673154ba6455afc24559",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 790,
+            "unit": "mm",
+            "label": "Width",
+            "quote": "Width 790 mm",
+            "page": 1,
+            "bbox": [
+              354,
+              105,
+              634,
+              189
+            ],
+            "fragmentSha256": "ad226d6287894c4b96687d2087c4063b594f0eac000a673154ba6455afc24559",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "installation.leftMm",
+            "value": 20,
+            "unit": "mm",
+            "label": "Minimum air clearance - each side",
+            "quote": "Minimum air clearance - each side 20 mm",
+            "page": 2,
+            "bbox": [
+              355,
+              381,
+              639,
+              534
+            ],
+            "fragmentSha256": "74d0e26d7b215afbf145d857044ddf5710e0a0de7a5543ecbd50b3d235eab2ae",
+            "semanticBasis": "explicit_each_side_label"
+          },
+          {
+            "field": "installation.rightMm",
+            "value": 20,
+            "unit": "mm",
+            "label": "Minimum air clearance - each side",
+            "quote": "Minimum air clearance - each side 20 mm",
+            "page": 2,
+            "bbox": [
+              355,
+              381,
+              639,
+              534
+            ],
+            "fragmentSha256": "74d0e26d7b215afbf145d857044ddf5710e0a0de7a5543ecbd50b3d235eab2ae",
+            "semanticBasis": "explicit_each_side_label"
+          },
+          {
+            "field": "installation.topMm",
+            "value": 50,
+            "unit": "mm",
+            "label": "Minimum air clearance - on top",
+            "quote": "Minimum air clearance - on top 50 mm",
+            "page": 2,
+            "bbox": [
+              355,
+              381,
+              639,
+              534
+            ],
+            "fragmentSha256": "74d0e26d7b215afbf145d857044ddf5710e0a0de7a5543ecbd50b3d235eab2ae",
+            "semanticBasis": "explicit_label_value"
+          }
+        ],
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402",
+          "contentSha256": "6654314ecf75bc172b0c0a872ba11467362feafef9d5fac13d68afdc6906120f",
+          "objectPath": "evidence/derived/mineru-json/sha256/66/54/6654314ecf75bc172b0c0a872ba11467362feafef9d5fac13d68afdc6906120f.json",
+          "byteSize": 30386,
+          "pageCount": 2
+        },
+        "identitySignals": [
+          {
+            "type": "mineru_page_header_model",
+            "value": "RF522ADUSX5:page:1:cc03e670c00f8c1bef8145f6a289bf6c6becc077274f4cba5e65c6991dd4d541"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "RF522ADUSX5:page:2:b8aac81b5d89d6d38645d237a6b1f8fb97618569389d6f3b6a008d3958b61538"
+          },
+          {
+            "type": "mineru_repeated_page_header_model",
+            "value": "RF522ADUSX5:document:repeated-page-header"
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
+          "verifiedAt": "2026-07-12T04:00:00.000Z",
+          "bindingSha256": "dda9b9662b70aef1836589813714e66fc04c24373c07c2ed6e492be406933a51"
+        }
+      },
+      "diagnosticArtifacts": {
+        "pdfObjectPath": "evidence/web/sha256/f7/5c/f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402.pdf",
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402",
+          "contentSha256": "6654314ecf75bc172b0c0a872ba11467362feafef9d5fac13d68afdc6906120f",
+          "objectPath": "evidence/derived/mineru-json/sha256/66/54/6654314ecf75bc172b0c0a872ba11467362feafef9d5fac13d68afdc6906120f.json",
+          "byteSize": 30386,
+          "pageCount": 2
+        }
+      },
+      "failures": []
+    },
+    {
+      "id": "recovery-fisherpaykel-rf610adusx5",
+      "brand": "Fisher & Paykel",
+      "model": "RF610ADUSX5",
+      "category": "fridge",
+      "requestedUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw17d50d9a/QRG/ASIA/QRG-Asia-26180.pdf",
+      "requestedUrls": [
+        "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw17d50d9a/QRG/ASIA/QRG-Asia-26180.pdf"
+      ],
+      "outcome": "accepted",
+      "acquisition": "passed",
+      "mineru": "passed",
+      "identity": "exact",
+      "claims": [
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 695,
+          "page": 1
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 1790,
+          "page": 1
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 900,
+          "page": 1
+        }
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 900,
+            "heightMm": {
+              "minimumMm": 1790,
+              "maximumMm": 1790
+            },
+            "depthMm": 695
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": "upright",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw17d50d9a/QRG/ASIA/QRG-Asia-26180.pdf",
+            "contentSha256": "372f69cf9eac9fc0695fa9c3cb054f5375a546126220fadaee130d48963cbbf5",
+            "receiptBindingSha256": "c07e00a6573e2fde64f80b34d791b0c9d2b55e4e70ddffdb7805df9c21597105",
+            "page": 1,
+            "fragmentSha256": "ef5fb8efe2d9432b6c98c7bacbbb928beb66c2a0d848b5caa235cd6145d21bb6"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw17d50d9a/QRG/ASIA/QRG-Asia-26180.pdf",
+            "contentSha256": "372f69cf9eac9fc0695fa9c3cb054f5375a546126220fadaee130d48963cbbf5",
+            "receiptBindingSha256": "c07e00a6573e2fde64f80b34d791b0c9d2b55e4e70ddffdb7805df9c21597105",
+            "page": 1,
+            "fragmentSha256": "ef5fb8efe2d9432b6c98c7bacbbb928beb66c2a0d848b5caa235cd6145d21bb6"
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw17d50d9a/QRG/ASIA/QRG-Asia-26180.pdf",
+            "contentSha256": "372f69cf9eac9fc0695fa9c3cb054f5375a546126220fadaee130d48963cbbf5",
+            "receiptBindingSha256": "c07e00a6573e2fde64f80b34d791b0c9d2b55e4e70ddffdb7805df9c21597105",
+            "page": 1,
+            "fragmentSha256": "ef5fb8efe2d9432b6c98c7bacbbb928beb66c2a0d848b5caa235cd6145d21bb6"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "372f69cf9eac9fc0695fa9c3cb054f5375a546126220fadaee130d48963cbbf5"
+        ]
+      },
+      "artifactType": "pdf",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_pdf",
+        "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw17d50d9a/QRG/ASIA/QRG-Asia-26180.pdf",
+        "finalUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw17d50d9a/QRG/ASIA/QRG-Asia-26180.pdf",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T04:00:00.000Z",
+        "contentSha256": "372f69cf9eac9fc0695fa9c3cb054f5375a546126220fadaee130d48963cbbf5",
+        "objectPath": "evidence/web/sha256/37/2f/372f69cf9eac9fc0695fa9c3cb054f5375a546126220fadaee130d48963cbbf5.pdf",
+        "contentType": "application/pdf",
+        "byteSize": 307123,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "Fisher & Paykel",
+          "model": "RF610ADUSX5",
+          "outcome": "exact"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 695,
+            "unit": "mm",
+            "label": "Depth",
+            "quote": "Depth 695 mm",
+            "page": 1,
+            "bbox": [
+              354,
+              105,
+              634,
+              191
+            ],
+            "fragmentSha256": "ef5fb8efe2d9432b6c98c7bacbbb928beb66c2a0d848b5caa235cd6145d21bb6",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": 1790,
+            "unit": "mm",
+            "label": "Height",
+            "quote": "Height 1790 mm",
+            "page": 1,
+            "bbox": [
+              354,
+              105,
+              634,
+              191
+            ],
+            "fragmentSha256": "ef5fb8efe2d9432b6c98c7bacbbb928beb66c2a0d848b5caa235cd6145d21bb6",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 900,
+            "unit": "mm",
+            "label": "Width",
+            "quote": "Width 900 mm",
+            "page": 1,
+            "bbox": [
+              354,
+              105,
+              634,
+              191
+            ],
+            "fragmentSha256": "ef5fb8efe2d9432b6c98c7bacbbb928beb66c2a0d848b5caa235cd6145d21bb6",
+            "semanticBasis": "explicit_label_value"
+          }
+        ],
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "372f69cf9eac9fc0695fa9c3cb054f5375a546126220fadaee130d48963cbbf5",
+          "contentSha256": "84c9d90f7da5db3dbe180d3e86eb5b8893a8bd4dc788f78e45635c4f7638653e",
+          "objectPath": "evidence/derived/mineru-json/sha256/84/c9/84c9d90f7da5db3dbe180d3e86eb5b8893a8bd4dc788f78e45635c4f7638653e.json",
+          "byteSize": 28283,
+          "pageCount": 2
+        },
+        "identitySignals": [
+          {
+            "type": "mineru_page_header_model",
+            "value": "RF610ADUSX5:page:1:9195baf65eb083616b81ec78ef48209189e60c9415c2999c0df2de545e49ea93"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "RF610ADUSX5:page:2:7e2cc4892f19de4ef974e7ae375e83e31eef74a3a8836a28c169228ee5340d22"
+          },
+          {
+            "type": "mineru_repeated_page_header_model",
+            "value": "RF610ADUSX5:document:repeated-page-header"
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
+          "verifiedAt": "2026-07-12T04:00:00.000Z",
+          "bindingSha256": "c07e00a6573e2fde64f80b34d791b0c9d2b55e4e70ddffdb7805df9c21597105"
+        }
+      },
+      "diagnosticArtifacts": {
+        "pdfObjectPath": "evidence/web/sha256/37/2f/372f69cf9eac9fc0695fa9c3cb054f5375a546126220fadaee130d48963cbbf5.pdf",
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "372f69cf9eac9fc0695fa9c3cb054f5375a546126220fadaee130d48963cbbf5",
+          "contentSha256": "84c9d90f7da5db3dbe180d3e86eb5b8893a8bd4dc788f78e45635c4f7638653e",
+          "objectPath": "evidence/derived/mineru-json/sha256/84/c9/84c9d90f7da5db3dbe180d3e86eb5b8893a8bd4dc788f78e45635c4f7638653e.json",
+          "byteSize": 28283,
+          "pageCount": 2
+        }
+      },
+      "failures": []
+    },
+    {
+      "id": "recovery-westinghouse-wsf6604xb",
+      "brand": "Westinghouse",
+      "model": "WSF6604XB",
+      "category": "dishwasher",
+      "requestedUrl": "https://www.westinghouse.com.au/dishwashing/dishwashers/wsf6604xb/",
+      "requestedUrls": [
+        "https://www.westinghouse.com.au/dishwashing/dishwashers/wsf6604xb/"
+      ],
+      "outcome": "accepted",
+      "acquisition": "passed",
+      "mineru": "passed",
+      "identity": "exact",
+      "claims": [
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 598,
+          "page": 5
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850,
+          "page": 4
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 598,
+          "page": 4
+        }
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 598
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": "front_loader",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6604XB&brand=Westinghouse",
+            "contentSha256": "459a7a142a4637f03d2e7a695a5c9a277d0bfdb45a38550dcb01b29a7569fc48",
+            "receiptBindingSha256": "b473cee70fffbe279dc4aaaaa274814a59af0c54ddb041af5e93e0158b4e7672",
+            "page": 5,
+            "fragmentSha256": "0cdb0b2a9880b32add4e5c27446e94cd639287a0b82632ea765d255136906075"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6604XB&brand=Westinghouse",
+            "contentSha256": "459a7a142a4637f03d2e7a695a5c9a277d0bfdb45a38550dcb01b29a7569fc48",
+            "receiptBindingSha256": "b473cee70fffbe279dc4aaaaa274814a59af0c54ddb041af5e93e0158b4e7672",
+            "page": 4,
+            "fragmentSha256": "cfb98a180a0ec37e1504c2d78497e8ed340f7660d6b8442310ed9853f206fd49"
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6604XB&brand=Westinghouse",
+            "contentSha256": "459a7a142a4637f03d2e7a695a5c9a277d0bfdb45a38550dcb01b29a7569fc48",
+            "receiptBindingSha256": "b473cee70fffbe279dc4aaaaa274814a59af0c54ddb041af5e93e0158b4e7672",
+            "page": 4,
+            "fragmentSha256": "cfb98a180a0ec37e1504c2d78497e8ed340f7660d6b8442310ed9853f206fd49"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "459a7a142a4637f03d2e7a695a5c9a277d0bfdb45a38550dcb01b29a7569fc48"
+        ]
+      },
+      "artifactType": "pdf",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_pdf",
+        "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6604XB&brand=Westinghouse",
+        "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6604XB&brand=Westinghouse",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T04:00:00.000Z",
+        "contentSha256": "459a7a142a4637f03d2e7a695a5c9a277d0bfdb45a38550dcb01b29a7569fc48",
+        "objectPath": "evidence/web/sha256/45/9a/459a7a142a4637f03d2e7a695a5c9a277d0bfdb45a38550dcb01b29a7569fc48.pdf",
+        "contentType": "application/pdf",
+        "byteSize": 1579816,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "Westinghouse",
+          "model": "WSF6604XB",
+          "outcome": "exact"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 598,
+            "unit": "mm",
+            "label": "Total depth (mm)",
+            "quote": "Total depth (mm) 598",
+            "page": 5,
+            "bbox": [
+              32,
+              143,
+              455,
+              236
+            ],
+            "fragmentSha256": "0cdb0b2a9880b32add4e5c27446e94cd639287a0b82632ea765d255136906075",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": 850,
+            "unit": "mm",
+            "label": "Total height (mm)",
+            "quote": "Total height (mm) 850",
+            "page": 4,
+            "bbox": [
+              32,
+              777,
+              455,
+              871
+            ],
+            "fragmentSha256": "cfb98a180a0ec37e1504c2d78497e8ed340f7660d6b8442310ed9853f206fd49",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 598,
+            "unit": "mm",
+            "label": "Total width (mm)",
+            "quote": "Total width (mm) 598",
+            "page": 4,
+            "bbox": [
+              32,
+              777,
+              455,
+              871
+            ],
+            "fragmentSha256": "cfb98a180a0ec37e1504c2d78497e8ed340f7660d6b8442310ed9853f206fd49",
+            "semanticBasis": "explicit_label_value"
+          }
+        ],
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "459a7a142a4637f03d2e7a695a5c9a277d0bfdb45a38550dcb01b29a7569fc48",
+          "contentSha256": "9fdb7e40332e777aa3ffbcf5b40335384e8a10b85b2f9e6e41ab9f4b788c9e46",
+          "objectPath": "evidence/derived/mineru-json/sha256/9f/db/9fdb7e40332e777aa3ffbcf5b40335384e8a10b85b2f9e6e41ab9f4b788c9e46.json",
+          "byteSize": 49784,
+          "pageCount": 8
+        },
+        "identitySignals": [
+          {
+            "type": "mineru_body_model",
+            "value": "WSF6604XB:page:7:de7ea8b6c9a3e890cd4714076a01afe79f5fbd36939b1a98ef0f0084cc30c60d"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6604XB:page:1:49f41c6748df9dcdbdb4a524304e12c41e6704c5e04e2c76545dd24b0a7a79e7"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6604XB:page:2:248978a09e950781c3c9e7e29de75dce6674057f71bbea6646516361f433f2bc"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6604XB:page:3:88b027845400961a1babe7210d0407c692c2ce27c50c1d84764bc153dccbbba5"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6604XB:page:4:4ecf8b06bc77f1155a3643bbced43b2615ec6f863237264eab03f92db7128d39"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6604XB:page:5:aaaa08cd5f7a69308f1b7e7eaadbf91fa3a77bf3d811c31f33d785b9b4bd3252"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6604XB:page:6:a1ebba168fac5a043465a9b6aed552f03659762de5cba5cbf351be11a49465e7"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6604XB:page:7:d2fa7c8e1daa333b0c1c733e466028c2f95ab003d490b61cf66ff9696a0f100c"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6604XB:page:8:e131471331348f79a960864afc5cb4dd68e4e34620cec81500ab10ae87481f77"
+          },
+          {
+            "type": "mineru_repeated_page_header_model",
+            "value": "WSF6604XB:document:repeated-page-header"
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
+          "verifiedAt": "2026-07-12T04:00:00.000Z",
+          "bindingSha256": "b473cee70fffbe279dc4aaaaa274814a59af0c54ddb041af5e93e0158b4e7672"
+        }
+      },
+      "diagnosticArtifacts": {
+        "pdfObjectPath": "evidence/web/sha256/45/9a/459a7a142a4637f03d2e7a695a5c9a277d0bfdb45a38550dcb01b29a7569fc48.pdf",
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "459a7a142a4637f03d2e7a695a5c9a277d0bfdb45a38550dcb01b29a7569fc48",
+          "contentSha256": "9fdb7e40332e777aa3ffbcf5b40335384e8a10b85b2f9e6e41ab9f4b788c9e46",
+          "objectPath": "evidence/derived/mineru-json/sha256/9f/db/9fdb7e40332e777aa3ffbcf5b40335384e8a10b85b2f9e6e41ab9f4b788c9e46.json",
+          "byteSize": 49784,
+          "pageCount": 8
+        }
+      },
+      "failures": []
+    },
+    {
+      "id": "recovery-westinghouse-wsf6606xb",
+      "brand": "Westinghouse",
+      "model": "WSF6606XB",
+      "category": "dishwasher",
+      "requestedUrl": "https://www.westinghouse.com.au/dishwashing/dishwashers/wsf6606xb/",
+      "requestedUrls": [
+        "https://www.westinghouse.com.au/dishwashing/dishwashers/wsf6606xb/"
+      ],
+      "outcome": "accepted",
+      "acquisition": "passed",
+      "mineru": "passed",
+      "identity": "exact",
+      "claims": [
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 598,
+          "page": 5
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850,
+          "page": 4
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 598,
+          "page": 4
+        }
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 598
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": "front_loader",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6606XB&brand=Westinghouse",
+            "contentSha256": "5abb65a48d029999cd55c8a5f2c2672a4ac9d66ae5d1feb83ec58bed50c2ce99",
+            "receiptBindingSha256": "75f1b47b1e9e8c0f28aaa2497af2d7f1eb6d307c4c58efb27a500950b921b50d",
+            "page": 5,
+            "fragmentSha256": "0cdb0b2a9880b32add4e5c27446e94cd639287a0b82632ea765d255136906075"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6606XB&brand=Westinghouse",
+            "contentSha256": "5abb65a48d029999cd55c8a5f2c2672a4ac9d66ae5d1feb83ec58bed50c2ce99",
+            "receiptBindingSha256": "75f1b47b1e9e8c0f28aaa2497af2d7f1eb6d307c4c58efb27a500950b921b50d",
+            "page": 4,
+            "fragmentSha256": "4380cf8c59daada39ee00b96c736ea77f6042d8cfda9f51be670c12513311eed"
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6606XB&brand=Westinghouse",
+            "contentSha256": "5abb65a48d029999cd55c8a5f2c2672a4ac9d66ae5d1feb83ec58bed50c2ce99",
+            "receiptBindingSha256": "75f1b47b1e9e8c0f28aaa2497af2d7f1eb6d307c4c58efb27a500950b921b50d",
+            "page": 4,
+            "fragmentSha256": "4380cf8c59daada39ee00b96c736ea77f6042d8cfda9f51be670c12513311eed"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "5abb65a48d029999cd55c8a5f2c2672a4ac9d66ae5d1feb83ec58bed50c2ce99"
+        ]
+      },
+      "artifactType": "pdf",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_pdf",
+        "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6606XB&brand=Westinghouse",
+        "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6606XB&brand=Westinghouse",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T04:00:00.000Z",
+        "contentSha256": "5abb65a48d029999cd55c8a5f2c2672a4ac9d66ae5d1feb83ec58bed50c2ce99",
+        "objectPath": "evidence/web/sha256/5a/bb/5abb65a48d029999cd55c8a5f2c2672a4ac9d66ae5d1feb83ec58bed50c2ce99.pdf",
+        "contentType": "application/pdf",
+        "byteSize": 1598262,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "Westinghouse",
+          "model": "WSF6606XB",
+          "outcome": "exact"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 598,
+            "unit": "mm",
+            "label": "Total depth (mm)",
+            "quote": "Total depth (mm) 598",
+            "page": 5,
+            "bbox": [
+              32,
+              143,
+              455,
+              236
+            ],
+            "fragmentSha256": "0cdb0b2a9880b32add4e5c27446e94cd639287a0b82632ea765d255136906075",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": 850,
+            "unit": "mm",
+            "label": "Total height (mm)",
+            "quote": "Total height (mm) 850",
+            "page": 4,
+            "bbox": [
+              32,
+              777,
+              455,
+              869
+            ],
+            "fragmentSha256": "4380cf8c59daada39ee00b96c736ea77f6042d8cfda9f51be670c12513311eed",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 598,
+            "unit": "mm",
+            "label": "Total width (mm)",
+            "quote": "Total width (mm) 598",
+            "page": 4,
+            "bbox": [
+              32,
+              777,
+              455,
+              869
+            ],
+            "fragmentSha256": "4380cf8c59daada39ee00b96c736ea77f6042d8cfda9f51be670c12513311eed",
+            "semanticBasis": "explicit_label_value"
+          }
+        ],
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "5abb65a48d029999cd55c8a5f2c2672a4ac9d66ae5d1feb83ec58bed50c2ce99",
+          "contentSha256": "58a2648b5ba67b8e71b3df2fcb2ea573d37ff4cff937c9bfb33bc9ea81c47965",
+          "objectPath": "evidence/derived/mineru-json/sha256/58/a2/58a2648b5ba67b8e71b3df2fcb2ea573d37ff4cff937c9bfb33bc9ea81c47965.json",
+          "byteSize": 62172,
+          "pageCount": 9
+        },
+        "identitySignals": [
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6606XB:page:1:c5c052374fcebb8f756345ae6aab8a9f6613d4515de00cad89e47b0ad94d3939"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6606XB:page:2:5e7ec39f2123fd1fb666a59b73ff1b848d603de939b588e68ab7c0fd5d054acf"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6606XB:page:3:ca24d1fb319b398269283b2721865b87d467ff2e78eee9974fc59aabb355bb47"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6606XB:page:4:11fee922ae64ace00259631b463dd455571b209e747cf34f5b1075ff2ca936d6"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6606XB:page:5:414797d9864beb3d359037ec5a38dd217ed22f9f797f74cccd6d2e889aa3cf1b"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6606XB:page:6:358af5ca17e3669ff56fa38c7439a8a1bcceda135cc62ef94c4d7313207f5bbf"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6606XB:page:7:c3ac0b6e78bd39dd41aab99d330d45048fdecca176101d19702e2435e061fc09"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6606XB:page:8:3adbaa6a1bbece40ece16240fb227b1ebcbca75fb9d64bc5948c1d0d6402caca"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "WSF6606XB:page:9:787636fdba31e36ce1b2b0af7a7f24b986a49a1736cadf76237bba15e33bd78c"
+          },
+          {
+            "type": "mineru_repeated_page_header_model",
+            "value": "WSF6606XB:document:repeated-page-header"
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
+          "verifiedAt": "2026-07-12T04:00:00.000Z",
+          "bindingSha256": "75f1b47b1e9e8c0f28aaa2497af2d7f1eb6d307c4c58efb27a500950b921b50d"
+        }
+      },
+      "diagnosticArtifacts": {
+        "pdfObjectPath": "evidence/web/sha256/5a/bb/5abb65a48d029999cd55c8a5f2c2672a4ac9d66ae5d1feb83ec58bed50c2ce99.pdf",
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "5abb65a48d029999cd55c8a5f2c2672a4ac9d66ae5d1feb83ec58bed50c2ce99",
+          "contentSha256": "58a2648b5ba67b8e71b3df2fcb2ea573d37ff4cff937c9bfb33bc9ea81c47965",
+          "objectPath": "evidence/derived/mineru-json/sha256/58/a2/58a2648b5ba67b8e71b3df2fcb2ea573d37ff4cff937c9bfb33bc9ea81c47965.json",
+          "byteSize": 62172,
+          "pageCount": 9
+        }
+      },
+      "failures": []
+    },
+    {
+      "id": "recovery-samsung-dv90bb9440gb",
+      "brand": "Samsung",
+      "model": "DV90BB9440GB",
+      "category": "dryer",
+      "requestedUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-dryer-ai-dry-9kg-black-dv90bb9440gbsa/",
+      "requestedUrls": [
+        "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-dryer-ai-dry-9kg-black-dv90bb9440gbsa/"
+      ],
+      "outcome": "accepted",
+      "acquisition": "passed",
+      "mineru": "not_run_or_failed",
+      "identity": "exact",
+      "claims": [
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 650
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 600
+        }
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 650
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": "front_loader",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-dryer-ai-dry-9kg-black-dv90bb9440gbsa/",
+            "contentSha256": "56ee1f21cb9a80ee8eb0019ffbbba162c6dd80ff13d1b60ac8d1c11385764145",
+            "receiptBindingSha256": "3bb2c66eb920f0f586981e15249093227f27262790996d2fa6d895d4bd9de1f0",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-dryer-ai-dry-9kg-black-dv90bb9440gbsa/",
+            "contentSha256": "56ee1f21cb9a80ee8eb0019ffbbba162c6dd80ff13d1b60ac8d1c11385764145",
+            "receiptBindingSha256": "3bb2c66eb920f0f586981e15249093227f27262790996d2fa6d895d4bd9de1f0",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-dryer-ai-dry-9kg-black-dv90bb9440gbsa/",
+            "contentSha256": "56ee1f21cb9a80ee8eb0019ffbbba162c6dd80ff13d1b60ac8d1c11385764145",
+            "receiptBindingSha256": "3bb2c66eb920f0f586981e15249093227f27262790996d2fa6d895d4bd9de1f0",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "56ee1f21cb9a80ee8eb0019ffbbba162c6dd80ff13d1b60ac8d1c11385764145"
+        ]
+      },
+      "artifactType": "official_html_fallback",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_product_page",
+        "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-dryer-ai-dry-9kg-black-dv90bb9440gbsa/",
+        "finalUrl": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-dryer-ai-dry-9kg-black-dv90bb9440gbsa/",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T04:00:00.000Z",
+        "contentSha256": "56ee1f21cb9a80ee8eb0019ffbbba162c6dd80ff13d1b60ac8d1c11385764145",
+        "objectPath": "evidence/web/sha256/56/ee/56ee1f21cb9a80ee8eb0019ffbbba162c6dd80ff13d1b60ac8d1c11385764145.html",
+        "contentType": "text/html",
+        "byteSize": 848735,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "Samsung",
+          "model": "DV90BB9440GB",
+          "outcome": "exact"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 650,
+            "unit": "mm",
+            "label": "Depth",
+            "quote": "Depth 650 mm"
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": 850,
+            "unit": "mm",
+            "label": "Height",
+            "quote": "Height 850 mm"
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 600,
+            "unit": "mm",
+            "label": "Width",
+            "quote": "Width 600 mm"
+          }
+        ],
+        "identitySignals": [
+          {
+            "type": "canonical_url",
+            "value": "https://www.samsung.com/au/washers-and-dryers/dryers/dv9400b-dryer-ai-dry-9kg-black-dv90bb9440gbsa/"
+          },
+          {
+            "type": "document_title",
+            "value": "9kg Black Smart Heat Pump Dryer DV90BB9440GB | Samsung AU"
+          },
+          {
+            "type": "canonical_regional_sku",
+            "value": "DV90BB9440GBSA"
+          },
+          {
+            "type": "product_model",
+            "value": "dv90bb9440gb"
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
+          "verifiedAt": "2026-07-12T04:00:00.000Z",
+          "bindingSha256": "3bb2c66eb920f0f586981e15249093227f27262790996d2fa6d895d4bd9de1f0"
+        }
+      },
+      "diagnosticArtifacts": {
+        "pdfObjectPath": null,
+        "derivedArtifact": null
+      },
+      "failures": []
+    },
+    {
+      "id": "recovery-samsung-ww11cg60adle",
+      "brand": "Samsung",
+      "model": "WW11CG60ADLE",
+      "category": "washing_machine",
+      "requestedUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-eco-bubble-ai-energy-mode-ai-control-11kg-white-ww11cg60adlesa/",
+      "requestedUrls": [
+        "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-eco-bubble-ai-energy-mode-ai-control-11kg-white-ww11cg60adlesa/"
+      ],
+      "outcome": "accepted",
+      "acquisition": "passed",
+      "mineru": "not_run_or_failed",
+      "identity": "exact",
+      "claims": [
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 600
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 850
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 600
+        }
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 600
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": "front_loader",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-eco-bubble-ai-energy-mode-ai-control-11kg-white-ww11cg60adlesa/",
+            "contentSha256": "8170c17776a7e514ba46c0eaf29b05bc5255bee1f51dae77ddf61ec64c495d4e",
+            "receiptBindingSha256": "05cbd4734285bde01f29a081f188ecc664125066951ea5963bf5564659038a5a",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-eco-bubble-ai-energy-mode-ai-control-11kg-white-ww11cg60adlesa/",
+            "contentSha256": "8170c17776a7e514ba46c0eaf29b05bc5255bee1f51dae77ddf61ec64c495d4e",
+            "receiptBindingSha256": "05cbd4734285bde01f29a081f188ecc664125066951ea5963bf5564659038a5a",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-eco-bubble-ai-energy-mode-ai-control-11kg-white-ww11cg60adlesa/",
+            "contentSha256": "8170c17776a7e514ba46c0eaf29b05bc5255bee1f51dae77ddf61ec64c495d4e",
+            "receiptBindingSha256": "05cbd4734285bde01f29a081f188ecc664125066951ea5963bf5564659038a5a",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "8170c17776a7e514ba46c0eaf29b05bc5255bee1f51dae77ddf61ec64c495d4e"
+        ]
+      },
+      "artifactType": "official_html_fallback",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_product_page",
+        "sourceUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-eco-bubble-ai-energy-mode-ai-control-11kg-white-ww11cg60adlesa/",
+        "finalUrl": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-eco-bubble-ai-energy-mode-ai-control-11kg-white-ww11cg60adlesa/",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T04:00:00.000Z",
+        "contentSha256": "8170c17776a7e514ba46c0eaf29b05bc5255bee1f51dae77ddf61ec64c495d4e",
+        "objectPath": "evidence/web/sha256/81/70/8170c17776a7e514ba46c0eaf29b05bc5255bee1f51dae77ddf61ec64c495d4e.html",
+        "contentType": "text/html",
+        "byteSize": 814188,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "Samsung",
+          "model": "WW11CG60ADLE",
+          "outcome": "exact"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 600,
+            "unit": "mm",
+            "label": "Product Dimension (WxHxD)",
+            "quote": "Product Dimension (WxHxD) 600 x 850 x 600 mm",
+            "semanticBasis": "explicit_axis_sequence",
+            "axisOrder": [
+              "width",
+              "height",
+              "depth"
+            ],
+            "sourceUnit": "mm",
+            "sourceValues": [
+              600,
+              850,
+              600
+            ],
+            "sourceValuesMm": [
+              600,
+              850,
+              600
+            ]
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": 850,
+            "unit": "mm",
+            "label": "Product Dimension (WxHxD)",
+            "quote": "Product Dimension (WxHxD) 600 x 850 x 600 mm",
+            "semanticBasis": "explicit_axis_sequence",
+            "axisOrder": [
+              "width",
+              "height",
+              "depth"
+            ],
+            "sourceUnit": "mm",
+            "sourceValues": [
+              600,
+              850,
+              600
+            ],
+            "sourceValuesMm": [
+              600,
+              850,
+              600
+            ]
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 600,
+            "unit": "mm",
+            "label": "Product Dimension (WxHxD)",
+            "quote": "Product Dimension (WxHxD) 600 x 850 x 600 mm",
+            "semanticBasis": "explicit_axis_sequence",
+            "axisOrder": [
+              "width",
+              "height",
+              "depth"
+            ],
+            "sourceUnit": "mm",
+            "sourceValues": [
+              600,
+              850,
+              600
+            ],
+            "sourceValuesMm": [
+              600,
+              850,
+              600
+            ]
+          }
+        ],
+        "identitySignals": [
+          {
+            "type": "canonical_url",
+            "value": "https://www.samsung.com/au/washers-and-dryers/washing-machines/ww6000t-front-loading-eco-bubble-ai-energy-mode-ai-control-11kg-white-ww11cg60adlesa/"
+          },
+          {
+            "type": "canonical_regional_sku",
+            "value": "WW11CG60ADLESA"
+          },
+          {
+            "type": "product_model",
+            "value": "ww11cg60adle"
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
+          "verifiedAt": "2026-07-12T04:00:00.000Z",
+          "bindingSha256": "05cbd4734285bde01f29a081f188ecc664125066951ea5963bf5564659038a5a"
+        }
+      },
+      "diagnosticArtifacts": {
+        "pdfObjectPath": null,
+        "derivedArtifact": null
+      },
+      "failures": []
+    },
+    {
+      "id": "recovery-samsung-ww12bb944dgb",
+      "brand": "Samsung",
+      "model": "WW12BB944DGB",
+      "category": "washing_machine",
+      "requestedUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+      "requestedUrls": [
+        "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf"
+      ],
+      "outcome": "quarantined",
+      "acquisition": "passed",
+      "mineru": "passed",
+      "identity": "not_accepted",
+      "claims": [],
+      "receipt": "not_accepted",
+      "geometryProjection": null,
+      "artifactType": null,
+      "source": null,
+      "diagnosticArtifacts": {
+        "pdfObjectPath": "evidence/web/sha256/d0/75/d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b.pdf",
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+          "contentSha256": "44f24cb3a85d9d120a7edaab4770472cc0d4b712dd8b93f934b7d06ba793146d",
+          "objectPath": "evidence/derived/mineru-json/sha256/44/f2/44f24cb3a85d9d120a7edaab4770472cc0d4b712dd8b93f934b7d06ba793146d.json",
+          "byteSize": 650705,
+          "pageCount": 68
+        }
+      },
+      "failures": [
+        {
+          "candidateUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+          "reason": "claim_extraction:structured exact model identity signal required in MinerU JSON"
+        }
+      ]
+    },
+    {
+      "id": "recovery-samsung-srf5300sd",
+      "brand": "Samsung",
+      "model": "SRF5300SD",
+      "category": "fridge",
+      "requestedUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+      "requestedUrls": [
+        "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/"
+      ],
+      "outcome": "accepted",
+      "acquisition": "passed",
+      "mineru": "passed",
+      "identity": "official_marketing_alias",
+      "claims": [
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 715
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 1776
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 817
+        }
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 817,
+            "heightMm": {
+              "minimumMm": 1776,
+              "maximumMm": 1776
+            },
+            "depthMm": 715
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": "upright",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+            "contentSha256": "cc75d6a14c0c1a7c4d7443f6ae37ae6bd9b8425e49281abe5b5895f77311020a",
+            "receiptBindingSha256": "5baa99bcb583f1b76557f5a49b6f4e5c3b73e2ea5cc426eb352696e9b25c5c0e",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+            "contentSha256": "cc75d6a14c0c1a7c4d7443f6ae37ae6bd9b8425e49281abe5b5895f77311020a",
+            "receiptBindingSha256": "5baa99bcb583f1b76557f5a49b6f4e5c3b73e2ea5cc426eb352696e9b25c5c0e",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+            "contentSha256": "cc75d6a14c0c1a7c4d7443f6ae37ae6bd9b8425e49281abe5b5895f77311020a",
+            "receiptBindingSha256": "5baa99bcb583f1b76557f5a49b6f4e5c3b73e2ea5cc426eb352696e9b25c5c0e",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "cc75d6a14c0c1a7c4d7443f6ae37ae6bd9b8425e49281abe5b5895f77311020a"
+        ]
+      },
+      "artifactType": "official_html_fallback",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_product_page",
+        "sourceUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+        "finalUrl": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T04:00:00.000Z",
+        "contentSha256": "cc75d6a14c0c1a7c4d7443f6ae37ae6bd9b8425e49281abe5b5895f77311020a",
+        "objectPath": "evidence/web/sha256/cc/75/cc75d6a14c0c1a7c4d7443f6ae37ae6bd9b8425e49281abe5b5895f77311020a.html",
+        "contentType": "text/html",
+        "byteSize": 850604,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "Samsung",
+          "model": "SRF5300SD",
+          "outcome": "official_marketing_alias",
+          "sourceModel": "RF44A5202SL_SA"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 715,
+            "unit": "mm",
+            "label": "Depth",
+            "quote": "Depth 715 mm"
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": 1776,
+            "unit": "mm",
+            "label": "Height",
+            "quote": "Height 1776 mm"
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 817,
+            "unit": "mm",
+            "label": "Width",
+            "quote": "Width 817 mm"
+          }
+        ],
+        "identitySignals": [
+          {
+            "type": "canonical_url",
+            "value": "https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/"
+          },
+          {
+            "type": "document_title",
+            "value": "495L French Door Fridge Non Plumbed SRF5300SD | Samsung AU"
+          },
+          {
+            "type": "canonical_source_model",
+            "value": "RF44A5202SL_SA"
+          },
+          {
+            "type": "official_alias_binding",
+            "value": "Purchase SRF5300SD 495L French Door refrigerator RF44A5202SL/SA with with Big Crisper, Twin Cooling Plus™ and Non-Plumbed Built-in Water Dispenser. Find out its price and reviews at Samsung Australia."
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
+          "verifiedAt": "2026-07-12T04:00:00.000Z",
+          "bindingSha256": "5baa99bcb583f1b76557f5a49b6f4e5c3b73e2ea5cc426eb352696e9b25c5c0e"
+        }
+      },
+      "diagnosticArtifacts": {
+        "pdfObjectPath": "evidence/web/sha256/2e/8a/2e8a8341d7b50aef67f84bceea136763a67e2b3535717f6559ce1447feefafae.pdf",
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "2e8a8341d7b50aef67f84bceea136763a67e2b3535717f6559ce1447feefafae",
+          "contentSha256": "d3a2a807d8f7777842f3cfac8b6fc5b772d2b5458ac7a42da75b945dd8c0a4c2",
+          "objectPath": "evidence/derived/mineru-json/sha256/d3/a2/d3a2a807d8f7777842f3cfac8b6fc5b772d2b5458ac7a42da75b945dd8c0a4c2.json",
+          "byteSize": 400274,
+          "pageCount": 56
+        }
+      },
+      "failures": [
+        {
+          "candidateUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=RF44A5202SL%2FSA&CttFileID=11442380&CDCttType=UM&VPath=UM%2F202605%2F20260518184516600%2FDA68-04132R-02_FDR_RF5000A_EN_260414.pdf",
+          "reason": "claim_extraction:structured exact model identity signal required in MinerU JSON"
+        }
+      ]
+    },
+    {
+      "id": "recovery-hisense-hwf8i1015bx",
+      "brand": "Hisense",
+      "model": "HWF8I1015BX",
+      "category": "washing_machine",
+      "requestedUrl": "https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer",
+      "requestedUrls": [
+        "https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer"
+      ],
+      "outcome": "accepted",
+      "acquisition": "passed",
+      "mineru": "not_run_or_failed",
+      "identity": "exact",
+      "claims": [
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 550
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": 845
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 595
+        }
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 595,
+            "heightMm": {
+              "minimumMm": 845,
+              "maximumMm": 845
+            },
+            "depthMm": 550
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": "front_loader",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer",
+            "contentSha256": "89d1bbf139bf07fd2be0309cea64604a6aab3596951634846ca0d22367dacaec",
+            "receiptBindingSha256": "19d84ec79f8147ee899a80cb8540b091174402e8526c50b7c0bc9cb62e136849",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer",
+            "contentSha256": "89d1bbf139bf07fd2be0309cea64604a6aab3596951634846ca0d22367dacaec",
+            "receiptBindingSha256": "19d84ec79f8147ee899a80cb8540b091174402e8526c50b7c0bc9cb62e136849",
+            "page": null,
+            "fragmentSha256": null
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer",
+            "contentSha256": "89d1bbf139bf07fd2be0309cea64604a6aab3596951634846ca0d22367dacaec",
+            "receiptBindingSha256": "19d84ec79f8147ee899a80cb8540b091174402e8526c50b7c0bc9cb62e136849",
+            "page": null,
+            "fragmentSha256": null
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "89d1bbf139bf07fd2be0309cea64604a6aab3596951634846ca0d22367dacaec"
+        ]
+      },
+      "artifactType": "official_html_fallback",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_product_page",
+        "sourceUrl": "https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer",
+        "finalUrl": "https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T04:00:00.000Z",
+        "contentSha256": "89d1bbf139bf07fd2be0309cea64604a6aab3596951634846ca0d22367dacaec",
+        "objectPath": "evidence/web/sha256/89/d1/89d1bbf139bf07fd2be0309cea64604a6aab3596951634846ca0d22367dacaec.html",
+        "contentType": "text/html",
+        "byteSize": 482635,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "Hisense",
+          "model": "HWF8I1015BX",
+          "outcome": "exact"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 550,
+            "unit": "mm",
+            "label": "Dimensions (H*W*D) Unit: mm",
+            "quote": "Dimensions (H*W*D) Unit: mm 845*595*550",
+            "semanticBasis": "explicit_axis_sequence",
+            "axisOrder": [
+              "height",
+              "width",
+              "depth"
+            ],
+            "sourceUnit": "mm",
+            "sourceValues": [
+              845,
+              595,
+              550
+            ],
+            "sourceValuesMm": [
+              845,
+              595,
+              550
+            ]
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": 845,
+            "unit": "mm",
+            "label": "Dimensions (H*W*D) Unit: mm",
+            "quote": "Dimensions (H*W*D) Unit: mm 845*595*550",
+            "semanticBasis": "explicit_axis_sequence",
+            "axisOrder": [
+              "height",
+              "width",
+              "depth"
+            ],
+            "sourceUnit": "mm",
+            "sourceValues": [
+              845,
+              595,
+              550
+            ],
+            "sourceValuesMm": [
+              845,
+              595,
+              550
+            ]
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 595,
+            "unit": "mm",
+            "label": "Dimensions (H*W*D) Unit: mm",
+            "quote": "Dimensions (H*W*D) Unit: mm 845*595*550",
+            "semanticBasis": "explicit_axis_sequence",
+            "axisOrder": [
+              "height",
+              "width",
+              "depth"
+            ],
+            "sourceUnit": "mm",
+            "sourceValues": [
+              845,
+              595,
+              550
+            ],
+            "sourceValuesMm": [
+              845,
+              595,
+              550
+            ]
+          }
+        ],
+        "identitySignals": [
+          {
+            "type": "canonical_url",
+            "value": "https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer"
+          },
+          {
+            "type": "structured_product_model",
+            "value": "HWF8I1015BX"
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
+          "verifiedAt": "2026-07-12T04:00:00.000Z",
+          "bindingSha256": "19d84ec79f8147ee899a80cb8540b091174402e8526c50b7c0bc9cb62e136849"
+        }
+      },
+      "diagnosticArtifacts": {
+        "pdfObjectPath": null,
+        "derivedArtifact": null
+      },
+      "failures": []
+    },
+    {
+      "id": "recovery-haier-hdw15f1b1",
+      "brand": "Haier",
+      "model": "HDW15F1B1",
+      "category": "dishwasher",
+      "requestedUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw154d412d/QRG/AU/QRG-AU-61659.pdf",
+      "requestedUrls": [
+        "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw154d412d/QRG/AU/QRG-AU-61659.pdf"
+      ],
+      "outcome": "accepted",
+      "acquisition": "passed",
+      "mineru": "passed",
+      "identity": "exact",
+      "claims": [
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 599,
+          "page": 1
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "minimumMm": 850,
+            "maximumMm": 895
+          },
+          "page": 1
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 597,
+          "page": 1
+        }
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 597,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 895
+            },
+            "depthMm": 599
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": "front_loader",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw154d412d/QRG/AU/QRG-AU-61659.pdf",
+            "contentSha256": "b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557",
+            "receiptBindingSha256": "342068b6c32c0d9b676474be56ff3fe28d26ccee3301a87a4502152c40ed8590",
+            "page": 1,
+            "fragmentSha256": "e52b79ac69138f54fd1945be573d90ce4d0c74665d5533d218b8aacfc30cd798"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw154d412d/QRG/AU/QRG-AU-61659.pdf",
+            "contentSha256": "b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557",
+            "receiptBindingSha256": "342068b6c32c0d9b676474be56ff3fe28d26ccee3301a87a4502152c40ed8590",
+            "page": 1,
+            "fragmentSha256": "269ef38f08086c305f91b150bc8e78150d6a83a16ba01429ea121381fa8c5249"
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw154d412d/QRG/AU/QRG-AU-61659.pdf",
+            "contentSha256": "b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557",
+            "receiptBindingSha256": "342068b6c32c0d9b676474be56ff3fe28d26ccee3301a87a4502152c40ed8590",
+            "page": 1,
+            "fragmentSha256": "b4ffd2e25098c7125ec8193df34e9d533d82f2cda8b4c693ba65cd6ad0703b82"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557"
+        ]
+      },
+      "artifactType": "pdf",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_pdf",
+        "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw154d412d/QRG/AU/QRG-AU-61659.pdf",
+        "finalUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw154d412d/QRG/AU/QRG-AU-61659.pdf",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T04:00:00.000Z",
+        "contentSha256": "b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557",
+        "objectPath": "evidence/web/sha256/b3/b4/b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557.pdf",
+        "contentType": "application/pdf",
+        "byteSize": 324501,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "Haier",
+          "model": "HDW15F1B1",
+          "outcome": "exact"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 599,
+            "unit": "mm",
+            "label": "Depth",
+            "quote": "Depth 599 mm",
+            "page": 1,
+            "bbox": [
+              355,
+              220,
+              633,
+              240
+            ],
+            "fragmentSha256": "e52b79ac69138f54fd1945be573d90ce4d0c74665d5533d218b8aacfc30cd798",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": {
+              "minimumMm": 850,
+              "maximumMm": 895
+            },
+            "unit": "mm",
+            "label": "Height",
+            "quote": "Height 850 - 895 mm",
+            "page": 1,
+            "bbox": [
+              355,
+              149,
+              633,
+              171
+            ],
+            "fragmentSha256": "269ef38f08086c305f91b150bc8e78150d6a83a16ba01429ea121381fa8c5249",
+            "semanticBasis": "explicit_label_range",
+            "sourceUnit": "mm",
+            "sourceValues": [
+              850,
+              895
+            ],
+            "sourceValuesMm": [
+              850,
+              895
+            ]
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 597,
+            "unit": "mm",
+            "label": "Width",
+            "quote": "Width 597 mm",
+            "page": 1,
+            "bbox": [
+              355,
+              184,
+              633,
+              205
+            ],
+            "fragmentSha256": "b4ffd2e25098c7125ec8193df34e9d533d82f2cda8b4c693ba65cd6ad0703b82",
+            "semanticBasis": "explicit_label_value"
+          }
+        ],
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557",
+          "contentSha256": "33493def867c0384ca52070d5ad6f5138486c7c496ac8b405d0523af07c6aad7",
+          "objectPath": "evidence/derived/mineru-json/sha256/33/49/33493def867c0384ca52070d5ad6f5138486c7c496ac8b405d0523af07c6aad7.json",
+          "byteSize": 20851,
+          "pageCount": 2
+        },
+        "identitySignals": [
+          {
+            "type": "mineru_page_header_model",
+            "value": "HDW15F1B1:page:1:b32db62de955626659ab866d45ce3e822cc23033ee7aec9a6f05f08a7b939a21"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "HDW15F1B1:page:2:5728dc8132833fc51db6c84d919993e983c336ce90ce0e7e9e1af04610583862"
+          },
+          {
+            "type": "mineru_repeated_page_header_model",
+            "value": "HDW15F1B1:document:repeated-page-header"
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
+          "verifiedAt": "2026-07-12T04:00:00.000Z",
+          "bindingSha256": "342068b6c32c0d9b676474be56ff3fe28d26ccee3301a87a4502152c40ed8590"
+        }
+      },
+      "diagnosticArtifacts": {
+        "pdfObjectPath": "evidence/web/sha256/b3/b4/b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557.pdf",
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557",
+          "contentSha256": "33493def867c0384ca52070d5ad6f5138486c7c496ac8b405d0523af07c6aad7",
+          "objectPath": "evidence/derived/mineru-json/sha256/33/49/33493def867c0384ca52070d5ad6f5138486c7c496ac8b405d0523af07c6aad7.json",
+          "byteSize": 20851,
+          "pageCount": 2
+        }
+      },
+      "failures": []
+    },
+    {
+      "id": "recovery-haier-hdw15f3s1",
+      "brand": "Haier",
+      "model": "HDW15F3S1",
+      "category": "dishwasher",
+      "requestedUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw79f28289/QRG/AU/QRG-AU-61616.pdf",
+      "requestedUrls": [
+        "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw79f28289/QRG/AU/QRG-AU-61616.pdf"
+      ],
+      "outcome": "accepted",
+      "acquisition": "passed",
+      "mineru": "passed",
+      "identity": "exact",
+      "claims": [
+        {
+          "field": "closedEnvelope.depthMm",
+          "value": 599,
+          "page": 1
+        },
+        {
+          "field": "closedEnvelope.heightMm",
+          "value": {
+            "minimumMm": 850,
+            "maximumMm": 895
+          },
+          "page": 1
+        },
+        {
+          "field": "closedEnvelope.widthMm",
+          "value": 597,
+          "page": 1
+        }
+      ],
+      "receipt": "passed",
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 597,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 895
+            },
+            "depthMm": 599
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": "front_loader",
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw79f28289/QRG/AU/QRG-AU-61616.pdf",
+            "contentSha256": "8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb",
+            "receiptBindingSha256": "1505454c13241a7f5a59b517af7f0935d9d35885e453aef9a1bde4d458db7cd1",
+            "page": 1,
+            "fragmentSha256": "895f97d1682d8dca077ca56e3975b2f65d9f96122cda55af0e5dfc03d1b94f04"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw79f28289/QRG/AU/QRG-AU-61616.pdf",
+            "contentSha256": "8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb",
+            "receiptBindingSha256": "1505454c13241a7f5a59b517af7f0935d9d35885e453aef9a1bde4d458db7cd1",
+            "page": 1,
+            "fragmentSha256": "f072418077afe5f3f0cb5ac44042f2732e1fcf08e301306bd9b4637e6c67aa25"
+          },
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw79f28289/QRG/AU/QRG-AU-61616.pdf",
+            "contentSha256": "8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb",
+            "receiptBindingSha256": "1505454c13241a7f5a59b517af7f0935d9d35885e453aef9a1bde4d458db7cd1",
+            "page": 1,
+            "fragmentSha256": "01c696292aa182ab3831c8c73943e4f8ebf98db1b6a92f2086e0414e409dd0a9"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb"
+        ]
+      },
+      "artifactType": "pdf",
+      "source": {
+        "authority": "manufacturer",
+        "sourceType": "official_exact_model_pdf",
+        "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw79f28289/QRG/AU/QRG-AU-61616.pdf",
+        "finalUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw79f28289/QRG/AU/QRG-AU-61616.pdf",
+        "redirectChain": [],
+        "retrievedAt": "2026-07-12T04:00:00.000Z",
+        "contentSha256": "8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb",
+        "objectPath": "evidence/web/sha256/83/27/8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb.pdf",
+        "contentType": "application/pdf",
+        "byteSize": 482401,
+        "supersedesContentSha256": [],
+        "identity": {
+          "brand": "Haier",
+          "model": "HDW15F3S1",
+          "outcome": "exact"
+        },
+        "claims": [
+          {
+            "field": "closedEnvelope.depthMm",
+            "value": 599,
+            "unit": "mm",
+            "label": "Depth",
+            "quote": "Depth 599 mm",
+            "page": 1,
+            "bbox": [
+              355,
+              218,
+              633,
+              242
+            ],
+            "fragmentSha256": "895f97d1682d8dca077ca56e3975b2f65d9f96122cda55af0e5dfc03d1b94f04",
+            "semanticBasis": "explicit_label_value"
+          },
+          {
+            "field": "closedEnvelope.heightMm",
+            "value": {
+              "minimumMm": 850,
+              "maximumMm": 895
+            },
+            "unit": "mm",
+            "label": "Height",
+            "quote": "Height 850 - 895 mm",
+            "page": 1,
+            "bbox": [
+              355,
+              147,
+              633,
+              171
+            ],
+            "fragmentSha256": "f072418077afe5f3f0cb5ac44042f2732e1fcf08e301306bd9b4637e6c67aa25",
+            "semanticBasis": "explicit_label_range",
+            "sourceUnit": "mm",
+            "sourceValues": [
+              850,
+              895
+            ],
+            "sourceValuesMm": [
+              850,
+              895
+            ]
+          },
+          {
+            "field": "closedEnvelope.widthMm",
+            "value": 597,
+            "unit": "mm",
+            "label": "Width",
+            "quote": "Width 597 mm",
+            "page": 1,
+            "bbox": [
+              355,
+              183,
+              633,
+              205
+            ],
+            "fragmentSha256": "01c696292aa182ab3831c8c73943e4f8ebf98db1b6a92f2086e0414e409dd0a9",
+            "semanticBasis": "explicit_label_value"
+          }
+        ],
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb",
+          "contentSha256": "ff84e2b9a09abf461a642b8cd3748152aad79f74c2c3910b872805c99bf0ddf2",
+          "objectPath": "evidence/derived/mineru-json/sha256/ff/84/ff84e2b9a09abf461a642b8cd3748152aad79f74c2c3910b872805c99bf0ddf2.json",
+          "byteSize": 21567,
+          "pageCount": 2
+        },
+        "identitySignals": [
+          {
+            "type": "mineru_page_header_model",
+            "value": "HDW15F3S1:page:1:77f6826ec6bc560ca7d7f2dc59b82702b236379f5bccedbf168718a44e006132"
+          },
+          {
+            "type": "mineru_page_header_model",
+            "value": "HDW15F3S1:page:2:b93c8fcc93a094ac42b7a4956505404a90e3e32a0a47574ccf5054c87ee75776"
+          },
+          {
+            "type": "mineru_repeated_page_header_model",
+            "value": "HDW15F3S1:document:repeated-page-header"
+          }
+        ],
+        "verificationReceipt": {
+          "schemaVersion": 2,
+          "policyVersion": "2026-07-12.2",
+          "manufacturerPolicyVersion": "2026-07-12.1",
+          "verifiedAt": "2026-07-12T04:00:00.000Z",
+          "bindingSha256": "1505454c13241a7f5a59b517af7f0935d9d35885e453aef9a1bde4d458db7cd1"
+        }
+      },
+      "diagnosticArtifacts": {
+        "pdfObjectPath": "evidence/web/sha256/83/27/8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb.pdf",
+        "derivedArtifact": {
+          "schemaVersion": 1,
+          "format": "content_list_v2",
+          "parserName": "MinerU",
+          "parserVersion": "3.4.4",
+          "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+          "backend": "pipeline",
+          "method": "auto",
+          "tableEnabled": true,
+          "formulaEnabled": false,
+          "sourcePdfSha256": "8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb",
+          "contentSha256": "ff84e2b9a09abf461a642b8cd3748152aad79f74c2c3910b872805c99bf0ddf2",
+          "objectPath": "evidence/derived/mineru-json/sha256/ff/84/ff84e2b9a09abf461a642b8cd3748152aad79f74c2c3910b872805c99bf0ddf2.json",
+          "byteSize": 21567,
+          "pageCount": 2
+        }
+      },
+      "failures": []
+    }
+  ]
+}

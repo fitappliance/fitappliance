@@ -101,6 +101,38 @@ function normalizedSignals(signals) {
   return result;
 }
 
+const ALIAS_DIMENSION_FIELDS = new Set([
+  'closedEnvelope.widthMm',
+  'closedEnvelope.heightMm',
+  'closedEnvelope.depthMm',
+]);
+
+function normalizedSourceIdentity(source, caseIdentity, contentType) {
+  const identity = normalizedIdentity(caseIdentity);
+  const sourceIdentity = source?.identity;
+  if (brandKey(sourceIdentity?.brand) !== brandKey(identity.brand)
+    || requiredText(sourceIdentity?.model, 'source identity model').toUpperCase() !== identity.model.toUpperCase()) {
+    throw new TypeError('source identity does not match case identity');
+  }
+  const outcome = requiredText(sourceIdentity?.outcome, 'source identity outcome');
+  if (outcome === 'exact') return { ...identity, outcome: 'exact' };
+  if (outcome !== 'official_marketing_alias') throw new TypeError('unsupported source identity outcome');
+  if (contentType !== 'text/html') throw new TypeError('official marketing alias requires HTML evidence');
+  const sourceModel = requiredText(sourceIdentity?.sourceModel, 'alias source model');
+  if (sourceModel.toUpperCase().replace(/[^A-Z0-9]+/g, '')
+    === identity.model.toUpperCase().replace(/[^A-Z0-9]+/g, '')) {
+    throw new TypeError('alias source model must differ from target model');
+  }
+  if (!(source?.claims ?? []).every((claim) => ALIAS_DIMENSION_FIELDS.has(claim?.field))) {
+    throw new TypeError('official marketing alias is dimensions only');
+  }
+  const signalTypes = new Set((source?.identitySignals ?? []).map((signal) => signal?.type));
+  for (const required of ['document_title', 'canonical_source_model', 'official_alias_binding']) {
+    if (!signalTypes.has(required)) throw new TypeError(`official marketing alias missing ${required}`);
+  }
+  return { ...identity, outcome, sourceModel };
+}
+
 function normalizedBbox(value) {
   if (!Array.isArray(value) || value.length !== 4
     || value.some((coordinate) => !Number.isFinite(coordinate) || coordinate < 0 || coordinate > 1000)
@@ -205,6 +237,7 @@ function receiptPayload(source, caseIdentity, verifiedAt) {
     manufacturerPolicyVersion: manufacturerPolicy.policyVersion,
     verifiedAt,
     caseIdentity: identity,
+    sourceIdentity: normalizedSourceIdentity(source, identity, contentType),
     source: {
       requestedUrl: trustedUrl(source?.sourceUrl, identity.brand, 'source URL'),
       finalUrl: trustedUrl(source?.finalUrl, identity.brand, 'final URL', { hostOnly: true }),
@@ -255,11 +288,7 @@ export function validateTrustedSourceMetadata(source, caseIdentity, options = {}
   if (!['text/html', 'application/pdf'].includes(contentType)) {
     throw new TypeError('unsupported content type');
   }
-  if (source?.identity?.outcome !== 'exact'
-    || brandKey(source?.identity?.brand) !== brandKey(identity.brand)
-    || requiredText(source?.identity?.model, 'source identity model').toUpperCase() !== identity.model.toUpperCase()) {
-    throw new TypeError('source identity does not match case identity');
-  }
+  normalizedSourceIdentity(source, identity, contentType);
   normalizedSignals(source?.identitySignals);
   normalizedClaims(source?.claims, contentType);
   normalizedDerivedArtifact(source);

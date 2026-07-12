@@ -1,0 +1,2149 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-12T09:38:02.102Z",
+  "parserVersion": "3.4.4",
+  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+  "summary": {
+    "physicalFiles": 77,
+    "uniqueDocuments": 69,
+    "duplicatePhysicalFiles": 8,
+    "indexed": 69,
+    "missing": 0,
+    "stale": 0,
+    "failed": 0,
+    "invalidFiles": 0,
+    "coveragePercent": 100
+  },
+  "invalidFiles": [],
+  "entries": [
+    {
+      "sourcePdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+      "byteSize": 1396440,
+      "paths": [
+        "evidence/objects/sha256/05/05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+        "contentSha256": "9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e",
+        "objectPath": "evidence/derived/mineru-json/sha256/9b/d5/9bd5fc265cd5d8baa706cf6dd60679d0c5eee4033b3ae9cfa559f6142658a11e.json",
+        "byteSize": 38667,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T07:33:29.634Z"
+    },
+    {
+      "sourcePdfSha256": "08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840",
+      "byteSize": 1315453,
+      "paths": [
+        "evidence/objects/sha256/08/08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840",
+        "contentSha256": "7931a59816c2ad891ea58d952197353c6e57390157c950d9f3b6ce1993a9d313",
+        "objectPath": "evidence/derived/mineru-json/sha256/79/31/7931a59816c2ad891ea58d952197353c6e57390157c950d9f3b6ce1993a9d313.json",
+        "byteSize": 40316,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T07:44:49.433Z"
+    },
+    {
+      "sourcePdfSha256": "0f60add258fa3da0c8250cddaddd435dd0f7d5b8c89b64add912f25f53a52b27",
+      "byteSize": 12036154,
+      "paths": [
+        "evidence/objects/sha256/0f/0f60add258fa3da0c8250cddaddd435dd0f7d5b8c89b64add912f25f53a52b27.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "0f60add258fa3da0c8250cddaddd435dd0f7d5b8c89b64add912f25f53a52b27",
+        "contentSha256": "669998269f04be7fe582edc4c719679c000a9f172cd44107ebc1113c60aeb840",
+        "objectPath": "evidence/derived/mineru-json/sha256/66/99/669998269f04be7fe582edc4c719679c000a9f172cd44107ebc1113c60aeb840.json",
+        "byteSize": 630560,
+        "pageCount": 64
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T07:45:12.186Z"
+    },
+    {
+      "sourcePdfSha256": "1282141354ddd0d1d197d847a03ce9b4e99e256ee7bcb18c1a38b1c965eb0605",
+      "byteSize": 62994,
+      "paths": [
+        "evidence/objects/sha256/12/1282141354ddd0d1d197d847a03ce9b4e99e256ee7bcb18c1a38b1c965eb0605.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "1282141354ddd0d1d197d847a03ce9b4e99e256ee7bcb18c1a38b1c965eb0605",
+        "contentSha256": "c6986e95650bf62ee2028f9c8c9ecf3bcc72538f3c756190737390f4afff4492",
+        "objectPath": "evidence/derived/mineru-json/sha256/c6/98/c6986e95650bf62ee2028f9c8c9ecf3bcc72538f3c756190737390f4afff4492.json",
+        "byteSize": 19291,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T07:47:10.349Z"
+    },
+    {
+      "sourcePdfSha256": "148c96022fe394b0ad19d6342fc5bc686ba1671a221cfc80d26e717e221f07dc",
+      "byteSize": 6191616,
+      "paths": [
+        "evidence/objects/sha256/14/148c96022fe394b0ad19d6342fc5bc686ba1671a221cfc80d26e717e221f07dc.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "148c96022fe394b0ad19d6342fc5bc686ba1671a221cfc80d26e717e221f07dc",
+        "contentSha256": "350439aa2e2cec869ade7eb827aef7b92b0e2f579a65568fb68cd3a79eba38ca",
+        "objectPath": "evidence/derived/mineru-json/sha256/35/04/350439aa2e2cec869ade7eb827aef7b92b0e2f579a65568fb68cd3a79eba38ca.json",
+        "byteSize": 46574,
+        "pageCount": 8
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T07:47:25.323Z"
+    },
+    {
+      "sourcePdfSha256": "1f2460ba7366fa75d802d47a0bcf01b82c5578919e975d935a8d589b4154f9a0",
+      "byteSize": 13119944,
+      "paths": [
+        "evidence/objects/sha256/1f/1f2460ba7366fa75d802d47a0bcf01b82c5578919e975d935a8d589b4154f9a0.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "1f2460ba7366fa75d802d47a0bcf01b82c5578919e975d935a8d589b4154f9a0",
+        "contentSha256": "b91b68f9e39bda6db0621f951c397d773c488a387cd6c1619edd0f0c3a0d3a82",
+        "objectPath": "evidence/derived/mineru-json/sha256/b9/1b/b91b68f9e39bda6db0621f951c397d773c488a387cd6c1619edd0f0c3a0d3a82.json",
+        "byteSize": 584611,
+        "pageCount": 64
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T07:47:57.227Z"
+    },
+    {
+      "sourcePdfSha256": "1fb14dce702d4c6a84359c12c1b4d482e360ec68a98475342f4f4f1faa899fe3",
+      "byteSize": 11846562,
+      "paths": [
+        "evidence/objects/sha256/1f/1fb14dce702d4c6a84359c12c1b4d482e360ec68a98475342f4f4f1faa899fe3.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 2,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "1fb14dce702d4c6a84359c12c1b4d482e360ec68a98475342f4f4f1faa899fe3",
+        "contentSha256": "eeb5854fe55904cf2784ac0fad0b68dbc6a500ffdbc63cc38e4f006beb9a0821",
+        "objectPath": "evidence/derived/mineru-json/sha256/ee/b5/eeb5854fe55904cf2784ac0fad0b68dbc6a500ffdbc63cc38e4f006beb9a0821.json",
+        "byteSize": 423033,
+        "pageCount": 53
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T09:04:47.936Z"
+    },
+    {
+      "sourcePdfSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
+      "byteSize": 2109960,
+      "paths": [
+        "evidence/objects/sha256/22/22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
+        "contentSha256": "ec377d4e357812146976c63060b1d2f1439a3f81588eea06d923eccd616c13a2",
+        "objectPath": "evidence/derived/mineru-json/sha256/ec/37/ec377d4e357812146976c63060b1d2f1439a3f81588eea06d923eccd616c13a2.json",
+        "byteSize": 384682,
+        "pageCount": 48
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:35:02.031Z"
+    },
+    {
+      "sourcePdfSha256": "25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43",
+      "byteSize": 987846,
+      "paths": [
+        "evidence/objects/sha256/25/25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43.pdf",
+        "evidence/web/sha256/25/b2/25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "25b2864064cb0c75a3edbb901b83b07132c6fa2b18389e3e20fe92097bff7c43",
+        "contentSha256": "91eeead91920ee1b4a061d99f3a75d8ad5084fc9bc65ca1337fae1043a48d1f4",
+        "objectPath": "evidence/derived/mineru-json/sha256/91/ee/91eeead91920ee1b4a061d99f3a75d8ad5084fc9bc65ca1337fae1043a48d1f4.json",
+        "byteSize": 39528,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "2ac969549bd7c5e18b6d65d72c95566b044a459ad371318299b1655db17f0fdf",
+      "byteSize": 3906962,
+      "paths": [
+        "evidence/objects/sha256/2a/2ac969549bd7c5e18b6d65d72c95566b044a459ad371318299b1655db17f0fdf.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "2ac969549bd7c5e18b6d65d72c95566b044a459ad371318299b1655db17f0fdf",
+        "contentSha256": "9883d68a1bf8a06727f3174b9fee461e59518008f5549e2498685aa646efb7ff",
+        "objectPath": "evidence/derived/mineru-json/sha256/98/83/9883d68a1bf8a06727f3174b9fee461e59518008f5549e2498685aa646efb7ff.json",
+        "byteSize": 65545,
+        "pageCount": 8
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:36:37.568Z"
+    },
+    {
+      "sourcePdfSha256": "2b772df94084a9af0f268dad20ea21e4e56676d096d5f491428ad4079d84d1f8",
+      "byteSize": 208769,
+      "paths": [
+        "evidence/objects/sha256/2b/2b772df94084a9af0f268dad20ea21e4e56676d096d5f491428ad4079d84d1f8.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "2b772df94084a9af0f268dad20ea21e4e56676d096d5f491428ad4079d84d1f8",
+        "contentSha256": "cc3fa545d9c7457fb3c4dfe2bc80df76a0f67aeb6c6664dce6d2e88ca0c28b41",
+        "objectPath": "evidence/derived/mineru-json/sha256/cc/3f/cc3fa545d9c7457fb3c4dfe2bc80df76a0f67aeb6c6664dce6d2e88ca0c28b41.json",
+        "byteSize": 18995,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:37:11.331Z"
+    },
+    {
+      "sourcePdfSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
+      "byteSize": 2444065,
+      "paths": [
+        "evidence/objects/sha256/2d/2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
+        "contentSha256": "b238dcf18f3b989bfad77c24d40a02f8fffad6ce769aaa0e3c15a265cd15a569",
+        "objectPath": "evidence/derived/mineru-json/sha256/b2/38/b238dcf18f3b989bfad77c24d40a02f8fffad6ce769aaa0e3c15a265cd15a569.json",
+        "byteSize": 430765,
+        "pageCount": 48
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:37:29.954Z"
+    },
+    {
+      "sourcePdfSha256": "2e8a8341d7b50aef67f84bceea136763a67e2b3535717f6559ce1447feefafae",
+      "byteSize": 7154020,
+      "paths": [
+        "evidence/objects/sha256/2e/2e8a8341d7b50aef67f84bceea136763a67e2b3535717f6559ce1447feefafae.pdf",
+        "evidence/web/sha256/2e/8a/2e8a8341d7b50aef67f84bceea136763a67e2b3535717f6559ce1447feefafae.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "2e8a8341d7b50aef67f84bceea136763a67e2b3535717f6559ce1447feefafae",
+        "contentSha256": "d3a2a807d8f7777842f3cfac8b6fc5b772d2b5458ac7a42da75b945dd8c0a4c2",
+        "objectPath": "evidence/derived/mineru-json/sha256/d3/a2/d3a2a807d8f7777842f3cfac8b6fc5b772d2b5458ac7a42da75b945dd8c0a4c2.json",
+        "byteSize": 400274,
+        "pageCount": 56
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
+      "byteSize": 5885104,
+      "paths": [
+        "evidence/objects/sha256/2f/2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
+        "contentSha256": "6345d4ee15d06fc55591670a0d916bae7d360ec8bd4b63528426d06ab09dd413",
+        "objectPath": "evidence/derived/mineru-json/sha256/63/45/6345d4ee15d06fc55591670a0d916bae7d360ec8bd4b63528426d06ab09dd413.json",
+        "byteSize": 401762,
+        "pageCount": 48
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:39:11.433Z"
+    },
+    {
+      "sourcePdfSha256": "372f69cf9eac9fc0695fa9c3cb054f5375a546126220fadaee130d48963cbbf5",
+      "byteSize": 307123,
+      "paths": [
+        "evidence/web/sha256/37/2f/372f69cf9eac9fc0695fa9c3cb054f5375a546126220fadaee130d48963cbbf5.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "372f69cf9eac9fc0695fa9c3cb054f5375a546126220fadaee130d48963cbbf5",
+        "contentSha256": "84c9d90f7da5db3dbe180d3e86eb5b8893a8bd4dc788f78e45635c4f7638653e",
+        "objectPath": "evidence/derived/mineru-json/sha256/84/c9/84c9d90f7da5db3dbe180d3e86eb5b8893a8bd4dc788f78e45635c4f7638653e.json",
+        "byteSize": 28283,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "3b05c53d73812d2432a3f7b667a775300b37297f6c410f0d3c7d4b172c8596d7",
+      "byteSize": 1105502,
+      "paths": [
+        "evidence/objects/sha256/3b/3b05c53d73812d2432a3f7b667a775300b37297f6c410f0d3c7d4b172c8596d7.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "3b05c53d73812d2432a3f7b667a775300b37297f6c410f0d3c7d4b172c8596d7",
+        "contentSha256": "b2ba9143046a420b0586679e91c9964c1c31b19cab9c765501b886ccacef916d",
+        "objectPath": "evidence/derived/mineru-json/sha256/b2/ba/b2ba9143046a420b0586679e91c9964c1c31b19cab9c765501b886ccacef916d.json",
+        "byteSize": 32667,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:40:46.675Z"
+    },
+    {
+      "sourcePdfSha256": "40d17cefe10087be1f573254662fcec2aa9a48648c7cdbb1a174a1ef8dc065db",
+      "byteSize": 450974,
+      "paths": [
+        "evidence/objects/sha256/40/40d17cefe10087be1f573254662fcec2aa9a48648c7cdbb1a174a1ef8dc065db.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "40d17cefe10087be1f573254662fcec2aa9a48648c7cdbb1a174a1ef8dc065db",
+        "contentSha256": "5842639fcf19f838b2d10a80bf9336545450dccdc59fbeb2debeddf1ce62533b",
+        "objectPath": "evidence/derived/mineru-json/sha256/58/42/5842639fcf19f838b2d10a80bf9336545450dccdc59fbeb2debeddf1ce62533b.json",
+        "byteSize": 33165,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:41:07.665Z"
+    },
+    {
+      "sourcePdfSha256": "459a7a142a4637f03d2e7a695a5c9a277d0bfdb45a38550dcb01b29a7569fc48",
+      "byteSize": 1579816,
+      "paths": [
+        "evidence/web/sha256/45/9a/459a7a142a4637f03d2e7a695a5c9a277d0bfdb45a38550dcb01b29a7569fc48.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "459a7a142a4637f03d2e7a695a5c9a277d0bfdb45a38550dcb01b29a7569fc48",
+        "contentSha256": "9fdb7e40332e777aa3ffbcf5b40335384e8a10b85b2f9e6e41ab9f4b788c9e46",
+        "objectPath": "evidence/derived/mineru-json/sha256/9f/db/9fdb7e40332e777aa3ffbcf5b40335384e8a10b85b2f9e6e41ab9f4b788c9e46.json",
+        "byteSize": 49784,
+        "pageCount": 8
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "4770512ae97b65aa1a0d797ff9d6127421bf684630568360c6e03f597a072e24",
+      "byteSize": 536994,
+      "paths": [
+        "evidence/objects/sha256/47/4770512ae97b65aa1a0d797ff9d6127421bf684630568360c6e03f597a072e24.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "4770512ae97b65aa1a0d797ff9d6127421bf684630568360c6e03f597a072e24",
+        "contentSha256": "9cdbf08ad2b896ba933daf24b34600e1575fcc19bdaed15e4b3fff5762909636",
+        "objectPath": "evidence/derived/mineru-json/sha256/9c/db/9cdbf08ad2b896ba933daf24b34600e1575fcc19bdaed15e4b3fff5762909636.json",
+        "byteSize": 29017,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:41:30.366Z"
+    },
+    {
+      "sourcePdfSha256": "4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575",
+      "byteSize": 1651732,
+      "paths": [
+        "evidence/objects/sha256/4d/4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "4dc43bd18a6ea7d92edbcefe260bea1d6440e778b66c11ca8f52413a94b21575",
+        "contentSha256": "020757c3909a18d280658e8c5346f6426af6a87800b0d8fbc5a3beee76086109",
+        "objectPath": "evidence/derived/mineru-json/sha256/02/07/020757c3909a18d280658e8c5346f6426af6a87800b0d8fbc5a3beee76086109.json",
+        "byteSize": 39028,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:41:46.987Z"
+    },
+    {
+      "sourcePdfSha256": "4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0",
+      "byteSize": 138392,
+      "paths": [
+        "evidence/objects/sha256/4e/4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0",
+        "contentSha256": "ec5d59cd5997dd03d84801cd5e4edfe1b8c98ebc76b0d4d5287f7e5b04be9bf6",
+        "objectPath": "evidence/derived/mineru-json/sha256/ec/5d/ec5d59cd5997dd03d84801cd5e4edfe1b8c98ebc76b0d4d5287f7e5b04be9bf6.json",
+        "byteSize": 5897,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:42:05.185Z"
+    },
+    {
+      "sourcePdfSha256": "54b97d676eb19b474e7b8820e1739dd60802e85719b10ad9bac82d860f7d3512",
+      "byteSize": 669582,
+      "paths": [
+        "evidence/objects/sha256/54/54b97d676eb19b474e7b8820e1739dd60802e85719b10ad9bac82d860f7d3512.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "54b97d676eb19b474e7b8820e1739dd60802e85719b10ad9bac82d860f7d3512",
+        "contentSha256": "6b1a7ab873c11e941be1d6434b1ea566275b054a7c664278ad45b49b254c4c68",
+        "objectPath": "evidence/derived/mineru-json/sha256/6b/1a/6b1a7ab873c11e941be1d6434b1ea566275b054a7c664278ad45b49b254c4c68.json",
+        "byteSize": 31477,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:42:18.176Z"
+    },
+    {
+      "sourcePdfSha256": "54e96a80e3b7e1308f717f9a5273dcee81d727056b41c9db2572aee91466edb6",
+      "byteSize": 857708,
+      "paths": [
+        "evidence/objects/sha256/54/54e96a80e3b7e1308f717f9a5273dcee81d727056b41c9db2572aee91466edb6.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "54e96a80e3b7e1308f717f9a5273dcee81d727056b41c9db2572aee91466edb6",
+        "contentSha256": "6342804c70e22b01b8743121130632e0f8262759e7951d6f9067d96bc0ce5045",
+        "objectPath": "evidence/derived/mineru-json/sha256/63/42/6342804c70e22b01b8743121130632e0f8262759e7951d6f9067d96bc0ce5045.json",
+        "byteSize": 29300,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:42:36.164Z"
+    },
+    {
+      "sourcePdfSha256": "5abb65a48d029999cd55c8a5f2c2672a4ac9d66ae5d1feb83ec58bed50c2ce99",
+      "byteSize": 1598262,
+      "paths": [
+        "evidence/web/sha256/5a/bb/5abb65a48d029999cd55c8a5f2c2672a4ac9d66ae5d1feb83ec58bed50c2ce99.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "5abb65a48d029999cd55c8a5f2c2672a4ac9d66ae5d1feb83ec58bed50c2ce99",
+        "contentSha256": "58a2648b5ba67b8e71b3df2fcb2ea573d37ff4cff937c9bfb33bc9ea81c47965",
+        "objectPath": "evidence/derived/mineru-json/sha256/58/a2/58a2648b5ba67b8e71b3df2fcb2ea573d37ff4cff937c9bfb33bc9ea81c47965.json",
+        "byteSize": 62172,
+        "pageCount": 9
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "658a7534c9bc1e033d5e635fc36185deb41bca28ac6ede41e31064c882bab6c5",
+      "byteSize": 333356,
+      "paths": [
+        "evidence/objects/sha256/65/658a7534c9bc1e033d5e635fc36185deb41bca28ac6ede41e31064c882bab6c5.pdf",
+        "evidence/web/sha256/65/8a/658a7534c9bc1e033d5e635fc36185deb41bca28ac6ede41e31064c882bab6c5.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "658a7534c9bc1e033d5e635fc36185deb41bca28ac6ede41e31064c882bab6c5",
+        "contentSha256": "b26d1470baeb55ecdf9d42a0bfe6921c216e7654127ef8c3e77e4d0b0d3312b6",
+        "objectPath": "evidence/derived/mineru-json/sha256/b2/6d/b26d1470baeb55ecdf9d42a0bfe6921c216e7654127ef8c3e77e4d0b0d3312b6.json",
+        "byteSize": 31381,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "6c9b8413e7027756b02248f0ff847320958cf0369fb67b9ce3819d55e2521f94",
+      "byteSize": 145853,
+      "paths": [
+        "evidence/objects/sha256/6c/6c9b8413e7027756b02248f0ff847320958cf0369fb67b9ce3819d55e2521f94.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "6c9b8413e7027756b02248f0ff847320958cf0369fb67b9ce3819d55e2521f94",
+        "contentSha256": "dd413d6652e9424115edc0c57427210c30f08b7a2147081294e3ae744bd5ffa9",
+        "objectPath": "evidence/derived/mineru-json/sha256/dd/41/dd413d6652e9424115edc0c57427210c30f08b7a2147081294e3ae744bd5ffa9.json",
+        "byteSize": 4264,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:42:55.238Z"
+    },
+    {
+      "sourcePdfSha256": "70124dade32350086dd2f556371322384974494cfc7255b213c97e78ad2df1f5",
+      "byteSize": 4447889,
+      "paths": [
+        "evidence/objects/sha256/70/70124dade32350086dd2f556371322384974494cfc7255b213c97e78ad2df1f5.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "70124dade32350086dd2f556371322384974494cfc7255b213c97e78ad2df1f5",
+        "contentSha256": "296b9d635be0ad7140ffb59f960f1e33b8613ebab712aa9655c8d7468b8ddcd8",
+        "objectPath": "evidence/derived/mineru-json/sha256/29/6b/296b9d635be0ad7140ffb59f960f1e33b8613ebab712aa9655c8d7468b8ddcd8.json",
+        "byteSize": 270774,
+        "pageCount": 21
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:43:08.286Z"
+    },
+    {
+      "sourcePdfSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
+      "byteSize": 1129846,
+      "paths": [
+        "evidence/web/sha256/74/2e/742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "742e6a82d96b085b5060bde11a1a4d6d18cacfa0f60e712b8bbf5d724ae5d205",
+        "contentSha256": "9b5677577cc32c9e41a398efadea28e464db6fc6c7854d1b2ab9dfa703eda451",
+        "objectPath": "evidence/derived/mineru-json/sha256/9b/56/9b5677577cc32c9e41a398efadea28e464db6fc6c7854d1b2ab9dfa703eda451.json",
+        "byteSize": 62150,
+        "pageCount": 9
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716",
+      "byteSize": 349928,
+      "paths": [
+        "evidence/objects/sha256/77/77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716",
+        "contentSha256": "d246bfe7788897191dcd02dbdef8972061b318b0a2c34654e7bb68abfc2ed644",
+        "objectPath": "evidence/derived/mineru-json/sha256/d2/46/d246bfe7788897191dcd02dbdef8972061b318b0a2c34654e7bb68abfc2ed644.json",
+        "byteSize": 21047,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:44:37.539Z"
+    },
+    {
+      "sourcePdfSha256": "7da89e80cb17fda5af7337a7f331d13a48a9dbd9326d0ef633b5d9a71ef3ef4d",
+      "byteSize": 1471212,
+      "paths": [
+        "evidence/objects/sha256/7d/7da89e80cb17fda5af7337a7f331d13a48a9dbd9326d0ef633b5d9a71ef3ef4d.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "7da89e80cb17fda5af7337a7f331d13a48a9dbd9326d0ef633b5d9a71ef3ef4d",
+        "contentSha256": "d49e0655686834bc8eaad9377b052384be6847993eea27dade3bdb9a86af49b7",
+        "objectPath": "evidence/derived/mineru-json/sha256/d4/9e/d49e0655686834bc8eaad9377b052384be6847993eea27dade3bdb9a86af49b7.json",
+        "byteSize": 33343,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:44:56.936Z"
+    },
+    {
+      "sourcePdfSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
+      "byteSize": 843286,
+      "paths": [
+        "evidence/web/sha256/7f/64/7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "7f64674ff156b4018b60e9b2ac30f4f64b72542f0769a6b65845b80d9830811b",
+        "contentSha256": "4d545481148f7a4312ae697bf3868c7b9751fdf538a5b810764523ae008d7300",
+        "objectPath": "evidence/derived/mineru-json/sha256/4d/54/4d545481148f7a4312ae697bf3868c7b9751fdf538a5b810764523ae008d7300.json",
+        "byteSize": 62059,
+        "pageCount": 9
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb",
+      "byteSize": 482401,
+      "paths": [
+        "evidence/objects/sha256/83/8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb.pdf",
+        "evidence/web/sha256/83/27/8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "8327f5e18360b8103005c7b062d2ede456931df19e2c881431aa2dfefb7caecb",
+        "contentSha256": "ff84e2b9a09abf461a642b8cd3748152aad79f74c2c3910b872805c99bf0ddf2",
+        "objectPath": "evidence/derived/mineru-json/sha256/ff/84/ff84e2b9a09abf461a642b8cd3748152aad79f74c2c3910b872805c99bf0ddf2.json",
+        "byteSize": 21567,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "858bcfe2625fee4321045b82065d2805ea4a43b5fddf2948ffe51a4de7acbbb8",
+      "byteSize": 4393959,
+      "paths": [
+        "evidence/objects/sha256/85/858bcfe2625fee4321045b82065d2805ea4a43b5fddf2948ffe51a4de7acbbb8.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "858bcfe2625fee4321045b82065d2805ea4a43b5fddf2948ffe51a4de7acbbb8",
+        "contentSha256": "54ee54bc9e2ab530e0ec8edb5de7327b3113a795211547960284c70bf5769775",
+        "objectPath": "evidence/derived/mineru-json/sha256/54/ee/54ee54bc9e2ab530e0ec8edb5de7327b3113a795211547960284c70bf5769775.json",
+        "byteSize": 48951,
+        "pageCount": 7
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:45:16.105Z"
+    },
+    {
+      "sourcePdfSha256": "8a7e470a1a7346035ac67ca27ab693732cf5b3c56aa58b29ee0c623a211a585d",
+      "byteSize": 4394609,
+      "paths": [
+        "evidence/objects/sha256/8a/8a7e470a1a7346035ac67ca27ab693732cf5b3c56aa58b29ee0c623a211a585d.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "8a7e470a1a7346035ac67ca27ab693732cf5b3c56aa58b29ee0c623a211a585d",
+        "contentSha256": "679514976605e48da78a345e9fdec99c3f5cfa3b7499d1c3e136edaff82ef506",
+        "objectPath": "evidence/derived/mineru-json/sha256/67/95/679514976605e48da78a345e9fdec99c3f5cfa3b7499d1c3e136edaff82ef506.json",
+        "byteSize": 49197,
+        "pageCount": 7
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:45:41.587Z"
+    },
+    {
+      "sourcePdfSha256": "8c230fe497ca443859a8bb1b01521ce661b71923589ed4a1540e208b05766e02",
+      "byteSize": 365449,
+      "paths": [
+        "evidence/objects/sha256/8c/8c230fe497ca443859a8bb1b01521ce661b71923589ed4a1540e208b05766e02.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "8c230fe497ca443859a8bb1b01521ce661b71923589ed4a1540e208b05766e02",
+        "contentSha256": "43f42e2b772aa566d5bb0cd68b709221c080489a57bddbe7c6e04dbb16a0dca2",
+        "objectPath": "evidence/derived/mineru-json/sha256/43/f4/43f42e2b772aa566d5bb0cd68b709221c080489a57bddbe7c6e04dbb16a0dca2.json",
+        "byteSize": 20900,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:46:06.971Z"
+    },
+    {
+      "sourcePdfSha256": "908f0d5cef1cf07e97a94ee13068183954549e23f0e7269a6a79d7fb329b4920",
+      "byteSize": 860272,
+      "paths": [
+        "evidence/objects/sha256/90/908f0d5cef1cf07e97a94ee13068183954549e23f0e7269a6a79d7fb329b4920.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "908f0d5cef1cf07e97a94ee13068183954549e23f0e7269a6a79d7fb329b4920",
+        "contentSha256": "764eba628db8284f28d47f0576b1d125e35aadbb56f65e014a59bfa6c5726755",
+        "objectPath": "evidence/derived/mineru-json/sha256/76/4e/764eba628db8284f28d47f0576b1d125e35aadbb56f65e014a59bfa6c5726755.json",
+        "byteSize": 29265,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:46:22.222Z"
+    },
+    {
+      "sourcePdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+      "byteSize": 136856,
+      "paths": [
+        "evidence/objects/sha256/92/925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73.pdf",
+        "evidence/web/sha256/92/5f/925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "925f6d440b773831f48712de16ca012263b7fac82490875c942b51f498dd7f73",
+        "contentSha256": "746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd",
+        "objectPath": "evidence/derived/mineru-json/sha256/74/6a/746a20fe30b8a3f34739b57305fdcedd2d8ca63b48e5e80823d212a2e23bc2cd.json",
+        "byteSize": 40908,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0",
+      "byteSize": 1688366,
+      "paths": [
+        "evidence/objects/sha256/9d/9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0",
+        "contentSha256": "4b52c676322e5387720774dea13b95364fc737e249f32bef28477155892fbfd9",
+        "objectPath": "evidence/derived/mineru-json/sha256/4b/52/4b52c676322e5387720774dea13b95364fc737e249f32bef28477155892fbfd9.json",
+        "byteSize": 39299,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:46:41.353Z"
+    },
+    {
+      "sourcePdfSha256": "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a",
+      "byteSize": 360306,
+      "paths": [
+        "evidence/objects/sha256/a7/a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "a792faf4dd337ea4fde2fcd9fa9b4904b7270c227be664765b95176a6ff7979a",
+        "contentSha256": "26a2a84dabffddbccb89a78182593a69a7bb51c516ef9e24c7d865f78d1ca8de",
+        "objectPath": "evidence/derived/mineru-json/sha256/26/a2/26a2a84dabffddbccb89a78182593a69a7bb51c516ef9e24c7d865f78d1ca8de.json",
+        "byteSize": 50321,
+        "pageCount": 8
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:46:59.416Z"
+    },
+    {
+      "sourcePdfSha256": "a85ac2f1727da062b515901eda319f16147312c89d7136643509bd5498f17b06",
+      "byteSize": 138506,
+      "paths": [
+        "evidence/objects/sha256/a8/a85ac2f1727da062b515901eda319f16147312c89d7136643509bd5498f17b06.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "a85ac2f1727da062b515901eda319f16147312c89d7136643509bd5498f17b06",
+        "contentSha256": "2798b9e13e1a5f2702839b1fafce2f14f9b99e4eed76c19d8ebfa9897c3636a4",
+        "objectPath": "evidence/derived/mineru-json/sha256/27/98/2798b9e13e1a5f2702839b1fafce2f14f9b99e4eed76c19d8ebfa9897c3636a4.json",
+        "byteSize": 5099,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:47:31.059Z"
+    },
+    {
+      "sourcePdfSha256": "a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06",
+      "byteSize": 208113,
+      "paths": [
+        "evidence/web/sha256/a8/72/a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "a8721a1d33ab03917b66285548fc496136ca5c3caa28b1f46a0899e108f94c06",
+        "contentSha256": "9f13f2791030edc9836a4e309ee9e5aa200031ceb798507b43203fecd5b8f304",
+        "objectPath": "evidence/derived/mineru-json/sha256/9f/13/9f13f2791030edc9836a4e309ee9e5aa200031ceb798507b43203fecd5b8f304.json",
+        "byteSize": 19322,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "a979ba676c8b6fb4c2ff23145600d452bb29e3882896721272b2a22a53010463",
+      "byteSize": 1104213,
+      "paths": [
+        "evidence/objects/sha256/a9/a979ba676c8b6fb4c2ff23145600d452bb29e3882896721272b2a22a53010463.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "a979ba676c8b6fb4c2ff23145600d452bb29e3882896721272b2a22a53010463",
+        "contentSha256": "8541e8870e3ce5cdeed263b104e728ebb3d9ac1fdb30a3a97460bef15664c8ad",
+        "objectPath": "evidence/derived/mineru-json/sha256/85/41/8541e8870e3ce5cdeed263b104e728ebb3d9ac1fdb30a3a97460bef15664c8ad.json",
+        "byteSize": 21441,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:47:46.228Z"
+    },
+    {
+      "sourcePdfSha256": "ae265001f3f720fa66b31049117b1ad6937a2e4890c68eb870cf04005141557f",
+      "byteSize": 1366243,
+      "paths": [
+        "evidence/objects/sha256/ae/ae265001f3f720fa66b31049117b1ad6937a2e4890c68eb870cf04005141557f.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "ae265001f3f720fa66b31049117b1ad6937a2e4890c68eb870cf04005141557f",
+        "contentSha256": "5d8db69717b861c43d74943ba9654a32e541e42cfb85797e9629f604a14f513f",
+        "objectPath": "evidence/derived/mineru-json/sha256/5d/8d/5d8db69717b861c43d74943ba9654a32e541e42cfb85797e9629f604a14f513f.json",
+        "byteSize": 38185,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:48:02.280Z"
+    },
+    {
+      "sourcePdfSha256": "b35f817f7e6e5d2a75e0f5c31c985519f346e998a60f9efd9e378a9796af8b4a",
+      "byteSize": 710057,
+      "paths": [
+        "evidence/objects/sha256/b3/b35f817f7e6e5d2a75e0f5c31c985519f346e998a60f9efd9e378a9796af8b4a.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "b35f817f7e6e5d2a75e0f5c31c985519f346e998a60f9efd9e378a9796af8b4a",
+        "contentSha256": "f19656a02bdd6bbaf7ca4eb53bc42b6496d62c9049bdd681089111e811c76fee",
+        "objectPath": "evidence/derived/mineru-json/sha256/f1/96/f19656a02bdd6bbaf7ca4eb53bc42b6496d62c9049bdd681089111e811c76fee.json",
+        "byteSize": 29812,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:48:21.340Z"
+    },
+    {
+      "sourcePdfSha256": "b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557",
+      "byteSize": 324501,
+      "paths": [
+        "evidence/objects/sha256/b3/b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557.pdf",
+        "evidence/web/sha256/b3/b4/b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "b3b49a4bcb56a5c30f4e958f0f88185aa3810cdbc6365eab9a0aaddff80fe557",
+        "contentSha256": "33493def867c0384ca52070d5ad6f5138486c7c496ac8b405d0523af07c6aad7",
+        "objectPath": "evidence/derived/mineru-json/sha256/33/49/33493def867c0384ca52070d5ad6f5138486c7c496ac8b405d0523af07c6aad7.json",
+        "byteSize": 20851,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8",
+      "byteSize": 305355,
+      "paths": [
+        "evidence/objects/sha256/b5/b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8",
+        "contentSha256": "fa1084aead33b9158ebd423a3dae40b8d57b99921f38ebe1cb5eeb6cb8ed0685",
+        "objectPath": "evidence/derived/mineru-json/sha256/fa/10/fa1084aead33b9158ebd423a3dae40b8d57b99921f38ebe1cb5eeb6cb8ed0685.json",
+        "byteSize": 32806,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:48:37.586Z"
+    },
+    {
+      "sourcePdfSha256": "b8c954080c96bde57c3a3310b0fa8eb2befaf19448228258f8b87ae8ae4e5cc8",
+      "byteSize": 290627,
+      "paths": [
+        "evidence/objects/sha256/b8/b8c954080c96bde57c3a3310b0fa8eb2befaf19448228258f8b87ae8ae4e5cc8.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "b8c954080c96bde57c3a3310b0fa8eb2befaf19448228258f8b87ae8ae4e5cc8",
+        "contentSha256": "7915f5a34d7c681b93447a378249d7aeb29bd4b32821d9c9f5f3a7c8d52233e3",
+        "objectPath": "evidence/derived/mineru-json/sha256/79/15/7915f5a34d7c681b93447a378249d7aeb29bd4b32821d9c9f5f3a7c8d52233e3.json",
+        "byteSize": 41572,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:48:56.808Z"
+    },
+    {
+      "sourcePdfSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
+      "byteSize": 146846,
+      "paths": [
+        "evidence/web/sha256/ba/ab/baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "baab65e8c66c7c30a0bd4238dab524a9c4aed38934b82ce2551b83db76b703d1",
+        "contentSha256": "e405ccf5e94b77cc22010f8b773aeb63592886fe228564d013b2883d1dadab1b",
+        "objectPath": "evidence/derived/mineru-json/sha256/e4/05/e405ccf5e94b77cc22010f8b773aeb63592886fe228564d013b2883d1dadab1b.json",
+        "byteSize": 6267,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "bb4765aed8b51db365365a2352cbf797538c662442e1400ca6d38b19feacd1f5",
+      "byteSize": 2089626,
+      "paths": [
+        "evidence/objects/sha256/bb/bb4765aed8b51db365365a2352cbf797538c662442e1400ca6d38b19feacd1f5.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "bb4765aed8b51db365365a2352cbf797538c662442e1400ca6d38b19feacd1f5",
+        "contentSha256": "590cdb9c1fc095f8a258c0c89588a1a5c28935ac8b849a2755c3ef5e86481428",
+        "objectPath": "evidence/derived/mineru-json/sha256/59/0c/590cdb9c1fc095f8a258c0c89588a1a5c28935ac8b849a2755c3ef5e86481428.json",
+        "byteSize": 35336,
+        "pageCount": 6
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:49:11.659Z"
+    },
+    {
+      "sourcePdfSha256": "c3f814fbe48d311b7004c0144556cd712d4f1c8b8c4eed8f20a5c41416c9573c",
+      "byteSize": 352096,
+      "paths": [
+        "evidence/objects/sha256/c3/c3f814fbe48d311b7004c0144556cd712d4f1c8b8c4eed8f20a5c41416c9573c.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "c3f814fbe48d311b7004c0144556cd712d4f1c8b8c4eed8f20a5c41416c9573c",
+        "contentSha256": "8fc045dd303af3232e3a1cc27dfe90cf3cd0978b48960dcf55630c82cec5bbda",
+        "objectPath": "evidence/derived/mineru-json/sha256/8f/c0/8fc045dd303af3232e3a1cc27dfe90cf3cd0978b48960dcf55630c82cec5bbda.json",
+        "byteSize": 37296,
+        "pageCount": 6
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:49:32.181Z"
+    },
+    {
+      "sourcePdfSha256": "c40bbeb07ba870f53b5b958b8de46b2327e156b371dd2ff22fbec3411209724e",
+      "byteSize": 1749589,
+      "paths": [
+        "evidence/objects/sha256/c4/c40bbeb07ba870f53b5b958b8de46b2327e156b371dd2ff22fbec3411209724e.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "c40bbeb07ba870f53b5b958b8de46b2327e156b371dd2ff22fbec3411209724e",
+        "contentSha256": "6600a6e24af276e5a9d65b790d145a932ee28c68ed8e6daa0e6552f11fd5ffe6",
+        "objectPath": "evidence/derived/mineru-json/sha256/66/00/6600a6e24af276e5a9d65b790d145a932ee28c68ed8e6daa0e6552f11fd5ffe6.json",
+        "byteSize": 498083,
+        "pageCount": 56
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:49:57.694Z"
+    },
+    {
+      "sourcePdfSha256": "c7375afcae85282b37fb59daeb237e6d74844a6d16586f04d1e6fe81a6d75a98",
+      "byteSize": 423406,
+      "paths": [
+        "evidence/objects/sha256/c7/c7375afcae85282b37fb59daeb237e6d74844a6d16586f04d1e6fe81a6d75a98.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "c7375afcae85282b37fb59daeb237e6d74844a6d16586f04d1e6fe81a6d75a98",
+        "contentSha256": "7a848194f57335be73d384b7c8f4451474adf0b1f0c75f02068261164bd5e830",
+        "objectPath": "evidence/derived/mineru-json/sha256/7a/84/7a848194f57335be73d384b7c8f4451474adf0b1f0c75f02068261164bd5e830.json",
+        "byteSize": 37269,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:51:17.268Z"
+    },
+    {
+      "sourcePdfSha256": "cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00",
+      "byteSize": 1130681,
+      "paths": [
+        "evidence/objects/sha256/cb/cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00",
+        "contentSha256": "17a297171da4c9a2721bd7b89d51ea596bea1b605f8c65f7356fc6f44dc4f2c7",
+        "objectPath": "evidence/derived/mineru-json/sha256/17/a2/17a297171da4c9a2721bd7b89d51ea596bea1b605f8c65f7356fc6f44dc4f2c7.json",
+        "byteSize": 36361,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:51:34.150Z"
+    },
+    {
+      "sourcePdfSha256": "cde14b717d6353dca7585bc4d02665b033157dee55e3a709175fb06806bfb8b0",
+      "byteSize": 5749391,
+      "paths": [
+        "evidence/objects/sha256/cd/cde14b717d6353dca7585bc4d02665b033157dee55e3a709175fb06806bfb8b0.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "cde14b717d6353dca7585bc4d02665b033157dee55e3a709175fb06806bfb8b0",
+        "contentSha256": "9af41547548fa4bc20f7bd63dd5bb4abd712aa48f4690b30583b1208e44fa8c2",
+        "objectPath": "evidence/derived/mineru-json/sha256/9a/f4/9af41547548fa4bc20f7bd63dd5bb4abd712aa48f4690b30583b1208e44fa8c2.json",
+        "byteSize": 531681,
+        "pageCount": 56
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:51:48.258Z"
+    },
+    {
+      "sourcePdfSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+      "byteSize": 14146867,
+      "paths": [
+        "evidence/objects/sha256/d0/d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b.pdf",
+        "evidence/web/sha256/d0/75/d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+        "contentSha256": "44f24cb3a85d9d120a7edaab4770472cc0d4b712dd8b93f934b7d06ba793146d",
+        "objectPath": "evidence/derived/mineru-json/sha256/44/f2/44f24cb3a85d9d120a7edaab4770472cc0d4b712dd8b93f934b7d06ba793146d.json",
+        "byteSize": 650705,
+        "pageCount": 68
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "d1b06298dcc262b6b6019f04076a88a0cc96529e7ff60776e3194456a500f39a",
+      "byteSize": 76083,
+      "paths": [
+        "evidence/web/sha256/d1/b0/d1b06298dcc262b6b6019f04076a88a0cc96529e7ff60776e3194456a500f39a.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "d1b06298dcc262b6b6019f04076a88a0cc96529e7ff60776e3194456a500f39a",
+        "contentSha256": "4e2564737779b42e92da78c4c69a0452205e843f4645c2134ef9c96d155cb0b5",
+        "objectPath": "evidence/derived/mineru-json/sha256/4e/25/4e2564737779b42e92da78c4c69a0452205e843f4645c2134ef9c96d155cb0b5.json",
+        "byteSize": 12533,
+        "pageCount": 1
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "d230e3d6d25a008a09b58479140e62d5f610ecbf46bc2e05eb2e83301f7f8d46",
+      "byteSize": 1151244,
+      "paths": [
+        "evidence/objects/sha256/d2/d230e3d6d25a008a09b58479140e62d5f610ecbf46bc2e05eb2e83301f7f8d46.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "d230e3d6d25a008a09b58479140e62d5f610ecbf46bc2e05eb2e83301f7f8d46",
+        "contentSha256": "b21fd804d08d5d3f595394fc5ee8192be51692863ae0dd2f7e6441bc5864c871",
+        "objectPath": "evidence/derived/mineru-json/sha256/b2/1f/b21fd804d08d5d3f595394fc5ee8192be51692863ae0dd2f7e6441bc5864c871.json",
+        "byteSize": 37205,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:53:07.727Z"
+    },
+    {
+      "sourcePdfSha256": "d5682f81974da77f17d2db44b6192ec3b897c9f889a7ac7ef0baa18747c23741",
+      "byteSize": 12646994,
+      "paths": [
+        "evidence/objects/sha256/d5/d5682f81974da77f17d2db44b6192ec3b897c9f889a7ac7ef0baa18747c23741.pdf",
+        "evidence/web/sha256/d5/68/d5682f81974da77f17d2db44b6192ec3b897c9f889a7ac7ef0baa18747c23741.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "d5682f81974da77f17d2db44b6192ec3b897c9f889a7ac7ef0baa18747c23741",
+        "contentSha256": "44675aef6947f925a95140aeb8d013b3f476f79c2f70732faf9bdc4943301ac9",
+        "objectPath": "evidence/derived/mineru-json/sha256/44/67/44675aef6947f925a95140aeb8d013b3f476f79c2f70732faf9bdc4943301ac9.json",
+        "byteSize": 548849,
+        "pageCount": 56
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450",
+      "byteSize": 1012177,
+      "paths": [
+        "evidence/objects/sha256/da/da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450",
+        "contentSha256": "cd4cdd55586884ec8c0c83fefe87e7c6217d007a3731d805f5cb8adf9d3a0ada",
+        "objectPath": "evidence/derived/mineru-json/sha256/cd/4c/cd4cdd55586884ec8c0c83fefe87e7c6217d007a3731d805f5cb8adf9d3a0ada.json",
+        "byteSize": 43364,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:53:24.672Z"
+    },
+    {
+      "sourcePdfSha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
+      "byteSize": 217068,
+      "paths": [
+        "evidence/objects/sha256/e8/e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
+        "contentSha256": "6c569d67712b4ac08dd80bf19662494996c787a4d4d9f706c4ecd6c829639fe4",
+        "objectPath": "evidence/derived/mineru-json/sha256/6c/56/6c569d67712b4ac08dd80bf19662494996c787a4d4d9f706c4ecd6c829639fe4.json",
+        "byteSize": 11937,
+        "pageCount": 1
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:53:40.985Z"
+    },
+    {
+      "sourcePdfSha256": "e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c",
+      "byteSize": 1402290,
+      "paths": [
+        "evidence/objects/sha256/e9/e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c",
+        "contentSha256": "dfeb99bf94ea3f3b4f7bc7f067301cf727156d35beb9357b7ad320b86ce5a22a",
+        "objectPath": "evidence/derived/mineru-json/sha256/df/eb/dfeb99bf94ea3f3b4f7bc7f067301cf727156d35beb9357b7ad320b86ce5a22a.json",
+        "byteSize": 36600,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:53:54.983Z"
+    },
+    {
+      "sourcePdfSha256": "eb728821fc93ca4ba5dedadbad827ab9c7dbc744bd3ce6c2bec0ef848793c9d1",
+      "byteSize": 837554,
+      "paths": [
+        "evidence/objects/sha256/eb/eb728821fc93ca4ba5dedadbad827ab9c7dbc744bd3ce6c2bec0ef848793c9d1.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "eb728821fc93ca4ba5dedadbad827ab9c7dbc744bd3ce6c2bec0ef848793c9d1",
+        "contentSha256": "190093e66b50124a7aeb6baf010f4656cceb89f6f710a39b860484acb715a597",
+        "objectPath": "evidence/derived/mineru-json/sha256/19/00/190093e66b50124a7aeb6baf010f4656cceb89f6f710a39b860484acb715a597.json",
+        "byteSize": 30289,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:54:10.860Z"
+    },
+    {
+      "sourcePdfSha256": "ee493062e968e61b7ad60b1c9fd18eae4365edcf1d986d83532aedabbec8285a",
+      "byteSize": 295800,
+      "paths": [
+        "evidence/objects/sha256/ee/ee493062e968e61b7ad60b1c9fd18eae4365edcf1d986d83532aedabbec8285a.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "ee493062e968e61b7ad60b1c9fd18eae4365edcf1d986d83532aedabbec8285a",
+        "contentSha256": "bb12cc08a0cb9c1a5ab70f2bae23685e3ee6fba6b2c1838a8579bef0ab21077a",
+        "objectPath": "evidence/derived/mineru-json/sha256/bb/12/bb12cc08a0cb9c1a5ab70f2bae23685e3ee6fba6b2c1838a8579bef0ab21077a.json",
+        "byteSize": 32088,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:54:26.272Z"
+    },
+    {
+      "sourcePdfSha256": "eeca4528ae36bc5317c225b56abfc70c8a95a677ebf26ebfd47b5f6433eb5062",
+      "byteSize": 294080,
+      "paths": [
+        "evidence/web/sha256/ee/ca/eeca4528ae36bc5317c225b56abfc70c8a95a677ebf26ebfd47b5f6433eb5062.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "eeca4528ae36bc5317c225b56abfc70c8a95a677ebf26ebfd47b5f6433eb5062",
+        "contentSha256": "0aa0ca30296079fdc8a3cec15995fc8e6c7d04bcd4fbcef719ea4273b630b3b8",
+        "objectPath": "evidence/derived/mineru-json/sha256/0a/a0/0aa0ca30296079fdc8a3cec15995fc8e6c7d04bcd4fbcef719ea4273b630b3b8.json",
+        "byteSize": 42881,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+      "byteSize": 15577638,
+      "paths": [
+        "evidence/objects/sha256/f0/f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "f047b5110c58719612ae05ac7d6cccd1ed974d8086dba6632bf71b3df4b4653c",
+        "contentSha256": "a310d8475cd078058998375d71cad227f4fcb81af6709677fc8566c08ea3e1b5",
+        "objectPath": "evidence/derived/mineru-json/sha256/a3/10/a310d8475cd078058998375d71cad227f4fcb81af6709677fc8566c08ea3e1b5.json",
+        "byteSize": 345353,
+        "pageCount": 48
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:54:40.702Z"
+    },
+    {
+      "sourcePdfSha256": "f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402",
+      "byteSize": 457321,
+      "paths": [
+        "evidence/web/sha256/f7/5c/f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 0,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "f75c0981fd9bd9ffe8796d70536e6153d7cfb68f8381050d6cf2288460f10402",
+        "contentSha256": "6654314ecf75bc172b0c0a872ba11467362feafef9d5fac13d68afdc6906120f",
+        "objectPath": "evidence/derived/mineru-json/sha256/66/54/6654314ecf75bc172b0c0a872ba11467362feafef9d5fac13d68afdc6906120f.json",
+        "byteSize": 30386,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      }
+    },
+    {
+      "sourcePdfSha256": "f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb",
+      "byteSize": 142508,
+      "paths": [
+        "evidence/objects/sha256/f9/f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb",
+        "contentSha256": "2e741039c221af4767419dcf4972aa3067463c21a0f5c3c6989123e392daa023",
+        "objectPath": "evidence/derived/mineru-json/sha256/2e/74/2e741039c221af4767419dcf4972aa3067463c21a0f5c3c6989123e392daa023.json",
+        "byteSize": 6281,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:56:27.405Z"
+    },
+    {
+      "sourcePdfSha256": "fdfd4107f7caa241eb3c29668296780378b5db639ab04bb5e44f408c9ed17ef4",
+      "byteSize": 292783,
+      "paths": [
+        "evidence/objects/sha256/fd/fdfd4107f7caa241eb3c29668296780378b5db639ab04bb5e44f408c9ed17ef4.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "fdfd4107f7caa241eb3c29668296780378b5db639ab04bb5e44f408c9ed17ef4",
+        "contentSha256": "e01b0b848f3793ee5e3f33dc028939675292c23acb452a401c168ed9480bbab4",
+        "objectPath": "evidence/derived/mineru-json/sha256/e0/1b/e01b0b848f3793ee5e3f33dc028939675292c23acb452a401c168ed9480bbab4.json",
+        "byteSize": 26770,
+        "pageCount": 3
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:56:41.294Z"
+    },
+    {
+      "sourcePdfSha256": "ff9c1735a4871bc809e0baa42ee366d5780e298a6dedad0ca17dd6ef01e8d667",
+      "byteSize": 266304,
+      "paths": [
+        "evidence/objects/sha256/ff/ff9c1735a4871bc809e0baa42ee366d5780e298a6dedad0ca17dd6ef01e8d667.pdf"
+      ],
+      "status": "indexed",
+      "attempts": 1,
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "derivedArtifact": {
+        "schemaVersion": 1,
+        "format": "content_list_v2",
+        "parserName": "MinerU",
+        "parserVersion": "3.4.4",
+        "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+        "backend": "pipeline",
+        "method": "auto",
+        "tableEnabled": true,
+        "formulaEnabled": false,
+        "sourcePdfSha256": "ff9c1735a4871bc809e0baa42ee366d5780e298a6dedad0ca17dd6ef01e8d667",
+        "contentSha256": "952c5048d1b83d141263324390ac2bdb1ead63466ca67cc6aee8093c29583a03",
+        "objectPath": "evidence/derived/mineru-json/sha256/95/2c/952c5048d1b83d141263324390ac2bdb1ead63466ca67cc6aee8093c29583a03.json",
+        "byteSize": 6097,
+        "pageCount": 2
+      },
+      "processing": {
+        "strategy": "whole_document"
+      },
+      "lastAttemptedAt": "2026-07-12T08:56:56.311Z"
+    }
+  ]
+}

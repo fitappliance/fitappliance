@@ -426,16 +426,36 @@ function getPhotoTitle(product = {}) {
   return buildPrimaryTitle(product) || [displayBrandName(product?.brand), product?.model].filter(Boolean).join(' ') || 'Appliance';
 }
 
+function productHeightRange(product = {}) {
+  const evidence = product?.geometry_v2_provenance?.fieldEvidence?.['closedEnvelope.heightMm'];
+  const height = product?.geometry_v2?.closedEnvelope?.heightMm;
+  if (evidence
+    && /^[a-f0-9]{64}$/i.test(String(evidence.contentSha256 ?? ''))
+    && /^[a-f0-9]{64}$/i.test(String(evidence.receiptBindingSha256 ?? ''))
+    && height && typeof height === 'object') {
+    const minimumMm = toPositiveNumber(height.minimumMm);
+    const maximumMm = toPositiveNumber(height.maximumMm);
+    if (minimumMm && maximumMm && minimumMm <= maximumMm) return { minimumMm, maximumMm };
+  }
+  const fixed = toPositiveNumber(product?.h);
+  return fixed ? { minimumMm: fixed, maximumMm: fixed } : null;
+}
+
+function productPlacementHeight(product = {}) {
+  return productHeightRange(product)?.maximumMm ?? null;
+}
+
 function compactDimensions(product = {}) {
+  const height = productHeightRange(product);
+  const heightText = height
+    ? `${Math.round(height.minimumMm)}${height.minimumMm === height.maximumMm ? '' : `-${Math.round(height.maximumMm)}`}`
+    : '';
   const parts = [
-    ['W', product?.w],
-    ['H', product?.h],
-    ['D', product?.d]
+    ['W', toPositiveNumber(product?.w) ? String(Math.round(toPositiveNumber(product.w))) : ''],
+    ['H', heightText],
+    ['D', toPositiveNumber(product?.d) ? String(Math.round(toPositiveNumber(product.d))) : '']
   ]
-    .map(([label, value]) => {
-      const number = toPositiveNumber(value);
-      return number ? `${label} ${Math.round(number)}mm` : '';
-    })
+    .map(([label, value]) => value ? `${label} ${value}mm` : '')
     .filter(Boolean);
   return parts.join(' · ');
 }
@@ -735,7 +755,7 @@ function axisShortLabel(axis) {
 function axisProductDimension(product, axis) {
   return {
     width: toPositiveNumber(product?.w),
-    height: toPositiveNumber(product?.h),
+    height: productPlacementHeight(product),
     depth: toPositiveNumber(product?.d)
   }[axis] ?? null;
 }
@@ -987,7 +1007,7 @@ function buildUtilityButtons(product, saved, compareLabel) {
 
 function buildReplacementCtaHtml(product) {
   const w = replacementDimensionArg(product?.w);
-  const h = replacementDimensionArg(product?.h);
+  const h = replacementDimensionArg(productPlacementHeight(product));
   const d = replacementDimensionArg(product?.d);
   return `<div class="archived-replacement">
     <button class="btn-replacement" type="button" onclick="triggerReplacementSearch('${escHtml(w)}','${escHtml(h)}','${escHtml(d)}')">Find a Modern Replacement</button>

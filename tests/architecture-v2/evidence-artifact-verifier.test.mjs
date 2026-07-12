@@ -133,6 +133,102 @@ test('HTML artifact needs canonical exact-model scope and independent product id
   }), /canonical.*model|identity/i);
 });
 
+test('HTML identity accepts an exact canonical path segment plus a matching structured product entity', () => {
+  const hisenseIdentity = { brand: 'Hisense', model: 'HWF8I1015BX', category: 'washing_machine' };
+  const bytes = Buffer.from(`<!doctype html><html><head>
+    <title>Series 8i 10kg Front Load Washer</title>
+    <link rel="canonical" href="https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer">
+  </head><body>
+    <div><h2>Dimensions (H*W*D) Unit: mm</h2><p>845*595*550</p></div>
+    <script type="application/json">{"product":{"code":"HWF8I1015BX","url":"/product/HWF8I1015BX/series-8i-10kg-front-load-washer"}}</script>
+  </body></html>`);
+  const claims = extractClaimsFromHtml(bytes, {
+    category: 'washing_machine',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  const attested = verifyAndAttestResolutionArtifact({
+    source: source(bytes, {
+      sourceUrl: 'https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer',
+      finalUrl: 'https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer',
+      identity: { brand: 'Hisense', model: 'HWF8I1015BX', outcome: 'exact' },
+      claims,
+    }),
+    caseIdentity: hisenseIdentity,
+    bytes,
+    verifiedAt: '2026-07-12T10:00:00.000Z',
+  });
+  assert.ok(attested.identitySignals.some((signal) => signal.type === 'structured_product_model'));
+
+  const relatedBytes = Buffer.from(bytes.toString('utf8').replace(
+    '"url":"/product/HWF8I1015BX/series-8i-10kg-front-load-washer"',
+    '"url":"/product/RELATED123/other-product"',
+  ));
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: source(relatedBytes, {
+      sourceUrl: 'https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer',
+      finalUrl: 'https://www.hisense.com.au/product/HWF8I1015BX/series-8i-10kg-front-load-washer',
+      contentSha256: createHash('sha256').update(relatedBytes).digest('hex'),
+      byteSize: relatedBytes.length,
+      identity: { brand: 'Hisense', model: 'HWF8I1015BX', outcome: 'exact' },
+      claims,
+    }),
+    caseIdentity: hisenseIdentity,
+    bytes: relatedBytes,
+    verifiedAt: '2026-07-12T10:00:00.000Z',
+  }), /product model identity/i);
+});
+
+test('HTML identity records a strict official marketing alias and limits it to dimensions', () => {
+  const aliasIdentity = { brand: 'Samsung', model: 'SRF5300SD', category: 'fridge' };
+  const bytes = Buffer.from(`<!doctype html><html><head>
+    <title>495L French Door Fridge Non Plumbed SRF5300SD | Samsung AU</title>
+    <link rel="canonical" href="https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/">
+    <meta property="og:description" content="Purchase SRF5300SD 495L French Door refrigerator RF44A5202SL/SA from Samsung Australia.">
+  </head><body data-model-code="RF44A5202SL/SA">
+    <dl><dt>Total width (mm)</dt><dd>817 mm</dd>
+      <dt>Total height (mm)</dt><dd>1776 mm</dd>
+      <dt>Total depth (mm)</dt><dd>715 mm</dd></dl>
+  </body></html>`);
+  const claims = extractClaimsFromHtml(bytes, {
+    category: 'fridge',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  const input = source(bytes, {
+    sourceUrl: 'https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/',
+    finalUrl: 'https://www.samsung.com/au/refrigerators/french-door/rf5000a-498l-silver-rf44a5202sl-sa/',
+    identity: { brand: 'Samsung', model: 'SRF5300SD', outcome: 'exact' },
+    claims,
+  });
+  const attested = verifyAndAttestResolutionArtifact({
+    source: input,
+    caseIdentity: aliasIdentity,
+    bytes,
+    verifiedAt: '2026-07-12T10:00:00.000Z',
+  });
+  assert.deepEqual(attested.identity, {
+    brand: 'Samsung', model: 'SRF5300SD', outcome: 'official_marketing_alias',
+    sourceModel: 'RF44A5202SL/SA',
+  });
+  assert.ok(attested.identitySignals.some((signal) => signal.type === 'official_alias_binding'));
+  assert.equal(verifyAttestedResolutionArtifact({ source: attested, caseIdentity: aliasIdentity, bytes }), true);
+
+  const unboundBytes = Buffer.from(bytes.toString('utf8').replace(
+    'Purchase SRF5300SD 495L French Door refrigerator RF44A5202SL/SA',
+    'Purchase this 495L French Door refrigerator',
+  ));
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: source(unboundBytes, {
+      sourceUrl: input.sourceUrl,
+      finalUrl: input.finalUrl,
+      identity: input.identity,
+      claims,
+    }),
+    caseIdentity: aliasIdentity,
+    bytes: unboundBytes,
+    verifiedAt: '2026-07-12T10:00:00.000Z',
+  }), /alias|canonical.*model|identity/i);
+});
+
 test('HTML extractor derives requested claims from source text instead of copied values', () => {
   const claims = extractClaimsFromHtml(html(), {
     category: 'fridge',
@@ -194,6 +290,36 @@ test('HTML extractor prioritises structured product dimensions and rejects packa
   });
   assert.ok(attested.identitySignals.some((signal) => signal.type === 'canonical_regional_sku'));
   assert.ok(attested.identitySignals.some((signal) => signal.type === 'product_model'));
+});
+
+test('HTML extractor does not confuse cabinet depth without the door with total product depth', () => {
+  const refrigerator = Buffer.from(`<!doctype html><html><body><ul role="list">
+    <li role="listitem"><p>Total Depth (mm)</p><p>715</p></li>
+    <li role="listitem"><p>Depth without Door (mm)</p><p>625</p></li>
+    <li role="listitem"><p>Packing Depth (mm)</p><p>776</p></li>
+  </ul></body></html>`);
+  const claims = extractClaimsFromHtml(refrigerator, {
+    category: 'fridge',
+    fields: ['closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.depthMm': 715,
+  });
+});
+
+test('HTML grouped dimensions accept an explicit H*W*D axis order', () => {
+  const washer = Buffer.from(`<!doctype html><html><body>
+    <div class="specification"><h2>Dimensions (H*W*D) Unit: mm</h2><p>845*595*550</p></div>
+  </body></html>`);
+  const claims = extractClaimsFromHtml(washer, {
+    category: 'washing_machine',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': 595,
+    'closedEnvelope.heightMm': 845,
+    'closedEnvelope.depthMm': 550,
+  });
 });
 
 test('HTML grouped dimensions fail closed when structured product rows conflict', () => {
