@@ -17,7 +17,7 @@ Australian retailers.
 | Retailer-verified products | 1,384 | Products with at least one verified product-page link from the five tracked retailers. |
 | Verified retailer links | 1,614 | Total product-page links across JB Hi-Fi, Appliances Online, The Good Guys, Harvey Norman, and Bing Lee. |
 | Multi-retailer products | 161 | Products with two or more verified retailer product-page links. |
-| Live price rows | 1,358 | Positive retailer prices captured with enough evidence to show as price data. |
+| Live price rows | 688 | Positive retailer prices captured with enough evidence to show as price data. |
 <!-- RETAILER_METRICS_BASELINE:END -->
 
 ## Coverage By Category

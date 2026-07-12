@@ -7,7 +7,7 @@ _Auto-generated 2026-07-06 from live database_
 <!-- RETAILER_METRICS_PROMOTION:START -->
 - **3,518 raw appliance spec rows** across fridges, washing machines, dishwashers, and dryers
 - **1,384 products with verified retailer product-page links** across tracked AU retailers
-- **1,614 verified retailer product-page links**; live price rows are 1,358
+- **1,614 verified retailer product-page links**; live price rows are 688
 <!-- RETAILER_METRICS_PROMOTION:END -->
 - Brand and comparison pages generated from the current public catalog projection
 - Door-opening space is shown only where explicit evidence or an auditable 90-degree depth calculation exists
