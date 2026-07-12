@@ -54,3 +54,65 @@ test('phase 58 sort: brand A-Z remains available', async () => {
 
   assert.deepEqual(sortRowsForRtings(rows, 'brand').map((row) => row.id), ['bosch', 'lg', 'westinghouse']);
 });
+
+test('replacement default sort preserves direct dimension distance ahead of popularity', async () => {
+  const { sortRowsForRtings } = await loadRangeFilters();
+  const rows = [
+    makeRow({
+      id: 'far-popular',
+      priorityScore: 100,
+      fitScoreNumeric: null,
+      replacementMatch: { maxAbsoluteDeltaMm: 30, normalizedDistance: 0.02, totalAbsoluteDeltaMm: 40 }
+    }),
+    makeRow({
+      id: 'near-unpopular',
+      priorityScore: 1,
+      fitScoreNumeric: null,
+      replacementMatch: { maxAbsoluteDeltaMm: 2, normalizedDistance: 0.003, totalAbsoluteDeltaMm: 4 }
+    })
+  ];
+
+  assert.deepEqual(
+    sortRowsForRtings(rows, 'closest-size').map((row) => row.id),
+    ['near-unpopular', 'far-popular']
+  );
+});
+
+test('replacement display ordering never injects sponsored products ahead of closer size matches', async () => {
+  const { orderRowsForDisplay } = await loadRangeFilters();
+  const rows = [
+    makeRow({ id: 'closest-sponsored', sponsored: true }),
+    makeRow({ id: 'second', sponsored: false }),
+    makeRow({ id: 'third', sponsored: false }),
+  ];
+
+  assert.deepEqual(
+    orderRowsForDisplay(rows, { searchMode: 'replacement' }).map((row) => row.id),
+    ['closest-sponsored', 'second', 'third'],
+  );
+  assert.deepEqual(
+    orderRowsForDisplay(rows, { searchMode: 'cavity' }).map((row) => row.id),
+    ['second', 'third', 'closest-sponsored'],
+  );
+});
+
+test('replacement rows fail closed to size order when a cavity-only sort is restored', async () => {
+  const { sortRowsForRtings } = await loadRangeFilters();
+  const rows = [
+    makeRow({
+      id: 'far-verified',
+      evidence: { has_pdf_evidence: true },
+      replacementMatch: { maxAbsoluteDeltaMm: 20, normalizedDistance: 0.02, totalAbsoluteDeltaMm: 25 },
+    }),
+    makeRow({
+      id: 'near-unverified',
+      evidence: null,
+      replacementMatch: { maxAbsoluteDeltaMm: 2, normalizedDistance: 0.002, totalAbsoluteDeltaMm: 3 },
+    }),
+  ];
+
+  assert.deepEqual(
+    sortRowsForRtings(rows, 'verified-first').map((row) => row.id),
+    ['near-unverified', 'far-verified'],
+  );
+});

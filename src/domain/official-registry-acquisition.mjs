@@ -11,6 +11,13 @@ const RESOURCE_PATTERNS = Object.freeze({
   washing_machine: /(?:clothes\s+washers?|\bcw_\d{4}_\d{2}_\d{2}\.csv)/i,
 });
 
+export const ENERGY_RATING_CATEGORIES = Object.freeze([
+  'fridge',
+  'dishwasher',
+  'dryer',
+  'washing_machine',
+]);
+
 function httpsWithAllowedHost(value, allowedHosts, label) {
   const url = new URL(value);
   if (url.protocol !== 'https:') throw new TypeError(`${label} must use HTTPS`);
@@ -18,7 +25,7 @@ function httpsWithAllowedHost(value, allowedHosts, label) {
   return url;
 }
 
-export function selectEnergyRatingResources(metadata, categories = ['fridge', 'dishwasher']) {
+export function selectEnergyRatingResources(metadata, categories = ENERGY_RATING_CATEGORIES) {
   const resources = metadata?.result?.resources;
   if (!Array.isArray(resources)) throw new TypeError('Energy Rating metadata is missing resources');
   const selected = {};

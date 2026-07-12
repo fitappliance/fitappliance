@@ -495,7 +495,7 @@ nav {
         <label class="search-mode-option" data-search-mode-option="replacement">
           <input type="radio" name="searchMode" value="replacement">
           <span>I measured my old appliance</span>
-          <small>Physical size match, then show required cavity</small>
+          <small>Rank current models by direct W/H/D difference</small>
         </label>
       </fieldset>
 
@@ -513,10 +513,18 @@ nav {
         <div class="replacement-row">
           <input id="oldModelInput" list="oldModelSuggestions" autocomplete="off" placeholder="Try old model, e.g. Westinghouse WTB4600WA">
           <datalist id="oldModelSuggestions"></datalist>
-          <button type="button" id="useOldModelBtn">Use old model size</button>
+          <button type="button" id="useOldModelBtn">Find model dimensions</button>
         </div>
-        <p class="field-note">We can use a matching old model as a starting point, but always re-measure the actual cavity before buying.</p>
+        <p class="field-note">Search Australian historical model records, then check the old appliance width, height and depth before ordering.</p>
         <div class="replacement-status" id="replacementStatus" aria-live="polite"></div>
+        <div class="replacement-candidates" id="replacementCandidates" aria-label="Matching historical appliance models" hidden></div>
+        <div class="replacement-confirmation" id="replacementConfirmation" hidden>
+          <label class="replacement-confirmation__check" for="replacementDimensionConfirm">
+            <input type="checkbox" id="replacementDimensionConfirm">
+            <span>I checked these W/H/D dimensions against the appliance label, manual or my own measurement.</span>
+          </label>
+          <button type="button" id="applyReplacementDimensionsBtn" disabled>Use confirmed W/H/D</button>
+        </div>
         <div class="saved-appliance-picker" data-saved-appliance-picker hidden>
           <div class="saved-appliance-picker__head">Use a saved appliance</div>
           <div class="saved-appliance-picker__chips" data-saved-appliance-chips></div>
@@ -533,7 +541,7 @@ nav {
         <div class="field">
           <label for="inH">Cavity Height</label>
           <div class="field-wrap"><input type="number" inputmode="numeric" pattern="[0-9]*" autocomplete="off" id="inH" aria-describedby="inHHint" aria-label="Height millimeters" placeholder="1910" min="100" max="3000"><span class="field-unit">mm</span></div>
-          <span class="field-note" id="inHHint">Measure floor to cabinet underside; include hinge caps.</span>
+          <span class="field-note" id="inHHint">Measure floor to the lowest cabinet underside.</span>
         </div>
         <div class="field">
           <label for="inD">Cavity Depth</label>
@@ -548,7 +556,7 @@ nav {
         <span id="heroCtaText">Find fitting models</span>
       </button>
 
-      <div class="hero-sample-searches" aria-label="Sample searches">
+      <div class="hero-sample-searches" id="heroSampleSearches" aria-label="Sample cavity searches">
         <span class="hero-sample-label">Try a sample search:</span>
         <button type="button" class="hero-sample-chip" data-sample-search='{"cat":"fridge","w":600,"h":1900,"d":650}'>
           Standard fridge 600 × 1900 × 650
@@ -607,11 +615,11 @@ nav {
 
       <div class="sc-hint">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="#C47A1A" stroke-width="1.4"/><path d="M7.5 7v4M7.5 5v.5" stroke="#C47A1A" stroke-width="1.4" stroke-linecap="round"/></svg>
-        <span>Dimensions are your raw cavity. The default fit check uses a practical clearance buffer; brand-specific manufacturer figures are shown as advisory notes so you can verify the model manual before buying.</span>
+        <span id="dimensionModeHint">Dimensions are your raw cavity. The default fit check uses a practical clearance buffer; brand-specific manufacturer figures are shown as advisory notes so you can verify the model manual before buying.</span>
       </div>
 
-      <a href="#how-we-score" class="hero-secondary-link">How is the size-margin score calculated? →</a>
-      <p class="fit-checker-link"><a href="/tools/fit-checker">Try the fit checker →</a></p>
+      <a href="#how-we-score" class="hero-secondary-link" id="scoreMethodLink">How is the size-margin score calculated? →</a>
+      <p class="fit-checker-link" id="fitCheckerLink"><a href="/tools/fit-checker">Try the fit checker →</a></p>
       <div id="searchHistoryMount"></div>
     </div>
   </div>
@@ -718,8 +726,8 @@ nav {
         <button type="button" onclick="copyCurrentSearchLink()">Copy your search link</button>
       </div>
       <div class="empty-state" id="emptyState">
-        <h3>Nothing fits those dimensions</h3>
-        <p>Try increasing your cavity measurements or removing brand/budget filters. Standard AU cavities: 600mm W × 1800mm H × 650mm D for fridges.</p>
+        <h3 id="emptyStateTitle">Nothing fits those dimensions</h3>
+        <p id="emptyStateCopy">Try increasing your cavity measurements or removing brand/budget filters. Standard AU cavities: 600mm W × 1800mm H × 650mm D for fridges.</p>
         <button class="btn-search" style="max-width:220px;margin:0 auto" onclick="resetSearch()">Start Over</button>
       </div>
     </div>
@@ -1098,6 +1106,7 @@ nav {
 <script defer src="/scripts/subscribe.js"></script>
 <script type="module">
 import '/scripts/fit-engine.js';
+import '/scripts/replacement-match-engine.js';
 import '/scripts/search-core.js';
 import '/scripts/iso-projection.js';
 import '/scripts/fit-visualization.js';
@@ -1110,11 +1119,16 @@ import { displayBrandName } from './scripts/ui/brand-utils.js';
 import { renderFreshnessBanner } from './scripts/ui/freshness.js';
 import { loadEvidenceIndex } from './scripts/ui/provenance.js';
 import { normalizeSearchDimensions } from './scripts/search-inputs.mjs';
-import { buildReplacementDimensionState, findReplacementSource, getReplacementSuggestionRows } from './scripts/replacement-matcher.mjs';
+import {
+  buildReplacementDimensionState,
+  getReplacementReferenceSuggestions,
+  loadReplacementReference,
+  resolveReplacementReference
+} from './scripts/replacement-matcher.mjs';
 import { buildSpaceAlerts } from './scripts/space-alerts.mjs';
 import { buildBrandOptions } from './scripts/ui/filters.js';
 import { computeFitScore } from './scripts/ui/fit-score.js';
-import { applySliderFilters, normalizeDensity, sortRowsForRtings } from './scripts/ui/range-filters.js';
+import { applySliderFilters, normalizeDensity, orderRowsForDisplay, sortRowsForRtings } from './scripts/ui/range-filters.js';
 import { bindHeroSampleSearches } from './scripts/ui/hero-funnel.js';
 import { clearSaved, getSavedIds, isProductSaved, saveProduct, unsaveProduct } from './scripts/ui/saved-matches.js';
 import { createAccountStore } from './scripts/account-store.mjs';
@@ -1363,6 +1377,8 @@ const TARIFF = 0.32; // $/kWh
 const RESULTS_CAP = 200;
 const DEFAULT_DOORWAY_MM = 820;
 const DEFAULT_DWELLING = 'house';
+const CAVITY_DEFAULT_SORT = 'fit-score-desc';
+const REPLACEMENT_DEFAULT_SORT = 'closest-size';
 const VALID_CATEGORIES = ['fridge', 'washing_machine', 'dishwasher', 'dryer'];
 const CATEGORY_LABELS = {
   fridge: 'Fridges',
@@ -1388,11 +1404,14 @@ let activeFacetState = {
   retailerOnly: true,
 };
 const DENSITY_STORAGE_KEY = 'fitappliance-result-density';
-let currentSortBy = 'fit-score-desc';
+let currentSortBy = CAVITY_DEFAULT_SORT;
 let currentDensity = readDensityPreference();
 let currentClearanceMode = 'practical';
 let currentSearchMode = 'cavity';
 let currentReplacementSourceCategory = '';
+let currentReplacementReferenceDocument = null;
+let currentReplacementReferenceCategory = '';
+let pendingReplacementRecord = null;
 let lastSearchFilters = null;
 let lastSearchContext = null;
 let currentNearMissRows = [];
@@ -1420,23 +1439,128 @@ const accountStore = createAccountStore();
 function refreshBrandOptions() {
   brandSelect.innerHTML = buildBrandOptions(PRODUCTS, currentCat);
   brandSelect.value = '';
-  renderOldModelSuggestions();
+  void renderOldModelSuggestions();
 }
 
-function replacementOptionLabel(product = {}) {
-  const brand = displayBrandName(product.brand);
-  const model = String(product.model ?? '').trim();
-  const displayName = String(product.displayName ?? '').trim();
-  return [brand, model || displayName].filter(Boolean).join(' ');
+function replacementOptionLabel(record = {}) {
+  return [displayBrandName(record.brand), String(record.model ?? '').trim()].filter(Boolean).join(' ');
 }
 
-function renderOldModelSuggestions() {
+function replacementModeActive() {
+  return (SearchCore.normalizeSearchMode?.(currentSearchMode) ?? 'cavity') === 'replacement';
+}
+
+async function ensureReplacementReferenceLoaded() {
+  if (!replacementModeActive()) return null;
+  const category = categoryForReplacementSearch(currentCat);
+  if (!category) return null;
+  if (currentReplacementReferenceDocument && currentReplacementReferenceCategory === category) {
+    return currentReplacementReferenceDocument;
+  }
+  const document = await loadReplacementReference(category);
+  if (replacementModeActive() && categoryForReplacementSearch(currentCat) === category) {
+    currentReplacementReferenceDocument = document;
+    currentReplacementReferenceCategory = category;
+  }
+  return document;
+}
+
+function clearReplacementDecisionUi() {
+  pendingReplacementRecord = null;
+  const candidates = document.getElementById('replacementCandidates');
+  if (candidates) {
+    candidates.hidden = true;
+    candidates.innerHTML = '';
+  }
+  const confirmation = document.getElementById('replacementConfirmation');
+  if (confirmation) confirmation.hidden = true;
+  const checkbox = document.getElementById('replacementDimensionConfirm');
+  if (checkbox) checkbox.checked = false;
+  const applyButton = document.getElementById('applyReplacementDimensionsBtn');
+  if (applyButton) applyButton.disabled = true;
+}
+
+function clearReplacementLookupDimensions() {
+  currentReplacementSourceCategory = '';
+  ['inW', 'inH', 'inD'].forEach((id) => {
+    const input = document.getElementById(id);
+    if (input) input.value = '';
+  });
+  lastSearchFilters = null;
+  lastSearchContext = null;
+  currentMatchRows = [];
+  filteredResults = [];
+  currentNearMissRows = [];
+  const resultsSection = document.getElementById('resultsSection');
+  if (resultsSection) resultsSection.style.display = 'none';
+  updateFloatBarSummary();
+}
+
+function resetReplacementForCategoryChange(nextCategory) {
+  if (!replacementModeActive() || currentCat === nextCategory) return;
+  const oldModelInput = document.getElementById('oldModelInput');
+  if (oldModelInput) oldModelInput.value = '';
+  clearReplacementDecisionUi();
+  clearReplacementLookupDimensions();
+  const replacementStatus = document.getElementById('replacementStatus');
+  if (replacementStatus) replacementStatus.textContent = '';
+}
+
+function markReplacementDimensionsAsManual() {
+  if (!replacementModeActive()) return;
+  currentReplacementSourceCategory = currentCat;
+  clearReplacementDecisionUi();
+  const oldModelInput = document.getElementById('oldModelInput');
+  if (oldModelInput) oldModelInput.value = '';
+  const hasAnyDimension = ['inW', 'inH', 'inD']
+    .some((id) => document.getElementById(id)?.value?.trim());
+  const replacementStatus = document.getElementById('replacementStatus');
+  if (replacementStatus) {
+    replacementStatus.textContent = hasAnyDimension
+      ? 'Using manually entered old appliance dimensions. Complete and check W/H/D before comparing current models.'
+      : '';
+  }
+  void renderOldModelSuggestions();
+}
+
+function replacementActionLabel(record = {}) {
+  return {
+    AUTO_FILL: 'Catalogue dimensions',
+    CONFIRM_REQUIRED: 'Official dimensions · confirmation required',
+    MEASURE_REQUIRED: 'Identity found · measurement required',
+    QUARANTINED: 'Conflicting dimensions · measurement required'
+  }[record.action] ?? 'Historical model record';
+}
+
+function renderReplacementCandidates(candidates = []) {
+  const container = document.getElementById('replacementCandidates');
+  if (!container) return;
+  container.innerHTML = candidates.map(({ record, label }) => `
+    <button type="button" data-replacement-candidate-id="${escHtml(record.id)}">
+      <strong>${escHtml(label)}</strong>
+      <small>${escHtml(replacementActionLabel(record))}</small>
+    </button>
+  `).join('');
+  container.hidden = candidates.length === 0;
+}
+
+async function renderOldModelSuggestions() {
   const list = document.getElementById('oldModelSuggestions');
   if (!list) return;
-  const rows = getReplacementSuggestionRows(PRODUCTS, { category: currentCat, limit: 160 });
-  list.innerHTML = rows
-    .map((product) => `<option value="${escHtml(replacementOptionLabel(product))}">${escHtml(product.displayName ?? product.model ?? '')}</option>`)
-    .join('');
+  list.innerHTML = '';
+  if (!replacementModeActive()) return;
+  const query = document.getElementById('oldModelInput')?.value?.trim() ?? '';
+  if (query.length < 2) return;
+  try {
+    const reference = await ensureReplacementReferenceLoaded();
+    if (!reference) return;
+    const rows = getReplacementReferenceSuggestions(query, reference.records, { limit: 12 });
+    list.innerHTML = rows
+      .map(({ record, label }) => `<option value="${escHtml(label)}">${escHtml(replacementActionLabel(record))}</option>`)
+      .join('');
+  } catch {
+    list.innerHTML = '';
+  }
 }
 
 function savedApplianceLabel(item = {}) {
@@ -1504,48 +1628,112 @@ async function applySavedApplianceForReplacement(id) {
   document.getElementById('inD').value = String(item.depth);
   const status = document.getElementById('replacementStatus');
   if (status) {
-    status.textContent = `Using saved ${savedApplianceLabel(item)} dimensions: ${item.width}×${item.height}×${item.depth}mm.`;
+    status.textContent = `Using saved ${savedApplianceLabel(item)} outside dimensions: ${item.width}×${item.height}×${item.depth}mm.`;
   }
-  renderSpaceAlertsForDimensions({ w: item.width, h: item.height, d: item.depth, door: document.getElementById('inDoor')?.value });
   updateFloatBarSummary();
   doSearch();
 }
 
-function useOldModelSize() {
-  const input = document.getElementById('oldModelInput');
-  const status = document.getElementById('replacementStatus');
-  const query = input?.value?.trim() ?? '';
-  const match = findReplacementSource(query, PRODUCTS, { category: currentCat, retailerOnly: true });
-  if (!match) {
-    if (status) {
-      status.textContent = `We couldn't find exact dimensions for "${query}". Enter your cavity dimensions below to find current replacements.`;
-    }
-    showToast('Old model not found — enter cavity dimensions to find replacements');
-    return;
-  }
-
-  const state = buildReplacementDimensionState(match.product);
+function fillReplacementDimensions(record, state) {
   const { w, h, d } = state.dimensions;
-  if (!w || !h || !d) {
-    if (status) status.textContent = state.note;
-    showToast('Matched model is missing complete dimensions');
-    return;
-  }
-
   document.getElementById('inW').value = String(w);
   document.getElementById('inH').value = String(h);
   document.getElementById('inD').value = String(d);
-  currentReplacementSourceCategory = SearchCore.isWashtowerComboProduct?.(match.product)
-    ? 'washtower_combo'
-    : (SearchCore.normalizeReplacementSourceCategory?.(match.product?.cat) ?? '');
+  currentReplacementSourceCategory = SearchCore.normalizeReplacementSourceCategory?.(currentCat) ?? currentCat;
+  clearReplacementDecisionUi();
+  const status = document.getElementById('replacementStatus');
   if (status) {
-    const productDimensions = state.productDimensions
-      ? `old model ${state.productDimensions.w}×${state.productDimensions.h}×${state.productDimensions.d}mm plus practical clearance`
-      : 'old model dimensions plus practical clearance';
-    status.textContent = `Using ${state.label}: ${w}×${h}×${d}mm (${productDimensions}). Re-measure before ordering.`;
+    status.textContent = `Using ${state.label} outside dimensions: ${w}×${h}×${d}mm. Results compare new appliance W/H/D directly with these values.`;
   }
-  renderSpaceAlertsForDimensions({ w, h, d, door: document.getElementById('inDoor')?.value });
-  showToast('Filled dimensions from the old model');
+  updateFloatBarSummary();
+  showToast('Old appliance dimensions filled');
+}
+
+function applyReplacementReferenceRecord(record) {
+  const status = document.getElementById('replacementStatus');
+  const state = buildReplacementDimensionState(record);
+  renderReplacementCandidates([]);
+  if (!state.canUseDimensions) {
+    clearReplacementDecisionUi();
+    if (status) status.textContent = state.note;
+    showToast('Measure the old appliance W/H/D manually');
+    return;
+  }
+  if (state.requiresConfirmation) {
+    pendingReplacementRecord = record;
+    const confirmation = document.getElementById('replacementConfirmation');
+    const checkbox = document.getElementById('replacementDimensionConfirm');
+    const applyButton = document.getElementById('applyReplacementDimensionsBtn');
+    if (confirmation) confirmation.hidden = false;
+    if (checkbox) checkbox.checked = false;
+    if (applyButton) applyButton.disabled = true;
+    if (status) status.textContent = state.note;
+    return;
+  }
+  fillReplacementDimensions(record, state);
+}
+
+function applyConfirmedReplacementDimensions() {
+  if (!pendingReplacementRecord) return;
+  const checkbox = document.getElementById('replacementDimensionConfirm');
+  if (!checkbox?.checked) {
+    showToast('Confirm the old appliance dimensions first');
+    return;
+  }
+  const record = pendingReplacementRecord;
+  const state = buildReplacementDimensionState(record);
+  fillReplacementDimensions(record, state);
+}
+
+function selectReplacementCandidate(referenceId) {
+  const record = currentReplacementReferenceDocument?.records?.find((row) => row.id === referenceId);
+  if (!record) {
+    showToast('Historical model record is no longer available');
+    return;
+  }
+  const input = document.getElementById('oldModelInput');
+  if (input) input.value = replacementOptionLabel(record);
+  applyReplacementReferenceRecord(record);
+}
+
+async function useOldModelSize() {
+  const input = document.getElementById('oldModelInput');
+  const status = document.getElementById('replacementStatus');
+  const query = input?.value?.trim() ?? '';
+  clearReplacementDecisionUi();
+  if (!query) {
+    if (status) status.textContent = 'Enter the brand and exact model printed on the old appliance label.';
+    showToast('Enter an old appliance model');
+    return;
+  }
+  clearReplacementLookupDimensions();
+  if (status) status.textContent = 'Checking the selected Australian historical model library…';
+  let reference;
+  try {
+    reference = await ensureReplacementReferenceLoaded();
+  } catch {
+    if (status) status.textContent = 'Historical model data could not be loaded. Enter the measured old appliance W/H/D below.';
+    showToast('Historical model data unavailable');
+    return;
+  }
+  const resolution = resolveReplacementReference(query, reference?.records ?? []);
+  if (resolution.status === 'RESOLVED') {
+    applyReplacementReferenceRecord(resolution.record);
+    return;
+  }
+  if (['AMBIGUOUS', 'SUGGESTIONS'].includes(resolution.status)) {
+    renderReplacementCandidates(resolution.candidates);
+    if (status) {
+      status.textContent = resolution.status === 'AMBIGUOUS'
+        ? 'That model code is used by more than one brand. Select the exact old appliance.'
+        : 'No exact model was selected. Choose a candidate below, or enter the measured W/H/D manually.';
+    }
+    return;
+  }
+  if (status) {
+    status.textContent = `No exact historical record was found for "${query}". Enter the old appliance width, height and depth below.`;
+  }
+  showToast('Exact old model not found');
 }
 
 function readSearchModeFromControls() {
@@ -1553,8 +1741,20 @@ function readSearchModeFromControls() {
   return SearchCore.normalizeSearchMode?.(checked?.value ?? currentSearchMode) ?? 'cavity';
 }
 
+function normalizeSortForSearchMode(sortBy, searchMode) {
+  const value = String(sortBy ?? '').trim();
+  const commonSorts = new Set(['price-asc', 'price-desc', 'stars', 'brand']);
+  if (SearchCore.normalizeSearchMode?.(searchMode) === 'replacement') {
+    return commonSorts.has(value) ? value : REPLACEMENT_DEFAULT_SORT;
+  }
+  return ['fit-score-desc', 'verified-first', 'best-fit', ...commonSorts].includes(value)
+    ? value
+    : CAVITY_DEFAULT_SORT;
+}
+
 function clearDimensionInputsForModeSwitch() {
   currentReplacementSourceCategory = '';
+  clearReplacementDecisionUi();
   ['inW', 'inH', 'inD'].forEach((id) => {
     const input = document.getElementById(id);
     if (input) input.value = '';
@@ -1577,6 +1777,14 @@ function setSearchMode(mode, options = {}) {
     return;
   }
   currentSearchMode = next;
+  currentSortBy = normalizeSortForSearchMode(currentSortBy, next);
+  if (changed && next === 'replacement') {
+    activeFacetState = normalizeHomeFacets({
+      ...activeFacetState,
+      scoreMin: null,
+      verifiedOnly: false
+    });
+  }
   if (next !== 'replacement') {
     currentReplacementSourceCategory = '';
   }
@@ -1593,6 +1801,7 @@ function setSearchMode(mode, options = {}) {
 
 function syncSearchModeControls() {
   const mode = SearchCore.normalizeSearchMode?.(currentSearchMode) ?? 'cavity';
+  const isReplacement = mode === 'replacement';
   document.querySelectorAll('input[name="searchMode"]').forEach((input) => {
     input.checked = input.value === mode;
   });
@@ -1606,26 +1815,84 @@ function syncSearchModeControls() {
   });
   const title = document.querySelector('.sc-title');
   if (title) {
-    title.textContent = mode === 'replacement'
+    title.textContent = isReplacement
       ? 'Enter your old appliance details'
       : 'Enter your available cavity space';
   }
   const replacementFinder = document.querySelector('[data-replacement-finder]');
   if (replacementFinder) {
-    replacementFinder.hidden = mode !== 'replacement';
+    replacementFinder.hidden = !isReplacement;
+  }
+  if (isReplacement) {
+    void ensureReplacementReferenceLoaded().then(() => renderOldModelSuggestions()).catch(() => {});
   }
   const widthLabel = document.querySelector('label[for="inW"]');
   const heightLabel = document.querySelector('label[for="inH"]');
   const depthLabel = document.querySelector('label[for="inD"]');
-  if (widthLabel) widthLabel.textContent = mode === 'replacement' ? 'OLD MACHINE WIDTH' : 'CAVITY WIDTH';
-  if (heightLabel) heightLabel.textContent = mode === 'replacement' ? 'OLD MACHINE HEIGHT' : 'CAVITY HEIGHT';
-  if (depthLabel) depthLabel.textContent = mode === 'replacement' ? 'OLD MACHINE DEPTH' : 'CAVITY DEPTH';
+  if (widthLabel) widthLabel.textContent = isReplacement ? 'OLD MACHINE WIDTH' : 'CAVITY WIDTH';
+  if (heightLabel) heightLabel.textContent = isReplacement ? 'OLD MACHINE HEIGHT' : 'CAVITY HEIGHT';
+  if (depthLabel) depthLabel.textContent = isReplacement ? 'OLD MACHINE DEPTH' : 'CAVITY DEPTH';
+  const widthHint = document.getElementById('inWHint');
+  const heightHint = document.getElementById('inHHint');
+  const depthHint = document.getElementById('inDHint');
+  if (widthHint) {
+    widthHint.textContent = isReplacement
+      ? "Measure the old appliance's maximum outside width."
+      : 'Measure inside-to-inside at the narrowest point.';
+  }
+  if (heightHint) {
+    heightHint.textContent = isReplacement
+      ? "Measure floor to the old appliance's highest outside point, including feet and hinge caps."
+      : 'Measure floor to the lowest cabinet underside.';
+  }
+  if (depthHint) {
+    depthHint.textContent = isReplacement
+      ? "Measure the old appliance's maximum outside depth from its rear-most to front-most point; note removable handles and hoses separately."
+      : 'Measure to the shallowest rear pipe, socket or skirting.';
+  }
+  const modeHint = document.getElementById('dimensionModeHint');
+  if (modeHint) {
+    modeHint.textContent = isReplacement
+      ? "These are the old appliance's outside dimensions. Current products are ranked by direct W/H/D difference; no cavity clearance is added."
+      : 'Dimensions are your raw cavity. The default fit check uses a practical clearance buffer; brand-specific manufacturer figures are shown as advisory notes so you can verify the model manual before buying.';
+  }
+  const ctaText = document.getElementById('heroCtaText');
+  if (ctaText) ctaText.textContent = isReplacement ? 'Compare current models' : 'Find fitting models';
+  const sampleSearches = document.getElementById('heroSampleSearches');
+  if (sampleSearches) sampleSearches.hidden = isReplacement;
+  const scoreLink = document.getElementById('scoreMethodLink');
+  if (scoreLink) scoreLink.hidden = isReplacement;
+  const fitCheckerLink = document.getElementById('fitCheckerLink');
+  if (fitCheckerLink) fitCheckerLink.hidden = isReplacement;
+  const disclaimer = document.getElementById('disclaimerBox');
+  if (disclaimer) {
+    disclaimer.innerHTML = isReplacement
+      ? `<strong>Compared with the old appliance's outside dimensions.</strong> Current products are ranked by direct W/H/D difference from your old appliance. A close size match does not confirm cavity clearance, services, ventilation, door swing or installation suitability; check those separately before ordering.`
+      : `<strong>Dimensions are checked with a practical clearance buffer by default.</strong> Brand-specific manufacturer clearance figures are advisory notes. Always verify ventilation requirements in the model installation manual before purchase. Door swing and delivery access are estimates — measure your specific space.`;
+  }
+  const emptyStateTitle = document.getElementById('emptyStateTitle');
+  const emptyStateCopy = document.getElementById('emptyStateCopy');
+  if (emptyStateTitle) {
+    emptyStateTitle.textContent = isReplacement
+      ? 'No current products match these filters'
+      : 'Nothing fits those dimensions';
+  }
+  if (emptyStateCopy) {
+    emptyStateCopy.textContent = isReplacement
+      ? 'Try removing brand, price, energy, doorway or product-dimension filters. The old-appliance dimensions remain unchanged.'
+      : 'Try increasing your cavity measurements or removing brand/budget filters. Standard AU cavities: 600mm W × 1800mm H × 650mm D for fridges.';
+  }
   renderSavedApplianceChips();
 }
 
 function renderSpaceAlertsForDimensions({ w, h, d, door } = {}) {
   const container = document.getElementById('spaceAlerts');
   if (!container) return;
+  if ((SearchCore.normalizeSearchMode?.(currentSearchMode) ?? 'cavity') === 'replacement') {
+    container.hidden = true;
+    container.innerHTML = '';
+    return;
+  }
   const alerts = buildSpaceAlerts({ cat: currentCat, w, h, d, door });
   if (alerts.length === 0) {
     container.hidden = true;
@@ -1771,9 +2038,12 @@ async function readUrlParams() {
     starsMax: params.get('starsMax'),
     verifiedOnly: params.get('verifiedOnly') === '1'
   });
-  currentSortBy = params.get('sort') || parsedState.sortBy || 'fit-score-desc';
   currentClearanceMode = parsedState.clearanceMode ?? 'practical';
   currentSearchMode = SearchCore.normalizeSearchMode?.(parsedState.searchMode ?? 'cavity') ?? 'cavity';
+  currentSortBy = normalizeSortForSearchMode(
+    params.get('sort') || parsedState.sortBy || CAVITY_DEFAULT_SORT,
+    currentSearchMode
+  );
   currentReplacementSourceCategory = SearchCore.normalizeReplacementSourceCategory?.(parsedState.replacementSourceCategory) ?? '';
   syncSearchModeControls();
   syncLegacyFacetInputs();
@@ -1821,6 +2091,7 @@ async function setCategory(cat, { scroll = false } = {}) {
   const nextCat = allowed.has(cat) ? cat : 'fridge';
   const nextPill = document.querySelector(`#catPills .cat-pill[data-cat="${nextCat}"]`);
   if (!nextPill) return;
+  resetReplacementForCategoryChange(nextCat);
   document.querySelectorAll('.cat-pill').forEach(x => x.classList.remove('active'));
   nextPill.classList.add('active');
   currentCat = nextCat;
@@ -2071,11 +2342,13 @@ function getCategoryCatalogCount() {
 }
 
 function filterOperationalPool(rows, context = {}) {
-  const doorW = Number.isFinite(Number(context?.doorW)) ? Number(context.doorW) : DEFAULT_DOORWAY_MM;
+  const parsedDoorW = Number(context?.doorW);
+  const doorW = Number.isFinite(parsedDoorW) && parsedDoorW > 0 ? parsedDoorW : null;
+  const doorwayLimit = currentSearchMode === 'replacement' ? doorW : doorW + 50;
   const dwelling = context?.dwelling || DEFAULT_DWELLING;
   return (Array.isArray(rows) ? rows : []).filter((product) => {
     const deliveryW = Math.min(Number(product?.w ?? 0), Number(product?.d ?? 0));
-    if (deliveryW > doorW + 50) return false;
+    if (doorW !== null && deliveryW > doorwayLimit) return false;
     if (currentCat === 'dryer' && dwelling === 'apartment' && product?.vented) return false;
     return true;
   });
@@ -2116,7 +2389,7 @@ function updateSearchUrl(context = {}) {
   if (activeFacetState.verifiedOnly === true) {
     serialized.set('verifiedOnly', '1');
   }
-  if (context?.doorW && context.doorW !== DEFAULT_DOORWAY_MM) {
+  if (context?.doorW && (currentSearchMode === 'replacement' || context.doorW !== DEFAULT_DOORWAY_MM)) {
     serialized.set('door', String(context.doorW));
   }
   if (context?.dwelling && context.dwelling !== DEFAULT_DWELLING) {
@@ -2214,9 +2487,9 @@ async function restoreSavedSearchState(state = {}) {
   if (state.h) document.getElementById('inH').value = String(state.h);
   if (state.d) document.getElementById('inD').value = String(state.d);
   activeFacetState = normalizeHomeFacets(state.facets || {});
-  currentSortBy = state.sortBy || 'fit-score-desc';
   currentClearanceMode = SearchCore.normalizeClearanceMode?.(state.clearanceMode) ?? 'practical';
   currentSearchMode = SearchCore.normalizeSearchMode?.(state.searchMode ?? 'cavity') ?? 'cavity';
+  currentSortBy = normalizeSortForSearchMode(state.sortBy || CAVITY_DEFAULT_SORT, currentSearchMode);
   currentReplacementSourceCategory = SearchCore.normalizeReplacementSourceCategory?.(state.replacementSourceCategory) ?? '';
   syncSearchModeControls();
   syncLegacyFacetInputs();
@@ -2229,12 +2502,14 @@ function renderFacetChrome(counts = {}) {
     facetBar,
     counts,
     activeFacetState,
-    handleFacetChange
+    handleFacetChange,
+    { searchMode: currentSearchMode }
   );
   SearchDom.renderActiveChips(
     document.querySelector('[data-active-chips]'),
     activeFacetState,
-    handleActiveChipRemove
+    handleActiveChipRemove,
+    { searchMode: currentSearchMode }
   );
   SearchDom.renderSortDropdown(
     document.querySelector('[data-sort-dropdown]'),
@@ -2242,7 +2517,8 @@ function renderFacetChrome(counts = {}) {
     (value) => {
       currentSortBy = value;
       scheduleFacetRefresh();
-    }
+    },
+    { searchMode: currentSearchMode }
   );
   SearchDom.renderDensityToggle(
     document.querySelector('[data-density-toggle]'),
@@ -2399,7 +2675,9 @@ function refreshSearchResults() {
     resultsCount.hidden = true;
   } else {
     resultsCount.hidden = false;
-    resultsCount.innerHTML = `<b>${currentMatchRows.length}</b> ${catName} that fit`;
+    resultsCount.innerHTML = currentSearchMode === 'replacement'
+      ? `<b>${currentMatchRows.length}</b> current ${catName.toLowerCase()} ranked by size difference`
+      : `<b>${currentMatchRows.length}</b> ${catName} that fit`;
   }
   renderFacetChrome(facetResult.counts);
   renderResults();
@@ -2425,7 +2703,7 @@ function doSearch(options = {}) {
   const { w, h, d, door: normalizedDoorW } = normalizedDimensions.values;
   const brand = document.getElementById('inBrand').value;
   const budget = parsePositiveInteger(document.getElementById('inBudget').value);
-  const doorW = normalizedDoorW || DEFAULT_DOORWAY_MM;
+  const doorW = normalizedDoorW || (currentSearchMode === 'cavity' ? DEFAULT_DOORWAY_MM : null);
   const dwelling = document.getElementById('inDwelling').value || DEFAULT_DWELLING;
 
   trackSearchSubmitEvent({
@@ -2458,26 +2736,38 @@ function doSearch(options = {}) {
   }
 
   const catName = CATEGORY_LABELS[currentCat] ?? 'Appliances';
-  document.title = `${catName} that fit ${w}×${h}×${d}mm — FitAppliance`;
+  document.title = currentSearchMode === 'replacement'
+    ? `${catName} closest in size to ${w}×${h}×${d}mm — FitAppliance`
+    : `${catName} that fit ${w}×${h}×${d}mm — FitAppliance`;
   const descEl = document.querySelector('meta[name="description"]');
   if (descEl) {
     descEl.setAttribute(
       'content',
-      `${catName} that fit a ${w}mm wide, ${h}mm tall, ${d}mm deep cavity — with practical clearance notes and energy ratings.`
+      currentSearchMode === 'replacement'
+        ? `Compare current ${catName.toLowerCase()} with an old appliance measuring ${w}×${h}×${d}mm, ranked by outside-dimension difference.`
+        : `${catName} that fit a ${w}mm wide, ${h}mm tall, ${d}mm deep cavity — with practical clearance notes and energy ratings.`
     );
   }
 
-  const cl = SearchCore.getEffectiveClearance(currentCat, brand || '__default__', currentClearanceMode, {
-    brandSpecificClearance: BRAND_CLEARANCE
-  });
-  const sideClearance = Number(cl.side ?? cl.sides ?? 0);
-  const usableW = w - sideClearance*2, usableH = h - cl.top, usableD = d - cl.rear;
-  const clearanceLabel = currentClearanceMode === 'manufacturer' ? 'Manufacturer clearance' : currentClearanceMode === 'physical' ? 'Physical fit' : 'Practical clearance';
-  document.getElementById('resultsMeta').innerHTML = `
-    <span class="results-meta-chip">${currentSearchMode === 'replacement' ? 'Old appliance' : 'Cavity'}: ${w}×${h}×${d}mm</span>
-    <span class="results-meta-chip">${currentSearchMode === 'replacement' ? 'Replacement mode: physical size match' : `${clearanceLabel}: ${usableW}×${usableH}×${usableD}mm`}</span>
-    <span class="results-meta-chip">Doorway: ${doorW}mm</span>
-  `;
+  if (currentSearchMode === 'replacement') {
+    document.getElementById('resultsMeta').innerHTML = `
+      <span class="results-meta-chip">Old appliance outside dimensions: ${w}×${h}×${d}mm</span>
+      <span class="results-meta-chip">Ranking: smallest maximum W/H/D difference</span>
+      ${doorW ? `<span class="results-meta-chip">Doorway filter: ${doorW}mm</span>` : ''}
+    `;
+  } else {
+    const cl = SearchCore.getEffectiveClearance(currentCat, brand || '__default__', currentClearanceMode, {
+      brandSpecificClearance: BRAND_CLEARANCE
+    });
+    const sideClearance = Number(cl.side ?? cl.sides ?? 0);
+    const usableW = w - sideClearance*2, usableH = h - cl.top, usableD = d - cl.rear;
+    const clearanceLabel = currentClearanceMode === 'manufacturer' ? 'Manufacturer clearance' : currentClearanceMode === 'physical' ? 'Physical fit' : 'Practical clearance';
+    document.getElementById('resultsMeta').innerHTML = `
+      <span class="results-meta-chip">Cavity: ${w}×${h}×${d}mm</span>
+      <span class="results-meta-chip">${clearanceLabel}: ${usableW}×${usableH}×${usableD}mm</span>
+      <span class="results-meta-chip">Doorway: ${doorW}mm</span>
+    `;
+  }
 
   lastSearchFilters = {
     cat: currentCat,
@@ -2551,14 +2841,7 @@ function bindRetailerBannerActions(container) {
    RENDER RESULTS
 ══════════════════════════════════════════════════════════ */
 function renderResults() {
-  const sorted = [...filteredResults];
-
-  // Inject sponsored at positions 2 and 5
-  const sp = sorted.filter(p=>p.sponsored);
-  const rg = sorted.filter(p=>!p.sponsored);
-  const final = [...rg];
-  if (sp[0] && final.length>=2) final.splice(2,0,sp[0]);
-  if (sp[1] && final.length>=6) final.splice(6,0,sp[1]);
+  const final = orderRowsForDisplay(filteredResults, { searchMode: currentSearchMode });
   const capped = final.length > RESULTS_CAP;
   const display = capped ? final.slice(0, RESULTS_CAP) : final;
   const renderProducts = (items, renderItem) => items.map((product) => renderItem(product)).join('');
@@ -2588,13 +2871,18 @@ function renderResults() {
     return;
   }
   empty.classList.remove('show');
-  SearchDom.renderLiveFitPreview(document.querySelector('[data-fit-viz]'), {
-    cavity: lastSearchFilters,
-    product: currentMatchRows[0],
-    clearance: currentMatchRows[0]?.clearance ?? SearchCore.getEffectiveClearance(currentCat, currentMatchRows[0]?.brand || '__default__', currentClearanceMode, {
-      brandSpecificClearance: BRAND_CLEARANCE
-    })
-  });
+  const fitPreview = document.querySelector('[data-fit-viz]');
+  if (currentSearchMode === 'replacement') {
+    SearchDom.renderLiveFitPreview(fitPreview, {});
+  } else {
+    SearchDom.renderLiveFitPreview(fitPreview, {
+      cavity: lastSearchFilters,
+      product: currentMatchRows[0],
+      clearance: currentMatchRows[0]?.clearance ?? SearchCore.getEffectiveClearance(currentCat, currentMatchRows[0]?.brand || '__default__', currentClearanceMode, {
+        brandSpecificClearance: BRAND_CLEARANCE
+      })
+    });
+  }
 
   if (currentView === 'list') {
     container.className = `product-list result-list--${currentDensity}`;
@@ -2624,7 +2912,9 @@ function renderResults() {
   if (capped) {
     const notice = document.createElement('div');
     notice.className = 'results-cap-notice';
-    notice.innerHTML = `Showing ${RESULTS_CAP} of ${final.length} results. Refine your dimensions or brand filter to see more.`;
+    notice.textContent = currentSearchMode === 'replacement'
+      ? `Showing the closest ${RESULTS_CAP} of ${final.length} current products. Use brand, price, energy or product-dimension filters to narrow the list.`
+      : `Showing ${RESULTS_CAP} of ${final.length} results. Refine your dimensions or brand filter to see more.`;
     container.appendChild(notice);
   }
   SearchDom.bindCompareButtons(container, {
@@ -2970,6 +3260,30 @@ function buildCompareSnapshotFromProduct(product, label = '') {
     const parsed = Number(retailer?.p ?? retailer?.price);
     return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
   };
+  const baseSnapshot = {
+    slug: product?.id,
+    displayName: label || `${displayBrandName(product?.brand)} ${String(product?.model ?? '').split(' ').slice(0, 2).join(' ')}`.trim(),
+    brand: product?.brand,
+    model: product?.model,
+    cat: product?.cat,
+    w: product?.w,
+    h: product?.h,
+    d: product?.d,
+    features: Array.isArray(product?.features) ? product.features.slice(0, 6) : [],
+    retailers: retailers.slice(0, 5).map((retailer) => ({
+      name: retailer?.n ?? retailer?.name ?? '',
+      price: getPrice(retailer)
+    })),
+    stars: product?.stars
+  };
+  const isReplacement = String(product?.searchMode ?? '').trim() === 'replacement';
+  if (isReplacement) {
+    return {
+      ...baseSnapshot,
+      comparisonMode: 'replacement',
+      replacementMatch: product?.replacementMatch
+    };
+  }
   const getGapMm = () => {
     const needed = Number(product?.cavityNeededMm);
     if (Number.isFinite(needed) && needed > 0) return Math.ceil(needed);
@@ -3026,13 +3340,8 @@ function buildCompareSnapshotFromProduct(product, label = '') {
   };
   const gap = getGapMm();
   return {
-    slug: product?.id,
-    displayName: label || `${displayBrandName(product?.brand)} ${String(product?.model ?? '').split(' ').slice(0, 2).join(' ')}`.trim(),
-    brand: product?.brand,
-    model: product?.model,
-    w: product?.w,
-    h: product?.h,
-    d: product?.d,
+    ...baseSnapshot,
+    comparisonMode: 'cavity',
     practicalClearance: clearance ? {
       side: Number(clearance.side ?? clearance.sides ?? 0),
       top: Number(clearance.top ?? 0),
@@ -3051,13 +3360,7 @@ function buildCompareSnapshotFromProduct(product, label = '') {
     delivery: {
       doorwayClearanceMm: Math.ceil(Math.min(Number(product?.w) || 0, Number(product?.d) || 0) + 50),
       turnClearanceMm: Math.ceil(Math.max(Number(product?.w) || 0, Number(product?.d) || 0))
-    },
-    features: Array.isArray(product?.features) ? product.features.slice(0, 6) : [],
-    retailers: retailers.slice(0, 5).map((retailer) => ({
-      name: retailer?.n ?? retailer?.name ?? '',
-      price: getPrice(retailer)
-    })),
-    stars: product?.stars
+    }
   };
 }
 
@@ -3116,6 +3419,10 @@ function addCompare(id, label) {
   if (compareStore.has(id)) { showToast('Already in compare list'); return; }
   const result = compareStore.add(buildCompareSnapshotFromProduct(product, label));
   if (result?.ok === false && result.reason === 'capacity') { showToast('Max 4 items to compare'); return; }
+  if (result?.ok === false && result.reason === 'mode_mismatch') {
+    showToast('Clear the current comparison before mixing cavity-fit and old-appliance size matches');
+    return;
+  }
   syncCompareListFromStore();
   updateCompareBar();
   showToast(`✓ Added to compare: ${label}`);
@@ -3350,16 +3657,52 @@ window.openCompareTable = openCompareTable;
 window.closeCompareModal = closeCompareModal;
 
 ['inW','inH','inD'].forEach(id => {
-  document.getElementById(id).addEventListener('keydown', e => {
+  const input = document.getElementById(id);
+  input.addEventListener('keydown', e => {
     if (e.key==='Enter') doSearch();
   });
+  input.addEventListener('input', markReplacementDimensionsAsManual);
 });
 document.getElementById('useOldModelBtn')?.addEventListener('click', useOldModelSize);
+document.getElementById('oldModelInput')?.addEventListener('input', () => {
+  clearReplacementDecisionUi();
+  clearReplacementLookupDimensions();
+  void renderOldModelSuggestions();
+});
 document.getElementById('oldModelInput')?.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     event.preventDefault();
-    useOldModelSize();
+    void useOldModelSize();
   }
+});
+document.getElementById('replacementCandidates')?.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-replacement-candidate-id]');
+  if (!button) return;
+  selectReplacementCandidate(button.getAttribute('data-replacement-candidate-id'));
+});
+document.getElementById('replacementDimensionConfirm')?.addEventListener('change', (event) => {
+  const applyButton = document.getElementById('applyReplacementDimensionsBtn');
+  if (applyButton) applyButton.disabled = event.target.checked !== true;
+});
+document.getElementById('applyReplacementDimensionsBtn')?.addEventListener('click', applyConfirmedReplacementDimensions);
+document.addEventListener('fitappliance:replacement-search', (event) => {
+  const normalized = normalizeSearchDimensions({
+    w: event?.detail?.w,
+    h: event?.detail?.h,
+    d: event?.detail?.d
+  });
+  const { w, h, d } = normalized.values;
+  if (!w || !h || !d) {
+    showToast('Old appliance dimensions are incomplete');
+    return;
+  }
+  clearReplacementDecisionUi();
+  setSearchMode('replacement', { force: true, clearDimensions: false });
+  currentReplacementSourceCategory = SearchCore.normalizeReplacementSourceCategory?.(currentCat) ?? currentCat;
+  document.getElementById('inW').value = String(w);
+  document.getElementById('inH').value = String(h);
+  document.getElementById('inD').value = String(d);
+  doSearch({ preserveExistingFacets: true });
 });
 document.querySelector('[data-saved-appliance-chips]')?.addEventListener('click', (event) => {
   const button = event.target.closest('[data-saved-appliance-id]');

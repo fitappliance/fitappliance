@@ -29,6 +29,33 @@ test('Architecture V2 generated artifact graph is acyclic and follows declared b
   }
 });
 
+test('historical reference artifacts follow identity before publication ordering', () => {
+  assert.equal(
+    architectureV2Paths.historicalApplianceReference,
+    'data/architecture-v2/generated/historical-appliance-reference.json',
+  );
+  assert.equal(
+    architectureV2Paths.historicalReferencePublicationManifest,
+    'data/architecture-v2/generated/historical-reference-publication-manifest.json',
+  );
+  assert.equal(
+    architectureV2Paths.historicalReplacementAudit,
+    'data/architecture-v2/reviews/automated/historical-replacement-audit.json',
+  );
+  assert.deepEqual(
+    ARCHITECTURE_V2_BUILD_GRAPH.historicalApplianceReference,
+    ['officialRegistrySnapshots', 'publicProjection'],
+  );
+  assert.deepEqual(
+    ARCHITECTURE_V2_BUILD_GRAPH.historicalReferencePublicationManifest,
+    ['historicalApplianceReference'],
+  );
+  assert.deepEqual(
+    ARCHITECTURE_V2_BUILD_GRAPH.historicalReplacementAudit,
+    ['historicalReferencePublicationManifest', 'publicProjection'],
+  );
+});
+
 test('review bundle builder cannot read final registry or public projection', () => {
   const source = readFileSync('scripts/architecture-v2/build-evidence-review-bundles.mjs', 'utf8');
   assert.doesNotMatch(source, /resolveArchitectureV2Path\(root, '(sourceDocuments|publicProjection)'\)/);

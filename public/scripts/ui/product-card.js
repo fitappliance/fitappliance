@@ -198,7 +198,7 @@ function buildArchivedBadgeHtml(product) {
 
 function buildSizeMatchBadgeHtml(product) {
   if (!isReplacementSearchProduct(product)) return '';
-  return '<span class="size-match-badge" title="Matched by old appliance outside dimensions">Size Match</span>';
+  return '<span class="size-match-badge" title="Ranked by outside-dimension difference from the old appliance">Size Match</span>';
 }
 
 function isSafeEvidenceUrl(value) {
@@ -571,6 +571,7 @@ export function buildFeatureFlagsHtml(product) {
 }
 
 export function buildDeliveryCheckHtml(product) {
+  if (isReplacementSearchProduct(product)) return '';
   const width = Number(product?.w);
   const depth = Number(product?.d);
   if (!Number.isFinite(width) || !Number.isFinite(depth) || width <= 0 || depth <= 0) return '';
@@ -863,6 +864,7 @@ function formatSpareLabel(spareMm) {
 }
 
 export function buildClearanceBarsHtml(product, deps = {}) {
+  if (isReplacementSearchProduct(product)) return '';
   const bindingAxis = String(product?.bindingAxis ?? '').trim().toLowerCase();
   const entries = buildBarEntries(product, deps);
 
@@ -890,16 +892,32 @@ export function buildClearanceBarsHtml(product, deps = {}) {
   </div>`;
 }
 
-function buildReplacementCavityAlertHtml(product) {
+function formatSignedDimensionDelta(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return '';
+  const rounded = Math.round(number);
+  return `${rounded > 0 ? '+' : ''}${rounded}mm`;
+}
+
+function buildReplacementDimensionDeltaHtml(product) {
   if (!isReplacementSearchProduct(product)) return '';
-  const required = product?.requiredCavityMm ?? {};
-  const w = Math.round(toPositiveNumber(required?.w) ?? 0);
-  const h = Math.round(toPositiveNumber(required?.h) ?? 0);
-  const d = Math.round(toPositiveNumber(required?.d) ?? 0);
-  if (!w || !h || !d) return '';
-  return `<div class="replacement-cavity-alert" role="note">
-    <strong>Requires minimum cavity:</strong>
-    <span>${escHtml(w)}W × ${escHtml(h)}H × ${escHtml(d)}D mm for safe ventilation. Please verify.</span>
+  const deltas = product?.replacementMatch?.deltasMm ?? {};
+  const width = formatSignedDimensionDelta(deltas.width);
+  const height = formatSignedDimensionDelta(deltas.height);
+  const depth = formatSignedDimensionDelta(deltas.depth);
+  if (!width || !height || !depth) return '';
+  const heightRange = product?.replacementMatch?.candidateHeightRangeMm;
+  const minimumHeight = toPositiveNumber(heightRange?.minimum);
+  const maximumHeight = toPositiveNumber(heightRange?.maximum);
+  const selectedHeight = toPositiveNumber(heightRange?.selected);
+  const adjustableHeightNote = minimumHeight && maximumHeight && selectedHeight && minimumHeight < maximumHeight
+    ? `<small>Adjustable height ${escHtml(Math.round(minimumHeight))}–${escHtml(Math.round(maximumHeight))}mm; comparison uses the ${escHtml(Math.round(selectedHeight))}mm setting. Confirm the levelling range before ordering.</small>`
+    : '';
+  return `<div class="replacement-dimension-delta" role="note">
+    <strong>Compared with old appliance:</strong>
+    <span class="replacement-dimension-delta__axes">W ${escHtml(width)} · H ${escHtml(height)} · D ${escHtml(depth)}</span>
+    <small>Positive means the new appliance is larger; confirm the available space before ordering.</small>
+    ${adjustableHeightNote}
   </div>`;
 }
 
@@ -1019,7 +1037,7 @@ function buildZoneB(product, deps, primaryTitle, modelLine) {
   return `<div class="card-zone-b">
     ${buildTitleHtml(product, primaryTitle, modelLine)}
     ${buildClearanceBarsHtml(product, deps)}
-    ${buildReplacementCavityAlertHtml(product)}
+    ${buildReplacementDimensionDeltaHtml(product)}
     ${buildTechSpecsHtml(product, deps)}
     ${buildDataTrustLine(product, deps.capturedDate ?? '')}
     ${buildProvenanceHtml(product, deps)}

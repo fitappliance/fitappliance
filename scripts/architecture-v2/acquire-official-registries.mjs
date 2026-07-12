@@ -12,6 +12,12 @@ import {
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
+const ENERGY_CATEGORIES = Object.freeze([
+  'fridge',
+  'dishwasher',
+  'dryer',
+  'washing_machine',
+]);
 const args = process.argv.slice(2);
 const option = (name) => {
   const index = args.indexOf(name);
@@ -66,9 +72,9 @@ const metadata = await acquire({
   },
 });
 const metadataDocument = JSON.parse(metadata.bytes.toString('utf8'));
-const energyResources = selectEnergyRatingResources(metadataDocument, ['fridge', 'dishwasher']);
+const energyResources = selectEnergyRatingResources(metadataDocument, ENERGY_CATEGORIES);
 const snapshots = [{ kind: 'metadata', category: null, manifest: metadata.manifest, transport: metadata.transport }];
-for (const category of ['fridge', 'dishwasher']) {
+for (const category of ENERGY_CATEGORIES) {
   const resource = energyResources[category];
   const acquired = await acquire({
     sourceId: `energy-rating:${category}`,
@@ -98,6 +104,7 @@ const wels = await acquire({
   validateBytes: (bytes) => validateRegistryCsvPayload(bytes, { requiredHeaders: ['Brand', 'Product', 'Model name', 'Model code', 'Model status', 'Registration number'] }),
 });
 snapshots.push({ kind: 'wels', category: 'all', manifest: wels.manifest, transport: wels.transport });
+if (snapshots.length !== 6) throw new Error(`expected six official registry snapshots, received ${snapshots.length}`);
 
 const output = {
   schemaVersion: 1,

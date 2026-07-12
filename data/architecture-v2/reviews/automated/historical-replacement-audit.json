@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-12T12:40:00.000Z",
+  "ok": true,
+  "summary": {
+    "referenceRecords": 8095,
+    "publicRecords": 8095,
+    "currentCatalogProducts": 3521,
+    "quarantinedRecords": 90,
+    "inactiveAustralianRecords": 12,
+    "byCategory": {
+      "dishwasher": 1419,
+      "dryer": 843,
+      "fridge": 4336,
+      "washing_machine": 1497
+    },
+    "byLifecycle": {
+      "CATALOG_ARCHIVED": 2134,
+      "REGISTRY_ONLY": 4577,
+      "CURRENT_RETAIL": 1384
+    },
+    "byEvidence": {
+      "REGISTRY_CONSISTENT": 4940,
+      "IDENTITY_ONLY": 3054,
+      "INTERNAL_CONFLICT": 71,
+      "INVALID_DIMENSIONS": 19,
+      "CATALOG_RECEIPT": 11
+    },
+    "byLookupAction": {
+      "CONFIRM_REQUIRED": 4940,
+      "MEASURE_REQUIRED": 3054,
+      "QUARANTINED": 90,
+      "AUTO_FILL": 11
+    },
+    "issueCount": 0
+  },
+  "canaries": [
+    {
+      "id": "electrolux-eqe6160ba-axis-swap",
+      "ok": true,
+      "checks": {
+        "found": true,
+        "evidenceState": true,
+        "lookupAction": true,
+        "registryDimensionState": true,
+        "dimensionsMm": true
+      },
+      "referenceId": "fa_ref_48458b012212ce1a70e28088"
+    },
+    {
+      "id": "westinghouse-whe5264sc-axis-swap",
+      "ok": true,
+      "checks": {
+        "found": true,
+        "evidenceState": true,
+        "lookupAction": true,
+        "registryDimensionState": true,
+        "dimensionsMm": true
+      },
+      "referenceId": "fa_ref_e57e5d942b6c98574a3f57be"
+    },
+    {
+      "id": "haier-hdw15f3s1-confirm-only",
+      "ok": true,
+      "checks": {
+        "found": true,
+        "evidenceState": true,
+        "lookupAction": true,
+        "registryDimensionState": true,
+        "dimensionsMm": true
+      },
+      "referenceId": "fa_ref_305fb25e88cf7bd7c30a449b"
+    }
+  ],
+  "issues": []
+}

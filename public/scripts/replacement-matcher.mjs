@@ -1,190 +1,241 @@
-function normalizeToken(value) {
-  return String(value ?? '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '')
-    .trim();
+export const REPLACEMENT_REFERENCE_FILES = Object.freeze({
+  fridge: '/data/replacement-reference/fridges.json',
+  dishwasher: '/data/replacement-reference/dishwashers.json',
+  dryer: '/data/replacement-reference/dryers.json',
+  washing_machine: '/data/replacement-reference/washing-machines.json',
+});
+
+const referenceCache = new Map();
+const ACTION_EVIDENCE = Object.freeze({
+  AUTO_FILL: Object.freeze(['CATALOG_RECEIPT']),
+  CONFIRM_REQUIRED: Object.freeze(['REGISTRY_CONSISTENT']),
+  MEASURE_REQUIRED: Object.freeze(['IDENTITY_ONLY']),
+  QUARANTINED: Object.freeze(['INTERNAL_CONFLICT', 'AXIS_SUSPECT', 'INVALID_DIMENSIONS']),
+});
+const LIFECYCLE_STATES = new Set(['CURRENT_RETAIL', 'CATALOG_ARCHIVED', 'REGISTRY_ONLY', 'UNKNOWN_RETAIL']);
+const REGISTRY_MARKET_STATES = new Set(['ACTIVE_AU', 'INACTIVE_AU', 'MIXED_AU', 'NO_REGISTRY']);
+const FORBIDDEN_PUBLIC_FIELDS = Object.freeze([
+  'retailers', 'price', 'affiliate', 'affiliateUrl', 'fitDecision', 'fitScore',
+  'requiredCavityMm', 'clearance', 'manufacturerClearance', 'route', 'url',
+]);
+
+function normalizeCategory(value) {
+  const category = String(value ?? '').trim().toLowerCase().replace(/[\s-]+/g, '_');
+  if (['washtower', 'wash_tower', 'washtower_combo'].includes(category)) return 'washing_machine';
+  return Object.hasOwn(REPLACEMENT_REFERENCE_FILES, category) ? category : '';
 }
 
-const PRACTICAL_REPLACEMENT_BUFFER = Object.freeze({
-  width: 10,
-  height: 20,
-  depth: 10
-});
+function normalizeToken(value) {
+  return String(value ?? '')
+    .normalize('NFKC')
+    .toUpperCase()
+    .replace(/[^A-Z0-9]+/g, '');
+}
 
 function normalizeText(value) {
   return String(value ?? '')
+    .normalize('NFKC')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
 
-function extractModelCode(value) {
-  return normalizeText(value)
-    .split(' ')
-    .find((token) => token.length >= 4 && /[a-z]/.test(token) && /\d/.test(token)) ?? '';
+function referenceLabel(record = {}) {
+  return [record.brand, record.model].map((value) => String(value ?? '').trim()).filter(Boolean).join(' ');
 }
 
-function isGenericDisplayName(displayName, product = {}) {
-  const normalizedDisplay = normalizeText(displayName);
-  const brand = normalizeText(product?.brand);
-  if (!normalizedDisplay || !brand) return false;
-  const genericLabels = [
-    `${brand} fridge`,
-    `${brand} refrigerator`,
-    `${brand} dishwasher`,
-    `${brand} dryer`,
-    `${brand} washing machine`,
-    `${brand} washer`
-  ];
-  return genericLabels.includes(normalizedDisplay);
-}
-
-function productLabel(product = {}) {
-  const brand = String(product.brand ?? '').trim();
-  const model = String(product.model ?? '').trim();
-  const displayName = String(product.displayName ?? '').trim();
-  if (displayName && !isGenericDisplayName(displayName, product)) return displayName;
-  const brandModel = [brand, model].filter(Boolean).join(' ');
-  if (brandModel) return brandModel;
-  return displayName || brand;
-}
-
-function isVerifiedRetailerProductPageUrl(url) {
-  let parsed;
-  try {
-    parsed = new URL(String(url ?? '').trim());
-  } catch {
-    return false;
-  }
-  const host = parsed.hostname.replace(/^www\./, '').toLowerCase();
-  const pathname = parsed.pathname.replace(/\/+$/, '').toLowerCase();
-  if (!['http:', 'https:'].includes(parsed.protocol)) return false;
-  if (!host || pathname === '' || pathname === '/') return false;
-  if (['q', 'query', 'searchterm', 'text', 'keyword'].some((key) => parsed.searchParams.has(key))) return false;
-  if (/\/(search|searchdisplay|catalogsearch|collections?|category|categories|cart|checkout)(\/|$)/i.test(pathname)) {
-    return false;
-  }
-
-  if (host.endsWith('jbhifi.com.au')) return /^\/products\//.test(pathname);
-  if (host.endsWith('appliancesonline.com.au') || host.endsWith('appliances-online.com.au')) return /^\/product\//.test(pathname);
-  if (host.endsWith('binglee.com.au')) return /^\/products\//.test(pathname);
-  if (host.endsWith('harveynorman.com.au')) return /\.html$/.test(pathname);
-  if (host.endsWith('thegoodguys.com.au')) return /^\/[^/]+-[^/]+$/.test(pathname);
-
-  return false;
-}
-
-export function hasVerifiedRetailerLink(product = {}) {
-  return Array.isArray(product?.retailers) && product.retailers.some((retailer) => (
-    isVerifiedRetailerProductPageUrl(retailer?.url ?? retailer?.href ?? retailer?.u ?? retailer?.link)
-  ));
-}
-
-export function countVerifiedRetailerLinks(product = {}) {
-  if (!Array.isArray(product?.retailers)) return 0;
-  return product.retailers.filter((retailer) => (
-    isVerifiedRetailerProductPageUrl(retailer?.url ?? retailer?.href ?? retailer?.u ?? retailer?.link)
-  )).length;
-}
-
-function hasCompleteDimensions(product = {}) {
-  return [product?.w, product?.h, product?.d].every((value) => {
-    const parsed = Number(value);
-    return Number.isFinite(parsed) && parsed > 0;
-  });
-}
-
-function scoreProduct(query, product) {
-  const normalizedQuery = normalizeText(query);
-  const compactQuery = normalizeToken(query);
-  if (!normalizedQuery || compactQuery.length < 3) return 0;
-
-  const model = normalizeToken(product?.model);
-  const queryModelCode = extractModelCode(query);
-  const productModelCode = extractModelCode(product?.model);
-  const displayName = normalizeText(product?.displayName);
-  const label = normalizeText(productLabel(product));
-  const brandModel = normalizeText(`${product?.brand ?? ''} ${product?.model ?? ''}`);
-
-  if (queryModelCode && productModelCode && queryModelCode === productModelCode) return 98;
-  if (queryModelCode.length >= 5 && productModelCode && productModelCode.startsWith(queryModelCode)) return 96;
-  if (queryModelCode.length >= 5 && model && model.startsWith(queryModelCode)) return 94;
-  if (model && model === compactQuery) return 100;
-  if (model && compactQuery.includes(model)) return 95;
-  if (model && model.includes(compactQuery)) return 90;
-  if (brandModel && brandModel.includes(normalizedQuery)) return 84;
-  if (displayName && displayName.includes(normalizedQuery)) return 78;
-  if (label && label.includes(normalizedQuery)) return 70;
-  return 0;
-}
-
-export function findReplacementSource(query, products, { category, retailerOnly = false } = {}) {
-  const rows = Array.isArray(products) ? products : [];
-  const wantedCategory = String(category ?? '').trim();
-  const candidates = rows
-    .filter((product) => !wantedCategory || product?.cat === wantedCategory)
-    .filter((product) => !retailerOnly || hasVerifiedRetailerLink(product))
-    .map((product) => ({
-      product,
-      score: scoreProduct(query, product)
+function identityVariants(record = {}) {
+  const variants = [{ brand: record.brand, model: record.model }, ...(record.aliases ?? [])];
+  const seen = new Set();
+  return variants
+    .map((variant) => ({
+      brand: String(variant?.brand ?? '').trim(),
+      model: String(variant?.model ?? '').trim(),
     }))
-    .filter((entry) => entry.score > 0)
-    .sort((left, right) => {
-      if (right.score !== left.score) return right.score - left.score;
-      return productLabel(left.product).localeCompare(productLabel(right.product), 'en-AU', { sensitivity: 'base' });
+    .filter((variant) => variant.brand && variant.model)
+    .filter((variant) => {
+      const key = `${variant.brand}\0${variant.model}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
     });
+}
 
-  if (candidates.length === 0) return null;
-  const best = candidates[0];
+function completeDimensions(value) {
+  return value && typeof value === 'object' && !Array.isArray(value)
+    && ['width', 'height', 'depth'].every((axis) => Number.isInteger(value[axis]) && value[axis] > 0);
+}
+
+function validAliases(value) {
+  return value === undefined || (Array.isArray(value) && value.every((alias) => (
+    alias && typeof alias === 'object' && !Array.isArray(alias)
+    && typeof alias.brand === 'string' && alias.brand.trim()
+    && typeof alias.model === 'string' && alias.model.trim()
+  )));
+}
+
+function validReferenceRecord(record) {
+  const action = String(record?.action ?? '');
+  const allowedEvidence = ACTION_EVIDENCE[action];
+  const exposesDimensions = Object.hasOwn(record ?? {}, 'dimensionsMm');
+  const actionUsesDimensions = ['AUTO_FILL', 'CONFIRM_REQUIRED'].includes(action);
+  return /^fa_ref_[a-f0-9]{24}$/.test(String(record?.id ?? ''))
+    && typeof record?.brand === 'string' && Boolean(record.brand.trim())
+    && typeof record?.model === 'string' && Boolean(record.model.trim())
+    && Array.isArray(allowedEvidence) && allowedEvidence.includes(String(record?.evidence ?? ''))
+    && LIFECYCLE_STATES.has(String(record?.lifecycle ?? ''))
+    && REGISTRY_MARKET_STATES.has(String(record?.registryMarket ?? ''))
+    && (actionUsesDimensions ? completeDimensions(record.dimensionsMm) : !exposesDimensions)
+    && validAliases(record?.aliases)
+    && FORBIDDEN_PUBLIC_FIELDS.every((field) => !Object.hasOwn(record, field));
+}
+
+function validateReferenceDocument(document, category) {
+  if (!document || document.schemaVersion !== 1 || document.category !== category || !Array.isArray(document.records)) {
+    throw new TypeError(`invalid replacement reference document for ${category}`);
+  }
+  for (const record of document.records) {
+    if (!validReferenceRecord(record)) {
+      throw new TypeError(`invalid replacement reference record for ${category}`);
+    }
+  }
+  return document;
+}
+
+export function clearReplacementReferenceCache() {
+  referenceCache.clear();
+}
+
+export async function loadReplacementReference(category, { fetchImpl = globalThis.fetch } = {}) {
+  const normalized = normalizeCategory(category);
+  if (!normalized) throw new TypeError(`unsupported replacement reference category: ${category}`);
+  if (typeof fetchImpl !== 'function') throw new TypeError('fetch is required to load replacement references');
+  if (!referenceCache.has(normalized)) {
+    const request = Promise.resolve(fetchImpl(REPLACEMENT_REFERENCE_FILES[normalized], {
+      method: 'GET',
+      credentials: 'same-origin',
+      headers: { Accept: 'application/json' },
+    })).then(async (response) => {
+      if (!response?.ok) throw new Error(`replacement reference request failed: ${response?.status ?? 'network'}`);
+      return validateReferenceDocument(await response.json(), normalized);
+    }).catch((error) => {
+      referenceCache.delete(normalized);
+      throw error;
+    });
+    referenceCache.set(normalized, request);
+  }
+  return referenceCache.get(normalized);
+}
+
+function uniqueCandidates(records) {
+  return [...new Map(records.map((record) => [record.id, record])).values()];
+}
+
+function exactMatches(query, records, mode) {
+  const queryKey = normalizeToken(query);
+  return uniqueCandidates(records.filter((record) => identityVariants(record).some((variant) => {
+    const candidate = mode === 'brand_model'
+      ? normalizeToken(`${variant.brand} ${variant.model}`)
+      : normalizeToken(variant.model);
+    return candidate === queryKey;
+  })));
+}
+
+function suggestionScore(query, record) {
+  const queryText = normalizeText(query);
+  const queryToken = normalizeToken(query);
+  if (queryToken.length < 2) return 0;
+  let best = 0;
+  for (const variant of identityVariants(record)) {
+    const brand = normalizeToken(variant.brand);
+    const model = normalizeToken(variant.model);
+    const brandModel = `${brand}${model}`;
+    if (model.startsWith(queryToken) || brandModel.startsWith(queryToken)) best = Math.max(best, 95);
+    else if (model.includes(queryToken) || brandModel.includes(queryToken)) best = Math.max(best, 85);
+    const terms = queryText.split(' ').map(normalizeToken).filter(Boolean);
+    if (terms.length > 0 && terms.every((term) => brand.startsWith(term) || model.startsWith(term) || brandModel.includes(term))) {
+      best = Math.max(best, 75 + Math.min(10, terms.length * 2));
+    }
+  }
+  return best;
+}
+
+export function getReplacementReferenceSuggestions(query, records, { limit = 12 } = {}) {
+  const boundedLimit = Number.isFinite(Number(limit)) ? Math.max(0, Math.floor(Number(limit))) : 12;
+  return (Array.isArray(records) ? records : [])
+    .map((record) => ({ record, label: referenceLabel(record), score: suggestionScore(query, record) }))
+    .filter((candidate) => candidate.score > 0)
+    .sort((left, right) => (
+      right.score - left.score
+      || left.label.localeCompare(right.label, 'en-AU', { sensitivity: 'base' })
+      || String(left.record.id).localeCompare(String(right.record.id))
+    ))
+    .slice(0, boundedLimit);
+}
+
+function candidatesResult(status, candidates) {
   return {
-    product: best.product,
-    confidence: best.score >= 90 ? 'high' : best.score >= 75 ? 'medium' : 'low',
-    label: productLabel(best.product)
+    status,
+    candidates: candidates.map((record) => ({
+      record,
+      label: referenceLabel(record),
+      score: 100,
+    })),
   };
 }
 
-export function getReplacementSuggestionRows(products, { category, limit = 160, retailerOnly = true } = {}) {
-  const rows = Array.isArray(products) ? products : [];
-  const wantedCategory = String(category ?? '').trim();
-  return rows
-    .filter((product) => !wantedCategory || product?.cat === wantedCategory)
-    .filter((product) => product?.unavailable !== true)
-    .filter((product) => product?.model || product?.displayName)
-    .filter((product) => !retailerOnly || hasVerifiedRetailerLink(product))
-    .filter(hasCompleteDimensions)
-    .sort((left, right) => {
-      const retailerDelta = countVerifiedRetailerLinks(right) - countVerifiedRetailerLinks(left);
-      if (retailerDelta !== 0) return retailerDelta;
-      const scoreDelta = Number(right?.priorityScore ?? 0) - Number(left?.priorityScore ?? 0);
-      if (scoreDelta !== 0) return scoreDelta;
-      return productLabel(left).localeCompare(productLabel(right), 'en-AU', { sensitivity: 'base' });
-    })
-    .slice(0, Number.isFinite(Number(limit)) ? Math.max(0, Number(limit)) : 160);
+export function resolveReplacementReference(query, records, { suggestionLimit = 12 } = {}) {
+  const rows = Array.isArray(records) ? records : [];
+  if (!normalizeToken(query)) return { status: 'EMPTY', candidates: [] };
+  const brandModelMatches = exactMatches(query, rows, 'brand_model');
+  if (brandModelMatches.length === 1) return { status: 'RESOLVED', record: brandModelMatches[0] };
+  if (brandModelMatches.length > 1) return candidatesResult('AMBIGUOUS', brandModelMatches);
+  const modelMatches = exactMatches(query, rows, 'model');
+  if (modelMatches.length === 1) return { status: 'RESOLVED', record: modelMatches[0] };
+  if (modelMatches.length > 1) return candidatesResult('AMBIGUOUS', modelMatches);
+  const candidates = getReplacementReferenceSuggestions(query, rows, { limit: suggestionLimit });
+  return candidates.length > 0 ? { status: 'SUGGESTIONS', candidates } : { status: 'NOT_FOUND', candidates: [] };
 }
 
-export function buildReplacementDimensionState(product = {}) {
-  const w = Number(product.w);
-  const h = Number(product.h);
-  const d = Number(product.d);
-  if (![w, h, d].every((value) => Number.isFinite(value) && value > 0)) {
+function dimensionsFor(record) {
+  const source = record?.dimensionsMm ?? { width: record?.w, height: record?.h, depth: record?.d };
+  const values = {
+    w: Number(source?.width),
+    h: Number(source?.height),
+    d: Number(source?.depth),
+  };
+  return Object.values(values).every((value) => Number.isFinite(value) && value > 0) ? values : null;
+}
+
+export function buildReplacementDimensionState(record = {}) {
+  const label = referenceLabel(record) || String(record.displayName ?? '').trim() || 'Old appliance';
+  const action = String(record.action ?? (dimensionsFor(record) ? 'AUTO_FILL' : 'MEASURE_REQUIRED'));
+  const dimensions = dimensionsFor(record);
+  const canUseDimensions = ['AUTO_FILL', 'CONFIRM_REQUIRED'].includes(action) && dimensions !== null;
+  if (!canUseDimensions) {
     return {
+      action,
+      canUseDimensions: false,
+      requiresConfirmation: false,
+      productDimensions: null,
       dimensions: { w: null, h: null, d: null },
-      label: productLabel(product),
-      note: 'We found the old model, but it is missing complete dimensions. Please measure the cavity directly.'
+      label,
+      note: action === 'QUARANTINED'
+        ? `Official records conflict for ${label}. Measure the old appliance width, height and depth before matching a replacement.`
+        : `No complete accepted dimensions are available for ${label}. Measure the old appliance width, height and depth.`,
     };
   }
-  const label = productLabel(product);
-  const productDimensions = { w: Math.round(w), h: Math.round(h), d: Math.round(d) };
-  const dimensions = {
-    w: productDimensions.w + PRACTICAL_REPLACEMENT_BUFFER.width,
-    h: productDimensions.h + PRACTICAL_REPLACEMENT_BUFFER.height,
-    d: productDimensions.d + PRACTICAL_REPLACEMENT_BUFFER.depth
-  };
+  const requiresConfirmation = action === 'CONFIRM_REQUIRED';
   return {
-    productDimensions,
-    dimensions,
+    action,
+    canUseDimensions: true,
+    requiresConfirmation,
+    productDimensions: { ...dimensions },
+    dimensions: { ...dimensions },
     label,
-    note: `${label} dimensions plus practical clearance are a starting point. Measure the actual cavity before buying.`
+    note: requiresConfirmation
+      ? `Official registry dimensions for ${label} are ${dimensions.w}×${dimensions.h}×${dimensions.d}mm. Confirm them against the appliance label, manual or your own measurement.`
+      : `Using ${label} outside dimensions: ${dimensions.w}×${dimensions.h}×${dimensions.d}mm. Re-measure the old appliance before ordering.`,
   };
 }

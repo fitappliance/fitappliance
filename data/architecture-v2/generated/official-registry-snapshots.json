@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "policyVersion": "2026-07-12.1",
-  "acquiredAt": "2026-07-12T11:13:49.000Z",
+  "acquiredAt": "2026-07-12T12:40:00.000Z",
   "storage": {
     "rootEnv": "FITAPPLIANCE_STORAGE_ROOT",
     "rawPayloadsInRepository": false
@@ -14,7 +14,7 @@
         "schemaVersion": 1,
         "sourceId": "energy-rating:metadata",
         "sourceUrl": "https://data.gov.au/data/api/3/action/package_show?id=energy-rating-for-household-appliances",
-        "retrievedAt": "2026-07-12T11:13:49.000Z",
+        "retrievedAt": "2026-07-12T12:40:00.000Z",
         "contentSha256": "a605b9420c089b02c3c2ed6f5c791ff12111c5ca5b30aea07ca440d98c3b4c71",
         "metadataSha256": null,
         "byteLength": 26719,
@@ -50,7 +50,7 @@
         "schemaVersion": 1,
         "sourceId": "energy-rating:fridge",
         "sourceUrl": "https://data.gov.au/data/dataset/559708e5-480e-4f94-8429-c49571e82761/resource/0eabca18-49bb-4a9e-8019-28d5d56501c4/download/rf_2026_07_12.csv",
-        "retrievedAt": "2026-07-12T11:13:49.000Z",
+        "retrievedAt": "2026-07-12T12:40:00.000Z",
         "contentSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
         "metadataSha256": "a605b9420c089b02c3c2ed6f5c791ff12111c5ca5b30aea07ca440d98c3b4c71",
         "byteLength": 2567935,
@@ -86,7 +86,7 @@
         "schemaVersion": 1,
         "sourceId": "energy-rating:dishwasher",
         "sourceUrl": "https://data.gov.au/data/dataset/559708e5-480e-4f94-8429-c49571e82761/resource/cbe7057d-e132-4297-b8be-eecf8322d4e6/download/dw_2026_07_12.csv",
-        "retrievedAt": "2026-07-12T11:13:49.000Z",
+        "retrievedAt": "2026-07-12T12:40:00.000Z",
         "contentSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
         "metadataSha256": "a605b9420c089b02c3c2ed6f5c791ff12111c5ca5b30aea07ca440d98c3b4c71",
         "byteLength": 822283,
@@ -111,13 +111,85 @@
       }
     },
     {
+      "kind": "energy-rating",
+      "category": "dryer",
+      "resource": {
+        "name": "Clothes Dryers                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 - cd_2026_07_12.csv",
+        "resourceId": "f734c56b-a255-4c4e-a3c1-e835c38b8774",
+        "lastModified": "2026-07-12T08:04:30.632375"
+      },
+      "manifest": {
+        "schemaVersion": 1,
+        "sourceId": "energy-rating:dryer",
+        "sourceUrl": "https://data.gov.au/data/dataset/559708e5-480e-4f94-8429-c49571e82761/resource/f734c56b-a255-4c4e-a3c1-e835c38b8774/download/cd_2026_07_12.csv",
+        "retrievedAt": "2026-07-12T12:40:00.000Z",
+        "contentSha256": "dc1d443dac44ad3310356376df8e3418caed7265f99105f6918141cf5f3ff099",
+        "metadataSha256": "a605b9420c089b02c3c2ed6f5c791ff12111c5ca5b30aea07ca440d98c3b4c71",
+        "byteLength": 493351,
+        "mediaType": "text/csv",
+        "licence": {
+          "id": "cc-by-3.0-au",
+          "name": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/",
+          "attribution": "Department of Climate Change, Energy, the Environment and Water",
+          "permitsRepositoryDerivatives": true,
+          "scopeNote": "Dataset records and normalized analytical derivatives; preserve attribution and source snapshot hash."
+        },
+        "storage": {
+          "rootEnv": "FITAPPLIANCE_STORAGE_ROOT",
+          "objectPath": "registries/objects/sha256/dc/1d/dc1d443dac44ad3310356376df8e3418caed7265f99105f6918141cf5f3ff099.csv"
+        }
+      },
+      "transport": {
+        "finalUrl": "https://data.gov.au/data/dataset/559708e5-480e-4f94-8429-c49571e82761/resource/f734c56b-a255-4c4e-a3c1-e835c38b8774/download/cd_2026_07_12.csv",
+        "etag": "W/\"1783843472.44-493351-3550547885\"",
+        "lastModified": "Sun, 12 Jul 2026 08:04:32 GMT"
+      }
+    },
+    {
+      "kind": "energy-rating",
+      "category": "washing_machine",
+      "resource": {
+        "name": "Clothes Washers                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     - cw_2026_07_12.csv",
+        "resourceId": "eb3b9d8e-f39d-47b7-9db0-309856176951",
+        "lastModified": "2026-07-12T08:04:39.334065"
+      },
+      "manifest": {
+        "schemaVersion": 1,
+        "sourceId": "energy-rating:washing_machine",
+        "sourceUrl": "https://data.gov.au/data/dataset/559708e5-480e-4f94-8429-c49571e82761/resource/eb3b9d8e-f39d-47b7-9db0-309856176951/download/cw_2026_07_12.csv",
+        "retrievedAt": "2026-07-12T12:40:00.000Z",
+        "contentSha256": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
+        "metadataSha256": "a605b9420c089b02c3c2ed6f5c791ff12111c5ca5b30aea07ca440d98c3b4c71",
+        "byteLength": 1051335,
+        "mediaType": "text/csv",
+        "licence": {
+          "id": "cc-by-3.0-au",
+          "name": "Creative Commons Attribution 3.0 Australia",
+          "url": "https://creativecommons.org/licenses/by/3.0/au/",
+          "attribution": "Department of Climate Change, Energy, the Environment and Water",
+          "permitsRepositoryDerivatives": true,
+          "scopeNote": "Dataset records and normalized analytical derivatives; preserve attribution and source snapshot hash."
+        },
+        "storage": {
+          "rootEnv": "FITAPPLIANCE_STORAGE_ROOT",
+          "objectPath": "registries/objects/sha256/f3/1f/f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3.csv"
+        }
+      },
+      "transport": {
+        "finalUrl": "https://data.gov.au/data/dataset/559708e5-480e-4f94-8429-c49571e82761/resource/eb3b9d8e-f39d-47b7-9db0-309856176951/download/cw_2026_07_12.csv",
+        "etag": "W/\"1783843481.234-1051335-3731034000\"",
+        "lastModified": "Sun, 12 Jul 2026 08:04:41 GMT"
+      }
+    },
+    {
       "kind": "wels",
       "category": "all",
       "manifest": {
         "schemaVersion": 1,
         "sourceId": "wels:all-models",
         "sourceUrl": "https://wels-public-register.environment.gov.au/publicregister-allmodels.csv",
-        "retrievedAt": "2026-07-12T11:13:49.000Z",
+        "retrievedAt": "2026-07-12T12:40:00.000Z",
         "contentSha256": "a9a124213e968ee2ea800c76e2f37a2120b0c4a50848a579c52cb1ff1f9c9446",
         "metadataSha256": null,
         "byteLength": 14629341,

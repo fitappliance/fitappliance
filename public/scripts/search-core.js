@@ -4,7 +4,11 @@
   const fitEngine = typeof module !== 'undefined' && module.exports
     ? require('./fit-engine.js')
     : globalScope?.FitEngine;
+  const replacementEngine = typeof module !== 'undefined' && module.exports
+    ? require('./replacement-match-engine.js')
+    : globalScope?.ReplacementMatchEngine;
   if (!fitEngine?.evaluateFit) throw new Error('FitEngine must load before SearchCore');
+  if (!replacementEngine?.matchCurrentProducts) throw new Error('ReplacementMatchEngine must load before SearchCore');
   const PRACTICAL_CLEARANCE = Object.freeze({ rear: 10, side: 5, sides: 5, top: 20 });
   const CLEARANCE_MODES = Object.freeze({
     physical: Object.freeze({ rear: 0, side: 0, sides: 0, top: 0 }),
@@ -795,7 +799,46 @@
     };
   }
 
+  function buildReplacementResult(product, replacementMatch, filters) {
+    const {
+      fitScore: _fitScore,
+      fitScoreNumeric: _fitScoreNumeric,
+      fitDecision: _fitDecision,
+      exactFit: _exactFit,
+      fitsTightly: _fitsTightly,
+      sortScore: _sortScore,
+      clearance: _clearance,
+      clearanceMode: _clearanceMode,
+      manufacturerClearance: _manufacturerClearance,
+      fitAxisGaps: _fitAxisGaps,
+      requiredCavityMm: _requiredCavityMm,
+      sizeMatchGaps: _sizeMatchGaps,
+      bindingAxis: _bindingAxis,
+      tightestGapMm: _tightestGapMm,
+      ...publicProduct
+    } = product;
+    const candidateDimensions = replacementMatch?.candidateDimensionsMm ?? {};
+    return {
+      ...publicProduct,
+      w: candidateDimensions.width ?? publicProduct.w,
+      h: candidateDimensions.height ?? publicProduct.h,
+      d: candidateDimensions.depth ?? publicProduct.d,
+      searchMode: SEARCH_MODES.replacement,
+      replacementSourceCategory: normalizeReplacementSourceCategory(filters?.replacementSourceCategory),
+      replacementMatch,
+      showPopularityBadge: Number(product?.priorityScore ?? 0) >= 70,
+      sku: String(product?.model ?? '').trim().split(/\s+/)[0] ?? '',
+      url: buildProductUrl(product, filters)
+    };
+  }
+
   function compareMatches(left, right) {
+    if (left?.replacementMatch && right?.replacementMatch) {
+      return replacementEngine.compareMatches(
+        { product: left, match: left.replacementMatch },
+        { product: right, match: right.replacementMatch }
+      );
+    }
     if (left.exactFit !== right.exactFit) return left.exactFit ? -1 : 1;
     if (left.sortScore !== right.sortScore) return left.sortScore - right.sortScore;
     if ((right.priorityScore ?? 0) !== (left.priorityScore ?? 0)) {
@@ -945,9 +988,24 @@
       ...filters,
       searchMode: nextSearchMode,
       replacementSourceCategory: normalizeReplacementSourceCategory(
-        filters?.replacementSourceCategory ?? replacementSourceCategory
+        filters?.replacementSourceCategory
+          ?? replacementSourceCategory
+          ?? (nextSearchMode === SEARCH_MODES.replacement ? filters?.cat : null)
       )
     };
+
+    if (nextSearchMode === SEARCH_MODES.replacement) {
+      const hasCompleteSourceDimensions = [nextFilters.w, nextFilters.h, nextFilters.d]
+        .every((value) => toMm(value));
+      if (!hasCompleteSourceDimensions) return [];
+      const candidates = rows
+        .filter((product) => categoryMatches(product, nextFilters?.cat))
+        .filter((product) => passesReplacementQuarantine(product, nextFilters, nextSearchMode));
+      return replacementEngine.matchCurrentProducts(candidates, {
+        sourceDimensions: { w: nextFilters.w, h: nextFilters.h, d: nextFilters.d },
+        limit
+      }).map(({ product, match }) => buildReplacementResult(product, match, nextFilters));
+    }
 
     return rows
       .filter((product) => categoryMatches(product, nextFilters?.cat))

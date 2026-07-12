@@ -91,6 +91,19 @@ function applySliderFilters(rows, facets = {}) {
 }
 
 function compareFallback(left, right) {
+  const leftMatch = left?.replacementMatch;
+  const rightMatch = right?.replacementMatch;
+  if (leftMatch || rightMatch) {
+    if (!leftMatch) return 1;
+    if (!rightMatch) return -1;
+    const maxDelta = Number(leftMatch.maxAbsoluteDeltaMm) - Number(rightMatch.maxAbsoluteDeltaMm);
+    if (Number.isFinite(maxDelta) && maxDelta !== 0) return maxDelta;
+    const normalized = Number(leftMatch.normalizedDistance) - Number(rightMatch.normalizedDistance);
+    if (Number.isFinite(normalized) && normalized !== 0) return normalized;
+    const total = Number(leftMatch.totalAbsoluteDeltaMm) - Number(rightMatch.totalAbsoluteDeltaMm);
+    if (Number.isFinite(total) && total !== 0) return total;
+    return String(left?.id ?? '').localeCompare(String(right?.id ?? ''));
+  }
   const fitDelta = Number(left?.sortScore ?? 0) - Number(right?.sortScore ?? 0);
   if (fitDelta !== 0) return fitDelta;
   const priorityDelta = Number(right?.priorityScore ?? 0) - Number(left?.priorityScore ?? 0);
@@ -113,6 +126,11 @@ function compareFitScoreDesc(left, right) {
 
 function sortRowsForRtings(rows, sortBy = 'fit-score-desc') {
   const list = Array.isArray(rows) ? [...rows] : [];
+  const replacementRows = list.length > 0 && list.every((row) => row?.replacementMatch);
+  if (sortBy === 'closest-size') return list.sort(compareFallback);
+  if (replacementRows && ['verified-first', 'best-fit'].includes(sortBy)) {
+    return list.sort(compareFallback);
+  }
   if (sortBy === 'verified-first') return list.sort(compareVerification);
   if (sortBy === 'price-asc') {
     return list.sort((left, right) => {
@@ -149,6 +167,16 @@ function sortRowsForRtings(rows, sortBy = 'fit-score-desc') {
   return list.sort(compareFitScoreDesc);
 }
 
+function orderRowsForDisplay(rows, { searchMode = 'cavity' } = {}) {
+  const list = Array.isArray(rows) ? [...rows] : [];
+  if (searchMode === 'replacement') return list;
+  const sponsored = list.filter((row) => row?.sponsored === true);
+  const regular = list.filter((row) => row?.sponsored !== true);
+  if (sponsored[0] && regular.length >= 2) regular.splice(2, 0, sponsored[0]);
+  if (sponsored[1] && regular.length >= 6) regular.splice(6, 0, sponsored[1]);
+  return regular;
+}
+
 function normalizeDensity(value) {
   const next = String(value ?? '').trim();
   return ['compact', 'standard', 'detailed'].includes(next) ? next : 'standard';
@@ -161,6 +189,7 @@ const api = {
   isVerifiedFit,
   normalizeDensity,
   normalizeSliderFacets,
+  orderRowsForDisplay,
   sortRowsForRtings
 };
 
@@ -175,6 +204,7 @@ export {
   isVerifiedFit,
   normalizeDensity,
   normalizeSliderFacets,
+  orderRowsForDisplay,
   sortRowsForRtings
 };
 

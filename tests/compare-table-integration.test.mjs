@@ -70,3 +70,31 @@ test('phase 58 compare modal: row tooltip controls remain keyboard/click reachab
   assert.ok(tooltip, 'metric row should expose tooltip from dictionary');
   assert.match(tooltip.getAttribute('aria-label'), /Side space|air gap|score|clearance/i);
 });
+
+test('replacement compare modal stays in size-match semantics end to end', async () => {
+  const { renderCompareModal } = await loadModules();
+  const { window } = new JSDOM('<div id="modal" hidden></div>', { pretendToBeVisual: true });
+  const modal = window.document.getElementById('modal');
+  const replacement = (slug, delta) => entry(slug, {
+    comparisonMode: 'replacement',
+    fitScoreNumeric: null,
+    practicalClearance: null,
+    manufacturerClearance: null,
+    replacementMatch: {
+      deltasMm: { width: delta, height: 0, depth: 0 },
+      maxAbsoluteDeltaMm: Math.abs(delta),
+      totalAbsoluteDeltaMm: Math.abs(delta),
+      normalizedDistance: Math.abs(delta) / 600,
+      relation: delta === 0 ? 'IDENTICAL' : delta > 0 ? 'SAME_OR_LARGER' : 'SAME_OR_SMALLER',
+    },
+  });
+
+  renderCompareModal(modal, {
+    items: [replacement('one', 1), replacement('two', 5)],
+  });
+
+  assert.match(modal.textContent, /Compare replacement candidates/);
+  assert.match(modal.textContent, /Size difference from old appliance/);
+  assert.match(modal.textContent, /direct W\/H\/D differences/i);
+  assert.doesNotMatch(modal.textContent, /Fit score|Fit verdict|Clearance Required|Side-by-side fit|cavity/i);
+});

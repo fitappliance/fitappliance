@@ -43,6 +43,25 @@ It must not promise an unconditional or universal "perfect fit".
 1. Product identity, current sale status, dimensions, installation requirements,
    and commercial links are separate facts with separate sources.
 2. A downloaded or parsed PDF is candidate evidence, not verified evidence.
+
+### 2.1 Two independent search contracts
+
+FitAppliance has two separate user intents and they must not share decision
+semantics:
+
+- **Cavity search:** the user enters available site space. The Fit engine may
+  apply installation, operation, service, ventilation and evidence rules.
+- **Old-appliance replacement:** the user enters or selects the old appliance
+  outside W/H/D. The Replacement Match Engine ranks current retailer-backed
+  products by direct `new - old` axis differences. It must not call
+  `FitDecision`, convert the old appliance to a cavity, add a fixed clearance
+  buffer, or describe the result as a Fit verdict.
+
+Historical and unavailable models may be replacement inputs, but never outputs.
+Replacement outputs must be current retailer products with complete W/H/D.
+Slightly larger products remain visible; signed differences tell the user which
+axes are larger or smaller. Any installation conclusion requires a separate
+cavity search.
 3. Government, retailer, GS1, Icecat, and manufacturer data may all contain
    errors or different measurement scopes. No source bypasses field-level
    validation.
@@ -529,9 +548,10 @@ design, task framework, source assessment and outreach package are:
 
 Current implementation facts:
 
-- Energy Rating metadata, refrigerator CSV, dishwasher CSV, and the complete
-  WELS register CSV are stored as four immutable external SHA-256 objects. A
-  second acquisition reused all four objects, proving idempotent replay.
+- Energy Rating metadata, refrigerator, dishwasher, dryer and washing-machine
+  CSVs, plus the complete WELS register CSV are stored as six immutable external
+  SHA-256 objects. A second acquisition reproduced the same six-object manifest,
+  proving idempotent replay.
 - The live snapshots contained 3,985 Energy Rating refrigerator rows, 1,426
   dishwasher rows, and 73,855 WELS rows. The WELS normalizer identified 2,652
   dishwasher rows, 696 of which were Registered or Ceasing.
@@ -565,6 +585,67 @@ Current implementation facts:
 
 The pilot is not a public data release. It is the acceptance harness for later
 exact-model PDF, brand-feed, GS1, or Icecat evidence work.
+
+### 9.2 Implementation checkpoint: historical reference and replacement matching
+
+The first four-category historical reference release was generated from the
+2026-07-12 official snapshot batch and the receipt-gated public catalogue.
+Durable design and implementation details are in:
+
+- [Historical Appliance Reference and Replacement Match Engine Design](superpowers/specs/2026-07-12-historical-reference-replacement-engine-design.md)
+- [Historical Appliance Reference and Replacement Match Engine Plan](superpowers/plans/2026-07-12-historical-reference-replacement-engine.md)
+
+Measured release facts:
+
+- four Energy Rating CSVs contained 7,710 raw rows; 7,149 rows named Australia
+  as a market, including current and unavailable/superseded registrations;
+- exact category/brand/model grouping plus catalogue-only identities produced
+  8,095 historical reference records: 4,336 refrigerators, 1,419 dishwashers,
+  843 dryers and 1,497 washing machines;
+- retail lifecycle is independent: 1,384 records are current retailer products,
+  2,134 are archived catalogue identities and 4,577 are registry-only;
+- dimension disposition is independent: 11 receipt-bound catalogue records may
+  auto-fill, 4,940 registry-consistent records require explicit user
+  confirmation, 3,054 identity-only records require measurement, and 90
+  conflict/invalid records are quarantined from dimension publication;
+- 12 exact identities exist only in inactive Australian registry rows and 33
+  combine active and inactive registry rows;
+- public files are category-split and lazy-loaded, total approximately 1.95 MB;
+  they contain identity, lifecycle, evidence action and accepted W/H/D only;
+- public history has no prices, retailers, affiliate links, clearance, Fit
+  outcomes, product routes or sitemap entries and is served with
+  `X-Robots-Tag: noindex`;
+- the runtime audit executes replacement search with a deliberately throwing
+  FitEngine and still succeeds, proving the independent call path;
+- EQE6160BA and WHE5264SC remain permanent W/H-axis canaries: receipt-bound
+  dimensions win while the government conflict remains visible internally;
+  HDW15F3S1 remains confirmation-only, not auto-fill.
+
+Evidence and lifecycle rules:
+
+- `CATALOG_RECEIPT -> AUTO_FILL` uses exact receipt-bound outside dimensions;
+- `REGISTRY_CONSISTENT -> CONFIRM_REQUIRED` shows official candidate W/H/D only
+  after the user confirms against the label, manual or measurement;
+- `IDENTITY_ONLY -> MEASURE_REQUIRED` publishes identity without dimensions;
+- conflict, invalid or axis-suspect candidate dimensions are not exposed;
+- fuzzy and prefix matches are suggestions only. Exact brand+model or a unique
+  exact model is required for automatic identity resolution.
+
+Refresh and rollback:
+
+- immutable source objects live under
+  `/Volumes/UGREEN-1TB/FitAppliance/registries/objects/sha256/` and are addressed
+  by content hash;
+- run official acquisition and `npm run refresh:historical-reference` weekly,
+  before a material catalogue release, or when an official resource changes;
+- ordinary builds republish committed derived artifacts and do not require the
+  external drive; they fail if the current catalogue hash no longer matches the
+  historical reference receipt;
+- every refresh must preserve source URL, retrieval time, bytes, SHA-256 and CC
+  BY 3.0 AU attribution, then pass the historical replacement audit;
+- rollback by reverting the reference, publication manifest, four public files,
+  meta file and audit as one commit, then redeploying that exact commit. Immutable
+  source snapshots remain available for replay.
 
 ## 10. Success Metrics
 
@@ -601,8 +682,10 @@ product-success metrics.
 - keep unknown values unknown and fail closed on conflicts.
 - freeze the first installation-knowledge pilot at 50 refrigerators and 50
   dishwashers with current-listing and brand-concentration controls;
-- keep Energy Rating and WELS registry ingestion shadow-only until a separate
-  field publication gate is approved.
+- keep Energy Rating and WELS data shadow-only for current-catalog field
+  promotion and all Fit outcomes. Energy Rating identity and candidate W/H/D may
+  appear only in the isolated historical replacement input library under the
+  confirmation, measurement and quarantine rules in section 9.2.
 
 ### Open and requiring owner approval or external confirmation
 

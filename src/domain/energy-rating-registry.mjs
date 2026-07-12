@@ -49,11 +49,15 @@ export function registryModelKey(value) {
   return String(value ?? '').normalize('NFKC').toUpperCase().replace(/[\s._-]+/g, '');
 }
 
-function activeInAustralia(row) {
+function marketedInAustralia(row) {
   const market = first(row, ['Sold_in', 'Sold In', 'Market']);
+  return /(?:^|[,;\s])Australia(?:$|[,;\s])/i.test(market ?? '');
+}
+
+function activeInAustralia(row) {
   const submit = first(row, ['SubmitStatus', 'Submit Status']);
   const availability = first(row, ['Availability Status', 'Availability']);
-  return /(?:^|[,;\s])Australia(?:$|[,;\s])/i.test(market ?? '')
+  return marketedInAustralia(row)
     && (!submit || /^approved$/i.test(submit))
     && (!availability || /^available$/i.test(availability));
 }
@@ -101,6 +105,7 @@ export function normalizeEnergyRatingRows(rows, { category, sourceId, snapshotSh
         submitStatus: first(row, ['SubmitStatus', 'Submit Status']),
         availabilityStatus: first(row, ['Availability Status', 'Availability']),
       },
+      marketedInAustralia: marketedInAustralia(row),
       activeInAustralia: activeInAustralia(row),
       dimensionsMm,
       rawDimensions: {

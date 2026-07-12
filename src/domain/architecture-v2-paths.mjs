@@ -30,6 +30,7 @@ export const architectureV2Paths = Object.freeze({
   fitV3ShadowAudit: `${base}/reviews/automated/fit-v3-shadow-audit.json`,
   brandDataOutreachQueue: `${base}/reviews/automated/brand-data-outreach-queue.json`,
   officialRegistryFitV3Audit: `${base}/reviews/automated/official-registry-fit-v3-audit.json`,
+  historicalReplacementAudit: `${base}/reviews/automated/historical-replacement-audit.json`,
   retailerObservations: `${base}/observations/retailer-observations.json`,
   canonicalRegistry: `${base}/generated/canonical-registry.json`,
   evidenceResolutionManifest: `${base}/generated/evidence-resolution-manifest.json`,
@@ -47,9 +48,12 @@ export const architectureV2Paths = Object.freeze({
   officialRegistrySnapshots: `${base}/generated/official-registry-snapshots.json`,
   officialRegistryObservations: `${base}/generated/official-registry-observations.json`,
   installationKnowledgePilot: `${base}/generated/installation-knowledge-pilot.json`,
+  historicalApplianceReference: `${base}/generated/historical-appliance-reference.json`,
+  historicalReferencePublicationManifest: `${base}/generated/historical-reference-publication-manifest.json`,
 });
 
 export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
+  officialRegistrySnapshots: Object.freeze([]),
   evidenceResolutionManifest: Object.freeze([]),
   canonicalRegistry: Object.freeze(['evidenceResolutionManifest']),
   phase10EvidenceBatch: Object.freeze([]),
@@ -60,6 +64,9 @@ export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
   phase10ReviewManifest: Object.freeze(['phase10EvidenceBatch', 'phase10Acquisition']),
   sourceDocuments: Object.freeze(['canonicalRegistry', 'evidenceReviewBundles', 'dimensionReviewManifest', 'spaceReviewManifest', 'phase10ReviewManifest']),
   publicProjection: Object.freeze(['canonicalRegistry', 'evidenceReviewBundles', 'dimensionReviewManifest', 'spaceReviewManifest', 'phase10ReviewManifest']),
+  historicalApplianceReference: Object.freeze(['officialRegistrySnapshots', 'publicProjection']),
+  historicalReferencePublicationManifest: Object.freeze(['historicalApplianceReference']),
+  historicalReplacementAudit: Object.freeze(['historicalReferencePublicationManifest', 'publicProjection']),
 });
 
 export const ARCHITECTURE_V2_BUILD_ORDER = Object.freeze(Object.keys(ARCHITECTURE_V2_BUILD_GRAPH));
