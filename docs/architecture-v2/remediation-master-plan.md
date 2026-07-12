@@ -1,9 +1,17 @@
 # Architecture V2 Remediation Master Plan
 
 Status: active  
-Last updated: 2026-07-11  
+Last updated: 2026-07-12
 Decision owner: FitAppliance repository  
 Audit baseline: [`repository-architecture-audit.md`](./repository-architecture-audit.md)
+Canonical product/data strategy: [`../product-core-brief.md`](../product-core-brief.md)
+
+This document governs the progressive Architecture V2 migration. The product
+brief governs product positioning, source roles, external-data research,
+installation-knowledge scope, Fit outcome semantics, and the post-migration
+roadmap. If an older task or phase document conflicts with the locked principles
+in the product brief, the conflict must be resolved explicitly rather than
+silently reviving a legacy default or publication path.
 
 ## Objective
 

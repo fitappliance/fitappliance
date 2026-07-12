@@ -3,30 +3,33 @@
 
 ---
 
-## Project status (2026-05-06)
+## Project status (2026-07-12)
 
-- ✅ AUDIT-PHASE43A: P1 + P2 fully closed (13/13)
-- ✅ Search experience: carsales-style facet + sort + URL state + mobile sheet + saved search + RTINGS-style compare reports
-- ✅ PWA: service worker versioning, update toast, offline fallback (Phase 43a §3.6)
+- Canonical product memory: [`docs/product-core-brief.md`](docs/product-core-brief.md)
+- Architecture V2 evidence, identity, geometry, and Fit publication paths are live.
+- Historical PDF evidence: 69/69 unique documents have current MinerU structured JSON indexes.
+- Receipt-bound coverage: 21/3,521 products have verified dimensions; zero products are currently eligible for receipt-bound `VERIFIED_FIT`.
 <!-- RETAILER_METRICS_SUMMARY:START -->
 - ✅ Catalog: raw specs catalog: 3,518 products across 4 categories; retailer-verified products: 1,384; verified retailer links: 1,614; live price rows: 1,358
 <!-- RETAILER_METRICS_SUMMARY:END -->
-- ✅ Data trust: claims cleanup, accuracy audits, retailer URL validation, and date-drift guardrails are active
-- 📊 Test coverage: 1,500+ tests passing
+- Production acceptance: zero evidence/publication violations in the 2026-07-12 release audit.
+- Validation baseline: 286 Architecture V2 tests and 1,590 full tests passed at the latest evidence rollout.
 
 ---
 
 ## Data veracity and fit logic
 
-FitAppliance is a pre-purchase fit checker for Australian appliance cavities. It helps screen likely fit problems before a buyer orders, but it is not an installer certification.
+FitAppliance is a pre-purchase fit checker for Australian appliance cavities. It helps screen likely fit problems before a buyer orders, but it is not an installer certification. Product strategy, source roles, installation knowledge, Fit semantics, and the forward roadmap are governed by [`docs/product-core-brief.md`](docs/product-core-brief.md).
 
-The public catalog starts from retailer and product-page data in `public/data/`. Higher-trust rows can carry manufacturer PDF evidence from `data/manual-evidence.json` and `public/data/evidence-index.json`. The evidence tiers used in generated pages are:
+The public catalog starts from timestamped retailer observations and legacy product data. Government registrations, GS1/Icecat data, manufacturer pages, and PDFs enter as candidate claims with different roles. New PDF evidence follows `PDF -> MinerU content_list_v2 JSON -> field claims -> exact-model receipt -> public projection`.
 
-- `Retailer Spec`: dimensions came from retailer or product-page data, and installation clearance is not verified.
-- `Dimensions Verified`: width, height, and depth are backed by approved manufacturer PDF evidence, but clearance is still treated as an estimate.
-- `Verified Fit`: both dimensions and clearance requirements have approved evidence.
+The publication tiers are:
 
-The fit math uses millimetres. It compares the product `w`, `h`, and `d` fields with the user's cavity dimensions. Practical clearance mode is the default: 5mm side clearance on each side, 20mm top clearance, and 10mm rear clearance. Physical mode uses zero clearance. Manufacturer mode uses captured brand or category clearance where available.
+- `Retailer Spec`: retailer or legacy product information; never manufacturer installation truth.
+- `Dimensions Verified`: exact-model receipt-bound W/H/D, while one or more applicable installation, operation, or service fields remain unknown.
+- `Verified Fit`: all applicable hard checks pass using exact-model receipt-bound requirements and adequate user site inputs.
+
+The shared Fit engine uses millimetres and hard tri-state checks. Any hard failure produces `NO_FIT`; missing hard placement evidence produces `INSUFFICIENT_DATA`; unresolved operation/service checks produce `CONDITIONAL_FIT`. Project-wide clearance estimates may support an explicitly estimated comparison, but they cannot create `Dimensions Verified` or `Verified Fit`. Unknown values remain unknown rather than becoming zero or a default.
 
 Use these checks before publishing pages that answer sizing questions:
 
@@ -35,6 +38,8 @@ npm run audit-dimension-axis -- --strict
 npm run audit-data-accuracy
 npm run audit-pdf-evidence -- --output /tmp/fitappliance-pdf-evidence-audit
 npm run validate-schema
+npm run test:architecture-v2
+npm run build:architecture-v2
 ```
 
 Known limits are documented rather than hidden. Prices and stock can change after capture. Retailer pages do not count as manufacturer dimensional evidence. Door swing, hoses, power sockets, floor level, skirting, and delivery access can still make a nominal fit fail in a real home. Buyers should remeasure the finished cavity and check the installation manual before ordering.
@@ -168,27 +173,18 @@ vercel --prod
 
 ---
 
-## ⚡ Step 4: Energy Rating Data Source
+## ⚡ Step 4: Australian Government Product Registries
 
-FitAppliance uses Australian Government Energy Rating records for appliance dimensions, star ratings, and annual energy consumption where available.
+The authoritative public starting points are:
 
-```
-Base URL: https://api.gov.au/service/gems
-Documentation: https://api.gov.au
-```
+- [Energy Rating registered appliance and equipment data](https://www.energyrating.gov.au/about-us/gems-regulator/registered-appliance-and-equipment-data)
+- [Data.gov.au Energy Rating household-appliance dataset](https://data.gov.au/data/dataset/energy-rating-for-household-appliances)
+- [WELS Product Register](https://wels-public-register.environment.gov.au/)
+- [EESS Registration Database](https://www.eess.gov.au/registration/eess-registration-database/)
 
-If a future official API is adopted, keep public copy neutral unless the site can prove the freshness and coverage of that feed:
+The Energy Rating dataset publishes current category CSV resources through its CKAN dataset record. Do not use the former `api.gov.au/service/gems` example; it was not a verified production API.
 
-```javascript
-// Replace static star ratings with API call:
-async function getEnergyRating(brand, model) {
-  const res = await fetch(
-    `https://api.gov.au/service/gems/products?brand=${encodeURIComponent(brand)}&model=${encodeURIComponent(model)}`
-  );
-  const data = await res.json();
-  return data.results[0]?.energy_stars || null;
-}
-```
+Government registrations are strong identity, registration, market, energy, and water-efficiency sources. Their dimensions remain candidate evidence. The 2026-07-12 quality audit found exact-model dimension disagreements, duplicate conflicts, and width/height inversions, so no government W/H/D field may overwrite receipt-bound manufacturer evidence without the Architecture V2 conflict and axis gates. See [`docs/product-core-brief.md`](docs/product-core-brief.md) for the measured baseline and ingestion roadmap.
 
 ---
 
