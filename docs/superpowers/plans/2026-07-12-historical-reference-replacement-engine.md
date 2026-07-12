@@ -149,9 +149,9 @@
 
 - [x] Run focused tests, `npm test`, `npm run lint`, schema validation and production build.
 - [x] Run one final correctness/security/regression review and fix validated findings.
-- [ ] Commit only worktree-owned files with conventional commits and integrate into `main` without touching the user's dirty files.
-- [ ] Push and deploy the exact final commit.
-- [ ] Verify Vercel commit metadata, apex/www behavior, cavity search, historical lookup lazy request, direct replacement deltas, current-only results and zero public Fit leakage.
+- [x] Commit only worktree-owned files with conventional commits and integrate into `main` without touching the user's dirty files.
+- [x] Push and deploy the exact final commit.
+- [x] Verify Vercel commit metadata, apex/www behavior, cavity search, historical lookup lazy request, direct replacement deltas, current-only results and zero public Fit leakage.
 - [x] Update this plan with measured results and remaining evidence gaps.
 
 **Gate:** deployment is `READY/PROMOTED`, live behavior matches the final SHA and every objective requirement has direct evidence.
@@ -171,4 +171,5 @@
 - Backfill regression canary: the same retailer update exposed adjacent same-brand fit-check samples with 0.895 text similarity; selection now preserves the chosen `topN` while interleaving brands where possible, and the original `<0.8` uniqueness gate passes without weakening its threshold.
 - Accessibility/layout: aria-live status is polite; Space, Tab and Enter complete registry confirmation; 1,440px desktop and 390px mobile layouts have no horizontal overflow or control overlap.
 - Gates: 1,952 tests passed; lint passed; schema validation checked 2,334 pages and 7,145 JSON-LD blocks with zero errors; indexability audit passed; production build passed with `FITAPPLIANCE_STORAGE_ROOT` unset.
-- Remaining evidence gap: exact-SHA commit/push/deploy, Vercel metadata and live apex/www/runtime verification.
+- Release evidence: the Git deployment reached `READY` in `syd1`; apex redirects permanently to `www`; the public fridge reference hash matches its manifest and carries `X-Robots-Tag: noindex`; fresh cavity sessions load no historical file; replacement sessions load one selected category, preserve confirmation gates and expose direct W/H/D deltas for current-only products.
+- Remaining evidence gap: none for the requested release. Future government-registry and retailer refreshes remain subject to the documented hash-drift rebuild gate.
