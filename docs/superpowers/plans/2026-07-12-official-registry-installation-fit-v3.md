@@ -92,14 +92,27 @@
 
 **Primary skills:** requesting-code-review, verification-before-completion, Vercel deployment and browser verification
 
-- [ ] Run focused tests, Architecture V2 regressions, lint, build, PDF JSON-first audit and fit publication audit.
-- [ ] Run an adversarial review for axis swaps, suffix aliases, stale snapshots, malformed CSV, rights gaps, missing external drive and public projection leakage.
-- [ ] Prove public catalog and Fit outputs are unchanged except for explicitly approved non-runtime documentation or policy artifacts.
-- [ ] Commit only task-owned files with a conventional message and push `main`.
-- [ ] Deploy the exact commit and verify aliases, live product search, representative product pages and zero false public Fit promotion.
-- [ ] Update the design and plan with measured results, residual risks and next-scale thresholds.
+- [x] Run focused tests, Architecture V2 regressions, lint, build, PDF JSON-first audit and fit publication audit.
+- [x] Run an adversarial review for axis swaps, suffix aliases, stale snapshots, malformed CSV, rights gaps, missing external drive and public projection leakage.
+- [x] Prove public catalog and Fit outputs are unchanged except for explicitly approved non-runtime documentation or policy artifacts.
+- [x] Commit only task-owned files with a conventional message and push `main`.
+- [x] Deploy the exact commit and verify aliases, live product search, representative product pages and zero false public Fit promotion.
+- [x] Update the design and plan with measured results, residual risks and next-scale thresholds.
 
 **Gate:** all checks pass, deployment is READY, live verification matches the commit, and shadow artifacts remain non-public.
+
+### Measured execution results (2026-07-12)
+
+- Implementation commit `438539a3dbffa856f35fbbfa1de2651d9b923fa8` was pushed to `main` and deployed as Vercel deployment `dpl_5WQbWV8m3vGMZDRBZKnhfKP3xkRn` (`READY`, `PROMOTED`). Vercel build logs confirm that exact Git SHA.
+- Immutable acquisition captured four official-source objects totalling 18,046,278 bytes. A second acquisition reused all four content-addressed objects and reproduced byte-identical repository manifests.
+- Normalization retained 3,706 current Australian refrigerator registrations, 1,285 current Australian dishwasher registrations and 696 WELS dishwasher records marked for sale.
+- Exact-model reconciliation classified 1,258 catalog products as consistent, 203 as dimension conflicts, 27 as suspected axis permutations, 23 as registry-internal conflicts, 74 as exact matches without dimensions and 1,103 as having no exact registry match. No registry value was promoted to public geometry.
+- The frozen pilot contains 50 refrigerators and 50 dishwashers across 12 brands. All 100 have deterministic research cases; zero fields satisfy the stricter Fit V3 receipt contract and zero products are eligible for `VERIFIED_FIT`.
+- Test and build gates passed: 1,906 tests, 314 Architecture V2 tests, lint, production build, PDF JSON-first audit, Fit publication audit and both repository-only and external-storage Fit V3 audits. The production build reported zero publication violations, zero public hash drift, zero dimension promotions and zero false verified outcomes.
+- Live `public/data/appliances.json` is byte-identical to the local approved projection (`sha256:504a03ffa665ba81003b0c57881c215ca0d51dc08e82f4de414c3cdb0f02277b`), contains 3,521 products and exposes no Fit V3 or official-registry keys and no `VERIFIED_FIT` value.
+- Browser verification passed for the 900 x 1900 x 800 mm refrigerator query and representative Westinghouse refrigerator and Omega dishwasher product pages. Both product pages returned 200, exposed the exact model, used the `www` canonical and produced no console errors. The apex host permanently redirects to `www` while preserving path and query.
+- Remaining constraints are explicit: government registries remain identity and baseline-dimension evidence rather than installation truth; GS1/Icecat exact-AU-SKU coverage is unmeasured pending provider responses; 11 of 12 pilot brands still need a confirmed structured-data route; and all 100 models remain quarantined from Fit V3 release until current exact-model installation receipts and precise site inputs exist.
+- `npm audit --omit=dev --audit-level=high` found no high-severity issue; one pre-existing moderate `qs` advisory remains outside this pilot. The documentation audit still reports four pre-existing stale references in the older PDF/Fit-engine plan and no new drift from this work.
 
 ## Scale Decision After Pilot
 
