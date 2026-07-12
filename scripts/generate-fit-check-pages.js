@@ -175,6 +175,21 @@ function byPriority(left, right) {
   return productName(left).localeCompare(productName(right));
 }
 
+function diversifyAdjacentBrands(products) {
+  const rows = [...products];
+  const brandKey = (product) => String(product?.brand ?? '').trim().toLowerCase();
+  for (let index = 1; index < rows.length; index += 1) {
+    const previousBrand = brandKey(rows[index - 1]);
+    if (!previousBrand || brandKey(rows[index]) !== previousBrand) continue;
+    const swapIndex = rows.findIndex((product, candidateIndex) => (
+      candidateIndex > index && brandKey(product) && brandKey(product) !== previousBrand
+    ));
+    if (swapIndex < 0) continue;
+    [rows[index], rows[swapIndex]] = [rows[swapIndex], rows[index]];
+  }
+  return rows;
+}
+
 function selectFitCheckCombinations(catalog, options = {}) {
   const topN = Number.isFinite(Number(options.topN)) ? Number(options.topN) : 200;
   const cavityWidths = Array.isArray(options.cavityWidths) && options.cavityWidths.length > 0
@@ -182,11 +197,11 @@ function selectFitCheckCombinations(catalog, options = {}) {
     : [...DEFAULT_CAVITY_WIDTHS];
   const limit = Number.isFinite(Number(options.limit)) ? Number(options.limit) : Infinity;
   const blockedProductIds = options.blockedProductIds instanceof Set ? options.blockedProductIds : new Set();
-  const products = [...(Array.isArray(catalog) ? catalog : [])]
+  const products = diversifyAdjacentBrands([...(Array.isArray(catalog) ? catalog : [])]
     .filter((product) => Number.isFinite(Number(product?.w)) && product.w > 0)
     .filter((product) => !blockedProductIds.has(product?.id))
     .sort(byPriority)
-    .slice(0, topN);
+    .slice(0, topN));
 
   const combinations = [];
   for (const product of products) {

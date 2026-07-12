@@ -167,6 +167,8 @@
 - Cross-mode state canary: changing appliance category clears the prior category's old-model identity and dimensions; manually editing an accepted lookup removes stale model provenance.
 - Matching canary: manual dishwasher dimensions 598x850x610mm retain a current product with `D +2mm`; rendered replacement rows contain direct deltas and no Fit score, clearance bar or fixed delivery buffer.
 - Runtime geometry canary: `HRTF206` ranks as 550x1456x562mm from `geometry_v2`, not its stale legacy 550x1410x490mm fields; replacement URLs use `sort=closest-size`.
+- Concurrent-catalog canary: retailer backfill commit `5e0650e78` changed the V2 public projection; the first build failed with `HISTORICAL_CATALOG_SNAPSHOT_STALE`, then passed only after the historical receipt was rebuilt against the new catalog hash. Public reference counts and content hashes remained stable.
+- Backfill regression canary: the same retailer update exposed adjacent same-brand fit-check samples with 0.895 text similarity; selection now preserves the chosen `topN` while interleaving brands where possible, and the original `<0.8` uniqueness gate passes without weakening its threshold.
 - Accessibility/layout: aria-live status is polite; Space, Tab and Enter complete registry confirmation; 1,440px desktop and 390px mobile layouts have no horizontal overflow or control overlap.
 - Gates: 1,952 tests passed; lint passed; schema validation checked 2,334 pages and 7,145 JSON-LD blocks with zero errors; indexability audit passed; production build passed with `FITAPPLIANCE_STORAGE_ROOT` unset.
 - Remaining evidence gap: exact-SHA commit/push/deploy, Vercel metadata and live apex/www/runtime verification.
