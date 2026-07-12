@@ -18,7 +18,6 @@ const DEFAULT_PRECACHE = [
   '/scripts/sw-register.js'
 ];
 const VERSIONED_CACHE_PREFIXES = ['app-shell-', 'static-', 'data-'];
-const DATA_MAX_AGE_MS = 60 * 60 * 1000;
 
 function isVersionedCacheName(key) {
   return VERSIONED_CACHE_PREFIXES.some((prefix) => String(key ?? '').startsWith(prefix));
@@ -96,17 +95,33 @@ function cloneForCache(response, nowMs, maxAgeMs) {
   });
 }
 
-async function fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs }) {
-  const response = await fetchFn(request);
+function createReloadRequest(request) {
+  if (typeof Request !== 'undefined') {
+    try {
+      return new Request(request, { cache: 'reload' });
+    } catch {
+      // Test doubles and legacy browsers fall through to a request-shaped copy.
+    }
+  }
+  return { ...request, cache: 'reload' };
+}
+
+async function fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs, bypassHttpCache = false }) {
+  const networkRequest = bypassHttpCache ? createReloadRequest(request) : request;
+  const response = await fetchFn(networkRequest);
   if (response?.ok) {
-    await cache.put(request, cloneForCache(response, nowFn(), maxAgeMs));
+    try {
+      await cache.put(request, cloneForCache(response, nowFn(), maxAgeMs));
+    } catch {
+      // Cache Storage is an optimisation; a valid network response remains authoritative.
+    }
   }
   return response;
 }
 
 async function networkFirst({ request, cache, fetchFn, nowFn = Date.now }) {
   try {
-    return await fetchAndCache({ request, cache, fetchFn, nowFn });
+    return await fetchAndCache({ request, cache, fetchFn, nowFn, bypassHttpCache: true });
   } catch {
     const cached = await cache.match(request);
     if (cached) return cached;
@@ -120,15 +135,16 @@ async function cacheFirstStaleWhileRevalidate({
   fetchFn,
   waitUntil = () => {},
   nowFn = Date.now,
-  maxAgeMs = 0
+  maxAgeMs = 0,
+  bypassHttpCache = false
 }) {
   const cached = await cache.match(request);
   if (cached && isCachedResponseFresh(cached, nowFn(), maxAgeMs)) {
-    waitUntil(fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs }).catch(() => null));
+    waitUntil(fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs, bypassHttpCache }).catch(() => null));
     return cached;
   }
   try {
-    return await fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs });
+    return await fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs, bypassHttpCache });
   } catch {
     if (cached) return cached;
     throw new Error('network_unavailable');
@@ -152,14 +168,7 @@ async function handleServiceWorkerRequest({
   }
   if (isDataRequest(url)) {
     const cache = await cacheStorage.open(cacheNames.data);
-    return cacheFirstStaleWhileRevalidate({
-      request,
-      cache,
-      fetchFn,
-      waitUntil,
-      nowFn,
-      maxAgeMs: DATA_MAX_AGE_MS
-    });
+    return networkFirst({ request, cache, fetchFn, nowFn });
   }
   if (isStaticRequest(request, url)) {
     const cache = await cacheStorage.open(cacheNames.static);
@@ -229,7 +238,6 @@ const STATIC_CACHE = \`static-\${CACHE_VERSION}\`;
 const DATA_CACHE = \`data-\${CACHE_VERSION}\`;
 const PRECACHE = ${precacheJson};
 const VERSIONED_CACHE_PREFIXES = ${JSON.stringify(VERSIONED_CACHE_PREFIXES)};
-const DATA_MAX_AGE_MS = ${DATA_MAX_AGE_MS};
 const CACHE_NAMES = {
   appShell: APP_SHELL_CACHE,
   static: STATIC_CACHE,
@@ -312,17 +320,33 @@ function cloneForCache(response, nowMs, maxAgeMs) {
   });
 }
 
-async function fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs }) {
-  const response = await fetchFn(request);
+function createReloadRequest(request) {
+  if (typeof Request !== 'undefined') {
+    try {
+      return new Request(request, { cache: 'reload' });
+    } catch {
+      // Test doubles and legacy browsers fall through to a request-shaped copy.
+    }
+  }
+  return { ...request, cache: 'reload' };
+}
+
+async function fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs, bypassHttpCache = false }) {
+  const networkRequest = bypassHttpCache ? createReloadRequest(request) : request;
+  const response = await fetchFn(networkRequest);
   if (response?.ok) {
-    await cache.put(request, cloneForCache(response, nowFn(), maxAgeMs));
+    try {
+      await cache.put(request, cloneForCache(response, nowFn(), maxAgeMs));
+    } catch {
+      // Cache Storage is an optimisation; a valid network response remains authoritative.
+    }
   }
   return response;
 }
 
 async function networkFirst({ request, cache, fetchFn, nowFn = Date.now }) {
   try {
-    return await fetchAndCache({ request, cache, fetchFn, nowFn });
+    return await fetchAndCache({ request, cache, fetchFn, nowFn, bypassHttpCache: true });
   } catch {
     const cached = await cache.match(request);
     if (cached) return cached;
@@ -336,15 +360,16 @@ async function cacheFirstStaleWhileRevalidate({
   fetchFn,
   waitUntil = () => {},
   nowFn = Date.now,
-  maxAgeMs = 0
+  maxAgeMs = 0,
+  bypassHttpCache = false
 }) {
   const cached = await cache.match(request);
   if (cached && isCachedResponseFresh(cached, nowFn(), maxAgeMs)) {
-    waitUntil(fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs }).catch(() => null));
+    waitUntil(fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs, bypassHttpCache }).catch(() => null));
     return cached;
   }
   try {
-    return await fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs });
+    return await fetchAndCache({ request, cache, fetchFn, nowFn, maxAgeMs, bypassHttpCache });
   } catch {
     if (cached) return cached;
     throw new Error('network_unavailable');
@@ -368,14 +393,7 @@ async function handleServiceWorkerRequest({
   }
   if (isDataRequest(url)) {
     const cache = await cacheStorage.open(cacheNames.data);
-    return cacheFirstStaleWhileRevalidate({
-      request,
-      cache,
-      fetchFn,
-      waitUntil,
-      nowFn,
-      maxAgeMs: DATA_MAX_AGE_MS
-    });
+    return networkFirst({ request, cache, fetchFn, nowFn });
   }
   if (isStaticRequest(request, url)) {
     const cache = await cacheStorage.open(cacheNames.static);
@@ -390,7 +408,7 @@ async function handleServiceWorkerRequest({
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
     const cache = await caches.open(APP_SHELL_CACHE);
-    await cache.addAll(PRECACHE);
+    await cache.addAll(PRECACHE.map((url) => new Request(url, { cache: 'reload' })));
     await self.skipWaiting();
   })());
 });
@@ -442,7 +460,6 @@ if (require.main === module) {
 
 module.exports = {
   DEFAULT_PRECACHE,
-  DATA_MAX_AGE_MS,
   VERSIONED_CACHE_PREFIXES,
   buildVersion,
   cacheFirstStaleWhileRevalidate,

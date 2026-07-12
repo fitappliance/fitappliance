@@ -26,6 +26,7 @@ test('phase 43a sw: install and activate immediately promote the new worker', ()
   assert.match(source, /self\.skipWaiting\(\)/);
   assert.match(source, /self\.clients\.claim\(\)/);
   assert.match(source, /cleanupVersionedCaches\(caches,\s*CACHE_VERSION\)/);
+  assert.match(source, /new Request\(url,\s*\{\s*cache:\s*'reload'\s*\}\)/);
 });
 
 test('phase 43a sw: activate cleanup deletes old versioned caches and preserves current caches', async () => {

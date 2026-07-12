@@ -5,15 +5,16 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 const { handleServiceWorkerRequest } = require('../scripts/generate-sw.js');
 
-function response(label, { ok = true } = {}) {
+function response(label, { ok = true, fetchedAt = null } = {}) {
   return {
     label,
     ok,
     clone() {
-      return response(`${label}:clone`, { ok });
+      return response(`${label}:clone`, { ok, fetchedAt });
     },
     headers: {
-      get() {
+      get(name) {
+        if (name?.toLowerCase() === 'x-fitappliance-fetched-at') return fetchedAt;
         return null;
       }
     }
@@ -68,16 +69,21 @@ test('phase 43a sw: HTML requests prefer network and update app shell cache', as
   const cacheStorage = createCacheStorage({
     [cacheNames.appShell]: new Map([[req.url, response('cached-html')]])
   });
+  let networkRequest;
 
   const result = await handleServiceWorkerRequest({
     request: req,
     cacheStorage,
-    fetchFn: async () => response('network-html'),
+    fetchFn: async (incoming) => {
+      networkRequest = incoming;
+      return response('network-html');
+    },
     locationOrigin: 'https://www.fitappliance.com.au',
     cacheNames
   });
 
   assert.equal(result.label, 'network-html');
+  assert.equal(networkRequest.cache, 'reload');
   assert.deepEqual(cacheStorage.puts, [{ cacheName: cacheNames.appShell, url: req.url, response: 'network-html:clone' }]);
 });
 
@@ -109,17 +115,22 @@ test('hotfix sw: UI script and style assets prefer network over stale static cac
     [cacheNames.static]: new Map([[req.url, response('cached-script')]])
   });
   const background = [];
+  let networkRequest;
 
   const result = await handleServiceWorkerRequest({
     request: req,
     cacheStorage,
-    fetchFn: async () => response('network-script'),
+    fetchFn: async (incoming) => {
+      networkRequest = incoming;
+      return response('network-script');
+    },
     locationOrigin: 'https://www.fitappliance.com.au',
     waitUntil: (promise) => background.push(promise),
     cacheNames
   });
 
   assert.equal(result.label, 'network-script');
+  assert.equal(networkRequest.cache, 'reload');
   assert.equal(background.length, 0);
   assert.deepEqual(cacheStorage.puts, [{ cacheName: cacheNames.static, url: req.url, response: 'network-script:clone' }]);
 });
@@ -153,15 +164,70 @@ test('phase 43a sw: data JSON uses the data cache namespace', async () => {
     destination: ''
   });
   const cacheStorage = createCacheStorage();
+  let networkRequest;
+
+  const result = await handleServiceWorkerRequest({
+    request: req,
+    cacheStorage,
+    fetchFn: async (incoming) => {
+      networkRequest = incoming;
+      return response('network-data');
+    },
+    locationOrigin: 'https://www.fitappliance.com.au',
+    cacheNames
+  });
+
+  assert.equal(result.label, 'network-data');
+  assert.equal(networkRequest.cache, 'reload');
+  assert.deepEqual(cacheStorage.puts, [{ cacheName: cacheNames.data, url: req.url, response: 'network-data:clone' }]);
+});
+
+test('release safety sw: data JSON prefers revalidated network data over a fresh worker cache hit', async () => {
+  const req = request('https://www.fitappliance.com.au/data/fridges.json');
+  const cacheStorage = createCacheStorage({
+    [cacheNames.data]: new Map([[req.url, response('cached-data', { fetchedAt: '2000' })]])
+  });
+  const background = [];
 
   const result = await handleServiceWorkerRequest({
     request: req,
     cacheStorage,
     fetchFn: async () => response('network-data'),
     locationOrigin: 'https://www.fitappliance.com.au',
+    waitUntil: (promise) => background.push(promise),
+    nowFn: () => 2001,
     cacheNames
   });
 
   assert.equal(result.label, 'network-data');
-  assert.deepEqual(cacheStorage.puts, [{ cacheName: cacheNames.data, url: req.url, response: 'network-data:clone' }]);
+  assert.equal(background.length, 0);
+});
+
+test('release safety sw: a cache write failure cannot replace a valid network response with stale UI', async () => {
+  const req = request('https://www.fitappliance.com.au/scripts/search-core.js', {
+    destination: 'script'
+  });
+  const cached = response('cached-script');
+  const cacheStorage = {
+    async open() {
+      return {
+        async match() {
+          return cached;
+        },
+        async put() {
+          throw new Error('quota exceeded');
+        }
+      };
+    }
+  };
+
+  const result = await handleServiceWorkerRequest({
+    request: req,
+    cacheStorage,
+    fetchFn: async () => response('network-script'),
+    locationOrigin: 'https://www.fitappliance.com.au',
+    cacheNames
+  });
+
+  assert.equal(result.label, 'network-script');
 });

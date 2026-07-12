@@ -166,13 +166,12 @@ test('vercel production config: current GSC 404 examples have durable redirects'
   );
 });
 
-test('vercel production config: runtime data and evidence files have bounded CDN caching', () => {
+test('vercel production config: runtime data revalidates while immutable evidence keeps bounded caching', () => {
   const config = loadVercelConfig();
 
   const dataRule = findHeaderRule(config, '/data/:path*');
   const dataCache = headerValue(dataRule, 'Cache-Control');
-  assert.match(dataCache, /max-age=86400/);
-  assert.match(dataCache, /stale-while-revalidate=604800/);
+  assert.equal(dataCache, 'public, max-age=0, must-revalidate');
   assert.equal(headerValue(dataRule, 'X-Robots-Tag'), 'noindex');
 
   const evidenceRule = findHeaderRule(config, '/pdf-evidence/:path*');
@@ -182,14 +181,29 @@ test('vercel production config: runtime data and evidence files have bounded CDN
   assert.equal(headerValue(evidenceRule, 'X-Robots-Tag'), 'noindex');
 });
 
-test('vercel production config: JavaScript modules are not treated as indexable pages', () => {
+test('vercel production config: runtime UI assets revalidate and JavaScript stays non-indexable', () => {
   const config = loadVercelConfig();
 
   const scriptsRule = findHeaderRule(config, '/scripts/:path*');
   const scriptCache = headerValue(scriptsRule, 'Cache-Control');
-  assert.match(scriptCache, /max-age=86400/);
-  assert.match(scriptCache, /stale-while-revalidate=604800/);
+  assert.equal(scriptCache, 'public, max-age=0, must-revalidate');
   assert.equal(headerValue(scriptsRule, 'X-Robots-Tag'), 'noindex');
+
+  for (const source of ['/styles.css', '/styles-deferred.css', '/public/:path*']) {
+    assert.equal(
+      headerValue(findHeaderRule(config, source), 'Cache-Control'),
+      'public, max-age=0, must-revalidate',
+      `${source} must not pin an old release in the browser HTTP cache`,
+    );
+  }
+});
+
+test('vercel production config: the service worker script always revalidates', () => {
+  const config = loadVercelConfig();
+  const rule = findHeaderRule(config, '/service-worker.js');
+
+  assert.equal(headerValue(rule, 'Cache-Control'), 'public, max-age=0, must-revalidate');
+  assert.equal(headerValue(rule, 'Service-Worker-Allowed'), '/');
 });
 
 test('vercel production config: immutable generated media avoids repeated bandwidth', () => {
