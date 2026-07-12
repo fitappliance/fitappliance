@@ -103,7 +103,7 @@ The machine-readable source of truth is
 ## Verification
 
 - Architecture V2 tests: 258 passed.
-- Main test suite: 1,583 passed.
+- Main test suite: 1,588 passed.
 - Build audit: 266 files checked, zero direct PDF text extractors.
 - Fit publication audit: 3,521 products, zero publication violations.
 - Real acceptance: 10/10 accepted, with eight PDF sources and two exact
@@ -112,6 +112,31 @@ The machine-readable source of truth is
   rows with zero console errors and no horizontal overflow. Every result in the
   tested default-clearance search displayed `Estimated clearance`; none showed
   an unsupported `Verified Fit` badge or the former `Excellent fit` copy.
+
+## Production Release Verification
+
+- Core evidence and Fit changes were merged and deployed from `45428b0a4`;
+  release-cache hardening followed in `88a7d0f7e` and `28173d209`.
+- Verified behavior deployment `dpl_H19SUtn7wQ3ye4ryQfydyvmTKHZG` was Ready on
+  the canonical `https://www.fitappliance.com.au` host. The apex host retained
+  its permanent redirect to `www`.
+- The production worker exposed cache version `28173d2`. Worker, JavaScript,
+  CSS, and runtime JSON responses returned `Cache-Control: public, max-age=0,
+  must-revalidate`; immutable generated media retained long-lived caching.
+- A persistent browser session first reproduced the real stale-client failure:
+  worker caches at `45428b0`, 25 visible `Verified Fit` strings, the former
+  `Excellent fit` verdict, and no outcome-first labels.
+- Without unregistering the worker or deleting browser caches, one explicit
+  navigation after the final release caused exactly two document requests: the
+  requested navigation and one guarded `controllerchange` reload. The final
+  page used only `app-shell-28173d2`, `static-28173d2`, and `data-28173d2`.
+- The migrated desktop page rendered 200 `Estimated clearance` outcomes, zero
+  result-level `Verified Fit` labels, zero `Excellent fit` copy, zero console
+  errors, and no horizontal overflow. The 390 x 844 viewport repeated those
+  results with zero clipped result nodes.
+- The live Westinghouse WHE6874BA product page emitted its known approved height
+  requirement while explicitly retaining unknown width and depth clearance;
+  no `nullmm`, `undefinedmm`, `NaNmm`, or unsupported verified claim appeared.
 
 ## Residual Risks
 

@@ -118,7 +118,7 @@
 - [x] Measure discovery, download, MinerU, identity, geometry and fit-decision readiness separately.
 - [x] Test family manuals, regional SKUs, packaged dimensions, grouped axes, conflicting clearances, timeouts, HTML masquerading as PDF and stale receipts.
 - [x] Run final full tests, lint, build, object replay and browser parity checks.
-- [ ] Commit, push, verify the production aliases and record residual unknowns rather than hiding them.
+- [x] Commit, push, verify the production aliases and record residual unknowns rather than hiding them.
 
 ## Acceptance thresholds
 
