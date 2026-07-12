@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { createHash } from 'node:crypto';
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, resolve, sep } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -7,6 +6,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { normalizeEnergyRatingRows } from '../../src/domain/energy-rating-registry.mjs';
 import { buildHistoricalApplianceReference } from '../../src/domain/historical-appliance-reference.mjs';
+import { hashHistoricalCatalogBinding } from '../../src/domain/historical-catalog-binding.mjs';
 import { parseRegistryCsv, verifyRegistrySnapshot } from '../../src/domain/official-registry-snapshot.mjs';
 import brandCanon from '../brand-canon.js';
 
@@ -50,16 +50,12 @@ function snapshotBySourceId(snapshotsDocument) {
 export async function buildHistoricalReferenceFromOfficialSnapshots({
   snapshotsDocument,
   catalog,
-  catalogBytes,
   storageRoot,
   canonicalizeBrand = brandCanon.canonicalizeBrand,
 }) {
   const root = requireStorageRoot(storageRoot);
   if (!catalog || !Array.isArray(catalog.products)) {
     throw new TypeError('public catalog must contain a products array');
-  }
-  if (!Buffer.isBuffer(catalogBytes) && !(catalogBytes instanceof Uint8Array)) {
-    throw new TypeError('catalogBytes are required for receipt binding');
   }
   if (Number.isNaN(Date.parse(snapshotsDocument?.acquiredAt))) {
     throw new TypeError('official registry snapshots acquiredAt must be an ISO timestamp');
@@ -85,7 +81,7 @@ export async function buildHistoricalReferenceFromOfficialSnapshots({
     }));
   }
 
-  const catalogSnapshotSha256 = createHash('sha256').update(catalogBytes).digest('hex');
+  const catalogSnapshotSha256 = hashHistoricalCatalogBinding(catalog);
   return buildHistoricalApplianceReference({
     observations,
     catalogProducts: catalog.products,
@@ -112,14 +108,13 @@ export async function runCli(args = process.argv.slice(2), environment = process
   const snapshotsPath = resolveArchitectureV2Path(repoRoot, 'officialRegistrySnapshots');
   const catalogPath = resolveArchitectureV2Path(repoRoot, 'publicProjection');
   const outputPath = resolveArchitectureV2Path(repoRoot, 'historicalApplianceReference');
-  const [snapshotsBytes, catalogBytes] = await Promise.all([
+  const [snapshotsBytes, catalogText] = await Promise.all([
     readFile(snapshotsPath),
-    readFile(catalogPath),
+    readFile(catalogPath, 'utf8'),
   ]);
   const artifact = await buildHistoricalReferenceFromOfficialSnapshots({
     snapshotsDocument: JSON.parse(snapshotsBytes),
-    catalog: JSON.parse(catalogBytes),
-    catalogBytes,
+    catalog: JSON.parse(catalogText),
     storageRoot,
   });
   await atomicJson(outputPath, artifact);

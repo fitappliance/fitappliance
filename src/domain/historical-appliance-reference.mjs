@@ -87,7 +87,7 @@ function normalizeObservedDimensions(value) {
   return AXES.every((axis) => normalized[axis] !== null) ? normalized : null;
 }
 
-function isRetailerProductPageUrl(value) {
+export function isRetailerProductPageUrl(value) {
   let url;
   try {
     url = new URL(String(value ?? '').trim());
@@ -118,7 +118,7 @@ export function isCurrentRetailProduct(product) {
     ));
 }
 
-function catalogReceiptDimensions(product) {
+export function catalogReceiptDimensions(product) {
   const closed = product?.geometry_v2?.closedEnvelope;
   const height = closed?.heightMm;
   const scalarHeight = Number.isInteger(height)

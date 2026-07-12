@@ -14,11 +14,9 @@ import {
   buildReceiptBoundAcceptanceProjection,
   mergeReceiptBoundAcceptanceProjections,
 } from '../../src/domain/accepted-evidence-publication.mjs';
-import readableSpec from '../common/readable-spec.js';
-import popularityScore from '../common/popularity-score.js';
+import applianceEnrichment from '../enrich-appliances.js';
 
-const { enrichReadableCopy } = readableSpec;
-const { computePriorityScore, inferBrandTier } = popularityScore;
+const { enrichApplianceDocument } = applianceEnrichment;
 
 const root = resolve(new URL('../..', import.meta.url).pathname);
 const registry = JSON.parse(await readFile(resolveArchitectureV2Path(root, 'canonicalRegistry'), 'utf8'));
@@ -134,29 +132,10 @@ const filtered = {
       };
     }),
 };
-const displayReady = {
-  ...filtered,
-  products: filtered.products.map((row) => {
-    const readable = enrichReadableCopy(row, { seriesDictionary });
-    const research = popularityResearch?.products?.[row.id]
-      ?? popularityResearch?.products?.[row.slug]
-      ?? null;
-    const priorityScore = computePriorityScore({
-      ...row,
-      brandTier: inferBrandTier(row.brand),
-    }, {
-      now: popularityResearch?.last_researched ?? catalog.last_updated,
-      verifiedAt: research?.researchedAt ?? catalog.last_updated,
-      research,
-    });
-    return {
-      ...row,
-      displayName: String(row.displayName ?? '').trim() ? row.displayName : readable.displayName,
-      readableSpec: readable.readableSpec,
-      priorityScore,
-    };
-  }),
-};
+const displayReady = enrichApplianceDocument(filtered, {
+  seriesDictionary,
+  popularityResearch,
+});
 const projection = buildPublicProjection(registry, displayReady);
 await writeFile(resolveArchitectureV2Path(root, 'publicProjection'), `${JSON.stringify(projection)}\n`);
 console.log(JSON.stringify({ products: projection.products.length, quarantined: registry.quarantine.length }));

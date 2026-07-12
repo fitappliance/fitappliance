@@ -106,7 +106,7 @@ function fixture() {
     publicBytesByCategory,
     publicMetaBytes,
     publicCatalog: { products: [{ id: 'fridge-current', unavailable: false }] },
-    currentPublicCatalogSha256: 'e'.repeat(64),
+    currentCatalogBindingSha256: 'e'.repeat(64),
     sitemapXml: '<urlset><url><loc>https://www.fitappliance.com.au/</loc></url></urlset>',
     replacementEngineSource: "function matchCurrentProducts() { return 'direct dimensions'; }",
     runtimeReplacementRows: [{
@@ -139,7 +139,7 @@ test('historical replacement audit rejects conflict dimensions, commercial leaka
   input.publicDocuments.fridge.records[0].aliases = [{ brand: 'Wrong Brand', model: 'OLD-1' }];
   input.sitemapXml = '<loc>https://www.fitappliance.com.au/fa_ref_111111111111111111111111</loc>';
   input.runtimeReplacementRows[0].fitDecision = { outcome: 'VERIFIED_FIT' };
-  input.currentPublicCatalogSha256 = 'f'.repeat(64);
+  input.currentCatalogBindingSha256 = 'f'.repeat(64);
   const audit = auditHistoricalReplacement(input);
   assert.equal(audit.ok, false);
   assert.ok(audit.issues.some((issue) => issue.code === 'PUBLIC_CONFLICT_DIMENSIONS'));

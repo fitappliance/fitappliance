@@ -101,7 +101,7 @@ export function auditHistoricalReplacement({
   publicBytesByCategory,
   publicMetaBytes,
   publicCatalog,
-  currentPublicCatalogSha256,
+  currentCatalogBindingSha256,
   sitemapXml,
   replacementEngineSource,
   runtimeReplacementRows,
@@ -115,10 +115,10 @@ export function auditHistoricalReplacement({
       issue(issues, 'REFERENCE_SOURCE_HASH_MISSING', `Missing source hash for ${sourceId}`, { sourceId });
     }
   }
-  if (!/^[a-f0-9]{64}$/.test(String(currentPublicCatalogSha256 ?? ''))) {
-    issue(issues, 'CURRENT_PUBLIC_CATALOG_HASH_MISSING', 'Current public catalog SHA-256 is missing');
-  } else if (reference?.sourceSnapshotHashes?.['fitappliance:catalog'] !== currentPublicCatalogSha256) {
-    issue(issues, 'HISTORICAL_CATALOG_SNAPSHOT_STALE', 'Historical reference was built from a different public catalog snapshot');
+  if (!/^[a-f0-9]{64}$/.test(String(currentCatalogBindingSha256 ?? ''))) {
+    issue(issues, 'CURRENT_CATALOG_BINDING_HASH_MISSING', 'Current catalog binding SHA-256 is missing');
+  } else if (reference?.sourceSnapshotHashes?.['fitappliance:catalog'] !== currentCatalogBindingSha256) {
+    issue(issues, 'HISTORICAL_CATALOG_SNAPSHOT_STALE', 'Historical reference was built from a different semantic catalog binding');
   }
 
   const referenceById = new Map();

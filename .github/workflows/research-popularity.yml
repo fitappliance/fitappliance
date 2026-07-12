@@ -41,17 +41,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/research-popularity.js
 
-      - name: Enrich appliances from popularity research
-        run: node scripts/enrich-appliances.js
-
-      - name: Re-apply manually approved retailer links
-        run: node scripts/enrich-manual-retailers.js
+      - name: Rebuild canonical production artifacts
+        run: npm run build
 
       - name: Synchronize retailer metrics documentation
         run: node scripts/sync-retailer-metrics-docs.js
 
       - name: Validate generated retailer data and documentation
-        run: node --test tests/catalog-data-cleanup.test.mjs tests/retailer-metrics-copy.test.mjs
+        run: |
+          npm run validate-schema
+          npm run audit-indexability-policy
+          node --test tests/catalog-data-cleanup.test.mjs tests/retailer-metrics-copy.test.mjs
 
       - name: Commit data changes
         run: |
@@ -63,7 +63,7 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data data/popularity-research.json README.md docs/display-data-accuracy-audit.md docs/retailer-data-expansion-plan.md docs/promotion-kit.md
+          git add data/architecture-v2/generated/public-catalog-projection.json public/data public/sitemap.xml public/service-worker.js pages/brands pages/compare pages/guides pages/location pages/products reports/schema-validation.json data/popularity-research.json README.md docs/display-data-accuracy-audit.md docs/retailer-data-expansion-plan.md docs/promotion-kit.md
           git diff --cached --quiet && exit 0
           cursor="$(node -p "try { require('./data/popularity-research.json').cursor ?? 'unknown' } catch { 'unknown' }")"
           git commit -m "chore(backfill): retailer sync cursor=${cursor}"

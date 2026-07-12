@@ -6,7 +6,7 @@ import path from 'node:path';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const { enrichAppliances } = require('../scripts/enrich-appliances.js');
+const { enrichApplianceDocument, enrichAppliances } = require('../scripts/enrich-appliances.js');
 
 function makeDoc(products) {
   return {
@@ -216,4 +216,108 @@ test('phase 43a backfill: empty researched retailers do not clear unavailable', 
   const appliances = JSON.parse(fs.readFileSync(path.join(tmpDir, 'public', 'data', 'appliances.json'), 'utf8'));
   assert.equal(appliances.products[0].retailers.length, 0);
   assert.equal(appliances.products[0].unavailable, true);
+});
+
+test('runtime catalog enrichment preserves retailer evidence while applying fresh observations', () => {
+  const product = makeProduct({
+    retailers: [{
+      n: 'The Good Guys',
+      url: 'https://www.thegoodguys.com.au/samsung-dishwasher-dw60bg730fsl',
+      p: 1499,
+      source: 'partnerize-feed',
+      affiliate_url: 'https://prf.hn/click/example',
+      retailer_dimension_hint: { w_mm: 598, h_mm: 815, d_mm: 570 },
+    }],
+    unavailable: false,
+  });
+  const document = enrichApplianceDocument(makeDoc([product]), {
+    seriesDictionary: {},
+    popularityResearch: {
+      last_researched: '2026-07-12',
+      products: {
+        'dishwasher-1': {
+          researchedAt: '2026-07-12',
+          retailersAvailable: 1,
+          retailers: [{
+            n: 'The Good Guys',
+            url: 'https://www.thegoodguys.com.au/samsung-dishwasher-dw60bg730fsl',
+            p: 1299,
+          }],
+        },
+      },
+    },
+  });
+
+  const enriched = document.products[0];
+  assert.equal(enriched.price, 1299);
+  assert.equal(enriched.unavailable, false);
+  assert.equal(enriched.retailers[0].p, 1299);
+  assert.equal(enriched.retailers[0].verified_at, '2026-07-12');
+  assert.equal(enriched.retailers[0].source, 'partnerize-feed');
+  assert.equal(enriched.retailers[0].affiliate_url, 'https://prf.hn/click/example');
+  assert.deepEqual(enriched.retailers[0].retailer_dimension_hint, { w_mm: 598, h_mm: 815, d_mm: 570 });
+});
+
+test('runtime catalog enrichment derives top-level price from canonical retailer data without research', () => {
+  const product = makeProduct({
+    displayName: 'Samsung DW60BG730FSL Series 7 Dishwasher',
+    price: null,
+    retailers: [{
+      n: 'Appliances Online',
+      url: 'https://www.appliancesonline.com.au/product/dw60bg730fsl',
+      p: 1406,
+      verified_at: '2026-07-07',
+      source: 'affiliate-feed',
+    }],
+    unavailable: false,
+  });
+
+  const document = enrichApplianceDocument(makeDoc([product]), {
+    seriesDictionary: {},
+    popularityResearch: { last_researched: '2026-07-12', products: {} },
+  });
+
+  assert.equal(document.products[0].price, 1406);
+  assert.equal(document.products[0].retailers[0].source, 'affiliate-feed');
+  assert.equal(document.products[0].displayName, 'Samsung DW60BG730FSL Series 7 Dishwasher');
+});
+
+test('runtime catalog enrichment keeps unobserved retailers but clears an explicitly unobserved price', () => {
+  const product = makeProduct({
+    retailers: [
+      {
+        n: 'The Good Guys',
+        url: 'https://www.thegoodguys.com.au/samsung-dishwasher-dw60bg730fsl',
+        p: 1299,
+        affiliate_url: 'https://prf.hn/click/example',
+      },
+      {
+        n: 'Appliances Online',
+        url: 'https://www.appliancesonline.com.au/product/dw60bg730fsl',
+        p: 1399,
+      },
+    ],
+    unavailable: false,
+  });
+  const document = enrichApplianceDocument(makeDoc([product]), {
+    seriesDictionary: {},
+    popularityResearch: {
+      last_researched: '2026-07-12',
+      products: {
+        'dishwasher-1': {
+          researchedAt: '2026-07-12',
+          retailers: [{
+            n: 'The Good Guys',
+            url: 'https://www.thegoodguys.com.au/samsung-dishwasher-dw60bg730fsl',
+            p: null,
+          }],
+        },
+      },
+    },
+  });
+
+  assert.equal(document.products[0].retailers.length, 2);
+  assert.equal(document.products[0].retailers[0].p, null);
+  assert.equal(document.products[0].retailers[0].affiliate_url, 'https://prf.hn/click/example');
+  assert.equal(document.products[0].price, 1399);
 });

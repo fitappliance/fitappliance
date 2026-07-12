@@ -53,6 +53,85 @@ function getBestRetailerPrice(retailers) {
   return Math.min(...prices);
 }
 
+function normalizeRetailerName(value) {
+  return String(value ?? '').trim().toLowerCase();
+}
+
+function mergeResearchedRetailers(existingRetailers, researchedRetailers, researchedAt) {
+  const existing = filterVerifiedRetailers(existingRetailers);
+  const researched = filterVerifiedRetailers(researchedRetailers);
+  if (researched.length === 0) return existing;
+
+  const merged = existing.map((retailer) => ({ ...retailer }));
+  for (const observation of researched) {
+    const index = merged.findIndex((retailer) => retailer.url === observation.url);
+    const fallbackIndex = index >= 0 ? index : merged.findIndex((retailer) => (
+      normalizeRetailerName(retailer.n) === normalizeRetailerName(observation.n)
+    ));
+    if (fallbackIndex < 0) {
+      merged.push({
+        ...observation,
+        ...(researchedAt ? { verified_at: researchedAt } : {}),
+      });
+      continue;
+    }
+    const matched = merged[fallbackIndex];
+    merged[fallbackIndex] = {
+      ...matched,
+      ...observation,
+      ...(researchedAt ? { verified_at: researchedAt } : {}),
+    };
+  }
+  return merged;
+}
+
+function enrichApplianceDocument(appliancesDocument, {
+  seriesDictionary = {},
+  popularityResearch = { products: {}, last_researched: null },
+} = {}) {
+  const products = Array.isArray(appliancesDocument?.products) ? appliancesDocument.products : [];
+  const enrichedProducts = products.map((product) => {
+    const baseProduct = {
+      ...product,
+      brand: canonicalizeBrand(product?.brand),
+    };
+    const readable = enrichReadableCopy(baseProduct, { seriesDictionary });
+    const research = findResearchEntry(popularityResearch, product);
+    const nextRetailers = mergeResearchedRetailers(
+      baseProduct.retailers,
+      research?.retailers,
+      research?.researchedAt ?? null,
+    );
+    const nextUnavailable = nextRetailers.length === 0;
+    const nextPrice = getBestRetailerPrice(nextRetailers);
+    const priorityScore = computePriorityScore({
+      ...baseProduct,
+      retailers: nextRetailers,
+      brandTier: inferBrandTier(baseProduct?.brand),
+    }, {
+      now: popularityResearch?.last_researched ?? appliancesDocument?.last_updated,
+      verifiedAt: research?.researchedAt ?? appliancesDocument?.last_updated,
+      research,
+    });
+
+    return {
+      ...baseProduct,
+      retailers: nextRetailers,
+      unavailable: nextUnavailable,
+      price: nextPrice,
+      sponsored: nextRetailers.length > 0 ? baseProduct.sponsored : false,
+      displayName: String(baseProduct.displayName ?? '').trim() ? baseProduct.displayName : readable.displayName,
+      readableSpec: readable.readableSpec,
+      priorityScore,
+    };
+  });
+
+  return {
+    ...appliancesDocument,
+    products: enrichedProducts,
+  };
+}
+
 async function enrichAppliances({
   repoRoot = path.resolve(__dirname, '..'),
   dataDir = path.join(repoRoot, 'public', 'data'),
@@ -67,54 +146,16 @@ async function enrichAppliances({
   await readJson(clearancesPath, {});
   const popularityResearch = await readJson(popularityPath, { products: {}, last_researched: null });
 
-  const products = Array.isArray(appliancesDocument?.products) ? appliancesDocument.products : [];
-  let displayNameCount = 0;
-  let readableSpecCount = 0;
-  let nullSeriesCount = 0;
-
-  const enrichedProducts = products.map((product) => {
-    const baseProduct = {
-      ...product,
-      brand: canonicalizeBrand(product?.brand)
-    };
-    const readable = enrichReadableCopy(baseProduct, { seriesDictionary });
-    const research = findResearchEntry(popularityResearch, product);
-    const researchedRetailers = Array.isArray(research?.retailers) ? filterVerifiedRetailers(research.retailers) : null;
-    const existingRetailers = filterVerifiedRetailers(baseProduct.retailers);
-    const hasResearchedRetailers = Array.isArray(researchedRetailers) && researchedRetailers.length > 0;
-    const nextRetailers = hasResearchedRetailers ? researchedRetailers : existingRetailers;
-    const nextUnavailable = nextRetailers.length > 0 ? false : true;
-    const nextPrice = getBestRetailerPrice(nextRetailers);
-    const priorityScore = computePriorityScore({
-      ...baseProduct,
-      retailers: nextRetailers,
-      brandTier: inferBrandTier(baseProduct?.brand)
-    }, {
-      now: popularityResearch?.last_researched ?? appliancesDocument?.last_updated,
-      verifiedAt: research?.researchedAt ?? appliancesDocument?.last_updated,
-      research
-    });
-
-    if (readable.displayName) displayNameCount += 1;
-    if (readable.readableSpec) readableSpecCount += 1;
-    if (!readable.series) nullSeriesCount += 1;
-
-    return {
-      ...baseProduct,
-      retailers: nextRetailers,
-      unavailable: nextUnavailable,
-      price: nextPrice,
-      sponsored: nextRetailers.length > 0 ? baseProduct.sponsored : false,
-      displayName: readable.displayName,
-      readableSpec: readable.readableSpec,
-      priorityScore
-    };
+  const nextDocument = enrichApplianceDocument(appliancesDocument, {
+    seriesDictionary,
+    popularityResearch,
   });
-
-  const nextDocument = {
-    ...appliancesDocument,
-    products: enrichedProducts
-  };
+  const enrichedProducts = nextDocument.products;
+  const displayNameCount = enrichedProducts.filter((product) => String(product.displayName ?? '').trim()).length;
+  const readableSpecCount = enrichedProducts.filter((product) => String(product.readableSpec ?? '').trim()).length;
+  const nullSeriesCount = enrichedProducts.filter((product) => (
+    !enrichReadableCopy(product, { seriesDictionary }).series
+  )).length;
 
   await writePrettyJson(appliancesPath, nextDocument);
 
@@ -146,7 +187,9 @@ if (require.main === module) {
 }
 
 module.exports = {
+  enrichApplianceDocument,
   findResearchEntry,
   filterVerifiedRetailers,
+  mergeResearchedRetailers,
   enrichAppliances
 };

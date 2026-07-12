@@ -173,3 +173,14 @@
 - Gates: 1,952 tests passed; lint passed; schema validation checked 2,334 pages and 7,145 JSON-LD blocks with zero errors; indexability audit passed; production build passed with `FITAPPLIANCE_STORAGE_ROOT` unset.
 - Release evidence: the Git deployment reached `READY` in `syd1`; apex redirects permanently to `www`; the public fridge reference hash matches its manifest and carries `X-Robots-Tag: noindex`; fresh cavity sessions load no historical file; replacement sessions load one selected category, preserve confirmation gates and expose direct W/H/D deltas for current-only products.
 - Remaining evidence gap: none for the requested release. Future government-registry and retailer refreshes remain subject to the documented hash-drift rebuild gate.
+
+## Post-release reproducibility hardening (2026-07-13)
+
+- A clean production build exposed an older ownership conflict: the scheduled popularity workflow wrote `public/data/appliances.json` directly while Architecture V2 rebuilt the same file from `data/catalog-final.json` and `data/popularity-research.json`.
+- The two paths now share `enrichApplianceDocument`; the scheduled workflow updates research input, rebuilds the canonical runtime projection, audits historical isolation, and commits the generated projection instead of mutating derived catalogs independently.
+- Positive or null prices from an explicitly observed retailer page update that retailer only. Retailers absent from a research result are retained because the legacy research schema cannot distinguish out-of-stock evidence from a fetch failure. Affiliate fields, dimension hints and other evidence metadata survive matching observations.
+- Existing non-empty canonical display names remain authoritative. Generated names are fallback-only, preventing research runs from silently degrading product and comparison page identity copy.
+- Historical staleness now binds a deterministic semantic catalog projection containing exact identity, current-retail state, accepted product-page URLs and receipt-bound geometry evidence. Price, priority, presentation copy and Affiliate metadata no longer invalidate 8,095 historical records.
+- Two consecutive `FITAPPLIANCE_STORAGE_ROOT`-free production builds produced the same complete tracked diff hash. The historical public file hashes and record counts remained unchanged while the internal catalog receipt moved to the semantic binding hash.
+- Final catalogue projection retains 1,616 retailer links, 172 Affiliate rows and 38 retailer dimension hints; 688 price rows remain after explicitly observed null prices removed stale Offer claims.
+- Final gates: 1,960 tests passed; lint passed; 2,334 pages and 6,522 JSON-LD blocks validated with zero errors; sitemap/indexability passed at 1,994 URLs; historical audit issue count is zero.

@@ -15,11 +15,13 @@ test('phase 7 removes legacy runtime files and dual-projection code paths', () =
   assert.equal(existsSync(path.join(root, 'data/architecture-v2/runtime-config.json')), false);
   assert.equal(existsSync(path.join(root, 'src/domain/projection-selector.mjs')), false);
   const publisherSource = readFileSync(path.join(root, 'scripts/architecture-v2/publish-runtime-projection.js'), 'utf8');
+  const projectionBuilderSource = readFileSync(path.join(root, 'scripts/architecture-v2/build-public-projection.mjs'), 'utf8');
   const productGenerator = readFileSync(path.join(root, 'scripts/generate-product-pages.js'), 'utf8');
   assert.doesNotMatch(publisherSource, /FITAPPLIANCE_CATALOG_PROJECTION|rollbackProjection|legacy-public-catalog/);
   assert.match(productGenerator, /architecture-v2['"],\s*'generated['"],\s*'public-catalog-projection\.json/);
   assert.doesNotMatch(productGenerator, /architecture-v2['"],\s*'public-catalog-projection\.json/);
   assert.doesNotMatch(productGenerator, /public-page-projection\.json/);
+  assert.match(projectionBuilderSource, /enrichApplianceDocument/);
 });
 
 test('publisher writes the canonical catalog and consistent category/meta files', async () => {

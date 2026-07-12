@@ -11,6 +11,7 @@ import {
   auditHistoricalReplacement,
 } from '../../src/domain/historical-replacement-audit.mjs';
 import { HISTORICAL_REFERENCE_PUBLIC_FILES } from '../../src/domain/historical-reference-publication.mjs';
+import { hashHistoricalCatalogBinding } from '../../src/domain/historical-catalog-binding.mjs';
 
 function sha256(bytes) {
   return createHash('sha256').update(bytes).digest('hex');
@@ -87,7 +88,7 @@ export async function runHistoricalReplacementAudit({ repoRoot }) {
     publicBytesByCategory,
     publicMetaBytes,
     publicCatalog,
-    currentPublicCatalogSha256: sha256(catalogBytes),
+    currentCatalogBindingSha256: hashHistoricalCatalogBinding(publicCatalog),
     sitemapXml,
     replacementEngineSource,
     runtimeReplacementRows,

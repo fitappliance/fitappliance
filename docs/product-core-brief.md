@@ -621,6 +621,23 @@ Measured release facts:
   dimensions win while the government conflict remains visible internally;
   HDW15F3S1 remains confirmation-only, not auto-fill.
 
+Runtime catalogue ownership:
+
+- `data/catalog-final.json`, Architecture V2 evidence artifacts and
+  `data/popularity-research.json` are build inputs; `public/data/appliances.json`
+  and its category splits are generated runtime projections, not independent
+  databases;
+- scheduled retailer research must rebuild the canonical runtime projection and
+  run the historical replacement audit. It must not write a second competing
+  interpretation directly into public JSON;
+- a successful retailer observation may update that retailer's price and
+  verification date, but matching must preserve Affiliate, dimension-hint and
+  provenance fields. An omitted retailer is not removal evidence because the
+  current research schema cannot distinguish an unavailable page from a fetch
+  failure;
+- canonical non-empty product display names are preserved. Generated display
+  names are fallback-only.
+
 Evidence and lifecycle rules:
 
 - `CATALOG_RECEIPT -> AUTO_FILL` uses exact receipt-bound outside dimensions;
@@ -639,8 +656,14 @@ Refresh and rollback:
 - run official acquisition and `npm run refresh:historical-reference` weekly,
   before a material catalogue release, or when an official resource changes;
 - ordinary builds republish committed derived artifacts and do not require the
-  external drive; they fail if the current catalogue hash no longer matches the
-  historical reference receipt;
+  external drive. Historical staleness is checked against a deterministic
+  semantic binding of exact identity, current-retail state, accepted product-page
+  URLs and receipt-bound geometry evidence;
+- prices, priority scores, presentation copy and Affiliate metadata are excluded
+  from that binding because they do not alter historical lookup identity,
+  lifecycle or accepted W/H/D. Identity, lifecycle, product-page and receipt
+  geometry changes still fail the audit until the historical reference is
+  rebuilt;
 - every refresh must preserve source URL, retrieval time, bytes, SHA-256 and CC
   BY 3.0 AU attribution, then pass the historical replacement audit;
 - rollback by reverting the reference, publication manifest, four public files,

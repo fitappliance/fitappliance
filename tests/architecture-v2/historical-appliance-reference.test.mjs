@@ -320,7 +320,6 @@ test('historical reference build verifies and consumes all four official Energy 
       snapshots,
     },
     catalog: { products: [] },
-    catalogBytes: Buffer.from('{"products":[]}\n'),
     storageRoot,
     canonicalizeBrand: (brand) => brand.replace(/^Brand /, 'Canonical '),
   });

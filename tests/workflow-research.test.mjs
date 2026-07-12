@@ -20,22 +20,21 @@ test('phase 43a backfill: workflow serializes runs with concurrency protection',
   assert.match(workflow, /cancel-in-progress:\s*false/);
 });
 
-test('phase 43a backfill: workflow runs research then enrich and only commits data changes', () => {
+test('phase 43a backfill: workflow rebuilds and commits canonical generated release artifacts', () => {
   const workflowPath = path.join(process.cwd(), '.github', 'workflows', 'research-popularity.yml');
   const workflow = fs.readFileSync(workflowPath, 'utf8');
 
   assert.match(workflow, /Validate required secrets/);
   assert.match(workflow, /GITHUB_TOKEN is required/);
   assert.match(workflow, /node scripts\/research-popularity\.js/);
-  assert.match(workflow, /node scripts\/enrich-appliances\.js/);
-  assert.match(workflow, /node scripts\/enrich-manual-retailers\.js/);
+  assert.match(workflow, /npm run build/);
+  assert.doesNotMatch(workflow, /node scripts\/enrich-appliances\.js/);
+  assert.doesNotMatch(workflow, /node scripts\/enrich-manual-retailers\.js/);
   assert.match(workflow, /node scripts\/sync-retailer-metrics-docs\.js/);
+  assert.match(workflow, /npm run validate-schema/);
+  assert.match(workflow, /npm run audit-indexability-policy/);
   assert.match(workflow, /node --test tests\/catalog-data-cleanup\.test\.mjs tests\/retailer-metrics-copy\.test\.mjs/);
-  assert.match(workflow, /git add public\/data data\/popularity-research\.json README\.md docs\/display-data-accuracy-audit\.md docs\/retailer-data-expansion-plan\.md/);
-  assert.ok(
-    workflow.indexOf('node scripts/enrich-manual-retailers.js') > workflow.indexOf('node scripts/enrich-appliances.js'),
-    'manual retailer links must be re-applied after popularity enrich rewrites split catalogs'
-  );
+  assert.match(workflow, /git add data\/architecture-v2\/generated\/public-catalog-projection\.json public\/data public\/sitemap\.xml public\/service-worker\.js pages\/brands pages\/compare pages\/guides pages\/location pages\/products reports\/schema-validation\.json data\/popularity-research\.json README\.md docs\/display-data-accuracy-audit\.md docs\/retailer-data-expansion-plan\.md/);
   assert.match(workflow, /git diff --cached --quiet/);
   assert.match(workflow, /chore\(backfill\): retailer sync cursor=/);
   assert.match(workflow, /git push/);
