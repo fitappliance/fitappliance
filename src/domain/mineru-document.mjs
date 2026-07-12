@@ -69,7 +69,18 @@ function tableRows(html) {
       rows.push({ label: cells[0], value: cells.slice(1).join(' ') });
     }
   });
-  return rows;
+  return rows.map((row, index) => {
+    if (/^with\s+(?:the\s+)?door\s+(?:closed|open)$/i.test(row.label)
+      && /^depth$/i.test(rows[index - 1]?.label ?? '') && !rows[index - 1]?.value) {
+      return { ...row, label: `Depth ${row.label}` };
+    }
+    if (/^with\s+(?:the\s+)?door\s+(?:closed|open)$/i.test(row.label)
+      && /^with\s+(?:the\s+)?door\s+(?:closed|open)$/i.test(rows[index - 1]?.label ?? '')
+      && /^depth$/i.test(rows[index - 2]?.label ?? '') && !rows[index - 2]?.value) {
+      return { ...row, label: `Depth ${row.label}` };
+    }
+    return row;
+  });
 }
 
 function parseDocument(jsonBytes) {
@@ -169,7 +180,7 @@ function groupedClaim(field, value, row, fragment, page, sequence, measure, sema
     value,
     unit: 'mm',
     label: row.label,
-    quote: normalizedText(`${row.label} ${row.value}`),
+    quote: normalizedText(row.quote ?? `${row.label} ${row.value}`),
     page,
     bbox: [...fragment.bbox],
     fragmentSha256: fragment.fragmentSha256,
@@ -283,6 +294,7 @@ function identitySignals(document, model) {
     for (const item of items) {
       if (!containsExactModel(item.text, model)) continue;
       if (item.type === 'title') signals.push({ type: 'mineru_title_model', value: `${model}:page:${pageIndex + 1}` });
+      if (item.type === 'list') signals.push({ type: 'mineru_list_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
       if (item.type === 'table') signals.push({ type: 'mineru_table_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
       if (item.type === 'text') signals.push({ type: 'mineru_text_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
       if (item.type === 'page_header') {
@@ -291,7 +303,26 @@ function identitySignals(document, model) {
     }
   });
   const unique = new Map(signals.map((signal) => [`${signal.type}\0${signal.value}`, signal]));
+  const headerSignals = signals.filter((signal) => signal.type === 'mineru_page_header_model');
+  if (new Set(headerSignals.map((signal) => signal.value.match(/:page:(\d+)/)?.[1])).size >= 2) {
+    unique.set('mineru_repeated_page_header_model\0document', {
+      type: 'mineru_repeated_page_header_model', value: `${model}:document:repeated-page-header`,
+    });
+  }
   return [...unique.values()].sort((left, right) => left.type.localeCompare(right.type) || left.value.localeCompare(right.value));
+}
+
+function paragraphRows(text) {
+  const strict = /^([A-Za-z][A-Za-z ()/+.-]{0,80})\s+((?:\d+(?:\.\d+)?)(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?\s*(?:mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?))$/i.exec(text);
+  if (strict) return [{ label: normalizedText(strict[1]), value: normalizedText(strict[2]) }];
+  const grouped = /^(.*?\b(?:dimension|dimensions|size)\b.*?\([^)]*[whd]\s*[x×/]\s*[whd]\s*[x×/]\s*[whd][^)]*\))\s*:?[ \t]*((?:\d+(?:\.\d+)?\s*(?:mm|cm)?\s*[x×]\s*){2}\d+(?:\.\d+)?\s*(?:mm|cm))/i.exec(text);
+  if (grouped) return [{ label: normalizedText(grouped[1]), value: normalizedText(grouped[2]), quote: normalizedText(text) }];
+  const suffixed = /^.*?\b(?:dimension|dimensions|size)\b\s*:?[ \t]*(\d+(?:\.\d+)?)\s*(mm|cm)\s*w\s*[x×]\s*(\d+(?:\.\d+)?)\s*\2\s*h\s*[x×]\s*(\d+(?:\.\d+)?)\s*\2\s*d\b/i.exec(text);
+  return suffixed ? [{
+    label: 'Dimensions (W x H x D)',
+    value: `${suffixed[1]} x ${suffixed[3]} x ${suffixed[4]} ${suffixed[2]}`,
+    quote: normalizedText(text),
+  }] : [];
 }
 
 export function parseMineruContentListV2(jsonBytes, options = {}) {
@@ -307,25 +338,22 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   }
   const document = parseDocument(jsonBytes);
   const signals = identitySignals(document, model);
-  const signalTypes = new Set(signals.map((signal) => signal.type));
-  if (!signalTypes.has('mineru_page_header_model') && signalTypes.size < 2) {
-    throw new Error('two structured exact model identity signals required in MinerU JSON');
+  if (!signals.length) {
+    throw new Error('structured exact model identity signal required in MinerU JSON');
   }
   const candidates = new Map(fields.map((field) => [field, []]));
   document.pages.forEach((items, pageIndex) => {
     const pageSignals = signals.filter((signal) => signal.value.includes(`:page:${pageIndex + 1}`));
     const headerScoped = pageSignals.some((signal) => signal.type === 'mineru_page_header_model');
-    if (!headerScoped && new Set(pageSignals.map((signal) => signal.type)).size < 2) return;
+    const pageScoped = pageSignals.length > 0;
+    if (!pageScoped) return;
     for (const fragment of items.filter((item) => (
       (item.type === 'table' && (headerScoped || containsExactModel(item.text, model)))
-      || (headerScoped && ['paragraph', 'text'].includes(item.type))
+      || (pageScoped && ['paragraph', 'text'].includes(item.type))
     ))) {
       const rows = fragment.type === 'table'
         ? fragment.rows
-        : (() => {
-          const match = /^(.*?\D)\s+((?:\d+(?:\.\d+)?)(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?\s*(?:mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?))$/i.exec(fragment.text);
-          return match ? [{ label: normalizedText(match[1]), value: normalizedText(match[2]) }] : [];
-        })();
+        : paragraphRows(fragment.text);
       for (const row of rows) {
         const claims = [
           ...dimensionClaims(row, fragment, pageIndex + 1, fields),

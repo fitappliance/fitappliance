@@ -42,7 +42,7 @@ function digest(value) {
   return createHash('sha256').update(JSON.stringify(canonicalize(value))).digest('hex');
 }
 
-function trustedUrl(value, brand, label) {
+function trustedUrl(value, brand, label, options = {}) {
   let url;
   try { url = new URL(requiredText(value, label)); } catch { throw new TypeError(`${label} invalid`); }
   if (url.protocol !== 'https:' || url.username || url.password) throw new TypeError(`${label} must use trusted HTTPS`);
@@ -52,7 +52,8 @@ function trustedUrl(value, brand, label) {
     throw new TypeError(`${label} is not an official host for ${brand}`);
   }
   const marketPatterns = manufacturerPolicy.marketPathPatterns?.[brandKey(brand)] ?? [];
-  if (marketPatterns.length && !marketPatterns.some((pattern) => new RegExp(pattern, 'i').test(url.pathname))) {
+  const marketTarget = `${url.pathname}${url.search}`;
+  if (!options.hostOnly && marketPatterns.length && !marketPatterns.some((pattern) => new RegExp(pattern, 'i').test(marketTarget))) {
     throw new TypeError(`${label} does not match the Australian market`);
   }
   return url.toString();
@@ -67,6 +68,15 @@ export function isReleasableQuarantineReason(value) {
 export function isOfficialBrandUrl(value, brand) {
   try {
     trustedUrl(value, brand, 'source URL');
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function isOfficialBrandHostUrl(value, brand) {
+  try {
+    trustedUrl(value, brand, 'source URL', { hostOnly: true });
     return true;
   } catch {
     return false;
@@ -197,8 +207,8 @@ function receiptPayload(source, caseIdentity, verifiedAt) {
     caseIdentity: identity,
     source: {
       requestedUrl: trustedUrl(source?.sourceUrl, identity.brand, 'source URL'),
-      finalUrl: trustedUrl(source?.finalUrl, identity.brand, 'final URL'),
-      redirectChain: (source?.redirectChain ?? []).map((url, index) => trustedUrl(url, identity.brand, `redirect ${index + 1}`)),
+      finalUrl: trustedUrl(source?.finalUrl, identity.brand, 'final URL', { hostOnly: true }),
+      redirectChain: (source?.redirectChain ?? []).map((url, index) => trustedUrl(url, identity.brand, `redirect ${index + 1}`, { hostOnly: true })),
       retrievedAt: requiredText(source?.retrievedAt, 'retrieval time'),
       contentSha256: requiredText(source?.contentSha256, 'content SHA-256'),
       objectPath: requiredText(source?.objectPath, 'object path'),
@@ -216,12 +226,12 @@ export function validateTrustedSourceMetadata(source, caseIdentity, options = {}
   const identity = normalizedIdentity(caseIdentity);
   if (source?.authority !== 'manufacturer') throw new TypeError('manufacturer authority required');
   trustedUrl(source?.sourceUrl, identity.brand, 'source URL');
-  trustedUrl(source?.finalUrl, identity.brand, 'final URL');
+  trustedUrl(source?.finalUrl, identity.brand, 'final URL', { hostOnly: true });
   const redirects = source?.redirectChain ?? [];
   if (!Array.isArray(redirects) || redirects.length > resolutionPolicy.maximumRedirects) {
     throw new TypeError('redirect chain invalid');
   }
-  redirects.forEach((url, index) => trustedUrl(url, identity.brand, `redirect ${index + 1}`));
+  redirects.forEach((url, index) => trustedUrl(url, identity.brand, `redirect ${index + 1}`, { hostOnly: true }));
   const retrievedAt = parseTime(source?.retrievedAt, 'retrieval time');
   const asOf = parseTime(options.asOf ?? new Date().toISOString(), 'evaluation time');
   const futureSkew = resolutionPolicy.maximumFutureClockSkewMinutes * 60 * 1000;

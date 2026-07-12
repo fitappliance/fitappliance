@@ -164,6 +164,50 @@ test('MinerU accepts exact-model QRG page headers and preserves an adjustable he
   ]);
 });
 
+test('MinerU rejects merged multi-axis paragraphs but accepts strict individual axis paragraphs', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    { type: 'page_header', content: { page_header_content: [{ type: 'text', content: 'QRG > HDW15F4B1' }] }, bbox: [10, 10, 300, 40] },
+    { type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'Depth 599 mm Height 850 - 895 mm Width 597 mm' }] }, bbox: [10, 50, 700, 80] },
+    { type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'Depth 599 mm' }] }, bbox: [10, 90, 200, 120] },
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Haier', model: 'HDW15F4B1', category: 'dishwasher' },
+    fields: ['closedEnvelope.depthMm'],
+  });
+  assert.equal(parsed.claims[0].value, 599);
+});
+
+test('MinerU parses grouped dimension paragraphs and mixed compact separators', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    { type: 'title', content: { title_content: [{ type: 'text', content: 'DWAU615DB3 dishwasher' }], level: 1 }, bbox: [10, 10, 300, 40] },
+    { type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'Dimensions (W x H x D): 598 x 818x570 mm' }] }, bbox: [10, 50, 700, 80] },
+    { type: 'text', content: { content: 'Model DWAU615DB3' }, bbox: [10, 90, 300, 120] },
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Smeg', model: 'DWAU615DB3', category: 'dishwasher' },
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(parsed.claims.map((claim) => claim.value), [598, 818, 570]);
+});
+
+test('MinerU treats repeated exact-model page headers as independently repeated document scope', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [
+      { type: 'page_header', content: { page_header_content: [{ type: 'text', content: 'QRG > RF605QZUVB1' }] }, bbox: [10, 10, 300, 40] },
+      { type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'Width 905 mm' }] }, bbox: [10, 50, 300, 80] },
+    ],
+    [{ type: 'page_header', content: { page_header_content: [{ type: 'text', content: 'QRG > RF605QZUVB1' }] }, bbox: [10, 10, 300, 40] }],
+  ]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Fisher & Paykel', model: 'RF605QZUVB1', category: 'fridge' },
+    fields: ['closedEnvelope.widthMm'],
+  });
+  assert.ok(parsed.identitySignals.some((signal) => signal.type === 'mineru_repeated_page_header_model'));
+});
+
 test('MinerU parsing fails closed when dimensions lack an explicit axis order', () => {
   const bytes = mineruJson(`<table>
     <tr><td>Model</td><td>HRCD640TBW</td></tr>

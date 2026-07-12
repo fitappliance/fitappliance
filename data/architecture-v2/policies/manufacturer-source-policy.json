@@ -3,8 +3,8 @@
   "policyVersion": "2026-07-11.2",
   "maxEvidenceAgeDays": 400,
   "marketPathPatterns": {
-    "lg": ["^/au(?:/|$)"],
-    "samsung": ["^/au(?:/|$)"]
+    "lg": ["^/au(?:/|$)", "^/content/dam/channel/wcms/au(?:/|$)"],
+    "samsung": ["^/au(?:/|$)", "[?&]CDSite=UNI_AU(?:&|$)"]
   },
   "brands": {
     "artusi": ["artusi.com.au"],

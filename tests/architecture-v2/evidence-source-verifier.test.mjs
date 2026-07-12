@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 
 import {
   createVerificationReceipt,
+  isOfficialBrandUrl,
+  isOfficialBrandHostUrl,
   isSourceFresh,
   validateTrustedSourceMetadata,
   verifyVerificationReceipt,
@@ -78,6 +80,37 @@ test('brand policy rejects self-declared manufacturers and cross-brand redirects
   assert.throws(() => validateTrustedSourceMetadata(source(), {
     ...caseIdentity, brand: 'Samsung',
   }, { asOf: '2026-07-11T15:00:00.000Z' }), /official host/i);
+});
+
+test('official source policy accepts explicit Australian static assets and query market signals', () => {
+  assert.equal(isOfficialBrandUrl(
+    'https://www.lg.com/content/dam/channel/wcms/au/images/clothes-dryers/dvh5/DVH5-08W.pdf',
+    'LG',
+  ), true);
+  assert.equal(isOfficialBrandUrl(
+    'https://downloadcenter.samsung.com/content/manual.pdf?CDSite=UNI_AU&ModelName=DV90BB9440GH',
+    'Samsung',
+  ), true);
+  assert.equal(isOfficialBrandUrl(
+    'https://downloadcenter.samsung.com/content/manual.pdf?CDSite=UNI_US&ModelName=DV90BB9440GH',
+    'Samsung',
+  ), false);
+  assert.equal(isOfficialBrandHostUrl(
+    'https://downloadcenter.samsung.com/content/manual.pdf', 'Samsung',
+  ), true);
+  assert.equal(isOfficialBrandHostUrl('https://evil.example/manual.pdf', 'Samsung'), false);
+});
+
+test('market-scoped requests may redirect within the same official brand host family', () => {
+  const redirected = pdfSource({
+    sourceUrl: 'https://org.downloadcenter.samsung.com/file?CDSite=UNI_AU&ModelName=WHE6874BA',
+    finalUrl: 'https://downloadcenter.samsung.com/content/manual.pdf',
+    redirectChain: ['https://downloadcenter.samsung.com/content/manual.pdf'],
+    identity: { brand: 'Samsung', model: 'WHE6874BA', outcome: 'exact' },
+  });
+  assert.doesNotThrow(() => validateTrustedSourceMetadata(redirected, {
+    brand: 'Samsung', model: 'WHE6874BA', category: 'fridge',
+  }, { asOf: '2026-07-11T15:00:00.000Z' }));
 });
 
 test('retrieval time must be real, non-future, and inside freshness policy', () => {

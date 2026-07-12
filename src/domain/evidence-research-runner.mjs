@@ -4,7 +4,7 @@ import { extractClaimsFromHtml, verifyAndAttestResolutionArtifact } from './evid
 import { recordResearchAttempt } from './evidence-research-state.mjs';
 import { discoverCandidateUrls } from './evidence-source-discovery.mjs';
 import { resolutionFieldsForCase } from './evidence-resolution-loop.mjs';
-import { isOfficialBrandUrl, verifyVerificationReceipt } from './evidence-source-verifier.mjs';
+import { isOfficialBrandHostUrl, isOfficialBrandUrl, verifyVerificationReceipt } from './evidence-source-verifier.mjs';
 import { parseMineruContentListV2 } from './mineru-document.mjs';
 
 const MAX_ARTIFACT_BYTES = 20 * 1024 * 1024;
@@ -47,7 +47,7 @@ export async function fetchOfficialArtifact(requestedUrl, brand, options = {}) {
       const location = response.headers.get('location');
       if (!location) throw new Error('redirect location missing');
       const next = new URL(location, current).toString();
-      if (!isOfficialBrandUrl(next, brand)) throw new Error('redirect escaped official brand hosts');
+      if (!isOfficialBrandHostUrl(next, brand)) throw new Error('redirect escaped official brand hosts');
       redirectChain.push(next);
       current = next;
       continue;
@@ -119,17 +119,26 @@ async function acquireCandidate(caseRecord, candidateUrl, options) {
     if (typeof options.processPdf !== 'function') {
       throw new Error('MinerU PDF processor unavailable');
     }
-    const processed = await options.processPdf(fetched.bytes, { caseRecord, fields });
+    let processed;
+    try {
+      processed = await options.processPdf(fetched.bytes, { caseRecord, fields });
+    } catch (error) {
+      throw new Error(`mineru_conversion:${error.message}`);
+    }
     derivedArtifact = processed?.derivedArtifact;
     derivedArtifactBytes = processed?.jsonBytes;
     if (!derivedArtifact || !derivedArtifactBytes) throw new Error('MinerU PDF processor returned no JSON artifact');
-    claims = parseMineruContentListV2(derivedArtifactBytes, {
-      pdfSha256: hash,
-      parserVersion: derivedArtifact.parserVersion,
-      modelRevision: derivedArtifact.modelRevision,
-      caseIdentity,
-      fields,
-    }).claims;
+    try {
+      claims = parseMineruContentListV2(derivedArtifactBytes, {
+        pdfSha256: hash,
+        parserVersion: derivedArtifact.parserVersion,
+        modelRevision: derivedArtifact.modelRevision,
+        caseIdentity,
+        fields,
+      }).claims;
+    } catch (error) {
+      throw new Error(`claim_extraction:${error.message}`);
+    }
   }
   if (!claims.length) throw new Error('no supported evidence claims extracted');
   const supersedesContentSha256 = (caseRecord.sources ?? [])
@@ -155,13 +164,18 @@ async function acquireCandidate(caseRecord, candidateUrl, options) {
     claims,
     ...(derivedArtifact ? { derivedArtifact } : {}),
   };
-  const attested = verifyAndAttestResolutionArtifact({
-    source,
-    caseIdentity,
-    bytes: fetched.bytes,
-    derivedArtifactBytes,
-    verifiedAt: options.now,
-  });
+  let attested;
+  try {
+    attested = verifyAndAttestResolutionArtifact({
+      source,
+      caseIdentity,
+      bytes: fetched.bytes,
+      derivedArtifactBytes,
+      verifiedAt: options.now,
+    });
+  } catch (error) {
+    throw new Error(`receipt_attestation:${error.message}`);
+  }
   const objects = [{ objectPath: attested.objectPath, bytes: fetched.bytes }];
   if (derivedArtifact) objects.push({ objectPath: derivedArtifact.objectPath, bytes: derivedArtifactBytes });
   return { source: attested, objects, replacesExistingHash: Boolean(unchanged) };

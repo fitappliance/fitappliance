@@ -10,11 +10,13 @@ function urlHasExactModel(value, model) {
   try {
     const url = new URL(value);
     const target = modelKey(model);
-    return url.pathname.split('/').filter(Boolean).some((segment) => {
+    const pathMatch = url.pathname.split('/').filter(Boolean).some((segment) => {
       const decoded = decodeURIComponent(segment);
       const withoutDocumentExtension = decoded.replace(/\.(?:pdf|html?)$/i, '');
       return modelKey(decoded) === target || modelKey(withoutDocumentExtension) === target;
     });
+    const queryMatch = [...url.searchParams.values()].some((queryValue) => modelKey(queryValue) === target);
+    return pathMatch || queryMatch;
   } catch {
     return false;
   }
@@ -32,13 +34,13 @@ export async function discoverCandidateUrls(caseRecord, options = {}) {
   const fetchImpl = options.fetchImpl ?? fetch;
   const maximum = options.maximumSitemapDocuments ?? 12;
   const candidates = new Set();
-  const addCandidate = (value) => {
-    if (isOfficialBrandUrl(value, caseRecord.brand) && urlHasExactModel(value, caseRecord.model)) {
+  const addCandidate = (value, exactModelInUrl = true) => {
+    if (isOfficialBrandUrl(value, caseRecord.brand) && (!exactModelInUrl || urlHasExactModel(value, caseRecord.model))) {
       candidates.add(new URL(value).toString());
     }
   };
-  for (const source of caseRecord.sources ?? []) addCandidate(source.finalUrl ?? source.sourceUrl);
-  for (const value of caseRecord.candidateUrls ?? []) addCandidate(value);
+  for (const source of caseRecord.sources ?? []) addCandidate(source.finalUrl ?? source.sourceUrl, false);
+  for (const value of caseRecord.candidateUrls ?? []) addCandidate(value, false);
 
   const queue = [...new Set(options.sitemapUrls ?? [])];
   const visited = new Set();

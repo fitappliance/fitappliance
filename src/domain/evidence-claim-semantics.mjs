@@ -44,7 +44,7 @@ export function containsExactModel(text, model) {
 
 function quotedNumbers(value) {
   const withoutAngles = value.replace(/\b(?:90|180)\s*(?:degrees?|deg|°)\b/gi, ' ');
-  return (withoutAngles.match(/\b\d+(?:\.\d+)?\b/g) ?? []).map(Number);
+  return (withoutAngles.match(/(?<![\d.])\d+(?:\.\d+)?(?![\d.])/g) ?? []).map(Number);
 }
 
 export function claimFromEvidenceFragment(field, label, quote, context) {
@@ -161,8 +161,8 @@ function assertGroupedClaim(claim, context, rule, combined) {
     throw new TypeError(`grouped axis value does not prove ${claim.field}`);
   }
   const unitPattern = sourceUnit === 'cm'
-    ? /\b(?:cm|centimet(?:re|er)s?)\b/i
-    : /\b(?:mm|millimet(?:re|er)s?)\b/i;
+    ? /(?:^|[^a-z])(?:cm(?=[whd]\b|\b)|centimet(?:re|er)s?\b)/i
+    : /(?:^|[^a-z])(?:mm(?=[whd]\b|\b)|millimet(?:re|er)s?\b)/i;
   if (!unitPattern.test(combined)
     || !sourceValues.every((value) => quotedNumbers(claim.quote).includes(value))) {
     throw new TypeError(`grouped quote does not prove ${claim.field}`);

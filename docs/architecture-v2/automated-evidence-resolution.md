@@ -56,10 +56,28 @@ the stale plumbing flag and proved dimensions, 90-degree door depth, and top
 air space. Side and rear installation values remain unknown. The public object
 is released without the old unapproved fields.
 
+## Major-brand PDF acceptance
+
+The repeatable acceptance batch is declared in
+`data/architecture-v2/reviews/automated/pdf-brand-acceptance-batch.json` and run
+with `npm run accept:pdf-brands`. It checkpoints after every brand, retains the
+PDF and MinerU JSON even when identity or claim verification fails, and never
+publishes its results directly.
+
+The 2026-07-12 run accepted exact-model dimensions for Bosch WAN24126AU,
+Fisher & Paykel RF605QZUVB1, Haier HDW15F4B1, Hisense HRBC137 and Smeg
+DWAU615DB3. LG DVH5-08W and Samsung DV90BB9440GH remained quarantined because
+their downloaded documents did not contain an exact-model structured identity
+signal. Westinghouse WHE5264SC and Electrolux EQE6160BA remained quarantined
+because their dynamic factsheet endpoints exceeded the per-URL network budget.
+The complete machine-readable result is stored in
+`data/architecture-v2/reviews/automated/pdf-brand-acceptance-results.json`.
+
 ## Commands
 
 ```bash
 npm run parse:pdf:mineru -- --input /path/to/manual.pdf --storage-root "$FITAPPLIANCE_STORAGE_ROOT"
+npm run accept:pdf-brands -- --storage-root "$FITAPPLIANCE_STORAGE_ROOT"
 npm run audit:pdf-json-first
 npm run build:evidence-resolution
 npm run verify:evidence-resolution-objects -- --storage-root /Volumes/UGREEN-1TB/FitAppliance

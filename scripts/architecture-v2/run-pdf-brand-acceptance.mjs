@@ -1,0 +1,154 @@
+#!/usr/bin/env node
+
+import { createHash } from 'node:crypto';
+import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
+import { dirname, isAbsolute, resolve, sep } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import { runEvidenceResearchCycle } from '../../src/domain/evidence-research-runner.mjs';
+import { runMineruPdfToJson } from '../../src/domain/mineru-runner.mjs';
+
+const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
+
+function argument(args, name) {
+  const index = args.indexOf(name);
+  return index >= 0 ? args[index + 1] : null;
+}
+
+function resolveWithin(root, relativePath) {
+  if (isAbsolute(relativePath)) throw new TypeError('absolute evidence path rejected');
+  const normalizedRoot = resolve(root);
+  const candidate = resolve(normalizedRoot, relativePath);
+  if (!candidate.startsWith(`${normalizedRoot}${sep}`)) throw new TypeError('evidence path escapes storage root');
+  return candidate;
+}
+
+async function atomicWrite(path, bytes) {
+  await mkdir(dirname(path), { recursive: true });
+  const temporary = `${path}.tmp-${process.pid}-${Date.now()}`;
+  await writeFile(temporary, bytes);
+  await rename(temporary, path);
+}
+
+async function objectWriter(storageRoot) {
+  return async (relativePath, bytes) => {
+    const path = resolveWithin(storageRoot, relativePath);
+    try {
+      const existing = await readFile(path);
+      if (createHash('sha256').update(existing).digest('hex') !== createHash('sha256').update(bytes).digest('hex')) {
+        throw new Error('content-addressed object collision');
+      }
+      return;
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+    }
+    await atomicWrite(path, bytes);
+  };
+}
+
+function acceptanceCase(entry) {
+  return {
+    id: entry.id,
+    legacyRuntimeId: entry.legacyRuntimeId,
+    brand: entry.brand,
+    model: entry.model,
+    category: entry.category,
+    candidateUrls: [entry.url],
+    releasableQuarantineReasons: ['evidence_projection_hold'],
+    initialFailure: {
+      code: 'source_identity_or_field_scope_is_incomplete',
+      conflictingFields: [],
+    },
+    attempt: 1,
+    maxAttempts: 3,
+    automationState: 'research_required',
+    terminalReason: null,
+    sources: [],
+    history: [],
+  };
+}
+
+export async function runPdfBrandAcceptanceBatch(batch, options) {
+  if (batch?.schemaVersion !== 1 || !Array.isArray(batch.entries)) throw new TypeError('PDF brand batch required');
+  const writeObject = await objectWriter(options.storageRoot);
+  const outcomes = [];
+  for (const entry of batch.entries) {
+    const diagnostics = { acquisition: 'not_started', mineru: 'not_started', pdfObjectPath: null, derivedArtifact: null };
+    const result = await runEvidenceResearchCycle(acceptanceCase(entry), {
+      now: batch.reviewedAt,
+      writeObject,
+      fetchAttempts: 1,
+      timeoutMs: 30000,
+      processPdf: async (bytes) => {
+        diagnostics.acquisition = 'passed';
+        const pdfSha256 = createHash('sha256').update(bytes).digest('hex');
+        diagnostics.pdfObjectPath = `evidence/web/sha256/${pdfSha256.slice(0, 2)}/${pdfSha256.slice(2, 4)}/${pdfSha256}.pdf`;
+        await writeObject(diagnostics.pdfObjectPath, bytes);
+        const processed = await runMineruPdfToJson(bytes, { storageRoot: options.storageRoot });
+        diagnostics.mineru = 'passed';
+        diagnostics.derivedArtifact = processed.derivedArtifact;
+        await writeObject(processed.derivedArtifact.objectPath, processed.jsonBytes);
+        return processed;
+      },
+    });
+    const source = result.caseRecord.sources[0] ?? null;
+    outcomes.push({
+      id: entry.id,
+      brand: entry.brand,
+      model: entry.model,
+      category: entry.category,
+      requestedUrl: entry.url,
+      outcome: source ? 'accepted' : 'quarantined',
+      acquisition: diagnostics.acquisition === 'passed' || source ? 'passed' : 'failed',
+      mineru: source?.derivedArtifact || diagnostics.mineru === 'passed' ? 'passed' : 'not_run_or_failed',
+      identity: source?.identity?.outcome ?? 'not_accepted',
+      claims: source?.claims?.map((claim) => ({ field: claim.field, value: claim.value, page: claim.page })) ?? [],
+      receipt: source?.verificationReceipt ? 'passed' : 'not_accepted',
+      source: source ? structuredClone(source) : null,
+      diagnosticArtifacts: {
+        pdfObjectPath: diagnostics.pdfObjectPath,
+        derivedArtifact: diagnostics.derivedArtifact,
+      },
+      failures: result.failures,
+    });
+    if (options.onProgress) await options.onProgress(outcomes);
+  }
+  return {
+    schemaVersion: 1,
+    batchId: batch.batchId,
+    reviewedAt: batch.reviewedAt,
+    summary: {
+      entries: outcomes.length,
+      accepted: outcomes.filter((row) => row.outcome === 'accepted').length,
+      quarantined: outcomes.filter((row) => row.outcome === 'quarantined').length,
+    },
+    outcomes,
+  };
+}
+
+async function main(args) {
+  const storageRoot = argument(args, '--storage-root') ?? process.env.FITAPPLIANCE_STORAGE_ROOT;
+  if (!storageRoot) throw new TypeError('storage root required');
+  const inputPath = resolve(argument(args, '--input') ?? resolve(repoRoot, 'data/architecture-v2/reviews/automated/pdf-brand-acceptance-batch.json'));
+  const outputPath = resolve(argument(args, '--output') ?? resolve(repoRoot, 'data/architecture-v2/reviews/automated/pdf-brand-acceptance-results.json'));
+  const batch = JSON.parse(await readFile(inputPath, 'utf8'));
+  const checkpoint = async (outcomes) => atomicWrite(outputPath, `${JSON.stringify({
+    schemaVersion: 1,
+    batchId: batch.batchId,
+    reviewedAt: batch.reviewedAt,
+    incomplete: outcomes.length !== batch.entries.length,
+    summary: {
+      entries: outcomes.length,
+      accepted: outcomes.filter((row) => row.outcome === 'accepted').length,
+      quarantined: outcomes.filter((row) => row.outcome === 'quarantined').length,
+    },
+    outcomes,
+  }, null, 2)}\n`);
+  const result = await runPdfBrandAcceptanceBatch(batch, { storageRoot, onProgress: checkpoint });
+  await atomicWrite(outputPath, `${JSON.stringify(result, null, 2)}\n`);
+  process.stdout.write(`${JSON.stringify(result.summary, null, 2)}\n`);
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  await main(process.argv.slice(2));
+}

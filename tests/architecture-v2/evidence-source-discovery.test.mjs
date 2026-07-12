@@ -58,3 +58,25 @@ test('sitemap discovery stops at its document budget', async () => {
     maximumSitemapDocuments: 2,
   }), /budget/i);
 });
+
+test('explicit candidate discovery keeps official query URLs for later PDF identity verification', async () => {
+  const urls = await discoverCandidateUrls({
+    brand: 'Westinghouse',
+    model: 'WHE5264SC',
+    candidateUrls: [
+      'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse',
+      'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SCX&brand=Westinghouse',
+    ],
+  });
+  assert.deepEqual(urls, [
+    'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse',
+    'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SCX&brand=Westinghouse',
+  ]);
+});
+
+test('explicit candidates may use opaque official document IDs because PDF identity is verified later', async () => {
+  const url = 'https://www.fisherpaykel.com/on/demandware.static/QRG/AU/QRG-AU-26553.pdf';
+  assert.deepEqual(await discoverCandidateUrls({
+    brand: 'Fisher & Paykel', model: 'RF605QZUVB1', candidateUrls: [url],
+  }), [url]);
+});

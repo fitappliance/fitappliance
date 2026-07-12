@@ -12,6 +12,7 @@
     "resolve:evidence": "node scripts/architecture-v2/run-evidence-resolution.mjs",
     "resolve:evidence:dry-run": "node scripts/architecture-v2/run-evidence-resolution.mjs --dry-run",
     "parse:pdf:mineru": "node scripts/architecture-v2/parse-pdf-with-mineru.mjs",
+    "accept:pdf-brands": "node scripts/architecture-v2/run-pdf-brand-acceptance.mjs",
     "audit:evidence-resolution": "node scripts/architecture-v2/audit-evidence-resolution.mjs",
     "audit:pdf-json-first": "node scripts/architecture-v2/audit-pdf-json-first.mjs",
     "build:canonical-registry": "node scripts/architecture-v2/build-canonical-registry.mjs",
