@@ -19,6 +19,21 @@
 <link rel="apple-touch-icon" href="/icons/icon-192.png">
 <script defer src="/scripts/rum.js?v=2"></script>
 <script defer src="/scripts/error-beacon.js"></script>
+<script data-sw-release-guard>
+(() => {
+  if (!('serviceWorker' in navigator) || !navigator.serviceWorker.controller) return;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    window.__fitApplianceServiceWorkerUpdated = true;
+    if (window.__fitApplianceServiceWorkerReloading) return;
+    window.__fitApplianceServiceWorkerReloading = true;
+    if (typeof window.__fitApplianceReload === 'function') {
+      window.__fitApplianceReload();
+      return;
+    }
+    window.location.reload();
+  });
+})();
+</script>
 
 <style>
 

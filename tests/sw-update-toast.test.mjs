@@ -7,7 +7,7 @@ import { JSDOM } from 'jsdom';
 const ROOT = process.cwd();
 const REGISTER_SOURCE = fs.readFileSync(path.join(ROOT, 'public', 'scripts', 'sw-register.js'), 'utf8');
 
-async function setupDom() {
+async function setupDom({ controlled = true } = {}) {
   const dom = new JSDOM('<!doctype html><html><body></body></html>', {
     url: 'https://www.fitappliance.com.au/',
     runScripts: 'outside-only',
@@ -21,6 +21,7 @@ async function setupDom() {
   Object.defineProperty(window.navigator, 'onLine', { value: true, configurable: true });
   Object.defineProperty(window.navigator, 'serviceWorker', {
     value: {
+      controller: controlled ? {} : null,
       register: async () => ({}),
       addEventListener(type, handler) {
         if (type === 'controllerchange') controllerChangeHandler = handler;
@@ -63,8 +64,19 @@ test('phase 60 sw: controllerchange marks update state without a refresh toast',
   assert.equal(window.document.querySelector('.sw-update-toast'), null);
 });
 
-test('phase 60 sw: controllerchange does not trigger an immediate reload', async () => {
+test('release safety sw: an existing controlled page reloads exactly once after controllerchange', async () => {
   const { window, getControllerChangeHandler, getReloadCount } = await setupDom();
+
+  getControllerChangeHandler()();
+  getControllerChangeHandler()();
+
+  assert.equal(window.__fitApplianceServiceWorkerUpdated, true);
+  assert.equal(getReloadCount(), 1);
+  assert.equal(window.__fitApplianceServiceWorkerReloading, true);
+});
+
+test('release safety sw: a first-time uncontrolled page is not reloaded when initially claimed', async () => {
+  const { window, getControllerChangeHandler, getReloadCount } = await setupDom({ controlled: false });
 
   getControllerChangeHandler()();
 
