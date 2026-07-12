@@ -81,6 +81,7 @@ test('retailer metrics docs: promotion copy does not overclaim inventory, prices
   assert.match(promotion, new RegExp(`${fmt(totals.products)} raw appliance spec rows`));
   assert.match(promotion, new RegExp(`${fmt(totals.linkedProducts)} products with verified retailer product-page links`));
   assert.match(promotion, new RegExp(`${fmt(totals.retailerLinks)} verified retailer product-page links`));
+  assert.match(promotion, new RegExp(`live price rows are ${fmt(totals.priceRows)}`));
   assert.doesNotMatch(promotion, /100% door swing coverage/i);
   assert.doesNotMatch(promotion, /No affiliate links until/i);
   assert.doesNotMatch(promotion, /most comprehensive Australian appliance sizing database/i);

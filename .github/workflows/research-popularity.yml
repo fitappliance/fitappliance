@@ -47,6 +47,12 @@ jobs:
       - name: Re-apply manually approved retailer links
         run: node scripts/enrich-manual-retailers.js
 
+      - name: Synchronize retailer metrics documentation
+        run: node scripts/sync-retailer-metrics-docs.js
+
+      - name: Validate generated retailer data and documentation
+        run: node --test tests/catalog-data-cleanup.test.mjs tests/retailer-metrics-copy.test.mjs
+
       - name: Commit data changes
         run: |
           RESEARCHED=$(node -p "require('./data/popularity-research.json').last_batch?.researched ?? 0")
@@ -57,7 +63,7 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data data/popularity-research.json
+          git add public/data data/popularity-research.json README.md docs/display-data-accuracy-audit.md docs/retailer-data-expansion-plan.md docs/promotion-kit.md
           git diff --cached --quiet && exit 0
           cursor="$(node -p "try { require('./data/popularity-research.json').cursor ?? 'unknown' } catch { 'unknown' }")"
           git commit -m "chore(backfill): retailer sync cursor=${cursor}"

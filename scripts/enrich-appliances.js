@@ -6,6 +6,7 @@ const { mkdir, readFile, writeFile } = require('node:fs/promises');
 const { canonicalizeBrand } = require('./brand-canon.js');
 const { computePriorityScore, inferBrandTier } = require('./common/popularity-score.js');
 const { enrichReadableCopy } = require('./common/readable-spec.js');
+const { normalizeRetailerPrice } = require('./common/retailer-price.js');
 const { buildSplitDocuments, CAT_FILE_MAP } = require('./split-appliances.js');
 const { isRetailerProductPageUrl } = require('../public/scripts/search-core.js');
 
@@ -38,13 +39,16 @@ function filterVerifiedRetailers(retailers) {
   if (!Array.isArray(retailers)) return [];
   return retailers
     .filter((retailer) => isRetailerProductPageUrl(retailer?.url))
-    .map((retailer) => ({ ...retailer }));
+    .map((retailer) => ({
+      ...retailer,
+      p: normalizeRetailerPrice(retailer?.p ?? retailer?.price),
+    }));
 }
 
 function getBestRetailerPrice(retailers) {
   const prices = filterVerifiedRetailers(retailers)
-    .map((retailer) => Number(retailer?.p))
-    .filter((price) => Number.isFinite(price) && price > 0);
+    .map((retailer) => retailer.p)
+    .filter(Number.isInteger);
   if (!prices.length) return null;
   return Math.min(...prices);
 }

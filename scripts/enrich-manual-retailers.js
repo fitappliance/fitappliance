@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { isRetailerProductPageUrl } = require('../public/scripts/search-core.js');
 const { canonicalizeBrand } = require('./brand-canon.js');
+const { normalizeRetailerPrice } = require('./common/retailer-price.js');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 const MANUAL_RETAILERS_PATH = path.join(REPO_ROOT, 'data', 'manual-retailers.json');
@@ -23,7 +24,7 @@ function cloneRetailer(retailer) {
   const cloned = {
     n: String(retailer?.n ?? '').trim(),
     url: String(retailer?.url ?? '').trim(),
-    p: retailer?.p ?? null,
+    p: normalizeRetailerPrice(retailer?.p ?? retailer?.price),
     verified_at: retailer?.verified_at ?? null,
     source: retailer?.source ?? 'manual',
   };

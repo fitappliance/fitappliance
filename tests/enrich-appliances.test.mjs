@@ -170,6 +170,30 @@ test('phase 43a backfill: enrich leaves original unavailable flag untouched when
   assert.equal(appliances.products[0].unavailable, true);
 });
 
+test('phase 43a backfill: enrich normalizes legacy decimal retailer prices before split output', async () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fit-enrich-price-'));
+  await writeFixtureRepo(tmpDir, [makeProduct({
+    price: 1406.44,
+    retailers: [{
+      n: 'Appliances Online',
+      url: 'https://www.appliancesonline.com.au/product/dw60bg730fsl',
+      p: 1406.44,
+    }],
+    unavailable: false,
+  })], {});
+
+  await enrichAppliances({
+    repoRoot: tmpDir,
+    logger: { log() {}, warn() {}, error() {} },
+  });
+
+  const appliances = JSON.parse(fs.readFileSync(path.join(tmpDir, 'public', 'data', 'appliances.json'), 'utf8'));
+  const dishwashers = JSON.parse(fs.readFileSync(path.join(tmpDir, 'public', 'data', 'dishwashers.json'), 'utf8'));
+  assert.equal(appliances.products[0].price, 1406);
+  assert.equal(appliances.products[0].retailers[0].p, 1406);
+  assert.equal(dishwashers.products[0].price, 1406);
+});
+
 test('phase 43a backfill: empty researched retailers do not clear unavailable', async () => {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'fit-enrich-empty-'));
   await writeFixtureRepo(tmpDir, [makeProduct()], {

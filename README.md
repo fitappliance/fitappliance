@@ -8,7 +8,9 @@
 - ✅ AUDIT-PHASE43A: P1 + P2 fully closed (13/13)
 - ✅ Search experience: carsales-style facet + sort + URL state + mobile sheet + saved search + RTINGS-style compare reports
 - ✅ PWA: service worker versioning, update toast, offline fallback (Phase 43a §3.6)
-- ✅ Catalog: raw specs catalog: 3,518 products across 4 categories; retailer-verified products: 1,384; verified retailer links: 1,614; live price rows: 1,358
+<!-- RETAILER_METRICS_SUMMARY:START -->
+- ✅ Catalog: raw specs catalog: 3,518 products across 4 categories; retailer-verified products: 1,384; verified retailer links: 1,614; live price rows: 1,025
+<!-- RETAILER_METRICS_SUMMARY:END -->
 - ✅ Data trust: claims cleanup, accuracy audits, retailer URL validation, and date-drift guardrails are active
 - 📊 Test coverage: 1,500+ tests passing
 

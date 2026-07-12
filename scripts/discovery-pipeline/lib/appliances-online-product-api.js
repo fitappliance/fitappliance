@@ -1,6 +1,7 @@
 const DEFAULT_USER_AGENT = 'FitApplianceBot/1.0 (+https://www.fitappliance.com.au/about)';
 const DEFAULT_TIMEOUT_MS = 30_000;
 const AO_ORIGIN = 'https://www.appliancesonline.com.au';
+const { normalizeRetailerPrice } = require('../../common/retailer-price.js');
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -125,7 +126,7 @@ function buildProductStubFromAo({
       {
         n: 'Appliances Online',
         url: normalizeAbsoluteUrl(productPath),
-        p: Number.isFinite(Number(product.price)) ? Number(product.price) : null,
+        p: normalizeRetailerPrice(product.price),
         verified_at: new Date().toISOString().slice(0, 10),
         source: 'appliances-online-api'
       }

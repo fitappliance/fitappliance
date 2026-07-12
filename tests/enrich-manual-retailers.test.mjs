@@ -111,6 +111,16 @@ test('manual retailer enrich: same retailer name replaces old entry instead of d
   assert.equal(merged[0].p, 1099);
 });
 
+test('manual retailer enrich: decimal prices are normalized to the runtime integer contract', () => {
+  const merged = mergeRetailers([], [{
+    n: 'Appliances Online',
+    url: 'https://www.appliancesonline.com.au/product/example-appliance',
+    p: 1406.44,
+  }]);
+
+  assert.equal(merged[0].p, 1406);
+});
+
 test('manual retailer enrich: affiliate tracking fields are preserved separately from canonical url', () => {
   const existing = [];
   const manualRetailers = [

@@ -11,6 +11,7 @@ const {
   seedDiscoveryEvidence,
 } = require('../scripts/discovery-pipeline/2-seed-evidence.js');
 const {
+  buildProductStubFromAo,
   selectBestPdfManual,
   slugFromProductUrl,
 } = require('../scripts/discovery-pipeline/lib/appliances-online-product-api.js');
@@ -54,6 +55,23 @@ test('AO manual selector prefers specification sheets over generic manuals', () 
   });
 
   assert.equal(selected.url, 'https://www.appliancesonline.com.au/specifications.pdf');
+});
+
+test('AO product API helper normalizes decimal AUD prices to the runtime integer contract', () => {
+  const product = buildProductStubFromAo({
+    discovery: { brand: 'Smeg', model: 'DWAU6315X', category: 'dishwasher' },
+    productPayload: {
+      product: {
+        productId: 53507, sku: 'DWAU6315X', title: 'Smeg dishwasher',
+        uri: '/product/smeg-dwau6315x-under-bench-dishwasher', price: 1406.44,
+        manufacturer: { name: 'Smeg' },
+      },
+    },
+    specificationsPayload: { groupedAttributes: {} },
+    productUrl: 'https://www.appliancesonline.com.au/product/smeg-dwau6315x-under-bench-dishwasher',
+  });
+
+  assert.equal(product.retailers[0].p, 1406);
 });
 
 test('discovery evidence seeding writes manual-evidence candidate entries and continues after edge failures', async () => {

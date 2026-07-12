@@ -29,6 +29,9 @@ test('phase 43a backfill: workflow runs research then enrich and only commits da
   assert.match(workflow, /node scripts\/research-popularity\.js/);
   assert.match(workflow, /node scripts\/enrich-appliances\.js/);
   assert.match(workflow, /node scripts\/enrich-manual-retailers\.js/);
+  assert.match(workflow, /node scripts\/sync-retailer-metrics-docs\.js/);
+  assert.match(workflow, /node --test tests\/catalog-data-cleanup\.test\.mjs tests\/retailer-metrics-copy\.test\.mjs/);
+  assert.match(workflow, /git add public\/data data\/popularity-research\.json README\.md docs\/display-data-accuracy-audit\.md docs\/retailer-data-expansion-plan\.md/);
   assert.ok(
     workflow.indexOf('node scripts/enrich-manual-retailers.js') > workflow.indexOf('node scripts/enrich-appliances.js'),
     'manual retailer links must be re-applied after popularity enrich rewrites split catalogs'

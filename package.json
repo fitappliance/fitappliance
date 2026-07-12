@@ -62,6 +62,7 @@
     "generate-ui-copy": "node scripts/generate-ui-copy.js",
     "research-popularity": "node scripts/research-popularity.js",
     "enrich-appliances": "node scripts/enrich-appliances.js",
+    "sync-retailer-metrics": "node scripts/sync-retailer-metrics-docs.js",
     "enrich-evidence": "node scripts/enrich-evidence.js",
     "build-evidence-index": "node scripts/build-evidence-index.js",
     "enrich-manual-retailers": "node scripts/enrich-manual-retailers.js",
