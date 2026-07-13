@@ -55,7 +55,7 @@ test('committed publication integrates both receipt batches without false verifi
   assert.deepEqual(audit.summary, {
     products: 3521,
     receiptBoundVerified: 0,
-    receiptBoundDimensions: 21,
+    receiptBoundDimensions: 22,
     violations: 0,
   });
 });

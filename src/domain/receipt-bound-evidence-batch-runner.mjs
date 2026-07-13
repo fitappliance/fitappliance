@@ -1,4 +1,5 @@
 import { canonicalJsonSha256, validateHistoricalEvidenceRecoveryBatch } from './historical-evidence-recovery-contract.mjs';
+import { buildLowerAuthorityHints } from './evidence-claim-reconciliation.mjs';
 
 function positiveInteger(value, label) {
   if (!Number.isInteger(value) || value < 1) throw new TypeError(`${label} must be a positive integer`);
@@ -90,29 +91,6 @@ export function recoveryOutcomeSemanticSha256(outcome) {
     sources: outcome.sources,
     geometryProjection: outcome.geometryProjection,
   }));
-}
-
-function normalizeHintDimensions(value) {
-  return {
-    widthMm: value?.widthMm ?? value?.width ?? null,
-    heightMm: value?.heightMm ?? value?.height ?? null,
-    depthMm: value?.depthMm ?? value?.depth ?? null,
-  };
-}
-
-function lowerAuthorityHints(target) {
-  return [
-    ...(target.reconciliationContext?.registryHints ?? []).map((hint) => ({
-      sourceRole: 'registry_hint',
-      sourceId: hint.sourceId,
-      dimensionsMm: normalizeHintDimensions(hint.dimensionsMm),
-    })),
-    ...(target.reconciliationContext?.legacyHints ?? []).map((hint) => ({
-      sourceRole: 'legacy_hint',
-      sourceId: hint.sourceDocumentId,
-      dimensionsMm: normalizeHintDimensions(hint.dimensionsMm),
-    })),
-  ];
 }
 
 async function hydrateActiveReceiptSources(target, loadActiveReceiptSource) {
@@ -281,6 +259,25 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
             targetIds: [target.targetId],
           };
         }
+        if (candidate.discoveryProvenance) {
+          const provenanceSha = canonicalJsonSha256(candidate.discoveryProvenance);
+          if (!job.discoveryProvenance) {
+            job = {
+              ...job,
+              jobId: `discovered_${canonicalJsonSha256({
+                authorityBrand: target.brand,
+                authorityMode: candidate.authorityMode,
+                sourceUrl: candidate.sourceUrl,
+                provenanceSha,
+              }).slice(0, 24)}`,
+            };
+          }
+          job = {
+            ...job,
+            targetModel: target.model,
+            discoveryProvenance: structuredClone(candidate.discoveryProvenance),
+          };
+        }
         const state = await ensureArtifact(job);
         if (state.status !== 'available') {
           throw Object.assign(new Error(state.reason), { code: state.failureCode });
@@ -304,7 +301,7 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
         category: target.category,
       }, inventory, {
         requestedFields: target.requestedFields,
-        lowerAuthorityHints: lowerAuthorityHints(target),
+        lowerAuthorityHints: buildLowerAuthorityHints(target),
         verifyInventoryHash: true,
       });
       let geometryProjection = null;
@@ -329,6 +326,7 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
           geometryProjection = null;
         }
       }
+      if (!['accepted', 'receipt_accepted_non_scalar'].includes(status)) sources = [];
       outcome = {
         targetId: target.targetId,
         status,

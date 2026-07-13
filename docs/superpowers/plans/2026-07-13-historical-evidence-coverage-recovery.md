@@ -195,6 +195,10 @@ release. It is not complete merely because a PDF downloads or tests pass.
 15. Acceptance requires a complete candidate-inventory snapshot. Resolver
     timeout, truncation or unknown completion state is retryable and cannot be
     interpreted as "no contradiction found".
+16. Category, brand, series and document-family expression patterns are
+    non-authoritative research observations. They may create parser fixtures and
+    coverage work, but never supply a model claim, resolve an axis ambiguity or
+    bypass exact-model receipt verification.
 
 ## 4. Canonical Workflow
 
@@ -205,6 +209,7 @@ flowchart TD
   B --> T["Unique target nodes + candidate-job edges"]
   J --> A["Acquire immutable artifact bytes"]
   A --> M["SHA-256 object and MinerU cache"]
+  M -.-> K["Dimension-expression knowledge base<br/>(research sidecar only)"]
   M --> T
   T --> D["Snapshot-complete fallback discovery"]
   D --> C["All-required-candidate reconciliation"]
@@ -474,6 +479,10 @@ The first complete workflow milestone requires all of the following:
    current product.
 9. Full tests, lint, Architecture V2 build and production build pass; the normal
    build also passes without the external drive.
+10. A generated dimension-expression knowledge base accounts for all four
+    appliance categories and every canonical/raw brand in the historical
+    reference, while distinguishing proven marketing series, shared document
+    families and unknown series coverage.
 
 ### 7.1 Dependency order
 
@@ -492,7 +501,8 @@ The first complete workflow milestone requires all of the following:
 | 10 | 8, 9 | synthetic gates and real internal canary outcomes |
 | 11 | 10 | replay audit and cumulative atomic promotion |
 | 12 | 11 | lifecycle-split current and historical publication |
-| 13 | 12 | official-host lane evidence funnel |
+| 13A | 12 | four-category dimension-expression corpus and coverage matrix |
+| 13 | 13A | official-host lane evidence funnel |
 | 14 | 13 | non-authoritative mirror rediscovery lane |
 | 15 | 13, 14 | all brand adapters and measured parity funnel |
 | 16 | 15 | staged scale, runbook and conditional retirement |
@@ -1262,6 +1272,65 @@ the queue as the next epoch, avoiding a publication/recovery cycle. Architecture
 V2 tests and `env -u FITAPPLIANCE_STORAGE_ROOT npm run build:architecture-v2`
 pass; the latter opens zero external evidence objects.
 
+### Task 13A: Build the four-category dimension-expression knowledge base
+
+**Files:**
+
+- Create: `src/domain/dimension-expression-knowledge.mjs`
+- Create: `scripts/architecture-v2/build-dimension-expression-knowledge.mjs`
+- Create: `tests/architecture-v2/dimension-expression-knowledge.test.mjs`
+- Create: `data/architecture-v2/generated/dimension-expression-observations.json`
+- Create: `docs/architecture-v2/appliance-dimension-expression-knowledge-base.md`
+
+- [x] Inventory all historical records under `fridge`, `dishwasher`,
+  `washing_machine` and `dryer`; preserve raw brand variants and map only aliases
+  already supported by explicit canonical-brand evidence.
+- [x] Join every available MinerU index to source PDF SHA, URL, target model,
+  category and brand using tracked object indexes plus immutable recovery state.
+  Account for unmapped documents explicitly instead of dropping them.
+- [x] Extract observed dimension-expression shapes from `content_list_v2`,
+  including grouped axis sequences, individually labelled axes, diagram-style
+  alternating cells, unit placement, package/cavity/door-open scope and depth
+  variants such as `D`, `D'` and `D"`.
+- [x] Attribute a marketing series only when official document/page text states
+  it. Otherwise use a hash-bound `document_family` or `model_specific` group and
+  report the total series count as unknown; never infer a series from a model
+  prefix alone.
+- [x] Generate one deterministic Markdown reference organised as category ->
+  brand -> proven series/document family -> observed PDF expressions, semantic
+  interpretation, parser status and evidence pointers. Include every brand even
+  when its status is `NO_MINERU_SAMPLE`.
+- [x] Seed the corpus from all currently indexed MinerU documents, add regression
+  fixtures for every distinct safe or rejected expression shape, and regenerate
+  it after each later brand batch.
+- [x] Keep the corpus outside receipts, geometry projection and publication
+  inputs. New observations may open parser work but cannot authorise a claim.
+
+**Gate:** the matrix accounts for all 8,095 current historical records, all four
+categories and every available MinerU index; each observation has PDF/content
+hash, page, fragment/bbox, source URL/identity mapping status and a typed parser
+decision. No row claims a marketing series or closed depth without direct
+document evidence.
+
+**Execution record (2026-07-13):** The deterministic corpus accounts for all
+8,095 historical records and all 358 category-brand groups: 4,336 fridges
+across 116 brands, 1,419 dishwashers across 91 brands, 1,497 washing machines
+across 83 brands and 843 dryers across 68 brands. It audits all 82 MinerU
+indexes: 81 are source-valid, one is explicitly `ORPHANED_SOURCE_PDF`, 69 map
+to a catalog identity and 12 remain unmapped. Sixty-five valid documents
+contain recognised expressions, producing 157 hash/page/fragment-bound
+observations and 53 typed research gaps. Explicit identity scope is enforced:
+document-only and unresolved family/model-row bindings are research-only,
+adjustable ranges remain ranges, package/cabinet scopes are rejected, and
+ambiguous `D`, `D'`, `D"` variants cannot publish closed depth. Repeated builds
+with the same inputs and timestamp produce the same JSON SHA-256
+`dea4834fe754d44b3bea14f226eb072086c8d9c743aad7f07f1050a6ef92d789`
+and Markdown SHA-256
+`01081dd64eb5481b814018a390d02789b3a6ecd2bd94a128c3f45eae2eb753c4`.
+The generator is an explicit research command outside the build/publication
+graph. Eight focused knowledge-base tests and all 457 Architecture V2 tests
+pass.
+
 ### Task 13: Prove official-host authority validation
 
 **Files:**
@@ -1271,20 +1340,51 @@ pass; the latter opens zero external evidence objects.
 - Modify: `tests/architecture-v2/official-artifact-transport.test.mjs`
 - Modify: `tests/architecture-v2/evidence-source-verifier.test.mjs`
 
-- [ ] Run LG `WD1275A1` and one shared Electrolux/Westinghouse document from the
+- [x] Run LG `WD1275A1` and one shared Electrolux/Westinghouse document from the
   `OFFICIAL_HOST_AUTHORITY_VALIDATION` route.
-- [ ] Verify redirects, final official host, PDF magic bytes, exact model in the
+- [x] Verify redirects, final official host, PDF magic bytes, exact model in the
   artifact and per-target receipt behavior.
-- [ ] Add Energy Rating/WELS identifiers and official product URLs as discovery
+- [x] Add Energy Rating/WELS identifiers and official product URLs as discovery
   seeds only after the direct-official path is stable. Preserve seed provenance
   and prohibit registry dimensions from becoming manufacturer claims.
-- [ ] Treat wildcard/family model tokens such as `WTB3700**` as unresolved
+- [x] Treat wildcard/family model tokens such as `WTB3700**` as unresolved
   unless existing automated alias rules prove the exact marketed SKU.
-- [ ] Process all 254 official-host jobs only after the canaries pass with zero
+- [x] Process all 254 official-host jobs only after the canaries pass with zero
   false acceptance in adversarial replay.
 
 **Gate:** every official-host outcome has a typed accepted/quarantined reason;
 host ownership alone never proves model identity.
+
+**Execution record (2026-07-13):** The final two-model canary accepted
+Westinghouse `WBB3400AH` at `598 x 1645 x 650 mm` and `WBB3700AH` at
+`598 x 1755 x 650 mm` from two independent official objects. The registry's
+width/height permutation was resolved only because one official document used
+an explicit `H/W/D` model-row matrix and a second used individually labelled
+axes; same-representation or partial documents remain quarantined. LG
+`WD1275A1` retained its accepted width/height candidate in the diagnostic
+inventory but ended `claims_incomplete` with no releasable source because the
+document exposes ambiguous `D`, `D'` and `D"` variants.
+
+The full route began with 254 planned artifact jobs and 288 exact target nodes.
+Snapshot-complete resolver discovery expanded this to 548 immutable artifact
+states rather than stopping after the first usable candidate: 461 available,
+87 typed failures and zero running states. Outcomes account for all 288 targets:
+89 accepted, 108 `claims_incomplete`, 80 `identity_rejected` and 11
+`conflict_quarantined`; accepted dimensions comprise 49 fridges, 17
+dishwashers, 19 washing machines and 4 dryers. Every accepted projection is
+dimensions-only with `INSUFFICIENT_DATA`; none is `VERIFIED_FIT`, no accepted
+source uses a retailer host, no accepted closed-envelope axis lies outside the
+category sanity range, and no nonaccepted outcome exposes top-level sources or
+geometry.
+
+The online audit now reruns `reconcileEvidenceClaims` from the immutable
+candidate inventory and the batch-bound registry/legacy hints instead of
+trusting the recorded status. A hash-consistent forged acceptance regression
+fails closed. Real replay checked 288 targets and 180 raw PDF/MinerU objects
+with zero violations. Results SHA-256 is
+`c5176746b2961fb0c13b2abcdfd00f5cb10c48e21aa63b4ddaa391a81aa3f464`;
+semantic audit SHA-256 is
+`56a274c815fa86af3a2c9d1eef2929fe6f6ab5e886ca1456fe921eee50e255a0`.
 
 ### Task 14: Add reference-mirror rediscovery without mirror publication
 
@@ -1292,23 +1392,55 @@ host ownership alone never proves model identity.
 
 - Create: src/domain/reference-artifact-transport.mjs
 - Create: src/domain/official-artifact-rediscovery.mjs
+- Create: src/domain/official-product-page-discovery-evidence.mjs
 - Create: tests/architecture-v2/reference-artifact-rediscovery.test.mjs
+- Create: tests/architecture-v2/reference-artifact-canary-report.test.mjs
 - Modify: `src/domain/evidence-source-discovery.mjs`
 
-- [ ] Implement a separate bounded `reference` transport that applies payload
+- [x] Implement a separate bounded `reference` transport that applies payload
   safety checks but stamps every object non-authoritative.
-- [ ] Extract only discovery fingerprints: content hash, document title,
+- [x] Extract only discovery fingerprints: content hash, document title,
   manufacturer/brand text, model tokens, filename, PDF metadata and linked
   official domains. Do not expose dimension claims to attestation.
-- [ ] Rediscover official equivalents through exact hash, official title/model
+- [x] Rediscover official equivalents through exact hash, official title/model
   search, product-page document links and brand resolver candidates.
-- [ ] Test Fisher & Paykel `E450LXFD` retailer mirror: mirror-only ends
+- [x] Test Fisher & Paykel `E450LXFD` retailer mirror: mirror-only ends
   `source_authority` quarantine; official equivalent, when found, starts a new
   official artifact path and only that path can produce a receipt.
-- [ ] Add rate/robots/terms controls before scaling to the 1,223 mirror jobs.
+- [x] Add rate/robots/terms controls before scaling to the 1,223 mirror jobs.
 
 **Gate:** no result sourced solely from a retailer mirror appears in acceptance
 results, including when mirror and legacy hints agree perfectly.
+
+**Executed 2026-07-13:** The bounded reference transport accepts only reviewed
+single-URL canaries while the Appliances Online Commercial robots endpoint
+returns HTTP 403 and the reviewed terms contain sales terms but no affirmative
+automated-reference permission. `scaleAllowed` therefore remains `false`; no
+1,223-job mirror batch was launched. Reference fingerprints now reject unknown
+fields and require `publishable: false`, `receiptEligible: false` and
+`identityUse: discovery_only`, so claims, geometry and receipts cannot cross
+the reference boundary.
+
+The `E450LXFD` canary downloaded the 119,985-byte retailer spec sheet at SHA-256
+`32a4aff96986090c9eac5a45c55f5856ae4a88fc49b6b013d664416681d1a5ee`,
+converted it to hash-bound MinerU JSON and used it only to rediscover an
+official Fisher & Paykel path. The AU support page is stored at SHA-256
+`8677e76a1f341c0ccb02e227910a99a052ccac5755c1c70248b51555c15a0783`
+and proves both exact `E450LXFD` page scope and the actual Salesforce landing
+link. The 36-page official family guide is a distinct 822,510-byte PDF at
+SHA-256
+`21ff130ee8811d8b9b475b0687b9e636140fb1a1f007a110211647a43d273da3`.
+Its current MinerU JSON does not prove exact-model identity, so the canary ends
+`identity_rejected` with zero accepted sources, zero reference receipts, zero
+official receipts and zero unsafe promotions.
+
+Official-product-page provenance is now receipt-bound to discovery page URL,
+artifact landing URL, immutable HTML hash, object path and byte size. Receipt
+creation and artifact replay read and verify the real HTML object; the
+Salesforce landing/download document tokens must match. Another national
+market is dropped before acquisition. The tracked canary report is guarded by
+an automated no-promotion test, and the full Architecture V2 suite passes
+482/482 after these controls.
 
 ### Task 15: Migrate all brand resolvers in bounded groups
 

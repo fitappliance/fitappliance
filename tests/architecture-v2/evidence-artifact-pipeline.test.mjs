@@ -189,3 +189,63 @@ test('persisted artifact metadata rehydrates immutable objects without network o
   assert.equal(rehydrated.contentSha256, acquired.contentSha256);
   assert.deepEqual(rehydrated.derivedArtifact, acquired.derivedArtifact);
 });
+
+test('attestation loads immutable product-page discovery evidence through the object store', async () => {
+  const model = 'WHE6874BA';
+  const artifactUrl = `https://www.westinghouse.com.au/fridges/${model.toLowerCase()}/`;
+  const bytes = Buffer.from(`<!doctype html><html><head>
+    <title>${model} refrigerator</title>
+    <link rel="canonical" href="${artifactUrl}">
+  </head><body data-product-model="${model}"><dl>
+    <dt>Total width (mm)</dt><dd>913 mm</dd>
+  </dl></body></html>`);
+  const contentSha256 = createHash('sha256').update(bytes).digest('hex');
+  const discoveryBytes = Buffer.from(`<!doctype html><html><body>
+    <h1>${model} support</h1><a href="${artifactUrl}">Specifications</a>
+  </body></html>`);
+  const discoveryContentSha256 = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryObjectPath = `evidence/web/sha256/${discoveryContentSha256.slice(0, 2)}/${discoveryContentSha256.slice(2, 4)}/${discoveryContentSha256}.html`;
+  const reads = [];
+  const result = await attestEvidenceArtifactForCase({
+    id: `case-${model}`,
+    brand: 'Westinghouse',
+    model,
+    category: 'fridge',
+    sources: [],
+  }, {
+    authorityMode: 'official',
+    authorityBrand: 'Westinghouse',
+    requestedUrl: artifactUrl,
+    finalUrl: artifactUrl,
+    redirectChain: [],
+    contentType: 'text/html',
+    contentSha256,
+    objectPath: `evidence/web/sha256/${contentSha256.slice(0, 2)}/${contentSha256.slice(2, 4)}/${contentSha256}.html`,
+    byteSize: bytes.length,
+    bytes,
+  }, {
+    now: '2026-07-13T00:00:00.000Z',
+    requestedFields: ['closedEnvelope.widthMm'],
+    claimSemanticsVersion: 2,
+    discoveryProvenance: {
+      schemaVersion: 1,
+      method: 'official_product_page',
+      market: 'AU',
+      discoveryUrl: `https://www.westinghouse.com.au/au/support/${model.toLowerCase()}/`,
+      requestedModel: model,
+      matchedModel: model,
+      artifactUrl,
+      artifactLinkUrl: artifactUrl,
+      discoveryContentSha256,
+      discoveryObjectPath,
+      discoveryByteSize: discoveryBytes.length,
+    },
+    readObject: async (path) => {
+      reads.push(path);
+      return discoveryBytes;
+    },
+  });
+
+  assert.deepEqual(reads, [discoveryObjectPath]);
+  assert.equal(result.source.verificationReceipt.schemaVersion, 3);
+});

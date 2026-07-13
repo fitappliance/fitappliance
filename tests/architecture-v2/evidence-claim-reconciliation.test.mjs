@@ -135,6 +135,70 @@ test('registry axis permutation is quarantined instead of silently overridden', 
   assert.equal(result.conflictHints[0].kind, 'axis_permutation');
 });
 
+test('independent official axis representations can resolve a registry permutation', () => {
+  const dimensions = { widthMm: 913, heightMm: 1782, depthMm: 803 };
+  const individuallyLabelled = source('a'.repeat(64), dimensions);
+  const matrixBound = source('b'.repeat(64), dimensions);
+  matrixBound.claims = matrixBound.claims.map((value) => ({
+    ...value,
+    sourceLabel: `Product ${value.sourceAxisOrder[0]}`,
+    sourceAxisOrder: ['height', 'width', 'depth'],
+  }));
+  const result = reconcileEvidenceClaims(IDENTITY, inventory([individuallyLabelled, matrixBound]), {
+    verifyReceipt,
+    lowerAuthorityHints: [{
+      sourceRole: 'registry_hint',
+      sourceId: 'energy-rating',
+      dimensionsMm: { widthMm: 1782, heightMm: 913, depthMm: 803 },
+    }],
+  });
+
+  assert.equal(result.status, 'accepted');
+  assert.equal(result.sources.length, 2);
+  assert.equal(result.conflictHints[0].kind, 'axis_permutation');
+  assert.equal(result.axisPermutationResolution, 'independent_official_axis_corroboration');
+});
+
+test('two official documents using the same axis representation cannot resolve a registry permutation', () => {
+  const dimensions = { widthMm: 913, heightMm: 1782, depthMm: 803 };
+  const first = source('a'.repeat(64), dimensions);
+  const second = source('b'.repeat(64), dimensions);
+  const result = reconcileEvidenceClaims(IDENTITY, inventory([first, second]), {
+    verifyReceipt,
+    lowerAuthorityHints: [{
+      sourceRole: 'registry_hint',
+      sourceId: 'energy-rating',
+      dimensionsMm: { widthMm: 1782, heightMm: 913, depthMm: 803 },
+    }],
+  });
+
+  assert.equal(result.status, 'conflict_quarantined');
+  assert.equal(result.axisPermutationResolution, undefined);
+});
+
+test('partial official documents cannot be combined to resolve a registry permutation', () => {
+  const dimensions = { widthMm: 913, heightMm: 1782, depthMm: 803 };
+  const first = source('a'.repeat(64), dimensions);
+  first.claims = first.claims.slice(0, 2);
+  const second = source('b'.repeat(64), dimensions);
+  second.claims = second.claims.map((value) => ({
+    ...value,
+    sourceLabel: `Product ${value.sourceAxisOrder[0]}`,
+    sourceAxisOrder: ['height', 'width', 'depth'],
+  })).slice(2);
+  const result = reconcileEvidenceClaims(IDENTITY, inventory([first, second]), {
+    verifyReceipt,
+    lowerAuthorityHints: [{
+      sourceRole: 'registry_hint',
+      sourceId: 'energy-rating',
+      dimensionsMm: { widthMm: 1782, heightMm: 913, depthMm: 803 },
+    }],
+  });
+
+  assert.equal(result.status, 'conflict_quarantined');
+  assert.equal(result.axisPermutationResolution, undefined);
+});
+
 test('ordinary lower-authority disagreement remains visible but cannot defeat exact official evidence', () => {
   const accepted = source('a'.repeat(64), { widthMm: 913, heightMm: 1782, depthMm: 803 });
   const result = reconcileEvidenceClaims(IDENTITY, inventory([accepted]), {

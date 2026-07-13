@@ -85,6 +85,7 @@ function normalizeResolverResult(result, descriptor) {
       discoveryMethod: requiredText(value.discoveryMethod, 'candidate discovery method'),
       requiredAttempt: value.requiredAttempt,
       batchJobId,
+      discoveryProvenance: value.discoveryProvenance ? structuredClone(value.discoveryProvenance) : null,
       order: index,
     };
   });
@@ -208,6 +209,7 @@ function inventorySemanticView(inventory) {
       authorityMode: candidate.authorityMode,
       sourceRole: candidate.sourceRole,
       requiredAttempt: candidate.requiredAttempt,
+      discoveryProvenance: candidate.discoveryProvenance ?? null,
       batchJobIds: [...candidate.batchJobIds].sort(),
       resolverRefs: candidate.resolverRefs.map((reference) => ({ ...reference }))
         .sort((left, right) => left.resolverId.localeCompare(right.resolverId)
@@ -251,11 +253,19 @@ export async function collectEvidenceCandidates(caseRecord, options = {}) {
         authorityMode: candidate.authorityMode,
         sourceRoles: new Set(),
         requiredAttempt: false,
+        discoveryProvenance: null,
         batchJobIds: new Set(),
         resolverRefs: [],
       };
       current.sourceRoles.add(candidate.sourceRole);
       current.requiredAttempt ||= candidate.requiredAttempt;
+      if (candidate.discoveryProvenance) {
+        if (current.discoveryProvenance
+          && canonicalJsonSha256(current.discoveryProvenance) !== canonicalJsonSha256(candidate.discoveryProvenance)) {
+          throw new TypeError('conflicting discovery provenance for duplicate candidate URL');
+        }
+        current.discoveryProvenance = structuredClone(candidate.discoveryProvenance);
+      }
       if (candidate.batchJobId) current.batchJobIds.add(candidate.batchJobId);
       current.resolverRefs.push({
         resolverId: resolver.resolverId,
@@ -275,6 +285,7 @@ export async function collectEvidenceCandidates(caseRecord, options = {}) {
     authorityMode: candidate.authorityMode,
     sourceRole: [...candidate.sourceRoles].sort()[0],
     requiredAttempt: candidate.requiredAttempt,
+    discoveryProvenance: candidate.discoveryProvenance,
     batchJobIds: [...candidate.batchJobIds].sort(),
     resolverRefs: candidate.resolverRefs.sort((left, right) => left.resolverId.localeCompare(right.resolverId)
       || left.order - right.order),

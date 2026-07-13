@@ -63,11 +63,15 @@ async function reattestStoredSources(caseRecord, storageRoot, verifiedAt) {
     const derivedArtifactBytes = source.derivedArtifact
       ? await readFile(resolveWithin(storageRoot, source.derivedArtifact.objectPath))
       : null;
+    const discoveryArtifactBytes = source.discoveryProvenance?.method === 'official_product_page'
+      ? await readFile(resolveWithin(storageRoot, source.discoveryProvenance.discoveryObjectPath))
+      : null;
     sources.push(verifyAndAttestResolutionArtifact({
       source: { ...source, verificationReceipt: undefined },
       caseIdentity,
       bytes,
       derivedArtifactBytes,
+      discoveryArtifactBytes,
       verifiedAt,
     }));
   }

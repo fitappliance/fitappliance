@@ -242,6 +242,44 @@ test('MinerU claim semantics v2 rejects unresolved family-manual dimensions', ()
   }), /family|multiple models|scope/i);
 });
 
+test('MinerU binds a multi-model dimension matrix to the exact requested model row', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: 'WBB3700AH/WH WBB3400AH/WH' }] },
+      bbox: [40, 40, 500, 75],
+    },
+    {
+      type: 'table', content: {
+        html: '<table><tr><td>Dimensions</td><td>Product Height (H)</td><td>Product Width (W)</td><td>Product Depth (D)</td><td>Product Depth (D2) (Door Open)</td></tr><tr><td>WBB3700AH/WH</td><td>1755</td><td>598</td><td>650</td><td>1199</td></tr><tr><td>WBB3400AH/WH</td><td>1645</td><td>598</td><td>650</td><td>1199</td></tr></table>',
+        table_caption: [], table_footnote: [], table_type: 'complex_table', table_nest_level: 1,
+      }, bbox: [40, 100, 950, 500],
+    },
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: 'All measurements are in millimetres (mm).' }] },
+      bbox: [40, 520, 700, 550],
+    },
+  ]]));
+
+  for (const [model, expectedHeight] of [['WBB3400AH', 1645], ['WBB3700AH', 1755]]) {
+    const parsed = parseMineruContentListV2(bytes, {
+      pdfSha256, parserVersion: '3.4.4', modelRevision,
+      caseIdentity: { brand: 'Westinghouse', model, category: 'fridge' },
+      claimSemanticsVersion: 2,
+      fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    });
+    assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+      'closedEnvelope.widthMm': 598,
+      'closedEnvelope.heightMm': expectedHeight,
+      'closedEnvelope.depthMm': 650,
+    });
+    assert.ok(parsed.claims.every((claim) => claim.page === 1));
+    assert.equal(new Set(parsed.claims.map((claim) => claim.fragmentSha256)).size, 1);
+    assert.ok(parsed.claims.every((claim) => !/door open/i.test(claim.sourceLabel)));
+  }
+});
+
 test('MinerU accepts strictly labelled wide, high, and deep brand terminology', () => {
   const bytes = mineruJson(`<table>
     <tr><td>Model</td><td>HRCD640TBW</td></tr>
@@ -419,6 +457,77 @@ test('MinerU accepts an exact model repeated in body headings without accepting 
     caseIdentity: { brand: 'Miele', model: 'TCA221WP', category: 'dryer' },
     fields: ['closedEnvelope.widthMm'],
   }), /identity|exact model/i);
+});
+
+test('MinerU scopes a separate dimension table to an exact Model row on the same page', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'table', content: {
+        html: '<table><tr><td>Model</td><td>WV3-1208W / WD1275A1</td></tr></table>',
+        table_caption: [], table_footnote: [], table_type: 'simple_table', table_nest_level: 1,
+      }, bbox: [50, 102, 945, 196],
+    },
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: 'Dimension(mm)' }] },
+      bbox: [50, 203, 200, 220],
+    },
+    {
+      type: 'table', content: {
+        html: '<table><tr><td>W</td><td>600</td><td>D</td><td>475</td><td>D&quot;</td><td>1015</td></tr><tr><td>H</td><td>850</td><td>D&#x27;</td><td>535</td><td></td><td></td></tr></table>',
+        table_caption: [], table_footnote: [], table_type: 'complex_table', table_nest_level: 1,
+      }, bbox: [52, 458, 945, 526],
+    },
+  ]]));
+
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'LG', model: 'WD1275A1', category: 'washing_machine' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(parsed.claims.map((claim) => [claim.field, claim.value]), [
+    ['closedEnvelope.widthMm', { kind: 'fixed', mm: 600 }],
+    ['closedEnvelope.heightMm', { kind: 'fixed', mm: 850 }],
+  ]);
+  assert.ok(parsed.claims.every((claim) => claim.page === 1));
+  assert.ok(parsed.claims.every((claim) => /\(mm\)/i.test(claim.sourceLabel)));
+});
+
+test('MinerU parses alternating W H D cells only with explicit same-page unit context', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'table', content: {
+        html: '<table><tr><td>Model</td><td>WD1275A1</td></tr></table>',
+        table_caption: [], table_footnote: [], table_type: 'simple_table', table_nest_level: 1,
+      }, bbox: [50, 102, 945, 196],
+    },
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: 'Dimensions (mm)' }] },
+      bbox: [50, 203, 200, 220],
+    },
+    {
+      type: 'table', content: {
+        html: '<table><tr><td>W</td><td>600</td><td>D</td><td>535</td></tr><tr><td>H</td><td>850</td><td></td><td></td></tr></table>',
+        table_caption: [], table_footnote: [], table_type: 'complex_table', table_nest_level: 1,
+      }, bbox: [52, 458, 945, 526],
+    },
+  ]]));
+
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'LG', model: 'WD1275A1', category: 'washing_machine' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 600,
+    'closedEnvelope.heightMm': 850,
+    'closedEnvelope.depthMm': 535,
+  });
 });
 
 test('MinerU parsing fails closed when dimensions lack an explicit axis order', () => {

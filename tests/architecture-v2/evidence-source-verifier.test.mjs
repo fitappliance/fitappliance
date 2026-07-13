@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 
 import {
   createVerificationReceipt,
@@ -115,6 +116,152 @@ test('market-scoped requests may redirect within the same official brand host fa
   assert.doesNotThrow(() => validateTrustedSourceMetadata(redirected, {
     brand: 'Samsung', model: 'WHE6874BA', category: 'fridge',
   }, { asOf: '2026-07-11T15:00:00.000Z' }));
+});
+
+test('global official artifact is trusted only with receipt-bound Australian discovery provenance', () => {
+  const identity = { brand: 'LG', model: 'WD1275A1', category: 'washing_machine' };
+  const artifactUrl = 'https://gscs-b2c.lge.com/open/downloadFile?fileId=fixture';
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_market_api',
+    market: 'AU',
+    discoveryUrl: 'https://www.lg.com/ncms/asia/api/v1/support/proxy/retrieveManualSoftwareList?locale=AU',
+    requestedModel: 'WD1275A1',
+    matchedModel: 'WD1275A1',
+    artifactUrl,
+    documentId: '20152207223286',
+  };
+  const input = pdfSource({
+    sourceUrl: artifactUrl,
+    finalUrl: artifactUrl,
+    identity: { ...identity, outcome: 'exact' },
+    identitySignals: [
+      { type: 'mineru_title_model', value: 'WD1275A1:page:1' },
+      { type: 'mineru_table_model', value: `WD1275A1:page:1:${'c'.repeat(64)}` },
+    ],
+    discoveryProvenance,
+  });
+
+  assert.throws(() => createVerificationReceipt({
+    ...input,
+    discoveryProvenance: undefined,
+  }, identity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+  }), /Australian market|official host|provenance/i);
+
+  input.verificationReceipt = createVerificationReceipt(input, identity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+  });
+  assert.equal(verifyVerificationReceipt(input, identity, {
+    asOf: input.verificationReceipt.verifiedAt,
+  }), true);
+  assert.throws(() => verifyVerificationReceipt({
+    ...input,
+    discoveryProvenance: { ...discoveryProvenance, matchedModel: 'WD1275A2' },
+  }, identity, { asOf: input.verificationReceipt.verifiedAt }), /model|receipt|provenance/i);
+});
+
+test('Fisher & Paykel Salesforce receipt remains bound to exact AU article, model and artifact', () => {
+  const identity = { brand: 'Fisher & Paykel', model: 'E450LXFD', category: 'fridge' };
+  const artifactLinkUrl = 'https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000004i0Rp/gKgnd7UT1q7A7nAqk2zykrP7pAE97kUQhsSbt7O3JzE';
+  const artifactUrl = 'https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000efk6MIAQ&d=/a/Jw000004i0Rp/gKgnd7UT1q7A7nAqk2zykrP7pAE97kUQhsSbt7O3JzE&operationContext=DELIVERY&viewId=05HJw00000Q7B2zMAF&dpt=';
+  const discoveryBytes = Buffer.from(`<!doctype html><html><body>
+    <h1>450L Vertical refrigerator E450LXFD User Care Guide</h1>
+    <a href="${artifactLinkUrl}">Download user guide</a>
+  </body></html>`);
+  const discoveryContentSha256 = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/au/support/articles/450L-Vertical-refrigerator---User-Care-Guide-22309-ka0Jw000000NxXFIA0/',
+    requestedModel: 'E450LXFD',
+    matchedModel: 'E450LXFD',
+    artifactUrl,
+    artifactLinkUrl,
+    discoveryContentSha256,
+    discoveryObjectPath: `evidence/web/sha256/${discoveryContentSha256.slice(0, 2)}/${discoveryContentSha256.slice(2, 4)}/${discoveryContentSha256}.html`,
+    discoveryByteSize: discoveryBytes.length,
+    documentId: '068Jw00000efk6MIAQ',
+  };
+  const input = pdfSource({
+    sourceUrl: artifactUrl,
+    finalUrl: artifactUrl,
+    identity: { ...identity, outcome: 'exact' },
+    identitySignals: [
+      { type: 'mineru_title_model', value: 'E450LXFD:page:1' },
+      { type: 'mineru_table_model', value: `E450LXFD:page:1:${'c'.repeat(64)}` },
+    ],
+    discoveryProvenance,
+  });
+
+  assert.throws(() => createVerificationReceipt(input, identity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+  }), /discovery artifact bytes required/i);
+
+  input.verificationReceipt = createVerificationReceipt(input, identity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+    discoveryArtifactBytes: discoveryBytes,
+  });
+  assert.equal(verifyVerificationReceipt(input, identity, {
+    asOf: input.verificationReceipt.verifiedAt,
+  }), true);
+  assert.equal(verifyVerificationReceipt(input, identity, {
+    asOf: input.verificationReceipt.verifiedAt,
+    discoveryArtifactBytes: discoveryBytes,
+  }), true);
+  assert.throws(() => verifyVerificationReceipt({
+    ...input,
+    discoveryProvenance: { ...discoveryProvenance, discoveryUrl: discoveryProvenance.discoveryUrl.replace('/au/', '/nz/') },
+  }, identity, {
+    asOf: input.verificationReceipt.verifiedAt,
+    discoveryArtifactBytes: discoveryBytes,
+  }), /market|receipt|provenance/i);
+
+  const siblingBytes = Buffer.from(discoveryBytes.toString('utf8').replaceAll('E450LXFD', 'E450LXFD1'));
+  assert.throws(() => createVerificationReceipt({
+    ...input,
+    verificationReceipt: undefined,
+    discoveryProvenance: {
+      ...discoveryProvenance,
+      discoveryContentSha256: createHash('sha256').update(siblingBytes).digest('hex'),
+      discoveryObjectPath: `evidence/web/sha256/${createHash('sha256').update(siblingBytes).digest('hex').slice(0, 2)}/${createHash('sha256').update(siblingBytes).digest('hex').slice(2, 4)}/${createHash('sha256').update(siblingBytes).digest('hex')}.html`,
+      discoveryByteSize: siblingBytes.length,
+    },
+  }, identity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+    discoveryArtifactBytes: siblingBytes,
+  }), /exact.*model|model.*discovery/i);
+
+  const noLinkBytes = Buffer.from('<!doctype html><html><body><h1>E450LXFD user guide</h1></body></html>');
+  const noLinkHash = createHash('sha256').update(noLinkBytes).digest('hex');
+  assert.throws(() => createVerificationReceipt({
+    ...input,
+    verificationReceipt: undefined,
+    discoveryProvenance: {
+      ...discoveryProvenance,
+      discoveryContentSha256: noLinkHash,
+      discoveryObjectPath: `evidence/web/sha256/${noLinkHash.slice(0, 2)}/${noLinkHash.slice(2, 4)}/${noLinkHash}.html`,
+      discoveryByteSize: noLinkBytes.length,
+    },
+  }, identity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+    discoveryArtifactBytes: noLinkBytes,
+  }), /artifact link/i);
+
+  assert.throws(() => createVerificationReceipt({
+    ...input,
+    verificationReceipt: undefined,
+    sourceUrl: artifactUrl.replace('gKgnd7UT1q7A7nAqk2zykrP7pAE97kUQhsSbt7O3JzE', 'DIFFERENTTOKEN'),
+    finalUrl: artifactUrl.replace('gKgnd7UT1q7A7nAqk2zykrP7pAE97kUQhsSbt7O3JzE', 'DIFFERENTTOKEN'),
+    discoveryProvenance: {
+      ...discoveryProvenance,
+      artifactUrl: artifactUrl.replace('gKgnd7UT1q7A7nAqk2zykrP7pAE97kUQhsSbt7O3JzE', 'DIFFERENTTOKEN'),
+    },
+  }, identity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+    discoveryArtifactBytes: discoveryBytes,
+  }), /artifact link|Salesforce|relationship/i);
 });
 
 test('retrieval time must be real, non-future, and inside freshness policy', () => {

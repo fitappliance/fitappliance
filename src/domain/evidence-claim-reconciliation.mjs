@@ -9,6 +9,29 @@ const DEFAULT_FIELDS = Object.freeze([
   'closedEnvelope.depthMm',
 ]);
 
+function normalizeHintDimensions(value) {
+  return {
+    widthMm: value?.widthMm ?? value?.width ?? null,
+    heightMm: value?.heightMm ?? value?.height ?? null,
+    depthMm: value?.depthMm ?? value?.depth ?? null,
+  };
+}
+
+export function buildLowerAuthorityHints(target) {
+  return [
+    ...(target?.reconciliationContext?.registryHints ?? []).map((hint) => ({
+      sourceRole: 'registry_hint',
+      sourceId: hint.sourceId,
+      dimensionsMm: normalizeHintDimensions(hint.dimensionsMm),
+    })),
+    ...(target?.reconciliationContext?.legacyHints ?? []).map((hint) => ({
+      sourceRole: 'legacy_hint',
+      sourceId: hint.sourceDocumentId,
+      dimensionsMm: normalizeHintDimensions(hint.dimensionsMm),
+    })),
+  ];
+}
+
 function identityKey(value) {
   return String(value ?? '').toUpperCase().replace(/[^A-Z0-9]+/g, '');
 }
@@ -150,6 +173,67 @@ function analyzeHints(hints, matrix) {
   return conflictHints.sort((left, right) => left.sourceId.localeCompare(right.sourceId));
 }
 
+function claimAxis(field) {
+  const axis = field.split('.').at(-1)?.replace(/Mm$/, '');
+  return ['width', 'height', 'depth'].includes(axis) ? axis : null;
+}
+
+function sourceAxisRepresentation(rows) {
+  const expectedAxes = rows.map((row) => claimAxis(row.claim.field));
+  if (expectedAxes.some((axis) => !axis)) return null;
+
+  const individuallyLabelled = rows.every((row, index) => {
+    const order = row.claim.sourceAxisOrder;
+    return Array.isArray(order) && order.length === 1 && order[0] === expectedAxes[index];
+  });
+  if (individuallyLabelled) return 'individually_labelled';
+
+  const orders = rows.map((row) => row.claim.sourceAxisOrder);
+  const firstOrder = orders[0];
+  const matrixBound = Array.isArray(firstOrder)
+    && firstOrder.length === DEFAULT_FIELDS.length
+    && new Set(firstOrder).size === DEFAULT_FIELDS.length
+    && DEFAULT_FIELDS.every((field) => firstOrder.includes(claimAxis(field)))
+    && orders.every((order) => JSON.stringify(order) === JSON.stringify(firstOrder));
+  return matrixBound ? `axis_matrix:${firstOrder.join(',')}` : null;
+}
+
+function hasIndependentOfficialAxisCorroboration(matrix) {
+  if (!DEFAULT_FIELDS.every((field) => matrix.has(field))) return false;
+
+  const sourceRows = new Map();
+  for (const field of DEFAULT_FIELDS) {
+    for (const row of matrix.get(field)) {
+      if (row.value.kind !== 'fixed') continue;
+      const hash = row.source.contentSha256;
+      if (!sourceRows.has(hash)) sourceRows.set(hash, new Map());
+      sourceRows.get(hash).set(field, row);
+    }
+  }
+
+  const completeSources = [...sourceRows.entries()].flatMap(([hash, rowsByField]) => {
+    if (!DEFAULT_FIELDS.every((field) => rowsByField.has(field))) return [];
+    const rows = DEFAULT_FIELDS.map((field) => rowsByField.get(field));
+    const representation = sourceAxisRepresentation(rows);
+    if (!representation) return [];
+    return [{
+      hash,
+      representation,
+      dimensions: DEFAULT_FIELDS.map((field) => rowsByField.get(field).value.mm),
+    }];
+  });
+
+  for (let left = 0; left < completeSources.length; left += 1) {
+    for (let right = left + 1; right < completeSources.length; right += 1) {
+      const a = completeSources[left];
+      const b = completeSources[right];
+      if (a.hash === b.hash || a.representation === b.representation) continue;
+      if (JSON.stringify(a.dimensions) === JSON.stringify(b.dimensions)) return true;
+    }
+  }
+  return false;
+}
+
 export function reconcileEvidenceClaims(identity, inventory, options = {}) {
   if (!inventory || typeof inventory !== 'object') throw new TypeError('candidate inventory required');
   if (options.verifyInventoryHash
@@ -207,7 +291,9 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
   }
   const conflictHints = analyzeHints(options.lowerAuthorityHints ?? [], matrix);
   const axisConflict = conflictHints.some((hint) => hint.kind === 'axis_permutation');
-  if (conflictingFields.length || axisConflict || supersession.violations.some((entry) => entry.reason === 'supersession_cycle')) {
+  const axisCorroborated = axisConflict && hasIndependentOfficialAxisCorroboration(matrix);
+  if (conflictingFields.length || (axisConflict && !axisCorroborated)
+    || supersession.violations.some((entry) => entry.reason === 'supersession_cycle')) {
     return {
       status: 'conflict_quarantined',
       failureCode: 'conflict',
@@ -238,6 +324,8 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
     conflictingFields: [],
     conflictHints,
     supersessionViolations: supersession.violations,
+    ...(axisCorroborated
+      ? { axisPermutationResolution: 'independent_official_axis_corroboration' }
+      : {}),
   };
 }
-

@@ -133,6 +133,56 @@ test('HTML artifact needs canonical exact-model scope and independent product id
   }), /canonical.*model|identity/i);
 });
 
+test('artifact attestation and replay require hash-bound product-page discovery evidence', () => {
+  const bytes = html();
+  const artifactUrl = 'https://www.westinghouse.com.au/fridges/whe6874ba/';
+  const discoveryBytes = Buffer.from(`<!doctype html><html><body>
+    <h1>WHE6874BA support</h1><a href="${artifactUrl}">Product specifications</a>
+  </body></html>`);
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveredSource = source(bytes, {
+    discoveryProvenance: {
+      schemaVersion: 1,
+      method: 'official_product_page',
+      market: 'AU',
+      discoveryUrl: 'https://www.westinghouse.com.au/au/support/whe6874ba/',
+      requestedModel: 'WHE6874BA',
+      matchedModel: 'WHE6874BA',
+      artifactUrl,
+      artifactLinkUrl: artifactUrl,
+      discoveryContentSha256: discoveryHash,
+      discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.html`,
+      discoveryByteSize: discoveryBytes.length,
+    },
+  });
+
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: discoveredSource,
+    caseIdentity: identity,
+    bytes,
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+  }), /discovery artifact bytes required/i);
+
+  const attested = verifyAndAttestResolutionArtifact({
+    source: discoveredSource,
+    caseIdentity: identity,
+    bytes,
+    discoveryArtifactBytes: discoveryBytes,
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+  });
+  assert.throws(() => verifyAttestedResolutionArtifact({
+    source: attested,
+    caseIdentity: identity,
+    bytes,
+  }), /discovery artifact bytes required/i);
+  assert.equal(verifyAttestedResolutionArtifact({
+    source: attested,
+    caseIdentity: identity,
+    bytes,
+    discoveryArtifactBytes: discoveryBytes,
+  }), true);
+});
+
 test('HTML identity accepts an exact canonical path segment plus a matching structured product entity', () => {
   const hisenseIdentity = { brand: 'Hisense', model: 'HWF8I1015BX', category: 'washing_machine' };
   const bytes = Buffer.from(`<!doctype html><html><head>
@@ -292,6 +342,49 @@ test('HTML extractor prioritises structured product dimensions and rejects packa
   assert.ok(attested.identitySignals.some((signal) => signal.type === 'product_model'));
 });
 
+test('HTML extractor maps LG Unit W x D x H rows and excludes packaging dimensions', () => {
+  const lg = Buffer.from(`<!doctype html><html><head>
+    <title>WD1275A1 | LG Australia</title>
+    <link rel="canonical" href="https://www.lg.com/au/washer-dryers/front-load-washing-machines/wd1275a1/">
+  </head><body>
+    <div data-pim-model-name="WD1275A1"></div>
+    <ul>
+      <li class="text c-compare-selling__item">
+        <div class="cmp-text c-compare-selling__spec-name"><p>Unit(W x D x H)</p></div>
+        <div class="cmp-text c-compare-selling__spec-desc"><p>600mm x 535mm x 850mm</p></div>
+      </li>
+      <li class="text c-compare-selling__item">
+        <div class="cmp-text c-compare-selling__spec-name"><p>Packaging (W x D x H)</p></div>
+        <div class="cmp-text c-compare-selling__spec-desc"><p>660mm x 580mm x 890mm</p></div>
+      </li>
+    </ul>
+  </body></html>`);
+  const fields = ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
+  const claims = extractClaimsFromHtml(lg, { category: 'washing_machine', fields });
+
+  assert.deepEqual(Object.fromEntries(claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': 600,
+    'closedEnvelope.heightMm': 850,
+    'closedEnvelope.depthMm': 535,
+  });
+  assert.ok(claims.every((claim) => claim.semanticBasis === 'explicit_axis_sequence'));
+  assert.ok(claims.every((claim) => /Unit\(W x D x H\) 600mm x 535mm x 850mm/.test(claim.quote)));
+
+  const lgIdentity = { brand: 'LG', model: 'WD1275A1', category: 'washing_machine' };
+  const attested = verifyAndAttestResolutionArtifact({
+    source: source(lg, {
+      sourceUrl: 'https://www.lg.com/au/washer-dryers/front-load-washing-machines/wd1275a1/',
+      finalUrl: 'https://www.lg.com/au/washer-dryers/front-load-washing-machines/wd1275a1/',
+      identity: { brand: 'LG', model: 'WD1275A1', outcome: 'exact' },
+      claims,
+    }),
+    caseIdentity: lgIdentity,
+    bytes: lg,
+    verifiedAt: '2026-07-13T12:00:00.000Z',
+  });
+  assert.ok(attested.identitySignals.some((signal) => signal.type === 'product_model'));
+});
+
 test('HTML extractor does not confuse cabinet depth without the door with total product depth', () => {
   const refrigerator = Buffer.from(`<!doctype html><html><body><ul role="list">
     <li role="listitem"><p>Total Depth (mm)</p><p>715</p></li>
@@ -416,6 +509,61 @@ test('PDF approval requires hash-bound MinerU JSON and replays claims from that 
     caseIdentity: pdfIdentity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
     verifiedAt: '2026-07-11T14:35:00.000Z',
   }), /claim.*MinerU|MinerU.*claim/i);
+});
+
+test('PDF claim semantics v2 trusts exact MinerU replay when source labels are normalized', () => {
+  const pdfBytes = Buffer.from('%PDF-1.7\nalternating axis test artifact');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: 'Hisense HRCD640TBW Specifications' }], level: 2 },
+      bbox: [80, 60, 400, 120],
+    },
+    {
+      type: 'table', content: {
+        html: '<table><tr><td>Model</td><td>HRCD640TBW</td></tr></table>',
+        table_caption: [], table_footnote: [], table_type: 'simple_table', table_nest_level: 1,
+      }, bbox: [80, 140, 800, 220],
+    },
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: 'Dimension(mm)' }] },
+      bbox: [80, 240, 300, 270],
+    },
+    {
+      type: 'table', content: {
+        html: '<table><tr><td>W</td><td>914</td><td>D</td><td>730</td></tr><tr><td>H</td><td>1790</td><td></td><td></td></tr></table>',
+        table_caption: [], table_footnote: [], table_type: 'complex_table', table_nest_level: 1,
+      }, bbox: [80, 300, 800, 500],
+    },
+  ]]));
+  const caseIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
+  const claims = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity, claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }).claims;
+  assert.ok(claims.some((claim) => claim.sourceLabel === 'Width (mm)'));
+  assert.ok(!jsonBytes.toString('utf8').includes('Width (mm)'));
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION, pageCount: 1,
+  });
+  const attested = verifyAndAttestResolutionArtifact({
+    source: {
+      authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+      sourceUrl: 'https://dtc-aus-api.hisense.com/medias/HRCD640TBW.pdf',
+      finalUrl: 'https://dtc-aus-api.hisense.com/medias/HRCD640TBW.pdf', redirectChain: [],
+      retrievedAt: '2026-07-11T14:30:00.000Z', contentSha256: pdfHash,
+      objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+      contentType: 'application/pdf', byteSize: pdfBytes.length,
+      identity: { brand: 'Hisense', model: 'HRCD640TBW', outcome: 'exact' },
+      claims, derivedArtifact,
+    },
+    caseIdentity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    verifiedAt: '2026-07-11T14:35:00.000Z', claimSemanticsVersion: 2,
+  });
+  assert.equal(attested.verificationReceipt.claimSemanticsVersion, 2);
 });
 
 test('a model-scoped PDF header still needs an independent exact-model source URL', () => {

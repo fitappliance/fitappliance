@@ -194,7 +194,7 @@ async function durableOutputWrite(fs, path, value) {
   await fs.rename(temporary, path);
 }
 
-async function fetchWithRetry(url, brand, policy) {
+async function fetchWithRetry(url, brand, policy, artifactContext = {}) {
   let lastError;
   for (let attempt = 1; attempt <= policy.retry.fetchAttempts; attempt += 1) {
     try {
@@ -203,6 +203,8 @@ async function fetchWithRetry(url, brand, policy) {
         maximumBytes: policy.limits.maximumBytes,
         maximumRedirects: policy.limits.maximumRedirects,
         allowCurlFallback: true,
+        expectedModel: artifactContext.expectedModel,
+        discoveryProvenance: artifactContext.discoveryProvenance,
       });
     } catch (error) {
       lastError = error;
@@ -232,18 +234,23 @@ function defaultGraphDependencies({ policy, storageIdentity, store, now }) {
         readArtifactRecord: (transportKey) => store.findArtifactRecord(transportKey),
         readObject: objectStore.readObject,
         writeObject: objectStore.writeObject,
-        fetchArtifact: (url, brand) => fetchWithRetry(url, brand, policy),
+        fetchArtifact: (url, brand) => fetchWithRetry(url, brand, policy, {
+          expectedModel: job.targetModel,
+          discoveryProvenance: job.discoveryProvenance,
+        }),
         processPdf: (bytes) => context.withMineru(() => runMineruPdfToJson(bytes, {
           storageRoot: storageIdentity.root,
           maximumPdfBytes: policy.limits.maximumBytes,
         })),
       });
     },
-    attestTarget: (target, artifact) => attestEvidenceArtifactForCase(target, artifact, {
+    attestTarget: (target, artifact, job, candidate) => attestEvidenceArtifactForCase(target, artifact, {
       now: now(),
       requestedFields: target.requestedFields,
       claimSemanticsVersion: 2,
       requireRequestedFieldCoverage: true,
+      discoveryProvenance: candidate?.discoveryProvenance ?? job?.discoveryProvenance ?? null,
+      readObject: objectStore.readObject,
     }),
     collectCandidates: collectEvidenceCandidates,
     candidateResolversForTarget: (target) => [{

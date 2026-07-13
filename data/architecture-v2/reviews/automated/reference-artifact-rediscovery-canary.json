@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "runId": "task14-e450lxfd-reference-canary-20260713",
+  "generatedAt": "2026-07-13T18:27:09.475Z",
+  "policySha256": "c66a8e228e2f43e365fa4ec981015bd468470df80e6a1307079770a1d8ce0b11",
+  "artifact": {
+    "authorityMode": "reference",
+    "sourceUrl": "https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf",
+    "finalUrl": "https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf",
+    "redirectChain": [],
+    "contentType": "application/pdf",
+    "contentSha256": "32a4aff96986090c9eac5a45c55f5856ae4a88fc49b6b013d664416681d1a5ee",
+    "objectPath": "evidence/web/sha256/32/a4/32a4aff96986090c9eac5a45c55f5856ae4a88fc49b6b013d664416681d1a5ee.pdf",
+    "byteSize": 119985,
+    "derivedArtifact": {
+      "schemaVersion": 1,
+      "format": "content_list_v2",
+      "parserName": "MinerU",
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "backend": "pipeline",
+      "method": "auto",
+      "tableEnabled": true,
+      "formulaEnabled": false,
+      "sourcePdfSha256": "32a4aff96986090c9eac5a45c55f5856ae4a88fc49b6b013d664416681d1a5ee",
+      "contentSha256": "d74b8cf9712f2e7bfba2b897fba9f1bd4690a746c9fbba8b00beea9449e957e4",
+      "objectPath": "evidence/derived/mineru-json/sha256/d7/4b/d74b8cf9712f2e7bfba2b897fba9f1bd4690a746c9fbba8b00beea9449e957e4.json",
+      "byteSize": 14972,
+      "pageCount": 1
+    }
+  },
+  "fingerprint": {
+    "schemaVersion": 1,
+    "authorityMode": "reference",
+    "sourceUrl": "https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf",
+    "finalUrl": "https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf",
+    "contentSha256": "32a4aff96986090c9eac5a45c55f5856ae4a88fc49b6b013d664416681d1a5ee",
+    "derivedContentSha256": "d74b8cf9712f2e7bfba2b897fba9f1bd4690a746c9fbba8b00beea9449e957e4",
+    "documentTitle": "SPEC SHEET › E450LXFD1 › Vertical Refrigerator 451L",
+    "filename": "Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf",
+    "modelTokens": [
+      "E388RXFD1",
+      "E450LXFD1"
+    ],
+    "targetModelObserved": true,
+    "linkedOfficialDomains": [],
+    "pageCount": 1,
+    "pdfMetadata": {
+      "status": "unavailable_in_content_list_v2",
+      "title": null,
+      "author": null,
+      "subject": null
+    },
+    "publishable": false,
+    "receiptEligible": false,
+    "identityUse": "discovery_only"
+  },
+  "rediscovery": {
+    "schemaVersion": 1,
+    "status": "official_candidates_discovered",
+    "identity": {
+      "brand": "Fisher & Paykel",
+      "model": "E450LXFD",
+      "category": "fridge"
+    },
+    "referenceContentSha256": "32a4aff96986090c9eac5a45c55f5856ae4a88fc49b6b013d664416681d1a5ee",
+    "referenceSourceUrl": "https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-451L-Upright-Fridge-Specifications-Sheet.pdf",
+    "queries": [
+      "\"Fisher & Paykel\" \"E450LXFD\" specifications PDF",
+      "\"SPEC SHEET › E450LXFD1 › Vertical Refrigerator 451L\""
+    ],
+    "officialCandidates": [
+      {
+        "sourceUrl": "https://mf-support.mfe.fisherpaykel.com/au/support/articles/450L-Vertical-refrigerator---User-Care-Guide-22309-ka0Jw000000NxXFIA0/",
+        "authorityMode": "official",
+        "documentType": "official_support_article",
+        "sourceModelHint": "E450LXFD",
+        "matchBasis": "exact_model_official_candidate",
+        "referenceContentSha256": "32a4aff96986090c9eac5a45c55f5856ae4a88fc49b6b013d664416681d1a5ee",
+        "requiresOfficialAcquisition": true,
+        "marketValidationRequired": true,
+        "receiptEligible": false
+      }
+    ],
+    "receiptEligible": false,
+    "nextAction": "official_acquisition_and_attestation"
+  },
+  "officialAcquisition": {
+    "sourceUrl": "https://mf-support.mfe.fisherpaykel.com/au/support/articles/450L-Vertical-refrigerator---User-Care-Guide-22309-ka0Jw000000NxXFIA0/",
+    "contentType": "text/html",
+    "contentSha256": "8677e76a1f341c0ccb02e227910a99a052ccac5755c1c70248b51555c15a0783",
+    "objectPath": "evidence/web/sha256/86/77/8677e76a1f341c0ccb02e227910a99a052ccac5755c1c70248b51555c15a0783.html",
+    "byteSize": 41734,
+    "authorityMode": "official",
+    "attestation": {
+      "status": "claims_incomplete",
+      "failureCode": "claim_semantics",
+      "reason": "no supported evidence claims extracted"
+    }
+  },
+  "completedAt": "2026-07-13T18:35:27.000Z",
+  "officialAttachment": {
+    "landingPageUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000004i0Rp/gKgnd7UT1q7A7nAqk2zykrP7pAE97kUQhsSbt7O3JzE",
+    "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000efk6MIAQ&d=/a/Jw000004i0Rp/gKgnd7UT1q7A7nAqk2zykrP7pAE97kUQhsSbt7O3JzE&operationContext=DELIVERY&viewId=05HJw00000Q7B2zMAF&dpt=",
+    "authorityMode": "official",
+    "discoveryProvenance": {
+      "schemaVersion": 1,
+      "method": "official_product_page",
+      "market": "AU",
+      "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/au/support/articles/450L-Vertical-refrigerator---User-Care-Guide-22309-ka0Jw000000NxXFIA0/",
+      "requestedModel": "E450LXFD",
+      "matchedModel": "E450LXFD",
+      "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000efk6MIAQ&d=/a/Jw000004i0Rp/gKgnd7UT1q7A7nAqk2zykrP7pAE97kUQhsSbt7O3JzE&operationContext=DELIVERY&viewId=05HJw00000Q7B2zMAF&dpt=",
+      "artifactLinkUrl": "https://fisherpaykel.my.salesforce.com/sfc/p/90000000kftP/a/Jw000004i0Rp/gKgnd7UT1q7A7nAqk2zykrP7pAE97kUQhsSbt7O3JzE",
+      "discoveryContentSha256": "8677e76a1f341c0ccb02e227910a99a052ccac5755c1c70248b51555c15a0783",
+      "discoveryObjectPath": "evidence/web/sha256/86/77/8677e76a1f341c0ccb02e227910a99a052ccac5755c1c70248b51555c15a0783.html",
+      "discoveryByteSize": 41734,
+      "documentId": "068Jw00000efk6MIAQ",
+      "originalFileName": "08dc03e0d61be8319432593c47c66a8126b830b7_upright_fridges_user_guide.pdf"
+    },
+    "contentType": "application/pdf",
+    "contentSha256": "21ff130ee8811d8b9b475b0687b9e636140fb1a1f007a110211647a43d273da3",
+    "objectPath": "evidence/web/sha256/21/ff/21ff130ee8811d8b9b475b0687b9e636140fb1a1f007a110211647a43d273da3.pdf",
+    "byteSize": 822510,
+    "mirrorHashMatches": false,
+    "derivedArtifact": {
+      "schemaVersion": 1,
+      "format": "content_list_v2",
+      "parserName": "MinerU",
+      "parserVersion": "3.4.4",
+      "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+      "backend": "pipeline",
+      "method": "auto",
+      "tableEnabled": true,
+      "formulaEnabled": false,
+      "sourcePdfSha256": "21ff130ee8811d8b9b475b0687b9e636140fb1a1f007a110211647a43d273da3",
+      "contentSha256": "2a3bc268596798fba1cefbc5bb0f8c0641c278d133ffa0c7c8f86072828cdd7e",
+      "objectPath": "evidence/derived/mineru-json/sha256/2a/3b/2a3bc268596798fba1cefbc5bb0f8c0641c278d133ffa0c7c8f86072828cdd7e.json",
+      "byteSize": 308409,
+      "pageCount": 36
+    },
+    "attestation": {
+      "status": "identity_rejected",
+      "failureCode": "identity_mismatch",
+      "reason": "structured exact model identity signal required in MinerU JSON"
+    },
+    "receiptEligible": false
+  },
+  "summary": {
+    "finalStatus": "identity_rejected",
+    "referenceArtifacts": 1,
+    "officialArtifacts": 2,
+    "acceptedSources": 0,
+    "referenceReceipts": 0,
+    "officialReceipts": 0,
+    "unsafePromotions": 0,
+    "mirrorScaleAllowed": false
+  }
+}

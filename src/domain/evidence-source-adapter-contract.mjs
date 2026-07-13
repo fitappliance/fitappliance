@@ -11,6 +11,7 @@ const CANDIDATE_KEYS = new Set([
   'sourceRole',
   'requiredAttempt',
   'batchJobId',
+  'discoveryProvenance',
 ]);
 const RESULT_KEYS = new Set([
   'schemaVersion',
@@ -62,6 +63,46 @@ function optionalText(value, label) {
   return requiredText(value, label);
 }
 
+function optionalDiscoveryProvenance(value) {
+  if (value === null || value === undefined) return null;
+  assertRecord(value, 'candidate discovery provenance');
+  const keys = new Set([
+    'schemaVersion', 'method', 'market', 'discoveryUrl', 'requestedModel', 'matchedModel',
+    'artifactUrl', 'artifactLinkUrl', 'discoveryContentSha256', 'discoveryObjectPath',
+    'discoveryByteSize', 'documentId', 'originalFileName',
+  ]);
+  rejectUnknownKeys(value, keys, 'candidate discovery provenance');
+  if (value.schemaVersion !== 1) throw new TypeError('candidate discovery provenance schema invalid');
+  const result = {
+    schemaVersion: 1,
+    method: requiredText(value.method, 'candidate discovery method'),
+    market: requiredText(value.market, 'candidate discovery market'),
+    discoveryUrl: canonicalHttpsUrl(value.discoveryUrl, 'candidate discovery URL'),
+    requestedModel: requiredText(value.requestedModel, 'candidate discovery requested model'),
+    matchedModel: requiredText(value.matchedModel, 'candidate discovery matched model'),
+    artifactUrl: canonicalHttpsUrl(value.artifactUrl, 'candidate discovery artifact URL'),
+    ...(value.documentId ? { documentId: requiredText(value.documentId, 'candidate discovery document ID') } : {}),
+    ...(value.originalFileName ? { originalFileName: requiredText(value.originalFileName, 'candidate discovery filename') } : {}),
+  };
+  if (result.method === 'official_product_page') {
+    const hash = requiredText(value.discoveryContentSha256, 'candidate discovery content SHA-256');
+    if (!/^[a-f0-9]{64}$/.test(hash)) throw new TypeError('candidate discovery content SHA-256 invalid');
+    const objectPath = requiredText(value.discoveryObjectPath, 'candidate discovery object path');
+    const expectedPath = `evidence/web/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.html`;
+    if (objectPath !== expectedPath) throw new TypeError('candidate discovery object path invalid');
+    if (!Number.isInteger(value.discoveryByteSize) || value.discoveryByteSize <= 0) {
+      throw new TypeError('candidate discovery byte size invalid');
+    }
+    Object.assign(result, {
+      artifactLinkUrl: canonicalHttpsUrl(value.artifactLinkUrl, 'candidate discovery artifact link URL'),
+      discoveryContentSha256: hash,
+      discoveryObjectPath: objectPath,
+      discoveryByteSize: value.discoveryByteSize,
+    });
+  }
+  return result;
+}
+
 export function validateEvidenceSourceCandidate(value, expected = {}) {
   assertRecord(value, 'evidence source candidate');
   rejectUnknownKeys(value, CANDIDATE_KEYS, 'evidence source candidate');
@@ -80,6 +121,7 @@ export function validateEvidenceSourceCandidate(value, expected = {}) {
   if (expected.version && resolverVersion !== expected.version) {
     throw new TypeError('candidate resolver version does not match resolver result');
   }
+  const discoveryProvenance = optionalDiscoveryProvenance(value.discoveryProvenance);
   return {
     sourceUrl: canonicalHttpsUrl(value.sourceUrl, 'candidate source URL'),
     resolverId,
@@ -91,6 +133,7 @@ export function validateEvidenceSourceCandidate(value, expected = {}) {
     sourceRole: requiredText(value.sourceRole, 'candidate source role'),
     requiredAttempt: value.requiredAttempt,
     batchJobId: optionalText(value.batchJobId, 'candidate batch job ID'),
+    ...(discoveryProvenance ? { discoveryProvenance } : {}),
   };
 }
 

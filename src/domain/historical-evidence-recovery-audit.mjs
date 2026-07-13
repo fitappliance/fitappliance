@@ -2,6 +2,10 @@ import { createHash } from 'node:crypto';
 
 import { verifyAttestedResolutionArtifact } from './evidence-artifact-verifier.mjs';
 import { computeCandidateInventorySha256 } from './evidence-candidate-inventory.mjs';
+import {
+  buildLowerAuthorityHints,
+  reconcileEvidenceClaims,
+} from './evidence-claim-reconciliation.mjs';
 import { projectEvidenceGeometry } from './evidence-geometry-projector.mjs';
 import {
   canonicalJsonSha256,
@@ -91,6 +95,30 @@ function validateInventoryForTarget(inventory, target, outcome) {
   }
 }
 
+function validateReconciliationReplay(target, outcome) {
+  const inventory = outcome.candidateInventory;
+  if (!inventory) return;
+  const replayed = reconcileEvidenceClaims({
+    brand: target.brand,
+    model: target.model,
+    category: target.category,
+  }, inventory, {
+    requestedFields: target.requestedFields,
+    lowerAuthorityHints: buildLowerAuthorityHints(target),
+    verifyInventoryHash: true,
+  });
+  if (replayed.status !== outcome.status || replayed.failureCode !== outcome.failureCode) {
+    throw new Error(`reconciliation replay mismatch: expected ${replayed.status}/${replayed.failureCode ?? 'none'}, recorded ${outcome.status}/${outcome.failureCode ?? 'none'}`);
+  }
+  if (['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status)) {
+    const replayedHashes = (replayed.sources ?? []).map((source) => source.contentSha256).sort();
+    const recordedHashes = (outcome.sources ?? []).map((source) => source.contentSha256).sort();
+    if (!same(replayedHashes, recordedHashes)) {
+      throw new Error('reconciliation replay accepted source set mismatch');
+    }
+  }
+}
+
 function validateState(state, batch, results) {
   if (!state || typeof state !== 'object') throw new Error('authoritative run state required');
   if (state.status !== 'completed' || state.runId !== results.runId || state.batchId !== batch.batchId) {
@@ -129,11 +157,17 @@ async function verifyOnlineSource(source, identity, readObject, verifiedObjects)
     }
     verifiedObjects.add(source.derivedArtifact.objectPath);
   }
+  let discovery = null;
+  if (source.discoveryProvenance?.method === 'official_product_page') {
+    discovery = Buffer.from(await readObject(source.discoveryProvenance.discoveryObjectPath));
+    verifiedObjects.add(source.discoveryProvenance.discoveryObjectPath);
+  }
   verifyAttestedResolutionArtifact({
     source,
     caseIdentity: identity,
     bytes: raw,
     derivedArtifactBytes: derived,
+    discoveryArtifactBytes: discovery,
   });
   verifiedObjects.add(source.objectPath);
 }
@@ -267,6 +301,7 @@ export async function auditHistoricalEvidenceRecovery({
       else if (['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status)) {
         throw new Error('accepted outcome candidate inventory missing');
       }
+      validateReconciliationReplay(target, outcome);
       if (!['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status)) {
         if (outcome.sources?.length || outcome.geometryProjection !== null) {
           throw new Error('non-accepted outcome carries releasable evidence');

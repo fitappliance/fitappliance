@@ -43,6 +43,32 @@ test('LG adapter treats an exhausted exact lookup as complete zero, not discover
   assert.deepEqual(result.failures, []);
 });
 
+test('LG adapter preserves Australian support API provenance for a global official download', async () => {
+  const artifactUrl = 'https://gscs-b2c.lge.com/open/downloadFile?fileId=fixture';
+  const adapter = createLgResolverAdapter({
+    finder: async () => ({
+      sourceUrl: artifactUrl,
+      resourceType: 'Owner Manual',
+      lookupSku: 'WD1275A1',
+      modelName: 'WD1275A1',
+      docId: '20152207223286',
+      discoveryUrl: 'https://www.lg.com/ncms/asia/api/v1/support/proxy/retrieveManualSoftwareList?locale=AU',
+    }),
+  });
+  const result = await adapter.resolve({ brand: 'LG', model: 'WD1275A1' });
+  assert.equal(result.candidates[0].authorityMode, 'official');
+  assert.deepEqual(result.candidates[0].discoveryProvenance, {
+    schemaVersion: 1,
+    method: 'official_market_api',
+    market: 'AU',
+    discoveryUrl: 'https://www.lg.com/ncms/asia/api/v1/support/proxy/retrieveManualSoftwareList?locale=AU',
+    requestedModel: 'WD1275A1',
+    matchedModel: 'WD1275A1',
+    artifactUrl,
+    documentId: '20152207223286',
+  });
+});
+
 test('LG transport error remains incomplete while preserving no false candidate', async () => {
   const adapter = createLgResolverAdapter({
     finder: async () => { throw new Error('LG support API failed with HTTP 503'); },
@@ -66,6 +92,20 @@ test('Electrolux group adapter supports exact official factsheet candidates only
   assert.equal(result.candidates[0].authorityMode, 'official');
   assert.equal(result.candidates[0].documentType, 'specification_sheet');
   assert.equal('width' in result.candidates[0], false);
+});
+
+test('Electrolux group adapter does not request wildcard family tokens as exact models', async () => {
+  let calls = 0;
+  const adapter = createElectroluxGroupResolverAdapter({
+    finder: async () => {
+      calls += 1;
+      return { sourceUrl: 'https://resource.electrolux.com.au/should-not-run.pdf' };
+    },
+  });
+  const result = await adapter.resolve({ brand: 'Westinghouse', model: 'WTB3700**' });
+  assert.equal(calls, 0);
+  assert.equal(result.completion, 'complete');
+  assert.deepEqual(result.candidates, []);
 });
 
 test('adapter router enables only compatible pilot brand discovery', () => {

@@ -5,7 +5,10 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { promisify } from 'node:util';
 
-import { isOfficialBrandHostUrl, isOfficialBrandUrl } from './evidence-source-verifier.mjs';
+import {
+  isOfficialBrandArtifactHostUrl,
+  isOfficialBrandArtifactUrl,
+} from './evidence-source-verifier.mjs';
 
 const execFile = promisify(execFileCallback);
 const DEFAULT_MAXIMUM_BYTES = 20 * 1024 * 1024;
@@ -23,14 +26,19 @@ function validatePayload(contentType, input, maximumBytes) {
   const bytes = Buffer.from(input ?? []);
   if (!bytes.length || bytes.length > maximumBytes) throw new Error('artifact size outside limits');
   const prefix = bytes.subarray(0, 32).toString('utf8').trimStart().toLowerCase();
-  if (contentType === 'application/pdf' && !prefix.startsWith('%pdf-')) throw new Error('PDF content type does not match payload');
+  const pdfMagic = prefix.startsWith('%pdf-');
+  if (contentType === 'application/pdf' && !pdfMagic) throw new Error('PDF content type does not match payload');
+  if (contentType === 'application/octet-stream') {
+    if (!pdfMagic) throw new Error('generic binary content type does not match a PDF payload');
+    return { bytes, contentType: 'application/pdf' };
+  }
   if (contentType === 'text/html' && !prefix.startsWith('<!doctype') && !prefix.startsWith('<html')) {
     throw new Error('HTML content type does not match payload');
   }
   if (!['application/pdf', 'text/html'].includes(contentType)) {
     throw new TypeError(`unsupported evidence content type ${contentType || 'missing'}`);
   }
-  return bytes;
+  return { bytes, contentType };
 }
 
 function retriable(error) {
@@ -68,15 +76,22 @@ async function fetchTransport(requestedUrl, brand, options) {
       const location = response.headers.get('location');
       if (!location) throw new Error('redirect location missing');
       const next = new URL(location, current).toString();
-      if (!isOfficialBrandHostUrl(next, brand)) throw new Error('redirect escaped official brand hosts');
+      if (!isOfficialBrandArtifactHostUrl(next, brand, {
+        model: options.expectedModel,
+        artifactUrl: requestedUrl,
+        discoveryProvenance: options.discoveryProvenance,
+      })) throw new Error('redirect escaped official brand hosts or lacks provenance');
       redirectChain.push(next);
       current = next;
       continue;
     }
     if (!response.ok) throw transportError(`http_${response.status}`, response.status === 408 || response.status === 429 || response.status >= 500);
-    const contentType = normalizeContentType(response.headers.get('content-type'));
-    const bytes = validatePayload(contentType, await response.arrayBuffer(), options.maximumBytes);
-    return { finalUrl: current, redirectChain, contentType, bytes, transport: 'fetch' };
+    const validated = validatePayload(
+      normalizeContentType(response.headers.get('content-type')),
+      await response.arrayBuffer(),
+      options.maximumBytes,
+    );
+    return { finalUrl: current, redirectChain, ...validated, transport: 'fetch' };
   }
   throw new Error('unreachable redirect state');
 }
@@ -139,21 +154,36 @@ export function buildCurlArguments(requestedUrl, options, bodyPath, headersPath)
 }
 
 function validateTransportResult(result, requestedUrl, brand, options) {
-  if (!isOfficialBrandHostUrl(result?.finalUrl, brand)) throw new Error('final URL escaped official brand hosts');
-  if (!Array.isArray(result?.redirectChain) || result.redirectChain.length > (options.maximumRedirects ?? 5)
-    || result.redirectChain.some((url) => !isOfficialBrandHostUrl(url, brand))) {
-    throw new Error('redirect escaped official brand hosts');
+  const hostContext = {
+    model: options.expectedModel,
+    artifactUrl: requestedUrl,
+    discoveryProvenance: options.discoveryProvenance,
+  };
+  if (!isOfficialBrandArtifactHostUrl(result?.finalUrl, brand, hostContext)) {
+    throw new Error('final URL escaped official brand hosts or lacks provenance');
   }
-  const contentType = normalizeContentType(result.contentType);
-  if (/\.pdf$/i.test(new URL(requestedUrl).pathname) && contentType !== 'application/pdf') {
+  if (!Array.isArray(result?.redirectChain) || result.redirectChain.length > (options.maximumRedirects ?? 5)
+    || result.redirectChain.some((url) => !isOfficialBrandArtifactHostUrl(url, brand, hostContext))) {
+    throw new Error('redirect escaped official brand hosts or lacks provenance');
+  }
+  const validated = validatePayload(normalizeContentType(result.contentType), result.bytes, options.maximumBytes);
+  if (/\.pdf$/i.test(new URL(requestedUrl).pathname) && validated.contentType !== 'application/pdf') {
     throw new Error('PDF request returned a non-PDF content type');
   }
-  const bytes = validatePayload(contentType, result.bytes, options.maximumBytes);
-  return { finalUrl: new URL(result.finalUrl).toString(), redirectChain: result.redirectChain.map((url) => new URL(url).toString()), contentType, bytes };
+  return {
+    finalUrl: new URL(result.finalUrl).toString(),
+    redirectChain: result.redirectChain.map((url) => new URL(url).toString()),
+    ...validated,
+  };
 }
 
 export async function fetchOfficialArtifactResilient(requestedUrl, brand, options = {}) {
-  if (!isOfficialBrandUrl(requestedUrl, brand)) throw new TypeError('requested URL is not an official brand URL');
+  if (!isOfficialBrandArtifactUrl(requestedUrl, brand, {
+    model: options.expectedModel,
+    discoveryProvenance: options.discoveryProvenance,
+  })) {
+    throw new TypeError('requested URL is not an official brand URL with valid market discovery provenance');
+  }
   const normalizedOptions = { ...options, maximumBytes: options.maximumBytes ?? DEFAULT_MAXIMUM_BYTES };
   const curlImpl = options.curlImpl ?? defaultCurlTransport;
   const curlPreferred = options.allowCurlFallback === true

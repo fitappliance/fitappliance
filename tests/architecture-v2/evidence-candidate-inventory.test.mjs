@@ -126,6 +126,46 @@ test('duplicate official URLs merge provenance and are acquired exactly once', a
   );
 });
 
+test('duplicate URL retains one exact market discovery provenance and binds it into inventory hash', async () => {
+  const url = 'https://gscs-b2c.lge.com/open/downloadFile?fileId=fixture';
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_market_api',
+    market: 'AU',
+    discoveryUrl: 'https://www.lg.com/ncms/asia/api/v1/support/proxy/retrieveManualSoftwareList?locale=AU',
+    requestedModel: 'WD1275A1',
+    matchedModel: 'WD1275A1',
+    artifactUrl: url,
+    documentId: '20152207223286',
+  };
+  let received;
+  const target = { id: 'target-lg', brand: 'LG', model: 'WD1275A1', category: 'washing_machine' };
+  const inventory = await collectEvidenceCandidates(target, {
+    batchCandidateJobIds: ['legacy-job'],
+    activeReceiptSources: [],
+    resolvers: [
+      resolver({ id: 'batch', candidates: [candidate(url, { batchJobId: 'legacy-job' })] }),
+      resolver({ id: 'lg-api', candidates: [candidate(url, { discoveryProvenance })] }),
+    ],
+    acquireAndAttest: async (entry) => {
+      received = entry;
+      return { source: source('e'.repeat(64), url) };
+    },
+  });
+
+  assert.deepEqual(received.discoveryProvenance, discoveryProvenance);
+  assert.deepEqual(inventory.candidates[0].discoveryProvenance, discoveryProvenance);
+  const changed = await collectEvidenceCandidates(target, {
+    batchCandidateJobIds: [],
+    activeReceiptSources: [],
+    resolvers: [resolver({ id: 'tampered', candidates: [candidate(url, {
+      discoveryProvenance: { ...discoveryProvenance, matchedModel: 'WD1275A2' },
+    })] })],
+    acquireAndAttest: async () => ({ source: source('e'.repeat(64), url) }),
+  });
+  assert.notEqual(inventory.candidateInventorySha256, changed.candidateInventorySha256);
+});
+
 test('truncated resolver and an unrepresented batch edge both prevent a complete inventory', async () => {
   const url = 'https://www.westinghouse.com.au/manuals/WHE6874BA.pdf';
   const inventory = await collectEvidenceCandidates(TARGET, {

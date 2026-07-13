@@ -1,6 +1,10 @@
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { validateDimensionEvidenceClaimsV2 } from './dimension-evidence-claim.mjs';
+import {
+  validateOfficialProductPageArtifactRelationship,
+  verifyOfficialProductPageDiscoveryEvidence,
+} from './official-product-page-discovery-evidence.mjs';
 
 const manufacturerPolicy = JSON.parse(readFileSync(
   new URL('../../data/architecture-v2/policies/manufacturer-source-policy.json', import.meta.url),
@@ -8,6 +12,10 @@ const manufacturerPolicy = JSON.parse(readFileSync(
 ));
 const resolutionPolicy = JSON.parse(readFileSync(
   new URL('../../data/architecture-v2/policies/evidence-resolution-policy.json', import.meta.url),
+  'utf8',
+));
+const discoverySeedPolicy = JSON.parse(readFileSync(
+  new URL('../../data/architecture-v2/policies/official-discovery-seed-policy.json', import.meta.url),
   'utf8',
 ));
 
@@ -60,6 +68,13 @@ function trustedUrl(value, brand, label, options = {}) {
   return url.toString();
 }
 
+function canonicalHttpsUrl(value, label) {
+  let url;
+  try { url = new URL(requiredText(value, label)); } catch { throw new TypeError(`${label} invalid`); }
+  if (url.protocol !== 'https:' || url.username || url.password) throw new TypeError(`${label} must use trusted HTTPS`);
+  return url.toString();
+}
+
 export function isReleasableQuarantineReason(value) {
   const reason = String(value ?? '').trim().toLowerCase();
   return Boolean(reason) && resolutionPolicy.releasableQuarantineReasonPatterns
@@ -82,6 +97,202 @@ export function isOfficialBrandHostUrl(value, brand) {
   } catch {
     return false;
   }
+}
+
+export function isOfficialBrandMarketUrl(value, brand) {
+  if (!isOfficialBrandUrl(value, brand)) return false;
+  try {
+    const url = new URL(value);
+    const configuredPatterns = manufacturerPolicy.marketPathPatterns?.[brandKey(brand)] ?? [];
+    if (configuredPatterns.length) return true;
+    const host = url.hostname.toLowerCase();
+    if (host.endsWith('.com.au') || host.endsWith('.au')) return true;
+    const marketSegments = url.pathname.split('/').filter(Boolean);
+    if (marketSegments.some((segment) => /^(?:au|en[-_]au|au[-_]en)$/i.test(segment))) return true;
+    return [...url.searchParams.values()].some((entry) => /^(?:au|uni_au|en[-_]au|au[-_]en)$/i.test(entry));
+  } catch {
+    return false;
+  }
+}
+
+function isApprovedGlobalArtifactHost(value, brand) {
+  let url;
+  try {
+    url = new URL(canonicalHttpsUrl(value, 'source URL'));
+  } catch {
+    return false;
+  }
+  const approvedHosts = discoverySeedPolicy.brandGlobalArtifactHosts?.[brandKey(brand)] ?? [];
+  const host = url.hostname.toLowerCase().replace(/\.$/, '');
+  return approvedHosts.some((approved) => host === String(approved).toLowerCase().replace(/\.$/, ''));
+}
+
+export function isOfficialBrandArtifactHostUrl(value, brand, context = {}) {
+  if (isOfficialBrandHostUrl(value, brand)) return true;
+  if (!isApprovedGlobalArtifactHost(value, brand)) return false;
+  try {
+    normalizeOfficialArtifactDiscoveryProvenance(context.discoveryProvenance, {
+      brand,
+      model: context.model,
+      artifactUrl: context.artifactUrl,
+    });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function modelKey(value, label) {
+  const raw = requiredText(value, label).toUpperCase();
+  if (/[*?]/.test(raw)) throw new TypeError(`${label} cannot be a wildcard`);
+  return raw.replace(/[^A-Z0-9]+/g, '');
+}
+
+function officialMarketApiUrl(value, brand) {
+  const source = new URL(trustedUrl(value, brand, 'discovery URL', { hostOnly: true }));
+  const endpoints = discoverySeedPolicy.brandApiEndpoints?.[brandKey(brand)] ?? [];
+  const match = endpoints.some((endpoint) => {
+    if (source.hostname.toLowerCase() !== endpoint.hostname || source.pathname !== endpoint.pathname) return false;
+    return Object.entries(endpoint.requiredQuery ?? []).every(([key, expected]) => source.searchParams.get(key) === expected);
+  });
+  if (!match) throw new TypeError(`discovery URL is not an approved ${discoverySeedPolicy.market} market API`);
+  return source.toString();
+}
+
+function officialProductPageUrl(value, brand) {
+  const source = new URL(trustedUrl(value, brand, 'discovery URL'));
+  const host = source.hostname.toLowerCase();
+  const marketQualified = host.endsWith('.com.au')
+    || host.endsWith('.au')
+    || /(?:^|\/)au(?:\/|$)/i.test(source.pathname)
+    || [...source.searchParams.values()].some((entry) => /^(?:au|uni_au)$/i.test(entry));
+  if (!marketQualified) throw new TypeError(`discovery URL does not match the ${discoverySeedPolicy.market} market`);
+  return source.toString();
+}
+
+export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('official artifact discovery provenance required');
+  }
+  const allowed = new Set([
+    'schemaVersion', 'method', 'market', 'discoveryUrl', 'requestedModel', 'matchedModel',
+    'artifactUrl', 'artifactLinkUrl', 'discoveryContentSha256', 'discoveryObjectPath',
+    'discoveryByteSize', 'documentId', 'originalFileName',
+  ]);
+  const unknown = Object.keys(value).filter((key) => !allowed.has(key));
+  if (unknown.length) throw new TypeError(`official artifact discovery provenance contains unknown fields: ${unknown.sort().join(', ')}`);
+  if (value.schemaVersion !== 1) throw new TypeError('official artifact discovery provenance schema invalid');
+  const brand = requiredText(context.brand, 'discovery brand');
+  const expectedModel = requiredText(context.model, 'discovery target model');
+  const artifactUrl = canonicalHttpsUrl(value.artifactUrl, 'discovered artifact URL');
+  if (!isOfficialBrandHostUrl(artifactUrl, brand) && !isApprovedGlobalArtifactHost(artifactUrl, brand)) {
+    throw new TypeError(`discovered artifact URL is not an approved official artifact host for ${brand}`);
+  }
+  if (artifactUrl !== new URL(requiredText(context.artifactUrl, 'expected artifact URL')).toString()) {
+    throw new TypeError('discovery artifact URL does not match requested artifact');
+  }
+  const method = requiredText(value.method, 'discovery method');
+  if (!['official_market_api', 'official_product_page'].includes(method)) {
+    throw new TypeError('unsupported official artifact discovery method');
+  }
+  if (requiredText(value.market, 'discovery market') !== discoverySeedPolicy.market) {
+    throw new TypeError(`official artifact discovery must be scoped to ${discoverySeedPolicy.market}`);
+  }
+  const discoveryUrl = method === 'official_market_api'
+    ? officialMarketApiUrl(value.discoveryUrl, brand)
+    : officialProductPageUrl(value.discoveryUrl, brand);
+  const expectedKey = modelKey(expectedModel, 'discovery target model');
+  if (modelKey(value.requestedModel, 'discovery requested model') !== expectedKey
+    || modelKey(value.matchedModel, 'discovery matched model') !== expectedKey) {
+    throw new TypeError('official artifact discovery model does not match target model');
+  }
+  const result = {
+    schemaVersion: 1,
+    method,
+    market: discoverySeedPolicy.market,
+    discoveryUrl,
+    requestedModel: requiredText(value.requestedModel, 'discovery requested model'),
+    matchedModel: requiredText(value.matchedModel, 'discovery matched model'),
+    artifactUrl,
+    ...(value.documentId ? { documentId: requiredText(value.documentId, 'discovery document ID') } : {}),
+    ...(value.originalFileName ? { originalFileName: requiredText(value.originalFileName, 'discovery original filename') } : {}),
+  };
+  const productPageFields = [
+    'artifactLinkUrl', 'discoveryContentSha256', 'discoveryObjectPath', 'discoveryByteSize',
+  ];
+  if (method === 'official_product_page') {
+    const artifactLinkUrl = canonicalHttpsUrl(value.artifactLinkUrl, 'discovery artifact link URL');
+    if (!isOfficialBrandHostUrl(artifactLinkUrl, brand) && !isApprovedGlobalArtifactHost(artifactLinkUrl, brand)) {
+      throw new TypeError(`discovery artifact link URL is not an approved official artifact host for ${brand}`);
+    }
+    validateOfficialProductPageArtifactRelationship(artifactLinkUrl, artifactUrl);
+    const discoveryContentSha256 = requiredText(value.discoveryContentSha256, 'discovery content SHA-256');
+    if (!/^[a-f0-9]{64}$/.test(discoveryContentSha256)) {
+      throw new TypeError('discovery content SHA-256 invalid');
+    }
+    const discoveryObjectPath = requiredText(value.discoveryObjectPath, 'discovery object path');
+    const expectedPath = `evidence/web/sha256/${discoveryContentSha256.slice(0, 2)}/${discoveryContentSha256.slice(2, 4)}/${discoveryContentSha256}.html`;
+    if (discoveryObjectPath !== expectedPath) {
+      throw new TypeError('content-addressed discovery object path required');
+    }
+    if (!Number.isInteger(value.discoveryByteSize) || value.discoveryByteSize <= 0) {
+      throw new TypeError('positive discovery byte size required');
+    }
+    Object.assign(result, {
+      artifactLinkUrl,
+      discoveryContentSha256,
+      discoveryObjectPath,
+      discoveryByteSize: value.discoveryByteSize,
+    });
+  } else if (productPageFields.some((field) => value[field] != null)) {
+    throw new TypeError('product-page discovery evidence is invalid for market API provenance');
+  }
+  return result;
+}
+
+export function isOfficialBrandArtifactUrl(value, brand, context = {}) {
+  if (isOfficialBrandUrl(value, brand)) return true;
+  try {
+    if (!isApprovedGlobalArtifactHost(value, brand)) return false;
+    normalizeOfficialArtifactDiscoveryProvenance(context.discoveryProvenance, {
+      brand,
+      model: context.model,
+      artifactUrl: value,
+    });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function trustedArtifactUrl(value, identity, discoveryProvenance) {
+  if (isOfficialBrandUrl(value, identity.brand)) return new URL(value).toString();
+  if (isApprovedGlobalArtifactHost(value, identity.brand)) {
+    normalizeOfficialArtifactDiscoveryProvenance(discoveryProvenance, {
+      brand: identity.brand,
+      model: identity.model,
+      artifactUrl: value,
+    });
+    return new URL(value).toString();
+  }
+  if (isOfficialBrandHostUrl(value, identity.brand)) {
+    // Preserve the native-host market diagnostic instead of misclassifying it as an unknown host.
+    return trustedUrl(value, identity.brand, 'source URL');
+  }
+  throw new TypeError(`source URL is not an official host for ${identity.brand}`);
+}
+
+function trustedArtifactHopUrl(value, identity, sourceUrl, discoveryProvenance, label) {
+  const normalized = canonicalHttpsUrl(value, label);
+  if (isOfficialBrandHostUrl(normalized, identity.brand)) return normalized;
+  if (!isOfficialBrandArtifactHostUrl(normalized, identity.brand, {
+    model: identity.model,
+    artifactUrl: sourceUrl,
+    discoveryProvenance,
+  })) {
+    throw new TypeError(`${label} is not an approved official artifact host for ${identity.brand}`);
+  }
+  return normalized;
 }
 
 function normalizedIdentity(caseIdentity) {
@@ -275,6 +486,7 @@ function receiptPayload(source, caseIdentity, verifiedAt, claimSemanticsVersion 
   const identity = normalizedIdentity(caseIdentity);
   const contentType = requiredText(source?.contentType, 'content type').toLowerCase();
   const contract = receiptContract(claimSemanticsVersion);
+  const requestedUrl = trustedArtifactUrl(source?.sourceUrl, identity, source?.discoveryProvenance);
   return {
     schemaVersion: contract.schemaVersion,
     ...(contract.claimSemanticsVersion === null ? {} : {
@@ -286,9 +498,21 @@ function receiptPayload(source, caseIdentity, verifiedAt, claimSemanticsVersion 
     caseIdentity: identity,
     sourceIdentity: normalizedSourceIdentity(source, identity, contentType),
     source: {
-      requestedUrl: trustedUrl(source?.sourceUrl, identity.brand, 'source URL'),
-      finalUrl: trustedUrl(source?.finalUrl, identity.brand, 'final URL', { hostOnly: true }),
-      redirectChain: (source?.redirectChain ?? []).map((url, index) => trustedUrl(url, identity.brand, `redirect ${index + 1}`, { hostOnly: true })),
+      requestedUrl,
+      finalUrl: trustedArtifactHopUrl(
+        source?.finalUrl,
+        identity,
+        requestedUrl,
+        source?.discoveryProvenance,
+        'final URL',
+      ),
+      redirectChain: (source?.redirectChain ?? []).map((url, index) => trustedArtifactHopUrl(
+        url,
+        identity,
+        requestedUrl,
+        source?.discoveryProvenance,
+        `redirect ${index + 1}`,
+      )),
       retrievedAt: requiredText(source?.retrievedAt, 'retrieval time'),
       contentSha256: requiredText(source?.contentSha256, 'content SHA-256'),
       objectPath: requiredText(source?.objectPath, 'object path'),
@@ -296,6 +520,14 @@ function receiptPayload(source, caseIdentity, verifiedAt, claimSemanticsVersion 
       byteSize: source?.byteSize,
       supersedesContentSha256: normalizedSupersededHashes(source?.supersedesContentSha256),
       derivedArtifact: normalizedDerivedArtifact(source),
+      ...(source?.discoveryProvenance ? {
+        discoveryPolicyVersion: discoverySeedPolicy.policyVersion,
+        discoveryProvenance: normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
+          brand: identity.brand,
+          model: identity.model,
+          artifactUrl: source.sourceUrl,
+        }),
+      } : {}),
     },
     identitySignals: normalizedSignals(source?.identitySignals),
     claims: normalizedClaims(source?.claims, contentType, claimSemanticsVersion),
@@ -305,13 +537,19 @@ function receiptPayload(source, caseIdentity, verifiedAt, claimSemanticsVersion 
 export function validateTrustedSourceMetadata(source, caseIdentity, options = {}) {
   const identity = normalizedIdentity(caseIdentity);
   if (source?.authority !== 'manufacturer') throw new TypeError('manufacturer authority required');
-  trustedUrl(source?.sourceUrl, identity.brand, 'source URL');
-  trustedUrl(source?.finalUrl, identity.brand, 'final URL', { hostOnly: true });
+  const requestedUrl = trustedArtifactUrl(source?.sourceUrl, identity, source?.discoveryProvenance);
+  trustedArtifactHopUrl(source?.finalUrl, identity, requestedUrl, source?.discoveryProvenance, 'final URL');
   const redirects = source?.redirectChain ?? [];
   if (!Array.isArray(redirects) || redirects.length > resolutionPolicy.maximumRedirects) {
     throw new TypeError('redirect chain invalid');
   }
-  redirects.forEach((url, index) => trustedUrl(url, identity.brand, `redirect ${index + 1}`, { hostOnly: true }));
+  redirects.forEach((url, index) => trustedArtifactHopUrl(
+    url,
+    identity,
+    requestedUrl,
+    source?.discoveryProvenance,
+    `redirect ${index + 1}`,
+  ));
   const retrievedAt = parseTime(source?.retrievedAt, 'retrieval time');
   const asOf = parseTime(options.asOf ?? new Date().toISOString(), 'evaluation time');
   const futureSkew = resolutionPolicy.maximumFutureClockSkewMinutes * 60 * 1000;
@@ -362,6 +600,14 @@ export function createVerificationReceipt(source, caseIdentity, options = {}) {
   const verifiedMilliseconds = parseTime(verifiedAt, 'verification time');
   const claimSemanticsVersion = options.claimSemanticsVersion ?? 1;
   validateTrustedSourceMetadata(source, caseIdentity, { asOf: verifiedAt, claimSemanticsVersion });
+  if (source?.discoveryProvenance?.method === 'official_product_page') {
+    const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
+      brand: caseIdentity?.brand,
+      model: caseIdentity?.model,
+      artifactUrl: source?.sourceUrl,
+    });
+    verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
+  }
   if (verifiedMilliseconds < parseTime(source.retrievedAt, 'retrieval time')) {
     throw new TypeError('verification time precedes retrieval time');
   }
@@ -395,6 +641,15 @@ export function verifyVerificationReceipt(source, caseIdentity, options = {}) {
     asOf: options.asOf ?? receipt.verifiedAt,
     claimSemanticsVersion,
   });
+  if (source?.discoveryProvenance?.method === 'official_product_page'
+    && options.discoveryArtifactBytes != null) {
+    const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
+      brand: caseIdentity?.brand,
+      model: caseIdentity?.model,
+      artifactUrl: source?.sourceUrl,
+    });
+    verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
+  }
   const expected = digest(receiptPayload(source, caseIdentity, receipt.verifiedAt, claimSemanticsVersion));
   if (receipt.bindingSha256 !== expected) throw new Error('verification receipt digest mismatch');
   return true;

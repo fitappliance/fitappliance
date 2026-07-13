@@ -227,6 +227,14 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
     model: caseRecord.model,
     category: caseRecord.category,
   };
+  const discoveryProvenance = options.discoveryProvenance ?? null;
+  let discoveryArtifactBytes = options.discoveryArtifactBytes ?? null;
+  if (discoveryProvenance?.method === 'official_product_page' && discoveryArtifactBytes == null) {
+    if (typeof options.readObject !== 'function') {
+      throw new TypeError('discovery evidence object reader required');
+    }
+    discoveryArtifactBytes = await options.readObject(discoveryProvenance.discoveryObjectPath);
+  }
   const unchanged = (caseRecord.sources ?? []).find((source) => source.contentSha256 === artifact.contentSha256);
   const unchangedCoversRequest = Boolean(unchanged) && (
     !options.requireRequestedFieldCoverage
@@ -234,7 +242,10 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
   );
   if (unchanged && unchangedCoversRequest) {
     try {
-      verifyVerificationReceipt(unchanged, identity, { asOf: now });
+      verifyVerificationReceipt(unchanged, identity, {
+        asOf: now,
+        discoveryArtifactBytes,
+      });
       return { unchanged: true, source: unchanged, replacesExistingHash: false };
     } catch {
       // Re-attest immutable bytes when policy or claim semantics advance.
@@ -287,6 +298,9 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
     supersedesContentSha256,
     identity: { brand: caseRecord.brand, model: caseRecord.model, outcome: 'exact' },
     claims,
+    ...(discoveryProvenance ? {
+      discoveryProvenance: structuredClone(discoveryProvenance),
+    } : {}),
     ...(artifact.derivedArtifact ? { derivedArtifact: structuredClone(artifact.derivedArtifact) } : {}),
   };
   const attested = verifyAndAttestResolutionArtifact({
@@ -294,6 +308,7 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
     caseIdentity: identity,
     bytes: artifact.bytes,
     derivedArtifactBytes: artifact.derivedArtifactBytes,
+    discoveryArtifactBytes,
     verifiedAt: now,
     claimSemanticsVersion,
   });

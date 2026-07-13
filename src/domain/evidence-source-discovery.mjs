@@ -2,7 +2,7 @@ import { load } from 'cheerio';
 
 import { validateEvidenceSourceResolverResult } from './evidence-source-adapter-contract.mjs';
 import { classifyDocumentType } from './official-document-candidate.mjs';
-import { isOfficialBrandUrl } from './evidence-source-verifier.mjs';
+import { isOfficialBrandMarketUrl, isOfficialBrandUrl } from './evidence-source-verifier.mjs';
 import { discoverOfficialDocumentCandidates } from './official-document-discovery.mjs';
 
 const CORE_RESOLVER = Object.freeze({
@@ -201,13 +201,38 @@ export async function discoverRankedEvidenceCandidates(caseRecord, options = {})
   }
   for (const value of explicitUrls) {
     if (!isOfficialBrandUrl(value, caseRecord.brand)) {
+      let reference;
       try {
-        add(resolverCandidate(caseRecord, value, {
+        reference = resolverCandidate(caseRecord, value, {
           authorityMode: 'reference',
-          discoveryMethod: 'legacy_candidate',
-        }));
+          discoveryMethod: 'reference_mirror_seed',
+        });
+        add(reference);
       } catch {
-        // Invalid legacy values are not discovery candidates.
+        continue;
+      }
+      if (typeof options.rediscoverReferenceArtifact === 'function') {
+        try {
+          const rediscovered = await options.rediscoverReferenceArtifact({
+            sourceUrl: reference.sourceUrl,
+            brand: caseRecord.brand,
+            model: caseRecord.model,
+            category: caseRecord.category,
+          });
+          for (const candidate of rediscovered?.officialCandidates ?? []) {
+            if (!candidate?.requiresOfficialAcquisition
+              || !isOfficialBrandMarketUrl(candidate.sourceUrl, caseRecord.brand)) {
+              throw new Error('reference rediscovery returned an invalid official candidate');
+            }
+            add(resolverCandidate(caseRecord, candidate.sourceUrl, {
+              authorityMode: 'official',
+              discoveryMethod: 'reference_fingerprint_rediscovery',
+              documentType: candidate.documentType,
+            }));
+          }
+        } catch (error) {
+          failures.push(failureRecord('reference_rediscovery_failed', reference.sourceUrl, error));
+        }
       }
     }
   }

@@ -228,6 +228,22 @@ test('claim, source, inventory, authority and batch mutations fail closed', asyn
   }
 });
 
+test('online audit replays reconciliation instead of trusting a hash-consistent accepted outcome', async () => {
+  const fixture = acceptedFixture();
+  fixture.target.reconciliationContext.registryHints = [{
+    sourceId: 'energy-rating:fridge',
+    snapshotSha256: 'c'.repeat(64),
+    dimensionsMm: { width: 1790, height: 914, depth: 730 },
+  }];
+  const batchSha256 = canonicalJsonSha256(fixture.batch);
+  fixture.results.batchSha256 = batchSha256;
+  fixture.state.input.batchSha256 = batchSha256;
+
+  const audit = await runAudit(fixture);
+  assert.equal(audit.status, 'failed');
+  assert.match(audit.violations.join('\n'), /reconciliation replay/i);
+});
+
 test('promotion requires a passing online audit and preserves all source receipts', async () => {
   const fixture = acceptedFixture();
   const audit = await runAudit(fixture);

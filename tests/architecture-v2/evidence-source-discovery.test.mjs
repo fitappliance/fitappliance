@@ -130,9 +130,72 @@ test('typed discovery preserves ranking, resolver provenance and reference autho
       'brand_template',
     ],
     ['https://www.electrolux.com.au/legacy/EQE6160BA/', 'official', 'explicit_registry'],
-    ['https://www.appliancesonline.com.au/manuals/EQE6160BA.pdf', 'reference', 'legacy_candidate'],
+    ['https://www.appliancesonline.com.au/manuals/EQE6160BA.pdf', 'reference', 'reference_mirror_seed'],
   ]);
   assert.ok(result.candidates.every((candidate) => candidate.resolverId === result.resolverId));
+});
+
+test('reference fingerprint rediscovery adds a separate official candidate without promoting the mirror', async () => {
+  const mirror = 'https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-Specifications.pdf';
+  const official = 'https://mf-support.mfe.fisherpaykel.com/au/support/articles/450L-Vertical-refrigerator---User-Care-Guide-22309-ka0Jw000000NxXFIA0/';
+  const result = await discoverRankedEvidenceCandidates({
+    brand: 'Fisher & Paykel',
+    model: 'E450LXFD',
+    category: 'fridge',
+    candidateUrls: [mirror],
+  }, {
+    rediscoverReferenceArtifact: async ({ sourceUrl }) => {
+      assert.equal(sourceUrl, mirror);
+      return {
+        schemaVersion: 1,
+        status: 'official_candidates_discovered',
+        referenceContentSha256: 'a'.repeat(64),
+        officialCandidates: [{
+          sourceUrl: official,
+          authorityMode: 'official',
+          documentType: 'official_support_article',
+          sourceModelHint: 'E450LXFD',
+          matchBasis: 'exact_model_official_candidate',
+          requiresOfficialAcquisition: true,
+        }],
+      };
+    },
+  });
+
+  assert.equal(result.completion, 'complete');
+  assert.deepEqual(result.candidates.map((candidate) => [
+    candidate.sourceUrl,
+    candidate.authorityMode,
+    candidate.discoveryMethod,
+    candidate.requiredAttempt,
+  ]), [
+    [mirror, 'reference', 'reference_mirror_seed', false],
+    [official, 'official', 'reference_fingerprint_rediscovery', true],
+  ]);
+});
+
+test('reference rediscovery failure is typed and prevents false complete discovery', async () => {
+  const mirror = 'https://commercial.appliancesonline.com.au/public/manuals/Fisher---Paykel-E450LXFD1-Specifications.pdf';
+  const result = await discoverRankedEvidenceCandidates({
+    brand: 'Fisher & Paykel',
+    model: 'E450LXFD',
+    category: 'fridge',
+    candidateUrls: [mirror],
+  }, {
+    rediscoverReferenceArtifact: async () => {
+      throw new Error('reference MinerU conversion failed');
+    },
+  });
+
+  assert.equal(result.completion, 'failed');
+  assert.ok(result.candidates.some((candidate) => (
+    candidate.sourceUrl === mirror && candidate.authorityMode === 'reference'
+  )));
+  assert.deepEqual(result.failures, [{
+    code: 'reference_rediscovery_failed',
+    sourceUrl: mirror,
+    message: 'reference MinerU conversion failed',
+  }]);
 });
 
 test('typed discovery never marks partial product-page discovery complete', async () => {

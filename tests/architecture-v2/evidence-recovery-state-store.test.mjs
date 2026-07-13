@@ -186,6 +186,33 @@ test('state checkpoints dominate a truncated final diagnostic event', async (t) 
   await store.releaseLock();
 });
 
+test('concurrent transition checkpoints cannot overwrite each other', async (t) => {
+  const { storageRoot, options } = await fixture();
+  t.after(() => fs.rm(storageRoot, { recursive: true, force: true }));
+  const store = createEvidenceRecoveryStateStore(options);
+  await store.open({ resume: false });
+  const records = ['job-a', 'job-b'].map((jobId, index) => ({
+    schemaVersion: 1,
+    transportKey: String(index + 1).repeat(64),
+    contentSha256: String(index + 3).repeat(64),
+    objectPath: `evidence/web/sha256/${index + 3}${index + 3}/${index + 3}${index + 3}/${jobId}.pdf`,
+  }));
+
+  await Promise.all(records.map((artifactRecord, index) => store.applyTransition({
+    entity: 'artifact', id: `job-${index === 0 ? 'a' : 'b'}`, state: 'available',
+    contentSha256: artifactRecord.contentSha256, artifactRecord,
+  })));
+
+  const state = await store.readState();
+  assert.equal(state.artifacts['job-a'].state, 'available');
+  assert.equal(state.artifacts['job-b'].state, 'available');
+  assert.equal(state.artifacts['job-a'].contentSha256, records[0].contentSha256);
+  assert.equal(state.artifacts['job-b'].contentSha256, records[1].contentSha256);
+  const events = await store.readEvents();
+  assert.equal(events.filter((event) => event.entity === 'artifact' && event.state === 'available').length, 2);
+  await store.releaseLock();
+});
+
 test('persisted artifact record is available for rehydration after process restart', async (t) => {
   const fixtureState = await fixture();
   const { storageRoot, options } = fixtureState;

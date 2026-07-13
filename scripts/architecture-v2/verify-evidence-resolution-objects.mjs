@@ -35,11 +35,15 @@ async function main(args) {
       const derivedArtifactBytes = source.contentType === 'application/pdf'
         ? await readFile(resolveWithin(storageRoot, source.derivedArtifact?.objectPath))
         : null;
+      const discoveryArtifactBytes = source.discoveryProvenance?.method === 'official_product_page'
+        ? await readFile(resolveWithin(storageRoot, source.discoveryProvenance.discoveryObjectPath))
+        : null;
       verifyAttestedResolutionArtifact({
         source,
         caseIdentity: { brand: caseRecord.brand, model: caseRecord.model, category: caseRecord.category },
         bytes,
         derivedArtifactBytes,
+        discoveryArtifactBytes,
       });
       checked += 1;
     }

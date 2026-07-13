@@ -183,6 +183,27 @@ test('one target with alternate jobs receives one inventory and exactly one term
   assert.equal(result.outcomes[0].sources.length, 2);
 });
 
+test('non-accepted reconciliation retains diagnostic candidates but exposes no releasable sources', async () => {
+  const artifactJob = job('a'.repeat(32), 'https://official.example.com/partial.pdf', ['target-a']);
+  const input = batch({
+    jobs: [artifactJob],
+    targets: [target('target-a', 'EX100', [artifactJob.jobId])],
+  });
+  const result = await runReceiptBoundEvidenceBatch(input, dependencies({
+    reconcileClaims: (_identity, inventory) => ({
+      status: 'claims_incomplete',
+      failureCode: 'claim_semantics',
+      candidateInventorySha256: inventory.candidateInventorySha256,
+      sources: [inventory.candidates[0].outcome.source],
+    }),
+  }));
+
+  assert.equal(result.outcomes[0].status, 'claims_incomplete');
+  assert.deepEqual(result.outcomes[0].sources, []);
+  assert.equal(result.outcomes[0].geometryProjection, null);
+  assert.ok(result.outcomes[0].candidateInventory.candidates[0].outcome.source);
+});
+
 test('reversed graph input produces the same deterministic outcomes and semantic digests', async () => {
   const jobs = [
     job('a'.repeat(32), 'https://one.example.com/a.pdf', ['target-a']),

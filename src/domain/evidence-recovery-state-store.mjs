@@ -206,6 +206,13 @@ export function createEvidenceRecoveryStateStore(options) {
   });
   let state = null;
   let ownerToken = null;
+  let mutationTail = Promise.resolve();
+
+  function serializeMutation(task) {
+    const pending = mutationTail.then(task, task);
+    mutationTail = pending.then(() => undefined, () => undefined);
+    return pending;
+  }
 
   const lockValue = () => {
     const at = timestamp(now(), 'lock time');
@@ -373,7 +380,8 @@ export function createEvidenceRecoveryStateStore(options) {
     }
   }
 
-  async function applyTransition(delta) {
+  function applyTransition(delta) {
+    return serializeMutation(async () => {
     if (!state) state = await readState();
     const next = structuredClone(state);
     if (delta.entity === 'artifact') {
@@ -412,14 +420,17 @@ export function createEvidenceRecoveryStateStore(options) {
     await writeState(next);
     await appendEvent({ schemaVersion: 1, at: timestamp(now(), 'event time'), ...structuredClone(delta) });
     return structuredClone(state);
+    });
   }
 
-  async function updateRunStatus(status, fields = {}) {
-    if (!state) state = await readState();
-    const next = { ...structuredClone(state), status, ...structuredClone(fields) };
-    await writeState(next);
-    await appendEvent({ schemaVersion: 1, at: timestamp(now(), 'event time'), entity: 'run', id: runId, state: status });
-    return structuredClone(state);
+  function updateRunStatus(status, fields = {}) {
+    return serializeMutation(async () => {
+      if (!state) state = await readState();
+      const next = { ...structuredClone(state), status, ...structuredClone(fields) };
+      await writeState(next);
+      await appendEvent({ schemaVersion: 1, at: timestamp(now(), 'event time'), entity: 'run', id: runId, state: status });
+      return structuredClone(state);
+    });
   }
 
   return Object.freeze({

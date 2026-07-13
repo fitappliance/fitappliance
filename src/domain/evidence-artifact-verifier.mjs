@@ -94,6 +94,7 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
     'data-item-model', 'data-product-model', 'data-product-id', 'data-ga4-product-id',
     'datalayer-product-id', 'datalayer-origin-productmodelid',
     'data-modelname', 'data-model-name', 'data-sku', 'data-pim-sku',
+    'data-pim-model-name',
   ];
   const skuAttributes = ['data-modelcode', 'data-model-code', 'data-shop-sku', 'data-bv-product-id'];
   let productModel = null;
@@ -235,6 +236,19 @@ function elementText($, element) {
     .join(' '));
 }
 
+function groupedDimensionLabel(label) {
+  const normalized = normalizedText(label);
+  if (/\b(?:dimension|dimensions|size)\b/i.test(normalized)) return normalized;
+  if (/^(?:unit|product|appliance)\s*\(\s*[whd]\s*[x×/*]\s*[whd]\s*[x×/*]\s*[whd]\s*\)$/i.test(normalized)) {
+    return normalized.replace(/^([^()]+)(?=\s*\()/, '$1 dimensions');
+  }
+  return null;
+}
+
+function groupedDimensionValue(value) {
+  return normalizedText(value).replace(/(\d)(mm|cm)\b/gi, '$1 $2');
+}
+
 export function extractClaimsFromHtml(bytes, { category, fields }) {
   if (!Array.isArray(fields) || !fields.length) throw new TypeError('requested evidence fields required');
   const $ = load(Buffer.from(bytes).toString('utf8'));
@@ -252,8 +266,11 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
       const value = normalizedText(`${rowText.slice(0, labelIndex)} ${rowText.slice(labelIndex + label.length)}`);
       if (!value) return;
       const quote = normalizedText(`${label} ${value}`);
-      if (/\b(?:dimension|dimensions|size)\b/i.test(label)) {
-        const grouped = claimsFromExplicitDimensionSequence({ label, value, quote }, { category }, fields);
+      const dimensionLabel = groupedDimensionLabel(label);
+      if (dimensionLabel) {
+        const grouped = claimsFromExplicitDimensionSequence({
+          label: dimensionLabel, value: groupedDimensionValue(value), quote,
+        }, { category }, fields);
         grouped.forEach((claim) => structuredCandidates.get(claim.field)?.push(claim));
       }
       for (const field of fields) {
@@ -274,12 +291,15 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
     const quote = element.tagName === 'dt'
       ? normalizedText(`${label} ${$(element).next('dd').first().text()}`)
       : elementText($, $(element).parent().get(0));
-    if (/\b(?:dimension|dimensions|size)\b/i.test(label) && quote.length <= 500) {
+    const dimensionLabel = groupedDimensionLabel(label);
+    if (dimensionLabel && quote.length <= 500) {
       const labelIndex = quote.indexOf(label);
       const value = labelIndex < 0
         ? ''
         : normalizedText(`${quote.slice(0, labelIndex)} ${quote.slice(labelIndex + label.length)}`);
-      const grouped = claimsFromExplicitDimensionSequence({ label, value, quote }, { category }, fields);
+      const grouped = claimsFromExplicitDimensionSequence({
+        label: dimensionLabel, value: groupedDimensionValue(value), quote,
+      }, { category }, fields);
       grouped.forEach((claim) => structuredCandidates.get(claim.field)?.push(claim));
     }
     for (const field of fields) {
@@ -304,7 +324,7 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
 }
 
 export function verifyAndAttestResolutionArtifact({
-  source, caseIdentity, bytes, derivedArtifactBytes = null, verifiedAt,
+  source, caseIdentity, bytes, derivedArtifactBytes = null, discoveryArtifactBytes = null, verifiedAt,
   claimSemanticsVersion = 1,
 }) {
   const buffer = verifyBytes(source, bytes);
@@ -316,7 +336,10 @@ export function verifyAndAttestResolutionArtifact({
   } else {
     throw new TypeError('unsupported artifact content type');
   }
-  verifyQuotes(source, identityProof.text);
+  // V2 PDF claims are reproduced from hash-bound MinerU fragments; sourceLabel is semantic, not verbatim text.
+  if (!(source.contentType === 'application/pdf' && claimSemanticsVersion === 2)) {
+    verifyQuotes(source, identityProof.text);
+  }
   if (claimSemanticsVersion === 2) validateDimensionEvidenceClaimsV2(source.claims);
   else validateClaimsSemantics(source.claims, caseIdentity);
   const attested = {
@@ -327,22 +350,29 @@ export function verifyAndAttestResolutionArtifact({
   attested.verificationReceipt = createVerificationReceipt(attested, caseIdentity, {
     verifiedAt,
     claimSemanticsVersion,
+    discoveryArtifactBytes,
   });
   return attested;
 }
 
-export function verifyAttestedResolutionArtifact({ source, caseIdentity, bytes, derivedArtifactBytes = null }) {
+export function verifyAttestedResolutionArtifact({
+  source, caseIdentity, bytes, derivedArtifactBytes = null, discoveryArtifactBytes = null,
+}) {
   const claimSemanticsVersion = source?.verificationReceipt?.claimSemanticsVersion ?? 1;
   const rebuilt = verifyAndAttestResolutionArtifact({
     source: { ...source, verificationReceipt: undefined },
     caseIdentity,
     bytes,
     derivedArtifactBytes,
+    discoveryArtifactBytes,
     verifiedAt: source?.verificationReceipt?.verifiedAt,
     claimSemanticsVersion,
   });
   if (rebuilt.verificationReceipt.bindingSha256 !== source?.verificationReceipt?.bindingSha256) {
     throw new Error('artifact attestation receipt mismatch');
   }
-  return verifyVerificationReceipt(source, caseIdentity, { asOf: source.verificationReceipt.verifiedAt });
+  return verifyVerificationReceipt(source, caseIdentity, {
+    asOf: source.verificationReceipt.verifiedAt,
+    discoveryArtifactBytes,
+  });
 }

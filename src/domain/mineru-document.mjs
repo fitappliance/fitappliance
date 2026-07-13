@@ -21,6 +21,20 @@ function normalizedText(value) {
   return String(value ?? '').replace(/\s+/g, ' ').trim();
 }
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function containsExplicitModelExpression(text, model) {
+  if (containsExactModel(text, model)) return true;
+  const target = normalizedText(model).toUpperCase().replace(/[^A-Z0-9]+/g, '');
+  if (!target) return false;
+  return new RegExp(
+    `(^|[^A-Z0-9])${escapeRegExp(target)}\\s*\\/\\s*[A-Z0-9]{1,4}(?![A-Z0-9])`,
+    'i',
+  ).test(String(text ?? ''));
+}
+
 function sha256(value) {
   return createHash('sha256').update(value).digest('hex');
 }
@@ -74,19 +88,26 @@ function splitSingleCellMeasurement(value) {
     : null;
 }
 
-function tableRows(html) {
+function tableCells(html) {
   if (typeof html !== 'string' || !html.trim()) return [];
   const $ = load(html, null, false);
   const rows = [];
   $('tr').each((_, row) => {
-    const cells = $(row).children('th,td').map((__, cell) => normalizedText($(cell).text())).get();
+    rows.push($(row).children('th,td').map((__, cell) => normalizedText($(cell).text())).get());
+  });
+  return rows;
+}
+
+function tableRows(html) {
+  const rows = [];
+  for (const cells of tableCells(html)) {
     if (cells.length >= 2 && cells.some(Boolean)) {
       rows.push({ label: cells[0], value: cells.slice(1).join(' ') });
     } else if (cells.length === 1) {
       const split = splitSingleCellMeasurement(cells[0]);
       if (split) rows.push(split);
     }
-  });
+  }
   return rows.map((row, index) => {
     if (/^with\s+(?:the\s+)?door\s+(?:closed|open)$/i.test(row.label)
       && /^depth$/i.test(rows[index - 1]?.label ?? '') && !rows[index - 1]?.value) {
@@ -136,6 +157,7 @@ function parseDocument(jsonBytes) {
         rawText,
         text: normalizedText(text),
         rows: type === 'table' ? tableRows(html) : [],
+        cells: type === 'table' ? tableCells(html) : [],
         fragmentSha256: sha256(JSON.stringify({ page: pageIndex + 1, type, bbox, html, text })),
       };
     });
@@ -266,7 +288,7 @@ function handleInclusiveDepthClaim(row, fragment, page, field) {
 }
 
 function directClaims(row, fragment, page, fields, category, claimSemanticsVersion) {
-  const quote = normalizedText(`${row.label} ${row.value}`);
+  const quote = normalizedText(row.quote ?? `${row.label} ${row.value}`);
   const claims = [];
   for (const field of fields) {
     const rule = evidenceFieldRules[field];
@@ -296,7 +318,8 @@ function directClaims(row, fragment, page, fields, category, claimSemanticsVersi
             page,
             bbox: [...fragment.bbox],
             fragmentSha256: fragment.fragmentSha256,
-            semanticBasis: 'explicit_label_range',
+            semanticBasis: row.semanticBasis ?? 'explicit_label_range',
+            ...(row.axisOrder ? { axisOrder: [...row.axisOrder] } : {}),
             sourceUnit,
             sourceValues: values,
             sourceValuesMm,
@@ -311,10 +334,13 @@ function directClaims(row, fragment, page, fields, category, claimSemanticsVersi
         page,
         bbox: [...fragment.bbox],
         fragmentSha256: fragment.fragmentSha256,
-        semanticBasis: ['installation.leftMm', 'installation.rightMm'].includes(field)
-          && /\b(?:each|both)\s+sides?\b/i.test(row.label)
-          ? 'explicit_each_side_label'
-          : 'explicit_label_value',
+        semanticBasis: row.semanticBasis ?? (
+          ['installation.leftMm', 'installation.rightMm'].includes(field)
+            && /\b(?:each|both)\s+sides?\b/i.test(row.label)
+            ? 'explicit_each_side_label'
+            : 'explicit_label_value'
+        ),
+        ...(row.axisOrder ? { axisOrder: [...row.axisOrder] } : {}),
       });
     } catch {
       // A row that cannot prove one unambiguous value is not evidence.
@@ -327,7 +353,7 @@ function identitySignals(document, model) {
   const signals = [];
   document.pages.forEach((items, pageIndex) => {
     for (const item of items) {
-      if (!containsExactModel(item.text, model)) continue;
+      if (!containsExplicitModelExpression(item.text, model)) continue;
       if (item.type === 'title') signals.push({ type: 'mineru_title_model', value: `${model}:page:${pageIndex + 1}` });
       if (item.type === 'list') signals.push({ type: 'mineru_list_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
       if (item.type === 'table') signals.push({ type: 'mineru_table_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
@@ -381,6 +407,126 @@ function paragraphRows(text) {
   }] : [];
 }
 
+function explicitPageDimensionUnit(items) {
+  const matches = items
+    .map((item) => (
+      /\bdimensions?\s*\(\s*(mm|millimet(?:re|er)s?)\s*\)/i.exec(item.text)
+      ?? /\b(?:all\s+measurements?|these\s+dimensions?)\b[^.]{0,120}\b(mm|millimet(?:re|er)s?)\b/i.exec(item.text)
+    ))
+    .filter(Boolean);
+  if (!matches.length) return null;
+  return { unit: 'mm', sourceLabel: normalizedText(matches[0][0]) };
+}
+
+function alternatingAxisRows(fragment, pageUnit) {
+  if (!pageUnit || pageUnit.unit !== 'mm' || !Array.isArray(fragment.cells)) return [];
+  const pairs = [];
+  for (const cells of fragment.cells) {
+    if (cells.length < 2 || cells.length % 2 !== 0) return [];
+    for (let index = 0; index < cells.length; index += 2) {
+      const sourceAxis = normalizedText(cells[index]);
+      const sourceValue = normalizedText(cells[index + 1]);
+      if (!sourceAxis && !sourceValue) continue;
+      const axis = /^(W|H|D)(['"′″]?)$/i.exec(sourceAxis);
+      if (!axis || !/^\d+(?:\.\d+)?$/.test(sourceValue)) return [];
+      pairs.push({
+        sourceAxis,
+        sourceValue,
+        axis: axis[1].toUpperCase(),
+        qualifier: axis[2],
+      });
+    }
+  }
+  if (pairs.length < 2) return [];
+  const depthIsAmbiguous = pairs.some((pair) => pair.axis === 'D' && pair.qualifier);
+  const labels = { W: 'Width', H: 'Height', D: 'Depth' };
+  const unambiguous = pairs.filter((pair) => pair.axis !== 'D' || !depthIsAmbiguous);
+  if (new Set(unambiguous.map((pair) => pair.axis)).size !== unambiguous.length) return [];
+  return unambiguous.map((pair) => ({
+    label: `${labels[pair.axis]} (${pageUnit.unit})`,
+    value: `${pair.sourceValue} ${pageUnit.unit}`,
+    quote: `${pair.sourceAxis} ${pair.sourceValue}`,
+  }));
+}
+
+function exactModelTableScope(items, model) {
+  return items.some((item) => item.type === 'table' && item.rows.some((row) => (
+    /^models?(?:\s+(?:name|number|no\.?|code))?$/i.test(row.label)
+    && containsExplicitModelExpression(row.value, model)
+  )));
+}
+
+const MATRIX_DIMENSION_FIELDS = Object.freeze([
+  'closedEnvelope.heightMm',
+  'closedEnvelope.widthMm',
+  'closedEnvelope.depthMm',
+  'operation.doorOpenDepthMm',
+]);
+const MATRIX_FIELD_AXIS = Object.freeze({
+  'closedEnvelope.heightMm': 'height',
+  'closedEnvelope.widthMm': 'width',
+  'closedEnvelope.depthMm': 'depth',
+  'operation.doorOpenDepthMm': 'depth',
+});
+
+function matrixHeaderField(value) {
+  const label = normalizedText(value);
+  for (const field of MATRIX_DIMENSION_FIELDS) {
+    const rule = evidenceFieldRules[field];
+    if (rule.label.test(label) && !(rule.reject && rule.reject.test(label))) return { field, label };
+  }
+  return null;
+}
+
+function matrixDimensionShape(fragment) {
+  if (fragment.type !== 'table') return null;
+  for (let headerIndex = 0; headerIndex < fragment.cells.length; headerIndex += 1) {
+    const columns = fragment.cells[headerIndex]
+      .map((value, index) => ({ index, ...matrixHeaderField(value) }))
+      .filter((column) => column.field);
+    const closedAxes = new Set(columns
+      .filter((column) => column.field.startsWith('closedEnvelope.'))
+      .map((column) => column.field));
+    if (closedAxes.size >= 2) return { headerIndex, columns };
+  }
+  return null;
+}
+
+function exactModelMatrixRows(fragment, model, pageUnit) {
+  const shape = matrixDimensionShape(fragment);
+  if (!shape) return [];
+  const rows = [];
+  const axisOrder = [...new Set(shape.columns.map((column) => MATRIX_FIELD_AXIS[column.field]).filter(Boolean))];
+  for (const cells of fragment.cells.slice(shape.headerIndex + 1)) {
+    if (cells.every((cell) => !normalizedText(cell))) break;
+    const modelExpression = normalizedText(cells[0]);
+    if (!modelExpression) break;
+    if (!containsExplicitModelExpression(modelExpression, model)) continue;
+    for (const column of shape.columns) {
+      const rawValue = normalizedText(cells[column.index]);
+      if (!/^\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?(?:\s*(?:mm|cm))?$/i.test(rawValue)) continue;
+      const hasUnit = /\b(?:mm|cm)\b/i.test(rawValue);
+      if (!hasUnit && !pageUnit) continue;
+      const sourceUnit = hasUnit ? /\bcm\b/i.test(rawValue) ? 'cm' : 'mm' : pageUnit.unit;
+      rows.push({
+        label: column.label,
+        value: hasUnit ? rawValue : `${rawValue} ${sourceUnit}`,
+        quote: `${column.label} ${rawValue} ${sourceUnit}`,
+        semanticBasis: 'exact_model_matrix_row',
+        axisOrder,
+      });
+    }
+    if (rows.length) break;
+  }
+  return rows;
+}
+
+function hasExactModelDimensionMatrix(fragment, model) {
+  const shape = matrixDimensionShape(fragment);
+  return Boolean(shape && fragment.cells.slice(shape.headerIndex + 1)
+    .some((cells) => containsExplicitModelExpression(cells[0], model)));
+}
+
 function commonPrefixLength(left, right) {
   let index = 0;
   while (index < left.length && index < right.length && left[index] === right[index]) index += 1;
@@ -390,7 +536,8 @@ function commonPrefixLength(left, right) {
 function unresolvedFamilyScope(document, model) {
   const target = model.toUpperCase().replace(/[^A-Z0-9]/g, '');
   for (const fragment of document.pages.flat()) {
-    if (!containsExactModel(fragment.text, model)) continue;
+    if (!containsExplicitModelExpression(fragment.text, model)) continue;
+    if (hasExactModelDimensionMatrix(fragment, model)) continue;
     const candidates = (fragment.text.toUpperCase().match(/\b[A-Z][A-Z0-9-]{3,}\d[A-Z0-9/-]*\b/g) ?? [])
       .map((value) => value.replace(/[^A-Z0-9]/g, ''))
       .filter((value) => value !== target && value.length >= 5);
@@ -419,9 +566,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   if (!signals.length) {
     throw new Error('structured exact model identity signal required in MinerU JSON');
   }
-  if (claimSemanticsVersion === 2 && unresolvedFamilyScope(document, model)) {
-    throw new Error('unresolved family manual or multiple models in identity scope');
-  }
+  const unresolvedFamily = claimSemanticsVersion === 2 && unresolvedFamilyScope(document, model);
   const candidates = new Map(fields.map((field) => [field, []]));
   document.pages.forEach((items, pageIndex) => {
     const pageSignals = signals.filter((signal) => signal.value.includes(`:page:${pageIndex + 1}`));
@@ -429,14 +574,23 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const repeatedBodyScope = signals.some((signal) => signal.type === 'mineru_repeated_body_model');
     const bodyScoped = repeatedBodyScope && pageSignals.some((signal) => signal.type === 'mineru_body_model');
     const pageScoped = pageSignals.length > 0;
+    const modelTableScoped = exactModelTableScope(items, model);
+    const pageDimensionUnit = explicitPageDimensionUnit(items);
     if (!pageScoped) return;
     for (const fragment of items.filter((item) => (
-      (item.type === 'table' && (headerScoped || bodyScoped || containsExactModel(item.text, model)))
+      (item.type === 'table' && (
+        headerScoped || bodyScoped || modelTableScoped || containsExplicitModelExpression(item.text, model)
+      ))
       || (pageScoped && ['paragraph', 'text'].includes(item.type))
     ))) {
       const rows = fragment.type === 'table'
-        ? fragment.rows
+        ? [
+          ...(unresolvedFamily ? [] : fragment.rows),
+          ...(unresolvedFamily ? [] : alternatingAxisRows(fragment, pageDimensionUnit)),
+          ...(claimSemanticsVersion === 2 ? exactModelMatrixRows(fragment, model, pageDimensionUnit) : []),
+        ]
         : paragraphRows(fragment.text);
+      if (unresolvedFamily && fragment.type !== 'table') continue;
       for (const row of rows) {
         const claims = [
           ...dimensionClaims(row, fragment, pageIndex + 1, fields, category),
@@ -461,6 +615,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const values = new Set([...unique.values()].map((claim) => JSON.stringify(claim.value)));
     if (values.size > 1) throw new Error(`ambiguous MinerU values for ${field}`);
     if (unique.size) claims.push([...unique.values()][0]);
+  }
+  if (unresolvedFamily && !claims.some((claim) => claim.semanticBasis === 'exact_model_matrix_row')) {
+    throw new Error('unresolved family manual or multiple models in identity scope');
   }
   if (!claims.length) throw new Error('no exact-model MinerU evidence with explicit axes extracted');
   if (claimSemanticsVersion === 1) {

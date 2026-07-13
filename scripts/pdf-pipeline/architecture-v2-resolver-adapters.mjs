@@ -1,7 +1,7 @@
 import { createRequire } from 'node:module';
 
 import { createEvidenceSourceResolverAdapter } from '../../src/domain/evidence-source-adapter-contract.mjs';
-import { isOfficialBrandUrl } from '../../src/domain/evidence-source-verifier.mjs';
+import { isOfficialBrandArtifactUrl } from '../../src/domain/evidence-source-verifier.mjs';
 
 const require = createRequire(import.meta.url);
 const { findFisherPaykelOfficialPdf } = require('./fisher-paykel-official.js');
@@ -15,8 +15,11 @@ function exactTarget(caseRecord) {
   return { brand, model, sku: model };
 }
 
-function authorityForUrl(sourceUrl, brand) {
-  return isOfficialBrandUrl(sourceUrl, brand) ? 'official' : 'reference';
+function authorityForUrl(sourceUrl, brand, model, discoveryProvenance) {
+  return isOfficialBrandArtifactUrl(sourceUrl, brand, {
+    model,
+    discoveryProvenance,
+  }) ? 'official' : 'reference';
 }
 
 function sourceRole(authorityMode, documentType) {
@@ -39,9 +42,10 @@ function typedCandidate({
   discoveryMethod,
   documentType,
   sourceModelHint,
+  discoveryProvenance = null,
   requiredAttempt = true,
 }) {
-  const authorityMode = authorityForUrl(sourceUrl, brand);
+  const authorityMode = authorityForUrl(sourceUrl, brand, sourceModelHint, discoveryProvenance);
   return {
     sourceUrl,
     discoveryMethod,
@@ -50,6 +54,7 @@ function typedCandidate({
     authorityMode,
     sourceRole: sourceRole(authorityMode, documentType),
     requiredAttempt: authorityMode === 'official' ? requiredAttempt : false,
+    discoveryProvenance,
   };
 }
 
@@ -86,6 +91,9 @@ export function createFisherPaykelResolverAdapter(options = {}) {
     required: true,
     async resolve(caseRecord) {
       const target = exactTarget(caseRecord);
+      if (/[*?]/.test(target.model)) {
+        return { completion: 'complete', candidates: [], failures: [] };
+      }
       try {
         const result = await finder(target, options.finderOptions ?? {});
         if (!result?.sourceUrl) {
@@ -133,6 +141,9 @@ export function createLgResolverAdapter(options = {}) {
     required: true,
     async resolve(caseRecord) {
       const target = exactTarget(caseRecord);
+      if (/[*?]/.test(target.model)) {
+        return { completion: 'complete', candidates: [], failures: [] };
+      }
       try {
         const result = await finder(target, options.finderOptions ?? {});
         return {
@@ -143,6 +154,17 @@ export function createLgResolverAdapter(options = {}) {
             discoveryMethod: 'lg_au_support_api',
             documentType: normalizeDocumentType(result.resourceType || result.originalFileName),
             sourceModelHint: result.lookupSku || result.modelName || target.model,
+            discoveryProvenance: result.discoveryUrl ? {
+              schemaVersion: 1,
+              method: 'official_market_api',
+              market: 'AU',
+              discoveryUrl: result.discoveryUrl,
+              requestedModel: target.model,
+              matchedModel: result.modelName || result.lookupSku,
+              artifactUrl: result.sourceUrl,
+              ...(result.docId ? { documentId: result.docId } : {}),
+              ...(result.originalFileName ? { originalFileName: result.originalFileName } : {}),
+            } : null,
           })] : [],
           failures: [],
         };
@@ -162,6 +184,9 @@ export function createElectroluxGroupResolverAdapter(options = {}) {
     required: true,
     async resolve(caseRecord) {
       const target = exactTarget(caseRecord);
+      if (/[*?]/.test(target.model)) {
+        return { completion: 'complete', candidates: [], failures: [] };
+      }
       try {
         const result = await finder(target, options.finderOptions ?? {});
         return {

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "2026-07-13.2",
+  "market": "AU",
+  "brandGlobalArtifactHosts": {
+    "fisherpaykel": [
+      "fisherpaykel.my.salesforce.com"
+    ],
+    "lg": [
+      "gscs-b2c.lge.com"
+    ]
+  },
+  "brandApiEndpoints": {
+    "lg": [
+      {
+        "hostname": "www.lg.com",
+        "pathname": "/ncms/asia/api/v1/support/proxy/retrieveManualSoftwareList",
+        "requiredQuery": {
+          "locale": "AU"
+        }
+      }
+    ]
+  }
+}
