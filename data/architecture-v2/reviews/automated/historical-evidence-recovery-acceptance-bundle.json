@@ -1,9 +1,243 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-13T12:39:33.692Z",
+  "generatedAt": "2026-07-13T12:57:49.575Z",
   "policySha256": "47f4c941793116d4135e9e6479b4a8a478555f4b37a792ea21ccc238fb30656a",
   "entries": [
+    {
+      "targetId": "recovery_target_912d08c57373899f5b2a38bd",
+      "referenceId": "fa_ref_7b30999b458aecbc9e66e223",
+      "legacyRuntimeId": "fridge-arf2495",
+      "canonicalProductId": "fa_prod_c92738e995af0726f8dbd3e5",
+      "brand": "KELVINATOR",
+      "model": "KBM5302AC",
+      "category": "fridge",
+      "lifecycleState": "CATALOG_ARCHIVED",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-e764532d52a9023099098dcf-slice-eab2ee8041c6",
+      "auditSha256": "0e96fc3928bddab2a8b8abe59d0e13f610fd3cbeb92bc93c3f122a313e8f04ce",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-13T12:57:20.271Z",
+          "contentSha256": "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a",
+          "objectPath": "evidence/web/sha256/61/97/6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 858418,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "KELVINATOR",
+            "model": "KBM5302AC",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 796
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78",
+              "bbox": [
+                516,
+                229,
+                939,
+                872
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1718
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78",
+              "bbox": [
+                516,
+                229,
+                939,
+                872
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 727
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78",
+              "bbox": [
+                516,
+                229,
+                939,
+                872
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a",
+            "contentSha256": "4547c046cb2af867a436e45f4e9c28d5d2778a08cd4388aff7d3a006c9abca3c",
+            "objectPath": "evidence/derived/mineru-json/sha256/45/47/4547c046cb2af867a436e45f4e9c28d5d2778a08cd4388aff7d3a006c9abca3c.json",
+            "byteSize": 46569,
+            "pageCount": 7
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "KBM5302AC:page:1:75b045fe64e749d0f82f404ceb82c4db6ccf9f96907bad7927c2c9abac8d0a1c"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KBM5302AC:page:2:92780f649635d956885a786a2428408c41a3aecc25b45b8eb2ea04091feb103f"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KBM5302AC:page:3:877b182531459f4bc810e65e16a77c912b899144604d732592c9732cbc866508"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KBM5302AC:page:4:d9f9604c2d264e70bdebf496a0075f0a74bf064b18622738d9a6cf3f51a1c982"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KBM5302AC:page:5:1305f60997a52d6466f337a952e790805417abdf40d4c2e3f8a5a37055ff4385"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KBM5302AC:page:6:410ff4b7acfcabe0ce85a8fbb7093636e3ffbb8e60ad5bf93bdc7c563d8d9073"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "KBM5302AC:page:7:6f735b6025661a0552fc1f3dca7892681694500bd57ac8326fac8b4e54a126e6"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "KBM5302AC:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-12.1",
+            "verifiedAt": "2026-07-13T12:57:20.271Z",
+            "bindingSha256": "0224b814e8667939005d03d07ced295895c680540bbdd5d07f79f9bb3c42b80d"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 796,
+            "heightMm": {
+              "minimumMm": 1718,
+              "maximumMm": 1718
+            },
+            "depthMm": 727
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
+            "contentSha256": "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a",
+            "receiptBindingSha256": "0224b814e8667939005d03d07ced295895c680540bbdd5d07f79f9bb3c42b80d",
+            "page": 3,
+            "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
+            "contentSha256": "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a",
+            "receiptBindingSha256": "0224b814e8667939005d03d07ced295895c680540bbdd5d07f79f9bb3c42b80d",
+            "page": 3,
+            "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
+            "contentSha256": "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a",
+            "receiptBindingSha256": "0224b814e8667939005d03d07ced295895c680540bbdd5d07f79f9bb3c42b80d",
+            "page": 3,
+            "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a"
+        ]
+      }
+    },
     {
       "targetId": "recovery_target_b4c27af7c13ba6643cb2cf6a",
       "referenceId": "fa_ref_4b70ff0c230e18316b157fb0",
@@ -227,6 +461,13 @@
       "queueSha256": "075be4cf7f4ee6b21edfd56789f75705e11d00502c7f43f61ff36fb5a77c4eab",
       "resultsSha256": "071ac95ced7c5544e9203bf7ecc91f33bc170eecd2fd4ad89652016fc27e1538",
       "auditSha256": "5080341d0a495c67a5f16bbf410d88488fd1fe6248c305a557b970228259c1b5"
+    },
+    {
+      "batchId": "historical-recovery-e764532d52a9023099098dcf-slice-eab2ee8041c6",
+      "batchSha256": "6c2413f6e1a1a36cd92bf3bade58e350943ba0022e3bed70ceba666f46e47f3e",
+      "queueSha256": "075be4cf7f4ee6b21edfd56789f75705e11d00502c7f43f61ff36fb5a77c4eab",
+      "resultsSha256": "3d63c790960a749e5aabc606296caeabe3b49ae6afcf1085b502a06d05e972e1",
+      "auditSha256": "0e96fc3928bddab2a8b8abe59d0e13f610fd3cbeb92bc93c3f122a313e8f04ce"
     }
   ]
 }

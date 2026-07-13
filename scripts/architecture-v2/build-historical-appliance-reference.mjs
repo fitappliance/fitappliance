@@ -6,6 +6,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { normalizeEnergyRatingRows } from '../../src/domain/energy-rating-registry.mjs';
 import { buildHistoricalApplianceReference } from '../../src/domain/historical-appliance-reference.mjs';
+import { buildHistoricalEvidencePublication } from '../../src/domain/historical-evidence-publication.mjs';
 import { hashHistoricalCatalogBinding } from '../../src/domain/historical-catalog-binding.mjs';
 import { parseRegistryCsv, verifyRegistrySnapshot } from '../../src/domain/official-registry-snapshot.mjs';
 import brandCanon from '../brand-canon.js';
@@ -50,6 +51,7 @@ function snapshotBySourceId(snapshotsDocument) {
 export async function buildHistoricalReferenceFromOfficialSnapshots({
   snapshotsDocument,
   catalog,
+  historicalEvidenceProjection = null,
   storageRoot,
   canonicalizeBrand = brandCanon.canonicalizeBrand,
 }) {
@@ -85,6 +87,7 @@ export async function buildHistoricalReferenceFromOfficialSnapshots({
   return buildHistoricalApplianceReference({
     observations,
     catalogProducts: catalog.products,
+    historicalEvidenceProjection,
     catalogSnapshotSha256,
     generatedAt: snapshotsDocument.acquiredAt,
   });
@@ -107,14 +110,24 @@ export async function runCli(args = process.argv.slice(2), environment = process
   const storageRoot = requireStorageRoot(option(args, '--storage-root') ?? environment.FITAPPLIANCE_STORAGE_ROOT);
   const snapshotsPath = resolveArchitectureV2Path(repoRoot, 'officialRegistrySnapshots');
   const catalogPath = resolveArchitectureV2Path(repoRoot, 'publicProjection');
+  const recoveryBundlePath = resolveArchitectureV2Path(
+    repoRoot, 'historicalEvidenceRecoveryAcceptanceBundle',
+  );
   const outputPath = resolveArchitectureV2Path(repoRoot, 'historicalApplianceReference');
-  const [snapshotsBytes, catalogText] = await Promise.all([
+  const [snapshotsBytes, catalogText, recoveryBundleText] = await Promise.all([
     readFile(snapshotsPath),
     readFile(catalogPath, 'utf8'),
+    readFile(recoveryBundlePath, 'utf8'),
   ]);
+  const catalog = JSON.parse(catalogText);
+  const recoveryPublication = buildHistoricalEvidencePublication({
+    bundle: JSON.parse(recoveryBundleText),
+    products: catalog.products,
+  });
   const artifact = await buildHistoricalReferenceFromOfficialSnapshots({
     snapshotsDocument: JSON.parse(snapshotsBytes),
-    catalog: JSON.parse(catalogText),
+    catalog,
+    historicalEvidenceProjection: recoveryPublication.historicalEvidenceProjection,
     storageRoot,
   });
   await atomicJson(outputPath, artifact);

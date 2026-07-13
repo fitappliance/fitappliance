@@ -6,7 +6,8 @@
     "energy-rating:dryer": "dc1d443dac44ad3310356376df8e3418caed7265f99105f6918141cf5f3ff099",
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
-    "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5"
+    "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+    "historical-recovery:historical-recovery-cumulative-v1": "9a592582d4bc13ea5d66e5a365c3d5f22b957079166e7a52954b694762e388dc"
   },
   "records": [
     {
@@ -166086,14 +166087,25 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 796,
+        "height": 1718,
+        "depth": 727
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_912d08c57373899f5b2a38bd",
+          "snapshotSha256": "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -166102,8 +166114,29 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_912d08c57373899f5b2a38bd",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
+          "contentSha256": "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a",
+          "receiptBindingSha256": "0224b814e8667939005d03d07ced295895c680540bbdd5d07f79f9bb3c42b80d",
+          "verifiedAt": "2026-07-13T12:57:20.271Z",
+          "fields": {
+            "width": {
+              "page": 3,
+              "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78"
+            },
+            "height": {
+              "page": 3,
+              "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78"
+            },
+            "depth": {
+              "page": 3,
+              "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78"
+            }
+          }
+        }
       ]
     },
     {
@@ -268592,9 +268625,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 645
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -268607,6 +268644,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_b4c27af7c13ba6643cb2cf6a",
+          "snapshotSha256": "7fcec1d5a9dbe4a9bfe86d701c118d3dad9028173adc91012472a843db3ab098",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -268614,9 +268658,30 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_b4c27af7c13ba6643cb2cf6a",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw911255f9/QRG/AU/QRG-AU-93235.pdf",
+          "contentSha256": "7fcec1d5a9dbe4a9bfe86d701c118d3dad9028173adc91012472a843db3ab098",
+          "receiptBindingSha256": "0b2a694781f95758e25bd5a92a4d6d75fc551913471d6dabd0237c21114a3dc3",
+          "verifiedAt": "2026-07-13T12:39:16.127Z",
+          "fields": {
+            "width": {
+              "page": 1,
+              "fragmentSha256": "e4bc637cb1e33ff87e87d42b83a402e4ca5a2d55500bf6914f2e2808f9d204ec"
+            },
+            "height": {
+              "page": 1,
+              "fragmentSha256": "27a9d973901502cc5e21328cbf39bee782afe1c95fab53ef453d98c6db02382e"
+            },
+            "depth": {
+              "page": 1,
+              "fragmentSha256": "73e4eb30f5148002cddca67074143da0595956668194c77ac8b0efadaaaa4b13"
+            }
+          }
+        }
       ]
     },
     {
@@ -311310,16 +311375,17 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4940,
-      "IDENTITY_ONLY": 3054,
+      "IDENTITY_ONLY": 3052,
       "INTERNAL_CONFLICT": 71,
       "INVALID_DIMENSIONS": 19,
-      "CATALOG_RECEIPT": 11
+      "CATALOG_RECEIPT": 11,
+      "MODEL_RECEIPT": 2
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4940,
-      "MEASURE_REQUIRED": 3054,
+      "MEASURE_REQUIRED": 3052,
       "QUARANTINED": 90,
-      "AUTO_FILL": 11
+      "AUTO_FILL": 13
     }
   }
 }

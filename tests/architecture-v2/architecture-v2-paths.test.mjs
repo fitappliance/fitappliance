@@ -60,7 +60,7 @@ test('historical reference artifacts follow identity before publication ordering
   );
   assert.deepEqual(
     ARCHITECTURE_V2_BUILD_GRAPH.historicalApplianceReference,
-    ['officialRegistrySnapshots', 'publicProjection'],
+    ['officialRegistrySnapshots', 'publicProjection', 'historicalEvidenceRecoveryAcceptanceBundle'],
   );
   assert.deepEqual(
     ARCHITECTURE_V2_BUILD_GRAPH.historicalReferencePublicationManifest,
@@ -80,7 +80,12 @@ test('historical reference artifacts follow identity before publication ordering
   );
   assert.deepEqual(
     ARCHITECTURE_V2_BUILD_GRAPH.historicalEvidenceRecoveryAcceptanceBundle,
-    ['historicalEvidenceRecoveryAudit'],
+    [],
+  );
+  assert.ok(
+    ARCHITECTURE_V2_BUILD_GRAPH.publicProjection.includes(
+      'historicalEvidenceRecoveryAcceptanceBundle',
+    ),
   );
 });
 

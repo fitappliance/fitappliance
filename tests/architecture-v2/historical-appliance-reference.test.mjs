@@ -10,6 +10,7 @@ import {
   LOOKUP_ACTIONS,
   buildHistoricalApplianceReference,
   createHistoricalReferenceRecord,
+  historicalReferenceIdFor,
   isCurrentRetailProduct,
 } from '../../src/domain/historical-appliance-reference.mjs';
 import { createRegistrySnapshotManifest } from '../../src/domain/official-registry-snapshot.mjs';
@@ -41,7 +42,7 @@ test('historical reference exposes independent lifecycle, evidence, and lookup e
     'CURRENT_RETAIL', 'CATALOG_ARCHIVED', 'REGISTRY_ONLY', 'UNKNOWN_RETAIL',
   ]);
   assert.deepEqual(DIMENSION_EVIDENCE_STATES, [
-    'CATALOG_RECEIPT', 'REGISTRY_CONSISTENT', 'IDENTITY_ONLY',
+    'CATALOG_RECEIPT', 'MODEL_RECEIPT', 'REGISTRY_CONSISTENT', 'IDENTITY_ONLY',
     'INTERNAL_CONFLICT', 'AXIS_SUSPECT', 'INVALID_DIMENSIONS',
   ]);
   assert.deepEqual(LOOKUP_ACTIONS, [
@@ -78,6 +79,47 @@ test('receipt agreement can auto-fill while identity-only requires measurement',
   assert.equal(identityOnly.lookupAction, 'MEASURE_REQUIRED');
   assert.equal(identityOnly.dimensionsMm, null);
 });
+
+function recoveryProjection({
+  category = 'fridge',
+  brand = 'Example',
+  model = 'MODEL1',
+  lifecycleState = 'CATALOG_ARCHIVED',
+  dimensionsMm = { width: 600, height: 1700, depth: 650 },
+} = {}) {
+  return {
+    schemaVersion: 1,
+    bundleId: 'historical-recovery-cumulative-v1',
+    bundleSha256: '9'.repeat(64),
+    records: [{
+      targetId: 'recovery_target_example',
+      referenceId: historicalReferenceIdFor(category, brand, model),
+      legacyRuntimeId: 'fridge-example-model1',
+      canonicalProductId: 'fa_prod_example_model1',
+      category,
+      brand,
+      model,
+      lifecycleState,
+      acceptanceStatus: dimensionsMm ? 'accepted' : 'receipt_accepted_non_scalar',
+      dimensionsMm,
+      modelReceipts: [{
+        targetId: 'recovery_target_example',
+        sourceUrl: 'https://example.com/model1.pdf',
+        contentSha256: '7'.repeat(64),
+        receiptBindingSha256: '8'.repeat(64),
+        verifiedAt: '2026-07-13T00:00:00.000Z',
+        fields: dimensionsMm ? {
+          width: { page: 1, fragmentSha256: '1'.repeat(64) },
+          height: { page: 1, fragmentSha256: '2'.repeat(64) },
+          depth: { page: 1, fragmentSha256: '3'.repeat(64) },
+        } : {
+          width: { page: 1, fragmentSha256: '1'.repeat(64) },
+        },
+      }],
+    }],
+    summary: { records: 1, scalarDimensions: dimensionsMm ? 1 : 0, nonScalar: dimensionsMm ? 0 : 1 },
+  };
+}
 
 function observation({
   category = 'fridge',
@@ -171,6 +213,65 @@ test('exact receipt dimensions outrank an axis-suspect registry observation with
   assert.deepEqual(record.dimensionsMm, { width: 913, height: 1782, depth: 749 });
   assert.equal(record.registryDimensionState, 'AXIS_SUSPECT');
   assert.ok(record.reasonCodes.includes('REGISTRY_AXIS_PERMUTATION_CONFLICT'));
+});
+
+test('exact recovery receipt outranks registry dimensions and retains model receipt provenance', () => {
+  const result = buildHistoricalApplianceReference({
+    observations: [observation({
+      brand: 'Example', model: 'MODEL1', dimensions: { width: 1700, height: 600, depth: 650 },
+    })],
+    catalogProducts: [receiptProduct({
+      id: 'fridge-example-model1', canonicalProductId: 'fa_prod_example_model1',
+      brand: 'Example', model: 'MODEL1', unavailable: true, retailers: [],
+      geometry_v2: null, geometry_v2_provenance: null,
+    })],
+    historicalEvidenceProjection: recoveryProjection(),
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-13T00:00:00.000Z',
+  });
+
+  const [record] = result.records;
+  assert.equal(record.evidenceState, 'MODEL_RECEIPT');
+  assert.equal(record.lookupAction, 'AUTO_FILL');
+  assert.deepEqual(record.dimensionsMm, { width: 600, height: 1700, depth: 650 });
+  assert.equal(record.registryDimensionState, 'AXIS_SUSPECT');
+  assert.equal(record.modelReceipts[0].receiptBindingSha256, '8'.repeat(64));
+});
+
+test('conflicting catalog and recovery receipts quarantine instead of overwriting', () => {
+  const result = buildHistoricalApplianceReference({
+    observations: [],
+    catalogProducts: [receiptProduct({
+      id: 'fridge-example-model1', canonicalProductId: 'fa_prod_example_model1',
+      brand: 'Example', model: 'MODEL1', unavailable: true, retailers: [],
+    })],
+    historicalEvidenceProjection: recoveryProjection(),
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-13T00:00:00.000Z',
+  });
+
+  const [record] = result.records;
+  assert.equal(record.evidenceState, 'INTERNAL_CONFLICT');
+  assert.equal(record.lookupAction, 'QUARANTINED');
+  assert.equal(record.dimensionsMm, null);
+  assert.ok(record.reasonCodes.includes('MULTIPLE_MODEL_RECEIPTS_CONFLICT'));
+});
+
+test('partial recovery receipt is retained but cannot make registry dimensions auto-fill', () => {
+  const projection = recoveryProjection({ dimensionsMm: null });
+  const result = buildHistoricalApplianceReference({
+    observations: [observation()],
+    catalogProducts: [],
+    historicalEvidenceProjection: projection,
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-13T00:00:00.000Z',
+  });
+
+  const [record] = result.records;
+  assert.equal(record.evidenceState, 'REGISTRY_CONSISTENT');
+  assert.equal(record.lookupAction, 'CONFIRM_REQUIRED');
+  assert.equal(record.modelReceipts.length, 1);
+  assert.ok(record.reasonCodes.includes('MODEL_RECEIPT_NON_SCALAR'));
 });
 
 test('registry-only exact identities separate consistent, missing, and conflicting dimensions', () => {

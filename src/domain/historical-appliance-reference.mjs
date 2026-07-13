@@ -13,6 +13,7 @@ export const LIFECYCLE_STATES = Object.freeze([
 
 export const DIMENSION_EVIDENCE_STATES = Object.freeze([
   'CATALOG_RECEIPT',
+  'MODEL_RECEIPT',
   'REGISTRY_CONSISTENT',
   'IDENTITY_ONLY',
   'INTERNAL_CONFLICT',
@@ -29,6 +30,7 @@ export const LOOKUP_ACTIONS = Object.freeze([
 
 const ACTION_BY_EVIDENCE = Object.freeze({
   CATALOG_RECEIPT: 'AUTO_FILL',
+  MODEL_RECEIPT: 'AUTO_FILL',
   REGISTRY_CONSISTENT: 'CONFIRM_REQUIRED',
   IDENTITY_ONLY: 'MEASURE_REQUIRED',
   INTERNAL_CONFLICT: 'QUARANTINED',
@@ -175,7 +177,7 @@ function countBy(rows, field) {
   return counts;
 }
 
-function sourceReceipts(observations, catalogProducts, catalogSnapshotSha256) {
+function sourceReceipts(observations, catalogProducts, catalogSnapshotSha256, historicalEvidence = []) {
   const byKey = new Map();
   for (const row of observations) {
     const key = `${row.sourceId}\0${row.snapshotSha256}`;
@@ -193,6 +195,17 @@ function sourceReceipts(observations, catalogProducts, catalogSnapshotSha256) {
       sourceLines: [],
     });
   }
+  for (const record of historicalEvidence) {
+    for (const receipt of record.modelReceipts) {
+      byKey.set(`historical-recovery:${receipt.targetId}\0${receipt.contentSha256}`, {
+        sourceId: `historical-recovery:${receipt.targetId}`,
+        snapshotSha256: receipt.contentSha256,
+        sourceLines: Object.values(receipt.fields)
+          .map((field) => field.page)
+          .filter((page) => page !== null),
+      });
+    }
+  }
   return [...byKey.values()]
     .map((source) => ({ ...source, sourceLines: [...new Set(source.sourceLines)].sort((a, b) => a - b) }))
     .sort((left, right) => left.sourceId.localeCompare(right.sourceId));
@@ -200,6 +213,100 @@ function sourceReceipts(observations, catalogProducts, catalogSnapshotSha256) {
 
 function referenceIdFor(key) {
   return `fa_ref_${createHash('sha256').update(key).digest('hex').slice(0, 24)}`;
+}
+
+export function historicalReferenceIdFor(category, brand, model) {
+  return referenceIdFor(exactKey(category, brand, model));
+}
+
+function normalizeModelReceipt(receipt) {
+  if (!receipt || typeof receipt !== 'object' || Array.isArray(receipt)) {
+    throw new TypeError('model receipt must be an object');
+  }
+  const sourceUrl = requireString(receipt.sourceUrl, 'model receipt sourceUrl');
+  let parsedUrl;
+  try { parsedUrl = new URL(sourceUrl); } catch { parsedUrl = null; }
+  if (parsedUrl?.protocol !== 'https:') throw new TypeError('model receipt sourceUrl must use HTTPS');
+  const contentSha256 = String(receipt.contentSha256 ?? '').toLowerCase();
+  const receiptBindingSha256 = String(receipt.receiptBindingSha256 ?? '').toLowerCase();
+  if (!validSha256(contentSha256) || !validSha256(receiptBindingSha256)) {
+    throw new TypeError('model receipt hashes must be SHA-256 values');
+  }
+  const verifiedAt = requireString(receipt.verifiedAt, 'model receipt verifiedAt');
+  if (Number.isNaN(Date.parse(verifiedAt))) throw new TypeError('model receipt verifiedAt must be an ISO timestamp');
+  const fields = {};
+  for (const [axis, locator] of Object.entries(receipt.fields ?? {})) {
+    if (!AXES.includes(axis)) throw new TypeError(`unsupported model receipt axis: ${axis}`);
+    if (!validSha256(locator?.fragmentSha256)) throw new TypeError('model receipt fragment hash required');
+    const page = locator.page === null ? null : Number(locator.page);
+    if (page !== null && (!Number.isInteger(page) || page < 1)) {
+      throw new TypeError('model receipt page must be a positive integer or null');
+    }
+    fields[axis] = { page, fragmentSha256: String(locator.fragmentSha256).toLowerCase() };
+  }
+  if (Object.keys(fields).length === 0) throw new TypeError('model receipt must bind at least one axis');
+  return {
+    targetId: requireString(receipt.targetId, 'model receipt targetId'),
+    sourceUrl,
+    contentSha256,
+    receiptBindingSha256,
+    verifiedAt: new Date(verifiedAt).toISOString(),
+    fields,
+  };
+}
+
+function normalizeHistoricalEvidenceProjection(projection) {
+  if (projection === null || projection === undefined) {
+    return { bundleId: null, bundleSha256: null, records: [] };
+  }
+  if (projection?.schemaVersion !== 1 || !Array.isArray(projection.records)) {
+    throw new TypeError('historical evidence projection schema v1 records required');
+  }
+  if (!validSha256(projection.bundleSha256)) throw new TypeError('historical evidence bundle hash required');
+  const seenReferences = new Set();
+  const seenIdentities = new Set();
+  const records = projection.records.map((record) => {
+    const category = requireString(record.category, 'historical evidence category');
+    const brand = requireString(record.brand, 'historical evidence brand');
+    const model = requireString(record.model, 'historical evidence model');
+    const lifecycleState = requireString(record.lifecycleState, 'historical evidence lifecycle');
+    if (!['CURRENT_RETAIL', 'CATALOG_ARCHIVED'].includes(lifecycleState)) {
+      throw new TypeError(`unsupported historical evidence lifecycle: ${lifecycleState}`);
+    }
+    const referenceId = requireString(record.referenceId, 'historical evidence referenceId');
+    if (referenceId !== historicalReferenceIdFor(category, brand, model)) {
+      throw new Error(`historical evidence reference identity mismatch: ${referenceId}`);
+    }
+    const key = exactKey(category, brand, model);
+    if (seenReferences.has(referenceId) || seenIdentities.has(key)) {
+      throw new Error(`duplicate historical evidence identity: ${referenceId}`);
+    }
+    seenReferences.add(referenceId);
+    seenIdentities.add(key);
+    const dimensionsMm = record.dimensionsMm === null
+      ? null
+      : normalizeDimensions(record.dimensionsMm, true);
+    if ((record.acceptanceStatus === 'accepted') !== (dimensionsMm !== null)) {
+      throw new TypeError('historical evidence scalar acceptance status mismatch');
+    }
+    const modelReceipts = (record.modelReceipts ?? []).map(normalizeModelReceipt);
+    if (modelReceipts.length === 0) throw new TypeError('historical evidence model receipt required');
+    return {
+      ...record,
+      category,
+      brand,
+      model,
+      lifecycleState,
+      referenceId,
+      dimensionsMm,
+      modelReceipts,
+    };
+  });
+  return {
+    bundleId: requireString(projection.bundleId, 'historical evidence bundleId'),
+    bundleSha256: String(projection.bundleSha256).toLowerCase(),
+    records,
+  };
 }
 
 function normalizeSource(source) {
@@ -238,7 +345,7 @@ export function createHistoricalReferenceRecord(input) {
   if (lookupAction !== expectedAction) {
     throw new TypeError(`${evidenceState} requires lookup action ${expectedAction}`);
   }
-  const dimensionsRequired = ['CATALOG_RECEIPT', 'REGISTRY_CONSISTENT'].includes(evidenceState);
+  const dimensionsRequired = ['CATALOG_RECEIPT', 'MODEL_RECEIPT', 'REGISTRY_CONSISTENT'].includes(evidenceState);
   const dimensionsMm = normalizeDimensions(input.dimensionsMm, dimensionsRequired);
   if (!dimensionsRequired && dimensionsMm !== null) {
     throw new TypeError(`${evidenceState} cannot expose accepted dimensions`);
@@ -273,12 +380,14 @@ export function createHistoricalReferenceRecord(input) {
   if (input.registryMarketState) record.registryMarketState = String(input.registryMarketState);
   if (input.registryDimensionState) record.registryDimensionState = String(input.registryDimensionState);
   if (input.reasonCodes) record.reasonCodes = [...new Set(input.reasonCodes.map(String))].sort();
+  if (input.modelReceipts?.length) record.modelReceipts = input.modelReceipts.map(normalizeModelReceipt);
   return freezeDeep(record);
 }
 
 export function buildHistoricalApplianceReference({
   observations,
   catalogProducts,
+  historicalEvidenceProjection = null,
   catalogSnapshotSha256,
   generatedAt,
 }) {
@@ -287,6 +396,7 @@ export function buildHistoricalApplianceReference({
   }
   if (!validSha256(catalogSnapshotSha256)) throw new TypeError('catalogSnapshotSha256 must be a SHA-256 hash');
   if (Number.isNaN(Date.parse(generatedAt))) throw new TypeError('generatedAt must be an ISO timestamp');
+  const historicalEvidence = normalizeHistoricalEvidenceProjection(historicalEvidenceProjection);
 
   const referenceObservations = observations.filter((row) => (
     row?.marketedInAustralia === true
@@ -300,25 +410,40 @@ export function buildHistoricalApplianceReference({
     if (!CATEGORIES.includes(product?.cat) || !product?.brand || !product?.model) return null;
     return exactKey(product.cat, product.brand, product.model);
   });
-  const keys = [...new Set([...observationGroups.keys(), ...catalogGroups.keys()])].sort();
+  const historicalEvidenceGroups = groupByExactKey(historicalEvidence.records, (record) => (
+    exactKey(record.category, record.brand, record.model)
+  ));
+  const keys = [...new Set([
+    ...observationGroups.keys(),
+    ...catalogGroups.keys(),
+    ...historicalEvidenceGroups.keys(),
+  ])].sort();
   const records = [];
 
   for (const key of keys) {
     const sourceRows = [...(observationGroups.get(key) ?? [])].sort((left, right) => left.sourceLine - right.sourceLine);
     const catalogRows = [...(catalogGroups.get(key) ?? [])].sort((left, right) => String(left.id).localeCompare(String(right.id)));
+    const recoveryRows = [...(historicalEvidenceGroups.get(key) ?? [])];
+    if (recoveryRows.length > 1) throw new Error(`multiple historical evidence rows for ${key}`);
+    const recoveryRow = recoveryRows[0] ?? null;
     const firstObservation = sourceRows[0];
     const firstCatalog = catalogRows[0];
-    const category = firstCatalog?.cat ?? firstObservation?.category;
-    const brand = firstCatalog?.brand ?? firstObservation?.identity?.brandCanonical ?? firstObservation?.identity?.brandRaw;
-    const model = firstCatalog?.model ?? firstObservation?.identity?.modelRaw;
+    const category = firstCatalog?.cat ?? recoveryRow?.category ?? firstObservation?.category;
+    const brand = firstCatalog?.brand ?? recoveryRow?.brand
+      ?? firstObservation?.identity?.brandCanonical ?? firstObservation?.identity?.brandRaw;
+    const model = firstCatalog?.model ?? recoveryRow?.model ?? firstObservation?.identity?.modelRaw;
     const [, brandKey, modelKey] = key.split('\0');
-    const lifecycleState = catalogRows.some(isCurrentRetailProduct)
+    const catalogLifecycleState = catalogRows.some(isCurrentRetailProduct)
       ? 'CURRENT_RETAIL'
       : catalogRows.length > 0
         ? 'CATALOG_ARCHIVED'
-        : sourceRows.length > 0
-          ? 'REGISTRY_ONLY'
-          : 'UNKNOWN_RETAIL';
+        : null;
+    if (catalogLifecycleState && recoveryRow && recoveryRow.lifecycleState !== catalogLifecycleState) {
+      throw new Error(`historical evidence lifecycle drift for ${recoveryRow.referenceId}`);
+    }
+    const lifecycleState = catalogLifecycleState
+      ?? recoveryRow?.lifecycleState
+      ?? (sourceRows.length > 0 ? 'REGISTRY_ONLY' : 'UNKNOWN_RETAIL');
     const registryMarketState = sourceRows.length === 0
       ? 'NO_REGISTRY'
       : sourceRows.some((row) => row.activeInAustralia === true)
@@ -334,12 +459,18 @@ export function buildHistoricalApplianceReference({
         `${row.brand}\0${row.model}`,
         { brand: row.brand, model: row.model },
       ]),
+      ...recoveryRows.map((row) => [
+        `${row.brand}\0${row.model}`,
+        { brand: row.brand, model: row.model },
+      ]),
     ]).values()].sort((left, right) => (
       left.brand.localeCompare(right.brand, 'en-AU', { sensitivity: 'base' })
       || left.model.localeCompare(right.model, 'en-AU', { sensitivity: 'base' })
     ));
 
-    const receiptDimensions = catalogRows.map(catalogReceiptDimensions).filter(Boolean);
+    const catalogReceiptDimensionRows = catalogRows.map(catalogReceiptDimensions).filter(Boolean);
+    const modelReceiptDimensionRows = recoveryRows.map((row) => row.dimensionsMm).filter(Boolean);
+    const receiptDimensions = [...catalogReceiptDimensionRows, ...modelReceiptDimensionRows];
     const receiptByKey = new Map(receiptDimensions.map((dimensions) => [dimensionsKey(dimensions), dimensions]));
     const completeRegistry = sourceRows.map((row) => normalizeObservedDimensions(row.dimensionsMm)).filter(Boolean);
     const registryByKey = new Map(completeRegistry.map((dimensions) => [dimensionsKey(dimensions), dimensions]));
@@ -353,13 +484,16 @@ export function buildHistoricalApplianceReference({
     let lookupAction;
     let dimensionsMm = null;
     let registryDimensionState = sourceRows.length === 0 ? 'NO_REGISTRY' : 'NOT_COMPARABLE';
+    if (recoveryRow && recoveryRow.dimensionsMm === null) reasons.push('MODEL_RECEIPT_NON_SCALAR');
 
     if (receiptByKey.size > 1) {
       evidenceState = 'INTERNAL_CONFLICT';
       lookupAction = 'QUARANTINED';
-      reasons.push('MULTIPLE_CATALOG_RECEIPTS_CONFLICT');
+      reasons.push(modelReceiptDimensionRows.length > 0
+        ? 'MULTIPLE_MODEL_RECEIPTS_CONFLICT'
+        : 'MULTIPLE_CATALOG_RECEIPTS_CONFLICT');
     } else if (receiptByKey.size === 1) {
-      evidenceState = 'CATALOG_RECEIPT';
+      evidenceState = modelReceiptDimensionRows.length > 0 ? 'MODEL_RECEIPT' : 'CATALOG_RECEIPT';
       lookupAction = 'AUTO_FILL';
       dimensionsMm = [...receiptByKey.values()][0];
       if (registryByKey.size > 1) {
@@ -411,12 +545,13 @@ export function buildHistoricalApplianceReference({
       evidenceState,
       lookupAction,
       dimensionsMm,
-      sources: sourceReceipts(sourceRows, catalogRows, catalogSnapshotSha256),
+      sources: sourceReceipts(sourceRows, catalogRows, catalogSnapshotSha256, recoveryRows),
       catalogProductIds: catalogRows.map((row) => row.id),
       registryObservationCount: sourceRows.length,
       registryMarketState,
       registryDimensionState,
       reasonCodes: reasons,
+      modelReceipts: recoveryRows.flatMap((row) => row.modelReceipts),
     }));
   }
 
@@ -426,6 +561,9 @@ export function buildHistoricalApplianceReference({
     sourceSnapshotHashes: Object.fromEntries([
       ...new Map(referenceObservations.map((row) => [row.sourceId, row.snapshotSha256])),
       ['fitappliance:catalog', catalogSnapshotSha256],
+      ...(historicalEvidence.bundleId
+        ? [[`historical-recovery:${historicalEvidence.bundleId}`, historicalEvidence.bundleSha256]]
+        : []),
     ].sort(([left], [right]) => left.localeCompare(right))),
     records,
     summary: {

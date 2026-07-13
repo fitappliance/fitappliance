@@ -71,6 +71,21 @@ test('historical catalog binding ignores geometry without three-axis receipt bin
   );
 });
 
+test('historical recovery receipt geometry is bound by its bundle, not duplicated in catalog binding', () => {
+  const beforeRecovery = product({
+    geometry_v2: null,
+    geometry_v2_provenance: null,
+  });
+  const recovered = product({
+    evidence: { acceptance: { id: 'recovery_target_example' } },
+  });
+
+  assert.equal(
+    hashHistoricalCatalogBinding({ products: [beforeRecovery] }),
+    hashHistoricalCatalogBinding({ products: [recovered] }),
+  );
+});
+
 test('historical catalog binding ignores retailer URL drift for an archived product', () => {
   const archived = product({ unavailable: true });
   const changedUrl = product({

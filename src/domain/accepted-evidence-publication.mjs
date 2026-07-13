@@ -158,6 +158,18 @@ export function applyReceiptBoundAcceptance(product, acceptance) {
   const heightMm = closed.heightMm.maximumMm;
   const installation = acceptance.geometry_v2.installation;
   const doorOpenDepthMm = acceptance.geometry_v2.operation.doorOpenDepthMm;
+  const acceptanceSources = Array.isArray(acceptance.sources)
+    ? acceptance.sources.map((source) => ({
+      authority: source.authority,
+      source_type: source.sourceType,
+      source_url: source.sourceUrl,
+      final_url: source.finalUrl,
+      content_type: source.contentType,
+      content_sha256: source.contentSha256,
+      receipt_binding_sha256: source.receiptBindingSha256,
+      verified_at: source.verifiedAt,
+    }))
+    : null;
   const {
     source_url: _legacySourceUrl,
     source_type: _legacySourceType,
@@ -203,7 +215,9 @@ export function applyReceiptBoundAcceptance(product, acceptance) {
     geometry_v2_provenance: structuredClone(acceptance.geometry_v2_provenance),
     data_source: acceptance.artifactType === 'pdf'
       ? 'official_pdf_receipt_bound'
-      : 'official_html_receipt_bound',
+      : acceptance.artifactType === 'html'
+        ? 'official_html_receipt_bound'
+        : 'official_mixed_receipt_bound',
     evidence: {
       ...retainedEvidence,
       source_url: acceptance.sourceUrl,
@@ -225,6 +239,7 @@ export function applyReceiptBoundAcceptance(product, acceptance) {
         content_sha256: acceptance.contentSha256,
         receipt_binding_sha256: acceptance.receiptBindingSha256,
         verified_at: acceptance.verifiedAt,
+        ...(acceptanceSources ? { sources: acceptanceSources } : {}),
         missing_for_verified_fit: [...acceptance.geometry_v2_provenance.missingForVerifiedFit],
       },
     },

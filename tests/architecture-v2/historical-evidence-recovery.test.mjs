@@ -232,7 +232,7 @@ test('normal Architecture V2 build does not generate the next recovery epoch que
   assert.doesNotMatch(packageJson.scripts['build:architecture-v2'], /historical-evidence-recovery-queue/);
 });
 
-test('committed recovery queue is a deterministic non-publication projection of current evidence', async () => {
+test('committed queue remains the prior epoch while the next epoch is deterministic and excludes promoted targets', async () => {
   const [sourceRegistry, historicalReference, committedQueue] = await Promise.all([
     readFile('data/architecture-v2/generated/source-documents.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/generated/historical-appliance-reference.json', 'utf8').then(JSON.parse),
@@ -242,8 +242,18 @@ test('committed recovery queue is a deterministic non-publication projection of 
     sourceDocuments: sourceRegistry.documents,
     historicalReference,
   });
+  const replayed = buildHistoricalEvidenceRecoveryQueue({
+    sourceDocuments: sourceRegistry.documents,
+    historicalReference,
+  });
 
-  assert.equal(jsonSha256(committedQueue), jsonSha256(rebuilt));
+  assert.notEqual(jsonSha256(committedQueue), jsonSha256(rebuilt));
+  assert.equal(jsonSha256(rebuilt), jsonSha256(replayed));
+  for (const promotedModel of ['WD8560F1', 'KBM5302AC']) {
+    assert.ok(committedQueue.targets.some((target) => target.model === promotedModel));
+    assert.equal(rebuilt.targets.some((target) => target.model === promotedModel), false);
+  }
+  assert.equal(rebuilt.summary.targets, committedQueue.summary.targets - 2);
   assert.ok(committedQueue.summary.fetchJobs > 1_500);
   assert.ok(committedQueue.summary.uniqueReferences > 1_500);
   assert.equal(new Set(committedQueue.jobs.map((job) => job.sourceUrl)).size, committedQueue.jobs.length);

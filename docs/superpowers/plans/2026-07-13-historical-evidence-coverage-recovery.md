@@ -1205,7 +1205,7 @@ lineage. The full Architecture V2 suite passes 429 tests.
 - Modify: `src/domain/architecture-v2-paths.mjs`
 - Modify: `package.json`
 
-- [ ] Split the cumulative bundle by lifecycle before projection:
+- [x] Split the cumulative bundle by lifecycle before projection:
   - `CURRENT_RETAIL` targets may enter the current public catalogue only when
     their catalog product exists and identity matches.
   - `CURRENT_RETAIL` and `CATALOG_ARCHIVED` targets may enter a historical
@@ -1213,20 +1213,20 @@ lineage. The full Architecture V2 suite passes 429 tests.
   - Archived targets must never be passed to
     `buildReceiptBoundAcceptanceProjection`, which requires a current catalog
     product and would otherwise fail or leak archived inventory publicly.
-- [ ] Merge the current-only projection with existing PDF-brand and
+- [x] Merge the current-only projection with existing PDF-brand and
   identity-range projections while preserving duplicate/conflict rejection.
-- [ ] Extend historical reference construction to accept the historical
+- [x] Extend historical reference construction to accept the historical
   evidence projection directly in addition to government snapshots and the
   current public projection. Exact receipt-bound scalar W/H/D takes precedence
   over registry dimensions; conflicting receipts quarantine rather than
   overwrite.
-- [ ] Keep range/partial receipts in the cumulative bundle. Do not mark a
+- [x] Keep range/partial receipts in the cumulative bundle. Do not mark a
   historical record `AUTO_FILL` until all three values can be safely exposed by
   the current scalar replacement contract.
-- [ ] Verify `WD8560F1` updates the current catalogue and replacement reference.
+- [x] Verify `WD8560F1` updates the current catalogue and replacement reference.
   Verify archived Kelvinator `KBM5302AC`
   (`recovery_b613fd47007c9b9a4d111b38`) updates only the historical reference.
-- [ ] Separate release commands:
+- [x] Separate release commands:
   1. Online object replay and promotion with the external drive mounted.
   2. Public projection build using the committed cumulative bundle.
   3. Historical reference rebuild with official registry storage mounted.
@@ -1234,16 +1234,33 @@ lineage. The full Architecture V2 suite passes 429 tests.
   5. Normal CI/build replay with the drive unmounted.
   6. Explicitly generate the next-epoch recovery queue from the released
      historical reference; do not run this step inside normal build.
-- [ ] Add only offline structural bundle verification to the normal build graph;
+- [x] Add only offline structural bundle verification to the normal build graph;
   raw-object replay remains an explicit release prerequisite and next-epoch
   queue generation remains an explicit post-release planning command.
-- [ ] Compare before/after product IDs and field-level values; only audited
+- [x] Compare before/after product IDs and field-level values; only audited
   canary dimensions and historical evidence states may change.
 
 **Gate:** WD8560F1 becomes receipt-bound replacement data without receiving
-clearance, installation or verified-fit claims; KBM5302AC remains absent from
-the current public catalogue; and all unrelated records remain byte-stable or
+clearance, installation or verified-fit claims; KBM5302AC remains unavailable
+and absent from the current purchasable projection while its compatibility row
+receives no recovery fields; and all unrelated records remain byte-stable or
 have an explained deterministic rebuild delta.
+
+**Execution record (2026-07-13):** The cumulative bundle now contains two
+online-replayed entries and two lineage rows. Current WD8560F1 publishes only
+600 x 850 x 645 mm dimensions and remains `INSUFFICIENT_DATA` for Fit.
+Archived KBM5302AC was fetched from the official Kelvinator/Electrolux PDF,
+parsed through MinerU and accepted as 796 x 1718 x 727 mm only in the historical
+lane. Its `unavailable:true` compatibility catalogue row receives no geometry
+or acceptance metadata. Historical publication contains 8,095 records, 13
+`AUTO_FILL`, 90 quarantines and exactly two semantic record changes from the
+prior release. Recovery-managed geometry is excluded from the base catalogue
+hash because the cumulative bundle independently binds it; this prevents one
+receipt from rewriting every catalog-linked historical record. The build graph
+now models the committed bundle as an immutable release-epoch input and treats
+the queue as the next epoch, avoiding a publication/recovery cycle. Architecture
+V2 tests and `env -u FITAPPLIANCE_STORAGE_ROOT npm run build:architecture-v2`
+pass; the latter opens zero external evidence objects.
 
 ### Task 13: Prove official-host authority validation
 

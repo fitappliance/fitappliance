@@ -15,6 +15,7 @@ import {
   mergeReceiptBoundAcceptanceProjections,
 } from '../../src/domain/accepted-evidence-publication.mjs';
 import applianceEnrichment from '../enrich-appliances.js';
+import { buildHistoricalEvidencePublication } from '../../src/domain/historical-evidence-publication.mjs';
 
 const { enrichApplianceDocument } = applianceEnrichment;
 
@@ -36,6 +37,9 @@ const recoveryAcceptanceBatch = JSON.parse(await readFile(
 const recoveryAcceptanceResults = JSON.parse(await readFile(
   resolveArchitectureV2Path(root, 'identityRangeRecoveryAcceptanceResults'), 'utf8',
 ));
+const historicalRecoveryAcceptanceBundle = JSON.parse(await readFile(
+  resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryAcceptanceBundle'), 'utf8',
+));
 const pilotEvidence = buildPilotEvidenceProjection(applyEvidencePilotReview({ bundles: reviewBundles.bundles, manifest: reviewManifest }));
 for (const [id, review] of buildPhase10EvidenceProjection(phase10ReviewManifest.outcomes)) pilotEvidence.set(id, review);
 const spaceEvidence = buildSpaceEvidenceProjection(spaceReviewManifest.results);
@@ -47,6 +51,10 @@ for (const row of resolutionManifest.activeQuarantines ?? []) {
   }
 }
 const resolutionByLegacy = new Map(resolutionManifest.results.map((row) => [row.legacyRuntimeId, row.decision]));
+const historicalRecoveryPublication = buildHistoricalEvidencePublication({
+  bundle: historicalRecoveryAcceptanceBundle,
+  products: catalog.products,
+});
 const receiptBoundAcceptance = mergeReceiptBoundAcceptanceProjections(
   buildReceiptBoundAcceptanceProjection({
     batch: acceptanceBatch,
@@ -58,6 +66,7 @@ const receiptBoundAcceptance = mergeReceiptBoundAcceptanceProjections(
     results: recoveryAcceptanceResults,
     products: catalog.products,
   }),
+  historicalRecoveryPublication.currentAcceptanceByLegacyId,
 );
 const filtered = {
   ...catalog,

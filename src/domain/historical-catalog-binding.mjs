@@ -25,7 +25,10 @@ function receiptEvidence(product) {
 }
 
 function productBinding(product) {
-  const dimensionsMm = catalogReceiptDimensions(product);
+  const recoveryManaged = /^recovery_target_[a-z0-9]+$/i.test(
+    String(product?.evidence?.acceptance?.id ?? ''),
+  );
+  const dimensionsMm = recoveryManaged ? null : catalogReceiptDimensions(product);
   const currentRetail = isCurrentRetailProduct(product);
   const productPageUrls = currentRetail
     ? [...new Set((product?.retailers ?? [])

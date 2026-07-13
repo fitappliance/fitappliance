@@ -60,6 +60,9 @@ export const architectureV2Paths = Object.freeze({
 
 export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
   officialRegistrySnapshots: Object.freeze([]),
+  // The committed cumulative bundle is the immutable input for one release
+  // epoch. Recovery audit/promotion produces the next epoch outside normal CI.
+  historicalEvidenceRecoveryAcceptanceBundle: Object.freeze([]),
   evidenceResolutionManifest: Object.freeze([]),
   canonicalRegistry: Object.freeze(['evidenceResolutionManifest']),
   phase10EvidenceBatch: Object.freeze([]),
@@ -69,15 +72,25 @@ export const ARCHITECTURE_V2_BUILD_GRAPH = Object.freeze({
   spaceReviewManifest: Object.freeze(['evidenceReviewBundles', 'dimensionReviewManifest']),
   phase10ReviewManifest: Object.freeze(['phase10EvidenceBatch', 'phase10Acquisition']),
   sourceDocuments: Object.freeze(['canonicalRegistry', 'evidenceReviewBundles', 'dimensionReviewManifest', 'spaceReviewManifest', 'phase10ReviewManifest']),
-  publicProjection: Object.freeze(['canonicalRegistry', 'evidenceReviewBundles', 'dimensionReviewManifest', 'spaceReviewManifest', 'phase10ReviewManifest']),
-  historicalApplianceReference: Object.freeze(['officialRegistrySnapshots', 'publicProjection']),
+  publicProjection: Object.freeze([
+    'canonicalRegistry',
+    'evidenceReviewBundles',
+    'dimensionReviewManifest',
+    'spaceReviewManifest',
+    'phase10ReviewManifest',
+    'historicalEvidenceRecoveryAcceptanceBundle',
+  ]),
+  historicalApplianceReference: Object.freeze([
+    'officialRegistrySnapshots',
+    'publicProjection',
+    'historicalEvidenceRecoveryAcceptanceBundle',
+  ]),
+  historicalReferencePublicationManifest: Object.freeze(['historicalApplianceReference']),
+  historicalReplacementAudit: Object.freeze(['historicalReferencePublicationManifest', 'publicProjection']),
   historicalEvidenceRecoveryQueue: Object.freeze(['sourceDocuments', 'historicalApplianceReference']),
   historicalEvidenceRecoveryBatch: Object.freeze(['historicalEvidenceRecoveryQueue']),
   historicalEvidenceRecoveryResults: Object.freeze(['historicalEvidenceRecoveryBatch']),
   historicalEvidenceRecoveryAudit: Object.freeze(['historicalEvidenceRecoveryResults']),
-  historicalEvidenceRecoveryAcceptanceBundle: Object.freeze(['historicalEvidenceRecoveryAudit']),
-  historicalReferencePublicationManifest: Object.freeze(['historicalApplianceReference']),
-  historicalReplacementAudit: Object.freeze(['historicalReferencePublicationManifest', 'publicProjection']),
 });
 
 export const ARCHITECTURE_V2_BUILD_ORDER = Object.freeze(Object.keys(ARCHITECTURE_V2_BUILD_GRAPH));
