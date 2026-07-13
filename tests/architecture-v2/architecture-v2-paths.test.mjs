@@ -31,6 +31,10 @@ test('Architecture V2 generated artifact graph is acyclic and follows declared b
 
 test('historical reference artifacts follow identity before publication ordering', () => {
   assert.equal(
+    architectureV2Paths.historicalEvidenceRecoveryPolicy,
+    'data/architecture-v2/policies/historical-evidence-recovery-policy.json',
+  );
+  assert.equal(
     architectureV2Paths.historicalApplianceReference,
     'data/architecture-v2/generated/historical-appliance-reference.json',
   );
@@ -41,6 +45,18 @@ test('historical reference artifacts follow identity before publication ordering
   assert.equal(
     architectureV2Paths.historicalReplacementAudit,
     'data/architecture-v2/reviews/automated/historical-replacement-audit.json',
+  );
+  assert.equal(
+    architectureV2Paths.historicalEvidenceRecoveryQueue,
+    'data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json',
+  );
+  assert.equal(
+    architectureV2Paths.historicalEvidenceRecoveryBatch,
+    'data/architecture-v2/reviews/automated/historical-evidence-recovery-batch.json',
+  );
+  assert.equal(
+    architectureV2Paths.historicalEvidenceRecoveryAcceptanceBundle,
+    'data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json',
   );
   assert.deepEqual(
     ARCHITECTURE_V2_BUILD_GRAPH.historicalApplianceReference,
@@ -53,6 +69,18 @@ test('historical reference artifacts follow identity before publication ordering
   assert.deepEqual(
     ARCHITECTURE_V2_BUILD_GRAPH.historicalReplacementAudit,
     ['historicalReferencePublicationManifest', 'publicProjection'],
+  );
+  assert.deepEqual(
+    ARCHITECTURE_V2_BUILD_GRAPH.historicalEvidenceRecoveryQueue,
+    ['sourceDocuments', 'historicalApplianceReference'],
+  );
+  assert.deepEqual(
+    ARCHITECTURE_V2_BUILD_GRAPH.historicalEvidenceRecoveryBatch,
+    ['historicalEvidenceRecoveryQueue'],
+  );
+  assert.deepEqual(
+    ARCHITECTURE_V2_BUILD_GRAPH.historicalEvidenceRecoveryAcceptanceBundle,
+    ['historicalEvidenceRecoveryAudit'],
   );
 });
 

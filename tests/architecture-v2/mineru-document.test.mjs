@@ -188,6 +188,60 @@ test('MinerU accepts compact explicit WxHxD axis notation without inferring axes
   assert.deepEqual(parsed.claims[0].axisOrder, ['width', 'height', 'depth']);
 });
 
+test('MinerU claim semantics v2 emits explicit scope and preserves H x W x D axis provenance', () => {
+  const bytes = mineruJson(`<table>
+    <tr><td>Model</td><td>HRCD640TBW</td></tr>
+    <tr><td>Overall product dimensions (H x W x D)</td><td>1790 x 914 x 730 mm</td></tr>
+  </table>`);
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision, caseIdentity: identity,
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.equal(parsed.claimSemanticsVersion, 2);
+  assert.deepEqual(parsed.claims.map((claim) => [
+    claim.field, claim.value, claim.sourceAxisOrder, claim.measurementScope,
+  ]), [
+    ['closedEnvelope.widthMm', { kind: 'fixed', mm: 914 }, ['height', 'width', 'depth'], 'product_closed_external'],
+    ['closedEnvelope.heightMm', { kind: 'fixed', mm: 1790 }, ['height', 'width', 'depth'], 'product_closed_external'],
+    ['closedEnvelope.depthMm', { kind: 'fixed', mm: 730 }, ['height', 'width', 'depth'], 'product_closed_external'],
+  ]);
+});
+
+test('MinerU claim semantics v2 prefers handle-inclusive external depth and rejects body-only depth', () => {
+  const included = parseMineruContentListV2(mineruJson(`<table>
+    <tr><td>Model</td><td>HRCD640TBW</td></tr>
+    <tr><td>Cabinet depth without door</td><td>650 mm</td></tr>
+    <tr><td>Overall depth including handles</td><td>735 mm</td></tr>
+  </table>`), {
+    pdfSha256, parserVersion: '3.4.4', modelRevision, caseIdentity: identity,
+    claimSemanticsVersion: 2, fields: ['closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(included.claims[0].value, { kind: 'fixed', mm: 735 });
+  assert.equal(included.claims[0].includesHandle, true);
+  assert.equal(included.claims[0].includesDoor, null);
+
+  assert.throws(() => parseMineruContentListV2(mineruJson(`<table>
+    <tr><td>Model</td><td>HRCD640TBW</td></tr>
+    <tr><td>Cabinet depth without door</td><td>650 mm</td></tr>
+  </table>`), {
+    pdfSha256, parserVersion: '3.4.4', modelRevision, caseIdentity: identity,
+    claimSemanticsVersion: 2, fields: ['closedEnvelope.depthMm'],
+  }), /no exact-model MinerU evidence/i);
+});
+
+test('MinerU claim semantics v2 rejects unresolved family-manual dimensions', () => {
+  const bytes = mineruJson(`<table>
+    <tr><td>Models</td><td>HRCD640TBW / HRCD640TBX</td></tr>
+    <tr><td>Product dimensions (W x H x D)</td><td>914 x 1790 x 730 mm</td></tr>
+  </table>`, 'Hisense HRCD640TBW / HRCD640TBX Specifications');
+  assert.throws(() => parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision, caseIdentity: identity,
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }), /family|multiple models|scope/i);
+});
+
 test('MinerU accepts strictly labelled wide, high, and deep brand terminology', () => {
   const bytes = mineruJson(`<table>
     <tr><td>Model</td><td>HRCD640TBW</td></tr>

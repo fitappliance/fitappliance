@@ -1,0 +1,493 @@
+import { createHash } from 'node:crypto';
+
+const SHA256 = /^[a-f0-9]{64}$/;
+const RFC3339_UTC = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/;
+const AUTHORITY_MODES = Object.freeze(['official', 'reference']);
+const LIFECYCLE_STATES = Object.freeze(['CURRENT_RETAIL', 'CATALOG_ARCHIVED']);
+const CATEGORIES = Object.freeze(['fridge', 'dishwasher', 'dryer', 'washing_machine']);
+const REQUESTED_FIELDS = Object.freeze([
+  'closedEnvelope.widthMm',
+  'closedEnvelope.heightMm',
+  'closedEnvelope.depthMm',
+]);
+const ROUTES = Object.freeze([
+  'OFFICIAL_RECEIPT_REBUILD',
+  'OFFICIAL_HOST_AUTHORITY_VALIDATION',
+  'MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY',
+  'OFFICIAL_SOURCE_DISCOVERY_REQUIRED',
+]);
+const PRIORITIES = Object.freeze([
+  'P0_CURRENT_MISSING_DIMENSIONS',
+  'P1_HISTORICAL_MISSING_DIMENSIONS',
+  'P2_CURRENT_CONFIRMATION',
+  'P3_HISTORICAL_CONFIRMATION',
+  'P4_CONFLICT_RESOLUTION',
+]);
+const OUTCOME_STATUSES = Object.freeze([
+  'accepted',
+  'receipt_accepted_non_scalar',
+  'identity_rejected',
+  'claims_incomplete',
+  'conflict_quarantined',
+  'retryable_failure',
+  'terminal_failure',
+]);
+const FAILURE_CODES = Object.freeze([
+  'environment',
+  'queue_drift',
+  'discovery',
+  'discovery_incomplete',
+  'transport',
+  'payload',
+  'mineru',
+  'identity',
+  'claim_semantics',
+  'source_authority',
+  'conflict',
+  'receipt',
+]);
+
+function object(value, label) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)
+    || ![Object.prototype, null].includes(Object.getPrototypeOf(value))) {
+    throw new TypeError(`${label} must be a plain object`);
+  }
+  return value;
+}
+
+function exactKeys(value, label, required, optional = []) {
+  object(value, label);
+  const allowed = new Set([...required, ...optional]);
+  for (const key of Object.keys(value)) {
+    if (!allowed.has(key)) throw new TypeError(`${label} unknown key: ${key}`);
+  }
+  for (const key of required) {
+    if (!Object.hasOwn(value, key)) throw new TypeError(`${label} missing key: ${key}`);
+  }
+  return value;
+}
+
+function text(value, label) {
+  const normalized = String(value ?? '').trim();
+  if (!normalized) throw new TypeError(`${label} required`);
+  return normalized;
+}
+
+function integer(value, label, minimum = 0) {
+  if (!Number.isInteger(value) || value < minimum) throw new TypeError(`${label} must be an integer >= ${minimum}`);
+  return value;
+}
+
+function sha256(value, label) {
+  const normalized = text(value, label).toLowerCase();
+  if (!SHA256.test(normalized)) throw new TypeError(`${label} must be a SHA-256 hash`);
+  return normalized;
+}
+
+function timestamp(value, label) {
+  const normalized = text(value, label);
+  if (!RFC3339_UTC.test(normalized) || Number.isNaN(Date.parse(normalized))) {
+    throw new TypeError(`${label} must be RFC 3339 UTC`);
+  }
+  return normalized;
+}
+
+function oneOf(value, allowed, label) {
+  if (!allowed.includes(value)) throw new TypeError(`${label} unsupported: ${value}`);
+  return value;
+}
+
+function strings(value, label, { nonEmpty = false } = {}) {
+  if (!Array.isArray(value) || (nonEmpty && value.length === 0)) throw new TypeError(`${label} must be an array`);
+  const normalized = value.map((item, index) => text(item, `${label}[${index}]`));
+  if (new Set(normalized).size !== normalized.length) throw new TypeError(`${label} contains duplicates`);
+  return normalized;
+}
+
+function exactArray(value, expected, label) {
+  const normalized = strings(value, label, { nonEmpty: true });
+  if (normalized.length !== expected.length || normalized.some((item, index) => item !== expected[index])) {
+    throw new TypeError(`${label} must equal ${expected.join(', ')}`);
+  }
+}
+
+function brandKey(value) {
+  return text(value, 'brand').toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
+function dimensions(value, label) {
+  exactKeys(value, label, ['width', 'height', 'depth']);
+  for (const axis of ['width', 'height', 'depth']) integer(value[axis], `${label}.${axis}`, 1);
+}
+
+function canonicalJson(value, path = '$') {
+  if (value === null || typeof value === 'string' || typeof value === 'boolean') return value;
+  if (typeof value === 'number') {
+    if (!Number.isFinite(value)) throw new TypeError(`${path} is not a valid JSON value`);
+    return value;
+  }
+  if (Array.isArray(value)) return value.map((entry, index) => canonicalJson(entry, `${path}[${index}]`));
+  if (!value || typeof value !== 'object' || ![Object.prototype, null].includes(Object.getPrototypeOf(value))) {
+    throw new TypeError(`${path} is not a valid JSON value`);
+  }
+  const result = {};
+  for (const key of Object.keys(value).sort()) {
+    if (value[key] === undefined) throw new TypeError(`${path}.${key} is not a valid JSON value`);
+    result[key] = canonicalJson(value[key], `${path}.${key}`);
+  }
+  return result;
+}
+
+export function canonicalJsonSha256(value) {
+  return createHash('sha256').update(JSON.stringify(canonicalJson(value))).digest('hex');
+}
+
+export function validateHistoricalEvidenceRecoveryPolicy(value) {
+  exactKeys(value, 'recovery policy', [
+    'schemaVersion', 'policyVersion', 'queueSchemaVersion',
+    'supportedReceiptSchemaVersions', 'supportedClaimSemanticsVersions',
+    'requestedFields', 'authorityModes', 'lifecycleStates', 'concurrency',
+    'retry', 'limits', 'lock', 'parser',
+  ]);
+  if (value.schemaVersion !== 1) throw new TypeError('recovery policy schemaVersion 1 required');
+  text(value.policyVersion, 'recovery policy version');
+  if (value.queueSchemaVersion !== 2) throw new TypeError('recovery policy queueSchemaVersion 2 required');
+  if (JSON.stringify(value.supportedReceiptSchemaVersions) !== JSON.stringify([2, 3])) {
+    throw new TypeError('supported receipt schema versions must be 2 and 3');
+  }
+  if (JSON.stringify(value.supportedClaimSemanticsVersions) !== JSON.stringify([1, 2])) {
+    throw new TypeError('supported claim semantics versions must be 1 and 2');
+  }
+  exactArray(value.requestedFields, REQUESTED_FIELDS, 'recovery policy requestedFields');
+  exactArray(value.authorityModes, AUTHORITY_MODES, 'recovery policy authorityModes');
+  exactArray(value.lifecycleStates, LIFECYCLE_STATES, 'recovery policy lifecycleStates');
+
+  exactKeys(value.concurrency, 'recovery policy concurrency', ['network', 'perHost', 'mineru']);
+  integer(value.concurrency.network, 'concurrency.network', 1);
+  integer(value.concurrency.perHost, 'concurrency.perHost', 1);
+  integer(value.concurrency.mineru, 'concurrency.mineru', 1);
+  if (value.concurrency.perHost > value.concurrency.network) {
+    throw new TypeError('concurrency.perHost cannot exceed network');
+  }
+
+  exactKeys(value.retry, 'recovery policy retry', ['fetchAttempts', 'mineruAttempts', 'baseDelayMs']);
+  integer(value.retry.fetchAttempts, 'retry.fetchAttempts', 1);
+  integer(value.retry.mineruAttempts, 'retry.mineruAttempts', 1);
+  integer(value.retry.baseDelayMs, 'retry.baseDelayMs', 0);
+
+  exactKeys(value.limits, 'recovery policy limits', ['timeoutMs', 'maximumBytes', 'maximumRedirects']);
+  integer(value.limits.timeoutMs, 'limits.timeoutMs', 1);
+  integer(value.limits.maximumBytes, 'limits.maximumBytes', 1);
+  integer(value.limits.maximumRedirects, 'limits.maximumRedirects', 0);
+
+  exactKeys(value.lock, 'recovery policy lock', ['heartbeatMs', 'staleAfterMs']);
+  integer(value.lock.heartbeatMs, 'lock.heartbeatMs', 1);
+  integer(value.lock.staleAfterMs, 'lock.staleAfterMs', 1);
+  if (value.lock.staleAfterMs < value.lock.heartbeatMs * 3) {
+    throw new TypeError('lock.staleAfterMs must allow at least three heartbeats');
+  }
+
+  exactKeys(value.parser, 'recovery policy parser', [
+    'format', 'name', 'version', 'modelRevision', 'backend', 'method',
+    'tableEnabled', 'formulaEnabled',
+  ]);
+  if (value.parser.format !== 'content_list_v2' || value.parser.name !== 'MinerU') {
+    throw new TypeError('MinerU content_list_v2 parser required');
+  }
+  text(value.parser.version, 'parser.version');
+  if (!/^[a-f0-9]{40}$/.test(value.parser.modelRevision)) throw new TypeError('parser.modelRevision invalid');
+  if (value.parser.backend !== 'pipeline' || value.parser.method !== 'auto'
+    || value.parser.tableEnabled !== true || value.parser.formulaEnabled !== false) {
+    throw new TypeError('parser execution contract invalid');
+  }
+  return value;
+}
+
+function validateSelection(value) {
+  exactKeys(value, 'batch selection', ['jobIds', 'routes', 'priorities', 'brands', 'limit']);
+  strings(value.jobIds, 'selection.jobIds');
+  for (const route of strings(value.routes, 'selection.routes')) oneOf(route, ROUTES, 'selection route');
+  for (const priority of strings(value.priorities, 'selection.priorities')) oneOf(priority, PRIORITIES, 'selection priority');
+  strings(value.brands, 'selection.brands');
+  if (value.limit !== null) integer(value.limit, 'selection.limit', 1);
+}
+
+function validateArtifactJob(value) {
+  exactKeys(value, 'artifact job', [
+    'jobId', 'sourceUrl', 'authorityBrand', 'authorityMode', 'acquisitionRoute',
+    'priorityClass', 'targetIds',
+  ]);
+  text(value.jobId, 'artifact job ID');
+  const sourceUrl = new URL(text(value.sourceUrl, 'artifact source URL'));
+  if (sourceUrl.protocol !== 'https:' || sourceUrl.username || sourceUrl.password) {
+    throw new TypeError('artifact source URL must be trusted HTTPS');
+  }
+  text(value.authorityBrand, 'artifact authority brand');
+  oneOf(value.authorityMode, AUTHORITY_MODES, 'artifact authority mode');
+  oneOf(value.acquisitionRoute, ROUTES, 'artifact acquisition route');
+  oneOf(value.priorityClass, PRIORITIES, 'artifact priority');
+  strings(value.targetIds, 'artifact targetIds', { nonEmpty: true });
+}
+
+function validateReconciliationContext(value) {
+  exactKeys(value, 'reconciliation context', ['activeReceiptSources', 'registryHints', 'legacyHints']);
+  if (!Array.isArray(value.activeReceiptSources) || !Array.isArray(value.registryHints) || !Array.isArray(value.legacyHints)) {
+    throw new TypeError('reconciliation context arrays required');
+  }
+  for (const source of value.activeReceiptSources) {
+    exactKeys(source, 'active receipt source', ['sourceUrl', 'contentSha256', 'receiptBindingSha256']);
+    text(source.sourceUrl, 'active receipt source URL');
+    sha256(source.contentSha256, 'active receipt content SHA');
+    sha256(source.receiptBindingSha256, 'active receipt binding SHA');
+  }
+  for (const hint of value.registryHints) {
+    exactKeys(hint, 'registry hint', ['sourceId', 'snapshotSha256', 'dimensionsMm']);
+    text(hint.sourceId, 'registry hint sourceId');
+    sha256(hint.snapshotSha256, 'registry hint snapshot SHA');
+    dimensions(hint.dimensionsMm, 'registry hint dimensionsMm');
+  }
+  for (const hint of value.legacyHints) {
+    exactKeys(hint, 'legacy hint', ['sourceDocumentId', 'dimensionsMm']);
+    text(hint.sourceDocumentId, 'legacy hint sourceDocumentId');
+    dimensions(hint.dimensionsMm, 'legacy hint dimensionsMm');
+  }
+}
+
+function validateTarget(value) {
+  exactKeys(value, 'recovery target', [
+    'targetId', 'referenceId', 'legacyRuntimeId', 'canonicalProductId', 'brand',
+    'model', 'category', 'lifecycleState', 'requestedFields', 'primaryJobId',
+    'candidateJobIds', 'publicationEligible', 'reconciliationContext',
+  ]);
+  text(value.targetId, 'targetId');
+  text(value.referenceId, 'referenceId');
+  text(value.legacyRuntimeId, 'legacyRuntimeId');
+  if (value.canonicalProductId !== null) text(value.canonicalProductId, 'canonicalProductId');
+  text(value.brand, 'target brand');
+  text(value.model, 'target model');
+  oneOf(value.category, CATEGORIES, 'target category');
+  oneOf(value.lifecycleState, LIFECYCLE_STATES, 'target lifecycle');
+  exactArray(value.requestedFields, REQUESTED_FIELDS, 'target requestedFields');
+  const candidates = strings(value.candidateJobIds, 'target candidateJobIds', { nonEmpty: true });
+  if (value.primaryJobId !== candidates[0]) throw new TypeError('target primaryJobId must be first candidate job');
+  if (value.publicationEligible !== false) throw new TypeError('new recovery target publicationEligible must be false');
+  validateReconciliationContext(value.reconciliationContext);
+}
+
+export function validateHistoricalEvidenceRecoveryBatch(value) {
+  exactKeys(value, 'recovery batch', [
+    'schemaVersion', 'batchId', 'generatedAt', 'queue', 'policy', 'selection',
+    'artifactJobs', 'targets', 'summary',
+  ]);
+  if (value.schemaVersion !== 1) throw new TypeError('recovery batch schemaVersion 1 required');
+  text(value.batchId, 'batchId');
+  timestamp(value.generatedAt, 'batch generatedAt');
+  exactKeys(value.queue, 'batch queue binding', ['schemaVersion', 'sha256']);
+  if (value.queue.schemaVersion !== 2) throw new TypeError('batch queue schemaVersion 2 required');
+  sha256(value.queue.sha256, 'batch queue SHA');
+  exactKeys(value.policy, 'batch policy binding', ['version', 'sha256']);
+  text(value.policy.version, 'batch policy version');
+  sha256(value.policy.sha256, 'batch policy SHA');
+  validateSelection(value.selection);
+  if (!Array.isArray(value.artifactJobs) || !Array.isArray(value.targets)) {
+    throw new TypeError('batch artifactJobs and targets required');
+  }
+  const jobs = new Map();
+  for (const job of value.artifactJobs) {
+    validateArtifactJob(job);
+    if (jobs.has(job.jobId)) throw new TypeError(`duplicate artifact job ${job.jobId}`);
+    jobs.set(job.jobId, job);
+  }
+  const targets = new Map();
+  for (const target of value.targets) {
+    validateTarget(target);
+    if (targets.has(target.targetId)) throw new TypeError(`duplicate target ${target.targetId}`);
+    targets.set(target.targetId, target);
+  }
+  for (const target of targets.values()) {
+    for (const jobId of target.candidateJobIds) {
+      const job = jobs.get(jobId);
+      if (!job) throw new TypeError(`target candidate job missing: ${jobId}`);
+      if (!job.targetIds.includes(target.targetId)) throw new TypeError(`candidate job edge missing target ${target.targetId}`);
+      if (brandKey(job.authorityBrand) !== brandKey(target.brand)) {
+        throw new TypeError(`candidate job authority brand mismatch for ${target.targetId}`);
+      }
+    }
+  }
+  for (const job of jobs.values()) {
+    for (const targetId of job.targetIds) {
+      const target = targets.get(targetId);
+      if (!target) throw new TypeError(`artifact target missing: ${targetId}`);
+      if (!target.candidateJobIds.includes(job.jobId)) throw new TypeError(`target candidate edge missing job ${job.jobId}`);
+    }
+  }
+  exactKeys(value.summary, 'batch summary', ['artifactJobs', 'targets', 'candidateEdges']);
+  integer(value.summary.artifactJobs, 'summary.artifactJobs', 0);
+  integer(value.summary.targets, 'summary.targets', 0);
+  integer(value.summary.candidateEdges, 'summary.candidateEdges', 0);
+  const edgeCount = value.artifactJobs.reduce((count, job) => count + job.targetIds.length, 0);
+  if (value.summary.artifactJobs !== jobs.size || value.summary.targets !== targets.size
+    || value.summary.candidateEdges !== edgeCount) {
+    throw new TypeError('batch summary does not match graph');
+  }
+  return value;
+}
+
+function validateOutcome(value) {
+  exactKeys(value, 'recovery outcome', [
+    'targetId', 'status', 'failureCode', 'candidateInventorySha256', 'candidateInventory', 'sources',
+    'geometryProjection', 'semanticOutcomeSha256',
+  ]);
+  text(value.targetId, 'outcome targetId');
+  oneOf(value.status, OUTCOME_STATUSES, 'outcome status');
+  sha256(value.candidateInventorySha256, 'candidate inventory SHA');
+  if (value.candidateInventory !== null) object(value.candidateInventory, 'candidate inventory');
+  sha256(value.semanticOutcomeSha256, 'outcome semantic SHA');
+  if (!Array.isArray(value.sources)) throw new TypeError('outcome sources must be an array');
+  for (const source of value.sources) object(source, 'outcome source');
+  if (value.geometryProjection !== null) object(value.geometryProjection, 'outcome geometryProjection');
+  if (['accepted', 'receipt_accepted_non_scalar'].includes(value.status)) {
+    if (value.failureCode !== null) throw new TypeError('accepted outcome failureCode must be null');
+    if (value.candidateInventory === null) throw new TypeError('accepted outcome candidate inventory required');
+    if (value.sources.length === 0) throw new TypeError('accepted outcome source required');
+    if (value.status === 'accepted' && value.geometryProjection === null) {
+      throw new TypeError('accepted outcome geometry projection required');
+    }
+  } else {
+    oneOf(value.failureCode, FAILURE_CODES, 'outcome failure code');
+  }
+}
+
+export function validateHistoricalEvidenceRecoveryResults(value) {
+  exactKeys(value, 'recovery results', [
+    'schemaVersion', 'runId', 'batchId', 'batchSha256', 'queueSha256', 'policySha256',
+    'startedAt', 'completedAt', 'semanticOutcomeSha256', 'outcomes', 'summary',
+  ]);
+  if (value.schemaVersion !== 1) throw new TypeError('recovery results schemaVersion 1 required');
+  text(value.runId, 'results runId');
+  text(value.batchId, 'results batchId');
+  sha256(value.batchSha256, 'results batch SHA');
+  sha256(value.queueSha256, 'results queue SHA');
+  sha256(value.policySha256, 'results policy SHA');
+  const startedAt = timestamp(value.startedAt, 'results startedAt');
+  const completedAt = timestamp(value.completedAt, 'results completedAt');
+  if (Date.parse(completedAt) < Date.parse(startedAt)) throw new TypeError('results completedAt precedes startedAt');
+  sha256(value.semanticOutcomeSha256, 'results semantic outcome SHA');
+  if (!Array.isArray(value.outcomes)) throw new TypeError('results outcomes required');
+  const targetIds = new Set();
+  for (const outcome of value.outcomes) {
+    validateOutcome(outcome);
+    if (targetIds.has(outcome.targetId)) throw new TypeError(`duplicate outcome target ${outcome.targetId}`);
+    targetIds.add(outcome.targetId);
+  }
+  exactKeys(value.summary, 'results summary', ['targets', 'accepted', 'nonScalar', 'retryable', 'terminal']);
+  const expected = {
+    targets: value.outcomes.length,
+    accepted: value.outcomes.filter((row) => row.status === 'accepted').length,
+    nonScalar: value.outcomes.filter((row) => row.status === 'receipt_accepted_non_scalar').length,
+    retryable: value.outcomes.filter((row) => row.status === 'retryable_failure').length,
+    terminal: value.outcomes.filter((row) => !['accepted', 'receipt_accepted_non_scalar', 'retryable_failure'].includes(row.status)).length,
+  };
+  for (const [key, count] of Object.entries(expected)) {
+    if (value.summary[key] !== count) throw new TypeError(`results summary ${key} mismatch`);
+  }
+  return value;
+}
+
+export function validateHistoricalEvidenceRecoveryAudit(value) {
+  exactKeys(value, 'recovery audit', [
+    'schemaVersion', 'auditId', 'generatedAt', 'mode', 'status', 'batchId',
+    'batchSha256', 'queueSha256', 'policySha256', 'resultsSha256', 'priorBundleSha256',
+    'checkedTargets', 'checkedObjects', 'violations', 'semanticAuditSha256',
+  ]);
+  if (value.schemaVersion !== 1) throw new TypeError('recovery audit schemaVersion 1 required');
+  text(value.auditId, 'auditId');
+  timestamp(value.generatedAt, 'audit generatedAt');
+  oneOf(value.mode, ['online', 'offline'], 'audit mode');
+  oneOf(value.status, ['passed', 'failed'], 'audit status');
+  text(value.batchId, 'audit batchId');
+  sha256(value.batchSha256, 'audit batch SHA');
+  sha256(value.queueSha256, 'audit queue SHA');
+  sha256(value.policySha256, 'audit policy SHA');
+  sha256(value.resultsSha256, 'audit results SHA');
+  if (value.priorBundleSha256 !== null) sha256(value.priorBundleSha256, 'audit prior bundle SHA');
+  integer(value.checkedTargets, 'audit checkedTargets', 0);
+  integer(value.checkedObjects, 'audit checkedObjects', 0);
+  const violations = strings(value.violations, 'audit violations');
+  if (value.status === 'passed' && violations.length > 0) throw new TypeError('passed audit cannot contain a violation');
+  if (value.status === 'failed' && violations.length === 0) throw new TypeError('failed audit requires a violation');
+  sha256(value.semanticAuditSha256, 'audit semantic SHA');
+  return value;
+}
+
+function validateBundleEntry(value) {
+  exactKeys(value, 'acceptance bundle entry', [
+    'targetId', 'referenceId', 'legacyRuntimeId', 'canonicalProductId', 'brand',
+    'model', 'category', 'lifecycleState', 'acceptanceStatus', 'sourceBatchId',
+    'auditSha256', 'sources', 'geometryProjection',
+  ]);
+  text(value.targetId, 'bundle targetId');
+  text(value.referenceId, 'bundle referenceId');
+  text(value.legacyRuntimeId, 'bundle legacyRuntimeId');
+  if (value.canonicalProductId !== null) text(value.canonicalProductId, 'bundle canonicalProductId');
+  text(value.brand, 'bundle brand');
+  text(value.model, 'bundle model');
+  oneOf(value.category, CATEGORIES, 'bundle category');
+  oneOf(value.lifecycleState, LIFECYCLE_STATES, 'bundle lifecycle');
+  oneOf(value.acceptanceStatus, ['accepted', 'receipt_accepted_non_scalar'], 'bundle acceptance status');
+  if (value.lifecycleState === 'CURRENT_RETAIL' && value.canonicalProductId === null) {
+    throw new TypeError('current bundle entry canonicalProductId required');
+  }
+  text(value.sourceBatchId, 'bundle sourceBatchId');
+  sha256(value.auditSha256, 'bundle audit SHA');
+  if (!Array.isArray(value.sources) || value.sources.length === 0) {
+    throw new TypeError('bundle sources required');
+  }
+  const sourceHashes = new Set();
+  for (const source of value.sources) {
+    object(source, 'bundle source');
+    sha256(source.contentSha256, 'bundle source content SHA');
+    if (sourceHashes.has(source.contentSha256)) throw new TypeError('duplicate bundle source content SHA');
+    sourceHashes.add(source.contentSha256);
+  }
+  if (value.geometryProjection !== null) object(value.geometryProjection, 'bundle geometryProjection');
+  if (value.acceptanceStatus === 'accepted' && value.geometryProjection === null) {
+    throw new TypeError('accepted bundle geometry projection required');
+  }
+}
+
+export function validateHistoricalEvidenceRecoveryAcceptanceBundle(value) {
+  exactKeys(value, 'recovery acceptance bundle', [
+    'schemaVersion', 'bundleId', 'generatedAt', 'policySha256', 'entries', 'lineage',
+  ]);
+  if (value.schemaVersion !== 1) throw new TypeError('recovery acceptance bundle schemaVersion 1 required');
+  text(value.bundleId, 'bundleId');
+  timestamp(value.generatedAt, 'bundle generatedAt');
+  sha256(value.policySha256, 'bundle policy SHA');
+  if (!Array.isArray(value.entries) || !Array.isArray(value.lineage)) {
+    throw new TypeError('bundle entries and lineage required');
+  }
+  const entries = new Set();
+  for (const entry of value.entries) {
+    validateBundleEntry(entry);
+    if (entries.has(entry.targetId)) throw new TypeError(`duplicate bundle target ${entry.targetId}`);
+    entries.add(entry.targetId);
+  }
+  const lineage = new Map();
+  for (const row of value.lineage) {
+    exactKeys(row, 'bundle lineage', ['batchId', 'batchSha256', 'queueSha256', 'resultsSha256', 'auditSha256']);
+    text(row.batchId, 'lineage batchId');
+    sha256(row.batchSha256, 'lineage batch SHA');
+    sha256(row.queueSha256, 'lineage queue SHA');
+    sha256(row.resultsSha256, 'lineage results SHA');
+    sha256(row.auditSha256, 'lineage audit SHA');
+    if (lineage.has(row.batchId)) throw new TypeError(`duplicate bundle lineage ${row.batchId}`);
+    lineage.set(row.batchId, row);
+  }
+  for (const entry of value.entries) {
+    const row = lineage.get(entry.sourceBatchId);
+    if (!row) throw new TypeError(`bundle entry lineage missing: ${entry.sourceBatchId}`);
+    if (row.auditSha256 !== entry.auditSha256) throw new TypeError(`bundle entry audit binding mismatch: ${entry.targetId}`);
+  }
+  return value;
+}

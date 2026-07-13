@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
+import { validateDimensionEvidenceClaimsV2 } from './dimension-evidence-claim.mjs';
 
 const manufacturerPolicy = JSON.parse(readFileSync(
   new URL('../../data/architecture-v2/policies/manufacturer-source-policy.json', import.meta.url),
@@ -142,7 +143,7 @@ function normalizedBbox(value) {
   return value.map(Number);
 }
 
-function normalizedClaims(claims, contentType) {
+function normalizedClaimsV1(claims, contentType) {
   if (!Array.isArray(claims) || claims.length === 0) throw new TypeError('source claims required');
   return claims.map((claim) => {
     const normalized = {
@@ -171,6 +172,30 @@ function normalizedClaims(claims, contentType) {
     return normalized;
   }).sort((left, right) => left.field.localeCompare(right.field)
     || JSON.stringify(left.value).localeCompare(JSON.stringify(right.value)));
+}
+
+function normalizedClaimsV2(claims) {
+  validateDimensionEvidenceClaimsV2(claims);
+  return claims.map((claim) => ({
+    field: claim.field,
+    value: { ...claim.value },
+    sourceLabel: claim.sourceLabel,
+    sourceAxisOrder: [...claim.sourceAxisOrder],
+    sourceUnit: claim.sourceUnit,
+    measurementScope: claim.measurementScope,
+    includesDoor: claim.includesDoor,
+    includesHandle: claim.includesHandle,
+    page: claim.page,
+    fragmentSha256: claim.fragmentSha256,
+    bbox: claim.bbox ? [...claim.bbox] : null,
+  })).sort((left, right) => left.field.localeCompare(right.field)
+    || JSON.stringify(left.value).localeCompare(JSON.stringify(right.value)));
+}
+
+function normalizedClaims(claims, contentType, claimSemanticsVersion = 1) {
+  if (claimSemanticsVersion === 1) return normalizedClaimsV1(claims, contentType);
+  if (claimSemanticsVersion === 2) return normalizedClaimsV2(claims);
+  throw new TypeError('unsupported claim semantics version');
 }
 
 function normalizedDerivedArtifact(source) {
@@ -228,12 +253,34 @@ function normalizedSupersededHashes(values) {
   return hashes;
 }
 
-function receiptPayload(source, caseIdentity, verifiedAt) {
+function receiptContract(claimSemanticsVersion) {
+  if (claimSemanticsVersion === 1) {
+    return {
+      schemaVersion: resolutionPolicy.receiptSchemaVersion,
+      policyVersion: resolutionPolicy.policyVersion,
+      claimSemanticsVersion: null,
+    };
+  }
+  if (claimSemanticsVersion === resolutionPolicy.claimSemanticsVersion) {
+    return {
+      schemaVersion: resolutionPolicy.claimSemanticsReceiptSchemaVersion,
+      policyVersion: resolutionPolicy.claimSemanticsPolicyVersion,
+      claimSemanticsVersion,
+    };
+  }
+  throw new TypeError('unsupported claim semantics version');
+}
+
+function receiptPayload(source, caseIdentity, verifiedAt, claimSemanticsVersion = 1) {
   const identity = normalizedIdentity(caseIdentity);
   const contentType = requiredText(source?.contentType, 'content type').toLowerCase();
+  const contract = receiptContract(claimSemanticsVersion);
   return {
-    schemaVersion: resolutionPolicy.receiptSchemaVersion,
-    policyVersion: resolutionPolicy.policyVersion,
+    schemaVersion: contract.schemaVersion,
+    ...(contract.claimSemanticsVersion === null ? {} : {
+      claimSemanticsVersion: contract.claimSemanticsVersion,
+    }),
+    policyVersion: contract.policyVersion,
     manufacturerPolicyVersion: manufacturerPolicy.policyVersion,
     verifiedAt,
     caseIdentity: identity,
@@ -251,7 +298,7 @@ function receiptPayload(source, caseIdentity, verifiedAt) {
       derivedArtifact: normalizedDerivedArtifact(source),
     },
     identitySignals: normalizedSignals(source?.identitySignals),
-    claims: normalizedClaims(source?.claims, contentType),
+    claims: normalizedClaims(source?.claims, contentType, claimSemanticsVersion),
   };
 }
 
@@ -290,7 +337,10 @@ export function validateTrustedSourceMetadata(source, caseIdentity, options = {}
   }
   normalizedSourceIdentity(source, identity, contentType);
   normalizedSignals(source?.identitySignals);
-  normalizedClaims(source?.claims, contentType);
+  const claimSemanticsVersion = options.claimSemanticsVersion
+    ?? source?.verificationReceipt?.claimSemanticsVersion
+    ?? 1;
+  normalizedClaims(source?.claims, contentType, claimSemanticsVersion);
   normalizedDerivedArtifact(source);
   return true;
 }
@@ -310,13 +360,15 @@ export function isSourceFresh(source, asOf) {
 export function createVerificationReceipt(source, caseIdentity, options = {}) {
   const verifiedAt = requiredText(options.verifiedAt, 'verification time');
   const verifiedMilliseconds = parseTime(verifiedAt, 'verification time');
-  validateTrustedSourceMetadata(source, caseIdentity, { asOf: verifiedAt });
+  const claimSemanticsVersion = options.claimSemanticsVersion ?? 1;
+  validateTrustedSourceMetadata(source, caseIdentity, { asOf: verifiedAt, claimSemanticsVersion });
   if (verifiedMilliseconds < parseTime(source.retrievedAt, 'retrieval time')) {
     throw new TypeError('verification time precedes retrieval time');
   }
-  const payload = receiptPayload(source, caseIdentity, verifiedAt);
+  const payload = receiptPayload(source, caseIdentity, verifiedAt, claimSemanticsVersion);
   return Object.freeze({
     schemaVersion: payload.schemaVersion,
+    ...(claimSemanticsVersion === 1 ? {} : { claimSemanticsVersion }),
     policyVersion: payload.policyVersion,
     manufacturerPolicyVersion: payload.manufacturerPolicyVersion,
     verifiedAt,
@@ -326,14 +378,24 @@ export function createVerificationReceipt(source, caseIdentity, options = {}) {
 
 export function verifyVerificationReceipt(source, caseIdentity, options = {}) {
   const receipt = source?.verificationReceipt;
-  if (!receipt || receipt.schemaVersion !== resolutionPolicy.receiptSchemaVersion
-    || receipt.policyVersion !== resolutionPolicy.policyVersion
+  const claimSemanticsVersion = receipt?.schemaVersion === resolutionPolicy.receiptSchemaVersion
+    ? 1
+    : receipt?.schemaVersion === resolutionPolicy.claimSemanticsReceiptSchemaVersion
+      ? receipt?.claimSemanticsVersion
+      : null;
+  let contract;
+  try { contract = receiptContract(claimSemanticsVersion); } catch { contract = null; }
+  if (!receipt || !contract || receipt.schemaVersion !== contract.schemaVersion
+    || receipt.policyVersion !== contract.policyVersion
     || receipt.manufacturerPolicyVersion !== manufacturerPolicy.policyVersion) {
     throw new TypeError('current verification receipt required');
   }
   parseTime(receipt.verifiedAt, 'verification time');
-  validateTrustedSourceMetadata(source, caseIdentity, { asOf: options.asOf ?? receipt.verifiedAt });
-  const expected = digest(receiptPayload(source, caseIdentity, receipt.verifiedAt));
+  validateTrustedSourceMetadata(source, caseIdentity, {
+    asOf: options.asOf ?? receipt.verifiedAt,
+    claimSemanticsVersion,
+  });
+  const expected = digest(receiptPayload(source, caseIdentity, receipt.verifiedAt, claimSemanticsVersion));
   if (receipt.bindingSha256 !== expected) throw new Error('verification receipt digest mismatch');
   return true;
 }

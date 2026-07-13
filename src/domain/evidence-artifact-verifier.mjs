@@ -8,6 +8,7 @@ import {
   evidenceFieldRules,
   validateClaimsSemantics,
 } from './evidence-claim-semantics.mjs';
+import { validateDimensionEvidenceClaimsV2 } from './dimension-evidence-claim.mjs';
 import { createVerificationReceipt, verifyVerificationReceipt } from './evidence-source-verifier.mjs';
 import { parseMineruContentListV2 } from './mineru-document.mjs';
 
@@ -165,7 +166,7 @@ function canonicalize(value) {
   return value;
 }
 
-function pdfIdentitySignals(source, caseIdentity, derivedArtifactBytes) {
+function pdfIdentitySignals(source, caseIdentity, derivedArtifactBytes, claimSemanticsVersion = 1) {
   if (!derivedArtifactBytes) throw new TypeError('MinerU JSON derived artifact required for PDF evidence');
   const derived = source?.derivedArtifact;
   if (!derived || derived.schemaVersion !== 1 || derived.format !== 'content_list_v2'
@@ -188,6 +189,7 @@ function pdfIdentitySignals(source, caseIdentity, derivedArtifactBytes) {
     parserVersion: derived.parserVersion,
     modelRevision: derived.modelRevision,
     caseIdentity,
+    claimSemanticsVersion,
     fields: (source.claims ?? []).map((claim) => claim.field),
   });
   if (parsed.pageCount !== derived.pageCount) throw new Error('MinerU JSON page count mismatch');
@@ -209,7 +211,8 @@ function pdfIdentitySignals(source, caseIdentity, derivedArtifactBytes) {
 function verifyQuotes(source, text) {
   const normalized = normalizedText(text).toLowerCase();
   for (const claim of source.claims ?? []) {
-    if (!normalized.includes(normalizedText(claim.quote).toLowerCase())) {
+    const evidenceText = claim.quote ?? claim.sourceLabel;
+    if (!normalized.includes(normalizedText(evidenceText).toLowerCase())) {
       throw new Error(`artifact missing claim quote for ${claim.field}`);
     }
   }
@@ -302,34 +305,41 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
 
 export function verifyAndAttestResolutionArtifact({
   source, caseIdentity, bytes, derivedArtifactBytes = null, verifiedAt,
+  claimSemanticsVersion = 1,
 }) {
   const buffer = verifyBytes(source, bytes);
   let identityProof;
   if (source.contentType === 'text/html') {
     identityProof = htmlIdentitySignals(source, caseIdentity, buffer);
   } else if (source.contentType === 'application/pdf') {
-    identityProof = pdfIdentitySignals(source, caseIdentity, derivedArtifactBytes);
+    identityProof = pdfIdentitySignals(source, caseIdentity, derivedArtifactBytes, claimSemanticsVersion);
   } else {
     throw new TypeError('unsupported artifact content type');
   }
   verifyQuotes(source, identityProof.text);
-  validateClaimsSemantics(source.claims, caseIdentity);
+  if (claimSemanticsVersion === 2) validateDimensionEvidenceClaimsV2(source.claims);
+  else validateClaimsSemantics(source.claims, caseIdentity);
   const attested = {
     ...source,
     identity: identityProof.identity ?? source.identity,
     identitySignals: identityProof.signals,
   };
-  attested.verificationReceipt = createVerificationReceipt(attested, caseIdentity, { verifiedAt });
+  attested.verificationReceipt = createVerificationReceipt(attested, caseIdentity, {
+    verifiedAt,
+    claimSemanticsVersion,
+  });
   return attested;
 }
 
 export function verifyAttestedResolutionArtifact({ source, caseIdentity, bytes, derivedArtifactBytes = null }) {
+  const claimSemanticsVersion = source?.verificationReceipt?.claimSemanticsVersion ?? 1;
   const rebuilt = verifyAndAttestResolutionArtifact({
     source: { ...source, verificationReceipt: undefined },
     caseIdentity,
     bytes,
     derivedArtifactBytes,
     verifiedAt: source?.verificationReceipt?.verifiedAt,
+    claimSemanticsVersion,
   });
   if (rebuilt.verificationReceipt.bindingSha256 !== source?.verificationReceipt?.bindingSha256) {
     throw new Error('artifact attestation receipt mismatch');

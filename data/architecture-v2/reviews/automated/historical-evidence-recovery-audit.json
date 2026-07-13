@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "auditId": "historical-recovery-audit-eab9acc2d67fa379f2c4c6b9",
+  "generatedAt": "2026-07-13T12:39:23.336Z",
+  "mode": "online",
+  "status": "passed",
+  "batchId": "historical-recovery-e764532d52a9023099098dcf-slice-70613df5ddbb",
+  "batchSha256": "bc64676918e0f811abad439f84fc2c34d5b0e54f37fbe1a45717888a37482ccc",
+  "queueSha256": "075be4cf7f4ee6b21edfd56789f75705e11d00502c7f43f61ff36fb5a77c4eab",
+  "policySha256": "47f4c941793116d4135e9e6479b4a8a478555f4b37a792ea21ccc238fb30656a",
+  "resultsSha256": "071ac95ced7c5544e9203bf7ecc91f33bc170eecd2fd4ad89652016fc27e1538",
+  "priorBundleSha256": null,
+  "checkedTargets": 1,
+  "checkedObjects": 2,
+  "violations": [],
+  "semanticAuditSha256": "eab9acc2d67fa379f2c4c6b9e4f0157ae1c977d6b28e6f2cbb3add22ac3d25b2"
+}

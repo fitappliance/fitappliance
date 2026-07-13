@@ -621,6 +621,58 @@ Measured release facts:
   dimensions win while the government conflict remains visible internally;
   HDW15F3S1 remains confirmation-only, not auto-fill.
 
+### 9.3 Coverage-recovery diagnosis (2026-07-13)
+
+The `11 / 4,940 / 3,054 / 90` split is not an acceptable steady state. It is
+also not evidence that MinerU succeeds on only 11 products. The current release
+mix combines three separate conditions:
+
+- 4,951 records, or 61.2%, already expose a complete W/H/D triplet: 11 from
+  receipt-bound catalogue evidence and 4,940 from internally consistent Energy
+  Rating rows that still require user confirmation;
+- 3,054 records have no publishable triplet. Of these, 1,630 have registry rows
+  with missing dimensions and 1,424 have catalogue dimensions without a V2
+  receipt;
+- only 69 unique historical PDF files had been passed through the current MinerU
+  cache at the time of this audit. The 11 auto-fill records therefore measure
+  completed evidence migration, not parser capability.
+
+The historical source-document registry contains a much larger recoverable
+backlog. The deterministic recovery queue currently identifies:
+
+- 1,600 legacy documents with exact identity and complete legacy W/H/D hints;
+- 1,556 unique fetch jobs after URL deduplication;
+- 1,591 unique historical target nodes backed by 1,600 candidate edges; nine
+  targets retain two candidate documents rather than becoming duplicate work;
+- 1,092 targets are `MEASURE_REQUIRED`, 472 are `CONFIRM_REQUIRED`, and 27 are
+  quarantined conflict targets;
+- 1,064 of the 1,115 current-retail `MEASURE_REQUIRED` references, or 95.4%, as
+  having at least one exact-identity, complete legacy document candidate;
+- only 23 jobs ready for direct official receipt rebuilding, 254 requiring
+  official-host author validation, 1,223 retailer mirrors that must lead to an
+  official equivalent, and 56 requiring new official-source discovery.
+
+This establishes an architecture and throughput failure: historical acquisition
+found many candidates, but legacy source discovery, content-addressed fetching,
+MinerU extraction, field receipts, and historical publication were never joined
+into one resumable production path.
+
+The conservative publication policy remains necessary. Among 1,897
+registry-confirmation records that also have complete catalogue W/H/D, 262
+disagree and 28 are direct axis permutations. Registry consistency means that
+registry rows agree with each other; it does not prove that width, height and
+depth are physically correct. Legacy dimensions therefore remain hints until
+the exact-model document proves axis meaning and measurement scope.
+
+The repair programme is defined in
+[Historical Evidence Coverage Recovery Plan](superpowers/plans/2026-07-13-historical-evidence-coverage-recovery.md).
+Its first artifact is
+`data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json`.
+The queue downloads a shared document once but retains separate model targets,
+and every target must pass fetch/hash, MinerU JSON, exact identity, axis/range
+semantics, official authority, conflict checks, and receipt-bound projection.
+Queue inclusion never makes a dimension public.
+
 Runtime catalogue ownership:
 
 - `data/catalog-final.json`, Architecture V2 evidence artifacts and
@@ -682,6 +734,12 @@ Track coverage and truth separately:
 - unknown reasons by category and field;
 - source conflicts, axis anomalies, duplicate registrations and quarantines;
 - false acceptance count, which must remain zero in adversarial fixtures;
+- current-retail `MEASURE_REQUIRED` rate and its reason distribution;
+- recovery funnel counts from candidate URL through fetch, MinerU, exact-model
+  binding, per-axis extraction, official authority, conflict resolution and
+  receipt-bound publication;
+- recovery yield and failure reasons by brand, category, transport host and
+  lifecycle state;
 - source freshness and successful delta-replay rate;
 - retailer in-stock coverage and affiliate-link freshness;
 - user measurement completion, result-to-retailer click-through, and returns or

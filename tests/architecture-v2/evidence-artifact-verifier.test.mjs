@@ -378,6 +378,28 @@ test('PDF approval requires hash-bound MinerU JSON and replays claims from that 
     source: attested, caseIdentity: pdfIdentity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
   }), true);
 
+  const parsedV2 = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: pdfIdentity, claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  const attestedV2 = verifyAndAttestResolutionArtifact({
+    source: { ...pdfSource, claims: parsedV2.claims },
+    caseIdentity: pdfIdentity,
+    bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes,
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+    claimSemanticsVersion: 2,
+  });
+  assert.equal(attestedV2.verificationReceipt.schemaVersion, 3);
+  assert.equal(attestedV2.verificationReceipt.claimSemanticsVersion, 2);
+  assert.equal(verifyAttestedResolutionArtifact({
+    source: attestedV2,
+    caseIdentity: pdfIdentity,
+    bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes,
+  }), true);
+
   assert.throws(() => verifyAndAttestResolutionArtifact({
     source: pdfSource, caseIdentity: pdfIdentity, bytes: pdfBytes,
     verifiedAt: '2026-07-11T14:35:00.000Z',

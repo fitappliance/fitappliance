@@ -8,6 +8,10 @@ import {
   evidenceFieldRules,
   validateClaimsSemantics,
 } from './evidence-claim-semantics.mjs';
+import {
+  upgradeLegacyDimensionClaim,
+  validateDimensionEvidenceClaimsV2,
+} from './dimension-evidence-claim.mjs';
 
 const MAX_JSON_BYTES = 128 * 1024 * 1024;
 const MAX_PAGES = 2000;
@@ -231,12 +235,49 @@ function clearanceClaims(row, fragment, page, fields) {
   return result;
 }
 
-function directClaims(row, fragment, page, fields, category) {
+function handleInclusiveDepthClaim(row, fragment, page, field) {
+  if (field !== 'closedEnvelope.depthMm'
+    || !/\b(?:depth|deep)\b/i.test(row.label)
+    || !/(?:including|with)\s+(?:the\s+)?handles?/i.test(row.label)
+    || /\b(?:pack(?:ed|age|aging)?|shipping|carton|cavity|cut[ -]?out|cabinet)\b/i.test(row.label)) {
+    return null;
+  }
+  const values = (String(row.value ?? '').match(/\d+(?:\.\d+)?/g) ?? []).map(Number);
+  const unitMatch = /\b(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/i.exec(String(row.value ?? ''));
+  if (values.length !== 1 || !unitMatch) return null;
+  const sourceUnit = unitMatch[1].toLowerCase().startsWith('c') ? 'cm' : 'mm';
+  const value = values[0] * (sourceUnit === 'cm' ? 10 : 1);
+  if (!Number.isInteger(value)) return null;
+  return {
+    field,
+    value,
+    unit: 'mm',
+    label: row.label,
+    quote: normalizedText(`${row.label} ${row.value}`),
+    page,
+    bbox: [...fragment.bbox],
+    fragmentSha256: fragment.fragmentSha256,
+    semanticBasis: 'explicit_including_handle',
+    axisOrder: ['depth'],
+    sourceUnit,
+    sourceValues: [values[0]],
+    sourceValuesMm: [value],
+  };
+}
+
+function directClaims(row, fragment, page, fields, category, claimSemanticsVersion) {
   const quote = normalizedText(`${row.label} ${row.value}`);
   const claims = [];
   for (const field of fields) {
     const rule = evidenceFieldRules[field];
-    if (!rule || !rule.label.test(row.label) || (rule.reject && rule.reject.test(row.label))) continue;
+    if (!rule || !rule.label.test(row.label)) continue;
+    if (rule.reject && rule.reject.test(row.label)) {
+      const scoped = claimSemanticsVersion === 2
+        ? handleInclusiveDepthClaim(row, fragment, page, field)
+        : null;
+      if (scoped) claims.push(scoped);
+      continue;
+    }
     if (field === 'closedEnvelope.heightMm') {
       const text = String(row.value ?? '');
       const values = (text.match(/\d+(?:\.\d+)?/g) ?? []).map(Number);
@@ -340,6 +381,26 @@ function paragraphRows(text) {
   }] : [];
 }
 
+function commonPrefixLength(left, right) {
+  let index = 0;
+  while (index < left.length && index < right.length && left[index] === right[index]) index += 1;
+  return index;
+}
+
+function unresolvedFamilyScope(document, model) {
+  const target = model.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  for (const fragment of document.pages.flat()) {
+    if (!containsExactModel(fragment.text, model)) continue;
+    const candidates = (fragment.text.toUpperCase().match(/\b[A-Z][A-Z0-9-]{3,}\d[A-Z0-9/-]*\b/g) ?? [])
+      .map((value) => value.replace(/[^A-Z0-9]/g, ''))
+      .filter((value) => value !== target && value.length >= 5);
+    if (candidates.some((value) => commonPrefixLength(value, target) >= Math.min(6, Math.floor(target.length / 2)))) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export function parseMineruContentListV2(jsonBytes, options = {}) {
   const pdfSha256 = requiredHash(options.pdfSha256, 'source PDF');
   const parserVersion = requiredParserVersion(options.parserVersion);
@@ -348,6 +409,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const model = normalizedText(caseIdentity?.model);
   const category = normalizedText(caseIdentity?.category);
   const fields = options.fields;
+  const claimSemanticsVersion = options.claimSemanticsVersion ?? 1;
+  if (![1, 2].includes(claimSemanticsVersion)) throw new TypeError('supported claim semantics version required');
   if (!model || !category || !Array.isArray(fields) || !fields.length) {
     throw new TypeError('case identity and requested fields required');
   }
@@ -355,6 +418,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const signals = identitySignals(document, model);
   if (!signals.length) {
     throw new Error('structured exact model identity signal required in MinerU JSON');
+  }
+  if (claimSemanticsVersion === 2 && unresolvedFamilyScope(document, model)) {
+    throw new Error('unresolved family manual or multiple models in identity scope');
   }
   const candidates = new Map(fields.map((field) => [field, []]));
   document.pages.forEach((items, pageIndex) => {
@@ -375,7 +441,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         const claims = [
           ...dimensionClaims(row, fragment, pageIndex + 1, fields, category),
           ...clearanceClaims(row, fragment, pageIndex + 1, fields),
-          ...directClaims(row, fragment, pageIndex + 1, fields, category),
+          ...directClaims(row, fragment, pageIndex + 1, fields, category, claimSemanticsVersion),
         ];
         for (const claim of claims) candidates.get(claim.field)?.push(claim);
       }
@@ -383,7 +449,12 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   });
   const claims = [];
   for (const field of fields) {
-    const unique = new Map((candidates.get(field) ?? []).map((claim) => [
+    let fieldCandidates = candidates.get(field) ?? [];
+    if (claimSemanticsVersion === 2 && field === 'closedEnvelope.depthMm'
+      && fieldCandidates.some((claim) => claim.semanticBasis === 'explicit_including_handle')) {
+      fieldCandidates = fieldCandidates.filter((claim) => claim.semanticBasis === 'explicit_including_handle');
+    }
+    const unique = new Map(fieldCandidates.map((claim) => [
       `${JSON.stringify(claim.value)}\0${claim.quote}\0${claim.fragmentSha256}`,
       claim,
     ]));
@@ -392,7 +463,16 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     if (unique.size) claims.push([...unique.values()][0]);
   }
   if (!claims.length) throw new Error('no exact-model MinerU evidence with explicit axes extracted');
-  validateClaimsSemantics(claims, caseIdentity);
+  if (claimSemanticsVersion === 1) {
+    validateClaimsSemantics(claims, caseIdentity);
+  } else {
+    const legacyCompatible = claims.filter((claim) => claim.semanticBasis !== 'explicit_including_handle');
+    if (legacyCompatible.length) validateClaimsSemantics(legacyCompatible, caseIdentity);
+  }
+  const outputClaims = claimSemanticsVersion === 2
+    ? claims.map(upgradeLegacyDimensionClaim)
+    : claims;
+  if (claimSemanticsVersion === 2) validateDimensionEvidenceClaimsV2(outputClaims);
   return {
     schemaVersion: 1,
     format: 'content_list_v2',
@@ -403,7 +483,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     contentSha256: sha256(document.bytes),
     pageCount: document.pageCount,
     identitySignals: signals,
-    claims,
+    ...(claimSemanticsVersion === 2 ? { claimSemanticsVersion: 2 } : {}),
+    claims: outputClaims,
     documentText: normalizedText(document.pages.flat().map((item) => item.text).join(' ')),
   };
 }

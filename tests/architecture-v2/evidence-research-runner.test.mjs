@@ -86,6 +86,28 @@ test('research cycle records a bounded failure when every candidate is unusable'
   assert.equal(result.caseRecord.terminalReason, 'evidence_search_exhausted');
 });
 
+test('legacy research cycle intentionally keeps first-success compatibility behaviour', async () => {
+  const urls = [
+    'https://www.westinghouse.com.au/fridges/whe6874ba/',
+    'https://www.westinghouse.com.au/fridges/whe6874ba/alternate',
+  ];
+  const fetched = [];
+  const result = await runEvidenceResearchCycle(caseRecord({ candidateUrls: urls }), {
+    fetchImpl: async (url) => {
+      fetched.push(url);
+      return new Response(PAGE, { status: 200, headers: { 'content-type': 'text/html' } });
+    },
+    now: '2026-07-11T15:00:00.000Z',
+    writeObject: async () => {},
+    sitemapUrls: [],
+  });
+
+  assert.equal(result.caseRecord.sources.length, 1);
+  assert.ok(fetched.includes(urls[0]));
+  assert.ok(!fetched.includes(urls[1]));
+  assert.equal(fetched.at(-1), urls[0]);
+});
+
 test('replaying an unchanged source is idempotent and does not consume an attempt', async () => {
   const first = await runEvidenceResearchCycle(caseRecord(), {
     fetchImpl: async () => new Response(PAGE, { status: 200, headers: { 'content-type': 'text/html' } }),
@@ -177,12 +199,16 @@ test('PDF research stores source plus MinerU JSON and never approves from plain 
   assert.ok(writes.some((write) => write.path.endsWith('.pdf')));
   assert.ok(writes.some((write) => write.path.endsWith('.json')));
 
+  const diagnosticWrites = [];
   const failed = await runEvidenceResearchCycle(pdfCase, {
     fetchImpl: async () => new Response(pdfBytes, { status: 200, headers: { 'content-type': 'application/pdf' } }),
-    now: '2026-07-11T15:00:00.000Z', writeObject: async () => assert.fail('must fail before write'),
+    now: '2026-07-11T15:00:00.000Z',
+    writeObject: async (path) => diagnosticWrites.push(path),
     sitemapUrls: [],
     extractPdfText: async () => 'HRCD640TBW Width 914 mm',
   });
   assert.equal(failed.caseRecord.sources.length, 0);
   assert.match(failed.failures[0].reason, /MinerU|PDF processor/i);
+  assert.equal(diagnosticWrites.length, 1);
+  assert.match(diagnosticWrites[0], /\.pdf$/);
 });

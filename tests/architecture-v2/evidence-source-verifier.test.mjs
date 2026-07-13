@@ -135,6 +135,14 @@ test('verification receipt binds case identity, source metadata, artifact, and c
     verifiedAt: '2026-07-11T14:35:00.000Z',
   });
 
+  assert.deepEqual(input.verificationReceipt, {
+    schemaVersion: 2,
+    policyVersion: '2026-07-12.2',
+    manufacturerPolicyVersion: '2026-07-12.1',
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+    bindingSha256: '9815b5544350bba85aa307d2cd0d1b964ca67cc52b76434df07714b88907674c',
+  });
+
   assert.equal(verifyVerificationReceipt(input, caseIdentity, {
     asOf: '2026-07-11T15:00:00.000Z',
   }), true);
@@ -145,6 +153,37 @@ test('verification receipt binds case identity, source metadata, artifact, and c
   assert.throws(() => verifyVerificationReceipt(input, {
     ...caseIdentity, model: 'WHE6874SA',
   }, { asOf: '2026-07-11T15:00:00.000Z' }), /receipt digest|identity/i);
+});
+
+test('receipt schema v3 binds claim semantics v2 without invalidating schema v2 replay', () => {
+  const input = source({
+    claims: [{
+      field: 'closedEnvelope.widthMm',
+      value: { kind: 'fixed', mm: 913 },
+      sourceLabel: 'Total width (mm)',
+      sourceAxisOrder: ['width'],
+      sourceUnit: 'mm',
+      measurementScope: 'product_closed_external',
+      includesDoor: null,
+      includesHandle: null,
+      page: null,
+      fragmentSha256: null,
+      bbox: null,
+    }],
+  });
+  input.verificationReceipt = createVerificationReceipt(input, caseIdentity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+    claimSemanticsVersion: 2,
+  });
+  assert.equal(input.verificationReceipt.schemaVersion, 3);
+  assert.equal(input.verificationReceipt.claimSemanticsVersion, 2);
+  assert.equal(verifyVerificationReceipt(input, caseIdentity, {
+    asOf: input.verificationReceipt.verifiedAt,
+  }), true);
+  assert.throws(() => verifyVerificationReceipt({
+    ...input,
+    claims: [{ ...input.claims[0], measurementScope: 'package' }],
+  }, caseIdentity, { asOf: input.verificationReceipt.verifiedAt }), /scope|receipt/i);
 });
 
 test('verification receipt binds an official marketing alias and rejects broader fields', () => {

@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "bundleId": "historical-recovery-cumulative-v1",
+  "generatedAt": "2026-07-13T12:39:33.692Z",
+  "policySha256": "47f4c941793116d4135e9e6479b4a8a478555f4b37a792ea21ccc238fb30656a",
+  "entries": [
+    {
+      "targetId": "recovery_target_b4c27af7c13ba6643cb2cf6a",
+      "referenceId": "fa_ref_4b70ff0c230e18316b157fb0",
+      "legacyRuntimeId": "ao-62057",
+      "canonicalProductId": "fa_prod_67d9fc8bb47fc234ba64e60f",
+      "brand": "Fisher & Paykel",
+      "model": "WD8560F1",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-e764532d52a9023099098dcf-slice-70613df5ddbb",
+      "auditSha256": "5080341d0a495c67a5f16bbf410d88488fd1fe6248c305a557b970228259c1b5",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw911255f9/QRG/AU/QRG-AU-93235.pdf",
+          "finalUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw911255f9/QRG/AU/QRG-AU-93235.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-13T12:39:16.127Z",
+          "contentSha256": "7fcec1d5a9dbe4a9bfe86d701c118d3dad9028173adc91012472a843db3ab098",
+          "objectPath": "evidence/web/sha256/7f/ce/7fcec1d5a9dbe4a9bfe86d701c118d3dad9028173adc91012472a843db3ab098.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 879229,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Fisher & Paykel",
+            "model": "WD8560F1",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "e4bc637cb1e33ff87e87d42b83a402e4ca5a2d55500bf6914f2e2808f9d204ec",
+              "bbox": [
+                354,
+                137,
+                634,
+                159
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "27a9d973901502cc5e21328cbf39bee782afe1c95fab53ef453d98c6db02382e",
+              "bbox": [
+                354,
+                107,
+                634,
+                129
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 645
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "73e4eb30f5148002cddca67074143da0595956668194c77ac8b0efadaaaa4b13",
+              "bbox": [
+                354,
+                169,
+                634,
+                189
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "7fcec1d5a9dbe4a9bfe86d701c118d3dad9028173adc91012472a843db3ab098",
+            "contentSha256": "019d08ca030317d36cb547600caf40f0007f1b545287aa66bbc3bd9c77a19909",
+            "objectPath": "evidence/derived/mineru-json/sha256/01/9d/019d08ca030317d36cb547600caf40f0007f1b545287aa66bbc3bd9c77a19909.json",
+            "byteSize": 24723,
+            "pageCount": 2
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WD8560F1:page:1:4468c08802d2c3caf0c15b744720af47c79abf47e62d0acd19e8d108cc9c2ef0"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WD8560F1:page:2:1cfa460cc6294fbcae3698f7229a92913b3af37982185009da1e7513527df1d3"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "WD8560F1:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-12.1",
+            "verifiedAt": "2026-07-13T12:39:16.127Z",
+            "bindingSha256": "0b2a694781f95758e25bd5a92a4d6d75fc551913471d6dabd0237c21114a3dc3"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 645
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw911255f9/QRG/AU/QRG-AU-93235.pdf",
+            "contentSha256": "7fcec1d5a9dbe4a9bfe86d701c118d3dad9028173adc91012472a843db3ab098",
+            "receiptBindingSha256": "0b2a694781f95758e25bd5a92a4d6d75fc551913471d6dabd0237c21114a3dc3",
+            "page": 1,
+            "fragmentSha256": "e4bc637cb1e33ff87e87d42b83a402e4ca5a2d55500bf6914f2e2808f9d204ec"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw911255f9/QRG/AU/QRG-AU-93235.pdf",
+            "contentSha256": "7fcec1d5a9dbe4a9bfe86d701c118d3dad9028173adc91012472a843db3ab098",
+            "receiptBindingSha256": "0b2a694781f95758e25bd5a92a4d6d75fc551913471d6dabd0237c21114a3dc3",
+            "page": 1,
+            "fragmentSha256": "27a9d973901502cc5e21328cbf39bee782afe1c95fab53ef453d98c6db02382e"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw911255f9/QRG/AU/QRG-AU-93235.pdf",
+            "contentSha256": "7fcec1d5a9dbe4a9bfe86d701c118d3dad9028173adc91012472a843db3ab098",
+            "receiptBindingSha256": "0b2a694781f95758e25bd5a92a4d6d75fc551913471d6dabd0237c21114a3dc3",
+            "page": 1,
+            "fragmentSha256": "73e4eb30f5148002cddca67074143da0595956668194c77ac8b0efadaaaa4b13"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "7fcec1d5a9dbe4a9bfe86d701c118d3dad9028173adc91012472a843db3ab098"
+        ]
+      }
+    }
+  ],
+  "lineage": [
+    {
+      "batchId": "historical-recovery-e764532d52a9023099098dcf-slice-70613df5ddbb",
+      "batchSha256": "bc64676918e0f811abad439f84fc2c34d5b0e54f37fbe1a45717888a37482ccc",
+      "queueSha256": "075be4cf7f4ee6b21edfd56789f75705e11d00502c7f43f61ff36fb5a77c4eab",
+      "resultsSha256": "071ac95ced7c5544e9203bf7ecc91f33bc170eecd2fd4ad89652016fc27e1538",
+      "auditSha256": "5080341d0a495c67a5f16bbf410d88488fd1fe6248c305a557b970228259c1b5"
+    }
+  ]
+}

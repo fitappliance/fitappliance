@@ -2,6 +2,10 @@
   "schemaVersion": 1,
   "policyVersion": "2026-07-12.2",
   "receiptSchemaVersion": 2,
+  "supportedReceiptSchemaVersions": [2, 3],
+  "claimSemanticsVersion": 2,
+  "claimSemanticsReceiptSchemaVersion": 3,
+  "claimSemanticsPolicyVersion": "2026-07-13.1",
   "pdfEvidence": {
     "requiredFormat": "content_list_v2",
     "parserName": "MinerU",

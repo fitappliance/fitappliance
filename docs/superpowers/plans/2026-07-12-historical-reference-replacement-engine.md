@@ -172,7 +172,11 @@
 - Accessibility/layout: aria-live status is polite; Space, Tab and Enter complete registry confirmation; 1,440px desktop and 390px mobile layouts have no horizontal overflow or control overlap.
 - Gates: 1,952 tests passed; lint passed; schema validation checked 2,334 pages and 7,145 JSON-LD blocks with zero errors; indexability audit passed; production build passed with `FITAPPLIANCE_STORAGE_ROOT` unset.
 - Release evidence: the Git deployment reached `READY` in `syd1`; apex redirects permanently to `www`; the public fridge reference hash matches its manifest and carries `X-Robots-Tag: noindex`; fresh cavity sessions load no historical file; replacement sessions load one selected category, preserve confirmation gates and expose direct W/H/D deltas for current-only products.
-- Remaining evidence gap: none for the requested release. Future government-registry and retailer refreshes remain subject to the documented hash-drift rebuild gate.
+- The requested runtime release had no remaining functional gate. That statement
+  did not mean evidence coverage was complete: the post-release coverage audit
+  found only 11 receipt-bound auto-fill records and a large unmigrated legacy
+  document backlog. The remediation is tracked in
+  `2026-07-13-historical-evidence-coverage-recovery.md`.
 
 ## Post-release reproducibility hardening (2026-07-13)
 

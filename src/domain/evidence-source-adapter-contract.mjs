@@ -1,0 +1,178 @@
+const COMPLETION_STATES = new Set(['complete', 'truncated', 'timed_out', 'failed', 'unknown']);
+const AUTHORITY_MODES = new Set(['official', 'reference']);
+const CANDIDATE_KEYS = new Set([
+  'sourceUrl',
+  'resolverId',
+  'resolverVersion',
+  'discoveryMethod',
+  'documentType',
+  'sourceModelHint',
+  'authorityMode',
+  'sourceRole',
+  'requiredAttempt',
+  'batchJobId',
+]);
+const RESULT_KEYS = new Set([
+  'schemaVersion',
+  'resolverId',
+  'version',
+  'scope',
+  'required',
+  'completion',
+  'candidates',
+  'failures',
+]);
+const FAILURE_KEYS = new Set(['code', 'sourceUrl', 'message']);
+
+function requiredText(value, label) {
+  const normalized = String(value ?? '').replace(/\s+/g, ' ').trim();
+  if (!normalized) throw new TypeError(`${label} required`);
+  return normalized;
+}
+
+function assertRecord(value, label) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError(`${label} must be an object`);
+  }
+}
+
+function rejectUnknownKeys(value, allowed, label) {
+  const unknown = Object.keys(value).filter((key) => !allowed.has(key));
+  if (unknown.length) {
+    throw new TypeError(`${label} contains unknown or parsed fields: ${unknown.sort().join(', ')}`);
+  }
+}
+
+function canonicalHttpsUrl(value, label) {
+  let url;
+  try {
+    url = new URL(requiredText(value, label));
+  } catch {
+    throw new TypeError(`${label} must be an absolute URL`);
+  }
+  if (url.protocol !== 'https:' || url.username || url.password) {
+    throw new TypeError(`${label} must use trusted HTTPS`);
+  }
+  url.hash = '';
+  return url.toString();
+}
+
+function optionalText(value, label) {
+  if (value === null || value === undefined) return null;
+  return requiredText(value, label);
+}
+
+export function validateEvidenceSourceCandidate(value, expected = {}) {
+  assertRecord(value, 'evidence source candidate');
+  rejectUnknownKeys(value, CANDIDATE_KEYS, 'evidence source candidate');
+  const authorityMode = requiredText(value.authorityMode, 'candidate authority mode');
+  if (!AUTHORITY_MODES.has(authorityMode)) {
+    throw new TypeError(`candidate authority mode invalid: ${authorityMode}`);
+  }
+  if (typeof value.requiredAttempt !== 'boolean') {
+    throw new TypeError('candidate requiredAttempt must be boolean');
+  }
+  const resolverId = requiredText(value.resolverId, 'candidate resolver ID');
+  const resolverVersion = requiredText(value.resolverVersion, 'candidate resolver version');
+  if (expected.resolverId && resolverId !== expected.resolverId) {
+    throw new TypeError('candidate resolver ID does not match resolver result');
+  }
+  if (expected.version && resolverVersion !== expected.version) {
+    throw new TypeError('candidate resolver version does not match resolver result');
+  }
+  return {
+    sourceUrl: canonicalHttpsUrl(value.sourceUrl, 'candidate source URL'),
+    resolverId,
+    resolverVersion,
+    discoveryMethod: requiredText(value.discoveryMethod, 'candidate discovery method'),
+    documentType: requiredText(value.documentType, 'candidate document type'),
+    sourceModelHint: optionalText(value.sourceModelHint, 'candidate source-model hint'),
+    authorityMode,
+    sourceRole: requiredText(value.sourceRole, 'candidate source role'),
+    requiredAttempt: value.requiredAttempt,
+    batchJobId: optionalText(value.batchJobId, 'candidate batch job ID'),
+  };
+}
+
+function validateFailure(value) {
+  assertRecord(value, 'resolver failure');
+  rejectUnknownKeys(value, FAILURE_KEYS, 'resolver failure');
+  return {
+    code: requiredText(value.code, 'resolver failure code'),
+    ...(value.sourceUrl ? { sourceUrl: canonicalHttpsUrl(value.sourceUrl, 'resolver failure URL') } : {}),
+    ...(value.message ? { message: requiredText(value.message, 'resolver failure message') } : {}),
+  };
+}
+
+export function validateEvidenceSourceResolverResult(value) {
+  assertRecord(value, 'evidence source resolver result');
+  rejectUnknownKeys(value, RESULT_KEYS, 'evidence source resolver result');
+  if (value.schemaVersion !== 1) throw new TypeError('resolver schemaVersion must be 1');
+  const resolverId = requiredText(value.resolverId, 'resolver ID');
+  const version = requiredText(value.version, 'resolver version');
+  const completion = requiredText(value.completion, 'resolver completion state');
+  if (!COMPLETION_STATES.has(completion)) {
+    throw new TypeError(`resolver completion state invalid: ${completion}`);
+  }
+  if (typeof value.required !== 'boolean') throw new TypeError('resolver required must be boolean');
+  if (!Array.isArray(value.candidates)) throw new TypeError('resolver candidates must be an array');
+  if (!Array.isArray(value.failures)) throw new TypeError('resolver failures must be an array');
+  const candidates = value.candidates.map((candidate) => validateEvidenceSourceCandidate(candidate, {
+    resolverId,
+    version,
+  }));
+  const failures = value.failures.map(validateFailure);
+  if (completion === 'complete' && failures.length) {
+    throw new TypeError('resolver cannot be complete while partial failures remain');
+  }
+  const candidateKeys = candidates.map((candidate) => `${candidate.authorityMode}\0${candidate.sourceUrl}`);
+  if (new Set(candidateKeys).size !== candidateKeys.length) {
+    throw new TypeError('duplicate candidate in resolver result');
+  }
+  return {
+    schemaVersion: 1,
+    resolverId,
+    version,
+    scope: requiredText(value.scope, 'resolver scope'),
+    required: value.required,
+    completion,
+    candidates,
+    failures,
+  };
+}
+
+export function createEvidenceSourceResolverAdapter({
+  resolverId,
+  version,
+  scope,
+  required = true,
+  resolve,
+}) {
+  const descriptor = {
+    resolverId: requiredText(resolverId, 'resolver ID'),
+    version: requiredText(version, 'resolver version'),
+    scope: requiredText(scope, 'resolver scope'),
+    required: Boolean(required),
+  };
+  if (typeof resolve !== 'function') throw new TypeError('resolver implementation required');
+  return Object.freeze({
+    ...descriptor,
+    async resolve(caseRecord) {
+      const raw = await resolve(structuredClone(caseRecord));
+      assertRecord(raw, `${descriptor.resolverId} resolver output`);
+      const candidates = (raw.candidates ?? []).map((candidate) => ({
+        ...candidate,
+        resolverId: candidate.resolverId ?? descriptor.resolverId,
+        resolverVersion: candidate.resolverVersion ?? descriptor.version,
+        batchJobId: candidate.batchJobId ?? null,
+      }));
+      return validateEvidenceSourceResolverResult({
+        schemaVersion: 1,
+        ...descriptor,
+        completion: raw.completion ?? 'unknown',
+        candidates,
+        failures: raw.failures ?? [],
+      });
+    },
+  });
+}

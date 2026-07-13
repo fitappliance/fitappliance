@@ -1,0 +1,164 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+
+import { collectEvidenceCandidates } from '../../src/domain/evidence-candidate-inventory.mjs';
+
+const TARGET = Object.freeze({
+  id: 'target-westinghouse-whe6874ba',
+  brand: 'Westinghouse',
+  model: 'WHE6874BA',
+  category: 'fridge',
+});
+
+function source(hash, url) {
+  return {
+    authority: 'manufacturer',
+    sourceType: 'official_exact_model_pdf',
+    sourceUrl: url,
+    finalUrl: url,
+    contentSha256: hash,
+    supersedesContentSha256: [],
+    identity: { brand: TARGET.brand, model: TARGET.model, outcome: 'exact' },
+    claims: [{ field: 'closedEnvelope.widthMm', value: { kind: 'fixed', mm: 913 } }],
+    verificationReceipt: { bindingSha256: hash },
+  };
+}
+
+function resolver({
+  id = 'official-index',
+  completion = 'complete',
+  candidates = [],
+  wait = null,
+} = {}) {
+  const resolve = async () => {
+    if (wait) await wait;
+    return {
+      resolverId: id,
+      version: '2026-07-13.1',
+      scope: 'manufacturer_official',
+      required: true,
+      completion,
+      candidates,
+    };
+  };
+  resolve.resolverId = id;
+  resolve.version = '2026-07-13.1';
+  resolve.scope = 'manufacturer_official';
+  resolve.required = true;
+  return resolve;
+}
+
+function candidate(sourceUrl, overrides = {}) {
+  return {
+    sourceUrl,
+    authorityMode: 'official',
+    sourceRole: 'manufacturer_document',
+    discoveryMethod: 'official_index',
+    requiredAttempt: true,
+    batchJobId: null,
+    ...overrides,
+  };
+}
+
+test('collector attempts every required official candidate after the first acceptance', async () => {
+  const calls = [];
+  const firstUrl = 'https://www.westinghouse.com.au/manuals/first.pdf';
+  const secondUrl = 'https://www.westinghouse.com.au/manuals/second.pdf';
+  const inventory = await collectEvidenceCandidates(TARGET, {
+    batchCandidateJobIds: [],
+    activeReceiptSources: [],
+    resolvers: [resolver({ candidates: [candidate(firstUrl), candidate(secondUrl)] })],
+    acquireAndAttest: async (entry) => {
+      calls.push(entry.sourceUrl);
+      return { source: source(entry.sourceUrl === firstUrl ? 'a'.repeat(64) : 'b'.repeat(64), entry.sourceUrl) };
+    },
+  });
+
+  assert.deepEqual(calls.sort(), [firstUrl, secondUrl].sort());
+  assert.equal(inventory.completionStatus, 'complete');
+  assert.equal(inventory.candidates.length, 2);
+  assert.ok(inventory.candidates.every((entry) => entry.outcome.status === 'accepted'));
+  assert.match(inventory.candidateInventorySha256, /^[a-f0-9]{64}$/);
+});
+
+test('required resolver timeout fails closed as discovery_incomplete', async () => {
+  const inventory = await collectEvidenceCandidates(TARGET, {
+    batchCandidateJobIds: [],
+    activeReceiptSources: [],
+    resolverTimeoutMs: 5,
+    resolvers: [resolver({ id: 'hung-resolver', wait: new Promise(() => {}) })],
+    acquireAndAttest: async () => assert.fail('a timed-out resolver has no candidate to acquire'),
+  });
+
+  assert.equal(inventory.completionStatus, 'discovery_incomplete');
+  assert.deepEqual(inventory.incompleteResolvers, ['hung-resolver']);
+  assert.equal(inventory.resolvers[0].completion, 'timed_out');
+});
+
+test('duplicate official URLs merge provenance and are acquired exactly once', async () => {
+  const url = 'https://www.westinghouse.com.au/manuals/WHE6874BA.pdf';
+  let acquisitions = 0;
+  const inventory = await collectEvidenceCandidates(TARGET, {
+    batchCandidateJobIds: ['job-primary', 'job-alternate'],
+    activeReceiptSources: [],
+    resolvers: [
+      resolver({
+        id: 'batch-edges',
+        candidates: [candidate(url, { batchJobId: 'job-primary', discoveryMethod: 'queue' })],
+      }),
+      resolver({
+        id: 'brand-resolver',
+        candidates: [candidate(url, { batchJobId: 'job-alternate', discoveryMethod: 'product_page' })],
+      }),
+    ],
+    acquireAndAttest: async () => {
+      acquisitions += 1;
+      return { source: source('c'.repeat(64), url) };
+    },
+  });
+
+  assert.equal(acquisitions, 1);
+  assert.equal(inventory.candidates.length, 1);
+  assert.deepEqual(inventory.candidates[0].batchJobIds, ['job-alternate', 'job-primary']);
+  assert.deepEqual(
+    inventory.candidates[0].resolverRefs.map((entry) => entry.resolverId),
+    ['batch-edges', 'brand-resolver'].sort(),
+  );
+});
+
+test('truncated resolver and an unrepresented batch edge both prevent a complete inventory', async () => {
+  const url = 'https://www.westinghouse.com.au/manuals/WHE6874BA.pdf';
+  const inventory = await collectEvidenceCandidates(TARGET, {
+    batchCandidateJobIds: ['job-present', 'job-missing'],
+    activeReceiptSources: [],
+    resolvers: [resolver({
+      completion: 'truncated',
+      candidates: [candidate(url, { batchJobId: 'job-present' })],
+    })],
+    acquireAndAttest: async () => ({ source: source('d'.repeat(64), url) }),
+  });
+
+  assert.equal(inventory.completionStatus, 'discovery_incomplete');
+  assert.deepEqual(inventory.missingBatchCandidateJobIds, ['job-missing']);
+  assert.deepEqual(inventory.incompleteResolvers, ['official-index']);
+});
+
+test('inventory hash and ordering are deterministic under reversed resolver input', async () => {
+  const aUrl = 'https://www.westinghouse.com.au/manuals/a.pdf';
+  const bUrl = 'https://www.westinghouse.com.au/manuals/b.pdf';
+  const make = (resolvers) => collectEvidenceCandidates(TARGET, {
+    batchCandidateJobIds: [],
+    activeReceiptSources: [],
+    resolvers,
+    acquireAndAttest: async (entry) => ({
+      source: source(entry.sourceUrl === aUrl ? 'a'.repeat(64) : 'b'.repeat(64), entry.sourceUrl),
+    }),
+  });
+  const leftResolver = resolver({ id: 'left', candidates: [candidate(bUrl)] });
+  const rightResolver = resolver({ id: 'right', candidates: [candidate(aUrl)] });
+  const first = await make([leftResolver, rightResolver]);
+  const second = await make([rightResolver, leftResolver]);
+
+  assert.equal(first.candidateInventorySha256, second.candidateInventorySha256);
+  assert.deepEqual(first, second);
+});

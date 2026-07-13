@@ -59,6 +59,51 @@ test('projector keeps adjustable height and separates placement, operation, and 
   assert.deepEqual(projected.missingForVerifiedFit, []);
 });
 
+test('projector maps claim semantics v2 fixed values and only the supported height range', () => {
+  const axes = {
+    'closedEnvelope.widthMm': 'width',
+    'closedEnvelope.heightMm': 'height',
+    'closedEnvelope.depthMm': 'depth',
+  };
+  const claim = (field, value) => ({
+    field,
+    value,
+    sourceLabel: field,
+    sourceAxisOrder: [axes[field]],
+    sourceUnit: 'mm',
+    measurementScope: 'product_closed_external',
+    includesDoor: null,
+    includesHandle: null,
+    page: null,
+    fragmentSha256: null,
+    bbox: null,
+  });
+  const source = {
+    contentSha256: 'e'.repeat(64), sourceUrl: 'https://www.haier.com.au/HDW15F4B1.pdf',
+    verificationReceipt: { schemaVersion: 3, claimSemanticsVersion: 2, bindingSha256: 'f'.repeat(64) },
+    claims: [
+      claim('closedEnvelope.widthMm', { kind: 'fixed', mm: 597 }),
+      claim('closedEnvelope.heightMm', { kind: 'range', minMm: 850, maxMm: 895 }),
+      claim('closedEnvelope.depthMm', { kind: 'fixed', mm: 599 }),
+    ],
+  };
+  const projected = projectEvidenceGeometry({
+    brand: 'Haier', model: 'HDW15F4B1', category: 'dishwasher', sources: [source],
+  }, { verifyReceipt: () => true });
+  assert.deepEqual(projected.geometry.closedEnvelope, {
+    widthMm: 597,
+    heightMm: { minimumMm: 850, maximumMm: 895 },
+    depthMm: 599,
+  });
+
+  const nonScalar = projectEvidenceGeometry({
+    brand: 'Haier', model: 'HDW15F4B1', category: 'dishwasher',
+    sources: [{ ...source, claims: [claim('closedEnvelope.widthMm', { kind: 'range', minMm: 595, maxMm: 600 })] }],
+  }, { verifyReceipt: () => true });
+  assert.equal(nonScalar.geometry.closedEnvelope.widthMm, null);
+  assert.equal(nonScalar.evidenceLevel, 'none');
+});
+
 test('projector rejects conflicting active receipts instead of choosing a convenient value', () => {
   const makeSource = (hash, width) => ({
     contentSha256: hash.repeat(64), sourceUrl: `https://www.smeg.com.au/${hash}.pdf`,

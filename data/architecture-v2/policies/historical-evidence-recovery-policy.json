@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "2026-07-13.1",
+  "queueSchemaVersion": 2,
+  "supportedReceiptSchemaVersions": [2, 3],
+  "supportedClaimSemanticsVersions": [1, 2],
+  "requestedFields": [
+    "closedEnvelope.widthMm",
+    "closedEnvelope.heightMm",
+    "closedEnvelope.depthMm"
+  ],
+  "authorityModes": ["official", "reference"],
+  "lifecycleStates": ["CURRENT_RETAIL", "CATALOG_ARCHIVED"],
+  "concurrency": {
+    "network": 2,
+    "perHost": 1,
+    "mineru": 1
+  },
+  "retry": {
+    "fetchAttempts": 3,
+    "mineruAttempts": 2,
+    "baseDelayMs": 1000
+  },
+  "limits": {
+    "timeoutMs": 30000,
+    "maximumBytes": 20971520,
+    "maximumRedirects": 5
+  },
+  "lock": {
+    "heartbeatMs": 15000,
+    "staleAfterMs": 90000
+  },
+  "parser": {
+    "format": "content_list_v2",
+    "name": "MinerU",
+    "version": "3.4.4",
+    "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+    "backend": "pipeline",
+    "method": "auto",
+    "tableEnabled": true,
+    "formulaEnabled": false
+  }
+}
