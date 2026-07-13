@@ -54,8 +54,8 @@ export function parseHistoricalEvidenceRecoveryRunArgs(argv) {
     jobIds: [],
     routes: [],
     limit: null,
-    networkConcurrency: 2,
-    mineruConcurrency: 1,
+    networkConcurrency: null,
+    mineruConcurrency: null,
   };
   const textFlags = new Map([
     ['--input', 'input'], ['--output', 'output'], ['--run-id', 'runId'],
@@ -93,6 +93,22 @@ export function parseHistoricalEvidenceRecoveryRunArgs(argv) {
   result.routes = [...new Set(result.routes)].sort();
   if (result.resume && !result.runId) throw new TypeError('--run-id is required with --resume');
   return result;
+}
+
+function effectiveConcurrency(options, policy) {
+  const requestedNetwork = options.networkConcurrency ?? policy.concurrency.network;
+  const requestedMineru = options.mineruConcurrency ?? policy.concurrency.mineru;
+  if (requestedNetwork > policy.concurrency.network) {
+    throw new TypeError('network concurrency exceeds recovery policy maximum');
+  }
+  if (requestedMineru > policy.concurrency.mineru) {
+    throw new TypeError('MinerU concurrency exceeds recovery policy maximum');
+  }
+  return {
+    network: requestedNetwork,
+    perHost: Math.min(policy.concurrency.perHost, requestedNetwork),
+    mineru: requestedMineru,
+  };
 }
 
 function selectedBatch(batch, options) {
@@ -303,6 +319,7 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
   validateHistoricalEvidenceRecoveryBatch(rawBatch);
   const policy = JSON.parse(await fs.readFile(resolve(options.policy), 'utf8'));
   validateHistoricalEvidenceRecoveryPolicy(policy);
+  const concurrency = effectiveConcurrency(options, policy);
   if (canonicalJsonSha256(policy) !== rawBatch.policy.sha256) throw new Error('recovery policy hash drift');
   if (options.queue) {
     const queue = JSON.parse(await fs.readFile(resolve(options.queue), 'utf8'));
@@ -369,8 +386,9 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
       const graphDependencies = {
         ...baseGraphDependencies,
         ...(dependencies.graphDependencies ?? {}),
-        networkConcurrency: options.networkConcurrency,
-        mineruConcurrency: options.mineruConcurrency,
+        networkConcurrency: concurrency.network,
+        perHostConcurrency: concurrency.perHost,
+        mineruConcurrency: concurrency.mineru,
         onTransition: async (delta) => {
           await store.applyTransition(delta);
           if (externalTransition) await externalTransition(delta);

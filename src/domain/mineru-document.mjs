@@ -5,6 +5,7 @@ import {
   claimFromEvidenceFragment,
   claimsFromExplicitDimensionSequence,
   containsExactModel,
+  containsExactModelDocumentUrl,
   evidenceFieldRules,
   validateClaimsSemantics,
 } from './evidence-claim-semantics.mjs';
@@ -188,7 +189,7 @@ function measurements(value, expectedLength) {
   const text = String(value ?? '').replace(/×/g, 'x').replace(/\bby\b/gi, 'x');
   const numbers = (text.match(/\d+(?:\.\d+)?/g) ?? []).map(Number);
   if (numbers.length !== expectedLength || numbers.some((number) => !Number.isFinite(number))) return null;
-  const units = [...text.matchAll(/\b(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/gi)]
+  const units = [...text.matchAll(/(?<![A-Za-z])(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/gi)]
     .map((match) => match[1].toLowerCase());
   if (!units.length) return null;
   const unitKinds = new Set(units.map((unit) => unit.startsWith('c') ? 'cm' : 'mm'));
@@ -265,7 +266,7 @@ function handleInclusiveDepthClaim(row, fragment, page, field) {
     return null;
   }
   const values = (String(row.value ?? '').match(/\d+(?:\.\d+)?/g) ?? []).map(Number);
-  const unitMatch = /\b(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/i.exec(String(row.value ?? ''));
+  const unitMatch = /(?<![A-Za-z])(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/i.exec(String(row.value ?? ''));
   if (values.length !== 1 || !unitMatch) return null;
   const sourceUnit = unitMatch[1].toLowerCase().startsWith('c') ? 'cm' : 'mm';
   const value = values[0] * (sourceUnit === 'cm' ? 10 : 1);
@@ -304,7 +305,7 @@ function directClaims(row, fragment, page, fields, category, claimSemanticsVersi
       const text = String(row.value ?? '');
       const values = (text.match(/\d+(?:\.\d+)?/g) ?? []).map(Number);
       const rangeSeparator = /\d\s*(?:-|–|—|\bto\b)\s*\d/i.test(text);
-      const unitMatch = /\b(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/i.exec(text);
+      const unitMatch = /(?<![A-Za-z])(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/i.exec(text);
       if (values.length === 2 && rangeSeparator && unitMatch) {
         const sourceUnit = unitMatch[1].toLowerCase().startsWith('c') ? 'cm' : 'mm';
         const sourceValuesMm = values.map((value) => value * (sourceUnit === 'cm' ? 10 : 1));
@@ -363,6 +364,9 @@ function identitySignals(document, model) {
       }
       if (item.type === 'page_header') {
         signals.push({ type: 'mineru_page_header_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
+      }
+      if (item.type === 'page_footer') {
+        signals.push({ type: 'mineru_page_footer_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
       }
     }
   });
@@ -456,6 +460,25 @@ function exactModelTableScope(items, model) {
   )));
 }
 
+function strictSharedModelListPageScope(items, model) {
+  const rows = items.flatMap((item) => item.type === 'table' ? item.rows : [])
+    .filter((row) => /^models?(?:\s+(?:name|number|no\.?|code))?$/i.test(row.label));
+  if (rows.length !== 1) return false;
+  const source = normalizedText(rows[0].value);
+  const tokens = source.split(/\s+\/\s+|\s*[,;]\s*/).map(normalizedText).filter(Boolean);
+  if (tokens.length < 2 || tokens.length > 12) return false;
+  if (tokens.some((token) => (
+    token.length < 5 || token.length > 40
+      || !/^[A-Z0-9][A-Z0-9.-]+$/i.test(token)
+      || !/[A-Z]/i.test(token)
+      || !/\d/.test(token)
+  ))) return false;
+  const canonical = (value) => value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  const canonicalTokens = tokens.map(canonical);
+  return new Set(canonicalTokens).size === canonicalTokens.length
+    && canonicalTokens.includes(canonical(model));
+}
+
 const MATRIX_DIMENSION_FIELDS = Object.freeze([
   'closedEnvelope.heightMm',
   'closedEnvelope.widthMm',
@@ -505,9 +528,9 @@ function exactModelMatrixRows(fragment, model, pageUnit) {
     for (const column of shape.columns) {
       const rawValue = normalizedText(cells[column.index]);
       if (!/^\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?(?:\s*(?:mm|cm))?$/i.test(rawValue)) continue;
-      const hasUnit = /\b(?:mm|cm)\b/i.test(rawValue);
+      const hasUnit = /(?<![A-Za-z])(?:mm|cm)\b/i.test(rawValue);
       if (!hasUnit && !pageUnit) continue;
-      const sourceUnit = hasUnit ? /\bcm\b/i.test(rawValue) ? 'cm' : 'mm' : pageUnit.unit;
+      const sourceUnit = hasUnit ? /(?<![A-Za-z])cm\b/i.test(rawValue) ? 'cm' : 'mm' : pageUnit.unit;
       rows.push({
         label: column.label,
         value: hasUnit ? rawValue : `${rawValue} ${sourceUnit}`,
@@ -548,6 +571,67 @@ function unresolvedFamilyScope(document, model) {
   return false;
 }
 
+function canonicalModel(value) {
+  return normalizedText(value).toUpperCase().replace(/[^A-Z0-9]/g, '');
+}
+
+function siblingModelCandidates(document, model) {
+  const target = canonicalModel(model);
+  return document.pages.flat().flatMap((fragment) => (
+    fragment.text.toUpperCase().match(/\b[A-Z][A-Z0-9-]{3,}\d[A-Z0-9/-]*\b/g) ?? []
+  ))
+    .map(canonicalModel)
+    .filter((candidate) => (
+      candidate !== target
+      && candidate.length >= 5
+      && commonPrefixLength(candidate, target) >= Math.min(6, Math.floor(target.length / 2))
+    ));
+}
+
+function exactModelSourceUrl(sourceUrls, model) {
+  if (!Array.isArray(sourceUrls)) return null;
+  return sourceUrls.find((value) => containsExactModelDocumentUrl(value, model)) ?? null;
+}
+
+function uniqueCoverIdentityScope(document, model, sourceUrls) {
+  const coverHasExactModel = document.pages[0]?.some((item) => (
+    ['title', 'page_footer'].includes(item.type)
+    && containsExplicitModelExpression(item.text, model)
+  ));
+  return Boolean(
+    coverHasExactModel
+    && exactModelSourceUrl(sourceUrls, model)
+    && siblingModelCandidates(document, model).length === 0,
+  );
+}
+
+function documentScopedDimensionMatrixRows(fragment) {
+  const shape = matrixDimensionShape(fragment);
+  if (!shape) return [];
+  const requiredFields = [
+    'closedEnvelope.widthMm',
+    'closedEnvelope.heightMm',
+    'closedEnvelope.depthMm',
+  ];
+  const closedColumns = shape.columns.filter((column) => requiredFields.includes(column.field));
+  if (closedColumns.length !== requiredFields.length
+    || new Set(closedColumns.map((column) => column.field)).size !== requiredFields.length) return [];
+
+  const axisOrder = closedColumns.map((column) => MATRIX_FIELD_AXIS[column.field]);
+  for (const cells of fragment.cells.slice(shape.headerIndex + 1)) {
+    const values = closedColumns.map((column) => normalizedText(cells[column.index]));
+    if (!values.every((value) => /^\d+(?:\.\d+)?\s*(?:mm|cm)$/i.test(value))) continue;
+    return closedColumns.map((column, index) => ({
+      label: column.label,
+      value: values[index],
+      quote: `${column.label} ${values[index]}`,
+      semanticBasis: 'document_unique_dimension_matrix',
+      axisOrder,
+    }));
+  }
+  return [];
+}
+
 export function parseMineruContentListV2(jsonBytes, options = {}) {
   const pdfSha256 = requiredHash(options.pdfSha256, 'source PDF');
   const parserVersion = requiredParserVersion(options.parserVersion);
@@ -567,7 +651,11 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     throw new Error('structured exact model identity signal required in MinerU JSON');
   }
   const unresolvedFamily = claimSemanticsVersion === 2 && unresolvedFamilyScope(document, model);
+  const documentUniqueScope = claimSemanticsVersion === 2
+    && !unresolvedFamily
+    && uniqueCoverIdentityScope(document, model, options.sourceUrls);
   const candidates = new Map(fields.map((field) => [field, []]));
+  const sharedModelListPages = new Set();
   document.pages.forEach((items, pageIndex) => {
     const pageSignals = signals.filter((signal) => signal.value.includes(`:page:${pageIndex + 1}`));
     const headerScoped = pageSignals.some((signal) => signal.type === 'mineru_page_header_model');
@@ -576,21 +664,29 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const pageScoped = pageSignals.length > 0;
     const modelTableScoped = exactModelTableScope(items, model);
     const pageDimensionUnit = explicitPageDimensionUnit(items);
-    if (!pageScoped) return;
+    const sharedModelListScoped = unresolvedFamily
+      && strictSharedModelListPageScope(items, model)
+      && pageDimensionUnit
+      && items.some((item) => alternatingAxisRows(item, pageDimensionUnit).length >= 2);
+    if (sharedModelListScoped) sharedModelListPages.add(pageIndex + 1);
+    const documentScoped = !pageScoped && documentUniqueScope;
+    if (!pageScoped && !documentScoped) return;
     for (const fragment of items.filter((item) => (
       (item.type === 'table' && (
         headerScoped || bodyScoped || modelTableScoped || containsExplicitModelExpression(item.text, model)
+        || (documentScoped && documentScopedDimensionMatrixRows(item).length === 3)
       ))
       || (pageScoped && ['paragraph', 'text'].includes(item.type))
     ))) {
       const rows = fragment.type === 'table'
         ? [
-          ...(unresolvedFamily ? [] : fragment.rows),
-          ...(unresolvedFamily ? [] : alternatingAxisRows(fragment, pageDimensionUnit)),
+          ...(unresolvedFamily || documentScoped ? [] : fragment.rows),
+          ...(unresolvedFamily && !sharedModelListScoped ? [] : alternatingAxisRows(fragment, pageDimensionUnit)),
           ...(claimSemanticsVersion === 2 ? exactModelMatrixRows(fragment, model, pageDimensionUnit) : []),
+          ...(documentScoped ? documentScopedDimensionMatrixRows(fragment) : []),
         ]
         : paragraphRows(fragment.text);
-      if (unresolvedFamily && fragment.type !== 'table') continue;
+      if (unresolvedFamily && !sharedModelListScoped && fragment.type !== 'table') continue;
       for (const row of rows) {
         const claims = [
           ...dimensionClaims(row, fragment, pageIndex + 1, fields, category),
@@ -616,7 +712,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     if (values.size > 1) throw new Error(`ambiguous MinerU values for ${field}`);
     if (unique.size) claims.push([...unique.values()][0]);
   }
-  if (unresolvedFamily && !claims.some((claim) => claim.semanticBasis === 'exact_model_matrix_row')) {
+  if (unresolvedFamily && !claims.some((claim) => (
+    claim.semanticBasis === 'exact_model_matrix_row' || sharedModelListPages.has(claim.page)
+  ))) {
     throw new Error('unresolved family manual or multiple models in identity scope');
   }
   if (!claims.length) throw new Error('no exact-model MinerU evidence with explicit axes extracted');

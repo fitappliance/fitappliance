@@ -1,13 +1,13 @@
 const FIELD_RULES = Object.freeze({
-  'closedEnvelope.widthMm': { label: /(?:\b(?:total|overall|external|product)?\s*width\b|^\s*(?:total|overall|external|product)?\s*wide(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'width', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b/i },
+  'closedEnvelope.widthMm': { label: /(?:\b(?:total|overall|external|product)?\s*width\b|^\s*(?:total|overall|external|product)?\s*wide(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'width', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b|(?:doors?\s*open(?:ed)?|open(?:ed)?\s*doors?)/i },
   'closedEnvelope.heightMm': { label: /(?:\b(?:total|overall|external|product)?\s*height\b|^\s*(?:total|overall|external|product)?\s*high(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'height', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b|lid\s*open/i },
-  'closedEnvelope.depthMm': { label: /(?:\b(?:total|overall|external|product)?\s*depth\b|^\s*(?:total|overall|external|product)?\s*deep(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'depth', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b|(?:including|with)\s+(?:the\s+)?handles?|without\s+(?:the\s+)?door|(?:door\s*open(?:ed)?|open(?:ed)?\s*door)/i },
+  'closedEnvelope.depthMm': { label: /(?:\b(?:total|overall|external|product)?\s*depth\b|^\s*(?:total|overall|external|product)?\s*deep(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'depth', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b|(?:including|with)\s+(?:the\s+)?handles?|without\s+(?:the\s+)?doors?|(?:doors?\s*open(?:ed)?|open(?:ed)?\s*doors?)/i },
   'installation.leftMm': { label: /(?:left.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}left|(?:clearance|space|gap).{0,30}(?:each|both)\s+sides?|(?:each|both)\s+sides?.{0,30}(?:clearance|space|gap))/i, kind: 'clearance' },
   'installation.rightMm': { label: /(?:right.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}right|(?:clearance|space|gap).{0,30}(?:each|both)\s+sides?|(?:each|both)\s+sides?.{0,30}(?:clearance|space|gap))/i, kind: 'clearance' },
   'installation.topMm': { label: /(?:(?:air\s*space\s*above|top|overhead).{0,30}(?:clearance|space|gap|cabinet)|(?:clearance|space|gap).{0,30}(?:on\s+)?(?:top|above|overhead)|air\s*space\s*above\s*cabinet)/i, kind: 'clearance' },
   'installation.rearMm': { label: /(?:rear|behind|back).{0,30}(?:clearance|space|gap|ventilation)|(?:clearance|space|gap).{0,30}(?:rear|behind|back)/i, kind: 'clearance' },
   'installation.frontMm': { label: /front.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}front/i, kind: 'clearance' },
-  'operation.doorOpenDepthMm': { label: /(?:depth.{0,40}(?:door\s*open(?:ed)?|open(?:ed)?\s*door)|(?:door\s*open(?:ed)?|open(?:ed)?\s*door).{0,40}depth)/i, kind: 'operation' },
+  'operation.doorOpenDepthMm': { label: /(?:depth.{0,40}(?:doors?\s*open(?:ed)?|open(?:ed)?\s*doors?)|(?:doors?\s*open(?:ed)?|open(?:ed)?\s*doors?).{0,40}depth)/i, kind: 'operation' },
   'operation.hingeSideSpaceMm': { label: /hinge.{0,30}(?:clearance|space|gap)/i, kind: 'operation' },
   'operation.lidOpenHeightMm': { label: /(?:lid\s*open.{0,30}height|height.{0,30}lid\s*open)/i, kind: 'operation' },
   'service.plumbingRearMm': { label: /(?:plumbing|water).{0,30}(?:rear|behind|back).{0,30}(?:clearance|space|gap)/i, kind: 'service' },
@@ -42,9 +42,30 @@ export function containsExactModel(text, model) {
   return new RegExp(`(^|[^A-Z0-9])${body}(?![A-Z0-9]|[-_/][A-Z0-9])`, 'i').test(String(text ?? ''));
 }
 
+export function containsExactModelDocumentUrl(value, model) {
+  let pathname;
+  try {
+    pathname = decodeURIComponent(new URL(value).pathname);
+  } catch {
+    return false;
+  }
+  if (containsExactModel(pathname, model)) return true;
+  const filename = pathname.split('/').pop() ?? '';
+  const stem = filename.replace(/\.[A-Z0-9]{1,8}$/i, '');
+  const withoutDocumentSuffix = stem.replace(
+    /[-_. ]+(?:UG|UM|IM|USER[-_. ]?(?:GUIDE|MANUAL)|INSTALLATION[-_. ]?(?:GUIDE|MANUAL)|SPEC(?:IFICATION)?[-_. ]?SHEET)$/i,
+    '',
+  );
+  return withoutDocumentSuffix !== stem && containsExactModel(withoutDocumentSuffix, model);
+}
+
 function quotedNumbers(value) {
   const withoutAngles = value.replace(/\b(?:90|180)\s*(?:degrees?|deg|°)\b/gi, ' ');
   return (withoutAngles.match(/(?<![\d.])\d+(?:\.\d+)?(?![\d.])/g) ?? []).map(Number);
+}
+
+function hasMillimetreUnit(value) {
+  return /(?<![A-Za-z])(?:mm|millimet(?:re|er)s?)\b/i.test(String(value ?? ''));
 }
 
 export function claimFromEvidenceFragment(field, label, quote, context) {
@@ -140,7 +161,7 @@ export function claimsFromExplicitDimensionSequence(fragment, context, requested
   if (!axisOrder) return [];
   const sourceValues = (valueText.match(/\d+(?:\.\d+)?/g) ?? []).map(Number);
   if (sourceValues.length !== 3 || sourceValues.some((value) => !Number.isFinite(value))) return [];
-  const units = [...`${label} ${valueText}`.matchAll(/\b(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/gi)]
+  const units = [...`${label} ${valueText}`.matchAll(/(?<![A-Za-z])(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/gi)]
     .map((match) => match[1].toLowerCase().startsWith('c') ? 'cm' : 'mm');
   if (!units.length || new Set(units).size !== 1) return [];
   const sourceUnit = units[0];
@@ -264,8 +285,8 @@ function assertLabelledRangeClaim(claim, context, rule, combined) {
     throw new TypeError('range quote does not prove adjustable height');
   }
   const unitPattern = claim.sourceUnit === 'cm'
-    ? /\b(?:cm|centimet(?:re|er)s?)\b/i
-    : /\b(?:mm|millimet(?:re|er)s?)\b/i;
+    ? /(?<![A-Za-z])(?:cm|centimet(?:re|er)s?)\b/i
+    : /(?<![A-Za-z])(?:mm|millimet(?:re|er)s?)\b/i;
   if (!unitPattern.test(combined)
     || !claim.sourceValues.every((value) => quotedNumbers(claim.quote).includes(value))) {
     throw new TypeError('range quote or unit invalid');
@@ -292,7 +313,7 @@ export function validateClaimSemantics(claim, context) {
     return true;
   }
   if (claim.unit !== 'mm' || !Number.isInteger(claim.value)) throw new TypeError(`integer millimetre claim required for ${field}`);
-  if (!/(?:\bmm\b|millimet(?:re|er)s?)/i.test(combined)) throw new TypeError(`millimetre unit missing for ${field}`);
+  if (!hasMillimetreUnit(combined)) throw new TypeError(`millimetre unit missing for ${field}`);
   if (!quotedNumbers(quote).some((value) => value === claim.value)) {
     throw new TypeError(`quoted value does not match ${field}`);
   }

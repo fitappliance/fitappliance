@@ -140,9 +140,44 @@ test('CLI parser supports recovery filters and rejects unsafe or incomplete comb
     jobIds: ['job-a'], routes: ['OFFICIAL_RECEIPT_REBUILD'], limit: 2,
     networkConcurrency: 2, mineruConcurrency: 1,
   });
+  assert.equal(parseHistoricalEvidenceRecoveryRunArgs([]).networkConcurrency, null);
+  assert.equal(parseHistoricalEvidenceRecoveryRunArgs([]).mineruConcurrency, null);
   assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs(['--resume']), /run-id.*resume/i);
   assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs(['--limit', '0']), /positive integer/i);
   assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs(['--unknown']), /unknown argument/i);
+});
+
+test('run concurrency can be reduced but cannot override audited policy maxima', async (t) => {
+  const f = await fixture();
+  t.after(() => fs.rm(f.root, { recursive: true, force: true }));
+  await assert.rejects(() => runHistoricalEvidenceRecovery({
+    input: f.inputPath, output: f.outputPath, policy: f.policyPath, queue: null,
+    storageRoot: f.root, runId: 'run-unsafe-concurrency', resume: false, dryRun: false,
+    jobIds: [], routes: [], limit: null, networkConcurrency: 3, mineruConcurrency: 1,
+  }, dependencies(f)), /network concurrency.*policy maximum/i);
+
+  let observed;
+  const deps = dependencies(f, {
+    graphRunner: async (pending, graphDependencies) => {
+      observed = {
+        network: graphDependencies.networkConcurrency,
+        perHost: graphDependencies.perHostConcurrency,
+        mineru: graphDependencies.mineruConcurrency,
+      };
+      const outcome = acceptedOutcome(pending.targets[0].targetId);
+      await graphDependencies.onTransition({
+        entity: 'target', id: outcome.targetId, state: 'completed', status: outcome.status,
+        semanticOutcomeSha256: outcome.semanticOutcomeSha256, outcome,
+      });
+      return { outcomes: [outcome] };
+    },
+  });
+  await runHistoricalEvidenceRecovery({
+    input: f.inputPath, output: f.outputPath, policy: f.policyPath, queue: null,
+    storageRoot: f.root, runId: 'run-lower-concurrency', resume: false, dryRun: false,
+    jobIds: [], routes: [], limit: null, networkConcurrency: 1, mineruConcurrency: 1,
+  }, deps);
+  assert.deepEqual(observed, { network: 1, perHost: 1, mineru: 1 });
 });
 
 test('fresh run writes one validated result and checkpoints the completed target', async (t) => {

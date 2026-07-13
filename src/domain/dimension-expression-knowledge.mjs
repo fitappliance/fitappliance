@@ -19,6 +19,7 @@ const PATTERN_DESCRIPTIONS = Object.freeze({
   ALTERNATING_AXIS_VALUE_CELLS: 'Diagram table alternating axis tokens and values, including D variants.',
   MODEL_ROW_DIMENSION_MATRIX: 'Models occupy rows and dimension axes occupy columns.',
   MODEL_COLUMN_DIMENSION_MATRIX: 'Models occupy columns and dimension axes occupy rows.',
+  DOCUMENT_SCOPED_DIMENSION_MATRIX: 'Dimension axes occupy columns but the exact model identity is elsewhere in the document.',
   LETTERED_EXPLICIT_AXIS_LIST: 'Diagram letters explicitly map to axis names and values.',
   UNLABELLED_DIMENSION_TRIPLE: 'Three values are present without a stated axis order.',
 });
@@ -112,8 +113,8 @@ function expressionScope(value) {
   const text = normalizedText(value).toLowerCase();
   if (/\b(?:pack(?:ed|aging|age|aged)?|shipping|carton|box(?:ed)?|crate)\b/.test(text)) return 'delivery_package';
   if (/\b(?:cavity|cut[ -]?out|niche|opening)\b/.test(text)) return 'cavity_opening';
-  if (/\b(?:door\s*open(?:ed)?|open(?:ed)?\s*door|lid\s*open)\b/.test(text)) return 'operation_envelope';
-  if (/\b(?:without|excluding)\s+(?:the\s+)?(?:door|handle)s?\b|\bcabinet\s+(?:width|height|depth)\b/.test(text)) {
+  if (/\b(?:doors?\s*open(?:ed)?|open(?:ed)?\s*doors?|lid\s*open)\b/.test(text)) return 'operation_envelope';
+  if (/\b(?:without|excluding)\s+(?:the\s+)?(?:door|handle)s?\b|\b(?:cabinet.*(?:width|height|depth)|(?:width|height|depth).*cabinet)\b/.test(text)) {
     return 'product_body';
   }
   if (/\b(?:clearance|air\s*space|ventilation|gap)\b/.test(text)) return 'installation_clearance';
@@ -616,6 +617,57 @@ function modelColumnMatrixObservations({ cells, pageContext, base }) {
   return observations;
 }
 
+function documentScopedMatrixObservations({ cells, pageContext, base }) {
+  const observations = [];
+  for (let headerIndex = 0; headerIndex < cells.length; headerIndex += 1) {
+    const columns = cells[headerIndex]
+      .map((value, index) => ({ index, ...matrixAxisHeader(value) }))
+      .filter((column) => column.axis);
+    const closedColumns = columns.filter((column) => column.scope === 'product_closed_candidate');
+    if (closedColumns.length !== 3
+      || new Set(closedColumns.map((column) => column.axis)).size !== 3) continue;
+    for (const row of cells.slice(headerIndex + 1)) {
+      if (exactModelsInText(row.join(' '), base.identities).length) continue;
+      if (!closedColumns.some((column) => column.index === 0)
+        && row[0] && !dimensionValue(row[0])) continue;
+      const values = closedColumns.map((column) => ({
+        ...column,
+        parsed: dimensionValue(row[column.index]),
+      }));
+      if (!values.every((value) => value.parsed)) continue;
+      const sourceLabel = values.map((value) => value.label).join(' | ');
+      const sourceValue = values.map((value) => value.parsed.value).join(' | ');
+      const { unit, unitPlacement } = unitEvidence(sourceLabel, sourceValue, pageContext);
+      if (!unit) continue;
+      observations.push(finalizeObservation(base, {
+        patternKind: 'DOCUMENT_SCOPED_DIMENSION_MATRIX',
+        sourceLabel,
+        sourceValue,
+        sourceQuote: values.map((value) => `${value.label} ${value.parsed.value}`).join(' | '),
+        axisOrder: values.map((value) => value.axis),
+        safeAxes: [],
+        unit,
+        unitPlacement,
+        scope: 'product_closed_candidate',
+        depthVariants: [],
+        axisValues: values.map((value) => ({
+          axis: value.axis,
+          label: value.label,
+          value: value.parsed.value,
+          valueShape: value.parsed.valueShape,
+          scope: value.scope,
+        })),
+        syntaxDecision: 'SUPPORTED_EXPLICIT_COLUMN_MATRIX',
+        parserDecision: 'RESEARCH_DOCUMENT_UNIQUE_SCOPE_REQUIRED',
+        semanticInterpretation: 'Axes and values are explicit; exact-model authority must be proven at document scope before parsing.',
+      }));
+      break;
+    }
+    if (observations.length) break;
+  }
+  return observations;
+}
+
 function pageDimensionContext(items) {
   return items.map(itemText).find((text) => (
     /\bdimensions?\s*\(\s*(?:mm|cm|millimet(?:re|er)s?|centimet(?:re|er)s?)\s*\)/i.test(text)
@@ -654,19 +706,22 @@ function seriesEvidence(contentList, identities, pdfSha256) {
   contentList.forEach((items, pageIndex) => {
     for (const item of items) {
       const text = itemText(item);
-      const series = /\bSeries\s+([A-Za-z]*\d[A-Za-z0-9.+-]{0,20})\b/i.exec(text);
-      if (!series) continue;
+      const seriesNames = [...String(text).matchAll(/\b(?:Series|Serie)\s+(\d{1,4}[A-Za-z]?)\b/gi)]
+        .map((match) => `Series ${match[1]}`);
+      if (!seriesNames.length) continue;
       for (const identity of identities) {
         if (!containsExactModel(text, identity.model)) continue;
-        result.push({
-          brand: identity.brand,
-          model: identity.model,
-          category: identity.category,
-          seriesName: `Series ${series[1]}`,
-          pdfSha256,
-          page: pageIndex + 1,
-          quote: text,
-        });
+        for (const seriesName of seriesNames) {
+          result.push({
+            brand: identity.brand,
+            model: identity.model,
+            category: identity.category,
+            seriesName,
+            pdfSha256,
+            page: pageIndex + 1,
+            quote: text,
+          });
+        }
       }
     }
   });
@@ -730,6 +785,7 @@ export function extractDimensionExpressions(input) {
         observations.push(...labelledObservations({ cells, pageContext, base }));
         observations.push(...modelRowMatrixObservations({ cells, pageContext, base }));
         observations.push(...modelColumnMatrixObservations({ cells, pageContext, base }));
+        observations.push(...documentScopedMatrixObservations({ cells, pageContext, base }));
       } else {
         const text = itemText(item);
         observations.push(...groupedTextObservations({ text, pageContext, base }));
@@ -815,7 +871,41 @@ function brandGroups(records, aliasMap) {
   }]));
 }
 
-function familyForDocument(document, identity, extracted) {
+function normalizedGrammarLabel(value) {
+  return normalizedText(value)
+    .toLowerCase()
+    .replace(/\b(?:millimet(?:re|er)s?|centimet(?:re|er)s?|mm|cm)\b/g, '<unit>')
+    .replace(/\d+(?:\.\d+)?/g, '<number>')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function parserProfileForDocument(extracted) {
+  if (!extracted.observations.length) return null;
+  const expressionShapes = extracted.observations.map((observation) => ({
+    patternKind: observation.patternKind,
+    syntaxDecision: observation.syntaxDecision ?? observation.parserDecision,
+    sourceLabel: normalizedGrammarLabel(observation.sourceLabel),
+    axisOrder: [...observation.axisOrder],
+    safeAxes: [...observation.safeAxes].sort(),
+    scope: observation.scope,
+    unit: observation.unit,
+    unitPlacement: observation.unitPlacement,
+    valueShapes: [...new Set((observation.axisValues ?? []).map((value) => value.valueShape))].sort(),
+    depthVariantLabels: (observation.depthVariants ?? []).map(normalizedGrammarLabel).sort(),
+  })).sort((left, right) => JSON.stringify(left).localeCompare(JSON.stringify(right)));
+  const signature = {
+    signatureVersion: 1,
+    expressionShapes,
+    researchGapTypes: [...new Set(extracted.researchGaps.map((gap) => gap.gapType))].sort(),
+  };
+  return Object.freeze({
+    parserProfileId: `pdf_grammar_${sha256(JSON.stringify(signature)).slice(0, 16)}`,
+    ...signature,
+  });
+}
+
+function familyForDocument(document, identity, extracted, parserProfile) {
   const sameIdentitySeries = extracted.seriesEvidence.filter((row) => (
     row.category === identity.category
       && row.brand.toLowerCase() === identity.brand.toLowerCase()
@@ -832,6 +922,13 @@ function familyForDocument(document, identity, extracted) {
     return {
       groupType: 'document_family',
       groupName: `Document family ${document.pdfSha256.slice(0, 12)}`,
+      seriesEvidence: [],
+    };
+  }
+  if (parserProfile) {
+    return {
+      groupType: 'parser_family',
+      groupName: `PDF grammar ${parserProfile.parserProfileId}`,
       seriesEvidence: [],
     };
   }
@@ -883,6 +980,10 @@ export function buildDimensionExpressionKnowledge(input) {
     document.pdfSha256,
     extractDimensionExpressions(document),
   ]));
+  const parserProfileByHash = new Map([...extractedByHash].map(([pdfSha256, extracted]) => [
+    pdfSha256,
+    parserProfileForDocument(extracted),
+  ]));
   const categoryRows = CATEGORIES.map((category) => {
     const categoryRecords = historicalRecords.filter((record) => record.category === category);
     const groups = brandGroups(categoryRecords, aliasMap);
@@ -903,11 +1004,12 @@ export function buildDimensionExpressionKnowledge(input) {
       const families = new Map();
       for (const document of matchedDocuments) {
         const extracted = extractedByHash.get(document.pdfSha256);
+        const parserProfile = parserProfileByHash.get(document.pdfSha256);
         const identities = document.identities.filter((identity) => (
           identity.category === category && identity.brand.toLowerCase() === brandKey
         ));
         for (const identity of identities) {
-          const family = familyForDocument(document, identity, extracted);
+          const family = familyForDocument(document, identity, extracted, parserProfile);
           const key = `${family.groupType}\0${family.groupName}`;
           const current = families.get(key) ?? {
             groupType: family.groupType,
@@ -916,6 +1018,7 @@ export function buildDimensionExpressionKnowledge(input) {
             pdfSha256s: [],
             sourceUrls: [],
             seriesEvidence: [],
+            parserProfiles: [],
             expressions: [],
             researchGaps: [],
           };
@@ -923,6 +1026,7 @@ export function buildDimensionExpressionKnowledge(input) {
           current.pdfSha256s.push(document.pdfSha256);
           current.sourceUrls.push(...document.sourceUrls);
           current.seriesEvidence.push(...family.seriesEvidence);
+          if (parserProfile) current.parserProfiles.push(parserProfile);
           current.expressions.push(...extracted.observations);
           current.researchGaps.push(...extracted.researchGaps);
           families.set(key, current);
@@ -950,6 +1054,11 @@ export function buildDimensionExpressionKnowledge(input) {
           pdfSha256s: [...new Set(family.pdfSha256s)].sort(),
           sourceUrls: [...new Set(family.sourceUrls)].sort(),
           seriesEvidence: [...new Map(family.seriesEvidence.map((row) => [JSON.stringify(row), row])).values()],
+          parserProfiles: [...new Map(family.parserProfiles.map((profile) => [
+            profile.parserProfileId,
+            profile,
+          ])).values()].sort((left, right) => left.parserProfileId.localeCompare(right.parserProfileId)),
+          parserProfileIds: [...new Set(family.parserProfiles.map((profile) => profile.parserProfileId))].sort(),
           expressionCoverageStatus,
           expressions,
           researchGaps,
@@ -958,6 +1067,7 @@ export function buildDimensionExpressionKnowledge(input) {
         left.groupType.localeCompare(right.groupType) || left.groupName.localeCompare(right.groupName)
       ));
       const marketingSeriesCount = familyRows.filter((family) => family.groupType === 'marketing_series').length;
+      const parserProfileCount = new Set(familyRows.flatMap((family) => family.parserProfileIds)).size;
       const expressionCount = familyRows.reduce((sum, family) => sum + family.expressions.length, 0);
       return {
         canonicalBrand: group.canonicalBrand,
@@ -966,6 +1076,7 @@ export function buildDimensionExpressionKnowledge(input) {
         observedMineruDocuments: matchedDocuments.length,
         observedMarketingSeriesCount: marketingSeriesCount,
         observedDocumentFamilyCount: familyRows.filter((family) => family.groupType === 'document_family').length,
+        observedParserProfileCount: parserProfileCount,
         seriesCountStatus: marketingSeriesCount ? 'PROVEN_MINIMUM_ONLY' : 'UNKNOWN',
         coverageStatus: matchedDocuments.length ? 'MINERU_SAMPLE_OBSERVED' : 'NO_MINERU_SAMPLE',
         expressionCoverageStatus: expressionCount
@@ -988,7 +1099,7 @@ export function buildDimensionExpressionKnowledge(input) {
   const documentsWithObservations = [...extractedByHash.values()].filter((row) => row.observations.length).length;
   const researchGaps = [...extractedByHash.values()].reduce((sum, row) => sum + row.researchGaps.length, 0);
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     generatedAt,
     policy: {
       categories: [...CATEGORIES],
@@ -1010,6 +1121,9 @@ export function buildDimensionExpressionKnowledge(input) {
       unmappedMineruDocuments: unmappedDocuments.length,
       observations,
       researchGaps,
+      parserProfiles: new Set([...parserProfileByHash.values()]
+        .filter(Boolean)
+        .map((profile) => profile.parserProfileId)).size,
     },
     categories: categoryRows,
     unmappedDocuments,
@@ -1067,6 +1181,7 @@ export function renderDimensionExpressionKnowledgeMarkdown(knowledge) {
     `| Mapped MinerU documents | ${knowledge.summary.mappedMineruDocuments} |`,
     `| Unmapped MinerU documents | ${knowledge.summary.unmappedMineruDocuments} |`,
     `| Dimension-expression observations | ${knowledge.summary.observations} |`,
+    `| Reusable PDF grammar profiles | ${knowledge.summary.parserProfiles} |`,
     `| Research gaps | ${knowledge.summary.researchGaps} |`,
     '',
     'A marketing-series count is a proven minimum, never an estimate of the',
@@ -1080,6 +1195,12 @@ export function renderDimensionExpressionKnowledgeMarkdown(knowledge) {
     '3. Match the observed pattern, parser decision and model-binding level. Never copy a value from the pattern into product geometry.',
     '4. Re-run exact-model source verification, MinerU hash checks and receipt generation before any claim or publication change.',
     '',
+    'A `marketing_series` exists only when official text puts an exact model and an',
+    'explicit numeric series name on the same page. A `document_family` is one',
+    'official PDF shared by multiple exact models. A `parser_family` groups repeated',
+    'PDF syntax only; it is never evidence that models share dimensions or installation',
+    'requirements.',
+    '',
     'Regenerate explicitly with:',
     '',
     '```sh',
@@ -1090,6 +1211,22 @@ export function renderDimensionExpressionKnowledgeMarkdown(knowledge) {
     '',
     'This command is intentionally outside the normal build and publication graph.',
     '',
+    '## Brand and PDF Family Index',
+    '',
+    'The series count is a proven minimum. PDF grammar profiles are syntax reuse only,',
+    'and every extracted value still requires exact-model identity and receipt checks.',
+    '',
+  ];
+  for (const category of knowledge.categories) {
+    lines.push(`### ${CATEGORY_LABELS[category.category]}`, '');
+    lines.push('| Brand | Inventory models | Indexed PDFs | Proven marketing series | PDF grammar profiles | Coverage |',
+      '| --- | ---: | ---: | ---: | ---: | --- |');
+    for (const brand of category.brands) {
+      lines.push(`| ${markdownCell(brand.canonicalBrand)} | ${brand.modelCount} | ${brand.observedMineruDocuments} | ${brand.observedMarketingSeriesCount} | ${brand.observedParserProfileCount} | \`${brand.coverageStatus}\` |`);
+    }
+    lines.push('');
+  }
+  lines.push(
     '## Observed Pattern Taxonomy',
     '',
     '| Pattern | Unique observations | Meaning |',
@@ -1109,7 +1246,7 @@ export function renderDimensionExpressionKnowledgeMarkdown(knowledge) {
     '`DOCUMENT_IDENTITY_ONLY`. `UNRESOLVED_MODEL_EXPRESSION` never authorises a',
     'model claim.',
     '',
-  ];
+  );
   for (const category of knowledge.categories) {
     lines.push(`## ${CATEGORY_LABELS[category.category]}`, '');
     lines.push(`Inventory: ${category.recordCount} models across ${category.brands.length} category-brand groups.`, '');
@@ -1119,6 +1256,7 @@ export function renderDimensionExpressionKnowledgeMarkdown(knowledge) {
       lines.push(`- Inventory models: ${brand.modelCount}`);
       lines.push(`- Coverage: \`${brand.coverageStatus}\`; MinerU documents: ${brand.observedMineruDocuments}`);
       lines.push(`- Proven marketing series: ${brand.observedMarketingSeriesCount}; total series count: \`${brand.seriesCountStatus}\``);
+      lines.push(`- PDF grammar profiles: ${brand.observedParserProfileCount}`);
       if (!brand.families.length) {
         lines.push('', '`NO_MINERU_SAMPLE`: no PDF expression may be assumed for this brand.', '');
         continue;
@@ -1129,6 +1267,10 @@ export function renderDimensionExpressionKnowledgeMarkdown(knowledge) {
         lines.push(`- Expression coverage: \`${family.expressionCoverageStatus}\``);
         lines.push(`- Models observed: ${family.models.map((value) => `\`${markdownCell(value)}\``).join(', ')}`);
         lines.push(`- PDF SHA-256: ${family.pdfSha256s.map((value) => `\`${value}\``).join(', ')}`);
+        if (family.parserProfileIds.length) {
+          lines.push(`- PDF grammar profiles: ${family.parserProfileIds.map((value) => `\`${value}\``).join(', ')}`);
+          lines.push('- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.');
+        }
         if (family.sourceUrls.length) lines.push(`- Official/source URLs: ${family.sourceUrls.map((value) => `<${value}>`).join(', ')}`);
         if (family.seriesEvidence.length) {
           lines.push(`- Series evidence: ${family.seriesEvidence.map((row) => (

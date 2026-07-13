@@ -5,6 +5,7 @@ import {
   claimFromEvidenceFragment,
   claimsFromExplicitDimensionSequence,
   containsExactModel,
+  containsExactModelDocumentUrl,
   evidenceFieldRules,
   validateClaimsSemantics,
 } from './evidence-claim-semantics.mjs';
@@ -192,19 +193,15 @@ function pdfIdentitySignals(source, caseIdentity, derivedArtifactBytes, claimSem
     caseIdentity,
     claimSemanticsVersion,
     fields: (source.claims ?? []).map((claim) => claim.field),
+    sourceUrls: [source.sourceUrl, source.finalUrl].filter(Boolean),
   });
   if (parsed.pageCount !== derived.pageCount) throw new Error('MinerU JSON page count mismatch');
   if (JSON.stringify(canonicalize(parsed.claims)) !== JSON.stringify(canonicalize(source.claims))) {
     throw new Error('source claims do not match replayed MinerU JSON claims');
   }
   const signals = [...parsed.identitySignals];
-  const exactModelUrl = [...new Set([source.sourceUrl, source.finalUrl])].find((value) => {
-    try {
-      return containsExactModel(new URL(value).pathname, caseIdentity.model);
-    } catch {
-      return false;
-    }
-  });
+  const exactModelUrl = [...new Set([source.sourceUrl, source.finalUrl])]
+    .find((value) => containsExactModelDocumentUrl(value, caseIdentity.model));
   if (exactModelUrl) signals.push({ type: 'pdf_source_url_model', value: exactModelUrl });
   return { signals, text: parsed.documentText };
 }

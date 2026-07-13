@@ -25,6 +25,7 @@
     "build:historical-evidence-recovery-queue": "node scripts/architecture-v2/build-historical-evidence-recovery-queue.mjs",
     "build:historical-evidence-recovery-batch": "node scripts/architecture-v2/build-historical-evidence-recovery-batch.mjs",
     "recover:historical-evidence": "node scripts/architecture-v2/run-historical-evidence-recovery.mjs",
+    "build:historical-evidence-brand-funnel": "node scripts/architecture-v2/build-historical-evidence-brand-funnel.mjs",
     "audit:historical-evidence-recovery": "node scripts/architecture-v2/audit-historical-evidence-recovery.mjs",
     "audit:historical-evidence-recovery:offline": "node scripts/architecture-v2/audit-historical-evidence-recovery.mjs --mode offline",
     "promote:historical-evidence-recovery": "node scripts/architecture-v2/promote-historical-evidence-recovery.mjs",

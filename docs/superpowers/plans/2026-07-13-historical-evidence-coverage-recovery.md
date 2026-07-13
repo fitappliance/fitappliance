@@ -1453,23 +1453,50 @@ an automated no-promotion test, and the full Architecture V2 suite passes
 - Modify: tests/architecture-v2/architecture-v2-resolver-adapters.test.mjs
 - Create: data/architecture-v2/reviews/automated/historical-evidence-recovery-brand-funnel.json
 
-- [ ] Migrate discovery modules only, in this order:
+- [x] Migrate discovery modules only, in this order:
   1. Fisher & Paykel, Haier, Electrolux/Westinghouse, LG, Samsung.
   2. Beko, Hisense, Miele, Liebherr, Midea, CHiQ.
   3. Artusi, Esatto, Euromaid, InAlto, Kogan, Omega, Robinhood, Sub-Zero,
      Teco and Vogue.
-- [ ] For every group, run exact-model, regional suffix, sibling model,
+- [x] For every group, run exact-model, regional suffix, sibling model,
   family-manual and retailer-output adversarial tests.
-- [ ] Record per brand: targets, discovered official candidates, fetched,
+- [x] Record per brand: targets, discovered official candidates, fetched,
   parsed, identity accepted, all-axis accepted, receipt accepted, quarantined
   by reason and official-host coverage.
-- [ ] Fix systemic failures in shared code. Keep truly brand-specific URL
+- [x] Fix systemic failures in shared code. Keep truly brand-specific URL
   construction inside the adapter.
-- [ ] Require old resolver behaviour tests before any direct resolver edit, so
+- [x] Require old resolver behaviour tests before any direct resolver edit, so
   Architecture V2 migration cannot silently reduce legacy discovery coverage.
 
 **Gate:** each adapter conforms to the same candidate contract and no legacy
 parser, merge script or vault promotion path is reachable from Architecture V2.
+
+**Execution record (2026-07-13):** All 23 migration brands now route through
+typed discovery-only adapters. Adapter adversarial tests cover exact models,
+regional suffixes, sibling models, family manuals, retailer outputs, malformed
+legacy URLs, candidate overflow and Australian provenance for global download
+hosts. The adapter boundary test proves that parser, merge, batch and vault
+modules are not imported. The focused Architecture V2 batch passed 91/91 and
+the retained official-resolver behaviour suite passed 104/104.
+
+The second 24-target real canary, `task15-brand-canaries-parser-v2-20260713`,
+completed 24/24 with 6 accepted, 0 retryable and 18 typed terminal outcomes.
+The tracked brand funnel records 23 brands, 17 targets with official candidates,
+15 official candidates fetched, 14 parsed, 9 identity-accepted targets, 7 with
+an all-axis candidate and 9 receipt-accepted targets. Safety remained fail
+closed: zero reference candidates accepted and zero accepted targets without an
+all-axis receipt. CHIQ `CBC064BG`, Midea `MDRC284FZE01APE` and Kogan
+`KAMFREN522A` moved from parser/identity failure to receipt-bound three-axis
+dimensions. LG `DVH10-10B` accepted only width and height from the shared model
+table; all three depth variants remain isolated and the target correctly ends
+`claims_incomplete`.
+
+The generated appliance dimension-expression knowledge base now inventories
+all 8,095 historical records across four categories and 358 category-brand
+groups. It accounts for 480 MinerU indexes (479 valid, one orphaned), recognises
+645 expression observations and 130 reusable syntax-only PDF grammar profiles.
+Marketing series, multi-model document families and parser families remain
+separate concepts; none authorises cross-model values or publication.
 
 ### Task 16: Scale in controlled stages and retire only proven duplicate runtime
 

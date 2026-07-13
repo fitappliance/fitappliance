@@ -130,6 +130,34 @@ test('dimension research records model matrices and image-only diagram gaps with
   assert.equal(documentBound.parserDecision, 'SUPPORTED_EXPLICIT_GROUPED');
 });
 
+test('dimension research records a later column matrix without treating document identity as row identity', () => {
+  const result = extractDimensionExpressions({
+    pdfSha256: '3'.repeat(64),
+    contentSha256: '4'.repeat(64),
+    sourceUrls: ['https://assets.kogan.com/files/usermanuals/KAMFREN522A_UG.pdf'],
+    identities: [{ brand: 'Kogan', model: 'KAMFREN522A', category: 'fridge' }],
+    contentList: [[{
+      type: 'page_footer',
+      content: { page_footer_content: [{ type: 'text', content: 'KAMFREN522A' }] },
+      bbox,
+    }], [
+      table('<table><tr><td>Width</td><td>Overall Height</td><td>Depth</td><td>Depth OnlyCabinet</td><td>Depth doorsopen 135°</td><td>Width doorsopen 135°</td></tr><tr><td>A</td><td>B</td><td>C</td><td>C1</td><td>D</td><td>E</td></tr><tr><td>750mm</td><td>1692mm</td><td>785mm</td><td>705mm</td><td>1038mm</td><td>1277mm</td></tr></table>'),
+    ]],
+  });
+
+  const matrix = result.observations.find((row) => (
+    row.patternKind === 'DOCUMENT_SCOPED_DIMENSION_MATRIX'
+  ));
+  assert.ok(matrix);
+  assert.equal(matrix.modelBinding, 'SAME_DOCUMENT_EXACT_MODEL');
+  assert.equal(matrix.syntaxDecision, 'SUPPORTED_EXPLICIT_COLUMN_MATRIX');
+  assert.equal(matrix.parserDecision, 'RESEARCH_DOCUMENT_UNIQUE_SCOPE_REQUIRED');
+  assert.deepEqual(matrix.axisOrder, ['width', 'height', 'depth']);
+  assert.deepEqual(matrix.safeAxes, []);
+  assert.match(matrix.sourceQuote, /Width 750mm/);
+  assert.doesNotMatch(matrix.sourceQuote, /cabinet|doors?open/i);
+});
+
 test('dimension syntax remains research-only when the PDF never states the mapped exact model', () => {
   const result = extractDimensionExpressions({
     pdfSha256: '5'.repeat(64),
@@ -285,6 +313,73 @@ test('knowledge base inventories every category and brand without inventing seri
   assert.match(markdown, /ORPHANED_SOURCE_PDF/);
   assert.match(markdown, /WHE6874BA/);
   assert.match(markdown, /NO_RECOGNIZED_DIMENSION_EXPRESSION/);
+});
+
+test('knowledge base groups repeated brand PDF grammars without pretending they are marketing series', () => {
+  const historicalRecords = [
+    { category: 'fridge', brand: 'CHIQ', model: 'CBC064BG' },
+    { category: 'fridge', brand: 'CHIQ', model: 'CBC094BG' },
+  ];
+  const documents = [
+    {
+      pdfSha256: 'a'.repeat(64), contentSha256: 'b'.repeat(64),
+      sourceUrls: ['https://chiq.com.au/cdn/shop/files/CBC064BG_SPEC.pdf'],
+      identities: [{ brand: 'CHIQ', model: 'CBC064BG', category: 'fridge' }],
+      contentList: [[
+        paragraph('CBC064BG Bar Fridge'),
+        paragraph('WIDTH 470mm'),
+        paragraph('HEIGHT 635mm'),
+        paragraph('DEPTH 439mm'),
+      ]],
+    },
+    {
+      pdfSha256: 'c'.repeat(64), contentSha256: 'd'.repeat(64),
+      sourceUrls: ['https://chiq.com.au/cdn/shop/files/CBC094BG_SPEC.pdf'],
+      identities: [{ brand: 'CHIQ', model: 'CBC094BG', category: 'fridge' }],
+      contentList: [[
+        paragraph('CBC094BG Bar Fridge'),
+        paragraph('DEPTH 439mm'),
+        paragraph('WIDTH 474mm'),
+        paragraph('HEIGHT 833mm'),
+      ]],
+    },
+  ];
+
+  const knowledge = buildDimensionExpressionKnowledge({
+    generatedAt: '2026-07-13T16:30:00.000Z',
+    historicalRecords,
+    documents,
+  });
+  const brand = knowledge.categories.find((row) => row.category === 'fridge').brands[0];
+
+  assert.equal(brand.observedMarketingSeriesCount, 0);
+  assert.equal(brand.observedParserProfileCount, 1);
+  assert.equal(brand.families.length, 1);
+  assert.equal(brand.families[0].groupType, 'parser_family');
+  assert.match(brand.families[0].groupName, /^PDF grammar pdf_grammar_[a-f0-9]{16}$/);
+  assert.deepEqual(brand.families[0].models, ['CBC064BG', 'CBC094BG']);
+  assert.equal(brand.families[0].parserProfileIds.length, 1);
+  assert.match(brand.families[0].parserProfileIds[0], /^pdf_grammar_[a-f0-9]{16}$/);
+
+  const markdown = renderDimensionExpressionKnowledgeMarkdown(knowledge);
+  assert.match(markdown, /## Brand and PDF Family Index/);
+  assert.match(markdown, /PDF grammar profiles/);
+  assert.match(markdown, /syntax reuse only/i);
+});
+
+test('marketing series evidence accepts explicit numeric series but rejects model-shaped series text', () => {
+  const result = extractDimensionExpressions({
+    pdfSha256: 'e'.repeat(64),
+    contentSha256: 'f'.repeat(64),
+    contentList: [[
+      paragraph('Haier Series 5 HWF75AN1'),
+      paragraph('Product Dimensions (W x D x H) 595 x 600 x 850 mm'),
+      paragraph('Series HWFS7514S HWF75AN1'),
+    ]],
+    identities: [{ brand: 'Haier', model: 'HWF75AN1', category: 'washing_machine' }],
+  });
+
+  assert.deepEqual(result.seriesEvidence.map((row) => row.seriesName), ['Series 5']);
 });
 
 test('MinerU loader quarantines a missing source PDF but rejects derived-content corruption', async (context) => {

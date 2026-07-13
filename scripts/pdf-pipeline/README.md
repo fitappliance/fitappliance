@@ -39,6 +39,19 @@ verification receipt. Apply these rules:
 - If a number is ambiguous, leave it unknown and quarantine the candidate.
   Never infer a missing dimension from nearby text.
 
+Before adding or widening a brand parser, consult
+[`docs/architecture-v2/appliance-dimension-expression-knowledge-base.md`](../../docs/architecture-v2/appliance-dimension-expression-knowledge-base.md).
+It inventories the four supported appliance categories, every catalog brand,
+officially proven marketing series, shared-document families, repeated PDF
+grammar profiles, axis order, safe axes and fail-closed decisions. The matching
+JSON sidecar is
+[`data/architecture-v2/generated/dimension-expression-observations.json`](../../data/architecture-v2/generated/dimension-expression-observations.json).
+
+The knowledge base permits syntax reuse only. It cannot establish that two
+models share dimensions, resolve a suffix alias, or authorise a public claim.
+Every new PDF still needs exact-model source verification, immutable PDF and
+MinerU hashes, page/fragment provenance and a verification receipt.
+
 Required environment:
 
 ```text

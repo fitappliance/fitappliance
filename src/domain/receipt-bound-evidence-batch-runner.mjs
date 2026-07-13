@@ -189,11 +189,13 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
     const key = job.jobId;
     if (artifactPromises.has(key)) return artifactPromises.get(key);
     const promise = (async () => {
-      await emit({ entity: 'artifact', id: key, state: 'running', artifactJob: structuredClone(job) });
       try {
-        const artifact = await networkSemaphore.run(job.sourceUrl, () => acquireArtifact(structuredClone(job), {
-          withMineru: (task) => mineruSemaphore.run(task),
-        }));
+        const artifact = await networkSemaphore.run(job.sourceUrl, async () => {
+          await emit({ entity: 'artifact', id: key, state: 'running', artifactJob: structuredClone(job) });
+          return acquireArtifact(structuredClone(job), {
+            withMineru: (task) => mineruSemaphore.run(task),
+          });
+        });
         if (!artifact || typeof artifact !== 'object') throw new TypeError('artifact acquisition returned no artifact');
         const state = { status: 'available', failureCode: null, reason: null, artifact };
         artifactStates.set(key, state);
@@ -230,6 +232,15 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
         ? await dependencies.candidateResolversForTarget(structuredClone(target))
         : [];
       if (!Array.isArray(extraResolvers)) throw new TypeError('candidateResolversForTarget must return an array');
+      const resolverHost = String(target.brand ?? 'unknown')
+        .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'unknown';
+      const networkBoundResolvers = extraResolvers.map((resolver) => ({
+        ...resolver,
+        resolve: (resolverCase) => networkSemaphore.run(
+          `https://${resolverHost}.resolver.fitappliance.invalid/`,
+          () => resolver.resolve(resolverCase),
+        ),
+      }));
       const caseRecord = {
         id: target.targetId,
         targetId: target.targetId,
@@ -291,7 +302,7 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
       inventory = await collectCandidates(caseRecord, {
         batchCandidateJobIds: target.candidateJobIds,
         activeReceiptSources,
-        resolvers: [batchResolver(linkedJobs), ...extraResolvers],
+        resolvers: [batchResolver(linkedJobs), ...networkBoundResolvers],
         acquireAndAttest,
         resolverTimeoutMs: dependencies.resolverTimeoutMs,
       });

@@ -269,3 +269,71 @@ test('progress callbacks receive immutable transition deltas rather than growing
   assert.ok(transitions.some((delta) => delta.entity === 'artifact' && delta.state === 'available'));
   assert.ok(transitions.some((delta) => delta.entity === 'target' && delta.state === 'completed'));
 });
+
+test('queued artifacts do not claim running state before a network slot is acquired', async () => {
+  const jobs = [
+    job('a'.repeat(32), 'https://one.example.com/a.pdf', ['target-a']),
+    job('b'.repeat(32), 'https://two.example.com/b.pdf', ['target-b']),
+  ];
+  const input = batch({
+    jobs,
+    targets: [target('target-a', 'EX100', [jobs[0].jobId]), target('target-b', 'EX200', [jobs[1].jobId])],
+  });
+  const transitions = [];
+  let releaseFirst;
+  const firstBlocked = new Promise((resolve) => { releaseFirst = resolve; });
+  let acquisitions = 0;
+  const run = runReceiptBoundEvidenceBatch(input, dependencies({
+    networkSemaphore: createNetworkSemaphore(1, 1),
+    onTransition: async (delta) => transitions.push(delta),
+    acquireArtifact: async (artifactJob) => {
+      acquisitions += 1;
+      if (acquisitions === 1) await firstBlocked;
+      return { jobId: artifactJob.jobId, sourceUrl: artifactJob.sourceUrl, contentSha256: 'c'.repeat(64) };
+    },
+  }));
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 5));
+    assert.equal(transitions.filter((delta) => delta.entity === 'artifact' && delta.state === 'running').length, 1);
+  } finally {
+    releaseFirst();
+  }
+  const result = await run;
+  assert.equal(result.summary.accounted, 2);
+});
+
+test('network-backed resolvers share the same global concurrency budget', async () => {
+  const jobs = [
+    job('a'.repeat(32), 'https://one.example.com/a.pdf', ['target-a']),
+    job('b'.repeat(32), 'https://two.example.com/b.pdf', ['target-b']),
+  ];
+  const input = batch({
+    jobs,
+    targets: [target('target-a', 'EX100', [jobs[0].jobId]), target('target-b', 'EX200', [jobs[1].jobId])],
+  });
+  let active = 0;
+  let maximum = 0;
+  const result = await runReceiptBoundEvidenceBatch(input, dependencies({
+    networkSemaphore: createNetworkSemaphore(1, 1),
+    candidateResolversForTarget: (targetRecord) => [{
+      resolverId: `network-resolver-${targetRecord.targetId}`,
+      version: '1',
+      scope: 'network_fixture',
+      required: true,
+      async resolve() {
+        active += 1;
+        maximum = Math.max(maximum, active);
+        await new Promise((resolve) => setTimeout(resolve, 5));
+        active -= 1;
+        return {
+          resolverId: `network-resolver-${targetRecord.targetId}`,
+          version: '1', scope: 'network_fixture', required: true,
+          completion: 'complete', candidates: [], failures: [],
+        };
+      },
+    }],
+  }));
+
+  assert.equal(result.summary.accounted, 2);
+  assert.equal(maximum, 1);
+});

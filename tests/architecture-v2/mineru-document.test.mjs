@@ -36,6 +36,33 @@ const hisenseTable = `<table>
   <tr><td>Dimensions (Net) (W X H X D)</td><td>914 x 1790 x 730 mm</td></tr>
 </table>`;
 
+function paragraph(content, bbox = [80, 120, 760, 180]) {
+  return {
+    type: 'paragraph',
+    content: { paragraph_content: [{ type: 'text', content }] },
+    bbox,
+  };
+}
+
+function pageHeader(content) {
+  return {
+    type: 'page_header',
+    content: { page_header_content: [{ type: 'text', content }] },
+    bbox: [40, 30, 700, 70],
+  };
+}
+
+function tableFragment(html) {
+  return {
+    type: 'table',
+    content: {
+      table_caption: [], table_footnote: [], html,
+      table_type: 'simple_table', table_nest_level: 1,
+    },
+    bbox: [80, 220, 900, 760],
+  };
+}
+
 test('MinerU content_list_v2 maps explicit grouped axes without using numeric heuristics', () => {
   const bytes = mineruJson(hisenseTable);
   const parsed = parseMineruContentListV2(bytes, {
@@ -67,6 +94,52 @@ test('MinerU content_list_v2 maps explicit grouped axes without using numeric he
   assert.deepEqual(parsed.identitySignals.map((signal) => signal.type).sort(), [
     'mineru_table_model', 'mineru_title_model',
   ]);
+});
+
+test('MinerU accepts exact-model same-page labelled axes with compact mm units', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    paragraph('CBC064BG', [80, 80, 300, 120]),
+    paragraph('WIDTH 470mm', [80, 140, 300, 180]),
+    paragraph('HEIGHT 635mm', [80, 190, 300, 230]),
+    paragraph('DEPTH 439mm', [80, 240, 300, 280]),
+  ]]));
+
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'CHIQ', model: 'CBC064BG', category: 'fridge' },
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    claimSemanticsVersion: 2,
+  });
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 470 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 635 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 439 },
+  });
+});
+
+test('MinerU maps Midea W x D x H product rows with compact units and rejects package rows', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [pageHeader('MDRC284FZE01APE 198L Chest Freezer | Hybrid | White')],
+    [
+      pageHeader('MDRC284FZE01APE 198L Chest Freezer | Hybrid | White'),
+      tableFragment('<table><tr><td>Package Dimensions W x D x H</td><td>797 x 578 x 888mm</td></tr><tr><td>Product Dimensions W x D x H</td><td>770 x 560 x 850mm</td></tr></table>'),
+    ],
+  ]));
+
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Midea', model: 'MDRC284FZE01APE', category: 'fridge' },
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    claimSemanticsVersion: 2,
+  });
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 770 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 850 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 560 },
+  });
+  assert.ok(parsed.claims.every((claim) => !/package/i.test(claim.label)));
 });
 
 test('MinerU preserves single-cell specification rows and maps explicit per-side clearances', () => {
@@ -493,6 +566,82 @@ test('MinerU scopes a separate dimension table to an exact Model row on the same
   ]);
   assert.ok(parsed.claims.every((claim) => claim.page === 1));
   assert.ok(parsed.claims.every((claim) => /\(mm\)/i.test(claim.sourceLabel)));
+});
+
+test('MinerU scopes shared dimensions to a strict same-page sibling model list and keeps ambiguous depth blocked', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    tableFragment('<table><tr><td>Description</td><td>Value</td></tr><tr><td>Model</td><td>DVH10-10B / DVH10-10W / DVH9-10B / DVH5-10G</td></tr></table>'),
+    paragraph('Dimension(mm)', [80, 180, 300, 210]),
+    tableFragment('<table><tr><td>W</td><td>600</td><td>D</td><td>690</td><td>D&quot;</td><td>1115</td></tr><tr><td>H</td><td>850</td><td>D&#x27;</td><td>615</td><td></td><td></td></tr></table>'),
+  ]]));
+
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'LG', model: 'DVH10-10B', category: 'dryer' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(parsed.claims.map((claim) => [claim.field, claim.value]), [
+    ['closedEnvelope.widthMm', { kind: 'fixed', mm: 600 }],
+    ['closedEnvelope.heightMm', { kind: 'fixed', mm: 850 }],
+  ]);
+});
+
+test('MinerU does not carry sibling model-list scope to dimensions on another page', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [tableFragment('<table><tr><td>Model</td><td>DVH10-10B / DVH10-10W</td></tr></table>')],
+    [
+      paragraph('Dimension(mm)', [80, 180, 300, 210]),
+      tableFragment('<table><tr><td>W</td><td>600</td><td>H</td><td>850</td></tr></table>'),
+    ],
+  ]));
+
+  assert.throws(() => parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'LG', model: 'DVH10-10B', category: 'dryer' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm'],
+  }), /unresolved family|no exact-model MinerU evidence/i);
+});
+
+test('MinerU binds a later dimension matrix to a unique cover identity and exact-model source URL', () => {
+  const dimensionTable = tableFragment('<table><tr><td>Width</td><td>Overall Height</td><td>Depth</td><td>Cabinet Depth</td><td>Depth doors open 135°</td><td>Width doors open 135°</td></tr><tr><td>A</td><td>B</td><td>C</td><td>C1</td><td>D</td><td>E</td></tr><tr><td>750mm</td><td>1692mm</td><td>785mm</td><td>705mm</td><td>1038mm</td><td>1277mm</td></tr></table>');
+  const bytes = Buffer.from(JSON.stringify([
+    [{
+      type: 'page_footer',
+      content: { page_footer_content: [{ type: 'text', content: 'KAMFREN522A' }] },
+      bbox: [40, 930, 300, 960],
+    }],
+    [dimensionTable],
+  ]));
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Kogan', model: 'KAMFREN522A', category: 'fridge' },
+    sourceUrls: ['https://assets.kogan.com/files/usermanuals/KAMFREN522A_UG.pdf'],
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  };
+
+  const parsed = parseMineruContentListV2(bytes, options);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 750 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 1692 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 785 },
+  });
+  assert.ok(parsed.claims.every((claim) => !/cabinet|doors open/i.test(claim.sourceLabel)));
+
+  assert.throws(() => parseMineruContentListV2(bytes, { ...options, sourceUrls: [] }), /exact-model|identity|scope/i);
+  assert.throws(() => parseMineruContentListV2(bytes, {
+    ...options,
+    sourceUrls: ['https://assets.kogan.com/files/usermanuals/KAMFREN522AUS_UG.pdf'],
+  }), /exact-model|identity|scope/i);
+
+  const siblingBytes = Buffer.from(JSON.stringify([
+    JSON.parse(bytes.toString('utf8'))[0],
+    [paragraph('Also applies to KAMFREN522B'), dimensionTable],
+  ]));
+  assert.throws(() => parseMineruContentListV2(siblingBytes, options), /exact-model|family|multiple models|scope/i);
 });
 
 test('MinerU parses alternating W H D cells only with explicit same-page unit context', () => {

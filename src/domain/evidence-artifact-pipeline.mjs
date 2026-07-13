@@ -264,6 +264,7 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
       caseIdentity: identity,
       fields: requestedFields,
       claimSemanticsVersion,
+      sourceUrls: [artifact.requestedUrl, artifact.finalUrl].filter(Boolean),
     }).claims;
   } else if (artifact.contentType === 'text/html') {
     const extracted = extractClaimsFromHtml(artifact.bytes, {
