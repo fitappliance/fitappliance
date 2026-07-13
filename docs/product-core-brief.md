@@ -1,7 +1,7 @@
 # FitAppliance Product Core Brief
 
 Status: canonical product memory
-Last verified: 2026-07-12
+Last verified: 2026-07-13
 Product: [fitappliance.com.au](https://www.fitappliance.com.au)
 Repository: `/Users/clawdbot_jz/Documents/Claude/Projects/Fitmyappliance/v2`
 
@@ -721,6 +721,50 @@ Refresh and rollback:
 - rollback by reverting the reference, publication manifest, four public files,
   meta file and audit as one commit, then redeploying that exact commit. Immutable
   source snapshots remain available for replay.
+
+### 9.4 Coverage-recovery implementation checkpoint (2026-07-13)
+
+The resumable Architecture V2 recovery path is implemented and verified on the
+release branch. These are branch/release-candidate facts, not a claim that the
+live website has already deployed the changes:
+
+- the queue contains 1,556 content-deduplicated jobs and 1,591 exact target
+  nodes: 23 direct official rebuilds, 254 official-host validations, 56
+  official-source discovery jobs and 1,223 retailer-mirror rediscovery jobs;
+- the direct resolver migration exercised 23 brands and 24 targets. The full
+  official-host route accounted for 288 targets with 89 accepted and 199 typed
+  terminal outcomes; full replay checked 180 raw PDF/MinerU objects with zero
+  violations;
+- all 62 targets in the three official-discovery groups have outcomes: 10
+  accepted, nine retryable and 43 typed terminal. A batch containing retryable
+  discovery remains non-promotable;
+- a final Westinghouse release subset accounted for 12 targets: 10 exact-model
+  three-axis receipts, two identity rejections and zero retryable outcomes. Its
+  full online audit replayed 24 objects with zero violations;
+- promotion increased the cumulative acceptance bundle from two to 12 entries.
+  All 10 new entries are `CATALOG_ARCHIVED`, so the current public catalogue
+  projection remained byte-stable;
+- after the required external-snapshot rebuild, the 8,095-record historical
+  reference contains 12 `MODEL_RECEIPT` records and 23 `AUTO_FILL` records,
+  compared with two and 13 before the release candidate. Registry-consistent
+  confirmation rows fell from 4,940 to 4,930 and quarantines remained 90;
+- the current Fit publication audit reports 3,521 products, 22 receipt-bound
+  dimension products, zero receipt-bound `VERIFIED_FIT` products and zero
+  violations. Historical replacement remains a separate direct W/H/D contract;
+- the permanent dimension-expression corpus now accounts for 480 MinerU
+  indexes, 479 valid source bindings, 645 hash/page/fragment-bound observations,
+  606 typed research gaps and 130 syntax-only grammar profiles across all four
+  categories and 358 category-brand groups;
+- retailer mirror scale remains disabled. The reviewed policy has
+  `scaleAllowed: false`, so only the bounded discovery canary ran and none of
+  the 1,223 mirror jobs was launched;
+- Esatto and Euromaid current official web ownership requires a new source-policy
+  epoch and fresh receipts. Existing authority policy is intentionally not
+  widened in place.
+
+Operational commands, staged outcomes, resume rules, release ordering and
+rollback are canonical in
+[Historical Evidence Recovery Runbook](architecture-v2/historical-evidence-recovery-runbook.md).
 
 ## 10. Success Metrics
 

@@ -51,6 +51,7 @@ export function parseHistoricalEvidenceRecoveryRunArgs(argv) {
     runId: null,
     resume: false,
     dryRun: false,
+    requireSelection: true,
     jobIds: [],
     routes: [],
     limit: null,
@@ -65,6 +66,8 @@ export function parseHistoricalEvidenceRecoveryRunArgs(argv) {
     ['--limit', 'limit'], ['--network-concurrency', 'networkConcurrency'],
     ['--mineru-concurrency', 'mineruConcurrency'],
   ]);
+  let allowAll = false;
+  let explicitRequireSelection = false;
   for (let index = 0; index < argv.length; index += 1) {
     const raw = argv[index];
     const separator = raw.indexOf('=');
@@ -72,6 +75,16 @@ export function parseHistoricalEvidenceRecoveryRunArgs(argv) {
     let value = separator === -1 ? null : raw.slice(separator + 1);
     if (flag === '--resume') { result.resume = true; continue; }
     if (flag === '--dry-run') { result.dryRun = true; continue; }
+    if (flag === '--require-selection') {
+      explicitRequireSelection = true;
+      result.requireSelection = true;
+      continue;
+    }
+    if (flag === '--allow-all') {
+      allowAll = true;
+      result.requireSelection = false;
+      continue;
+    }
     if (textFlags.has(flag)) {
       value ??= argv[++index];
       result[textFlags.get(flag)] = requiredText(value, flag);
@@ -91,8 +104,46 @@ export function parseHistoricalEvidenceRecoveryRunArgs(argv) {
   }
   result.jobIds = [...new Set(result.jobIds)].sort();
   result.routes = [...new Set(result.routes)].sort();
+  const hasSelection = result.jobIds.length || result.routes.length || result.limit !== null;
+  if (allowAll && explicitRequireSelection) {
+    throw new TypeError('--allow-all cannot be combined with --require-selection');
+  }
   if (result.resume && !result.runId) throw new TypeError('--run-id is required with --resume');
+  if (result.runId && !/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(result.runId)) {
+    throw new TypeError('run ID must be a safe path segment');
+  }
+  if (result.resume && allowAll) {
+    throw new TypeError('--resume cannot be combined with --allow-all');
+  }
+  if (result.requireSelection && !hasSelection && (!result.resume || explicitRequireSelection)) {
+    throw new TypeError('at least one job, route or limit selection is required');
+  }
+  if (allowAll && hasSelection) {
+    throw new TypeError('--allow-all cannot be combined with a job, route or limit selection');
+  }
   return result;
+}
+
+function hasExplicitSelection(options) {
+  return options.jobIds.length > 0 || options.routes.length > 0 || options.limit !== null;
+}
+
+export function resolveHistoricalEvidenceRecoveryIoPaths(options, settings = {}) {
+  const repoRootPath = resolve(settings.repoRootPath ?? repoRoot);
+  let runDirectory = null;
+  if (options.resume) {
+    const storageRoot = resolve(requiredText(settings.storageRoot, 'storage root'));
+    runDirectory = resolve(storageRoot, 'runs/historical-evidence-recovery', options.runId);
+  }
+  const usePersistedBatch = options.resume && !options.input && !hasExplicitSelection(options);
+  return {
+    input: resolve(options.input ?? (usePersistedBatch
+      ? resolve(runDirectory, 'batch.json')
+      : resolve(repoRootPath, 'data/architecture-v2/reviews/automated/historical-evidence-recovery-batch.json'))),
+    output: resolve(options.output ?? (options.resume
+      ? resolve(runDirectory, 'results.json')
+      : resolve(repoRootPath, 'data/architecture-v2/reviews/automated/historical-evidence-recovery-results.json'))),
+  };
 }
 
 function effectiveConcurrency(options, policy) {
@@ -434,20 +485,20 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
 
 async function main(argv) {
   const parsed = parseHistoricalEvidenceRecoveryRunArgs(argv);
+  const storageRoot = process.env.FITAPPLIANCE_STORAGE_ROOT;
+  const { input, output } = resolveHistoricalEvidenceRecoveryIoPaths(parsed, { storageRoot });
   const controller = new AbortController();
   const interrupt = () => controller.abort();
   process.once('SIGINT', interrupt);
   process.once('SIGTERM', interrupt);
   try {
-    const input = resolve(parsed.input ?? resolve(repoRoot, 'data/architecture-v2/reviews/automated/historical-evidence-recovery-batch.json'));
-    const output = resolve(parsed.output ?? resolve(repoRoot, 'data/architecture-v2/reviews/automated/historical-evidence-recovery-results.json'));
     const result = await runHistoricalEvidenceRecovery({
       ...parsed,
       input,
       output,
       policy: resolve(repoRoot, 'data/architecture-v2/policies/historical-evidence-recovery-policy.json'),
       queue: resolve(repoRoot, 'data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json'),
-      storageRoot: process.env.FITAPPLIANCE_STORAGE_ROOT,
+      storageRoot,
     }, { signal: controller.signal });
     process.stdout.write(`${JSON.stringify(result.dryRun ? result : result.summary, null, 2)}\n`);
   } finally {

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// Deprecated research CLI. Use run-historical-evidence-recovery.mjs for receipt-bound work.
 require('dotenv').config({ quiet: true });
 
 const fs = require('node:fs');

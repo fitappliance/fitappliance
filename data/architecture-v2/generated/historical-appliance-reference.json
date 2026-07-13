@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "9a592582d4bc13ea5d66e5a365c3d5f22b957079166e7a52954b694762e388dc"
+    "historical-recovery:historical-recovery-cumulative-v1": "187f2a4a76bde0fd24d7f0b7fcc76336ad2fcad2545697bc0a0b34703e609bbb"
   },
   "records": [
     {
@@ -244029,11 +244029,11 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
-        "width": 555,
-        "height": 850,
+        "width": 560,
+        "height": 845,
         "depth": 575
       },
       "sources": [
@@ -244048,6 +244048,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_b0a55962088d434197a25c0b",
+          "snapshotSha256": "5b63a45d72f8a8b0789205016238cbd6d743f1561c20ea661e3fd342cb068485",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -244055,8 +244062,33 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_b0a55962088d434197a25c0b",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WFM0900WD&brand=Westinghouse",
+          "contentSha256": "5b63a45d72f8a8b0789205016238cbd6d743f1561c20ea661e3fd342cb068485",
+          "receiptBindingSha256": "44dbcc4c1780d774983118fbdc4950caea142760a0ec7f70179c489a972a265a",
+          "verifiedAt": "2026-07-13T20:28:22.610Z",
+          "fields": {
+            "width": {
+              "page": 3,
+              "fragmentSha256": "f5ba121d55e0ec491d41347b92eadd827056538d0791841eccf7b7fa34b4519a"
+            },
+            "height": {
+              "page": 3,
+              "fragmentSha256": "f5ba121d55e0ec491d41347b92eadd827056538d0791841eccf7b7fa34b4519a"
+            },
+            "depth": {
+              "page": 3,
+              "fragmentSha256": "f5ba121d55e0ec491d41347b92eadd827056538d0791841eccf7b7fa34b4519a"
+            }
+          }
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -244546,12 +244578,12 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 896,
         "height": 1725,
-        "depth": 781
+        "depth": 730
       },
       "sources": [
         {
@@ -244565,6 +244597,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_2bc3b654d7d4212807266557",
+          "snapshotSha256": "8d7aca3b15fe84af02c545c6de7317d03adb99afd8bcaa035711ebfa08e00ecd",
+          "sourceLines": [
+            7
+          ]
         }
       ],
       "catalogProductIds": [
@@ -244572,8 +244611,33 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_2bc3b654d7d4212807266557",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5600SD&brand=Westinghouse",
+          "contentSha256": "8d7aca3b15fe84af02c545c6de7317d03adb99afd8bcaa035711ebfa08e00ecd",
+          "receiptBindingSha256": "4340d36c81acc1ddcd84e55f03bfb7eeccd006734f7c8c406dffc626ab136ad6",
+          "verifiedAt": "2026-07-13T20:28:18.511Z",
+          "fields": {
+            "width": {
+              "page": 7,
+              "fragmentSha256": "c32efc28a6ce2f75c63fbb5ba5db9996b07e5bb048f3d11e64e80069038bff37"
+            },
+            "height": {
+              "page": 7,
+              "fragmentSha256": "c32efc28a6ce2f75c63fbb5ba5db9996b07e5bb048f3d11e64e80069038bff37"
+            },
+            "depth": {
+              "page": 7,
+              "fragmentSha256": "c32efc28a6ce2f75c63fbb5ba5db9996b07e5bb048f3d11e64e80069038bff37"
+            }
+          }
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -244594,12 +244658,12 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 896,
         "height": 1725,
-        "depth": 781
+        "depth": 730
       },
       "sources": [
         {
@@ -244613,6 +244677,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_75c476b2807483e6b13d1a5a",
+          "snapshotSha256": "36ad2fa97f1890466cc82241b5695a2ff6cfa385d05963da95764015fe99a6fc",
+          "sourceLines": [
+            7
+          ]
         }
       ],
       "catalogProductIds": [
@@ -244620,8 +244691,33 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_75c476b2807483e6b13d1a5a",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5650SD&brand=Westinghouse",
+          "contentSha256": "36ad2fa97f1890466cc82241b5695a2ff6cfa385d05963da95764015fe99a6fc",
+          "receiptBindingSha256": "9537194cd31acef3e5f71309e378a36a0cbbbc684e14bc5b21fe87683b6c93b3",
+          "verifiedAt": "2026-07-13T20:28:20.832Z",
+          "fields": {
+            "width": {
+              "page": 7,
+              "fragmentSha256": "c32efc28a6ce2f75c63fbb5ba5db9996b07e5bb048f3d11e64e80069038bff37"
+            },
+            "height": {
+              "page": 7,
+              "fragmentSha256": "c32efc28a6ce2f75c63fbb5ba5db9996b07e5bb048f3d11e64e80069038bff37"
+            },
+            "depth": {
+              "page": 7,
+              "fragmentSha256": "c32efc28a6ce2f75c63fbb5ba5db9996b07e5bb048f3d11e64e80069038bff37"
+            }
+          }
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -248247,11 +248343,11 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
-        "width": 555,
-        "height": 850,
+        "width": 560,
+        "height": 845,
         "depth": 575
       },
       "sources": [
@@ -248266,6 +248362,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_cf7271d6f05da49811955422",
+          "snapshotSha256": "79bf89513b6c3b302ce50ffd3e7a85eaf23219791954e200d1e20112a66f4676",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -248273,8 +248376,33 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_cf7271d6f05da49811955422",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WRM1400WD&brand=Westinghouse",
+          "contentSha256": "79bf89513b6c3b302ce50ffd3e7a85eaf23219791954e200d1e20112a66f4676",
+          "receiptBindingSha256": "a13279978b563a8efabffb173c16a9c5ee6e888e09c4e1fb7f393bff1230a6b6",
+          "verifiedAt": "2026-07-13T20:28:23.135Z",
+          "fields": {
+            "width": {
+              "page": 3,
+              "fragmentSha256": "cfd6581d0b50375d2c709a9103954a038f5ca3e537e714b39dde84dd09da35c1"
+            },
+            "height": {
+              "page": 3,
+              "fragmentSha256": "cfd6581d0b50375d2c709a9103954a038f5ca3e537e714b39dde84dd09da35c1"
+            },
+            "depth": {
+              "page": 3,
+              "fragmentSha256": "cfd6581d0b50375d2c709a9103954a038f5ca3e537e714b39dde84dd09da35c1"
+            }
+          }
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -248343,12 +248471,12 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 550,
         "height": 1434,
-        "depth": 542
+        "depth": 545
       },
       "sources": [
         {
@@ -248362,6 +248490,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_5fe768a59d31bf5568dfe5a1",
+          "snapshotSha256": "8af15671e2dd1ffb6232dc224e3fb83176a785fb41259cd780ff4f6a79444e45",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -248369,8 +248504,33 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_5fe768a59d31bf5568dfe5a1",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WRM2400WF&brand=Westinghouse",
+          "contentSha256": "8af15671e2dd1ffb6232dc224e3fb83176a785fb41259cd780ff4f6a79444e45",
+          "receiptBindingSha256": "19991efb61f60893fc4939dd2832856e75a04ab57ef92c7644beee542a903319",
+          "verifiedAt": "2026-07-13T20:28:20.223Z",
+          "fields": {
+            "width": {
+              "page": 3,
+              "fragmentSha256": "4bcd71e12ff181b8b9d0923352a508cc6a0500c1085f00b83ce8b17e151560ff"
+            },
+            "height": {
+              "page": 3,
+              "fragmentSha256": "4bcd71e12ff181b8b9d0923352a508cc6a0500c1085f00b83ce8b17e151560ff"
+            },
+            "depth": {
+              "page": 3,
+              "fragmentSha256": "4bcd71e12ff181b8b9d0923352a508cc6a0500c1085f00b83ce8b17e151560ff"
+            }
+          }
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -251544,8 +251704,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 598,
         "height": 1646,
@@ -251563,6 +251723,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_4fce123d116933f253653b5f",
+          "snapshotSha256": "7fe483659b04dbb1f77a958bb33a3f4cbc29ad7b8b54e0deb19c688a3cae1678",
+          "sourceLines": [
+            7
+          ]
         }
       ],
       "catalogProductIds": [
@@ -251570,8 +251737,31 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_4fce123d116933f253653b5f",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTM3100SL&brand=Westinghouse",
+          "contentSha256": "7fe483659b04dbb1f77a958bb33a3f4cbc29ad7b8b54e0deb19c688a3cae1678",
+          "receiptBindingSha256": "fe8222e7c811e92c45af52a29917bbb0e320100b6a819644e881cd7614697343",
+          "verifiedAt": "2026-07-13T20:28:19.702Z",
+          "fields": {
+            "width": {
+              "page": 7,
+              "fragmentSha256": "4743df21619b4ec8fad6881b134720efb0e0fd17effe91509cb249fafb7b6086"
+            },
+            "height": {
+              "page": 7,
+              "fragmentSha256": "4743df21619b4ec8fad6881b134720efb0e0fd17effe91509cb249fafb7b6086"
+            },
+            "depth": {
+              "page": 7,
+              "fragmentSha256": "4743df21619b4ec8fad6881b134720efb0e0fd17effe91509cb249fafb7b6086"
+            }
+          }
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -251629,8 +251819,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 598,
         "height": 1756,
@@ -251648,6 +251838,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_eb58b54c30decadc6bf2560d",
+          "snapshotSha256": "707d4dbcd83123653259473119cfa91ff5c931c65f89a244d0b4fe7cf8d2e5d4",
+          "sourceLines": [
+            7
+          ]
         }
       ],
       "catalogProductIds": [
@@ -251655,8 +251852,31 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_eb58b54c30decadc6bf2560d",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTM3400WL&brand=Westinghouse",
+          "contentSha256": "707d4dbcd83123653259473119cfa91ff5c931c65f89a244d0b4fe7cf8d2e5d4",
+          "receiptBindingSha256": "09ddf29e3e8b52f830bcd1efe3d8c192c57937626b5ce37d1b84192d93d3eceb",
+          "verifiedAt": "2026-07-13T20:28:24.255Z",
+          "fields": {
+            "width": {
+              "page": 7,
+              "fragmentSha256": "4743df21619b4ec8fad6881b134720efb0e0fd17effe91509cb249fafb7b6086"
+            },
+            "height": {
+              "page": 7,
+              "fragmentSha256": "4743df21619b4ec8fad6881b134720efb0e0fd17effe91509cb249fafb7b6086"
+            },
+            "depth": {
+              "page": 7,
+              "fragmentSha256": "4743df21619b4ec8fad6881b134720efb0e0fd17effe91509cb249fafb7b6086"
+            }
+          }
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -251751,8 +251971,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 699,
         "height": 1725,
@@ -251770,6 +251990,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3097a18fb1c5c4a423983776",
+          "snapshotSha256": "43817058a246dbcd95462338253be90a3317bd4032ecb0a42879056e04a13057",
+          "sourceLines": [
+            4
+          ]
         }
       ],
       "catalogProductIds": [
@@ -251777,8 +252004,31 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_3097a18fb1c5c4a423983776",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTM4302WD&brand=Westinghouse",
+          "contentSha256": "43817058a246dbcd95462338253be90a3317bd4032ecb0a42879056e04a13057",
+          "receiptBindingSha256": "8f2a4dd6840ebb681b9d29f6d9c8b572978d5aac42bc76b892ec16e75a40d594",
+          "verifiedAt": "2026-07-13T20:28:19.087Z",
+          "fields": {
+            "width": {
+              "page": 4,
+              "fragmentSha256": "4f69416826583c4f0d0fcb6895776129499a9c75da5f57f8511a31ad046fa2ed"
+            },
+            "height": {
+              "page": 4,
+              "fragmentSha256": "4f69416826583c4f0d0fcb6895776129499a9c75da5f57f8511a31ad046fa2ed"
+            },
+            "depth": {
+              "page": 4,
+              "fragmentSha256": "4f69416826583c4f0d0fcb6895776129499a9c75da5f57f8511a31ad046fa2ed"
+            }
+          }
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -251873,8 +252123,8 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 796,
         "height": 1725,
@@ -251892,6 +252142,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_edd226bcb74d71af0d877575",
+          "snapshotSha256": "eb2bfa767ba6a8beb8bb3b1dee84d69a6996934b8b584074a956c23668b72a42",
+          "sourceLines": [
+            7
+          ]
         }
       ],
       "catalogProductIds": [
@@ -251899,8 +252156,31 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_edd226bcb74d71af0d877575",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTM5002SD&brand=Westinghouse",
+          "contentSha256": "eb2bfa767ba6a8beb8bb3b1dee84d69a6996934b8b584074a956c23668b72a42",
+          "receiptBindingSha256": "89ad8f7e312e159a2fcb0c153857f4c93306da93a492308f39f29666729d19a6",
+          "verifiedAt": "2026-07-13T20:28:24.966Z",
+          "fields": {
+            "width": {
+              "page": 7,
+              "fragmentSha256": "2124822329d0ba23b7705f6b0b23ad097e99578825fb2d00de3cb6a046494a1a"
+            },
+            "height": {
+              "page": 7,
+              "fragmentSha256": "2124822329d0ba23b7705f6b0b23ad097e99578825fb2d00de3cb6a046494a1a"
+            },
+            "depth": {
+              "page": 7,
+              "fragmentSha256": "2124822329d0ba23b7705f6b0b23ad097e99578825fb2d00de3cb6a046494a1a"
+            }
+          }
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -251995,12 +252275,12 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 796,
         "height": 1725,
-        "depth": 723
+        "depth": 727
       },
       "sources": [
         {
@@ -252014,6 +252294,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_ab7d82289ce015c7c3e55a50",
+          "snapshotSha256": "56b407cd1a481c606bf5726fe9760ce40706abe884fad0eadf8cb87a52df37d6",
+          "sourceLines": [
+            6
+          ]
         }
       ],
       "catalogProductIds": [
@@ -252021,8 +252308,33 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_ab7d82289ce015c7c3e55a50",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTM5002WE&brand=Westinghouse",
+          "contentSha256": "56b407cd1a481c606bf5726fe9760ce40706abe884fad0eadf8cb87a52df37d6",
+          "receiptBindingSha256": "cf9155ad4c024ef9c260d97ae5c5cb7581b6321c31ce662b6da89e6f373ab505",
+          "verifiedAt": "2026-07-13T20:28:22.116Z",
+          "fields": {
+            "width": {
+              "page": 6,
+              "fragmentSha256": "62672a39c5f013a5fa3ce56e0b8b082b793c231f59ba6f388eeb46536e2ab0d8"
+            },
+            "height": {
+              "page": 6,
+              "fragmentSha256": "62672a39c5f013a5fa3ce56e0b8b082b793c231f59ba6f388eeb46536e2ab0d8"
+            },
+            "depth": {
+              "page": 6,
+              "fragmentSha256": "62672a39c5f013a5fa3ce56e0b8b082b793c231f59ba6f388eeb46536e2ab0d8"
+            }
+          }
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -311374,18 +311686,18 @@
       "CURRENT_RETAIL": 1384
     },
     "byEvidence": {
-      "REGISTRY_CONSISTENT": 4940,
+      "REGISTRY_CONSISTENT": 4930,
       "IDENTITY_ONLY": 3052,
       "INTERNAL_CONFLICT": 71,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11,
-      "MODEL_RECEIPT": 2
+      "MODEL_RECEIPT": 12
     },
     "byLookupAction": {
-      "CONFIRM_REQUIRED": 4940,
+      "CONFIRM_REQUIRED": 4930,
       "MEASURE_REQUIRED": 3052,
       "QUARANTINED": 90,
-      "AUTO_FILL": 13
+      "AUTO_FILL": 23
     }
   }
 }

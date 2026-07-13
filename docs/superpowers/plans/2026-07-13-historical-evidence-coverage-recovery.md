@@ -1315,18 +1315,20 @@ document evidence.
 **Execution record (2026-07-13):** The deterministic corpus accounts for all
 8,095 historical records and all 358 category-brand groups: 4,336 fridges
 across 116 brands, 1,419 dishwashers across 91 brands, 1,497 washing machines
-across 83 brands and 843 dryers across 68 brands. It audits all 82 MinerU
-indexes: 81 are source-valid, one is explicitly `ORPHANED_SOURCE_PDF`, 69 map
-to a catalog identity and 12 remain unmapped. Sixty-five valid documents
-contain recognised expressions, producing 157 hash/page/fragment-bound
-observations and 53 typed research gaps. Explicit identity scope is enforced:
+across 83 brands and 843 dryers across 68 brands. After the bounded brand
+batches it audits all 480 MinerU indexes: 479 are source-valid, one is
+explicitly `ORPHANED_SOURCE_PDF`, 467 map to a catalog identity and 12 remain
+unmapped. Two hundred and forty-eight valid documents contain recognised
+expressions, producing 645 hash/page/fragment-bound observations, 606 typed
+research gaps and 130 reusable syntax-only grammar profiles. Explicit identity
+scope is enforced:
 document-only and unresolved family/model-row bindings are research-only,
 adjustable ranges remain ranges, package/cabinet scopes are rejected, and
 ambiguous `D`, `D'`, `D"` variants cannot publish closed depth. Repeated builds
 with the same inputs and timestamp produce the same JSON SHA-256
-`dea4834fe754d44b3bea14f226eb072086c8d9c743aad7f07f1050a6ef92d789`
+`0916d0d0a5bdb406782f2aa6541a959ce1d28400a4d39bffd287e863f22e4349`
 and Markdown SHA-256
-`01081dd64eb5481b814018a390d02789b3a6ecd2bd94a128c3f45eae2eb753c4`.
+`ef1fc70711816742e1c0502ad65c38e2e36d2a80ed13077dd26065fd79a8ba34`.
 The generator is an explicit research command outside the build/publication
 graph. Eight focused knowledge-base tests and all 457 Architecture V2 tests
 pass.
@@ -1507,26 +1509,27 @@ separate concepts; none authorises cross-model values or publication.
 - Modify: `docs/product-core-brief.md` only for final measured outcomes
 - Modify/Delete: obsolete old pipeline entry points only after parity proof
 
-- [ ] Execute in stages: one direct official canary, all 23 direct official,
+- [x] Execute in stages: one direct official canary, all 23 direct official,
   official-host canaries, all 254 official-host, discovery-required jobs by
-  brand, then mirror rediscovery in bounded batches. Never launch all 1,556 at
-  once.
-- [ ] At each stage require zero unsafe promotion, 100% outcome accounting,
+  brand, then evaluate mirror rediscovery at its mandatory policy gate. Never
+  launch all 1,556 at once; do not launch the 1,223 mirror jobs while
+  `scaleAllowed` is false.
+- [x] At each stage require zero unsafe promotion, 100% outcome accounting,
   deterministic replay and no unresolved object/receipt references.
-- [ ] Write operational commands, resume procedure, lock recovery, failure
+- [x] Write operational commands, resume procedure, lock recovery, failure
   taxonomy, storage checks, audit/promotion flow and rollback in the runbook.
-- [ ] Treat the reviewed git commit containing cumulative bundle, public
+- [x] Treat the reviewed git commit containing cumulative bundle, public
   projection, historical reference and publication manifest as the release
   transaction boundary. Deploy none of those generated files from an
   uncommitted partial rebuild.
-- [ ] Record pre-release bundle/public/historical hashes. Rollback reverts that
+- [x] Record pre-release bundle/public/historical hashes. Rollback reverts that
   release commit, rebuilds/deploys the previous tracked artifacts and leaves
   immutable external evidence objects intact for diagnosis.
-- [ ] Mark old discovery entry points deprecated once adapters reach parity.
+- [x] Mark old discovery entry points deprecated once adapters reach parity.
   Delete old parsers/merge/vault runtime only after CodeGraph and `rg` prove no
   production or Architecture V2 caller remains and regression fixtures are
   retained.
-- [ ] Run final gates:
+- [x] Run final gates:
 
 ```bash
 npm test
@@ -1539,8 +1542,44 @@ git diff --check
   Run the Task 11 recovery-audit command immediately before this final command
   block.
 
-- [ ] Run one final evidence-focused code review and one real-runtime audit of
+- [x] Run one final evidence-focused code review and one real-runtime audit of
   raw PDF, MinerU JSON, receipt, public projection and historical output.
+
+**Execution record (2026-07-13):** Controlled scale completed without an
+all-queue launch. The official-host route accounted for 288 targets (89
+accepted, 199 typed terminal) and replayed 180 immutable objects with zero
+violations. Three brand-bounded discovery groups accounted for all 62 selected
+targets: 10 accepted, nine retryable and 43 terminal. The retryable groups were
+not promotable. A 12-target Westinghouse release subset contained 10 accepted
+exact-model receipts, zero retryable outcomes and two identity rejections; its
+full online audit replayed 24 objects with zero violations. Mirror scale stopped
+at the required `scaleAllowed: false` gate, so none of 1,223 reference jobs ran.
+
+Explicit promotion grew the cumulative bundle from two to 12 entries. The 10
+new entries are `CATALOG_ARCHIVED`; the current public projection SHA-256 stayed
+`ba699ce0c63b28e5bffa5268b00276918f6eb62ab3fb4f0752c839630aea9047`.
+The rebuilt 8,095-record historical reference now has 12 `MODEL_RECEIPT`, 23
+`AUTO_FILL`, 4,930 `REGISTRY_CONSISTENT` and 90 quarantined records. The
+replacement audit has zero issues, and the Fit publication audit reports 22
+receipt-bound dimension products, zero receipt-bound `VERIFIED_FIT` and zero
+violations.
+
+The final review found that the fresh-run selection guard also made resume
+depend on retyping the original filters. The CLI now makes fresh runs
+selection-required but resolves `--resume --run-id` from the immutable run-local
+`batch.json`; `resume + allow-all`, unsafe run IDs and explicit selection mode
+without filters fail closed. Legacy parsers, merge and vault were not deleted:
+repository import analysis proves the `*-official.js` finder exports are still
+used by Architecture V2 adapters. Their standalone write-capable CLIs are
+deprecated and cannot issue receipts.
+
+The real-runtime chain for current model `WD8560F1` was opened from external
+storage: the two-page `%PDF-` object and MinerU `content_list_v2` JSON matched
+their content hashes; the JSON contained exact model scope and W/H/D
+`600/850/645 mm`; receipt, public projection and historical `MODEL_RECEIPT`
+matched those values. Installation/service fields remained unknown and
+`verifiedFitEligible` remained false. These are release-candidate artifacts;
+this task did not deploy them to the live site.
 
 **Gate:** the canonical workflow is the only supported path from discovery to
 publication, normal deployment is external-drive independent, and old runtime

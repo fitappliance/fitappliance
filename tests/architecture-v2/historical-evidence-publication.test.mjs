@@ -150,3 +150,30 @@ test('committed publication keeps current and archived canaries in their intende
   assert.equal(archivedReference.lifecycleState, 'CATALOG_ARCHIVED');
   assert.equal(archivedReference.evidenceState, 'MODEL_RECEIPT');
 });
+
+test('committed historical reference contains every cumulative recovery receipt', () => {
+  const publicCatalog = JSON.parse(readFileSync(new URL(
+    '../../data/architecture-v2/generated/public-catalog-projection.json', import.meta.url,
+  ), 'utf8'));
+  const historicalReference = JSON.parse(readFileSync(new URL(
+    '../../data/architecture-v2/generated/historical-appliance-reference.json', import.meta.url,
+  ), 'utf8'));
+  const historicalById = new Map(historicalReference.records.map((record) => [record.referenceId, record]));
+
+  for (const entry of bundle.entries) {
+    const expectedDimensions = scalarHistoricalDimensions(entry.geometryProjection);
+    const historical = historicalById.get(entry.referenceId);
+    assert.ok(historical, `missing historical reference ${entry.referenceId}`);
+    assert.equal(historical.evidenceState, 'MODEL_RECEIPT');
+    assert.equal(historical.lookupAction, 'AUTO_FILL');
+    assert.deepEqual(historical.dimensionsMm, expectedDimensions);
+    assert.ok(historical.modelReceipts.some((receipt) => receipt.targetId === entry.targetId));
+
+    const current = publicCatalog.products.find((product) => product.id === entry.legacyRuntimeId);
+    if (entry.lifecycleState === 'CURRENT_RETAIL') {
+      assert.equal(current?.evidence?.acceptance?.id, entry.targetId);
+    } else {
+      assert.equal(current?.evidence?.acceptance, undefined);
+    }
+  }
+});

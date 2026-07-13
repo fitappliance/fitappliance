@@ -365,9 +365,6 @@ function identitySignals(document, model) {
       if (item.type === 'page_header') {
         signals.push({ type: 'mineru_page_header_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
       }
-      if (item.type === 'page_footer') {
-        signals.push({ type: 'mineru_page_footer_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
-      }
     }
   });
   const unique = new Map(signals.map((signal) => [`${signal.type}\0${signal.value}`, signal]));
@@ -605,6 +602,16 @@ function uniqueCoverIdentityScope(document, model, sourceUrls) {
   );
 }
 
+function uniqueCoverFallbackSignals(document, model) {
+  return (document.pages[0] ?? [])
+    .filter((item) => item.type === 'page_footer' && containsExplicitModelExpression(item.text, model))
+    .map((item) => ({
+      type: 'mineru_page_footer_model',
+      value: `${model}:page:1:${item.fragmentSha256}`,
+    }))
+    .sort((left, right) => left.value.localeCompare(right.value));
+}
+
 function documentScopedDimensionMatrixRows(fragment) {
   const shape = matrixDimensionShape(fragment);
   if (!shape) return [];
@@ -646,14 +653,17 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     throw new TypeError('case identity and requested fields required');
   }
   const document = parseDocument(jsonBytes);
-  const signals = identitySignals(document, model);
-  if (!signals.length) {
-    throw new Error('structured exact model identity signal required in MinerU JSON');
-  }
   const unresolvedFamily = claimSemanticsVersion === 2 && unresolvedFamilyScope(document, model);
   const documentUniqueScope = claimSemanticsVersion === 2
     && !unresolvedFamily
     && uniqueCoverIdentityScope(document, model, options.sourceUrls);
+  let signals = identitySignals(document, model);
+  if (!signals.length && documentUniqueScope) {
+    signals = uniqueCoverFallbackSignals(document, model);
+  }
+  if (!signals.length) {
+    throw new Error('structured exact-model identity signal required in MinerU JSON');
+  }
   const candidates = new Map(fields.map((field) => [field, []]));
   const sharedModelListPages = new Set();
   document.pages.forEach((items, pageIndex) => {

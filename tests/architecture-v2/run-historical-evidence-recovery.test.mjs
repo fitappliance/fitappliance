@@ -8,6 +8,7 @@ import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recove
 
 import {
   parseHistoricalEvidenceRecoveryRunArgs,
+  resolveHistoricalEvidenceRecoveryIoPaths,
   runHistoricalEvidenceRecovery,
 } from '../../scripts/architecture-v2/run-historical-evidence-recovery.mjs';
 
@@ -133,18 +134,56 @@ function dependencies(fixtureState, overrides = {}) {
 test('CLI parser supports recovery filters and rejects unsafe or incomplete combinations', () => {
   assert.deepEqual(parseHistoricalEvidenceRecoveryRunArgs([
     '--input', 'in.json', '--output=out.json', '--run-id', 'run-1', '--resume',
+    '--require-selection',
     '--job-id', 'job-a', '--route=OFFICIAL_RECEIPT_REBUILD', '--limit', '2',
     '--network-concurrency', '2', '--mineru-concurrency=1',
   ]), {
     input: 'in.json', output: 'out.json', runId: 'run-1', resume: true, dryRun: false,
+    requireSelection: true,
     jobIds: ['job-a'], routes: ['OFFICIAL_RECEIPT_REBUILD'], limit: 2,
     networkConcurrency: 2, mineruConcurrency: 1,
   });
-  assert.equal(parseHistoricalEvidenceRecoveryRunArgs([]).networkConcurrency, null);
-  assert.equal(parseHistoricalEvidenceRecoveryRunArgs([]).mineruConcurrency, null);
+  assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs([]), /selection.*required/i);
+  const allowAll = parseHistoricalEvidenceRecoveryRunArgs(['--allow-all']);
+  assert.equal(allowAll.networkConcurrency, null);
+  assert.equal(allowAll.mineruConcurrency, null);
+  assert.equal(allowAll.requireSelection, false);
+  assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs([
+    '--allow-all', '--limit', '1',
+  ]), /allow-all.*selection/i);
+  assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs([
+    '--allow-all', '--require-selection', '--limit', '1',
+  ]), /allow-all.*require-selection/i);
+  assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs(['--require-selection']), /selection.*required/i);
+  assert.equal(parseHistoricalEvidenceRecoveryRunArgs([
+    '--require-selection', '--route', 'OFFICIAL_SOURCE_DISCOVERY_REQUIRED',
+  ]).requireSelection, true);
+  const resume = parseHistoricalEvidenceRecoveryRunArgs(['--resume', '--run-id', 'run-1']);
+  assert.equal(resume.resume, true);
+  assert.equal(resume.runId, 'run-1');
+  assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs([
+    '--resume', '--run-id', 'run-1', '--allow-all',
+  ]), /resume.*allow-all/i);
+  assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs([
+    '--resume', '--run-id', 'run-1', '--require-selection',
+  ]), /selection.*required/i);
+  assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs([
+    '--resume', '--run-id', '../escape',
+  ]), /run ID.*safe/i);
   assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs(['--resume']), /run-id.*resume/i);
   assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs(['--limit', '0']), /positive integer/i);
   assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs(['--unknown']), /unknown argument/i);
+});
+
+test('resume without repeated filters uses the immutable run batch and run-local results path', () => {
+  const parsed = parseHistoricalEvidenceRecoveryRunArgs(['--resume', '--run-id', 'run-1']);
+  assert.deepEqual(resolveHistoricalEvidenceRecoveryIoPaths(parsed, {
+    storageRoot: '/evidence-root',
+    repoRootPath: '/repo',
+  }), {
+    input: '/evidence-root/runs/historical-evidence-recovery/run-1/batch.json',
+    output: '/evidence-root/runs/historical-evidence-recovery/run-1/results.json',
+  });
 });
 
 test('run concurrency can be reduced but cannot override audited policy maxima', async (t) => {

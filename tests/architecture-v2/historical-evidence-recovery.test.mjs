@@ -233,10 +233,11 @@ test('normal Architecture V2 build does not generate the next recovery epoch que
 });
 
 test('committed queue remains the prior epoch while the next epoch is deterministic and excludes promoted targets', async () => {
-  const [sourceRegistry, historicalReference, committedQueue] = await Promise.all([
+  const [sourceRegistry, historicalReference, committedQueue, acceptanceBundle] = await Promise.all([
     readFile('data/architecture-v2/generated/source-documents.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/generated/historical-appliance-reference.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json', 'utf8').then(JSON.parse),
+    readFile('data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json', 'utf8').then(JSON.parse),
   ]);
   const rebuilt = buildHistoricalEvidenceRecoveryQueue({
     sourceDocuments: sourceRegistry.documents,
@@ -253,7 +254,16 @@ test('committed queue remains the prior epoch while the next epoch is determinis
     assert.ok(committedQueue.targets.some((target) => target.model === promotedModel));
     assert.equal(rebuilt.targets.some((target) => target.model === promotedModel), false);
   }
-  assert.equal(rebuilt.summary.targets, committedQueue.summary.targets - 2);
+  const promotedTargetIds = new Set(acceptanceBundle.entries.map((entry) => entry.targetId));
+  const committedPromotedTargets = committedQueue.targets.filter((target) => promotedTargetIds.has(target.targetId));
+  assert.equal(committedPromotedTargets.length, acceptanceBundle.entries.length);
+  assert.ok(committedPromotedTargets.every((target) => (
+    rebuilt.targets.every((nextTarget) => nextTarget.targetId !== target.targetId)
+  )));
+  assert.equal(
+    rebuilt.summary.targets,
+    committedQueue.summary.targets - committedPromotedTargets.length,
+  );
   assert.ok(committedQueue.summary.fetchJobs > 1_500);
   assert.ok(committedQueue.summary.uniqueReferences > 1_500);
   assert.equal(new Set(committedQueue.jobs.map((job) => job.sourceUrl)).size, committedQueue.jobs.length);

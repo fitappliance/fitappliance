@@ -1,5 +1,12 @@
 # PDF evidence pipeline
 
+> **Legacy research compatibility only.** The supported production workflow is
+> [`docs/architecture-v2/historical-evidence-recovery-runbook.md`](../../docs/architecture-v2/historical-evidence-recovery-runbook.md).
+> The numbered pipeline, brand text parsers, fuzzy merge and vault cannot issue
+> Architecture V2 receipts or publish data. Brand `*-official.js` finders remain
+> in use through discovery-only Architecture V2 adapters and must not be removed
+> until native resolver parity is proven.
+
 This directory contains the Phase 53 foundation for turning manufacturer PDF manuals into reviewable catalog patches.
 
 The pipeline is deliberately staged so future product-data work can stop at any point for human review:

@@ -644,6 +644,32 @@ test('MinerU binds a later dimension matrix to a unique cover identity and exact
   assert.throws(() => parseMineruContentListV2(siblingBytes, options), /exact-model|family|multiple models|scope/i);
 });
 
+test('page footer identity does not change receipts that already have structured model scope', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: 'EX100' }] },
+      bbox: [40, 40, 300, 80],
+    },
+    {
+      type: 'page_footer',
+      content: { page_footer_content: [{ type: 'text', content: 'EX100' }] },
+      bbox: [40, 930, 300, 960],
+    },
+    tableFragment('<table><tr><td>Model</td><td>EX100</td></tr><tr><td>Width</td><td>600 mm</td></tr><tr><td>Height</td><td>850 mm</td></tr><tr><td>Depth</td><td>650 mm</td></tr></table>'),
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Example', model: 'EX100', category: 'washing_machine' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(parsed.identitySignals.map((signal) => signal.type), [
+    'mineru_table_model',
+    'mineru_title_model',
+  ]);
+});
+
 test('MinerU parses alternating W H D cells only with explicit same-page unit context', () => {
   const bytes = Buffer.from(JSON.stringify([[
     {
