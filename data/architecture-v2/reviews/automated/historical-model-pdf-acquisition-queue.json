@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T15:08:33.574Z",
-  "semanticQueueSha256": "870c229c8d31a9b68c9e27a20d295ac0e5a437459983589553410d4d8880cbcf",
-  "sourceClassificationSha256": "80967cd090b304da34f20096daab47c00a1558121e094bf79e60f14f5356943f",
+  "generatedAt": "2026-07-15T15:42:43.575Z",
+  "semanticQueueSha256": "aa965e7c5920b7a5d164457509bbb94433af3357f444b19c5c2b929718d87f24",
+  "sourceClassificationSha256": "44f7be155b7fc65e6d7f98823977dd301d60ae9ea1b70d7b3a19ae2791deb16e",
   "records": [
     {
       "schemaVersion": 1,
@@ -4331,38 +4331,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_795c603d2cd33b841684714a"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_a9a3d4e791af2aec1cba4f2c",
-      "referenceId": "fa_ref_6e3ab48cc2e552dd15c677d7",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DD60SDFTX9",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "document_family",
-      "groupName": "Document family 1bcc673af605",
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "route": "OFFICIAL_REACQUIRE",
-      "executionReadiness": "BOUNDED_READY",
-      "candidateSourceIds": [
-        "historical_source_03c27c7a1584af192089200a",
-        "historical_source_5a87dd1c3a57931e9b52ce16"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_3146139b61d431d29ec7660c"
-      ],
-      "legacyRuntimeIds": [
-        "ao-64075"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_9c9c1cc5f44db3199c5fb5fa"
       ],
       "offlineReplayOutcome": null
     },
@@ -64795,37 +64763,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_b2e94f55d9dfa0ff81afae1b"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_515513ede0c0ab67c671e46b",
-      "referenceId": "fa_ref_2d841f8e4e80ac45fa831c0a",
-      "category": "fridge",
-      "brand": "KELVINATOR",
-      "model": "KTM4602WC",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "priority": "P1_CATALOG_ARCHIVED",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_b56ff9ab0cbbc9f2",
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "route": "OFFICIAL_REACQUIRE",
-      "executionReadiness": "BOUNDED_READY",
-      "candidateSourceIds": [
-        "historical_source_cfc8d5934ffb58d803b27d81"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_60202a48217e401665940a77"
-      ],
-      "legacyRuntimeIds": [
-        "fridge-arf2538"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_9b2648b6c70f53e6baa4915c"
       ],
       "offlineReplayOutcome": null
     },
@@ -147552,31 +147489,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_02bc93a095cbb413c795edb3",
-      "referenceId": "fa_ref_ca02b87777a1005e23ed3329",
-      "category": "fridge",
-      "brand": "KELVINATOR",
-      "model": "KTM5402WC",
-      "lifecycleState": "REGISTRY_ONLY",
-      "priority": "P2_REGISTRY_ONLY",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_b56ff9ab0cbbc9f2",
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "route": "OFFICIAL_REACQUIRE",
-      "executionReadiness": "BOUNDED_READY",
-      "candidateSourceIds": [
-        "historical_source_c3bb85ca8e71f41236b2b211"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [],
-      "canonicalProductIds": [],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_0e06281ea10a8cf2400d9bce",
       "referenceId": "fa_ref_41c79fcb37936d7af8f69b3b",
       "category": "fridge",
@@ -197232,19 +197144,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_03c27c7a1584af192089200a",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw83e4ad94/QRG/AU/QRG-AU-82324.pdf",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/DD60SDFTX9.json",
-        "source:doc_68663660383ad758542f6374"
-      ],
-      "referenceIds": [
-        "fa_ref_6e3ab48cc2e552dd15c677d7"
-      ]
-    },
-    {
       "sourceId": "historical_source_03e018749dd2ea103251622c",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/1/9/8/9/198977e1ba06b915e95c58f81e0124ce3060d400_HWT70AW1_Haier_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -204526,18 +204425,6 @@
       ],
       "referenceIds": [
         "fa_ref_22e11fc4d39d816cf4b7c45c"
-      ]
-    },
-    {
-      "sourceId": "historical_source_5a87dd1c3a57931e9b52ce16",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/5/c/f/6/5cf6275182c0b4f652e523cbc1f5b73c8805d50c_DD60SDFTX9_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "source:doc_c1806a2c7d5186991ff80a0d"
-      ],
-      "referenceIds": [
-        "fa_ref_6e3ab48cc2e552dd15c677d7"
       ]
     },
     {
@@ -213551,18 +213438,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_c3bb85ca8e71f41236b2b211",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402WC&brand=Kelvinator",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/KTM5402WC.json"
-      ],
-      "referenceIds": [
-        "fa_ref_ca02b87777a1005e23ed3329"
-      ]
-    },
-    {
       "sourceId": "historical_source_c3c4024c3168506c6f846de7",
       "sourceUrl": "https://dtc-aus-api.hisense.com/medias/manual-HRCD585BWB-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODAxMTF8YXBwbGljYXRpb24vcGRmfGFERTJMMmd6T0M4NE56azRPRGswT0RFM016RXdMMGhTUTBRMU9EVkNWMEl0VTNCbFl5NXdaR1l8MmRjNzM4M2FjNWE3NmU0NDU0OTg5MzVmZjQ0M2ZhMWZiM2VjNmQ5ZGNkZjAwNjViMjQzNTQyMzRkZmZlNzZjOA",
       "sourceAuthority": "NONE",
@@ -214538,19 +214413,6 @@
       ],
       "referenceIds": [
         "fa_ref_03090ce90f88b22e30f56d72"
-      ]
-    },
-    {
-      "sourceId": "historical_source_cfc8d5934ffb58d803b27d81",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602WC&brand=Kelvinator",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/KTM4602WC.json",
-        "source:doc_d37dcb1131e40e1389185ba8"
-      ],
-      "referenceIds": [
-        "fa_ref_2d841f8e4e80ac45fa831c0a"
       ]
     },
     {
@@ -218244,49 +218106,49 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 127,
+    "COMPLETE_RECEIPT": 130,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7968,
-    "uniqueReferences": 7968,
-    "candidateSources": 1631,
-    "candidateEdges": 1666,
+    "queuedModels": 7965,
+    "uniqueReferences": 7965,
+    "candidateSources": 1627,
+    "candidateEdges": 1662,
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 2113,
-      "CURRENT_RETAIL": 1291,
-      "REGISTRY_ONLY": 4564
+      "CATALOG_ARCHIVED": 2112,
+      "CURRENT_RETAIL": 1290,
+      "REGISTRY_ONLY": 4563
     },
     "byCategory": {
-      "dishwasher": 1378,
+      "dishwasher": 1377,
       "dryer": 820,
-      "fridge": 4293,
+      "fridge": 4291,
       "washing_machine": 1477
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 193,
       "OFFICIAL_DISCOVERY": 6426,
-      "OFFICIAL_REACQUIRE": 12,
+      "OFFICIAL_REACQUIRE": 9,
       "REFERENCE_REDISCOVERY": 1254
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 193,
       "OFFICIAL_DISCOVERY": 6426,
-      "OFFICIAL_REACQUIRE": 12,
+      "OFFICIAL_REACQUIRE": 9,
       "OFFICIAL_REDISCOVERY": 1254
     },
     "byExecutionReadiness": {
-      "BOUNDED_READY": 12,
+      "BOUNDED_READY": 9,
       "DISCOVERY_READY": 4598,
       "RESEARCH_REQUIRED": 276,
       "RESOLVER_GAP": 3082
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 127,
+      "COMPLETE_RECEIPT": 130,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

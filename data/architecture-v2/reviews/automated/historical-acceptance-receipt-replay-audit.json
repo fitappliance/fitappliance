@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T15:07:24.863Z",
-  "sourceBundleSha256": "ca41cfbbbc281bf60acbd9801060a2bb648f1d5ce3ff407fb5c37fe2f6e2c8ff",
+  "generatedAt": "2026-07-15T15:54:21.287Z",
+  "sourceBundleSha256": "1234a5655d8eab56b82ac73a796076be02a3dcda69a76d89b98a672dd6466211",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -168,6 +168,20 @@
       "contentSha256": "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716",
       "receiptBindingSha256": "c99995281dee9dbc669bb62bc6ddfca9927b91677d791562eb990a26c92e0142",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/d2/46/d246bfe7788897191dcd02dbdef8972061b318b0a2c34654e7bb68abfc2ed644.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_1ade4a1d7a54467759bc7b41",
+      "referenceId": "fa_ref_ca02b87777a1005e23ed3329",
+      "brand": "KELVINATOR",
+      "model": "KTM5402WC",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402WC&brand=Kelvinator",
+      "sourcePdfSha256": "9b653d7288f7f61ca01fe9724acf77c6308b38697d665d09d3eb01b5f825aed1",
+      "contentSha256": "9b653d7288f7f61ca01fe9724acf77c6308b38697d665d09d3eb01b5f825aed1",
+      "receiptBindingSha256": "04f11831f4db2cdff93a689b743729023681d061c55c18012578f00f1386ffb9",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/2f/f7/2ff70406b1e91618cc9722b417d050048b6d1ac950e80e028ca260454489d341.json",
       "status": "passed",
       "failureCode": null
     },
@@ -406,6 +420,34 @@
       "contentSha256": "43817058a246dbcd95462338253be90a3317bd4032ecb0a42879056e04a13057",
       "receiptBindingSha256": "8f2a4dd6840ebb681b9d29f6d9c8b572978d5aac42bc76b892ec16e75a40d594",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/d5/56/d55605809e32fe19d31c6e211b31d53c61833a9ced0dc2f5b5aaac01307622ad.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_3146139b61d431d29ec7660c",
+      "referenceId": "fa_ref_6e3ab48cc2e552dd15c677d7",
+      "brand": "Fisher & Paykel",
+      "model": "DD60SDFTX9",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.fisherpaykel.com/au/dishwashing/built-under/series-9-contemporary-tall-single-dishdrawer-dishwasher-dd60sdftx9-82324.html",
+      "sourcePdfSha256": null,
+      "contentSha256": "81ca961c66235da2f62304a19d7240a683ce1a5b93d99c30719d37231c77ee7d",
+      "receiptBindingSha256": "db065b7fd3729ed892d5b26aecb30e17ff02722e6b20033f77727b05be0352bb",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_3146139b61d431d29ec7660c",
+      "referenceId": "fa_ref_6e3ab48cc2e552dd15c677d7",
+      "brand": "Fisher & Paykel",
+      "model": "DD60SDFTX9",
+      "category": "dishwasher",
+      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw69ec9bcd/QRG/AU/QRG-AU-82324.pdf",
+      "sourcePdfSha256": "a90f546ff2c939478af35c17ddd4aea86be45531d3efdb82e0ea0e12b41c0103",
+      "contentSha256": "a90f546ff2c939478af35c17ddd4aea86be45531d3efdb82e0ea0e12b41c0103",
+      "receiptBindingSha256": "19ce0b8fa13b6e88c6caa2bf774b8ef696b50e70359602afc9a719222c5fa4c9",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/0f/b7/0fb7372029f27e596565e0d99eae23d4d046d9da9e48804258ffa210bdf228aa.json",
       "status": "passed",
       "failureCode": null
     },
@@ -756,6 +798,20 @@
       "contentSha256": "8af15671e2dd1ffb6232dc224e3fb83176a785fb41259cd780ff4f6a79444e45",
       "receiptBindingSha256": "19991efb61f60893fc4939dd2832856e75a04ab57ef92c7644beee542a903319",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/08/84/088467bc71ffab5fd9adb937037be471e362be8a0be0b71df97af07abab3d5f8.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_60202a48217e401665940a77",
+      "referenceId": "fa_ref_2d841f8e4e80ac45fa831c0a",
+      "brand": "KELVINATOR",
+      "model": "KTM4602WC",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602WC&brand=Kelvinator",
+      "sourcePdfSha256": "a01e1b85c2b532b5483169bef8e0cdcf7a565f102b7b37fb2529e75463dabc77",
+      "contentSha256": "a01e1b85c2b532b5483169bef8e0cdcf7a565f102b7b37fb2529e75463dabc77",
+      "receiptBindingSha256": "02e44f1c8759fe89a77c552566826ede7cf50ca75cd05d96024c94fc8d5f483f",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/ab/ef/abef8567160f665f7a73c870feeafd3590912adfafbae6acfc6edad749df3e12.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1741,11 +1797,11 @@
     }
   ],
   "summary": {
-    "entries": 108,
-    "sources": 124,
-    "passed": 124,
+    "entries": 111,
+    "sources": 128,
+    "passed": 128,
     "failed": 0
   },
-  "checkedObjects": 271,
-  "semanticAuditSha256": "e9ae7af0d111a4ceecfc95b87bc12d74bcf18202642e20b3c1fd7a7a127c253d"
+  "checkedObjects": 280,
+  "semanticAuditSha256": "31dfddbfb68c18235ced52fd5fa98d3d69f73d7a2e7a2ed493ccf500f401cbe5"
 }

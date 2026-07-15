@@ -8,16 +8,16 @@
       "path": "public/data/replacement-reference/fridges.json",
       "url": "/data/replacement-reference/fridges.json",
       "records": 4336,
-      "byteLength": 1064658,
-      "contentSha256": "927c779f18d0c0288c82c71d3fae1ec8a136df271dcfd2d8eb6e5b25e5f38467"
+      "byteLength": 1064632,
+      "contentSha256": "09bb5eefcee75480a8978d8ff0e27083b5192e6aee24fbf45be4db8b08bbe5b9"
     },
     "dishwasher": {
       "category": "dishwasher",
       "path": "public/data/replacement-reference/dishwashers.json",
       "url": "/data/replacement-reference/dishwashers.json",
       "records": 1419,
-      "byteLength": 334488,
-      "contentSha256": "690e909c251e8102db47d4868aade25f76ae7c28ac9e0a6120e6f969525ef5d1"
+      "byteLength": 334475,
+      "contentSha256": "61c9c591871517192e3d96c80afbfbb7db2f5829ea554f47c4853642d34a08a9"
     },
     "dryer": {
       "category": "dryer",
@@ -40,6 +40,6 @@
     "path": "public/data/replacement-reference/meta.json",
     "url": "/data/replacement-reference/meta.json",
     "byteLength": 1218,
-    "contentSha256": "eea4e9034eaf8e46202b2c42eee50302a7c49fa4521b784bb9d9c006f9d560fd"
+    "contentSha256": "49fb573617614cfd977f0ed780e4173eb998cc83db790a85ff471e5002801eca"
   }
 }

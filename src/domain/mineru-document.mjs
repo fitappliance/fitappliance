@@ -619,6 +619,32 @@ function joinedGroupedParagraphRow(items, fragmentIndex) {
   };
 }
 
+function joinedAlignedScalarParagraphRow(items, fragmentIndex) {
+  const fragment = items[fragmentIndex];
+  const next = items[fragmentIndex + 1];
+  if (!fragment || !next
+    || !['paragraph', 'text'].includes(fragment.type)
+    || !['paragraph', 'text'].includes(next.type)) return null;
+  const label = /^(?:(?:total|overall|external|product)\s+)?(?:width|wide|height|high|depth|deep)\s*:?$/i
+    .exec(fragment.text);
+  const value = /^(\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?)\s*(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)$/i
+    .exec(next.text);
+  if (!label || !value || next.bbox[0] < fragment.bbox[2]) return null;
+  const overlap = Math.min(fragment.bbox[3], next.bbox[3])
+    - Math.max(fragment.bbox[1], next.bbox[1]);
+  const minimumHeight = Math.min(
+    fragment.bbox[3] - fragment.bbox[1],
+    next.bbox[3] - next.bbox[1],
+  );
+  if (overlap < minimumHeight * 0.5 || next.bbox[0] - fragment.bbox[2] > 350) return null;
+  return {
+    label: fragment.text,
+    value: normalizedText(`${value[1]} ${value[2]}`),
+    quote: normalizedText(`${fragment.text} ${next.text}`),
+    semanticBasis: 'explicit_aligned_label_value',
+  };
+}
+
 function sectionDimensionUnit(cells, sectionIndex) {
   let hasDimensionHeader = false;
   for (let index = Math.max(0, sectionIndex - 3); index <= sectionIndex; index += 1) {
@@ -1041,6 +1067,36 @@ function exactModelSourceUrl(sourceUrls, model) {
   return sourceUrls.find((value) => containsExactModelDocumentUrl(value, model)) ?? null;
 }
 
+function exactModelQuerySourceUrl(sourceUrls, model) {
+  if (!Array.isArray(sourceUrls)) return null;
+  const target = canonicalModel(model);
+  return sourceUrls.find((value) => {
+    try {
+      const url = new URL(value);
+      return ['modelNumber', 'modelName', 'model', 'sku'].some((name) => (
+        canonicalModel(url.searchParams.get(name)) === target
+      ));
+    } catch {
+      return false;
+    }
+  }) ?? null;
+}
+
+function repeatedExactPageHeaderPages(document, model, sourceUrls) {
+  if (!exactModelSourceUrl(sourceUrls, model) && !exactModelQuerySourceUrl(sourceUrls, model)) {
+    return new Set();
+  }
+  const headerDocument = {
+    pages: document.pages.map((items) => items.filter((item) => item.type === 'page_header')),
+  };
+  if (siblingModelCandidates(headerDocument, model).length) return new Set();
+  const pages = headerDocument.pages
+    .map((items, index) => ({ items, page: index + 1 }))
+    .filter(({ items }) => items.some((item) => containsExplicitModelExpression(item.text, model)))
+    .map(({ page }) => page);
+  return pages.length >= 2 ? new Set(pages) : new Set();
+}
+
 function uniqueCoverIdentityScope(document, model, sourceUrls) {
   const coverHasExactModel = document.pages[0]?.some((item) => (
     ['title', 'page_footer', 'paragraph'].includes(item.type)
@@ -1447,6 +1503,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     && !unresolvedFamily
     && uniqueCoverIdentityScope(document, model, options.sourceUrls);
   const documentSignals = identitySignals(document, model);
+  const repeatedExactHeaderPages = claimSemanticsVersion === 2
+    ? repeatedExactPageHeaderPages(document, model, options.sourceUrls)
+    : new Set();
   const bekoDocumentScoped = claimSemanticsVersion === 2
     && bekoUniqueStructuredDocumentScope(document, caseIdentity);
   let signals = [...new Map([
@@ -1475,6 +1534,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   document.pages.forEach((items, pageIndex) => {
     const pageSignals = documentSignals.filter((signal) => signal.value.includes(`:page:${pageIndex + 1}`));
     const headerScoped = pageSignals.some((signal) => signal.type === 'mineru_page_header_model');
+    const repeatedHeaderPageScoped = repeatedExactHeaderPages.has(pageIndex + 1);
     const repeatedBodyScope = signals.some((signal) => signal.type === 'mineru_repeated_body_model');
     const bodyScoped = repeatedBodyScope && pageSignals.some((signal) => signal.type === 'mineru_body_model');
     const pageScoped = pageSignals.length > 0;
@@ -1496,6 +1556,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const groupedColumnScoped = [...groupedColumnRowsByFragment.values()].some((rows) => rows.length === 3);
     const joinedParagraphRowsByFragment = new Map(items
       .map((item, index) => [item, joinedGroupedParagraphRow(items, index)])
+      .filter(([, row]) => row));
+    const joinedScalarRowsByFragment = new Map(items
+      .map((item, index) => [item, joinedAlignedScalarParagraphRow(items, index)])
       .filter(([, row]) => row));
     if (!pageScoped && !documentScoped && !bekoDocumentScoped
       && !sharedModelListScoped && !groupedColumnScoped) return;
@@ -1539,6 +1602,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           }, 3)
         )))
       || joinedParagraphRowsByFragment.has(item)
+      || joinedScalarRowsByFragment.has(item)
     ))) {
       let rows;
       if (fragment.type === 'table') {
@@ -1547,7 +1611,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           : [];
         const directRows = [
           ...shiftedRows,
-          ...(shiftedRows.length === 3 || unresolvedFamily || documentScoped ? [] : fragment.rows),
+          ...(shiftedRows.length === 3 || (unresolvedFamily && !repeatedHeaderPageScoped) || documentScoped
+            ? []
+            : fragment.rows),
           ...(!unresolvedFamily || sharedDimensionFragments.has(fragment)
             ? alternatingAxisRows(fragment, pageDimensionUnit, {
               qualifiedDepthPrimary: dimensionDiagramContext(items, fragment),
@@ -1576,6 +1642,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       } else {
         rows = joinedParagraphRowsByFragment.has(fragment)
           ? [joinedParagraphRowsByFragment.get(fragment)]
+          : joinedScalarRowsByFragment.has(fragment)
+            ? [joinedScalarRowsByFragment.get(fragment)]
           : paragraphRows(fragment.text);
       }
       if (unresolvedFamily && !sharedModelListScoped && fragment.type !== 'table') continue;
@@ -1596,6 +1664,19 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       && fieldCandidates.some((claim) => claim.semanticBasis === 'explicit_including_handle')) {
       fieldCandidates = fieldCandidates.filter((claim) => claim.semanticBasis === 'explicit_including_handle');
     }
+    const candidateValues = new Set(fieldCandidates.map((claim) => JSON.stringify(claim.value)));
+    if (claimSemanticsVersion === 2 && candidateValues.size === 1) {
+      const exactMatrixCandidates = unresolvedFamily ? fieldCandidates.filter((claim) => (
+        ['exact_model_matrix_row', 'exact_model_grouped_column'].includes(claim.semanticBasis)
+      )) : [];
+      if (exactMatrixCandidates.length) {
+        fieldCandidates = exactMatrixCandidates;
+      } else if (fieldCandidates.some((claim) => claim.semanticBasis === 'explicit_aligned_label_value')
+        && fieldCandidates.some((claim) => claim.semanticBasis !== 'explicit_aligned_label_value')) {
+        fieldCandidates = fieldCandidates
+          .filter((claim) => claim.semanticBasis !== 'explicit_aligned_label_value');
+      }
+    }
     const unique = new Map(fieldCandidates.map((claim) => [
       `${JSON.stringify(claim.value)}\0${claim.quote}\0${claim.fragmentSha256}`,
       claim,
@@ -1604,10 +1685,17 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     if (values.size > 1) throw new Error(`ambiguous MinerU values for ${field}`);
     if (unique.size) claims.push([...unique.values()][0]);
   }
+  const repeatedExactHeaderScoped = claims.length > 0
+    && repeatedExactHeaderPages.size >= 2 && claims.every((claim) => {
+    if (!repeatedExactHeaderPages.has(claim.page)) return false;
+    const fragment = document.pages[claim.page - 1]
+      ?.find((candidate) => candidate.fragmentSha256 === claim.fragmentSha256);
+    return fragment && siblingModelCandidates({ pages: [[fragment]] }, model).length === 0;
+  });
   if (unresolvedFamily && !claims.some((claim) => (
     ['exact_model_matrix_row', 'exact_model_grouped_column'].includes(claim.semanticBasis)
       || sharedModelListPages.has(claim.page)
-  ))) {
+  )) && !repeatedExactHeaderScoped) {
     throw new Error('unresolved family manual or multiple models in identity scope');
   }
   if (!claims.length) throw new Error('no exact-model MinerU evidence with explicit axes extracted');

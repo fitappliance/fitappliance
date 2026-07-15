@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "ca41cfbbbc281bf60acbd9801060a2bb648f1d5ce3ff407fb5c37fe2f6e2c8ff"
+    "historical-recovery:historical-recovery-cumulative-v1": "1234a5655d8eab56b82ac73a796076be02a3dcda69a76d89b98a672dd6466211"
   },
   "records": [
     {
@@ -22360,11 +22360,11 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 599,
-        "height": 410,
+        "height": 478,
         "depth": 573
       },
       "sources": [
@@ -22380,6 +22380,18 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3146139b61d431d29ec7660c",
+          "snapshotSha256": "81ca961c66235da2f62304a19d7240a683ce1a5b93d99c30719d37231c77ee7d",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3146139b61d431d29ec7660c",
+          "snapshotSha256": "a90f546ff2c939478af35c17ddd4aea86be45531d3efdb82e0ea0e12b41c0103",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -22387,8 +22399,61 @@
       ],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_3146139b61d431d29ec7660c",
+          "sourceUrl": "https://www.fisherpaykel.com/au/dishwashing/built-under/series-9-contemporary-tall-single-dishdrawer-dishwasher-dd60sdftx9-82324.html",
+          "contentSha256": "81ca961c66235da2f62304a19d7240a683ce1a5b93d99c30719d37231c77ee7d",
+          "receiptBindingSha256": "db065b7fd3729ed892d5b26aecb30e17ff02722e6b20033f77727b05be0352bb",
+          "verifiedAt": "2026-07-15T15:37:04.486Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "81ca961c66235da2f62304a19d7240a683ce1a5b93d99c30719d37231c77ee7d"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "81ca961c66235da2f62304a19d7240a683ce1a5b93d99c30719d37231c77ee7d"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "81ca961c66235da2f62304a19d7240a683ce1a5b93d99c30719d37231c77ee7d"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/81/ca/81ca961c66235da2f62304a19d7240a683ce1a5b93d99c30719d37231c77ee7d.html"
+        },
+        {
+          "targetId": "recovery_target_3146139b61d431d29ec7660c",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw69ec9bcd/QRG/AU/QRG-AU-82324.pdf",
+          "contentSha256": "a90f546ff2c939478af35c17ddd4aea86be45531d3efdb82e0ea0e12b41c0103",
+          "receiptBindingSha256": "19ce0b8fa13b6e88c6caa2bf774b8ef696b50e70359602afc9a719222c5fa4c9",
+          "verifiedAt": "2026-07-15T15:37:04.906Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "93fc7b7390adaffffa6ec30dbac120ef52dc0c83e8c3a04a70409d4a21e783a5"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "01f6f7ea9085bec2bfe6d18d3d006d6c68ce78c5adcab2ab85c68372c34b26a5"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "13e386daf1b6c2643337193fe89a658ce3a660a23b7aa6962bfcd485ddcc78be"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/a9/0f/a90f546ff2c939478af35c17ddd4aea86be45531d3efdb82e0ea0e12b41c0103.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -169602,12 +169667,12 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
-        "width": 1725,
-        "height": 699,
-        "depth": 723
+        "width": 699,
+        "height": 1718,
+        "depth": 730
       },
       "sources": [
         {
@@ -169621,6 +169686,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_60202a48217e401665940a77",
+          "snapshotSha256": "a01e1b85c2b532b5483169bef8e0cdcf7a565f102b7b37fb2529e75463dabc77",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -169628,8 +169700,38 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_60202a48217e401665940a77",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602WC&brand=Kelvinator",
+          "contentSha256": "a01e1b85c2b532b5483169bef8e0cdcf7a565f102b7b37fb2529e75463dabc77",
+          "receiptBindingSha256": "02e44f1c8759fe89a77c552566826ede7cf50ca75cd05d96024c94fc8d5f483f",
+          "verifiedAt": "2026-07-15T15:36:47.207Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "d6e0bc7d6a553d72d1a9d70a7bfe42e9f9f38716090e2607bb40ce066ff16a74"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "d6e0bc7d6a553d72d1a9d70a7bfe42e9f9f38716090e2607bb40ce066ff16a74"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "d6e0bc7d6a553d72d1a9d70a7bfe42e9f9f38716090e2607bb40ce066ff16a74"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/a0/1e/a01e1b85c2b532b5483169bef8e0cdcf7a565f102b7b37fb2529e75463dabc77.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -169764,12 +169866,12 @@
         }
       ],
       "lifecycleState": "REGISTRY_ONLY",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
-        "width": 1725,
-        "height": 796,
-        "depth": 723
+        "width": 796,
+        "height": 1718,
+        "depth": 727
       },
       "sources": [
         {
@@ -169778,13 +169880,50 @@
           "sourceLines": [
             3675
           ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_1ade4a1d7a54467759bc7b41",
+          "snapshotSha256": "9b653d7288f7f61ca01fe9724acf77c6308b38697d665d09d3eb01b5f825aed1",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_1ade4a1d7a54467759bc7b41",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402WC&brand=Kelvinator",
+          "contentSha256": "9b653d7288f7f61ca01fe9724acf77c6308b38697d665d09d3eb01b5f825aed1",
+          "receiptBindingSha256": "04f11831f4db2cdff93a689b743729023681d061c55c18012578f00f1386ffb9",
+          "verifiedAt": "2026-07-15T15:36:41.988Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "cf7181c033b90d630aa9fe177dd5fab03a311b0f3f5155827ea3adb9daa4913c"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "cf7181c033b90d630aa9fe177dd5fab03a311b0f3f5155827ea3adb9daa4913c"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "cf7181c033b90d630aa9fe177dd5fab03a311b0f3f5155827ea3adb9daa4913c"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/9b/65/9b653d7288f7f61ca01fe9724acf77c6308b38697d665d09d3eb01b5f825aed1.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -315696,17 +315835,17 @@
       "CURRENT_RETAIL": 1384
     },
     "byEvidence": {
-      "REGISTRY_CONSISTENT": 4899,
+      "REGISTRY_CONSISTENT": 4896,
       "IDENTITY_ONLY": 3017,
-      "MODEL_RECEIPT": 80,
+      "MODEL_RECEIPT": 83,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
-      "CONFIRM_REQUIRED": 4899,
+      "CONFIRM_REQUIRED": 4896,
       "MEASURE_REQUIRED": 3017,
-      "AUTO_FILL": 91,
+      "AUTO_FILL": 94,
       "QUARANTINED": 88
     }
   }

@@ -20,17 +20,17 @@
       "CURRENT_RETAIL": 1384
     },
     "byEvidence": {
-      "REGISTRY_CONSISTENT": 4899,
+      "REGISTRY_CONSISTENT": 4896,
       "IDENTITY_ONLY": 3017,
-      "MODEL_RECEIPT": 80,
+      "MODEL_RECEIPT": 83,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
-      "CONFIRM_REQUIRED": 4899,
+      "CONFIRM_REQUIRED": 4896,
       "MEASURE_REQUIRED": 3017,
-      "AUTO_FILL": 91,
+      "AUTO_FILL": 94,
       "QUARANTINED": 88
     },
     "issueCount": 0

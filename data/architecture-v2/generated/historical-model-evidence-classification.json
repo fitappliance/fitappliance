@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T15:08:33.574Z",
+  "generatedAt": "2026-07-15T15:42:43.575Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "80967cd090b304da34f20096daab47c00a1558121e094bf79e60f14f5356943f",
+  "semanticClassificationSha256": "44f7be155b7fc65e6d7f98823977dd301d60ae9ea1b70d7b3a19ae2791deb16e",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4142,
+    "documentLinks": 4143,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,17 +21,17 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 127,
+      "COMPLETE_RECEIPT": 130,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 193,
       "OFFICIAL_DISCOVERY": 6426,
-      "OFFICIAL_REACQUIRE": 12,
+      "OFFICIAL_REACQUIRE": 9,
       "REFERENCE_REDISCOVERY": 1254
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6426,
-      "NO_ACTION": 127,
-      "REACQUIRE_OFFICIAL_SOURCE": 12,
+      "NO_ACTION": 130,
+      "REACQUIRE_OFFICIAL_SOURCE": 9,
       "REDISCOVER_OFFICIAL_SOURCE": 1254,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 193
@@ -49,10 +49,9 @@
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 48,
-      "ALL_AXIS_SCALAR": 230,
+      "ALL_AXIS_SCALAR": 231,
       "NOT_PARSED": 7675,
-      "PARSER_GAP": 141,
-      "PARTIAL_AXIS": 1
+      "PARSER_GAP": 141
     },
     "byConflictState": {
       "INVALID_DIMENSIONS": 19,
@@ -61,8 +60,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 127,
-      "LEGACY_UNBOUND": 1643,
+      "CURRENT_VALID": 130,
+      "LEGACY_UNBOUND": 1640,
       "NONE": 6325
     }
   },
@@ -71,13 +70,12 @@
       "category": "dishwasher",
       "records": 1419,
       "brands": 94,
-      "documentLinks": 984,
+      "documentLinks": 985,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 41,
+        "COMPLETE_RECEIPT": 42,
         "CONFLICT_QUARANTINE": 22,
         "IDENTITY_RESEARCH": 31,
         "OFFICIAL_DISCOVERY": 1030,
-        "OFFICIAL_REACQUIRE": 1,
         "REFERENCE_REDISCOVERY": 294
       }
     },
@@ -100,11 +98,11 @@
       "brands": 121,
       "documentLinks": 2248,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 43,
+        "COMPLETE_RECEIPT": 45,
         "CONFLICT_QUARANTINE": 48,
         "IDENTITY_RESEARCH": 117,
         "OFFICIAL_DISCOVERY": 3410,
-        "OFFICIAL_REACQUIRE": 8,
+        "OFFICIAL_REACQUIRE": 6,
         "REFERENCE_REDISCOVERY": 710
       }
     },
@@ -22784,15 +22782,16 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 1bcc673af605",
-      "bestCorpusState": "CURRENT_MINERU",
+      "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "PARTIAL_AXIS",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 9,
+        "CURRENT_MINERU": 8,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 2,
         "SOURCE_URL_ONLY": 2
       },
       "documentLinks": [
@@ -22918,6 +22917,24 @@
           "sourcePdfSha256": "6f18ecc77054b8ee2ae8ad16979b9a9ab50cbfaac059c7594bad39fe11a011d5"
         },
         {
+          "documentId": "pdf:81ca961c66235da2f62304a19d7240a683ce1a5b93d99c30719d37231c77ee7d",
+          "sourceUrl": "https://www.fisherpaykel.com/au/dishwashing/built-under/series-9-contemporary-tall-single-dishdrawer-dishwasher-dd60sdftx9-82324.html",
+          "evidenceObjectIds": [
+            "evidence/web/sha256/81/ca/81ca961c66235da2f62304a19d7240a683ce1a5b93d99c30719d37231c77ee7d.html",
+            "receipt:db065b7fd3729ed892d5b26aecb30e17ff02722e6b20033f77727b05be0352bb"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "81ca961c66235da2f62304a19d7240a683ce1a5b93d99c30719d37231c77ee7d"
+        },
+        {
           "documentId": "pdf:a1eabc7adffc7b5fbaf047540abd9b691150b65aeeef55f2aa3a774acd10ad70",
           "evidenceObjectIds": [
             "mineru-index:a1eabc7adffc7b5fbaf047540abd9b691150b65aeeef55f2aa3a774acd10ad70",
@@ -22936,19 +22953,22 @@
         },
         {
           "documentId": "pdf:a90f546ff2c939478af35c17ddd4aea86be45531d3efdb82e0ea0e12b41c0103",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw69ec9bcd/QRG/AU/QRG-AU-82324.pdf",
           "evidenceObjectIds": [
             "mineru-index:a90f546ff2c939478af35c17ddd4aea86be45531d3efdb82e0ea0e12b41c0103",
+            "receipt:19ce0b8fa13b6e88c6caa2bf774b8ef696b50e70359602afc9a719222c5fa4c9",
             "storage:evidence/web/sha256/a9/0f/a90f546ff2c939478af35c17ddd4aea86be45531d3efdb82e0ea0e12b41c0103.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
-          "extractionState": "PARTIAL_AXIS",
-          "receiptState": "NONE",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "a90f546ff2c939478af35c17ddd4aea86be45531d3efdb82e0ea0e12b41c0103",
           "grammarProfileId": "pdf_grammar_3c28d9e9e031905b"
         },
@@ -23000,8 +23020,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "nextAction": "REACQUIRE_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Fisher & Paykel",
@@ -164526,15 +164546,15 @@
       "lifecycleState": "CATALOG_ARCHIVED",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_b56ff9ab0cbbc9f2",
-      "bestCorpusState": "CURRENT_MINERU",
+      "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -164558,19 +164578,22 @@
         },
         {
           "documentId": "pdf:a01e1b85c2b532b5483169bef8e0cdcf7a565f102b7b37fb2529e75463dabc77",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602WC&brand=Kelvinator",
           "evidenceObjectIds": [
             "mineru-index:a01e1b85c2b532b5483169bef8e0cdcf7a565f102b7b37fb2529e75463dabc77",
+            "receipt:02e44f1c8759fe89a77c552566826ede7cf50ca75cd05d96024c94fc8d5f483f",
             "storage:evidence/web/sha256/a0/1e/a01e1b85c2b532b5483169bef8e0cdcf7a565f102b7b37fb2529e75463dabc77.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "receiptState": "NONE",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "a01e1b85c2b532b5483169bef8e0cdcf7a565f102b7b37fb2529e75463dabc77",
           "grammarProfileId": "pdf_grammar_b56ff9ab0cbbc9f2"
         },
@@ -164590,8 +164613,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "nextAction": "REACQUIRE_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P1_CATALOG_ARCHIVED",
       "rawBrandVariants": [
         "KELVINATOR"
@@ -164739,15 +164762,15 @@
       "lifecycleState": "REGISTRY_ONLY",
       "groupType": "parser_family",
       "groupName": "PDF grammar pdf_grammar_b56ff9ab0cbbc9f2",
-      "bestCorpusState": "CURRENT_MINERU",
+      "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
       "identityScope": "EXACT_MODEL",
       "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 1,
-        "LEGACY_METADATA_ONLY": 1
+        "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1
       },
       "documentLinks": [
         {
@@ -164770,25 +164793,28 @@
         },
         {
           "documentId": "pdf:9b653d7288f7f61ca01fe9724acf77c6308b38697d665d09d3eb01b5f825aed1",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402WC&brand=Kelvinator",
           "evidenceObjectIds": [
             "mineru-index:9b653d7288f7f61ca01fe9724acf77c6308b38697d665d09d3eb01b5f825aed1",
+            "receipt:04f11831f4db2cdff93a689b743729023681d061c55c18012578f00f1386ffb9",
             "storage:evidence/web/sha256/9b/65/9b653d7288f7f61ca01fe9724acf77c6308b38697d665d09d3eb01b5f825aed1.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
-          "sourceAuthority": "NONE",
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
           "identityScope": "EXACT_MODEL",
           "extractionState": "ALL_AXIS_SCALAR",
-          "receiptState": "NONE",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "9b653d7288f7f61ca01fe9724acf77c6308b38697d665d09d3eb01b5f825aed1",
           "grammarProfileId": "pdf_grammar_b56ff9ab0cbbc9f2"
         }
       ],
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "nextAction": "REACQUIRE_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P2_REGISTRY_ONLY",
       "rawBrandVariants": [
         "KELVINATOR"

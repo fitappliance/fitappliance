@@ -1446,6 +1446,110 @@ test('MinerU parses a single-cell exact-model net dimension sequence', () => {
   });
 });
 
+test('MinerU joins an exact axis label and value split into aligned paragraph fragments', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    pageHeader('QUICK REFERENCE GUIDE > DD60SDFTX9'),
+    paragraph('Height', [354, 82, 388, 100]),
+    paragraph('478 mm', [595, 84, 634, 100]),
+    paragraph('Width 599 mm', [354, 110, 634, 132]),
+    paragraph('Depth 573 mm', [354, 142, 634, 164]),
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Fisher & Paykel', model: 'DD60SDFTX9', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 599,
+    'closedEnvelope.heightMm': 478,
+    'closedEnvelope.depthMm': 573,
+  });
+});
+
+test('MinerU keeps repeated exact-model page-header scope when a later matrix lists a colour sibling', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [
+      pageHeader('KTM5402WC'),
+      tableFragment('<table><tr><td>Total height (mm)</td><td>1718</td></tr><tr><td>Total width (mm)</td><td>796</td></tr><tr><td>Total depth (mm)</td><td>727</td></tr></table>'),
+    ],
+    [
+      pageHeader('KTM5402WC'),
+      tableFragment('<table><tr><td>Model Number</td><td>Product Height</td><td>Product Width</td><td>Product Depth</td></tr><tr><td>KTM5402AC / KTM5402WC</td><td>1718</td><td>796</td><td>727</td></tr></table>'),
+      tableFragment('<table><tr><td>Model Number</td><td>Airspace (Side - both)</td><td>Airspace (Top)</td><td>Airspace (Behind)</td></tr><tr><td>KTM5402AC / KTM5402WC</td><td>30</td><td>30</td><td>50</td></tr></table>'),
+      paragraph('K_DIM_KTM5402AC_KTM5402WC_Sep21'),
+    ],
+  ]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Kelvinator', model: 'KTM5402WC', category: 'fridge' },
+    claimSemanticsVersion: 2,
+    sourceUrls: ['https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402WC&brand=Kelvinator'],
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 796,
+    'closedEnvelope.heightMm': 1718,
+    'closedEnvelope.depthMm': 727,
+  });
+  assert.throws(() => parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Kelvinator', model: 'KTM5402WC', category: 'fridge' },
+    claimSemanticsVersion: 2,
+    sourceUrls: ['https://resource.electrolux.com.au/Factsheet/RequestPdf'],
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }), /unresolved family/i);
+});
+
+test('MinerU prefers an exact-model dimension matrix over repeated-header scalar duplicates', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [
+      pageHeader('KTM5402WC'),
+      tableFragment('<table><tr><td>Total height (mm)</td><td>1718</td></tr><tr><td>Total width (mm)</td><td>796</td></tr><tr><td>Total depth (mm)</td><td>727</td></tr></table>'),
+    ],
+    [
+      pageHeader('KTM5402WC'),
+      paragraph('Dimensions (mm)'),
+      tableFragment('<table><tr><td>Model Number</td><td>Product Height</td><td>Product Width</td><td>Product Depth</td></tr><tr><td>KTM5402AC / KTM5402WC</td><td>1718</td><td>796</td><td>727</td></tr></table>'),
+      tableFragment('<table><tr><td>Model Number</td><td>Airspace (Side - both)</td><td>Airspace (Top)</td><td>Airspace (Behind)</td></tr><tr><td>KTM5402AC / KTM5402WC</td><td>30</td><td>30</td><td>50</td></tr></table>'),
+    ],
+  ]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Kelvinator', model: 'KTM5402WC', category: 'fridge' },
+    claimSemanticsVersion: 2,
+    sourceUrls: ['https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402WC&brand=Kelvinator'],
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.ok(parsed.claims.every((claim) => claim.page === 2));
+  assert.deepEqual(parsed.claims.map((claim) => claim.sourceLabel).sort(), [
+    'Product Depth', 'Product Height', 'Product Width',
+  ]);
+});
+
+test('MinerU aligned scalar recovery only fills a field missing stronger structured evidence', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [
+      pageHeader('DD60SDFX9'),
+      paragraph('Height', [354, 82, 388, 100]),
+      paragraph('410 mm', [595, 84, 634, 100]),
+      paragraph('Width 599 mm', [354, 110, 634, 132]),
+      paragraph('Depth 573 mm', [354, 142, 634, 164]),
+    ],
+    [
+      pageHeader('DD60SDFX9'),
+      tableFragment('<table><tr><td>Height</td><td>410 mm</td></tr></table>'),
+    ],
+  ]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Fisher & Paykel', model: 'DD60SDFX9', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.equal(parsed.claims.find((claim) => claim.field === 'closedEnvelope.heightMm').page, 2);
+});
+
 test('MinerU ignores malformed multi-axis scalar labels when a complete explicit table is present', () => {
   const bytes = Buffer.from(JSON.stringify([
     [

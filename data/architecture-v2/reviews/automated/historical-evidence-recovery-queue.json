@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1550,
-    "fetchJobs": 1513,
-    "targets": 1546,
-    "candidateEdges": 1550,
-    "multiCandidateTargets": 4,
-    "uniqueReferences": 1546,
+    "documents": 1547,
+    "fetchJobs": 1510,
+    "targets": 1544,
+    "candidateEdges": 1547,
+    "multiCandidateTargets": 3,
+    "uniqueReferences": 1544,
     "byCurrentAction": {
-      "CONFIRM_REQUIRED": 449,
+      "CONFIRM_REQUIRED": 447,
       "MEASURE_REQUIRED": 1072,
       "QUARANTINED": 25
     },
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 285,
-      "CURRENT_RETAIL": 1261
+      "CATALOG_ARCHIVED": 284,
+      "CURRENT_RETAIL": 1260
     },
     "byCategory": {
-      "dishwasher": 353,
+      "dishwasher": 352,
       "dryer": 69,
-      "fridge": 893,
+      "fridge": 892,
       "washing_machine": 231
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1204,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1203,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 246,
-      "OFFICIAL_RECEIPT_REBUILD": 12,
+      "OFFICIAL_RECEIPT_REBUILD": 10,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 57,
+      "ALREADY_AUTO_FILL": 60,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -27955,32 +27955,6 @@
       ]
     },
     {
-      "jobId": "recovery_e77b2fb6c93c35ec9de016b9",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw83e4ad94/QRG/AU/QRG-AU-82324.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "manufacturer"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_3146139b61d431d29ec7660c"
-      ]
-    },
-    {
       "jobId": "recovery_5451d6349ab6ec4c47fc2415",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwa14c70a9/QRG/AU/QRG-AU-82878.pdf",
       "authorityBrand": "Fisher & Paykel",
@@ -30714,32 +30688,6 @@
       ]
     },
     {
-      "jobId": "recovery_1abc0be5ccba02182d4d5a34",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/5/c/f/6/5cf6275182c0b4f652e523cbc1f5b73c8805d50c_DD60SDFTX9_Specifications_Sheet.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_3146139b61d431d29ec7660c"
-      ]
-    },
-    {
       "jobId": "recovery_c7b76041b6492aa24ee04c4e",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/5/d/3/d/5d3de103d37366dc98ab455b7a86e25313cdb5c2_QRG_AU_26409_RF522ADUX5.pdf",
       "authorityBrand": "Fisher & Paykel",
@@ -33207,32 +33155,6 @@
       ],
       "targetIds": [
         "recovery_target_6c312441be4d741742f10a29"
-      ]
-    },
-    {
-      "jobId": "recovery_97d3ce21c2bbeb34e5701275",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM4602WC&brand=Kelvinator",
-      "authorityBrand": "KELVINATOR",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "manufacturer"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_60202a48217e401665940a77"
       ]
     },
     {
@@ -85446,67 +85368,6 @@
       "primaryJobId": "recovery_276310aaaa7ff0c808392656"
     },
     {
-      "referenceId": "fa_ref_6e3ab48cc2e552dd15c677d7",
-      "legacyRuntimeId": "ao-64075",
-      "canonicalProductId": "fa_prod_9c9c1cc5f44db3199c5fb5fa",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DD60SDFTX9",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 599,
-        "height": 478,
-        "depth": 573
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:dishwasher",
-          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-          "dimensionsMm": {
-            "width": 599,
-            "height": 410,
-            "depth": 573
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_3146139b61d431d29ec7660c",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_68663660383ad758542f6374",
-        "doc_c1806a2c7d5186991ff80a0d"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_68663660383ad758542f6374",
-          "dimensionsMm": {
-            "width": 599,
-            "height": 478,
-            "depth": 573
-          }
-        },
-        {
-          "sourceDocumentId": "doc_c1806a2c7d5186991ff80a0d",
-          "dimensionsMm": {
-            "width": 599,
-            "height": 478,
-            "depth": 573
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_e77b2fb6c93c35ec9de016b9",
-        "recovery_1abc0be5ccba02182d4d5a34"
-      ],
-      "primaryJobId": "recovery_e77b2fb6c93c35ec9de016b9"
-    },
-    {
       "referenceId": "fa_ref_dca266100319b2c65eae7340",
       "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh9060fs1",
       "canonicalProductId": "fa_prod_d13bff0b6750b5ac1b40748c",
@@ -101213,57 +101074,6 @@
         "recovery_0d07bbd3ce9d6351479436c7"
       ],
       "primaryJobId": "recovery_0d07bbd3ce9d6351479436c7"
-    },
-    {
-      "referenceId": "fa_ref_2d841f8e4e80ac45fa831c0a",
-      "legacyRuntimeId": "fridge-arf2538",
-      "canonicalProductId": "fa_prod_9b2648b6c70f53e6baa4915c",
-      "category": "fridge",
-      "brand": "KELVINATOR",
-      "model": "KTM4602WC",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 699,
-        "height": 1718,
-        "depth": 730
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 1725,
-            "height": 699,
-            "depth": 723
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_60202a48217e401665940a77",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_d37dcb1131e40e1389185ba8"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_d37dcb1131e40e1389185ba8",
-          "dimensionsMm": {
-            "width": 699,
-            "height": 1718,
-            "depth": 730
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_97d3ce21c2bbeb34e5701275"
-      ],
-      "primaryJobId": "recovery_97d3ce21c2bbeb34e5701275"
     },
     {
       "referenceId": "fa_ref_12c1d6beceef10d0bbf5f67c",
