@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T16:59:58.049Z",
-  "semanticQueueSha256": "bf42a62e62c61e0e67076e3b5d897fa8b7f3f2a27da8ffe8855fddabc050645a",
-  "sourceClassificationSha256": "0cd7a9283a10a6e638ba457830514167a62e8df7ea723b2e02312fff6c222291",
+  "generatedAt": "2026-07-15T17:26:39.491Z",
+  "semanticQueueSha256": "a68407263e8e5ae562b1698bcf3bee48d71ec8343dd720fe4731b9364edfe98b",
+  "sourceClassificationSha256": "2074fb0a57063e2bc0eeb97865529ca5f9f68523131abe9b77839ee91738f488",
   "records": [
     {
       "schemaVersion": 1,
@@ -29058,37 +29058,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_fe1993a0093b0f9e4a17030f"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_ca0303955249f301551cad7a",
-      "referenceId": "fa_ref_e999c6d31c2d8fd52c6de8aa",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBB3700WG",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_cb49516ae1d887d4bc0a3ab2"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_c541a0122c00cd421c5f0d51"
-      ],
-      "legacyRuntimeIds": [
-        "ao-56613"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_2fc3e12634a9554e2f0a9526"
       ],
       "offlineReplayOutcome": null
     },
@@ -213529,19 +213498,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_cb49516ae1d887d4bc0a3ab2",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/8/e/5/28e529aa5ffcd95378006c15fb71e07ca3bb1737_WBB3700WG_Westinghouse_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WBB3700WG.json",
-        "source:doc_8dbac7c82459ea9840ee0ca6"
-      ],
-      "referenceIds": [
-        "fa_ref_e999c6d31c2d8fd52c6de8aa"
-      ]
-    },
-    {
       "sourceId": "historical_source_cb94064d92c9d4125d008abe",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/0/a/d/e/0adeb89e06edd9541f0918eca1a74226049399bd_GF_B590MBL_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -217534,25 +217490,25 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 143,
+    "COMPLETE_RECEIPT": 144,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7952,
-    "uniqueReferences": 7952,
-    "candidateSources": 1614,
-    "candidateEdges": 1649,
+    "queuedModels": 7951,
+    "uniqueReferences": 7951,
+    "candidateSources": 1613,
+    "candidateEdges": 1648,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2109,
-      "CURRENT_RETAIL": 1280,
+      "CURRENT_RETAIL": 1279,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1377,
       "dryer": 820,
-      "fridge": 4278,
+      "fridge": 4277,
       "washing_machine": 1477
     },
     "byOperationalClass": {
@@ -217560,23 +217516,23 @@
       "IDENTITY_RESEARCH": 193,
       "OFFICIAL_DISCOVERY": 6426,
       "OFFICIAL_REACQUIRE": 6,
-      "REFERENCE_REDISCOVERY": 1244
+      "REFERENCE_REDISCOVERY": 1243
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 193,
       "OFFICIAL_DISCOVERY": 6426,
       "OFFICIAL_REACQUIRE": 6,
-      "OFFICIAL_REDISCOVERY": 1244
+      "OFFICIAL_REDISCOVERY": 1243
     },
     "byExecutionReadiness": {
       "BOUNDED_READY": 6,
-      "DISCOVERY_READY": 4588,
+      "DISCOVERY_READY": 4587,
       "RESEARCH_REQUIRED": 276,
       "RESOLVER_GAP": 3082
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 143,
+      "COMPLETE_RECEIPT": 144,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

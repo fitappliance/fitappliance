@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-ec3cd689d01d9868245bdf9a",
-  "generatedAt": "2026-07-15T16:59:58.049Z",
+  "batchId": "historical-recovery-dea6ee323c3821323ba2dea9",
+  "generatedAt": "2026-07-15T17:26:39.491Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "5b75ca3cd594af33319ee49bf5af46b1b5534905e4f6ac490cee86907dbf5ec2"
+    "sha256": "edf53143980e53d06372951b28b2533f7d98b82ca3c60c12d55b1d3a9185387c"
   },
   "policy": {
     "version": "2026-07-15.1",
@@ -24040,38 +24040,6 @@
             "dimensionsMm": {
               "width": 598,
               "height": 1645,
-              "depth": 650
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_c541a0122c00cd421c5f0d51",
-      "referenceId": "fa_ref_e999c6d31c2d8fd52c6de8aa",
-      "legacyRuntimeId": "ao-56613",
-      "canonicalProductId": "fa_prod_2fc3e12634a9554e2f0a9526",
-      "brand": "Westinghouse",
-      "model": "WBB3700WG",
-      "category": "fridge",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": null,
-      "candidateJobIds": [],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_8dbac7c82459ea9840ee0ca6",
-            "dimensionsMm": {
-              "width": 598,
-              "height": 1755,
               "depth": 650
             }
           }
@@ -235083,7 +235051,7 @@
   ],
   "summary": {
     "artifactJobs": 5,
-    "targets": 7675,
+    "targets": 7674,
     "candidateEdges": 5,
     "excludedPriorAcceptedTargets": 1,
     "excludedPriorCandidateJobs": 1

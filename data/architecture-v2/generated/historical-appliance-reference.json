@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "1752ab902c6883b7877fb352155305ca645fb6600f6fea594234c41ca84f5401"
+    "historical-recovery:historical-recovery-cumulative-v1": "e6f37763bbc77a8970a2ecbbd03ca362c159fff236ab10aca268b698b7e5d854"
   },
   "records": [
     {
@@ -244418,14 +244418,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 1755,
+        "depth": 650
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c541a0122c00cd421c5f0d51",
+          "snapshotSha256": "4e3445fc5041b65412e1ab920bab32aac5486589936686b42f9d5a98d543a07c",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -244434,8 +244445,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c541a0122c00cd421c5f0d51",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBB3700WG&brand=Westinghouse",
+          "contentSha256": "4e3445fc5041b65412e1ab920bab32aac5486589936686b42f9d5a98d543a07c",
+          "receiptBindingSha256": "dab7e0201c73d3150c0203d724df7a89549096a7480224a5bbf61b42f1a01382",
+          "verifiedAt": "2026-07-15T17:25:44.304Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "446582404321d26149b30252bc5016eeaac2265e62f23442ffc49fe06e16d833"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "446582404321d26149b30252bc5016eeaac2265e62f23442ffc49fe06e16d833"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "446582404321d26149b30252bc5016eeaac2265e62f23442ffc49fe06e16d833"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/4e/34/4e3445fc5041b65412e1ab920bab32aac5486589936686b42f9d5a98d543a07c.pdf"
+        }
       ]
     },
     {
@@ -316457,16 +316494,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4893,
-      "IDENTITY_ONLY": 3007,
-      "MODEL_RECEIPT": 96,
+      "IDENTITY_ONLY": 3006,
+      "MODEL_RECEIPT": 97,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4893,
-      "MEASURE_REQUIRED": 3007,
-      "AUTO_FILL": 107,
+      "MEASURE_REQUIRED": 3006,
+      "AUTO_FILL": 108,
       "QUARANTINED": 88
     }
   }

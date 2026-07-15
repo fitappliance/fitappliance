@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T16:59:58.049Z",
+  "generatedAt": "2026-07-15T17:26:39.491Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "0cd7a9283a10a6e638ba457830514167a62e8df7ea723b2e02312fff6c222291",
+  "semanticClassificationSha256": "2074fb0a57063e2bc0eeb97865529ca5f9f68523131abe9b77839ee91738f488",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4158,
+    "documentLinks": 4159,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,26 +21,26 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 143,
+      "COMPLETE_RECEIPT": 144,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 193,
       "OFFICIAL_DISCOVERY": 6426,
       "OFFICIAL_REACQUIRE": 6,
-      "REFERENCE_REDISCOVERY": 1244
+      "REFERENCE_REDISCOVERY": 1243
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6426,
-      "NO_ACTION": 143,
+      "NO_ACTION": 144,
       "REACQUIRE_OFFICIAL_SOURCE": 6,
-      "REDISCOVER_OFFICIAL_SOURCE": 1244,
+      "REDISCOVER_OFFICIAL_SOURCE": 1243,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 193
     },
     "bySourceAuthority": {
-      "MIXED": 61,
+      "MIXED": 62,
       "NONE": 6679,
       "OFFICIAL": 94,
-      "REFERENCE": 1261
+      "REFERENCE": 1260
     },
     "byIdentityScope": {
       "AMBIGUOUS": 236,
@@ -49,8 +49,8 @@
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 48,
-      "ALL_AXIS_SCALAR": 243,
-      "NOT_PARSED": 7665,
+      "ALL_AXIS_SCALAR": 244,
+      "NOT_PARSED": 7664,
       "PARSER_GAP": 139
     },
     "byConflictState": {
@@ -60,8 +60,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 143,
-      "LEGACY_UNBOUND": 1627,
+      "CURRENT_VALID": 144,
+      "LEGACY_UNBOUND": 1626,
       "NONE": 6325
     }
   },
@@ -96,14 +96,14 @@
       "category": "fridge",
       "records": 4336,
       "brands": 121,
-      "documentLinks": 2263,
+      "documentLinks": 2264,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 58,
+        "COMPLETE_RECEIPT": 59,
         "CONFLICT_QUARANTINE": 48,
         "IDENTITY_RESEARCH": 117,
         "OFFICIAL_DISCOVERY": 3410,
         "OFFICIAL_REACQUIRE": 3,
-        "REFERENCE_REDISCOVERY": 700
+        "REFERENCE_REDISCOVERY": 699
       }
     },
     {
@@ -198,7 +198,7 @@
       "category": "fridge",
       "brand": "Westinghouse",
       "operationalClass": "REFERENCE_REDISCOVERY",
-      "models": 93
+      "models": 92
     },
     {
       "category": "fridge",
@@ -226422,14 +226422,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -226452,6 +226453,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:4e3445fc5041b65412e1ab920bab32aac5486589936686b42f9d5a98d543a07c",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBB3700WG&brand=Westinghouse",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/d7/8d/d78d3191c7132123d7d381a32f356208fa015d931deb9987f64aaf7f9d0040b3.json",
+            "evidence/web/sha256/4e/34/4e3445fc5041b65412e1ab920bab32aac5486589936686b42f9d5a98d543a07c.pdf",
+            "receipt:dab7e0201c73d3150c0203d724df7a89549096a7480224a5bbf61b42f1a01382"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "4e3445fc5041b65412e1ab920bab32aac5486589936686b42f9d5a98d543a07c"
+        },
+        {
           "documentId": "source:doc_8dbac7c82459ea9840ee0ca6",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/2/8/e/5/28e529aa5ffcd95378006c15fb71e07ca3bb1737_WBB3700WG_Westinghouse_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -226467,8 +226487,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Westinghouse"

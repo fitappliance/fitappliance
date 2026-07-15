@@ -206,7 +206,16 @@ function sumKnown(base, ...clearances) {
 
 function reviewedFields(product) {
   const review = product?.evidence?.v2_resolution ?? product?.evidence?.v2_review;
-  return new Set(review?.approved_fields ?? []);
+  const fields = new Set(review?.approved_fields ?? []);
+  for (const [field, evidence] of Object.entries(
+    product?.geometry_v2_provenance?.fieldEvidence ?? {}
+  )) {
+    if (/^[a-f0-9]{64}$/i.test(String(evidence?.contentSha256 ?? ''))
+      && /^[a-f0-9]{64}$/i.test(String(evidence?.receiptBindingSha256 ?? ''))) {
+      fields.add(field);
+    }
+  }
+  return fields;
 }
 
 function getEvidenceTrustLevel(product) {
@@ -262,26 +271,28 @@ function getEvidenceTrustCopy(product) {
       };
     }
     if (trustLevel === 'dimensions_verified') {
-      const hasApprovedSpace = Object.keys(product?.evidence?.v2_review?.approved_space_values ?? {}).length > 0;
+      const hasApprovedSpace = [...reviewedFields(product)].some((field) => (
+        field.startsWith('installation.') || field.startsWith('operation.') || field.startsWith('service.')
+      ));
       if (hasApprovedSpace) {
         return {
           label: 'Dimensions Verified',
           titleSuffix: 'Exact Dimensions & Partial Space Evidence',
           descriptionVerb: 'PDF-backed dimensions with selected manufacturer space requirements',
-          sourceProperty: 'Official PDF dimensions and selected space fields captured by FitAppliance; remaining space requirements are unknown or estimated',
+          sourceProperty: 'Official PDF dimensions and selected space fields captured by FitAppliance; remaining space requirements are unknown',
           sourceLabel: 'Official dimensions and partial space evidence',
-          faqVerification: 'Partially. FitAppliance has verified the physical dimensions and selected installation or operating-space fields from manufacturer PDF evidence. Remaining space requirements are still unknown or estimated.',
-          cavityAnswerSuffix: 'using approved fields where available and estimates for the remaining requirements.'
+          faqVerification: 'Partially. FitAppliance has verified the physical dimensions and selected installation or operating-space fields from manufacturer PDF evidence. Remaining space requirements are unknown.',
+          cavityAnswerSuffix: 'after confirming the remaining model-specific space requirements.'
         };
       }
       return {
         label: 'Dimensions Verified',
-        titleSuffix: 'Exact Dimensions & Clearance Estimate',
-        descriptionVerb: 'PDF-backed dimensions with conservative clearance estimates',
-        sourceProperty: 'Official PDF dimensions evidence captured by FitAppliance; clearance is estimated until explicit installation clearance is verified',
+        titleSuffix: 'Exact Dimensions & Clearance Pending',
+        descriptionVerb: 'PDF-backed dimensions; installation clearance remains unknown',
+        sourceProperty: 'Official PDF dimensions evidence captured by FitAppliance; clearance remains unknown until explicit installation evidence is captured',
         sourceLabel: 'Official dimensions evidence',
-        faqVerification: 'Partially. FitAppliance has verified the physical dimensions from PDF evidence, but installation clearance is treated as an estimate until explicit clearance evidence is captured.',
-        cavityAnswerSuffix: 'using the currently recorded clearance estimate.'
+        faqVerification: 'Partially. FitAppliance has verified the physical dimensions from PDF evidence, but installation clearance remains unknown until explicit evidence is captured.',
+        cavityAnswerSuffix: 'after confirming the model-specific installation clearance.'
       };
     }
     return {
@@ -322,17 +333,17 @@ function getEvidenceTrustCopy(product) {
         sourceProperty: `Official ${evidenceAdjective} dimensions and selected space fields captured by FitAppliance; remaining space requirements are unknown`,
         sourceLabel: manufacturerHtml ? 'Official manufacturer dimensions and partial space evidence' : 'Official dimensions and partial space evidence',
         faqVerification: `Partially. FitAppliance has verified the physical dimensions and selected installation or operating-space fields from ${evidenceMedium} evidence. Remaining space requirements are unknown.`,
-        cavityAnswerSuffix: 'using approved fields where available and estimates for the remaining requirements.'
+        cavityAnswerSuffix: 'after confirming the remaining model-specific space requirements.'
       };
     }
     return {
       label: 'Dimensions Verified',
-      titleSuffix: 'Exact Dimensions & Clearance Estimate',
-      descriptionVerb: `${descriptionAdjective}-backed dimensions with conservative clearance estimates`,
+      titleSuffix: 'Exact Dimensions & Clearance Pending',
+      descriptionVerb: `${descriptionAdjective}-backed dimensions; installation clearance remains unknown`,
       sourceProperty: `Official ${evidenceAdjective} dimensions evidence captured by FitAppliance; clearance is unknown until explicit installation evidence is captured`,
       sourceLabel: manufacturerHtml ? 'Official manufacturer dimensions evidence' : 'Official dimensions evidence',
       faqVerification: `Partially. FitAppliance has verified the physical dimensions from ${evidenceMedium} evidence, but installation clearance remains unknown until explicit evidence is captured.`,
-      cavityAnswerSuffix: 'using the currently recorded clearance estimate.'
+      cavityAnswerSuffix: 'after confirming the model-specific installation clearance.'
     };
   }
   return {

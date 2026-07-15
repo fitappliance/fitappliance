@@ -1,26 +1,26 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-15T16:59:58.049Z",
-  "sourceAcquisitionQueueSha256": "bf42a62e62c61e0e67076e3b5d897fa8b7f3f2a27da8ffe8855fddabc050645a",
+  "generatedAt": "2026-07-15T17:26:39.491Z",
+  "sourceAcquisitionQueueSha256": "a68407263e8e5ae562b1698bcf3bee48d71ec8343dd720fe4731b9364edfe98b",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7952,
+    "acquisitionRecords": 7951,
     "fetchJobs": 6,
-    "targets": 7676,
-    "resolverOnlyTargets": 7670,
+    "targets": 7675,
+    "resolverOnlyTargets": 7669,
     "candidateEdges": 6,
-    "uniqueReferences": 7676,
+    "uniqueReferences": 7675,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 1948,
-      "CURRENT_RETAIL": 1176,
+      "CURRENT_RETAIL": 1175,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 1004,
+      "P0_CURRENT_MISSING_DIMENSIONS": 1003,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1929,
       "P2_CURRENT_CONFIRMATION": 165,
       "P3_HISTORICAL_CONFIRMATION": 4520,
@@ -27836,43 +27836,6 @@
           "dimensionsMm": {
             "width": 598,
             "height": 1645,
-            "depth": 650
-          }
-        }
-      ],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [],
-      "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_c541a0122c00cd421c5f0d51",
-      "referenceId": "fa_ref_e999c6d31c2d8fd52c6de8aa",
-      "legacyRuntimeId": "ao-56613",
-      "canonicalProductId": "fa_prod_2fc3e12634a9554e2f0a9526",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBB3700WG",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_8dbac7c82459ea9840ee0ca6",
-        "legacy:data/pdf-evidence-raw/WBB3700WG.json",
-        "source:doc_8dbac7c82459ea9840ee0ca6"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_8dbac7c82459ea9840ee0ca6",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 1755,
             "depth": 650
           }
         }

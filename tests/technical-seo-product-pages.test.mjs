@@ -200,6 +200,9 @@ test('technical SEO: machine-resolved pages omit unknown clearance instead of in
   assert.match(html, /<tr><th>Rear<\/th><td>Unknown<\/td><\/tr>/);
   assert.doesNotMatch(html, /PDF-backed/);
   assert.match(html, /manufacturer-backed/i);
+  assert.match(html, /Partial Space Evidence/);
+  assert.match(html, /selected manufacturer space requirements/);
+  assert.doesNotMatch(html, /estimate|estimated/i);
   assert.doesNotMatch(html, /Allow at least 913mm width, 1807mm height, and 803mm depth/);
   assert.match(html, /Width and depth clearance remain unknown/);
 });
@@ -364,7 +367,9 @@ test('technical SEO: dimensions-only and retailer spec pages avoid Verified Fit 
     data_source: 'official_pdf_dimensions_only',
   }, 'dimensions'));
   assert.match(dimensionsOnly, /Dimensions Verified/);
-  assert.match(dimensionsOnly, /Exact Dimensions &amp; Clearance Estimate/);
+  assert.match(dimensionsOnly, /Exact Dimensions &amp; Clearance Pending/);
+  assert.match(dimensionsOnly, /installation clearance remains unknown/);
+  assert.doesNotMatch(dimensionsOnly, /clearance estimate|clearance estimates/i);
   assert.doesNotMatch(dimensionsOnly, /Verified PDF evidence/);
 
   const retailerSpec = buildProductPageHtml(makeProduct({
@@ -381,6 +386,33 @@ test('technical SEO: dimensions-only and retailer spec pages avoid Verified Fit 
   assert.match(retailerSpec, /Retailer Spec/);
   assert.match(retailerSpec, /Retailer Dimensions/);
   assert.doesNotMatch(retailerSpec, /Verified Cavity Fit/);
+});
+
+test('technical SEO: receipt-bound partial PDF space evidence is incomplete, never estimated', () => {
+  const partial = receiptBoundProduct({
+    evidence: {
+      has_pdf_evidence: true,
+      source_url: 'https://example.com/partial-space.pdf',
+      verified_at: '2026-07-16',
+      trust_level: 'dimensions_verified',
+      verified_fields: ['dimensions'],
+      clearance_verified: false,
+    },
+    data_source: 'official_pdf_dimensions_only',
+  }, 'dimensions');
+  partial.geometry_v2.installation.topMm = 25;
+  partial.geometry_v2_provenance.fieldEvidence['installation.topMm'] = {
+    sourceUrl: partial.evidence.source_url,
+    contentSha256: 'a'.repeat(64),
+    receiptBindingSha256: 'b'.repeat(64),
+  };
+
+  const html = buildProductPageHtml(partial);
+
+  assert.match(html, /Exact Dimensions &amp; Partial Space Evidence/);
+  assert.match(html, /selected manufacturer space requirements/);
+  assert.match(html, /remaining space requirements are unknown/i);
+  assert.doesNotMatch(html, /estimate|estimated/i);
 });
 
 test('technical SEO: receipt-bound manufacturer HTML is not described as PDF evidence', () => {

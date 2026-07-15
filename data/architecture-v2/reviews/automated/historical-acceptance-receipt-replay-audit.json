@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T17:00:18.393Z",
-  "sourceBundleSha256": "1752ab902c6883b7877fb352155305ca645fb6600f6fea594234c41ca84f5401",
+  "generatedAt": "2026-07-15T17:26:20.007Z",
+  "sourceBundleSha256": "e6f37763bbc77a8970a2ecbbd03ca362c159fff236ab10aca268b698b7e5d854",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -1656,6 +1656,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_c541a0122c00cd421c5f0d51",
+      "referenceId": "fa_ref_e999c6d31c2d8fd52c6de8aa",
+      "brand": "Westinghouse",
+      "model": "WBB3700WG",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WBB3700WG&brand=Westinghouse",
+      "sourcePdfSha256": "4e3445fc5041b65412e1ab920bab32aac5486589936686b42f9d5a98d543a07c",
+      "contentSha256": "4e3445fc5041b65412e1ab920bab32aac5486589936686b42f9d5a98d543a07c",
+      "receiptBindingSha256": "dab7e0201c73d3150c0203d724df7a89549096a7480224a5bbf61b42f1a01382",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/d7/8d/d78d3191c7132123d7d381a32f356208fa015d931deb9987f64aaf7f9d0040b3.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_c98f8586024d44a327356703",
       "referenceId": "fa_ref_1ac391fe8ec81d62e37edadf",
       "brand": "ASKO",
@@ -2049,11 +2063,11 @@
     }
   ],
   "summary": {
-    "entries": 124,
-    "sources": 146,
-    "passed": 146,
+    "entries": 125,
+    "sources": 147,
+    "passed": 147,
     "failed": 0
   },
-  "checkedObjects": 316,
-  "semanticAuditSha256": "0e2136e0a43dd3ee0376d6884d10315315040ef50bbef55c9a869d5aa69f4140"
+  "checkedObjects": 319,
+  "semanticAuditSha256": "198d6e39ddac0d09aabbbae7be2bddf5766cb7bc39411dd2fd69d540b6f8736a"
 }

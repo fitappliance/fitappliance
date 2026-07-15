@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1534,
-    "fetchJobs": 1497,
-    "targets": 1531,
-    "candidateEdges": 1534,
+    "documents": 1533,
+    "fetchJobs": 1496,
+    "targets": 1530,
+    "candidateEdges": 1533,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1531,
+    "uniqueReferences": 1530,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 444,
-      "MEASURE_REQUIRED": 1062,
+      "MEASURE_REQUIRED": 1061,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 281,
-      "CURRENT_RETAIL": 1250
+      "CURRENT_RETAIL": 1249
     },
     "byCategory": {
       "dishwasher": 352,
       "dryer": 69,
-      "fridge": 879,
+      "fridge": 878,
       "washing_machine": 231
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1193,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1192,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 246,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 73,
+      "ALREADY_AUTO_FILL": 74,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -5059,32 +5059,6 @@
       ],
       "targetIds": [
         "recovery_target_ad882a82d6f761117e506ad3"
-      ]
-    },
-    {
-      "jobId": "recovery_70ace2874e9295c2ca9df416",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/8/e/5/28e529aa5ffcd95378006c15fb71e07ca3bb1737_WBB3700WG_Westinghouse_Specifications_Sheet.pdf",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_c541a0122c00cd421c5f0d51"
       ]
     },
     {
@@ -77256,47 +77230,6 @@
         "recovery_4d469e7ecfe6be40caa4f340"
       ],
       "primaryJobId": "recovery_4d469e7ecfe6be40caa4f340"
-    },
-    {
-      "referenceId": "fa_ref_e999c6d31c2d8fd52c6de8aa",
-      "legacyRuntimeId": "ao-56613",
-      "canonicalProductId": "fa_prod_2fc3e12634a9554e2f0a9526",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WBB3700WG",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 1755,
-        "depth": 650
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_c541a0122c00cd421c5f0d51",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_8dbac7c82459ea9840ee0ca6"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_8dbac7c82459ea9840ee0ca6",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 1755,
-            "depth": 650
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_70ace2874e9295c2ca9df416"
-      ],
-      "primaryJobId": "recovery_70ace2874e9295c2ca9df416"
     },
     {
       "referenceId": "fa_ref_598fc1e34c2740f9c06319af",
