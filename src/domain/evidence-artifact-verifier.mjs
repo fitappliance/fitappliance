@@ -390,6 +390,27 @@ function groupedDimensionValue(value) {
   return normalizedText(value).replace(/(\d)(mm|cm)\b/gi, '$1 $2');
 }
 
+function htmlHandleInclusiveDepthClaim(field, label, quote, context) {
+  if (field !== 'closedEnvelope.depthMm'
+    || !/(?:including|with)\s+(?:the\s+)?(?:(?:doors?\s*(?:and|&)\s*)?handles?|doors?\s+handles?)/i.test(label)
+    || !/(?<![A-Za-z])mm\b/i.test(`${label} ${quote}`)) return null;
+  const remainder = normalizedText(quote).replace(normalizedText(label), ' ');
+  const values = [...new Set(remainder.match(/(?<![\d.])\d+(?:\.\d+)?(?![\d.])/g) ?? [])].map(Number);
+  if (values.length !== 1 || !Number.isInteger(values[0])) return null;
+  const validated = claimFromEvidenceFragment(
+    field,
+    'Overall depth',
+    `Overall depth ${values[0]} mm`,
+    context,
+  );
+  return {
+    ...validated,
+    label: normalizedText(label),
+    quote: normalizedText(quote),
+    semanticBasis: 'explicit_including_handle',
+  };
+}
+
 export function extractClaimsFromHtml(bytes, { category, fields }) {
   if (!Array.isArray(fields) || !fields.length) throw new TypeError('requested evidence fields required');
   const $ = load(Buffer.from(bytes).toString('utf8'));
@@ -419,7 +440,12 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
       }
       for (const field of fields) {
         const rule = evidenceFieldRules[field];
-        if (!rule || !rule.label.test(label) || (rule.reject && rule.reject.test(label))) continue;
+        if (!rule || !rule.label.test(label)) continue;
+        if (rule.reject && rule.reject.test(label)) {
+          const handleDepth = htmlHandleInclusiveDepthClaim(field, label, quote, { category });
+          if (handleDepth) structuredCandidates.get(field).push(handleDepth);
+          continue;
+        }
         try {
           structuredCandidates.get(field).push(claimFromEvidenceFragment(field, label, quote, { category }));
         } catch {
@@ -451,7 +477,12 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
     }
     for (const field of fields) {
       const rule = evidenceFieldRules[field];
-      if (!rule || !rule.label.test(label) || (rule.reject && rule.reject.test(label))) continue;
+      if (!rule || !rule.label.test(label)) continue;
+      if (rule.reject && rule.reject.test(label)) {
+        const handleDepth = htmlHandleInclusiveDepthClaim(field, label, quote, { category });
+        if (handleDepth) candidates.get(field).push(handleDepth);
+        continue;
+      }
       try {
         candidates.get(field).push(claimFromEvidenceFragment(field, label, quote, { category }));
       } catch {
@@ -468,8 +499,15 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
       ));
       if (explicitlyClosed.length) preferred = explicitlyClosed;
       else {
-        const explicitAxisSequence = preferred.filter((claim) => claim.semanticBasis === 'explicit_axis_sequence');
-        if (explicitAxisSequence.length) preferred = explicitAxisSequence;
+        const handleInclusive = preferred.filter((claim) => (
+          /(?:including|with)\s+(?:the\s+)?(?:(?:doors?\s*(?:and|&)\s*)?handles?|doors?\s+handles?)/i
+            .test(claim.label ?? '')
+        ));
+        if (handleInclusive.length) preferred = handleInclusive;
+        else {
+          const explicitAxisSequence = preferred.filter((claim) => claim.semanticBasis === 'explicit_axis_sequence');
+          if (explicitAxisSequence.length) preferred = explicitAxisSequence;
+        }
       }
     } else {
       const explicitAxisSequence = preferred.filter((claim) => claim.semanticBasis === 'explicit_axis_sequence');

@@ -1175,6 +1175,27 @@ test('MinerU preserves adjustable height while parsing multiple explicit axes fr
   });
 });
 
+test('MinerU inherits one trailing unit across an x-separated labelled dimension sequence', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    pageHeader('SBI8EDS01A'),
+    paragraph('Product Dimensions (H x W x D)'),
+    paragraph('- Height 865-925 x Width 598 mm x Depth 573 mm'),
+  ]]));
+
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Bosch', model: 'SBI8EDS01A', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 598 },
+    'closedEnvelope.heightMm': { kind: 'range', minMm: 865, maxMm: 925 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 573 },
+  });
+});
+
 test('MinerU reconnects an explicit grouped dimension label to its next-row value', () => {
   const bytes = mineruJson(`<table>
     <tr><td>Model Number</td><td>HRTF206</td></tr>

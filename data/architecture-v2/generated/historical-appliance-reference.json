@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "e1b8398f69d3dc85245c36f92b412252d16c1169a5287707404480d716df2556"
+    "historical-recovery:historical-recovery-cumulative-v1": "1eaace93b978a9ec3494d91d5ca8a4a5d198db547829b07f306b6765ca74b990"
   },
   "records": [
     {
@@ -10714,6 +10714,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_2c2fb5193d6ff3a6710f2455",
+          "snapshotSha256": "44d117e3f25f24016d5dd193cfa9337a402cc328a586bf4b51e69157bcff243d",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -10723,7 +10730,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_2c2fb5193d6ff3a6710f2455",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBI8EDS01A.pdf",
+          "contentSha256": "44d117e3f25f24016d5dd193cfa9337a402cc328a586bf4b51e69157bcff243d",
+          "receiptBindingSha256": "2fc4c213a502ab5debf6bbf23a200f5241528647dab500b268f7a0614358e78d",
+          "verifiedAt": "2026-07-15T14:20:46.470Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "15b0a0e36fb00cc9abd151221dc7e30e974fb314ab348c74b170ebb2ff0afb0c"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "15b0a0e36fb00cc9abd151221dc7e30e974fb314ab348c74b170ebb2ff0afb0c"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "15b0a0e36fb00cc9abd151221dc7e30e974fb314ab348c74b170ebb2ff0afb0c"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/44/d1/44d117e3f25f24016d5dd193cfa9337a402cc328a586bf4b51e69157bcff243d.pdf"
+        }
       ]
     },
     {
@@ -10865,6 +10901,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a176c9162842080a746da1e5",
+          "snapshotSha256": "c36995b1a3dcc1493d8f37fafc9c5c6d7c217d5b86fb8044f5ba0d8184c8f694",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -10874,7 +10917,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a176c9162842080a746da1e5",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV8EDX01A.pdf",
+          "contentSha256": "c36995b1a3dcc1493d8f37fafc9c5c6d7c217d5b86fb8044f5ba0d8184c8f694",
+          "receiptBindingSha256": "2ac5d0afc785e1f1efb14a77ab2346759f3517a4dcdf83a876fbf6cf7ca4ef39",
+          "verifiedAt": "2026-07-15T14:20:52.884Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "b252975acfe7e04539f67c1b5d6428f36c0d218c1a7213a531ecc7c2166234d9"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "b252975acfe7e04539f67c1b5d6428f36c0d218c1a7213a531ecc7c2166234d9"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "b252975acfe7e04539f67c1b5d6428f36c0d218c1a7213a531ecc7c2166234d9"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/c3/69/c36995b1a3dcc1493d8f37fafc9c5c6d7c217d5b86fb8044f5ba0d8184c8f694.pdf"
+        }
       ]
     },
     {
@@ -54310,14 +54382,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 850,
+        "depth": 598
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3c74fb82f16e38b2320bd07d",
+          "snapshotSha256": "b1abcd46a598693fc158e2a75f70dbf517ea88b785818b0ae1539120268a759c",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -54326,8 +54409,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_3c74fb82f16e38b2320bd07d",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WSF6606X&brand=Westinghouse",
+          "contentSha256": "b1abcd46a598693fc158e2a75f70dbf517ea88b785818b0ae1539120268a759c",
+          "receiptBindingSha256": "883fafd1e751edd970bb05b2cac2b71b377b82991c027b8e38425185779bcb22",
+          "verifiedAt": "2026-07-15T14:20:49.580Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "caed088090456dc9ddb38db8a0b4b9246d198e865d328c62acf460f6fe284de2"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "caed088090456dc9ddb38db8a0b4b9246d198e865d328c62acf460f6fe284de2"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "caed088090456dc9ddb38db8a0b4b9246d198e865d328c62acf460f6fe284de2"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/b1/ab/b1abcd46a598693fc158e2a75f70dbf517ea88b785818b0ae1539120268a759c.pdf"
+        }
       ]
     },
     {
@@ -60956,14 +61065,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 842,
+        "depth": 665
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_e6cc35e4124fdc96f7ea95c4",
+          "snapshotSha256": "b09b565beb1a9e0bd29bcbcb295a657c74ee1412bca4296a693ca49569006b01",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -60972,8 +61092,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_e6cc35e4124fdc96f7ea95c4",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTX88MH0AU.pdf",
+          "contentSha256": "b09b565beb1a9e0bd29bcbcb295a657c74ee1412bca4296a693ca49569006b01",
+          "receiptBindingSha256": "69b147f470647fb43563c38000a6c5b0acd210ca6cc6650c603ec8bbdb97f5a3",
+          "verifiedAt": "2026-07-15T14:21:01.246Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "a6844dbfd75da5f095fed99659b29a2a821a3fd99801e884de189682c9e2a983"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "a6844dbfd75da5f095fed99659b29a2a821a3fd99801e884de189682c9e2a983"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "a6844dbfd75da5f095fed99659b29a2a821a3fd99801e884de189682c9e2a983"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/b0/9b/b09b565beb1a9e0bd29bcbcb295a657c74ee1412bca4296a693ca49569006b01.pdf"
+        }
       ]
     },
     {
@@ -62781,14 +62927,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 795,
+        "depth": 600
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_06cfe065510d3da5f95099e3",
+          "snapshotSha256": "9ec95da728ee5b2059853a9bd0ef1c33a119d761d46d9047f1e2bb5d9a372872",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -62797,8 +62954,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_06cfe065510d3da5f95099e3",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EDV705HQWA&brand=Electrolux",
+          "contentSha256": "9ec95da728ee5b2059853a9bd0ef1c33a119d761d46d9047f1e2bb5d9a372872",
+          "receiptBindingSha256": "6e788b77e0c082e84f72313f3048161157c7b88d6204b3b817f66ee0dd7e8292",
+          "verifiedAt": "2026-07-15T14:20:47.193Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "095f2e3bb94e883d1dd7d648382a40c85f55d64953d8e42a957b64a0eea97ac6"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "095f2e3bb94e883d1dd7d648382a40c85f55d64953d8e42a957b64a0eea97ac6"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "095f2e3bb94e883d1dd7d648382a40c85f55d64953d8e42a957b64a0eea97ac6"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/9e/c9/9ec95da728ee5b2059853a9bd0ef1c33a119d761d46d9047f1e2bb5d9a372872.pdf"
+        }
       ]
     },
     {
@@ -70399,9 +70582,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 830,
+        "depth": 585
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dryer",
@@ -70414,6 +70601,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_9a010a641a1dd84d8b79cb07",
+          "snapshotSha256": "4e69474c3d3d00e34a4a275b856291a81dc1fb855c27d4e5f494b9e1b8fd0640",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -70421,9 +70615,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_9a010a641a1dd84d8b79cb07",
+          "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwfff7c39c/QRG/AU/QRG-AU-61428.pdf",
+          "contentSha256": "4e69474c3d3d00e34a4a275b856291a81dc1fb855c27d4e5f494b9e1b8fd0640",
+          "receiptBindingSha256": "578dd298d8f1f857ea5ee089ec578d70f5e9dbe9e4540197adf02e06b4a81dbf",
+          "verifiedAt": "2026-07-15T14:20:55.836Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "28f39dd19941f1e5a0f85c0fec6da6c92fe039b86ea7b072473b1503a1e25fd4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "28f39dd19941f1e5a0f85c0fec6da6c92fe039b86ea7b072473b1503a1e25fd4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "8fb1066c0cba9d576380a42d34b8b8e4a467aec6da6dec8a52e4da7b2246d8bb"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/4e/69/4e69474c3d3d00e34a4a275b856291a81dc1fb855c27d4e5f494b9e1b8fd0640.pdf"
+        }
       ]
     },
     {
@@ -87391,9 +87611,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 795,
+        "depth": 520
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dryer",
@@ -87407,6 +87631,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_efdf552e3bb43ac444d03ce7",
+          "snapshotSha256": "af6c66a6b4726c55edbc403f5484498633c5f10a6c341ef2d5f7a4ebcaaca34b",
+          "sourceLines": [
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -87414,9 +87645,35 @@
       ],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_efdf552e3bb43ac444d03ce7",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WDV457H3WB&brand=Westinghouse",
+          "contentSha256": "af6c66a6b4726c55edbc403f5484498633c5f10a6c341ef2d5f7a4ebcaaca34b",
+          "receiptBindingSha256": "35fee62df818f5fe8e17ad1e76f6646a761ada9befcf55b7aa0d80dd8a5b78a5",
+          "verifiedAt": "2026-07-15T14:20:55.393Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "85920484bee581001e036016f7f1d833442a7588ae9f7c5479aff66f080997c0"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "85920484bee581001e036016f7f1d833442a7588ae9f7c5479aff66f080997c0"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "85920484bee581001e036016f7f1d833442a7588ae9f7c5479aff66f080997c0"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/af/6c/af6c66a6b4726c55edbc403f5484498633c5f10a6c341ef2d5f7a4ebcaaca34b.pdf"
+        }
       ]
     },
     {
@@ -93713,9 +93970,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 905,
+        "height": 1830,
+        "depth": 731
+      },
       "sources": [
         {
           "sourceId": "energy-rating:fridge",
@@ -93728,6 +93989,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_9c49190ecfe0b14b0243eb02",
+          "snapshotSha256": "e98fba90f973b261e8b51c49f50dcb9fd3e23dc8a907df2c30999a0ecc209941",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -93735,9 +94003,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_9c49190ecfe0b14b0243eb02",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFN96VPEAA.pdf",
+          "contentSha256": "e98fba90f973b261e8b51c49f50dcb9fd3e23dc8a907df2c30999a0ecc209941",
+          "receiptBindingSha256": "633c29795a0e08b80a1c65cb3303bae8ae6046acb142a9f33bdd7178e79cf92d",
+          "verifiedAt": "2026-07-15T14:20:47.719Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "abd2f04e514707225518d03016a36c5398e3e2a73c2fdf456dd0bd28603c3b6a"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "abd2f04e514707225518d03016a36c5398e3e2a73c2fdf456dd0bd28603c3b6a"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "abd2f04e514707225518d03016a36c5398e3e2a73c2fdf456dd0bd28603c3b6a"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/e9/8f/e98fba90f973b261e8b51c49f50dcb9fd3e23dc8a907df2c30999a0ecc209941.pdf"
+        }
       ]
     },
     {
@@ -186131,13 +186425,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 700,
+        "height": 1724,
+        "depth": 684
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_e06c5b87873d1f55ea1e2b96",
+          "snapshotSha256": "251ddd18eb8d3351cd27ca614bd79f840ddbd7bcb49b8e644968e25aa2851f30",
           "sourceLines": []
         }
       ],
@@ -186147,8 +186450,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_e06c5b87873d1f55ea1e2b96",
+          "sourceUrl": "https://www.lg.com/au/fridge-freezers/bottom-mount/gb-450uplx/",
+          "contentSha256": "251ddd18eb8d3351cd27ca614bd79f840ddbd7bcb49b8e644968e25aa2851f30",
+          "receiptBindingSha256": "e6d5afbdde0043f162f0140b400d174e00f1f43a824faf5a9892e087ccabab86",
+          "verifiedAt": "2026-07-15T14:21:06.055Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "251ddd18eb8d3351cd27ca614bd79f840ddbd7bcb49b8e644968e25aa2851f30"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "251ddd18eb8d3351cd27ca614bd79f840ddbd7bcb49b8e644968e25aa2851f30"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "251ddd18eb8d3351cd27ca614bd79f840ddbd7bcb49b8e644968e25aa2851f30"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/25/1d/251ddd18eb8d3351cd27ca614bd79f840ddbd7bcb49b8e644968e25aa2851f30.html"
+        }
       ]
     },
     {
@@ -262453,9 +262779,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 848,
+        "depth": 590
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -262468,6 +262798,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_bb241e205909db7b3d08040e",
+          "snapshotSha256": "506f165d07800c290c1371eb94bc5e9041273e285df6f8ce465b5dab8fb4f37f",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -262475,9 +262812,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_bb241e205909db7b3d08040e",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAW28620AU.pdf",
+          "contentSha256": "506f165d07800c290c1371eb94bc5e9041273e285df6f8ce465b5dab8fb4f37f",
+          "receiptBindingSha256": "1ea478e3d011f440625a7f58571c9f63438f622b662f5409c2e0af615cf6c780",
+          "verifiedAt": "2026-07-15T14:20:55.972Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "a0a9e4fd4156e8367d90e1dead7794a5e30e840b4bc8adaddbc4934b3703d5b9"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "a0a9e4fd4156e8367d90e1dead7794a5e30e840b4bc8adaddbc4934b3703d5b9"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "a0a9e4fd4156e8367d90e1dead7794a5e30e840b4bc8adaddbc4934b3703d5b9"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/50/6f/506f165d07800c290c1371eb94bc5e9041273e285df6f8ce465b5dab8fb4f37f.pdf"
+        }
       ]
     },
     {
@@ -267120,14 +267483,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 659
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_ae3b33fd936ea12ce1f15efb",
+          "snapshotSha256": "a4e5c7e4fac09d686457572088fa90477002b4faaf673362de432529818b77b6",
+          "sourceLines": [
+            4
+          ]
         }
       ],
       "catalogProductIds": [
@@ -267136,8 +267510,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_ae3b33fd936ea12ce1f15efb",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=EWF8524CDWA&brand=Electrolux",
+          "contentSha256": "a4e5c7e4fac09d686457572088fa90477002b4faaf673362de432529818b77b6",
+          "receiptBindingSha256": "47e85a6eb9cfc2227bb3aa43f7cf348be8c9e8cfa2695e75b850d00b00294e5f",
+          "verifiedAt": "2026-07-15T14:20:59.330Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "e9d5e87169b0e4d7111d14d94997fd7e9576e015a7f4b3892b9a798a89c76283"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "e9d5e87169b0e4d7111d14d94997fd7e9576e015a7f4b3892b9a798a89c76283"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "e9d5e87169b0e4d7111d14d94997fd7e9576e015a7f4b3892b9a798a89c76283"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/a4/e5/a4e5c7e4fac09d686457572088fa90477002b4faaf673362de432529818b77b6.pdf"
+        }
       ]
     },
     {
@@ -274467,9 +274867,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 645
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -274482,6 +274886,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_f8259b57fbeaf925ef6595c5",
+          "snapshotSha256": "de48dcee87f093ba6e31e498ca246df18cb23122d95f0ffad63e73a5fad8624c",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -274489,9 +274900,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_f8259b57fbeaf925ef6595c5",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw00ffd141/QRG/AU/QRG-AU-93254.pdf",
+          "contentSha256": "de48dcee87f093ba6e31e498ca246df18cb23122d95f0ffad63e73a5fad8624c",
+          "receiptBindingSha256": "e8d75549f113ec46b71cce2d8c668d1ee1ed1370d4d4298ffb55ed42f28b82f4",
+          "verifiedAt": "2026-07-15T14:21:07.206Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "c329506e1c6f73ff4e4b69e5731798a74c2dbf2ec9804304b1626d4303d5406e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "c329506e1c6f73ff4e4b69e5731798a74c2dbf2ec9804304b1626d4303d5406e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "c329506e1c6f73ff4e4b69e5731798a74c2dbf2ec9804304b1626d4303d5406e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/de/48/de48dcee87f093ba6e31e498ca246df18cb23122d95f0ffad63e73a5fad8624c.pdf"
+        }
       ]
     },
     {
@@ -315117,16 +315554,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4902,
-      "IDENTITY_ONLY": 3028,
-      "MODEL_RECEIPT": 66,
+      "IDENTITY_ONLY": 3018,
+      "MODEL_RECEIPT": 76,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4902,
-      "MEASURE_REQUIRED": 3028,
-      "AUTO_FILL": 77,
+      "MEASURE_REQUIRED": 3018,
+      "AUTO_FILL": 87,
       "QUARANTINED": 88
     }
   }

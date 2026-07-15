@@ -383,6 +383,28 @@ test('technical SEO: dimensions-only and retailer spec pages avoid Verified Fit 
   assert.doesNotMatch(retailerSpec, /Verified Cavity Fit/);
 });
 
+test('technical SEO: receipt-bound manufacturer HTML is not described as PDF evidence', () => {
+  const html = buildProductPageHtml(receiptBoundProduct({
+    evidence: {
+      has_pdf_evidence: false,
+      source_type: 'official_exact_model_product_page',
+      source_url: 'https://www.lg.com/au/fridges/gb-450uplx/',
+      verified_at: '2026-07-15',
+      trust_level: 'dimensions_verified',
+      verified_fields: ['dimensions'],
+      clearance_verified: false,
+      acceptance: { artifact_type: 'html' },
+    },
+    data_source: 'official_html_receipt_bound',
+  }, 'dimensions'));
+
+  assert.match(html, /Manufacturer-backed dimensions/);
+  assert.match(html, /from manufacturer page evidence/);
+  assert.match(html, /data-source="manufacturer-evidence"/);
+  assert.doesNotMatch(html, /data-source="pdf-evidence"/);
+  assert.doesNotMatch(html, /PDF-backed|from PDF evidence/);
+});
+
 test('technical SEO: product page exposes V2 field review without claiming clearance approval', () => {
   const html = buildProductPageHtml(makeProduct({
     evidence: {

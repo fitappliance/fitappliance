@@ -236,6 +236,46 @@ test('ordinary lower-authority disagreement requires independent official corrob
   assert.equal(result.conflictHints[0].kind, 'lower_authority_disagreement');
 });
 
+test('one complete exact official axis proof supersedes a disagreeing legacy catalog hint', () => {
+  const accepted = source('a'.repeat(64), { widthMm: 905, heightMm: 1830, depthMm: 731 });
+  const result = reconcileEvidenceClaims(IDENTITY, inventory([accepted]), {
+    verifyReceipt,
+    lowerAuthorityHints: [{
+      sourceRole: 'legacy_hint',
+      sourceId: 'legacy-catalog',
+      dimensionsMm: { widthMm: 910, heightMm: 1830, depthMm: 731 },
+    }],
+  });
+
+  assert.equal(result.status, 'accepted');
+  assert.equal(result.lowerAuthorityResolution, 'exact_official_axis_proof_over_legacy_hint');
+});
+
+test('a grouped tuple with an explicit handle-inclusive depth override is complete official axis proof', () => {
+  const accepted = source('a'.repeat(64), { widthMm: 598, heightMm: 842, depthMm: 665 });
+  accepted.claims = accepted.claims.map((claim) => (
+    claim.field === 'closedEnvelope.depthMm'
+      ? {
+        ...claim,
+        sourceLabel: 'Overall depth including door handle',
+        sourceAxisOrder: ['depth'],
+        includesHandle: true,
+      }
+      : { ...claim, sourceAxisOrder: ['height', 'width', 'depth'] }
+  ));
+  const result = reconcileEvidenceClaims(IDENTITY, inventory([accepted]), {
+    verifyReceipt,
+    lowerAuthorityHints: [{
+      sourceRole: 'legacy_hint',
+      sourceId: 'legacy-catalog',
+      dimensionsMm: { widthMm: 598, heightMm: 842, depthMm: 599 },
+    }],
+  });
+
+  assert.equal(result.status, 'accepted');
+  assert.equal(result.lowerAuthorityResolution, 'exact_official_axis_proof_over_legacy_hint');
+});
+
 test('a receipt-bound exact market API dimension representation corroborates its official PDF', () => {
   const dimensions = { widthMm: 595, heightMm: 850, depthMm: 654 };
   const pdf = source('a'.repeat(64), dimensions, {

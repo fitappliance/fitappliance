@@ -304,6 +304,18 @@ test('results require one typed terminal or accepted outcome per target', () => 
   assert.deepEqual(validateHistoricalEvidenceRecoveryResults(results({
     outcomes: [{ ...results().outcomes[0], reconciliation: exactAxisProof }],
   })).outcomes[0].reconciliation, exactAxisProof);
+  const exactLegacyProof = {
+    ...EMPTY_RECONCILIATION,
+    conflictHints: [{
+      sourceRole: 'legacy_hint', sourceId: 'legacy-catalog',
+      kind: 'lower_authority_disagreement', fields: ['widthMm'],
+      dimensionsMm: { widthMm: 910, heightMm: 1830, depthMm: 731 },
+    }],
+    lowerAuthorityResolution: 'exact_official_axis_proof_over_legacy_hint',
+  };
+  assert.deepEqual(validateHistoricalEvidenceRecoveryResults(results({
+    outcomes: [{ ...results().outcomes[0], reconciliation: exactLegacyProof }],
+  })).outcomes[0].reconciliation, exactLegacyProof);
   assert.throws(
     () => validateHistoricalEvidenceRecoveryResults(results({
       outcomes: [results().outcomes[0], results().outcomes[0]],

@@ -546,6 +546,19 @@ function paragraphRows(text) {
     const axisMatches = [...String(text).matchAll(/\b(width|wide|height|high|depth|deep)\b\s*:?\s*(\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?)\s*(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/gi)];
     const axis = { width: 'width', wide: 'width', height: 'height', high: 'height', depth: 'depth', deep: 'depth' };
     const axes = axisMatches.map((match) => axis[match[1].toLowerCase()]);
+    const inheritedUnitMatches = [...String(text).matchAll(/\b(width|wide|height|high|depth|deep)\b\s*:?\s*(\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?)\s*(mm|cm)?(?=\s*(?:[x×*]\s*(?=\b(?:width|wide|height|high|depth|deep)\b)|$))/gi)];
+    const inheritedAxes = inheritedUnitMatches.map((match) => axis[match[1].toLowerCase()]);
+    const inheritedUnits = [...new Set(inheritedUnitMatches.map((match) => match[3]?.toLowerCase()).filter(Boolean))];
+    if (inheritedUnitMatches.length > axisMatches.length
+      && inheritedUnitMatches.length >= 2
+      && new Set(inheritedAxes).size === inheritedUnitMatches.length
+      && inheritedUnits.length === 1) {
+      return inheritedUnitMatches.map((match) => ({
+        label: match[1],
+        value: `${match[2]} ${match[3] ?? inheritedUnits[0]}`,
+        quote: normalizedText(`${match[1]} ${match[2]} ${match[3] ?? inheritedUnits[0]}`),
+      }));
+    }
     if (axisMatches.length >= 2 && new Set(axes).size === axisMatches.length) {
       return axisMatches.map((match) => ({
         label: match[1],

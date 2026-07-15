@@ -205,7 +205,21 @@ function sourceAxisRepresentation(rows) {
     && new Set(firstOrder).size === DEFAULT_FIELDS.length
     && DEFAULT_FIELDS.every((field) => firstOrder.includes(claimAxis(field)))
     && orders.every((order) => JSON.stringify(order) === JSON.stringify(firstOrder));
-  return matrixBound ? `axis_matrix:${firstOrder.join(',')}` : null;
+  if (matrixBound) return `axis_matrix:${firstOrder.join(',')}`;
+
+  const completeOrders = orders.filter((order) => Array.isArray(order)
+    && order.length === DEFAULT_FIELDS.length
+    && new Set(order).size === DEFAULT_FIELDS.length
+    && DEFAULT_FIELDS.every((field) => order.includes(claimAxis(field))));
+  const commonCompleteOrder = completeOrders[0];
+  const mixedExplicit = commonCompleteOrder
+    && completeOrders.every((order) => JSON.stringify(order) === JSON.stringify(commonCompleteOrder))
+    && rows.every((row, index) => {
+      const order = row.claim.sourceAxisOrder;
+      return JSON.stringify(order) === JSON.stringify(commonCompleteOrder)
+        || (Array.isArray(order) && order.length === 1 && order[0] === expectedAxes[index]);
+    });
+  return mixedExplicit ? `mixed_explicit_axes:${commonCompleteOrder.join(',')}` : null;
 }
 
 function completeOfficialDimensionSources(matrix) {
@@ -348,8 +362,12 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
   const lowerAuthorityConflict = conflictHints.some((hint) => hint.kind === 'lower_authority_disagreement');
   const independentDimensionCorroboration = hasIndependentOfficialDimensionCorroboration(matrix);
   const marketApiDimensionCorroboration = hasReceiptBoundMarketApiDimensionCorroboration(matrix);
+  const exactOfficialLegacyProof = lowerAuthorityConflict
+    && conflictHints.filter((hint) => hint.kind === 'lower_authority_disagreement')
+      .every((hint) => hint.sourceRole === 'legacy_hint')
+    && hasExactOfficialAxisProof(matrix);
   const lowerAuthorityCorroborated = lowerAuthorityConflict
-    && (independentDimensionCorroboration || marketApiDimensionCorroboration);
+    && (independentDimensionCorroboration || marketApiDimensionCorroboration || exactOfficialLegacyProof);
   if (conflictingFields.length || (axisConflict && !axisCorroborated)
     || (lowerAuthorityConflict && !lowerAuthorityCorroborated)
     || supersession.violations.some((entry) => entry.reason === 'supersession_cycle')) {
@@ -394,7 +412,9 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
       ? {
         lowerAuthorityResolution: marketApiDimensionCorroboration
           ? 'official_market_api_dimension_corroboration'
-          : 'independent_official_dimension_corroboration',
+          : independentDimensionCorroboration
+            ? 'independent_official_dimension_corroboration'
+            : 'exact_official_axis_proof_over_legacy_hint',
       }
       : {}),
   };

@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1562,
-    "fetchJobs": 1525,
-    "targets": 1558,
-    "candidateEdges": 1562,
+    "documents": 1553,
+    "fetchJobs": 1516,
+    "targets": 1549,
+    "candidateEdges": 1553,
     "multiCandidateTargets": 4,
-    "uniqueReferences": 1558,
+    "uniqueReferences": 1549,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 451,
-      "MEASURE_REQUIRED": 1082,
+      "MEASURE_REQUIRED": 1073,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 287,
-      "CURRENT_RETAIL": 1271
+      "CURRENT_RETAIL": 1262
     },
     "byCategory": {
-      "dishwasher": 354,
-      "dryer": 72,
-      "fridge": 897,
-      "washing_machine": 235
+      "dishwasher": 353,
+      "dryer": 69,
+      "fridge": 895,
+      "washing_machine": 232
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1213,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1204,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 247,
       "OFFICIAL_RECEIPT_REBUILD": 14,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 45,
+      "ALREADY_AUTO_FILL": 54,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -2329,32 +2329,6 @@
       ],
       "targetIds": [
         "recovery_target_e9ff0fec576c5867811a1135"
-      ]
-    },
-    {
-      "jobId": "recovery_050a66b8662217c467ce8981",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/f/e/3/0fe318c71f2595d078d2e5effae0aae3b2f61b2a_KFN96VPEAA_Bosch_Specifications_Sheet.pdf",
-      "authorityBrand": "Bosch",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_9c49190ecfe0b14b0243eb02"
       ]
     },
     {
@@ -5426,32 +5400,6 @@
       ]
     },
     {
-      "jobId": "recovery_703dd82177e3afb27f560eb3",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/c/9/7/2c97bb71664b87674c3468e8ec4863ee31104110_EDV705HQWA_Electrolux_Specifications_Sheet.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_06cfe065510d3da5f95099e3"
-      ]
-    },
-    {
       "jobId": "recovery_6e5ec67d70cb8d63d463b084",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/2/c/a/8/2ca8bd3933bdec97b5a58e5e0b41136df1304419_EBE5307SB_L_Specifications_Sheet.pdf",
       "authorityBrand": "Electrolux",
@@ -6154,32 +6102,6 @@
       ]
     },
     {
-      "jobId": "recovery_a6a523fb9e56dbaf2b670d58",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/3/2/2/7/3227c0db8070ba9bc0550cca050bbd8d31e5293f_WSF6606X_Westinghouse_Specifications_Sheet.pdf",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_3c74fb82f16e38b2320bd07d"
-      ]
-    },
-    {
       "jobId": "recovery_4f3d83f0e85dd65de57680f1",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/3/2/2/a/322a09074a120ea481bd7c3c5a61d206466502db_Haier_HRF224FS_222L_Top_Mount_Fridge_User_Manual.pdf",
       "authorityBrand": "Haier",
@@ -6567,32 +6489,6 @@
       ],
       "targetIds": [
         "recovery_target_d4ea158916aa829f2a84f64f"
-      ]
-    },
-    {
-      "jobId": "recovery_bcd2c0755cb4f1e865ffe43c",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/3/6/9/e/369e27d944193230292afd299ced967232e313a0_Fisher___Paykel_WH8560P2_WashSmart__8.5kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_f8259b57fbeaf925ef6595c5"
       ]
     },
     {
@@ -11458,32 +11354,6 @@
       ]
     },
     {
-      "jobId": "recovery_21116a6a2865717812575db7",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/3/f/7/63f79721680e2e5ed67e7377fe4837f456e2413a_WAW28620AU_Bosch_Specifications_Sheet.pdf",
-      "authorityBrand": "Bosch",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_bb241e205909db7b3d08040e"
-      ]
-    },
-    {
       "jobId": "recovery_d43d8d2846f8dc8dc991eddc",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/6/4/7/3/647316660d2d2be9d3a6ea20a97081356c6c1112_Midea_WQP6_3604_AU_Benchtop_Dishwasher_Specifications_Sheet.pdf",
       "authorityBrand": "Midea",
@@ -12521,32 +12391,6 @@
       ],
       "targetIds": [
         "recovery_target_010660fb4c2073671b3d6a2b"
-      ]
-    },
-    {
-      "jobId": "recovery_afc909777c430691ef00e7de",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/d/0/b/6d0b627e6071ee3537a6888a2c5737e78eec17b8_EWF8524CDWA_Electrolux_Specifications_Sheet.pdf",
-      "authorityBrand": "Electrolux",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_ae3b33fd936ea12ce1f15efb"
       ]
     },
     {
@@ -13951,32 +13795,6 @@
       ],
       "targetIds": [
         "recovery_target_c3c9af1bd826cac06e40e0d0"
-      ]
-    },
-    {
-      "jobId": "recovery_43a69c17a8945ac254c94088",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/7/a/4/1/7a415c04e3da8b6f0945b0ea1b890875116063e2_WTX88MH0AU_Bosch_Specifications_Sheet.pdf",
-      "authorityBrand": "Bosch",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_e6cc35e4124fdc96f7ea95c4"
       ]
     },
     {
@@ -16320,32 +16138,6 @@
       ]
     },
     {
-      "jobId": "recovery_4a48c323ebd98ddd5629ba81",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/8/f/5/6/8f56ab1cf8b3823cf9d3e3a71cb5af6dcb15da31_LG_GB_450UPLX_450L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
-      "authorityBrand": "LG",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_e06c5b87873d1f55ea1e2b96"
-      ]
-    },
-    {
       "jobId": "recovery_a24ccb54d1743dcf28de3fae",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/8/f/8/8/8f88b6c4fdc6ff288e718c2b5f06e8343cdd7590_E442BLXFDJ5_Fisher___Paykel_Specifications_Sheet.pdf",
       "authorityBrand": "Fisher & Paykel",
@@ -17773,32 +17565,6 @@
       ],
       "targetIds": [
         "recovery_target_8bb6f9f5b2e877e3f122686a"
-      ]
-    },
-    {
-      "jobId": "recovery_b2543dd3ba8836852d344236",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/f/0/d/9f0d56c6ffe998a4d14e17ae86309dbc1af5d042_HDV60A1_Haier_Specifications_Sheet.pdf",
-      "authorityBrand": "Haier",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_9a010a641a1dd84d8b79cb07"
       ]
     },
     {
@@ -43874,47 +43640,6 @@
       "primaryJobId": "recovery_f6b07b3c329c27a1e6fcd0f9"
     },
     {
-      "referenceId": "fa_ref_74619f76a94becad9e9993d0",
-      "legacyRuntimeId": "ao-140367",
-      "canonicalProductId": "fa_prod_0b8ac4f5a56110f2b8fefc3d",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KFN96VPEAA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 910,
-        "height": 1830,
-        "depth": 731
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_9c49190ecfe0b14b0243eb02",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_d519adce1ec00df6538f4536"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_d519adce1ec00df6538f4536",
-          "dimensionsMm": {
-            "width": 910,
-            "height": 1830,
-            "depth": 731
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_050a66b8662217c467ce8981"
-      ],
-      "primaryJobId": "recovery_050a66b8662217c467ce8981"
-    },
-    {
       "referenceId": "fa_ref_366ce5b1a82c376b983e138d",
       "legacyRuntimeId": "ao-99518",
       "canonicalProductId": "fa_prod_9d4d8eac86d4f8f17710eaf9",
@@ -47605,47 +47330,6 @@
       "primaryJobId": "recovery_a9c6577c1850d1b61d78e82a"
     },
     {
-      "referenceId": "fa_ref_66551c6aa9200f2cad996353",
-      "legacyRuntimeId": "ao-63683",
-      "canonicalProductId": "fa_prod_f1be11dd3826a3a3ce42fd1e",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WAW28620AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 848,
-        "depth": 590
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_bb241e205909db7b3d08040e",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_5dd83a4f4d57b895d829b74c"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_5dd83a4f4d57b895d829b74c",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 848,
-            "depth": 590
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_21116a6a2865717812575db7"
-      ],
-      "primaryJobId": "recovery_21116a6a2865717812575db7"
-    },
-    {
       "referenceId": "fa_ref_89c81e01f803afa5e94914c7",
       "legacyRuntimeId": "ao-63684",
       "canonicalProductId": "fa_prod_ffb0888bb9c56577ae083acc",
@@ -48054,47 +47738,6 @@
         "recovery_50ad1100d01e55d47d419250"
       ],
       "primaryJobId": "recovery_50ad1100d01e55d47d419250"
-    },
-    {
-      "referenceId": "fa_ref_0e6a635cbea4fb2b1f9c23d4",
-      "legacyRuntimeId": "ao-93506",
-      "canonicalProductId": "fa_prod_df0cea25e58cd67b3bc2a512",
-      "category": "dryer",
-      "brand": "Bosch",
-      "model": "WTX88MH0AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 842,
-        "depth": 599
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_e6cc35e4124fdc96f7ea95c4",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_fe80653f59a95b15617fa34e"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_fe80653f59a95b15617fa34e",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 842,
-            "depth": 599
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_43a69c17a8945ac254c94088"
-      ],
-      "primaryJobId": "recovery_43a69c17a8945ac254c94088"
     },
     {
       "referenceId": "fa_ref_3081a6936c014ebb6089517d",
@@ -50311,47 +49954,6 @@
       "primaryJobId": "recovery_be984280564c4d64113078eb"
     },
     {
-      "referenceId": "fa_ref_4052fd621e7019acb4bbb36c",
-      "legacyRuntimeId": "ao-72421",
-      "canonicalProductId": "fa_prod_96f445ec74af3e8d50bba538",
-      "category": "dryer",
-      "brand": "Electrolux",
-      "model": "EDV705HQWA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 795,
-        "depth": 600
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_06cfe065510d3da5f95099e3",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_52cd1312015cb277b001cdfa"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_52cd1312015cb277b001cdfa",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 795,
-            "depth": 600
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_703dd82177e3afb27f560eb3"
-      ],
-      "primaryJobId": "recovery_703dd82177e3afb27f560eb3"
-    },
-    {
       "referenceId": "fa_ref_89b9e744f7753acb832d737c",
       "legacyRuntimeId": "ao-53529",
       "canonicalProductId": "fa_prod_4a51dc8365384281199aa10b",
@@ -51416,47 +51018,6 @@
         "recovery_ceeae109cc075f5ac1a95502"
       ],
       "primaryJobId": "recovery_ceeae109cc075f5ac1a95502"
-    },
-    {
-      "referenceId": "fa_ref_01a0cb95bfabac64d891f237",
-      "legacyRuntimeId": "ao-73253",
-      "canonicalProductId": "fa_prod_3aba735916230a566785b318",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWF8524CDWA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 659
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_ae3b33fd936ea12ce1f15efb",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c5f330f73ad45f1f7a94e880"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c5f330f73ad45f1f7a94e880",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 659
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_afc909777c430691ef00e7de"
-      ],
-      "primaryJobId": "recovery_afc909777c430691ef00e7de"
     },
     {
       "referenceId": "fa_ref_1d7d89a4ade9dc5fd523fddf",
@@ -57855,47 +57416,6 @@
       "primaryJobId": "recovery_2ccd27c2617fc0bcf8932ef0"
     },
     {
-      "referenceId": "fa_ref_2d93ac8f6476007052a6cc88",
-      "legacyRuntimeId": "ao-50911",
-      "canonicalProductId": "fa_prod_81cb382519d1ca31ea2e97cf",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WH8560P2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 645
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_f8259b57fbeaf925ef6595c5",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a99bf8b11a5c606d16b6c36d"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a99bf8b11a5c606d16b6c36d",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 645
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_bcd2c0755cb4f1e865ffe43c"
-      ],
-      "primaryJobId": "recovery_bcd2c0755cb4f1e865ffe43c"
-    },
-    {
       "referenceId": "fa_ref_3994a3a30c0ae9193c217bf4",
       "legacyRuntimeId": "discovery-washing-machine-fisher-paykel-wh8560p3",
       "canonicalProductId": "fa_prod_a475fff78e37f8b3c4ef8948",
@@ -58714,47 +58234,6 @@
         "recovery_21934ab96cbcd7aae625f612"
       ],
       "primaryJobId": "recovery_21934ab96cbcd7aae625f612"
-    },
-    {
-      "referenceId": "fa_ref_6700a70e9c4deb1706d2f4fc",
-      "legacyRuntimeId": "ao-56933",
-      "canonicalProductId": "fa_prod_5ad585ddca84bf5132fda9fa",
-      "category": "dryer",
-      "brand": "Haier",
-      "model": "HDV60A1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 830,
-        "depth": 585
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_9a010a641a1dd84d8b79cb07",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_913348b8ef6eb337fda4fbb3"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_913348b8ef6eb337fda4fbb3",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 830,
-            "depth": 585
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_b2543dd3ba8836852d344236"
-      ],
-      "primaryJobId": "recovery_b2543dd3ba8836852d344236"
     },
     {
       "referenceId": "fa_ref_f431b02dee09b42e24d1a41f",
@@ -64946,47 +64425,6 @@
         "recovery_25eb93aad8c09b2f2605dbdb"
       ],
       "primaryJobId": "recovery_25eb93aad8c09b2f2605dbdb"
-    },
-    {
-      "referenceId": "fa_ref_7def943c6c2fc9704fd844b9",
-      "legacyRuntimeId": "ao-52318",
-      "canonicalProductId": "fa_prod_f6f8646d48c5ab9adf50c9b9",
-      "category": "fridge",
-      "brand": "LG",
-      "model": "GB-450UPLX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 700,
-        "height": 1724,
-        "depth": 684
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_e06c5b87873d1f55ea1e2b96",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_57c7772f670fb48e4748ade2"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_57c7772f670fb48e4748ade2",
-          "dimensionsMm": {
-            "width": 700,
-            "height": 1724,
-            "depth": 684
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_4a48c323ebd98ddd5629ba81"
-      ],
-      "primaryJobId": "recovery_4a48c323ebd98ddd5629ba81"
     },
     {
       "referenceId": "fa_ref_50f4ecbfc6e130f8ea51aebc",
@@ -80813,47 +80251,6 @@
         "recovery_f977da148744c904517ec85e"
       ],
       "primaryJobId": "recovery_f977da148744c904517ec85e"
-    },
-    {
-      "referenceId": "fa_ref_7262bda6ab02213883eca298",
-      "legacyRuntimeId": "ao-35924",
-      "canonicalProductId": "fa_prod_197d76d8fa6e024594665e1b",
-      "category": "dishwasher",
-      "brand": "Westinghouse",
-      "model": "WSF6606X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 850,
-        "depth": 598
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_3c74fb82f16e38b2320bd07d",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_d675a125ab6a870bd10b19fd"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_d675a125ab6a870bd10b19fd",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 850,
-            "depth": 598
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_a6a523fb9e56dbaf2b670d58"
-      ],
-      "primaryJobId": "recovery_a6a523fb9e56dbaf2b670d58"
     },
     {
       "referenceId": "fa_ref_21c00773f6a6a32f441547a6",

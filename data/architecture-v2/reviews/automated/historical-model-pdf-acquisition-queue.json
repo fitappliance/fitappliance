@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T13:41:15.699Z",
-  "semanticQueueSha256": "af7a3c14afc76960d90319eabdd47d0b00d110d44611e7bbb669c7674a7fcdae",
-  "sourceClassificationSha256": "24c59b50e134538f6e068c8dd69268adb387063b1ce31bf4a7870457ef611238",
+  "generatedAt": "2026-07-15T14:37:00.585Z",
+  "semanticQueueSha256": "bbef67985a6e0d502db7a4e3c13b4c746bb35cd8b1ee057a63df534b21141aac",
+  "sourceClassificationSha256": "e0daa2746656d85ff944ad42828536f0fa18fec70320d36949de973014339caa",
   "records": [
     {
       "schemaVersion": 1,
@@ -1060,35 +1060,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_5367e2bb4015a9cb908612e1",
-      "referenceId": "fa_ref_c0c75eab22b1e9bdb151806e",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SBI8EDS01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "RESOLVER_GAP",
-      "candidateSourceIds": [
-        "historical_source_f41853a40595969b6ea8f1db"
-      ],
-      "resolverIds": [],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_2c2fb5193d6ff3a6710f2455"
-      ],
-      "legacyRuntimeIds": [
-        "ao-103523"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_f4d4ad87e43eb868c9a4670b"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_6161b3dc4abf465ddac33122",
       "referenceId": "fa_ref_44a60c8ac3dbda0c427ed8fa",
       "category": "dishwasher",
@@ -1167,35 +1138,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_61360487e3f03d0d93145f05"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_6fb817503ec9141066a464fa",
-      "referenceId": "fa_ref_27bf4237647be10cb6fc16f1",
-      "category": "dishwasher",
-      "brand": "Bosch",
-      "model": "SBV8EDX01A",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "RESOLVER_GAP",
-      "candidateSourceIds": [
-        "historical_source_a7dc0ba29e5c7bc287920278"
-      ],
-      "resolverIds": [],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_a176c9162842080a746da1e5"
-      ],
-      "legacyRuntimeIds": [
-        "ao-102596"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_1a6d1b11a42be26e030e6f1e"
       ],
       "offlineReplayOutcome": null
     },
@@ -9130,37 +9072,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_7efc8c6407db67c18a89a496",
-      "referenceId": "fa_ref_7262bda6ab02213883eca298",
-      "category": "dishwasher",
-      "brand": "Westinghouse",
-      "model": "WSF6606X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_2e1b1eeb9a8f31a31c206a3f"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_3c74fb82f16e38b2320bd07d"
-      ],
-      "legacyRuntimeIds": [
-        "ao-35924"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_197d76d8fa6e024594665e1b"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_a0a62676a3a47b8850c63173",
       "referenceId": "fa_ref_21c00773f6a6a32f441547a6",
       "category": "dishwasher",
@@ -10186,35 +10097,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_7948126f70a77e5cc7ae9ff2",
-      "referenceId": "fa_ref_0e6a635cbea4fb2b1f9c23d4",
-      "category": "dryer",
-      "brand": "Bosch",
-      "model": "WTX88MH0AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "RESOLVER_GAP",
-      "candidateSourceIds": [
-        "historical_source_af402b46b428b5d2fc71b7a9"
-      ],
-      "resolverIds": [],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_e6cc35e4124fdc96f7ea95c4"
-      ],
-      "legacyRuntimeIds": [
-        "ao-93506"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_df0cea25e58cd67b3bc2a512"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_73c784ff0c70a0970026b7cf",
       "referenceId": "fa_ref_3081a6936c014ebb6089517d",
       "category": "dryer",
@@ -10452,37 +10334,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_61c831c5abb58d723aeb4de1"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_7ae81d7094682b6eb80570bc",
-      "referenceId": "fa_ref_4052fd621e7019acb4bbb36c",
-      "category": "dryer",
-      "brand": "Electrolux",
-      "model": "EDV705HQWA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_ca7636f20f885a5522fb588a"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_06cfe065510d3da5f95099e3"
-      ],
-      "legacyRuntimeIds": [
-        "ao-72421"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_96f445ec74af3e8d50bba538"
       ],
       "offlineReplayOutcome": null
     },
@@ -11039,37 +10890,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_13d3b550e62c1882ae2cefbb"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_ee74f3930198aba9728fc113",
-      "referenceId": "fa_ref_6700a70e9c4deb1706d2f4fc",
-      "category": "dryer",
-      "brand": "Haier",
-      "model": "HDV60A1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_22bdda734bd12f95ce36b271"
-      ],
-      "resolverIds": [
-        "haier-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_9a010a641a1dd84d8b79cb07"
-      ],
-      "legacyRuntimeIds": [
-        "ao-56933"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_5ad585ddca84bf5132fda9fa"
       ],
       "offlineReplayOutcome": null
     },
@@ -11779,35 +11599,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_ff580edd9affce6a0dee1426"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_f0c289d1befc4a256e37ef27",
-      "referenceId": "fa_ref_cca0e127586860245c4be757",
-      "category": "dryer",
-      "brand": "Westinghouse",
-      "model": "WDV457H3WB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "parser_family",
-      "groupName": "PDF grammar pdf_grammar_8eb9ae3a8581b2b4",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_d580b3dfc7b6f457b8c7ba1a"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "ao-110216"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_72b69d7fbcd670124ad7b231"
       ],
       "offlineReplayOutcome": null
     },
@@ -13276,35 +13067,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_347e6559ebd5547d55661b22"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_63fc87e22545742300624b26",
-      "referenceId": "fa_ref_74619f76a94becad9e9993d0",
-      "category": "fridge",
-      "brand": "Bosch",
-      "model": "KFN96VPEAA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "RESOLVER_GAP",
-      "candidateSourceIds": [
-        "historical_source_c3947cdb190f56d4c05885a9"
-      ],
-      "resolverIds": [],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_9c49190ecfe0b14b0243eb02"
-      ],
-      "legacyRuntimeIds": [
-        "ao-140367"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_0b8ac4f5a56110f2b8fefc3d"
       ],
       "offlineReplayOutcome": null
     },
@@ -24171,37 +23933,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_8cbaa201e5618bf102debbac",
-      "referenceId": "fa_ref_7def943c6c2fc9704fd844b9",
-      "category": "fridge",
-      "brand": "LG",
-      "model": "GB-450UPLX",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_0b31890536425a0ff7ac7dc9"
-      ],
-      "resolverIds": [
-        "lg-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_e06c5b87873d1f55ea1e2b96"
-      ],
-      "legacyRuntimeIds": [
-        "ao-52318"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_f6f8646d48c5ab9adf50c9b9"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_417eb6b7bf80d0848686d0a1",
       "referenceId": "fa_ref_50f4ecbfc6e130f8ea51aebc",
       "category": "fridge",
@@ -32973,35 +32704,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_e366cbba53a66ed8bf3d5142",
-      "referenceId": "fa_ref_66551c6aa9200f2cad996353",
-      "category": "washing_machine",
-      "brand": "Bosch",
-      "model": "WAW28620AU",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "RESOLVER_GAP",
-      "candidateSourceIds": [
-        "historical_source_70f07db8a5df36dca8411d28"
-      ],
-      "resolverIds": [],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_bb241e205909db7b3d08040e"
-      ],
-      "legacyRuntimeIds": [
-        "ao-63683"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_f1be11dd3826a3a3ce42fd1e"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_0b7b288b4ad51943c98aade9",
       "referenceId": "fa_ref_89c81e01f803afa5e94914c7",
       "category": "washing_machine",
@@ -33637,37 +33339,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_753f1244da4a93aeab2c6008"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_25171d2f5b41344afdb4b00d",
-      "referenceId": "fa_ref_01a0cb95bfabac64d891f237",
-      "category": "washing_machine",
-      "brand": "Electrolux",
-      "model": "EWF8524CDWA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_017531db1aaf67c0bdda91a3"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_ae3b33fd936ea12ce1f15efb"
-      ],
-      "legacyRuntimeIds": [
-        "ao-73253"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_3aba735916230a566785b318"
       ],
       "offlineReplayOutcome": null
     },
@@ -34782,37 +34453,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_544df1435e3b78d8c12dc07f"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_cd25d8a14ef6f178ee9cb128",
-      "referenceId": "fa_ref_2d93ac8f6476007052a6cc88",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WH8560P2",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_0cdf383d3a3da1e240ceee41"
-      ],
-      "resolverIds": [
-        "fisher-paykel-official-support"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_f8259b57fbeaf925ef6595c5"
-      ],
-      "legacyRuntimeIds": [
-        "ao-50911"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_81cb382519d1ca31ea2e97cf"
       ],
       "offlineReplayOutcome": null
     },
@@ -197587,19 +197227,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_017531db1aaf67c0bdda91a3",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/d/0/b/6d0b627e6071ee3537a6888a2c5737e78eec17b8_EWF8524CDWA_Electrolux_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/EWF8524CDWA.json",
-        "source:doc_c5f330f73ad45f1f7a94e880"
-      ],
-      "referenceIds": [
-        "fa_ref_01a0cb95bfabac64d891f237"
-      ]
-    },
-    {
       "sourceId": "historical_source_01ad117baa27316bd65215a6",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/a/d/d/3/add3795e4b816fa93c9d7ea95c1c864ac8f4f00e_QRG_AU_26423_RF522BLPX6.pdf",
       "sourceAuthority": "REFERENCE",
@@ -198417,19 +198044,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_0b31890536425a0ff7ac7dc9",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/8/f/5/6/8f56ab1cf8b3823cf9d3e3a71cb5af6dcb15da31_LG_GB_450UPLX_450L_Bottom_Mount_Fridge_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/GB-450UPLX.json",
-        "source:doc_57c7772f670fb48e4748ade2"
-      ],
-      "referenceIds": [
-        "fa_ref_7def943c6c2fc9704fd844b9"
-      ]
-    },
-    {
       "sourceId": "historical_source_0b4ce8a1645ddb61bcd96fb1",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/f/6/9/6/f696dd987ff6cd6bcd17b351ba9be24c08f852fd_Bosch_SMV88TX01A_Serie_8_Fully_Integrated_Dishwasher_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -198491,19 +198105,6 @@
       ],
       "referenceIds": [
         "fa_ref_65a617ffe2d6e16da569b98e"
-      ]
-    },
-    {
-      "sourceId": "historical_source_0cdf383d3a3da1e240ceee41",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/3/6/9/e/369e27d944193230292afd299ced967232e313a0_Fisher___Paykel_WH8560P2_WashSmart__8.5kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WH8560P2.json",
-        "source:doc_a99bf8b11a5c606d16b6c36d"
-      ],
-      "referenceIds": [
-        "fa_ref_2d93ac8f6476007052a6cc88"
       ]
     },
     {
@@ -200444,19 +200045,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_22bdda734bd12f95ce36b271",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/f/0/d/9f0d56c6ffe998a4d14e17ae86309dbc1af5d042_HDV60A1_Haier_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/HDV60A1.json",
-        "source:doc_913348b8ef6eb337fda4fbb3"
-      ],
-      "referenceIds": [
-        "fa_ref_6700a70e9c4deb1706d2f4fc"
-      ]
-    },
-    {
       "sourceId": "historical_source_22c8c68b3677fe6109a16231",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw2362baad/QRG/AU/QRG-AU-93298.pdf",
       "sourceAuthority": "NONE",
@@ -201445,19 +201033,6 @@
       ],
       "referenceIds": [
         "fa_ref_dd8527794840cb1b80797421"
-      ]
-    },
-    {
-      "sourceId": "historical_source_2e1b1eeb9a8f31a31c206a3f",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/3/2/2/7/3227c0db8070ba9bc0550cca050bbd8d31e5293f_WSF6606X_Westinghouse_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WSF6606X.json",
-        "source:doc_d675a125ab6a870bd10b19fd"
-      ],
-      "referenceIds": [
-        "fa_ref_7262bda6ab02213883eca298"
       ]
     },
     {
@@ -207163,19 +206738,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_70f07db8a5df36dca8411d28",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/3/f/7/63f79721680e2e5ed67e7377fe4837f456e2413a_WAW28620AU_Bosch_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WAW28620AU.json",
-        "source:doc_5dd83a4f4d57b895d829b74c"
-      ],
-      "referenceIds": [
-        "fa_ref_66551c6aa9200f2cad996353"
-      ]
-    },
-    {
       "sourceId": "historical_source_7113f2b22ea4bf97a4632195",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/b/9/a/d/b9ad4930d266a07ca12f84b7ef9ef043f9711bd6_WBE4500SBR_Westinghouse_Datasheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -211891,19 +211453,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_a7dc0ba29e5c7bc287920278",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/0/c/d/20cdb2d4e91433485a0efaeebc3277b4c33be303_SBV8EDX01A_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SBV8EDX01A.json",
-        "source:doc_4cefd46fd9fd3d133c014d76"
-      ],
-      "referenceIds": [
-        "fa_ref_27bf4237647be10cb6fc16f1"
-      ]
-    },
-    {
       "sourceId": "historical_source_a8168a6b393d0c975c104159",
       "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KTM5402AC&brand=Kelvinator",
       "sourceAuthority": "OFFICIAL",
@@ -212563,19 +212112,6 @@
       ],
       "referenceIds": [
         "fa_ref_4cd7188a72b4b61342ad4438"
-      ]
-    },
-    {
-      "sourceId": "historical_source_af402b46b428b5d2fc71b7a9",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/7/a/4/1/7a415c04e3da8b6f0945b0ea1b890875116063e2_WTX88MH0AU_Bosch_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WTX88MH0AU.json",
-        "source:doc_fe80653f59a95b15617fa34e"
-      ],
-      "referenceIds": [
-        "fa_ref_0e6a635cbea4fb2b1f9c23d4"
       ]
     },
     {
@@ -214222,19 +213758,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_c3947cdb190f56d4c05885a9",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/f/e/3/0fe318c71f2595d078d2e5effae0aae3b2f61b2a_KFN96VPEAA_Bosch_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/KFN96VPEAA.json",
-        "source:doc_d519adce1ec00df6538f4536"
-      ],
-      "referenceIds": [
-        "fa_ref_74619f76a94becad9e9993d0"
-      ]
-    },
-    {
       "sourceId": "historical_source_c3aecfd7d374ccd5f1c936e7",
       "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=TZeDKr8byA9LNdheupkg",
       "sourceAuthority": "NONE",
@@ -214790,19 +214313,6 @@
       ],
       "referenceIds": [
         "fa_ref_a03ee97486aa4829edf63550"
-      ]
-    },
-    {
-      "sourceId": "historical_source_ca7636f20f885a5522fb588a",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/c/9/7/2c97bb71664b87674c3468e8ec4863ee31104110_EDV705HQWA_Electrolux_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/EDV705HQWA.json",
-        "source:doc_52cd1312015cb277b001cdfa"
-      ],
-      "referenceIds": [
-        "fa_ref_4052fd621e7019acb4bbb36c"
       ]
     },
     {
@@ -215786,19 +215296,6 @@
       ],
       "referenceIds": [
         "fa_ref_778d660a2ada75ab06ff75aa"
-      ]
-    },
-    {
-      "sourceId": "historical_source_d580b3dfc7b6f457b8c7ba1a",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/1/c/f/6/1cf68b28d8b60a42560ce0587728fe2b3f8e9e7b_WDV457H3WB_Westinghouse_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WDV457H3WB.json",
-        "pdf:bb4765aed8b51db365365a2352cbf797538c662442e1400ca6d38b19feacd1f5"
-      ],
-      "referenceIds": [
-        "fa_ref_cca0e127586860245c4be757"
       ]
     },
     {
@@ -218133,19 +217630,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_f41853a40595969b6ea8f1db",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/f/5/2/6f52fc0b7c826df118b2427181d000dd627db9c3_SBI8EDS01A_Bosch_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/SBI8EDS01A.json",
-        "source:doc_add1f00ef3624b9cce36b130"
-      ],
-      "referenceIds": [
-        "fa_ref_c0c75eab22b1e9bdb151806e"
-      ]
-    },
-    {
       "sourceId": "historical_source_f44fc297e0761f3cab4f6f04",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/0/7/4/0/07408ff53e432b45623352c8c7e73760f7041f8b_Westinghouse_WFB4204SA_425L_Upright_Freezer_Datasheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -219003,49 +218487,49 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 111,
+    "COMPLETE_RECEIPT": 123,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7984,
-    "uniqueReferences": 7984,
-    "candidateSources": 1653,
-    "candidateEdges": 1689,
+    "queuedModels": 7972,
+    "uniqueReferences": 7972,
+    "candidateSources": 1641,
+    "candidateEdges": 1677,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2115,
-      "CURRENT_RETAIL": 1304,
+      "CURRENT_RETAIL": 1292,
       "REGISTRY_ONLY": 4565
     },
     "byCategory": {
-      "dishwasher": 1381,
-      "dryer": 824,
-      "fridge": 4298,
-      "washing_machine": 1481
+      "dishwasher": 1378,
+      "dryer": 820,
+      "fridge": 4296,
+      "washing_machine": 1478
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 193,
       "OFFICIAL_DISCOVERY": 6426,
       "OFFICIAL_REACQUIRE": 16,
-      "REFERENCE_REDISCOVERY": 1266
+      "REFERENCE_REDISCOVERY": 1254
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 193,
       "OFFICIAL_DISCOVERY": 6426,
       "OFFICIAL_REACQUIRE": 16,
-      "OFFICIAL_REDISCOVERY": 1266
+      "OFFICIAL_REDISCOVERY": 1254
     },
     "byExecutionReadiness": {
       "BOUNDED_READY": 16,
-      "DISCOVERY_READY": 4605,
+      "DISCOVERY_READY": 4598,
       "RESEARCH_REQUIRED": 276,
-      "RESOLVER_GAP": 3087
+      "RESOLVER_GAP": 3082
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 111,
+      "COMPLETE_RECEIPT": 123,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

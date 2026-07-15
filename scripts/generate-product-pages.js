@@ -220,9 +220,24 @@ function getEvidenceTrustLevel(product) {
   return 'retailer_spec';
 }
 
+function hasManufacturerHtmlEvidence(product) {
+  return product?.evidence?.acceptance?.artifact_type === 'html'
+    || product?.data_source === 'official_html_receipt_bound'
+    || ['official_manufacturer_html', 'official_exact_model_product_page']
+      .includes(product?.evidence?.source_type);
+}
+
+function evidenceDataSource(product) {
+  if (product?.evidence?.v2_resolution?.status === 'resolved') return 'evidence';
+  if (hasManufacturerHtmlEvidence(product)) return 'manufacturer-evidence';
+  if (product?.evidence?.has_pdf_evidence === true
+    || String(product?.data_source ?? '').includes('pdf')) return 'pdf-evidence';
+  return 'retailer-evidence';
+}
+
 function getEvidenceTrustCopy(product) {
   const trustLevel = getEvidenceTrustLevel(product);
-  const manufacturerHtml = product?.evidence?.source_type === 'official_manufacturer_html';
+  const manufacturerHtml = hasManufacturerHtmlEvidence(product);
   if (trustLevel === 'evidence_pending') {
     return {
       label: 'Evidence Pending',
@@ -786,8 +801,8 @@ ${productSchemaScript}  <script type="application/ld+json">${safeJsonLd(buildBre
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> → <a href="${escAttr(CATEGORY_HUBS[product?.cat] ?? '/')}">${escHtml(category)} dimensions</a> → ${escHtml(name)}</nav>
     <p class="sku-kicker" data-source="catalog-final">${escHtml(product?.brand ?? '')} · ${escHtml(category)} · Model ${escHtml(product?.model ?? product?.id ?? '')}</p>
     <h1 class="sku-title">${escHtml(name)} ${escHtml(trustCopy.titleSuffix.toLowerCase())}</h1>
-    <p data-source="${product?.evidence?.v2_resolution?.status === 'resolved' ? 'evidence' : 'pdf-evidence'}">${escHtml(description)}</p>
-    <p data-source="${product?.evidence?.v2_resolution?.status === 'resolved' ? 'evidence' : 'pdf-evidence'}"><span class="sku-badge sku-badge--${escAttr(getEvidenceTrustLevel(product))}">${escHtml(trustCopy.label)}</span></p>
+    <p data-source="${evidenceDataSource(product)}">${escHtml(description)}</p>
+    <p data-source="${evidenceDataSource(product)}"><span class="sku-badge sku-badge--${escAttr(getEvidenceTrustLevel(product))}">${escHtml(trustCopy.label)}</span></p>
     <div class="sku-grid">
       <section class="sku-panel">
         <h2>Physical dimensions</h2>

@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-15T13:41:15.699Z
+Generated: 2026-07-15T14:37:00.585Z
 
 Coverage: **8,095 / 8,095** unique historical models.
 Models with document links: **1,770**; without links: **6,325**.
@@ -11,21 +11,21 @@ This is a research and repair classification. It does not grant publication auth
 
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
-| dishwasher | 1419 | 94 | 981 |
-| dryer | 843 | 72 | 257 |
-| fridge | 4336 | 121 | 2246 |
-| washing_machine | 1497 | 88 | 645 |
+| dishwasher | 1419 | 94 | 984 |
+| dryer | 843 | 72 | 261 |
+| fridge | 4336 | 121 | 2248 |
+| washing_machine | 1497 | 88 | 648 |
 
 ## Operational Classes
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 111 |
+| COMPLETE_RECEIPT | 123 |
 | CONFLICT_QUARANTINE | 83 |
 | IDENTITY_RESEARCH | 193 |
 | OFFICIAL_DISCOVERY | 6426 |
 | OFFICIAL_REACQUIRE | 16 |
-| REFERENCE_REDISCOVERY | 1266 |
+| REFERENCE_REDISCOVERY | 1254 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 
@@ -91,8 +91,8 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Haier | REFERENCE_REDISCOVERY | 96 |
 | fridge | MITSUBISHI ELECTRIC | OFFICIAL_DISCOVERY | 90 |
 | fridge | Fisher & Paykel | REFERENCE_REDISCOVERY | 85 |
-| dishwasher | Bosch | REFERENCE_REDISCOVERY | 78 |
 | dishwasher | Smeg | OFFICIAL_DISCOVERY | 78 |
+| dishwasher | Bosch | REFERENCE_REDISCOVERY | 76 |
 | fridge | Hisense | OFFICIAL_DISCOVERY | 71 |
 | fridge | Hisense | REFERENCE_REDISCOVERY | 69 |
 | dryer | Kogan | OFFICIAL_DISCOVERY | 68 |
@@ -107,7 +107,7 @@ This is a research and repair classification. It does not grant publication auth
 | washing_machine | Haier | OFFICIAL_DISCOVERY | 57 |
 | fridge | Mykin | OFFICIAL_DISCOVERY | 55 |
 | fridge | TCL | OFFICIAL_DISCOVERY | 55 |
-| fridge | LG | REFERENCE_REDISCOVERY | 54 |
+| fridge | LG | REFERENCE_REDISCOVERY | 53 |
 | dryer | Esatto | OFFICIAL_DISCOVERY | 52 |
 | fridge | Electrolux | OFFICIAL_DISCOVERY | 50 |
 | washing_machine | Inalto | OFFICIAL_DISCOVERY | 50 |

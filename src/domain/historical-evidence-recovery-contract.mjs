@@ -441,6 +441,7 @@ function validateReconciliationDecision(value) {
     oneOf(value.lowerAuthorityResolution, [
       'independent_official_dimension_corroboration',
       'official_market_api_dimension_corroboration',
+      'exact_official_axis_proof_over_legacy_hint',
     ], 'lower authority resolution');
     if (!value.conflictHints.some((hint) => hint.kind === 'lower_authority_disagreement')) {
       throw new TypeError('lower authority resolution requires a disagreement hint');

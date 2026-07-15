@@ -554,6 +554,38 @@ test('HTML extractor does not confuse cabinet depth without the door with total 
   });
 });
 
+test('HTML extractor treats closed depth with door and handle as the external product envelope', () => {
+  const refrigerator = Buffer.from(`<!doctype html><html><body><ul role="list">
+    <li role="listitem"><p>Depth - Without Door (mm)</p><p>600</p></li>
+    <li role="listitem"><p>Depth - Without Handle (mm)</p><p>684</p></li>
+    <li role="listitem"><p>Depth - With Door &amp; Handle (mm)</p><p>684</p></li>
+  </ul></body></html>`);
+  const claims = extractClaimsFromHtml(refrigerator, {
+    category: 'fridge',
+    fields: ['closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(claims.map((claim) => [claim.field, claim.value]), [
+    ['closedEnvelope.depthMm', 684],
+  ]);
+  assert.match(claims[0].label, /with door & handle/i);
+});
+
+test('HTML extractor excludes a removable-worktop height when total height is available', () => {
+  const dishwasher = Buffer.from(`<!doctype html><html><body><table>
+    <tr><td>Total height (mm)</td><td>850</td></tr>
+    <tr><td>Product height excluding removable worktop (mm)</td><td>820</td></tr>
+  </table></body></html>`);
+  const claims = extractClaimsFromHtml(dishwasher, {
+    category: 'dishwasher',
+    fields: ['closedEnvelope.heightMm'],
+  });
+
+  assert.deepEqual(claims.map((claim) => [claim.field, claim.value]), [
+    ['closedEnvelope.heightMm', 850],
+  ]);
+});
+
 test('HTML grouped dimensions accept an explicit H*W*D axis order', () => {
   const washer = Buffer.from(`<!doctype html><html><body>
     <div class="specification"><h2>Dimensions (H*W*D) Unit: mm</h2><p>845*595*550</p></div>
