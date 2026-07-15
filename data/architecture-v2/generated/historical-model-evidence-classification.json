@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T22:48:03.985Z",
+  "generatedAt": "2026-07-15T23:35:52.844Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "25c28110349e0f2b4341fc602a9daaf0939c05d0855ed3cd13141e07d4b60a36",
+  "semanticClassificationSha256": "e0e08f227641bf128b2dcf1625bc1a24e546c6d8c1ad841c4c550b9761f17d09",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
@@ -21,17 +21,17 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 168,
+      "COMPLETE_RECEIPT": 169,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 195,
       "OFFICIAL_DISCOVERY": 6422,
-      "OFFICIAL_REACQUIRE": 2,
+      "OFFICIAL_REACQUIRE": 1,
       "REFERENCE_REDISCOVERY": 1225
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6422,
-      "NO_ACTION": 168,
-      "REACQUIRE_OFFICIAL_SOURCE": 2,
+      "NO_ACTION": 169,
+      "REACQUIRE_OFFICIAL_SOURCE": 1,
       "REDISCOVER_OFFICIAL_SOURCE": 1225,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 195
@@ -43,15 +43,15 @@
       "REFERENCE": 1242
     },
     "byIdentityScope": {
-      "AMBIGUOUS": 234,
-      "EXACT_MODEL": 1536,
+      "AMBIGUOUS": 233,
+      "EXACT_MODEL": 1537,
       "UNPROVEN": 6325
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 51,
-      "ALL_AXIS_SCALAR": 261,
+      "ALL_AXIS_SCALAR": 262,
       "NOT_PARSED": 7649,
-      "PARSER_GAP": 134
+      "PARSER_GAP": 133
     },
     "byConflictState": {
       "INVALID_DIMENSIONS": 19,
@@ -60,8 +60,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 168,
-      "LEGACY_UNBOUND": 1602,
+      "CURRENT_VALID": 169,
+      "LEGACY_UNBOUND": 1601,
       "NONE": 6325
     }
   },
@@ -112,11 +112,10 @@
       "brands": 88,
       "documentLinks": 653,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 27,
+        "COMPLETE_RECEIPT": 28,
         "CONFLICT_QUARANTINE": 9,
         "IDENTITY_RESEARCH": 38,
         "OFFICIAL_DISCOVERY": 1237,
-        "OFFICIAL_REACQUIRE": 1,
         "REFERENCE_REDISCOVERY": 185
       }
     }
@@ -286022,15 +286021,16 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "document_family",
       "groupName": "Document family 22681a753f2f",
-      "bestCorpusState": "CURRENT_MINERU",
+      "bestCorpusState": "RECEIPT_BOUND",
       "sourceAuthority": "OFFICIAL",
-      "identityScope": "AMBIGUOUS",
-      "extractionState": "PARSER_GAP",
+      "identityScope": "EXACT_MODEL",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
-        "CURRENT_MINERU": 2,
-        "LEGACY_METADATA_ONLY": 1
+        "CURRENT_MINERU": 1,
+        "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1
       },
       "documentLinks": [
         {
@@ -286071,28 +286071,27 @@
           "documentId": "pdf:d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
           "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
           "evidenceObjectIds": [
-            "hybrid-audit:16073e9ffff2dbd3cf32bd411a3a49786e8d69e5be3ad4ab4c83fb93d7a0944c",
             "mineru-index:d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
-            "mineru-primary:44f24cb3a85d9d120a7edaab4770472cc0d4b712dd8b93f934b7d06ba793146d",
+            "receipt:4cd07d9e80a5b69d967a700eddd9a5de34404bd97171b0806c92807a062694b6",
             "storage:evidence/objects/sha256/d0/d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b.pdf",
             "storage:evidence/web/sha256/d0/75/d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b.pdf"
           ],
           "reasonCodes": [
             "CURRENT_MINERU_INDEX",
-            "HYBRID_AUDIT_IDENTITY_SCOPE_UNRESOLVED",
+            "CURRENT_RECEIPT_BOUND",
             "PHYSICAL_PDF_HASH_BOUND"
           ],
-          "corpusState": "CURRENT_MINERU",
+          "corpusState": "RECEIPT_BOUND",
           "sourceAuthority": "OFFICIAL",
-          "identityScope": "AMBIGUOUS",
-          "extractionState": "PARSER_GAP",
-          "receiptState": "NONE",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
           "sourcePdfSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
           "grammarProfileId": "pdf_grammar_d9ff4d7551b11ed0"
         }
       ],
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "nextAction": "REACQUIRE_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Samsung"

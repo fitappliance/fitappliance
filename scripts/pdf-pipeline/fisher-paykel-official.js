@@ -204,7 +204,8 @@ function isExplicitDimensionResourceType(type) {
 }
 
 function isDimensionCandidateResource(resource) {
-  return resource?.type !== 'parts_manual'
+  return resource?.evidenceScope !== 'research_only_search_variant'
+    && resource?.type !== 'parts_manual'
     && resource?.type !== 'energy_label'
     && Number(resource?.score) > 0;
 }
@@ -629,14 +630,29 @@ async function findFisherPaykelSupportProduct(sku, opts = {}) {
 }
 
 async function findFisherPaykelProductPage(sku, opts = {}) {
+  const exactSku = normalizeSku(sku);
   const variants = buildFisherPaykelSkuSearchVariants(sku);
-  let lastSearch = { productPageUrl: null, searchUrl: '', searchHtml: '', matchedSku: variants[0] || normalizeSku(sku) };
+  let lastSearch = {
+    productPageUrl: null,
+    searchUrl: '',
+    searchHtml: '',
+    matchedSku: variants[0] || exactSku,
+    matchScope: 'none',
+  };
 
   for (const variant of variants) {
     const url = `${FP_BASE_URL}/au/search/?q=${encodeURIComponent(variant)}`;
     const html = await fetchHtml(url, opts);
     const productPageUrl = extractProductPageUrls(html, variant)[0] || null;
-    lastSearch = { productPageUrl, searchUrl: url, searchHtml: html, matchedSku: variant };
+    lastSearch = {
+      productPageUrl,
+      searchUrl: url,
+      searchHtml: html,
+      matchedSku: variant,
+      matchScope: productPageUrl
+        ? (variant === exactSku ? 'exact_model' : 'search_variant')
+        : 'none',
+    };
     if (productPageUrl) return lastSearch;
   }
 
@@ -652,7 +668,14 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
     const failures = [];
     if (search.productPageUrl) {
       try {
-        resources.push(...extractPdfResources(await fetchHtml(search.productPageUrl, opts)));
+        const evidenceScope = search.matchScope === 'exact_model'
+          ? 'exact_product_page'
+          : 'research_only_search_variant';
+        resources.push(...extractPdfResources(await fetchHtml(search.productPageUrl, opts)).map((resource) => ({
+          ...resource,
+          evidenceScope,
+          sourceModelHint: search.matchedSku,
+        })));
       } catch (error) {
         failures.push({ market: 'AU', stage: 'product_page', message: error.message });
       }
@@ -667,6 +690,7 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
         productPageUrl: null,
         searchUrl: `${FP_BASE_URL}/au/search/?q=${encodeURIComponent(normalizeSku(sku))}`,
         matchedSku: normalizeSku(sku),
+        matchScope: 'none',
         resources: [],
         failures: [{ market: 'AU', stage: 'product_search', message: productResult.reason?.message || String(productResult.reason) }]
       };
@@ -677,9 +701,21 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
         supportApiUrl: null, productPageUrl: null, resources: [],
         failures: [{ market: 'AU/NZ', stage: 'support', message: supportResult.reason?.message || String(supportResult.reason) }]
       };
-  const { productPageUrl, searchUrl, matchedSku, resources: productResources, failures: productFailures } = product;
+  const {
+    productPageUrl: discoveredProductPageUrl,
+    searchUrl,
+    matchedSku,
+    matchScope,
+    resources: productResources,
+    failures: productFailures,
+  } = product;
   const merged = new Map();
-  for (const resource of [...productResources, ...support.resources]) {
+  const exactSupportResources = support.resources.map((resource) => ({
+    ...resource,
+    evidenceScope: 'exact_support_product_article',
+    sourceModelHint: support.matchedSku,
+  }));
+  for (const resource of [...productResources, ...exactSupportResources]) {
     const existing = merged.get(resource.url);
     if (!existing) {
       merged.set(resource.url, resource);
@@ -697,6 +733,12 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
   const resources = [...merged.values()]
     .sort((a, b) => (b.score ?? 0) - (a.score ?? 0) || a.url.localeCompare(b.url));
   const best = resources.find(isDimensionCandidateResource) || null;
+  const exactProductPageUrl = matchScope === 'exact_model'
+    ? discoveredProductPageUrl
+    : support.productPageUrl;
+  const fallbackProductPageUrl = matchScope === 'search_variant'
+    ? discoveredProductPageUrl
+    : null;
   if (best) {
     return {
       sku,
@@ -705,7 +747,8 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
       supportSearchUrl: support.supportSearchUrl,
       supportApiUrl: support.supportApiUrl,
       supportMarket: support.supportMarket,
-      productPageUrl: productPageUrl || support.productPageUrl,
+      productPageUrl: exactProductPageUrl,
+      fallbackProductPageUrl,
       supportProductPageUrl: support.productPageUrl,
       sourceUrl: best.url,
       discoveryProvenance: best.discoveryProvenance,
@@ -723,7 +766,8 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
     sku,
     matchedSku: support.matchedSku || matchedSku,
     searchUrl,
-    productPageUrl: productPageUrl || support.productPageUrl,
+    productPageUrl: exactProductPageUrl,
+    fallbackProductPageUrl,
     supportSearchUrl: support.supportSearchUrl,
     supportMarket: support.supportMarket,
     sourceUrl: null,
@@ -733,7 +777,7 @@ async function findFisherPaykelOfficialPdf(target, opts = {}) {
     failures: [...productFailures, ...support.failures],
     reason: resources.length || support.productPageUrl
       ? 'dimension_resource_not_found'
-      : productPageUrl
+      : exactProductPageUrl
         ? 'pdf_resource_not_found'
         : 'product_page_not_found'
   };

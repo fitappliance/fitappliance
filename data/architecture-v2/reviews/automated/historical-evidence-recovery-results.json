@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "runId": "historical-fp-dw60fc4-canary-20260716-v1",
-  "batchId": "historical-recovery-f64530d23db2c0236d33b238-slice-4115dd6a59a5",
-  "batchSha256": "90911c5625d45ae81d4508664ff24afb2a6c19d3e6873c7c2f9b1b3a130257f3",
-  "queueSha256": "03f61324fb8bb103313e9a9a9fbb8d8483a1d8245a7ee6ca398ef9f6e4ff791e",
-  "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc",
-  "startedAt": "2026-07-15T22:30:55.890Z",
-  "completedAt": "2026-07-15T22:31:08.517Z",
-  "semanticOutcomeSha256": "6290ef9bf6bc3594a28fe1f0fe12b8667b1e1be42f18b41f4731f55b90ba1b75",
+  "runId": "fp-rf610aduqsx4-exact-support-v1",
+  "batchId": "historical-recovery-26b9803004b1ba30ace64a08-slice-4af5e560aafd",
+  "batchSha256": "660ede3ada205bbeb7d99311409f40e8ae9021a4c37b370ed2bedff8daf920ed",
+  "queueSha256": "1a18e870ce571ca8beabd52bd5551907be13f6c209912bb53d99ed872e6cc9b7",
+  "policySha256": "a083f2c5f6dbb68e0d3b9b9ef9b0bc350daf9e55fb252ddcf41f112db727d412",
+  "startedAt": "2026-07-15T23:37:46.254Z",
+  "completedAt": "2026-07-15T23:37:51.939Z",
+  "semanticOutcomeSha256": "be942920c823a795d431c7846f0c4ac8d9852aeb2851961797123743c92071ca",
   "outcomes": [
     {
-      "targetId": "recovery_target_2a8f8a6fb106792d6693c76e",
-      "status": "claims_incomplete",
-      "failureCode": "source_authority",
-      "candidateInventorySha256": "32f2e8aefe1e36720284e122a9f7c758af7603050bfa6c01255b7bf72da7dd1d",
+      "targetId": "recovery_target_0c12b47e910a3e4e41119095",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "candidateInventorySha256": "2505d187b79cd8eaa8b3ad9f193d8b0ef9b2055055d8393a9e22c29641f29b27",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_2a8f8a6fb106792d6693c76e",
+        "targetId": "recovery_target_0c12b47e910a3e4e41119095",
         "identity": {
           "brand": "Fisher & Paykel",
-          "model": "DW60FC4X1",
-          "category": "dishwasher"
+          "model": "RF610ADUQSX4",
+          "category": "fridge"
         },
         "completionStatus": "complete",
         "incompleteResolvers": [],
@@ -40,22 +40,22 @@
             "scope": "recovery_batch_graph",
             "required": true,
             "completion": "complete",
-            "candidateCount": 0
+            "candidateCount": 1
           },
           {
             "resolverId": "fisher-paykel-official-support",
-            "version": "3",
+            "version": "4",
             "scope": "exact_model_product_page_and_support_documents",
             "required": true,
             "completion": "complete",
-            "candidateCount": 4
+            "candidateCount": 2
           }
         ],
         "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_1ab360293b8850bd49249426",
-            "sourceUrl": "https://www.fisherpaykel.com/nz/support/products/freestanding-dishwasher--DW60FC4X1",
+            "candidateId": "candidate_8f2b45264f4733639bcfef12",
+            "sourceUrl": "https://www.fisherpaykel.com/nz/support/products/refrig-rf610aduqsx4-fp-aa--RF610ADUQSX4",
             "authorityMode": "reference",
             "sourceRole": "retailer_reference",
             "requiredAttempt": false,
@@ -64,11 +64,11 @@
             "resolverRefs": [
               {
                 "resolverId": "fisher-paykel-official-support",
-                "version": "3",
+                "version": "4",
                 "scope": "exact_model_product_page_and_support_documents",
                 "discoveryMethod": "fisher_paykel_product_page",
                 "sourceRole": "retailer_reference",
-                "order": 3
+                "order": 1
               }
             ],
             "outcome": {
@@ -78,8 +78,8 @@
             }
           },
           {
-            "candidateId": "candidate_2d064cbf19541e8d8ae93f36",
-            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf",
+            "candidateId": "candidate_b23cfd08c23e81acdadf7646",
+            "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000C1iplIAB&d=%2Fa%2FJw000000ttVJ%2FRZKkeCh3f5nIWiAbF1wEgTuNopFNNuz1DX_gt6QuMhQ&operationContext=DELIVERY&viewId=05HJw00000QCErSMAX&dpt=",
             "authorityMode": "official",
             "sourceRole": "manufacturer_document",
             "requiredAttempt": true,
@@ -88,17 +88,18 @@
               "method": "official_support_api",
               "market": "AU",
               "sourceMarket": "NZ",
-              "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/freestanding-dishwasher--DW60FC4X1",
-              "requestedModel": "DW60FC4X1",
-              "matchedModel": "DW60FC4X1",
-              "artifactUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/8c2gjk2qjs65gpb64kkr9t9/FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf",
-              "originalFileName": "FP-InstallGuide-DW60FC4X1-FreestandingDishwasher-AU-NZ-591217C.pdf"
+              "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/refrig-rf610aduqsx4-fp-aa--RF610ADUQSX4",
+              "requestedModel": "RF610ADUQSX4",
+              "matchedModel": "RF610ADUQSX4",
+              "artifactUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000C1iplIAB&d=%2Fa%2FJw000000ttVJ%2FRZKkeCh3f5nIWiAbF1wEgTuNopFNNuz1DX_gt6QuMhQ&operationContext=DELIVERY&viewId=05HJw00000QCErSMAX&dpt=",
+              "documentId": "ka0Jw0000006g4bIAA",
+              "originalFileName": "839456A_NZ_AUS_ROW_Combined Refrig_U2_UG_LR 11/12/2023"
             },
             "batchJobIds": [],
             "resolverRefs": [
               {
                 "resolverId": "fisher-paykel-official-support",
-                "version": "3",
+                "version": "4",
                 "scope": "exact_model_product_page_and_support_documents",
                 "discoveryMethod": "fisher_paykel_product_page_resource",
                 "sourceRole": "manufacturer_document",
@@ -106,87 +107,57 @@
               }
             ],
             "outcome": {
-              "status": "previous_terminal_suppressed",
+              "status": "identity_rejected",
               "failureCode": "identity",
-              "reason": "prior_terminal_evidence_unchanged",
-              "priorAttemptId": "historical_attempt_407991f0dea8d0a3664d61f2",
+              "reason": "structured exact-model identity signal required in MinerU JSON",
+              "artifactBinding": {
+                "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000C1iplIAB&d=%2Fa%2FJw000000ttVJ%2FRZKkeCh3f5nIWiAbF1wEgTuNopFNNuz1DX_gt6QuMhQ&operationContext=DELIVERY&viewId=05HJw00000QCErSMAX&dpt=",
+                "finalUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000C1iplIAB&d=%2Fa%2FJw000000ttVJ%2FRZKkeCh3f5nIWiAbF1wEgTuNopFNNuz1DX_gt6QuMhQ&operationContext=DELIVERY&viewId=05HJw00000QCErSMAX&dpt=",
+                "contentSha256": "674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58",
+                "objectPath": "evidence/web/sha256/67/4b/674b6c808ae668295b998f09682d65b3442053c90ac36f3b3853cae10d0ffa58.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 8891482
+              },
               "source": null
             }
           },
           {
-            "candidateId": "candidate_73357dcad360cd2672aaf708",
-            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/6tt5frjqwhj3xgg9xzvknn/FP-QuickStartGuide-DW60FC4-Dishwasher-0-591227C-NZ-AU.pdf",
+            "candidateId": "candidate_c1096e1f3a27977b7f92f0a6",
+            "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
             "authorityMode": "official",
             "sourceRole": "manufacturer_document",
             "requiredAttempt": true,
-            "discoveryProvenance": {
-              "schemaVersion": 1,
-              "method": "official_support_api",
-              "market": "AU",
-              "sourceMarket": "NZ",
-              "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/freestanding-dishwasher--DW60FC4X1",
-              "requestedModel": "DW60FC4X1",
-              "matchedModel": "DW60FC4X1",
-              "artifactUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/6tt5frjqwhj3xgg9xzvknn/FP-QuickStartGuide-DW60FC4-Dishwasher-0-591227C-NZ-AU.pdf",
-              "originalFileName": "FP-QuickStartGuide-DW60FC4-Dishwasher-0-591227C-NZ-AU.pdf"
-            },
-            "batchJobIds": [],
+            "discoveryProvenance": null,
+            "batchJobIds": [
+              "recovery_4c18cc6ada281fe07419a95b"
+            ],
             "resolverRefs": [
               {
-                "resolverId": "fisher-paykel-official-support",
-                "version": "3",
-                "scope": "exact_model_product_page_and_support_documents",
-                "discoveryMethod": "fisher_paykel_product_page_resource",
+                "resolverId": "batch-candidates",
+                "version": "1",
+                "scope": "recovery_batch_graph",
+                "discoveryMethod": "recovery_batch",
                 "sourceRole": "manufacturer_document",
-                "order": 2
+                "order": 0
               }
             ],
             "outcome": {
-              "status": "previous_terminal_suppressed",
+              "status": "identity_rejected",
               "failureCode": "identity",
-              "reason": "prior_terminal_evidence_unchanged",
-              "priorAttemptId": "historical_attempt_f65afefef4c4b2b8a4a856fb",
-              "source": null
-            }
-          },
-          {
-            "candidateId": "candidate_cef5fbe1212fee56f89d71b2",
-            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/tnpc7znrqvkmnpmtckng5rrf/FP-UserGuide-en-DW60FC-DW60UC-Dishwasher-0-591216E-NZ-AU.pdf",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_document",
-            "requiredAttempt": true,
-            "discoveryProvenance": {
-              "schemaVersion": 1,
-              "method": "official_support_api",
-              "market": "AU",
-              "sourceMarket": "NZ",
-              "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/freestanding-dishwasher--DW60FC4X1",
-              "requestedModel": "DW60FC4X1",
-              "matchedModel": "DW60FC4X1",
-              "artifactUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/tnpc7znrqvkmnpmtckng5rrf/FP-UserGuide-en-DW60FC-DW60UC-Dishwasher-0-591216E-NZ-AU.pdf",
-              "originalFileName": "FP-UserGuide-en-DW60FC-DW60UC-Dishwasher-0-591216E-NZ-AU.pdf"
-            },
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "fisher-paykel-official-support",
-                "version": "3",
-                "scope": "exact_model_product_page_and_support_documents",
-                "discoveryMethod": "fisher_paykel_product_page_resource",
-                "sourceRole": "manufacturer_document",
-                "order": 1
-              }
-            ],
-            "outcome": {
-              "status": "previous_terminal_suppressed",
-              "failureCode": "identity",
-              "reason": "prior_terminal_evidence_unchanged",
-              "priorAttemptId": "historical_attempt_926f73fffacf1c0835bf90bd",
+              "reason": "structured exact-model identity signal required in MinerU JSON",
+              "artifactBinding": {
+                "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
+                "finalUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
+                "contentSha256": "b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8",
+                "objectPath": "evidence/web/sha256/b5/ff/b5ff35773bed6d1f8434e83314bfe7cfd4e812b0be852ac686c7d000c5171af8.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 305355
+              },
               "source": null
             }
           }
         ],
-        "candidateInventorySha256": "32f2e8aefe1e36720284e122a9f7c758af7603050bfa6c01255b7bf72da7dd1d"
+        "candidateInventorySha256": "2505d187b79cd8eaa8b3ad9f193d8b0ef9b2055055d8393a9e22c29641f29b27"
       },
       "sources": [],
       "geometryProjection": null,
@@ -199,206 +170,14 @@
         "lowerAuthorityResolution": null,
         "conflictReason": null
       },
-      "semanticOutcomeSha256": "db3fcf7c8dfae63f04e2cbefeeaa890479679bc08770ba7a340ec940913b0bde"
-    },
-    {
-      "targetId": "recovery_target_a57c22dcfc2a4838a3d9391e",
-      "status": "claims_incomplete",
-      "failureCode": "source_authority",
-      "candidateInventorySha256": "9d1f73598aea58853171136894e74875f7f9ef86570cccee7e5a219abb489e83",
-      "candidateInventory": {
-        "schemaVersion": 1,
-        "targetId": "recovery_target_a57c22dcfc2a4838a3d9391e",
-        "identity": {
-          "brand": "Fisher & Paykel",
-          "model": "DW60FC4W1",
-          "category": "dishwasher"
-        },
-        "completionStatus": "complete",
-        "incompleteResolvers": [],
-        "missingBatchCandidateJobIds": [],
-        "resolvers": [
-          {
-            "resolverId": "architecture-v2-core-official-discovery",
-            "version": "1",
-            "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-            "required": false,
-            "completion": "complete",
-            "candidateCount": 0
-          },
-          {
-            "resolverId": "batch-candidates",
-            "version": "1",
-            "scope": "recovery_batch_graph",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 0
-          },
-          {
-            "resolverId": "fisher-paykel-official-support",
-            "version": "3",
-            "scope": "exact_model_product_page_and_support_documents",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 4
-          }
-        ],
-        "activeReceiptSources": [],
-        "candidates": [
-          {
-            "candidateId": "candidate_73357dcad360cd2672aaf708",
-            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/6tt5frjqwhj3xgg9xzvknn/FP-QuickStartGuide-DW60FC4-Dishwasher-0-591227C-NZ-AU.pdf",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_document",
-            "requiredAttempt": true,
-            "discoveryProvenance": {
-              "schemaVersion": 1,
-              "method": "official_support_api",
-              "market": "AU",
-              "sourceMarket": "NZ",
-              "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/freestanding-dishwasher--DW60FC4W1",
-              "requestedModel": "DW60FC4W1",
-              "matchedModel": "DW60FC4W1",
-              "artifactUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/6tt5frjqwhj3xgg9xzvknn/FP-QuickStartGuide-DW60FC4-Dishwasher-0-591227C-NZ-AU.pdf",
-              "originalFileName": "FP-QuickStartGuide-DW60FC4-Dishwasher-0-591227C-NZ-AU.pdf"
-            },
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "fisher-paykel-official-support",
-                "version": "3",
-                "scope": "exact_model_product_page_and_support_documents",
-                "discoveryMethod": "fisher_paykel_product_page_resource",
-                "sourceRole": "manufacturer_document",
-                "order": 2
-              }
-            ],
-            "outcome": {
-              "status": "previous_terminal_suppressed",
-              "failureCode": "identity",
-              "reason": "prior_terminal_evidence_unchanged",
-              "priorAttemptId": "historical_attempt_933bb16ff80138ef9c1ad22b",
-              "source": null
-            }
-          },
-          {
-            "candidateId": "candidate_7ec3ea15d689e275ef0d8969",
-            "sourceUrl": "https://www.fisherpaykel.com/nz/support/products/freestanding-dishwasher--DW60FC4W1",
-            "authorityMode": "reference",
-            "sourceRole": "retailer_reference",
-            "requiredAttempt": false,
-            "discoveryProvenance": null,
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "fisher-paykel-official-support",
-                "version": "3",
-                "scope": "exact_model_product_page_and_support_documents",
-                "discoveryMethod": "fisher_paykel_product_page",
-                "sourceRole": "retailer_reference",
-                "order": 3
-              }
-            ],
-            "outcome": {
-              "status": "reference_only",
-              "failureCode": "source_authority",
-              "source": null
-            }
-          },
-          {
-            "candidateId": "candidate_967b69bc2889313408e1cf2c",
-            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_document",
-            "requiredAttempt": true,
-            "discoveryProvenance": {
-              "schemaVersion": 1,
-              "method": "official_support_api",
-              "market": "AU",
-              "sourceMarket": "NZ",
-              "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/freestanding-dishwasher--DW60FC4W1",
-              "requestedModel": "DW60FC4W1",
-              "matchedModel": "DW60FC4W1",
-              "artifactUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/44sqwhmfxnpvw57nnxwnc48/FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf",
-              "originalFileName": "FP-InstallGuide-DW60FC4W1-FreestandingDishwasher-NZ-591217C.pdf"
-            },
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "fisher-paykel-official-support",
-                "version": "3",
-                "scope": "exact_model_product_page_and_support_documents",
-                "discoveryMethod": "fisher_paykel_product_page_resource",
-                "sourceRole": "manufacturer_document",
-                "order": 0
-              }
-            ],
-            "outcome": {
-              "status": "previous_terminal_suppressed",
-              "failureCode": "identity",
-              "reason": "prior_terminal_evidence_unchanged",
-              "priorAttemptId": "historical_attempt_9459e84e38cee9749c7741e5",
-              "source": null
-            }
-          },
-          {
-            "candidateId": "candidate_cef5fbe1212fee56f89d71b2",
-            "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/tnpc7znrqvkmnpmtckng5rrf/FP-UserGuide-en-DW60FC-DW60UC-Dishwasher-0-591216E-NZ-AU.pdf",
-            "authorityMode": "official",
-            "sourceRole": "manufacturer_document",
-            "requiredAttempt": true,
-            "discoveryProvenance": {
-              "schemaVersion": 1,
-              "method": "official_support_api",
-              "market": "AU",
-              "sourceMarket": "NZ",
-              "discoveryUrl": "https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/freestanding-dishwasher--DW60FC4W1",
-              "requestedModel": "DW60FC4W1",
-              "matchedModel": "DW60FC4W1",
-              "artifactUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/tnpc7znrqvkmnpmtckng5rrf/FP-UserGuide-en-DW60FC-DW60UC-Dishwasher-0-591216E-NZ-AU.pdf",
-              "originalFileName": "FP-UserGuide-en-DW60FC-DW60UC-Dishwasher-0-591216E-NZ-AU.pdf"
-            },
-            "batchJobIds": [],
-            "resolverRefs": [
-              {
-                "resolverId": "fisher-paykel-official-support",
-                "version": "3",
-                "scope": "exact_model_product_page_and_support_documents",
-                "discoveryMethod": "fisher_paykel_product_page_resource",
-                "sourceRole": "manufacturer_document",
-                "order": 1
-              }
-            ],
-            "outcome": {
-              "status": "previous_terminal_suppressed",
-              "failureCode": "identity",
-              "reason": "prior_terminal_evidence_unchanged",
-              "priorAttemptId": "historical_attempt_de8868ce51ea3e4626116d35",
-              "source": null
-            }
-          }
-        ],
-        "candidateInventorySha256": "9d1f73598aea58853171136894e74875f7f9ef86570cccee7e5a219abb489e83"
-      },
-      "sources": [],
-      "geometryProjection": null,
-      "reconciliation": {
-        "conflictingFields": [],
-        "conflictHints": [],
-        "missingFields": [],
-        "supersessionViolations": [],
-        "axisPermutationResolution": null,
-        "lowerAuthorityResolution": null,
-        "conflictReason": null
-      },
-      "semanticOutcomeSha256": "b5bd97e2427a5aab273703eeb17dcae27a9bb9dd2e1b7c99ecb823e3dbc3e557"
+      "semanticOutcomeSha256": "029a0e7f05dca6e1e76d9aba89300250e17dce33256deba15596eb40a5b48a02"
     }
   ],
   "summary": {
-    "targets": 2,
+    "targets": 1,
     "accepted": 0,
     "nonScalar": 0,
     "retryable": 0,
-    "terminal": 2
+    "terminal": 1
   }
 }

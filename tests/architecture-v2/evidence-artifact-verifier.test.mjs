@@ -1147,6 +1147,51 @@ test('an exact Fisher and Paykel DW60 support document binds its applicability m
   assert.equal(attested.verificationReceipt.claimSemanticsVersion, 2);
 });
 
+test('an exact Samsung AU download binds one explicitly defined washer wildcard specification', () => {
+  const identity = { brand: 'Samsung', model: 'WW12BB944DGB', category: 'washing_machine' };
+  const sourceUrl = 'https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM';
+  const finalUrl = 'https://downloadcenter.samsung.com/content/UM/202604/Samsung-washer-user-manual.pdf';
+  const pdfBytes = Buffer.from('%PDF-1.7\nSamsung washer user manual');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'paragraph',
+      content: { paragraph_content: [{ type: 'text', content: '“*” Asterisk(s) means variant model and can be varied (0-9) or (A-Z).' }] },
+      bbox: [120, 180, 598, 197],
+    },
+    {
+      type: 'table',
+      content: { html: '<table><tr><td colspan="3">Type</td><td>Front loading washing machine</td></tr><tr><td colspan="3">Model name</td><td>WW12BB******</td></tr><tr><td rowspan="3">Dimensions</td><td colspan="2">Width</td><td>600 mm</td></tr><tr><td colspan="2">Height</td><td>850 mm</td></tr><tr><td colspan="2">Depth</td><td>695 mm</td></tr></table>' },
+      bbox: [124, 203, 875, 481],
+    },
+  ]]));
+  const claims = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: identity, sourceUrls: [sourceUrl, finalUrl], claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }).claims;
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+  });
+  const attested = verifyAndAttestResolutionArtifact({
+    source: {
+      authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+      sourceUrl, finalUrl, redirectChain: [sourceUrl, finalUrl],
+      retrievedAt: '2026-07-16T02:00:00.000Z', contentSha256: pdfHash,
+      objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+      contentType: 'application/pdf', byteSize: pdfBytes.length,
+      identity: { ...identity, outcome: 'exact' }, claims, derivedArtifact,
+    },
+    caseIdentity: identity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    verifiedAt: '2026-07-16T02:01:00.000Z', claimSemanticsVersion: 2,
+  });
+
+  const signalTypes = new Set(attested.identitySignals.map((signal) => signal.type));
+  assert.ok(signalTypes.has('mineru_samsung_washer_wildcard_specification'));
+  assert.ok(signalTypes.has('mineru_samsung_au_exact_download_url'));
+  assert.equal(attested.verificationReceipt.claimSemanticsVersion, 2);
+});
+
 test('a hash-bound official product page can independently bind a model-scoped PDF', () => {
   const pdfIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
   const pdfBytes = Buffer.from('%PDF-1.7\nproduct-page-bound artifact');

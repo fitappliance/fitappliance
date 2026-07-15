@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "f37c5a76cb092c7fcf3e56c4f05f2c3f514a9520af6bed62f7d560336127a281"
+    "historical-recovery:historical-recovery-cumulative-v1": "623c73b82e403501f3bfe65aa1c8729a83a8b524c6b2ec79ac0f31675284feff"
   },
   "records": [
     {
@@ -304962,14 +304962,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 850,
+        "depth": 695
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3dc96bc9ce548e8dcb1e1727",
+          "snapshotSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+          "sourceLines": [
+            66
+          ]
         }
       ],
       "catalogProductIds": [
@@ -304978,8 +304989,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_3dc96bc9ce548e8dcb1e1727",
+          "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+          "contentSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+          "receiptBindingSha256": "4cd07d9e80a5b69d967a700eddd9a5de34404bd97171b0806c92807a062694b6",
+          "verifiedAt": "2026-07-15T23:14:56.176Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 66,
+              "fragmentSha256": "2f102d7d73372b2f9b96f6fbdb3111e76ba3304c84465c2bf1e83cd88717e7c6"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 66,
+              "fragmentSha256": "2f102d7d73372b2f9b96f6fbdb3111e76ba3304c84465c2bf1e83cd88717e7c6"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 66,
+              "fragmentSha256": "2f102d7d73372b2f9b96f6fbdb3111e76ba3304c84465c2bf1e83cd88717e7c6"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/d0/75/d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b.pdf"
+        }
       ]
     },
     {
@@ -317369,16 +317406,16 @@
     },
     "byEvidence": {
       "REGISTRY_CONSISTENT": 4891,
-      "IDENTITY_ONLY": 2987,
-      "MODEL_RECEIPT": 118,
+      "IDENTITY_ONLY": 2986,
+      "MODEL_RECEIPT": 119,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
       "CONFIRM_REQUIRED": 4891,
-      "MEASURE_REQUIRED": 2987,
-      "AUTO_FILL": 129,
+      "MEASURE_REQUIRED": 2986,
+      "AUTO_FILL": 130,
       "QUARANTINED": 88
     }
   }

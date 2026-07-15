@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-15T22:47:48.840Z",
-  "policySha256": "ee50bf60d6d30b3ea8dc4e95b11ca372b28d1d2923d0b71f41ea48580441c171",
+  "generatedAt": "2026-07-15T23:15:38.545Z",
+  "policySha256": "a083f2c5f6dbb68e0d3b9b9ef9b0bc350daf9e55fb252ddcf41f112db727d412",
   "entries": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -9498,6 +9498,232 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "df2bbb0d90a5ace08bb335ec4facc163d7245b26cc68d9ce46bcadee16310636"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_3dc96bc9ce548e8dcb1e1727",
+      "referenceId": "fa_ref_bc1c9926720d683f4c4e0824",
+      "legacyRuntimeId": "discovery-washing-machine-samsung-ww12bb944dgb",
+      "canonicalProductId": "fa_prod_049da49dd1e75737e8e251bc",
+      "brand": "Samsung",
+      "model": "WW12BB944DGB",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-4a7d58f544a3209d9a635843-slice-add78d0c91e5",
+      "auditSha256": "0a4a98f7be06b56aa3df8cca46445c80cfe9f6660141f893af4eaecfe7f1584d",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+          "finalUrl": "https://downloadcenter.samsung.com/content/UM/202604/20260427073944837/DC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+          "redirectChain": [
+            "https://downloadcenter.samsung.com/content/UM/202604/20260427073944837/DC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf"
+          ],
+          "retrievedAt": "2026-07-15T23:14:56.176Z",
+          "contentSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+          "objectPath": "evidence/web/sha256/d0/75/d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 14146867,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Samsung",
+            "model": "WW12BB944DGB",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 66,
+              "fragmentSha256": "2f102d7d73372b2f9b96f6fbdb3111e76ba3304c84465c2bf1e83cd88717e7c6",
+              "bbox": [
+                124,
+                203,
+                875,
+                481
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 850
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 66,
+              "fragmentSha256": "2f102d7d73372b2f9b96f6fbdb3111e76ba3304c84465c2bf1e83cd88717e7c6",
+              "bbox": [
+                124,
+                203,
+                875,
+                481
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 695
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 66,
+              "fragmentSha256": "2f102d7d73372b2f9b96f6fbdb3111e76ba3304c84465c2bf1e83cd88717e7c6",
+              "bbox": [
+                124,
+                203,
+                875,
+                481
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+            "contentSha256": "44f24cb3a85d9d120a7edaab4770472cc0d4b712dd8b93f934b7d06ba793146d",
+            "objectPath": "evidence/derived/mineru-json/sha256/44/f2/44f24cb3a85d9d120a7edaab4770472cc0d4b712dd8b93f934b7d06ba793146d.json",
+            "byteSize": 650705,
+            "pageCount": 68
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_samsung_washer_wildcard_specification",
+              "value": "WW12BB944DGB:pattern:WW12BB******:page:66:2f102d7d73372b2f9b96f6fbdb3111e76ba3304c84465c2bf1e83cd88717e7c6"
+            },
+            {
+              "type": "mineru_samsung_au_exact_download_url",
+              "value": "WW12BB944DGB:https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf"
+            },
+            {
+              "type": "mineru_samsung_wildcard_definition",
+              "value": "WW12BB944DGB:cfb9a000c11338af070e19cab299c0be728741aa9641265b3ab9376f1918652f"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T23:14:56.176Z",
+            "bindingSha256": "4cd07d9e80a5b69d967a700eddd9a5de34404bd97171b0806c92807a062694b6"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 850,
+              "maximumMm": 850
+            },
+            "depthMm": 695
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+            "contentSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+            "receiptBindingSha256": "4cd07d9e80a5b69d967a700eddd9a5de34404bd97171b0806c92807a062694b6",
+            "page": 66,
+            "fragmentSha256": "2f102d7d73372b2f9b96f6fbdb3111e76ba3304c84465c2bf1e83cd88717e7c6"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+            "contentSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+            "receiptBindingSha256": "4cd07d9e80a5b69d967a700eddd9a5de34404bd97171b0806c92807a062694b6",
+            "page": 66,
+            "fragmentSha256": "2f102d7d73372b2f9b96f6fbdb3111e76ba3304c84465c2bf1e83cd88717e7c6"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+            "contentSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+            "receiptBindingSha256": "4cd07d9e80a5b69d967a700eddd9a5de34404bd97171b0806c92807a062694b6",
+            "page": 66,
+            "fragmentSha256": "2f102d7d73372b2f9b96f6fbdb3111e76ba3304c84465c2bf1e83cd88717e7c6"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b"
         ]
       },
       "reconciliation": {
@@ -39187,6 +39413,13 @@
       "queueSha256": "45695b43f4e2e6ff8ef46a8fbcf88f31938fcabd9ebf473c4661151ed0c98e27",
       "resultsSha256": "2482d031e6e1f255b594121462bdbf4b9c3e2954e401a2f43df8cba6ee9fe40b",
       "auditSha256": "c54a43fa2d03294867d1730f0ca2a218fb8550108958011792070f111fd63fe8"
+    },
+    {
+      "batchId": "historical-recovery-4a7d58f544a3209d9a635843-slice-add78d0c91e5",
+      "batchSha256": "bc9014338d5c14fb4a9e091b788a897e767b8401ecffb715c0081c6863ade0e2",
+      "queueSha256": "54d98dc0d40b9b8d8788649835df340607bd06922dc9d56cbe221f3435be011b",
+      "resultsSha256": "0ee12d9372dcfaeb977796016bd3804750486ec2e4e80262d474f8558ec613a4",
+      "auditSha256": "0a4a98f7be06b56aa3df8cca46445c80cfe9f6660141f893af4eaecfe7f1584d"
     },
     {
       "batchId": "historical-recovery-572a1e42795d212221d3ce44-slice-b9139f93544e",

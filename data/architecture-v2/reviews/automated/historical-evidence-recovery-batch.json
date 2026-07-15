@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-39112de8631bbab311cc3ac0",
-  "generatedAt": "2026-07-15T22:48:03.985Z",
+  "batchId": "historical-recovery-26b9803004b1ba30ace64a08",
+  "generatedAt": "2026-07-15T23:35:52.844Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "54d98dc0d40b9b8d8788649835df340607bd06922dc9d56cbe221f3435be011b"
+    "sha256": "1a18e870ce571ca8beabd52bd5551907be13f6c209912bb53d99ed872e6cc9b7"
   },
   "policy": {
-    "version": "2026-07-16.2",
-    "sha256": "ee50bf60d6d30b3ea8dc4e95b11ca372b28d1d2923d0b71f41ea48580441c171"
+    "version": "2026-07-16.3",
+    "sha256": "a083f2c5f6dbb68e0d3b9b9ef9b0bc350daf9e55fb252ddcf41f112db727d412"
   },
   "selection": {
     "jobIds": [],
@@ -28,17 +28,6 @@
       "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
       "targetIds": [
         "recovery_target_0c12b47e910a3e4e41119095"
-      ]
-    },
-    {
-      "jobId": "recovery_5d8f265a43463f5855342cf5",
-      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
-      "authorityBrand": "Samsung",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "targetIds": [
-        "recovery_target_3dc96bc9ce548e8dcb1e1727"
       ]
     }
   ],
@@ -30859,31 +30848,6 @@
             }
           }
         ]
-      }
-    },
-    {
-      "targetId": "recovery_target_3dc96bc9ce548e8dcb1e1727",
-      "referenceId": "fa_ref_bc1c9926720d683f4c4e0824",
-      "legacyRuntimeId": "discovery-washing-machine-samsung-ww12bb944dgb",
-      "canonicalProductId": "fa_prod_049da49dd1e75737e8e251bc",
-      "brand": "Samsung",
-      "model": "WW12BB944DGB",
-      "category": "washing_machine",
-      "lifecycleState": "CURRENT_RETAIL",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": "recovery_5d8f265a43463f5855342cf5",
-      "candidateJobIds": [
-        "recovery_5d8f265a43463f5855342cf5"
-      ],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [],
-        "legacyHints": []
       }
     },
     {
@@ -234208,9 +234172,9 @@
     }
   ],
   "summary": {
-    "artifactJobs": 2,
-    "targets": 7649,
-    "candidateEdges": 2,
+    "artifactJobs": 1,
+    "targets": 7648,
+    "candidateEdges": 1,
     "excludedPriorAcceptedTargets": 0,
     "excludedPriorCandidateJobs": 0
   }

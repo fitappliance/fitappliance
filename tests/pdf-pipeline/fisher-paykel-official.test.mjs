@@ -306,6 +306,70 @@ test('Fisher & Paykel official finder augments product-page PDFs with support AP
   assert.equal(supportResource.discoveryProvenance.matchedModel, 'DH9060HG1');
 });
 
+test('Fisher & Paykel exact support evidence outranks a sibling page found through a broad search variant', async () => {
+  const siblingPage = 'https://www.fisherpaykel.com/au/cooling/freestanding/rf610adub5-26493.html';
+  const siblingQrg = 'https://www.fisherpaykel.com/on/demandware.static/QRG/AU/QRG-AU-26493.pdf';
+  const supportInstall = 'https://content.fisherpaykel.com/guides/RF610ADUQSX4-install.pdf';
+  const supportSlug = 'refrig-rf610aduqsx4-fp-aa--RF610ADUQSX4';
+  const result = await findFisherPaykelOfficialPdf({ sku: 'RF610ADUQSX4' }, {
+    supportMarkets: ['AU', 'NZ'],
+    fetchImpl: async (url) => {
+      const href = String(url);
+      if (href.includes('/au/search/') && href.includes('RF610ADUQSX4')) {
+        return new Response('<p>No exact product</p>', { status: 200 });
+      }
+      if (href.includes('/au/search/') && href.includes('RF610ADU')) {
+        return new Response(`<a class="pdp" href="${siblingPage}">RF610ADUB5</a>`, { status: 200 });
+      }
+      if (href === siblingPage) {
+        return new Response(`<a href="${siblingQrg}">Quick Reference guide</a>`, { status: 200 });
+      }
+      if (href.includes('/api/search') && href.includes('market=AU')) {
+        return new Response(JSON.stringify({ hits: [] }), { status: 200 });
+      }
+      if (href.includes('/api/search') && href.includes('market=NZ')) {
+        return new Response(JSON.stringify({
+          hits: [{ document: {
+            model_no: 'RF610ADUQSX4', name: 'REFRIG RF610ADUQSX4 FP AA', sku: '24314',
+          } }],
+        }), { status: 200, headers: { 'content-type': 'application/json' } });
+      }
+      if (href.endsWith('/nz/api/support/products/RF610ADUQSX4')) {
+        return new Response(null, {
+          status: 301,
+          headers: { location: `/nz/support/products/${supportSlug}/` },
+        });
+      }
+      if (href.endsWith(`/nz/api/support/products/${supportSlug}`)) {
+        return new Response(JSON.stringify({
+          canonicalPath: `/nz/support/products/${supportSlug}`,
+          product: {
+            modelNumber: 'RF610ADUQSX4',
+            articles: [{
+              id: 'exact-install',
+              title: 'RF610ADUQSX4 installation guide',
+              articleBody: `<p>RF610ADUQSX4</p><a href="${supportInstall}">Guide</a>`,
+              articleType: 'Installation Guide',
+            }],
+          },
+          documentResources: [],
+        }), { status: 200, headers: { 'content-type': 'application/json' } });
+      }
+      throw new Error(`Unexpected request: ${href}`);
+    },
+  });
+
+  assert.equal(result.sourceUrl, supportInstall);
+  assert.equal(result.resourceType, 'installation_manual');
+  assert.equal(result.productPageUrl, `https://www.fisherpaykel.com/nz/support/products/${supportSlug}`);
+  assert.equal(result.fallbackProductPageUrl, siblingPage);
+  assert.equal(result.dimensionResourceCount, 1);
+  assert.equal(
+    result.resources.find((resource) => resource.url === siblingQrg)?.evidenceScope,
+    'research_only_search_variant',
+  );
+});
+
 test('Fisher & Paykel support search accepts only an exact model hit', () => {
   const payload = {
     hits: [

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T23:05:45.294Z",
-  "sourceBundleSha256": "f37c5a76cb092c7fcf3e56c4f05f2c3f514a9520af6bed62f7d560336127a281",
+  "generatedAt": "2026-07-15T23:44:11.930Z",
+  "sourceBundleSha256": "623c73b82e403501f3bfe65aa1c8729a83a8b524c6b2ec79ac0f31675284feff",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -588,6 +588,20 @@
       "contentSha256": "df2bbb0d90a5ace08bb335ec4facc163d7245b26cc68d9ce46bcadee16310636",
       "receiptBindingSha256": "31c5e2ac4692e29fcbce2b6dfbe5944e85aaaa8d32d0ef71fe0a47bc0ffb2c02",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/8a/aa/8aaabd6e2d07179278819aa305f02a6951e7c782521bafab71b89038a93849c3.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_3dc96bc9ce548e8dcb1e1727",
+      "referenceId": "fa_ref_bc1c9926720d683f4c4e0824",
+      "brand": "Samsung",
+      "model": "WW12BB944DGB",
+      "category": "washing_machine",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+      "sourcePdfSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+      "contentSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+      "receiptBindingSha256": "4cd07d9e80a5b69d967a700eddd9a5de34404bd97171b0806c92807a062694b6",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/44/f2/44f24cb3a85d9d120a7edaab4770472cc0d4b712dd8b93f934b7d06ba793146d.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2399,11 +2413,11 @@
     }
   ],
   "summary": {
-    "entries": 149,
-    "sources": 171,
-    "passed": 171,
+    "entries": 150,
+    "sources": 172,
+    "passed": 172,
     "failed": 0
   },
-  "checkedObjects": 363,
-  "semanticAuditSha256": "0c4df3f462e3c5c6406e35a481c62d9d3d57f07114d403d608b436b9eacb5958"
+  "checkedObjects": 365,
+  "semanticAuditSha256": "3bcfd6347587322bed7150a0d6ae5adf6dc4e025ba9c1b8a3bf5705a793882a2"
 }

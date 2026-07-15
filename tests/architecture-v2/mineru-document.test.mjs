@@ -1066,6 +1066,62 @@ test('MinerU does not let one trailing family wildcard absorb multiple model cha
   }), /unresolved family|no exact-model MinerU evidence/i);
 });
 
+test('MinerU binds a Samsung AU washer wildcard specification only with explicit variant semantics', () => {
+  const variantDefinition = paragraph(
+    '“*” Asterisk(s) means variant model and can be varied (0-9) or (A-Z).',
+    [120, 180, 598, 197],
+  );
+  const specification = tableFragment(`<table>
+    <tr><td colspan="3">Type</td><td>Front loading washing machine</td></tr>
+    <tr><td colspan="3">Model name</td><td>WW12BB******</td></tr>
+    <tr><td rowspan="3">Dimensions</td><td colspan="2">Width</td><td>600 mm</td></tr>
+    <tr><td colspan="2">Height</td><td>850 mm</td></tr>
+    <tr><td colspan="2">Depth</td><td>695 mm</td></tr>
+    <tr><td colspan="3">Water pressure</td><td>50-800 kPa</td></tr>
+  </table>`);
+  const otherSpecification = tableFragment(`<table>
+    <tr><td colspan="3">Type</td><td>Front loading washing machine</td></tr>
+    <tr><td colspan="3">Model name</td><td>WW90BB******</td></tr>
+    <tr><td rowspan="3">Dimensions</td><td colspan="2">Width</td><td>600 mm</td></tr>
+    <tr><td colspan="2">Height</td><td>850 mm</td></tr>
+    <tr><td colspan="2">Depth</td><td>595 mm</td></tr>
+  </table>`);
+  const bytes = Buffer.from(JSON.stringify([[variantDefinition, specification, otherSpecification]]));
+  const sourceUrl = 'https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM';
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Samsung', model: 'WW12BB944DGB', category: 'washing_machine' },
+    sourceUrls: [sourceUrl], claimSemanticsVersion: 2,
+    fields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+  };
+
+  const parsed = parseMineruContentListV2(bytes, options);
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': { kind: 'fixed', mm: 600 },
+    'closedEnvelope.heightMm': { kind: 'fixed', mm: 850 },
+    'closedEnvelope.depthMm': { kind: 'fixed', mm: 695 },
+  });
+  assert.deepEqual(parsed.grammarProfileIds, ['samsung-au-washer-wildcard-specification-v1']);
+  assert.ok(parsed.identitySignals.some((signal) => (
+    signal.type === 'mineru_samsung_washer_wildcard_specification'
+  )));
+
+  assert.throws(() => parseMineruContentListV2(
+    Buffer.from(JSON.stringify([[specification, otherSpecification]])),
+    options,
+  ), /identity|variant|wildcard/i);
+  assert.throws(() => parseMineruContentListV2(bytes, {
+    ...options,
+    caseIdentity: { ...options.caseIdentity, model: 'WW12BB944DGBX' },
+  }), /identity|model|wildcard/i);
+  assert.throws(() => parseMineruContentListV2(bytes, {
+    ...options,
+    sourceUrls: [sourceUrl.replace('UNI_AU', 'UNI_US')],
+  }), /identity|source|AU/i);
+});
+
 test('MinerU does not carry sibling model-list scope to dimensions on another page', () => {
   const bytes = Buffer.from(JSON.stringify([
     [tableFragment('<table><tr><td>Model</td><td>DVH10-10B / DVH10-10W</td></tr></table>')],

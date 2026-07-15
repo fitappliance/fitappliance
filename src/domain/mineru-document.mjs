@@ -1429,6 +1429,108 @@ function fisherPaykelDw60InstallationRows(fragment, pageUnit) {
   ];
 }
 
+function exactSamsungAuWasherDownloadUrl(sourceUrls, model) {
+  const target = canonicalModel(model);
+  if (!Array.isArray(sourceUrls) || !target) return null;
+  return sourceUrls.find((value) => {
+    try {
+      const url = new URL(value);
+      return url.hostname.toLowerCase() === 'org.downloadcenter.samsung.com'
+        && /^\/downloadfile\/contentsfile\.aspx$/i.test(url.pathname)
+        && normalizedText(url.searchParams.get('CDSite')).toUpperCase() === 'UNI_AU'
+        && normalizedText(url.searchParams.get('CDCttType')).toUpperCase() === 'UM'
+        && canonicalModel(url.searchParams.get('ModelName')) === target;
+    } catch {
+      return false;
+    }
+  }) ?? null;
+}
+
+function samsungWildcardDefinitionFragments(document) {
+  return document.pages.flatMap((items, pageIndex) => items
+    .filter((fragment) => (
+      ['paragraph', 'text', 'list'].includes(fragment.type)
+      && /asterisk\s*\(s\)\s+means?\s+variant\s+model\b/i.test(fragment.text)
+      && /\b0\s*-\s*9\b/i.test(fragment.text)
+      && /\bA\s*-\s*Z\b/i.test(fragment.text)
+    ))
+    .map((fragment) => ({ fragment, page: pageIndex + 1 })));
+}
+
+function samsungWasherWildcardSpecificationRows(fragment, model) {
+  if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return null;
+  if (!fragment.cells.some((cells) => (
+    cells.some((cell) => /^type$/i.test(normalizedText(cell)))
+      && cells.some((cell) => /^front\s+loading\s+washing\s+machine$/i.test(normalizedText(cell)))
+  ))) return null;
+  const modelRows = fragment.cells.flatMap((cells, index) => {
+    const labelIndex = cells.findIndex((cell) => /^model\s+name$/i.test(normalizedText(cell)));
+    if (labelIndex < 0) return [];
+    const tokens = normalizedText(cells.slice(labelIndex + 1).join(' '))
+      .match(/[A-Z][A-Z0-9.-]{4,}\*+/gi) ?? [];
+    return tokens.length === 1 ? [{ index, token: tokens[0] }] : [];
+  });
+  if (modelRows.length !== 1) return null;
+  const [{ index: modelRowIndex, token }] = modelRows;
+  const wildcardCount = token.match(/\*+$/)?.[0].length ?? 0;
+  if (!wildcardCount || wildcardCount > 12 || !modelExpressionTokenMatches(token, model)) return null;
+  const dimensionSectionIndex = fragment.cells.findIndex((cells, index) => (
+    index > modelRowIndex && cells.some((cell) => /^dimensions?$/i.test(normalizedText(cell)))
+  ));
+  if (dimensionSectionIndex < 0) return null;
+  const rows = [];
+  const axes = new Set();
+  for (const cells of fragment.cells.slice(dimensionSectionIndex, dimensionSectionIndex + 4)) {
+    const axisIndex = cells.findIndex((cell) => /^(?:width|height|depth)$/i.test(normalizedText(cell)));
+    if (axisIndex < 0) continue;
+    const axis = normalizedText(cells[axisIndex]).toLowerCase();
+    const values = cells.slice(axisIndex + 1)
+      .map((cell) => /^(\d+(?:\.\d+)?)\s*(mm|cm)$/i.exec(normalizedText(cell)))
+      .filter(Boolean);
+    if (values.length !== 1 || axes.has(axis)) return null;
+    axes.add(axis);
+    rows.push({
+      label: axis[0].toUpperCase() + axis.slice(1),
+      value: `${values[0][1]} ${values[0][2].toLowerCase()}`,
+      quote: `${axis[0].toUpperCase() + axis.slice(1)} ${values[0][1]} ${values[0][2].toLowerCase()}`,
+      semanticBasis: 'samsung_wildcard_specification_axis',
+      axisOrder: [axis],
+    });
+  }
+  if (rows.length !== 3 || !['width', 'height', 'depth'].every((axis) => axes.has(axis))) return null;
+  return { token, rows };
+}
+
+function samsungAuWasherWildcardSpecificationScope(document, caseIdentity, sourceUrls) {
+  if (canonicalModel(caseIdentity?.brand) !== 'SAMSUNG'
+    || normalizedText(caseIdentity?.category) !== 'washing_machine') return null;
+  const target = canonicalModel(caseIdentity?.model);
+  if (!/^WW[A-Z0-9]{6,20}$/.test(target)) return null;
+  const exactDownloadUrl = exactSamsungAuWasherDownloadUrl(sourceUrls, target);
+  if (!exactDownloadUrl) return null;
+  const variantDefinitions = samsungWildcardDefinitionFragments(document);
+  if (!variantDefinitions.length) return null;
+  const matches = [];
+  document.pages.forEach((items, pageIndex) => {
+    for (const fragment of items) {
+      const specification = samsungWasherWildcardSpecificationRows(fragment, target);
+      if (specification) matches.push({
+        fragment,
+        page: pageIndex + 1,
+        pattern: specification.token,
+        rows: specification.rows,
+      });
+    }
+  });
+  if (matches.length !== 1) return null;
+  return {
+    ...matches[0],
+    exactDownloadUrl,
+    variantDefinitionFragmentSha256s: variantDefinitions
+      .map(({ fragment }) => fragment.fragmentSha256).sort(),
+  };
+}
+
 function exactFisherPaykelDw60DocumentUrl(sourceUrls, model) {
   const target = canonicalModel(model);
   if (!Array.isArray(sourceUrls) || !target) return null;
@@ -1549,6 +1651,17 @@ function ocrShiftedDimensionSectionRows(fragment) {
 }
 
 export const mineruGrammarProfiles = Object.freeze({
+  'samsung-au-washer-wildcard-specification-v1': Object.freeze({
+    parserProfileId: 'samsung-au-washer-wildcard-specification-v1',
+    grammarFamilyId: 'samsung_au_washer_wildcard_specification_v1',
+    grammarFamilyName: 'Samsung AU washer wildcard specification table',
+    variantName: 'Explicit alphanumeric wildcard definition and one matching specification table',
+    brand: 'Samsung',
+    category: 'washing_machine',
+    documentType: 'user_manual',
+    detectionSummary: 'An exact-model Samsung AU user-manual URL, an explicit asterisk-as-alphanumeric definition, and exactly one matching wildcard model row with same-table W/H/D axes.',
+    semanticBoundary: 'Only closed product width, height and depth from the matching specification table are projected; other wildcard families and installation requirements remain separate evidence.',
+  }),
   'fisher-paykel-dw60-install-applicability-v1': Object.freeze({
     parserProfileId: 'fisher-paykel-dw60-install-applicability-v1',
     grammarFamilyId: 'fisher_paykel_dw60_installation_v1',
@@ -1954,12 +2067,26 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     type: 'mineru_fp_dw60_exact_document_url',
     value: `${model}:${fisherPaykelDw60Scope.exactDocumentUrl}`,
   }] : [];
+  const samsungWasherWildcardScope = claimSemanticsVersion === 2
+    ? samsungAuWasherWildcardSpecificationScope(document, caseIdentity, options.sourceUrls)
+    : null;
+  const samsungWasherWildcardSignals = samsungWasherWildcardScope ? [{
+    type: 'mineru_samsung_washer_wildcard_specification',
+    value: `${model}:pattern:${samsungWasherWildcardScope.pattern}:page:${samsungWasherWildcardScope.page}:${samsungWasherWildcardScope.fragment.fragmentSha256}`,
+  }, {
+    type: 'mineru_samsung_au_exact_download_url',
+    value: `${model}:${samsungWasherWildcardScope.exactDownloadUrl}`,
+  }, {
+    type: 'mineru_samsung_wildcard_definition',
+    value: `${model}:${samsungWasherWildcardScope.variantDefinitionFragmentSha256s.join(',')}`,
+  }] : [];
   const boundFamilyDocumentScope = claimSemanticsVersion === 2
     && (boundFamilySignals.length === 1 || boundSeriesSignals.length === 1
       || boundExactCoverSignals.length === 1);
   const unresolvedFamily = claimSemanticsVersion === 2 && !boundFamilyDocumentScope
     && !structuredFinishVariantScope
     && !fisherPaykelDw60Scope
+    && !samsungWasherWildcardScope
     && (unresolvedFamilyScope(document, model) || contextUnresolvedFamily);
   const contextDocumentScope = claimSemanticsVersion === 2
     && contextSignals.length > 0
@@ -1982,6 +2109,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ...boundExactCoverSignals,
     ...structuredFinishVariantSignals,
     ...fisherPaykelDw60Signals,
+    ...samsungWasherWildcardSignals,
   ].map((signal) => [`${signal.type}\0${signal.value}`, signal])).values()];
   if (!signals.length && documentUniqueScope) {
     signals = uniqueCoverFallbackSignals(document, model);
@@ -2000,6 +2128,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   const appliedGrammarProfiles = new Set();
   if (fisherPaykelDw60Scope) {
     appliedGrammarProfiles.add('fisher-paykel-dw60-install-applicability-v1');
+  }
+  if (samsungWasherWildcardScope) {
+    appliedGrammarProfiles.add('samsung-au-washer-wildcard-specification-v1');
   }
   const sharedModelListPages = new Set();
   document.pages.forEach((items, pageIndex) => {
@@ -2034,6 +2165,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     const fisherPaykelDw60PageScoped = items.includes(
       fisherPaykelDw60Scope?.dimensionFragment,
     );
+    const samsungWasherWildcardPageScoped = items.includes(
+      samsungWasherWildcardScope?.fragment,
+    );
     const joinedParagraphRowsByFragment = new Map(items
       .map((item, index) => [item, joinedGroupedParagraphRow(items, index)])
       .filter(([, row]) => row));
@@ -2042,7 +2176,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
       .filter(([, row]) => row));
     if (!pageScoped && !documentScoped && !bekoDocumentScoped
       && !sharedModelListScoped && !groupedColumnScoped
-      && !structuredFinishVariantPageScoped && !fisherPaykelDw60PageScoped) return;
+      && !structuredFinishVariantPageScoped && !fisherPaykelDw60PageScoped
+      && !samsungWasherWildcardPageScoped) return;
     const bekoPageScoped = items.some((item) => (
       ['title', 'page_header'].includes(item.type)
         && containsExplicitModelExpression(item.text, model)
@@ -2082,6 +2217,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
         || containsExplicitModelExpression(item.identityText ?? item.text, model)
         || structuredFinishVariantScope?.dimensionFragment === item
         || fisherPaykelDw60Scope?.dimensionFragment === item
+        || samsungWasherWildcardScope?.fragment === item
         || (documentScoped && (
           documentScopedDimensionMatrixRows(item).length === 3
           || documentScopedExplicitAxisRows(item).length === 3
@@ -2106,7 +2242,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           : [];
         const directRows = [
           ...shiftedRows,
-          ...(shiftedRows.length === 3 || (unresolvedFamily && !repeatedHeaderPageScoped) || documentScoped
+          ...(samsungWasherWildcardScope?.fragment === fragment
+            || shiftedRows.length === 3 || (unresolvedFamily && !repeatedHeaderPageScoped) || documentScoped
             ? []
             : fragment.rows),
           ...(!unresolvedFamily || sharedDimensionFragments.has(fragment)
@@ -2121,6 +2258,9 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
             : []),
           ...(fisherPaykelDw60Scope?.dimensionFragment === fragment
             ? fisherPaykelDw60Scope.dimensionRows
+            : []),
+          ...(samsungWasherWildcardScope?.fragment === fragment
+            ? samsungWasherWildcardScope.rows
             : []),
           ...(documentScoped ? documentScopedDimensionMatrixRows(fragment) : []),
           ...(documentScoped ? documentScopedExplicitAxisRows(fragment) : []),

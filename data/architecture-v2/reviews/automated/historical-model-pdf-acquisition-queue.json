@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T22:48:03.985Z",
-  "semanticQueueSha256": "84e38979c5774b3e0c8e24b6cbfddd2f7ba0bd7a44064807a5d09eb9e6d646f6",
-  "sourceClassificationSha256": "25c28110349e0f2b4341fc602a9daaf0939c05d0855ed3cd13141e07d4b60a36",
+  "generatedAt": "2026-07-15T23:35:52.844Z",
+  "semanticQueueSha256": "0ce306093c4e37c3dda78b7ca9c3b0043ba5f4cfccb77d3f3f855625e046a382",
+  "sourceClassificationSha256": "e0e08f227641bf128b2dcf1625bc1a24e546c6d8c1ad841c4c550b9761f17d09",
   "records": [
     {
       "schemaVersion": 1,
@@ -37803,35 +37803,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_ce94c71d92b35fb441bcb239"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_d952447246d883ffb9d8cc7b",
-      "referenceId": "fa_ref_bc1c9926720d683f4c4e0824",
-      "category": "washing_machine",
-      "brand": "Samsung",
-      "model": "WW12BB944DGB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "document_family",
-      "groupName": "Document family 22681a753f2f",
-      "operationalClass": "OFFICIAL_REACQUIRE",
-      "route": "OFFICIAL_REACQUIRE",
-      "executionReadiness": "BOUNDED_READY",
-      "candidateSourceIds": [
-        "historical_source_fb518494174ad7a579bdcb38"
-      ],
-      "resolverIds": [
-        "samsung-official-discovery"
-      ],
-      "legacyRecoveryTargetIds": [],
-      "legacyRuntimeIds": [
-        "discovery-washing-machine-samsung-ww12bb944dgb"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_049da49dd1e75737e8e251bc"
       ],
       "offlineReplayOutcome": null
     },
@@ -217108,19 +217079,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_fb518494174ad7a579bdcb38",
-      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
-      "sourceAuthority": "OFFICIAL",
-      "receiptEligible": true,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WW12BB944DGB.json",
-        "pdf:d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b"
-      ],
-      "referenceIds": [
-        "fa_ref_bc1c9926720d683f4c4e0824"
-      ]
-    },
-    {
       "sourceId": "historical_source_fb933984bbd593359410550b",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwec374218/QRG/AU/QRG-AU-82170.pdf",
       "sourceAuthority": "NONE",
@@ -217471,49 +217429,49 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 168,
+    "COMPLETE_RECEIPT": 169,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7927,
-    "uniqueReferences": 7927,
-    "candidateSources": 1588,
-    "candidateEdges": 1623,
+    "queuedModels": 7926,
+    "uniqueReferences": 7926,
+    "candidateSources": 1587,
+    "candidateEdges": 1622,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2109,
-      "CURRENT_RETAIL": 1255,
+      "CURRENT_RETAIL": 1254,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1370,
       "dryer": 815,
       "fridge": 4272,
-      "washing_machine": 1470
+      "washing_machine": 1469
     },
     "byOperationalClass": {
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 195,
       "OFFICIAL_DISCOVERY": 6422,
-      "OFFICIAL_REACQUIRE": 2,
+      "OFFICIAL_REACQUIRE": 1,
       "REFERENCE_REDISCOVERY": 1225
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 195,
       "OFFICIAL_DISCOVERY": 6422,
-      "OFFICIAL_REACQUIRE": 2,
+      "OFFICIAL_REACQUIRE": 1,
       "OFFICIAL_REDISCOVERY": 1225
     },
     "byExecutionReadiness": {
-      "BOUNDED_READY": 2,
+      "BOUNDED_READY": 1,
       "DISCOVERY_READY": 5065,
       "RESEARCH_REQUIRED": 278,
       "RESOLVER_GAP": 2582
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 168,
+      "COMPLETE_RECEIPT": 169,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

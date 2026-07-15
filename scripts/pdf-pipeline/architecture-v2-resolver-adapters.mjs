@@ -85,7 +85,8 @@ function normalizeDocumentType(value) {
 
 function isFisherPaykelDimensionResource(resource) {
   const type = normalizeDocumentType(resource?.type ?? resource?.documentType ?? resource?.resourceType);
-  return type !== 'parts_manual'
+  return resource?.evidenceScope !== 'research_only_search_variant'
+    && type !== 'parts_manual'
     && !excludedDocument(resource, resourceUrl(resource));
 }
 
@@ -278,7 +279,7 @@ export function createFisherPaykelResolverAdapter(options = {}) {
   const finder = options.finder ?? findFisherPaykelOfficialPdf;
   return createEvidenceSourceResolverAdapter({
     resolverId: 'fisher-paykel-official-support',
-    version: '3',
+    version: '4',
     scope: 'exact_model_product_page_and_support_documents',
     required: true,
     async resolve(caseRecord) {
@@ -288,7 +289,6 @@ export function createFisherPaykelResolverAdapter(options = {}) {
       }
       try {
         const result = await finder(target, options.finderOptions ?? {});
-        const modelHint = result.matchedSku || target.model;
         const listedResources = result.resources ?? [];
         const matchingPrimary = listedResources.find((resource) => resource?.url === result.sourceUrl);
         const resources = [
@@ -299,22 +299,25 @@ export function createFisherPaykelResolverAdapter(options = {}) {
           } : null),
           ...listedResources,
         ].filter((resource) => resource?.url && isFisherPaykelDimensionResource(resource));
-        const candidates = resources.map((resource) => typedCandidate({
-          sourceUrl: resource.url,
-          brand: target.brand,
-          discoveryMethod: 'fisher_paykel_product_page_resource',
-          documentType: normalizeDocumentType(resource.type),
-          sourceModelHint: modelHint,
-          targetModel: target.model,
-          discoveryProvenance: resource.discoveryProvenance ?? null,
-        }));
+        const candidates = resources.map((resource) => {
+          const modelHint = resourceModelHint(resource, result, target);
+          return typedCandidate({
+            sourceUrl: resource.url,
+            brand: target.brand,
+            discoveryMethod: 'fisher_paykel_product_page_resource',
+            documentType: normalizeDocumentType(resource.type),
+            sourceModelHint: modelHint,
+            targetModel: target.model,
+            discoveryProvenance: resource.discoveryProvenance ?? null,
+          });
+        });
         if (result.productPageUrl) {
           candidates.push(typedCandidate({
             sourceUrl: result.productPageUrl,
             brand: target.brand,
             discoveryMethod: 'fisher_paykel_product_page',
             documentType: 'product_page',
-            sourceModelHint: modelHint,
+            sourceModelHint: target.model,
             requiredAttempt: hasLowerAuthorityDimensionConflict(caseRecord),
           }));
         }

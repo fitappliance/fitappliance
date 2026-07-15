@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledgerId": "historical-evidence-recovery-attempts-v1",
-  "generatedAt": "2026-07-15T22:47:48.840Z",
+  "generatedAt": "2026-07-15T23:15:38.545Z",
   "entries": [
     {
       "attemptId": "historical_attempt_1ca3bc920a761d88a58ef284",
@@ -437,6 +437,35 @@
       "resultsSha256": "c6615cb347e8998d74b01992a8f48123556cb1552d482bedad112c8ecc61f59d",
       "auditSha256": "24ebea1d6462d7fcbce956500fc3c071b04799ee8fe11dbaa3a6b7929736629c",
       "attemptedAt": "2026-07-15T22:45:40.228Z"
+    },
+    {
+      "attemptId": "historical_attempt_7682536d259a336ab22cfb9c",
+      "targetId": "recovery_target_3dc96bc9ce548e8dcb1e1727",
+      "referenceId": "fa_ref_bc1c9926720d683f4c4e0824",
+      "legacyRuntimeId": "discovery-washing-machine-samsung-ww12bb944dgb",
+      "canonicalProductId": "fa_prod_049da49dd1e75737e8e251bc",
+      "brand": "Samsung",
+      "model": "WW12BB944DGB",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=6558792&CDCttType=EM&VPath=EM%2F201607%2F20160725115923747%2FSmartControl_OneSheetGuide_EN_VN.pdf",
+      "finalUrl": "https://downloadcenter.samsung.com/content/EM/201607/20160725115923747/SmartControl_OneSheetGuide_EN_VN.pdf",
+      "contentSha256": "22681a753f2fc0fc6ca2182effc35cdd0e9a9d1458cd334aac2783012330130a",
+      "status": "identity_rejected",
+      "failureCode": "identity",
+      "reason": "structured exact-model identity signal required in MinerU JSON",
+      "reasonSha256": "124c52d4e32beef7c86aef836d1ecb7a31cd33d438afe441630021d6f40cdc82",
+      "disposition": "SEEK_ALTERNATIVE_OFFICIAL_SOURCE",
+      "suppressesSamePolicySource": true,
+      "policySha256": "a083f2c5f6dbb68e0d3b9b9ef9b0bc350daf9e55fb252ddcf41f112db727d412",
+      "candidateInventorySha256": "3757ea5815a1319e97f2af87440814003c04fd3f74d18abac1c008e104aa3a63",
+      "semanticOutcomeSha256": "305d0eb345f22a8f241f8c60051d8930cd1421350df032f3958727e27457e87e",
+      "batchId": "historical-recovery-4a7d58f544a3209d9a635843-slice-add78d0c91e5",
+      "batchSha256": "bc9014338d5c14fb4a9e091b788a897e767b8401ecffb715c0081c6863ade0e2",
+      "runId": "historical-samsung-ww12bb944dgb-policy-v3",
+      "resultsSha256": "0ee12d9372dcfaeb977796016bd3804750486ec2e4e80262d474f8558ec613a4",
+      "auditSha256": "b4418b31bc3b1d2113403baace9f25a0b002f5c1c0ad9f6fb082089f7cba0025",
+      "attemptedAt": "2026-07-15T23:14:57.600Z"
     },
     {
       "attemptId": "historical_attempt_77bc1f2ddd6694bc9a1e0bb3",
@@ -1195,6 +1224,24 @@
   ],
   "resolutions": [
     {
+      "resolutionId": "historical_resolution_07bc0400da27dc487b8b7e12",
+      "attemptId": "historical_attempt_3fcacd3f5e9826188db82113",
+      "targetId": "recovery_target_3dc96bc9ce548e8dcb1e1727",
+      "referenceId": "fa_ref_bc1c9926720d683f4c4e0824",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+      "contentSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+      "status": "accepted",
+      "policySha256": "a083f2c5f6dbb68e0d3b9b9ef9b0bc350daf9e55fb252ddcf41f112db727d412",
+      "candidateInventorySha256": "3757ea5815a1319e97f2af87440814003c04fd3f74d18abac1c008e104aa3a63",
+      "semanticOutcomeSha256": "305d0eb345f22a8f241f8c60051d8930cd1421350df032f3958727e27457e87e",
+      "batchId": "historical-recovery-4a7d58f544a3209d9a635843-slice-add78d0c91e5",
+      "batchSha256": "bc9014338d5c14fb4a9e091b788a897e767b8401ecffb715c0081c6863ade0e2",
+      "runId": "historical-samsung-ww12bb944dgb-policy-v3",
+      "resultsSha256": "0ee12d9372dcfaeb977796016bd3804750486ec2e4e80262d474f8558ec613a4",
+      "auditSha256": "b4418b31bc3b1d2113403baace9f25a0b002f5c1c0ad9f6fb082089f7cba0025",
+      "resolvedAt": "2026-07-15T23:14:57.600Z"
+    },
+    {
       "resolutionId": "historical_resolution_286637a5fcbe50a41f3b8007",
       "attemptId": "historical_attempt_9459e84e38cee9749c7741e5",
       "targetId": "recovery_target_a57c22dcfc2a4838a3d9391e",
@@ -1247,6 +1294,24 @@
       "resultsSha256": "2482d031e6e1f255b594121462bdbf4b9c3e2954e401a2f43df8cba6ee9fe40b",
       "auditSha256": "e939929a6c31ea10c7f5b122fa71e56633337e52a6a1acb81a7b245a56153f48",
       "resolvedAt": "2026-07-15T19:07:38.366Z"
+    },
+    {
+      "resolutionId": "historical_resolution_8c37be3e140d5ebee21bd216",
+      "attemptId": "historical_attempt_6acb58e8f86775316db47dce",
+      "targetId": "recovery_target_3dc96bc9ce548e8dcb1e1727",
+      "referenceId": "fa_ref_bc1c9926720d683f4c4e0824",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+      "contentSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+      "status": "accepted",
+      "policySha256": "a083f2c5f6dbb68e0d3b9b9ef9b0bc350daf9e55fb252ddcf41f112db727d412",
+      "candidateInventorySha256": "3757ea5815a1319e97f2af87440814003c04fd3f74d18abac1c008e104aa3a63",
+      "semanticOutcomeSha256": "305d0eb345f22a8f241f8c60051d8930cd1421350df032f3958727e27457e87e",
+      "batchId": "historical-recovery-4a7d58f544a3209d9a635843-slice-add78d0c91e5",
+      "batchSha256": "bc9014338d5c14fb4a9e091b788a897e767b8401ecffb715c0081c6863ade0e2",
+      "runId": "historical-samsung-ww12bb944dgb-policy-v3",
+      "resultsSha256": "0ee12d9372dcfaeb977796016bd3804750486ec2e4e80262d474f8558ec613a4",
+      "auditSha256": "b4418b31bc3b1d2113403baace9f25a0b002f5c1c0ad9f6fb082089f7cba0025",
+      "resolvedAt": "2026-07-15T23:14:57.600Z"
     },
     {
       "resolutionId": "historical_resolution_9d4950b56064ce757af07df3",
@@ -1699,6 +1764,23 @@
       "acceptedAt": "2026-07-15T19:54:13.777Z"
     },
     {
+      "sourceAcceptanceId": "historical_source_acceptance_d21d7bc1d0ac6ed0778a1196",
+      "targetId": "recovery_target_3dc96bc9ce548e8dcb1e1727",
+      "referenceId": "fa_ref_bc1c9926720d683f4c4e0824",
+      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
+      "contentSha256": "d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b",
+      "status": "accepted",
+      "policySha256": "a083f2c5f6dbb68e0d3b9b9ef9b0bc350daf9e55fb252ddcf41f112db727d412",
+      "candidateInventorySha256": "3757ea5815a1319e97f2af87440814003c04fd3f74d18abac1c008e104aa3a63",
+      "semanticOutcomeSha256": "305d0eb345f22a8f241f8c60051d8930cd1421350df032f3958727e27457e87e",
+      "batchId": "historical-recovery-4a7d58f544a3209d9a635843-slice-add78d0c91e5",
+      "batchSha256": "bc9014338d5c14fb4a9e091b788a897e767b8401ecffb715c0081c6863ade0e2",
+      "runId": "historical-samsung-ww12bb944dgb-policy-v3",
+      "resultsSha256": "0ee12d9372dcfaeb977796016bd3804750486ec2e4e80262d474f8558ec613a4",
+      "auditSha256": "b4418b31bc3b1d2113403baace9f25a0b002f5c1c0ad9f6fb082089f7cba0025",
+      "acceptedAt": "2026-07-15T23:14:57.600Z"
+    },
+    {
       "sourceAcceptanceId": "historical_source_acceptance_dfb08500452430fd0d2d94c8",
       "targetId": "recovery_target_a322c67e53a71c89ee8ed646",
       "referenceId": "fa_ref_1e1b951a2f2f4299ee79e889",
@@ -1785,22 +1867,22 @@
     }
   ],
   "summary": {
-    "entries": 41,
-    "resolutions": 9,
-    "sourceAcceptances": 25,
-    "suppressions": 26,
-    "resolvedSuppressions": 8,
+    "entries": 42,
+    "resolutions": 11,
+    "sourceAcceptances": 26,
+    "suppressions": 25,
+    "resolvedSuppressions": 10,
     "retryable": 7,
     "byStatus": {
       "claims_incomplete": 2,
-      "identity_rejected": 26,
+      "identity_rejected": 27,
       "mineru_failure": 6,
       "transport_failure": 7
     },
     "byDisposition": {
       "RETRY_AFTER_PARSER_OR_POLICY_CHANGE": 6,
       "RETRY_TRANSIENT": 7,
-      "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 26,
+      "SEEK_ALTERNATIVE_OFFICIAL_SOURCE": 27,
       "SEEK_EXACT_MODEL_FIELD_SOURCE": 2
     }
   }

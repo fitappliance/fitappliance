@@ -1,28 +1,28 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-15T22:48:03.985Z",
-  "sourceAcquisitionQueueSha256": "84e38979c5774b3e0c8e24b6cbfddd2f7ba0bd7a44064807a5d09eb9e6d646f6",
+  "generatedAt": "2026-07-15T23:35:52.844Z",
+  "sourceAcquisitionQueueSha256": "0ce306093c4e37c3dda78b7ca9c3b0043ba5f4cfccb77d3f3f855625e046a382",
   "policy": {
     "resolverOnlyTargetsAllowed": true,
     "officialSourceRequiredForReceiptPromotion": true,
     "registryOnlyHistoricalPublication": true
   },
   "summary": {
-    "acquisitionRecords": 7927,
-    "fetchJobs": 2,
-    "targets": 7649,
+    "acquisitionRecords": 7926,
+    "fetchJobs": 1,
+    "targets": 7648,
     "resolverOnlyTargets": 7647,
-    "candidateEdges": 2,
-    "uniqueReferences": 7649,
+    "candidateEdges": 1,
+    "uniqueReferences": 7648,
     "suppressedPriorTerminalEdges": 0,
     "suppressedPriorAcceptedSourceEdges": 0,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 1948,
-      "CURRENT_RETAIL": 1149,
+      "CURRENT_RETAIL": 1148,
       "REGISTRY_ONLY": 4552
     },
     "byPriority": {
-      "P0_CURRENT_MISSING_DIMENSIONS": 980,
+      "P0_CURRENT_MISSING_DIMENSIONS": 979,
       "P1_HISTORICAL_MISSING_DIMENSIONS": 1929,
       "P2_CURRENT_CONFIRMATION": 162,
       "P3_HISTORICAL_CONFIRMATION": 4520,
@@ -42,17 +42,6 @@
       "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
       "targetIds": [
         "recovery_target_0c12b47e910a3e4e41119095"
-      ]
-    },
-    {
-      "jobId": "recovery_5d8f265a43463f5855342cf5",
-      "sourceUrl": "https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&OriginYN=N&ModelType=N&ModelName=WW12BB944DGB&CttFileID=11396073&CDCttType=UM&VPath=UM%2F202604%2F20260427073944837%2FDC68-04464A-02_IB_B-PJT_WASHER-AD_SimpleUX_EN_260423.pdf",
-      "authorityBrand": "Samsung",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "targetIds": [
-        "recovery_target_3dc96bc9ce548e8dcb1e1727"
       ]
     }
   ],
@@ -35694,35 +35683,6 @@
       "publicationEligible": false,
       "candidateJobIds": [],
       "primaryJobId": null,
-      "repairExistingReceipt": false
-    },
-    {
-      "targetId": "recovery_target_3dc96bc9ce548e8dcb1e1727",
-      "referenceId": "fa_ref_bc1c9926720d683f4c4e0824",
-      "legacyRuntimeId": "discovery-washing-machine-samsung-ww12bb944dgb",
-      "canonicalProductId": "fa_prod_049da49dd1e75737e8e251bc",
-      "category": "washing_machine",
-      "brand": "Samsung",
-      "model": "WW12BB944DGB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "legacy:data/pdf-evidence-raw/WW12BB944DGB.json",
-        "pdf:d075eefb815236292b023180ec9edd2f78a81e49efb9131977c6fae95c9ef55b"
-      ],
-      "legacyHints": [],
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "candidateJobIds": [
-        "recovery_5d8f265a43463f5855342cf5"
-      ],
-      "primaryJobId": "recovery_5d8f265a43463f5855342cf5",
       "repairExistingReceipt": false
     },
     {

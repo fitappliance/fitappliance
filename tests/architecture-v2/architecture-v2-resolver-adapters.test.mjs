@@ -69,6 +69,56 @@ test('Fisher and Paykel adapter preserves exact archived support API provenance'
   assert.deepEqual(result.candidates[0].discoveryProvenance, discoveryProvenance);
 });
 
+test('Fisher and Paykel adapter excludes sibling resources discovered through a broad model search', async () => {
+  const exactArtifact = 'https://content.fisherpaykel.com/guides/RF610ADUQSX4-install.pdf';
+  const siblingArtifact = 'https://www.fisherpaykel.com/on/demandware.static/QRG/AU/QRG-AU-26493.pdf';
+  const exactProductPage = 'https://www.fisherpaykel.com/nz/support/products/refrig-rf610aduqsx4--RF610ADUQSX4';
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_support_api',
+    market: 'AU',
+    sourceMarket: 'NZ',
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/refrig-rf610aduqsx4--RF610ADUQSX4',
+    requestedModel: 'RF610ADUQSX4',
+    matchedModel: 'RF610ADUQSX4',
+    artifactUrl: exactArtifact,
+  };
+  const adapter = createFisherPaykelResolverAdapter({
+    finder: async () => ({
+      sourceUrl: exactArtifact,
+      resourceType: 'installation_manual',
+      matchedSku: 'RF610ADUQSX4',
+      productPageUrl: exactProductPage,
+      fallbackProductPageUrl: 'https://www.fisherpaykel.com/au/cooling/rf610adub5-26493.html',
+      resources: [
+        {
+          url: siblingArtifact,
+          type: 'quick_reference_guide',
+          evidenceScope: 'research_only_search_variant',
+          sourceModelHint: 'RF610ADU',
+        },
+        {
+          url: exactArtifact,
+          type: 'installation_manual',
+          evidenceScope: 'exact_support_product_article',
+          discoveryProvenance,
+        },
+      ],
+    }),
+  });
+
+  const result = await adapter.resolve({
+    brand: 'Fisher & Paykel', model: 'RF610ADUQSX4', category: 'fridge',
+  });
+
+  assert.deepEqual(result.candidates.map((candidate) => candidate.sourceUrl), [
+    exactArtifact,
+    exactProductPage,
+  ]);
+  assert.equal(result.candidates[0].sourceModelHint, 'RF610ADUQSX4');
+  assert.deepEqual(result.candidates[0].discoveryProvenance, discoveryProvenance);
+});
+
 test('Fisher and Paykel adapter excludes parts-only support resources from dimension discovery', async () => {
   const partsUrl = 'https://content.fisherpaykel.com/CBW/service/fpa-dishwashers/fpa-parts-dishwashers/Dishwasher/80914-A-DW60CHW1.pdf';
   const adapter = createFisherPaykelResolverAdapter({
