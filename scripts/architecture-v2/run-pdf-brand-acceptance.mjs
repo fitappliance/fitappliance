@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 
 import { runEvidenceResearchCycle } from '../../src/domain/evidence-research-runner.mjs';
 import { projectEvidenceGeometry } from '../../src/domain/evidence-geometry-projector.mjs';
-import { runMineruPdfToJson } from '../../src/domain/mineru-runner.mjs';
+import { runMineruPdfWithImageFallback } from '../../src/domain/mineru-runner.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -130,7 +130,7 @@ function pdfBrandGraphBatch(batch) {
     generatedAt: batch.reviewedAt,
     queue: { schemaVersion: 2, sha256: canonicalJsonSha256({ sourceBatchId: batch.batchId, entries: batch.entries }) },
     policy: { version: 'pdf-brand-compatibility-v1', sha256: canonicalJsonSha256({ adapter: 'pdf-brand-compatibility-v1' }) },
-    selection: { jobIds: [], routes: [], priorities: [], brands: [], limit: null },
+    selection: { jobIds: [], targetIds: [], routes: [], priorities: [], brands: [], limit: null },
     artifactJobs,
     targets,
     summary: {
@@ -201,12 +201,13 @@ export async function runPdfBrandAcceptanceBatch(batch, options) {
       fetchAttempts: 1,
       timeoutMs: 30000,
       allowCurlFallback: true,
+      allowScraplingFallback: true,
       processPdf: async (bytes) => {
         diagnostics.acquisition = 'passed';
         const pdfSha256 = createHash('sha256').update(bytes).digest('hex');
         diagnostics.pdfObjectPath = `evidence/web/sha256/${pdfSha256.slice(0, 2)}/${pdfSha256.slice(2, 4)}/${pdfSha256}.pdf`;
         await writeObject(diagnostics.pdfObjectPath, bytes);
-        const processed = await runMineruPdfToJson(bytes, { storageRoot: options.storageRoot });
+        const processed = await runMineruPdfWithImageFallback(bytes, { storageRoot: options.storageRoot });
         diagnostics.mineru = 'passed';
         diagnostics.derivedArtifact = processed.derivedArtifact;
         await writeObject(processed.derivedArtifact.objectPath, processed.jsonBytes);

@@ -48,14 +48,16 @@ test('publication audit rejects stale legacy dimensions and fit fields beside re
 });
 
 test('committed publication integrates both receipt batches without false verified fit', () => {
+  const projection = JSON.parse(readFileSync(
+    'data/architecture-v2/generated/public-catalog-projection.json',
+    'utf8',
+  ));
   const audit = JSON.parse(readFileSync(
     'data/architecture-v2/reviews/automated/fit-publication-audit.json',
     'utf8',
   ));
-  assert.deepEqual(audit.summary, {
-    products: 3521,
-    receiptBoundVerified: 0,
-    receiptBoundDimensions: 22,
-    violations: 0,
-  });
+  assert.deepEqual(audit.summary, auditPublicFitProjection(projection).summary);
+  assert.equal(audit.summary.receiptBoundVerified, 0);
+  assert.ok(audit.summary.receiptBoundDimensions > 0);
+  assert.equal(audit.summary.violations, 0);
 });

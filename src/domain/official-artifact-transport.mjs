@@ -9,6 +9,7 @@ import {
   isOfficialBrandArtifactHostUrl,
   isOfficialBrandArtifactUrl,
 } from './evidence-source-verifier.mjs';
+import { fetchViaScrapling } from './scrapling-transport.mjs';
 
 const execFile = promisify(execFileCallback);
 const DEFAULT_MAXIMUM_BYTES = 20 * 1024 * 1024;
@@ -25,14 +26,16 @@ function normalizeContentType(value) {
 function validatePayload(contentType, input, maximumBytes) {
   const bytes = Buffer.from(input ?? []);
   if (!bytes.length || bytes.length > maximumBytes) throw new Error('artifact size outside limits');
-  const prefix = bytes.subarray(0, 32).toString('utf8').trimStart().toLowerCase();
-  const pdfMagic = prefix.startsWith('%pdf-');
+  const binaryPrefix = bytes.subarray(0, 32).toString('utf8').trimStart().toLowerCase();
+  const htmlPrefix = bytes.subarray(0, Math.min(bytes.length, 4096)).toString('utf8')
+    .replace(/^\uFEFF/, '').trimStart().toLowerCase();
+  const pdfMagic = binaryPrefix.startsWith('%pdf-');
   if (contentType === 'application/pdf' && !pdfMagic) throw new Error('PDF content type does not match payload');
   if (contentType === 'application/octet-stream') {
     if (!pdfMagic) throw new Error('generic binary content type does not match a PDF payload');
     return { bytes, contentType: 'application/pdf' };
   }
-  if (contentType === 'text/html' && !prefix.startsWith('<!doctype') && !prefix.startsWith('<html')) {
+  if (contentType === 'text/html' && !htmlPrefix.startsWith('<!doctype') && !htmlPrefix.startsWith('<html')) {
     throw new Error('HTML content type does not match payload');
   }
   if (!['application/pdf', 'text/html'].includes(contentType)) {
@@ -54,6 +57,21 @@ function transportError(message, retry = false) {
   return error;
 }
 
+function requestHeadersForUrl(value) {
+  const hostname = new URL(value).hostname.toLowerCase();
+  return { ...(strategies.transport.requestHeadersByHost?.[hostname] ?? {}) };
+}
+
+function hostTransportOptions(requestedUrl, options) {
+  const hostname = new URL(requestedUrl).hostname.toLowerCase();
+  const configuredTimeout = Number(strategies.transport.timeoutMsByHost?.[hostname]);
+  if (!Number.isInteger(configuredTimeout) || configuredTimeout < 1) return options;
+  return {
+    ...options,
+    timeoutMs: Math.max(options.timeoutMs ?? 30000, configuredTimeout),
+  };
+}
+
 async function fetchTransport(requestedUrl, brand, options) {
   const fetchImpl = options.fetchImpl ?? fetch;
   const maximumRedirects = options.maximumRedirects ?? 5;
@@ -65,7 +83,11 @@ async function fetchTransport(requestedUrl, brand, options) {
       response = await fetchImpl(current, {
         redirect: 'manual',
         signal: options.signal ?? AbortSignal.timeout(options.timeoutMs ?? 30000),
-        headers: { 'user-agent': USER_AGENT, accept: 'text/html,application/pdf;q=0.9' },
+        headers: {
+          'user-agent': USER_AGENT,
+          accept: 'text/html,application/pdf;q=0.9',
+          ...requestHeadersForUrl(current),
+        },
       });
     } catch (error) {
       if (retriable(error) || error instanceof TypeError) throw transportError(error.message, true);
@@ -143,6 +165,9 @@ export function buildCurlArguments(requestedUrl, options, bodyPath, headersPath)
   if (!strategies.transport.preserveCurlDefaultUserAgentHosts.includes(hostname)) {
     args.push('--user-agent', USER_AGENT);
   }
+  for (const [name, value] of Object.entries(requestHeadersForUrl(requestedUrl))) {
+    args.push('--header', `${name[0].toUpperCase()}${name.slice(1)}: ${value}`);
+  }
   args.push(
     '--header', 'Accept: text/html,application/pdf;q=0.9',
     '--dump-header', headersPath,
@@ -184,10 +209,17 @@ export async function fetchOfficialArtifactResilient(requestedUrl, brand, option
   })) {
     throw new TypeError('requested URL is not an official brand URL with valid market discovery provenance');
   }
-  const normalizedOptions = { ...options, maximumBytes: options.maximumBytes ?? DEFAULT_MAXIMUM_BYTES };
+  const normalizedOptions = hostTransportOptions(requestedUrl, {
+    ...options,
+    maximumBytes: options.maximumBytes ?? DEFAULT_MAXIMUM_BYTES,
+  });
   const curlImpl = options.curlImpl ?? defaultCurlTransport;
+  const scraplingImpl = options.scraplingImpl ?? fetchViaScrapling;
+  const hostname = new URL(requestedUrl).hostname.toLowerCase();
   const curlPreferred = options.allowCurlFallback === true
-    && strategies.transport.curlPreferredHosts.includes(new URL(requestedUrl).hostname.toLowerCase());
+    && strategies.transport.curlPreferredHosts.includes(hostname);
+  const scraplingFallback = options.allowScraplingFallback === true
+    && strategies.transport.scraplingFallbackHosts.includes(hostname);
   if (curlPreferred) {
     try {
       const preferred = validateTransportResult(await curlImpl(requestedUrl, normalizedOptions), requestedUrl, brand, normalizedOptions);
@@ -200,6 +232,15 @@ export async function fetchOfficialArtifactResilient(requestedUrl, brand, option
     const result = await fetchTransport(requestedUrl, brand, normalizedOptions);
     return { requestedUrl: new URL(requestedUrl).toString(), ...result };
   } catch (error) {
+    if (scraplingFallback) {
+      const fallback = validateTransportResult(
+        await scraplingImpl(requestedUrl, normalizedOptions),
+        requestedUrl,
+        brand,
+        normalizedOptions,
+      );
+      return { requestedUrl: new URL(requestedUrl).toString(), ...fallback, transport: 'scrapling' };
+    }
     if (!retriable(error) || options.allowCurlFallback !== true) throw error;
     const fallback = validateTransportResult(await curlImpl(requestedUrl, normalizedOptions), requestedUrl, brand, normalizedOptions);
     return { requestedUrl: new URL(requestedUrl).toString(), ...fallback, transport: 'curl' };

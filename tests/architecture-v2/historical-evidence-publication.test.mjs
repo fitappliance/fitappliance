@@ -7,11 +7,21 @@ import {
   scalarHistoricalDimensions,
 } from '../../src/domain/historical-evidence-publication.mjs';
 import { applyReceiptBoundAcceptance } from '../../src/domain/accepted-evidence-publication.mjs';
+import { filterHistoricalAcceptanceBundleByReceiptReplayAudit } from '../../src/domain/historical-evidence-recovery-audit.mjs';
+import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 
-const bundle = JSON.parse(readFileSync(new URL(
+const rawBundle = JSON.parse(readFileSync(new URL(
   '../../data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json',
   import.meta.url,
 ), 'utf8'));
+const receiptReplayAudit = JSON.parse(readFileSync(new URL(
+  '../../data/architecture-v2/reviews/automated/historical-acceptance-receipt-replay-audit.json',
+  import.meta.url,
+), 'utf8'));
+const bundle = filterHistoricalAcceptanceBundleByReceiptReplayAudit(
+  rawBundle,
+  receiptReplayAudit,
+).bundle;
 const catalog = JSON.parse(readFileSync(new URL('../../data/catalog-final.json', import.meta.url), 'utf8'));
 
 function bundleFor(model) {
@@ -49,6 +59,27 @@ test('current recovery evidence projects to both current and historical lanes', 
   assert.equal(historical.modelReceipts[0].fields.height.page, 1);
 });
 
+test('mixed HTML and PDF evidence publishes only contributing sources with typed locators', () => {
+  const lgBundle = bundleFor('DVH9-09B');
+  const lgProduct = structuredClone(catalog.products.find((product) => product.model === 'DVH9-09B'));
+  const publication = buildHistoricalEvidencePublication({
+    bundle: lgBundle,
+    products: [lgProduct],
+  });
+  const receipts = publication.historicalEvidenceProjection.records[0].modelReceipts;
+  const html = receipts.find((receipt) => receipt.contentType === 'text/html');
+  const pdf = receipts.find((receipt) => receipt.contentType === 'application/pdf');
+
+  assert.equal(receipts.length, 2);
+  assert.equal(html.fields.depth.locatorKind, 'HTML_ARTIFACT');
+  assert.equal(html.fields.depth.artifactSha256, html.contentSha256);
+  assert.equal(pdf.fields.width.locatorKind, 'PDF_FRAGMENT');
+  assert.equal(pdf.fields.width.page, 10);
+  assert.match(pdf.fields.width.fragmentSha256, /^[a-f0-9]{64}$/);
+  assert.ok(Object.keys(html.fields).length > 0);
+  assert.ok(Object.keys(pdf.fields).length > 0);
+});
+
 test('archived recovery evidence remains historical-only and cannot update a current product', () => {
   const archivedBundle = structuredClone(currentBundle);
   archivedBundle.entries[0].lifecycleState = 'CATALOG_ARCHIVED';
@@ -71,6 +102,20 @@ test('archived recovery evidence remains historical-only and cannot update a cur
     bundle: archivedBundle,
     products: [wdProduct()],
   }), /lifecycle.*drift|archived.*current/i);
+});
+
+test('registry-only recovery publishes only to historical replacement data', () => {
+  const registryBundle = structuredClone(currentBundle);
+  registryBundle.entries[0].lifecycleState = 'REGISTRY_ONLY';
+  registryBundle.entries[0].legacyRuntimeId = `historical-${registryBundle.entries[0].referenceId}`;
+  registryBundle.entries[0].canonicalProductId = null;
+
+  const publication = buildHistoricalEvidencePublication({
+    bundle: registryBundle,
+    products: [],
+  });
+  assert.equal(publication.currentAcceptanceByLegacyId.size, 0);
+  assert.equal(publication.historicalEvidenceProjection.records[0].lifecycleState, 'REGISTRY_ONLY');
 });
 
 test('current recovery requires an exact, current catalog identity', () => {
@@ -151,7 +196,7 @@ test('committed publication keeps current and archived canaries in their intende
   assert.equal(archivedReference.evidenceState, 'MODEL_RECEIPT');
 });
 
-test('committed historical reference contains every cumulative recovery receipt', () => {
+test('committed historical reference contains every cumulative recovery receipt without flattening ranges', () => {
   const publicCatalog = JSON.parse(readFileSync(new URL(
     '../../data/architecture-v2/generated/public-catalog-projection.json', import.meta.url,
   ), 'utf8'));
@@ -164,10 +209,19 @@ test('committed historical reference contains every cumulative recovery receipt'
     const expectedDimensions = scalarHistoricalDimensions(entry.geometryProjection);
     const historical = historicalById.get(entry.referenceId);
     assert.ok(historical, `missing historical reference ${entry.referenceId}`);
-    assert.equal(historical.evidenceState, 'MODEL_RECEIPT');
-    assert.equal(historical.lookupAction, 'AUTO_FILL');
-    assert.deepEqual(historical.dimensionsMm, expectedDimensions);
     assert.ok(historical.modelReceipts.some((receipt) => receipt.targetId === entry.targetId));
+
+    if (expectedDimensions) {
+      assert.equal(historical.evidenceState, 'MODEL_RECEIPT');
+      assert.equal(historical.lookupAction, 'AUTO_FILL');
+      assert.deepEqual(historical.dimensionsMm, expectedDimensions);
+    } else {
+      assert.ok(
+        historical.reasonCodes.includes('MODEL_RECEIPT_NON_SCALAR'),
+        `missing range-preservation reason for ${entry.model}`,
+      );
+      assert.notEqual(historical.lookupAction, 'AUTO_FILL');
+    }
 
     const current = publicCatalog.products.find((product) => product.id === entry.legacyRuntimeId);
     if (entry.lifecycleState === 'CURRENT_RETAIL') {
@@ -176,4 +230,27 @@ test('committed historical reference contains every cumulative recovery receipt'
       assert.equal(current?.evidence?.acceptance, undefined);
     }
   }
+});
+
+test('receipt replay failures remain quarantined from current and historical projections', () => {
+  const outcomes = structuredClone(receiptReplayAudit.outcomes);
+  outcomes[0] = { ...outcomes[0], status: 'failed', failureCode: 'test_replay_failure' };
+  const sourceBundleSha256 = canonicalJsonSha256(rawBundle);
+  const failedAudit = {
+    ...receiptReplayAudit,
+    sourceBundleSha256,
+    outcomes,
+    summary: {
+      entries: rawBundle.entries.length,
+      sources: outcomes.length,
+      passed: outcomes.filter((outcome) => outcome.status === 'passed').length,
+      failed: outcomes.filter((outcome) => outcome.status === 'failed').length,
+    },
+    semanticAuditSha256: canonicalJsonSha256({ sourceBundleSha256, outcomes }),
+  };
+  const filtered = filterHistoricalAcceptanceBundleByReceiptReplayAudit(rawBundle, failedAudit);
+  const failedTarget = outcomes[0].targetId;
+  assert.ok(rawBundle.entries.some((entry) => entry.targetId === failedTarget));
+  assert.ok(filtered.bundle.entries.every((entry) => entry.targetId !== failedTarget));
+  assert.deepEqual(filtered.excludedTargetIds, [failedTarget]);
 });

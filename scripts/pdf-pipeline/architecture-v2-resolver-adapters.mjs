@@ -13,6 +13,7 @@ const { findElectroluxGroupFactsheet } = require('./electrolux-group-official.js
 const { findHaierOfficialPdf } = require('./haier-official.js');
 const { findSamsungOfficialPdf } = require('./samsung-official.js');
 const { findBekoOfficialPdf } = require('./beko-official.js');
+const { findAskoOfficialPdf } = require('./asko-official.js');
 const { findHisenseOfficialPdf } = require('./hisense-official.js');
 const { findMieleOfficialPdf } = require('./miele-official.js');
 const { findLiebherrOfficialPdf } = require('./liebherr-official.js');
@@ -46,6 +47,27 @@ function authorityForUrl(sourceUrl, brand, model, discoveryProvenance) {
 function sourceRole(authorityMode, documentType) {
   if (documentType === 'product_page' && authorityMode === 'official') return 'manufacturer_product_page';
   return authorityMode === 'official' ? 'manufacturer_document' : 'retailer_reference';
+}
+
+function completeDimensionSignature(value) {
+  const dimensions = value?.dimensionsMm ?? value;
+  const values = [
+    dimensions?.widthMm ?? dimensions?.width,
+    dimensions?.heightMm ?? dimensions?.height,
+    dimensions?.depthMm ?? dimensions?.depth,
+  ].map(Number);
+  return values.every((number) => Number.isFinite(number) && number > 0)
+    ? values.join('x')
+    : null;
+}
+
+function hasLowerAuthorityDimensionConflict(caseRecord) {
+  const context = caseRecord?.reconciliationContext ?? {};
+  const signatures = [
+    ...(context.registryHints ?? []),
+    ...(context.legacyHints ?? []),
+  ].map(completeDimensionSignature).filter(Boolean);
+  return new Set(signatures).size > 1;
 }
 
 function normalizeDocumentType(value) {
@@ -97,9 +119,11 @@ function resourceModelHint(resource, result, target) {
 }
 
 function excludedDocument(resource, sourceUrl) {
+  let filename = '';
+  try { filename = new URL(sourceUrl).pathname.split('/').at(-1) ?? ''; } catch { /* URL validation follows. */ }
   const description = [
     resource?.resourceType, resource?.documentType, resource?.type,
-    resource?.name, resource?.originalFileName, sourceUrl,
+    resource?.name, resource?.originalFileName, filename,
   ].filter(Boolean).join(' ');
   return /energy[\s_-]*label|water[\s_-]*rating|wels[\s_-]*label|warranty|catalog(?:ue)?/i.test(description);
 }
@@ -177,6 +201,9 @@ export function createLegacyFinderResolverAdapter({
             );
           if (requestedType !== 'product_page' && excludedDocument(resource, sourceUrl)) continue;
           const sourceModelHint = resourceModelHint(resource, result, target);
+          const discoveryProvenance = requestedType === 'product_page'
+            ? resource?.discoveryProvenance ?? null
+            : resource?.discoveryProvenance ?? result.discoveryProvenance ?? null;
           candidates.push(typedCandidate({
             sourceUrl: parsed.toString(),
             brand: target.brand,
@@ -184,8 +211,8 @@ export function createLegacyFinderResolverAdapter({
             documentType: requestedType,
             sourceModelHint,
             targetModel: target.model,
-            discoveryProvenance: resource?.discoveryProvenance ?? result.discoveryProvenance ?? null,
-            requiredAttempt: requestedType !== 'product_page',
+            discoveryProvenance,
+            requiredAttempt: resource?.requiredAttempt ?? requestedType !== 'product_page',
           }));
         }
         if (invalidUrls.length) {
@@ -227,7 +254,7 @@ function uniqueCandidates(candidates) {
 
 function completionFromError(error) {
   const message = String(error?.message ?? error);
-  if (/not found|returned HTTP 404|HTTP 410/i.test(message)) {
+  if (/not found|returned HTTP 404|HTTP 410|(?:returned\s+)?error:\s*404|HTTP\/\d(?:\.\d)?\s+404/i.test(message)) {
     return { completion: 'complete', candidates: [], failures: [] };
   }
   return {
@@ -243,7 +270,7 @@ export function createFisherPaykelResolverAdapter(options = {}) {
   const finder = options.finder ?? findFisherPaykelOfficialPdf;
   return createEvidenceSourceResolverAdapter({
     resolverId: 'fisher-paykel-official-support',
-    version: '1',
+    version: '2',
     scope: 'exact_model_product_page_and_support_documents',
     required: true,
     async resolve(caseRecord) {
@@ -257,12 +284,15 @@ export function createFisherPaykelResolverAdapter(options = {}) {
           return { completion: 'complete', candidates: [], failures: [] };
         }
         const modelHint = result.matchedSku || target.model;
+        const listedResources = result.resources ?? [];
+        const matchingPrimary = listedResources.find((resource) => resource?.url === result.sourceUrl);
         const resources = [
-          {
+          matchingPrimary ?? {
             url: result.sourceUrl,
             type: result.resourceType,
+            discoveryProvenance: result.discoveryProvenance,
           },
-          ...(result.resources ?? []),
+          ...listedResources,
         ].filter((resource) => resource?.url && !/energy_label/i.test(resource.type ?? ''));
         const candidates = resources.map((resource) => typedCandidate({
           sourceUrl: resource.url,
@@ -270,6 +300,8 @@ export function createFisherPaykelResolverAdapter(options = {}) {
           discoveryMethod: 'fisher_paykel_product_page_resource',
           documentType: normalizeDocumentType(resource.type),
           sourceModelHint: modelHint,
+          targetModel: target.model,
+          discoveryProvenance: resource.discoveryProvenance ?? null,
         }));
         if (result.productPageUrl) {
           candidates.push(typedCandidate({
@@ -278,7 +310,7 @@ export function createFisherPaykelResolverAdapter(options = {}) {
             discoveryMethod: 'fisher_paykel_product_page',
             documentType: 'product_page',
             sourceModelHint: modelHint,
-            requiredAttempt: false,
+            requiredAttempt: hasLowerAuthorityDimensionConflict(caseRecord),
           }));
         }
         return { completion: 'complete', candidates: uniqueCandidates(candidates), failures: [] };
@@ -294,39 +326,59 @@ export function createLgResolverAdapter(options = {}) {
   return createEvidenceSourceResolverAdapter({
     resolverId: 'lg-official-support',
     version: '1',
-    scope: 'exact_model_au_support_api_documents',
+    scope: 'exact_model_au_support_api_documents_and_bounded_product_pages',
     required: true,
     async resolve(caseRecord) {
       const target = exactTarget(caseRecord);
       if (/[*?]/.test(target.model)) {
         return { completion: 'complete', candidates: [], failures: [] };
       }
+      const categoryPaths = {
+        dryer: ['washer-dryers/dryers'],
+        washing_machine: [
+          'washer-dryers/front-load-washing-machines',
+          'washer-dryers/top-load-washing-machines',
+        ],
+        dishwasher: ['dishwashers'],
+        fridge: ['fridges', 'fridge-freezers'],
+      }[String(caseRecord?.category ?? '').trim().toLowerCase()] ?? [];
+      const productPageCandidates = categoryPaths.map((path) => typedCandidate({
+        sourceUrl: `https://www.lg.com/au/${path}/${encodeURIComponent(target.model.toLowerCase())}/`,
+        brand: target.brand,
+        discoveryMethod: 'lg_au_exact_model_product_page_template',
+        documentType: 'product_page',
+        sourceModelHint: target.model,
+        requiredAttempt: true,
+      }));
       try {
         const result = await finder(target, options.finderOptions ?? {});
         return {
           completion: 'complete',
-          candidates: result?.sourceUrl ? [typedCandidate({
-            sourceUrl: result.sourceUrl,
-            brand: target.brand,
-            discoveryMethod: 'lg_au_support_api',
-            documentType: normalizeDocumentType(result.resourceType || result.originalFileName),
-            sourceModelHint: result.lookupSku || result.modelName || target.model,
-            discoveryProvenance: result.discoveryUrl ? {
-              schemaVersion: 1,
-              method: 'official_market_api',
-              market: 'AU',
-              discoveryUrl: result.discoveryUrl,
-              requestedModel: target.model,
-              matchedModel: result.modelName || result.lookupSku,
-              artifactUrl: result.sourceUrl,
-              ...(result.docId ? { documentId: result.docId } : {}),
-              ...(result.originalFileName ? { originalFileName: result.originalFileName } : {}),
-            } : null,
-          })] : [],
+          candidates: uniqueCandidates([
+            ...(result?.sourceUrl ? [typedCandidate({
+              sourceUrl: result.sourceUrl,
+              brand: target.brand,
+              discoveryMethod: 'lg_au_support_api',
+              documentType: normalizeDocumentType(result.resourceType || result.originalFileName),
+              sourceModelHint: result.lookupSku || result.modelName || target.model,
+              discoveryProvenance: result.discoveryUrl ? {
+                schemaVersion: 1,
+                method: 'official_market_api',
+                market: 'AU',
+                discoveryUrl: result.discoveryUrl,
+                requestedModel: target.model,
+                matchedModel: result.modelName || result.lookupSku,
+                artifactUrl: result.sourceUrl,
+                ...(result.docId ? { documentId: result.docId } : {}),
+                ...(result.originalFileName ? { originalFileName: result.originalFileName } : {}),
+              } : null,
+            })] : []),
+            ...productPageCandidates,
+          ]),
           failures: [],
         };
       } catch (error) {
-        return completionFromError(error);
+        return { ...completionFromError(error), candidates: productPageCandidates };
       }
     },
   });
@@ -369,6 +421,7 @@ function brandKey(value) {
 }
 
 const LEGACY_RESOLVER_PROFILES = new Map([
+  ['asko', { optionKey: 'asko', brandKey: 'asko', resolverId: 'asko-official-manuals-api', finder: findAskoOfficialPdf }],
   ['haier', { optionKey: 'haier', brandKey: 'haier', resolverId: 'haier-official-discovery', finder: findHaierOfficialPdf }],
   ['samsung', { optionKey: 'samsung', brandKey: 'samsung', resolverId: 'samsung-official-discovery', finder: findSamsungOfficialPdf }],
   ['beko', { optionKey: 'beko', brandKey: 'beko', resolverId: 'beko-official-discovery', finder: findBekoOfficialPdf }],
@@ -388,6 +441,17 @@ const LEGACY_RESOLVER_PROFILES = new Map([
   ['teco', { optionKey: 'teco', brandKey: 'teco', resolverId: 'teco-official-discovery', finder: findTecoOfficialPdf }],
   ['vogue', { optionKey: 'vogue', brandKey: 'vogue', resolverId: 'vogue-official-discovery', finder: findVogueOfficialPdf }],
 ]);
+
+export function resolverAdapterIdsForBrand(value) {
+  const brand = brandKey(value);
+  if (brand === 'fisherpaykel') return ['fisher-paykel-official-support'];
+  if (brand === 'lg') return ['lg-official-support'];
+  if (['electrolux', 'westinghouse', 'kelvinator'].includes(brand)) {
+    return ['electrolux-group-official-factsheet'];
+  }
+  const profile = LEGACY_RESOLVER_PROFILES.get(brand);
+  return profile ? [profile.resolverId] : [];
+}
 
 export function buildArchitectureV2ResolverAdapters(caseRecord, options = {}) {
   const brand = brandKey(caseRecord?.brand);

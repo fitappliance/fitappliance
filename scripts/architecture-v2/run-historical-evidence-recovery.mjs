@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 import { acquireEvidenceArtifact, attestEvidenceArtifactForCase } from '../../src/domain/evidence-artifact-pipeline.mjs';
+import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-paths.mjs';
 import { collectEvidenceCandidates } from '../../src/domain/evidence-candidate-inventory.mjs';
 import { reconcileEvidenceClaims } from '../../src/domain/evidence-claim-reconciliation.mjs';
 import { discoverRankedEvidenceCandidates } from '../../src/domain/evidence-source-discovery.mjs';
@@ -24,7 +25,7 @@ import {
   validateHistoricalEvidenceRecoveryPolicy,
   validateHistoricalEvidenceRecoveryResults,
 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
-import { runMineruPdfToJson } from '../../src/domain/mineru-runner.mjs';
+import { runMineruPdfWithImageFallback } from '../../src/domain/mineru-runner.mjs';
 import { fetchOfficialArtifactResilient } from '../../src/domain/official-artifact-transport.mjs';
 import { runReceiptBoundEvidenceBatch } from '../../src/domain/receipt-bound-evidence-batch-runner.mjs';
 import { buildArchitectureV2ResolverAdapters } from '../pdf-pipeline/architecture-v2-resolver-adapters.mjs';
@@ -53,6 +54,7 @@ export function parseHistoricalEvidenceRecoveryRunArgs(argv) {
     dryRun: false,
     requireSelection: true,
     jobIds: [],
+    targetIds: [],
     routes: [],
     limit: null,
     networkConcurrency: null,
@@ -61,7 +63,9 @@ export function parseHistoricalEvidenceRecoveryRunArgs(argv) {
   const textFlags = new Map([
     ['--input', 'input'], ['--output', 'output'], ['--run-id', 'runId'],
   ]);
-  const repeatable = new Map([['--job-id', 'jobIds'], ['--route', 'routes']]);
+  const repeatable = new Map([
+    ['--job-id', 'jobIds'], ['--target-id', 'targetIds'], ['--route', 'routes'],
+  ]);
   const numeric = new Map([
     ['--limit', 'limit'], ['--network-concurrency', 'networkConcurrency'],
     ['--mineru-concurrency', 'mineruConcurrency'],
@@ -103,8 +107,10 @@ export function parseHistoricalEvidenceRecoveryRunArgs(argv) {
     throw new TypeError(`unknown argument: ${raw}`);
   }
   result.jobIds = [...new Set(result.jobIds)].sort();
+  result.targetIds = [...new Set(result.targetIds)].sort();
   result.routes = [...new Set(result.routes)].sort();
-  const hasSelection = result.jobIds.length || result.routes.length || result.limit !== null;
+  const hasSelection = result.jobIds.length || result.targetIds.length
+    || result.routes.length || result.limit !== null;
   if (allowAll && explicitRequireSelection) {
     throw new TypeError('--allow-all cannot be combined with --require-selection');
   }
@@ -125,7 +131,8 @@ export function parseHistoricalEvidenceRecoveryRunArgs(argv) {
 }
 
 function hasExplicitSelection(options) {
-  return options.jobIds.length > 0 || options.routes.length > 0 || options.limit !== null;
+  return options.jobIds.length > 0 || (options.targetIds ?? []).length > 0
+    || options.routes.length > 0 || options.limit !== null;
 }
 
 export function resolveHistoricalEvidenceRecoveryIoPaths(options, settings = {}) {
@@ -143,6 +150,12 @@ export function resolveHistoricalEvidenceRecoveryIoPaths(options, settings = {})
     output: resolve(options.output ?? (options.resume
       ? resolve(runDirectory, 'results.json')
       : resolve(repoRootPath, 'data/architecture-v2/reviews/automated/historical-evidence-recovery-results.json'))),
+    policy: options.resume
+      ? resolve(runDirectory, 'policy.json')
+      : resolveArchitectureV2Path(repoRootPath, 'historicalEvidenceRecoveryPolicy'),
+    queue: options.resume
+      ? resolve(runDirectory, 'queue.json')
+      : resolveArchitectureV2Path(repoRootPath, 'historicalExecutableEvidenceRecoveryQueue'),
   };
 }
 
@@ -163,14 +176,21 @@ function effectiveConcurrency(options, policy) {
 }
 
 function selectedBatch(batch, options) {
-  if (!options.jobIds.length && !options.routes.length && options.limit === null) return structuredClone(batch);
+  const selectedTargetIds = options.targetIds ?? [];
+  if (!options.jobIds.length && !selectedTargetIds.length
+    && !options.routes.length && options.limit === null) return structuredClone(batch);
   const jobsById = new Map(batch.artifactJobs.map((job) => [job.jobId, job]));
+  const targetsById = new Map(batch.targets.map((target) => [target.targetId, target]));
   for (const jobId of options.jobIds) {
     if (!jobsById.has(jobId)) throw new TypeError(`unknown selected job ID: ${jobId}`);
   }
+  for (const targetId of selectedTargetIds) {
+    if (!targetsById.has(targetId)) throw new TypeError(`unknown selected target ID: ${targetId}`);
+  }
   let targets = batch.targets.filter((target) => {
     const jobs = target.candidateJobIds.map((jobId) => jobsById.get(jobId));
-    return (!options.jobIds.length || jobs.some((job) => options.jobIds.includes(job.jobId)))
+    return (!selectedTargetIds.length || selectedTargetIds.includes(target.targetId))
+      && (!options.jobIds.length || jobs.some((job) => options.jobIds.includes(job.jobId)))
       && (!options.routes.length || jobs.some((job) => options.routes.includes(job.acquisitionRoute)));
   });
   if (options.limit !== null) targets = targets.slice(0, options.limit);
@@ -182,6 +202,7 @@ function selectedBatch(batch, options) {
   const selection = {
     ...structuredClone(batch.selection),
     jobIds: options.jobIds.length ? [...options.jobIds] : [...batch.selection.jobIds],
+    targetIds: selectedTargetIds.length ? [...selectedTargetIds] : [...batch.selection.targetIds],
     routes: options.routes.length ? [...options.routes] : [...batch.selection.routes],
     limit: options.limit ?? batch.selection.limit,
   };
@@ -270,6 +291,7 @@ async function fetchWithRetry(url, brand, policy, artifactContext = {}) {
         maximumBytes: policy.limits.maximumBytes,
         maximumRedirects: policy.limits.maximumRedirects,
         allowCurlFallback: true,
+        allowScraplingFallback: true,
         expectedModel: artifactContext.expectedModel,
         discoveryProvenance: artifactContext.discoveryProvenance,
       });
@@ -305,7 +327,7 @@ function defaultGraphDependencies({ policy, storageIdentity, store, now }) {
           expectedModel: job.targetModel,
           discoveryProvenance: job.discoveryProvenance,
         }),
-        processPdf: (bytes) => context.withMineru(() => runMineruPdfToJson(bytes, {
+        processPdf: (bytes) => context.withMineru(() => runMineruPdfWithImageFallback(bytes, {
           storageRoot: storageIdentity.root,
           maximumPdfBytes: policy.limits.maximumBytes,
         })),
@@ -320,20 +342,36 @@ function defaultGraphDependencies({ policy, storageIdentity, store, now }) {
       readObject: objectStore.readObject,
     }),
     collectCandidates: collectEvidenceCandidates,
-    candidateResolversForTarget: (target) => [{
-      resolverId: 'architecture-v2-core-official-discovery',
-      version: '1',
-      scope: 'explicit_urls_product_pages_templates_and_bounded_sitemaps',
-      required: true,
-      resolve: (caseRecord) => discoverRankedEvidenceCandidates(caseRecord),
-    }, ...buildArchitectureV2ResolverAdapters(target)],
+    candidateResolversForTarget: (target) => recoveryCandidateResolversForTarget(target, {
+      resolverOptions: {
+        beko: { finderOptions: { writeObject: objectStore.writeObject } },
+        asko: { finderOptions: { writeObject: objectStore.writeObject } },
+        esatto: { finderOptions: { writeObject: objectStore.writeObject } },
+      },
+    }),
     reconcileClaims: reconcileEvidenceClaims,
     projectGeometry: projectEvidenceGeometry,
     networkConcurrency: policy.concurrency.network,
     perHostConcurrency: policy.concurrency.perHost,
     mineruConcurrency: policy.concurrency.mineru,
-    resolverTimeoutMs: policy.limits.timeoutMs,
+    resolverTimeoutMs: policy.limits.resolverTimeoutMs,
   };
+}
+
+export function recoveryCandidateResolversForTarget(target, options = {}) {
+  const specialized = buildArchitectureV2ResolverAdapters(target, options.resolverOptions ?? {});
+  const coreRequired = specialized.length === 0;
+  const coreResolver = options.coreResolver ?? ((caseRecord) => discoverRankedEvidenceCandidates(caseRecord));
+  return [{
+      resolverId: 'architecture-v2-core-official-discovery',
+      version: '1',
+      scope: 'explicit_urls_product_pages_templates_and_bounded_sitemaps',
+      required: coreRequired,
+      resolve: async (caseRecord) => ({
+        ...await coreResolver(caseRecord),
+        required: coreRequired,
+      }),
+    }, ...specialized];
 }
 
 function resultsFromOutcomes(batch, state, outcomes, completedAt) {
@@ -372,9 +410,10 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
   validateHistoricalEvidenceRecoveryPolicy(policy);
   const concurrency = effectiveConcurrency(options, policy);
   if (canonicalJsonSha256(policy) !== rawBatch.policy.sha256) throw new Error('recovery policy hash drift');
+  let queueSnapshot = null;
   if (options.queue) {
-    const queue = JSON.parse(await fs.readFile(resolve(options.queue), 'utf8'));
-    if (canonicalJsonSha256(queue) !== rawBatch.queue.sha256) throw new Error('recovery queue hash drift');
+    queueSnapshot = JSON.parse(await fs.readFile(resolve(options.queue), 'utf8'));
+    if (canonicalJsonSha256(queueSnapshot) !== rawBatch.queue.sha256) throw new Error('recovery queue hash drift');
   }
   const batch = selectedBatch(rawBatch, options);
   const verifyStorage = dependencies.verifyStorageRoot
@@ -421,6 +460,11 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
   try {
     let state = await store.open({ resume: options.resume });
     opened = true;
+    if (!options.resume) {
+      const runDirectory = resolve(storageIdentity.root, 'runs/historical-evidence-recovery', runId);
+      if (queueSnapshot) await durableOutputWrite(fs, resolve(runDirectory, 'queue.json'), queueSnapshot);
+      await durableOutputWrite(fs, resolve(runDirectory, 'policy.json'), policy);
+    }
     const schedule = dependencies.setInterval ?? setInterval;
     const cancel = dependencies.clearInterval ?? clearInterval;
     heartbeatTimer = schedule(() => {
@@ -464,7 +508,10 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
     if (outcomes.length !== batch.targets.length) throw new Error('recovery target outcome accounting incomplete');
     const result = resultsFromOutcomes(batch, state, outcomes, new Date(now()).toISOString());
     await store.markCompleted(result.semanticOutcomeSha256);
-    await durableOutputWrite(fs, resolve(options.output), result);
+    await durableOutputWrite(fs, store.paths.results, result);
+    if (resolve(options.output) !== resolve(store.paths.results)) {
+      await durableOutputWrite(fs, resolve(options.output), result);
+    }
     cancel(heartbeatTimer);
     heartbeatTimer = null;
     await store.releaseLock();
@@ -486,7 +533,7 @@ export async function runHistoricalEvidenceRecovery(options, dependencies = {}) 
 async function main(argv) {
   const parsed = parseHistoricalEvidenceRecoveryRunArgs(argv);
   const storageRoot = process.env.FITAPPLIANCE_STORAGE_ROOT;
-  const { input, output } = resolveHistoricalEvidenceRecoveryIoPaths(parsed, { storageRoot });
+  const { input, output, policy, queue } = resolveHistoricalEvidenceRecoveryIoPaths(parsed, { storageRoot });
   const controller = new AbortController();
   const interrupt = () => controller.abort();
   process.once('SIGINT', interrupt);
@@ -496,8 +543,8 @@ async function main(argv) {
       ...parsed,
       input,
       output,
-      policy: resolve(repoRoot, 'data/architecture-v2/policies/historical-evidence-recovery-policy.json'),
-      queue: resolve(repoRoot, 'data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json'),
+      policy,
+      queue,
       storageRoot,
     }, { signal: controller.signal });
     process.stdout.write(`${JSON.stringify(result.dryRun ? result : result.summary, null, 2)}\n`);

@@ -8,6 +8,7 @@ import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recove
 
 import {
   parseHistoricalEvidenceRecoveryRunArgs,
+  recoveryCandidateResolversForTarget,
   resolveHistoricalEvidenceRecoveryIoPaths,
   runHistoricalEvidenceRecovery,
 } from '../../scripts/architecture-v2/run-historical-evidence-recovery.mjs';
@@ -47,7 +48,7 @@ function batch(targetCount = 1) {
     schemaVersion: 1, batchId: 'run-test-batch', generatedAt: '2026-07-13T00:00:00.000Z',
     queue: { schemaVersion: 2, sha256: SHA_A },
     policy: { version: '2026-07-13.1', sha256: SHA_B },
-    selection: { jobIds: [], routes: [], priorities: [], brands: [], limit: null },
+    selection: { jobIds: [], targetIds: [], routes: [], priorities: [], brands: [], limit: null },
     artifactJobs, targets,
     summary: { artifactJobs: artifactJobs.length, targets: targets.length, candidateEdges: targets.length },
   };
@@ -62,7 +63,10 @@ function policy() {
     lifecycleStates: ['CURRENT_RETAIL', 'CATALOG_ARCHIVED'],
     concurrency: { network: 2, perHost: 1, mineru: 1 },
     retry: { fetchAttempts: 3, mineruAttempts: 2, baseDelayMs: 1000 },
-    limits: { timeoutMs: 30_000, maximumBytes: 20_971_520, maximumRedirects: 5 },
+    limits: {
+      timeoutMs: 30_000, resolverTimeoutMs: 120_000,
+      maximumBytes: 20_971_520, maximumRedirects: 5,
+    },
     lock: { heartbeatMs: 15_000, staleAfterMs: 90_000 },
     parser: {
       format: 'content_list_v2', name: 'MinerU', version: '3.4.4',
@@ -80,11 +84,13 @@ async function fixture({ targetCount = 1 } = {}) {
   const outputPath = join(root, 'results.json');
   const input = batch(targetCount);
   const policyValue = policy();
+  const queueValue = { queue: true };
+  input.queue.sha256 = canonicalJsonSha256(queueValue);
   input.policy.sha256 = canonicalJsonSha256(policyValue);
   await fs.writeFile(inputPath, JSON.stringify(input));
   await fs.writeFile(policyPath, JSON.stringify(policyValue));
-  await fs.writeFile(queuePath, JSON.stringify({ queue: true }));
-  return { root, inputPath, policyPath, queuePath, outputPath, input, policyValue };
+  await fs.writeFile(queuePath, JSON.stringify(queueValue));
+  return { root, inputPath, policyPath, queuePath, outputPath, input, policyValue, queueValue };
 }
 
 function acceptedOutcome(targetId = 'target-a') {
@@ -94,6 +100,10 @@ function acceptedOutcome(targetId = 'target-a') {
     candidateInventory: {},
     sources: [{ contentSha256: 'd'.repeat(64) }],
     geometryProjection: { evidenceLevel: 'dimensions' },
+    reconciliation: {
+      conflictingFields: [], conflictHints: [], missingFields: [], supersessionViolations: [],
+      axisPermutationResolution: null, lowerAuthorityResolution: null, conflictReason: null,
+    },
     semanticOutcomeSha256: 'e'.repeat(64),
   };
   return outcome;
@@ -135,12 +145,13 @@ test('CLI parser supports recovery filters and rejects unsafe or incomplete comb
   assert.deepEqual(parseHistoricalEvidenceRecoveryRunArgs([
     '--input', 'in.json', '--output=out.json', '--run-id', 'run-1', '--resume',
     '--require-selection',
-    '--job-id', 'job-a', '--route=OFFICIAL_RECEIPT_REBUILD', '--limit', '2',
+    '--job-id', 'job-a', '--target-id', 'target-a',
+    '--route=OFFICIAL_RECEIPT_REBUILD', '--limit', '2',
     '--network-concurrency', '2', '--mineru-concurrency=1',
   ]), {
     input: 'in.json', output: 'out.json', runId: 'run-1', resume: true, dryRun: false,
     requireSelection: true,
-    jobIds: ['job-a'], routes: ['OFFICIAL_RECEIPT_REBUILD'], limit: 2,
+    jobIds: ['job-a'], targetIds: ['target-a'], routes: ['OFFICIAL_RECEIPT_REBUILD'], limit: 2,
     networkConcurrency: 2, mineruConcurrency: 1,
   });
   assert.throws(() => parseHistoricalEvidenceRecoveryRunArgs([]), /selection.*required/i);
@@ -183,7 +194,37 @@ test('resume without repeated filters uses the immutable run batch and run-local
   }), {
     input: '/evidence-root/runs/historical-evidence-recovery/run-1/batch.json',
     output: '/evidence-root/runs/historical-evidence-recovery/run-1/results.json',
+    policy: '/evidence-root/runs/historical-evidence-recovery/run-1/policy.json',
+    queue: '/evidence-root/runs/historical-evidence-recovery/run-1/queue.json',
   });
+});
+
+test('brand-specific discovery makes the generic resolver supplemental instead of release-blocking', async () => {
+  const fisherPaykel = recoveryCandidateResolversForTarget({
+    brand: 'Fisher & Paykel', model: 'DW60CDW2', category: 'dishwasher',
+  }, {
+    coreResolver: async () => ({
+      schemaVersion: 1,
+      resolverId: 'architecture-v2-core-official-discovery',
+      version: '1',
+      scope: 'explicit_urls_product_pages_templates_and_bounded_sitemaps',
+      required: true,
+      completion: 'complete',
+      candidates: [],
+      failures: [],
+    }),
+  });
+  assert.equal(fisherPaykel[0].resolverId, 'architecture-v2-core-official-discovery');
+  assert.equal(fisherPaykel[0].required, false);
+  assert.equal((await fisherPaykel[0].resolve({})).required, false);
+  assert.equal(fisherPaykel[1].resolverId, 'fisher-paykel-official-support');
+  assert.equal(fisherPaykel[1].required, true);
+
+  const unsupported = recoveryCandidateResolversForTarget({
+    brand: 'Unsupported Brand', model: 'EX100', category: 'dishwasher',
+  });
+  assert.equal(unsupported.length, 1);
+  assert.equal(unsupported[0].required, true);
 });
 
 test('run concurrency can be reduced but cannot override audited policy maxima', async (t) => {
@@ -232,11 +273,57 @@ test('fresh run writes one validated result and checkpoints the completed target
   assert.equal(result.summary.accepted, 1);
   assert.equal(result.batchSha256, canonicalJsonSha256(f.input));
   assert.deepEqual(JSON.parse(await fs.readFile(f.outputPath, 'utf8')), result);
+  assert.deepEqual(JSON.parse(await fs.readFile(join(
+    f.root, 'runs/historical-evidence-recovery/run-fresh/results.json',
+  ), 'utf8')), result);
   const state = JSON.parse(await fs.readFile(join(
     f.root, 'runs/historical-evidence-recovery/run-fresh/state.json',
   ), 'utf8'));
   assert.equal(state.status, 'completed');
   assert.equal(state.targets['target-a'].outcome.status, 'accepted');
+});
+
+test('fresh run can select one resolver-only target by exact target ID', async (t) => {
+  const f = await fixture({ targetCount: 2 });
+  t.after(() => fs.rm(f.root, { recursive: true, force: true }));
+  let observedTargetIds = [];
+  const result = await runHistoricalEvidenceRecovery({
+    input: f.inputPath, output: f.outputPath, policy: f.policyPath, queue: null,
+    storageRoot: f.root, runId: 'run-target-selection', resume: false, dryRun: false,
+    jobIds: [], targetIds: ['target-b'], routes: [], limit: null,
+    networkConcurrency: 2, mineruConcurrency: 1,
+  }, dependencies(f, {
+    graphRunner: async (pending, graphDependencies) => {
+      observedTargetIds = pending.targets.map((target) => target.targetId);
+      const outcome = acceptedOutcome('target-b');
+      await graphDependencies.onTransition({
+        entity: 'target', id: outcome.targetId, state: 'completed', status: outcome.status,
+        semanticOutcomeSha256: outcome.semanticOutcomeSha256, outcome,
+      });
+      return { outcomes: [outcome] };
+    },
+  }));
+
+  assert.deepEqual(observedTargetIds, ['target-b']);
+  const persistedBatch = JSON.parse(await fs.readFile(join(
+    f.root, 'runs/historical-evidence-recovery/run-target-selection/batch.json',
+  ), 'utf8'));
+  assert.deepEqual(persistedBatch.selection.targetIds, ['target-b']);
+  assert.equal(result.summary.accepted, 1);
+});
+
+test('fresh run persists immutable queue and policy snapshots beside run state', async (t) => {
+  const f = await fixture();
+  t.after(() => fs.rm(f.root, { recursive: true, force: true }));
+  await runHistoricalEvidenceRecovery({
+    input: f.inputPath, output: f.outputPath, policy: f.policyPath, queue: f.queuePath,
+    storageRoot: f.root, runId: 'run-snapshots', resume: false, dryRun: false,
+    jobIds: [], routes: [], limit: null, networkConcurrency: 2, mineruConcurrency: 1,
+  }, dependencies(f));
+
+  const runDirectory = join(f.root, 'runs/historical-evidence-recovery/run-snapshots');
+  assert.deepEqual(JSON.parse(await fs.readFile(join(runDirectory, 'queue.json'), 'utf8')), f.queueValue);
+  assert.deepEqual(JSON.parse(await fs.readFile(join(runDirectory, 'policy.json'), 'utf8')), f.policyValue);
 });
 
 test('dry-run validates environment and graph without network, run state, or tracked output', async (t) => {

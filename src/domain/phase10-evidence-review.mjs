@@ -1,6 +1,6 @@
 import { classifyTransportHost } from './source-provenance.mjs';
 import { createSourceDocument } from './source-document.mjs';
-import { evidenceSourcePolicy } from './evidence-source-verifier.mjs';
+import { currentMineruEvidenceProfile } from './evidence-source-verifier.mjs';
 
 const DIMENSION_FIELDS = new Set([
   'closedEnvelope.widthMm',
@@ -85,23 +85,18 @@ function validateField(field, acquisition) {
 
 function hasCurrentMineruProvenance(acquired) {
   const artifact = acquired?.derivedArtifact;
-  const required = evidenceSourcePolicy.resolutionPolicy.pdfEvidence;
-  return acquired?.parserVersion === `MinerU-${required.parserVersion}`
-    && artifact?.schemaVersion === 1
-    && artifact.format === required.requiredFormat
-    && artifact.parserName === required.parserName
-    && artifact.parserVersion === required.parserVersion
-    && artifact.modelRevision === required.modelRevision
-    && artifact.backend === required.backend
-    && artifact.method === required.method
-    && artifact.tableEnabled === true
-    && artifact.formulaEnabled === false
-    && artifact.sourcePdfSha256 === acquired.sha256
-    && /^[a-f0-9]{64}$/.test(text(artifact.contentSha256))
-    && Number.isInteger(artifact.pageCount)
-    && artifact.pageCount === acquired.pageCount
-    && Number.isInteger(artifact.byteSize)
-    && artifact.byteSize > 1;
+  try {
+    const profile = currentMineruEvidenceProfile(artifact);
+    return acquired?.parserVersion === `MinerU-${profile.parserVersion}`
+      && artifact.sourcePdfSha256 === acquired.sha256
+      && /^[a-f0-9]{64}$/.test(text(artifact.contentSha256))
+      && Number.isInteger(artifact.pageCount)
+      && artifact.pageCount === acquired.pageCount
+      && Number.isInteger(artifact.byteSize)
+      && artifact.byteSize > 1;
+  } catch {
+    return false;
+  }
 }
 
 export function reviewPhase10Evidence({ selection, acquisition, input }) {

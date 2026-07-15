@@ -1,0 +1,873 @@
+{
+  "schemaVersion": 1,
+  "runId": "historical-parser-replay-20260714-v3",
+  "batchId": "historical-recovery-092221d479647d12f829209b",
+  "batchSha256": "e06fb76bd6f413e68c8d8cd68eeb70247121ebe99c0647f205c5392cec4e4ab7",
+  "queueSha256": "ebeabd7bdc1b6aff29c95d8bf29449f47214b62ed68acc96a2181047c604f601",
+  "policySha256": "34edad995a430f797a52969710b8fef165779bfed3f702cedf9e461d550008b8",
+  "startedAt": "2026-07-14T20:04:05.981Z",
+  "completedAt": "2026-07-14T20:05:20.218Z",
+  "semanticOutcomeSha256": "b447ce75ee2234fed8542e2038827ac2756aa5c1ed9a3280463a83099fb90d34",
+  "outcomes": [
+    {
+      "targetId": "recovery_target_1a597e6cf3cf9079af4ef3e1",
+      "status": "accepted",
+      "failureCode": null,
+      "candidateInventorySha256": "575fd05a19f51292409f4a29a76e04ac1d663cea54fc33297e4a169a2036ee1a",
+      "candidateInventory": {
+        "schemaVersion": 1,
+        "targetId": "recovery_target_1a597e6cf3cf9079af4ef3e1",
+        "identity": {
+          "brand": "Haier",
+          "model": "HRF510BHC",
+          "category": "fridge"
+        },
+        "completionStatus": "complete",
+        "incompleteResolvers": [],
+        "missingBatchCandidateJobIds": [],
+        "resolvers": [
+          {
+            "resolverId": "batch-candidates",
+            "version": "1",
+            "scope": "recovery_batch_graph",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 1
+          }
+        ],
+        "activeReceiptSources": [],
+        "candidates": [
+          {
+            "candidateId": "candidate_771320d1e1c57b6cb0ccb69c",
+            "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw57e105ea/QRG/AU/QRG-AU-62293.pdf",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": null,
+            "batchJobIds": [
+              "offline_replay_3fb53cfabf5d9ff238411e24"
+            ],
+            "resolverRefs": [
+              {
+                "resolverId": "batch-candidates",
+                "version": "1",
+                "scope": "recovery_batch_graph",
+                "discoveryMethod": "recovery_batch",
+                "sourceRole": "manufacturer_document",
+                "order": 0
+              }
+            ],
+            "outcome": {
+              "status": "accepted",
+              "failureCode": null,
+              "source": {
+                "authority": "manufacturer",
+                "sourceType": "official_exact_model_pdf",
+                "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw57e105ea/QRG/AU/QRG-AU-62293.pdf",
+                "finalUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw57e105ea/QRG/AU/QRG-AU-62293.pdf",
+                "redirectChain": [],
+                "retrievedAt": "2026-07-14T20:04:06.183Z",
+                "contentSha256": "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716",
+                "objectPath": "evidence/web/sha256/77/cf/77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 349928,
+                "supersedesContentSha256": [],
+                "identity": {
+                  "brand": "Haier",
+                  "model": "HRF510BHC",
+                  "outcome": "exact"
+                },
+                "claims": [
+                  {
+                    "field": "closedEnvelope.widthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 790
+                    },
+                    "sourceLabel": "Width",
+                    "sourceAxisOrder": [
+                      "width"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 1,
+                    "fragmentSha256": "79da59f8cb384380480e5062ba45bbc5e7cec85254919bba5f8cc6638ab7dc3f",
+                    "bbox": [
+                      354,
+                      275,
+                      634,
+                      374
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 1725
+                    },
+                    "sourceLabel": "Height",
+                    "sourceAxisOrder": [
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 1,
+                    "fragmentSha256": "79da59f8cb384380480e5062ba45bbc5e7cec85254919bba5f8cc6638ab7dc3f",
+                    "bbox": [
+                      354,
+                      275,
+                      634,
+                      374
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.depthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 707
+                    },
+                    "sourceLabel": "Depth",
+                    "sourceAxisOrder": [
+                      "depth"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 1,
+                    "fragmentSha256": "79da59f8cb384380480e5062ba45bbc5e7cec85254919bba5f8cc6638ab7dc3f",
+                    "bbox": [
+                      354,
+                      275,
+                      634,
+                      374
+                    ]
+                  }
+                ],
+                "derivedArtifact": {
+                  "schemaVersion": 1,
+                  "format": "content_list_v2",
+                  "parserName": "MinerU",
+                  "parserVersion": "3.4.4",
+                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+                  "backend": "pipeline",
+                  "method": "auto",
+                  "tableEnabled": true,
+                  "formulaEnabled": false,
+                  "sourcePdfSha256": "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716",
+                  "contentSha256": "d246bfe7788897191dcd02dbdef8972061b318b0a2c34654e7bb68abfc2ed644",
+                  "objectPath": "evidence/derived/mineru-json/sha256/d2/46/d246bfe7788897191dcd02dbdef8972061b318b0a2c34654e7bb68abfc2ed644.json",
+                  "byteSize": 21047,
+                  "pageCount": 2
+                },
+                "identitySignals": [
+                  {
+                    "type": "mineru_page_header_model",
+                    "value": "HRF510BHC:page:1:1bb9634e0b5babb1d741db43dabfa53b3d72f2e177b2fa5c3f57b76dadc9398a"
+                  },
+                  {
+                    "type": "mineru_page_header_model",
+                    "value": "HRF510BHC:page:2:8bb257123beed9a472020774b7645c4613dda0978e67cb17e1dffa63fe248eb2"
+                  },
+                  {
+                    "type": "mineru_repeated_page_header_model",
+                    "value": "HRF510BHC:document:repeated-page-header"
+                  }
+                ],
+                "verificationReceipt": {
+                  "schemaVersion": 3,
+                  "claimSemanticsVersion": 2,
+                  "policyVersion": "2026-07-13.1",
+                  "manufacturerPolicyVersion": "2026-07-14.1",
+                  "verifiedAt": "2026-07-14T20:04:06.183Z",
+                  "bindingSha256": "c99995281dee9dbc669bb62bc6ddfca9927b91677d791562eb990a26c92e0142"
+                }
+              }
+            }
+          }
+        ],
+        "candidateInventorySha256": "575fd05a19f51292409f4a29a76e04ac1d663cea54fc33297e4a169a2036ee1a"
+      },
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw57e105ea/QRG/AU/QRG-AU-62293.pdf",
+          "finalUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw57e105ea/QRG/AU/QRG-AU-62293.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-14T20:04:06.183Z",
+          "contentSha256": "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716",
+          "objectPath": "evidence/web/sha256/77/cf/77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 349928,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Haier",
+            "model": "HRF510BHC",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 790
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "79da59f8cb384380480e5062ba45bbc5e7cec85254919bba5f8cc6638ab7dc3f",
+              "bbox": [
+                354,
+                275,
+                634,
+                374
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "79da59f8cb384380480e5062ba45bbc5e7cec85254919bba5f8cc6638ab7dc3f",
+              "bbox": [
+                354,
+                275,
+                634,
+                374
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 707
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "79da59f8cb384380480e5062ba45bbc5e7cec85254919bba5f8cc6638ab7dc3f",
+              "bbox": [
+                354,
+                275,
+                634,
+                374
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716",
+            "contentSha256": "d246bfe7788897191dcd02dbdef8972061b318b0a2c34654e7bb68abfc2ed644",
+            "objectPath": "evidence/derived/mineru-json/sha256/d2/46/d246bfe7788897191dcd02dbdef8972061b318b0a2c34654e7bb68abfc2ed644.json",
+            "byteSize": 21047,
+            "pageCount": 2
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "HRF510BHC:page:1:1bb9634e0b5babb1d741db43dabfa53b3d72f2e177b2fa5c3f57b76dadc9398a"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "HRF510BHC:page:2:8bb257123beed9a472020774b7645c4613dda0978e67cb17e1dffa63fe248eb2"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "HRF510BHC:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-14.1",
+            "verifiedAt": "2026-07-14T20:04:06.183Z",
+            "bindingSha256": "c99995281dee9dbc669bb62bc6ddfca9927b91677d791562eb990a26c92e0142"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 790,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 707
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw57e105ea/QRG/AU/QRG-AU-62293.pdf",
+            "contentSha256": "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716",
+            "receiptBindingSha256": "c99995281dee9dbc669bb62bc6ddfca9927b91677d791562eb990a26c92e0142",
+            "page": 1,
+            "fragmentSha256": "79da59f8cb384380480e5062ba45bbc5e7cec85254919bba5f8cc6638ab7dc3f"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw57e105ea/QRG/AU/QRG-AU-62293.pdf",
+            "contentSha256": "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716",
+            "receiptBindingSha256": "c99995281dee9dbc669bb62bc6ddfca9927b91677d791562eb990a26c92e0142",
+            "page": 1,
+            "fragmentSha256": "79da59f8cb384380480e5062ba45bbc5e7cec85254919bba5f8cc6638ab7dc3f"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw57e105ea/QRG/AU/QRG-AU-62293.pdf",
+            "contentSha256": "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716",
+            "receiptBindingSha256": "c99995281dee9dbc669bb62bc6ddfca9927b91677d791562eb990a26c92e0142",
+            "page": 1,
+            "fragmentSha256": "79da59f8cb384380480e5062ba45bbc5e7cec85254919bba5f8cc6638ab7dc3f"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      },
+      "semanticOutcomeSha256": "69e40828aa611771743c607813d6812b7311b3e5546c53f32656441d8eab6724"
+    },
+    {
+      "targetId": "recovery_target_6252d12c8636ff82d87b836d",
+      "status": "claims_incomplete",
+      "failureCode": "transport",
+      "candidateInventorySha256": "8bc2728e2e3869c033ac38c3af524d97f0a8fd92eb17d91c494a9450a6f5f4c0",
+      "candidateInventory": {
+        "schemaVersion": 1,
+        "targetId": "recovery_target_6252d12c8636ff82d87b836d",
+        "identity": {
+          "brand": "LG",
+          "model": "DVH1-08WP",
+          "category": "dryer"
+        },
+        "completionStatus": "complete",
+        "incompleteResolvers": [],
+        "missingBatchCandidateJobIds": [],
+        "resolvers": [
+          {
+            "resolverId": "batch-candidates",
+            "version": "1",
+            "scope": "recovery_batch_graph",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 1
+          }
+        ],
+        "activeReceiptSources": [],
+        "candidates": [
+          {
+            "candidateId": "candidate_adacac3e08068cd5bb8422e4",
+            "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": null,
+            "batchJobIds": [
+              "offline_replay_08a9b05eed6fce12d3cf38aa"
+            ],
+            "resolverRefs": [
+              {
+                "resolverId": "batch-candidates",
+                "version": "1",
+                "scope": "recovery_batch_graph",
+                "discoveryMethod": "recovery_batch",
+                "sourceRole": "manufacturer_document",
+                "order": 0
+              }
+            ],
+            "outcome": {
+              "status": "transport_failure",
+              "failureCode": "transport",
+              "reason": "official artifact discovery provenance required",
+              "source": null
+            }
+          }
+        ],
+        "candidateInventorySha256": "8bc2728e2e3869c033ac38c3af524d97f0a8fd92eb17d91c494a9450a6f5f4c0"
+      },
+      "sources": [],
+      "geometryProjection": null,
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      },
+      "semanticOutcomeSha256": "0e73d89ca1581f7acd5a8cbab52902825616919890dbd7dce505606baedfacab"
+    },
+    {
+      "targetId": "recovery_target_a0281e53a45dcd4ad896734a",
+      "status": "accepted",
+      "failureCode": null,
+      "candidateInventorySha256": "e5a73d5e89a8489e36733e0a6010942344d538069543605a4618eac08219001b",
+      "candidateInventory": {
+        "schemaVersion": 1,
+        "targetId": "recovery_target_a0281e53a45dcd4ad896734a",
+        "identity": {
+          "brand": "LG",
+          "model": "GF-L700PL",
+          "category": "fridge"
+        },
+        "completionStatus": "complete",
+        "incompleteResolvers": [],
+        "missingBatchCandidateJobIds": [],
+        "resolvers": [
+          {
+            "resolverId": "batch-candidates",
+            "version": "1",
+            "scope": "recovery_batch_graph",
+            "required": true,
+            "completion": "complete",
+            "candidateCount": 1
+          }
+        ],
+        "activeReceiptSources": [],
+        "candidates": [
+          {
+            "candidateId": "candidate_7c7ff9c7e42f80496bdc7d63",
+            "sourceUrl": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": null,
+            "batchJobIds": [
+              "offline_replay_63b2496e31ed28847e8043be"
+            ],
+            "resolverRefs": [
+              {
+                "resolverId": "batch-candidates",
+                "version": "1",
+                "scope": "recovery_batch_graph",
+                "discoveryMethod": "recovery_batch",
+                "sourceRole": "manufacturer_document",
+                "order": 0
+              }
+            ],
+            "outcome": {
+              "status": "accepted",
+              "failureCode": null,
+              "source": {
+                "authority": "manufacturer",
+                "sourceType": "official_exact_model_pdf",
+                "sourceUrl": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf",
+                "finalUrl": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf",
+                "redirectChain": [],
+                "retrievedAt": "2026-07-14T20:04:06.267Z",
+                "contentSha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
+                "objectPath": "evidence/web/sha256/e8/3d/e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 217068,
+                "supersedesContentSha256": [],
+                "identity": {
+                  "brand": "LG",
+                  "model": "GF-L700PL",
+                  "outcome": "exact"
+                },
+                "claims": [
+                  {
+                    "field": "closedEnvelope.widthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 914
+                    },
+                    "sourceLabel": "Width",
+                    "sourceAxisOrder": [
+                      "width"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 1,
+                    "fragmentSha256": "30bf5ea10267e29fc038ce039119a65c32dd0d584e1b7a344016990e31de5577",
+                    "bbox": [
+                      505,
+                      452,
+                      987,
+                      630
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 1792
+                    },
+                    "sourceLabel": "Height",
+                    "sourceAxisOrder": [
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 1,
+                    "fragmentSha256": "30bf5ea10267e29fc038ce039119a65c32dd0d584e1b7a344016990e31de5577",
+                    "bbox": [
+                      505,
+                      452,
+                      987,
+                      630
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.depthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 729
+                    },
+                    "sourceLabel": "Depth With Door & Handle",
+                    "sourceAxisOrder": [
+                      "depth"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": true,
+                    "includesHandle": true,
+                    "page": 1,
+                    "fragmentSha256": "30bf5ea10267e29fc038ce039119a65c32dd0d584e1b7a344016990e31de5577",
+                    "bbox": [
+                      505,
+                      452,
+                      987,
+                      630
+                    ]
+                  }
+                ],
+                "derivedArtifact": {
+                  "schemaVersion": 1,
+                  "format": "content_list_v2",
+                  "parserName": "MinerU",
+                  "parserVersion": "3.4.4",
+                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+                  "backend": "pipeline",
+                  "method": "auto",
+                  "tableEnabled": true,
+                  "formulaEnabled": false,
+                  "sourcePdfSha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
+                  "contentSha256": "6c569d67712b4ac08dd80bf19662494996c787a4d4d9f706c4ecd6c829639fe4",
+                  "objectPath": "evidence/derived/mineru-json/sha256/6c/56/6c569d67712b4ac08dd80bf19662494996c787a4d4d9f706c4ecd6c829639fe4.json",
+                  "byteSize": 11937,
+                  "pageCount": 1
+                },
+                "identitySignals": [
+                  {
+                    "type": "mineru_page_header_model",
+                    "value": "GF-L700PL:page:1:f3689a88a95dc32145939b6f5e6c6aaca79ceb6dee01dd115a352d862798e164"
+                  },
+                  {
+                    "type": "pdf_source_url_model",
+                    "value": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf"
+                  }
+                ],
+                "verificationReceipt": {
+                  "schemaVersion": 3,
+                  "claimSemanticsVersion": 2,
+                  "policyVersion": "2026-07-13.1",
+                  "manufacturerPolicyVersion": "2026-07-14.1",
+                  "verifiedAt": "2026-07-14T20:04:06.267Z",
+                  "bindingSha256": "ecb69c3a275b9824fb6b0937652fb92d59bb69ac02c2ea46d7156de3ff133a07"
+                }
+              }
+            }
+          }
+        ],
+        "candidateInventorySha256": "e5a73d5e89a8489e36733e0a6010942344d538069543605a4618eac08219001b"
+      },
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf",
+          "finalUrl": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-14T20:04:06.267Z",
+          "contentSha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
+          "objectPath": "evidence/web/sha256/e8/3d/e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 217068,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "LG",
+            "model": "GF-L700PL",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 914
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "30bf5ea10267e29fc038ce039119a65c32dd0d584e1b7a344016990e31de5577",
+              "bbox": [
+                505,
+                452,
+                987,
+                630
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1792
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "30bf5ea10267e29fc038ce039119a65c32dd0d584e1b7a344016990e31de5577",
+              "bbox": [
+                505,
+                452,
+                987,
+                630
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 729
+              },
+              "sourceLabel": "Depth With Door & Handle",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": true,
+              "includesHandle": true,
+              "page": 1,
+              "fragmentSha256": "30bf5ea10267e29fc038ce039119a65c32dd0d584e1b7a344016990e31de5577",
+              "bbox": [
+                505,
+                452,
+                987,
+                630
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
+            "contentSha256": "6c569d67712b4ac08dd80bf19662494996c787a4d4d9f706c4ecd6c829639fe4",
+            "objectPath": "evidence/derived/mineru-json/sha256/6c/56/6c569d67712b4ac08dd80bf19662494996c787a4d4d9f706c4ecd6c829639fe4.json",
+            "byteSize": 11937,
+            "pageCount": 1
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "GF-L700PL:page:1:f3689a88a95dc32145939b6f5e6c6aaca79ceb6dee01dd115a352d862798e164"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-14.1",
+            "verifiedAt": "2026-07-14T20:04:06.267Z",
+            "bindingSha256": "ecb69c3a275b9824fb6b0937652fb92d59bb69ac02c2ea46d7156de3ff133a07"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 914,
+            "heightMm": {
+              "minimumMm": 1792,
+              "maximumMm": 1792
+            },
+            "depthMm": 729
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf",
+            "contentSha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
+            "receiptBindingSha256": "ecb69c3a275b9824fb6b0937652fb92d59bb69ac02c2ea46d7156de3ff133a07",
+            "page": 1,
+            "fragmentSha256": "30bf5ea10267e29fc038ce039119a65c32dd0d584e1b7a344016990e31de5577"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf",
+            "contentSha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
+            "receiptBindingSha256": "ecb69c3a275b9824fb6b0937652fb92d59bb69ac02c2ea46d7156de3ff133a07",
+            "page": 1,
+            "fragmentSha256": "30bf5ea10267e29fc038ce039119a65c32dd0d584e1b7a344016990e31de5577"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf",
+            "contentSha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
+            "receiptBindingSha256": "ecb69c3a275b9824fb6b0937652fb92d59bb69ac02c2ea46d7156de3ff133a07",
+            "page": 1,
+            "fragmentSha256": "30bf5ea10267e29fc038ce039119a65c32dd0d584e1b7a344016990e31de5577"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      },
+      "semanticOutcomeSha256": "14cc891d839b027de8fa9d2b4968044bb06c7cd832743c89e89ecd8b420b20da"
+    }
+  ],
+  "summary": {
+    "targets": 3,
+    "accepted": 2,
+    "nonScalar": 0,
+    "retryable": 0,
+    "terminal": 1
+  }
+}

@@ -14,7 +14,10 @@ import {
   validateHistoricalEvidenceRecoveryBatch,
   validateHistoricalEvidenceRecoveryResults,
 } from './historical-evidence-recovery-contract.mjs';
-import { recoveryOutcomeSemanticSha256 } from './receipt-bound-evidence-batch-runner.mjs';
+import {
+  reconciliationDecisionSummary,
+  recoveryOutcomeSemanticSha256,
+} from './receipt-bound-evidence-batch-runner.mjs';
 import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
 
 function requiredTimestamp(value, label) {
@@ -110,6 +113,9 @@ function validateReconciliationReplay(target, outcome) {
   if (replayed.status !== outcome.status || replayed.failureCode !== outcome.failureCode) {
     throw new Error(`reconciliation replay mismatch: expected ${replayed.status}/${replayed.failureCode ?? 'none'}, recorded ${outcome.status}/${outcome.failureCode ?? 'none'}`);
   }
+  if (!same(reconciliationDecisionSummary(replayed), outcome.reconciliation)) {
+    throw new Error('reconciliation decision summary mismatch');
+  }
   if (['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status)) {
     const replayedHashes = (replayed.sources ?? []).map((source) => source.contentSha256).sort();
     const recordedHashes = (outcome.sources ?? []).map((source) => source.contentSha256).sort();
@@ -149,6 +155,7 @@ async function verifyOnlineSource(source, identity, readObject, verifiedObjects)
     throw new Error('raw evidence object hash or size mismatch');
   }
   let derived = null;
+  let fallbackTrigger = null;
   if (source.derivedArtifact) {
     derived = Buffer.from(await readObject(source.derivedArtifact.objectPath));
     if (derived.length !== source.derivedArtifact.byteSize
@@ -156,9 +163,16 @@ async function verifyOnlineSource(source, identity, readObject, verifiedObjects)
       throw new Error('MinerU object hash or size mismatch');
     }
     verifiedObjects.add(source.derivedArtifact.objectPath);
+    if (source.derivedArtifact.fallbackTrigger) {
+      fallbackTrigger = Buffer.from(await readObject(source.derivedArtifact.fallbackTrigger.objectPath));
+      if (sha256(fallbackTrigger) !== source.derivedArtifact.fallbackTrigger.contentSha256) {
+        throw new Error('MinerU fallback trigger object hash mismatch');
+      }
+      verifiedObjects.add(source.derivedArtifact.fallbackTrigger.objectPath);
+    }
   }
   let discovery = null;
-  if (source.discoveryProvenance?.method === 'official_product_page') {
+  if (source.discoveryProvenance?.discoveryObjectPath) {
     discovery = Buffer.from(await readObject(source.discoveryProvenance.discoveryObjectPath));
     verifiedObjects.add(source.discoveryProvenance.discoveryObjectPath);
   }
@@ -167,6 +181,7 @@ async function verifyOnlineSource(source, identity, readObject, verifiedObjects)
     caseIdentity: identity,
     bytes: raw,
     derivedArtifactBytes: derived,
+    fallbackTriggerArtifactBytes: fallbackTrigger,
     discoveryArtifactBytes: discovery,
   });
   verifiedObjects.add(source.objectPath);
@@ -181,6 +196,172 @@ function replayBundleEntry(entry) {
     const replayed = projectEvidenceGeometry({ ...identity, formFactor: null, sources: entry.sources });
     if (!same(replayed, entry.geometryProjection)) throw new Error('bundle geometry projection replay mismatch');
   }
+}
+
+function immutableRawArtifactBinding(source) {
+  return {
+    authority: source.authority,
+    sourceType: source.sourceType,
+    sourceUrl: source.sourceUrl,
+    finalUrl: source.finalUrl,
+    redirectChain: source.redirectChain,
+    contentSha256: source.contentSha256,
+    objectPath: source.objectPath,
+    contentType: source.contentType,
+    byteSize: source.byteSize,
+    identity: source.identity,
+    discoveryProvenance: source.discoveryProvenance ?? null,
+  };
+}
+
+function preservesEveryRawArtifactBinding(priorSources, replacementSources) {
+  const replacementBindings = new Set(replacementSources
+    .map((source) => canonicalJsonSha256(immutableRawArtifactBinding(source))));
+  return priorSources.every((source) => replacementBindings.has(
+    canonicalJsonSha256(immutableRawArtifactBinding(source)),
+  ));
+}
+
+function buildIdenticalArtifactRepair(entry, target, outcome) {
+  if (!entry || !target || !outcome
+    || entry.targetId !== target.targetId
+    || outcome.targetId !== target.targetId
+    || identityKey(entry) !== identityKey(target)
+    || entry.referenceId !== target.referenceId
+    || entry.legacyRuntimeId !== target.legacyRuntimeId
+    || entry.canonicalProductId !== target.canonicalProductId
+    || entry.lifecycleState !== target.lifecycleState
+    || entry.acceptanceStatus !== outcome.status
+    || !['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status)
+    || !preservesEveryRawArtifactBinding(entry.sources, outcome.sources)) {
+    return null;
+  }
+  return Object.freeze({
+    targetId: target.targetId,
+    reason: 'receipt_rederived_from_identical_raw_artifact_with_verified_corroboration',
+    priorEntrySha256: canonicalJsonSha256(entry),
+    replacementOutcomeSha256: outcome.semanticOutcomeSha256,
+  });
+}
+
+function receiptReplayFailureCode(error) {
+  const detail = String(error?.message ?? error).toLowerCase();
+  if (/claims do not match|claim.*mismatch/.test(detail)) return 'claim_replay_mismatch';
+  if (/identity|model scope|family manual|multiple models/.test(detail)) return 'identity_replay_mismatch';
+  if (/receipt|attestation/.test(detail)) return 'receipt_replay_mismatch';
+  if (/object|hash|size|missing|enoent/.test(detail)) return 'object_replay_failure';
+  return 'verification_replay_failure';
+}
+
+export async function auditHistoricalAcceptanceReceipts({
+  bundle,
+  generatedAt,
+  readObject,
+}) {
+  validateHistoricalEvidenceRecoveryAcceptanceBundle(bundle);
+  const checkedObjects = new Set();
+  const outcomes = [];
+  for (const entry of bundle.entries) {
+    const identity = { brand: entry.brand, model: entry.model, category: entry.category };
+    for (const source of entry.sources) {
+      const base = {
+        targetId: entry.targetId,
+        referenceId: entry.referenceId,
+        brand: entry.brand,
+        model: entry.model,
+        category: entry.category,
+        sourceUrl: source.sourceUrl,
+        sourcePdfSha256: source.contentType === 'application/pdf' ? source.contentSha256 : null,
+        contentSha256: source.contentSha256,
+        receiptBindingSha256: source.verificationReceipt.bindingSha256,
+        derivedObjectPath: source.derivedArtifact?.objectPath ?? null,
+      };
+      try {
+        await verifyOnlineSource(source, identity, readObject, checkedObjects);
+        outcomes.push({ ...base, status: 'passed', failureCode: null });
+      } catch (error) {
+        outcomes.push({
+          ...base,
+          status: 'failed',
+          failureCode: receiptReplayFailureCode(error),
+          diagnostic: String(error?.message ?? error).replace(/\s+/g, ' ').trim(),
+        });
+      }
+    }
+  }
+  outcomes.sort((left, right) => left.targetId.localeCompare(right.targetId)
+    || left.contentSha256.localeCompare(right.contentSha256));
+  const sourceBundleSha256 = canonicalJsonSha256(bundle);
+  const semanticAuditSha256 = canonicalJsonSha256({ sourceBundleSha256, outcomes });
+  return Object.freeze({
+    schemaVersion: 1,
+    generatedAt: requiredTimestamp(generatedAt, 'acceptance receipt audit generation time'),
+    sourceBundleSha256,
+    outcomes,
+    summary: {
+      entries: bundle.entries.length,
+      sources: outcomes.length,
+      passed: outcomes.filter((outcome) => outcome.status === 'passed').length,
+      failed: outcomes.filter((outcome) => outcome.status === 'failed').length,
+    },
+    checkedObjects: checkedObjects.size,
+    semanticAuditSha256,
+  });
+}
+
+export function filterHistoricalAcceptanceBundleByReceiptReplayAudit(bundle, audit) {
+  validateHistoricalEvidenceRecoveryAcceptanceBundle(bundle);
+  if (audit?.schemaVersion !== 1 || !Array.isArray(audit.outcomes)) {
+    throw new TypeError('acceptance receipt replay audit schema v1 required');
+  }
+  const sourceBundleSha256 = canonicalJsonSha256(bundle);
+  if (audit.sourceBundleSha256 !== sourceBundleSha256
+    || audit.semanticAuditSha256 !== canonicalJsonSha256({
+      sourceBundleSha256,
+      outcomes: audit.outcomes,
+    })) {
+    throw new Error('acceptance receipt replay audit binding mismatch');
+  }
+  const expected = new Map();
+  for (const entry of bundle.entries) {
+    for (const source of entry.sources) {
+      const key = `${entry.targetId}\0${source.contentSha256}\0${source.verificationReceipt.bindingSha256}`;
+      expected.set(key, { entry, source });
+    }
+  }
+  const failedTargets = new Set();
+  const observed = new Set();
+  for (const outcome of audit.outcomes) {
+    if (!['passed', 'failed'].includes(outcome.status)) throw new Error('invalid receipt replay outcome status');
+    const key = `${outcome.targetId}\0${outcome.contentSha256}\0${outcome.receiptBindingSha256}`;
+    const bound = expected.get(key);
+    if (!bound || observed.has(key)
+      || bound.entry.referenceId !== outcome.referenceId
+      || bound.source.sourceUrl !== outcome.sourceUrl) {
+      throw new Error(`acceptance receipt replay outcome binding mismatch for ${outcome.targetId}`);
+    }
+    observed.add(key);
+    if (outcome.status === 'failed') failedTargets.add(outcome.targetId);
+  }
+  if (observed.size !== expected.size) throw new Error('acceptance receipt replay audit coverage incomplete');
+  const summary = {
+    entries: bundle.entries.length,
+    sources: audit.outcomes.length,
+    passed: audit.outcomes.filter((outcome) => outcome.status === 'passed').length,
+    failed: audit.outcomes.filter((outcome) => outcome.status === 'failed').length,
+  };
+  if (!same(summary, audit.summary)) throw new Error('acceptance receipt replay audit summary mismatch');
+  const filtered = {
+    ...structuredClone(bundle),
+    entries: bundle.entries
+      .filter((entry) => !failedTargets.has(entry.targetId))
+      .map((entry) => structuredClone(entry)),
+  };
+  validateHistoricalEvidenceRecoveryAcceptanceBundle(filtered);
+  return Object.freeze({
+    bundle: filtered,
+    excludedTargetIds: [...failedTargets].sort(),
+  });
 }
 
 export function auditHistoricalEvidenceRecoveryBundle(bundle) {
@@ -232,6 +413,7 @@ export async function auditHistoricalEvidenceRecovery({
   if (mode !== 'online') throw new TypeError('run audit currently requires online mode');
   const at = requiredTimestamp(generatedAt, 'audit generation time');
   const violations = [];
+  const repairs = [];
   const verifiedObjects = new Set();
   try { validateHistoricalEvidenceRecoveryBatch(batch); } catch (error) {
     addViolation(violations, 'batch contract', error);
@@ -339,17 +521,28 @@ export async function auditHistoricalEvidenceRecovery({
   }
 
   if (replayPriorObjects && priorBundle) {
+    const currentOutcomes = new Map((results?.outcomes ?? []).map((outcome) => [outcome.targetId, outcome]));
     for (const entry of priorBundle.entries) {
       const identity = { brand: entry.brand, model: entry.model, category: entry.category };
-      for (const source of entry.sources) {
-        try { await verifyOnlineSource(source, identity, readObject, verifiedObjects); } catch (error) {
-          addViolation(violations, `prior object ${entry.targetId}`, error);
+      try {
+        for (const source of entry.sources) {
+          await verifyOnlineSource(source, identity, readObject, verifiedObjects);
         }
+      } catch (error) {
+        const repair = buildIdenticalArtifactRepair(
+          entry,
+          targets.get(entry.targetId),
+          currentOutcomes.get(entry.targetId),
+        );
+        if (repair) repairs.push(repair);
+        else addViolation(violations, `prior object ${entry.targetId}`, error);
       }
     }
   }
 
   const uniqueViolations = [...new Set(violations)].sort();
+  const uniqueRepairs = [...new Map(repairs.map((repair) => [repair.targetId, repair])).values()]
+    .sort((left, right) => left.targetId.localeCompare(right.targetId));
   const semanticView = {
     mode: 'online',
     batchId: batch?.batchId ?? results?.batchId ?? 'invalid-batch',
@@ -358,8 +551,10 @@ export async function auditHistoricalEvidenceRecovery({
     policySha256: batch?.policy?.sha256 ?? results?.policySha256 ?? '0'.repeat(64),
     resultsSha256: (() => { try { return canonicalJsonSha256(results); } catch { return '0'.repeat(64); } })(),
     priorBundleSha256: priorBundle ? canonicalJsonSha256(priorBundle) : null,
+    priorObjectsReplayed: Boolean(priorBundle && replayPriorObjects),
     checkedTargets: results?.outcomes?.length ?? 0,
     checkedObjects: verifiedObjects.size,
+    repairs: uniqueRepairs,
     violations: uniqueViolations,
   };
   const semanticAuditSha256 = canonicalJsonSha256(semanticView);
@@ -392,7 +587,8 @@ function equivalentEntry(left, right) {
     && left.lifecycleState === right.lifecycleState
     && left.acceptanceStatus === right.acceptanceStatus
     && same(left.sources.map((source) => source.contentSha256).sort(), right.sources.map((source) => source.contentSha256).sort())
-    && same(left.geometryProjection, right.geometryProjection);
+    && same(left.geometryProjection, right.geometryProjection)
+    && same(left.reconciliation ?? null, right.reconciliation ?? null);
 }
 
 export function promoteHistoricalEvidenceRecovery({
@@ -409,13 +605,16 @@ export function promoteHistoricalEvidenceRecovery({
     validateHistoricalEvidenceRecoveryAcceptanceBundle(priorBundle);
     const offline = auditHistoricalEvidenceRecoveryBundle(priorBundle);
     if (offline.status !== 'passed') throw new Error(`prior bundle replay failed: ${offline.violations.join('; ')}`);
-    if (priorBundle.policySha256 !== results.policySha256) throw new Error('prior bundle policy drift');
+    if (priorBundle.policySha256 !== results.policySha256 && audit.priorObjectsReplayed !== true) {
+      throw new Error('prior bundle policy drift requires a full prior-object replay audit');
+    }
   }
   promotionInputBindings(batch, results, audit, priorBundle);
   const auditSha256 = canonicalJsonSha256(audit);
   const targets = new Map(batch.targets.map((target) => [target.targetId, target]));
   const entries = new Map((priorBundle?.entries ?? []).map((entry) => [entry.targetId, structuredClone(entry)]));
   const identities = new Map([...entries.values()].map((entry) => [identityKey(entry), entry.targetId]));
+  const repairs = new Map((audit.repairs ?? []).map((repair) => [repair.targetId, repair]));
   for (const outcome of results.outcomes) {
     if (!['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status)) continue;
     const target = targets.get(outcome.targetId);
@@ -434,10 +633,18 @@ export function promoteHistoricalEvidenceRecovery({
       auditSha256,
       sources: structuredClone(outcome.sources),
       geometryProjection: structuredClone(outcome.geometryProjection),
+      reconciliation: structuredClone(outcome.reconciliation),
     };
     const existing = entries.get(target.targetId);
     if (existing) {
-      if (!equivalentEntry(existing, next)) throw new Error(`conflicting replacement for ${target.targetId}`);
+      if (!equivalentEntry(existing, next)) {
+        const expectedRepair = buildIdenticalArtifactRepair(existing, target, outcome);
+        const auditedRepair = repairs.get(target.targetId);
+        if (!expectedRepair || !auditedRepair || !same(expectedRepair, auditedRepair)) {
+          throw new Error(`conflicting replacement for ${target.targetId}`);
+        }
+        entries.set(next.targetId, next);
+      }
       continue;
     }
     const duplicateIdentity = identities.get(identityKey(next));

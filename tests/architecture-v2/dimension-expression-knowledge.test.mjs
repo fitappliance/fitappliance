@@ -34,6 +34,28 @@ function paragraph(content) {
   };
 }
 
+function textBlock(type, content, blockBbox = bbox) {
+  return {
+    type,
+    content: { [`${type}_content`]: [{ type: 'text', content }] },
+    bbox: blockBbox,
+  };
+}
+
+function structuredList(type, entries, blockBbox) {
+  return {
+    type,
+    content: {
+      list_type: 'text_list',
+      list_items: entries.map((content) => ({
+        item_type: 'text',
+        item_content: [{ type: 'text', content }],
+      })),
+    },
+    bbox: blockBbox,
+  };
+}
+
 test('dimension research classifies grouped, scoped, labelled, and ambiguous diagram expressions', () => {
   const contentList = [[
     paragraph('LG Series 5 WD1275A1'),
@@ -74,8 +96,8 @@ test('dimension research classifies grouped, scoped, labelled, and ambiguous dia
   )));
   assert.ok(result.observations.some((row) => (
     row.patternKind === 'INDIVIDUALLY_LABELLED_AXES'
-      && row.parserDecision === 'RESEARCH_ADJUSTABLE_RANGE'
-      && row.safeAxes.join(',') === 'width,depth'
+      && row.parserDecision === 'SUPPORTED_ADJUSTABLE_HEIGHT_RANGE'
+      && row.safeAxes.join(',') === 'height,width,depth'
   )));
   assert.ok(result.observations.some((row) => (
     row.patternKind === 'INDIVIDUALLY_LABELLED_AXES'
@@ -86,6 +108,46 @@ test('dimension research classifies grouped, scoped, labelled, and ambiguous dia
     /packaged/i.test(row.sourceLabel) && row.parserDecision === 'SUPPORTED_EXPLICIT_GROUPED'
   )));
   assert.ok(result.observations.every((row) => row.fragmentSha256.length === 64));
+});
+
+test('dimension research records proven diagram primary depth and hierarchical external depth grammars', () => {
+  const diagram = {
+    type: 'image',
+    content: {
+      image_source: { path: 'images/dimension-side-view.jpg' },
+      image_caption: [], image_footnote: [],
+    },
+    bbox: [200, 230, 800, 520],
+  };
+  const contentList = [[
+    paragraph('LG DVH1-08WP'),
+    paragraph('Dimension(mm)'),
+    diagram,
+    table('<table><tr><td>W</td><td>600</td><td>D</td><td>660</td><td>D&quot;</td><td>1115</td></tr><tr><td>H</td><td>850</td><td>D&#x27;</td><td>614</td><td></td><td></td></tr></table>'),
+    table('<table><tr><td>DIMENSIONS</td><td></td></tr><tr><td>Height</td><td>1792mm</td></tr><tr><td>Width</td><td>914mm</td></tr><tr><td>Depth</td><td></td></tr><tr><td>Without Door</td><td>685mm</td></tr><tr><td>Without Handle</td><td>729mm</td></tr><tr><td>With Door &amp; Handle</td><td>729mm</td></tr></table>'),
+  ]];
+
+  const result = extractDimensionExpressions({
+    pdfSha256: 'a'.repeat(64),
+    contentSha256: 'b'.repeat(64),
+    contentList,
+    sourceUrls: ['https://www.lg.com/au/example.pdf'],
+    identities: [{ brand: 'LG', model: 'DVH1-08WP', category: 'dryer' }],
+  });
+
+  const diagramPrimary = result.observations.find((row) => (
+    row.patternKind === 'ALTERNATING_AXIS_VALUE_CELLS'
+      && row.parserDecision === 'SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS'
+  ));
+  assert.deepEqual(diagramPrimary.safeAxes, ['width', 'depth', 'height']);
+  assert.equal(diagramPrimary.axisValues.find((row) => row.label === 'D').value, '660');
+
+  const hierarchy = result.observations.find((row) => (
+    row.patternKind === 'HIERARCHICAL_DEPTH_VARIANTS'
+  ));
+  assert.equal(hierarchy.parserDecision, 'SUPPORTED_EXPLICIT_HANDLE_INCLUSIVE_DEPTH');
+  assert.deepEqual(hierarchy.safeAxes, ['depth']);
+  assert.equal(hierarchy.axisValues[0].value, '729mm');
 });
 
 test('dimension research records model matrices and image-only diagram gaps without inventing model bindings', () => {
@@ -186,13 +248,163 @@ test('long text keeps explicit grouped axis order while isolating qualified dept
   const qualified = result.observations.find((row) => (
     row.patternKind === 'GROUPED_AXIS_SEQUENCE_WITH_VARIANT'
   ));
-  assert.equal(qualified.parserDecision, 'SUPPORTED_PARTIAL_REJECT_QUALIFIED_DEPTH_VARIANT');
+  assert.equal(qualified.parserDecision, 'SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH');
   assert.deepEqual(qualified.axisOrder, ['height', 'width', 'depth']);
-  assert.deepEqual(qualified.safeAxes, ['height', 'width']);
+  assert.deepEqual(qualified.safeAxes, ['height', 'width', 'depth']);
   assert.match(qualified.depthVariants[0], /including door handle/i);
+  assert.equal(qualified.axisValues.find((value) => value.axis === 'depth').value, '59 cm');
+  assert.equal(qualified.axisValues.find((value) => value.axis === 'depth').overallValue, '63.6 cm');
   const net = result.observations.find((row) => /Net dimensions/i.test(row.sourceLabel));
   assert.equal(net.parserDecision, 'SUPPORTED_EXPLICIT_GROUPED');
   assert.deepEqual(net.axisOrder, ['width', 'height', 'depth']);
+});
+
+test('dimension knowledge recognizes QRG inline axes, continued rows, suffix axes, and net sections', () => {
+  const result = extractDimensionExpressions({
+    pdfSha256: '1'.repeat(64),
+    contentSha256: '2'.repeat(64),
+    sourceUrls: ['https://manufacturer.example/EX100.pdf'],
+    identities: [{ brand: 'Example', model: 'EX100', category: 'dishwasher' }],
+    contentList: [[
+      paragraph('EX100 Height 820 - 880 mm Width 599 mm Depth 573 mm'),
+      table('<table><tr><td>Dimensions (Net) (W X H X D)</td><td></td></tr><tr><td></td><td>550 x 1456 x 562 mm</td></tr></table>'),
+      paragraph('Dimensions 598mmW x 818mmH x 570mmD'),
+      table(`<table>
+        <tr><td>Dimensions</td><td></td><td>mm</td></tr>
+        <tr><td>Net</td><td>Height Width</td><td>845 mm 595</td></tr>
+        <tr><td></td><td>Depth mm</td><td>590</td></tr>
+        <tr><td>Shrink Film Package</td><td></td><td>mm 885</td></tr>
+        <tr><td>Width</td><td>mm</td><td>648</td></tr>
+      </table>`),
+    ]],
+  });
+
+  const inline = result.observations.find((row) => row.patternKind === 'INLINE_LABELLED_AXES');
+  assert.deepEqual(inline.safeAxes, ['height', 'width', 'depth']);
+  assert.equal(inline.parserDecision, 'SUPPORTED_ADJUSTABLE_HEIGHT_RANGE');
+  const continued = result.observations.find((row) => /Dimensions \(Net\)/i.test(row.sourceLabel));
+  assert.deepEqual(continued.safeAxes, ['width', 'height', 'depth']);
+  const suffixed = result.observations.find((row) => row.patternKind === 'SUFFIXED_VALUE_AXIS_SEQUENCE');
+  assert.deepEqual(suffixed.axisOrder, ['width', 'height', 'depth']);
+  const net = result.observations.find((row) => row.patternKind === 'NET_DIMENSION_SECTION');
+  assert.deepEqual(net.safeAxes, ['height', 'width', 'depth']);
+  assert.doesNotMatch(net.sourceQuote, /package/i);
+});
+
+test('knowledge records actual parser replay per PDF and model instead of inferring readiness from syntax', () => {
+  const contentList = [[
+    paragraph('QUICK REFERENCE GUIDE > DD60D4NX9'),
+    paragraph('Height 820 - 880 mm Width 599 mm Depth 573 mm'),
+  ]];
+  const knowledge = buildDimensionExpressionKnowledge({
+    generatedAt: '2026-07-14T00:00:00.000Z',
+    historicalRecords: [{ category: 'dishwasher', brand: 'Fisher & Paykel', model: 'DD60D4NX9' }],
+    documents: [{
+      pdfSha256: '3'.repeat(64), contentSha256: '4'.repeat(64),
+      parserVersion: '3.4.4', modelRevision: 'ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+      sourceUrls: ['https://www.fisherpaykel.com/QRG-AU-DD60D4NX9.pdf'],
+      identities: [{ category: 'dishwasher', brand: 'Fisher & Paykel', model: 'DD60D4NX9' }],
+      contentList,
+    }],
+  });
+  const family = knowledge.categories[1].brands[0].families[0];
+  assert.deepEqual(family.parserReplays, [{
+    pdfSha256: '3'.repeat(64),
+    category: 'dishwasher',
+    brand: 'Fisher & Paykel',
+    model: 'DD60D4NX9',
+    extractionState: 'ALL_AXIS_RANGE',
+    identityScope: 'EXACT_MODEL',
+    claimFields: ['closedEnvelope.depthMm', 'closedEnvelope.heightMm', 'closedEnvelope.widthMm'],
+    grammarProfileIds: [],
+    reasonCode: 'PARSED_COMPLETE',
+  }]);
+});
+
+test('knowledge groups strict Beko spec variants under one declared grammar family', () => {
+  const labels = [
+    'Dimensions & Weights',
+    'Unpackaged Height:',
+    'Height (max - feet adjustment):',
+    'Unpackaged Width:',
+    'Unpackaged Depth:',
+    'Depth with Door Opened:',
+    'Unpackaged Weight:',
+    'Packaged Height:',
+    'Packaged Width:',
+    'Packaged Depth:',
+    'Packaged Weight:',
+  ];
+  const values = [
+    '850 mm', '865 mm', '598 mm', '600 mm', '1150 mm',
+    '42.9 kg', '889 mm', '644 mm', '661 mm', '45.9 kg',
+  ];
+  const inlineExpression = [
+    'Unpackaged Height: 850 mm',
+    'Height (max - feet adjustment): 865 mm',
+    'Unpackaged Width: 598 mm',
+    'Unpackaged Depth: 600 mm',
+    'Depth with Door Opened: 1150 mm',
+    'Unpackaged Weight: 42.9 kg',
+    'Packaged Height: 889 mm',
+    'Packaged Width: 644 mm',
+    'Packaged Depth: 661 mm',
+    'Packaged Weight: 45.9 kg',
+  ].join(' ');
+  const documents = [
+    {
+      pdfSha256: '5'.repeat(64), contentSha256: '6'.repeat(64),
+      parserVersion: '3.4.4', modelRevision: 'ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+      sourceUrls: ['https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7610769077.pdf'],
+      identities: [{ category: 'dishwasher', brand: 'Beko', model: 'BDF1620X' }],
+      contentList: [[
+        textBlock('page_header', 'Beko BDF1620X Product Specification'),
+        textBlock('title', 'Dimensions & Weights', [30, 300, 240, 340]),
+        textBlock('paragraph', inlineExpression, [30, 350, 700, 600]),
+      ]],
+    },
+    {
+      pdfSha256: '7'.repeat(64), contentSha256: '8'.repeat(64),
+      parserVersion: '3.4.4', modelRevision: 'ed6b654c018d742e65a17671e379c5e6ecc87ec9',
+      sourceUrls: ['https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7679159077.pdf'],
+      identities: [{ category: 'dishwasher', brand: 'Beko', model: 'BDF1640AX' }],
+      contentList: [[
+        textBlock('page_header', 'Beko BDF1640AX Product Specification'),
+        structuredList('list', labels, [30, 300, 250, 850]),
+        structuredList('index', values, [300, 330, 390, 850]),
+      ]],
+    },
+  ];
+  const knowledge = buildDimensionExpressionKnowledge({
+    generatedAt: '2026-07-14T00:00:00.000Z',
+    historicalRecords: [
+      { category: 'dishwasher', brand: 'Beko', model: 'BDF1620X' },
+      { category: 'dishwasher', brand: 'Beko', model: 'BDF1640AX' },
+    ],
+    documents,
+  });
+  const brand = knowledge.categories.find((row) => row.category === 'dishwasher').brands[0];
+
+  assert.equal(brand.families.length, 1);
+  assert.equal(brand.completeParserReplayCount, 1);
+  assert.equal(brand.families[0].groupType, 'parser_family');
+  assert.equal(brand.families[0].groupName, 'Beko AU dishwasher product specification');
+  assert.deepEqual(brand.families[0].models, ['BDF1620X', 'BDF1640AX']);
+  assert.deepEqual(brand.families[0].parserProfileIds, [
+    'beko_au_dishwasher_product_spec_inline_pairs_v1',
+    'beko_au_dishwasher_product_spec_parallel_lists_v1',
+  ]);
+  assert.equal(brand.families[0].completeParserReplay, true);
+  assert.match(brand.families[0].expressionCoverageStatus, /^PARSER_REPLAY_COMPLETE/);
+  assert.ok(brand.families[0].parserReplays.every((replay) => (
+    replay.extractionState === 'ALL_AXIS_RANGE' && replay.identityScope === 'EXACT_MODEL'
+  )));
+
+  const markdown = renderDimensionExpressionKnowledgeMarkdown(knowledge);
+  assert.match(markdown, /Parallel label and value lists/);
+  assert.match(markdown, /Inline labelled pairs/);
+  assert.match(markdown, /packaged values are excluded/i);
+  assert.match(markdown, /complete exact-model parser replays: 1/i);
 });
 
 test('lettered explicit axes are distinct from unlabelled dimension triples', () => {

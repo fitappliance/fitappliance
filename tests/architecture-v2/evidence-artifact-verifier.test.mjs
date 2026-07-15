@@ -9,6 +9,7 @@ import {
 } from '../../src/domain/evidence-artifact-verifier.mjs';
 import {
   containsExactModel,
+  containsExactModelDocumentUrl,
   validateClaimSemantics,
   validateClaimsSemantics,
 } from '../../src/domain/evidence-claim-semantics.mjs';
@@ -16,9 +17,11 @@ import {
   buildMineruDerivedArtifact,
   parseMineruContentListV2,
 } from '../../src/domain/mineru-document.mjs';
+import { createVerificationReceipt } from '../../src/domain/evidence-source-verifier.mjs';
 
 const identity = { brand: 'Westinghouse', model: 'WHE6874BA', category: 'fridge' };
 const MINERU_MODEL_REVISION = 'ed6b654c018d742e65a17671e379c5e6ecc87ec9';
+const MINERU_VLM_MODEL_REVISION = 'bff20d4ae2bf202df9f45284b4d43681555a97ed';
 
 function html(model = 'WHE6874BA') {
   return Buffer.from(`<!doctype html><html><head>
@@ -65,6 +68,21 @@ test('exact model matching does not accept longer, prefixed, or suffixed models'
   assert.equal(containsExactModel('Model WHE6874BA-R', 'WHE6874BA'), false);
   assert.equal(containsExactModel('Model XWHE6874BA', 'WHE6874BA'), false);
   assert.equal(containsExactModel('Model ABC12', 'ABC1'), false);
+});
+
+test('exact model PDF URLs accept only bounded document, version, and date suffixes', () => {
+  assert.equal(containsExactModelDocumentUrl(
+    'https://www.lg.com/content/dam/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf',
+    'GF-L700PL',
+  ), true);
+  assert.equal(containsExactModelDocumentUrl(
+    'https://www.lg.com/content/dam/au/pdfs/GF-L700PL_Specsheet_V2_OTHER.pdf',
+    'GF-L700PL',
+  ), false);
+  assert.equal(containsExactModelDocumentUrl(
+    'https://www.lg.com/content/dam/au/pdfs/GF-L700PLB_Specsheet_V2_230809_2.pdf',
+    'GF-L700PL',
+  ), false);
 });
 
 test('claim values must be parsed from the matching field label and unit', () => {
@@ -181,6 +199,43 @@ test('artifact attestation and replay require hash-bound product-page discovery 
     bytes,
     discoveryArtifactBytes: discoveryBytes,
   }), true);
+
+  const legacyReceipt = { ...createVerificationReceipt({
+    ...attested,
+    verificationReceipt: undefined,
+  }, identity, {
+    verifiedAt: attested.verificationReceipt.verifiedAt,
+    discoveryArtifactBytes: discoveryBytes,
+    discoveryPolicyVersion: '2026-07-13.2',
+  }) };
+  delete legacyReceipt.discoveryPolicyVersion;
+  assert.equal(verifyAttestedResolutionArtifact({
+    source: { ...attested, verificationReceipt: legacyReceipt },
+    caseIdentity: identity,
+    bytes,
+    discoveryArtifactBytes: discoveryBytes,
+  }), true);
+});
+
+test('artifact replay preserves a supported legacy manufacturer policy receipt', () => {
+  const bytes = html();
+  const legacy = verifyAndAttestResolutionArtifact({
+    source: source(bytes),
+    caseIdentity: identity,
+    bytes,
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+    manufacturerPolicyVersion: '2026-07-12.1',
+  });
+  assert.equal(legacy.verificationReceipt.manufacturerPolicyVersion, '2026-07-12.1');
+  assert.equal(verifyAttestedResolutionArtifact({ source: legacy, caseIdentity: identity, bytes }), true);
+
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: source(bytes),
+    caseIdentity: identity,
+    bytes,
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+    manufacturerPolicyVersion: '2025-01-01.1',
+  }), /manufacturer policy version is not supported/i);
 });
 
 test('HTML identity accepts an exact canonical path segment plus a matching structured product entity', () => {
@@ -226,6 +281,47 @@ test('HTML identity accepts an exact canonical path segment plus a matching stru
     bytes: relatedBytes,
     verifiedAt: '2026-07-12T10:00:00.000Z',
   }), /product model identity/i);
+});
+
+test('HTML identity accepts an exact model followed only by a numeric product ID in the canonical slug', () => {
+  const dryerIdentity = { brand: 'Fisher & Paykel', model: 'DH9060HG1', category: 'dryer' };
+  const canonical = 'https://www.fisherpaykel.com/au/laundry/dryers/dh9060hg1-93296.html';
+  const bytes = Buffer.from(`<!doctype html><html><head>
+    <title>Heat Pump Dryer DH9060HG1 | Fisher & Paykel Australia</title>
+    <link rel="canonical" href="${canonical}">
+  </head><body data-pim-sku="DH9060HG1"><dl>
+    <dt>Width</dt><dd>600 mm</dd><dt>Height</dt><dd>850 mm</dd><dt>Depth</dt><dd>655 mm</dd>
+  </dl></body></html>`);
+  const claims = extractClaimsFromHtml(bytes, {
+    category: 'dryer',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  const attested = verifyAndAttestResolutionArtifact({
+    source: source(bytes, {
+      sourceUrl: canonical,
+      finalUrl: canonical,
+      identity: { brand: dryerIdentity.brand, model: dryerIdentity.model, outcome: 'exact' },
+      claims,
+    }),
+    caseIdentity: dryerIdentity,
+    bytes,
+    verifiedAt: '2026-07-14T15:30:00.000Z',
+  });
+  assert.equal(attested.identity.outcome, 'exact');
+
+  const siblingCanonical = canonical.replace('dh9060hg1-93296', 'dh9060hg10-93296');
+  const siblingBytes = Buffer.from(bytes.toString('utf8').replaceAll(canonical, siblingCanonical));
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: source(siblingBytes, {
+      sourceUrl: siblingCanonical,
+      finalUrl: siblingCanonical,
+      identity: { brand: dryerIdentity.brand, model: dryerIdentity.model, outcome: 'exact' },
+      claims,
+    }),
+    caseIdentity: dryerIdentity,
+    bytes: siblingBytes,
+    verifiedAt: '2026-07-14T15:30:00.000Z',
+  }), /canonical.*model|identity/i);
 });
 
 test('HTML identity records a strict official marketing alias and limits it to dimensions', () => {
@@ -385,6 +481,26 @@ test('HTML extractor maps LG Unit W x D x H rows and excludes packaging dimensio
   assert.ok(attested.identitySignals.some((signal) => signal.type === 'product_model'));
 });
 
+test('HTML extractor prefers an explicitly labelled doors-closed depth over a generic product tuple', () => {
+  const lg = Buffer.from(`<!doctype html><html><body><ul role="list">
+    <li role="listitem"><p>Product Dimensions (WxHxD mm)</p><p>600 x 850 x 615</p></li>
+    <li role="listitem"><p>Product Depth with Doors Closed (D' mm)</p><p>660</p></li>
+    <li role="listitem"><p>Product Depth with Doors Open 90 degrees (D'' mm)</p><p>1135</p></li>
+    <li role="listitem"><p>Box Dimensions (WxHxD mm)</p><p>660 x 890 x 705</p></li>
+  </ul></body></html>`);
+  const claims = extractClaimsFromHtml(lg, {
+    category: 'washing_machine',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+
+  assert.deepEqual(Object.fromEntries(claims.map((claim) => [claim.field, claim.value])), {
+    'closedEnvelope.widthMm': 600,
+    'closedEnvelope.heightMm': 850,
+    'closedEnvelope.depthMm': 660,
+  });
+  assert.match(claims.find((claim) => claim.field === 'closedEnvelope.depthMm').label, /doors closed/i);
+});
+
 test('HTML extractor does not confuse cabinet depth without the door with total product depth', () => {
   const refrigerator = Buffer.from(`<!doctype html><html><body><ul role="list">
     <li role="listitem"><p>Total Depth (mm)</p><p>715</p></li>
@@ -469,6 +585,37 @@ test('PDF approval requires hash-bound MinerU JSON and replays claims from that 
   assert.equal(attested.derivedArtifact.contentSha256, derivedArtifact.contentSha256);
   assert.equal(verifyAttestedResolutionArtifact({
     source: attested, caseIdentity: pdfIdentity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+  }), true);
+
+  const discoveryBytes = Buffer.from(`<!doctype html><html><body>
+    <h1>HRCD640TBW product specification</h1>
+    <a href="${pdfSource.sourceUrl}">Download product specification</a>
+  </body></html>`);
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const legacyDiscovered = {
+    ...attested,
+    discoveryProvenance: {
+      schemaVersion: 1,
+      method: 'official_product_page',
+      market: 'AU',
+      discoveryUrl: 'https://hisense.com.au/product/hrcd640tbw/',
+      requestedModel: 'HRCD640TBW',
+      matchedModel: 'HRCD640TBW',
+      artifactUrl: pdfSource.sourceUrl,
+      artifactLinkUrl: pdfSource.sourceUrl,
+      discoveryContentSha256: discoveryHash,
+      discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.html`,
+      discoveryByteSize: discoveryBytes.length,
+    },
+    verificationReceipt: undefined,
+  };
+  legacyDiscovered.verificationReceipt = createVerificationReceipt(legacyDiscovered, pdfIdentity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+    discoveryArtifactBytes: discoveryBytes,
+  });
+  assert.equal(verifyAttestedResolutionArtifact({
+    source: legacyDiscovered, caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: discoveryBytes,
   }), true);
 
   const parsedV2 = parseMineruContentListV2(jsonBytes, {
@@ -566,6 +713,90 @@ test('PDF claim semantics v2 trusts exact MinerU replay when source labels are n
   assert.equal(attested.verificationReceipt.claimSemanticsVersion, 2);
 });
 
+test('PDF attestation binds a pinned hybrid image profile and rejects profile drift', () => {
+  const pdfBytes = Buffer.from('%PDF-1.7\nhybrid image evidence');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const jsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'page_header',
+      content: { page_header_content: [{ type: 'text', content: 'SPEC SHEET > HRCD640TBW' }] },
+      bbox: [40, 20, 500, 45],
+    },
+    {
+      type: 'table', content: {
+        html: '<table><tr><td>Width</td><td>914 mm</td></tr><tr><td>Height</td><td>1790 mm</td></tr><tr><td>Depth</td><td>730 mm</td></tr></table>',
+        table_caption: [], table_footnote: [], table_type: 'simple_table', table_nest_level: 1,
+      }, bbox: [80, 140, 800, 500],
+    },
+  ]]));
+  const caseIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
+  const primaryJsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: 'HRCD640TBW refrigerator' }] },
+      bbox: [40, 20, 500, 45],
+    },
+    {
+      type: 'image',
+      content: { image_caption: ['Dimensions'], image_footnote: [] },
+      bbox: [80, 140, 800, 500],
+    },
+  ]]));
+  const primaryJsonHash = createHash('sha256').update(primaryJsonBytes).digest('hex');
+  const claims = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_VLM_MODEL_REVISION,
+    caseIdentity, claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }).claims;
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash,
+    parserVersion: '3.4.4',
+    modelRevision: MINERU_VLM_MODEL_REVISION,
+    profile: {
+      profileId: 'hybrid-image-high-v1', backend: 'hybrid-engine', method: 'auto',
+      effort: 'high', imageAnalysis: true,
+    },
+    fallbackTrigger: {
+      profileId: 'pipeline-auto-v1', contentSha256: primaryJsonHash,
+      objectPath: `evidence/derived/mineru-json/sha256/${primaryJsonHash.slice(0, 2)}/${primaryJsonHash.slice(2, 4)}/${primaryJsonHash}.json`,
+      pages: [1],
+    },
+  });
+  const sourceUrl = 'https://dtc-aus-api.hisense.com/medias/spec-sheet.pdf';
+  const pdfSource = {
+    authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+    sourceUrl, finalUrl: sourceUrl, redirectChain: [],
+    retrievedAt: '2026-07-14T14:30:00.000Z', contentSha256: pdfHash,
+    objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+    contentType: 'application/pdf', byteSize: pdfBytes.length,
+    identity: { brand: 'Hisense', model: 'HRCD640TBW', outcome: 'exact' },
+    claims, derivedArtifact,
+  };
+  const attested = verifyAndAttestResolutionArtifact({
+    source: pdfSource, caseIdentity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    fallbackTriggerArtifactBytes: primaryJsonBytes,
+    verifiedAt: '2026-07-14T14:35:00.000Z', claimSemanticsVersion: 2,
+  });
+  assert.equal(attested.derivedArtifact.profileId, 'hybrid-image-high-v1');
+  assert.equal(verifyAttestedResolutionArtifact({
+    source: attested, caseIdentity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    fallbackTriggerArtifactBytes: primaryJsonBytes,
+  }), true);
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: pdfSource, caseIdentity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    verifiedAt: '2026-07-14T14:35:00.000Z', claimSemanticsVersion: 2,
+  }), /fallback trigger artifact/i);
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: {
+      ...pdfSource,
+      derivedArtifact: { ...derivedArtifact, effort: 'medium' },
+    },
+    caseIdentity, bytes: pdfBytes, derivedArtifactBytes: jsonBytes,
+    fallbackTriggerArtifactBytes: primaryJsonBytes,
+    verifiedAt: '2026-07-14T14:35:00.000Z', claimSemanticsVersion: 2,
+  }), /profile|MinerU JSON derived artifact metadata/i);
+});
+
 test('a model-scoped PDF header still needs an independent exact-model source URL', () => {
   const pdfIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
   const pdfBytes = Buffer.from('%PDF-1.7\nheader-scoped artifact');
@@ -610,6 +841,345 @@ test('a model-scoped PDF header still needs an independent exact-model source UR
     derivedArtifactBytes: jsonBytes, verifiedAt: '2026-07-11T10:01:00.000Z',
   });
   assert.ok(attested.identitySignals.some((signal) => signal.type === 'pdf_source_url_model'));
+});
+
+test('a hash-bound official product page can independently bind a model-scoped PDF', () => {
+  const pdfIdentity = { brand: 'Hisense', model: 'HRCD640TBW', category: 'fridge' };
+  const pdfBytes = Buffer.from('%PDF-1.7\nproduct-page-bound artifact');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const artifactUrl = 'https://dtc-aus-api.hisense.com/medias/generic-guide.pdf';
+  const jsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'page_header',
+      content: { page_header_content: [{ type: 'text', content: 'QUICK REFERENCE GUIDE > HRCD640TBW' }] },
+      bbox: [40, 20, 500, 45],
+    },
+    {
+      type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'Width 914 mm' }] },
+      bbox: [355, 147, 633, 171],
+    },
+  ]]));
+  const parsed = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: pdfIdentity, fields: ['closedEnvelope.widthMm'],
+  });
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+  });
+  const discoveryBytes = Buffer.from(`<!doctype html><html><head>
+    <title>HRCD640TBW refrigerator support | Hisense Australia</title>
+  </head><body><a href="${artifactUrl}">Download product specification</a></body></html>`);
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: 'https://hisense.com.au/product/hrcd640tbw/',
+    requestedModel: 'HRCD640TBW',
+    matchedModel: 'HRCD640TBW',
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: discoveryHash,
+    discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.html`,
+    discoveryByteSize: discoveryBytes.length,
+  };
+  const pdfSource = {
+    authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+    sourceUrl: artifactUrl, finalUrl: artifactUrl, redirectChain: [],
+    retrievedAt: '2026-07-15T00:00:00.000Z', contentSha256: pdfHash,
+    objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+    contentType: 'application/pdf', byteSize: pdfBytes.length,
+    identity: { brand: 'Hisense', model: 'HRCD640TBW', outcome: 'exact' },
+    claims: parsed.claims, derivedArtifact, discoveryProvenance,
+  };
+
+  const attested = verifyAndAttestResolutionArtifact({
+    source: pdfSource, caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: discoveryBytes,
+    verifiedAt: '2026-07-15T00:01:00.000Z',
+  });
+  assert.deepEqual(new Set(attested.identitySignals.map((signal) => signal.type)), new Set([
+    'mineru_page_header_model',
+    'official_product_page_model',
+  ]));
+  assert.equal(verifyAttestedResolutionArtifact({
+    source: attested, caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: discoveryBytes,
+  }), true);
+
+  const tamperedDiscoveryBytes = Buffer.from(discoveryBytes.toString('utf8').replace('HRCD640TBW', 'HRCD640TBX'));
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: pdfSource, caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: tamperedDiscoveryBytes,
+    verifiedAt: '2026-07-15T00:01:00.000Z',
+  }), /discovery artifact hash mismatch/i);
+});
+
+test('a hash-bound official AU market API can independently bind an exact ASKO model PDF', () => {
+  const pdfIdentity = { brand: 'ASKO', model: 'T408HD.W', category: 'dryer' };
+  const pdfBytes = Buffer.from('%PDF-1.7\nasko-api-bound artifact');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const artifactUrl = 'https://partners.gorenje.com/fts/htmlNavodila/870866en.pdf';
+  const jsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'page_header',
+      content: { page_header_content: [{ type: 'text', content: 'Tumble dryer T408HD' }] },
+      bbox: [40, 20, 500, 45],
+    },
+    {
+      type: 'table',
+      content: {
+        html: '<table><tr><td>Height 850</td><td>mm</td></tr><tr><td>Width 595</td><td>mm</td></tr><tr><td>Depth 654</td><td>mm</td></tr></table>',
+      },
+      bbox: [355, 147, 633, 240],
+    },
+  ]]));
+  const parsed = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: pdfIdentity, fields: ['closedEnvelope.widthMm'],
+    claimSemanticsVersion: 2, boundFamilyModel: 'T408HD',
+  });
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+  });
+  const discoveryPayload = {
+    code: '000000000000576719',
+    modelMark: 'T408HD.W',
+    documents: [{ url: artifactUrl, name: 'Instructions for use' }],
+    classifications: [{ features: [
+      { name: 'Width', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '595' }] },
+      { name: 'Height', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '850' }] },
+      { name: 'Depth', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '654' }] },
+    ] }],
+  };
+  const discoveryBytes = Buffer.from(JSON.stringify(discoveryPayload));
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_market_api',
+    market: 'AU',
+    discoveryUrl: 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/manuals/search?query=T408HD.W&lang=en_AU&curr=AUD',
+    requestedModel: 'T408HD.W',
+    matchedModel: 'T408HD.W',
+    artifactUrl,
+    discoveryContentSha256: discoveryHash,
+    discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.json`,
+    discoveryByteSize: discoveryBytes.length,
+  };
+  const pdfSource = {
+    authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+    sourceUrl: artifactUrl, finalUrl: artifactUrl, redirectChain: [],
+    retrievedAt: '2026-07-15T00:00:00.000Z', contentSha256: pdfHash,
+    objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+    contentType: 'application/pdf', byteSize: pdfBytes.length,
+    identity: { brand: 'ASKO', model: 'T408HD.W', outcome: 'exact' },
+    claims: parsed.claims, derivedArtifact, discoveryProvenance,
+  };
+
+  const attested = verifyAndAttestResolutionArtifact({
+    source: pdfSource, caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: discoveryBytes,
+    verifiedAt: '2026-07-15T00:01:00.000Z', claimSemanticsVersion: 2,
+  });
+  assert.deepEqual(new Set(attested.identitySignals.map((signal) => signal.type)), new Set([
+    'mineru_bound_family_model',
+    'official_market_api_model',
+    'official_market_api_dimensions',
+  ]));
+  assert.equal(verifyAttestedResolutionArtifact({
+    source: attested, caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: discoveryBytes,
+  }), true);
+
+  const siblingBytes = Buffer.from(JSON.stringify({
+    modelMark: 'T408HD.W.AU', documents: [{ url: artifactUrl }],
+  }));
+  const siblingHash = createHash('sha256').update(siblingBytes).digest('hex');
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: {
+      ...pdfSource,
+      discoveryProvenance: {
+        ...discoveryProvenance,
+        discoveryContentSha256: siblingHash,
+        discoveryObjectPath: `evidence/web/sha256/${siblingHash.slice(0, 2)}/${siblingHash.slice(2, 4)}/${siblingHash}.json`,
+        discoveryByteSize: siblingBytes.length,
+      },
+    },
+    caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: siblingBytes,
+    verifiedAt: '2026-07-15T00:01:00.000Z', claimSemanticsVersion: 2,
+  }), /does not prove the exact model/i);
+});
+
+test('an exact ASKO API may bind a series-placeholder manual only when all PDF dimensions match PIM', () => {
+  const pdfIdentity = { brand: 'ASKO', model: 'W4086P.W', category: 'washing_machine' };
+  const pdfBytes = Buffer.from('%PDF-1.7\nasko-api-bound series artifact');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const artifactUrl = 'https://partners.gorenje.com/fts/GetDigitDoc.aspx?docName=574443en.pdf';
+  const jsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'index',
+      content: { list_items: [{ item_content: [{ type: 'text', content: 'W4086X/1/2/3' }] }] },
+      bbox: [700, 800, 940, 850],
+    },
+    {
+      type: 'table',
+      content: {
+        html: '<table><tr><td>Height 850</td><td>mm</td></tr><tr><td>Width 595</td><td>mm</td></tr><tr><td>Depth 585</td><td>mm</td></tr></table>',
+      },
+      bbox: [355, 147, 633, 240],
+    },
+  ]]));
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+  });
+  const discoveryPayload = {
+    code: '000000000000738297',
+    modelMark: 'W4086P.W',
+    documents: [{ url: artifactUrl, name: 'Instructions for use' }],
+    classifications: [{ features: [
+      { name: 'Width', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '595' }] },
+      { name: 'Height', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '850' }] },
+      { name: 'Depth', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '585' }] },
+    ] }],
+  };
+  const discoveryBytes = Buffer.from(JSON.stringify(discoveryPayload));
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_market_api',
+    market: 'AU',
+    discoveryUrl: 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000738297?fields=FULL&lang=en_AU&curr=AUD',
+    requestedModel: 'W4086P.W',
+    matchedModel: 'W4086P.W',
+    artifactUrl,
+    discoveryContentSha256: discoveryHash,
+    discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.json`,
+    discoveryByteSize: discoveryBytes.length,
+  };
+  const claims = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: pdfIdentity,
+    fields: [
+      'closedEnvelope.widthMm',
+      'closedEnvelope.heightMm',
+      'closedEnvelope.depthMm',
+    ],
+    claimSemanticsVersion: 2,
+    boundSeriesModel: 'W4086',
+  }).claims;
+  const pdfSource = {
+    authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+    sourceUrl: artifactUrl, finalUrl: artifactUrl, redirectChain: [],
+    retrievedAt: '2026-07-15T00:00:00.000Z', contentSha256: pdfHash,
+    objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+    contentType: 'application/pdf', byteSize: pdfBytes.length,
+    identity: { brand: 'ASKO', model: 'W4086P.W', outcome: 'exact' },
+    claims, derivedArtifact, discoveryProvenance,
+  };
+
+  const attested = verifyAndAttestResolutionArtifact({
+    source: pdfSource, caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: discoveryBytes,
+    verifiedAt: '2026-07-15T00:01:00.000Z', claimSemanticsVersion: 2,
+  });
+  assert.ok(attested.identitySignals.some((signal) => signal.type === 'mineru_bound_series_model'));
+  assert.equal(verifyAttestedResolutionArtifact({
+    source: attested, caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: discoveryBytes,
+  }), true);
+
+  const mismatchedPayload = structuredClone(discoveryPayload);
+  mismatchedPayload.classifications[0].features
+    .find((feature) => feature.name === 'Depth').featureValues[0].value = '640';
+  const mismatchedBytes = Buffer.from(JSON.stringify(mismatchedPayload));
+  const mismatchedHash = createHash('sha256').update(mismatchedBytes).digest('hex');
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: {
+      ...pdfSource,
+      discoveryProvenance: {
+        ...discoveryProvenance,
+        discoveryContentSha256: mismatchedHash,
+        discoveryObjectPath: `evidence/web/sha256/${mismatchedHash.slice(0, 2)}/${mismatchedHash.slice(2, 4)}/${mismatchedHash}.json`,
+        discoveryByteSize: mismatchedBytes.length,
+      },
+    },
+    caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: mismatchedBytes,
+    verifiedAt: '2026-07-15T00:01:00.000Z', claimSemanticsVersion: 2,
+  }), /PIM dimensions/i);
+});
+
+test('an exact ASKO API binds an exact cover model list while retaining an adjustable height range', () => {
+  const pdfIdentity = { brand: 'ASKO', model: 'DBI343ID.W.AU', category: 'dishwasher' };
+  const pdfBytes = Buffer.from('%PDF-1.7\nasko exact-cover dishwasher artifact');
+  const pdfHash = createHash('sha256').update(pdfBytes).digest('hex');
+  const artifactUrl = 'https://partners.gorenje.com/fts/GetDigitDoc.aspx?docName=874270en.pdf';
+  const jsonBytes = Buffer.from(JSON.stringify([
+    [{ type: 'paragraph', content: { paragraph_content: [{ type: 'text', content: 'DBI343ID.W.AU DBI343ID.S.AU' }] }, bbox: [40, 40, 700, 90] }],
+    [{ type: 'table', content: { html: '<table><tr><td>Technical data</td></tr><tr><td>Height:</td><td>819-872 mm</td></tr><tr><td>Width:</td><td>596 mm</td></tr><tr><td>Depth:</td><td>554 mm</td></tr><tr><td>Weight:</td><td>45 kg</td></tr></table>' }, bbox: [80, 140, 800, 500] }],
+  ]));
+  const derivedArtifact = buildMineruDerivedArtifact(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+  });
+  const discoveryPayload = {
+    code: '000000000000739996', modelMark: 'DBI343ID.W.AU',
+    documents: [{ url: artifactUrl, name: 'Instructions for use' }],
+    classifications: [{ features: [
+      { name: 'Width', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '596' }] },
+      { name: 'Height', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '819' }] },
+      { name: 'Depth', featureUnit: { symbol: 'mm' }, featureValues: [{ value: '554' }] },
+    ] }],
+  };
+  const discoveryBytes = Buffer.from(JSON.stringify(discoveryPayload));
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1, method: 'official_market_api', market: 'AU',
+    discoveryUrl: 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000739996?fields=FULL&lang=en_AU&curr=AUD',
+    requestedModel: pdfIdentity.model, matchedModel: pdfIdentity.model, artifactUrl,
+    discoveryContentSha256: discoveryHash,
+    discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.json`,
+    discoveryByteSize: discoveryBytes.length,
+  };
+  const claims = parseMineruContentListV2(jsonBytes, {
+    pdfSha256: pdfHash, parserVersion: '3.4.4', modelRevision: MINERU_MODEL_REVISION,
+    caseIdentity: pdfIdentity, claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+    boundExactCoverModel: pdfIdentity.model,
+  }).claims;
+  const pdfSource = {
+    authority: 'manufacturer', sourceType: 'official_exact_model_pdf',
+    sourceUrl: artifactUrl, finalUrl: artifactUrl, redirectChain: [],
+    retrievedAt: '2026-07-15T00:00:00.000Z', contentSha256: pdfHash,
+    objectPath: `evidence/web/sha256/${pdfHash.slice(0, 2)}/${pdfHash.slice(2, 4)}/${pdfHash}.pdf`,
+    contentType: 'application/pdf', byteSize: pdfBytes.length,
+    identity: { brand: 'ASKO', model: pdfIdentity.model, outcome: 'exact' },
+    claims, derivedArtifact, discoveryProvenance,
+  };
+  const attested = verifyAndAttestResolutionArtifact({
+    source: pdfSource, caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: discoveryBytes,
+    verifiedAt: '2026-07-15T00:01:00.000Z', claimSemanticsVersion: 2,
+  });
+  assert.ok(attested.identitySignals.some((signal) => signal.type === 'mineru_bound_exact_cover_model'));
+  assert.deepEqual(claims.find((claim) => claim.field === 'closedEnvelope.heightMm').value,
+    { kind: 'range', minMm: 819, maxMm: 872 });
+
+  const mismatchedPayload = structuredClone(discoveryPayload);
+  mismatchedPayload.classifications[0].features
+    .find((feature) => feature.name === 'Height').featureValues[0].value = '850';
+  const mismatchedBytes = Buffer.from(JSON.stringify(mismatchedPayload));
+  const mismatchedHash = createHash('sha256').update(mismatchedBytes).digest('hex');
+  assert.throws(() => verifyAndAttestResolutionArtifact({
+    source: { ...pdfSource, discoveryProvenance: {
+      ...discoveryProvenance, discoveryContentSha256: mismatchedHash,
+      discoveryObjectPath: `evidence/web/sha256/${mismatchedHash.slice(0, 2)}/${mismatchedHash.slice(2, 4)}/${mismatchedHash}.json`,
+      discoveryByteSize: mismatchedBytes.length,
+    } },
+    caseIdentity: pdfIdentity, bytes: pdfBytes,
+    derivedArtifactBytes: jsonBytes, discoveryArtifactBytes: mismatchedBytes,
+    verifiedAt: '2026-07-15T00:01:00.000Z', claimSemanticsVersion: 2,
+  }), /PIM dimensions/i);
 });
 
 test('artifact verification catches hash drift, claim drift, and multi-product quote leakage', () => {

@@ -32,8 +32,8 @@ for (const path of files) {
 if (forbidden.length) throw new Error(`direct PDF text extraction is forbidden: ${forbidden.join(', ')}`);
 
 const requiredSignals = [
-  ['scripts/architecture-v2/run-evidence-resolution.mjs', /runMineruPdfToJson/],
-  ['scripts/architecture-v2/acquire-phase10-evidence.mjs', /runMineruPdfToJson/],
+  ['scripts/architecture-v2/run-evidence-resolution.mjs', /runMineruPdfWithImageFallback/],
+  ['scripts/architecture-v2/acquire-phase10-evidence.mjs', /runMineruPdfWithImageFallback/],
   ['scripts/architecture-v2/verify-evidence-resolution-objects.mjs', /derivedArtifactBytes/],
   ['scripts/pdf-pipeline/2-extract-text.js', /inspectMineruContentListV2/],
 ];

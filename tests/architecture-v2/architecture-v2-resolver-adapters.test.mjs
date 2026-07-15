@@ -34,11 +34,83 @@ test('Fisher and Paykel adapter maps discovery metadata without parsed facts', a
   assert.equal('dimensions' in result.candidates[0], false);
 });
 
+test('Fisher and Paykel adapter preserves exact archived support API provenance', async () => {
+  const artifactUrl = 'https://content.fisherpaykel.com/guides/DW60CDW2-installation-guide.pdf';
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_support_api',
+    market: 'AU',
+    sourceMarket: 'NZ',
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/dishwasher-dw60cdw2-fp-nzau--DW60CDW2',
+    requestedModel: 'DW60CDW2',
+    matchedModel: 'DW60CDW2',
+    artifactUrl,
+    documentId: 'ka0exact',
+  };
+  const adapter = createFisherPaykelResolverAdapter({
+    finder: async () => ({
+      sourceUrl: artifactUrl,
+      resourceType: 'Installation Guide',
+      matchedSku: 'DW60CDW2',
+      resources: [{
+        url: artifactUrl,
+        type: 'installation_manual',
+        discoveryProvenance,
+      }],
+    }),
+  });
+
+  const result = await adapter.resolve({
+    brand: 'Fisher & Paykel', model: 'DW60CDW2', category: 'dishwasher',
+  });
+  assert.equal(result.completion, 'complete');
+  assert.equal(result.candidates[0].authorityMode, 'official');
+  assert.deepEqual(result.candidates[0].discoveryProvenance, discoveryProvenance);
+});
+
+test('Fisher and Paykel adapter requires the exact product page when lower-authority dimensions conflict', async () => {
+  const adapter = createFisherPaykelResolverAdapter({
+    finder: async () => ({
+      sourceUrl: 'https://www.fisherpaykel.com/on/demandware.static/QRG/AU/QRG-AU-93296.pdf',
+      productPageUrl: 'https://www.fisherpaykel.com/au/laundry/dryers/dh9060hg1-93296.html',
+      matchedSku: 'DH9060HG1',
+      resourceType: 'Quick Reference Guide',
+    }),
+  });
+  const result = await adapter.resolve({
+    brand: 'Fisher & Paykel',
+    model: 'DH9060HG1',
+    category: 'dryer',
+    reconciliationContext: {
+      activeReceiptSources: [],
+      registryHints: [{ dimensionsMm: { width: 600, height: 850, depth: 670 } }],
+      legacyHints: [{ dimensionsMm: { width: 600, height: 850, depth: 655 } }],
+    },
+  });
+
+  const productPage = result.candidates.find((candidate) => candidate.documentType === 'product_page');
+  assert.equal(productPage.requiredAttempt, true);
+});
+
 test('LG adapter treats an exhausted exact lookup as complete zero, not discovery failure', async () => {
   const adapter = createLgResolverAdapter({
     finder: async () => { throw new Error('LG official PDF not found for WD1275A1'); },
   });
   const result = await adapter.resolve({ brand: 'LG', model: 'WD1275A1' });
+  assert.equal(result.completion, 'complete');
+  assert.deepEqual(result.candidates, []);
+  assert.deepEqual(result.failures, []);
+});
+
+test('legacy finder treats a curl 404 for an exact artifact as complete zero', async () => {
+  const adapter = createLegacyFinderResolverAdapter({
+    brandKey: 'westinghouse',
+    resolverId: 'westinghouse-fixture',
+    finder: async () => {
+      throw new Error('curl: (56) The requested URL returned error: 404');
+    },
+  });
+  const result = await adapter.resolve({ brand: 'Westinghouse', model: 'WBE4500SARH' });
   assert.equal(result.completion, 'complete');
   assert.deepEqual(result.candidates, []);
   assert.deepEqual(result.failures, []);
@@ -68,6 +140,26 @@ test('LG adapter preserves Australian support API provenance for a global offici
     artifactUrl,
     documentId: '20152207223286',
   });
+});
+
+test('LG adapter adds bounded exact-model Australian product-page candidates by category', async () => {
+  const adapter = createLgResolverAdapter({
+    finder: async () => ({
+      sourceUrl: 'https://gscs-b2c.lge.com/open/downloadFile?fileId=fixture',
+      resourceType: 'Owner Manual',
+      lookupSku: 'WV9-1412B',
+      modelName: 'WV9-1412B',
+      discoveryUrl: 'https://www.lg.com/ncms/asia/api/v1/support/proxy/retrieveManualSoftwareList?locale=AU',
+    }),
+  });
+  const result = await adapter.resolve({ brand: 'LG', model: 'WV9-1412B', category: 'washing_machine' });
+  assert.deepEqual(result.candidates.map((candidate) => [
+    candidate.documentType, candidate.sourceUrl, candidate.requiredAttempt,
+  ]), [
+    ['user_manual', 'https://gscs-b2c.lge.com/open/downloadFile?fileId=fixture', true],
+    ['product_page', 'https://www.lg.com/au/washer-dryers/front-load-washing-machines/wv9-1412b/', true],
+    ['product_page', 'https://www.lg.com/au/washer-dryers/top-load-washing-machines/wv9-1412b/', true],
+  ]);
 });
 
 test('LG transport error remains incomplete while preserving no false candidate', async () => {
@@ -116,13 +208,46 @@ test('adapter router enables only compatible pilot brand discovery', () => {
     .map((row) => row.resolverId), ['electrolux-group-official-factsheet']);
   assert.deepEqual(buildArchitectureV2ResolverAdapters({ brand: 'Samsung', model: 'WW90T504DAW' })
     .map((row) => row.resolverId), ['samsung-official-discovery']);
+  assert.deepEqual(buildArchitectureV2ResolverAdapters({ brand: 'ASKO', model: 'T408HD.W' })
+    .map((row) => row.resolverId), ['asko-official-manuals-api']);
+});
+
+test('ASKO adapter preserves hash-bound exact-model Australian API provenance', async () => {
+  const artifactUrl = 'https://partners.gorenje.com/fts/htmlNavodila/870866en.pdf';
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_market_api',
+    market: 'AU',
+    discoveryUrl: 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/manuals/search?query=T408HD.W&lang=en_AU&curr=AUD',
+    requestedModel: 'T408HD.W',
+    matchedModel: 'T408HD.W',
+    artifactUrl,
+    discoveryContentSha256: 'a'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/aa/aa/${'a'.repeat(64)}.json`,
+    discoveryByteSize: 123,
+  };
+  const [adapter] = buildArchitectureV2ResolverAdapters(
+    { brand: 'ASKO', model: 'T408HD.W', category: 'dryer' },
+    { asko: { finder: async () => ({
+      sourceUrl: artifactUrl,
+      matchedSku: 'T408HD.W',
+      resourceType: 'Instructions for use',
+      discoveryProvenance,
+    }) } },
+  );
+
+  const result = await adapter.resolve({ brand: 'ASKO', model: 'T408HD.W', category: 'dryer' });
+  assert.equal(result.completion, 'complete');
+  assert.equal(result.candidates[0].authorityMode, 'official');
+  assert.equal(result.candidates[0].sourceModelHint, 'T408HD.W');
+  assert.deepEqual(result.candidates[0].discoveryProvenance, discoveryProvenance);
 });
 
 test('all migration brands route through typed discovery-only adapters', () => {
   const brands = [
     'Fisher & Paykel', 'Haier', 'Electrolux', 'Westinghouse', 'LG', 'Samsung',
     'Beko', 'Hisense', 'Miele', 'Liebherr', 'Midea', 'CHiQ',
-    'Artusi', 'Esatto', 'Euromaid', 'InAlto', 'Kogan', 'Omega', 'Robinhood',
+    'ASKO', 'Artusi', 'Esatto', 'Euromaid', 'InAlto', 'Kogan', 'Omega', 'Robinhood',
     'Sub-Zero', 'Teco', 'Vogue',
   ];
   for (const brand of brands) {
@@ -213,6 +338,48 @@ test('generic adapter requires Australian discovery provenance for an approved g
   });
   const bound = await withProvenance.resolve({ brand: 'LG', model: 'ABC100' });
   assert.equal(bound.candidates[0].authorityMode, 'official');
+});
+
+test('generic adapter does not mistake an AEM ProductCatalog directory for a catalogue document', async () => {
+  const productPageUrl = 'https://www.beko.com/au-en/home-appliances/freestanding-dishwasher/bdf1640ax';
+  const artifactUrl = 'https://www.beko.com/content/dam/australia-au-aem/australia-au-aemProductCatalog/product-documents/7679159077-BDF1640AX/en-US-Installation-Diagram.pdf';
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: 'https://www.beko.com/au-en/support/user-manuals-result?search=BDF1640AX',
+    requestedModel: 'BDF1640AX',
+    matchedModel: 'BDF1640AX',
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: 'a'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/aa/aa/${'a'.repeat(64)}.html`,
+    discoveryByteSize: 1234,
+  };
+  const adapter = createLegacyFinderResolverAdapter({
+    brandKey: 'beko', resolverId: 'beko-aem-fixture',
+    finder: async () => ({
+      sourceUrl: artifactUrl,
+      resourceType: 'installation_guide',
+      requiredAttempt: false,
+      discoveryProvenance: provenance,
+      resources: [{
+        url: artifactUrl, resourceType: 'installation_guide', requiredAttempt: false,
+        discoveryProvenance: provenance,
+      }],
+      productPageUrl,
+    }),
+  });
+  const result = await adapter.resolve({ brand: 'Beko', model: 'BDF1640AX' });
+  assert.deepEqual(result.candidates.map((candidate) => [
+    candidate.documentType,
+    candidate.authorityMode,
+    candidate.discoveryProvenance?.artifactUrl ?? null,
+    candidate.requiredAttempt,
+  ]), [
+    ['installation_guide', 'official', artifactUrl, false],
+    ['product_page', 'official', null, false],
+  ]);
 });
 
 test('generic adapter accepts object product-page entries without fabricating URLs', async () => {

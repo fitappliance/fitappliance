@@ -7,6 +7,7 @@ import {
   parseHistoricalEvidenceRecoveryBatchArgs,
 } from '../../src/domain/historical-evidence-recovery-batch.mjs';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
+import { parseHistoricalEvidenceRecoveryBatchCliArgs } from '../../scripts/architecture-v2/build-historical-evidence-recovery-batch.mjs';
 
 const SHA_A = 'a'.repeat(64);
 const SHA_B = 'b'.repeat(64);
@@ -110,7 +111,10 @@ function fixturePolicy() {
     lifecycleStates: ['CURRENT_RETAIL', 'CATALOG_ARCHIVED'],
     concurrency: { network: 2, perHost: 1, mineru: 1 },
     retry: { fetchAttempts: 3, mineruAttempts: 2, baseDelayMs: 1000 },
-    limits: { timeoutMs: 30_000, maximumBytes: 20_971_520, maximumRedirects: 5 },
+    limits: {
+      timeoutMs: 30_000, resolverTimeoutMs: 120_000,
+      maximumBytes: 20_971_520, maximumRedirects: 5,
+    },
     lock: { heartbeatMs: 15_000, staleAfterMs: 90_000 },
     parser: {
       format: 'content_list_v2',
@@ -144,6 +148,24 @@ test('batch deterministically selects targets and preserves every alternate cand
   assert.ok(first.artifactJobs.every((row) => row.targetIds.length === 1));
   assert.equal(first.summary.candidateEdges, 2);
   assert.equal(first.targets[0].publicationEligible, false);
+});
+
+test('batch summary accounts for targets already covered by cumulative acceptance', () => {
+  const queue = fixtureQueue();
+  const batch = buildHistoricalEvidenceRecoveryBatch({
+    queue,
+    policy: fixturePolicy(),
+    existingAcceptanceBundles: [{
+      entries: [{
+        ...queue.targets[0],
+        acceptanceStatus: 'accepted',
+      }],
+    }],
+  });
+
+  assert.equal(batch.summary.excludedPriorAcceptedTargets, 1);
+  assert.equal(batch.summary.excludedPriorCandidateJobs, 2);
+  assert.ok(batch.targets.every((target) => target.targetId !== queue.targets[0].targetId));
 });
 
 test('batch snapshots non-authoritative registry and legacy hints plus active receipt bindings', () => {
@@ -215,6 +237,48 @@ test('accepted targets are excluded without deleting other cumulative entries', 
   assert.equal(batch.summary.targets, 1);
 });
 
+test('explicit parser repair reopens one accepted target without hydrating its invalid receipt', () => {
+  const queue = fixtureQueue();
+  queue.targets[0].repairExistingReceipt = true;
+  const batch = buildHistoricalEvidenceRecoveryBatch({
+    queue,
+    policy: fixturePolicy(),
+    existingAcceptanceBundles: [{
+      entries: [{
+        targetId: queue.targets[0].targetId,
+        brand: 'Example', model: 'EX100', category: 'dishwasher',
+        acceptanceStatus: 'accepted',
+        sources: [{
+          sourceUrl: 'https://example.com.au/old.pdf', contentSha256: SHA_A,
+          verificationReceipt: { bindingSha256: SHA_B },
+        }],
+      }],
+    }],
+    selection: { targetIds: [queue.targets[0].targetId] },
+  });
+
+  assert.equal(batch.targets.length, 1);
+  assert.deepEqual(batch.targets[0].reconciliationContext.activeReceiptSources, []);
+});
+
+test('receipt-accepted non-scalar targets are also terminal for cumulative batch selection', () => {
+  const queue = fixtureQueue();
+  const batch = buildHistoricalEvidenceRecoveryBatch({
+    queue,
+    policy: fixturePolicy(),
+    existingAcceptanceBundles: [{
+      entries: [{
+        targetId: queue.targets[0].targetId,
+        brand: 'Example', model: 'EX100', category: 'dishwasher',
+        acceptanceStatus: 'receipt_accepted_non_scalar',
+      }],
+    }],
+    selection: { brands: ['Example'] },
+  });
+
+  assert.deepEqual(batch.targets.map((row) => row.model), ['EX200']);
+});
+
 test('route, priority and brand filters combine and limit counts targets rather than jobs', () => {
   const queue = fixtureQueue();
   const batch = buildHistoricalEvidenceRecoveryBatch({
@@ -234,25 +298,64 @@ test('route, priority and brand filters combine and limit counts targets rather 
   assert.equal(batch.targets[0].canonicalProductId, null);
 });
 
+test('target ID filters allow a resolver-only conflict canary to be selected exactly', () => {
+  const queue = fixtureQueue();
+  queue.targets[1] = target(queue.targets[1].targetId, 'EX200', [], {
+    primaryJobId: null,
+  });
+  const batch = buildHistoricalEvidenceRecoveryBatch({
+    queue,
+    policy: fixturePolicy(),
+    existingAcceptanceBundles: [],
+    selection: { targetIds: [queue.targets[1].targetId] },
+  });
+
+  assert.deepEqual(batch.targets.map((row) => row.model), ['EX200']);
+  assert.equal(batch.artifactJobs.length, 0);
+  assert.deepEqual(batch.selection.targetIds, [queue.targets[1].targetId]);
+});
+
 test('CLI parser rejects unknown flags and supports repeatable filters', () => {
   assert.deepEqual(parseHistoricalEvidenceRecoveryBatchArgs([
     '--job-id', 'job-a', '--job-id=job-b', '--route', 'OFFICIAL_RECEIPT_REBUILD',
-    '--priority=P0_CURRENT_MISSING_DIMENSIONS', '--brand', 'Example', '--limit', '5',
+    '--priority=P0_CURRENT_MISSING_DIMENSIONS', '--brand', 'Example',
+    '--target-id', 'target-a', '--target-id=target-b', '--limit', '5',
   ]), {
     jobIds: ['job-a', 'job-b'],
     routes: ['OFFICIAL_RECEIPT_REBUILD'],
     priorities: ['P0_CURRENT_MISSING_DIMENSIONS'],
     brands: ['Example'],
+    targetIds: ['target-a', 'target-b'],
     limit: 5,
   });
   assert.throws(() => parseHistoricalEvidenceRecoveryBatchArgs(['--unknown']), /unknown argument/i);
   assert.throws(() => parseHistoricalEvidenceRecoveryBatchArgs(['--limit', '0']), /limit/i);
 });
 
-test('committed full batch is reproducible from the queue, policy and prior acceptance artifacts', async () => {
-  const [queue, policy, pdfBatch, pdfResults, rangeBatch, rangeResults, committed] = await Promise.all([
-    readFile('data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json', 'utf8').then(JSON.parse),
+test('batch CLI keeps canary output separate from the canonical full batch', () => {
+  assert.deepEqual(parseHistoricalEvidenceRecoveryBatchCliArgs([
+    '--output', '/tmp/fp-canary.json',
+    '--brand', 'Fisher & Paykel',
+    '--limit', '10',
+  ]), {
+    output: '/tmp/fp-canary.json',
+    selection: {
+      jobIds: [], routes: [], priorities: [], brands: ['Fisher & Paykel'],
+      targetIds: [], limit: 10,
+    },
+  });
+  assert.throws(
+    () => parseHistoricalEvidenceRecoveryBatchCliArgs(['--output', 'one.json', '--output', 'two.json']),
+    /output.*once/i,
+  );
+});
+
+test('committed full batch is reproducible from the queue, policy and cumulative acceptance artifacts', async () => {
+  const [queue, policy, cumulativeBundle, pdfBatch, pdfResults,
+    rangeBatch, rangeResults, committed] = await Promise.all([
+    readFile('data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/policies/historical-evidence-recovery-policy.json', 'utf8').then(JSON.parse),
+    readFile('data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/reviews/automated/pdf-brand-acceptance-batch.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/reviews/automated/pdf-brand-acceptance-results.json', 'utf8').then(JSON.parse),
     readFile('data/architecture-v2/reviews/automated/identity-range-recovery-acceptance-batch.json', 'utf8').then(JSON.parse),
@@ -263,6 +366,7 @@ test('committed full batch is reproducible from the queue, policy and prior acce
     queue,
     policy,
     existingAcceptanceBundles: [
+      cumulativeBundle,
       { batch: pdfBatch, results: pdfResults },
       { batch: rangeBatch, results: rangeResults },
     ],

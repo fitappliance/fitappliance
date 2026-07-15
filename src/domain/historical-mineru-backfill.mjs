@@ -56,6 +56,31 @@ export function deduplicateHistoricalPdfs(records) {
     .sort((left, right) => left.sourcePdfSha256.localeCompare(right.sourcePdfSha256));
 }
 
+export function validateHistoricalPdfInventoryDocument(document, pdfBytes) {
+  assertSha256(document?.sourcePdfSha256);
+  const bytes = Buffer.from(pdfBytes ?? []);
+  if (!validPdf(bytes)) throw new TypeError('valid PDF payload required');
+  if (bytes.length !== document.byteSize) {
+    throw new Error(`PDF byte size mismatch: expected ${document.byteSize}; found ${bytes.length}`);
+  }
+  const actualSha256 = sha256(bytes);
+  if (actualSha256 !== document.sourcePdfSha256) {
+    throw new Error(`PDF hash mismatch: expected ${document.sourcePdfSha256}; found ${actualSha256}`);
+  }
+  if (!Array.isArray(document.paths) || document.paths.length === 0) {
+    throw new TypeError('PDF inventory paths required');
+  }
+  const paths = [...new Set(document.paths.map((path) => {
+    if (!validRelativePath(path)) throw new TypeError('safe relative path required');
+    return path;
+  }))].sort();
+  return {
+    sourcePdfSha256: document.sourcePdfSha256,
+    byteSize: document.byteSize,
+    paths,
+  };
+}
+
 export function buildHistoricalMineruAudit(input) {
   const documents = Array.isArray(input?.documents) ? input.documents : [];
   const cacheStates = Array.isArray(input?.cacheStates) ? input.cacheStates : [];

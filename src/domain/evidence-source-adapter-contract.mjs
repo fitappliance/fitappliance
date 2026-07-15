@@ -67,7 +67,7 @@ function optionalDiscoveryProvenance(value) {
   if (value === null || value === undefined) return null;
   assertRecord(value, 'candidate discovery provenance');
   const keys = new Set([
-    'schemaVersion', 'method', 'market', 'discoveryUrl', 'requestedModel', 'matchedModel',
+    'schemaVersion', 'method', 'market', 'sourceMarket', 'discoveryUrl', 'requestedModel', 'matchedModel',
     'artifactUrl', 'artifactLinkUrl', 'discoveryContentSha256', 'discoveryObjectPath',
     'discoveryByteSize', 'documentId', 'originalFileName',
   ]);
@@ -77,6 +77,9 @@ function optionalDiscoveryProvenance(value) {
     schemaVersion: 1,
     method: requiredText(value.method, 'candidate discovery method'),
     market: requiredText(value.market, 'candidate discovery market'),
+    ...(value.sourceMarket ? {
+      sourceMarket: requiredText(value.sourceMarket, 'candidate discovery source market'),
+    } : {}),
     discoveryUrl: canonicalHttpsUrl(value.discoveryUrl, 'candidate discovery URL'),
     requestedModel: requiredText(value.requestedModel, 'candidate discovery requested model'),
     matchedModel: requiredText(value.matchedModel, 'candidate discovery matched model'),
@@ -95,6 +98,20 @@ function optionalDiscoveryProvenance(value) {
     }
     Object.assign(result, {
       artifactLinkUrl: canonicalHttpsUrl(value.artifactLinkUrl, 'candidate discovery artifact link URL'),
+      discoveryContentSha256: hash,
+      discoveryObjectPath: objectPath,
+      discoveryByteSize: value.discoveryByteSize,
+    });
+  } else if (result.method === 'official_market_api' && value.discoveryContentSha256) {
+    const hash = requiredText(value.discoveryContentSha256, 'candidate discovery content SHA-256');
+    if (!/^[a-f0-9]{64}$/.test(hash)) throw new TypeError('candidate discovery content SHA-256 invalid');
+    const objectPath = requiredText(value.discoveryObjectPath, 'candidate discovery object path');
+    const expectedPath = `evidence/web/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.json`;
+    if (objectPath !== expectedPath) throw new TypeError('candidate discovery object path invalid');
+    if (!Number.isInteger(value.discoveryByteSize) || value.discoveryByteSize <= 0) {
+      throw new TypeError('candidate discovery byte size invalid');
+    }
+    Object.assign(result, {
       discoveryContentSha256: hash,
       discoveryObjectPath: objectPath,
       discoveryByteSize: value.discoveryByteSize,

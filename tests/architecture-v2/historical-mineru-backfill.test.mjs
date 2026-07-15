@@ -5,6 +5,7 @@ import {
   buildHistoricalMineruAudit,
   deduplicateHistoricalPdfs,
   selectHistoricalMineruBackfill,
+  validateHistoricalPdfInventoryDocument,
 } from '../../src/domain/historical-mineru-backfill.mjs';
 
 function pdf(label) {
@@ -38,6 +39,22 @@ test('historical PDF inventory rejects invalid payloads and unsafe report paths'
   assert.throws(() => deduplicateHistoricalPdfs([
     { relativePath: '../outside.pdf', pdfBytes: pdf('escape') },
   ]), /relative path/i);
+});
+
+test('frozen PDF inventory is replayed one object at a time with hash, size and path validation', () => {
+  const bytes = pdf('frozen-object');
+  const [document] = deduplicateHistoricalPdfs([
+    { relativePath: 'evidence/web/frozen.pdf', pdfBytes: bytes },
+  ]);
+  assert.deepEqual(validateHistoricalPdfInventoryDocument(document, bytes), document);
+  assert.throws(
+    () => validateHistoricalPdfInventoryDocument(document, pdf('frozen-objecx')),
+    /hash mismatch/i,
+  );
+  assert.throws(
+    () => validateHistoricalPdfInventoryDocument({ ...document, byteSize: document.byteSize + 1 }, bytes),
+    /byte size mismatch/i,
+  );
 });
 
 test('historical MinerU audit classifies cache state and preserves retry history', () => {

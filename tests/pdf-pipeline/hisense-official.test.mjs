@@ -31,6 +31,7 @@ test('Hisense official finder reads specificationDoc from the OCC product endpoi
       return jsonResponse({
         code: 'HRBM418S',
         name: 'Hisense Bottom Mount Fridge',
+        url: '/product/HRBM418S/bottom-mount-fridge',
         specificationDoc: {
           name: 'HRBM418S-Spec.pdf',
           url: '/medias/HRBM418S-Spec.pdf'
@@ -47,6 +48,7 @@ test('Hisense official finder reads specificationDoc from the OCC product endpoi
   assert.equal(result.sourceUrl, 'https://dtc-aus-api.hisense.com/medias/HRBM418S-Spec.pdf');
   assert.equal(result.source, 'hisense-official-specification_doc');
   assert.equal(result.resourceType, 'specification_doc');
+  assert.equal(result.productPageUrl, 'https://hisense.com.au/product/HRBM418S/bottom-mount-fridge');
 });
 
 test('Hisense official finder uses product search when direct OCC lookup misses', async () => {

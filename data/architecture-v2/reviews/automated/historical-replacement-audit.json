@@ -6,7 +6,7 @@
     "referenceRecords": 8095,
     "publicRecords": 8095,
     "currentCatalogProducts": 3521,
-    "quarantinedRecords": 90,
+    "quarantinedRecords": 88,
     "inactiveAustralianRecords": 12,
     "byCategory": {
       "dishwasher": 1419,
@@ -20,18 +20,18 @@
       "CURRENT_RETAIL": 1384
     },
     "byEvidence": {
-      "REGISTRY_CONSISTENT": 4930,
-      "IDENTITY_ONLY": 3052,
-      "INTERNAL_CONFLICT": 71,
+      "REGISTRY_CONSISTENT": 4911,
+      "IDENTITY_ONLY": 3034,
+      "INTERNAL_CONFLICT": 69,
+      "MODEL_RECEIPT": 51,
       "INVALID_DIMENSIONS": 19,
-      "CATALOG_RECEIPT": 11,
-      "MODEL_RECEIPT": 12
+      "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
-      "CONFIRM_REQUIRED": 4930,
-      "MEASURE_REQUIRED": 3052,
-      "QUARANTINED": 90,
-      "AUTO_FILL": 23
+      "CONFIRM_REQUIRED": 4911,
+      "MEASURE_REQUIRED": 3034,
+      "QUARANTINED": 88,
+      "AUTO_FILL": 62
     },
     "issueCount": 0
   },

@@ -82,13 +82,54 @@ test('curl fallback cannot turn HTML or a cross-brand redirect into PDF evidence
 
 test('policy rejection never invokes a fallback transport', async () => {
   let curlCalls = 0;
+  let scraplingCalls = 0;
   await assert.rejects(() => fetchOfficialArtifactResilient(
     'https://evil.example/fake.pdf', 'Westinghouse', {
       fetchImpl: async () => new Response(PDF),
       curlImpl: async () => { curlCalls += 1; },
+      scraplingImpl: async () => { scraplingCalls += 1; },
+      allowScraplingFallback: true,
     },
   ), /official brand URL/i);
   assert.equal(curlCalls, 0);
+  assert.equal(scraplingCalls, 0);
+});
+
+test('declared WAF hosts may use the bounded Scrapling fallback after an HTTP block', async () => {
+  let scraplingCalls = 0;
+  const sourceUrl = 'https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7679159077.pdf';
+  const result = await fetchOfficialArtifactResilient(sourceUrl, 'Beko', {
+    allowScraplingFallback: true,
+    fetchImpl: async () => new Response('blocked', { status: 403 }),
+    scraplingImpl: async (requestedUrl) => {
+      scraplingCalls += 1;
+      assert.equal(requestedUrl, sourceUrl);
+      return {
+        finalUrl: sourceUrl,
+        redirectChain: [],
+        contentType: 'application/pdf',
+        bytes: PDF,
+      };
+    },
+  });
+
+  assert.equal(scraplingCalls, 1);
+  assert.equal(result.transport, 'scrapling');
+  assert.deepEqual(result.bytes, PDF);
+});
+
+test('Scrapling is not invoked for an official host absent from the WAF policy', async () => {
+  let scraplingCalls = 0;
+  await assert.rejects(() => fetchOfficialArtifactResilient(
+    'https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCI01A.pdf',
+    'Bosch',
+    {
+      allowScraplingFallback: true,
+      fetchImpl: async () => new Response('blocked', { status: 403 }),
+      scraplingImpl: async () => { scraplingCalls += 1; },
+    },
+  ), /http_403/i);
+  assert.equal(scraplingCalls, 0);
 });
 
 test('known incompatible official hosts use the declared curl-first profile', async () => {
@@ -107,6 +148,36 @@ test('known incompatible official hosts use the declared curl-first profile', as
   );
   assert.equal(result.transport, 'curl');
   assert.equal(fetchCalls, 0);
+});
+
+test('declared slow official hosts receive only their bounded transport timeout override', async () => {
+  const sourceUrl = 'https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=576719&jezik=en&tipVsebine=1&docName=577992en.pdf';
+  let curlTimeoutMs = null;
+  const result = await fetchOfficialArtifactResilient(sourceUrl, 'ASKO', {
+    timeoutMs: 30_000,
+    allowCurlFallback: true,
+    expectedModel: 'T408HD.W',
+    discoveryProvenance: {
+      schemaVersion: 1,
+      method: 'official_market_api',
+      market: 'AU',
+      discoveryUrl: 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/manuals/search?query=T408HD.W&lang=en_AU&curr=AUD',
+      requestedModel: 'T408HD.W',
+      matchedModel: 'T408HD.W',
+      artifactUrl: sourceUrl,
+      discoveryContentSha256: 'a'.repeat(64),
+      discoveryObjectPath: `evidence/web/sha256/aa/aa/${'a'.repeat(64)}.json`,
+      discoveryByteSize: 123,
+    },
+    fetchImpl: async () => { throw new TypeError('fetch timed out'); },
+    curlImpl: async (_url, options) => {
+      curlTimeoutMs = options.timeoutMs;
+      return { finalUrl: sourceUrl, redirectChain: [], contentType: 'application/pdf', bytes: PDF };
+    },
+  });
+
+  assert.equal(curlTimeoutMs, 90_000);
+  assert.equal(result.contentType, 'application/pdf');
 });
 
 test('Electrolux resource transport preserves curl default user agent', () => {
@@ -129,6 +200,57 @@ test('other official hosts retain the accountable evidence bot user agent', () =
   );
   assert.equal(args.includes('--user-agent'), true);
   assert.equal(args.includes('FitApplianceEvidenceBot/3.0 (+https://www.fitappliance.com.au/about/editorial-standards)'), true);
+});
+
+test('Fisher and Paykel content transport sends the official-site referer for fetch and curl', async () => {
+  const sourceUrl = 'https://content.fisherpaykel.com/CBW/service/Dishwasher/DW60CEW1.pdf';
+  let requestHeaders;
+  const result = await fetchOfficialArtifactResilient(sourceUrl, 'Fisher & Paykel', {
+    expectedModel: 'DW60CEW1',
+    discoveryProvenance: {
+      schemaVersion: 1,
+      method: 'official_support_api',
+      market: 'AU',
+      sourceMarket: 'NZ',
+      discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/dw60cew1',
+      requestedModel: 'DW60CEW1',
+      matchedModel: 'DW60CEW1',
+      artifactUrl: sourceUrl,
+      documentId: 'ka0exact',
+    },
+    fetchImpl: async (_url, init) => {
+      requestHeaders = init.headers;
+      return new Response(PDF, {
+        status: 200,
+        headers: { 'content-type': 'application/pdf' },
+      });
+    },
+  });
+
+  assert.equal(requestHeaders.referer, 'https://www.fisherpaykel.com/');
+  assert.equal(result.contentType, 'application/pdf');
+
+  const args = buildCurlArguments(
+    sourceUrl,
+    { maximumBytes: 20 * 1024 * 1024, timeoutMs: 30000, maximumRedirects: 5 },
+    '/tmp/body',
+    '/tmp/headers',
+  );
+  assert.ok(args.includes('Referer: https://www.fisherpaykel.com/'));
+});
+
+test('official HTML permits bounded leading whitespace before the document signature', async () => {
+  const sourceUrl = 'https://www.fisherpaykel.com/au/laundry/dryers/dh9060hg1-93296.html';
+  const html = Buffer.from(`${' \n'.repeat(64)}<!DOCTYPE html><html><body>DH9060HG1</body></html>`);
+  const result = await fetchOfficialArtifactResilient(sourceUrl, 'Fisher & Paykel', {
+    fetchImpl: async () => new Response(html, {
+      status: 200,
+      headers: { 'content-type': 'text/html;charset=UTF-8' },
+    }),
+  });
+
+  assert.equal(result.contentType, 'text/html');
+  assert.deepEqual(result.bytes, html);
 });
 
 test('global official document endpoint requires bound Australian discovery provenance', async () => {

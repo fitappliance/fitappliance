@@ -1,0 +1,173 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+
+import { buildHistoricalExecutableRecoveryQueue } from '../../src/domain/historical-executable-recovery-queue.mjs';
+
+const fields = [
+  'closedEnvelope.widthMm',
+  'closedEnvelope.heightMm',
+  'closedEnvelope.depthMm',
+];
+
+function acquisition(referenceId, overrides = {}) {
+  return {
+    acquisitionId: `acquisition-${referenceId}`,
+    referenceId,
+    category: 'fridge',
+    brand: 'Example',
+    model: referenceId.toUpperCase(),
+    lifecycleState: 'CURRENT_RETAIL',
+    priority: 'P0_CURRENT_RETAIL',
+    operationalClass: 'OFFICIAL_DISCOVERY',
+    route: 'OFFICIAL_DISCOVERY',
+    executionReadiness: 'DISCOVERY_READY',
+    candidateSourceIds: [],
+    resolverIds: ['example-resolver'],
+    legacyRecoveryTargetIds: [],
+    legacyRuntimeIds: [`product-${referenceId}`],
+    canonicalProductIds: [`canonical-${referenceId}`],
+    ...overrides,
+  };
+}
+
+function reference(referenceId, overrides = {}) {
+  return {
+    referenceId,
+    category: 'fridge',
+    brand: 'Example',
+    model: referenceId.toUpperCase(),
+    lifecycleState: 'CURRENT_RETAIL',
+    lookupAction: 'MEASURE_REQUIRED',
+    dimensionsMm: null,
+    sources: [],
+    catalogProductIds: [`product-${referenceId}`],
+    ...overrides,
+  };
+}
+
+test('materializes official and resolver-only targets without fabricating source URLs', () => {
+  const records = [
+    acquisition('official', { candidateSourceIds: ['source-official'] }),
+    acquisition('registry', {
+      lifecycleState: 'REGISTRY_ONLY',
+      priority: 'P2_REGISTRY_ONLY',
+      legacyRuntimeIds: [],
+      canonicalProductIds: [],
+    }),
+    acquisition('identity', {
+      operationalClass: 'IDENTITY_RESEARCH', route: 'IDENTITY_CLOSURE',
+      executionReadiness: 'RESEARCH_REQUIRED',
+    }),
+  ];
+  const queue = buildHistoricalExecutableRecoveryQueue({
+    acquisitionQueue: {
+      schemaVersion: 1,
+      generatedAt: '2026-07-14T00:00:00.000Z',
+      semanticQueueSha256: 'a'.repeat(64),
+      records,
+      sources: [{
+        sourceId: 'source-official',
+        sourceUrl: 'https://example.com/official.pdf',
+        sourceAuthority: 'OFFICIAL',
+        receiptEligible: true,
+        documentIds: ['doc-official'],
+        referenceIds: ['official'],
+      }],
+    },
+    historicalReference: {
+      records: [
+        reference('official'),
+        reference('registry', { lifecycleState: 'REGISTRY_ONLY', catalogProductIds: [] }),
+        reference('identity'),
+      ],
+    },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+  });
+
+  assert.equal(queue.schemaVersion, 2);
+  assert.equal(queue.targets.length, 2);
+  assert.equal(queue.jobs.length, 1);
+  const registry = queue.targets.find((target) => target.referenceId === 'registry');
+  assert.equal(registry.lifecycleState, 'REGISTRY_ONLY');
+  assert.equal(registry.legacyRuntimeId, 'historical-registry');
+  assert.equal(registry.primaryJobId, null);
+  assert.deepEqual(registry.candidateJobIds, []);
+  assert.deepEqual(registry.requestedFields, fields);
+  assert.equal(queue.summary.excluded.RESEARCH_REQUIRED, 1);
+});
+
+test('reuses legacy reconciliation hints but not stale legacy candidate edges', () => {
+  const legacyTarget = {
+    targetId: 'legacy-target',
+    referenceId: 'official',
+    legacyRuntimeId: 'product-official',
+    canonicalProductId: 'canonical-official',
+    brand: 'Example',
+    model: 'OFFICIAL',
+    category: 'fridge',
+    lifecycleState: 'CURRENT_RETAIL',
+    requestedFields: fields,
+    primaryJobId: 'stale-job',
+    candidateJobIds: ['stale-job'],
+    registryDimensionHints: [],
+    legacyHints: [{
+      sourceDocumentId: 'legacy-doc',
+      dimensionsMm: { width: 600, height: 1700, depth: 650 },
+    }],
+    sourceDocumentIds: ['legacy-doc'],
+    publicationEligible: false,
+  };
+  const queue = buildHistoricalExecutableRecoveryQueue({
+    acquisitionQueue: {
+      schemaVersion: 1,
+      generatedAt: '2026-07-14T00:00:00.000Z',
+      semanticQueueSha256: 'a'.repeat(64),
+      records: [acquisition('official')],
+      sources: [],
+    },
+    historicalReference: { records: [reference('official')] },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [legacyTarget] },
+  });
+
+  assert.equal(queue.targets[0].targetId, 'legacy-target');
+  assert.deepEqual(queue.targets[0].legacyHints, legacyTarget.legacyHints);
+  assert.deepEqual(queue.targets[0].candidateJobIds, []);
+});
+
+test('materializes parser repair from the official PDF while preserving accepted target identity', () => {
+  const record = acquisition('repair', {
+    operationalClass: 'OFFLINE_PARSER_REPAIR',
+    route: 'PARSER_REPAIR',
+    executionReadiness: 'OFFLINE_REPAIR',
+    candidateSourceIds: ['source-repair'],
+    canonicalProductIds: [],
+  });
+  const queue = buildHistoricalExecutableRecoveryQueue({
+    acquisitionQueue: {
+      schemaVersion: 1,
+      generatedAt: '2026-07-14T00:00:00.000Z',
+      semanticQueueSha256: 'a'.repeat(64),
+      records: [record],
+      sources: [{
+        sourceId: 'source-repair', sourceUrl: 'https://example.com/repair.pdf',
+        sourceAuthority: 'OFFICIAL', receiptEligible: true,
+        documentIds: ['pdf:repair'], referenceIds: ['repair'],
+      }],
+    },
+    historicalReference: { records: [reference('repair')] },
+    legacyRecoveryQueue: { schemaVersion: 2, jobs: [], targets: [] },
+    priorAcceptanceBundle: { entries: [{
+      targetId: 'accepted-repair-target', referenceId: 'repair',
+      legacyRuntimeId: 'accepted-runtime', canonicalProductId: 'accepted-product',
+      brand: 'Example', model: 'REPAIR', category: 'fridge',
+      lifecycleState: 'CURRENT_RETAIL', acceptanceStatus: 'accepted',
+    }] },
+  });
+
+  assert.equal(queue.targets.length, 1);
+  assert.equal(queue.jobs.length, 1);
+  assert.equal(queue.targets[0].targetId, 'accepted-repair-target');
+  assert.equal(queue.targets[0].canonicalProductId, 'accepted-product');
+  assert.equal(queue.targets[0].repairExistingReceipt, true);
+  assert.equal(queue.jobs[0].acquisitionRoute, 'OFFICIAL_RECEIPT_REBUILD');
+});

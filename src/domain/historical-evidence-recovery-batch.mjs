@@ -4,7 +4,7 @@ import {
   validateHistoricalEvidenceRecoveryPolicy,
 } from './historical-evidence-recovery-contract.mjs';
 
-const SELECTION_KEYS = new Set(['jobIds', 'routes', 'priorities', 'brands', 'limit']);
+const SELECTION_KEYS = new Set(['jobIds', 'routes', 'priorities', 'brands', 'targetIds', 'limit']);
 
 function text(value, label) {
   const normalized = String(value ?? '').trim();
@@ -47,6 +47,7 @@ function normalizeSelection(selection = {}) {
     routes: uniqueSorted(selection.routes, 'selection route'),
     priorities: uniqueSorted(selection.priorities, 'selection priority'),
     brands: uniqueSorted(selection.brands, 'selection brand'),
+    targetIds: uniqueSorted(selection.targetIds, 'selection target ID'),
     limit,
   };
 }
@@ -94,8 +95,8 @@ function indexPriorAcceptance(existingAcceptanceBundles) {
   for (const bundle of existingAcceptanceBundles) {
     if (!bundle || typeof bundle !== 'object') throw new TypeError('acceptance input must be an object');
     for (const entry of bundle.entries ?? []) {
-      if (entry.acceptanceStatus === 'accepted') markAccepted(entry);
-      addSource(entry, entry.source);
+      if (['accepted', 'receipt_accepted_non_scalar'].includes(entry.acceptanceStatus)) markAccepted(entry);
+      for (const source of entry.sources ?? (entry.source ? [entry.source] : [])) addSource(entry, source);
     }
 
     const batchEntries = new Map((bundle.batch?.entries ?? [])
@@ -105,7 +106,8 @@ function indexPriorAcceptance(existingAcceptanceBundles) {
       const batchEntry = batchEntries.get(String(rawOutcome.id ?? rawOutcome.targetId ?? '')) ?? {};
       const outcome = { ...batchEntry, ...rawOutcome };
       if ((outcome.outcome === 'accepted' && outcome.receipt === 'passed')
-        || outcome.status === 'accepted' || outcome.acceptanceStatus === 'accepted') {
+        || ['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status)
+        || ['accepted', 'receipt_accepted_non_scalar'].includes(outcome.acceptanceStatus)) {
         markAccepted(outcome);
       }
       addSource(outcome, outcome.source);
@@ -154,6 +156,7 @@ function legacyHints(target) {
 }
 
 function matchesSelection(target, jobsById, selection) {
+  if (selection.targetIds.length > 0 && !selection.targetIds.includes(target.targetId)) return false;
   const candidates = target.candidateJobIds.map((jobId) => jobsById.get(jobId));
   if (candidates.some((job) => !job)) throw new TypeError(`target ${target.targetId} has a missing candidate job`);
   if (selection.jobIds.length > 0
@@ -183,7 +186,7 @@ function materializeTarget(target, prior) {
     candidateJobIds: [...target.candidateJobIds],
     publicationEligible: false,
     reconciliationContext: {
-      activeReceiptSources: prior.sourcesFor(target),
+      activeReceiptSources: target.repairExistingReceipt ? [] : prior.sourcesFor(target),
       registryHints: (target.registryDimensionHints ?? []).map((hint) => ({
         sourceId: hint.sourceId,
         snapshotSha256: hint.snapshotSha256,
@@ -211,9 +214,14 @@ export function buildHistoricalEvidenceRecoveryBatch({
     if (!jobsById.has(requestedJobId)) throw new TypeError(`unknown selected job ID: ${requestedJobId}`);
   }
   const prior = indexPriorAcceptance(existingAcceptanceBundles);
-  let selectedTargets = queue.targets
-    .filter((target) => !prior.isAccepted(target))
+  const selectionMatchedTargets = queue.targets
     .filter((target) => matchesSelection(target, jobsById, normalizedSelection));
+  const excludedPriorTargets = selectionMatchedTargets
+    .filter((target) => target.repairExistingReceipt !== true && prior.isAccepted(target));
+  const excludedPriorCandidateJobIds = new Set(excludedPriorTargets
+    .flatMap((target) => target.candidateJobIds));
+  let selectedTargets = selectionMatchedTargets
+    .filter((target) => target.repairExistingReceipt === true || !prior.isAccepted(target));
   if (normalizedSelection.limit !== null) selectedTargets = selectedTargets.slice(0, normalizedSelection.limit);
 
   const targetIds = new Set(selectedTargets.map((target) => target.targetId));
@@ -252,18 +260,23 @@ export function buildHistoricalEvidenceRecoveryBatch({
       artifactJobs: artifactJobs.length,
       targets: targets.length,
       candidateEdges: artifactJobs.reduce((count, job) => count + job.targetIds.length, 0),
+      excludedPriorAcceptedTargets: excludedPriorTargets.length,
+      excludedPriorCandidateJobs: excludedPriorCandidateJobIds.size,
     },
   };
   return validateHistoricalEvidenceRecoveryBatch(batch);
 }
 
 export function parseHistoricalEvidenceRecoveryBatchArgs(argv) {
-  const selection = { jobIds: [], routes: [], priorities: [], brands: [], limit: null };
+  const selection = {
+    jobIds: [], routes: [], priorities: [], brands: [], targetIds: [], limit: null,
+  };
   const flags = new Map([
     ['--job-id', 'jobIds'],
     ['--route', 'routes'],
     ['--priority', 'priorities'],
     ['--brand', 'brands'],
+    ['--target-id', 'targetIds'],
   ]);
   for (let index = 0; index < argv.length; index += 1) {
     const raw = argv[index];

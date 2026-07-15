@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 const SHA256 = /^[a-f0-9]{64}$/;
 const RFC3339_UTC = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/;
 const AUTHORITY_MODES = Object.freeze(['official', 'reference']);
-const LIFECYCLE_STATES = Object.freeze(['CURRENT_RETAIL', 'CATALOG_ARCHIVED']);
+const LIFECYCLE_STATES = Object.freeze(['CURRENT_RETAIL', 'CATALOG_ARCHIVED', 'REGISTRY_ONLY']);
 const CATEGORIES = Object.freeze(['fridge', 'dishwasher', 'dryer', 'washing_machine']);
 const REQUESTED_FIELDS = Object.freeze([
   'closedEnvelope.widthMm',
@@ -160,7 +160,12 @@ export function validateHistoricalEvidenceRecoveryPolicy(value) {
   }
   exactArray(value.requestedFields, REQUESTED_FIELDS, 'recovery policy requestedFields');
   exactArray(value.authorityModes, AUTHORITY_MODES, 'recovery policy authorityModes');
-  exactArray(value.lifecycleStates, LIFECYCLE_STATES, 'recovery policy lifecycleStates');
+  const lifecycleStates = strings(value.lifecycleStates, 'recovery policy lifecycleStates', { nonEmpty: true });
+  const legacyLifecycleStates = LIFECYCLE_STATES.slice(0, 2);
+  if (JSON.stringify(lifecycleStates) !== JSON.stringify(LIFECYCLE_STATES)
+    && JSON.stringify(lifecycleStates) !== JSON.stringify(legacyLifecycleStates)) {
+    throw new TypeError('recovery policy lifecycleStates unsupported');
+  }
 
   exactKeys(value.concurrency, 'recovery policy concurrency', ['network', 'perHost', 'mineru']);
   integer(value.concurrency.network, 'concurrency.network', 1);
@@ -175,8 +180,14 @@ export function validateHistoricalEvidenceRecoveryPolicy(value) {
   integer(value.retry.mineruAttempts, 'retry.mineruAttempts', 1);
   integer(value.retry.baseDelayMs, 'retry.baseDelayMs', 0);
 
-  exactKeys(value.limits, 'recovery policy limits', ['timeoutMs', 'maximumBytes', 'maximumRedirects']);
+  exactKeys(value.limits, 'recovery policy limits', [
+    'timeoutMs', 'resolverTimeoutMs', 'maximumBytes', 'maximumRedirects',
+  ]);
   integer(value.limits.timeoutMs, 'limits.timeoutMs', 1);
+  integer(value.limits.resolverTimeoutMs, 'limits.resolverTimeoutMs', 1);
+  if (value.limits.resolverTimeoutMs <= value.limits.timeoutMs) {
+    throw new TypeError('limits.resolverTimeoutMs must exceed limits.timeoutMs');
+  }
   integer(value.limits.maximumBytes, 'limits.maximumBytes', 1);
   integer(value.limits.maximumRedirects, 'limits.maximumRedirects', 0);
 
@@ -204,11 +215,14 @@ export function validateHistoricalEvidenceRecoveryPolicy(value) {
 }
 
 function validateSelection(value) {
-  exactKeys(value, 'batch selection', ['jobIds', 'routes', 'priorities', 'brands', 'limit']);
+  exactKeys(value, 'batch selection', [
+    'jobIds', 'routes', 'priorities', 'brands', 'targetIds', 'limit',
+  ]);
   strings(value.jobIds, 'selection.jobIds');
   for (const route of strings(value.routes, 'selection.routes')) oneOf(route, ROUTES, 'selection route');
   for (const priority of strings(value.priorities, 'selection.priorities')) oneOf(priority, PRIORITIES, 'selection priority');
   strings(value.brands, 'selection.brands');
+  strings(value.targetIds, 'selection.targetIds');
   if (value.limit !== null) integer(value.limit, 'selection.limit', 1);
 }
 
@@ -268,8 +282,12 @@ function validateTarget(value) {
   oneOf(value.category, CATEGORIES, 'target category');
   oneOf(value.lifecycleState, LIFECYCLE_STATES, 'target lifecycle');
   exactArray(value.requestedFields, REQUESTED_FIELDS, 'target requestedFields');
-  const candidates = strings(value.candidateJobIds, 'target candidateJobIds', { nonEmpty: true });
-  if (value.primaryJobId !== candidates[0]) throw new TypeError('target primaryJobId must be first candidate job');
+  const candidates = strings(value.candidateJobIds, 'target candidateJobIds');
+  if (candidates.length === 0) {
+    if (value.primaryJobId !== null) throw new TypeError('resolver-only target primaryJobId must be null');
+  } else if (value.primaryJobId !== candidates[0]) {
+    throw new TypeError('target primaryJobId must be first candidate job');
+  }
   if (value.publicationEligible !== false) throw new TypeError('new recovery target publicationEligible must be false');
   validateReconciliationContext(value.reconciliationContext);
 }
@@ -321,10 +339,24 @@ export function validateHistoricalEvidenceRecoveryBatch(value) {
       if (!target.candidateJobIds.includes(job.jobId)) throw new TypeError(`target candidate edge missing job ${job.jobId}`);
     }
   }
-  exactKeys(value.summary, 'batch summary', ['artifactJobs', 'targets', 'candidateEdges']);
+  exactKeys(
+    value.summary,
+    'batch summary',
+    ['artifactJobs', 'targets', 'candidateEdges'],
+    ['excludedPriorAcceptedTargets', 'excludedPriorCandidateJobs'],
+  );
   integer(value.summary.artifactJobs, 'summary.artifactJobs', 0);
   integer(value.summary.targets, 'summary.targets', 0);
   integer(value.summary.candidateEdges, 'summary.candidateEdges', 0);
+  const hasExcludedTargets = Object.hasOwn(value.summary, 'excludedPriorAcceptedTargets');
+  const hasExcludedJobs = Object.hasOwn(value.summary, 'excludedPriorCandidateJobs');
+  if (hasExcludedTargets !== hasExcludedJobs) {
+    throw new TypeError('batch summary prior-acceptance accounting fields must appear together');
+  }
+  if (hasExcludedTargets) {
+    integer(value.summary.excludedPriorAcceptedTargets, 'summary.excludedPriorAcceptedTargets', 0);
+    integer(value.summary.excludedPriorCandidateJobs, 'summary.excludedPriorCandidateJobs', 0);
+  }
   const edgeCount = value.artifactJobs.reduce((count, job) => count + job.targetIds.length, 0);
   if (value.summary.artifactJobs !== jobs.size || value.summary.targets !== targets.size
     || value.summary.candidateEdges !== edgeCount) {
@@ -336,7 +368,7 @@ export function validateHistoricalEvidenceRecoveryBatch(value) {
 function validateOutcome(value) {
   exactKeys(value, 'recovery outcome', [
     'targetId', 'status', 'failureCode', 'candidateInventorySha256', 'candidateInventory', 'sources',
-    'geometryProjection', 'semanticOutcomeSha256',
+    'geometryProjection', 'reconciliation', 'semanticOutcomeSha256',
   ]);
   text(value.targetId, 'outcome targetId');
   oneOf(value.status, OUTCOME_STATUSES, 'outcome status');
@@ -346,6 +378,7 @@ function validateOutcome(value) {
   if (!Array.isArray(value.sources)) throw new TypeError('outcome sources must be an array');
   for (const source of value.sources) object(source, 'outcome source');
   if (value.geometryProjection !== null) object(value.geometryProjection, 'outcome geometryProjection');
+  if (value.reconciliation !== null) validateReconciliationDecision(value.reconciliation);
   if (['accepted', 'receipt_accepted_non_scalar'].includes(value.status)) {
     if (value.failureCode !== null) throw new TypeError('accepted outcome failureCode must be null');
     if (value.candidateInventory === null) throw new TypeError('accepted outcome candidate inventory required');
@@ -353,9 +386,64 @@ function validateOutcome(value) {
     if (value.status === 'accepted' && value.geometryProjection === null) {
       throw new TypeError('accepted outcome geometry projection required');
     }
+    if (value.reconciliation === null) throw new TypeError('accepted outcome reconciliation required');
   } else {
     oneOf(value.failureCode, FAILURE_CODES, 'outcome failure code');
   }
+}
+
+function validateReconciliationDecision(value) {
+  exactKeys(value, 'reconciliation decision', [
+    'conflictingFields', 'conflictHints', 'missingFields', 'supersessionViolations',
+    'axisPermutationResolution', 'lowerAuthorityResolution', 'conflictReason',
+  ]);
+  const conflictingFields = strings(value.conflictingFields, 'reconciliation conflictingFields');
+  const missingFields = strings(value.missingFields, 'reconciliation missingFields');
+  for (const field of [...conflictingFields, ...missingFields]) {
+    oneOf(field, REQUESTED_FIELDS, 'reconciliation field');
+  }
+  if (!Array.isArray(value.conflictHints)) throw new TypeError('reconciliation conflictHints must be an array');
+  for (const hint of value.conflictHints) {
+    exactKeys(hint, 'reconciliation conflict hint', [
+      'sourceRole', 'sourceId', 'kind', 'fields', 'dimensionsMm',
+    ]);
+    text(hint.sourceRole, 'reconciliation conflict hint sourceRole');
+    text(hint.sourceId, 'reconciliation conflict hint sourceId');
+    oneOf(hint.kind, ['axis_permutation', 'lower_authority_disagreement'], 'reconciliation conflict hint kind');
+    const fields = strings(hint.fields, 'reconciliation conflict hint fields', { nonEmpty: true });
+    for (const field of fields) oneOf(field, ['widthMm', 'heightMm', 'depthMm'], 'reconciliation conflict hint field');
+    exactKeys(hint.dimensionsMm, 'reconciliation conflict hint dimensions', ['widthMm', 'heightMm', 'depthMm']);
+    for (const axis of ['widthMm', 'heightMm', 'depthMm']) {
+      integer(hint.dimensionsMm[axis], `reconciliation conflict hint dimensions.${axis}`, 1);
+    }
+  }
+  if (!Array.isArray(value.supersessionViolations)) {
+    throw new TypeError('reconciliation supersessionViolations must be an array');
+  }
+  for (const violation of value.supersessionViolations) {
+    exactKeys(violation, 'reconciliation supersession violation', ['reason'], ['sourceHash', 'priorHash']);
+    oneOf(violation.reason, ['cross_resource_supersession', 'supersession_cycle'], 'supersession violation reason');
+    if (violation.reason === 'cross_resource_supersession') {
+      sha256(violation.sourceHash, 'supersession source hash');
+      sha256(violation.priorHash, 'supersession prior hash');
+    }
+  }
+  if (value.axisPermutationResolution !== null) {
+    oneOf(value.axisPermutationResolution, ['independent_official_axis_corroboration'], 'axis permutation resolution');
+    if (!value.conflictHints.some((hint) => hint.kind === 'axis_permutation')) {
+      throw new TypeError('axis permutation resolution requires an axis conflict hint');
+    }
+  }
+  if (value.lowerAuthorityResolution !== null) {
+    oneOf(value.lowerAuthorityResolution, [
+      'independent_official_dimension_corroboration',
+      'official_market_api_dimension_corroboration',
+    ], 'lower authority resolution');
+    if (!value.conflictHints.some((hint) => hint.kind === 'lower_authority_disagreement')) {
+      throw new TypeError('lower authority resolution requires a disagreement hint');
+    }
+  }
+  if (value.conflictReason !== null) text(value.conflictReason, 'reconciliation conflictReason');
 }
 
 export function validateHistoricalEvidenceRecoveryResults(value) {
@@ -399,7 +487,7 @@ export function validateHistoricalEvidenceRecoveryAudit(value) {
     'schemaVersion', 'auditId', 'generatedAt', 'mode', 'status', 'batchId',
     'batchSha256', 'queueSha256', 'policySha256', 'resultsSha256', 'priorBundleSha256',
     'checkedTargets', 'checkedObjects', 'violations', 'semanticAuditSha256',
-  ]);
+  ], ['priorObjectsReplayed', 'repairs']);
   if (value.schemaVersion !== 1) throw new TypeError('recovery audit schemaVersion 1 required');
   text(value.auditId, 'auditId');
   timestamp(value.generatedAt, 'audit generatedAt');
@@ -413,6 +501,26 @@ export function validateHistoricalEvidenceRecoveryAudit(value) {
   if (value.priorBundleSha256 !== null) sha256(value.priorBundleSha256, 'audit prior bundle SHA');
   integer(value.checkedTargets, 'audit checkedTargets', 0);
   integer(value.checkedObjects, 'audit checkedObjects', 0);
+  if (value.priorObjectsReplayed != null && typeof value.priorObjectsReplayed !== 'boolean') {
+    throw new TypeError('audit priorObjectsReplayed must be boolean');
+  }
+  if (value.repairs != null) {
+    if (!Array.isArray(value.repairs)) throw new TypeError('audit repairs must be an array');
+    const repairedTargets = new Set();
+    for (const repair of value.repairs) {
+      exactKeys(repair, 'audit repair', [
+        'targetId', 'reason', 'priorEntrySha256', 'replacementOutcomeSha256',
+      ]);
+      const targetId = text(repair.targetId, 'audit repair targetId');
+      if (repairedTargets.has(targetId)) throw new TypeError(`duplicate audit repair target ${targetId}`);
+      repairedTargets.add(targetId);
+      oneOf(repair.reason, [
+        'receipt_rederived_from_identical_raw_artifact_with_verified_corroboration',
+      ], 'audit repair reason');
+      sha256(repair.priorEntrySha256, 'audit repair prior entry SHA');
+      sha256(repair.replacementOutcomeSha256, 'audit repair replacement outcome SHA');
+    }
+  }
   const violations = strings(value.violations, 'audit violations');
   if (value.status === 'passed' && violations.length > 0) throw new TypeError('passed audit cannot contain a violation');
   if (value.status === 'failed' && violations.length === 0) throw new TypeError('failed audit requires a violation');
@@ -425,7 +533,7 @@ function validateBundleEntry(value) {
     'targetId', 'referenceId', 'legacyRuntimeId', 'canonicalProductId', 'brand',
     'model', 'category', 'lifecycleState', 'acceptanceStatus', 'sourceBatchId',
     'auditSha256', 'sources', 'geometryProjection',
-  ]);
+  ], ['reconciliation']);
   text(value.targetId, 'bundle targetId');
   text(value.referenceId, 'bundle referenceId');
   text(value.legacyRuntimeId, 'bundle legacyRuntimeId');
@@ -451,6 +559,7 @@ function validateBundleEntry(value) {
     sourceHashes.add(source.contentSha256);
   }
   if (value.geometryProjection !== null) object(value.geometryProjection, 'bundle geometryProjection');
+  if (Object.hasOwn(value, 'reconciliation')) validateReconciliationDecision(value.reconciliation);
   if (value.acceptanceStatus === 'accepted' && value.geometryProjection === null) {
     throw new TypeError('accepted bundle geometry projection required');
   }
@@ -490,4 +599,28 @@ export function validateHistoricalEvidenceRecoveryAcceptanceBundle(value) {
     if (row.auditSha256 !== entry.auditSha256) throw new TypeError(`bundle entry audit binding mismatch: ${entry.targetId}`);
   }
   return value;
+}
+
+export function rollbackHistoricalEvidenceRecoveryBundleBatch(bundle, options = {}) {
+  validateHistoricalEvidenceRecoveryAcceptanceBundle(bundle);
+  const expectedSha256 = sha256(options.expectedBundleSha256, 'expected bundle SHA');
+  if (canonicalJsonSha256(bundle) !== expectedSha256) throw new Error('recovery bundle changed before rollback');
+  const batchId = text(options.batchId, 'rollback batch ID');
+  const lineageMatches = bundle.lineage.filter((row) => row.batchId === batchId);
+  if (lineageMatches.length !== 1) throw new Error(`rollback lineage must exist exactly once: ${batchId}`);
+  const removedEntries = bundle.entries.filter((entry) => entry.sourceBatchId === batchId);
+  if (removedEntries.length < 1) throw new Error(`rollback batch has no promoted entries: ${batchId}`);
+  const next = {
+    ...structuredClone(bundle),
+    entries: bundle.entries.filter((entry) => entry.sourceBatchId !== batchId),
+    lineage: bundle.lineage.filter((row) => row.batchId !== batchId),
+  };
+  validateHistoricalEvidenceRecoveryAcceptanceBundle(next);
+  return Object.freeze({
+    bundle: next,
+    removedBatchId: batchId,
+    removedEntries: removedEntries.length,
+    previousBundleSha256: expectedSha256,
+    nextBundleSha256: canonicalJsonSha256(next),
+  });
 }

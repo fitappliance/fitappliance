@@ -1,5 +1,6 @@
 import { canonicalJsonSha256, validateHistoricalEvidenceRecoveryBatch } from './historical-evidence-recovery-contract.mjs';
 import { buildLowerAuthorityHints } from './evidence-claim-reconciliation.mjs';
+import { expandOptionalOfficialEvidenceCandidates } from './evidence-candidate-inventory.mjs';
 
 function positiveInteger(value, label) {
   if (!Number.isInteger(value) || value < 1) throw new TypeError(`${label} must be a positive integer`);
@@ -90,7 +91,31 @@ export function recoveryOutcomeSemanticSha256(outcome) {
     candidateInventorySha256: outcome.candidateInventorySha256,
     sources: outcome.sources,
     geometryProjection: outcome.geometryProjection,
+    reconciliation: outcome.reconciliation,
   }));
+}
+
+function sortedStrings(values) {
+  return [...new Set((values ?? []).map((value) => String(value)))].sort();
+}
+
+function sortedRecords(values) {
+  return (values ?? [])
+    .map((value) => structuredClone(value))
+    .sort((left, right) => canonicalJsonSha256(left).localeCompare(canonicalJsonSha256(right)));
+}
+
+export function reconciliationDecisionSummary(reconciled) {
+  if (!reconciled || typeof reconciled !== 'object') return null;
+  return {
+    conflictingFields: sortedStrings(reconciled.conflictingFields),
+    conflictHints: sortedRecords(reconciled.conflictHints),
+    missingFields: sortedStrings(reconciled.missingFields),
+    supersessionViolations: sortedRecords(reconciled.supersessionViolations),
+    axisPermutationResolution: reconciled.axisPermutationResolution ?? null,
+    lowerAuthorityResolution: reconciled.lowerAuthorityResolution ?? null,
+    conflictReason: reconciled.conflictReason ?? null,
+  };
 }
 
 async function hydrateActiveReceiptSources(target, loadActiveReceiptSource) {
@@ -150,6 +175,18 @@ function artifactSummary(job, state) {
     failureCode: state.failureCode,
     contentSha256: state.artifact?.contentSha256 ?? null,
   };
+}
+
+function needsIndependentOfficialCorroboration(reconciled, inventory) {
+  if (reconciled?.status !== 'conflict_quarantined') return false;
+  const requiresCorroboration = (reconciled.conflictHints ?? [])
+    .some((hint) => ['axis_permutation', 'lower_authority_disagreement'].includes(hint.kind));
+  if (!requiresCorroboration) return false;
+  return (inventory?.candidates ?? []).some((candidate) => (
+    candidate.authorityMode === 'official'
+    && candidate.requiredAttempt === false
+    && candidate.outcome?.status === 'not_attempted_optional'
+  ));
 }
 
 function persistedArtifactRecord(artifact) {
@@ -226,6 +263,7 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
       .sort((left, right) => left.jobId.localeCompare(right.jobId));
     let inventory;
     let outcome;
+    let reconciled = null;
     try {
       const activeReceiptSources = await hydrateActiveReceiptSources(target, dependencies.loadActiveReceiptSource);
       const extraResolvers = typeof dependencies.candidateResolversForTarget === 'function'
@@ -234,13 +272,6 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
       if (!Array.isArray(extraResolvers)) throw new TypeError('candidateResolversForTarget must return an array');
       const resolverHost = String(target.brand ?? 'unknown')
         .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'unknown';
-      const networkBoundResolvers = extraResolvers.map((resolver) => ({
-        ...resolver,
-        resolve: (resolverCase) => networkSemaphore.run(
-          `https://${resolverHost}.resolver.fitappliance.invalid/`,
-          () => resolver.resolve(resolverCase),
-        ),
-      }));
       const caseRecord = {
         id: target.targetId,
         targetId: target.targetId,
@@ -248,6 +279,7 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
         model: target.model,
         category: target.category,
         sources: activeReceiptSources,
+        reconciliationContext: structuredClone(target.reconciliationContext),
       };
       const acquireAndAttest = async (candidate) => {
         let job = candidate.batchJobIds.map((jobId) => jobsById.get(jobId)).find(Boolean);
@@ -302,11 +334,15 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
       inventory = await collectCandidates(caseRecord, {
         batchCandidateJobIds: target.candidateJobIds,
         activeReceiptSources,
-        resolvers: [batchResolver(linkedJobs), ...networkBoundResolvers],
+        resolvers: [batchResolver(linkedJobs), ...extraResolvers],
+        scheduleResolver: (task) => networkSemaphore.run(
+          `https://${resolverHost}.resolver.fitappliance.invalid/`,
+          task,
+        ),
         acquireAndAttest,
         resolverTimeoutMs: dependencies.resolverTimeoutMs,
       });
-      const reconciled = await reconcileClaims({
+      reconciled = await reconcileClaims({
         brand: target.brand,
         model: target.model,
         category: target.category,
@@ -315,6 +351,18 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
         lowerAuthorityHints: buildLowerAuthorityHints(target),
         verifyInventoryHash: true,
       });
+      if (needsIndependentOfficialCorroboration(reconciled, inventory)) {
+        inventory = await expandOptionalOfficialEvidenceCandidates(inventory, { acquireAndAttest });
+        reconciled = await reconcileClaims({
+          brand: target.brand,
+          model: target.model,
+          category: target.category,
+        }, inventory, {
+          requestedFields: target.requestedFields,
+          lowerAuthorityHints: buildLowerAuthorityHints(target),
+          verifyInventoryHash: true,
+        });
+      }
       let geometryProjection = null;
       let status = reconciled.status;
       let failureCode = reconciled.failureCode;
@@ -346,6 +394,7 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
         candidateInventory: structuredClone(inventory),
         sources,
         geometryProjection,
+        reconciliation: reconciliationDecisionSummary(reconciled),
       };
     } catch (error) {
       const failure = errorRecord(error, 'claim_semantics');
@@ -360,6 +409,7 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
         candidateInventory: inventory ? structuredClone(inventory) : null,
         sources: [],
         geometryProjection: null,
+        reconciliation: reconciliationDecisionSummary(reconciled),
       };
     }
     outcome.semanticOutcomeSha256 = recoveryOutcomeSemanticSha256(outcome);

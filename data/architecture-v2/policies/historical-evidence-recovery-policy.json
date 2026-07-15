@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-13.1",
+  "policyVersion": "2026-07-14.1",
   "queueSchemaVersion": 2,
   "supportedReceiptSchemaVersions": [2, 3],
   "supportedClaimSemanticsVersions": [1, 2],
@@ -23,6 +23,7 @@
   },
   "limits": {
     "timeoutMs": 30000,
+    "resolverTimeoutMs": 120000,
     "maximumBytes": 20971520,
     "maximumRedirects": 5
   },

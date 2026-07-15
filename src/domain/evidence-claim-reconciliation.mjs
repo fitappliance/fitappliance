@@ -88,6 +88,16 @@ function failure(status, failureCode, inventory, extras = {}) {
   };
 }
 
+function strongestOfficialCandidateFailure(candidates) {
+  const codes = new Set((candidates ?? [])
+    .filter((candidate) => candidate.authorityMode === 'official')
+    .map((candidate) => candidate.outcome?.failureCode)
+    .filter(Boolean));
+  return [
+    'receipt', 'payload', 'mineru', 'claim_semantics', 'transport', 'source_authority',
+  ].find((code) => codes.has(code)) ?? 'source_authority';
+}
+
 function deduplicateSources(sources) {
   const byHash = new Map();
   for (const source of sources) {
@@ -198,8 +208,8 @@ function sourceAxisRepresentation(rows) {
   return matrixBound ? `axis_matrix:${firstOrder.join(',')}` : null;
 }
 
-function hasIndependentOfficialAxisCorroboration(matrix) {
-  if (!DEFAULT_FIELDS.every((field) => matrix.has(field))) return false;
+function completeOfficialDimensionSources(matrix) {
+  if (!DEFAULT_FIELDS.every((field) => matrix.has(field))) return [];
 
   const sourceRows = new Map();
   for (const field of DEFAULT_FIELDS) {
@@ -211,17 +221,22 @@ function hasIndependentOfficialAxisCorroboration(matrix) {
     }
   }
 
-  const completeSources = [...sourceRows.entries()].flatMap(([hash, rowsByField]) => {
+  return [...sourceRows.entries()].flatMap(([hash, rowsByField]) => {
     if (!DEFAULT_FIELDS.every((field) => rowsByField.has(field))) return [];
     const rows = DEFAULT_FIELDS.map((field) => rowsByField.get(field));
     const representation = sourceAxisRepresentation(rows);
     if (!representation) return [];
     return [{
       hash,
+      sourceType: rows[0].source.sourceType,
       representation,
       dimensions: DEFAULT_FIELDS.map((field) => rowsByField.get(field).value.mm),
     }];
   });
+}
+
+function hasIndependentOfficialAxisCorroboration(matrix) {
+  const completeSources = completeOfficialDimensionSources(matrix);
 
   for (let left = 0; left < completeSources.length; left += 1) {
     for (let right = left + 1; right < completeSources.length; right += 1) {
@@ -232,6 +247,34 @@ function hasIndependentOfficialAxisCorroboration(matrix) {
     }
   }
   return false;
+}
+
+function hasIndependentOfficialDimensionCorroboration(matrix) {
+  const completeSources = completeOfficialDimensionSources(matrix);
+  for (let left = 0; left < completeSources.length; left += 1) {
+    for (let right = left + 1; right < completeSources.length; right += 1) {
+      const a = completeSources[left];
+      const b = completeSources[right];
+      if (a.hash === b.hash || JSON.stringify(a.dimensions) !== JSON.stringify(b.dimensions)) continue;
+      if (a.sourceType !== b.sourceType || a.representation !== b.representation) return true;
+    }
+  }
+  return false;
+}
+
+function hasReceiptBoundMarketApiDimensionCorroboration(matrix) {
+  const official = scalarDimensions(matrix);
+  if (!['widthMm', 'heightMm', 'depthMm'].every((key) => Number.isFinite(official[key]))) return false;
+  const expected = `${official.widthMm}x${official.heightMm}x${official.depthMm}`;
+  const sources = new Map();
+  for (const rows of matrix.values()) {
+    for (const row of rows) sources.set(row.source.contentSha256, row.source);
+  }
+  return [...sources.values()].some((source) => (source.identitySignals ?? []).some((signal) => (
+    signal?.type === 'official_market_api_dimensions'
+      && String(signal.value).split(':').at(-2) === expected
+      && /^[a-f0-9]{64}$/.test(String(signal.value).split(':').at(-1) ?? '')
+  )));
 }
 
 export function reconcileEvidenceClaims(identity, inventory, options = {}) {
@@ -256,7 +299,11 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
   const exact = supplied.filter((source) => source.authority === 'manufacturer' && exactIdentity(source, identity));
   if (!exact.length) {
     const hadIdentityRejection = (inventory.candidates ?? []).some((candidate) => candidate.outcome?.status === 'identity_rejected');
-    return failure(hadIdentityRejection ? 'identity_rejected' : 'claims_incomplete', hadIdentityRejection ? 'identity' : 'source_authority', inventory);
+    return failure(
+      hadIdentityRejection ? 'identity_rejected' : 'claims_incomplete',
+      hadIdentityRejection ? 'identity' : strongestOfficialCandidateFailure(inventory.candidates),
+      inventory,
+    );
   }
 
   const verifyReceipt = options.verifyReceipt ?? verifyVerificationReceipt;
@@ -292,7 +339,13 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
   const conflictHints = analyzeHints(options.lowerAuthorityHints ?? [], matrix);
   const axisConflict = conflictHints.some((hint) => hint.kind === 'axis_permutation');
   const axisCorroborated = axisConflict && hasIndependentOfficialAxisCorroboration(matrix);
+  const lowerAuthorityConflict = conflictHints.some((hint) => hint.kind === 'lower_authority_disagreement');
+  const independentDimensionCorroboration = hasIndependentOfficialDimensionCorroboration(matrix);
+  const marketApiDimensionCorroboration = hasReceiptBoundMarketApiDimensionCorroboration(matrix);
+  const lowerAuthorityCorroborated = lowerAuthorityConflict
+    && (independentDimensionCorroboration || marketApiDimensionCorroboration);
   if (conflictingFields.length || (axisConflict && !axisCorroborated)
+    || (lowerAuthorityConflict && !lowerAuthorityCorroborated)
     || supersession.violations.some((entry) => entry.reason === 'supersession_cycle')) {
     return {
       status: 'conflict_quarantined',
@@ -326,6 +379,13 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
     supersessionViolations: supersession.violations,
     ...(axisCorroborated
       ? { axisPermutationResolution: 'independent_official_axis_corroboration' }
+      : {}),
+    ...(lowerAuthorityCorroborated
+      ? {
+        lowerAuthorityResolution: marketApiDimensionCorroboration
+          ? 'official_market_api_dimension_corroboration'
+          : 'independent_official_dimension_corroboration',
+      }
       : {}),
   };
 }

@@ -70,6 +70,19 @@ function normalizeDimensions(value, required) {
   return dimensions;
 }
 
+function hasAcceptedAdjustableHeightGeometry(value) {
+  const closed = value?.geometry?.closedEnvelope;
+  const height = closed?.heightMm;
+  return Number.isInteger(closed?.widthMm)
+    && closed.widthMm > 0
+    && Number.isInteger(closed?.depthMm)
+    && closed.depthMm > 0
+    && Number.isInteger(height?.minimumMm)
+    && height.minimumMm > 0
+    && Number.isInteger(height?.maximumMm)
+    && height.maximumMm > height.minimumMm;
+}
+
 function validSha256(value) {
   return /^[a-f0-9]{64}$/.test(String(value ?? '').trim().toLowerCase());
 }
@@ -202,7 +215,7 @@ function sourceReceipts(observations, catalogProducts, catalogSnapshotSha256, hi
         snapshotSha256: receipt.contentSha256,
         sourceLines: Object.values(receipt.fields)
           .map((field) => field.page)
-          .filter((page) => page !== null),
+          .filter((page) => Number.isInteger(page) && page > 0),
       });
     }
   }
@@ -234,18 +247,53 @@ function normalizeModelReceipt(receipt) {
   }
   const verifiedAt = requireString(receipt.verifiedAt, 'model receipt verifiedAt');
   if (Number.isNaN(Date.parse(verifiedAt))) throw new TypeError('model receipt verifiedAt must be an ISO timestamp');
+  const explicitContentType = String(receipt.contentType ?? '').trim().toLowerCase();
+  const contentType = explicitContentType || null;
+  if (contentType !== null && !['application/pdf', 'text/html'].includes(contentType)) {
+    throw new TypeError(`unsupported model receipt content type: ${contentType}`);
+  }
+  const objectPath = receipt.objectPath === undefined
+    ? null
+    : requireString(receipt.objectPath, 'model receipt objectPath');
+  if (objectPath !== null) {
+    const expectedPrefix = `evidence/web/sha256/${contentSha256.slice(0, 2)}/${contentSha256.slice(2, 4)}/${contentSha256}`;
+    if (!objectPath.startsWith(expectedPrefix) || objectPath.includes('..')) {
+      throw new TypeError('model receipt objectPath must be content-addressed');
+    }
+  }
   const fields = {};
   for (const [axis, locator] of Object.entries(receipt.fields ?? {})) {
     if (!AXES.includes(axis)) throw new TypeError(`unsupported model receipt axis: ${axis}`);
-    if (!validSha256(locator?.fragmentSha256)) throw new TypeError('model receipt fragment hash required');
-    const page = locator.page === null ? null : Number(locator.page);
-    if (page !== null && (!Number.isInteger(page) || page < 1)) {
-      throw new TypeError('model receipt page must be a positive integer or null');
+    const locatorKind = String(locator?.locatorKind ?? (
+      validSha256(locator?.fragmentSha256) ? 'PDF_FRAGMENT' : ''
+    ));
+    if (locatorKind === 'PDF_FRAGMENT') {
+      if (contentType === 'text/html') throw new TypeError('HTML model receipt cannot use PDF fragment locator');
+      if (!validSha256(locator?.fragmentSha256)) throw new TypeError('PDF model receipt fragment hash required');
+      const page = Number(locator.page);
+      if (!Number.isInteger(page) || page < 1) {
+        throw new TypeError('PDF model receipt page must be a positive integer');
+      }
+      fields[axis] = {
+        locatorKind,
+        page,
+        fragmentSha256: String(locator.fragmentSha256).toLowerCase(),
+      };
+      continue;
     }
-    fields[axis] = { page, fragmentSha256: String(locator.fragmentSha256).toLowerCase() };
+    if (locatorKind === 'HTML_ARTIFACT') {
+      if (contentType !== 'text/html') throw new TypeError('HTML artifact locator requires text/html content type');
+      if (objectPath === null) throw new TypeError('HTML model receipt objectPath required');
+      if (String(locator?.artifactSha256 ?? '').toLowerCase() !== contentSha256) {
+        throw new TypeError('HTML model receipt artifact hash must match source content');
+      }
+      fields[axis] = { locatorKind, artifactSha256: contentSha256 };
+      continue;
+    }
+    throw new TypeError(`unsupported model receipt locator kind: ${locatorKind || 'missing'}`);
   }
   if (Object.keys(fields).length === 0) throw new TypeError('model receipt must bind at least one axis');
-  return {
+  const normalized = {
     targetId: requireString(receipt.targetId, 'model receipt targetId'),
     sourceUrl,
     contentSha256,
@@ -253,6 +301,9 @@ function normalizeModelReceipt(receipt) {
     verifiedAt: new Date(verifiedAt).toISOString(),
     fields,
   };
+  if (contentType !== null) normalized.contentType = contentType;
+  if (objectPath !== null) normalized.objectPath = objectPath;
+  return normalized;
 }
 
 function normalizeHistoricalEvidenceProjection(projection) {
@@ -270,7 +321,7 @@ function normalizeHistoricalEvidenceProjection(projection) {
     const brand = requireString(record.brand, 'historical evidence brand');
     const model = requireString(record.model, 'historical evidence model');
     const lifecycleState = requireString(record.lifecycleState, 'historical evidence lifecycle');
-    if (!['CURRENT_RETAIL', 'CATALOG_ARCHIVED'].includes(lifecycleState)) {
+    if (!['CURRENT_RETAIL', 'CATALOG_ARCHIVED', 'REGISTRY_ONLY'].includes(lifecycleState)) {
       throw new TypeError(`unsupported historical evidence lifecycle: ${lifecycleState}`);
     }
     const referenceId = requireString(record.referenceId, 'historical evidence referenceId');
@@ -286,8 +337,16 @@ function normalizeHistoricalEvidenceProjection(projection) {
     const dimensionsMm = record.dimensionsMm === null
       ? null
       : normalizeDimensions(record.dimensionsMm, true);
-    if ((record.acceptanceStatus === 'accepted') !== (dimensionsMm !== null)) {
+    if (!['accepted', 'receipt_accepted_non_scalar'].includes(record.acceptanceStatus)) {
+      throw new TypeError(`unsupported historical evidence acceptance status: ${record.acceptanceStatus}`);
+    }
+    if (dimensionsMm !== null && record.acceptanceStatus !== 'accepted') {
       throw new TypeError('historical evidence scalar acceptance status mismatch');
+    }
+    if (record.acceptanceStatus === 'accepted'
+      && dimensionsMm === null
+      && !hasAcceptedAdjustableHeightGeometry(record.geometryProjection)) {
+      throw new TypeError('accepted non-scalar historical evidence requires adjustable-height geometry');
     }
     const modelReceipts = (record.modelReceipts ?? []).map(normalizeModelReceipt);
     if (modelReceipts.length === 0) throw new TypeError('historical evidence model receipt required');

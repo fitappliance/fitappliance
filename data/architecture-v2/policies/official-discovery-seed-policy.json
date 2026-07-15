@@ -1,16 +1,52 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-13.2",
+  "policyVersion": "2026-07-15.1",
+  "supportedReceiptPolicyVersions": [
+    "2026-07-13.2",
+    "2026-07-14.1",
+    "2026-07-14.2",
+    "2026-07-15.1"
+  ],
   "market": "AU",
   "brandGlobalArtifactHosts": {
+    "asko": [
+      "static18.asko.com",
+      "partners.gorenje.com",
+      "atag.hgecdn.net"
+    ],
     "fisherpaykel": [
-      "fisherpaykel.my.salesforce.com"
+      "fisherpaykel.my.salesforce.com",
+      "content.fisherpaykel.com"
     ],
     "lg": [
       "gscs-b2c.lge.com"
+    ],
+    "esatto": [
+      "static1.squarespace.com"
     ]
   },
   "brandApiEndpoints": {
+    "asko": [
+      {
+        "hostname": "api-storefront.asko.com",
+        "pathname": "/ggcommercewebservices/v2/asko-au/products/manuals/search",
+        "requiredQuery": {
+          "lang": "en_AU",
+          "curr": "AUD"
+        },
+        "requiresBoundResponse": true
+      },
+      {
+        "hostname": "api-storefront.asko.com",
+        "pathnamePattern": "^/ggcommercewebservices/v2/asko-au/products/[0-9]{18}$",
+        "requiredQuery": {
+          "fields": "FULL",
+          "lang": "en_AU",
+          "curr": "AUD"
+        },
+        "requiresBoundResponse": true
+      }
+    ],
     "lg": [
       {
         "hostname": "www.lg.com",
@@ -18,6 +54,18 @@
         "requiredQuery": {
           "locale": "AU"
         }
+      }
+    ]
+  },
+  "brandSupportApiEndpoints": {
+    "fisherpaykel": [
+      {
+        "hostname": "mf-support.mfe.fisherpaykel.com",
+        "pathnamePattern": "^/(au|nz)/api/support/products/[^/]+/?$",
+        "sourceMarkets": [
+          "AU",
+          "NZ"
+        ]
       }
     ]
   }

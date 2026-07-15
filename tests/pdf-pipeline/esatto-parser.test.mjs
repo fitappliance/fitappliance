@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { createHash } from 'node:crypto';
 
 import { createRequire } from 'node:module';
 
@@ -7,6 +8,7 @@ const require = createRequire(import.meta.url);
 const { parseEsattoText } = require('../../scripts/pdf-pipeline/parsers/esatto');
 const {
   extractEsattoDownloadLinks,
+  findEsattoOfficialPdf,
   urlMatchesTargetSku
 } = require('../../scripts/pdf-pipeline/esatto-official');
 
@@ -30,6 +32,42 @@ test('Esatto official finder prefers user manual links over product cards', () =
 
   assert.equal(links[0].resourceType, 'user_manual');
   assert.equal(links[0].url, 'https://esatto.house/s/EFLW500_EFLW600_EFLW800_UserManual.pdf');
+});
+
+test('Esatto finder persists exact product-page discovery evidence for CDN redirects', async () => {
+  const productUrl = 'https://esatto.house/discontinued-products/p/207l-top-mount-refrigerator-stainless-steel-etm207x';
+  const artifactUrl = 'https://esatto.house/s/Esatto_UserManual_ETM207-239-268_0518.pdf';
+  const productHtml = `<html><head><title>ETM207X refrigerator</title></head><body>
+    <h1>ETM207X</h1><a href="${artifactUrl}">User Manual</a></body></html>`;
+  const writes = [];
+  const result = await findEsattoOfficialPdf({ model: 'ETM207X' }, {
+    fetchImpl: async (url) => ({
+      ok: true,
+      status: 200,
+      text: async () => String(url).endsWith('/sitemap.xml')
+        ? `<urlset><url><loc>${productUrl}</loc></url></urlset>`
+        : productHtml,
+    }),
+    writeObject: async (path, bytes) => writes.push([path, Buffer.from(bytes)]),
+  });
+  const hash = createHash('sha256').update(productHtml).digest('hex');
+  assert.equal(result.sourceUrl, artifactUrl);
+  assert.deepEqual(result.discoveryProvenance, {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: productUrl,
+    requestedModel: 'ETM207X',
+    matchedModel: 'ETM207X',
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: hash,
+    discoveryObjectPath: `evidence/web/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.html`,
+    discoveryByteSize: Buffer.byteLength(productHtml),
+  });
+  assert.equal(writes.length, 1);
+  assert.equal(writes[0][0], result.discoveryProvenance.discoveryObjectPath);
+  assert.equal(writes[0][1].toString('utf8'), productHtml);
 });
 
 test('Esatto parser extracts fridge dimensions and clearances from user manual text', () => {

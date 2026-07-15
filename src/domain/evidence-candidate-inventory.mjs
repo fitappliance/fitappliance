@@ -62,7 +62,16 @@ function normalizeResolverResult(result, descriptor) {
   if (resolverId !== descriptor.resolverId && descriptor.resolverId) {
     throw new TypeError(`${resolverId} resolver ID does not match declared descriptor`);
   }
+  if (descriptor.version && version !== descriptor.version) {
+    throw new TypeError(`${resolverId} resolver version does not match declared descriptor`);
+  }
+  if (descriptor.scope && scope !== descriptor.scope) {
+    throw new TypeError(`${resolverId} resolver scope does not match declared descriptor`);
+  }
   if (typeof result.required !== 'boolean') throw new TypeError(`${resolverId} resolver required flag invalid`);
+  if (result.required !== descriptor.required) {
+    throw new TypeError(`${resolverId} resolver required flag does not match declared descriptor`);
+  }
   const completion = String(result.completion ?? 'unknown');
   if (!COMPLETION_STATES.has(completion)) {
     return { resolverId, version, scope, required: result.required, completion: 'unknown', candidates: [] };
@@ -223,6 +232,40 @@ export function computeCandidateInventorySha256(inventory) {
   return canonicalJsonSha256(inventorySemanticView(inventory));
 }
 
+export async function expandOptionalOfficialEvidenceCandidates(inventory, options = {}) {
+  if (!inventory || typeof inventory !== 'object' || Array.isArray(inventory)) {
+    throw new TypeError('candidate inventory required');
+  }
+  if (computeCandidateInventorySha256(inventory) !== inventory.candidateInventorySha256) {
+    throw new Error('candidate inventory SHA-256 binding mismatch');
+  }
+  if (typeof options.acquireAndAttest !== 'function') {
+    throw new TypeError('candidate acquisition and attestation function required');
+  }
+
+  const expanded = structuredClone(inventory);
+  for (const candidate of expanded.candidates) {
+    if (candidate.authorityMode !== 'official'
+      || candidate.requiredAttempt
+      || candidate.outcome?.status !== 'not_attempted_optional') continue;
+    try {
+      const acquired = await options.acquireAndAttest(structuredClone(candidate));
+      if (!acquired?.source) {
+        throw Object.assign(new Error('candidate returned no supported evidence source'), { code: 'claim_semantics' });
+      }
+      candidate.outcome = {
+        status: acquired.unchanged ? 'unchanged' : 'accepted',
+        failureCode: null,
+        source: structuredClone(acquired.source),
+      };
+    } catch (error) {
+      candidate.outcome = { ...classifyAcquisitionFailure(error), source: null };
+    }
+  }
+  expanded.candidateInventorySha256 = computeCandidateInventorySha256(expanded);
+  return expanded;
+}
+
 export async function collectEvidenceCandidates(caseRecord, options = {}) {
   if (!caseRecord || typeof caseRecord !== 'object') throw new TypeError('evidence target required');
   if (typeof options.acquireAndAttest !== 'function') throw new TypeError('candidate acquisition and attestation function required');
@@ -232,11 +275,11 @@ export async function collectEvidenceCandidates(caseRecord, options = {}) {
   if (!Array.isArray(activeReceiptSources)) throw new TypeError('active receipt sources must be an array');
 
   const descriptors = options.resolvers.map(resolverDescriptor);
-  const resolved = await Promise.all(descriptors.map((descriptor, index) => runResolver(
-    descriptor,
-    caseRecord,
-    options.resolverTimeoutMs ?? 30_000,
-    index,
+  const scheduleResolver = options.scheduleResolver ?? ((task) => task());
+  if (typeof scheduleResolver !== 'function') throw new TypeError('resolver scheduler must be a function');
+  const resolved = await Promise.all(descriptors.map((descriptor, index) => scheduleResolver(
+    () => runResolver(descriptor, caseRecord, options.resolverTimeoutMs ?? 30_000, index),
+    { resolverId: descriptor.resolverId, index },
   )));
   const resolverResults = resolved.sort((left, right) => left.resolverId.localeCompare(right.resolverId));
   if (new Set(resolverResults.map((resolver) => resolver.resolverId)).size !== resolverResults.length) {

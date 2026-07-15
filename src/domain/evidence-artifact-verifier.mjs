@@ -10,8 +10,27 @@ import {
   validateClaimsSemantics,
 } from './evidence-claim-semantics.mjs';
 import { validateDimensionEvidenceClaimsV2 } from './dimension-evidence-claim.mjs';
-import { createVerificationReceipt, verifyVerificationReceipt } from './evidence-source-verifier.mjs';
-import { parseMineruContentListV2 } from './mineru-document.mjs';
+import {
+  createVerificationReceipt,
+  currentMineruEvidenceProfile,
+  verificationReceiptDiscoveryPolicyVersion,
+  verificationReceiptManufacturerPolicyVersion,
+  verifyVerificationReceipt,
+} from './evidence-source-verifier.mjs';
+import {
+  extractMineruIdentitySignals,
+  findMineruImageOnlyDimensionPages,
+  inspectMineruContentListV2,
+  parseMineruContentListV2,
+} from './mineru-document.mjs';
+import { verifyOfficialProductPageDiscoveryEvidence } from './official-product-page-discovery-evidence.mjs';
+import {
+  officialMarketApiBoundExactCoverModel,
+  officialMarketApiBoundFamilyModel,
+  officialMarketApiBoundSeriesModel,
+  officialMarketApiDimensions,
+  verifyOfficialMarketApiDiscoveryEvidence,
+} from './official-market-api-discovery-evidence.mjs';
 
 function normalizedText(value) {
   return String(value ?? '').replace(/\s+/g, ' ').trim();
@@ -29,11 +48,19 @@ function identifier(value) {
   return normalizedText(value).toUpperCase().replace(/[^A-Z0-9]+/g, '');
 }
 
+function modelWithNumericProductId(value, model) {
+  const parts = normalizedText(model).toUpperCase().split(/[^A-Z0-9]+/).filter(Boolean);
+  if (!parts.length) return false;
+  const escaped = parts.map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+    .join('[-_/.\\s]*');
+  return new RegExp(`(?:^|[^A-Z0-9])${escaped}[-_]\\d{4,10}$`, 'i').test(value);
+}
+
 function urlHasExactModelSegment(value, model, base = undefined) {
   try {
     return new URL(value, base).pathname.split('/').filter(Boolean).some((segment) => {
       const decoded = decodeURIComponent(segment).replace(/\.(?:pdf|html?)$/i, '');
-      return containsExactModel(decoded, model);
+      return containsExactModel(decoded, model) || modelWithNumericProductId(decoded, model);
     });
   } catch {
     return false;
@@ -168,13 +195,38 @@ function canonicalize(value) {
   return value;
 }
 
-function pdfIdentitySignals(source, caseIdentity, derivedArtifactBytes, claimSemanticsVersion = 1) {
+function pdfIdentitySignals(
+  source,
+  caseIdentity,
+  derivedArtifactBytes,
+  claimSemanticsVersion = 1,
+  fallbackTriggerArtifactBytes = null,
+  discoveryArtifactBytes = null,
+) {
   if (!derivedArtifactBytes) throw new TypeError('MinerU JSON derived artifact required for PDF evidence');
   const derived = source?.derivedArtifact;
-  if (!derived || derived.schemaVersion !== 1 || derived.format !== 'content_list_v2'
-    || derived.parserName !== 'MinerU' || derived.backend !== 'pipeline'
-    || derived.method !== 'auto' || derived.tableEnabled !== true || derived.formulaEnabled !== false) {
+  try {
+    currentMineruEvidenceProfile(derived);
+  } catch {
     throw new TypeError('valid MinerU JSON derived artifact metadata required');
+  }
+  let fallbackIdentitySignals = [];
+  if (derived.fallbackTrigger) {
+    if (!fallbackTriggerArtifactBytes) throw new TypeError('MinerU fallback trigger artifact required');
+    const triggerBytes = Buffer.from(fallbackTriggerArtifactBytes);
+    const triggerHash = createHash('sha256').update(triggerBytes).digest('hex');
+    if (triggerHash !== derived.fallbackTrigger.contentSha256) {
+      throw new Error('MinerU fallback trigger artifact hash mismatch');
+    }
+    const detectedPages = [...findMineruImageOnlyDimensionPages(triggerBytes)];
+    if (JSON.stringify(detectedPages) !== JSON.stringify(derived.fallbackTrigger.pages)) {
+      throw new Error('MinerU fallback trigger pages do not replay');
+    }
+    const triggerInspection = inspectMineruContentListV2(triggerBytes);
+    if (derived.sourcePageCount != null && triggerInspection.pageCount !== derived.sourcePageCount) {
+      throw new Error('MinerU fallback trigger source page count mismatch');
+    }
+    fallbackIdentitySignals = [...extractMineruIdentitySignals(triggerBytes, caseIdentity.model)];
   }
   const bytes = Buffer.from(derivedArtifactBytes);
   const hash = createHash('sha256').update(bytes).digest('hex');
@@ -186,6 +238,25 @@ function pdfIdentitySignals(source, caseIdentity, derivedArtifactBytes, claimSem
     || !derived.objectPath.endsWith(`/${hash}.json`)) {
     throw new TypeError('content-addressed MinerU JSON object path required');
   }
+  const boundFamilyModel = officialMarketApiBoundFamilyModel(
+    source?.discoveryProvenance,
+    caseIdentity,
+    discoveryArtifactBytes,
+    bytes,
+  );
+  const boundSeriesModel = officialMarketApiBoundSeriesModel(
+    source?.discoveryProvenance,
+    caseIdentity,
+    discoveryArtifactBytes,
+    bytes,
+  );
+  const boundExactCoverModel = officialMarketApiBoundExactCoverModel(
+    source?.discoveryProvenance,
+    caseIdentity,
+    discoveryArtifactBytes,
+    bytes,
+  );
+  const selectedBoundFamilyModel = boundExactCoverModel || boundSeriesModel ? null : boundFamilyModel;
   const parsed = parseMineruContentListV2(bytes, {
     pdfSha256: source.contentSha256,
     parserVersion: derived.parserVersion,
@@ -194,16 +265,72 @@ function pdfIdentitySignals(source, caseIdentity, derivedArtifactBytes, claimSem
     claimSemanticsVersion,
     fields: (source.claims ?? []).map((claim) => claim.field),
     sourceUrls: [source.sourceUrl, source.finalUrl].filter(Boolean),
+    ...(selectedBoundFamilyModel ? { boundFamilyModel: selectedBoundFamilyModel } : {}),
+    ...(boundSeriesModel ? { boundSeriesModel } : {}),
+    ...(boundExactCoverModel ? { boundExactCoverModel } : {}),
+    ...(derived.fallbackTrigger ? {
+      identityContextJsonBytes: fallbackTriggerArtifactBytes,
+      identityContextContentSha256: derived.fallbackTrigger.contentSha256,
+    } : {}),
   });
+  if (boundSeriesModel || boundExactCoverModel) {
+    const payload = JSON.parse(Buffer.from(discoveryArtifactBytes).toString('utf8'));
+    const pim = officialMarketApiDimensions(payload, caseIdentity);
+    const fields = new Map(parsed.claims.map((claim) => [claim.field, claim.value]));
+    const expected = new Map([
+      ['closedEnvelope.widthMm', pim.widthMm],
+      ['closedEnvelope.heightMm', pim.heightMm],
+      ['closedEnvelope.depthMm', pim.depthMm],
+    ]);
+    for (const [field, mm] of expected) {
+      const value = fields.get(field);
+      const matches = value?.kind === 'fixed'
+        ? value.mm === mm
+        : value?.kind === 'range' && (value.minMm === mm || value.maxMm === mm);
+      if (!matches) {
+        throw new Error('API-bound manual claims do not match exact PIM dimensions');
+      }
+    }
+  }
   if (parsed.pageCount !== derived.pageCount) throw new Error('MinerU JSON page count mismatch');
   if (JSON.stringify(canonicalize(parsed.claims)) !== JSON.stringify(canonicalize(source.claims))) {
     throw new Error('source claims do not match replayed MinerU JSON claims');
   }
-  const signals = [...parsed.identitySignals];
+  const signals = [...new Map([
+    ...parsed.identitySignals,
+    ...fallbackIdentitySignals,
+  ].map((signal) => [`${signal.type}\0${signal.value}`, signal])).values()];
   const exactModelUrl = [...new Set([source.sourceUrl, source.finalUrl])]
     .find((value) => containsExactModelDocumentUrl(value, caseIdentity.model));
   if (exactModelUrl) signals.push({ type: 'pdf_source_url_model', value: exactModelUrl });
   return { signals, text: parsed.documentText };
+}
+
+function officialProductPageIdentitySignal(source, caseIdentity, discoveryArtifactBytes) {
+  const provenance = source?.discoveryProvenance;
+  if (provenance?.method !== 'official_product_page') return null;
+  verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdentity, discoveryArtifactBytes);
+  return {
+    type: 'official_product_page_model',
+    value: `${caseIdentity.model}:${provenance.discoveryContentSha256}:${provenance.discoveryUrl}`,
+  };
+}
+
+function officialMarketApiIdentitySignals(source, caseIdentity, discoveryArtifactBytes) {
+  const provenance = source?.discoveryProvenance;
+  if (provenance?.method !== 'official_market_api' || !provenance.discoveryContentSha256) return [];
+  verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentity, discoveryArtifactBytes);
+  const signals = [{
+    type: 'official_market_api_model',
+    value: `${caseIdentity.model}:${provenance.discoveryContentSha256}:${provenance.discoveryUrl}`,
+  }];
+  const payload = JSON.parse(Buffer.from(discoveryArtifactBytes).toString('utf8'));
+  const dimensions = officialMarketApiDimensions(payload, caseIdentity);
+  if (dimensions) signals.push({
+    type: 'official_market_api_dimensions',
+    value: `${caseIdentity.model}:${dimensions.widthMm}x${dimensions.heightMm}x${dimensions.depthMm}:${provenance.discoveryContentSha256}`,
+  });
+  return signals;
 }
 
 function verifyQuotes(source, text) {
@@ -311,7 +438,13 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
   });
   const claims = [];
   for (const field of fields) {
-    const preferred = structuredCandidates.get(field).length ? structuredCandidates.get(field) : candidates.get(field);
+    let preferred = structuredCandidates.get(field).length ? structuredCandidates.get(field) : candidates.get(field);
+    if (field === 'closedEnvelope.depthMm') {
+      const explicitlyClosed = preferred.filter((claim) => (
+        /\bdoors?\s+closed\b|\bclosed\s+doors?\b/i.test(claim.label ?? '')
+      ));
+      if (explicitlyClosed.length) preferred = explicitlyClosed;
+    }
     const unique = new Map(preferred.map((claim) => [`${JSON.stringify(claim.value)}\0${claim.quote}`, claim]));
     const values = new Set([...unique.values()].map((claim) => JSON.stringify(claim.value)));
     if (values.size > 1) throw new Error(`ambiguous extracted values for ${field}`);
@@ -321,15 +454,44 @@ export function extractClaimsFromHtml(bytes, { category, fields }) {
 }
 
 export function verifyAndAttestResolutionArtifact({
-  source, caseIdentity, bytes, derivedArtifactBytes = null, discoveryArtifactBytes = null, verifiedAt,
-  claimSemanticsVersion = 1,
+  source, caseIdentity, bytes, derivedArtifactBytes = null, fallbackTriggerArtifactBytes = null,
+  discoveryArtifactBytes = null, verifiedAt,
+  claimSemanticsVersion = 1, discoveryPolicyVersion = undefined,
+  manufacturerPolicyVersion = undefined,
+  includeOfficialProductPageIdentitySignal = true,
+  includeOfficialMarketApiIdentitySignal = true,
 }) {
   const buffer = verifyBytes(source, bytes);
   let identityProof;
   if (source.contentType === 'text/html') {
     identityProof = htmlIdentitySignals(source, caseIdentity, buffer);
   } else if (source.contentType === 'application/pdf') {
-    identityProof = pdfIdentitySignals(source, caseIdentity, derivedArtifactBytes, claimSemanticsVersion);
+    identityProof = pdfIdentitySignals(
+      source,
+      caseIdentity,
+      derivedArtifactBytes,
+      claimSemanticsVersion,
+      fallbackTriggerArtifactBytes,
+      discoveryArtifactBytes,
+    );
+    const discoverySignal = includeOfficialProductPageIdentitySignal
+      ? officialProductPageIdentitySignal(source, caseIdentity, discoveryArtifactBytes)
+      : null;
+    if (discoverySignal) {
+      identityProof = {
+        ...identityProof,
+        signals: [...identityProof.signals, discoverySignal],
+      };
+    }
+    const marketApiSignals = includeOfficialMarketApiIdentitySignal
+      ? officialMarketApiIdentitySignals(source, caseIdentity, discoveryArtifactBytes)
+      : [];
+    if (marketApiSignals.length) {
+      identityProof = {
+        ...identityProof,
+        signals: [...identityProof.signals, ...marketApiSignals],
+      };
+    }
   } else {
     throw new TypeError('unsupported artifact content type');
   }
@@ -348,28 +510,41 @@ export function verifyAndAttestResolutionArtifact({
     verifiedAt,
     claimSemanticsVersion,
     discoveryArtifactBytes,
+    discoveryPolicyVersion,
+    manufacturerPolicyVersion,
   });
   return attested;
 }
 
 export function verifyAttestedResolutionArtifact({
-  source, caseIdentity, bytes, derivedArtifactBytes = null, discoveryArtifactBytes = null,
+  source, caseIdentity, bytes, derivedArtifactBytes = null, fallbackTriggerArtifactBytes = null,
+  discoveryArtifactBytes = null,
 }) {
   const claimSemanticsVersion = source?.verificationReceipt?.claimSemanticsVersion ?? 1;
+  verifyVerificationReceipt(source, caseIdentity, {
+    asOf: source.verificationReceipt.verifiedAt,
+    discoveryArtifactBytes,
+  });
+  const discoveryPolicyVersion = verificationReceiptDiscoveryPolicyVersion(source, caseIdentity);
+  const manufacturerPolicyVersion = verificationReceiptManufacturerPolicyVersion(source);
   const rebuilt = verifyAndAttestResolutionArtifact({
     source: { ...source, verificationReceipt: undefined },
     caseIdentity,
     bytes,
     derivedArtifactBytes,
+    fallbackTriggerArtifactBytes,
     discoveryArtifactBytes,
     verifiedAt: source?.verificationReceipt?.verifiedAt,
     claimSemanticsVersion,
+    discoveryPolicyVersion: discoveryPolicyVersion ?? undefined,
+    manufacturerPolicyVersion,
+    includeOfficialProductPageIdentitySignal: (source.identitySignals ?? [])
+      .some((signal) => signal?.type === 'official_product_page_model'),
+    includeOfficialMarketApiIdentitySignal: (source.identitySignals ?? [])
+      .some((signal) => signal?.type === 'official_market_api_model'),
   });
   if (rebuilt.verificationReceipt.bindingSha256 !== source?.verificationReceipt?.bindingSha256) {
     throw new Error('artifact attestation receipt mismatch');
   }
-  return verifyVerificationReceipt(source, caseIdentity, {
-    asOf: source.verificationReceipt.verifiedAt,
-    discoveryArtifactBytes,
-  });
+  return true;
 }

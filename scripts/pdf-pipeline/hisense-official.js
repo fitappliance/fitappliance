@@ -1,5 +1,6 @@
 const OCC_BASE_URL = 'https://dtc-aus-api.hisense.com/occ/v2/au';
 const ASSET_BASE_URL = 'https://dtc-aus-api.hisense.com';
+const SITE_BASE_URL = 'https://hisense.com.au';
 const DEFAULT_FIELDS = 'FULL';
 
 function normalizeSku(value, { keepWildcard = false } = {}) {
@@ -139,7 +140,8 @@ function productToResult(product, target, sourceSuffix = 'specification_doc') {
     resourceType: resource.type || sourceSuffix,
     productCode: product.code || '',
     productName: product.name || '',
-    documentName: resource.name || ''
+    documentName: resource.name || '',
+    ...(product.url ? { productPageUrl: new URL(product.url, SITE_BASE_URL).toString() } : {})
   };
 }
 

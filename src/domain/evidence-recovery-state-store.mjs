@@ -200,6 +200,7 @@ export function createEvidenceRecoveryStateStore(options) {
   const paths = Object.freeze({
     runDirectory,
     batch: join(runDirectory, 'batch.json'),
+    results: join(runDirectory, 'results.json'),
     state: join(runDirectory, 'state.json'),
     lock: join(runDirectory, 'lock.json'),
     events: join(runDirectory, 'events.ndjson'),

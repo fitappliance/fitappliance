@@ -55,7 +55,7 @@ function batch() {
     generatedAt: '2026-07-13T00:00:00.000Z',
     queue: { schemaVersion: 2, sha256: SHA_A },
     policy: { version: '2026-07-13.1', sha256: SHA_B },
-    selection: { jobIds: [], routes: [], priorities: [], brands: [], limit: null },
+    selection: { jobIds: [], targetIds: [], routes: [], priorities: [], brands: [], limit: null },
     artifactJobs: jobs,
     targets,
     summary: { artifactJobs: 2, targets: 2, candidateEdges: 2 },
@@ -95,6 +95,10 @@ function acceptedOutcome(targetId) {
     candidateInventory: {},
     sources: [{ contentSha256: 'e'.repeat(64) }],
     geometryProjection: { evidenceLevel: 'dimensions' },
+    reconciliation: {
+      conflictingFields: [], conflictHints: [], missingFields: [], supersessionViolations: [],
+      axisPermutationResolution: null, lowerAuthorityResolution: null, conflictReason: null,
+    },
     semanticOutcomeSha256: 'f'.repeat(64),
   };
 }

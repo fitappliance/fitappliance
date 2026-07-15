@@ -1,13 +1,24 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-12.1",
+  "policyVersion": "2026-07-15.1",
+  "supportedReceiptPolicyVersions": [
+    "2026-07-12.1",
+    "2026-07-14.1",
+    "2026-07-15.1"
+  ],
   "maxEvidenceAgeDays": 400,
+  "marketQualifiedHosts": {
+    "esatto": ["esatto.house"],
+    "hisense": ["dtc-aus-api.hisense.com"]
+  },
   "marketPathPatterns": {
+    "asko": ["^/(?:p/|products/|manuals(?:/|$)|ggcommercewebservices/v2/asko-au/)"],
     "lg": ["^/au(?:/|$)", "^/content/dam/channel/wcms/au(?:/|$)"],
     "samsung": ["^/au(?:/|$)", "[?&]CDSite=UNI_AU(?:&|$)"]
   },
   "brands": {
     "artusi": ["artusi.com.au"],
+    "asko": ["asko.com"],
     "beko": ["beko.com"],
     "bosch": ["bosch-home.com"],
     "chiq": ["chiq.com.au"],

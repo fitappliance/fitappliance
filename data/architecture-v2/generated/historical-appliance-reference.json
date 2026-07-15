@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "187f2a4a76bde0fd24d7f0b7fcc76336ad2fcad2545697bc0a0b34703e609bbb"
+    "historical-recovery:historical-recovery-cumulative-v1": "b7a38818dc776d541fcaa8891779601de20369b59124f39cdbe10539ebc01fcb"
   },
   "records": [
     {
@@ -4290,6 +4290,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_b7a149dde56cf861bddfab31",
+          "snapshotSha256": "4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0",
+          "sourceLines": [
+            40
+          ]
         }
       ],
       "catalogProductIds": [
@@ -4298,7 +4305,37 @@
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_b7a149dde56cf861bddfab31",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=739996&jezik=en&tipVsebine=1&docName=874270en.pdf",
+          "contentSha256": "4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0",
+          "receiptBindingSha256": "24045fd056ae692694c061ae3250349a67b589990aa0f9e8537674bca0d7b7db",
+          "verifiedAt": "2026-07-15T01:18:19.221Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 40,
+              "fragmentSha256": "9d0c5aa9e1619fcbe557c9c5831421f7fb1f3cc4772751b258fea087c450bc5a"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 40,
+              "fragmentSha256": "9d0c5aa9e1619fcbe557c9c5831421f7fb1f3cc4772751b258fea087c450bc5a"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 40,
+              "fragmentSha256": "9d0c5aa9e1619fcbe557c9c5831421f7fb1f3cc4772751b258fea087c450bc5a"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/43/98/4398a8ff383c69f2a0e4b8c50dfdc4cd8defe43c1db879810e5b38078b2747e0.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -4368,13 +4405,83 @@
             337,
             1210
           ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_96cc8f131f046a32f993b4bf",
+          "snapshotSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+          "sourceLines": [
+            43
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_96cc8f131f046a32f993b4bf",
+          "snapshotSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
+          "sourceLines": [
+            43
+          ]
         }
       ],
       "catalogProductIds": [],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_96cc8f131f046a32f993b4bf",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf",
+          "contentSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+          "receiptBindingSha256": "d047553df56b45b83c9336ace9737ab4e70555528c2ed7235219a2c93755a8f9",
+          "verifiedAt": "2026-07-15T01:24:36.230Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/38/ad/38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b.pdf"
+        },
+        {
+          "targetId": "recovery_target_96cc8f131f046a32f993b4bf",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf",
+          "contentSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
+          "receiptBindingSha256": "fdc90185319e7da9ec00a4017f38ee69eb230506833c2803441ec832c31587a3",
+          "verifiedAt": "2026-07-15T01:26:09.817Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/45/50/4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -6695,6 +6802,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c4295ee36eb7c14ebebe7c87",
+          "snapshotSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -6704,7 +6818,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c4295ee36eb7c14ebebe7c87",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7610669077.pdf",
+          "contentSha256": "fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283",
+          "receiptBindingSha256": "29c155d6d66ff632e33d132ef1b69a73745fbf97f2cbd7f80551feaacbefb0a3",
+          "verifiedAt": "2026-07-14T23:27:24.690Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d92ced628fd367cf77f55ed843b3ea6d547f83fde6905aaa29c1026704bad9ca"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d92ced628fd367cf77f55ed843b3ea6d547f83fde6905aaa29c1026704bad9ca"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d92ced628fd367cf77f55ed843b3ea6d547f83fde6905aaa29c1026704bad9ca"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/fe/73/fe7384670caa100d2845dd16570af6143a7bf649cb670742d5b399af18c2e283.pdf"
+        }
       ]
     },
     {
@@ -6730,6 +6873,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a3678b2b686b0ac01d27b178",
+          "snapshotSha256": "5f7f0a7694f4a933c9797cfa487711e1fe8c71ecc593a8d250bf665bb8c87337",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -6739,7 +6889,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a3678b2b686b0ac01d27b178",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7610769077.pdf",
+          "contentSha256": "5f7f0a7694f4a933c9797cfa487711e1fe8c71ecc593a8d250bf665bb8c87337",
+          "receiptBindingSha256": "5746073431a52a4f878ab8ad63e48f76958b4c68eff0fb213a1fe1856624e4ee",
+          "verifiedAt": "2026-07-14T20:50:15.339Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "6534b8b4576bb20a8ea08261b059d8fbd7ee357867a89b81c03e96fbd65c2818"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "6534b8b4576bb20a8ea08261b059d8fbd7ee357867a89b81c03e96fbd65c2818"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "6534b8b4576bb20a8ea08261b059d8fbd7ee357867a89b81c03e96fbd65c2818"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/5f/7f/5f7f0a7694f4a933c9797cfa487711e1fe8c71ecc593a8d250bf665bb8c87337.pdf"
+        }
       ]
     },
     {
@@ -6765,6 +6944,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a8a962d4fa09a0cf93fcecde",
+          "snapshotSha256": "62c682deee63d8d3a3f98b5d5f99f97c1d06c99a5ef2c236ede5677d14295db7",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -6774,7 +6960,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a8a962d4fa09a0cf93fcecde",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7631969077.pdf",
+          "contentSha256": "62c682deee63d8d3a3f98b5d5f99f97c1d06c99a5ef2c236ede5677d14295db7",
+          "receiptBindingSha256": "9829c996cc188ef5a184017e9ef67b6cb5f0e5b5f467728250dc5f7654939e92",
+          "verifiedAt": "2026-07-14T23:27:23.569Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "b3fb8cba6b122345aeaea0d0e1deee1299b13500b948e9240094e21c760f7c1e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "b3fb8cba6b122345aeaea0d0e1deee1299b13500b948e9240094e21c760f7c1e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "b3fb8cba6b122345aeaea0d0e1deee1299b13500b948e9240094e21c760f7c1e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/62/c6/62c682deee63d8d3a3f98b5d5f99f97c1d06c99a5ef2c236ede5677d14295db7.pdf"
+        }
       ]
     },
     {
@@ -6800,6 +7015,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_fb75150e641413542e65e68f",
+          "snapshotSha256": "27a868ca43b0a2fd8b4f1beb05d93b6a33e86e988c9486b999e7ca4927f20d55",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -6809,7 +7031,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_fb75150e641413542e65e68f",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7679159077.pdf",
+          "contentSha256": "27a868ca43b0a2fd8b4f1beb05d93b6a33e86e988c9486b999e7ca4927f20d55",
+          "receiptBindingSha256": "550e2008afdfd604945a03eea2c4c226931f904a395cbb3ca95103c06373c953",
+          "verifiedAt": "2026-07-14T20:50:16.269Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "f50671e79082cb7beccfac8e3f5f81a84b42cb0c4bb4983063ce4f76189d327a"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "f50671e79082cb7beccfac8e3f5f81a84b42cb0c4bb4983063ce4f76189d327a"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "f50671e79082cb7beccfac8e3f5f81a84b42cb0c4bb4983063ce4f76189d327a"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/27/a8/27a868ca43b0a2fd8b4f1beb05d93b6a33e86e988c9486b999e7ca4927f20d55.pdf"
+        }
       ]
     },
     {
@@ -6835,6 +7086,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a795fcf62f9906e81eb2e1dc",
+          "snapshotSha256": "634815415f8da43b3fbf0a572712d4f92362ab70e433c6666e515334b8b52c0b",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -6844,7 +7102,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a795fcf62f9906e81eb2e1dc",
+          "sourceUrl": "https://www.beko.com/content/dam/bekoglobal/au/en/pdf/product/7628609077.pdf",
+          "contentSha256": "634815415f8da43b3fbf0a572712d4f92362ab70e433c6666e515334b8b52c0b",
+          "receiptBindingSha256": "5669099283c1eb1f20184108571b92b5ae219756ee4bf54abe9875444d8b6129",
+          "verifiedAt": "2026-07-14T23:27:22.626Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "de18a6a8f7b5f8da8b20249f42dbe0f218d5d338e498cec7304d025b8d6460c5"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "de18a6a8f7b5f8da8b20249f42dbe0f218d5d338e498cec7304d025b8d6460c5"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "de18a6a8f7b5f8da8b20249f42dbe0f218d5d338e498cec7304d025b8d6460c5"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/63/48/634815415f8da43b3fbf0a572712d4f92362ab70e433c6666e515334b8b52c0b.pdf"
+        }
       ]
     },
     {
@@ -20174,6 +20461,18 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_518fdc4b2062a55b8dbea91b",
+          "snapshotSha256": "19d1fb386eadb09f4a0d1fbc07ea26b9de0f65079b636627b266e90f78e6680a",
+          "sourceLines": [
+            1
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_518fdc4b2062a55b8dbea91b",
+          "snapshotSha256": "c464998926e4822596e0758060e2958942e18900735817e45fcfdc27aac530f9",
+          "sourceLines": []
         }
       ],
       "catalogProductIds": [
@@ -20182,7 +20481,56 @@
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_518fdc4b2062a55b8dbea91b",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw336f3817/QRG/AU/QRG-AU-82879.pdf",
+          "contentSha256": "19d1fb386eadb09f4a0d1fbc07ea26b9de0f65079b636627b266e90f78e6680a",
+          "receiptBindingSha256": "b6f88f914276781ff7248a8bff6f74d1a614d16b0ab7b962a788a995d2fad9a8",
+          "verifiedAt": "2026-07-14T18:32:09.982Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "42a8b528447e0daf6fc1ab604e3b6101f3cf555c37d688badc9d21f6b3b41a7e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "42a8b528447e0daf6fc1ab604e3b6101f3cf555c37d688badc9d21f6b3b41a7e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "42a8b528447e0daf6fc1ab604e3b6101f3cf555c37d688badc9d21f6b3b41a7e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/19/d1/19d1fb386eadb09f4a0d1fbc07ea26b9de0f65079b636627b266e90f78e6680a.pdf"
+        },
+        {
+          "targetId": "recovery_target_518fdc4b2062a55b8dbea91b",
+          "sourceUrl": "https://www.fisherpaykel.com/au/dishwashing/built-under/series-7-contemporary-double-dishdrawer-dishwasher-dd60d2nb9-82879.html",
+          "contentSha256": "c464998926e4822596e0758060e2958942e18900735817e45fcfdc27aac530f9",
+          "receiptBindingSha256": "5e3de3b1b8c2f52265bbea6990f204085c5c53804bb21e7e95e23d99700afdd7",
+          "verifiedAt": "2026-07-14T18:33:59.249Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "c464998926e4822596e0758060e2958942e18900735817e45fcfdc27aac530f9"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "c464998926e4822596e0758060e2958942e18900735817e45fcfdc27aac530f9"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/c4/64/c464998926e4822596e0758060e2958942e18900735817e45fcfdc27aac530f9.html"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -20223,6 +20571,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_2bd073a66780227a6006e4fe",
+          "snapshotSha256": "d947c0080fb6b8827057a022a48a07f631955f4f6a1b464139617fc4249be5a2",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -20231,7 +20586,37 @@
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_2bd073a66780227a6006e4fe",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw870f59f9/QRG/AU/QRG-AU-82878.pdf",
+          "contentSha256": "d947c0080fb6b8827057a022a48a07f631955f4f6a1b464139617fc4249be5a2",
+          "receiptBindingSha256": "b3d98ebba5d1b0c0e3286aadca656dd4a0983ee1aacf76858949e3d3f4129ebc",
+          "verifiedAt": "2026-07-14T13:03:38.420Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "42a8b528447e0daf6fc1ab604e3b6101f3cf555c37d688badc9d21f6b3b41a7e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "42a8b528447e0daf6fc1ab604e3b6101f3cf555c37d688badc9d21f6b3b41a7e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "42a8b528447e0daf6fc1ab604e3b6101f3cf555c37d688badc9d21f6b3b41a7e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/d9/47/d947c0080fb6b8827057a022a48a07f631955f4f6a1b464139617fc4249be5a2.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -20272,6 +20657,18 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_224ef93daefed26722cf0f53",
+          "snapshotSha256": "e225d6b0024cab7ea415613fce577225265ae49d4e3d9b5a2aacc3fe1ebdfb3f",
+          "sourceLines": [
+            1
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_224ef93daefed26722cf0f53",
+          "snapshotSha256": "f88f13657d3f3869cd0c9d70025f9010ad3aaa786692c644c95cdc41d5a366dc",
+          "sourceLines": []
         }
       ],
       "catalogProductIds": [
@@ -20280,7 +20677,56 @@
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_224ef93daefed26722cf0f53",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw53c8ef68/QRG/AU/QRG-AU-82881.pdf",
+          "contentSha256": "e225d6b0024cab7ea415613fce577225265ae49d4e3d9b5a2aacc3fe1ebdfb3f",
+          "receiptBindingSha256": "d7844778fe0b3e604795a887bcdfd008d32c0d55deae7dbec4ef1ed4745a5ab7",
+          "verifiedAt": "2026-07-14T18:32:37.923Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "42a8b528447e0daf6fc1ab604e3b6101f3cf555c37d688badc9d21f6b3b41a7e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "42a8b528447e0daf6fc1ab604e3b6101f3cf555c37d688badc9d21f6b3b41a7e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "42a8b528447e0daf6fc1ab604e3b6101f3cf555c37d688badc9d21f6b3b41a7e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/e2/25/e225d6b0024cab7ea415613fce577225265ae49d4e3d9b5a2aacc3fe1ebdfb3f.pdf"
+        },
+        {
+          "targetId": "recovery_target_224ef93daefed26722cf0f53",
+          "sourceUrl": "https://www.fisherpaykel.com/au/dishwashing/built-under/series-9-contemporary-double-dishdrawer-dishwasher-dd60d4nb9-82881.html",
+          "contentSha256": "f88f13657d3f3869cd0c9d70025f9010ad3aaa786692c644c95cdc41d5a366dc",
+          "receiptBindingSha256": "5e95407195a6ee80aaaccb1a1688bf83d84da1a7576b71626e7648ab3444d372",
+          "verifiedAt": "2026-07-14T18:37:24.305Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "f88f13657d3f3869cd0c9d70025f9010ad3aaa786692c644c95cdc41d5a366dc"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "f88f13657d3f3869cd0c9d70025f9010ad3aaa786692c644c95cdc41d5a366dc"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/f8/8f/f88f13657d3f3869cd0c9d70025f9010ad3aaa786692c644c95cdc41d5a366dc.html"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -20321,6 +20767,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_96f741191e50ec6b570d9df2",
+          "snapshotSha256": "40d17cefe10087be1f573254662fcec2aa9a48648c7cdbb1a174a1ef8dc065db",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -20329,7 +20782,37 @@
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_96f741191e50ec6b570d9df2",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwf9542760/QRG/AU/QRG-AU-82880.pdf",
+          "contentSha256": "40d17cefe10087be1f573254662fcec2aa9a48648c7cdbb1a174a1ef8dc065db",
+          "receiptBindingSha256": "9987899d4e224e8e6fc7e45b9df60731f68e409f850f7049cc04188a8954168e",
+          "verifiedAt": "2026-07-14T12:50:12.965Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "42a8b528447e0daf6fc1ab604e3b6101f3cf555c37d688badc9d21f6b3b41a7e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "42a8b528447e0daf6fc1ab604e3b6101f3cf555c37d688badc9d21f6b3b41a7e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "42a8b528447e0daf6fc1ab604e3b6101f3cf555c37d688badc9d21f6b3b41a7e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/40/d1/40d17cefe10087be1f573254662fcec2aa9a48648c7cdbb1a174a1ef8dc065db.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -21286,11 +21769,11 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 599,
-        "height": 880,
+        "height": 410,
         "depth": 573
       },
       "sources": [
@@ -21306,6 +21789,19 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_ee931467bcc5e6c6f1f57ff0",
+          "snapshotSha256": "af6b8983224cb403d788586e7a1a458142fd249f09b8611cd1448456ce7421bd",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_ee931467bcc5e6c6f1f57ff0",
+          "snapshotSha256": "ea932171a05f12a4111bc92c24c3769be4c521e9f2dce23a6dccb319d8074b0b",
+          "sourceLines": [
+            1,
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -21313,8 +21809,61 @@
       ],
       "registryObservationCount": 2,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_ee931467bcc5e6c6f1f57ff0",
+          "sourceUrl": "https://www.fisherpaykel.com/au/dishwashing/built-under/series-9-contemporary-single-dishdrawer-dishwasher-dd60sdfx9-82325.html",
+          "contentSha256": "af6b8983224cb403d788586e7a1a458142fd249f09b8611cd1448456ce7421bd",
+          "receiptBindingSha256": "5e06a622691ad94f0be41417e1de1b5e85e7a045fa445cb1e0fc5586b6d9af54",
+          "verifiedAt": "2026-07-14T18:43:31.033Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "af6b8983224cb403d788586e7a1a458142fd249f09b8611cd1448456ce7421bd"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "af6b8983224cb403d788586e7a1a458142fd249f09b8611cd1448456ce7421bd"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "af6b8983224cb403d788586e7a1a458142fd249f09b8611cd1448456ce7421bd"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/af/6b/af6b8983224cb403d788586e7a1a458142fd249f09b8611cd1448456ce7421bd.html"
+        },
+        {
+          "targetId": "recovery_target_ee931467bcc5e6c6f1f57ff0",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4ef414ad/QRG/AU/QRG-AU-82325.pdf",
+          "contentSha256": "ea932171a05f12a4111bc92c24c3769be4c521e9f2dce23a6dccb319d8074b0b",
+          "receiptBindingSha256": "2dbffc7b6753e0aa2d61dec874ad7bd92c0c1ee86f89e50f8d1213ff6b87f9a1",
+          "verifiedAt": "2026-07-14T18:44:51.915Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "93fc7b7390adaffffa6ec30dbac120ef52dc0c83e8c3a04a70409d4a21e783a5"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "80f7ab0cbca6d320633838e79857ba818c57fb2e3f04bb672b2b5828d2c28b8a"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "13e386daf1b6c2643337193fe89a658ce3a660a23b7aa6962bfcd485ddcc78be"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/ea/93/ea932171a05f12a4111bc92c24c3769be4c521e9f2dce23a6dccb319d8074b0b.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -21456,9 +22005,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "INTERNAL_CONFLICT",
-      "lookupAction": "QUARANTINED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 599,
+        "height": 454,
+        "depth": 573
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dishwasher",
@@ -21472,6 +22025,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_b55cb2ab86331ebb9121bbb8",
+          "snapshotSha256": "2ccc0ce3c696beec68528a7f079f4781dcd9bce4a5a8e1a3527d5767819a6615",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -21482,6 +22042,34 @@
       "registryDimensionState": "INTERNAL_CONFLICT",
       "reasonCodes": [
         "REGISTRY_INTERNAL_DIMENSION_CONFLICT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_b55cb2ab86331ebb9121bbb8",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw96f408b1/QRG/AU/QRG-AU-82884.pdf",
+          "contentSha256": "2ccc0ce3c696beec68528a7f079f4781dcd9bce4a5a8e1a3527d5767819a6615",
+          "receiptBindingSha256": "fb600985e9f20b89883fd69748233e4b2a79bfdd07a2855ab1162f155b0b2c29",
+          "verifiedAt": "2026-07-14T18:40:16.766Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "b6c083bbc3f11d298780a2ebc5790faf7adca24388109acf44f659751f68f2e4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "b6c083bbc3f11d298780a2ebc5790faf7adca24388109acf44f659751f68f2e4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "b6c083bbc3f11d298780a2ebc5790faf7adca24388109acf44f659751f68f2e4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/2c/cc/2ccc0ce3c696beec68528a7f079f4781dcd9bce4a5a8e1a3527d5767819a6615.pdf"
+        }
       ]
     },
     {
@@ -21503,9 +22091,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "INTERNAL_CONFLICT",
-      "lookupAction": "QUARANTINED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 599,
+        "height": 454,
+        "depth": 573
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dishwasher",
@@ -21519,6 +22111,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_e4afd53e095df4dfd9aa436a",
+          "snapshotSha256": "0d4868519db86005f395e9ddb2e53f978b1d5f19d9c46ac7fcb6ed453f95dae0",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -21529,6 +22128,34 @@
       "registryDimensionState": "INTERNAL_CONFLICT",
       "reasonCodes": [
         "REGISTRY_INTERNAL_DIMENSION_CONFLICT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_e4afd53e095df4dfd9aa436a",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwb2c9b823/QRG/AU/QRG-AU-82883.pdf",
+          "contentSha256": "0d4868519db86005f395e9ddb2e53f978b1d5f19d9c46ac7fcb6ed453f95dae0",
+          "receiptBindingSha256": "f2bd4ba14652d1868fe9561a469eeddde0c8a7ca3bfdbd3ae3e92c7dedcff0f2",
+          "verifiedAt": "2026-07-14T18:33:03.433Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "b50ae1f2406e8a260cf33df040646a493fbcf94c89f7a5df89077ad83b096527"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "b50ae1f2406e8a260cf33df040646a493fbcf94c89f7a5df89077ad83b096527"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "b50ae1f2406e8a260cf33df040646a493fbcf94c89f7a5df89077ad83b096527"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/0d/48/0d4868519db86005f395e9ddb2e53f978b1d5f19d9c46ac7fcb6ed453f95dae0.pdf"
+        }
       ]
     },
     {
@@ -21879,6 +22506,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a9e3e60452329b7100a8d6f6",
+          "snapshotSha256": "797b45c0b6730551bb42bc39ea4c31c5489f302f80e04cafe4a49abb8fdd5ba6",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -21888,7 +22522,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a9e3e60452329b7100a8d6f6",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000094jKjIAI&d=%2Fa%2FJw000000VRAP%2Fw0mvsfEhsvvwGfFy3XkJOFufVRIUk2X_ccM4iwz1cIg&operationContext=DELIVERY&viewId=05HJw00000Q9C2zMAF&dpt=",
+          "contentSha256": "797b45c0b6730551bb42bc39ea4c31c5489f302f80e04cafe4a49abb8fdd5ba6",
+          "receiptBindingSha256": "09a2e9c456c170acfc58ebacdfd80d16a096c4200aa7acd72eda570ac39696b9",
+          "verifiedAt": "2026-07-14T15:52:22.816Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "82175e06c64760e61cdbbb60b890c528e7e27b58c2eafc9646f6033e69cb1742"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "82175e06c64760e61cdbbb60b890c528e7e27b58c2eafc9646f6033e69cb1742"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "82175e06c64760e61cdbbb60b890c528e7e27b58c2eafc9646f6033e69cb1742"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/79/7b/797b45c0b6730551bb42bc39ea4c31c5489f302f80e04cafe4a49abb8fdd5ba6.pdf"
+        }
       ]
     },
     {
@@ -21914,6 +22577,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_6b4f2986b0053c246b12b913",
+          "snapshotSha256": "aa5c1265d93d2807b303e94ae03541f0307096c9f1baf5d7031531158fc8d92c",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -21923,7 +22593,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_6b4f2986b0053c246b12b913",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000094hFjIAI&d=%2Fa%2FJw000000VRFF%2FuqoataW_hQQL57nfi42b1AxVzW2Tdm9nOY1Yw7O3L.o&operationContext=DELIVERY&viewId=05HJw00000Q9C1NMAV&dpt=",
+          "contentSha256": "aa5c1265d93d2807b303e94ae03541f0307096c9f1baf5d7031531158fc8d92c",
+          "receiptBindingSha256": "b5e35126a4bc0c11e8566b6de721f0a7f4ff506e6b5679cd1a5fe8464d8b2a36",
+          "verifiedAt": "2026-07-14T15:52:15.223Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d96047763eea2a2edd7279265ac163f38da323b1529d643591ae462fef40f79e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d96047763eea2a2edd7279265ac163f38da323b1529d643591ae462fef40f79e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d96047763eea2a2edd7279265ac163f38da323b1529d643591ae462fef40f79e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/aa/5c/aa5c1265d93d2807b303e94ae03541f0307096c9f1baf5d7031531158fc8d92c.pdf"
+        }
       ]
     },
     {
@@ -21984,6 +22683,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_2720162f1f2c0ac51f121673",
+          "snapshotSha256": "1f0ad8bb59cf9389e6b585d0c3d0be2822a81b3ee3b6ef67c928be34e210ac49",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -21993,7 +22699,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_2720162f1f2c0ac51f121673",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000094k3xIAA&d=%2Fa%2FJw000000VRS9%2FmyFrqoXvWw4nmquVE.zmPkpkoolCqyfNJU3cKRNa3XA&operationContext=DELIVERY&viewId=05HJw00000Q9OtlMAF&dpt=",
+          "contentSha256": "1f0ad8bb59cf9389e6b585d0c3d0be2822a81b3ee3b6ef67c928be34e210ac49",
+          "receiptBindingSha256": "b5553cc28c60fe9bda8eb5f5e079bc6569ae643b1c0b7a1da9d1d4fbb8e43ef7",
+          "verifiedAt": "2026-07-14T17:13:13.396Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d96047763eea2a2edd7279265ac163f38da323b1529d643591ae462fef40f79e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d96047763eea2a2edd7279265ac163f38da323b1529d643591ae462fef40f79e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d96047763eea2a2edd7279265ac163f38da323b1529d643591ae462fef40f79e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/1f/0a/1f0ad8bb59cf9389e6b585d0c3d0be2822a81b3ee3b6ef67c928be34e210ac49.pdf"
+        }
       ]
     },
     {
@@ -22019,6 +22754,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a3b1b14c79466f39d20d6feb",
+          "snapshotSha256": "79835454667d30223d652ee11a861271bfd363afeef24aae8b4dc913dc76f154",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -22028,7 +22770,36 @@
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
       "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+        "CATALOG_IDENTITY_WITHOUT_RECEIPT",
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a3b1b14c79466f39d20d6feb",
+          "sourceUrl": "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw0000094kaCIAQ&d=%2Fa%2FJw000000VRWz%2FUiw4PXr8qYPro8_qnG9NiBHNP9j561fQK_6HnuXGvOU&operationContext=DELIVERY&viewId=05HJw00000Q9ByAMAV&dpt=",
+          "contentSha256": "79835454667d30223d652ee11a861271bfd363afeef24aae8b4dc913dc76f154",
+          "receiptBindingSha256": "b3a62818751374b119ac5775b835fd0bcbdfe10643afcfa2487c017a1d5a600a",
+          "verifiedAt": "2026-07-14T17:13:34.673Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d96047763eea2a2edd7279265ac163f38da323b1529d643591ae462fef40f79e"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d96047763eea2a2edd7279265ac163f38da323b1529d643591ae462fef40f79e"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d96047763eea2a2edd7279265ac163f38da323b1529d643591ae462fef40f79e"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/79/83/79835454667d30223d652ee11a861271bfd363afeef24aae8b4dc913dc76f154.pdf"
+        }
       ]
     },
     {
@@ -24130,6 +24901,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_76e2bce097f6008e8ee20656",
+          "snapshotSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -24139,7 +24917,36 @@
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "INTERNAL_CONFLICT",
       "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR",
         "REGISTRY_INTERNAL_DIMENSION_CONFLICT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_76e2bce097f6008e8ee20656",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw3adf5920/QRG/AU/QRG-AU-82440.pdf",
+          "contentSha256": "05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35",
+          "receiptBindingSha256": "7cbbb67fbe3a1017321d84929ee9c0273b7cd33f1c0613ab8df9f5ea17134555",
+          "verifiedAt": "2026-07-14T12:50:12.881Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "7e2ccabdbdfb169e9b5ebf6b0d28c17646d6463be58fb52c438c96df6c082063"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "7e2ccabdbdfb169e9b5ebf6b0d28c17646d6463be58fb52c438c96df6c082063"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "7e2ccabdbdfb169e9b5ebf6b0d28c17646d6463be58fb52c438c96df6c082063"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/05/bf/05bf7d5a88fac296f09cd7fcf7d2e3b4f562ac31e4a6c96895b62bb922ffcc35.pdf"
+        }
       ]
     },
     {
@@ -26187,6 +26994,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_588c9dabf62a9ca373a78642",
+          "snapshotSha256": "8c230fe497ca443859a8bb1b01521ce661b71923589ed4a1540e208b05766e02",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -26195,7 +27009,37 @@
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_588c9dabf62a9ca373a78642",
+          "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwbb887907/QRG/AU/QRG-AU-61614.pdf",
+          "contentSha256": "8c230fe497ca443859a8bb1b01521ce661b71923589ed4a1540e208b05766e02",
+          "receiptBindingSha256": "fbe0ed1d6be413939a5773145e399dacd38ad74878cd0a9a08c26fe762c2c38d",
+          "verifiedAt": "2026-07-14T12:50:12.819Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "65038f5293b4e27ef908270a5670867be77ccc37edfa9480e18b878f06dfd209"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "5aa5227718fd3e2dbec37bb2da555f9a9d3bc0e471c538b292ac1a012e79d605"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "1866241b16e6a48dfb7380f8a97ef85b1113f13a3ccfa6a301e2b324dc84641b"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/8c/23/8c230fe497ca443859a8bb1b01521ce661b71923589ed4a1540e208b05766e02.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -26591,6 +27435,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c498391ec39287ef729be054",
+          "snapshotSha256": "a979ba676c8b6fb4c2ff23145600d452bb29e3882896721272b2a22a53010463",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -26599,7 +27450,37 @@
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
       "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "reasonCodes": [
+        "MODEL_RECEIPT_NON_SCALAR"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c498391ec39287ef729be054",
+          "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwa742cfeb/QRG/AU/QRG-AU-61615.pdf",
+          "contentSha256": "a979ba676c8b6fb4c2ff23145600d452bb29e3882896721272b2a22a53010463",
+          "receiptBindingSha256": "bc27f7e80888cf27abd1ac9a2c04e5032d564eeed9275b2e8927197946fda03c",
+          "verifiedAt": "2026-07-14T12:50:13.047Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "65038f5293b4e27ef908270a5670867be77ccc37edfa9480e18b878f06dfd209"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "03bd955d4047a7cbc1b5dadb53774f46a02700ecf2ae4583a16c46092858e255"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "5308c679d5dfe0c2a1763b5711b59a6ca1c4d4b3f37aa2343f55f192b8268cf6"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/a9/79/a979ba676c8b6fb4c2ff23145600d452bb29e3882896721272b2a22a53010463.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -56457,14 +57338,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 595,
+        "height": 850,
+        "depth": 654
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_5530106b3719e7a18793b3e1",
+          "snapshotSha256": "2476d2c729d36d89c186cf2294a89d486680784b1a6099d7ff4bf692ede22d08",
+          "sourceLines": [
+            45
+          ]
         }
       ],
       "catalogProductIds": [
@@ -56473,8 +57365,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_5530106b3719e7a18793b3e1",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=576408&jezik=en&tipVsebine=1&docName=576488en.pdf",
+          "contentSha256": "2476d2c729d36d89c186cf2294a89d486680784b1a6099d7ff4bf692ede22d08",
+          "receiptBindingSha256": "00d66ce05d812aafcb2a62617d174fdb47023fdab549a6b660b6ecd2422f4ca7",
+          "verifiedAt": "2026-07-15T01:02:17.720Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 45,
+              "fragmentSha256": "6d36ca91bdfb7416d935676f60e0af5a516d7bec2d3c3ef8279d58e1bf3fb046"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 45,
+              "fragmentSha256": "6d36ca91bdfb7416d935676f60e0af5a516d7bec2d3c3ef8279d58e1bf3fb046"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 45,
+              "fragmentSha256": "6d36ca91bdfb7416d935676f60e0af5a516d7bec2d3c3ef8279d58e1bf3fb046"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/24/76/2476d2c729d36d89c186cf2294a89d486680784b1a6099d7ff4bf692ede22d08.pdf"
+        }
       ]
     },
     {
@@ -56640,14 +57558,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 595,
+        "height": 850,
+        "depth": 654
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_c98f8586024d44a327356703",
+          "snapshotSha256": "f5d8ef805567a17cd1c3045f174f8e3fa1f40e8555149021aafe529f38909423",
+          "sourceLines": [
+            45
+          ]
         }
       ],
       "catalogProductIds": [
@@ -56656,8 +57585,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_c98f8586024d44a327356703",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=576719&jezik=en&tipVsebine=1&docName=577992en.pdf",
+          "contentSha256": "f5d8ef805567a17cd1c3045f174f8e3fa1f40e8555149021aafe529f38909423",
+          "receiptBindingSha256": "590afaf4410829f2f7d0d446c72fb062b397f6ad4d86f203553d4352e5d7b434",
+          "verifiedAt": "2026-07-15T00:14:20.582Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 45,
+              "fragmentSha256": "0099e06f581ca40476c96c949f8c2324edc580681e5a09e65d88c14085a37bbf"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 45,
+              "fragmentSha256": "0099e06f581ca40476c96c949f8c2324edc580681e5a09e65d88c14085a37bbf"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 45,
+              "fragmentSha256": "0099e06f581ca40476c96c949f8c2324edc580681e5a09e65d88c14085a37bbf"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/f5/d8/f5d8ef805567a17cd1c3045f174f8e3fa1f40e8555149021aafe529f38909423.pdf"
+        }
       ]
     },
     {
@@ -58690,9 +59645,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 842,
+        "depth": 648
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dryer",
@@ -58705,6 +59664,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_28562988936e58e291d5d741",
+          "snapshotSha256": "08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -58712,9 +59678,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_28562988936e58e291d5d741",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG235DRAU.pdf",
+          "contentSha256": "08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840",
+          "receiptBindingSha256": "deb410222fc4beb1806b4d0d7a1583ae19e9b51bec190f88cf8b6fdd0030ed12",
+          "verifiedAt": "2026-07-14T12:50:12.671Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "6033961777c20e71be041ad543a8a66add362744d2df331cd1b51e7501391d89"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "6033961777c20e71be041ad543a8a66add362744d2df331cd1b51e7501391d89"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "6033961777c20e71be041ad543a8a66add362744d2df331cd1b51e7501391d89"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/08/b9/08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840.pdf"
+        }
       ]
     },
     {
@@ -58736,9 +59728,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 842,
+        "depth": 648
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dryer",
@@ -58751,6 +59747,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_e064d2dd39b8d348e348b34c",
+          "snapshotSha256": "cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -58758,9 +59761,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_e064d2dd39b8d348e348b34c",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG24200AU.pdf",
+          "contentSha256": "cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00",
+          "receiptBindingSha256": "b2e4770b912ff95e9aa5bc47ce92617af965ca306ebe2c0d8b4712218679067e",
+          "verifiedAt": "2026-07-14T12:50:13.069Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4a129d1c7cf473b12a9155c652acaf588676168016986c2184462df8f94b75e4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4a129d1c7cf473b12a9155c652acaf588676168016986c2184462df8f94b75e4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4a129d1c7cf473b12a9155c652acaf588676168016986c2184462df8f94b75e4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/cb/d8/cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00.pdf"
+        }
       ]
     },
     {
@@ -58782,9 +59811,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 842,
+        "depth": 648
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dryer",
@@ -58797,6 +59830,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_43049c0fe7be0474b1473b7a",
+          "snapshotSha256": "d230e3d6d25a008a09b58479140e62d5f610ecbf46bc2e05eb2e83301f7f8d46",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -58804,9 +59844,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_43049c0fe7be0474b1473b7a",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG24201AU.pdf",
+          "contentSha256": "d230e3d6d25a008a09b58479140e62d5f610ecbf46bc2e05eb2e83301f7f8d46",
+          "receiptBindingSha256": "1c7b2960a0c4c8a0718116aa41d1dab0a1540f63ea0e6c7caa92d1e91e02c6b1",
+          "verifiedAt": "2026-07-14T12:50:12.779Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "5aaa8c0602e39e8fb8d4b84c2518c82597e1f15a619812dc80c14c8e0c2c6281"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "5aaa8c0602e39e8fb8d4b84c2518c82597e1f15a619812dc80c14c8e0c2c6281"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "5aaa8c0602e39e8fb8d4b84c2518c82597e1f15a619812dc80c14c8e0c2c6281"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/d2/30/d230e3d6d25a008a09b58479140e62d5f610ecbf46bc2e05eb2e83301f7f8d46.pdf"
+        }
       ]
     },
     {
@@ -64838,9 +65904,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 600,
+        "height": 830,
+        "depth": 575
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dryer",
@@ -64853,6 +65923,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_85c252087f0b13e3c76aa32a",
+          "snapshotSha256": "b35f817f7e6e5d2a75e0f5c31c985519f346e998a60f9efd9e378a9796af8b4a",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -64860,9 +65937,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_85c252087f0b13e3c76aa32a",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwac9dda29/QRG/AU/QRG-AU-92277.pdf",
+          "contentSha256": "b35f817f7e6e5d2a75e0f5c31c985519f346e998a60f9efd9e378a9796af8b4a",
+          "receiptBindingSha256": "c38cb73263c1bedafddb2c30695ff328f27cb626f5fcfa2cb19f3dfdc797c2ca",
+          "verifiedAt": "2026-07-14T12:50:12.904Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "6252b6ef7a8fb6e48c1279586cff1f3f18a15d08c2404e185f49d9ebbbe08172"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "83c473306ff0b6cb77733c2c9882e8a75cdd41bdeb4f4f959d1fabc4f633e1f5"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "1f2ef617950b1ea09ae4357e6d7dd05536a3b4d67b86eb1d15eb19dfc738a0e4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/b3/5f/b35f817f7e6e5d2a75e0f5c31c985519f346e998a60f9efd9e378a9796af8b4a.pdf"
+        }
       ]
     },
     {
@@ -65289,9 +66392,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 602,
+        "height": 850,
+        "depth": 682
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dryer",
@@ -65304,6 +66411,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_8b807e019ff8799126ef4360",
+          "snapshotSha256": "908f0d5cef1cf07e97a94ee13068183954549e23f0e7269a6a79d7fb329b4920",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -65311,9 +66425,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_8b807e019ff8799126ef4360",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw09738459/QRG/AU/QRG-AU-93327.pdf",
+          "contentSha256": "908f0d5cef1cf07e97a94ee13068183954549e23f0e7269a6a79d7fb329b4920",
+          "receiptBindingSha256": "15e1c4dd59db7460dca2d92f9896c1ea7202658be93eb1acc07b01525c63f0d8",
+          "verifiedAt": "2026-07-14T12:50:12.923Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "1adadbbe2d09320c0f410c5aa03a397a99f1ae2b03624e28c00d3b174e1bec7a"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "1adadbbe2d09320c0f410c5aa03a397a99f1ae2b03624e28c00d3b174e1bec7a"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "1adadbbe2d09320c0f410c5aa03a397a99f1ae2b03624e28c00d3b174e1bec7a"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/90/8f/908f0d5cef1cf07e97a94ee13068183954549e23f0e7269a6a79d7fb329b4920.pdf"
+        }
       ]
     },
     {
@@ -66105,8 +67245,8 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 600,
         "height": 850,
@@ -66124,6 +67264,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3d9256682b764da7cf45af65",
+          "snapshotSha256": "df2bbb0d90a5ace08bb335ec4facc163d7245b26cc68d9ce46bcadee16310636",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -66131,8 +67278,36 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_3d9256682b764da7cf45af65",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8cd42baa/QRG/AU/QRG-AU-93281.pdf",
+          "contentSha256": "df2bbb0d90a5ace08bb335ec4facc163d7245b26cc68d9ce46bcadee16310636",
+          "receiptBindingSha256": "31c5e2ac4692e29fcbce2b6dfbe5944e85aaaa8d32d0ef71fe0a47bc0ffb2c02",
+          "verifiedAt": "2026-07-14T15:52:09.925Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "63c1b86f4c3ddb87d46324f93e00ca0ccdeff3a00bbfd102d3cdcbd77716204f"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "63c1b86f4c3ddb87d46324f93e00ca0ccdeff3a00bbfd102d3cdcbd77716204f"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "63c1b86f4c3ddb87d46324f93e00ca0ccdeff3a00bbfd102d3cdcbd77716204f"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/df/2b/df2bbb0d90a5ace08bb335ec4facc163d7245b26cc68d9ce46bcadee16310636.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -66153,9 +67328,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 602,
+        "height": 850,
+        "depth": 682
+      },
       "sources": [
         {
           "sourceId": "energy-rating:dryer",
@@ -66168,6 +67347,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_4adf92bf07240675d633463a",
+          "snapshotSha256": "eb728821fc93ca4ba5dedadbad827ab9c7dbc744bd3ce6c2bec0ef848793c9d1",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -66175,9 +67361,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_4adf92bf07240675d633463a",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw638d352c/QRG/AU/QRG-AU-93304.pdf",
+          "contentSha256": "eb728821fc93ca4ba5dedadbad827ab9c7dbc744bd3ce6c2bec0ef848793c9d1",
+          "receiptBindingSha256": "04b6f9bca8511d18335994c276bdeb08f681d4abc7cc27c7a00bb364e69b7418",
+          "verifiedAt": "2026-07-14T12:50:12.798Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "1adadbbe2d09320c0f410c5aa03a397a99f1ae2b03624e28c00d3b174e1bec7a"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "1adadbbe2d09320c0f410c5aa03a397a99f1ae2b03624e28c00d3b174e1bec7a"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "1adadbbe2d09320c0f410c5aa03a397a99f1ae2b03624e28c00d3b174e1bec7a"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/eb/72/eb728821fc93ca4ba5dedadbad827ab9c7dbc744bd3ce6c2bec0ef848793c9d1.pdf"
+        }
       ]
     },
     {
@@ -66570,12 +67782,12 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 600,
         "height": 850,
-        "depth": 670
+        "depth": 655
       },
       "sources": [
         {
@@ -66589,6 +67801,18 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3f1643a3e2eda1bc19fc4653",
+          "snapshotSha256": "22e26a2b927fb75009dfe15337f981447d2a5af619577a6d2884b2c883d7f472",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3f1643a3e2eda1bc19fc4653",
+          "snapshotSha256": "c7375afcae85282b37fb59daeb237e6d74844a6d16586f04d1e6fe81a6d75a98",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -66596,8 +67820,61 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_3f1643a3e2eda1bc19fc4653",
+          "sourceUrl": "https://www.fisherpaykel.com/au/laundry/dryers/heat-pump/9kg-series-11-heat-pump-dryer-steam-care-dh9060h1-92293.html",
+          "contentSha256": "22e26a2b927fb75009dfe15337f981447d2a5af619577a6d2884b2c883d7f472",
+          "receiptBindingSha256": "47eb051995be7cd97c808ea5381e454173eab389460f75cb1a02e63415c97edd",
+          "verifiedAt": "2026-07-14T19:34:49.384Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "22e26a2b927fb75009dfe15337f981447d2a5af619577a6d2884b2c883d7f472"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "22e26a2b927fb75009dfe15337f981447d2a5af619577a6d2884b2c883d7f472"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "22e26a2b927fb75009dfe15337f981447d2a5af619577a6d2884b2c883d7f472"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/22/e2/22e26a2b927fb75009dfe15337f981447d2a5af619577a6d2884b2c883d7f472.html"
+        },
+        {
+          "targetId": "recovery_target_3f1643a3e2eda1bc19fc4653",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8e5cecb9/QRG/AU/QRG-AU-92293.pdf",
+          "contentSha256": "c7375afcae85282b37fb59daeb237e6d74844a6d16586f04d1e6fe81a6d75a98",
+          "receiptBindingSha256": "97d344982fd166ebed3dbaa816d9113b09223718b19437756a48e52fe7e5a531",
+          "verifiedAt": "2026-07-14T19:34:47.743Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "4bba95f057541e67c64618c0cef2d0d9ca0610e5285b571df9434ef4a9d8a85c"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "4bba95f057541e67c64618c0cef2d0d9ca0610e5285b571df9434ef4a9d8a85c"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "4bba95f057541e67c64618c0cef2d0d9ca0610e5285b571df9434ef4a9d8a85c"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/c7/37/c7375afcae85282b37fb59daeb237e6d74844a6d16586f04d1e6fe81a6d75a98.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -66618,12 +67895,12 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 600,
         "height": 850,
-        "depth": 670
+        "depth": 655
       },
       "sources": [
         {
@@ -66637,6 +67914,18 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_97b25b1f250f474d218cf607",
+          "snapshotSha256": "b0fa8a528e7787bdb16c6e542d3fe757c03d238e8590960e82d1d6aede5b7d79",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_97b25b1f250f474d218cf607",
+          "snapshotSha256": "fabd150e7826a63eb9696447a6956cbe39c49878d3b479208c7fb22b130d8db7",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -66644,8 +67933,61 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_97b25b1f250f474d218cf607",
+          "sourceUrl": "https://www.fisherpaykel.com/au/laundry/dryers/heat-pump/9kg-series-11-heat-pump-dryer-steam-care-dh9060hg1-93296.html",
+          "contentSha256": "b0fa8a528e7787bdb16c6e542d3fe757c03d238e8590960e82d1d6aede5b7d79",
+          "receiptBindingSha256": "63f24649543245cd8632598a9b592bb13358d221c7f136dbeb733a45594d6cbb",
+          "verifiedAt": "2026-07-14T15:45:12.675Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "b0fa8a528e7787bdb16c6e542d3fe757c03d238e8590960e82d1d6aede5b7d79"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "b0fa8a528e7787bdb16c6e542d3fe757c03d238e8590960e82d1d6aede5b7d79"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "b0fa8a528e7787bdb16c6e542d3fe757c03d238e8590960e82d1d6aede5b7d79"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/b0/fa/b0fa8a528e7787bdb16c6e542d3fe757c03d238e8590960e82d1d6aede5b7d79.html"
+        },
+        {
+          "targetId": "recovery_target_97b25b1f250f474d218cf607",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw966cf444/QRG/AU/QRG-AU-93296.pdf",
+          "contentSha256": "fabd150e7826a63eb9696447a6956cbe39c49878d3b479208c7fb22b130d8db7",
+          "receiptBindingSha256": "4344994229fe838b61c2ae9c7e0d7f770b5d60a88c3008f53cea1b9aadccb787",
+          "verifiedAt": "2026-07-14T15:45:17.890Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "4bba95f057541e67c64618c0cef2d0d9ca0610e5285b571df9434ef4a9d8a85c"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "4bba95f057541e67c64618c0cef2d0d9ca0610e5285b571df9434ef4a9d8a85c"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "4bba95f057541e67c64618c0cef2d0d9ca0610e5285b571df9434ef4a9d8a85c"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/fa/bd/fabd150e7826a63eb9696447a6956cbe39c49878d3b479208c7fb22b130d8db7.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -72919,8 +74261,8 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 600,
         "height": 850,
@@ -72938,6 +74280,18 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_6252d12c8636ff82d87b836d",
+          "snapshotSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
+          "sourceLines": [
+            12
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_6252d12c8636ff82d87b836d",
+          "snapshotSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd",
+          "sourceLines": []
         }
       ],
       "catalogProductIds": [
@@ -72945,8 +74299,59 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_6252d12c8636ff82d87b836d",
+          "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=qBtD6KGnaeJRgOsUCABlvQ",
+          "contentSha256": "22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957",
+          "receiptBindingSha256": "e4db14a50878b8b884a81f50c9ed97f45a39dc22d12ccc39215a11f27c2dca49",
+          "verifiedAt": "2026-07-14T20:05:52.421Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 12,
+              "fragmentSha256": "9a457382c42f8665c0dffcfa79fb29f38da2900104c2cd7537d9e56309936e71"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 12,
+              "fragmentSha256": "9a457382c42f8665c0dffcfa79fb29f38da2900104c2cd7537d9e56309936e71"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 12,
+              "fragmentSha256": "9a457382c42f8665c0dffcfa79fb29f38da2900104c2cd7537d9e56309936e71"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/22/c0/22c0a224a7a41de6589acfd7ae69cfb5d2b2e531eb0058dfb1ab7e6a3bcd3957.pdf"
+        },
+        {
+          "targetId": "recovery_target_6252d12c8636ff82d87b836d",
+          "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh1-08wp/",
+          "contentSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd",
+          "receiptBindingSha256": "8e7cec63fbc3fd1a4309359f59d37c22a5fd3be46d9a1df5a3c02d543367d23c",
+          "verifiedAt": "2026-07-14T20:05:50.687Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/94/c3/94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd.html"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -73229,8 +74634,8 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 600,
         "height": 850,
@@ -73248,6 +74653,18 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_436a03f5f1fdbf5d9d3f6b28",
+          "snapshotSha256": "0adb735b79f09ba84591c9f201cf98c917b1db9ef34acb66a5d995fb8c9f8210",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_436a03f5f1fdbf5d9d3f6b28",
+          "snapshotSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
+          "sourceLines": [
+            10
+          ]
         }
       ],
       "catalogProductIds": [
@@ -73255,8 +74672,54 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_436a03f5f1fdbf5d9d3f6b28",
+          "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh9-09b/",
+          "contentSha256": "0adb735b79f09ba84591c9f201cf98c917b1db9ef34acb66a5d995fb8c9f8210",
+          "receiptBindingSha256": "9152e332de4d54674b07ade462b4253ce46655934a9d71263ecddede0edf6b3c",
+          "verifiedAt": "2026-07-14T13:27:09.949Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "0adb735b79f09ba84591c9f201cf98c917b1db9ef34acb66a5d995fb8c9f8210"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "0adb735b79f09ba84591c9f201cf98c917b1db9ef34acb66a5d995fb8c9f8210"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "0adb735b79f09ba84591c9f201cf98c917b1db9ef34acb66a5d995fb8c9f8210"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/0a/db/0adb735b79f09ba84591c9f201cf98c917b1db9ef34acb66a5d995fb8c9f8210.html"
+        },
+        {
+          "targetId": "recovery_target_436a03f5f1fdbf5d9d3f6b28",
+          "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=pUof6XKiAKggTDi5Im6WeA",
+          "contentSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
+          "receiptBindingSha256": "e1f0966a5ca590acca63a2e8ad1166e18a9138b428d3c936aedc387daa71835b",
+          "verifiedAt": "2026-07-14T13:27:11.204Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 10,
+              "fragmentSha256": "e3eb08ce7c859cb8c3711086ea8f9e6ac22b79cc3e1536ae410946c68b0fb49d"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 10,
+              "fragmentSha256": "e3eb08ce7c859cb8c3711086ea8f9e6ac22b79cc3e1536ae410946c68b0fb49d"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/2f/e3/2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -73273,8 +74736,8 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 600,
         "height": 850,
@@ -73292,6 +74755,18 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_0e614eea576bd1682de1e2c1",
+          "snapshotSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
+          "sourceLines": [
+            10
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_0e614eea576bd1682de1e2c1",
+          "snapshotSha256": "f7996e0cb73733a0426a25ca825d5e0cde11fe6e6b8b056cce9b8b8b6302e014",
+          "sourceLines": []
         }
       ],
       "catalogProductIds": [
@@ -73299,8 +74774,54 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_0e614eea576bd1682de1e2c1",
+          "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=pUof6XKiAKggTDi5Im6WeA",
+          "contentSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
+          "receiptBindingSha256": "80c29de2b1d052c70cc46bbfed24c9aa299cb7685eb5af31783c14ddd4d8b4a0",
+          "verifiedAt": "2026-07-14T13:27:10.519Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 10,
+              "fragmentSha256": "e3eb08ce7c859cb8c3711086ea8f9e6ac22b79cc3e1536ae410946c68b0fb49d"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 10,
+              "fragmentSha256": "e3eb08ce7c859cb8c3711086ea8f9e6ac22b79cc3e1536ae410946c68b0fb49d"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/2f/e3/2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1.pdf"
+        },
+        {
+          "targetId": "recovery_target_0e614eea576bd1682de1e2c1",
+          "sourceUrl": "https://www.lg.com/au/washer-dryers/dryers/dvh9-09w/",
+          "contentSha256": "f7996e0cb73733a0426a25ca825d5e0cde11fe6e6b8b056cce9b8b8b6302e014",
+          "receiptBindingSha256": "54b0f9ddcf5c4671ab0a0b77fa00caba66ad9894c422f6c31faecf4c461ca29b",
+          "verifiedAt": "2026-07-14T13:27:08.324Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "f7996e0cb73733a0426a25ca825d5e0cde11fe6e6b8b056cce9b8b8b6302e014"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "f7996e0cb73733a0426a25ca825d5e0cde11fe6e6b8b056cce9b8b8b6302e014"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "f7996e0cb73733a0426a25ca825d5e0cde11fe6e6b8b056cce9b8b8b6302e014"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/f7/99/f7996e0cb73733a0426a25ca825d5e0cde11fe6e6b8b056cce9b8b8b6302e014.html"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -91311,9 +92832,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 905,
+        "height": 1830,
+        "depth": 731
+      },
       "sources": [
         {
           "sourceId": "energy-rating:fridge",
@@ -91326,6 +92851,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_05dc3a2be257e55f43a9339f",
+          "snapshotSha256": "e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -91333,9 +92865,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_05dc3a2be257e55f43a9339f",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFD96AXEAA.pdf",
+          "contentSha256": "e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c",
+          "receiptBindingSha256": "5226bdfbfe9be344fa656797a672395cd6d12529acc9c5c140e56935d8aabac4",
+          "verifiedAt": "2026-07-14T12:50:12.592Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4d7178dc8ef1f344cd67b29bdd39fcc6025783ed2a61ca36748b9cbffd45ba3c"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4d7178dc8ef1f344cd67b29bdd39fcc6025783ed2a61ca36748b9cbffd45ba3c"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "4d7178dc8ef1f344cd67b29bdd39fcc6025783ed2a61ca36748b9cbffd45ba3c"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/e9/74/e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c.pdf"
+        }
       ]
     },
     {
@@ -110635,14 +112193,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 545,
+        "height": 1372,
+        "depth": 623
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_0417d161966ed05ba431aedf",
+          "snapshotSha256": "ed789eb7b9e8234d75733d7dae518e44803108c00c919cc1796b9848add855a6",
+          "sourceLines": [
+            15
+          ]
         }
       ],
       "catalogProductIds": [
@@ -110651,8 +112220,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_0417d161966ed05ba431aedf",
+          "sourceUrl": "https://esatto.house/s/Esatto_UserManual_ETM207-239-268_0518.pdf",
+          "contentSha256": "ed789eb7b9e8234d75733d7dae518e44803108c00c919cc1796b9848add855a6",
+          "receiptBindingSha256": "4156243f4bbae30b071b0a0c5d21cf9f88ff9af6d7315c90a2f25dcf71e64868",
+          "verifiedAt": "2026-07-14T18:08:32.698Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 15,
+              "fragmentSha256": "9cce31a1525eb06c4edb6b4210c68f11414b2736b06cd0c9d9fc4982882c4903"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 15,
+              "fragmentSha256": "9cce31a1525eb06c4edb6b4210c68f11414b2736b06cd0c9d9fc4982882c4903"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 15,
+              "fragmentSha256": "9cce31a1525eb06c4edb6b4210c68f11414b2736b06cd0c9d9fc4982882c4903"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/ed/78/ed789eb7b9e8234d75733d7dae518e44803108c00c919cc1796b9848add855a6.pdf"
+        }
       ]
     },
     {
@@ -133392,12 +134987,12 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 790,
         "height": 1790,
-        "depth": 688
+        "depth": 692
       },
       "sources": [
         {
@@ -133411,6 +135006,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_6a8a5797078ea622d9a6edfe",
+          "snapshotSha256": "b8c954080c96bde57c3a3310b0fa8eb2befaf19448228258f8b87ae8ae4e5cc8",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -133418,8 +135020,38 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_6a8a5797078ea622d9a6edfe",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw979a5de4/QRG/AU/QRG-AU-26619.pdf",
+          "contentSha256": "b8c954080c96bde57c3a3310b0fa8eb2befaf19448228258f8b87ae8ae4e5cc8",
+          "receiptBindingSha256": "4a645710757b9e44f41cd7a4fb0ef797c3a4d9b9c517a86794ed0bd03a79cd4d",
+          "verifiedAt": "2026-07-14T12:50:12.863Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "6965618030b865f68d36b705923454bbbd023ee64dca654ef08ef743d5ef92c4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "6965618030b865f68d36b705923454bbbd023ee64dca654ef08ef743d5ef92c4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "6965618030b865f68d36b705923454bbbd023ee64dca654ef08ef743d5ef92c4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/b8/c9/b8c954080c96bde57c3a3310b0fa8eb2befaf19448228258f8b87ae8ae4e5cc8.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -135683,12 +137315,12 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 900,
         "height": 1790,
-        "depth": 695
+        "depth": 735
       },
       "sources": [
         {
@@ -135702,6 +137334,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_25143b51364cd4f7f8a5ff0a",
+          "snapshotSha256": "ee493062e968e61b7ad60b1c9fd18eae4365edcf1d986d83532aedabbec8285a",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -135709,8 +137348,38 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_25143b51364cd4f7f8a5ff0a",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw16a75371/QRG/AU/QRG-AU-26504.pdf",
+          "contentSha256": "ee493062e968e61b7ad60b1c9fd18eae4365edcf1d986d83532aedabbec8285a",
+          "receiptBindingSha256": "40b98332aae6a55df8bf8881ee2cf3acb0c555c3096508f659e1ff6c2aea28f4",
+          "verifiedAt": "2026-07-14T12:50:12.622Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "fe648841eff79d3b70563f8b257197c14920f6137d60856c77e7be3e4c3b84a3"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "fe648841eff79d3b70563f8b257197c14920f6137d60856c77e7be3e4c3b84a3"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "fe648841eff79d3b70563f8b257197c14920f6137d60856c77e7be3e4c3b84a3"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/ee/49/ee493062e968e61b7ad60b1c9fd18eae4365edcf1d986d83532aedabbec8285a.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -136911,8 +138580,8 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 603,
         "height": 2134,
@@ -136930,6 +138599,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_5b485bcfdea32626ef3a405d",
+          "snapshotSha256": "d5b9e1e5118780a576f1dae698f127936a2f06ccbce5e8bb0360415e0c0b324e",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -136937,8 +138613,36 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_5b485bcfdea32626ef3a405d",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw5ace47e8/QRG/AU/QRG-AU-26160.pdf",
+          "contentSha256": "d5b9e1e5118780a576f1dae698f127936a2f06ccbce5e8bb0360415e0c0b324e",
+          "receiptBindingSha256": "1d1ec43117959a62929500826836e7c5772781d331311ade3ae71797fb8119e9",
+          "verifiedAt": "2026-07-14T13:03:40.394Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "3678ef6b7013c67eed61e1aa93fc498f794abcccd449ba51802df5b449a74771"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "3678ef6b7013c67eed61e1aa93fc498f794abcccd449ba51802df5b449a74771"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "3678ef6b7013c67eed61e1aa93fc498f794abcccd449ba51802df5b449a74771"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/d5/b9/d5b9e1e5118780a576f1dae698f127936a2f06ccbce5e8bb0360415e0c0b324e.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -144347,8 +146051,8 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 700,
         "height": 1725,
@@ -144366,6 +146070,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_ba9606f9e6fd9dcc17526951",
+          "snapshotSha256": "2b772df94084a9af0f268dad20ea21e4e56676d096d5f491428ad4079d84d1f8",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -144373,8 +146084,36 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_ba9606f9e6fd9dcc17526951",
+          "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dwd0f727cb/QRG/AU/QRG-AU-62269.pdf",
+          "contentSha256": "2b772df94084a9af0f268dad20ea21e4e56676d096d5f491428ad4079d84d1f8",
+          "receiptBindingSha256": "f0ad935d47e326adfed178b36a6f553ecb3b436c94b2fef7170518a317e26eef",
+          "verifiedAt": "2026-07-14T12:50:13.027Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "7c46b5f8ee1f7f69552296cc17de154f2dc37f8e8a3a6ae788ef3e0880a64dd9"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "7c46b5f8ee1f7f69552296cc17de154f2dc37f8e8a3a6ae788ef3e0880a64dd9"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "7c46b5f8ee1f7f69552296cc17de154f2dc37f8e8a3a6ae788ef3e0880a64dd9"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/2b/77/2b772df94084a9af0f268dad20ea21e4e56676d096d5f491428ad4079d84d1f8.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -145385,8 +147124,8 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 790,
         "height": 1725,
@@ -145404,6 +147143,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_1a597e6cf3cf9079af4ef3e1",
+          "snapshotSha256": "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -145411,8 +147157,36 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_1a597e6cf3cf9079af4ef3e1",
+          "sourceUrl": "https://www.haier.com.au/on/demandware.static/-/Sites-haier-master-catalog/default/dw57e105ea/QRG/AU/QRG-AU-62293.pdf",
+          "contentSha256": "77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716",
+          "receiptBindingSha256": "c99995281dee9dbc669bb62bc6ddfca9927b91677d791562eb990a26c92e0142",
+          "verifiedAt": "2026-07-14T20:04:06.183Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "79da59f8cb384380480e5062ba45bbc5e7cec85254919bba5f8cc6638ab7dc3f"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "79da59f8cb384380480e5062ba45bbc5e7cec85254919bba5f8cc6638ab7dc3f"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "79da59f8cb384380480e5062ba45bbc5e7cec85254919bba5f8cc6638ab7dc3f"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/77/cf/77cf61dc0dc612235257a10763201e8b0950f0611d285bf614fb2d92d2ecc716.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -153181,14 +154955,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 550,
+        "height": 1434,
+        "depth": 542
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_0326bb4e476aa371139c6291",
+          "snapshotSha256": "e902f4afededf695b90001a1b9f7c31c784d7f31ee5132f80f64b0b2cfeda545",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -153197,8 +154982,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_0326bb4e476aa371139c6291",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRAF242-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2OTQ5NXxhcHBsaWNhdGlvbi9wZGZ8YURVNUwyZ3lNUzg0T0RBME1URXdORE0wTXpNMEwwaFNRVVl5TkRJdFUzQmxZeTV3WkdZfDJmNTMzMzVjZTEwYWY2MTVjMjZlMGQ2ZDgyNDhhYmNiMWZlYjEyMGViOGI5MDAzYzVkMjc4MzMwMWRjMWQwZWM",
+          "contentSha256": "e902f4afededf695b90001a1b9f7c31c784d7f31ee5132f80f64b0b2cfeda545",
+          "receiptBindingSha256": "75b471f727050b5873a2b444f54c4b18e2b4fa204fe07a9594403f958ed57f65",
+          "verifiedAt": "2026-07-14T17:58:30.764Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "940b0e0045b63dc1318b2bc2a0a7a082ff5f6cd46d649d40bf3228c45c4e0c92"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "940b0e0045b63dc1318b2bc2a0a7a082ff5f6cd46d649d40bf3228c45c4e0c92"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "940b0e0045b63dc1318b2bc2a0a7a082ff5f6cd46d649d40bf3228c45c4e0c92"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/e9/02/e902f4afededf695b90001a1b9f7c31c784d7f31ee5132f80f64b0b2cfeda545.pdf"
+        }
       ]
     },
     {
@@ -153719,12 +155530,12 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 475,
-        "height": 820,
-        "depth": 555
+        "height": 840,
+        "depth": 556
       },
       "sources": [
         {
@@ -153738,6 +155549,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_9652156024e9aa6bfbd8b701",
+          "snapshotSha256": "6c9b8413e7027756b02248f0ff847320958cf0369fb67b9ce3819d55e2521f94",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -153745,8 +155563,38 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_9652156024e9aa6bfbd8b701",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRBF126-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDU4NTN8YXBwbGljYXRpb24vcGRmfGFESTNMMmd3TXk4NE9ETXpPREV4TlRjNE9URXdMMGhTUWtZeE1qWXRVM0JsWXk1d1pHWXw4NWU4M2Y1YjExODUyZGRmMjc4ZjdmY2QwOGJkMTE4NjUxOGRjMzA4MWE0ZTQ4MjU1ZjJhZGRjZDhkZGEzYzY3",
+          "contentSha256": "6c9b8413e7027756b02248f0ff847320958cf0369fb67b9ce3819d55e2521f94",
+          "receiptBindingSha256": "b6a90c4cfabe5859bf4c63e7e713e519363ba4a2503728309115ba808cf6c53c",
+          "verifiedAt": "2026-07-14T12:50:12.946Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "9935d48b485b8ff5800f7641dd4aa6df759918b3cde098f2cc4a88d95a086fbd"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "9935d48b485b8ff5800f7641dd4aa6df759918b3cde098f2cc4a88d95a086fbd"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "9935d48b485b8ff5800f7641dd4aa6df759918b3cde098f2cc4a88d95a086fbd"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/6c/9b/6c9b8413e7027756b02248f0ff847320958cf0369fb67b9ce3819d55e2521f94.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -155946,12 +157794,12 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
-        "width": 912,
-        "height": 1785,
-        "depth": 725
+        "width": 914,
+        "height": 1790,
+        "depth": 730
       },
       "sources": [
         {
@@ -155965,6 +157813,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_3175f68aebeb6ad0b422d4a2",
+          "snapshotSha256": "ff9c1735a4871bc809e0baa42ee366d5780e298a6dedad0ca17dd6ef01e8d667",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -155972,8 +157827,38 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_3175f68aebeb6ad0b422d4a2",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRCD640TBW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNjYzMDR8YXBwbGljYXRpb24vcGRmfGFERm1MMmhsTXk4NE9EQTBNVEF3T0RZMk1EYzRMMGhTUTBRMk5EQlVRbGN0VTNCbFl5NXdaR1l8MGRhNTM3OGQyMDRhMTM4MzA5YmQyMTA0ZTIzZDVjMDNjYzYxMzBhZGMzNmFhNGJlYTYwYTM2MGZiYTRhYmYyMw",
+          "contentSha256": "ff9c1735a4871bc809e0baa42ee366d5780e298a6dedad0ca17dd6ef01e8d667",
+          "receiptBindingSha256": "e99ec5c10a08151be2d08f50f7433b0f6f288384839dec2a8658648edcdf70aa",
+          "verifiedAt": "2026-07-14T12:50:12.735Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d32b1dce1f942f965466d4b2df469a1edcdd9c2d503361b9fe7f6633573679d3"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d32b1dce1f942f965466d4b2df469a1edcdd9c2d503361b9fe7f6633573679d3"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "d32b1dce1f942f965466d4b2df469a1edcdd9c2d503361b9fe7f6633573679d3"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/ff/9c/ff9c1735a4871bc809e0baa42ee366d5780e298a6dedad0ca17dd6ef01e8d667.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -157828,12 +159713,12 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 550,
-        "height": 1410,
-        "depth": 490
+        "height": 1456,
+        "depth": 562
       },
       "sources": [
         {
@@ -157847,6 +159732,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_2d425ac8b44bba1e07d5cd6c",
+          "snapshotSha256": "f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -157854,8 +159746,38 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_2d425ac8b44bba1e07d5cd6c",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRTF206-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDI1MDh8YXBwbGljYXRpb24vcGRmfGFHSTJMMmd3Wmk4NE9EQTBNVEEzTXpVME1UUXlMMGhTVkVZeU1EWXRVM0JsWXk1d1pHWXw5MDY2ZmY5ODYyNWFkNmZmY2NlMjM5Yzg5YzY4YWFmM2RkNGJmYWIwNzhhNmE3YmZkM2UyZTMzYjBmZDU3Nzdi",
+          "contentSha256": "f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb",
+          "receiptBindingSha256": "b660cea993c1c4cddc049fb67a6c017ff1cd5172525b6d0294aba879d2f8d80f",
+          "verifiedAt": "2026-07-14T12:50:12.711Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "26b3a668799766143dcaf33d65418d134bcb6ad28bdf6e2b2b6c6e88b1c087ce"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "26b3a668799766143dcaf33d65418d134bcb6ad28bdf6e2b2b6c6e88b1c087ce"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "26b3a668799766143dcaf33d65418d134bcb6ad28bdf6e2b2b6c6e88b1c087ce"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/f9/43/f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -157950,12 +159872,12 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 595,
-        "height": 1650,
-        "depth": 560
+        "height": 1696,
+        "depth": 650
       },
       "sources": [
         {
@@ -157969,6 +159891,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_25fb461f8122f75bd150181b",
+          "snapshotSha256": "4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -157976,8 +159905,38 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_25fb461f8122f75bd150181b",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HRTF325-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzgzOTJ8YXBwbGljYXRpb24vcGRmfGFETTBMMmczWXk4NE9EQTBNRGs0TWpjM05EQTJMMGhTVkVZek1qVXRVM0JsWXk1d1pHWXw5NDkzMGRlMDk4ODc5ZmU0NWMwNDRjYjkxYmE4NWZhODk4ZDY2NmE5ZmFjNmU3Yzk5MjNmNjc4MzdkNjRhYTFh",
+          "contentSha256": "4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0",
+          "receiptBindingSha256": "62b09aaaa461e409be49a03bc6251d469e45ca6d79788f21e0e2bcdeeb240da5",
+          "verifiedAt": "2026-07-14T12:50:12.646Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "b15435ede7ba5873bc00483941f92194a8979d2608cb6019491f1ca5e516336a"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "b15435ede7ba5873bc00483941f92194a8979d2608cb6019491f1ca5e516336a"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "b15435ede7ba5873bc00483941f92194a8979d2608cb6019491f1ca5e516336a"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/4e/dd/4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -166124,18 +168083,23 @@
           "verifiedAt": "2026-07-13T12:57:20.271Z",
           "fields": {
             "width": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 3,
               "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78"
             },
             "height": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 3,
               "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78"
             },
             "depth": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 3,
               "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78"
             }
-          }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/61/97/6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a.pdf"
         }
       ]
     },
@@ -185629,8 +187593,8 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 914,
         "height": 1792,
@@ -185648,6 +187612,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a0281e53a45dcd4ad896734a",
+          "snapshotSha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -185655,8 +187626,36 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "AGREES",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a0281e53a45dcd4ad896734a",
+          "sourceUrl": "https://www.lg.com/content/dam/channel/wcms/au/pdfs/GF-L700PL_Specsheet_V2_230809_2.pdf",
+          "contentSha256": "e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25",
+          "receiptBindingSha256": "ecb69c3a275b9824fb6b0937652fb92d59bb69ac02c2ea46d7156de3ff133a07",
+          "verifiedAt": "2026-07-14T20:04:06.267Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "30bf5ea10267e29fc038ce039119a65c32dd0d584e1b7a344016990e31de5577"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "30bf5ea10267e29fc038ce039119a65c32dd0d584e1b7a344016990e31de5577"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "30bf5ea10267e29fc038ce039119a65c32dd0d584e1b7a344016990e31de5577"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/e8/3d/e83dbc78ce964e2eea26f81a43d1b4607c24d1ec852baeeb96df9180a5157d25.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -244075,18 +246074,23 @@
           "verifiedAt": "2026-07-13T20:28:22.610Z",
           "fields": {
             "width": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 3,
               "fragmentSha256": "f5ba121d55e0ec491d41347b92eadd827056538d0791841eccf7b7fa34b4519a"
             },
             "height": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 3,
               "fragmentSha256": "f5ba121d55e0ec491d41347b92eadd827056538d0791841eccf7b7fa34b4519a"
             },
             "depth": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 3,
               "fragmentSha256": "f5ba121d55e0ec491d41347b92eadd827056538d0791841eccf7b7fa34b4519a"
             }
-          }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/5b/63/5b63a45d72f8a8b0789205016238cbd6d743f1561c20ea661e3fd342cb068485.pdf"
         }
       ]
     },
@@ -244624,18 +246628,23 @@
           "verifiedAt": "2026-07-13T20:28:18.511Z",
           "fields": {
             "width": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "c32efc28a6ce2f75c63fbb5ba5db9996b07e5bb048f3d11e64e80069038bff37"
             },
             "height": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "c32efc28a6ce2f75c63fbb5ba5db9996b07e5bb048f3d11e64e80069038bff37"
             },
             "depth": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "c32efc28a6ce2f75c63fbb5ba5db9996b07e5bb048f3d11e64e80069038bff37"
             }
-          }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/8d/7a/8d7aca3b15fe84af02c545c6de7317d03adb99afd8bcaa035711ebfa08e00ecd.pdf"
         }
       ]
     },
@@ -244704,18 +246713,23 @@
           "verifiedAt": "2026-07-13T20:28:20.832Z",
           "fields": {
             "width": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "c32efc28a6ce2f75c63fbb5ba5db9996b07e5bb048f3d11e64e80069038bff37"
             },
             "height": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "c32efc28a6ce2f75c63fbb5ba5db9996b07e5bb048f3d11e64e80069038bff37"
             },
             "depth": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "c32efc28a6ce2f75c63fbb5ba5db9996b07e5bb048f3d11e64e80069038bff37"
             }
-          }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/36/ad/36ad2fa97f1890466cc82241b5695a2ff6cfa385d05963da95764015fe99a6fc.pdf"
         }
       ]
     },
@@ -248389,18 +250403,23 @@
           "verifiedAt": "2026-07-13T20:28:23.135Z",
           "fields": {
             "width": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 3,
               "fragmentSha256": "cfd6581d0b50375d2c709a9103954a038f5ca3e537e714b39dde84dd09da35c1"
             },
             "height": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 3,
               "fragmentSha256": "cfd6581d0b50375d2c709a9103954a038f5ca3e537e714b39dde84dd09da35c1"
             },
             "depth": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 3,
               "fragmentSha256": "cfd6581d0b50375d2c709a9103954a038f5ca3e537e714b39dde84dd09da35c1"
             }
-          }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/79/bf/79bf89513b6c3b302ce50ffd3e7a85eaf23219791954e200d1e20112a66f4676.pdf"
         }
       ]
     },
@@ -248517,18 +250536,23 @@
           "verifiedAt": "2026-07-13T20:28:20.223Z",
           "fields": {
             "width": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 3,
               "fragmentSha256": "4bcd71e12ff181b8b9d0923352a508cc6a0500c1085f00b83ce8b17e151560ff"
             },
             "height": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 3,
               "fragmentSha256": "4bcd71e12ff181b8b9d0923352a508cc6a0500c1085f00b83ce8b17e151560ff"
             },
             "depth": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 3,
               "fragmentSha256": "4bcd71e12ff181b8b9d0923352a508cc6a0500c1085f00b83ce8b17e151560ff"
             }
-          }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/8a/f1/8af15671e2dd1ffb6232dc224e3fb83176a785fb41259cd780ff4f6a79444e45.pdf"
         }
       ]
     },
@@ -251748,18 +253772,23 @@
           "verifiedAt": "2026-07-13T20:28:19.702Z",
           "fields": {
             "width": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "4743df21619b4ec8fad6881b134720efb0e0fd17effe91509cb249fafb7b6086"
             },
             "height": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "4743df21619b4ec8fad6881b134720efb0e0fd17effe91509cb249fafb7b6086"
             },
             "depth": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "4743df21619b4ec8fad6881b134720efb0e0fd17effe91509cb249fafb7b6086"
             }
-          }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/7f/e4/7fe483659b04dbb1f77a958bb33a3f4cbc29ad7b8b54e0deb19c688a3cae1678.pdf"
         }
       ]
     },
@@ -251863,18 +253892,23 @@
           "verifiedAt": "2026-07-13T20:28:24.255Z",
           "fields": {
             "width": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "4743df21619b4ec8fad6881b134720efb0e0fd17effe91509cb249fafb7b6086"
             },
             "height": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "4743df21619b4ec8fad6881b134720efb0e0fd17effe91509cb249fafb7b6086"
             },
             "depth": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "4743df21619b4ec8fad6881b134720efb0e0fd17effe91509cb249fafb7b6086"
             }
-          }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/70/7d/707d4dbcd83123653259473119cfa91ff5c931c65f89a244d0b4fe7cf8d2e5d4.pdf"
         }
       ]
     },
@@ -252015,18 +254049,23 @@
           "verifiedAt": "2026-07-13T20:28:19.087Z",
           "fields": {
             "width": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 4,
               "fragmentSha256": "4f69416826583c4f0d0fcb6895776129499a9c75da5f57f8511a31ad046fa2ed"
             },
             "height": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 4,
               "fragmentSha256": "4f69416826583c4f0d0fcb6895776129499a9c75da5f57f8511a31ad046fa2ed"
             },
             "depth": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 4,
               "fragmentSha256": "4f69416826583c4f0d0fcb6895776129499a9c75da5f57f8511a31ad046fa2ed"
             }
-          }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/43/81/43817058a246dbcd95462338253be90a3317bd4032ecb0a42879056e04a13057.pdf"
         }
       ]
     },
@@ -252167,18 +254206,23 @@
           "verifiedAt": "2026-07-13T20:28:24.966Z",
           "fields": {
             "width": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "2124822329d0ba23b7705f6b0b23ad097e99578825fb2d00de3cb6a046494a1a"
             },
             "height": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "2124822329d0ba23b7705f6b0b23ad097e99578825fb2d00de3cb6a046494a1a"
             },
             "depth": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 7,
               "fragmentSha256": "2124822329d0ba23b7705f6b0b23ad097e99578825fb2d00de3cb6a046494a1a"
             }
-          }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/eb/2b/eb2bfa767ba6a8beb8bb3b1dee84d69a6996934b8b584074a956c23668b72a42.pdf"
         }
       ]
     },
@@ -252321,18 +254365,23 @@
           "verifiedAt": "2026-07-13T20:28:22.116Z",
           "fields": {
             "width": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 6,
               "fragmentSha256": "62672a39c5f013a5fa3ce56e0b8b082b793c231f59ba6f388eeb46536e2ab0d8"
             },
             "height": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 6,
               "fragmentSha256": "62672a39c5f013a5fa3ce56e0b8b082b793c231f59ba6f388eeb46536e2ab0d8"
             },
             "depth": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 6,
               "fragmentSha256": "62672a39c5f013a5fa3ce56e0b8b082b793c231f59ba6f388eeb46536e2ab0d8"
             }
-          }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/56/b4/56b407cd1a481c606bf5726fe9760ce40706abe884fad0eadf8cb87a52df37d6.pdf"
         }
       ]
     },
@@ -256261,14 +258310,25 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 595,
+        "height": 850,
+        "depth": 585
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_fc1d56ab3f9d8c60bc855b2a",
+          "snapshotSha256": "4ba4d9aff143bccdf8f774774c3010ae18a3688315727aeb2bc02eb4dc684fb8",
+          "sourceLines": [
+            50
+          ]
         }
       ],
       "catalogProductIds": [
@@ -256277,8 +258337,34 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_fc1d56ab3f9d8c60bc855b2a",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=738297&jezik=en&tipVsebine=1&docName=574443en.pdf",
+          "contentSha256": "4ba4d9aff143bccdf8f774774c3010ae18a3688315727aeb2bc02eb4dc684fb8",
+          "receiptBindingSha256": "a0f4effdf2f4ebf59f186f85e9834e7431c09a5f8a65f9549da9bbc8e5ea9b72",
+          "verifiedAt": "2026-07-15T00:52:00.290Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "44995a88df8e293581b16c3e64cd326cc1bd0a2be976291f93af03f0107181ad"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "44995a88df8e293581b16c3e64cd326cc1bd0a2be976291f93af03f0107181ad"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 50,
+              "fragmentSha256": "44995a88df8e293581b16c3e64cd326cc1bd0a2be976291f93af03f0107181ad"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/4b/a4/4ba4d9aff143bccdf8f774774c3010ae18a3688315727aeb2bc02eb4dc684fb8.pdf"
+        }
       ]
     },
     {
@@ -259100,9 +261186,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 845,
+        "depth": 632
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -259115,6 +261205,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_28a9b3256f927505a543f326",
+          "snapshotSha256": "3b05c53d73812d2432a3f7b667a775300b37297f6c410f0d3c7d4b172c8596d7",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -259122,9 +261219,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_28a9b3256f927505a543f326",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAN28227AU.pdf",
+          "contentSha256": "3b05c53d73812d2432a3f7b667a775300b37297f6c410f0d3c7d4b172c8596d7",
+          "receiptBindingSha256": "0795949f3b24cb9c79d46c9ed1c78ff354ba27807bed3ee980f6c57fac41ccdc",
+          "verifiedAt": "2026-07-14T12:50:12.691Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "9fbd37a0e298abeb062e53f63176444aa46f03a09be789f3c0c0c2c1abaed9fd"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "9fbd37a0e298abeb062e53f63176444aa46f03a09be789f3c0c0c2c1abaed9fd"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "9fbd37a0e298abeb062e53f63176444aa46f03a09be789f3c0c0c2c1abaed9fd"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/3b/05/3b05c53d73812d2432a3f7b667a775300b37297f6c410f0d3c7d4b172c8596d7.pdf"
+        }
       ]
     },
     {
@@ -259890,9 +262013,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 848,
+        "depth": 636
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -259905,6 +262032,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_f6bbbc379b9ef813ef16aaff",
+          "snapshotSha256": "7da89e80cb17fda5af7337a7f331d13a48a9dbd9326d0ef633b5d9a71ef3ef4d",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -259912,9 +262046,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_f6bbbc379b9ef813ef16aaff",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG24402AU.pdf",
+          "contentSha256": "7da89e80cb17fda5af7337a7f331d13a48a9dbd9326d0ef633b5d9a71ef3ef4d",
+          "receiptBindingSha256": "6ece827041d8167ff5e444a233963fa2b811d1fd2ef3374ff49bc4a1c15a38f0",
+          "verifiedAt": "2026-07-14T12:50:13.108Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "e9d2e5f0f6b8b60ac2ce58793483473fcf4c74e15e01b73b2b73a98736dc9d62"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "e9d2e5f0f6b8b60ac2ce58793483473fcf4c74e15e01b73b2b73a98736dc9d62"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "e9d2e5f0f6b8b60ac2ce58793483473fcf4c74e15e01b73b2b73a98736dc9d62"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/7d/a8/7da89e80cb17fda5af7337a7f331d13a48a9dbd9326d0ef633b5d9a71ef3ef4d.pdf"
+        }
       ]
     },
     {
@@ -260503,9 +262663,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 598,
+        "height": 845,
+        "depth": 636
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -260518,6 +262682,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_9c822a66f4cb34d3554851d2",
+          "snapshotSha256": "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -260525,9 +262696,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_9c822a66f4cb34d3554851d2",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG254Z1AU.pdf",
+          "contentSha256": "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450",
+          "receiptBindingSha256": "d058194c692c93254d9a44a7b9dcdd8cf05b0521dc59b6de8217f2a191ed8f1c",
+          "verifiedAt": "2026-07-14T12:50:12.988Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "59ff501b06312df10c7ec9354ab02f6576d433436b99536d3a80ad70d1f20db5"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "59ff501b06312df10c7ec9354ab02f6576d433436b99536d3a80ad70d1f20db5"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "59ff501b06312df10c7ec9354ab02f6576d433436b99536d3a80ad70d1f20db5"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/da/79/da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450.pdf"
+        }
       ]
     },
     {
@@ -268981,18 +271178,23 @@
           "verifiedAt": "2026-07-13T12:39:16.127Z",
           "fields": {
             "width": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 1,
               "fragmentSha256": "e4bc637cb1e33ff87e87d42b83a402e4ca5a2d55500bf6914f2e2808f9d204ec"
             },
             "height": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 1,
               "fragmentSha256": "27a9d973901502cc5e21328cbf39bee782afe1c95fab53ef453d98c6db02382e"
             },
             "depth": {
+              "locatorKind": "PDF_FRAGMENT",
               "page": 1,
               "fragmentSha256": "73e4eb30f5148002cddca67074143da0595956668194c77ac8b0efadaaaa4b13"
             }
-          }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/7f/ce/7fcec1d5a9dbe4a9bfe86d701c118d3dad9028173adc91012472a843db3ab098.pdf"
         }
       ]
     },
@@ -269870,9 +272072,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 602,
+        "height": 850,
+        "depth": 661
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -269885,6 +272091,14 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_f3a70e08b6741d7ca608e204",
+          "snapshotSha256": "54e96a80e3b7e1308f717f9a5273dcee81d727056b41c9db2572aee91466edb6",
+          "sourceLines": [
+            1,
+            3
+          ]
         }
       ],
       "catalogProductIds": [
@@ -269892,9 +272106,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_f3a70e08b6741d7ca608e204",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwc6aea06b/QRG/AU/QRG-AU-92331.pdf",
+          "contentSha256": "54e96a80e3b7e1308f717f9a5273dcee81d727056b41c9db2572aee91466edb6",
+          "receiptBindingSha256": "dd8b2a505742e20062905c98e72584d4df738a39c86bc7649061c3679f8318f0",
+          "verifiedAt": "2026-07-14T12:50:13.087Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "2c2762a49f391492506ae5a3e3ba673cca8ad57094fe7433ddf22a1b639717cc"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 3,
+              "fragmentSha256": "30717e89f0cc9f116c4315ebee39efed5b3bc51a14f58daa3cbf09ec71cf0c0b"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "eb0273f2729ace053cd3ff2b7c6b13fd61ac6328a167a897c93b841dae004572"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/54/e9/54e96a80e3b7e1308f717f9a5273dcee81d727056b41c9db2572aee91466edb6.pdf"
+        }
       ]
     },
     {
@@ -270857,9 +273097,13 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 602,
+        "height": 850,
+        "depth": 593
+      },
       "sources": [
         {
           "sourceId": "energy-rating:washing_machine",
@@ -270872,6 +273116,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_a4d0bec07c2e3e47463bc24c",
+          "snapshotSha256": "54b97d676eb19b474e7b8820e1739dd60802e85719b10ad9bac82d860f7d3512",
+          "sourceLines": [
+            1
+          ]
         }
       ],
       "catalogProductIds": [
@@ -270879,9 +273130,35 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "MISSING_DIMENSIONS",
-      "reasonCodes": [
-        "REGISTRY_DIMENSIONS_MISSING"
+      "registryDimensionState": "NOT_COMPARABLE",
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_a4d0bec07c2e3e47463bc24c",
+          "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw636a518e/QRG/AU/QRG-AU-92303.pdf",
+          "contentSha256": "54b97d676eb19b474e7b8820e1739dd60802e85719b10ad9bac82d860f7d3512",
+          "receiptBindingSha256": "836fe821da2ea0f4fe137fb564ddc6638b228f6089a1b56d5ad7910ea5ea92e9",
+          "verifiedAt": "2026-07-14T12:50:13.007Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "3d25263385f032f7875d616456889c24d3ddd7f907725dc246fff447ac5a1e8c"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "3d25263385f032f7875d616456889c24d3ddd7f907725dc246fff447ac5a1e8c"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 1,
+              "fragmentSha256": "3d25263385f032f7875d616456889c24d3ddd7f907725dc246fff447ac5a1e8c"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/54/b9/54b97d676eb19b474e7b8820e1739dd60802e85719b10ad9bac82d860f7d3512.pdf"
+        }
       ]
     },
     {
@@ -276185,12 +278462,12 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 595,
         "height": 845,
-        "depth": 620
+        "depth": 590
       },
       "sources": [
         {
@@ -276204,6 +278481,13 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_6205c51822147c1d24e3e3cf",
+          "snapshotSha256": "1282141354ddd0d1d197d847a03ce9b4e99e256ee7bcb18c1a38b1c965eb0605",
+          "sourceLines": [
+            2
+          ]
         }
       ],
       "catalogProductIds": [
@@ -276211,8 +278495,38 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_6205c51822147c1d24e3e3cf",
+          "sourceUrl": "https://dtc-aus-api.hisense.com/medias/HWFS1015E-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw2Mjk5NHxhcHBsaWNhdGlvbi9wZGZ8YURkaUwyaGtaUzg0T0RBME1EazBOVEE1TURnMkwwaFhSbE14TURFMVJTMVRjR1ZqTG5Ca1pnfDg4YWU1MTE2NzA0NGE2MTBhMDI1NjhmYmY1MjAxMjk0NDE4M2RiZDYwNzEyZTI1OWFiMzE0ZDZkOWFlMzIzNGQ",
+          "contentSha256": "1282141354ddd0d1d197d847a03ce9b4e99e256ee7bcb18c1a38b1c965eb0605",
+          "receiptBindingSha256": "51036febe679aa0f3a1e8d09629eaad944fcc60c7edf0d5ba740acf7e622b452",
+          "verifiedAt": "2026-07-14T12:50:12.842Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "28d52d8724ba733ea10ca44a783489c1207bfa9368d1c61558521221d0fb8908"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "28d52d8724ba733ea10ca44a783489c1207bfa9368d1c61558521221d0fb8908"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 2,
+              "fragmentSha256": "28d52d8724ba733ea10ca44a783489c1207bfa9368d1c61558521221d0fb8908"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/12/82/1282141354ddd0d1d197d847a03ce9b4e99e256ee7bcb18c1a38b1c965eb0605.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -284703,13 +287017,22 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "IDENTITY_ONLY",
-      "lookupAction": "MEASURE_REQUIRED",
-      "dimensionsMm": null,
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
+      "dimensionsMm": {
+        "width": 701,
+        "height": 1030,
+        "depth": 736
+      },
       "sources": [
         {
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_002a12622bce35cd88bb8154",
+          "snapshotSha256": "6b28ee2a4a8948655499dc4a871efc9dde59a6890c991dc521255f02a7126fb5",
           "sourceLines": []
         }
       ],
@@ -284719,8 +287042,31 @@
       "registryObservationCount": 0,
       "registryMarketState": "NO_REGISTRY",
       "registryDimensionState": "NO_REGISTRY",
-      "reasonCodes": [
-        "CATALOG_IDENTITY_WITHOUT_RECEIPT"
+      "reasonCodes": [],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_002a12622bce35cd88bb8154",
+          "sourceUrl": "https://www.lg.com/au/washer-dryers/top-load-washing-machines/wtg1432vh/",
+          "contentSha256": "6b28ee2a4a8948655499dc4a871efc9dde59a6890c991dc521255f02a7126fb5",
+          "receiptBindingSha256": "01c65d9da822453778a3ce85edececd058dd81ca70f22dc258ce3677debee42e",
+          "verifiedAt": "2026-07-14T17:39:59.856Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "6b28ee2a4a8948655499dc4a871efc9dde59a6890c991dc521255f02a7126fb5"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "6b28ee2a4a8948655499dc4a871efc9dde59a6890c991dc521255f02a7126fb5"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "6b28ee2a4a8948655499dc4a871efc9dde59a6890c991dc521255f02a7126fb5"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/6b/28/6b28ee2a4a8948655499dc4a871efc9dde59a6890c991dc521255f02a7126fb5.html"
+        }
       ]
     },
     {
@@ -287678,12 +290024,12 @@
         }
       ],
       "lifecycleState": "CURRENT_RETAIL",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
         "width": 600,
         "height": 850,
-        "depth": 610
+        "depth": 660
       },
       "sources": [
         {
@@ -287697,6 +290043,18 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_d1a229a024fafaeb76b788d9",
+          "snapshotSha256": "0276c210755dfdfeee574496097fba98e0726bae6831f7f172f70bca4f41f0f1",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_d1a229a024fafaeb76b788d9",
+          "snapshotSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
+          "sourceLines": [
+            12
+          ]
         }
       ],
       "catalogProductIds": [
@@ -287704,8 +290062,56 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_d1a229a024fafaeb76b788d9",
+          "sourceUrl": "https://www.lg.com/au/washer-dryers/front-load-washing-machines/wv9-1412b/",
+          "contentSha256": "0276c210755dfdfeee574496097fba98e0726bae6831f7f172f70bca4f41f0f1",
+          "receiptBindingSha256": "1cebdc4325ee2c5369f5f814c3321cdec2ddeed8505ad2d03bef916f191b5686",
+          "verifiedAt": "2026-07-14T13:27:10.606Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "0276c210755dfdfeee574496097fba98e0726bae6831f7f172f70bca4f41f0f1"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "0276c210755dfdfeee574496097fba98e0726bae6831f7f172f70bca4f41f0f1"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "0276c210755dfdfeee574496097fba98e0726bae6831f7f172f70bca4f41f0f1"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/02/76/0276c210755dfdfeee574496097fba98e0726bae6831f7f172f70bca4f41f0f1.html"
+        },
+        {
+          "targetId": "recovery_target_d1a229a024fafaeb76b788d9",
+          "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=HJoJF6sjLmW0vxZag11e5g",
+          "contentSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
+          "receiptBindingSha256": "662ed018caa73a3ae4e7bbc3325260b528094d0b581dc3efef99530ed964a8d1",
+          "verifiedAt": "2026-07-14T13:27:11.620Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 12,
+              "fragmentSha256": "3d53d627e79d8a66c1a6b14b32b1f234f9ee66422e291b69c5f2b39b503b1c88"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 12,
+              "fragmentSha256": "3d53d627e79d8a66c1a6b14b32b1f234f9ee66422e291b69c5f2b39b503b1c88"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/2d/55/2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -311686,18 +314092,18 @@
       "CURRENT_RETAIL": 1384
     },
     "byEvidence": {
-      "REGISTRY_CONSISTENT": 4930,
-      "IDENTITY_ONLY": 3052,
-      "INTERNAL_CONFLICT": 71,
+      "REGISTRY_CONSISTENT": 4911,
+      "IDENTITY_ONLY": 3034,
+      "INTERNAL_CONFLICT": 69,
+      "MODEL_RECEIPT": 51,
       "INVALID_DIMENSIONS": 19,
-      "CATALOG_RECEIPT": 11,
-      "MODEL_RECEIPT": 12
+      "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
-      "CONFIRM_REQUIRED": 4930,
-      "MEASURE_REQUIRED": 3052,
-      "QUARANTINED": 90,
-      "AUTO_FILL": 23
+      "CONFIRM_REQUIRED": 4911,
+      "MEASURE_REQUIRED": 3034,
+      "QUARANTINED": 88,
+      "AUTO_FILL": 62
     }
   }
 }

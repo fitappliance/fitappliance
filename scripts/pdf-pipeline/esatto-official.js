@@ -1,5 +1,6 @@
 const SITEMAP_URL = 'https://esatto.house/sitemap.xml';
 const USER_AGENT = 'FitApplianceBot/1.0 (+https://www.fitappliance.com.au/about)';
+const { createHash } = require('node:crypto');
 
 function normalizeSku(value) {
   return String(value || '')
@@ -91,7 +92,8 @@ function extractEsattoDownloadLinks(html, pageUrl) {
 async function findEsattoOfficialPdf(target = {}, {
   fetchImpl = globalThis.fetch,
   sitemapUrl = SITEMAP_URL,
-  timeoutMs = 30_000
+  timeoutMs = 30_000,
+  writeObject = null
 } = {}) {
   if (!fetchImpl) throw new Error('Esatto official finder requires fetch');
   const sku = targetSku(target);
@@ -115,12 +117,33 @@ async function findEsattoOfficialPdf(target = {}, {
         || links.find((link) => link.resourceType === 'product_card')
         || links[0];
       if (best) {
+        let discoveryProvenance;
+        if (typeof writeObject === 'function') {
+          const bytes = Buffer.from(html, 'utf8');
+          const discoveryContentSha256 = createHash('sha256').update(bytes).digest('hex');
+          const discoveryObjectPath = `evidence/web/sha256/${discoveryContentSha256.slice(0, 2)}/${discoveryContentSha256.slice(2, 4)}/${discoveryContentSha256}.html`;
+          await writeObject(discoveryObjectPath, bytes);
+          discoveryProvenance = {
+            schemaVersion: 1,
+            method: 'official_product_page',
+            market: 'AU',
+            discoveryUrl: productUrl,
+            requestedModel: sku,
+            matchedModel: sku,
+            artifactUrl: best.url,
+            artifactLinkUrl: best.url,
+            discoveryContentSha256,
+            discoveryObjectPath,
+            discoveryByteSize: bytes.length
+          };
+        }
         return {
           sourceUrl: best.url,
           source: `esatto-official-${best.resourceType}`,
           resourceType: best.resourceType,
           productUrl,
-          label: best.label
+          label: best.label,
+          ...(discoveryProvenance ? { discoveryProvenance } : {})
         };
       }
       errors.push(`${productUrl}: no downloadable PDFs`);

@@ -161,8 +161,13 @@ function inferredScope(field, label) {
 
 function inferredFlag(label, noun) {
   const normalized = label.toLowerCase();
-  if (new RegExp(`(?:including|with)\\s+(?:the\\s+)?${noun}s?`).test(normalized)) return true;
-  if (new RegExp(`(?:excluding|without)\\s+(?:the\\s+)?${noun}s?`).test(normalized)) return false;
+  if (noun === 'handle'
+    && /(?:including|with)\s+(?:the\s+)?doors?\s*(?:and|&)\s*(?:the\s+)?handles?/.test(normalized)) {
+    return true;
+  }
+  const qualifier = noun === 'handle' ? '(?:door\\s+)?' : '';
+  if (new RegExp(`(?:including|with)\\s+(?:the\\s+)?${qualifier}${noun}s?`).test(normalized)) return true;
+  if (new RegExp(`(?:excluding|without)\\s+(?:the\\s+)?${qualifier}${noun}s?`).test(normalized)) return false;
   return null;
 }
 

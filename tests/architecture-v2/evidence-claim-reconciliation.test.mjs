@@ -199,7 +199,7 @@ test('partial official documents cannot be combined to resolve a registry permut
   assert.equal(result.axisPermutationResolution, undefined);
 });
 
-test('ordinary lower-authority disagreement remains visible but cannot defeat exact official evidence', () => {
+test('ordinary lower-authority disagreement requires independent official corroboration', () => {
   const accepted = source('a'.repeat(64), { widthMm: 913, heightMm: 1782, depthMm: 803 });
   const result = reconcileEvidenceClaims(IDENTITY, inventory([accepted]), {
     verifyReceipt,
@@ -210,9 +210,51 @@ test('ordinary lower-authority disagreement remains visible but cannot defeat ex
     }],
   });
 
-  assert.equal(result.status, 'accepted');
+  assert.equal(result.status, 'conflict_quarantined');
   assert.equal(result.sources[0].contentSha256, accepted.contentSha256);
   assert.equal(result.conflictHints[0].kind, 'lower_authority_disagreement');
+});
+
+test('a receipt-bound exact market API dimension representation corroborates its official PDF', () => {
+  const dimensions = { widthMm: 595, heightMm: 850, depthMm: 654 };
+  const pdf = source('a'.repeat(64), dimensions, {
+    identitySignals: [{
+      type: 'official_market_api_dimensions',
+      value: `T408HD.W:595x850x654:${'b'.repeat(64)}`,
+    }],
+  });
+  const result = reconcileEvidenceClaims(IDENTITY, inventory([pdf]), {
+    verifyReceipt,
+    lowerAuthorityHints: [{
+      sourceRole: 'legacy_hint',
+      sourceId: 'legacy-catalog',
+      dimensionsMm: { widthMm: 595, heightMm: 850, depthMm: 640 },
+    }],
+  });
+
+  assert.equal(result.status, 'accepted');
+  assert.equal(result.lowerAuthorityResolution, 'official_market_api_dimension_corroboration');
+});
+
+test('PDF and exact official product page can resolve an ordinary lower-authority disagreement', () => {
+  const dimensions = { widthMm: 913, heightMm: 1782, depthMm: 803 };
+  const pdf = source('a'.repeat(64), dimensions);
+  const productPage = source('b'.repeat(64), dimensions, {
+    sourceType: 'official_exact_model_product_page',
+    finalUrl: 'https://www.westinghouse.com.au/fridges/whe6874ba/',
+  });
+  const result = reconcileEvidenceClaims(IDENTITY, inventory([pdf, productPage]), {
+    verifyReceipt,
+    lowerAuthorityHints: [{
+      sourceRole: 'registry_hint',
+      sourceId: 'energy-rating',
+      dimensionsMm: { widthMm: 910, heightMm: 1782, depthMm: 803 },
+    }],
+  });
+
+  assert.equal(result.status, 'accepted');
+  assert.equal(result.sources.length, 2);
+  assert.equal(result.lowerAuthorityResolution, 'independent_official_dimension_corroboration');
 });
 
 test('incomplete inventory cannot reconcile to acceptance', () => {
@@ -226,6 +268,51 @@ test('incomplete inventory cannot reconcile to acceptance', () => {
   assert.equal(result.status, 'retryable_failure');
   assert.equal(result.failureCode, 'discovery_incomplete');
   assert.deepEqual(result.sources, []);
+});
+
+test('official parser and transport failures outrank an optional reference-only candidate', () => {
+  const baseCandidates = [
+    {
+      candidateId: 'official-pdf', sourceUrl: 'https://www.westinghouse.com.au/manual.pdf',
+      authorityMode: 'official', sourceRole: 'manufacturer_document', requiredAttempt: true,
+      batchJobIds: [], resolverRefs: [],
+      outcome: { status: 'mineru_failure', failureCode: 'mineru', reason: 'image-only dimensions', source: null },
+    },
+    {
+      candidateId: 'official-parts', sourceUrl: 'https://www.westinghouse.com.au/parts.pdf',
+      authorityMode: 'official', sourceRole: 'manufacturer_document', requiredAttempt: true,
+      batchJobIds: [], resolverRefs: [],
+      outcome: { status: 'transport_failure', failureCode: 'transport', reason: 'http_403', source: null },
+    },
+    {
+      candidateId: 'reference-page', sourceUrl: 'https://retailer.example/WHE6874BA',
+      authorityMode: 'reference', sourceRole: 'retailer_reference', requiredAttempt: false,
+      batchJobIds: [], resolverRefs: [],
+      outcome: { status: 'reference_only', failureCode: 'source_authority', source: null },
+    },
+  ];
+  const parserResult = reconcileEvidenceClaims(IDENTITY, inventory([], { candidates: baseCandidates }));
+  assert.equal(parserResult.status, 'claims_incomplete');
+  assert.equal(parserResult.failureCode, 'mineru');
+
+  const transportResult = reconcileEvidenceClaims(IDENTITY, inventory([], {
+    candidates: baseCandidates.filter((candidate) => candidate.candidateId !== 'official-pdf'),
+  }));
+  assert.equal(transportResult.status, 'claims_incomplete');
+  assert.equal(transportResult.failureCode, 'transport');
+});
+
+test('source authority is reported only when no official candidate reached evidence processing', () => {
+  const result = reconcileEvidenceClaims(IDENTITY, inventory([], {
+    candidates: [{
+      candidateId: 'reference-page', sourceUrl: 'https://retailer.example/WHE6874BA',
+      authorityMode: 'reference', sourceRole: 'retailer_reference', requiredAttempt: false,
+      batchJobIds: [], resolverRefs: [],
+      outcome: { status: 'reference_only', failureCode: 'source_authority', source: null },
+    }],
+  }));
+  assert.equal(result.status, 'claims_incomplete');
+  assert.equal(result.failureCode, 'source_authority');
 });
 
 test('non-scalar width range remains receipt accepted but cannot be scalar-projected', () => {

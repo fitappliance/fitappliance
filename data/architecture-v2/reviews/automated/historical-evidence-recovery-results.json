@@ -1,26 +1,26 @@
 {
   "schemaVersion": 1,
-  "runId": "task12-kbm5302ac-promotable",
-  "batchId": "historical-recovery-e764532d52a9023099098dcf-slice-eab2ee8041c6",
-  "batchSha256": "6c2413f6e1a1a36cd92bf3bade58e350943ba0022e3bed70ceba666f46e47f3e",
-  "queueSha256": "075be4cf7f4ee6b21edfd56789f75705e11d00502c7f43f61ff36fb5a77c4eab",
-  "policySha256": "47f4c941793116d4135e9e6479b4a8a478555f4b37a792ea21ccc238fb30656a",
-  "startedAt": "2026-07-13T12:56:54.533Z",
-  "completedAt": "2026-07-13T12:57:20.315Z",
-  "semanticOutcomeSha256": "f1e87861ba90f62b3a1d3bc608b8000846da9a9abfc305de4087c44624b72e3c",
+  "runId": "historical-asko-dbi364idsau-20260715-v1",
+  "batchId": "historical-recovery-dd35fdc8662e45bb9fa6e49a-slice-4d29d871b5bf",
+  "batchSha256": "aadae4a40b2100f14bb69ec1b7e5d86e410deb7c4dfdf08066c371ba8ca0252e",
+  "queueSha256": "59d059cfd93144f559fe4e539088d31219f0d09193ebed5053708d8ab4059e94",
+  "policySha256": "34edad995a430f797a52969710b8fef165779bfed3f702cedf9e461d550008b8",
+  "startedAt": "2026-07-15T01:22:54.165Z",
+  "completedAt": "2026-07-15T01:26:10.017Z",
+  "semanticOutcomeSha256": "272d69a63d4beadb54c09b4df08b6207d73f6d6cfdf85ee81730920481f12e52",
   "outcomes": [
     {
-      "targetId": "recovery_target_912d08c57373899f5b2a38bd",
+      "targetId": "recovery_target_96cc8f131f046a32f993b4bf",
       "status": "accepted",
       "failureCode": null,
-      "candidateInventorySha256": "30be86f8eb9bc42a25933b12f0d873f0a5319fbf8b3213a5ae1b90c4c98aebb2",
+      "candidateInventorySha256": "c3396e8f1875ed9b4eca53714894f40732043251e701bae26b3ed41308891344",
       "candidateInventory": {
         "schemaVersion": 1,
-        "targetId": "recovery_target_912d08c57373899f5b2a38bd",
+        "targetId": "recovery_target_96cc8f131f046a32f993b4bf",
         "identity": {
-          "brand": "KELVINATOR",
-          "model": "KBM5302AC",
-          "category": "fridge"
+          "brand": "ASKO",
+          "model": "DBI364ID.S.AU",
+          "category": "dishwasher"
         },
         "completionStatus": "complete",
         "incompleteResolvers": [],
@@ -30,9 +30,17 @@
             "resolverId": "architecture-v2-core-official-discovery",
             "version": "1",
             "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
+            "required": false,
+            "completion": "complete",
+            "candidateCount": 0
+          },
+          {
+            "resolverId": "asko-official-manuals-api",
+            "version": "1",
+            "scope": "asko_legacy_discovery_only",
             "required": true,
             "completion": "complete",
-            "candidateCount": 1
+            "candidateCount": 4
           },
           {
             "resolverId": "batch-candidates",
@@ -40,52 +48,39 @@
             "scope": "recovery_batch_graph",
             "required": true,
             "completion": "complete",
-            "candidateCount": 1
-          },
-          {
-            "resolverId": "electrolux-group-official-factsheet",
-            "version": "1",
-            "scope": "exact_model_au_factsheet_endpoint",
-            "required": true,
-            "completion": "complete",
-            "candidateCount": 1
+            "candidateCount": 0
           }
         ],
         "activeReceiptSources": [],
         "candidates": [
           {
-            "candidateId": "candidate_85368b1e6326b0cf733a477b",
-            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
+            "candidateId": "candidate_20982145fa05f62f9c306baf",
+            "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf",
             "authorityMode": "official",
             "sourceRole": "manufacturer_document",
             "requiredAttempt": true,
-            "batchJobIds": [
-              "recovery_b613fd47007c9b9a4d111b38"
-            ],
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_market_api",
+              "market": "AU",
+              "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000740002?fields=FULL&lang=en_AU&curr=AUD",
+              "requestedModel": "DBI364ID.S.AU",
+              "matchedModel": "DBI364ID.S.AU",
+              "artifactUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf",
+              "documentId": "000000000000740002",
+              "discoveryContentSha256": "05710bdd8f543d9f5ad3084389761b27ea522079f4498c2e162d850f10a987b8",
+              "discoveryObjectPath": "evidence/web/sha256/05/71/05710bdd8f543d9f5ad3084389761b27ea522079f4498c2e162d850f10a987b8.json",
+              "discoveryByteSize": 226763
+            },
+            "batchJobIds": [],
             "resolverRefs": [
               {
-                "resolverId": "architecture-v2-core-official-discovery",
+                "resolverId": "asko-official-manuals-api",
                 "version": "1",
-                "scope": "explicit_urls_product_pages_templates_and_bounded_sitemaps",
-                "discoveryMethod": "brand_template",
+                "scope": "asko_legacy_discovery_only",
+                "discoveryMethod": "asko_legacy_finder",
                 "sourceRole": "manufacturer_document",
-                "order": 0
-              },
-              {
-                "resolverId": "batch-candidates",
-                "version": "1",
-                "scope": "recovery_batch_graph",
-                "discoveryMethod": "recovery_batch",
-                "sourceRole": "manufacturer_document",
-                "order": 0
-              },
-              {
-                "resolverId": "electrolux-group-official-factsheet",
-                "version": "1",
-                "scope": "exact_model_au_factsheet_endpoint",
-                "discoveryMethod": "electrolux_group_factsheet_endpoint",
-                "sourceRole": "manufacturer_document",
-                "order": 0
+                "order": 2
               }
             ],
             "outcome": {
@@ -94,18 +89,18 @@
               "source": {
                 "authority": "manufacturer",
                 "sourceType": "official_exact_model_pdf",
-                "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
-                "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
+                "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf",
+                "finalUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf",
                 "redirectChain": [],
-                "retrievedAt": "2026-07-13T12:57:20.271Z",
-                "contentSha256": "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a",
-                "objectPath": "evidence/web/sha256/61/97/6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a.pdf",
+                "retrievedAt": "2026-07-15T01:24:36.230Z",
+                "contentSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+                "objectPath": "evidence/web/sha256/38/ad/38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b.pdf",
                 "contentType": "application/pdf",
-                "byteSize": 858418,
+                "byteSize": 2788764,
                 "supersedesContentSha256": [],
                 "identity": {
-                  "brand": "KELVINATOR",
-                  "model": "KBM5302AC",
+                  "brand": "ASKO",
+                  "model": "DBI364ID.S.AU",
                   "outcome": "exact"
                 },
                 "claims": [
@@ -113,9 +108,9 @@
                     "field": "closedEnvelope.widthMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 796
+                      "mm": 596
                     },
-                    "sourceLabel": "Total width (mm)",
+                    "sourceLabel": "Width:",
                     "sourceAxisOrder": [
                       "width"
                     ],
@@ -123,22 +118,23 @@
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": 3,
-                    "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78",
+                    "page": 43,
+                    "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
                     "bbox": [
-                      516,
-                      229,
-                      939,
-                      872
+                      76,
+                      309,
+                      692,
+                      452
                     ]
                   },
                   {
                     "field": "closedEnvelope.heightMm",
                     "value": {
-                      "kind": "fixed",
-                      "mm": 1718
+                      "kind": "range",
+                      "minMm": 819,
+                      "maxMm": 872
                     },
-                    "sourceLabel": "Total height (mm)",
+                    "sourceLabel": "Height:",
                     "sourceAxisOrder": [
                       "height"
                     ],
@@ -146,22 +142,22 @@
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": 3,
-                    "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78",
+                    "page": 43,
+                    "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
                     "bbox": [
-                      516,
-                      229,
-                      939,
-                      872
+                      76,
+                      309,
+                      692,
+                      452
                     ]
                   },
                   {
                     "field": "closedEnvelope.depthMm",
                     "value": {
                       "kind": "fixed",
-                      "mm": 727
+                      "mm": 554
                     },
-                    "sourceLabel": "Total depth (mm)",
+                    "sourceLabel": "Depth:",
                     "sourceAxisOrder": [
                       "depth"
                     ],
@@ -169,96 +165,369 @@
                     "measurementScope": "product_closed_external",
                     "includesDoor": null,
                     "includesHandle": null,
-                    "page": 3,
-                    "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78",
+                    "page": 43,
+                    "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
                     "bbox": [
-                      516,
-                      229,
-                      939,
-                      872
+                      76,
+                      309,
+                      692,
+                      452
                     ]
                   }
                 ],
+                "discoveryProvenance": {
+                  "schemaVersion": 1,
+                  "method": "official_market_api",
+                  "market": "AU",
+                  "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000740002?fields=FULL&lang=en_AU&curr=AUD",
+                  "requestedModel": "DBI364ID.S.AU",
+                  "matchedModel": "DBI364ID.S.AU",
+                  "artifactUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf",
+                  "documentId": "000000000000740002",
+                  "discoveryContentSha256": "05710bdd8f543d9f5ad3084389761b27ea522079f4498c2e162d850f10a987b8",
+                  "discoveryObjectPath": "evidence/web/sha256/05/71/05710bdd8f543d9f5ad3084389761b27ea522079f4498c2e162d850f10a987b8.json",
+                  "discoveryByteSize": 226763
+                },
                 "derivedArtifact": {
                   "schemaVersion": 1,
                   "format": "content_list_v2",
                   "parserName": "MinerU",
                   "parserVersion": "3.4.4",
-                  "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
-                  "backend": "pipeline",
+                  "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+                  "backend": "hybrid-engine",
                   "method": "auto",
                   "tableEnabled": true,
                   "formulaEnabled": false,
-                  "sourcePdfSha256": "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a",
-                  "contentSha256": "4547c046cb2af867a436e45f4e9c28d5d2778a08cd4388aff7d3a006c9abca3c",
-                  "objectPath": "evidence/derived/mineru-json/sha256/45/47/4547c046cb2af867a436e45f4e9c28d5d2778a08cd4388aff7d3a006c9abca3c.json",
-                  "byteSize": 46569,
-                  "pageCount": 7
+                  "sourcePdfSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+                  "contentSha256": "3947fd878dd48840e5826c8997c8acfa77c73c27419fc1409a3d0f146db5da00",
+                  "objectPath": "evidence/derived/mineru-json/sha256/39/47/3947fd878dd48840e5826c8997c8acfa77c73c27419fc1409a3d0f146db5da00.json",
+                  "byteSize": 127567,
+                  "pageCount": 44,
+                  "profileId": "hybrid-image-high-v1",
+                  "effort": "high",
+                  "imageAnalysis": true,
+                  "processedPages": [
+                    36
+                  ],
+                  "sourcePageCount": 44,
+                  "fallbackTrigger": {
+                    "profileId": "pipeline-auto-v1",
+                    "contentSha256": "7b652d5697b10a20d4af87160688da5b2cf36dfaf7e52862c43d8eca35a822e6",
+                    "objectPath": "evidence/derived/mineru-json/sha256/7b/65/7b652d5697b10a20d4af87160688da5b2cf36dfaf7e52862c43d8eca35a822e6.json",
+                    "pages": [
+                      36
+                    ]
+                  }
                 },
                 "identitySignals": [
                   {
-                    "type": "mineru_page_header_model",
-                    "value": "KBM5302AC:page:1:75b045fe64e749d0f82f404ceb82c4db6ccf9f96907bad7927c2c9abac8d0a1c"
+                    "type": "mineru_bound_exact_cover_model",
+                    "value": "DBI364ID.S.AU:exact-cover:DBI364ID.S.AU:page:1:f4ebdf5e2c865aca60acd97885b2094ef96b4558fe1fa8df4bf18ce957ed4790"
                   },
                   {
-                    "type": "mineru_page_header_model",
-                    "value": "KBM5302AC:page:2:92780f649635d956885a786a2428408c41a3aecc25b45b8eb2ea04091feb103f"
+                    "type": "official_market_api_model",
+                    "value": "DBI364ID.S.AU:05710bdd8f543d9f5ad3084389761b27ea522079f4498c2e162d850f10a987b8:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000740002?fields=FULL&lang=en_AU&curr=AUD"
                   },
                   {
-                    "type": "mineru_page_header_model",
-                    "value": "KBM5302AC:page:3:877b182531459f4bc810e65e16a77c912b899144604d732592c9732cbc866508"
-                  },
-                  {
-                    "type": "mineru_page_header_model",
-                    "value": "KBM5302AC:page:4:d9f9604c2d264e70bdebf496a0075f0a74bf064b18622738d9a6cf3f51a1c982"
-                  },
-                  {
-                    "type": "mineru_page_header_model",
-                    "value": "KBM5302AC:page:5:1305f60997a52d6466f337a952e790805417abdf40d4c2e3f8a5a37055ff4385"
-                  },
-                  {
-                    "type": "mineru_page_header_model",
-                    "value": "KBM5302AC:page:6:410ff4b7acfcabe0ce85a8fbb7093636e3ffbb8e60ad5bf93bdc7c563d8d9073"
-                  },
-                  {
-                    "type": "mineru_page_header_model",
-                    "value": "KBM5302AC:page:7:6f735b6025661a0552fc1f3dca7892681694500bd57ac8326fac8b4e54a126e6"
-                  },
-                  {
-                    "type": "mineru_repeated_page_header_model",
-                    "value": "KBM5302AC:document:repeated-page-header"
+                    "type": "official_market_api_dimensions",
+                    "value": "DBI364ID.S.AU:596x819x554:05710bdd8f543d9f5ad3084389761b27ea522079f4498c2e162d850f10a987b8"
                   }
                 ],
                 "verificationReceipt": {
                   "schemaVersion": 3,
                   "claimSemanticsVersion": 2,
                   "policyVersion": "2026-07-13.1",
-                  "manufacturerPolicyVersion": "2026-07-12.1",
-                  "verifiedAt": "2026-07-13T12:57:20.271Z",
-                  "bindingSha256": "0224b814e8667939005d03d07ced295895c680540bbdd5d07f79f9bb3c42b80d"
+                  "manufacturerPolicyVersion": "2026-07-15.1",
+                  "discoveryPolicyVersion": "2026-07-15.1",
+                  "verifiedAt": "2026-07-15T01:24:36.230Z",
+                  "bindingSha256": "d047553df56b45b83c9336ace9737ab4e70555528c2ed7235219a2c93755a8f9"
                 }
               }
             }
+          },
+          {
+            "candidateId": "candidate_6455752ad1caea9c7725f533",
+            "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf",
+            "authorityMode": "official",
+            "sourceRole": "manufacturer_document",
+            "requiredAttempt": true,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_market_api",
+              "market": "AU",
+              "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000747673?fields=FULL&lang=en_AU&curr=AUD",
+              "requestedModel": "DBI364ID.S.AU",
+              "matchedModel": "DBI364ID.S.AU",
+              "artifactUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf",
+              "documentId": "000000000000747673",
+              "discoveryContentSha256": "690d0c231d2eb0f08d58a811b03ce5f8dd1f87ed9e882e0c67c65ec6f2a66f3f",
+              "discoveryObjectPath": "evidence/web/sha256/69/0d/690d0c231d2eb0f08d58a811b03ce5f8dd1f87ed9e882e0c67c65ec6f2a66f3f.json",
+              "discoveryByteSize": 212538
+            },
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "asko-official-manuals-api",
+                "version": "1",
+                "scope": "asko_legacy_discovery_only",
+                "discoveryMethod": "asko_legacy_finder",
+                "sourceRole": "manufacturer_document",
+                "order": 3
+              }
+            ],
+            "outcome": {
+              "status": "accepted",
+              "failureCode": null,
+              "source": {
+                "authority": "manufacturer",
+                "sourceType": "official_exact_model_pdf",
+                "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf",
+                "finalUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf",
+                "redirectChain": [],
+                "retrievedAt": "2026-07-15T01:26:09.817Z",
+                "contentSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
+                "objectPath": "evidence/web/sha256/45/50/4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8.pdf",
+                "contentType": "application/pdf",
+                "byteSize": 2893360,
+                "supersedesContentSha256": [],
+                "identity": {
+                  "brand": "ASKO",
+                  "model": "DBI364ID.S.AU",
+                  "outcome": "exact"
+                },
+                "claims": [
+                  {
+                    "field": "closedEnvelope.widthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 596
+                    },
+                    "sourceLabel": "Width:",
+                    "sourceAxisOrder": [
+                      "width"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 43,
+                    "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
+                    "bbox": [
+                      76,
+                      309,
+                      692,
+                      452
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.heightMm",
+                    "value": {
+                      "kind": "range",
+                      "minMm": 819,
+                      "maxMm": 872
+                    },
+                    "sourceLabel": "Height:",
+                    "sourceAxisOrder": [
+                      "height"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 43,
+                    "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
+                    "bbox": [
+                      76,
+                      309,
+                      692,
+                      452
+                    ]
+                  },
+                  {
+                    "field": "closedEnvelope.depthMm",
+                    "value": {
+                      "kind": "fixed",
+                      "mm": 554
+                    },
+                    "sourceLabel": "Depth:",
+                    "sourceAxisOrder": [
+                      "depth"
+                    ],
+                    "sourceUnit": "mm",
+                    "measurementScope": "product_closed_external",
+                    "includesDoor": null,
+                    "includesHandle": null,
+                    "page": 43,
+                    "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
+                    "bbox": [
+                      76,
+                      309,
+                      692,
+                      452
+                    ]
+                  }
+                ],
+                "discoveryProvenance": {
+                  "schemaVersion": 1,
+                  "method": "official_market_api",
+                  "market": "AU",
+                  "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000747673?fields=FULL&lang=en_AU&curr=AUD",
+                  "requestedModel": "DBI364ID.S.AU",
+                  "matchedModel": "DBI364ID.S.AU",
+                  "artifactUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf",
+                  "documentId": "000000000000747673",
+                  "discoveryContentSha256": "690d0c231d2eb0f08d58a811b03ce5f8dd1f87ed9e882e0c67c65ec6f2a66f3f",
+                  "discoveryObjectPath": "evidence/web/sha256/69/0d/690d0c231d2eb0f08d58a811b03ce5f8dd1f87ed9e882e0c67c65ec6f2a66f3f.json",
+                  "discoveryByteSize": 212538
+                },
+                "derivedArtifact": {
+                  "schemaVersion": 1,
+                  "format": "content_list_v2",
+                  "parserName": "MinerU",
+                  "parserVersion": "3.4.4",
+                  "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+                  "backend": "hybrid-engine",
+                  "method": "auto",
+                  "tableEnabled": true,
+                  "formulaEnabled": false,
+                  "sourcePdfSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
+                  "contentSha256": "108bd363434692a686ec87dac921631f906301cc47cd493341f317dba71892db",
+                  "objectPath": "evidence/derived/mineru-json/sha256/10/8b/108bd363434692a686ec87dac921631f906301cc47cd493341f317dba71892db.json",
+                  "byteSize": 126438,
+                  "pageCount": 44,
+                  "profileId": "hybrid-image-high-v1",
+                  "effort": "high",
+                  "imageAnalysis": true,
+                  "processedPages": [
+                    36
+                  ],
+                  "sourcePageCount": 44,
+                  "fallbackTrigger": {
+                    "profileId": "pipeline-auto-v1",
+                    "contentSha256": "33d1c0d083890a892acff0860478e3609a3fd85bf4834a6b9dc702cb42174e4e",
+                    "objectPath": "evidence/derived/mineru-json/sha256/33/d1/33d1c0d083890a892acff0860478e3609a3fd85bf4834a6b9dc702cb42174e4e.json",
+                    "pages": [
+                      36
+                    ]
+                  }
+                },
+                "identitySignals": [
+                  {
+                    "type": "mineru_bound_exact_cover_model",
+                    "value": "DBI364ID.S.AU:exact-cover:DBI364ID.S.AU:page:1:bef627d6e386cbe1e198732ba306ba6416287ae9bb08bdd2d703780992964be4"
+                  },
+                  {
+                    "type": "official_market_api_model",
+                    "value": "DBI364ID.S.AU:690d0c231d2eb0f08d58a811b03ce5f8dd1f87ed9e882e0c67c65ec6f2a66f3f:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000747673?fields=FULL&lang=en_AU&curr=AUD"
+                  },
+                  {
+                    "type": "official_market_api_dimensions",
+                    "value": "DBI364ID.S.AU:596x819x554:690d0c231d2eb0f08d58a811b03ce5f8dd1f87ed9e882e0c67c65ec6f2a66f3f"
+                  }
+                ],
+                "verificationReceipt": {
+                  "schemaVersion": 3,
+                  "claimSemanticsVersion": 2,
+                  "policyVersion": "2026-07-13.1",
+                  "manufacturerPolicyVersion": "2026-07-15.1",
+                  "discoveryPolicyVersion": "2026-07-15.1",
+                  "verifiedAt": "2026-07-15T01:26:09.817Z",
+                  "bindingSha256": "fdc90185319e7da9ec00a4017f38ee69eb230506833c2803441ec832c31587a3"
+                }
+              }
+            }
+          },
+          {
+            "candidateId": "candidate_f82d24b5800758191855ea50",
+            "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000740002-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8OTYwNDQ2fGFwcGxpY2F0aW9uL3BkZnxhR1F3TDJobFppOHhOVGs0T1RFNU56WXdNamcwTmk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TnpRd01EQXlYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGVkYjYyYjk4YjRkMzJiMDFkZTkzM2NkZjJlMjk3YWM1OGY2ZjQwNmZiYzExNmFlYjA3M2Q2YWQ5YmNmYmRlMDU",
+            "authorityMode": "reference",
+            "sourceRole": "retailer_reference",
+            "requiredAttempt": false,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_market_api",
+              "market": "AU",
+              "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000740002?fields=FULL&lang=en_AU&curr=AUD",
+              "requestedModel": "DBI364ID.S.AU",
+              "matchedModel": "DBI364ID.S.AU",
+              "artifactUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000740002-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8OTYwNDQ2fGFwcGxpY2F0aW9uL3BkZnxhR1F3TDJobFppOHhOVGs0T1RFNU56WXdNamcwTmk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TnpRd01EQXlYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfGVkYjYyYjk4YjRkMzJiMDFkZTkzM2NkZjJlMjk3YWM1OGY2ZjQwNmZiYzExNmFlYjA3M2Q2YWQ5YmNmYmRlMDU",
+              "documentId": "000000000000740002",
+              "discoveryContentSha256": "05710bdd8f543d9f5ad3084389761b27ea522079f4498c2e162d850f10a987b8",
+              "discoveryObjectPath": "evidence/web/sha256/05/71/05710bdd8f543d9f5ad3084389761b27ea522079f4498c2e162d850f10a987b8.json",
+              "discoveryByteSize": 226763
+            },
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "asko-official-manuals-api",
+                "version": "1",
+                "scope": "asko_legacy_discovery_only",
+                "discoveryMethod": "asko_legacy_finder",
+                "sourceRole": "retailer_reference",
+                "order": 0
+              }
+            ],
+            "outcome": {
+              "status": "reference_only",
+              "failureCode": "source_authority",
+              "source": null
+            }
+          },
+          {
+            "candidateId": "candidate_fb7bb097266afe4ccf22a2d5",
+            "sourceUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000747673-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8Njc2MDQxfGFwcGxpY2F0aW9uL3BkZnxhRE5pTDJnME5TOHhOVGc1T0RneE1qQTFOVFU0TWk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TnpRM05qY3pYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfDgzOWY1N2EzYjdkMWUxYTgxMzdhNzYyMzI2YWY1YzA4ZjU1NWUzODM2MGY4ZTM4ZWIyNjRmMWQwZWI3ZDdkNDY",
+            "authorityMode": "reference",
+            "sourceRole": "retailer_reference",
+            "requiredAttempt": false,
+            "discoveryProvenance": {
+              "schemaVersion": 1,
+              "method": "official_market_api",
+              "market": "AU",
+              "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000747673?fields=FULL&lang=en_AU&curr=AUD",
+              "requestedModel": "DBI364ID.S.AU",
+              "matchedModel": "DBI364ID.S.AU",
+              "artifactUrl": "https://asko.hgecdn.net/medias/productSheet-000000000000747673-bs-asko-au-en-AU.pdf?context=bWFzdGVyfGdlbmVyYXRlZFByb2R1Y3RTaGVldHN8Njc2MDQxfGFwcGxpY2F0aW9uL3BkZnxhRE5pTDJnME5TOHhOVGc1T0RneE1qQTFOVFU0TWk5d2NtOWtkV04wVTJobFpYUmZNREF3TURBd01EQXdNREF3TnpRM05qY3pYMkp6TFdGemEyOHRZWFZmWlc1ZlFWVXVjR1JtfDgzOWY1N2EzYjdkMWUxYTgxMzdhNzYyMzI2YWY1YzA4ZjU1NWUzODM2MGY4ZTM4ZWIyNjRmMWQwZWI3ZDdkNDY",
+              "documentId": "000000000000747673",
+              "discoveryContentSha256": "690d0c231d2eb0f08d58a811b03ce5f8dd1f87ed9e882e0c67c65ec6f2a66f3f",
+              "discoveryObjectPath": "evidence/web/sha256/69/0d/690d0c231d2eb0f08d58a811b03ce5f8dd1f87ed9e882e0c67c65ec6f2a66f3f.json",
+              "discoveryByteSize": 212538
+            },
+            "batchJobIds": [],
+            "resolverRefs": [
+              {
+                "resolverId": "asko-official-manuals-api",
+                "version": "1",
+                "scope": "asko_legacy_discovery_only",
+                "discoveryMethod": "asko_legacy_finder",
+                "sourceRole": "retailer_reference",
+                "order": 1
+              }
+            ],
+            "outcome": {
+              "status": "reference_only",
+              "failureCode": "source_authority",
+              "source": null
+            }
           }
         ],
-        "candidateInventorySha256": "30be86f8eb9bc42a25933b12f0d873f0a5319fbf8b3213a5ae1b90c4c98aebb2"
+        "candidateInventorySha256": "c3396e8f1875ed9b4eca53714894f40732043251e701bae26b3ed41308891344"
       },
       "sources": [
         {
           "authority": "manufacturer",
           "sourceType": "official_exact_model_pdf",
-          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
-          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf",
+          "finalUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf",
           "redirectChain": [],
-          "retrievedAt": "2026-07-13T12:57:20.271Z",
-          "contentSha256": "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a",
-          "objectPath": "evidence/web/sha256/61/97/6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a.pdf",
+          "retrievedAt": "2026-07-15T01:24:36.230Z",
+          "contentSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+          "objectPath": "evidence/web/sha256/38/ad/38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b.pdf",
           "contentType": "application/pdf",
-          "byteSize": 858418,
+          "byteSize": 2788764,
           "supersedesContentSha256": [],
           "identity": {
-            "brand": "KELVINATOR",
-            "model": "KBM5302AC",
+            "brand": "ASKO",
+            "model": "DBI364ID.S.AU",
             "outcome": "exact"
           },
           "claims": [
@@ -266,9 +535,9 @@
               "field": "closedEnvelope.widthMm",
               "value": {
                 "kind": "fixed",
-                "mm": 796
+                "mm": 596
               },
-              "sourceLabel": "Total width (mm)",
+              "sourceLabel": "Width:",
               "sourceAxisOrder": [
                 "width"
               ],
@@ -276,22 +545,23 @@
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": 3,
-              "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
               "bbox": [
-                516,
-                229,
-                939,
-                872
+                76,
+                309,
+                692,
+                452
               ]
             },
             {
               "field": "closedEnvelope.heightMm",
               "value": {
-                "kind": "fixed",
-                "mm": 1718
+                "kind": "range",
+                "minMm": 819,
+                "maxMm": 872
               },
-              "sourceLabel": "Total height (mm)",
+              "sourceLabel": "Height:",
               "sourceAxisOrder": [
                 "height"
               ],
@@ -299,22 +569,22 @@
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": 3,
-              "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
               "bbox": [
-                516,
-                229,
-                939,
-                872
+                76,
+                309,
+                692,
+                452
               ]
             },
             {
               "field": "closedEnvelope.depthMm",
               "value": {
                 "kind": "fixed",
-                "mm": 727
+                "mm": 554
               },
-              "sourceLabel": "Total depth (mm)",
+              "sourceLabel": "Depth:",
               "sourceAxisOrder": [
                 "depth"
               ],
@@ -322,85 +592,251 @@
               "measurementScope": "product_closed_external",
               "includesDoor": null,
               "includesHandle": null,
-              "page": 3,
-              "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78",
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
               "bbox": [
-                516,
-                229,
-                939,
-                872
+                76,
+                309,
+                692,
+                452
               ]
             }
           ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000740002?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "DBI364ID.S.AU",
+            "matchedModel": "DBI364ID.S.AU",
+            "artifactUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf",
+            "documentId": "000000000000740002",
+            "discoveryContentSha256": "05710bdd8f543d9f5ad3084389761b27ea522079f4498c2e162d850f10a987b8",
+            "discoveryObjectPath": "evidence/web/sha256/05/71/05710bdd8f543d9f5ad3084389761b27ea522079f4498c2e162d850f10a987b8.json",
+            "discoveryByteSize": 226763
+          },
           "derivedArtifact": {
             "schemaVersion": 1,
             "format": "content_list_v2",
             "parserName": "MinerU",
             "parserVersion": "3.4.4",
-            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
-            "backend": "pipeline",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
             "method": "auto",
             "tableEnabled": true,
             "formulaEnabled": false,
-            "sourcePdfSha256": "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a",
-            "contentSha256": "4547c046cb2af867a436e45f4e9c28d5d2778a08cd4388aff7d3a006c9abca3c",
-            "objectPath": "evidence/derived/mineru-json/sha256/45/47/4547c046cb2af867a436e45f4e9c28d5d2778a08cd4388aff7d3a006c9abca3c.json",
-            "byteSize": 46569,
-            "pageCount": 7
+            "sourcePdfSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+            "contentSha256": "3947fd878dd48840e5826c8997c8acfa77c73c27419fc1409a3d0f146db5da00",
+            "objectPath": "evidence/derived/mineru-json/sha256/39/47/3947fd878dd48840e5826c8997c8acfa77c73c27419fc1409a3d0f146db5da00.json",
+            "byteSize": 127567,
+            "pageCount": 44,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              36
+            ],
+            "sourcePageCount": 44,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "7b652d5697b10a20d4af87160688da5b2cf36dfaf7e52862c43d8eca35a822e6",
+              "objectPath": "evidence/derived/mineru-json/sha256/7b/65/7b652d5697b10a20d4af87160688da5b2cf36dfaf7e52862c43d8eca35a822e6.json",
+              "pages": [
+                36
+              ]
+            }
           },
           "identitySignals": [
             {
-              "type": "mineru_page_header_model",
-              "value": "KBM5302AC:page:1:75b045fe64e749d0f82f404ceb82c4db6ccf9f96907bad7927c2c9abac8d0a1c"
+              "type": "mineru_bound_exact_cover_model",
+              "value": "DBI364ID.S.AU:exact-cover:DBI364ID.S.AU:page:1:f4ebdf5e2c865aca60acd97885b2094ef96b4558fe1fa8df4bf18ce957ed4790"
             },
             {
-              "type": "mineru_page_header_model",
-              "value": "KBM5302AC:page:2:92780f649635d956885a786a2428408c41a3aecc25b45b8eb2ea04091feb103f"
+              "type": "official_market_api_model",
+              "value": "DBI364ID.S.AU:05710bdd8f543d9f5ad3084389761b27ea522079f4498c2e162d850f10a987b8:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000740002?fields=FULL&lang=en_AU&curr=AUD"
             },
             {
-              "type": "mineru_page_header_model",
-              "value": "KBM5302AC:page:3:877b182531459f4bc810e65e16a77c912b899144604d732592c9732cbc866508"
-            },
-            {
-              "type": "mineru_page_header_model",
-              "value": "KBM5302AC:page:4:d9f9604c2d264e70bdebf496a0075f0a74bf064b18622738d9a6cf3f51a1c982"
-            },
-            {
-              "type": "mineru_page_header_model",
-              "value": "KBM5302AC:page:5:1305f60997a52d6466f337a952e790805417abdf40d4c2e3f8a5a37055ff4385"
-            },
-            {
-              "type": "mineru_page_header_model",
-              "value": "KBM5302AC:page:6:410ff4b7acfcabe0ce85a8fbb7093636e3ffbb8e60ad5bf93bdc7c563d8d9073"
-            },
-            {
-              "type": "mineru_page_header_model",
-              "value": "KBM5302AC:page:7:6f735b6025661a0552fc1f3dca7892681694500bd57ac8326fac8b4e54a126e6"
-            },
-            {
-              "type": "mineru_repeated_page_header_model",
-              "value": "KBM5302AC:document:repeated-page-header"
+              "type": "official_market_api_dimensions",
+              "value": "DBI364ID.S.AU:596x819x554:05710bdd8f543d9f5ad3084389761b27ea522079f4498c2e162d850f10a987b8"
             }
           ],
           "verificationReceipt": {
             "schemaVersion": 3,
             "claimSemanticsVersion": 2,
             "policyVersion": "2026-07-13.1",
-            "manufacturerPolicyVersion": "2026-07-12.1",
-            "verifiedAt": "2026-07-13T12:57:20.271Z",
-            "bindingSha256": "0224b814e8667939005d03d07ced295895c680540bbdd5d07f79f9bb3c42b80d"
+            "manufacturerPolicyVersion": "2026-07-15.1",
+            "discoveryPolicyVersion": "2026-07-15.1",
+            "verifiedAt": "2026-07-15T01:24:36.230Z",
+            "bindingSha256": "d047553df56b45b83c9336ace9737ab4e70555528c2ed7235219a2c93755a8f9"
+          }
+        },
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf",
+          "finalUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T01:26:09.817Z",
+          "contentSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
+          "objectPath": "evidence/web/sha256/45/50/4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 2893360,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "ASKO",
+            "model": "DBI364ID.S.AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 596
+              },
+              "sourceLabel": "Width:",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
+              "bbox": [
+                76,
+                309,
+                692,
+                452
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "range",
+                "minMm": 819,
+                "maxMm": 872
+              },
+              "sourceLabel": "Height:",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
+              "bbox": [
+                76,
+                309,
+                692,
+                452
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 554
+              },
+              "sourceLabel": "Depth:",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 43,
+              "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
+              "bbox": [
+                76,
+                309,
+                692,
+                452
+              ]
+            }
+          ],
+          "discoveryProvenance": {
+            "schemaVersion": 1,
+            "method": "official_market_api",
+            "market": "AU",
+            "discoveryUrl": "https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000747673?fields=FULL&lang=en_AU&curr=AUD",
+            "requestedModel": "DBI364ID.S.AU",
+            "matchedModel": "DBI364ID.S.AU",
+            "artifactUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf",
+            "documentId": "000000000000747673",
+            "discoveryContentSha256": "690d0c231d2eb0f08d58a811b03ce5f8dd1f87ed9e882e0c67c65ec6f2a66f3f",
+            "discoveryObjectPath": "evidence/web/sha256/69/0d/690d0c231d2eb0f08d58a811b03ce5f8dd1f87ed9e882e0c67c65ec6f2a66f3f.json",
+            "discoveryByteSize": 212538
+          },
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
+            "contentSha256": "108bd363434692a686ec87dac921631f906301cc47cd493341f317dba71892db",
+            "objectPath": "evidence/derived/mineru-json/sha256/10/8b/108bd363434692a686ec87dac921631f906301cc47cd493341f317dba71892db.json",
+            "byteSize": 126438,
+            "pageCount": 44,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              36
+            ],
+            "sourcePageCount": 44,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "33d1c0d083890a892acff0860478e3609a3fd85bf4834a6b9dc702cb42174e4e",
+              "objectPath": "evidence/derived/mineru-json/sha256/33/d1/33d1c0d083890a892acff0860478e3609a3fd85bf4834a6b9dc702cb42174e4e.json",
+              "pages": [
+                36
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_bound_exact_cover_model",
+              "value": "DBI364ID.S.AU:exact-cover:DBI364ID.S.AU:page:1:bef627d6e386cbe1e198732ba306ba6416287ae9bb08bdd2d703780992964be4"
+            },
+            {
+              "type": "official_market_api_model",
+              "value": "DBI364ID.S.AU:690d0c231d2eb0f08d58a811b03ce5f8dd1f87ed9e882e0c67c65ec6f2a66f3f:https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/000000000000747673?fields=FULL&lang=en_AU&curr=AUD"
+            },
+            {
+              "type": "official_market_api_dimensions",
+              "value": "DBI364ID.S.AU:596x819x554:690d0c231d2eb0f08d58a811b03ce5f8dd1f87ed9e882e0c67c65ec6f2a66f3f"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-15.1",
+            "discoveryPolicyVersion": "2026-07-15.1",
+            "verifiedAt": "2026-07-15T01:26:09.817Z",
+            "bindingSha256": "fdc90185319e7da9ec00a4017f38ee69eb230506833c2803441ec832c31587a3"
           }
         }
       ],
       "geometryProjection": {
         "geometry": {
           "closedEnvelope": {
-            "widthMm": 796,
+            "widthMm": 596,
             "heightMm": {
-              "minimumMm": 1718,
-              "maximumMm": 1718
+              "minimumMm": 819,
+              "maximumMm": 872
             },
-            "depthMm": 727
+            "depthMm": 554
           },
           "installation": {
             "leftMm": null,
@@ -419,7 +855,7 @@
             "heightMm": null,
             "depthMm": null
           },
-          "category": "fridge",
+          "category": "dishwasher",
           "formFactor": null,
           "service": {
             "plumbingRearMm": null,
@@ -429,25 +865,52 @@
         },
         "fieldEvidence": {
           "closedEnvelope.widthMm": {
-            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
-            "contentSha256": "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a",
-            "receiptBindingSha256": "0224b814e8667939005d03d07ced295895c680540bbdd5d07f79f9bb3c42b80d",
-            "page": 3,
-            "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78"
+            "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf",
+            "contentSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+            "receiptBindingSha256": "d047553df56b45b83c9336ace9737ab4e70555528c2ed7235219a2c93755a8f9",
+            "page": 43,
+            "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
+            "corroborating": [
+              {
+                "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf",
+                "contentSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
+                "receiptBindingSha256": "fdc90185319e7da9ec00a4017f38ee69eb230506833c2803441ec832c31587a3",
+                "page": 43,
+                "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+              }
+            ]
           },
           "closedEnvelope.heightMm": {
-            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
-            "contentSha256": "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a",
-            "receiptBindingSha256": "0224b814e8667939005d03d07ced295895c680540bbdd5d07f79f9bb3c42b80d",
-            "page": 3,
-            "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78"
+            "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf",
+            "contentSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+            "receiptBindingSha256": "d047553df56b45b83c9336ace9737ab4e70555528c2ed7235219a2c93755a8f9",
+            "page": 43,
+            "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
+            "corroborating": [
+              {
+                "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf",
+                "contentSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
+                "receiptBindingSha256": "fdc90185319e7da9ec00a4017f38ee69eb230506833c2803441ec832c31587a3",
+                "page": 43,
+                "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+              }
+            ]
           },
           "closedEnvelope.depthMm": {
-            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
-            "contentSha256": "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a",
-            "receiptBindingSha256": "0224b814e8667939005d03d07ced295895c680540bbdd5d07f79f9bb3c42b80d",
-            "page": 3,
-            "fragmentSha256": "836ea07e1e93cfa40ac92766d1c451e777a9223cb1f1a5f71677c85e3111ac78"
+            "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=740002&jezik=en&tipVsebine=1&docName=874288en.pdf",
+            "contentSha256": "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+            "receiptBindingSha256": "d047553df56b45b83c9336ace9737ab4e70555528c2ed7235219a2c93755a8f9",
+            "page": 43,
+            "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4",
+            "corroborating": [
+              {
+                "sourceUrl": "https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=747673&jezik=en&tipVsebine=1&docName=965797en.pdf",
+                "contentSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
+                "receiptBindingSha256": "fdc90185319e7da9ec00a4017f38ee69eb230506833c2803441ec832c31587a3",
+                "page": 43,
+                "fragmentSha256": "a8a89e4fca9284339b641d78f83ddfcd642339ecc457f90f4f90540241239bb4"
+              }
+            ]
           }
         },
         "evidenceLevel": "dimensions",
@@ -456,15 +919,27 @@
           "installation.leftMm",
           "installation.rearMm",
           "installation.rightMm",
-          "installation.topMm"
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
         ],
         "verifiedFitEligible": false,
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
-          "6197fb9ddb360437f82fcaebaab22e775fab7dd89627a89f56a537d3f589ea7a"
+          "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
+          "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8"
         ]
       },
-      "semanticOutcomeSha256": "2ff89967e149aba9e4b56398abe601248f49387202f2c15d32c980e8bc116d1b"
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      },
+      "semanticOutcomeSha256": "8908f1ddbb8e4ce0d1e3b4eecf0c9ac0ea4e48ec92067aaada6a6ff5254249d1"
     }
   ],
   "summary": {

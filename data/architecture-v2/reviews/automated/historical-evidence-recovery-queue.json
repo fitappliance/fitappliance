@@ -8,67 +8,41 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1600,
-    "fetchJobs": 1556,
-    "targets": 1591,
-    "candidateEdges": 1600,
-    "multiCandidateTargets": 9,
-    "uniqueReferences": 1591,
+    "documents": 1568,
+    "fetchJobs": 1531,
+    "targets": 1564,
+    "candidateEdges": 1568,
+    "multiCandidateTargets": 4,
+    "uniqueReferences": 1564,
     "byCurrentAction": {
-      "CONFIRM_REQUIRED": 472,
-      "MEASURE_REQUIRED": 1092,
-      "QUARANTINED": 27
+      "CONFIRM_REQUIRED": 455,
+      "MEASURE_REQUIRED": 1084,
+      "QUARANTINED": 25
     },
     "byLifecycle": {
-      "CATALOG_ARCHIVED": 301,
-      "CURRENT_RETAIL": 1290
+      "CATALOG_ARCHIVED": 290,
+      "CURRENT_RETAIL": 1274
     },
     "byCategory": {
-      "dishwasher": 357,
-      "dryer": 78,
-      "fridge": 915,
-      "washing_machine": 241
+      "dishwasher": 354,
+      "dryer": 72,
+      "fridge": 901,
+      "washing_machine": 237
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1223,
-      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 254,
-      "OFFICIAL_RECEIPT_REBUILD": 23,
-      "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 56
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1213,
+      "OFFICIAL_HOST_AUTHORITY_VALIDATION": 250,
+      "OFFICIAL_RECEIPT_REBUILD": 17,
+      "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 7,
+      "ALREADY_AUTO_FILL": 39,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
     }
   },
   "jobs": [
-    {
-      "jobId": "recovery_f22800464225ad1821023b0e",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw911255f9/QRG/AU/QRG-AU-93235.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "manufacturer"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_b4c27af7c13ba6643cb2cf6a"
-      ]
-    },
     {
       "jobId": "recovery_b5e833dc867cc282e3983f75",
       "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/2cjh5kph3nsf8jvm49njbsn3/FP-UserGuide-en-WH1060P-WH1060J-WH9060P-WH9060J-WH8560F-WH8560P-WH8560J-WH8060F-WH8060P-WH8060J-WH7560P-WH7560J-FrontLoaderWashingMachine-0-430218C-NZ-AU-SG.pdf",
@@ -4126,32 +4100,6 @@
       ]
     },
     {
-      "jobId": "recovery_eb63f5b612ebc55ba1f643bd",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/1/d/9/f/1d9f5cfe250896b4ef1aaaa5d1983ad57b035627_ETM207X_Esatto_Specifications_Sheet.pdf",
-      "authorityBrand": "Esatto",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_0417d161966ed05ba431aedf"
-      ]
-    },
-    {
       "jobId": "recovery_c43ca15fa4fe7459266209fb",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/1/e/2/8/1e28b51d65fb54025f4b23d6624fce26952f2dde_SRF9700BFH_Samsung_User_Manual.pdf",
       "authorityBrand": "Samsung",
@@ -5943,32 +5891,6 @@
       ],
       "targetIds": [
         "recovery_target_6a95c4426b450a22317c96dd"
-      ]
-    },
-    {
-      "jobId": "recovery_83acd4ac18df54f166ed08dd",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/e/d/a/2edae8dc574b12937ebbd15d7c4045f81fa2493f_WTG1432VH_Specifications_Sheet.pdf",
-      "authorityBrand": "LG",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_002a12622bce35cd88bb8154"
       ]
     },
     {
@@ -10467,32 +10389,6 @@
       ],
       "targetIds": [
         "recovery_target_afb05b2265b8c316f380401a"
-      ]
-    },
-    {
-      "jobId": "recovery_2c8a85407bb3531ebc785bd1",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/5/9/2/0/59202eeb8fbf141fca78b4c6254b0a08a15df8ec_Asko_T408HD.W_8kg_Heat_Pump_Dryer_Specifications_Sheet.pdf",
-      "authorityBrand": "ASKO",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_c98f8586024d44a327356703"
       ]
     },
     {
@@ -16632,32 +16528,6 @@
       ]
     },
     {
-      "jobId": "recovery_1bb27d490ba9504ff36d9361",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/0/8/1/9081e7ff9cde1d14382e7baa1d7a5d7874a6f31f_HRAF242_Specs.pdf",
-      "authorityBrand": "Hisense",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_0326bb4e476aa371139c6291"
-      ]
-    },
-    {
       "jobId": "recovery_6b2c733edc62a6202ca282d9",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/9/0/a/5/90a57d4a313da7d498660052799bcf77a172f85a_WTB4600SBL_Specifications_Sheet.pdf",
       "authorityBrand": "Westinghouse",
@@ -17230,32 +17100,6 @@
       ]
     },
     {
-      "jobId": "recovery_1d322a69db2083524d6ddfa4",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/7/7/e/977e15744bde008654c8388a354094b6ae6fe122_Fisher___Paykel_WD8560F1_8.5kg_Washer_5kg_Dryer_Combo_Specifications_Sheet.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_b4c27af7c13ba6643cb2cf6a"
-      ]
-    },
-    {
       "jobId": "recovery_78d540da6f67b05c44e5058e",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/9/7/b/2/97b2c5a420830098850784201742752df04547d8_Samsung_SR318LSTC_318L_Top_Mount_Fridge_Specifications_Sheet.pdf",
       "authorityBrand": "Samsung",
@@ -17383,32 +17227,6 @@
       ],
       "targetIds": [
         "recovery_target_88dfd08889fd447af6b6808e"
-      ]
-    },
-    {
-      "jobId": "recovery_599ec297fa6c083413f01ac8",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/8/9/c/989ca525f00c9f52eced6ee15ee4696e5a17301a_W4086P.W_Asko_Specifications_Sheet.pdf",
-      "authorityBrand": "ASKO",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_fc1d56ab3f9d8c60bc855b2a"
       ]
     },
     {
@@ -17747,32 +17565,6 @@
       ],
       "targetIds": [
         "recovery_target_10de4daf2868c845e35180d1"
-      ]
-    },
-    {
-      "jobId": "recovery_c8107542804368bb992de2ee",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/d/3/6/9d3607618af0afee7115399ef3767959a6baacd6_Asko_T208H.W_8kg_Heat_Pump_Dryer_Specifications_Sheet.pdf",
-      "authorityBrand": "ASKO",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_5530106b3719e7a18793b3e1"
       ]
     },
     {
@@ -27734,32 +27526,6 @@
       ]
     },
     {
-      "jobId": "recovery_b613fd47007c9b9a4d111b38",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=KBM5302AC&brand=Kelvinator",
-      "authorityBrand": "KELVINATOR",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "manufacturer"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_912d08c57373899f5b2a38bd"
-      ]
-    },
-    {
       "jobId": "recovery_f040612c760b432d6a794dc1",
       "sourceUrl": "https://chiq.com.au/cdn/shop/files/CSR124DBS_SPEC.pdf",
       "authorityBrand": "CHIQ",
@@ -28475,32 +28241,6 @@
       ]
     },
     {
-      "jobId": "recovery_32f233f9e6e8810fe1b1986f",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw4ef414ad/QRG/AU/QRG-AU-82325.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "manufacturer"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_ee931467bcc5e6c6f1f57ff0"
-      ]
-    },
-    {
       "jobId": "recovery_f02086874aa0744f47679d4c",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw53c8ef68/QRG/AU/QRG-AU-82881.pdf",
       "authorityBrand": "Fisher & Paykel",
@@ -28524,32 +28264,6 @@
       ],
       "targetIds": [
         "recovery_target_224ef93daefed26722cf0f53"
-      ]
-    },
-    {
-      "jobId": "recovery_726c14d9b2ad1e73e3ff3e0e",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw5ace47e8/QRG/AU/QRG-AU-26160.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "manufacturer"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_5b485bcfdea32626ef3a405d"
       ]
     },
     {
@@ -28917,32 +28631,6 @@
       ]
     },
     {
-      "jobId": "recovery_07c26e714690ecac2ec4a5d2",
-      "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=HJoJF6sjLmW0vxZag11e5g",
-      "authorityBrand": "LG",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_d1a229a024fafaeb76b788d9"
-      ]
-    },
-    {
       "jobId": "recovery_de89aaa6d031aa79cb950057",
       "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=irYywwLMKQrdaYb9RwmJA",
       "authorityBrand": "LG",
@@ -28992,33 +28680,6 @@
       ],
       "targetIds": [
         "recovery_target_9ac8927e90bc1fc688d988a8"
-      ]
-    },
-    {
-      "jobId": "recovery_37723fbc2b6a58c1d4b17026",
-      "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=pUof6XKiAKggTDi5Im6WeA",
-      "authorityBrand": "LG",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_436a03f5f1fdbf5d9d3f6b28",
-        "recovery_target_0e614eea576bd1682de1e2c1"
       ]
     },
     {
@@ -29490,32 +29151,6 @@
       ]
     },
     {
-      "jobId": "recovery_52482c959314c690c5168e01",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw8cd42baa/QRG/AU/QRG-AU-93281.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_3d9256682b764da7cf45af65"
-      ]
-    },
-    {
       "jobId": "recovery_c046183ad3985f4daada3b41",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw924b68ab/QRG/AU/QRG-AU-82429.pdf",
       "authorityBrand": "Fisher & Paykel",
@@ -29565,32 +29200,6 @@
       ],
       "targetIds": [
         "recovery_target_78e42925bf68f2e3c3167b43"
-      ]
-    },
-    {
-      "jobId": "recovery_45642e854227bd86a2872894",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw966cf444/QRG/AU/QRG-AU-93296.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_HOST_AUTHORITY_VALIDATION",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_97b25b1f250f474d218cf607"
       ]
     },
     {
@@ -31391,32 +31000,6 @@
       ]
     },
     {
-      "jobId": "recovery_0d3637a20f8ce52038d9df34",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/5/8/1/8/581817e4b8c0f1f85770daea76bee71915e66cad_RS6121FRJK1_Fisher___Paykel_Specifications_Sheet.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_5b485bcfdea32626ef3a405d"
-      ]
-    },
-    {
       "jobId": "recovery_9962ab38ba077827f41fbd4e",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/5/a/1/0/5a1048f89100e64a50a7390f0843ef22244dec2a_Electrolux_EWF9043R7SC_Factsheet.pdf",
       "authorityBrand": "Electrolux",
@@ -31804,32 +31387,6 @@
       ],
       "targetIds": [
         "recovery_target_8441bd0b6aaf02789313aa10"
-      ]
-    },
-    {
-      "jobId": "recovery_e5311dbac43901cecda7645f",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/7/8/1/0/7810108425230c8c0b331cad95ce1321b5541cd2_DD60SDFX9_Specifications_Sheet.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_ee931467bcc5e6c6f1f57ff0"
       ]
     },
     {
@@ -39004,61 +38561,6 @@
       ]
     },
     {
-      "jobId": "recovery_d7580335f9e1b77c9cce7ec4",
-      "sourceUrl": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0Mjk1&lang=",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "unknown"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_3097a18fb1c5c4a423983776",
-        "recovery_target_edd226bcb74d71af0d877575",
-        "recovery_target_ab7d82289ce015c7c3e55a50"
-      ]
-    },
-    {
-      "jobId": "recovery_129926b8025bea370466eab4",
-      "sourceUrl": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjM0MzU1&lang=",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "unknown"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_4fce123d116933f253653b5f",
-        "recovery_target_eb58b54c30decadc6bf2560d"
-      ]
-    },
-    {
       "jobId": "recovery_d530e67e6c8784b10ad4f07e",
       "sourceUrl": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjU4OTU1&lang=",
       "authorityBrand": "Westinghouse",
@@ -39085,59 +38587,6 @@
       ]
     },
     {
-      "jobId": "recovery_00b783ccca67d0e78804d367",
-      "sourceUrl": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NjY1NzU1&lang=",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "unknown"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_2bc3b654d7d4212807266557",
-        "recovery_target_75c476b2807483e6b13d1a5a"
-      ]
-    },
-    {
-      "jobId": "recovery_522ea5269f6849e85eb179e2",
-      "sourceUrl": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTczMjk1&lang=",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "unknown"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_5fe768a59d31bf5568dfe5a1"
-      ]
-    },
-    {
       "jobId": "recovery_edc844b9881e0bf50f76ad71",
       "sourceUrl": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTc1&lang=",
       "authorityBrand": "Westinghouse",
@@ -39161,33 +38610,6 @@
       ],
       "targetIds": [
         "recovery_target_a0a1ee4d6685fa21c7426e70"
-      ]
-    },
-    {
-      "jobId": "recovery_e8f0f36d68cceb651b5db6d5",
-      "sourceUrl": "https://www.westinghouse.com.au/documenthandler.ashx?file=aHR0cHM6Ly9yZXNvdXJjZS5lbGVjdHJvbHV4LmNvbS5hdS9QdWJsaWMvRmlsZS8_SWQ9NTExOTE1&lang=",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "OFFICIAL_SOURCE_DISCOVERY_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "transportHostTypes": [
-        "unknown"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_b0a55962088d434197a25c0b",
-        "recovery_target_cf7271d6f05da49811955422"
       ]
     },
     {
@@ -39815,58 +39237,6 @@
       ]
     },
     {
-      "jobId": "recovery_69a86e8801adc300d43a4b2f",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw96f408b1/QRG/AU/QRG-AU-82884.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P4_CONFLICT_RESOLUTION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "manufacturer"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_b55cb2ab86331ebb9121bbb8"
-      ]
-    },
-    {
-      "jobId": "recovery_610579083a43177283726029",
-      "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dwcae4c1ac/QRG/AU/QRG-AU-82883.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P4_CONFLICT_RESOLUTION",
-      "transportHostTypes": [
-        "manufacturer"
-      ],
-      "authorTypes": [
-        "manufacturer"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_e4afd53e095df4dfd9aa436a"
-      ]
-    },
-    {
       "jobId": "recovery_d0b3dcbc3d96d97fd0c6c04b",
       "sourceUrl": "https://dam.fisherpaykel.com/KZ3PKN00/at/2663j9cc47brvvss4ggggx6v/FP-DataSheet-en-DW60U4I2-DW60U4HI2-IntegratedDishwasher-0-90002306B-AU-NZ-UK-IE-CN.pdf",
       "authorityBrand": "Fisher & Paykel",
@@ -40488,33 +39858,6 @@
       ],
       "targetIds": [
         "recovery_target_76f7bd9f27434df8c5fa1683"
-      ]
-    },
-    {
-      "jobId": "recovery_f01a593aeb8bdfca5fc67617",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/b/6/2/9/b6292127b3e8808a5f30f5b6ae76d46f81578115_SpecificationGuide_DD60ST4NX9_DD60ST4NB9_DD60ST4ZB9_DD60ST4HNX9_DD60ST4HNB9_DD60ST4HZB9.pdf",
-      "authorityBrand": "Fisher & Paykel",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P4_CONFLICT_RESOLUTION",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_b55cb2ab86331ebb9121bbb8",
-        "recovery_target_e4afd53e095df4dfd9aa436a"
       ]
     },
     {
@@ -41161,88 +40504,6 @@
       "primaryJobId": "recovery_b77cc3c661b27730259c77dd"
     },
     {
-      "referenceId": "fa_ref_bef91297ea3d15a34ff7e04c",
-      "legacyRuntimeId": "ao-64000",
-      "canonicalProductId": "fa_prod_cb735c4586d496e7155ceb47",
-      "category": "dryer",
-      "brand": "ASKO",
-      "model": "T208H.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 595,
-        "height": 850,
-        "depth": 640
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_5530106b3719e7a18793b3e1",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_559b3fe8f2a468c9da7240e7"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_559b3fe8f2a468c9da7240e7",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 850,
-            "depth": 640
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_c8107542804368bb992de2ee"
-      ],
-      "primaryJobId": "recovery_c8107542804368bb992de2ee"
-    },
-    {
-      "referenceId": "fa_ref_1ac391fe8ec81d62e37edadf",
-      "legacyRuntimeId": "ao-64001",
-      "canonicalProductId": "fa_prod_731ae13fe64007f0f35c0a6a",
-      "category": "dryer",
-      "brand": "ASKO",
-      "model": "T408HD.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 595,
-        "height": 850,
-        "depth": 640
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_c98f8586024d44a327356703",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_e4328099862a62e57f24ca8a"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_e4328099862a62e57f24ca8a",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 850,
-            "depth": 640
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_2c8a85407bb3531ebc785bd1"
-      ],
-      "primaryJobId": "recovery_2c8a85407bb3531ebc785bd1"
-    },
-    {
       "referenceId": "fa_ref_03275e6c7b751743089e8a9d",
       "legacyRuntimeId": "ao-64002",
       "canonicalProductId": "fa_prod_9c595a3e4cfdcfd52cf4c0a7",
@@ -41364,47 +40625,6 @@
         "recovery_e1e87ec24e95fc76b5ac3fc8"
       ],
       "primaryJobId": "recovery_e1e87ec24e95fc76b5ac3fc8"
-    },
-    {
-      "referenceId": "fa_ref_398298c794febed554972812",
-      "legacyRuntimeId": "ao-64007",
-      "canonicalProductId": "fa_prod_6eaee00c8a0f353e671e9b77",
-      "category": "washing_machine",
-      "brand": "ASKO",
-      "model": "W4086P.W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 595,
-        "height": 850,
-        "depth": 585
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_fc1d56ab3f9d8c60bc855b2a",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c0ba5fb347b0241c5c6488e1"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c0ba5fb347b0241c5c6488e1",
-          "dimensionsMm": {
-            "width": 595,
-            "height": 850,
-            "depth": 585
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_599ec297fa6c083413f01ac8"
-      ],
-      "primaryJobId": "recovery_599ec297fa6c083413f01ac8"
     },
     {
       "referenceId": "fa_ref_15c8a9eec96879f78c9d601a",
@@ -54076,47 +53296,6 @@
       "primaryJobId": "recovery_d181518900a3432bfa37b8e2"
     },
     {
-      "referenceId": "fa_ref_d7d49b1a6182b3942737c903",
-      "legacyRuntimeId": "ao-57877",
-      "canonicalProductId": "fa_prod_ea1d9a77c15fdaeff25f3660",
-      "category": "fridge",
-      "brand": "Esatto",
-      "model": "ETM207X",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 545,
-        "height": 1372,
-        "depth": 623
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_0417d161966ed05ba431aedf",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_8495f06f92fe5aab3a00ab6a"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_8495f06f92fe5aab3a00ab6a",
-          "dimensionsMm": {
-            "width": 545,
-            "height": 1372,
-            "depth": 623
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_eb63f5b612ebc55ba1f643bd"
-      ],
-      "primaryJobId": "recovery_eb63f5b612ebc55ba1f643bd"
-    },
-    {
       "referenceId": "fa_ref_491a16595c942b034fb3903c",
       "legacyRuntimeId": "ao-58435",
       "canonicalProductId": "fa_prod_8478463867eb5054d63b0541",
@@ -58051,57 +57230,6 @@
         "recovery_fc0e9675cd57f0b2af95cea3"
       ],
       "primaryJobId": "recovery_fc0e9675cd57f0b2af95cea3"
-    },
-    {
-      "referenceId": "fa_ref_4b70ff0c230e18316b157fb0",
-      "legacyRuntimeId": "ao-62057",
-      "canonicalProductId": "fa_prod_67d9fc8bb47fc234ba64e60f",
-      "category": "washing_machine",
-      "brand": "Fisher & Paykel",
-      "model": "WD8560F1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 645
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_b4c27af7c13ba6643cb2cf6a",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_d41081cf0eac9700467f0497",
-        "doc_fa0eda54d4fcbd6f0ae647ba"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_d41081cf0eac9700467f0497",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 645
-          }
-        },
-        {
-          "sourceDocumentId": "doc_fa0eda54d4fcbd6f0ae647ba",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 645
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_f22800464225ad1821023b0e",
-        "recovery_1d322a69db2083524d6ddfa4"
-      ],
-      "primaryJobId": "recovery_f22800464225ad1821023b0e"
     },
     {
       "referenceId": "fa_ref_90fc8a14a91c4647f92d2174",
@@ -65115,47 +64243,6 @@
       "primaryJobId": "recovery_226caf5d4f4db527647823f4"
     },
     {
-      "referenceId": "fa_ref_7e6292f1ca6f19e61575408f",
-      "legacyRuntimeId": "ao-86444",
-      "canonicalProductId": "fa_prod_9ee9ea9930fcfdfc43ef8617",
-      "category": "fridge",
-      "brand": "Hisense",
-      "model": "HRAF242",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 550,
-        "height": 1434,
-        "depth": 542
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_0326bb4e476aa371139c6291",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a9a17f62301a6fa9f5472e8a"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a9a17f62301a6fa9f5472e8a",
-          "dimensionsMm": {
-            "width": 550,
-            "height": 1434,
-            "depth": 542
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_1bb27d490ba9504ff36d9361"
-      ],
-      "primaryJobId": "recovery_1bb27d490ba9504ff36d9361"
-    },
-    {
       "referenceId": "fa_ref_95a9344f3266c46e73ecd6d9",
       "legacyRuntimeId": "ao-86445",
       "canonicalProductId": "fa_prod_9ccd5eb4000ad501182606b1",
@@ -68885,47 +67972,6 @@
         "recovery_38b74d0022016ccb095a140a"
       ],
       "primaryJobId": "recovery_38b74d0022016ccb095a140a"
-    },
-    {
-      "referenceId": "fa_ref_43b67c594795a58eac6a5841",
-      "legacyRuntimeId": "ao-52336",
-      "canonicalProductId": "fa_prod_152a2a88bc4886aaf8a7270f",
-      "category": "washing_machine",
-      "brand": "LG",
-      "model": "WTG1432VH",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 701,
-        "height": 1030,
-        "depth": 736
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_002a12622bce35cd88bb8154",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_592377702b8496d017911968"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_592377702b8496d017911968",
-          "dimensionsMm": {
-            "width": 701,
-            "height": 1030,
-            "depth": 736
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_83acd4ac18df54f166ed08dd"
-      ],
-      "primaryJobId": "recovery_83acd4ac18df54f166ed08dd"
     },
     {
       "referenceId": "fa_ref_169f9614db63c22b429dcb2d",
@@ -84754,47 +83800,6 @@
       "primaryJobId": "recovery_ef191afadd66c766b1b3ca76"
     },
     {
-      "referenceId": "fa_ref_7b30999b458aecbc9e66e223",
-      "legacyRuntimeId": "fridge-arf2495",
-      "canonicalProductId": "fa_prod_c92738e995af0726f8dbd3e5",
-      "category": "fridge",
-      "brand": "KELVINATOR",
-      "model": "KBM5302AC",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P1_HISTORICAL_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 796,
-        "height": 1718,
-        "depth": 727
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_912d08c57373899f5b2a38bd",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_f7b567b71022190a339e2b24"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_f7b567b71022190a339e2b24",
-          "dimensionsMm": {
-            "width": 796,
-            "height": 1718,
-            "depth": 727
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_b613fd47007c9b9a4d111b38"
-      ],
-      "primaryJobId": "recovery_b613fd47007c9b9a4d111b38"
-    },
-    {
       "referenceId": "fa_ref_af678d45499b1e144bd0d26f",
       "legacyRuntimeId": "fridge-arf2388",
       "canonicalProductId": "fa_prod_41483d75fdd13fd44e77e34c",
@@ -87136,6 +86141,24 @@
             "height": 880,
             "depth": 573
           }
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_518fdc4b2062a55b8dbea91b",
+          "snapshotSha256": "19d1fb386eadb09f4a0d1fbc07ea26b9de0f65079b636627b266e90f78e6680a",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          }
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_518fdc4b2062a55b8dbea91b",
+          "snapshotSha256": "c464998926e4822596e0758060e2958942e18900735817e45fcfdc27aac530f9",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          }
         }
       ],
       "publicationEligible": false,
@@ -87192,6 +86215,15 @@
         {
           "sourceId": "energy-rating:dishwasher",
           "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          }
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_2bd073a66780227a6006e4fe",
+          "snapshotSha256": "d947c0080fb6b8827057a022a48a07f631955f4f6a1b464139617fc4249be5a2",
           "dimensionsMm": {
             "width": 599,
             "height": 880,
@@ -87258,6 +86290,24 @@
             "height": 880,
             "depth": 573
           }
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_224ef93daefed26722cf0f53",
+          "snapshotSha256": "e225d6b0024cab7ea415613fce577225265ae49d4e3d9b5a2aacc3fe1ebdfb3f",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          }
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_224ef93daefed26722cf0f53",
+          "snapshotSha256": "f88f13657d3f3869cd0c9d70025f9010ad3aaa786692c644c95cdc41d5a366dc",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          }
         }
       ],
       "publicationEligible": false,
@@ -87314,6 +86364,15 @@
         {
           "sourceId": "energy-rating:dishwasher",
           "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
+          "dimensionsMm": {
+            "width": 599,
+            "height": 880,
+            "depth": 573
+          }
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_96f741191e50ec6b570d9df2",
+          "snapshotSha256": "40d17cefe10087be1f573254662fcec2aa9a48648c7cdbb1a174a1ef8dc065db",
           "dimensionsMm": {
             "width": 599,
             "height": 880,
@@ -87408,118 +86467,6 @@
       "primaryJobId": "recovery_e77b2fb6c93c35ec9de016b9"
     },
     {
-      "referenceId": "fa_ref_c47eaade2e638e8e62fe49d3",
-      "legacyRuntimeId": "ao-64076",
-      "canonicalProductId": "fa_prod_4c15aa2da400ad21dcc44c58",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DD60SDFX9",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 599,
-        "height": 410,
-        "depth": 573
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:dishwasher",
-          "snapshotSha256": "f38af6b50c49bd808318d4b3b361a77666b31a0ff1286e52309fc1ffc0cab5a8",
-          "dimensionsMm": {
-            "width": 599,
-            "height": 880,
-            "depth": 573
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_ee931467bcc5e6c6f1f57ff0",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_9bf7ffb807444e7093ee5829",
-        "doc_cddb0ed7d876e672d546fdf6"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_9bf7ffb807444e7093ee5829",
-          "dimensionsMm": {
-            "width": 599,
-            "height": 410,
-            "depth": 573
-          }
-        },
-        {
-          "sourceDocumentId": "doc_cddb0ed7d876e672d546fdf6",
-          "dimensionsMm": {
-            "width": 599,
-            "height": 410,
-            "depth": 573
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_32f233f9e6e8810fe1b1986f",
-        "recovery_e5311dbac43901cecda7645f"
-      ],
-      "primaryJobId": "recovery_32f233f9e6e8810fe1b1986f"
-    },
-    {
-      "referenceId": "fa_ref_17ce186ecb53adf0107887b1",
-      "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh8060p3",
-      "canonicalProductId": "fa_prod_9a4211d7d7147bc2f37abe64",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DH8060P3",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 650
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:dryer",
-          "snapshotSha256": "dc1d443dac44ad3310356376df8e3418caed7265f99105f6918141cf5f3ff099",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 650
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_3d9256682b764da7cf45af65",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_535015748da94abe487de904"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_535015748da94abe487de904",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 650
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_52482c959314c690c5168e01"
-      ],
-      "primaryJobId": "recovery_52482c959314c690c5168e01"
-    },
-    {
       "referenceId": "fa_ref_dca266100319b2c65eae7340",
       "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh9060fs1",
       "canonicalProductId": "fa_prod_d13bff0b6750b5ac1b40748c",
@@ -87569,57 +86516,6 @@
         "recovery_bea7504948ef7c9d67b213b8"
       ],
       "primaryJobId": "recovery_bea7504948ef7c9d67b213b8"
-    },
-    {
-      "referenceId": "fa_ref_17b4e72272ac25833e45bd3d",
-      "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh9060hg1",
-      "canonicalProductId": "fa_prod_1d55416be8abd9c2901bd6d5",
-      "category": "dryer",
-      "brand": "Fisher & Paykel",
-      "model": "DH9060HG1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 655
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:dryer",
-          "snapshotSha256": "dc1d443dac44ad3310356376df8e3418caed7265f99105f6918141cf5f3ff099",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 670
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_97b25b1f250f474d218cf607",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_39bdee1f7ffa0798b0ddf482"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_39bdee1f7ffa0798b0ddf482",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 655
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_45642e854227bd86a2872894"
-      ],
-      "primaryJobId": "recovery_45642e854227bd86a2872894"
     },
     {
       "referenceId": "fa_ref_0f82e88d60c4d93981eeb0bc",
@@ -89558,67 +88454,6 @@
         "recovery_c1ccb543b4aa516cab4efbed"
       ],
       "primaryJobId": "recovery_c1ccb543b4aa516cab4efbed"
-    },
-    {
-      "referenceId": "fa_ref_bc9fd3b42de8b34854301a9d",
-      "legacyRuntimeId": "ao-71030",
-      "canonicalProductId": "fa_prod_130cc6275e1612c390d6fd45",
-      "category": "fridge",
-      "brand": "Fisher & Paykel",
-      "model": "RS6121FRJK1",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 603,
-        "height": 2134,
-        "depth": 610
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 603,
-            "height": 2134,
-            "depth": 610
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_5b485bcfdea32626ef3a405d",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_b4e58f702bd8842ccdf3a296",
-        "doc_ba372a714a856648330da561"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_b4e58f702bd8842ccdf3a296",
-          "dimensionsMm": {
-            "width": 603,
-            "height": 2134,
-            "depth": 610
-          }
-        },
-        {
-          "sourceDocumentId": "doc_ba372a714a856648330da561",
-          "dimensionsMm": {
-            "width": 603,
-            "height": 2134,
-            "depth": 610
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_726c14d9b2ad1e73e3ff3e0e",
-        "recovery_0d3637a20f8ce52038d9df34"
-      ],
-      "primaryJobId": "recovery_726c14d9b2ad1e73e3ff3e0e"
     },
     {
       "referenceId": "fa_ref_789cfb3822422dd902ac6511",
@@ -92375,108 +91210,6 @@
       "primaryJobId": "recovery_bf067badafad04d5d390cd7e"
     },
     {
-      "referenceId": "fa_ref_450c097ec4ac96a2cee08561",
-      "legacyRuntimeId": "discovery-dryer-lg-dvh9-09b",
-      "canonicalProductId": "fa_prod_6cfcae456ed0636b9d3591ef",
-      "category": "dryer",
-      "brand": "LG",
-      "model": "DVH9-09B",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 690
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:dryer",
-          "snapshotSha256": "dc1d443dac44ad3310356376df8e3418caed7265f99105f6918141cf5f3ff099",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 690
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_436a03f5f1fdbf5d9d3f6b28",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_23f599dc01d68dd0eeff516e"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_23f599dc01d68dd0eeff516e",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 690
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_37723fbc2b6a58c1d4b17026"
-      ],
-      "primaryJobId": "recovery_37723fbc2b6a58c1d4b17026"
-    },
-    {
-      "referenceId": "fa_ref_ce76089bb2083f6db580a195",
-      "legacyRuntimeId": "discovery-dryer-lg-dvh9-09w",
-      "canonicalProductId": "fa_prod_3861be7a22570ffc464f7378",
-      "category": "dryer",
-      "brand": "LG",
-      "model": "DVH9-09W",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 690
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:dryer",
-          "snapshotSha256": "dc1d443dac44ad3310356376df8e3418caed7265f99105f6918141cf5f3ff099",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 690
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_0e614eea576bd1682de1e2c1",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_355c6f225661e6624631dc1e"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_355c6f225661e6624631dc1e",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 690
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_37723fbc2b6a58c1d4b17026"
-      ],
-      "primaryJobId": "recovery_37723fbc2b6a58c1d4b17026"
-    },
-    {
       "referenceId": "fa_ref_1958f1da302ada7880040e7a",
       "legacyRuntimeId": "ao-94208",
       "canonicalProductId": "fa_prod_d4069033d1f3f3f6099f2275",
@@ -93342,57 +92075,6 @@
         "recovery_b81a2c72c60a1ccee8c9cbd1"
       ],
       "primaryJobId": "recovery_b81a2c72c60a1ccee8c9cbd1"
-    },
-    {
-      "referenceId": "fa_ref_ad649ba97a9c9c2eadd627b4",
-      "legacyRuntimeId": "discovery-washing-machine-lg-wv9-1412b",
-      "canonicalProductId": "fa_prod_0272984aae39a931f887465a",
-      "category": "washing_machine",
-      "brand": "LG",
-      "model": "WV9-1412B",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P2_CURRENT_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 600,
-        "height": 850,
-        "depth": 610
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:washing_machine",
-          "snapshotSha256": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 610
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_d1a229a024fafaeb76b788d9",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_e264c1a044464fe74b767d0a"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_e264c1a044464fe74b767d0a",
-          "dimensionsMm": {
-            "width": 600,
-            "height": 850,
-            "depth": 610
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_07c26e714690ecac2ec4a5d2"
-      ],
-      "primaryJobId": "recovery_07c26e714690ecac2ec4a5d2"
     },
     {
       "referenceId": "fa_ref_f974ea1e43ad0193b14daf60",
@@ -107420,57 +106102,6 @@
       "primaryJobId": "recovery_79e56f6075e98398c3793e2e"
     },
     {
-      "referenceId": "fa_ref_1cec063fab40d12cdea73e1d",
-      "legacyRuntimeId": "fridge-arf3876",
-      "canonicalProductId": "fa_prod_60f68bbb78f7bcf562bfd027",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WFM0900WD",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 560,
-        "height": 845,
-        "depth": 575
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 555,
-            "height": 850,
-            "depth": 575
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_b0a55962088d434197a25c0b",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_ce5fc9c4c26a396517d8745e"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_ce5fc9c4c26a396517d8745e",
-          "dimensionsMm": {
-            "width": 560,
-            "height": 845,
-            "depth": 575
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_e8f0f36d68cceb651b5db6d5"
-      ],
-      "primaryJobId": "recovery_e8f0f36d68cceb651b5db6d5"
-    },
-    {
       "referenceId": "fa_ref_300a20cec9571c23137baaa2",
       "legacyRuntimeId": "fridge-arf3877",
       "canonicalProductId": "fa_prod_f0042f2b1f6daf4124b34313",
@@ -107571,108 +106202,6 @@
         "recovery_edd553cbbf0b89846b794bc2"
       ],
       "primaryJobId": "recovery_edd553cbbf0b89846b794bc2"
-    },
-    {
-      "referenceId": "fa_ref_3b058f8ba77c1ce64e650221",
-      "legacyRuntimeId": "fridge-arf3614",
-      "canonicalProductId": "fa_prod_2b4e3e2002dcfa83dc38c8fd",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WHE5600SD",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 896,
-        "height": 1725,
-        "depth": 730
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 896,
-            "height": 1725,
-            "depth": 781
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_2bc3b654d7d4212807266557",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_ee42c1094d6055381e5ec003"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_ee42c1094d6055381e5ec003",
-          "dimensionsMm": {
-            "width": 896,
-            "height": 1725,
-            "depth": 730
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_00b783ccca67d0e78804d367"
-      ],
-      "primaryJobId": "recovery_00b783ccca67d0e78804d367"
-    },
-    {
-      "referenceId": "fa_ref_71ab3a93124599360e847fcc",
-      "legacyRuntimeId": "fridge-arf3613",
-      "canonicalProductId": "fa_prod_857b9c61280eef6f7c6be218",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WHE5650SD",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 896,
-        "height": 1725,
-        "depth": 730
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 896,
-            "height": 1725,
-            "depth": 781
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_75c476b2807483e6b13d1a5a",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_c15b421097a7f80b7ccfb202"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_c15b421097a7f80b7ccfb202",
-          "dimensionsMm": {
-            "width": 896,
-            "height": 1725,
-            "depth": 730
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_00b783ccca67d0e78804d367"
-      ],
-      "primaryJobId": "recovery_00b783ccca67d0e78804d367"
     },
     {
       "referenceId": "fa_ref_ebc2e54849fb51f7b0109aca",
@@ -108389,57 +106918,6 @@
       "primaryJobId": "recovery_79e56f6075e98398c3793e2e"
     },
     {
-      "referenceId": "fa_ref_6031b18d314cb610323ab4c4",
-      "legacyRuntimeId": "fridge-arf2432",
-      "canonicalProductId": "fa_prod_66577887e818ba366b651584",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WRM1400WD",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 560,
-        "height": 845,
-        "depth": 575
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 555,
-            "height": 850,
-            "depth": 575
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_cf7271d6f05da49811955422",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_6fba616a4eb588ef2c9db6ec"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_6fba616a4eb588ef2c9db6ec",
-          "dimensionsMm": {
-            "width": 560,
-            "height": 845,
-            "depth": 575
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_e8f0f36d68cceb651b5db6d5"
-      ],
-      "primaryJobId": "recovery_e8f0f36d68cceb651b5db6d5"
-    },
-    {
       "referenceId": "fa_ref_8c2f5520b58acba390059f65",
       "legacyRuntimeId": "fridge-arf3878",
       "canonicalProductId": "fa_prod_9938ad55c72fceef45d23141",
@@ -108489,57 +106967,6 @@
         "recovery_79e56f6075e98398c3793e2e"
       ],
       "primaryJobId": "recovery_79e56f6075e98398c3793e2e"
-    },
-    {
-      "referenceId": "fa_ref_28b4272b7c535fe02ef09ae4",
-      "legacyRuntimeId": "fridge-arf3073",
-      "canonicalProductId": "fa_prod_1f2d5a1b64ee4811f19e731f",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WRM2400WF",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 550,
-        "height": 1434,
-        "depth": 545
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 550,
-            "height": 1434,
-            "depth": 542
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_5fe768a59d31bf5568dfe5a1",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_32e38955c7a06b530c37c668"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_32e38955c7a06b530c37c668",
-          "dimensionsMm": {
-            "width": 550,
-            "height": 1434,
-            "depth": 545
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_522ea5269f6849e85eb179e2"
-      ],
-      "primaryJobId": "recovery_522ea5269f6849e85eb179e2"
     },
     {
       "referenceId": "fa_ref_aa3d2f5ffa40e440e4f7b17b",
@@ -109205,261 +107632,6 @@
       "primaryJobId": "recovery_d530e67e6c8784b10ad4f07e"
     },
     {
-      "referenceId": "fa_ref_1049fe7fa7baad83d6b0a1a2",
-      "legacyRuntimeId": "fridge-arf3447",
-      "canonicalProductId": "fa_prod_cda67f520df12fcec44ceaae",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WTM3100SL",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 1646,
-        "depth": 650
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 1646,
-            "depth": 650
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_4fce123d116933f253653b5f",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_686984c4a18a6b8cda0ee160"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_686984c4a18a6b8cda0ee160",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 1646,
-            "depth": 650
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_129926b8025bea370466eab4"
-      ],
-      "primaryJobId": "recovery_129926b8025bea370466eab4"
-    },
-    {
-      "referenceId": "fa_ref_55aa979380310a84995d90b1",
-      "legacyRuntimeId": "fridge-arf3450",
-      "canonicalProductId": "fa_prod_9573bca8a87b1d8de92a0070",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WTM3400WL",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 598,
-        "height": 1756,
-        "depth": 650
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 1756,
-            "depth": 650
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_eb58b54c30decadc6bf2560d",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_8166fcc5aeff7d640e8bafdf"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_8166fcc5aeff7d640e8bafdf",
-          "dimensionsMm": {
-            "width": 598,
-            "height": 1756,
-            "depth": 650
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_129926b8025bea370466eab4"
-      ],
-      "primaryJobId": "recovery_129926b8025bea370466eab4"
-    },
-    {
-      "referenceId": "fa_ref_edd4cf76166b059c1d516cc3",
-      "legacyRuntimeId": "fridge-arf3448",
-      "canonicalProductId": "fa_prod_0ae53f3762417f23d983d69f",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WTM4302WD",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 699,
-        "height": 1725,
-        "depth": 723
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 699,
-            "height": 1725,
-            "depth": 723
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_3097a18fb1c5c4a423983776",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_976757cb3754b39fc3020fb2"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_976757cb3754b39fc3020fb2",
-          "dimensionsMm": {
-            "width": 699,
-            "height": 1725,
-            "depth": 723
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_d7580335f9e1b77c9cce7ec4"
-      ],
-      "primaryJobId": "recovery_d7580335f9e1b77c9cce7ec4"
-    },
-    {
-      "referenceId": "fa_ref_fdaaaa2d572ad5c20a13fec4",
-      "legacyRuntimeId": "fridge-arf3449",
-      "canonicalProductId": "fa_prod_c541e329ebc4087c2acb695e",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WTM5002SD",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 796,
-        "height": 1725,
-        "depth": 723
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 796,
-            "height": 1725,
-            "depth": 723
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_edd226bcb74d71af0d877575",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_635a6cbac3e6c990f194d433"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_635a6cbac3e6c990f194d433",
-          "dimensionsMm": {
-            "width": 796,
-            "height": 1725,
-            "depth": 723
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_d7580335f9e1b77c9cce7ec4"
-      ],
-      "primaryJobId": "recovery_d7580335f9e1b77c9cce7ec4"
-    },
-    {
-      "referenceId": "fa_ref_3018aea4f60d6e0992fd8abe",
-      "legacyRuntimeId": "fridge-arf3452",
-      "canonicalProductId": "fa_prod_43103b46a88d3ab8891a41a3",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WTM5002WE",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "currentLookupAction": "CONFIRM_REQUIRED",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "legacyDimensionHintMm": {
-        "width": 796,
-        "height": 1725,
-        "depth": 727
-      },
-      "registryDimensionHints": [
-        {
-          "sourceId": "energy-rating:fridge",
-          "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-          "dimensionsMm": {
-            "width": 796,
-            "height": 1725,
-            "depth": 723
-          }
-        }
-      ],
-      "publicationEligible": false,
-      "targetId": "recovery_target_ab7d82289ce015c7c3e55a50",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_7d395ebe1fb6d731d8470084"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_7d395ebe1fb6d731d8470084",
-          "dimensionsMm": {
-            "width": 796,
-            "height": 1725,
-            "depth": 727
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_d7580335f9e1b77c9cce7ec4"
-      ],
-      "primaryJobId": "recovery_d7580335f9e1b77c9cce7ec4"
-    },
-    {
       "referenceId": "fa_ref_8adf1afdb4033a49ee4f54ad",
       "legacyRuntimeId": "dishwasher-adw1066",
       "canonicalProductId": "fa_prod_065e3e579d8f5d91e889130c",
@@ -109622,108 +107794,6 @@
         "recovery_62a1cd7284be7d64a364b8d0"
       ],
       "primaryJobId": "recovery_62a1cd7284be7d64a364b8d0"
-    },
-    {
-      "referenceId": "fa_ref_61a6dd8f7fe4d41ee4d51bea",
-      "legacyRuntimeId": "ao-153384",
-      "canonicalProductId": "fa_prod_9ffb22502ce4f205bcc22ec0",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DD60ST4NB9",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "QUARANTINED",
-      "priorityClass": "P4_CONFLICT_RESOLUTION",
-      "legacyDimensionHintMm": {
-        "width": 599,
-        "height": 454,
-        "depth": 573
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_b55cb2ab86331ebb9121bbb8",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_2370097337ada280a356a5e4",
-        "doc_2372c06a8210863d0014de6b"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_2370097337ada280a356a5e4",
-          "dimensionsMm": {
-            "width": 599,
-            "height": 454,
-            "depth": 573
-          }
-        },
-        {
-          "sourceDocumentId": "doc_2372c06a8210863d0014de6b",
-          "dimensionsMm": {
-            "width": 599,
-            "height": 454,
-            "depth": 573
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_69a86e8801adc300d43a4b2f",
-        "recovery_f01a593aeb8bdfca5fc67617"
-      ],
-      "primaryJobId": "recovery_69a86e8801adc300d43a4b2f"
-    },
-    {
-      "referenceId": "fa_ref_56e05e7bf5832cc044fab0ab",
-      "legacyRuntimeId": "ao-153385",
-      "canonicalProductId": "fa_prod_c704984704f8aa3d7b3615cd",
-      "category": "dishwasher",
-      "brand": "Fisher & Paykel",
-      "model": "DD60ST4NX9",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "QUARANTINED",
-      "priorityClass": "P4_CONFLICT_RESOLUTION",
-      "legacyDimensionHintMm": {
-        "width": 599,
-        "height": 454,
-        "depth": 573
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_e4afd53e095df4dfd9aa436a",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_333e10329f9f8fe64e73fe72",
-        "doc_78f99a5aad3a6ccc6bc37ba8"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_333e10329f9f8fe64e73fe72",
-          "dimensionsMm": {
-            "width": 599,
-            "height": 454,
-            "depth": 573
-          }
-        },
-        {
-          "sourceDocumentId": "doc_78f99a5aad3a6ccc6bc37ba8",
-          "dimensionsMm": {
-            "width": 599,
-            "height": 454,
-            "depth": 573
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_610579083a43177283726029",
-        "recovery_f01a593aeb8bdfca5fc67617"
-      ],
-      "primaryJobId": "recovery_610579083a43177283726029"
     },
     {
       "referenceId": "fa_ref_425fbafb959841f0fbec2768",

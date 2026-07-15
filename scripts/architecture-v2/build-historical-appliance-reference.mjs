@@ -7,6 +7,7 @@ import { resolveArchitectureV2Path } from '../../src/domain/architecture-v2-path
 import { normalizeEnergyRatingRows } from '../../src/domain/energy-rating-registry.mjs';
 import { buildHistoricalApplianceReference } from '../../src/domain/historical-appliance-reference.mjs';
 import { buildHistoricalEvidencePublication } from '../../src/domain/historical-evidence-publication.mjs';
+import { filterHistoricalAcceptanceBundleByReceiptReplayAudit } from '../../src/domain/historical-evidence-recovery-audit.mjs';
 import { hashHistoricalCatalogBinding } from '../../src/domain/historical-catalog-binding.mjs';
 import { parseRegistryCsv, verifyRegistrySnapshot } from '../../src/domain/official-registry-snapshot.mjs';
 import brandCanon from '../brand-canon.js';
@@ -113,15 +114,23 @@ export async function runCli(args = process.argv.slice(2), environment = process
   const recoveryBundlePath = resolveArchitectureV2Path(
     repoRoot, 'historicalEvidenceRecoveryAcceptanceBundle',
   );
+  const receiptReplayAuditPath = resolveArchitectureV2Path(
+    repoRoot, 'historicalAcceptanceReceiptReplayAudit',
+  );
   const outputPath = resolveArchitectureV2Path(repoRoot, 'historicalApplianceReference');
-  const [snapshotsBytes, catalogText, recoveryBundleText] = await Promise.all([
+  const [snapshotsBytes, catalogText, recoveryBundleText, receiptReplayAuditText] = await Promise.all([
     readFile(snapshotsPath),
     readFile(catalogPath, 'utf8'),
     readFile(recoveryBundlePath, 'utf8'),
+    readFile(receiptReplayAuditPath, 'utf8'),
   ]);
   const catalog = JSON.parse(catalogText);
+  const safeRecoveryBundle = filterHistoricalAcceptanceBundleByReceiptReplayAudit(
+    JSON.parse(recoveryBundleText),
+    JSON.parse(receiptReplayAuditText),
+  ).bundle;
   const recoveryPublication = buildHistoricalEvidencePublication({
-    bundle: JSON.parse(recoveryBundleText),
+    bundle: safeRecoveryBundle,
     products: catalog.products,
   });
   const artifact = await buildHistoricalReferenceFromOfficialSnapshots({

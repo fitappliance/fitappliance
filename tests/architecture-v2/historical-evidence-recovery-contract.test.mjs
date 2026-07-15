@@ -5,6 +5,7 @@ import { readFile } from 'node:fs/promises';
 import {
   canonicalJsonSha256,
   validateHistoricalEvidenceRecoveryAcceptanceBundle,
+  rollbackHistoricalEvidenceRecoveryBundleBatch,
   validateHistoricalEvidenceRecoveryAudit,
   validateHistoricalEvidenceRecoveryBatch,
   validateHistoricalEvidenceRecoveryPolicy,
@@ -22,6 +23,10 @@ const FIELDS = [
   'closedEnvelope.heightMm',
   'closedEnvelope.depthMm',
 ];
+const EMPTY_RECONCILIATION = {
+  conflictingFields: [], conflictHints: [], missingFields: [], supersessionViolations: [],
+  axisPermutationResolution: null, lowerAuthorityResolution: null, conflictReason: null,
+};
 
 function artifactJob(overrides = {}) {
   return {
@@ -69,7 +74,7 @@ function batch(overrides = {}) {
     generatedAt: '2026-07-13T00:00:00.000Z',
     queue: { schemaVersion: 2, sha256: SHA_A },
     policy: { version: '2026-07-13.1', sha256: SHA_B },
-    selection: { jobIds: [], routes: [], priorities: [], brands: [], limit: null },
+    selection: { jobIds: [], targetIds: [], routes: [], priorities: [], brands: [], limit: null },
     artifactJobs: [
       artifactJob(),
       artifactJob({
@@ -79,7 +84,13 @@ function batch(overrides = {}) {
       }),
     ],
     targets: [target()],
-    summary: { artifactJobs: 2, targets: 1, candidateEdges: 2 },
+    summary: {
+      artifactJobs: 2,
+      targets: 1,
+      candidateEdges: 2,
+      excludedPriorAcceptedTargets: 0,
+      excludedPriorCandidateJobs: 0,
+    },
     ...overrides,
   };
 }
@@ -103,6 +114,7 @@ function results(overrides = {}) {
       candidateInventory: null,
       sources: [],
       geometryProjection: null,
+      reconciliation: null,
       semanticOutcomeSha256: SHA_B,
     }],
     summary: { targets: 1, accepted: 0, nonScalar: 0, retryable: 0, terminal: 1 },
@@ -151,6 +163,7 @@ function bundle(overrides = {}) {
       auditSha256: SHA_A,
       sources: [{ contentSha256: SHA_C }],
       geometryProjection: { evidenceLevel: 'dimensions' },
+      reconciliation: structuredClone(EMPTY_RECONCILIATION),
     }],
     lineage: [{
       batchId: 'historical-recovery-batch-example',
@@ -178,6 +191,7 @@ test('committed recovery policy pins queue, receipt, claim, transport, lock and 
   assert.deepEqual(policy.supportedReceiptSchemaVersions, [2, 3]);
   assert.deepEqual(policy.supportedClaimSemanticsVersions, [1, 2]);
   assert.deepEqual(policy.requestedFields, FIELDS);
+  assert.ok(policy.limits.resolverTimeoutMs > policy.limits.timeoutMs);
   assert.throws(
     () => validateHistoricalEvidenceRecoveryPolicy({ ...policy, unexpected: true }),
     /unknown key/i,
@@ -189,10 +203,32 @@ test('committed recovery policy pins queue, receipt, claim, transport, lock and 
     }),
     /perHost/i,
   );
+  assert.throws(
+    () => validateHistoricalEvidenceRecoveryPolicy({
+      ...policy,
+      limits: { ...policy.limits, resolverTimeoutMs: policy.limits.timeoutMs },
+    }),
+    /resolverTimeoutMs/i,
+  );
 });
 
 test('batch contract validates both sides of the artifact-target graph', () => {
   assert.deepEqual(validateHistoricalEvidenceRecoveryBatch(batch()), batch());
+  const legacySummary = batch();
+  delete legacySummary.summary.excludedPriorAcceptedTargets;
+  delete legacySummary.summary.excludedPriorCandidateJobs;
+  assert.deepEqual(validateHistoricalEvidenceRecoveryBatch(legacySummary), legacySummary);
+  assert.throws(
+    () => validateHistoricalEvidenceRecoveryBatch(batch({
+      summary: {
+        artifactJobs: 2,
+        targets: 1,
+        candidateEdges: 2,
+        excludedPriorAcceptedTargets: 0,
+      },
+    })),
+    /must appear together/i,
+  );
   assert.throws(
     () => validateHistoricalEvidenceRecoveryBatch(batch({
       targets: [target({ candidateJobIds: [JOB_A, 'recovery_missing'] })],
@@ -209,14 +245,53 @@ test('batch contract validates both sides of the artifact-target graph', () => {
     () => validateHistoricalEvidenceRecoveryBatch(batch({
       artifactJobs: [artifactJob({ authorityMode: 'retailer' })],
       targets: [target({ candidateJobIds: [JOB_A] })],
-      summary: { artifactJobs: 1, targets: 1, candidateEdges: 1 },
+      summary: {
+        artifactJobs: 1,
+        targets: 1,
+        candidateEdges: 1,
+        excludedPriorAcceptedTargets: 0,
+        excludedPriorCandidateJobs: 0,
+      },
     })),
     /authority mode/i,
   );
 });
 
+test('resolver-only registry target is valid without a fabricated artifact URL', () => {
+  const value = batch({
+    artifactJobs: [],
+    targets: [target({
+      lifecycleState: 'REGISTRY_ONLY',
+      legacyRuntimeId: 'historical-fa_ref_example',
+      canonicalProductId: null,
+      primaryJobId: null,
+      candidateJobIds: [],
+    })],
+    summary: {
+      artifactJobs: 0,
+      targets: 1,
+      candidateEdges: 0,
+      excludedPriorAcceptedTargets: 0,
+      excludedPriorCandidateJobs: 0,
+    },
+  });
+
+  assert.equal(validateHistoricalEvidenceRecoveryBatch(value), value);
+});
+
 test('results require one typed terminal or accepted outcome per target', () => {
   assert.deepEqual(validateHistoricalEvidenceRecoveryResults(results()), results());
+  const disagreement = {
+    ...EMPTY_RECONCILIATION,
+    conflictHints: [{
+      sourceRole: 'registry_hint', sourceId: 'energy-rating:dryer',
+      kind: 'lower_authority_disagreement', fields: ['depthMm'],
+      dimensionsMm: { widthMm: 600, heightMm: 850, depthMm: 670 },
+    }],
+  };
+  assert.deepEqual(validateHistoricalEvidenceRecoveryResults(results({
+    outcomes: [{ ...results().outcomes[0], reconciliation: disagreement }],
+  })).outcomes[0].reconciliation, disagreement);
   assert.throws(
     () => validateHistoricalEvidenceRecoveryResults(results({
       outcomes: [results().outcomes[0], results().outcomes[0]],
@@ -233,6 +308,17 @@ test('results require one typed terminal or accepted outcome per target', () => 
       summary: { targets: 1, accepted: 1, nonScalar: 0, retryable: 0, terminal: 0 },
     })),
     /accepted.*source/i,
+  );
+  assert.throws(
+    () => validateHistoricalEvidenceRecoveryResults(results({
+      outcomes: [{
+        ...results().outcomes[0], status: 'accepted', failureCode: null,
+        candidateInventory: {}, sources: [{ contentSha256: SHA_C }], geometryProjection: {},
+        reconciliation: null,
+      }],
+      summary: { targets: 1, accepted: 1, nonScalar: 0, retryable: 0, terminal: 0 },
+    })),
+    /accepted.*reconciliation/i,
   );
   assert.throws(
     () => validateHistoricalEvidenceRecoveryResults({ ...results(), batchSha256: 'bad' }),
@@ -253,10 +339,33 @@ test('audit and cumulative bundle contracts fail closed on violations and duplic
     })),
     /duplicate.*target/i,
   );
-  assert.throws(
-    () => validateHistoricalEvidenceRecoveryAcceptanceBundle(bundle({
-      entries: [{ ...bundle().entries[0], lifecycleState: 'REGISTRY_ONLY' }],
-    })),
-    /lifecycle/i,
+  assert.deepEqual(
+    validateHistoricalEvidenceRecoveryAcceptanceBundle(bundle({
+      entries: [{
+        ...bundle().entries[0],
+        lifecycleState: 'REGISTRY_ONLY',
+        canonicalProductId: null,
+      }],
+    })).entries[0].lifecycleState,
+    'REGISTRY_ONLY',
   );
+});
+
+test('bundle batch rollback is hash-bound and removes only one promoted lineage', () => {
+  const input = bundle();
+  const result = rollbackHistoricalEvidenceRecoveryBundleBatch(input, {
+    batchId: 'historical-recovery-batch-example',
+    expectedBundleSha256: canonicalJsonSha256(input),
+  });
+  assert.equal(result.removedEntries, 1);
+  assert.deepEqual(result.bundle.entries, []);
+  assert.deepEqual(result.bundle.lineage, []);
+  assert.throws(() => rollbackHistoricalEvidenceRecoveryBundleBatch(input, {
+    batchId: 'historical-recovery-batch-example',
+    expectedBundleSha256: SHA_A,
+  }), /changed before rollback/i);
+  assert.throws(() => rollbackHistoricalEvidenceRecoveryBundleBatch(input, {
+    batchId: 'missing-batch',
+    expectedBundleSha256: canonicalJsonSha256(input),
+  }), /lineage/i);
 });

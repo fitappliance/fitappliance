@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-12.2",
+  "policyVersion": "2026-07-15.1",
   "documentTypePriority": [
     "installation_guide",
     "quick_reference_guide",
@@ -10,7 +10,16 @@
   ],
   "transport": {
     "curlPreferredHosts": ["resource.electrolux.com.au"],
-    "preserveCurlDefaultUserAgentHosts": ["resource.electrolux.com.au"]
+    "scraplingFallbackHosts": ["au.asko.com", "static13.asko.com", "www.beko.com"],
+    "preserveCurlDefaultUserAgentHosts": ["resource.electrolux.com.au"],
+    "timeoutMsByHost": {
+      "partners.gorenje.com": 90000
+    },
+    "requestHeadersByHost": {
+      "content.fisherpaykel.com": {
+        "referer": "https://www.fisherpaykel.com/"
+      }
+    }
   },
   "brands": {
     "electrolux": {

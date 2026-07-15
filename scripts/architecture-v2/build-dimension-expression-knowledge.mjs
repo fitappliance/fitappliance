@@ -232,6 +232,8 @@ export async function loadMineruDocuments({ storageRoot, metadata }) {
     documents.push({
       pdfSha256,
       contentSha256: index.derivedArtifact.contentSha256,
+      parserVersion: index.parserVersion,
+      modelRevision: index.modelRevision,
       mappingStatus,
       sourceUrls: source.sourceUrls,
       identities: source.identities,

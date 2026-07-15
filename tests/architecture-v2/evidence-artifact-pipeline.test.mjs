@@ -9,6 +9,7 @@ import {
 import { buildMineruDerivedArtifact } from '../../src/domain/mineru-document.mjs';
 
 const MODEL_REVISION = 'ed6b654c018d742e65a17671e379c5e6ecc87ec9';
+const VLM_MODEL_REVISION = 'bff20d4ae2bf202df9f45284b4d43681555a97ed';
 const POLICY_SHA = 'a'.repeat(64);
 
 function fixture() {
@@ -188,6 +189,89 @@ test('persisted artifact metadata rehydrates immutable objects without network o
   });
   assert.equal(rehydrated.contentSha256, acquired.contentSha256);
   assert.deepEqual(rehydrated.derivedArtifact, acquired.derivedArtifact);
+});
+
+test('hybrid fallback persists and rehydrates the hash-bound primary trigger for attestation', async () => {
+  const pdfBytes = Buffer.from('%PDF-1.7\nhybrid artifact');
+  const pdfSha256 = createHash('sha256').update(pdfBytes).digest('hex');
+  const primaryJsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: 'HRCD640TBW refrigerator' }] },
+      bbox: [40, 20, 500, 45],
+    },
+    {
+      type: 'image', content: { image_caption: ['Product dimensions'], image_footnote: [] },
+      bbox: [80, 140, 800, 500],
+    },
+  ]]));
+  const primaryHash = createHash('sha256').update(primaryJsonBytes).digest('hex');
+  const hybridJsonBytes = Buffer.from(JSON.stringify([[
+    {
+      type: 'title',
+      content: { title_content: [{ type: 'text', content: 'Product dimensions' }] },
+      bbox: [40, 20, 500, 45],
+    },
+    {
+      type: 'table', content: {
+        html: '<table><tr><td>Model</td><td>HRCD640TBW</td></tr><tr><td>Width</td><td>914 mm</td></tr><tr><td>Height</td><td>1790 mm</td></tr><tr><td>Depth</td><td>730 mm</td></tr></table>',
+      }, bbox: [80, 140, 800, 500],
+    },
+  ]]));
+  const derivedArtifact = buildMineruDerivedArtifact(hybridJsonBytes, {
+    pdfSha256,
+    parserVersion: '3.4.4',
+    modelRevision: VLM_MODEL_REVISION,
+    profile: {
+      profileId: 'hybrid-image-high-v1', backend: 'hybrid-engine', method: 'auto',
+      effort: 'high', imageAnalysis: true,
+    },
+    processedPages: [1],
+    sourcePageCount: 1,
+    fallbackTrigger: {
+      profileId: 'pipeline-auto-v1',
+      contentSha256: primaryHash,
+      objectPath: `evidence/derived/mineru-json/sha256/${primaryHash.slice(0, 2)}/${primaryHash.slice(2, 4)}/${primaryHash}.json`,
+      pages: [1],
+    },
+  });
+  const objects = new Map();
+  let record;
+  const base = {
+    authorityBrand: 'Hisense', authorityMode: 'official', transportPolicySha256: POLICY_SHA,
+    fetchArtifact: async (url) => ({
+      requestedUrl: url, finalUrl: url, redirectChain: [], contentType: 'application/pdf', bytes: pdfBytes,
+    }),
+    processPdf: async () => ({
+      jsonBytes: hybridJsonBytes, derivedArtifact, primaryJsonBytes,
+    }),
+    writeObject: async (path, bytes) => objects.set(path, Buffer.from(bytes)),
+    writeArtifactRecord: async (value) => { record = structuredClone(value); },
+  };
+  const candidate = { sourceUrl: 'https://dtc-aus-api.hisense.com/medias/HRCD640TBW.pdf' };
+  const acquired = await acquireEvidenceArtifact(candidate, base);
+  assert.deepEqual(acquired.fallbackTriggerArtifactBytes, primaryJsonBytes);
+  assert.ok(objects.has(derivedArtifact.fallbackTrigger.objectPath));
+
+  const rehydrated = await acquireEvidenceArtifact(candidate, {
+    ...base,
+    artifactCache: new Map(), contentCache: new Map(),
+    fetchArtifact: async () => assert.fail('network must not run'),
+    processPdf: async () => assert.fail('MinerU must not run'),
+    readArtifactRecord: async () => record,
+    readObject: async (path) => objects.get(path),
+  });
+  assert.deepEqual(rehydrated.fallbackTriggerArtifactBytes, primaryJsonBytes);
+  const accepted = await attestEvidenceArtifactForCase(caseRecord('HRCD640TBW'), rehydrated, {
+    now: '2026-07-14T15:00:00.000Z',
+    requestedFields: [
+      'closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm',
+    ],
+    claimSemanticsVersion: 2,
+    requireRequestedFieldCoverage: true,
+  });
+  assert.equal(accepted.source.derivedArtifact.profileId, 'hybrid-image-high-v1');
+  assert.equal(accepted.source.verificationReceipt.schemaVersion, 3);
 });
 
 test('attestation loads immutable product-page discovery evidence through the object store', async () => {

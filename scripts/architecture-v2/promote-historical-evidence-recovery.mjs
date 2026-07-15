@@ -4,22 +4,29 @@ import * as fs from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { promoteHistoricalEvidenceRecovery } from '../../src/domain/historical-evidence-recovery-audit.mjs';
+import { createEvidenceObjectStore } from '../../src/domain/evidence-recovery-state-store.mjs';
+import {
+  auditHistoricalAcceptanceReceipts,
+  promoteHistoricalEvidenceRecovery,
+} from '../../src/domain/historical-evidence-recovery-audit.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
 function parseArgs(argv) {
-  const result = { results: null, audit: null, bundle: null, storageRoot: null };
+  const result = {
+    results: null, audit: null, bundle: null, receiptAudit: null, storageRoot: null,
+  };
   for (let index = 0; index < argv.length; index += 1) {
     const raw = argv[index];
     const [flag, inline] = raw.includes('=') ? raw.split(/=(.*)/s, 2) : [raw, null];
-    if (!['--results', '--audit', '--bundle', '--storage-root'].includes(flag)) {
+    if (!['--results', '--audit', '--bundle', '--receipt-audit', '--storage-root'].includes(flag)) {
       throw new TypeError(`unknown argument: ${raw}`);
     }
     const value = inline ?? argv[++index];
     if (!value) throw new TypeError(`${flag} requires a value`);
     result[{
-      '--results': 'results', '--audit': 'audit', '--bundle': 'bundle', '--storage-root': 'storageRoot',
+      '--results': 'results', '--audit': 'audit', '--bundle': 'bundle',
+      '--receipt-audit': 'receiptAudit', '--storage-root': 'storageRoot',
     }[flag]] = value;
   }
   return result;
@@ -59,6 +66,9 @@ export async function runPromotionCli(options) {
   const bundlePath = resolve(options.bundle ?? join(
     repoRoot, 'data/architecture-v2/reviews/automated/historical-evidence-recovery-acceptance-bundle.json',
   ));
+  const receiptAuditPath = resolve(options.receiptAudit ?? join(
+    repoRoot, 'data/architecture-v2/reviews/automated/historical-acceptance-receipt-replay-audit.json',
+  ));
   const storageRoot = resolve(options.storageRoot ?? process.env.FITAPPLIANCE_STORAGE_ROOT ?? '');
   if (!storageRoot || storageRoot === resolve('')) throw new Error('FITAPPLIANCE_STORAGE_ROOT required to locate the audited batch');
   const [results, audit, priorBundle] = await Promise.all([
@@ -67,10 +77,22 @@ export async function runPromotionCli(options) {
   const batch = await readJson(join(
     storageRoot, 'runs/historical-evidence-recovery', results.runId, 'batch.json',
   ));
+  const generatedAt = new Date().toISOString();
   const bundle = promoteHistoricalEvidenceRecovery({
-    batch, results, audit, priorBundle, generatedAt: new Date().toISOString(),
+    batch, results, audit, priorBundle, generatedAt,
   });
+  const objectStore = createEvidenceObjectStore(storageRoot);
+  const receiptAudit = await auditHistoricalAcceptanceReceipts({
+    bundle,
+    generatedAt,
+    readObject: objectStore.readObject,
+  });
+  await durableWrite(receiptAuditPath, receiptAudit);
   await durableWrite(bundlePath, bundle);
+  Object.defineProperty(bundle, 'receiptAuditSummary', {
+    value: receiptAudit.summary,
+    enumerable: false,
+  });
   return bundle;
 }
 
@@ -85,5 +107,6 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     bundleId: bundle.bundleId,
     entries: bundle.entries.length,
     lineage: bundle.lineage.length,
+    receiptReplay: bundle.receiptAuditSummary,
   }, null, 2)}\n`);
 }

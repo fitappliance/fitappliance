@@ -5,6 +5,7 @@ import {
   validateOfficialProductPageArtifactRelationship,
   verifyOfficialProductPageDiscoveryEvidence,
 } from './official-product-page-discovery-evidence.mjs';
+import { verifyOfficialMarketApiDiscoveryEvidence } from './official-market-api-discovery-evidence.mjs';
 
 const manufacturerPolicy = JSON.parse(readFileSync(
   new URL('../../data/architecture-v2/policies/manufacturer-source-policy.json', import.meta.url),
@@ -103,9 +104,13 @@ export function isOfficialBrandMarketUrl(value, brand) {
   if (!isOfficialBrandUrl(value, brand)) return false;
   try {
     const url = new URL(value);
+    const host = url.hostname.toLowerCase().replace(/\.$/, '');
+    const qualifiedHosts = manufacturerPolicy.marketQualifiedHosts?.[brandKey(brand)] ?? [];
+    if (qualifiedHosts.some((candidate) => host === String(candidate).toLowerCase().replace(/\.$/, ''))) {
+      return true;
+    }
     const configuredPatterns = manufacturerPolicy.marketPathPatterns?.[brandKey(brand)] ?? [];
     if (configuredPatterns.length) return true;
-    const host = url.hostname.toLowerCase();
     if (host.endsWith('.com.au') || host.endsWith('.au')) return true;
     const marketSegments = url.pathname.split('/').filter(Boolean);
     if (marketSegments.some((segment) => /^(?:au|en[-_]au|au[-_]en)$/i.test(segment))) return true;
@@ -148,25 +153,50 @@ function modelKey(value, label) {
   return raw.replace(/[^A-Z0-9]+/g, '');
 }
 
-function officialMarketApiUrl(value, brand) {
+function officialMarketApiConfiguration(value, brand) {
   const source = new URL(trustedUrl(value, brand, 'discovery URL', { hostOnly: true }));
   const endpoints = discoverySeedPolicy.brandApiEndpoints?.[brandKey(brand)] ?? [];
-  const match = endpoints.some((endpoint) => {
-    if (source.hostname.toLowerCase() !== endpoint.hostname || source.pathname !== endpoint.pathname) return false;
-    return Object.entries(endpoint.requiredQuery ?? []).every(([key, expected]) => source.searchParams.get(key) === expected);
+  const endpoint = endpoints.find((candidate) => {
+    const pathMatches = candidate.pathname
+      ? source.pathname === candidate.pathname
+      : new RegExp(requiredText(candidate.pathnamePattern, 'market API pathname pattern'), 'i')
+        .test(source.pathname);
+    if (source.hostname.toLowerCase() !== candidate.hostname || !pathMatches) return false;
+    return Object.entries(candidate.requiredQuery ?? []).every(([key, expected]) => source.searchParams.get(key) === expected);
   });
-  if (!match) throw new TypeError(`discovery URL is not an approved ${discoverySeedPolicy.market} market API`);
-  return source.toString();
+  if (!endpoint) throw new TypeError(`discovery URL is not an approved ${discoverySeedPolicy.market} market API`);
+  return { source, endpoint };
+}
+
+function officialMarketApiUrl(value, brand) {
+  return officialMarketApiConfiguration(value, brand).source.toString();
 }
 
 function officialProductPageUrl(value, brand) {
   const source = new URL(trustedUrl(value, brand, 'discovery URL'));
-  const host = source.hostname.toLowerCase();
-  const marketQualified = host.endsWith('.com.au')
-    || host.endsWith('.au')
-    || /(?:^|\/)au(?:\/|$)/i.test(source.pathname)
-    || [...source.searchParams.values()].some((entry) => /^(?:au|uni_au)$/i.test(entry));
-  if (!marketQualified) throw new TypeError(`discovery URL does not match the ${discoverySeedPolicy.market} market`);
+  if (!isOfficialBrandMarketUrl(source.toString(), brand)) {
+    throw new TypeError(`discovery URL does not match the ${discoverySeedPolicy.market} market`);
+  }
+  return source.toString();
+}
+
+function officialSupportApiUrl(value, brand, expectedSourceMarket) {
+  const source = new URL(trustedUrl(value, brand, 'discovery URL', { hostOnly: true }));
+  if (source.search || source.hash) {
+    throw new TypeError('support API discovery URL cannot contain query or fragment data');
+  }
+  const sourceMarket = requiredText(expectedSourceMarket, 'discovery source market').toUpperCase();
+  const endpoints = discoverySeedPolicy.brandSupportApiEndpoints?.[brandKey(brand)] ?? [];
+  const match = endpoints.find((endpoint) => {
+    if (source.hostname.toLowerCase() !== String(endpoint.hostname ?? '').toLowerCase()) return false;
+    if (!new RegExp(requiredText(endpoint.pathnamePattern, 'support API pathname pattern'), 'i').test(source.pathname)) return false;
+    return (endpoint.sourceMarkets ?? []).map((market) => String(market).toUpperCase()).includes(sourceMarket);
+  });
+  if (!match) throw new TypeError('discovery URL is not an approved official support API');
+  const urlMarket = source.pathname.split('/').filter(Boolean)[0]?.toUpperCase();
+  if (urlMarket !== sourceMarket) {
+    throw new TypeError('discovery source market does not match discovery URL');
+  }
   return source.toString();
 }
 
@@ -175,7 +205,7 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
     throw new TypeError('official artifact discovery provenance required');
   }
   const allowed = new Set([
-    'schemaVersion', 'method', 'market', 'discoveryUrl', 'requestedModel', 'matchedModel',
+    'schemaVersion', 'method', 'market', 'sourceMarket', 'discoveryUrl', 'requestedModel', 'matchedModel',
     'artifactUrl', 'artifactLinkUrl', 'discoveryContentSha256', 'discoveryObjectPath',
     'discoveryByteSize', 'documentId', 'originalFileName',
   ]);
@@ -192,15 +222,23 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
     throw new TypeError('discovery artifact URL does not match requested artifact');
   }
   const method = requiredText(value.method, 'discovery method');
-  if (!['official_market_api', 'official_product_page'].includes(method)) {
+  if (!['official_market_api', 'official_product_page', 'official_support_api'].includes(method)) {
     throw new TypeError('unsupported official artifact discovery method');
   }
   if (requiredText(value.market, 'discovery market') !== discoverySeedPolicy.market) {
     throw new TypeError(`official artifact discovery must be scoped to ${discoverySeedPolicy.market}`);
   }
+  const sourceMarket = method === 'official_support_api'
+    ? requiredText(value.sourceMarket, 'discovery source market').toUpperCase()
+    : null;
+  if (method !== 'official_support_api' && value.sourceMarket != null) {
+    throw new TypeError('discovery source market is valid only for support API provenance');
+  }
   const discoveryUrl = method === 'official_market_api'
     ? officialMarketApiUrl(value.discoveryUrl, brand)
-    : officialProductPageUrl(value.discoveryUrl, brand);
+    : method === 'official_product_page'
+      ? officialProductPageUrl(value.discoveryUrl, brand)
+      : officialSupportApiUrl(value.discoveryUrl, brand, sourceMarket);
   const expectedKey = modelKey(expectedModel, 'discovery target model');
   if (modelKey(value.requestedModel, 'discovery requested model') !== expectedKey
     || modelKey(value.matchedModel, 'discovery matched model') !== expectedKey) {
@@ -210,6 +248,7 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
     schemaVersion: 1,
     method,
     market: discoverySeedPolicy.market,
+    ...(sourceMarket ? { sourceMarket } : {}),
     discoveryUrl,
     requestedModel: requiredText(value.requestedModel, 'discovery requested model'),
     matchedModel: requiredText(value.matchedModel, 'discovery matched model'),
@@ -244,8 +283,27 @@ export function normalizeOfficialArtifactDiscoveryProvenance(value, context = {}
       discoveryObjectPath,
       discoveryByteSize: value.discoveryByteSize,
     });
+  } else if (method === 'official_market_api'
+    && officialMarketApiConfiguration(value.discoveryUrl, brand).endpoint.requiresBoundResponse === true) {
+    const discoveryContentSha256 = requiredText(value.discoveryContentSha256, 'discovery content SHA-256');
+    if (!/^[a-f0-9]{64}$/.test(discoveryContentSha256)) {
+      throw new TypeError('discovery content SHA-256 invalid');
+    }
+    const discoveryObjectPath = requiredText(value.discoveryObjectPath, 'discovery object path');
+    const expectedPath = `evidence/web/sha256/${discoveryContentSha256.slice(0, 2)}/${discoveryContentSha256.slice(2, 4)}/${discoveryContentSha256}.json`;
+    if (discoveryObjectPath !== expectedPath) {
+      throw new TypeError('content-addressed discovery object path required');
+    }
+    if (!Number.isInteger(value.discoveryByteSize) || value.discoveryByteSize <= 0) {
+      throw new TypeError('positive discovery byte size required');
+    }
+    Object.assign(result, {
+      discoveryContentSha256,
+      discoveryObjectPath,
+      discoveryByteSize: value.discoveryByteSize,
+    });
   } else if (productPageFields.some((field) => value[field] != null)) {
-    throw new TypeError('product-page discovery evidence is invalid for market API provenance');
+    throw new TypeError('product-page discovery evidence is invalid for API provenance');
   }
   return result;
 }
@@ -409,21 +467,56 @@ function normalizedClaims(claims, contentType, claimSemanticsVersion = 1) {
   throw new TypeError('unsupported claim semantics version');
 }
 
+export function currentMineruEvidenceProfile(artifact) {
+  if (!artifact || typeof artifact !== 'object' || Array.isArray(artifact)) {
+    throw new TypeError('current MinerU JSON derived artifact required');
+  }
+  const profiles = resolutionPolicy.pdfEvidenceProfiles ?? [];
+  const primary = profiles.find((profile) => profile.role === 'primary') ?? {
+    profileId: 'pipeline-auto-v1',
+    ...resolutionPolicy.pdfEvidence,
+    tableEnabled: true,
+    formulaEnabled: false,
+  };
+  const profile = artifact.profileId == null
+    ? primary
+    : profiles.find((candidate) => candidate.profileId === artifact.profileId);
+  if (!profile || artifact.schemaVersion !== 1
+    || artifact.format !== profile.requiredFormat
+    || artifact.parserName !== profile.parserName
+    || artifact.parserVersion !== profile.parserVersion
+    || artifact.modelRevision !== profile.modelRevision
+    || artifact.backend !== profile.backend
+    || artifact.method !== profile.method
+    || artifact.tableEnabled !== true || artifact.formulaEnabled !== false
+    || (artifact.profileId != null && artifact.profileId !== profile.profileId)
+    || (profile.effort != null && artifact.effort !== profile.effort)
+    || (profile.imageAnalysis != null && artifact.imageAnalysis !== profile.imageAnalysis)) {
+    throw new TypeError('current MinerU parsing profile required');
+  }
+  if (profile.role === 'image_dimension_fallback') {
+    const trigger = artifact.fallbackTrigger;
+    const pages = [...new Set(trigger?.pages ?? [])].sort((left, right) => left - right);
+    const hash = String(trigger?.contentSha256 ?? '');
+    const expectedPath = `evidence/derived/mineru-json/sha256/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}.json`;
+    if (trigger?.profileId !== 'pipeline-auto-v1'
+      || !/^[a-f0-9]{64}$/.test(hash)
+      || trigger?.objectPath !== expectedPath
+      || !Array.isArray(trigger?.pages) || pages.length !== trigger.pages.length || !pages.length
+      || pages.some((page) => !Number.isInteger(page) || page < 1)
+      || (artifact.processedPages != null
+        && JSON.stringify(pages) !== JSON.stringify([...artifact.processedPages].sort((a, b) => a - b)))) {
+      throw new TypeError('hash-bound primary MinerU fallback trigger required');
+    }
+  }
+  return profile;
+}
+
 function normalizedDerivedArtifact(source) {
   const contentType = requiredText(source?.contentType, 'content type').toLowerCase();
   if (contentType !== 'application/pdf') return null;
   const artifact = source?.derivedArtifact;
-  const required = resolutionPolicy.pdfEvidence;
-  if (!artifact || artifact.schemaVersion !== 1
-    || artifact.format !== required.requiredFormat
-    || artifact.parserName !== required.parserName
-    || artifact.parserVersion !== required.parserVersion
-    || artifact.modelRevision !== required.modelRevision
-    || artifact.backend !== required.backend
-    || artifact.method !== required.method
-    || artifact.tableEnabled !== true || artifact.formulaEnabled !== false) {
-    throw new TypeError('current MinerU JSON derived artifact required');
-  }
+  const profile = currentMineruEvidenceProfile(artifact);
   const sourcePdfSha256 = requiredText(artifact.sourcePdfSha256, 'derived source PDF SHA-256');
   const contentSha256 = requiredText(artifact.contentSha256, 'derived JSON SHA-256');
   if (!/^[a-f0-9]{64}$/.test(sourcePdfSha256) || sourcePdfSha256 !== source.contentSha256) {
@@ -438,7 +531,7 @@ function normalizedDerivedArtifact(source) {
   }
   if (!Number.isInteger(artifact.byteSize) || artifact.byteSize < 2) throw new TypeError('derived JSON byte size invalid');
   if (!Number.isInteger(artifact.pageCount) || artifact.pageCount < 1) throw new TypeError('derived JSON page count invalid');
-  return {
+  const normalized = {
     schemaVersion: 1,
     format: artifact.format,
     parserName: artifact.parserName,
@@ -454,6 +547,33 @@ function normalizedDerivedArtifact(source) {
     byteSize: artifact.byteSize,
     pageCount: artifact.pageCount,
   };
+  if (artifact.profileId != null) {
+    normalized.profileId = profile.profileId;
+    if (profile.effort != null) normalized.effort = profile.effort;
+    if (profile.imageAnalysis != null) normalized.imageAnalysis = profile.imageAnalysis;
+  }
+  if (artifact.fallbackTrigger != null) {
+    normalized.fallbackTrigger = {
+      profileId: artifact.fallbackTrigger.profileId,
+      contentSha256: artifact.fallbackTrigger.contentSha256,
+      objectPath: artifact.fallbackTrigger.objectPath,
+      pages: [...artifact.fallbackTrigger.pages],
+    };
+  }
+  if (artifact.processedPages != null || artifact.sourcePageCount != null) {
+    if (!Array.isArray(artifact.processedPages) || !artifact.processedPages.length
+      || artifact.sourcePageCount !== artifact.pageCount) {
+      throw new TypeError('derived artifact original page map invalid');
+    }
+    const processedPages = [...new Set(artifact.processedPages)].sort((left, right) => left - right);
+    if (processedPages.length !== artifact.processedPages.length
+      || processedPages.some((page) => !Number.isInteger(page) || page < 1 || page > artifact.pageCount)) {
+      throw new TypeError('derived artifact processed pages invalid');
+    }
+    normalized.processedPages = processedPages;
+    normalized.sourcePageCount = artifact.sourcePageCount;
+  }
+  return normalized;
 }
 
 function normalizedSupersededHashes(values) {
@@ -482,7 +602,48 @@ function receiptContract(claimSemanticsVersion) {
   throw new TypeError('unsupported claim semantics version');
 }
 
-function receiptPayload(source, caseIdentity, verifiedAt, claimSemanticsVersion = 1) {
+function supportedDiscoveryReceiptPolicyVersions() {
+  const values = discoverySeedPolicy.supportedReceiptPolicyVersions ?? [discoverySeedPolicy.policyVersion];
+  if (!Array.isArray(values) || !values.includes(discoverySeedPolicy.policyVersion)
+    || values.some((value) => typeof value !== 'string' || !value.trim())) {
+    throw new TypeError('discovery receipt policy version allowlist invalid');
+  }
+  return [...new Set(values)];
+}
+
+function supportedManufacturerReceiptPolicyVersions() {
+  const values = manufacturerPolicy.supportedReceiptPolicyVersions ?? [manufacturerPolicy.policyVersion];
+  if (!Array.isArray(values) || !values.includes(manufacturerPolicy.policyVersion)
+    || values.some((value) => typeof value !== 'string' || !value.trim())) {
+    throw new TypeError('manufacturer receipt policy version allowlist invalid');
+  }
+  return [...new Set(values)];
+}
+
+function manufacturerReceiptPolicyVersion(value) {
+  const normalized = requiredText(value, 'manufacturer policy version');
+  if (!supportedManufacturerReceiptPolicyVersions().includes(normalized)) {
+    throw new TypeError(`manufacturer policy version is not supported: ${normalized}`);
+  }
+  return normalized;
+}
+
+function discoveryReceiptPolicyVersion(value) {
+  const normalized = requiredText(value, 'discovery policy version');
+  if (!supportedDiscoveryReceiptPolicyVersions().includes(normalized)) {
+    throw new TypeError(`discovery policy version is not supported: ${normalized}`);
+  }
+  return normalized;
+}
+
+function receiptPayload(
+  source,
+  caseIdentity,
+  verifiedAt,
+  claimSemanticsVersion = 1,
+  discoveryPolicyVersion = discoverySeedPolicy.policyVersion,
+  manufacturerPolicyVersion = manufacturerPolicy.policyVersion,
+) {
   const identity = normalizedIdentity(caseIdentity);
   const contentType = requiredText(source?.contentType, 'content type').toLowerCase();
   const contract = receiptContract(claimSemanticsVersion);
@@ -493,7 +654,7 @@ function receiptPayload(source, caseIdentity, verifiedAt, claimSemanticsVersion 
       claimSemanticsVersion: contract.claimSemanticsVersion,
     }),
     policyVersion: contract.policyVersion,
-    manufacturerPolicyVersion: manufacturerPolicy.policyVersion,
+    manufacturerPolicyVersion: manufacturerReceiptPolicyVersion(manufacturerPolicyVersion),
     verifiedAt,
     caseIdentity: identity,
     sourceIdentity: normalizedSourceIdentity(source, identity, contentType),
@@ -521,7 +682,7 @@ function receiptPayload(source, caseIdentity, verifiedAt, claimSemanticsVersion 
       supersedesContentSha256: normalizedSupersededHashes(source?.supersedesContentSha256),
       derivedArtifact: normalizedDerivedArtifact(source),
       ...(source?.discoveryProvenance ? {
-        discoveryPolicyVersion: discoverySeedPolicy.policyVersion,
+        discoveryPolicyVersion: discoveryReceiptPolicyVersion(discoveryPolicyVersion),
         discoveryProvenance: normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
           brand: identity.brand,
           model: identity.model,
@@ -608,32 +769,113 @@ export function createVerificationReceipt(source, caseIdentity, options = {}) {
     });
     verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
   }
+  if (source?.discoveryProvenance?.method === 'official_market_api'
+    && source.discoveryProvenance.discoveryContentSha256) {
+    const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
+      brand: caseIdentity?.brand,
+      model: caseIdentity?.model,
+      artifactUrl: source?.sourceUrl,
+    });
+    verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
+  }
   if (verifiedMilliseconds < parseTime(source.retrievedAt, 'retrieval time')) {
     throw new TypeError('verification time precedes retrieval time');
   }
-  const payload = receiptPayload(source, caseIdentity, verifiedAt, claimSemanticsVersion);
+  const discoveryPolicyVersion = source?.discoveryProvenance
+    ? discoveryReceiptPolicyVersion(options.discoveryPolicyVersion ?? discoverySeedPolicy.policyVersion)
+    : null;
+  const manufacturerPolicyVersion = manufacturerReceiptPolicyVersion(
+    options.manufacturerPolicyVersion ?? manufacturerPolicy.policyVersion,
+  );
+  const payload = receiptPayload(
+    source,
+    caseIdentity,
+    verifiedAt,
+    claimSemanticsVersion,
+    discoveryPolicyVersion ?? discoverySeedPolicy.policyVersion,
+    manufacturerPolicyVersion,
+  );
   return Object.freeze({
     schemaVersion: payload.schemaVersion,
     ...(claimSemanticsVersion === 1 ? {} : { claimSemanticsVersion }),
     policyVersion: payload.policyVersion,
     manufacturerPolicyVersion: payload.manufacturerPolicyVersion,
+    ...(discoveryPolicyVersion ? { discoveryPolicyVersion } : {}),
     verifiedAt,
     bindingSha256: digest(payload),
   });
 }
 
-export function verifyVerificationReceipt(source, caseIdentity, options = {}) {
+function receiptClaimSemanticsVersion(receipt) {
+  if (receipt?.schemaVersion === resolutionPolicy.receiptSchemaVersion) return 1;
+  if (receipt?.schemaVersion === resolutionPolicy.claimSemanticsReceiptSchemaVersion) {
+    return receipt.claimSemanticsVersion;
+  }
+  return null;
+}
+
+export function verificationReceiptDiscoveryPolicyVersion(source, caseIdentity) {
   const receipt = source?.verificationReceipt;
-  const claimSemanticsVersion = receipt?.schemaVersion === resolutionPolicy.receiptSchemaVersion
-    ? 1
-    : receipt?.schemaVersion === resolutionPolicy.claimSemanticsReceiptSchemaVersion
-      ? receipt?.claimSemanticsVersion
-      : null;
+  const claimSemanticsVersion = receiptClaimSemanticsVersion(receipt);
   let contract;
   try { contract = receiptContract(claimSemanticsVersion); } catch { contract = null; }
   if (!receipt || !contract || receipt.schemaVersion !== contract.schemaVersion
     || receipt.policyVersion !== contract.policyVersion
-    || receipt.manufacturerPolicyVersion !== manufacturerPolicy.policyVersion) {
+    || !supportedManufacturerReceiptPolicyVersions().includes(receipt.manufacturerPolicyVersion)) {
+    throw new TypeError('current verification receipt required');
+  }
+  if (!source?.discoveryProvenance) {
+    if (receipt.discoveryPolicyVersion != null) {
+      throw new TypeError('discovery policy version requires discovery provenance');
+    }
+    const matches = receipt.bindingSha256 === digest(receiptPayload(
+      source,
+      caseIdentity,
+      receipt.verifiedAt,
+      claimSemanticsVersion,
+      discoverySeedPolicy.policyVersion,
+      receipt.manufacturerPolicyVersion,
+    ));
+    if (!matches) throw new Error('verification receipt digest mismatch');
+    return null;
+  }
+  const candidates = receipt.discoveryPolicyVersion != null
+    ? [discoveryReceiptPolicyVersion(receipt.discoveryPolicyVersion)]
+    : supportedDiscoveryReceiptPolicyVersions();
+  const matches = candidates.filter((discoveryPolicyVersion) => (
+    receipt.bindingSha256 === digest(receiptPayload(
+      source,
+      caseIdentity,
+      receipt.verifiedAt,
+      claimSemanticsVersion,
+      discoveryPolicyVersion,
+      receipt.manufacturerPolicyVersion,
+    ))
+  ));
+  if (matches.length !== 1) throw new Error('verification receipt digest mismatch');
+  return matches[0];
+}
+
+export function verificationReceiptManufacturerPolicyVersion(source) {
+  const receipt = source?.verificationReceipt;
+  const claimSemanticsVersion = receiptClaimSemanticsVersion(receipt);
+  let contract;
+  try { contract = receiptContract(claimSemanticsVersion); } catch { contract = null; }
+  if (!receipt || !contract || receipt.schemaVersion !== contract.schemaVersion
+    || receipt.policyVersion !== contract.policyVersion) {
+    throw new TypeError('current verification receipt required');
+  }
+  return manufacturerReceiptPolicyVersion(receipt.manufacturerPolicyVersion);
+}
+
+export function verifyVerificationReceipt(source, caseIdentity, options = {}) {
+  const receipt = source?.verificationReceipt;
+  const claimSemanticsVersion = receiptClaimSemanticsVersion(receipt);
+  let contract;
+  try { contract = receiptContract(claimSemanticsVersion); } catch { contract = null; }
+  if (!receipt || !contract || receipt.schemaVersion !== contract.schemaVersion
+    || receipt.policyVersion !== contract.policyVersion
+    || !supportedManufacturerReceiptPolicyVersions().includes(receipt.manufacturerPolicyVersion)) {
     throw new TypeError('current verification receipt required');
   }
   parseTime(receipt.verifiedAt, 'verification time');
@@ -650,8 +892,17 @@ export function verifyVerificationReceipt(source, caseIdentity, options = {}) {
     });
     verifyOfficialProductPageDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
   }
-  const expected = digest(receiptPayload(source, caseIdentity, receipt.verifiedAt, claimSemanticsVersion));
-  if (receipt.bindingSha256 !== expected) throw new Error('verification receipt digest mismatch');
+  if (source?.discoveryProvenance?.method === 'official_market_api'
+    && source.discoveryProvenance.discoveryContentSha256
+    && options.discoveryArtifactBytes != null) {
+    const provenance = normalizeOfficialArtifactDiscoveryProvenance(source.discoveryProvenance, {
+      brand: caseIdentity?.brand,
+      model: caseIdentity?.model,
+      artifactUrl: source?.sourceUrl,
+    });
+    verifyOfficialMarketApiDiscoveryEvidence(provenance, caseIdentity, options.discoveryArtifactBytes);
+  }
+  verificationReceiptDiscoveryPolicyVersion(source, caseIdentity);
   return true;
 }
 

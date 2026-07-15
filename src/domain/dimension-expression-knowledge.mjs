@@ -2,6 +2,10 @@ import { createHash } from 'node:crypto';
 import { load } from 'cheerio';
 
 import { containsExactModel } from './evidence-claim-semantics.mjs';
+import {
+  mineruGrammarProfiles,
+  parseMineruContentListV2,
+} from './mineru-document.mjs';
 
 const CATEGORIES = Object.freeze(['fridge', 'dishwasher', 'washing_machine', 'dryer']);
 const CATEGORY_LABELS = Object.freeze({
@@ -17,6 +21,7 @@ const PATTERN_DESCRIPTIONS = Object.freeze({
   INDIVIDUALLY_LABELLED_AXES: 'Two or more dimensions expressed as separate named axis/value pairs.',
   INDIVIDUAL_LABELLED_AXIS: 'One named axis/value pair; combine only through independently proven model scope.',
   ALTERNATING_AXIS_VALUE_CELLS: 'Diagram table alternating axis tokens and values, including D variants.',
+  HIERARCHICAL_DEPTH_VARIANTS: 'A Depth parent row followed by explicitly qualified product-depth variants.',
   MODEL_ROW_DIMENSION_MATRIX: 'Models occupy rows and dimension axes occupy columns.',
   MODEL_COLUMN_DIMENSION_MATRIX: 'Models occupy columns and dimension axes occupy rows.',
   DOCUMENT_SCOPED_DIMENSION_MATRIX: 'Dimension axes occupy columns but the exact model identity is elsewhere in the document.',
@@ -173,7 +178,7 @@ function finalizeObservation(base, details) {
   return Object.freeze({ observationId: observationId(value), ...value });
 }
 
-function groupedObservation({ label, value, pageContext, base, depthVariantText = null }) {
+function groupedObservation({ label, value, pageContext, base, depthVariantText = null, patternKind = null }) {
   const axisOrder = explicitAxisOrder(label);
   const values = numericValues(value);
   if (axisOrder.length !== 3 || values.length !== 3) return null;
@@ -182,16 +187,27 @@ function groupedObservation({ label, value, pageContext, base, depthVariantText 
   let decision = !unit
     ? 'RESEARCH_UNIT_MISSING'
     : scopeDecision(scope, 'SUPPORTED_EXPLICIT_GROUPED');
+  const includedHandle = depthVariantText
+    ? /^\s*(\d+(?:\.\d+)?)\s*(mm|cm)?\s+(?:including|with)\s+(?:the\s+)?(?:door\s+)?handles?\b/i.exec(depthVariantText)
+    : null;
+  const variantUnit = includedHandle?.[2]?.toLowerCase() ?? unit;
+  const supportedHandleDepth = Boolean(
+    includedHandle && unit && variantUnit === unit && axisOrder.includes('depth'),
+  );
   if (depthVariantText && decision === 'SUPPORTED_EXPLICIT_GROUPED') {
-    decision = 'SUPPORTED_PARTIAL_REJECT_QUALIFIED_DEPTH_VARIANT';
+    decision = supportedHandleDepth
+      ? 'SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH'
+      : 'SUPPORTED_PARTIAL_REJECT_QUALIFIED_DEPTH_VARIANT';
   }
   const safeAxes = decision === 'SUPPORTED_EXPLICIT_GROUPED'
     ? [...axisOrder]
+    : decision === 'SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH'
+      ? [...axisOrder]
     : decision === 'SUPPORTED_PARTIAL_REJECT_QUALIFIED_DEPTH_VARIANT'
       ? axisOrder.filter((axis) => axis !== 'depth')
       : [];
   return finalizeObservation(base, {
-    patternKind: depthVariantText ? 'GROUPED_AXIS_SEQUENCE_WITH_VARIANT' : 'GROUPED_AXIS_SEQUENCE',
+    patternKind: patternKind ?? (depthVariantText ? 'GROUPED_AXIS_SEQUENCE_WITH_VARIANT' : 'GROUPED_AXIS_SEQUENCE'),
     sourceLabel: normalizedText(label),
     sourceValue: normalizedText(value),
     sourceQuote: normalizedText(`${label} ${value}`),
@@ -201,6 +217,17 @@ function groupedObservation({ label, value, pageContext, base, depthVariantText 
     unitPlacement,
     scope,
     depthVariants: depthVariantText ? [normalizedText(depthVariantText)] : [],
+    axisValues: axisOrder.map((axis, index) => ({
+      axis,
+      label: axis,
+      value: `${values[index]} ${unit ?? ''}`.trim(),
+      valueShape: 'scalar',
+      ...(axis === 'depth' && supportedHandleDepth ? {
+        overallValue: `${includedHandle[1]} ${variantUnit}`,
+        overallValueShape: 'scalar',
+        includesHandle: true,
+      } : {}),
+    })),
     parserDecision: decision,
     semanticInterpretation: `${axisOrder.map((axis, index) => `${index + 1}:${axis}`).join(', ')}${depthVariantText ? '; qualified depth variant not selected' : ''}`,
   });
@@ -235,6 +262,20 @@ function groupedTextObservations({ text, pageContext, base }) {
       depthVariantText: variant?.[1] ?? null,
     });
     if (observation) observations.push(observation);
+  }
+  const suffixed = /\bdimensions?\s*:?[ \t]*(\d+(?:\.\d+)?)\s*(mm|cm)\s*([whd])\s*[x×*]\s*(\d+(?:\.\d+)?)\s*\2\s*([whd])\s*[x×*]\s*(\d+(?:\.\d+)?)\s*\2\s*([whd])\b/i.exec(String(text ?? ''));
+  if (suffixed) {
+    const axes = [suffixed[3], suffixed[5], suffixed[7]].map((axis) => axis.toUpperCase());
+    if (new Set(axes).size === 3) {
+      const observation = groupedObservation({
+        label: `Dimensions (${axes.join(' x ')})`,
+        value: `${suffixed[1]} x ${suffixed[4]} x ${suffixed[6]} ${suffixed[2]}`,
+        pageContext,
+        base,
+        patternKind: 'SUFFIXED_VALUE_AXIS_SEQUENCE',
+      });
+      if (observation) observations.push(observation);
+    }
   }
   return observations;
 }
@@ -311,7 +352,7 @@ function exactAxisCell(value) {
   return { axis: axisForToken(match[1]), sourceAxis: normalizedText(value), qualifier: match[2] };
 }
 
-function alternatingObservation({ cells, pageContext, base }) {
+function alternatingObservation({ cells, pageContext, base, qualifiedDepthPrimary = false }) {
   const pairs = [];
   for (const row of cells) {
     if (row.length < 2 || row.length % 2 !== 0) return null;
@@ -327,10 +368,23 @@ function alternatingObservation({ cells, pageContext, base }) {
   const depthVariants = pairs.filter((pair) => pair.axis === 'depth' && pair.qualifier)
     .map((pair) => pair.sourceAxis);
   const axes = pairs.map((pair) => pair.axis);
-  const safeAxes = [...new Set(depthVariants.length ? axes.filter((axis) => axis !== 'depth') : axes)];
+  const plainDepths = pairs.filter((pair) => pair.axis === 'depth' && !pair.qualifier);
+  const diagramPrimaryDepth = Boolean(
+    qualifiedDepthPrimary
+    && plainDepths.length === 1
+    && depthVariants.length > 0,
+  );
+  const safeAxes = [...new Set(depthVariants.length
+    ? pairs.filter((pair) => pair.axis !== 'depth' || (diagramPrimaryDepth && !pair.qualifier))
+      .map((pair) => pair.axis)
+    : axes)];
   const { unit, unitPlacement } = unitEvidence('', '', pageContext);
   let parserDecision = unit ? 'SUPPORTED_EXPLICIT_ALTERNATING_CELLS' : 'RESEARCH_UNIT_MISSING';
-  if (depthVariants.length && unit) parserDecision = 'SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH';
+  if (depthVariants.length && unit) {
+    parserDecision = diagramPrimaryDepth
+      ? 'SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS'
+      : 'SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH';
+  }
   return finalizeObservation(base, {
     patternKind: 'ALTERNATING_AXIS_VALUE_CELLS',
     sourceLabel: pairs.map((pair) => pair.sourceAxis).join(' | '),
@@ -342,10 +396,73 @@ function alternatingObservation({ cells, pageContext, base }) {
     unitPlacement,
     scope: 'product_closed_candidate',
     depthVariants,
+    axisValues: pairs.map((pair) => ({
+      axis: pair.axis,
+      label: pair.sourceAxis,
+      value: pair.sourceValue,
+      valueShape: 'scalar',
+    })),
     parserDecision,
     semanticInterpretation: depthVariants.length
-      ? 'Width and height are explicit; depth variants remain undefined by text.'
+      ? diagramPrimaryDepth
+        ? 'The unqualified D is the primary depth in the adjacent dimension diagram; primed depth variants remain unpublished.'
+        : 'Width and height are explicit; depth variants remain undefined by text.'
       : axes.map((axis, index) => `${index + 1}:${axis}`).join(', '),
+  });
+}
+
+function dimensionDiagramContext(items, fragment) {
+  const tableIndex = items.indexOf(fragment);
+  if (tableIndex < 1) return false;
+  let headingIndex = -1;
+  for (let index = tableIndex - 1; index >= 0; index -= 1) {
+    const candidate = items[index];
+    if (candidate.type === 'table') break;
+    if (/\bdimensions?\s*\(\s*(?:mm|millimet(?:re|er)s?)\s*\)/i.test(itemText(candidate))) {
+      headingIndex = index;
+      break;
+    }
+  }
+  return headingIndex >= 0
+    && items.slice(headingIndex + 1, tableIndex).some((item) => item.type === 'image');
+}
+
+function hierarchicalDepthObservation({ cells, pageContext, base }) {
+  const parentIndex = cells.findIndex((row) => (
+    /^depth$/i.test(normalizedText(row[0]))
+    && row.slice(1).every((cell) => !normalizedText(cell))
+  ));
+  if (parentIndex < 0) return null;
+  const variants = [];
+  for (const row of cells.slice(parentIndex + 1)) {
+    const label = normalizedText(row[0]);
+    if (!/^(?:without\s+(?:the\s+)?(?:doors?|handles?)|with\s+(?:the\s+)?handles?|with\s+(?:the\s+)?doors?\s*(?:(?:and|&)\s*(?:the\s+)?handles?|closed|open))$/i.test(label)) break;
+    const value = normalizedText(row.slice(1).join(' '));
+    if (!dimensionValue(value)) return null;
+    variants.push({ label, value });
+  }
+  const selected = variants.filter((row) => (
+    /^with\s+(?:the\s+)?doors?\s*(?:and|&)\s*(?:the\s+)?handles?$/i.test(row.label)
+  ));
+  if (selected.length !== 1) return null;
+  const { unit, unitPlacement } = unitEvidence('Depth', selected[0].value, pageContext);
+  if (!unit) return null;
+  return finalizeObservation(base, {
+    patternKind: 'HIERARCHICAL_DEPTH_VARIANTS',
+    sourceLabel: `Depth > ${selected[0].label}`,
+    sourceValue: selected[0].value,
+    sourceQuote: variants.map((row) => `${row.label} ${row.value}`).join(' | '),
+    axisOrder: ['depth'],
+    safeAxes: ['depth'],
+    unit,
+    unitPlacement,
+    scope: 'product_closed_candidate',
+    depthVariants: variants.map((row) => row.label),
+    axisValues: [{
+      axis: 'depth', label: selected[0].label, value: selected[0].value, valueShape: 'scalar',
+    }],
+    parserDecision: 'SUPPORTED_EXPLICIT_HANDLE_INCLUSIVE_DEPTH',
+    semanticInterpretation: 'The explicit with-door-and-handle child is the closed external product depth.',
   });
 }
 
@@ -380,8 +497,21 @@ function axisEntriesFromCells(cells) {
   const entries = [];
   for (const row of cells) {
     for (let index = 0; index < row.length; index += 1) {
+      const inline = [...String(row[index]).matchAll(/\b((?:(?:total|overall|external|product|appliance)\s+)?(?:width|wide|height|high|depth|deep))\b\s*:?\s*(\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?\s*(?:mm|cm))\b/gi)];
+      for (const match of inline) {
+        const axis = labelledAxis(match[1]);
+        const parsed = dimensionValue(match[2]);
+        if (axis && parsed) entries.push({
+          axis,
+          label: normalizedText(match[1]),
+          ...parsed,
+          row: entries.length,
+          sourceCell: index,
+          origin: 'inline',
+        });
+      }
       const combined = combinedAxisValue(row[index]);
-      if (combined) entries.push({ ...combined, row: entries.length, sourceCell: index });
+      if (combined) entries.push({ ...combined, row: entries.length, sourceCell: index, origin: 'cell' });
       if (index >= row.length - 1) continue;
       const axis = labelledAxis(row[index]);
       const parsed = dimensionValue(row[index + 1]);
@@ -392,6 +522,7 @@ function axisEntriesFromCells(cells) {
           ...parsed,
           row: entries.length,
           sourceCell: index,
+          origin: 'cells',
         });
       }
     }
@@ -424,17 +555,21 @@ function labelledObservations({ cells, pageContext, base }) {
     }
     const ambiguousAxes = [...valuesByAxis].filter(([, values]) => values.size > 1).map(([axis]) => axis);
     const rangeAxes = [...new Set(rows.filter((row) => row.valueShape === 'range').map((row) => row.axis))];
+    const unsupportedRangeAxes = rangeAxes.filter((axis) => axis !== 'height');
     let parserDecision = 'SUPPORTED_EXPLICIT_LABELS';
     if (!unit) parserDecision = 'RESEARCH_UNIT_MISSING';
     else if (scope !== 'product_closed_candidate') parserDecision = 'REJECTED_NON_PRODUCT_SCOPE';
     else if (ambiguousAxes.length) parserDecision = 'RESEARCH_MULTIPLE_VALUES_PER_AXIS';
-    else if (rangeAxes.length) parserDecision = 'RESEARCH_ADJUSTABLE_RANGE';
+    else if (unsupportedRangeAxes.length) parserDecision = 'RESEARCH_UNSUPPORTED_AXIS_RANGE';
+    else if (rangeAxes.length) parserDecision = 'SUPPORTED_ADJUSTABLE_HEIGHT_RANGE';
     const axisOrder = rows.map((row) => row.axis);
     const safeAxes = unit && scope === 'product_closed_candidate'
-      ? [...new Set(axisOrder.filter((axis) => !ambiguousAxes.includes(axis) && !rangeAxes.includes(axis)))]
+      ? [...new Set(axisOrder.filter((axis) => !ambiguousAxes.includes(axis) && !unsupportedRangeAxes.includes(axis)))]
       : [];
     observations.push(finalizeObservation(base, {
-      patternKind: new Set(axisOrder).size > 1 ? 'INDIVIDUALLY_LABELLED_AXES' : 'INDIVIDUAL_LABELLED_AXIS',
+      patternKind: rows.some((row) => row.origin === 'inline')
+        ? 'INLINE_LABELLED_AXES'
+        : new Set(axisOrder).size > 1 ? 'INDIVIDUALLY_LABELLED_AXES' : 'INDIVIDUAL_LABELLED_AXIS',
       sourceLabel: combinedLabel,
       sourceValue: combinedValue,
       sourceQuote: rows.map((row) => `${row.label} ${row.value}`).join(' | '),
@@ -454,6 +589,58 @@ function labelledObservations({ cells, pageContext, base }) {
     }));
   }
   return observations;
+}
+
+function continuedGroupedObservations({ cells, pageContext, base }) {
+  const observations = [];
+  for (let index = 0; index < cells.length - 1; index += 1) {
+    const label = normalizedText(cells[index]?.[0]);
+    const currentValue = normalizedText(cells[index]?.slice(1).join(' '));
+    const nextLabel = normalizedText(cells[index + 1]?.[0]);
+    const nextValue = normalizedText(cells[index + 1]?.slice(1).join(' '));
+    if (!label || currentValue || nextLabel || !nextValue) continue;
+    const observation = groupedObservation({ label, value: nextValue, pageContext, base });
+    if (observation) observations.push(observation);
+  }
+  return observations;
+}
+
+function netDimensionSectionObservation({ cells, pageContext, base }) {
+  const sectionIndex = cells.findIndex((row) => normalizedText(row.find(Boolean)) === 'Net');
+  if (sectionIndex < 0) return null;
+  const contextRows = cells.slice(Math.max(0, sectionIndex - 3), sectionIndex + 1);
+  const context = normalizedText(contextRows.flat().join(' '));
+  if (!/\bdimensions?\b/i.test(context)) return null;
+  const unit = /\bmm\b/i.test(context) ? 'mm' : /\bcm\b/i.test(context) ? 'cm' : null;
+  if (!unit) return null;
+  const values = [];
+  for (const row of cells.slice(sectionIndex)) {
+    const text = normalizedText(row.join(' '));
+    if (/\b(?:pack(?:ed|aging|age)?|shipping|carton|box(?:ed)?|crate)\b/i.test(text)) break;
+    const axisCell = row.find((cell) => /\b(?:width|wide|height|high|depth|deep)\b/i.test(cell));
+    if (!axisCell) continue;
+    const axes = [...axisCell.matchAll(/\b(width|wide|height|high|depth|deep)\b/gi)].map((match) => axisForToken(match[1]));
+    const valueCell = [...row].reverse().find((cell) => /\d/.test(cell) && cell !== axisCell);
+    const numbers = valueCell?.match(/\d+(?:\.\d+)?/g) ?? [];
+    if (!axes.length || axes.length !== numbers.length || new Set(axes).size !== axes.length) continue;
+    axes.forEach((axis, index) => values.push({ axis, value: `${numbers[index]} ${unit}` }));
+  }
+  if (values.length !== 3 || new Set(values.map((value) => value.axis)).size !== 3) return null;
+  return finalizeObservation(base, {
+    patternKind: 'NET_DIMENSION_SECTION',
+    sourceLabel: 'Net dimensions',
+    sourceValue: values.map((value) => value.value).join(' | '),
+    sourceQuote: values.map((value) => `${value.axis} ${value.value}`).join(' | '),
+    axisOrder: values.map((value) => value.axis),
+    safeAxes: values.map((value) => value.axis),
+    unit,
+    unitPlacement: 'section_context',
+    scope: 'product_closed_candidate',
+    depthVariants: [],
+    axisValues: values.map((value) => ({ ...value, label: value.axis, valueShape: 'scalar' })),
+    parserDecision: 'SUPPORTED_EXPLICIT_NET_SECTION',
+    semanticInterpretation: 'Explicit net section with named axes and a shared unit; package section excluded.',
+  });
 }
 
 function matrixAxisHeader(value) {
@@ -780,8 +967,18 @@ export function extractDimensionExpressions(input) {
           if (lettered) observations.push(lettered);
           observations.push(...unlabelledDimensionTripleObservations({ text, pageContext, base }));
         }
-        const alternating = alternatingObservation({ cells, pageContext, base });
+        const alternating = alternatingObservation({
+          cells,
+          pageContext,
+          base,
+          qualifiedDepthPrimary: dimensionDiagramContext(items, item),
+        });
         if (alternating) observations.push(alternating);
+        const hierarchicalDepth = hierarchicalDepthObservation({ cells, pageContext, base });
+        if (hierarchicalDepth) observations.push(hierarchicalDepth);
+        observations.push(...continuedGroupedObservations({ cells, pageContext, base }));
+        const netSection = netDimensionSectionObservation({ cells, pageContext, base });
+        if (netSection) observations.push(netSection);
         observations.push(...labelledObservations({ cells, pageContext, base }));
         observations.push(...modelRowMatrixObservations({ cells, pageContext, base }));
         observations.push(...modelColumnMatrixObservations({ cells, pageContext, base }));
@@ -905,7 +1102,21 @@ function parserProfileForDocument(extracted) {
   });
 }
 
-function familyForDocument(document, identity, extracted, parserProfile) {
+function declaredGrammarProfiles(replay) {
+  return (replay?.grammarProfileIds ?? []).map((parserProfileId) => {
+    const metadata = mineruGrammarProfiles[parserProfileId];
+    if (!metadata) throw new Error(`undocumented MinerU grammar profile: ${parserProfileId}`);
+    return {
+      ...metadata,
+      profileKind: 'declared_brand_category_grammar',
+      signatureVersion: 1,
+      expressionShapes: [],
+      researchGapTypes: [],
+    };
+  });
+}
+
+function familyForDocument(document, identity, extracted, parserProfile, replay) {
   const sameIdentitySeries = extracted.seriesEvidence.filter((row) => (
     row.category === identity.category
       && row.brand.toLowerCase() === identity.brand.toLowerCase()
@@ -915,6 +1126,16 @@ function familyForDocument(document, identity, extracted, parserProfile) {
   if (seriesNames.length === 1) {
     return { groupType: 'marketing_series', groupName: seriesNames[0], seriesEvidence: sameIdentitySeries };
   }
+  const declaredProfiles = declaredGrammarProfiles(replay);
+  const grammarFamilies = [...new Set(declaredProfiles.map((profile) => profile.grammarFamilyName))];
+  if (grammarFamilies.length === 1) {
+    return {
+      groupType: 'parser_family',
+      groupName: grammarFamilies[0],
+      seriesEvidence: [],
+      declaredProfiles,
+    };
+  }
   const sameBrandCategory = document.identities.filter((candidate) => (
     candidate.category === identity.category && candidate.brand.toLowerCase() === identity.brand.toLowerCase()
   ));
@@ -923,6 +1144,7 @@ function familyForDocument(document, identity, extracted, parserProfile) {
       groupType: 'document_family',
       groupName: `Document family ${document.pdfSha256.slice(0, 12)}`,
       seriesEvidence: [],
+      declaredProfiles: [],
     };
   }
   if (parserProfile) {
@@ -930,13 +1152,73 @@ function familyForDocument(document, identity, extracted, parserProfile) {
       groupType: 'parser_family',
       groupName: `PDF grammar ${parserProfile.parserProfileId}`,
       seriesEvidence: [],
+      declaredProfiles: [],
     };
   }
-  return { groupType: 'model_specific', groupName: identity.model, seriesEvidence: [] };
+  return {
+    groupType: 'model_specific', groupName: identity.model, seriesEvidence: [], declaredProfiles: [],
+  };
 }
 
 function stableObservation(observation) {
   return JSON.parse(JSON.stringify(observation));
+}
+
+const CLOSED_DIMENSION_FIELDS = Object.freeze([
+  'closedEnvelope.widthMm',
+  'closedEnvelope.heightMm',
+  'closedEnvelope.depthMm',
+]);
+
+function parserFailureReason(error) {
+  const message = normalizedText(error?.message).toLowerCase();
+  if (/structured exact-model identity|identity signal/.test(message)) return 'EXACT_MODEL_IDENTITY_NOT_PROVEN';
+  if (/unresolved family|multiple models/.test(message)) return 'FAMILY_SCOPE_UNRESOLVED';
+  if (/ambiguous mineru values/.test(message)) return 'AMBIGUOUS_AXIS_VALUES';
+  if (/no exact-model mineru evidence|explicit axes/.test(message)) return 'NO_COMPLETE_EXPLICIT_AXES';
+  return 'PARSER_REJECTED';
+}
+
+function parserReplay(document, identity) {
+  if (!document.parserVersion || !document.modelRevision) return null;
+  try {
+    const parsed = parseMineruContentListV2(Buffer.from(JSON.stringify(document.contentList)), {
+      pdfSha256: document.pdfSha256,
+      parserVersion: document.parserVersion,
+      modelRevision: document.modelRevision,
+      sourceUrls: document.sourceUrls,
+      caseIdentity: identity,
+      claimSemanticsVersion: 2,
+      fields: CLOSED_DIMENSION_FIELDS,
+    });
+    const claims = new Map(parsed.claims.map((claim) => [claim.field, claim]));
+    const claimFields = [...claims.keys()].sort();
+    const complete = CLOSED_DIMENSION_FIELDS.every((field) => claims.has(field));
+    const hasRange = [...claims.values()].some((claim) => claim.value?.kind === 'range');
+    return {
+      pdfSha256: document.pdfSha256,
+      category: identity.category,
+      brand: identity.brand,
+      model: identity.model,
+      extractionState: complete ? (hasRange ? 'ALL_AXIS_RANGE' : 'ALL_AXIS_SCALAR') : 'PARTIAL_AXIS',
+      identityScope: 'EXACT_MODEL',
+      claimFields,
+      grammarProfileIds: [...(parsed.grammarProfileIds ?? [])].sort(),
+      reasonCode: complete ? 'PARSED_COMPLETE' : 'PARSED_PARTIAL',
+    };
+  } catch (error) {
+    return {
+      pdfSha256: document.pdfSha256,
+      category: identity.category,
+      brand: identity.brand,
+      model: identity.model,
+      extractionState: 'PARSER_GAP',
+      identityScope: 'UNPROVEN',
+      claimFields: [],
+      grammarProfileIds: [],
+      reasonCode: parserFailureReason(error),
+    };
+  }
 }
 
 export function buildDimensionExpressionKnowledge(input) {
@@ -984,6 +1266,10 @@ export function buildDimensionExpressionKnowledge(input) {
     pdfSha256,
     parserProfileForDocument(extracted),
   ]));
+  const parserReplaysByHash = new Map(documents.map((document) => [
+    document.pdfSha256,
+    document.identities.map((identity) => parserReplay(document, identity)).filter(Boolean),
+  ]));
   const categoryRows = CATEGORIES.map((category) => {
     const categoryRecords = historicalRecords.filter((record) => record.category === category);
     const groups = brandGroups(categoryRecords, aliasMap);
@@ -1009,7 +1295,16 @@ export function buildDimensionExpressionKnowledge(input) {
           identity.category === category && identity.brand.toLowerCase() === brandKey
         ));
         for (const identity of identities) {
-          const family = familyForDocument(document, identity, extracted, parserProfile);
+          const identityReplays = (parserReplaysByHash.get(document.pdfSha256) ?? []).filter((replay) => (
+            replay.category === identity.category
+              && replay.brand.toLowerCase() === identity.brand.toLowerCase()
+              && replay.model.toLowerCase() === identity.model.toLowerCase()
+          ));
+          if (identityReplays.length > 1) {
+            throw new Error(`multiple parser replays for ${document.pdfSha256}/${identity.model}`);
+          }
+          const replay = identityReplays[0] ?? null;
+          const family = familyForDocument(document, identity, extracted, parserProfile, replay);
           const key = `${family.groupType}\0${family.groupName}`;
           const current = families.get(key) ?? {
             groupType: family.groupType,
@@ -1019,6 +1314,7 @@ export function buildDimensionExpressionKnowledge(input) {
             sourceUrls: [],
             seriesEvidence: [],
             parserProfiles: [],
+            parserReplays: [],
             expressions: [],
             researchGaps: [],
           };
@@ -1026,7 +1322,9 @@ export function buildDimensionExpressionKnowledge(input) {
           current.pdfSha256s.push(document.pdfSha256);
           current.sourceUrls.push(...document.sourceUrls);
           current.seriesEvidence.push(...family.seriesEvidence);
-          if (parserProfile) current.parserProfiles.push(parserProfile);
+          if (family.declaredProfiles?.length) current.parserProfiles.push(...family.declaredProfiles);
+          else if (parserProfile) current.parserProfiles.push(parserProfile);
+          current.parserReplays.push(...identityReplays);
           current.expressions.push(...extracted.observations);
           current.researchGaps.push(...extracted.researchGaps);
           families.set(key, current);
@@ -1042,8 +1340,14 @@ export function buildDimensionExpressionKnowledge(input) {
           String(left.page ?? '').localeCompare(String(right.page ?? ''))
             || left.gapType.localeCompare(right.gapType)
         ));
+        const completeParserReplay = family.parserReplays.some((replay) => (
+          replay.reasonCode === 'PARSED_COMPLETE'
+        ));
         let expressionCoverageStatus = 'NO_RECOGNIZED_DIMENSION_EXPRESSION';
-        if (expressions.length && researchGaps.length) expressionCoverageStatus = 'OBSERVED_WITH_RESEARCH_GAPS';
+        if (completeParserReplay && researchGaps.length) {
+          expressionCoverageStatus = 'PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS';
+        } else if (completeParserReplay) expressionCoverageStatus = 'PARSER_REPLAY_COMPLETE';
+        else if (expressions.length && researchGaps.length) expressionCoverageStatus = 'OBSERVED_WITH_RESEARCH_GAPS';
         else if (expressions.length) expressionCoverageStatus = 'OBSERVED_DIMENSION_EXPRESSIONS';
         else if (researchGaps.some((row) => row.gapType === 'IMAGE_ONLY_DIMENSION_DIAGRAM')) {
           expressionCoverageStatus = 'IMAGE_ONLY_DIMENSION_DIAGRAM';
@@ -1059,6 +1363,16 @@ export function buildDimensionExpressionKnowledge(input) {
             profile,
           ])).values()].sort((left, right) => left.parserProfileId.localeCompare(right.parserProfileId)),
           parserProfileIds: [...new Set(family.parserProfiles.map((profile) => profile.parserProfileId))].sort(),
+          parserReplays: [...new Map(family.parserReplays.map((replay) => [
+            `${replay.pdfSha256}\0${replay.category}\0${replay.brand.toLowerCase()}\0${replay.model.toLowerCase()}`,
+            replay,
+          ])).values()].sort((left, right) => (
+            left.pdfSha256.localeCompare(right.pdfSha256)
+              || left.category.localeCompare(right.category)
+              || left.brand.localeCompare(right.brand)
+              || left.model.localeCompare(right.model)
+          )),
+          completeParserReplay,
           expressionCoverageStatus,
           expressions,
           researchGaps,
@@ -1069,6 +1383,7 @@ export function buildDimensionExpressionKnowledge(input) {
       const marketingSeriesCount = familyRows.filter((family) => family.groupType === 'marketing_series').length;
       const parserProfileCount = new Set(familyRows.flatMap((family) => family.parserProfileIds)).size;
       const expressionCount = familyRows.reduce((sum, family) => sum + family.expressions.length, 0);
+      const completeParserReplayCount = familyRows.filter((family) => family.completeParserReplay).length;
       return {
         canonicalBrand: group.canonicalBrand,
         rawBrandVariants: group.rawBrandVariants,
@@ -1077,9 +1392,12 @@ export function buildDimensionExpressionKnowledge(input) {
         observedMarketingSeriesCount: marketingSeriesCount,
         observedDocumentFamilyCount: familyRows.filter((family) => family.groupType === 'document_family').length,
         observedParserProfileCount: parserProfileCount,
+        completeParserReplayCount,
         seriesCountStatus: marketingSeriesCount ? 'PROVEN_MINIMUM_ONLY' : 'UNKNOWN',
         coverageStatus: matchedDocuments.length ? 'MINERU_SAMPLE_OBSERVED' : 'NO_MINERU_SAMPLE',
-        expressionCoverageStatus: expressionCount
+        expressionCoverageStatus: completeParserReplayCount
+          ? 'PARSER_REPLAY_COMPLETE'
+          : expressionCount
           ? 'DIMENSION_EXPRESSIONS_OBSERVED'
           : matchedDocuments.length
             ? 'NO_RECOGNIZED_DIMENSION_EXPRESSION'
@@ -1099,7 +1417,7 @@ export function buildDimensionExpressionKnowledge(input) {
   const documentsWithObservations = [...extractedByHash.values()].filter((row) => row.observations.length).length;
   const researchGaps = [...extractedByHash.values()].reduce((sum, row) => sum + row.researchGaps.length, 0);
   return {
-    schemaVersion: 2,
+    schemaVersion: 3,
     generatedAt,
     policy: {
       categories: [...CATEGORIES],
@@ -1121,9 +1439,14 @@ export function buildDimensionExpressionKnowledge(input) {
       unmappedMineruDocuments: unmappedDocuments.length,
       observations,
       researchGaps,
-      parserProfiles: new Set([...parserProfileByHash.values()]
-        .filter(Boolean)
-        .map((profile) => profile.parserProfileId)).size,
+      parserProfiles: new Set(categoryRows.flatMap((category) => (
+        category.brands.flatMap((brand) => (
+          brand.families.flatMap((family) => family.parserProfileIds)
+        ))
+      ))).size,
+      parserReplays: [...parserReplaysByHash.values()].flat().length,
+      completeParserReplays: [...parserReplaysByHash.values()].flat()
+        .filter((replay) => ['ALL_AXIS_SCALAR', 'ALL_AXIS_RANGE'].includes(replay.extractionState)).length,
     },
     categories: categoryRows,
     unmappedDocuments,
@@ -1257,6 +1580,7 @@ export function renderDimensionExpressionKnowledgeMarkdown(knowledge) {
       lines.push(`- Coverage: \`${brand.coverageStatus}\`; MinerU documents: ${brand.observedMineruDocuments}`);
       lines.push(`- Proven marketing series: ${brand.observedMarketingSeriesCount}; total series count: \`${brand.seriesCountStatus}\``);
       lines.push(`- PDF grammar profiles: ${brand.observedParserProfileCount}`);
+      lines.push(`- Complete exact-model parser replays: ${brand.completeParserReplayCount}`);
       if (!brand.families.length) {
         lines.push('', '`NO_MINERU_SAMPLE`: no PDF expression may be assumed for this brand.', '');
         continue;
@@ -1270,6 +1594,13 @@ export function renderDimensionExpressionKnowledgeMarkdown(knowledge) {
         if (family.parserProfileIds.length) {
           lines.push(`- PDF grammar profiles: ${family.parserProfileIds.map((value) => `\`${value}\``).join(', ')}`);
           lines.push('- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.');
+          for (const profile of family.parserProfiles.filter((entry) => (
+            entry.profileKind === 'declared_brand_category_grammar'
+          ))) {
+            lines.push(`- Grammar variant: ${profile.variantName}`);
+            lines.push(`- Detection: ${profile.detectionSummary}`);
+            lines.push(`- Semantic boundary: ${profile.semanticBoundary}`);
+          }
         }
         if (family.sourceUrls.length) lines.push(`- Official/source URLs: ${family.sourceUrls.map((value) => `<${value}>`).join(', ')}`);
         if (family.seriesEvidence.length) {
@@ -1283,6 +1614,8 @@ export function renderDimensionExpressionKnowledgeMarkdown(knowledge) {
           for (const expression of family.expressions) {
             lines.push(`| \`${expression.parserDecision}\` | \`${expression.patternKind}\` | \`${expression.modelBinding}\` | ${expression.axisOrder.join(' -> ') || 'n/a'} | ${expression.safeAxes.join(', ') || 'none'} | \`${expression.scope}\` | ${shortExpression(expression.sourceQuote)} | p.${expression.page}, \`${expression.fragmentSha256.slice(0, 12)}\` |`);
           }
+        } else if (family.completeParserReplay) {
+          lines.push('', '`PARSER_REPLAY_COMPLETE`: the declared brand/category grammar produced complete exact-model dimension claims. Generic expression observations below remain diagnostic only.');
         } else {
           lines.push('', '`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.');
         }

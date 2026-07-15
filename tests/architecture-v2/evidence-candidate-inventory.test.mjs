@@ -95,6 +95,42 @@ test('required resolver timeout fails closed as discovery_incomplete', async () 
   assert.equal(inventory.resolvers[0].completion, 'timed_out');
 });
 
+test('resolver timeout starts after the bounded scheduler grants a slot', async () => {
+  let scheduled = false;
+  const inventory = await collectEvidenceCandidates(TARGET, {
+    batchCandidateJobIds: [],
+    activeReceiptSources: [],
+    resolverTimeoutMs: 5,
+    scheduleResolver: async (task) => {
+      scheduled = true;
+      await new Promise((resolve) => setTimeout(resolve, 20));
+      return task();
+    },
+    resolvers: [resolver()],
+    acquireAndAttest: async () => assert.fail('empty resolver has no candidate to acquire'),
+  });
+
+  assert.equal(scheduled, true);
+  assert.equal(inventory.completionStatus, 'complete');
+  assert.equal(inventory.resolvers[0].completion, 'complete');
+});
+
+test('resolver result metadata cannot override its declared safety contract', async () => {
+  const drifted = resolver();
+  drifted.required = false;
+  const inventory = await collectEvidenceCandidates(TARGET, {
+    batchCandidateJobIds: [],
+    activeReceiptSources: [],
+    resolvers: [drifted],
+    acquireAndAttest: async () => assert.fail('metadata drift has no candidate to acquire'),
+  });
+
+  assert.equal(inventory.completionStatus, 'complete');
+  assert.equal(inventory.resolvers[0].completion, 'failed');
+  assert.equal(inventory.resolvers[0].required, false);
+  assert.match(inventory.resolvers[0].failure, /required flag/i);
+});
+
 test('duplicate official URLs merge provenance and are acquired exactly once', async () => {
   const url = 'https://www.westinghouse.com.au/manuals/WHE6874BA.pdf';
   let acquisitions = 0;

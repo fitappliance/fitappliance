@@ -62,22 +62,35 @@ function modelReceipts(entry) {
   return entry.sources.map((source) => {
     const fields = {};
     for (const [axis, field] of Object.entries(AXIS_FIELDS)) {
-      const locator = evidence[field];
-      if (locator?.contentSha256 !== source.contentSha256) continue;
-      fields[axis] = {
-        page: locator.page ?? null,
-        fragmentSha256: locator.fragmentSha256,
-      };
+      const primary = evidence[field];
+      const locators = [primary, ...(primary?.corroborating ?? [])];
+      const locator = locators.find((candidate) => (
+        candidate?.contentSha256 === source.contentSha256
+        && candidate?.receiptBindingSha256 === source.verificationReceipt.bindingSha256
+      ));
+      if (!locator) continue;
+      fields[axis] = source.contentType === 'application/pdf'
+        ? {
+          locatorKind: 'PDF_FRAGMENT',
+          page: locator.page ?? null,
+          fragmentSha256: locator.fragmentSha256 ?? null,
+        }
+        : {
+          locatorKind: 'HTML_ARTIFACT',
+          artifactSha256: source.contentSha256,
+        };
     }
     return {
       targetId: entry.targetId,
       sourceUrl: source.sourceUrl,
+      contentType: source.contentType,
+      objectPath: source.objectPath,
       contentSha256: source.contentSha256,
       receiptBindingSha256: source.verificationReceipt.bindingSha256,
       verifiedAt: source.verificationReceipt.verifiedAt,
       fields,
     };
-  });
+  }).filter((receipt) => Object.keys(receipt.fields).length > 0);
 }
 
 function currentAcceptance(entry) {
@@ -154,7 +167,7 @@ export function buildHistoricalEvidencePublication({ bundle, products }) {
       if (!isCurrentRetailProduct(product)) {
         throw new Error(`current recovery lifecycle drift for ${entry.targetId}`);
       }
-      if (entry.acceptanceStatus === 'accepted' && scalarHistoricalDimensions(entry.geometryProjection)) {
+      if (entry.acceptanceStatus === 'accepted') {
         if (currentAcceptanceByLegacyId.has(entry.legacyRuntimeId)) {
           throw new Error(`duplicate current recovery product ${entry.legacyRuntimeId}`);
         }
@@ -164,6 +177,8 @@ export function buildHistoricalEvidencePublication({ bundle, products }) {
       if (product && isCurrentRetailProduct(product)) {
         throw new Error(`archived recovery lifecycle drift for ${entry.targetId}`);
       }
+    } else if (entry.lifecycleState === 'REGISTRY_ONLY') {
+      if (product) throw new Error(`registry-only recovery catalog identity drift for ${entry.targetId}`);
     } else {
       throw new Error(`unsupported recovery publication lifecycle: ${entry.lifecycleState}`);
     }

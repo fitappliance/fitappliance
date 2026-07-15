@@ -92,6 +92,25 @@ test('new Phase 10 acquisitions cannot approve a PDF without MinerU JSON provena
     }),
   };
   assert.equal(reviewPhase10Evidence({ selection, acquisition: modern, input }).summary.approved, 1);
+  const modernHybrid = {
+    ...modern,
+    entries: modern.entries.map((entry) => entry.outcome !== 'acquired' ? entry : {
+      ...entry,
+      derivedArtifact: {
+        ...entry.derivedArtifact,
+        profileId: 'hybrid-image-high-v1',
+        modelRevision: 'bff20d4ae2bf202df9f45284b4d43681555a97ed',
+        backend: 'hybrid-engine', effort: 'high', imageAnalysis: true,
+        processedPages: [2], sourcePageCount: entry.pageCount,
+        fallbackTrigger: {
+          profileId: 'pipeline-auto-v1', contentSha256: 'c'.repeat(64),
+          objectPath: `evidence/derived/mineru-json/sha256/cc/cc/${'c'.repeat(64)}.json`,
+          pages: [2],
+        },
+      },
+    }),
+  };
+  assert.equal(reviewPhase10Evidence({ selection, acquisition: modernHybrid, input }).summary.approved, 1);
   assert.throws(() => reviewPhase10Evidence({
     selection,
     acquisition: {

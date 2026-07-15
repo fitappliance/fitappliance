@@ -1,7 +1,7 @@
 const FIELD_RULES = Object.freeze({
   'closedEnvelope.widthMm': { label: /(?:\b(?:total|overall|external|product)?\s*width\b|^\s*(?:total|overall|external|product)?\s*wide(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'width', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b|(?:doors?\s*open(?:ed)?|open(?:ed)?\s*doors?)/i },
   'closedEnvelope.heightMm': { label: /(?:\b(?:total|overall|external|product)?\s*height\b|^\s*(?:total|overall|external|product)?\s*high(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'height', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b|lid\s*open/i },
-  'closedEnvelope.depthMm': { label: /(?:\b(?:total|overall|external|product)?\s*depth\b|^\s*(?:total|overall|external|product)?\s*deep(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'depth', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b|(?:including|with)\s+(?:the\s+)?handles?|without\s+(?:the\s+)?doors?|(?:doors?\s*open(?:ed)?|open(?:ed)?\s*doors?)/i },
+  'closedEnvelope.depthMm': { label: /(?:\b(?:total|overall|external|product)?\s*depth\b|^\s*(?:total|overall|external|product)?\s*deep(?:\s*\([^)]*\))?\s*$)/i, kind: 'dimension', axis: 'depth', reject: /cabinet|cut[ -]?out|cavity|\bpack(?:ed|ing|ag(?:e|ed|ing))?\b|(?:including|with)\s+(?:the\s+)?(?:(?:doors?\s*(?:and|&)\s*)?handles?|doors?\s+handles?)|without\s+(?:the\s+)?(?:doors?|handles?)|(?:doors?\s*open(?:ed)?|open(?:ed)?\s*doors?)/i },
   'installation.leftMm': { label: /(?:left.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}left|(?:clearance|space|gap).{0,30}(?:each|both)\s+sides?|(?:each|both)\s+sides?.{0,30}(?:clearance|space|gap))/i, kind: 'clearance' },
   'installation.rightMm': { label: /(?:right.{0,30}(?:clearance|space|gap)|(?:clearance|space|gap).{0,30}right|(?:clearance|space|gap).{0,30}(?:each|both)\s+sides?|(?:each|both)\s+sides?.{0,30}(?:clearance|space|gap))/i, kind: 'clearance' },
   'installation.topMm': { label: /(?:(?:air\s*space\s*above|top|overhead).{0,30}(?:clearance|space|gap|cabinet)|(?:clearance|space|gap).{0,30}(?:on\s+)?(?:top|above|overhead)|air\s*space\s*above\s*cabinet)/i, kind: 'clearance' },
@@ -53,7 +53,7 @@ export function containsExactModelDocumentUrl(value, model) {
   const filename = pathname.split('/').pop() ?? '';
   const stem = filename.replace(/\.[A-Z0-9]{1,8}$/i, '');
   const withoutDocumentSuffix = stem.replace(
-    /[-_. ]+(?:UG|UM|IM|USER[-_. ]?(?:GUIDE|MANUAL)|INSTALLATION[-_. ]?(?:GUIDE|MANUAL)|SPEC(?:IFICATION)?[-_. ]?SHEET)$/i,
+    /[-_. ]+(?:UG|UM|IM|USER[-_. ]?(?:GUIDE|MANUAL)|INSTALLATION[-_. ]?(?:GUIDE|MANUAL)|SPEC(?:IFICATION)?(?:[-_. ]?SHEET)?)(?:[-_. ]+V?\d+(?:\.\d+)*)*$/i,
     '',
   );
   return withoutDocumentSuffix !== stem && containsExactModel(withoutDocumentSuffix, model);

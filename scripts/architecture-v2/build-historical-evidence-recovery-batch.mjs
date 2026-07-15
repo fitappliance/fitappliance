@@ -22,12 +22,37 @@ async function atomicJson(path, value) {
   await rename(temporary, path);
 }
 
+export function parseHistoricalEvidenceRecoveryBatchCliArgs(argv) {
+  let output = null;
+  const selectionArgs = [];
+  for (let index = 0; index < argv.length; index += 1) {
+    const raw = argv[index];
+    const separator = raw.indexOf('=');
+    const flag = separator === -1 ? raw : raw.slice(0, separator);
+    if (flag !== '--output') {
+      selectionArgs.push(raw);
+      continue;
+    }
+    if (output !== null) throw new TypeError('--output may be provided only once');
+    const value = separator === -1 ? argv[++index] : raw.slice(separator + 1);
+    output = String(value ?? '').trim();
+    if (!output) throw new TypeError('--output requires a path');
+  }
+  return {
+    output,
+    selection: parseHistoricalEvidenceRecoveryBatchArgs(selectionArgs),
+  };
+}
+
 export async function runCli(argv = process.argv.slice(2)) {
   const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
-  const selection = parseHistoricalEvidenceRecoveryBatchArgs(argv);
-  const [queue, policy, pdfBatch, pdfResults, rangeBatch, rangeResults] = await Promise.all([
-    readJson(resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryQueue')),
+  const parsed = parseHistoricalEvidenceRecoveryBatchCliArgs(argv);
+  const { selection } = parsed;
+  const [queue, policy, cumulativeBundle, pdfBatch, pdfResults,
+    rangeBatch, rangeResults] = await Promise.all([
+    readJson(resolveArchitectureV2Path(root, 'historicalExecutableEvidenceRecoveryQueue')),
     readJson(resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryPolicy')),
+    readJson(resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryAcceptanceBundle')),
     readJson(resolveArchitectureV2Path(root, 'pdfBrandAcceptanceBatch')),
     readJson(resolveArchitectureV2Path(root, 'pdfBrandAcceptanceResults')),
     readJson(resolveArchitectureV2Path(root, 'identityRangeRecoveryAcceptanceBatch')),
@@ -37,12 +62,15 @@ export async function runCli(argv = process.argv.slice(2)) {
     queue,
     policy,
     existingAcceptanceBundles: [
+      cumulativeBundle,
       { batch: pdfBatch, results: pdfResults },
       { batch: rangeBatch, results: rangeResults },
     ],
     selection,
   });
-  const outputPath = resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryBatch');
+  const outputPath = parsed.output
+    ? resolve(parsed.output)
+    : resolveArchitectureV2Path(root, 'historicalEvidenceRecoveryBatch');
   await atomicJson(outputPath, batch);
   process.stdout.write(`${JSON.stringify({
     output: outputPath,

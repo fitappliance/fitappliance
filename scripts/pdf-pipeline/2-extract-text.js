@@ -70,8 +70,8 @@ async function extractText(pdfPath, options = {}) {
     processed = await processPdf(data, { pdfPath });
   } else {
     if (!storageRoot) throw new TypeError('FITAPPLIANCE_STORAGE_ROOT is required for MinerU PDF extraction');
-    const { runMineruPdfToJson } = await import('../../src/domain/mineru-runner.mjs');
-    processed = await runMineruPdfToJson(data, { storageRoot });
+    const { runMineruPdfWithImageFallback } = await import('../../src/domain/mineru-runner.mjs');
+    processed = await runMineruPdfWithImageFallback(data, { storageRoot });
   }
   if (!processed?.jsonBytes) throw new Error('MinerU content_list_v2 JSON missing');
   await persistDerivedJson(storageRoot, processed.derivedArtifact, processed.jsonBytes);

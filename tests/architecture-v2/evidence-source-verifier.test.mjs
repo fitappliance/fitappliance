@@ -4,9 +4,13 @@ import { createHash } from 'node:crypto';
 
 import {
   createVerificationReceipt,
+  isOfficialBrandArtifactUrl,
+  isOfficialBrandArtifactHostUrl,
   isOfficialBrandUrl,
   isOfficialBrandHostUrl,
+  isOfficialBrandMarketUrl,
   isSourceFresh,
+  normalizeOfficialArtifactDiscoveryProvenance,
   validateTrustedSourceMetadata,
   verifyVerificationReceipt,
 } from '../../src/domain/evidence-source-verifier.mjs';
@@ -106,6 +110,49 @@ test('official source policy accepts explicit Australian static assets and query
   assert.equal(isOfficialBrandHostUrl('https://evil.example/manual.pdf', 'Samsung'), false);
 });
 
+test('official source policy accepts only explicitly qualified Australian brand hosts', () => {
+  assert.equal(isOfficialBrandMarketUrl(
+    'https://dtc-aus-api.hisense.com/medias/HRAF242-Spec.pdf',
+    'Hisense',
+  ), true);
+  assert.equal(isOfficialBrandMarketUrl(
+    'https://support.hisense.com/medias/HRAF242-Spec.pdf',
+    'Hisense',
+  ), false);
+  assert.equal(isOfficialBrandMarketUrl(
+    'https://esatto.house/discontinued-products/p/207l-top-mount-refrigerator-stainless-steel-etm207x',
+    'Esatto',
+  ), true);
+  assert.equal(isOfficialBrandMarketUrl(
+    'https://support.esatto.house/manuals/ETM207X.pdf',
+    'Esatto',
+  ), false);
+});
+
+test('Esatto CDN redirects require product-page-bound discovery provenance', () => {
+  const artifactUrl = 'https://esatto.house/s/Esatto_UserManual_ETM207-239-268_0518.pdf';
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_product_page',
+    market: 'AU',
+    discoveryUrl: 'https://esatto.house/discontinued-products/p/207l-top-mount-refrigerator-stainless-steel-etm207x',
+    requestedModel: 'ETM207X',
+    matchedModel: 'ETM207X',
+    artifactUrl,
+    artifactLinkUrl: artifactUrl,
+    discoveryContentSha256: 'c'.repeat(64),
+    discoveryObjectPath: `evidence/web/sha256/cc/cc/${'c'.repeat(64)}.html`,
+    discoveryByteSize: 1234,
+  };
+  const cdnUrl = 'https://static1.squarespace.com/static/site/t/file/Esatto_UserManual_ETM207.pdf';
+  assert.equal(isOfficialBrandArtifactHostUrl(cdnUrl, 'Esatto', {
+    model: 'ETM207X', artifactUrl, discoveryProvenance: provenance,
+  }), true);
+  assert.equal(isOfficialBrandArtifactHostUrl(cdnUrl, 'Esatto', {
+    model: 'ETM207X', artifactUrl,
+  }), false);
+});
+
 test('market-scoped requests may redirect within the same official brand host family', () => {
   const redirected = pdfSource({
     sourceUrl: 'https://org.downloadcenter.samsung.com/file?CDSite=UNI_AU&ModelName=WHE6874BA',
@@ -152,13 +199,87 @@ test('global official artifact is trusted only with receipt-bound Australian dis
   input.verificationReceipt = createVerificationReceipt(input, identity, {
     verifiedAt: '2026-07-11T14:35:00.000Z',
   });
+  assert.equal(input.verificationReceipt.discoveryPolicyVersion, '2026-07-15.1');
   assert.equal(verifyVerificationReceipt(input, identity, {
     asOf: input.verificationReceipt.verifiedAt,
   }), true);
+  const legacyReceipt = { ...createVerificationReceipt({
+    ...input, verificationReceipt: undefined,
+  }, identity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+    discoveryPolicyVersion: '2026-07-13.2',
+  }) };
+  delete legacyReceipt.discoveryPolicyVersion;
+  assert.equal(verifyVerificationReceipt({
+    ...input, verificationReceipt: legacyReceipt,
+  }, identity, { asOf: legacyReceipt.verifiedAt }), true);
+  assert.throws(() => createVerificationReceipt({
+    ...input, verificationReceipt: undefined,
+  }, identity, {
+    verifiedAt: '2026-07-11T14:35:00.000Z',
+    discoveryPolicyVersion: '2025-01-01.1',
+  }), /discovery policy version/i);
   assert.throws(() => verifyVerificationReceipt({
     ...input,
     discoveryProvenance: { ...discoveryProvenance, matchedModel: 'WD1275A2' },
   }, identity, { asOf: input.verificationReceipt.verifiedAt }), /model|receipt|provenance/i);
+});
+
+test('ASKO AU API provenance requires hash-bound exact-model JSON and an artifact link', () => {
+  const identity = { brand: 'ASKO', model: 'T408HD.W', category: 'dryer' };
+  const artifactUrl = 'https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=576719&jezik=en&tipVsebine=1&docName=577992en.pdf';
+  const discoveryUrl = 'https://api-storefront.asko.com/ggcommercewebservices/v2/asko-au/products/manuals/search?query=T408HD.W&lang=en_AU&curr=AUD';
+  const discoveryBytes = Buffer.from(JSON.stringify({ products: [{
+    code: 'ggProductCatalog/Online/000000000000576719',
+    modelMark: 'T408HD.W',
+    manuals: [{ desc: 'Instructions for use', url: artifactUrl }],
+  }] }));
+  const discoveryHash = createHash('sha256').update(discoveryBytes).digest('hex');
+  const discoveryProvenance = {
+    schemaVersion: 1,
+    method: 'official_market_api',
+    market: 'AU',
+    discoveryUrl,
+    requestedModel: 'T408HD.W',
+    matchedModel: 'T408HD.W',
+    artifactUrl,
+    discoveryContentSha256: discoveryHash,
+    discoveryObjectPath: `evidence/web/sha256/${discoveryHash.slice(0, 2)}/${discoveryHash.slice(2, 4)}/${discoveryHash}.json`,
+    discoveryByteSize: discoveryBytes.length,
+    documentId: '000000000000576719',
+  };
+  const input = pdfSource({
+    sourceUrl: artifactUrl,
+    finalUrl: artifactUrl,
+    identity: { ...identity, outcome: 'exact' },
+    identitySignals: [
+      { type: 'mineru_page_header_model', value: 'T408HD.W:page:1' },
+      { type: 'official_market_api_model', value: `T408HD.W:${discoveryHash}:${discoveryUrl}` },
+    ],
+    discoveryProvenance,
+  });
+
+  assert.equal(isOfficialBrandMarketUrl(discoveryUrl, 'ASKO'), true);
+  assert.equal(isOfficialBrandArtifactUrl(artifactUrl, 'ASKO', {
+    model: identity.model, discoveryProvenance,
+  }), true);
+  assert.throws(() => createVerificationReceipt(input, identity, {
+    verifiedAt: '2026-07-15T00:00:00.000Z',
+  }), /discovery artifact bytes required/i);
+  input.verificationReceipt = createVerificationReceipt(input, identity, {
+    verifiedAt: '2026-07-15T00:00:00.000Z',
+    discoveryArtifactBytes: discoveryBytes,
+  });
+  assert.equal(verifyVerificationReceipt(input, identity, {
+    asOf: input.verificationReceipt.verifiedAt,
+    discoveryArtifactBytes: discoveryBytes,
+  }), true);
+
+  const siblingBytes = Buffer.from(discoveryBytes.toString('utf8').replaceAll('T408HD.W', 'T408HD.W.AU'));
+  assert.throws(() => createVerificationReceipt({ ...input, verificationReceipt: undefined }, identity, {
+    verifiedAt: '2026-07-15T00:00:00.000Z',
+    discoveryArtifactBytes: siblingBytes,
+  }), /hash mismatch|exact model/i);
 });
 
 test('Fisher & Paykel Salesforce receipt remains bound to exact AU article, model and artifact', () => {
@@ -264,6 +385,54 @@ test('Fisher & Paykel Salesforce receipt remains bound to exact AU article, mode
   }), /artifact link|Salesforce|relationship/i);
 });
 
+test('Fisher & Paykel archived support API provenance stays bound to exact model, source market and artifact', () => {
+  const artifactUrl = 'https://content.fisherpaykel.com/guides/DW60CDW2-installation-guide.pdf';
+  const provenance = {
+    schemaVersion: 1,
+    method: 'official_support_api',
+    market: 'AU',
+    sourceMarket: 'NZ',
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/nz/api/support/products/dishwasher-dw60cdw2-fp-nzau--DW60CDW2',
+    requestedModel: 'DW60CDW2',
+    matchedModel: 'DW60CDW2',
+    artifactUrl,
+    documentId: 'ka0Jw000000Nu4jIAC',
+    originalFileName: 'DW60CDW2 installation guide.pdf',
+  };
+
+  assert.deepEqual(normalizeOfficialArtifactDiscoveryProvenance(provenance, {
+    brand: 'Fisher & Paykel',
+    model: 'DW60CDW2',
+    artifactUrl,
+  }), provenance);
+  assert.equal(isOfficialBrandArtifactUrl(artifactUrl, 'Fisher & Paykel', {
+    model: 'DW60CDW2', discoveryProvenance: provenance,
+  }), true);
+
+  assert.throws(() => normalizeOfficialArtifactDiscoveryProvenance({
+    ...provenance, matchedModel: 'DW60CDW1',
+  }, {
+    brand: 'Fisher & Paykel', model: 'DW60CDW2', artifactUrl,
+  }), /model/i);
+  assert.throws(() => normalizeOfficialArtifactDiscoveryProvenance({
+    ...provenance, sourceMarket: 'AU',
+  }, {
+    brand: 'Fisher & Paykel', model: 'DW60CDW2', artifactUrl,
+  }), /source market|discovery URL/i);
+  assert.throws(() => normalizeOfficialArtifactDiscoveryProvenance({
+    ...provenance,
+    discoveryUrl: 'https://mf-support.mfe.fisherpaykel.com/nz/api/search?q=DW60CDW2&market=NZ',
+  }, {
+    brand: 'Fisher & Paykel', model: 'DW60CDW2', artifactUrl,
+  }), /approved.*support API|discovery URL/i);
+  assert.throws(() => normalizeOfficialArtifactDiscoveryProvenance({
+    ...provenance,
+    discoveryUrl: 'https://support.example.com/nz/api/support/products/DW60CDW2',
+  }, {
+    brand: 'Fisher & Paykel', model: 'DW60CDW2', artifactUrl,
+  }), /official host|approved.*support API|discovery URL/i);
+});
+
 test('retrieval time must be real, non-future, and inside freshness policy', () => {
   assert.throws(() => validateTrustedSourceMetadata(source({
     retrievedAt: '2026-99-99T99:99:99Z',
@@ -285,9 +454,9 @@ test('verification receipt binds case identity, source metadata, artifact, and c
   assert.deepEqual(input.verificationReceipt, {
     schemaVersion: 2,
     policyVersion: '2026-07-12.2',
-    manufacturerPolicyVersion: '2026-07-12.1',
+    manufacturerPolicyVersion: '2026-07-15.1',
     verifiedAt: '2026-07-11T14:35:00.000Z',
-    bindingSha256: '9815b5544350bba85aa307d2cd0d1b964ca67cc52b76434df07714b88907674c',
+    bindingSha256: '2d18f66d4d7b97c5ed33923dd952dc160c6108bcb46721d152a79b10d3b41512',
   });
 
   assert.equal(verifyVerificationReceipt(input, caseIdentity, {

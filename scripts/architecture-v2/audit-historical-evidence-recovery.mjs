@@ -9,25 +9,26 @@ import {
   auditHistoricalEvidenceRecoveryBundle,
 } from '../../src/domain/historical-evidence-recovery-audit.mjs';
 import { createEvidenceObjectStore } from '../../src/domain/evidence-recovery-state-store.mjs';
+import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 
 function parseArgs(argv) {
   const result = {
-    mode: 'online', results: null, output: null, bundle: null, storageRoot: null, full: false,
+    mode: 'online', results: null, output: null, bundle: null, queue: null, storageRoot: null, full: false,
   };
   for (let index = 0; index < argv.length; index += 1) {
     const raw = argv[index];
     if (raw === '--full') { result.full = true; continue; }
     const [flag, inline] = raw.includes('=') ? raw.split(/=(.*)/s, 2) : [raw, null];
-    if (!['--mode', '--results', '--output', '--bundle', '--storage-root'].includes(flag)) {
+    if (!['--mode', '--results', '--output', '--bundle', '--queue', '--storage-root'].includes(flag)) {
       throw new TypeError(`unknown argument: ${raw}`);
     }
     const value = inline ?? argv[++index];
     if (!value) throw new TypeError(`${flag} requires a value`);
     result[{
       '--mode': 'mode', '--results': 'results', '--output': 'output',
-      '--bundle': 'bundle', '--storage-root': 'storageRoot',
+      '--bundle': 'bundle', '--queue': 'queue', '--storage-root': 'storageRoot',
     }[flag]] = value;
   }
   if (!['online', 'offline'].includes(result.mode)) throw new TypeError('--mode must be online or offline');
@@ -43,6 +44,43 @@ async function readOptionalJson(path) {
     if (error?.code === 'ENOENT') return null;
     throw error;
   }
+}
+
+export function selectRecoveryQueueSnapshot(batch, candidates) {
+  const expected = String(batch?.queue?.sha256 ?? '');
+  const matches = (candidates ?? []).filter((candidate) => (
+    candidate?.value && canonicalJsonSha256(candidate.value) === expected
+  ));
+  if (!matches.length) throw new Error(`no matching queue snapshot for batch SHA ${expected || 'missing'}`);
+  const unique = new Map(matches.map((candidate) => [canonicalJsonSha256(candidate.value), candidate.value]));
+  if (unique.size !== 1) throw new Error(`ambiguous matching queue snapshots for batch SHA ${expected}`);
+  return structuredClone(unique.values().next().value);
+}
+
+async function readBoundQueueSnapshot(batch, explicitPath, runDirectory) {
+  if (explicitPath) return readJson(resolve(explicitPath));
+  const paths = [
+    join(runDirectory, 'queue.json'),
+    join(repoRoot, 'data/architecture-v2/reviews/automated/historical-executable-evidence-recovery-queue.json'),
+    join(repoRoot, 'data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json'),
+  ];
+  const values = await Promise.all(paths.map(async (path) => ({
+    path,
+    value: await readOptionalJson(path),
+  })));
+  return selectRecoveryQueueSnapshot(batch, values);
+}
+
+async function readBoundPolicySnapshot(batch, runDirectory) {
+  const paths = [
+    join(runDirectory, 'policy.json'),
+    join(repoRoot, 'data/architecture-v2/policies/historical-evidence-recovery-policy.json'),
+  ];
+  for (const path of paths) {
+    const value = await readOptionalJson(path);
+    if (value && canonicalJsonSha256(value) === batch.policy.sha256) return value;
+  }
+  throw new Error(`no matching policy snapshot for batch SHA ${batch.policy.sha256}`);
 }
 
 async function durableWrite(path, value) {
@@ -78,11 +116,11 @@ export async function runAuditCli(options) {
   if (!storageRoot || storageRoot === resolve('')) throw new Error('FITAPPLIANCE_STORAGE_ROOT required for online audit');
   const results = await readJson(resultsPath);
   const runDirectory = join(storageRoot, 'runs/historical-evidence-recovery', results.runId);
-  const [batch, state, queue, policy, priorBundle] = await Promise.all([
-    readJson(join(runDirectory, 'batch.json')),
+  const batch = await readJson(join(runDirectory, 'batch.json'));
+  const [state, queue, policy, priorBundle] = await Promise.all([
     readJson(join(runDirectory, 'state.json')),
-    readJson(join(repoRoot, 'data/architecture-v2/reviews/automated/historical-evidence-recovery-queue.json')),
-    readJson(join(repoRoot, 'data/architecture-v2/policies/historical-evidence-recovery-policy.json')),
+    readBoundQueueSnapshot(batch, options.queue, runDirectory),
+    readBoundPolicySnapshot(batch, runDirectory),
     readOptionalJson(bundlePath),
   ]);
   const objectStore = createEvidenceObjectStore(storageRoot);

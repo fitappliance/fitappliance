@@ -30,10 +30,21 @@ function containsExplicitModelExpression(text, model) {
   if (containsExactModel(text, model)) return true;
   const target = normalizedText(model).toUpperCase().replace(/[^A-Z0-9]+/g, '');
   if (!target) return false;
-  return new RegExp(
+  if (new RegExp(
     `(^|[^A-Z0-9])${escapeRegExp(target)}\\s*\\/\\s*[A-Z0-9]{1,4}(?![A-Z0-9])`,
     'i',
-  ).test(String(text ?? ''));
+  ).test(String(text ?? ''))) return true;
+  for (const match of String(text ?? '').toUpperCase().matchAll(
+    /(^|[^A-Z0-9])([A-Z][A-Z0-9.-]{4,})\s*\/\s*([A-Z0-9]{1,4})(?![A-Z0-9])/g,
+  )) {
+    const base = canonicalModel(match[2]);
+    const suffix = canonicalModel(match[3]);
+    if (!/[A-Z]/.test(suffix) || base.length !== target.length || suffix.length >= base.length) continue;
+    if (target.endsWith(suffix) && base.slice(0, -suffix.length) === target.slice(0, -suffix.length)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function sha256(value) {
@@ -79,13 +90,36 @@ function nestedText(value) {
     .join(' ');
 }
 
+function structuredListEntries(content) {
+  if (!Array.isArray(content?.list_items)) return [];
+  return content.list_items
+    .map((item) => normalizedText(nestedText(item?.item_content ?? [])))
+    .filter(Boolean);
+}
+
+function isEmptyPageSentinel(item, type) {
+  return type === 'paragraph'
+    && normalizedText(nestedText(item.content)) === ''
+    && Array.isArray(item.bbox)
+    && item.bbox.length === 4
+    && item.bbox.every((coordinate, index) => coordinate === [0, 0, 1001, 1000][index]);
+}
+
 function splitSingleCellMeasurement(value) {
   const cell = normalizedText(value);
   const scalar = /^(.*?\S)\s+(\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?\s*(?:mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?))$/i.exec(cell);
   if (scalar) return { label: normalizedText(scalar[1]), value: normalizedText(scalar[2]), quote: cell };
   const sequence = /^(.*?\S)\s+((?:\d+(?:\.\d+)?\s*(?:mm|cm)?\s*[x×*]\s*){2}\d+(?:\.\d+)?\s*(?:mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?))$/i.exec(cell);
-  return sequence
-    ? { label: normalizedText(sequence[1]), value: normalizedText(sequence[2]), quote: cell }
+  if (sequence) return { label: normalizedText(sequence[1]), value: normalizedText(sequence[2]), quote: cell };
+  const labelUnitSequence = /^(.*?\b(?:dimensions?|size)\b.*?\b(mm|cm)\b\s*[)\]]*)\s+(\d+(?:\.\d+)?\s*[x×*]\s*\d+(?:\.\d+)?\s*[x×*]\s*\d+(?:\.\d+)?)$/i.exec(cell);
+  if (!labelUnitSequence) return null;
+  const label = normalizedText(labelUnitSequence[1]);
+  const values = normalizedText(labelUnitSequence[3]);
+  const axes = explicitSequence(label, {
+    w: 'width', width: 'width', h: 'height', height: 'height', d: 'depth', depth: 'depth',
+  }, 3);
+  return axes && measurements(`${values} ${labelUnitSequence[2]}`, 3)
+    ? { label, value: values, quote: cell }
     : null;
 }
 
@@ -102,6 +136,17 @@ function tableCells(html) {
 function tableRows(html) {
   const rows = [];
   for (const cells of tableCells(html)) {
+    const axisWithValue = cells.length === 2
+      ? /^(?:product\s+)?(width|height|depth)\s+(\d+(?:\.\d+)?)$/i.exec(cells[0])
+      : null;
+    if (axisWithValue && /^(?:mm|cm)$/i.test(cells[1])) {
+      rows.push({
+        label: axisWithValue[1],
+        value: `${axisWithValue[2]} ${cells[1]}`,
+        quote: `${cells[0]} ${cells[1]}`,
+      });
+      continue;
+    }
     if (cells.length >= 2 && cells.some(Boolean)) {
       rows.push({ label: cells[0], value: cells.slice(1).join(' ') });
     } else if (cells.length === 1) {
@@ -109,16 +154,31 @@ function tableRows(html) {
       if (split) rows.push(split);
     }
   }
-  return rows.map((row, index) => {
-    if (/^with\s+(?:the\s+)?door\s+(?:closed|open)$/i.test(row.label)
-      && /^depth$/i.test(rows[index - 1]?.label ?? '') && !rows[index - 1]?.value) {
+  const reconnected = [];
+  for (let index = 0; index < rows.length; index += 1) {
+    const row = rows[index];
+    const next = rows[index + 1];
+    if (row.label && !row.value
+      && /\b(?:dimensions?|size)\b/i.test(row.label)
+      && explicitSequence(row.label, { w: 'width', width: 'width', h: 'height', height: 'height', d: 'depth', depth: 'depth' }, 3)
+      && next && !next.label
+      && measurements(next.value, 3)) {
+      reconnected.push({ label: row.label, value: next.value, quote: `${row.label} ${next.value}` });
+      index += 1;
+      continue;
+    }
+    reconnected.push(row);
+  }
+  let inDepthVariantSection = false;
+  return reconnected.map((row) => {
+    if (/^depth$/i.test(row.label) && !row.value) {
+      inDepthVariantSection = true;
+      return row;
+    }
+    if (inDepthVariantSection && /^(?:without\s+(?:the\s+)?(?:doors?|handles?)|with\s+(?:the\s+)?handles?|with\s+(?:the\s+)?doors?\s*(?:(?:and|&)\s*(?:the\s+)?handles?|closed|open))$/i.test(row.label)) {
       return { ...row, label: `Depth ${row.label}` };
     }
-    if (/^with\s+(?:the\s+)?door\s+(?:closed|open)$/i.test(row.label)
-      && /^with\s+(?:the\s+)?door\s+(?:closed|open)$/i.test(rows[index - 1]?.label ?? '')
-      && /^depth$/i.test(rows[index - 2]?.label ?? '') && !rows[index - 2]?.value) {
-      return { ...row, label: `Depth ${row.label}` };
-    }
+    inDepthVariantSection = false;
     return row;
   });
 }
@@ -145,23 +205,35 @@ function parseDocument(jsonBytes) {
       if (!type || !item.content || typeof item.content !== 'object' || Array.isArray(item.content)) {
         throw new TypeError(`MinerU item ${pageIndex + 1}:${itemIndex + 1} content invalid`);
       }
+      if (isEmptyPageSentinel(item, type)) return null;
       const bbox = validateBbox(item.bbox, `MinerU item ${pageIndex + 1}:${itemIndex + 1}`);
       const html = type === 'table' ? String(item.content.html ?? '') : null;
+      const captionText = type === 'table'
+        ? normalizedText(nestedText(item.content.table_caption ?? []))
+        : '';
       const rawText = type === 'table'
         ? tableRows(html).map((row) => `${row.label} ${row.value}`).join('\n')
         : nestedText(item.content);
       const text = normalizedText(rawText);
+      const identityText = type === 'table'
+        ? normalizedText(`${captionText} ${text}`)
+        : text;
       return {
         type,
         bbox,
         html,
         rawText,
         text: normalizedText(text),
+        captionText,
+        identityText,
+        listEntries: ['list', 'index'].includes(type)
+          ? structuredListEntries(item.content)
+          : [],
         rows: type === 'table' ? tableRows(html) : [],
         cells: type === 'table' ? tableCells(html) : [],
         fragmentSha256: sha256(JSON.stringify({ page: pageIndex + 1, type, bbox, html, text })),
       };
-    });
+    }).filter(Boolean);
   });
   return { bytes, pages: parsedPages, pageCount: parsedPages.length };
 }
@@ -261,7 +333,7 @@ function clearanceClaims(row, fragment, page, fields) {
 function handleInclusiveDepthClaim(row, fragment, page, field) {
   if (field !== 'closedEnvelope.depthMm'
     || !/\b(?:depth|deep)\b/i.test(row.label)
-    || !/(?:including|with)\s+(?:the\s+)?handles?/i.test(row.label)
+    || !/(?:including|with)\s+(?:the\s+)?(?:(?:doors?\s*(?:and|&)\s*)?handles?|doors?\s+handles?)/i.test(row.label)
     || /\b(?:pack(?:ed|age|aging)?|shipping|carton|cavity|cut[ -]?out|cabinet)\b/i.test(row.label)) {
     return null;
   }
@@ -290,6 +362,12 @@ function handleInclusiveDepthClaim(row, fragment, page, field) {
 
 function directClaims(row, fragment, page, fields, category, claimSemanticsVersion) {
   const quote = normalizedText(row.quote ?? `${row.label} ${row.value}`);
+  const labelAxes = [...String(row.label ?? '').matchAll(/\b(width|wide|height|high|depth|deep)\b/gi)]
+    .map((match) => ({ width: 'width', wide: 'width', height: 'height', high: 'height', depth: 'depth', deep: 'depth' })[match[1].toLowerCase()]);
+  if (new Set(labelAxes).size > 1
+    || /\d+(?:\.\d+)?\s*(?:mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/i.test(row.label)) {
+    return [];
+  }
   const claims = [];
   for (const field of fields) {
     const rule = evidenceFieldRules[field];
@@ -354,7 +432,7 @@ function identitySignals(document, model) {
   const signals = [];
   document.pages.forEach((items, pageIndex) => {
     for (const item of items) {
-      if (!containsExplicitModelExpression(item.text, model)) continue;
+      if (!containsExplicitModelExpression(item.identityText ?? item.text, model)) continue;
       if (item.type === 'title') signals.push({ type: 'mineru_title_model', value: `${model}:page:${pageIndex + 1}` });
       if (item.type === 'list') signals.push({ type: 'mineru_list_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
       if (item.type === 'table') signals.push({ type: 'mineru_table_model', value: `${model}:page:${pageIndex + 1}:${item.fragmentSha256}` });
@@ -383,29 +461,212 @@ function identitySignals(document, model) {
   return [...unique.values()].sort((left, right) => left.type.localeCompare(right.type) || left.value.localeCompare(right.value));
 }
 
+function boundFamilyIdentitySignal(document, model) {
+  const structured = identitySignals(document, model)[0];
+  if (structured) return structured;
+  const cover = (document.pages[0] ?? []).find((item) => (
+    ['title', 'page_header', 'page_footer'].includes(item.type)
+      && containsExplicitModelExpression(item.identityText ?? item.text, model)
+  ));
+  return cover ? {
+    type: `mineru_cover_${cover.type}_family`,
+    value: `${model}:page:1:${cover.fragmentSha256}`,
+  } : null;
+}
+
+function boundSeriesIdentitySignal(document, seriesModel) {
+  const escaped = seriesModel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const placeholder = new RegExp(`(?:^|[^A-Z0-9])${escaped}X(?:/[1-9]\\d*)+(?:$|[^A-Z0-9])`, 'i');
+  const cover = (document.pages[0] ?? []).find((item) => (
+    ['title', 'index', 'list', 'page_header', 'page_footer'].includes(item.type)
+      && placeholder.test(item.identityText ?? item.text)
+  ));
+  return cover ? {
+    type: `mineru_cover_${cover.type}_series`,
+    value: `${seriesModel}:page:1:${cover.fragmentSha256}`,
+  } : null;
+}
+
+function boundExactCoverIdentitySignal(document, model) {
+  const cover = (document.pages[0] ?? []).find((item) => (
+    ['title', 'index', 'list', 'paragraph', 'text', 'page_header', 'page_footer'].includes(item.type)
+      && containsExplicitModelExpression(item.identityText ?? item.text, model)
+  ));
+  return cover ? {
+    type: `mineru_cover_${cover.type}_exact_model`,
+    value: `${model}:page:1:${cover.fragmentSha256}`,
+  } : null;
+}
+
+export function hasMineruBoundFamilyIdentity(jsonBytes, model) {
+  const normalizedModel = normalizedText(model);
+  if (!normalizedModel) throw new TypeError('family model required for MinerU identity extraction');
+  return Boolean(boundFamilyIdentitySignal(parseDocument(jsonBytes), normalizedModel));
+}
+
+export function hasMineruBoundSeriesIdentity(jsonBytes, seriesModel) {
+  const normalizedModel = normalizedText(seriesModel);
+  if (!/^[WTD]\d{4}$/i.test(normalizedModel)) {
+    throw new TypeError('ASKO series model must use W, T, or D followed by four digits');
+  }
+  return Boolean(boundSeriesIdentitySignal(parseDocument(jsonBytes), normalizedModel));
+}
+
+export function hasMineruBoundExactCoverIdentity(jsonBytes, model) {
+  const normalizedModel = normalizedText(model);
+  if (!normalizedModel) throw new TypeError('exact cover model required for MinerU identity extraction');
+  return Boolean(boundExactCoverIdentitySignal(parseDocument(jsonBytes), normalizedModel));
+}
+
+export function extractMineruIdentitySignals(jsonBytes, model) {
+  const normalizedModel = normalizedText(model);
+  if (!normalizedModel) throw new TypeError('model required for MinerU identity extraction');
+  return Object.freeze(identitySignals(parseDocument(jsonBytes), normalizedModel)
+    .map((signal) => Object.freeze({ ...signal })));
+}
+
+export function inspectMineruIdentityScope(jsonBytes, model) {
+  const normalizedModel = normalizedText(model);
+  if (!normalizedModel) throw new TypeError('model required for MinerU identity scope');
+  const document = parseDocument(jsonBytes);
+  return Object.freeze({
+    identitySignals: Object.freeze(identitySignals(document, normalizedModel)
+      .map((signal) => Object.freeze({ ...signal }))),
+    siblingModelCandidates: Object.freeze([...new Set(
+      siblingModelCandidates(document, normalizedModel),
+    )].sort()),
+    unresolvedFamily: unresolvedFamilyScope(document, normalizedModel),
+  });
+}
+
 function paragraphRows(text) {
   const strict = /^([A-Za-z][A-Za-z ()/+.-]{0,80})\s+((?:\d+(?:\.\d+)?)(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?\s*(?:mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?))$/i.exec(text);
   if (strict) return [{ label: normalizedText(strict[1]), value: normalizedText(strict[2]) }];
   if (!/\b(?:pack(?:ed|ing|ag(?:e|ed|ing))?|shipping|carton|box(?:ed)?|crate)\b/i.test(text)) {
-    const axisMatches = [...String(text).matchAll(/\b(width|wide|height|high|depth|deep)\b\s*:?\s*(\d+(?:\.\d+)?)\s*(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/gi)];
+    const axisMatches = [...String(text).matchAll(/\b(width|wide|height|high|depth|deep)\b\s*:?\s*(\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?)\s*(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/gi)];
     const axis = { width: 'width', wide: 'width', height: 'height', high: 'height', depth: 'depth', deep: 'depth' };
     const axes = axisMatches.map((match) => axis[match[1].toLowerCase()]);
     if (axisMatches.length >= 2 && new Set(axes).size === axisMatches.length) {
       return axisMatches.map((match) => ({
         label: match[1],
         value: `${match[2]} ${match[3]}`,
-        quote: normalizedText(text),
+        quote: normalizedText(`${match[1]} ${match[2]} ${match[3]}`),
       }));
     }
   }
   const grouped = /^(.*?\b(?:dimension|dimensions|size)\b.*?\([^)]*[whd]\s*[x×/*]\s*[whd]\s*[x×/*]\s*[whd][^)]*\))\s*:?[ \t]*((?:\d+(?:\.\d+)?\s*(?:mm|cm)?\s*[x×*]\s*){2}\d+(?:\.\d+)?\s*(?:mm|cm))/i.exec(text);
-  if (grouped) return [{ label: normalizedText(grouped[1]), value: normalizedText(grouped[2]), quote: normalizedText(text) }];
+  if (grouped) {
+    const rows = [{ label: normalizedText(grouped[1]), value: normalizedText(grouped[2]), quote: normalizedText(text) }];
+    const after = String(text).slice((grouped.index ?? 0) + grouped[0].length);
+    const inclusiveHandle = /^\s*\(\s*(\d+(?:\.\d+)?\s*(?:mm|cm))\s+(?:including|with)\s+(?:the\s+)?(?:door\s+)?handles?\s*\)/i.exec(after);
+    if (inclusiveHandle) rows.push({
+      label: 'Overall depth including door handle',
+      value: normalizedText(inclusiveHandle[1]),
+      quote: normalizedText(text),
+      semanticBasis: 'explicit_including_handle',
+    });
+    return rows;
+  }
   const suffixed = /^.*?\b(?:dimension|dimensions|size)\b\s*:?[ \t]*(\d+(?:\.\d+)?)\s*(mm|cm)\s*w\s*[x×]\s*(\d+(?:\.\d+)?)\s*\2\s*h\s*[x×]\s*(\d+(?:\.\d+)?)\s*\2\s*d\b/i.exec(text);
   return suffixed ? [{
     label: 'Dimensions (W x H x D)',
     value: `${suffixed[1]} x ${suffixed[3]} x ${suffixed[4]} ${suffixed[2]}`,
     quote: normalizedText(text),
   }] : [];
+}
+
+function joinedGroupedParagraphRow(items, fragmentIndex) {
+  const fragment = items[fragmentIndex];
+  const next = items[fragmentIndex + 1];
+  if (!fragment || !next
+    || !['paragraph', 'text'].includes(fragment.type)
+    || !['paragraph', 'text'].includes(next.type)
+    || !/\b(?:dimensions?|size)\b/i.test(fragment.text)) return null;
+  const axisOrder = explicitSequence(fragment.text, {
+    w: 'width', width: 'width', h: 'height', height: 'height', d: 'depth', depth: 'depth',
+  }, 3);
+  if (!axisOrder) return null;
+  const matches = [...String(next.text).matchAll(
+    /\b(w|width|h|height|d|depth)\b\s*:?\s*(\d+(?:\.\d+)?)\s*(mm|cm)?/gi,
+  )];
+  if (matches.length !== 3) return null;
+  const aliases = { w: 'width', width: 'width', h: 'height', height: 'height', d: 'depth', depth: 'depth' };
+  const valueAxes = matches.map((match) => aliases[match[1].toLowerCase()]);
+  if (valueAxes.some((axis, index) => axis !== axisOrder[index])) return null;
+  for (let index = 0; index < matches.length - 1; index += 1) {
+    const between = String(next.text).slice(matches[index].index + matches[index][0].length, matches[index + 1].index);
+    if (!/^\s*[x×*]\s*$/i.test(between)) return null;
+  }
+  const units = matches.map((match) => match[3]?.toLowerCase()).filter(Boolean);
+  if (!units.length || new Set(units).size !== 1) return null;
+  return {
+    label: fragment.text,
+    value: `${matches.map((match) => match[2]).join(' x ')} ${units[0]}`,
+    quote: normalizedText(`${fragment.text} ${next.text}`),
+  };
+}
+
+function sectionDimensionUnit(cells, sectionIndex) {
+  let hasDimensionHeader = false;
+  for (let index = Math.max(0, sectionIndex - 3); index <= sectionIndex; index += 1) {
+    const text = normalizedText(cells[index]?.join(' '));
+    if (/\bdimensions?\b/i.test(text)) hasDimensionHeader = true;
+    if (/\bdimensions?\b/i.test(text) && /\bmm\b/i.test(text)) return 'mm';
+    if (/\bdimensions?\b/i.test(text) && /\bcm\b/i.test(text)) return 'cm';
+  }
+  if (!hasDimensionHeader) return null;
+  const units = new Set();
+  for (const row of cells.slice(sectionIndex)) {
+    const text = normalizedText(row.join(' '));
+    if (/\b(?:pack(?:ed|aging|age)?|shipping|carton|box(?:ed)?|crate)\b/i.test(text)) break;
+    if (/\bmm\b/i.test(text)) units.add('mm');
+    if (/\bcm\b/i.test(text)) units.add('cm');
+    if (units.size > 1) return null;
+  }
+  if (units.size === 1) return [...units][0];
+  return null;
+}
+
+function netDimensionSectionRows(fragment) {
+  if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return [];
+  const sectionIndex = fragment.cells.findIndex((cells) => (
+    /^Net(?:\s+With\s+(?:the\s+)?handle)?$/i.test(normalizedText(cells.find(Boolean)))
+  ));
+  if (sectionIndex < 0) return [];
+  const sectionUnit = sectionDimensionUnit(fragment.cells, sectionIndex);
+  if (!sectionUnit) return [];
+  const sectionLabel = normalizedText(fragment.cells[sectionIndex].find(Boolean));
+  const axes = [];
+  const values = [];
+  for (const cells of fragment.cells.slice(sectionIndex)) {
+    const text = normalizedText(cells.join(' '));
+    if (/\b(?:pack(?:ed|aging|age)?|shipping|carton|box(?:ed)?|crate)\b/i.test(text)) break;
+    const axisCellIndex = cells.findIndex((cell) => /\b(?:width|wide|height|high|depth|deep)\b/i.test(cell));
+    const axisCell = cells[axisCellIndex];
+    if (!axisCell) continue;
+    const rowAxes = [...axisCell.matchAll(/\b(width|wide|height|high|depth|deep)\b/gi)]
+      .map((match) => ({ width: 'Width', wide: 'Width', height: 'Height', high: 'Height', depth: 'Depth', deep: 'Depth' })[match[1].toLowerCase()]);
+    const rowValues = cells.slice(axisCellIndex + 1)
+      .flatMap((cell) => cell.match(/\d+(?:\.\d+)?/g) ?? []);
+    if (!rowAxes.length || new Set(rowAxes).size !== rowAxes.length || !rowValues.length) continue;
+    axes.push(...rowAxes);
+    values.push(...rowValues);
+    if (axes.length >= 3 && values.length >= 3) break;
+  }
+  if (axes.length !== 3 || values.length !== 3 || new Set(axes).size !== 3) return [];
+  const axisOrder = axes.map((axis) => axis.toLowerCase());
+  const handleQualified = /^Net\s+With/i.test(sectionLabel);
+  return axes.map((axis, index) => ({
+    label: handleQualified ? `${axis} (${sectionLabel} dimensions)` : axis,
+    value: `${values[index]} ${sectionUnit}`,
+    quote: handleQualified
+      ? `${axis} ${values[index]} ${sectionUnit} (${sectionLabel} dimensions section)`
+      : `${axis} ${values[index]} ${sectionUnit}`,
+    semanticBasis: handleQualified
+      ? 'explicit_net_with_handle_dimension_section'
+      : 'explicit_label',
+    axisOrder: handleQualified ? axisOrder : [axis.toLowerCase()],
+  }));
 }
 
 function explicitPageDimensionUnit(items) {
@@ -419,7 +680,27 @@ function explicitPageDimensionUnit(items) {
   return { unit: 'mm', sourceLabel: normalizedText(matches[0][0]) };
 }
 
-function alternatingAxisRows(fragment, pageUnit) {
+function dimensionDiagramContext(items, fragment) {
+  const tableIndex = items.indexOf(fragment);
+  if (tableIndex < 1) return false;
+  let headingIndex = -1;
+  for (let index = tableIndex - 1; index >= 0; index -= 1) {
+    const item = items[index];
+    if (item.type === 'table') break;
+    if (/\bdimensions?\s*\(\s*(?:mm|millimet(?:re|er)s?)\s*\)/i.test(item.text)) {
+      headingIndex = index;
+      break;
+    }
+  }
+  if (headingIndex < 0) return false;
+  return items.slice(headingIndex + 1, tableIndex).some((item) => (
+    item.type === 'image'
+    && item.bbox[1] >= items[headingIndex].bbox[1]
+    && item.bbox[3] <= fragment.bbox[1]
+  ));
+}
+
+function alternatingAxisRows(fragment, pageUnit, options = {}) {
   if (!pageUnit || pageUnit.unit !== 'mm' || !Array.isArray(fragment.cells)) return [];
   const pairs = [];
   for (const cells of fragment.cells) {
@@ -439,14 +720,30 @@ function alternatingAxisRows(fragment, pageUnit) {
     }
   }
   if (pairs.length < 2) return [];
-  const depthIsAmbiguous = pairs.some((pair) => pair.axis === 'D' && pair.qualifier);
+  const depthVariants = pairs.filter((pair) => pair.axis === 'D' && pair.qualifier);
+  const plainDepths = pairs.filter((pair) => pair.axis === 'D' && !pair.qualifier);
+  const depthIsAmbiguous = depthVariants.length > 0;
+  const diagramPrimaryDepth = Boolean(
+    options.qualifiedDepthPrimary
+    && plainDepths.length === 1
+    && depthVariants.length > 0
+    && new Set(depthVariants.map((pair) => pair.qualifier)).size === depthVariants.length,
+  );
   const labels = { W: 'Width', H: 'Height', D: 'Depth' };
-  const unambiguous = pairs.filter((pair) => pair.axis !== 'D' || !depthIsAmbiguous);
+  const unambiguous = pairs.filter((pair) => (
+    pair.axis !== 'D'
+    || (!pair.qualifier && (!depthIsAmbiguous || diagramPrimaryDepth))
+  ));
   if (new Set(unambiguous.map((pair) => pair.axis)).size !== unambiguous.length) return [];
+  const axisMap = { W: 'width', H: 'height', D: 'depth' };
   return unambiguous.map((pair) => ({
     label: `${labels[pair.axis]} (${pageUnit.unit})`,
     value: `${pair.sourceValue} ${pageUnit.unit}`,
     quote: `${pair.sourceAxis} ${pair.sourceValue}`,
+    axisOrder: [axisMap[pair.axis]],
+    ...(pair.axis === 'D' && diagramPrimaryDepth ? {
+      semanticBasis: 'explicit_dimension_diagram_primary_axis',
+    } : {}),
   }));
 }
 
@@ -457,23 +754,155 @@ function exactModelTableScope(items, model) {
   )));
 }
 
-function strictSharedModelListPageScope(items, model) {
-  const rows = items.flatMap((item) => item.type === 'table' ? item.rows : [])
-    .filter((row) => /^models?(?:\s+(?:name|number|no\.?|code))?$/i.test(row.label));
-  if (rows.length !== 1) return false;
-  const source = normalizedText(rows[0].value);
-  const tokens = source.split(/\s+\/\s+|\s*[,;]\s*/).map(normalizedText).filter(Boolean);
-  if (tokens.length < 2 || tokens.length > 12) return false;
-  if (tokens.some((token) => (
-    token.length < 5 || token.length > 40
-      || !/^[A-Z0-9][A-Z0-9.-]+$/i.test(token)
-      || !/[A-Z]/i.test(token)
-      || !/\d/.test(token)
-  ))) return false;
-  const canonical = (value) => value.toUpperCase().replace(/[^A-Z0-9]/g, '');
-  const canonicalTokens = tokens.map(canonical);
-  return new Set(canonicalTokens).size === canonicalTokens.length
-    && canonicalTokens.includes(canonical(model));
+function modelExpressionTokens(value) {
+  return normalizedText(value).split(/\s+\/\s+|\s*[,;]\s*/).map(normalizedText).filter(Boolean);
+}
+
+function validModelExpressionToken(token) {
+  const plain = token.replace(/\*+$/, '');
+  return token.length >= 5 && token.length <= 40
+    && /^[A-Z0-9][A-Z0-9.-]*\**$/i.test(token)
+    && /[A-Z]/i.test(plain)
+    && /\d/.test(plain)
+    && canonicalModel(plain).length >= 5;
+}
+
+function modelExpressionTokenMatches(token, model) {
+  if (!validModelExpressionToken(token)) return false;
+  const wildcardCount = token.match(/\*+$/)?.[0].length ?? 0;
+  const target = canonicalModel(model);
+  const prefix = canonicalModel(wildcardCount ? token.slice(0, -wildcardCount) : token);
+  if (!wildcardCount) return prefix === target;
+  return target.length === prefix.length + wildcardCount
+    && target.startsWith(prefix)
+    && /^[A-Z0-9]+$/.test(target.slice(prefix.length));
+}
+
+function modelRowGroups(items) {
+  const rows = [];
+  for (const [itemIndex, item] of items.entries()) {
+    if (item.type !== 'table') continue;
+    for (const cells of item.cells) {
+      if (!/^models?(?:\s+(?:name|number|no\.?|code))?$/i.test(normalizedText(cells[0]))) continue;
+      const groups = cells.slice(1).map(normalizedText).filter(Boolean).map((source) => ({
+        source,
+        tokens: modelExpressionTokens(source),
+      }));
+      rows.push({ itemIndex, groups });
+    }
+  }
+  return rows;
+}
+
+function scopedSharedDimensionFragments(items, model, pageUnit) {
+  if (!pageUnit) return new Set();
+  const rows = modelRowGroups(items);
+  if (rows.length !== 1 || !rows[0].groups.length) return new Set();
+  const tokens = rows[0].groups.flatMap((group) => group.tokens);
+  if (!tokens.length || tokens.length > 12 || tokens.some((token) => !validModelExpressionToken(token))) {
+    return new Set();
+  }
+  const matchingGroups = rows[0].groups.filter((group) => (
+    group.tokens.some((token) => modelExpressionTokenMatches(token, model))
+  ));
+  if (matchingGroups.length !== 1) return new Set();
+
+  const dimensionTables = items
+    .map((item, index) => ({ item, index }))
+    .filter(({ item }) => item.type === 'table' && alternatingAxisRows(item, pageUnit).length >= 2);
+  if (dimensionTables.length === 1) return new Set([dimensionTables[0].item]);
+
+  const selected = dimensionTables.filter(({ item, index }, tablePosition) => {
+    if (containsExplicitModelExpression(item.captionText, model)) return true;
+    if (item.captionText) return false;
+    const previousDimensionIndex = tablePosition > 0 ? dimensionTables[tablePosition - 1].index : -1;
+    return items.slice(previousDimensionIndex + 1, index).reverse().some((candidate) => (
+      ['title', 'paragraph', 'text'].includes(candidate.type)
+      && containsExplicitModelExpression(candidate.text, model)
+    ));
+  });
+  return selected.length === 1 ? new Set([selected[0].item]) : new Set();
+}
+
+function explicitDocumentModelList(document, model) {
+  const target = canonicalModel(model);
+  const lists = new Map();
+  for (const fragment of document.pages.flat()) {
+    if (fragment.type === 'table'
+      || !/\b(?:models?|model\s+(?:code\/s|codes?|numbers?|no\.?s?))\s*:/i.test(fragment.text)) continue;
+    const tokens = (fragment.text.toUpperCase().match(/\b[A-Z][A-Z0-9.-]{3,}\d[A-Z0-9.-]*\b/g) ?? [])
+      .map(canonicalModel)
+      .filter((token) => token.length >= 5 && token.length <= 40);
+    const unique = [...new Set(tokens)];
+    if (unique.length < 2 || unique.length > 24 || !unique.includes(target)) continue;
+    const sharedPrefix = Math.min(6, Math.floor(target.length / 2));
+    if (unique.some((token) => commonPrefixLength(token, target) < sharedPrefix)) continue;
+    lists.set([...unique].sort().join('\0'), unique);
+  }
+  return lists.size === 1 ? [...lists.values()][0] : [];
+}
+
+function uniqueModelSegmentation(value, models) {
+  const source = canonicalModel(value);
+  if (!source) return null;
+  const candidates = [...new Set(models.map(canonicalModel))]
+    .filter(Boolean)
+    .sort((left, right) => right.length - left.length || left.localeCompare(right));
+  const solutions = [];
+  const visit = (offset, parts) => {
+    if (solutions.length > 1) return;
+    if (offset === source.length) {
+      solutions.push(parts);
+      return;
+    }
+    for (const candidate of candidates) {
+      if (parts.includes(candidate) || !source.startsWith(candidate, offset)) continue;
+      visit(offset + candidate.length, [...parts, candidate]);
+    }
+  };
+  visit(0, []);
+  return solutions.length === 1 ? solutions[0] : null;
+}
+
+function exactModelGroupedColumnRows(fragment, model, documentedModels) {
+  if (fragment.type !== 'table' || documentedModels.length < 2) return [];
+  const modelRows = fragment.cells
+    .map((cells, index) => ({ cells, index }))
+    .filter(({ cells }) => /^models?$/i.test(normalizedText(cells[0])));
+  if (modelRows.length !== 1) return [];
+  const header = modelRows[0];
+  const groups = header.cells.slice(1).map((cell) => uniqueModelSegmentation(cell, documentedModels));
+  if (!groups.length || groups.some((group) => !group?.length)) return [];
+  const flattened = groups.flat();
+  if (flattened.length !== new Set(flattened).size
+    || flattened.length !== documentedModels.length
+    || documentedModels.some((candidate) => !flattened.includes(canonicalModel(candidate)))) return [];
+  const target = canonicalModel(model);
+  const targetGroups = groups
+    .map((group, index) => ({ group, index }))
+    .filter(({ group }) => group.includes(target));
+  if (targetGroups.length !== 1) return [];
+
+  const rows = [];
+  for (const cells of fragment.cells.slice(header.index + 1)) {
+    if (cells.length <= groups.length) continue;
+    const values = cells.slice(-groups.length);
+    const labels = cells.slice(0, -groups.length);
+    const axis = [...labels].reverse().find((cell) => /^(?:width|height|depth)$/i.test(normalizedText(cell)));
+    if (!axis) continue;
+    const value = normalizedText(values[targetGroups[0].index]);
+    if (!/^\d+(?:\.\d+)?\s*(?:mm|cm)$/i.test(value)) continue;
+    rows.push({
+      label: normalizedText(axis),
+      value,
+      quote: `${normalizedText(axis)} ${value}`,
+      semanticBasis: 'exact_model_grouped_column',
+    });
+  }
+  const axisOrder = rows.map((row) => row.label.toLowerCase());
+  if (rows.length !== 3 || new Set(axisOrder).size !== 3
+    || !['width', 'height', 'depth'].every((axis) => axisOrder.includes(axis))) return [];
+  return rows.map((row) => ({ ...row, axisOrder }));
 }
 
 const MATRIX_DIMENSION_FIELDS = Object.freeze([
@@ -555,6 +984,15 @@ function commonPrefixLength(left, right) {
 
 function unresolvedFamilyScope(document, model) {
   const target = model.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  for (const items of document.pages) {
+    const familyRows = modelRowGroups(items);
+    if (familyRows.some((row) => {
+      const tokens = row.groups.flatMap((group) => group.tokens);
+      return tokens.length > 1
+        && tokens.every(validModelExpressionToken)
+        && tokens.some((token) => modelExpressionTokenMatches(token, model));
+    })) return true;
+  }
   for (const fragment of document.pages.flat()) {
     if (!containsExplicitModelExpression(fragment.text, model)) continue;
     if (hasExactModelDimensionMatrix(fragment, model)) continue;
@@ -592,7 +1030,7 @@ function exactModelSourceUrl(sourceUrls, model) {
 
 function uniqueCoverIdentityScope(document, model, sourceUrls) {
   const coverHasExactModel = document.pages[0]?.some((item) => (
-    ['title', 'page_footer'].includes(item.type)
+    ['title', 'page_footer', 'paragraph'].includes(item.type)
     && containsExplicitModelExpression(item.text, model)
   ));
   return Boolean(
@@ -639,6 +1077,268 @@ function documentScopedDimensionMatrixRows(fragment) {
   return [];
 }
 
+function documentScopedExplicitAxisRows(fragment) {
+  if (fragment.type !== 'table') return [];
+  if (fragment.rows.some((row) => /\b(?:pack(?:age|aging|ed)?|carton|shipping)\b/i.test(row.label))) return [];
+  const axes = new Map();
+  for (const row of fragment.rows) {
+    const match = /^(?:product\s+)?(width|height|depth)(?:\s*\(\s*(?:mm|cm)\s*\))?\s*:?$/i.exec(row.label);
+    if (!match || !/^\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?\s*(?:mm|cm)$/i.test(row.value)) continue;
+    const axis = match[1].toLowerCase();
+    if (axes.has(axis)) return [];
+    axes.set(axis, row);
+  }
+  return ['width', 'height', 'depth'].every((axis) => axes.has(axis))
+    ? ['width', 'height', 'depth'].map((axis) => axes.get(axis))
+    : [];
+}
+
+function ocrShiftedDimensionSectionRows(fragment) {
+  if (fragment.type !== 'table' || !Array.isArray(fragment.cells)) return [];
+  const axisAliases = {
+    width: 'width', wide: 'width', height: 'height', high: 'height', depth: 'depth', deep: 'depth',
+  };
+  const scalar = (value) => {
+    const match = /^(\d+(?:\.\d+)?)\s*(mm|cm)$/i.exec(normalizedText(value));
+    return match ? { value: match[1], unit: match[2].toLowerCase() } : null;
+  };
+  for (let index = 0; index < fragment.cells.length - 2; index += 1) {
+    const section = fragment.cells[index];
+    const merged = fragment.cells[index + 1];
+    if (!/^product dimensions$/i.test(normalizedText(section[0])) || section.length < 2) continue;
+    const firstMeasure = scalar(section[1]);
+    const secondMeasure = scalar(merged?.[1]);
+    const mergedAxes = [...normalizedText(merged?.[0]).matchAll(/\b(width|wide|height|high|depth|deep)\b/gi)]
+      .map((match) => axisAliases[match[1].toLowerCase()]);
+    if (!firstMeasure || !secondMeasure || mergedAxes.length !== 2
+      || new Set(mergedAxes).size !== 2 || firstMeasure.unit !== secondMeasure.unit) continue;
+    const reconstructed = [
+      { axis: mergedAxes[0], ...firstMeasure },
+      { axis: mergedAxes[1], ...secondMeasure },
+    ];
+    for (const cells of fragment.cells.slice(index + 2)) {
+      const label = normalizedText(cells[0]);
+      const match = /^(width|wide|height|high|depth|deep)$/i.exec(label);
+      const measure = scalar(cells[1]);
+      if (!match || !measure || measure.unit !== firstMeasure.unit) break;
+      reconstructed.push({ axis: axisAliases[match[1].toLowerCase()], ...measure });
+      if (reconstructed.length === 3) break;
+    }
+    const axisOrder = reconstructed.map((row) => row.axis);
+    if (reconstructed.length !== 3 || new Set(axisOrder).size !== 3
+      || !['width', 'height', 'depth'].every((axis) => axisOrder.includes(axis))) continue;
+    return reconstructed.map((row) => ({
+      label: `${row.axis[0].toUpperCase()}${row.axis.slice(1)}`,
+      value: `${row.value} ${row.unit}`,
+      quote: `${row.axis[0].toUpperCase()}${row.axis.slice(1)} ${row.value} ${row.unit}`,
+      semanticBasis: 'explicit_ocr_shifted_axis_section',
+      axisOrder,
+    }));
+  }
+  return [];
+}
+
+export const mineruGrammarProfiles = Object.freeze({
+  beko_au_dishwasher_product_spec_parallel_lists_v1: Object.freeze({
+    parserProfileId: 'beko_au_dishwasher_product_spec_parallel_lists_v1',
+    grammarFamilyId: 'beko_au_dishwasher_product_spec_v1',
+    grammarFamilyName: 'Beko AU dishwasher product specification',
+    variantName: 'Parallel label and value lists',
+    brand: 'Beko',
+    category: 'dishwasher',
+    documentType: 'product_specification',
+    detectionSummary: 'Unique structured exact-model title or page header in the document, no sibling model, plus complete Dimensions & Weights label and value lists.',
+    semanticBoundary: 'Unpackaged W/D are closed dimensions; base and maximum feet heights form a range; door-open depth is operational; packaged values are excluded.',
+  }),
+  beko_au_dishwasher_product_spec_inline_pairs_v1: Object.freeze({
+    parserProfileId: 'beko_au_dishwasher_product_spec_inline_pairs_v1',
+    grammarFamilyId: 'beko_au_dishwasher_product_spec_v1',
+    grammarFamilyName: 'Beko AU dishwasher product specification',
+    variantName: 'Inline labelled pairs',
+    brand: 'Beko',
+    category: 'dishwasher',
+    documentType: 'product_specification',
+    detectionSummary: 'Unique structured exact-model title or page header in the document, no sibling model, plus the complete ordered Dimensions & Weights inline field sequence.',
+    semanticBoundary: 'Unpackaged W/D are closed dimensions; base and maximum feet heights form a range; door-open depth is operational; packaged values are excluded.',
+  }),
+  beko_au_dishwasher_product_spec_split_title_parallel_lists_v1: Object.freeze({
+    parserProfileId: 'beko_au_dishwasher_product_spec_split_title_parallel_lists_v1',
+    grammarFamilyId: 'beko_au_dishwasher_product_spec_v1',
+    grammarFamilyName: 'Beko AU dishwasher product specification',
+    variantName: 'Split title, label list and value list',
+    brand: 'Beko',
+    category: 'dishwasher',
+    documentType: 'product_specification',
+    detectionSummary: 'Unique structured exact-model title or page header in the document, no sibling model, followed by a Dimensions & Weights title and complete aligned label and value lists.',
+    semanticBoundary: 'Unpackaged W/D are closed dimensions; base and maximum feet heights form a range; door-open depth is operational; packaged values are excluded.',
+  }),
+});
+const BEKO_AU_DISHWASHER_PARALLEL_GRAMMAR = mineruGrammarProfiles
+  .beko_au_dishwasher_product_spec_parallel_lists_v1.parserProfileId;
+const BEKO_AU_DISHWASHER_INLINE_GRAMMAR = mineruGrammarProfiles
+  .beko_au_dishwasher_product_spec_inline_pairs_v1.parserProfileId;
+const BEKO_AU_DISHWASHER_SPLIT_TITLE_GRAMMAR = mineruGrammarProfiles
+  .beko_au_dishwasher_product_spec_split_title_parallel_lists_v1.parserProfileId;
+const BEKO_AU_SPEC_LABELS = Object.freeze([
+  'Unpackaged Height:',
+  'Height (max - feet adjustment):',
+  'Unpackaged Width:',
+  'Unpackaged Depth:',
+  'Depth with Door Opened:',
+  'Unpackaged Weight:',
+  'Packaged Height:',
+  'Packaged Width:',
+  'Packaged Depth:',
+  'Packaged Weight:',
+]);
+
+function bekoSpecResult(values, grammarProfileId, fragments) {
+  const millimetres = values.map((value) => Number.parseFloat(value));
+  if (millimetres.slice(0, 5).some((value) => !Number.isInteger(value))
+    || millimetres[0] > millimetres[1]) return null;
+  const rows = [
+    {
+      label: 'Unpackaged Height (adjustable feet range)',
+      value: `${millimetres[0]} - ${millimetres[1]} mm`,
+      quote: `Unpackaged Height: ${values[0]} | Height (max - feet adjustment): ${values[1]}`,
+      semanticBasis: 'explicit_label_range',
+      axisOrder: ['height'],
+    },
+    {
+      label: 'Unpackaged Width', value: values[2],
+      quote: `Unpackaged Width: ${values[2]}`,
+      axisOrder: ['width'],
+    },
+    {
+      label: 'Unpackaged Depth', value: values[3],
+      quote: `Unpackaged Depth: ${values[3]}`,
+      axisOrder: ['depth'],
+    },
+    {
+      label: 'Depth with Door Opened', value: values[4],
+      quote: `Depth with Door Opened: ${values[4]}`,
+      axisOrder: ['depth'],
+    },
+  ];
+  return {
+    grammarProfileId,
+    rows,
+    fragment: {
+      type: 'derived_beko_spec',
+      bbox: [
+        Math.min(...fragments.map((fragment) => fragment.bbox[0])),
+        Math.min(...fragments.map((fragment) => fragment.bbox[1])),
+        Math.max(...fragments.map((fragment) => fragment.bbox[2])),
+        Math.max(...fragments.map((fragment) => fragment.bbox[3])),
+      ],
+      fragmentSha256: sha256(JSON.stringify({
+        grammarProfileId,
+        sourceFragmentSha256s: fragments.map((fragment) => fragment.fragmentSha256),
+        rows,
+      })),
+    },
+  };
+}
+
+function bekoValueListForLabels(items, labelFragment) {
+  const valueCandidates = items.filter((item) => (
+    ['index', 'list'].includes(item.type)
+    && item !== labelFragment
+    && item.bbox[0] >= labelFragment.bbox[2]
+    && item.bbox[0] - labelFragment.bbox[2] <= 200
+    && item.listEntries.length === BEKO_AU_SPEC_LABELS.length
+    && item.listEntries.every((value, index) => (
+      [5, 9].includes(index)
+        ? /^\d+(?:\.\d+)?\s*kg$/i.test(value)
+        : /^\d+(?:\.\d+)?\s*mm$/i.test(value)
+    ))
+  ));
+  return valueCandidates.length === 1 ? valueCandidates[0] : null;
+}
+
+function bekoParallelSpecResult(items) {
+  const labelCandidates = items.filter((item) => {
+    if (item.type !== 'list') return false;
+    const heading = item.listEntries.indexOf('Dimensions & Weights');
+    return heading >= 0
+      && JSON.stringify(item.listEntries.slice(heading + 1)) === JSON.stringify(BEKO_AU_SPEC_LABELS);
+  });
+  if (labelCandidates.length !== 1) return null;
+  const labelFragment = labelCandidates[0];
+  const valueFragment = bekoValueListForLabels(items, labelFragment);
+  if (!valueFragment) return null;
+  return bekoSpecResult(
+    valueFragment.listEntries,
+    BEKO_AU_DISHWASHER_PARALLEL_GRAMMAR,
+    [labelFragment, valueFragment],
+  );
+}
+
+function bekoSplitTitleParallelSpecResult(items) {
+  const headings = items.filter((item) => (
+    item.type === 'title' && item.text === 'Dimensions & Weights'
+  ));
+  if (headings.length !== 1) return null;
+  const labelCandidates = items.filter((item) => (
+    item.type === 'list'
+      && JSON.stringify(item.listEntries) === JSON.stringify(BEKO_AU_SPEC_LABELS)
+      && item.bbox[1] >= headings[0].bbox[3]
+      && item.bbox[1] - headings[0].bbox[3] <= 50
+      && Math.abs(item.bbox[0] - headings[0].bbox[0]) <= 100
+  ));
+  if (labelCandidates.length !== 1) return null;
+  const valueFragment = bekoValueListForLabels(items, labelCandidates[0]);
+  if (!valueFragment || Math.abs(valueFragment.bbox[1] - labelCandidates[0].bbox[1]) > 50) return null;
+  return bekoSpecResult(
+    valueFragment.listEntries,
+    BEKO_AU_DISHWASHER_SPLIT_TITLE_GRAMMAR,
+    [headings[0], labelCandidates[0], valueFragment],
+  );
+}
+
+function bekoInlineSpecResult(items) {
+  const headings = items.filter((item) => (
+    item.type === 'title' && item.text === 'Dimensions & Weights'
+  ));
+  if (headings.length !== 1) return null;
+  const expression = /^Unpackaged Height:\s*(\d+(?:\.\d+)?\s*mm)\s+Height \(max - feet adjustment\):\s*(\d+(?:\.\d+)?\s*mm)\s+Unpackaged Width:\s*(\d+(?:\.\d+)?\s*mm)\s+Unpackaged Depth:\s*(\d+(?:\.\d+)?\s*mm)\s+Depth with Door Opened:\s*(\d+(?:\.\d+)?\s*mm)\s+Unpackaged Weight:\s*(\d+(?:\.\d+)?\s*kg)\s+Packaged Height:\s*(\d+(?:\.\d+)?\s*mm)\s+Packaged Width:\s*(\d+(?:\.\d+)?\s*mm)\s+Packaged Depth:\s*(\d+(?:\.\d+)?\s*mm)\s+Packaged Weight:\s*(\d+(?:\.\d+)?\s*kg)$/i;
+  const paragraphs = items.map((item) => ({ item, match: expression.exec(item.text) }))
+    .filter(({ item, match }) => item.type === 'paragraph' && match);
+  if (paragraphs.length !== 1) return null;
+  const { item, match } = paragraphs[0];
+  if (item.bbox[1] < headings[0].bbox[1]
+    || Math.abs(item.bbox[0] - headings[0].bbox[0]) > 100) return null;
+  return bekoSpecResult(
+    match.slice(1),
+    BEKO_AU_DISHWASHER_INLINE_GRAMMAR,
+    [headings[0], item],
+  );
+}
+
+function bekoAuDishwasherSpecRows(items, caseIdentity, identityScoped) {
+  if (normalizedText(caseIdentity?.brand).toLowerCase() !== 'beko'
+    || normalizedText(caseIdentity?.category) !== 'dishwasher') return null;
+  if (!identityScoped) return null;
+  const matches = [
+    bekoParallelSpecResult(items),
+    bekoInlineSpecResult(items),
+    bekoSplitTitleParallelSpecResult(items),
+  ].filter(Boolean);
+  return matches.length === 1 ? matches[0] : null;
+}
+
+function bekoUniqueStructuredDocumentScope(document, caseIdentity) {
+  if (normalizedText(caseIdentity?.brand).toLowerCase() !== 'beko'
+    || normalizedText(caseIdentity?.category) !== 'dishwasher') return false;
+  const model = normalizedText(caseIdentity?.model);
+  if (!model || unresolvedFamilyScope(document, model)
+    || siblingModelCandidates(document, model).length > 0) return false;
+  return document.pages.flat().some((item) => (
+    ['title', 'page_header'].includes(item.type)
+      && containsExplicitModelExpression(item.text, model)
+  ));
+}
+
 export function parseMineruContentListV2(jsonBytes, options = {}) {
   const pdfSha256 = requiredHash(options.pdfSha256, 'source PDF');
   const parserVersion = requiredParserVersion(options.parserVersion);
@@ -653,49 +1353,218 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     throw new TypeError('case identity and requested fields required');
   }
   const document = parseDocument(jsonBytes);
-  const unresolvedFamily = claimSemanticsVersion === 2 && unresolvedFamilyScope(document, model);
+  const boundFamilyModel = normalizedText(options.boundFamilyModel);
+  const boundSeriesModel = normalizedText(options.boundSeriesModel);
+  const boundExactCoverModel = normalizedText(options.boundExactCoverModel);
+  if ([boundFamilyModel, boundSeriesModel, boundExactCoverModel].filter(Boolean).length > 1) {
+    throw new TypeError('only one bound family, series, or exact cover model may be supplied');
+  }
+  let boundFamilySignals = [];
+  if (boundFamilyModel) {
+    const escaped = boundFamilyModel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    if (!new RegExp(`^${escaped}[._/-][A-Za-z0-9]{1,4}$`, 'i').test(model)) {
+      throw new TypeError('bound family model must be a strict delimited target-model prefix');
+    }
+    const familySignal = boundFamilyIdentitySignal(document, boundFamilyModel);
+    if (!familySignal) throw new Error('bound family model missing from MinerU JSON');
+    boundFamilySignals = [{
+      type: 'mineru_bound_family_model',
+      value: `${model}:family:${boundFamilyModel}:${familySignal.value}`,
+    }];
+  }
+  let boundSeriesSignals = [];
+  if (boundSeriesModel) {
+    if (!/^[WTD]\d{4}$/i.test(boundSeriesModel)
+      || !model.toUpperCase().startsWith(boundSeriesModel.toUpperCase())
+      || model.length <= boundSeriesModel.length) {
+      throw new TypeError('bound series model must be an ASKO target-model prefix');
+    }
+    const seriesSignal = boundSeriesIdentitySignal(document, boundSeriesModel);
+    if (!seriesSignal) throw new Error('bound series model missing from MinerU JSON');
+    boundSeriesSignals = [{
+      type: 'mineru_bound_series_model',
+      value: `${model}:series:${boundSeriesModel}:${seriesSignal.value}`,
+    }];
+  }
+  let boundExactCoverSignals = [];
+  if (boundExactCoverModel) {
+    if (boundExactCoverModel.toUpperCase() !== model.toUpperCase()) {
+      throw new TypeError('bound exact cover model must equal the target model');
+    }
+    const coverSignal = boundExactCoverIdentitySignal(document, boundExactCoverModel);
+    if (!coverSignal) throw new Error('bound exact cover model missing from MinerU JSON cover');
+    boundExactCoverSignals = [{
+      type: 'mineru_bound_exact_cover_model',
+      value: `${model}:exact-cover:${coverSignal.value}`,
+    }];
+  }
+  const documentedModels = explicitDocumentModelList(document, model);
+  const hasIdentityContext = options.identityContextJsonBytes != null
+    || options.identityContextContentSha256 != null;
+  if (hasIdentityContext
+    && (options.identityContextJsonBytes == null || options.identityContextContentSha256 == null)) {
+    throw new TypeError('identity context bytes and SHA-256 must be supplied together');
+  }
+  const identityContextDocument = hasIdentityContext
+    ? parseDocument(options.identityContextJsonBytes)
+    : null;
+  if (identityContextDocument
+    && sha256(identityContextDocument.bytes) !== requiredHash(
+      options.identityContextContentSha256,
+      'identity context content',
+    )) {
+    throw new Error('identity context content hash mismatch');
+  }
+  const contextSignals = identityContextDocument
+    ? identitySignals(identityContextDocument, model)
+    : [];
+  const contextUnresolvedFamily = identityContextDocument
+    ? unresolvedFamilyScope(identityContextDocument, model)
+    : false;
+  const boundFamilyDocumentScope = claimSemanticsVersion === 2
+    && (boundFamilySignals.length === 1 || boundSeriesSignals.length === 1
+      || boundExactCoverSignals.length === 1);
+  const unresolvedFamily = claimSemanticsVersion === 2 && !boundFamilyDocumentScope
+    && (unresolvedFamilyScope(document, model) || contextUnresolvedFamily);
+  const contextDocumentScope = claimSemanticsVersion === 2
+    && contextSignals.length > 0
+    && !contextUnresolvedFamily
+    && siblingModelCandidates(identityContextDocument, model).length === 0;
   const documentUniqueScope = claimSemanticsVersion === 2
     && !unresolvedFamily
     && uniqueCoverIdentityScope(document, model, options.sourceUrls);
-  let signals = identitySignals(document, model);
+  const documentSignals = identitySignals(document, model);
+  const bekoDocumentScoped = claimSemanticsVersion === 2
+    && bekoUniqueStructuredDocumentScope(document, caseIdentity);
+  let signals = [...new Map([
+    ...documentSignals,
+    ...contextSignals,
+    ...boundFamilySignals,
+    ...boundSeriesSignals,
+    ...boundExactCoverSignals,
+  ].map((signal) => [`${signal.type}\0${signal.value}`, signal])).values()];
   if (!signals.length && documentUniqueScope) {
     signals = uniqueCoverFallbackSignals(document, model);
+  }
+  if (documentUniqueScope) {
+    signals.push({
+      type: 'source_url_exact_model',
+      value: `${model}:${exactModelSourceUrl(options.sourceUrls, model)}`,
+    });
+    signals.sort((left, right) => left.type.localeCompare(right.type) || left.value.localeCompare(right.value));
   }
   if (!signals.length) {
     throw new Error('structured exact-model identity signal required in MinerU JSON');
   }
   const candidates = new Map(fields.map((field) => [field, []]));
+  const appliedGrammarProfiles = new Set();
   const sharedModelListPages = new Set();
   document.pages.forEach((items, pageIndex) => {
-    const pageSignals = signals.filter((signal) => signal.value.includes(`:page:${pageIndex + 1}`));
+    const pageSignals = documentSignals.filter((signal) => signal.value.includes(`:page:${pageIndex + 1}`));
     const headerScoped = pageSignals.some((signal) => signal.type === 'mineru_page_header_model');
     const repeatedBodyScope = signals.some((signal) => signal.type === 'mineru_repeated_body_model');
     const bodyScoped = repeatedBodyScope && pageSignals.some((signal) => signal.type === 'mineru_body_model');
     const pageScoped = pageSignals.length > 0;
     const modelTableScoped = exactModelTableScope(items, model);
     const pageDimensionUnit = explicitPageDimensionUnit(items);
-    const sharedModelListScoped = unresolvedFamily
-      && strictSharedModelListPageScope(items, model)
-      && pageDimensionUnit
-      && items.some((item) => alternatingAxisRows(item, pageDimensionUnit).length >= 2);
+    const sharedDimensionFragments = unresolvedFamily
+      ? scopedSharedDimensionFragments(items, model, pageDimensionUnit)
+      : new Set();
+    const sharedModelListScoped = sharedDimensionFragments.size > 0;
     if (sharedModelListScoped) sharedModelListPages.add(pageIndex + 1);
-    const documentScoped = !pageScoped && documentUniqueScope;
-    if (!pageScoped && !documentScoped) return;
+    const documentScoped = !pageScoped
+      && (documentUniqueScope || contextDocumentScope || boundFamilyDocumentScope);
+    const sectionRowsByFragment = new Map(items
+      .filter((item) => item.type === 'table')
+      .map((item) => [item, netDimensionSectionRows(item)]));
+    const groupedColumnRowsByFragment = new Map(items
+      .filter((item) => item.type === 'table')
+      .map((item) => [item, exactModelGroupedColumnRows(item, model, documentedModels)]));
+    const groupedColumnScoped = [...groupedColumnRowsByFragment.values()].some((rows) => rows.length === 3);
+    const joinedParagraphRowsByFragment = new Map(items
+      .map((item, index) => [item, joinedGroupedParagraphRow(items, index)])
+      .filter(([, row]) => row));
+    if (!pageScoped && !documentScoped && !bekoDocumentScoped
+      && !sharedModelListScoped && !groupedColumnScoped) return;
+    const bekoPageScoped = items.some((item) => (
+      ['title', 'page_header'].includes(item.type)
+        && containsExplicitModelExpression(item.text, model)
+    ));
+    const bekoSpec = bekoPageScoped || bekoDocumentScoped
+      ? bekoAuDishwasherSpecRows(items, caseIdentity, true)
+      : null;
+    if (bekoSpec) {
+      appliedGrammarProfiles.add(bekoSpec.grammarProfileId);
+      for (const row of bekoSpec.rows) {
+        const claims = [
+          ...dimensionClaims(row, bekoSpec.fragment, pageIndex + 1, fields, category),
+          ...directClaims(
+            row, bekoSpec.fragment, pageIndex + 1, fields, category, claimSemanticsVersion,
+          ),
+        ];
+        for (const claim of claims) candidates.get(claim.field)?.push(claim);
+      }
+    }
     for (const fragment of items.filter((item) => (
       (item.type === 'table' && (
-        headerScoped || bodyScoped || modelTableScoped || containsExplicitModelExpression(item.text, model)
-        || (documentScoped && documentScopedDimensionMatrixRows(item).length === 3)
+        headerScoped || bodyScoped || modelTableScoped
+        || sharedDimensionFragments.has(item)
+        || groupedColumnRowsByFragment.get(item)?.length === 3
+        || containsExplicitModelExpression(item.identityText ?? item.text, model)
+        || (documentScoped && (
+          documentScopedDimensionMatrixRows(item).length === 3
+          || documentScopedExplicitAxisRows(item).length === 3
+          || sectionRowsByFragment.get(item)?.length === 3
+        ))
       ))
       || (pageScoped && ['paragraph', 'text'].includes(item.type))
+      || (documentScoped && ['paragraph', 'text'].includes(item.type)
+        && paragraphRows(item.text).some((row) => (
+          /\b(?:dimensions?|size)\b/i.test(row.label)
+          && explicitSequence(row.label, {
+            w: 'width', width: 'width', h: 'height', height: 'height', d: 'depth', depth: 'depth',
+          }, 3)
+        )))
+      || joinedParagraphRowsByFragment.has(item)
     ))) {
-      const rows = fragment.type === 'table'
-        ? [
-          ...(unresolvedFamily || documentScoped ? [] : fragment.rows),
-          ...(unresolvedFamily && !sharedModelListScoped ? [] : alternatingAxisRows(fragment, pageDimensionUnit)),
+      let rows;
+      if (fragment.type === 'table') {
+        const shiftedRows = claimSemanticsVersion === 2
+          ? ocrShiftedDimensionSectionRows(fragment)
+          : [];
+        const directRows = [
+          ...shiftedRows,
+          ...(shiftedRows.length === 3 || unresolvedFamily || documentScoped ? [] : fragment.rows),
+          ...(!unresolvedFamily || sharedDimensionFragments.has(fragment)
+            ? alternatingAxisRows(fragment, pageDimensionUnit, {
+              qualifiedDepthPrimary: dimensionDiagramContext(items, fragment),
+            })
+            : []),
           ...(claimSemanticsVersion === 2 ? exactModelMatrixRows(fragment, model, pageDimensionUnit) : []),
+          ...(claimSemanticsVersion === 2 ? (groupedColumnRowsByFragment.get(fragment) ?? []) : []),
           ...(documentScoped ? documentScopedDimensionMatrixRows(fragment) : []),
-        ]
-        : paragraphRows(fragment.text);
+          ...(documentScoped ? documentScopedExplicitAxisRows(fragment) : []),
+        ];
+        const directDimensionFields = new Set(directRows.flatMap((row) => ([
+          ...dimensionClaims(row, fragment, pageIndex + 1, fields, category),
+          ...directClaims(row, fragment, pageIndex + 1, fields, category, claimSemanticsVersion),
+        ])).map((claim) => claim.field));
+        const hasCompleteClosedEnvelope = [
+          'closedEnvelope.widthMm',
+          'closedEnvelope.heightMm',
+          'closedEnvelope.depthMm',
+        ].every((field) => directDimensionFields.has(field));
+        rows = [
+          ...directRows,
+          ...(!unresolvedFamily && !hasCompleteClosedEnvelope
+            ? (sectionRowsByFragment.get(fragment) ?? [])
+            : []),
+        ];
+      } else {
+        rows = joinedParagraphRowsByFragment.has(fragment)
+          ? [joinedParagraphRowsByFragment.get(fragment)]
+          : paragraphRows(fragment.text);
+      }
       if (unresolvedFamily && !sharedModelListScoped && fragment.type !== 'table') continue;
       for (const row of rows) {
         const claims = [
@@ -723,7 +1592,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     if (unique.size) claims.push([...unique.values()][0]);
   }
   if (unresolvedFamily && !claims.some((claim) => (
-    claim.semanticBasis === 'exact_model_matrix_row' || sharedModelListPages.has(claim.page)
+    ['exact_model_matrix_row', 'exact_model_grouped_column'].includes(claim.semanticBasis)
+      || sharedModelListPages.has(claim.page)
   ))) {
     throw new Error('unresolved family manual or multiple models in identity scope');
   }
@@ -748,6 +1618,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     contentSha256: sha256(document.bytes),
     pageCount: document.pageCount,
     identitySignals: signals,
+    grammarProfileIds: [...appliedGrammarProfiles].sort(),
     ...(claimSemanticsVersion === 2 ? { claimSemanticsVersion: 2 } : {}),
     claims: outputClaims,
     documentText: normalizedText(document.pages.flat().map((item) => item.text).join(' ')),
@@ -775,6 +1646,32 @@ export function inspectMineruContentListV2(jsonBytes) {
   });
 }
 
+export function findMineruImageOnlyDimensionPages(jsonBytes) {
+  const document = parseDocument(jsonBytes);
+  const dimensionSignal = /\b(?:dimensions?|installation\s+(?:dimensions?|measurements?)|product\s+size)\b/i;
+  const dimensionHeading = /^(?:(?:product|installation|overall|appliance)\s+)?(?:dimensions?|measurements?|product\s+size)(?:\s*\([^)]*\))?\s*:?$/i;
+  const modelScopedDimensionDisclaimer = /\bproduct dimensions and specifications in this page apply to the specific product and model\b/i;
+  const exactModelQrgHeader = /\bquick reference guide\s*>\s*[a-z0-9][a-z0-9-]{3,}\b/i;
+  const explicitAxisValue = /\b(?:width|wide|height|high|depth|deep)\b[^\d]{0,20}\d+(?:\.\d+)?(?:\s*(?:-|–|—|to)\s*\d+(?:\.\d+)?)?\s*(?:mm|cm)\b/i;
+  const explicitTriple = /\d+(?:\.\d+)?\s*(?:mm|cm)?\s*[x×*]\s*\d+(?:\.\d+)?\s*(?:mm|cm)?\s*[x×*]\s*\d+(?:\.\d+)?\s*(?:mm|cm)\b/i;
+  const pages = [];
+  document.pages.forEach((items, index) => {
+    const text = normalizedText(items.map((item) => item.text).join(' '));
+    const imageDimensionSignal = items.some((item) => item.type === 'image' && dimensionSignal.test(item.text));
+    const titledDimensionImage = items.some((item) => item.type === 'image')
+      && items.some((item) => ['title', 'paragraph', 'text'].includes(item.type)
+        && dimensionHeading.test(normalizedText(item.text)));
+    const malformedDimensionStructure = modelScopedDimensionDisclaimer.test(text)
+      && exactModelQrgHeader.test(text)
+      && items.some((item) => ['index', 'list', 'table'].includes(item.type)
+        && /^(?:text_list(?:\s+unordered)?)?$/i.test(normalizedText(item.text))
+        && (item.bbox[2] - item.bbox[0]) * (item.bbox[3] - item.bbox[1]) >= 20_000);
+    if ((imageDimensionSignal || titledDimensionImage || malformedDimensionStructure)
+      && !explicitAxisValue.test(text) && !explicitTriple.test(text)) pages.push(index + 1);
+  });
+  return Object.freeze(pages);
+}
+
 export function buildMineruDerivedArtifact(jsonBytes, options = {}) {
   const document = parseDocument(jsonBytes);
   const pdfSha256 = requiredHash(options.pdfSha256, 'source PDF');
@@ -785,14 +1682,29 @@ export function buildMineruDerivedArtifact(jsonBytes, options = {}) {
     throw new TypeError('MinerU page count must match content_list_v2');
   }
   const contentSha256 = sha256(document.bytes);
-  return Object.freeze({
+  const profile = options.profile ?? null;
+  if (profile && (!/^[a-z0-9][a-z0-9-]*$/.test(String(profile.profileId ?? ''))
+    || !['pipeline', 'hybrid-engine'].includes(profile.backend)
+    || profile.method !== 'auto')) {
+    throw new TypeError('valid MinerU parsing profile required');
+  }
+  const processedPages = options.processedPages == null
+    ? null
+    : [...new Set(options.processedPages)].sort((left, right) => left - right);
+  if (processedPages && (!Number.isInteger(options.sourcePageCount)
+    || options.sourcePageCount !== document.pageCount
+    || processedPages.length === 0
+    || processedPages.some((page) => !Number.isInteger(page) || page < 1 || page > options.sourcePageCount))) {
+    throw new TypeError('valid original PDF page map required');
+  }
+  const artifact = {
     schemaVersion: 1,
     format: 'content_list_v2',
     parserName: 'MinerU',
     parserVersion,
     modelRevision,
-    backend: 'pipeline',
-    method: 'auto',
+    backend: profile?.backend ?? 'pipeline',
+    method: profile?.method ?? 'auto',
     tableEnabled: true,
     formulaEnabled: false,
     sourcePdfSha256: pdfSha256,
@@ -800,5 +1712,34 @@ export function buildMineruDerivedArtifact(jsonBytes, options = {}) {
     objectPath: `evidence/derived/mineru-json/sha256/${contentSha256.slice(0, 2)}/${contentSha256.slice(2, 4)}/${contentSha256}.json`,
     byteSize: document.bytes.length,
     pageCount: document.pageCount,
-  });
+  };
+  if (profile) {
+    artifact.profileId = profile.profileId;
+    if (profile.effort != null) artifact.effort = profile.effort;
+    if (profile.imageAnalysis != null) artifact.imageAnalysis = profile.imageAnalysis;
+  }
+  if (processedPages) {
+    artifact.processedPages = processedPages;
+    artifact.sourcePageCount = options.sourcePageCount;
+  }
+  if (options.fallbackTrigger != null) {
+    const trigger = options.fallbackTrigger;
+    const triggerPages = [...new Set(trigger.pages ?? [])].sort((left, right) => left - right);
+    if (trigger.profileId !== 'pipeline-auto-v1'
+      || !/^[a-f0-9]{64}$/.test(String(trigger.contentSha256 ?? ''))
+      || !Array.isArray(trigger.pages) || triggerPages.length !== trigger.pages.length
+      || triggerPages.length === 0
+      || triggerPages.some((page) => !Number.isInteger(page) || page < 1)
+      || typeof trigger.objectPath !== 'string'
+      || !trigger.objectPath.endsWith(`/${trigger.contentSha256}.json`)) {
+      throw new TypeError('valid primary MinerU fallback trigger required');
+    }
+    artifact.fallbackTrigger = Object.freeze({
+      profileId: trigger.profileId,
+      contentSha256: trigger.contentSha256,
+      objectPath: trigger.objectPath,
+      pages: Object.freeze(triggerPages),
+    });
+  }
+  return Object.freeze(artifact);
 }

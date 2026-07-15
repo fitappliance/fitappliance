@@ -3,6 +3,11 @@ import { createHash } from 'node:crypto';
 import { extractClaimsFromHtml, verifyAndAttestResolutionArtifact } from './evidence-artifact-verifier.mjs';
 import { upgradeLegacyDimensionClaim } from './dimension-evidence-claim.mjs';
 import { parseMineruContentListV2 } from './mineru-document.mjs';
+import {
+  officialMarketApiBoundExactCoverModel,
+  officialMarketApiBoundFamilyModel,
+  officialMarketApiBoundSeriesModel,
+} from './official-market-api-discovery-evidence.mjs';
 import { verifyVerificationReceipt } from './evidence-source-verifier.mjs';
 
 const SHA256 = /^[a-f0-9]{64}$/;
@@ -56,7 +61,7 @@ function transportKey(sourceUrl, options) {
 
 function verifyObject(bytes, expectedHash, expectedSize, label) {
   const buffer = Buffer.from(bytes ?? []);
-  if (buffer.length !== expectedSize || sha256(buffer) !== expectedHash) {
+  if ((expectedSize != null && buffer.length !== expectedSize) || sha256(buffer) !== expectedHash) {
     throw new Error(`${label} object integrity mismatch`);
   }
   return buffer;
@@ -76,6 +81,7 @@ async function rehydrateArtifact(record, options, expected) {
     'persisted evidence',
   );
   let derivedArtifactBytes = null;
+  let fallbackTriggerArtifactBytes = null;
   if (record.derivedArtifact) {
     derivedArtifactBytes = verifyObject(
       await options.readObject(record.derivedArtifact.objectPath),
@@ -86,11 +92,21 @@ async function rehydrateArtifact(record, options, expected) {
     if (record.derivedArtifact.sourcePdfSha256 !== record.contentSha256) {
       throw new Error('persisted MinerU PDF binding mismatch');
     }
+    if (record.derivedArtifact.fallbackTrigger) {
+      const trigger = record.derivedArtifact.fallbackTrigger;
+      fallbackTriggerArtifactBytes = verifyObject(
+        await options.readObject(trigger.objectPath),
+        trigger.contentSha256,
+        undefined,
+        'persisted MinerU fallback trigger',
+      );
+    }
   }
   return {
     ...record,
     bytes,
     derivedArtifactBytes,
+    fallbackTriggerArtifactBytes,
   };
 }
 
@@ -98,6 +114,7 @@ function artifactRecord(artifact) {
   const {
     bytes: _bytes,
     derivedArtifactBytes: _derivedArtifactBytes,
+    fallbackTriggerArtifactBytes: _fallbackTriggerArtifactBytes,
     ...record
   } = artifact;
   return record;
@@ -127,6 +144,16 @@ async function materializeContent(fetched, hash, options) {
     throw new Error('MinerU artifact is not bound to source PDF');
   }
   await options.writeObject(processed.derivedArtifact.objectPath, derivedArtifactBytes);
+  let fallbackTriggerArtifactBytes = null;
+  if (processed.derivedArtifact.fallbackTrigger) {
+    fallbackTriggerArtifactBytes = Buffer.from(processed.primaryJsonBytes ?? []);
+    const trigger = processed.derivedArtifact.fallbackTrigger;
+    if (!fallbackTriggerArtifactBytes.length
+      || sha256(fallbackTriggerArtifactBytes) !== trigger.contentSha256) {
+      throw new Error('MinerU fallback trigger artifact missing or invalid');
+    }
+    await options.writeObject(trigger.objectPath, fallbackTriggerArtifactBytes);
+  }
   return {
     contentType,
     bytes,
@@ -135,6 +162,7 @@ async function materializeContent(fetched, hash, options) {
     byteSize: bytes.length,
     derivedArtifact: structuredClone(processed.derivedArtifact),
     derivedArtifactBytes,
+    fallbackTriggerArtifactBytes,
   };
 }
 
@@ -188,6 +216,7 @@ export async function acquireEvidenceArtifact(candidate, options = {}) {
       bytes: content.bytes,
       derivedArtifact: content.derivedArtifact,
       derivedArtifactBytes: content.derivedArtifactBytes,
+      fallbackTriggerArtifactBytes: content.fallbackTriggerArtifactBytes,
     };
     if (typeof options.writeArtifactRecord === 'function') {
       await options.writeArtifactRecord(artifactRecord(artifact));
@@ -229,7 +258,7 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
   };
   const discoveryProvenance = options.discoveryProvenance ?? null;
   let discoveryArtifactBytes = options.discoveryArtifactBytes ?? null;
-  if (discoveryProvenance?.method === 'official_product_page' && discoveryArtifactBytes == null) {
+  if (discoveryProvenance?.discoveryObjectPath && discoveryArtifactBytes == null) {
     if (typeof options.readObject !== 'function') {
       throw new TypeError('discovery evidence object reader required');
     }
@@ -257,6 +286,25 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
     if (!artifact.derivedArtifact || !artifact.derivedArtifactBytes) {
       throw new Error('MinerU JSON derived artifact required for PDF attestation');
     }
+    const boundFamilyModel = officialMarketApiBoundFamilyModel(
+      discoveryProvenance,
+      identity,
+      discoveryArtifactBytes,
+      artifact.derivedArtifactBytes,
+    );
+    const boundSeriesModel = officialMarketApiBoundSeriesModel(
+      discoveryProvenance,
+      identity,
+      discoveryArtifactBytes,
+      artifact.derivedArtifactBytes,
+    );
+    const boundExactCoverModel = officialMarketApiBoundExactCoverModel(
+      discoveryProvenance,
+      identity,
+      discoveryArtifactBytes,
+      artifact.derivedArtifactBytes,
+    );
+    const selectedBoundFamilyModel = boundExactCoverModel || boundSeriesModel ? null : boundFamilyModel;
     claims = parseMineruContentListV2(artifact.derivedArtifactBytes, {
       pdfSha256: artifact.contentSha256,
       parserVersion: artifact.derivedArtifact.parserVersion,
@@ -265,6 +313,13 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
       fields: requestedFields,
       claimSemanticsVersion,
       sourceUrls: [artifact.requestedUrl, artifact.finalUrl].filter(Boolean),
+      ...(selectedBoundFamilyModel ? { boundFamilyModel: selectedBoundFamilyModel } : {}),
+      ...(boundSeriesModel ? { boundSeriesModel } : {}),
+      ...(boundExactCoverModel ? { boundExactCoverModel } : {}),
+      ...(artifact.derivedArtifact.fallbackTrigger ? {
+        identityContextJsonBytes: artifact.fallbackTriggerArtifactBytes,
+        identityContextContentSha256: artifact.derivedArtifact.fallbackTrigger.contentSha256,
+      } : {}),
     }).claims;
   } else if (artifact.contentType === 'text/html') {
     const extracted = extractClaimsFromHtml(artifact.bytes, {
@@ -309,6 +364,7 @@ export async function attestEvidenceArtifactForCase(caseRecord, artifact, option
     caseIdentity: identity,
     bytes: artifact.bytes,
     derivedArtifactBytes: artifact.derivedArtifactBytes,
+    fallbackTriggerArtifactBytes: artifact.fallbackTriggerArtifactBytes,
     discoveryArtifactBytes,
     verifiedAt: now,
     claimSemanticsVersion,

@@ -86,6 +86,9 @@ function recoveryProjection({
   model = 'MODEL1',
   lifecycleState = 'CATALOG_ARCHIVED',
   dimensionsMm = { width: 600, height: 1700, depth: 650 },
+  acceptanceStatus = dimensionsMm ? 'accepted' : 'receipt_accepted_non_scalar',
+  geometryProjection = null,
+  modelReceipts = null,
 } = {}) {
   return {
     schemaVersion: 1,
@@ -100,9 +103,10 @@ function recoveryProjection({
       brand,
       model,
       lifecycleState,
-      acceptanceStatus: dimensionsMm ? 'accepted' : 'receipt_accepted_non_scalar',
+      acceptanceStatus,
       dimensionsMm,
-      modelReceipts: [{
+      geometryProjection,
+      modelReceipts: modelReceipts ?? [{
         targetId: 'recovery_target_example',
         sourceUrl: 'https://example.com/model1.pdf',
         contentSha256: '7'.repeat(64),
@@ -120,6 +124,61 @@ function recoveryProjection({
     summary: { records: 1, scalarDimensions: dimensionsMm ? 1 : 0, nonScalar: dimensionsMm ? 0 : 1 },
   };
 }
+
+test('HTML model receipts bind axes to the immutable artifact without a fake PDF fragment', () => {
+  const projection = recoveryProjection({
+    modelReceipts: [{
+      targetId: 'recovery_target_example',
+      sourceUrl: 'https://example.com/model1/',
+      contentType: 'text/html',
+      objectPath: `evidence/web/sha256/${'7'.repeat(2)}/${'7'.repeat(2)}/${'7'.repeat(64)}.html`,
+      contentSha256: '7'.repeat(64),
+      receiptBindingSha256: '8'.repeat(64),
+      verifiedAt: '2026-07-13T00:00:00.000Z',
+      fields: {
+        width: { locatorKind: 'HTML_ARTIFACT', artifactSha256: '7'.repeat(64) },
+        height: { locatorKind: 'HTML_ARTIFACT', artifactSha256: '7'.repeat(64) },
+        depth: { locatorKind: 'HTML_ARTIFACT', artifactSha256: '7'.repeat(64) },
+      },
+    }],
+  });
+  const result = buildHistoricalApplianceReference({
+    observations: [],
+    catalogProducts: [],
+    historicalEvidenceProjection: projection,
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-13T00:00:00.000Z',
+  });
+
+  assert.equal(result.records[0].modelReceipts[0].fields.depth.locatorKind, 'HTML_ARTIFACT');
+  assert.equal(result.records[0].modelReceipts[0].fields.depth.artifactSha256, '7'.repeat(64));
+  assert.equal(result.records[0].modelReceipts[0].objectPath.endsWith('.html'), true);
+});
+
+test('PDF model receipts cannot weaken page-fragment replay binding', () => {
+  const projection = recoveryProjection({
+    modelReceipts: [{
+      targetId: 'recovery_target_example',
+      sourceUrl: 'https://example.com/model1.pdf',
+      contentType: 'application/pdf',
+      objectPath: `evidence/web/sha256/${'7'.repeat(2)}/${'7'.repeat(2)}/${'7'.repeat(64)}.pdf`,
+      contentSha256: '7'.repeat(64),
+      receiptBindingSha256: '8'.repeat(64),
+      verifiedAt: '2026-07-13T00:00:00.000Z',
+      fields: {
+        width: { locatorKind: 'PDF_FRAGMENT', page: 1, fragmentSha256: null },
+      },
+    }],
+  });
+
+  assert.throws(() => buildHistoricalApplianceReference({
+    observations: [],
+    catalogProducts: [],
+    historicalEvidenceProjection: projection,
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-13T00:00:00.000Z',
+  }), /PDF.*fragment hash required/i);
+});
 
 function observation({
   category = 'fridge',
@@ -238,6 +297,20 @@ test('exact recovery receipt outranks registry dimensions and retains model rece
   assert.equal(record.modelReceipts[0].receiptBindingSha256, '8'.repeat(64));
 });
 
+test('registry-only exact recovery receipt remains historical and auto-fillable', () => {
+  const result = buildHistoricalApplianceReference({
+    observations: [observation()],
+    catalogProducts: [],
+    historicalEvidenceProjection: recoveryProjection({ lifecycleState: 'REGISTRY_ONLY' }),
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-13T00:00:00.000Z',
+  });
+
+  assert.equal(result.records[0].lifecycleState, 'REGISTRY_ONLY');
+  assert.equal(result.records[0].evidenceState, 'MODEL_RECEIPT');
+  assert.equal(result.records[0].lookupAction, 'AUTO_FILL');
+});
+
 test('conflicting catalog and recovery receipts quarantine instead of overwriting', () => {
   const result = buildHistoricalApplianceReference({
     observations: [],
@@ -270,6 +343,35 @@ test('partial recovery receipt is retained but cannot make registry dimensions a
   const [record] = result.records;
   assert.equal(record.evidenceState, 'REGISTRY_CONSISTENT');
   assert.equal(record.lookupAction, 'CONFIRM_REQUIRED');
+  assert.equal(record.modelReceipts.length, 1);
+  assert.ok(record.reasonCodes.includes('MODEL_RECEIPT_NON_SCALAR'));
+});
+
+test('accepted adjustable-height receipt is retained but cannot become scalar auto-fill', () => {
+  const result = buildHistoricalApplianceReference({
+    observations: [observation()],
+    catalogProducts: [],
+    historicalEvidenceProjection: recoveryProjection({
+      dimensionsMm: null,
+      acceptanceStatus: 'accepted',
+      geometryProjection: {
+        geometry: {
+          closedEnvelope: {
+            widthMm: 600,
+            heightMm: { minimumMm: 1680, maximumMm: 1720 },
+            depthMm: 650,
+          },
+        },
+      },
+    }),
+    catalogSnapshotSha256: 'd'.repeat(64),
+    generatedAt: '2026-07-13T00:00:00.000Z',
+  });
+
+  const [record] = result.records;
+  assert.equal(record.evidenceState, 'REGISTRY_CONSISTENT');
+  assert.equal(record.lookupAction, 'CONFIRM_REQUIRED');
+  assert.deepEqual(record.dimensionsMm, { width: 600, height: 1700, depth: 650 });
   assert.equal(record.modelReceipts.length, 1);
   assert.ok(record.reasonCodes.includes('MODEL_RECEIPT_NON_SCALAR'));
 });
