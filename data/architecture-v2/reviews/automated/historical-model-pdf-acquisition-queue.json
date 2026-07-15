@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T16:47:38.606Z",
-  "semanticQueueSha256": "01d93c5f51e01ab99f44ed3f1b6616d57aeed6ed1b811f05c9ef8472a12c1afa",
-  "sourceClassificationSha256": "ad6b8b7cb8949f56d2163c687f0bb62ec458e4c24592e042d2ad791ad6d70a28",
+  "generatedAt": "2026-07-15T16:59:58.049Z",
+  "semanticQueueSha256": "bf42a62e62c61e0e67076e3b5d897fa8b7f3f2a27da8ffe8855fddabc050645a",
+  "sourceClassificationSha256": "0cd7a9283a10a6e638ba457830514167a62e8df7ea723b2e02312fff6c222291",
   "records": [
     {
       "schemaVersion": 1,
@@ -30272,161 +30272,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_4904b28d98dbfea290c46f8d",
-      "referenceId": "fa_ref_c72bdeee73eafc3695793544",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WHE5204BB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_5fd42976a5701087ecc4eefb"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_90b338b366512ddcbe460921"
-      ],
-      "legacyRuntimeIds": [
-        "ao-77090"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_1fde83b1fd4bdb0486d2972d"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_3319d7c344d00f3b3f7274a8",
-      "referenceId": "fa_ref_d8a5c8b84d5db6b0eced3a4f",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WHE5204SB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_42b7ddecd2d6e64aa25b37db"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_682c770da6707bb55c873a24"
-      ],
-      "legacyRuntimeIds": [
-        "ao-77091"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_e2e108a378f37e53eefa4e36"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_834980427d58482cbf1b4221",
-      "referenceId": "fa_ref_587d0038dbb5fc8f052f05e3",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WHE5264SB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_4a1d9b681bddbae63bda84ea"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_96843f29d072d381536997f1"
-      ],
-      "legacyRuntimeIds": [
-        "ao-77092"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_d546014bba141d2a45a337c1"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_e040f2ae2cca0555d008cf2d",
-      "referenceId": "fa_ref_bcf93b6294e4446a1e7ae8a9",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WHE6000SA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_25a2d001b4ca22eb6bcd1898"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_603720128fb92819766d95a1"
-      ],
-      "legacyRuntimeIds": [
-        "ao-61196"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_33640162d13a63879d55ea5d"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_c0c90eff8f1210d4a16fc6d7",
-      "referenceId": "fa_ref_93692f0146390a77b600b4c6",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WHE6060SA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_1ba5a46b2b0a2cb5905731f8"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_7076448df4783a7370ea548c"
-      ],
-      "legacyRuntimeIds": [
-        "ao-61197"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_6d95801d272932af518d6df3"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_d6d41a17180fce354d28d6d5",
       "referenceId": "fa_ref_8ab0653d23b92068b1be6675",
       "category": "fridge",
@@ -30520,37 +30365,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_88213fc5ab2db6bbda12332c",
-      "referenceId": "fa_ref_09c1c5243c09138991e858f3",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WQE6000BA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_2e6a67d2b2fef187e61bae0c"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_94cc4303854e5b5e9d6c8463"
-      ],
-      "legacyRuntimeIds": [
-        "ao-77093"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_9d4474c167daeb75416c9eee"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_fb86fbd154933d56173b1543",
       "referenceId": "fa_ref_9ac0c951759a781c38ba0401",
       "category": "fridge",
@@ -30582,99 +30396,6 @@
     },
     {
       "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_4ee12ba9ff86849005c675c8",
-      "referenceId": "fa_ref_0b6b6a1a2b9d26e8a18ba93f",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WQE6000SA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_1672ea2e852b7a4cb1d51de4"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_e0a653dcb8f779ed20bc0ff1"
-      ],
-      "legacyRuntimeIds": [
-        "ao-67923"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_2eea0e16a47d48728a212f1a"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_1621f8f187b823ac3db1a38f",
-      "referenceId": "fa_ref_3f4fd8513122db0e7a41495e",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WQE6060BA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_a7a912c1607c50983b168074"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_4a85f8720fa94ab3d6239fe5"
-      ],
-      "legacyRuntimeIds": [
-        "ao-77094"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_920c9fd11e29b22692cb9955"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_a3861684b959784ead46cb3f",
-      "referenceId": "fa_ref_83bc0937dd02828e72a9ab08",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WQE6060SA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_0dc913ba2e1ca8a4b4366838"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_5c8ef5d212fa00e6640f9c9f"
-      ],
-      "legacyRuntimeIds": [
-        "ao-67924"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_18a492a6cb9b55c9832b7f3c"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
       "acquisitionId": "historical_acquisition_565c005c64b31630f9cc435a",
       "referenceId": "fa_ref_47cee527a7974576e4ad00a4",
       "category": "fridge",
@@ -30701,37 +30422,6 @@
       ],
       "canonicalProductIds": [
         "fa_prod_95c63b1bf150016688365ef5"
-      ],
-      "offlineReplayOutcome": null
-    },
-    {
-      "schemaVersion": 1,
-      "acquisitionId": "historical_acquisition_67cc0b6dfdb027a06e94fff4",
-      "referenceId": "fa_ref_b7b4ebdfa7a0c9091baef4b3",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WRB5004SA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "priority": "P0_CURRENT_RETAIL",
-      "groupType": "unclassified",
-      "groupName": null,
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "route": "OFFICIAL_REDISCOVERY",
-      "executionReadiness": "DISCOVERY_READY",
-      "candidateSourceIds": [
-        "historical_source_43cbe68a5ce8596139043469"
-      ],
-      "resolverIds": [
-        "electrolux-group-official-factsheet"
-      ],
-      "legacyRecoveryTargetIds": [
-        "recovery_target_6fa8749ec77ab4efea5335df"
-      ],
-      "legacyRuntimeIds": [
-        "ao-53552"
-      ],
-      "canonicalProductIds": [
-        "fa_prod_ba5e32005c16048bed6cc424"
       ],
       "offlineReplayOutcome": null
     },
@@ -197842,19 +197532,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_0dc913ba2e1ca8a4b4366838",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/3/4/0/0340185873b00f997f61da6fdb6e19b6f3343ee6_WQE6060SA_Westinghouse_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WQE6060SA.json",
-        "source:doc_e8f567397703e8467d08af97"
-      ],
-      "referenceIds": [
-        "fa_ref_83bc0937dd02828e72a9ab08"
-      ]
-    },
-    {
       "sourceId": "historical_source_0dff7324c2a123f76eafb94b",
       "sourceUrl": "https://chiq.com.au/cdn/shop/files/CSH121NBS_SPEC.pdf",
       "sourceAuthority": "NONE",
@@ -198588,19 +198265,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_1672ea2e852b7a4cb1d51de4",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/6/7/0/26701c1bb1880eb7ba428c7e192dcd28db995748_WQE6000SA_Datasheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WQE6000SA.json",
-        "source:doc_6a08da4f4e18abccff4de51d"
-      ],
-      "referenceIds": [
-        "fa_ref_0b6b6a1a2b9d26e8a18ba93f"
-      ]
-    },
-    {
       "sourceId": "historical_source_1682b8efda65d4e0e1b05dd1",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/8/d/1/0/8d1036393067c91e8c61d3af37e9e787e248a884_Bosch_WAE22466AU_7kg_Front_Load_Washing_Machine_Specifications_Sheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -199103,19 +198767,6 @@
       ],
       "referenceIds": [
         "fa_ref_61eeccbfcb5001e661a4473a"
-      ]
-    },
-    {
-      "sourceId": "historical_source_1ba5a46b2b0a2cb5905731f8",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/9/a/3/69a3956f87ca94ecbcc2844d0a6a9a21f1fb152f_WHE6060SA_Westinghouse_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WHE6060SA.json",
-        "source:doc_72734fe7b51eeebb71239659"
-      ],
-      "referenceIds": [
-        "fa_ref_93692f0146390a77b600b4c6"
       ]
     },
     {
@@ -199855,19 +199506,6 @@
       ],
       "referenceIds": [
         "fa_ref_10278814837f8ed72e87bf96"
-      ]
-    },
-    {
-      "sourceId": "historical_source_25a2d001b4ca22eb6bcd1898",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/0/0/a/600af2b4ce22af972c0d6d0803546653916fdc69_Westinghouse_WHE6000SA_605L_French_Door_Fridge_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WHE6000SA.json",
-        "source:doc_ad9d3f956fe1fabe7b763d76"
-      ],
-      "referenceIds": [
-        "fa_ref_bcf93b6294e4446a1e7ae8a9"
       ]
     },
     {
@@ -200730,19 +200368,6 @@
       ],
       "referenceIds": [
         "fa_ref_9fe799828a1d8a918c5988c5"
-      ]
-    },
-    {
-      "sourceId": "historical_source_2e6a67d2b2fef187e61bae0c",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/f/b/1/d/fb1d1b1c6222b694df075f76c1d325b45bc3f8ee_WQE6000BA_Westinghouse_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WQE6000BA.json",
-        "source:doc_dc3d3c8741aa588b918ff21b"
-      ],
-      "referenceIds": [
-        "fa_ref_09c1c5243c09138991e858f3"
       ]
     },
     {
@@ -202307,19 +201932,6 @@
       ]
     },
     {
-      "sourceId": "historical_source_42b7ddecd2d6e64aa25b37db",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/f/6/e/3/f6e360a53631d397df7670dc1d6fc931da76ed2a_WHE5204SB_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WHE5204SB.json",
-        "source:doc_e6a3f8df92230e2b93245432"
-      ],
-      "referenceIds": [
-        "fa_ref_d8a5c8b84d5db6b0eced3a4f"
-      ]
-    },
-    {
       "sourceId": "historical_source_42d9f32813479a80737ed4f4",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/5/d/8/a/5d8a4437ebca58b0e0f9447628649a8565323be9_WBE5300WBL_Westinghouse_Datasheet.pdf",
       "sourceAuthority": "REFERENCE",
@@ -202393,19 +202005,6 @@
       ],
       "referenceIds": [
         "fa_ref_d23d337e6e8b4acfa4748eac"
-      ]
-    },
-    {
-      "sourceId": "historical_source_43cbe68a5ce8596139043469",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/d/8/9/c/d89cd74efef64bb64372eb717d09c63dff4e9693_Westinghouse_WRB5004SA_501L_Upright_Fridge_Datasheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WRB5004SA.json",
-        "source:doc_ac7be35fd0886a6923bb1e46"
-      ],
-      "referenceIds": [
-        "fa_ref_b7b4ebdfa7a0c9091baef4b3"
       ]
     },
     {
@@ -202900,19 +202499,6 @@
       ],
       "referenceIds": [
         "fa_ref_7f0d9322ccab185a09b2ae6a"
-      ]
-    },
-    {
-      "sourceId": "historical_source_4a1d9b681bddbae63bda84ea",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/f/7/b/9f7b9a7e64f382c41b02728e9ed69186f83f6e1f_WHE5264SB_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WHE5264SB.json",
-        "source:doc_a8362a280ab6f108d05dcb80"
-      ],
-      "referenceIds": [
-        "fa_ref_587d0038dbb5fc8f052f05e3"
       ]
     },
     {
@@ -204840,19 +204426,6 @@
       ],
       "referenceIds": [
         "fa_ref_4b28c55815c13051284b266b"
-      ]
-    },
-    {
-      "sourceId": "historical_source_5fd42976a5701087ecc4eefb",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/d/5/3/f/d53f60ce9d9ef3f3d3aa6a1036034befab87a549_WHE5204BB_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WHE5204BB.json",
-        "source:doc_a55613eaa20b9cc20440fa8e"
-      ],
-      "referenceIds": [
-        "fa_ref_c72bdeee73eafc3695793544"
       ]
     },
     {
@@ -210986,19 +210559,6 @@
       ],
       "referenceIds": [
         "fa_ref_1c102ff4ab11f3c00a08977c"
-      ]
-    },
-    {
-      "sourceId": "historical_source_a7a912c1607c50983b168074",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/8/8/3/7/88371cef5784eae1b28fbade4e3fe61be99e9d8b_WQE6060BA_Specifications_Sheet.pdf",
-      "sourceAuthority": "REFERENCE",
-      "receiptEligible": false,
-      "documentIds": [
-        "legacy:data/pdf-evidence-raw/WQE6060BA.json",
-        "source:doc_59f58345e47b498c50d70eb4"
-      ],
-      "referenceIds": [
-        "fa_ref_3f4fd8513122db0e7a41495e"
       ]
     },
     {
@@ -217974,25 +217534,25 @@
     }
   ],
   "excluded": {
-    "COMPLETE_RECEIPT": 133,
+    "COMPLETE_RECEIPT": 143,
     "OFFICIAL_HTML_ONLY": 0,
     "NO_OFFICIAL_SOURCE": 0
   },
   "summary": {
     "classificationRecords": 8095,
-    "queuedModels": 7962,
-    "uniqueReferences": 7962,
-    "candidateSources": 1624,
-    "candidateEdges": 1659,
+    "queuedModels": 7952,
+    "uniqueReferences": 7952,
+    "candidateSources": 1614,
+    "candidateEdges": 1649,
     "byLifecycle": {
       "CATALOG_ARCHIVED": 2109,
-      "CURRENT_RETAIL": 1290,
+      "CURRENT_RETAIL": 1280,
       "REGISTRY_ONLY": 4563
     },
     "byCategory": {
       "dishwasher": 1377,
       "dryer": 820,
-      "fridge": 4288,
+      "fridge": 4278,
       "washing_machine": 1477
     },
     "byOperationalClass": {
@@ -218000,23 +217560,23 @@
       "IDENTITY_RESEARCH": 193,
       "OFFICIAL_DISCOVERY": 6426,
       "OFFICIAL_REACQUIRE": 6,
-      "REFERENCE_REDISCOVERY": 1254
+      "REFERENCE_REDISCOVERY": 1244
     },
     "byRoute": {
       "CONFLICT_CLOSURE": 83,
       "IDENTITY_CLOSURE": 193,
       "OFFICIAL_DISCOVERY": 6426,
       "OFFICIAL_REACQUIRE": 6,
-      "OFFICIAL_REDISCOVERY": 1254
+      "OFFICIAL_REDISCOVERY": 1244
     },
     "byExecutionReadiness": {
       "BOUNDED_READY": 6,
-      "DISCOVERY_READY": 4598,
+      "DISCOVERY_READY": 4588,
       "RESEARCH_REQUIRED": 276,
       "RESOLVER_GAP": 3082
     },
     "excluded": {
-      "COMPLETE_RECEIPT": 133,
+      "COMPLETE_RECEIPT": 143,
       "OFFICIAL_HTML_ONLY": 0,
       "NO_OFFICIAL_SOURCE": 0
     }

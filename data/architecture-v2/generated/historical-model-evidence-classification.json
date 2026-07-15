@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T16:47:38.606Z",
+  "generatedAt": "2026-07-15T16:59:58.049Z",
   "policyVersion": "historical-model-evidence-classification-v1",
-  "semanticClassificationSha256": "ad6b8b7cb8949f56d2163c687f0bb62ec458e4c24592e042d2ad791ad6d70a28",
+  "semanticClassificationSha256": "0cd7a9283a10a6e638ba457830514167a62e8df7ea723b2e02312fff6c222291",
   "summary": {
     "records": 8095,
     "uniqueReferenceIds": 8095,
-    "documentLinks": 4148,
+    "documentLinks": 4158,
     "modelsWithDocumentLinks": 1770,
     "modelsWithoutDocumentLinks": 6325,
     "byCategory": {
@@ -21,26 +21,26 @@
       "REGISTRY_ONLY": 4577
     },
     "byOperationalClass": {
-      "COMPLETE_RECEIPT": 133,
+      "COMPLETE_RECEIPT": 143,
       "CONFLICT_QUARANTINE": 83,
       "IDENTITY_RESEARCH": 193,
       "OFFICIAL_DISCOVERY": 6426,
       "OFFICIAL_REACQUIRE": 6,
-      "REFERENCE_REDISCOVERY": 1254
+      "REFERENCE_REDISCOVERY": 1244
     },
     "byNextAction": {
       "DISCOVER_OFFICIAL_SOURCE": 6426,
-      "NO_ACTION": 133,
+      "NO_ACTION": 143,
       "REACQUIRE_OFFICIAL_SOURCE": 6,
-      "REDISCOVER_OFFICIAL_SOURCE": 1254,
+      "REDISCOVER_OFFICIAL_SOURCE": 1244,
       "RUN_CONFLICT_CLOSURE": 83,
       "RUN_IDENTITY_CLOSURE": 193
     },
     "bySourceAuthority": {
-      "MIXED": 51,
+      "MIXED": 61,
       "NONE": 6679,
       "OFFICIAL": 94,
-      "REFERENCE": 1271
+      "REFERENCE": 1261
     },
     "byIdentityScope": {
       "AMBIGUOUS": 236,
@@ -49,8 +49,8 @@
     },
     "byExtractionState": {
       "ALL_AXIS_RANGE": 48,
-      "ALL_AXIS_SCALAR": 233,
-      "NOT_PARSED": 7675,
+      "ALL_AXIS_SCALAR": 243,
+      "NOT_PARSED": 7665,
       "PARSER_GAP": 139
     },
     "byConflictState": {
@@ -60,8 +60,8 @@
       "SOURCE_CONFLICT": 64
     },
     "byReceiptState": {
-      "CURRENT_VALID": 133,
-      "LEGACY_UNBOUND": 1637,
+      "CURRENT_VALID": 143,
+      "LEGACY_UNBOUND": 1627,
       "NONE": 6325
     }
   },
@@ -96,14 +96,14 @@
       "category": "fridge",
       "records": 4336,
       "brands": 121,
-      "documentLinks": 2253,
+      "documentLinks": 2263,
       "byOperationalClass": {
-        "COMPLETE_RECEIPT": 48,
+        "COMPLETE_RECEIPT": 58,
         "CONFLICT_QUARANTINE": 48,
         "IDENTITY_RESEARCH": 117,
         "OFFICIAL_DISCOVERY": 3410,
         "OFFICIAL_REACQUIRE": 3,
-        "REFERENCE_REDISCOVERY": 710
+        "REFERENCE_REDISCOVERY": 700
       }
     },
     {
@@ -190,15 +190,15 @@
     },
     {
       "category": "fridge",
-      "brand": "Westinghouse",
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "models": 103
-    },
-    {
-      "category": "fridge",
       "brand": "Haier",
       "operationalClass": "REFERENCE_REDISCOVERY",
       "models": 96
+    },
+    {
+      "category": "fridge",
+      "brand": "Westinghouse",
+      "operationalClass": "REFERENCE_REDISCOVERY",
+      "models": 93
     },
     {
       "category": "fridge",
@@ -230499,14 +230499,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -230529,6 +230530,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:b311ee1a264c2713a0a0131f54bde2b48791c45497d5d6b8d95f30e26bb728be",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204BB&brand=Westinghouse",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/82/27/82279b862df78b63477da129bf1b3db09318ee78b9d8da224264ed6f6130881a.json",
+            "evidence/web/sha256/b3/11/b311ee1a264c2713a0a0131f54bde2b48791c45497d5d6b8d95f30e26bb728be.pdf",
+            "receipt:1f55887b45b8df32d26e2231b9d436a4199ff64a93d2ec9ab4d832d44139d499"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "b311ee1a264c2713a0a0131f54bde2b48791c45497d5d6b8d95f30e26bb728be"
+        },
+        {
           "documentId": "source:doc_a55613eaa20b9cc20440fa8e",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/d/5/3/f/d53f60ce9d9ef3f3d3aa6a1036034befab87a549_WHE5204BB_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -230544,8 +230564,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Westinghouse"
@@ -230659,14 +230679,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -230689,6 +230710,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:5ade45551307fc8e7b61c47e3857334e6cde2e8a7edae201e5d258434f5372c0",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204SB&brand=Westinghouse",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/fe/61/fe61baf50137488f777b154feda89ecc856a2153f9568f385a137db9ab043b35.json",
+            "evidence/web/sha256/5a/de/5ade45551307fc8e7b61c47e3857334e6cde2e8a7edae201e5d258434f5372c0.pdf",
+            "receipt:aa8ec371fa7954dfdf229d8fde55cc5ea1f748cd6af1784929f9eb3e3637177a"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "5ade45551307fc8e7b61c47e3857334e6cde2e8a7edae201e5d258434f5372c0"
+        },
+        {
           "documentId": "source:doc_e6a3f8df92230e2b93245432",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/f/6/e/3/f6e360a53631d397df7670dc1d6fc931da76ed2a_WHE5204SB_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -230704,8 +230744,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Westinghouse"
@@ -230800,14 +230840,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -230830,6 +230871,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:fb4399c03abb2e9cda53fa8354614908c234bd6686515d22e01b54f8102d9235",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SB&brand=Westinghouse",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/cc/d2/ccd2b682b12f85ecac3326c85903378b0c8ede5bbaf52aa0b0ba9f6b55bf22e4.json",
+            "evidence/web/sha256/fb/43/fb4399c03abb2e9cda53fa8354614908c234bd6686515d22e01b54f8102d9235.pdf",
+            "receipt:a74f00e980a08d5578a0c66e5b83f3e6f30087426e2be107cd112c98afdb6503"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "fb4399c03abb2e9cda53fa8354614908c234bd6686515d22e01b54f8102d9235"
+        },
+        {
           "documentId": "source:doc_a8362a280ab6f108d05dcb80",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/9/f/7/b/9f7b9a7e64f382c41b02728e9ed69186f83f6e1f_WHE5264SB_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -230845,8 +230905,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Westinghouse"
@@ -231191,14 +231251,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -231221,6 +231282,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:6fcb91754026d1bca6572a4933cde7465c578d875891b18114c3d3a29da9d203",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6000SA&brand=Westinghouse",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/15/dc/15dcc687720aa84a96d5bf361705a99b832b51579f3f78a97d5df8358cdf2253.json",
+            "evidence/web/sha256/6f/cb/6fcb91754026d1bca6572a4933cde7465c578d875891b18114c3d3a29da9d203.pdf",
+            "receipt:d96c84a73a78623fe35ee0f716fdb766e83ef694fce1fc6674014145c462affa"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "6fcb91754026d1bca6572a4933cde7465c578d875891b18114c3d3a29da9d203"
+        },
+        {
           "documentId": "source:doc_ad9d3f956fe1fabe7b763d76",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/6/0/0/a/600af2b4ce22af972c0d6d0803546653916fdc69_Westinghouse_WHE6000SA_605L_French_Door_Fridge_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -231236,8 +231316,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Westinghouse"
@@ -231432,14 +231512,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -231462,6 +231543,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:bd8b3fc11ad96b9ce9f8d67d7a2877fc10d70c3a68e3bd8eb2f8279a9267c573",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6060SA&brand=Westinghouse",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/74/70/7470740ddee63920fa30b8080b8ad7ccafd704a91b53300ae474680089082a52.json",
+            "evidence/web/sha256/bd/8b/bd8b3fc11ad96b9ce9f8d67d7a2877fc10d70c3a68e3bd8eb2f8279a9267c573.pdf",
+            "receipt:8164f0ad38faa34efb933b4022c8dc752e7d84fa39db94f5d685c55b4d958421"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "bd8b3fc11ad96b9ce9f8d67d7a2877fc10d70c3a68e3bd8eb2f8279a9267c573"
+        },
+        {
           "documentId": "source:doc_72734fe7b51eeebb71239659",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/6/9/a/3/69a3956f87ca94ecbcc2844d0a6a9a21f1fb152f_WHE6060SA_Westinghouse_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -231477,8 +231577,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Westinghouse"
@@ -233702,14 +233802,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -233732,6 +233833,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:a46732ddc8d9f0ee1f5f7ce4e3921ed1b8f955951ac60cd665d408b422891628",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6000BA&brand=Westinghouse",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/4b/95/4b95beba2c2a6fa99bf08c00005823166ac691d69c54bc1245d3cd91179725d3.json",
+            "evidence/web/sha256/a4/67/a46732ddc8d9f0ee1f5f7ce4e3921ed1b8f955951ac60cd665d408b422891628.pdf",
+            "receipt:da5a4451e8a8f4d055692cde15ad557af4c516be61035324960b9048d4a35e86"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "a46732ddc8d9f0ee1f5f7ce4e3921ed1b8f955951ac60cd665d408b422891628"
+        },
+        {
           "documentId": "source:doc_dc3d3c8741aa588b918ff21b",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/f/b/1/d/fb1d1b1c6222b694df075f76c1d325b45bc3f8ee_WQE6000BA_Westinghouse_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -233747,8 +233867,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Westinghouse"
@@ -233829,14 +233949,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -233859,6 +233980,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:c632a4757eeba02a2296a9019c985e10ba61e4d5c0417af06e0c3f3dac278183",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6000SA&brand=Westinghouse",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/fc/f1/fcf166d84416f5bf7eb00712d6d9d6559b065b8cbaf19387952a2f0ebeb42d45.json",
+            "evidence/web/sha256/c6/32/c632a4757eeba02a2296a9019c985e10ba61e4d5c0417af06e0c3f3dac278183.pdf",
+            "receipt:c4468c4fa2032a2515f943140963359443c0273c0e127357456768d053f946ef"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "c632a4757eeba02a2296a9019c985e10ba61e4d5c0417af06e0c3f3dac278183"
+        },
+        {
           "documentId": "source:doc_6a08da4f4e18abccff4de51d",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/2/6/7/0/26701c1bb1880eb7ba428c7e192dcd28db995748_WQE6000SA_Datasheet.pdf",
           "evidenceObjectIds": [
@@ -233874,8 +234014,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Westinghouse"
@@ -234018,14 +234158,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -234048,6 +234189,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:410dd38fa235201fdf736d11ae5ec6dcf45bd1486fa9a2389e316f389abef340",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6060BA&brand=Westinghouse",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/74/91/7491b3bc1737b6dbe0d0e32ce9251de82be9273f7549a45fec4c5a033d974aa0.json",
+            "evidence/web/sha256/41/0d/410dd38fa235201fdf736d11ae5ec6dcf45bd1486fa9a2389e316f389abef340.pdf",
+            "receipt:89467c7f4ef0bbac52c6e643e92d4a98f55325b8bb1f87a94f17d731ff4314c7"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "410dd38fa235201fdf736d11ae5ec6dcf45bd1486fa9a2389e316f389abef340"
+        },
+        {
           "documentId": "source:doc_59f58345e47b498c50d70eb4",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/8/8/3/7/88371cef5784eae1b28fbade4e3fe61be99e9d8b_WQE6060BA_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -234063,8 +234223,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Westinghouse"
@@ -234206,14 +234366,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -234236,6 +234397,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:67d8e0d03cbff716ba7ffa0dfae3f27bc188612eecd7b56b550fb451753d94e1",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6060SA&brand=Westinghouse",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/c7/30/c73061eb731c19fe9e4fa1f17732cdec26b8b2df1034058cd19b28b8879ef1ed.json",
+            "evidence/web/sha256/67/d8/67d8e0d03cbff716ba7ffa0dfae3f27bc188612eecd7b56b550fb451753d94e1.pdf",
+            "receipt:094ff55c147267821670cdd257bdee2d7a08162dcbb2ad3f7ba47d0f3aefb90f"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "67d8e0d03cbff716ba7ffa0dfae3f27bc188612eecd7b56b550fb451753d94e1"
+        },
+        {
           "documentId": "source:doc_e8f567397703e8467d08af97",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/0/3/4/0/0340185873b00f997f61da6fdb6e19b6f3343ee6_WQE6060SA_Westinghouse_Specifications_Sheet.pdf",
           "evidenceObjectIds": [
@@ -234251,8 +234431,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Westinghouse"
@@ -235088,14 +235268,15 @@
       "lifecycleState": "CURRENT_RETAIL",
       "groupType": "unclassified",
       "groupName": null,
-      "bestCorpusState": "LEGACY_METADATA_ONLY",
-      "sourceAuthority": "REFERENCE",
+      "bestCorpusState": "RECEIPT_BOUND",
+      "sourceAuthority": "MIXED",
       "identityScope": "EXACT_MODEL",
-      "extractionState": "NOT_PARSED",
+      "extractionState": "ALL_AXIS_SCALAR",
       "conflictState": "NONE",
-      "receiptState": "LEGACY_UNBOUND",
+      "receiptState": "CURRENT_VALID",
       "corpusSummary": {
         "LEGACY_METADATA_ONLY": 1,
+        "RECEIPT_BOUND": 1,
         "SOURCE_URL_ONLY": 1
       },
       "documentLinks": [
@@ -235118,6 +235299,25 @@
           "receiptState": "LEGACY_UNBOUND"
         },
         {
+          "documentId": "pdf:e3cda2f53e9582fb9ccbbecd0aa5518dd7ede272079df81f48282e93cc8dcd98",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WRB5004SA&brand=Westinghouse",
+          "evidenceObjectIds": [
+            "evidence/derived/mineru-json/sha256/5c/51/5c51d8cded8861ea5554de32fe434a4aee54d62d306e4b0ee7ae9820c3fbda38.json",
+            "evidence/web/sha256/e3/cd/e3cda2f53e9582fb9ccbbecd0aa5518dd7ede272079df81f48282e93cc8dcd98.pdf",
+            "receipt:9cea50928a8b32f1c9c5ac758420528979480ee06afadbef56f1b9b76a0a3be5"
+          ],
+          "reasonCodes": [
+            "CURRENT_MINERU_INDEX",
+            "CURRENT_RECEIPT_BOUND"
+          ],
+          "corpusState": "RECEIPT_BOUND",
+          "sourceAuthority": "OFFICIAL",
+          "identityScope": "EXACT_MODEL",
+          "extractionState": "ALL_AXIS_SCALAR",
+          "receiptState": "CURRENT_VALID",
+          "sourcePdfSha256": "e3cda2f53e9582fb9ccbbecd0aa5518dd7ede272079df81f48282e93cc8dcd98"
+        },
+        {
           "documentId": "source:doc_ac7be35fd0886a6923bb1e46",
           "sourceUrl": "https://www.appliancesonline.com.au/ak/d/8/9/c/d89cd74efef64bb64372eb717d09c63dff4e9693_Westinghouse_WRB5004SA_501L_Upright_Fridge_Datasheet.pdf",
           "evidenceObjectIds": [
@@ -235133,8 +235333,8 @@
           "receiptState": "LEGACY_UNBOUND"
         }
       ],
-      "operationalClass": "REFERENCE_REDISCOVERY",
-      "nextAction": "REDISCOVER_OFFICIAL_SOURCE",
+      "operationalClass": "COMPLETE_RECEIPT",
+      "nextAction": "NO_ACTION",
       "priority": "P0_CURRENT_RETAIL",
       "rawBrandVariants": [
         "Westinghouse"

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T16:46:23.547Z",
-  "sourceBundleSha256": "55d828c7ec621087aaba1bed789258f59ae0a96fb80f50398f9bc28b46b5497d",
+  "generatedAt": "2026-07-15T17:00:18.393Z",
+  "sourceBundleSha256": "1752ab902c6883b7877fb352155305ca645fb6600f6fea594234c41ca84f5401",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -662,6 +662,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_4a85f8720fa94ab3d6239fe5",
+      "referenceId": "fa_ref_3f4fd8513122db0e7a41495e",
+      "brand": "Westinghouse",
+      "model": "WQE6060BA",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6060BA&brand=Westinghouse",
+      "sourcePdfSha256": "410dd38fa235201fdf736d11ae5ec6dcf45bd1486fa9a2389e316f389abef340",
+      "contentSha256": "410dd38fa235201fdf736d11ae5ec6dcf45bd1486fa9a2389e316f389abef340",
+      "receiptBindingSha256": "89467c7f4ef0bbac52c6e643e92d4a98f55325b8bb1f87a94f17d731ff4314c7",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/74/91/7491b3bc1737b6dbe0d0e32ce9251de82be9273f7549a45fec4c5a033d974aa0.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_4adf92bf07240675d633463a",
       "referenceId": "fa_ref_72ba7ca17dd5af4443546ffc",
       "brand": "Fisher & Paykel",
@@ -788,6 +802,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_5c8ef5d212fa00e6640f9c9f",
+      "referenceId": "fa_ref_83bc0937dd02828e72a9ab08",
+      "brand": "Westinghouse",
+      "model": "WQE6060SA",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6060SA&brand=Westinghouse",
+      "sourcePdfSha256": "67d8e0d03cbff716ba7ffa0dfae3f27bc188612eecd7b56b550fb451753d94e1",
+      "contentSha256": "67d8e0d03cbff716ba7ffa0dfae3f27bc188612eecd7b56b550fb451753d94e1",
+      "receiptBindingSha256": "094ff55c147267821670cdd257bdee2d7a08162dcbb2ad3f7ba47d0f3aefb90f",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/c7/30/c73061eb731c19fe9e4fa1f17732cdec26b8b2df1034058cd19b28b8879ef1ed.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_5d22087b44c6c430c28b06ba",
       "referenceId": "fa_ref_379da4d1574a78de96379fa1",
       "brand": "Westinghouse",
@@ -840,6 +868,20 @@
       "contentSha256": "a01e1b85c2b532b5483169bef8e0cdcf7a565f102b7b37fb2529e75463dabc77",
       "receiptBindingSha256": "02e44f1c8759fe89a77c552566826ede7cf50ca75cd05d96024c94fc8d5f483f",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/ab/ef/abef8567160f665f7a73c870feeafd3590912adfafbae6acfc6edad749df3e12.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_603720128fb92819766d95a1",
+      "referenceId": "fa_ref_bcf93b6294e4446a1e7ae8a9",
+      "brand": "Westinghouse",
+      "model": "WHE6000SA",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6000SA&brand=Westinghouse",
+      "sourcePdfSha256": "6fcb91754026d1bca6572a4933cde7465c578d875891b18114c3d3a29da9d203",
+      "contentSha256": "6fcb91754026d1bca6572a4933cde7465c578d875891b18114c3d3a29da9d203",
+      "receiptBindingSha256": "d96c84a73a78623fe35ee0f716fdb766e83ef694fce1fc6674014145c462affa",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/15/dc/15dcc687720aa84a96d5bf361705a99b832b51579f3f78a97d5df8358cdf2253.json",
       "status": "passed",
       "failureCode": null
     },
@@ -956,6 +998,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_682c770da6707bb55c873a24",
+      "referenceId": "fa_ref_d8a5c8b84d5db6b0eced3a4f",
+      "brand": "Westinghouse",
+      "model": "WHE5204SB",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204SB&brand=Westinghouse",
+      "sourcePdfSha256": "5ade45551307fc8e7b61c47e3857334e6cde2e8a7edae201e5d258434f5372c0",
+      "contentSha256": "5ade45551307fc8e7b61c47e3857334e6cde2e8a7edae201e5d258434f5372c0",
+      "receiptBindingSha256": "aa8ec371fa7954dfdf229d8fde55cc5ea1f748cd6af1784929f9eb3e3637177a",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/fe/61/fe61baf50137488f777b154feda89ecc856a2153f9568f385a137db9ab043b35.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_68e2929d124738859393d42d",
       "referenceId": "fa_ref_7d2d3d7eaedf7b403717808b",
       "brand": "Samsung",
@@ -998,6 +1054,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_6fa8749ec77ab4efea5335df",
+      "referenceId": "fa_ref_b7b4ebdfa7a0c9091baef4b3",
+      "brand": "Westinghouse",
+      "model": "WRB5004SA",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WRB5004SA&brand=Westinghouse",
+      "sourcePdfSha256": "e3cda2f53e9582fb9ccbbecd0aa5518dd7ede272079df81f48282e93cc8dcd98",
+      "contentSha256": "e3cda2f53e9582fb9ccbbecd0aa5518dd7ede272079df81f48282e93cc8dcd98",
+      "receiptBindingSha256": "9cea50928a8b32f1c9c5ac758420528979480ee06afadbef56f1b9b76a0a3be5",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/5c/51/5c51d8cded8861ea5554de32fe434a4aee54d62d306e4b0ee7ae9820c3fbda38.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_706e059a44b52ebbba68cd63",
       "referenceId": "fa_ref_7855b3e2391896eaec8da8e2",
       "brand": "KELVINATOR",
@@ -1008,6 +1078,20 @@
       "contentSha256": "1ac995bd56a0df20268d8fc77e5f32ee43aefd5620fc0fc8e28597984c575354",
       "receiptBindingSha256": "039caf4894e491a5a7da3768ec9ea886f7756f679d7b006e67e4f6436e6401cf",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/05/d9/05d9471efcbf8743bf8d0f4d14b7a40637770e93395b31a5b046b86c880e14da.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_7076448df4783a7370ea548c",
+      "referenceId": "fa_ref_93692f0146390a77b600b4c6",
+      "brand": "Westinghouse",
+      "model": "WHE6060SA",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6060SA&brand=Westinghouse",
+      "sourcePdfSha256": "bd8b3fc11ad96b9ce9f8d67d7a2877fc10d70c3a68e3bd8eb2f8279a9267c573",
+      "contentSha256": "bd8b3fc11ad96b9ce9f8d67d7a2877fc10d70c3a68e3bd8eb2f8279a9267c573",
+      "receiptBindingSha256": "8164f0ad38faa34efb933b4022c8dc752e7d84fa39db94f5d685c55b4d958421",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/74/70/7470740ddee63920fa30b8080b8ad7ccafd704a91b53300ae474680089082a52.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1068,6 +1152,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_90b338b366512ddcbe460921",
+      "referenceId": "fa_ref_c72bdeee73eafc3695793544",
+      "brand": "Westinghouse",
+      "model": "WHE5204BB",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204BB&brand=Westinghouse",
+      "sourcePdfSha256": "b311ee1a264c2713a0a0131f54bde2b48791c45497d5d6b8d95f30e26bb728be",
+      "contentSha256": "b311ee1a264c2713a0a0131f54bde2b48791c45497d5d6b8d95f30e26bb728be",
+      "receiptBindingSha256": "1f55887b45b8df32d26e2231b9d436a4199ff64a93d2ec9ab4d832d44139d499",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/82/27/82279b862df78b63477da129bf1b3db09318ee78b9d8da224264ed6f6130881a.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_912d08c57373899f5b2a38bd",
       "referenceId": "fa_ref_7b30999b458aecbc9e66e223",
       "brand": "KELVINATOR",
@@ -1082,6 +1180,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_94cc4303854e5b5e9d6c8463",
+      "referenceId": "fa_ref_09c1c5243c09138991e858f3",
+      "brand": "Westinghouse",
+      "model": "WQE6000BA",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6000BA&brand=Westinghouse",
+      "sourcePdfSha256": "a46732ddc8d9f0ee1f5f7ce4e3921ed1b8f955951ac60cd665d408b422891628",
+      "contentSha256": "a46732ddc8d9f0ee1f5f7ce4e3921ed1b8f955951ac60cd665d408b422891628",
+      "receiptBindingSha256": "da5a4451e8a8f4d055692cde15ad557af4c516be61035324960b9048d4a35e86",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/4b/95/4b95beba2c2a6fa99bf08c00005823166ac691d69c54bc1245d3cd91179725d3.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_9652156024e9aa6bfbd8b701",
       "referenceId": "fa_ref_041ae5be1769136038e1595a",
       "brand": "Hisense",
@@ -1092,6 +1204,20 @@
       "contentSha256": "6c9b8413e7027756b02248f0ff847320958cf0369fb67b9ce3819d55e2521f94",
       "receiptBindingSha256": "b6a90c4cfabe5859bf4c63e7e713e519363ba4a2503728309115ba808cf6c53c",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/dd/41/dd413d6652e9424115edc0c57427210c30f08b7a2147081294e3ae744bd5ffa9.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_96843f29d072d381536997f1",
+      "referenceId": "fa_ref_587d0038dbb5fc8f052f05e3",
+      "brand": "Westinghouse",
+      "model": "WHE5264SB",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SB&brand=Westinghouse",
+      "sourcePdfSha256": "fb4399c03abb2e9cda53fa8354614908c234bd6686515d22e01b54f8102d9235",
+      "contentSha256": "fb4399c03abb2e9cda53fa8354614908c234bd6686515d22e01b54f8102d9235",
+      "receiptBindingSha256": "a74f00e980a08d5578a0c66e5b83f3e6f30087426e2be107cd112c98afdb6503",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/cc/d2/ccd2b682b12f85ecac3326c85903378b0c8ede5bbaf52aa0b0ba9f6b55bf22e4.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1726,6 +1852,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_e0a653dcb8f779ed20bc0ff1",
+      "referenceId": "fa_ref_0b6b6a1a2b9d26e8a18ba93f",
+      "brand": "Westinghouse",
+      "model": "WQE6000SA",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6000SA&brand=Westinghouse",
+      "sourcePdfSha256": "c632a4757eeba02a2296a9019c985e10ba61e4d5c0417af06e0c3f3dac278183",
+      "contentSha256": "c632a4757eeba02a2296a9019c985e10ba61e4d5c0417af06e0c3f3dac278183",
+      "receiptBindingSha256": "c4468c4fa2032a2515f943140963359443c0273c0e127357456768d053f946ef",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/fc/f1/fcf166d84416f5bf7eb00712d6d9d6559b065b8cbaf19387952a2f0ebeb42d45.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_e481b7a7f66fc12825df1cc3",
       "referenceId": "fa_ref_83bd985062196f48441767df",
       "brand": "Samsung",
@@ -1909,11 +2049,11 @@
     }
   ],
   "summary": {
-    "entries": 114,
-    "sources": 136,
-    "passed": 136,
+    "entries": 124,
+    "sources": 146,
+    "passed": 146,
     "failed": 0
   },
-  "checkedObjects": 293,
-  "semanticAuditSha256": "6b65cb226e620c08b3d4e09a39b6dbc7c025b9c4ddaf9b0eef0d4f5b75957ced"
+  "checkedObjects": 316,
+  "semanticAuditSha256": "0e2136e0a43dd3ee0376d6884d10315315040ef50bbef55c9a869d5aa69f4140"
 }

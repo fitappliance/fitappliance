@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-15T16:45:05.748Z",
+  "generatedAt": "2026-07-15T16:59:36.083Z",
   "policySha256": "8e237b04fdd3323ae7da48f4323276181014472b6d67e46d959d7d22713e41e0",
   "entries": [
     {
@@ -10367,6 +10367,249 @@
       }
     },
     {
+      "targetId": "recovery_target_4a85f8720fa94ab3d6239fe5",
+      "referenceId": "fa_ref_3f4fd8513122db0e7a41495e",
+      "legacyRuntimeId": "ao-77094",
+      "canonicalProductId": "fa_prod_920c9fd11e29b22692cb9955",
+      "brand": "Westinghouse",
+      "model": "WQE6060BA",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-2620adfc0291fafe42cd89ed-slice-d1d7dc734c1f",
+      "auditSha256": "654ab62d33b3cb229851aba101eca1ea6232a2f087b70fa7d724f270d8c0d8f8",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6060BA&brand=Westinghouse",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6060BA&brand=Westinghouse",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T16:53:21.847Z",
+          "contentSha256": "410dd38fa235201fdf736d11ae5ec6dcf45bd1486fa9a2389e316f389abef340",
+          "objectPath": "evidence/web/sha256/41/0d/410dd38fa235201fdf736d11ae5ec6dcf45bd1486fa9a2389e316f389abef340.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1110952,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WQE6060BA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 896
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "2c854337f01bf4178045df5f849ef68c26fed0cc399ba6da66dbdecd2345fb3c",
+              "bbox": [
+                516,
+                229,
+                939,
+                888
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "2c854337f01bf4178045df5f849ef68c26fed0cc399ba6da66dbdecd2345fb3c",
+              "bbox": [
+                516,
+                229,
+                939,
+                888
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 781
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "2c854337f01bf4178045df5f849ef68c26fed0cc399ba6da66dbdecd2345fb3c",
+              "bbox": [
+                516,
+                229,
+                939,
+                888
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "410dd38fa235201fdf736d11ae5ec6dcf45bd1486fa9a2389e316f389abef340",
+            "contentSha256": "7491b3bc1737b6dbe0d0e32ce9251de82be9273f7549a45fec4c5a033d974aa0",
+            "objectPath": "evidence/derived/mineru-json/sha256/74/91/7491b3bc1737b6dbe0d0e32ce9251de82be9273f7549a45fec4c5a033d974aa0.json",
+            "byteSize": 49056,
+            "pageCount": 7
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6060BA:page:1:4360c54e35eefdff5ffc28a9ab3443caee9a26fd3a51305a2b817d4746c98972"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6060BA:page:2:c460a52a9ad2189a5ba6a9338bc271744187429dbf098bfad927b93d46183b0c"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6060BA:page:3:7607fd2f1d22ba905613269706508bb83cf25355873859b890302051b491c90f"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6060BA:page:4:7675e696bd935f55bf89bc2cd9daee0046573f742a99dda50ba127d93687ea52"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6060BA:page:5:451e9cbd6083e628fd35d784b0ff4d61bd0ce13bec24f11f628ea7edcfc957ef"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6060BA:page:6:70d713fd73c486fcf8f98d27fcb824d6afc6f36b21d51917ed4992dc23507c54"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6060BA:page:7:87185ad52805e49b077f652b0611a02229ea52462ff70c5f4b29ca81bd01d203"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "WQE6060BA:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T16:53:21.847Z",
+            "bindingSha256": "89467c7f4ef0bbac52c6e643e92d4a98f55325b8bb1f87a94f17d731ff4314c7"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 896,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 781
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6060BA&brand=Westinghouse",
+            "contentSha256": "410dd38fa235201fdf736d11ae5ec6dcf45bd1486fa9a2389e316f389abef340",
+            "receiptBindingSha256": "89467c7f4ef0bbac52c6e643e92d4a98f55325b8bb1f87a94f17d731ff4314c7",
+            "page": 4,
+            "fragmentSha256": "2c854337f01bf4178045df5f849ef68c26fed0cc399ba6da66dbdecd2345fb3c"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6060BA&brand=Westinghouse",
+            "contentSha256": "410dd38fa235201fdf736d11ae5ec6dcf45bd1486fa9a2389e316f389abef340",
+            "receiptBindingSha256": "89467c7f4ef0bbac52c6e643e92d4a98f55325b8bb1f87a94f17d731ff4314c7",
+            "page": 4,
+            "fragmentSha256": "2c854337f01bf4178045df5f849ef68c26fed0cc399ba6da66dbdecd2345fb3c"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6060BA&brand=Westinghouse",
+            "contentSha256": "410dd38fa235201fdf736d11ae5ec6dcf45bd1486fa9a2389e316f389abef340",
+            "receiptBindingSha256": "89467c7f4ef0bbac52c6e643e92d4a98f55325b8bb1f87a94f17d731ff4314c7",
+            "page": 4,
+            "fragmentSha256": "2c854337f01bf4178045df5f849ef68c26fed0cc399ba6da66dbdecd2345fb3c"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "410dd38fa235201fdf736d11ae5ec6dcf45bd1486fa9a2389e316f389abef340"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_4adf92bf07240675d633463a",
       "referenceId": "fa_ref_72ba7ca17dd5af4443546ffc",
       "legacyRuntimeId": "discovery-dryer-fisher-paykel-dh8060p5",
@@ -12352,6 +12595,249 @@
       }
     },
     {
+      "targetId": "recovery_target_5c8ef5d212fa00e6640f9c9f",
+      "referenceId": "fa_ref_83bc0937dd02828e72a9ab08",
+      "legacyRuntimeId": "ao-67924",
+      "canonicalProductId": "fa_prod_18a492a6cb9b55c9832b7f3c",
+      "brand": "Westinghouse",
+      "model": "WQE6060SA",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-2620adfc0291fafe42cd89ed-slice-d1d7dc734c1f",
+      "auditSha256": "654ab62d33b3cb229851aba101eca1ea6232a2f087b70fa7d724f270d8c0d8f8",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6060SA&brand=Westinghouse",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6060SA&brand=Westinghouse",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T16:53:48.967Z",
+          "contentSha256": "67d8e0d03cbff716ba7ffa0dfae3f27bc188612eecd7b56b550fb451753d94e1",
+          "objectPath": "evidence/web/sha256/67/d8/67d8e0d03cbff716ba7ffa0dfae3f27bc188612eecd7b56b550fb451753d94e1.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 601585,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WQE6060SA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 896
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "b9df6f353574d6957b8c74453a517754e6ab60c4fe79359cff4a81e8982400fb",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "b9df6f353574d6957b8c74453a517754e6ab60c4fe79359cff4a81e8982400fb",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 781
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "b9df6f353574d6957b8c74453a517754e6ab60c4fe79359cff4a81e8982400fb",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "67d8e0d03cbff716ba7ffa0dfae3f27bc188612eecd7b56b550fb451753d94e1",
+            "contentSha256": "c73061eb731c19fe9e4fa1f17732cdec26b8b2df1034058cd19b28b8879ef1ed",
+            "objectPath": "evidence/derived/mineru-json/sha256/c7/30/c73061eb731c19fe9e4fa1f17732cdec26b8b2df1034058cd19b28b8879ef1ed.json",
+            "byteSize": 46945,
+            "pageCount": 7
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6060SA:page:1:99151377185ddd3431dc06ba5ee20ff927a3b5d091d3ea25bb5724bc2f161791"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6060SA:page:2:67ff2bc0eeabe4e6e1e8fbab7270694cab2f23eaf7885dab5c52cb562146bea7"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6060SA:page:3:f69f571cf2dc8e18b3e3bbc660f2c116390f41b5b6a76f6f2aec54de68bc7194"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6060SA:page:4:76857e80c51aebb447dbd46f876e5ca7dde4d6212382dd23f14bf2018389b404"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6060SA:page:5:99121d94df87508cbba2c0aae3b9bac16ed1a8410c3730e77744d308530201ab"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6060SA:page:6:8e7067a95c234db5431635d84cd07768e41beb34ebf5cc06f9c075dd7ac4c44d"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6060SA:page:7:e6128570e83ce7452b7ce6bb291a47b3d8a5119f2e8f857e761c4c893f0ed7e4"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "WQE6060SA:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T16:53:48.967Z",
+            "bindingSha256": "094ff55c147267821670cdd257bdee2d7a08162dcbb2ad3f7ba47d0f3aefb90f"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 896,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 781
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6060SA&brand=Westinghouse",
+            "contentSha256": "67d8e0d03cbff716ba7ffa0dfae3f27bc188612eecd7b56b550fb451753d94e1",
+            "receiptBindingSha256": "094ff55c147267821670cdd257bdee2d7a08162dcbb2ad3f7ba47d0f3aefb90f",
+            "page": 4,
+            "fragmentSha256": "b9df6f353574d6957b8c74453a517754e6ab60c4fe79359cff4a81e8982400fb"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6060SA&brand=Westinghouse",
+            "contentSha256": "67d8e0d03cbff716ba7ffa0dfae3f27bc188612eecd7b56b550fb451753d94e1",
+            "receiptBindingSha256": "094ff55c147267821670cdd257bdee2d7a08162dcbb2ad3f7ba47d0f3aefb90f",
+            "page": 4,
+            "fragmentSha256": "b9df6f353574d6957b8c74453a517754e6ab60c4fe79359cff4a81e8982400fb"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6060SA&brand=Westinghouse",
+            "contentSha256": "67d8e0d03cbff716ba7ffa0dfae3f27bc188612eecd7b56b550fb451753d94e1",
+            "receiptBindingSha256": "094ff55c147267821670cdd257bdee2d7a08162dcbb2ad3f7ba47d0f3aefb90f",
+            "page": 4,
+            "fragmentSha256": "b9df6f353574d6957b8c74453a517754e6ab60c4fe79359cff4a81e8982400fb"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "67d8e0d03cbff716ba7ffa0dfae3f27bc188612eecd7b56b550fb451753d94e1"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_5d22087b44c6c430c28b06ba",
       "referenceId": "fa_ref_379da4d1574a78de96379fa1",
       "legacyRuntimeId": "fridge-arf2922",
@@ -13337,6 +13823,272 @@
         "missingFields": [],
         "supersessionViolations": [],
         "axisPermutationResolution": "exact_official_axis_proof_with_registry_tolerance",
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_603720128fb92819766d95a1",
+      "referenceId": "fa_ref_bcf93b6294e4446a1e7ae8a9",
+      "legacyRuntimeId": "ao-61196",
+      "canonicalProductId": "fa_prod_33640162d13a63879d55ea5d",
+      "brand": "Westinghouse",
+      "model": "WHE6000SA",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-2620adfc0291fafe42cd89ed-slice-d1d7dc734c1f",
+      "auditSha256": "654ab62d33b3cb229851aba101eca1ea6232a2f087b70fa7d724f270d8c0d8f8",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6000SA&brand=Westinghouse",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6000SA&brand=Westinghouse",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T16:54:41.837Z",
+          "contentSha256": "6fcb91754026d1bca6572a4933cde7465c578d875891b18114c3d3a29da9d203",
+          "objectPath": "evidence/web/sha256/6f/cb/6fcb91754026d1bca6572a4933cde7465c578d875891b18114c3d3a29da9d203.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 498496,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WHE6000SA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 896
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "aad430cd4fc05712f578a0b031b703d5240436dc797aa708e860131c7fc1c088",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "aad430cd4fc05712f578a0b031b703d5240436dc797aa708e860131c7fc1c088",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 781
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "aad430cd4fc05712f578a0b031b703d5240436dc797aa708e860131c7fc1c088",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "6fcb91754026d1bca6572a4933cde7465c578d875891b18114c3d3a29da9d203",
+            "contentSha256": "15dcc687720aa84a96d5bf361705a99b832b51579f3f78a97d5df8358cdf2253",
+            "objectPath": "evidence/derived/mineru-json/sha256/15/dc/15dcc687720aa84a96d5bf361705a99b832b51579f3f78a97d5df8358cdf2253.json",
+            "byteSize": 21568,
+            "pageCount": 8,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              7
+            ],
+            "sourcePageCount": 8,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "d29f009870e79683603714840c6604cb060f63b6cdcab6767eb910093fa72327",
+              "objectPath": "evidence/derived/mineru-json/sha256/d2/9f/d29f009870e79683603714840c6604cb060f63b6cdcab6767eb910093fa72327.json",
+              "pages": [
+                7
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6000SA:page:1:4c46bc59f1c502836678f1f7c6d37b8d7dbd445810499863ca80c283cf66fa49"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6000SA:page:2:4848601362b438781ff308a01145515f27ff8dce2daa03030e7265cb97d773e9"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6000SA:page:3:e3c726618acff89cdae6fd1b96a4608599ba6a0e73de11edb3c6c68787bc43ad"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6000SA:page:4:09cd49262b9eacf1319bc6ce68080643d3fef8e87bc9d1f6ae227dbe56c93b97"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6000SA:page:5:9316f1555438e873aa290d9c1284f00d3f4af279256e8758c27eb913bd19024d"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6000SA:page:6:727cd2d10bb08184222f96eaf3276868e4d5152fbba5ef4e89eaff29f737e228"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6000SA:page:7:07a12d89edb95e007fd45e856e8e5c3b7603f90f468f470f1b4049b83314a643"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6000SA:page:8:418303108d2772b3193f41f50dab744c7e53a45055ffe7261c4a95b32c6d65a4"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "WHE6000SA:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6000SA:page:7:80a6f133caba406d3e3a668a0b789a1db2dc0c980fb3601eae824d7aca84e419"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T16:54:41.837Z",
+            "bindingSha256": "d96c84a73a78623fe35ee0f716fdb766e83ef694fce1fc6674014145c462affa"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 896,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 781
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6000SA&brand=Westinghouse",
+            "contentSha256": "6fcb91754026d1bca6572a4933cde7465c578d875891b18114c3d3a29da9d203",
+            "receiptBindingSha256": "d96c84a73a78623fe35ee0f716fdb766e83ef694fce1fc6674014145c462affa",
+            "page": 4,
+            "fragmentSha256": "aad430cd4fc05712f578a0b031b703d5240436dc797aa708e860131c7fc1c088"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6000SA&brand=Westinghouse",
+            "contentSha256": "6fcb91754026d1bca6572a4933cde7465c578d875891b18114c3d3a29da9d203",
+            "receiptBindingSha256": "d96c84a73a78623fe35ee0f716fdb766e83ef694fce1fc6674014145c462affa",
+            "page": 4,
+            "fragmentSha256": "aad430cd4fc05712f578a0b031b703d5240436dc797aa708e860131c7fc1c088"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6000SA&brand=Westinghouse",
+            "contentSha256": "6fcb91754026d1bca6572a4933cde7465c578d875891b18114c3d3a29da9d203",
+            "receiptBindingSha256": "d96c84a73a78623fe35ee0f716fdb766e83ef694fce1fc6674014145c462affa",
+            "page": 4,
+            "fragmentSha256": "aad430cd4fc05712f578a0b031b703d5240436dc797aa708e860131c7fc1c088"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "6fcb91754026d1bca6572a4933cde7465c578d875891b18114c3d3a29da9d203"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
         "lowerAuthorityResolution": null,
         "conflictReason": null
       }
@@ -15069,6 +15821,249 @@
       }
     },
     {
+      "targetId": "recovery_target_682c770da6707bb55c873a24",
+      "referenceId": "fa_ref_d8a5c8b84d5db6b0eced3a4f",
+      "legacyRuntimeId": "ao-77091",
+      "canonicalProductId": "fa_prod_e2e108a378f37e53eefa4e36",
+      "brand": "Westinghouse",
+      "model": "WHE5204SB",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-2620adfc0291fafe42cd89ed-slice-d1d7dc734c1f",
+      "auditSha256": "654ab62d33b3cb229851aba101eca1ea6232a2f087b70fa7d724f270d8c0d8f8",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204SB&brand=Westinghouse",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204SB&brand=Westinghouse",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T16:55:06.339Z",
+          "contentSha256": "5ade45551307fc8e7b61c47e3857334e6cde2e8a7edae201e5d258434f5372c0",
+          "objectPath": "evidence/web/sha256/5a/de/5ade45551307fc8e7b61c47e3857334e6cde2e8a7edae201e5d258434f5372c0.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 969277,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WHE5204SB",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 796
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "38d4ba279db83736c646d3b1614727021b25337a83eb469cb82af09ba53f1c33",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "38d4ba279db83736c646d3b1614727021b25337a83eb469cb82af09ba53f1c33",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 769
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "38d4ba279db83736c646d3b1614727021b25337a83eb469cb82af09ba53f1c33",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "5ade45551307fc8e7b61c47e3857334e6cde2e8a7edae201e5d258434f5372c0",
+            "contentSha256": "fe61baf50137488f777b154feda89ecc856a2153f9568f385a137db9ab043b35",
+            "objectPath": "evidence/derived/mineru-json/sha256/fe/61/fe61baf50137488f777b154feda89ecc856a2153f9568f385a137db9ab043b35.json",
+            "byteSize": 44183,
+            "pageCount": 7
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5204SB:page:1:6992e3c8a649943a44b9253e55d39a2f942f3040209515580539aaf5c8163b5d"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5204SB:page:2:1e0ab116e25a9a06440301df9e55199703c30eeb360defb58b0115fe00e4ad2a"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5204SB:page:3:b47307c2c694128e7cc40d6b9fe4d7f8fe71438852d86427fe05d78079c01d85"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5204SB:page:4:701c77248490c99901318a25a3627302c406b2816c499432486895f1567aeb83"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5204SB:page:5:6ded012c7b8552616fd24470d6704cc7b0c734e42d1d6d5805c089737f2ed3b7"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5204SB:page:6:4ad860279cb3076dca02f8c0e925d80f2f304d69b84e031886e34469def88d6a"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5204SB:page:7:62ba95a5d2e96dbee40529cfc8f6ac570e9aa1a32b33691f9d44dc7b34cce302"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "WHE5204SB:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T16:55:06.339Z",
+            "bindingSha256": "aa8ec371fa7954dfdf229d8fde55cc5ea1f748cd6af1784929f9eb3e3637177a"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 796,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 769
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204SB&brand=Westinghouse",
+            "contentSha256": "5ade45551307fc8e7b61c47e3857334e6cde2e8a7edae201e5d258434f5372c0",
+            "receiptBindingSha256": "aa8ec371fa7954dfdf229d8fde55cc5ea1f748cd6af1784929f9eb3e3637177a",
+            "page": 4,
+            "fragmentSha256": "38d4ba279db83736c646d3b1614727021b25337a83eb469cb82af09ba53f1c33"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204SB&brand=Westinghouse",
+            "contentSha256": "5ade45551307fc8e7b61c47e3857334e6cde2e8a7edae201e5d258434f5372c0",
+            "receiptBindingSha256": "aa8ec371fa7954dfdf229d8fde55cc5ea1f748cd6af1784929f9eb3e3637177a",
+            "page": 4,
+            "fragmentSha256": "38d4ba279db83736c646d3b1614727021b25337a83eb469cb82af09ba53f1c33"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204SB&brand=Westinghouse",
+            "contentSha256": "5ade45551307fc8e7b61c47e3857334e6cde2e8a7edae201e5d258434f5372c0",
+            "receiptBindingSha256": "aa8ec371fa7954dfdf229d8fde55cc5ea1f748cd6af1784929f9eb3e3637177a",
+            "page": 4,
+            "fragmentSha256": "38d4ba279db83736c646d3b1614727021b25337a83eb469cb82af09ba53f1c33"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "5ade45551307fc8e7b61c47e3857334e6cde2e8a7edae201e5d258434f5372c0"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_68e2929d124738859393d42d",
       "referenceId": "fa_ref_7d2d3d7eaedf7b403717808b",
       "legacyRuntimeId": "discovery-washing-machine-samsung-ww12bb944dgh",
@@ -15762,6 +16757,268 @@
       }
     },
     {
+      "targetId": "recovery_target_6fa8749ec77ab4efea5335df",
+      "referenceId": "fa_ref_b7b4ebdfa7a0c9091baef4b3",
+      "legacyRuntimeId": "ao-53552",
+      "canonicalProductId": "fa_prod_ba5e32005c16048bed6cc424",
+      "brand": "Westinghouse",
+      "model": "WRB5004SA",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-2620adfc0291fafe42cd89ed-slice-d1d7dc734c1f",
+      "auditSha256": "654ab62d33b3cb229851aba101eca1ea6232a2f087b70fa7d724f270d8c0d8f8",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WRB5004SA&brand=Westinghouse",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WRB5004SA&brand=Westinghouse",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T16:55:54.914Z",
+          "contentSha256": "e3cda2f53e9582fb9ccbbecd0aa5518dd7ede272079df81f48282e93cc8dcd98",
+          "objectPath": "evidence/web/sha256/e3/cd/e3cda2f53e9582fb9ccbbecd0aa5518dd7ede272079df81f48282e93cc8dcd98.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 369842,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WRB5004SA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 699
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "c3a9acb29512de4dc9bb9c7baa10f3d5f3a7fd759af67c63380de3dbebc806e1",
+              "bbox": [
+                516,
+                229,
+                939,
+                767
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "c3a9acb29512de4dc9bb9c7baa10f3d5f3a7fd759af67c63380de3dbebc806e1",
+              "bbox": [
+                516,
+                229,
+                939,
+                767
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 720
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 3,
+              "fragmentSha256": "c3a9acb29512de4dc9bb9c7baa10f3d5f3a7fd759af67c63380de3dbebc806e1",
+              "bbox": [
+                516,
+                229,
+                939,
+                767
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "e3cda2f53e9582fb9ccbbecd0aa5518dd7ede272079df81f48282e93cc8dcd98",
+            "contentSha256": "5c51d8cded8861ea5554de32fe434a4aee54d62d306e4b0ee7ae9820c3fbda38",
+            "objectPath": "evidence/derived/mineru-json/sha256/5c/51/5c51d8cded8861ea5554de32fe434a4aee54d62d306e4b0ee7ae9820c3fbda38.json",
+            "byteSize": 19040,
+            "pageCount": 7,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              6
+            ],
+            "sourcePageCount": 7,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "27ad5a484a22a8342805a7e974a198fcf46f7ae474c0c3aeae2fc7edd079d5b7",
+              "objectPath": "evidence/derived/mineru-json/sha256/27/ad/27ad5a484a22a8342805a7e974a198fcf46f7ae474c0c3aeae2fc7edd079d5b7.json",
+              "pages": [
+                6
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WRB5004SA:page:1:b2f4b4047858d39b57e17773b6d6a31860a42ea28bce6b603c044ff952eb7b03"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WRB5004SA:page:2:9de8599c092a1049cf01ec3595bbb7f74282aa4bf5640c471ef5845aaa75cd8d"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WRB5004SA:page:3:ca1fa6a0ed40e7c14cd14e4f1a438598a76eacde27afca33ac6e2e0cde5eb165"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WRB5004SA:page:4:750c61a476356069a52d7f82cc4d8af86e9108942c8ccea4d84f2c7308396bce"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WRB5004SA:page:5:c48a0ab52cf8d4f73c7863369a1201fbebcd426fc0c471e884a0821fe89f420b"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WRB5004SA:page:6:48f69b47ee7a1f29392556d39d3a05972340369290d7a61c09513defbbf2e821"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WRB5004SA:page:7:e9486e1828ebac99e7540bee7165a816b133b3ff1d6b0e86171debef5c5dbd4e"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "WRB5004SA:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WRB5004SA:page:6:08edd170bbc080b3318d38022d17563c73182a8969c0c2741e09ac356897ecc5"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T16:55:54.914Z",
+            "bindingSha256": "9cea50928a8b32f1c9c5ac758420528979480ee06afadbef56f1b9b76a0a3be5"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 699,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 720
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WRB5004SA&brand=Westinghouse",
+            "contentSha256": "e3cda2f53e9582fb9ccbbecd0aa5518dd7ede272079df81f48282e93cc8dcd98",
+            "receiptBindingSha256": "9cea50928a8b32f1c9c5ac758420528979480ee06afadbef56f1b9b76a0a3be5",
+            "page": 3,
+            "fragmentSha256": "c3a9acb29512de4dc9bb9c7baa10f3d5f3a7fd759af67c63380de3dbebc806e1"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WRB5004SA&brand=Westinghouse",
+            "contentSha256": "e3cda2f53e9582fb9ccbbecd0aa5518dd7ede272079df81f48282e93cc8dcd98",
+            "receiptBindingSha256": "9cea50928a8b32f1c9c5ac758420528979480ee06afadbef56f1b9b76a0a3be5",
+            "page": 3,
+            "fragmentSha256": "c3a9acb29512de4dc9bb9c7baa10f3d5f3a7fd759af67c63380de3dbebc806e1"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WRB5004SA&brand=Westinghouse",
+            "contentSha256": "e3cda2f53e9582fb9ccbbecd0aa5518dd7ede272079df81f48282e93cc8dcd98",
+            "receiptBindingSha256": "9cea50928a8b32f1c9c5ac758420528979480ee06afadbef56f1b9b76a0a3be5",
+            "page": 3,
+            "fragmentSha256": "c3a9acb29512de4dc9bb9c7baa10f3d5f3a7fd759af67c63380de3dbebc806e1"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "e3cda2f53e9582fb9ccbbecd0aa5518dd7ede272079df81f48282e93cc8dcd98"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_706e059a44b52ebbba68cd63",
       "referenceId": "fa_ref_7855b3e2391896eaec8da8e2",
       "legacyRuntimeId": "historical-fa_ref_7855b3e2391896eaec8da8e2",
@@ -16046,6 +17303,272 @@
         "missingFields": [],
         "supersessionViolations": [],
         "axisPermutationResolution": "exact_official_axis_proof",
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_7076448df4783a7370ea548c",
+      "referenceId": "fa_ref_93692f0146390a77b600b4c6",
+      "legacyRuntimeId": "ao-61197",
+      "canonicalProductId": "fa_prod_6d95801d272932af518d6df3",
+      "brand": "Westinghouse",
+      "model": "WHE6060SA",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-2620adfc0291fafe42cd89ed-slice-d1d7dc734c1f",
+      "auditSha256": "654ab62d33b3cb229851aba101eca1ea6232a2f087b70fa7d724f270d8c0d8f8",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6060SA&brand=Westinghouse",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6060SA&brand=Westinghouse",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T16:56:51.336Z",
+          "contentSha256": "bd8b3fc11ad96b9ce9f8d67d7a2877fc10d70c3a68e3bd8eb2f8279a9267c573",
+          "objectPath": "evidence/web/sha256/bd/8b/bd8b3fc11ad96b9ce9f8d67d7a2877fc10d70c3a68e3bd8eb2f8279a9267c573.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 474437,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WHE6060SA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 896
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "de32d7aad57aebe53d7210dcecae267155723b1d0daf831624d8d1f117eead2e",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "de32d7aad57aebe53d7210dcecae267155723b1d0daf831624d8d1f117eead2e",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 781
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "de32d7aad57aebe53d7210dcecae267155723b1d0daf831624d8d1f117eead2e",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "bff20d4ae2bf202df9f45284b4d43681555a97ed",
+            "backend": "hybrid-engine",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "bd8b3fc11ad96b9ce9f8d67d7a2877fc10d70c3a68e3bd8eb2f8279a9267c573",
+            "contentSha256": "7470740ddee63920fa30b8080b8ad7ccafd704a91b53300ae474680089082a52",
+            "objectPath": "evidence/derived/mineru-json/sha256/74/70/7470740ddee63920fa30b8080b8ad7ccafd704a91b53300ae474680089082a52.json",
+            "byteSize": 24542,
+            "pageCount": 8,
+            "profileId": "hybrid-image-high-v1",
+            "effort": "high",
+            "imageAnalysis": true,
+            "processedPages": [
+              7
+            ],
+            "sourcePageCount": 8,
+            "fallbackTrigger": {
+              "profileId": "pipeline-auto-v1",
+              "contentSha256": "dab8e588fe73a661f94c6bfdec3dc75a898157bcf5ecc32d94f58ffe4de5dce0",
+              "objectPath": "evidence/derived/mineru-json/sha256/da/b8/dab8e588fe73a661f94c6bfdec3dc75a898157bcf5ecc32d94f58ffe4de5dce0.json",
+              "pages": [
+                7
+              ]
+            }
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6060SA:page:1:d35c34b033c768ca894f50258074330bfa71f0029f1b3fba593ecba62a79b03b"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6060SA:page:2:002030815a05bd59ff34fede19145d0b98fa6be1f34fb6623f2a793a76e70deb"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6060SA:page:3:d36d15eef96da06abc99c94174feea8c6ad324f09509409f8bdb1663c42325f0"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6060SA:page:4:839f82a2c6fc85851571bf97b7d4a2a59b7849a65732d15656509e34e78bd452"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6060SA:page:5:26dbc06c6c24703786c7d9c8fbe603c38d306a4e7cda4c6319e5211695f6b5de"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6060SA:page:6:ac883a266ca1f822f1fa41902c2351dbef481b9347f570bd4ca9f5397ee923a5"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6060SA:page:7:02575078e7f713204c6c76ac186d52ca6e3c0167cb58263826e1611eb60ca8c7"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6060SA:page:8:8925770542b5da8cbe49de75e51ebb9c1fb42a6cb57a3ffce299d66157bc1b90"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "WHE6060SA:document:repeated-page-header"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE6060SA:page:7:3432a0cda3387f33c3f72749ddb1a64ab17ee173950eb2286d25c8ab897a80e2"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T16:56:51.336Z",
+            "bindingSha256": "8164f0ad38faa34efb933b4022c8dc752e7d84fa39db94f5d685c55b4d958421"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 896,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 781
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6060SA&brand=Westinghouse",
+            "contentSha256": "bd8b3fc11ad96b9ce9f8d67d7a2877fc10d70c3a68e3bd8eb2f8279a9267c573",
+            "receiptBindingSha256": "8164f0ad38faa34efb933b4022c8dc752e7d84fa39db94f5d685c55b4d958421",
+            "page": 4,
+            "fragmentSha256": "de32d7aad57aebe53d7210dcecae267155723b1d0daf831624d8d1f117eead2e"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6060SA&brand=Westinghouse",
+            "contentSha256": "bd8b3fc11ad96b9ce9f8d67d7a2877fc10d70c3a68e3bd8eb2f8279a9267c573",
+            "receiptBindingSha256": "8164f0ad38faa34efb933b4022c8dc752e7d84fa39db94f5d685c55b4d958421",
+            "page": 4,
+            "fragmentSha256": "de32d7aad57aebe53d7210dcecae267155723b1d0daf831624d8d1f117eead2e"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE6060SA&brand=Westinghouse",
+            "contentSha256": "bd8b3fc11ad96b9ce9f8d67d7a2877fc10d70c3a68e3bd8eb2f8279a9267c573",
+            "receiptBindingSha256": "8164f0ad38faa34efb933b4022c8dc752e7d84fa39db94f5d685c55b4d958421",
+            "page": 4,
+            "fragmentSha256": "de32d7aad57aebe53d7210dcecae267155723b1d0daf831624d8d1f117eead2e"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "bd8b3fc11ad96b9ce9f8d67d7a2877fc10d70c3a68e3bd8eb2f8279a9267c573"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
         "lowerAuthorityResolution": null,
         "conflictReason": null
       }
@@ -16964,6 +18487,249 @@
       }
     },
     {
+      "targetId": "recovery_target_90b338b366512ddcbe460921",
+      "referenceId": "fa_ref_c72bdeee73eafc3695793544",
+      "legacyRuntimeId": "ao-77090",
+      "canonicalProductId": "fa_prod_1fde83b1fd4bdb0486d2972d",
+      "brand": "Westinghouse",
+      "model": "WHE5204BB",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-2620adfc0291fafe42cd89ed-slice-d1d7dc734c1f",
+      "auditSha256": "654ab62d33b3cb229851aba101eca1ea6232a2f087b70fa7d724f270d8c0d8f8",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204BB&brand=Westinghouse",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204BB&brand=Westinghouse",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T16:57:17.074Z",
+          "contentSha256": "b311ee1a264c2713a0a0131f54bde2b48791c45497d5d6b8d95f30e26bb728be",
+          "objectPath": "evidence/web/sha256/b3/11/b311ee1a264c2713a0a0131f54bde2b48791c45497d5d6b8d95f30e26bb728be.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1021308,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WHE5204BB",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 796
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "38d4ba279db83736c646d3b1614727021b25337a83eb469cb82af09ba53f1c33",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "38d4ba279db83736c646d3b1614727021b25337a83eb469cb82af09ba53f1c33",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 769
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "38d4ba279db83736c646d3b1614727021b25337a83eb469cb82af09ba53f1c33",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "b311ee1a264c2713a0a0131f54bde2b48791c45497d5d6b8d95f30e26bb728be",
+            "contentSha256": "82279b862df78b63477da129bf1b3db09318ee78b9d8da224264ed6f6130881a",
+            "objectPath": "evidence/derived/mineru-json/sha256/82/27/82279b862df78b63477da129bf1b3db09318ee78b9d8da224264ed6f6130881a.json",
+            "byteSize": 46020,
+            "pageCount": 7
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5204BB:page:1:d04cb9f121be071902a40f56aa08b93bf3826dd6c78618aaaad758bb6b0c9a42"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5204BB:page:2:73544d82931e12ed3bcd6d002d7d510d606123ad8669a4b84099741e1f8d9139"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5204BB:page:3:465afb9bcaf53f9b36c32154a926aec8b8302c5587d584dc3fa90817ad396b35"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5204BB:page:4:9aeac60db7e1a5eb1d2b092176d157a1659a5b656ecf7455283d291b59dc3873"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5204BB:page:5:6f362283b68b0a3b8ea30e76164b3c65b0a28c945552ad242f314798ecef3516"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5204BB:page:6:7bb018a04c28f03d12a6a29c36d69b48f05cb70ddf6ab136fef5f8057ebc9888"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5204BB:page:7:d2ece6b36a25cab5be5ebc60a1394fedd414c3b68142124c8bb574d731da3c08"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "WHE5204BB:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T16:57:17.074Z",
+            "bindingSha256": "1f55887b45b8df32d26e2231b9d436a4199ff64a93d2ec9ab4d832d44139d499"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 796,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 769
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204BB&brand=Westinghouse",
+            "contentSha256": "b311ee1a264c2713a0a0131f54bde2b48791c45497d5d6b8d95f30e26bb728be",
+            "receiptBindingSha256": "1f55887b45b8df32d26e2231b9d436a4199ff64a93d2ec9ab4d832d44139d499",
+            "page": 4,
+            "fragmentSha256": "38d4ba279db83736c646d3b1614727021b25337a83eb469cb82af09ba53f1c33"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204BB&brand=Westinghouse",
+            "contentSha256": "b311ee1a264c2713a0a0131f54bde2b48791c45497d5d6b8d95f30e26bb728be",
+            "receiptBindingSha256": "1f55887b45b8df32d26e2231b9d436a4199ff64a93d2ec9ab4d832d44139d499",
+            "page": 4,
+            "fragmentSha256": "38d4ba279db83736c646d3b1614727021b25337a83eb469cb82af09ba53f1c33"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5204BB&brand=Westinghouse",
+            "contentSha256": "b311ee1a264c2713a0a0131f54bde2b48791c45497d5d6b8d95f30e26bb728be",
+            "receiptBindingSha256": "1f55887b45b8df32d26e2231b9d436a4199ff64a93d2ec9ab4d832d44139d499",
+            "page": 4,
+            "fragmentSha256": "38d4ba279db83736c646d3b1614727021b25337a83eb469cb82af09ba53f1c33"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "b311ee1a264c2713a0a0131f54bde2b48791c45497d5d6b8d95f30e26bb728be"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_912d08c57373899f5b2a38bd",
       "referenceId": "fa_ref_7b30999b458aecbc9e66e223",
       "legacyRuntimeId": "fridge-arf2495",
@@ -17198,6 +18964,249 @@
       }
     },
     {
+      "targetId": "recovery_target_94cc4303854e5b5e9d6c8463",
+      "referenceId": "fa_ref_09c1c5243c09138991e858f3",
+      "legacyRuntimeId": "ao-77093",
+      "canonicalProductId": "fa_prod_9d4474c167daeb75416c9eee",
+      "brand": "Westinghouse",
+      "model": "WQE6000BA",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-2620adfc0291fafe42cd89ed-slice-d1d7dc734c1f",
+      "auditSha256": "654ab62d33b3cb229851aba101eca1ea6232a2f087b70fa7d724f270d8c0d8f8",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6000BA&brand=Westinghouse",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6000BA&brand=Westinghouse",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T16:57:43.590Z",
+          "contentSha256": "a46732ddc8d9f0ee1f5f7ce4e3921ed1b8f955951ac60cd665d408b422891628",
+          "objectPath": "evidence/web/sha256/a4/67/a46732ddc8d9f0ee1f5f7ce4e3921ed1b8f955951ac60cd665d408b422891628.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1122086,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WQE6000BA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 896
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "1a9b059d13ae3f7054ca5602a3421f517ff3d010113fa0329bbbcee150536280",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "1a9b059d13ae3f7054ca5602a3421f517ff3d010113fa0329bbbcee150536280",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 781
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "1a9b059d13ae3f7054ca5602a3421f517ff3d010113fa0329bbbcee150536280",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "a46732ddc8d9f0ee1f5f7ce4e3921ed1b8f955951ac60cd665d408b422891628",
+            "contentSha256": "4b95beba2c2a6fa99bf08c00005823166ac691d69c54bc1245d3cd91179725d3",
+            "objectPath": "evidence/derived/mineru-json/sha256/4b/95/4b95beba2c2a6fa99bf08c00005823166ac691d69c54bc1245d3cd91179725d3.json",
+            "byteSize": 46192,
+            "pageCount": 7
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6000BA:page:1:c5b90aaaf1d59cfcba0b51ec0f990396fcad330749f804855dc83c5117aa82e6"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6000BA:page:2:3773a326fb2b99bd2f764e1124025bdbe94690a5236c18c8b2c68d82e2588167"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6000BA:page:3:64dc5b8f95fbee57cecf24dc80ef1493148437dbca8f8b877383d473652b81e6"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6000BA:page:4:ec5e5a52196a001b123df40147d40a48fe146f048b42da54522049f8778da4b1"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6000BA:page:5:bd3858df1300402122c21ea12fd4ce4758e389798ce7f429fa2de857c90e101a"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6000BA:page:6:6fba1ccd8c592ea8a92a6a730aa39881724ddf8484a84a978327eef01126a48d"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6000BA:page:7:4c4c99cadc8ccea971979566cdf3a1f57c94b50f3dad5a13628ca9108eb787c9"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "WQE6000BA:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T16:57:43.590Z",
+            "bindingSha256": "da5a4451e8a8f4d055692cde15ad557af4c516be61035324960b9048d4a35e86"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 896,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 781
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6000BA&brand=Westinghouse",
+            "contentSha256": "a46732ddc8d9f0ee1f5f7ce4e3921ed1b8f955951ac60cd665d408b422891628",
+            "receiptBindingSha256": "da5a4451e8a8f4d055692cde15ad557af4c516be61035324960b9048d4a35e86",
+            "page": 4,
+            "fragmentSha256": "1a9b059d13ae3f7054ca5602a3421f517ff3d010113fa0329bbbcee150536280"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6000BA&brand=Westinghouse",
+            "contentSha256": "a46732ddc8d9f0ee1f5f7ce4e3921ed1b8f955951ac60cd665d408b422891628",
+            "receiptBindingSha256": "da5a4451e8a8f4d055692cde15ad557af4c516be61035324960b9048d4a35e86",
+            "page": 4,
+            "fragmentSha256": "1a9b059d13ae3f7054ca5602a3421f517ff3d010113fa0329bbbcee150536280"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6000BA&brand=Westinghouse",
+            "contentSha256": "a46732ddc8d9f0ee1f5f7ce4e3921ed1b8f955951ac60cd665d408b422891628",
+            "receiptBindingSha256": "da5a4451e8a8f4d055692cde15ad557af4c516be61035324960b9048d4a35e86",
+            "page": 4,
+            "fragmentSha256": "1a9b059d13ae3f7054ca5602a3421f517ff3d010113fa0329bbbcee150536280"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "a46732ddc8d9f0ee1f5f7ce4e3921ed1b8f955951ac60cd665d408b422891628"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_9652156024e9aa6bfbd8b701",
       "referenceId": "fa_ref_041ae5be1769136038e1595a",
       "legacyRuntimeId": "fridge-arf3512",
@@ -17419,6 +19428,249 @@
         "activeSourceHashes": [
           "6c9b8413e7027756b02248f0ff847320958cf0369fb67b9ce3819d55e2521f94"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_96843f29d072d381536997f1",
+      "referenceId": "fa_ref_587d0038dbb5fc8f052f05e3",
+      "legacyRuntimeId": "ao-77092",
+      "canonicalProductId": "fa_prod_d546014bba141d2a45a337c1",
+      "brand": "Westinghouse",
+      "model": "WHE5264SB",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-2620adfc0291fafe42cd89ed-slice-d1d7dc734c1f",
+      "auditSha256": "654ab62d33b3cb229851aba101eca1ea6232a2f087b70fa7d724f270d8c0d8f8",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SB&brand=Westinghouse",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SB&brand=Westinghouse",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T16:58:09.373Z",
+          "contentSha256": "fb4399c03abb2e9cda53fa8354614908c234bd6686515d22e01b54f8102d9235",
+          "objectPath": "evidence/web/sha256/fb/43/fb4399c03abb2e9cda53fa8354614908c234bd6686515d22e01b54f8102d9235.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1020078,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WHE5264SB",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 796
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "b9740ac39c09c5df517d0a43fbf24fb0ed963eba8ca5ac2b7e587c59cd378a96",
+              "bbox": [
+                516,
+                229,
+                939,
+                888
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "b9740ac39c09c5df517d0a43fbf24fb0ed963eba8ca5ac2b7e587c59cd378a96",
+              "bbox": [
+                516,
+                229,
+                939,
+                888
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 769
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "b9740ac39c09c5df517d0a43fbf24fb0ed963eba8ca5ac2b7e587c59cd378a96",
+              "bbox": [
+                516,
+                229,
+                939,
+                888
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "fb4399c03abb2e9cda53fa8354614908c234bd6686515d22e01b54f8102d9235",
+            "contentSha256": "ccd2b682b12f85ecac3326c85903378b0c8ede5bbaf52aa0b0ba9f6b55bf22e4",
+            "objectPath": "evidence/derived/mineru-json/sha256/cc/d2/ccd2b682b12f85ecac3326c85903378b0c8ede5bbaf52aa0b0ba9f6b55bf22e4.json",
+            "byteSize": 47789,
+            "pageCount": 7
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5264SB:page:1:c1594eab5993ffd3307e3e98b27ef090c7ef17dc822c9fc6e989cd620f2e768f"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5264SB:page:2:36e83ae49431b5701b6894747f3a38b54a6d4c02c3de4ee37d9b531e4d109e7f"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5264SB:page:3:da18f04ab4864e165670efba17c3140fe127154f042ecdd43e2e87a609aaac4d"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5264SB:page:4:3fa0b1f1e4e3fbed56dc4937952992b357ba0f62ea90fb6df4c40c0a9b1c9fbc"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5264SB:page:5:73c3fc0386e7d1fd565bc7f544c6a4e2cc1690a415353cec33ca2b25f98e4386"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5264SB:page:6:340812d88204f3bddece67d292d603ff55d17a67f42b7cdbcb99370fc17ef3ba"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WHE5264SB:page:7:2cfeacf3dcd7780184d587208f2087913e55b8dd34cda9a416b7ab0b33c604a1"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "WHE5264SB:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T16:58:09.373Z",
+            "bindingSha256": "a74f00e980a08d5578a0c66e5b83f3e6f30087426e2be107cd112c98afdb6503"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 796,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 769
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SB&brand=Westinghouse",
+            "contentSha256": "fb4399c03abb2e9cda53fa8354614908c234bd6686515d22e01b54f8102d9235",
+            "receiptBindingSha256": "a74f00e980a08d5578a0c66e5b83f3e6f30087426e2be107cd112c98afdb6503",
+            "page": 4,
+            "fragmentSha256": "b9740ac39c09c5df517d0a43fbf24fb0ed963eba8ca5ac2b7e587c59cd378a96"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SB&brand=Westinghouse",
+            "contentSha256": "fb4399c03abb2e9cda53fa8354614908c234bd6686515d22e01b54f8102d9235",
+            "receiptBindingSha256": "a74f00e980a08d5578a0c66e5b83f3e6f30087426e2be107cd112c98afdb6503",
+            "page": 4,
+            "fragmentSha256": "b9740ac39c09c5df517d0a43fbf24fb0ed963eba8ca5ac2b7e587c59cd378a96"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SB&brand=Westinghouse",
+            "contentSha256": "fb4399c03abb2e9cda53fa8354614908c234bd6686515d22e01b54f8102d9235",
+            "receiptBindingSha256": "a74f00e980a08d5578a0c66e5b83f3e6f30087426e2be107cd112c98afdb6503",
+            "page": 4,
+            "fragmentSha256": "b9740ac39c09c5df517d0a43fbf24fb0ed963eba8ca5ac2b7e587c59cd378a96"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "fb4399c03abb2e9cda53fa8354614908c234bd6686515d22e01b54f8102d9235"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
       }
     },
     {
@@ -27660,6 +29912,249 @@
       }
     },
     {
+      "targetId": "recovery_target_e0a653dcb8f779ed20bc0ff1",
+      "referenceId": "fa_ref_0b6b6a1a2b9d26e8a18ba93f",
+      "legacyRuntimeId": "ao-67923",
+      "canonicalProductId": "fa_prod_2eea0e16a47d48728a212f1a",
+      "brand": "Westinghouse",
+      "model": "WQE6000SA",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-2620adfc0291fafe42cd89ed-slice-d1d7dc734c1f",
+      "auditSha256": "654ab62d33b3cb229851aba101eca1ea6232a2f087b70fa7d724f270d8c0d8f8",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6000SA&brand=Westinghouse",
+          "finalUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6000SA&brand=Westinghouse",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T16:58:35.664Z",
+          "contentSha256": "c632a4757eeba02a2296a9019c985e10ba61e4d5c0417af06e0c3f3dac278183",
+          "objectPath": "evidence/web/sha256/c6/32/c632a4757eeba02a2296a9019c985e10ba61e4d5c0417af06e0c3f3dac278183.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 588311,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Westinghouse",
+            "model": "WQE6000SA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 896
+              },
+              "sourceLabel": "Total width (mm)",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "9fc4c487a43c209cb80bf1781f92de9653e922437ee322928ac153b3a371df3f",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1725
+              },
+              "sourceLabel": "Total height (mm)",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "9fc4c487a43c209cb80bf1781f92de9653e922437ee322928ac153b3a371df3f",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 781
+              },
+              "sourceLabel": "Total depth (mm)",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 4,
+              "fragmentSha256": "9fc4c487a43c209cb80bf1781f92de9653e922437ee322928ac153b3a371df3f",
+              "bbox": [
+                516,
+                229,
+                939,
+                887
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "c632a4757eeba02a2296a9019c985e10ba61e4d5c0417af06e0c3f3dac278183",
+            "contentSha256": "fcf166d84416f5bf7eb00712d6d9d6559b065b8cbaf19387952a2f0ebeb42d45",
+            "objectPath": "evidence/derived/mineru-json/sha256/fc/f1/fcf166d84416f5bf7eb00712d6d9d6559b065b8cbaf19387952a2f0ebeb42d45.json",
+            "byteSize": 52933,
+            "pageCount": 7
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6000SA:page:1:c141036e8a4f6d0126abc45cfa6d39ea5611f98294023063244f0010bdaa2c88"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6000SA:page:2:266e4f3b396887d0855b7ef1de7d28bf8aa461a76fa51a72e5583317b45e553e"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6000SA:page:3:121a3c0d06ed32d70eb08617118855d49c4c63a06559c60a882c78e9fbb78376"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6000SA:page:4:60e58415f47c4c88a08139967d4294c89e0451a352227a843483418b5226bb3b"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6000SA:page:5:bc14a94ad72c2f0fd32988298437f57a9064bdc52b77da00126a5eb85adc5b4a"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6000SA:page:6:aebf521ae401bce41bcdad6500ce994a1b7d54627881c51c5f6faf557861c3ad"
+            },
+            {
+              "type": "mineru_page_header_model",
+              "value": "WQE6000SA:page:7:fd981e22406354cface75c20c281f76561c7d66ab9eb57b28402cb2b59404317"
+            },
+            {
+              "type": "mineru_repeated_page_header_model",
+              "value": "WQE6000SA:document:repeated-page-header"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T16:58:35.664Z",
+            "bindingSha256": "c4468c4fa2032a2515f943140963359443c0273c0e127357456768d053f946ef"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 896,
+            "heightMm": {
+              "minimumMm": 1725,
+              "maximumMm": 1725
+            },
+            "depthMm": 781
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6000SA&brand=Westinghouse",
+            "contentSha256": "c632a4757eeba02a2296a9019c985e10ba61e4d5c0417af06e0c3f3dac278183",
+            "receiptBindingSha256": "c4468c4fa2032a2515f943140963359443c0273c0e127357456768d053f946ef",
+            "page": 4,
+            "fragmentSha256": "9fc4c487a43c209cb80bf1781f92de9653e922437ee322928ac153b3a371df3f"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6000SA&brand=Westinghouse",
+            "contentSha256": "c632a4757eeba02a2296a9019c985e10ba61e4d5c0417af06e0c3f3dac278183",
+            "receiptBindingSha256": "c4468c4fa2032a2515f943140963359443c0273c0e127357456768d053f946ef",
+            "page": 4,
+            "fragmentSha256": "9fc4c487a43c209cb80bf1781f92de9653e922437ee322928ac153b3a371df3f"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WQE6000SA&brand=Westinghouse",
+            "contentSha256": "c632a4757eeba02a2296a9019c985e10ba61e4d5c0417af06e0c3f3dac278183",
+            "receiptBindingSha256": "c4468c4fa2032a2515f943140963359443c0273c0e127357456768d053f946ef",
+            "page": 4,
+            "fragmentSha256": "9fc4c487a43c209cb80bf1781f92de9653e922437ee322928ac153b3a371df3f"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "c632a4757eeba02a2296a9019c985e10ba61e4d5c0417af06e0c3f3dac278183"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_e481b7a7f66fc12825df1cc3",
       "referenceId": "fa_ref_83bd985062196f48441767df",
       "legacyRuntimeId": "discovery-washing-machine-samsung-ww11cg60adlb",
@@ -30711,6 +33206,13 @@
       "queueSha256": "b7b1e3906e68d29c405543a4abcb400efa24570bdb4515e218c9850d73928885",
       "resultsSha256": "f7a7e3328ea13e51c39cd1d5503fc6af3af08d6a8c9208bde3acbc286bc81f57",
       "auditSha256": "ac424dd0d3e606db81a9b5397403e851de4a4ce4a3addc9582adebd0834d18e6"
+    },
+    {
+      "batchId": "historical-recovery-2620adfc0291fafe42cd89ed-slice-d1d7dc734c1f",
+      "batchSha256": "451cede137a39d58a0daa9c793ffd94c3eea5c7f0a968b11d8059ec7d9a45f0a",
+      "queueSha256": "23c53529e06eaf816b80959d07c1f5759f84f439b9701aee270db63802ddc53e",
+      "resultsSha256": "808b3199e7ae50d16bd1b222b7a2dfced7bbfd4944b4e1fc4e4d32b16b1ec3bc",
+      "auditSha256": "654ab62d33b3cb229851aba101eca1ea6232a2f087b70fa7d724f270d8c0d8f8"
     },
     {
       "batchId": "historical-recovery-295a0b43a0a3006bcbcdaac0-slice-12ae5cee9699",

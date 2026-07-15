@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-15T16:47:38.606Z
+Generated: 2026-07-15T16:59:58.049Z
 
 Coverage: **8,095 / 8,095** unique historical models.
 Models with document links: **1,770**; without links: **6,325**.
@@ -13,19 +13,19 @@ This is a research and repair classification. It does not grant publication auth
 | --- | --- | --- | --- |
 | dishwasher | 1419 | 94 | 985 |
 | dryer | 843 | 72 | 261 |
-| fridge | 4336 | 121 | 2253 |
+| fridge | 4336 | 121 | 2263 |
 | washing_machine | 1497 | 88 | 649 |
 
 ## Operational Classes
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 133 |
+| COMPLETE_RECEIPT | 143 |
 | CONFLICT_QUARANTINE | 83 |
 | IDENTITY_RESEARCH | 193 |
 | OFFICIAL_DISCOVERY | 6426 |
 | OFFICIAL_REACQUIRE | 6 |
-| REFERENCE_REDISCOVERY | 1254 |
+| REFERENCE_REDISCOVERY | 1244 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 
@@ -87,8 +87,8 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | Haier | OFFICIAL_DISCOVERY | 118 |
 | fridge | LG | OFFICIAL_DISCOVERY | 118 |
 | washing_machine | Kogan | OFFICIAL_DISCOVERY | 108 |
-| fridge | Westinghouse | REFERENCE_REDISCOVERY | 103 |
 | fridge | Haier | REFERENCE_REDISCOVERY | 96 |
+| fridge | Westinghouse | REFERENCE_REDISCOVERY | 93 |
 | fridge | MITSUBISHI ELECTRIC | OFFICIAL_DISCOVERY | 90 |
 | fridge | Fisher & Paykel | REFERENCE_REDISCOVERY | 85 |
 | dishwasher | Smeg | OFFICIAL_DISCOVERY | 78 |

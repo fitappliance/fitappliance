@@ -8,35 +8,35 @@
     "authorityContextRequired": true
   },
   "summary": {
-    "documents": 1544,
-    "fetchJobs": 1507,
-    "targets": 1541,
-    "candidateEdges": 1544,
+    "documents": 1534,
+    "fetchJobs": 1497,
+    "targets": 1531,
+    "candidateEdges": 1534,
     "multiCandidateTargets": 3,
-    "uniqueReferences": 1541,
+    "uniqueReferences": 1531,
     "byCurrentAction": {
       "CONFIRM_REQUIRED": 444,
-      "MEASURE_REQUIRED": 1072,
+      "MEASURE_REQUIRED": 1062,
       "QUARANTINED": 25
     },
     "byLifecycle": {
       "CATALOG_ARCHIVED": 281,
-      "CURRENT_RETAIL": 1260
+      "CURRENT_RETAIL": 1250
     },
     "byCategory": {
       "dishwasher": 352,
       "dryer": 69,
-      "fridge": 889,
+      "fridge": 879,
       "washing_machine": 231
     },
     "byAcquisitionRoute": {
-      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1203,
+      "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY": 1193,
       "OFFICIAL_HOST_AUTHORITY_VALIDATION": 246,
       "OFFICIAL_RECEIPT_REBUILD": 7,
       "OFFICIAL_SOURCE_DISCOVERY_REQUIRED": 51
     },
     "excluded": {
-      "ALREADY_AUTO_FILL": 63,
+      "ALREADY_AUTO_FILL": 73,
       "HISTORICAL_REFERENCE_NOT_FOUND": 144,
       "IDENTITY_NOT_EXACT": 196,
       "NOT_LEGACY_PROVENANCE_GAP": 58
@@ -1185,32 +1185,6 @@
       ],
       "targetIds": [
         "recovery_target_cab94f1d376848768bacb7ea"
-      ]
-    },
-    {
-      "jobId": "recovery_2dcf5bc0daab09e92195c6c3",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/0/3/4/0/0340185873b00f997f61da6fdb6e19b6f3343ee6_WQE6060SA_Westinghouse_Specifications_Sheet.pdf",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_5c8ef5d212fa00e6640f9c9f"
       ]
     },
     {
@@ -4773,32 +4747,6 @@
       ],
       "targetIds": [
         "recovery_target_14c17846b4021531f85e43c1"
-      ]
-    },
-    {
-      "jobId": "recovery_c0a114bc50a1118ed67750ba",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/2/6/7/0/26701c1bb1880eb7ba428c7e192dcd28db995748_WQE6000SA_Datasheet.pdf",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_e0a653dcb8f779ed20bc0ff1"
       ]
     },
     {
@@ -10938,32 +10886,6 @@
       ]
     },
     {
-      "jobId": "recovery_c20cadb92909fc94fa5976ea",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/0/0/a/600af2b4ce22af972c0d6d0803546653916fdc69_Westinghouse_WHE6000SA_605L_French_Door_Fridge_Specifications_Sheet.pdf",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_603720128fb92819766d95a1"
-      ]
-    },
-    {
       "jobId": "recovery_ee06c14b90ae0ebda84f2f60",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/6/0/2/e/602e3e9771b703f127b0fb89896d2ade86ffa1aa_SRF825BFH4_Samsung_Specifications_Sheet.pdf",
       "authorityBrand": "Samsung",
@@ -12053,32 +11975,6 @@
       ],
       "targetIds": [
         "recovery_target_af96f6733cdd0799d2a6978b"
-      ]
-    },
-    {
-      "jobId": "recovery_b338004b938df7d028bf9ed1",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/6/9/a/3/69a3956f87ca94ecbcc2844d0a6a9a21f1fb152f_WHE6060SA_Westinghouse_Specifications_Sheet.pdf",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_7076448df4783a7370ea548c"
       ]
     },
     {
@@ -15436,32 +15332,6 @@
       ]
     },
     {
-      "jobId": "recovery_9222d690077782924a241caa",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/8/8/3/7/88371cef5784eae1b28fbade4e3fe61be99e9d8b_WQE6060BA_Specifications_Sheet.pdf",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_4a85f8720fa94ab3d6239fe5"
-      ]
-    },
-    {
       "jobId": "recovery_0272e410bc73f40793aff26c",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/8/8/6/e/886ed153de4f72ac78f7db37ec644d0de6fab8ec_CTM216W_CHiQ_Specifications_Sheet.pdf",
       "authorityBrand": "CHIQ",
@@ -17565,32 +17435,6 @@
       ],
       "targetIds": [
         "recovery_target_b0fb45b4988b622780278e09"
-      ]
-    },
-    {
-      "jobId": "recovery_b00eb20470a14c42465b9901",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/9/f/7/b/9f7b9a7e64f382c41b02728e9ed69186f83f6e1f_WHE5264SB_Specifications_Sheet.pdf",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_96843f29d072d381536997f1"
       ]
     },
     {
@@ -23002,32 +22846,6 @@
       ]
     },
     {
-      "jobId": "recovery_1988cb77854a89ecfd21fe30",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/d/5/3/f/d53f60ce9d9ef3f3d3aa6a1036034befab87a549_WHE5204BB_Specifications_Sheet.pdf",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_90b338b366512ddcbe460921"
-      ]
-    },
-    {
       "jobId": "recovery_2f8d55f3eee469a52b7baee6",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/d/5/b/f/d5bf29c485d2d28244511f0d76f92ef11ffae5e6_wsf6608w_usermanual.pdf",
       "authorityBrand": "Westinghouse",
@@ -23363,32 +23181,6 @@
       ],
       "targetIds": [
         "recovery_target_cf5d37729390f403a5947dde"
-      ]
-    },
-    {
-      "jobId": "recovery_345c820833dcbc5b00b67b36",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/d/8/9/c/d89cd74efef64bb64372eb717d09c63dff4e9693_Westinghouse_WRB5004SA_501L_Upright_Fridge_Datasheet.pdf",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_6fa8749ec77ab4efea5335df"
       ]
     },
     {
@@ -26148,32 +25940,6 @@
       ]
     },
     {
-      "jobId": "recovery_f98505fe0ebb670f78866386",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/f/6/e/3/f6e360a53631d397df7670dc1d6fc931da76ed2a_WHE5204SB_Specifications_Sheet.pdf",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_682c770da6707bb55c873a24"
-      ]
-    },
-    {
       "jobId": "recovery_b7e6d127d2634442bd4aad92",
       "sourceUrl": "https://www.appliancesonline.com.au/ak/f/6/f/4/f6f46457309ecc8ad8525497c91f949350c661f2_LG_WF_T8582_8.5kg_Top_Load_Washing_Machine_Specifications_Sheet.pdf",
       "authorityBrand": "LG",
@@ -26769,32 +26535,6 @@
       ],
       "targetIds": [
         "recovery_target_a9bbd29655f4b64c526a92a6"
-      ]
-    },
-    {
-      "jobId": "recovery_b9807c86100f1c68546d4a35",
-      "sourceUrl": "https://www.appliancesonline.com.au/ak/f/b/1/d/fb1d1b1c6222b694df075f76c1d325b45bc3f8ee_WQE6000BA_Westinghouse_Specifications_Sheet.pdf",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "reference",
-      "acquisitionRoute": "MIRROR_PARSE_AND_OFFICIAL_REDISCOVERY",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "transportHostTypes": [
-        "retailer"
-      ],
-      "authorTypes": [
-        "unknown"
-      ],
-      "checkpoints": [
-        "FETCH_AND_HASH",
-        "MINERU_CONTENT_LIST_V2",
-        "EXACT_MODEL_IDENTITY",
-        "AXIS_AND_RANGE_SEMANTICS",
-        "OFFICIAL_SOURCE_AUTHORITY",
-        "CROSS_SOURCE_CONFLICT_CHECK",
-        "RECEIPT_BOUND_PROJECTION"
-      ],
-      "targetIds": [
-        "recovery_target_94cc4303854e5b5e9d6c8463"
       ]
     },
     {
@@ -79074,416 +78814,6 @@
         "recovery_f51a71bd9b5b68d994335cf3"
       ],
       "primaryJobId": "recovery_f51a71bd9b5b68d994335cf3"
-    },
-    {
-      "referenceId": "fa_ref_c72bdeee73eafc3695793544",
-      "legacyRuntimeId": "ao-77090",
-      "canonicalProductId": "fa_prod_1fde83b1fd4bdb0486d2972d",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WHE5204BB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 796,
-        "height": 1725,
-        "depth": 769
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_90b338b366512ddcbe460921",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a55613eaa20b9cc20440fa8e"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a55613eaa20b9cc20440fa8e",
-          "dimensionsMm": {
-            "width": 796,
-            "height": 1725,
-            "depth": 769
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_1988cb77854a89ecfd21fe30"
-      ],
-      "primaryJobId": "recovery_1988cb77854a89ecfd21fe30"
-    },
-    {
-      "referenceId": "fa_ref_d8a5c8b84d5db6b0eced3a4f",
-      "legacyRuntimeId": "ao-77091",
-      "canonicalProductId": "fa_prod_e2e108a378f37e53eefa4e36",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WHE5204SB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 796,
-        "height": 1725,
-        "depth": 769
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_682c770da6707bb55c873a24",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_e6a3f8df92230e2b93245432"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_e6a3f8df92230e2b93245432",
-          "dimensionsMm": {
-            "width": 796,
-            "height": 1725,
-            "depth": 769
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_f98505fe0ebb670f78866386"
-      ],
-      "primaryJobId": "recovery_f98505fe0ebb670f78866386"
-    },
-    {
-      "referenceId": "fa_ref_587d0038dbb5fc8f052f05e3",
-      "legacyRuntimeId": "ao-77092",
-      "canonicalProductId": "fa_prod_d546014bba141d2a45a337c1",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WHE5264SB",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 796,
-        "height": 1725,
-        "depth": 769
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_96843f29d072d381536997f1",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_a8362a280ab6f108d05dcb80"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_a8362a280ab6f108d05dcb80",
-          "dimensionsMm": {
-            "width": 796,
-            "height": 1725,
-            "depth": 769
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_b00eb20470a14c42465b9901"
-      ],
-      "primaryJobId": "recovery_b00eb20470a14c42465b9901"
-    },
-    {
-      "referenceId": "fa_ref_bcf93b6294e4446a1e7ae8a9",
-      "legacyRuntimeId": "ao-61196",
-      "canonicalProductId": "fa_prod_33640162d13a63879d55ea5d",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WHE6000SA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 896,
-        "height": 1725,
-        "depth": 781
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_603720128fb92819766d95a1",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_ad9d3f956fe1fabe7b763d76"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_ad9d3f956fe1fabe7b763d76",
-          "dimensionsMm": {
-            "width": 896,
-            "height": 1725,
-            "depth": 781
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_c20cadb92909fc94fa5976ea"
-      ],
-      "primaryJobId": "recovery_c20cadb92909fc94fa5976ea"
-    },
-    {
-      "referenceId": "fa_ref_93692f0146390a77b600b4c6",
-      "legacyRuntimeId": "ao-61197",
-      "canonicalProductId": "fa_prod_6d95801d272932af518d6df3",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WHE6060SA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 896,
-        "height": 1725,
-        "depth": 781
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_7076448df4783a7370ea548c",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_72734fe7b51eeebb71239659"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_72734fe7b51eeebb71239659",
-          "dimensionsMm": {
-            "width": 896,
-            "height": 1725,
-            "depth": 781
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_b338004b938df7d028bf9ed1"
-      ],
-      "primaryJobId": "recovery_b338004b938df7d028bf9ed1"
-    },
-    {
-      "referenceId": "fa_ref_09c1c5243c09138991e858f3",
-      "legacyRuntimeId": "ao-77093",
-      "canonicalProductId": "fa_prod_9d4474c167daeb75416c9eee",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WQE6000BA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 896,
-        "height": 1725,
-        "depth": 781
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_94cc4303854e5b5e9d6c8463",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_dc3d3c8741aa588b918ff21b"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_dc3d3c8741aa588b918ff21b",
-          "dimensionsMm": {
-            "width": 896,
-            "height": 1725,
-            "depth": 781
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_b9807c86100f1c68546d4a35"
-      ],
-      "primaryJobId": "recovery_b9807c86100f1c68546d4a35"
-    },
-    {
-      "referenceId": "fa_ref_0b6b6a1a2b9d26e8a18ba93f",
-      "legacyRuntimeId": "ao-67923",
-      "canonicalProductId": "fa_prod_2eea0e16a47d48728a212f1a",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WQE6000SA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 896,
-        "height": 1725,
-        "depth": 781
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_e0a653dcb8f779ed20bc0ff1",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_6a08da4f4e18abccff4de51d"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_6a08da4f4e18abccff4de51d",
-          "dimensionsMm": {
-            "width": 896,
-            "height": 1725,
-            "depth": 781
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_c0a114bc50a1118ed67750ba"
-      ],
-      "primaryJobId": "recovery_c0a114bc50a1118ed67750ba"
-    },
-    {
-      "referenceId": "fa_ref_3f4fd8513122db0e7a41495e",
-      "legacyRuntimeId": "ao-77094",
-      "canonicalProductId": "fa_prod_920c9fd11e29b22692cb9955",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WQE6060BA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 896,
-        "height": 1725,
-        "depth": 781
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_4a85f8720fa94ab3d6239fe5",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_59f58345e47b498c50d70eb4"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_59f58345e47b498c50d70eb4",
-          "dimensionsMm": {
-            "width": 896,
-            "height": 1725,
-            "depth": 781
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_9222d690077782924a241caa"
-      ],
-      "primaryJobId": "recovery_9222d690077782924a241caa"
-    },
-    {
-      "referenceId": "fa_ref_83bc0937dd02828e72a9ab08",
-      "legacyRuntimeId": "ao-67924",
-      "canonicalProductId": "fa_prod_18a492a6cb9b55c9832b7f3c",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WQE6060SA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 896,
-        "height": 1725,
-        "depth": 781
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_5c8ef5d212fa00e6640f9c9f",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_e8f567397703e8467d08af97"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_e8f567397703e8467d08af97",
-          "dimensionsMm": {
-            "width": 896,
-            "height": 1725,
-            "depth": 781
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_2dcf5bc0daab09e92195c6c3"
-      ],
-      "primaryJobId": "recovery_2dcf5bc0daab09e92195c6c3"
-    },
-    {
-      "referenceId": "fa_ref_b7b4ebdfa7a0c9091baef4b3",
-      "legacyRuntimeId": "ao-53552",
-      "canonicalProductId": "fa_prod_ba5e32005c16048bed6cc424",
-      "category": "fridge",
-      "brand": "Westinghouse",
-      "model": "WRB5004SA",
-      "lifecycleState": "CURRENT_RETAIL",
-      "currentLookupAction": "MEASURE_REQUIRED",
-      "priorityClass": "P0_CURRENT_MISSING_DIMENSIONS",
-      "legacyDimensionHintMm": {
-        "width": 699,
-        "height": 1725,
-        "depth": 720
-      },
-      "registryDimensionHints": [],
-      "publicationEligible": false,
-      "targetId": "recovery_target_6fa8749ec77ab4efea5335df",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "sourceDocumentIds": [
-        "doc_ac7be35fd0886a6923bb1e46"
-      ],
-      "legacyHints": [
-        {
-          "sourceDocumentId": "doc_ac7be35fd0886a6923bb1e46",
-          "dimensionsMm": {
-            "width": 699,
-            "height": 1725,
-            "depth": 720
-          }
-        }
-      ],
-      "candidateJobIds": [
-        "recovery_345c820833dcbc5b00b67b36"
-      ],
-      "primaryJobId": "recovery_345c820833dcbc5b00b67b36"
     },
     {
       "referenceId": "fa_ref_ab317975ab585e77cfdbf2eb",

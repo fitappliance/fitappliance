@@ -253,8 +253,11 @@ test('committed source queue matches its audited epoch and excludes scalar promo
     assert.equal(committedQueue.targets.some((target) => target.model === promotedModel), false);
     assert.equal(rebuilt.targets.some((target) => target.model === promotedModel), false);
   }
-  assert.ok(committedQueue.summary.fetchJobs > 1_500);
-  assert.ok(committedQueue.summary.uniqueReferences > 1_500);
+  assert.equal(committedQueue.summary.fetchJobs, committedQueue.jobs.length);
+  assert.equal(
+    committedQueue.summary.uniqueReferences,
+    new Set(committedQueue.targets.map((target) => target.referenceId)).size,
+  );
   assert.equal(new Set(committedQueue.jobs.map((job) => job.sourceUrl)).size, committedQueue.jobs.length);
   assert.ok(committedQueue.targets.every((target) => target.publicationEligible === false));
   assert.equal(new Set(committedQueue.targets.map((target) => target.targetId)).size, committedQueue.targets.length);
