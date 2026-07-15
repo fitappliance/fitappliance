@@ -64,6 +64,18 @@ function sourceBinding(source) {
   };
 }
 
+function outcomeIdentity(outcome) {
+  if (typeof outcome?.identity === 'string') return outcome.identity;
+  return outcome?.identity?.outcome ?? outcome?.source?.identity?.outcome ?? null;
+}
+
+function isTerminalResultAcceptance(outcome) {
+  const accepted = (outcome.outcome === 'accepted' && outcome.receipt === 'passed')
+    || ['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status)
+    || ['accepted', 'receipt_accepted_non_scalar'].includes(outcome.acceptanceStatus);
+  return accepted && outcomeIdentity(outcome) === 'exact';
+}
+
 function indexPriorAcceptance(existingAcceptanceBundles) {
   if (!Array.isArray(existingAcceptanceBundles)) {
     throw new TypeError('existingAcceptanceBundles must be an array');
@@ -105,11 +117,7 @@ function indexPriorAcceptance(existingAcceptanceBundles) {
     for (const rawOutcome of resultContainer.outcomes ?? []) {
       const batchEntry = batchEntries.get(String(rawOutcome.id ?? rawOutcome.targetId ?? '')) ?? {};
       const outcome = { ...batchEntry, ...rawOutcome };
-      if ((outcome.outcome === 'accepted' && outcome.receipt === 'passed')
-        || ['accepted', 'receipt_accepted_non_scalar'].includes(outcome.status)
-        || ['accepted', 'receipt_accepted_non_scalar'].includes(outcome.acceptanceStatus)) {
-        markAccepted(outcome);
-      }
+      if (isTerminalResultAcceptance(outcome)) markAccepted(outcome);
       addSource(outcome, outcome.source);
     }
   }

@@ -458,6 +458,42 @@ test('promotion CLI receipt-audits the prospective cumulative bundle before publ
   });
 });
 
+test('promotion CLI keeps a failed prospective receipt replay out of the bundle and attempt ledger', async () => {
+  const fixture = acceptedFixture();
+  const audit = await runAudit(fixture);
+  const storageRoot = await mkdtemp(join(tmpdir(), 'fitappliance-promotion-failure-'));
+  const runDirectory = join(storageRoot, 'runs/historical-evidence-recovery', fixture.results.runId);
+  await mkdir(runDirectory, { recursive: true });
+  await writeFile(join(runDirectory, 'batch.json'), `${JSON.stringify(fixture.batch)}\n`);
+  for (const [relativePath, bytes] of fixture.objects) {
+    if (relativePath === fixture.source.derivedArtifact.objectPath) continue;
+    const absolutePath = join(storageRoot, relativePath);
+    await mkdir(dirname(absolutePath), { recursive: true });
+    await writeFile(absolutePath, bytes);
+  }
+  const resultsPath = join(storageRoot, 'results.json');
+  const auditPath = join(storageRoot, 'audit.json');
+  const bundlePath = join(storageRoot, 'bundle.json');
+  const receiptAuditPath = join(storageRoot, 'receipt-audit.json');
+  const attemptLedgerPath = join(storageRoot, 'attempt-ledger.json');
+  await writeFile(resultsPath, `${JSON.stringify(fixture.results)}\n`);
+  await writeFile(auditPath, `${JSON.stringify(audit)}\n`);
+
+  await assert.rejects(() => runPromotionCli({
+    results: resultsPath,
+    audit: auditPath,
+    bundle: bundlePath,
+    receiptAudit: receiptAuditPath,
+    attemptLedger: attemptLedgerPath,
+    storageRoot,
+  }), /prospective receipt replay failed/i);
+
+  const receiptAudit = JSON.parse(await readFile(receiptAuditPath, 'utf8'));
+  assert.deepEqual(receiptAudit.summary, { entries: 1, sources: 1, passed: 0, failed: 1 });
+  await assert.rejects(readFile(bundlePath, 'utf8'), { code: 'ENOENT' });
+  await assert.rejects(readFile(attemptLedgerPath, 'utf8'), { code: 'ENOENT' });
+});
+
 test('full audit repairs a legacy misparse only from the identical immutable artifact', async () => {
   const fixture = acceptedFixture();
   const priorBundle = await legacyMisparsedBundle(fixture);

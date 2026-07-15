@@ -427,6 +427,75 @@ test('lettered explicit axes are distinct from unlabelled dimension triples', ()
   assert.deepEqual(unlabelled.safeAxes, []);
 });
 
+test('knowledge records Bosch inline value-labelled axes while leaving malformed grouped labels unsupported', () => {
+  const result = extractDimensionExpressions({
+    pdfSha256: '1'.repeat(64),
+    contentSha256: '2'.repeat(64),
+    contentList: [[
+      paragraph('Serie | 6 dishwasher SCE53M05AU'),
+      paragraph('Dimensions of the product (width x depth) : 595 x 595 x 500'),
+      paragraph('- H: 595 mm x W: 595 mm x D: 500 mm'),
+    ]],
+    identities: [{ brand: 'Bosch', model: 'SCE53M05AU', category: 'dishwasher' }],
+  });
+  const inline = result.observations.find((row) => (
+    row.patternKind === 'INLINE_VALUE_LABELLED_AXIS_SEQUENCE'
+  ));
+  assert.equal(inline.parserDecision, 'SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE');
+  assert.deepEqual(inline.axisOrder, ['height', 'width', 'depth']);
+  assert.deepEqual(inline.safeAxes, ['height', 'width', 'depth']);
+  assert.equal(inline.unit, 'mm');
+  assert.equal(inline.unitPlacement, 'per_value');
+  assert.equal(inline.modelBinding, 'SAME_PAGE_EXACT_MODEL');
+  assert.doesNotMatch(inline.sourceQuote, /width x depth/i);
+  assert.ok(!result.observations.some((row) => (
+    /width x depth/i.test(row.sourceQuote)
+      && /^SUPPORTED_/.test(row.parserDecision)
+  )));
+});
+
+test('knowledge preserves grouped envelope qualifiers before classifying product, cut-out, and package dimensions', () => {
+  const result = extractDimensionExpressions({
+    pdfSha256: '3'.repeat(64),
+    contentSha256: '4'.repeat(64),
+    contentList: [[
+      paragraph('Example EX100'),
+      paragraph('Product Dimensions (H x W x D): 850 x 600 x 600 mm'),
+      paragraph('Cut-out Dimensions (H x W x D): 820 x 605 x 605 mm'),
+      paragraph('Package Dimensions (H x W x D): 900 x 650 x 650 mm'),
+      paragraph('Dimensions (Cavity) (H x W x D): 825 x 610 x 610 mm'),
+      paragraph('Dimensions (Packaged) (H x W x D): 905 x 655 x 655 mm'),
+    ]],
+    identities: [{ brand: 'Example', model: 'EX100', category: 'dishwasher' }],
+  });
+  const grouped = result.observations.filter((row) => row.patternKind === 'GROUPED_AXIS_SEQUENCE');
+  assert.equal(grouped.length, 5);
+
+  const product = grouped.find((row) => /^Product Dimensions/i.test(row.sourceLabel));
+  assert.equal(product.scope, 'product_closed_candidate');
+  assert.equal(product.parserDecision, 'SUPPORTED_EXPLICIT_GROUPED');
+  assert.deepEqual(product.safeAxes, ['height', 'width', 'depth']);
+
+  const cutOut = grouped.find((row) => /^Cut-out Dimensions/i.test(row.sourceLabel));
+  assert.equal(cutOut.scope, 'cavity_opening');
+  assert.equal(cutOut.parserDecision, 'REJECTED_NON_PRODUCT_SCOPE');
+  assert.deepEqual(cutOut.safeAxes, []);
+  assert.match(cutOut.sourceQuote, /^Cut-out Dimensions/i);
+
+  const packaged = grouped.find((row) => /^Package Dimensions/i.test(row.sourceLabel));
+  assert.equal(packaged.scope, 'delivery_package');
+  assert.equal(packaged.parserDecision, 'REJECTED_NON_PRODUCT_SCOPE');
+  assert.deepEqual(packaged.safeAxes, []);
+  assert.match(packaged.sourceQuote, /^Package Dimensions/i);
+
+  for (const qualified of grouped.filter((row) => /Cavity|Packaged/.test(row.sourceLabel))) {
+    assert.match(qualified.scope, /^(?:cavity_opening|delivery_package)$/);
+    assert.equal(qualified.parserDecision, 'REJECTED_NON_PRODUCT_SCOPE');
+    assert.deepEqual(qualified.safeAxes, []);
+    assert.match(qualified.sourceQuote, /Dimensions \((?:Cavity|Packaged)\)/);
+  }
+});
+
 test('knowledge base inventories every category and brand without inventing series from model prefixes', () => {
   const historicalRecords = [
     { category: 'fridge', brand: 'WESTINGHOUSE', model: 'WTB2800WH' },

@@ -310,6 +310,7 @@ function pdfIdentitySignals(
     caseIdentity,
     claimSemanticsVersion,
     fields: (source.claims ?? []).map((claim) => claim.field),
+    ...(claimSemanticsVersion === 2 ? { expectedClaims: source.claims } : {}),
     sourceUrls: [source.sourceUrl, source.finalUrl].filter(Boolean),
     ...(selectedBoundFamilyModel ? { boundFamilyModel: selectedBoundFamilyModel } : {}),
     ...(boundSeriesModel ? { boundSeriesModel } : {}),

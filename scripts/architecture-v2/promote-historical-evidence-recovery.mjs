@@ -98,6 +98,9 @@ export async function runPromotionCli(options) {
     readObject: objectStore.readObject,
   });
   await durableWrite(receiptAuditPath, receiptAudit);
+  if (receiptAudit.summary.failed !== 0) {
+    throw new Error(`prospective receipt replay failed for ${receiptAudit.summary.failed} source(s); acceptance bundle not published`);
+  }
   await durableWrite(attemptLedgerPath, attemptLedger);
   await durableWrite(bundlePath, bundle);
   Object.defineProperty(bundle, 'receiptAuditSummary', {

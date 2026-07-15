@@ -1,6 +1,6 @@
 # Appliance Dimension Expression Knowledge Base
 
-Generated: 2026-07-15T00:00:00.000Z
+Generated: 2026-07-16T00:00:00.000Z
 
 > This is a non-authoritative research sidecar. Brand, category, series and
 > document-family patterns must not authorise model claims, resolve ambiguous
@@ -13,16 +13,16 @@ Generated: 2026-07-15T00:00:00.000Z
 | Historical records | 8095 |
 | Categories | 4 |
 | Category-brand groups | 358 |
-| MinerU documents | 638 |
-| Valid MinerU documents | 637 |
+| MinerU documents | 653 |
+| Valid MinerU documents | 652 |
 | Invalid or orphaned MinerU documents | 1 |
-| Documents with recognised expressions | 348 |
-| Documents without recognised expressions | 289 |
-| Mapped MinerU documents | 603 |
+| Documents with recognised expressions | 364 |
+| Documents without recognised expressions | 288 |
+| Mapped MinerU documents | 618 |
 | Unmapped MinerU documents | 34 |
-| Dimension-expression observations | 902 |
-| Reusable PDF grammar profiles | 158 |
-| Research gaps | 734 |
+| Dimension-expression observations | 927 |
+| Reusable PDF grammar profiles | 166 |
+| Research gaps | 752 |
 
 A marketing-series count is a proven minimum, never an estimate of the
 manufacturer's complete range. `UNKNOWN` is intentional when official text
@@ -72,7 +72,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Bellini | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Bertazzoni | 4 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Blaupunkt | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Bosch | 19 | 2 | 2 | 2 | `MINERU_SAMPLE_OBSERVED` |
+| Bosch | 19 | 6 | 2 | 4 | `MINERU_SAMPLE_OBSERVED` |
 | Brabantia | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | BROMIC | 9 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | CASA | 20 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -196,7 +196,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | Bertazzoni | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | BLANCO | 5 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Blaupunkt | 6 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Bosch | 112 | 4 | 3 | 1 | `MINERU_SAMPLE_OBSERVED` |
+| Bosch | 112 | 8 | 3 | 4 | `MINERU_SAMPLE_OBSERVED` |
 | CASA | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Comfee | 9 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | De Dietrich | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -288,7 +288,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | AWARD | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | BEKO | 41 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | BL | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| BOSCH | 61 | 4 | 3 | 2 | `MINERU_SAMPLE_OBSERVED` |
+| BOSCH | 61 | 7 | 3 | 3 | `MINERU_SAMPLE_OBSERVED` |
 | CAMEC | 4 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | carson | 3 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | CHIQ | 41 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -374,7 +374,7 @@ and every extracted value still requires exact-model identity and receipt checks
 | ASKO | 24 | 2 | 0 | 1 | `MINERU_SAMPLE_OBSERVED` |
 | AWARD | 1 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | BEKO | 31 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
-| Bosch | 25 | 5 | 2 | 2 | `MINERU_SAMPLE_OBSERVED` |
+| Bosch | 25 | 9 | 3 | 4 | `MINERU_SAMPLE_OBSERVED` |
 | carson | 2 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | CHIQ | 16 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
 | Devanti | 4 | 0 | 0 | 0 | `NO_MINERU_SAMPLE` |
@@ -440,40 +440,42 @@ and every extracted value still requires exact-model identity and receipt checks
 | --- | ---: | --- |
 | `ALTERNATING_AXIS_VALUE_CELLS` | 7 | Diagram table alternating axis tokens and values, including D variants. |
 | `DOCUMENT_SCOPED_DIMENSION_MATRIX` | 1 | Dimension axes occupy columns but the exact model identity is elsewhere in the document. |
-| `GROUPED_AXIS_SEQUENCE` | 65 | Explicit axis order followed by one three-value sequence. |
-| `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | 9 | Explicit three-axis sequence plus a qualified alternative depth. |
+| `GROUPED_AXIS_SEQUENCE` | 77 | Explicit axis order followed by one three-value sequence. |
+| `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | 13 | Explicit three-axis sequence plus a qualified alternative depth. |
 | `HIERARCHICAL_DEPTH_VARIANTS` | 1 | A Depth parent row followed by explicitly qualified product-depth variants. |
-| `INDIVIDUAL_LABELLED_AXIS` | 183 | One named axis/value pair; combine only through independently proven model scope. |
+| `INDIVIDUAL_LABELLED_AXIS` | 184 | One named axis/value pair; combine only through independently proven model scope. |
 | `INDIVIDUALLY_LABELLED_AXES` | 280 | Two or more dimensions expressed as separate named axis/value pairs. |
-| `INLINE_LABELLED_AXES` | 87 | Observed parser research pattern. |
+| `INLINE_LABELLED_AXES` | 91 | Observed parser research pattern. |
+| `INLINE_VALUE_LABELLED_AXIS_SEQUENCE` | 2 | Each value carries its own explicit W, H, or D label and unit. |
 | `LETTERED_EXPLICIT_AXIS_LIST` | 6 | Diagram letters explicitly map to axis names and values. |
 | `MODEL_COLUMN_DIMENSION_MATRIX` | 1 | Models occupy columns and dimension axes occupy rows. |
 | `MODEL_ROW_DIMENSION_MATRIX` | 227 | Models occupy rows and dimension axes occupy columns. |
 | `NET_DIMENSION_SECTION` | 2 | Observed parser research pattern. |
 | `SUFFIXED_VALUE_AXIS_SEQUENCE` | 10 | Observed parser research pattern. |
-| `UNLABELLED_DIMENSION_TRIPLE` | 3 | Three values are present without a stated axis order. |
+| `UNLABELLED_DIMENSION_TRIPLE` | 5 | Three values are present without a stated axis order. |
 
 | Parser decision | Unique observations |
 | --- | ---: |
-| `REJECTED_NON_PRODUCT_SCOPE` | 103 |
+| `REJECTED_NON_PRODUCT_SCOPE` | 106 |
 | `RESEARCH_DOCUMENT_UNIQUE_SCOPE_REQUIRED` | 1 |
 | `RESEARCH_MODEL_ROW_BINDING_REQUIRED` | 163 |
 | `RESEARCH_MODEL_SCOPE_REQUIRED` | 32 |
 | `RESEARCH_MULTIPLE_VALUES_PER_AXIS` | 11 |
 | `RESEARCH_UNIT_MISSING` | 48 |
-| `RESEARCH_UNLABELLED_AXIS_ORDER` | 3 |
-| `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | 51 |
+| `RESEARCH_UNLABELLED_AXIS_ORDER` | 5 |
+| `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | 52 |
 | `SUPPORTED_DIAGRAM_PRIMARY_DEPTH_WITH_VARIANTS` | 6 |
 | `SUPPORTED_EXACT_MODEL_COLUMN_MATRIX` | 1 |
 | `SUPPORTED_EXACT_MODEL_ROW_MATRIX` | 22 |
-| `SUPPORTED_EXPLICIT_GROUPED` | 39 |
-| `SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH` | 8 |
+| `SUPPORTED_EXPLICIT_GROUPED` | 49 |
+| `SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH` | 10 |
 | `SUPPORTED_EXPLICIT_HANDLE_INCLUSIVE_DEPTH` | 1 |
-| `SUPPORTED_EXPLICIT_LABELS` | 387 |
+| `SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE` | 2 |
+| `SUPPORTED_EXPLICIT_LABELS` | 390 |
 | `SUPPORTED_EXPLICIT_NET_SECTION` | 2 |
 | `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_AXIS_COLUMNS` | 2 |
 | `SUPPORTED_PARTIAL_REJECT_AMBIGUOUS_DEPTH` | 1 |
-| `SUPPORTED_PARTIAL_REJECT_QUALIFIED_DEPTH_VARIANT` | 1 |
+| `SUPPORTED_PARTIAL_REJECT_QUALIFIED_DEPTH_VARIANT` | 3 |
 
 Model binding strength is ordered `SAME_FRAGMENT_EXACT_MODEL` >
 `SAME_PAGE_EXACT_MODEL` > `SAME_DOCUMENT_EXACT_MODEL` >
@@ -620,47 +622,74 @@ Inventory: 4336 models across 116 category-brand groups.
 
 - Raw brand variants: `BOSCH`, `Bosch`
 - Inventory models: 19
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 2
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 6
 - Proven marketing series: 2; total series count: `PROVEN_MINIMUM_ONLY`
-- PDF grammar profiles: 2
-- Complete exact-model parser replays: 2
+- PDF grammar profiles: 4
+- Complete exact-model parser replays: 3
 
 #### Series 4
 
 - Group type: `marketing_series`
 - Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
-- Models observed: `KFN96VPEAA`
-- PDF SHA-256: `e98fba90f973b261e8b51c49f50dcb9fd3e23dc8a907df2c30999a0ecc209941`
-- PDF grammar profiles: `pdf_grammar_03c1b2409a545411`
+- Models observed: `KAN92VI30A`, `KFN96VPEAA`, `KGN36VI3AA`
+- PDF SHA-256: `10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255`, `d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9`, `e98fba90f973b261e8b51c49f50dcb9fd3e23dc8a907df2c30999a0ecc209941`
+- PDF grammar profiles: `pdf_grammar_03c1b2409a545411`, `pdf_grammar_5b4575fe7b22db8b`, `pdf_grammar_b782a1b7a0a51ecb`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/KFN96VPEAA.pdf>
-- Series evidence: page 1, `Series 4, Multi Door Fridge Freezer, 183 x 90.5 cm, Brushed steel anti-fingerprint, Total NoFrost KFN96VPEAA`; page 2, `Series 4, Multi Door Fridge Freezer, 183 x 90.5 cm, Brushed steel anti-fingerprint, Total NoFrost KFN96VPEAA`; page 3, `Measurements in mm Series 4, Multi Door Fridge Freezer, 183 x 90.5 cm, Brushed steel anti-fingerprint, Total NoFrost KFN96VPEAA Measureme...`
+- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/KAN92VI30A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/KFN96VPEAA.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/KGN36VI3AA.pdf>
+- Series evidence: page 1, `Series 4, American side by side, 175.6 x 91.2 cm, Stainless steel (with antifingerprint) KAN92VI30A`; page 2, `Series 4, American side by side, 175.6 x 91.2 cm, Stainless steel (with anti-fingerprint) KAN92VI30A`; page 3, `Series 4, American side by side, 175.6 x 91.2 cm, Stainless steel (with anti-fingerprint) KAN92VI30A`; page 1, `text_list unordered text Series 4, free-standing fridge-freezer with freezer at bottom, 186 x 60 cm, Stainless steel text KGN36VI3AA`; page 2, `Series 4, free-standing fridge-freezer with freezer at bottom, 186 x 60 cm, Stainless steel KGN36VI3AA`; page 1, `Series 4, Multi Door Fridge Freezer, 183 x 90.5 cm, Brushed steel anti-fingerprint, Total NoFrost KFN96VPEAA`; page 2, `Series 4, Multi Door Fridge Freezer, 183 x 90.5 cm, Brushed steel anti-fingerprint, Total NoFrost KFN96VPEAA`; page 3, `Measurements in mm Series 4, Multi Door Fridge Freezer, 183 x 90.5 cm, Brushed steel anti-fingerprint, Total NoFrost KFN96VPEAA Measureme...`
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_FRAGMENT_EXACT_MODEL` | height | height | `product_closed_candidate` | Height 1756 mm | p.1, `ecd2f13eff5c` |
+| `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions ( H x W x D) 1756 mm x 912 mm x 732 mm | p.2, `482854547f09` |
+| `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions ( H x W x D) 1860 mm x 600 mm x 660 mm | p.2, `c6da38491ec0` |
 | `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions ( H x W x D) 1830 mm x 905 mm x 731 mm | p.2, `abd2f04e5147` |
 
 Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: can be pulled out completely at a door opening angle of 122 measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: Measurements in mm Series 4, Multi Door Fridge Freezer, 183 x 90.5 cm, Brushed steel anti-fingerprint, Total NoFrost KFN96VPEAA Measurements in mm A: Front i...
 
 #### Series 6
 
 - Group type: `marketing_series`
 - Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
-- Models observed: `KFD96AXEAA`
-- PDF SHA-256: `e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c`
-- PDF grammar profiles: `pdf_grammar_b782a1b7a0a51ecb`
+- Models observed: `GIN81AC30A`, `KFD96AXEAA`
+- PDF SHA-256: `02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16`, `e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c`
+- PDF grammar profiles: `pdf_grammar_692fec06a586dc45`, `pdf_grammar_b782a1b7a0a51ecb`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/KFD96AXEAA.pdf>
-- Series evidence: page 1, `Series 6, Multi Door Fridge Freezer, 183 x 90.5 cm, Brushed black steel anti-fingerprint, Total NoFrost KFD96AXEAA`; page 2, `Series 6, Multi Door Fridge Freezer, 183 x 90.5 cm, Brushed black steel anti-fingerprint, Total NoFrost KFD96AXEAA`; page 3, `Series 6, Multi Door Fridge Freezer, 183 x 90.5 cm, Brushed black steel anti-fingerprint, Total NoFrost KFD96AXEAA Measurements in mm A: ...`
+- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/GIN81AC30A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/KFD96AXEAA.pdf>
+- Series evidence: page 1, `Series 6, built-in freezer, 177.2 x 55.8 cm, SoftClose flat hinge GIN81AC30A`; page 2, `Series 6, built-in freezer, 177.2 x 55.8 cm, SoftClose flat hinge GIN81AC30A`; page 3, `Series 6, built-in freezer, 177.2 x 55.8 cm, SoftClose flat hinge GIN81AC30A`; page 1, `Series 6, Multi Door Fridge Freezer, 183 x 90.5 cm, Brushed black steel anti-fingerprint, Total NoFrost KFD96AXEAA`; page 2, `Series 6, Multi Door Fridge Freezer, 183 x 90.5 cm, Brushed black steel anti-fingerprint, Total NoFrost KFD96AXEAA`; page 3, `Series 6, Multi Door Fridge Freezer, 183 x 90.5 cm, Brushed black steel anti-fingerprint, Total NoFrost KFD96AXEAA Measurements in mm A: ...`
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| `REJECTED_NON_PRODUCT_SCOPE` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | none | `cavity_opening` | Cut-out Dimension (H x W x D) 1775 mm x 560 mm x 550 mm | p.2, `717a8f010186` |
+| `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions ( H x W x D) 1772 mm x 558 mm x 545 mm | p.2, `ade664a5a77e` |
 | `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions ( H x W x D) 1830 mm x 905 mm x 731 mm | p.2, `4d7178dc8ef1` |
 | `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height | height | `product_closed_candidate` | Height 1830 mm | p.1, `7364045c843a` |
 
 Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 1: e size for installation (HxWxD): ......1775x560x550 mm text Dimensions of the packed product (HxWxD): ......1840x610x640 mm text Net weight: .. .65.8 kg text...
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: shed black steel anti-fingerprint, Total NoFrost KFD96AXEAA Measurements in mm A: Front is adjustable 1830–1847 mm, with front levellíng feet fully extended
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 4: measurements in mm Recommended gap dimensions for flat hinges
+
+#### PDF grammar pdf_grammar_b782a1b7a0a51ecb
+
+- Group type: `parser_family`
+- Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
+- Models observed: `KAD92AI20A`
+- PDF SHA-256: `857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8`
+- PDF grammar profiles: `pdf_grammar_b782a1b7a0a51ecb`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/KAD92AI20A.pdf>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions ( H x W x D) 1756 mm x 912 mm x 732 mm | p.2, `e4c4636c349b` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_FRAGMENT_EXACT_MODEL` | height | height | `product_closed_candidate` | Height 1756 mm | p.1, `1c09f3d972d7` |
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: can be pulled out completely at a door opening angle of 122 measurements in mm
 
 ### Brabantia
 
@@ -1212,7 +1241,7 @@ Research gaps:
 - Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 64
 - Proven marketing series: 1; total series count: `PROVEN_MINIMUM_ONLY`
 - PDF grammar profiles: 29
-- Complete exact-model parser replays: 19
+- Complete exact-model parser replays: 21
 
 #### Document family b5ff35773bed
 
@@ -1855,7 +1884,7 @@ Research gaps:
 #### PDF grammar pdf_grammar_a177edb17bdf9d08
 
 - Group type: `parser_family`
-- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Expression coverage: `PARSER_REPLAY_COMPLETE`
 - Models observed: `RS7621FLJK1`
 - PDF SHA-256: `333bb51c590d9f4dd361a08bf2f2b308ac35c94c34586dbc8628b3cef96b4be8`
 - PDF grammar profiles: `pdf_grammar_a177edb17bdf9d08`
@@ -1916,7 +1945,7 @@ Research gaps:
 #### PDF grammar pdf_grammar_deb4d0840e067a13
 
 - Group type: `parser_family`
-- Expression coverage: `OBSERVED_DIMENSION_EXPRESSIONS`
+- Expression coverage: `PARSER_REPLAY_COMPLETE`
 - Models observed: `RF605QDVB2`
 - PDF SHA-256: `f0529d511c65661b44362a6374d04bc98701b118b78c54edb04490a363dff5c2`
 - PDF grammar profiles: `pdf_grammar_deb4d0840e067a13`
@@ -2409,19 +2438,6 @@ Research gaps:
 Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 1
 
-#### HRCF439
-
-- Group type: `model_specific`
-- Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
-- Models observed: `HRCF439`
-- PDF SHA-256: `a6c891f60aa8c851295d5cefde22b77ecb133eb1c9077083b98f9b6f7f3cc09e`
-- Official/source URLs: <https://dtc-aus-api.hisense.com/medias/HRCF439-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw0NzA0NnxhcHBsaWNhdGlvbi9wZGZ8YUdVMEwyZ3hOaTg0T0RFNU1UY3hPREU1TlRVd0wwaFNRMFkwTXprdFUzQmxZeTV3WkdZfDBhMGIwNTVmMWQxYjdkNTMyNjRiOTcwZTJjOTI5ZjJjZmZlYTg4MmM2OTg5MWNjYzMyZmFlNzcxZjJiNzgxNzU>
-
-`NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
-
-Research gaps:
-- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 2: Temperature Control Convenient Water Drain Ultrathin Hings Dimensions Product Weight (Packaged) 64.5 kg Product Weight (Net) 57 kg Dimensions (Packaged) (W X...
-
 #### HRCF500
 
 - Group type: `model_specific`
@@ -2519,11 +2535,11 @@ Research gaps:
 
 - Group type: `parser_family`
 - Expression coverage: `PARSER_REPLAY_COMPLETE`
-- Models observed: `HRBC113`, `HRBF126`, `HRBM418B`, `HRBM418S`, `HRBM419B`, `HRCD483G`, `HRCD483TSW`, `HRCD615TBWV`, `HRCD640TBW`, `HRCF146`, `HRCF201`, `HRCF301`, `HRCF501`, `HRCF702`, `HRFD635SW`, `HRSBS613BWX`, `HRSBS633BW`, `HRTF206`, `HRTF325`, `HRTF497SW`
-- PDF SHA-256: `0d1faf6ce987ac2d53282f2a6945f1cca462a790048adc41e61811fe49271453`, `119cbd7d1b51c6ffd59207cb02b1e1df3083529ffce0a4d7f6f99d76b9efd39b`, `16ac9b2064a0efcda3931a0bb6a32629894588783f0d91275f4002e39ed74f5f`, `175da4b89dbfd1900ac3595a5f813aca80f7c5333d2b07140dcbd133ebd03867`, `2f42de6ce291f4bb94a2b6c553f33cf4657c8b50ba0e7cce7d85b1d58870b6db`, `3d7327becb221a1f22b6571445805f9e7c6814d79ebff772507d389850a1fca4`, `43430d37720c1ab1935062cae4bd3cc9cd7ad27f9d40c945175d2eca16c9d714`, `4569097abf1b64c0adcba558283aaf2e60e04382812ef4a3ce1f3be6a08f09b7`, `4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0`, `576ab58647e444301953e41b3459910e583b37b40d62f65932702524db045bcb`, `67c38fc3a2128a9afbd2081ba596af63ee4832c138d8eb5faa585a447307356f`, `6c9b8413e7027756b02248f0ff847320958cf0369fb67b9ce3819d55e2521f94`, `a373434cd72bfe8823019df5e222eedf9312e3afc33e46406ae4d9975f801490`, `a43c858b0895c0190cbd238a2517292e29a2c8afc3ccbf9b53f607a810e49cd8`, `b629896919dc27ab9c7d8f8c2352b9aa3bbc1f46c93bb3d4fbe5c355e55ec4aa`, `dabd1e7097fc2541e03fb54b28cef294509dcd48ba4c1f675af8f189a270f0ba`, `ee2b42864372c75564e55a54b04b44cc93418485ac1ddfb1c2b95d4ab03160c3`, `f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb`, `fbf3d6a289300a7830c831b5cc83aff011f43a3ab69ae6459540dbb1d88bbdfa`, `ff9c1735a4871bc809e0baa42ee366d5780e298a6dedad0ca17dd6ef01e8d667`
+- Models observed: `HRBC113`, `HRBF126`, `HRBM418B`, `HRBM418S`, `HRBM419B`, `HRCD483G`, `HRCD483TSW`, `HRCD615TBWV`, `HRCD640TBW`, `HRCF146`, `HRCF201`, `HRCF301`, `HRCF439`, `HRCF501`, `HRCF702`, `HRFD635SW`, `HRSBS613BWX`, `HRSBS633BW`, `HRTF206`, `HRTF325`, `HRTF497SW`
+- PDF SHA-256: `0d1faf6ce987ac2d53282f2a6945f1cca462a790048adc41e61811fe49271453`, `119cbd7d1b51c6ffd59207cb02b1e1df3083529ffce0a4d7f6f99d76b9efd39b`, `16ac9b2064a0efcda3931a0bb6a32629894588783f0d91275f4002e39ed74f5f`, `175da4b89dbfd1900ac3595a5f813aca80f7c5333d2b07140dcbd133ebd03867`, `2f42de6ce291f4bb94a2b6c553f33cf4657c8b50ba0e7cce7d85b1d58870b6db`, `3d7327becb221a1f22b6571445805f9e7c6814d79ebff772507d389850a1fca4`, `43430d37720c1ab1935062cae4bd3cc9cd7ad27f9d40c945175d2eca16c9d714`, `4569097abf1b64c0adcba558283aaf2e60e04382812ef4a3ce1f3be6a08f09b7`, `4eddd718829ed49e33910d7c4284f5b0ca5ed3bf7341d1460a141945a04412e0`, `576ab58647e444301953e41b3459910e583b37b40d62f65932702524db045bcb`, `67c38fc3a2128a9afbd2081ba596af63ee4832c138d8eb5faa585a447307356f`, `6c9b8413e7027756b02248f0ff847320958cf0369fb67b9ce3819d55e2521f94`, `a373434cd72bfe8823019df5e222eedf9312e3afc33e46406ae4d9975f801490`, `a43c858b0895c0190cbd238a2517292e29a2c8afc3ccbf9b53f607a810e49cd8`, `a6c891f60aa8c851295d5cefde22b77ecb133eb1c9077083b98f9b6f7f3cc09e`, `b629896919dc27ab9c7d8f8c2352b9aa3bbc1f46c93bb3d4fbe5c355e55ec4aa`, `dabd1e7097fc2541e03fb54b28cef294509dcd48ba4c1f675af8f189a270f0ba`, `ee2b42864372c75564e55a54b04b44cc93418485ac1ddfb1c2b95d4ab03160c3`, `f9439245bffd313d6c3ba841d72eb466ea25172f1108426a1b4f789b5c16b4eb`, `fbf3d6a289300a7830c831b5cc83aff011f43a3ab69ae6459540dbb1d88bbdfa`, `ff9c1735a4871bc809e0baa42ee366d5780e298a6dedad0ca17dd6ef01e8d667`
 - PDF grammar profiles: `pdf_grammar_f96902bad0e838aa`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://dtc-aus-api.hisense.com/medias/HRBC113-Specs-for-consumer-1.pdf?context=bWFzdGVyfE1hbnVhbHw1MzM1NDl8YXBwbGljYXRpb24vcGRmfGFHVmtMMmc0WWk4NE9EUTVPVGN6TlRFd01UYzBMMGhTUWtNeE1UTmZVM0JsWTNNZ1ptOXlJR052Ym5OMWJXVnlJREV1Y0dSbXwzZDdiNTNlZjA1ZTBmZTAzN2QzZWQ1YWYxYzFhOTlhMjk4ZmVjN2ZhYzVmZWQ5MzY3NDQ0ODZjNGUzZjY1ZGRi>, <https://dtc-aus-api.hisense.com/medias/HRBF126-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDU4NTN8YXBwbGljYXRpb24vcGRmfGFESTNMMmd3TXk4NE9ETXpPREV4TlRjNE9URXdMMGhTUWtZeE1qWXRVM0JsWXk1d1pHWXw4NWU4M2Y1YjExODUyZGRmMjc4ZjdmY2QwOGJkMTE4NjUxOGRjMzA4MWE0ZTQ4MjU1ZjJhZGRjZDhkZGEzYzY3>, <https://dtc-aus-api.hisense.com/medias/HRBM418B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNzEzMjd8YXBwbGljYXRpb24vcGRmfGFHTmpMMmd4TXk4NE9EQTBNVEV3T0RJM05UVXdMMGhTUWswME1UaENMVk53WldNdWNHUm18NzE3MGFhNGFmYzQxZTI4OTYzYzU5MTFiMWVkNzhjMTM5ZWRmZmRmMzc1NDcxMjYxYTYyZDVhNjBlNTg1YmJiYg>, <https://dtc-aus-api.hisense.com/medias/HRBM418S-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw0OTY5NjJ8YXBwbGljYXRpb24vcGRmfGFHVXpMMmhsTVM4NE9EQTBNRGswTmpBM016a3dMMGhTUWswME1UaFRMVk53WldNdWNHUm18MjUzZjE0NjQwNGViNjkzMzMxYTZiYWViMzQ3NjkxZTBiMzI0NzllOGQyMWQyZDA2YjQ2NmI4NmE4YzFjZGFiNA>, <https://dtc-aus-api.hisense.com/medias/HRBM419B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODIxOTF8YXBwbGljYXRpb24vcGRmfGFHWTFMMmd6TUM4NE9URTJNVFkzTURZMU5qTXdMMGhTUWswME1UbENMVk53WldNdWNHUm18MjY3NTQyMGVhNWFmYjZmNGU4Yzg5MzZkY2UwYjRhZDMwNTg4NWNiNDEyZDg2Y2EyNzlkY2FkZWM3MzczODY4Nw>, <https://dtc-aus-api.hisense.com/medias/HRCD483G-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNTg3NTV8YXBwbGljYXRpb24vcGRmfGFESmxMMmhrTlM4NE9EQTBNVEE1T0RjM01qYzRMMGhTUTBRME9ETkhMVk53WldNdWNHUm18ODZlYjY4NTk0MjQ4ODQwMGU5MWMxZGRlMTY1YzY5N2U1NzQ0NjEyODU3NTRhZDAzZTYxNTJlN2YwZTRiODVmZg>, <https://dtc-aus-api.hisense.com/medias/HRCD483TSW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyODI5NDB8YXBwbGljYXRpb24vcGRmfGFHWmhMMmczT0M4NE9EQTBNRGt6TmpnNU9EZzJMMGhTUTBRME9ETlVVMWN0VTNCbFl5NXdaR1l8Mzk5ZDBmZDUwMTgwZjFkMzU5N2U0NWI5OGEyMjNmNDEyNzAzMTY3MzAwNzlkOGFjMWVmNTcxMWYxNGM4OGU5Nw>, <https://dtc-aus-api.hisense.com/medias/HRCD640TBW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNjYzMDR8YXBwbGljYXRpb24vcGRmfGFERm1MMmhsTXk4NE9EQTBNVEF3T0RZMk1EYzRMMGhTUTBRMk5EQlVRbGN0VTNCbFl5NXdaR1l8MGRhNTM3OGQyMDRhMTM4MzA5YmQyMTA0ZTIzZDVjMDNjYzYxMzBhZGMzNmFhNGJlYTYwYTM2MGZiYTRhYmYyMw>, <https://dtc-aus-api.hisense.com/medias/HRCF146-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjY2NDF8YXBwbGljYXRpb24vcGRmfGFEUmlMMmd3WlM4NE9EQTBNRGt5TmpBNE5UUXlMMGhTUTBZeE5EWXRVM0JsWXk1d1pHWXxmYzE3MWViNmNkZGNhYjhiNGM0YzA2NzEzNDBhNjU1MjIxNTk2MDhiZDdiZWE1MWRlNzk3NTMwYjA5MGUzM2Nh>, <https://dtc-aus-api.hisense.com/medias/HRCF201-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzg3Nzl8YXBwbGljYXRpb24vcGRmfGFHSmxMMmhrTnk4NE9EQTBNRGswTXpFeU5EYzRMMGhTUTBZeU1ERXRVM0JsWXk1d1pHWXwzNzg0MjBhZTZiZTY0NDA0NjJhZmQ1MGFmNWNkNDMzODUwYTQ1NjQwNGM5M2ZhMGVhZDFkN2Q3MzFkNDM2ZTEz>, <https://dtc-aus-api.hisense.com/medias/HRCF301-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjY1MTR8YXBwbGljYXRpb24vcGRmfGFEVTNMMmd4Tmk4NE9EQTBNVEF5TmpZNE16RTRMMGhTUTBZek1ERXRVM0JsWXk1d1pHWXwwMTJmNjgyYzFiNjc0ZTY4MmQyMzJkM2I0NjNiNzJiN2I5OWE5ZmQ5NTlmNWRiNmZlZDY1OTAzODYzNzYxN2M2>, <https://dtc-aus-api.hisense.com/medias/HRCF501-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzUwOTB8YXBwbGljYXRpb24vcGRmfGFEbGlMMmczWmk4NE9EQTBNRGs0TXpjMU56RXdMMGhTUTBZMU1ERXRVM0JsWXk1d1pHWXw2NzA4NTQ0ZmRlMDgxYmZiMzVlYzAyM2YzM2VlNzIwY2Y0OTc1YTc2MmQwNjgyMDFmNDg1NmNmZmI0NTc4NWYz>, <https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ>, <https://dtc-aus-api.hisense.com/medias/HRFD635SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTcxMTd8YXBwbGljYXRpb24vcGRmfGFEWmtMMmc0TlM4NE9ERTVNakV5TVRVMk9UVTRMMGhTUmtRMk16VlRWeTFUY0dWakxuQmtaZ3wzOWU4MWU5ZDljNzQ2MjgwZTE3ZTlmZWQ4NjEwZjlhM2YwN2Q4ZjgyYmMyYmRhZTc1ZGVhNTAxMzIxYTZlNGRi>, <https://dtc-aus-api.hisense.com/medias/HRSBS613BWX-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNTA1MDV8YXBwbGljYXRpb24vcGRmfGFHUTNMMmd4WXk4NE9ETTFORFEzTnpnek5EVTBMMGhTVTBKVE5qRXpRbGRZTFZOd1pXTXVjR1JtfGQ1ZGE4YTg4YjkxNWE5ZmMyMzU4MzQzZDRlMzMyYjAwZjc1ZDc0NmRmYmI1ZTVhYjdlN2FjYmFmYjdiNWVmYTg>, <https://dtc-aus-api.hisense.com/medias/HRSBS633BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMzk5ODV8YXBwbGljYXRpb24vcGRmfGFEaGhMMmhrTUM4NE9ESTJORGN5TkRZME5ERTBMMGhTVTBKVE5qTXpRbGN0VTNCbFl5NXdaR1l8OTljNDMzYTE4MmI5NWYyNzYxZjFjZTBmYWNjOWVhMmRjY2RhOTc1M2ExYTE1YWMwMjdkOWIyNWJhNGMxNDBiZA>, <https://dtc-aus-api.hisense.com/medias/HRTF206-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDI1MDh8YXBwbGljYXRpb24vcGRmfGFHSTJMMmd3Wmk4NE9EQTBNVEEzTXpVME1UUXlMMGhTVkVZeU1EWXRVM0JsWXk1d1pHWXw5MDY2ZmY5ODYyNWFkNmZmY2NlMjM5Yzg5YzY4YWFmM2RkNGJmYWIwNzhhNmE3YmZkM2UyZTMzYjBmZDU3Nzdi>, <https://dtc-aus-api.hisense.com/medias/HRTF325-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzgzOTJ8YXBwbGljYXRpb24vcGRmfGFETTBMMmczWXk4NE9EQTBNRGs0TWpjM05EQTJMMGhTVkVZek1qVXRVM0JsWXk1d1pHWXw5NDkzMGRlMDk4ODc5ZmU0NWMwNDRjYjkxYmE4NWZhODk4ZDY2NmE5ZmFjNmU3Yzk5MjNmNjc4MzdkNjRhYTFh>, <https://dtc-aus-api.hisense.com/medias/HRTF497SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw1MzA2NDF8YXBwbGljYXRpb24vcGRmfGFEVmlMMmcxWmk4NE9ETXpPREV5TXpNeU5UYzBMMGhTVkVZME9UZFRWeTFUY0dWakxuQmtaZ3w1MDdiNDMyYjRhNTkyMjkyNDY3ZjBmMzU2NTRjMjQzMjkwYWMxN2RlOTY3MmE5MmM0ZmExOTYzYWYyMzZlNWNl>, <https://dtc-aus-api.hisense.com/medias/Specs-HRCD615TBWV.pdf?context=bWFzdGVyfE1hbnVhbHw0NTQ4NDh8YXBwbGljYXRpb24vcGRmfGFHSmhMMmhtT0M4NE9EVTFPRGN4TXpJME1Ua3dMMU53WldOelgwaFNRMFEyTVRWVVFsZFdMbkJrWmd8NDM3YzBiNDkyYmI2MGQ2YWVjNDZlYzNjMDA0Yjk5NDA2MTkwMGIxMWFmYmRhNWIxMzRiYjNiNGE0ODFiNmE3Yg>
+- Official/source URLs: <https://dtc-aus-api.hisense.com/medias/HRBC113-Specs-for-consumer-1.pdf?context=bWFzdGVyfE1hbnVhbHw1MzM1NDl8YXBwbGljYXRpb24vcGRmfGFHVmtMMmc0WWk4NE9EUTVPVGN6TlRFd01UYzBMMGhTUWtNeE1UTmZVM0JsWTNNZ1ptOXlJR052Ym5OMWJXVnlJREV1Y0dSbXwzZDdiNTNlZjA1ZTBmZTAzN2QzZWQ1YWYxYzFhOTlhMjk4ZmVjN2ZhYzVmZWQ5MzY3NDQ0ODZjNGUzZjY1ZGRi>, <https://dtc-aus-api.hisense.com/medias/HRBF126-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDU4NTN8YXBwbGljYXRpb24vcGRmfGFESTNMMmd3TXk4NE9ETXpPREV4TlRjNE9URXdMMGhTUWtZeE1qWXRVM0JsWXk1d1pHWXw4NWU4M2Y1YjExODUyZGRmMjc4ZjdmY2QwOGJkMTE4NjUxOGRjMzA4MWE0ZTQ4MjU1ZjJhZGRjZDhkZGEzYzY3>, <https://dtc-aus-api.hisense.com/medias/HRBM418B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNzEzMjd8YXBwbGljYXRpb24vcGRmfGFHTmpMMmd4TXk4NE9EQTBNVEV3T0RJM05UVXdMMGhTUWswME1UaENMVk53WldNdWNHUm18NzE3MGFhNGFmYzQxZTI4OTYzYzU5MTFiMWVkNzhjMTM5ZWRmZmRmMzc1NDcxMjYxYTYyZDVhNjBlNTg1YmJiYg>, <https://dtc-aus-api.hisense.com/medias/HRBM418S-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw0OTY5NjJ8YXBwbGljYXRpb24vcGRmfGFHVXpMMmhsTVM4NE9EQTBNRGswTmpBM016a3dMMGhTUWswME1UaFRMVk53WldNdWNHUm18MjUzZjE0NjQwNGViNjkzMzMxYTZiYWViMzQ3NjkxZTBiMzI0NzllOGQyMWQyZDA2YjQ2NmI4NmE4YzFjZGFiNA>, <https://dtc-aus-api.hisense.com/medias/HRBM419B-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxODIxOTF8YXBwbGljYXRpb24vcGRmfGFHWTFMMmd6TUM4NE9URTJNVFkzTURZMU5qTXdMMGhTUWswME1UbENMVk53WldNdWNHUm18MjY3NTQyMGVhNWFmYjZmNGU4Yzg5MzZkY2UwYjRhZDMwNTg4NWNiNDEyZDg2Y2EyNzlkY2FkZWM3MzczODY4Nw>, <https://dtc-aus-api.hisense.com/medias/HRCD483G-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNTg3NTV8YXBwbGljYXRpb24vcGRmfGFESmxMMmhrTlM4NE9EQTBNVEE1T0RjM01qYzRMMGhTUTBRME9ETkhMVk53WldNdWNHUm18ODZlYjY4NTk0MjQ4ODQwMGU5MWMxZGRlMTY1YzY5N2U1NzQ0NjEyODU3NTRhZDAzZTYxNTJlN2YwZTRiODVmZg>, <https://dtc-aus-api.hisense.com/medias/HRCD483TSW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyODI5NDB8YXBwbGljYXRpb24vcGRmfGFHWmhMMmczT0M4NE9EQTBNRGt6TmpnNU9EZzJMMGhTUTBRME9ETlVVMWN0VTNCbFl5NXdaR1l8Mzk5ZDBmZDUwMTgwZjFkMzU5N2U0NWI5OGEyMjNmNDEyNzAzMTY3MzAwNzlkOGFjMWVmNTcxMWYxNGM4OGU5Nw>, <https://dtc-aus-api.hisense.com/medias/HRCD640TBW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNjYzMDR8YXBwbGljYXRpb24vcGRmfGFERm1MMmhsTXk4NE9EQTBNVEF3T0RZMk1EYzRMMGhTUTBRMk5EQlVRbGN0VTNCbFl5NXdaR1l8MGRhNTM3OGQyMDRhMTM4MzA5YmQyMTA0ZTIzZDVjMDNjYzYxMzBhZGMzNmFhNGJlYTYwYTM2MGZiYTRhYmYyMw>, <https://dtc-aus-api.hisense.com/medias/HRCF146-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjY2NDF8YXBwbGljYXRpb24vcGRmfGFEUmlMMmd3WlM4NE9EQTBNRGt5TmpBNE5UUXlMMGhTUTBZeE5EWXRVM0JsWXk1d1pHWXxmYzE3MWViNmNkZGNhYjhiNGM0YzA2NzEzNDBhNjU1MjIxNTk2MDhiZDdiZWE1MWRlNzk3NTMwYjA5MGUzM2Nh>, <https://dtc-aus-api.hisense.com/medias/HRCF201-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzg3Nzl8YXBwbGljYXRpb24vcGRmfGFHSmxMMmhrTnk4NE9EQTBNRGswTXpFeU5EYzRMMGhTUTBZeU1ERXRVM0JsWXk1d1pHWXwzNzg0MjBhZTZiZTY0NDA0NjJhZmQ1MGFmNWNkNDMzODUwYTQ1NjQwNGM5M2ZhMGVhZDFkN2Q3MzFkNDM2ZTEz>, <https://dtc-aus-api.hisense.com/medias/HRCF301-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjY1MTR8YXBwbGljYXRpb24vcGRmfGFEVTNMMmd4Tmk4NE9EQTBNVEF5TmpZNE16RTRMMGhTUTBZek1ERXRVM0JsWXk1d1pHWXwwMTJmNjgyYzFiNjc0ZTY4MmQyMzJkM2I0NjNiNzJiN2I5OWE5ZmQ5NTlmNWRiNmZlZDY1OTAzODYzNzYxN2M2>, <https://dtc-aus-api.hisense.com/medias/HRCF439-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw0NzA0NnxhcHBsaWNhdGlvbi9wZGZ8YUdVMEwyZ3hOaTg0T0RFNU1UY3hPREU1TlRVd0wwaFNRMFkwTXprdFUzQmxZeTV3WkdZfDBhMGIwNTVmMWQxYjdkNTMyNjRiOTcwZTJjOTI5ZjJjZmZlYTg4MmM2OTg5MWNjYzMyZmFlNzcxZjJiNzgxNzU>, <https://dtc-aus-api.hisense.com/medias/HRCF501-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzUwOTB8YXBwbGljYXRpb24vcGRmfGFEbGlMMmczWmk4NE9EQTBNRGs0TXpjMU56RXdMMGhTUTBZMU1ERXRVM0JsWXk1d1pHWXw2NzA4NTQ0ZmRlMDgxYmZiMzVlYzAyM2YzM2VlNzIwY2Y0OTc1YTc2MmQwNjgyMDFmNDg1NmNmZmI0NTc4NWYz>, <https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ>, <https://dtc-aus-api.hisense.com/medias/HRFD635SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTcxMTd8YXBwbGljYXRpb24vcGRmfGFEWmtMMmc0TlM4NE9ERTVNakV5TVRVMk9UVTRMMGhTUmtRMk16VlRWeTFUY0dWakxuQmtaZ3wzOWU4MWU5ZDljNzQ2MjgwZTE3ZTlmZWQ4NjEwZjlhM2YwN2Q4ZjgyYmMyYmRhZTc1ZGVhNTAxMzIxYTZlNGRi>, <https://dtc-aus-api.hisense.com/medias/HRSBS613BWX-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyNTA1MDV8YXBwbGljYXRpb24vcGRmfGFHUTNMMmd4WXk4NE9ETTFORFEzTnpnek5EVTBMMGhTVTBKVE5qRXpRbGRZTFZOd1pXTXVjR1JtfGQ1ZGE4YTg4YjkxNWE5ZmMyMzU4MzQzZDRlMzMyYjAwZjc1ZDc0NmRmYmI1ZTVhYjdlN2FjYmFmYjdiNWVmYTg>, <https://dtc-aus-api.hisense.com/medias/HRSBS633BW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwyMzk5ODV8YXBwbGljYXRpb24vcGRmfGFEaGhMMmhrTUM4NE9ESTJORGN5TkRZME5ERTBMMGhTVTBKVE5qTXpRbGN0VTNCbFl5NXdaR1l8OTljNDMzYTE4MmI5NWYyNzYxZjFjZTBmYWNjOWVhMmRjY2RhOTc1M2ExYTE1YWMwMjdkOWIyNWJhNGMxNDBiZA>, <https://dtc-aus-api.hisense.com/medias/HRTF206-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxNDI1MDh8YXBwbGljYXRpb24vcGRmfGFHSTJMMmd3Wmk4NE9EQTBNVEEzTXpVME1UUXlMMGhTVkVZeU1EWXRVM0JsWXk1d1pHWXw5MDY2ZmY5ODYyNWFkNmZmY2NlMjM5Yzg5YzY4YWFmM2RkNGJmYWIwNzhhNmE3YmZkM2UyZTMzYjBmZDU3Nzdi>, <https://dtc-aus-api.hisense.com/medias/HRTF325-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzgzOTJ8YXBwbGljYXRpb24vcGRmfGFETTBMMmczWXk4NE9EQTBNRGs0TWpjM05EQTJMMGhTVkVZek1qVXRVM0JsWXk1d1pHWXw5NDkzMGRlMDk4ODc5ZmU0NWMwNDRjYjkxYmE4NWZhODk4ZDY2NmE5ZmFjNmU3Yzk5MjNmNjc4MzdkNjRhYTFh>, <https://dtc-aus-api.hisense.com/medias/HRTF497SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw1MzA2NDF8YXBwbGljYXRpb24vcGRmfGFEVmlMMmcxWmk4NE9ETXpPREV5TXpNeU5UYzBMMGhTVkVZME9UZFRWeTFUY0dWakxuQmtaZ3w1MDdiNDMyYjRhNTkyMjkyNDY3ZjBmMzU2NTRjMjQzMjkwYWMxN2RlOTY3MmE5MmM0ZmExOTYzYWYyMzZlNWNl>, <https://dtc-aus-api.hisense.com/medias/Specs-HRCD615TBWV.pdf?context=bWFzdGVyfE1hbnVhbHw0NTQ4NDh8YXBwbGljYXRpb24vcGRmfGFHSmhMMmhtT0M4NE9EVTFPRGN4TXpJME1Ua3dMMU53WldOelgwaFNRMFEyTVRWVVFsZFdMbkJrWmd8NDM3YzBiNDkyYmI2MGQ2YWVjNDZlYzNjMDA0Yjk5NDA2MTkwMGIxMWFmYmRhNWIxMzRiYjNiNGE0ODFiNmE3Yg>
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -2549,6 +2565,7 @@ Research gaps:
 | `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_FRAGMENT_EXACT_MODEL` | width -> height -> depth | width, height, depth | `product_closed_candidate` | Dimensions (Net) (W X H X D) 475 x 840 x 448 mm | p.1, `efc0be4569aa` |
 | `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_FRAGMENT_EXACT_MODEL` | width -> height -> depth | width, height, depth | `product_closed_candidate` | Dimensions (Net) (W X H X D) 914 x 1790 x 730 mm | p.1, `41baa2bee837` |
 | `REJECTED_NON_PRODUCT_SCOPE` | `GROUPED_AXIS_SEQUENCE` | `SAME_FRAGMENT_EXACT_MODEL` | width -> height -> depth | none | `delivery_package` | Dimensions (Packaged) (W X H X D) 968 x 1896 x 778 mm | p.1, `41baa2bee837` |
+| `REJECTED_NON_PRODUCT_SCOPE` | `GROUPED_AXIS_SEQUENCE` | `SAME_DOCUMENT_EXACT_MODEL` | width -> height -> depth | none | `delivery_package` | Dimensions (Packaged) (W X H X D) 1466 x 890 x 766 mm | p.2, `3b87077c0617` |
 | `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_FRAGMENT_EXACT_MODEL` | width -> height -> depth | width, height, depth | `product_closed_candidate` | Dimensions (Net) (W X H X D) 914 x 1785 x 730 mm | p.1, `2f044bec1a4d` |
 | `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_FRAGMENT_EXACT_MODEL` | width -> height -> depth | width, height, depth | `product_closed_candidate` | Dimensions (Net) (W X H X D) 595×1696x650 mm | p.1, `38030e310723` |
 | `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_FRAGMENT_EXACT_MODEL` | width -> height -> depth | width, height, depth | `product_closed_candidate` | Dimensions (Net) (W X H X D) 794 x 1785 x 698 mm | p.1, `09b6fbad0a4a` |
@@ -2556,6 +2573,7 @@ Research gaps:
 | `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_FRAGMENT_EXACT_MODEL` | width -> height -> depth | width, height, depth | `product_closed_candidate` | Dimensions (Net) (W X H X D) 550×1456x562 mm | p.1, `05f1ed5146b6` |
 | `REJECTED_NON_PRODUCT_SCOPE` | `GROUPED_AXIS_SEQUENCE` | `SAME_FRAGMENT_EXACT_MODEL` | width -> height -> depth | none | `delivery_package` | Dimensions (Packaged) (W X H X D) 842 x 1885 x 744 mm | p.1, `09b6fbad0a4a` |
 | `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_FRAGMENT_EXACT_MODEL` | width -> height -> depth | width, height, depth | `product_closed_candidate` | Dimensions (Net) (W X H X D) 910 x 1790 x 730 mm | p.1, `fcc94e2659ff` |
+| `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_DOCUMENT_EXACT_MODEL` | width -> height -> depth | width, height, depth | `product_closed_candidate` | Dimensions (Net) (W X H X D) 1429 x 858 x 746 mm | p.2, `3b87077c0617` |
 | `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_FRAGMENT_EXACT_MODEL` | width -> height -> depth | width, height, depth | `product_closed_candidate` | Dimensions (Net) (W X H X D) 1646×847×717 mm | p.1, `a87e6cc3337a` |
 | `REJECTED_NON_PRODUCT_SCOPE` | `GROUPED_AXIS_SEQUENCE` | `SAME_FRAGMENT_EXACT_MODEL` | width -> height -> depth | none | `delivery_package` | Dimensions (Packaged) (W X H X D) 750x1834x738 mm | p.1, `ac220131b637` |
 | `REJECTED_NON_PRODUCT_SCOPE` | `GROUPED_AXIS_SEQUENCE` | `SAME_DOCUMENT_EXACT_MODEL` | width -> height -> depth | none | `delivery_package` | Dimensions (Packaged) (W X H X D) 750x1834x738 mm | p.2, `18b6553a3d30` |
@@ -4964,24 +4982,29 @@ Research gaps:
 
 - Raw brand variants: `BOSCH`, `Bosch`
 - Inventory models: 112
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 4
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 8
 - Proven marketing series: 3; total series count: `PROVEN_MINIMUM_ONLY`
-- PDF grammar profiles: 1
-- Complete exact-model parser replays: 3
+- PDF grammar profiles: 4
+- Complete exact-model parser replays: 5
 
 #### Series 4
 
 - Group type: `marketing_series`
 - Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
-- Models observed: `SMS4HVI01A`
-- PDF SHA-256: `9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0`
-- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVI01A.pdf>
-- Series evidence: page 1, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HVI01A`; page 2, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HVI01A`; page 3, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HVI01A`
+- Models observed: `SMI4HTS01A`, `SMS4HVI01A`
+- PDF SHA-256: `9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0`, `acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb`
+- PDF grammar profiles: `pdf_grammar_2cd42a3705740fb2`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI4HTS01A.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVI01A.pdf>
+- Series evidence: page 1, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HVI01A`; page 2, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HVI01A`; page 3, `Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HVI01A`; page 1, `Series 4, semi-integrated dishwasher, 60 cm, Brushed steel SMI4HTS01A`; page 2, `Series 4, semi-integrated dishwasher, 60 cm, Brushed steel SMI4HTS01A`; page 3, `Series 4, semi-integrated dishwasher, 60 cm, Brushed steel SMI4HTS01A`
 
-`PARSER_REPLAY_COMPLETE`: the declared brand/category grammar produced complete exact-model dimension claims. Generic expression observations below remain diagnostic only.
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_ADJUSTABLE_HEIGHT_RANGE` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Height 815-875 mm \| Width 598 mm \| Depth 573 mm | p.2, `524acfd89506` |
 
 Research gaps:
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 2: Product Dimensions (H x W x D)
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 
 #### Series 6
@@ -5016,6 +5039,46 @@ Research gaps:
 | `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_PAGE_EXACT_MODEL` | width -> depth | width, depth | `product_closed_candidate` | Width 598 mm \| Depth 550 mm | p.2, `b252975acfe7` |
 
 Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
+
+#### PDF grammar pdf_grammar_9f5a37e414e9e2e1
+
+- Group type: `parser_family`
+- Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
+- Models observed: `SBV88TX06A`
+- PDF SHA-256: `1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518`
+- PDF grammar profiles: `pdf_grammar_9f5a37e414e9e2e1`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV88TX06A.pdf>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions of the product (HxWxD) 865 x 598 x 550 mm | p.1, `edc68ab54df4` |
+| `SUPPORTED_EXPLICIT_LABELS` | `INLINE_LABELLED_AXES` | `SAME_DOCUMENT_EXACT_MODEL` | width -> depth | width, depth | `product_closed_candidate` | Width 598 mm \| Depth 550 mm | p.3, `d795b7579de2` |
+| `REJECTED_NON_PRODUCT_SCOPE` | `INDIVIDUAL_LABELLED_AXIS` | `SAME_PAGE_EXACT_MODEL` | depth | none | `operation_envelope` | Depth with open door 90 degree : 1200 mm | p.1, `44ea41a40e80` |
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 4: measurements in mm
+
+#### PDF grammar pdf_grammar_cf52905eae731e58
+
+- Group type: `parser_family`
+- Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
+- Models observed: `SCE53M05AU`, `SKE53M05AU`
+- PDF SHA-256: `4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858`, `99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701`
+- PDF grammar profiles: `pdf_grammar_cf52905eae731e58`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/SCE53M05AU.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE` | `INLINE_VALUE_LABELLED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | - H: 454 mm x W: 595 mm x D: 500 mm | p.2, `e24bd395c647` |
+| `SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE` | `INLINE_VALUE_LABELLED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | - H: 595 mm x W: 595 mm x D: 500 mm | p.2, `5d1b9086c2ce` |
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 1: g : Built-in text Height of removable worktop (mm) : 0 text Dimensions of the product (width x depth) : 595 x 595 x 500 text Depth with open door 90 degree (...
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 1: g : Built-in text Height of removable worktop (mm) : 0 text Dimensions of the product (width x depth) : 454 x 595 x 500 text Depth with open door 90 degree (...
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 
@@ -5769,7 +5832,7 @@ Research gaps:
 - Expression coverage: `NO_RECOGNIZED_DIMENSION_EXPRESSION`
 - Models observed: `DW60CDW2`
 - PDF SHA-256: `a91793ec14aebb9f6a8f21fdc4fd6d5db5fc7eec7c12898b5ab76332bd982c16`, `c529f12422a9a146beddba1066d8dbffbd37532d2ff6c7883121c6600d70a110`, `dcc1c1bbdc692df0aafeac4d25eedc43f7bef8a0c22ec42b78d37b01fbd9b9df`
-- Official/source URLs: <https://content.fisherpaykel.com/CBW/service/elba-dishwashers/elba-nz-parts-dishwashers/89136-A%20DW60CDW2%20EL%20NZ.pdf>, <https://content.fisherpaykel.com/CBW/service/fpa-dishwashers/fpa-parts-dishwashers/Dishwasher/80539-A%20DW60CDW%202%20FP%20NZ_AU.pdf>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q8zfFMAR&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q92DJMAZ&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q92TRMAZ&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q92d7MAB&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q9P1pMAF&dpt=>
+- Official/source URLs: <https://content.fisherpaykel.com/CBW/service/elba-dishwashers/elba-nz-parts-dishwashers/89136-A%20DW60CDW2%20EL%20NZ.pdf>, <https://content.fisherpaykel.com/CBW/service/fpa-dishwashers/fpa-parts-dishwashers/Dishwasher/80539-A%20DW60CDW%202%20FP%20NZ_AU.pdf>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q8zfFMAR&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q92DJMAZ&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q92TRMAZ&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q92d7MAB&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q9P1pMAF&dpt=>, <https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000QBw4wMAD&dpt=>
 
 `NO_RECOGNIZED_DIMENSION_EXPRESSION`: the indexed document cannot yet supply a reusable text/table expression pattern.
 
@@ -7485,10 +7548,10 @@ Research gaps:
 
 - Raw brand variants: `BOSCH`, `Bosch`
 - Inventory models: 61
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 4
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 7
 - Proven marketing series: 3; total series count: `PROVEN_MINIMUM_ONLY`
-- PDF grammar profiles: 2
-- Complete exact-model parser replays: 3
+- PDF grammar profiles: 3
+- Complete exact-model parser replays: 4
 
 #### Series 4
 
@@ -7513,20 +7576,26 @@ Research gaps:
 
 - Group type: `marketing_series`
 - Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
-- Models observed: `WGG254Z1AU`
-- PDF SHA-256: `da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450`
+- Models observed: `WGG2449RAU`, `WGG254Z1AU`, `WNA254U1AU`
+- PDF SHA-256: `b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18`, `da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450`, `e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37`
 - PDF grammar profiles: `pdf_grammar_7278fc1b8aebe013`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG254Z1AU.pdf>
-- Series evidence: page 1, `Series 6, washing machine, front loader, 10 kg, 1400 rpm WGG254Z1AU`; page 2, `Series 6, washing machine, front loader, 10 kg, 1400 rpm WGG254Z1AU`; page 3, `Series 6, washing machine, front loader, 10 kg, 1400 rpm WGG254Z1AU`
+- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2449RAU.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG254Z1AU.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/WNA254U1AU.pdf>
+- Series evidence: page 1, `Series 6, washing machine, front loader, 9 kg, , Cast iron grey WGG2449RAU`; page 2, `Series 6, washing machine, front loader, 9 kg, , Cast iron grey WGG2449RAU`; page 4, `text_list unordered text Series 6, washing machine, front loader, 9 text kg, , Cast iron grey text WGG2449RAU`; page 1, `Series 6, washing machine, front loader, 10 kg, 1400 rpm WGG254Z1AU`; page 2, `Series 6, washing machine, front loader, 10 kg, 1400 rpm WGG254Z1AU`; page 3, `Series 6, washing machine, front loader, 10 kg, 1400 rpm WGG254Z1AU`; page 1, `Series 6, washer dryer, 10/5 kg, 1400 rpm WNA254U1AU`; page 2, `Series 6, washer dryer, 10/5 kg, 1400 rpm WNA254U1AU`; page 3, `Series 6, washer dryer, 10/5 kg, 1400 rpm WNA254U1AU`
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH` | `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions (H x W x D) 84.8 cm x 59.8 cm x 59 cm | p.2, `6fc3050b0129` |
 | `SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH` | `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions (H x W x D) 84.5 cm x 59.8 cm x 59.0 cm | p.2, `59ff501b0631` |
+| `SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH` | `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions (H x W x D) 84.8 cm x 59.8 cm x 59.0 cm | p.2, `0671c6d7128c` |
 | `RESEARCH_UNLABELLED_AXIS_ORDER` | `UNLABELLED_DIMENSION_TRIPLE` | `SAME_PAGE_EXACT_MODEL` | n/a | none | `product_closed_candidate` | Dimensions of the product: .845x598x590 mm | p.1, `590fd18870b2` |
+| `RESEARCH_UNLABELLED_AXIS_ORDER` | `UNLABELLED_DIMENSION_TRIPLE` | `SAME_PAGE_EXACT_MODEL` | n/a | none | `product_closed_candidate` | Dimensions of the product : 848x598x590 mm | p.1, `43c46981b7fb` |
+| `RESEARCH_UNLABELLED_AXIS_ORDER` | `UNLABELLED_DIMENSION_TRIPLE` | `SAME_PAGE_EXACT_MODEL` | n/a | none | `product_closed_candidate` | Dimensions of the product : 848x598x590 mm | p.1, `14fc3fb2941b` |
 
 Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: Measurements in mm
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: Measurements in mm
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 4: Measurements in mm
 
 #### Series 8
 
@@ -7548,6 +7617,24 @@ Research gaps:
 Research gaps:
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 1: Free-standing text Height of removable worktop: .-2 mm text Dimensions of the product: . ..848 x 598 x 590 mm text Net weight: ... ..82.3 kg text Connection ...
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: Measurements in mm
+
+#### PDF grammar pdf_grammar_4c402fe83b8ed0c6
+
+- Group type: `parser_family`
+- Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
+- Models observed: `WAT24220AU`
+- PDF SHA-256: `cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b`
+- PDF grammar profiles: `pdf_grammar_4c402fe83b8ed0c6`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/WAT24220AU.pdf>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_PARTIAL_REJECT_QUALIFIED_DEPTH_VARIANT` | `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width | `product_closed_candidate` | Dimensions (H x W x D) 84.8 cm x 59.8 cm x 59.0 cm | p.2, `5a337a11902a` |
+
+Research gaps:
+- `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 1: e-standing text Height of removable worktop (mm) : 848 text Dimensions of the product (mm) : 848 x 598 x 590 text Net weight (kg) : 71.451 text Connection Ra...
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: measurements in mm
 
 ### CAMEC
 
@@ -9553,30 +9640,53 @@ Research gaps:
 
 - Raw brand variants: `BOSCH`, `Bosch`
 - Inventory models: 25
-- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 5
-- Proven marketing series: 2; total series count: `PROVEN_MINIMUM_ONLY`
-- PDF grammar profiles: 2
-- Complete exact-model parser replays: 2
+- Coverage: `MINERU_SAMPLE_OBSERVED`; MinerU documents: 9
+- Proven marketing series: 3; total series count: `PROVEN_MINIMUM_ONLY`
+- PDF grammar profiles: 4
+- Complete exact-model parser replays: 4
+
+#### Series 4
+
+- Group type: `marketing_series`
+- Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
+- Models observed: `WTE84101AU`, `WTH85200AU`
+- PDF SHA-256: `2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d`, `fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859`
+- PDF grammar profiles: `pdf_grammar_2d2f6fda7f7538e6`, `pdf_grammar_f3714471e6856327`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/WTE84101AU.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH85200AU.pdf>
+- Series evidence: page 1, `Series 4, condenser tumble dryer, 7 kg WTE84101AU`; page 2, `Series 4, condenser tumble dryer, 7 kg WTE84101AU`; page 3, `Series 4, condenser tumble dryer, 7 kg WTE84101AU measurements in mm`; page 1, `Series 4, heat pump dryer, 8 kg, White WTH85200AU`; page 2, `Series 4, heat pump dryer, 8 kg, White WTH85200AU`; page 3, `Series 4, heat pump dryer, 8 kg, White WTH85200AU`
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_PARTIAL_REJECT_QUALIFIED_DEPTH_VARIANT` | `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width | `product_closed_candidate` | Dimensions (H x W x D) 84.2 cm x 59.8 cm x 61.3 cm | p.2, `f21a0a54abf7` |
+| `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions (HxWxD) 842x598x613 mm | p.1, `fccccd05fd45` |
+| `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions (HxWxD) 842x598x626 mm | p.1, `e36ea1d29fb4` |
+
+Research gaps:
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: Series 4, condenser tumble dryer, 7 kg WTE84101AU measurements in mm
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: Measurements in mm
 
 #### Series 6
 
 - Group type: `marketing_series`
 - Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
-- Models observed: `WQG235DRAU`, `WQG24200AU`
-- PDF SHA-256: `08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840`, `cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00`
-- PDF grammar profiles: `pdf_grammar_3bb3c56cf204e5c7`, `pdf_grammar_861c41113285bfa0`
+- Models observed: `WQG235DRAU`, `WQG24200AU`, `WTG86400AU`
+- PDF SHA-256: `08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840`, `cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00`, `db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6`
+- PDF grammar profiles: `pdf_grammar_3bb3c56cf204e5c7`, `pdf_grammar_861c41113285bfa0`, `pdf_grammar_f3714471e6856327`
 - Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
-- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG235DRAU.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG24200AU.pdf>
-- Series evidence: page 1, `Series 6, heat pump tumble dryer, 8 kg, Cast iron grey WQG235DRAU`; page 2, `Series 6, heat pump tumble dryer, 8 kg, Cast iron grey WQG235DRAU`; page 3, `Series 6, heat pump tumble dryer, 8 kg, Cast iron grey WQG235DRAU`; page 1, `Series 6, heat pump tumble dryer, 9 kg WQG24200AU`; page 2, `Series 6, heat pump tumble dryer, 9 kg WQG24200AU`; page 3, `Series 6, heat pump tumble dryer, 9 kg WQG24200AU`
+- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG235DRAU.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG24200AU.pdf>, <https://media3.bosch-home.com/Documents/specsheet/en-AU/WTG86400AU.pdf>
+- Series evidence: page 1, `Series 6, heat pump tumble dryer, 8 kg, Cast iron grey WQG235DRAU`; page 2, `Series 6, heat pump tumble dryer, 8 kg, Cast iron grey WQG235DRAU`; page 3, `Series 6, heat pump tumble dryer, 8 kg, Cast iron grey WQG235DRAU`; page 1, `Series 6, heat pump tumble dryer, 9 kg WQG24200AU`; page 2, `Series 6, heat pump tumble dryer, 9 kg WQG24200AU`; page 3, `Series 6, heat pump tumble dryer, 9 kg WQG24200AU`; page 1, `Series 6, condenser tumble dryer, 8 kg, White WTG86400AU`; page 2, `Series 6, condenser tumble dryer, 8 kg, White WTG86400AU`; page 3, `Series 6, condenser tumble dryer, 8 kg, White WTG86400AU`
 
 | Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH` | `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions (H x W x D) 84.2 cm x 59.8 cm x 61.3 cm | p.2, `4a129d1c7cf4` |
 | `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions (HxWxD) 842x598x613 mm | p.1, `57d1a4276abc` |
 | `SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH` | `GROUPED_AXIS_SEQUENCE_WITH_VARIANT` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions (H x W x D) 84.2 cm x 59.8 cm x 61.3 cm | p.2, `6033961777c2` |
+| `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions (HxWxD) 842x598x613 mm | p.1, `05a3d1c5160d` |
 
 Research gaps:
 - `UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION` on page 1: ge: ..Right text Length electrical supply cord: 145 cm text Dimensions (HxWxD): .842x598x613 mm text Net weight: .55.7 kg text Fluorinated greenhouse gases: ...
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: Measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: Measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: Measurements in mm
 
@@ -9603,6 +9713,23 @@ Research gaps:
 Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: Measurements in mm
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: Measurements in mm
+- `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: Measurements in mm
+
+#### PDF grammar pdf_grammar_f3714471e6856327
+
+- Group type: `parser_family`
+- Expression coverage: `PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS`
+- Models observed: `WTY877W0AU`
+- PDF SHA-256: `319264492d4b3383ef7a7b84585fe5bd0263f710ecd4a4a4e02174276e038e54`
+- PDF grammar profiles: `pdf_grammar_f3714471e6856327`
+- Reuse boundary: syntax reuse only; model identity, values and field semantics must be proven again for every PDF.
+- Official/source URLs: <https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY877W0AU.pdf>
+
+| Parser decision | Pattern | Model binding | Axis order | Safe axes | Scope | Source expression | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `SUPPORTED_EXPLICIT_GROUPED` | `GROUPED_AXIS_SEQUENCE` | `SAME_PAGE_EXACT_MODEL` | height -> width -> depth | height, width, depth | `product_closed_candidate` | Dimensions (HxWxD) 842x598x613 mm | p.1, `9a16c7b25f9f` |
+
+Research gaps:
 - `IMAGE_ONLY_DIMENSION_DIAGRAM` on page 3: Measurements in mm
 
 ### carson

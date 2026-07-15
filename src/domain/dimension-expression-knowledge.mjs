@@ -18,6 +18,7 @@ const HASH = /^[a-f0-9]{64}$/;
 const PATTERN_DESCRIPTIONS = Object.freeze({
   GROUPED_AXIS_SEQUENCE: 'Explicit axis order followed by one three-value sequence.',
   GROUPED_AXIS_SEQUENCE_WITH_VARIANT: 'Explicit three-axis sequence plus a qualified alternative depth.',
+  INLINE_VALUE_LABELLED_AXIS_SEQUENCE: 'Each value carries its own explicit W, H, or D label and unit.',
   INDIVIDUALLY_LABELLED_AXES: 'Two or more dimensions expressed as separate named axis/value pairs.',
   INDIVIDUAL_LABELLED_AXIS: 'One named axis/value pair; combine only through independently proven model scope.',
   ALTERNATING_AXIS_VALUE_CELLS: 'Diagram table alternating axis tokens and values, including D variants.',
@@ -237,8 +238,9 @@ function groupedTextObservations({ text, pageContext, base }) {
   const observations = [];
   const axis = '(W(?:idth|ide)?|H(?:eight|igh)?|D(?:epth|eep)?)';
   const separator = '\\s*(?:x|×|\\*)\\s*';
+  const scopeQualifier = '(?:net|product|overall|external|appliance|cabinet|body|cavity|cut[ -]?out|niche|opening|pack(?:ed|aging|age|aged)?|shipping|carton|box(?:ed)?|crate|clearance|ventilation|air\\s*space|gap|doors?\\s*open(?:ed)?|open(?:ed)?\\s*doors?|lid\\s*open)';
   const order = new RegExp(
-    `\\b((?:net\\s+|product\\s+)?dimensions?(?:\\s+of\\s+(?:the\\s+)?product)?\\s*\\(?\\s*${axis}${separator}${axis}${separator}${axis}\\s*\\)?)`,
+    `\\b((?:${scopeQualifier}\\s+)?dimensions?(?:\\s+of\\s+(?:the\\s+)?product)?(?:\\s*\\(\\s*${scopeQualifier}\\s*\\))?\\s*\\(?\\s*${axis}${separator}${axis}${separator}${axis}\\s*\\)?)`,
     'gi',
   );
   const number = '\\d+(?:\\.\\d+)?';
@@ -278,6 +280,55 @@ function groupedTextObservations({ text, pageContext, base }) {
     }
   }
   return observations;
+}
+
+function inlineValueLabelledAxisObservation({ text, base }) {
+  const source = String(text ?? '');
+  if (/\b(?:pack(?:ed|ing|ag(?:e|ed|ing))?|shipping|carton|box(?:ed)?|crate)\b/i.test(source)) {
+    return null;
+  }
+  const matches = [...source.matchAll(
+    /\b(w|width|h|height|d|depth)\b\s*:\s*(\d+(?:\.\d+)?)\s*(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/gi,
+  )];
+  if (matches.length !== 3 || !matches.some((match) => match[1].length === 1)) return null;
+  const axes = matches.map((match) => axisForToken(match[1]));
+  if (new Set(axes).size !== 3
+    || !['width', 'height', 'depth'].every((axis) => axes.includes(axis))) return null;
+  const prefix = source.slice(0, matches[0].index).replace(/^\s*[-•●]\s*/, '').trim();
+  if (prefix && !/^(?:(?:product|overall|external)\s+)?(?:dimensions?|size)\s*:?\s*[-–—]?$/i.test(prefix)) {
+    return null;
+  }
+  for (let index = 0; index < matches.length - 1; index += 1) {
+    const between = source.slice(matches[index].index + matches[index][0].length, matches[index + 1].index);
+    if (!/^\s*[x×*]\s*$/.test(between)) return null;
+  }
+  const suffix = source.slice(matches.at(-1).index + matches.at(-1)[0].length);
+  if (!/^\s*[.,;]?\s*$/.test(suffix)) return null;
+  const units = matches.map((match) => match[3].toLowerCase().startsWith('c') ? 'cm' : 'mm');
+  if (new Set(units).size !== 1) return null;
+  const scope = expressionScope(source);
+  const parserDecision = scopeDecision(scope, 'SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE');
+  const axisLabels = { width: 'W', height: 'H', depth: 'D' };
+  return finalizeObservation(base, {
+    patternKind: 'INLINE_VALUE_LABELLED_AXIS_SEQUENCE',
+    sourceLabel: `Dimensions (${axes.map((axis) => axisLabels[axis]).join(' x ')})`,
+    sourceValue: matches.map((match) => `${match[2]} ${units[0]}`).join(' x '),
+    sourceQuote: normalizedText(source),
+    axisOrder: axes,
+    safeAxes: /^SUPPORTED_/.test(parserDecision) ? [...axes] : [],
+    unit: units[0],
+    unitPlacement: 'per_value',
+    scope,
+    depthVariants: [],
+    axisValues: matches.map((match, index) => ({
+      axis: axes[index],
+      label: match[1].toUpperCase(),
+      value: `${match[2]} ${units[0]}`,
+      valueShape: 'scalar',
+    })),
+    parserDecision,
+    semanticInterpretation: axes.map((axis, index) => `${index + 1}:${axis}`).join(', '),
+  });
 }
 
 function letteredAxisListObservation({ text, pageContext, base }) {
@@ -963,6 +1014,8 @@ export function extractDimensionExpressions(input) {
         if (!groupedRows) {
           const text = itemText(item);
           observations.push(...groupedTextObservations({ text, pageContext, base }));
+          const inlineValueLabelled = inlineValueLabelledAxisObservation({ text, base });
+          if (inlineValueLabelled) observations.push(inlineValueLabelled);
           const lettered = letteredAxisListObservation({ text, pageContext, base });
           if (lettered) observations.push(lettered);
           observations.push(...unlabelledDimensionTripleObservations({ text, pageContext, base }));
@@ -986,6 +1039,8 @@ export function extractDimensionExpressions(input) {
       } else {
         const text = itemText(item);
         observations.push(...groupedTextObservations({ text, pageContext, base }));
+        const inlineValueLabelled = inlineValueLabelledAxisObservation({ text, base });
+        if (inlineValueLabelled) observations.push(inlineValueLabelled);
         const lettered = letteredAxisListObservation({ text, pageContext, base });
         if (lettered) observations.push(lettered);
         observations.push(...unlabelledDimensionTripleObservations({ text, pageContext, base }));

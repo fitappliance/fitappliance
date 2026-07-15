@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "bundleId": "historical-recovery-cumulative-v1",
-  "generatedAt": "2026-07-15T19:15:52.388Z",
+  "generatedAt": "2026-07-15T19:58:45.120Z",
   "policySha256": "3905e373ee0150f38dc4a3c9eb4f4f0eea41862b8067975a6ed29cca905967bc",
   "entries": [
     {
@@ -625,6 +625,237 @@
         "activeSourceHashes": [
           "38ad673e29cc5cb646186141629804da4510e5d8ee15ef78a5316aaca6f8309b",
           "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_00b3c9bd75298fc7ee4b1f37",
+      "referenceId": "fa_ref_974d2074f19352ff06ba7288",
+      "legacyRuntimeId": "ao-11243",
+      "canonicalProductId": "fa_prod_eab4a19816645fb04cc151b1",
+      "brand": "Bosch",
+      "model": "SCE53M05AU",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-14f264848d27ea28ad8550a9-slice-aedb4e7a8514",
+      "auditSha256": "b97bb31e9294f91cc9483af55c40c50fdd68e8661b3da3573e9d71a8491b066e",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SCE53M05AU.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SCE53M05AU.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:43:21.967Z",
+          "contentSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+          "objectPath": "evidence/web/sha256/4c/f9/4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 383167,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "SCE53M05AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 595
+              },
+              "sourceLabel": "Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "5d1b9086c2ce914d0f2e827b3aedc43ddf7b7755504ab43fb77e626fd0f114c1",
+              "bbox": [
+                502,
+                759,
+                752,
+                774
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 595
+              },
+              "sourceLabel": "Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "5d1b9086c2ce914d0f2e827b3aedc43ddf7b7755504ab43fb77e626fd0f114c1",
+              "bbox": [
+                502,
+                759,
+                752,
+                774
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 500
+              },
+              "sourceLabel": "Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "5d1b9086c2ce914d0f2e827b3aedc43ddf7b7755504ab43fb77e626fd0f114c1",
+              "bbox": [
+                502,
+                759,
+                752,
+                774
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+            "contentSha256": "cc606509a7eeaa871763838a445002090571e96e1f1387f5c0b9d39b07f77e14",
+            "objectPath": "evidence/derived/mineru-json/sha256/cc/60/cc606509a7eeaa871763838a445002090571e96e1f1387f5c0b9d39b07f77e14.json",
+            "byteSize": 39498,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_title_model",
+              "value": "SCE53M05AU:page:2"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SCE53M05AU:page:3"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SCE53M05AU.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:43:21.967Z",
+            "bindingSha256": "c41908dd50521e46a93482ab5ca1d950afd935258e42d9a2baf5ed239a7ad591"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 595,
+            "heightMm": {
+              "minimumMm": 595,
+              "maximumMm": 595
+            },
+            "depthMm": 500
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SCE53M05AU.pdf",
+            "contentSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+            "receiptBindingSha256": "c41908dd50521e46a93482ab5ca1d950afd935258e42d9a2baf5ed239a7ad591",
+            "page": 2,
+            "fragmentSha256": "5d1b9086c2ce914d0f2e827b3aedc43ddf7b7755504ab43fb77e626fd0f114c1"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SCE53M05AU.pdf",
+            "contentSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+            "receiptBindingSha256": "c41908dd50521e46a93482ab5ca1d950afd935258e42d9a2baf5ed239a7ad591",
+            "page": 2,
+            "fragmentSha256": "5d1b9086c2ce914d0f2e827b3aedc43ddf7b7755504ab43fb77e626fd0f114c1"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SCE53M05AU.pdf",
+            "contentSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+            "receiptBindingSha256": "c41908dd50521e46a93482ab5ca1d950afd935258e42d9a2baf5ed239a7ad591",
+            "page": 2,
+            "fragmentSha256": "5d1b9086c2ce914d0f2e827b3aedc43ddf7b7755504ab43fb77e626fd0f114c1"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858"
         ]
       },
       "reconciliation": {
@@ -1519,6 +1750,259 @@
         "activeSourceHashes": [
           "e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_0659f995ff29d2b5f37d1c55",
+      "referenceId": "fa_ref_3081a6936c014ebb6089517d",
+      "legacyRuntimeId": "ao-59484",
+      "canonicalProductId": "fa_prod_f770bc0cc324cc7f09b8c4c9",
+      "brand": "Bosch",
+      "model": "WTY877W0AU",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-7124ae0bcf249c78d1904528-slice-6736333b2986",
+      "auditSha256": "55057452c6687d27ea6f4a62278919849f3e3fe0c7cbd75c52d503e5cd76cf0e",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY877W0AU.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY877W0AU.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:58:12.472Z",
+          "contentSha256": "319264492d4b3383ef7a7b84585fe5bd0263f710ecd4a4a4e02174276e038e54",
+          "objectPath": "evidence/web/sha256/31/92/319264492d4b3383ef7a7b84585fe5bd0263f710ecd4a4a4e02174276e038e54.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1249505,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "WTY877W0AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "9a16c7b25f9f4dd6e94420efa65eed000081526f548e80c4df683c4ecf63aa90",
+              "bbox": [
+                499,
+                311,
+                907,
+                493
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 842
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "9a16c7b25f9f4dd6e94420efa65eed000081526f548e80c4df683c4ecf63aa90",
+              "bbox": [
+                499,
+                311,
+                907,
+                493
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 613
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "9a16c7b25f9f4dd6e94420efa65eed000081526f548e80c4df683c4ecf63aa90",
+              "bbox": [
+                499,
+                311,
+                907,
+                493
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "319264492d4b3383ef7a7b84585fe5bd0263f710ecd4a4a4e02174276e038e54",
+            "contentSha256": "80c1fdb49727110030495f5bd77bd51eba876cb58752bb0460a44e38e2b85585",
+            "objectPath": "evidence/derived/mineru-json/sha256/80/c1/80c1fdb49727110030495f5bd77bd51eba876cb58752bb0460a44e38e2b85585.json",
+            "byteSize": 25578,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_list_model",
+              "value": "WTY877W0AU:page:3:b554d91970a6c5451b1de07ab8d0d9fd65705aa0f598faf1ab60d1ca1a9f31ab"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WTY877W0AU:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WTY877W0AU:page:2"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "WTY877W0AU:https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY877W0AU.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY877W0AU.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:58:12.472Z",
+            "bindingSha256": "c0a1f4683fe04c0ff98808020f98126d837e3de02073d292c3ba78986710d0f1"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 842,
+              "maximumMm": 842
+            },
+            "depthMm": 613
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY877W0AU.pdf",
+            "contentSha256": "319264492d4b3383ef7a7b84585fe5bd0263f710ecd4a4a4e02174276e038e54",
+            "receiptBindingSha256": "c0a1f4683fe04c0ff98808020f98126d837e3de02073d292c3ba78986710d0f1",
+            "page": 1,
+            "fragmentSha256": "9a16c7b25f9f4dd6e94420efa65eed000081526f548e80c4df683c4ecf63aa90"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY877W0AU.pdf",
+            "contentSha256": "319264492d4b3383ef7a7b84585fe5bd0263f710ecd4a4a4e02174276e038e54",
+            "receiptBindingSha256": "c0a1f4683fe04c0ff98808020f98126d837e3de02073d292c3ba78986710d0f1",
+            "page": 1,
+            "fragmentSha256": "9a16c7b25f9f4dd6e94420efa65eed000081526f548e80c4df683c4ecf63aa90"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY877W0AU.pdf",
+            "contentSha256": "319264492d4b3383ef7a7b84585fe5bd0263f710ecd4a4a4e02174276e038e54",
+            "receiptBindingSha256": "c0a1f4683fe04c0ff98808020f98126d837e3de02073d292c3ba78986710d0f1",
+            "page": 1,
+            "fragmentSha256": "9a16c7b25f9f4dd6e94420efa65eed000081526f548e80c4df683c4ecf63aa90"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "319264492d4b3383ef7a7b84585fe5bd0263f710ecd4a4a4e02174276e038e54"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_597e8c6d68cfe01547a612cd",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 598,
+              "heightMm": 842,
+              "depthMm": 599
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "conflictReason": null
       }
     },
     {
@@ -5083,6 +5567,245 @@
         "activeSourceHashes": [
           "3b05c53d73812d2432a3f7b667a775300b37297f6c410f0d3c7d4b172c8596d7"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_29e5c24d2f34ab873c2073ad",
+      "referenceId": "fa_ref_dd8527794840cb1b80797421",
+      "legacyRuntimeId": "ao-9351",
+      "canonicalProductId": "fa_prod_89a54790faaeff177d775ff3",
+      "brand": "Bosch",
+      "model": "SKE53M05AU",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-7124ae0bcf249c78d1904528-slice-235bd982a76d",
+      "auditSha256": "39ae21d00a410fb6fb592e16d2b201930b7d81e2bc8536e19fb1ea2b13f44e95",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:51:31.066Z",
+          "contentSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+          "objectPath": "evidence/web/sha256/99/13/99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 500034,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "SKE53M05AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 595
+              },
+              "sourceLabel": "Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "e24bd395c647f6789b86d3cec5a1b18ac502ba3ef795f4cb45920d60b57d54d2",
+              "bbox": [
+                502,
+                588,
+                752,
+                602
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 454
+              },
+              "sourceLabel": "Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "e24bd395c647f6789b86d3cec5a1b18ac502ba3ef795f4cb45920d60b57d54d2",
+              "bbox": [
+                502,
+                588,
+                752,
+                602
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 500
+              },
+              "sourceLabel": "Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "e24bd395c647f6789b86d3cec5a1b18ac502ba3ef795f4cb45920d60b57d54d2",
+              "bbox": [
+                502,
+                588,
+                752,
+                602
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+            "contentSha256": "1c2f3f00199c1c809959f1c2e8d1923008f88e15cfefee8798e2b82b9812469f",
+            "objectPath": "evidence/derived/mineru-json/sha256/1c/2f/1c2f3f00199c1c809959f1c2e8d1923008f88e15cfefee8798e2b82b9812469f.json",
+            "byteSize": 36817,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_title_model",
+              "value": "SKE53M05AU:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SKE53M05AU:page:2"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SKE53M05AU:page:3"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "SKE53M05AU:https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:51:31.066Z",
+            "bindingSha256": "b192f05c527e1d0e77fa37d5e425748f161d7250aa752cabaf238e75016a0e8c"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 595,
+            "heightMm": {
+              "minimumMm": 454,
+              "maximumMm": 454
+            },
+            "depthMm": 500
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf",
+            "contentSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+            "receiptBindingSha256": "b192f05c527e1d0e77fa37d5e425748f161d7250aa752cabaf238e75016a0e8c",
+            "page": 2,
+            "fragmentSha256": "e24bd395c647f6789b86d3cec5a1b18ac502ba3ef795f4cb45920d60b57d54d2"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf",
+            "contentSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+            "receiptBindingSha256": "b192f05c527e1d0e77fa37d5e425748f161d7250aa752cabaf238e75016a0e8c",
+            "page": 2,
+            "fragmentSha256": "e24bd395c647f6789b86d3cec5a1b18ac502ba3ef795f4cb45920d60b57d54d2"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf",
+            "contentSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+            "receiptBindingSha256": "b192f05c527e1d0e77fa37d5e425748f161d7250aa752cabaf238e75016a0e8c",
+            "page": 2,
+            "fragmentSha256": "e24bd395c647f6789b86d3cec5a1b18ac502ba3ef795f4cb45920d60b57d54d2"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
       }
     },
     {
@@ -10319,6 +11042,256 @@
           "0adb735b79f09ba84591c9f201cf98c917b1db9ef34acb66a5d995fb8c9f8210",
           "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_4525527a189af88e50ecd15a",
+      "referenceId": "fa_ref_8f971be0c518ab095bf6bc84",
+      "legacyRuntimeId": "ao-159927",
+      "canonicalProductId": "fa_prod_567e380af6e20432dc67e69a",
+      "brand": "Bosch",
+      "model": "WGG2449RAU",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-7124ae0bcf249c78d1904528-slice-235bd982a76d",
+      "auditSha256": "39ae21d00a410fb6fb592e16d2b201930b7d81e2bc8536e19fb1ea2b13f44e95",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2449RAU.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2449RAU.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:51:56.797Z",
+          "contentSha256": "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+          "objectPath": "evidence/web/sha256/b5/57/b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 326247,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "WGG2449RAU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "- Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "0671c6d7128c0cca7a00b1eefb897a8eabd020dd1183d44b0bd0aa5ca1971e36",
+              "bbox": [
+                502,
+                797,
+                897,
+                825
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 848
+              },
+              "sourceLabel": "- Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "0671c6d7128c0cca7a00b1eefb897a8eabd020dd1183d44b0bd0aa5ca1971e36",
+              "bbox": [
+                502,
+                797,
+                897,
+                825
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 636
+              },
+              "sourceLabel": "Overall depth including door handle",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": true,
+              "includesHandle": true,
+              "page": 2,
+              "fragmentSha256": "0671c6d7128c0cca7a00b1eefb897a8eabd020dd1183d44b0bd0aa5ca1971e36",
+              "bbox": [
+                502,
+                797,
+                897,
+                825
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+            "contentSha256": "5a4ed88ec783aa01545071531d59287fe1d02793c25d2064855694e50db9d82d",
+            "objectPath": "evidence/derived/mineru-json/sha256/5a/4e/5a4ed88ec783aa01545071531d59287fe1d02793c25d2064855694e50db9d82d.json",
+            "byteSize": 54013,
+            "pageCount": 4
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_list_model",
+              "value": "WGG2449RAU:page:4:1bc765122a374303987e5f9d6ca64e2960db0bf26efd036277243eeb37e50448"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WGG2449RAU:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WGG2449RAU:page:2"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "WGG2449RAU:https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2449RAU.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2449RAU.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:51:56.797Z",
+            "bindingSha256": "64a3f4495a0803886bbb702f55bbe48843fdc520bc91a07078897c87ef301385"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 848,
+              "maximumMm": 848
+            },
+            "depthMm": 636
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2449RAU.pdf",
+            "contentSha256": "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+            "receiptBindingSha256": "64a3f4495a0803886bbb702f55bbe48843fdc520bc91a07078897c87ef301385",
+            "page": 2,
+            "fragmentSha256": "0671c6d7128c0cca7a00b1eefb897a8eabd020dd1183d44b0bd0aa5ca1971e36"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2449RAU.pdf",
+            "contentSha256": "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+            "receiptBindingSha256": "64a3f4495a0803886bbb702f55bbe48843fdc520bc91a07078897c87ef301385",
+            "page": 2,
+            "fragmentSha256": "0671c6d7128c0cca7a00b1eefb897a8eabd020dd1183d44b0bd0aa5ca1971e36"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2449RAU.pdf",
+            "contentSha256": "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+            "receiptBindingSha256": "64a3f4495a0803886bbb702f55bbe48843fdc520bc91a07078897c87ef301385",
+            "page": 2,
+            "fragmentSha256": "0671c6d7128c0cca7a00b1eefb897a8eabd020dd1183d44b0bd0aa5ca1971e36"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_5e56f2b3c981babf11a8b2e2",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 598,
+              "heightMm": 848,
+              "depthMm": 590
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "conflictReason": null
       }
     },
     {
@@ -18261,6 +19234,260 @@
       }
     },
     {
+      "targetId": "recovery_target_80e0025c3c7514692ec7afdd",
+      "referenceId": "fa_ref_fc9cb54d89ad2373efd37b74",
+      "legacyRuntimeId": "ao-101150",
+      "canonicalProductId": "fa_prod_45a28137c5277d3e30b409fc",
+      "brand": "Bosch",
+      "model": "WNA254U1AU",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-7124ae0bcf249c78d1904528-slice-235bd982a76d",
+      "auditSha256": "39ae21d00a410fb6fb592e16d2b201930b7d81e2bc8536e19fb1ea2b13f44e95",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WNA254U1AU.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WNA254U1AU.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:52:13.366Z",
+          "contentSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+          "objectPath": "evidence/web/sha256/e2/a3/e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 324689,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "WNA254U1AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "- Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "6fc3050b0129f183863c1b481dd00b6ccedf9688d08d994cb9fe002db3a79d34",
+              "bbox": [
+                502,
+                875,
+                885,
+                902
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 848
+              },
+              "sourceLabel": "- Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "6fc3050b0129f183863c1b481dd00b6ccedf9688d08d994cb9fe002db3a79d34",
+              "bbox": [
+                502,
+                875,
+                885,
+                902
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 635
+              },
+              "sourceLabel": "Overall depth including door handle",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": true,
+              "includesHandle": true,
+              "page": 2,
+              "fragmentSha256": "6fc3050b0129f183863c1b481dd00b6ccedf9688d08d994cb9fe002db3a79d34",
+              "bbox": [
+                502,
+                875,
+                885,
+                902
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+            "contentSha256": "5a19a3b04cc7389e53d5ae55efe22fd8c85f403e588fffd9885b9628897e8e4f",
+            "objectPath": "evidence/derived/mineru-json/sha256/5a/19/5a19a3b04cc7389e53d5ae55efe22fd8c85f403e588fffd9885b9628897e8e4f.json",
+            "byteSize": 39884,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_body_model",
+              "value": "WNA254U1AU:page:2:e67f83ce15fb3311b4ff051f996b08d32d6baac150f4ab7da4abd8a97411d60c"
+            },
+            {
+              "type": "mineru_body_model",
+              "value": "WNA254U1AU:page:3:6ea372b57891e99736e5fec90b16dfa842e3cd228adf31230be58c67dc11cf2a"
+            },
+            {
+              "type": "mineru_repeated_body_model",
+              "value": "WNA254U1AU:document:repeated-body-heading"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WNA254U1AU:page:1"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "WNA254U1AU:https://media3.bosch-home.com/Documents/specsheet/en-AU/WNA254U1AU.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WNA254U1AU.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:52:13.366Z",
+            "bindingSha256": "1886efd28626277e95cba66a7494fca5e100951c23ac530b565ada92c6ae7051"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 848,
+              "maximumMm": 848
+            },
+            "depthMm": 635
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WNA254U1AU.pdf",
+            "contentSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+            "receiptBindingSha256": "1886efd28626277e95cba66a7494fca5e100951c23ac530b565ada92c6ae7051",
+            "page": 2,
+            "fragmentSha256": "6fc3050b0129f183863c1b481dd00b6ccedf9688d08d994cb9fe002db3a79d34"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WNA254U1AU.pdf",
+            "contentSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+            "receiptBindingSha256": "1886efd28626277e95cba66a7494fca5e100951c23ac530b565ada92c6ae7051",
+            "page": 2,
+            "fragmentSha256": "6fc3050b0129f183863c1b481dd00b6ccedf9688d08d994cb9fe002db3a79d34"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WNA254U1AU.pdf",
+            "contentSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+            "receiptBindingSha256": "1886efd28626277e95cba66a7494fca5e100951c23ac530b565ada92c6ae7051",
+            "page": 2,
+            "fragmentSha256": "6fc3050b0129f183863c1b481dd00b6ccedf9688d08d994cb9fe002db3a79d34"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_23a212ec3a331f3567aeb0a1",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 598,
+              "heightMm": 848,
+              "depthMm": 590
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_85c252087f0b13e3c76aa32a",
       "referenceId": "fa_ref_f289ada69d2bc793e73b83da",
       "legacyRuntimeId": "discovery-dryer-fisher-paykel-de6060m2",
@@ -23325,6 +24552,239 @@
       }
     },
     {
+      "targetId": "recovery_target_a94369c7aadc832b86ec5b8e",
+      "referenceId": "fa_ref_0e08c3c010dda2091cc71429",
+      "legacyRuntimeId": "ao-99494",
+      "canonicalProductId": "fa_prod_5cd269c04793105c309aa6a9",
+      "brand": "Bosch",
+      "model": "GIN81AC30A",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-7124ae0bcf249c78d1904528-slice-6736333b2986",
+      "auditSha256": "55057452c6687d27ea6f4a62278919849f3e3fe0c7cbd75c52d503e5cd76cf0e",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/GIN81AC30A.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/GIN81AC30A.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:58:12.591Z",
+          "contentSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+          "objectPath": "evidence/web/sha256/02/76/02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 2570907,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "GIN81AC30A",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 558
+              },
+              "sourceLabel": "- Dimensions ( H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "ade664a5a77ef2e29f0984d0519afd387112e112b14a9c9460aba03681ac1356",
+              "bbox": [
+                67,
+                554,
+                405,
+                567
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1772
+              },
+              "sourceLabel": "- Dimensions ( H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "ade664a5a77ef2e29f0984d0519afd387112e112b14a9c9460aba03681ac1356",
+              "bbox": [
+                67,
+                554,
+                405,
+                567
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 545
+              },
+              "sourceLabel": "- Dimensions ( H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "ade664a5a77ef2e29f0984d0519afd387112e112b14a9c9460aba03681ac1356",
+              "bbox": [
+                67,
+                554,
+                405,
+                567
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+            "contentSha256": "fa6fb596e8b71973f182b833c5cc7acce9ff6bf9eb5d8a12480a7edd33e39190",
+            "objectPath": "evidence/derived/mineru-json/sha256/fa/6f/fa6fb596e8b71973f182b833c5cc7acce9ff6bf9eb5d8a12480a7edd33e39190.json",
+            "byteSize": 41593,
+            "pageCount": 4
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_title_model",
+              "value": "GIN81AC30A:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "GIN81AC30A:page:2"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "GIN81AC30A:https://media3.bosch-home.com/Documents/specsheet/en-AU/GIN81AC30A.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/GIN81AC30A.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:58:12.591Z",
+            "bindingSha256": "4d08fe00f39c80e3f5a0f6bd092681cce29dfdbe9781d64c0be5fcb6892e752b"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 558,
+            "heightMm": {
+              "minimumMm": 1772,
+              "maximumMm": 1772
+            },
+            "depthMm": 545
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/GIN81AC30A.pdf",
+            "contentSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+            "receiptBindingSha256": "4d08fe00f39c80e3f5a0f6bd092681cce29dfdbe9781d64c0be5fcb6892e752b",
+            "page": 2,
+            "fragmentSha256": "ade664a5a77ef2e29f0984d0519afd387112e112b14a9c9460aba03681ac1356"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/GIN81AC30A.pdf",
+            "contentSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+            "receiptBindingSha256": "4d08fe00f39c80e3f5a0f6bd092681cce29dfdbe9781d64c0be5fcb6892e752b",
+            "page": 2,
+            "fragmentSha256": "ade664a5a77ef2e29f0984d0519afd387112e112b14a9c9460aba03681ac1356"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/GIN81AC30A.pdf",
+            "contentSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+            "receiptBindingSha256": "4d08fe00f39c80e3f5a0f6bd092681cce29dfdbe9781d64c0be5fcb6892e752b",
+            "page": 2,
+            "fragmentSha256": "ade664a5a77ef2e29f0984d0519afd387112e112b14a9c9460aba03681ac1356"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_a9e3e60452329b7100a8d6f6",
       "referenceId": "fa_ref_969dc63a29a3d245cd590d44",
       "legacyRuntimeId": "ao-42535",
@@ -24814,6 +26274,247 @@
         "activeSourceHashes": [
           "5b63a45d72f8a8b0789205016238cbd6d743f1561c20ea661e3fd342cb068485"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_b0fb45b4988b622780278e09",
+      "referenceId": "fa_ref_a3a2e6f08fe12c36c49356cc",
+      "legacyRuntimeId": "ao-56911",
+      "canonicalProductId": "fa_prod_0b0744d168c2f4612237ec10",
+      "brand": "Bosch",
+      "model": "KAD92AI20A",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-14f264848d27ea28ad8550a9-slice-481842ecdcb8",
+      "auditSha256": "ebe9e59893ba3a3849c79e8a57d6ea028e8a7593669a094a08c4261dd7dc6f42",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAD92AI20A.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAD92AI20A.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:35:36.543Z",
+          "contentSha256": "857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8",
+          "objectPath": "evidence/web/sha256/85/7e/857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 477302,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "KAD92AI20A",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 912
+              },
+              "sourceLabel": "- Dimensions ( H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "e4c4636c349b7c91dab1f41e7eef8e2a9bc8c00dad52b00f2bf59b4f88ea9e44",
+              "bbox": [
+                87,
+                355,
+                448,
+                368
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1756
+              },
+              "sourceLabel": "- Dimensions ( H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "e4c4636c349b7c91dab1f41e7eef8e2a9bc8c00dad52b00f2bf59b4f88ea9e44",
+              "bbox": [
+                87,
+                355,
+                448,
+                368
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 732
+              },
+              "sourceLabel": "- Dimensions ( H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "e4c4636c349b7c91dab1f41e7eef8e2a9bc8c00dad52b00f2bf59b4f88ea9e44",
+              "bbox": [
+                87,
+                355,
+                448,
+                368
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8",
+            "contentSha256": "45c271eb6e54d6d5c02b6aaa3a24e947b4a6763d8b349177c9d9891604d9312e",
+            "objectPath": "evidence/derived/mineru-json/sha256/45/c2/45c271eb6e54d6d5c02b6aaa3a24e947b4a6763d8b349177c9d9891604d9312e.json",
+            "byteSize": 39586,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_list_model",
+              "value": "KAD92AI20A:page:1:1c09f3d972d70f1d45f15cc771081f209c9032748e2785fa35eb67a6bd55150b"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "KAD92AI20A:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "KAD92AI20A:page:2"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "KAD92AI20A:page:3"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "KAD92AI20A:https://media3.bosch-home.com/Documents/specsheet/en-AU/KAD92AI20A.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAD92AI20A.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:35:36.543Z",
+            "bindingSha256": "fd26aadef370a520519330f7bd8af484794e7ef14c9775c4cfc3882bf10f33cb"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 912,
+            "heightMm": {
+              "minimumMm": 1756,
+              "maximumMm": 1756
+            },
+            "depthMm": 732
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAD92AI20A.pdf",
+            "contentSha256": "857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8",
+            "receiptBindingSha256": "fd26aadef370a520519330f7bd8af484794e7ef14c9775c4cfc3882bf10f33cb",
+            "page": 2,
+            "fragmentSha256": "e4c4636c349b7c91dab1f41e7eef8e2a9bc8c00dad52b00f2bf59b4f88ea9e44"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAD92AI20A.pdf",
+            "contentSha256": "857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8",
+            "receiptBindingSha256": "fd26aadef370a520519330f7bd8af484794e7ef14c9775c4cfc3882bf10f33cb",
+            "page": 2,
+            "fragmentSha256": "e4c4636c349b7c91dab1f41e7eef8e2a9bc8c00dad52b00f2bf59b4f88ea9e44"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAD92AI20A.pdf",
+            "contentSha256": "857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8",
+            "receiptBindingSha256": "fd26aadef370a520519330f7bd8af484794e7ef14c9775c4cfc3882bf10f33cb",
+            "page": 2,
+            "fragmentSha256": "e4c4636c349b7c91dab1f41e7eef8e2a9bc8c00dad52b00f2bf59b4f88ea9e44"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
       }
     },
     {
@@ -27505,6 +29206,239 @@
       }
     },
     {
+      "targetId": "recovery_target_c9665681a8e07fb9f33889e6",
+      "referenceId": "fa_ref_366ce5b1a82c376b983e138d",
+      "legacyRuntimeId": "ao-99518",
+      "canonicalProductId": "fa_prod_9d4d8eac86d4f8f17710eaf9",
+      "brand": "Bosch",
+      "model": "KGN36VI3AA",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-7124ae0bcf249c78d1904528-slice-235bd982a76d",
+      "auditSha256": "39ae21d00a410fb6fb592e16d2b201930b7d81e2bc8536e19fb1ea2b13f44e95",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KGN36VI3AA.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KGN36VI3AA.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:52:50.361Z",
+          "contentSha256": "d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9",
+          "objectPath": "evidence/web/sha256/d0/27/d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1383176,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "KGN36VI3AA",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 600
+              },
+              "sourceLabel": "- Dimensions ( H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "c6da38491ec05f1c0d8951b4ba7dd4c7844a3d4ad94cfc7c0b6b8b51f4948d3c",
+              "bbox": [
+                67,
+                630,
+                403,
+                642
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1860
+              },
+              "sourceLabel": "- Dimensions ( H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "c6da38491ec05f1c0d8951b4ba7dd4c7844a3d4ad94cfc7c0b6b8b51f4948d3c",
+              "bbox": [
+                67,
+                630,
+                403,
+                642
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 660
+              },
+              "sourceLabel": "- Dimensions ( H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "c6da38491ec05f1c0d8951b4ba7dd4c7844a3d4ad94cfc7c0b6b8b51f4948d3c",
+              "bbox": [
+                67,
+                630,
+                403,
+                642
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9",
+            "contentSha256": "327c797858c8410ff1748c5d92c6aa02c2b7345846921aa8c6b5969b55458820",
+            "objectPath": "evidence/derived/mineru-json/sha256/32/7c/327c797858c8410ff1748c5d92c6aa02c2b7345846921aa8c6b5969b55458820.json",
+            "byteSize": 34683,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_list_model",
+              "value": "KGN36VI3AA:page:1:8102b7a1c894cbd495f7fa861a8466507098c897578506228372769aab26821c"
+            },
+            {
+              "type": "mineru_table_model",
+              "value": "KGN36VI3AA:page:3:dc2b7c7bb1f6337b4a6271105f6ac262ce24ad357e5e3f9678a9be52551fa2d9"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "KGN36VI3AA:page:2"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KGN36VI3AA.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:52:50.361Z",
+            "bindingSha256": "0b6c92a50ad4d323dbf37003fa5eb876657643f19048acf2ee21103beccdbcee"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 600,
+            "heightMm": {
+              "minimumMm": 1860,
+              "maximumMm": 1860
+            },
+            "depthMm": 660
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KGN36VI3AA.pdf",
+            "contentSha256": "d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9",
+            "receiptBindingSha256": "0b6c92a50ad4d323dbf37003fa5eb876657643f19048acf2ee21103beccdbcee",
+            "page": 2,
+            "fragmentSha256": "c6da38491ec05f1c0d8951b4ba7dd4c7844a3d4ad94cfc7c0b6b8b51f4948d3c"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KGN36VI3AA.pdf",
+            "contentSha256": "d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9",
+            "receiptBindingSha256": "0b6c92a50ad4d323dbf37003fa5eb876657643f19048acf2ee21103beccdbcee",
+            "page": 2,
+            "fragmentSha256": "c6da38491ec05f1c0d8951b4ba7dd4c7844a3d4ad94cfc7c0b6b8b51f4948d3c"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KGN36VI3AA.pdf",
+            "contentSha256": "d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9",
+            "receiptBindingSha256": "0b6c92a50ad4d323dbf37003fa5eb876657643f19048acf2ee21103beccdbcee",
+            "page": 2,
+            "fragmentSha256": "c6da38491ec05f1c0d8951b4ba7dd4c7844a3d4ad94cfc7c0b6b8b51f4948d3c"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_c98f8586024d44a327356703",
       "referenceId": "fa_ref_1ac391fe8ec81d62e37edadf",
       "legacyRuntimeId": "ao-64001",
@@ -27754,6 +29688,259 @@
         "supersessionViolations": [],
         "axisPermutationResolution": null,
         "lowerAuthorityResolution": "official_market_api_dimension_corroboration",
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_ca994d4b2d365c5c5393aca6",
+      "referenceId": "fa_ref_7f6351cce1bd410e26cccb76",
+      "legacyRuntimeId": "ao-62834",
+      "canonicalProductId": "fa_prod_dacb70cc998dddba0835332b",
+      "brand": "Bosch",
+      "model": "WTH85200AU",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-14f264848d27ea28ad8550a9-slice-481842ecdcb8",
+      "auditSha256": "ebe9e59893ba3a3849c79e8a57d6ea028e8a7593669a094a08c4261dd7dc6f42",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH85200AU.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH85200AU.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:35:53.105Z",
+          "contentSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
+          "objectPath": "evidence/web/sha256/fa/91/fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1244879,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "WTH85200AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "f21a0a54abf7504b8a7a332459b25324bcd37f09dfec9443f0dd696d61e85098",
+              "bbox": [
+                507,
+                158,
+                878,
+                181
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 842
+              },
+              "sourceLabel": "Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "f21a0a54abf7504b8a7a332459b25324bcd37f09dfec9443f0dd696d61e85098",
+              "bbox": [
+                507,
+                158,
+                878,
+                181
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 613
+              },
+              "sourceLabel": "Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "f21a0a54abf7504b8a7a332459b25324bcd37f09dfec9443f0dd696d61e85098",
+              "bbox": [
+                507,
+                158,
+                878,
+                181
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
+            "contentSha256": "2e95122ef0fb2a34fb7fb007a81d4ddc67590b479194f09b205bcbd396991e0e",
+            "objectPath": "evidence/derived/mineru-json/sha256/2e/95/2e95122ef0fb2a34fb7fb007a81d4ddc67590b479194f09b205bcbd396991e0e.json",
+            "byteSize": 29181,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WTH85200AU:page:3:f9f732a30bf23faaf320a7d9f3a810ea098b5894f426383a7dab19acccf7b52a"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WTH85200AU:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WTH85200AU:page:2"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "WTH85200AU:https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH85200AU.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH85200AU.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:35:53.105Z",
+            "bindingSha256": "2d7d585efd620048c5a3259d0437230aecde62d3f721756e05d9d55427b1320c"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 842,
+              "maximumMm": 842
+            },
+            "depthMm": 613
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH85200AU.pdf",
+            "contentSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
+            "receiptBindingSha256": "2d7d585efd620048c5a3259d0437230aecde62d3f721756e05d9d55427b1320c",
+            "page": 2,
+            "fragmentSha256": "f21a0a54abf7504b8a7a332459b25324bcd37f09dfec9443f0dd696d61e85098"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH85200AU.pdf",
+            "contentSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
+            "receiptBindingSha256": "2d7d585efd620048c5a3259d0437230aecde62d3f721756e05d9d55427b1320c",
+            "page": 2,
+            "fragmentSha256": "f21a0a54abf7504b8a7a332459b25324bcd37f09dfec9443f0dd696d61e85098"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH85200AU.pdf",
+            "contentSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
+            "receiptBindingSha256": "2d7d585efd620048c5a3259d0437230aecde62d3f721756e05d9d55427b1320c",
+            "page": 2,
+            "fragmentSha256": "f21a0a54abf7504b8a7a332459b25324bcd37f09dfec9443f0dd696d61e85098"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_4f8721c3d6c2c0bbcc811539",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 598,
+              "heightMm": 842,
+              "depthMm": 599
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
         "conflictReason": null
       }
     },
@@ -28606,6 +30793,259 @@
           "0276c210755dfdfeee574496097fba98e0726bae6831f7f172f70bca4f41f0f1",
           "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b"
         ]
+      }
+    },
+    {
+      "targetId": "recovery_target_d8f4b0ed4b89f136b885b373",
+      "referenceId": "fa_ref_be17af4ea328c5a2f9a78626",
+      "legacyRuntimeId": "ao-50166",
+      "canonicalProductId": "fa_prod_b6c5048646798df546e0fa87",
+      "brand": "Bosch",
+      "model": "WTG86400AU",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-7124ae0bcf249c78d1904528-slice-6736333b2986",
+      "auditSha256": "55057452c6687d27ea6f4a62278919849f3e3fe0c7cbd75c52d503e5cd76cf0e",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTG86400AU.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTG86400AU.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:58:12.652Z",
+          "contentSha256": "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6",
+          "objectPath": "evidence/web/sha256/db/1b/db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1235814,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "WTG86400AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "05a3d1c5160d76931b9dddd35a49bb46856f60eb972d20c39451c0c69df77501",
+              "bbox": [
+                499,
+                324,
+                907,
+                626
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 842
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "05a3d1c5160d76931b9dddd35a49bb46856f60eb972d20c39451c0c69df77501",
+              "bbox": [
+                499,
+                324,
+                907,
+                626
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 613
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "05a3d1c5160d76931b9dddd35a49bb46856f60eb972d20c39451c0c69df77501",
+              "bbox": [
+                499,
+                324,
+                907,
+                626
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6",
+            "contentSha256": "ec2ff90b32bd46497d44eadebc9df0db3aa4e84d11702f56836533e98c40c7e2",
+            "objectPath": "evidence/derived/mineru-json/sha256/ec/2f/ec2ff90b32bd46497d44eadebc9df0db3aa4e84d11702f56836533e98c40c7e2.json",
+            "byteSize": 30711,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_page_header_model",
+              "value": "WTG86400AU:page:3:df5978da29527ad3816a4ada3b73a3badfb29fdc7ee46c38644ada20f110f388"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WTG86400AU:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WTG86400AU:page:2"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "WTG86400AU:https://media3.bosch-home.com/Documents/specsheet/en-AU/WTG86400AU.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTG86400AU.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:58:12.652Z",
+            "bindingSha256": "2871ccd1e0435b1ce63800495cf533ea9fd82f8fb513758dba0312b1de4b2b41"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 842,
+              "maximumMm": 842
+            },
+            "depthMm": 613
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTG86400AU.pdf",
+            "contentSha256": "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6",
+            "receiptBindingSha256": "2871ccd1e0435b1ce63800495cf533ea9fd82f8fb513758dba0312b1de4b2b41",
+            "page": 1,
+            "fragmentSha256": "05a3d1c5160d76931b9dddd35a49bb46856f60eb972d20c39451c0c69df77501"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTG86400AU.pdf",
+            "contentSha256": "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6",
+            "receiptBindingSha256": "2871ccd1e0435b1ce63800495cf533ea9fd82f8fb513758dba0312b1de4b2b41",
+            "page": 1,
+            "fragmentSha256": "05a3d1c5160d76931b9dddd35a49bb46856f60eb972d20c39451c0c69df77501"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTG86400AU.pdf",
+            "contentSha256": "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6",
+            "receiptBindingSha256": "2871ccd1e0435b1ce63800495cf533ea9fd82f8fb513758dba0312b1de4b2b41",
+            "page": 1,
+            "fragmentSha256": "05a3d1c5160d76931b9dddd35a49bb46856f60eb972d20c39451c0c69df77501"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_d57afb68b07415350d9edd99",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 598,
+              "heightMm": 842,
+              "depthMm": 599
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "conflictReason": null
       }
     },
     {
@@ -29735,6 +32175,245 @@
       }
     },
     {
+      "targetId": "recovery_target_dc3ca08394427409003c40ef",
+      "referenceId": "fa_ref_dff4fbbba6eb6b240e3ee334",
+      "legacyRuntimeId": "ao-84989",
+      "canonicalProductId": "fa_prod_5c495e6b183818302a0336bc",
+      "brand": "Bosch",
+      "model": "SBV88TX06A",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-7124ae0bcf249c78d1904528-slice-235bd982a76d",
+      "auditSha256": "39ae21d00a410fb6fb592e16d2b201930b7d81e2bc8536e19fb1ea2b13f44e95",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV88TX06A.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV88TX06A.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:53:23.192Z",
+          "contentSha256": "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518",
+          "objectPath": "evidence/web/sha256/11/05/1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 316792,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "SBV88TX06A",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "edc68ab54df4ad23702b7d1050f2b2f5ecb65f4af2dcab0c0fc0f26a4cc21838",
+              "bbox": [
+                507,
+                405,
+                877,
+                418
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 865
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "edc68ab54df4ad23702b7d1050f2b2f5ecb65f4af2dcab0c0fc0f26a4cc21838",
+              "bbox": [
+                507,
+                405,
+                877,
+                418
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 550
+              },
+              "sourceLabel": "Dimensions of the product (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "edc68ab54df4ad23702b7d1050f2b2f5ecb65f4af2dcab0c0fc0f26a4cc21838",
+              "bbox": [
+                507,
+                405,
+                877,
+                418
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518",
+            "contentSha256": "dca0b8d7a0b891fc301bda8dc363bf00e380c2bb196717476d48c884106c1ab8",
+            "objectPath": "evidence/derived/mineru-json/sha256/dc/a0/dca0b8d7a0b891fc301bda8dc363bf00e380c2bb196717476d48c884106c1ab8.json",
+            "byteSize": 56027,
+            "pageCount": 4
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_title_model",
+              "value": "SBV88TX06A:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SBV88TX06A:page:2"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SBV88TX06A:page:4"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "SBV88TX06A:https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV88TX06A.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV88TX06A.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:53:23.192Z",
+            "bindingSha256": "585137ad56d0ab6e8beba98077d00761f3ae46c71ec0e56ba3e4c78080806503"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 865,
+              "maximumMm": 865
+            },
+            "depthMm": 550
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV88TX06A.pdf",
+            "contentSha256": "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518",
+            "receiptBindingSha256": "585137ad56d0ab6e8beba98077d00761f3ae46c71ec0e56ba3e4c78080806503",
+            "page": 1,
+            "fragmentSha256": "edc68ab54df4ad23702b7d1050f2b2f5ecb65f4af2dcab0c0fc0f26a4cc21838"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV88TX06A.pdf",
+            "contentSha256": "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518",
+            "receiptBindingSha256": "585137ad56d0ab6e8beba98077d00761f3ae46c71ec0e56ba3e4c78080806503",
+            "page": 1,
+            "fragmentSha256": "edc68ab54df4ad23702b7d1050f2b2f5ecb65f4af2dcab0c0fc0f26a4cc21838"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV88TX06A.pdf",
+            "contentSha256": "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518",
+            "receiptBindingSha256": "585137ad56d0ab6e8beba98077d00761f3ae46c71ec0e56ba3e4c78080806503",
+            "page": 1,
+            "fragmentSha256": "edc68ab54df4ad23702b7d1050f2b2f5ecb65f4af2dcab0c0fc0f26a4cc21838"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_dc61156a5cb22ebfcccff4c7",
       "referenceId": "fa_ref_3eb3b6c986c9f883c8e13d66",
       "legacyRuntimeId": "historical-fa_ref_3eb3b6c986c9f883c8e13d66",
@@ -30825,6 +33504,240 @@
         "successfulFitOutcome": "INSUFFICIENT_DATA",
         "activeSourceHashes": [
           "c632a4757eeba02a2296a9019c985e10ba61e4d5c0417af06e0c3f3dac278183"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_e103e6e747acecd0e15233c7",
+      "referenceId": "fa_ref_65d7375cbcbcd7450d5b8de3",
+      "legacyRuntimeId": "ao-103524",
+      "canonicalProductId": "fa_prod_c10836872988f234eac38f4c",
+      "brand": "Bosch",
+      "model": "SMI4HTS01A",
+      "category": "dishwasher",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-7124ae0bcf249c78d1904528-slice-235bd982a76d",
+      "auditSha256": "39ae21d00a410fb6fb592e16d2b201930b7d81e2bc8536e19fb1ea2b13f44e95",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI4HTS01A.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI4HTS01A.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:53:43.381Z",
+          "contentSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
+          "objectPath": "evidence/web/sha256/ac/ad/acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 1595635,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "SMI4HTS01A",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Width",
+              "sourceAxisOrder": [
+                "width"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "524acfd895069fbc89bce49b4987348e16615ff586aca4b1794fa14b3c2fa3ec",
+              "bbox": [
+                499,
+                493,
+                825,
+                505
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "range",
+                "minMm": 815,
+                "maxMm": 875
+              },
+              "sourceLabel": "Height",
+              "sourceAxisOrder": [
+                "height"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "524acfd895069fbc89bce49b4987348e16615ff586aca4b1794fa14b3c2fa3ec",
+              "bbox": [
+                499,
+                493,
+                825,
+                505
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 573
+              },
+              "sourceLabel": "Depth",
+              "sourceAxisOrder": [
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "524acfd895069fbc89bce49b4987348e16615ff586aca4b1794fa14b3c2fa3ec",
+              "bbox": [
+                499,
+                493,
+                825,
+                505
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
+            "contentSha256": "0f0dfb8e17ca79372a707cc692eb6587d94dc6b11dc26dcd863bba2febe64d9c",
+            "objectPath": "evidence/derived/mineru-json/sha256/0f/0d/0f0dfb8e17ca79372a707cc692eb6587d94dc6b11dc26dcd863bba2febe64d9c.json",
+            "byteSize": 39656,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_body_model",
+              "value": "SMI4HTS01A:page:3:f10aabd376751e7956fd2080b4b0bbea10f3e88e006275d10abfbd30132c3c40"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SMI4HTS01A:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "SMI4HTS01A:page:2"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "SMI4HTS01A:https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI4HTS01A.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI4HTS01A.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:53:43.381Z",
+            "bindingSha256": "078431b7d55224ba8ae65e7d6f2f00dbdfb888425e16a35ada1f433cd2158208"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 815,
+              "maximumMm": 875
+            },
+            "depthMm": 573
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dishwasher",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI4HTS01A.pdf",
+            "contentSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
+            "receiptBindingSha256": "078431b7d55224ba8ae65e7d6f2f00dbdfb888425e16a35ada1f433cd2158208",
+            "page": 2,
+            "fragmentSha256": "524acfd895069fbc89bce49b4987348e16615ff586aca4b1794fa14b3c2fa3ec"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI4HTS01A.pdf",
+            "contentSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
+            "receiptBindingSha256": "078431b7d55224ba8ae65e7d6f2f00dbdfb888425e16a35ada1f433cd2158208",
+            "page": 2,
+            "fragmentSha256": "524acfd895069fbc89bce49b4987348e16615ff586aca4b1794fa14b3c2fa3ec"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI4HTS01A.pdf",
+            "contentSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
+            "receiptBindingSha256": "078431b7d55224ba8ae65e7d6f2f00dbdfb888425e16a35ada1f433cd2158208",
+            "page": 2,
+            "fragmentSha256": "524acfd895069fbc89bce49b4987348e16615ff586aca4b1794fa14b3c2fa3ec"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb"
         ]
       },
       "reconciliation": {
@@ -33322,6 +36235,493 @@
       }
     },
     {
+      "targetId": "recovery_target_f827d8ba6d5e23adfce165d9",
+      "referenceId": "fa_ref_384d5561a5c13ecefe0fbecd",
+      "legacyRuntimeId": "ao-3001",
+      "canonicalProductId": "fa_prod_39a8af4f685ad94d7606f81f",
+      "brand": "Bosch",
+      "model": "WTE84101AU",
+      "category": "dryer",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-7124ae0bcf249c78d1904528-slice-6736333b2986",
+      "auditSha256": "55057452c6687d27ea6f4a62278919849f3e3fe0c7cbd75c52d503e5cd76cf0e",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTE84101AU.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTE84101AU.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:58:12.719Z",
+          "contentSha256": "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d",
+          "objectPath": "evidence/web/sha256/2e/6e/2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 911254,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "WTE84101AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "e36ea1d29fb4d100b9246e31372ae8359419cfdcdf45df09dda05f868df84266",
+              "bbox": [
+                500,
+                218,
+                907,
+                365
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 842
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "e36ea1d29fb4d100b9246e31372ae8359419cfdcdf45df09dda05f868df84266",
+              "bbox": [
+                500,
+                218,
+                907,
+                365
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 626
+              },
+              "sourceLabel": "Dimensions (HxWxD)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 1,
+              "fragmentSha256": "e36ea1d29fb4d100b9246e31372ae8359419cfdcdf45df09dda05f868df84266",
+              "bbox": [
+                500,
+                218,
+                907,
+                365
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d",
+            "contentSha256": "3e5a085471535642d0e38b533456484e5c053eb441634737ee79c510eda12576",
+            "objectPath": "evidence/derived/mineru-json/sha256/3e/5a/3e5a085471535642d0e38b533456484e5c053eb441634737ee79c510eda12576.json",
+            "byteSize": 22441,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_title_model",
+              "value": "WTE84101AU:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WTE84101AU:page:2"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "WTE84101AU:https://media3.bosch-home.com/Documents/specsheet/en-AU/WTE84101AU.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTE84101AU.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:58:12.719Z",
+            "bindingSha256": "d44b4e97465ac141f03b0d716608dd3882263d1c461a2d017f33cfe4692caa22"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 842,
+              "maximumMm": 842
+            },
+            "depthMm": 626
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "dryer",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTE84101AU.pdf",
+            "contentSha256": "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d",
+            "receiptBindingSha256": "d44b4e97465ac141f03b0d716608dd3882263d1c461a2d017f33cfe4692caa22",
+            "page": 1,
+            "fragmentSha256": "e36ea1d29fb4d100b9246e31372ae8359419cfdcdf45df09dda05f868df84266"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTE84101AU.pdf",
+            "contentSha256": "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d",
+            "receiptBindingSha256": "d44b4e97465ac141f03b0d716608dd3882263d1c461a2d017f33cfe4692caa22",
+            "page": 1,
+            "fragmentSha256": "e36ea1d29fb4d100b9246e31372ae8359419cfdcdf45df09dda05f868df84266"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTE84101AU.pdf",
+            "contentSha256": "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d",
+            "receiptBindingSha256": "d44b4e97465ac141f03b0d716608dd3882263d1c461a2d017f33cfe4692caa22",
+            "page": 1,
+            "fragmentSha256": "e36ea1d29fb4d100b9246e31372ae8359419cfdcdf45df09dda05f868df84266"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "operation.doorOpenDepthMm",
+          "service.rearVentilationMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [
+          {
+            "sourceRole": "legacy_hint",
+            "sourceId": "doc_602a778ef25e072951e5d194",
+            "kind": "lower_authority_disagreement",
+            "fields": [
+              "depthMm"
+            ],
+            "dimensionsMm": {
+              "widthMm": 598,
+              "heightMm": 842,
+              "depthMm": 599
+            }
+          }
+        ],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": "exact_official_axis_proof_over_legacy_hint",
+        "conflictReason": null
+      }
+    },
+    {
+      "targetId": "recovery_target_f9b7e242fed29718d638d5c0",
+      "referenceId": "fa_ref_b715bbb784b4c85a50814ab9",
+      "legacyRuntimeId": "ao-55657",
+      "canonicalProductId": "fa_prod_10c61bdce21886749c52be87",
+      "brand": "Bosch",
+      "model": "WAT24220AU",
+      "category": "washing_machine",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-14f264848d27ea28ad8550a9-slice-481842ecdcb8",
+      "auditSha256": "ebe9e59893ba3a3849c79e8a57d6ea028e8a7593669a094a08c4261dd7dc6f42",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAT24220AU.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAT24220AU.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:36:07.277Z",
+          "contentSha256": "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b",
+          "objectPath": "evidence/web/sha256/ce/e5/cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 472691,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "WAT24220AU",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 598
+              },
+              "sourceLabel": "- Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "5a337a11902a84ae4412979f290dd43fc4813949032ed95194eaa82abaa85e3d",
+              "bbox": [
+                85,
+                530,
+                472,
+                556
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 848
+              },
+              "sourceLabel": "- Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "5a337a11902a84ae4412979f290dd43fc4813949032ed95194eaa82abaa85e3d",
+              "bbox": [
+                85,
+                530,
+                472,
+                556
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 590
+              },
+              "sourceLabel": "- Dimensions (H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "cm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "5a337a11902a84ae4412979f290dd43fc4813949032ed95194eaa82abaa85e3d",
+              "bbox": [
+                85,
+                530,
+                472,
+                556
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b",
+            "contentSha256": "019c7d4537ac77201a417727fc13d6d8bc94856426fedbf90b7eae4ac809d7b7",
+            "objectPath": "evidence/derived/mineru-json/sha256/01/9c/019c7d4537ac77201a417727fc13d6d8bc94856426fedbf90b7eae4ac809d7b7.json",
+            "byteSize": 35336,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_title_model",
+              "value": "WAT24220AU:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WAT24220AU:page:2"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "WAT24220AU:page:3"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "WAT24220AU:https://media3.bosch-home.com/Documents/specsheet/en-AU/WAT24220AU.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAT24220AU.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:36:07.277Z",
+            "bindingSha256": "20cb1dcc363158c458e8bbdc33c736237969a8b7440aaa11ec1ed60af888d251"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 598,
+            "heightMm": {
+              "minimumMm": 848,
+              "maximumMm": 848
+            },
+            "depthMm": 590
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "washing_machine",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAT24220AU.pdf",
+            "contentSha256": "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b",
+            "receiptBindingSha256": "20cb1dcc363158c458e8bbdc33c736237969a8b7440aaa11ec1ed60af888d251",
+            "page": 2,
+            "fragmentSha256": "5a337a11902a84ae4412979f290dd43fc4813949032ed95194eaa82abaa85e3d"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAT24220AU.pdf",
+            "contentSha256": "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b",
+            "receiptBindingSha256": "20cb1dcc363158c458e8bbdc33c736237969a8b7440aaa11ec1ed60af888d251",
+            "page": 2,
+            "fragmentSha256": "5a337a11902a84ae4412979f290dd43fc4813949032ed95194eaa82abaa85e3d"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAT24220AU.pdf",
+            "contentSha256": "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b",
+            "receiptBindingSha256": "20cb1dcc363158c458e8bbdc33c736237969a8b7440aaa11ec1ed60af888d251",
+            "page": 2,
+            "fragmentSha256": "5a337a11902a84ae4412979f290dd43fc4813949032ed95194eaa82abaa85e3d"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm",
+          "service.rearServicesMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
+    },
+    {
       "targetId": "recovery_target_fb75150e641413542e65e68f",
       "referenceId": "fa_ref_bd00665155bb863ad09d5c39",
       "legacyRuntimeId": "ao-104840",
@@ -33817,6 +37217,247 @@
         "lowerAuthorityResolution": null,
         "conflictReason": null
       }
+    },
+    {
+      "targetId": "recovery_target_ffb69939957753f902774ff0",
+      "referenceId": "fa_ref_d08c8849ae04f3afe954c184",
+      "legacyRuntimeId": "ao-56912",
+      "canonicalProductId": "fa_prod_0aed7cc5703e597ad7eee238",
+      "brand": "Bosch",
+      "model": "KAN92VI30A",
+      "category": "fridge",
+      "lifecycleState": "CURRENT_RETAIL",
+      "acceptanceStatus": "accepted",
+      "sourceBatchId": "historical-recovery-7124ae0bcf249c78d1904528-slice-235bd982a76d",
+      "auditSha256": "39ae21d00a410fb6fb592e16d2b201930b7d81e2bc8536e19fb1ea2b13f44e95",
+      "sources": [
+        {
+          "authority": "manufacturer",
+          "sourceType": "official_exact_model_pdf",
+          "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAN92VI30A.pdf",
+          "finalUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAN92VI30A.pdf",
+          "redirectChain": [],
+          "retrievedAt": "2026-07-15T19:54:13.755Z",
+          "contentSha256": "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+          "objectPath": "evidence/web/sha256/10/61/10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255.pdf",
+          "contentType": "application/pdf",
+          "byteSize": 452704,
+          "supersedesContentSha256": [],
+          "identity": {
+            "brand": "Bosch",
+            "model": "KAN92VI30A",
+            "outcome": "exact"
+          },
+          "claims": [
+            {
+              "field": "closedEnvelope.widthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 912
+              },
+              "sourceLabel": "- Dimensions ( H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "482854547f09d498674eb6c4ec5043a3cb13ae4179864f435a5d2bf28949dff0",
+              "bbox": [
+                504,
+                149,
+                867,
+                164
+              ]
+            },
+            {
+              "field": "closedEnvelope.heightMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 1756
+              },
+              "sourceLabel": "- Dimensions ( H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "482854547f09d498674eb6c4ec5043a3cb13ae4179864f435a5d2bf28949dff0",
+              "bbox": [
+                504,
+                149,
+                867,
+                164
+              ]
+            },
+            {
+              "field": "closedEnvelope.depthMm",
+              "value": {
+                "kind": "fixed",
+                "mm": 732
+              },
+              "sourceLabel": "- Dimensions ( H x W x D)",
+              "sourceAxisOrder": [
+                "height",
+                "width",
+                "depth"
+              ],
+              "sourceUnit": "mm",
+              "measurementScope": "product_closed_external",
+              "includesDoor": null,
+              "includesHandle": null,
+              "page": 2,
+              "fragmentSha256": "482854547f09d498674eb6c4ec5043a3cb13ae4179864f435a5d2bf28949dff0",
+              "bbox": [
+                504,
+                149,
+                867,
+                164
+              ]
+            }
+          ],
+          "derivedArtifact": {
+            "schemaVersion": 1,
+            "format": "content_list_v2",
+            "parserName": "MinerU",
+            "parserVersion": "3.4.4",
+            "modelRevision": "ed6b654c018d742e65a17671e379c5e6ecc87ec9",
+            "backend": "pipeline",
+            "method": "auto",
+            "tableEnabled": true,
+            "formulaEnabled": false,
+            "sourcePdfSha256": "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+            "contentSha256": "4fadf6d18628f2dc01f1ca62574fa99176811c9e5dc0162f99d5e4603e526b51",
+            "objectPath": "evidence/derived/mineru-json/sha256/4f/ad/4fadf6d18628f2dc01f1ca62574fa99176811c9e5dc0162f99d5e4603e526b51.json",
+            "byteSize": 45687,
+            "pageCount": 3
+          },
+          "identitySignals": [
+            {
+              "type": "mineru_body_model",
+              "value": "KAN92VI30A:page:2:888c1519f41587731fc6ed57cff3d32553e90321752db79274864e33b90b2b6d"
+            },
+            {
+              "type": "mineru_list_model",
+              "value": "KAN92VI30A:page:1:ecd2f13eff5c40b31c26860e32b15725f464c0aea9434f5901715418fb81c9f0"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "KAN92VI30A:page:1"
+            },
+            {
+              "type": "mineru_title_model",
+              "value": "KAN92VI30A:page:3"
+            },
+            {
+              "type": "source_url_exact_model",
+              "value": "KAN92VI30A:https://media3.bosch-home.com/Documents/specsheet/en-AU/KAN92VI30A.pdf"
+            },
+            {
+              "type": "pdf_source_url_model",
+              "value": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAN92VI30A.pdf"
+            }
+          ],
+          "verificationReceipt": {
+            "schemaVersion": 3,
+            "claimSemanticsVersion": 2,
+            "policyVersion": "2026-07-13.1",
+            "manufacturerPolicyVersion": "2026-07-16.1",
+            "verifiedAt": "2026-07-15T19:54:13.755Z",
+            "bindingSha256": "dfcafa6329fe5ff878e655c79be3fd8989cd3ea7cbb2ea1edd84b376bab6f1b5"
+          }
+        }
+      ],
+      "geometryProjection": {
+        "geometry": {
+          "closedEnvelope": {
+            "widthMm": 912,
+            "heightMm": {
+              "minimumMm": 1756,
+              "maximumMm": 1756
+            },
+            "depthMm": 732
+          },
+          "installation": {
+            "leftMm": null,
+            "rightMm": null,
+            "topMm": null,
+            "rearMm": null,
+            "frontMm": null
+          },
+          "operation": {
+            "doorOpenDepthMm": null,
+            "hingeSideSpaceMm": null,
+            "lidOpenHeightMm": null
+          },
+          "delivery": {
+            "widthMm": null,
+            "heightMm": null,
+            "depthMm": null
+          },
+          "category": "fridge",
+          "formFactor": null,
+          "service": {
+            "plumbingRearMm": null,
+            "rearServicesMm": null,
+            "rearVentilationMm": null
+          }
+        },
+        "fieldEvidence": {
+          "closedEnvelope.widthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAN92VI30A.pdf",
+            "contentSha256": "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+            "receiptBindingSha256": "dfcafa6329fe5ff878e655c79be3fd8989cd3ea7cbb2ea1edd84b376bab6f1b5",
+            "page": 2,
+            "fragmentSha256": "482854547f09d498674eb6c4ec5043a3cb13ae4179864f435a5d2bf28949dff0"
+          },
+          "closedEnvelope.heightMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAN92VI30A.pdf",
+            "contentSha256": "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+            "receiptBindingSha256": "dfcafa6329fe5ff878e655c79be3fd8989cd3ea7cbb2ea1edd84b376bab6f1b5",
+            "page": 2,
+            "fragmentSha256": "482854547f09d498674eb6c4ec5043a3cb13ae4179864f435a5d2bf28949dff0"
+          },
+          "closedEnvelope.depthMm": {
+            "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAN92VI30A.pdf",
+            "contentSha256": "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+            "receiptBindingSha256": "dfcafa6329fe5ff878e655c79be3fd8989cd3ea7cbb2ea1edd84b376bab6f1b5",
+            "page": 2,
+            "fragmentSha256": "482854547f09d498674eb6c4ec5043a3cb13ae4179864f435a5d2bf28949dff0"
+          }
+        },
+        "evidenceLevel": "dimensions",
+        "requiredInstallationEnvelope": null,
+        "missingForVerifiedFit": [
+          "installation.leftMm",
+          "installation.rearMm",
+          "installation.rightMm",
+          "installation.topMm"
+        ],
+        "verifiedFitEligible": false,
+        "successfulFitOutcome": "INSUFFICIENT_DATA",
+        "activeSourceHashes": [
+          "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255"
+        ]
+      },
+      "reconciliation": {
+        "conflictingFields": [],
+        "conflictHints": [],
+        "missingFields": [],
+        "supersessionViolations": [],
+        "axisPermutationResolution": null,
+        "lowerAuthorityResolution": null,
+        "conflictReason": null
+      }
     }
   ],
   "lineage": [
@@ -33884,6 +37525,20 @@
       "auditSha256": "340f9cf3d52c1536468420674b14f8594e37dac4313d46c3286b539774faf5fb"
     },
     {
+      "batchId": "historical-recovery-14f264848d27ea28ad8550a9-slice-481842ecdcb8",
+      "batchSha256": "ca1023c28761e0d3d81e73b23e257043976ee6b0cb5b5a081bda1a32267b2aee",
+      "queueSha256": "60520593074764aa8adf08e3f90726af26800de641b5dac0b80a26e92c25f838",
+      "resultsSha256": "ad624f5e97a842db6e6001621316e427608878ddd8c0ea3c7e6db74c12cd1aa4",
+      "auditSha256": "ebe9e59893ba3a3849c79e8a57d6ea028e8a7593669a094a08c4261dd7dc6f42"
+    },
+    {
+      "batchId": "historical-recovery-14f264848d27ea28ad8550a9-slice-aedb4e7a8514",
+      "batchSha256": "08b00d8d36fcc31007de1815b79d67771d9156d0e3b90ad15835db4d0d2998c7",
+      "queueSha256": "60520593074764aa8adf08e3f90726af26800de641b5dac0b80a26e92c25f838",
+      "resultsSha256": "1c4e96ce0599559eb2a4b72a178e0076dcac29c14f79f00903566c061768a61a",
+      "auditSha256": "b97bb31e9294f91cc9483af55c40c50fdd68e8661b3da3573e9d71a8491b066e"
+    },
+    {
       "batchId": "historical-recovery-248dccedbd31d232da98d8bc",
       "batchSha256": "4d769392375ec30178fadc3b63222a237e6a2c1d92f16793e07acc6de2b7a8ae",
       "queueSha256": "b7b1e3906e68d29c405543a4abcb400efa24570bdb4515e218c9850d73928885",
@@ -33945,6 +37600,20 @@
       "queueSha256": "a07b50728890ce3b0e0d25be3a0a649b083744b87e5ab29e72e47d17524f14a0",
       "resultsSha256": "93c479bb94d19638f05d7d9384c57431c510669f20436becce8d50d0eab8865d",
       "auditSha256": "6889896640434946706b1c1121390a498106067f5023952ca9fe2042d06d4446"
+    },
+    {
+      "batchId": "historical-recovery-7124ae0bcf249c78d1904528-slice-235bd982a76d",
+      "batchSha256": "e82f26eb1b81631aae15e24b1f2a4fa430c0a127772297cac6237c5cf56e9139",
+      "queueSha256": "60520593074764aa8adf08e3f90726af26800de641b5dac0b80a26e92c25f838",
+      "resultsSha256": "0daf8b332951e443d7f70575f38b2e427b3aa809c02738e3d2d5af1a0bf547c9",
+      "auditSha256": "39ae21d00a410fb6fb592e16d2b201930b7d81e2bc8536e19fb1ea2b13f44e95"
+    },
+    {
+      "batchId": "historical-recovery-7124ae0bcf249c78d1904528-slice-6736333b2986",
+      "batchSha256": "9e87e8525a6f69a756b9f876a1fa76d967872b8500996e459856983e040b533b",
+      "queueSha256": "60520593074764aa8adf08e3f90726af26800de641b5dac0b80a26e92c25f838",
+      "resultsSha256": "1cecefd531e0442caa919a04b971150b6af98149eb41bc571a01121a12b72aa6",
+      "auditSha256": "55057452c6687d27ea6f4a62278919849f3e3fe0c7cbd75c52d503e5cd76cf0e"
     },
     {
       "batchId": "historical-recovery-725c76e09f10064c176fbfcd",

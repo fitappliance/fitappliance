@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-07-15T00:00:00.000Z",
+  "generatedAt": "2026-07-16T00:00:00.000Z",
   "policy": {
     "categories": [
       "fridge",
@@ -17,18 +17,18 @@
     "historicalRecords": 8095,
     "categories": 4,
     "canonicalBrands": 358,
-    "mineruDocuments": 638,
-    "validMineruDocuments": 637,
+    "mineruDocuments": 653,
+    "validMineruDocuments": 652,
     "invalidMineruDocuments": 1,
-    "documentsWithObservations": 348,
-    "documentsWithoutObservations": 289,
-    "mappedMineruDocuments": 603,
+    "documentsWithObservations": 364,
+    "documentsWithoutObservations": 288,
+    "mappedMineruDocuments": 618,
     "unmappedMineruDocuments": 34,
-    "observations": 902,
-    "researchGaps": 734,
-    "parserProfiles": 158,
-    "parserReplays": 701,
-    "completeParserReplays": 263
+    "observations": 927,
+    "researchGaps": 752,
+    "parserProfiles": 166,
+    "parserReplays": 716,
+    "completeParserReplays": 280
   },
   "categories": [
     {
@@ -235,11 +235,11 @@
             "Bosch"
           ],
           "modelCount": 19,
-          "observedMineruDocuments": 2,
+          "observedMineruDocuments": 6,
           "observedMarketingSeriesCount": 2,
           "observedDocumentFamilyCount": 0,
-          "observedParserProfileCount": 2,
-          "completeParserReplayCount": 2,
+          "observedParserProfileCount": 4,
+          "completeParserReplayCount": 3,
           "seriesCountStatus": "PROVEN_MINIMUM_ONLY",
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
           "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
@@ -248,15 +248,66 @@
               "groupType": "marketing_series",
               "groupName": "Series 4",
               "models": [
-                "KFN96VPEAA"
+                "KAN92VI30A",
+                "KFN96VPEAA",
+                "KGN36VI3AA"
               ],
               "pdfSha256s": [
+                "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+                "d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9",
                 "e98fba90f973b261e8b51c49f50dcb9fd3e23dc8a907df2c30999a0ecc209941"
               ],
               "sourceUrls": [
-                "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFN96VPEAA.pdf"
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAN92VI30A.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFN96VPEAA.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/KGN36VI3AA.pdf"
               ],
               "seriesEvidence": [
+                {
+                  "brand": "Bosch",
+                  "model": "KAN92VI30A",
+                  "category": "fridge",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+                  "page": 1,
+                  "quote": "Series 4, American side by side, 175.6 x 91.2 cm, Stainless steel (with antifingerprint) KAN92VI30A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "KAN92VI30A",
+                  "category": "fridge",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+                  "page": 2,
+                  "quote": "Series 4, American side by side, 175.6 x 91.2 cm, Stainless steel (with anti-fingerprint) KAN92VI30A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "KAN92VI30A",
+                  "category": "fridge",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+                  "page": 3,
+                  "quote": "Series 4, American side by side, 175.6 x 91.2 cm, Stainless steel (with anti-fingerprint) KAN92VI30A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "KGN36VI3AA",
+                  "category": "fridge",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9",
+                  "page": 1,
+                  "quote": "text_list unordered text Series 4, free-standing fridge-freezer with freezer at bottom, 186 x 60 cm, Stainless steel text KGN36VI3AA"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "KGN36VI3AA",
+                  "category": "fridge",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9",
+                  "page": 2,
+                  "quote": "Series 4, free-standing fridge-freezer with freezer at bottom, 186 x 60 cm, Stainless steel KGN36VI3AA"
+                },
                 {
                   "brand": "Bosch",
                   "model": "KFN96VPEAA",
@@ -316,9 +367,117 @@
                   "researchGapTypes": [
                     "IMAGE_ONLY_DIMENSION_DIAGRAM"
                   ]
+                },
+                {
+                  "parserProfileId": "pdf_grammar_5b4575fe7b22db8b",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "GROUPED_AXIS_SEQUENCE",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                      "sourceLabel": "dimensions ( h x w x d)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "per_value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": []
+                },
+                {
+                  "parserProfileId": "pdf_grammar_b782a1b7a0a51ecb",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "GROUPED_AXIS_SEQUENCE",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                      "sourceLabel": "dimensions ( h x w x d)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "per_value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    },
+                    {
+                      "patternKind": "INLINE_LABELLED_AXES",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
+                      "sourceLabel": "height",
+                      "axisOrder": [
+                        "height"
+                      ],
+                      "safeAxes": [
+                        "height"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "IMAGE_ONLY_DIMENSION_DIAGRAM"
+                  ]
                 }
               ],
               "parserReplays": [
+                {
+                  "pdfSha256": "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+                  "category": "fridge",
+                  "brand": "Bosch",
+                  "model": "KAN92VI30A",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9",
+                  "category": "fridge",
+                  "brand": "Bosch",
+                  "model": "KGN36VI3AA",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
                 {
                   "pdfSha256": "e98fba90f973b261e8b51c49f50dcb9fd3e23dc8a907df2c30999a0ecc209941",
                   "category": "fridge",
@@ -336,6 +495,191 @@
                 }
               ],
               "expressions": [
+                {
+                  "observationId": "dimension_expression_64e72629bbaf047f26c6555b",
+                  "pdfSha256": "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+                  "contentSha256": "4fadf6d18628f2dc01f1ca62574fa99176811c9e5dc0162f99d5e4603e526b51",
+                  "page": 1,
+                  "bbox": [
+                    505,
+                    274,
+                    882,
+                    848
+                  ],
+                  "fragmentSha256": "ecd2f13eff5c40b31c26860e32b15725f464c0aea9434f5901715418fb81c9f0",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAN92VI30A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "KAN92VI30A",
+                      "category": "fridge"
+                    }
+                  ],
+                  "modelBinding": "SAME_FRAGMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "KAN92VI30A"
+                  ],
+                  "patternKind": "INLINE_LABELLED_AXES",
+                  "sourceLabel": "Height",
+                  "sourceValue": "1756 mm",
+                  "sourceQuote": "Height 1756 mm",
+                  "axisOrder": [
+                    "height"
+                  ],
+                  "safeAxes": [
+                    "height"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Height",
+                      "value": "1756 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_82801333e1347d55db1e6f62",
+                  "pdfSha256": "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+                  "contentSha256": "4fadf6d18628f2dc01f1ca62574fa99176811c9e5dc0162f99d5e4603e526b51",
+                  "page": 2,
+                  "bbox": [
+                    504,
+                    149,
+                    867,
+                    164
+                  ],
+                  "fragmentSha256": "482854547f09d498674eb6c4ec5043a3cb13ae4179864f435a5d2bf28949dff0",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAN92VI30A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "KAN92VI30A",
+                      "category": "fridge"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "KAN92VI30A"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions ( H x W x D)",
+                  "sourceValue": "1756 mm x 912 mm x 732 mm",
+                  "sourceQuote": "Dimensions ( H x W x D) 1756 mm x 912 mm x 732 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "1756 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "912 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "732 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_8b9ea36447c7f9936458d915",
+                  "pdfSha256": "d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9",
+                  "contentSha256": "327c797858c8410ff1748c5d92c6aa02c2b7345846921aa8c6b5969b55458820",
+                  "page": 2,
+                  "bbox": [
+                    67,
+                    630,
+                    403,
+                    642
+                  ],
+                  "fragmentSha256": "c6da38491ec05f1c0d8951b4ba7dd4c7844a3d4ad94cfc7c0b6b8b51f4948d3c",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/KGN36VI3AA.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "KGN36VI3AA",
+                      "category": "fridge"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "KGN36VI3AA"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions ( H x W x D)",
+                  "sourceValue": "1860 mm x 600 mm x 660 mm",
+                  "sourceQuote": "Dimensions ( H x W x D) 1860 mm x 600 mm x 660 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "1860 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "600 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "660 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
                 {
                   "observationId": "dimension_expression_a026a384bb4007b1ca6fc5fd",
                   "pdfSha256": "e98fba90f973b261e8b51c49f50dcb9fd3e23dc8a907df2c30999a0ecc209941",
@@ -407,6 +751,13 @@
               "researchGaps": [
                 {
                   "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+                  "contentSha256": "4fadf6d18628f2dc01f1ca62574fa99176811c9e5dc0162f99d5e4603e526b51",
+                  "page": 3,
+                  "quote": "can be pulled out completely at a door opening angle of 122 measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
                   "pdfSha256": "e98fba90f973b261e8b51c49f50dcb9fd3e23dc8a907df2c30999a0ecc209941",
                   "contentSha256": "ca683be37dcc2c3608579b8085d42a46d392dfaf809b0b154a3fb1be1265b731",
                   "page": 3,
@@ -414,7 +765,9 @@
                 }
               ],
               "parserProfileIds": [
-                "pdf_grammar_03c1b2409a545411"
+                "pdf_grammar_03c1b2409a545411",
+                "pdf_grammar_5b4575fe7b22db8b",
+                "pdf_grammar_b782a1b7a0a51ecb"
               ],
               "completeParserReplay": true,
               "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
@@ -423,15 +776,45 @@
               "groupType": "marketing_series",
               "groupName": "Series 6",
               "models": [
+                "GIN81AC30A",
                 "KFD96AXEAA"
               ],
               "pdfSha256s": [
+                "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
                 "e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c"
               ],
               "sourceUrls": [
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/GIN81AC30A.pdf",
                 "https://media3.bosch-home.com/Documents/specsheet/en-AU/KFD96AXEAA.pdf"
               ],
               "seriesEvidence": [
+                {
+                  "brand": "Bosch",
+                  "model": "GIN81AC30A",
+                  "category": "fridge",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+                  "page": 1,
+                  "quote": "Series 6, built-in freezer, 177.2 x 55.8 cm, SoftClose flat hinge GIN81AC30A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "GIN81AC30A",
+                  "category": "fridge",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+                  "page": 2,
+                  "quote": "Series 6, built-in freezer, 177.2 x 55.8 cm, SoftClose flat hinge GIN81AC30A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "GIN81AC30A",
+                  "category": "fridge",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+                  "page": 3,
+                  "quote": "Series 6, built-in freezer, 177.2 x 55.8 cm, SoftClose flat hinge GIN81AC30A"
+                },
                 {
                   "brand": "Bosch",
                   "model": "KFD96AXEAA",
@@ -461,6 +844,56 @@
                 }
               ],
               "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_692fec06a586dc45",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "GROUPED_AXIS_SEQUENCE",
+                      "syntaxDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                      "sourceLabel": "cut-out dimension (h x w x d)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [],
+                      "scope": "cavity_opening",
+                      "unit": "mm",
+                      "unitPlacement": "per_value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    },
+                    {
+                      "patternKind": "GROUPED_AXIS_SEQUENCE",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                      "sourceLabel": "dimensions ( h x w x d)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "per_value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                    "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+                  ]
+                },
                 {
                   "parserProfileId": "pdf_grammar_b782a1b7a0a51ecb",
                   "signatureVersion": 1,
@@ -513,6 +946,21 @@
               ],
               "parserReplays": [
                 {
+                  "pdfSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+                  "category": "fridge",
+                  "brand": "Bosch",
+                  "model": "GIN81AC30A",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
                   "pdfSha256": "e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c",
                   "category": "fridge",
                   "brand": "Bosch",
@@ -529,6 +977,136 @@
                 }
               ],
               "expressions": [
+                {
+                  "observationId": "dimension_expression_348d14342fae4fd34d484fcc",
+                  "pdfSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+                  "contentSha256": "fa6fb596e8b71973f182b833c5cc7acce9ff6bf9eb5d8a12480a7edd33e39190",
+                  "page": 2,
+                  "bbox": [
+                    67,
+                    568,
+                    440,
+                    580
+                  ],
+                  "fragmentSha256": "717a8f010186d41b01b4e4f733767219b9eb1f250a49a067d53902082ae5edf4",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/GIN81AC30A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "GIN81AC30A",
+                      "category": "fridge"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "GIN81AC30A"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Cut-out Dimension (H x W x D)",
+                  "sourceValue": "1775 mm x 560 mm x 550 mm",
+                  "sourceQuote": "Cut-out Dimension (H x W x D) 1775 mm x 560 mm x 550 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "per_value",
+                  "scope": "cavity_opening",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "1775 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "560 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "550 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_bb0c3261adb0c4765bd68165",
+                  "pdfSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+                  "contentSha256": "fa6fb596e8b71973f182b833c5cc7acce9ff6bf9eb5d8a12480a7edd33e39190",
+                  "page": 2,
+                  "bbox": [
+                    67,
+                    554,
+                    405,
+                    567
+                  ],
+                  "fragmentSha256": "ade664a5a77ef2e29f0984d0519afd387112e112b14a9c9460aba03681ac1356",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/GIN81AC30A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "GIN81AC30A",
+                      "category": "fridge"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "GIN81AC30A"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions ( H x W x D)",
+                  "sourceValue": "1772 mm x 558 mm x 545 mm",
+                  "sourceQuote": "Dimensions ( H x W x D) 1772 mm x 558 mm x 545 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "1772 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "558 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "545 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
                 {
                   "observationId": "dimension_expression_e613998b66193144455b57d9",
                   "pdfSha256": "e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c",
@@ -650,11 +1228,249 @@
               ],
               "researchGaps": [
                 {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+                  "contentSha256": "fa6fb596e8b71973f182b833c5cc7acce9ff6bf9eb5d8a12480a7edd33e39190",
+                  "page": 1,
+                  "quote": "e size for installation (HxWxD): ......1775x560x550 mm text Dimensions of the packed product (HxWxD): ......1840x610x640 mm text Net weight: .. .65.8 kg text Gross weight: 70.0 kg text Connection rating: 120 W text Fuse protection: ...10 A text Frequency: .50 Hz text Length electrical supply cord: . 230 cm text Door hi"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+                  "contentSha256": "fa6fb596e8b71973f182b833c5cc7acce9ff6bf9eb5d8a12480a7edd33e39190",
+                  "page": 3,
+                  "quote": "measurements in mm"
+                },
+                {
                   "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
                   "pdfSha256": "e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c",
                   "contentSha256": "dfeb99bf94ea3f3b4f7bc7f067301cf727156d35beb9357b7ad320b86ce5a22a",
                   "page": 3,
                   "quote": "shed black steel anti-fingerprint, Total NoFrost KFD96AXEAA Measurements in mm A: Front is adjustable 1830–1847 mm, with front levellíng feet fully extended"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+                  "contentSha256": "fa6fb596e8b71973f182b833c5cc7acce9ff6bf9eb5d8a12480a7edd33e39190",
+                  "page": 4,
+                  "quote": "measurements in mm Recommended gap dimensions for flat hinges"
+                }
+              ],
+              "parserProfileIds": [
+                "pdf_grammar_692fec06a586dc45",
+                "pdf_grammar_b782a1b7a0a51ecb"
+              ],
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+            },
+            {
+              "groupType": "parser_family",
+              "groupName": "PDF grammar pdf_grammar_b782a1b7a0a51ecb",
+              "models": [
+                "KAD92AI20A"
+              ],
+              "pdfSha256s": [
+                "857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8"
+              ],
+              "sourceUrls": [
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAD92AI20A.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_b782a1b7a0a51ecb",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "GROUPED_AXIS_SEQUENCE",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                      "sourceLabel": "dimensions ( h x w x d)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "per_value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    },
+                    {
+                      "patternKind": "INLINE_LABELLED_AXES",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
+                      "sourceLabel": "height",
+                      "axisOrder": [
+                        "height"
+                      ],
+                      "safeAxes": [
+                        "height"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "IMAGE_ONLY_DIMENSION_DIAGRAM"
+                  ]
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8",
+                  "category": "fridge",
+                  "brand": "Bosch",
+                  "model": "KAD92AI20A",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_09f4a535e7c9dd21b7afbd27",
+                  "pdfSha256": "857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8",
+                  "contentSha256": "45c271eb6e54d6d5c02b6aaa3a24e947b4a6763d8b349177c9d9891604d9312e",
+                  "page": 2,
+                  "bbox": [
+                    87,
+                    355,
+                    448,
+                    368
+                  ],
+                  "fragmentSha256": "e4c4636c349b7c91dab1f41e7eef8e2a9bc8c00dad52b00f2bf59b4f88ea9e44",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAD92AI20A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "KAD92AI20A",
+                      "category": "fridge"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "KAD92AI20A"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions ( H x W x D)",
+                  "sourceValue": "1756 mm x 912 mm x 732 mm",
+                  "sourceQuote": "Dimensions ( H x W x D) 1756 mm x 912 mm x 732 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "1756 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "912 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "732 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_248137bd124b7f0f26c51d02",
+                  "pdfSha256": "857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8",
+                  "contentSha256": "45c271eb6e54d6d5c02b6aaa3a24e947b4a6763d8b349177c9d9891604d9312e",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    303,
+                    885,
+                    875
+                  ],
+                  "fragmentSha256": "1c09f3d972d70f1d45f15cc771081f209c9032748e2785fa35eb67a6bd55150b",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAD92AI20A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "KAD92AI20A",
+                      "category": "fridge"
+                    }
+                  ],
+                  "modelBinding": "SAME_FRAGMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "KAD92AI20A"
+                  ],
+                  "patternKind": "INLINE_LABELLED_AXES",
+                  "sourceLabel": "Height",
+                  "sourceValue": "1756 mm",
+                  "sourceQuote": "Height 1756 mm",
+                  "axisOrder": [
+                    "height"
+                  ],
+                  "safeAxes": [
+                    "height"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Height",
+                      "value": "1756 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:height(scalar)"
+                }
+              ],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8",
+                  "contentSha256": "45c271eb6e54d6d5c02b6aaa3a24e947b4a6763d8b349177c9d9891604d9312e",
+                  "page": 3,
+                  "quote": "can be pulled out completely at a door opening angle of 122 measurements in mm"
                 }
               ],
               "parserProfileIds": [
@@ -7314,7 +8130,7 @@
           "observedMarketingSeriesCount": 1,
           "observedDocumentFamilyCount": 2,
           "observedParserProfileCount": 29,
-          "completeParserReplayCount": 19,
+          "completeParserReplayCount": 21,
           "seriesCountStatus": "PROVEN_MINIMUM_ONLY",
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
           "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
@@ -14215,14 +15031,15 @@
                   "category": "fridge",
                   "brand": "Fisher & Paykel",
                   "model": "RS7621FLJK1",
-                  "extractionState": "PARTIAL_AXIS",
+                  "extractionState": "ALL_AXIS_SCALAR",
                   "identityScope": "EXACT_MODEL",
                   "claimFields": [
                     "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
                     "closedEnvelope.widthMm"
                   ],
                   "grammarProfileIds": [],
-                  "reasonCode": "PARSED_PARTIAL"
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
@@ -14400,8 +15217,8 @@
               "parserProfileIds": [
                 "pdf_grammar_a177edb17bdf9d08"
               ],
-              "completeParserReplay": false,
-              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
             },
             {
               "groupType": "parser_family",
@@ -15063,11 +15880,15 @@
                   "category": "fridge",
                   "brand": "Fisher & Paykel",
                   "model": "RF605QDVB2",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
                   "grammarProfileIds": [],
-                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
@@ -15194,8 +16015,8 @@
               "parserProfileIds": [
                 "pdf_grammar_deb4d0840e067a13"
               ],
-              "completeParserReplay": false,
-              "expressionCoverageStatus": "OBSERVED_DIMENSION_EXPRESSIONS"
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE"
             },
             {
               "groupType": "parser_family",
@@ -19394,47 +20215,6 @@
             },
             {
               "groupType": "model_specific",
-              "groupName": "HRCF439",
-              "models": [
-                "HRCF439"
-              ],
-              "pdfSha256s": [
-                "a6c891f60aa8c851295d5cefde22b77ecb133eb1c9077083b98f9b6f7f3cc09e"
-              ],
-              "sourceUrls": [
-                "https://dtc-aus-api.hisense.com/medias/HRCF439-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw0NzA0NnxhcHBsaWNhdGlvbi9wZGZ8YUdVMEwyZ3hOaTg0T0RFNU1UY3hPREU1TlRVd0wwaFNRMFkwTXprdFUzQmxZeTV3WkdZfDBhMGIwNTVmMWQxYjdkNTMyNjRiOTcwZTJjOTI5ZjJjZmZlYTg4MmM2OTg5MWNjYzMyZmFlNzcxZjJiNzgxNzU"
-              ],
-              "seriesEvidence": [],
-              "parserProfiles": [],
-              "parserReplays": [
-                {
-                  "pdfSha256": "a6c891f60aa8c851295d5cefde22b77ecb133eb1c9077083b98f9b6f7f3cc09e",
-                  "category": "fridge",
-                  "brand": "Hisense",
-                  "model": "HRCF439",
-                  "extractionState": "PARSER_GAP",
-                  "identityScope": "UNPROVEN",
-                  "claimFields": [],
-                  "grammarProfileIds": [],
-                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
-                }
-              ],
-              "expressions": [],
-              "researchGaps": [
-                {
-                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
-                  "pdfSha256": "a6c891f60aa8c851295d5cefde22b77ecb133eb1c9077083b98f9b6f7f3cc09e",
-                  "contentSha256": "8e245be96bd98b8d24c49ba7e86c8a6d0081a50b815926f4608228c8b479215a",
-                  "page": 2,
-                  "quote": " Temperature Control Convenient Water Drain Ultrathin Hings Dimensions Product Weight (Packaged) 64.5 kg Product Weight (Net) 57 kg Dimensions (Packaged) (W X H X D) 1466 x 890 x 766 mm Dimensions (Net) (W X H X D) 1429 x 858 x 746 mm"
-                }
-              ],
-              "parserProfileIds": [],
-              "completeParserReplay": false,
-              "expressionCoverageStatus": "NO_RECOGNIZED_DIMENSION_EXPRESSION"
-            },
-            {
-              "groupType": "model_specific",
               "groupName": "HRCF500",
               "models": [
                 "HRCF500"
@@ -19927,6 +20707,7 @@
                 "HRCF146",
                 "HRCF201",
                 "HRCF301",
+                "HRCF439",
                 "HRCF501",
                 "HRCF702",
                 "HRFD635SW",
@@ -19951,6 +20732,7 @@
                 "6c9b8413e7027756b02248f0ff847320958cf0369fb67b9ce3819d55e2521f94",
                 "a373434cd72bfe8823019df5e222eedf9312e3afc33e46406ae4d9975f801490",
                 "a43c858b0895c0190cbd238a2517292e29a2c8afc3ccbf9b53f607a810e49cd8",
+                "a6c891f60aa8c851295d5cefde22b77ecb133eb1c9077083b98f9b6f7f3cc09e",
                 "b629896919dc27ab9c7d8f8c2352b9aa3bbc1f46c93bb3d4fbe5c355e55ec4aa",
                 "dabd1e7097fc2541e03fb54b28cef294509dcd48ba4c1f675af8f189a270f0ba",
                 "ee2b42864372c75564e55a54b04b44cc93418485ac1ddfb1c2b95d4ab03160c3",
@@ -19970,6 +20752,7 @@
                 "https://dtc-aus-api.hisense.com/medias/HRCF146-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjY2NDF8YXBwbGljYXRpb24vcGRmfGFEUmlMMmd3WlM4NE9EQTBNRGt5TmpBNE5UUXlMMGhTUTBZeE5EWXRVM0JsWXk1d1pHWXxmYzE3MWViNmNkZGNhYjhiNGM0YzA2NzEzNDBhNjU1MjIxNTk2MDhiZDdiZWE1MWRlNzk3NTMwYjA5MGUzM2Nh",
                 "https://dtc-aus-api.hisense.com/medias/HRCF201-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzg3Nzl8YXBwbGljYXRpb24vcGRmfGFHSmxMMmhrTnk4NE9EQTBNRGswTXpFeU5EYzRMMGhTUTBZeU1ERXRVM0JsWXk1d1pHWXwzNzg0MjBhZTZiZTY0NDA0NjJhZmQ1MGFmNWNkNDMzODUwYTQ1NjQwNGM5M2ZhMGVhZDFkN2Q3MzFkNDM2ZTEz",
                 "https://dtc-aus-api.hisense.com/medias/HRCF301-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMjY1MTR8YXBwbGljYXRpb24vcGRmfGFEVTNMMmd4Tmk4NE9EQTBNVEF5TmpZNE16RTRMMGhTUTBZek1ERXRVM0JsWXk1d1pHWXwwMTJmNjgyYzFiNjc0ZTY4MmQyMzJkM2I0NjNiNzJiN2I5OWE5ZmQ5NTlmNWRiNmZlZDY1OTAzODYzNzYxN2M2",
+                "https://dtc-aus-api.hisense.com/medias/HRCF439-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw0NzA0NnxhcHBsaWNhdGlvbi9wZGZ8YUdVMEwyZ3hOaTg0T0RFNU1UY3hPREU1TlRVd0wwaFNRMFkwTXprdFUzQmxZeTV3WkdZfDBhMGIwNTVmMWQxYjdkNTMyNjRiOTcwZTJjOTI5ZjJjZmZlYTg4MmM2OTg5MWNjYzMyZmFlNzcxZjJiNzgxNzU",
                 "https://dtc-aus-api.hisense.com/medias/HRCF501-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxMzUwOTB8YXBwbGljYXRpb24vcGRmfGFEbGlMMmczWmk4NE9EQTBNRGs0TXpjMU56RXdMMGhTUTBZMU1ERXRVM0JsWXk1d1pHWXw2NzA4NTQ0ZmRlMDgxYmZiMzVlYzAyM2YzM2VlNzIwY2Y0OTc1YTc2MmQwNjgyMDFmNDg1NmNmZmI0NTc4NWYz",
                 "https://dtc-aus-api.hisense.com/medias/HRCF702-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw5NjQ5NnxhcHBsaWNhdGlvbi9wZGZ8YURkaEwyZ3hOaTg0T0RFNU1UY3hPRFV5TXpFNEwwaFNRMFkzTURJdFUzQmxZeTV3WkdZfDZhOGIzMzc0NjZhMDc2NjQyZjQzNzkyZWU0YjZjZWRhM2JlMTE2YTg0YWRlNmE1YjgxMTlmMjM1ZmIwMzkzOTQ",
                 "https://dtc-aus-api.hisense.com/medias/HRFD635SW-Spec.pdf?context=bWFzdGVyfG1hbnVhbHwxOTcxMTd8YXBwbGljYXRpb24vcGRmfGFEWmtMMmc0TlM4NE9ERTVNakV5TVRVMk9UVTRMMGhTUmtRMk16VlRWeTFUY0dWakxuQmtaZ3wzOWU4MWU5ZDljNzQ2MjgwZTE3ZTlmZWQ4NjEwZjlhM2YwN2Q4ZjgyYmMyYmRhZTc1ZGVhNTAxMzIxYTZlNGRi",
@@ -20232,6 +21015,17 @@
                   ],
                   "grammarProfileIds": [],
                   "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "a6c891f60aa8c851295d5cefde22b77ecb133eb1c9077083b98f9b6f7f3cc09e",
+                  "category": "fridge",
+                  "brand": "Hisense",
+                  "model": "HRCF439",
+                  "extractionState": "PARSER_GAP",
+                  "identityScope": "UNPROVEN",
+                  "claimFields": [],
+                  "grammarProfileIds": [],
+                  "reasonCode": "NO_COMPLETE_EXPLICIT_AXES"
                 },
                 {
                   "pdfSha256": "b629896919dc27ab9c7d8f8c2352b9aa3bbc1f46c93bb3d4fbe5c355e55ec4aa",
@@ -21744,6 +22538,69 @@
                   "semanticInterpretation": "1:width, 2:height, 3:depth"
                 },
                 {
+                  "observationId": "dimension_expression_768d72c38abfe6aecfaa487a",
+                  "pdfSha256": "a6c891f60aa8c851295d5cefde22b77ecb133eb1c9077083b98f9b6f7f3cc09e",
+                  "contentSha256": "8e245be96bd98b8d24c49ba7e86c8a6d0081a50b815926f4608228c8b479215a",
+                  "page": 2,
+                  "bbox": [
+                    80,
+                    60,
+                    904,
+                    317
+                  ],
+                  "fragmentSha256": "3b87077c0617fd41edf59b8bd9ee0e4c6d98ef141f0a5b681b2f467f53067f70",
+                  "sourceUrls": [
+                    "https://dtc-aus-api.hisense.com/medias/HRCF439-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw0NzA0NnxhcHBsaWNhdGlvbi9wZGZ8YUdVMEwyZ3hOaTg0T0RFNU1UY3hPREU1TlRVd0wwaFNRMFkwTXprdFUzQmxZeTV3WkdZfDBhMGIwNTVmMWQxYjdkNTMyNjRiOTcwZTJjOTI5ZjJjZmZlYTg4MmM2OTg5MWNjYzMyZmFlNzcxZjJiNzgxNzU"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Hisense",
+                      "model": "HRCF439",
+                      "category": "fridge"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "HRCF439"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions (Packaged) (W X H X D)",
+                  "sourceValue": "1466 x 890 x 766 mm",
+                  "sourceQuote": "Dimensions (Packaged) (W X H X D) 1466 x 890 x 766 mm",
+                  "axisOrder": [
+                    "width",
+                    "height",
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "delivery_package",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "1466 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "890 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "766 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:width, 2:height, 3:depth"
+                },
+                {
                   "observationId": "dimension_expression_7b90edad95bf4d2b9652055f",
                   "pdfSha256": "67c38fc3a2128a9afbd2081ba596af63ee4832c138d8eb5faa585a447307356f",
                   "contentSha256": "eea707b135c01a14666640afee68dc50071ed61bd103c5134aaa5f53703bebc6",
@@ -22198,6 +23055,73 @@
                       "axis": "depth",
                       "label": "depth",
                       "value": "730 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:width, 2:height, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_b630c60b8c4606c6c7b312a0",
+                  "pdfSha256": "a6c891f60aa8c851295d5cefde22b77ecb133eb1c9077083b98f9b6f7f3cc09e",
+                  "contentSha256": "8e245be96bd98b8d24c49ba7e86c8a6d0081a50b815926f4608228c8b479215a",
+                  "page": 2,
+                  "bbox": [
+                    80,
+                    60,
+                    904,
+                    317
+                  ],
+                  "fragmentSha256": "3b87077c0617fd41edf59b8bd9ee0e4c6d98ef141f0a5b681b2f467f53067f70",
+                  "sourceUrls": [
+                    "https://dtc-aus-api.hisense.com/medias/HRCF439-Spec.pdf?context=bWFzdGVyfG1hbnVhbHw0NzA0NnxhcHBsaWNhdGlvbi9wZGZ8YUdVMEwyZ3hOaTg0T0RFNU1UY3hPREU1TlRVd0wwaFNRMFkwTXprdFUzQmxZeTV3WkdZfDBhMGIwNTVmMWQxYjdkNTMyNjRiOTcwZTJjOTI5ZjJjZmZlYTg4MmM2OTg5MWNjYzMyZmFlNzcxZjJiNzgxNzU"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Hisense",
+                      "model": "HRCF439",
+                      "category": "fridge"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "HRCF439"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions (Net) (W X H X D)",
+                  "sourceValue": "1429 x 858 x 746 mm",
+                  "sourceQuote": "Dimensions (Net) (W X H X D) 1429 x 858 x 746 mm",
+                  "axisOrder": [
+                    "width",
+                    "height",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "width",
+                    "height",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "1429 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "858 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "746 mm",
                       "valueShape": "scalar"
                     }
                   ],
@@ -56886,11 +57810,11 @@
             "Bosch"
           ],
           "modelCount": 112,
-          "observedMineruDocuments": 4,
+          "observedMineruDocuments": 8,
           "observedMarketingSeriesCount": 3,
           "observedDocumentFamilyCount": 0,
-          "observedParserProfileCount": 1,
-          "completeParserReplayCount": 3,
+          "observedParserProfileCount": 4,
+          "completeParserReplayCount": 5,
           "seriesCountStatus": "PROVEN_MINIMUM_ONLY",
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
           "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
@@ -56899,12 +57823,15 @@
               "groupType": "marketing_series",
               "groupName": "Series 4",
               "models": [
+                "SMI4HTS01A",
                 "SMS4HVI01A"
               ],
               "pdfSha256s": [
-                "9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0"
+                "9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0",
+                "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb"
               ],
               "sourceUrls": [
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI4HTS01A.pdf",
                 "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS4HVI01A.pdf"
               ],
               "seriesEvidence": [
@@ -56934,9 +57861,69 @@
                   "pdfSha256": "9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0",
                   "page": 3,
                   "quote": "Series 4, free-standing dishwasher, 60 cm, Brushed steel anti-fingerprint SMS4HVI01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMI4HTS01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
+                  "page": 1,
+                  "quote": "Series 4, semi-integrated dishwasher, 60 cm, Brushed steel SMI4HTS01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMI4HTS01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
+                  "page": 2,
+                  "quote": "Series 4, semi-integrated dishwasher, 60 cm, Brushed steel SMI4HTS01A"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "SMI4HTS01A",
+                  "category": "dishwasher",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
+                  "page": 3,
+                  "quote": "Series 4, semi-integrated dishwasher, 60 cm, Brushed steel SMI4HTS01A"
                 }
               ],
-              "parserProfiles": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_2cd42a3705740fb2",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "INLINE_LABELLED_AXES",
+                      "syntaxDecision": "SUPPORTED_ADJUSTABLE_HEIGHT_RANGE",
+                      "sourceLabel": "height | width | depth",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "range",
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "IMAGE_ONLY_DIMENSION_DIAGRAM"
+                  ]
+                }
+              ],
               "parserReplays": [
                 {
                   "pdfSha256": "9ddcdcf99e13652eb09b91bd593b167a861100e41359a8df9f538fe0756a39e0",
@@ -56952,9 +57939,92 @@
                   ],
                   "grammarProfileIds": [],
                   "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SMI4HTS01A",
+                  "extractionState": "ALL_AXIS_RANGE",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
-              "expressions": [],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_9611597d209c534fcc4ae3ea",
+                  "pdfSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
+                  "contentSha256": "0f0dfb8e17ca79372a707cc692eb6587d94dc6b11dc26dcd863bba2febe64d9c",
+                  "page": 2,
+                  "bbox": [
+                    499,
+                    493,
+                    825,
+                    505
+                  ],
+                  "fragmentSha256": "524acfd895069fbc89bce49b4987348e16615ff586aca4b1794fa14b3c2fa3ec",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI4HTS01A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SMI4HTS01A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SMI4HTS01A"
+                  ],
+                  "patternKind": "INLINE_LABELLED_AXES",
+                  "sourceLabel": "Height | Width | Depth",
+                  "sourceValue": "815-875 mm | 598 mm | 573 mm",
+                  "sourceQuote": "Height 815-875 mm | Width 598 mm | Depth 573 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "Height",
+                      "value": "815-875 mm",
+                      "valueShape": "range"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "Width",
+                      "value": "598 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Depth",
+                      "value": "573 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_ADJUSTABLE_HEIGHT_RANGE",
+                  "semanticInterpretation": "1:height(range), 2:width(scalar), 3:depth(scalar), range:height"
+                }
+              ],
               "researchGaps": [
                 {
                   "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
@@ -56969,9 +58039,18 @@
                   "contentSha256": "4b52c676322e5387720774dea13b95364fc737e249f32bef28477155892fbfd9",
                   "page": 3,
                   "quote": "measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
+                  "contentSha256": "0f0dfb8e17ca79372a707cc692eb6587d94dc6b11dc26dcd863bba2febe64d9c",
+                  "page": 3,
+                  "quote": "measurements in mm"
                 }
               ],
-              "parserProfileIds": [],
+              "parserProfileIds": [
+                "pdf_grammar_2cd42a3705740fb2"
+              ],
               "completeParserReplay": true,
               "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
             },
@@ -57327,6 +58406,551 @@
               ],
               "parserProfileIds": [
                 "pdf_grammar_0a5af8c992c338c2"
+              ],
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+            },
+            {
+              "groupType": "parser_family",
+              "groupName": "PDF grammar pdf_grammar_9f5a37e414e9e2e1",
+              "models": [
+                "SBV88TX06A"
+              ],
+              "pdfSha256s": [
+                "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518"
+              ],
+              "sourceUrls": [
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV88TX06A.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_9f5a37e414e9e2e1",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "GROUPED_AXIS_SEQUENCE",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                      "sourceLabel": "dimensions of the product (hxwxd)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    },
+                    {
+                      "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                      "syntaxDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                      "sourceLabel": "depth with open door <number> degree :",
+                      "axisOrder": [
+                        "depth"
+                      ],
+                      "safeAxes": [],
+                      "scope": "operation_envelope",
+                      "unit": "mm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    },
+                    {
+                      "patternKind": "INLINE_LABELLED_AXES",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_LABELS",
+                      "sourceLabel": "width | depth",
+                      "axisOrder": [
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "per_value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "IMAGE_ONLY_DIMENSION_DIAGRAM"
+                  ]
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SBV88TX06A",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_86939c0954e78c657cf3a056",
+                  "pdfSha256": "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518",
+                  "contentSha256": "dca0b8d7a0b891fc301bda8dc363bf00e380c2bb196717476d48c884106c1ab8",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    405,
+                    877,
+                    418
+                  ],
+                  "fragmentSha256": "edc68ab54df4ad23702b7d1050f2b2f5ecb65f4af2dcab0c0fc0f26a4cc21838",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV88TX06A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SBV88TX06A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SBV88TX06A"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions of the product (HxWxD)",
+                  "sourceValue": "865 x 598 x 550 mm",
+                  "sourceQuote": "Dimensions of the product (HxWxD) 865 x 598 x 550 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "865 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "598 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "550 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_9b13e113599e7288dddacfb4",
+                  "pdfSha256": "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518",
+                  "contentSha256": "dca0b8d7a0b891fc301bda8dc363bf00e380c2bb196717476d48c884106c1ab8",
+                  "page": 3,
+                  "bbox": [
+                    87,
+                    151,
+                    410,
+                    162
+                  ],
+                  "fragmentSha256": "d795b7579de2bce6993e86d0cd8919f14d485792cc7e9fa216b4c1f21ce1b6dc",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV88TX06A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SBV88TX06A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_DOCUMENT_EXACT_MODEL",
+                  "boundModels": [
+                    "SBV88TX06A"
+                  ],
+                  "patternKind": "INLINE_LABELLED_AXES",
+                  "sourceLabel": "Width | Depth",
+                  "sourceValue": "598 mm | 550 mm",
+                  "sourceQuote": "Width 598 mm | Depth 550 mm",
+                  "axisOrder": [
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "width",
+                      "label": "Width",
+                      "value": "598 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "Depth",
+                      "value": "550 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_LABELS",
+                  "semanticInterpretation": "1:width(scalar), 2:depth(scalar)"
+                },
+                {
+                  "observationId": "dimension_expression_f5e303cf494ededffab6352b",
+                  "pdfSha256": "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518",
+                  "contentSha256": "dca0b8d7a0b891fc301bda8dc363bf00e380c2bb196717476d48c884106c1ab8",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    443,
+                    786,
+                    456
+                  ],
+                  "fragmentSha256": "44ea41a40e80d9b1d9b74728143f2b4cd2e50d101c6e86023404a0c18e297a5b",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV88TX06A.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SBV88TX06A",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SBV88TX06A"
+                  ],
+                  "patternKind": "INDIVIDUAL_LABELLED_AXIS",
+                  "sourceLabel": "Depth with open door 90 degree :",
+                  "sourceValue": "1200 mm",
+                  "sourceQuote": "Depth with open door 90 degree : 1200 mm",
+                  "axisOrder": [
+                    "depth"
+                  ],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "operation_envelope",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "depth",
+                      "label": "Depth with open door 90 degree :",
+                      "value": "1200 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "REJECTED_NON_PRODUCT_SCOPE",
+                  "semanticInterpretation": "1:depth(scalar)"
+                }
+              ],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518",
+                  "contentSha256": "dca0b8d7a0b891fc301bda8dc363bf00e380c2bb196717476d48c884106c1ab8",
+                  "page": 4,
+                  "quote": "measurements in mm"
+                }
+              ],
+              "parserProfileIds": [
+                "pdf_grammar_9f5a37e414e9e2e1"
+              ],
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+            },
+            {
+              "groupType": "parser_family",
+              "groupName": "PDF grammar pdf_grammar_cf52905eae731e58",
+              "models": [
+                "SCE53M05AU",
+                "SKE53M05AU"
+              ],
+              "pdfSha256s": [
+                "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+                "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701"
+              ],
+              "sourceUrls": [
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SCE53M05AU.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_cf52905eae731e58",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "INLINE_VALUE_LABELLED_AXIS_SEQUENCE",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE",
+                      "sourceLabel": "dimensions (h x w x d)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "per_value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                    "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+                  ]
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SCE53M05AU",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+                  "category": "dishwasher",
+                  "brand": "Bosch",
+                  "model": "SKE53M05AU",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_3b3c877903587251b2e1277b",
+                  "pdfSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+                  "contentSha256": "1c2f3f00199c1c809959f1c2e8d1923008f88e15cfefee8798e2b82b9812469f",
+                  "page": 2,
+                  "bbox": [
+                    502,
+                    588,
+                    752,
+                    602
+                  ],
+                  "fragmentSha256": "e24bd395c647f6789b86d3cec5a1b18ac502ba3ef795f4cb45920d60b57d54d2",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SKE53M05AU",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SKE53M05AU"
+                  ],
+                  "patternKind": "INLINE_VALUE_LABELLED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions (H x W x D)",
+                  "sourceValue": "454 mm x 595 mm x 500 mm",
+                  "sourceQuote": "- H: 454 mm x W: 595 mm x D: 500 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "H",
+                      "value": "454 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "W",
+                      "value": "595 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "D",
+                      "value": "500 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_861b9e1fff617dea540cc613",
+                  "pdfSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+                  "contentSha256": "cc606509a7eeaa871763838a445002090571e96e1f1387f5c0b9d39b07f77e14",
+                  "page": 2,
+                  "bbox": [
+                    502,
+                    759,
+                    752,
+                    774
+                  ],
+                  "fragmentSha256": "5d1b9086c2ce914d0f2e827b3aedc43ddf7b7755504ab43fb77e626fd0f114c1",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/SCE53M05AU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "SCE53M05AU",
+                      "category": "dishwasher"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "SCE53M05AU"
+                  ],
+                  "patternKind": "INLINE_VALUE_LABELLED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions (H x W x D)",
+                  "sourceValue": "595 mm x 595 mm x 500 mm",
+                  "sourceQuote": "- H: 595 mm x W: 595 mm x D: 500 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "H",
+                      "value": "595 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "W",
+                      "value": "595 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "D",
+                      "value": "500 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_INLINE_AXIS_SEQUENCE",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                }
+              ],
+              "researchGaps": [
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+                  "contentSha256": "cc606509a7eeaa871763838a445002090571e96e1f1387f5c0b9d39b07f77e14",
+                  "page": 1,
+                  "quote": "g : Built-in text Height of removable worktop (mm) : 0 text Dimensions of the product (width x depth) : 595 x 595 x 500 text Depth with open door 90 degree (mm) : 995 text Adjustable feet : No text Net weight (kg) : 26.450 text Gross weight (kg) : 29.0 text Connection Rating (W) : 2400 text Current (A) : 10 text Voltag"
+                },
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+                  "contentSha256": "1c2f3f00199c1c809959f1c2e8d1923008f88e15cfefee8798e2b82b9812469f",
+                  "page": 1,
+                  "quote": "g : Built-in text Height of removable worktop (mm) : 0 text Dimensions of the product (width x depth) : 454 x 595 x 500 text Depth with open door 90 degree (mm) : 845 text Adjustable feet : No text Net weight (kg) : 22.202 text Gross weight (kg) : 24.6 text Connection Rating (W) : 2400 text Current (A) : 10 text Voltag"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+                  "contentSha256": "cc606509a7eeaa871763838a445002090571e96e1f1387f5c0b9d39b07f77e14",
+                  "page": 3,
+                  "quote": "measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+                  "contentSha256": "1c2f3f00199c1c809959f1c2e8d1923008f88e15cfefee8798e2b82b9812469f",
+                  "page": 3,
+                  "quote": "measurements in mm"
+                }
+              ],
+              "parserProfileIds": [
+                "pdf_grammar_cf52905eae731e58"
               ],
               "completeParserReplay": true,
               "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
@@ -62471,7 +64095,8 @@
                 "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q92DJMAZ&dpt=",
                 "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q92TRMAZ&dpt=",
                 "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q92d7MAB&dpt=",
-                "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q9P1pMAF&dpt="
+                "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000Q9P1pMAF&dpt=",
+                "https://fisherpaykel.my.salesforce.com/sfc/dist/version/download/?oid=00D90000000kftP&ids=068Jw00000ecUKeIAM&d=%2Fa%2FJw000004hSYD%2FCSgD.pOhbHJqc1b4rVLGr6mvch8BsDNyr5e0mvpdAF0&operationContext=DELIVERY&viewId=05HJw00000QBw4wMAD&dpt="
               ],
               "seriesEvidence": [],
               "parserProfiles": [],
@@ -76275,11 +77900,11 @@
             "Bosch"
           ],
           "modelCount": 61,
-          "observedMineruDocuments": 4,
+          "observedMineruDocuments": 7,
           "observedMarketingSeriesCount": 3,
           "observedDocumentFamilyCount": 0,
-          "observedParserProfileCount": 2,
-          "completeParserReplayCount": 3,
+          "observedParserProfileCount": 3,
+          "completeParserReplayCount": 4,
           "seriesCountStatus": "PROVEN_MINIMUM_ONLY",
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
           "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
@@ -76521,15 +78146,48 @@
               "groupType": "marketing_series",
               "groupName": "Series 6",
               "models": [
-                "WGG254Z1AU"
+                "WGG2449RAU",
+                "WGG254Z1AU",
+                "WNA254U1AU"
               ],
               "pdfSha256s": [
-                "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450"
+                "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+                "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450",
+                "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37"
               ],
               "sourceUrls": [
-                "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG254Z1AU.pdf"
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2449RAU.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG254Z1AU.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/WNA254U1AU.pdf"
               ],
               "seriesEvidence": [
+                {
+                  "brand": "Bosch",
+                  "model": "WGG2449RAU",
+                  "category": "washing_machine",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+                  "page": 1,
+                  "quote": "Series 6, washing machine, front loader, 9 kg, , Cast iron grey WGG2449RAU"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "WGG2449RAU",
+                  "category": "washing_machine",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+                  "page": 2,
+                  "quote": "Series 6, washing machine, front loader, 9 kg, , Cast iron grey WGG2449RAU"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "WGG2449RAU",
+                  "category": "washing_machine",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+                  "page": 4,
+                  "quote": "text_list unordered text Series 6, washing machine, front loader, 9 text kg, , Cast iron grey text WGG2449RAU"
+                },
                 {
                   "brand": "Bosch",
                   "model": "WGG254Z1AU",
@@ -76556,6 +78214,33 @@
                   "pdfSha256": "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450",
                   "page": 3,
                   "quote": "Series 6, washing machine, front loader, 10 kg, 1400 rpm WGG254Z1AU"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "WNA254U1AU",
+                  "category": "washing_machine",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+                  "page": 1,
+                  "quote": "Series 6, washer dryer, 10/5 kg, 1400 rpm WNA254U1AU"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "WNA254U1AU",
+                  "category": "washing_machine",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+                  "page": 2,
+                  "quote": "Series 6, washer dryer, 10/5 kg, 1400 rpm WNA254U1AU"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "WNA254U1AU",
+                  "category": "washing_machine",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+                  "page": 3,
+                  "quote": "Series 6, washer dryer, 10/5 kg, 1400 rpm WNA254U1AU"
                 }
               ],
               "parserProfiles": [
@@ -76607,6 +78292,21 @@
               ],
               "parserReplays": [
                 {
+                  "pdfSha256": "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+                  "category": "washing_machine",
+                  "brand": "Bosch",
+                  "model": "WGG2449RAU",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
                   "pdfSha256": "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450",
                   "category": "washing_machine",
                   "brand": "Bosch",
@@ -76620,9 +78320,96 @@
                   ],
                   "grammarProfileIds": [],
                   "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+                  "category": "washing_machine",
+                  "brand": "Bosch",
+                  "model": "WNA254U1AU",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
                 }
               ],
               "expressions": [
+                {
+                  "observationId": "dimension_expression_11cbc3eae44fe4d09703527b",
+                  "pdfSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+                  "contentSha256": "5a19a3b04cc7389e53d5ae55efe22fd8c85f403e588fffd9885b9628897e8e4f",
+                  "page": 2,
+                  "bbox": [
+                    502,
+                    875,
+                    885,
+                    902
+                  ],
+                  "fragmentSha256": "6fc3050b0129f183863c1b481dd00b6ccedf9688d08d994cb9fe002db3a79d34",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/WNA254U1AU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WNA254U1AU",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "WNA254U1AU"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE_WITH_VARIANT",
+                  "sourceLabel": "Dimensions (H x W x D)",
+                  "sourceValue": "84.8 cm x 59.8 cm x 59 cm",
+                  "sourceQuote": "Dimensions (H x W x D) 84.8 cm x 59.8 cm x 59 cm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "cm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [
+                    "63.5 cm including door handle"
+                  ],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "84.8 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "59.8 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "59 cm",
+                      "valueShape": "scalar",
+                      "overallValue": "63.5 cm",
+                      "overallValueShape": "scalar",
+                      "includesHandle": true
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth; qualified depth variant not selected"
+                },
                 {
                   "observationId": "dimension_expression_1311330c284d86e40c63ff0e",
                   "pdfSha256": "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450",
@@ -76696,6 +78483,78 @@
                   "semanticInterpretation": "1:height, 2:width, 3:depth; qualified depth variant not selected"
                 },
                 {
+                  "observationId": "dimension_expression_3764736c5c29d7eb8ca69e45",
+                  "pdfSha256": "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+                  "contentSha256": "5a4ed88ec783aa01545071531d59287fe1d02793c25d2064855694e50db9d82d",
+                  "page": 2,
+                  "bbox": [
+                    502,
+                    797,
+                    897,
+                    825
+                  ],
+                  "fragmentSha256": "0671c6d7128c0cca7a00b1eefb897a8eabd020dd1183d44b0bd0aa5ca1971e36",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2449RAU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WGG2449RAU",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "WGG2449RAU"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE_WITH_VARIANT",
+                  "sourceLabel": "Dimensions (H x W x D)",
+                  "sourceValue": "84.8 cm x 59.8 cm x 59.0 cm",
+                  "sourceQuote": "Dimensions (H x W x D) 84.8 cm x 59.8 cm x 59.0 cm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "cm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [
+                    "63.6 cm including door handle"
+                  ],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "84.8 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "59.8 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "59 cm",
+                      "valueShape": "scalar",
+                      "overallValue": "63.6 cm",
+                      "overallValueShape": "scalar",
+                      "includesHandle": true
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth; qualified depth variant not selected"
+                },
+                {
                   "observationId": "dimension_expression_73c1b959b5956cf2ee922e75",
                   "pdfSha256": "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450",
                   "contentSha256": "cd4cdd55586884ec8c0c83fefe87e7c6217d007a3731d805f5cb8adf9d3a0ada",
@@ -76733,6 +78592,84 @@
                   "depthVariants": [],
                   "parserDecision": "RESEARCH_UNLABELLED_AXIS_ORDER",
                   "semanticInterpretation": "Three values are present but the source text does not state their axis order."
+                },
+                {
+                  "observationId": "dimension_expression_b5df748d8bc200b725aaf4bb",
+                  "pdfSha256": "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+                  "contentSha256": "5a4ed88ec783aa01545071531d59287fe1d02793c25d2064855694e50db9d82d",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    293,
+                    806,
+                    304
+                  ],
+                  "fragmentSha256": "43c46981b7fb9c312a3e2e01c6b25e7fe8a60879e172906495b85538f31a139d",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2449RAU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WGG2449RAU",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "WGG2449RAU"
+                  ],
+                  "patternKind": "UNLABELLED_DIMENSION_TRIPLE",
+                  "sourceLabel": "Dimensions of the product",
+                  "sourceValue": "848x598x590 mm",
+                  "sourceQuote": "Dimensions of the product : 848x598x590 mm",
+                  "axisOrder": [],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "parserDecision": "RESEARCH_UNLABELLED_AXIS_ORDER",
+                  "semanticInterpretation": "Three values are present but the source text does not state their axis order."
+                },
+                {
+                  "observationId": "dimension_expression_b7eb8fc64c297096e2bf3b72",
+                  "pdfSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+                  "contentSha256": "5a19a3b04cc7389e53d5ae55efe22fd8c85f403e588fffd9885b9628897e8e4f",
+                  "page": 1,
+                  "bbox": [
+                    507,
+                    331,
+                    805,
+                    344
+                  ],
+                  "fragmentSha256": "14fc3fb2941b9af09abe4b43adbaccc5a3361719a584dd6e12d0189170fcb367",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/WNA254U1AU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WNA254U1AU",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "WNA254U1AU"
+                  ],
+                  "patternKind": "UNLABELLED_DIMENSION_TRIPLE",
+                  "sourceLabel": "Dimensions of the product",
+                  "sourceValue": "848x598x590 mm",
+                  "sourceQuote": "Dimensions of the product : 848x598x590 mm",
+                  "axisOrder": [],
+                  "safeAxes": [],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "parserDecision": "RESEARCH_UNLABELLED_AXIS_ORDER",
+                  "semanticInterpretation": "Three values are present but the source text does not state their axis order."
                 }
               ],
               "researchGaps": [
@@ -76741,6 +78678,20 @@
                   "pdfSha256": "da79e62cf90971677c018bbad35c47588a3c42b87c92c9bc9d9e96b08d1fb450",
                   "contentSha256": "cd4cdd55586884ec8c0c83fefe87e7c6217d007a3731d805f5cb8adf9d3a0ada",
                   "page": 3,
+                  "quote": "Measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+                  "contentSha256": "5a19a3b04cc7389e53d5ae55efe22fd8c85f403e588fffd9885b9628897e8e4f",
+                  "page": 3,
+                  "quote": "Measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+                  "contentSha256": "5a4ed88ec783aa01545071531d59287fe1d02793c25d2064855694e50db9d82d",
+                  "page": 4,
                   "quote": "Measurements in mm"
                 }
               ],
@@ -77132,6 +79083,163 @@
               "parserProfileIds": [
                 "pdf_grammar_213ac6c7578293ed",
                 "pdf_grammar_7278fc1b8aebe013"
+              ],
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+            },
+            {
+              "groupType": "parser_family",
+              "groupName": "PDF grammar pdf_grammar_4c402fe83b8ed0c6",
+              "models": [
+                "WAT24220AU"
+              ],
+              "pdfSha256s": [
+                "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b"
+              ],
+              "sourceUrls": [
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAT24220AU.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_4c402fe83b8ed0c6",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "GROUPED_AXIS_SEQUENCE_WITH_VARIANT",
+                      "syntaxDecision": "SUPPORTED_PARTIAL_REJECT_QUALIFIED_DEPTH_VARIANT",
+                      "sourceLabel": "dimensions (h x w x d)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "cm",
+                      "unitPlacement": "per_value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": [
+                        "<number> <unit> with door frame"
+                      ]
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                    "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
+                  ]
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b",
+                  "category": "washing_machine",
+                  "brand": "Bosch",
+                  "model": "WAT24220AU",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_c10c9a6d168f728710276e67",
+                  "pdfSha256": "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b",
+                  "contentSha256": "019c7d4537ac77201a417727fc13d6d8bc94856426fedbf90b7eae4ac809d7b7",
+                  "page": 2,
+                  "bbox": [
+                    85,
+                    530,
+                    472,
+                    556
+                  ],
+                  "fragmentSha256": "5a337a11902a84ae4412979f290dd43fc4813949032ed95194eaa82abaa85e3d",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAT24220AU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WAT24220AU",
+                      "category": "washing_machine"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "WAT24220AU"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE_WITH_VARIANT",
+                  "sourceLabel": "Dimensions (H x W x D)",
+                  "sourceValue": "84.8 cm x 59.8 cm x 59.0 cm",
+                  "sourceQuote": "Dimensions (H x W x D) 84.8 cm x 59.8 cm x 59.0 cm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "cm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [
+                    "63.2 cm with door frame"
+                  ],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "84.8 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "59.8 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "59 cm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_PARTIAL_REJECT_QUALIFIED_DEPTH_VARIANT",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth; qualified depth variant not selected"
+                }
+              ],
+              "researchGaps": [
+                {
+                  "gapType": "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION",
+                  "pdfSha256": "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b",
+                  "contentSha256": "019c7d4537ac77201a417727fc13d6d8bc94856426fedbf90b7eae4ac809d7b7",
+                  "page": 1,
+                  "quote": "e-standing text Height of removable worktop (mm) : 848 text Dimensions of the product (mm) : 848 x 598 x 590 text Net weight (kg) : 71.451 text Connection Rating (W) : 2300 text Current (A) : 10 text Voltage (V) : 220-240 text Frequency (Hz) : 50 text Approval certificates : Australia Standards, CE, VDE text Length ele"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b",
+                  "contentSha256": "019c7d4537ac77201a417727fc13d6d8bc94856426fedbf90b7eae4ac809d7b7",
+                  "page": 3,
+                  "quote": "measurements in mm"
+                }
+              ],
+              "parserProfileIds": [
+                "pdf_grammar_4c402fe83b8ed0c6"
               ],
               "completeParserReplay": true,
               "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
@@ -91504,29 +93612,449 @@
             "Bosch"
           ],
           "modelCount": 25,
-          "observedMineruDocuments": 5,
-          "observedMarketingSeriesCount": 2,
+          "observedMineruDocuments": 9,
+          "observedMarketingSeriesCount": 3,
           "observedDocumentFamilyCount": 0,
-          "observedParserProfileCount": 2,
-          "completeParserReplayCount": 2,
+          "observedParserProfileCount": 4,
+          "completeParserReplayCount": 4,
           "seriesCountStatus": "PROVEN_MINIMUM_ONLY",
           "coverageStatus": "MINERU_SAMPLE_OBSERVED",
           "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE",
           "families": [
             {
               "groupType": "marketing_series",
+              "groupName": "Series 4",
+              "models": [
+                "WTE84101AU",
+                "WTH85200AU"
+              ],
+              "pdfSha256s": [
+                "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d",
+                "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859"
+              ],
+              "sourceUrls": [
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTE84101AU.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH85200AU.pdf"
+              ],
+              "seriesEvidence": [
+                {
+                  "brand": "Bosch",
+                  "model": "WTE84101AU",
+                  "category": "dryer",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d",
+                  "page": 1,
+                  "quote": "Series 4, condenser tumble dryer, 7 kg WTE84101AU"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "WTE84101AU",
+                  "category": "dryer",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d",
+                  "page": 2,
+                  "quote": "Series 4, condenser tumble dryer, 7 kg WTE84101AU"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "WTE84101AU",
+                  "category": "dryer",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d",
+                  "page": 3,
+                  "quote": "Series 4, condenser tumble dryer, 7 kg WTE84101AU measurements in mm"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "WTH85200AU",
+                  "category": "dryer",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
+                  "page": 1,
+                  "quote": "Series 4, heat pump dryer, 8 kg, White WTH85200AU"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "WTH85200AU",
+                  "category": "dryer",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
+                  "page": 2,
+                  "quote": "Series 4, heat pump dryer, 8 kg, White WTH85200AU"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "WTH85200AU",
+                  "category": "dryer",
+                  "seriesName": "Series 4",
+                  "pdfSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
+                  "page": 3,
+                  "quote": "Series 4, heat pump dryer, 8 kg, White WTH85200AU"
+                }
+              ],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_2d2f6fda7f7538e6",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "GROUPED_AXIS_SEQUENCE_WITH_VARIANT",
+                      "syntaxDecision": "SUPPORTED_PARTIAL_REJECT_QUALIFIED_DEPTH_VARIANT",
+                      "sourceLabel": "dimensions (h x w x d)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "cm",
+                      "unitPlacement": "per_value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": [
+                        "<number> <unit> with door frame"
+                      ]
+                    },
+                    {
+                      "patternKind": "GROUPED_AXIS_SEQUENCE",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                      "sourceLabel": "dimensions (hxwxd)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "IMAGE_ONLY_DIMENSION_DIAGRAM"
+                  ]
+                },
+                {
+                  "parserProfileId": "pdf_grammar_f3714471e6856327",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "GROUPED_AXIS_SEQUENCE",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                      "sourceLabel": "dimensions (hxwxd)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "IMAGE_ONLY_DIMENSION_DIAGRAM"
+                  ]
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d",
+                  "category": "dryer",
+                  "brand": "Bosch",
+                  "model": "WTE84101AU",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
+                  "category": "dryer",
+                  "brand": "Bosch",
+                  "model": "WTH85200AU",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_c5989e242b304fb7d0d224fe",
+                  "pdfSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
+                  "contentSha256": "2e95122ef0fb2a34fb7fb007a81d4ddc67590b479194f09b205bcbd396991e0e",
+                  "page": 2,
+                  "bbox": [
+                    507,
+                    158,
+                    878,
+                    181
+                  ],
+                  "fragmentSha256": "f21a0a54abf7504b8a7a332459b25324bcd37f09dfec9443f0dd696d61e85098",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH85200AU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WTH85200AU",
+                      "category": "dryer"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "WTH85200AU"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE_WITH_VARIANT",
+                  "sourceLabel": "Dimensions (H x W x D)",
+                  "sourceValue": "84.2 cm x 59.8 cm x 61.3 cm",
+                  "sourceQuote": "Dimensions (H x W x D) 84.2 cm x 59.8 cm x 61.3 cm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width"
+                  ],
+                  "unit": "cm",
+                  "unitPlacement": "per_value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [
+                    "65.2 cm with door frame"
+                  ],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "84.2 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "59.8 cm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "61.3 cm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_PARTIAL_REJECT_QUALIFIED_DEPTH_VARIANT",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth; qualified depth variant not selected"
+                },
+                {
+                  "observationId": "dimension_expression_d9cbee564cffb6abe01aeccc",
+                  "pdfSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
+                  "contentSha256": "2e95122ef0fb2a34fb7fb007a81d4ddc67590b479194f09b205bcbd396991e0e",
+                  "page": 1,
+                  "bbox": [
+                    499,
+                    336,
+                    907,
+                    542
+                  ],
+                  "fragmentSha256": "fccccd05fd45e52447e2c0abd32b09f713cf032d07702623571cd81995c54870",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH85200AU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WTH85200AU",
+                      "category": "dryer"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "WTH85200AU"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions (HxWxD)",
+                  "sourceValue": "842x598x613 mm",
+                  "sourceQuote": "Dimensions (HxWxD) 842x598x613 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "842 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "98 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "13 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                },
+                {
+                  "observationId": "dimension_expression_f9dd00312ed1211800431d28",
+                  "pdfSha256": "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d",
+                  "contentSha256": "3e5a085471535642d0e38b533456484e5c053eb441634737ee79c510eda12576",
+                  "page": 1,
+                  "bbox": [
+                    500,
+                    218,
+                    907,
+                    365
+                  ],
+                  "fragmentSha256": "e36ea1d29fb4d100b9246e31372ae8359419cfdcdf45df09dda05f868df84266",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTE84101AU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WTE84101AU",
+                      "category": "dryer"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "WTE84101AU"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions (HxWxD)",
+                  "sourceValue": "842x598x626 mm",
+                  "sourceQuote": "Dimensions (HxWxD) 842x598x626 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "842 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "98 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "26 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                }
+              ],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d",
+                  "contentSha256": "3e5a085471535642d0e38b533456484e5c053eb441634737ee79c510eda12576",
+                  "page": 3,
+                  "quote": "Series 4, condenser tumble dryer, 7 kg WTE84101AU measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
+                  "contentSha256": "2e95122ef0fb2a34fb7fb007a81d4ddc67590b479194f09b205bcbd396991e0e",
+                  "page": 3,
+                  "quote": "Measurements in mm"
+                }
+              ],
+              "parserProfileIds": [
+                "pdf_grammar_2d2f6fda7f7538e6",
+                "pdf_grammar_f3714471e6856327"
+              ],
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+            },
+            {
+              "groupType": "marketing_series",
               "groupName": "Series 6",
               "models": [
                 "WQG235DRAU",
-                "WQG24200AU"
+                "WQG24200AU",
+                "WTG86400AU"
               ],
               "pdfSha256s": [
                 "08b952e6c0bfdbe21ee9aa9a8f6ad7faced3358f5721450359e408d9885da840",
-                "cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00"
+                "cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00",
+                "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6"
               ],
               "sourceUrls": [
                 "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG235DRAU.pdf",
-                "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG24200AU.pdf"
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/WQG24200AU.pdf",
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTG86400AU.pdf"
               ],
               "seriesEvidence": [
                 {
@@ -91582,6 +94110,33 @@
                   "pdfSha256": "cbd890b096473a6e036e620083e06cf1e5e688650bb497f559af0ff36f72fe00",
                   "page": 3,
                   "quote": "Series 6, heat pump tumble dryer, 9 kg WQG24200AU"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "WTG86400AU",
+                  "category": "dryer",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6",
+                  "page": 1,
+                  "quote": "Series 6, condenser tumble dryer, 8 kg, White WTG86400AU"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "WTG86400AU",
+                  "category": "dryer",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6",
+                  "page": 2,
+                  "quote": "Series 6, condenser tumble dryer, 8 kg, White WTG86400AU"
+                },
+                {
+                  "brand": "Bosch",
+                  "model": "WTG86400AU",
+                  "category": "dryer",
+                  "seriesName": "Series 6",
+                  "pdfSha256": "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6",
+                  "page": 3,
+                  "quote": "Series 6, condenser tumble dryer, 8 kg, White WTG86400AU"
                 }
               ],
               "parserProfiles": [
@@ -91673,6 +94228,37 @@
                     "IMAGE_ONLY_DIMENSION_DIAGRAM",
                     "UNRECOGNIZED_TEXT_DIMENSION_EXPRESSION"
                   ]
+                },
+                {
+                  "parserProfileId": "pdf_grammar_f3714471e6856327",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "GROUPED_AXIS_SEQUENCE",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                      "sourceLabel": "dimensions (hxwxd)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "IMAGE_ONLY_DIMENSION_DIAGRAM"
+                  ]
                 }
               ],
               "parserReplays": [
@@ -91696,6 +94282,21 @@
                   "category": "dryer",
                   "brand": "Bosch",
                   "model": "WQG24200AU",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                },
+                {
+                  "pdfSha256": "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6",
+                  "category": "dryer",
+                  "brand": "Bosch",
+                  "model": "WTG86400AU",
                   "extractionState": "ALL_AXIS_SCALAR",
                   "identityScope": "EXACT_MODEL",
                   "claimFields": [
@@ -91918,6 +94519,73 @@
                   ],
                   "parserDecision": "SUPPORTED_EXPLICIT_GROUPED_WITH_INCLUDED_HANDLE_DEPTH",
                   "semanticInterpretation": "1:height, 2:width, 3:depth; qualified depth variant not selected"
+                },
+                {
+                  "observationId": "dimension_expression_fe5e38f1bf88c4ddef722c40",
+                  "pdfSha256": "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6",
+                  "contentSha256": "ec2ff90b32bd46497d44eadebc9df0db3aa4e84d11702f56836533e98c40c7e2",
+                  "page": 1,
+                  "bbox": [
+                    499,
+                    324,
+                    907,
+                    626
+                  ],
+                  "fragmentSha256": "05a3d1c5160d76931b9dddd35a49bb46856f60eb972d20c39451c0c69df77501",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTG86400AU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WTG86400AU",
+                      "category": "dryer"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "WTG86400AU"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions (HxWxD)",
+                  "sourceValue": "842x598x613 mm",
+                  "sourceQuote": "Dimensions (HxWxD) 842x598x613 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "842 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "98 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "13 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
                 }
               ],
               "researchGaps": [
@@ -91941,11 +94609,19 @@
                   "contentSha256": "17a297171da4c9a2721bd7b89d51ea596bea1b605f8c65f7356fc6f44dc4f2c7",
                   "page": 3,
                   "quote": "Measurements in mm"
+                },
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6",
+                  "contentSha256": "ec2ff90b32bd46497d44eadebc9df0db3aa4e84d11702f56836533e98c40c7e2",
+                  "page": 3,
+                  "quote": "Measurements in mm"
                 }
               ],
               "parserProfileIds": [
                 "pdf_grammar_3bb3c56cf204e5c7",
-                "pdf_grammar_861c41113285bfa0"
+                "pdf_grammar_861c41113285bfa0",
+                "pdf_grammar_f3714471e6856327"
               ],
               "completeParserReplay": true,
               "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
@@ -92581,6 +95257,153 @@
               ],
               "parserProfileIds": [
                 "pdf_grammar_3bb3c56cf204e5c7"
+              ],
+              "completeParserReplay": true,
+              "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"
+            },
+            {
+              "groupType": "parser_family",
+              "groupName": "PDF grammar pdf_grammar_f3714471e6856327",
+              "models": [
+                "WTY877W0AU"
+              ],
+              "pdfSha256s": [
+                "319264492d4b3383ef7a7b84585fe5bd0263f710ecd4a4a4e02174276e038e54"
+              ],
+              "sourceUrls": [
+                "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY877W0AU.pdf"
+              ],
+              "seriesEvidence": [],
+              "parserProfiles": [
+                {
+                  "parserProfileId": "pdf_grammar_f3714471e6856327",
+                  "signatureVersion": 1,
+                  "expressionShapes": [
+                    {
+                      "patternKind": "GROUPED_AXIS_SEQUENCE",
+                      "syntaxDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                      "sourceLabel": "dimensions (hxwxd)",
+                      "axisOrder": [
+                        "height",
+                        "width",
+                        "depth"
+                      ],
+                      "safeAxes": [
+                        "depth",
+                        "height",
+                        "width"
+                      ],
+                      "scope": "product_closed_candidate",
+                      "unit": "mm",
+                      "unitPlacement": "value",
+                      "valueShapes": [
+                        "scalar"
+                      ],
+                      "depthVariantLabels": []
+                    }
+                  ],
+                  "researchGapTypes": [
+                    "IMAGE_ONLY_DIMENSION_DIAGRAM"
+                  ]
+                }
+              ],
+              "parserReplays": [
+                {
+                  "pdfSha256": "319264492d4b3383ef7a7b84585fe5bd0263f710ecd4a4a4e02174276e038e54",
+                  "category": "dryer",
+                  "brand": "Bosch",
+                  "model": "WTY877W0AU",
+                  "extractionState": "ALL_AXIS_SCALAR",
+                  "identityScope": "EXACT_MODEL",
+                  "claimFields": [
+                    "closedEnvelope.depthMm",
+                    "closedEnvelope.heightMm",
+                    "closedEnvelope.widthMm"
+                  ],
+                  "grammarProfileIds": [],
+                  "reasonCode": "PARSED_COMPLETE"
+                }
+              ],
+              "expressions": [
+                {
+                  "observationId": "dimension_expression_85e19b18a97e9a8fa9c39607",
+                  "pdfSha256": "319264492d4b3383ef7a7b84585fe5bd0263f710ecd4a4a4e02174276e038e54",
+                  "contentSha256": "80c1fdb49727110030495f5bd77bd51eba876cb58752bb0460a44e38e2b85585",
+                  "page": 1,
+                  "bbox": [
+                    499,
+                    311,
+                    907,
+                    493
+                  ],
+                  "fragmentSha256": "9a16c7b25f9f4dd6e94420efa65eed000081526f548e80c4df683c4ecf63aa90",
+                  "sourceUrls": [
+                    "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY877W0AU.pdf"
+                  ],
+                  "identities": [
+                    {
+                      "brand": "Bosch",
+                      "model": "WTY877W0AU",
+                      "category": "dryer"
+                    }
+                  ],
+                  "modelBinding": "SAME_PAGE_EXACT_MODEL",
+                  "boundModels": [
+                    "WTY877W0AU"
+                  ],
+                  "patternKind": "GROUPED_AXIS_SEQUENCE",
+                  "sourceLabel": "Dimensions (HxWxD)",
+                  "sourceValue": "842x598x613 mm",
+                  "sourceQuote": "Dimensions (HxWxD) 842x598x613 mm",
+                  "axisOrder": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "safeAxes": [
+                    "height",
+                    "width",
+                    "depth"
+                  ],
+                  "unit": "mm",
+                  "unitPlacement": "value",
+                  "scope": "product_closed_candidate",
+                  "depthVariants": [],
+                  "axisValues": [
+                    {
+                      "axis": "height",
+                      "label": "height",
+                      "value": "842 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "width",
+                      "label": "width",
+                      "value": "98 mm",
+                      "valueShape": "scalar"
+                    },
+                    {
+                      "axis": "depth",
+                      "label": "depth",
+                      "value": "13 mm",
+                      "valueShape": "scalar"
+                    }
+                  ],
+                  "parserDecision": "SUPPORTED_EXPLICIT_GROUPED",
+                  "semanticInterpretation": "1:height, 2:width, 3:depth"
+                }
+              ],
+              "researchGaps": [
+                {
+                  "gapType": "IMAGE_ONLY_DIMENSION_DIAGRAM",
+                  "pdfSha256": "319264492d4b3383ef7a7b84585fe5bd0263f710ecd4a4a4e02174276e038e54",
+                  "contentSha256": "80c1fdb49727110030495f5bd77bd51eba876cb58752bb0460a44e38e2b85585",
+                  "page": 3,
+                  "quote": "Measurements in mm"
+                }
+              ],
+              "parserProfileIds": [
+                "pdf_grammar_f3714471e6856327"
               ],
               "completeParserReplay": true,
               "expressionCoverageStatus": "PARSER_REPLAY_COMPLETE_WITH_GENERIC_RESEARCH_GAPS"

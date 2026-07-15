@@ -156,7 +156,7 @@ export function claimsFromExplicitDimensionSequence(fragment, context, requested
   const valueText = String(fragment?.value ?? '').replace(/\s+/g, ' ').trim();
   if (!label || !valueText) return [];
   if (!/\b(?:dimension|dimensions|size)\b/i.test(label)
-    || /\b(?:pack(?:ed|ag(?:e|ed|ing))?|shipping|carton|box(?:ed)?|crate)\b/i.test(label)) return [];
+    || /\b(?:pack(?:ed|ag(?:e|ed|ing))?|shipping|carton|box(?:ed)?|crate|cabinet|cavity|niche|opening|installation)\b|cut[ -]?out|(?:doors?\s*open(?:ed)?|open(?:ed)?\s*doors?)|lid\s*open/i.test(label)) return [];
   const axisOrder = explicitDimensionSequence(label);
   if (!axisOrder) return [];
   const sourceValues = (valueText.match(/\d+(?:\.\d+)?/g) ?? []).map(Number);

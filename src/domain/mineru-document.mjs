@@ -51,6 +51,16 @@ function sha256(value) {
   return createHash('sha256').update(value).digest('hex');
 }
 
+function canonicalJson(value) {
+  if (Array.isArray(value)) return value.map(canonicalJson);
+  if (!value || typeof value !== 'object') return value;
+  return Object.fromEntries(Object.keys(value).sort().map((key) => [key, canonicalJson(value[key])]));
+}
+
+function sameCanonicalJson(left, right) {
+  return JSON.stringify(canonicalJson(left)) === JSON.stringify(canonicalJson(right));
+}
+
 function requiredHash(value, label) {
   const hash = normalizedText(value).toLowerCase();
   if (!HASH_PATTERN.test(hash)) throw new TypeError(`${label} must be SHA-256`);
@@ -540,9 +550,46 @@ export function inspectMineruIdentityScope(jsonBytes, model) {
   });
 }
 
+function explicitInlineDimensionRow(text) {
+  const source = String(text ?? '');
+  if (/\b(?:pack(?:ed|ing|ag(?:e|ed|ing))?|shipping|carton|box(?:ed)?|crate)\b/i.test(source)) {
+    return null;
+  }
+  const matches = [...source.matchAll(
+    /\b(w|width|h|height|d|depth)\b\s*:\s*(\d+(?:\.\d+)?)\s*(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/gi,
+  )];
+  if (matches.length !== 3 || !matches.some((match) => match[1].length === 1)) return null;
+  const aliases = {
+    w: 'width', width: 'width', h: 'height', height: 'height', d: 'depth', depth: 'depth',
+  };
+  const axes = matches.map((match) => aliases[match[1].toLowerCase()]);
+  if (new Set(axes).size !== 3
+    || !['width', 'height', 'depth'].every((axis) => axes.includes(axis))) return null;
+  const prefix = source.slice(0, matches[0].index).replace(/^\s*[-•●]\s*/, '').trim();
+  if (prefix && !/^(?:(?:product|overall|external)\s+)?(?:dimensions?|size)\s*:?\s*[-–—]?$/i.test(prefix)) {
+    return null;
+  }
+  for (let index = 0; index < matches.length - 1; index += 1) {
+    const between = source.slice(matches[index].index + matches[index][0].length, matches[index + 1].index);
+    if (!/^\s*[x×*]\s*$/.test(between)) return null;
+  }
+  const suffix = source.slice(matches.at(-1).index + matches.at(-1)[0].length);
+  if (!/^\s*[.,;]?\s*$/.test(suffix)) return null;
+  const units = matches.map((match) => match[3].toLowerCase().startsWith('c') ? 'cm' : 'mm');
+  if (new Set(units).size !== 1) return null;
+  const axisLabels = { width: 'W', height: 'H', depth: 'D' };
+  return {
+    label: `Dimensions (${axes.map((axis) => axisLabels[axis]).join(' x ')})`,
+    value: matches.map((match) => `${match[2]} ${units[0]}`).join(' x '),
+    quote: normalizedText(source),
+  };
+}
+
 function paragraphRows(text) {
   const strict = /^([A-Za-z][A-Za-z ()/+.-]{0,80})\s+((?:\d+(?:\.\d+)?)(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?\s*(?:mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?))$/i.exec(text);
   if (strict) return [{ label: normalizedText(strict[1]), value: normalizedText(strict[2]) }];
+  const explicitInline = explicitInlineDimensionRow(text);
+  if (explicitInline) return [explicitInline];
   if (!/\b(?:pack(?:ed|ing|ag(?:e|ed|ing))?|shipping|carton|box(?:ed)?|crate)\b/i.test(text)) {
     const axisMatches = [...String(text).matchAll(/\b(width|wide|height|high|depth|deep)\b\s*:?\s*(\d+(?:\.\d+)?(?:\s*(?:-|–|—|\bto\b)\s*\d+(?:\.\d+)?)?)\s*(mm|millimet(?:re|er)s?|cm|centimet(?:re|er)s?)\b/gi)];
     const axis = { width: 'width', wide: 'width', height: 'height', high: 'height', depth: 'depth', deep: 'depth' };
@@ -1492,6 +1539,21 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
   if (!model || !category || !Array.isArray(fields) || !fields.length) {
     throw new TypeError('case identity and requested fields required');
   }
+  let expectedClaimsByField = null;
+  if (options.expectedClaims !== undefined) {
+    if (claimSemanticsVersion !== 2) {
+      throw new TypeError('expected receipt claims require claim semantics version 2');
+    }
+    validateDimensionEvidenceClaimsV2(options.expectedClaims);
+    const requestedFields = new Set(fields);
+    const expectedFields = new Set(options.expectedClaims.map((claim) => claim.field));
+    if (requestedFields.size !== fields.length
+      || expectedFields.size !== requestedFields.size
+      || [...expectedFields].some((field) => !requestedFields.has(field))) {
+      throw new TypeError('expected receipt claims must cover the requested fields exactly');
+    }
+    expectedClaimsByField = new Map(options.expectedClaims.map((claim) => [claim.field, claim]));
+  }
   const document = parseDocument(jsonBytes);
   const boundFamilyModel = normalizedText(options.boundFamilyModel);
   const boundSeriesModel = normalizedText(options.boundSeriesModel);
@@ -1679,7 +1741,7 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
           || sectionRowsByFragment.get(item)?.length === 3
         ))
       ))
-      || (pageScoped && ['paragraph', 'text'].includes(item.type))
+      || (pageScoped && ['paragraph', 'text', 'list', 'index'].includes(item.type))
       || (documentScoped && ['paragraph', 'text'].includes(item.type)
         && paragraphRows(item.text).some((row) => (
           /\b(?:dimensions?|size)\b/i.test(row.label)
@@ -1725,6 +1787,8 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
             ? (sectionRowsByFragment.get(fragment) ?? [])
             : []),
         ];
+      } else if (['list', 'index'].includes(fragment.type)) {
+        rows = fragment.listEntries.flatMap((entry) => paragraphRows(entry));
       } else {
         rows = joinedParagraphRowsByFragment.has(fragment)
           ? [joinedParagraphRowsByFragment.get(fragment)]
@@ -1769,7 +1833,16 @@ export function parseMineruContentListV2(jsonBytes, options = {}) {
     ]));
     const values = new Set([...unique.values()].map((claim) => JSON.stringify(claim.value)));
     if (values.size > 1) throw new Error(`ambiguous MinerU values for ${field}`);
-    if (unique.size) claims.push([...unique.values()][0]);
+    const expectedClaim = expectedClaimsByField?.get(field);
+    if (expectedClaim) {
+      const matched = [...unique.values()].find((candidate) => (
+        sameCanonicalJson(upgradeLegacyDimensionClaim(candidate), expectedClaim)
+      ));
+      if (!matched) throw new Error(`expected receipt claim for ${field} not rederived from current MinerU candidates`);
+      claims.push(matched);
+    } else if (unique.size) {
+      claims.push([...unique.values()][0]);
+    }
   }
   const repeatedExactHeaderScoped = claims.length > 0
     && repeatedExactHeaderPages.size >= 2 && claims.every((claim) => {

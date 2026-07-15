@@ -1422,6 +1422,172 @@ test('MinerU reconnects a Bosch grouped dimension heading to an explicitly label
   assert.ok(parsed.claims.every((claim) => claim.sourceAxisOrder.join(',') === 'height,width,depth'));
 });
 
+test('MinerU parses Bosch standalone per-value H W D labels without trusting a malformed grouped label', () => {
+  const bytes = Buffer.from(JSON.stringify([
+    [
+      pageHeader('Serie | 6 dishwasher SCE53M05AU'),
+      paragraph('Dimensions of the product (width x depth) : 595 x 595 x 500'),
+    ],
+    [
+      pageHeader('Serie | 6 dishwasher SCE53M05AU'),
+      paragraph('Dimensions'),
+      paragraph('- H: 595 mm x W: 595 mm x D: 500 mm'),
+    ],
+  ]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Bosch', model: 'SCE53M05AU', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 595,
+    'closedEnvelope.heightMm': 595,
+    'closedEnvelope.depthMm': 500,
+  });
+  assert.ok(parsed.claims.every((claim) => claim.page === 2));
+  assert.ok(parsed.claims.every((claim) => claim.sourceAxisOrder.join(',') === 'height,width,depth'));
+  assert.ok(parsed.claims.every((claim) => claim.sourceLabel === 'Dimensions (H x W x D)'));
+});
+
+test('MinerU rejects Bosch grouped values when the label names only width and depth', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    pageHeader('Serie | 6 dishwasher SCE53M05AU'),
+    paragraph('Dimensions of the product (width x depth) : 595 x 595 x 500'),
+  ]]));
+  assert.throws(() => parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Bosch', model: 'SCE53M05AU', category: 'dishwasher' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  }), /no exact-model MinerU evidence/i);
+});
+
+test('MinerU parses an explicit HxWxD sequence from an exact-model structured index entry', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    pageHeader('Series 6 dryer WTG86400AU'),
+    {
+      type: 'index',
+      content: {
+        list_type: 'text_list',
+        list_items: [
+          'Length electrical supply cord: 145.0 cm',
+          'Dimensions (HxWxD): 842x598x613 mm',
+          'Net weight: 41.5 kg',
+        ].map((content) => ({
+          item_type: 'text', item_content: [{ type: 'text', content }],
+        })),
+      },
+      bbox: [500, 180, 920, 700],
+    },
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Bosch', model: 'WTG86400AU', category: 'dryer' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 598,
+    'closedEnvelope.heightMm': 842,
+    'closedEnvelope.depthMm': 613,
+  });
+  assert.ok(parsed.claims.every((claim) => claim.sourceAxisOrder.join(',') === 'height,width,depth'));
+});
+
+test('MinerU receipt replay pins an earlier exact claim fragment without trusting parser preference order', () => {
+  const pageTwo = [
+    pageHeader('Series 6 dryer WTG86400AU'),
+    paragraph('- Dimensions (H x W x D): 84.2 cm x 59.8 cm x 61.3 cm'),
+  ];
+  const priorBytes = Buffer.from(JSON.stringify([
+    [pageHeader('Series 6 dryer WTG86400AU')],
+    pageTwo,
+  ]));
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Bosch', model: 'WTG86400AU', category: 'dryer' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  };
+  const prior = parseMineruContentListV2(priorBytes, options);
+  assert.ok(prior.claims.every((claim) => claim.page === 2));
+
+  const currentBytes = Buffer.from(JSON.stringify([[
+    pageHeader('Series 6 dryer WTG86400AU'),
+    {
+      type: 'index',
+      content: {
+        list_type: 'text_list',
+        list_items: [{
+          item_type: 'text',
+          item_content: [{ type: 'text', content: 'Dimensions (HxWxD): 842x598x613 mm' }],
+        }],
+      },
+      bbox: [500, 180, 920, 700],
+    },
+  ], pageTwo]));
+  const preferred = parseMineruContentListV2(currentBytes, options);
+  assert.ok(preferred.claims.every((claim) => claim.page === 1));
+
+  const replayed = parseMineruContentListV2(currentBytes, {
+    ...options,
+    expectedClaims: prior.claims,
+  });
+  assert.deepEqual(replayed.claims, prior.claims);
+
+  const forged = structuredClone(prior.claims);
+  forged[0].fragmentSha256 = 'f'.repeat(64);
+  assert.throws(() => parseMineruContentListV2(currentBytes, {
+    ...options,
+    expectedClaims: forged,
+  }), /expected receipt claim.*not rederived/i);
+});
+
+test('MinerU receipt replay does not let a pinned fragment bypass conflicting document values', () => {
+  const options = {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Bosch', model: 'WTG86400AU', category: 'dryer' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  };
+  const priorBytes = Buffer.from(JSON.stringify([[
+    pageHeader('Series 6 dryer WTG86400AU'),
+    paragraph('- Dimensions (H x W x D): 84.2 cm x 59.8 cm x 61.3 cm'),
+  ]]));
+  const prior = parseMineruContentListV2(priorBytes, options);
+  const conflictingBytes = Buffer.from(JSON.stringify([[
+    pageHeader('Series 6 dryer WTG86400AU'),
+    paragraph('- Dimensions (H x W x D): 84.2 cm x 59.8 cm x 61.3 cm'),
+    paragraph('Dimensions (H x W x D): 842 x 598 x 614 mm'),
+  ]]));
+  assert.throws(() => parseMineruContentListV2(conflictingBytes, {
+    ...options,
+    expectedClaims: prior.claims,
+  }), /ambiguous MinerU values/i);
+});
+
+test('MinerU keeps product dimensions separate from cut-out and packed grouped envelopes', () => {
+  const bytes = Buffer.from(JSON.stringify([[
+    pageHeader('Series 6 built-in freezer GIN81AC30A'),
+    paragraph('- Dimensions (H x W x D): 1772 mm x 558 mm x 545 mm'),
+    paragraph('- Cut-out Dimension (H x W x D): 1775 mm x 560 mm x 550 mm'),
+    paragraph('- Dimensions of the packed product (H x W x D): 1840 mm x 610 mm x 640 mm'),
+  ]]));
+  const parsed = parseMineruContentListV2(bytes, {
+    pdfSha256, parserVersion: '3.4.4', modelRevision,
+    caseIdentity: { brand: 'Bosch', model: 'GIN81AC30A', category: 'fridge' },
+    claimSemanticsVersion: 2,
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  assert.deepEqual(Object.fromEntries(parsed.claims.map((claim) => [claim.field, claim.value.mm])), {
+    'closedEnvelope.widthMm': 558,
+    'closedEnvelope.heightMm': 1772,
+    'closedEnvelope.depthMm': 545,
+  });
+  assert.ok(parsed.claims.every((claim) => !/cut-out|packed/i.test(claim.sourceLabel)));
+});
+
 test('MinerU uses unique exact-model cover and source URL to scope a later Bosch dimension paragraph', () => {
   const bytes = Buffer.from(JSON.stringify([
     [{

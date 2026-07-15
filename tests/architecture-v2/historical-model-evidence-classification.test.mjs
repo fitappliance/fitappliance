@@ -236,6 +236,22 @@ test('unresolved PDF identity remains visible unless a current exact receipt sup
   assert.equal(receiptSuperseded.identityScope, 'EXACT_MODEL');
 });
 
+test('a current MinerU PDF with unresolved identity routes to identity closure instead of reacquisition', () => {
+  const classified = classifyHistoricalModelEvidence({
+    reference: reference(),
+    conflictState: 'NONE',
+    documentLinks: [link({
+      sourceUrl: 'https://manufacturer.example/manual.pdf',
+      identityScope: 'AMBIGUOUS',
+      extractionState: 'PARSER_GAP',
+      receiptState: 'NONE',
+    })],
+  });
+
+  assert.equal(classified.operationalClass, 'IDENTITY_RESEARCH');
+  assert.equal(classified.nextAction, 'RUN_IDENTITY_CLOSURE');
+});
+
 test('stored PDFs are converted before identity research and official legacy URLs are reacquired', () => {
   const stored = classifyHistoricalModelEvidence({
     reference: reference(), conflictState: 'NONE',

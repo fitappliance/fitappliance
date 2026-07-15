@@ -222,6 +222,11 @@ function selectOperationalClass(links, conflictState, terminalState, policy) {
   }
   if (exactOfficial.some((entry) => entry.corpusState === 'CURRENT_MINERU')) return 'OFFLINE_PARSER_REPAIR';
 
+  const unresolvedCurrentMineru = links.some((entry) => entry.corpusState === 'CURRENT_MINERU'
+    && UNRESOLVED_IDENTITIES.has(entry.identityScope));
+  if (unresolvedCurrentMineru && !exactOfficial.some((entry) => entry.sourceUrl)) {
+    return 'IDENTITY_RESEARCH';
+  }
   if (links.some((entry) => entry.corpusState === 'STORED_PDF')) return 'PDF_RECONVERT';
   if (links.some((entry) => entry.sourceAuthority === 'OFFICIAL'
     && entry.sourceUrl)) return 'OFFICIAL_REACQUIRE';

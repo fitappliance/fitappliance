@@ -248,7 +248,9 @@ function buildIdenticalArtifactRepair(entry, target, outcome) {
 
 function receiptReplayFailureCode(error) {
   const detail = String(error?.message ?? error).toLowerCase();
-  if (/claims do not match|claim.*mismatch/.test(detail)) return 'claim_replay_mismatch';
+  if (/claims do not match|claim.*mismatch|expected receipt claim.*not rederived/.test(detail)) {
+    return 'claim_replay_mismatch';
+  }
   if (/identity|model scope|family manual|multiple models/.test(detail)) return 'identity_replay_mismatch';
   if (/receipt|attestation/.test(detail)) return 'receipt_replay_mismatch';
   if (/object|hash|size|missing|enoent/.test(detail)) return 'object_replay_failure';

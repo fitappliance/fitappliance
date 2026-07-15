@@ -1,6 +1,6 @@
 # Historical Model Evidence Classification
 
-Generated: 2026-07-15T19:10:49.740Z
+Generated: 2026-07-16T00:00:00.000Z
 
 Coverage: **8,095 / 8,095** unique historical models.
 Models with document links: **1,770**; without links: **6,325**.
@@ -11,27 +11,27 @@ This is a research and repair classification. It does not grant publication auth
 
 | Category | Models | Brands | Document links |
 | --- | --- | --- | --- |
-| dishwasher | 1419 | 94 | 985 |
-| dryer | 843 | 72 | 261 |
-| fridge | 4336 | 121 | 2265 |
-| washing_machine | 1497 | 88 | 650 |
+| dishwasher | 1419 | 94 | 989 |
+| dryer | 843 | 72 | 265 |
+| fridge | 4336 | 121 | 2269 |
+| washing_machine | 1497 | 88 | 653 |
 
 ## Operational Classes
 
 | Class | Models |
 | --- | --- |
-| COMPLETE_RECEIPT | 146 |
+| COMPLETE_RECEIPT | 161 |
 | CONFLICT_QUARANTINE | 83 |
-| IDENTITY_RESEARCH | 193 |
+| IDENTITY_RESEARCH | 195 |
 | OFFICIAL_DISCOVERY | 6426 |
-| OFFICIAL_REACQUIRE | 4 |
-| REFERENCE_REDISCOVERY | 1243 |
+| OFFICIAL_REACQUIRE | 2 |
+| REFERENCE_REDISCOVERY | 1228 |
 
 ## Observed Brand / Series / PDF Grammar Groups
 
 | Category | Brand | Group type | Group | Models |
 | --- | --- | --- | --- | --- |
-| fridge | Hisense | parser_family | PDF grammar pdf_grammar_f96902bad0e838aa | 20 |
+| fridge | Hisense | parser_family | PDF grammar pdf_grammar_f96902bad0e838aa | 21 |
 | fridge | Westinghouse | parser_family | PDF grammar pdf_grammar_100af9c8141cceb2 | 16 |
 | fridge | CHIQ | parser_family | PDF grammar pdf_grammar_1527a999293b656a | 10 |
 | fridge | Westinghouse | parser_family | PDF grammar pdf_grammar_1cb932102aaee1e6 | 10 |
@@ -62,15 +62,15 @@ This is a research and repair classification. It does not grant publication auth
 | dishwasher | Fisher & Paykel | document_family | Document family e7adc05013ac | 3 |
 | dishwasher | Fisher & Paykel | parser_family | PDF grammar pdf_grammar_172158620a7be002 | 3 |
 | dishwasher | Fisher & Paykel | parser_family | PDF grammar pdf_grammar_77d337e9deb5d131 | 3 |
+| dryer | Bosch | marketing_series | Series 6 | 3 |
 | dryer | Bosch | marketing_series | Series 8 | 3 |
 | dryer | Electrolux | parser_family | PDF grammar pdf_grammar_8f60826f847a01df | 3 |
 | dryer | Fisher & Paykel | document_family | Document family 55aa96e39e2b | 3 |
 | dryer | Fisher & Paykel | document_family | Document family e0ee3c93f477 | 3 |
 | dryer | Fisher & Paykel | document_family | Document family fbe70d9dc8bb | 3 |
 | dryer | LG | document_family | Document family 2fe3cc8c8972 | 3 |
+| fridge | Bosch | marketing_series | Series 4 | 3 |
 | fridge | Fisher & Paykel | parser_family | PDF grammar pdf_grammar_2358d2487e9939bc | 3 |
-| fridge | LG | document_family | Document family 5ceaeaaafb54 | 3 |
-| fridge | LG | document_family | Document family 7ceaec7eb479 | 3 |
 
 ## Highest-Impact Gaps
 
@@ -92,7 +92,7 @@ This is a research and repair classification. It does not grant publication auth
 | fridge | MITSUBISHI ELECTRIC | OFFICIAL_DISCOVERY | 90 |
 | fridge | Fisher & Paykel | REFERENCE_REDISCOVERY | 85 |
 | dishwasher | Smeg | OFFICIAL_DISCOVERY | 78 |
-| dishwasher | Bosch | REFERENCE_REDISCOVERY | 76 |
+| dishwasher | Bosch | REFERENCE_REDISCOVERY | 72 |
 | fridge | Hisense | OFFICIAL_DISCOVERY | 71 |
 | fridge | Hisense | REFERENCE_REDISCOVERY | 69 |
 | dryer | Kogan | OFFICIAL_DISCOVERY | 68 |

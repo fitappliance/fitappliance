@@ -228,7 +228,7 @@ test('accepted targets are excluded without deleting other cumulative entries', 
     }, {
       outcomes: [{
         brand: 'Example', model: 'EX200', category: 'dishwasher',
-        outcome: 'accepted', receipt: 'passed',
+        outcome: 'accepted', receipt: 'passed', identity: 'exact',
       }],
     }],
     selection: {},
@@ -236,6 +236,35 @@ test('accepted targets are excluded without deleting other cumulative entries', 
 
   assert.deepEqual(batch.targets.map((row) => row.model), ['OT300']);
   assert.equal(batch.summary.targets, 1);
+});
+
+test('legacy marketing-alias acceptance remains recoverable until exact identity is proved', () => {
+  const queue = fixtureQueue();
+  const batch = buildHistoricalEvidenceRecoveryBatch({
+    queue,
+    policy: fixturePolicy(),
+    existingAcceptanceBundles: [{
+      outcomes: [{
+        brand: 'Example', model: 'EX100', category: 'dishwasher',
+        outcome: 'accepted', receipt: 'passed', identity: 'official_marketing_alias',
+        source: {
+          sourceUrl: 'https://example.com.au/alias-product-page',
+          contentSha256: SHA_A,
+          identity: { brand: 'Example', model: 'EX100', outcome: 'official_marketing_alias' },
+          verificationReceipt: { bindingSha256: SHA_B },
+        },
+      }],
+    }],
+    selection: { targetIds: [queue.targets[0].targetId] },
+  });
+
+  assert.deepEqual(batch.targets.map((row) => row.model), ['EX100']);
+  assert.deepEqual(batch.targets[0].reconciliationContext.activeReceiptSources, [{
+    sourceUrl: 'https://example.com.au/alias-product-page',
+    contentSha256: SHA_A,
+    receiptBindingSha256: SHA_B,
+  }]);
+  assert.equal(batch.summary.excludedPriorAcceptedTargets, 0);
 });
 
 test('explicit parser repair reopens one accepted target without hydrating its invalid receipt', () => {

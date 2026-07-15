@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T19:21:21.356Z",
-  "sourceBundleSha256": "b17d57a9cc0f66b3a173c2128c1dc31da86bdc19ff17fc3693125effa16b72cc",
+  "generatedAt": "2026-07-15T20:23:10.836Z",
+  "sourceBundleSha256": "348815dfc5ac740404701978d315550156c81fc4148063940795ecf616740e72",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -42,6 +42,20 @@
       "contentSha256": "4550293c7667081c85ffc60955576a68b49712636ad6b8c2b5500dd20c8a2cf8",
       "receiptBindingSha256": "96d2087cac8c268bb5f302b785bf0e96b032bbf8e862a34ff38f2b9bbc3de802",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/10/8b/108bd363434692a686ec87dac921631f906301cc47cd493341f317dba71892db.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_00b3c9bd75298fc7ee4b1f37",
+      "referenceId": "fa_ref_974d2074f19352ff06ba7288",
+      "brand": "Bosch",
+      "model": "SCE53M05AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SCE53M05AU.pdf",
+      "sourcePdfSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+      "contentSha256": "4cf96050cee596f8590807b2cbc3fd6264684404b681ee60d762d981defd7858",
+      "receiptBindingSha256": "c41908dd50521e46a93482ab5ca1d950afd935258e42d9a2baf5ed239a7ad591",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/cc/60/cc606509a7eeaa871763838a445002090571e96e1f1387f5c0b9d39b07f77e14.json",
       "status": "passed",
       "failureCode": null
     },
@@ -98,6 +112,20 @@
       "contentSha256": "e974d1e890e7411358f1dff86fabb6f9bba2f4b89340062e20e596f1a645f43c",
       "receiptBindingSha256": "5226bdfbfe9be344fa656797a672395cd6d12529acc9c5c140e56935d8aabac4",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/df/eb/dfeb99bf94ea3f3b4f7bc7f067301cf727156d35beb9357b7ad320b86ce5a22a.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_0659f995ff29d2b5f37d1c55",
+      "referenceId": "fa_ref_3081a6936c014ebb6089517d",
+      "brand": "Bosch",
+      "model": "WTY877W0AU",
+      "category": "dryer",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTY877W0AU.pdf",
+      "sourcePdfSha256": "319264492d4b3383ef7a7b84585fe5bd0263f710ecd4a4a4e02174276e038e54",
+      "contentSha256": "319264492d4b3383ef7a7b84585fe5bd0263f710ecd4a4a4e02174276e038e54",
+      "receiptBindingSha256": "c0a1f4683fe04c0ff98808020f98126d837e3de02073d292c3ba78986710d0f1",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/80/c1/80c1fdb49727110030495f5bd77bd51eba876cb58752bb0460a44e38e2b85585.json",
       "status": "passed",
       "failureCode": null
     },
@@ -322,6 +350,20 @@
       "contentSha256": "3b05c53d73812d2432a3f7b667a775300b37297f6c410f0d3c7d4b172c8596d7",
       "receiptBindingSha256": "0795949f3b24cb9c79d46c9ed1c78ff354ba27807bed3ee980f6c57fac41ccdc",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/b2/ba/b2ba9143046a420b0586679e91c9964c1c31b19cab9c765501b886ccacef916d.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_29e5c24d2f34ab873c2073ad",
+      "referenceId": "fa_ref_dd8527794840cb1b80797421",
+      "brand": "Bosch",
+      "model": "SKE53M05AU",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SKE53M05AU.pdf",
+      "sourcePdfSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+      "contentSha256": "99133ffb25804b03a5067a85e7632e20e46ca886aaf6015b2fe1b35b58412701",
+      "receiptBindingSha256": "b192f05c527e1d0e77fa37d5e425748f161d7250aa752cabaf238e75016a0e8c",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/1c/2f/1c2f3f00199c1c809959f1c2e8d1923008f88e15cfefee8798e2b82b9812469f.json",
       "status": "passed",
       "failureCode": null
     },
@@ -658,6 +700,20 @@
       "contentSha256": "2fe3cc8c897293245b4667f18c487ea2ec0f1cde687f361701b6790da7d2bee1",
       "receiptBindingSha256": "e1f0966a5ca590acca63a2e8ad1166e18a9138b428d3c936aedc387daa71835b",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/63/45/6345d4ee15d06fc55591670a0d916bae7d360ec8bd4b63528426d06ab09dd413.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_4525527a189af88e50ecd15a",
+      "referenceId": "fa_ref_8f971be0c518ab095bf6bc84",
+      "brand": "Bosch",
+      "model": "WGG2449RAU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WGG2449RAU.pdf",
+      "sourcePdfSha256": "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+      "contentSha256": "b557a52ad0c1df17f027279723fe4961589cbeb555c2ddff0f24b14d2a59aa18",
+      "receiptBindingSha256": "64a3f4495a0803886bbb702f55bbe48843fdc520bc91a07078897c87ef301385",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/5a/4e/5a4ed88ec783aa01545071531d59287fe1d02793c25d2064855694e50db9d82d.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1138,6 +1194,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_80e0025c3c7514692ec7afdd",
+      "referenceId": "fa_ref_fc9cb54d89ad2373efd37b74",
+      "brand": "Bosch",
+      "model": "WNA254U1AU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WNA254U1AU.pdf",
+      "sourcePdfSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+      "contentSha256": "e2a32cec55b12f7b89739965d3c5bb8c0d88bc679fd534be552cb2470c0a0d37",
+      "receiptBindingSha256": "1886efd28626277e95cba66a7494fca5e100951c23ac530b565ada92c6ae7051",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/5a/19/5a19a3b04cc7389e53d5ae55efe22fd8c85f403e588fffd9885b9628897e8e4f.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_85c252087f0b13e3c76aa32a",
       "referenceId": "fa_ref_f289ada69d2bc793e73b83da",
       "brand": "Fisher & Paykel",
@@ -1446,6 +1516,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_a94369c7aadc832b86ec5b8e",
+      "referenceId": "fa_ref_0e08c3c010dda2091cc71429",
+      "brand": "Bosch",
+      "model": "GIN81AC30A",
+      "category": "fridge",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/GIN81AC30A.pdf",
+      "sourcePdfSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+      "contentSha256": "02766e434e2dec8978dbd15a3a59107c2502ade5fd07f0db7b511ba740723c16",
+      "receiptBindingSha256": "4d08fe00f39c80e3f5a0f6bd092681cce29dfdbe9781d64c0be5fcb6892e752b",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/fa/6f/fa6fb596e8b71973f182b833c5cc7acce9ff6bf9eb5d8a12480a7edd33e39190.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_a9e3e60452329b7100a8d6f6",
       "referenceId": "fa_ref_969dc63a29a3d245cd590d44",
       "brand": "Fisher & Paykel",
@@ -1526,6 +1610,20 @@
       "contentSha256": "5b63a45d72f8a8b0789205016238cbd6d743f1561c20ea661e3fd342cb068485",
       "receiptBindingSha256": "44dbcc4c1780d774983118fbdc4950caea142760a0ec7f70179c489a972a265a",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/c1/f5/c1f581a2f3d20759d0d0bae0beed9643dd2d024c8d20b298c5b8599ebc14e492.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_b0fb45b4988b622780278e09",
+      "referenceId": "fa_ref_a3a2e6f08fe12c36c49356cc",
+      "brand": "Bosch",
+      "model": "KAD92AI20A",
+      "category": "fridge",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAD92AI20A.pdf",
+      "sourcePdfSha256": "857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8",
+      "contentSha256": "857e2530354ee842d23651c15f92a95ca19a279f87e22ace72faed000f139ad8",
+      "receiptBindingSha256": "fd26aadef370a520519330f7bd8af484794e7ef14c9775c4cfc3882bf10f33cb",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/45/c2/45c271eb6e54d6d5c02b6aaa3a24e947b4a6763d8b349177c9d9891604d9312e.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1698,6 +1796,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_c9665681a8e07fb9f33889e6",
+      "referenceId": "fa_ref_366ce5b1a82c376b983e138d",
+      "brand": "Bosch",
+      "model": "KGN36VI3AA",
+      "category": "fridge",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KGN36VI3AA.pdf",
+      "sourcePdfSha256": "d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9",
+      "contentSha256": "d027d53cf1092e9f2ff3428f0e1b8142f6d288f46a23046041d24cd0e768b7f9",
+      "receiptBindingSha256": "0b6c92a50ad4d323dbf37003fa5eb876657643f19048acf2ee21103beccdbcee",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/32/7c/327c797858c8410ff1748c5d92c6aa02c2b7345846921aa8c6b5969b55458820.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_c98f8586024d44a327356703",
       "referenceId": "fa_ref_1ac391fe8ec81d62e37edadf",
       "brand": "ASKO",
@@ -1708,6 +1820,20 @@
       "contentSha256": "f5d8ef805567a17cd1c3045f174f8e3fa1f40e8555149021aafe529f38909423",
       "receiptBindingSha256": "590afaf4410829f2f7d0d446c72fb062b397f6ad4d86f203553d4352e5d7b434",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/a0/ed/a0ed4ba53f1e7f1991ab7480494181971df1b5a1ab9bdccd9fc5fdef13f37aa4.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_ca994d4b2d365c5c5393aca6",
+      "referenceId": "fa_ref_7f6351cce1bd410e26cccb76",
+      "brand": "Bosch",
+      "model": "WTH85200AU",
+      "category": "dryer",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTH85200AU.pdf",
+      "sourcePdfSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
+      "contentSha256": "fa91f15cbe1aaf2e889d62fc312f4e955af7e1acb5149aa28157a5ae4cf18859",
+      "receiptBindingSha256": "2d7d585efd620048c5a3259d0437230aecde62d3f721756e05d9d55427b1320c",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/2e/95/2e95122ef0fb2a34fb7fb007a81d4ddc67590b479194f09b205bcbd396991e0e.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1764,6 +1890,20 @@
       "contentSha256": "2d559286f86ecfd209c52ac6e5e02343f7515715d9674fc7e98c0e5028619a1b",
       "receiptBindingSha256": "662ed018caa73a3ae4e7bbc3325260b528094d0b581dc3efef99530ed964a8d1",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/b2/38/b238dcf18f3b989bfad77c24d40a02f8fffad6ce769aaa0e3c15a265cd15a569.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_d8f4b0ed4b89f136b885b373",
+      "referenceId": "fa_ref_be17af4ea328c5a2f9a78626",
+      "brand": "Bosch",
+      "model": "WTG86400AU",
+      "category": "dryer",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTG86400AU.pdf",
+      "sourcePdfSha256": "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6",
+      "contentSha256": "db1bcd49943da5d1cdabfc0052dae61044ff19c84e8722f7d45e4bd0d05d69f6",
+      "receiptBindingSha256": "2871ccd1e0435b1ce63800495cf533ea9fd82f8fb513758dba0312b1de4b2b41",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/ec/2f/ec2ff90b32bd46497d44eadebc9df0db3aa4e84d11702f56836533e98c40c7e2.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1838,6 +1978,20 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_dc3ca08394427409003c40ef",
+      "referenceId": "fa_ref_dff4fbbba6eb6b240e3ee334",
+      "brand": "Bosch",
+      "model": "SBV88TX06A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SBV88TX06A.pdf",
+      "sourcePdfSha256": "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518",
+      "contentSha256": "1105c63f0e9e4f1c9830c577759a5271602391f9e9d8c50df58b2d095a96d518",
+      "receiptBindingSha256": "585137ad56d0ab6e8beba98077d00761f3ae46c71ec0e56ba3e4c78080806503",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/dc/a0/dca0b8d7a0b891fc301bda8dc363bf00e380c2bb196717476d48c884106c1ab8.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_dc61156a5cb22ebfcccff4c7",
       "referenceId": "fa_ref_3eb3b6c986c9f883c8e13d66",
       "brand": "ASKO",
@@ -1904,6 +2058,20 @@
       "contentSha256": "c632a4757eeba02a2296a9019c985e10ba61e4d5c0417af06e0c3f3dac278183",
       "receiptBindingSha256": "c4468c4fa2032a2515f943140963359443c0273c0e127357456768d053f946ef",
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/fc/f1/fcf166d84416f5bf7eb00712d6d9d6559b065b8cbaf19387952a2f0ebeb42d45.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_e103e6e747acecd0e15233c7",
+      "referenceId": "fa_ref_65d7375cbcbcd7450d5b8de3",
+      "brand": "Bosch",
+      "model": "SMI4HTS01A",
+      "category": "dishwasher",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/SMI4HTS01A.pdf",
+      "sourcePdfSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
+      "contentSha256": "acadee024e6978914e1da1c7371368b60d74a2ddf400b0f3a461ddcb0d6171fb",
+      "receiptBindingSha256": "078431b7d55224ba8ae65e7d6f2f00dbdfb888425e16a35ada1f433cd2158208",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/0f/0d/0f0dfb8e17ca79372a707cc692eb6587d94dc6b11dc26dcd863bba2febe64d9c.json",
       "status": "passed",
       "failureCode": null
     },
@@ -2062,6 +2230,34 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_f827d8ba6d5e23adfce165d9",
+      "referenceId": "fa_ref_384d5561a5c13ecefe0fbecd",
+      "brand": "Bosch",
+      "model": "WTE84101AU",
+      "category": "dryer",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WTE84101AU.pdf",
+      "sourcePdfSha256": "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d",
+      "contentSha256": "2e6e55791be006cd257894381cf9ca5dadda2ac49523f15768da9bca1139665d",
+      "receiptBindingSha256": "d44b4e97465ac141f03b0d716608dd3882263d1c461a2d017f33cfe4692caa22",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/3e/5a/3e5a085471535642d0e38b533456484e5c053eb441634737ee79c510eda12576.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_f9b7e242fed29718d638d5c0",
+      "referenceId": "fa_ref_b715bbb784b4c85a50814ab9",
+      "brand": "Bosch",
+      "model": "WAT24220AU",
+      "category": "washing_machine",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/WAT24220AU.pdf",
+      "sourcePdfSha256": "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b",
+      "contentSha256": "cee5783f4244a0285db677a146c67d4348b7851fd9a2d7fcc0216268e8a1e34b",
+      "receiptBindingSha256": "20cb1dcc363158c458e8bbdc33c736237969a8b7440aaa11ec1ed60af888d251",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/01/9c/019c7d4537ac77201a417727fc13d6d8bc94856426fedbf90b7eae4ac809d7b7.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_fb75150e641413542e65e68f",
       "referenceId": "fa_ref_bd00665155bb863ad09d5c39",
       "brand": "Beko",
@@ -2088,14 +2284,28 @@
       "derivedObjectPath": "evidence/derived/mineru-json/sha256/e4/d6/e4d673f5c801037d57f5a83bf5ee35d262d9d82ef4f93e32ee6f6d13116aafd2.json",
       "status": "passed",
       "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_ffb69939957753f902774ff0",
+      "referenceId": "fa_ref_d08c8849ae04f3afe954c184",
+      "brand": "Bosch",
+      "model": "KAN92VI30A",
+      "category": "fridge",
+      "sourceUrl": "https://media3.bosch-home.com/Documents/specsheet/en-AU/KAN92VI30A.pdf",
+      "sourcePdfSha256": "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+      "contentSha256": "10618fbcd40f0e8b617396920a1cb8b6c957ecb56eb145de59dba248dba32255",
+      "receiptBindingSha256": "dfcafa6329fe5ff878e655c79be3fd8989cd3ea7cbb2ea1edd84b376bab6f1b5",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/4f/ad/4fadf6d18628f2dc01f1ca62574fa99176811c9e5dc0162f99d5e4603e526b51.json",
+      "status": "passed",
+      "failureCode": null
     }
   ],
   "summary": {
-    "entries": 127,
-    "sources": 149,
-    "passed": 149,
+    "entries": 142,
+    "sources": 164,
+    "passed": 164,
     "failed": 0
   },
-  "checkedObjects": 321,
-  "semanticAuditSha256": "1e97a3acafab85cc7880d7401e321a6d32ff836bbd6f1dba135b2031543cc0b1"
+  "checkedObjects": 351,
+  "semanticAuditSha256": "e58c4e088a1bfa03b0751335f86526233425615b07bbec4ea256a2918395f963"
 }
