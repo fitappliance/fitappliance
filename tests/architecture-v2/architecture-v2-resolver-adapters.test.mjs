@@ -182,7 +182,7 @@ test('LG transport error remains incomplete while preserving no false candidate'
   assert.equal(result.failures[0].code, 'resolver_failed');
 });
 
-test('Electrolux group adapter supports exact official factsheet candidates only', async () => {
+test('Electrolux group adapter adds bounded Westinghouse product pages for conflict corroboration', async () => {
   const adapter = createElectroluxGroupResolverAdapter({
     finder: async () => ({
       sourceUrl: 'https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE5264SC&brand=Westinghouse',
@@ -191,11 +191,26 @@ test('Electrolux group adapter supports exact official factsheet candidates only
       width: 699,
     }),
   });
-  const result = await adapter.resolve({ brand: 'Westinghouse', model: 'WHE5264SC' });
+  const result = await adapter.resolve({
+    brand: 'Westinghouse',
+    model: 'WHE5264SC',
+    category: 'fridge',
+    reconciliationContext: {
+      registryHints: [{ dimensionsMm: { width: 1728, height: 913, depth: 803 } }],
+      legacyHints: [{ dimensionsMm: { width: 913, height: 1782, depth: 803 } }],
+    },
+  });
   assert.equal(result.completion, 'complete');
   assert.equal(result.candidates[0].authorityMode, 'official');
   assert.equal(result.candidates[0].documentType, 'specification_sheet');
   assert.equal('width' in result.candidates[0], false);
+  assert.deepEqual(result.candidates.slice(1).map((candidate) => [
+    candidate.sourceUrl, candidate.documentType, candidate.requiredAttempt,
+  ]), [
+    ['https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe5264sc/', 'product_page', true],
+    ['https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe5264sc-l/', 'product_page', true],
+    ['https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe5264sc-r/', 'product_page', true],
+  ]);
 });
 
 test('Electrolux group adapter does not request wildcard family tokens as exact models', async () => {

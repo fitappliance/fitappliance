@@ -51,6 +51,29 @@ test('Hisense official finder reads specificationDoc from the OCC product endpoi
   assert.equal(result.productPageUrl, 'https://hisense.com.au/product/HRBM418S/bottom-mount-fridge');
 });
 
+test('Hisense official finder removes an OCC trailing slug hyphen from product page URLs', async () => {
+  const result = await findHisenseOfficialPdf({
+    brand: 'Hisense',
+    sku: 'HWF3S8514X',
+    category: 'washing_machine',
+  }, {
+    fetchImpl: async () => jsonResponse({
+      code: 'HWF3S8514X',
+      name: 'Hisense front load washing machine',
+      url: '/product/HWF3S8514X/8.5kg-series-3-front-load-washer-',
+      specificationDoc: {
+        name: 'HWF3S8514X-Spec.pdf',
+        url: '/medias/HWF3S8514X-Spec.pdf',
+      },
+    }),
+  });
+
+  assert.equal(
+    result.productPageUrl,
+    'https://hisense.com.au/product/HWF3S8514X/8.5kg-series-3-front-load-washer',
+  );
+});
+
 test('Hisense official finder uses product search when direct OCC lookup misses', async () => {
   const calls = [];
   const result = await findHisenseOfficialPdf({

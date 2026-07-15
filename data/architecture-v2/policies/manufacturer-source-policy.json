@@ -1,11 +1,17 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "2026-07-15.1",
+  "policyVersion": "2026-07-16.1",
   "supportedReceiptPolicyVersions": [
     "2026-07-12.1",
     "2026-07-14.1",
-    "2026-07-15.1"
+    "2026-07-15.1",
+    "2026-07-16.1"
   ],
+  "officialHtmlModelVariantSuffixes": {
+    "westinghouse": {
+      "fridge": ["L", "R"]
+    }
+  },
   "maxEvidenceAgeDays": 400,
   "marketQualifiedHosts": {
     "esatto": ["esatto.house"],

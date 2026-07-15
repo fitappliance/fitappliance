@@ -7,6 +7,8 @@ import { tmpdir } from 'node:os';
 import { canonicalJsonSha256 } from '../../src/domain/historical-evidence-recovery-contract.mjs';
 
 import {
+  manufacturerDocumentStrategiesIdentity,
+  manufacturerSourcePolicyIdentity,
   parseHistoricalEvidenceRecoveryRunArgs,
   recoveryCandidateResolversForTarget,
   resolveHistoricalEvidenceRecoveryIoPaths,
@@ -16,6 +18,41 @@ import {
 const SHA_A = 'a'.repeat(64);
 const SHA_B = 'b'.repeat(64);
 const FIELDS = ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'];
+
+test('recovery toolchain identity binds the complete manufacturer document strategy policy', () => {
+  const first = manufacturerDocumentStrategiesIdentity({
+    schemaVersion: 1,
+    policyVersion: '2026-07-15.1',
+    transport: { curlPreferredHosts: ['resource.electrolux.com.au'] },
+  });
+  const second = manufacturerDocumentStrategiesIdentity({
+    schemaVersion: 1,
+    policyVersion: '2026-07-15.2',
+    transport: {
+      curlPreferredHosts: ['resource.electrolux.com.au', 'www.westinghouse.com.au'],
+      curlHttp1OnlyHosts: ['www.westinghouse.com.au'],
+    },
+  });
+
+  assert.match(first, /^[a-f0-9]{64}$/);
+  assert.notEqual(first, second);
+});
+
+test('recovery toolchain identity binds the manufacturer source policy', () => {
+  const first = manufacturerSourcePolicyIdentity({
+    schemaVersion: 1,
+    policyVersion: '2026-07-15.1',
+    officialHtmlModelVariantSuffixes: {},
+  });
+  const second = manufacturerSourcePolicyIdentity({
+    schemaVersion: 1,
+    policyVersion: '2026-07-16.1',
+    officialHtmlModelVariantSuffixes: { westinghouse: { fridge: ['L', 'R'] } },
+  });
+
+  assert.match(first, /^[a-f0-9]{64}$/);
+  assert.notEqual(first, second);
+});
 
 function batch(targetCount = 1) {
   const artifactJobs = [{

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "batchId": "historical-recovery-9ebf3110bb2873fb419a6ee4",
-  "generatedAt": "2026-07-15T15:42:43.575Z",
+  "batchId": "historical-recovery-2620adfc0291fafe42cd89ed",
+  "generatedAt": "2026-07-15T16:47:38.606Z",
   "queue": {
     "schemaVersion": 2,
-    "sha256": "da5f004b69926c89bc415b0c9972f922724f384fe83a9c42ae9f006abf19044e"
+    "sha256": "23c53529e06eaf816b80959d07c1f5759f84f439b9701aee270db63802ddc53e"
   },
   "policy": {
     "version": "2026-07-15.1",
@@ -19,17 +19,6 @@
     "limit": null
   },
   "artifactJobs": [
-    {
-      "jobId": "recovery_350c94d32e346cc332f5cffc",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE7074SA&brand=Westinghouse",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "targetIds": [
-        "recovery_target_42d212f53996bbf2b9a2c222"
-      ]
-    },
     {
       "jobId": "recovery_4c18cc6ada281fe07419a95b",
       "sourceUrl": "https://www.fisherpaykel.com/on/demandware.static/-/Sites-fpa-master-catalog/default/dw0301a71d/QRG/AU/QRG-AU-26493.pdf",
@@ -53,17 +42,6 @@
       ]
     },
     {
-      "jobId": "recovery_9fa9c6d75f7005d632b70e89",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB4600WC&brand=Westinghouse",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "targetIds": [
-        "recovery_target_be040e31138e16accc76688d"
-      ]
-    },
-    {
       "jobId": "recovery_b0b1650cb757f9daa81ad826",
       "sourceUrl": "https://gscs-b2c.lge.com/open/downloadFile?fileId=HJoJF6sjLmW0vxZag11e5g",
       "authorityBrand": "LG",
@@ -83,17 +61,6 @@
       "priorityClass": "P2_CURRENT_CONFIRMATION",
       "targetIds": [
         "recovery_target_308bac8cfe8d6b46c5102b6b"
-      ]
-    },
-    {
-      "jobId": "recovery_f9896649f6abcdc1f565e3ae",
-      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB4600SC&brand=Westinghouse",
-      "authorityBrand": "Westinghouse",
-      "authorityMode": "official",
-      "acquisitionRoute": "OFFICIAL_RECEIPT_REBUILD",
-      "priorityClass": "P3_HISTORICAL_CONFIRMATION",
-      "targetIds": [
-        "recovery_target_64a6960846c48fe311bba83a"
       ]
     },
     {
@@ -206269,50 +206236,6 @@
       }
     },
     {
-      "targetId": "recovery_target_42d212f53996bbf2b9a2c222",
-      "referenceId": "fa_ref_efe40b27d389481fc3b0d451",
-      "legacyRuntimeId": "fridge-arf2461",
-      "canonicalProductId": "fa_prod_348bf3bec93a24623e9cb9ec",
-      "brand": "Westinghouse",
-      "model": "WHE7074SA",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": "recovery_350c94d32e346cc332f5cffc",
-      "candidateJobIds": [
-        "recovery_350c94d32e346cc332f5cffc"
-      ],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 1728,
-              "height": 913,
-              "depth": 803
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_bf22508b2fc48a3071e2a1ad",
-            "dimensionsMm": {
-              "width": 913,
-              "height": 1782,
-              "depth": 803
-            }
-          }
-        ]
-      }
-    },
-    {
       "targetId": "recovery_target_c79660e154ec928411327165",
       "referenceId": "fa_ref_27d67552b930c3ccc3e6e380",
       "legacyRuntimeId": "fridge-arf2412",
@@ -208455,94 +208378,6 @@
           }
         ],
         "legacyHints": []
-      }
-    },
-    {
-      "targetId": "recovery_target_64a6960846c48fe311bba83a",
-      "referenceId": "fa_ref_935712563469337605863347",
-      "legacyRuntimeId": "fridge-arf3923",
-      "canonicalProductId": "fa_prod_876f3675d1a45cb949880a62",
-      "brand": "Westinghouse",
-      "model": "WTB4600SC",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": "recovery_f9896649f6abcdc1f565e3ae",
-      "candidateJobIds": [
-        "recovery_f9896649f6abcdc1f565e3ae"
-      ],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 1725,
-              "height": 699,
-              "depth": 769
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_ef3f60181fc95c02b6ece737",
-            "dimensionsMm": {
-              "width": 699,
-              "height": 1725,
-              "depth": 723
-            }
-          }
-        ]
-      }
-    },
-    {
-      "targetId": "recovery_target_be040e31138e16accc76688d",
-      "referenceId": "fa_ref_eb8c80dbac9425af4a678d96",
-      "legacyRuntimeId": "fridge-arf2439",
-      "canonicalProductId": "fa_prod_95cda17d5a9494c069da4fc7",
-      "brand": "Westinghouse",
-      "model": "WTB4600WC",
-      "category": "fridge",
-      "lifecycleState": "CATALOG_ARCHIVED",
-      "requestedFields": [
-        "closedEnvelope.widthMm",
-        "closedEnvelope.heightMm",
-        "closedEnvelope.depthMm"
-      ],
-      "primaryJobId": "recovery_9fa9c6d75f7005d632b70e89",
-      "candidateJobIds": [
-        "recovery_9fa9c6d75f7005d632b70e89"
-      ],
-      "publicationEligible": false,
-      "reconciliationContext": {
-        "activeReceiptSources": [],
-        "registryHints": [
-          {
-            "sourceId": "energy-rating:fridge",
-            "snapshotSha256": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
-            "dimensionsMm": {
-              "width": 1725,
-              "height": 699,
-              "depth": 769
-            }
-          }
-        ],
-        "legacyHints": [
-          {
-            "sourceDocumentId": "doc_4cf8b649e893efbee8b55d25",
-            "dimensionsMm": {
-              "width": 699,
-              "height": 1725,
-              "depth": 723
-            }
-          }
-        ]
       }
     },
     {
@@ -235567,9 +235402,9 @@
     }
   ],
   "summary": {
-    "artifactJobs": 8,
-    "targets": 7688,
-    "candidateEdges": 8,
+    "artifactJobs": 5,
+    "targets": 7685,
+    "candidateEdges": 5,
     "excludedPriorAcceptedTargets": 1,
     "excludedPriorCandidateJobs": 1
   }

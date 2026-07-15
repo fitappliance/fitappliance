@@ -13,6 +13,7 @@ import { validateDimensionEvidenceClaimsV2 } from './dimension-evidence-claim.mj
 import {
   createVerificationReceipt,
   currentMineruEvidenceProfile,
+  officialHtmlModelVariant,
   verificationReceiptDiscoveryPolicyVersion,
   verificationReceiptManufacturerPolicyVersion,
   verifyVerificationReceipt,
@@ -133,6 +134,16 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
     });
   }
   const structuredModel = structuredProductModel($, caseIdentity.model, canonical);
+  const officialVariants = new Map();
+  for (const attribute of [...attributes, ...skuAttributes]) {
+    $(`[${attribute}]`).each((_, element) => {
+      const value = normalizedText($(element).attr(attribute));
+      const variant = officialHtmlModelVariant(caseIdentity, value);
+      if (variant && urlHasExactModelSegment(canonical, variant.sourceModel)) {
+        officialVariants.set(variant.sourceModel, variant);
+      }
+    });
+  }
   let canonicalRegionalSku = null;
   const canonicalModels = new Map();
   for (const attribute of skuAttributes) {
@@ -154,6 +165,24 @@ function htmlIdentitySignals(source, caseIdentity, bytes) {
     .get()
     .filter(Boolean)
     .join(' ');
+  const titleBoundVariants = [...officialVariants.values()]
+    .filter((variant) => containsExactModel(title, variant.sourceModel));
+  if (titleBoundVariants.length === 1) {
+    const variant = titleBoundVariants[0];
+    signals.push({ type: 'document_title', value: title });
+    signals.push({ type: 'canonical_source_model', value: variant.sourceModel });
+    signals.push({
+      type: 'official_variant_binding',
+      value: `${caseIdentity.model} -> ${variant.sourceModel} (${variant.suffix})`,
+    });
+    signals.push({ type: 'product_model', value: variant.sourceModel });
+    return { signals, text: normalizedText(text), identity: {
+      brand: caseIdentity.brand,
+      model: caseIdentity.model,
+      outcome: 'official_marketing_alias',
+      sourceModel: variant.sourceModel,
+    } };
+  }
   if (urlHasExactModelSegment(canonical, caseIdentity.model) || canonicalRegionalSku) {
     if (canonicalRegionalSku) signals.push({ type: 'canonical_regional_sku', value: canonicalRegionalSku });
     if (productModel) signals.push({ type: 'product_model', value: productModel });

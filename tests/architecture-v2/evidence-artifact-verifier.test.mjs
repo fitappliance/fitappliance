@@ -375,6 +375,43 @@ test('HTML identity records a strict official marketing alias and limits it to d
   }), /alias|canonical.*model|identity/i);
 });
 
+test('HTML identity attests only a policy-bound Westinghouse hinge variant', () => {
+  const target = { brand: 'Westinghouse', model: 'WTB4600SC', category: 'fridge' };
+  const canonical = 'https://www.westinghouse.com.au/fridges/wtb4600sc-r/';
+  const bytes = Buffer.from(`<!doctype html><html><head>
+    <title>460L Top Mount Fridge WTB4600SC-R | Westinghouse Australia</title>
+    <link rel="canonical" href="${canonical}">
+  </head><body data-item-model="WTB4600SC-R" data-ga4-product-id="WTB4600SC-R">
+    <dl><dt>Total width (mm)</dt><dd>699 mm</dd>
+      <dt>Total height (mm)</dt><dd>1725 mm</dd>
+      <dt>Total depth (mm)</dt><dd>723 mm</dd></dl>
+  </body></html>`);
+  const claims = extractClaimsFromHtml(bytes, {
+    category: 'fridge',
+    fields: ['closedEnvelope.widthMm', 'closedEnvelope.heightMm', 'closedEnvelope.depthMm'],
+  });
+  const attested = verifyAndAttestResolutionArtifact({
+    source: source(bytes, {
+      sourceUrl: canonical,
+      finalUrl: canonical,
+      identity: { ...target, outcome: 'exact' },
+      claims,
+    }),
+    caseIdentity: target,
+    bytes,
+    verifiedAt: '2026-07-16T10:00:00.000Z',
+  });
+
+  assert.deepEqual(attested.identity, {
+    brand: target.brand,
+    model: target.model,
+    outcome: 'official_marketing_alias',
+    sourceModel: 'WTB4600SC-R',
+  });
+  assert.ok(attested.identitySignals.some((signal) => signal.type === 'official_variant_binding'));
+  assert.equal(verifyAttestedResolutionArtifact({ source: attested, caseIdentity: target, bytes }), true);
+});
+
 test('HTML extractor derives requested claims from source text instead of copied values', () => {
   const claims = extractClaimsFromHtml(html(), {
     category: 'fridge',

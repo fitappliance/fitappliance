@@ -7,7 +7,7 @@
     "energy-rating:fridge": "cceb22f8a1879ee66cfd0c929a78c441bd08f18933f8ba6a0ae1d1efec202775",
     "energy-rating:washing_machine": "f31f1981b00e48f7816f7de678d71fccd18bdecb702b780211389dd63e2009a3",
     "fitappliance:catalog": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
-    "historical-recovery:historical-recovery-cumulative-v1": "1234a5655d8eab56b82ac73a796076be02a3dcda69a76d89b98a672dd6466211"
+    "historical-recovery:historical-recovery-cumulative-v1": "55d828c7ec621087aaba1bed789258f59ae0a96fb80f50398f9bc28b46b5497d"
   },
   "records": [
     {
@@ -248884,11 +248884,11 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
-        "width": 1728,
-        "height": 913,
+        "width": 913,
+        "height": 1782,
         "depth": 803
       },
       "sources": [
@@ -248903,6 +248903,18 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_42d212f53996bbf2b9a2c222",
+          "snapshotSha256": "42cdaa2f7f521756d179497559da122c469bfcd96c48c527958e5384e0788ff9",
+          "sourceLines": [
+            4
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_42d212f53996bbf2b9a2c222",
+          "snapshotSha256": "54781aeb1b9beb11c843b7c2eed01057d3ff99e93a83d248992b37d0c67cbcb9",
+          "sourceLines": []
         }
       ],
       "catalogProductIds": [
@@ -248910,8 +248922,61 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_42d212f53996bbf2b9a2c222",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE7074SA&brand=Westinghouse",
+          "contentSha256": "42cdaa2f7f521756d179497559da122c469bfcd96c48c527958e5384e0788ff9",
+          "receiptBindingSha256": "ad7c89cbab92325b7b10e26b7d9c89208e40d6c3340bafe53ad7103e6bdf0eab",
+          "verifiedAt": "2026-07-15T16:31:16.237Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "a64ab00ca25aed8184e6e333b2364d87e3b9cf52abcfcbfb1491bb2973b70e6f"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "a64ab00ca25aed8184e6e333b2364d87e3b9cf52abcfcbfb1491bb2973b70e6f"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 4,
+              "fragmentSha256": "a64ab00ca25aed8184e6e333b2364d87e3b9cf52abcfcbfb1491bb2973b70e6f"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/42/cd/42cdaa2f7f521756d179497559da122c469bfcd96c48c527958e5384e0788ff9.pdf"
+        },
+        {
+          "targetId": "recovery_target_42d212f53996bbf2b9a2c222",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe7074sa/",
+          "contentSha256": "54781aeb1b9beb11c843b7c2eed01057d3ff99e93a83d248992b37d0c67cbcb9",
+          "receiptBindingSha256": "9e6939280b7cf144158ff12c747dbb04e2e47eacdcfd5e2cfb9e08e37d42a662",
+          "verifiedAt": "2026-07-15T16:31:16.143Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "54781aeb1b9beb11c843b7c2eed01057d3ff99e93a83d248992b37d0c67cbcb9"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "54781aeb1b9beb11c843b7c2eed01057d3ff99e93a83d248992b37d0c67cbcb9"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "54781aeb1b9beb11c843b7c2eed01057d3ff99e93a83d248992b37d0c67cbcb9"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/54/78/54781aeb1b9beb11c843b7c2eed01057d3ff99e93a83d248992b37d0c67cbcb9.html"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -254101,12 +254166,12 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
-        "width": 1725,
-        "height": 699,
-        "depth": 769
+        "width": 699,
+        "height": 1725,
+        "depth": 723
       },
       "sources": [
         {
@@ -254120,6 +254185,23 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_64a6960846c48fe311bba83a",
+          "snapshotSha256": "1d5b54a4e794ddc4eb56fe88bdd60188415739d91184d2e1edccf4bdfb821655",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_64a6960846c48fe311bba83a",
+          "snapshotSha256": "502d973604c2d6c3126642b172c557cf6fd456797587e1d458befaf3f8b6e43f",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_64a6960846c48fe311bba83a",
+          "snapshotSha256": "d6bf099f038c00f19faf16cf7e1ae3303399f45015fa1d9be95e4aac81d4e5a9",
+          "sourceLines": [
+            8
+          ]
         }
       ],
       "catalogProductIds": [
@@ -254127,8 +254209,84 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_64a6960846c48fe311bba83a",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wtb4600sc-r/",
+          "contentSha256": "1d5b54a4e794ddc4eb56fe88bdd60188415739d91184d2e1edccf4bdfb821655",
+          "receiptBindingSha256": "c0b8cea6c90de05ca799c751a1e20faf66a57b345554b53e43660ea81809ca39",
+          "verifiedAt": "2026-07-15T16:43:24.926Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "1d5b54a4e794ddc4eb56fe88bdd60188415739d91184d2e1edccf4bdfb821655"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "1d5b54a4e794ddc4eb56fe88bdd60188415739d91184d2e1edccf4bdfb821655"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "1d5b54a4e794ddc4eb56fe88bdd60188415739d91184d2e1edccf4bdfb821655"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/1d/5b/1d5b54a4e794ddc4eb56fe88bdd60188415739d91184d2e1edccf4bdfb821655.html"
+        },
+        {
+          "targetId": "recovery_target_64a6960846c48fe311bba83a",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wtb4600sc-l/",
+          "contentSha256": "502d973604c2d6c3126642b172c557cf6fd456797587e1d458befaf3f8b6e43f",
+          "receiptBindingSha256": "1c7bb0c80c7f0da2292d52d2b3067892a2af0e8c3fd6b98aeec694991f542c52",
+          "verifiedAt": "2026-07-15T16:43:27.015Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "502d973604c2d6c3126642b172c557cf6fd456797587e1d458befaf3f8b6e43f"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "502d973604c2d6c3126642b172c557cf6fd456797587e1d458befaf3f8b6e43f"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "502d973604c2d6c3126642b172c557cf6fd456797587e1d458befaf3f8b6e43f"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/50/2d/502d973604c2d6c3126642b172c557cf6fd456797587e1d458befaf3f8b6e43f.html"
+        },
+        {
+          "targetId": "recovery_target_64a6960846c48fe311bba83a",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB4600SC&brand=Westinghouse",
+          "contentSha256": "d6bf099f038c00f19faf16cf7e1ae3303399f45015fa1d9be95e4aac81d4e5a9",
+          "receiptBindingSha256": "10cfb5f0674fd445e1e52fa3efe7a2eb054dfd5aff6bfe11e68bb5f00f21d0f3",
+          "verifiedAt": "2026-07-15T16:43:27.092Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 8,
+              "fragmentSha256": "bc348626a0c875ba4b075edc97dc47c01fb988cf6234643bf37a30eefd094ca4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 8,
+              "fragmentSha256": "bc348626a0c875ba4b075edc97dc47c01fb988cf6234643bf37a30eefd094ca4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 8,
+              "fragmentSha256": "bc348626a0c875ba4b075edc97dc47c01fb988cf6234643bf37a30eefd094ca4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/d6/bf/d6bf099f038c00f19faf16cf7e1ae3303399f45015fa1d9be95e4aac81d4e5a9.pdf"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -254289,12 +254447,12 @@
         }
       ],
       "lifecycleState": "CATALOG_ARCHIVED",
-      "evidenceState": "REGISTRY_CONSISTENT",
-      "lookupAction": "CONFIRM_REQUIRED",
+      "evidenceState": "MODEL_RECEIPT",
+      "lookupAction": "AUTO_FILL",
       "dimensionsMm": {
-        "width": 1725,
-        "height": 699,
-        "depth": 769
+        "width": 699,
+        "height": 1725,
+        "depth": 723
       },
       "sources": [
         {
@@ -254308,6 +254466,23 @@
           "sourceId": "fitappliance:catalog",
           "snapshotSha256": "3db5c518a9fe03a9ed4e965ac0e45abb803843a662f049e70f2453f35a7c7fd5",
           "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_be040e31138e16accc76688d",
+          "snapshotSha256": "01d0b4bc4a47e43e192fa8d6f806e6bb25eb41fdf590ffae4568276fcfa50f7c",
+          "sourceLines": []
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_be040e31138e16accc76688d",
+          "snapshotSha256": "5cc358c5f8bf32a3f34b2855abfc16d1e0c572f11fd7fa15d279c81b30bb142b",
+          "sourceLines": [
+            8
+          ]
+        },
+        {
+          "sourceId": "historical-recovery:recovery_target_be040e31138e16accc76688d",
+          "snapshotSha256": "bb680487f8babe20c0540d55a12110486bf826708b7851855b0637dc2995049b",
+          "sourceLines": []
         }
       ],
       "catalogProductIds": [
@@ -254315,8 +254490,84 @@
       ],
       "registryObservationCount": 1,
       "registryMarketState": "ACTIVE_AU",
-      "registryDimensionState": "CONSISTENT",
-      "reasonCodes": []
+      "registryDimensionState": "CONFLICTS_RECEIPT",
+      "reasonCodes": [
+        "REGISTRY_DIMENSIONS_CONFLICT_WITH_RECEIPT"
+      ],
+      "modelReceipts": [
+        {
+          "targetId": "recovery_target_be040e31138e16accc76688d",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wtb4600wc-l/",
+          "contentSha256": "01d0b4bc4a47e43e192fa8d6f806e6bb25eb41fdf590ffae4568276fcfa50f7c",
+          "receiptBindingSha256": "8c118923a8005239b637629765b8fa77a1a4e610700a5b4fe13c96238ceadaba",
+          "verifiedAt": "2026-07-15T16:43:27.344Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "01d0b4bc4a47e43e192fa8d6f806e6bb25eb41fdf590ffae4568276fcfa50f7c"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "01d0b4bc4a47e43e192fa8d6f806e6bb25eb41fdf590ffae4568276fcfa50f7c"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "01d0b4bc4a47e43e192fa8d6f806e6bb25eb41fdf590ffae4568276fcfa50f7c"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/01/d0/01d0b4bc4a47e43e192fa8d6f806e6bb25eb41fdf590ffae4568276fcfa50f7c.html"
+        },
+        {
+          "targetId": "recovery_target_be040e31138e16accc76688d",
+          "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB4600WC&brand=Westinghouse",
+          "contentSha256": "5cc358c5f8bf32a3f34b2855abfc16d1e0c572f11fd7fa15d279c81b30bb142b",
+          "receiptBindingSha256": "34f81d3f16a03a3a4cf914776a3d6c552fe8bda9a62ec1b500035ad2bb4936d2",
+          "verifiedAt": "2026-07-15T16:43:25.658Z",
+          "fields": {
+            "width": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 8,
+              "fragmentSha256": "bc348626a0c875ba4b075edc97dc47c01fb988cf6234643bf37a30eefd094ca4"
+            },
+            "height": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 8,
+              "fragmentSha256": "bc348626a0c875ba4b075edc97dc47c01fb988cf6234643bf37a30eefd094ca4"
+            },
+            "depth": {
+              "locatorKind": "PDF_FRAGMENT",
+              "page": 8,
+              "fragmentSha256": "bc348626a0c875ba4b075edc97dc47c01fb988cf6234643bf37a30eefd094ca4"
+            }
+          },
+          "contentType": "application/pdf",
+          "objectPath": "evidence/web/sha256/5c/c3/5cc358c5f8bf32a3f34b2855abfc16d1e0c572f11fd7fa15d279c81b30bb142b.pdf"
+        },
+        {
+          "targetId": "recovery_target_be040e31138e16accc76688d",
+          "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wtb4600wc-r/",
+          "contentSha256": "bb680487f8babe20c0540d55a12110486bf826708b7851855b0637dc2995049b",
+          "receiptBindingSha256": "ed72fd9f9c5429599cc9d3edfc012cd069d21c938b876aae37cd3163a3dd67d9",
+          "verifiedAt": "2026-07-15T16:43:26.662Z",
+          "fields": {
+            "width": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "bb680487f8babe20c0540d55a12110486bf826708b7851855b0637dc2995049b"
+            },
+            "height": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "bb680487f8babe20c0540d55a12110486bf826708b7851855b0637dc2995049b"
+            },
+            "depth": {
+              "locatorKind": "HTML_ARTIFACT",
+              "artifactSha256": "bb680487f8babe20c0540d55a12110486bf826708b7851855b0637dc2995049b"
+            }
+          },
+          "contentType": "text/html",
+          "objectPath": "evidence/web/sha256/bb/68/bb680487f8babe20c0540d55a12110486bf826708b7851855b0637dc2995049b.html"
+        }
+      ]
     },
     {
       "schemaVersion": 1,
@@ -315835,17 +316086,17 @@
       "CURRENT_RETAIL": 1384
     },
     "byEvidence": {
-      "REGISTRY_CONSISTENT": 4896,
+      "REGISTRY_CONSISTENT": 4893,
       "IDENTITY_ONLY": 3017,
-      "MODEL_RECEIPT": 83,
+      "MODEL_RECEIPT": 86,
       "INTERNAL_CONFLICT": 69,
       "INVALID_DIMENSIONS": 19,
       "CATALOG_RECEIPT": 11
     },
     "byLookupAction": {
-      "CONFIRM_REQUIRED": 4896,
+      "CONFIRM_REQUIRED": 4893,
       "MEASURE_REQUIRED": 3017,
-      "AUTO_FILL": 94,
+      "AUTO_FILL": 97,
       "QUARANTINED": 88
     }
   }

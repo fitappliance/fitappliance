@@ -353,6 +353,82 @@ test('PDF and exact official product page can resolve an ordinary lower-authorit
   assert.equal(result.lowerAuthorityResolution, 'independent_official_dimension_corroboration');
 });
 
+test('exact PDF and a strict dimensions-only HTML variant can corroborate an ordinary disagreement', () => {
+  const variantIdentity = { brand: 'Westinghouse', model: 'WTB4600SC', category: 'fridge' };
+  const dimensions = { widthMm: 699, heightMm: 1725, depthMm: 723 };
+  const pdf = source('a'.repeat(64), dimensions, {
+    identity: { ...variantIdentity, outcome: 'exact' },
+  });
+  const productPage = source('b'.repeat(64), dimensions, {
+    sourceType: 'official_exact_model_product_page',
+    contentType: 'text/html',
+    finalUrl: 'https://www.westinghouse.com.au/fridges/wtb4600sc-r/',
+    identity: {
+      ...variantIdentity,
+      outcome: 'official_marketing_alias',
+      sourceModel: 'WTB4600SC-R',
+    },
+    identitySignals: [
+      { type: 'document_title', value: '460L Top Mount Fridge WTB4600SC-R' },
+      { type: 'canonical_source_model', value: 'WTB4600SC-R' },
+      { type: 'official_variant_binding', value: 'WTB4600SC -> WTB4600SC-R (R)' },
+    ],
+  });
+  const result = reconcileEvidenceClaims(variantIdentity, inventory([pdf, productPage], {
+    identity: variantIdentity,
+  }), {
+    verifyReceipt,
+    lowerAuthorityHints: [{
+      sourceRole: 'registry_hint',
+      sourceId: 'energy-rating',
+      dimensionsMm: { widthMm: 1725, heightMm: 699, depthMm: 769 },
+    }],
+  });
+
+  assert.equal(result.status, 'accepted');
+  assert.equal(result.sources.length, 2);
+  assert.equal(result.lowerAuthorityResolution, 'independent_official_dimension_corroboration');
+});
+
+test('strict HTML variant cannot establish target identity without an exact source anchor', () => {
+  const variantIdentity = { brand: 'Westinghouse', model: 'WTB4600SC', category: 'fridge' };
+  const productPage = source('b'.repeat(64), { widthMm: 699, heightMm: 1725, depthMm: 723 }, {
+    contentType: 'text/html',
+    identity: {
+      ...variantIdentity,
+      outcome: 'official_marketing_alias',
+      sourceModel: 'WTB4600SC-R',
+    },
+  });
+  const result = reconcileEvidenceClaims(variantIdentity, inventory([productPage], {
+    identity: variantIdentity,
+  }), { verifyReceipt });
+
+  assert.equal(result.status, 'identity_rejected');
+  assert.equal(result.failureCode, 'identity');
+});
+
+test('strict HTML variant disagreement with its exact source anchor remains quarantined', () => {
+  const variantIdentity = { brand: 'Westinghouse', model: 'WTB4600SC', category: 'fridge' };
+  const pdf = source('a'.repeat(64), { widthMm: 699, heightMm: 1725, depthMm: 723 }, {
+    identity: { ...variantIdentity, outcome: 'exact' },
+  });
+  const productPage = source('b'.repeat(64), { widthMm: 699, heightMm: 1725, depthMm: 769 }, {
+    contentType: 'text/html',
+    identity: {
+      ...variantIdentity,
+      outcome: 'official_marketing_alias',
+      sourceModel: 'WTB4600SC-R',
+    },
+  });
+  const result = reconcileEvidenceClaims(variantIdentity, inventory([pdf, productPage], {
+    identity: variantIdentity,
+  }), { verifyReceipt });
+
+  assert.equal(result.status, 'conflict_quarantined');
+  assert.deepEqual(result.conflictingFields, ['closedEnvelope.depthMm']);
+});
+
 test('incomplete inventory cannot reconcile to acceptance', () => {
   const accepted = source('a'.repeat(64), { widthMm: 913, heightMm: 1782, depthMm: 803 });
   const incomplete = inventory([accepted], {

@@ -43,6 +43,13 @@ function exactIdentity(source, identity) {
     && String(source.identity.category ?? identity.category) === String(identity.category);
 }
 
+function aliasIdentity(source, identity) {
+  return source?.identity?.outcome === 'official_marketing_alias'
+    && identityKey(source.identity.brand) === identityKey(identity.brand)
+    && identityKey(source.identity.model) === identityKey(identity.model)
+    && String(source.identity.category ?? identity.category) === String(identity.category);
+}
+
 function sameResource(left, right) {
   try {
     const a = new URL(left); const b = new URL(right);
@@ -360,11 +367,12 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
     .map((candidate) => candidate.outcome.source);
   const supplied = [...(inventory.activeReceiptSources ?? []), ...candidateSources];
   const exact = supplied.filter((source) => source.authority === 'manufacturer' && exactIdentity(source, identity));
+  const aliases = supplied.filter((source) => source.authority === 'manufacturer' && aliasIdentity(source, identity));
   if (!exact.length) {
     const hadIdentityRejection = (inventory.candidates ?? []).some((candidate) => candidate.outcome?.status === 'identity_rejected');
     return failure(
-      hadIdentityRejection ? 'identity_rejected' : 'claims_incomplete',
-      hadIdentityRejection ? 'identity' : strongestOfficialCandidateFailure(inventory.candidates),
+      hadIdentityRejection || aliases.length ? 'identity_rejected' : 'claims_incomplete',
+      hadIdentityRejection || aliases.length ? 'identity' : strongestOfficialCandidateFailure(inventory.candidates),
       inventory,
     );
   }
@@ -378,7 +386,22 @@ export function reconcileEvidenceClaims(identity, inventory, options = {}) {
     return failure('terminal_failure', 'receipt', inventory, { receiptError: String(error?.message ?? error) });
   }
 
-  const deduplicated = deduplicateSources(exact);
+  const exactDeduplicated = deduplicateSources(exact);
+  if (exactDeduplicated.conflict) {
+    return failure('conflict_quarantined', 'conflict', inventory, { conflictReason: exactDeduplicated.conflict });
+  }
+  const exactSupersession = applyAttestedSupersession(exactDeduplicated.sources);
+  const exactMatrix = claimMatrix(exactSupersession.active, DEFAULT_FIELDS);
+  const eligibleAliases = hasExactOfficialAxisProof(exactMatrix) ? aliases : [];
+  try {
+    for (const source of eligibleAliases) {
+      verifyReceipt(source, identity, { asOf: source?.verificationReceipt?.verifiedAt });
+    }
+  } catch (error) {
+    return failure('terminal_failure', 'receipt', inventory, { receiptError: String(error?.message ?? error) });
+  }
+
+  const deduplicated = deduplicateSources([...exact, ...eligibleAliases]);
   if (deduplicated.conflict) {
     return failure('conflict_quarantined', 'conflict', inventory, { conflictReason: deduplicated.conflict });
   }

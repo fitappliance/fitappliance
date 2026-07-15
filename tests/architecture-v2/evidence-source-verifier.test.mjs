@@ -11,6 +11,7 @@ import {
   isOfficialBrandMarketUrl,
   isSourceFresh,
   normalizeOfficialArtifactDiscoveryProvenance,
+  officialHtmlModelVariant,
   validateTrustedSourceMetadata,
   verifyVerificationReceipt,
 } from '../../src/domain/evidence-source-verifier.mjs';
@@ -19,6 +20,24 @@ const HASH = 'a'.repeat(64);
 const JSON_HASH = 'b'.repeat(64);
 const caseIdentity = Object.freeze({
   brand: 'Westinghouse', model: 'WHE6874BA', category: 'fridge',
+});
+
+test('official HTML model variants are limited to policy-approved brand, category, and suffixes', () => {
+  assert.deepEqual(officialHtmlModelVariant({
+    brand: 'Westinghouse', model: 'WTB4600SC', category: 'fridge',
+  }, 'WTB4600SC-R'), { sourceModel: 'WTB4600SC-R', suffix: 'R' });
+  assert.equal(officialHtmlModelVariant({
+    brand: 'Westinghouse', model: 'WTB4600SC', category: 'dishwasher',
+  }, 'WTB4600SC-R'), null);
+  assert.equal(officialHtmlModelVariant({
+    brand: 'Electrolux', model: 'WTB4600SC', category: 'fridge',
+  }, 'WTB4600SC-R'), null);
+  assert.equal(officialHtmlModelVariant({
+    brand: 'Westinghouse', model: 'WTB4600SC', category: 'fridge',
+  }, 'WTB4600SC-X'), null);
+  assert.equal(officialHtmlModelVariant({
+    brand: 'Westinghouse', model: 'WTB4600SC', category: 'fridge',
+  }, 'WTB4600SCR'), null);
 });
 
 function source(overrides = {}) {
@@ -454,9 +473,9 @@ test('verification receipt binds case identity, source metadata, artifact, and c
   assert.deepEqual(input.verificationReceipt, {
     schemaVersion: 2,
     policyVersion: '2026-07-12.2',
-    manufacturerPolicyVersion: '2026-07-15.1',
+    manufacturerPolicyVersion: '2026-07-16.1',
     verifiedAt: '2026-07-11T14:35:00.000Z',
-    bindingSha256: '2d18f66d4d7b97c5ed33923dd952dc160c6108bcb46721d152a79b10d3b41512',
+    bindingSha256: '141e648500f9f7feb487eef01dd895fc10b6c629a61e6e037316763bf8e8b31f',
   });
 
   assert.equal(verifyVerificationReceipt(input, caseIdentity, {

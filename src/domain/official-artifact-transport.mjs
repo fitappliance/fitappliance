@@ -65,10 +65,14 @@ function requestHeadersForUrl(value) {
 function hostTransportOptions(requestedUrl, options) {
   const hostname = new URL(requestedUrl).hostname.toLowerCase();
   const configuredTimeout = Number(strategies.transport.timeoutMsByHost?.[hostname]);
-  if (!Number.isInteger(configuredTimeout) || configuredTimeout < 1) return options;
+  const forceHttp1_1 = strategies.transport.curlHttp1OnlyHosts?.includes(hostname) === true;
+  if ((!Number.isInteger(configuredTimeout) || configuredTimeout < 1) && !forceHttp1_1) return options;
   return {
     ...options,
-    timeoutMs: Math.max(options.timeoutMs ?? 30000, configuredTimeout),
+    ...(Number.isInteger(configuredTimeout) && configuredTimeout > 0
+      ? { timeoutMs: Math.max(options.timeoutMs ?? 30000, configuredTimeout) }
+      : {}),
+    ...(forceHttp1_1 ? { forceHttp1_1: true } : {}),
   };
 }
 
@@ -154,6 +158,20 @@ async function defaultCurlTransport(requestedUrl, options) {
   }
 }
 
+function isCurlHttp2ProtocolFailure(error) {
+  const message = String(error?.stderr ?? error?.message ?? error);
+  return /curl:\s*\(92\)|HTTP\/2[^\n]*(?:INTERNAL_ERROR|not closed cleanly|stream error)/i.test(message);
+}
+
+async function curlTransportWithProtocolFallback(curlImpl, requestedUrl, options) {
+  try {
+    return await curlImpl(requestedUrl, options);
+  } catch (error) {
+    if (options.forceHttp1_1 === true || !isCurlHttp2ProtocolFailure(error)) throw error;
+    return curlImpl(requestedUrl, { ...options, forceHttp1_1: true });
+  }
+}
+
 export function buildCurlArguments(requestedUrl, options, bodyPath, headersPath) {
   const seconds = Math.max(1, Math.ceil((options.timeoutMs ?? 30000) / 1000));
   const hostname = new URL(requestedUrl).hostname.toLowerCase();
@@ -162,6 +180,7 @@ export function buildCurlArguments(requestedUrl, options, bodyPath, headersPath)
     '--max-time', String(seconds), '--max-redirs', String(options.maximumRedirects ?? 5),
     '--max-filesize', String(options.maximumBytes),
   ];
+  if (options.forceHttp1_1 === true) args.push('--http1.1');
   if (!strategies.transport.preserveCurlDefaultUserAgentHosts.includes(hostname)) {
     args.push('--user-agent', USER_AGENT);
   }
@@ -222,7 +241,12 @@ export async function fetchOfficialArtifactResilient(requestedUrl, brand, option
     && strategies.transport.scraplingFallbackHosts.includes(hostname);
   if (curlPreferred) {
     try {
-      const preferred = validateTransportResult(await curlImpl(requestedUrl, normalizedOptions), requestedUrl, brand, normalizedOptions);
+      const preferred = validateTransportResult(
+        await curlTransportWithProtocolFallback(curlImpl, requestedUrl, normalizedOptions),
+        requestedUrl,
+        brand,
+        normalizedOptions,
+      );
       return { requestedUrl: new URL(requestedUrl).toString(), ...preferred, transport: 'curl' };
     } catch {
       // The primary fetch path remains available when the preferred local transport is absent.
@@ -242,7 +266,12 @@ export async function fetchOfficialArtifactResilient(requestedUrl, brand, option
       return { requestedUrl: new URL(requestedUrl).toString(), ...fallback, transport: 'scrapling' };
     }
     if (!retriable(error) || options.allowCurlFallback !== true) throw error;
-    const fallback = validateTransportResult(await curlImpl(requestedUrl, normalizedOptions), requestedUrl, brand, normalizedOptions);
+    const fallback = validateTransportResult(
+      await curlTransportWithProtocolFallback(curlImpl, requestedUrl, normalizedOptions),
+      requestedUrl,
+      brand,
+      normalizedOptions,
+    );
     return { requestedUrl: new URL(requestedUrl).toString(), ...fallback, transport: 'curl' };
   }
 }

@@ -153,6 +153,23 @@ function modelKey(value, label) {
   return raw.replace(/[^A-Z0-9]+/g, '');
 }
 
+export function officialHtmlModelVariant(caseIdentity, sourceModel) {
+  const targetModel = String(caseIdentity?.model ?? '').trim().toUpperCase();
+  const candidateModel = String(sourceModel ?? '').trim().toUpperCase();
+  const category = String(caseIdentity?.category ?? '').trim().toLowerCase();
+  if (!targetModel || !candidateModel || !category) return null;
+  const suffixes = manufacturerPolicy.officialHtmlModelVariantSuffixes
+    ?.[brandKey(caseIdentity?.brand)]?.[category];
+  if (!Array.isArray(suffixes)) return null;
+  for (const configuredSuffix of suffixes) {
+    const suffix = String(configuredSuffix ?? '').trim().toUpperCase();
+    if (suffix && candidateModel === `${targetModel}-${suffix}`) {
+      return { sourceModel: candidateModel, suffix };
+    }
+  }
+  return null;
+}
+
 function officialMarketApiConfiguration(value, brand) {
   const source = new URL(trustedUrl(value, brand, 'discovery URL', { hostOnly: true }));
   const endpoints = discoverySeedPolicy.brandApiEndpoints?.[brandKey(brand)] ?? [];
@@ -397,8 +414,19 @@ function normalizedSourceIdentity(source, caseIdentity, contentType) {
     throw new TypeError('official marketing alias is dimensions only');
   }
   const signalTypes = new Set((source?.identitySignals ?? []).map((signal) => signal?.type));
-  for (const required of ['document_title', 'canonical_source_model', 'official_alias_binding']) {
+  for (const required of ['document_title', 'canonical_source_model']) {
     if (!signalTypes.has(required)) throw new TypeError(`official marketing alias missing ${required}`);
+  }
+  if (!signalTypes.has('official_alias_binding') && !signalTypes.has('official_variant_binding')) {
+    throw new TypeError('official marketing alias missing official binding');
+  }
+  if (signalTypes.has('official_variant_binding')) {
+    const variant = officialHtmlModelVariant(identity, sourceModel);
+    if (!variant) throw new TypeError('official HTML model variant is not policy approved');
+    const binding = source.identitySignals.find((signal) => signal?.type === 'official_variant_binding');
+    if (binding?.value !== `${identity.model} -> ${variant.sourceModel} (${variant.suffix})`) {
+      throw new TypeError('official HTML model variant binding invalid');
+    }
   }
   return { ...identity, outcome, sourceModel };
 }

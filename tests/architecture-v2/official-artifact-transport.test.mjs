@@ -55,6 +55,25 @@ test('resilient transport falls back to curl after a retriable fetch timeout', a
   assert.deepEqual(result.bytes, PDF);
 });
 
+test('curl transport retries a bounded HTTP/2 protocol failure over HTTP/1.1', async () => {
+  const sourceUrl = 'https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCI01A.pdf';
+  const calls = [];
+  const result = await fetchOfficialArtifactResilient(sourceUrl, 'Bosch', {
+    expectedModel: 'SMS6HCI01A',
+    allowCurlFallback: true,
+    fetchImpl: async () => { throw new TypeError('fetch failed'); },
+    curlImpl: async (_url, options) => {
+      calls.push(options.forceHttp1_1 === true);
+      if (!options.forceHttp1_1) throw new Error('curl: (92) HTTP/2 stream was not closed cleanly: INTERNAL_ERROR');
+      return { finalUrl: sourceUrl, redirectChain: [], contentType: 'application/pdf', bytes: PDF };
+    },
+  });
+
+  assert.deepEqual(calls, [false, true]);
+  assert.equal(result.transport, 'curl');
+  assert.deepEqual(result.bytes, PDF);
+});
+
 test('curl fallback cannot turn HTML or a cross-brand redirect into PDF evidence', async () => {
   const base = {
     fetchImpl: async () => { throw new TypeError('fetch failed'); },
@@ -150,6 +169,30 @@ test('known incompatible official hosts use the declared curl-first profile', as
   assert.equal(fetchCalls, 0);
 });
 
+test('Westinghouse product pages use the declared curl-first HTTP/1.1 profile', async () => {
+  const sourceUrl = 'https://www.westinghouse.com.au/fridges-and-freezers/fridges/wtb4600sc-r/';
+  let fetchCalls = 0;
+  let forceHttp1_1 = false;
+  const result = await fetchOfficialArtifactResilient(sourceUrl, 'Westinghouse', {
+    expectedModel: 'WTB4600SC',
+    allowCurlFallback: true,
+    fetchImpl: async () => { fetchCalls += 1; throw new Error('should not fetch first'); },
+    curlImpl: async (_url, options) => {
+      forceHttp1_1 = options.forceHttp1_1 === true;
+      return {
+        finalUrl: sourceUrl,
+        redirectChain: [],
+        contentType: 'text/html',
+        bytes: Buffer.from('<!doctype html><html><body>WTB4600SC-R</body></html>'),
+      };
+    },
+  });
+
+  assert.equal(fetchCalls, 0);
+  assert.equal(forceHttp1_1, true);
+  assert.equal(result.transport, 'curl');
+});
+
 test('declared slow official hosts receive only their bounded transport timeout override', async () => {
   const sourceUrl = 'https://partners.gorenje.com/fts/GetDigitDoc.aspx?sifra=576719&jezik=en&tipVsebine=1&docName=577992en.pdf';
   let curlTimeoutMs = null;
@@ -191,6 +234,16 @@ test('Electrolux resource transport preserves curl default user agent', () => {
   assert.equal(args.includes('FitApplianceEvidenceBot/3.0 (+https://www.fitappliance.com.au/about/editorial-standards)'), false);
 });
 
+test('Westinghouse product-page transport preserves curl default user agent', () => {
+  const args = buildCurlArguments(
+    'https://www.westinghouse.com.au/fridges-and-freezers/fridges/wtb4600sc-r/',
+    { maximumBytes: 20 * 1024 * 1024, timeoutMs: 30000, maximumRedirects: 5, forceHttp1_1: true },
+    '/tmp/body',
+    '/tmp/headers',
+  );
+  assert.equal(args.includes('--user-agent'), false);
+});
+
 test('other official hosts retain the accountable evidence bot user agent', () => {
   const args = buildCurlArguments(
     'https://media3.bosch-home.com/Documents/specsheet/en-AU/SMS6HCI01A.pdf',
@@ -200,6 +253,16 @@ test('other official hosts retain the accountable evidence bot user agent', () =
   );
   assert.equal(args.includes('--user-agent'), true);
   assert.equal(args.includes('FitApplianceEvidenceBot/3.0 (+https://www.fitappliance.com.au/about/editorial-standards)'), true);
+});
+
+test('curl HTTP/1.1 retry is explicit and leaves the default request unchanged', () => {
+  const sourceUrl = 'https://www.westinghouse.com.au/fridges-and-freezers/fridges/wtb4600sc-r/';
+  const options = { maximumBytes: 20 * 1024 * 1024, timeoutMs: 30000, maximumRedirects: 5 };
+  const defaultArgs = buildCurlArguments(sourceUrl, options, '/tmp/body', '/tmp/headers');
+  const retryArgs = buildCurlArguments(sourceUrl, { ...options, forceHttp1_1: true }, '/tmp/body', '/tmp/headers');
+
+  assert.equal(defaultArgs.includes('--http1.1'), false);
+  assert.equal(retryArgs.includes('--http1.1'), true);
 });
 
 test('Fisher and Paykel content transport sends the official-site referer for fetch and curl', async () => {

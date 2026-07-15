@@ -252,6 +252,20 @@ async function defaultIsProcessAlive(identity) {
   }
 }
 
+export function manufacturerDocumentStrategiesIdentity(document) {
+  if (!document || typeof document !== 'object' || Array.isArray(document)) {
+    throw new TypeError('manufacturer document strategies policy required');
+  }
+  return canonicalJsonSha256(document);
+}
+
+export function manufacturerSourcePolicyIdentity(document) {
+  if (!document || typeof document !== 'object' || Array.isArray(document)) {
+    throw new TypeError('manufacturer source policy required');
+  }
+  return canonicalJsonSha256(document);
+}
+
 async function defaultVerifyTools(policy) {
   const binary = process.env.FITAPPLIANCE_MINERU_BIN ?? 'mineru';
   const { stdout } = await execFile(binary, ['-v'], { timeout: 30_000, maxBuffer: 1024 * 1024 });
@@ -260,12 +274,22 @@ async function defaultVerifyTools(policy) {
   if (version !== policy.parser.version || revision !== policy.parser.modelRevision) {
     throw new Error('MinerU tool identity does not match recovery policy');
   }
+  const manufacturerStrategies = JSON.parse(await defaultFs.readFile(resolve(
+    repoRoot,
+    'data/architecture-v2/policies/manufacturer-document-strategies.json',
+  ), 'utf8'));
+  const manufacturerSourcePolicy = JSON.parse(await defaultFs.readFile(resolve(
+    repoRoot,
+    'data/architecture-v2/policies/manufacturer-source-policy.json',
+  ), 'utf8'));
   return {
-    runnerVersion: '1',
+    runnerVersion: '3',
     nodeVersion: process.version,
     mineruVersion: version,
     modelRevision: revision,
     claimSemanticsVersion: 2,
+    manufacturerDocumentStrategiesSha256: manufacturerDocumentStrategiesIdentity(manufacturerStrategies),
+    manufacturerSourcePolicySha256: manufacturerSourcePolicyIdentity(manufacturerSourcePolicy),
   };
 }
 

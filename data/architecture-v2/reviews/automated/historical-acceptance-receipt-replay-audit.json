@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-15T15:54:21.287Z",
-  "sourceBundleSha256": "1234a5655d8eab56b82ac73a796076be02a3dcda69a76d89b98a672dd6466211",
+  "generatedAt": "2026-07-15T16:46:23.547Z",
+  "sourceBundleSha256": "55d828c7ec621087aaba1bed789258f59ae0a96fb80f50398f9bc28b46b5497d",
   "outcomes": [
     {
       "targetId": "recovery_target_002a12622bce35cd88bb8154",
@@ -578,6 +578,34 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_42d212f53996bbf2b9a2c222",
+      "referenceId": "fa_ref_efe40b27d389481fc3b0d451",
+      "brand": "Westinghouse",
+      "model": "WHE7074SA",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WHE7074SA&brand=Westinghouse",
+      "sourcePdfSha256": "42cdaa2f7f521756d179497559da122c469bfcd96c48c527958e5384e0788ff9",
+      "contentSha256": "42cdaa2f7f521756d179497559da122c469bfcd96c48c527958e5384e0788ff9",
+      "receiptBindingSha256": "ad7c89cbab92325b7b10e26b7d9c89208e40d6c3340bafe53ad7103e6bdf0eab",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/6a/e1/6ae19b6236f09619f431fa88baaebcee2d32683d6255f963f0b0cdc69d5a908c.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_42d212f53996bbf2b9a2c222",
+      "referenceId": "fa_ref_efe40b27d389481fc3b0d451",
+      "brand": "Westinghouse",
+      "model": "WHE7074SA",
+      "category": "fridge",
+      "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/whe7074sa/",
+      "sourcePdfSha256": null,
+      "contentSha256": "54781aeb1b9beb11c843b7c2eed01057d3ff99e93a83d248992b37d0c67cbcb9",
+      "receiptBindingSha256": "9e6939280b7cf144158ff12c747dbb04e2e47eacdcfd5e2cfb9e08e37d42a662",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_43049c0fe7be0474b1473b7a",
       "referenceId": "fa_ref_7f66f7da8299455969feea69",
       "brand": "Bosch",
@@ -854,6 +882,48 @@
       "contentSha256": "94c3e3969822b66089027d1bbd1ed6654901eee98f6b6ac9a5a022868b4e84fd",
       "receiptBindingSha256": "8e7cec63fbc3fd1a4309359f59d37c22a5fd3be46d9a1df5a3c02d543367d23c",
       "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_64a6960846c48fe311bba83a",
+      "referenceId": "fa_ref_935712563469337605863347",
+      "brand": "Westinghouse",
+      "model": "WTB4600SC",
+      "category": "fridge",
+      "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wtb4600sc-r/",
+      "sourcePdfSha256": null,
+      "contentSha256": "1d5b54a4e794ddc4eb56fe88bdd60188415739d91184d2e1edccf4bdfb821655",
+      "receiptBindingSha256": "c0b8cea6c90de05ca799c751a1e20faf66a57b345554b53e43660ea81809ca39",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_64a6960846c48fe311bba83a",
+      "referenceId": "fa_ref_935712563469337605863347",
+      "brand": "Westinghouse",
+      "model": "WTB4600SC",
+      "category": "fridge",
+      "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wtb4600sc-l/",
+      "sourcePdfSha256": null,
+      "contentSha256": "502d973604c2d6c3126642b172c557cf6fd456797587e1d458befaf3f8b6e43f",
+      "receiptBindingSha256": "1c7bb0c80c7f0da2292d52d2b3067892a2af0e8c3fd6b98aeec694991f542c52",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_64a6960846c48fe311bba83a",
+      "referenceId": "fa_ref_935712563469337605863347",
+      "brand": "Westinghouse",
+      "model": "WTB4600SC",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB4600SC&brand=Westinghouse",
+      "sourcePdfSha256": "d6bf099f038c00f19faf16cf7e1ae3303399f45015fa1d9be95e4aac81d4e5a9",
+      "contentSha256": "d6bf099f038c00f19faf16cf7e1ae3303399f45015fa1d9be95e4aac81d4e5a9",
+      "receiptBindingSha256": "10cfb5f0674fd445e1e52fa3efe7a2eb054dfd5aff6bfe11e68bb5f00f21d0f3",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/34/be/34be092b16fdf238973cd02a604bb8b02bb5bf1b0a907a3a3873ded4e4e5bd1a.json",
       "status": "passed",
       "failureCode": null
     },
@@ -1376,6 +1446,48 @@
       "failureCode": null
     },
     {
+      "targetId": "recovery_target_be040e31138e16accc76688d",
+      "referenceId": "fa_ref_eb8c80dbac9425af4a678d96",
+      "brand": "Westinghouse",
+      "model": "WTB4600WC",
+      "category": "fridge",
+      "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wtb4600wc-l/",
+      "sourcePdfSha256": null,
+      "contentSha256": "01d0b4bc4a47e43e192fa8d6f806e6bb25eb41fdf590ffae4568276fcfa50f7c",
+      "receiptBindingSha256": "8c118923a8005239b637629765b8fa77a1a4e610700a5b4fe13c96238ceadaba",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_be040e31138e16accc76688d",
+      "referenceId": "fa_ref_eb8c80dbac9425af4a678d96",
+      "brand": "Westinghouse",
+      "model": "WTB4600WC",
+      "category": "fridge",
+      "sourceUrl": "https://resource.electrolux.com.au/Factsheet/RequestPdf?modelNumber=WTB4600WC&brand=Westinghouse",
+      "sourcePdfSha256": "5cc358c5f8bf32a3f34b2855abfc16d1e0c572f11fd7fa15d279c81b30bb142b",
+      "contentSha256": "5cc358c5f8bf32a3f34b2855abfc16d1e0c572f11fd7fa15d279c81b30bb142b",
+      "receiptBindingSha256": "34f81d3f16a03a3a4cf914776a3d6c552fe8bda9a62ec1b500035ad2bb4936d2",
+      "derivedObjectPath": "evidence/derived/mineru-json/sha256/42/5b/425b71fa37295c7dfe43628a0e745464952f926304a536933865000338976991.json",
+      "status": "passed",
+      "failureCode": null
+    },
+    {
+      "targetId": "recovery_target_be040e31138e16accc76688d",
+      "referenceId": "fa_ref_eb8c80dbac9425af4a678d96",
+      "brand": "Westinghouse",
+      "model": "WTB4600WC",
+      "category": "fridge",
+      "sourceUrl": "https://www.westinghouse.com.au/fridges-and-freezers/fridges/wtb4600wc-r/",
+      "sourcePdfSha256": null,
+      "contentSha256": "bb680487f8babe20c0540d55a12110486bf826708b7851855b0637dc2995049b",
+      "receiptBindingSha256": "ed72fd9f9c5429599cc9d3edfc012cd069d21c938b876aae37cd3163a3dd67d9",
+      "derivedObjectPath": null,
+      "status": "passed",
+      "failureCode": null
+    },
+    {
       "targetId": "recovery_target_c2de14d490b3777d78e1f53f",
       "referenceId": "fa_ref_5d80bf5c6d9510aa761f02a0",
       "brand": "Bosch",
@@ -1797,11 +1909,11 @@
     }
   ],
   "summary": {
-    "entries": 111,
-    "sources": 128,
-    "passed": 128,
+    "entries": 114,
+    "sources": 136,
+    "passed": 136,
     "failed": 0
   },
-  "checkedObjects": 280,
-  "semanticAuditSha256": "31dfddbfb68c18235ced52fd5fa98d3d69f73d7a2e7a2ed493ccf500f401cbe5"
+  "checkedObjects": 293,
+  "semanticAuditSha256": "6b65cb226e620c08b3d4e09a39b6dbc7c025b9c4ddaf9b0eef0d4f5b75957ced"
 }

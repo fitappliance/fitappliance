@@ -57,6 +57,13 @@ function resolveHisenseAssetUrl(url) {
   return `${ASSET_BASE_URL}${raw.startsWith('/') ? '' : '/'}${raw}`;
 }
 
+function resolveHisenseProductPageUrl(url) {
+  const page = new URL(String(url || '').trim(), SITE_BASE_URL);
+  page.hash = '';
+  page.pathname = page.pathname.replace(/-+\/?$/, '');
+  return page.toString();
+}
+
 function scoreResource(resource = {}) {
   const haystack = `${resource.name || ''} ${resource.url || ''}`;
   let score = 0;
@@ -141,7 +148,7 @@ function productToResult(product, target, sourceSuffix = 'specification_doc') {
     productCode: product.code || '',
     productName: product.name || '',
     documentName: resource.name || '',
-    ...(product.url ? { productPageUrl: new URL(product.url, SITE_BASE_URL).toString() } : {})
+    ...(product.url ? { productPageUrl: resolveHisenseProductPageUrl(product.url) } : {})
   };
 }
 
@@ -191,4 +198,5 @@ exports.findHisenseOfficialPdf = findHisenseOfficialPdf;
 exports.hisenseProductCodeMatchesSku = hisenseProductCodeMatchesSku;
 exports.normalizeSku = normalizeSku;
 exports.resolveHisenseAssetUrl = resolveHisenseAssetUrl;
+exports.resolveHisenseProductPageUrl = resolveHisenseProductPageUrl;
 exports.selectHisensePdfResource = selectHisensePdfResource;

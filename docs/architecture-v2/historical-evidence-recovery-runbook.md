@@ -267,13 +267,27 @@ FITAPPLIANCE_STORAGE_ROOT=/Volumes/UGREEN-1TB/FitAppliance \
 npm run publish:historical-reference
 npm run audit:historical-replacement
 
-# 4. Run repository gates. This must replay the tracked reference without disk access.
+# 4. Only after the historical reference is published, derive the next epoch.
+#    These queues read the released reference and must never be built before it.
+npm run build:historical-model-evidence-classification
+npm run build:historical-evidence-recovery-queue
+npm run build:historical-model-pdf-acquisition-queue
+npm run build:historical-executable-recovery-queue
+npm run build:historical-evidence-recovery-batch
+
+# 5. Run repository gates. This must replay the tracked reference without disk access.
 npm run lint
 npm test
 env -u FITAPPLIANCE_STORAGE_ROOT npm run build:architecture-v2
 env -u FITAPPLIANCE_STORAGE_ROOT npm run build
 git diff --check
 ```
+
+The next-epoch queue step is intentionally outside `build:architecture-v2`.
+Rebuilding it before the historical reference creates a mixed epoch: each
+individual command may pass, but the committed queue no longer hashes to the
+released reference. The queue parity test is the final guard against that
+ordering error.
 
 Review all changed tracked artifacts together, including:
 

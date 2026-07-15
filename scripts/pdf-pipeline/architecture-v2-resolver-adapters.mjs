@@ -403,21 +403,35 @@ export function createElectroluxGroupResolverAdapter(options = {}) {
       if (/[*?]/.test(target.model)) {
         return { completion: 'complete', candidates: [], failures: [] };
       }
+      const normalizedCategory = String(caseRecord?.category ?? '').trim().toLowerCase();
+      const productPageCandidates = brandKey(target.brand) === 'westinghouse' && normalizedCategory === 'fridge'
+        ? ['', '-l', '-r'].map((suffix) => typedCandidate({
+          sourceUrl: `https://www.westinghouse.com.au/fridges-and-freezers/fridges/${encodeURIComponent(target.model.toLowerCase())}${suffix}/`,
+          brand: target.brand,
+          discoveryMethod: 'westinghouse_au_exact_model_product_page_template',
+          documentType: 'product_page',
+          sourceModelHint: suffix ? `${target.model}${suffix.toUpperCase()}` : target.model,
+          requiredAttempt: hasLowerAuthorityDimensionConflict(caseRecord),
+        }))
+        : [];
       try {
         const result = await finder(target, options.finderOptions ?? {});
         return {
           completion: 'complete',
-          candidates: result?.sourceUrl ? [typedCandidate({
-            sourceUrl: result.sourceUrl,
-            brand: target.brand,
-            discoveryMethod: 'electrolux_group_factsheet_endpoint',
-            documentType: 'specification_sheet',
-            sourceModelHint: result.verifiedAlias || target.model,
-          })] : [],
+          candidates: uniqueCandidates([
+            ...(result?.sourceUrl ? [typedCandidate({
+              sourceUrl: result.sourceUrl,
+              brand: target.brand,
+              discoveryMethod: 'electrolux_group_factsheet_endpoint',
+              documentType: 'specification_sheet',
+              sourceModelHint: result.verifiedAlias || target.model,
+            })] : []),
+            ...productPageCandidates,
+          ]),
           failures: [],
         };
       } catch (error) {
-        return completionFromError(error);
+        return { ...completionFromError(error), candidates: productPageCandidates };
       }
     },
   });
