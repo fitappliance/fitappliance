@@ -242,11 +242,18 @@ export async function expandOptionalOfficialEvidenceCandidates(inventory, option
   if (typeof options.acquireAndAttest !== 'function') {
     throw new TypeError('candidate acquisition and attestation function required');
   }
+  const sourceRoles = options.sourceRoles == null
+    ? null
+    : new Set(options.sourceRoles.map((role) => requiredText(role, 'optional candidate source role')));
+  if (sourceRoles && sourceRoles.size === 0) {
+    throw new TypeError('optional candidate source roles cannot be empty');
+  }
 
   const expanded = structuredClone(inventory);
   for (const candidate of expanded.candidates) {
     if (candidate.authorityMode !== 'official'
       || candidate.requiredAttempt
+      || (sourceRoles && !sourceRoles.has(candidate.sourceRole))
       || candidate.outcome?.status !== 'not_attempted_optional') continue;
     try {
       const acquired = await options.acquireAndAttest(structuredClone(candidate));

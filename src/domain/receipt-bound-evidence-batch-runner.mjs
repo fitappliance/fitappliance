@@ -189,6 +189,16 @@ function needsIndependentOfficialCorroboration(reconciled, inventory) {
   ));
 }
 
+function needsExactOfficialProductPageFallback(reconciled, inventory) {
+  if (!['identity_rejected', 'claims_incomplete'].includes(reconciled?.status)) return false;
+  return (inventory?.candidates ?? []).some((candidate) => (
+    candidate.authorityMode === 'official'
+    && candidate.sourceRole === 'manufacturer_product_page'
+    && candidate.requiredAttempt === false
+    && candidate.outcome?.status === 'not_attempted_optional'
+  ));
+}
+
 function persistedArtifactRecord(artifact) {
   if (!artifact || typeof artifact !== 'object') return null;
   const {
@@ -351,8 +361,13 @@ export async function runReceiptBoundEvidenceBatch(batch, dependencies = {}) {
         lowerAuthorityHints: buildLowerAuthorityHints(target),
         verifyInventoryHash: true,
       });
-      if (needsIndependentOfficialCorroboration(reconciled, inventory)) {
-        inventory = await expandOptionalOfficialEvidenceCandidates(inventory, { acquireAndAttest });
+      const needsCorroboration = needsIndependentOfficialCorroboration(reconciled, inventory);
+      const needsProductPageFallback = needsExactOfficialProductPageFallback(reconciled, inventory);
+      if (needsCorroboration || needsProductPageFallback) {
+        inventory = await expandOptionalOfficialEvidenceCandidates(inventory, {
+          acquireAndAttest,
+          ...(needsCorroboration ? {} : { sourceRoles: ['manufacturer_product_page'] }),
+        });
         reconciled = await reconcileClaims({
           brand: target.brand,
           model: target.model,

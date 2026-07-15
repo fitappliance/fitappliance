@@ -316,6 +316,70 @@ test('lower-authority disagreement triggers a second pass over optional official
   );
 });
 
+test('required PDF identity failure falls back to an exact official product page', async () => {
+  const artifactJob = job('a'.repeat(32), 'https://official.example.com/model.pdf', ['target-a']);
+  const input = batch({
+    jobs: [artifactJob],
+    targets: [target('target-a', 'EX100', [artifactJob.jobId])],
+  });
+  const attempted = [];
+  const result = await runReceiptBoundEvidenceBatch(input, dependencies({
+    candidateResolversForTarget: () => [{
+      resolverId: 'official-product-page',
+      version: '1',
+      scope: 'exact_model_product_page',
+      required: true,
+      async resolve() {
+        return {
+          resolverId: 'official-product-page', version: '1',
+          scope: 'exact_model_product_page', required: true,
+          completion: 'complete',
+          candidates: [{
+            sourceUrl: 'https://official.example.com/model.html',
+            authorityMode: 'official',
+            sourceRole: 'manufacturer_product_page',
+            discoveryMethod: 'official_product_page',
+            requiredAttempt: false,
+          }, {
+            sourceUrl: 'https://official.example.com/optional-family.pdf',
+            authorityMode: 'official',
+            sourceRole: 'manufacturer_document',
+            discoveryMethod: 'optional_family_manual',
+            requiredAttempt: false,
+          }],
+        };
+      },
+    }],
+    attestTarget: async (record, artifact) => {
+      attempted.push(artifact.sourceUrl);
+      if (artifact.sourceUrl.endsWith('.pdf')) {
+        throw Object.assign(new Error('structured exact-model identity signal required'), { code: 'identity' });
+      }
+      const source = attestedSource(record, artifact);
+      source.sourceType = 'official_exact_model_html';
+      source.contentType = 'text/html';
+      return { source };
+    },
+  }));
+
+  const outcome = result.outcomes[0];
+  assert.equal(outcome.status, 'accepted');
+  assert.deepEqual(attempted.sort(), [
+    'https://official.example.com/model.html',
+    'https://official.example.com/model.pdf',
+  ]);
+  assert.equal(
+    outcome.candidateInventory.candidates.find((candidate) => candidate.sourceUrl.endsWith('.html')).outcome.status,
+    'accepted',
+  );
+  assert.equal(
+    outcome.candidateInventory.candidates
+      .find((candidate) => candidate.sourceUrl.endsWith('optional-family.pdf')).outcome.status,
+    'not_attempted_optional',
+  );
+  assert.equal(outcome.sources[0].sourceType, 'official_exact_model_html');
+});
+
 test('non-accepted reconciliation retains diagnostic candidates but exposes no releasable sources', async () => {
   const artifactJob = job('a'.repeat(32), 'https://official.example.com/partial.pdf', ['target-a']);
   const input = batch({

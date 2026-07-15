@@ -325,7 +325,7 @@ export function createLgResolverAdapter(options = {}) {
   const finder = options.finder ?? findLgOfficialPdf;
   return createEvidenceSourceResolverAdapter({
     resolverId: 'lg-official-support',
-    version: '1',
+    version: '2',
     scope: 'exact_model_au_support_api_documents_and_bounded_product_pages',
     required: true,
     async resolve(caseRecord) {
@@ -339,8 +339,15 @@ export function createLgResolverAdapter(options = {}) {
           'washer-dryers/front-load-washing-machines',
           'washer-dryers/top-load-washing-machines',
         ],
-        dishwasher: ['dishwashers'],
-        fridge: ['fridges', 'fridge-freezers'],
+        dishwasher: ['dishwashers', 'dishwashers/free-standing', 'dishwashers/built-in'],
+        fridge: [
+          'fridges',
+          'fridge-freezers',
+          'fridge-freezers/french-door',
+          'fridge-freezers/bottom-mount',
+          'fridge-freezers/top-mount',
+          'fridge-freezers/side-by-side',
+        ],
       }[String(caseRecord?.category ?? '').trim().toLowerCase()] ?? [];
       const productPageCandidates = categoryPaths.map((path) => typedCandidate({
         sourceUrl: `https://www.lg.com/au/${path}/${encodeURIComponent(target.model.toLowerCase())}/`,

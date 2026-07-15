@@ -162,6 +162,17 @@ test('LG adapter adds bounded exact-model Australian product-page candidates by 
   ]);
 });
 
+test('LG adapter includes current bounded product-form paths for fridges and dishwashers', async () => {
+  const adapter = createLgResolverAdapter({ finder: async () => ({ sourceUrl: null }) });
+  const fridge = await adapter.resolve({ brand: 'LG', model: 'GF-V500MBLC', category: 'fridge' });
+  const dishwasher = await adapter.resolve({ brand: 'LG', model: 'XD2A25MB', category: 'dishwasher' });
+
+  assert.ok(fridge.candidates.some((candidate) => candidate.sourceUrl
+    === 'https://www.lg.com/au/fridge-freezers/french-door/gf-v500mblc/'));
+  assert.ok(dishwasher.candidates.some((candidate) => candidate.sourceUrl
+    === 'https://www.lg.com/au/dishwashers/free-standing/xd2a25mb/'));
+});
+
 test('LG transport error remains incomplete while preserving no false candidate', async () => {
   const adapter = createLgResolverAdapter({
     finder: async () => { throw new Error('LG support API failed with HTTP 503'); },

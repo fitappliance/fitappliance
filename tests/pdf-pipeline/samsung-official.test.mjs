@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 
 import {
   buildSamsungSupportModelVariants,
+  extractSamsungProductPageUrls,
   extractSamsungPdfResources,
   findSamsungOfficialPdf,
   normalizeSku,
@@ -64,6 +65,20 @@ test('Samsung official finder extracts direct images.samsung.com PDF assets from
   assert.equal(resources[0].url, 'https://images.samsung.com/is/content/samsung/assets/nz/ha/guides/fridge/SRF5300BD.pdf');
 });
 
+test('Samsung official finder selects only exact-SKU Australian product pages from the appliance sitemap', () => {
+  const sitemap = `
+    <urlset>
+      <url><loc>https://www.samsung.com/au/washers-and-dryers/washing-machines/example-ww90dg6u3albsa/</loc></url>
+      <url><loc>https://www.samsung.com/au/washers-and-dryers/washing-machines/marketing-alias-ww90dg6u34lbsa/</loc></url>
+      <url><loc>https://www.samsung.com/nz/washers-and-dryers/washing-machines/example-ww90dg6u3albsa/</loc></url>
+    </urlset>
+  `;
+
+  assert.deepEqual(extractSamsungProductPageUrls(sitemap, 'WW90DG6U3ALB'), [
+    'https://www.samsung.com/au/washers-and-dryers/washing-machines/example-ww90dg6u3albsa/',
+  ]);
+});
+
 test('Samsung official finder retries the AU support model suffix and returns the best PDF', async () => {
   const calls = [];
   const result = await findSamsungOfficialPdf({ sku: 'DV90BB9440GB' }, {
@@ -74,12 +89,20 @@ test('Samsung official finder retries the AU support model suffix and returns th
           <li data-sdf-prop="contents">{"manuals":[{"description":"User Manual","englishDescription":"User Manual","fileName":"DC68-04400M-00_IB_B-PJT_DV9400B_SimpleUX_EN_pdf.pdf","contentsTypeCode":"UM","downloadUrl":"https://org.downloadcenter.samsung.com/downloadfile/ContentsFile.aspx?CDSite=UNI_AU&ModelName=DV90BB9440GB&CttFileID=9157242","languageList":[{"code":"EN","name":"ENGLISH"}],"areaList":[{"code":"AU"}]}]}</li>
         `, { status: 200 });
       }
+      if (String(url).endsWith('/au/da-sitemap.xml')) {
+        return new Response(`
+          <urlset><url><loc>https://www.samsung.com/au/washers-and-dryers/dryers/example-dv90bb9440gbsa/</loc></url></urlset>
+        `, { status: 200 });
+      }
       return new Response('', { status: 404 });
     }
   });
 
-  assert.equal(calls.length, 2);
+  assert.equal(calls.length, 3);
   assert.equal(result.matchedSku, 'DV90BB9440GBSA');
   assert.equal(result.source, 'samsung-official-user_manual');
   assert.match(result.sourceUrl, /ModelName=DV90BB9440GB/);
+  assert.deepEqual(result.productUrls, [
+    'https://www.samsung.com/au/washers-and-dryers/dryers/example-dv90bb9440gbsa/',
+  ]);
 });
